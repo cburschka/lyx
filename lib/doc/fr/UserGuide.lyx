@@ -248,8 +248,7 @@ LatexCommand tableofcontents
 status collapsed
 
 \begin_layout Plain Layout
-Si votre distribution LaTeX est un peu ancienne (TeXLive 2007 par exemple),
- 
+Si votre distribution LaTeX est un peu ancienne , 
 \begin_inset Quotes fld
 \end_inset
 
@@ -278,24 +277,18 @@ varioref/hyperref
 \end_inset
 
  apparaissant dans certaines étiquettes.
- Pour résoudre ce problème, vous pouvez:
-\end_layout
-
-\begin_layout Itemize
-soit désactiver 
+ Frank Mittelbach a corrigé complètement ce bogue de 
 \family typewriter
-hyperref
+varioref
 \family default
- dans le menu 
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
-Propriétés PDF
-\family default
-;
+, la correction est intégrée à partir de TeXLive 2011.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+Pour résoudre ce problème, vous pouvez mettre à jour votre distribution.
+\end_layout
+
+\begin_layout Plain Layout
 Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
 \begin_inset Newline newline
 \end_inset
@@ -304,42 +297,6 @@ Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
 \family typewriter
 \series bold
 http://wiki.lyx.org/LyX/DocumentationDevelopment#UserGuide
-\family default
-\series default
-;
-\end_layout
-
-\begin_layout Itemize
-soit mettre à jour votre distribution (en installant par exemple au moins
- TeXLive 2008)
-\end_layout
-
-\begin_layout Plain Layout
-Frank Mittelbach a corrigé complètement le bug 
-\family typewriter
-varioref
-\family default
-, après la sortie de TeXLive 2010.
- La version corrigée est accessible en SVN ici:
-\begin_inset Newline newline
-\end_inset
-
-
-\family typewriter
-\series bold
-http://www.latex-project.org/svnroot/latex2e-public/required/tools/varioref.dtx
-\end_layout
-
-\begin_layout Plain Layout
-
-\family typewriter
-%<package>
-\backslash
-ProvidesPackage{varioref} 
-\begin_inset Newline newline
-\end_inset
-
-%<package> [2010/11/12 v1.4y package for extended references (FMi)] 
 \end_layout
 
 \end_inset
@@ -349,6 +306,28 @@ ProvidesPackage{varioref}
 
 \begin_layout Chapter
 Introduction
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+L'option de classe 
+\begin_inset Quotes fld
+\end_inset
+
+numbers=noenddot
+\begin_inset Quotes frd
+\end_inset
+
+ (Documents\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Classe de document) évite qu'un point final apparaisse
+ dans la numérotation des sections dans la sortie, ce qui est implicite
+ pour la classe KOMA script.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -399,12 +378,12 @@ mm d'espace en dessous
 \end_layout
 
 \begin_layout Standard
-Ces conceptions sont expliquées plus en détail dans l'
+Ces conceptions sont expliquées plus en détail dans le manuel d'
 \emph on
 Introduction
 \emph default
 .
- Si vous ne l'avez pas encore lue, il serait bon de le faire maintenant.
+ Si vous ne l'avez pas encore lu, il serait bon de le faire maintenant.
  Oui, maintenant: l'
 \emph on
 Introduction
@@ -529,7 +508,7 @@ Préférences
  de LyX sur votre système, vous pourriez avoir certains fichiers installés
  localement, par exemple des classes LaTeX, et qui n'auraient pas été vus
  par LyX.
- Pour forcer LyX à réinspecter votre système, faites 
+ Pour forcer LyX à ré-inspecter votre système, faites 
 \family sans
 Outils\SpecialChar \menuseparator
 Reconfigurer
@@ -1034,7 +1013,7 @@ Fonctions de base d'édition
 status collapsed
 
 \begin_layout Plain Layout
-Edition
+Édition
 \end_layout
 
 \end_inset
@@ -2047,7 +2026,7 @@ Complétion automatique en ligne
 Fenêtre auxiliaire automatique,
 \family default
  la complétion apparaît toujours dans une sous-fenêtre.
- Le curseur auxiliaire de complétion peut être désactivé en désélectionnant
+ Le curseur auxiliaire de complétion peut être désactivé en dé-sélectionnant
  l'option 
 \family sans
 Indicateur curseur
@@ -2081,7 +2060,7 @@ Les options de complétion pour les mathématiques fonctionnent comme les
  options pour le texte.
  L'option spécifique 
 \family sans
-Autocorrection
+Auto-correction
 \family default
  autorise la composition des caractères: si vous voulez par exemple insérer
  le caractère 
@@ -2109,7 +2088,7 @@ Autocorrection
 autocorrect
 \family default
  qui se trouve dans le répertoire d'installation.
- L'autocorrection peut être activée à tout moment en en saisissant le point
+ L'auto-correction peut être activée à tout moment en en saisissant le point
  d'exclamation 
 \begin_inset Quotes fld
 \end_inset
@@ -2229,7 +2208,7 @@ description "Touche tabulation"
 
 
 \family default
- Il n'y a rien qui ressemble à une tabulation dans LyX.
+ il n'y a rien qui ressemble à une tabulation dans LyX.
  Si vous ne comprenez pas cela, allez lire tout de suite les sections
 \begin_inset space ~
 \end_inset
@@ -2271,11 +2250,11 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \emph default
 .
  Avec LyX, la touche de tabulation n'est utilisée que pour accepter les
- suggestions de la complétion de saisie.
+ suggestions de la complétion de saisie;
 \end_layout
 
 \begin_layout Labeling
@@ -2292,9 +2271,9 @@ description "Touche échappement"
 
 
 \family default
- C'est la touche d'annulation.
+ c'est la touche d'annulation.
  Elle est utilisée de manière générique pour annuler des opérations.
- D'autres parties de ce manuel entreront plus dans les détails à ce sujet.
+ D'autres parties de ce manuel entreront plus dans les détails à ce sujet;
 \end_layout
 
 \begin_layout Labeling
@@ -2315,7 +2294,7 @@ et
 \family sans
 Fin
 \family default
- Celles-ci déplacent le curseur, respectivement au début et à la fin de
+ celles-ci déplacent le curseur, respectivement au début et à la fin de
  la ligne, sauf si vous utilisez les raccourcis 
 \begin_inset Flex Code
 status collapsed
@@ -2398,7 +2377,7 @@ Orig
 \family sans
 Fin
 \family default
-, on se déplace au début et à la fin du document, respectivement.
+, on se déplace au début et à la fin du document, respectivement;
 \end_layout
 
 \end_deeper
@@ -2430,7 +2409,7 @@ description "Touche Majuscule"
 
  dans la documentation).
  Utilisez-la avec une des touches de mouvement pour sélectionner le texte
- situé entre les ancienne et nouvelle positions du curseur.
+ situé entre les ancienne et nouvelle positions du curseur;
 \end_layout
 
 \begin_layout Labeling
@@ -2439,7 +2418,7 @@ description "Touche Majuscule"
 \family sans
 Alt
 \family default
- (Noté 
+ (noté 
 \family sans
 
 \begin_inset Quotes fld
@@ -2480,7 +2459,7 @@ raccourcis de menu
 \emph default
 .
  Si vous l'utilisez en combinaison avec l'une des lettres soulignées dans
- un menu ou élément de menu, elle sélectionne cet élément.
+ un menu ou élément de menu, elle sélectionne cet élément;
 \end_layout
 
 \begin_deeper
@@ -2537,7 +2516,7 @@ Fichier
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Ces séquences changent selon la langue des menus.
+NdT : ces séquences changent selon la langue des menus.
  Selon l'avancement de la traduction, ces raccourcis sont, ou non, accessibles.
 \end_layout
 
@@ -2761,19 +2740,19 @@ Il y a quatre classes standard de document dans LyX.
 \end_layout
 
 \begin_layout Description
-Article pour des articles
+Article pour des articles;
 \end_layout
 
 \begin_layout Description
-Report pour des rapports
+Report pour des rapports;
 \end_layout
 
 \begin_layout Description
-Book pour écrire un livre
+Book pour écrire un livre;
 \end_layout
 
 \begin_layout Description
-Letter pour une lettre à l'américaine
+Letter pour une lettre à l'américaine.
 \end_layout
 
 \begin_layout Standard
@@ -2793,27 +2772,25 @@ Options avancées
 \end_layout
 
 \begin_layout Description
-A&A Articles de publications dans le style et le format utilisés par 
+A&A articles de publications dans le style et le format utilisés par 
 \lang english
-Astronomy & Astrophysics
-\lang french
-.
+Astronomy & Astrophysics;
 \end_layout
 
 \begin_layout Description
-ACS Articles de publications dans le style et le format utilisés par l'
+ACS articles de publications dans le style et le format utilisés par l'
 \lang english
-American Chemistry Society
+American Chemistry Society;
 \end_layout
 
 \begin_layout Description
-AGU Articles de publications dans le style et le format utilisés par l'
+AGU articles de publications dans le style et le format utilisés par l'
 \lang english
-American Geophysical Union
+American Geophysical Union;
 \end_layout
 
 \begin_layout Description
-AMS Articles de publications et livres dans le style et le format utilisés
+AMS articles de publications et livres dans le style et le format utilisés
  par l'AMS (
 \lang english
 American Mathematical Society
@@ -2838,21 +2815,21 @@ numérotation séquentielle
  ceux-ci en une seule séquence tout au long de l'article.
  Chaque type de résultat a sa propre séquence.
  Il y a aussi une disposition qui se passe de toute numérotation des proposition
-s.
+s;
 \end_layout
 
 \begin_layout Description
-Beamer Sert à faire des transparents pour des présentations.
+Beamer sert à faire des transparents pour des présentations;
 \end_layout
 
 \begin_layout Description
-Broadway Disposition pour écrire des pièces de théâtre.
+Broadway disposition pour écrire des pièces de théâtre.
  Ce n'est pas une classe qui existe dans LaTeX, mais une nouvelle qui est
- distribuée avec LyX.
+ distribuée avec LyX;
 \end_layout
 
 \begin_layout Description
-Chess Format pour écrire sur le jeu d'échecs
+Chess format pour écrire sur le jeu d'échecs;
 \end_layout
 
 \begin_layout Description
@@ -2860,51 +2837,51 @@ Curriculum
 \begin_inset space ~
 \end_inset
 
-vitae Classe utile pour écrire un curriculum vitæ.
+vitae classe utile pour écrire un curriculum vitæ;
 \end_layout
 
 \begin_layout Description
-Elsarticle Disposition pour les revues publiées par le groupe Elsevier.
+Elsarticle disposition pour les revues publiées par le groupe Elsevier;
 \end_layout
 
 \begin_layout Description
-Foils Sert à faire des transparents pour des présentations.
+Foils sert à faire des transparents pour des présentations;
 \end_layout
 
 \begin_layout Description
-Hollywood Utilisé pour taper des scripts pour l'industrie cinématographique
+Hollywood utilisé pour taper des scripts pour l'industrie cinématographique
  des États-Unis.
  Ce n'est pas une classe qui existe dans LaTeX, mais une nouvelle qui est
- distribuée avec LyX.
+ distribuée avec LyX;
 \end_layout
 
 \begin_layout Description
-IEEEtran Disposition pour les journaux publiés par l'IEEE (
+IEEEtran disposition pour les journaux publiés par l'IEEE (
 \lang english
-Institute of Electrical and Electronics Engineers).
+Institute of Electrical and Electronics Engineers);
 \end_layout
 
 \begin_layout Description
-IOP Disposition pour les journaux publiés par l'IOP (Institute of Physics).
+IOP disposition pour les journaux publiés par l'IOP (Institute of Physics);
 \end_layout
 
 \begin_layout Description
-Kluwer Disposition pour les revues publiées par le groupe Kluwer.
+Kluwer disposition pour les revues publiées par le groupe Kluwer.
 \end_layout
 
 \begin_layout Description
-KOMA-Script Remplace les classes standard, en offrant de nombreuses fonctions
+KOMA-Script remplace les classes standard, en offrant de nombreuses fonctions
  intéressantes comme le formatage des légendes, le calcul automatique de
  la taille de la zone d'impression etc.
- Il est utilisé par le présent document.
+ Il est utilisé par le présent document;
 \end_layout
 
 \begin_layout Description
-Memoir Remplace également les classes standard.
+Memoir remplace également les classes standard;
 \end_layout
 
 \begin_layout Description
-Powerdot Sert à faire des transparents pour des présentations.
+Powerdot sert à faire des transparents pour des présentations;
 \end_layout
 
 \begin_layout Description
@@ -2919,7 +2896,7 @@ status collapsed
 
 \end_inset
 
-X Pour écrire des articles pour les publications de l'
+X pour écrire des articles pour les publications de l'
 \lang english
 American Physical Society
 \lang french
@@ -2933,11 +2910,11 @@ Optical Society of America
 \lang french
  (OSA).
  Cette classe n'est pas entièrement compatible avec toutes les fonctions
- de LyX.
+ de LyX;
 \end_layout
 
 \begin_layout Description
-Slides Sert à faire des transparents pour des présentations.
+Slides sert à faire des transparents pour des présentations;
 \end_layout
 
 \begin_layout Description
@@ -2945,15 +2922,15 @@ SPIE
 \begin_inset space ~
 \end_inset
 
-Proceedings Disposition pour les journaux publiés par SPIE (
+Proceedings disposition pour les journaux publiés par SPIE (
 \lang english
 The International Society for Optical Engineering
 \lang french
-).
+);
 \end_layout
 
 \begin_layout Description
-Springer Disposition pour les revues publiés par le groupe Springer.
+Springer disposition pour les revues publiés par le groupe Springer.
 \end_layout
 
 \begin_layout Standard
@@ -3690,7 +3667,11 @@ Implicite
 \begin_inset space ~
 \end_inset
 
-(default)
+(
+\emph on
+default
+\emph default
+)
 \family default
  utilise la mise en page implicite de la classe actuelle;
 \end_layout
@@ -3703,7 +3684,11 @@ Vide
 \begin_inset space ~
 \end_inset
 
-(empty)
+(
+\emph on
+empty
+\emph default
+)
 \family default
  ne crée ni numéros de page ni en-têtes;
 \end_layout
@@ -3716,7 +3701,11 @@ Ordinaire
 \begin_inset space ~
 \end_inset
 
-(plain)
+(
+\emph on
+plain
+\emph default
+)
 \family default
  crée seulement des numéros de page;
 \end_layout
@@ -3729,7 +3718,11 @@ En-têtes
 \begin_inset space ~
 \end_inset
 
-(headings)
+(
+\emph on
+headings
+\emph default
+)
 \family default
  crée des numéros de page et en en-tête le titre et le numéro, soit du chapitre,
  soit de la section en cours.
@@ -3744,7 +3737,11 @@ Sophistiqué
 \begin_inset space ~
 \end_inset
 
-(fancy)
+(
+\emph on
+fancy
+\emph default
+)
 \family default
  vous permet de créer des en-têtes et pieds de page personnalisables à volonté
  si vous disposez du paquetage 
@@ -4037,8 +4034,8 @@ inconnus
 
  les environnements des paragraphes dont le style n'est plus reconnu.
  Le nom du style est cependant préservé au cas où vous souhaiteriez revenir
- à la classe originale, mais ces paragraphes apparaîtront sans formattage
- particulier dans la version imprimable, et vous devrez donc soit créer
+ à la classe originale, mais ces paragraphes apparaîtront sans mise en forme
+ particulière dans la version imprimable, et vous devrez donc soit créer
  une nouveau style vous-même, soit convertir manuellement ces paragraphes
  dans un style disponible dans la nouvelle classe de document.
 \end_layout
@@ -4245,7 +4242,7 @@ Réglage fin
 Vous pouvez aussi changer la méthode de séparation d'un paragraphe donné.
  Allez dans 
 \family sans
-Editer\SpecialChar \menuseparator
+Éditer\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -4285,7 +4282,7 @@ Vous n'aurez besoin de changer la méthode d'indentation pour un paragraphe
 \end_layout
 
 \begin_layout Subsection
-Changer l'Interligne
+Changer l'interligne
 \begin_inset Index idx
 status collapsed
 
@@ -4428,7 +4425,7 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
+d'apprentissage
 \emph default
 .
  Ce dernier contient beaucoup plus d'exemples que cette section.
@@ -5933,9 +5930,9 @@ Là encore, vous pouvez personnaliser le type de numérotation utilisé par
 \family default
 .
  Il faut pour ce faire ajouter des commandes au préambule (voir le manuel
- d'
+ d
 \emph on
-Options avancées
+es Options avancées
 \emph default
 ).
  Une telle personnalisation n'est visible que sur la version imprimée, pas
@@ -6912,8 +6909,8 @@ status open
 Note:
 \series default
  quand vous modifiez la marque de niveau d'une liste, la modification s'applique
- à toutes les occurrences de ce niveau, tant que vous ne la remodifiez pas
- (NdT: ce serait une pratique typographique discutable).
+ à toutes les occurrences de ce niveau, tant que vous ne la re-modifiez
+ pas (NdT: ce serait une pratique typographique discutable).
 \end_layout
 
 \end_inset
@@ -7444,14 +7441,15 @@ L'environnement
 \family sans
 Envoi à l'adresse
 \family default
- formate le texte comme une adresse, style aussi utilisé pour l'ouverture
+ met le texte en forme comme une adresse, style aussi utilisé pour l'ouverture
  d'une lettre et la signature dans certains pays.
  De même, l'environnement 
 \family sans
 Mon_Adresse
 \family default
- formate le texte comme une adresse justifiée à droite, ce qui est utilisé
- pour l'adresse de l'expéditeur et la date du jour dans certains pays.
+ met le texte en forme comme une adresse justifiée à droite, ce qui est
+ utilisé pour l'adresse de l'expéditeur et la date du jour dans certains
+ pays.
  En voici un exemple :
 \end_layout
 
@@ -8356,7 +8354,7 @@ arg   "depth-decrement"
 status collapsed
 
 \begin_layout Plain Layout
-ou 
+Ou 
 \family sans
 Alt-p
 \begin_inset space ~
@@ -9807,8 +9805,8 @@ premier
 ListePuces
 \family default
 , même s'il est au niveau n°3.
- Son marqueur est donc une puce.
- (NB : nous sommes arrivés ici en tapant 
+ Son marqueur est donc une puce (NB : nous sommes arrivés ici en tapant
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "break-paragraph inverse"
@@ -9824,7 +9822,7 @@ arg   "depth-increment"
 \family sans
 ListePuces
 \family default
-.)
+);
 \end_layout
 
 \begin_deeper
@@ -10035,7 +10033,7 @@ Cette fois nous allons devenir complètement fous.
 \family sans
 Énumération
 \family default
-)
+).
 \end_layout
 
 \begin_deeper
@@ -10525,7 +10523,7 @@ Typographie spéciale\SpecialChar \menuseparator
 Espacement horizontal
 \family default
 .
- Les unités de longueur utilisées sont listées dans l'Appendice
+ Les unités de longueur utilisées sont listées dans l'appendice
 \begin_inset space ~
 \end_inset
 
@@ -11641,7 +11639,7 @@ verticaux
 Personnalisé
 \family default
  permet de donner la taille de l'espacement vertical en utilisant les unités
- de longueur définies dans l'Appendice
+ de longueur définies dans l'appendice
 \begin_inset space ~
 \end_inset
 
@@ -12533,7 +12531,7 @@ En plus, des évolutions récentes on vu apparaître de nouveaux moteurs de
  XeTeX et LuaTeX.
  Ces deux moteurs sont acceptés par LyX.
  En les utilisant, vous pouvez théoriquement utiliser n'importe quelle police
- TruType ou OpenType qui serait installée sur votre système.
+ TrueType ou OpenType qui serait installée sur votre système.
  La section suivante décrit comment utiliser ces polices système.
 \end_layout
 
@@ -12758,7 +12756,7 @@ Implicite
  , la police pré-sélectionnée par la classe du document est utilisée.
  Dans la plupart des cas, ce sera la police TeX standard, connue sous les
  noms de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12766,7 +12764,7 @@ Implicite
 Computer Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (
@@ -12774,7 +12772,7 @@ Computer Modern
 cm
 \family default
 ) ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12782,7 +12780,7 @@ cm
 European Computer Modern
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (
@@ -12802,11 +12800,11 @@ cm
 ec
 \family default
  sont des polices matricielles, elles ont souvent un aspect 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 pixellisé
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans les sorties en PDF, surtout si vous lisez les PDF dans une taille
@@ -13080,13 +13078,17 @@ Palatino
 \begin_inset Newline newline
 \end_inset
 
-Les différences entre les polices romaine, 
+Les différences entre les polices 
+\family sans
+romaine
+\family default
+, 
 \family sans
 sans
 \begin_inset space ~
 \end_inset
 
-serif
+empattement
 \family default
 , et 
 \family typewriter
@@ -13298,14 +13300,14 @@ CJK
 \family default
  permet aux utilisateurs des langues Chinoise, Japonaise et Coréenne (CJK)
  de préciser une police pour afficher les 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 script characters
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -13325,7 +13327,7 @@ CJK
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -13485,7 +13487,11 @@ propre
 \begin_inset Quotes fld
 \end_inset
 
-Matthias Ettrich
+
+\noun default
+Matthias
+\noun on
+ Ettrich
 \noun default
  est l'auteur original de LyX.
 \begin_inset Quotes frd
@@ -13706,7 +13712,7 @@ Inchangé
 \family sans
 RàZ (
 \family default
-remise à Zéro
+Remise à Zéro
 \family sans
 )
 \family default
@@ -13944,7 +13950,7 @@ Taille
 
 \begin_deeper
 \begin_layout Standard
-Les choix (et leurs raccourcis clavier) sont :
+Les choix (et leurs raccourcis clavier) sont:
 \end_layout
 
 \begin_layout Labeling
@@ -13955,11 +13961,11 @@ Minuscule
 \family default
  
 \size tiny
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
-minuscule
+Minuscule
 \begin_inset Quotes frd
 \end_inset
 
@@ -13971,7 +13977,7 @@ type  "shortcuts"
 arg   "font-size tiny"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -13986,7 +13992,7 @@ petit
 \family default
  
 \size scriptsize
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13994,7 +14000,7 @@ Tout
 \begin_inset space ~
 \end_inset
 
-Petit
+petit
 \begin_inset Quotes frd
 \end_inset
 
@@ -14006,7 +14012,7 @@ type  "shortcut"
 arg   "font-size scriptsize"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14021,7 +14027,7 @@ petit
 \family default
  
 \size footnotesize
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14037,7 +14043,7 @@ type  "shortcuts"
 arg   "font-size footnotesize"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14048,7 +14054,7 @@ Petit
 \family default
  
 \size small
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14064,7 +14070,7 @@ type  "shortcuts"
 arg   "font-size small"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14073,7 +14079,7 @@ arg   "font-size small"
 \family sans
 Normal
 \family default
- C'est la taille 
+ c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14088,7 +14094,7 @@ type  "shortcuts"
 arg   "font-size normal"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14099,7 +14105,7 @@ Grand
 \family default
  
 \size large
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14115,7 +14121,7 @@ type  "shortcuts"
 arg   "font-size large"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14130,7 +14136,7 @@ grand
 \family default
  
 \size larger
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14146,7 +14152,7 @@ type  "shortcuts"
 arg   "font-size larger"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14165,7 +14171,7 @@ grand
 \family default
  
 \size largest
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14189,7 +14195,7 @@ type  "shortcut"
 arg   "font-size largest"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14200,7 +14206,7 @@ arg   "font-size largest"
 \family default
  
 \size huge
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14216,7 +14222,7 @@ type  "shortcuts"
 arg   "font-size huge"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14231,7 +14237,7 @@ Très
 \family default
  
 \size huge
-C'est la taille 
+c'est la taille 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14247,7 +14253,7 @@ type  "shortcuts"
 arg   "font-size giant"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14286,7 +14292,7 @@ type  "shortcut"
 arg   "font-size increase"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Labeling
@@ -14317,11 +14323,11 @@ type  "shortcut"
 arg   "font-size decrease"
 \end_inset
 
-)
+);
 \end_layout
 
 \begin_layout Standard
-Nous vous prévenons encore une fois : ne vous excitez pas avec cette fonction.
+Nous vous prévenons encore une fois: ne vous excitez pas avec cette fonction.
  Vous ne devriez presque jamais avoir à changer la taille de la police.
  LyX adapte automatiquement la taille aux différents environnements de paragraph
 e.
@@ -14329,7 +14335,7 @@ e.
 \emph on
 que
 \emph default
- pour du réglage fin !
+ pour du réglage fin!
 \end_layout
 
 \end_deeper
@@ -14340,7 +14346,7 @@ que
 Divers
 \family default
  Ici vous pouvez changer quelques autres propriétés des caractères.
- Les choix sont :
+ Les choix sont:
 \end_layout
 
 \begin_deeper
@@ -14356,7 +14362,7 @@ En
 \family default
  
 \emph on
-Du texte mis en valeur.
+du texte mis en valeur.
 
 \emph default
  On peut croire que c'est la même chose qu'
@@ -14377,9 +14383,9 @@ est un attribut
 logique.
  
 \emph default
-Cela signifie que chaque classe de document peut définir sa propre fonte
+Cela signifie que chaque classe de document peut définir sa propre police
  pour le texte mis en évidence.
- Normalement la fonte utilisée est la fonte italique.
+ Normalement la police utilisée est la police italique;
 \end_layout
 
 \begin_layout Labeling
@@ -14390,7 +14396,7 @@ Souligné
 \family default
  
 \bar under
-Du texte souligné
+du texte souligné
 \bar default
  (raccourci 
 \begin_inset Info
@@ -14398,17 +14404,17 @@ type  "shortcuts"
 arg   "font-underline"
 \end_inset
 
-)
+).
 \begin_inset Newline newline
 \end_inset
 
-Évitez si possible d'utiliser les caractères soulignés ! C'est un reste
- du temps des machines à écrire, quand vous ne pouviez pas changer de police.
+Évitez si possible d'utiliser les caractères soulignés! C'est un reste du
+ temps des machines à écrire, quand vous ne pouviez pas changer de police.
  Nous n'avons plus besoin de faire ressortir du texte en le renforçant avec
  le caractère de soulignement.
  Il n'est inclus dans LyX que parce qu'il l'est aussi dans LaTeX, et que
  certaines personnes peuvent en avoir besoin pour suivre les conventions
- de style de certaines publications.
+ de style de certaines publications;
 \end_layout
 
 \begin_layout Labeling
@@ -14423,7 +14429,7 @@ doublement
 \family default
  
 \uuline on
-Ceci est un texte avec soulignement double
+ceci est un texte avec soulignement double
 \uuline default
  (raccourci 
 \begin_inset Info
@@ -14431,12 +14437,12 @@ type  "shortcut"
 arg   "font-underunderline"
 \end_inset
 
-)
+).
 \begin_inset Newline newline
 \end_inset
 
 Si nous avons émis de réserves sur l'usage du soulignement, vous vous doutez
- de ce que nous pensons du soulignement double.
+ de ce que nous pensons du soulignement double;
 \end_layout
 
 \begin_layout Labeling
@@ -14451,7 +14457,7 @@ souligné
 \family default
  
 \uwave on
-Ceci est un texte avec soulignement vague
+ceci est un texte avec soulignement vague
 \uwave default
  (raccourci 
 \begin_inset Info
@@ -14459,12 +14465,12 @@ type  "shortcut"
 arg   "font-underwave"
 \end_inset
 
-)
+).
 \begin_inset Newline newline
 \end_inset
 
 N'utiliser que si la revue insiste absolument, et garder les comprimés contre
- le mal de mer à portée de main.
+ le mal de mer à portée de main;
 \end_layout
 
 \begin_layout Labeling
@@ -14475,7 +14481,7 @@ Rayé
 \family default
  
 \strikeout on
-Ceci est un texte rayé
+ceci est un texte rayé
 \strikeout default
  (raccourci 
 \begin_inset Info
@@ -14483,7 +14489,7 @@ type  "shortcut"
 arg   "font-strikeout"
 \end_inset
 
-) Utilisé fréquemment pour marquer une version ancienne qui a changé depuis.
+) Utilisé fréquemment pour marquer une version ancienne qui a changé depuis;
 \end_layout
 
 \begin_layout Labeling
@@ -14498,7 +14504,7 @@ Propre
 \family default
  
 \noun on
-Du texte avec Nom
+du texte avec Nom
 \begin_inset space ~
 \end_inset
 
@@ -14530,7 +14536,7 @@ Capitales.
 \family sans
 Couleur
 \family default
- Vous permet d'ajuster la couleur du texte.
+ vous permet d'ajuster la couleur du texte.
  Notez que tous les visionneuses DVI ne sont pas capables d'afficher ces
  couleurs.
  En plus de 
@@ -14595,7 +14601,7 @@ Couleur ! Texte
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Labeling
@@ -14604,7 +14610,7 @@ Couleur ! Texte
 \family sans
 Langue
 \family default
- Vous pouvez marquer des zones de texte comme étant rédigées dans une langue
+ vous pouvez marquer des zones de texte comme étant rédigées dans une langue
  autre que celle du document.
  Le texte ainsi marqué sera souligné en bleu pour rappeler ce changement
  (seulement dans LyX).
@@ -14632,7 +14638,7 @@ Vous avez donc le choix d'un grand nombre de combinaisons.
  Quand vous avez choisi un nouveau style de caractères avec la fenêtre de
  dialogue 
 \family sans
-Editer\SpecialChar \menuseparator
+Éditer\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -14786,7 +14792,7 @@ texte à chasse fixe
 status collapsed
 
 \begin_layout Plain Layout
-Pour les détais sur les fantômes, voir
+Pour les détails sur les fantômes, voir
 \begin_inset space ~
 \end_inset
 
@@ -14806,7 +14812,7 @@ reference "sub:Espace-fantôme"
 \begin_inset Newline newline
 \end_inset
 
-texte à chasse non fixe.
+texte à chasse non fixe;
 \end_layout
 
 \begin_layout Itemize
@@ -14836,6 +14842,8 @@ texte avec sérifs
 
 \family sans
 texte sans sérifs
+\family default
+;
 \end_layout
 
 \begin_layout Itemize
@@ -14999,9 +15007,9 @@ Maintenant que nous avons traité certaines des opérations de base pour la
  imprimer votre chef-d'œuvre.
  Avant de vous le dire, nous voulons d'abord vous donner une brève explication
  de ce qui a lieu dans les coulisses.
- Nous en parlons aussi dans le manuel d'
+ Nous en parlons aussi dans le manuel des
 \emph on
-Options
+ Options
 \begin_inset space ~
 \end_inset
 
@@ -15019,8 +15027,7 @@ LaTeX
 \begin_inset Quotes frd
 \end_inset
 
-.
- (En fait, LaTeX n'est rien d'autre qu'un ensemble de macros pour le système
+ (en fait, LaTeX n'est rien d'autre qu'un ensemble de macros pour le système
  typographique TeX, mais pour faire simple, nous allons appeler l'ensemble
  
 \begin_inset Quotes fld
@@ -15030,8 +15037,8 @@ LaTeX
 \begin_inset Quotes frd
 \end_inset
 
-.) Tout se passe ainsi : LyX est ce que vous utilisez effectivement pour
- écrire.
+).
+ Tout se passe ainsi: LyX est ce que vous utilisez effectivement pour écrire.
  Puis LyX fait appel à LaTeX pour transformer votre écrit en sortie imprimable.
  Il y a plusieurs étapes :
 \end_layout
@@ -15109,7 +15116,11 @@ Ce type de fichiers a le suffixe
 
 .
  Il contient votre document sous forme de texte simple suivant le codage
- ASCII (American Standard Code for Information Interchange).
+ ASCII (
+\emph on
+American Standard Code for Information Interchange
+\emph default
+).
 \end_layout
 
 \begin_layout Standard
@@ -15423,7 +15434,11 @@ PostScript Encapsulé
 \begin_inset Quotes frd
 \end_inset
 
- (encapsulated PostScript ou EPS, de suffixe 
+ (
+\emph on
+encapsulated PostScript
+\emph default
+ ou EPS, de suffixe 
 \family typewriter
 .eps
 \family default
@@ -15525,10 +15540,14 @@ portable
 \begin_layout Standard
 PDF peut contenir des images dans son propre format PDF et dans les formats
  JPG (format du 
+\emph on
+
 \begin_inset Quotes fld
 \end_inset
 
 Joint Photographic Expert Group
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -15541,10 +15560,14 @@ Joint Photographic Expert Group
 .jpeg
 \family default
 ) et PNG (
+\emph on
+
 \begin_inset Quotes fld
 \end_inset
 
 Portable Network Graphics
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -15575,7 +15598,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) Ceci utilise le programme 
+(ps2pdf) utilise le programme 
 \family typewriter
 ps2pdf
 \family default
@@ -15585,7 +15608,7 @@ ps2pdf
 dvips
 \family default
  qui utilise une version DVI comme étape intermédiaire.
- Cette variante consiste donc en trois conversions.
+ Cette variante consiste donc en trois conversions;
 \end_layout
 
 \begin_layout Description
@@ -15593,11 +15616,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(dvipdfm) Ceci utilise le programme 
+(dvipdfm) utilise le programme 
 \family typewriter
 dvipdfm
 \family default
- qui convertit votre fichier en DVI avant de le convertir en PDF.
+ qui convertit votre fichier en DVI avant de le convertir en PDF;
 \end_layout
 
 \begin_layout Description
@@ -15605,11 +15628,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(pdflatex) Ceci utilise le programme 
+(pdflatex) utilise le programme 
 \family typewriter
 pdftex
 \family default
- qui convertit directement votre fichier en PDF.
+ qui convertit directement votre fichier en PDF;
 \end_layout
 
 \begin_layout Description
@@ -15628,7 +15651,7 @@ status collapsed
 
 \end_inset
 
-X) Ceci utilise le programme 
+X) utilise le programme 
 \family typewriter
 XeTeX
 \family default
@@ -15650,7 +15673,7 @@ reference "sub:LaTeX-font-support"
 \end_inset
 
 ).
- Il est particulièrement adapté à la typographie de différentes écritures.
+ Il est particulièrement adapté à la typographie de différentes écritures;
 \end_layout
 
 \begin_layout Description
@@ -15669,7 +15692,7 @@ status collapsed
 
 \end_inset
 
-X) Ceci utilise le programme 
+X) utilise le programme 
 \family typewriter
 LuaTeX
 \family default
@@ -22269,7 +22292,7 @@ arg   "float-insert figure"
 \end_inset
 
  de la barre d'outils.
- L'image a été insérée en positionnat le curseur au(-dessus de la légende
+ L'image a été insérée en positionnant le curseur au(-dessus de la légende
  et en utilisant le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -22282,7 +22305,7 @@ arg   "dialog-show-new-inset graphics"
 \end_inset
 
  de la barre d'outils.
- L'mage a été centrée horizontalement en positionnant le curseur devant
+ L'image a été centrée horizontalement en positionnant le curseur devant
  ou derrière l'image et en appelant le menu 
 \family sans
 Éditer\SpecialChar \menuseparator
@@ -22387,11 +22410,7 @@ ci-dessous
 \begin_inset Quotes frd
 \end_inset
 
- du tout ! 
-\lang english
-For more about cross-references, see
-\lang french
- section
+ du tout! Pour en savoir plus sur les références croisées, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -46880,8 +46899,7 @@ Préfixe
 \end_inset
 
 TEXINPUTS La variable d'environnement TEXINPUTS permet d'utiliser des fichiers
- externes inclus dans un document LyX par des commandes en code TeX ou dans
- le préambule du document.
+ externes inclus dans un document LyX par des commandes en code TeX.
  Ce préfixe inclut implicitement le répertoire du document (représenté par
  un point 
 \begin_inset Quotes fld
