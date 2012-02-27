@@ -65,6 +65,9 @@ Section "un.LyX" un.SecUnProgramFiles
     DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
   ${endif}
+  ${if} $MultiUser.Privileges == "Admin"
+   DeleteRegKey HKCR "LyX.Document"
+  ${endif}
 
   # Uninstaller itself
   Delete "$INSTDIR\${SETUP_UNINSTALLER}"
