@@ -1344,19 +1344,20 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (name == "verbatim") {
-		eat_whitespace(p, os, parent_context, false);
 		os << "\n\\begin_layout Verbatim\n";
 		string const s = p.verbatimEnvironment("verbatim");
 		string::const_iterator it2 = s.begin();
 		for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-			if (*it == '\n') {
+			if (*it == '\\')
+				os << "\\backslash ";
+			else if (*it == '\n') {
 				it2 = it + 1;
 				// avoid adding an empty paragraph at the end
 				// if there are 2 consecutive spaces at the end ignore it
 				// because LyX will re-add a \n
 				if ((it + 1 != et) && (it + 2 != et || *it2 != '\n'))
 					os << "\n\\end_layout\n\\begin_layout Verbatim\n";
-			} else
+			} else 
 				os << *it;
 		}
 		os << "\n\\end_layout\n\n";
