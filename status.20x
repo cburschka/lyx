@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.0.3
+This file describes what has been done in the preparation of LyX 2.0.4
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -24,106 +24,27 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Add support for `knitr', an alternative for Sweave on R >= 2.14.1
-  (bug 7887).
-
-- Improved output of Comment notes for XHTML. These are now div's that are
-  hidden by the default CSS.
-
-- New layout and template file for articles in the Journal of the Acoustical
-  Society of America (JASA). 
-
-- Speed up autosave a bit by not cloning child documents (bug 7923).
-
-- Don't use the first python binary in the PATH environment variable if
-  this is not a version 2.x binary, but try to find a suitable one.
-  Note that this mechanism triggers only if the binary is invoked exactly
-  as "python -tt", which is the way it is done internally.
-
-- Allow redirecting stderr in converters (other than stdout).
-
-- Add LaTeX commands for unicode symbols U+200c, U+2011, U+2017, U+2027 and
-  U+202f to be used with non-unicode LaTeX backends (bug 7998).
+-
 
 
 * TEX2LYX IMPROVEMENTS
 
-- Support for included external files via the templates
-  - PDF pages
-  - Chess diagram
-  - Spreadsheet
-
-- tabular* environments are imported
-
-- Formal tables are now supported (bug 4553).
-
-- Support for change tracking commands (bug 4213).
+-
 
 
 * USER INTERFACE
 
-- Added scalable LyX icon in svg format (bug 7919).
+-
 
-- Clarify what the user can do when hyperref is provided by the document
-  class (bug 6293).
-
-- Slightly reduced space around inset buttons, to make it clearer when
-  there is a real space there (bug 7256).
-
-- Let inset-toggle work for very large documents (bug 7945).
-
-- Disable spell checker dialog for empty documents (bug 5585).
-
-- Display some commands from mathtools.sty natively (bug 7949).
-
-- Add the directory /usr/share/myspell as default location for dictionary
-  lookup of hunspell spell checker backend (a common location on linux).
-  Detect value change of preferences path to hunspell dictionaries
-  to avoid the need for a restart.  This is related to bug 7884.
-
-- We now use the display string as a tooltip in the Outliner, if no
-  other tooltip is given.
-
-- Show check mark on current math limit type in Edit>Math submenu.
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Customization manual updated to reflect the features of LyX 2.0.x.
-
-- New Dutch user interface localization.
-
-- Updated Czech, French, German, Indonesian, Interlingua, Italian,
-  Japanese, Nynorsk, Slovak, Spanish, Swedish and Ukrainian user
-  interface localizations.
-
-- The Sweave manual was completely revised and is now also available in
-  the menu Help->Specific Manuals (bug 7891).
-
-- EmbeddedObjects manual:
-  - new description how to color dashed table lines
-  - new section how to split table cells by diagonal lines
-
-- Updated description of the external material template PDFPages
-  (bug 7888).
-
-- Improved description of the modulo-functions in the Math manual (bug 7961).
+-
 
 
 * BUILD/INSTALLATION
 
-- Make sure that we detect and use python 2 on systems where python 3
-  is the default python interpreter.
-
-- cmake, LYX_DEPENDENCIES_DOWNLOAD: look for the right filename on SourceForge.
-
-- Make compilation work with GCC 4.7.
-
-- Support configure --with-packaging=posix on Mac OS X (bug 7927).
-
-- Improved disk image creation on Mac OS X:
-  * Provide translation of the application menu.
-  * Enhanced background image.
-  * Package with hunspell dictionaries is default.
+-
 
 
 ** Bug fixes:
@@ -131,140 +52,29 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash when exporting branches to XHTML.
+-
 
-- Do not allow user to over-write a file already open. Attempting to do so
-  crashes LyX (bug 7921).
-
-- Fix problem with translation of theorem environments when language and
-  buffer encoding differ (bug 7941).
-
-- Fix monitoring of bib files with recent versions of biber.
-
-- Fix python problem with common path prefixes when exporting a LyX archive
-  (bug 7933).
-
-- Fix dvips paper size arguments for presentations (beamer etc) (bug 7013).
-
-- Do not use \inputencoding for translated names of theorem-like environments
-  if they can be actually encoded in the chosen document encoding (bug 7800).
-
-- Do not misdetect office file formats as zip (bug 7973).
-
-- Fix font/script definition clashes with XeTeX/LuaTeX and unicode output
-  (bug 7766, 7782).
-
-- Fix marvosym/bbding package clash caused by using 0x271d "LATIN CROSS"
-  unicode symbol (part of bug 7811).
-
-- Fix error when exporting DocBook tables (bug 7004).
-
-- Fix Sweave support for document encoding with R >= 2.13.1 (bug
-  7876).
-
-- Avoid creation of a spurious Rplots.pdf file when using Sweave (bug 8019).
-
-- Find correctly the file Sweave.sty with older R versions (bug 8019).
-
-- Fix lyx archive creation when the document file name contains spaces
-  or other characters which are special to latex.
 
 * TEX2LYX
 
-- Full support for the command \date{} (bug 7844).
-
-- Fixed LaTeX import whitespace issue (bug 7668).
-
-- Fix some asme2e issues (bug 6449).
-
-- Fixed problem with macros nested in \foreignlanguage (bug 5187).
-
-- Fixed problematic that tex2lyx roundtips polluted the preamble with
-  color code (bug 7845).
-
-- Fixed problems with character style switches (bug 3036).
+-
 
 
 * USER INTERFACE
 
-- Fixed crash when changing label when outliner is open and sorted (bug 7709).
-
-- Fixed crash when moving out of nested empty items (bug 7673).
-
-- Fix crash when performing "forward search" while cursor is in mathed
-  (bug 7992).
-
-- Fix crash when inserting a float around multiple display maths (bug 7974).
-
-- Fix crash when copying table columns or rows (bug 7644).
-
-- Correctly set the default output format in the document settings dialog
-  if non-tex fonts are used (bug 8013).
-
-- Update citation labels when the BibTeX file changes (bug 7499).
-
-- Mark Buffer dirty when changing branch activation status (bug 7872). Sadly,
-  this does not work properly if the branches are in a master document that is
-  hidden, but this is a larger issue.
-
-- Fix undo after changing limit type of a subscript in math mode (bug 8007).
-
-- Fix inconsistent state of horizontal space dialog on start up (bug 7906).
-
-- Unify display of theorem headings (bug 7883).
-
-- Keep the selection when doing Page Up/Down and in mark-on selection mode 
-  (bug 7909).
-
-- Correctly display and handle the math commands \pod and \mod (bug 7962).
-
-- Fix tabbar visibility in fullscreen mode when opening/closing files (bug 7963).
-
-- Show a message box if the current spell checker has no dictionaries (bug 7884).
-
-- Fix problem where box gets modifications intended for table (bug 7983).
-
-- Fix broken instant preview due to ghostscript on 64-bit Windows (bug 7938).
-
-- Show entire index entry in outliner (bug 7774).
-
-- Fix a warning when changing table settings via the dialog (bug 7755).
-
-- Correct buffer statistics when change tracking is on.
-  LyX did incorrectly count the words in deleted notes (bug 7789).
+-
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Fixed description in the example file multicol.lyx (bug 7953).
-
-- Fixed description of automatic reference naming in sec. 3.4.2 of the
-  Embedded Objects manual.
-
-- Fixed preamble code for automatic reference naming in the thesis template
-  files.
-
-- Translated German strings in the Appendix.lyx file of the thesis template
-  to English.
-
-- Fixed example file modernCV.lyx: corrected subsection example, added a
-  separator, set the page size to A4 (bug 7991).
-
-- Update tex2lyx man page regarding partial documents (bug 5906).
+-
 
 
 * ADVANCED FIND AND REPLACE
 
-- Fix crash with Replace All (bug 7410).
+-
 
 
 * BUILD/INSTALLATION
 
-- Fix link problem when compiling on Mac OS X with plain autotools.
-
-- Add forgotten file Package.cpp to list of files that need l10n.
-
-- Fix installation of python files (bug 6080, bug 7990).
-
-- When building LyX package on Mac don't call configure with --build anymore.
-  It's guessed by configure anyway.
+-
