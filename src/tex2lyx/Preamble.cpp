@@ -733,6 +733,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 		     name == "multirow" || name == "nomencl" || name == "setspace" ||
 		     name == "splitidx" || name == "subscript" || name == "ulem" ||
 		     name == "url") {
+		if (name == "splitidx")
+			h_use_indices = "true";
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"

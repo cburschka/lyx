@@ -3148,12 +3148,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				btprint = key;
 		}
 
-		else if (t.cs() == "index") {
+		else if (t.cs() == "index" ||
+		         (t.cs() == "sindex" && preamble.use_indices() == "true")) {
 			context.check_layout(os);
-			begin_inset(os, "Index idx\n");
-			os << "status collapsed\n";
+			string const kind = (t.cs() == "index") ? "idx" : p.getArg('[', ']');
+			begin_inset(os, "Index ");
+			os << kind << "\nstatus collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
 			end_inset(os);
+			if (t.cs() == "sindex")
+				preamble.registerAutomaticallyLoadedPackage("splitidx");
 		}
 
 		else if (t.cs() == "nomenclature") {
