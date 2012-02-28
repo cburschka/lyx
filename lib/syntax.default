@@ -479,7 +479,7 @@ $$
 \ifthenelse
 \includegraphics*[,][,]{} % LyX 1.0 doesn't support clipping figures
 \indent
-\index{}
+\index{translate}
 \indexentry{}{}        % only in .idx files (JMarc)
 \indexname
 \indexspace
@@ -572,7 +572,7 @@ $$
 \pdfstringdef{}{}        % from the hyperref package
 \poptabs
 \prefacename
-\printindex
+\printindex[]{}
 \protect
 \providecommand{}[][]{}
 \providecommand*{}[][]{}
@@ -633,6 +633,7 @@ $$
 \shortstack[]{translate}
 \showhyphens{}
 \signature{}
+\sindex[]{translate} %splitidx.sty
 \sldefault
 \sloppy
 \stepcounter{}

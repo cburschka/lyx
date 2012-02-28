@@ -728,6 +728,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
+		if (name == "splitidx")
+			h_use_indices = "true";
 		if (!in_lyx_preamble)
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
