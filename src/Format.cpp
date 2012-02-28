@@ -375,32 +375,34 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		return string();
 
 #ifdef HAVE_MAGIC_H
-	magic_t magic_cookie = magic_open(MAGIC_MIME);
-	if (magic_cookie) {
-		string format;
-		if (magic_load(magic_cookie, NULL) != 0) {
-			LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
-				<< "\tCouldn't load magic database - "
-				<< magic_error(magic_cookie));
-		} else {
-			string mime = magic_file(magic_cookie,
-				filename.toFilesystemEncoding().c_str());
-			mime = token(mime, ';', 0);
-			// we need our own ps/eps detection
-			if (mime != "application/postscript") {
-				Formats::const_iterator cit =
-					find_if(formatlist.begin(), formatlist.end(),
-					        FormatMimeEqual(mime));
-				if (cit != formats.end()) {
-					LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
-						<< mime << " -> " << cit->name());
-					format = cit->name();
+	if (filename.exists()) {
+		magic_t magic_cookie = magic_open(MAGIC_MIME);
+		if (magic_cookie) {
+			string format;
+			if (magic_load(magic_cookie, NULL) != 0) {
+				LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
+					<< "\tCouldn't load magic database - "
+					<< magic_error(magic_cookie));
+			} else {
+				string mime = magic_file(magic_cookie,
+					filename.toFilesystemEncoding().c_str());
+				mime = token(mime, ';', 0);
+				// we need our own ps/eps detection
+				if (mime != "application/postscript") {
+					Formats::const_iterator cit =
+						find_if(formatlist.begin(), formatlist.end(),
+							FormatMimeEqual(mime));
+					if (cit != formats.end()) {
+						LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
+							<< mime << " -> " << cit->name());
+						format = cit->name();
+					}
 				}
 			}
+			magic_close(magic_cookie);
+			if (!format.empty())
+				return format;
 		}
-		magic_close(magic_cookie);
-		if (!format.empty())
-			return format;
 	}
 #endif
 
