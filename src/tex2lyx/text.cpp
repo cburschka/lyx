@@ -1353,8 +1353,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			else if (*it == '\n') {
 				it2 = it + 1;
 				// avoid adding an empty paragraph at the end
-				// if there are 2 consecutive spaces at the end ignore it
+				// FIXME: if there are 2 consecutive spaces at the end ignore it
 				// because LyX will re-add a \n
+				// This hack must be removed once bug 8049 is fixed!
 				if ((it + 1 != et) && (it + 2 != et || *it2 != '\n'))
 					os << "\n\\end_layout\n\\begin_layout Verbatim\n";
 			} else 
@@ -1362,7 +1363,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		os << "\n\\end_layout\n\n";
 		p.skip_spaces();
-		skip_braces(p); // eat {} that might by set by LyX behind comments
 		// reset to Standard layout
 		os << "\n\\begin_layout Standard\n";
 	}
