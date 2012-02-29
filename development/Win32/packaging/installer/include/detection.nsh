@@ -39,8 +39,8 @@ Function MissingPrograms
   GSloop:
   EnumRegKey $1 HKLM "Software\GPL Ghostscript" $3
   ${if} $1 != ""
-    ReadRegStr $2 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GPL Ghostscript $1" "DisplayName"
-    StrCpy $0 "Software\GPL Ghostscript\$1"
+   ReadRegStr $2 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GPL Ghostscript $1" "DisplayName"
+   StrCpy $0 "Software\GPL Ghostscript\$1"
    ${if} $2 == "" # if nothing was found in the uninstall section
     ReadRegStr $2 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" # check if Ghostscript was installed together with LyX
    ${endif}

@@ -44,7 +44,7 @@ Configuration of LyX installer
 !define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}"
 !define APP_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
 !define APP_DIR "${APP_NAME} ${APP_SERIES_NAME}"
-!define APP_DIR_USERDATA "lyx${APP_VERSION_MAJOR}${APP_VERSION_MINOR}"
+!define APP_DIR_USERDATA "${APP_NAME}${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2012 by the LyX Team"
 
