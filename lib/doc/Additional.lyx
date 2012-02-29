@@ -18955,7 +18955,41 @@ Version
 Control
 \family default
  submenu.
- LyX was tested against RCS 5.7/5.8.
+ LyX was tested against RCS 5.7/5.8
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note that old DOS / MS Windows builds (5.7) need to setup environment variables
+ in order to work properly with LyX.
+ In particular time zone (TZ) should be set and more importantly RCSINIT
+ in order to change default archive location ("
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+SET RCSINIT=-x,v/
+\end_layout
+
+\end_inset
+
+") --- LyX expects archive to be found in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+file.lyx,v
+\end_layout
+
+\end_inset
+
+ within the original document directory.
+ See also README shipped with Windows RCS binaries.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
