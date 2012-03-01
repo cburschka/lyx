@@ -125,6 +125,10 @@ import os, re, string, sys
 # Incremented to format 36, 7 December 2011, by rgh
 # Added HTMLStyles and AddToHTMLStyles tags.
 
+# Incremented to format 37, 29 February 2012 by jrioux
+# Implement the citation engine machinery in layouts.
+# Change CiteFormat to CiteFormat (default|authoryear|numerical).
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -132,7 +136,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 36
+currentFormat = 37
 
 
 def usage(prog_name):
@@ -206,6 +210,7 @@ def convert(lines):
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
     re_Provides = re.compile(r'^(\s*)Provides(\S+)(\s+)(\S+)', re.IGNORECASE)
     re_CharStyle = re.compile(r'^(\s*)CharStyle(\s+)(\S+)$', re.IGNORECASE)
+    re_CiteFormat = re.compile(r'^(\s*)(CiteFormat)(?:(\s*)()|(\s+)(default|authoryear|numerical))', re.IGNORECASE)
     re_AMSMaths = re.compile(r'^\s*Input ams(?:math|def)s.inc\s*')
     re_AMSMathsPlain = re.compile(r'^\s*Input amsmaths-plain.inc\s*')
     re_AMSMathsSeq = re.compile(r'^\s*Input amsmaths-seq.inc\s*')
@@ -315,6 +320,13 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 36:
+            match = re_CiteFormat.match(lines[i]);
+            if match and match.group(4) == "":
+                lines[i] = match.group(0) + " default"
+            i += 1
             continue
 
         if format == 35:

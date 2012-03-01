@@ -404,20 +404,37 @@ public:
 				     bool const & use_nonlatexfonts,
 				     LaTeXFeatures & features) const;
 
-	/// get the appropriate cite engine (natbib handling)
-	CiteEngine citeEngine() const;
-	///
-	void setCiteEngine(CiteEngine const);
-
+	/// the cite engine modules
+	LayoutModuleList const & citeEngine() const
+		{ return cite_engine_; }
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType const & citeEngineType() const
 		{ return cite_engine_type_; }
+	/// add the module to the cite engine modules
+	bool addCiteEngine(std::string const &);
+	/// add the modules to the cite engine modules
+	bool addCiteEngine(std::vector<std::string> const &);
+	/// clear the list of cite engine modules
+	void clearCiteEngine() { cite_engine_.clear(); }
+	/// set the cite engine module
+	void setCiteEngine(std::string const &);
+	/// set the cite engine modules
+	void setCiteEngine(std::vector<std::string> const &);
 	/// set the cite engine type
 	void setCiteEngineType(CiteEngineType const & engine_type)
 		{ cite_engine_type_ = engine_type; }
 
+	/// the available citation commands
+	std::vector<std::string> citeCommands() const;
+	/// the available citation styles
+	std::vector<CitationStyle> citeStyles() const;
+
 	/// the default BibTeX style file for the document
 	std::string biblio_style;
+	/// the default BibTeX style file from the TextClass
+	std::string const & defaultBiblioStyle() const;
+	/// whether the BibTeX style supports full author lists
+	bool const & fullAuthorList() const;
 
 	/// options for pdf output
 	PDFOptions & pdfoptions();
@@ -477,8 +494,8 @@ private:
 	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
 	///
 	mutable DefaultFlavorCache default_flavors_;
-	/// for use with natbib
-	CiteEngine cite_engine_;
+	/// the cite engine modules
+	LayoutModuleList cite_engine_;
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType cite_engine_type_;
 	///

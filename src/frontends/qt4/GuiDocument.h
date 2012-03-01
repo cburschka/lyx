@@ -75,6 +75,7 @@ public:
 	void updateFontsize(std::string const &, std::string const &);
 	void updateFontlist();
 	void updateDefaultFormat();
+	void updateEngineType(std::string const &, CiteEngineType const &);
 	void updatePagestyle(std::string const &, std::string const &);
 	bool isChildIncluded(std::string const &);
 

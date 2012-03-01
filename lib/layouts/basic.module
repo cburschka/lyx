@@ -1,0 +1,41 @@
+# \DeclareLyXModule{Default (basic)}
+# DescriptionBegin
+#   Use the basic citation capabilities provided by plain LaTeX.
+# DescriptionEnd
+# Excludes: jurabib | natbib
+# Category: Citation engine
+
+# Author: Julien Rioux <jrioux@lyx.org>
+
+Format 37
+
+CiteEngineType numerical
+DefaultBiblio  plain
+
+CiteEngine default
+	cite[]
+	nocite
+End
+
+CiteFormat default
+	# translatable bits
+	_notcited not cited
+	_addtobib Add to bibliography only.
+
+	# macros
+	!open [
+	!sep ,
+	!close ]
+
+	!cite {%label%[[%label%]][[#%key%]]}%!nextcite%
+
+	!nextcite {%next%[[%!sep% %!cite%]]}
+	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}
+	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
+
+	!textafter {%textafter%[[, %textafter%]]}
+
+	# cite styles
+	cite %!open%{%dialog%[[#ID]][[%!cite%]]}%!textafter%%!close%
+	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+End

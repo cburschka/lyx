@@ -10,6 +10,7 @@
 #ifndef TEXTCLASS_H
 #define TEXTCLASS_H
 
+#include "Citation.h"
 #include "ColorCode.h"
 #include "Counters.h"
 #include "FloatList.h"
@@ -245,6 +246,8 @@ protected:
 	bool tex_class_avail_;
 	/// document class prerequisites
 	mutable std::string prerequisites_;
+	/// The possible cite engine types
+	std::string opt_enginetype_;
 	///
 	std::string opt_fontsize_;
 	///
@@ -311,9 +314,15 @@ protected:
 	/// The maximal TocLevel of sectioning layouts
 	int max_toclevel_;
 	/// Citation formatting information
-	std::map<std::string, std::string> cite_formats_;
+	std::map<CiteEngineType, std::map<std::string, std::string> > cite_formats_;
 	/// Citation macros
-	std::map<std::string, std::string> cite_macros_;
+	std::map<CiteEngineType, std::map<std::string, std::string> > cite_macros_;
+	/// The default BibTeX bibliography style file
+	std::string cite_default_biblio_style_;
+	/// Whether full author lists are supported
+	bool cite_full_author_list_;
+	/// The possible citation styles
+	std::map<CiteEngineType, std::vector<CitationStyle> > cite_styles_;
 private:
 	///////////////////////////////////////////////////////////////////
 	// helper routines for reading layout files
@@ -339,7 +348,11 @@ private:
 	///
 	bool readFloat(Lexer &);
 	///
-	void readCiteFormat(Lexer &);
+	bool readCiteEngine(Lexer &);
+	///
+	int readCiteEngineType(Lexer &) const;
+	///
+	bool readCiteFormat(Lexer &);
 };
 
 
@@ -390,6 +403,8 @@ public:
 	///
 	Counters & counters() const { return counters_; }
 	///
+	std::string const & opt_enginetype() const { return opt_enginetype_; }
+	///
 	std::string const & opt_fontsize() const { return opt_fontsize_; }
 	///
 	std::string const & opt_pagestyle() const { return opt_pagestyle_; }
@@ -439,9 +454,19 @@ public:
 	/// returns true if the class has a ToC structure
 	bool hasTocLevels() const;
 	///
-	std::string const & getCiteFormat(std::string const & entry_type) const;
+	std::string const & getCiteFormat(CiteEngineType const & type,
+		std::string const & entry, std::string const & fallback = "") const;
 	///
-	std::string const & getCiteMacro(std::string const & macro) const;
+	std::string const & getCiteMacro(CiteEngineType const & type,
+		std::string const & macro) const;
+	///
+	std::vector<std::string> const citeCommands(CiteEngineType const &) const;
+	///
+	std::vector<CitationStyle> const & citeStyles(CiteEngineType const &) const;
+	///
+	std::string const & defaultBiblioStyle() const { return cite_default_biblio_style_; }
+	///
+	bool const & fullAuthorList() const { return cite_full_author_list_; }
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

@@ -259,25 +259,6 @@ PackageTranslator const & packagetranslator()
 
 
 // Cite engine
-typedef Translator<string, CiteEngine> CiteEngineTranslator;
-
-
-CiteEngineTranslator const init_citeenginetranslator()
-{
-	CiteEngineTranslator translator("basic", ENGINE_BASIC);
-	translator.addPair("natbib", ENGINE_NATBIB);
-	translator.addPair("jurabib", ENGINE_JURABIB);
-	return translator;
-}
-
-
-CiteEngineTranslator const & citeenginetranslator()
-{
-	static CiteEngineTranslator translator = init_citeenginetranslator();
-	return translator;
-}
-
-
 typedef Translator<string, CiteEngineType> CiteEngineTypeTranslator;
 
 
@@ -378,7 +359,7 @@ BufferParams::BufferParams()
 	papersize = PAPER_DEFAULT;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	cite_engine_ = ENGINE_BASIC;
+	cite_engine_.push_back("basic");
 	cite_engine_type_ = ENGINE_TYPE_NUMERICAL;
 	biblio_style = "plain";
 	use_bibtopic = false;
@@ -726,9 +707,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> use;
 		use_package(package, packagetranslator().find(use));
 	} else if (token == "\\cite_engine") {
-		string engine;
-		lex >> engine;
-		cite_engine_ = citeenginetranslator().find(engine);
+		lex.eatLine();
+		vector<string> engine = getVectorFromString(lex.getString());
+		setCiteEngine(engine);
 	} else if (token == "\\cite_engine_type") {
 		string engine_type;
 		lex >> engine_type;
@@ -1037,8 +1018,22 @@ void BufferParams::writeFile(ostream & os) const
 	for (size_t i = 0; i < packages.size(); ++i)
 		os << "\n\\use_package " << packages[i] << ' '
 		   << use_package(packages[i]);
-	os << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
-	   << "\n\\cite_engine_type " << citeenginetypetranslator().find(cite_engine_type_)
+
+	os << "\n\\cite_engine ";
+
+	if (!cite_engine_.empty()) {
+		LayoutModuleList::const_iterator be = cite_engine_.begin();
+		LayoutModuleList::const_iterator en = cite_engine_.end();
+		for (LayoutModuleList::const_iterator it = be; it != en; ++it) {
+			if (it != be)
+				os << ',';
+			os << *it;
+		}
+	} else {
+		os << "basic";
+	}
+
+	os << "\n\\cite_engine_type " << citeenginetypetranslator().find(cite_engine_type_)
 	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -2024,7 +2019,19 @@ void BufferParams::makeDocumentClass()
 	if (!baseClass())
 		return;
 
-	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layout_modules_));
+	LayoutModuleList mods;
+	LayoutModuleList::iterator it;
+	LayoutModuleList::iterator en;
+
+	it = layout_modules_.begin();
+	en = layout_modules_.end();
+	for (; it != en; it++)
+		mods.push_back(*it);
+	it = cite_engine_.begin();
+	en = cite_engine_.end();
+	for (; it != en; it++)
+		mods.push_back(*it);
+	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), mods));
 
 	if (!local_layout.empty()) {
 		TextClass::ReturnValues success =
@@ -2039,7 +2046,8 @@ void BufferParams::makeDocumentClass()
 
 bool BufferParams::moduleCanBeAdded(string const & modName) const
 {
-	return layout_modules_.moduleCanBeAdded(modName, baseClass());
+	return cite_engine_.moduleCanBeAdded(modName, baseClass()) &&
+		layout_modules_.moduleCanBeAdded(modName, baseClass());
 }
 
 
@@ -2941,19 +2949,75 @@ Encoding const & BufferParams::encoding() const
 }
 
 
-CiteEngine BufferParams::citeEngine() const
+bool BufferParams::addCiteEngine(string const & engine)
 {
-	// FIXME the class should provide the numerical/
-	// authoryear choice
-	if (documentClass().provides("natbib"))
-		return ENGINE_NATBIB;
-	return cite_engine_;
+	LayoutModuleList::const_iterator it = cite_engine_.begin();
+	LayoutModuleList::const_iterator en = cite_engine_.end();
+	for (; it != en; ++it)
+		if (*it == engine)
+			return false;
+	cite_engine_.push_back(engine);
+	return true;
 }
 
 
-void BufferParams::setCiteEngine(CiteEngine cite_engine)
+bool BufferParams::addCiteEngine(vector<string> const & engine)
 {
-	cite_engine_ = cite_engine;
+	vector<string>::const_iterator it = engine.begin();
+	vector<string>::const_iterator en = engine.end();
+	bool ret = true;
+	for (; it != en; ++it)
+		if (!addCiteEngine(*it))
+			ret = false;
+	return ret;
+}
+
+
+string const & BufferParams::defaultBiblioStyle() const
+{
+	return documentClass().defaultBiblioStyle();
+}
+
+
+bool const & BufferParams::fullAuthorList() const
+{
+	return documentClass().fullAuthorList();
+}
+
+
+void BufferParams::setCiteEngine(string const & engine)
+{
+	clearCiteEngine();
+	addCiteEngine(engine);
+}
+
+
+void BufferParams::setCiteEngine(vector<string> const & engine)
+{
+	clearCiteEngine();
+	addCiteEngine(engine);
+}
+
+
+vector<string> BufferParams::citeCommands() const
+{
+	static CitationStyle const default_style;
+	vector<string> commands =
+		documentClass().citeCommands(citeEngineType());
+	if (commands.empty())
+		commands.push_back(default_style.cmd);
+	return commands;
+}
+
+
+vector<CitationStyle> BufferParams::citeStyles() const
+{
+	static CitationStyle const default_style;
+	vector<CitationStyle> styles =
+		documentClass().citeStyles(citeEngineType());
+	if (styles.empty())
+		styles.push_back(default_style);
+	return styles;
 }
 
 } // namespace lyx

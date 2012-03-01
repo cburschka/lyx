@@ -93,6 +93,8 @@ vector<string> const & possibleCiteCommands()
 } // anon namespace
 
 
+// FIXME: use the citeCommands provided by the TextClass
+// instead of possibleCiteCommands defined in this file.
 bool InsetCitation::isCompatibleCommand(string const & cmd)
 {
 	vector<string> const & possibles = possibleCiteCommands();
@@ -142,71 +144,36 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 namespace {
 
-// FIXME See the header for the issue.
-string defaultCiteCommand(CiteEngine engine, CiteEngineType engine_type)
-{
-	string str;
-	switch (engine) {
-		case ENGINE_BASIC:
-			str = "cite";
-			break;
-		case ENGINE_NATBIB:
-			if (engine_type == ENGINE_TYPE_AUTHORYEAR)
-				str = "citet";
-			else
-				str = "citep";
-			break;
-		case ENGINE_JURABIB:
-			str = "cite";
-			break;
-	}
-	return str;
-}
 
-
-string asValidLatexCommand(string const & input, CiteEngine const engine,
-	CiteEngineType const engine_type)
+CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> const valid_styles)
 {
-	string const default_str = defaultCiteCommand(engine, engine_type);
+	CitationStyle cs = valid_styles[0];
+	cs.forceUpperCase = false;
+	cs.fullAuthorList = false;
 	if (!InsetCitation::isCompatibleCommand(input))
-		return default_str;
+		return cs;
 
-	string output;
-	switch (engine) {
-		case ENGINE_BASIC:
-			if (input == "nocite")
-				output = input;
-			else
-				output = default_str;
-			break;
+	string normalized_input = input;
+	string::size_type const n = input.size() - 1;
+	if (input[0] == 'C')
+		normalized_input[0] = 'c';
+	if (input[n] == '*')
+		normalized_input = normalized_input.substr(0, n);
 
-		case ENGINE_NATBIB:
-			if (input == "cite" || input == "citefield"
-			    || input == "citetitle" || input == "cite*")
-				output = default_str;
-			else if (prefixIs(input, "foot"))
-				output = input.substr(4);
-			else
-				output = input;
-			break;
-
-		case ENGINE_JURABIB: {
-			// Jurabib does not support the 'uppercase' natbib style.
-			if (input[0] == 'C')
-				output = string(1, 'c') + input.substr(1);
-			else
-				output = input;
-
-			// Jurabib does not support the 'full' natbib style.
-			string::size_type const n = output.size() - 1;
-			if (output != "cite*" && output[n] == '*')
-				output = output.substr(0, n);
-
+	vector<CitationStyle>::const_iterator it  = valid_styles.begin();
+	vector<CitationStyle>::const_iterator end = valid_styles.end();
+	for (; it != end; ++it) {
+		CitationStyle this_cs = *it;
+		if (this_cs.cmd == normalized_input) {
+			cs = *it;
 			break;
 		}
 	}
 
-	return output;
+	cs.forceUpperCase &= input[0] == 'C';
+	cs.fullAuthorList &= input[n] == '*';
+
+	return cs;
 }
 
 
@@ -247,21 +214,12 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	if (biblist.empty())
 		return docstring();
 
-	// the natbib citation-styles
-	// CITET:	author (year)
-	// CITEP:	(author,year)
-	// CITEALT:	author year
-	// CITEALP:	author, year
-	// CITEAUTHOR:	author
-	// CITEYEAR:	year
-	// CITEYEARPAR:	(year)
-	// jurabib supports these plus
-	// CITE:	author/<before field>
+	docstring const & key = getParam("key");
+	if (key.empty())
+		return _("No citations selected!");
 
-	CiteEngine const engine = buffer().params().citeEngine();
-	CiteEngineType const engine_type = buffer().params().citeEngineType();
 	// We don't currently use the full or forceUCase fields.
-	string cite_type = asValidLatexCommand(getCmdName(), engine, engine_type);
+	string cite_type = getCmdName();
 	if (cite_type[0] == 'C')
 		// If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
@@ -270,172 +228,16 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	docstring const & before = getParam("before");
-	docstring before_str;
-	if (!before.empty()) {
-		// In CITET and CITEALT mode, the "before" string is
-		// attached to the label associated with each and every key.
-		// In CITEP, CITEALP and CITEYEARPAR mode, it is attached
-		// to the front of the whole only.
-		// In other modes, it is not used at all.
-		if (cite_type == "citet" ||
-		    cite_type == "citealt" ||
-		    cite_type == "citep" ||
-		    cite_type == "citealp" ||
-		    cite_type == "citeyearpar")
-			before_str = before + ' ';
-		// In CITE (jurabib), the "before" string is used to attach
-		// the annotator (of legal texts) to the author(s) of the
-		// first reference.
-		else if (cite_type == "cite")
-			before_str = '/' + before;
-	}
-
 	docstring const & after = getParam("after");
-	docstring after_str;
-	// The "after" key is appended only to the end of the whole.
-	if (cite_type == "nocite")
-		after_str =  " (" + _("not cited") + ')';
-	else if (!after.empty()) {
-		after_str = ", " + after;
-	}
 
-	// One day, these might be tunable (as they are in BibTeX).
-	char op, cp;	// opening and closing parenthesis.
-	const char * sep;	// punctuation mark separating citation entries.
-	if (engine == ENGINE_BASIC) {
-		op  = '[';
-		cp  = ']';
-		sep = ",";
-	} else {
-		op  = '(';
-		cp  = ')';
-		sep = ";";
-	}
-
-	docstring const op_str = ' ' + docstring(1, op);
-	docstring const cp_str = docstring(1, cp) + ' ';
-	docstring const sep_str = from_ascii(sep) + ' ';
-
+	// FIXME: allow to add cite macros
+	/*
+	buffer().params().documentClass().addCiteMacro("!textbefore", to_utf8(before));
+	buffer().params().documentClass().addCiteMacro("!textafter", to_utf8(after));
+	*/
 	docstring label;
-	vector<docstring> keys = getVectorFromString(getParam("key"));
-	vector<docstring>::const_iterator it  = keys.begin();
-	vector<docstring>::const_iterator end = keys.end();
-	for (; it != end; ++it) {
-		// get the bibdata corresponding to the key
-		docstring const author = biblist.getAbbreviatedAuthor(*it);
-		docstring const year = biblist.getYear(*it, for_xhtml);
-		docstring const citenum = for_xhtml ? biblist.getCiteNumber(*it) : *it;
-
-		if (author.empty() || year.empty())
-			// We can't construct a "complex" label without that info.
-			// So fail safely.
-			return docstring();
-
-		// authors1/<before>;  ... ;
-		//  authors_last, <after>
-		if (cite_type == "cite") {
-			if (engine == ENGINE_BASIC) {
-				label += wrapCitation(*it, citenum, for_xhtml) + sep_str;
-			} else if (engine == ENGINE_JURABIB) {
-				if (it == keys.begin())
-					label += wrapCitation(*it, author, for_xhtml) + before_str + sep_str;
-				else
-					label += wrapCitation(*it, author, for_xhtml) + sep_str;
-			}
-		}
-		// nocite
-		else if (cite_type == "nocite") {
-			label += *it + sep_str;
-		}
-		// (authors1 (<before> year);  ... ;
-		//  authors_last (<before> year, <after>)
-		else if (cite_type == "citet") {
-			switch (engine) {
-			case ENGINE_NATBIB:
-				if (engine_type == ENGINE_TYPE_AUTHORYEAR)
-					label += author + op_str + before_str +
-						wrapCitation(*it, year, for_xhtml) + cp + sep_str;
-				else
-					label += author + op_str + before_str +
-						wrapCitation(*it, citenum, for_xhtml) + cp + sep_str;
-				break;
-			case ENGINE_JURABIB:
-				label += before_str + author + op_str +
-					wrapCitation(*it, year, for_xhtml) + cp + sep_str;
-				break;
-			case ENGINE_BASIC:
-				break;
-			}
-		}
-		// author, year; author, year; ...
-		else if (cite_type == "citep" ||
-			   cite_type == "citealp") {
-			if (engine_type == ENGINE_TYPE_NUMERICAL) {
-				label += wrapCitation(*it, citenum, for_xhtml) + sep_str;
-			} else {
-				label += wrapCitation(*it, author + ", " + year, for_xhtml) + sep_str;
-			}
-
-		}
-		// (authors1 <before> year;
-		//  authors_last <before> year, <after>)
-		else if (cite_type == "citealt") {
-			switch (engine) {
-			case ENGINE_NATBIB:
-				if (engine_type == ENGINE_TYPE_AUTHORYEAR)
-					label += author + ' ' + before_str +
-						wrapCitation(*it, year, for_xhtml) + sep_str;
-				else
-					label += author + ' ' + before_str + '#' +
-						wrapCitation(*it, citenum, for_xhtml) + sep_str;
-				break;
-			case ENGINE_JURABIB:
-				label += before_str +
-					wrapCitation(*it, author + ' ' + year, for_xhtml) + sep_str;
-				break;
-			case ENGINE_BASIC:
-				break;
-			}
-
-
-		}
-		// author; author; ...
-		else if (cite_type == "citeauthor") {
-			label += wrapCitation(*it, author, for_xhtml) + sep_str;
-		}
-		// year; year; ...
-		else if (cite_type == "citeyear" ||
-			   cite_type == "citeyearpar") {
-			label += wrapCitation(*it, year, for_xhtml) + sep_str;
-		}
-	}
-	label = rtrim(rtrim(label), sep);
-
-	if (!after_str.empty()) {
-		if (cite_type == "citet") {
-			// insert "after" before last ')'
-			label.insert(label.size() - 1, after_str);
-		} else {
-			bool const add =
-				!(engine == ENGINE_NATBIB &&
-				  engine_type == ENGINE_TYPE_NUMERICAL &&
-				  (cite_type == "citeauthor" ||
-				   cite_type == "citeyear"));
-			if (add)
-				label += after_str;
-		}
-	}
-
-	if (!before_str.empty() && (cite_type == "citep" ||
-				    cite_type == "citealp" ||
-				    cite_type == "citeyearpar")) {
-		label = before_str + label;
-	}
-
-	if (cite_type == "citep" || cite_type == "citeyearpar" ||
-	    (cite_type == "cite" && engine == ENGINE_BASIC) )
-		label = op + label + cp;
-
+	vector<docstring> const keys = getVectorFromString(key);
+	label = biblist.getLabel(keys, buffer(), cite_type, for_xhtml, before, after);
 	return label;
 }
 
@@ -565,15 +367,15 @@ void InsetCitation::forToc(docstring & os, size_t) const
 // Have to overwrite the default InsetCommand method in order to check that
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
-// should revert to \cite[]{}
+// should revert to the default citation command as provided by the citation
+// engine, e.g. \cite[]{} for the basic engine.
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
-	CiteEngine cite_engine = buffer().params().citeEngine();
-	CiteEngineType cite_engine_type = buffer().params().citeEngineType();
+	vector<CitationStyle> citation_styles = buffer().params().citeStyles();
+	CitationStyle cs = asValidLatexCommand(getCmdName(), citation_styles);
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	// FIXME UNICODE
-	docstring const cite_str = from_utf8(
-		asValidLatexCommand(getCmdName(), cite_engine, cite_engine_type));
+	docstring const cite_str = from_utf8(citationStyleToString(cs));
 
 	if (runparams.inulemcmd)
 		os << "\\mbox{";
@@ -582,9 +384,9 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 
 	docstring const & before = getParam("before");
 	docstring const & after  = getParam("after");
-	if (!before.empty() && cite_engine != ENGINE_BASIC)
+	if (!before.empty() && cs.textBefore)
 		os << '[' << before << "][" << after << ']';
-	else if (!after.empty())
+	else if (!after.empty() && cs.textAfter)
 		os << '[' << after << ']';
 
 	if (!bi.isBibtex(getParam("key")))
@@ -595,21 +397,6 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (runparams.inulemcmd)
 		os << "}";
-}
-
-
-void InsetCitation::validate(LaTeXFeatures & features) const
-{
-	switch (features.bufferParams().citeEngine()) {
-	case ENGINE_BASIC:
-		break;
-	case ENGINE_NATBIB:
-		features.require("natbib");
-		break;
-	case ENGINE_JURABIB:
-		features.require("jurabib");
-		break;
-	}
 }
 
 

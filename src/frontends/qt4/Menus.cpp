@@ -1485,24 +1485,38 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 				static_cast<InsetCommand const *>(inset);
 
 	Buffer const * buf = &bv->buffer();
-	docstring key = citinset->getParam("key");
-	// we can only handle one key currently
-	if (contains(key, ','))
-		key = qstring_to_ucs4(toqstr(key).split(',')[0]);
+	string const cmd = citinset->params().getCmdName();
 
-	vector<CiteStyle> citeStyleList = citeStyles(buf->params().citeEngine(),
-		buf->params().citeEngineType());
-	docstring_list citeStrings =
-		buf->masterBibInfo().getCiteStrings(key, bv->buffer());
+	docstring const & key = citinset->getParam("key");
+	if (key.empty()) {
+		add(MenuItem(MenuItem::Command,
+				    qt_("No citations selected!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
 
-	docstring_list::const_iterator cit = citeStrings.begin();
-	docstring_list::const_iterator end = citeStrings.end();
+	docstring const & before = citinset->getParam("before");
+	docstring const & after = citinset->getParam("after");
+
+	size_t const n = cmd.size();
+	bool const force = cmd[0] == 'C';
+	bool const full = cmd[n] == '*';
+
+	vector<docstring> const keys = getVectorFromString(key);
+
+	vector<CitationStyle> const citeStyleList = buf->params().citeStyles();
+	vector<docstring> citeStrings =
+		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(),
+		false, before, after, from_utf8("dialog"));
+
+	vector<docstring>::const_iterator cit = citeStrings.begin();
+	vector<docstring>::const_iterator end = citeStrings.end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = *cit;
-		CitationStyle cs;
-		CiteStyle cst = citeStyleList[ii - 1];
-		cs.style = cst;
+		CitationStyle cs = citeStyleList[ii - 1];
+		cs.forceUpperCase &= force;
+		cs.fullAuthorList &= full;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_INSET_MODIFY,
 						"changetype " + from_utf8(citationStyleToString(cs)))));

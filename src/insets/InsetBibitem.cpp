@@ -314,8 +314,10 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 void InsetBibitem::collectBibKeys(InsetIterator const & it) const
 {
 	docstring const key = getParam("key");
+	docstring const label = getParam("label");
 	BibTeXInfo keyvalmap(false);
-	keyvalmap.label(bibLabel());
+	keyvalmap.key(key);
+	keyvalmap.label(label);
 	DocIterator doc_it(it);
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(

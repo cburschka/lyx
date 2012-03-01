@@ -1,0 +1,101 @@
+# \DeclareLyXModule[jurabib.sty]{Jurabib}
+# DescriptionBegin
+#   Loads the LaTeX package jurabib, a citation engine. Jurabib supports annotations,
+#   author-year style citations and hyphenation patterns for bibliography entries in
+#   English, German, French, Dutch, Spanish and Italian.
+# DescriptionEnd
+# Excludes: basic | natbib
+# Category: Citation engine
+
+# Author: Julien Rioux <jrioux@lyx.org>
+
+Format 37
+
+Requires jurabib
+
+CiteEngineType authoryear
+DefaultBiblio  jurabib
+
+# FIXME: support for these jurabib styles (fileformat)
+# citefield []{}
+# footcite [][]
+# footcitetitle [][]
+# footcitet [][]
+# footcitep [][]
+# footcitealt [][]
+# footcitealp [][]
+# footciteauthor [][]
+# footciteyear [][]
+# footciteyearpar [][]
+# footfullcite [][]
+
+CiteEngine authoryear
+	# \cite* is not implemented: use \cite instead, it's the same
+	cite [][]
+	citetitle [][]
+	citet [][]
+	citep [][]
+	citealt [][]
+	citealp [][]
+	citeauthor [][]
+	citeyear [][]
+	citeyearpar [][]
+	fullcite [][]
+	nocite
+End
+
+CiteFormat authoryear
+	# translatable bits
+	_notcited not cited
+	_addtobib Add to bibliography only.
+	_fullcite bibliography entry
+	_bibentry Bibliography entry.
+	_before before
+	_shorttitle short title
+
+	# macros
+	!open (
+	!sep ;
+	!close )
+
+	!cite %!shortauthor%%!textbefore2%%!textafter2%%!nextcite%
+	!citetitle %!shortauthor%%!textbefore2%%!shorttitle%%!textafter2%%!nextcitetitle%
+	!citet %!textbefore%%!shortauthor% %!open%%!year%%!textafter%%!close%%!nextcitet%
+	!citep %!open%%!citealp%%!close%
+	!citealt %!textbefore%%!shortauthor% %!year%%!textafter%%!nextcitealt%
+	!citealp %!textbefore%%!shortauthor%, %!year%%!textafter%%!nextcitealp%
+	!citeauthor %!textbefore%%!shortauthor%%!textafter%%!nextauthor%
+	!citeyear %!textbefore%%!year%%!textafter%%!nextyear%
+	!citeyearpar %!textbefore%%!open%%!year%%!close%%!textafter%%!nextyearpar%
+
+	!nextcite {%next%[[%!sep% %!shortauthor%%!textafter2%%!nextcite%]]}
+	!nextcitetitle {%next%[[%!sep% %!shortauthor%%!shorttitle%%!textafter2%%!nextcitetitle%]]}
+	!nextcitet {%next%[[%!sep% %!citet%]]}
+	!nextcitealt {%next%[[%!sep% %!citealt%]]}
+	!nextcitealp {%next%[[%!sep% %!citealp%]]}
+	!nextauthor {%next%[[%!sep% %!citeauthor%]]}
+	!nextyear {%next%[[%!sep% %!citeyear%]]}
+	!nextyearpar {%next%[[%!sep% %!citeyearpar%]]}
+	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
+
+	!shortauthor {%shortauthor%[[%shortauthor%]][[??]]}
+	!shorttitle {%shorttitle%[[ %shorttitle%]][[{%dialog%[[ <%_shorttitle%>]]}]]}
+	!textbefore {%textbefore%[[%textbefore% ]]}
+	!textbefore2 {%textbefore%[[/%textbefore%]][[{%dialog%[[/<%_before%>]]}]]}
+	!textafter {%textafter%[[, %textafter%]]}
+	!textafter2 {%textafter%[[ %textafter%]]}
+	!year {%year%[[%year%]][[??]]}
+
+	# cite styles
+	cite %!cite%
+	citetitle %!citetitle%
+	citet %!citet%
+	citep %!citep%
+	citealt %!citealt%
+	citealp %!citealp%
+	citeauthor %!citeauthor%
+	citeyear %!citeyear%
+	citeyearpar %!citeyearpar%
+	fullcite {%dialog%[[%_bibentry%]][[%key%%!nextkey% (%_fullcite%)]]}
+	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+End

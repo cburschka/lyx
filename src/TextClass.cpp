@@ -60,7 +60,7 @@ namespace lyx {
 // development/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 36;
+int const LAYOUT_FORMAT = 37; //jrioux : move citation engine stuff into layouts
 
 namespace {
 
@@ -147,8 +147,10 @@ TextClass::TextClass()
 	tocdepth_ = 3;
 	pagestyle_ = "default";
 	defaultfont_ = sane_font;
+	opt_enginetype_ = "authoryear|numerical";
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
+	cite_full_author_list_ = true;
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
@@ -210,7 +212,11 @@ enum TextClassTags {
 	TC_PROVIDESMODULE,
 	TC_EXCLUDESMODULE,
 	TC_HTMLTOCSECTION,
-	TC_CITEFORMAT
+	TC_CITEENGINE,
+	TC_CITEENGINETYPE,
+	TC_CITEFORMAT,
+	TC_DEFAULTBIBLIO,
+	TC_FULLAUTHORLIST,
 };
 
 
@@ -220,16 +226,20 @@ namespace {
 		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
 		{ "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
 		{ "addtopreamble",     TC_ADDTOPREAMBLE },
+		{ "citeengine",        TC_CITEENGINE },
+		{ "citeenginetype",    TC_CITEENGINETYPE },
 		{ "citeformat",        TC_CITEFORMAT },
 		{ "classoptions",      TC_CLASSOPTIONS },
 		{ "columns",           TC_COLUMNS },
 		{ "counter",           TC_COUNTER },
+		{ "defaultbiblio",     TC_DEFAULTBIBLIO },
 		{ "defaultfont",       TC_DEFAULTFONT },
 		{ "defaultmodule",     TC_DEFAULTMODULE },
 		{ "defaultstyle",      TC_DEFAULTSTYLE },
 		{ "excludesmodule",    TC_EXCLUDESMODULE },
 		{ "float",             TC_FLOAT },
 		{ "format",            TC_FORMAT },
+		{ "fullauthorlist",    TC_FULLAUTHORLIST },
 		{ "htmlpreamble",      TC_HTMLPREAMBLE },
 		{ "htmlstyles",        TC_HTMLSTYLES },
 		{ "htmltocsection",    TC_HTMLTOCSECTION },
@@ -684,8 +694,27 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			error = !readFloat(lexrc);
 			break;
 
+		case TC_CITEENGINE:
+			error = !readCiteEngine(lexrc);
+			break;
+
+		case TC_CITEENGINETYPE:
+			if (lexrc.next())
+				opt_enginetype_ = rtrim(lexrc.getString());
+			break;
+
 		case TC_CITEFORMAT:
-			readCiteFormat(lexrc);
+			error = !readCiteFormat(lexrc);
+			break;
+
+		case TC_DEFAULTBIBLIO:
+			if (lexrc.next())
+				cite_default_biblio_style_ = rtrim(lexrc.getString());
+			break;
+
+		case TC_FULLAUTHORLIST:
+			if (lexrc.next())
+				cite_full_author_list_ &= lexrc.getBool();
 			break;
 
 		case TC_NOCOUNTER:
@@ -913,25 +942,109 @@ void TextClass::readClassOptions(Lexer & lexrc)
 }
 
 
-void TextClass::readCiteFormat(Lexer & lexrc)
+bool TextClass::readCiteEngine(Lexer & lexrc)
 {
+	int const type = readCiteEngineType(lexrc);
+	if (type & ENGINE_TYPE_AUTHORYEAR)
+		cite_styles_[ENGINE_TYPE_AUTHORYEAR].clear();
+	if (type & ENGINE_TYPE_NUMERICAL)
+		cite_styles_[ENGINE_TYPE_NUMERICAL].clear();
+	string def;
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		lexrc.eatLine();
+		def = lexrc.getString();
+		def = subst(def, " ", "");
+		def = subst(def, "\t", "");
+		if (compare_ascii_no_case(def, "end") == 0) {
+			getout = true;
+			continue;
+		}
+		string cmd;
+		CitationStyle cs;
+		char ichar = def[0];
+		if (ichar == '#')
+			continue;
+		if (ichar == 'C') {
+			cs.forceUpperCase = true;
+			def[0] = 'c';
+		}
+
+		size_t const n = def.size();
+		for (size_t i = 0; i != n; ++i) {
+			ichar = def[i];
+			if (ichar == '*')
+				cs.fullAuthorList = true;
+			else if (ichar == '[' && cs.textAfter)
+				cs.textBefore = true;
+			else if (ichar == '[')
+				cs.textAfter = true;
+			else if (ichar != ']')
+				cmd += ichar;
+		}
+
+		cs.cmd = cmd;
+		if (type & ENGINE_TYPE_AUTHORYEAR)
+			cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
+		if (type & ENGINE_TYPE_NUMERICAL)
+			cite_styles_[ENGINE_TYPE_NUMERICAL].push_back(cs);
+	}
+	return getout;
+}
+
+
+int TextClass::readCiteEngineType(Lexer & lexrc) const
+{
+	int const ENGINE_TYPE_DEFAULT =
+		ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL;
+	if (!lexrc.next()) {
+		lexrc.printError("No cite engine type given for token: `$$Token'.");
+		return ENGINE_TYPE_DEFAULT;
+	}
+	string const type = rtrim(lexrc.getString());
+	if (compare_ascii_no_case(type, "authoryear") == 0)
+		return ENGINE_TYPE_AUTHORYEAR;
+	else if (compare_ascii_no_case(type, "numerical") == 0)
+		return ENGINE_TYPE_NUMERICAL;
+	else if (compare_ascii_no_case(type, "default") != 0) {
+		string const s = "Unknown cite engine type `" + type
+			+ "' given for token: `$$Token',";
+		lexrc.printError(s);
+	}
+	return ENGINE_TYPE_DEFAULT;
+}
+
+
+bool TextClass::readCiteFormat(Lexer & lexrc)
+{
+	int const type = readCiteEngineType(lexrc);
 	string etype;
 	string definition;
 	while (lexrc.isOK()) {
 		lexrc.next();
 		etype = lexrc.getString();
-		if (!lexrc.isOK() || compare_ascii_no_case(etype, "end") == 0)
+		if (compare_ascii_no_case(etype, "end") == 0)
 			break;
+		if (!lexrc.isOK())
+			return false;
 		lexrc.eatLine();
 		definition = lexrc.getString();
 		char initchar = etype[0];
 		if (initchar == '#')
 			continue;
-		if (initchar == '!' || initchar == '_')
-			cite_macros_[etype] = definition;
-		else
-			cite_formats_[etype] = definition;
+		if (initchar == '!' || initchar == '_') {
+			if (type & ENGINE_TYPE_AUTHORYEAR)
+				cite_macros_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
+			if (type & ENGINE_TYPE_NUMERICAL)
+				cite_macros_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+		} else {
+			if (type & ENGINE_TYPE_AUTHORYEAR)
+				cite_formats_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
+			if (type & ENGINE_TYPE_NUMERICAL)
+				cite_formats_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+		}
 	}
+	return true;
 }
 
 
@@ -1447,24 +1560,60 @@ Layout const & DocumentClass::htmlTOCLayout() const
 }
 
 
-string const & DocumentClass::getCiteFormat(string const & entry_type) const
+string const & DocumentClass::getCiteFormat(CiteEngineType const & type,
+	string const & entry, string const & fallback) const
 {
 	static string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
 
-	map<string, string>::const_iterator it = cite_formats_.find(entry_type);
-	if (it != cite_formats_.end())
-		return it->second;
-	return default_format;
+	map<CiteEngineType, map<string, string> >::const_iterator itype = cite_formats_.find(type);
+	if (itype == cite_formats_.end())
+		return default_format;
+	map<string, string>::const_iterator it = itype->second.find(entry);
+	if (it == itype->second.end() && !fallback.empty())
+		it = itype->second.find(fallback);
+	if (it == itype->second.end())
+		return default_format;
+	return it->second;
 }
 
 
-string const & DocumentClass::getCiteMacro(string const & macro) const
+string const & DocumentClass::getCiteMacro(CiteEngineType const & type,
+	string const & macro) const
 {
 	static string empty;
-	map<string, string>::const_iterator it = cite_macros_.find(macro);
-	if (it != cite_macros_.end())
-		return it->second;
-	return empty;
+	map<CiteEngineType, map<string, string> >::const_iterator itype = cite_macros_.find(type);
+	if (itype == cite_macros_.end())
+		return empty;
+	map<string, string>::const_iterator it = itype->second.find(macro);
+	if (it == itype->second.end())
+		return empty;
+	return it->second;
+}
+
+
+vector<string> const DocumentClass::citeCommands(
+	CiteEngineType const & type) const
+{
+	vector<CitationStyle> const styles = citeStyles(type);
+	vector<CitationStyle>::const_iterator it = styles.begin();
+	vector<CitationStyle>::const_iterator end = styles.end();
+	vector<string> cmds;
+	for (; it != end; ++it) {
+		CitationStyle const cite = *it;
+		cmds.push_back(cite.cmd);
+	}
+	return cmds;
+}
+
+
+vector<CitationStyle> const & DocumentClass::citeStyles(
+	CiteEngineType const & type) const
+{
+	static vector<CitationStyle> empty;
+	map<CiteEngineType, vector<CitationStyle> >::const_iterator it = cite_styles_.find(type);
+	if (it == cite_styles_.end())
+		return empty;
+	return it->second;
 }
 
 

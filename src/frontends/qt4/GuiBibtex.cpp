@@ -504,19 +504,7 @@ QString GuiBibtex::styleFile() const
 {
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
-	CiteEngine const engine = buffer().params().citeEngine();
-	QString defaultstyle;
-	switch (engine) {
-	case ENGINE_BASIC:
-		defaultstyle = "plain";
-		break;
-	case ENGINE_NATBIB:
-		defaultstyle = "plainnat";
-		break;
-	case ENGINE_JURABIB:
-		defaultstyle = "jurabib";
-		break;
-	}
+	QString defaultstyle = toqstr(buffer().params().defaultBiblioStyle());
 
 	QString bst = toqstr(params_["options"]);
 	if (bibtotoc()){

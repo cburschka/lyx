@@ -206,7 +206,7 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor() const
+docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 {
 	if (!is_bibtex_) {
 		docstring const opt = label();
@@ -226,7 +226,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 	if (author.empty()) {
 		author = convertLaTeXCommands(operator[]("editor"));
 		if (author.empty())
-			return bib_key_;
+			return author;
 	}
 
 	// FIXME Move this to a separate routine that can
@@ -236,6 +236,14 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 	// Try to split the author list on " and "
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
+
+	if (jurabib_style && (authors.size() == 2 || authors.size() == 3)) {
+		docstring shortauthor = familyName(authors[0])
+			+ "/" + familyName(authors[1]);
+		if (authors.size() == 3)
+			shortauthor += "/" + familyName(authors[2]);
+		return shortauthor;
+	}
 
 	if (authors.size() == 2)
 		return bformat(_("%1$s and %2$s"),
@@ -391,7 +399,7 @@ namespace {
 
 docstring BibTeXInfo::expandFormat(string const & format,
 		BibTeXInfo const * const xref, int & counter, Buffer const & buf,
-		bool richtext) const
+		bool richtext, docstring before, docstring after, docstring dialog, bool next) const
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int max_passes = 5000;
@@ -400,6 +408,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
+	CiteEngineType const engine_type = buf.params().citeEngineType();
 	string fmt = format;
 	// we'll remove characters from the front of fmt as we
 	// deal with them
@@ -419,19 +428,21 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				// so we replace the key with its value, which may be empty
 				if (key[0] == '!') {
 					// macro
+					// FIXME: instead of passing the buf, just past the macros
+					// FIXME: and the language code
 					string const val =
-						buf.params().documentClass().getCiteMacro(key);
+						buf.params().documentClass().getCiteMacro(engine_type, key);
 					fmt = val + fmt.substr(1);
 					continue;
 				} else if (key[0] == '_') {
 					// a translatable bit
 					string const val =
-						buf.params().documentClass().getCiteMacro(key);
+						buf.params().documentClass().getCiteMacro(engine_type, key);
 					docstring const trans =
 						translateIfPossible(from_utf8(val), buf.params().language->code());
 					ret += trans;
 				} else {
-					docstring const val = getValueForKey(key, xref);
+					docstring const val = getValueForKey(key, before, after, dialog, xref);
 					ret += val;
 				}
 			} else {
@@ -457,11 +468,15 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					if (newfmt == fmt) // parse error
 						return _("ERROR!");
 					fmt = newfmt;
-					docstring const val = getValueForKey(optkey, xref);
-					if (!val.empty())
-						ret += expandFormat(ifpart, xref, counter, buf, richtext);
+					docstring const val = getValueForKey(optkey, before, after, dialog, xref);
+					if (optkey == "next" && next)
+						ret += from_utf8(ifpart); // without expansion
+					else if (!val.empty())
+						ret += expandFormat(ifpart, xref, counter, buf,
+							richtext, before, after, dialog, next);
 					else if (!elsepart.empty())
-						ret += expandFormat(elsepart, xref, counter, buf, richtext);
+						ret += expandFormat(elsepart, xref, counter, buf,
+							richtext, before, after, dialog, next);
 					// fmt will have been shortened for us already
 					continue;
 				}
@@ -527,14 +542,39 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 		return info_;
 	}
 
+	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	string const & format = dc.getCiteFormat(to_utf8(entry_type_));
+	string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
 	int counter = 0;
 	info_ = expandFormat(format, xref, counter, buf, richtext);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);
 	return info_;
+}
+
+
+docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
+	Buffer const & buf, string const & format, bool richtext,
+	docstring before, docstring after, docstring dialog, bool next) const
+{
+	docstring loclabel_;
+
+	/*
+	if (!is_bibtex_) {
+		BibTeXInfo::const_iterator it = find(from_ascii("ref"));
+		label_ = it->second;
+		return label_;
+	}
+	*/
+
+	int counter = 0;
+	loclabel_ = expandFormat(format, xref, counter, buf, richtext,
+		before, after, dialog, next);
+
+	if (!loclabel_.empty())
+		loclabel_ = convertLaTeXCommands(loclabel_);
+	return loclabel_;
 }
 
 
@@ -555,12 +595,48 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 
 docstring BibTeXInfo::getValueForKey(string const & key,
-		BibTeXInfo const * const xref) const
+	docstring const & before, docstring const & after, docstring const & dialog,
+	BibTeXInfo const * const xref) const
 {
-	docstring const ret = operator[](key);
-	if (!ret.empty() || !xref)
+	docstring ret = operator[](key);
+	if (ret.empty() && xref)
+		ret = (*xref)[key];
+	if (!ret.empty())
 		return ret;
-	return (*xref)[key];
+	// some special keys
+	// FIXME: dialog, textbefore and textafter have nothing to do with this
+	if (key == "dialog")
+		return dialog;
+	else if (key == "entrytype")
+		return entry_type_;
+	else if (key == "key")
+		return bib_key_;
+	else if (key == "label")
+		return label_;
+	else if (key == "abbrvauthor")
+		// Special key to provide abbreviated author names.
+		return getAbbreviatedAuthor();
+	else if (key == "shortauthor")
+		// When shortauthor is not defined, jurabib automatically
+		// provides jurabib-style abbreviated author names. We do
+		// this as well.
+		return getAbbreviatedAuthor(true);
+	else if (key == "shorttitle") {
+		// When shorttitle is not defined, jurabib uses for `article'
+		// and `periodical' entries the form `journal volume [year]'
+		// and for other types of entries it uses the `title' field.
+		if (entry_type_ == "article" || entry_type_ == "periodical")
+			return operator[]("journal") + " " + operator[]("volume")
+				+ " [" + operator[]("year") + "]";
+		else
+			return operator[]("title");
+	} else if (key == "textbefore")
+		return before;
+	else if (key == "textafter")
+		return after;
+	else if (key == "year")
+		return getYear();
+	return ret;
 }
 
 
@@ -679,6 +755,38 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 }
 
 
+docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
+	Buffer const & buf, string const & style, bool richtext,
+	docstring const & before, docstring const & after, docstring const & dialog) const
+{
+	CiteEngineType const engine_type = buf.params().citeEngineType();
+	DocumentClass const & dc = buf.params().documentClass();
+	string const & format = dc.getCiteFormat(engine_type, style, "cite");
+	docstring ret = from_utf8(format);
+	vector<docstring>::const_iterator key = keys.begin();
+	vector<docstring>::const_iterator ken = keys.end();
+	for (; key != ken; ++key) {
+		BiblioInfo::const_iterator it = find(*key);
+		BibTeXInfo empty_data;
+		empty_data.key(*key);
+		BibTeXInfo & data = empty_data;
+		BibTeXInfo const * xrefptr = 0;
+		if (it != end()) {
+			data = it->second;
+			docstring const xref = data.getXRef();
+			if (!xref.empty()) {
+				BiblioInfo::const_iterator const xrefit = find(xref);
+				if (xrefit != end())
+					xrefptr = &(xrefit->second);
+			}
+		}
+		ret = data.getLabel(xrefptr, buf, to_utf8(ret), richtext,
+			before, after, dialog, key+1 != ken);
+	}
+	return ret;
+}
+
+
 bool BiblioInfo::isBibtex(docstring const & key) const
 {
 	BiblioInfo::const_iterator it = find(key);
@@ -688,137 +796,21 @@ bool BiblioInfo::isBibtex(docstring const & key) const
 }
 
 
-
 vector<docstring> const BiblioInfo::getCiteStrings(
-	docstring const & key, Buffer const & buf) const
-{
-	CiteEngineType const engine_type = buf.params().citeEngineType();
-	if (engine_type == ENGINE_TYPE_NUMERICAL)
-		return getNumericalStrings(key, buf);
-	else
-		return getAuthorYearStrings(key, buf);
-}
-
-
-vector<docstring> const BiblioInfo::getNumericalStrings(
-	docstring const & key, Buffer const & buf) const
+	vector<docstring> const & keys, vector<CitationStyle> const & styles,
+	Buffer const & buf, bool richtext, docstring const & before,
+	docstring const & after, docstring const & dialog) const
 {
 	if (empty())
 		return vector<docstring>();
 
-	docstring const author = getAbbreviatedAuthor(key);
-	docstring const year   = getYear(key);
-	if (author.empty() || year.empty())
-		return vector<docstring>();
-
-	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine(),
-		buf.params().citeEngineType());
-
+	string style;
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
-		docstring str;
-
-		switch (styles[i]) {
-			case CITE:
-			case CITEP:
-				str = from_ascii("[#ID]");
-				break;
-
-			case NOCITE:
-				str = _("Add to bibliography only.");
-				break;
-
-			case CITET:
-				str = author + " [#ID]";
-				break;
-
-			case CITEALT:
-				str = author + " #ID";
-				break;
-
-			case CITEALP:
-				str = from_ascii("#ID");
-				break;
-
-			case CITEAUTHOR:
-				str = author;
-				break;
-
-			case CITEYEAR:
-				str = year;
-				break;
-
-			case CITEYEARPAR:
-				str = '(' + year + ')';
-				break;
-		}
-
-		vec[i] = str;
+		style = styles[i].cmd;
+		vec[i] = getLabel(keys, buf, style, richtext, before, after, dialog);
 	}
 
-	return vec;
-}
-
-
-vector<docstring> const BiblioInfo::getAuthorYearStrings(
-	docstring const & key, Buffer const & buf) const
-{
-	if (empty())
-		return vector<docstring>();
-
-	docstring const author = getAbbreviatedAuthor(key);
-	docstring const year   = getYear(key);
-	if (author.empty() || year.empty())
-		return vector<docstring>();
-
-	vector<CiteStyle> const & styles = citeStyles(buf.params().citeEngine(),
-		buf.params().citeEngineType());
-
-	vector<docstring> vec(styles.size());
-	for (size_t i = 0; i != vec.size(); ++i) {
-		docstring str;
-
-		switch (styles[i]) {
-			case CITE:
-		// jurabib only: Author/Annotator
-		// (i.e. the "before" field, 2nd opt arg)
-				str = author + "/<" + _("before") + '>';
-				break;
-
-			case NOCITE:
-				str = _("Add to bibliography only.");
-				break;
-
-			case CITET:
-				str = author + " (" + year + ')';
-				break;
-
-			case CITEP:
-				str = '(' + author + ", " + year + ')';
-				break;
-
-			case CITEALT:
-				str = author + ' ' + year ;
-				break;
-
-			case CITEALP:
-				str = author + ", " + year ;
-				break;
-
-			case CITEAUTHOR:
-				str = author;
-				break;
-
-			case CITEYEAR:
-				str = year;
-				break;
-
-			case CITEYEARPAR:
-				str = '(' + year + ')';
-				break;
-		}
-		vec[i] = str;
-	}
 	return vec;
 }
 
@@ -947,128 +939,38 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 //
 //////////////////////////////////////////////////////////////////////
 
-namespace {
-
-
-char const * const citeCommands[] = {
-	"cite", "citet", "citep", "citealt", "citealp",
-	"citeauthor", "citeyear", "citeyearpar", "nocite" };
-
-unsigned int const nCiteCommands =
-		sizeof(citeCommands) / sizeof(char *);
-
-CiteStyle const citeStylesArray[] = {
-	CITE, CITET, CITEP, CITEALT, CITEALP, 
-	CITEAUTHOR, CITEYEAR, CITEYEARPAR, NOCITE };
-
-unsigned int const nCiteStyles =
-		sizeof(citeStylesArray) / sizeof(CiteStyle);
-
-CiteStyle const citeStylesFull[] = {
-	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
-
-unsigned int const nCiteStylesFull =
-		sizeof(citeStylesFull) / sizeof(CiteStyle);
-
-CiteStyle const citeStylesUCase[] = {
-	CITET, CITEP, CITEALT, CITEALP, CITEAUTHOR };
-
-unsigned int const nCiteStylesUCase =
-	sizeof(citeStylesUCase) / sizeof(CiteStyle);
-
-} // namespace anon
-
 
 CitationStyle citationStyleFromString(string const & command)
 {
-	CitationStyle s;
+	CitationStyle cs;
 	if (command.empty())
-		return s;
+		return cs;
 
 	string cmd = command;
 	if (cmd[0] == 'C') {
-		s.forceUpperCase = true;
+		cs.forceUpperCase = true;
 		cmd[0] = 'c';
 	}
 
 	size_t const n = cmd.size() - 1;
-	if (cmd != "cite" && cmd[n] == '*') {
-		s.full = true;
+	if (cmd[n] == '*') {
+		cs.fullAuthorList = true;
 		cmd = cmd.substr(0, n);
 	}
 
-	char const * const * const last = citeCommands + nCiteCommands;
-	char const * const * const ptr = find(citeCommands, last, cmd);
-
-	if (ptr != last) {
-		size_t idx = ptr - citeCommands;
-		s.style = citeStylesArray[idx];
-	}
-	return s;
+	cs.cmd = cmd;
+	return cs;
 }
 
 
-string citationStyleToString(const CitationStyle & s)
+string citationStyleToString(const CitationStyle & cs)
 {
-	string cite = citeCommands[s.style];
-	if (s.full) {
-		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
-		if (std::find(citeStylesFull, last, s.style) != last)
-			cite += '*';
-	}
-
-	if (s.forceUpperCase) {
-		CiteStyle const * last = citeStylesUCase + nCiteStylesUCase;
-		if (std::find(citeStylesUCase, last, s.style) != last)
-			cite[0] = 'C';
-	}
-
-	return cite;
-}
-
-vector<CiteStyle> citeStyles(CiteEngine engine, CiteEngineType engine_type)
-{
-	vector<CiteStyle> styles(0);
-
-	if (engine_type == ENGINE_TYPE_AUTHORYEAR) {
-		switch (engine) {
-		case ENGINE_BASIC:
-			styles.push_back(CITE);
-			break;
-		case ENGINE_JURABIB:
-			styles.push_back(CITE);
-		case ENGINE_NATBIB:
-			styles.push_back(CITET);
-			styles.push_back(CITEP);
-			styles.push_back(CITEALT);
-			styles.push_back(CITEALP);
-			styles.push_back(CITEAUTHOR);
-			styles.push_back(CITEYEAR);
-			styles.push_back(CITEYEARPAR);
-			break;
-		}
-	} else {
-		switch (engine) {
-		case ENGINE_BASIC:
-			styles.push_back(CITE);
-			break;
-		case ENGINE_JURABIB:
-			styles.push_back(CITE);
-		case ENGINE_NATBIB:
-			styles.push_back(CITET);
-			styles.push_back(CITEALT);
-			styles.push_back(CITEAUTHOR);
-			styles.push_back(CITEP);
-			styles.push_back(CITEALP);
-			styles.push_back(CITEYEAR);
-			styles.push_back(CITEYEARPAR);
-			break;
-		}
-	}
-
-	styles.push_back(NOCITE);
-
-	return styles;
+	string cmd = cs.cmd;
+	if (cs.forceUpperCase)
+		cmd[0] = 'C';
+	if (cs.fullAuthorList)
+		cmd += '*';
+	return cmd;
 }
 
 } // namespace lyx

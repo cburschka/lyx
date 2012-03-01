@@ -54,7 +54,8 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-static vector<CiteStyle> citeStyles_;
+static vector<string> citeCmds_;
+static vector<CitationStyle> citeStyles_;
 
 
 template<typename String>
@@ -96,9 +97,9 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(forceuppercaseCB, SIGNAL(clicked()),
 		this, SLOT(changed()));
 	connect(textBeforeED, SIGNAL(textChanged(QString)),
-		this, SLOT(changed()));
+		this, SLOT(updateStyles()));
 	connect(textAfterED, SIGNAL(textChanged(QString)),
-		this, SLOT(changed()));
+		this, SLOT(updateStyles()));
 	connect(findLE, SIGNAL(returnPressed()),
 		this, SLOT(on_searchPB_clicked()));
 	connect(textBeforeED, SIGNAL(returnPressed()),
@@ -191,84 +192,50 @@ void GuiCitation::updateControls()
 // The main point of separating this out is that the fill*() methods
 // called in update() do not need to be called for INTERNAL updates,
 // such as when addPB is pressed, as the list of fields, entries, etc,
-// will not have changed. At the moment, however, the division between
-// fillStyles() and updateStyle() doesn't lend itself to dividing the
-// two methods, though they should be divisible. That is, we should
-// not have to call fillStyles() every time through here.
+// will not have changed.
 void GuiCitation::updateControls(BiblioInfo const & bi)
 {
 	QModelIndex idx = selectionManager->getSelectedIndex();
 	updateInfo(bi, idx);
-	setButtons();
-
-	textBeforeED->setText(toqstr(params_["before"]));
-	textAfterED->setText(toqstr(params_["after"]));
-	fillStyles(bi);
-	updateStyle();
+	selectionManager->update();
 }
 
 
-void GuiCitation::updateFormatting(CiteStyle currentStyle)
+void GuiCitation::updateFormatting(CitationStyle currentStyle)
 {
-	CiteEngine const engine = citeEngine();
-	bool const natbib_engine = engine == ENGINE_NATBIB;
-	bool const basic_engine = engine == ENGINE_BASIC;
+	bool const force = currentStyle.forceUpperCase;
+	bool const full = currentStyle.fullAuthorList &&
+		documentBuffer().params().fullAuthorList();
+	bool const textbefore = currentStyle.textBefore;
+	bool const textafter = currentStyle.textAfter;
 
-	bool const haveSelection = 
+	bool const haveSelection =
 		selectedLV->model()->rowCount() > 0;
 
-	bool const isNocite = currentStyle == NOCITE;
-
-	bool const isCiteyear =
-		currentStyle == CITEYEAR ||
-		currentStyle == CITEYEARPAR;
-
-	fulllistCB->setEnabled(natbib_engine && haveSelection && !isNocite
-		&& !isCiteyear);
-	forceuppercaseCB->setEnabled(natbib_engine && haveSelection
-		&& !isNocite && !isCiteyear);
-	textBeforeED->setEnabled(!basic_engine && haveSelection && !isNocite);
-	textBeforeLA->setEnabled(!basic_engine && haveSelection && !isNocite);
-	textAfterED->setEnabled(haveSelection && !isNocite);
-	textAfterLA->setEnabled(haveSelection && !isNocite);
+	forceuppercaseCB->setEnabled(force && haveSelection);
+	fulllistCB->setEnabled(full && haveSelection);
+	textBeforeED->setEnabled(textbefore && haveSelection);
+	textBeforeLA->setEnabled(textbefore && haveSelection);
+	textAfterED->setEnabled(textafter && haveSelection);
+	textAfterLA->setEnabled(textafter && haveSelection);
 	citationStyleCO->setEnabled(haveSelection);
 	citationStyleLA->setEnabled(haveSelection);
 }
 
 
-void GuiCitation::updateStyle()
+// Update the styles for the style combo, citationStyleCO, and mark the
+// settings as changed. Called upon changing the cited keys (including
+// merely reordering the keys) or editing the text before/after fields.
+void GuiCitation::updateStyles()
 {
-	string const & command = params_.getCmdName();
-
-	// Find the style of the citekeys
-	vector<CiteStyle> const & styles = citeStyles_;
-	CitationStyle const cs = citationStyleFromString(command);
-
-	vector<CiteStyle>::const_iterator cit =
-		std::find(styles.begin(), styles.end(), cs.style);
-
-	if (cit != styles.end()) {
-		fulllistCB->setChecked(cs.full);
-		forceuppercaseCB->setChecked(cs.forceUpperCase);
-	} else {
-		// restore the last used natbib style
-		if (style_ >= 0 && style_ < citationStyleCO->count()) {
-			// the necessary update will be performed later
-			citationStyleCO->blockSignals(true);
-			citationStyleCO->setCurrentIndex(style_);
-			citationStyleCO->blockSignals(false);
-		}
-		fulllistCB->setChecked(false);
-		forceuppercaseCB->setChecked(false);
-	}
-	updateFormatting(cs.style);
+	BiblioInfo const & bi = bibInfo();
+	updateStyles(bi);
+	changed();
 }
 
 
-// This one needs to be called whenever citationStyleCO needs
-// to be updated---and this would be on anything that changes the
-// selection in selectedLV, or on a general update.
-void GuiCitation::fillStyles(BiblioInfo const & bi)
+// Update the styles for the style combo, citationStyleCO.
+void GuiCitation::updateStyles(BiblioInfo const & bi)
 {
 	QStringList selected_keys = selected_model_.stringList();
 	int curr = selectedLV->model()->rowCount() - 1;
@@ -283,7 +250,7 @@ void GuiCitation::fillStyles(BiblioInfo const & bi)
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
-	QStringList sty = citationStyles(bi, curr);
+	QStringList sty = citationStyles(bi);
 
 	if (sty.isEmpty()) {
 		// some error
@@ -347,7 +314,6 @@ bool GuiCitation::isSelected(QModelIndex const & idx)
 
 void GuiCitation::setButtons()
 {
-	selectionManager->update();
 	int const srows = selectedLV->model()->rowCount();
 	applyPB->setEnabled(srows > 0);
 	okPB->setEnabled(srows > 0);
@@ -421,8 +387,9 @@ void GuiCitation::on_entriesCO_currentIndexChanged(int /*index*/)
 void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 {
 	if (index >= 0 && index < citationStyleCO->count()) {
-		vector<CiteStyle> const & styles = citeStyles_;
+		vector<CitationStyle> const & styles = citeStyles_;
 		updateFormatting(styles[index]);
+		changed();
 	}
 }
 
@@ -479,19 +446,18 @@ void GuiCitation::apply(int const choice, bool full, bool force,
 	if (cited_keys_.isEmpty())
 		return;
 
-	vector<CiteStyle> const & styles = citeStyles_;
-	if (styles[choice] == NOCITE) {
-		full = false;
-		force = false;
+	vector<CitationStyle> const & styles = citeStyles_;
+
+	CitationStyle cs = styles[choice];
+
+	if (!cs.textBefore)
 		before.clear();
+	if (!cs.textAfter)
 		after.clear();
-	}
-	
-	CitationStyle s;
-	s.style = styles[choice];
-	s.full = full;
-	s.forceUpperCase = force;
-	string const command = citationStyleToString(s);
+
+	cs.forceUpperCase &= force;
+	cs.fullAuthorList &= full;
+	string const command = citationStyleToString(cs);
 
 	params_.setCmdName(command);
 	params_["key"] = qstring_to_ucs4(cited_keys_.join(","));
@@ -522,6 +488,23 @@ void GuiCitation::init()
 	else
 		cited_keys_ = str.split(",");
 	selected_model_.setStringList(cited_keys_);
+
+	// Initialize the drop downs
+	fillEntries(bi);
+	fillFields(bi);
+
+	// Initialize the citation formatting
+	string const & cmd = params_.getCmdName();
+	CitationStyle const cs = citationStyleFromString(cmd);
+	forceuppercaseCB->setChecked(cs.forceUpperCase);
+	fulllistCB->setChecked(cs.fullAuthorList &&
+		documentBuffer().params().fullAuthorList());
+	textBeforeED->setText(toqstr(params_["before"]));
+	textAfterED->setText(toqstr(params_["after"]));
+
+	// Update the interface
+	updateControls(bi);
+	updateStyles(bi);
 	if (selected_model_.rowCount()) {
 		selectedLV->blockSignals(true);
 		selectedLV->setFocus();
@@ -530,25 +513,24 @@ void GuiCitation::init()
 				QItemSelectionModel::ClearAndSelect);
 		selectedLV->blockSignals(false);
 
-		// set the style combo appropriately
-		string const & command = params_.getCmdName();
-		vector<CiteStyle> const & styles = citeStyles_;
-		CitationStyle const cs = citationStyleFromString(command);
-	
-		vector<CiteStyle>::const_iterator cit =
-			std::find(styles.begin(), styles.end(), cs.style);
-		if (cit != styles.end()) {
-			int const i = int(cit - styles.begin());
-			// the necessary update will be performed later
-			citationStyleCO->blockSignals(true);
-			citationStyleCO->setCurrentIndex(i);
-			citationStyleCO->blockSignals(false);
-		}
+		// Find the citation style
+		vector<string> const & cmds = citeCmds_;
+		vector<string>::const_iterator cit =
+			std::find(cmds.begin(), cmds.end(), cs.cmd);
+		int i = 0;
+		if (cit != cmds.end())
+			i = int(cit - cmds.begin());
+
+		// Set the style combo appropriately
+		citationStyleCO->blockSignals(true);
+		citationStyleCO->setCurrentIndex(i);
+		citationStyleCO->blockSignals(false);
+		updateFormatting(citeStyles_[i]);
 	} else
 		availableLV->setFocus();
-	fillFields(bi);
-	fillEntries(bi);
-	updateControls(bi);
+
+	applyPB->setEnabled(false);
+	okPB->setEnabled(false);
 }
 
 
@@ -605,25 +587,31 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 }
 
 
-QStringList GuiCitation::citationStyles(BiblioInfo const & bi, int sel)
+QStringList GuiCitation::citationStyles(BiblioInfo const & bi)
 {
-	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
-	return to_qstring_list(bi.getCiteStrings(key, documentBuffer()));
+	docstring const before = qstring_to_ucs4(textBeforeED->text());
+	docstring const after = qstring_to_ucs4(textAfterED->text());
+	vector<docstring> const keys = to_docstring_vector(cited_keys_);
+	vector<CitationStyle> styles = citeStyles_;
+	// FIXME: pass a dictionary instead of individual before, after, dialog, etc.
+	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(),
+		false, before, after, from_utf8("dialog"));
+	return to_qstring_list(ret);
 }
 
 
 void GuiCitation::setCitedKeys()
 {
 	cited_keys_ = selected_model_.stringList();
+	updateStyles();
 }
 
 
 bool GuiCitation::initialiseParams(string const & data)
 {
 	InsetCommand::string2params(data, params_);
-	CiteEngine const engine = citeEngine();
-	CiteEngineType const engine_type = citeEngineType();
-	citeStyles_ = citeStyles(engine, engine_type);
+	citeCmds_ = documentBuffer().params().citeCommands();
+	citeStyles_ = documentBuffer().params().citeStyles();
 	init();
 	return true;
 }
@@ -654,18 +642,6 @@ void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 			result.push_back(key);
 	}
 	keyVector = result;
-}
-
-
-CiteEngine GuiCitation::citeEngine() const
-{
-	return documentBuffer().params().citeEngine();
-}
-
-
-CiteEngineType GuiCitation::citeEngineType() const
-{
-	return documentBuffer().params().citeEngineType();
 }
 
 

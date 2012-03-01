@@ -1,0 +1,100 @@
+# \DeclareLyXModule[natbib.sty]{Natbib}
+# DescriptionBegin
+#   Loads the LaTeX package natbib, a citation engine. Natbib supports
+#   both author-year and numerical styles for citations, automatic sorting
+#   and merging of numerical citations, annotations, capitalization of the
+#   `van' part of author names, shortened and full author lists, and more.
+# DescriptionEnd
+# Excludes: basic | jurabib
+# Category: Citation engine
+
+# Author: Julien Rioux <jrioux@lyx.org>
+
+Format 37
+
+Requires natbib
+
+CiteEngineType authoryear|numerical
+DefaultBiblio  plainnat
+
+CiteEngine authoryear
+	Citet*[][]
+	Citep*[][]
+	Citealt*[][]
+	Citealp*[][]
+	Citeauthor*[]
+	citeyear[]
+	citeyearpar[][]
+	nocite
+End
+
+CiteEngine numerical
+	Citep*[][]
+	Citealp*[][]
+	Citet*[][]
+	Citealt*[][]
+	Citeauthor*
+	citeyearpar[][]
+	citeyear
+	nocite
+End
+
+CiteFormat default
+	# translatable bits
+	_notcited not cited
+	_addtobib Add to bibliography only.
+
+	# macros
+	!open [
+	!sep ,
+	!close ]
+
+	!nextauthor {%next%[[%!sep% %!abbrvauthor%%!nextauthor%]]}
+	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
+	!nextyear {%next%[[%!sep% %!year%%!nextyear%]]}
+
+	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	!textbefore {%textbefore%[[%textbefore% ]]}
+	!textafter {%textafter%[[, %textafter%]]}
+	!year {%year%[[%year%]][[??]]}
+
+	# cite styles
+	citet %!citet%%!textafter%%!close%
+	citealt %!citealt%%!textafter%
+	citeyearpar %!open%%!textbefore%%!year%%!nextyear%%!textafter%%!close%
+	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+End
+
+CiteFormat authoryear
+	!citet %!abbrvauthor% %!open%%!textbefore%%!year%%!nextcitet%
+	!citealt %!abbrvauthor% %!textbefore%%!year%%!nextcitealt%
+	!citealp %!abbrvauthor%, %!year%%!nextcitealp%
+
+	!nextcitet {%next%[[%!close%%!sep% %!citet%]]}
+	!nextcitealt {%next%[[%!sep% %!citealt%]]}
+	!nextcitealp {%next%[[%!sep% %!citealp%]]}
+
+	cite %!citet%%!textafter%%!close%
+	citep %!open%%!textbefore%%!citealp%%!textafter%%!close%
+	citealp %!textbefore%%!citealp%%!textafter%
+	citeauthor %!abbrvauthor%%!nextauthor%%!textafter%
+	citeyear %!year%%!nextyear%%!textafter%
+End
+
+CiteFormat numerical
+	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[#%key%]]}%!nextcitet%
+	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[#%key%]]}%!nextcitealt%
+
+	!hashkey {%dialog%[[#ID]][[#%key%%!nexthashkey%]]}
+
+	!nextcitet {%next%[[%!close%%!sep% %!citet%]]}
+	!nextcitealt {%next%[[%!sep% %!citealt%]]}
+	!nexthashid {%next%[[%!sep% #ID%!nexthashid%]]}
+	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}
+
+	cite %!open%%!textbefore%%!hashkey%%!textafter%%!close%
+	citep %!open%%!textbefore%%!hashkey%%!textafter%%!close%
+	citealp %!textbefore%%!hashkey%%!textafter%
+	citeauthor %!abbrvauthor%%!nextauthor%
+	citeyear %!year%%!nextyear%
+End

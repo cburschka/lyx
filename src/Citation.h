@@ -12,31 +12,16 @@
 #ifndef CITATION_H
 #define CITATION_H
 
+#include <string>
+
 namespace lyx {
 
 class Buffer;
 
-enum CiteEngine {
-	ENGINE_BASIC,
-	ENGINE_NATBIB,
-	ENGINE_JURABIB
-};
 
 enum CiteEngineType {
 	ENGINE_TYPE_AUTHORYEAR = 1,
 	ENGINE_TYPE_NUMERICAL = 2,
-};
-
-enum CiteStyle {
-	CITE,
-	CITET,
-	CITEP,
-	CITEALT,
-	CITEALP,
-	CITEAUTHOR,
-	CITEYEAR,
-	CITEYEARPAR,
-	NOCITE
 };
 
 
@@ -44,14 +29,19 @@ class CitationStyle
 {
 public:
 	///
-	CitationStyle() : style(CITE), full(false), forceUpperCase(false) {}
+	CitationStyle() : cmd("cite"), forceUpperCase(false), fullAuthorList(false),
+		textAfter(false), textBefore(false) {}
 
-	///
-	CiteStyle style;
-	///
-	bool full;
-	///
+	/// the LaTeX command
+	std::string cmd;
+	/// upper casing author prefixes (van -> Van)
 	bool forceUpperCase;
+	/// expanding the full author list
+	bool fullAuthorList;
+	/// supports text after the citation
+	bool textAfter;
+	/// supports text before the citation
+	bool textBefore;
 };
 
 } // namespace lyx

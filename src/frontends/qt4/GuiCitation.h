@@ -57,8 +57,10 @@ private Q_SLOTS:
 	void on_regexCB_stateChanged(int);
 	void on_asTypeCB_stateChanged(int);
 	void changed();
-	///
+	/// set the citation keys, mark as changed
 	void setCitedKeys();
+	/// update the styles for the style combo, mark as changed
+	void updateStyles();
 	/// performs a limited update, suitable for internal call
 	void updateControls();
 
@@ -93,16 +95,14 @@ private:
 	void updateInfo(BiblioInfo const & bi, QModelIndex const &);
 	/// enable/disable buttons
 	void setButtons();
-	/// fill the styles combo
-	void fillStyles(BiblioInfo const & bi);
 	/// fill the fields combo
 	void fillFields(BiblioInfo const & bi);
 	/// fill the entries combo
 	void fillEntries(BiblioInfo const & bi);
 	/// set the styles combo
-	void updateStyle();
+	void updateStyles(BiblioInfo const & bi);
 	/// set the formatting widgets
-	void updateFormatting(CiteStyle currentStyle);
+	void updateFormatting(CitationStyle currentStyle);
 	///
 	void updateControls(BiblioInfo const & bi);
 	///
@@ -123,7 +123,7 @@ private:
 		);
 
 	/// List of example cite strings
-	QStringList citationStyles(BiblioInfo const & bi, int);
+	QStringList citationStyles(BiblioInfo const & bi);
 
 	/// Set the Params variable for the Controller.
 	void apply(int const choice, bool const full, bool const force,
@@ -132,10 +132,6 @@ private:
 	///
 	void filterByEntryType(BiblioInfo const & bi,
 		std::vector<docstring> & keyVector, docstring entryType);
-	///
-	CiteEngine citeEngine() const;
-	///
-	CiteEngineType citeEngineType() const;
 
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.

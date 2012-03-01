@@ -1334,6 +1334,7 @@ dist_layouts_DATA =\
 	layouts/armenian-article.layout \
 	layouts/article.layout \
 	layouts/article-beamer.layout \
+	layouts/basic.module \
 	layouts/beamer.layout \
 	layouts/bicaption.module \
 	layouts/book.layout \
@@ -1401,6 +1402,7 @@ dist_layouts_DATA =\
 	layouts/jsarticle.layout \
 	layouts/jsbook.layout \
 	layouts/jss.layout \
+	layouts/jurabib.module \
 	layouts/kluwer.layout \
 	layouts/knitr.module \
 	layouts/latex8.layout \
@@ -1423,6 +1425,7 @@ dist_layouts_DATA =\
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
+	layouts/natbib.module \
 	layouts/noweb.module \
 	layouts/numarticle.inc \
 	layouts/numreport.inc \

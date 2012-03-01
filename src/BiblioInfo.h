@@ -27,9 +27,6 @@ namespace lyx {
 
 class Buffer;
 
-/// FIXME: To Citation.cpp?
-/// Returns a vector of available Citation styles.
-std::vector<CiteStyle> citeStyles(CiteEngine, CiteEngineType);
 /// \param latex_str a LaTeX command, "cite", "Citep*", etc
 CitationStyle citationStyleFromString(std::string const & latex_str);
 /// the other way round
@@ -54,7 +51,7 @@ public:
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor() const;
+	docstring const getAbbreviatedAuthor(bool jurabib_style = false) const;
 	///
 	docstring const getYear() const;
 	///
@@ -63,6 +60,10 @@ public:
 	/// \param pointer to crossref information
 	docstring const & getInfo(BibTeXInfo const * const xref,
 			Buffer const & buf, bool richtext) const;
+	/// \return formatted BibTeX data for a citation label
+	docstring const getLabel(BibTeXInfo const * const xref,
+		Buffer const & buf, std::string const & format, bool richtext,
+		docstring before, docstring after, docstring dialog, bool next = false) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
@@ -83,6 +84,8 @@ public:
 	void setAllData(docstring const & d) { all_data_ = d; }
 	///
 	void label(docstring const & d) { label_= d; }
+	///
+	void key(docstring const & d) { bib_key_= d; }
 	///
 	docstring const & label() const { return label_; }
 	///
@@ -106,7 +109,8 @@ private:
 	/// to get the data from xref BibTeXInfo object, which would normally
 	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key,
-			BibTeXInfo const * const xref = 0) const;
+		docstring const & before, docstring const & after, docstring const & dialog,
+		BibTeXInfo const * const xref = 0) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -122,8 +126,9 @@ private:
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(std::string const & fmt,
-			BibTeXInfo const * const xref, int & counter,
-			Buffer const & buf, bool richtext) const;
+		BibTeXInfo const * const xref, int & counter,
+		Buffer const & buf, bool richtext, docstring before = docstring(),
+		docstring after = docstring(), docstring dialog = docstring(), bool next = false) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
@@ -177,38 +182,24 @@ public:
 	/// marked in the citation format and escape < and > elsewhere.
 	docstring const getInfo(docstring const & key, Buffer const & buf,
 			bool richtext = false) const;
+	/// \return formatted BibTeX data for citation labels.
+	/// Citation labels can have more than one key.
+	docstring const getLabel(std::vector<docstring> const & keys,
+		Buffer const & buf, std::string const & style, bool richtext = false,
+		docstring const & before = docstring(),
+		docstring const & after = docstring(),
+		docstring const & dialog = docstring()) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
 	bool isBibtex(docstring const & key) const;
-	/**
-	  * "Translates" the available Citation Styles into strings for a given key,
-	  * either numerical or author-year depending upon the active engine. (See
-	  * below for those methods.)
-	  */
-	std::vector<docstring> const
-			getCiteStrings(docstring const & key, Buffer const & buf) const;
-	/**
-		* "Translates" the available Citation Styles into strings for a given key.
-		* The returned string is displayed by the GUI.
-		* [XX] is used in place of the actual reference
-		* Eg, the vector will contain: [XX], Jones et al. [XX], ...
-		* User supplies :
-		*  the key,
-		*  the buffer
-		*/
-	std::vector<docstring> const
-			getNumericalStrings(docstring const & key, Buffer const & buf) const;
-	/**
-		* "Translates" the available Citation Styles into strings for a given key.
-		* The returned string is displayed by the GUI.
-		* Eg, the vector will contain:
-		*  Jones et al. (1990), (Jones et al. 1990), Jones et al. 1990, ...
-		* User supplies :
-		*  the key,
-		*  the buffer
-		*/
-	std::vector<docstring> const
-			getAuthorYearStrings(docstring const & key, Buffer const & buf) const;
+	/// Translates the available citation styles into strings for a given
+	/// list of keys, using either numerical or author-year style depending
+	/// upon the active engine.
+	std::vector<docstring> const getCiteStrings(std::vector<docstring> const & keys,
+		std::vector<CitationStyle> const & styles, Buffer const & buf, bool richtext = false,
+		docstring const & before = docstring(),
+		docstring const & after = docstring(),
+		docstring const & dialog = docstring()) const;
 	/// Collects the cited entries from buf.
 	void collectCitedEntries(Buffer const & buf);
 	/// A list of BibTeX keys cited in the current document, sorted by
