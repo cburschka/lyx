@@ -3205,12 +3205,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "index" ||
 		         (t.cs() == "sindex" && preamble.use_indices() == "true")) {
 			context.check_layout(os);
-			string const kind = (t.cs() == "index") ? "idx" : p.getArg('[', ']');
+			string const arg = (t.cs() == "sindex" && p.hasOpt()) ?
+				p.getArg('[', ']') : "";
+			string const kind = arg.empty() ? "idx" : arg;
 			begin_inset(os, "Index ");
 			os << kind << "\nstatus collapsed\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context, "Index");
 			end_inset(os);
-			if (t.cs() == "sindex")
+			if (kind != "idx")
 				preamble.registerAutomaticallyLoadedPackage("splitidx");
 		}
 
