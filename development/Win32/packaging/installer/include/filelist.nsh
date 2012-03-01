@@ -112,7 +112,7 @@ Lists of files to include in the installer
   ${FILE}log.xml"
   ${FILE}magic.xml"
   ${FILE}policy.xml"
-  ${FILE}sRGB.icm"
+  ${FILE}sRGB.icc"
   ${FILE}thresholds.xml"
   ${FILE}type-ghostscript.xml"
   ${FILE}type.xml"
