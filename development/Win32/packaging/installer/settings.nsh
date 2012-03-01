@@ -44,6 +44,6 @@ These typically need to be modified for each LyX release
 # MiKTeX
 # Sizes in KB
 
-!define SETUPFILE_LATEX "basic-miktex-2.9.4250.exe"
-!define SIZE_DOWNLOAD_LATEX 167828
+!define SETUPFILE_LATEX "basic-miktex-2.9.4407.exe"
+!define SIZE_DOWNLOAD_LATEX 162475
 !define SIZE_LATEX 380000
