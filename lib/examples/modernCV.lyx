@@ -22,7 +22,7 @@
 % optional
 % \address{street and number}{postcode city}
 % '\\' adds a line break
-\address{Teststreet 17}{03333 Nicecity\\ Switzerland}
+\address{Teststreet 17}{03333 Nicecity\protect\\[0.1em] Switzerland\protect\\[0.2em]}
 
 % optional
 \phone{+43(0)999 9999}
