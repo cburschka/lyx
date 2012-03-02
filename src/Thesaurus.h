@@ -14,6 +14,7 @@
 #define THESAURUS_H
 
 #include "support/docstring.h"
+#include "WordLangTuple.h"
 
 #include <map>
 #include <string>
@@ -38,7 +39,7 @@ public:
 	/**
 	 * look up some text in the thesaurus
 	 */
-	Meanings lookup(docstring const & text, docstring const & lang);
+	Meanings lookup(WordLangTuple const & wl);
 	/** check if a thesaurus for a given language \p lang is available
 	 *  (installed and loaded)
 	 */

@@ -62,6 +62,9 @@ public:
 	/// Gives suggestions.
 	virtual void suggest(WordLangTuple const &, docstring_list & suggestions) = 0;
 
+	/// Lemmatizing: return stem of word (used by Thesaurus).
+	virtual void stem(WordLangTuple const &, docstring_list & suggestions) = 0;
+
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const &) = 0;
 

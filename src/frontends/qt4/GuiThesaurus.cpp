@@ -22,6 +22,7 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "lyxfind.h"
+#include "WordLangTuple.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -173,11 +174,11 @@ void GuiThesaurus::updateLists()
 
 	QString const lang = languageCO->itemData(
 		languageCO->currentIndex()).toString();
-	docstring const lang_code =
-		from_ascii(lyx::languages.getLanguage(fromqstr(lang))->code());
+	Language * language = const_cast<Language*>(lyx::languages.getLanguage(fromqstr(lang)));
+	docstring const lang_code = from_ascii(language->code());
 
 	Thesaurus::Meanings meanings =
-		getMeanings(qstring_to_ucs4(entryCO->currentText()), lang_code);
+		getMeanings(WordLangTuple(qstring_to_ucs4(entryCO->currentText()), language));
 
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
@@ -271,11 +272,10 @@ void GuiThesaurus::replace(docstring const & newstr)
 }
 
 
-Thesaurus::Meanings const & GuiThesaurus::getMeanings(docstring const & str,
-	docstring const & lang)
+Thesaurus::Meanings const & GuiThesaurus::getMeanings(WordLangTuple const & wl)
 {
-	if (str != laststr_)
-		meanings_ = thesaurus.lookup(str, lang);
+	if (wl.word() != laststr_)
+		meanings_ = thesaurus.lookup(wl);
 	return meanings_;
 }
 

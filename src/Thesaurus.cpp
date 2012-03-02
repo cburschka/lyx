@@ -15,9 +15,13 @@
 
 #include "LyXRC.h"
 
+#include "SpellChecker.h"
+#include "WordLangTuple.h"
+
 #include "support/FileNameList.h"
 #include "support/Package.h"
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -195,17 +199,20 @@ bool Thesaurus::thesaurusInstalled(docstring const & lang) const
 }
 
 
-Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lang)
+Thesaurus::Meanings Thesaurus::lookup(WordLangTuple const & wl)
 {
 	Meanings meanings;
 	MyThes * mythes = 0;
 
-	if (!d->addThesaurus(lang))
+	docstring const lang_code = from_ascii(wl.lang()->code());
+	docstring const t = wl.word();
+
+	if (!d->addThesaurus(lang_code))
 		return meanings;
 
 	for (Thesauri::const_iterator it = d->thes_.begin();
 	     it != d->thes_.end(); ++it) {
-		if (it->first == lang) {
+		if (it->first == lang_code) {
 			mythes = it->second;
 			break;
 		}
@@ -220,8 +227,22 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 	string const text = to_iconv_encoding(support::lowercase(t), encoding);
 	int len = strlen(text.c_str());
 	int count = mythes->Lookup(text.c_str(), len, &pmean);
-	if (!count)
-		return meanings;
+	if (!count) {
+		SpellChecker * speller = theSpellChecker();
+		if (!speller)
+			return meanings;
+		docstring_list suggestions;
+		speller->stem(wl, suggestions);
+		for (size_t i = 0; i != suggestions.size(); ++i) {
+			string const wordform = to_iconv_encoding(support::lowercase(suggestions[i]), encoding);
+			len = strlen(wordform.c_str());
+			count = mythes->Lookup(wordform.c_str(), len, &pmean);
+			if (count)
+				break;
+		}
+		if (!count)
+			return meanings;
+	}
 
 	// don't change value of pmean or count
 	// they are needed for the CleanUpAfterLookup routine

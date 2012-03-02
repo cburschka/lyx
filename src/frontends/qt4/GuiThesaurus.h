@@ -16,6 +16,8 @@
 #include "Thesaurus.h"
 #include "ui_ThesaurusUi.h"
 
+#include "WordLangTuple.h"
+
 class QTreeWidgetItem;
 
 namespace lyx {
@@ -56,8 +58,7 @@ private:
 	void replace(docstring const & newstr);
 
 	/// get meanings
-	Thesaurus::Meanings const & getMeanings(docstring const & str,
-		docstring const & lang);
+	Thesaurus::Meanings const & getMeanings(WordLangTuple const & wl);
 
 private:
 	/// last string looked up

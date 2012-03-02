@@ -27,6 +27,7 @@ public:
 	///@{
 	enum Result check(WordLangTuple const &);
 	void suggest(WordLangTuple const &, docstring_list &);
+	void stem(WordLangTuple const &, docstring_list &);
 	void insert(WordLangTuple const &);
 	void remove(WordLangTuple const &);
 	void accept(WordLangTuple const &);
