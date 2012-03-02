@@ -116,6 +116,11 @@ bool isPrintable(char_type c)
 		// assume that all non-utf16 characters are printable
 		return true;
 	}
+	// Not yet recognized by QChar::isPrint()
+	// See https://bugreports.qt-project.org/browse/QTBUG-12144
+	// LATIN CAPITAL LETTER SHARP S
+	else if (c == 0x1e9e)
+		return true;
 	return ucs4_to_qchar(c).isPrint();
 }
 
