@@ -1289,6 +1289,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(branchesModule, SIGNAL(renameBranches(docstring const &, docstring const &)),
 		this, SLOT(branchesRename(docstring const &, docstring const &)));
+	connect(branchesModule, SIGNAL(okPressed()), this, SLOT(slotOK()));
 	updateUnknownBranches();
 
 
