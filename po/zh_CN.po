@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-01-31 09:56-0500\n"
+"POT-Creation-Date: 2012-03-03 10:18-0500\n"
 "PO-Revision-Date: 2011-06-02 23:49-0600\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -49,7 +49,7 @@ msgstr "版权"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "关闭(&C)"
 
@@ -62,7 +62,7 @@ msgid "The label as it appears in the document"
 msgstr "文档中出现之标签"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "&Label:"
 msgstr "标签(&L)："
 
@@ -124,18 +124,16 @@ msgstr "生成参考文献"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "处理程序(&P):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "选择一个处理程序"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:772
-#: src/frontends/qt4/GuiPrefs.cpp:867 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:867
 msgid "&Options:"
 msgstr "选项(&O)"
 
@@ -172,7 +170,7 @@ msgstr "输入BibTeX数据库名"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "添加(&A)"
 
@@ -244,7 +242,7 @@ msgstr "添加文献引用到目录(&T)"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "确认(&O)"
 
@@ -482,7 +480,7 @@ msgid "Define or change background color"
 msgstr "定义或改变背景颜色"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "改变颜色(&l)"
 
@@ -492,7 +490,7 @@ msgstr "删除选中分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3768
-#: src/Buffer.cpp:3781 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3781
 msgid "&Remove"
 msgstr "删除(&R)"
 
@@ -581,7 +579,7 @@ msgstr "大小(&z)"
 #: src/frontends/qt4/GuiDocument.cpp:1709
 #: src/frontends/qt4/GuiDocument.cpp:1784
 #: src/frontends/qt4/GuiDocument.cpp:2148
-#: src/frontends/qt4/GuiDocument.cpp:3222 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3224 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2529
@@ -785,7 +783,7 @@ msgstr "立即改变字体"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165 src/frontends/qt4/ui_RefUi.h:338
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Apply"
 msgstr "应用(&A)"
 
@@ -1799,7 +1797,6 @@ msgstr "链接名称"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:332
 msgid "&Name:"
 msgstr "名称(&N)："
 
@@ -1913,7 +1910,6 @@ msgid "&Edit"
 msgstr "编辑(&E)"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "可用索引(&A)"
 
@@ -1921,64 +1917,62 @@ msgstr "可用索引(&A)"
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "生成索引"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "使用多重索引"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "添加分支"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
-#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "删除选择的数据库"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "删除选择的数据库"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "重命名"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 #, fuzzy
 msgid "Define or change button color"
 msgstr "定义或改变背景颜色"
@@ -2360,7 +2354,7 @@ msgid "Update the display"
 msgstr "更新显示"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:336
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "更新(&U)"
 
@@ -2861,7 +2855,7 @@ msgstr "纸张规格"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
+#: src/frontends/qt4/ui/RefUi.ui:355
 msgid "&Format:"
 msgstr "格式(&F)："
 
@@ -4326,95 +4320,94 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr "状态栏消息"
 
-#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "标签(&b):"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/ui/RefUi.ui:49
 msgid "&References"
 msgstr "引用(&R)"
 
-#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
 msgstr "过滤(&F):"
 
-#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
 msgstr "输入字符串来过滤标签列表"
 
-#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
 msgstr "过滤（区分大小写）"
 
-#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:102
 msgid "Case-sensiti&ve"
 msgstr "区分大小写(&v)"
 
-#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr "将标签以字母序排序"
 
-#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:130
 msgid "&Sort"
 msgstr "排序(&S)"
 
-#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:140
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "按字母序排序标签（区分大小写）"
 
-#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:143
 msgid "Cas&e-sensitive"
 msgstr "区分大小写(&e)"
 
-#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "将标签按前缀分组（如\"sec:\"）"
 
-#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
 msgstr "分组(&p)"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:317
 msgid "&Go to Label"
 msgstr "跳至标签(&G)"
 
-#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
+#: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Cross-reference as it appears in output"
 msgstr "交叉引用"
 
-#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
+#: src/frontends/qt4/ui/RefUi.ui:216
 msgid "<reference>"
 msgstr "<引用>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:221
 msgid "(<reference>)"
 msgstr "(<引用>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:226
 msgid "<page>"
 msgstr "<页码>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:231
 msgid "on page <page>"
 msgstr "在页<页>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:236
 msgid "<reference> on page <page>"
 msgstr "<引用>在页<页>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:241
 msgid "Formatted reference"
 msgstr "格式化的引用"
 
-#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:246
 #, fuzzy
 msgid "Textual reference"
 msgstr "所有文献"
 
-#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
 msgstr "更新标签列表"
 
@@ -18132,12 +18125,12 @@ msgstr "嵌入项边框"
 msgid "ignore"
 msgstr "忽略"
 
-#: src/Converter.cpp:329 src/Converter.cpp:491 src/Converter.cpp:514
-#: src/Converter.cpp:557
+#: src/Converter.cpp:330 src/Converter.cpp:493 src/Converter.cpp:516
+#: src/Converter.cpp:559
 msgid "Cannot convert file"
 msgstr "无法转换文件"
 
-#: src/Converter.cpp:330
+#: src/Converter.cpp:331
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -18146,60 +18139,60 @@ msgstr ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
 
-#: src/Converter.cpp:442 src/Format.cpp:317 src/Format.cpp:385
+#: src/Converter.cpp:444 src/Format.cpp:317 src/Format.cpp:385
 msgid "Executing command: "
 msgstr "执行命令: "
 
-#: src/Converter.cpp:486
+#: src/Converter.cpp:488
 msgid "Build errors"
 msgstr "编译出错"
 
-#: src/Converter.cpp:487
+#: src/Converter.cpp:489
 msgid "There were errors during the build process."
 msgstr "编译过程出错."
 
-#: src/Converter.cpp:492
+#: src/Converter.cpp:494
 #, fuzzy, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
 msgstr "执行 %1$s 出错"
 
-#: src/Converter.cpp:515
+#: src/Converter.cpp:517
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "无法移动临时目录 %1$s 至 %2$s."
 
-#: src/Converter.cpp:559
+#: src/Converter.cpp:561
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "无法复制临时文件从 %1$s 到 %2$s."
 
-#: src/Converter.cpp:560
+#: src/Converter.cpp:562
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "无法移动临时文件从 %1$s 到 %2$s."
 
-#: src/Converter.cpp:616
+#: src/Converter.cpp:618
 msgid "Running LaTeX..."
 msgstr "运行LaTeX..."
 
-#: src/Converter.cpp:635
+#: src/Converter.cpp:637
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr "LaTeX运行出错并且LyX无法获取LaTeX日志 %1$s."
 
-#: src/Converter.cpp:638
+#: src/Converter.cpp:640
 msgid "LaTeX failed"
 msgstr "LaTeX出错"
 
-#: src/Converter.cpp:640
+#: src/Converter.cpp:642
 msgid "Output is empty"
 msgstr "空白输出"
 
-#: src/Converter.cpp:641
+#: src/Converter.cpp:643
 msgid "An empty output file was generated."
 msgstr "产生了空白输出"
 
@@ -18275,19 +18268,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "不能从 %1$s 复制到 %2$s."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "衬线字体"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "非衬线字体"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "等宽字体"
@@ -20266,7 +20259,7 @@ msgstr "文件名"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2113
-#: src/frontends/qt4/GuiDocument.cpp:3108
+#: src/frontends/qt4/GuiDocument.cpp:3110
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20275,7 +20268,7 @@ msgstr "是"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2112
-#: src/frontends/qt4/GuiDocument.cpp:3107
+#: src/frontends/qt4/GuiDocument.cpp:3109
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20479,7 +20472,7 @@ msgstr "LyX 文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1842
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 msgid "Error"
 msgstr "错误"
 
@@ -20930,9 +20923,9 @@ msgstr "默认"
 #: src/frontends/qt4/GuiDocument.cpp:1724
 #: src/frontends/qt4/GuiDocument.cpp:1730
 #: src/frontends/qt4/GuiDocument.cpp:1736
-#: src/frontends/qt4/GuiDocument.cpp:2915
-#: src/frontends/qt4/GuiDocument.cpp:2923
-#: src/frontends/qt4/GuiDocument.cpp:2931
+#: src/frontends/qt4/GuiDocument.cpp:2898
+#: src/frontends/qt4/GuiDocument.cpp:2906
+#: src/frontends/qt4/GuiDocument.cpp:2914
 msgid " (not installed)"
 msgstr " (没有安装)"
 
@@ -20979,13 +20972,13 @@ msgid "LyX Files (*.lyx)"
 msgstr "LyX文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1902
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3164
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "跟踪变化"
 
 #: src/frontends/qt4/GuiDocument.cpp:1903
-#: src/frontends/qt4/GuiDocument.cpp:3163
+#: src/frontends/qt4/GuiDocument.cpp:3165
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20994,12 +20987,12 @@ msgstr ""
 "该操作后你会丢失未应用的修改。"
 
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Dismiss"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "无法保存文档缺省设置"
@@ -21051,33 +21044,33 @@ msgstr "警告：某些必需的软件包不存在！"
 msgid "[No options predefined]"
 msgstr "[没有预定义选项]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3034
+#: src/frontends/qt4/GuiDocument.cpp:3036
 msgid "C&ustomize Hyperref Options"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3036
+#: src/frontends/qt4/GuiDocument.cpp:3038
 #, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "使用 hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Can't set layout!"
 msgstr "无法设置布局文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:3186
+#: src/frontends/qt4/GuiDocument.cpp:3188
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "无法为ID %1$s设置布局文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:3279
+#: src/frontends/qt4/GuiDocument.cpp:3281
 msgid "Not Found"
 msgstr "未找到"
 
-#: src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:3335
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3336
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -21085,12 +21078,12 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3338
+#: src/frontends/qt4/GuiDocument.cpp:3340
 #, fuzzy
 msgid "Could not load master"
 msgstr "无法改变文档类"
 
-#: src/frontends/qt4/GuiDocument.cpp:3339
+#: src/frontends/qt4/GuiDocument.cpp:3341
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -24080,11 +24073,11 @@ msgstr "进入数学文本模式 (textrm)"
 msgid "Regular expression editor mode"
 msgstr "使用正则表达式(&x)"
 
-#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
+#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
+#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -24330,7 +24323,7 @@ msgstr "所有调试信息"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "调试 `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
+#: src/support/lstrings.cpp:1300
 msgid "[[Replace with the code of your language]]"
 msgstr "zh_CN"
 

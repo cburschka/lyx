@@ -212,7 +212,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-02-01 12:21+0200\n"
+"POT-Creation-Date: 2012-03-03 10:18-0500\n"
 "PO-Revision-Date: 2012-02-01 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -18108,12 +18108,12 @@ msgstr "regexp-ram"
 msgid "ignore"
 msgstr "ignorera"
 
-#: src/Converter.cpp:329 src/Converter.cpp:491 src/Converter.cpp:514
-#: src/Converter.cpp:557
+#: src/Converter.cpp:330 src/Converter.cpp:493 src/Converter.cpp:516
+#: src/Converter.cpp:559
 msgid "Cannot convert file"
 msgstr "Kan inte omvandla fil"
 
-#: src/Converter.cpp:330
+#: src/Converter.cpp:331
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -18122,19 +18122,19 @@ msgstr ""
 "Ingen information för att omvandla %1$s formatfiler till %2$s.\n"
 "Definiera en omvandlare i inställningar."
 
-#: src/Converter.cpp:442 src/Format.cpp:317 src/Format.cpp:385
+#: src/Converter.cpp:444 src/Format.cpp:317 src/Format.cpp:385
 msgid "Executing command: "
 msgstr "Exekverar kommando: "
 
-#: src/Converter.cpp:486
+#: src/Converter.cpp:488
 msgid "Build errors"
 msgstr "Byggfel"
 
-#: src/Converter.cpp:487
+#: src/Converter.cpp:489
 msgid "There were errors during the build process."
 msgstr "Det fanns fel vid byggprocessen."
 
-#: src/Converter.cpp:492
+#: src/Converter.cpp:494
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -18143,26 +18143,26 @@ msgstr ""
 "Ett fel uppstod vid körning av:\n"
 "%1$s"
 
-#: src/Converter.cpp:515
+#: src/Converter.cpp:517
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Kunde inte flytta en tillfällig katalog från %1$s till %2$s."
 
-#: src/Converter.cpp:559
+#: src/Converter.cpp:561
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Kunde inte kopiera en tillfällig fil från %1$s till %2$s."
 
-#: src/Converter.cpp:560
+#: src/Converter.cpp:562
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Kunde inte flytta en tillfällig fil från %1$s till %2$s."
 
-#: src/Converter.cpp:616
+#: src/Converter.cpp:618
 msgid "Running LaTeX..."
 msgstr "LaTeX körs..."
 
-#: src/Converter.cpp:635
+#: src/Converter.cpp:637
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -18171,15 +18171,15 @@ msgstr ""
 "LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
 "%1$s."
 
-#: src/Converter.cpp:638
+#: src/Converter.cpp:640
 msgid "LaTeX failed"
 msgstr "LaTeX misslyckades"
 
-#: src/Converter.cpp:640
+#: src/Converter.cpp:642
 msgid "Output is empty"
 msgstr "Utmatning är tom"
 
-#: src/Converter.cpp:641
+#: src/Converter.cpp:643
 msgid "An empty output file was generated."
 msgstr "En tom utmatningsfil genererades."
 
@@ -24038,11 +24038,11 @@ msgstr "gick in i matematiktextläge (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Redigeringsläge för reguljära uttryck"
 
-#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
+#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorrigering av ('!' för att starta)"
 
-#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
+#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorrigering på (<mellanslag> för att avsluta)"
 
@@ -24291,7 +24291,7 @@ msgstr "Alla avlusningsmeddelanden"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Avlusar `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
+#: src/support/lstrings.cpp:1300
 msgid "[[Replace with the code of your language]]"
 msgstr "sv"
 

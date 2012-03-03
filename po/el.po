@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-01-31 09:56-0500\n"
+"POT-Creation-Date: 2012-03-03 10:18-0500\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -43,7 +43,7 @@ msgstr "Πνευματικά δικαιώματα"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Κλείσιμο"
 
@@ -56,7 +56,7 @@ msgid "The label as it appears in the document"
 msgstr "Η ετικέτα όπως εμφανίζεται στο έγγραφο"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "&Label:"
 msgstr "&Ετικέτα:"
 
@@ -122,18 +122,16 @@ msgstr "Δημιουργία βιβλιογραφίας"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "Επεξεργα&στής:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Επιλέξτε έναν επεξεργαστή"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:772
-#: src/frontends/qt4/GuiPrefs.cpp:867 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:867
 msgid "&Options:"
 msgstr "&Επιλογές:"
 
@@ -170,7 +168,7 @@ msgstr "Εισαγάγετε το όνομα της βάσης δεδομένω�
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:350 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "&Προσθήκη"
 
@@ -242,7 +240,7 @@ msgstr "Προ&σθήκη της βιβλιογραφίας στον πίνακ�
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr ""
 
@@ -482,7 +480,7 @@ msgid "Define or change background color"
 msgstr "Ορισμός ή αλλαγή χρώματος φόντου"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
 msgstr "&Μεταβολή Χρώματος..."
 
@@ -492,7 +490,7 @@ msgstr "Αφαίρεση επιλεγμένου κλάδου"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3768
-#: src/Buffer.cpp:3781 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3781
 msgid "&Remove"
 msgstr "&Αφαίρεση"
 
@@ -577,7 +575,7 @@ msgstr "Μέγε&θος:"
 #: src/frontends/qt4/GuiDocument.cpp:1709
 #: src/frontends/qt4/GuiDocument.cpp:1784
 #: src/frontends/qt4/GuiDocument.cpp:2148
-#: src/frontends/qt4/GuiDocument.cpp:3222 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3224 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2529
@@ -780,7 +778,7 @@ msgstr "Άμεσ&η εφαρμογή αλλαγών"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165 src/frontends/qt4/ui_RefUi.h:338
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Apply"
 msgstr "Ε&φαρμογή"
 
@@ -1805,7 +1803,6 @@ msgstr "Όνομα συσχετισμένο με το URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:332
 msgid "&Name:"
 msgstr "&Όνομα:"
 
@@ -1920,7 +1917,6 @@ msgid "&Edit"
 msgstr "&Επεξεργασία"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Δ&ιαθέσιμα Ευρετήρια:"
 
@@ -1928,7 +1924,7 @@ msgstr "Δ&ιαθέσιμα Ευρετήρια:"
 msgid "Select the index this entry should be listed in."
 msgstr "Επιλέξτε το ευρετήριο στο οποίο να εμφανίζεται αυτή η καταχώρηση."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1937,54 +1933,52 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Δημιουργία ευρετηρίου"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
 msgstr "&Χρήση πολλαπλών ευρετηρίων"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
 msgstr "Προσθήκη νέου ευρετηρίου στη λίστα"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
-#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Αφαίρεση του επιλεγμένου ευρετηρίου"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "Μετονομασία του επιλεγμένου ευρετηρίου"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "&Μετονομασία..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Ορισμός ή αλλαγή χρώματος κουμπιού"
 
@@ -2373,7 +2367,7 @@ msgid "Update the display"
 msgstr "Ενημέρωση εμφάνισης"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:74 src/frontends/qt4/ui_RefUi.h:336
+#: src/frontends/qt4/ui/ViewSourceUi.ui:74
 msgid "&Update"
 msgstr "Α&νανέωση"
 
@@ -2894,7 +2888,7 @@ msgstr "Μορφή Χαρτιού"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
+#: src/frontends/qt4/ui/RefUi.ui:355
 msgid "&Format:"
 msgstr "&Μορφή:"
 
@@ -4396,96 +4390,95 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "Ε&τικέτες σε:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/ui/RefUi.ui:49
 #, fuzzy
 msgid "&References"
 msgstr "Αναφορές"
 
-#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
 msgstr "&Φίλτρο:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
 msgstr "Εισαγωγή συμβολοσειράς για φιλτράρισμα της λίστας ετικετών"
 
-#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
 msgstr "Φιλτράρισμα με διάκριση πεζών-κεφαλαίων"
 
-#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:102
 msgid "Case-sensiti&ve"
 msgstr "&Διάκριση πεζών-κεφαλαίων"
 
-#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:130
 msgid "&Sort"
 msgstr "Τα&ξινόμηση"
 
-#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:140
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Ταξινόμηση ετικετών με αλφαβητική σειρά και διάκριση πεζών-κεφαλαίων"
 
-#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:143
 msgid "Cas&e-sensitive"
 msgstr "&Διάκριση πεζών-κεφαλαίων"
 
-#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
 msgstr "&Ομαδοποίηση"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:317
 msgid "&Go to Label"
 msgstr "&Πήγαινε στην ετικέτα"
 
-#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
+#: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Cross-reference as it appears in output"
 msgstr "Παραπομπή όπως εμφανίζεται στην έξοδο"
 
-#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
+#: src/frontends/qt4/ui/RefUi.ui:216
 msgid "<reference>"
 msgstr "<παραπομπή>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:221
 msgid "(<reference>)"
 msgstr "(<παραπομπή>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:226
 msgid "<page>"
 msgstr "<σελίδα>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:231
 msgid "on page <page>"
 msgstr "στη σελίδα <σελίδα>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:236
 msgid "<reference> on page <page>"
 msgstr "<παραπομπή> στη σελίδα <σελίδα>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:241
 msgid "Formatted reference"
 msgstr "Μορφοποιημένη παραπομπή"
 
-#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:246
 #, fuzzy
 msgid "Textual reference"
 msgstr "όλες οι αναφορές"
 
-#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
 msgstr "Ενημέρωση λίστας ετικέτών"
 
@@ -18040,12 +18033,12 @@ msgstr ""
 msgid "ignore"
 msgstr "παράβλεψη"
 
-#: src/Converter.cpp:329 src/Converter.cpp:491 src/Converter.cpp:514
-#: src/Converter.cpp:557
+#: src/Converter.cpp:330 src/Converter.cpp:493 src/Converter.cpp:516
+#: src/Converter.cpp:559
 msgid "Cannot convert file"
 msgstr "Δεν είναι δυνατή η μετατροπή του αρχείου"
 
-#: src/Converter.cpp:330
+#: src/Converter.cpp:331
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -18054,48 +18047,48 @@ msgstr ""
 "Καμιά πληροφορία μετατροπής αρχείων φόρμας %1$s σε %2$s.\n"
 "Ορίστε έναν μετατροπέα στις προτιμήσεις."
 
-#: src/Converter.cpp:442 src/Format.cpp:317 src/Format.cpp:385
+#: src/Converter.cpp:444 src/Format.cpp:317 src/Format.cpp:385
 msgid "Executing command: "
 msgstr "Εκτέλεση εντολής:"
 
-#: src/Converter.cpp:486
+#: src/Converter.cpp:488
 msgid "Build errors"
 msgstr "σφάλματα δόμησης (Build)"
 
-#: src/Converter.cpp:487
+#: src/Converter.cpp:489
 msgid "There were errors during the build process."
 msgstr "Υπήρξαν σφάλματα κατά τη διαδικασία δόμησης."
 
-#: src/Converter.cpp:492
+#: src/Converter.cpp:494
 #, fuzzy, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
 msgstr "Συνέβη ένα σφάλμα κατά την εκτέλεση του %1$s"
 
-#: src/Converter.cpp:515
+#: src/Converter.cpp:517
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr ""
 "Δεν ήταν δυνατή η μεταφορά ενός προσωρινού φακέλου από το %1$s στο %2$s."
 
-#: src/Converter.cpp:559
+#: src/Converter.cpp:561
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr ""
 "Δεν ήταν δυνατή η αντιγραφή ενός προσωρινού αρχείου από το %1$s στο %2$s."
 
-#: src/Converter.cpp:560
+#: src/Converter.cpp:562
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 "Δεν ήταν δυνατή η μεταφορά ενός προσωρινού αρχείου από το %1$s στο %2$s."
 
-#: src/Converter.cpp:616
+#: src/Converter.cpp:618
 msgid "Running LaTeX..."
 msgstr "Εκτέλεση LaTeX..."
 
-#: src/Converter.cpp:635
+#: src/Converter.cpp:637
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -18104,15 +18097,15 @@ msgstr ""
 "Το LaTeX δεν εκτελέστηκε επιτυχώς. Επιπλέον, το LyX δεν εντόπισε το "
 "ημερολόγιο LaTeX %1$s."
 
-#: src/Converter.cpp:638
+#: src/Converter.cpp:640
 msgid "LaTeX failed"
 msgstr "Το LaTeX απέτυχε"
 
-#: src/Converter.cpp:640
+#: src/Converter.cpp:642
 msgid "Output is empty"
 msgstr "Η έξοδος είναι κενή"
 
-#: src/Converter.cpp:641
+#: src/Converter.cpp:643
 msgid "An empty output file was generated."
 msgstr "Δημιουργήθηκε ένα κενό αρχείο εξόδου."
 
@@ -18186,19 +18179,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Η αντιγραφή του %1$s στο %2$s απέτυχε."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr ""
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr ""
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3222
+#: src/frontends/qt4/GuiDocument.cpp:3224
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr ""
@@ -20228,7 +20221,7 @@ msgstr "Κατάληξη Ονόματος Αρχείου"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2113
-#: src/frontends/qt4/GuiDocument.cpp:3108
+#: src/frontends/qt4/GuiDocument.cpp:3110
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20237,7 +20230,7 @@ msgstr "Ναι"
 
 #: src/frontends/qt4/GuiBranches.cpp:101 src/frontends/qt4/GuiBranches.cpp:109
 #: src/frontends/qt4/GuiDocument.cpp:2112
-#: src/frontends/qt4/GuiDocument.cpp:3107
+#: src/frontends/qt4/GuiDocument.cpp:3109
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20429,7 +20422,7 @@ msgstr "Έγγραφα LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1842
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -20880,9 +20873,9 @@ msgstr "Προεπιλεγμένη τιμή"
 #: src/frontends/qt4/GuiDocument.cpp:1724
 #: src/frontends/qt4/GuiDocument.cpp:1730
 #: src/frontends/qt4/GuiDocument.cpp:1736
-#: src/frontends/qt4/GuiDocument.cpp:2915
-#: src/frontends/qt4/GuiDocument.cpp:2923
-#: src/frontends/qt4/GuiDocument.cpp:2931
+#: src/frontends/qt4/GuiDocument.cpp:2898
+#: src/frontends/qt4/GuiDocument.cpp:2906
+#: src/frontends/qt4/GuiDocument.cpp:2914
 msgid " (not installed)"
 msgstr " (δεν είναι εγκατεστημμένο)"
 
@@ -20928,12 +20921,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "Αρχεία LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1902
-#: src/frontends/qt4/GuiDocument.cpp:3162
+#: src/frontends/qt4/GuiDocument.cpp:3164
 msgid "Unapplied changes"
 msgstr "Μη εφαρμοσμένες αλλαγές"
 
 #: src/frontends/qt4/GuiDocument.cpp:1903
-#: src/frontends/qt4/GuiDocument.cpp:3163
+#: src/frontends/qt4/GuiDocument.cpp:3165
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -20942,12 +20935,12 @@ msgstr ""
 "Εάν δεν τις εφαρμόσετε τώρα, θα χαθούν μετά από αυτή την πράξη."
 
 #: src/frontends/qt4/GuiDocument.cpp:1905
-#: src/frontends/qt4/GuiDocument.cpp:3165
+#: src/frontends/qt4/GuiDocument.cpp:3167
 msgid "&Dismiss"
 msgstr "Α&πόρριψη"
 
 #: src/frontends/qt4/GuiDocument.cpp:1917
-#: src/frontends/qt4/GuiDocument.cpp:3173
+#: src/frontends/qt4/GuiDocument.cpp:3175
 msgid "Unable to set document class."
 msgstr "Αδύνατος ο ορισμός της κλάσης εγγράφου."
 
@@ -20997,33 +20990,33 @@ msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Κάποια απαιτούμενα πακέ
 msgid "[No options predefined]"
 msgstr "[Καμιά προκαθορισμένη επιλογή]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3034
+#: src/frontends/qt4/GuiDocument.cpp:3036
 msgid "C&ustomize Hyperref Options"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3036
+#: src/frontends/qt4/GuiDocument.cpp:3038
 #, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "&Χρήση υποστήριξης υπερσυνδέσμων"
 
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Can't set layout!"
 msgstr "Αδύνατος ο ορισμός διάταξης!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3186
+#: src/frontends/qt4/GuiDocument.cpp:3188
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Αδύνατος ο ορισμός διάταξης για ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3279
+#: src/frontends/qt4/GuiDocument.cpp:3281
 msgid "Not Found"
 msgstr "Δεν βρέθηκε"
 
-#: src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:3335
 msgid "Assigned master does not include this file"
 msgstr "Το ορισμένο ως κύριο δεν περιλαμβάνει αυτό το αρχείο"
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3336
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -21034,11 +21027,11 @@ msgstr ""
 "'%1$s' ώστε να χρησιμοποιήσετε τη δυνατότητα κυρίου\n"
 "εγγράφου."
 
-#: src/frontends/qt4/GuiDocument.cpp:3338
+#: src/frontends/qt4/GuiDocument.cpp:3340
 msgid "Could not load master"
 msgstr "Δεν ήταν δυνατή η φόρτωση του κύριου"
 
-#: src/frontends/qt4/GuiDocument.cpp:3339
+#: src/frontends/qt4/GuiDocument.cpp:3341
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -23936,11 +23929,11 @@ msgstr ""
 msgid "Regular expression editor mode"
 msgstr "Κατάσταση επεξεργαστή κανονικών εκφράσεων"
 
-#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
+#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
+#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -24182,7 +24175,7 @@ msgstr "Όλα τα μηνύματα εκσφαλμάτωσης"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Εκσφαλμάτωση `%1$s' (%2$s)"
 
-#: src/support/lstrings.cpp:1295
+#: src/support/lstrings.cpp:1300
 msgid "[[Replace with the code of your language]]"
 msgstr "el"
 
