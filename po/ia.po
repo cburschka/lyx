@@ -8657,34 +8657,28 @@ msgid "ACKNOWLEDGEMENTS"
 msgstr "RECOGNOSCENTIAS"
 
 #: lib/layouts/jasatex.layout:114
-#, fuzzy
 msgid "Alternative Affiliation"
 msgstr "Affiliation alternative:"
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Homepage"
-msgstr "nove pagina"
+msgstr "Pagina domo"
 
 #: lib/layouts/jasatex.layout:210
-#, fuzzy
 msgid "PACS numbers:"
-msgstr "Numero PACS:"
+msgstr "Numeros de PACS:"
 
 #: lib/layouts/jasatex.layout:213
-#, fuzzy
 msgid "Preprint number"
-msgstr "Pre-impression"
+msgstr "Numero de pre-impression"
 
 #: lib/layouts/jasatex.layout:216
-#, fuzzy
 msgid "Preprint number:"
-msgstr "Pre-impression"
+msgstr "Numero de pre-impression:"
 
 #: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
-#, fuzzy
 msgid "Online citation"
-msgstr "Inserta citation"
+msgstr "Citation in linea"
 
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
@@ -10602,14 +10596,17 @@ msgstr "Initial"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:584
 msgid "Rnw (knitr)"
-msgstr ""
+msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
-msgstr ""
+msgstr "Il usa le pacchetto knitr pro generare reporto dynamic. Iste pacchetto R "
+"debe esser installate usque iste modulo pote functionar: install.packages('knitr')."
+"Nota que illo depende de R>= 2.14.1. Pro ulterior information tu vide "
+"http://yihui.github.com/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -21725,10 +21722,8 @@ msgid ""
 msgstr "Nos attingeva le fin del documento, to volerea continuar ex le initio?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:385
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "&Motor del corrector orthographic:"
-
+msgstr "Corrector orthographic non ha dictionarios."
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
 msgstr "Latino de base"
@@ -24330,13 +24325,13 @@ msgstr "Usator incognite"
 #~ msgstr "Section de Appendices"
 
 #~ msgid "--- Appendices ---"
-#~ msgstr "-- Appendices --"
+#~ msgstr "--- Appendices ---"
 
 #~ msgid ""
 #~ "Select if LyX should output Windows-style paths rather than Posix-style "
 #~ "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 #~ "rather than the Cygwin teTeX."
 #~ msgstr ""
-#~ "Selige si  LyX debe fornir percursos in stilo Windows plus toto que in "
+#~ "Selige si LyX debe fornir percursos in stilo Windows plus toto que in "
 #~ "stilo Posix. Iste option es utile si on  usa le native MikTeX de "
-#~ "Windows,  plus tosto que le teTeX de Cygwin."
+#~ "Windows, plus tosto que le teTeX de Cygwin."
