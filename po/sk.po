@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-02-21 16:09+0100\n"
-"PO-Revision-Date: 2012-02-21 16:20+0100\n"
+"POT-Creation-Date: 2012-02-22 13:44+0100\n"
+"PO-Revision-Date: 2012-02-23 10:47+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
 "Language: sk\n"
@@ -103,6 +103,14 @@ msgstr "Použite štýl jurabib pre právne a humanitné odbory"
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
 msgstr "&Jurabib"
+
+#: lib/layouts/jurabib.module:51
+msgid "bibliography entry"
+msgstr "zápis do bibliografie"
+
+#: lib/layouts/jurabib.module:52
+msgid "Bibliography entry."
+msgstr "Zápis do bibliografie."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 msgid "Bibliography Style"
@@ -10383,6 +10391,15 @@ msgstr "Vlastnosť \\theproperty."
 msgid "Note \\thenote."
 msgstr "Poznámka \\thenote."
 
+#: lib/layouts/basic.module:2
+msgid "Default (basic)"
+msgstr "Štd. (basic)"
+
+#: lib/layouts/basic.module:6 lib/layouts/jurabib.module:8
+#: lib/layouts/natbib.module:9
+msgid "Citation engine"
+msgstr "Správa citácie"
+
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual captions"
 msgstr "Viac-jazykové popisy"
@@ -10654,6 +10671,10 @@ msgstr ""
 msgid "Initial"
 msgstr "Iniciálka"
 
+#: lib/layouts/jurabib.module:2
+msgid "Jurabib"
+msgstr "Jurabib"
+
 #: lib/layouts/knitr.module:2 lib/configure.py:551
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
@@ -10872,6 +10893,10 @@ msgstr "Koniec Viac-Stĺpcového Prostredia"
 #: lib/layouts/multicol.module:40
 msgid "---End Multiple Columns---"
 msgstr "--Koniec Viac-Stĺpcového Prostredia--"
+
+#: lib/layouts/natbib.module:2
+msgid "Natbib"
+msgstr "Natbib"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -16532,6 +16557,10 @@ msgid "Dia diagram.\n"
 msgstr "Diagram programu Dia.\n"
 
 #: lib/configure.py:483
+msgid "tgo"
+msgstr "tgo"
+
+#: lib/configure.py:483
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
@@ -16959,6 +16988,10 @@ msgstr "Pridať len do bibliografie."
 #: src/BiblioInfo.cpp:785
 msgid "before"
 msgstr "pred"
+
+#: lib/layouts/jurabib.module:54
+msgid "short title"
+msgstr "krátky titul"
 
 #: src/Buffer.cpp:136
 #, c-format
