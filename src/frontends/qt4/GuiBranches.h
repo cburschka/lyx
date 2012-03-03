@@ -49,9 +49,12 @@ public:
 	void apply(BufferParams & params) const;
 	void setUnknownBranches(QStringList const & b) { unknown_branches_ = b; }
 
+	bool eventFilter(QObject * obj, QEvent * event);
+
 Q_SIGNALS:
 	void changed();
 	void renameBranches(docstring const &, docstring const &);
+	void okPressed();
 
 protected:
 	void toggleBranch(QTreeWidgetItem *);
@@ -60,6 +63,7 @@ protected:
 	void updateView();
 
 protected Q_SLOTS:
+	void on_newBranchLE_textChanged(QString);
 	void on_addBranchPB_pressed();
 	void on_removePB_pressed();
 	void on_renamePB_pressed();

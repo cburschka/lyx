@@ -103,6 +103,9 @@
    </item>
    <item row="0" column="3" >
     <widget class="QPushButton" name="addBranchPB" >
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="toolTip" >
       <string>Add a new branch to the list</string>
      </property>

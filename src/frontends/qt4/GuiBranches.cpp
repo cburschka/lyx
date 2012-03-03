@@ -28,6 +28,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <QKeyEvent>
 #include <QListWidget>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -71,8 +72,38 @@ GuiBranches::GuiBranches(QWidget * parent)
 	connect(undef_->cancelPB, SIGNAL(clicked()),
 		undef_, SLOT(reject()));
 
+	newBranchLE->installEventFilter(this);
 	newBranchLE->setValidator(new NoNewLineValidator(newBranchLE));
 }
+
+
+bool GuiBranches::eventFilter(QObject * obj, QEvent * event) 
+{
+	QEvent::Type etype = event->type();
+	if (etype == QEvent::KeyPress 
+		  && obj == newBranchLE
+		  && addBranchPB->isEnabled()) {
+		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
+		int const keyPressed = keyEvent->key();
+		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
+
+		if (keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) {
+			if (!keyModifiers) {
+				on_addBranchPB_pressed();
+			} else if (keyModifiers == Qt::ControlModifier
+				  || keyModifiers == Qt::KeypadModifier
+				  || keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
+				on_addBranchPB_pressed();
+				newBranchLE->clearFocus();
+				okPressed();
+			}
+			event->accept();
+			return true;
+		}
+	}
+	return QObject::eventFilter(obj, event);
+}
+
 
 void GuiBranches::update(BufferParams const & params)
 {
@@ -132,14 +163,20 @@ void GuiBranches::apply(BufferParams & params) const
 }
 
 
+void GuiBranches::on_newBranchLE_textChanged(QString)
+{
+	QString const new_branch = newBranchLE->text();
+	addBranchPB->setEnabled(!new_branch.isEmpty());
+}
+
+
 void GuiBranches::on_addBranchPB_pressed()
 {
 	QString const new_branch = newBranchLE->text();
-	if (!new_branch.isEmpty()) {
-		branchlist_.add(qstring_to_ucs4(new_branch));
-		newBranchLE->clear();
-		updateView();
-	}
+	branchlist_.add(qstring_to_ucs4(new_branch));
+	newBranchLE->clear();
+	addBranchPB->setEnabled(false);
+	updateView();
 }
 
 
