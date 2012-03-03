@@ -929,6 +929,14 @@ contributers = [
                  "9 August 2006",
                  u"Italian localization of the interface"),
 
+     contributer(u"Scott Kostyshak",
+                 "skostysh@princeton.edu",
+                 "GPL",
+                 "GPL Statement",
+                 "m=133076234031944",
+                 "3 March 2012",
+                 u"Small UI fixes"),
+
      contributer(u"Michael Koziarski",
                  "koziarski () gmail ! com",
                  "GPL",
