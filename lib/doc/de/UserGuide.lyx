@@ -1583,7 +1583,7 @@ Navigieren
 \end_layout
 
 \begin_layout Standard
-LyX bietet Ihnen zwei Möglichkeiten, in Dokumenten zu navigieren:
+LyX bietet Ihnen verschiedene Möglichkeiten in Dokumenten zu navigieren:
 \end_layout
 
 \begin_layout Itemize
@@ -1596,28 +1596,60 @@ Navigieren
 \end_layout
 
 \begin_layout Itemize
-\begin_inset CommandInset label
-LatexCommand label
-name "Gliederung"
-
-\end_inset
-
 
 \family sans
 Dokument\SpecialChar \menuseparator
 Gliederung
 \family default
- (
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 85
-	groupId Icon
-
+ (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
 ).
- Hiermit schalten Sie die Gliederung an, die dann im linken Teil des LyX-Fenster
-s erscheint.
+\end_layout
+
+\begin_layout Standard
+Der Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
+\end_inset
+
+ springt zu der Position im Dokument, wo zuletzt etwas geändert wurde.
+ Das ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nützlich bei großen Dokumenten, wenn man zu einer anderen Position im Dokument
+ navigiert oder gescrollt hat, um etwas nachzuschauen und anschließend zur
+ Position zurückspringen möchte, wo man zuletzt etwas geschrieben hat.
+\end_layout
+
+\begin_layout Standard
+Mit der 
+\family sans
+F5
+\family default
+ -Taste wird der Cursor vertikal in LyXs Hauptfenster zentriert.
+\end_layout
+
+\begin_layout Subsection
+Gliederung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Gliederung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hiermit schalten Sie die Gliederung an, die dann im linken Teil des LyX-Fensters
+ erscheint.
  Ein weiterer Klick auf den Knopf lässt die Gliederung wieder verschwinden.
  Das Navigieren selber erfolgt wie im Menü 
 \family sans
@@ -1629,114 +1661,116 @@ Navigieren
 \family sans
 Inhaltsverzeichnis
 \family default
- auch andere auswählen:
-\end_layout
+ auch andere Listen auswählen, z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_deeper
-\begin_layout Enumerate
+B.
+ Fußnoten, oder Marken und Querverweise (siehe Abschnitt
+\begin_inset space ~
+\end_inset
 
-\emph on
-Abbildungsverzeichnis
-\emph default
- enthält die Abbildungen des Dokuments, die einen Titel haben
-\end_layout
 
-\begin_layout Enumerate
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Querverweise"
 
-\emph on
-Fußnoten
-\emph default
- enthält die Fußnoten des Dokuments
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
+), oder Notizen, oder Literaturverweise (siehe Abschnitt
+\begin_inset space ~
+\end_inset
 
-\emph on
-Gleichung
-\emph default
- enthält die Gleichungen des Dokuments
-\end_layout
 
-\begin_layout Enumerate
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literaturverzeichnis"
 
-\emph on
-Listings
-\emph default
- enthält die eingebundenen Programmlistings des Dokuments
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
-
-\emph on
-Grafiken
-\emph default
- enthält die im Dokument verwendeten Grafiken
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Marken und Querverweise
-\emph default
- enthält die Marken und Querverweise des Dokuments.
- Der Name, den Sie sehen ist der Markenname.
- Wenn links davon ein + ist, gibt es Querverweise, die mit einem Klick auf
- das + angezeigt werden.
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Notizen
-\emph default
- enthält die Notizen des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Randnotizen
-\emph default
- enthält die Randnotizen des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Stichwörter
-\emph default
- enthält die Stichwörter des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Tabellenverzeichnis
-\emph default
- enthält die Tabellen des Dokuments, die einen Titel haben
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Unterdokumente
-\emph default
- enthält die eingebundenen Unterdokumente des Dokuments
-\end_layout
-
-\begin_layout Standard
-Deren Elemente erscheinen in der Reihenfolge, in der sie im Dokument definiert
- werden.
+).
  Es hängt vom Dokumenttyp ab, welche Listen vorhanden sind.
 \end_layout
 
 \begin_layout Standard
-Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
+Rechts-klicken auf Elemente in der Gliederung 
+\lang english
+will in many cases open a context menu that will allow for direct modification
+ of those elements.
+ For example, with citations, the context menu allows you to open the citation
+ dialog and to modify the citation.
+ Right-clicking a change will allow you to accept or reject it.
+\end_layout
+
+\begin_layout Standard
+Das Feld `Filter' erlaubt es, die angezeigten Einträge einzugrenzen.
+ Wenn zum Beispiel die Liste der Marken und Querverweise angezeigt ist und
+ Sie nur Verweise auf Unterabschnitte sehen wollen, geben Sie den Text 
+\begin_inset Quotes gld
+\end_inset
+
+sub:
+\begin_inset Quotes grd
+\end_inset
+
+ in den Filter ein und nur Einträge mit diesem Text werden angezeigt.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+At the bottom of the outline are several buttons and the like that allow
+ you further to control the display.
+
+\lang ngerman
+ Die Option 
+\family sans
+Sortieren
+\family default
+ sortiert die aktuelle Liste alphabetisch.
+ 
+\lang english
+Otherwise, the elements appear in the order in which they occur in the document.
+
+\lang ngerman
+ Die Option 
+\family sans
+Behalten
+\family default
+ behält die aktuelle Ansicht bei.
+ Behalten bedeutet, dass wenn z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die Unterabschnitte von Abschnitt
+\begin_inset space ~
+\end_inset
+
+2 und 4 angezeigt sind und man auf Abschnitt
+\begin_inset space ~
+\end_inset
+
+3 klickt, die Unterabschnitte von Abschnitt
+\begin_inset space ~
+\end_inset
+
+2 und 4 weiterhin angezeigt bleiben.
+ Ohne die Option 
+\family sans
+Behalten
+\family default
+ würde nur die Unterabschnitte von Abschnitt
+\begin_inset space ~
+\end_inset
+
+3 angezeigt.
+ Des Weiteren gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  ändern können.
  Außerdem sind dort fünf Knöpfe mit folgender Bedeutung:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Graphics
 	filename ../../images/reload.png
 	scale 85
@@ -1747,7 +1781,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  : aktualisiert das Verzeichnis
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Graphics
 	filename ../../images/promote.png
 	scale 85
@@ -1760,7 +1794,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Graphics
 	filename ../../images/demote.png
 	scale 85
@@ -1773,7 +1807,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Graphics
 	filename ../../images/down.png
 	scale 70
@@ -1784,7 +1818,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
  Die Gliederung wird angepasst.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Graphics
 	filename ../../images/up.png
 	scale 70
@@ -1803,26 +1837,6 @@ Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
 \begin_layout Standard
 Die Gliederung erhalten Sie auch, wenn Sie am Anfang des Dokuments ein Inhalts-,
  Tabellen- oder Abbildungsverzeichnis angelegt haben und darauf klicken.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Der Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/bookmark-goto_0.png
-	scale 70
-
-\end_inset
-
- springt zu der Position im Dokument, wo zuletzt etwas geändert wurde.
- Das ist z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- nützlich bei großen Dokumenten, wenn man zu einer anderen Position im Dokument
- navigiert oder gescrollt hat, um etwas nachzuschauen und anschließend zur
- Position zurückspringen möchte, wo man zuletzt etwas geschrieben hat.
 \end_layout
 
 \begin_layout Section
