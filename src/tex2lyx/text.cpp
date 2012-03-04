@@ -1267,7 +1267,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
-                preamble.registerAutomaticallyLoadedPackage("rotfloat");
+		preamble.registerAutomaticallyLoadedPackage("rotfloat");
 	}
 
 	else if (name == "wrapfigure" || name == "wraptable") {
@@ -1300,7 +1300,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// we must make sure that the next item gets a \begin_layout.
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
-                preamble.registerAutomaticallyLoadedPackage("wrapfig");
+		preamble.registerAutomaticallyLoadedPackage("wrapfig");
 	}
 
 	else if (name == "minipage") {
