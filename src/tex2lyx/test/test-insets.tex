@@ -108,7 +108,7 @@ From bug 7306:
 \citet{gur+04} have demonstrated that authors should not have umlauts
 in their names. It's OK to use them in the man\"{u}script, though.
 \begin{thebibliography}{References}
-\bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} G�rkan, M.~A., Freitag,
+\bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} Gürkan, M.~A., Freitag,
 M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 
 
@@ -154,6 +154,43 @@ ftp2:\href{ftp://www.test.test}{www.test.test}
 
 \listoffigures
 \listoftables
+
+
+\section{Listings}
+
+Inline: \lstinline[language={C++}]!int a=5;!\\
+Float:
+
+\begin{lstlisting}[caption={Example Listing float},label={lst:Example-Listing},language=Python]
+# Example listing float
+def func(param):
+    'this is a python function'
+    pass
+\end{lstlisting}
+
+
+Here is an example listing with left line numbering, step ``3'',
+language ``Python'', options ``Extended character table'' and
+``Space~as~symbol'', range lines 3\,-\,8:
+
+\begin{lstlisting}[extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3]
+def func(param):
+    'this is a python function'
+    pass
+def func(param):
+'This is a German word: Tschüß'
+pass
+def func(param):
+'this is a python function'
+pass
+\end{lstlisting}
+
+Special cases:
+\begin{lstlisting}
+\begin{centering}
+hello
+\end{lstlisting}
+\lstinline[language=TeX]!\begin{centering} hello!
 
 
 \section{Graphics\index{Graphics}}
