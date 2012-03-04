@@ -1490,12 +1490,24 @@ arg   "bookmark-goto 0"
 \family sans
 Navigate\SpecialChar \menuseparator
 Bookmarks\SpecialChar \menuseparator
-NavigateBack
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
 \family default
 ) jumps to the position in the document where you recently changed something.
  This is useful when you have a large document and have navigated or scrolled
  to another document part to look for something, and want to go back to
  your last editing position.
+\end_layout
+
+\begin_layout Standard
+By pressing the 
+\family sans
+F5
+\family default
+ key the cursor will be vertically centered in LyX's main window.
 \end_layout
 
 \begin_layout Subsection
@@ -1539,7 +1551,6 @@ Right-clicking on elements in the Outline will in many cases open a context
  For example, with citations, the context menu allows you to open the citation
  dialog and to modify the citation.
  Right-clicking a change will allow you to accept or reject it.
- And so on.
 \end_layout
 
 \begin_layout Standard
@@ -1617,7 +1628,7 @@ depth
 
 \begin_layout Standard
 The 
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 

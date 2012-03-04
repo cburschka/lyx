@@ -1744,6 +1744,45 @@ arg   "dialog-toggle toc"
 を使用します。
 \end_layout
 
+\begin_layout Itemize
+
+\lang english
+You can set bookmarks in your document under 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks
+\family default
+ and use the same menu to return to them.
+ Note that bookmarks are saved between sessions.
+\end_layout
+
+\begin_layout Standard
+ツールバーボタン
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
+\end_inset
+
+は、文書中であなたが直近に変更を加えた部分に移動します。これは、例えば大きな文書中で、何かを探して文書の他の部分に動いたり、スクロールしたりした後に、元の編集箇
+所に戻りたいときに便利です。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By pressing the 
+\family sans
+F5
+\family default
+ key the cursor will be vertically centered in LyX's main window.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+The Outliner
+\end_layout
+
 \begin_layout Standard
 文書構造ウィンドウは、第
 \begin_inset CommandInset ref
@@ -1775,6 +1814,93 @@ reference "sec:図・表・アルゴリズム一覧"
 保持
 \family default
 オプションが有効にされていなければ、クリックされた第3節を強調するために、第2節と第4節は閉じられるようになっています。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Right-clicking on elements in the Outline will in many cases open a context
+ menu that will allow for direct modification of those elements.
+ For example, with citations, the context menu allows you to open the citation
+ dialog and to modify the citation.
+ Right-clicking a change will allow you to accept or reject it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The `Filter' field at the top allows you to restrict which entries appear
+ in the Outline.
+ For example, if you are displaying the list of Labels and References and
+ wish to see only references to subsections, you can enter the text 
+\begin_inset Quotes eld
+\end_inset
+
+sub:
+\begin_inset Quotes erd
+\end_inset
+
+ in the filter, and only entries containing that text will be displayed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+At the bottom of the outline are several buttons and the like that allow
+ you further to control the display.
+ The 
+\family sans
+Sort
+\family default
+ option sorts the current list alphabetically.
+ Otherwise, the elements appear in the order in which they occur in the
+ document.
+ The 
+\family sans
+Keep
+\family default
+ option keeps it in the current view state.
+ Keeping means that when you have e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the subsections of section
+\begin_inset space ~
+\end_inset
+
+2 and 4 shown and click on section
+\begin_inset space ~
+\end_inset
+
+3, the subsections of section
+\begin_inset space ~
+\end_inset
+
+2 and 4 will still be shown.
+ Without the 
+\family sans
+Keep
+\family default
+ option they will be hidden to highlight the clicked section
+\begin_inset space ~
+\end_inset
+
+3.
+ Finally, the slider at the left can be used to open the Outline to a given
+ 
+\begin_inset Quotes eld
+\end_inset
+
+depth
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is best just to experiment with it to see how it works.
 \end_layout
 
 \begin_layout Standard
@@ -1820,17 +1946,6 @@ Tab
 Shift+Tab
 \family default
 を使うと、例えば、第2.5節を第3節にしたり第2.4.1節にしたりという風に、節の階層を変えることができます。
-\end_layout
-
-\begin_layout Standard
-ツールバーボタン
-\begin_inset Info
-type  "icon"
-arg   "bookmark-goto 0"
-\end_inset
-
-は、文書中であなたが直近に変更を加えた部分に移動します。これは、例えば大きな文書中で、何かを探して文書の他の部分に動いたり、スクロールしたりした後に、元の編集箇
-所に戻りたいときに便利です。
 \end_layout
 
 \begin_layout Section
