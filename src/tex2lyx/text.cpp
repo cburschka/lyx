@@ -1344,8 +1344,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (name == "verbatim") {
-		os << "\n\\begin_layout Verbatim\n";
-		string const s = p.verbatimEnvironment("verbatim");
+		os << "\n\\end_layout\n\n\\begin_layout Verbatim\n";
+		string const s = p.plainEnvironment("verbatim");
 		string::const_iterator it2 = s.begin();
 		for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 			if (*it == '\\')

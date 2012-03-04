@@ -481,6 +481,30 @@ string const Parser::verbatimEnvironment(string const & name)
 }
 
 
+string const Parser::plainEnvironment(string const & name)
+{
+	if (!good())
+		return string();
+
+	ostringstream os;
+	for (Token t = get_token(); good(); t = get_token()) {
+		if (t.cat() == catBegin) {
+			putback();
+			os << '{' << verbatim_item() << '}';
+		} else if (t.asInput() == "\\end") {
+			string const end = getArg('{', '}');
+			if (end == name)
+				return os.str();
+			else
+				os << "\\end{" << end << '}';
+		} else
+			os << t.asInput();
+	}
+	cerr << "unexpected end of input" << endl;
+	return os.str();
+}
+
+
 void Parser::tokenize_one()
 {
 	catInit();
