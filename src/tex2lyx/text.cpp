@@ -1122,12 +1122,22 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context)
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
+	if (p.hasOpt()) {
+		// there can be a [] pair inside the argument for the language
+		string arg = p.getArg('[', ']');
+		if (arg.find("language={[") != string::npos) {
+			char start = p.next_token().character();
+			arg += ']';
+			arg += start;
+			arg += p.getArg(start, ']');
+		}
+		os << "lstparams " << '"' << arg << '"' << '\n';
+	}
 	os << "inline false\n"
 	   << "status collapsed\n";
 	Context context(true, parent_context.textclass);
 	context.layout = &parent_context.textclass.plainLayout();
-	context.check_layout(os);
-	string const s = p.verbatimEnvironment("lstlisting");
+	string const s = p.plainEnvironment("lstlisting");
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash\n";
@@ -1390,11 +1400,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// FIXME handle listings with parameters
 		//       If this is added, don't forgot to handle the
 		//       automatic color package loading
-		if (p.hasOpt())
-			parse_unknown_environment(p, name, os, FLAG_END,
-			                          outer, parent_context);
-		else
-			parse_listings(p, os, parent_context);
+		parse_listings(p, os, parent_context);
 		p.skip_spaces();
 	}
 
