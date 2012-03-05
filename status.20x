@@ -38,6 +38,8 @@ What's new
 
 - New option to show only the preamble when viewing source (bug 7860).
 
+- Fix undo warning when inserting plain text file (bug 7916).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -75,6 +77,8 @@ What's new
   Only <Ctrl+Enter> and numpad-<Enter> will also close the dialog.
 
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
+
+- Fixed stray warning when inserting inserting plaintext file (bug 7916).
 
 
 * DOCUMENTATION AND LOCALIZATION
