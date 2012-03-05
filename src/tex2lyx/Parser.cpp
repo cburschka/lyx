@@ -488,10 +488,7 @@ string const Parser::plainEnvironment(string const & name)
 
 	ostringstream os;
 	for (Token t = get_token(); good(); t = get_token()) {
-		if (t.cat() == catBegin) {
-			putback();
-			os << '{' << verbatim_item() << '}';
-		} else if (t.asInput() == "\\end") {
+		if (t.asInput() == "\\end") {
 			string const end = getArg('{', '}');
 			if (end == name)
 				return os.str();
