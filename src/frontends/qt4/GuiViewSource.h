@@ -47,7 +47,7 @@ public Q_SLOTS:
 	///
 	void updateDefaultFormat();
 	///
-	void fullSourceChanged();
+	void contentsChanged();
 
 private:
 	///

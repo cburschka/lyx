@@ -213,7 +213,7 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 		if (!(*it)->isDepClean(masterTmpDir)) {
 			string writefile = addName(masterTmpDir, (*it)->latexName());
 			(*it)->makeLaTeXFile(FileName(writefile), masterTmpDir,
-					     runparams, false);
+					     runparams, Buffer::OnlyBody);
 			(*it)->markDepClean(masterTmpDir);
 		}
 	}

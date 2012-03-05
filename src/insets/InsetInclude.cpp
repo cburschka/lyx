@@ -618,7 +618,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.par_begin = 0;
 		runparams.par_end = tmp->paragraphs().size();
 		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
-				onlyPath().absFileName(), runparams, false)) {
+				onlyPath().absFileName(), runparams, Buffer::OnlyBody)) {
 			docstring msg = bformat(_("Included file `%1$s' "
 					"was not exported correctly.\nWarning: "
 					"LaTeX export is probably incomplete."),
@@ -785,7 +785,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (all_pars) {
 		op.par_begin = 0;
 		op.par_end = 0;
-		ibuf->writeLyXHTMLSource(xs.os(), op, true);
+		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::OnlyBody);
 	} else
 		xs << XHTMLStream::ESCAPE_NONE 
 		   << "<!-- Included file: " 
@@ -849,7 +849,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 		LYXERR(Debug::LATEX, "exportfile:" << exportfile);
 		LYXERR(Debug::LATEX, "writefile:" << writefile);
 
-		tmp->makeDocBookFile(writefile, runparams, true);
+		tmp->makeDocBookFile(writefile, runparams, Buffer::OnlyBody);
 	}
 
 	runparams.exportdata->addExternalFile("docbook", writefile,

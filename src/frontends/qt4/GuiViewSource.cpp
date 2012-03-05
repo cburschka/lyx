@@ -49,8 +49,8 @@ ViewSourceWidget::ViewSourceWidget()
 {
 	setupUi(this);
 
-	connect(viewFullSourceCB, SIGNAL(clicked()),
-		this, SLOT(fullSourceChanged()));
+	connect(contentsCO, SIGNAL(activated(int)),
+		this, SLOT(contentsChanged()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
@@ -90,7 +90,7 @@ static size_t crcCheck(docstring const & s)
 	\param fullSource get full source code
 	\return true if the content has changed since last call.
  */
-static bool getContent(BufferView const * view, bool fullSource,
+static bool getContent(BufferView const * view, Buffer::OutputWhat output,
 		       QString & qstr, string const format, bool force_getcontent)
 {
 	// get the *top* level paragraphs that contain the cursor,
@@ -108,7 +108,7 @@ static bool getContent(BufferView const * view, bool fullSource,
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1, fullSource);
+	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1, output);
 	docstring s = ostr.str();
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);
@@ -129,7 +129,7 @@ void ViewSourceWidget::setBufferView(BufferView const * bv)
 }
 
 
-void ViewSourceWidget::fullSourceChanged()
+void ViewSourceWidget::contentsChanged()
 {
 	if (autoUpdateCB->isChecked())
 		updateView();
@@ -150,8 +150,15 @@ void ViewSourceWidget::updateView()
 		outputFormatCO->currentIndex()).toString());
 
 	QString content;
-	if (getContent(bv_, viewFullSourceCB->isChecked(), content,
-		  format, force_getcontent_))
+	Buffer::OutputWhat output = Buffer::CurrentParagraph;
+	if (contentsCO->currentIndex() == 1)
+		output = Buffer::FullSource;
+	else if (contentsCO->currentIndex() == 2)
+		output = Buffer::OnlyPreamble;
+	else if (contentsCO->currentIndex() == 3)
+		output = Buffer::OnlyBody;
+
+	if (getContent(bv_, output, content, format, force_getcontent_))
 		document_->setPlainText(content);
 
 	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
@@ -254,8 +261,9 @@ void GuiViewSource::saveSession() const
 {
 	Dialog::saveSession();
 	QSettings settings;
-	settings.setValue(
-		sessionKey() + "/fullsource", widget_->viewFullSourceCB->isChecked());
+	// see below
+	// settings.setValue(
+	//	sessionKey() + "/output", widget_->contentsCO->currentIndex());
 	settings.setValue(
 		sessionKey() + "/autoupdate", widget_->autoUpdateCB->isChecked());
 }
@@ -265,9 +273,9 @@ void GuiViewSource::restoreSession()
 {
 	DockView::restoreSession();
 	// FIXME: Full source updating is too slow to be done at startup.
-	//widget_->viewFullSourceCB->setChecked(
-	//	settings.value(sessionKey() + "/fullsource", false).toBool());
-	widget_->viewFullSourceCB->setChecked(false);
+	//widget_->outputCO-setCurrentIndex(
+	//	settings.value(sessionKey() + "/output", false).toInt());
+	widget_->contentsCO->setCurrentIndex(0);
 	QSettings settings;
 	widget_->autoUpdateCB->setChecked(
 		settings.value(sessionKey() + "/autoupdate", true).toBool());

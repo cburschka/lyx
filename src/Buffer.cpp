@@ -1338,7 +1338,7 @@ bool Buffer::write(ostream & ofs) const
 bool Buffer::makeLaTeXFile(FileName const & fname,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
-			   bool output_preamble, bool output_body) const
+			   OutputWhat output) const
 {
 	OutputParams runparams = runparams_in;
 
@@ -1369,8 +1369,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	otexstream os(ofs, d->texrow);
 	try {
 		os.texrow().reset();
-		writeLaTeXSource(os, original_path,
-		      runparams, output_preamble, output_body);
+		writeLaTeXSource(os, original_path, runparams, output);
 	}
 	catch (EncodingException & e) {
 		odocstringstream ods;
@@ -1415,7 +1414,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 void Buffer::writeLaTeXSource(otexstream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
-			   bool const output_preamble, bool const output_body) const
+         OutputWhat output) const
 {
 	// The child documents, if any, shall be already loaded at this point.
 
@@ -1429,6 +1428,11 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	LYXERR(Debug::LATEX, "  Buffer validation done.");
+
+	bool const output_preamble =
+		output == FullSource || output == OnlyPreamble;
+	bool const output_body =
+	  output == FullSource || output == OnlyBody;
 
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
@@ -1600,7 +1604,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 void Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
-			      bool const body_only) const
+			      OutputWhat output) const
 {
 	LYXERR(Debug::LATEX, "makeDocBookFile...");
 
@@ -1608,7 +1612,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	writeDocBookSource(ofs, fname.absFileName(), runparams, body_only);
+	writeDocBookSource(ofs, fname.absFileName(), runparams, output);
 
 	ofs.close();
 	if (ofs.fail())
@@ -1618,7 +1622,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 
 void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			     OutputParams const & runparams,
-			     bool const only_body) const
+			     OutputWhat output) const
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
@@ -1628,7 +1632,12 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	DocumentClass const & tclass = params().documentClass();
 	string const top_element = tclass.latexname();
 
-	if (!only_body) {
+	bool const output_preamble =
+		output == FullSource || output == OnlyPreamble;
+	bool const output_body =
+	  output == FullSource || output == OnlyBody;
+
+	if (output_preamble) {
 		if (runparams.flavor == OutputParams::XML)
 			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
@@ -1663,31 +1672,33 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		os << ">\n\n";
 	}
 
-	string top = top_element;
-	top += " lang=\"";
-	if (runparams.flavor == OutputParams::XML)
-		top += params().language->code();
-	else
-		top += params().language->code().substr(0, 2);
-	top += '"';
+	if (output_body) {
+		string top = top_element;
+		top += " lang=\"";
+		if (runparams.flavor == OutputParams::XML)
+			top += params().language->code();
+		else
+			top += params().language->code().substr(0, 2);
+		top += '"';
+	
+		if (!params().options.empty()) {
+			top += ' ';
+			top += params().options;
+		}
+	
+		os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
+				<< " file was created by LyX " << lyx_version
+				<< "\n  See http://www.lyx.org/ for more information -->\n";
+	
+		params().documentClass().counters().reset();
+	
+		updateMacros();
 
-	if (!params().options.empty()) {
-		top += ' ';
-		top += params().options;
+		sgml::openTag(os, top);
+		os << '\n';
+		docbookParagraphs(text(), *this, os, runparams);
+		sgml::closeTag(os, top_element);
 	}
-
-	os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
-	    << " file was created by LyX " << lyx_version
-	    << "\n  See http://www.lyx.org/ for more information -->\n";
-
-	params().documentClass().counters().reset();
-
-	updateMacros();
-
-	sgml::openTag(os, top);
-	os << '\n';
-	docbookParagraphs(text(), *this, os, runparams);
-	sgml::closeTag(os, top_element);
 }
 
 
@@ -1701,7 +1712,7 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	writeLyXHTMLSource(ofs, runparams, body_only);
+	writeLyXHTMLSource(ofs, runparams, FullSource);
 
 	ofs.close();
 	if (ofs.fail())
@@ -1711,7 +1722,7 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 
 void Buffer::writeLyXHTMLSource(odocstream & os,
 			     OutputParams const & runparams,
-			     bool const only_body) const
+			     OutputWhat output) const
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
@@ -1720,7 +1731,12 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateMacros();
 	updateMacroInstances(OutputUpdate);
 
-	if (!only_body) {
+	bool const output_preamble =
+		output == FullSource || output == OnlyPreamble;
+	bool const output_body =
+	  output == FullSource || output == OnlyBody;
+
+	if (output_preamble) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n"
 		   // FIXME Language should be set properly.
@@ -1764,14 +1780,19 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 					    << ";\n";
 				os << "}\n</style>\n";
 		}
-		os << "</head>\n<body>\n";
+		os << "</head>\n";
 	}
 
-	XHTMLStream xs(os);
-	params().documentClass().counters().reset();
-	xhtmlParagraphs(text(), *this, xs, runparams);
-	if (!only_body)
-		os << "</body>\n</html>\n";
+	if (output_body) {
+		os << "<body>\n";
+		XHTMLStream xs(os);
+		params().documentClass().counters().reset();
+		xhtmlParagraphs(text(), *this, xs, runparams);
+		os << "</body>\n";
+	}
+
+	if (output_preamble)
+		os << "</html>\n";
 }
 
 
@@ -3153,7 +3174,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 void Buffer::getSourceCode(odocstream & os, string const format,
 			   pit_type par_begin, pit_type par_end,
-			   bool full_source) const
+			   OutputWhat output) const
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
@@ -3162,21 +3183,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	if (full_source) {
-		os << "% " << _("Preview source code") << "\n\n";
-		d->texrow.reset();
-		d->texrow.newline();
-		d->texrow.newline();
-		if (params().isDocBook())
-			writeDocBookSource(os, absFileName(), runparams, false);
-		else if (runparams.flavor == OutputParams::HTML)
-			writeLyXHTMLSource(os, runparams, false);
-		else {
-			// latex or literate
-			otexstream ots(os, d->texrow);
-			writeLaTeXSource(ots, string(), runparams, true, true);
-		}
-	} else {
+	if (output == CurrentParagraph) {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
 		if (par_begin + 1 == par_end) {
@@ -3204,6 +3211,27 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			// latex or literate
 			otexstream ots(os, texrow);
 			latexParagraphs(*this, text(), ots, runparams);
+		}
+	} else {
+		os << "% ";
+		if (output == FullSource) 
+			os << _("Preview source code");
+		else if (output == OnlyPreamble)
+			os << _("Preview preamble");
+		else if (output == OnlyBody)
+			os << _("Preview body");
+		os << "\n\n";
+		d->texrow.reset();
+		d->texrow.newline();
+		d->texrow.newline();
+		if (params().isDocBook())
+			writeDocBookSource(os, absFileName(), runparams, output);
+		else if (runparams.flavor == OutputParams::HTML)
+			writeLyXHTMLSource(os, runparams, output);
+		else {
+			// latex or literate
+			otexstream ots(os, d->texrow);
+			writeLaTeXSource(ots, string(), runparams, output);
 		}
 	}
 }

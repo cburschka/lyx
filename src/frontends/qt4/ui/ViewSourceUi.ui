@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ViewSourceUi</class>
  <widget class="QWidget" name="ViewSourceUi">
@@ -5,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>452</width>
-    <height>120</height>
+    <width>528</width>
+    <height>205</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" rowspan="5">
     <widget class="QTextEdit" name="viewSourceTV">
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Ignored">
@@ -27,74 +28,86 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="outputFormatLA">
-       <property name="text">
-        <string>&amp;Output Format:</string>
-       </property>
-       <property name="buddy">
-        <cstring>outputFormatCO</cstring>
-       </property>
-      </widget>
+    <widget class="QLabel" name="outputFormatLA">
+     <property name="text">
+      <string>F&amp;ormat:</string>
+     </property>
+     <property name="buddy">
+      <cstring>outputFormatCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QComboBox" name="outputFormatCO">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>Select the output format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="contentsCO">
+     <item>
+      <property name="text">
+       <string>Current Paragraph</string>
+      </property>
      </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="outputFormatCO">
-       <property name="toolTip">
-        <string>Select the output format</string>
-       </property>
-      </widget>
+     <item>
+      <property name="text">
+       <string>Complete Source</string>
+      </property>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QCheckBox" name="viewFullSourceCB">
-       <property name="cursor">
-        <cursorShape>ArrowCursor</cursorShape>
-       </property>
-       <property name="text">
-        <string>Complete source</string>
-       </property>
-      </widget>
+     <item>
+      <property name="text">
+       <string>Preamble Only</string>
+      </property>
      </item>
-     <item row="2" column="0" colspan="2">
-      <widget class="QCheckBox" name="autoUpdateCB">
-       <property name="text">
-        <string>Automatic update</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
+     <item>
+      <property name="text">
+       <string>Body Only</string>
+      </property>
      </item>
-     <item row="3" column="0" colspan="2">
-      <widget class="QPushButton" name="updatePB">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>&amp;Update</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>17</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QCheckBox" name="autoUpdateCB">
+     <property name="text">
+      <string>Automatic update</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QPushButton" name="updatePB">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>&amp;Update</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>85</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>viewSourceTV</tabstop>
-  <tabstop>viewFullSourceCB</tabstop>
   <tabstop>autoUpdateCB</tabstop>
   <tabstop>updatePB</tabstop>
  </tabstops>
