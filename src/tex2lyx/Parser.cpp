@@ -502,6 +502,28 @@ string const Parser::plainEnvironment(string const & name)
 }
 
 
+string const Parser::plainCommand(char left, char right, string const & name)
+{
+	if (!good())
+		return string();
+	// ceck if first token is really the start character
+	Token tok = get_token();
+	if (tok.character() != left) {
+		cerr << "first character does not match start character of command \\" << name << endl;
+		return string();
+	}
+	ostringstream os;
+	for (Token t = get_token(); good(); t = get_token()) {
+		if (t.character() == right) {
+			return os.str();
+		} else
+			os << t.asInput();
+	}
+	cerr << "unexpected end of input" << endl;
+	return os.str();
+}
+
+
 void Parser::tokenize_one()
 {
 	catInit();

@@ -1118,7 +1118,7 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
-void parse_listings(Parser & p, ostream & os, Context & parent_context)
+void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_line)
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
@@ -1133,11 +1133,20 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context)
 		}
 		os << "lstparams " << '"' << arg << '"' << '\n';
 	}
-	os << "inline false\n"
-	   << "status collapsed\n";
+	if (in_line)
+		os << "inline true\n";
+	else
+		os << "inline false\n";
+	os << "status collapsed\n";
 	Context context(true, parent_context.textclass);
 	context.layout = &parent_context.textclass.plainLayout();
-	string const s = p.plainEnvironment("lstlisting");
+	string s;
+	if (in_line) {
+		s = p.plainCommand('!', '!', "lstinline");
+		context.new_paragraph(os);
+		context.check_layout(os);
+	} else
+		s = p.plainEnvironment("lstlisting");
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash\n";
@@ -1399,7 +1408,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		// FIXME handle the automatic color package loading
 		// uwestoehr asks: In what case color is loaded?
-		parse_listings(p, os, parent_context);
+		parse_listings(p, os, parent_context, false);
 		p.skip_spaces();
 	}
 
@@ -2785,6 +2794,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
+		}
+
+		else if (t.cs() == "lstinline") {
+			p.skip_spaces();
+			parse_listings(p, os, context, true);
 		}
 
 		else if (t.cs() == "ensuremath") {

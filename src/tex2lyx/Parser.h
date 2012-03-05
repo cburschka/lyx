@@ -202,6 +202,13 @@ public:
 	* This function is designed to parse verbatim environments.
 	*/
 	std::string const plainEnvironment(std::string const & name);
+	/*
+	* Basically the same as plainEnvironment(std::string const & name) but
+	* instead of \begin and \end commands the parsing is started/stopped
+	* at given characters.
+	* This function is designed to parse verbatim commands.
+	*/
+	std::string const plainCommand(char left, char right, std::string const & name);
 	/*!
 	 * Returns the character of the current token and increments
 	 * the token position.
