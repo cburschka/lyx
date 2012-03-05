@@ -1693,13 +1693,10 @@ reference "sec:Literaturverzeichnis"
 \end_layout
 
 \begin_layout Standard
-Rechts-klicken auf Elemente in der Gliederung 
-\lang english
-will in many cases open a context menu that will allow for direct modification
- of those elements.
- For example, with citations, the context menu allows you to open the citation
- dialog and to modify the citation.
- Right-clicking a change will allow you to accept or reject it.
+Rechts-klicken auf Elemente in der Gliederung öffnet in vielen Fällen ein
+ Kontextmenü mit dem Elemente direkt verändert werden können.
+ Zum Beispiel erlaubt das Kontextmenü für Literaturverweise den Literaturverweis
+-Dialog zu öffnen um den Verweis zu bearbeiten.
 \end_layout
 
 \begin_layout Standard
@@ -1717,22 +1714,15 @@ sub:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-At the bottom of the outline are several buttons and the like that allow
- you further to control the display.
-
-\lang ngerman
+Unten in der Gliederung gibt es verschiedene Knöpfe und Optionen zur Kontrolle
+ der Gliederung.
  Die Option 
 \family sans
 Sortieren
 \family default
  sortiert die aktuelle Liste alphabetisch.
- 
-\lang english
-Otherwise, the elements appear in the order in which they occur in the document.
-
-\lang ngerman
+ Ansonsten erscheinen die Elemente in der Reihenfolge, in der sie im Dokument
+ erscheinen.
  Die Option 
 \family sans
 Behalten
@@ -18626,7 +18616,7 @@ ImageMagick
 \family default
  im Hintergrund, um die Bilder ins richtige Format zu konvertieren.
  In den Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
@@ -18981,24 +18971,20 @@ PDF
 \end_inset
 
  sein.
- 
-\lang english
-We say it can be, because you can convert any bitmap Grafikformat to PDF
- oder EPS und the result won't be scalable.
- In this cases nur a header mit the Bild properties is added to the original
- Bild
+ Wir sagen sie können, da man jedes Pixel-Grafikformat in ein PDF oder EPS
+ convertieren kann und das Ergebnis trotzdem nicht skalierbar sein wird.
+ In diesen Fällen wird nur ein Vorspann mit dem Bildeigenschaften zum Originalbi
+ld hinzugefügt.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-In the case of PDF, the original Bild is additionally compressed.
+Im Fall von PDF wird das Originalbild zusätzlich komprimiert.
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsection
@@ -27018,52 +27004,8 @@ name "sec:Inhaltsverzeichnis"
 
 \end_layout
 
-\begin_layout Standard
-Einer der wirklich hervorragenden Vorzüge von LaTeX ist die Einfachheit,
- mit der die unterschiedlichsten Arten von Verzeichnissen wie zum Beispiel
- das Inhaltsverzeichnis erstellt werden können.
- Sie müssen nur bestimmte Absatzumgebungen benutzen und eine Referenz dort
- einfügen, wo das Verzeichnis erscheinen soll.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie LaTeX-Benutzer sind, werden Sie sicher wissen, dass LaTeX unter
- Umständen mehrmals aufgerufen werden muss, damit alle Einträge korrekt
- sind.
- Das ist glücklicherweise nicht mehr nötig.
- LyX achtet selber darauf, dass LaTeX oft genug aufgerufen wird, damit alle
- Dinge in der 
-\family typewriter
-DVI
-\family default
--Vorschau richtig erscheinen.
-\end_layout
-
-\begin_layout Standard
-Wenn Ihnen nicht gefällt, wie die Seiten des Inhalts- und anderer Verzeichnisse
- gedruckt wird, können Sie in den LaTeX-Vorspann schauen und alles, was
- zwischen 
-\family typewriter
-%
-\backslash
-pagenumbering{roman}
-\family default
- und 
-\family sans
-%
-\backslash
-pagenumbering{roman}
-\family default
- steht durch Löschen des 
-\family typewriter
-%
-\family default
--Zeichens aktivieren oder in einem LaTeX-Buch nachschlagen, was es sonst
- so gibt.
-\end_layout
-
 \begin_layout Subsection
-Inhaltsverzeichnis und Gliederung
+Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
@@ -27085,13 +27027,13 @@ Inhaltsverzeichnis
  An der Einfügestelle erscheint ein graues Kästchen mit der Aufschrift Inhaltsve
 rzeichnis.
  Wenn Sie draufklicken, erscheint das Gliederungsfenster, siehe auch Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Navigieren"
+LatexCommand ref
+reference "sub:Gliederung"
 
 \end_inset
 
@@ -27099,162 +27041,33 @@ reference "sec:Navigieren"
 \end_layout
 
 \begin_layout Standard
-Das gedruckte Inhaltsverzeichnis enthält alle nummerierten Überschriften.
- Wenn Sie für eine Überschrift einen Kurztitel (
-\family sans
-Einfügen\SpecialChar \menuseparator
-Kurztitel
-\family default
-) definiert haben, wie in Abschnitt
-\begin_inset space \space{}
+Das Inhaltsverzeichnis enthält automatisch alle nummerierten Überschriften.
+ Wenn Sie für eine Überschrift einen Kurztitel definiert haben, wie in Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Kurztitel"
 
 \end_inset
 
- beschrieben, wird dieser gedruckt, wenn die Überschrift zu lang ist.
-\end_layout
-
-\begin_layout Standard
-In Abschnitt
-\begin_inset space \space{}
+ beschrieben, wird dieser statt der Überschrift verwendet.
+ In Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Nummerierung-aendern"
 
 \end_inset
 
  ist beschrieben, wie die Nummerierungstiefe geändert werden kann.
- Nichtnummerierte Überschriften tauchen unter Navigieren und in der Gliederung
+ Unnummerierte Überschriften tauchen unter Navigieren und in der Gliederung
  auf, werden aber nicht im Inhaltsverzeichnis gedruckt.
-\end_layout
-
-\begin_layout Standard
-Folgendes ist noch zu beachten:
-\end_layout
-
-\begin_layout Enumerate
-Sie müssen eine Dokumentklasse verwenden, die ein Inhaltsverzeichnis unterstützt
- (fast alle Standard-Typen außer 
-\family sans
-letter
-\family default
-).
-\end_layout
-
-\begin_layout Enumerate
-Verwenden Sie Überschriften, die automatisch von der Inhalts-Funktion erkannt
- werden: 
-\family sans
-Kapitel
-\family default
-, 
-\family sans
-[Unter[Unter]]Abschnitt
-\family default
-, 
-\family sans
-[Unter]Paragraph
-\family default
-.
- Beachten Sie auch, dass Überschriften mit einem Stern, wie etwa 
-\family sans
-Abschnitt*
-\family default
-, 
-\emph on
-nicht
-\emph default
- im Inhaltsverzeichnis aller
-\family sans
- 
-\family default
-Dokumentklassen erscheinen.
-\end_layout
-
-\begin_layout Enumerate
-Stellen Sie sicher, dass die Einträge im Dialogfenster 
-\family sans
-Dokument-Einstellungen\SpecialChar \menuseparator
-Nummerierung
-\begin_inset space \space{}
-\end_inset
-
-&
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar \menuseparator
-Nummerierung
-\family default
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Nummerierung"
-
-\end_inset
-
- und 
-\family sans
-Im
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis
-\begin_inset space \space{}
-\end_inset
-
-aufführen
-\family default
- auf vernünftige Werte gesetzt sind.
- Wenn Sie etwa nur Kapitel und Abschnitte im Inhaltsverzeichnis haben wollen,
- verschieben Sie den Regler so weit, dass diese Begriffe in der Tabelle
- ein 
-\emph on
-Ja
-\emph default
- enthalten.
-\end_layout
-
-\begin_layout Standard
-Sie können das Inhaltsverzeichnis auch als Gliederung verwenden.
- Klicken Sie auf 
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- oder wählen Sie 
-\family sans
-Dokument
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Gliederung
-\family default
-.
- Näheres finden Sie unter Nr.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Gliederung"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -27299,33 +27112,9 @@ name "sec:Verzeichnisse"
 \end_layout
 
 \begin_layout Standard
-Zusammenstellungen der im Dokument verwendeten Abbildungen, Tabellen und
- Algorithmen können genauso einfach erstellt werden wie ein Inhaltsverzeichnis.
- Es gibt nur ein paar kleine Unterschiede, die hier am Beispiel eines Abbildungs
-verzeichnisses erläutert werden sollen:
-\end_layout
-
-\begin_layout Enumerate
-Abbildungen, die im Verzeichnis erscheinen sollen, 
-\emph on
-müssen
-\emph default
- als Gleitobjekt (
-\family sans
-Ein\SpecialChar \-
-fü\SpecialChar \-
-gen\SpecialChar \menuseparator
-Gleit\SpecialChar \-
-objekt\SpecialChar \menuseparator
-Abbildung
-\family default
-) eingefügt werden.
-\end_layout
-
-\begin_layout Enumerate
-Fügen Sie den Befehl zum Erstellen des Abbildungsverzeichnisses an der gewünscht
-en Stelle ein.
- Verwenden Sie dazu den Menüpunkt 
+Tabellen-, Abbildungs-, und Algorithmenverzeichnisse sind sehr ähnlich zum
+ Inhaltsverzeichnis.
+ Sie können über das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
@@ -27336,23 +27125,11 @@ Liste
 \begin_inset space \space{}
 \end_inset
 
-Inhaltsverzeichnis\SpecialChar \menuseparator
-Abbildungsverzeichnis
+Inhaltsverzeichnis
 \family default
-.
-\end_layout
-
-\begin_layout Standard
-Für die beiden anderen Klassen von Gleitobjekten gilt sinngemäß dasselbe.
- Die gleitenden Algorithmen werden in 
-\emph on
-Eingebettete
-\begin_inset space ~
-\end_inset
-
-Objekte
-\emph default
- näher beschrieben.
+ eingefügt werden.
+ Die Verzeichniseinträge sind die Beschriftung der Gleitobjekte und deren
+ Nummer.
 \end_layout
 
 \begin_layout Section
@@ -27360,7 +27137,7 @@ URLs und Hyperlinks
 \end_layout
 
 \begin_layout Subsection
-URLs (Uniform Resource Locators)
+URLs
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:URLs"
@@ -27485,11 +27262,9 @@ Einfügen\SpecialChar \menuseparator
 Hyperlink
 \family default
  oder einen Klick auf 
-\begin_inset Graphics
-	filename ../../images/url-insert.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "href-insert"
 \end_inset
 
  eingefügt.
@@ -27820,15 +27595,12 @@ n-Feld ist nicht nutzlos.
  Sie können auf Ihre Literaturangaben verweisen, indem Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Zitat\SpecialChar \ldots{}
-
+Zitat
 \family default
- oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 85
-	groupId Icon
-
+ oder den Wrkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
  benutzen.
@@ -29308,22 +29080,18 @@ Mehrere Stichwortverzeichnisse
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In many fields, it is common to have more than one index.
- For instance, you might need to set up a separate 
+In vielen Fällen ist es üblich mehr als ein Stichwortverzeichnis zu haben.
+ Zum Beispiel könnten Sie ein separates Stichwortverzeichnis 
 \begin_inset Quotes gld
 \end_inset
 
-Index of Names
+Index der Namen
 \begin_inset Quotes grd
 \end_inset
 
- next to the standard index.
- LaTeX does not provide this possibility out of the box, but there are many
- packages that add this feature
-\lang ngerman
-.
+ neben dem Standard-Stichwortverzeichnis haben wollen.
+ Mit LaTeX ist dies nicht direkt möglich, aber es gibt Pakete, die dies
+ ermöglichen.
  LyX verwendet das LaTeX-Paket 
 \series bold
 splitidx
@@ -29339,12 +29107,9 @@ LaTeX-Paket ! splitidx
 \end_inset
 
  um mehrere Stichwortverzeichnisse zu erzeugen.
- Dieses Paket ist 
-\lang english
-included in all recent LaTeX distributions.
- If yours does not ship it, consult
-\lang ngerman
- den TeX-Katalog, 
+ Dieses Paket ist in allen aktuellen LaTeX-Distributionen enthalten.
+ Falls Ihre Distribution es nicht anbietet, konsultieren Sie den TeX-Katalog,
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeX-Katalog"
@@ -29352,24 +29117,21 @@ key "TeX-Katalog"
 \end_inset
 
 .
- 
-\lang english
-Note that the package does not only consist of a LaTeX style, but it also
- includes specific preprocessor programs that need to be installed as well.
- Please consult the package's manual for details.
+ Beachten Sie dabei, dass das Paket nicht nur aus LaTeX-Stilen besteht sondern
+ auch aus speziellen Präprozessor-Programmen, die mit installiert werden
+ müssen.
+ Lesen Sie die Dokumentation des Pakets für weitere Informationen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To set up LyX for the use of multiple indexes, go to 
+Um LyX für mehrere Stichwortverzeichnisse einzurichten, gehen Sie ins Menü
+ 
 \family sans
-\lang ngerman
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Stichwortverzeichnis
 \family default
- und aktiviert 
+ und aktivieren 
 \begin_inset Quotes gld
 \end_inset
 
@@ -29413,8 +29175,7 @@ Add
 \begin_inset Quotes eld
 \end_inset
 
-Alter Color\SpecialChar \ldots{}
-
+Alter Color
 \begin_inset Quotes erd
 \end_inset
 

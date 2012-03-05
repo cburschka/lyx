@@ -1512,6 +1512,13 @@ F5
 
 \begin_layout Subsection
 The Outliner
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-Outliner"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1546,11 +1553,10 @@ reference "sec:Bibliography"
 \end_layout
 
 \begin_layout Standard
-Right-clicking on elements in the Outline will in many cases open a context
+Right-clicking on elements in the Outline opens in many cases a context
  menu that will allow for direct modification of those elements.
  For example, with citations, the context menu allows you to open the citation
  dialog and to modify the citation.
- Right-clicking a change will allow you to accept or reject it.
 \end_layout
 
 \begin_layout Standard
@@ -26053,7 +26059,7 @@ Outline
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Navigating"
+reference "sub:The-Outliner"
 
 \end_inset
 
@@ -27888,8 +27894,8 @@ Index of Names
 \end_inset
 
  next to the standard index.
- LaTeX does not provide this possibility out of the box, but there are many
- packages that add this feature.
+ LaTeX does not provide this possibility out of the box, but there are packages
+ that add this feature.
  LyX uses the 
 \series bold
 splitidx
@@ -27968,8 +27974,7 @@ Add
 \begin_inset Quotes eld
 \end_inset
 
-Alter Color\SpecialChar \ldots{}
-
+Alter Color
 \begin_inset Quotes erd
 \end_inset
 
