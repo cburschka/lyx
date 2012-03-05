@@ -1397,9 +1397,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "lstlisting") {
 		eat_whitespace(p, os, parent_context, false);
-		// FIXME handle listings with parameters
-		//       If this is added, don't forgot to handle the
-		//       automatic color package loading
+		// FIXME handle the automatic color package loading
+		// uwestoehr asks: In what case color is loaded?
 		parse_listings(p, os, parent_context);
 		p.skip_spaces();
 	}
