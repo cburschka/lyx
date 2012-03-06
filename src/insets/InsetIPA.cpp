@@ -15,6 +15,8 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -58,6 +60,24 @@ void InsetIPA::write(ostream & os) const
 {
 	os << "IPA" << "\n";
 	text().write(os);
+}
+
+
+bool InsetIPA::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action()) {
+	case LFUN_SCRIPT_INSERT: {
+		if (cmd.argument() == "subscript") {
+			flag.setEnabled(false);
+			return true;
+		}
+		break;
+	}
+	default:
+		break;
+	}
+	return InsetText::getStatus(cur, cmd, flag);
 }
 
 
@@ -189,10 +209,14 @@ void InsetIPA::latex(otexstream & os, OutputParams const & runparams) const
 
 bool InsetIPA::insetAllowed(InsetCode code) const
 {
-	if (code == ERT_CODE)
+	switch (code) {
+	// code that is allowed
+	case ERT_CODE:
+	case SCRIPT_CODE:
 		return true;
-	else
+	default:
 		return false;
+	}
 }
 
 

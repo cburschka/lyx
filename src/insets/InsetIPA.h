@@ -55,6 +55,9 @@ public:
 
 	void draw(PainterInfo & pi, int x, int y) const;
 
+	///
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+
 	void addPreview(DocIterator const & inset_pos,
 		graphics::PreviewLoader & ploader) const;
 
