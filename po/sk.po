@@ -104,14 +104,6 @@ msgstr "Použite štýl jurabib pre právne a humanitné odbory"
 msgid "&Jurabib"
 msgstr "&Jurabib"
 
-#: lib/layouts/jurabib.module:51
-msgid "bibliography entry"
-msgstr "zápis do bibliografie"
-
-#: lib/layouts/jurabib.module:52
-msgid "Bibliography entry."
-msgstr "Zápis do bibliografie."
-
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 msgid "Bibliography Style"
 msgstr "Štýl Bibliografie"
@@ -6631,7 +6623,7 @@ msgstr "Stĺpce"
 
 #: lib/layouts/beamer.layout:410
 msgid "Start column (increase depth!), width:"
-msgstr "Prvý stĺpec (zvýšiť hĺbku!), šírka:"
+msgstr "Prvý stĺpec (zväčši hĺbku!), šírka:"
 
 #: lib/layouts/beamer.layout:451
 msgid "ColumnsCenterAligned"
@@ -10400,6 +10392,16 @@ msgstr "Štd. (basic)"
 msgid "Citation engine"
 msgstr "Správa citácie"
 
+#: lib/layouts/basic.module:22 lib/layouts/jurabib.module:49
+#: lib/layouts/natbib.module:44
+msgid "not cited"
+msgstr "necitované"
+
+#: lib/layouts/basic.module:23 lib/layouts/jurabib.module:50
+#: lib/layouts/natbib.module:45
+msgid "Add to bibliography only."
+msgstr "Pridať len do bibliografie."
+
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual captions"
 msgstr "Viac-jazykové popisy"
@@ -10675,7 +10677,23 @@ msgstr "Iniciálka"
 msgid "Jurabib"
 msgstr "Jurabib"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:551
+#: lib/layouts/jurabib.module:51
+msgid "bibliography entry"
+msgstr "zápis do bibliografie"
+
+#: lib/layouts/jurabib.module:52
+msgid "Bibliography entry."
+msgstr "Zápis do bibliografie."
+
+#: lib/layouts/jurabib.module:53
+msgid "before"
+msgstr "pred"
+
+#: lib/layouts/jurabib.module:54
+msgid "short title"
+msgstr "krátky titul"
+
+#: lib/layouts/knitr.module:2 lib/configure.py:532
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -12820,11 +12838,11 @@ msgstr "Riadky & Stĺpce"
 
 #: lib/ui/stdmenus.inc:132
 msgid "Increase List Depth|I"
-msgstr "Zvýšiť hĺbku listiny"
+msgstr "Zväčšiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:133
 msgid "Decrease List Depth|D"
-msgstr "Znížiť hĺbku listiny"
+msgstr "Zmenšiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:134
 msgid "Dissolve Inset"
@@ -13744,11 +13762,11 @@ msgstr "Položková listina"
 
 #: lib/ui/stdtoolbars.inc:117
 msgid "Increase depth"
-msgstr "Zvýšenie hĺbky"
+msgstr "Zväčšiť hĺbku"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Decrease depth"
-msgstr "Zníženie hĺbky"
+msgstr "Zmenšiť hĺbku"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
@@ -16616,8 +16634,7 @@ msgstr "PBM"
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:509 lib/configure.py:520 lib/configure.py:530
-#: src/frontends/qt4/GuiClipboard.cpp:171
+#: lib/configure.py:508 src/frontends/qt4/GuiClipboard.cpp:171
 msgid "PNG"
 msgstr "PNG"
 
@@ -16745,17 +16762,17 @@ msgstr "Prostý text (catdvi)"
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, riadky spojiť"
 
-#: lib/configure.py:565
+#: lib/configure.py:546
 msgid "Gnumeric spreadsheet"
-msgstr " Tabuľkový procesor Gnumeric"
+msgstr "Gnumeric tabuľkový procesor"
 
-#: lib/configure.py:566
+#: lib/configure.py:547
 msgid "Excel spreadsheet"
-msgstr "Tabuľkový procesor Excel"
+msgstr "Excel tabuľkový procesor"
 
-#: lib/configure.py:567
+#: lib/configure.py:548
 msgid "OpenOffice spreadsheet"
-msgstr " Tabuľkový procesor OpenOffice"
+msgstr "OpenOffice tabuľkový procesor"
 
 #: lib/configure.py:570
 msgid "LyXHTML"
@@ -16980,18 +16997,6 @@ msgstr "Bez roku"
 #: src/BiblioInfo.cpp:669
 msgid "Bibliography entry not found!"
 msgstr "Bibliografické heslo nenájdené!"
-
-#: src/BiblioInfo.cpp:728 src/BiblioInfo.cpp:789
-msgid "Add to bibliography only."
-msgstr "Pridať len do bibliografie."
-
-#: src/BiblioInfo.cpp:785
-msgid "before"
-msgstr "pred"
-
-#: lib/layouts/jurabib.module:54
-msgid "short title"
-msgstr "krátky titul"
 
 #: src/Buffer.cpp:136
 #, c-format
@@ -23066,7 +23071,12 @@ msgstr "Heslo Indexu (%1$s)"
 msgid "No Citation in Scope!"
 msgstr "Žiadna citácia nablízku!"
 
-#: src/frontends/qt4/Menus.cpp:2110
+#: src/frontends/qt4/Menus.cpp:1493 src/insets/InsetCitation.cpp:127
+#: src/insets/InsetCitation.cpp:219
+msgid "No citations selected!"
+msgstr "Žiadna citácia nie je vybraná!"
+
+#: src/frontends/qt4/Menus.cpp:2124
 msgid "No Action Defined!"
 msgstr "Žiadna akcia nebola definovaná!"
 
@@ -23376,14 +23386,6 @@ msgstr "Sub-%1$s"
 #: src/insets/InsetCitation.cpp:121
 msgid "No bibliography defined!"
 msgstr "Žiadna bibliografia nie je definovaná!"
-
-#: src/insets/InsetCitation.cpp:125
-msgid "No citations selected!"
-msgstr "Žiadna citácia nie je vybraná!"
-
-#: src/insets/InsetCitation.cpp:297
-msgid "not cited"
-msgstr "necitované"
 
 #: src/insets/InsetCommand.cpp:131
 msgid "LaTeX Command: "
