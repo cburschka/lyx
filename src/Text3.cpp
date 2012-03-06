@@ -1649,6 +1649,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INDEX_INSERT:
 	case LFUN_PREVIEW_INSERT:
 	case LFUN_SCRIPT_INSERT:
+	case LFUN_IPA_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
@@ -2444,6 +2445,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (cur.buffer()->masterBuffer()->params().branchlist().empty()
 		    && cur.buffer()->params().branchlist().empty())
 			enable = false;
+		break;
+	case LFUN_IPA_INSERT:
+		code = IPA_CODE;
 		break;
 	case LFUN_PHANTOM_INSERT:
 		code = PHANTOM_CODE;

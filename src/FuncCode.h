@@ -451,6 +451,7 @@ enum FuncCode
 	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
 	// 350
 	LFUN_CLIPBOARD_PASTE_SIMPLE,	// tommaso, 20111028
+	LFUN_IPA_INSERT,                // spitz, 20120305
 
 	LFUN_LASTACTION                 // end of the table
 };

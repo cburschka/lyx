@@ -38,6 +38,7 @@
 #include "insets/InsetInclude.h"
 #include "insets/InsetIndex.h"
 #include "insets/InsetInfo.h"
+#include "insets/InsetIPA.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetMarginal.h"
@@ -183,6 +184,9 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			docstring arg = cmd.argument();
 			return new InsetIndex(buf, InsetIndexParams(arg));
 		}
+
+		case LFUN_IPA_INSERT:
+			return new InsetIPA(buf);
 
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp(NOMENCL_CODE);
@@ -615,6 +619,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetFloatList(buf));
 		} else if (tmptok == "Info") {
 			inset.reset(new InsetInfo(buf));
+		} else if (tmptok == "IPA") {
+			inset.reset(new InsetIPA(buf));
 		} else if (tmptok == "Preview") {
 			inset.reset(new InsetPreview(buf));
 		} else {

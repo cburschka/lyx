@@ -535,6 +535,44 @@ def revert_verbatim(document):
             document.body[i:i+1] = subst_begin
 
 
+def revert_tipa(document):
+    " Revert native TIPA insets to mathed or ERT. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset IPA", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of IPA inset")
+            i += 1
+            continue
+        Multipar = False
+        n = find_token(document.body, "\\begin_layout", i, j)
+        if n == -1:
+            document.warning("Malformed lyx document: IPA inset has no embedded layout")
+            i += 1
+            continue
+        m = find_end_of_layout(document.body, n)
+        if m == -1:
+            document.warning("Malformed lyx document: Can't find end of embedded layout")
+            i += 1
+            continue
+        content = document.body[n+1:m]
+        p = find_token(document.body, "\\begin_layout", m, j)
+        if p != -1 or len(content) > 1:
+            Multipar = True
+            content = document.body[i+1:j]
+        if Multipar:
+            # IPA insets with multiple pars need to be wrapped by \begin{IPA}...\end{IPA}
+            document.body[i:j+1] = ['\\end_layout', '', '\\begin_layout Standard'] + put_cmd_in_ert("\\begin{IPA}") + ['\\end_layout'] + content + ['\\begin_layout Standard'] + put_cmd_in_ert("\\end{IPA}")
+            add_to_preamble(document, ["\\usepackage{tipa,tipx}"])
+        else:
+            # single-par IPA insets can be reverted to mathed
+            document.body[i:j+1] = ["\\begin_inset Formula $\\text{\\textipa{" + content[0] + "}}$", "\\end_inset"]
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -553,10 +591,12 @@ convert = [
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
            [425, []],
-           [426, []]
+           [426, []],
+           [427, []]
           ]
 
 revert =  [
+           [426, [revert_tipa]],
            [425, [revert_verbatim]],
            [424, [revert_cancel]],
            [423, [revert_cite_engine_type]],

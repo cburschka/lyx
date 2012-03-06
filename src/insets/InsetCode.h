@@ -231,6 +231,8 @@ enum InsetCode {
 	///
 	SCRIPT_CODE, // 105
 	///
+	IPA_CODE,
+	///
 	INSET_CODE_SIZE
 };
 

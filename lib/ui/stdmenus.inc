@@ -388,7 +388,7 @@ Menuset
 		Item "Protected Hyphen|y" "specialchar-insert nobreakdash"
 		Item "Breakable Slash|a" "specialchar-insert slash"
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
-		Item "Phonetic Symbols|P" "command-sequence math-insert \text\textipa ; char-forward ;"
+		Item "Phonetic Symbols|P" "ipa-insert"
 	End
 
 	Menu "insert_formatting"

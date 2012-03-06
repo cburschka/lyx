@@ -542,6 +542,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_INDEX_PRINT, "index-print", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_IPA_INSERT
+ * \li Action: Inserts an IPA inset.
+ * \li Syntax: ipa-insert
+ * \li Origin: spitz, 05 Mar 2012
+ * \endvar
+ */
+        { LFUN_IPA_INSERT, "ipa-insert", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_NOMENCL_INSERT
