@@ -42,7 +42,7 @@ my %newMessages = ();           # new po-file
 my %Untranslated = ();          # inside new po-file
 my %Fuzzy = ();                 # inside new po-file
 my $result = 0;                 # exit value
-my $printlines = 0;
+my $printlines = 1;
 my @names = ();
 
 # Check first, if called as standalone program for git
@@ -146,7 +146,7 @@ sub diff_po($$)
     }
   }
 
-  if (1) {
+  if (0) {
     @MsgKeys = sort keys %Messages, keys %newMessages;
     for my $k (@MsgKeys) {
       if (defined($Messages{$k})) {

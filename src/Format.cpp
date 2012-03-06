@@ -388,7 +388,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 					filename.toFilesystemEncoding().c_str());
 				mime = token(mime, ';', 0);
 				// we need our own ps/eps detection
-				if (mime != "application/postscript") {
+				if ((mime != "application/postscript") && (mime != "text/plain")) {
 					Formats::const_iterator cit =
 						find_if(formatlist.begin(), formatlist.end(),
 							FormatMimeEqual(mime));
