@@ -62,6 +62,9 @@ What's new
 
 - Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
 
+- Fix reconfiguration on Windows when the temporary directory used by
+  python contains non-ascii characters.
+
 
 * TEX2LYX
 

@@ -109,9 +109,13 @@ def checkTeXPaths():
         from tempfile import mkstemp
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
+            from locale import getdefaultlocale
             from ctypes import windll, create_unicode_buffer
             GetShortPathName = windll.kernel32.GetShortPathNameW
-            longname = unicode(tmpfname)
+            language, encoding = getdefaultlocale()
+            if encoding == None:
+                encoding = 'latin1'
+            longname = unicode(tmpfname, encoding)
             shortlen = GetShortPathName(longname, 0, 0)
             shortname = create_unicode_buffer(shortlen)
             if GetShortPathName(longname, shortname, shortlen):
