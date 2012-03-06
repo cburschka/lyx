@@ -65,12 +65,12 @@ where to insert the stored bits when performining undo.
 struct UndoElement
 {
 	///
-	UndoElement(UndoKind kin, StableDocIterator const & cur, 
+	UndoElement(UndoKind kin, StableDocIterator const & cb, 
 	            StableDocIterator const & cel,
 	            pit_type fro, pit_type en, ParagraphList * pl, 
 	            MathData * ar, BufferParams const & bp, 
 	            bool ifb, bool lc, size_t gid) :
-	        kind(kin), cursor(cur), cell(cel), from(fro), end(en),
+	        kind(kin), cur_before(cb), cell(cel), from(fro), end(en),
 	        pars(pl), array(ar), bparams(0), isFullBuffer(ifb),
 		lyx_clean(lc), group_id(gid)
 	{
@@ -81,7 +81,8 @@ struct UndoElement
 	UndoElement(UndoElement const & ue)
 	{
 		kind = ue.kind;
-		cursor = ue.cursor;
+		cur_before = ue.cur_before;
+		cur_after = ue.cur_after;
 		cell = ue.cell;
 		from = ue.from;
 		end = ue.end;
@@ -101,8 +102,10 @@ struct UndoElement
 	}
 	/// Which kind of operation are we recording for?
 	UndoKind kind;
-	/// the position of the cursor
-	StableDocIterator cursor;
+	/// the position of the cursor before recordUndo
+	StableDocIterator cur_before;
+	/// the position of the cursor at the end of the undo group
+	StableDocIterator cur_after;
 	/// the position of the cell described
 	StableDocIterator cell;
 	/// counted from begin of cell
@@ -195,7 +198,7 @@ struct Undo::Private
 		DocIterator const & cell,
 		pit_type first_pit,
 		pit_type last_pit,
-		DocIterator const & cur,
+		StableDocIterator const & cur,
 		bool isFullBuffer,
 		UndoElementStack & stack);
 	///
@@ -288,7 +291,7 @@ static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
 void Undo::Private::doRecordUndo(UndoKind kind,
 	DocIterator const & cell,
 	pit_type first_pit, pit_type last_pit,
-	DocIterator const & cur,
+	StableDocIterator const & cur_before,
 	bool isFullBuffer,
 	UndoElementStack & stack)
 {
@@ -311,15 +314,18 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	    && samePar(stack.top().cell, cell)
 	    && stack.top().kind == kind
 	    && stack.top().from == from
-	    && stack.top().end == end)
+	    && stack.top().end == end) {
+		// reset cur_after; it will be filled correctly by endUndoGroup.
+		stack.top().cur_after = StableDocIterator();
 		return;
+	}
 
 	if (isFullBuffer)
 		LYXERR(Debug::UNDO, "Create full buffer undo element of group " << group_id);
 	else
 		LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
 	// create the position information of the Undo entry
-	UndoElement undo(kind, cur, cell, from, end, 0, 0, 
+	UndoElement undo(kind, cur_before, cell, from, end, 0, 0, 
 	                 buffer_.params(), isFullBuffer, buffer_.isClean(), group_id);
 
 	// fill in the real data to be saved
@@ -384,8 +390,9 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_);
 
 	doRecordUndo(ATOMIC_UNDO, cell_dit,
-		undo.from, cell_dit.lastpit() - undo.end, cur,
+		undo.from, cell_dit.lastpit() - undo.end, undo.cur_after,
 		undo.isFullBuffer, otherstack);
+	otherstack.top().cur_after = undo.cur_before;
 
 	// This does the actual undo/redo.
 	//LYXERR0("undo, performing: " << undo);
@@ -439,7 +446,8 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	LASSERT(undo.pars == 0, /**/);
 	LASSERT(undo.array == 0, /**/);
 
-	cur = undo.cursor.asDocIterator(&buffer_);
+	if (undo.cur_before.size())
+		cur = undo.cur_before.asDocIterator(&buffer_);
 	if (undo.lyx_clean)
 		buffer_.markClean();
 	else
@@ -511,6 +519,15 @@ void Undo::endUndoGroup()
 		LYXERR(Debug::UNDO, "-------End of group " << d->group_id);
 	}
 }
+
+
+void Undo::endUndoGroup(DocIterator const & cur)
+{
+	endUndoGroup();
+	if (!d->undostack_.empty() && !d->undostack_.top().cur_after.size())
+		d->undostack_.top().cur_after = cur;
+}
+
 
 // FIXME: remove these convenience functions and make
 // Private::recordUndo public as sole interface. The code in the
