@@ -294,7 +294,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 	oss << opt;
 	FuncRequest cmd(LFUN_WORD_FINDADV, from_utf8(oss.str()));
 
-	view_.message(_("Advanced search started: please wait . . ."));
+	view_.message(_("Advanced search in progress (press ESC to cancel) . . ."));
 	theApp()->startLongOperation();
 	view_.setBusy(true);
 	if (opt.scope == FindAndReplaceOptions::S_ALL_MANUALS) {
