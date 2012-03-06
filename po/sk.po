@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-03 10:18-0500\n"
-"PO-Revision-Date: 2012-01-28 12:15+0100\n"
+"POT-Creation-Date: 2012-03-06 10:10+0100\n"
+"PO-Revision-Date: 2012-03-06 10:15+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1475,8 +1475,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-msgid "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)"
-msgstr "Použiť  OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
+msgid ""
+"Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
+"LuaTeX)"
+msgstr ""
+"Použiť  OpenType a TrueType fonty spolu s balíkom fontspec (potrebné XeTeX "
+"alebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -5076,17 +5080,29 @@ msgstr "Veľká medzera(BigSkip)"
 msgid "VFill"
 msgstr "Výplň (VFILL)"
 
-#: src/frontends/qt4/ui/ViewSourceUi.ui:34
-msgid "&Output Format:"
-msgstr "Výstupný Formát:"
+#: src/frontends/qt4/ui/ViewSourceUi.ui:33
+msgid "F&ormat:"
+msgstr "F&ormát:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:44
 msgid "Select the output format"
 msgstr "Vyberte výstupný formát"
 
-#: src/frontends/qt4/ui/ViewSourceUi.ui:54
-msgid "Complete source"
+#: src/frontends/qt4/ui/ViewSourceUi.ui:57
+msgid "Current Paragraph"
+msgstr "Aktuálny Odstavec"
+
+#: src/frontends/qt4/ui/ViewSourceUi.ui:62
+msgid "Complete Source"
 msgstr "Zobraziť celý zdrojový text"
+
+#: src/frontends/qt4/ui/ViewSourceUi.ui:67
+msgid "Preamble Only"
+msgstr "Len Preambulu"
+
+#: src/frontends/qt4/ui/ViewSourceUi.ui:72
+msgid "Body Only"
+msgstr "Len Telo"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:61
 msgid "Automatic update"
@@ -17072,6 +17088,14 @@ msgstr "Náhľad na zdrojový text odstavca %1$d"
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
+#: src/Buffer.cpp:3220
+msgid "Preview preamble"
+msgstr "Prehľad preambule"
+
+#: src/Buffer.cpp:3222
+msgid "Preview body"
+msgstr "Prehľad tela"
+
 #: src/Buffer.cpp:3307
 #, c-format
 msgid "Auto-saving %1$s"
@@ -24081,6 +24105,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Output Format:"
+#~ msgstr "Výstupný Formát:"
 
 #~ msgid "*"
 #~ msgstr "*"
