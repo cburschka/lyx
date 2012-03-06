@@ -294,6 +294,8 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 	oss << opt;
 	FuncRequest cmd(LFUN_WORD_FINDADV, from_utf8(oss.str()));
 
+	view_.message(_("Advanced search started: please wait . . ."));
+	theApp()->startLongOperation();
 	view_.setBusy(true);
 	if (opt.scope == FindAndReplaceOptions::S_ALL_MANUALS) {
 		vector<string> const & v = allManualsFiles();
@@ -301,7 +303,9 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 			FileName const & fname = FileName(*v.begin());
 			if (!theBufferList().exists(fname)) {
 				guiApp->currentView()->setBusy(false);
+				theApp()->stopLongOperation();
 				guiApp->currentView()->loadDocument(fname, false);
+				theApp()->startLongOperation();
 				guiApp->currentView()->setBusy(true);
 			}
 			buf = theBufferList().getBuffer(fname);
@@ -327,9 +331,18 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 			if (replace_all)
 				continue;
 			view_.setBusy(false);
+			theApp()->stopLongOperation();
 			return true;
 		} else if (replace_all)
 			bv->clearSelection();
+
+		if (theApp()->longOperationCancelled()) {
+			// Search aborted by user
+			view_.message(_("Advanced search cancelled by user"));
+			view_.setBusy(false);
+			theApp()->stopLongOperation();
+			return false;
+		}
 
 		// No match found in current buffer (however old selection might have been replaced)
 		// select next buffer in scope, if any
@@ -341,9 +354,11 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 				break;
 			docstring q = getQuestionString(opt);
 			view_.setBusy(false);
+			theApp()->stopLongOperation();
 			wrap_answer = frontend::Alert::prompt(
 				_("Wrap search?"), q,
 				0, 1, _("&Yes"), _("&No"));
+			theApp()->startLongOperation();
 			view_.setBusy(true);
 			if (wrap_answer == 1)
 				break;
@@ -373,6 +388,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 		cur_orig.pos() = cur_orig.lastpos();
 	bv->cursor().setCursor(cur_orig);
 	view_.setBusy(false);
+	theApp()->stopLongOperation();
 	return false;
 }
 

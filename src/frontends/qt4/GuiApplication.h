@@ -169,6 +169,13 @@ public:
 	///		not the current buffer
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
+	/// Start a long operation with some cancel possibility (button or ESC)
+	void startLongOperation();
+	/// This needs to be periodically called to avoid freezing the GUI
+	bool longOperationCancelled();
+	/// Stop the long operation mode (i.e., release the GUI)
+	void stopLongOperation();
+
 private Q_SLOTS:
 	///
 	void execBatchCommands();

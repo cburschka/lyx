@@ -80,12 +80,14 @@
 #include <QClipboard>
 #include <QDateTime>
 #include <QDir>
+#include <QEvent>
 #include <QEventLoop>
 #include <QFileOpenEvent>
 #include <QFileInfo>
 #include <QHash>
 #include <QIcon>
 #include <QImageReader>
+#include <QKeyEvent>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QList>
@@ -98,6 +100,7 @@
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
+#include <QShowEvent>
 #include <QSocketNotifier>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
@@ -675,6 +678,43 @@ public:
 
 #endif // Q_WS_WIN
 
+
+/// Allows to check whether ESC was pressed during a long operation
+class KeyChecker : public QObject {
+private:
+	bool pressed_;
+public:
+	KeyChecker() {
+		pressed_ = false;
+	}
+	void start() {
+		QCoreApplication::instance()->installEventFilter(this);
+		pressed_ = false;
+	}
+	void stop() {
+		QCoreApplication::instance()->removeEventFilter(this);
+	}
+	bool pressed() {
+		QCoreApplication::processEvents();
+		return pressed_;
+	}
+	bool eventFilter(QObject *obj, QEvent *event) {
+		LYXERR(Debug::ACTION, "Event Type: " << event->type());
+		switch (event->type()) {
+		case QEvent::Show:
+		case QEvent::Hide:
+		case QEvent::Resize:
+			return QObject::eventFilter(obj, event);
+		default:
+			QKeyEvent *keyEvent = dynamic_cast<QKeyEvent*>(event);
+			if (keyEvent && keyEvent->key() == Qt::Key_Escape)
+				pressed_ = true;
+			return true;
+		}
+	}
+};
+
+
 ////////////////////////////////////////////////////////////////////////
 // GuiApplication::Private definition and implementation.
 ////////////////////////////////////////////////////////////////////////
@@ -752,6 +792,9 @@ struct GuiApplication::Private
 	/// WMF Mime handler for Windows clipboard.
 	QWindowsMimeMetafile * wmf_mime_;
 #endif
+
+	/// Allows to check whether ESC was pressed during a long operation
+	KeyChecker key_checker_;
 };
 
 
@@ -2526,6 +2569,21 @@ void GuiApplication::onLastWindowClosed()
 {
 	if (d->global_menubar_)
 		d->global_menubar_->grabKeyboard();
+}
+
+
+void GuiApplication::startLongOperation() {
+	d->key_checker_.start();
+}
+
+
+bool GuiApplication::longOperationCancelled() {
+	return d->key_checker_.pressed();
+}
+
+
+void GuiApplication::stopLongOperation() {
+	d->key_checker_.stop();
 }
 
 

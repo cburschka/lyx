@@ -1133,12 +1133,12 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
-	while (cur) {
+	while (!theApp()->longOperationCancelled() && cur) {
 		LYXERR(Debug::FIND, "findForwardAdv() cur: " << cur);
 		int match_len = match(cur, -1, false);
 		LYXERR(Debug::FIND, "match_len: " << match_len);
 		if (match_len) {
-			for (; cur; cur.forwardPos()) {
+			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
 				int match_len = match(cur);
 				LYXERR(Debug::FIND, "match_len: " << match_len);
@@ -1235,7 +1235,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 		else
 			cur.backwardPos();
 		pit_changed = true;
-	} while (true);
+	} while (!theApp()->longOperationCancelled());
 	return 0;
 }
 

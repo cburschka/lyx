@@ -239,6 +239,14 @@ public:
 	/// Handle a accented char key sequence
 	/// FIXME: this is only needed for LFUN_ACCENT_* in Text::dispatch()
 	virtual void handleKeyFunc(FuncCode action) = 0;
+
+	/// Start a long operation with some cancel possibility (button or ESC)
+	virtual void startLongOperation() = 0;
+	/// This needs to be periodically called to avoid freezing the GUI
+	virtual bool longOperationCancelled() = 0;
+	/// Stop the long operation mode (i.e., release the GUI)
+	virtual void stopLongOperation() = 0;
+
 };
 
 /// Return the list of loadable formats.
