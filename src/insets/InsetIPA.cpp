@@ -187,6 +187,8 @@ bool InsetIPA::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 void InsetIPA::validate(LaTeXFeatures & features) const
 {
+	if (buffer_->params().useNonTeXFonts)
+		return;
 	features.require("tipa");
 	features.require("tipx");
 }
@@ -195,12 +197,14 @@ void InsetIPA::validate(LaTeXFeatures & features) const
 void InsetIPA::latex(otexstream & os, OutputParams const & runparams) const
 {
 	bool const multipar = (text().paragraphs().size() > 1);
-	if (multipar)
+	// fontspec knows \textipa, but not the IPA environment
+	bool const nontexfonts = buffer_->params().useNonTeXFonts;
+	if (multipar && !nontexfonts)
 		os << "\\begin{IPA}\n";
 	else
 		os << "\\textipa{";
 	InsetText::latex(os, runparams);
-	if (multipar)
+	if (multipar && !nontexfonts)
 		os << "\n\\end{IPA}";
 	else
 		os << "}";
