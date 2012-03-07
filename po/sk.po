@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-02-22 13:44+0100\n"
-"PO-Revision-Date: 2012-02-23 10:47+0100\n"
+"POT-Creation-Date: 2012-03-07 10:14+0100\n"
+"PO-Revision-Date: 2012-03-07 10:22+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
 "Language: sk\n"
@@ -20044,7 +20044,15 @@ msgstr ""
 "%1$s: Dosiahol som začiatok hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:345
+#: src/frontends/qt4/FindAndReplace.cpp:297
+msgid "Advanced search in progress (press ESC to cancel) . . ."
+msgstr "Pokročilé hľadanie postupuje (klikni ESC na zrušenie)..."
+
+#: src/frontends/qt4/FindAndReplace.cpp:341
+msgid "Advanced search cancelled by user"
+msgstr "Pokročilé hľadanie zrušené  užívateľom"
+
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Wrap search?"
 msgstr "Od začiatku hľadať?"
 
