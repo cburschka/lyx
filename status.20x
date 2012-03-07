@@ -43,6 +43,9 @@ What's new
 - New command for forward search with SumatraPDF without the need of an
   external DDE program (requires SumatraPDF version 1.9 or higher).
 
+- When a command takes too long to complete, ask the user for what to do
+  instead of automatically stopping it after a timeout interval (bug 8032).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
