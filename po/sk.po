@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-06 10:10+0100\n"
-"PO-Revision-Date: 2012-03-06 10:15+0100\n"
+"POT-Creation-Date: 2012-03-07 10:03+0100\n"
+"PO-Revision-Date: 2012-03-07 10:29+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -23933,6 +23933,33 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Adresár nenájdený"
 
+#: src/support/Systemcall.cpp:374
+#, c-format
+msgid ""
+"The command\n"
+"%1$s\n"
+"has not yet completed.\n"
+"\n"
+"Do you want to stop it?"
+msgstr ""
+"Príkaz\n"
+"%1$s\n"
+"ešte nedokončil.\n"
+"\n"
+"Chcete ho zastaviť ?"
+
+#: src/support/Systemcall.cpp:376
+msgid "Stop command?"
+msgstr "Zastaviť príkaz?"
+
+#: src/support/Systemcall.cpp:377
+msgid "&Stop it"
+msgstr "Zastaviť"
+
+#: src/support/Systemcall.cpp:377
+msgid "Let it &run"
+msgstr "Nech beží ďalej"
+
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
 msgstr "Bez ladiaceho hlásenia"
@@ -25051,9 +25078,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Could not read document"
 #~ msgstr "Nedá sa čítať dokument"
-
-#~ msgid "&Keep it"
-#~ msgstr "Nezmazať"
 
 #~ msgid "Cannot view URL"
 #~ msgstr "Nemôžem zobraziť URL"
