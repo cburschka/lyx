@@ -59,6 +59,22 @@ Lists of files to include in the installer
   
 !macroend
 
+!macro FileListUnoConv COMMAND DIRECTORY
+
+  ${FILE}unoconv.py"
+  
+!macroend
+
+!macro FileListeLyXer COMMAND DIRECTORY
+
+  ${FILE}elyxer.py"
+  ${FILE}lyx.css"
+  ${FILE}math.css"
+  ${FILE}math2html.py"
+  ${FILE}toc.css"
+  
+!macroend
+
 !macro FileListPDFToolsBin COMMAND DIRECTORY
 
   ${FILE}pdfopen.exe"

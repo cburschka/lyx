@@ -117,8 +117,13 @@ Section -ProgramFiles SecProgramFiles
    ${endif}
   !endif # end if BUNDLE
   
-   # install eLyXer as Python module
-   ExecWait '"$INSTDIR\python\python.exe" "$INSTDIR\python\setup.py" install'
+   # install eLyXer
+   SetOutPath "$INSTDIR\bin"
+   !insertmacro FileListeLyXer File "${FILES_ELYXER}\"
+   
+   # install unoconv
+   SetOutPath "$INSTDIR\python\Lib"
+   !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
 
   # install the LaTeX class files that are delivered with LyX
   # and enable MiKTeX's automatic package installation

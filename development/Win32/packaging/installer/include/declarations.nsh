@@ -14,6 +14,8 @@ Configuration of LyX installer
 !define FILES_PDFVIEW "${FILES_DEPS}\bin"
 !define FILES_MSVC "${FILES_DEPS}\bin"
 !define FILES_PYTHON "${FILES_DEPS}\python"
+!define FILES_ELYXER "${FILES_DEPS}\bin"
+!define FILES_UNOCONV "${FILES_DEPS}\bin"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
 !define FILES_NETPBM "${FILES_DEPS}\bin"
