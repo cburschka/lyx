@@ -212,7 +212,7 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor() const
+docstring const BibTeXInfo::getAbbreviatedAuthor(string lang) const
 {
 	if (!is_bibtex_) {
 		docstring const opt = label();
@@ -244,11 +244,12 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 		getVectorFromString(author, from_ascii(" and "));
 
 	if (authors.size() == 2)
-		return bformat(_("%1$s and %2$s"),
+		return bformat(translateIfPossible(from_ascii("%1$s and %2$s"), lang),
 			familyName(authors[0]), familyName(authors[1]));
 
 	if (authors.size() > 2)
-		return bformat(_("%1$s et al."), familyName(authors[0]));
+		return bformat(translateIfPossible(from_ascii("%1$s et al."), lang),
+			familyName(authors[0]));
 
 	return familyName(authors[0]);
 }
@@ -634,13 +635,13 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key) const
+docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, string lang) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAbbreviatedAuthor();
+	return data.getAbbreviatedAuthor(lang);
 }
 
 
@@ -654,7 +655,7 @@ docstring const BiblioInfo::getCiteNumber(docstring const & key) const
 }
 
 
-docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) const
+docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier, string lang) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -665,10 +666,12 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) co
 		// let's try the crossref
 		docstring const xref = data.getXRef();
 		if (xref.empty())
-			return _("No year"); // no luck
+			// no luck
+			return translateIfPossible(from_ascii("No year"), lang);
 		BiblioInfo::const_iterator const xrefit = find(xref);
 		if (xrefit == end())
-			return _("No year"); // no luck again
+			// no luck again
+			return translateIfPossible(from_ascii("No year"), lang);
 		BibTeXInfo const & xref_data = xrefit->second;
 		year = xref_data.getYear();
 	}
@@ -723,8 +726,9 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 	if (empty())
 		return vector<docstring>();
 
-	docstring const author = getAbbreviatedAuthor(key);
-	docstring const year   = getYear(key);
+	string const lang = buf.params().language->code();
+	docstring const author = getAbbreviatedAuthor(key, lang);
+	docstring const year   = getYear(key, true, lang);
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
@@ -782,8 +786,9 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 	if (empty())
 		return vector<docstring>();
 
-	docstring const author = getAbbreviatedAuthor(key);
-	docstring const year   = getYear(key);
+	string const lang = buf.params().language->code();
+	docstring const author = getAbbreviatedAuthor(key, lang);
+	docstring const year   = getYear(key, true, lang);
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 

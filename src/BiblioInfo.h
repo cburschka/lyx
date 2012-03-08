@@ -54,7 +54,7 @@ public:
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor() const;
+	docstring const getAbbreviatedAuthor(std::string lang = "en") const;
 	/// 
 	docstring const getYear() const;
 	///
@@ -162,14 +162,14 @@ public:
 	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(docstring const & key) const;
+	docstring const getAbbreviatedAuthor(docstring const & key, std::string lang = "en") const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
 	/// Note that this will get the year from the crossref if it's
 	/// not present in the record itself.	
 	docstring const getYear(docstring const & key,
-			bool use_modifier = false) const;
+			bool use_modifier = false, std::string lang = "en") const;
 	///
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
