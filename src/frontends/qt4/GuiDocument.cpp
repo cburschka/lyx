@@ -261,6 +261,15 @@ vector<string> getExcludedList(string const & modName)
 }
 
 
+docstring getModuleCategory(string const & modName)
+{
+	LyXModule const * const mod = theModuleList[modName];
+	if (!mod)
+		return docstring();
+	return from_utf8(mod->category());
+}
+
+
 docstring getModuleDescription(string const & modName)
 {
 	LyXModule const * const mod = theModuleList[modName];
@@ -2219,6 +2228,13 @@ void GuiDocument::updateModuleInfo()
 		if (!desc.empty())
 			desc += "\n";
 		desc += _("Module provided by document class.");
+	}
+
+	docstring cat = getModuleCategory(modName);
+	if (!cat.empty()) {
+		if (!desc.empty())
+			desc += "\n";
+		desc += bformat(_("Category: %1$s."), cat);
 	}
 
 	vector<string> pkglist = getPackageList(modName);
