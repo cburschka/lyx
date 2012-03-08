@@ -3647,7 +3647,8 @@ void GuiDocument::loadModuleInfo()
 		if (pos > 0)
 			desc.truncate(pos + 1);
 		m.description = desc;
-		moduleNames_.push_back(m);
+		if (it->category().substr(0, 8) != "Citation")
+			moduleNames_.push_back(m);
 	}
 }
 
