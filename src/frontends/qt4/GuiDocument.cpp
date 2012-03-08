@@ -2203,7 +2203,7 @@ void GuiDocument::updateModuleInfo()
 	if (focus_on_selected)
 		lv = modulesModule->selectedLV;
 	else
-		lv= modulesModule->availableLV;
+		lv = modulesModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
 		modulesModule->infoML->document()->clear();
 		return;

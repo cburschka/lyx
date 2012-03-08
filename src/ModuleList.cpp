@@ -23,7 +23,7 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
-	
+
 using namespace std;
 using namespace lyx::support;
 
@@ -34,11 +34,11 @@ namespace lyx {
 ModuleList theModuleList;
 
 
-LyXModule::LyXModule(string const & n, string const & i, 
+LyXModule::LyXModule(string const & n, string const & i,
 	                   string const & d, vector<string> const & p,
 	                   vector<string> const & r, vector<string> const & e,
 	                   string const & c):
-	name_(n), id_(i), description_(d), package_list_(p), 
+	name_(n), id_(i), description_(d), package_list_(p),
 	required_modules_(r), excluded_modules_(e), category_(c),
 	checked_(false)
 {
@@ -69,7 +69,7 @@ bool LyXModule::isAvailable() const {
 	available_ = true;
 	//check whether all of the required packages are available
 	vector<string>::const_iterator it  = package_list_.begin();
-	vector<string>::const_iterator end = package_list_.end(); 
+	vector<string>::const_iterator end = package_list_.end();
 	for (; it != end; ++it) {
 		if (!LaTeXFeatures::isAvailable(*it)) {
 			available_ = false;
@@ -211,7 +211,7 @@ bool ModuleList::read()
 			addLayoutModule(modname, fname, desc, pkgs, req, exc, catgy);
 		} // end switch
 	} //end while
-	
+
 	LYXERR(Debug::TCLASS, "End of parsing of lyxmodules.lst");
 
 	if (!theModuleList.empty())
@@ -220,7 +220,7 @@ bool ModuleList::read()
 }
 
 
-void ModuleList::addLayoutModule(string const & modname, 
+void ModuleList::addLayoutModule(string const & modname,
 	string const & filename, string const & description,
 	vector<string> const & pkgs, vector<string> const & req,
 	vector<string> const & exc, string const & catgy)

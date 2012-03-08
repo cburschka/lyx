@@ -17,14 +17,14 @@
 #include <vector>
 
 namespace lyx {
-	
+
 /**
  *  This class represents a particular LyX "module", which is a like a layout
- *  file, except that it does not stand alone. In that sense, it is more like 
- *  a LaTeX package, where a layout file corresponds to a LaTeX class. Or, in 
+ *  file, except that it does not stand alone. In that sense, it is more like
+ *  a LaTeX package, where a layout file corresponds to a LaTeX class. Or, in
  *  LyX's own terms, a module is more like an included file that can be used
  *  with various document classes. The difference is that using a module only
- *  means selecting it in the Document>Settings dialog, whereas including a 
+ *  means selecting it in the Document>Settings dialog, whereas including a
  *  layout file means layout file editing.
  *
  *  In general, a given module can be used with any document class. That said,
@@ -39,7 +39,7 @@ namespace lyx {
  *   #Excludes: theorems-chap
  *   #Category: theorems
  *  The description is used in the gui to give information to the user. The
- *  Requires, Excludes, and Categofy lines are read by the configuration script 
+ *  Requires, Excludes, and Categofy lines are read by the configuration script
  *  and written to a file lyxmodules.lst in the user configuration directory.
  *  That file is then read on startup to populate the ModuleList, below.
  *
@@ -50,10 +50,10 @@ namespace lyx {
 class LyXModule {
 public:
 	///
-	LyXModule(std::string const & name, std::string const & id, 
-	          std::string const & description, 
+	LyXModule(std::string const & name, std::string const & id,
+	          std::string const & description,
 	          std::vector<std::string> const & packagelist,
-	          std::vector<std::string> const & requires, 
+	          std::vector<std::string> const & requires,
 	          std::vector<std::string> const & excludes,
 	          std::string const & catgy);
 	/// whether the required packages are available
@@ -72,10 +72,10 @@ public:
 	std::vector<std::string> const & getPackageList() const
 		{ return package_list_; }
 	///
-	std::vector<std::string> const & getRequiredModules() const 
+	std::vector<std::string> const & getRequiredModules() const
 		{ return required_modules_; }
 	/// Modules this one excludes: the list should be treated disjunctively
-	std::vector<std::string> const & getExcludedModules() const 
+	std::vector<std::string> const & getExcludedModules() const
 		{ return excluded_modules_; }
 	///
 	std::string category() const { return category_; }
@@ -139,7 +139,7 @@ public:
 	/// Returns a pointer to the LyXModule with filename str.
 	/// Returns a null pointer if no such module is found.
 	LyXModule const * operator[](std::string const & str) const;
-	/// 
+	///
 	LyXModule * operator[](std::string const & str);
 	private:
 	/// noncopyable
@@ -147,7 +147,7 @@ public:
 	///
 	void operator=(ModuleList const &);
 	/// add a module to the list
-	void addLayoutModule(std::string const &, std::string const &, 
+	void addLayoutModule(std::string const &, std::string const &,
 		std::string const &, std::vector<std::string> const &,
 		std::vector<std::string> const &, std::vector<std::string> const &,
 		std::string const &);
