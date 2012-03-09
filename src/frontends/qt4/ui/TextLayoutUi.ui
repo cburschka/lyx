@@ -277,8 +277,11 @@
    </item>
    <item row="3" column="0">
     <widget class="QCheckBox" name="justCB">
+      <property name="toolTip">
+      <string>Justify text in the LyX editor (this does not affect whether the text is justified in the output)</string>
+     </property>
      <property name="text">
-      <string>Use &amp;Justification</string>
+      <string>Use &amp;justification in LyX work area</string>
      </property>
     </widget>
    </item>
