@@ -56,6 +56,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 
 	void addPreview(DocIterator const & inset_pos,

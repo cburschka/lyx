@@ -345,6 +345,12 @@ public:
 		pos_type i,
 		unsigned int & column);
 	///
+	bool latexSpecialT3(
+		char_type const c,
+		otexstream & os,
+		pos_type i,
+		unsigned int & column);
+	///
 	bool latexSpecialTypewriter(
 		char_type const c,
 		otexstream & os,
@@ -1169,17 +1175,21 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		return;
 	}
 
+	// TIPA uses its own T3 encoding
+	if (runparams.inIPA && latexSpecialT3(c, os, i, column))
+		return;
 	// If T1 font encoding is used, use the special
 	// characters it provides.
 	// NOTE: some languages reset the font encoding
 	// internally
-	if (!running_font.language()->internalFontEncoding()
+	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
 	    && lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
 		return;
 
 	// \tt font needs special treatment
-	if (running_font.fontInfo().family() == TYPEWRITER_FAMILY
-		&& latexSpecialTypewriter(c, os, i, column))
+	if (!runparams.inIPA
+	     && running_font.fontInfo().family() == TYPEWRITER_FAMILY
+	     && latexSpecialTypewriter(c, os, i, column))
 		return;
 
 	// Otherwise, we use what LaTeX provides us.
@@ -1324,6 +1334,23 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 		// soul.sty breaks with \char`\"
 		os << "\\textquotedbl{}";
 		column += 14;
+		return true;
+	default:
+		return false;
+	}
+}
+
+
+bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
+	pos_type i, unsigned int & column)
+{
+	switch (c) {
+	case '*':
+	case '[':
+	case ']':
+	case '|':
+	case '\"':
+		os.put(c);
 		return true;
 	default:
 		return false;

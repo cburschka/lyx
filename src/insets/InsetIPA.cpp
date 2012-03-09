@@ -63,6 +63,22 @@ void InsetIPA::write(ostream & os) const
 }
 
 
+void InsetIPA::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+	case LFUN_QUOTE_INSERT: {
+		FuncRequest fr(LFUN_SELF_INSERT, "\"");
+		InsetText::doDispatch(cur, fr);
+		break;
+	}
+	default:
+		InsetText::doDispatch(cur, cmd);
+		break;
+	}
+
+}
+
+
 bool InsetIPA::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
