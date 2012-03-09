@@ -197,19 +197,23 @@ void ViewSourceWidget::updateDefaultFormat()
 	outputFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
 
-	int index = 0;
-	typedef vector<Format const *> Formats;
-	Formats formats = bv_->buffer().params().exportableFormats(true);
-	Formats::const_iterator cit = formats.begin();
-	Formats::const_iterator end = formats.end();
-	for (; cit != end; ++cit) {
-		QString const fname = toqstr((*cit)->name());
-		outputFormatCO->addItem(qt_((*cit)->prettyname()),
-				QVariant(fname));
-		if (fname == view_format_)
-		    index = outputFormatCO->count() -1;
+	vector<string> tmp = bv_->buffer().params().backends();
+	vector<string>::const_iterator it = tmp.begin();
+	vector<string>::const_iterator en = tmp.end();
+	for (; it != en; ++it) {
+		string const format = *it;
+		Format const * fmt = formats.getFormat(format);
+		if (!fmt)
+			LYXERR0("Can't find format for backend " << format << "!");
+		else if (fmt->name() == "lyx")
+			// we can't presently display the LyX format itself
+			continue;
+
+		QString const pretty =
+			fmt ? qt_(fmt->prettyname()) : toqstr(format);
+		outputFormatCO->addItem(pretty, QVariant(toqstr(format)));
 	}
-	outputFormatCO->setCurrentIndex(index);
+
 	outputFormatCO->blockSignals(false);
 }
 

@@ -2172,6 +2172,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
 
 	if (dformat == "xhtml")
 		result = OutputParams::HTML;
+	else if (dformat == "text")
+		result = OutputParams::TEXT;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();
