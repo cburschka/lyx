@@ -249,6 +249,8 @@ struct CharInfo {
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
 	bool force;
+	/// TIPA shortcut
+	string tipashortcut;
 };
 
 
@@ -685,6 +687,15 @@ bool Encodings::isCombiningChar(char_type c)
 }
 
 
+string const Encodings::TIPAShortcut(char_type c)
+{
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it != unicodesymbols.end())
+		return it->second.tipashortcut;
+	return string();
+}
+
+
 bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -797,6 +808,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				forced.insert(symbol);
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
+			} else if (contains(flag, "tipashortcut=")) {
+				info.tipashortcut = split(flag, '=');
 			} else {
 				lyxerr << "Ignoring unknown flag `" << flag
 				       << "' for symbol `0x"

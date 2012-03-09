@@ -194,8 +194,10 @@ void InsetIPA::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetIPA::latex(otexstream & os, OutputParams const & runparams) const
+void InsetIPA::latex(otexstream & os, OutputParams const & runparams_in) const
 {
+	OutputParams runparams(runparams_in);
+	runparams.inIPA = true;
 	bool const multipar = (text().paragraphs().size() > 1);
 	// fontspec knows \textipa, but not the IPA environment
 	bool const nontexfonts = buffer_->params().useNonTeXFonts;

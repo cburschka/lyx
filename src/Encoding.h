@@ -172,6 +172,8 @@ public:
 	static char_type transformChar(char_type c, LetterForm form);
 	/// Is this a combining char?
 	static bool isCombiningChar(char_type c);
+	/// Return the TIPA shortcut
+	static std::string const TIPAShortcut(char_type c);
 	/**
 	 * Is this a known char from some language?
 	 * If \p preamble is empty and code point \p c is known to belong

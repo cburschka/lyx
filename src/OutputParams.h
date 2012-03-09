@@ -198,6 +198,11 @@ public:
 	 */
 	bool inIndexEntry;
 
+	/** Whether we are inside an IPA inset.
+	 *  Needed for proper IPA output.
+	 */
+	bool inIPA;
+
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.
          */

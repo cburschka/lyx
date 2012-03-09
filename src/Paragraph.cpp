@@ -1253,8 +1253,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			return;
 
 		Encoding const & encoding = *(runparams.encoding);
+		char_type next = '\0';
 		if (i + 1 < int(text_.size())) {
-			char_type next = text_[i + 1];
+			next = text_[i + 1];
 			if (Encodings::isCombiningChar(next)) {
 				column += latexSurrogatePair(os, c, next, runparams) - 1;
 				++i;
@@ -1262,18 +1263,37 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			}
 		}
 		string script;
-		docstring const latex = encoding.latexChar(c);
+		docstring latex = encoding.latexChar(c);
+		docstring nextlatex;
+		if (next != '\0' && next != META_INSET)
+			nextlatex = encoding.latexChar(next);
+		bool tipas = false;
+		if (runparams.inIPA) {
+			string const tipashortcut = Encodings::TIPAShortcut(c);
+			if (!tipashortcut.empty()) {
+				latex = from_ascii(tipashortcut);
+				tipas = true;
+			}
+		}
 		if (Encodings::isKnownScriptChar(c, script)
 		    && prefixIs(latex, from_ascii("\\" + script)))
 			column += writeScriptChars(os, latex,
 					running_change, encoding, i) - 1;
-		else if (latex.length() > 1 && latex[latex.length() - 1] != '}' &&
-		         latex[latex.length() - 1] != '-') {
+		else if (!prefixIs(nextlatex, from_ascii("\\"))
+			 && !prefixIs(nextlatex, from_ascii("{"))
+			 && !prefixIs(nextlatex, from_ascii("}"))
+			 && latex.length() > 1 && latex[latex.length() - 1] != '}'
+			 && latex[latex.length() - 1] != '-' && !tipas) {
 			// Prevent eating of a following
 			// space or command corruption by
 			// following characters
-			column += latex.length() + 1;
-			os << latex << "{}";
+			if (next == ' ' || next == '\0') {
+				column += latex.length() + 1;
+				os << latex << "{}";
+			} else {
+				column += latex.length();
+				os << latex << " ";
+			}
 		} else {
 			column += latex.length() - 1;
 			os << latex;

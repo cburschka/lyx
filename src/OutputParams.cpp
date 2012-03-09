@@ -25,7 +25,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  use_indices(false), use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData),
 	  inComment(false), inTableCell(NO), inFloat(NONFLOAT),
-	  inIndexEntry(false), inDeletedInset(0),
+	  inIndexEntry(false), inIPA(false), inDeletedInset(0),
 	  changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0), lastid(-1), lastpos(-1), isLastPar(false),
 	  dryrun(false), pass_thru(false), 
