@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-09 12:54+0100\n"
-"PO-Revision-Date: 2012-03-09 13:21+0100\n"
+"POT-Creation-Date: 2012-03-09 13:39+0100\n"
+"PO-Revision-Date: 2012-03-09 13:43+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5027,9 +5027,16 @@ msgid "Two-&column document"
 msgstr "Z&weispaltiges Dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:281
-#, fuzzy
-msgid "Use &Justification"
-msgstr "Einschränkung"
+msgid ""
+"Justify text in the LyX editor (this does not affect whether the text is "
+"justified in the output)"
+msgstr ""
+"Blocksatz im LyX-Editor verwenden (diese Einstellung beeinflusst nicht den "
+"Satz in der Ausgabe)"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:284
+msgid "Use &justification in LyX work area"
+msgstr "&Blocksatz im LyX-Arbeitsbereich verwenden"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
