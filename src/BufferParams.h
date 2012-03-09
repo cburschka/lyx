@@ -176,7 +176,8 @@ public:
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
 	///
 	bool isExportableFormat(std::string const & format) const;
-	///
+	/// the backends appropriate for use with this document.
+	/// so, e.g., latex is excluded , if we're using non-TeX fonts
 	std::vector<std::string> backends() const;
 
 	/// List of included children (for includeonly)
