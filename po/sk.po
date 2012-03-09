@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-07 10:14+0100\n"
-"PO-Revision-Date: 2012-03-07 10:22+0100\n"
+"POT-Creation-Date: 2012-03-09 14:15+0100\n"
+"PO-Revision-Date: 2012-03-09 14:20+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
 "Language: sk\n"
@@ -4869,8 +4869,14 @@ msgid "Two-&column document"
 msgstr "Dvojstĺpcový dokument"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:281
-msgid "Use &Justification"
-msgstr "Použiť zarovnanie"
+msgid ""
+"Justify text in the LyX editor (this does not affect whether the text is "
+"justified in the output)"
+msgstr "Zarovnať text v LyX editore (to nemá vplyv na zarovnanie vo výstupe)"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:284
+msgid "Use &justification in LyX work area"
+msgstr "Použiť zarovnanie v LyX-ovej pracovnej ploche"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
@@ -21313,7 +21319,12 @@ msgstr "%1$s (nedostupný)"
 msgid "Module provided by document class."
 msgstr "Modul poskytnutý triedou dokumentu"
 
-#: src/frontends/qt4/GuiDocument.cpp:2191
+#: src/frontends/qt4/GuiDocument.cpp:2237
+#, c-format
+msgid "Category: %1$s."
+msgstr "Kategória: %1$s."
+
+#: src/frontends/qt4/GuiDocument.cpp:2245
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Vyžadované balíčky: %1$s."
