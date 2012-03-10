@@ -506,7 +506,7 @@ string const Parser::plainCommand(char left, char right, string const & name)
 {
 	if (!good())
 		return string();
-	// ceck if first token is really the start character
+	// check if first token is really the start character
 	Token tok = get_token();
 	if (tok.character() != left) {
 		cerr << "first character does not match start character of command \\" << name << endl;

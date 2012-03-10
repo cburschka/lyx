@@ -197,17 +197,17 @@ public:
 	 */
 	std::string const verbatimEnvironment(std::string const & name);
 	/*
-	* The same as verbatimEnvironment(std::string const & name) but
-	* \begin and \end commands inside the name environment are not parsed.
-	* This function is designed to parse verbatim environments.
-	*/
+	 * The same as verbatimEnvironment(std::string const & name) but
+	 * \begin and \end commands inside the name environment are not parsed.
+	 * This function is designed to parse verbatim environments.
+	 */
 	std::string const plainEnvironment(std::string const & name);
 	/*
-	* Basically the same as plainEnvironment(std::string const & name) but
-	* instead of \begin and \end commands the parsing is started/stopped
-	* at given characters.
-	* This function is designed to parse verbatim commands.
-	*/
+	 * Basically the same as plainEnvironment(std::string const & name) but
+	 * instead of \begin and \end commands the parsing is started/stopped
+	 * at given characters.
+	 * This function is designed to parse verbatim commands.
+	 */
 	std::string const plainCommand(char left, char right, std::string const & name);
 	/*!
 	 * Returns the character of the current token and increments
