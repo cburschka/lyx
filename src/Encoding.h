@@ -196,6 +196,11 @@ public:
 	 */
 	static bool isMathAlpha(char_type c);
 	/**
+	 * Do we need to terminate this command (by {} or space)?
+	 * This is true if the "notermination" flag is not set.
+	 */
+	static bool needsTermination(char_type c);
+	/**
 	 * Register \p c as a mathmode command.
 	 */
 	static void addMathCmd(char_type c) { mathcmd.insert(c); }

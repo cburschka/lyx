@@ -1289,7 +1289,8 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		    && prefixIs(latex, from_ascii("\\" + script)))
 			column += writeScriptChars(os, latex,
 					running_change, encoding, i) - 1;
-		else if (!prefixIs(nextlatex, from_ascii("\\"))
+		else if (Encodings::needsTermination(c)
+			 && !prefixIs(nextlatex, from_ascii("\\"))
 			 && !prefixIs(nextlatex, from_ascii("{"))
 			 && !prefixIs(nextlatex, from_ascii("}"))
 			 && latex.length() > 1 && latex[latex.length() - 1] != '}'

@@ -251,6 +251,8 @@ struct CharInfo {
 	bool force;
 	/// TIPA shortcut
 	string tipashortcut;
+	/// This macro needs no termination (such as {} or space).
+	bool notermination;
 };
 
 
@@ -726,6 +728,15 @@ bool Encodings::isMathAlpha(char_type c)
 }
 
 
+bool Encodings::needsTermination(char_type c)
+{
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it != unicodesymbols.end())
+		return !it->second.notermination;
+	return true;
+}
+
+
 Encoding const * Encodings::fromLyXName(string const & name) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
@@ -798,6 +809,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		info.combining = false;
 		info.textfeature = false;
 		info.force = false;
+		info.notermination = false;
 		while (!flags.empty()) {
 			string flag;
 			flags = split(flags, flag, ',');
@@ -808,6 +820,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				forced.insert(symbol);
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
+			} else if (flag == "notermination") {
+				info.notermination = true;
 			} else if (contains(flag, "tipashortcut=")) {
 				info.tipashortcut = split(flag, '=');
 			} else {
