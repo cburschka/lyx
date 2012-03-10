@@ -118,11 +118,11 @@ Section -ProgramFiles SecProgramFiles
   !endif # end if BUNDLE
   
    # install eLyXer
-   SetOutPath "$INSTDIR\bin"
+   SetOutPath "$INSTDIR\Python\Lib"
    !insertmacro FileListeLyXer File "${FILES_ELYXER}\"
    
    # install unoconv
-   SetOutPath "$INSTDIR\python\Lib"
+   SetOutPath "$INSTDIR\Python\Lib"
    !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
 
   # install the LaTeX class files that are delivered with LyX
