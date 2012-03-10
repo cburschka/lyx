@@ -39,7 +39,7 @@ namespace lyx {
  *   #Excludes: theorems-chap
  *   #Category: theorems
  *  The description is used in the gui to give information to the user. The
- *  Requires, Excludes, and Categofy lines are read by the configuration script
+ *  Requires, Excludes, and Category lines are read by the configuration script
  *  and written to a file lyxmodules.lst in the user configuration directory.
  *  That file is then read on startup to populate the ModuleList, below.
  *
