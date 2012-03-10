@@ -143,6 +143,7 @@ void ViewSourceWidget::setViewFormat()
 	updateView();
 }
 
+
 void ViewSourceWidget::updateView()
 {
 	if (!bv_) {
@@ -197,6 +198,7 @@ void ViewSourceWidget::updateDefaultFormat()
 	outputFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
 
+	int index = 0;
 	vector<string> tmp = bv_->buffer().params().backends();
 	vector<string>::const_iterator it = tmp.begin();
 	vector<string>::const_iterator en = tmp.end();
@@ -209,10 +211,13 @@ void ViewSourceWidget::updateDefaultFormat()
 			// we can't presently display the LyX format itself
 			continue;
 
-		QString const pretty =
-			fmt ? qt_(fmt->prettyname()) : toqstr(format);
-		outputFormatCO->addItem(pretty, QVariant(toqstr(format)));
+		QString const pretty = qt_(fmt->prettyname());
+		QString const qformat = toqstr(format);
+		outputFormatCO->addItem(pretty, QVariant(qformat));
+		if (qformat == view_format_)
+		   index = outputFormatCO->count() -1;
 	}
+	outputFormatCO->setCurrentIndex(index);
 
 	outputFormatCO->blockSignals(false);
 }
