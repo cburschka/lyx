@@ -87,6 +87,10 @@ public:
 
 	virtual bool prepareFileRevisionEnabled() = 0;
 
+	/// Check the directory of file and all parent directories
+	// for the existence of the given pathname
+	static bool checkparentdirs(support::FileName const & file, std::string const & pathname);
+	
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;

@@ -367,6 +367,19 @@ FileName FileName::onlyPath() const
 }
 
 
+FileName FileName::parentPath() const
+{
+	FileName path;
+	// return empty path for parent of root dir
+	// parent of empty path is empty too
+	if (empty() || d->fi.isRoot())
+		return path;
+	path.d->fi.setFile(d->fi.path());
+	path.d->name = fromqstr(path.d->fi.absoluteFilePath());
+	return path;
+}
+
+
 bool FileName::isReadableFile() const
 {
 	return !empty() && d->fi.isFile() && d->fi.isReadable();

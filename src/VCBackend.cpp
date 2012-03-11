@@ -97,7 +97,20 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 	revis = rev;
 	return true;
 }
-	
+
+bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
+{
+	FileName dirname = file.onlyPath();
+	FileName tocheck = FileName(addName(dirname.absFileName(),pathname));
+	bool result = tocheck.exists();
+	while ( !result && !dirname.empty() ) {
+		dirname = dirname.parentPath();
+		tocheck = FileName(addName(dirname.absFileName(),pathname));
+		result = tocheck.exists();
+	}
+	return result;
+}
+
 	
 /////////////////////////////////////////////////////////////////////
 //
@@ -1039,27 +1052,26 @@ SVN::SVN(FileName const & m, FileName const & f)
 
 FileName const SVN::findFile(FileName const & file)
 {
-	// First we look for the .svn/entries in the same dir
-	// where we have file.
-	FileName const entries(onlyPath(file.absFileName()) + "/.svn/entries");
-	string const tmpf = onlyFileName(file.absFileName());
-	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn in `" << entries
-			     << "' for `" << tmpf << '\'');
-	if (entries.isReadableFile()) {
-		// Ok we are at least in a SVN dir. Parse the .svn/entries
-		// and see if we can find this file. We do a fast and
-		// dirty parse here.
-		ifstream ifs(entries.toFilesystemEncoding().c_str());
-		string line, oldline;
-		while (getline(ifs, line)) {
-			if (line == "dir" || line == "file")
-				LYXERR(Debug::LYXVC, "\tEntries: " << oldline);
-			if (oldline == tmpf && line == "file")
-				return entries;
-			oldline = line;
-		}
+	// First we check the existence of repository meta data.
+	if (!VCS::checkparentdirs(file, ".svn")) {
+		LYXERR(Debug::LYXVC, "Cannot find SVN meta data for " << file);
+		return FileName();
 	}
-	return FileName();
+
+	// Now we check the status of the file.
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return FileName();
+	}
+
+	string const fname = onlyFileName(file.absFileName());
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn control for `" << fname << '\'');
+	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname)
+						+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+						file.onlyPath());
+	LYXERR(Debug::LYXVC, "SVN control: " << (found ? "enabled" : "disabled"));
+	return found ? file : FileName();
 }
 
 
@@ -1096,7 +1108,7 @@ bool SVN::checkLockMode()
 	string line;
 	bool ret = false;
 
-	while (ifs) {
+	while (ifs && !ret) {
 		getline(ifs, line);
 		LYXERR(Debug::LYXVC, line);
 		if (contains(line, "svn:needs-lock"))
