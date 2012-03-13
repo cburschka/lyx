@@ -34,11 +34,9 @@ What's new
 
 * USER INTERFACE
 
-- Graphics insets show filename as a tooltip now.
-
 - New option to show only the preamble when viewing source (bug 7860).
 
-- Fix undo warning when inserting plain text file (bug 7916).
+- Graphics insets show filename as a tooltip now.
 
 - New command for forward search with SumatraPDF without the need of an
   external DDE program (requires SumatraPDF version 1.9 or higher).
@@ -72,11 +70,6 @@ What's new
   python contains non-ascii characters.
 
 
-* TEX2LYX
-
-- 
-
-
 * USER INTERFACE
 
 - Do not allow to add a citation in the citation dialog using the
@@ -94,12 +87,19 @@ What's new
 
 - Stop screen from jumping around so much on undo and redo (bug 6367).
 
+- Fix undo warning when inserting plain text file (bug 7916).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
 - Fixed problem that the example file knitr.lyx could not be opened.
 
 - Re-enable the compilation of the modernCV.lyx example file (bug 8064).
+
+
+* TEX2LYX
+
+- 
 
 
 * ADVANCED FIND AND REPLACE
