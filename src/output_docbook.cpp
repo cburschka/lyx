@@ -336,18 +336,18 @@ void docbookParagraphs(Text const & text,
 		switch (style.latextype) {
 		case LATEX_COMMAND: {
 			send = searchCommand(par, pend);
-			par = makeCommand(buf, os, runparams, text, par,send);
+			par = makeCommand(buf, os, runparams, text, par, send);
 			break;
 		}
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeEnvironment(buf, os, runparams, text, par,send);
+			par = makeEnvironment(buf, os, runparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, text, par,send);
+			par = makeParagraph(buf, os, runparams, text, par, send);
 			break;
 		default:
 			break;
