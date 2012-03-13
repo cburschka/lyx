@@ -79,7 +79,7 @@ namespace {
 
 typedef pair<pit_type, int> PitPosPair;
 
-typedef limited_stack<pair<ParagraphList, DocumentClass const *> > CutStack;
+typedef limited_stack<pair<ParagraphList, DocumentClassConstPtr> > CutStack;
 
 CutStack theCuts(10);
 // persistent selection, cleared until the next selection
@@ -99,7 +99,7 @@ bool checkPastePossible(int index)
 
 pair<PitPosPair, pit_type>
 pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
-		     DocumentClass const * const oldDocClass, ErrorList & errorlist)
+		     DocumentClassConstPtr oldDocClass, ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();
 	pit_type pit = cur.pit();
@@ -119,8 +119,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	DocumentClass const * const newDocClass = 
-		buffer.params().documentClassPtr();
+	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -461,15 +460,14 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 
 void putClipboard(ParagraphList const & paragraphs, 
-	DocumentClass const * const docclass, docstring const & plaintext)
+	DocumentClassConstPtr docclass, docstring const & plaintext)
 {
 	// For some strange reason gcc 3.2 and 3.3 do not accept
 	// Buffer buffer(string(), false);
-	// This needs to be static to avoid a memory leak. When a Buffer is
-	// constructed, it constructs a BufferParams, which in turn constructs
-	// a DocumentClass, via new, that is never deleted. If we were to go to
-	// some kind of garbage collection there, or a shared_ptr, then this
-	// would not be needed.
+	// This used to need to be static to avoid a memory leak. It no longer needs
+	// to be so, but the alternative is to construct a new one of these (with a
+	// new temporary directory, etc) every time, and then to destroy it. So maybe
+	// it's worth just keeping this one around.
 	static Buffer * buffer = theBufferList().newInternalBuffer(
 		FileName::tempName("clipboard.internal").absFileName());
 	buffer->setUnnamed(true);
@@ -503,7 +501,7 @@ static bool isFullyDeleted(ParagraphList const & pars)
 
 void copySelectionHelper(Buffer const & buf, Text const & text,
 	pit_type startpit, pit_type endpit,
-	int start, int end, DocumentClass const * const dc, CutStack & cutstack)
+	int start, int end, DocumentClassConstPtr dc, CutStack & cutstack)
 {
 	ParagraphList const & pars = text.paragraphs();
 
@@ -558,8 +556,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 		it->setInsetOwner(0);
 	}
 
-	DocumentClass * d = const_cast<DocumentClass *>(dc);
-	cutstack.push(make_pair(copy_pars, d));
+	cutstack.push(make_pair(copy_pars, dc));
 }
 
 } // namespace anon
@@ -634,8 +631,8 @@ bool multipleCellsSelected(Cursor const & cur)
 }
 
 
-void switchBetweenClasses(DocumentClass const * const oldone, 
-		DocumentClass const * const newone, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(DocumentClassConstPtr  oldone,
+		DocumentClassConstPtr newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 
@@ -975,7 +972,7 @@ docstring selection(size_t sel_index)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClass const * const docclass, ErrorList & errorList)
+			DocumentClassConstPtr docclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();

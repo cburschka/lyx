@@ -23,6 +23,7 @@
 namespace lyx
 {
 	using std::tr1::shared_ptr;
+	using std::tr1::const_pointer_cast;
 }
 
 #else
@@ -32,6 +33,7 @@ namespace lyx
 namespace lyx
 {
 	using boost::shared_ptr;
+	using boost::const_pointer_cast;
 }
 
 #endif

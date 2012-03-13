@@ -14,6 +14,8 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
+#include "DocumentClassPtr.h"
+
 #include "support/docstring.h"
 
 #include "frontends/Clipboard.h"
@@ -100,15 +102,15 @@ void pasteSimpleText(Cursor & cur, bool asParagraphs);
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClass const * const textclass, ErrorList & errorList);
+			DocumentClassConstPtr textclass, ErrorList & errorList);
 
 
 /** Needed to switch between different classes. This works
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.
  */
-void switchBetweenClasses(DocumentClass const * const c1, 
-			DocumentClass const * const c2, InsetText & in, ErrorList &);
+void switchBetweenClasses(DocumentClassConstPtr c1,
+			DocumentClassConstPtr c2, InsetText & in, ErrorList &);
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.

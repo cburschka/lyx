@@ -16,6 +16,7 @@
 #define BUFFERPARAMS_H
 
 #include "Citation.h"
+#include "DocumentClassPtr.h"
 #include "Format.h"
 #include "LayoutModuleList.h"
 #include "OutputParams.h"
@@ -129,11 +130,11 @@ public:
 	DocumentClass const & documentClass() const;
 	/// \return A pointer to the DocumentClass currently in use: the BaseClass
 	/// as modified by modules.
-	DocumentClass const * documentClassPtr() const;
+	DocumentClassConstPtr  documentClassPtr() const;
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
-	void setDocumentClass(DocumentClass const * const);
+	void setDocumentClass(DocumentClassConstPtr);
 	/// List of modules in use
 	LayoutModuleList const & getModules() const { return layout_modules_; }
 	/// List of default modules the user has removed
@@ -500,7 +501,7 @@ private:
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType cite_engine_type_;
 	///
-	DocumentClass * doc_class_;
+	DocumentClassPtr doc_class_;
 	///
 	LayoutModuleList layout_modules_;
 	/// this is for modules that are required by the document class but that

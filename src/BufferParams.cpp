@@ -1953,20 +1953,20 @@ bool BufferParams::hasClassDefaults() const
 
 DocumentClass const & BufferParams::documentClass() const
 {
-	return *doc_class_;
+	return *doc_class_.get();
 }
 
 
-DocumentClass const * BufferParams::documentClassPtr() const
+DocumentClassConstPtr BufferParams::documentClassPtr() const
 {
 	return doc_class_;
 }
 
 
-void BufferParams::setDocumentClass(DocumentClass const * const tc)
+void BufferParams::setDocumentClass(DocumentClassConstPtr tc)
 {
 	// evil, but this function is evil
-	doc_class_ = const_cast<DocumentClass *>(tc);
+	doc_class_ = const_pointer_cast<DocumentClass>(tc);
 }
 
 
@@ -2037,7 +2037,7 @@ void BufferParams::makeDocumentClass()
 	en = cite_engine_.end();
 	for (; it != en; ++it)
 		mods.push_back(*it);
-	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), mods));
+	doc_class_ = getDocumentClass(*baseClass(), mods);
 
 	if (!local_layout.empty()) {
 		TextClass::ReturnValues success =

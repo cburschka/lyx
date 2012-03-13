@@ -254,12 +254,11 @@ bool checkModule(string const & name, bool command)
 	// This is needed since a module cannot be read on its own, only as
 	// part of a document class.
 	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
-	typedef map<string, DocumentClass *> ModuleMap;
+	typedef map<string, DocumentClassPtr > ModuleMap;
 	static ModuleMap modules;
 	static bool init = true;
 	if (init) {
 		baseClass.load();
-		DocumentClassBundle & bundle = DocumentClassBundle::get();
 		LyXModuleList::const_iterator const end = theModuleList.end();
 		LyXModuleList::const_iterator it = theModuleList.begin();
 		for (; it != end; ++it) {
@@ -269,7 +268,7 @@ bool checkModule(string const & name, bool command)
 			if (!m.moduleCanBeAdded(module, &baseClass))
 				continue;
 			m.push_back(module);
-			modules[module] = &bundle.makeDocumentClass(baseClass, m);
+			modules[module] = getDocumentClass(baseClass, m);
 		}
 		init = false;
 	}
@@ -290,7 +289,7 @@ bool checkModule(string const & name, bool command)
 			continue;
 		if (findInsetLayoutWithoutModule(textclass, name, command))
 			continue;
-		DocumentClass const * c = it->second;
+		DocumentClassConstPtr  c = it->second;
 		Layout const * layout = findLayoutWithoutModule(*c, name, command);
 		InsetLayout const * insetlayout = layout ? 0 :
 			findInsetLayoutWithoutModule(*c, name, command);

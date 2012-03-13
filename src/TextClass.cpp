@@ -1431,38 +1431,11 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 }
 
 
-/////////////////////////////////////////////////////////////////////////
-//
-// DocumentClassBundle
-//
-/////////////////////////////////////////////////////////////////////////
-
-DocumentClassBundle::~DocumentClassBundle()
-{
-	for (size_t i = 0; i != documentClasses_.size(); ++i)
-		delete documentClasses_[i];
-	documentClasses_.clear();
-}
-
-DocumentClass & DocumentClassBundle::newClass(LayoutFile const & baseClass)
-{
-	DocumentClass * dc = new DocumentClass(baseClass);
-	documentClasses_.push_back(dc);
-	return *documentClasses_.back();
-}
-
-
-DocumentClassBundle & DocumentClassBundle::get()
-{
-	static DocumentClassBundle singleton;
-	return singleton;
-}
-
-
-DocumentClass & DocumentClassBundle::makeDocumentClass(
+DocumentClassPtr getDocumentClass(
 		LayoutFile const & baseClass, LayoutModuleList const & modlist)
 {
-	DocumentClass & doc_class = newClass(baseClass);
+	DocumentClassPtr doc_class =
+	    DocumentClassPtr(new DocumentClass(baseClass));
 	LayoutModuleList::const_iterator it = modlist.begin();
 	LayoutModuleList::const_iterator en = modlist.end();
 	for (; it != en; ++it) {
@@ -1490,7 +1463,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 			frontend::Alert::warning(_("Package not available"), msg, true);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
-		if (!doc_class.read(layout_file, TextClass::MODULE)) {
+		if (!doc_class->read(layout_file, TextClass::MODULE)) {
 			docstring const msg =
 						bformat(_("Error reading module %1$s\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Read Error"), msg);

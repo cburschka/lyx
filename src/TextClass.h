@@ -13,6 +13,7 @@
 #include "Citation.h"
 #include "ColorCode.h"
 #include "Counters.h"
+#include "DocumentClassPtr.h"
 #include "FloatList.h"
 #include "FontInfo.h"
 #include "Layout.h"
@@ -23,8 +24,6 @@
 
 #include "support/docstring.h"
 #include "support/types.h"
-
-#include <boost/noncopyable.hpp>
 
 #include <list>
 #include <map>
@@ -369,7 +368,7 @@ private:
 /// In the main LyX code, DocumentClass objects are created only by
 /// DocumentClassBundle, for which see below.
 ///
-class DocumentClass : public TextClass, boost::noncopyable {
+class DocumentClass : public TextClass {
 public:
 	///
 	virtual ~DocumentClass() {}
@@ -475,41 +474,19 @@ protected:
 private:
 	/// The only class that can create a DocumentClass is
 	/// DocumentClassBundle, which calls the protected constructor.
-	friend class DocumentClassBundle;
+	friend DocumentClassPtr
+		getDocumentClass(LayoutFile const &, LayoutModuleList const &);
 	///
 	static InsetLayout plain_insetlayout_;
 };
 
 
-/// DocumentClassBundle is a container for DocumentClass objects, so that
-/// they stay in memory for use by Insets, CutAndPaste, and the like, even
-/// when their associated Buffers are destroyed.
-/// FIXME Some sort of garbage collection or reference counting wouldn't
-/// be a bad idea here. It might be enough to check when a Buffer is closed
-/// (or makeDocumentClass is called) whether the old DocumentClass is in use
-/// anywhere.
-///
-/// This is a singleton class. Its sole instance is accessed via
-/// DocumentClassBundle::get().
-class DocumentClassBundle : boost::noncopyable {
-public:
-	/// \return The sole instance of this class.
-	static DocumentClassBundle & get();
-	/// \return A new DocumentClass based on baseClass, with info added
-	/// from the modules in modlist.
-	DocumentClass & makeDocumentClass(LayoutFile const & baseClass,
+/// The only way to make a DocumentClass is to call this function.
+/// The shared_ptr is needed because DocumentClass objects can be kept
+/// in memory long after their associated Buffer is destroyed, mostly
+/// on the CutStack.
+DocumentClassPtr getDocumentClass(LayoutFile const & baseClass,
 			LayoutModuleList const & modlist);
-private:
-	/// control instantiation
-	DocumentClassBundle() {}
-	/// clean up
-	~DocumentClassBundle();
-	/// \return Reference to a new DocumentClass equal to baseClass
-	DocumentClass & newClass(LayoutFile const & baseClass);
-	///
-	std::vector<DocumentClass *> documentClasses_;
-};
-
 
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, PageSides p);

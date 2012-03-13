@@ -216,6 +216,7 @@ HEADERFILESCORE = \
 	DepTable.h \
 	DispatchResult.h \
 	DocIterator.h \
+	DocumentClassPtr.h \
 	Encoding.h \
 	ErrorList.h \
 	Exporter.h \

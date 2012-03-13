@@ -15,8 +15,10 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "DocumentClassPtr.h"
 #include "update_flags.h"
 
+#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 
@@ -345,7 +347,7 @@ private:
 	void updateHoveredInset() const;
 
 	///
-	void updateDocumentClass(DocumentClass const * const olddc);
+	void updateDocumentClass(DocumentClassConstPtr olddc);
 	///
 	int width_;
 	///

@@ -941,7 +941,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 }
 
 
-void BufferView::updateDocumentClass(DocumentClass const * const olddc)
+void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 {
 	message(_("Converting document to new document class..."));
 	
@@ -1234,7 +1234,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	switch (act) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
-		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
+		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		istringstream ss(to_utf8(cmd.argument()));
 		Lexer lex;
@@ -1256,8 +1256,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 		
 	case LFUN_LAYOUT_MODULES_CLEAR: {
-		DocumentClass const * const oldClass =
-			buffer_.params().documentClassPtr();
+		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().clearLayoutModules();
 		buffer_.params().makeDocumentClass();
@@ -1275,7 +1274,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				"conflicts with installed modules.");
 			break;
 		}
-		DocumentClass const * const oldClass = params.documentClassPtr();
+		DocumentClassConstPtr oldClass = params.documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().addLayoutModule(argument);
 		buffer_.params().makeDocumentClass();
@@ -1306,8 +1305,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		// Save the old, possibly modular, layout for use in conversion.
-		DocumentClass const * const oldDocClass =
-			buffer_.params().documentClassPtr();
+		DocumentClassConstPtr oldDocClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().setBaseClass(argument);
 		buffer_.params().makeDocumentClass();
@@ -1332,7 +1330,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_LAYOUT_RELOAD: {
-		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
+		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
 		LayoutFileIndex bc = buffer_.params().baseClassID();
 		LayoutFileList::get().reset(bc);
 		buffer_.params().setBaseClass(bc);
