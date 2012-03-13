@@ -22,6 +22,8 @@ options have been added:
   Also, it is available via the mini-buffer (or the -x switch)
   through a proper new LFUN (see below).
 
+The Advanced Find and Replace feature now supports cancel of a long
+search operation by hitting the ESC key.
 
 The following pref variables were changed in 2.0:
 
