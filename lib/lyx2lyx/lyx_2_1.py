@@ -445,7 +445,7 @@ def revert_cite_engine_type(document):
         del document.header[i]
 
     # We are looking for the natbib citation engine
-    i = find_token(document.header, "\\cite_engine natbib", i)
+    i = find_token(document.header, "\\cite_engine natbib", 0)
     if i == -1:
         return
     document.header[i] = "\\cite_engine natbib_" + engine_type
