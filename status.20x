@@ -29,10 +29,12 @@ What's new
 
 * TEX2LYX IMPROVEMENTS
 
-- Support for the LaTeX-command \sindex.
+- Support for the LaTeX-command \sindex (for split indexes).
 
 
 * USER INTERFACE
+
+- Graphics insets show filename as a tooltip now.
 
 - New option to show only the preamble when viewing source (bug 7860).
 
@@ -51,7 +53,9 @@ What's new
 
 - Improved template file iop-article.lyx.
 
-- EmbeddedObjects manual: new section how to color every second table row.
+- EmbeddedObjects manual:
+  - New section how to color every second table row.
+  - New section how rotate table cells by a custom angle.
 
 
 * BUILD/INSTALLATION
