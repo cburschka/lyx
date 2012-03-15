@@ -1123,14 +1123,7 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
 	if (p.hasOpt()) {
-		// there can be a [] pair inside the argument for the language
-		string arg = p.getArg('[', ']');
-		if (arg.find("language={[") != string::npos) {
-			char start = p.next_token().character();
-			arg += ']';
-			arg += start;
-			arg += p.getArg(start, ']');
-		}
+		string arg = p.verbatimOption();
 		os << "lstparams " << '"' << arg << '"' << '\n';
 	}
 	if (in_line)
