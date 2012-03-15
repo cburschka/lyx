@@ -87,9 +87,12 @@ What's new
 - Fixed stray warning when inserting inserting plaintext file (bug 7916).
 
 - Don't reset the selected format each time we click into a new paragraph
-  in View>Source (bug 7997).
+  in View->Source (bug 7997).
 
 - Stop screen from jumping around so much on undo and redo (bug 6367).
+
+- Setting a multirow offset no longer also changes table column
+  alignments (bug 8084).
 
 - Fix undo warning when inserting plain text file (bug 7916).
 

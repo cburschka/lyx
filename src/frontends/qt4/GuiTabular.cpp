@@ -428,7 +428,11 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_PWIDTH, width);
 
 	// apply the column alignment
-	setHAlign(param_str);
+	// multirows inherit the alignment from the column; if a column width
+	// is set, multicolumns are always left-aligned so that in this case
+	// its alignment must not be applied (see bug #8084)
+	if (!(multirowCB->isChecked() && width != "0pt"))
+		setHAlign(param_str);
 
 	// SET_DECIMAL_POINT must come after setHAlign() (ALIGN_DECIMAL)
 	string decimal_point = fromqstr(decimalPointED->text());
