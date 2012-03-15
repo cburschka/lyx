@@ -156,6 +156,42 @@ ftp2:\href{ftp://www.test.test}{www.test.test}
 \listoftables
 
 
+\section{Listings}
+
+Inline: \lstinline[language={C++}]!int a=5;!\\
+Float:
+
+\begin{lstlisting}[caption={Example Listing float},label={lst:Example-Listing},language=Python]
+# Example listing float
+def func(param):
+    'this is a python function'
+    pass
+\end{lstlisting}
+
+Here is an example listing with left line numbering, step ``3'',
+language ``Python'', options ``Extended character table'' and
+``Space~as~symbol'', range lines 3\,-\,8:
+
+\begin{lstlisting}[extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3]
+def func(param):
+    'this is a python function'
+    pass
+def func(param):
+'This is a German word: Tschüß'
+pass
+def func(param):
+'this is a python function'
+pass
+\end{lstlisting}
+
+Special cases:
+\begin{lstlisting}[abovecaptionskip=2em,basicstyle={\large\ttfamily},breaklines=true,extendedchars=true,firstline=2,float=h,language={[R/3 3.1]ABAP},lastline=5,numbers=left,numberstyle={\scriptsize},showspaces=true,showstringspaces=false,stepnumber=3,tabsize=4]
+hello
+\end{lstlisting}
+
+\lstinline[language=TeX]!\begin{centering} hello!
+
+
 \section{Graphics\index{Graphics}}
 
 There is also some basic support for graphics, in the form
