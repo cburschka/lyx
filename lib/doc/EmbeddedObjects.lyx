@@ -163,6 +163,10 @@
  {\usepackage{diagbox}
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
+
+% workaround for a bug in KOMA-script 3.10a
+% remove this if a newer KOMA-script version is released!
+\usepackage{everysel,sidecap}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
@@ -415,15 +419,11 @@ name "sec:Graphics-Dialog"
 \begin_layout Standard
 To insert an image into your document, place the cursor at the text position
  you want and click on the toolbar icon 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
  or use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -819,15 +819,11 @@ reference "sec:FloatIntroduction"
 
 \begin_layout Standard
 The toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert figure"
 \end_inset
 
-
-\family default
  and the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -1005,15 +1001,11 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  You can now refer to the label using the menu 
 \family sans
@@ -1025,15 +1017,11 @@ Cross
 reference
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  It is important to use references to floats, rather than using vague references
  like 
@@ -2101,8 +2089,8 @@ reference "sub:Special-Cell-Alignment"
  When you have set a width you can also adjust the vertical alignment of
  the current row.
  A given width will allow the cell to have line breaks and multiple paragraphs
- of text, see section
-\begin_inset space ~
+ of text, see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2119,8 +2107,8 @@ reference "sub:Multiple-Lines-in"
 \end_inset
 
 Furthermore, you can mark one or multiple cells of one row as a multicolumn
- cell, see section
-\begin_inset space ~
+ cell, see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2130,8 +2118,8 @@ reference "sub:Multicolumns"
 
 \end_inset
 
- or the cells of one column as multirow cell, see section
-\begin_inset space ~
+ or the cells of one column as multirow cell, see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2146,8 +2134,24 @@ reference "sub:Multirows"
 \end_inset
 
 The rotate check boxes rotate the current cell, a selection, or the whole
- table counter-clockwise by 90°.
+ table counter-clockwise by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+°.
  The rotation is not shown within LyX, only in the output.
+ For more information see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rotated-Table-Cells"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -2382,8 +2386,8 @@ A
 \end_inset
 
 It is also possible to enter a LaTeX-argument which is needed for special
- table formattings, see section
-\begin_inset space ~
+ table formattings, see sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2416,8 +2420,8 @@ Using the style option
 \family sans
 Formal
 \family default
- will convert the table to a formal table as described in section
-\begin_inset space ~
+ will convert the table to a formal table as described in sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2431,8 +2435,8 @@ reference "sec:Formal-Tables"
 \begin_inset Newline newline
 \end_inset
 
-You can also add space here to table rows as described in section
-\begin_inset space ~
+You can also add space here to table rows as described in sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -2513,297 +2517,213 @@ The toolbar has the following icons:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
  adds a row below the current cell or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
  adds a column right beside the current cell or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
  deletes the current row or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
  deletes the current column or selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-
-\family default
  adds a line at the top of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-
-\family default
  adds a line at the bottom of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-
-\family default
  adds a line at the left side of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-
-\family default
  adds a line at the right side of the current cell / row or of a selection
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-
-\family default
  adds lines around the current or selected cells - if the current cell no
  multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-
-\family default
  deletes all lines of the current or selected cells - if the current cell
  no multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
-
-\family default
  left-aligns the content of the current cell / column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
-
-\family default
  centers the content of the current cell / column horizontally
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
-
-\family default
  right-aligns the content of the current cell / column
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
-
-\family default
  aligns the content of the current column at a character
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-
-\family default
  aligns the content of the current cell vertically to the top
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-
-\family default
  centers the content of the current cell vertically
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-
-\family default
  aligns the content of the current cell vertically to the bottom
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-
-\family default
  rotates the current cell or selection counter-clockwise by 90°
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-
-\family default
  rotates the whole table counter-clockwise by 90°
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  sets the current cell or selection as a multicolumn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  sets the current cell or selection as a multirow
 \end_layout
 
@@ -3129,15 +3049,11 @@ Float\SpecialChar \menuseparator
 Table
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert table"
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -3275,15 +3191,11 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  You can now refer to the label using the menu 
 \family sans
@@ -3295,15 +3207,11 @@ Cross
 reference
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
 \begin_inset Newline newline
 \end_inset
@@ -11795,15 +11703,11 @@ Multicolumn Basics
 \begin_layout Standard
 To merge cells over multiple columns, select as many cells within a row
  as you want to merge and use either the table-toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
 , or the menu 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -12565,15 +12469,11 @@ Table ! Multirows
 \begin_layout Standard
 To merge cells over multiple rows, select as many cells within a column
  as you want to merge and use either the table-toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
 , or the menu 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -17073,16 +16973,21 @@ i
 
 \begin_layout Standard
 If you only need colored text, mark the cells and choose a color in the
- menu 
+ 
 \family sans
-Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
 Style
 \family default
-.
+ dialog (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+).
  This was used to create Table
 \begin_inset space ~
 \end_inset
@@ -17406,16 +17311,15 @@ Both commands are inserted at the beginning of a cell as TeX-Code.
 \end_layout
 
 \begin_layout Standard
-To color characters in the table, mark the cells and use the LyX menu 
+To color characters in the table, mark the cells and use the 
 \family sans
-Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
 Style
 \family default
-.
+ dialog.
  If a cell contains TeX-Code mark only the characters, otherwise the colored
  TeX-Code will cause LaTeX-errors.
 \end_layout
@@ -19115,6 +19019,508 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
+Rotated Table Cells
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Rotated-Table-Cells"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Table ! Rotated Cells
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Rotated Material
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Not all DVI-viewers are able to display rotations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Currently LyX only offers to rotate table cells by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° counter-clockwise.
+ To rotate cells by an angle of your choice, you have to add this to the
+ document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{turnbox}{
+\backslash
+usepackage{rotating}}{}
+\end_layout
+
+\begin_layout Standard
+In the table cell that should be rotated, add at the beginning this command
+ as TeX-code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{turn}{angle}
+\end_layout
+
+\begin_layout Standard
+where angle is the rotation angle in °.
+ At the end of the cell the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{turn}
+\end_layout
+
+\begin_layout Standard
+is inserted as TeX-code.
+\end_layout
+
+\begin_layout Standard
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example where 3
+\begin_inset space ~
+\end_inset
+
+cells were rotated by 45
+\begin_inset space \thinspace{}
+\end_inset
+
+°.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated"
+
+\end_inset
+
+Table with rotated cells in the first row.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+cups
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+plates
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+saucers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Line breaks (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+) are not allowed in rotated cells.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you want to rotate table cells containing line breaks, you have to put
+ the cell content into a minipage or a parbox.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For more about these boxes see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Parboxes"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ If you rotate this cell by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° the width of the box is the height of the cell.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example for a rotated multiline cell where the box width was set
+ to 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated-multi"
+
+\end_inset
+
+Table with rotated multiline cell.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+rotated cell
+\begin_inset Newline newline
+\end_inset
+
+with line break
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Table Width Calculation
 \begin_inset CommandInset label
 LatexCommand label
@@ -20205,11 +20611,9 @@ reference "tab:Table-cells-align"
 .
  This alignment is achieved by setting the cursor into the column and then
  either pressing the toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-feature_align-decimal.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
  or setting the alignment in the table settings to 
@@ -23622,7 +24026,19 @@ To insert a float, use the menu
 Insert\SpecialChar \menuseparator
 Float
 \family default
-.
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
+ or 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+).
  This inserts the 
 \family sans
 Caption
@@ -24163,15 +24579,11 @@ Insert\SpecialChar \menuseparator
 Label
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  A grey label box like this one: 
 \begin_inset Graphics
@@ -24206,15 +24618,11 @@ Insert\SpecialChar \menuseparator
 Cross-reference
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  The cross-reference window appears showing all labels of the document.
  If you have multiple LyX-documents opened, choose the one you are working
@@ -28724,15 +29132,11 @@ Notes ! LyX Notes
 
 \begin_layout Standard
 Notes are inserted with the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -28941,15 +29345,11 @@ As you can see in the example, the first line of greyed out notes is a bit
 \end_inset
 
 When you use the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
  to insert notes, a 
 \family sans
 LyX
@@ -29029,15 +29429,11 @@ Footnotes
 
 \begin_layout Standard
 Footnotes can be inserted using the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -30535,15 +30931,11 @@ Marginal
 Note
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
 .
  A grey 
 \family roman
@@ -31466,15 +31858,11 @@ Insert\SpecialChar \menuseparator
 Box
 \family default
  or the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "box-insert Frameless"
 \end_inset
 
-
-\family default
 .
  A grey box with the label 
 \family sans
@@ -35041,7 +35429,7 @@ status open
 \series bold
 Note:
 \series default
- Some DVI-viewers can't display rotated or scaled material.
+ Not all DVI-viewers are able to display rotated or scaled material.
 \end_layout
 
 \end_inset
@@ -35058,7 +35446,7 @@ status open
 \series bold
 Note:
 \series default
- Floats mustn't be inside a rotated or scaled box.
+ Floats are not allowed inside a rotated or scaled box.
 \end_layout
 
 \end_inset
@@ -35082,27 +35470,7 @@ Boxes ! rotated
 status collapsed
 
 \begin_layout Plain Layout
-Rotated material
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Figures ! rotated
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Table Customization ! Rotating
+Rotated Material
 \end_layout
 
 \end_inset
@@ -35413,6 +35781,26 @@ status collapsed
 \end_inset
 
  and table.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Figures ! rotated
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Table Customization ! Rotating
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -35431,27 +35819,7 @@ Boxes ! scaled
 status collapsed
 
 \begin_layout Plain Layout
-Scaled material
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Figures ! scaled
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Table Customization ! Scaling
+Scaled Material
 \end_layout
 
 \end_inset
@@ -36006,6 +36374,26 @@ status collapsed
 \begin_layout Plain Layout
 
 }}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Figures ! scaled
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Table Customization ! Scaling
 \end_layout
 
 \end_inset
@@ -40691,15 +41079,7 @@ Postscript
 \family sans
 View
 \family default
- menu or by using the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_ps.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-.
+ menu.
 \end_layout
 
 \begin_layout Section
@@ -40906,27 +41286,7 @@ You can view your document as PDF via the
 \family sans
 View
 \family default
- menu or by using the toolbar button 
-\begin_inset Graphics
-	filename ../images/buffer-view_pdf2.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
- 
-\family sans
-(
-\family default
-that uses 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-).
+ menu or by using a toolbar button.
 \end_layout
 
 \begin_layout Chapter

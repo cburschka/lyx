@@ -171,6 +171,10 @@
 % to translate the listing label
 % para traducir la etiqueta listing
 \renewcommand{\lstlistingname}{Listado}
+
+% workaround for a bug in KOMA-script 3.10a
+% remove this if a newer KOMA-script version is released!
+\usepackage{everysel,sidecap}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
@@ -432,15 +436,11 @@ Figuras ! Diálogo de gráficos
 \begin_layout Standard
 Para insertar una imagen en un documento, sitúa el cursor en el lugar del
  texto que desees y haz clic en el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
  o en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -825,15 +825,11 @@ reference "sec:Introducción-Flotantes"
 
 \begin_layout Standard
 El botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert figure"
 \end_inset
 
-
-\family default
  y el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -998,15 +994,11 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  Ahora puedes referirte a la etiqueta usando el menú 
 \family sans
@@ -1018,15 +1010,11 @@ Referencia
 cruzada
 \family default
  o el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
  como «la figura de arriba», porque como LaTeX recolocará los flotantes
@@ -2046,6 +2034,18 @@ reference "sub:Multifilas"
 Las casillas de giro rotan la celda actual, una selección o toda el cuadro
  90º en el sentido de las agujas del reloj.
  La rotación no se ve en LyX, sí en la salida.
+ Para más información véase sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rotated-Table-Cells"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -2356,297 +2356,213 @@ La barra de herramientas tiene los siguientes iconos:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
  añade una fila bajo la celda actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
  añade una columna a la derecha de la celda actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
  borra la fila actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
  borra la columna actual o selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-
-\family default
  añade un borde superior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-
-\family default
  añade un borde inferior en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-
-\family default
  añade un borde a la izquierda en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-
-\family default
  añade un borde a la derecha en la celda/fila actual o la selección
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-
-\family default
  añade bordes en la celda actual o en las seleccionadas (si la celda actual
  no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-
-\family default
  quita todos los bordes de la celda o celdas seleccionadas (si la celda
  actual no es multicolumna esto afecta también a la fila y a la columna)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
-
-\family default
  alinea a la izquierda el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
-
-\family default
  centra el contenido de la celda/columna horizontalmente
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
-
-\family default
  alinea a la derecha el contenido de la celda/columna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
-
-\family default
  alinea el contenido de la celda/columna a un carácter
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-
-\family default
  alinea arriba el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-
-\family default
  centra verticalmente el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-
-\family default
  alinea abajo el contenido de la celda
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-
-\family default
  gira la celda o selección 90° como las agujas de reloj
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-
-\family default
  gira todo el cuadro 90° como agujas del reloj
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  establece la celda actual o selección como multicolumna
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  establece la celda actual o selección como multifila
 \end_layout
 
@@ -2972,15 +2888,11 @@ Flotante\SpecialChar \menuseparator
 Cuadro
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert table"
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -3118,15 +3030,11 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  Ahora puedes referenciar la etiqueta con el menú 
 \family sans
@@ -3138,15 +3046,11 @@ Referencia
 cruzada
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
 \begin_inset Newline newline
 \end_inset
@@ -11587,15 +11491,11 @@ Fundamentos de multicolumnas
 \begin_layout Standard
 Para extender una celda sobre varias columnas, se marcan las celdas que
  se desee combinar y se usa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -12362,15 +12262,11 @@ Cuadros ! Multifilas
 \begin_layout Standard
 Para extender una celda sobre varias filas, se marcan las celdas que se
  desee combinar y se usa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
 , el menú 
 \family sans
 Editar\SpecialChar \menuseparator
@@ -18986,6 +18882,578 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
+
+\lang english
+Rotated Table Cells
+\lang spanish
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Rotated-Table-Cells"
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Cuadros ! 
+\lang english
+Rotated Cells
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Material rotado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ Not all DVI-viewers are able to display rotations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Currently LyX only offers to rotate table cells by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° counter-clockwise.
+ To rotate cells by an angle of your choice, you have to add this to the
+ document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{turnbox}{
+\backslash
+usepackage{rotating}}{}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the table cell that should be rotated, add at the beginning this command
+ as TeX-code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{turn}{ángulo}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where ángulo is the rotation angle in °.
+ At the end of the cell the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{turn}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+is inserted as TeX-code.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example where 3
+\begin_inset space ~
+\end_inset
+
+cells were rotated by 45
+\begin_inset space \thinspace{}
+\end_inset
+
+°.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated"
+
+\end_inset
+
+Table with rotated cells in the first row.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+cups
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+plates
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+saucers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ Line breaks (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+) are not allowed in rotated cells.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to rotate table cells containing line breaks, you have to put
+ the cell content into a minipage or a parbox.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+For more about these boxes
+\lang spanish
+ véase sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minipáginas"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Marcos-de-Párrafo"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ If you rotate this cell by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° the width of the box is the height of the cell.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example for a rotated multiline cell where the box width was set
+ to 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated-multi"
+
+\end_inset
+
+Table with rotated multiline cell.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+rotated cell
+\begin_inset Newline newline
+\end_inset
+
+with line break
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Cálculo de la anchura de cuadros
 \begin_inset CommandInset label
 LatexCommand label
@@ -20086,11 +20554,9 @@ reference "tab:Cuadro-celdas-alineadas"
 .
  Esta alineación se obtiene poniendo el cursor en la columna y pulsando
  el botón 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
  de la barra de herramientas o eligiendo la alineación 
@@ -23467,7 +23933,19 @@ Para insertar un flotante, usa el menú
 Insertar\SpecialChar \menuseparator
 Flotante
 \family default
-.
+ (botón 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
+ o 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+).
  Esto inserta una 
 \family sans
 Leyenda,
@@ -23939,15 +24417,11 @@ Insertar\SpecialChar \menuseparator
 Etiqueta
 \family default
  o el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 .
  Aparece una ventana esperando la introducción del texto de la etiqueta
  y se inserta un cuadro gris como este: 
@@ -23990,15 +24464,11 @@ Referencia
 cruzada
 \family default
  o el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 .
  Aparece una ventana de referencia cruzada con todas las etiquetas del documento.
  Si tienes abiertos varios documentos LyX, escoge aquel con el que estás
@@ -28468,15 +28938,11 @@ Notas ! en LyX
 
 \begin_layout Standard
 Las notas se insertan con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
  o con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -28686,15 +29152,11 @@ Como se ve en el ejemplo, la primera línea de las notas resaltadas en gris
 \end_inset
 
 Si usas el botón de la barra de herramientas 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
  para insertar notas, se inserta una 
 \family sans
 Nota
@@ -28764,15 +29226,11 @@ Notas ! al pie
 
 \begin_layout Standard
 Las notas al pie se insertan con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  o el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -30223,15 +30681,11 @@ al
 margen
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
 .
  Aparece un cuadro gris con la etiqueta 
 \family roman
@@ -31160,15 +31614,11 @@ Insertar\SpecialChar \menuseparator
 Marco
 \family default
  o con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "box-insert Frameless"
 \end_inset
 
-
-\family default
 .
  Surge un recuadro gris con la etiqueta 
 \family sans
@@ -34573,9 +35023,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Nota: 
+Nota:
 \series default
-Algunos visores DVI no pueden mostrar material girado o a escala.
+ no todos los visores DVI pueden mostrar rotaciones o escalas.
 \end_layout
 
 \end_inset
@@ -34617,26 +35067,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Material rotado
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Figuras ! Rotar
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Cuadros ! Girar
 \end_layout
 
 \end_inset
@@ -34774,7 +35204,7 @@ width "1in"
 special "width"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 con rotación
@@ -34936,6 +35366,26 @@ status collapsed
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Figuras ! Rotar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Cuadros ! Girar
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -34955,26 +35405,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Material a escala
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Figuras ! a escala
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Cuadros ! a escala
 \end_layout
 
 \end_inset
@@ -35526,6 +35956,26 @@ status collapsed
 \begin_layout Plain Layout
 
 }}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Figuras ! a escala
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Cuadros ! a escala
 \end_layout
 
 \end_inset
@@ -40137,18 +40587,8 @@ Postscript
  Se puede ver la salida en PostScript con el menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Postscript 
+Postscript
 \family default
-o con el botón
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-
-\end_inset
-
 .
 \end_layout
 
@@ -40294,26 +40734,7 @@ La salida en formato PDF se puede ver con el menú
 \family sans
 Ver 
 \family default
-o con el botón
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 85
-
-\end_inset
-
- (que usa 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-).
+o con un botón.
 \end_layout
 
 \begin_layout Chapter
