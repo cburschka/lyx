@@ -71,6 +71,7 @@ LYX_OPTION_INIT()
 
 # Options for all compilers/systems
 LYX_OPTION(CPACK            "Use the CPack management (Implies LYX_INSTALL option)" OFF ALL)
+LYX_OPTION(LOCALVERSIONING  "Add version info to created package name (only used if LYX_CPACK option set)" OFF ALL)
 LYX_OPTION(INSTALL          "Build install projects/rules (implies a bunch of other options)" OFF ALL)
 LYX_OPTION(NLS              "Enable Native Language Support (NLS)" ON ALL)
 LYX_OPTION(ASPELL           "Require aspell" OFF ALL)
@@ -250,19 +251,25 @@ foreach(_c_l ${_config_lines} )
 	endif()
 endforeach(_c_l)
 
-# Find the revision number and for later use
-FIND_PROGRAM(LYX_SVNVERSION svnversion)
-#message(STATUS "svnversion = ${LYX_SVNVERSION}")
-if(LYX_SVNVERSION)
-	EXECUTE_PROCESS(COMMAND ${LYX_SVNVERSION} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
-	# We use this value also to set the package-patch-value
-	if(LYX_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
-		set(LYX_REVISION_VERSION ${CMAKE_MATCH_1})
+if (LYX_LOCALVERSIONING)
+	# Find the revision number and for later use
+	FIND_PROGRAM(LYX_GITVERSION git)
+	#message(STATUS "gitversion = ${LYX_GITVERSION}")
+	if(LYX_GITVERSION)
+		EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} "describe" WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+		if (LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-.*$")
+		  # We will add offset of 40000 to get appropriate value to
+		  # previous svn.
+		  # We use this value than also to set the package-patch-value
+		  MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
+		  set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
+		endif()
+	else()
+		set(LYX_REVISION_VERSION git) #TODO use date
 	endif()
 else()
-	set(LYX_REVISION_VERSION svn) #TODO use date
+	set(LYX_REVISION_VERSION ${LYX_PATCH_VERSION})
 endif()
-
 
 if(LYX_PROGRAM_SUFFIX)
 	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
