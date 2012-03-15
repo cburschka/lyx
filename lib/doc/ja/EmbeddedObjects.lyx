@@ -445,15 +445,11 @@ name "sec:画像ダイアログ"
 
 \begin_layout Standard
 画像を文書に挿入するには、文中の挿入箇所にカーソルを置いて、ツールバーアイコン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
 をクリックするか、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -890,30 +886,22 @@ reference "fig:エッシャー"
 ラベル
 \family default
 メニューかツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 を使用して、キャプションにラベルを挿入してください。その後、
 \family sans
 挿入\SpecialChar \menuseparator
 相互参照
 \family default
 メニューかツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 を使用して、ラベルを参照することができます。LaTeXは仕上文書でのフロートの位置を調整するので、「上図」のような曖昧な参照のしかたをするのではなく、フロートを
 直接参照することが重要です。仕上文書では、「上図」ではないことが、大いにありうるからです。
 \begin_inset Newline newline
@@ -1766,6 +1754,21 @@ reference "sub:連結行"
 \end_inset
 
 回転関連のチェックボックスは、現在セルや選択範囲あるいは表全体を反時計廻りに90度回転させます。回転は、LyX内部では反映されず、出力にのみ現れます。
+\lang english
+For more information see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rotated-Table-Cells"
+
+\end_inset
+
+。
 \begin_inset Newline newline
 \end_inset
 
@@ -2047,295 +2050,211 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の下に行を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の右に列を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
  は、現在行あるいは選択範囲行を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
  は、現在列あるいは選択範囲列を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を左揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を右揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
-
-\family default
  は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向上揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向下揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-
-\family default
  は、表全体を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を連結列にします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
@@ -2740,26 +2659,18 @@ status collapsed
 ラベル
 \family default
 メニューかツールバーボタンの
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
 を用いて、キャプションにラベルを挿入して下さい。然る後に、挿入\SpecialChar \menuseparator
 相互参照メニューかツールバーボタンの
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 を用いて、このラベルを参照することができます。
 \begin_inset Newline newline
 \end_inset
@@ -11068,15 +10979,11 @@ status collapsed
 
 \begin_layout Standard
 一つのセルが複数の列にまたがるようにするためには、行中から一つの連結セルにまとめるべき各セルを選択して、表ツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
 を押すか、
 \family sans
 編集\SpecialChar \menuseparator
@@ -11798,15 +11705,11 @@ status collapsed
 
 \begin_layout Standard
 複数行にかかるセルを連結するには、同一列中の統合したいセルをすべて選択し、ツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
 を押すか、メニュー
 \family sans
 編集\SpecialChar \menuseparator
@@ -18487,6 +18390,585 @@ arrayrulewidth}{0.4pt}
 \begin_layout Section
 
 \lang english
+Rotated Table Cells
+\lang japanese
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Rotated-Table-Cells"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Table ! Rotated Cells
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Rotated Material
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ Not all DVI-viewers are able to display rotations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Currently LyX only offers to rotate table cells by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° counter-clockwise.
+ To rotate cells by an angle of your choice, you have to add this to the
+ document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{turnbox}{
+\backslash
+usepackage{rotating}}{}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the table cell that should be rotated, add at the beginning this command
+ as TeX-code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+begin{turn}{angle}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where angle is the rotation angle in °.
+ At the end of the cell the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{turn}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+is inserted as TeX-code.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example where 3
+\begin_inset space ~
+\end_inset
+
+cells were rotated by 45
+\begin_inset space \thinspace{}
+\end_inset
+
+°.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated"
+
+\end_inset
+
+Table with rotated cells in the first row.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+cups
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+plates
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+saucers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ Line breaks (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+) are not allowed in rotated cells.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you want to rotate table cells containing line breaks, you have to put
+ the cell content into a minipage or a parbox.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+For more about these boxes see sec.
+\lang japanese
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ミニページ"
+
+\end_inset
+
+ 
+\lang english
+and
+\lang japanese
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Parbox"
+
+\end_inset
+
+。
+\end_layout
+
+\end_inset
+
+ If you rotate this cell by 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° the width of the box is the height of the cell.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Table-with-rotated-multi"
+
+\end_inset
+
+ is an example for a rotated multiline cell where the box width was set
+ to 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Table-with-rotated-multi"
+
+\end_inset
+
+Table with rotated multiline cell.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+rotated cell
+\begin_inset Newline newline
+\end_inset
+
+with line break
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+d
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang english
 Table Width Calculation
 \begin_inset CommandInset label
 LatexCommand label
@@ -19540,11 +20022,9 @@ reference "tab:表セル"
 \end_inset
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
 を押すか、表設定中で揃えを
@@ -22902,8 +23382,28 @@ reference "sec:フロートの参照"
 \family sans
 キャプション
 \family default
-差込枠が挿入されます。このラベルは、出力の際に自動的に文書言語に翻訳されます。ラベルの後ろには、キャプションの文章を入れ、画像ないし表は、フロート中、キャプショ
-ンの上ないし下に別の段落として挿入します。キャプションの配置に関して詳しくは、第
+差込枠が挿入されます (
+\lang english
+toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
+
+\lang english
+ or
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+)。このラベルは、出力の際に自動的に文書言語に翻訳されます。ラベルの後ろには、キャプションの文章を入れ、画像ないし表は、フロート中、キャプションの上ないし下に別
+の段落として挿入します。キャプションの配置に関して詳しくは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:キャプションの配置"
@@ -23323,15 +23823,11 @@ fig:
 相互参照
 \family default
 メニューかツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
 を使えば、ラベルを参照することができます。
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
@@ -27382,15 +27878,11 @@ status collapsed
 
 \begin_layout Standard
 注釈は、ツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -27584,15 +28076,11 @@ status open
 \end_inset
 
 注釈を挿入するのにツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
 を使用すると、
 \family sans
 LyX注釈
@@ -27650,15 +28138,11 @@ status collapsed
 
 \begin_layout Standard
 脚注は、ツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -28938,15 +29422,11 @@ LyX内において、傍注注釈は、脚注のような外見と挙動を示�
 傍注
 \family default
 メニューかツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
 で挿入することができます。すると、紫字で「傍注」と書かれた灰色のボックスが現れて、そこに傍注文を入れることができます。
 \end_layout
 
@@ -29743,15 +30223,11 @@ reference "sec:色付きボックス"
 ボックス
 \family default
 メニューかツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "box-insert Frameless"
 \end_inset
 
-
-\family default
 を使って挿入することができます。すると、
 \begin_inset Graphics
 	filename ../clipart/BoxInsetDefaultQt4.png
@@ -29798,7 +30274,7 @@ parbox
 型については第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Parboxes"
+reference "sec:Parbox"
 
 \end_inset
 
@@ -31972,7 +32448,7 @@ status open
 Parbox
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Parboxes"
+name "sec:Parbox"
 
 \end_inset
 
@@ -33292,26 +33768,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ず@図 ! のかいてん@---の回転
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ひょうのちょうせい@表の調整 ! かいてん@回転
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -33440,7 +33896,7 @@ width "1in"
 special "width"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 回転した
@@ -33602,6 +34058,26 @@ status collapsed
 \end_inset
 
 表を含む行です。
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ず@図 ! のかいてん@---の回転
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひょうのちょうせい@表の調整 ! かいてん@回転
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -33621,26 +34097,6 @@ status collapsed
 
 \begin_layout Plain Layout
 しんしゅく@伸縮 ! そざいの@素材の---
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ず@図 ! のしんしゅく@---の伸縮
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ひょうのちょうせい@表の調整 ! しんしゅく@伸縮
 \end_layout
 
 \end_inset
@@ -34181,6 +34637,26 @@ status collapsed
 \begin_layout Plain Layout
 
 }}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ず@図 ! のしんしゅく@---の伸縮
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひょうのちょうせい@表の調整 ! しんしゅく@伸縮
 \end_layout
 
 \end_inset
@@ -38660,8 +39136,11 @@ PostScriptは、「Encapsulated PostScript（EPS：ファイル拡張子「
 \end_layout
 
 \begin_layout Standard
-文書は、
+
+\lang english
+You can export your document to PostScript using the menu 
 \family sans
+\lang japanese
 ファイル
 \family default
 \SpecialChar \menuseparator
@@ -38674,19 +39153,13 @@ PostScriptは、「Encapsulated PostScript（EPS：ファイル拡張子「
 \family sans
 Postscript
 \family default
-メニューを使用して、PostScriptに書き出すことができます。使用中の文書は、
+\lang english
+.
+ You can view your document as PostScript via the 
 \family sans
-表示
+View
 \family default
-メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-を使用することでPostScriptとして表示させることができます。
+ menu.
 \end_layout
 
 \begin_layout Section
@@ -38818,27 +39291,13 @@ dvipdfm
 \end_layout
 
 \begin_layout Standard
-使用中の文書をPDFとして表示するには、
+
+\lang english
+You can view your document as PDF via the 
 \family sans
-表示
+View
 \family default
-メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-（これは
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-を使用します）を用います。
+ menu or by using a toolbar button.
 \end_layout
 
 \begin_layout Chapter

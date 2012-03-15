@@ -164,6 +164,10 @@
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% workaround for a bug in KOMA-script 3.10a
+% remove this if a newer KOMA-script version is released!
+\usepackage{everysel,sidecap}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
@@ -401,15 +405,11 @@ name "abs:Grafik-Dialog"
 \begin_layout Standard
 Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
  
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-
-\family default
  in der Werkzeugleiste oder wählen das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -801,15 +801,11 @@ reference "abs:Gleitobjekte-Einleitung"
 
 \begin_layout Standard
 Wenn Sie auf das Werkzeugleisten-Symbol 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert figure"
 \end_inset
 
-
-\family default
  klicken oder 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -988,15 +984,11 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder durch Klicken auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
  eine Marke ein.
  Auf diese können Sie dann wie gewohnt mit 
 \family sans
@@ -1983,7 +1975,7 @@ Dezimaltrenner
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Besondere-Zellenausrichtung"
+reference "uab:Besondere-Zellenausrichtung"
 
 \end_inset
 
@@ -2036,6 +2028,18 @@ reference "uab:Mehrfachzeilen"
 Weiterhin können Sie eine Zelle, eine Auswahl oder die gesamte Tabelle gegen
  den Uhrzeigersinn um 90° drehen.
  LyX zeigt diese Drehung nur in der Ausgabe.
+ Für weitere Informationen siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Rotierte-Tabellenzellen"
+
+\end_inset
+
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -2351,299 +2355,215 @@ Die Werkzeugleiste hat folgende Knöpfe:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
  Fügt eine Zeile unterhalb der momentanen an
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
  Fügt eine Spalte rechts von der momentanen an
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
  Löscht die ausgewählte(n) Zeile(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
  Löscht die ausgewählte(n) Spalte(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-
-\family default
  Fügt eine Linie oberhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-
-\family default
  Fügt eine Linie unterhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-
-\family default
  Fügt eine Linie links der ausgewählte(n) Spalte(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-
-\family default
  Fügt eine Linie rechts der ausgewählte(n) Spalte(n) an oder löscht sie,
  wenn der Knopf grau hinterlegt ist
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-
-\family default
  Setzt alle Linien um die ausgewählte(n) Zelle(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-
-\family default
  Löscht alle Linien um die ausgewählte(n) Zelle(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
-
-\family default
  Richtet den Inhalt der ausgewählte(n) Spalte(n) linksbündig aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
-
-\family default
  Zentriert den Inhalt der ausgewählte(n) Spalte(n)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
-
-\family default
  Richtet den Inhalt der ausgewählte(n) Spalte(n) rechtsbündig aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
-
-\family default
  Richtet den Inhalt der ausgewählten Spalte an einem Zeichen aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-
-\family default
  Richtet den Inhalt der ausgewählte(n) Zeile(n) oben aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-
-\family default
  Zentriert den Inhalt der ausgewählte(n) Zeile(n) 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-
-\family default
  Richtet den Inhalt der ausgewählte(n) Zeile(n) unten aus
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-
-\family default
  Dreht den Inhalt der ausgewählte(n) Zelle(n) um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-
-\family default
  Dreht die Tabelle um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachspalte
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachzeile
 \end_layout
 
@@ -2989,15 +2909,11 @@ Gleitobjekt\SpecialChar \menuseparator
 Tabelle
 \family default
  oder einen Klick auf den Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "float-insert table"
 \end_inset
 
-
-\family default
  erzeugt werden.
  Sie erhalten zunächst einen leeren roten Rahmen ohne Tabelle.
  In das rot umrahmte Feld rechts von 
@@ -3135,15 +3051,11 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder durch Klicken auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
  eine Marke ein.
  Auf diese können Sie dann wie gewohnt mit 
 \family sans
@@ -3151,15 +3063,11 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
  oder durch Klicken auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
  verweisen.
  Verweise werden detailliert in Abschnitt
 \begin_inset space ~
@@ -11699,15 +11607,11 @@ Grundlagen
 \begin_layout Standard
 Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  in der Werkzeugleiste, das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -12590,15 +12494,11 @@ Tabellen ! Mehrfachzeilen
 \begin_layout Standard
 Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  in der Werkzeugleiste, das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -17182,12 +17082,6 @@ i
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "Wenn-Sie-nur"
-
-\end_inset
-
 Wenn Sie nur farbigen Text
 \begin_inset Index idx
 status collapsed
@@ -17198,26 +17092,17 @@ Farbe ! für Text
 
 \end_inset
 
- benötigen, markieren Sie diesen und ändern die Farbe durch einen Klick
- auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- oder über das Menü 
-\family sans
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
-Benutzerdefiniert
-\family default
- mit dem 
+ benötigen, markieren Sie diesen und ändern die Farbe mit dem 
 \family sans
 Textstil
 \family default
--Dialog wie es in Tabelle
+-Dialog (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) wie es in Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -17403,7 +17288,7 @@ Farben verwenden.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Liste-der-dvips-Farbnamen"
+reference "kap:Liste-der-dvips-Farbnamen"
 
 \end_inset
 
@@ -17549,14 +17434,11 @@ Beide Befehle werden am Anfang einer Zelle als TeX-Code eingegeben.
 \end_layout
 
 \begin_layout Standard
-Um nur Text zu färben, machen Sie es wie 
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Wenn-Sie-nur"
-
-\end_inset
-
- beschrieben.
+Um nur Text zu färben, verwenden Sie den 
+\family sans
+Textstil
+\family default
+-Dialog.
  Wenn die Zelle aber TeX-Code zum Färben enthält, 
 \emph on
 markieren Sie nur den Text
@@ -19249,10 +19131,510 @@ setzt die Liniendicke wieder auf ihren Standardwert zurück
 \end_layout
 
 \begin_layout Section
+Rotierte Tabellenzellen
+\begin_inset CommandInset label
+LatexCommand label
+name "abs:Rotierte-Tabellenzellen"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Tabellen ! rotierte Zellen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Rotiertes Material
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Nicht alle DVI-Betrachter können Rotationen anzeigen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Momentan bietet LyX nur an, Tabellenzellen um 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° gegen den Uhrzeigersinn zu rotieren.
+ Um Zellen um Winkel Ihrer Wahl zu rotieren, müssen Sie dies zu Ihrem LaTeX-Vors
+pann hinzufügen:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{turnbox}{
+\backslash
+usepackage{rotating}}{}
+\end_layout
+
+\begin_layout Standard
+In die Tabellenzelle, die rotiert werden soll, fügen Sie zu Beginn diesen
+ Befehl als TeX-Code ein:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{turn}{Winkel}
+\end_layout
+
+\begin_layout Standard
+wobei Winkel der Rotationswinkel in ° ist.
+ Am Ende der Zellen wird der Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{turn}
+\end_layout
+
+\begin_layout Standard
+als TeX-Code eingefügt.
+\end_layout
+
+\begin_layout Standard
+Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabelle-mit-rotierten"
+
+\end_inset
+
+ ist ein Beispiel bei dem 3
+\begin_inset space ~
+\end_inset
+
+Zellen um 45
+\begin_inset space \thinspace{}
+\end_inset
+
+° rotiert wurden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabelle-mit-rotierten"
+
+\end_inset
+
+Tabelle mit rotierten Zellen in der ersten Zeile.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+Tassen
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+Teller
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+Untertassen
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Zeilenumbrüche (Tastenkürzel 
+\family sans
+Strg+Enter
+\family default
+) sind in rotierten Zellen nicht erlaubt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn Sie Tabellenzellen mit Zeilenumbrüchen rotieren wollen, müssen Sie
+ den Zelleninhalt in eine Minipage oder Parbox tun.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Für mehr über diese Boxen siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Minipage"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Parbox"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Wenn Sie diese Zelle um 90
+\begin_inset space \thinspace{}
+\end_inset
+
+° rotieren, ist die Breite der Box die Höhe der Zelle.
+ Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabelle-mit-rotierter-Umbruch"
+
+\end_inset
+
+ ist ein Beispiel für eine rotierte Zelle mit Zeilenumbruch, wobei die Boxbreite
+ auch 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm gesetzt wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabelle-mit-rotierter-Umbruch"
+
+\end_inset
+
+Tabelle mit rotierter Zelle mit Zeilenumbruch.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+rotierte Zelle
+\begin_inset Newline newline
+\end_inset
+
+mit Zeilenumbruch
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+e
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+d
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Berechnung der Tabellenbreite
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Berechnung-der-Tabellenbreite"
+name "abs:Berechnung-der-Tabellenbreite"
 
 \end_inset
 
@@ -20308,7 +20690,7 @@ Gigantisch
 Besondere Zellenausrichtung
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Besondere-Zellenausrichtung"
+name "uab:Besondere-Zellenausrichtung"
 
 \end_inset
 
@@ -20341,11 +20723,9 @@ reference "tab:Tabellenzellen-sind-auf"
 .
  Diese Ausrichtung erhält man, indem den Cursor in die Spalte setzt und
  dann entweder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
  drückt oder in den Tabelleneinstellungen die Ausrichtung auf 
@@ -21012,7 +21392,7 @@ Wenn man wie in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Berechnung-der-Tabellenbreite"
+reference "abs:Berechnung-der-Tabellenbreite"
 
 \end_inset
 
@@ -23734,7 +24114,7 @@ key "arydshln"
 Gleitobjekte
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:Gleitobjekte"
+name "kap:Gleitobjekte"
 
 \end_inset
 
@@ -23825,24 +24205,19 @@ nes
 
 Gleitobjekt
 \family default
- eingefügt.
- Für Abbildungen oder Tabellen können Sie auch auf 
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 70
-	scaleBeforeRotation
-
+ eingefügt (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
  oder 
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
- klicken.
+).
  Sie erhalten an der Stelle der Einfügung ein rot beschriftetes graues Kästchen,
  das Ihnen sagt, um was für ein Gleitobjekt es sich handelt, und ein rot
  umrandetes Kästchen mit einer nummerierten Marke (Algorithmus/Abbildung/Tabelle
@@ -23883,22 +24258,7 @@ Um mögliche LaTeX-Fehler durch umgebenden Text zu vermeiden, wird empfohlen,
 
 \begin_layout Standard
 Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
- indem Sie sie markieren und dann auf 
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- oder 
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
+ indem Sie sie markieren und dann auf den entsprechenden Werkzeugleistenknopf
  klicken.
 \end_layout
 
@@ -23943,7 +24303,7 @@ reference "abs:Gleitende-Tabellen"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Umflossene-Gleitobjekte"
+reference "abs:Umflossene-Gleitobjekte"
 
 \end_inset
 
@@ -24379,15 +24739,11 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  oder einen Klick auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-
-\family default
  eine Marke im Titel einfügen.
  Im 
 \family sans
@@ -24421,15 +24777,11 @@ Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
  oder einen Klick auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-
-\family default
  können Sie dann auf die Marke verweisen.
  Als Querverweis wird in LyX ein graues Kästchen wie zum Beispiel dieses
  angezeigt:
@@ -28890,15 +29242,11 @@ Notizen ! LyX-Notizen
 
 \begin_layout Standard
 Notizen werden mit einem Klick auf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
-
-\family default
  oder 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -29185,15 +29533,11 @@ Fußnoten
 
 \begin_layout Standard
 Fußnoten werden über den Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-
-\family default
  oder das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -30659,15 +31003,11 @@ Notizen ! Randnotizen
 \begin_layout Standard
 Randnotizen sehen in LyX wie Fußnoten aus und verhalten sich auch so.
  Sie fügen sie mit einem Klick auf den Schalter 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-
-\family default
  oder über 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -31565,15 +31905,11 @@ Einfügen\SpecialChar \menuseparator
 Box
 \family default
  oder dem Schalter 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "box-insert Frameless"
 \end_inset
 
-
-\family default
  eingefügt.
  Ein graues Kästchen mit der Aufschrift 
 \begin_inset Quotes gld
@@ -35120,11 +35456,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung:
+Achtung:
 \series default
- Die meisten DVI-Programme können keine rotierten oder skalierten Texte
- darstellen.
- In der PDF- oder PostScript-Ausgabe wird aber alles korrekt angezeigt.
+ Nicht alle DVI-Betrachter können Rotationen oder Skalierungen anzeigen.
 \end_layout
 
 \end_inset
@@ -35139,7 +35473,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung:
+Achtung:
 \series default
  Gleitobjekte dürfen nicht in eine rotierte oder skalierte Box gesetzt werden.
 \end_layout
@@ -35166,26 +35500,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Rotiertes Material
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Abbildungen ! rotierte
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Tabellen ! rotierte
 \end_layout
 
 \end_inset
@@ -35492,6 +35806,26 @@ status collapsed
 \end_inset
 
  und Tabelle.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Abbildungen ! rotierte
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Tabellen ! rotierte
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -35511,26 +35845,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Skaliertes Material
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Abbildungen ! skalierte
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Tabellen ! skalierte
 \end_layout
 
 \end_inset
@@ -36095,6 +36409,26 @@ status collapsed
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Abbildungen ! skalierte
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Tabellen ! skalierte
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -36141,7 +36475,7 @@ Umflossene Objekte
 Umflossene Gleitobjekte
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Umflossene-Gleitobjekte"
+name "abs:Umflossene-Gleitobjekte"
 
 \end_inset
 
@@ -36363,7 +36697,7 @@ Ihre Nummerierung und Referenzierung erfolgt wie in Kap.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Gleitobjekte"
+reference "kap:Gleitobjekte"
 
 \end_inset
 
@@ -36392,7 +36726,7 @@ Die in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Umflossene-Gleitobjekte"
+reference "abs:Umflossene-Gleitobjekte"
 
 \end_inset
 
@@ -40784,14 +41118,6 @@ Script
 \family sans
 Ansicht
 \family default
- oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
  anschauen.
 \end_layout
 
@@ -41031,34 +41357,14 @@ PDF
 \family sans
 Ansicht
 \family default
- oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- anschauen 
-\family sans
-(
-\family default
-der 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
- verwendet).
+ oder einen Werkzeugleistenknopf anschauen.
 \end_layout
 
 \begin_layout Chapter
 Liste der dvips-Farbnamen
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:Liste-der-dvips-Farbnamen"
+name "kap:Liste-der-dvips-Farbnamen"
 
 \end_inset
 
