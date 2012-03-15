@@ -7,6 +7,6 @@
 
 if (UNIX)
 	set(_project "scripts")
-	include(../PyCompile)
+	# include(../PyCompile)
 endif()
 
