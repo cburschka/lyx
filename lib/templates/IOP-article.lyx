@@ -11,6 +11,9 @@
 % define \newblock to get natbib work with ioparticle
 % (normally only needed for the "thebibliography" environment)
 \def\newblock{\hskip .11em plus .33em minus .07em}
+
+% define command \eqref
+\newcommand{\eqref}[1]{(\ref{#1})}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -103,10 +106,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Important
+Important:
 \series default
-: To be able to compile your document to a PDF, PS, or DVI, assure that
- the two options 
+ To be able to compile your document to a PDF, PS, or DVI, assure that
+\end_layout
+
+\begin_layout Itemize
+the two options 
 \family sans
 Use AMS math package
 \family default
@@ -118,7 +124,19 @@ Math Options
 \color red
 not
 \color inherit
- used!
+ used
+\end_layout
+
+\begin_layout Itemize
+you do not use AMS Math Environments
+\end_layout
+
+\begin_layout Itemize
+you don't use more than 9
+\begin_inset space ~
+\end_inset
+
+footnotes
 \end_layout
 
 \end_inset
@@ -255,7 +273,7 @@ Use no dots behind the letter for the forenames.
 \begin_layout Address
 
 \size large
-Department of ???, University of ???, Nicecountry
+Department of Award-winning research, University of Beautifulcity, Nicecountry
 \end_layout
 
 \begin_layout Email
@@ -406,6 +424,7 @@ Abbreviations for the IOP journals.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="28" columns="2">
 <features tabularvalignment="middle">
@@ -1090,8 +1109,29 @@ Supercond.
 \begin_inset Formula 
 \begin{eqnarray}
 A & = & \prod_{i=1}^{\infty}B\nonumber \\
- & = & C
+ & = & C\label{eq:multiply}
 \end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:multiply"
+
+\end_inset
+
+ shows that \SpecialChar \ldots{}
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Try to avoid footnotes; they are not numbered; only 9 footnotes are allowed
+\end_layout
 
 \end_inset
 
@@ -1116,10 +1156,6 @@ Subsubsection
 
 \begin_layout Standard
 Bla, bla
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Acknowledgments
