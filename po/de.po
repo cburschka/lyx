@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-09 13:39+0100\n"
+"POT-Creation-Date: 2012-03-12 11:29+0100\n"
 "PO-Revision-Date: 2012-03-09 13:43+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -592,8 +592,8 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3951
-#: src/Buffer.cpp:3964
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3957
+#: src/Buffer.cpp:3970
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -627,7 +627,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1162
-#: src/Buffer.cpp:2467 src/Buffer.cpp:3926 src/Buffer.cpp:3989
+#: src/Buffer.cpp:2467 src/Buffer.cpp:3932 src/Buffer.cpp:3995
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:216
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1936
@@ -682,7 +682,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2291 src/frontends/qt4/GuiPrefs.cpp:2546
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
-#: src/frontends/qt4/GuiViewSource.cpp:197
+#: src/frontends/qt4/GuiViewSource.cpp:198
 msgid "Default"
 msgstr "Standard"
 
@@ -17367,7 +17367,7 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1149 src/Buffer.cpp:3936 src/Buffer.cpp:3998
+#: src/Buffer.cpp:1149 src/Buffer.cpp:3942 src/Buffer.cpp:4004
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
@@ -17581,63 +17581,63 @@ msgstr "Quellcode für Absatz %1$d vorschauen"
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:3320
+#: src/Buffer.cpp:3326
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:3322
+#: src/Buffer.cpp:3328
 msgid "Preview preamble"
 msgstr "Vorschau des Vorspanns"
 
-#: src/Buffer.cpp:3324
+#: src/Buffer.cpp:3330
 msgid "Preview body"
 msgstr "Vorschau des Haupttextes"
 
-#: src/Buffer.cpp:3426
+#: src/Buffer.cpp:3432
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:3480
+#: src/Buffer.cpp:3486
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:3541
+#: src/Buffer.cpp:3547
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:3686
+#: src/Buffer.cpp:3692
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:3687
+#: src/Buffer.cpp:3693
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:3743
+#: src/Buffer.cpp:3749
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:3744
+#: src/Buffer.cpp:3750
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:3843 src/Buffer.cpp:3857 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:3849 src/Buffer.cpp:3863 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:3860
+#: src/Buffer.cpp:3866
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:3867
+#: src/Buffer.cpp:3873
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:3922
+#: src/Buffer.cpp:3928
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17648,19 +17648,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:3925
+#: src/Buffer.cpp:3931
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:3926
+#: src/Buffer.cpp:3932
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:3926
+#: src/Buffer.cpp:3932
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3937
+#: src/Buffer.cpp:3943
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17670,15 +17670,15 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:3943
+#: src/Buffer.cpp:3949
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3945
+#: src/Buffer.cpp:3951
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3946
+#: src/Buffer.cpp:3952
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17688,27 +17688,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:3950 src/Buffer.cpp:3962
+#: src/Buffer.cpp:3956 src/Buffer.cpp:3968
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:3951 src/Buffer.cpp:3964
+#: src/Buffer.cpp:3957 src/Buffer.cpp:3970
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:3955
+#: src/Buffer.cpp:3961
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:3956
+#: src/Buffer.cpp:3962
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:3963
+#: src/Buffer.cpp:3969
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:3986
+#: src/Buffer.cpp:3992
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17719,19 +17719,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:3988
+#: src/Buffer.cpp:3994
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:3989
+#: src/Buffer.cpp:3995
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:3989
+#: src/Buffer.cpp:3995
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3999
+#: src/Buffer.cpp:4005
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17741,25 +17741,25 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4339 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4345 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4534
+#: src/Buffer.cpp:4540
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4537
+#: src/Buffer.cpp:4543
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
-#: src/Buffer.cpp:4603
+#: src/Buffer.cpp:4609
 msgid "Included File Invalid"
 msgstr "Eingebundene Datei ungültig"
 
-#: src/Buffer.cpp:4604
+#: src/Buffer.cpp:4610
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18038,7 +18038,7 @@ msgstr ""
 "ändern Sie bitte die Kodierung der Datei\n"
 "nach UTF-8 mit einem externen Programm.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2563
+#: src/Changes.cpp:363 src/Paragraph.cpp:2564
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
 #: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:182
 #: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:212
@@ -18046,7 +18046,7 @@ msgstr ""
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2564 src/insets/InsetBibitem.cpp:301
+#: src/Changes.cpp:364 src/Paragraph.cpp:2565 src/insets/InsetBibitem.cpp:301
 #: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:286
 #: src/mathed/InsetMathString.cpp:162
@@ -18836,7 +18836,7 @@ msgstr "Neu &konfigurieren"
 msgid "&Without LaTeX"
 msgstr "&Ohne LaTeX"
 
-#: src/LyX.cpp:553 src/VCBackend.cpp:845 src/VCBackend.cpp:849
+#: src/LyX.cpp:553 src/VCBackend.cpp:858 src/VCBackend.cpp:862
 msgid "&Continue"
 msgstr "&Fortfahren"
 
@@ -19732,15 +19732,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2007
+#: src/Paragraph.cpp:2008
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2069
+#: src/Paragraph.cpp:2070
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2070
+#: src/Paragraph.cpp:2071
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -19748,11 +19748,11 @@ msgstr ""
 "Die zuvor verwendete Ausrichtung ist mit dem neuen Format nicht möglich.\n"
 "Es wird die Standardeinstellung verwendet."
 
-#: src/Paragraph.cpp:3149
+#: src/Paragraph.cpp:3150
 msgid "Memory problem"
 msgstr "Speicherproblem"
 
-#: src/Paragraph.cpp:3149
+#: src/Paragraph.cpp:3150
 msgid "Paragraph not properly initialized"
 msgstr "Absatz nicht richtig initialisiert"
 
@@ -19961,10 +19961,10 @@ msgstr "Paket ist nicht verfügbar"
 msgid "Error reading module %1$s\n"
 msgstr "Fehler beim Lesen von Modul %1$s\n"
 
-#: src/VCBackend.cpp:60 src/VCBackend.cpp:752 src/VCBackend.cpp:757
-#: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
-#: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
-#: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
+#: src/VCBackend.cpp:60 src/VCBackend.cpp:765 src/VCBackend.cpp:770
+#: src/VCBackend.cpp:818 src/VCBackend.cpp:879 src/VCBackend.cpp:940
+#: src/VCBackend.cpp:948 src/VCBackend.cpp:1155 src/VCBackend.cpp:1248
+#: src/VCBackend.cpp:1254 src/VCBackend.cpp:1275
 #: src/frontends/qt4/GuiView.cpp:2834
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
@@ -19978,35 +19978,35 @@ msgstr ""
 "Bei der Ausführung des Befehls\n"
 "'%1$s' ist ein Fehler aufgetreten."
 
-#: src/VCBackend.cpp:557
+#: src/VCBackend.cpp:570
 msgid "Up-to-date"
 msgstr "Aktuell"
 
-#: src/VCBackend.cpp:559
+#: src/VCBackend.cpp:572
 msgid "Locally Modified"
 msgstr "Lokal modifiziert"
 
-#: src/VCBackend.cpp:561
+#: src/VCBackend.cpp:574
 msgid "Locally Added"
 msgstr "Lokal hinzugefügt"
 
-#: src/VCBackend.cpp:563
+#: src/VCBackend.cpp:576
 msgid "Needs Merge"
 msgstr "Zusammenführung erforderlich"
 
-#: src/VCBackend.cpp:565
+#: src/VCBackend.cpp:578
 msgid "Needs Checkout"
 msgstr "Auschecken erforderlich"
 
-#: src/VCBackend.cpp:567
+#: src/VCBackend.cpp:580
 msgid "No CVS file"
 msgstr "Keine CVS-Datei"
 
-#: src/VCBackend.cpp:569
+#: src/VCBackend.cpp:582
 msgid "Cannot retrieve CVS status"
 msgstr "Kann CVS-Status nicht ermitteln"
 
-#: src/VCBackend.cpp:753
+#: src/VCBackend.cpp:766
 msgid ""
 "The repository version is newer then the current check out.\n"
 "You have to update from repository first or revert your changes."
@@ -20015,7 +20015,7 @@ msgstr ""
 "Sie müssen zuerst aus dem Repositorium aktualisieren oder Ihre Änderungen\n"
 "rückgängig machen."
 
-#: src/VCBackend.cpp:758
+#: src/VCBackend.cpp:771
 #, c-format
 msgid ""
 "Bad status when checking in changes.\n"
@@ -20028,7 +20028,7 @@ msgstr ""
 "'%1$s'\n"
 "\n"
 
-#: src/VCBackend.cpp:806 src/VCBackend.cpp:1264
+#: src/VCBackend.cpp:819 src/VCBackend.cpp:1276
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -20044,7 +20044,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:840
+#: src/VCBackend.cpp:853
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -20059,20 +20059,20 @@ msgstr ""
 "Im Fall eines Dateikonflikts müssen Sie diesen manuell beheben\n"
 "oder zur Repositoriumsversion zurückkehren."
 
-#: src/VCBackend.cpp:844 src/VCBackend.cpp:848 src/VCBackend.cpp:1305
-#: src/VCBackend.cpp:1309
+#: src/VCBackend.cpp:857 src/VCBackend.cpp:861 src/VCBackend.cpp:1317
+#: src/VCBackend.cpp:1321
 msgid "Changes detected"
 msgstr "Änderungen gefunden"
 
-#: src/VCBackend.cpp:845 src/VCBackend.cpp:849
+#: src/VCBackend.cpp:858 src/VCBackend.cpp:862
 msgid "&Abort"
 msgstr "&Abbrechen"
 
-#: src/VCBackend.cpp:845 src/VCBackend.cpp:1306
+#: src/VCBackend.cpp:858 src/VCBackend.cpp:1318
 msgid "View &Log ..."
 msgstr "&Logdatei ansehen ..."
 
-#: src/VCBackend.cpp:867
+#: src/VCBackend.cpp:880
 #, c-format
 msgid ""
 "Error when updating document %1$s from repository.\n"
@@ -20090,7 +20090,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:928
+#: src/VCBackend.cpp:941
 #, c-format
 msgid ""
 "The document %1$s is not in repository.\n"
@@ -20100,7 +20100,7 @@ msgstr ""
 "Sie müssen es erst einchecken, bevor Sie Änderungen\n"
 "rückgängig machen können."
 
-#: src/VCBackend.cpp:936
+#: src/VCBackend.cpp:949
 #, c-format
 msgid ""
 "Cannot revert document %1$s to repository version.\n"
@@ -20110,12 +20110,12 @@ msgstr ""
 "nicht zur Repositoriumsversion rückgängig machen.\n"
 "Der Status '%2$s' ist unerwartet."
 
-#: src/VCBackend.cpp:1132 src/VCBackend.cpp:1253 src/VCBackend.cpp:1290
-#: src/VCBackend.cpp:1346
+#: src/VCBackend.cpp:1144 src/VCBackend.cpp:1265 src/VCBackend.cpp:1302
+#: src/VCBackend.cpp:1358
 msgid "Error: Could not generate logfile."
 msgstr "Fehler: Kann Logdatei nicht erstellen!"
 
-#: src/VCBackend.cpp:1144
+#: src/VCBackend.cpp:1156
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -20126,7 +20126,7 @@ msgstr ""
 "LyX wird das Dokument neu laden, nachdem\n"
 "Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:1237
+#: src/VCBackend.cpp:1249
 msgid ""
 "Error while acquiring write lock.\n"
 "Another user is most probably editing\n"
@@ -20138,7 +20138,7 @@ msgstr ""
 "anderer Benutzer das Dokument!\n"
 "Überprüfen Sie auch das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1243
+#: src/VCBackend.cpp:1255
 msgid ""
 "Error while releasing write lock.\n"
 "Check the access to the repository."
@@ -20146,7 +20146,7 @@ msgstr ""
 "Fehler beim Aufheben der Schreibsperre.\n"
 "Überprüfen Sie das Zugriffsrecht auf das Repositorium."
 
-#: src/VCBackend.cpp:1300
+#: src/VCBackend.cpp:1312
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -20164,29 +20164,29 @@ msgstr ""
 "\n"
 "Fortfahren?"
 
-#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
+#: src/VCBackend.cpp:1318 src/VCBackend.cpp:1322
 #: src/frontends/qt4/FindAndReplace.cpp:360
 msgid "&Yes"
 msgstr "&Ja"
 
-#: src/VCBackend.cpp:1306 src/VCBackend.cpp:1310
+#: src/VCBackend.cpp:1318 src/VCBackend.cpp:1322
 #: src/frontends/qt4/FindAndReplace.cpp:360
 msgid "&No"
 msgstr "&Nein"
 
-#: src/VCBackend.cpp:1372
+#: src/VCBackend.cpp:1384
 msgid "VCN File Locking"
 msgstr "Dateisperrung der Versionskontrolle"
 
-#: src/VCBackend.cpp:1373
+#: src/VCBackend.cpp:1385
 msgid "Locking property unset."
 msgstr "Dateisperrung deaktiviert."
 
-#: src/VCBackend.cpp:1373 src/VCBackend.cpp:1377
+#: src/VCBackend.cpp:1385 src/VCBackend.cpp:1389
 msgid "Locking property set."
 msgstr "Dateisperrung aktiviert."
 
-#: src/VCBackend.cpp:1374
+#: src/VCBackend.cpp:1386
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 "Um wirksam zu werden, muss die Datei-Sperrung ins Repositorium übermittelt "
@@ -23230,16 +23230,16 @@ msgstr "Bitte geben Sie das Dokument zunächst aus."
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiViewSource.cpp:219
-#: src/frontends/qt4/GuiViewSource.cpp:262
+#: src/frontends/qt4/GuiViewSource.cpp:228
+#: src/frontends/qt4/GuiViewSource.cpp:271
 msgid "LaTeX Source"
 msgstr "LaTeX-Quelle"
 
-#: src/frontends/qt4/GuiViewSource.cpp:264
+#: src/frontends/qt4/GuiViewSource.cpp:273
 msgid "DocBook Source"
 msgstr "DocBook-Quelle"
 
-#: src/frontends/qt4/GuiViewSource.cpp:266
+#: src/frontends/qt4/GuiViewSource.cpp:275
 msgid "Literate Source"
 msgstr "Literarische Quelle"
 
