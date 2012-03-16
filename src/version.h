@@ -34,9 +34,15 @@ extern char const * const lyx_version_info;
 #define LYX_FORMAT_TEX2LYX 428 // uwestoehr: rotated table cells
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
+#ifndef _MSC_VER
 #warning "tex2lyx produces an out of date file format."
 #warning "Please update tex2lyx as soon as possible, since it depends implicitly"
 #warning "on the current file format in some places (this causes bugs like #7780)."
+#else
+#pragma message("warning: tex2lyx produces an out of date file format. " \
+	"Please update tex2lyx as soon as possible, since it depends implicitly " \
+	"on the current file format in some places (this causes bugs like #7780).")
+#endif
 #endif
 
 //} // namespace lyx
