@@ -36,9 +36,9 @@ REM Add path to qmake here or set PATH correctly on your system.
 set PATH="D:\Qt\bin";%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
-set GNUWIN32_DIR=D:\LyXSVN\lyx-devel\lyx-windows-deps-msvc2010
-set LYX_SOURCE=D:\LyXSVN\lyx-devel
-set LYX_BUILD=D:\LyXSVN\lyx-devel\compile-result
+set GNUWIN32_DIR=D:\LyXGit\Master\lyx-devel\lyx-windows-deps-msvc2010
+set LYX_SOURCE=D:\LyXGit\Master\
+set LYX_BUILD=D:\LyXGit\Master\compile-result
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
