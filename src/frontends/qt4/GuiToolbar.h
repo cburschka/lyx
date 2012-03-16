@@ -59,6 +59,8 @@ private:
 private Q_SLOTS:
 	///
 	void actionTriggered(QAction * action);
+	///
+	void updateTriggered();
 };
 
 

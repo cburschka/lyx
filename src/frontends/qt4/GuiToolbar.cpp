@@ -204,6 +204,7 @@ void MenuButton::mousePressEvent(QMouseEvent * e)
 	m->setWindowTitle(label);
 	m->setTearOffEnabled(true);
 	connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
+	connect(bar_, SIGNAL(updated()), this, SLOT(updateTriggered()));
 	ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 	if (!tbinfo) {
 		LYXERR0("Unknown toolbar " << tbitem_.name_);
@@ -224,6 +225,28 @@ void MenuButton::actionTriggered(QAction * action)
 {
 	QToolButton::setDefaultAction(action);
 	setPopupMode(QToolButton::DelayedPopup);
+}
+
+
+void MenuButton::updateTriggered()
+{
+	if (!menu())
+		return;
+
+	bool enabled = false;
+	QList<QAction *> acts = menu()->actions();
+	for (int i = 0; i < acts.size(); ++i)
+		if (acts[i]->isEnabled()) {
+			enabled = true;
+			break;
+		}
+	// Enable the MenuButton if at least one menu item is enabled
+	setEnabled(enabled);
+	// If a disabled item is default, switch to InstantPopup
+	// (this can happen if a user selects e.g. DVI and then
+	// turns non-TeX fonts on)
+	if (defaultAction() && !defaultAction()->isEnabled())
+		setPopupMode(QToolButton::InstantPopup);
 }
 
 
