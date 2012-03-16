@@ -118,7 +118,7 @@ class CellInfo {
 public:
 	CellInfo() : multi(CELL_NORMAL), align('n'), valign('n'),
 		     leftlines(0), rightlines(0), topline(false),
-		     bottomline(false), rotate(false) {}
+		     bottomline(false), rotate(0) {}
 	/// cell content
 	string content;
 	/// multicolumn flag
@@ -135,8 +135,8 @@ public:
 	bool topline;
 	/// do we have a line below?
 	bool bottomline;
-	/// is the cell rotated?
-	bool rotate;
+	/// how is the cell rotated?
+	int rotate;
 	/// width for multicolumn cells
 	string width;
 	/// special formatting for multicolumn cells

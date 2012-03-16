@@ -502,9 +502,9 @@ public:
 	///
 	col_type cellColumn(idx_type cell) const;
 	///
-	void setRotateCell(idx_type cell, bool);
+	void setRotateCell(idx_type cell, int);
 	///
-	bool getRotateCell(idx_type cell) const;
+	int getRotateCell(idx_type cell) const;
 	///
 	bool needRotating() const;
 	///
@@ -612,7 +612,7 @@ public:
 		///
 		BoxType usebox;
 		///
-		bool rotate;
+		int rotate;
 		///
 		docstring align_special;
 		///

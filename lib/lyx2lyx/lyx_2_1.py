@@ -573,6 +573,66 @@ def revert_tipa(document):
         i = j
 
 
+def revert_cell_rotation(document):
+  "Revert cell rotations to TeX-code"
+
+  load_rotating = False
+  i = 0
+  try:
+    while True:
+      # first, let's find out if we need to do anything
+      # cell type 3 is multirow begin cell
+      i = find_token(document.body, '<cell ', i)
+      if i == -1:
+        return
+      j = document.body[i].find('rotate="')
+      if j != -1:
+        k = document.body[i].find('"', j + 8)
+        value = document.body[i][j + 8 : k]
+        if value == "0":
+          rgx = re.compile(r'rotate="[^"]+?"')
+          # remove rotate option
+          document.body[i] = rgx.sub('', document.body[i])
+        elif value == "90":
+          rgx = re.compile(r'rotate="[^"]+?"')
+          document.body[i] = rgx.sub('rotate="true"', document.body[i])
+        else:
+          rgx = re.compile(r'rotate="[^"]+?"')
+          load_rotating = True
+          # remove rotate option
+          document.body[i] = rgx.sub('', document.body[i])
+          # write ERT
+          document.body[i + 5 : i + 5] = \
+            put_cmd_in_ert("\\end{turn}")
+          document.body[i + 4 : i + 4] = \
+            put_cmd_in_ert("\\begin{turn}{" + value + "}")
+        
+      i += 1
+        
+  finally:
+    if load_rotating:
+      add_to_preamble(document, ["\\@ifundefined{turnbox}{\usepackage{rotating}}{}"])
+
+
+def convert_cell_rotation(document):
+    'Convert cell rotation statements from "true" to "90"'
+
+    i = 0
+    while True:
+      # first, let's find out if we need to do anything
+      # cell type 3 is multirow begin cell
+      i = find_token(document.body, '<cell ', i)
+      if i == -1:
+        return
+      j = document.body[i].find('rotate="true"')
+      if j != -1:
+        rgx = re.compile(r'rotate="[^"]+?"')
+        # convert "true" to "90"
+        document.body[i] = rgx.sub('rotate="90"', document.body[i])
+        
+      i += 1
+
+
 ##
 # Conversion hub
 #
@@ -592,10 +652,12 @@ convert = [
            [424, [convert_cite_engine_type]],
            [425, []],
            [426, []],
-           [427, []]
+           [427, []],
+           [428, [convert_cell_rotation]]
           ]
 
 revert =  [
+           [427, [revert_cell_rotation]],
            [426, [revert_tipa]],
            [425, [revert_verbatim]],
            [424, [revert_cancel]],

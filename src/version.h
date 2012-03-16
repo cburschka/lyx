@@ -30,13 +30,13 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 427 // spitz: tipa inset
-#define LYX_FORMAT_TEX2LYX 427 // spitz: tipa inset
+#define LYX_FORMAT_LYX 428 // uwestoehr: rotated table cells
+#define LYX_FORMAT_TEX2LYX 428 // uwestoehr: rotated table cells
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
-#warning "tex2lyx produces an out of date file format."
-#warning "Please update tex2lyx as soon as possible, since it depends implicitly"
-#warning "on the current file format in some places (this causes bugs like #7780)."
+//#warning "tex2lyx produces an out of date file format."
+//#warning "Please update tex2lyx as soon as possible, since it depends implicitly"
+//#warning "on the current file format in some places (this causes bugs like #7780)."
 #endif
 
 //} // namespace lyx

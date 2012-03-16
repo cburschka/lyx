@@ -152,9 +152,9 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular", false },
 	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular", false },
 	{ Tabular::TOGGLE_ROTATE_TABULAR, "toggle-rotate-tabular", false },
-	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell", false },
-	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell", false },
-	{ Tabular::TOGGLE_ROTATE_CELL, "toggle-rotate-cell", false },
+	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell", true },
+	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell", true },
+	{ Tabular::TOGGLE_ROTATE_CELL, "toggle-rotate-cell", true },
 	{ Tabular::SET_USEBOX, "set-usebox", true },
 	{ Tabular::SET_LTHEAD, "set-lthead", true },
 	{ Tabular::UNSET_LTHEAD, "unset-lthead", true },
@@ -565,7 +565,7 @@ Tabular::CellData::CellData(Buffer * buf)
 	  left_line(false),
 	  right_line(false),
 	  usebox(BOX_NONE),
-	  rotate(false),
+	  rotate(0),
 	  inset(new InsetTableCell(buf))
 {
 	inset->setBuffer(*buf);
@@ -1741,13 +1741,13 @@ void Tabular::unsetMultiRow(idx_type cell)
 }
 
 
-void Tabular::setRotateCell(idx_type cell, bool flag)
+void Tabular::setRotateCell(idx_type cell, int value)
 {
-	cellInfo(cell).rotate = flag;
+	cellInfo(cell).rotate = value;
 }
 
 
-bool Tabular::getRotateCell(idx_type cell) const
+int Tabular::getRotateCell(idx_type cell) const
 {
 	return cellInfo(cell).rotate;
 }
@@ -1759,7 +1759,7 @@ bool Tabular::needRotating() const
 		return true;
 	for (row_type r = 0; r < nrows(); ++r)
 		for (col_type c = 0; c < ncols(); ++c)
-			if (cell_info[r][c].rotate)
+			if (cell_info[r][c].rotate != 0)
 				return true;
 	return false;
 }
@@ -2315,9 +2315,9 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		os << "{";
 	} // end if ismultirow
 
-	if (getRotateCell(cell)) {
-		os << "\\begin{sideways}\n";
-	}
+	if (getRotateCell(cell) != 0)
+		os << "\\begin{turn}{" << convert<string>(getRotateCell(cell)) << "}\n";
+
 	if (getUsebox(cell) == BOX_PARBOX) {
 		os << "\\parbox[";
 		switch (valign) {
@@ -2364,8 +2364,8 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 		os << '}';
 	else if (getUsebox(cell) == BOX_MINIPAGE)
 		os << breakln << "\\end{minipage}";
-	if (getRotateCell(cell))
-		os << breakln << "\\end{sideways}";
+	if (getRotateCell(cell) != 0)
+		os << breakln << "\\end{turn}";
 	if (ismultirow)
 		os << '}';
 	if (ismulticol)
@@ -5144,7 +5144,6 @@ bool InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
 			if (s != tabularFeature[i].feature)
 				continue;
-
 			action = tabularFeature[i].action;
 			break;
 		}
@@ -5187,9 +5186,13 @@ bool InsetTabular::oneCellHasRotationState(bool rotated,
 {
 	for (row_type r = row_start; r <= row_end; ++r)
 		for (col_type c = col_start; c <= col_end; ++c)
-			if (tabular.getRotateCell(tabular.cellIndex(r, c)) == rotated)
-				return true;
-
+			if (rotated) {
+				if (tabular.getRotateCell(tabular.cellIndex(r, c)) != 0)
+					return true;
+			} else {
+				if (tabular.getRotateCell(tabular.cellIndex(r, c)) == 0)
+					return true;
+			}
 	return false;
 }
 
@@ -5586,13 +5589,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::SET_ROTATE_CELL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setRotateCell(tabular.cellIndex(r, c), true);
+				tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>(value));
 		break;
 
 	case Tabular::UNSET_ROTATE_CELL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setRotateCell(tabular.cellIndex(r, c), false);
+				tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("0"));
 		break;
 
 	case Tabular::TOGGLE_ROTATE_CELL:
@@ -5601,9 +5604,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
-			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setRotateCell(tabular.cellIndex(r, c),
-									  oneNotRotated);
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
+				// when pressing the rotate cell button we default to 90° rotation
+				if (oneNotRotated)
+					tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("90"));
+				else
+					tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("0"));
+			}
 		}
 		break;
 

@@ -31,6 +31,7 @@
 
 #include "insets/InsetTabular.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 
 #include <QCheckBox>
@@ -144,6 +145,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(rotateCellCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
+	connect(rotateCellAngleSB, SIGNAL(valueChanged(int)),
+		this, SLOT(checkEnabled()));
 	connect(TableAlignCO, SIGNAL(activated(int)),
 		this, SLOT(checkEnabled()));
 	connect(longTabularCB, SIGNAL(clicked()),
@@ -217,6 +220,8 @@ void GuiTabular::checkEnabled()
 
 	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
 	rotateTabularCB->setDisabled(is_tabular_star);
+
+	rotateCellAngleSB->setEnabled(rotateCellCB->isChecked());
 
 	bool const enable_valign =
 		!multirowCB->isChecked()
@@ -559,11 +564,12 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_ROTATE_TABULAR);
 	else
 		setParam(param_str, Tabular::UNSET_ROTATE_TABULAR);
-	//
+	// store the cell rotation angle
+	string angle = convert<string>(rotateCellAngleSB->value());
 	if (rotateCellCB->isChecked())
-		setParam(param_str, Tabular::SET_ROTATE_CELL);
+		setParam(param_str, Tabular::SET_ROTATE_CELL, angle);
 	else
-		setParam(param_str, Tabular::UNSET_ROTATE_CELL);
+		setParam(param_str, Tabular::UNSET_ROTATE_CELL, angle);
 	//
 	if (longTabularCB->isChecked())
 		setParam(param_str, Tabular::SET_LONGTABULAR);
@@ -699,7 +705,11 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	bool const multirow = tabular.isMultiRow(cell);
 	multirowCB->setChecked(multirow);
 
-	rotateCellCB->setChecked(tabular.getRotateCell(cell));
+	rotateCellCB->setChecked(tabular.getRotateCell(cell) != 0);
+	if (tabular.getRotateCell(cell) != 0)
+		rotateCellAngleSB->setValue(tabular.getRotateCell(cell));
+	else
+		rotateCellAngleSB->setValue(90);
 	rotateTabularCB->setChecked(tabular.rotate);
 
 	longTabularCB->setChecked(tabular.is_long_tabular);
