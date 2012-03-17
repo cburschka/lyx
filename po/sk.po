@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-12 11:29+0100\n"
+"POT-Creation-Date: 2012-03-17 09:33+0100\n"
 "PO-Revision-Date: 2012-03-09 14:20+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
@@ -17,7 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Language: sk_SK\n"
+"X-Source-Language: en_US\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -4521,43 +4523,11 @@ msgstr "Zlúčiť bunky rozličných stĺpcov"
 msgid "&Multicolumn"
 msgstr "Viacstĺpcové"
 
-#: src/frontends/qt4/ui/TabularUi.ui:241
-msgid "Row setting"
-msgstr "Nastavenie riadku"
-
-#: src/frontends/qt4/ui/TabularUi.ui:247
-msgid "Merge cells of different rows"
-msgstr "Zlúčiť bunky rozličných riadkov"
-
-#: src/frontends/qt4/ui/TabularUi.ui:250
-msgid "M&ultirow"
-msgstr "Viacriadková"
-
-#: src/frontends/qt4/ui/TabularUi.ui:262
-msgid "&Vertical Offset:"
-msgstr "Vertikálne vyrovnanie:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:275
-msgid "Optional vertical offset"
-msgstr "Vertikálne vyrovnanie(nepovinné)"
-
-#: src/frontends/qt4/ui/TabularUi.ui:293
-msgid "Cell setting"
-msgstr "Nastavenie bunky"
-
-#: src/frontends/qt4/ui/TabularUi.ui:299
-msgid "Rotate this cell by 90 degrees"
-msgstr "Otočiť túto bunku o 90 stupňov"
-
-#: src/frontends/qt4/ui/TabularUi.ui:302
-msgid "Rotate &cell 90 degrees"
-msgstr "Otočiť bunku o 90 stupňov"
-
-#: src/frontends/qt4/ui/TabularUi.ui:312
+#: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "LaTe&X argument:"
 msgstr "LaTeX argument:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:322
+#: src/frontends/qt4/ui/TabularUi.ui:323
 msgid "Custom column format (LaTeX)"
 msgstr "Vlastný formát stĺpca (LaTeX)"
 
@@ -4586,6 +4556,42 @@ msgid "&Rotate table 90 degrees"
 msgstr "Otočiť tabuľku o 90 stupňov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:422
+msgid "Row setting"
+msgstr "Nastavenie riadku"
+
+#: src/frontends/qt4/ui/TabularUi.ui:428
+msgid "Merge cells of different rows"
+msgstr "Zlúčiť bunky rozličných riadkov"
+
+#: src/frontends/qt4/ui/TabularUi.ui:431
+msgid "M&ultirow"
+msgstr "Viacriadková"
+
+#: src/frontends/qt4/ui/TabularUi.ui:443
+msgid "&Vertical Offset:"
+msgstr "Vertikálne vyrovnanie:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:456
+msgid "Optional vertical offset"
+msgstr "Vertikálne vyrovnanie(nepovinné)"
+
+#: src/frontends/qt4/ui/TabularUi.ui:474
+msgid "Cell setting"
+msgstr "Nastavenie bunky"
+
+#: src/frontends/qt4/ui/TabularUi.ui:482
+msgid "Rotate this cell by 90 degrees"
+msgstr "Otočiť túto bunku o 90 stupňov"
+
+#: src/frontends/qt4/ui/TabularUi.ui:498
+msgid "rotation angle"
+msgstr "uhol rotácie"
+
+#: src/frontends/qt4/ui/TabularUi.ui:517
+msgid "degrees"
+msgstr "stupňov"
+
+#: src/frontends/qt4/ui/TabularUi.ui:546
 msgid "&Borders"
 msgstr "Okraje"
 
@@ -13915,8 +13921,8 @@ msgid "Align bottom"
 msgstr "Zarovnať dospodu"
 
 #: lib/ui/stdtoolbars.inc:165
-msgid "Rotate cell"
-msgstr "Otočiť bunku"
+msgid "Rotate cell by 90 degrees or unset rotation"
+msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
 
 #: lib/ui/stdtoolbars.inc:166
 msgid "Rotate table"
@@ -24638,6 +24644,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Rotate &cell 90 degrees"
+#~ msgstr "Otočiť bunku o 90 stupňov"
+
+#~ msgid "Rotate cell"
+#~ msgstr "Otočiť bunku"
 
 #~ msgid "EPS (ps2eps)"
 #~ msgstr "EPS (ps2eps)"
