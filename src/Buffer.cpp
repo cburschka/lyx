@@ -3737,13 +3737,11 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		if (!makeLaTeXFile(FileName(filename), string(), runparams)) {
-			if (d->cloned_buffer_) {
-				d->cloned_buffer_->d->errorLists["Export"] =
-					d->errorLists["Export"];
-			}
+		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		if (d->cloned_buffer_)
+			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
+		if (!success)
 			return ExportError;
-		}
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
@@ -3751,13 +3749,11 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		return ExportTexPathHasSpaces;
 	} else {
 		runparams.nice = false;
-		if (!makeLaTeXFile(FileName(filename), filePath(), runparams)) {
-			if (d->cloned_buffer_) {
-				d->cloned_buffer_->d->errorLists["Export"] =
-					d->errorLists["Export"];
-			}
+		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		if (d->cloned_buffer_)
+			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
+		if (!success)
 			return ExportError;
-		}
 	}
 
 	string const error_type = (format == "program")
