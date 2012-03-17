@@ -3600,13 +3600,11 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		if (!makeLaTeXFile(FileName(filename), string(), runparams)) {
-			if (d->cloned_buffer_) {
-				d->cloned_buffer_->d->errorLists["Export"] =
-					d->errorLists["Export"];
-			}
+		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		if (d->cloned_buffer_)
+			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
+		if (!success)
 			return false;
-		}
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
@@ -3614,13 +3612,11 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return false;
 	} else {
 		runparams.nice = false;
-		if (!makeLaTeXFile(FileName(filename), filePath(), runparams)) {
-			if (d->cloned_buffer_) {
-				d->cloned_buffer_->d->errorLists["Export"] =
-					d->errorLists["Export"];
-			}
+		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		if (d->cloned_buffer_)
+			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
+		if (!success)
 			return false;
-		}
 	}
 
 	string const error_type = (format == "program")
