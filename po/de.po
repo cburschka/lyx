@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-03-13 17:52-0400\n"
-"PO-Revision-Date: 2012-03-09 12:53+0100\n"
+"PO-Revision-Date: 2012-03-18 16:07+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2182,7 +2182,7 @@ msgstr "Datum auf der &Titelseite nicht anzeigen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr "Verwende &refstyle (statt prettyref) für Querverweise"
+msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:52
 msgid "&Quote Style:"
@@ -2652,27 +2652,27 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
-"Das LaTeX-Paket esint wird nur verwendet, wenn spezielle Integralzeichen in "
+"Das LaTeX-Paket 'esint' wird nur verwendet, wenn spezielle Integralzeichen in "
 "Formeln eingefügt werden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
 msgid "Use esint package &automatically"
-msgstr "&esint-Paket automatisch verwenden"
+msgstr "&Esint-Paket automatisch verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
 msgid "The LaTeX package esint is always used"
-msgstr "Das LaTeX-Paket esint wird immer verwendet"
+msgstr "Das LaTeX-Paket 'esint' wird immer verwendet"
 
 #: src/frontends/qt4/ui/MathsUi.ui:58
 msgid "Use &esint package"
-msgstr "e&sint-Paket verwenden"
+msgstr "E&sint-Paket verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"Das LaTeX-Paket mathdots wird nur verwendet, wenn der Befehl \\iddots in "
+"Das LaTeX-Paket 'mathdots' wird nur verwendet, wenn der Befehl \\iddots in "
 "Formeln eingefügt wird"
 
 #: src/frontends/qt4/ui/MathsUi.ui:68
@@ -2681,7 +2681,7 @@ msgstr "Math&dots-Paket automatisch verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:75
 msgid "The LaTeX package mathdots is used"
-msgstr "Das LaTeX-Paket mathdots wird immer verwendet"
+msgstr "Das LaTeX-Paket 'mathdots' wird immer verwendet"
 
 #: src/frontends/qt4/ui/MathsUi.ui:78
 msgid "Use mathdo&ts package"
@@ -2692,20 +2692,20 @@ msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"Das LaTeX-Paket mhchem wird nur verwendet, wenn entweder der Befehl \\ce "
+"Das LaTeX-Paket 'mhchem' wird nur verwendet, wenn entweder der Befehl \\ce "
 "oder \\cf in Formeln eingefügt wird"
 
 #: src/frontends/qt4/ui/MathsUi.ui:88
 msgid "Use mhchem &package automatically"
-msgstr "mhchem-&Paket automatisch verwenden"
+msgstr "Mhchem-&Paket automatisch verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:98
 msgid "The LaTeX package mhchem is always used"
-msgstr "Das LaTeX-Paket mhchem wird immer verwendet"
+msgstr "Das LaTeX-Paket 'mhchem' wird immer verwendet"
 
 #: src/frontends/qt4/ui/MathsUi.ui:101
 msgid "Use mh&chem package"
-msgstr "mh&chem-Paket verwenden"
+msgstr "Mh&chem-Paket verwenden"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -24251,7 +24251,7 @@ msgid "Directory not found"
 msgstr "Verzeichnis nicht gefunden"
 
 #: src/support/Systemcall.cpp:374
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command\n"
 "%1$s\n"
@@ -24259,23 +24259,23 @@ msgid ""
 "\n"
 "Do you want to stop it?"
 msgstr ""
-"Das Dokument %1$s wurde noch nicht gespeichert.\n"
+"Der Befehl\n"
+"%1$s\n"
+"ist noch nicht abgeschlossen.\n"
 "\n"
-"Möchten Sie das Dokument speichern?"
+"Möchten Sie ihn beenden?"
 
 #: src/support/Systemcall.cpp:376
-#, fuzzy
 msgid "Stop command?"
-msgstr "date-Befehl"
+msgstr "Befehl stoppen?"
 
 #: src/support/Systemcall.cpp:377
-#, fuzzy
 msgid "&Stop it"
-msgstr "&Nicht löschen"
+msgstr "&Beenden"
 
 #: src/support/Systemcall.cpp:377
 msgid "Let it &run"
-msgstr ""
+msgstr "&Fortfahren"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
