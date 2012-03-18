@@ -8,7 +8,7 @@ Pre-compiled packages with dependencies are provided for this environment.
 Compiling with Microsoft Visual C++
 ===================================
 
-	These instructions assume the LyX source code is installed in C:\LyX\lyx-20
+	These instructions assume the LyX source code is in C:\LyX\lyx-20
 	You can also use another directory if you prefer.
 
 1	Install MSVC 2010
@@ -16,80 +16,77 @@ Compiling with Microsoft Visual C++
 	If you don't have Visual C++ 2010 installed, get the free Express edition from
 	http://www.microsoft.com/express/Downloads/
 
-	All dependencies are linked against the MSVC 2010 runtime and won't work in
-	combination with MSVC 2008. You'll get crashes and other unexpected issues.
+	(All dependencies are linked against the MSVC 2010 runtime and won't work in
+	combination with MSVC 2008. You'll get crashes and other unexpected issues.)
 
-2	Compile Qt
+2	Install Qt
 
-	Download the latest Qt everywhere open source version from
-	http://get.qt.nokia.com/qt/source/ (e.g. qt-everywhere-opensource-src-4.7.1.zip).
-	Follow the instructions on http://doc.qt.nokia.com/4.7/install-win.html to
-	compile using MSVC 2010.
-	The pre-compiled version of Qt cannot be used. It uses the 2008 version of the
-	MSVC runtime which will result in crashes.
+	Download the latest Qt for Open Source C++ development on Windows (VS2010)
+	from http://qt.nokia.com/downloads/windows-cpp-vs2010.
 
 3	Install Python
 
-	Install the latest Python 2.x version from
+	Install the latest Python 2.x version (not Python 3.x !) from
 	http://www.python.org/download/
 
 4	Install CMake
 
-	Install the latest CMake from http://www.cmake.org
+	Install the latest CMakescript from
+	http://sourceforge.net/projects/cmakescript/files/latest/download
 
 5	Configure
 
-	- Run the CMake GUI.
+	Open the script file build.bat that you find in your LyX folder
+	C:\LyX\lyx-20\development\cmake
+	with a text editor. Now: 
 	 
-	- Set the source code path to C:\LyX\lyx-20
-	  Set the build path to C:\LyX\lyx-20-build
-	  Click Configure and set the generator to Visual Studio 10.
-
-	- Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
-	  Pre-compiled dependencies will automatically be downloaded.
+	- Change there "D:\Qt\bin" to the path where you installed Qt
 	
-	- Set QT_QMAKE_EXECUTABLE to e.g.
-	  C:\Qt\qt-everywhere-opensource-src-4.7.1\bin\qmake.exe
-	  and Configure again.
-
-	- Enable the LYX_INSTALL option, set CMAKE_INSTALL_PREFIX to
-	  C:\LyX\lyx-20-install and click Configure.
-
-	- Check the Advanced checkbox.
-	  Set GETTEXT_MSGFMT_EXECUTABLE to
-	  C:\LyX\lyx-20-build\msvc2010-deps\deps20\gettext-tools\msgfmt.exe,
-	  and do the same for the other gettext tools.
-
-	- Click Generate.
+	- Set the GNUWIN32_DIR to "C:\LyX\lyx-20\msvc2010-deps"
+	  (or wherever you have copied the LyX dependencies)
+	- Set the LYX_SOURCE to "C:\LyX\lyx-20"
+	  (or wherever you have copied the LyX source files)
+	- Set the LYX_BUILD to "C:\LyX\lyx-20-build"
+	  (or wherever you want to store the compilation result)
+	  
+	(- If you don't want to use the fast compilation mode for debug builds,
+	   remove the statement "-GNinja".)
 
 6	Compile
 
-	A Microsoft Visual C++ solution should have been generated at
-	C:\LyX\lyx-20-build\lyx.sln
-	Compile the INSTALL project to get a LyX installation in
-	C:\LyX\lyx-20-install
+	- Open a MSVC Command prompt via Windows' start menu and switch
+	  to the folder
+	  C:\LyX\lyx-20\development\cmake
+	- To build LyX with debugging information for development, execute
+	  the build script with the command
+	  build devel
+	- To build LyX for a release, execute
+	  the script with the command
+	  build install
 
-7   Copy dependencies
+7	Copy dependencies
 
-    Copy
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\bin
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\imagemagick
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\python
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\ghostscript
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\Resources
-	to C:\LyX\lyx-20-install
+	Copy
+	- C:\LyX\lyx-20\msvc2010-deps\deps20\bin
+	- C:\LyX\lyx-20\msvc2010-deps\deps20\imagemagick
+	- C:\LyX\lyx-20\msvc2010-deps\deps20\python
+	- C:\LyX\lyx-20\msvc2010-deps\deps20\ghostscript
+	- C:\LyX\lyx-20\msvc2010-deps\deps20\Resources
+	to C:\LyX\lyx-20-build\LYX_INSTALLED\bin (install build)
+	or to C:\LyX\lyx-20-build\bin\Debug (debug build)
 
 	And copy from the Qt bin directory
-	(e.g. C:\Qt\qt-everywhere-opensource-src-4.7.1\bin)
+	(e.g. C:\Qt\bin)
 	QtCore4.dll
 	QtGui4.dll
 	QtCore4d.dll (if compiling Debug version)
 	QtGui4d.dll (if compiling Debug version)
-	to C:\LyX\lyx-20-install\bin
+	to C:\LyX\lyx-20-build\LYX_INSTALLED\bin (install build)
+	or to C:\LyX\lyx-20-build\bin\Debug (debug build)
 
-8   Define path prefix
+8	Define path prefix
 
-    Add the following line to C:\LyX\lyx-20-install\Resources\lyxrc.dist,
+	Add the following line to C:\LyX\lyx-20-install\Resources\lyxrc.dist,
 	so LyX will find the bundled tools such as Python, ImageMagick
 	and Ghostscript:
 
