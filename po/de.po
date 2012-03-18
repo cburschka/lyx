@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-12 11:29+0100\n"
-"PO-Revision-Date: 2012-03-09 13:43+0100\n"
+"POT-Creation-Date: 2012-03-18 15:38+0100\n"
+"PO-Revision-Date: 2012-03-18 16:00+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -406,23 +406,23 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Horizontale Ausrichtung des Inhalts innerhalb der Box"
 
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
-#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:799
+#: src/frontends/qt4/ui/TabularUi.ui:141
+#: src/frontends/qt4/ui/TabularUi.ui:1511 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:813
 msgid "Left"
 msgstr "Links"
 
-#: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
-#: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:78
+#: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:146
+#: src/frontends/qt4/ui/TabularUi.ui:1518 src/frontends/qt4/GuiExternal.cpp:78
 #: src/frontends/qt4/GuiGraphics.cpp:73 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:800
+#: src/frontends/qt4/GuiTabular.cpp:814
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
-#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:801
+#: src/frontends/qt4/ui/TabularUi.ui:151
+#: src/frontends/qt4/ui/TabularUi.ui:1528 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:815
 msgid "Right"
 msgstr "Rechts"
 
@@ -436,20 +436,20 @@ msgstr "Vertikale Ausrichtung des Inhalts innerhalb der Box"
 
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
-#: src/frontends/qt4/ui/TabularUi.ui:210 src/frontends/qt4/ui/TabularUi.ui:371
+#: src/frontends/qt4/ui/TabularUi.ui:282 src/frontends/qt4/ui/TabularUi.ui:372
 msgid "Top"
 msgstr "Oben"
 
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
-#: src/frontends/qt4/ui/TabularUi.ui:215 src/frontends/qt4/ui/TabularUi.ui:376
-#: src/frontends/qt4/GuiTabular.cpp:212
+#: src/frontends/qt4/ui/TabularUi.ui:287 src/frontends/qt4/ui/TabularUi.ui:377
+#: src/frontends/qt4/GuiTabular.cpp:215
 msgid "Middle"
 msgstr "Mitte"
 
 #: src/frontends/qt4/ui/BoxUi.ui:106 src/frontends/qt4/ui/BoxUi.ui:133
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177
-#: src/frontends/qt4/ui/TabularUi.ui:220 src/frontends/qt4/ui/TabularUi.ui:381
+#: src/frontends/qt4/ui/TabularUi.ui:292 src/frontends/qt4/ui/TabularUi.ui:382
 msgid "Bottom"
 msgstr "Unten"
 
@@ -488,7 +488,7 @@ msgstr "&Verzierung:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:242 src/frontends/qt4/ui/ExternalUi.ui:420
 #: src/frontends/qt4/ui/LineUi.ui:58 src/frontends/qt4/ui/PageLayoutUi.ui:99
-#: src/frontends/qt4/ui/TabularUi.ui:153 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:225 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
 msgstr "&Breite:"
 
@@ -507,9 +507,9 @@ msgstr "Innere Box -- benötigt für feste Breite & Zeilenumbrüche"
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
-#: src/frontends/qt4/ui/TabularUi.ui:1037
-#: src/frontends/qt4/ui/TabularUi.ui:1056
-#: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
+#: src/frontends/qt4/ui/TabularUi.ui:1161
+#: src/frontends/qt4/ui/TabularUi.ui:1180
+#: src/frontends/qt4/ui/TabularUi.ui:1228 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:114 src/frontends/qt4/GuiGraphics.cpp:580
 #: src/frontends/qt4/GuiPrefs.cpp:2138 src/frontends/qt4/GuiPrefs.cpp:2161
@@ -592,8 +592,8 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3957
-#: src/Buffer.cpp:3970
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3953
+#: src/Buffer.cpp:3966
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -627,7 +627,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1162
-#: src/Buffer.cpp:2467 src/Buffer.cpp:3932 src/Buffer.cpp:3995
+#: src/Buffer.cpp:2467 src/Buffer.cpp:3928 src/Buffer.cpp:3991
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:216
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1936
@@ -661,9 +661,9 @@ msgstr "&Größe:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:115
-#: src/frontends/qt4/ui/TabularUi.ui:1042
-#: src/frontends/qt4/ui/TabularUi.ui:1061
-#: src/frontends/qt4/ui/TabularUi.ui:1109 lib/ui/stdtoolbars.inc:112
+#: src/frontends/qt4/ui/TabularUi.ui:1166
+#: src/frontends/qt4/ui/TabularUi.ui:1185
+#: src/frontends/qt4/ui/TabularUi.ui:1233 lib/ui/stdtoolbars.inc:112
 #: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:110
 #: src/frontends/qt4/GuiDocument.cpp:128 src/frontends/qt4/GuiDocument.cpp:144
 #: src/frontends/qt4/GuiDocument.cpp:157 src/frontends/qt4/GuiDocument.cpp:764
@@ -1306,6 +1306,7 @@ msgid "Si&ze and Rotation"
 msgstr "Gr&öße und Drehung"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:283
+#: src/frontends/qt4/ui/TabularUi.ui:485
 msgid "Rotate"
 msgstr "Drehen"
 
@@ -2191,7 +2192,7 @@ msgstr "Datum auf der &Titelseite nicht anzeigen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr "Verwende &refstyle (statt prettyref) für Querverweise"
+msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
 msgid "&Quote Style:"
@@ -2321,7 +2322,7 @@ msgid "Choose the font size for line numbers"
 msgstr "Wählen Sie die Schriftgröße für die Zeilennummern"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
-#: src/frontends/qt4/ui/TabularUi.ui:966
+#: src/frontends/qt4/ui/TabularUi.ui:1090
 msgid "Style"
 msgstr "Stil"
 
@@ -2971,9 +2972,9 @@ msgstr "Doppelt"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
-#: src/frontends/qt4/ui/TabularUi.ui:1047
-#: src/frontends/qt4/ui/TabularUi.ui:1066
-#: src/frontends/qt4/ui/TabularUi.ui:1114 src/frontends/qt4/ui/VSpaceUi.ui:107
+#: src/frontends/qt4/ui/TabularUi.ui:1171
+#: src/frontends/qt4/ui/TabularUi.ui:1190
+#: src/frontends/qt4/ui/TabularUi.ui:1238 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:765
 #: src/frontends/qt4/GuiDocument.cpp:769 src/frontends/qt4/GuiDocument.cpp:777
 #: src/frontends/qt4/GuiDocument.cpp:883 src/frontends/qt4/GuiDocument.cpp:935
@@ -4521,7 +4522,7 @@ msgid "Clear current shortcut"
 msgstr "Aktuelles Tastenkürzel entfernen"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
-#: src/frontends/qt4/ui/TabularUi.ui:956
+#: src/frontends/qt4/ui/TabularUi.ui:1080
 msgid "C&lear"
 msgstr "Ent&fernen"
 
@@ -4623,44 +4624,56 @@ msgstr "Wählen Sie dies, um alle verfügbaren Zeichen auf einmal anzuzeigen"
 msgid "&Display all"
 msgstr "&Alle Anzeigen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:35
+#: src/frontends/qt4/ui/TabularUi.ui:28
+msgid "Current cell:"
+msgstr "Aktuelle Zelle:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:50
+msgid "Current row position"
+msgstr "Aktuelle Zeilenposition"
+
+#: src/frontends/qt4/ui/TabularUi.ui:72
+msgid "Current column position"
+msgstr "Aktuelle Spaltenposition"
+
+#: src/frontends/qt4/ui/TabularUi.ui:107
 msgid "&Table Settings"
 msgstr "&Tabellen-Einstellungen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:41
+#: src/frontends/qt4/ui/TabularUi.ui:113
 msgid "Column settings"
 msgstr "Spalteneinstellungen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:47
+#: src/frontends/qt4/ui/TabularUi.ui:119
 msgid "&Horizontal alignment:"
 msgstr "&Horizontale Ausrichtung:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:57
+#: src/frontends/qt4/ui/TabularUi.ui:129
 msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
-#: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:803
+#: src/frontends/qt4/ui/TabularUi.ui:136
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:817
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:805
+#: src/frontends/qt4/ui/TabularUi.ui:156 src/frontends/qt4/GuiTabular.cpp:819
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
-#: src/frontends/qt4/ui/TabularUi.ui:110
+#: src/frontends/qt4/ui/TabularUi.ui:182
 msgid "&Decimal separator:"
 msgstr "De&zimaltrenner:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:168
+#: src/frontends/qt4/ui/TabularUi.ui:240
 msgid "Fixed width of the column"
 msgstr "Feste Spaltenbreite"
 
-#: src/frontends/qt4/ui/TabularUi.ui:196
+#: src/frontends/qt4/ui/TabularUi.ui:268
 msgid "&Vertical alignment in row:"
 msgstr "&Vertikale Ausrichtung in der Zeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:206
+#: src/frontends/qt4/ui/TabularUi.ui:278
 msgid ""
 "Specifies the vertical alignment of this cell in relation to the baseline of "
 "the row."
@@ -4668,268 +4681,260 @@ msgstr ""
 "Legt die vertikale Ausrichtung dieser Zelle relativ zur Grundlinie der Zeile "
 "fest."
 
-#: src/frontends/qt4/ui/TabularUi.ui:228
+#: src/frontends/qt4/ui/TabularUi.ui:300
 msgid "Merge cells of different columns"
 msgstr "Verschmelze Zellen aus verschiedenen Spalten"
 
-#: src/frontends/qt4/ui/TabularUi.ui:231
+#: src/frontends/qt4/ui/TabularUi.ui:303
 msgid "&Multicolumn"
 msgstr "&Mehrfachspalte"
 
-#: src/frontends/qt4/ui/TabularUi.ui:241
-msgid "Row setting"
-msgstr "Zeileneinstellung"
-
-#: src/frontends/qt4/ui/TabularUi.ui:247
-msgid "Merge cells of different rows"
-msgstr "Verschmelze Zellen aus verschiedenen Zeilen"
-
-#: src/frontends/qt4/ui/TabularUi.ui:250
-msgid "M&ultirow"
-msgstr "M&ehrfachzeile"
-
-#: src/frontends/qt4/ui/TabularUi.ui:262
-msgid "&Vertical Offset:"
-msgstr "Vertikaler Ve&rsatz:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:275
-msgid "Optional vertical offset"
-msgstr "Optionaler vertikaler Versatz"
-
-#: src/frontends/qt4/ui/TabularUi.ui:293
-msgid "Cell setting"
-msgstr "Zelleneinstellungen"
-
-#: src/frontends/qt4/ui/TabularUi.ui:299
-msgid "Rotate this cell by 90 degrees"
-msgstr "Drehe diese Zelle um 90 Grad"
-
-#: src/frontends/qt4/ui/TabularUi.ui:302
-msgid "Rotate &cell 90 degrees"
-msgstr "Zelle um 90 &Grad drehen"
-
-#: src/frontends/qt4/ui/TabularUi.ui:312
+#: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "LaTe&X argument:"
 msgstr "LaTe&X-Argument:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:322
+#: src/frontends/qt4/ui/TabularUi.ui:323
 msgid "Custom column format (LaTeX)"
 msgstr "Benutzerdefiniertes Spaltenformat (LaTeX)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:332
+#: src/frontends/qt4/ui/TabularUi.ui:333
 msgid "Table-wide settings"
 msgstr "Tabellenweite Einstellungen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:338
+#: src/frontends/qt4/ui/TabularUi.ui:339
 msgid "Table w&idth:"
 msgstr "Tabellenbre&ite:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:354
+#: src/frontends/qt4/ui/TabularUi.ui:355
 msgid "Verti&cal alignment:"
 msgstr "Verti&kale Ausrichtung:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:364
+#: src/frontends/qt4/ui/TabularUi.ui:365
 msgid "Vertical alignment of the table"
 msgstr "Vertikale Ausrichtung der Tabelle"
 
-#: src/frontends/qt4/ui/TabularUi.ui:408
+#: src/frontends/qt4/ui/TabularUi.ui:409
 msgid "Rotate the table by 90 degrees"
 msgstr "Drehe die Tabelle um 90 Grad"
 
-#: src/frontends/qt4/ui/TabularUi.ui:411
+#: src/frontends/qt4/ui/TabularUi.ui:412
 msgid "&Rotate table 90 degrees"
 msgstr "T&abelle um 90 Grad drehen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:422
+msgid "Row setting"
+msgstr "Zeileneinstellung"
+
+#: src/frontends/qt4/ui/TabularUi.ui:428
+msgid "Merge cells of different rows"
+msgstr "Verschmelze Zellen aus verschiedenen Zeilen"
+
+#: src/frontends/qt4/ui/TabularUi.ui:431
+msgid "M&ultirow"
+msgstr "M&ehrfachzeile"
+
+#: src/frontends/qt4/ui/TabularUi.ui:443
+msgid "&Vertical Offset:"
+msgstr "Vertikaler Ve&rsatz:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:456
+msgid "Optional vertical offset"
+msgstr "Optionaler vertikaler Versatz"
+
+#: src/frontends/qt4/ui/TabularUi.ui:474
+msgid "Cell setting"
+msgstr "Zelleneinstellungen"
+
+#: src/frontends/qt4/ui/TabularUi.ui:482
+msgid "Rotate this cell by 90 degrees"
+msgstr "Drehe diese Zelle um 90 Grad"
+
+#: src/frontends/qt4/ui/TabularUi.ui:498
+msgid "rotation angle"
+msgstr "Rotationswinkel"
+
+#: src/frontends/qt4/ui/TabularUi.ui:517
+msgid "degrees"
+msgstr "Grad"
+
+#: src/frontends/qt4/ui/TabularUi.ui:546
 msgid "&Borders"
 msgstr "&Rahmenlinien"
 
-#: src/frontends/qt4/ui/TabularUi.ui:428
+#: src/frontends/qt4/ui/TabularUi.ui:552
 msgid "Set Borders"
 msgstr "Rahmenlinien ein"
 
-#: src/frontends/qt4/ui/TabularUi.ui:924
+#: src/frontends/qt4/ui/TabularUi.ui:1048
 msgid "Set borders of the current (selected) cell(s)"
 msgstr "Setze die Rahmenlinien der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:937
+#: src/frontends/qt4/ui/TabularUi.ui:1061
 msgid "All Borders"
 msgstr "Alle Rahmenlinien"
 
-#: src/frontends/qt4/ui/TabularUi.ui:943
+#: src/frontends/qt4/ui/TabularUi.ui:1067
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr "Setze alle Rahmenlinien der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:946
+#: src/frontends/qt4/ui/TabularUi.ui:1070
 msgid "&Set"
 msgstr "&Festlegen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:953
+#: src/frontends/qt4/ui/TabularUi.ui:1077
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Lösche alle Rahmenlinien der aktuellen (ausgewählten) Zelle(n)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:972
+#: src/frontends/qt4/ui/TabularUi.ui:1096
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 "Verwende einen formalen Rahmenstil (ohne vertikale Rahmen) ['Booktabs'-Stil]"
 
-#: src/frontends/qt4/ui/TabularUi.ui:975
+#: src/frontends/qt4/ui/TabularUi.ui:1099
 msgid "Fo&rmal"
 msgstr "Fo&rmal"
 
-#: src/frontends/qt4/ui/TabularUi.ui:985
+#: src/frontends/qt4/ui/TabularUi.ui:1109
 msgid "Use default (grid-like) border style"
 msgstr "Verwende den standardmäßigen, gitterartigen Rahmenstil"
 
-#: src/frontends/qt4/ui/TabularUi.ui:988
+#: src/frontends/qt4/ui/TabularUi.ui:1112
 msgid "De&fault"
 msgstr "&Standard"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1014
+#: src/frontends/qt4/ui/TabularUi.ui:1138
 msgid "Additional Space"
 msgstr "Zusätzlicher Abstand"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1020
+#: src/frontends/qt4/ui/TabularUi.ui:1144
 msgid "T&op of row:"
 msgstr "&Oberhalb der Zeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1080
+#: src/frontends/qt4/ui/TabularUi.ui:1204
 msgid "Botto&m of row:"
 msgstr "&Unterhalb der Zeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1093
+#: src/frontends/qt4/ui/TabularUi.ui:1217
 msgid "Bet&ween rows:"
 msgstr "&Zwischen den Zeilen:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1142
+#: src/frontends/qt4/ui/TabularUi.ui:1266
 msgid "&Longtable"
 msgstr "&Lange Tabelle"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1148
+#: src/frontends/qt4/ui/TabularUi.ui:1272
 msgid "Select for tables that span multiple pages"
 msgstr "Bitte aktivieren, wenn die Tabelle mehrere Seiten umfasst"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1151
+#: src/frontends/qt4/ui/TabularUi.ui:1275
 msgid "&Use long table"
 msgstr "&Lange Tabelle verwenden"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1161
+#: src/frontends/qt4/ui/TabularUi.ui:1285
 msgid "Row settings"
 msgstr "Zeileneinstellungen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1167
+#: src/frontends/qt4/ui/TabularUi.ui:1291
 msgid "Status"
 msgstr "Status"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1174
+#: src/frontends/qt4/ui/TabularUi.ui:1298
 msgid "Border above"
 msgstr "Rahmen oben"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1181
+#: src/frontends/qt4/ui/TabularUi.ui:1305
 msgid "Border below"
 msgstr "Rahmen unten"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1188
+#: src/frontends/qt4/ui/TabularUi.ui:1312
 msgid "Contents"
 msgstr "Inhalt"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1195
+#: src/frontends/qt4/ui/TabularUi.ui:1319
 msgid "Header:"
 msgstr "Kopfzeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1202
+#: src/frontends/qt4/ui/TabularUi.ui:1326
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
 "Wiederhole diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1205
-#: src/frontends/qt4/ui/TabularUi.ui:1242
-#: src/frontends/qt4/ui/TabularUi.ui:1283
-#: src/frontends/qt4/ui/TabularUi.ui:1314
-#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:361
-#: src/frontends/qt4/GuiToolbar.cpp:370
+#: src/frontends/qt4/ui/TabularUi.ui:1329
+#: src/frontends/qt4/ui/TabularUi.ui:1366
+#: src/frontends/qt4/ui/TabularUi.ui:1407
+#: src/frontends/qt4/ui/TabularUi.ui:1438
+#: src/frontends/qt4/ui/TabularUi.ui:1476 src/frontends/qt4/GuiToolbar.cpp:384
+#: src/frontends/qt4/GuiToolbar.cpp:393
 msgid "on"
 msgstr "an"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1215
-#: src/frontends/qt4/ui/TabularUi.ui:1222
-#: src/frontends/qt4/ui/TabularUi.ui:1249
-#: src/frontends/qt4/ui/TabularUi.ui:1256
-#: src/frontends/qt4/ui/TabularUi.ui:1290
-#: src/frontends/qt4/ui/TabularUi.ui:1297
-#: src/frontends/qt4/ui/TabularUi.ui:1321
-#: src/frontends/qt4/ui/TabularUi.ui:1328
+#: src/frontends/qt4/ui/TabularUi.ui:1339
+#: src/frontends/qt4/ui/TabularUi.ui:1346
+#: src/frontends/qt4/ui/TabularUi.ui:1373
+#: src/frontends/qt4/ui/TabularUi.ui:1380
+#: src/frontends/qt4/ui/TabularUi.ui:1414
+#: src/frontends/qt4/ui/TabularUi.ui:1421
+#: src/frontends/qt4/ui/TabularUi.ui:1445
+#: src/frontends/qt4/ui/TabularUi.ui:1452
 msgid "double"
 msgstr "doppelt"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1229
+#: src/frontends/qt4/ui/TabularUi.ui:1353
 msgid "First header:"
 msgstr "Erste Kopfzeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1236
+#: src/frontends/qt4/ui/TabularUi.ui:1360
 msgid "This row is the header of the first page"
 msgstr "Diese Zeile ist die Kopfzeile auf der ersten Seite"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1263
+#: src/frontends/qt4/ui/TabularUi.ui:1387
 msgid "Don't output the first header"
 msgstr "Gib die erste Kopfzeile nicht aus"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1266
-#: src/frontends/qt4/ui/TabularUi.ui:1338
+#: src/frontends/qt4/ui/TabularUi.ui:1390
+#: src/frontends/qt4/ui/TabularUi.ui:1462
 msgid "is empty"
 msgstr "ist leer"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1273
+#: src/frontends/qt4/ui/TabularUi.ui:1397
 msgid "Footer:"
 msgstr "Fußzeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1280
+#: src/frontends/qt4/ui/TabularUi.ui:1404
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr "Wiederhole diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1304
+#: src/frontends/qt4/ui/TabularUi.ui:1428
 msgid "Last footer:"
 msgstr "Letzte Fußzeile:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1311
+#: src/frontends/qt4/ui/TabularUi.ui:1435
 msgid "This row is the footer of the last page"
 msgstr "Diese Zeile ist die Fußzeile auf der letzten Seite"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1335
+#: src/frontends/qt4/ui/TabularUi.ui:1459
 msgid "Don't output the last footer"
 msgstr "Gib die letzte Fußzeile nicht aus"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1345
+#: src/frontends/qt4/ui/TabularUi.ui:1469
 msgid "Caption:"
 msgstr "Legende:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1362
+#: src/frontends/qt4/ui/TabularUi.ui:1486
 msgid "Set a page break on the current row"
 msgstr "Einen Seitenumbruch nach der aktuellen Zeile festlegen"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1365
+#: src/frontends/qt4/ui/TabularUi.ui:1489
 msgid "Page &break on current row"
 msgstr "&Seitenumbruch nach der aktuellen Zeile"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1378
+#: src/frontends/qt4/ui/TabularUi.ui:1502
 msgid "Horizontal alignment of the longtable"
 msgstr "Horizontale Ausrichtung der langen Tabelle"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1381
+#: src/frontends/qt4/ui/TabularUi.ui:1505
 msgid "Longtable alignment"
 msgstr "Ausrichtung der langen Tabelle"
-
-#: src/frontends/qt4/ui/TabularUi.ui:1433
-msgid "Current cell:"
-msgstr "Aktuelle Zelle:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:1455
-msgid "Current row position"
-msgstr "Aktuelle Zeilenposition"
-
-#: src/frontends/qt4/ui/TabularUi.ui:1477
-msgid "Current column position"
-msgstr "Aktuelle Spaltenposition"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -9163,9 +9168,8 @@ msgid "acknowledgments"
 msgstr "Danksagungen"
 
 #: lib/layouts/revtex4-1.layout:232
-#, fuzzy
 msgid "Ruled Table"
-msgstr "Tabelle platzieren"
+msgstr "Doppellinien-Tabelle"
 
 #: lib/layouts/revtex4-1.layout:234 lib/layouts/revtex4-1.layout:242
 #: lib/layouts/revtex4-1.layout:250 src/frontends/qt4/GuiSymbols.cpp:123
@@ -9189,9 +9193,8 @@ msgid "List of Videos"
 msgstr "Videoverzeichnis"
 
 #: lib/layouts/revtex4-1.layout:270 lib/layouts/revtex4-1.layout:272
-#, fuzzy
 msgid "Float Link"
-msgstr "Gleitobjekt-Einstellungen"
+msgstr "Gleitobjekt-Link"
 
 #: lib/layouts/revtex4.layout:169
 msgid "AltAffiliation"
@@ -10561,9 +10564,8 @@ msgstr "Standard"
 
 #: lib/layouts/basic.module:6 lib/layouts/jurabib.module:8
 #: lib/layouts/natbib.module:9
-#, fuzzy
 msgid "Citation engine"
-msgstr "Literaturverweis"
+msgstr "Literatur-System"
 
 #: lib/layouts/basic.module:22 lib/layouts/jurabib.module:49
 #: lib/layouts/natbib.module:44
@@ -14091,8 +14093,8 @@ msgid "Align bottom"
 msgstr "Unten ausrichten"
 
 #: lib/ui/stdtoolbars.inc:165
-msgid "Rotate cell"
-msgstr "Zelle drehen"
+msgid "Rotate cell by 90 degrees or unset rotation"
+msgstr "Diese Zelle um 90 Grad drehen oder Drehung zurücksetzen"
 
 #: lib/ui/stdtoolbars.inc:166
 msgid "Rotate table"
@@ -17367,7 +17369,7 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1149 src/Buffer.cpp:3942 src/Buffer.cpp:4004
+#: src/Buffer.cpp:1149 src/Buffer.cpp:3938 src/Buffer.cpp:4000
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
@@ -17615,29 +17617,29 @@ msgstr "Die Datei konnte nicht exportiert werden"
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:3749
+#: src/Buffer.cpp:3747
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:3750
+#: src/Buffer.cpp:3748
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:3849 src/Buffer.cpp:3863 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:3845 src/Buffer.cpp:3859 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:3866
+#: src/Buffer.cpp:3862
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:3873
+#: src/Buffer.cpp:3869
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:3928
+#: src/Buffer.cpp:3924
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17648,19 +17650,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:3931
+#: src/Buffer.cpp:3927
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:3932
+#: src/Buffer.cpp:3928
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:3932
+#: src/Buffer.cpp:3928
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3943
+#: src/Buffer.cpp:3939
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17670,15 +17672,15 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:3949
+#: src/Buffer.cpp:3945
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3951
+#: src/Buffer.cpp:3947
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3952
+#: src/Buffer.cpp:3948
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17688,27 +17690,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:3956 src/Buffer.cpp:3968
+#: src/Buffer.cpp:3952 src/Buffer.cpp:3964
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:3957 src/Buffer.cpp:3970
+#: src/Buffer.cpp:3953 src/Buffer.cpp:3966
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:3961
+#: src/Buffer.cpp:3957
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:3962
+#: src/Buffer.cpp:3958
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:3969
+#: src/Buffer.cpp:3965
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:3992
+#: src/Buffer.cpp:3988
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17719,19 +17721,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:3994
+#: src/Buffer.cpp:3990
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:3995
+#: src/Buffer.cpp:3991
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:3995
+#: src/Buffer.cpp:3991
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:4005
+#: src/Buffer.cpp:4001
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17741,25 +17743,25 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4345 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4341 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4540
+#: src/Buffer.cpp:4536
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4543
+#: src/Buffer.cpp:4539
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
-#: src/Buffer.cpp:4609
+#: src/Buffer.cpp:4605
 msgid "Included File Invalid"
 msgstr "Eingebundene Datei ungültig"
 
-#: src/Buffer.cpp:4610
+#: src/Buffer.cpp:4606
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -20584,12 +20586,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:2482
-#: src/frontends/qt4/GuiApplication.cpp:2494
+#: src/frontends/qt4/GuiApplication.cpp:2486
+#: src/frontends/qt4/GuiApplication.cpp:2498
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2483
+#: src/frontends/qt4/GuiApplication.cpp:2487
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -20600,13 +20602,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2489
+#: src/frontends/qt4/GuiApplication.cpp:2493
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2490
+#: src/frontends/qt4/GuiApplication.cpp:2494
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -20615,7 +20617,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2495
+#: src/frontends/qt4/GuiApplication.cpp:2499
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -21108,11 +21110,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:182
 msgid "Use esint package &automatically"
-msgstr "&esint-Paket automatisch verwenden"
+msgstr "&Esint-Paket automatisch verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:183
 msgid "Use &esint package"
-msgstr "e&sint-Paket verwenden"
+msgstr "E&sint-Paket verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:184
 msgid ""
@@ -21156,11 +21158,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:194
 msgid "Use mhchem &package automatically"
-msgstr "mhchem-&Paket automatisch verwenden"
+msgstr "Mhchem-&Paket automatisch verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:195
 msgid "Use mh&chem package"
-msgstr "mh&chem-Paket verwenden"
+msgstr "Mh&chem-Paket verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:196
 msgid ""
@@ -21172,11 +21174,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:198
 msgid "Use u&ndertilde package automatically"
-msgstr "u&ndertilde-Paket automatisch verwenden"
+msgstr "U&ndertilde-Paket automatisch verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:199
 msgid "Use undertilde pac&kage"
-msgstr "undertilde -Pa&ket verwenden"
+msgstr "Undertilde -Pa&ket verwenden"
 
 #: src/frontends/qt4/GuiDocument.cpp:200
 msgid ""
@@ -22814,15 +22816,15 @@ msgstr "Kein Thesaurus für diese Sprache vorhanden!"
 msgid "Outline"
 msgstr "Gliederung"
 
-#: src/frontends/qt4/GuiToolbar.cpp:353 src/frontends/qt4/Toolbars.cpp:376
+#: src/frontends/qt4/GuiToolbar.cpp:376 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
 msgstr "automatisch"
 
-#: src/frontends/qt4/GuiToolbar.cpp:358 src/frontends/qt4/GuiToolbar.cpp:367
+#: src/frontends/qt4/GuiToolbar.cpp:381 src/frontends/qt4/GuiToolbar.cpp:390
 msgid "off"
 msgstr "aus"
 
-#: src/frontends/qt4/GuiToolbar.cpp:374
+#: src/frontends/qt4/GuiToolbar.cpp:397
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
@@ -24969,6 +24971,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Rotate &cell 90 degrees"
+#~ msgstr "Zelle um 90 &Grad drehen"
+
+#~ msgid "Rotate cell"
+#~ msgstr "Zelle drehen"
 
 #~ msgid "&New:"
 #~ msgstr "&Neu:"
