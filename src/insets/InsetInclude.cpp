@@ -34,6 +34,7 @@
 #include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_plaintext.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
@@ -796,7 +797,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-int InsetInclude::plaintext(odocstream & os, OutputParams const &) const
+int InsetInclude::plaintext(odocstream & os, OutputParams const & op) const
 {
 	if (isVerbatim(params()) || isListings(params())) {
 		os << '[' << screenLabel() << '\n';
@@ -804,11 +805,16 @@ int InsetInclude::plaintext(odocstream & os, OutputParams const &) const
 		os << includedFileName(buffer(), params()).fileContents("UTF-8");
 		os << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
-	} else {
+	}
+
+	Buffer const * const ibuf = loadIfNeeded();
+	if (!ibuf) {
 		docstring const str = '[' + screenLabel() + ']';
 		os << str;
 		return str.size();
 	}
+	writePlaintextFile(*ibuf, os, op);
+	return 0;
 }
 
 
