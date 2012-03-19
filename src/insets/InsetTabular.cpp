@@ -5595,7 +5595,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::UNSET_ROTATE_CELL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
-				tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("0"));
+				tabular.setRotateCell(tabular.cellIndex(r, c), 0);
 		break;
 
 	case Tabular::TOGGLE_ROTATE_CELL:
@@ -5607,9 +5607,9 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
 				// when pressing the rotate cell button we default to 90° rotation
 				if (oneNotRotated)
-					tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("90"));
+					tabular.setRotateCell(tabular.cellIndex(r, c), 90);
 				else
-					tabular.setRotateCell(tabular.cellIndex(r, c), convert<int>("0"));
+					tabular.setRotateCell(tabular.cellIndex(r, c), 0);
 			}
 		}
 		break;
