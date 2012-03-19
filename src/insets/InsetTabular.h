@@ -702,7 +702,7 @@ public:
 	///
 	bool use_booktabs;
 	///
-	bool rotate;
+	int rotate;
 	///
 	VAlignment tabular_valignment;
 	//
@@ -978,6 +978,8 @@ private:
 	bool oneCellHasRotationState(bool rotated,
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
+	///
+	bool tableIsRotated() const;
 	///
 	mutable idx_type first_visible_cell;
 	///
