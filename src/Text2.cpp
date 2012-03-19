@@ -163,7 +163,7 @@ void Text::setCharFont(pit_type pit,
 
 
 void Text::setInsetFont(BufferView const & bv, pit_type pit,
-		pos_type pos, Font const & font, bool toggleall)
+		pos_type pos, Font const & font)
 {
 	Inset * const inset = pars_[pit].getInset(pos);
 	LASSERT(inset && inset->resetFontEdit(), /**/);
@@ -176,7 +176,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 			CursorSlice cellend = cs;
 			cellend.pit() = cellend.lastpit();
 			cellend.pos() = cellend.lastpos();
-			text->setFont(bv, cs, cellend, font, toggleall);
+			text->setFont(bv, cs, cellend, font);
 		}
 	}
 }
@@ -321,15 +321,67 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 
 	// Ok, we have a selection.
 	cur.recordUndoSelection();
+	Font newfont = font;
+
+	if (toggleall) {	
+		// Toggling behaves as follows: We check the first character of the
+		// selection. If it's (say) got EMPH on, then we set to off; if off,
+		// then to on. With families and the like, we set it to INHERIT, if
+		// we already have it.
+		CursorSlice const & sl = cur.selBegin();
+		Text const & text = *sl.text();
+		Paragraph const & par = text.getPar(sl.pit());
+	
+		// get font at the position
+		Font oldfont = par.getFont(cur.bv().buffer().params(), sl.pos(),
+			text.outerFont(sl.pit()));
+		FontInfo const & oldfi = oldfont.fontInfo();
+	
+		FontInfo & newfi = newfont.fontInfo();
+	
+		FontFamily newfam = newfi.family();
+		if (newfam !=	INHERIT_FAMILY && newfam != IGNORE_FAMILY &&
+				newfam == oldfi.family())
+			newfi.setFamily(INHERIT_FAMILY);
+		
+		FontSeries newser = newfi.series();
+		if (newser == BOLD_SERIES && oldfi.series() == BOLD_SERIES)
+			newfi.setSeries(INHERIT_SERIES);
+	
+		FontShape newshp = newfi.shape();
+		if (newshp !=	INHERIT_SHAPE && newshp != IGNORE_SHAPE &&
+				newshp == oldfi.shape())
+			newfi.setShape(INHERIT_SHAPE);
+
+		ColorCode newcol = newfi.color();
+		if (newcol != Color_none && newcol != Color_inherit 
+		    && newcol != Color_ignore && newcol == oldfi.color())
+			newfi.setColor(Color_none);
+
+		// ON/OFF ones
+		if (newfi.emph() == FONT_TOGGLE)
+			newfi.setEmph(oldfi.emph() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.underbar() == FONT_TOGGLE)
+			newfi.setUnderbar(oldfi.underbar() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.strikeout() == FONT_TOGGLE)
+			newfi.setStrikeout(oldfi.strikeout() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.uuline() == FONT_TOGGLE)
+			newfi.setUuline(oldfi.uuline() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.uwave() == FONT_TOGGLE)
+			newfi.setUwave(oldfi.uwave() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.noun() == FONT_TOGGLE)
+			newfi.setNoun(oldfi.noun() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.number() == FONT_TOGGLE)
+			newfi.setNumber(oldfi.number() == FONT_OFF ? FONT_ON : FONT_OFF);
+	}
 
 	setFont(cur.bv(), cur.selectionBegin().top(), 
-		cur.selectionEnd().top(), font, toggleall);
+		cur.selectionEnd().top(), newfont);
 }
 
 
 void Text::setFont(BufferView const & bv, CursorSlice const & begin,
-		CursorSlice const & end, Font const & font,
-		bool toggleall)
+		CursorSlice const & end, Font const & font)
 {
 	Buffer const & buffer = bv.buffer();
 
@@ -347,11 +399,11 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		if (inset && inset->resetFontEdit()) {
 			// We need to propagate the font change to all
 			// text cells of the inset (bugs 1973, 6919).
-			setInsetFont(bv, pit, pos, font, toggleall);
+			setInsetFont(bv, pit, pos, font);
 		}
 		TextMetrics const & tm = bv.textMetrics(this);
 		Font f = tm.displayFont(pit, pos);
-		f.update(font, language, toggleall);
+		f.update(font, language);
 		setCharFont(pit, pos, f, tm.font_);
 		// font change may change language... 
 		// spell checker has to know that
