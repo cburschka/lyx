@@ -218,9 +218,6 @@ void GuiTabular::checkEnabled()
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
 
-	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
-	rotateTabularCB->setDisabled(is_tabular_star);
-
 	rotateCellAngleSB->setEnabled(rotateCellCB->isChecked());
 
 	bool const enable_valign =
@@ -239,6 +236,7 @@ void GuiTabular::checkEnabled()
 	interlinespaceUnitLC->setEnabled(interlinespaceCO->currentIndex() == 2);
 
 	// setting as longtable is not allowed when table is inside a float
+	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
 	longTabularCB->setEnabled(!is_tabular_star && funcEnabled(Tabular::SET_LONGTABULAR));
 	bool const longtabular = longTabularCB->isChecked();
 	longtableGB->setEnabled(true);
