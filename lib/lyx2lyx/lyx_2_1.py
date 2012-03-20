@@ -581,7 +581,6 @@ def revert_cell_rotation(document):
   try:
     while True:
       # first, let's find out if we need to do anything
-      # cell type 3 is multirow begin cell
       i = find_token(document.body, '<cell ', i)
       if i == -1:
         return
@@ -620,7 +619,6 @@ def convert_cell_rotation(document):
     i = 0
     while True:
       # first, let's find out if we need to do anything
-      # cell type 3 is multirow begin cell
       i = find_token(document.body, '<cell ', i)
       if i == -1:
         return

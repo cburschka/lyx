@@ -449,7 +449,7 @@ docstring GuiTabular::dialogToParams() const
 
 	// apply the column alignment
 	// multirows inherit the alignment from the column; if a column width
-	// is set, multicolumns are always left-aligned so that in this case
+	// is set, multirows are always left-aligned so that in this case
 	// its alignment must not be applied (see bug #8084)
 	if (!(multirowCB->isChecked() && width != "0pt"))
 		setHAlign(param_str);
