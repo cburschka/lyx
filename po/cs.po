@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-13 17:52-0400\n"
+"POT-Creation-Date: 2012-03-21 17:51+0100\n"
 "PO-Revision-Date: 2012-01-19 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -303,21 +303,21 @@ msgstr "Horizontální uspoøádání obsahu uvnitø rámeèku"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:784
+#: src/frontends/qt4/GuiTabular.cpp:788
 msgid "Left"
 msgstr "Nalevo"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
 #: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:785
+#: src/frontends/qt4/GuiTabular.cpp:789
 msgid "Center"
 msgstr "Na støed"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:786
+#: src/frontends/qt4/GuiTabular.cpp:790
 msgid "Right"
 msgstr "Napravo"
 
@@ -487,8 +487,8 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3796
-#: src/Buffer.cpp:3809
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3792
+#: src/Buffer.cpp:3805
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -522,7 +522,7 @@ msgstr "Pøidat &v¹echny"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1135
-#: src/Buffer.cpp:2378 src/Buffer.cpp:3771 src/Buffer.cpp:3834
+#: src/Buffer.cpp:2378 src/Buffer.cpp:3767 src/Buffer.cpp:3830
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:216
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1830
@@ -1470,11 +1470,10 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
-msgstr "Pou¾ívat OpenType a TrueType fonty pøímo (vy¾aduje XeTeX nebo LuaTeX)"
+msgstr "Pou¾ívat OpenType a TrueType fonty spolu s balíèkem fontspec (vy¾aduje XeTeX nebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -4573,11 +4572,11 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontální zarovnání ve sloupci"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/GuiTabular.cpp:792
 msgid "Justified"
 msgstr "Do bloku"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:790
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:794
 msgid "At Decimal Separator"
 msgstr "Na desetinné èárce"
 
@@ -4775,8 +4774,8 @@ msgstr "Opakovat tento øádek jako hlavièku na v¹ech stranách (krom první)"
 #: src/frontends/qt4/ui/TabularUi.ui:1242
 #: src/frontends/qt4/ui/TabularUi.ui:1283
 #: src/frontends/qt4/ui/TabularUi.ui:1314
-#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:362
-#: src/frontends/qt4/GuiToolbar.cpp:371
+#: src/frontends/qt4/ui/TabularUi.ui:1352 src/frontends/qt4/GuiToolbar.cpp:385
+#: src/frontends/qt4/GuiToolbar.cpp:394
 msgid "on"
 msgstr "zapnuto"
 
@@ -5090,23 +5089,20 @@ msgid "Select the output format"
 msgstr "Vybrat výstupní formát"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:57
-#, fuzzy
 msgid "Current Paragraph"
 msgstr "Souèasný odstavec"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:62
-#, fuzzy
 msgid "Complete Source"
-msgstr "Zobraz celý zdrojový kód"
+msgstr "Celý zdrojový kód"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:67
 msgid "Preamble Only"
-msgstr ""
+msgstr "Pouze preambule"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:72
-#, fuzzy
 msgid "Body Only"
-msgstr "Only"
+msgstr "Pouze tìlo"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:80
 msgid "Automatic update"
@@ -16875,7 +16871,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1122 src/Buffer.cpp:3781 src/Buffer.cpp:3843
+#: src/Buffer.cpp:1122 src/Buffer.cpp:3777 src/Buffer.cpp:3839
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
@@ -17088,14 +17084,12 @@ msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
 #: src/Buffer.cpp:3220
-#, fuzzy
 msgid "Preview preamble"
-msgstr "Náhled pøipraven"
+msgstr "Preambule náhledu"
 
 #: src/Buffer.cpp:3222
-#, fuzzy
 msgid "Preview body"
-msgstr "Náhled pøipraven"
+msgstr "Tìlo náhledu"
 
 #: src/Buffer.cpp:3335
 #, c-format
@@ -17119,29 +17113,29 @@ msgstr "Nelze exportovat soubor"
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:3612
+#: src/Buffer.cpp:3610
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:3613
+#: src/Buffer.cpp:3611
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:3698
+#: src/Buffer.cpp:3694
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:3708
+#: src/Buffer.cpp:3704
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:3714
+#: src/Buffer.cpp:3710
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3763
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17152,19 +17146,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:3770
+#: src/Buffer.cpp:3766
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3767
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:3771
+#: src/Buffer.cpp:3767
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:3782
+#: src/Buffer.cpp:3778
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17174,15 +17168,15 @@ msgstr ""
 "má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3784
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3786
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3791
+#: src/Buffer.cpp:3787
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17191,27 +17185,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3795 src/Buffer.cpp:3807
+#: src/Buffer.cpp:3791 src/Buffer.cpp:3803
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3796 src/Buffer.cpp:3809
+#: src/Buffer.cpp:3792 src/Buffer.cpp:3805
 msgid "&Keep"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:3800
+#: src/Buffer.cpp:3796
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:3801
+#: src/Buffer.cpp:3797
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:3808
+#: src/Buffer.cpp:3804
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3827
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17222,19 +17216,19 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:3833
+#: src/Buffer.cpp:3829
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:3834
+#: src/Buffer.cpp:3830
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:3834
+#: src/Buffer.cpp:3830
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:3844
+#: src/Buffer.cpp:3840
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17244,25 +17238,25 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4184 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4180 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
-#: src/Buffer.cpp:4371
+#: src/Buffer.cpp:4367
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/Buffer.cpp:4374
+#: src/Buffer.cpp:4370
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/Buffer.cpp:4440
+#: src/Buffer.cpp:4436
 msgid "Included File Invalid"
 msgstr "Neplatný soubor k zahrnutí"
 
-#: src/Buffer.cpp:4441
+#: src/Buffer.cpp:4437
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -22027,15 +22021,15 @@ msgstr "®ádný dostupný tezaurus pro tento jazyk!"
 msgid "Outline"
 msgstr "Osnova"
 
-#: src/frontends/qt4/GuiToolbar.cpp:354 src/frontends/qt4/Toolbars.cpp:376
+#: src/frontends/qt4/GuiToolbar.cpp:377 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
 msgstr "auto"
 
-#: src/frontends/qt4/GuiToolbar.cpp:359 src/frontends/qt4/GuiToolbar.cpp:368
+#: src/frontends/qt4/GuiToolbar.cpp:382 src/frontends/qt4/GuiToolbar.cpp:391
 msgid "off"
 msgstr "vypnuto"
 
-#: src/frontends/qt4/GuiToolbar.cpp:375
+#: src/frontends/qt4/GuiToolbar.cpp:398
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav panelu nástrojù \"%1$s\" nastaven na %2$s"
@@ -23947,7 +23941,7 @@ msgid "Directory not found"
 msgstr "Adresáø nenalezen"
 
 #: src/support/Systemcall.cpp:374
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command\n"
 "%1$s\n"
@@ -23955,23 +23949,23 @@ msgid ""
 "\n"
 "Do you want to stop it?"
 msgstr ""
-"Dokument %1$s zatím nebyl ulo¾en.\n"
+"Pøíkaz\n"
+"%1$s\n"
+"dosud nedobìhl.\n"
 "\n"
-"Chcete jej ulo¾it ?"
+"Pøejete si ho ukonèit?"
 
 #: src/support/Systemcall.cpp:376
-#, fuzzy
 msgid "Stop command?"
-msgstr "Pøíkaz pro datum"
+msgstr "Ukonèit pøíkaz?"
 
 #: src/support/Systemcall.cpp:377
-#, fuzzy
 msgid "&Stop it"
-msgstr "&Ponechat"
+msgstr "&Ukonèit"
 
 #: src/support/Systemcall.cpp:377
 msgid "Let it &run"
-msgstr ""
+msgstr "&Nechat bì¾et"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
