@@ -979,8 +979,6 @@ private:
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
 	///
-	bool tableIsRotated() const;
-	///
 	mutable idx_type first_visible_cell;
 	///
 	mutable int scx_;
