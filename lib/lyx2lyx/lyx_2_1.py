@@ -589,14 +589,14 @@ def revert_cell_rotation(document):
         k = document.body[i].find('"', j + 8)
         value = document.body[i][j + 8 : k]
         if value == "0":
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
         elif value == "90":
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           document.body[i] = rgx.sub('rotate="true"', document.body[i])
         else:
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           load_rotating = True
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
@@ -644,24 +644,25 @@ def revert_table_rotation(document):
         return
       j = document.body[i].find('rotate="')
       if j != -1:
+        end_table = find_token(document.body, '</lyxtabular>', j)
         k = document.body[i].find('"', j + 8)
         value = document.body[i][j + 8 : k]
         if value == "0":
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
         elif value == "90":
           rgx = re.compile(r'rotate="[^"]+?"')
           document.body[i] = rgx.sub('rotate="true"', document.body[i])
         else:
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           load_rotating = True
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
           # write ERT
-          document.body[i + 5 : i + 5] = \
+          document.body[end_table + 3 : end_table + 3] = \
             put_cmd_in_ert("\\end{turn}")
-          document.body[i + 4 : i + 4] = \
+          document.body[i - 2 : i - 2] = \
             put_cmd_in_ert("\\begin{turn}{" + value + "}")
         
       i += 1
