@@ -2600,7 +2600,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		os.texrow().start(runparams.lastid, runparams.lastpos);
 
 	if (rotate != 0)
-		os << "\\begin{turn}" << convert<string>(rotate) << "\n";
+		os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
 
 	if (is_long_tabular) {
 		os << "\\begin{longtable}";
@@ -4544,8 +4544,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::TOGGLE_ROTATE_TABULAR:
 		case Tabular::SET_ROTATE_TABULAR:
-			status.setEnabled(tabular.tabular_width.zero());
-			status.setOnOff(tableIsRotated());
+			status.setOnOff(tabular.rotate != 0);
 			break;
 
 		case Tabular::TABULAR_VALIGN_TOP:
@@ -4578,7 +4577,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::UNSET_ROTATE_TABULAR:
-			status.setOnOff(!tableIsRotated());
+			status.setOnOff(tabular.rotate == 0);
 			break;
 
 		case Tabular::TOGGLE_ROTATE_CELL:
@@ -5196,13 +5195,6 @@ bool InsetTabular::oneCellHasRotationState(bool rotated,
 	return false;
 }
 
-bool InsetTabular::tableIsRotated() const 
-{
-	if (tabular.rotate != 0)
-		return true;
-	else
-		return false;
-}
 
 void InsetTabular::tabularFeatures(Cursor & cur,
 	Tabular::Feature feature, string const & value)
@@ -5566,10 +5558,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::TOGGLE_ROTATE_TABULAR:
 		// when pressing the rotate button we default to 90° rotation
-		if (tableIsRotated())
-			tabular.rotate = 90;
-		else
-			tabular.rotate = 0;
+		tabular.rotate != 0 ? tabular.rotate = 0 : tabular.rotate = 90;
 		break;
 
 	case Tabular::TABULAR_VALIGN_TOP:

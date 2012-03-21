@@ -143,6 +143,8 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(rotateTabularCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
+	connect(rotateTabularAngleSB, SIGNAL(valueChanged(int)),
+		this, SLOT(checkEnabled()));
 	connect(rotateCellCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
 	connect(rotateCellAngleSB, SIGNAL(valueChanged(int)),
@@ -213,11 +215,12 @@ void GuiTabular::checkEnabled()
 	decimalLA->setEnabled(dalign);
 
 	bool const setwidth = TableAlignCO->currentText() == qt_("Middle")
-		&& !longTabularCB->isChecked() && !rotateTabularCB->isChecked();
+		&& !longTabularCB->isChecked();
 	tabularWidthLA->setEnabled(setwidth);
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
 
+	rotateTabularAngleSB->setEnabled(rotateTabularCB->isChecked());
 	rotateCellAngleSB->setEnabled(rotateCellCB->isChecked());
 
 	bool const enable_valign =
@@ -557,17 +560,18 @@ docstring GuiTabular::dialogToParams() const
 		setParam(param_str, Tabular::SET_MULTIROW);
 	else
 		setParam(param_str, Tabular::UNSET_MULTIROW);
-	//
+	// store the table rotation angle
+	string const tabular_angle = convert<string>(rotateTabularAngleSB->value());
 	if (rotateTabularCB->isChecked())
-		setParam(param_str, Tabular::SET_ROTATE_TABULAR);
+		setParam(param_str, Tabular::SET_ROTATE_TABULAR, tabular_angle);
 	else
-		setParam(param_str, Tabular::UNSET_ROTATE_TABULAR);
+		setParam(param_str, Tabular::UNSET_ROTATE_TABULAR, tabular_angle);
 	// store the cell rotation angle
-	string angle = convert<string>(rotateCellAngleSB->value());
+	string const cell_angle = convert<string>(rotateCellAngleSB->value());
 	if (rotateCellCB->isChecked())
-		setParam(param_str, Tabular::SET_ROTATE_CELL, angle);
+		setParam(param_str, Tabular::SET_ROTATE_CELL, cell_angle);
 	else
-		setParam(param_str, Tabular::UNSET_ROTATE_CELL, angle);
+		setParam(param_str, Tabular::UNSET_ROTATE_CELL, cell_angle);
 	//
 	if (longTabularCB->isChecked())
 		setParam(param_str, Tabular::SET_LONGTABULAR);
@@ -704,11 +708,16 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	multirowCB->setChecked(multirow);
 
 	rotateCellCB->setChecked(tabular.getRotateCell(cell) != 0);
-	if (tabular.getRotateCell(cell) != 0)
-		rotateCellAngleSB->setValue(tabular.getRotateCell(cell));
-	else
-		rotateCellAngleSB->setValue(90);
-	rotateTabularCB->setChecked(tabular.rotate);
+	if (rotateCellCB->isChecked()) {
+		if (tabular.getRotateCell(cell) != 0)
+			rotateCellAngleSB->setValue(tabular.getRotateCell(cell));
+		else
+			rotateCellAngleSB->setValue(90);
+	}
+
+	rotateTabularCB->setChecked(tabular.rotate != 0);
+	if (rotateTabularCB->isChecked())
+		rotateTabularAngleSB->setValue(tabular.rotate != 0 ? tabular.rotate : 90);
 
 	longTabularCB->setChecked(tabular.is_long_tabular);
 
