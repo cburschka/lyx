@@ -215,9 +215,6 @@ void GuiTabular::checkEnabled()
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
 
-	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
-	rotateTabularCB->setDisabled(is_tabular_star);
-
 	vAlignCO->setEnabled(!multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty()
 		&& specialAlignmentED->text().isEmpty());
@@ -231,6 +228,7 @@ void GuiTabular::checkEnabled()
 	interlinespaceUnitLC->setEnabled(interlinespaceCO->currentIndex() == 2);
 
 	// setting as longtable is not allowed when table is inside a float
+	bool const is_tabular_star = !tabularWidthED->text().isEmpty();
 	longTabularCB->setEnabled(!is_tabular_star && funcEnabled(Tabular::SET_LONGTABULAR));
 	bool const longtabular = longTabularCB->isChecked();
 	longtableGB->setEnabled(true);
@@ -429,7 +427,7 @@ docstring GuiTabular::dialogToParams() const
 
 	// apply the column alignment
 	// multirows inherit the alignment from the column; if a column width
-	// is set, multicolumns are always left-aligned so that in this case
+	// is set, multirows are always left-aligned so that in this case
 	// its alignment must not be applied (see bug #8084)
 	if (!(multirowCB->isChecked() && width != "0pt"))
 		setHAlign(param_str);
