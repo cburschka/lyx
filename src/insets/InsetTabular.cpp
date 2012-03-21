@@ -4569,7 +4569,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::TOGGLE_ROTATE_TABULAR:
 		case Tabular::SET_ROTATE_TABULAR:
-			status.setEnabled(tabular.tabular_width.zero());
 			status.setOnOff(tabular.rotate);
 			break;
 

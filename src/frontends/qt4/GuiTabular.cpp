@@ -210,7 +210,7 @@ void GuiTabular::checkEnabled()
 	decimalLA->setEnabled(dalign);
 
 	bool const setwidth = TableAlignCO->currentText() == qt_("Middle")
-		&& !longTabularCB->isChecked() && !rotateTabularCB->isChecked();
+		&& !longTabularCB->isChecked();
 	tabularWidthLA->setEnabled(setwidth);
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
