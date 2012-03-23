@@ -74,6 +74,9 @@ What's new
 
 * USER INTERFACE
 
+- Fixed crash when modifying equation label and there are references to that
+  label in math (bug 8095).
+
 - Do not disable View/Update Other Formats button when "Use non-TeX fonts"
   is active (bug 8069).
 
