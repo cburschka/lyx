@@ -113,10 +113,11 @@ Lists of files to include in the installer
   ${FILE}log.xml"
   ${FILE}magic.xml"
   ${FILE}policy.xml"
-  ${FILE}sRGB.icc"
+  ${FILE}sRGB.icm"
   ${FILE}thresholds.xml"
   ${FILE}type-ghostscript.xml"
   ${FILE}type.xml"
+  ${FILE}vcomp100.dll"
   ${FILE}X11.dll"
   ${FILE}Xext.dll"
 
