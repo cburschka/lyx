@@ -172,7 +172,7 @@ public:
 	/// interpret \p str and insert the result at the current position of
 	/// \p cur if it is something known. Return whether \p cur was
 	/// inserted.
-	bool interpretString(Cursor & cur, docstring const & str);
+	virtual bool interpretString(Cursor & cur, docstring const & str);
 
 private:
 	/// lfun handler
