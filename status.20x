@@ -71,6 +71,9 @@ What's new
 - Fix reconfiguration on Windows when the temporary directory used by
   python contains non-ascii characters.
 
+- Fix reconfiguration on Windows when the user directory is a UNC path
+  (bug 8098).
+
 
 * USER INTERFACE
 
