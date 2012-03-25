@@ -456,10 +456,11 @@ docstring convert_unicodesymbols(docstring s)
 			continue;
 		}
 		s = s.substr(i);
+		bool termination;
 		docstring rem;
 		set<string> req;
 		docstring parsed = encodings.fromLaTeXCommand(s,
-				Encodings::TEXT_CMD, rem, &req);
+				Encodings::TEXT_CMD, termination, rem, &req);
 		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 			preamble.registerAutomaticallyLoadedPackage(*it);
 		os << parsed;
@@ -3500,13 +3501,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 && contains("\"'.=^`bcdHkrtuv~", t.cs())) {
 			context.check_layout(os);
 			// try to see whether the string is in unicodesymbols
+			bool termination;
 			docstring rem;
 			string command = t.asInput() + "{"
 				+ trimSpaceAndEol(p.verbatim_item())
 				+ "}";
 			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
-				Encodings::TEXT_CMD | Encodings::MATH_CMD, rem, &req);
+				Encodings::TEXT_CMD | Encodings::MATH_CMD,
+				termination, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << command
@@ -4106,10 +4109,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// try to see whether the string is in unicodesymbols
 			// Only use text mode commands, since we are in text mode here,
 			// and math commands may be invalid (bug 6797)
+			bool termination;
 			docstring rem;
 			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()),
-			                                         Encodings::TEXT_CMD, rem, &req);
+					Encodings::TEXT_CMD, termination, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << t.cs()
@@ -4117,7 +4121,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
 				os << to_utf8(s);
-				skip_spaces_braces(p);
+				if (termination)
+					skip_spaces_braces(p);
 				for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 					preamble.registerAutomaticallyLoadedPackage(*it);
 			}

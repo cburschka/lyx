@@ -858,8 +858,8 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 	// FIXME: change tracking
 	// Is this correct WRT change tracking?
 	Encoding const & encoding = *(runparams.encoding);
-	docstring const latex1 = encoding.latexChar(next);
-	docstring const latex2 = encoding.latexChar(c);
+	docstring const latex1 = encoding.latexChar(next).first;
+	docstring const latex2 = encoding.latexChar(c).first;
 	if (docstring(1, next) == latex1) {
 		// the encoding supports the combination
 		os << latex2 << latex1;
@@ -975,7 +975,7 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 		// Stop here if there is a font attribute or encoding change.
 		if (found && cit != end && prev_font != cit->font())
 			break;
-		docstring const latex = encoding.latexChar(next);
+		docstring const latex = encoding.latexChar(next).first;
 		docstring::size_type const b1 =
 					latex.find_first_of(from_ascii("{"));
 		docstring::size_type const b2 =
@@ -1168,7 +1168,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	if (style.pass_thru || runparams.pass_thru) {
 		if (c != '\0') {
 			Encoding const * const enc = runparams.encoding;
-			if (enc && enc->latexChar(c, true).empty())
+			if (enc && !enc->encodable(c))
 				throw EncodingException(c);
 			os.put(c);
 		}
@@ -1273,41 +1273,41 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			}
 		}
 		string script;
-		docstring latex = encoding.latexChar(c);
+		pair<docstring, bool> latex = encoding.latexChar(c);
 		docstring nextlatex;
 		if (next != '\0' && next != META_INSET)
-			nextlatex = encoding.latexChar(next);
+			nextlatex = encoding.latexChar(next).first;
 		bool tipas = false;
 		if (runparams.inIPA) {
 			string const tipashortcut = Encodings::TIPAShortcut(c);
 			if (!tipashortcut.empty()) {
-				latex = from_ascii(tipashortcut);
+				latex.first = from_ascii(tipashortcut);
+				latex.second = false;
 				tipas = true;
 			}
 		}
 		if (Encodings::isKnownScriptChar(c, script)
-		    && prefixIs(latex, from_ascii("\\" + script)))
-			column += writeScriptChars(os, latex,
+		    && prefixIs(latex.first, from_ascii("\\" + script)))
+			column += writeScriptChars(os, latex.first,
 					running_change, encoding, i) - 1;
-		else if (Encodings::needsTermination(c)
-			 && !prefixIs(nextlatex, from_ascii("\\"))
-			 && !prefixIs(nextlatex, from_ascii("{"))
-			 && !prefixIs(nextlatex, from_ascii("}"))
-			 && latex.length() > 1 && latex[latex.length() - 1] != '}'
-			 && latex[latex.length() - 1] != '-' && !tipas) {
+		else if (latex.second
+			 && !prefixIs(nextlatex, '\\')
+			 && !prefixIs(nextlatex, '{')
+			 && !prefixIs(nextlatex, '}')
+			 && !tipas) {
 			// Prevent eating of a following
 			// space or command corruption by
 			// following characters
 			if (next == ' ' || next == '\0') {
-				column += latex.length() + 1;
-				os << latex << "{}";
+				column += latex.first.length() + 1;
+				os << latex.first << "{}";
 			} else {
-				column += latex.length();
-				os << latex << " ";
+				column += latex.first.length();
+				os << latex.first << " ";
 			}
 		} else {
-			column += latex.length() - 1;
-			os << latex;
+			column += latex.first.length() - 1;
+			os << latex.first;
 		}
 		break;
 	}

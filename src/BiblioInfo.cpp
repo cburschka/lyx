@@ -169,14 +169,17 @@ docstring convertLaTeXCommands(docstring const & str)
 		// unicodesymbols has things in the form: \"{u},
 		// whereas we may see things like: \"u. So we'll
 		// look for that and change it, if necessary.
+		// FIXME: This is a sort of mini-tex2lyx.
+		//        Use the real tex2lyx instead!
 		static lyx::regex const reg("^\\\\\\W\\w");
 		if (lyx::regex_search(to_utf8(val), reg)) {
 			val.insert(3, from_ascii("}"));
 			val.insert(2, from_ascii("{"));
 		}
+		bool termination;
 		docstring rem;
 		docstring const cnvtd = Encodings::fromLaTeXCommand(val,
-				Encodings::TEXT_CMD, rem);
+				Encodings::TEXT_CMD, termination, rem);
 		if (!cnvtd.empty()) {
 			// it did, so we'll take that bit and proceed with what's left
 			ret += cnvtd;

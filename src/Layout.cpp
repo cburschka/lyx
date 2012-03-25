@@ -893,7 +893,7 @@ docstring const i18npreamble(Language const * lang, Encoding const & enc,
 		// Check whether name can be encoded in the buffer encoding
 		bool encodable = true;
 		for (size_t i = 0; i < name.size(); ++i) {
-			if (enc.latexChar(name[i], true)[0] != name[i]) {
+			if (!enc.encodable(name[i])) {
 				encodable = false;
 				break;
 			}

@@ -34,10 +34,15 @@
 # - combining       This is a combining char that will get combined with a base char
 # - force           Always output replacement command
 # - mathalpha       This character is considered as a math variable in mathmode
-# - notermination   Do not terminate this command (by {} or space).
+# - notermination=text Do not terminate this textcommand (by {} or space).
+#                      This is set by default if textcommand ends with }.
+# - notermination=math Do not terminate this mathcommand (by {} or space).
+#                      This is set by default if mathcommand ends with }.
+# - notermination=both Do not terminate this textcommand and mathcommand (by {} or space).
+# - notermination=none Always terminate this textcommand and mathcommand (by {} or space).
 # - tipashortcut=<shortcut> Shortcut notation for TIPA
 
-0x00a0 "~"                        "" "notermination" "~" "" # NO-BREAK SPACE
+0x00a0 "~"                        "" "notermination=both" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
 0x00a2 "\\textcent"               "textcomp" "" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
 0x00a3 "\\pounds"                 "" "" "\\pounds" "" # £ POUND SIGN
@@ -50,7 +55,7 @@
 0x00aa "\\textordfeminine"        "textcomp" "" # FEMININE ORDINAL INDICATOR
 0x00ab "\\guillemotleft"          "" "" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00ac "\\textlnot"               "textcomp" "force" "\\neg" "" # ¬ NOT SIGN
-0x00ad "\\-"                      "" "notermination" # SOFT HYPHEN
+0x00ad "\\-"                      "" "notermination=text" "" "" # SOFT HYPHEN
 0x00ae "\\textregistered"         "textcomp" "force" "\\circledR" "amssymb" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force" "{^\\circ}" "" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
@@ -61,7 +66,7 @@
 0x00b5 "\\textmu"                 "textcomp" "force" "\\mu" "" # µ MICRO SIGN
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
-0x00b8 "\\c\\ "                   "" "" # CEDILLA (command from latin1.def)
+0x00b8 "\\c\\ "                   "" "notermination=text" "" "" # CEDILLA (command from latin1.def)
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
 0x00bb "\\guillemotright"         "" "" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
@@ -85,7 +90,7 @@
 0x00cd "\\'{I}"                   "" "mathalpha" "\\acute{I}" # LATIN CAPITAL LETTER I WITH ACUTE
 0x00ce "\\^{I}"                   "" "mathalpha" "\\hat{I}" # LATIN CAPITAL LETTER I WITH CIRCUMFLEX
 0x00cf "\\\"{I}"                  "" "mathalpha" "\\ddot{I}" # LATIN CAPITAL LETTER I WITH DIAERESIS
-0x00d0 "\\DH"                     "" "mathalpha" "\\mkern2mu\\rule[0.75ex]{0.75ex}{0.06ex}\\mkern-8mu D" # LATIN CAPITAL LETTER ETH
+0x00d0 "\\DH"                     "" "mathalpha,notermination=math" "\\mkern2mu\\rule[0.75ex]{0.75ex}{0.06ex}\\mkern-8mu D" # LATIN CAPITAL LETTER ETH
 0x00d1 "\\~{N}"                   "" "mathalpha" "\\tilde{N}" # LATIN CAPITAL LETTER N WITH TILDE
 0x00d2 "\\`{O}"                   "" "mathalpha" "\\grave{O}" # LATIN CAPITAL LETTER O WITH GRAVE
 0x00d3 "\\'{O}"                   "" "mathalpha" "\\acute{O}" # LATIN CAPITAL LETTER O WITH ACUTE
@@ -149,8 +154,8 @@
 0x010d "\\v{c}"                   "" "mathalpha" "\\check{c}" # LATIN SMALL LETTER C WITH CARON
 0x010e "\\v{D}"                   "" "mathalpha" "\\check{D}" # LATIN CAPITAL LETTER D WITH CARON
 0x010f "\\v{d}"                   "" "mathalpha" "\\check{d}" # LATIN SMALL LETTER D WITH CARON
-0x0110 "\\DJ"                     "" "mathalpha" "\\mkern2mu\\rule[0.75ex]{0.75ex}{0.06ex}\\mkern-8mu D" # LATIN CAPITAL LETTER D WITH STROKE
-0x0111 "\\dj"                     "" "mathalpha" "\\mkern3mu\\mathchar'26\\mkern-12mu d" # LATIN SMALL LETTER D WITH STROKE
+0x0110 "\\DJ"                     "" "mathalpha,notermination=math" "\\mkern2mu\\rule[0.75ex]{0.75ex}{0.06ex}\\mkern-8mu D" # LATIN CAPITAL LETTER D WITH STROKE
+0x0111 "\\dj"                     "" "mathalpha,notermination=math" "\\mkern3mu\\mathchar'26\\mkern-12mu d" # LATIN SMALL LETTER D WITH STROKE
 0x0112 "\\={E}"                   "" "mathalpha" "\\bar{E}" # LATIN CAPITAL LETTER E WITH MACRON
 0x0113 "\\={e}"                   "" "mathalpha" "\\bar{e}" # LATIN SMALL LETTER E WITH MACRON
 0x0114 "\\u{E}"                   "" "mathalpha" "\\breve{E}" # LATIN CAPITAL LETTER E WITH BREVE
@@ -168,7 +173,7 @@
 0x0120 "\\.{G}"                   "" "mathalpha" "\\dot{G}" # LATIN CAPITAL LETTER G WITH DOT ABOVE
 0x0121 "\\.{g}"                   "" "mathalpha" "\\dot{g}" # LATIN SMALL LETTER G WITH DOT ABOVE
 0x0122 "\\c{G}"                   "" "mathalpha" "\\cedilla{G}" "accents,cedilla" # LATIN CAPITAL LETTER G WITH CEDILLA
-0x0123 "\\accent96 g"             "" "mathalpha,notermination" "\\mathaccent96 g" # LATIN SMALL LETTER G WITH CEDILLA
+0x0123 "\\accent96 g"             "" "mathalpha,notermination=both" "\\mathaccent96 g" "" # LATIN SMALL LETTER G WITH CEDILLA
 0x0124 "\\^{H}"                   "" "mathalpha" "\\hat{H}" # LATIN CAPITAL LETTER H WITH CIRCUMFLEX
 0x0125 "\\^{h}"                   "" "mathalpha" "\\hat{h}" # LATIN SMALL LETTER H WITH CIRCUMFLEX
 #0x0126 ""                         "" "" "" "" # LATIN CAPITAL LETTER H WITH STROKE
@@ -183,8 +188,8 @@
 0x012f "\\k{i}"                   "" "mathalpha" "\\ogonek{i}" "accents,tipasymb,ogonek" # LATIN SMALL LETTER I WITH OGONEK
 0x0130 "\\.{I}"                   "" "mathalpha" "\\dot{I}" # LATIN CAPITAL LETTER I WITH DOT ABOVE
 0x0131 "\\i"                      "" "mathalpha" "\\imath" # LATIN SMALL LETTER DOTLESS I
-0x0132 "IJ"                       "" "mathalpha,notermination" "IJ" # LATIN CAPITAL LIGATURE IJ
-0x0133 "ij"                       "" "mathalpha,notermination" "ij" # LATIN SMALL LIGATURE IJ
+0x0132 "IJ"                       "" "mathalpha,notermination=both" "IJ" "" # LATIN CAPITAL LIGATURE IJ
+0x0133 "ij"                       "" "mathalpha,notermination=both" "ij" "" # LATIN SMALL LIGATURE IJ
 0x0134 "\\^{J}"                   "" "mathalpha" "\\hat{J}" # LATIN CAPITAL LETTER J WITH CIRCUMFLEX
 0x0135 "\\^{\\j}"                 "" "mathalpha" "\\hat{\\jmath}" # LATIN SMALL LETTER J WITH CIRCUMFLEX
 0x0136 "\\c{K}"                   "" "mathalpha" "\\cedilla{K}" "accents,cedilla" # LATIN CAPITAL LETTER K WITH CEDILLA
@@ -198,8 +203,8 @@
 0x013e "\\v{l}"                   "" "mathalpha" "l\\mkern-5mu\\mathchar19" # LATIN SMALL LETTER L WITH CARON
 #0x013f ""                         "" "" "" "" # LATIN CAPITAL LETTER L WITH MIDDLE DOT
 #0x0140 ""                         "" "" "" "" # LATIN SMALL LETTER L WITH MIDDLE DOT
-0x0141 "\\L"                      "" "mathalpha" "\\mkern2mu\\mathchar'40\\mkern-7mu L" # LATIN CAPITAL LETTER L WITH STROKE
-0x0142 "\\l"                      "" "mathalpha" "\\mathchar'40\\mkern-5mu l" # LATIN SMALL LETTER L WITH STROKE
+0x0141 "\\L"                      "" "mathalpha,notermination=math" "\\mkern2mu\\mathchar'40\\mkern-7mu L" # LATIN CAPITAL LETTER L WITH STROKE
+0x0142 "\\l"                      "" "mathalpha,notermination=math" "\\mathchar'40\\mkern-5mu l" # LATIN SMALL LETTER L WITH STROKE
 0x0143 "\\'{N}"                   "" "mathalpha" "\\acute{N}" # LATIN CAPITAL LETTER N WITH ACUTE
 0x0144 "\\'{n}"                   "" "mathalpha" "\\acute{n}" # LATIN SMALL LETTER N WITH ACUTE
 0x0145 "\\c{N}"                   "" "mathalpha" "\\cedilla{N}" "accents,cedilla" # LATIN CAPITAL LETTER N WITH CEDILLA
@@ -331,7 +336,7 @@
 0x01c0 "\\textpipe"               "tipa" "force,tipashortcut=|" # LATIN LETTER DENTAL CLICK
 0x01c1 "\\textdoublepipe"         "tipa" "force,tipashortcut=||" # LATIN LETTER LATERAL CLICK
 0x01c2 "\\textdoublebarpipe"      "tipa" "force" # LATIN LETTER ALVEOLAR CLICK
-0x01c3 "!"                        "" "notermination" # LATIN LETTER RETROFLEX CLICK
+0x01c3 "!"                        "" "notermination=text" "" "" # LATIN LETTER RETROFLEX CLICK
 #0x01c4 ""                         "" "" # LATIN CAPITAL LETTER DZ WITH CARON
 #0x01c5 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
 #0x01c6 ""                         "" "" # LATIN SMALL LETTER DZ WITH CARON
@@ -611,8 +616,8 @@
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
 0x02d4 "\\textraising{ }"         "tipa" "force" # MODIFIER LETTER UP TACK
 0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
-0x02d6 ""                         "" "" "+" # MODIFIER LETTER PLUS SIGN
-0x02d7 ""                         "" "" "-" # MODIFIER LETTER MINUS SIGN
+0x02d6 ""                         "" "notermination=math" "+" # MODIFIER LETTER PLUS SIGN
+0x02d7 ""                         "" "notermination=math" "-" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\u{ }"                   "" "" # BREVE
 0x02d9 "\\.{ }"                   "" "" # DOT ABOVE
 0x02da "\\r{ }"                   "" "" # RING ABOVE
@@ -652,15 +657,15 @@
 #
 # Combining diacritical marks
 #
-0x0300 "\\`"                      "" "combining,force" # COMBINING GRAVE ACCENT
-0x0301 "\\'"                      "" "combining,force" # COMBINING ACUTE ACCENT
-0x0302 "\\^"                      "" "combining,force" # COMBINING CIRCUMFLEX ACCENT
-0x0303 "\\~"                      "" "combining,force" # COMBINING TILDE
-0x0304 "\\="                      "" "combining,force" # COMBINING MACRON
+0x0300 "\\`"                      "" "combining,force,notermination=text" "" "" # COMBINING GRAVE ACCENT
+0x0301 "\\'"                      "" "combining,force,notermination=text" "" "" # COMBINING ACUTE ACCENT
+0x0302 "\\^"                      "" "combining,force,notermination=text" "" "" # COMBINING CIRCUMFLEX ACCENT
+0x0303 "\\~"                      "" "combining,force,notermination=text" "" "" # COMBINING TILDE
+0x0304 "\\="                      "" "combining,force,notermination=text" "" "" # COMBINING MACRON
 #0x0305 ""                         "" "combining,force" # COMBINING OVERLINE
 0x0306 "\\u"                      "" "combining,force" # COMBINING BREVE
-0x0307 "\\."                      "" "combining,force" # COMBINING DOT ABOVE
-0x0308 "\\\""                     "" "combining,force" # COMBINING DIAERESIS
+0x0307 "\\."                      "" "combining,force,notermination=text" "" "" # COMBINING DOT ABOVE
+0x0308 "\\\""                     "" "combining,force,notermination=text" "" "" # COMBINING DIAERESIS
 #0x0309 ""                         "" "combining,force" # COMBINING HOOK ABOVE
 0x030a "\\r"                      "" "combining,force" # COMBINING RING ABOVE
 0x030b "\\H"                      "" "combining,force" # COMBINING DOUBLE ACUTE ACCENT
@@ -718,7 +723,7 @@
 #0x033f ""                         "" "combining,force" # COMBINING DOUBLE OVERLINE
 #0x0340 ""                         "" "combining,force" # COMBINING GRAVE TONE MARK
 #0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
-0x0342 "\\~" 			   "textgreek" "combining,force" # COMBINING GREEK PERISPOMENI 
+0x0342 "\\~" 			   "textgreek" "combining,force,notermination=text" "" "" # COMBINING GREEK PERISPOMENI 
 #0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS
 #0x0344 ""                         "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
 #0x0345 ""                         "" "combining,force" # COMBINING GREEK YPOGEGRAMMENI
@@ -845,16 +850,16 @@
 #0x03d5 ""                         "" "" "" "" # GREEK PHI SYMBOL
 #0x03d6 ""                         "" "" "" "" # GREEK PI SYMBOL
 #0x03d7 ""                         "" "" "" "" # GREEK KAI SYMBOL
-0x03d8 "\\textgreek{\\char21}"     "textgreek" "" # GREEK LETTER ARCHAIC KOPPA
-0x03d9 "\\textgreek{\\char19}"     "textgreek" "" # GREEK SMALL LETTER ARCHAIC KOPPA
+0x03d8 "\\textgreek{\\char21}"    "textgreek" "" "" "" # GREEK LETTER ARCHAIC KOPPA
+0x03d9 "\\textgreek{\\char19}"    "textgreek" "" "" "" # GREEK SMALL LETTER ARCHAIC KOPPA
 #0x03da ""                         "" "" "" "" # GREEK LETTER STIGMA
-0x03db "\\textgreek{\\char6}"      "textgreek" "" # GREEK SMALL LETTER STIGMA
-0x03dc "\\textgreek{\\char195}"    "textgreek" "" # GREEK LETTER DIGAMMA
+0x03db "\\textgreek{\\char6}"     "textgreek" "" "" "" # GREEK SMALL LETTER STIGMA
+0x03dc "\\textgreek{\\char195}"   "textgreek" "" "" "" # GREEK LETTER DIGAMMA
 0x03dd "\\textgreek{\\char147}"   "textgreek" "" "\\digamma" "amssymb" # GREEK SMALL LETTER DIGAMMA
 #0x03de ""                         "" "" "" "" # GREEK LETTER KOPPA
-0x03df "\\textgreek{\\char18}"     "textgreek" "" # GREEK SMALL LETTER KOPPA
-0x03e0 "\\textgreek{\\char23}"     "textgreek" "" # GREEK LETTER SAMPI
-0x03e1 "\\textgreek{\\char27}"     "textgreek" "" # GREEK SMALL LETTER SAMPI
+0x03df "\\textgreek{\\char18}"    "textgreek" "" "" "" # GREEK SMALL LETTER KOPPA
+0x03e0 "\\textgreek{\\char23}"    "textgreek" "" "" "" # GREEK LETTER SAMPI
+0x03e1 "\\textgreek{\\char27}"    "textgreek" "" "" "" # GREEK SMALL LETTER SAMPI
 0x03f6 ""                         "" "" "\\backepsilon" "amssymb" # ϶ GREEK REVERSED LUNATE EPSILON SYMBOL
 #
 # Cyrillic
@@ -1580,9 +1585,9 @@
 0x2001 "\\quad"                   "" "" "\\quad" "" # EM QUAD
 0x2002 "\\enskip"                 "" "" "\\enskip" "" # EN SPACE
 0x2003 "\\quad"                   "" "" "\\quad" "" # EM SPACE
-0x2004 "\\;"                      "" "notermination" "\\;" "" # THREE-PER-EM SPACE
-0x2005 "\\:"                      "" "notermination" "\\:" "" # FOUR-PER-EM SPACE
-0x2006 "\\,"                      "" "notermination" "\\," "" # SIX-PER-EM SPACE
+0x2004 "\\;"                      "" "notermination=both" "\\;" "" # THREE-PER-EM SPACE
+0x2005 "\\:"                      "" "notermination=both" "\\:" "" # FOUR-PER-EM SPACE
+0x2006 "\\,"                      "" "notermination=both" "\\," "" # SIX-PER-EM SPACE
 0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
 0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
 0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
@@ -1592,14 +1597,14 @@
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
 #0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
-0x2010 "-"                        "" "notermination" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
-0x2011 "\\nobreakdash-"           "amsmath" "notermination" "" "" # NON-BREAKING HYPHEN
-0x2012 "-"                        "" "notermination" # FIGURE DASH
+0x2010 "-"                        "" "notermination=text" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
+0x2011 "\\nobreakdash-"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN
+0x2012 "-"                        "" "notermination=text" "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
-0x2016 "\\textbardbl"             "textcomp" "" "\\|" "" # DOUBLE VERTICAL LINE
+0x2016 "\\textbardbl"             "textcomp,notermination=math" "" "\\|" "" # DOUBLE VERTICAL LINE
 0x2017 "\\subdoublebar{ }"        "tipa" "" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
@@ -1613,10 +1618,10 @@
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET # ≈ 0x25b8
-0x2024 "."                        "" "notermination" # ONE DOT LEADER # ≈ FULL STOP
-0x2025 ".\\,."                    "" "notermination" # TWO DOT LEADER
+0x2024 "."                        "" "notermination=text" "" "" # ONE DOT LEADER # ≈ FULL STOP
+0x2025 ".\\,."                    "" "notermination=text" "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
-0x2027 "\\-"                      "" "notermination" "" "" # HYPHENATION POINT
+0x2027 "\\-"                      "" "notermination=text" "" "" # HYPHENATION POINT
 #0x2028 ""                         "" "" "" "" # LINE SEPARATOR
 #0x2029 ""                         "" "" "" "" # PARAGRAPH SEPARATOR
 #0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
@@ -1624,7 +1629,7 @@
 #0x202c ""                         "" "" "" "" # POP DIRECTIONAL FORMATTING
 #0x202d ""                         "" "" "" "" # LEFT-TO-RIGHT OVERRIDE
 #0x202e ""                         "" "" "" "" # RIGHT-TO-LEFT OVERRIDE
-0x202f "\\,"                      "" "notermination" "\\," "" # NARROW NO-BREAK SPACE
+0x202f "\\,"                      "" "notermination=both" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
 0x2032 "\\textasciiacute"         "textcomp" "" "\\prime" "" # PRIME
@@ -1633,24 +1638,24 @@
 0x2035 "\\textasciigrave"         "textcomp" "" "\\backprime" "amssymb" # REVERSED PRIME
 0x2036 "\\textgravedbl"           "textcomp" "" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
-0x2038 "\\^{}"                    "" "notermination" # CARET
+0x2038 "\\^{}"                    "" "" "" "" # CARET
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
-0x203c "!!"                       "" "notermination" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
+0x203c "!!"                       "" "notermination=text" "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
 0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" ""
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL
-0x2047 "??"                       "" "notermination" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
-0x2048 "?!"                       "" "notermination" # QUESTION EXCLAMATION MARK
-0x2049 "!?"                       "" "notermination" # EXCLAMATION QUESTION MARK
+0x2047 "??"                       "" "notermination=text" "" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
+0x2048 "?!"                       "" "notermination=text" "" "" # QUESTION EXCLAMATION MARK
+0x2049 "!?"                       "" "notermination=text" "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
 0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
-0x205f ""                         "" "" "\\:" "" # MEDIUM MATHEMATICAL SPACE
+0x205f ""                         "" "notermination=math" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
 0x2070 "\\textsuperscript{0}"     "" "" "{{}^0}" "" # SUPERSCRIPT ZERO
 0x2071 "\\textsuperscript{i}"     "" "" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
@@ -1716,13 +1721,13 @@
 0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 # use the following macro for the character CADA UNA
 0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" ""
-0x2109 "°{}F"                     "" "notermination" # DEGREE FARENHEIT
+0x2109 "°{}F"                     "" "notermination=text" "" "" # DEGREE FAHRENHEIT
 # mathrsfs has no small letters
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
 0x210b ""                         "" "" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
 0x210c ""                         "" "" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
 0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STUCK CAPITAL H
-0x210e ""                         "" "" "h" # PLANCK CONSTANT
+0x210e ""                         "" "notermination=math" "h" # PLANCK CONSTANT
 0x210f ""                         "" "" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
 0x2110 ""                         "" "" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
 0x2111 ""                         "" "" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
@@ -1748,7 +1753,7 @@
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
-0x212a "K"                        "" "notermination" # KELVIN SIGN
+0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
 0x212b "\\AA"                     "" "" # ANGSTROM SIGN
 0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
@@ -1843,15 +1848,15 @@
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
 0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
-0x2196 "Home"                     "" "notermination" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
-0x2198 "End"                      "" "notermination" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
+0x2196 "Home"                     "" "notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
+0x2198 "End"                      "" "notermination=text" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
 0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
-0x21de "Option-Up Arrow"          "" "notermination" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
-0x21df "Option-Down Arrow"        "" "notermination" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
-0x21e4 "Shift-Tab"                "" "notermination" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
-0x21e5 "Tab"                      "" "notermination" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
-0x21ea "Caps Lock"                "" "notermination" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
+0x21de "Option-Up Arrow"          "" "notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
+0x21df "Option-Down Arrow"        "" "notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
+0x21e4 "Shift-Tab"                "" "notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
+0x21e5 "Tab"                      "" "notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
+0x21ea "Caps Lock"                "" "notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
 #
 # mathematical operators
 #
@@ -1873,7 +1878,7 @@
 0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
 0x2210 ""                         "" "" "\\coprod" "" # N-ARY COPRODUCT
 0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
-0x2212 "\\textminus"              "textcomp" "" "-" "" # MINUS SIGN
+0x2212 "\\textminus"              "textcomp" "notermination=math" "-" "" # MINUS SIGN
 0x2213 ""                         "" "" "\\mp" "" # MINUS-OR-PLUS SIGN
 0x2214 ""                         "" "" "\\dotplus" "amssymb" # DOT PLUS
 0x2215 ""                         "" "" "\\slash" # DIVISION SLASH
@@ -1967,10 +1972,10 @@
 0x231a "\\Clocklogo"              "marvosym" "" # WATCH
 #0x2320 ""                         "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
-0x2326 "Delete"                   "" "notermination" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
+0x2326 "Delete"                   "" "notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
 0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
-0x232b "Backspace"                "" "notermination" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
-0x238b "Escape"                   "" "notermination" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
+0x232b "Backspace"                "" "notermination=text" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
+0x238b "Escape"                   "" "notermination=text" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
 #
 # control pictures
 #
@@ -2267,11 +2272,11 @@
 #
 # ligatures
 #
-0xfb00 "ff"                       "" "force,notermination" # LATIN SMALL LIGATURE FF
-0xfb01 "fi"                       "" "force,notermination" # LATIN SMALL LIGATURE FI
-0xfb02 "fl"                       "" "force,notermination" # LATIN SMALL LIGATURE FL
-0xfb03 "ffi"                      "" "force,notermination" # LATIN SMALL LIGATURE FFI
-0xfb04 "ffl"                      "" "force,notermination" # LATIN SMALL LIGATURE FFL
+0xfb00 "ff"                       "" "force,notermination=text" "" "" # LATIN SMALL LIGATURE FF
+0xfb01 "fi"                       "" "force,notermination=text" "" "" # LATIN SMALL LIGATURE FI
+0xfb02 "fl"                       "" "force,notermination=text" "" "" # LATIN SMALL LIGATURE FL
+0xfb03 "ffi"                      "" "force,notermination=text" "" "" # LATIN SMALL LIGATURE FFI
+0xfb04 "ffl"                      "" "force,notermination=text" "" "" # LATIN SMALL LIGATURE FFL
 #
 # mathematical alphanumeric symbols
 #
@@ -2327,57 +2332,57 @@
 0x1d431 ""                         "" "" "\\mathbf{x}" "" # 𝐱 MATHEMATICAL BOLD SMALL X
 0x1d432 ""                         "" "" "\\mathbf{y}" "" # 𝐲 MATHEMATICAL BOLD SMALL Y
 0x1d433 ""                         "" "" "\\mathbf{z}" "" # 𝐳 MATHEMATICAL BOLD SMALL Z
-0x1d434 ""                         "" "" "A" "" # 𝐴 MATHEMATICAL ITALIC CAPITAL A
-0x1d435 ""                         "" "" "B" "" # 𝐵 MATHEMATICAL ITALIC CAPITAL B
-0x1d436 ""                         "" "" "C" "" # 𝐶 MATHEMATICAL ITALIC CAPITAL C
-0x1d437 ""                         "" "" "D" "" # 𝐷 MATHEMATICAL ITALIC CAPITAL D
-0x1d438 ""                         "" "" "E" "" # 𝐸 MATHEMATICAL ITALIC CAPITAL E
-0x1d439 ""                         "" "" "F" "" # 𝐹 MATHEMATICAL ITALIC CAPITAL F
-0x1d43a ""                         "" "" "G" "" # 𝐺 MATHEMATICAL ITALIC CAPITAL G
-0x1d43b ""                         "" "" "H" "" # 𝐻 MATHEMATICAL ITALIC CAPITAL H
-0x1d43c ""                         "" "" "I" "" # 𝐼 MATHEMATICAL ITALIC CAPITAL I
-0x1d43d ""                         "" "" "J" "" # 𝐽 MATHEMATICAL ITALIC CAPITAL J
-0x1d43e ""                         "" "" "K" "" # 𝐾 MATHEMATICAL ITALIC CAPITAL K
-0x1d43f ""                         "" "" "L" "" # 𝐿 MATHEMATICAL ITALIC CAPITAL L
-0x1d440 ""                         "" "" "M" "" # 𝑀 MATHEMATICAL ITALIC CAPITAL M
-0x1d441 ""                         "" "" "N" "" # 𝑁 MATHEMATICAL ITALIC CAPITAL N
-0x1d442 ""                         "" "" "O" "" # 𝑂 MATHEMATICAL ITALIC CAPITAL O
-0x1d443 ""                         "" "" "P" "" # 𝑃 MATHEMATICAL ITALIC CAPITAL P
-0x1d444 ""                         "" "" "Q" "" # 𝑄 MATHEMATICAL ITALIC CAPITAL Q
-0x1d445 ""                         "" "" "R" "" # 𝑅 MATHEMATICAL ITALIC CAPITAL R
-0x1d446 ""                         "" "" "S" "" # 𝑆 MATHEMATICAL ITALIC CAPITAL S
-0x1d447 ""                         "" "" "T" "" # 𝑇 MATHEMATICAL ITALIC CAPITAL T
-0x1d448 ""                         "" "" "U" "" # 𝑈 MATHEMATICAL ITALIC CAPITAL U
-0x1d449 ""                         "" "" "V" "" # 𝑉 MATHEMATICAL ITALIC CAPITAL V
-0x1d44a ""                         "" "" "W" "" # 𝑊 MATHEMATICAL ITALIC CAPITAL W
-0x1d44b ""                         "" "" "X" "" # 𝑋 MATHEMATICAL ITALIC CAPITAL X
-0x1d44c ""                         "" "" "Y" "" # 𝑌 MATHEMATICAL ITALIC CAPITAL Y
-0x1d44d ""                         "" "" "Z" "" # 𝑍 MATHEMATICAL ITALIC CAPITAL Z
-0x1d44e ""                         "" "" "a" "" # 𝑎 MATHEMATICAL ITALIC SMALL A
-0x1d44f ""                         "" "" "b" "" # 𝑏 MATHEMATICAL ITALIC SMALL B
-0x1d450 ""                         "" "" "c" "" # 𝑐 MATHEMATICAL ITALIC SMALL C
-0x1d451 ""                         "" "" "d" "" # 𝑑 MATHEMATICAL ITALIC SMALL D
-0x1d452 ""                         "" "" "e" "" # 𝑒 MATHEMATICAL ITALIC SMALL E
-0x1d453 ""                         "" "" "f" "" # 𝑓 MATHEMATICAL ITALIC SMALL F
-0x1d454 ""                         "" "" "g" "" # 𝑔 MATHEMATICAL ITALIC SMALL G
-0x1d456 ""                         "" "" "i" "" # 𝑖 MATHEMATICAL ITALIC SMALL I
-0x1d457 ""                         "" "" "j" "" # 𝑗 MATHEMATICAL ITALIC SMALL J
-0x1d458 ""                         "" "" "k" "" # 𝑘 MATHEMATICAL ITALIC SMALL K
-0x1d459 ""                         "" "" "l" "" # 𝑙 MATHEMATICAL ITALIC SMALL L
-0x1d45a ""                         "" "" "m" "" # 𝑚 MATHEMATICAL ITALIC SMALL M
-0x1d45b ""                         "" "" "n" "" # 𝑛 MATHEMATICAL ITALIC SMALL N
-0x1d45c ""                         "" "" "o" "" # 𝑜 MATHEMATICAL ITALIC SMALL O
-0x1d45d ""                         "" "" "p" "" # 𝑝 MATHEMATICAL ITALIC SMALL P
-0x1d45e ""                         "" "" "q" "" # 𝑞 MATHEMATICAL ITALIC SMALL Q
-0x1d45f ""                         "" "" "r" "" # 𝑟 MATHEMATICAL ITALIC SMALL R
-0x1d460 ""                         "" "" "s" "" # 𝑠 MATHEMATICAL ITALIC SMALL S
-0x1d461 ""                         "" "" "t" "" # 𝑡 MATHEMATICAL ITALIC SMALL T
-0x1d462 ""                         "" "" "u" "" # 𝑢 MATHEMATICAL ITALIC SMALL U
-0x1d463 ""                         "" "" "v" "" # 𝑣 MATHEMATICAL ITALIC SMALL V
-0x1d464 ""                         "" "" "w" "" # 𝑤 MATHEMATICAL ITALIC SMALL W
-0x1d465 ""                         "" "" "x" "" # 𝑥 MATHEMATICAL ITALIC SMALL X
-0x1d466 ""                         "" "" "y" "" # 𝑦 MATHEMATICAL ITALIC SMALL Y
-0x1d467 ""                         "" "" "z" "" # 𝑧 MATHEMATICAL ITALIC SMALL Z
+0x1d434 ""                         "" "notermination=math" "A" "" # 𝐴 MATHEMATICAL ITALIC CAPITAL A
+0x1d435 ""                         "" "notermination=math" "B" "" # 𝐵 MATHEMATICAL ITALIC CAPITAL B
+0x1d436 ""                         "" "notermination=math" "C" "" # 𝐶 MATHEMATICAL ITALIC CAPITAL C
+0x1d437 ""                         "" "notermination=math" "D" "" # 𝐷 MATHEMATICAL ITALIC CAPITAL D
+0x1d438 ""                         "" "notermination=math" "E" "" # 𝐸 MATHEMATICAL ITALIC CAPITAL E
+0x1d439 ""                         "" "notermination=math" "F" "" # 𝐹 MATHEMATICAL ITALIC CAPITAL F
+0x1d43a ""                         "" "notermination=math" "G" "" # 𝐺 MATHEMATICAL ITALIC CAPITAL G
+0x1d43b ""                         "" "notermination=math" "H" "" # 𝐻 MATHEMATICAL ITALIC CAPITAL H
+0x1d43c ""                         "" "notermination=math" "I" "" # 𝐼 MATHEMATICAL ITALIC CAPITAL I
+0x1d43d ""                         "" "notermination=math" "J" "" # 𝐽 MATHEMATICAL ITALIC CAPITAL J
+0x1d43e ""                         "" "notermination=math" "K" "" # 𝐾 MATHEMATICAL ITALIC CAPITAL K
+0x1d43f ""                         "" "notermination=math" "L" "" # 𝐿 MATHEMATICAL ITALIC CAPITAL L
+0x1d440 ""                         "" "notermination=math" "M" "" # 𝑀 MATHEMATICAL ITALIC CAPITAL M
+0x1d441 ""                         "" "notermination=math" "N" "" # 𝑁 MATHEMATICAL ITALIC CAPITAL N
+0x1d442 ""                         "" "notermination=math" "O" "" # 𝑂 MATHEMATICAL ITALIC CAPITAL O
+0x1d443 ""                         "" "notermination=math" "P" "" # 𝑃 MATHEMATICAL ITALIC CAPITAL P
+0x1d444 ""                         "" "notermination=math" "Q" "" # 𝑄 MATHEMATICAL ITALIC CAPITAL Q
+0x1d445 ""                         "" "notermination=math" "R" "" # 𝑅 MATHEMATICAL ITALIC CAPITAL R
+0x1d446 ""                         "" "notermination=math" "S" "" # 𝑆 MATHEMATICAL ITALIC CAPITAL S
+0x1d447 ""                         "" "notermination=math" "T" "" # 𝑇 MATHEMATICAL ITALIC CAPITAL T
+0x1d448 ""                         "" "notermination=math" "U" "" # 𝑈 MATHEMATICAL ITALIC CAPITAL U
+0x1d449 ""                         "" "notermination=math" "V" "" # 𝑉 MATHEMATICAL ITALIC CAPITAL V
+0x1d44a ""                         "" "notermination=math" "W" "" # 𝑊 MATHEMATICAL ITALIC CAPITAL W
+0x1d44b ""                         "" "notermination=math" "X" "" # 𝑋 MATHEMATICAL ITALIC CAPITAL X
+0x1d44c ""                         "" "notermination=math" "Y" "" # 𝑌 MATHEMATICAL ITALIC CAPITAL Y
+0x1d44d ""                         "" "notermination=math" "Z" "" # 𝑍 MATHEMATICAL ITALIC CAPITAL Z
+0x1d44e ""                         "" "notermination=math" "a" "" # 𝑎 MATHEMATICAL ITALIC SMALL A
+0x1d44f ""                         "" "notermination=math" "b" "" # 𝑏 MATHEMATICAL ITALIC SMALL B
+0x1d450 ""                         "" "notermination=math" "c" "" # 𝑐 MATHEMATICAL ITALIC SMALL C
+0x1d451 ""                         "" "notermination=math" "d" "" # 𝑑 MATHEMATICAL ITALIC SMALL D
+0x1d452 ""                         "" "notermination=math" "e" "" # 𝑒 MATHEMATICAL ITALIC SMALL E
+0x1d453 ""                         "" "notermination=math" "f" "" # 𝑓 MATHEMATICAL ITALIC SMALL F
+0x1d454 ""                         "" "notermination=math" "g" "" # 𝑔 MATHEMATICAL ITALIC SMALL G
+0x1d456 ""                         "" "notermination=math" "i" "" # 𝑖 MATHEMATICAL ITALIC SMALL I
+0x1d457 ""                         "" "notermination=math" "j" "" # 𝑗 MATHEMATICAL ITALIC SMALL J
+0x1d458 ""                         "" "notermination=math" "k" "" # 𝑘 MATHEMATICAL ITALIC SMALL K
+0x1d459 ""                         "" "notermination=math" "l" "" # 𝑙 MATHEMATICAL ITALIC SMALL L
+0x1d45a ""                         "" "notermination=math" "m" "" # 𝑚 MATHEMATICAL ITALIC SMALL M
+0x1d45b ""                         "" "notermination=math" "n" "" # 𝑛 MATHEMATICAL ITALIC SMALL N
+0x1d45c ""                         "" "notermination=math" "o" "" # 𝑜 MATHEMATICAL ITALIC SMALL O
+0x1d45d ""                         "" "notermination=math" "p" "" # 𝑝 MATHEMATICAL ITALIC SMALL P
+0x1d45e ""                         "" "notermination=math" "q" "" # 𝑞 MATHEMATICAL ITALIC SMALL Q
+0x1d45f ""                         "" "notermination=math" "r" "" # 𝑟 MATHEMATICAL ITALIC SMALL R
+0x1d460 ""                         "" "notermination=math" "s" "" # 𝑠 MATHEMATICAL ITALIC SMALL S
+0x1d461 ""                         "" "notermination=math" "t" "" # 𝑡 MATHEMATICAL ITALIC SMALL T
+0x1d462 ""                         "" "notermination=math" "u" "" # 𝑢 MATHEMATICAL ITALIC SMALL U
+0x1d463 ""                         "" "notermination=math" "v" "" # 𝑣 MATHEMATICAL ITALIC SMALL V
+0x1d464 ""                         "" "notermination=math" "w" "" # 𝑤 MATHEMATICAL ITALIC SMALL W
+0x1d465 ""                         "" "notermination=math" "x" "" # 𝑥 MATHEMATICAL ITALIC SMALL X
+0x1d466 ""                         "" "notermination=math" "y" "" # 𝑦 MATHEMATICAL ITALIC SMALL Y
+0x1d467 ""                         "" "notermination=math" "z" "" # 𝑧 MATHEMATICAL ITALIC SMALL Z
 0x1d49c ""                         "" "" "\\mathcal{A}" "" # 𝒜 MATHEMATICAL SCRIPT CAPITAL A
 0x1d49e ""                         "" "" "\\mathcal{C}" "" # 𝒞 MATHEMATICAL SCRIPT CAPITAL C
 0x1d49f ""                         "" "" "\\mathcal{D}" "" # 𝒟 MATHEMATICAL SCRIPT CAPITAL D

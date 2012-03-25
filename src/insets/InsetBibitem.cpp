@@ -294,7 +294,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 		docstring latex_lbl;
 		for (size_t n = 0; n < lbl.size(); ++n) {
 			try {
-				latex_lbl += runparams.encoding->latexChar(lbl[n]);
+				latex_lbl += runparams.encoding->latexChar(lbl[n]).first;
 			} catch (EncodingException & /* e */) {
 				if (runparams.dryrun) {
 					latex_lbl += "<" + _("LyX Warning: ")

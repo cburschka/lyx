@@ -150,7 +150,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	bool need_unicode = false;
 	if (enc) {
 		for (size_t n = 0; n < hs.size(); ++n) {
-			if (enc->latexChar(hs[n], true) != docstring(1, hs[n]))
+			if (!enc->encodable(hs[n]))
 				need_unicode = true;
 		}
 	}
