@@ -222,6 +222,50 @@ Style Subsection*
   OptionalArgs     0
 End
 
+# Subsubsection style definition
+Style Subsubsection
+  Category         Section
+  Margin           First_Dynamic
+  LatexType        Command
+  LatexName        lyxframeend{}\subsubsection
+  NeedProtect      1
+  NextNoIndent     1
+  LabelSep         xx
+  ParSkip          0.4
+  TopSep           2
+  BottomSep        0.25
+  ParSep           0.5
+  Align            Left
+  LabelType        Counter
+  LabelCounter     subsubsection
+  LabelString      "Subsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
+	RefPrefix        sub
+  OptionalArgs     1
+
+  # standard font definition
+  Font 
+    Family         Roman
+    Series         Bold
+    Size           large
+  EndFont
+
+  LabelFont 
+    Color          latex
+  EndFont
+  LabelStringAppendix "\arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
+  TocLevel 2
+End
+
+# Subsubsection* style definition
+Style Subsubsection*
+  CopyStyle        Subsubsection
+  Category         Unnumbered
+  Margin           Static
+  LatexName        lyxframeend{}\subsubsection*
+  LabelType        No_Label
+  OptionalArgs     0
+End
+
 # Frame control definition
 Style BeginFrame
   Category         Frames
