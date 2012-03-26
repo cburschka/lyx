@@ -30,6 +30,8 @@ What's new
 * TEX2LYX IMPROVEMENTS
 
 - Support for the LaTeX-command \sindex (for split indexes).
+- Better support for XeTeX and LuaTeX documents: automatically set default
+  encoding to utf-8 and select support for non-TeX fonts.
 
 
 * USER INTERFACE
