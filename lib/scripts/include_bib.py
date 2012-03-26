@@ -41,8 +41,6 @@ def InsertBib(fil, out):
     elif "\\begin{btSect}" in line:
       raise BibError("Cannot export sectioned bibliographies")
   
-  filenew = fil[:-4] + "-bibinc.tex" #The new .tex file
-
   if len(biblist) > 1:
     raise BibError("Cannot export multiple bibliographies.")
   if not biblist:
@@ -58,9 +56,35 @@ def InsertBib(fil, out):
   outfile = open(out, 'w')
   outfile.write("".join(newlist))
   outfile.close()
-  return filenew
+  return out
     
 
+def usage():
+  print r'''
+Usage: python include_bib.py file.tex [outfile.tex]
+  Includes the contents of file.bbl, which must exist in the
+  same directory as file.tex, in place of the \bibliography
+  command, and creates the new file outfile.tex. If no name
+  for that file is given, we create: file-bbl.tex.
+'''  
+
 if __name__ == "__main__":
-  newfile = InsertBib(sys.argv[1], sys.argv[2])
-  print "Wrote " + newfile
+  args = len(sys.argv)
+  if args <= 1 or args > 3:
+    usage()
+    sys.exit(0)
+
+  # we might should make sure this is a tex file....
+  infile = sys.argv[1]
+  if infile[-4:] != ".tex":
+    print "Error: " + infile + " is not a TeX file"
+    usage()
+    sys.exit(1)
+
+  if args == 3:
+    outfile = sys.argv[2]
+  else:
+    outfile = infile[:-4] + "-bbl.tex"
+
+  newfile = InsertBib(infile, outfile)
+  print "Wrote " + outfile
