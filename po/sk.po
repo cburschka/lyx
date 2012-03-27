@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-24 08:15+0100\n"
+"POT-Creation-Date: 2012-03-27 15:37+0200\n"
 "PO-Revision-Date: 2012-03-09 14:20+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
@@ -6533,9 +6533,19 @@ msgstr "Podsekcia \\arabic{section}.\\arabic{subsection}"
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
-#: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:269
-#: lib/layouts/beamer.layout:307 lib/layouts/beamer.layout:346
-#: lib/layouts/beamer.layout:375
+#: lib/layouts/beamer.layout:241
+msgid ""
+"Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr ""
+"Podpodsekcia \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+
+#: lib/layouts/beamer.layout:255
+msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+
+#: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
+#: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
+#: lib/layouts/beamer.layout:419
 msgid "Frames"
 msgstr "Rámy"
 
