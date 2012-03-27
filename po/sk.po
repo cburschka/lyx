@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-13 17:52-0400\n"
+"POT-Creation-Date: 2012-03-27 15:36+0200\n"
 "PO-Revision-Date: 2012-03-07 10:29+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17,7 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Language: sk_SK\n"
+"X-Source-Language: en_US\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -6640,9 +6642,20 @@ msgstr "Podsekcia \\arabic{section}.\\arabic{subsection}"
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
-#: lib/layouts/beamer.layout:227 lib/layouts/beamer.layout:269
-#: lib/layouts/beamer.layout:307 lib/layouts/beamer.layout:346
-#: lib/layouts/beamer.layout:375
+#: lib/layouts/beamer.layout:241
+msgid ""
+"Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr ""
+"Podpodsekcia \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+
+# \arabic{section}.\arabic{subsection}.\arabic{subsubsection}
+#: lib/layouts/beamer.layout:255
+msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
+msgstr "Podsekcia \\arabic{section}.\\arabic{subsection}"
+
+#: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
+#: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
+#: lib/layouts/beamer.layout:419
 msgid "Frames"
 msgstr "Rámy"
 
@@ -26314,93 +26327,72 @@ msgstr "Neznámy používateľ"
 #~ msgid "Printer &name:"
 #~ msgstr "&Názov tlačiarne:"
 
-#, fuzzy
 #~ msgid "Columns "
 #~ msgstr "Stĺpce"
 
-#, fuzzy
 #~ msgid "Overprint "
 #~ msgstr "Separát"
 
-#, fuzzy
 #~ msgid "Conjecture "
 #~ msgstr "Dohad"
 
-#, fuzzy
 #~ msgid "Font st&yle:"
 #~ msgstr "Veľkosť písma"
 
-#, fuzzy
 #~ msgid "Part "
 #~ msgstr "Časť"
 
-#, fuzzy
 #~ msgid "columns "
 #~ msgstr "Stĺpce"
 
-#, fuzzy
 #~ msgid "overprint "
 #~ msgstr "Predtlač"
 
-#, fuzzy
 #~ msgid "overlayarea"
 #~ msgstr "Prekrytie"
 
-#, fuzzy
 #~ msgid "Corollary_"
 #~ msgstr "Ľutujem."
 
-#, fuzzy
 #~ msgid "Definition. "
 #~ msgstr "Definícia"
 
-#, fuzzy
 #~ msgid "Example. "
 #~ msgstr "Príklad"
 
-#, fuzzy
 #~ msgid "Fact. "
 #~ msgstr "Fakt"
 
-#, fuzzy
 #~ msgid "Proof. "
 #~ msgstr "Dôkaz"
 
-#, fuzzy
 #~ msgid "note: "
 #~ msgstr "poznámka"
 
-#, fuzzy
 #~ msgid "&Extended Chars"
 #~ msgstr "Rozšírené vlastnosti|R"
 
 #~ msgid "default"
 #~ msgstr "štandardné"
 
-#, fuzzy
 #~ msgid "common"
 #~ msgstr "Komentár"
 
-#, fuzzy
 #~ msgid "Toggle Table of Contents"
 #~ msgstr "Obsah"
 
-#, fuzzy
 #~ msgid "Toc"
 #~ msgstr "Námet"
 
 #~ msgid "Table of Contents|T"
 #~ msgstr "Obsah|O"
 
-#, fuzzy
 #~ msgid "OK"
 #~ msgstr "&OK"
 
-#, fuzzy
 #~ msgid "Chinese"
 #~ msgstr "Kópie"
 
-#, fuzzy
 #~ msgid "Upper"
 #~ msgstr "Aktualizovať|A"
 
@@ -26410,47 +26402,36 @@ msgstr "Neznámy používateľ"
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "Otvorená teoréma prílohy"
 
-#, fuzzy
 #~ msgid "Error closing file"
 #~ msgstr "Chyba pri čítaní "
 
-#, fuzzy
 #~ msgid "block "
 #~ msgstr "Do bloku"
 
-#, fuzzy
 #~ msgid "Corollary.  "
 #~ msgstr "Ľutujem."
 
-#, fuzzy
 #~ msgid "&Caption"
 #~ msgstr "Názov"
 
-#, fuzzy
 #~ msgid "A caption for the List of Listings"
 #~ msgstr "Titulok pre podobrázok"
 
-#, fuzzy
 #~ msgid "&Label"
 #~ msgstr "&Označenie:"
 
-#, fuzzy
 #~ msgid "A Label for the caption"
 #~ msgstr "Tabuľka_popis"
 
-#, fuzzy
 #~ msgid "<- P&romote"
 #~ msgstr "Ch&rániť:"
 
-#, fuzzy
 #~ msgid "D&own"
 #~ msgstr "Hotovo"
 
-#, fuzzy
 #~ msgid "Upd&ate"
 #~ msgstr "&Aktualizovať"
 
-#, fuzzy
 #~ msgid "SubSection"
 #~ msgstr "Pododdiel"
 
@@ -26464,11 +26445,9 @@ msgstr "Neznámy používateľ"
 #~ msgid "Unknown toc list"
 #~ msgstr "Neznámy zoznam obsahu"
 
-#, fuzzy
 #~ msgid "Insert glossary entry"
 #~ msgstr "Vložiť položku indexu"
 
-#, fuzzy
 #~ msgid "Glo"
 #~ msgstr "&Globálne"
 
@@ -26493,31 +26472,25 @@ msgstr "Neznámy používateľ"
 #~ msgid "Math Panel|l"
 #~ msgstr "Matematický panel|M"
 
-#, fuzzy
 #~ msgid "Math Panel|P"
 #~ msgstr "Matematický panel|M"
 
-#, fuzzy
 #~ msgid "Show math panel"
 #~ msgstr "Zobraziť &cestu"
 
-#, fuzzy
 #~ msgid "LyX: Math Roots"
 #~ msgstr "LyX: Matematický panel"
 
-#, fuzzy
 #~ msgid "LyX: Math Styles"
 #~ msgstr "LyX: Nastaviť matematický štýl"
 
-#, fuzzy
 #~ msgid "LyX: Math Fonts"
 #~ msgstr "LyX: Matematický panel"
 
-#, fuzzy
+#, qt-format
 #~ msgid "The document uses a missing TeX class \"%1$s\".\n"
 #~ msgstr "Dokument používa neznámu textovú triedu \"%1$s\"."
 
-#, fuzzy
 #~ msgid "Insert math delimiters"
 #~ msgstr "Vložiť oddeľovač"
 
@@ -26539,7 +26512,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "The encoding for the menu/popups fonts."
 #~ msgstr "Kódovanie pre písmo ponuky a popup dialógy"
 
-#, fuzzy
 #~ msgid "#*"
 #~ msgstr "*"
 
@@ -26549,10 +26521,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Opening child document "
 #~ msgstr "Otváram podriadený dokument "
 
-#, fuzzy
 #~ msgid "Special Insets|S"
 #~ msgstr "Otvorený objekt prílohy"
 
-#, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vložiť|I"
