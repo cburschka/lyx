@@ -255,13 +255,13 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 						if (ref->getParam("reference") == oldname)
 							ref->setParam("reference", newname);
 					} else if (itt->lyxCode() == MATH_REF_CODE) {
-						InsetMathHull * mi = itt->asInsetMath()->asHullInset();
+						InsetMathRef * mi = itt->asInsetMath()->asRefInset();
 						// this is necessary to prevent an uninitialized
 						// buffer when the RefInset is in a MathBox.
 						// FIXME audit setBuffer calls
 						mi->setBuffer(const_cast<Buffer &>(buffer));
-						if (mi->asRefInset()->getTarget() == oldname)
-							mi->asRefInset()->changeTarget(newname);
+						if (mi->getTarget() == oldname)
+							mi->changeTarget(newname);
 					}
 				}
 			}
@@ -285,14 +285,13 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 					if (ref.getParam("reference") == oldname)
 						ref.setParam("reference", newname);
 				} else if (itt->lyxCode() == MATH_REF_CODE) {
-					InsetMathHull & mi =
-						static_cast<InsetMathHull &>(*itt);
+					InsetMathRef * mi = itt->asInsetMath()->asRefInset();
 					// this is necessary to prevent an uninitialized
 					// buffer when the RefInset is in a MathBox.
 					// FIXME audit setBuffer calls
-					mi.setBuffer(const_cast<Buffer &>(buffer));
-					if (mi.asRefInset()->getTarget() == oldname)
-						mi.asRefInset()->changeTarget(newname);
+					mi->setBuffer(const_cast<Buffer &>(buffer));
+					if (mi->getTarget() == oldname)
+						mi->changeTarget(newname);
 				}
 			}
 			break;

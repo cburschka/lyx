@@ -401,6 +401,7 @@ Preamble::Preamble() : one_language(true)
 	h_font_sans               = "default";
 	h_font_typewriter         = "default";
 	h_font_default_family     = "default";
+	h_use_non_tex_fonts       = "false";
 	h_font_sc                 = "false";
 	h_font_osf                = "false";
 	h_font_sf_scale           = "100";
@@ -581,8 +582,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 	add_package(name, options);
 	string scale;
 
-	if (is_known(name, known_xetex_packages))
+	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
+		h_use_non_tex_fonts = "true";
+		if (h_inputencoding == "auto")
+			p.setEncoding("utf8");
+	}
 
 	// roman fonts
 	if (is_known(name, known_roman_fonts)) {
@@ -903,6 +908,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_sans " << h_font_sans << "\n"
 	   << "\\font_typewriter " << h_font_typewriter << "\n"
 	   << "\\font_default_family " << h_font_default_family << "\n"
+	   << "\\use_non_tex_fonts " << h_use_non_tex_fonts << "\n"
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"

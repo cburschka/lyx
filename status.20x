@@ -24,12 +24,16 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- 
+- Add support for \subsubsection and \subsubsection* in beamer layout.
+
+- Made some minor improvements to the include_bib.py script.
 
 
 * TEX2LYX IMPROVEMENTS
 
 - Support for the LaTeX-command \sindex (for split indexes).
+- Better support for XeTeX and LuaTeX documents: automatically set default
+  encoding to utf-8 and select support for non-TeX fonts.
 
 
 * USER INTERFACE
@@ -71,8 +75,14 @@ What's new
 - Fix reconfiguration on Windows when the temporary directory used by
   python contains non-ascii characters.
 
+- Fix reconfiguration on Windows when the user directory is a UNC path
+  (bug 8098).
+
 
 * USER INTERFACE
+
+- Fixed crash when modifying or pasting an equation label and there
+  are references to that label in math (bug 8095).
 
 - Do not disable View/Update Other Formats button when "Use non-TeX fonts"
   is active (bug 8069).
