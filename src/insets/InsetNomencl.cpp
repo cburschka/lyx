@@ -279,7 +279,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 	docstring latex_symb;
 	for (size_t n = 0; n < symb.size(); ++n) {
 		try {
-			latex_symb += runparams.encoding->latexChar(symb[n]);
+			latex_symb += runparams.encoding->latexChar(symb[n]).first;
 		} catch (EncodingException & /* e */) {
 			if (runparams.dryrun) {
 				latex_symb += "<" + _("LyX Warning: ")

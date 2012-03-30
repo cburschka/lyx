@@ -194,6 +194,8 @@ public:
 	virtual char defaultColAlign(col_type) { return 'c'; }
 	///
 	void setDefaults();
+	///
+	virtual bool interpretString(Cursor & cur, docstring const & str);
 
 	///
 	virtual int colsep() const;

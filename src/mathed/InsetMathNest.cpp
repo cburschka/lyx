@@ -872,7 +872,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// if relevant. Think typing "\frac<space>".
 		if (cmd.argument()[0] == ' '
 		    && cur.inMacroMode() && cur.macroName() != "\\"
-		    && cur.macroModeClose()) {
+		    && cur.macroModeClose() && cur.pos() > 0) {
 			MathAtom const atom = cur.prevAtom();
 			if (atom->asNestInset() && atom->isActive()) {
 				cur.posBackward();

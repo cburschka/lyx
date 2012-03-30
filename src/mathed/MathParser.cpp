@@ -1828,13 +1828,15 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				error("'}' expected in \\" + t.cs());
 				return success_;
 			}
+			bool termination;
 			docstring rem;
 			do {
 				cmd = Encodings::fromLaTeXCommand(cmd,
-					Encodings::MATH_CMD | Encodings::TEXT_CMD, rem);
+					Encodings::MATH_CMD | Encodings::TEXT_CMD,
+					termination, rem);
 				for (size_t i = 0; i < cmd.size(); ++i)
 					cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
-				if (rem.size()) {
+				if (!rem.empty()) {
 					char_type c = rem[0];
 					cell->push_back(MathAtom(new InsetMathChar(c)));
 					cmd = rem.substr(1);
@@ -1923,9 +1925,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						}
 					}
 					bool is_combining;
+					bool termination;
 					char_type c = Encodings::fromLaTeXCommand(cmd,
 						Encodings::MATH_CMD | Encodings::TEXT_CMD,
-						is_combining);
+						is_combining, termination);
 					if (is_combining) {
 						if (cat == catLetter)
 							cmd += '{';
@@ -1935,9 +1938,24 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							cmd += '}';
 						c = Encodings::fromLaTeXCommand(cmd,
 							Encodings::MATH_CMD | Encodings::TEXT_CMD,
-							is_combining);
+							is_combining, termination);
 					}
 					if (c) {
+						if (termination) {
+							if (nextToken().cat() == catBegin) {
+								getToken();
+								if (nextToken().cat() == catEnd) {
+									getToken();
+									num_tokens += 2;
+								} else
+									putback();
+							} else {
+								while (nextToken().cat() == catSpace) {
+									getToken();
+									++num_tokens;
+								}
+							}
+						}
 						is_unicode_symbol = true;
 						cell->push_back(MathAtom(new InsetMathChar(c)));
 					} else {

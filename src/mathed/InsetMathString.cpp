@@ -119,7 +119,9 @@ void InsetMathString::write(WriteStream & os) const
 		char_type const c = *cit;
 		docstring command(1, c);
 		try {
-			if (c < 0x80 || Encodings::latexMathChar(c, mathmode, os.encoding(), command)) {
+			bool termination = false;
+			if (c < 0x80 ||
+			    Encodings::latexMathChar(c, mathmode, os.encoding(), command, termination)) {
 				if (os.textMode()) {
 					if (in_forced_mode) {
 						// we were inside \lyxmathsym
@@ -152,8 +154,7 @@ void InsetMathString::write(WriteStream & os) const
 			os << command;
 			// We may need a space if the command contains a macro
 			// and the last char is ASCII.
-			if (lyx::support::contains(command, '\\')
-			    && isAlphaASCII(command[command.size() - 1]))
+			if (termination)
 				os.pendingSpace(true);
 		} catch (EncodingException & e) {
 			switch (os.output()) {

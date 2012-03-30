@@ -137,7 +137,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 			docstring spart2;
 			for (size_t n = 0; n < spart.size(); ++n) {
 				try {
-					spart2 += runparams.encoding->latexChar(spart[n]);
+					spart2 += runparams.encoding->latexChar(spart[n]).first;
 				} catch (EncodingException & /* e */) {
 					LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
 				}
