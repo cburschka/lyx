@@ -57,7 +57,8 @@ namespace os = support::os;
 InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
-	buffer().invalidateBibinfoCache();
+	buffer().invalidateBibfileCache();
+	buffer().removeBiblioTempFiles();
 }
 
 
