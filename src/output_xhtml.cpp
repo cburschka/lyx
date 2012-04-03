@@ -201,7 +201,7 @@ XHTMLStream::XHTMLStream(odocstream & os)
 void XHTMLStream::writeError(std::string const & s)
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: " + s + " -->");
+	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
 }
 
 
