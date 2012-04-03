@@ -789,6 +789,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;
 	params().output_sync_macro.erase();
+	params().local_layout.clear();
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
