@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-03-27 15:37+0200\n"
+"POT-Creation-Date: 2012-04-04 09:37+0200\n"
 "PO-Revision-Date: 2012-03-09 14:20+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
@@ -147,7 +147,7 @@ msgstr "Vyberte jeden procesor"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/GuiPrefs.cpp:776
 #: src/frontends/qt4/GuiPrefs.cpp:869
 msgid "&Options:"
-msgstr "Možnos&ti:"
+msgstr "M&ožnosti:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:211
 msgid ""
@@ -797,7 +797,7 @@ msgstr "&Dostupné citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
 msgid "S&elected Citations:"
-msgstr "Označené Citácie:"
+msgstr "Vybrané Citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
@@ -825,7 +825,7 @@ msgstr "Na&dol"
 #: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:44
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
-msgstr "Reštauruj"
+msgstr "O&bnoviť"
 
 #: src/frontends/qt4/ui/CitationUi.ui:210
 msgid "App&ly"
@@ -861,7 +861,7 @@ msgstr "Text, umiestnený za citátom"
 
 #: src/frontends/qt4/ui/CitationUi.ui:329
 msgid "List all authors"
-msgstr "Zoznam všetkých autorov"
+msgstr "Vypísať všetkých autorov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:332
 msgid "Full aut&hor list"
@@ -1269,25 +1269,25 @@ msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:20
 msgid "Sear&ch"
-msgstr "Hľadať"
+msgstr "&Hľadanie"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:26 src/frontends/qt4/ui/LogUi.ui:28
 #: src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
-msgstr "Nájsť:"
+msgstr "&Nájsť:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:46
 #: src/frontends/qt4/ui/SearchUi.ui:66
 msgid "Replace &with:"
-msgstr "Nahradiť s:"
+msgstr "N&ahradiť čím:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:72
 msgid "Perform a case-sensitive search"
-msgstr "Hľadaj citlivo na veľkosť písiem"
+msgstr "Dbať aj na veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
 msgid "Case &sensitive"
-msgstr "Rozlišovať veľkosť písmen"
+msgstr "Veľkosť pí&smen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:91
 msgid "Find next occurrence [Enter]"
@@ -1296,7 +1296,7 @@ msgstr "Nájdi ďalší výskyt [Enter]"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:94
 #: src/frontends/qt4/ui/SearchUi.ui:166
 msgid "Find &Next"
-msgstr "Hľadať ďalšie"
+msgstr "Hľadať &ďalšie"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:107
 msgid "Restrict search to whole words only"
@@ -1304,7 +1304,7 @@ msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:110
 msgid "W&hole words"
-msgstr "Celé slová"
+msgstr "&Celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:126
 msgid "Replace and find next occurrence [Enter]"
@@ -1315,12 +1315,12 @@ msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:133
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
-msgstr "Nahradiť"
+msgstr "Nah&radiť"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:136
 #: src/frontends/qt4/ui/SearchUi.ui:196
 msgid "Search &backwards"
-msgstr "Hľadať naspäť"
+msgstr "Hľadať nas&päť"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:152
 msgid "Replace all occurences at once"
@@ -1330,11 +1330,11 @@ msgstr "Nahradiť každý výskyt naraz"
 #: src/frontends/qt4/ui/SearchUi.ui:189
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
-msgstr "Nahradiť všetko"
+msgstr "N&ahradiť všetko"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
 msgid "S&ettings"
-msgstr "Nastavenia"
+msgstr "&Nastavenia"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
@@ -1342,7 +1342,7 @@ msgstr "Rozsah v ktorom sa má hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:184
 msgid "Sco&pe"
-msgstr "Rozsah"
+msgstr "Rozsa&h"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
 msgid "Current &document"
@@ -1358,7 +1358,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
 msgid "&Master document"
-msgstr "Hlavný dokument"
+msgstr "Hla&vný dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
 msgid "All open documents"
@@ -1366,23 +1366,23 @@ msgstr "Všetky otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:231
 msgid "&Open documents"
-msgstr "Otvoriť dokumenty"
+msgstr "&Otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:241
 msgid "All ma&nuals"
-msgstr "Všetky príručky"
+msgstr "Všetky &príručky"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:254
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
 msgstr ""
-"Keď nezaškrtnuté, hľadanie je ohraničené na výskyty v označenom texte a v "
-"štýle odstavca"
+"Keď nezaškrtnuté, hľadanie je ohraničené len na výskyty v označenom texte a "
+"v štýle odstavca"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
 msgid "Ignore &format"
-msgstr "Ignoruj formát"
+msgstr "Ignoruj &formát"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 msgid ""
@@ -1392,11 +1392,11 @@ msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 msgid "&Preserve first case on replace"
-msgstr "Zachovať veľkosť písiem pri substitúcii"
+msgstr "&Zachovať veľkosť prvých písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:280
 msgid "&Expand macros"
-msgstr "Rozvinúť makrá"
+msgstr "Rozvinúť &makrá"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:14 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1417,7 +1417,7 @@ msgstr "Rozšírené voľby umiestňovania"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:55
 msgid "&Top of page"
-msgstr "Vrch s&trany"
+msgstr "&Vrch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
@@ -1433,15 +1433,15 @@ msgstr "Pokiaľ možno &tu"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
-msgstr "Strana plávajúcich objektov"
+msgstr "Strana &plávajúcich objektov"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:90
 msgid "&Bottom of page"
-msgstr "Spodok strany"
+msgstr "&Spodok strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
-msgstr "Preklenúť &stĺpce"
+msgstr "&Preklenúť stĺpce"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
@@ -1456,16 +1456,18 @@ msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
-"Použiť  OpenType a TrueType fonty spolu s balíkom fontspec (potrebné XeTeX "
+"Použiť OpenType a TrueType fonty spolu s balíkom fontspec (vyžaduje XeTeX "
 "alebo LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr "Použiť nie-TeX fonty (cez XeTeX/LuaTeX)"
+msgstr "Použiť fonty mimo TeXu(cez &XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
 msgid "&Default family:"
-msgstr "Štan&dardná rodina:"
+msgstr ""
+"Štan&dardná\n"
+"rodina:"
 
 #: src/frontends/qt4/ui/FontUi.ui:52
 msgid "Select the default family for the document"
@@ -1473,11 +1475,15 @@ msgstr "Nastavte štandardnú rodinu písma pre dokument"
 
 #: src/frontends/qt4/ui/FontUi.ui:59
 msgid "&Base Size:"
-msgstr "&Základná veľkosť:"
+msgstr ""
+"&Základná\n"
+"veľkosť:"
 
 #: src/frontends/qt4/ui/FontUi.ui:76
 msgid "LaTe&X font encoding:"
-msgstr "Kódovanie písma laTeX:"
+msgstr ""
+"Kódovanie\n"
+"písma laTe&X:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
@@ -1493,7 +1499,7 @@ msgstr "Vyberte serifové (roman serif) písmo"
 
 #: src/frontends/qt4/ui/FontUi.ui:113
 msgid "&Sans Serif:"
-msgstr "Bez&serifové:"
+msgstr "&Bezserifové:"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "Select the Sans Serif (grotesque) typeface"
@@ -1501,7 +1507,7 @@ msgstr "Vyberte bezserifovú rodinu písma (Sans Serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:130
 msgid "S&cale (%):"
-msgstr "Mierka (%):"
+msgstr "M&ierka (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:140
 msgid "Scale the Sans Serif font to match the base font's dimensions"
@@ -1511,7 +1517,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:153
 msgid "&Typewriter:"
-msgstr "Strojopisné:"
+msgstr "S&trojopisné:"
 
 #: src/frontends/qt4/ui/FontUi.ui:163
 msgid "Select the typewriter (monospaced) typeface"
@@ -1519,7 +1525,7 @@ msgstr "Vyberte strojopisnú rodinu písma"
 
 #: src/frontends/qt4/ui/FontUi.ui:170
 msgid "Sc&ale (%):"
-msgstr "Mierka (%):"
+msgstr "Mi&erka (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:180
 msgid "Scale the Typewriter font to match the base font's dimensions"
@@ -1541,7 +1547,7 @@ msgstr "Použite reálne kapitálky v prípade, že sú fontom poskytované"
 
 #: src/frontends/qt4/ui/FontUi.ui:213
 msgid "Use true S&mall Caps"
-msgstr "Použite pravé Malé kapitálky"
+msgstr "Použite pravé Malé &kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:220
 msgid "Use old style instead of lining figures"
