@@ -65,11 +65,13 @@
 # 	Running = Jatkuva (Well, I know it is something continued from the
 # 		  previous page, and shown on the top of the page.)
 #
+#
+#  Do not overwrite trunk fi.po by this file (layouttranslations).
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-07 01:56+0200\n"
+"POT-Creation-Date: 2012-04-07 01:34+0200\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -10603,20 +10605,17 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Osa \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
-#, fuzzy
 msgid "Chapter ##"
-msgstr "Luku"
+msgstr "Luku ##"
 
 #: lib/layouts/stdcounters.inc:19 lib/layouts/stdcounters.inc:24
 #: lib/layouts/stdcounters.inc:29
-#, fuzzy
 msgid "Section ##"
-msgstr "Kappale"
+msgstr "Kappale ##"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
 #, fuzzy
@@ -10682,14 +10681,12 @@ msgid "Preview"
 msgstr "Esikatselu|#E"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:118
-#, fuzzy
 msgid "Part \\thepart"
-msgstr "Osa \\Roman{osa}"
+msgstr "Osa \\thepart"
 
 #: lib/layouts/stdsections.inc:42
-#, fuzzy
 msgid "Chapter \\thechapter"
-msgstr "Luku \\arabic{chapter}"
+msgstr "Luku \\thechapter"
 
 #: lib/layouts/stdsections.inc:43
 #, fuzzy
