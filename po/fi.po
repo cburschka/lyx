@@ -10688,20 +10688,17 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Osa \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
-#, fuzzy
 msgid "Chapter ##"
-msgstr "Luku"
+msgstr "Luku ##"
 
 #: lib/layouts/stdcounters.inc:19 lib/layouts/stdcounters.inc:24
 #: lib/layouts/stdcounters.inc:29
-#, fuzzy
 msgid "Section ##"
-msgstr "Kappale"
+msgstr "Kappale ##"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
 #, fuzzy
@@ -10767,14 +10764,12 @@ msgid "Preview"
 msgstr "Esikatselu|#E"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:118
-#, fuzzy
 msgid "Part \\thepart"
-msgstr "Osa \\Roman{osa}"
+msgstr "Osa \\thepart"
 
 #: lib/layouts/stdsections.inc:42
-#, fuzzy
 msgid "Chapter \\thechapter"
-msgstr "Luku \\arabic{chapter}"
+msgstr "Luku \\thechapter"
 
 #: lib/layouts/stdsections.inc:43
 #, fuzzy
