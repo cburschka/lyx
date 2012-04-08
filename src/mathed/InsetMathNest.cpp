@@ -848,10 +848,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SELF_INSERT:
 		if (cmd.argument().size() != 1) {
+			// use a group because interpretString() might
+			// record an extra undo step
+			cur.beginUndoGroup();
 			cur.recordUndoSelection();
 			docstring const arg = cmd.argument();
 			if (!interpretString(cur, arg))
 				cur.insert(arg);
+			cur.endUndoGroup();
 			break;
 		}
 		// Don't record undo steps if we are in macro mode and thus
@@ -1663,6 +1667,8 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				cur.cell().erase(cur.pos());
 				cur.plainInsert(MathAtom(
 					new InsetMathBig(name.substr(1), delim)));
+				// end undo group that was opened before p was created
+				cur.endUndoGroup();
 				return true;
 			}
 		}
@@ -1706,9 +1712,12 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
 			docstring const safe = cap::grabAndEraseSelection(cur);
-			if (!cur.inRegexped())
+			if (!cur.inRegexped()) {
+				// open a group because interpretString() might
+				// record an extra undo step when finalizing
+				cur.beginUndoGroup();
 				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
-			else
+			} else
 				cur.niceInsert(createInsetMath("backslash", buf));
 		}
 		return true;

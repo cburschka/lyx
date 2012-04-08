@@ -1599,8 +1599,11 @@ bool Cursor::macroModeClose()
 
 	docstring const name = s.substr(1);
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
-	if (in && in->interpretString(*this, s))
+	if (in && in->interpretString(*this, s)) {
+		// end undo group that was opened before in was created
+		endUndoGroup();
 		return true;
+	}
 	MathAtom atom = buffer()->getMacro(name, *this, false) ?
 		MathAtom(new MathMacro(buffer(), name)) : createInsetMath(name, buffer());
 
@@ -1633,7 +1636,9 @@ bool Cursor::macroModeClose()
 		else
 			insert(selection);
 	}
-	
+
+	// end undo group that was opened before in was created
+	endUndoGroup();
 	return true;
 }
 

@@ -28,8 +28,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 
-#include "mathed/InsetMathUnknown.h"
-
 #include "support/debug.h"
 #include "support/docstream.h"
 
