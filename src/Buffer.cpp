@@ -3749,7 +3749,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		return ExportTexPathHasSpaces;
 	} else {
 		runparams.nice = false;
-		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		bool const success = makeLaTeXFile(
+			FileName(filename), filePath(), runparams);
 		if (d->cloned_buffer_)
 			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
 		if (!success)
