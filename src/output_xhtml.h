@@ -146,6 +146,8 @@ private:
 	///
 	bool isTagOpen(std::string const &) const;
 	///
+	bool isTagPending(std::string const &) const;
+	///
 	void writeError(std::string const &) const;
 	///
 	odocstream & os_;

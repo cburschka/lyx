@@ -233,8 +233,15 @@ namespace {
 
 bool XHTMLStream::closeFontTags()
 {
+	if (isTagPending(parsep_tag))
+		// we haven't had any content
+		return true;
+
+	// this may be a useless check, since we ought at least to have
+	// the parsep_tag. but it can't hurt too much to be careful.
 	if (tag_stack_.empty())
 		return true;
+
 	// first, we close any open font tags we can close
 	html::StartTag curtag = tag_stack_.back();
 	while (html::isFontTag(curtag.tag_)) {
@@ -424,6 +431,17 @@ bool XHTMLStream::isTagOpen(string const & stag) const
 	TagStack::const_iterator const sen = tag_stack_.end();
 	for (; sit != sen; ++sit)
 		if (sit->tag_ == stag) 
+			return true;
+	return false;
+}
+
+
+bool XHTMLStream::isTagPending(string const & stag) const
+{
+	TagStack::const_iterator sit = pending_tags_.begin();
+	TagStack::const_iterator const sen = pending_tags_.end();
+	for (; sit != sen; ++sit)
+		if (sit->tag_ == stag)
 			return true;
 	return false;
 }
