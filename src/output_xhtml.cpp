@@ -418,7 +418,7 @@ XHTMLStream & XHTMLStream::operator<<(html::CR const &)
 }
 
 
-bool XHTMLStream::isTagOpen(string const & stag)
+bool XHTMLStream::isTagOpen(string const & stag) const
 {
 	TagStack::const_iterator sit = tag_stack_.begin();
 	TagStack::const_iterator const sen = tag_stack_.end();

@@ -144,7 +144,7 @@ private:
 	///
 	void clearTagDeque();
 	///
-	bool isTagOpen(std::string const &);
+	bool isTagOpen(std::string const &) const;
 	///
 	void writeError(std::string const &) const;
 	///
