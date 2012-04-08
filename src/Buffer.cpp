@@ -3613,7 +3613,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return false;
 	} else {
 		runparams.nice = false;
-		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
+		bool const success = makeLaTeXFile(
+			FileName(filename), filePath(), runparams);
 		if (d->cloned_buffer_)
 			d->cloned_buffer_->d->errorLists["Export"] = d->errorLists["Export"];
 		if (!success)
