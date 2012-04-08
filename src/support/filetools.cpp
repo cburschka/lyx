@@ -1033,7 +1033,7 @@ string const readBB_from_PSFile(FileName const & file)
 	}
 
 	static lyx::regex bbox_re(
-		"^%%BoundingBox:\\s*([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)");
+		"^%%BoundingBox:\\s*([-]*[[:digit:]]+)\\s+([-]*[[:digit:]]+)\\s+([-]*[[:digit:]]+)\\s+([-]*[[:digit:]]+)");
 	ifstream is(file_.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
