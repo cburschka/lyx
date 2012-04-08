@@ -138,9 +138,11 @@ private:
 	///
 	void clearTagDeque();
 	///
-	bool isTagOpen(std::string const &);
+	bool isTagOpen(std::string const &) const;
 	///
-	void writeError(std::string const &);
+	bool isTagPending(std::string const &) const;
+	///
+	void writeError(std::string const &) const;
 	///
 	odocstream & os_;
 	///
