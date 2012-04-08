@@ -198,7 +198,27 @@ XHTMLStream::XHTMLStream(odocstream & os)
 {}
 
 
-void XHTMLStream::writeError(std::string const & s)
+#if 0
+void XHTMLStream::dumpTagStack(string const & msg) const
+{
+	writeError(msg + ": Tag Stack");
+	TagStack::const_reverse_iterator it = tag_stack_.rbegin();
+	TagStack::const_reverse_iterator en = tag_stack_.rend();
+	for (; it != en; ++it) {
+		writeError(it->tag_);
+	}
+	writeError("Pending Tags");
+	it = pending_tags_.rbegin();
+	en = pending_tags_.rend();
+	for (; it != en; ++it) {
+		writeError(it->tag_);
+	}
+	writeError("End Tag Stack");
+}
+#endif
+
+
+void XHTMLStream::writeError(std::string const & s) const
 {
 	LYXERR0(s);
 	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");

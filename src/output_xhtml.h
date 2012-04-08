@@ -134,13 +134,19 @@ public:
 	/// Sets what we are going to escape on the NEXT write.
 	/// Everything is reset for the next time.
 	XHTMLStream & operator<<(EscapeSettings);
+#if 0
+	/// This routine is for debugging the tag stack, etc. Code
+	/// for it is disabled by default, however, so you will need
+	/// to enable it if you want to use it.
+	void dumpTagStack(std::string const & msg) const;
+#endif
 private:
 	///
 	void clearTagDeque();
 	///
 	bool isTagOpen(std::string const &);
 	///
-	void writeError(std::string const &);
+	void writeError(std::string const &) const;
 	///
 	odocstream & os_;
 	///
