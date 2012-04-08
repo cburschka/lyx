@@ -283,34 +283,24 @@ void XHTMLStream::startParagraph(bool keep_empty)
 
 void XHTMLStream::endParagraph()
 {
-	if (!isTagOpen(parsep_tag)) {
-		// is it pending?
-		TagStack::const_iterator dit = pending_tags_.begin();
-		TagStack::const_iterator const den = pending_tags_.end();
-		bool found = false;
-		for (; dit != den; ++dit) {
-			if (dit->tag_ == parsep_tag) {
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
-			writeError("No paragraph separation tag found in endParagraph().");
-			return;
-		}
-		
-		// this case is normal.
+	if (isTagPending(parsep_tag)) {
+		// this case is normal. it just means we didn't have content,
+		// so the parsep_tag never got moved onto the tag stack.
 		while (!pending_tags_.empty()) {
 			// clear all pending tags up to and including the parsep tag.
 			// note that we work from the back, because we want to get rid
-			// of everything that hasnt' been used.
+			// of everything that hasn't been used.
 			html::StartTag const cur_tag = pending_tags_.back();
 			string const & tag = cur_tag.tag_;
-			tag_stack_.pop_back();
+			pending_tags_.pop_back();
 			if (tag == parsep_tag)
 				break;
 		}
+		return;
+	}
+
+	if (!isTagOpen(parsep_tag)) {
+		writeError("No paragraph separation tag found in endParagraph().");
 		return;
 	}
 
