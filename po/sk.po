@@ -1886,34 +1886,34 @@ msgstr "&Upraviť"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
-msgstr "&Dostupné Indexy:"
+msgstr "&Dostupné Registre:"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr "Označ index v ktorom by tento záznam mal byť uvedený."
+msgstr "Vyberte register v ktorom by toto heslo malo byť uvedené."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
-"To môžte definovať procesor pre alternatívny index a špecifikovať jeho "
+"To môžte definovať alternatívny generátor registra a špecifikovať jeho "
 "možnosti."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22 src/frontends/qt4/ui/PrefLatexUi.ui:148
 msgid "Index generation"
-msgstr "Generácia indexu"
+msgstr "Generácia registrov"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr "Urči programové možnosti označeného procesora."
+msgstr "Urči programové možnosti označeného generátoru."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr "Zaškrtnite keď potrebujete viacnásobné indexy (napr. Index Mien)"
+msgstr "Zaškrtnite keď potrebujete viac registrov (napr. Register Mien)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr "Použiť &viacnásobné indexy"
+msgstr "Použiť &viac registrov"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
@@ -1923,11 +1923,11 @@ msgstr "&Nový:"
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
-"Vložte meno želaného indexu (napr. \"Index Mien\") a stlačte \"Pridať\""
+"Vložte meno želaného registra (napr. \"Register Mien\") a stlačte \"Pridať\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
-msgstr "Pridajte nový index do zoznamu"
+msgstr "Pridajte nový register do zoznamu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
@@ -1936,11 +1936,11 @@ msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
-msgstr "Odstrániť označený index"
+msgstr "Odstrániť označený register"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
-msgstr "Premenovať označený index"
+msgstr "Premenovať označený register"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
@@ -3484,11 +3484,11 @@ msgstr "&Možnosti:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:196
 msgid "Index command and options (makeindex, xindy)"
-msgstr "Príkaz a voľby pre indexovanie (makeindex, xindi)"
+msgstr "Príkaz a voľby pre register (makeindex, xindi)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:213
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr "Príkaz a voľby indexovania pre pLaTeX (Japonsky)"
+msgstr "Specifický register-príkaz a voľby pre pLaTeX (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:235
 msgid "&Nomenclature command:"
@@ -4139,19 +4139,21 @@ msgstr "Poslať výstup do súboru"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
-msgstr "Vyberte, keď sa tento index (napr. sekcia) má stať časťou predošlého."
+msgstr ""
+"Vyberte, keď sa tento register (napr. sekcia) má stať časťou predošlého."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
-msgstr "&Podindex"
+msgstr "&Podregister"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
 msgid "A&vailable indexes:"
-msgstr "&Dostupné indexy:"
+msgstr "&Dostupné registre:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Vyberte si ktorý index by mal byť tlačený na tomto mieste v dokumente."
+msgstr ""
+"Vyberte si ktorý register by mal byť tlačený na tomto mieste v dokumente."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1430 src/frontends/qt4/GuiPrefs.cpp:254
@@ -4855,7 +4857,7 @@ msgstr "Jazyk tezauru"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
-msgstr "Heslo indexu"
+msgstr "Heslo v registre"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "&Keyword:"
@@ -10862,7 +10864,7 @@ msgstr "Minimalistické"
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Predefinovať niektoré z vložiek ako minimalistické (Index, Vetva, URL)."
+"Predefinovať niektoré z vložiek ako minimalistické (Register, Vetva, URL)."
 
 #: lib/layouts/multicol.module:2
 msgid "Multiple Columns"
@@ -12601,11 +12603,11 @@ msgstr "Vlož Referenciu na Pozícii Kurzoru"
 
 #: lib/ui/stdcontext.inc:545
 msgid "All Indexes|A"
-msgstr "Všetky Indexy"
+msgstr "Všetky Registre"
 
 #: lib/ui/stdcontext.inc:548
 msgid "Subindex|b"
-msgstr "Podindex"
+msgstr "Podregister"
 
 #: lib/ui/stdcontext.inc:576 lib/ui/stdmenus.inc:519
 msgid "Reject Change|R"
@@ -12857,11 +12859,11 @@ msgstr "Nastavenia rámku..."
 
 #: lib/ui/stdmenus.inc:143
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia pre Heslá Indexu..."
+msgstr "Nastavenia pre Heslá Registra..."
 
 #: lib/ui/stdmenus.inc:144
 msgid "Index Settings...|x"
-msgstr "Nastavenia pre Index..."
+msgstr "Nastavenia Registra..."
 
 #: lib/ui/stdmenus.inc:145
 msgid "Info Settings...|n"
@@ -13769,7 +13771,7 @@ msgstr "Vložiť citáciu"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert index entry"
-msgstr "Vložiť heslo indexu"
+msgstr "Vložiť heslo registra"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Insert nomenclature entry"
@@ -17974,7 +17976,7 @@ msgstr "návestie poznámky pod čiarou"
 
 #: src/Color.cpp:234
 msgid "index label"
-msgstr "návestie indexu"
+msgstr "návestie hesla registra"
 
 #: src/Color.cpp:235
 msgid "margin note label"
@@ -18510,7 +18512,7 @@ msgstr "Čakanie na %1$d spracovanie LaTeXu"
 
 #: src/LaTeX.cpp:266 src/LaTeX.cpp:369
 msgid "Running Index Processor."
-msgstr "Spúšťam Indexovanie."
+msgstr "Spúšťam generáciu registra."
 
 #: src/LaTeX.cpp:292 src/LaTeX.cpp:352
 msgid "Running BibTeX."
@@ -19011,7 +19013,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3196
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
-msgstr "Definuje voľby indexovania pre PLaTeX (Japonský LaTeX)."
+msgstr "Definuje voľby register-programu pre PLaTeX (Japonský LaTeX)."
 
 #: src/LyXRC.cpp:3200
 msgid ""
@@ -21157,7 +21159,7 @@ msgstr "Číslovanie & TOC"
 
 #: src/frontends/qt4/GuiDocument.cpp:1423
 msgid "Indexes"
-msgstr "Indexy"
+msgstr "Registre"
 
 #: src/frontends/qt4/GuiDocument.cpp:1424
 msgid "PDF Properties"
@@ -21591,7 +21593,7 @@ msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
 msgid "Index Entry Settings"
-msgstr "Nastavenia hesiel Indexu"
+msgstr "Nastavenia Hesla Registra"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
@@ -21607,11 +21609,11 @@ msgstr "Štandardný zoznam hesiel sa nedá odstrániť."
 
 #: src/frontends/qt4/GuiIndices.cpp:214
 msgid "Enter new index name"
-msgstr "Vložte názov nového indexu"
+msgstr "Vložte názov nového registra"
 
 #: src/frontends/qt4/GuiIndices.cpp:222
 msgid "The index could not be renamed. Check if the new name already exists."
-msgstr "Index sa nedal premenovať. Overte si, či nové meno už existuje."
+msgstr "Register sa nedal premenovať. Overte si, či nové meno už existuje."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -22008,11 +22010,11 @@ msgstr "Veľkosť najdlhšej značky"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Nastavenia Indexu"
+msgstr "Nastavenia Registra"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
 msgid "<All indexes>"
-msgstr "<Všetky indexy>"
+msgstr "<Všetky registre>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
 msgid "Progress/Debug Messages"
@@ -23028,7 +23030,7 @@ msgstr "Indexovaná listina"
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "Index Entry|d"
-msgstr "Heslo Indexu"
+msgstr "Heslo Registra"
 
 #: src/frontends/qt4/Menus.cpp:1429
 #, c-format
@@ -23038,7 +23040,7 @@ msgstr "Index: %1$s"
 #: src/frontends/qt4/Menus.cpp:1434 src/frontends/qt4/Menus.cpp:1463
 #, c-format
 msgid "Index Entry (%1$s)"
-msgstr "Heslo Indexu (%1$s)"
+msgstr "Heslo Registra (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1480
 msgid "No Citation in Scope!"
@@ -23591,7 +23593,7 @@ msgstr ""
 
 #: src/insets/InsetIndex.cpp:275
 msgid "Index Entry"
-msgstr "Heslo Indexu"
+msgstr "Heslo Registra"
 
 #: src/insets/InsetIndex.cpp:282 src/insets/InsetIndex.cpp:303
 msgid "unknown type!"
