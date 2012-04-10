@@ -57,10 +57,10 @@ namespace lyx {
 // could. See LayoutFileList::addEmptyClass() and, especially, the
 // definition of the layoutpost string.
 // You should also run (or ask someone who has bash to run) the
-// development/updatelayouts.sh script, to update the format of
+// development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 37; //jrioux : move citation engine stuff into layouts
+int const LAYOUT_FORMAT = 38; //gb : LangPreamble and BabelPreamble for InsetLayout
 
 namespace {
 

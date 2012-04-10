@@ -1424,7 +1424,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
 	docPS->addPanel(mathsModule, qt_("Math Options"));
 	docPS->addPanel(floatModule, qt_("Float Placement"));
-	docPS->addPanel(listingsModule, qt_("Listings"));
+	docPS->addPanel(listingsModule, qt_("Listings[[inset]]"));
 	docPS->addPanel(bulletsModule, qt_("Bullets"));
 	docPS->addPanel(branchesModule, qt_("Branches"));
 	docPS->addPanel(outputModule, qt_("Output"));

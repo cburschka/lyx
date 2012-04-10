@@ -24,7 +24,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
-#include "support/regex.h"
 #include "support/textutils.h"
 
 
@@ -856,72 +855,6 @@ void Layout::readSpacing(Lexer & lex)
 		spacing.set(Spacing::Other, lex.getString());
 		break;
 	}
-}
-
-
-namespace {
-
-docstring const i18npreamble(Language const * lang, Encoding const & enc,
-			     docstring const & templ, bool const polyglossia)
-{
-	if (templ.empty())
-		return templ;
-
-	string preamble = polyglossia ?
-		subst(to_utf8(templ), "$$lang", lang->polyglossia()) :
-		subst(to_utf8(templ), "$$lang", lang->babel());
-
-#ifdef TEX2LYX
-	// tex2lyx does not have getMessages()
-	LASSERT(false, /**/);
-	(void)enc;
-#else
-	string const langenc = lang->encoding()->iconvName();
-	string const texenc = lang->encoding()->latexName();
-	string const bufenc = enc.iconvName();
-	// First and second character of plane 15 (Private Use Area)
-	string const s1 = "\xf3\xb0\x80\x80"; // U+F0000
-	string const s2 = "\xf3\xb0\x80\x81"; // U+F0001
-	// FIXME UNICODE
-	// lyx::regex is not unicode-safe.
-	// Should use QRegExp or (boost::u32regex, but that requires ICU)
-	static regex const reg("_\\(([^\\)]+)\\)");
-	smatch sub;
-	while (regex_search(preamble, sub, reg)) {
-		string const key = sub.str(1);
-		docstring const name = lang->translateLayout(key);
-		// Check whether name can be encoded in the buffer encoding
-		bool encodable = true;
-		for (size_t i = 0; i < name.size(); ++i) {
-			if (!enc.encodable(name[i])) {
-				encodable = false;
-				break;
-			}
-		}
-		string const translated = encodable ? to_utf8(name)
-			: "\\inputencoding{" + texenc + "}"
-				+ s1 + langenc + s2 + to_utf8(name)
-				+ s1 + bufenc + s2;
-		preamble = subst(preamble, sub.str(), translated);
-	}
-#endif
-	return from_utf8(preamble);
-}
-
-}
-
-
-docstring const Layout::langpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia) const
-{
-	return i18npreamble(lang, enc, langpreamble_, polyglossia);
-}
-
-
-docstring const Layout::babelpreamble(Language const * lang,
-			Encoding const & enc, bool const polyglossia) const
-{
-	return i18npreamble(lang, enc, babelpreamble_, polyglossia);
 }
 
 

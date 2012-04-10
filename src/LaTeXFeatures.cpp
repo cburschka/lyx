@@ -38,6 +38,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/regex.h"
 
 #include <algorithm>
 
@@ -1181,6 +1182,49 @@ docstring const getFloatI18nPreamble(docstring const & type,
 	   << "{\\renewcommand{\\" << type << "name}{" << translated << "}}\n";
 	return os.str();
 }
+
+
+docstring const i18npreamble(docstring const & templ, Language const * lang,
+		Encoding const & enc, bool const polyglossia)
+{
+	if (templ.empty())
+		return templ;
+
+	string preamble = polyglossia ?
+		subst(to_utf8(templ), "$$lang", lang->polyglossia()) :
+		subst(to_utf8(templ), "$$lang", lang->babel());
+
+	string const langenc = lang->encoding()->iconvName();
+	string const texenc = lang->encoding()->latexName();
+	string const bufenc = enc.iconvName();
+	// First and second character of plane 15 (Private Use Area)
+	string const s1 = "\xf3\xb0\x80\x80"; // U+F0000
+	string const s2 = "\xf3\xb0\x80\x81"; // U+F0001
+	// FIXME UNICODE
+	// lyx::regex is not unicode-safe.
+	// Should use QRegExp or (boost::u32regex, but that requires ICU)
+	static regex const reg("_\\(([^\\)]+)\\)");
+	smatch sub;
+	while (regex_search(preamble, sub, reg)) {
+		string const key = sub.str(1);
+		docstring const name = lang->translateLayout(key);
+		// Check whether name can be encoded in the buffer encoding
+		bool encodable = true;
+		for (size_t i = 0; i < name.size(); ++i) {
+			if (!enc.encodable(name[i])) {
+				encodable = false;
+				break;
+			}
+		}
+		string const translated = encodable ? to_utf8(name)
+			: "\\inputencoding{" + texenc + "}"
+			+ s1 + langenc + s2 + to_utf8(name)
+			+ s1 + bufenc + s2;
+		preamble = subst(preamble, sub.str(), translated);
+	}
+	return from_utf8(preamble);
+}
+
 }
 
 
@@ -1197,17 +1241,20 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		// language dependent commands (once per document)
-		snippets.insert(tclass[*cit].langpreamble(buffer().language(),
+		snippets.insert(i18npreamble(tclass[*cit].langpreamble(),
+						buffer().language(),
 						buffer().params().encoding(),
 						use_polyglossia));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
-			snippets.insert(tclass[*cit].babelpreamble(
+			snippets.insert(i18npreamble(
+						tclass[*cit].babelpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
 						use_polyglossia));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
-				snippets.insert(tclass[*cit].babelpreamble(
+				snippets.insert(i18npreamble(
+						tclass[*cit].babelpreamble(),
 						*lit,
 						buffer().params().encoding(),
 						use_polyglossia));
@@ -1248,6 +1295,34 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 						buffer().params().encoding(),
 						use_polyglossia));
 			}
+		}
+	}
+
+	cit = usedInsetLayouts_.begin();
+	end = usedInsetLayouts_.end();
+	TextClass::InsetLayouts const & ils = tclass.insetLayouts();
+	for (; cit != end; ++cit) {
+		TextClass::InsetLayouts::const_iterator it = ils.find(*cit);
+		if (it == ils.end())
+			continue;
+		// language dependent commands (once per document)
+		snippets.insert(i18npreamble(it->second.langpreamble(),
+						buffer().language(),
+						buffer().params().encoding(),
+						use_polyglossia));
+		// commands for language changing (for multilanguage documents)
+		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
+			snippets.insert(i18npreamble(
+						it->second.babelpreamble(),
+						buffer().language(),
+						buffer().params().encoding(),
+						use_polyglossia));
+			for (lang_it lit = lbeg; lit != lend; ++lit)
+				snippets.insert(i18npreamble(
+						it->second.babelpreamble(),
+						*lit,
+						buffer().params().encoding(),
+						use_polyglossia));
 		}
 	}
 

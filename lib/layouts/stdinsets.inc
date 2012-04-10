@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 36
+Format 38
 
 Provides stdinsets 1
 
@@ -170,8 +170,28 @@ InsetLayout Phantom
 	ForcePlain            true
 End
 
+InsetLayout IncludeListings
+	# We need the [[List of Listings]] context, since "Listings" is also
+	# the name of the inset and translated differently.
+	# "Listings[[List of Listings]]" is the name of the "List of listings"
+	# ("Listings" is the predefined english name) in listings.sty, so it
+	# must be used here as well.
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
+		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
+	EndBabelPreamble
+	# The commands do not need to be defined in LangPreamble, since
+	# listings.sty does that already. However they need to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\lstlistingname}{_(Listing)}
+		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+	EndLangPreamble
+End
+
 InsetLayout Listings
-	LabelString           Listings
+	CopyStyle IncludeListings
+	LabelString           Listings[[inset]]
 	LatexType             none
 	Decoration            minimalistic
 	Font

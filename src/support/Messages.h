@@ -57,6 +57,9 @@ extern Messages const & getMessages(std::string const & language);
 /// Implementation is in LyX.cpp.
 extern Messages const & getGuiMessages();
 
+/// Remove the context suffix from \p trans
+extern void cleanTranslation(docstring & trans);
+
 } // namespace lyx
 
 #endif

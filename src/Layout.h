@@ -14,7 +14,6 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
-#include "Encoding.h"
 #include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "Spacing.h"
@@ -25,7 +24,6 @@
 
 namespace lyx {
 
-class Language;
 class Lexer;
 class TextClass;
 
@@ -96,10 +94,10 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this layout
 	/// for language \p lang
-	docstring const langpreamble(Language const * lang, Encoding const & enc, bool const polyglossia) const;
+	docstring const langpreamble() const { return langpreamble_; }
 	/// Get language and babel dependent macro definitions needed for
 	/// this layout for language \p lang
-	docstring const babelpreamble(Language const * lang, Encoding const & enc, bool const polyglossia) const;
+	docstring const babelpreamble() const { return babelpreamble_; }
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
