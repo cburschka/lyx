@@ -85,6 +85,10 @@ What's new
 - Fixed reading the bounding box from EPS figures with negative
   values (bug 8114).
 
+- Fix generation of auxiliary files for converters specifying the needaux
+  flag by using the same latex backend used for previewing the document
+  instead of always using the plain latex backend.
+
 
 * USER INTERFACE
 

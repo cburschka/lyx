@@ -3544,7 +3544,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 			}
 			return false;
 		}
-		runparams.flavor = converters.getFlavor(path);
+		runparams.flavor = converters.getFlavor(path, this);
 
 	} else {
 		backend_format = format;
