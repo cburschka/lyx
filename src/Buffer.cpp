@@ -3695,7 +3695,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			}
 			return ExportNoPathToFormat;
 		}
-		runparams.flavor = converters.getFlavor(path);
+		runparams.flavor = converters.getFlavor(path, this);
 
 	} else {
 		backend_format = format;
