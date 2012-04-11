@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-09 08:57+0200\n"
+"POT-Creation-Date: 2012-04-11 09:56+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
@@ -137,7 +137,7 @@ msgstr "Generácia bibliografie"
 #: src/frontends/qt4/ui/BiblioUi.ui:167 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:85
 msgid "&Processor:"
-msgstr "&Procesor:"
+msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:177 src/frontends/qt4/ui/IndicesUi.ui:43
 msgid "Select a processor"
@@ -1865,16 +1865,12 @@ msgstr "Vstup"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:74
 msgid "Verbatim"
-msgstr ""
-"Doslovne\n"
-" ->(Verbatim)"
+msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1145
-#: src/insets/InsetInclude.cpp:1151
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1153
+#: src/insets/InsetInclude.cpp:1159
 msgid "Program Listing"
-msgstr ""
-"Výpis\n"
-" zdrojového kódu"
+msgstr "Výpis zdrojového kódu"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:342
 msgid "Edit the file"
@@ -2207,7 +2203,7 @@ msgstr "Zalamovať riadky presahujúce štandardnú dĺžku riadkov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "&Zalamovať dlhé riadky"
+msgstr "Z&alamovať dlhé riadky"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
@@ -2215,7 +2211,7 @@ msgstr "Zobraz medzery špeciálnym symbolom"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
-msgstr "Med&zera ako symbol"
+msgstr "Medzera ako sym&bol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
@@ -2406,7 +2402,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 msgid "&Maintain counters and references"
-msgstr "&Udržovať číslovanie a referencie"
+msgstr "U&držovať číslovanie a referencie"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
@@ -10108,11 +10104,15 @@ msgstr "Zosivelé"
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:174 src/frontends/qt4/GuiDocument.cpp:1427
-msgid "Listings"
-msgstr "Výpisy"
+#: lib/layouts/stdinsets.inc:181 lib/layouts/stdinsets.inc:188
+msgid "Listings[[List of Listings]]"
+msgstr "Zoznam výpisov"
 
-#: lib/layouts/stdinsets.inc:207
+#: lib/layouts/stdinsets.inc:194 src/frontends/qt4/GuiDocument.cpp:1427
+msgid "Listings[[inset]]"
+msgstr "Nastavenie výpisov"
+
+#: lib/layouts/stdinsets.inc:227
 msgid "Idx"
 msgstr "Idx"
 
@@ -10121,7 +10121,7 @@ msgstr "Idx"
 msgid "opt"
 msgstr "argument"
 
-#: lib/layouts/stdinsets.inc:444
+#: lib/layouts/stdinsets.inc:464
 msgid "Preview"
 msgstr "Náhľad"
 
@@ -12871,7 +12871,7 @@ msgstr "Nastavenia pre Info..."
 
 #: lib/ui/stdmenus.inc:146
 msgid "Listings Settings...|g"
-msgstr "Nastavenia výpisu..."
+msgstr "Nastavenia výpisu...|N"
 
 #: lib/ui/stdmenus.inc:150
 msgid "Table Settings...|a"
@@ -13275,7 +13275,7 @@ msgstr "TeX Kód"
 
 #: lib/ui/stdmenus.inc:377
 msgid "Program Listing[[Menu]]"
-msgstr "Výpis programu"
+msgstr "Výpis zdrojového kódu"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Preview|w"
@@ -17165,11 +17165,11 @@ msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 msgid "Overwrite modified file?"
 msgstr "Prepísať modifikovaný súbor?"
 
-#: src/Buffer.cpp:1162 src/Buffer.cpp:2467 src/Exporter.cpp:50
+#: src/Buffer.cpp:1163 src/Buffer.cpp:2467 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2146
 #: src/frontends/qt4/GuiView.cpp:2311 src/frontends/qt4/GuiView.cpp:2386
 msgid "&Overwrite"
-msgstr "Prepísať"
+msgstr "&Prepísať"
 
 #: src/Buffer.cpp:1191
 msgid "Backup failure"
@@ -17223,14 +17223,14 @@ msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 msgid "Iconv software exception Detected"
 msgstr "Iconv detekoval softvérovú výnimku"
 
-#: src/Buffer.cpp:1389
+#: src/Buffer.cpp:1390
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 "Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
-"inštalovaná."
+"inštalovaná"
 
 #: src/Buffer.cpp:1419
 #, c-format
@@ -17424,13 +17424,13 @@ msgstr ""
 msgid "Load emergency save?"
 msgstr "Nahrať núdzovú kópiu ?"
 
-#: src/Buffer.cpp:3928
+#: src/Buffer.cpp:3929
 msgid "&Recover"
-msgstr "Získať späť"
+msgstr "&Obnoviť"
 
-#: src/Buffer.cpp:3928
+#: src/Buffer.cpp:3929
 msgid "&Load Original"
-msgstr "Nahrať Originál"
+msgstr "&Nahrať Originál"
 
 #: src/Buffer.cpp:3939
 #, c-format
@@ -17462,9 +17462,9 @@ msgstr ""
 msgid "Delete emergency file?"
 msgstr "Zmazať núdzový súbor?"
 
-#: src/Buffer.cpp:3953 src/Buffer.cpp:3966
+#: src/Buffer.cpp:3954 src/Buffer.cpp:3967
 msgid "&Keep"
-msgstr "Držať"
+msgstr "&Držať"
 
 #: src/Buffer.cpp:3957
 msgid "Emergency file deleted"
@@ -17493,13 +17493,13 @@ msgstr ""
 msgid "Load backup?"
 msgstr "Nahrať zálohu?"
 
-#: src/Buffer.cpp:3991
+#: src/Buffer.cpp:3992
 msgid "&Load backup"
-msgstr "Nahrať zálohu"
+msgstr "&Nahrať zálohu"
 
-#: src/Buffer.cpp:3991
+#: src/Buffer.cpp:3992
 msgid "Load &original"
-msgstr "Nahrať Originál"
+msgstr "Nahrať &pôvodné"
 
 #: src/Buffer.cpp:4001
 #, c-format
@@ -18276,7 +18276,7 @@ msgstr "Neznáma vetva"
 
 #: src/CutAndPaste.cpp:350
 msgid "&Don't Add"
-msgstr "Nepridať"
+msgstr "&Nepridať"
 
 #: src/CutAndPaste.cpp:665 src/Text.cpp:388
 #, c-format
@@ -18307,11 +18307,11 @@ msgstr "Nedefinované flexibilná vložka"
 
 #: src/Exporter.cpp:50
 msgid "&Keep file"
-msgstr "Súbor držať"
+msgstr "Súbor &držať"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
-msgstr "Prepísať všetko"
+msgstr "Prepísať &všetko"
 
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
@@ -18588,15 +18588,15 @@ msgstr ""
 
 #: src/LyX.cpp:551
 msgid "&Reconfigure"
-msgstr "Rekonfigurácia"
+msgstr "&Rekonfigurácia"
 
 #: src/LyX.cpp:552
 msgid "&Without LaTeX"
-msgstr "Bez použitia LaTeX-a"
+msgstr "&Bez použitia LaTeX-a"
 
 #: src/LyX.cpp:553 src/VCBackend.cpp:858 src/VCBackend.cpp:862
 msgid "&Continue"
-msgstr "Pokračovať"
+msgstr "&Pokračovať"
 
 #: src/LyX.cpp:656
 msgid ""
@@ -18666,11 +18666,11 @@ msgstr ""
 
 #: src/LyX.cpp:943
 msgid "&Create directory"
-msgstr "Vytvoriť adresár"
+msgstr "V&ytvoriť adresár"
 
 #: src/LyX.cpp:944
 msgid "&Exit LyX"
-msgstr "Skončiť LyX"
+msgstr "&Ukončiť LyX"
 
 #: src/LyX.cpp:945
 msgid "No user LyX directory. Exiting."
@@ -19380,7 +19380,7 @@ msgstr "Získať dokument od kontroly verzií?"
 
 #: src/LyXVC.cpp:89
 msgid "&Retrieve"
-msgstr "Získať"
+msgstr "Získ&ať"
 
 #: src/LyXVC.cpp:115
 msgid "Document not saved"
@@ -19425,7 +19425,7 @@ msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
 #: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3400
 msgid "&Revert"
-msgstr "Vrátiť"
+msgstr "&Vrátiť"
 
 #: src/Paragraph.cpp:2008
 msgid "Senseless with this layout!"
@@ -19753,11 +19753,11 @@ msgstr "Našli sa zmeny"
 
 #: src/VCBackend.cpp:858 src/VCBackend.cpp:862
 msgid "&Abort"
-msgstr "Zrušiť"
+msgstr "Z&rušiť"
 
 #: src/VCBackend.cpp:858 src/VCBackend.cpp:1318
 msgid "View &Log ..."
-msgstr "Prehliadnuť zápisný súbor..."
+msgstr "Preh&liadnuť zápisný súbor..."
 
 #: src/VCBackend.cpp:880
 #, c-format
@@ -19848,12 +19848,12 @@ msgstr ""
 #: src/VCBackend.cpp:1318 src/VCBackend.cpp:1322
 #: src/frontends/qt4/FindAndReplace.cpp:360
 msgid "&Yes"
-msgstr "áno"
+msgstr "Án&o"
 
 #: src/VCBackend.cpp:1318 src/VCBackend.cpp:1322
 #: src/frontends/qt4/FindAndReplace.cpp:360
 msgid "&No"
-msgstr "nie"
+msgstr "&Nie"
 
 #: src/VCBackend.cpp:1384
 msgid "VCN File Locking"
@@ -19910,11 +19910,11 @@ msgstr "Opäť načítať uložený dokument?"
 
 #: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2783
 msgid "&Reload"
-msgstr "Opäť načítať"
+msgstr "Opäť &načítať"
 
 #: src/buffer_funcs.cpp:76
 msgid "&Keep Changes"
-msgstr "Drž Zmeny"
+msgstr "&Drž Zmeny"
 
 #: src/buffer_funcs.cpp:86
 #, c-format
@@ -19942,7 +19942,7 @@ msgstr "Vytvoriť nový dokument?"
 
 #: src/buffer_funcs.cpp:110
 msgid "&Create"
-msgstr "Vytvoriť"
+msgstr "&Vytvoriť"
 
 #: src/buffer_funcs.cpp:138
 #, c-format
@@ -21187,7 +21187,7 @@ msgstr "Preambula LaTeXu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1661 src/frontends/qt4/GuiDocument.cpp:1691
 msgid "&Default..."
-msgstr "Štandard..."
+msgstr "Štan&dard..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1831
 #: src/frontends/qt4/GuiDocument.cpp:1837
@@ -21223,7 +21223,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1936
 msgid "&Set Layout"
-msgstr "Nastaviť formát"
+msgstr "&Nastaviť formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:1950
 msgid "Unable to read local layout file."
@@ -21677,7 +21677,7 @@ msgstr "Žiadny jazyk"
 
 #: src/frontends/qt4/GuiListings.cpp:164
 msgid "Program Listing Settings"
-msgstr "Nastavenia tlačiarne pre programové zdroje"
+msgstr "Nastavenia Výpisov Zdrojových Kódov"
 
 #: src/frontends/qt4/GuiListings.cpp:414
 msgid "No dialect"
@@ -21934,7 +21934,7 @@ msgstr "Systém a Rôzne"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2942 src/frontends/qt4/GuiPrefs.cpp:2988
 msgid "Res&tore"
-msgstr "Reštaurovať"
+msgstr "Reš&taurovať"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3099 src/frontends/qt4/GuiPrefs.cpp:3106
 #: src/frontends/qt4/GuiPrefs.cpp:3126 src/frontends/qt4/GuiPrefs.cpp:3145
@@ -22960,7 +22960,7 @@ msgstr "Jazyk"
 
 #: src/frontends/qt4/Menus.cpp:850
 msgid "More Languages ...|M"
-msgstr "Viac Jazykov ..."
+msgstr "Viac Jazykov ...|V"
 
 #: src/frontends/qt4/Menus.cpp:920 src/frontends/qt4/Menus.cpp:921
 msgid "Hidden|H"
@@ -23035,7 +23035,7 @@ msgstr "Heslo Registra"
 #: src/frontends/qt4/Menus.cpp:1429
 #, c-format
 msgid "Index: %1$s"
-msgstr "Index: %1$s"
+msgstr "Register(%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1434 src/frontends/qt4/Menus.cpp:1463
 #, c-format
@@ -23127,11 +23127,11 @@ msgstr "Zoznam poznámok pod čiarou"
 
 #: src/frontends/qt4/qt_helpers.cpp:562
 msgid "List of Listings"
-msgstr "Zoznam výpisov"
+msgstr "Zoznam Výpisov"
 
 #: src/frontends/qt4/qt_helpers.cpp:564
 msgid "List of Index Entries"
-msgstr "Zoznam Registier"
+msgstr "Zoznam Hesiel"
 
 #: src/frontends/qt4/qt_helpers.cpp:566
 msgid "List of Marginal notes"
@@ -24415,11 +24415,11 @@ msgstr "Zastaviť príkaz?"
 
 #: src/support/Systemcall.cpp:385
 msgid "&Stop it"
-msgstr "Zastaviť"
+msgstr "Za&staviť"
 
 #: src/support/Systemcall.cpp:385
 msgid "Let it &run"
-msgstr "Nech beží ďalej"
+msgstr "Nech &beží ďalej"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
@@ -24593,6 +24593,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Listings"
+#~ msgstr "Výpisy"
 
 #~ msgid "Table w&idth:"
 #~ msgstr "Šírka tabuľky:"
@@ -25900,9 +25903,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Merge cells"
 #~ msgstr "Spojiť bunky"
-
-#~ msgid "Listing settings"
-#~ msgstr "Nastavenia výpisov"
 
 #~ msgid "Strasse"
 #~ msgstr "Ulica"
