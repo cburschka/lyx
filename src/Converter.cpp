@@ -266,7 +266,7 @@ void Converters::sort()
 }
 
 
-OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
+OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 					   Buffer const * buffer)
 {
 	for (Graph::EdgePath::const_iterator cit = path.begin();
