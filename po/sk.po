@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-11 09:56+0200\n"
+"POT-Creation-Date: 2012-04-11 20:23+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovak <lyx-devel@lists.lyx.org>\n"
+"Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1753,8 +1753,8 @@ msgstr "Vložiť rozstup i za zalomením riadku"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:336
-#: lib/layouts/stdinsets.inc:339 lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:356
+#: lib/layouts/stdinsets.inc:359 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -2112,7 +2112,8 @@ msgstr "Vložte sem parametri výpisu"
 msgid "Feedback window"
 msgstr "Okno pre odozvu"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
+#: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:180
+#: lib/layouts/stdinsets.inc:187 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
 msgid "Listing"
 msgstr "Výpis"
@@ -5197,7 +5198,7 @@ msgid "Acknowledgement."
 msgstr "Poďakovanie."
 
 #: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
-#: lib/layouts/beamer.layout:1053 lib/layouts/elsart.layout:259
+#: lib/layouts/beamer.layout:1097 lib/layouts/elsart.layout:259
 #: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
 #: lib/layouts/ijmpc.layout:318 lib/layouts/ijmpc.layout:335
 #: lib/layouts/ijmpd.layout:321 lib/layouts/ijmpd.layout:341
@@ -5339,7 +5340,7 @@ msgstr "Podmienka"
 msgid "Conjecture"
 msgstr "Hypotéza"
 
-#: lib/layouts/AEA.layout:166 lib/layouts/beamer.layout:983
+#: lib/layouts/AEA.layout:166 lib/layouts/beamer.layout:1027
 #: lib/layouts/elsart.layout:322 lib/layouts/foils.layout:250
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:354
 #: lib/layouts/ijmpd.layout:366 lib/layouts/llncs.layout:321
@@ -5374,7 +5375,7 @@ msgstr "Korolár"
 msgid "Criterion"
 msgstr "Kritérium"
 
-#: lib/layouts/AEA.layout:181 lib/layouts/beamer.layout:1011
+#: lib/layouts/AEA.layout:181 lib/layouts/beamer.layout:1055
 #: lib/layouts/elsart.layout:350 lib/layouts/foils.layout:264
 #: lib/layouts/heb-article.layout:75 lib/layouts/llncs.layout:335
 #: lib/layouts/siamltex.layout:125 lib/layouts/theorems-ams-bytype.inc:181
@@ -5394,7 +5395,7 @@ msgstr "Kritérium"
 msgid "Definition"
 msgstr "Definícia"
 
-#: lib/layouts/AEA.layout:188 lib/layouts/beamer.layout:1023
+#: lib/layouts/AEA.layout:188 lib/layouts/beamer.layout:1067
 #: lib/layouts/elsart.layout:371 lib/layouts/llncs.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:206
 #: lib/layouts/theorems-ams-bytype.inc:216
@@ -5566,9 +5567,9 @@ msgstr "Popis"
 
 #: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:31
 #: lib/layouts/amsbook.layout:32 lib/layouts/beamer.layout:33
-#: lib/layouts/beamer.layout:904 lib/layouts/beamer.layout:923
-#: lib/layouts/beamer.layout:942 lib/layouts/beamer.layout:1062
-#: lib/layouts/beamer.layout:1086 lib/layouts/beamer.layout:1124
+#: lib/layouts/beamer.layout:948 lib/layouts/beamer.layout:967
+#: lib/layouts/beamer.layout:986 lib/layouts/beamer.layout:1106
+#: lib/layouts/beamer.layout:1130 lib/layouts/beamer.layout:1168
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:36
 #: lib/layouts/tufte-book.layout:195 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
@@ -5586,7 +5587,7 @@ msgid "Caption: "
 msgstr "Popis: "
 
 #: lib/layouts/AEA.layout:269 lib/layouts/IEEEtran.layout:289
-#: lib/layouts/beamer.layout:1047 lib/layouts/elsart.layout:288
+#: lib/layouts/beamer.layout:1091 lib/layouts/elsart.layout:288
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:315 lib/layouts/ijmpd.layout:318
 #: lib/layouts/llncs.layout:376 lib/layouts/siamltex.layout:154
@@ -5631,7 +5632,7 @@ msgstr "Štandard"
 #: lib/layouts/aapaper.layout:170 lib/layouts/aastex.layout:95
 #: lib/layouts/aastex.layout:217 lib/layouts/achemso.layout:54
 #: lib/layouts/agutex.layout:54 lib/layouts/apa.layout:39
-#: lib/layouts/beamer.layout:734 lib/layouts/broadway.layout:185
+#: lib/layouts/beamer.layout:778 lib/layouts/broadway.layout:185
 #: lib/layouts/cl2emult.layout:40 lib/layouts/docbook-book.layout:11
 #: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
 #: lib/layouts/ectaart.layout:15 lib/layouts/egs.layout:249
@@ -5672,7 +5673,7 @@ msgstr "malé písmená"
 #: lib/layouts/aa.layout:276 lib/layouts/aapaper.layout:82
 #: lib/layouts/aapaper.layout:181 lib/layouts/aastex.layout:98
 #: lib/layouts/aastex.layout:229 lib/layouts/achemso.layout:77
-#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:791
+#: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:835
 #: lib/layouts/broadway.layout:199 lib/layouts/cl2emult.layout:58
 #: lib/layouts/ectaart.layout:102 lib/layouts/ectaart.layout:177
 #: lib/layouts/ectaart.layout:180 lib/layouts/egs.layout:291
@@ -5750,7 +5751,7 @@ msgstr "Prílohy"
 #: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
 #: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
 #: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
-#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:880
+#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:924
 #: lib/layouts/elsarticle.layout:301 lib/layouts/ijmpc.layout:411
 #: lib/layouts/ijmpc.layout:435 lib/layouts/ijmpd.layout:424
 #: lib/layouts/ijmpd.layout:448 lib/layouts/iopart.layout:243
@@ -5774,7 +5775,7 @@ msgstr "Príloha"
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
 #: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
-#: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:879
+#: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:923
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:103 lib/layouts/egs.layout:555
 #: lib/layouts/elsarticle.layout:297 lib/layouts/foils.layout:210
@@ -5800,7 +5801,7 @@ msgstr "Bibliografia"
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:485 lib/layouts/aastex.layout:498
 #: lib/layouts/achemso.layout:252 lib/layouts/agutex.layout:215
-#: lib/layouts/beamer.layout:893 lib/layouts/cl2emult.layout:117
+#: lib/layouts/beamer.layout:937 lib/layouts/cl2emult.layout:117
 #: lib/layouts/egs.layout:569 lib/layouts/elsarticle.layout:312
 #: lib/layouts/ijmpc.layout:446 lib/layouts/ijmpd.layout:459
 #: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
@@ -5824,7 +5825,7 @@ msgstr "Životopis bez fotky"
 msgid "BiographyNoPhoto"
 msgstr "ŽivotopisBezFotky"
 
-#: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:1050
+#: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:1094
 #: lib/layouts/foils.layout:281 lib/layouts/llncs.layout:379
 #: lib/layouts/siamltex.layout:170 lib/layouts/svmono.layout:85
 #: lib/layouts/svmono.layout:89 lib/layouts/svmono.layout:93
@@ -16469,7 +16470,7 @@ msgstr ""
 "Táto šablóna použije program XBoard na editáciu pozície.\n"
 "Použite 'File->Save Position' v XBoard-u pre uloženie\n"
 "pozície, ktorú chcete zobraziť.\n"
-"Uistite sa, že má rozšírenie '.fen'\n"
+"Uistite sa, že má príponu '.fen'\n"
 "a nezabudnite dať relatívnu cestu\n"
 "k súboru do dokumentu LyX-a.\n"
 "Vnútri XBoard-u, použite 'Edit->Edit Position'\n"
@@ -18253,7 +18254,7 @@ msgstr ""
 msgid "LaTeX failed"
 msgstr "LaTeX zlyhal"
 
-#: src/Converter.cpp:630
+#: src/Converter.cpp:660
 msgid "Output is empty"
 msgstr "Výstup je prázdny"
 
@@ -18736,16 +18737,16 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Použitie: lyx [prepínače ] [ názov.lyx ... ]\n"
-"Prepínače (sú citlivé na veľkosť písmen):\n"
+"Prepínače (rozlišuje sa veľkosť písmen):\n"
 "\t-help              sumarizuje použitie LyX\n"
-"\t-userdir dir       pokúsi sa nastaviť používateľský adresár\n"
-"\t-sysdir dir        pokúsi sa nastaviť systémový adresár\n"
-"\t-geometry WxH+X+Y  nastaví geometriu hlavného okna\n"
-"\t-dbg feature[,feature]...\n"
-"                  vyberie patričnú vlastnosť na ladenie.\n"
-"                  Príkaz `lyx -dbg' vypíše zoznam ladiacich vlastností\n"
-"\t-x [--execute] command\n"
-"                  spustí lyx-príkaz command .\n"
+"\t-userdir dir       nastaviť používateľský adresár na dir\n"
+"\t-sysdir dir        nastaviť systémový adresár na dir\n"
+"\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
+"\t-dbg časť[,časť]...\n"
+"                  vyber patričné časti na ladenie.\n"
+"                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
+"\t-x [--execute] príkaz\n"
+"                  spustí lyx-príkaz príkaz.\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportný formát.\n"
 "                  Pozrite si Nástroje->Preferencie->Obsluha "
@@ -18764,14 +18765,15 @@ msgstr ""
 "                  Keď `all', tak bude prepísaný každý súbor počas\n"
 "                    dávkového exportu.\n"
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
-"                  Keď `none' nebude nič prepísané.                  Všetko "
-"iné je rovnocenné k `all', len že nie je skonzumované.\n"
+"                  Keď `none' nebude nič prepísané.\n"
+"                  Všetko iné je rovnocenné k `all', len že nie je "
+"skonzumované.\n"
 "\t-n [--no-remote]\n"
 "                 otvorí dokumenty v novej inštancii\n"
 "\t-r [--remote]\n"
 "                  otvorí dokumenty v už spustenej inštancii\n"
-"                  (pracujúca lyx-pipa je potrebná)\n"
-"\t--batch    spusti príkazy bez GUI a skonč.\n"
+"                  (potrebujete pracujúci lyx-dátovod)\n"
+"\t-batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
@@ -19196,7 +19198,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3349
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Rozšírenie výstupu tlače. Obyčajne \".ps\"."
+msgstr "Prípona výstupného súboru tlače. Obyčajne \".ps\"."
 
 #: src/LyXRC.cpp:3353
 msgid "The option to print out in landscape."
@@ -19308,7 +19310,7 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Toto spúšťa lyxserver. Dátovody sú rozšírené o \".in\" a \".out\". Iba pre "
+"Toto spúšťa lyxserver. Dátovody dostanú prípony \".in\" a \".out\". Iba pre "
 "pokročilých užívateľov."
 
 #: src/LyXRC.cpp:3448
