@@ -71,7 +71,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-07 01:34+0200\n"
+"POT-Creation-Date: 2012-04-12 07:51-0400\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -108,7 +108,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
 msgid "&Close"
 msgstr "&Sulje"
 
@@ -121,7 +121,7 @@ msgid "The label as it appears in the document"
 msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190
+#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
 msgid "&Label:"
 msgstr "&Nimike:"
 
@@ -185,18 +185,20 @@ msgstr "Viitteiden otsikko"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:193
 #, fuzzy
 msgid "&Processor:"
 msgstr "Suojaa:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 #, fuzzy
 msgid "Select a processor"
 msgstr "Valitse tiedosto"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868
+#: src/frontends/qt4/GuiPrefs.cpp:868 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Valinnat:"
 
@@ -233,7 +235,7 @@ msgstr "Käytettävä BiBTeX-tietokanta"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:349
+#: src/CutAndPaste.cpp:349 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Lisää"
 
@@ -305,7 +307,7 @@ msgstr "Lisää &lähdeluettelo sisällysluetteloon"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
 msgid "&OK"
 msgstr "&OK"
 
@@ -549,7 +551,7 @@ msgid "Define or change background color"
 msgstr "Aseta tai muuta taustaväri"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:126
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "&Muuta väri..."
 
@@ -558,8 +560,8 @@ msgid "Remove the selected branch"
 msgstr "Poista valittu haara"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3793
-#: src/Buffer.cpp:3806
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3794
+#: src/Buffer.cpp:3807 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Poista"
 
@@ -598,7 +600,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1136
-#: src/Buffer.cpp:2379 src/Buffer.cpp:3768 src/Buffer.cpp:3831
+#: src/Buffer.cpp:2379 src/Buffer.cpp:3769 src/Buffer.cpp:3832
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1830
@@ -856,7 +858,7 @@ msgstr "Ota muutos käyttöön heti"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1906
-#: src/frontends/qt4/GuiDocument.cpp:3168
+#: src/frontends/qt4/GuiDocument.cpp:3168 src/frontends/qt4/ui_RefUi.h:338
 msgid "&Apply"
 msgstr "&Toteuta"
 
@@ -1908,6 +1910,7 @@ msgstr "URL:ään liittyvä nimi"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
+#: src/frontends/qt4/ui_RefUi.h:332
 msgid "&Name:"
 msgstr "&Nimi:"
 
@@ -2026,6 +2029,7 @@ msgid "&Edit"
 msgstr "&Muokkaa"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:213
 #, fuzzy
 msgid "A&vailable Indexes:"
 msgstr "Olemassa olevat haarat:"
@@ -2034,65 +2038,67 @@ msgstr "Olemassa olevat haarat:"
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:192
 #, fuzzy
 msgid "Index generation"
 msgstr "Sise&nnys"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 #, fuzzy
 msgid "&Use multiple indexes"
 msgstr "Kaikki viivat pois"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:[[index]]"
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Lisää uusi haara listaan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
+#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 #, fuzzy
 msgid "Remove the selected index"
 msgstr "Poista valittu tietokanta"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 #, fuzzy
 msgid "Rename the selected index"
 msgstr "Poista valittu tietokanta"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 #, fuzzy
 msgid "R&ename..."
 msgstr "Muuta nimeä"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 #, fuzzy
 msgid "Define or change button color"
 msgstr "Aseta tai muuta taustaväri"
@@ -2495,7 +2501,7 @@ msgid "Update the display"
 msgstr "Päivitä näyttö"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:93
+#: src/frontends/qt4/ui/ViewSourceUi.ui:93 src/frontends/qt4/ui_RefUi.h:336
 msgid "&Update"
 msgstr "Päi&vitä"
 
@@ -3036,7 +3042,7 @@ msgstr "Päiväysmuoto"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355
+#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
 msgid "&Format:"
 msgstr "&Muoto:"
 
@@ -4594,102 +4600,103 @@ msgstr ""
 msgid "&Statusbar messages"
 msgstr "Teksti- tai taulukko-upotteen viestit"
 
-#: src/frontends/qt4/ui/RefUi.ui:22
+#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
 #, fuzzy
 msgid "La&bels in:"
 msgstr "Otsikoitu kappale:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
 #, fuzzy
 msgid "&References"
 msgstr "Viitteet"
 
-#: src/frontends/qt4/ui/RefUi.ui:76
+#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
 #, fuzzy
 msgid "Fil&ter:"
 msgstr "Tie&dosto:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89
+#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
 msgid "Enter string to filter the label list"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:99
+#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
 #, fuzzy
 msgid "Filter case-sensitively"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:102
+#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
 #, fuzzy
 msgid "Case-sensiti&ve"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:127
+#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:130
+#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
 msgid "&Sort"
 msgstr "Järjestä"
 
-#: src/frontends/qt4/ui/RefUi.ui:140
+#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
 #, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Järjestä nimikkeet aakkosjärjestykseen"
 
-#: src/frontends/qt4/ui/RefUi.ui:143
+#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
 #, fuzzy
 msgid "Cas&e-sensitive"
 msgstr "Sa&ma kirjainkoko"
 
-#: src/frontends/qt4/ui/RefUi.ui:150
+#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr ""
 
-#: src/frontends/qt4/ui/RefUi.ui:153
+#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
 #, fuzzy
 msgid "Grou&p"
 msgstr "&Nimi:"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:317
 msgid "&Go to Label"
 msgstr "Siirry nimikkeeseen"
 
-#: src/frontends/qt4/ui/RefUi.ui:212
+#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
 msgid "Cross-reference as it appears in output"
 msgstr "Viite sellaisena kuin se on tulosteessa"
 
-#: src/frontends/qt4/ui/RefUi.ui:216
+#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
 msgid "<reference>"
 msgstr "<viite>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221
+#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
 msgid "(<reference>)"
 msgstr "(<viite>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226
+#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
 msgid "<page>"
 msgstr "<sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231
+#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
 msgid "on page <page>"
 msgstr "sivulla <sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236
+#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
 msgid "<reference> on page <page>"
 msgstr "<viite> sivulla <sivu>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
 msgid "Formatted reference"
 msgstr "Muotoiltu viittaus"
 
-#: src/frontends/qt4/ui/RefUi.ui:246
+#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
 #, fuzzy
 msgid "Textual reference"
 msgstr "Kaikki viitteet"
 
-#: src/frontends/qt4/ui/RefUi.ui:291
+#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
 msgid "Update the label list"
 msgstr "Päivitä nimikeluettelo"
 
@@ -17770,7 +17777,7 @@ msgstr ""
 "Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-"
 "skriptiepäonnistui muuntamaan sitä."
 
-#: src/Buffer.cpp:1123 src/Buffer.cpp:3778 src/Buffer.cpp:3840
+#: src/Buffer.cpp:1123 src/Buffer.cpp:3779 src/Buffer.cpp:3841
 #, fuzzy
 msgid "File is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
@@ -18021,21 +18028,21 @@ msgstr "Tiedostonimessä virhe"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/Buffer.cpp:3695
+#: src/Buffer.cpp:3696
 msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
-#: src/Buffer.cpp:3705
+#: src/Buffer.cpp:3706
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
-#: src/Buffer.cpp:3711
+#: src/Buffer.cpp:3712
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
-#: src/Buffer.cpp:3764
+#: src/Buffer.cpp:3765
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -18045,65 +18052,65 @@ msgstr ""
 "Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
 "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3768
 msgid "Load emergency save?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3769
 msgid "&Recover"
 msgstr "Pelasta"
 
-#: src/Buffer.cpp:3768
+#: src/Buffer.cpp:3769
 #, fuzzy
 msgid "&Load Original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:3779
+#: src/Buffer.cpp:3780
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3785
+#: src/Buffer.cpp:3786
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3788
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3788
+#: src/Buffer.cpp:3789
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3792 src/Buffer.cpp:3804
+#: src/Buffer.cpp:3793 src/Buffer.cpp:3805
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/Buffer.cpp:3793 src/Buffer.cpp:3806
+#: src/Buffer.cpp:3794 src/Buffer.cpp:3807
 #, fuzzy
 msgid "&Keep"
 msgstr "&Säilytä vastaavat"
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3798
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3798
+#: src/Buffer.cpp:3799
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3805
+#: src/Buffer.cpp:3806
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:3828
+#: src/Buffer.cpp:3829
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -18114,45 +18121,45 @@ msgstr ""
 "\n"
 "Ladataanko mieluummin varmuuskopio?"
 
-#: src/Buffer.cpp:3830
+#: src/Buffer.cpp:3831
 msgid "Load backup?"
 msgstr "Ladataanko varmuuskopio?"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3832
 msgid "&Load backup"
 msgstr "Lataa varmuuskopio"
 
-#: src/Buffer.cpp:3831
+#: src/Buffer.cpp:3832
 msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:3841
+#: src/Buffer.cpp:3842
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4181 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4182 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Järjetöntä!!! "
 
-#: src/Buffer.cpp:4368
+#: src/Buffer.cpp:4369
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/Buffer.cpp:4371
+#: src/Buffer.cpp:4372
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/Buffer.cpp:4437
+#: src/Buffer.cpp:4438
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Sisällytä tiedosto...|y"
 
-#: src/Buffer.cpp:4438
+#: src/Buffer.cpp:4439
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18820,12 +18827,12 @@ msgstr "upotteen kehys"
 msgid "ignore"
 msgstr "ohita"
 
-#: src/Converter.cpp:330 src/Converter.cpp:493 src/Converter.cpp:516
-#: src/Converter.cpp:559
+#: src/Converter.cpp:341 src/Converter.cpp:523 src/Converter.cpp:546
+#: src/Converter.cpp:589
 msgid "Cannot convert file"
 msgstr "Tiedoston muuntaminen epäonnistui"
 
-#: src/Converter.cpp:331
+#: src/Converter.cpp:342
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -18834,46 +18841,46 @@ msgstr ""
 "Ei tietoa, miten muuntaa muodosta %1$s muotoon %2$s.\n"
 "Määritä muunnin asetuksissa."
 
-#: src/Converter.cpp:444 src/Format.cpp:317 src/Format.cpp:385
+#: src/Converter.cpp:474 src/Format.cpp:317 src/Format.cpp:385
 msgid "Executing command: "
 msgstr "Komento on käynnissä:"
 
-#: src/Converter.cpp:488
+#: src/Converter.cpp:518
 msgid "Build errors"
 msgstr "Käännösvirheet"
 
-#: src/Converter.cpp:489
+#: src/Converter.cpp:519
 msgid "There were errors during the build process."
 msgstr "Käännösprosessin aikana tapahtui virheitä."
 
-#: src/Converter.cpp:494
+#: src/Converter.cpp:524
 #, fuzzy, c-format
 msgid ""
 "An error occurred while running:\n"
 "%1$s"
 msgstr "Muunnosskriptin %1$s suorittaminen epäonnistui."
 
-#: src/Converter.cpp:517
+#: src/Converter.cpp:547
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Väliaikaisen hakemiston siiro paikasta %1$s paikkaan %1$s epäonnistui."
 
-#: src/Converter.cpp:561
+#: src/Converter.cpp:591
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Väliaikaisen tiedoston kopiointi paikasta %1$s paikkaan %2$s."
 
-#: src/Converter.cpp:562
+#: src/Converter.cpp:592
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 "Väliaikaisen tiedoston siirtäminen paikasta %1$s paikkaan %2$s epäonnistui."
 
-#: src/Converter.cpp:618
+#: src/Converter.cpp:648
 msgid "Running LaTeX..."
 msgstr "LaTeX käynnissä..."
 
-#: src/Converter.cpp:637
+#: src/Converter.cpp:667
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -18882,15 +18889,15 @@ msgstr ""
 "LaTeX-ajo ei onnistunut. Lisäksi LyX ei löytänyt LaTeX-ajon lokitiedostoa "
 "%1$s."
 
-#: src/Converter.cpp:640
+#: src/Converter.cpp:670
 msgid "LaTeX failed"
 msgstr "LaTeX-ajo epäonnistui"
 
-#: src/Converter.cpp:642
+#: src/Converter.cpp:672
 msgid "Output is empty"
 msgstr "tulostiedosto on tyhjä"
 
-#: src/Converter.cpp:643
+#: src/Converter.cpp:673
 msgid "An empty output file was generated."
 msgstr "Saatiin tyhjä tulostiedosto."
 
