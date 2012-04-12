@@ -89,6 +89,9 @@ What's new
   flag by using the same latex backend used for previewing the document
   instead of always using the plain latex backend.
 
+- Fix crash when dissolving a math macro whose first argument is another
+  parameterless macro (bug 8105).
+
 
 * USER INTERFACE
 
