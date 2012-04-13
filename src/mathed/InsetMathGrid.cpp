@@ -184,7 +184,6 @@ bool InsetMathGrid::interpretString(Cursor & cur, docstring const & str)
 		FuncStatus status;
 		if (getStatus(cur, fr, status)) {
 			if (status.enabled()) {
-				cur.recordUndoInset();
 				rowinfo_[cur.row()].lines_++;
 				return true;
 			}
