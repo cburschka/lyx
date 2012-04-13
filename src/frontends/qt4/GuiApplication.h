@@ -185,6 +185,8 @@ private:
 	///
 	void validateCurrentView();
 	///
+	void updateCurrentView(FuncRequest const & cmd, DispatchResult & dr);
+	///
 	bool closeAllViews();
 	/// read the given ui (menu/toolbar) file
 	bool readUIFile(QString const & name, bool include = false);

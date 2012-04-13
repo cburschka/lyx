@@ -89,9 +89,6 @@ What's new
   flag by using the same latex backend used for previewing the document
   instead of always using the plain latex backend.
 
-- Fix crash when dissolving a math macro whose first argument is another
-  parameterless macro (bug 8105).
-
 
 * USER INTERFACE
 
@@ -133,6 +130,13 @@ What's new
   (bug 8107).
 
 - Made it possible to delete local layout in Document>Settings.
+
+- Fix crash when dissolving a math macro whose first argument is another
+  parameterless macro (bug 8105).
+
+- Update the current view after dispatching a command through the lyxserver.
+  The missing screen update could cause either a failure in executing the
+  command or could even crash LyX (bugs 6871 and 8119).
 
 
 * DOCUMENTATION AND LOCALIZATION
