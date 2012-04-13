@@ -1173,10 +1173,10 @@ void Server::callback(string const & msg)
 			// connect to the lyxfunc in the single GuiView we
 			// support currently. (Lgb)
 
-			FuncRequest const fr(lyxaction.lookupFunc(cmd), arg);
+			FuncRequest fr(lyxaction.lookupFunc(cmd), arg);
+			fr.setOrigin(FuncRequest::LYXSERVER);
 			DispatchResult dr;
 			theApp()->dispatch(fr, dr);
-			theApp()->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			string const rval = to_utf8(dr.message());
 
 			// all commands produce an INFO or ERROR message

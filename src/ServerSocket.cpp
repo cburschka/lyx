@@ -141,9 +141,10 @@ void ServerSocket::dataCallback(int fd)
 		string const key = line.substr(0, pos);
 		if (key == "LYXCMD") {
 			string const cmd = line.substr(pos + 1);
+			FuncRequest fr(lyxaction.lookupFunc(cmd));
+			fr.setOrigin(FuncRequest::LYXSERVER);
 			DispatchResult dr;
-			theApp()->dispatch(lyxaction.lookupFunc(cmd), dr);
-			theApp()->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+			theApp()->dispatch(fr, dr);
 			string const rval = to_utf8(dr.message());
 			if (dr.error())
 				client->writeln("ERROR:" + cmd + ':' + rval);
