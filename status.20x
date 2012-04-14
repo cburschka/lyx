@@ -122,6 +122,9 @@ What's new
 - Allow the <Enter> key to add a new branch in document settings.
   Only <Ctrl+Enter> and numpad-<Enter> will also close the dialog.
 
+- Box settings dialog didn't work if you were actually inside the box 
+  (bug 8124).
+
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
 
 - Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
