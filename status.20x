@@ -73,14 +73,14 @@ What's new
 - Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
 
 - Fix reconfiguration on Windows when the temporary directory used by
-  python contains non-ascii characters.
+  python contains non-ASCII characters.
 
 - Fix reconfiguration on Windows when the user directory is a UNC path
   (bug 8098).
 
 - Index entries in XHTML output no longer sorted case sensitively.
 
-- Fixed some probelms XHTML output had with empty paragraphs.
+- Fixed some problems XHTML output had with empty paragraphs.
 
 - Fixed reading the bounding box from EPS figures with negative
   values (bug 8114).
