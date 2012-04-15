@@ -1926,6 +1926,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.setCurrentFont();
 			dr.forceBufferUpdate();
 		}
+		break;
 	}
 
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
