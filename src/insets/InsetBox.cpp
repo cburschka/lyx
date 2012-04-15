@@ -190,10 +190,19 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
+		string const first_arg = cmd.getArg(0);
+		bool const change_type = first_arg == "changetype";
+		bool const for_box = first_arg == "box";
+		if (!change_type && !for_box) {
+			// not for us
+			// this will not be handled higher up
+			cur.undispatched();
+			return;
+		}
 		cur.recordUndoInset(ATOMIC_UNDO, this);
-		if (cmd.getArg(0) == "changetype") {
+		if (change_type)
 			params_.type = cmd.getArg(1);
-		} else
+		else // if (for_box)
 			string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
