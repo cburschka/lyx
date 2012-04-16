@@ -2815,11 +2815,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, t.asInput(), context);
 		}
 
-		else if (t.cs() == "tableofcontents") {
+		else if (t.cs() == "tableofcontents" || t.cs() == "lstlistoflistings") {
 			context.check_layout(os);
-			begin_command_inset(os, "toc", "tableofcontents");
+			begin_command_inset(os, "toc", t.cs());
 			end_inset(os);
 			skip_spaces_braces(p);
+			if (t.cs() == "lstlistoflistings")
+				preamble.registerAutomaticallyLoadedPackage("listings");
 		}
 
 		else if (t.cs() == "listoffigures") {

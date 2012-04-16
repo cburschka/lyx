@@ -170,22 +170,32 @@ InsetLayout Phantom
 	ForcePlain            true
 End
 
-InsetLayout IncludeListings
+InsetLayout ListOfListings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.
 	# "Listings[[List of Listings]]" is the name of the "List of listings"
 	# ("Listings" is the predefined english name) in listings.sty, so it
 	# must be used here as well.
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
 		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
 	EndBabelPreamble
-	# The commands do not need to be defined in LangPreamble, since
-	# listings.sty does that already. However they need to be redefined
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+	EndLangPreamble
+End
+
+InsetLayout IncludeListings
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
+	EndBabelPreamble
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
 		\renewcommand{\lstlistingname}{_(Listing)}
-		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
 	EndLangPreamble
 End
 

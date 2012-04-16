@@ -496,9 +496,11 @@ void TocWidget::filterContents()
 static QString decodeType(QString const & str)
 {
 	QString type = str;
-	if (type.contains("tableofcontents")) {
+	if (type.contains("tableofcontents"))
 		type = "tableofcontents";
-	} else if (type.contains("floatlist")) {
+	else if (type.contains("lstlistoflistings"))
+		type = "listing";
+	else if (type.contains("floatlist")) {
 		if (type.contains("\"figure"))
 			type = "figure";
 		else if (type.contains("\"table"))

@@ -34,10 +34,10 @@ from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, 
   #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   #del_token, check_token
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
 
 #from lyx2lyx_tools import insert_to_preamble, \
-#  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
+#  lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
 ####################################################################
@@ -690,6 +690,46 @@ def convert_table_rotation(document):
       i += 1
 
 
+def convert_listoflistings(document):
+    'Convert ERT \lstlistoflistings to TOC lstlistoflistings inset'
+    # We can support roundtrip because the command is so simple
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset ERT", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of ERT inset")
+            i += 1
+            continue
+        ert = get_ert(document.body, i)
+        if ert == "\\lstlistoflistings{}":
+            document.body[i:j] = ["\\begin_inset CommandInset toc", "LatexCommand lstlistoflistings", ""]
+            i = i + 4
+        else:
+            i = j + 1
+
+
+def revert_listoflistings(document):
+    'Convert TOC lstlistoflistings inset to ERT lstlistoflistings'
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset toc", i)
+        if i == -1:
+            return
+        if document.body[i+1] == "LatexCommand lstlistoflistings":
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed lyx document: Can't find end of TOC inset")
+                i += 1
+                continue
+            subst = put_cmd_in_ert("\\lstlistoflistings{}")
+            document.body[i:j+1] = subst
+            add_to_preamble(document, ["\\usepackage{listings}"])
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -711,10 +751,12 @@ convert = [
            [426, []],
            [427, []],
            [428, [convert_cell_rotation]],
-           [429, [convert_table_rotation]]
+           [429, [convert_table_rotation]],
+           [430, [convert_listoflistings]],
           ]
 
 revert =  [
+           [429, [revert_listoflistings]],
            [428, [revert_table_rotation]],
            [427, [revert_cell_rotation]],
            [426, [revert_tipa]],

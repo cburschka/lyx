@@ -19,8 +19,8 @@ namespace lyx {
 
 
 /// Used to insert table of contents and similar lists
-/// at present, supports only \tableofcontents. Other
-/// such commands, such as \listoffigures, are supported
+/// at present, supports only \tableofcontents and \listoflistings.
+/// Other such commands, such as \listoffigures, are supported
 /// by InsetFloatList.
 class InsetTOC : public InsetCommand {
 public:
@@ -32,7 +32,11 @@ public:
 	///
 	InsetCode lyxCode() const { return TOC_CODE; }
 	///
+	docstring layoutName() const;
+	///
 	DisplayType display() const { return AlignCenter; }
+	///
+	virtual void validate(LaTeXFeatures &) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
@@ -52,8 +56,7 @@ public:
 	///
 	static std::string defaultCommand() { return "tableofcontents"; }
 	///
-	static bool isCompatibleCommand(std::string const & cmd)
-		{ return cmd == defaultCommand(); }
+	static bool isCompatibleCommand(std::string const & cmd);
 	//@}
 
 private:

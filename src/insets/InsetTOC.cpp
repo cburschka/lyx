@@ -37,6 +37,15 @@ using namespace std;
 
 namespace lyx {
 
+namespace {
+string cmd2type(string const & cmd)
+{
+	if (cmd == "lstlistoflistings")
+		return "listing";
+	return cmd;
+}
+}
+
 
 InsetTOC::InsetTOC(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
@@ -53,10 +62,18 @@ ParamInfo const & InsetTOC::findInfo(string const & /* cmdName */)
 }
 
 
+bool InsetTOC::isCompatibleCommand(string const & cmd)
+{
+	return cmd == defaultCommand() || cmd == "lstlistoflistings";
+}
+
+
 docstring InsetTOC::screenLabel() const
 {
 	if (getCmdName() == "tableofcontents")
 		return buffer().B_("Table of Contents");
+	if (getCmdName() == "lstlistoflistings")
+		return buffer().B_("List of Listings");
 	return _("Unknown TOC type");
 }
 
@@ -76,10 +93,27 @@ void InsetTOC::doDispatch(Cursor & cur, FuncRequest & cmd) {
 }
 
 
+docstring InsetTOC::layoutName() const
+{
+	if (getCmdName() == "lstlistoflistings")
+		return from_ascii("ListOfListings");
+	return docstring();
+}
+
+
+void InsetTOC::validate(LaTeXFeatures & features) const
+{
+	InsetCommand::validate(features);
+	features.useInsetLayout(getLayout());
+	if (getCmdName() == "lstlistoflistings")
+		features.require("listings");
+}
+
+
 int InsetTOC::plaintext(odocstream & os, OutputParams const &) const
 {
 	os << screenLabel() << "\n\n";
-	buffer().tocBackend().writePlaintextTocList(getCmdName(), os);
+	buffer().tocBackend().writePlaintextTocList(cmd2type(getCmdName()), os);
 	return PLAINTEXT_NEWLINE;
 }
 
@@ -94,6 +128,9 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 {
+	if (getCmdName() != "tableofcontents")
+		return docstring();
+
 	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='tochead " + tocclass + "'";
@@ -104,15 +141,14 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	Toc const & toc = buffer().tocBackend().toc("tableofcontents");
+	Toc const & toc = buffer().tocBackend().toc(cmd2type(getCmdName()));
 	if (toc.empty())
 		return docstring();
 
 	xs << html::StartTag("div", "class='toc'");
 
 	// Title of TOC
-	static string toctitle = N_("Table of Contents");
-	docstring title = buffer().B_(toctitle);
+	docstring title = screenLabel();
 	xs << html::StartTag("div", tocattr)
 		 << title
 		 << html::EndTag("div");

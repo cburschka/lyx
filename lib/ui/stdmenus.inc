@@ -451,6 +451,7 @@ Menuset
 		Item "Table of Contents|C" "inset-insert toc"
 		FloatListInsert
 		IndicesLists
+		Item "List of Listings|L" "inset-insert toc CommandInset toc LatexCommand lstlistoflistings \end_inset"
 		Item "Nomenclature|N" "nomencl-print"
 		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
