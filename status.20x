@@ -3,16 +3,21 @@
 This file describes what has been done in the preparation of LyX 2.0.4
 All comments are welcome.
 
-I'd be glad if some of you could take the time to check it out (or fix
-a bug or two if you are feeling adventurous). Let me recall that all
-these fixes have been checked into the BRANCH_2_0_X branch, which you
-can get with the command
-  svn co svn://svn.lyx.org/lyx/lyx-devel/branches/BRANCH_2_0_X
+We try to group things by topic and in decreasing order of importance. 
+Please feel free to re-arrange if that seems like a good idea.
 
-Richard
+All of these fixes have already been checked into the 2.0.x branch of
+LyX's git repository. The repository can be cloned via:
+  git clone git://git.lyx.org/lyx
+For more details on how to use the repository, please visit:
+  http://wiki.lyx.org/Devel/LyXGit
+A list of bugs fixed for this release can also be found at:
+  http://www.lyx.org/trac/wiki/BugTrackerHome
+as well as a list of bugs still targeted to the 2.0.4 release.
 
-[In this list, I try to group things by topic and in decreasing
-order of importance. This is, of course, subjective...]
+Richard Heck
+Branch Maintainer
+rgheck@lyx.org
 
 
 What's new
