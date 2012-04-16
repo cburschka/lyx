@@ -11,6 +11,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-04-16 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 430 (2773345)
+	  Support \lstlistoflistings in InsetTOC
+
+2012-03-21 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 429 (ea54461d85)
+	  support for table rotation
+	  (table option "rotate" specifies now a number with the rotation angle)
+
 2012-03-16 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 428 (7a46910f)
 	  support for table cell rotation
