@@ -35,7 +35,7 @@ public:
 		TOOLBAR, // A toolbar icon
 		KEYBOARD, // a keyboard binding
 		COMMANDBUFFER, 
-		LYXSERVER, 
+		LYXSERVER,
 		TOC
 	};
 
