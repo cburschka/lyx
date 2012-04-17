@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-11 20:23+0200\n"
+"POT-Creation-Date: 2012-04-17 10:23+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -41,13 +41,15 @@ msgstr "Autorské práva"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
-#: src/frontends/qt4/ui/ExternalUi.ui:608 src/frontends/qt4/ui/IncludeUi.ui:250
+#: src/frontends/qt4/ui/ExternalUi.ui:608
+#: src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:87
 #: src/frontends/qt4/ui/ParagraphUi.ui:260 src/frontends/qt4/ui/PrefsUi.ui:90
 #: src/frontends/qt4/ui/RefUi.ui:343 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
-#: src/frontends/qt4/ui/TexinfoUi.ui:58 src/frontends/qt4/ui/ThesaurusUi.ui:138
-#: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/ui/TexinfoUi.ui:58
+#: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
+#: src/frontends/qt4/GuiParagraph.cpp:161
 msgid "&Close"
 msgstr "&Zavrieť"
 
@@ -180,16 +182,17 @@ msgid "Enter BibTeX database name"
 msgstr "Vložte názov BibTeX databázy"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
-#: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:75
-#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:350
+#: src/frontends/qt4/ui/BranchesUi.ui:113
+#: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
+#: src/CutAndPaste.cpp:350
 msgid "&Add"
 msgstr "Pr&idať"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:127 src/frontends/qt4/ui/BibtexUi.ui:213
-#: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:110
-#: src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1501
+#: src/frontends/qt4/ui/BibtexAddUi.ui:127
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
+#: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
+#: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
+#: src/frontends/qt4/GuiApplication.cpp:1513
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -235,21 +238,25 @@ msgstr "Pridať literatúru do obsahu"
 msgid "Add bibliography to &TOC"
 msgstr "Pridať &literatúru do obsahu"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:200 src/frontends/qt4/ui/CharacterUi.ui:357
+#: src/frontends/qt4/ui/BibtexUi.ui:200
+#: src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:197
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:588
-#: src/frontends/qt4/ui/GraphicsUi.ui:721 src/frontends/qt4/ui/IncludeUi.ui:237
-#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
+#: src/frontends/qt4/ui/GraphicsUi.ui:721
+#: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
+#: src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/NoteUi.ui:38
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/frontends/qt4/ui/PhantomUi.ui:38
+#: src/frontends/qt4/ui/ParagraphUi.ui:240
+#: src/frontends/qt4/ui/PhantomUi.ui:38
 #: src/frontends/qt4/ui/PrintindexUi.ui:38 src/frontends/qt4/ui/RefUi.ui:317
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/ToggleWarningUi.ui:90 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:90
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
 
@@ -1997,7 +2004,7 @@ msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "&Lokálne schéma..."
+msgstr "&Lokálna schéma..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
@@ -2285,7 +2292,9 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
-msgstr "Špecifikácia alternatívnych schém tohto dokumentu"
+msgstr ""
+"Špecifikácia dodatočných schém pre tento dokument.\n"
+"Formát je ako v súboroch '*.layout'"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "&Validate"
@@ -10547,7 +10556,7 @@ msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Kontroluje schéma pre enumerate, itemize, description a list/labeling. "
+"Kontroluje schému pre enumerate, itemize, description a list/labeling.\n"
 "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
 "vysvetlenie."
 
@@ -13379,6 +13388,10 @@ msgid "Table of Contents|C"
 msgstr "Obsah"
 
 #: lib/ui/stdmenus.inc:454
+msgid "List of Listings|L"
+msgstr "Zoznam Výpisov"
+
+#: lib/ui/stdmenus.inc:455
 msgid "Nomenclature|N"
 msgstr "Nomenklatúra"
 
@@ -17576,7 +17589,7 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Súbor pre schéma:\n"
+"Súbor schémy:\n"
 "%1$s\n"
 "sa nedá nájsť. Bude použitá štandardná\n"
 "trieda a schéma. LyX nebude schopný zrobiť\n"
@@ -17595,9 +17608,9 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Kvôli chybe v ňom, súbor pre schéma:\n"
+"Súbor schémy:\n"
 "%1$s\n"
-"sa nedá nahrať. Bude použitá štandardná\n"
+"sa kvôli chybe v nej nedá nahrať. Bude použitá štandardná\n"
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
@@ -17607,7 +17620,7 @@ msgstr "Nepodarilo sa nahrať triedu"
 
 #: src/BufferParams.cpp:2040
 msgid "Error reading internal layout information"
-msgstr "Chyba pri čítaní vnútorných schéma-informácií"
+msgstr "Chyba pri čítaní vnútorných informácií pre schému"
 
 #: src/BufferParams.cpp:2041 src/TextClass.cpp:1496
 msgid "Read Error"
@@ -18282,16 +18295,16 @@ msgstr "&Nepridať"
 #: src/CutAndPaste.cpp:665 src/Text.cpp:388
 #, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Lokálne schéma `%1$s' sa nenašlo."
+msgstr "Schéma `%1$s' sa nenašla."
 
 #: src/CutAndPaste.cpp:667 src/Text.cpp:390
 msgid "Layout Not Found"
-msgstr "Lokálne Schéma Nenájdené"
+msgstr "Schéma Nenájdená"
 
 #: src/CutAndPaste.cpp:695
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr "Flexibilná vložka %1$s je nedefinovaná po načítaní schémy `%2$s'."
+msgstr "Flexibilná vložka %1$s nie je definovaná po načítaní schémy `%2$s'."
 
 #: src/CutAndPaste.cpp:698
 #, c-format
@@ -18299,7 +18312,7 @@ msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to "
 "`%3$s'."
 msgstr ""
-"Flexibilná vložka %1$s nedefinovaná kvôli konverzii z schémy `%2$s' na "
+"Flexibilná vložka %1$s nie je definovaná kvôli konverzii z schémy `%2$s' na "
 "`%3$s'."
 
 #: src/CutAndPaste.cpp:703
@@ -19431,7 +19444,7 @@ msgstr "&Vrátiť"
 
 #: src/Paragraph.cpp:2008
 msgid "Senseless with this layout!"
-msgstr "S týmto schéma to nemá zmysel!"
+msgstr "S touto schémou to nemá zmysel!"
 
 #: src/Paragraph.cpp:2070
 msgid "Alignment not permitted"
@@ -19442,7 +19455,7 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-"Nové schéma nepovoľuje používané zarovnanie.\n"
+"Nová schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
 #: src/Paragraph.cpp:3150
@@ -21209,7 +21222,7 @@ msgstr "Schémy dokumentov LyX-u (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1922 src/frontends/qt4/GuiDocument.cpp:1931
 msgid "Local layout file"
-msgstr "Lokálny súbor schém"
+msgstr "Lokálny súbor pre schému"
 
 #: src/frontends/qt4/GuiDocument.cpp:1932
 msgid ""
