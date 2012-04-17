@@ -9,6 +9,22 @@
 
 # Full author contact details are available in file CREDITS
 
+# This script is intended to include a BibTeX-generated biblography 
+# in a LaTeX file, as publishers often want. It can be run manually
+# on an exported LaTeX file, though it needs to be compiled first,
+# so the bbl file will exist.
+#
+# It should also be possible to create a LyX converter to run this
+# automatically. To set it up, create a format "ltxbbl"; make sure to 
+# check it as a document format. Then create a LaTeX-->ltxbbl converter, 
+# with the command:
+#   python -tt $$s/scripts/include_bib.py $$i $$0
+# and give it the "needaux" flag. You'll then have it in the export menu.
+# We do not activate this converter by default, because there are problems
+# when one tries to use multiple bibliographies.
+#
+# Please report any problems on the devel list.
+
 import sys, os
 
 class secbib:
