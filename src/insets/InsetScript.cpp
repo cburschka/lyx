@@ -145,7 +145,7 @@ InsetScript::~InsetScript()
 
 docstring InsetScript::layoutName() const
 {
-	return from_ascii("script:" + scripttranslator().find(params_.type));
+	return from_ascii("Script:" + scripttranslator().find(params_.type));
 }
 
 
@@ -399,25 +399,6 @@ int InsetScript::docbook(odocstream & os, OutputParams const & runparams) const
 	os << "</" + cmdname + '>';
 
 	return i;
-}
-
-
-docstring InsetScript::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
-{
-	string cmdname;
-	switch (params_.type) {
-	case InsetScriptParams::Subscript:
-		cmdname = "sub";
-		break;
-	case InsetScriptParams::Superscript:
-		cmdname = "sup";
-		break;
-	}
-
-	xs << html::StartTag(cmdname);
-	docstring const ret = InsetText::xhtml(xs, runparams);
-	xs << html::EndTag(cmdname);
-	return ret;
 }
 
 

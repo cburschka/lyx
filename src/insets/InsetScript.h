@@ -94,8 +94,6 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	///
 	void edit(Cursor & cur, bool front,
 	          EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
