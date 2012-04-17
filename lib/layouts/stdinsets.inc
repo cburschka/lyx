@@ -170,7 +170,7 @@ InsetLayout Phantom
 	ForcePlain            true
 End
 
-InsetLayout ListOfListings
+InsetLayout TOC:Listings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.
 	# "Listings[[List of Listings]]" is the name of the "List of listings"
@@ -187,7 +187,7 @@ InsetLayout ListOfListings
 	EndLangPreamble
 End
 
-InsetLayout IncludeListings
+InsetLayout Include:Listings
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
 	EndBabelPreamble
@@ -200,7 +200,7 @@ InsetLayout IncludeListings
 End
 
 InsetLayout Listings
-	CopyStyle IncludeListings
+	CopyStyle Include:Listings
 	LabelString           Listings[[inset]]
 	LatexType             none
 	Decoration            minimalistic
