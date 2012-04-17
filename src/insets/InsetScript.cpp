@@ -326,29 +326,6 @@ docstring InsetScript::toolTip(BufferView const &, int, int) const
 }
 
 
-void InsetScript::validate(LaTeXFeatures & features) const
-{
-	if (params_.type == InsetScriptParams::Subscript)
-		features.require("subscript");
-	InsetText::validate(features);
-}
-
-
-void InsetScript::latex(otexstream & os, OutputParams const & runparams) const
-{
-	switch (params_.type) {
-	case InsetScriptParams::Subscript:
-		os << "\\textsubscript{";
-		break;
-	case InsetScriptParams::Superscript:
-		os << "\\textsuperscript{";
-		break;
-	}
-	InsetText::latex(os, runparams);
-	os << "}";
-}
-
-
 int InsetScript::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	odocstringstream oss;

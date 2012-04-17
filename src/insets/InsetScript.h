@@ -86,10 +86,6 @@ public:
 	///
 	bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	///
-	virtual void validate(LaTeXFeatures &) const;
-	///
-	void latex(otexstream &, OutputParams const &) const;
-	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;

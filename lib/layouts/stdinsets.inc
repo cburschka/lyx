@@ -477,12 +477,19 @@ InsetLayout Preview
 End
 
 InsetLayout Script:superscript
+	LyXType standard
+	LatexType command
+	LaTeXName textsuperscript
 	MultiPar false
 	HTMLTag sup
 	HTMLIsBlock 0
 End
 
 InsetLayout Script:subscript
+	Requires subscript
+	LyXType standard
+	LatexType command
+	LaTeXName textsubscript
 	MultiPar false
 	HTMLTag sub
 	HTMLIsBlock 0
