@@ -82,10 +82,6 @@ public:
 	///
 	bool neverIndent() const { return true; }
 	///
-	bool forcePlainLayout(idx_type = 0) const { return true; }
-	///
-	bool allowParagraphCustomization(idx_type = 0) const { return false; }
-	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
