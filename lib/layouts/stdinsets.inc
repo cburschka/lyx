@@ -445,3 +445,15 @@ InsetLayout Preview
 	Decoration            minimalistic
 	MultiPar              true
 End
+
+InsetLayout Script:superscript
+	MultiPar false
+	HTMLTag sup
+	HTMLIsBlock 0
+End
+
+InsetLayout Script:subscript
+	MultiPar false
+	HTMLTag sub
+	HTMLIsBlock 0
+End
