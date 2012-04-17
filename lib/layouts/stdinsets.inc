@@ -476,21 +476,26 @@ InsetLayout Preview
 	MultiPar              true
 End
 
+
+InsetLayout Script
+	LatexType       command
+	MultiPar        false
+	ForcePlain      1
+	CustomPars      0
+	InToc           1
+	HTMLIsBlock     0
+End
+
+
 InsetLayout Script:superscript
-	LyXType standard
-	LatexType command
-	LaTeXName textsuperscript
-	MultiPar false
-	HTMLTag sup
-	HTMLIsBlock 0
+	CopyStyle       Script
+	LaTeXName       textsuperscript
+	HTMLTag         sup
 End
 
 InsetLayout Script:subscript
-	Requires subscript
-	LyXType standard
-	LatexType command
-	LaTeXName textsubscript
-	MultiPar false
-	HTMLTag sub
-	HTMLIsBlock 0
+	CopyStyle       Script
+	Requires        subscript
+	LaTeXName       textsubscript
+	HTMLTag         sub
 End
