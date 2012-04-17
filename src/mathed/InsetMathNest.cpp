@@ -806,7 +806,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.pos() == 0)
 			// May affect external cell:
 			cur.recordUndoInset();
-		else
+		else if (!cur.inMacroMode())
 			cur.recordUndoSelection();
 		// if the inset can not be removed from within, delete it
 		if (!cur.backspace()) {
@@ -1705,6 +1705,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		//lyxerr << "starting with macro" << endl;
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
+			cur.recordUndoInset();
 			docstring const safe = cap::grabAndEraseSelection(cur);
 			if (!cur.inRegexped())
 				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));

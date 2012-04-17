@@ -1356,7 +1356,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			hline_enabled = status.enabled();
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
-			cur.recordUndo();
+			cur.recordUndoInset();
 			cur.cell().insert(cur.pos(), grid.cell(0));
 			cur.pos() += grid.cell(0).size();
 			if (hline_enabled)
