@@ -1078,7 +1078,7 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 }
 
 
-void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwards)
+void replaceSelectionWithString(Cursor & cur, docstring const & str)
 {
 	cur.recordUndo();
 	DocIterator selbeg = cur.selectionBegin();
@@ -1097,13 +1097,6 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 
 	// Cut the selection
 	cutSelection(cur, true, false);
-
-	// select the replacement
-	if (backwards) {
-		selbeg.pos() += str.length();
-		cur.setSelection(selbeg, -int(str.length()));
-	} else
-		cur.setSelection(selbeg, str.length());
 }
 
 
