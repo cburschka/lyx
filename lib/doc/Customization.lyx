@@ -978,6 +978,40 @@ languages
 \end_inset
 
  this file contains a list of all the languages currently supported by LyX.
+\change_inserted -195340706 1334775793
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -195340706 1334775793
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+ this file contains translations for internationalized paragraph styles
+ (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -13028,8 +13062,25 @@ babel
 
 \begin_layout Standard
 One important point to note here is that the translations are provided by
- LyX itself, through the same mechanism it uses for internationalization
- of the user interface.
+ LyX itself, through the 
+\change_inserted -195340706 1334775793
+file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+
+\change_deleted -195340706 1334775793
+same mechanism it uses for internationalization of the user interface
+\change_unchanged
+.
  This means, in effect, that 
 \begin_inset Flex Code
 status collapsed
@@ -13052,9 +13103,34 @@ BabelPreamble
 
  are really only of use in layout files that are provided with LyX, since
  text entered in user-created layout files will not be seen by LyX's internation
-alization routines.
+alization routines
+\change_inserted -195340706 1334775793
+ unless the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+ file is modified accordingly
+\change_unchanged
+.
  That said, however, any layout created with the intention that it will
  be included with LyX should use these tags where appropriate.
+
+\change_inserted -195340706 1334775793
+ Please note that the paragraph style translations provided by LyX will
+ never change with a minor update (e.g.
+ from version 2.1.x to 2.1.y).
+ It is however quite likely that a major update (e.g.
+ from 2.0.x to 2.1.y) will introduce new translations or corrections.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -14255,6 +14331,7 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
+
 \change_inserted -195340706 1333913893
 \begin_inset Flex Code
 status collapsed
@@ -14265,7 +14342,8 @@ BabelPreamble
 
 \end_inset
 
- Preamble for changing languages. See section
+ Preamble for changing languages.
+ See section
 \begin_inset space ~
 \end_inset
 
@@ -14929,22 +15007,22 @@ Branch
 \end_inset
 
 ) modify this label on the fly.
-
 \end_layout
 
 \begin_layout Description
+
 \change_inserted -195340706 1333913893
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
 LangPreamble
 \end_layout
 
 \end_inset
 
- Language dependent preamble.  See section
+ Language dependent preamble.
+ See section
 \begin_inset space ~
 \end_inset
 
@@ -14956,7 +15034,6 @@ reference "sub:I18n"
 \end_inset
 
 .
-
 \end_layout
 
 \begin_layout Description
