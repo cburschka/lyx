@@ -395,7 +395,7 @@ string remove_braces(string const & value)
 } // anonymous namespace
 
 
-Preamble::Preamble() : one_language(true)
+Preamble::Preamble() : one_language(true), title_layout_found(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
