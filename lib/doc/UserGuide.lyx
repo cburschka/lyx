@@ -134,7 +134,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 424524441 "rgheck" 
+\author 5863208 "ab" 
 \author 2090807402 "usti" 
 \end_header
 
@@ -29285,6 +29285,28 @@ Inside math, the same effect can be achieved using math macros, see the
 Math
 \emph default
  manual.
+\change_inserted 5863208 1334492666
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1334493356
+Each type of branch is allowed to have its specific style defined in layout
+ files (e.g.
+ any branch inset can be automatically wrapped by your own LaTeX commands.).
+ For this advanced usage, please study Customization manual (in particular
+ section 
+\begin_inset Quotes eld
+\end_inset
+
+Flex insets and InsetLayout
+\begin_inset Quotes erd
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

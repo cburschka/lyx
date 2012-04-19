@@ -132,6 +132,7 @@ End
 \html_css_as_file 0
 \html_be_strict true
 \author -195340706 "Georg Baum" 
+\author 5863208 "ab" 
 \end_header
 
 \begin_body
@@ -14037,7 +14038,12 @@ status collapsed
 
 \end_inset
 
- indicates the inset whose layout is being defined, and here there are two
+ indicates the inset whose layout is being defined, and here there are 
+\change_inserted 5863208 1334489266
+three
+\change_deleted 5863208 1334489267
+two
+\change_unchanged
  cases.
 \end_layout
 
@@ -14314,6 +14320,65 @@ LyXType
 \end_inset
 
  entry, declaring which type of inset it defines.
+\change_inserted 5863208 1334489312
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 5863208 1334492248
+The layout for user specific branch is being defined.
+ In this case, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489384
+<Type>
+\end_layout
+
+\end_inset
+
+ must be of the form 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489392
+Branch:<name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489384
+name
+\end_layout
+
+\end_inset
+
+ may be be any valid identifier of branch defined in user's document.
+ The identifier may include spaces, but in that case the whole thing must
+ be wrapped in quotes.
+ The main purpose of this feature is to allow LaTeX wrapping around specific
+ branches as user needs.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard

@@ -109,7 +109,7 @@ private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring layoutName() const { return from_ascii("Branch"); }
+	docstring layoutName() const { return from_ascii("Branch:") + branch(); }
 	///
 	Inset * clone() const { return new InsetBranch(*this); }
 
