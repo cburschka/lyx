@@ -1165,8 +1165,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-                       string & last_env, bool & title_layout_found,
-                       Context & parent_context)
+                       string & last_env, Context & parent_context)
 {
 	Layout const * newlayout;
 	InsetLayout const * newinsetlayout = 0;
@@ -1511,8 +1510,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
-		if (!title_layout_found)
-			title_layout_found = newlayout->intitle;
+		if (!preamble.titleLayoutFound())
+			preamble.titleLayoutFound(newlayout->intitle);
 		set<string> const & req = newlayout->requires();
 		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 			preamble.registerAutomaticallyLoadedPackage(*it);
@@ -1906,7 +1905,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	bool const use_natbib = preamble.isPackageUsed("natbib");
 	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;
-	bool title_layout_found = false;
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -2233,7 +2231,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "begin")
 			parse_environment(p, os, outer, last_env,
-			                  title_layout_found, context);
+			                  context);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -2411,10 +2409,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// Must catch empty dates before findLayout is called below
 		else if (t.cs() == "date") {
+			eat_whitespace(p, os, context, false);
+			p.pushPosition();
 			string const date = p.verbatim_item();
-			if (date.empty())
+			p.popPosition();
+			if (date.empty()) {
 				preamble.suppressDate(true);
-			else {
+				p.verbatim_item();
+			} else {
 				preamble.suppressDate(false);
 				if (context.new_layout_allowed &&
 				    (newlayout = findLayout(context.textclass,
@@ -2422,16 +2424,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// write the layout
 					output_command_layout(os, p, outer,
 							context, newlayout);
-					p.skip_spaces();
-					if (!title_layout_found)
-						title_layout_found = newlayout->intitle;
+					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+					if (!preamble.titleLayoutFound())
+						preamble.titleLayoutFound(newlayout->intitle);
 					set<string> const & req = newlayout->requires();
 					for (set<string>::const_iterator it = req.begin();
 					     it != req.end(); it++)
 						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
-					handle_ert(os, "\\date{" + date + '}',
-							context);
+					handle_ert(os,
+						"\\date{" + p.verbatim_item() + '}',
+						context);
 			}
 		}
 
@@ -2444,8 +2447,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
-			if (!title_layout_found)
-				title_layout_found = newlayout->intitle;
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 				preamble.registerAutomaticallyLoadedPackage(*it);
@@ -2457,8 +2460,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
-			if (!title_layout_found)
-				title_layout_found = newlayout->intitle;
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 				preamble.registerAutomaticallyLoadedPackage(*it);
@@ -2744,7 +2747,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
-			if (title_layout_found) {
+			if (preamble.titleLayoutFound()) {
 				// swallow this
 				skip_spaces_braces(p);
 			} else
