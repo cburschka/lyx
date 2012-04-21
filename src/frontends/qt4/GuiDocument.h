@@ -287,7 +287,7 @@ public:
 	LocalLayout();
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
-	bool isValid() const { return is_valid_; }
+	bool isValid() const { return validated_; }
 
 Q_SIGNALS:
 	/// signal that something's changed in the Widget.
@@ -303,7 +303,7 @@ private Q_SLOTS:
 
 private:
 	BufferId current_id_;
-	bool is_valid_;
+	bool validated_;
 };
 
 

@@ -574,7 +574,7 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-LocalLayout::LocalLayout() : current_id_(0), is_valid_(false)
+LocalLayout::LocalLayout() : current_id_(0), validated_(false)
 {
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
@@ -612,7 +612,7 @@ void LocalLayout::textChanged()
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 
 	if (layout.empty()) {
-		is_valid_ = true;
+		validated_ = true;
 		validatePB->setEnabled(false);
 		validLB->setText("");
 		convertPB->hide();
@@ -620,7 +620,7 @@ void LocalLayout::textChanged()
 		changed();
 	} else if (!validatePB->isEnabled()) {
 		// if that's already enabled, we shouldn't need to do anything.
-		is_valid_ = false;
+		validated_ = false;
 		validLB->setText(message);
 		validatePB->setEnabled(true);
 		convertPB->setEnabled(false);
@@ -664,9 +664,9 @@ void LocalLayout::validate() {
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 	if (!layout.empty()) {
 		TextClass::ReturnValues const ret = TextClass::validate(layout);
-		is_valid_ = (ret == TextClass::OK) || (ret == TextClass::OK_OLDFORMAT);
+		validated_ = (ret == TextClass::OK) || (ret == TextClass::OK_OLDFORMAT);
 		validatePB->setEnabled(false);
-		validLB->setText(is_valid_ ? vtext : ivtext);
+		validLB->setText(validated_ ? vtext : ivtext);
 		if (ret == TextClass::OK_OLDFORMAT) {
 			convertPB->show();
 			convertPB->setEnabled(true);
