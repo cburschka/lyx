@@ -606,13 +606,26 @@ void LocalLayout::apply(BufferParams & params)
 
 void LocalLayout::textChanged()
 {
-	static const QString unknown = qt_("Press button to check validity...");
+	static const QString message =
+		qt_("Press button to check validity...");
+	string const layout =
+		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 
-	is_valid_ = false;
-	validLB->setText(unknown);
-	validatePB->setEnabled(true);
-	convertPB->setEnabled(false);
-	changed();
+	if (layout.empty()) {
+		is_valid_ = true;
+		validatePB->setEnabled(false);
+		validLB->setText("");
+		convertPB->hide();
+		convertLB->hide();
+		changed();
+	} else if (!validatePB->isEnabled()) {
+		// if that's already enabled, we shouldn't need to do anything.
+		is_valid_ = false;
+		validLB->setText(message);
+		validatePB->setEnabled(true);
+		convertPB->setEnabled(false);
+		changed();
+	}
 }
 
 
@@ -649,13 +662,7 @@ void LocalLayout::validate() {
 
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
-	if (layout.empty()) {
-		is_valid_ = true;
-		validatePB->setEnabled(false);
-		validLB->setText("");
-		convertPB->hide();
-		convertLB->hide();
-	} else {
+	if (!layout.empty()) {
 		TextClass::ReturnValues const ret = TextClass::validate(layout);
 		is_valid_ = (ret == TextClass::OK) || (ret == TextClass::OK_OLDFORMAT);
 		validatePB->setEnabled(false);
