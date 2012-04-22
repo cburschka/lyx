@@ -43,6 +43,7 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 {}
 
 
+// special code for InsetFlex when there is not the explicit Flex:: prefix
 InsetLayout const & InsetFlex::getLayout() const
 {
 	if (!buffer_)
