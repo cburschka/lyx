@@ -793,7 +793,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (all_pars) {
 		op.par_begin = 0;
 		op.par_end = 0;
-		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::OnlyBody);
+		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::IncludedFile);
 	} else
 		xs << XHTMLStream::ESCAPE_NONE 
 		   << "<!-- Included file: " 
