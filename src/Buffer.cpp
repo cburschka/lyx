@@ -1735,7 +1735,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
 	bool const output_body =
-	  output == FullSource || output == OnlyBody;
+	  output == FullSource || output == OnlyBody || output == IncludedFile;
 
 	if (output_preamble) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -1785,11 +1785,14 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	}
 
 	if (output_body) {
-		os << "<body>\n";
+		bool const output_body_tag = (output != IncludedFile);
+		if (output_body_tag)
+			os << "<body>\n";
 		XHTMLStream xs(os);
 		params().documentClass().counters().reset();
 		xhtmlParagraphs(text(), *this, xs, runparams);
-		os << "</body>\n";
+		if (output_body_tag)
+			os << "</body>\n";
 	}
 
 	if (output_preamble)

@@ -99,6 +99,9 @@ What's new
 - When configuring LyX, check for all LaTeX-packages LyX uses to display
   symbols (bug 8102).
 
+- Don't output extra body tags with included files when generating
+  XHTML.
+
 
 * USER INTERFACE
 
