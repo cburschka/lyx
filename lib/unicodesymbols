@@ -19,7 +19,7 @@
 # Do only add commands that give correct output, no hacks that look "similar".
 # TODO: fix "missing Qt keysequences (MacSpecialKey)" hacks (search for "Qt::")
 # Commands that modify other parts of the text should not be added either.
-# For this reason, all commnands requiring txfonts, pxfonts, fourier and
+# For this reason, all commands requiring txfonts, pxfonts, fourier and
 # mathdesign are commented out (these packages switch to fonts like times or
 # palatino). mathabx is not used because of many clashes with AMS math.
 
