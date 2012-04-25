@@ -2165,15 +2165,11 @@ cfrac
 \begin_layout Standard
 
 \series bold
-\begin_inset Formula $\cfrac[l]{A}{B+C}$
-\end_inset
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
 
-, 
-\begin_inset Formula $\cfrac{A}{B+C}$
-\end_inset
-
-, 
-\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -2345,6 +2341,13 @@ reference "sub:Selbstdefinierte-Brüche"
 \end_inset
 
  erklärt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -8902,7 +8905,7 @@ dasharrow
 \begin_inset VSpace medskip
 \end_inset
 
-Als Akzent verwendete Pfeile, wie z.
+Als Akzente verwendete Pfeile, wie z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14620,13 +14623,29 @@ t
 \emph on
 b
 \emph default
- steht für bottom und bedeutet, dass die letzte Absatzzeile in den umstehenden
- Text eingepasst wird.
+ steht für 
+\begin_inset Quotes gld
+\end_inset
+
+bottom
+\begin_inset Quotes grd
+\end_inset
+
+ (unten) und bedeutet, dass die letzte Absatzzeile in den umstehenden Text
+ eingepasst wird.
  Bei 
 \emph on
 t
 \emph default
- wie top geschieht dies für die erste Zeile.
+ wie 
+\begin_inset Quotes gld
+\end_inset
+
+top
+\begin_inset Quotes grd
+\end_inset
+
+ (oben) geschieht dies für die erste Zeile.
  Wird keine Position angegeben, wird der Absatz in mittlerer Höhe eingepasst,
  siehe das Kapitel 
 \emph on
@@ -33971,7 +33990,11 @@ B.
 
 .
  Argumentplatzhalter werden rot dargestellt.
- Es sind maximal 9 Argumente möglich.
+ Es sind maximal 9
+\begin_inset space ~
+\end_inset
+
+Argumente möglich.
  Optionale Argumente werden mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png
