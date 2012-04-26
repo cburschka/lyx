@@ -75,6 +75,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fixed assertions on Windows for XHTML output (bug 8078).
+
 - Fix reconfiguration on Windows when the user directory is a UNC path
   (bug 8098).
 

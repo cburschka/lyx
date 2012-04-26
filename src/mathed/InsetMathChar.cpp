@@ -193,7 +193,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 	}		
 
 	char const * type = 
-		(isalpha(char_) || Encodings::isMathAlpha(char_))
+		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
 	// we don't use MTag and ETag because we do not want the spacing
 	ms << "<" << type << ">" << char_type(char_) << "</" << type << ">";	
@@ -227,7 +227,7 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 		return;
 	}		
 
-	if (isalpha(char_) || Encodings::isMathAlpha(char_))
+	if (isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 		// we don't use MTag and ETag because we do not want the spacing
 		ms << MTag("i") << char_type(char_) << ETag("i");
 	else

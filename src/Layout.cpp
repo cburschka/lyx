@@ -1009,7 +1009,7 @@ string Layout::defaultCSSClass() const
 				d = from_ascii("lyx_");
 			else
 				d += '_';
-		} else if (islower(c))
+		} else if (isLower(c))
 			d += c;
 		else
 			// this is slow, so do it only if necessary

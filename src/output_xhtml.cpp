@@ -125,7 +125,7 @@ string cleanAttr(string const & str)
 	string::const_iterator it = str.begin();
 	string::const_iterator en = str.end();
 	for (; it != en; ++it)
-		newname += isalnum(*it) ? *it : '_';
+		newname += isAlnumASCII(*it) ? *it : '_';
 	return newname;	
 }
 
