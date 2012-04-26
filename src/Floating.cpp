@@ -16,6 +16,7 @@
 
 #include "support/debug.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 using namespace std;
 
@@ -67,9 +68,9 @@ string Floating::defaultCSSClass() const
 	string::const_iterator it = n.begin();
 	string::const_iterator en = n.end();
 	for (; it != en; ++it) {
-		if (!isalpha(*it))
+		if (!isAlphaASCII(*it))
 			d += "_";
-		else if (islower(*it))
+		else if (isLower(*it))
 			d += *it;
 		else
 			d += support::lowercase(*it);
