@@ -272,7 +272,9 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
-		if (conv.latex)
+		if (conv.latex) {
+			if (conv.latex_flavor == "latex")
+				return OutputParams::LATEX;
 			if (conv.latex_flavor == "xelatex")
 				return OutputParams::XETEX;
 			if (conv.latex_flavor == "lualatex")
@@ -281,6 +283,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 				return OutputParams::DVILUATEX;
 			if (conv.latex_flavor == "pdflatex")
 				return OutputParams::PDFLATEX;
+		}
 		if (conv.xml)
 			return OutputParams::XML;
 	}
