@@ -1446,7 +1446,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 
 	if (features.runparams().flavor == OutputParams::HTML
 	    && layout_->htmltitle()) {
-		features.setHTMLTitle(owner_->asString(AS_STR_INSETS));
+		features.setHTMLTitle(owner_->asString(AS_STR_INSETS | AS_STR_SKIPDELETE));
 	}
 
 	// check the params.
