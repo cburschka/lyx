@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-17 10:23+0200\n"
+"POT-Creation-Date: 2012-04-28 10:33+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17379,7 +17379,11 @@ msgstr "Prehľad preambule"
 msgid "Preview body"
 msgstr "Prehľad tela"
 
-#: src/Buffer.cpp:3432
+#: src/Buffer.cpp:3342
+msgid "% Plaintext does not have a preamble."
+msgstr "% Prostý text nemá preambulu."
+
+#: src/Buffer.cpp:3440
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
@@ -23170,7 +23174,7 @@ msgstr "Zoznam vetiev"
 
 #: src/frontends/qt4/qt_helpers.cpp:576
 msgid "List of Changes"
-msgstr "Zoznam zmien"
+msgstr "Zoznam Zmien"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:299
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:541
