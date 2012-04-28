@@ -3337,6 +3337,11 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		d->texrow.newline();
 		if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
+		} else if (runparams.flavor == OutputParams::TEXT) {
+			if (output == OnlyPreamble) {
+				os << _("% Plaintext does not have a preamble.");
+			} else
+				writePlaintextFile(*this, os, runparams);
 		} else if (params().isDocBook()) {
 				writeDocBookSource(os, absFileName(), runparams, output);
 		} else {
