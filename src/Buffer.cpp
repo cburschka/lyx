@@ -3306,9 +3306,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		texrow.newline();
 		texrow.newline();
 		// output paragraphs
-		if (params().isDocBook())
-			docbookParagraphs(text(), *this, os, runparams);
-		else if (runparams.flavor == OutputParams::HTML) {
+		if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
 			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
@@ -3318,6 +3316,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			// Probably should have some routine with a signature like them.
 			writePlaintextParagraph(*this,
 				text().paragraphs()[par_begin], os, runparams, dummy);
+		} else if (params().isDocBook()) {
+			docbookParagraphs(text(), *this, os, runparams);
 		} else {
 			// latex or literate
 			otexstream ots(os, texrow);
@@ -3335,11 +3335,11 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		d->texrow.reset();
 		d->texrow.newline();
 		d->texrow.newline();
-		if (params().isDocBook())
-			writeDocBookSource(os, absFileName(), runparams, output);
-		else if (runparams.flavor == OutputParams::HTML)
+		if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
-		else {
+		} else if (params().isDocBook()) {
+				writeDocBookSource(os, absFileName(), runparams, output);
+		} else {
 			// latex or literate
 			otexstream ots(os, d->texrow);
 			writeLaTeXSource(ots, string(), runparams, output);
