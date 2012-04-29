@@ -1231,7 +1231,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
-	bool const rtl = lastrow ? text_->isRTL(par) : false;
+	bool const rtl_on_lastrow = lastrow ? text_->isRTL(par) : false;
 
 	// if the first character is a separator, and we are in RTL
 	// text, this character will not be painted on screen
@@ -1267,8 +1267,8 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	boundary = false;
 
 	if (lastrow &&
-	    ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-	     (!rtl && !left_side && vc == end  && x > tmpx + 5))) {
+	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
+	     (!rtl_on_lastrow && !left_side && vc == end  && x > tmpx + 5))) {
 		if (!par.isNewline(end - 1))
 			c = end;
 	} else if (vc == row.pos()) {
