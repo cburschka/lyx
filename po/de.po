@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-03-18 15:38+0100\n"
-"PO-Revision-Date: 2012-03-18 16:00+0100\n"
+"PO-Revision-Date: 2012-04-29 11:33+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5095,7 +5095,7 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Wechsel zwischen verfübgaren Verzeichnissen (Inhaltsverzeichnis, "
+"Wechsel zwischen verfügbaren Verzeichnissen (Inhaltsverzeichnis, "
 "Abbildungsverzeichnis, Tabellenverzeichnis und anderen)"
 
 #: src/frontends/qt4/ui/TocUi.ui:90
@@ -6438,23 +6438,23 @@ msgstr "Schema"
 
 #: lib/layouts/achemso.layout:127
 msgid "List of Schemes"
-msgstr "Liste der Schemata"
+msgstr "Verzeichnis der Schemata"
 
 #: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
 msgid "Chart"
-msgstr "Zeichnung"
+msgstr "Diagramm"
 
 #: lib/layouts/achemso.layout:149
 msgid "List of Charts"
-msgstr "Liste der Zeichnungen"
+msgstr "Diagrammverzeichnis"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
 msgid "Graph"
-msgstr "Graph"
+msgstr "Schaubild"
 
 #: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
-msgstr "Liste der Graphen"
+msgstr "Schaubilderverzeichnis"
 
 #: lib/layouts/achemso.layout:215
 msgid "Bibnote"
@@ -10401,7 +10401,7 @@ msgstr "Petit"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr "Svgraybox"
+msgstr "SV-Graubox"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -16616,10 +16616,10 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Eine Gnumeric-, OpenOffice, LibreOffice- oder Excel-Tabelle.\n"
-"Die Tabelle wird als Longtable importiert, die Zahl der Zeilen\n"
+"Eine Gnumeric-, OpenOffice/LibreOffice-Calc- oder Excel-Tabelle.\n"
+"Die Tabelle wird als 'lange Tabelle' importiert, die Zahl der Zeilen\n"
 "spielt also keine Rolle. Viele Spalten könnten hingegen\n"
-"problematisch sein.\n"
+"zu Problemen führen.\n"
 "Das Programm 'Gnumeric' wird für die Konvertierung sowohl\n"
 "von Gnumeric- als auch von Excel-Dateien benötigt.\n"
 
@@ -16741,9 +16741,9 @@ msgstr ""
 "* pages={x,y,z} (für ausgewählte Seiten)\n"
 "* pages=- (für alle Seiten)\n"
 "* pages=last-1 (für alle Seiten in umgekehrter Reihenfolge)\n"
-"Mit der Option 'noautoscale' werden die PDF-Seiten in der\n"
-"Originalgröße eingefügt. \n"
-"Lesen die Dokumentation des Pakets pdfpages\n"
+"Mit der Option 'noautoscale' werden die PDF-Seiten\n"
+"in der Originalgröße eingefügt. \n"
+"Lesen Sie die Dokumentation des Pakets pdfpages\n"
 "bezüglich weiterer Optionen und Details.\n"
 
 #: lib/external_templates:346
@@ -16902,7 +16902,7 @@ msgstr "Sweave|S"
 
 #: lib/configure.py:535
 msgid "R/S code"
-msgstr "R/S Kode"
+msgstr "R/S-Code"
 
 #: lib/configure.py:537
 msgid "LilyPond music"
@@ -21121,8 +21121,8 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
-"Das LaTeX-Paket esint wird nur verwendet, wenn spezielle Integralzeichen in "
-"Formeln eingefügt werden"
+"Das LaTeX-Paket 'esint' wird nur verwendet, wenn spezielle Integralzeichen "
+"in Formeln eingefügt werden"
 
 #: src/frontends/qt4/GuiDocument.cpp:186
 msgid "Use math&dots package automatically"
@@ -21137,7 +21137,7 @@ msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
 msgstr ""
-"Das LaTeX-Paket mathdots wird nur verwendet, wenn der Befehl \\iddots in "
+"Das LaTeX-Paket 'mathdots' wird nur verwendet, wenn der Befehl \\iddots in "
 "Formeln eingefügt wird"
 
 #: src/frontends/qt4/GuiDocument.cpp:190
@@ -21169,7 +21169,7 @@ msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
 msgstr ""
-"Das LaTeX-Paket mhchem wird nur verwendet, wenn entweder der Befehl \\ce "
+"Das LaTeX-Paket 'mhchem' wird nur verwendet, wenn entweder der Befehl \\ce "
 "oder \\cf in Formeln eingefügt wird"
 
 #: src/frontends/qt4/GuiDocument.cpp:198
@@ -23496,7 +23496,7 @@ msgstr "Programm-Listings"
 
 #: src/frontends/qt4/qt_helpers.cpp:564
 msgid "List of Index Entries"
-msgstr "Liste der Stichwörter"
+msgstr "Stichwörter"
 
 #: src/frontends/qt4/qt_helpers.cpp:566
 msgid "List of Marginal notes"
@@ -23516,11 +23516,11 @@ msgstr "Marken und Querverweise"
 
 #: src/frontends/qt4/qt_helpers.cpp:574
 msgid "List of Branches"
-msgstr "Liste der Zweige"
+msgstr "Zweige"
 
 #: src/frontends/qt4/qt_helpers.cpp:576
 msgid "List of Changes"
-msgstr "Liste der Änderungen"
+msgstr "Änderungen"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:299
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:541
