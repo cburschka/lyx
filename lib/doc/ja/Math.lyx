@@ -1994,21 +1994,13 @@ cfracright
 cfrac
 \series default
 は中央揃えです。以下の各分数は、それぞれの揃え位置を示しています。
-\begin_inset Newline newline
-\end_inset
-
-
 \series bold
 
-\begin_inset Formula $\cfrac[l]{A}{B+C}$
-\end_inset
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
 
-, 
-\begin_inset Formula $\cfrac{A}{B+C}$
-\end_inset
-
-, 
-\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 

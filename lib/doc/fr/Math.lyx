@@ -2106,15 +2106,11 @@ cfrac
 \begin_layout Standard
 
 \series bold
-\begin_inset Formula $\cfrac[l]{A}{B+C}$
-\end_inset
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
 
-, 
-\begin_inset Formula $\cfrac{A}{B+C}$
-\end_inset
-
-, 
-\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -2288,7 +2284,14 @@ reference "sub:Fractions-personnalisées"
 \end_inset
 
  on explique comment définir des fractions personnalisées en modifiant les
- barres de fractions .
+ barres de fractions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -14567,13 +14570,29 @@ t
 \emph on
 b
 \emph default
- pour bas (bottom) signifie que la boîte est alignée au sein du texte qui
- l'entoure, au niveau de sa dernière ligne.
+ pour 
+\begin_inset Quotes fld
+\end_inset
+
+bas
+\begin_inset Quotes frd
+\end_inset
+
+ (bottom) signifie que la boîte est alignée au sein du texte qui l'entoure,
+ au niveau de sa dernière ligne.
  Avec 
 \emph on
 t
 \emph default
- pour haut (top) l'alignement se fait avec la première ligne.
+ pour 
+\begin_inset Quotes fld
+\end_inset
+
+haut
+\begin_inset Quotes frd
+\end_inset
+
+ (top) l'alignement se fait avec la première ligne.
  Si aucune position n'est précisée, la boîte est centrée verticalement,
  voir la section 
 \emph on
@@ -33929,7 +33948,11 @@ newmacroname est le nom qui est donné implicitement à la macro et qui doit
 \end_inset
 
  de la barre d'outils macro.
- On peut avoir au maximum 9 arguments.
+ On peut avoir au maximum 9
+\begin_inset space ~
+\end_inset
+
+arguments.
  Les arguments optionnels sont créés avec le bouton 
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png

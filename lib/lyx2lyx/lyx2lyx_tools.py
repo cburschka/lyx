@@ -60,7 +60,7 @@ latex_length(slen):
 '''
 
 import string
-from parser_tools import find_token
+from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
 
 
@@ -131,7 +131,38 @@ def put_cmd_in_ert(arg):
     ret += ["\\end_layout", "\\end_inset"]
     return ret
 
-            
+
+def get_ert(lines, i):
+    'Convert an ERT inset into LaTeX.'
+    if not lines[i].startswith("\\begin_inset ERT"):
+        return ""
+    j = find_end_of_inset(lines, i)
+    if j == -1:
+        return ""
+    while i < j and not lines[i].startswith("status"):
+        i = i + 1
+    i = i + 1
+    ret = ""
+    first = True
+    while i < j:
+        if lines[i] == "\\begin_layout Plain Layout":
+            if first:
+                first = False
+            else:
+                ret = ret + "\n"
+            while i + 1 < j and lines[i+1] == "":
+                i = i + 1
+        elif lines[i] == "\\end_layout":
+            while i + 1 < j and lines[i+1] == "":
+                i = i + 1
+        elif lines[i] == "\\backslash":
+            ret = ret + "\\"
+        else:
+            ret = ret + lines[i]
+        i = i + 1
+    return ret
+
+
 def lyx2latex(document, lines):
     'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
 

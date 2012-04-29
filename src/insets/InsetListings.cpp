@@ -176,7 +176,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			// we can only output characters covered by the current
 			// encoding!
 			try {
-				if (runparams.encoding->latexChar(c) == docstring(1, c))
+				if (runparams.encoding->encodable(c))
 					code += c;
 				else if (runparams.dryrun) {
 					code += "<" + _("LyX Warning: ")

@@ -702,7 +702,7 @@ public:
 	///
 	bool use_booktabs;
 	///
-	bool rotate;
+	int rotate;
 	///
 	VAlignment tabular_valignment;
 	//

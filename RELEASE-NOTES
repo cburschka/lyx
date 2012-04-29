@@ -87,3 +87,8 @@ Known issues in version 2.1.0
 Caveats when upgrading from earlier versions to 2.1.x
 -------------------------------------------------------
 
+In order to improve reported scrolling slowness, we changed the way screen
+painting is done. This, however, can slow down the performance on remote
+X connections and we provide RC_USE_QIMAGE variable, which brings back
+the old way of painting (when set to false).
+

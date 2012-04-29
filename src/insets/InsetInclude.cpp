@@ -793,7 +793,7 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (all_pars) {
 		op.par_begin = 0;
 		op.par_end = 0;
-		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::OnlyBody);
+		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::IncludedFile);
 	} else
 		xs << XHTMLStream::ESCAPE_NONE 
 		   << "<!-- Included file: " 
@@ -905,6 +905,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	features.includeFile(include_label, writefile);
 
+	features.useInsetLayout(getLayout());
 	if (isVerbatim(params()))
 		features.require("verbatim");
 	else if (isListings(params()))
@@ -996,6 +997,13 @@ Inset::DisplayType InsetInclude::display() const
 	return type(params()) == INPUT ? Inline : AlignCenter;
 }
 
+
+docstring InsetInclude::layoutName() const
+{
+	if (isListings(params()))
+		return from_ascii("IncludeListings");
+	return InsetCommand::layoutName();
+}
 
 
 //

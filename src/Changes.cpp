@@ -357,7 +357,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	docstring author_latexed;
 	for (size_t n = 0; n < author.size(); ++n) {
 		try {
-			author_latexed += runparams.encoding->latexChar(author[n]);
+			author_latexed += runparams.encoding->latexChar(author[n]).first;
 		} catch (EncodingException & /* e */) {
 			if (runparams.dryrun) {
 				ods << "<" << _("LyX Warning: ")

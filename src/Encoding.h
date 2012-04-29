@@ -67,6 +67,8 @@ public:
 	std::string const & iconvName() const { return iconvName_; }
 	///
 	bool const & hasFixedWidth() const { return fixedwidth_; }
+	/// \p c is representable in this encoding without a LaTeX macro
+	bool encodable(char_type c) const;
 	/**
 	 * Convert \p c to something that LaTeX can understand.
 	 * This is either the character itself (if it is representable
@@ -74,8 +76,10 @@ public:
 	 * If the character is not representable in this encoding, but no
 	 * LaTeX macro is known, a warning is given of lyxerr, and the
 	 * character is returned.
+	 * \return the converted character and a flag indicating whether
+	 * the command needs to be terminated by {} or a space.
 	 */
-	docstring latexChar(char_type c, bool no_commands = false) const;
+	std::pair<docstring, bool> latexChar(char_type c) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
@@ -196,11 +200,6 @@ public:
 	 */
 	static bool isMathAlpha(char_type c);
 	/**
-	 * Do we need to terminate this command (by {} or space)?
-	 * This is true if the "notermination" flag is not set.
-	 */
-	static bool needsTermination(char_type c);
-	/**
 	 * Register \p c as a mathmode command.
 	 */
 	static void addMathCmd(char_type c) { mathcmd.insert(c); }
@@ -231,16 +230,22 @@ public:
 	/**
 	 * If \p c cannot be encoded in the given \p encoding, convert
 	 * it to something that LaTeX can understand in mathmode.
+	 * \p needsTermination indicates whether the command needs to be
+	 * terminated by {} or a space.
 	 * \return whether \p command is a mathmode command
 	 */
 	static bool latexMathChar(char_type c, bool mathmode,
-			Encoding const * encoding, docstring & command);
+			Encoding const * encoding, docstring & command,
+			bool & needsTermination);
 	/**
 	 * Convert the LaTeX command in \p cmd to the corresponding unicode
-	 * point and set \p combining to true if it is a combining symbol
+	 * point and set \p combining to true if it is a combining symbol.
+	 * \p needsTermination indicates whether the command needs to be
+	 * terminated by {} or a space.
 	 */
 	static char_type fromLaTeXCommand(docstring const & cmd, int cmdtype,
-			bool & combining, std::set<std::string> * req = 0);
+			bool & combining, bool & needsTermination,
+			std::set<std::string> * req = 0);
 	///
 	enum LatexCmd {
 		///
@@ -255,9 +260,12 @@ public:
 	 * unconverted commands are returned in \p rem.
 	 * The \p cmdtype parameter can be used to limit recognized
 	 * commands to math or text mode commands only.
+	 * \p needsTermination indicates whether the command needs to be
+	 * terminated by {} or a space.
 	 */
 	static docstring fromLaTeXCommand(docstring const & cmd, int cmdtype,
-			docstring & rem, std::set<std::string> * req = 0);
+			bool & needsTermination, docstring & rem,
+			std::set<std::string> * req = 0);
 	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.

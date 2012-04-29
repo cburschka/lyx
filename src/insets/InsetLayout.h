@@ -82,6 +82,11 @@ public:
 	ColorCode bgcolor() const { return bgcolor_; }
 	///
 	docstring preamble() const { return preamble_; }
+	/// Get language dependent macro definitions needed for this inset
+	docstring const langpreamble() const { return langpreamble_; }
+	/// Get language and babel dependent macro definitions needed for
+	/// this inset
+	docstring const babelpreamble() const { return babelpreamble_; }
 	///
 	docstring counter() const { return counter_; }
 	///
@@ -183,6 +188,10 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
+	/// Language dependent macro definitions needed for this inset
+	docstring langpreamble_;
+	/// Language and babel dependent macro definitions needed for this inset
+	docstring babelpreamble_;
 	///
 	docstring refprefix_;
 	///

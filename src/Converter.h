@@ -113,7 +113,8 @@ public:
 	///
 	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
-	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path);
+	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path,
+				       Buffer const * buffer = 0);
 	/// Flags for converting files
 	enum ConversionFlags {
 		/// No special flags
@@ -155,6 +156,12 @@ private:
 	ConverterList converterlist_;
 	///
 	std::string latex_command_;
+	///
+	std::string dvilualatex_command_;
+	///
+	std::string lualatex_command_;
+	///
+	std::string pdflatex_command_;
 	///
 	std::string xelatex_command_;
 	/// If \p from = /path/file.ext and \p to = /path2/file2.ext2 then

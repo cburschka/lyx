@@ -132,6 +132,7 @@ End
 \html_css_as_file 0
 \html_be_strict true
 \author -195340706 "Georg Baum" 
+\author 5863208 "ab" 
 \end_header
 
 \begin_body
@@ -978,6 +979,40 @@ languages
 \end_inset
 
  this file contains a list of all the languages currently supported by LyX.
+\change_inserted -195340706 1334775793
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -195340706 1334775793
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+ this file contains translations for internationalized paragraph styles
+ (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -13028,8 +13063,25 @@ babel
 
 \begin_layout Standard
 One important point to note here is that the translations are provided by
- LyX itself, through the same mechanism it uses for internationalization
- of the user interface.
+ LyX itself, through the 
+\change_inserted -195340706 1334775793
+file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+
+\change_deleted -195340706 1334775793
+same mechanism it uses for internationalization of the user interface
+\change_unchanged
+.
  This means, in effect, that 
 \begin_inset Flex Code
 status collapsed
@@ -13052,9 +13104,34 @@ BabelPreamble
 
  are really only of use in layout files that are provided with LyX, since
  text entered in user-created layout files will not be seen by LyX's internation
-alization routines.
+alization routines
+\change_inserted -195340706 1334775793
+ unless the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1334775793
+layouttranslations
+\end_layout
+
+\end_inset
+
+ file is modified accordingly
+\change_unchanged
+.
  That said, however, any layout created with the intention that it will
  be included with LyX should use these tags where appropriate.
+
+\change_inserted -195340706 1334775793
+ Please note that the paragraph style translations provided by LyX will
+ never change with a minor update (e.g.
+ from version 2.1.x to 2.1.y).
+ It is however quite likely that a major update (e.g.
+ from 2.0.x to 2.1.y) will introduce new translations or corrections.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -13961,7 +14038,12 @@ status collapsed
 
 \end_inset
 
- indicates the inset whose layout is being defined, and here there are two
+ indicates the inset whose layout is being defined, and here there are 
+\change_inserted 5863208 1334489266
+three
+\change_deleted 5863208 1334489267
+two
+\change_unchanged
  cases.
 \end_layout
 
@@ -14238,6 +14320,65 @@ LyXType
 \end_inset
 
  entry, declaring which type of inset it defines.
+\change_inserted 5863208 1334489312
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 5863208 1334492248
+The layout for user specific branch is being defined.
+ In this case, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489384
+<Type>
+\end_layout
+
+\end_inset
+
+ must be of the form 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489392
+Branch:<name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1334489384
+name
+\end_layout
+
+\end_inset
+
+ may be be any valid identifier of branch defined in user's document.
+ The identifier may include spaces, but in that case the whole thing must
+ be wrapped in quotes.
+ The main purpose of this feature is to allow LaTeX wrapping around specific
+ branches as user needs.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -14252,6 +14393,33 @@ InsetLayout
 \end_inset
 
  definition can contain the following entries:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1333913893
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ Preamble for changing languages.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -14904,6 +15072,33 @@ Branch
 \end_inset
 
 ) modify this label on the fly.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1333913893
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ Language dependent preamble.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

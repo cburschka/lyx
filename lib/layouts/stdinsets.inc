@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 36
+Format 38
 
 Provides stdinsets 1
 
@@ -170,8 +170,38 @@ InsetLayout Phantom
 	ForcePlain            true
 End
 
+InsetLayout ListOfListings
+	# We need the [[List of Listings]] context, since "Listings" is also
+	# the name of the inset and translated differently.
+	# "Listings[[List of Listings]]" is the name of the "List of listings"
+	# ("Listings" is the predefined english name) in listings.sty, so it
+	# must be used here as well.
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
+	EndBabelPreamble
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+	EndLangPreamble
+End
+
+InsetLayout IncludeListings
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
+	EndBabelPreamble
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\lstlistingname}{_(Listing)}
+	EndLangPreamble
+End
+
 InsetLayout Listings
-	LabelString           Listings
+	CopyStyle IncludeListings
+	LabelString           Listings[[inset]]
 	LatexType             none
 	Decoration            minimalistic
 	Font
@@ -444,4 +474,28 @@ InsetLayout Preview
 	LabelString           Preview
 	Decoration            minimalistic
 	MultiPar              true
+End
+
+
+InsetLayout Script
+	LatexType       command
+	MultiPar        false
+	ForcePlain      1
+	CustomPars      0
+	InToc           1
+	HTMLIsBlock     0
+End
+
+
+InsetLayout Script:superscript
+	CopyStyle       Script
+	LaTeXName       textsuperscript
+	HTMLTag         sup
+End
+
+InsetLayout Script:subscript
+	CopyStyle       Script
+	Requires        subscript
+	LaTeXName       textsubscript
+	HTMLTag         sub
 End

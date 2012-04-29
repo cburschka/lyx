@@ -198,10 +198,30 @@ XHTMLStream::XHTMLStream(odocstream & os)
 {}
 
 
-void XHTMLStream::writeError(std::string const & s)
+#if 0
+void XHTMLStream::dumpTagStack(string const & msg) const
+{
+	writeError(msg + ": Tag Stack");
+	TagStack::const_reverse_iterator it = tag_stack_.rbegin();
+	TagStack::const_reverse_iterator en = tag_stack_.rend();
+	for (; it != en; ++it) {
+		writeError(it->tag_);
+	}
+	writeError("Pending Tags");
+	it = pending_tags_.rbegin();
+	en = pending_tags_.rend();
+	for (; it != en; ++it) {
+		writeError(it->tag_);
+	}
+	writeError("End Tag Stack");
+}
+#endif
+
+
+void XHTMLStream::writeError(std::string const & s) const
 {
 	LYXERR0(s);
-	os_ << from_utf8("<!-- Output Error: " + s + " -->");
+	os_ << from_utf8("<!-- Output Error: " + s + " -->\n");
 }
 
 
@@ -213,8 +233,15 @@ namespace {
 
 bool XHTMLStream::closeFontTags()
 {
+	if (isTagPending(parsep_tag))
+		// we haven't had any content
+		return true;
+
+	// this may be a useless check, since we ought at least to have
+	// the parsep_tag. but it can't hurt too much to be careful.
 	if (tag_stack_.empty())
 		return true;
+
 	// first, we close any open font tags we can close
 	html::StartTag curtag = tag_stack_.back();
 	while (html::isFontTag(curtag.tag_)) {
@@ -256,34 +283,24 @@ void XHTMLStream::startParagraph(bool keep_empty)
 
 void XHTMLStream::endParagraph()
 {
-	if (!isTagOpen(parsep_tag)) {
-		// is it pending?
-		TagStack::const_iterator dit = pending_tags_.begin();
-		TagStack::const_iterator const den = pending_tags_.end();
-		bool found = false;
-		for (; dit != den; ++dit) {
-			if (dit->tag_ == parsep_tag) {
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
-			writeError("No paragraph separation tag found in endParagraph().");
-			return;
-		}
-		
-		// this case is normal.
+	if (isTagPending(parsep_tag)) {
+		// this case is normal. it just means we didn't have content,
+		// so the parsep_tag never got moved onto the tag stack.
 		while (!pending_tags_.empty()) {
 			// clear all pending tags up to and including the parsep tag.
 			// note that we work from the back, because we want to get rid
-			// of everything that hasnt' been used.
+			// of everything that hasn't been used.
 			html::StartTag const cur_tag = pending_tags_.back();
 			string const & tag = cur_tag.tag_;
-			tag_stack_.pop_back();
+			pending_tags_.pop_back();
 			if (tag == parsep_tag)
 				break;
 		}
+		return;
+	}
+
+	if (!isTagOpen(parsep_tag)) {
+		writeError("No paragraph separation tag found in endParagraph().");
 		return;
 	}
 
@@ -398,12 +415,23 @@ XHTMLStream & XHTMLStream::operator<<(html::CR const &)
 }
 
 
-bool XHTMLStream::isTagOpen(string const & stag)
+bool XHTMLStream::isTagOpen(string const & stag) const
 {
 	TagStack::const_iterator sit = tag_stack_.begin();
 	TagStack::const_iterator const sen = tag_stack_.end();
 	for (; sit != sen; ++sit)
 		if (sit->tag_ == stag) 
+			return true;
+	return false;
+}
+
+
+bool XHTMLStream::isTagPending(string const & stag) const
+{
+	TagStack::const_iterator sit = pending_tags_.begin();
+	TagStack::const_iterator const sen = pending_tags_.end();
+	for (; sit != sen; ++sit)
+		if (sit->tag_ == stag)
 			return true;
 	return false;
 }

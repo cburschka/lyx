@@ -13,6 +13,7 @@
 
 #include "InsetMathGrid.h"
 
+#include "InsetMathUnknown.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
@@ -173,6 +174,22 @@ void InsetMathGrid::setDefaults()
 		colinfo_[col].skip_  = defaultColSpace(col);
 		colinfo_[col].special_.clear();
 	}
+}
+
+
+bool InsetMathGrid::interpretString(Cursor & cur, docstring const & str)
+{
+	if (str == "\\hline") {
+		FuncRequest fr = FuncRequest(LFUN_INSET_MODIFY, "tabular add-hline-above");
+		FuncStatus status;
+		if (getStatus(cur, fr, status)) {
+			if (status.enabled()) {
+				rowinfo_[cur.row()].lines_++;
+				return true;
+			}
+		}
+	}
+	return InsetMathNest::interpretString(cur, str);
 }
 
 
@@ -1332,11 +1349,25 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 				mathed_parse_normal(grid, topaste, parseflg | Parse::VERBATIM);
 			}
 
+		bool hline_enabled = false;
+		FuncRequest fr = FuncRequest(LFUN_INSET_MODIFY, "tabular add-hline-above");
+		FuncStatus status;
+		if (getStatus(cur, fr, status))
+			hline_enabled = status.enabled();
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
-			cur.recordUndo();
+			cur.recordUndoInset();
 			cur.cell().insert(cur.pos(), grid.cell(0));
 			cur.pos() += grid.cell(0).size();
+			if (hline_enabled)
+				rowinfo_[cur.row()].lines_ += grid.rowinfo_[0].lines_;
+			else {
+				for (unsigned int l = 0; l < grid.rowinfo_[0].lines_; ++l) {
+					 cur.cell().insert(0,
+						MathAtom(new InsetMathUnknown(from_ascii("\\hline"))));
+					 cur.pos()++;
+				}
+			}
 		} else {
 			// multiple cells
 			cur.recordUndoInset();
@@ -1349,6 +1380,15 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					idx_type i = index(r + cur.row(), c + col(cur.idx()));
 					cell(i).insert(0, grid.cell(grid.index(r, c)));
 				}
+				if (hline_enabled)
+					rowinfo_[r].lines_ += grid.rowinfo_[r].lines_;
+				else {
+					for (unsigned int l = 0; l < grid.rowinfo_[r].lines_; ++l) {
+						idx_type i = index(r + cur.row(), 0);
+						cell(i).insert(0,
+							MathAtom(new InsetMathUnknown(from_ascii("\\hline"))));
+					}
+				}
 				// append the left over horizontal cells to the last column
 				idx_type i = index(r + cur.row(), ncols() - 1);
 				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c)
@@ -1356,9 +1396,18 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			// append the left over vertical cells to the last _cell_
 			idx_type i = nargs() - 1;
-			for (row_type r = numrows; r < grid.nrows(); ++r)
+			for (row_type r = numrows; r < grid.nrows(); ++r) {
 				for (col_type c = 0; c < grid.ncols(); ++c)
 					cell(i).append(grid.cell(grid.index(r, c)));
+				if (hline_enabled)
+					rowinfo_[r].lines_ += grid.rowinfo_[r].lines_;
+				else {
+					for (unsigned int l = 0; l < grid.rowinfo_[r].lines_; ++l) {
+						cell(i).insert(0,
+							MathAtom(new InsetMathUnknown(from_ascii("\\hline"))));
+					}
+				}
+			}
 		}
 		cur.clearSelection(); // bug 393
 		// FIXME audit setBuffer calls

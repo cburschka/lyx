@@ -294,6 +294,7 @@ public:
 	enum OutputWhat {
 		FullSource,
 		OnlyBody,
+		IncludedFile,
 		OnlyPreamble,
 		CurrentParagraph
 	};

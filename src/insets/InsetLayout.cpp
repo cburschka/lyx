@@ -75,6 +75,7 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 {
 	enum {
+		IL_BABELPREAMBLE,
 		IL_BGCOLOR,
 		IL_CONTENTASLABEL,
 		IL_COPYSTYLE,
@@ -98,6 +99,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_INTOC,
 		IL_LABELFONT,
 		IL_LABELSTRING,
+		IL_LANGPREAMBLE,
 		IL_LATEXNAME,
 		IL_LATEXPARAM,
 		IL_LATEXTYPE,
@@ -117,6 +119,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 
 	LexerKeyword elementTags[] = {
+		{ "babelpreamble", IL_BABELPREAMBLE },
 		{ "bgcolor", IL_BGCOLOR },
 		{ "contentaslabel", IL_CONTENTASLABEL },
 		{ "copystyle", IL_COPYSTYLE }, 
@@ -142,6 +145,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
 		{ "labelstring", IL_LABELSTRING },
+		{ "langpreamble", IL_LANGPREAMBLE },
 		{ "latexname", IL_LATEXNAME },
 		{ "latexparam", IL_LATEXPARAM },
 		{ "latextype", IL_LATEXTYPE },
@@ -310,6 +314,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PREAMBLE:
 			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			break;
+		case IL_BABELPREAMBLE:
+			babelpreamble_ = from_utf8(lex.getLongString("EndBabelPreamble"));
+			break;
+		case IL_LANGPREAMBLE:
+			langpreamble_ = from_utf8(lex.getLongString("EndLangPreamble"));
 			break;
 		case IL_REFPREFIX:
 			lex >> refprefix_;

@@ -34,10 +34,10 @@ from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, 
   #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   #del_token, check_token
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
 
 #from lyx2lyx_tools import insert_to_preamble, \
-#  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
+#  lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
 ####################################################################
@@ -581,7 +581,6 @@ def revert_cell_rotation(document):
   try:
     while True:
       # first, let's find out if we need to do anything
-      # cell type 3 is multirow begin cell
       i = find_token(document.body, '<cell ', i)
       if i == -1:
         return
@@ -590,14 +589,14 @@ def revert_cell_rotation(document):
         k = document.body[i].find('"', j + 8)
         value = document.body[i][j + 8 : k]
         if value == "0":
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
         elif value == "90":
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           document.body[i] = rgx.sub('rotate="true"', document.body[i])
         else:
-          rgx = re.compile(r'rotate="[^"]+?"')
+          rgx = re.compile(r' rotate="[^"]+?"')
           load_rotating = True
           # remove rotate option
           document.body[i] = rgx.sub('', document.body[i])
@@ -620,7 +619,6 @@ def convert_cell_rotation(document):
     i = 0
     while True:
       # first, let's find out if we need to do anything
-      # cell type 3 is multirow begin cell
       i = find_token(document.body, '<cell ', i)
       if i == -1:
         return
@@ -631,6 +629,105 @@ def convert_cell_rotation(document):
         document.body[i] = rgx.sub('rotate="90"', document.body[i])
         
       i += 1
+
+
+def revert_table_rotation(document):
+  "Revert table rotations to TeX-code"
+
+  load_rotating = False
+  i = 0
+  try:
+    while True:
+      # first, let's find out if we need to do anything
+      i = find_token(document.body, '<features ', i)
+      if i == -1:
+        return
+      j = document.body[i].find('rotate="')
+      if j != -1:
+        end_table = find_token(document.body, '</lyxtabular>', j)
+        k = document.body[i].find('"', j + 8)
+        value = document.body[i][j + 8 : k]
+        if value == "0":
+          rgx = re.compile(r' rotate="[^"]+?"')
+          # remove rotate option
+          document.body[i] = rgx.sub('', document.body[i])
+        elif value == "90":
+          rgx = re.compile(r'rotate="[^"]+?"')
+          document.body[i] = rgx.sub('rotate="true"', document.body[i])
+        else:
+          rgx = re.compile(r' rotate="[^"]+?"')
+          load_rotating = True
+          # remove rotate option
+          document.body[i] = rgx.sub('', document.body[i])
+          # write ERT
+          document.body[end_table + 3 : end_table + 3] = \
+            put_cmd_in_ert("\\end{turn}")
+          document.body[i - 2 : i - 2] = \
+            put_cmd_in_ert("\\begin{turn}{" + value + "}")
+        
+      i += 1
+        
+  finally:
+    if load_rotating:
+      add_to_preamble(document, ["\\@ifundefined{turnbox}{\usepackage{rotating}}{}"])
+
+
+def convert_table_rotation(document):
+    'Convert table rotation statements from "true" to "90"'
+
+    i = 0
+    while True:
+      # first, let's find out if we need to do anything
+      i = find_token(document.body, '<features ', i)
+      if i == -1:
+        return
+      j = document.body[i].find('rotate="true"')
+      if j != -1:
+        rgx = re.compile(r'rotate="[^"]+?"')
+        # convert "true" to "90"
+        document.body[i] = rgx.sub('rotate="90"', document.body[i])
+        
+      i += 1
+
+
+def convert_listoflistings(document):
+    'Convert ERT \lstlistoflistings to TOC lstlistoflistings inset'
+    # We can support roundtrip because the command is so simple
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset ERT", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of ERT inset")
+            i += 1
+            continue
+        ert = get_ert(document.body, i)
+        if ert == "\\lstlistoflistings{}":
+            document.body[i:j] = ["\\begin_inset CommandInset toc", "LatexCommand lstlistoflistings", ""]
+            i = i + 4
+        else:
+            i = j + 1
+
+
+def revert_listoflistings(document):
+    'Convert TOC lstlistoflistings inset to ERT lstlistoflistings'
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset toc", i)
+        if i == -1:
+            return
+        if document.body[i+1] == "LatexCommand lstlistoflistings":
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed lyx document: Can't find end of TOC inset")
+                i += 1
+                continue
+            subst = put_cmd_in_ert("\\lstlistoflistings{}")
+            document.body[i:j+1] = subst
+            add_to_preamble(document, ["\\usepackage{listings}"])
+        i = i + 1
 
 
 ##
@@ -653,10 +750,14 @@ convert = [
            [425, []],
            [426, []],
            [427, []],
-           [428, [convert_cell_rotation]]
+           [428, [convert_cell_rotation]],
+           [429, [convert_table_rotation]],
+           [430, [convert_listoflistings]],
           ]
 
 revert =  [
+           [429, [revert_listoflistings]],
+           [428, [revert_table_rotation]],
            [427, [revert_cell_rotation]],
            [426, [revert_tipa]],
            [425, [revert_verbatim]],

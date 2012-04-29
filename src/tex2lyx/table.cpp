@@ -1269,10 +1269,11 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 	//cerr << "// output what we have\n";
 	// output what we have
+	string const rotate = "0";
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
 	   << "\" columns=\"" << colinfo.size() << "\">\n";
 	os << "<features"
-	   << write_attribute("rotate", false)
+	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", booktabs)
 	   << write_attribute("islongtable", is_long_tabular);
 	if (is_long_tabular) {

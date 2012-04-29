@@ -271,7 +271,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	if (bv->buffer().isReadonly())
 		return pair<bool, int>(false, 0);
 
-	cap::replaceSelectionWithString(cur, replacestr, forward);
+	cap::replaceSelectionWithString(cur, replacestr);
 	if (forward) {
 		cur.pos() += replacestr.length();
 		LASSERT(cur.pos() <= cur.lastpos(), /* */);

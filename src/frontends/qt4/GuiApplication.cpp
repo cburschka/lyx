@@ -1140,7 +1140,12 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 	// This is done unless explicitly requested otherwise
 	dr.screenUpdate(Update::FitCursor);
 	dispatch(cmd, dr);
+	updateCurrentView(cmd, dr);
+}
 
+
+void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult & dr)
+{
 	if (!current_view_)
 		return;
 
@@ -1310,6 +1315,13 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		dr.clearBufferUpdate();
 		return;
 	};
+
+	if (cmd.origin() == FuncRequest::LYXSERVER) {
+		if (current_view_ && current_view_->currentBufferView())
+			current_view_->currentBufferView()->cursor().saveBeforeDispatchPosXY();
+		// we will also need to redraw the screen at the end
+		dr.screenUpdate(Update::FitCursor);
+	}
 
 	// Assumes that the action will be dispatched.
 	dr.dispatched(true);
@@ -1663,6 +1675,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			current_view_->dispatch(cmd, dr);
 		break;
 	}
+
+	if (cmd.origin() == FuncRequest::LYXSERVER)
+		updateCurrentView(cmd, dr);
 }
 
 

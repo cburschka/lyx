@@ -53,7 +53,9 @@ docstring const Language::translateLayout(string const & m) const
 	if (it != layoutTranslations_.end())
 		return it->second;
 
-	return from_ascii(m);
+	docstring t = from_ascii(m);
+	cleanTranslation(t);
+	return t;
 }
 
 

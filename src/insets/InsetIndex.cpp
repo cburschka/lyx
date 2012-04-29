@@ -137,7 +137,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 			docstring spart2;
 			for (size_t n = 0; n < spart.size(); ++n) {
 				try {
-					spart2 += runparams.encoding->latexChar(spart[n]);
+					spart2 += runparams.encoding->latexChar(spart[n]).first;
 				} catch (EncodingException & /* e */) {
 					LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
 				}
@@ -662,9 +662,12 @@ struct IndexEntry
 
 bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 {
-	return lhs.main < rhs.main
-			|| (lhs.main == rhs.main && lhs.sub < rhs.sub)
-			|| (lhs.main == rhs.main && lhs.sub == rhs.sub && lhs.subsub < rhs.subsub);
+	int comp = compare_no_case(lhs.main, rhs.main);
+	if (comp == 0)
+		comp = compare_no_case(lhs.sub, rhs.sub);
+	if (comp == 0)
+		comp = compare_no_case(lhs.subsub, rhs.subsub);
+	return (comp < 0);
 }
 
 } // anon namespace

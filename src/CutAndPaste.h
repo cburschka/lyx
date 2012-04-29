@@ -41,12 +41,9 @@ docstring selection(size_t sel_index);
 
 /**
  * Replace using the font of the first selected character and select
- * the new string. When \c backwards == false, set anchor before
- * cursor; otherwise set cursor before anchor.
- * Does handle undo.
+ * the new string. Does handle undo.
  */
-void replaceSelectionWithString(Cursor & cur, docstring const & str,
-				bool backwards);
+void replaceSelectionWithString(Cursor & cur, docstring const & str);
 /// If a selection exists, delete it without pushing it to the cut buffer.
 /// Does handle undo.
 void replaceSelection(Cursor & cur);

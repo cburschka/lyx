@@ -29,8 +29,6 @@ namespace lyx {
 // Instanciate static member.
 string Messages::main_lang_;
 
-namespace {
-
 void cleanTranslation(docstring & trans) 
 {
 	/*
@@ -51,7 +49,6 @@ void cleanTranslation(docstring & trans)
 	}
 }
 
-} // anonymous
 } // lyx
 
 

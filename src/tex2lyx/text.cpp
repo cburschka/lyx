@@ -456,10 +456,11 @@ docstring convert_unicodesymbols(docstring s)
 			continue;
 		}
 		s = s.substr(i);
+		bool termination;
 		docstring rem;
 		set<string> req;
 		docstring parsed = encodings.fromLaTeXCommand(s,
-				Encodings::TEXT_CMD, rem, &req);
+				Encodings::TEXT_CMD, termination, rem, &req);
 		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 			preamble.registerAutomaticallyLoadedPackage(*it);
 		os << parsed;
@@ -1185,8 +1186,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 
 
 void parse_environment(Parser & p, ostream & os, bool outer,
-                       string & last_env, bool & title_layout_found,
-                       Context & parent_context)
+                       string & last_env, Context & parent_context)
 {
 	Layout const * newlayout;
 	InsetLayout const * newinsetlayout = 0;
@@ -1553,8 +1553,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		context.check_end_deeper(os);
 		parent_context.new_paragraph(os);
 		p.skip_spaces();
-		if (!title_layout_found)
-			title_layout_found = newlayout->intitle;
+		if (!preamble.titleLayoutFound())
+			preamble.titleLayoutFound(newlayout->intitle);
 		set<string> const & req = newlayout->requires();
 		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 			preamble.registerAutomaticallyLoadedPackage(*it);
@@ -1970,7 +1970,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	bool const use_natbib = preamble.isPackageUsed("natbib");
 	bool const use_jurabib = preamble.isPackageUsed("jurabib");
 	string last_env;
-	bool title_layout_found = false;
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -2297,7 +2296,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "begin")
 			parse_environment(p, os, outer, last_env,
-			                  title_layout_found, context);
+			                  context);
 
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
@@ -2468,10 +2467,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		// Must catch empty dates before findLayout is called below
 		else if (t.cs() == "date") {
+			eat_whitespace(p, os, context, false);
+			p.pushPosition();
 			string const date = p.verbatim_item();
-			if (date.empty())
+			p.popPosition();
+			if (date.empty()) {
 				preamble.suppressDate(true);
-			else {
+				p.verbatim_item();
+			} else {
 				preamble.suppressDate(false);
 				if (context.new_layout_allowed &&
 				    (newlayout = findLayout(context.textclass,
@@ -2479,16 +2482,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// write the layout
 					output_command_layout(os, p, outer,
 							context, newlayout);
-					p.skip_spaces();
-					if (!title_layout_found)
-						title_layout_found = newlayout->intitle;
+					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+					if (!preamble.titleLayoutFound())
+						preamble.titleLayoutFound(newlayout->intitle);
 					set<string> const & req = newlayout->requires();
 					for (set<string>::const_iterator it = req.begin();
 					     it != req.end(); it++)
 						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
-					handle_ert(os, "\\date{" + date + '}',
-							context);
+					handle_ert(os,
+						"\\date{" + p.verbatim_item() + '}',
+						context);
 			}
 		}
 
@@ -2501,8 +2505,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.get_token();
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
-			if (!title_layout_found)
-				title_layout_found = newlayout->intitle;
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 				preamble.registerAutomaticallyLoadedPackage(*it);
@@ -2514,8 +2518,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
 			p.skip_spaces();
-			if (!title_layout_found)
-				title_layout_found = newlayout->intitle;
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
 			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 				preamble.registerAutomaticallyLoadedPackage(*it);
@@ -2807,18 +2811,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
-			if (title_layout_found) {
+			if (preamble.titleLayoutFound()) {
 				// swallow this
 				skip_spaces_braces(p);
 			} else
 				handle_ert(os, t.asInput(), context);
 		}
 
-		else if (t.cs() == "tableofcontents") {
+		else if (t.cs() == "tableofcontents" || t.cs() == "lstlistoflistings") {
 			context.check_layout(os);
-			begin_command_inset(os, "toc", "tableofcontents");
+			begin_command_inset(os, "toc", t.cs());
 			end_inset(os);
 			skip_spaces_braces(p);
+			if (t.cs() == "lstlistoflistings")
+				preamble.registerAutomaticallyLoadedPackage("listings");
 		}
 
 		else if (t.cs() == "listoffigures") {
@@ -3500,13 +3506,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 && contains("\"'.=^`bcdHkrtuv~", t.cs())) {
 			context.check_layout(os);
 			// try to see whether the string is in unicodesymbols
+			bool termination;
 			docstring rem;
 			string command = t.asInput() + "{"
 				+ trimSpaceAndEol(p.verbatim_item())
 				+ "}";
 			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
-				Encodings::TEXT_CMD | Encodings::MATH_CMD, rem, &req);
+				Encodings::TEXT_CMD | Encodings::MATH_CMD,
+				termination, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << command
@@ -4106,10 +4114,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// try to see whether the string is in unicodesymbols
 			// Only use text mode commands, since we are in text mode here,
 			// and math commands may be invalid (bug 6797)
+			bool termination;
 			docstring rem;
 			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()),
-			                                         Encodings::TEXT_CMD, rem, &req);
+					Encodings::TEXT_CMD, termination, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())
 					cerr << "When parsing " << t.cs()
@@ -4117,7 +4126,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
 				os << to_utf8(s);
-				skip_spaces_braces(p);
+				if (termination)
+					skip_spaces_braces(p);
 				for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
 					preamble.registerAutomaticallyLoadedPackage(*it);
 			}

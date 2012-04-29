@@ -23,7 +23,7 @@
 #include "insets/Inset.h"
 
 #include "mathed/InsetMath.h"
-#include "mathed/MathData.h"
+#include "mathed/MathMacro.h"
 
 #include "support/lassert.h"
 
@@ -61,8 +61,10 @@ Paragraph & CursorSlice::paragraph() const
 pos_type CursorSlice::lastpos() const
 {
 	LASSERT(inset_, /**/);
-	return inset_->asInsetMath() ? cell().size() 
-		: (text()->empty() ? 0 : paragraph().size());
+	InsetMath const * math = inset_->asInsetMath();
+	bool paramless_macro = math && math->asMacro() && !math->asMacro()->nargs();
+	return math ? (paramless_macro ? 0 : cell().size()) 
+		    : (text()->empty() ? 0 : paragraph().size());
 }
 
 

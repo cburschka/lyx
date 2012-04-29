@@ -2153,15 +2153,13 @@ Estas fracciones muestran las distintas alineaciones:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\cfrac[l]{A}{B+C}$
-\end_inset
 
- ; 
-\begin_inset Formula $\cfrac{A}{B+C}$
-\end_inset
+\series bold
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
 
- ; 
-\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -2313,7 +2311,13 @@ reference "sub:Fracciones-personalizadas"
 
  se explica cómo componer fracciones personalizadas en las que la raya de
  fracción se puede cambiar.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -34468,7 +34472,11 @@ e
 \series default
 .
  Los colocadores de argumento se muestran en rojo.
- Se pueden poner 9 argumentos como máximo.
+ Se pueden poner 9
+\begin_inset space ~
+\end_inset
+
+argumentos como máximo.
  Con el botón 
 \begin_inset Graphics
 	filename ../../images/math-macro-add-optional-param.png

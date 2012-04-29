@@ -163,7 +163,7 @@ ToolbarSet
 		Item "Align bottom" "command-alternatives inset-modify tabular m-valign-bottom;inset-modify tabular valign-bottom"
 		Separator
 		Item "Rotate cell by 90 degrees or unset rotation" "inset-modify tabular toggle-rotate-cell"
-		Item "Rotate table" "inset-modify tabular toggle-rotate-tabular"
+		Item "Rotate table by 90 degrees or unset rotation" "inset-modify tabular toggle-rotate-tabular"
 		Item "Set multi-column" "inset-modify tabular multicolumn"
 		Item "Set multi-row" "inset-modify tabular multirow"
 	End

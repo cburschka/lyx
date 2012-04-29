@@ -376,7 +376,7 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		for (size_t n = 0; n < command.size(); ++n) {
 			try {
 				char_type const c = command[n];
-				docstring const latex = runparams.encoding->latexChar(c);
+				docstring const latex = runparams.encoding->latexChar(c).first;
 				result += latex;
 				if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
 					// Prevent eating of a following

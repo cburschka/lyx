@@ -71,7 +71,7 @@ public:
 	 *  inset that is alowed inside a font change.
 	 */
 	void setInsetFont(BufferView const & bv, pit_type pit, pos_type pos,
-		Font const & font, bool toggleall = false);
+		Font const & font);
 
 	/// what you expect when pressing \<enter\> at cursor position
 	/// \param inverse_logic if false, the same layout is set for the
@@ -104,8 +104,7 @@ public:
 	void setFont(Cursor & cur, Font const &, bool toggleall = false);
 	/// Set font from \p begin to \p end and rebreak.
 	void setFont(BufferView const & bv, CursorSlice const & begin,
-		CursorSlice const & end, Font const &,
-		bool toggleall = false);
+		CursorSlice const & end, Font const &);
 
 	///
 	void toggleFree(Cursor & cur, Font const &, bool toggleall = false);

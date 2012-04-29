@@ -62,7 +62,7 @@ def cmdOutput(cmd):
     '''
     if os.name == 'nt':
         b = False
-        cmd = 'cmd /d /c ' + cmd
+        cmd = 'cmd /d /c pushd ' + os.getcwd() + '&' + cmd
     else:
         b = True
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \

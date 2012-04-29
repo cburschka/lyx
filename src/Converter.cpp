@@ -175,16 +175,25 @@ void Converters::add(string const & from, string const & to,
 	}
 	converter.readFlags();
 
-	// If we have both latex & pdflatex, we set latex_command to latex.
 	// The latex_command is used to update the .aux file when running
 	// a converter that uses it.
-	if (converter.latex
-	    && (latex_command_.empty() || converter.latex_flavor == "latex"))
-		latex_command_ = subst(command, token_from, "");
-	// Similarly, set xelatex_command to xelatex.
-	if (converter.latex
-	    && (xelatex_command_.empty() || converter.latex_flavor == "xelatex"))
-		xelatex_command_ = subst(command, token_from, "");
+	if (converter.latex) {
+		if (latex_command_.empty() ||
+		    converter.latex_flavor == "latex")
+			latex_command_ = subst(command, token_from, "");
+		if (dvilualatex_command_.empty() ||
+		    converter.latex_flavor == "dvilualatex")
+			dvilualatex_command_ = subst(command, token_from, "");
+		if (lualatex_command_.empty() ||
+		    converter.latex_flavor == "lualatex")
+			lualatex_command_ = subst(command, token_from, "");
+		if (pdflatex_command_.empty() ||
+		    converter.latex_flavor == "pdflatex")
+			pdflatex_command_ = subst(command, token_from, "");
+		if (xelatex_command_.empty() ||
+		    converter.latex_flavor == "xelatex")
+			xelatex_command_ = subst(command, token_from, "");
+	}
 
 	if (it == converterlist_.end()) {
 		converterlist_.push_back(converter);
@@ -237,12 +246,15 @@ void Converters::updateLast(Formats const & formats)
 }
 
 
-OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
+OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
+					   Buffer const * buffer)
 {
 	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
-		if (conv.latex)
+		if (conv.latex) {
+			if (conv.latex_flavor == "latex")
+				return OutputParams::LATEX;
 			if (conv.latex_flavor == "xelatex")
 				return OutputParams::XETEX;
 			if (conv.latex_flavor == "lualatex")
@@ -251,10 +263,12 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 				return OutputParams::DVILUATEX;
 			if (conv.latex_flavor == "pdflatex")
 				return OutputParams::PDFLATEX;
+		}
 		if (conv.xml)
 			return OutputParams::XML;
 	}
-	return OutputParams::LATEX;
+	return buffer ? buffer->params().getOutputFlavor()
+		      : OutputParams::LATEX;
 }
 
 
@@ -318,7 +332,7 @@ bool Converters::convert(Buffer const * buffer,
 	// buffer is only invalid for importing, and then runparams is not
 	// used anyway.
 	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
-	runparams.flavor = getFlavor(edgepath);
+	runparams.flavor = getFlavor(edgepath, buffer);
 
 	if (buffer) {
 		runparams.use_japanese = buffer->params().bufferFormat() == "platex";
@@ -391,14 +405,33 @@ bool Converters::convert(Buffer const * buffer,
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
-			if (conv.need_aux && !run_latex
-			    && !latex_command_.empty()) {
-				string const command = (buffer && buffer->params().useNonTeXFonts) ?
-					xelatex_command_ : latex_command_;
-				LYXERR(Debug::FILES, "Running " << command
-					<< " to update aux file");
-				if (!runLaTeX(*buffer, command, runparams, errorList))
-					return false;
+			if (conv.need_aux && !run_latex) {
+				string command;
+				switch (runparams.flavor) {
+				case OutputParams::DVILUATEX:
+					command = dvilualatex_command_;
+					break;
+				case OutputParams::LUATEX:
+					command = lualatex_command_;
+					break;
+				case OutputParams::PDFLATEX:
+					command = pdflatex_command_;
+					break;
+				case OutputParams::XETEX:
+					command = xelatex_command_;
+					break;
+				default:
+					command = latex_command_;
+					break;
+				}
+				if (!command.empty()) {
+					LYXERR(Debug::FILES, "Running "
+						<< command
+						<< " to update aux file");
+					if (!runLaTeX(*buffer, command,
+						      runparams, errorList))
+						return false;
+				}
 			}
 
 			// FIXME UNICODE

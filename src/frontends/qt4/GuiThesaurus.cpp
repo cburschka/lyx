@@ -29,6 +29,7 @@
 #include "support/lstrings.h"
 
 #include <QAbstractItemModel>
+#include <QCompleter>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QPushButton>
@@ -79,6 +80,10 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	language_model->sort(0);
 	languageCO->setModel(language_model);
 	languageCO->setModelColumn(2);
+
+	//bug #8138
+	if (entryCO->completer())
+		entryCO->completer()->setCompletionMode(QCompleter::PopupCompletion);
 
 	bc().setCancel(closePB);
 	bc().setApply(replacePB);

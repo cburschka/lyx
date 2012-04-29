@@ -79,6 +79,8 @@ public:
 	DisplayType display() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
+	///
+	docstring layoutName() const;
 	/** Fills \c key
 	 *  \param keys the list of bibkeys in the child buffer.
 	 *  \param it not used here

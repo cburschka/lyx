@@ -82,19 +82,9 @@ public:
 	///
 	bool neverIndent() const { return true; }
 	///
-	bool forcePlainLayout(idx_type = 0) const { return true; }
-	///
-	bool allowParagraphCustomization(idx_type = 0) const { return false; }
-	///
-	virtual void validate(LaTeXFeatures &) const;
-	///
-	void latex(otexstream &, OutputParams const &) const;
-	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	///
-	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void edit(Cursor & cur, bool front,
 	          EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
