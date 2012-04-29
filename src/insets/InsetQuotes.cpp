@@ -230,14 +230,15 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME: should we add a language or a font parameter member?
 	docstring const text = displayString();
-
+	FontInfo font = pi.base.font;
+	font.setPaintColor(pi.textColor(font.realColor()));
 	if (text.length() == 2 && text[0] == text[1]) {
-		pi.pain.text(x, y, text[0], pi.base.font);
-		int const t = theFontMetrics(pi.base.font)
+		pi.pain.text(x, y, text[0], font);
+		int const t = theFontMetrics(font)
 			.width(',');
-		pi.pain.text(x + t, y, text[0], pi.base.font);
+		pi.pain.text(x + t, y, text[0], font);
 	} else {
-		pi.pain.text(x, y, text, pi.base.font);
+		pi.pain.text(x, y, text, font);
 	}
 }
 
