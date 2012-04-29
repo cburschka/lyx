@@ -96,7 +96,9 @@ QString GuiPainter::generateStringSignature(QString const & str, FontInfo const 
 	sig.append(QChar(static_cast<short>(f.series())));
 	sig.append(QChar(static_cast<short>(f.realShape())));
 	sig.append(QChar(static_cast<short>(f.size())));
-	sig.append(QChar(static_cast<short>(f.color())));
+	Color const & color = f.realColor();
+	sig.append(QChar(static_cast<short>(color.baseColor)));
+	sig.append(QChar(static_cast<short>(color.mergeColor)));
 	if (!monochrome_min_.empty()) {
 		QColor const & min = monochrome_min_.top();
 		QColor const & max = monochrome_max_.top();

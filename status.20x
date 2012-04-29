@@ -160,6 +160,9 @@ What's new
 - Fix coloring of insets that come after deleted text insets with
   change tracking on.
 
+- Fix the random coloring of text when change tracking is on and 
+  pixmap caching is enabled (bug 7667).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
