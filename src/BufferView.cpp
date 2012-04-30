@@ -2171,8 +2171,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	// Notify left insets
 	if (cur != old) {
-		old.fixIfBroken();
-		bool badcursor = notifyCursorLeavesOrEnters(old, cur);
+		bool badcursor = old.fixIfBroken() | cur.fixIfBroken()
+				| notifyCursorLeavesOrEnters(old, cur);
 		if (badcursor)
 			cursor().fixIfBroken();
 	}
