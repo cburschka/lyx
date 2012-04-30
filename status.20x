@@ -74,8 +74,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
-
 - Fix reconfiguration on Windows when the temporary directory used by
   python contains non-ASCII characters.
 
@@ -126,6 +124,8 @@ What's new
 - Fixed stray warning when inserting inserting plaintext file (bug 7916).
 
 - Stop screen from jumping around so much on undo and redo (bug 6367).
+
+- Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
 
 - Setting a multirow offset no longer also changes table column
   alignments (bug 8084).
