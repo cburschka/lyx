@@ -36,6 +36,7 @@ What's new
 * TEX2LYX IMPROVEMENTS
 
 - Support for the LaTeX-command \sindex (for split indexes).
+
 - Better support for XeTeX and LuaTeX documents: automatically set default
   encoding to utf-8 and select support for non-TeX fonts.
 
@@ -73,9 +74,6 @@ What's new
 *************
 
 * DOCUMENT INPUT/OUTPUT
-
-- Fix reconfiguration on Windows when the temporary directory used by
-  python contains non-ASCII characters.
 
 - Fix reconfiguration on Windows when the user directory is a UNC path
   (bug 8098).
@@ -183,6 +181,9 @@ What's new
 
 
 * BUILD/INSTALLATION
+
+- Fix reconfiguration on Windows when the temporary directory used by
+  python contains non-ASCII characters.
 
 - Fixed compilation with clang.
 
