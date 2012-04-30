@@ -110,6 +110,9 @@ What's new
 - Fixed crash when modifying or pasting an equation label and there
   are references to that label in math (bug 8095).
 
+- Don't reset the selected format each time we click into a new paragraph
+  in View->Source (bug 7997).
+
 - Do not disable View/Update Other Formats button when "Use non-TeX fonts"
   is active (bug 8069).
 
@@ -122,9 +125,6 @@ What's new
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
 
 - Fixed stray warning when inserting inserting plaintext file (bug 7916).
-
-- Don't reset the selected format each time we click into a new paragraph
-  in View->Source (bug 7997).
 
 - Stop screen from jumping around so much on undo and redo (bug 6367).
 
