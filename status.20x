@@ -113,6 +113,8 @@ What's new
 - Do not disable View/Update Other Formats button when "Use non-TeX fonts"
   is active (bug 8069).
 
+- Stop screen from jumping around so much on undo and redo (bug 6367).
+
 - Do not allow to add a citation in the citation dialog using the
   <Enter> key if the Add button is disabled.
 
@@ -122,8 +124,6 @@ What's new
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
 
 - Fixed stray warning when inserting inserting plaintext file (bug 7916).
-
-- Stop screen from jumping around so much on undo and redo (bug 6367).
 
 - Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
 
