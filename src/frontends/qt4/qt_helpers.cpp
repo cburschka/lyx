@@ -210,20 +210,21 @@ QString const qt_(string const & str)
 }
 
 
-void rescanTexStyles()
+void rescanTexStyles(string const & arg)
 {
 	// Run rescan in user lyx directory
 	PathChanger p(package().user_support());
-	FileName const command = support::libFileSearch("scripts", "TeXFiles.py");
+	FileName const prog = support::libFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
-	int const status = one.startscript(Systemcall::Wait,
-			os::python() + ' ' +
-			quoteName(command.toFilesystemEncoding()));
+	string const command = os::python() + ' ' +
+	    quoteName(prog.toFilesystemEncoding()) + ' ' +
+	    arg;
+	int const status = one.startscript(Systemcall::Wait, command);
 	if (status == 0)
 		return;
 	// FIXME UNICODE
 	frontend::Alert::error(_("Could not update TeX information"),
-		bformat(_("The script `%1$s' failed."), from_utf8(command.absFileName())));
+		bformat(_("The script `%1$s' failed."), from_utf8(prog.absFileName())));
 }
 
 

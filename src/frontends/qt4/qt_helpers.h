@@ -127,8 +127,10 @@ QString browseRelToSub(QString const & filename,
 
 /** Build filelists of all availabe bst/cls/sty-files. Done through
 *  kpsewhich and an external script, saved in *Files.lst.
+*  \param arg: cls, sty, bst, or bib, as required by TeXFiles.py.
+*         Can be a list of these, too.
 */
-void rescanTexStyles();
+void rescanTexStyles(std::string const & arg = empty_string());
 
 /** Fill \c contents from one of the three texfiles.
  *  Each entry in the file list is returned as a name_with_path

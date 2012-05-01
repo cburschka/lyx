@@ -484,7 +484,7 @@ QStringList GuiBibtex::bibFiles() const
 
 void GuiBibtex::rescanBibStyles() const
 {
-	rescanTexStyles();
+	rescanTexStyles("bst bib");
 }
 
 
