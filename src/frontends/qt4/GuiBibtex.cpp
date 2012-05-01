@@ -317,7 +317,7 @@ void GuiBibtex::updateContents()
 	for (int i = 0; i != bibfiles.count(); ++i)
 		add_->bibLW->addItem(changeExtension(bibfiles[i], ""));
 
-	QString bibstyle = styleFile();
+	QString const bibstyle = styleFile();
 
 	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
@@ -327,7 +327,7 @@ void GuiBibtex::updateContents()
 	else if (bibtopic && btPrintCO->count() < 3)
 		btPrintCO->insertItem(1, qt_("all uncited references", 0));
 
-	docstring btprint = params_["btprint"];
+	docstring const & btprint = params_["btprint"];
 	int btp = 0;
 	if ((bibtopic && btprint == "btPrintNotCited") ||
 	   (!bibtopic && btprint == "btPrintAll"))
@@ -341,7 +341,7 @@ void GuiBibtex::updateContents()
 
 	int item_nr = -1;
 
-	QStringList str = bibStyles();
+	QStringList const str = bibStyles();
 	for (int i = 0; i != str.count(); ++i) {
 		QString item = changeExtension(str[i], "");
 		if (item == bibstyle)
