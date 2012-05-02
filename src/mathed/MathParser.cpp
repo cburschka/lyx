@@ -544,9 +544,12 @@ char_type Parser::getChar()
 
 docstring Parser::getArg(char_type left, char_type right)
 {
+	docstring result;
 	skipSpaces();
 
-	docstring result;
+	if (!good())
+		return result;
+
 	char_type c = getChar();
 
 	if (c != left)
