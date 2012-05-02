@@ -91,6 +91,9 @@ What's new
 - Fixed crash when modifying or pasting an equation label and there
   are references to that label in math (bug 8095).
 
+- Fix crash when clicking away in the same math inset just after hitting '\'
+  (bug 8140).
+
 - Fixed assertion on selection of insets in RTL text (bug 7518).
 
 - Don't reset the selected format each time we click into a new paragraph
@@ -142,16 +145,13 @@ What's new
 
 - Fix erroneous error message when calling "buffer-language" manually.
 
-- Fix coloring of insets that come after deleted text insets with
-  change tracking on.
-
 - Fix the random coloring of text when change tracking is on and 
   pixmap caching is enabled (bug 7667).
 
-- Fix the coloring of Quotation marks with change tracking (bug 7653).
+- Fix coloring of insets that come after deleted text insets with
+  change tracking on.
 
-- Fix crash when clicking away in the same math inset just after hitting '\'
-  (bug 8140).
+- Fix the coloring of Quotation marks with change tracking (bug 7653).
 
 
 * DOCUMENTATION AND LOCALIZATION
