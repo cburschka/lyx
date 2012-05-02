@@ -75,15 +75,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fixed assertions on Windows for XHTML output (bug 8078).
-
-- Fix reconfiguration on Windows when the user directory is a UNC path
-  (bug 8098).
-
-- Index entries in XHTML output no longer sorted case sensitively.
-
-- Fixed some problems XHTML output had with empty paragraphs.
-
 - Fixed reading the bounding box from EPS figures with negative
   values (bug 8114).
 
@@ -91,15 +82,8 @@ What's new
   flag by using the same latex backend used for previewing the document
   instead of always using the plain latex backend.
 
-- Fixed XHTML export of sub- and superscripts.
-
 - When configuring LyX, check for all LaTeX-packages LyX uses to display
   symbols (bug 8102).
-
-- Don't output extra body tags with included files when generating
-  XHTML.
-
-- Do not include deleted text in the title of the XHTML output.
 
 
 * USER INTERFACE
@@ -175,6 +159,25 @@ What's new
 - Fixed problem that the example file knitr.lyx could not be opened.
 
 - Re-enable the compilation of the modernCV.lyx example file (bug 8064).
+
+
+* LYXHTML
+
+- Fixed assertions on Windows for XHTML output (bug 8078).
+
+- Fix reconfiguration on Windows when the user directory is a UNC path
+  (bug 8098).
+
+- Index entries in XHTML output no longer sorted case sensitively.
+
+- Fixed some problems XHTML output had with empty paragraphs.
+
+- Fixed XHTML export of sub- and superscripts.
+
+- Don't output extra body tags with included files when generating
+  XHTML.
+
+- Do not include deleted text in the title of the XHTML output.
 
 
 * TEX2LYX
