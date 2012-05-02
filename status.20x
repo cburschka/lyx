@@ -103,6 +103,8 @@ What's new
 
 - Fixed assertion on selection of insets in RTL text (bug 7518).
 
+- Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
+
 - Don't reset the selected format each time we click into a new paragraph
   in View->Source (bug 7997).
 
