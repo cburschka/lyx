@@ -360,6 +360,14 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 }
 
 
+void RowPainter::paintSeparator(double orig_x, double width,
+	FontInfo const & font)
+{
+	pi_.pain.textDecoration(font, int(orig_x), yo_, int(width));
+	x_ += width;
+}
+
+
 void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 		int desc)
 {
@@ -937,9 +945,10 @@ void RowPainter::paintText()
 		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.displayFont(pit_, pos);
 			double const orig_x = x_;
-			x_ += width_pos;
+			double separator_width = width_pos;
 			if (pos >= body_pos)
-				x_ += row_.separator;
+				separator_width += row_.separator;
+			paintSeparator(orig_x, separator_width, orig_font.fontInfo());
 			paintForeignMark(orig_x, orig_font.language());
 			++vpos;
 

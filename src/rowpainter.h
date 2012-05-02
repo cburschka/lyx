@@ -58,6 +58,7 @@ public:
 	void paintSelection();
 
 private:
+	void paintSeparator(double orig_x, double width, FontInfo const & font);
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
 	void paintMisspelledMark(double orig_x, bool changed);
 	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
