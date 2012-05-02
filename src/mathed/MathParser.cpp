@@ -536,7 +536,6 @@ char_type Parser::getChar()
 {
 	if (!good()) {
 		error("The input stream is not well...");
-		putback();
 		return 0;
 	}
 	return tokens_[pos_++].character();
