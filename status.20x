@@ -75,6 +75,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fixed an infinite loop when exporting a file with list
+  or bibliography environments to DocBook (bug 7914).
+
 - Fixed reading the bounding box from EPS figures with negative
   values (bug 8114).
 
