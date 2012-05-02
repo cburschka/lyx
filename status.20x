@@ -94,6 +94,13 @@ What's new
 - Fix crash when clicking away in the same math inset just after hitting '\'
   (bug 8140).
 
+- Fix crash when dissolving a math macro whose first argument is another
+  parameterless macro (bug 8105).
+
+- Update the current view after dispatching a command through the lyxserver.
+  The missing screen update could cause either a failure in executing the
+  command or could even crash LyX (bugs 6871 and 8119).
+
 - Fixed assertion on selection of insets in RTL text (bug 7518).
 
 - Don't reset the selected format each time we click into a new paragraph
@@ -117,10 +124,6 @@ What's new
 - Setting a multirow offset no longer also changes table column
   alignments (bug 8084).
 
-- Fixed stray warning when inserting inserting plaintext file (bug 7916).
-
-- Fix undo warning when inserting plain text file (bug 7916).
-
 - Do not repeatedly show export errors of a previous export.
 
 - Fix the selection of rows below a multirow (bug 8083).
@@ -134,13 +137,6 @@ What's new
 
 - Made it possible to delete local layout in Document>Settings.
 
-- Fix crash when dissolving a math macro whose first argument is another
-  parameterless macro (bug 8105).
-
-- Update the current view after dispatching a command through the lyxserver.
-  The missing screen update could cause either a failure in executing the
-  command or could even crash LyX (bugs 6871 and 8119).
-
 - Improve thesaurus dialog completion (bug 8138)
 
 - Fix erroneous error message when calling "buffer-language" manually.
@@ -152,6 +148,10 @@ What's new
   change tracking on.
 
 - Fix the coloring of Quotation marks with change tracking (bug 7653).
+
+- Fixed stray warning when inserting inserting plaintext file (bug 7916).
+
+- Fix undo warning when inserting plain text file (bug 7916).
 
 
 * DOCUMENTATION AND LOCALIZATION
