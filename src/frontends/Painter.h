@@ -127,6 +127,9 @@ public:
 	*/
 	virtual int text(int x, int y, char_type c, FontInfo const & f) = 0;
 
+	/// draw the underbar, strikeout, uuline and uwave font attributes
+	virtual void textDecoration(FontInfo const & f, int x, int y, int width) = 0;
+
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
 	 * back color is specified, the background is cleared with
