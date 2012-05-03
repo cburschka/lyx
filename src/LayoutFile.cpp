@@ -232,11 +232,12 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	if (!tc->load(tempLayout.absFileName())) {
 		// The only way this happens is because the hardcoded layout file 
 		// above is wrong or stdclass.inc cannot be found. So try again 
-		// without stdclass.inc.
+		// without stdclass.inc and without stdinsets.inc. 
 		ofstream ofs2(tempLayout.toFilesystemEncoding().c_str());
 		ofs2 << "# This layout is automatically generated\n"
 		        "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
 		        "Format " << LAYOUT_FORMAT << "\n"
+		        "Provides stdinsets 1\n"
 		     << layoutpost;
 		ofs2.close();
 		if (!tc->load(tempLayout.absFileName())) {
