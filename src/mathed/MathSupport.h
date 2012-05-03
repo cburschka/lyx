@@ -19,6 +19,7 @@
 
 namespace lyx {
 
+class MetricsInfo;
 class PainterInfo;
 class FontInfo;
 class Dimension;
