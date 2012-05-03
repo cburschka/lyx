@@ -822,6 +822,7 @@ int InsetInclude::plaintext(odocstream & os, OutputParams const & op) const
 		return str.size();
 	}
 	writePlaintextFile(*ibuf, os, op);
+	return 0;
 }
 
 
