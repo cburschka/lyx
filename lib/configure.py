@@ -124,7 +124,7 @@ def checkTeXPaths():
                 inpname = tmpfname.replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
-        logname = os.path.basename(inpname.replace('.ltx', '.log'))
+        logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
         inpname = inpname.replace('~', '\\string~')
         os.write(fd, r'\relax')
         os.close(fd)
