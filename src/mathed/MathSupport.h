@@ -40,6 +40,8 @@ void mathed_string_dim(FontInfo const & font,
 
 int mathed_string_width(FontInfo const &, docstring const & s);
 
+void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & s);
+
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & s);
 void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & s);
 

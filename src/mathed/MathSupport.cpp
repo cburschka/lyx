@@ -488,6 +488,12 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
+void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & str)
+{
+	mathed_string_dim(mi.base.font, str, dim);
+}
+
+
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	FontInfo f = pi.base.font;

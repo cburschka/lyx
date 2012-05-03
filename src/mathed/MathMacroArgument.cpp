@@ -62,7 +62,7 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, str_, dim);
+	metricsStrRedBlack(mi, dim, str_);
 }
 
 

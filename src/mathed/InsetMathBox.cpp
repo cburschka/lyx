@@ -218,7 +218,7 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 	
 	Dimension wdim;
 	static docstring bracket = from_ascii("[");
-	mathed_string_dim(mi.base.font, bracket, wdim);
+	metricsStrRedBlack(mi, wdim, bracket);
 	int w = wdim.wid;
 	
 	Dimension dim0;
