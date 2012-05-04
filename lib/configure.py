@@ -1083,6 +1083,12 @@ def checkLatexConfig(check_config, bool_docbook):
                     tx.write(retval)
         tx.close()
         logger.info('\tdone')
+    if not os.path.isfile('packages.lst') or not check_config:
+        logger.info('+generating default list of packages... ')
+        removeFiles(['packages.lst'])
+        tx = open('packages.lst', 'w')
+        tx.close()
+        logger.info('\tdone')
     if not check_config:
         return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
