@@ -121,7 +121,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cat() == catComment) {
 			if (!t.cs().empty())
-				cerr << "Ignoring comment: " << t.asInput();
+				os << t.asInput();
 			else
 				// "%\n" combination
 				p.skip_spaces();

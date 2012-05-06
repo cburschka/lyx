@@ -1018,7 +1018,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				Token const & t = getToken();
 				if (t.cat() == catNewline)
 					break;
-				s += t.asString();
+				s += t.asInput();
 			}
 			cell->push_back(MathAtom(new InsetMathComment(buf, s)));
 			skipSpaces();
