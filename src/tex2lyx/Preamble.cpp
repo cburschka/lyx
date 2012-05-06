@@ -172,7 +172,8 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 "xeCJK", "xecolor", "xecyr", "xeindex", "xepersian", "xunicode", 0};
 
 /// packages that are automatically skipped if loaded by LyX
-const char * const known_lyx_packages[] = {"array", "booktabs", "calc",
+const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
+"amstext", "amsthm", "array", "booktabs", "calc",
 "color", "float", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
 "multirow", "nomencl", "pdfpages", "rotfloat", "splitidx", "setspace",
 "subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig", 0};
@@ -773,10 +774,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
-			h_preamble << "\\usepackage{" << name << "}";
+			h_preamble << "\\usepackage{" << name << "}\n";
 		else {
 			h_preamble << "\\usepackage[" << opts << "]{"
-				   << name << "}";
+				   << name << "}\n";
 			options.clear();
 		}
 	}
@@ -844,6 +845,12 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 		registerAutomaticallyLoadedPackage("float");
 	if (h_spacing != "single" && h_spacing != "default")
 		registerAutomaticallyLoadedPackage("setspace");
+	if (h_use_packages["amsmath"] == "2") {
+		// amsbsy and amstext are already provided by amsmath
+		registerAutomaticallyLoadedPackage("amsbsy");
+		registerAutomaticallyLoadedPackage("amstext");
+		registerAutomaticallyLoadedPackage("amssymb");
+	}
 
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
