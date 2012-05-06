@@ -471,6 +471,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// would not be needed.
 	static Buffer * buffer = theBufferList().newBuffer(
 		FileName::tempName("clipboard.internal").absFileName());
+	buffer->setInternal(true);
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
 	buffer->inset().setBuffer(*buffer);

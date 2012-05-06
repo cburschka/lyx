@@ -364,6 +364,8 @@ public:
 	/// automatically saved, nor it needs to trigger any "do you want to save ?" question.
 	bool isInternal() const;
 
+	void setInternal(bool flag);
+
 	/// Mark this buffer as dirty.
 	void markDirty();
 
