@@ -173,9 +173,9 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "booktabs", "calc",
-"color", "float", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
-"multirow", "nomencl", "pdfpages", "rotfloat", "splitidx", "setspace",
+"amstext", "amsthm", "array", "booktabs", "calc", "color", "float",
+"graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
+"nomencl", "pdfpages", "rotating", "rotfloat", "splitidx", "setspace",
 "subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.

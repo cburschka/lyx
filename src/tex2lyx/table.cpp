@@ -1194,11 +1194,35 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				for (size_t c = 1; c < colinfo.size(); ++c)
 					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
+				bool sideways = false;
+				if (p.next_token().cs() == "begin") {
+					p.pushPosition();
+					p.get_token();
+					string const env = p.getArg('{', '}');
+					if (env == "sideways") {
+						active_environments.push_back(env);
+						p.verbatimEnvironment(env);
+						active_environments.pop_back();
+						p.skip_spaces();
+						if (!p.good())
+							sideways = true;
+					}
+					p.popPosition();
+				}
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
 				cellinfo[row][col].align      = colinfo[col].align;
 				ostringstream os;
-				parse_text_in_inset(p, os, FLAG_CELL, false, context);
+				if (sideways) {
+					cellinfo[row][col].rotate = 90;
+					p.get_token();
+					active_environments.push_back(p.getArg('{', '}'));
+					parse_text_in_inset(p, os, FLAG_END, false, context);
+					active_environments.pop_back();
+					preamble.registerAutomaticallyLoadedPackage("rotating");
+				} else {
+					parse_text_in_inset(p, os, FLAG_CELL, false, context);
+				}
 				cellinfo[row][col].content += os.str();
 			}
 		}
