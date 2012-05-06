@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-28 10:33+0200\n"
+"POT-Creation-Date: 2012-05-06 21:50+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -770,7 +770,7 @@ msgstr "Vš&etko prepnúť"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
-msgstr "Použiť každú zmenu automaticky"
+msgstr "Používať každú zmenu automaticky"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "Apply changes &immediately"
@@ -784,7 +784,7 @@ msgstr "O&kamžite použiť zmeny"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:80
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:2012 src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:2023 src/frontends/qt4/GuiDocument.cpp:3344
 msgid "&Apply"
 msgstr "&Použiť"
 
@@ -20779,26 +20779,42 @@ msgid "Page"
 msgstr "Stránka"
 
 #: src/frontends/qt4/GuiDocument.cpp:178
-msgid "&Use AMS math package automatically"
-msgstr "&Automaticky používať balík AMS math"
+msgid "&Use amsmath package automatically"
+msgstr "&Automaticky používať balík amsmath"
 
 #: src/frontends/qt4/GuiDocument.cpp:179
-msgid "Use AMS &math package"
-msgstr "Použiť balík AMS &matematiky"
+msgid "Use ams&math package"
+msgstr "Použiť balík ams&math"
 
 #: src/frontends/qt4/GuiDocument.cpp:180
 msgid ""
-"The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
-"are inserted into formulas"
+"The LaTeX package amsmath is only used if AMS formula types or symbols from "
+"the AMS math toolbars are inserted into formulas"
 msgstr ""
-"Balíky pre AMS a Latex sú použité len v prípade, že vo formulách sú vložené "
-"aj symboly z mat. lišty nástrojov AMS"
+"Balík amsmath bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z mat. lišty nástrojov AMS"
 
 #: src/frontends/qt4/GuiDocument.cpp:182
-msgid "Use esint package &automatically"
-msgstr "Automaticky použiť balík &esint"
+msgid "&Use amssymb package automatically"
+msgstr "Automaticky používať balík amssymb"
 
 #: src/frontends/qt4/GuiDocument.cpp:183
+msgid "Use amssymb package"
+msgstr "Použiť balík amssymb"
+
+#: src/frontends/qt4/GuiDocument.cpp:184
+msgid ""
+"The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
+"are inserted into formulas"
+msgstr ""
+"Balík amssymb bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z mat. lišty nástrojov AMS"
+
+#: src/frontends/qt4/GuiDocument.cpp:186
+msgid "Use esint package &automatically"
+msgstr "Automaticky používať balík &esint"
+
+#: src/frontends/qt4/GuiDocument.cpp:187
 msgid "Use &esint package"
 msgstr "Použiť balík e&sint"
 
@@ -20842,9 +20858,9 @@ msgstr ""
 "LaTeX balík mathtools sa použije len v prípade, keď sa vo formulách nájdu aj "
 "niektoré matematické relácie"
 
-#: src/frontends/qt4/GuiDocument.cpp:194
+#: src/frontends/qt4/GuiDocument.cpp:198
 msgid "Use mhchem &package automatically"
-msgstr "Automaticky použiť balík mhchem"
+msgstr "Automaticky používať balík mhchem"
 
 #: src/frontends/qt4/GuiDocument.cpp:195
 msgid "Use mh&chem package"
@@ -20858,11 +20874,11 @@ msgstr ""
 "LaTeX balík mhchem použiť len v prípade, keď sa vo formulách nájdu aj "
 "symboly \\ce alebo \\cf"
 
-#: src/frontends/qt4/GuiDocument.cpp:198
+#: src/frontends/qt4/GuiDocument.cpp:202
 msgid "Use u&ndertilde package automatically"
-msgstr "Automaticky použiť balík undertilde"
+msgstr "Automaticky používať balík undertilde"
 
-#: src/frontends/qt4/GuiDocument.cpp:199
+#: src/frontends/qt4/GuiDocument.cpp:203
 msgid "Use undertilde pac&kage"
 msgstr "Použiť balík undertilde"
 
