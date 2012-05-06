@@ -1066,7 +1066,7 @@ string const LaTeXFeatures::loadAMSPackages() const
 	}
 
 	if (mustProvide("amssymb")
-	    || params_.use_package("amsmath") == BufferParams::package_on)
+	    && params_.use_package("amssymb") != BufferParams::package_off)
 		tmp << "\\usepackage{amssymb}\n";
 
 	return tmp.str();

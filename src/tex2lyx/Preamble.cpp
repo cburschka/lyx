@@ -466,6 +466,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_hyperref            = "0";
 	h_use_refstyle            = "0";
 	h_use_packages["amsmath"]    = "1";
+	h_use_packages["amssymb"]    = "0";
 	h_use_packages["esint"]      = "1";
 	h_use_packages["mhchem"]     = "0";
 	h_use_packages["mathdots"]   = "0";
@@ -653,10 +654,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 		||	is_known(name, known_typewriter_fonts))
 		;
 
-	else if (name == "amsmath" || name == "amssymb")
-		h_use_packages["amsmath"] = "2";
-
-	else if (name == "esint" || name == "mhchem" || name == "mathdots" ||
+	else if (name == "amsmath" || name == "amssymb" ||
+	         name == "esint" || name == "mhchem" || name == "mathdots" ||
 	         name == "mathtools" || name == "undertilde")
 		h_use_packages[name] = "2";
 
@@ -849,7 +848,6 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 		// amsbsy and amstext are already provided by amsmath
 		registerAutomaticallyLoadedPackage("amsbsy");
 		registerAutomaticallyLoadedPackage("amstext");
-		registerAutomaticallyLoadedPackage("amssymb");
 	}
 
 	// output the LyX file settings

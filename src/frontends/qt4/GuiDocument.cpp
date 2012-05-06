@@ -175,9 +175,13 @@ char const * backref_opts_gui[] =
 char const * packages_gui[][4] =
 {
 	{"amsmath",
-	 N_("&Use AMS math package automatically"),
-	 N_("Use AMS &math package"),
-	 N_("The AMS LaTeX packages are only used if symbols from the AMS math toolbars are inserted into formulas")},
+	 N_("&Use amsmath package automatically"),
+	 N_("Use ams&math package"),
+	 N_("The LaTeX package amsmath is only used if AMS formula types or symbols from the AMS math toolbars are inserted into formulas")},
+	{"amssymb",
+	 N_("&Use amssymb package automatically"),
+	 N_("Use amssymb package"),
+	 N_("The LaTeX package amssymb is only used if symbols from the AMS math toolbars are inserted into formulas")},
 	{"esint",
 	 N_("Use esint package &automatically"),
 	 N_("Use &esint package"),

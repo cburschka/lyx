@@ -31,8 +31,7 @@ from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, 
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
-  #find_token_backwards, is_in_inset, get_value, get_quoted_value, \
-  #del_token, check_token
+  #find_token_backwards, is_in_inset, del_token, check_token
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
 
@@ -730,6 +729,45 @@ def revert_listoflistings(document):
         i = i + 1
 
 
+def convert_use_amssymb(document):
+    "insert use_package amssymb"
+    regexp = re.compile(r'(\\use_package\s+amsmath)')
+    i = find_re(document.header, regexp, 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_package amsmath.")
+        return;
+    value = get_value(document.header, "\\use_package" , i).split()[1]
+    useamsmath = 0
+    try:
+        useamsmath = int(value)
+    except:
+        document.warning("Invalid \\use_package amsmath: " + value + ". Assuming auto.")
+        useamsmath = 1
+    j = find_token(document.preamble, "\\usepackage{amssymb}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_package amssymb %d" % useamsmath)
+    else:
+        document.header.insert(i + 1, "\\use_package amssymb 2")
+        del document.preamble[j]
+
+
+def revert_use_amssymb(document):
+    "remove use_package amssymb"
+    regexp1 = re.compile(r'(\\use_package\s+amsmath)')
+    regexp2 = re.compile(r'(\\use_package\s+amssymb)')
+    i = find_re(document.header, regexp1, 0)
+    j = find_re(document.header, regexp2, 0)
+    value1 = "1" # default is auto
+    value2 = "1" # default is auto
+    if i != -1:
+        value1 = get_value(document.header, "\\use_package" , i).split()[1]
+    if j != -1:
+        value2 = get_value(document.header, "\\use_package" , j).split()[1]
+        del document.header[j]
+    if value1 != value2 and value2 == "2": # on
+        add_to_preamble(document, ["\\usepackage{amssymb}"])
+
+
 ##
 # Conversion hub
 #
@@ -753,9 +791,11 @@ convert = [
            [428, [convert_cell_rotation]],
            [429, [convert_table_rotation]],
            [430, [convert_listoflistings]],
+           [431, [convert_use_amssymb]],
           ]
 
 revert =  [
+           [430, [revert_use_amssymb]],
            [429, [revert_listoflistings]],
            [428, [revert_table_rotation]],
            [427, [revert_cell_rotation]],
