@@ -209,6 +209,14 @@ string const write_attribute(string const & name, string const & s)
 }
 
 
+string const write_attribute(string const & name, int const & i)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return i ? write_attribute(name, convert<string>(i)) : string();
+}
+
+
 /*! rather brutish way to code table structure in a string:
 
 \verbatim
@@ -1194,18 +1202,24 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				for (size_t c = 1; c < colinfo.size(); ++c)
 					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
-				bool sideways = false;
+				bool turn = false;
+				int rotate = 0;
 				if (p.next_token().cs() == "begin") {
 					p.pushPosition();
 					p.get_token();
 					string const env = p.getArg('{', '}');
-					if (env == "sideways") {
+					if (env == "sideways" || env == "turn") {
+						string angle = "90";
+						if (env == "turn") {
+							turn = true;
+							angle = p.getArg('{', '}');
+						}
 						active_environments.push_back(env);
 						p.verbatimEnvironment(env);
 						active_environments.pop_back();
 						p.skip_spaces();
-						if (!p.good())
-							sideways = true;
+						if (!p.good() && support::isStrInt(angle))
+							rotate = convert<int>(angle);
 					}
 					p.popPosition();
 				}
@@ -1213,10 +1227,12 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
 				cellinfo[row][col].align      = colinfo[col].align;
 				ostringstream os;
-				if (sideways) {
-					cellinfo[row][col].rotate = 90;
+				if (rotate != 0) {
+					cellinfo[row][col].rotate = rotate;
 					p.get_token();
 					active_environments.push_back(p.getArg('{', '}'));
+					if (turn)
+						p.getArg('{', '}');
 					parse_text_in_inset(p, os, FLAG_END, false, context);
 					active_environments.pop_back();
 					preamble.registerAutomaticallyLoadedPackage("rotating");
