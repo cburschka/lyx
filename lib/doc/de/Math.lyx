@@ -1007,6 +1007,31 @@ B.
 \end_inset
 
  steht für den Druck der jeweiligen Pfeiltaste auf der Tastatur.
+ Die 
+\family sans
+Tabulator
+\family default
+-Taste kann oft anstelle von 
+\begin_inset Formula $\to$
+\end_inset
+
+ und 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ benutzt werden und 
+\family sans
+Umschalt+Tabulator
+\family default
+ anstelle von 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ und 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -1946,19 +1971,6 @@ leer
 \end_inset
 
 e^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
-\end_inset
-
-
 \backslash
 frac
 \begin_inset ERT
@@ -28205,6 +28217,8 @@ reference "sub:Standard-align-Umgebung"
 \end_inset
 
  beschrieben ist.
+ Es wird empfohlen die align-Umgebung zu verwenden, denn sie erscheint in
+ jedem Fall typographisch korrekt in der Ausgabe.
 \end_layout
 
 \begin_layout Standard
@@ -30125,6 +30139,11 @@ Marke
 
  gesetzt.
  Dabei muss sich der Cursor in einer abgesetzten Formel befinden.
+ Alternativ klickt man mit rechts auf die Formel und wählt 
+\family sans
+Formelmarke
+\family default
+.
  Es erscheint ein Eingabefeld mit dem voreingestellten Eintrag 
 \series bold
 eq:
@@ -30144,6 +30163,10 @@ equation
 \family sans
 Einfügen\SpecialChar \menuseparator
 Marke
+\family default
+ oder man klickt mit rechts auf eine Formel und dann auf 
+\family sans
+Formelmarke
 \family default
 .
 \end_layout

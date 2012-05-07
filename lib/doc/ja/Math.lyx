@@ -864,6 +864,32 @@ spce
 \end_inset
 
 のような矢印は、キーボードから対応する矢印キーを押すことを表します。
+\lang english
+The 
+\family sans
+Tab
+\family default
+ key can often be used instead of 
+\begin_inset Formula $\to$
+\end_inset
+
+ and 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+, and 
+\family sans
+Shift+Tab
+\family default
+ instead of 
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ and 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -1781,19 +1807,6 @@ spce
 \end_inset
 
 e^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
 \backslash
 frac
 \begin_inset ERT
@@ -27799,6 +27812,9 @@ reference "sub:標準align環境"
 align環境
 \series default
 が作り出されることになります。
+\lang english
+The align environment is recommended because it provides in any case a typograph
+ically correct output.
 \end_layout
 
 \begin_layout Standard
@@ -29579,7 +29595,15 @@ status collapsed
 
 \end_inset
 
-で付けることができます。このとき、カーソルは別行建て数式の中になくてはなりません。すると、テキストフィールドの中に
+で付けることができます。このとき、カーソルは別行建て数式の中になくてはなりません。
+\lang english
+Alternatively you can right-click on the formula and choose 
+\family sans
+Equation Label
+\family default
+.
+\lang japanese
+すると、テキストフィールドの中に
 \series bold
 eq:と
 \series default
@@ -29589,7 +29613,14 @@ eq:と
 挿入\SpecialChar \menuseparator
 ラベル
 \family default
-メニューをもういちど使って下さい。
+メニューをもういちど使って下さい
+\lang english
+or you right-click on a formula and then on 
+\family sans
+Equation Label
+\family default
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
