@@ -296,7 +296,7 @@ Menuset
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
 		Item "Jump Back to Saved Bookmark|B" "bookmark-goto 0"
-		OptItem "Forward search|F" "forward-search"
+		OptItem "Forward Search|F" "forward-search"
 		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"

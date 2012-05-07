@@ -532,7 +532,7 @@ Menuset
 		Item "Next Change|C" "change-next"
 		Item "Next Cross-Reference|R" "reference-next"
 		OptItem "Go to Label|L" "label-goto"
-		Item "Forward search|F" "forward-search"
+		Item "Forward Search|F" "forward-search"
 		Separator
 		Toc
 	End
@@ -593,7 +593,7 @@ Menuset
 		Item "LilyPond Manual|M" "help-open lilypond"
 		Item "Linguistics Manual|L" "help-open linguistics"
 		Item "Multilingual Captions Manual|C" "help-open MultilingualCaptions"
-		Item "Risk and safety statements Manual|R" "help-open R-S-statements"
+		Item "Risk and Safety Statements Manual|R" "help-open R-S-statements"
 		Item "Sweave Manual|S" "help-open sweave"
 		Item "XY-pic Manual|X" "help-open xypic"
 	End
