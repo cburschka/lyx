@@ -959,6 +959,34 @@ Una flecha como
 
  indica el uso de la correspondiente tecla de flecha.
  
+\lang english
+The 
+\family sans
+Tab
+\family default
+ key can often be used instead of 
+\begin_inset Formula $\to$
+\end_inset
+
+ y 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+, y 
+\family sans
+Shift+Tab
+\family default
+ instead of 
+\lang spanish
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ y 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -1937,19 +1965,6 @@ spce
 \end_inset
 
 e^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
 \backslash
 frac
 \begin_inset ERT
@@ -28648,6 +28663,10 @@ reference "sub:Entorno-align-estándar"
 \end_inset
 
 .
+ 
+\lang english
+The align environment is recommended because it provides in any case a typograph
+ically correct output.
 \end_layout
 
 \begin_layout Standard
@@ -30524,6 +30543,15 @@ Etiqueta
 
  de la barra de herramientas.
  El cursor debe estar dentro de una ecuación en modo presentación.
+ 
+\lang english
+Alternatively you can right-click on the formula and choose 
+\family sans
+Equation Label
+\family default
+.
+
+\lang spanish
  Surge un diálogo con el prefijo 
 \series bold
 eq:
@@ -30550,7 +30578,13 @@ de las etiquetas de sección.
  Para cambiar una etiqueta se usa de nuevo el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Etiqueta
+Etiqueta 
+\family default
+o 
+\lang english
+you right-click on a formula and then on 
+\family sans
+Equation Label
 \family default
 .
 \end_layout

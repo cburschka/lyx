@@ -988,6 +988,35 @@ Une flèche comme celle-ci
 \end_inset
 
  indique que l'on doit appuyer sur la flèche correspondante du clavier.
+ 
+\lang english
+The 
+\family sans
+Tab
+\family default
+ key can often be used instead of 
+\begin_inset Formula $\to$
+\end_inset
+
+ et 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+, et 
+\family sans
+Shift+Tab
+\family default
+ instead of 
+\lang french
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ et 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -1888,19 +1917,6 @@ spce
 \end_inset
 
 e^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
 \backslash
 frac
 \begin_inset ERT
@@ -28238,6 +28254,10 @@ reference "sub:Environnement-align-standard"
 \end_inset
 
 .
+ 
+\lang english
+The align environment is recommended because it provides in any case a typograph
+ically correct output.
 \end_layout
 
 \begin_layout Standard
@@ -30200,6 +30220,15 @@ Insérer\SpecialChar \menuseparator
  de la barre d'outils.
  Pour cela, le curseur doit se trouver à l'intérieur d'une formule hors
  ligne.
+ 
+\lang english
+Alternatively you can right-click on the formula and choose 
+\family sans
+Equation Label
+\family default
+.
+
+\lang french
  Une fenêtre de dialogue apparaît affichant le préfixe 
 \series bold
 eq:
@@ -30220,7 +30249,13 @@ eq:
  Pour modifier l'étiquette on doit repasser par le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
-Étiquette
+Étiquette 
+\family default
+ou 
+\lang english
+you right-click on a formula and then on 
+\family sans
+Equation Label
 \family default
 .
 \end_layout
