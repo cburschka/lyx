@@ -93,6 +93,9 @@ public:
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y, char_type c, FontInfo const & f);
 
+	///
+	virtual void textDecoration(FontInfo const & f, int x, int y, int width);
+
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x, int baseline, docstring const & s,
 		FontInfo const & font, bool mouseHover);

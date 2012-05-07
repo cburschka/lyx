@@ -335,14 +335,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 	if (f.realShape() == SMALLCAPS_SHAPE) {
 		textwidth = smallCapsText(x, y, str, f);
-		if (f.underbar() == FONT_ON)
-			underline(f, x, y, textwidth);
-		if (f.strikeout() == FONT_ON)
-			strikeoutLine(f, x, y, textwidth);
-		if (f.uuline() == FONT_ON)
-			doubleUnderline(f, x, y, textwidth);
-		if (f.uwave() == FONT_ON)
-			wavyHorizontalLine(x, y, textwidth, f.realColor().baseColor);
+		textDecoration(f, x, y, textwidth);
 		return textwidth;
 	}
 
@@ -350,15 +343,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
 	textwidth = fm.width(s);
-	if (f.underbar() == FONT_ON)
-		underline(f, x, y, textwidth);
-	if (f.strikeout() == FONT_ON)
-		strikeoutLine(f, x, y, textwidth);
-	if (f.uuline() == FONT_ON)
-		doubleUnderline(f, x, y, textwidth);
-	if (f.uwave() == FONT_ON)
-		// f.color() doesn't work on some circumstances
-		wavyHorizontalLine(x, y, textwidth,  f.realColor().baseColor);
+	textDecoration(f, x, y, textwidth);
 
 	if (!isDrawingEnabled())
 		return textwidth;
@@ -438,6 +423,20 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
 	return textwidth;
+}
+
+
+void GuiPainter::textDecoration(FontInfo const & f, int x, int y, int width)
+{
+	if (f.underbar() == FONT_ON)
+		underline(f, x, y, width);
+	if (f.strikeout() == FONT_ON)
+		strikeoutLine(f, x, y, width);
+	if (f.uuline() == FONT_ON)
+		doubleUnderline(f, x, y, width);
+	if (f.uwave() == FONT_ON)
+		// f.color() doesn't work on some circumstances
+		wavyHorizontalLine(x, y, width,  f.realColor().baseColor);
 }
 
 

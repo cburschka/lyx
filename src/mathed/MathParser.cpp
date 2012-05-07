@@ -535,7 +535,6 @@ char_type Parser::getChar()
 {
 	if (!good()) {
 		error("The input stream is not well...");
-		putback();
 		return 0;
 	}
 	return tokens_[pos_++].character();
@@ -544,9 +543,12 @@ char_type Parser::getChar()
 
 docstring Parser::getArg(char_type left, char_type right)
 {
+	docstring result;
 	skipSpaces();
 
-	docstring result;
+	if (!good())
+		return result;
+
 	char_type c = getChar();
 
 	if (c != left)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-04-12 07:51-0400\n"
+"POT-Creation-Date: 2012-05-05 10:14+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2324,7 +2324,9 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
-msgstr "Špecifikácia alternatívnych schém tohto dokumentu"
+msgstr ""
+"Špecifikácia dodatočných schém pre tento dokument.\n"
+"Formát je ako v súboroch '*.layout'"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "Errors reported in terminal."
@@ -10285,6 +10287,22 @@ msgstr "Pripomienka \\thetheorem."
 #: lib/layouts/theorems-ams.inc:260 lib/layouts/theorems.inc:260
 msgid "Claim \\thetheorem."
 msgstr "Nárok \\thetheorem."
+
+#: lib/layouts/theorems-case.inc:12
+msgid "Case \\arabic{casei}."
+msgstr "Prípad \\arabic{casei}."
+
+#: lib/layouts/theorems-case.inc:16
+msgid "Case \\roman{caseii}."
+msgstr "Prípad \\roman{caseii}."
+
+#: lib/layouts/theorems-case.inc:20
+msgid "Case \\alph{caseiii}."
+msgstr "Prípad \\alph{caseiii}."
+
+#: lib/layouts/theorems-case.inc:24
+msgid "Case \\arabic{caseiv}."
+msgstr "Prípad \\arabic{caseiv}."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"

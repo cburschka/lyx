@@ -488,9 +488,18 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
+void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & str)
+{
+	FontInfo font = mi.base.font;
+	augmentFont(font, from_ascii("mathnormal"));
+	mathed_string_dim(font, str, dim);
+}
+
+
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	FontInfo f = pi.base.font;
+	augmentFont(f, from_ascii("mathnormal"));
 	f.setColor(Color_latex);
 	pi.pain.text(x, y, str, f);
 }
@@ -499,6 +508,7 @@ void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	FontInfo f = pi.base.font;
+	augmentFont(f, from_ascii("mathnormal"));
 	f.setColor(Color_foreground);
 	pi.pain.text(x, y, str, f);
 }

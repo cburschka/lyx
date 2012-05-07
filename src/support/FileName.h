@@ -183,7 +183,7 @@ public:
 	/// \p mask must be in filesystem encoding, if it contains a
 	/// relative path, the template file will be created in the global
 	/// temporary directory as given by 'package().temp_dir()'.
-	static FileName tempName(std::string const & mask = empty_string());
+	static FileName tempName(std::string const & mask);
 	static FileName tempName(FileName const & temp_dir,
 		std::string const & mask);
 

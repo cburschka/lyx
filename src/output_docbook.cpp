@@ -295,7 +295,11 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 			send = searchParagraph(par, pend);
 			par = makeParagraph(buf, os, runparams, text, par,send);
 			break;
-		default:
+		case LATEX_BIB_ENVIRONMENT:
+		case LATEX_LIST_ENVIRONMENT:
+			// FIXME This means that we are just skipping any paragraph that
+			// isn't implemented above.
+			++par;
 			break;
 		}
 	}
@@ -349,7 +353,11 @@ void docbookParagraphs(Text const & text,
 			send = searchParagraph(par, pend);
 			par = makeParagraph(buf, os, runparams, text, par,send);
 			break;
-		default:
+		case LATEX_BIB_ENVIRONMENT:
+		case LATEX_LIST_ENVIRONMENT:
+			// FIXME This means that we are just skipping any paragraph that
+			// isn't implemented above.
+			++par;
 			break;
 		}
 		// makeEnvironment may process more than one paragraphs and bypass pend

@@ -48,7 +48,9 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
-	Dimension t = theFontMetrics(mi.base.font).dimension('{');
+	FontInfo font = mi.base.font;
+	augmentFont(font, from_ascii("mathnormal"));
+	Dimension t = theFontMetrics(font).dimension('{');
 	dim.asc = max(dim0.asc, t.asc);
 	dim.des = max(dim0.des, t.des);
 	dim.wid = dim0.width() + 2 * t.wid;
@@ -59,6 +61,7 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font = pi.base.font;
+	augmentFont(font, from_ascii("mathnormal"));
 	font.setShape(UP_SHAPE);
 	font.setColor(Color_latex);
 	Dimension t = theFontMetrics(font).dimension('{');

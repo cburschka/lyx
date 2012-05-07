@@ -470,7 +470,8 @@ void putClipboard(ParagraphList const & paragraphs,
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
 	static Buffer * buffer = theBufferList().newBuffer(
-		FileName::tempName().absFileName() + "_clipboard.internal");
+		FileName::tempName("clipboard.internal").absFileName());
+	buffer->setInternal(true);
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
 	buffer->inset().setBuffer(*buffer);

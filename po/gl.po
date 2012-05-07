@@ -6924,7 +6924,7 @@ msgstr "En série"
 #: lib/layouts/apa.layout:414 lib/layouts/apa.layout:415
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
-msgstr "(\\alph{enumii})"
+msgstr "\\alph{enumii})"
 
 #: lib/layouts/armenian-article.layout:9
 msgid "LatinOn"
@@ -10573,11 +10573,11 @@ msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:53
 msgid "\\roman{enumiii}."
-msgstr "\\roman{enumiii}."
+msgstr "\\arabic{enumiii})"
 
 #: lib/layouts/stdcounters.inc:58
 msgid "\\Alph{enumiv}."
-msgstr "\\Alph{enumiv}."
+msgstr "\\alph{enumiv}'"
 
 #: lib/layouts/stdcounters.inc:68
 #, fuzzy

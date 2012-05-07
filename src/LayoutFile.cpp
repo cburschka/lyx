@@ -212,7 +212,7 @@ string layoutpost =
 
 LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 {
-	FileName const tempLayout = FileName::tempName();
+	FileName const tempLayout = FileName::tempName("basic_layout");
 	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
 	// This writes a very basic class, but it also attempts to include 
 	// stdclass.inc. That would give us something moderately usable.

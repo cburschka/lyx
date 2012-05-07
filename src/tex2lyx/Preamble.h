@@ -55,6 +55,10 @@ public:
 	void addModule(std::string const & module);
 	///
 	void suppressDate(bool suppress);
+	///
+	bool titleLayoutFound() const { return title_layout_found; }
+	///
+	void titleLayoutFound(bool found) { title_layout_found = found; }
 	/// Register an author named \p name in the author list
 	void registerAuthor(std::string const & name);
 	/// Get author named \p name (must be registered first)
@@ -77,6 +81,9 @@ private:
 
 	/// needed to handle encodings with babel
 	bool one_language;
+
+	/// was at least one title layout found?
+	bool title_layout_found;
 
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;

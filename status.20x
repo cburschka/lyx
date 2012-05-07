@@ -32,6 +32,9 @@ What's new
 
 - Made some minor improvements to the include_bib.py script.
 
+- Case environments provided by theorem modules should now nest
+  properly (bug 7611).
+
 
 * TEX2LYX IMPROVEMENTS
 
@@ -75,14 +78,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fixed assertions on Windows for XHTML output (bug 8078).
-
-- Fix reconfiguration on Windows when the user directory is a UNC path
-  (bug 8098).
-
-- Index entries in XHTML output no longer sorted case sensitively.
-
-- Fixed some problems XHTML output had with empty paragraphs.
+- Fixed an infinite loop when exporting a file with list
+  or bibliography environments to DocBook (bug 7914).
 
 - Fixed reading the bounding box from EPS figures with negative
   values (bug 8114).
@@ -91,15 +88,11 @@ What's new
   flag by using the same latex backend used for previewing the document
   instead of always using the plain latex backend.
 
-- Fixed XHTML export of sub- and superscripts.
-
 - When configuring LyX, check for all LaTeX-packages LyX uses to display
   symbols (bug 8102).
 
-- Don't output extra body tags with included files when generating
-  XHTML.
-
-- Do not include deleted text in the title of the XHTML output.
+- Fix the naming of some temporary files such that they are created
+  in LyX's temporary directory.
 
 
 * USER INTERFACE
@@ -107,7 +100,19 @@ What's new
 - Fixed crash when modifying or pasting an equation label and there
   are references to that label in math (bug 8095).
 
+- Fix crash when clicking away in the same math inset just after hitting '\'
+  (bug 8140).
+
+- Fix crash when dissolving a math macro whose first argument is another
+  parameterless macro (bug 8105).
+
+- Update the current view after dispatching a command through the lyxserver.
+  The missing screen update could cause either a failure in executing the
+  command or could even crash LyX (bugs 6871 and 8119).
+
 - Fixed assertion on selection of insets in RTL text (bug 7518).
+
+- Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
 
 - Don't reset the selected format each time we click into a new paragraph
   in View->Source (bug 7997).
@@ -123,16 +128,15 @@ What's new
 - Allow the <Enter> key to add a new branch in document settings.
   Only <Ctrl+Enter> and numpad-<Enter> will also close the dialog.
 
+- Box settings dialog didn't work if you were actually inside the box 
+  (bug 8124).
+
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
 
 - Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
 
 - Setting a multirow offset no longer also changes table column
   alignments (bug 8084).
-
-- Fixed stray warning when inserting inserting plaintext file (bug 7916).
-
-- Fix undo warning when inserting plain text file (bug 7916).
 
 - Do not repeatedly show export errors of a previous export.
 
@@ -147,27 +151,26 @@ What's new
 
 - Made it possible to delete local layout in Document>Settings.
 
-- Fix crash when dissolving a math macro whose first argument is another
-  parameterless macro (bug 8105).
-
-- Update the current view after dispatching a command through the lyxserver.
-  The missing screen update could cause either a failure in executing the
-  command or could even crash LyX (bugs 6871 and 8119).
-
 - Improve thesaurus dialog completion (bug 8138)
 
 - Fix erroneous error message when calling "buffer-language" manually.
 
-- Fix coloring of insets that come after deleted text insets with
-  change tracking on.
-
 - Fix the random coloring of text when change tracking is on and 
   pixmap caching is enabled (bug 7667).
 
+- Fix coloring of insets that come after deleted text insets with
+  change tracking on.
+
 - Fix the coloring of Quotation marks with change tracking (bug 7653).
 
-- Fix crash when clicking away in the same math inset just after hitting '\'
-  (bug 8140).
+- Fixed stray warning when inserting inserting plaintext file (bug 7916).
+
+- Fix undo warning when inserting plain text file (bug 7916).
+
+- Fix display of special characters like '\#', '{..}' and of auto-
+  completion in math insets with a special font, e.g. mathcal (bug 5167).
+
+- Fix the painting of underbar and strikeout which span spaces (bug 953).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -176,10 +179,31 @@ What's new
 
 - Re-enable the compilation of the modernCV.lyx example file (bug 8064).
 
+- Fix on screen display of nested enumerations in Spanish and Galician.
+
+
+* LYXHTML
+
+- Fixed assertions on Windows for XHTML output (bug 8078).
+
+- Fix reconfiguration on Windows when the user directory is a UNC path
+  (bug 8098).
+
+- Index entries in XHTML output no longer sorted case sensitively.
+
+- Fixed some problems XHTML output had with empty paragraphs.
+
+- Fixed XHTML export of sub- and superscripts.
+
+- Don't output extra body tags with included files when generating
+  XHTML.
+
+- Do not include deleted text in the title of the XHTML output.
+
 
 * TEX2LYX
 
-- 
+- Fix import of \date (regression, bug 8104).
 
 
 * ADVANCED FIND AND REPLACE
@@ -196,3 +220,6 @@ What's new
 
 - Included the qt gif plugin in the Windows installer. This
   enables the busy icon in the status bar.
+
+- Remove a temporary log file from the user directory after reconfigure.
+
