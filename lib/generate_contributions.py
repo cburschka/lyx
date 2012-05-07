@@ -706,7 +706,7 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Ignacio García",
-                 "ignacio.garcia () tele2 ! es",
+                 "ignacio.gmorales () gmail ! com",
                  "GPL",
                  "Re: es_EmbeddedObjects",
                  "m=117079592919653",
