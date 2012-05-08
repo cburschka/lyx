@@ -2513,6 +2513,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(iconSetCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(useSystemThemeIconsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
@@ -2531,6 +2533,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 		iconSetCO->currentIndex()).toString());
 
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
+	rc.use_system_theme_icons = useSystemThemeIconsCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
 }
@@ -2542,6 +2545,11 @@ void PrefUserInterface::update(LyXRC const & rc)
 	if (iconset < 0)
 		iconset = 0;
 	iconSetCO->setCurrentIndex(iconset);
+#if (QT_VERSION < 0x040600)
+	useSystemThemeIconsCB->hide();
+	themeIconsLA->hide();
+#endif
+	useSystemThemeIconsCB->setChecked(rc.use_system_theme_icons);
 	uiFileED->setText(toqstr(external_path(rc.ui_file)));
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);

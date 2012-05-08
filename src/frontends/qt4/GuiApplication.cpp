@@ -549,12 +549,14 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 QIcon getIcon(FuncRequest const & f, bool unknown)
 {
 #if (QT_VERSION >= 0x040600)
-	QString action = toqstr(lyxaction.getActionName(f.action()));
-	if (!f.argument().empty())
-		action += " " + toqstr(f.argument());
-	QString const theme_icon = themeIconName(action);
-	if (QIcon::hasThemeIcon(theme_icon))
-		return QIcon::fromTheme(theme_icon);
+	if (lyxrc.use_system_theme_icons) {
+		QString action = toqstr(lyxaction.getActionName(f.action()));
+		if (!f.argument().empty())
+			action += " " + toqstr(f.argument());
+		QString const theme_icon = themeIconName(action);
+		if (QIcon::hasThemeIcon(theme_icon))
+			return QIcon::fromTheme(theme_icon);
+	}
 #endif
 
 	QString icon = iconName(f, unknown);

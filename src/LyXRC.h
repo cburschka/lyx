@@ -185,6 +185,7 @@ public:
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
 		RC_USE_QIMAGE,
+		RC_USE_SYSTEM_THEME_ICONS,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
 		RC_VIEWER_ALTERNATIVES,
@@ -465,6 +466,8 @@ public:
 	std::string user_email;
 	/// icon set name
 	std::string icon_set;
+	/// whether to use the icons from the theme
+	bool use_system_theme_icons;
 	/// True if the TeX engine cannot handle posix paths
 	bool windows_style_tex_paths;
 	/// True if the TeX engine can handle file names containing spaces

@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 11; // gb: Split pdf format into pdf and pdf6
+static unsigned int const LYXRC_FILEFORMAT = 12; // vfr: System theme's icons
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -203,6 +203,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_qimage", LyXRC::RC_USE_QIMAGE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_system_colors", LyXRC::RC_USE_SYSTEM_COLORS },
+	{ "\\use_system_theme_icons", LyXRC::RC_USE_SYSTEM_THEME_ICONS },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
@@ -228,6 +229,7 @@ LyXRC::LyXRC()
 void LyXRC::setDefaults()
 {
 	icon_set = string();
+	use_system_theme_icons = false;
 	bind_file = "cua";
 	def_file = "default";
 	ui_file = "default";
@@ -831,6 +833,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_ICON_SET:
 			lexrc >> icon_set;
+			break;
+
+		case RC_USE_SYSTEM_THEME_ICONS:
+			lexrc >> use_system_theme_icons;
 			break;
 
 		case RC_SCREEN_FONT_ROMAN:
@@ -1697,6 +1703,16 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    icon_set != system_lyxrc.icon_set) {
 			os << "\\icon_set \"" << icon_set
 			   << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+
+	case RC_USE_SYSTEM_THEME_ICONS:
+		if (ignore_system_lyxrc ||
+			  use_system_theme_icons != system_lyxrc.use_system_theme_icons) {
+			os << "\\use_system_theme_icons "
+				<< convert<string>(use_system_theme_icons)
+				<< "\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -3023,6 +3039,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_TOOLTIP:
 	case LyXRC::RC_USE_PIXMAP_CACHE:
 	case LyXRC::RC_USE_QIMAGE:
+	case LyXRC::RC_USE_SYSTEM_THEME_ICONS:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON:
 	case LyXRC::RC_SINGLE_INSTANCE:

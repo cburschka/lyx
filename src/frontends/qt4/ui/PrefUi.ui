@@ -100,6 +100,23 @@
         </item>
        </layout>
       </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="themeIconsLA">
+          <property name="text" >
+           <string>Use icons from system's &amp;theme:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>useSystemThemeIconsCB</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="useSystemThemeIconsCB"/>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
@@ -200,6 +217,7 @@
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
   <tabstop>iconSetCO</tabstop>
+  <tabstop>useSystemThemeIconsCB</tabstop>
   <tabstop>tooltipCB</tabstop>
  </tabstops>
  <includes>

@@ -53,6 +53,10 @@
 # Incremented to format 11, by gb
 #   Split pdf format into pdf and pdf6
 
+# Incremented to format 12, by vfr
+#   Add option to use the system's theme icons
+#   No conversion necessary.
+
 import re
 
 ###########################################################
@@ -308,5 +312,6 @@ conversions = [
 	[ 8, []],
 	[ 9, [ remove_default_language ]],
 	[ 10, []],
-	[ 11, [split_pdf_format]]
+	[ 11, [split_pdf_format]],
+	[ 12, []]
 ]
