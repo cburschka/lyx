@@ -793,8 +793,13 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 
 	Layout const & layout = par.layout();
 
+#if 0
+	//FIXME: As long as leftMargin() is not correctly implemented for 
+	// MARGIN_RIGHT_ADDRESS_BOX, we should also not do this here.
+	// Otherwise, long rows will be painted off the screen.
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX)
 		return addressBreakPoint(pos, par);
+#endif
 
 	pos_type const body_pos = par.beginOfBody();
 
