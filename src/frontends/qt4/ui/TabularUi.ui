@@ -408,7 +408,7 @@
                <string>degrees</string>
               </property>
               <property name="buddy">
-               <cstring>tabularWidthED</cstring>
+               <cstring>rotateCellAngleSB</cstring>
               </property>
              </widget>
             </item>
@@ -461,7 +461,7 @@
              <string>Verti&amp;cal alignment:</string>
             </property>
             <property name="buddy">
-             <cstring>vAlignCO</cstring>
+             <cstring>TableAlignCO</cstring>
             </property>
            </widget>
           </item>
@@ -552,7 +552,7 @@
                <string>degrees</string>
               </property>
               <property name="buddy">
-               <cstring>tabularWidthED</cstring>
+               <cstring>rotateTabularAngleSB</cstring>
               </property>
              </widget>
             </item>
