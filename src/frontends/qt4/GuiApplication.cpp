@@ -333,6 +333,42 @@ PngMap sorted_png_map[] = {
 
 size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
 
+// This list specifies which system's theme icon is related to which lyx
+// command. It was based on:
+// http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
+// this must be sorted alphabetically
+// Upper case comes before lower case
+PngMap sorted_theme_icon_map[] = {
+	{ "bookmark-goto 0", "go-jump" },
+	{ "buffer-new", "document-new" },
+	{ "buffer-print", "document-print" },
+	{ "buffer-write", "document-save" },
+	{ "buffer-write-as", "document-save-as" },
+	{ "buffer-zoom-in", "zoom-in" },
+	{ "buffer-zoom-out", "zoom-out" },
+	{ "copy", "edit-copy" },
+	{ "cut", "edit-cut" },
+	{ "depth-decrement", "format-indent-less" },
+	{ "depth-increment", "format-indent-more" },
+	{ "dialog-show print", "document-print" },
+	{ "dialog-show spellchecker", "tools-check-spelling" },
+	{ "dialog-show-new-inset graphics", "insert-image" },
+	{ "dialog-toggle findreplaceadv", "edit-find-replace" },
+	{ "file-open", "document-open" },
+	{ "font-bold", "format-text-bold" },
+	{ "font-ital", "format-text-italic" },
+	{ "font-strikeout", "format-text-strikethrough" },
+	{ "font-underline", "format-text-underline" },
+	{ "lyx-quit", "application-exit" },
+	{ "paste", "edit-paste" },
+	{ "redo", "edit-redo" },
+	{ "undo", "edit-undo" },
+	{ "window-close", "window-close" },
+	{ "window-new", "window-new" }
+};
+
+size_t const nr_sorted_theme_icon_map = sizeof(sorted_theme_icon_map) / sizeof(PngMap);
+
 
 QString findPng(QString const & name)
 {
@@ -370,6 +406,20 @@ QString findPng(QString const & name)
 }
 
 } // namespace anon
+
+
+QString themeIconName(QString const & action)
+{
+	PngMap const * const begin = sorted_theme_icon_map;
+	PngMap const * const end = begin + nr_sorted_theme_icon_map;
+	LASSERT(sorted(begin, end), /**/);
+
+	PngMap const * const it = find_if(begin, end, CompareKey(action));
+
+	if (it != end)
+		return it->value;
+	return QString();
+}
 
 
 QString iconName(FuncRequest const & f, bool unknown)
@@ -498,6 +548,15 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 
 QIcon getIcon(FuncRequest const & f, bool unknown)
 {
+#if (QT_VERSION >= 0x040600)
+	QString action = toqstr(lyxaction.getActionName(f.action()));
+	if (!f.argument().empty())
+		action += " " + toqstr(f.argument());
+	QString const theme_icon = themeIconName(action);
+	if (QIcon::hasThemeIcon(theme_icon))
+		return QIcon::fromTheme(theme_icon);
+#endif
+
 	QString icon = iconName(f, unknown);
 	if (icon.isEmpty())
 		return QIcon();
