@@ -590,11 +590,11 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"	""'])
     #
-    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['libreoffice', 'lwriter', 'swriter', 'oowriter', 'abiword'],
+    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
-    checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'swriter', 'oowriter', 'abiword'],
+    checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"	"application/rtf"
 \Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"	"application/msword"'''])
     #
