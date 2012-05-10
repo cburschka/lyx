@@ -1980,16 +1980,18 @@ int TextMetrics::leftMargin(int max_width,
 
 	case MARGIN_RIGHT_ADDRESS_BOX: {
 #if 0
-		// ok, a terrible hack. The left margin depends on the widest
-		// row in this paragraph.
-		RowList::iterator rit = par.rows().begin();
-		RowList::iterator end = par.rows().end();
-		// FIXME: This is wrong.
+		// The left margin depends on the widest row in this paragraph.
+		// This code is wrong because it depends on the rows, but at the
+		// same time this function is used in redoParagraph to construct
+		// the rows. 
+		ParagraphMetrics const & pm = par_metrics_[pit];
+		RowList::const_iterator rit = pm.rows().begin();
+		RowList::const_iterator end = pm.rows().end();
 		int minfill = max_width;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-		l_margin += theFontMetrics(params.getFont()).signedWidth(layout.leftmargin);
+		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(layout.leftmargin);
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
