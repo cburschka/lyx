@@ -207,8 +207,9 @@ void ViewSourceWidget::updateDefaultFormat()
 		Format const * fmt = formats.getFormat(format);
 		if (!fmt) {
 			LYXERR0("Can't find format for backend " << format << "!");
-            continue;
-        } else if (fmt->name() == "lyx")
+			continue;
+		} 
+		if (fmt->name() == "lyx")
 			// we can't presently display the LyX format itself
 			continue;
 
