@@ -573,7 +573,7 @@ def checkFormatEntries(dtl_tools):
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
     checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
-        'nedit', 'gedit', 'notepad'],
+        'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
 \Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
@@ -613,7 +613,8 @@ def checkFormatEntries(dtl_tools):
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
-        'nedit', 'gedit', 'notepad'],
+        'nedit', 'gedit', 'notepad', 'geany', \
+        'leafpad', 'mousepad'],
         rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
