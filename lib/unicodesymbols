@@ -63,7 +63,7 @@
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
-0x00b5 "\\textmu"                 "textcomp" "force" "\\mu" "" # µ MICRO SIGN
+0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
 0x00b8 "\\c\\ "                   "" "notermination=text" "" "" # CEDILLA (command from latin1.def)
@@ -1598,7 +1598,7 @@
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
 #0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
 0x2010 "-"                        "" "notermination=text" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
-0x2011 "\\nobreakdash-"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN
+0x2011 "\\nobreakdash-hspace{0pt}"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN (0pt space to allow normal hypenation in the following word.)
 0x2012 "-"                        "" "notermination=text" "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
@@ -1621,7 +1621,7 @@
 0x2024 "."                        "" "notermination=text" "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "notermination=text" "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
-0x2027 "\\-"                      "" "notermination=text" "" "" # HYPHENATION POINT
+0x2027 "\\-"                      "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 #0x2028 ""                         "" "" "" "" # LINE SEPARATOR
 #0x2029 ""                         "" "" "" "" # PARAGRAPH SEPARATOR
 #0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
@@ -1714,7 +1714,7 @@
 0x2100 "\\LyXaccountof" "\\newcommand*\\LyXaccountof{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{c}}}" ""
 # use the following macro for the character ADRESSED TO THE SUBJECT
 0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" ""
-0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STUCK CAPITAL C
+0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
 # use the following macro for the character CARE OF
@@ -1726,7 +1726,7 @@
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
 0x210b ""                         "" "" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
 0x210c ""                         "" "" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
-0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STUCK CAPITAL H
+0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STRUCK CAPITAL H
 0x210e ""                         "" "notermination=math" "h" # PLANCK CONSTANT
 0x210f ""                         "" "" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
 0x2110 ""                         "" "" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
@@ -1734,21 +1734,21 @@
 0x2112 ""                         "" "" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
 0x2113 ""                         "" "" "\\ell" # SCRIPT SMALL L
 #0x2114 ""                         "" "" "" "" # L B BAR SYMBOL
-0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STUCK CAPITAL N
+0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STRUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
 0x2118 ""                         "" "" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
-0x2119 ""                         "" "" "\\mathbb{P}" "amssymb" # DOUBLE-STUCK CAPITAL P
-0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STUCK CAPITAL Q
+0x2119 ""                         "" "" "\\mathbb{P}" "amssymb" # DOUBLE-STRUCK CAPITAL P
+0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STRUCK CAPITAL Q
 0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
 0x211c ""                         "" "" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
-0x211d ""                         "" "" "\\mathbb{R}" "amssymb" # DOUBLE-STUCK CAPITAL R
+0x211d ""                         "" "" "\\mathbb{R}" "amssymb" # DOUBLE-STRUCK CAPITAL R
 0x211e "\\textrecipe"             "textcomp" "" # PRESCRIPTION TAKE
 #0x211f ""                         "" "" "" "" # RESPONSE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
-0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STUCK CAPITAL Z
+0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
