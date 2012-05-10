@@ -1621,7 +1621,7 @@
 0x2024 "."                        "" "notermination=text" "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "notermination=text" "" "" # TWO DOT LEADER
 0x2026 "\\ldots"                  "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
-0x2027 "\\-"                      "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
+#0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 #0x2028 ""                         "" "" "" "" # LINE SEPARATOR
 #0x2029 ""                         "" "" "" "" # PARAGRAPH SEPARATOR
 #0x202a ""                         "" "" "" "" # LEFT-TO-RIGHT EMBEDDING
