@@ -596,7 +596,8 @@ def checkFormatEntries(dtl_tools):
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
-\Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
+\Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"
+\Format beamer.info pdf.info   "Info (Beamer)"         "" ""	"%%"	"document,menu=export"''' ])
    #Spreadsheets using ssconvert from gnumeric
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"
@@ -809,6 +810,9 @@ def checkConverterEntries():
     #
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf         eps        "%%"	""' ])
+    #
+    checkProg('a Beamer info extractor', ['makebeamerinfo -p $$i'],
+        rc_entry = [ r'\converter pdf2         beamer.info        "%%"	""' ])
     #
     checkProg('a DVI to TXT converter', ['catdvi $$i > $$o'],
         rc_entry = [ r'\converter dvi        text4      "%%"	""' ])
