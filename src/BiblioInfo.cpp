@@ -561,7 +561,7 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	Buffer const & buf, string const & format, bool richtext,
 	docstring before, docstring after, docstring dialog, bool next) const
 {
-	docstring loclabel_;
+	docstring loclabel;
 
 	/*
 	if (!is_bibtex_) {
@@ -572,12 +572,12 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	*/
 
 	int counter = 0;
-	loclabel_ = expandFormat(format, xref, counter, buf, richtext,
+	loclabel = expandFormat(format, xref, counter, buf, richtext,
 		before, after, dialog, next);
 
-	if (!loclabel_.empty())
-		loclabel_ = convertLaTeXCommands(loclabel_);
-	return loclabel_;
+	if (!loclabel.empty())
+		loclabel = convertLaTeXCommands(loclabel);
+	return loclabel;
 }
 
 
