@@ -104,7 +104,29 @@ void BufferList::release(Buffer * buf)
 }
 
 
+Buffer * BufferList::newInternalBuffer(string const & s)
+{
+	Buffer * const buf = createNewBuffer(s, false);
+	if (buf) {
+		buf->setInternal(true);
+		binternal.push_back(buf);
+	}
+	return buf;
+}
+
+
 Buffer * BufferList::newBuffer(string const & s, bool const ronly)
+{
+	Buffer * const buf = createNewBuffer(s, ronly);
+	if (buf) {
+		LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
+		bstore.push_back(buf);
+	}
+	return buf;
+}
+
+
+Buffer * BufferList::createNewBuffer(string const & s, bool ronly)
 {
 	auto_ptr<Buffer> tmpbuf;
 	try {
@@ -119,12 +141,6 @@ Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 		}
 	}
 	tmpbuf->params().useClassDefaults();
-	if (tmpbuf->isInternal()) {
-		binternal.push_back(tmpbuf.get());
-	} else {
-		LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
-		bstore.push_back(tmpbuf.get());
-	}
 	return tmpbuf.release();
 }
 
