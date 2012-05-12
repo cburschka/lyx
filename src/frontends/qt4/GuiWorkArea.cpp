@@ -1414,9 +1414,8 @@ GuiView & GuiWorkArea::view()
 
 EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 {
-	buffer_ = theBufferList().newBuffer(
+	buffer_ = theBufferList().newInternalBuffer(
 		support::FileName::tempName("embedded.internal").absFileName());
-	buffer_->setInternal(true);
 	buffer_->setUnnamed(true);
 	buffer_->setFullyLoaded(true);
 	setBuffer(*buffer_);

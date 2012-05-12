@@ -47,9 +47,13 @@ public:
 	iterator end();
 	const_iterator end() const;
 
-	/// create a new buffer
+	/// create a new buffer and add it to the buffer list
 	/// \return 0 if the Buffer creation is not possible for whatever reason.
 	Buffer * newBuffer(std::string const & s);
+
+	/// create an internal buffer and add it to the internal buffer list
+	/// \return 0 if the Buffer creation is not possible for whatever reason.
+	Buffer * newInternalBuffer(std::string const & s);
 
 	/// delete a buffer
 	void release(Buffer * b);
@@ -120,6 +124,10 @@ public:
 	//@}
 
 private:
+	/// create a new buffer
+	/// \return 0 if the Buffer creation is not possible for whatever reason.
+	Buffer * createNewBuffer(std::string const & s);
+
 	/// noncopiable
 	BufferList(BufferList const &);
 	void operator=(BufferList const &);
