@@ -49,7 +49,7 @@ public:
 
 	/// create a new buffer
 	/// \return 0 if the Buffer creation is not possible for whatever reason.
-	Buffer * newBuffer(std::string const & s, bool ronly = false);
+	Buffer * newBuffer(std::string const & s);
 
 	/// delete a buffer
 	void release(Buffer * b);

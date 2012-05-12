@@ -104,11 +104,11 @@ void BufferList::release(Buffer * buf)
 }
 
 
-Buffer * BufferList::newBuffer(string const & s, bool const ronly)
+Buffer * BufferList::newBuffer(string const & s)
 {
 	auto_ptr<Buffer> tmpbuf;
 	try {
-		tmpbuf.reset(new Buffer(s, ronly));
+		tmpbuf.reset(new Buffer(s));
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);
