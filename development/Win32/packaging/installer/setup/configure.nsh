@@ -63,10 +63,10 @@ Section -InstallData
   ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
   ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\${APP_RUN},0"
-  ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"
-  ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/about/"
+  ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/Download"
+  ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/Home"
   ${REG_UNINSTALL} "Publisher" "LyX Team"
-  ${REG_UNINSTALL} "HelpLink" "http://www.lyx.org/internet/mailing.php"  
+  ${REG_UNINSTALL} "HelpLink" "http://www.lyx.org/MailingLists"  
   
 SectionEnd
 
