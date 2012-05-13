@@ -13,6 +13,7 @@ Section "un.Program Files" un.SecProgramFiles
   # Binaries
   !insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
   !insertmacro FileListQtBin Delete "$INSTDIR\bin\"
+  !insertmacro FileListQtPlugins Delete "$INSTDIR\bin\"
   !insertmacro FileListDll Delete "$INSTDIR\bin\"
   !insertmacro FileListMSVC Delete "$INSTDIR\bin\"
   !insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
