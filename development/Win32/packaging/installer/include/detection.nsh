@@ -9,6 +9,7 @@ Detection of external component locations
 Function SearchExternal
   Call SearchLaTeX
   Call SearchBibTeXEditor
+  Call SearchGnumeric
 FunctionEnd
 
 #--------------------------------
@@ -111,3 +112,26 @@ Function SearchBibTeXEditor
   ${EndIf}
 
 FunctionEnd
+
+
+#--------------------------------
+# Gnumeric
+
+Function SearchGnumeric
+
+  ReadRegStr $PathGnumeric HKCU "Software\GNOME\Gnumeric" "Path"
+
+  ${IfNot} ${FileExists} "$PathGnumeric\gnumeric.exe"
+    ReadRegStr $PathGnumeric HKLM "Software\GNOME\Gnumeric" "Path"
+  ${EndIf}
+
+  ${IfNot} ${FileExists} "$PathGnumeric\gnumeric.exe"
+    ReadRegStr $0 HKLM "Software\Classes\Applications\gnumeric.exe\shell\Open\command" ""
+    ${If} $0 != ""
+      StrCpy $0 $0 -18 # remove \"gnumeric.exe" "%1"\"
+      StrCpy $PathGnumeric $0
+    ${EndIf}
+  ${EndIf}
+
+FunctionEnd
+

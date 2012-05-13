@@ -93,7 +93,10 @@ Section -Configure
   ${EndIf}
   ${If} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
-  ${EndIf}  
+  ${EndIf}
+  ${If} $PathGnumeric != ""
+    StrCpy $PathPrefix "$PathPrefix;$PathGnumeric"
+  ${EndIf}
 
   FileWrite $DistFile '\path_prefix "$PathPrefix"$\r$\n'
 
