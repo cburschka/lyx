@@ -30,6 +30,23 @@
 \newcommand{\strong}[1]{\textbf{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%% Special footnote code from the package 'stblftnt.sty'
+%% Author: Robin Fairbairns -- Last revised Dec 13 1996
+\let\SF@@footnote\footnote
+\def\footnote{\ifx\protect\@typeset@protect
+    \expandafter\SF@@footnote
+\else
+    \expandafter\SF@gobble@opt
+\fi
+}
+\expandafter\def\csname SF@gobble@opt \endcsname{\@ifnextchar[%]
+    \SF@gobble@twobracket
+    \@gobble
+}
+\edef\SF@gobble@opt{\noexpand\protect
+  \expandafter\noexpand\csname SF@gobble@opt \endcsname}
+  \def\SF@gobble@twobracket[#1]#2{}
+
 \newenvironment{foo}{==[}{]==}
 
 \usepackage{fixltx2e} % this should cause the fixltx2e module to be loaded
