@@ -351,7 +351,7 @@ docstring InsetBibitem::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// need to use "name" anyway, eventually, because some browsers do not
 	// handle jumping to ids. If we don't do that, though, we can just put the
 	// id into the span tag.
-	string const attrs = "id='" + to_utf8(getParam("label")) + "'";
+	string const attrs = "id='LyXCite-" + to_utf8(getParam("key")) + "'";
 	xs << html::CompTag("a", attrs);
 	xs << html::StartTag("span", "class='bibitemlabel'");
 	xs << bibLabel();
