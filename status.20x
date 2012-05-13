@@ -186,6 +186,9 @@ What's new
 
 - Fix the painting of underbar and strikeout which span spaces (bug 953).
 
+- Fixed painted of paragraphs with MARGIN_RIGHT_ADDRES_BOX such that
+  the contents can be edited even if it is a long row (bug 8152).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
