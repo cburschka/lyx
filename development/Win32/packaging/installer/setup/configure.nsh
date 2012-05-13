@@ -97,6 +97,9 @@ Section -Configure
   ${If} $PathGnumeric != ""
     StrCpy $PathPrefix "$PathPrefix;$PathGnumeric"
   ${EndIf}
+  ${If} $PathInkscape != ""
+    StrCpy $PathPrefix "$PathPrefix;$PathInkscape"
+  ${EndIf}
 
   FileWrite $DistFile '\path_prefix "$PathPrefix"$\r$\n'
 

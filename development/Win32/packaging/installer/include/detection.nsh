@@ -10,6 +10,7 @@ Function SearchExternal
   Call SearchLaTeX
   Call SearchBibTeXEditor
   Call SearchGnumeric
+  Call SearchInkscape
 FunctionEnd
 
 #--------------------------------
@@ -133,5 +134,15 @@ Function SearchGnumeric
     ${EndIf}
   ${EndIf}
 
+FunctionEnd
+
+
+#--------------------------------
+# Inkscape
+
+Function SearchInkscape
+
+  ReadRegStr $PathInkscape HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
+  
 FunctionEnd
 
