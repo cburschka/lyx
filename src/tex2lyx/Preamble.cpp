@@ -1269,8 +1269,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "def") {
 			string name = p.get_token().cs();
+			// In fact, name may be more than the name:
+			// In the test case of bug 8116
+			// name == "csname SF@gobble@opt \endcsname".
+			// Therefore, we need to use asInput() instead of cs().
 			while (p.next_token().cat() != catBegin)
-				name += p.get_token().cs();
+				name += p.get_token().asInput();
 			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";
