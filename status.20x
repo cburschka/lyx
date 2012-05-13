@@ -219,6 +219,8 @@ What's new
 
 - Fix import of \date (regression, bug 8104).
 
+- Fix missing backslash in import of \def ... \csname ... \endcsname (bug 8116).
+
 
 * ADVANCED FIND AND REPLACE
 
