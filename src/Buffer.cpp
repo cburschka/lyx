@@ -2713,7 +2713,11 @@ string Buffer::absFileName() const
 
 string Buffer::filePath() const
 {
-	return d->filename.onlyPath().absFileName() + "/";
+	int last = d->filename.onlyPath().absFileName().length() - 1;
+
+	return d->filename.onlyPath().absFileName()[last] == '/'
+		? d->filename.onlyPath().absFileName()
+		: d->filename.onlyPath().absFileName() + "/";
 }
 
 
