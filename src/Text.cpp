@@ -267,11 +267,13 @@ Font const Text::outerFont(pit_type par_offset) const
 {
 	depth_type par_depth = pars_[par_offset].getDepth();
 	FontInfo tmpfont = inherit_font;
-
+	depth_type prev_par_depth = 0;
 	// Resolve against environment font information
 	while (par_offset != pit_type(pars_.size())
+	       && par_depth != prev_par_depth
 	       && par_depth
 	       && !tmpfont.resolved()) {
+		prev_par_depth = par_depth;
 		par_offset = outerHook(par_offset);
 		if (par_offset != pit_type(pars_.size())) {
 			tmpfont.realize(pars_[par_offset].layout().font);

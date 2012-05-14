@@ -323,9 +323,14 @@ public:
 	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/);
 	///
 	docstring completionPrefix(Cursor const & cur) const;
-	/// for the environments
+	/// find a paragraph before \p par with the given \p depth, if such
+	/// a paragraph cannot be found, \p par is returned
 	pit_type depthHook(pit_type par, depth_type depth) const;
-	///
+	/// find a paragraph before \p par with depth less than the
+	/// depth of \p par. If such paragraph cannot be found because
+	/// \p par already has depth 0, lastpar + 1 is returned. If
+	/// such paragraph cannot be found because there isn't a par
+	/// with less depth before this one, \p par is returned.
 	pit_type outerHook(pit_type par) const;
 	/// Is it the first par with same depth and layout?
 	bool isFirstInSequence(pit_type par) const;
