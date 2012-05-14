@@ -130,6 +130,9 @@ What's new
 
 - Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
 
+- Fixed problem when setting working directory on Windows to root of a
+  disk, e.g., C:\ (bug 7982).
+
 - Don't reset the selected format each time we click into a new paragraph
   in View->Source (bug 7997).
 
