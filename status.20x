@@ -197,6 +197,9 @@ What's new
 - Fixed painted of paragraphs with MARGIN_RIGHT_ADDRES_BOX such that
   the contents can be edited even if it is a long row (bug 8152).
 
+- Allow an 'unnamed' document (names like newfile*.lyx) to be saved
+  under the temporary name in a different directory.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
