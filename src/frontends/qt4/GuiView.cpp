@@ -2259,8 +2259,10 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	// fname is now the new Buffer location.
 
 	// if there is already a Buffer open with this name, we do not want
-	// to have another one.
-	if (theBufferList().exists(fname) && fname != oldname) {
+	// to have another one. (the second test makes sure we're not just
+	// trying to overwrite ourselves, which is fine.)
+	if (theBufferList().exists(fname) && fname != oldname
+		  && theBufferList().getBuffer(fname) != &b) {
 		docstring const text = 
 			bformat(_("The file\n%1$s\nis already open in your current session.\n"
 		            "Please close it before attempting to overwrite it.\n"
