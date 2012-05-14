@@ -130,6 +130,9 @@ What's new
 
 - Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
 
+- Fixed an infinite loop after removing the first paragraph of the 
+  document if it had a non-zero depth (bug 7641).
+
 - Fixed problem when setting working directory on Windows to root of a
   disk, e.g., C:\ (bug 7982).
 
