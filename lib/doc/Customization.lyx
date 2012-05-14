@@ -83,7 +83,7 @@ End
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "LyX Configuration Manual"
+\pdf_title "Customizing LyX"
 \pdf_author "LyX Team"
 \pdf_subject "LyX-documentation Customization"
 \pdf_keywords "LyX, documentation, customization"
@@ -283,7 +283,6 @@ UserDir
 \end_inset
 
  in the remainder of this document.
- 
 \end_layout
 
 \begin_layout Section
@@ -310,8 +309,8 @@ LyXDir
 
 \end_inset
 
- and its sub-directories contain a number of files and that can be used
- to customize LyX's behavior.
+ and its sub-directories contain a number of files that can be used to customize
+ LyX's behavior.
  You can change many of these files from within LyX itself through the 
 \begin_inset Flex MenuItem
 status collapsed
@@ -749,7 +748,7 @@ reference "cha:Installing-New-Document"
 status collapsed
 
 \begin_layout Plain Layout
-lyx2lyx
+lyx2lyx/
 \end_layout
 
 \end_inset
@@ -934,7 +933,7 @@ encodings
 \end_inset
 
  this contains tables describing how different character encodings can be
- mapped to Unicode
+ mapped to Unicode.
 \end_layout
 
 \begin_layout Labeling
@@ -1146,9 +1145,9 @@ Settings
 \end_layout
 
 \begin_layout Itemize
-If you get some updated documentation from LyX ftp site and cannot install
+If you get some updated documentation from the LyX ftp site and cannot install
  it because you do not have sysadmin rights on your system, you can just
- copy the files in 
+ copy the files to 
 \begin_inset Flex Code
 status collapsed
 
@@ -1178,7 +1177,7 @@ Running LyX with multiple configurations
 \begin_layout Standard
 The configuration freedom of the local configuration directory may not suffice
  if you want to have more than one configuration at your disposal.
- For example, you may want to be use different key bindings or printer settings
+ For example, you may want to use different key bindings or printer settings
  at different times.
  You can achieve this by having several such directories.
  You then specify which directory to use at run-time.
@@ -1222,7 +1221,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LYX_USERDIR_VER
+LYX_USERDIR_20x
 \end_layout
 
 \end_inset
@@ -1288,7 +1287,7 @@ The Preferences Dialog
 User's Guide
 \emph default
 .
- For some options you might find here more details.
+ For some options you might find more details here.
 \end_layout
 
 \begin_layout Section
@@ -2336,7 +2335,7 @@ resultfile
 
 \end_inset
 
- Determines the output file name and may, contain 
+ Determines the output file name and may contain 
 \begin_inset Flex Code
 status collapsed
 
@@ -2352,7 +2351,7 @@ $$b
 \end_layout
 
 \begin_layout Standard
-None of these last three are presently used in any of the converters that
+None of these last three is presently used in any of the converters that
  are installed with LyX.
  
 \end_layout
@@ -5738,8 +5737,8 @@ foiltex
 \begin_inset Newline newline
 \end_inset
 
-If the package should only available for you or you don't have admin permissions
-, do the same, but in the local LaTeX folder.
+If the package should only be available for you or you don't have admin
+ permissions, do the same, but in the local LaTeX folder.
  E.
 \begin_inset space \thinspace{}
 \end_inset
@@ -5847,8 +5846,8 @@ latex
 
 \end_deeper
 \begin_layout Enumerate
-Now one only need to tell LaTeX that there are new files.
- This depends on the used LaTeX-Distribution:
+Now one only needs to tell LaTeX that there are new files.
+ This depends on which LaTeX distribution you are using:
 \end_layout
 
 \begin_deeper
@@ -6164,7 +6163,7 @@ layouts/
 
  folder, you will need to reconfigure and then restart LyX for the module
  to appear in the menu.
- However, changes you make to the module will be seen immediately, if you
+ However, changes you make to the module will be seen immediately if you
  open 
 \begin_inset Flex MenuItem
 status collapsed
@@ -6196,7 +6195,7 @@ it is strongly recommended that you not attempt to edit modules while simultaneo
 usly working on actual documents
 \emph default
 .
- Though of course the developers strive to keep LyX stable in such situations,
+ Although of course the developers strive to keep LyX stable in such situations,
  syntax errors and the like in your module file could cause strange behavior.
 \end_layout
 
@@ -6328,7 +6327,7 @@ status collapsed
 
 \end_inset
 
-) .
+) files.
  Supporting a style file is usually fairly easy.
  Supporting a new class file is a bit harder.
  We'll discuss the former in this section and the latter in the next.
@@ -7374,14 +7373,13 @@ Reconfigure
 \begin_layout Standard
 Once the layout file is installed, you can edit it and see your changes
  without having to reconfigure or to restart LyX.
- 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 In versions of LyX prior to 1.6, this was not true.
  As a result, editing layout files was very time consuming, since you had
- constantly to restart LyX to see changes.
+ to constantly restart LyX to see changes.
 \end_layout
 
 \end_inset
@@ -7564,14 +7562,14 @@ Preferably in English if the module should be published with LyX.
 \end_layout
 
 \begin_layout LyX-Code
-#Adds an endnote command, in addition to footnotes.
+#Adds an endnote inset, in addition to footnotes.
  
 \end_layout
 
 \begin_layout LyX-Code
 #You will need to add  
 \backslash
-theendnotes in TeX code where you 
+theendnotes in TeX-code where you 
 \end_layout
 
 \begin_layout LyX-Code
@@ -9777,6 +9775,13 @@ CopyStyle
 \end_inset
 
  
+\begin_inset CommandInset label
+LatexCommand label
+name "des:CopyStyle"
+
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -10307,7 +10312,14 @@ KeepEmpty
 
 \end_inset
 
- [
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:KeepEmpty"
+
+\end_inset
+
+[
 \begin_inset Flex Code
 status collapsed
 
@@ -11132,7 +11144,14 @@ LatexType
 
 \end_inset
 
- [
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:LatexType"
+
+\end_inset
+
+[
 \begin_inset Flex Code
 status collapsed
 
@@ -11343,8 +11362,16 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
-Paragraph
+
+\bar under
+Edit
+\bar default
+\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+aragraph
 \begin_inset space ~
 \end_inset
 
@@ -11874,6 +11901,13 @@ ParbreakIsNewline
 
 \end_inset
 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "des:ParbreakIsNewline"
+
+\end_inset
+
  [
 \begin_inset Flex Code
 status collapsed
@@ -12112,7 +12146,14 @@ PassThru
 
 \end_inset
 
- [
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:PassThru"
+
+\end_inset
+
+[
 \begin_inset Flex Code
 status collapsed
 
@@ -12148,7 +12189,14 @@ Preamble
 
 \end_inset
 
- Information to be included in the LaTeX preamble when this style is used.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:Preamble"
+
+\end_inset
+
+Information to be included in the LaTeX preamble when this style is used.
  Used to define macros, load packages, etc., required by this particular
  style.
  Must end with 
@@ -12260,7 +12308,14 @@ string
 
 \end_inset
 
-] Whether the style requires the feature 
+] 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:Requires"
+
+\end_inset
+
+Whether the style requires the feature 
 \begin_inset Flex Code
 status collapsed
 
@@ -12826,7 +12881,11 @@ captionsfrench{
 \backslash
 renewcommand{
 \backslash
-claimname}{Affirmation}}   
+claimname}{Affirmation}}
+\end_layout
+
+\begin_layout LyX-Code
+
 \backslash
 addto
 \backslash
@@ -12834,7 +12893,11 @@ captionsngerman{
 \backslash
 renewcommand{
 \backslash
-claimname}{Behauptung}}   
+claimname}{Behauptung}}
+\end_layout
+
+\begin_layout LyX-Code
+
 \backslash
 providecommand{
 \backslash
@@ -12898,8 +12961,8 @@ name "sub:Floats"
 \end_layout
 
 \begin_layout Standard
-Since version 1.3.0 of LyX, it is has been both possible and necessary to
- define the floats (
+Since version 1.3.0 of LyX, it is both possible and necessary to define the
+ floats (
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -14154,18 +14217,14 @@ CopyStyle
 
 \end_inset
 
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-[string]
-\end_layout
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "des:CopyStyle"
 
 \end_inset
 
- Copies all the features of an existing style into the current one.
- 
+).
 \end_layout
 
 \begin_layout Description
@@ -14520,46 +14579,14 @@ FreeSpacing
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:FreeSpacing"
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] Usually LyX doesn't allow you to insert more than one space between words,
- since a space is considered as the separation between two words, not a
- character or symbol of its own.
- This is a very fine thing but sometimes annoying, for example, when typing
- program code or plain LaTeX code.
- For this reason, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-FreeSpacing
-\end_layout
-
-\end_inset
-
- can be enabled.
- Note that LyX will create protected blanks for the additional blanks when
- in another mode than LaTeX-mode.
+).
  Default is false.
 \end_layout
 
@@ -14634,34 +14661,14 @@ KeepEmpty
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-0
-\end_layout
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:KeepEmpty"
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] Usually LyX does not allow you to leave a paragraph empty, since it would
- lead to empty LaTeX output.
- There are some cases where this could be desirable however: in a letter
- template, the required fields can be provided as empty fields, so that
- people do not forget them; in some special classes, a style can be used
- as some kind of break, which does not contain actual text.
+).
  Default is false.
 \end_layout
 
@@ -14793,268 +14800,16 @@ LatexType
 
 \end_inset
 
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Paragraph
-\emph default
-, Command, Environment, Item_Environment,
-\end_layout
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:LatexType"
 
 \end_inset
 
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-List_Environment, Bib_Environment
+).
 \end_layout
 
-\end_inset
-
-] How the style should be translated into LaTeX.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexType
-\end_layout
-
-\end_inset
-
- is perhaps a bit misleading, since these rules apply to SGML classes, too.
- Visit the SGML class files for specific examples.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Paragraph
-\end_layout
-
-\end_inset
-
- means nothing special.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Command
-\end_layout
-
-\end_inset
-
- means 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-
-\emph on
-LatexName
-\emph default
-{\SpecialChar \ldots{}
-}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Environment
-\end_layout
-
-\end_inset
-
- means 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-begin{
-\emph on
-LatexName
-\emph default
-}\SpecialChar \ldots{}
-
-\backslash
-end{
-\emph on
-LatexName
-\emph default
-}
-\end_layout
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Item_Environment
-\end_layout
-
-\end_inset
-
- is the same as 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Environment
-\end_layout
-
-\end_inset
-
-, except that an 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- is generated for each paragraph of this environment.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-List_Environment
-\end_layout
-
-\end_inset
-
- is the same as 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Item_Environment
-\end_layout
-
-\end_inset
-
-, except that 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelWidthString
-\end_layout
-
-\end_inset
-
- is passed as an argument to the environment.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelWidthString
-\end_layout
-
-\end_inset
-
- can be defined in the 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\bar under
-Edit
-\bar default
-\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
-\begin_inset space ~
-\end_inset
-
-settings
-\end_layout
-
-\end_inset
-
- dialog.
- 
-\end_layout
-
-\begin_layout Standard
-Putting the last few things together, the LaTeX output will be either: 
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-latexname[latexparam]{\SpecialChar \ldots{}
-}
-\end_layout
-
-\begin_layout Standard
-or: 
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-begin{latexname}[latexparam] \SpecialChar \ldots{}
- 
-\backslash
-end{latexname}.
-\end_layout
-
-\begin_layout Standard
-depending upon the LaTeX type.
-\end_layout
-
-\end_deeper
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
@@ -15322,18 +15077,14 @@ status collapsed
 
 \end_inset
 
-] Indicates that paragraphs will not be separated by an empty line in LaTeX
- output, but only by a line break; together with 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PassThru 1
-\end_layout
+] As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:ParbreakIsNewline"
 
 \end_inset
 
-, this allows to emulate a plain text editor (like the ERT inset).
+).
  Default is false.
 \end_layout
 
@@ -15359,7 +15110,7 @@ status collapsed
 
 \end_inset
 
-, 
+,
 \begin_inset Flex Code
 status collapsed
 
@@ -15369,8 +15120,15 @@ status collapsed
 
 \end_inset
 
-] Whether the contents of this paragraph should be output in raw form, meaning
- without special translations that LaTeX would require.
+] As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:PassThru"
+
+\end_inset
+
+).
+ Default is false.
 \end_layout
 
 \begin_layout Description
@@ -15383,28 +15141,14 @@ Preamble
 
 \end_inset
 
- Information to be included in the LaTeX preamble when this style is used.
- Used to define macros, load packages, etc., required by this particular
- style.
- Must end with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-EndPreamble
-\end_layout
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "des:Preamble"
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+).
 \end_layout
 
 \begin_layout Description
@@ -15451,36 +15195,14 @@ string
 
 \end_inset
 
-] Whether the style requires the feature 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-string
-\end_layout
-
-\end_inset
-
-.
- See the description of 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Provides
-\end_layout
-
-\end_inset
-
- above (page 
+] As with paragraph styles (see page 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "des:FreeSpacing"
+reference "des:Requires"
 
 \end_inset
 
-) for information on `features'.
- 
+).
 \end_layout
 
 \begin_layout Description
@@ -19098,7 +18820,7 @@ The external template configuration file
 
 \begin_layout Standard
 It is relatively easy to add custom external template definitions to LyX.
- However, be aware that doing this in an careless manner most probably 
+ However, be aware that doing this in a careless manner most probably 
 \emph on
 will
 \emph default
