@@ -18932,6 +18932,18 @@ Before you begin to use the version control features in LyX, you should
  package—no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
  you can check them in Messages pane if unsure.
+ Regular users of version control will appreciate VC toolbar, which can
+ be enabled via 
+\family sans
+View\SpecialChar \menuseparator
+Toolbars\SpecialChar \menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control.
+\family default
+.
 \end_layout
 
 \begin_layout Standard
