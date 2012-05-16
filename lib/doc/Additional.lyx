@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 426
+\lyxformat 431
 \begin_document
 \begin_header
 \textclass scrbook
@@ -102,6 +102,7 @@ End
 \papersize default
 \use_geometry false
 \use_package amsmath 1
+\use_package amssymb 1
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -3771,7 +3772,7 @@ The six panels are divided up by the packages they require.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -18888,13 +18889,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-A friend of mine wanted to try LyX for a group project.
- When he didn't find support for version control or file locking, he dropped
- it.
- This angered me a bit, so I thought that I should at least make support
- for RCS (with the possibility of CVS and/or SCCS as a future improvement.)
- This has been done.
- LyX now supports some of the most basic RCS/CVS/SVN commands.
+LyX supports some of the most basic RCS/CVS/SVN commands.
  If you need something a bit more sophisticated you will have to do that
  manually in a terminal.
 \end_layout
@@ -18948,6 +18943,18 @@ Before you begin to use the version control features in LyX, you should
  package—no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
  you can check them in the Messages pane if unsure.
+ Regular users of version control will appreciate VC toolbar, which can
+ be enabled via 
+\family sans
+View\SpecialChar \menuseparator
+Toolbars\SpecialChar \menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -20263,7 +20270,7 @@ svnversion
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
