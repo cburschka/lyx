@@ -1918,6 +1918,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_MOVE_UP
  * \li Action: Moves the current paragraph upwards in the document.
+ * \li Notion: Movement through the document will possibly break the paragraph-depth
+               (e.g. itemize structure).
  * \li Syntax: paragraph-move-up
  * \li Origin: Edwin, 8 Apr 2006
  * \endvar
