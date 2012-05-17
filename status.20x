@@ -73,6 +73,9 @@ What's new
 
 - Updated Interlingua and Ukrainian user interface localization.
 
+- Fixed on-screen display of nested enumerations in Spanish and Galician
+  documents.
+
 - Improved template file iop-article.lyx.
 
 - EmbeddedObjects manual:
@@ -200,6 +203,9 @@ What's new
 - Allow an 'unnamed' document (names like newfile*.lyx) to be saved
   under the temporary name in a different directory.
 
+- Fix cuirsor bug when using backspace after the spellchecker replaced 
+  a word.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -245,6 +251,8 @@ What's new
 
 - Fix reconfiguration on Windows when the temporary directory used by
   python contains non-ASCII characters.
+
+- Allow configuration with autoconf 2.69 and automake 1.12.
 
 - Fixed compilation with clang.
 
