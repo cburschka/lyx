@@ -48,15 +48,15 @@ These typically need to be modified for each LyX release
 
 !define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
-!define JabRefVersion "2.7"
+!define JabRefVersion "2.8"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.7.5"
+!define ImageMagickVersion "6.7.6"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.7-setup.exe"
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4407.exe"
- !define SIZE_DOWNLOAD_LATEX 160106
+ !define SIZE_DOWNLOAD_LATEX 162476
  !define SIZE_LATEX 380000
 !endif
 
