@@ -1598,7 +1598,7 @@
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK
 #0x200f ""                         "" "" "" "" # RIGHT-TO-LEFT MARK
 0x2010 "-"                        "" "notermination=text" "" "" # HYPHEN # identic in LaTeX to FIGURE DASH
-0x2011 "\\nobreakdash-\\hspace{0pt}"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN (0pt space to allow normal hypenation in the following word.)
+0x2011 "\\nobreakdash-"           "amsmath" "notermination=text" "" "" # NON-BREAKING HYPHEN
 0x2012 "-"                        "" "notermination=text" "" "" # FIGURE DASH
 0x2013 "\\textendash"             "" "" # EN DASH
 0x2014 "\\textemdash"             "" "" # EM DASH
