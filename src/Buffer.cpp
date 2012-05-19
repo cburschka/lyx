@@ -4591,6 +4591,7 @@ bool Buffer::saveAs(FileName const & fn)
 		// we need to check that the locations of child buffers
 		// are still valid.
 		checkChildBuffers();
+		checkMasterBuffer();
 		return true;
 	} else {
 		// save failed
@@ -4637,6 +4638,27 @@ void Buffer::checkChildBuffers()
 	// invalidate cache of children
 	d->children_positions.clear();
 	d->position_to_children.clear();
+}
+
+
+// If a child has been saved under a different name/path, it might have been
+// orphaned. Therefore the master needs to be reset (bug 8161).
+void Buffer::checkMasterBuffer()
+{
+	Buffer const * const master = masterBuffer();
+	if (master == this)
+		return;
+
+	// necessary to re-register the child (bug 5873)
+	// FIXME: clean up updateMacros (here, only
+	// child registering is needed).
+	master->updateMacros();
+	// (re)set master as master buffer, but only
+	// if we are a real child
+	if (master->isChild(this))
+		setParent(master);
+	else
+		setParent(0);
 }
 
 } // namespace lyx
