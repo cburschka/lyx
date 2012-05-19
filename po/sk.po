@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-05-10 12:01+0200\n"
+"POT-Creation-Date: 2012-05-12 09:24+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -9129,31 +9129,23 @@ msgstr "KoniecDopis"
 msgid "End of letter"
 msgstr "Koniec dopisu"
 
-#: lib/layouts/seminar.layout:24
+#: lib/layouts/seminar.layout:25 lib/layouts/seminar.layout:84
 msgid "LandscapeSlide"
 msgstr "FóliaNaŠírku"
 
-#: lib/layouts/seminar.layout:34
-msgid "Landscape Slide:"
-msgstr "Fólia na šírku:"
+#: lib/layouts/seminar.layout:26
+msgid "Landscape Slide"
+msgstr "Fólia na Šírku"
 
-#: lib/layouts/seminar.layout:40
+#: lib/layouts/seminar.layout:38 lib/layouts/seminar.layout:100
 msgid "PortraitSlide"
 msgstr "FóliaNaVýšku"
 
-#: lib/layouts/seminar.layout:43
-msgid "Portrait Slide:"
-msgstr "Fólia na výšku:"
+#: lib/layouts/seminar.layout:40
+msgid "Portrait Slide"
+msgstr "Fólia na Výšku"
 
 #: lib/layouts/seminar.layout:45
-msgid "Slide*"
-msgstr "Fólia*"
-
-#: lib/layouts/seminar.layout:52
-msgid "EndOfSlide"
-msgstr "KoniecFólie"
-
-#: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
 msgstr "NadpisFólie"
 
@@ -9165,25 +9157,53 @@ msgstr "PodnadpisFólie"
 msgid "ListOfSlides"
 msgstr "ZoznamFólií"
 
-#: lib/layouts/seminar.layout:78
-msgid "[List Of Slides]"
-msgstr "[Zoznam Fólií]"
+#: lib/layouts/seminar.layout:60
+msgid "List of Slides"
+msgstr "Zoznam Fólií"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
 msgstr "ObsahFólie"
 
-#: lib/layouts/seminar.layout:84
+#: lib/layouts/seminar.layout:69
+msgid "Slide Contents"
+msgstr "Obsah Fólie"
+
+#: lib/layouts/seminar.layout:73 lib/layouts/seminar.layout:132
+msgid "ProgressContents"
+msgstr "ObsahPokroku"
+
+#: lib/layouts/seminar.layout:75
+msgid "Progress Contents"
+msgstr "Obsah Pokroku"
+
+#: lib/layouts/seminar.layout:94
+msgid "Landscape Slide:"
+msgstr "Fólia na šírku:"
+
+#: lib/layouts/seminar.layout:103
+msgid "Portrait Slide:"
+msgstr "Fólia na výšku:"
+
+#: lib/layouts/seminar.layout:105
+msgid "Slide*"
+msgstr "Fólia*"
+
+#: lib/layouts/seminar.layout:112
+msgid "EndOfSlide"
+msgstr "KoniecFólie"
+
+#: lib/layouts/seminar.layout:124
+msgid "[List Of Slides]"
+msgstr "[Zoznam Fólií]"
+
+#: lib/layouts/seminar.layout:129
 msgid "[Slide Contents]"
 msgstr "[Obsah fólie]"
 
-#: lib/layouts/seminar.layout:87
-msgid "ProgressContents"
-msgstr "Pokrok Obsahy"
-
-#: lib/layouts/seminar.layout:90
+#: lib/layouts/seminar.layout:135
 msgid "[Progress Contents]"
-msgstr "[Pokrok Obsahy]"
+msgstr "[Obsah Pokroku]"
 
 #: lib/layouts/siamltex.layout:111 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:114
@@ -12399,9 +12419,9 @@ msgstr "Odmietnuť Zmenu"
 msgid "Apply Last Text Style|A"
 msgstr "Použiť posledný štýl textu"
 
-#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:118
-msgid "Text Style|S"
-msgstr "Štýl textu"
+#: lib/ui/stdcontext.inc:315
+msgid "Text Style|x"
+msgstr "Štýl Textu"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:120
 msgid "Paragraph Settings...|P"
@@ -12640,8 +12660,8 @@ msgid "Select Section|S"
 msgstr "Vyber Sekciu"
 
 #: lib/ui/stdcontext.inc:597
-msgid "Wrap by Preview|P"
-msgstr "Obtekať pri náhľade"
+msgid "Wrap by Preview|y"
+msgstr "Obtekať pri Náhľade"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -12814,6 +12834,10 @@ msgstr "Nájsť a Nahradiť (Rýchle)..."
 #: lib/ui/stdmenus.inc:113
 msgid "Find & Replace (Advanced)..."
 msgstr "Nájsť a Nahradiť (Rozšírené)..."
+
+#: lib/ui/stdmenus.inc:118
+msgid "Text Style|S"
+msgstr "Štýl textu"
 
 #: lib/ui/stdmenus.inc:123
 msgid "Table|T"
@@ -16757,7 +16781,11 @@ msgstr "Prostý text (catdvi)"
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, riadky spojiť"
 
-#: lib/configure.py:550
+#: lib/configure.py:548
+msgid "Info (Beamer)"
+msgstr "Info (Beamer)"
+
+#: lib/configure.py:551
 msgid "Gnumeric spreadsheet"
 msgstr "Gnumeric tabuľkový procesor"
 
