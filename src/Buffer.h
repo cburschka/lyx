@@ -662,6 +662,8 @@ public:
 		WordLangTuple & word_lang, docstring_list & suggestions) const;
 	///
 	void checkChildBuffers();
+	///
+	void checkMasterBuffer();
 
 	/// compute statistics between \p from and \p to
 	/// \p from initial position

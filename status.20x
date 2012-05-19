@@ -97,6 +97,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix crash when saving a child document to a new name/directory and attempting
+  to view/export the document afterwards (bug 8161).
+
 - Fixed an infinite loop when exporting a file with list
   or bibliography environments to DocBook (bug 7914).
 
