@@ -707,6 +707,8 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 }
 
 
+#if 0
+// Not used, see TextMetrics::rowBreakPoint. 
 // this needs special handling - only newlines count as a break point
 static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
@@ -718,6 +720,7 @@ static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 
 	return end;
 }
+#endif
 
 
 int TextMetrics::labelEnd(pit_type const pit) const
