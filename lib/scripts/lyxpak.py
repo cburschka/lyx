@@ -23,15 +23,15 @@ from getopt import getopt
 
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile("\.lyx$")
-re_input = re.compile(r'^(.*)\\(input|include){(\s*)(\S+)(\s*)}.*$')
-re_ertinput = re.compile(r'^(input|include)({)(\s*)(\S+)(\s*)}.*$')
-re_package = re.compile(r'^(.*)\\(usepackage){(\s*)(\S+)(\s*)}.*$')
-re_class = re.compile(r'^(\\)(textclass)(\s+)(\S+)$')
-re_norecur = re.compile(r'^(.*)\\(verbatiminput|lstinputlisting|includegraphics\[*.*\]*){(\s*)(\S+)(\s*)}.*$')
-re_ertnorecur = re.compile(r'^(verbatiminput|lstinputlisting|includegraphics\[*.*\]*)({)(\s*)(\S+)(\s*)}.*$')
-re_filename = re.compile(r'^(\s*)(filename)(\s+)(\S+)$')
-re_options = re.compile(r'^(\s*)options(\s+)(\S+)$')
-re_bibfiles = re.compile(r'^(\s*)bibfiles(\s+)(\S+)$')
+re_input = re.compile(r'^(.*)\\(input|include){(\s*)(.+)(\s*)}.*$')
+re_ertinput = re.compile(r'^(input|include)({)(\s*)(.+)(\s*)}.*$')
+re_package = re.compile(r'^(.*)\\(usepackage){(\s*)(.+)(\s*)}.*$')
+re_class = re.compile(r'^(\\)(textclass)(\s+)(.+)\s*$')
+re_norecur = re.compile(r'^(.*)\\(verbatiminput|lstinputlisting|includegraphics\[*.*\]*){(\s*)(.+)(\s*)}.*$')
+re_ertnorecur = re.compile(r'^(verbatiminput|lstinputlisting|includegraphics\[*.*\]*)({)(\s*)(.+)(\s*)}.*$')
+re_filename = re.compile(r'^(\s*)(filename)(\s+)(.+)\s*$')
+re_options = re.compile(r'^(\s*)options(\s+)(.+)\s*$')
+re_bibfiles = re.compile(r'^(\s*)bibfiles(\s+)(.+)\s*$')
 
 
 def usage(prog_name):
