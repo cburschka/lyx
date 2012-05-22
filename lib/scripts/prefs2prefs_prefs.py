@@ -41,6 +41,7 @@
 
 # Incremented to format 8, 288c1e0f by rgh
 #   Add "nice" flag for converters
+#   No conversion necessary.
 
 import re
 
@@ -83,8 +84,8 @@ def simple_renaming(line, old, new):
 
 no_match = (False, [])
 
-########################
-### Format 1 conversions
+######################################
+### Format 1 conversions (for LyX 2.0)
 
 def remove_obsolete(line):
 	tags = ("\\use_tempdir", "\\spell_command", "\\personal_dictionary",
@@ -98,6 +99,7 @@ def remove_obsolete(line):
 			return (True, "")
 	return no_match
 
+
 def language_use_babel(line):
 	if not line.lower().startswith("\language_use_babel"):
 		return no_match
@@ -110,8 +112,10 @@ def language_use_babel(line):
 	newline = "\\language_package_selection " + newval
 	return (True, newline)
 
+
 def language_package(line):
 	return simple_renaming(line, "\\language_package", "\\language_custom_package")
+
 
 lfre = re.compile(r'^\\converter\s+"?(\w+)"?\s+"?(\w+)"?\s+"([^"]*?)"\s+"latex"', re.IGNORECASE)
 def latex_flavor(line):
@@ -137,6 +141,7 @@ def latex_flavor(line):
 	return (True,
 		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
 
+
 emre = re.compile(r'^\\format\s+(.*)\s+"(document[^"]*?)"', re.IGNORECASE)
 def export_menu(line):
 	if not line.lower().startswith("\\format"):
@@ -149,6 +154,11 @@ def export_menu(line):
 	return (True,
 		"\\Format %s \"%s,menu=export\"" % (fmat, opts))
 
+# End format 1 conversions (for LyX 2.0)
+########################################
+
+#################################
+# Conversions from LyX 2.0 to 2.1
 zipre = re.compile(r'^\\format\s+("?dia"?\s+.*)\s+"([^"]*?)"', re.IGNORECASE)
 def zipped_native(line):
 	if not line.lower().startswith("\\format"):
@@ -219,12 +229,12 @@ def add_mime_types(line):
 		converted = converted + '       ""'
 	return (True, converted)
 
-
-########################
+# End conversions for LyX 2.0 to 2.1
+####################################
 
 
 conversions = [
-	[  1, [ # this will be a long list of conversions to format 1
+	[  1, [ # there were several conversions for format 1
 		export_menu,
 		latex_flavor,
 		remove_obsolete,
