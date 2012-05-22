@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 431
 \begin_document
 \begin_header
 \textclass scrbook
@@ -99,15 +99,21 @@ End
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 0
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch OutDated
 \selected 0
@@ -133,6 +139,7 @@ End
 \html_be_strict true
 \author -195340706 "Georg Baum" 
 \author 5863208 "ab" 
+\author 1414654397 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -2280,6 +2287,53 @@ status collapsed
 \end_inset
 
  file for the conversion.
+\change_inserted 1414654397 1337693117
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1414654397 1337693188
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1337693129
+nice
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Needs a 
+\begin_inset Quotes eld
+\end_inset
+
+nice
+\begin_inset Quotes erd
+\end_inset
+
+ file from the backend, which in practice means a LaTeX file like the one
+ we would export, without 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1337693184
+input@path
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
