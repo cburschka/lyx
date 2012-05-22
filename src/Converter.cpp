@@ -125,6 +125,8 @@ void Converter::readFlags()
 			result_file = flag_value;
 		else if (flag_name == "parselog")
 			parselog = flag_value;
+		else if (flag_name == "nice")
+			nice = true;
 	}
 	if (!result_dir.empty() && result_file.empty())
 		result_file = "index." + formats.extension(to);

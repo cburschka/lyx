@@ -19,7 +19,10 @@
 # check it as a document format. Then create a LaTeX-->ltxbbl converter, 
 # with the command:
 #   python -tt $$s/scripts/include_bib.py $$i $$o
-# and give it the "needaux" flag. You'll then have it in the export menu.
+# and give it the flags:
+#   needaux,nice
+# You'll then have it in the export menu.
+# 
 # We do not activate this converter by default, because there are problems
 # when one tries to use multiple bibliographies.
 #

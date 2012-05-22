@@ -3696,6 +3696,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	runparams.includeall = includeall;
 	vector<string> backs = params().backends();
 	Converters converters = theConverters();
+	bool need_nice_file = false;
 	if (find(backs.begin(), backs.end(), format) == backs.end()) {
 		// Get shortest path to format
 		converters.buildGraph();
@@ -3719,6 +3720,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path, this);
+		Graph::EdgePath::const_iterator it = path.begin();
+		Graph::EdgePath::const_iterator en = path.end();
+		for (; it != en; ++it)
+			if (theConverters().get(*it).nice) {
+				need_nice_file = true;
+				break;
+			}
 
 	} else {
 		backend_format = format;
@@ -3758,7 +3766,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		makeDocBookFile(FileName(filename), runparams);
 	}
 	// LaTeX backend
-	else if (backend_format == format) {
+	else if (backend_format == format || need_nice_file) {
 		runparams.nice = true;
 		bool const success = makeLaTeXFile(FileName(filename), string(), runparams);
 		if (d->cloned_buffer_)

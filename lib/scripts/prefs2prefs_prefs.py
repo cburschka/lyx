@@ -39,6 +39,9 @@
 # Incremented to format 7, r40789 by gb
 #   Add mime type to file format
 
+# Incremented to format 8, by rgh
+#   Add "nice" flag for converters
+
 import re
 
 ###########################################################
@@ -228,10 +231,11 @@ conversions = [
 		language_use_babel,
 		language_package
 	]],
-	[  2, []],
-	[  3, [ zipped_native ]],
-	[  4, [ remove_default_papersize ]],
-	[  5, []],
-	[  6, []],
-	[  7, [add_mime_types]],
+	[ 2, []],
+	[ 3, [ zipped_native ]],
+	[ 4, [ remove_default_papersize ]],
+	[ 5, []],
+	[ 6, []],
+	[ 7, [add_mime_types]],
+	[ 8, []]
 ]
