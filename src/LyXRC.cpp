@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 7; // gb: add mime types
+static unsigned int const LYXRC_FILEFORMAT = 8; // rgh: add "nice" flag
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
