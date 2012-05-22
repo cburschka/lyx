@@ -60,7 +60,7 @@ public:
 	bool xml;
 	/// This converter needs the .aux files
 	bool need_aux;
-	/// we need a "nice" file from the backend
+	/// we need a "nice" file from the backend, c.f. OutputParams.nice.
 	bool nice;
 	/// If the converter put the result in a directory, then result_dir
 	/// is the name of the directory
