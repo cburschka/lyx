@@ -39,7 +39,7 @@
 # Incremented to format 7, r40789 by gb
 #   Add mime type to file format
 
-# Incremented to format 8, by rgh
+# Incremented to format 8, 288c1e0f by rgh
 #   Add "nice" flag for converters
 
 import re
