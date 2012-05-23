@@ -2026,8 +2026,9 @@ static bool import(GuiView * lv, FileName const & filename,
 	string loader_format;
 	vector<string> loaders = theConverters().loaders();
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
-		for (vector<string>::const_iterator it = loaders.begin();
-			 it != loaders.end(); ++it) {
+		vector<string>::const_iterator it = loaders.begin();
+		vector<string>::const_iterator en = loaders.end();
+		for (; it != en; ++it) {
 			if (!theConverters().isReachable(format, *it))
 				continue;
 
