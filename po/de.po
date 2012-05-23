@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-05-19 13:19+0200\n"
-"PO-Revision-Date: 2012-05-19 13:29+0200\n"
+"POT-Creation-Date: 2012-05-23 20:07+0200\n"
+"PO-Revision-Date: 2012-05-23 20:09+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -12408,8 +12408,8 @@ msgstr "Änderung ablehnen|b"
 msgid "Apply Last Text Style|A"
 msgstr "Zuletzt verwendeten Textstil verwenden|x"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:117
-msgid "Text Style|S"
+#: lib/ui/stdcontext.inc:314
+msgid "Text Style|x"
 msgstr "Textstil|T"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:119
@@ -12650,7 +12650,7 @@ msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
 #: lib/ui/stdcontext.inc:596
-msgid "Wrap by Preview|P"
+msgid "Wrap by Preview|y"
 msgstr "Sofortige Vorschau|V"
 
 #: lib/ui/stdmenus.inc:31
@@ -12820,6 +12820,10 @@ msgstr "Suchen & Ersetzen (einfach)...|S"
 #: lib/ui/stdmenus.inc:112
 msgid "Find & Replace (Advanced)..."
 msgstr "Suchen & Ersetzen (erweitert)..."
+
+#: lib/ui/stdmenus.inc:117
+msgid "Text Style|S"
+msgstr "Textstil|T"
 
 #: lib/ui/stdmenus.inc:122
 msgid "Table|T"
