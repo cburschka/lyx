@@ -125,8 +125,10 @@ void ServerSocket::serverCallback()
 // if the connection has been closed
 void ServerSocket::dataCallback(int fd)
 {
-	shared_ptr<LyXDataSocket> client = clients[fd];
-
+	map<int, shared_ptr<LyXDataSocket> >::const_iterator it = clients.find(fd);
+	if (it == clients.end())
+		return;
+	shared_ptr<LyXDataSocket> client = it->second;
 	string line;
 	size_t pos;
 	bool saidbye = false;
