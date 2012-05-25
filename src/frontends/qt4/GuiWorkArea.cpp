@@ -1555,6 +1555,25 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 }
 
 
+void TabWorkArea::paintEvent(QPaintEvent * event)
+{
+	if (tabBar()->isVisible()) {
+		QTabWidget::paintEvent(event);
+	} else {
+		// Prevent the selected tab to influence the 
+		// painting of the frame of the tab widget.
+		// This is needed for gtk style in Qt.
+		QStylePainter p(this);
+		QStyleOptionTabWidgetFrameV2 opt;
+		initStyleOption(&opt);
+		opt.rect = style()->subElementRect(QStyle::SE_TabWidgetTabPane,
+			&opt, this);
+		opt.selectedTabRect = QRect();
+		p.drawPrimitive(QStyle::PE_FrameTabWidget, opt);
+	}
+}
+
+
 void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
 {
 	if (event->button() != Qt::LeftButton)

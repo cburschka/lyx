@@ -201,6 +201,7 @@ public:
 	GuiWorkArea * currentWorkArea();
 	GuiWorkArea * workArea(Buffer & buffer);
 	GuiWorkArea * workArea(int index);
+	void paintEvent(QPaintEvent *);
 
 Q_SIGNALS:
 	///
