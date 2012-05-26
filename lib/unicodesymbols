@@ -177,7 +177,7 @@
 0x0124 "\\^{H}"                   "" "mathalpha" "\\hat{H}" # LATIN CAPITAL LETTER H WITH CIRCUMFLEX
 0x0125 "\\^{h}"                   "" "mathalpha" "\\hat{h}" # LATIN SMALL LETTER H WITH CIRCUMFLEX
 #0x0126 ""                         "" "" "" "" # LATIN CAPITAL LETTER H WITH STROKE
-#0x0127 ""                         "" "" "" "" # LATIN SMALL LETTER H WITH STROKE
+0x0127 "\\textcrh"                "tipa" "force" # LATIN SMALL LETTER H WITH STROKE
 0x0128 "\\~{I}"                   "" "mathalpha" "\\tilde{I}" # LATIN CAPITAL LETTER I WITH TILDE
 0x0129 "\\~{\\i}"                 "" "mathalpha" "\\tilde{\\imath}" # LATIN SMALL LETTER I WITH TILDE
 0x012a "\\={I}"                   "" "mathalpha" "\\bar{I}" # LATIN CAPITAL LETTER I WITH MACRON
