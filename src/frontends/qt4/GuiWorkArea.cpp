@@ -66,6 +66,7 @@
 #include <QPalette>
 #include <QPixmapCache>
 #include <QScrollBar>
+#include <QStylePainter>
 #include <QTimer>
 #include <QToolButton>
 #include <QToolTip>
