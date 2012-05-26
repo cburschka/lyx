@@ -364,11 +364,9 @@ def revert_use_packages(document):
         i = find_re(document.header, regexp, j)
         if i != -1:
             value = get_value(document.header, "\\use_package %s" % p, i).split()[1]
-            document.warning(str(value))
             del document.header[i]
             j = i
             document.header.insert(j, "\\use_%s %s"  % (p, value))
-            document.warning(str(value))
         j = j + 1
 
 
