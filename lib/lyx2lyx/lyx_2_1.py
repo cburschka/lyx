@@ -347,27 +347,28 @@ def convert_use_packages(document):
     "use_xxx yyy => use_package xxx yyy"
     packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
     for p in packages:
-        i = find_token(document.header, "\\use_%s" % p , 0)
+        i = find_token(document.header, "\\use_%s" % p, 0)
         if i != -1:
-            value = get_value(document.header, "\\use_%s" % p , i)
+            value = get_value(document.header, "\\use_%s" % p, i)
             document.header[i] = "\\use_package %s %s" % (p, value)
 
 
 def revert_use_packages(document):
     "use_package xxx yyy => use_xxx yyy"
-    packages = {"amsmath":"1", "esint":"1", "mathdots":"1", "mhchem":"1", "undertilde":"1"}
+    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
     # the order is arbitrary for the use_package version, and not all packages need to be given.
     # Ensure a complete list and correct order (important for older LyX versions and especially lyx2lyx)
-    j = -1
-    for p in packages.keys():
+    j = 0
+    for p in packages:
         regexp = re.compile(r'(\\use_package\s+%s)' % p)
-        i = find_re(document.header, regexp, 0)
+        i = find_re(document.header, regexp, j)
         if i != -1:
-            value = get_value(document.header, "\\use_package" , i).split()[1]
+            value = get_value(document.header, "\\use_package %s" % p, i).split()[1]
+            document.warning(str(value))
             del document.header[i]
             j = i
-    for (p, v) in packages.items():
-        document.header.insert(j, "\\use_%s %s"  % (p, value))
+            document.header.insert(j, "\\use_%s %s"  % (p, value))
+            document.warning(str(value))
         j = j + 1
 
 
