@@ -1275,8 +1275,15 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		string script;
 		pair<docstring, bool> latex = encoding.latexChar(c);
 		docstring nextlatex;
-		if (next != '\0' && next != META_INSET)
+		bool nexttipas = false;
+		string nexttipashortcut;
+		if (next != '\0' && next != META_INSET) {
 			nextlatex = encoding.latexChar(next).first;
+			if (runparams.inIPA) {
+				nexttipashortcut = Encodings::TIPAShortcut(next);
+				nexttipas = !nexttipashortcut.empty();
+			}
+		}
 		bool tipas = false;
 		if (runparams.inIPA) {
 			string const tipashortcut = Encodings::TIPAShortcut(c);
@@ -1291,9 +1298,11 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			column += writeScriptChars(os, latex.first,
 					running_change, encoding, i) - 1;
 		else if (latex.second
-			 && !prefixIs(nextlatex, '\\')
-			 && !prefixIs(nextlatex, '{')
-			 && !prefixIs(nextlatex, '}')
+			 && ((!prefixIs(nextlatex, '\\')
+			       && !prefixIs(nextlatex, '{')
+			       && !prefixIs(nextlatex, '}'))
+			     || (nexttipas
+			         && !prefixIs(from_ascii(nexttipashortcut), '\\')))
 			 && !tipas) {
 			// Prevent eating of a following
 			// space or command corruption by
