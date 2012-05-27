@@ -590,7 +590,7 @@
 0x02b9 "\\textasciiacute"          "textcomp" "" # MODIFIER LETTER PRIME
 0x02ba "\\textacutedbl"            "textcomp" "" # MODIFIER LETTER DOUBLE PRIME
 0x02bb "\\textquoteleft"           "" "" # MODIFIER LETTER TURNED COMMA
-0x02bc "'"                         "" "" # MODIFIER LETTER APOSTROPHE
+0x02bc "'"                         "" "notermination=both" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
 #0x02bf ""                         "" "" # MODIFIER LETTER LEFT HALF RING
