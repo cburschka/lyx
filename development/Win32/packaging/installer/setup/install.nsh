@@ -28,6 +28,7 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
+  !insertmacro FileListQtImageformats File "${FILES_QT}\plugins\imageformats\"
   !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
