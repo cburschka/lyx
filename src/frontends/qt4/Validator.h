@@ -90,7 +90,7 @@ class LengthAutoValidator : public LengthValidator
 	Q_OBJECT
 public:
 	/// Define a validator for widget @c parent.
-	LengthAutoValidator(QWidget * parent, QString const autotext);
+	LengthAutoValidator(QWidget * parent, QString const & autotext);
 
 	/** @returns QValidator::Acceptable if @c data is a GlueLength
 		* or is "auto". If not, returns QValidator::Intermediate.
@@ -102,7 +102,7 @@ private:
 };
 
 /// @returns a new @c LengthAutoValidator that does not accept negative lengths.
-LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit *, QString const autotext);
+LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit *, QString const & autotext);
 
 
 /**
@@ -114,7 +114,7 @@ class DoubleAutoValidator : public QDoubleValidator
 {
 	Q_OBJECT
 public:
-	DoubleAutoValidator(QWidget * parent, QString const autotext);
+	DoubleAutoValidator(QWidget * parent, QString const & autotext);
 	DoubleAutoValidator(double bottom, double top, int decimals,
 		QObject * parent);
 	QValidator::State validate(QString & input, int & pos) const;

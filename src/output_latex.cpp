@@ -239,7 +239,6 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 	// This is for debugging purpose at the end.
 	pit_type const par_begin = pit;
 	for (; pit < runparams.par_end; ++pit) {
-	
 		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
 
 		// check first if this is an higher depth paragraph.
@@ -276,7 +275,6 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			// be two for Standard paragraphs that are depth-increment'ed to be
 			// output correctly. However, tables can also be paragraphs so
 			// don't adjust them.
-			// 
 
 			// FIXME (Lgb): Will it ever harm to have one '\n' too
 			// many? i.e. that we sometimes will have
@@ -333,7 +331,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 		}
 	}
 
-	if (!reqargs && ilist.size() == 0)
+	if (!reqargs && ilist.empty())
 		return;
 
 	bool const have_optional_args = ilist.size() > reqargs;

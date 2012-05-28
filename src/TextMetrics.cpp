@@ -1389,7 +1389,8 @@ pit_type TextMetrics::getPitNearY(int y)
 	int yy = -1;
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
 	ParMetricsCache::const_iterator et = par_metrics_.end();
-	ParMetricsCache::const_iterator last = et; last--;
+	ParMetricsCache::const_iterator last = et;
+	--last;
 
 	ParagraphMetrics const & pm = it->second;
 

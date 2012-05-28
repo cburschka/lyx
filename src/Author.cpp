@@ -53,7 +53,7 @@ ostream & operator<<(ostream & os, Author const & a)
 	// FIXME UNICODE
 	os << a.buffer_id_ << " \"" << to_utf8(a.name_)
 			<< "\" " << to_utf8(a.email_);
-		
+
 	return os;
 }
 
@@ -85,7 +85,7 @@ int AuthorList::record(Author const & a)
 	// If we record an author which equals the current
 	// author, we copy the buffer_id, so that it will
 	// keep the same id in the file.
-	if (authors_.size() > 0 && a == authors_[0])
+	if (!authors_.empty() && a == authors_[0])
 		authors_[0].setBufferId(a.bufferId());
 
 	Authors::const_iterator it(authors_.begin());

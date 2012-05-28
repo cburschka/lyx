@@ -528,7 +528,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	ParagraphList::iterator it = copy_pars.begin();
 	ParagraphList::iterator it_end = copy_pars.end();
 
-	for (; it != it_end; it++) {
+	for (; it != it_end; ++it) {
 		// Since we have a copy of the paragraphs, the insets
 		// do not have a proper buffer reference. It makes
 		// sense to add them temporarily, because the
@@ -553,7 +553,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	// do some final cleanup now, to make sure that the paragraphs
 	// are not linked to something else.
 	it = copy_pars.begin();
-	for (; it != it_end; it++) {
+	for (; it != it_end; ++it) {
 		it->setBuffer(*static_cast<Buffer *>(0));
 		it->setInsetOwner(0);
 	}

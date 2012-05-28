@@ -942,7 +942,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\begin_removed_modules" << '\n';
 		list<string>::const_iterator it = removed_modules_.begin();
 		list<string>::const_iterator en = removed_modules_.end();
-		for (; it != en; it++)
+		for (; it != en; ++it)
 			os << *it << '\n';
 		os << "\\end_removed_modules" << '\n';
 	}
@@ -952,7 +952,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\begin_modules" << '\n';
 		LayoutModuleList::const_iterator it = layout_modules_.begin();
 		LayoutModuleList::const_iterator en = layout_modules_.end();
-		for (; it != en; it++)
+		for (; it != en; ++it)
 			os << *it << '\n';
 		os << "\\end_modules" << '\n';
 	}
@@ -962,7 +962,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\begin_includeonly" << '\n';
 		list<string>::const_iterator it = included_children_.begin();
 		list<string>::const_iterator en = included_children_.end();
-		for (; it != en; it++)
+		for (; it != en; ++it)
 			os << *it << '\n';
 		os << "\\end_includeonly" << '\n';
 	}
@@ -2026,11 +2026,11 @@ void BufferParams::makeDocumentClass()
 
 	it = layout_modules_.begin();
 	en = layout_modules_.end();
-	for (; it != en; it++)
+	for (; it != en; ++it)
 		mods.push_back(*it);
 	it = cite_engine_.begin();
 	en = cite_engine_.end();
-	for (; it != en; it++)
+	for (; it != en; ++it)
 		mods.push_back(*it);
 	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), mods));
 
@@ -2056,7 +2056,7 @@ bool BufferParams::addLayoutModule(string const & modName)
 {
 	LayoutModuleList::const_iterator it = layout_modules_.begin();
 	LayoutModuleList::const_iterator end = layout_modules_.end();
-	for (; it != end; it++)
+	for (; it != end; ++it)
 		if (*it == modName)
 			return false;
 	layout_modules_.push_back(modName);
@@ -2391,7 +2391,7 @@ void BufferParams::readRemovedModules(Lexer & lex)
 	// start of the read.
 	list<string>::const_iterator rit = removed_modules_.begin();
 	list<string>::const_iterator const ren = removed_modules_.end();
-	for (; rit != ren; rit++) {
+	for (; rit != ren; ++rit) {
 		LayoutModuleList::iterator const mit = layout_modules_.begin();
 		LayoutModuleList::iterator const men = layout_modules_.end();
 		LayoutModuleList::iterator found = find(mit, men, *rit);

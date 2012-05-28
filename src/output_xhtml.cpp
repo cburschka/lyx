@@ -727,7 +727,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		//   (ii) We didn't open it and html_in_par is true, 
 		//        but we are in the first par, and there is a next par.
 		ParagraphList::const_iterator nextpar = par;
-		nextpar++;
+		++nextpar;
 		bool const needclose = 
 			(opened && (!runparams.html_in_par || nextpar != pend))
 			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);

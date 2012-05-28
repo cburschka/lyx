@@ -340,7 +340,7 @@ int LyX::exec(int & argc, char * argv[])
 			vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
 			vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
 			DispatchResult dr;
-			for (; bcit != bcend; bcit++) {
+			for (; bcit != bcend; ++bcit) {
 				LYXERR(Debug::ACTION, "Buffer::dispatch: cmd: " << *bcit);
 				buf->dispatch(*bcit, dr);
 				final_success |= !dr.error();
@@ -587,7 +587,7 @@ void LyX::execCommands()
 
 	vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
 	vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
-	for (; bcit != bcend; bcit++) {
+	for (; bcit != bcend; ++bcit) {
 		LYXERR(Debug::INIT, "About to handle -x '" << *bcit << '\'');
 		lyx::dispatch(lyxaction.lookupFunc(*bcit));
 	}

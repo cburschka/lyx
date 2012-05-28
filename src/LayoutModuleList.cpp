@@ -59,7 +59,7 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 	// Is the module already present?
 	const_iterator it = begin();
 	const_iterator const en = end();
-	for (; it != en; it++)
+	for (; it != en; ++it)
 		if (*it == modName) 
 			return false;
 
@@ -131,7 +131,7 @@ void LayoutModuleList::addDefaultModules(LayoutFile const * const lay,
 	iterator insertpos = begin();
 	int numinserts = 0;
 
-	for (; mit != men; mit++) {
+	for (; mit != men; ++mit) {
 		string const & modName = *mit;
 		// make sure the user hasn't removed it
 		if (find(removedModules.begin(), removedModules.end(), modName) !=
