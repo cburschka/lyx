@@ -1956,7 +1956,7 @@ namespace {
 	docstring formatStrVec(vector<string> const & v, docstring const & s) 
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
-		if (v.size() == 0)
+		if (v.empty())
 			return docstring();
 		if (v.size() == 1) 
 			return translateIfPossible(from_utf8(v[0]));
@@ -2012,11 +2012,11 @@ void GuiDocument::modulesToParams(BufferParams & bp)
 	list<string>::const_iterator ren = reqmods.end();
 
 	// check each of the default modules
-	for (; rit != ren; rit++) {
+	for (; rit != ren; ++rit) {
 		list<string>::const_iterator mit = bp.getModules().begin();
 		list<string>::const_iterator men = bp.getModules().end();
 		bool found = false;
-		for (; mit != men; mit++) {
+		for (; mit != men; ++mit) {
 			if (*rit == *mit) {
 				found = true;
 				break;

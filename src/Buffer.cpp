@@ -2778,7 +2778,7 @@ MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 				// try previous macro if there is one
 				if (it == nameIt->second.begin())
 					break;
-				it--;
+				--it;
 			}
 		}
 	}

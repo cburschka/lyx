@@ -574,7 +574,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	set<string>::const_iterator end = grp.end();
 	groupCO->blockSignals(true);
 	groupCO->clear();
-	for (; it != end; it++)
+	for (; it != end; ++it)
 		groupCO->addItem(toqstr(*it), toqstr(*it));
 	groupCO->insertItem(0, qt_("None"), QString());
 	if (igp.groupId.empty())

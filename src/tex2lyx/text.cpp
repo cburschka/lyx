@@ -1513,7 +1513,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (!preamble.titleLayoutFound())
 			preamble.titleLayoutFound(newlayout->intitle);
 		set<string> const & req = newlayout->requires();
-		for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+		for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 			preamble.registerAutomaticallyLoadedPackage(*it);
 	}
 
@@ -2429,7 +2429,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						preamble.titleLayoutFound(newlayout->intitle);
 					set<string> const & req = newlayout->requires();
 					for (set<string>::const_iterator it = req.begin();
-					     it != req.end(); it++)
+					     it != req.end(); ++it)
 						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
 					handle_ert(os,
@@ -2450,7 +2450,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
-			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
@@ -2463,7 +2463,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
 			set<string> const & req = newlayout->requires();
-			for (set<string>::const_iterator it = req.begin(); it != req.end(); it++)
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 

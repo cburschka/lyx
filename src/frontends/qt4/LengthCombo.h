@@ -31,7 +31,7 @@ public:
 	/// set the current item from unit
 	virtual void setCurrentItem(lyx::Length::UNIT unit);
 	/// set the current item from length string
-	virtual void setCurrentItem(QString const item);
+	virtual void setCurrentItem(QString const & item);
 	/// set the current item from int
 	virtual void setCurrentItem(int item);
 	/// get the current item

@@ -332,7 +332,7 @@ Author const & Preamble::getAuthor(std::string const & name) const
 {
 	Author author(from_utf8(name), empty_docstring());
 	for (AuthorList::Authors::const_iterator it = authors_.begin();
-	     it != authors_.end(); it++)
+	     it != authors_.end(); ++it)
 		if (*it == author)
 			return *it;
 	static Author const dummy;
@@ -896,7 +896,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 		os << "\\begin_modules\n";
 		vector<string>::const_iterator const end = used_modules.end();
 		vector<string>::const_iterator it = used_modules.begin();
-		for (; it != end; it++)
+		for (; it != end; ++it)
 			os << *it << '\n';
 		os << "\\end_modules\n";
 	}

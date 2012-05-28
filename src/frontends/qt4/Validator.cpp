@@ -97,7 +97,7 @@ LengthValidator * unsignedGlueLengthValidator(QLineEdit * ed)
 }
 
 
-LengthAutoValidator::LengthAutoValidator(QWidget * parent, QString const autotext)
+LengthAutoValidator::LengthAutoValidator(QWidget * parent, QString const & autotext)
 	: LengthValidator(parent),
 	  autotext_(autotext)
 {}
@@ -111,7 +111,7 @@ QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) co
 }
 
 
-LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const autotext)
+LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const & autotext)
 {
 	LengthAutoValidator * v = new LengthAutoValidator(ed, autotext);
 	v->setBottom(Length());
@@ -119,7 +119,7 @@ LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const 
 }
 
 
-DoubleAutoValidator::DoubleAutoValidator(QWidget * parent, QString const autotext)
+DoubleAutoValidator::DoubleAutoValidator(QWidget * parent, QString const & autotext)
 	: QDoubleValidator(parent),
 	  autotext_(autotext)
 {}

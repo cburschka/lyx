@@ -2039,7 +2039,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	}
 	sort(locals.begin(), locals.end());
 
-	if (globals.size() > 0)
+	if (!globals.empty())
 		return;
 
 	// fill in global macros

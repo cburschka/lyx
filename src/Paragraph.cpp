@@ -135,7 +135,7 @@ public:
 		current_change_number_ = 0;
 	}
 
-	void setRange(FontSpan const fp, SpellChecker::Result state)
+	void setRange(FontSpan const & fp, SpellChecker::Result state)
 	{
 		Ranges result;
 		RangesIterator et = ranges_.end();

@@ -51,7 +51,7 @@ InsetMathArray::InsetMathArray(Buffer * buf, docstring const & name,
 		istringstream ls(line);
 		typedef istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
-		if (v.size())
+		if (!v.empty())
 			dat.push_back(v);
 	}
 

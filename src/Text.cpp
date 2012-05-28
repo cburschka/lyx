@@ -1668,7 +1668,7 @@ bool Text::dissolveInset(Cursor & cur)
 		// change it to the buffer language.
 		ParagraphList::iterator it = plist.begin();
 		ParagraphList::iterator it_end = plist.end();
-		for (; it != it_end; it++)
+		for (; it != it_end; ++it)
 			it->changeLanguage(b.params(), latex_language, b.language());
 
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),

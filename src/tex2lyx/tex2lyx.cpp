@@ -273,7 +273,7 @@ bool checkModule(string const & name, bool command)
 		DocumentClassBundle & bundle = DocumentClassBundle::get();
 		LyXModuleList::const_iterator const end = theModuleList.end();
 		LyXModuleList::const_iterator it = theModuleList.begin();
-		for (; it != end; it++) {
+		for (; it != end; ++it) {
 			string const module = it->getID();
 			LayoutModuleList m;
 			// FIXME this excludes all modules that depend on another one
@@ -293,7 +293,7 @@ bool checkModule(string const & name, bool command)
 	// needed since it is not unlikely that two different modules define a
 	// command with the same name.
 	ModuleMap::iterator const end = modules.end();
-	for (ModuleMap::iterator it = modules.begin(); it != end; it++) {
+	for (ModuleMap::iterator it = modules.begin(); it != end; ++it) {
 		string const module = it->first;
 		if (!used_modules.moduleCanBeAdded(module, &baseClass))
 			continue;
@@ -693,7 +693,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	if (!used_modules.empty()) {
 		LayoutModuleList::const_iterator const end = used_modules.end();
 		LayoutModuleList::const_iterator it = used_modules.begin();
-		for (; it != end; it++)
+		for (; it != end; ++it)
 			preamble.addModule(*it);
 	}
 	if (!preamble.writeLyXHeader(os, !active_environments.empty())) {

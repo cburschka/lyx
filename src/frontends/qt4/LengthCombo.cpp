@@ -58,7 +58,7 @@ void LengthCombo::setCurrentItem(lyx::Length::UNIT unit)
 }
 
 
-void LengthCombo::setCurrentItem(QString const item)
+void LengthCombo::setCurrentItem(QString const & item)
 {
 	int num = QComboBox::count();
 	for (int i = 0; i < num; i++) {

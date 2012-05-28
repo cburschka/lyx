@@ -1318,7 +1318,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 	DocumentClass & doc_class = newClass(baseClass);
 	LayoutModuleList::const_iterator it = modlist.begin();
 	LayoutModuleList::const_iterator en = modlist.end();
-	for (; it != en; it++) {
+	for (; it != en; ++it) {
 		string const modName = *it;
 		LyXModule * lm = theModuleList[modName];
 		if (!lm) {
