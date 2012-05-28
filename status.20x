@@ -38,7 +38,11 @@ What's new
 - Allow makebeamerinfo script export beamer info (to be used by Impressive)
   (bug 8018).
 
-- Some updates to the lib\unicodesymbols file (bug 8153).
+- Output unicode glyph MICRO SIGN upright in mathed (bug 8153).
+
+- Remove wrong support for unicode glyph HYPHENATION POINT (bug 8153).
+
+- Add support for unicode glyph LATIN SMALL LETTER H WITH STROKE.
 
 - Export contents of included files rather than just an indication that there
   was an excluded file (bug 8087).
