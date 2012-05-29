@@ -1781,6 +1781,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		// hyperref loads this automatically
 		lyxpreamble += "\\usepackage{nameref}\n";
 
+	// bibtopic needs to be loaded after hyperref.
+	// the dot provides the aux file naming which LyX can detect.
+	if (features.mustProvide("bibtopic"))
+		lyxpreamble += "\\usepackage[dot]{bibtopic}\n";
+
 	// Will be surrounded by \makeatletter and \makeatother when not empty
 	docstring atlyxpreamble;
 
