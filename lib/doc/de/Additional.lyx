@@ -484,35 +484,41 @@ Es gibt mehrere Befehle, bei denen automatisch LaTeX gestartet wird:
 \begin_layout Itemize
 
 \family sans
-Ansicht->Ansehen
+Ansicht\SpecialChar \menuseparator
+Ansehen
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ansicht->Aktualisieren
+Ansicht\SpecialChar \menuseparator
+Aktualisieren
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Datei->Drucken (Strg+P oder 
+Datei\SpecialChar \menuseparator
+Drucken
 \family default
-
+ (
+\family sans
+Strg+P
+\family default
+ oder 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
 \end_inset
 
-
-\family sans
-) 
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Datei->Faxen
+Datei\SpecialChar \menuseparator
+Faxen
 \end_layout
 
 \begin_layout Standard
@@ -4148,9 +4154,7 @@ savelabelitemi}
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-LyX and the World Wide Web
+LyX und das World Wide Web
 \end_layout
 
 \begin_layout Standard
@@ -8840,16 +8844,14 @@ Benutzerhandbuch
  Verwenden Sie dazu die Einstellungsmöglichkeit im Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
-Absatz-Einstellungen (
+Absatz-Einstellungen
 \family default
-
+ (
 \begin_inset Info
 type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-
-\family sans
 ).
 \end_layout
 

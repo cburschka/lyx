@@ -7367,8 +7367,8 @@ itshape, style=nextline
 
 
 \lang english
-Ionizing radiation consists of particles oder electromagnetic waves that
- are energetic enough to detach electrons from atoms oder molecules, therefore
+Ionizing radiation consists of particles or electromagnetic waves that are
+ energetic enough to detach electrons from atoms or molecules, therefore
  ionizing them.
 \end_layout
 
@@ -7380,8 +7380,8 @@ Reference
 \end_inset
 
 counting: In computer science, reference counting is a technique of storing
- the number of references, pointers, oder handles to a resource such as
- an object, block of memory, disk space oder other resource.
+ the number of references, pointers, or handles to a resource such as an
+ object, block of memory, disk space or other resource.
 \end_layout
 
 \begin_layout Standard
@@ -15550,9 +15550,7 @@ Dieses Dateiformat hat die Endung
 \end_inset
 
 .
- 
-\lang english
-It is called 
+ Diese bedeutet 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15560,21 +15558,18 @@ device-independent
 \begin_inset Quotes grd
 \end_inset
 
- (DVI), because it is completely portable; you can move them from one machine
- to another ohne needing to do any sort of conversion.
- DVIs are used für quick previews und as pre-stage für other output formats,
- like PostScript.
+ (geräteunabhängig) da dieses Format genau das ist: Man kann es auf allen
+ Computern ohne irgend welche Konvertierungen einsetzen.
+ DVIs eignen sich für schnelle Voransicht für andere Ausgabeformate wie
+ PostScript.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-DVI Dateien do not contain images, they nur link them.
- So don't forget to deliver the images together mit your DVIs.
- Because the DVI-viewer has to convert the image in the background to make
- it visible when you scroll the DVI, this can slow down your computer when
- you view the DVI.
- So we recommend to use PDF für Dateien mit many images.
+DVI-Dateien enthalten keine Bilder, sie verlinken diese nur.
+ Daher darf man nicht vergessen, die Bilder zusammen mit den DVIs weiterzugeben.
+ Da der DVI-Betrachter die Bilder im Hintergrund konvertieren muss um sie
+ darstellen zu können, kann das beim Scrollen im DVI den Computer verlangsamen.
+ Daher wird empfohlen PDF für Dateien mit vielen Bildern zu verwenden.
 \end_layout
 
 \begin_layout Standard
@@ -15606,21 +15601,13 @@ status collapsed
 X)
 \family default
  exportieren.
- 
-\lang english
-The latter Option uses the program 
+ Die zweite Möglichkeit verwendet das Programm 
 \family typewriter
 LuaTeX
 \family default
 .
- 
-\family typewriter
-LuaTeX
-\family default
- is an engine that provides direct Unicode support und support für direct
- font access
-\lang ngerman
- (siehe Abschnitt
+ Dieses bietet direkte Unterstützung für Unicode und für die Direktwahl
+ von Schriften (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -15632,10 +15619,8 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- LuaTeX 
-\lang english
-is still work in progress, but it might develop into the next standard TeX
- processor.
+ LuaTeX ist noch in der Entwicklung, könnte aber der nächste Standard TeX-Prozes
+sor werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15666,33 +15651,29 @@ Dieses Dateiformat hat die Endung
 \end_inset
 
 .
- 
-\lang english
-PostScript was developed by the company 
+ PostScript wurde von der Firma 
 \family typewriter
 Adobe
 \family default
- as a printer language.
- The Datei contains therefore Befehle that the printer uses to print the
- Datei.
- PostScript can be seen as a 
-\begin_inset Quotes eld
+ als Druckersprache entwickelt.
+ Das Format enthält daher Befehle, die Drucker verwenden um die Datei zu
+ drucken.
+ PostScript kann als 
+\begin_inset Quotes gld
 \end_inset
 
-programming language
-\begin_inset Quotes erd
+Programmiersprache
+\begin_inset Quotes grd
 \end_inset
 
-; you can calculate mit it und draw diagrams und images.
+ angesehen werden; man kann damit Berechnungen durchführen und Diagramme
+ und Bilder zeichnen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-When you are interested to learn more über this, have a look at the 
-\lang ngerman
-LaTeX-Paket 
+Falls Sie interessiert sind, mehr darüber zu erfahren, sollten Sie sich
+ das LaTeX-Paket 
 \series bold
 pstricks
 \series default
@@ -15706,20 +15687,16 @@ LaTeX-Paket ! pstricks
 
 \end_inset
 
-.
+ ansehen.
 \end_layout
 
 \end_inset
 
- Due to this ability, the Dateien are often bigger than PDFs.
+ Durch diese Fähigkeit sind die Dateien oft größer als PDFs.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-PostScript can nur contain
-\lang ngerman
- Bilder im Format 
+PostScript kann nur Bilder im Format 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15739,12 +15716,10 @@ Encapsulated PostScript
 \begin_inset Quotes grd
 \end_inset
 
-).
- 
-\lang english
-As LyX allows you to use any known image format in your Dokument, it has
- to convert them in the background to EPS.
- If you have z.
+) enthalten.
+ Da LyX es erlaubt jedes bekannte Bildformat in Dokumente einzufügen, muss
+ es diese im Hintergrund in EPS konvertieren.
+ Wenn Sie z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15753,14 +15728,15 @@ B.
 \begin_inset space ~
 \end_inset
 
-Bilder in your Dokument, LyX has to do 50
+Bilder in Ihrem Dokument haben, muss LyX 50
 \begin_inset space ~
 \end_inset
 
-conversions when you view oder export your Dokument zum ersten Mal.
- This könnte slow down your workflow mit LyX.
- So if you plan to use PostScript, you can insert your images directly as
- EPS to avoid this problem.
+Konvertierungen durchführen, wenn Sie Ihr Dokument zum ersten Mal in der
+ Ausgabe ansehen oder exportieren.
+ Dies kann Ihren Arbeitsfluss mit LyX verlangsamen.
+ Wenn Sie also planen, PostScript für die Ausgabe zu verwenden, sollten
+ Sie alle Bilder direkt als EPS einfügen und das Problem zu vermeiden.
 \end_layout
 
 \begin_layout Standard
@@ -15819,32 +15795,26 @@ Portable Document Format
 \begin_inset Quotes grd
 \end_inset
 
- (PDF) 
-\lang english
-developed by 
+ (PDF) wurde von 
 \family typewriter
 Adobe
 \family default
- was derived from PostScript.
- It is more compressed und it uses fewer Befehle than PostScript.
- As the name 
-\begin_inset Quotes eld
+ von PostScript abgeleitet.
+ Es ist komprimierter und verwendet weniger befehle als PostScript.
+ Wie der Name 
+\begin_inset Quotes gld
 \end_inset
 
 portable
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- implies, it can be processed at any computer system und the printed output
- looks exactly the same.
+ (übertragbar) impliziert, kann es auf jedem Computersystem dargestellt
+ werden und der Ausdruck wird exakt gleich aussehen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-PDF can contain images in its own PDF format und in the formats
-\lang ngerman
- 
+PDF kann Bilder in seinem eigenen PDF-Format sowie in den Formaten 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15896,14 +15866,13 @@ Portable Network Graphics
 \begin_inset Quotes grd
 \end_inset
 
-).
- 
-\lang english
-You can although use any other image format, because LyX converts them in
- the background to one of these formats.
- But as described in the Abschnitt über PostScript, the image conversion
- will slow down your workflow.
- So we recommend to use images in one of the three mentioned formats.
+) enthalten.
+ Sie können jedoch auch jedes andere Bildformat verwenden, denn LyX konvertiert
+ diese in eine der möglichen Formate.
+ Jedoch kann, wie im Abschnitt über PostScript beschrieben, die Bildkonvertierun
+g den Arbeitsfluss verlangsamen.
+ Daher wird empfohlen, Bilder direkt in einem der drei erwähnten Formate
+ einzufügen.
 \end_layout
 
 \begin_layout Standard
@@ -15920,19 +15889,17 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) 
-\lang english
-This uses the program 
+(ps2pdf) Diese verwendet das Programm 
 \family typewriter
 ps2pdf
 \family default
- that creates a PDF from a PostScript-version of your Datei.
- The PostScript-version is produced by the program 
+, das ein PDF aus einer PostScript-Version Ihres Dokuments erstellt.
+ Die PostScript-Version wird vom Programm 
 \family typewriter
 dvips
 \family default
- which uses a DVI-version as intermediate step.
- So this export variant consist of three conversions.
+ erzeugt, das wiederum eine DVI-Version als Zwischenschritt erstellt.
+ Diese Art besteht also aus drei Konvertierungen.
 \end_layout
 
 \begin_layout Description
@@ -15940,14 +15907,12 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(dvipdfm) 
-\lang english
-This uses the program 
+(dvipdfm) Diese verwendet das Programm 
 \family typewriter
 dvipdfm
 \family default
- that converts your Datei in the background to DVI und in a second step
- to PDF.
+, das Ihr Dokument im Hintergrund erst in ein DVI und anschließend in ein
+ PDF konvertiert.
 \end_layout
 
 \begin_layout Description
@@ -15955,13 +15920,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(pdflatex) 
-\lang english
-This uses the program 
+(pdflatex) Diese verwendet das Programm 
 \family typewriter
 pdftex
 \family default
- that converts your Datei directly to PDF.
+, das Ihr Dokument direkt in ein PDF konvertiert.
 \end_layout
 
 \begin_layout Description
@@ -15980,19 +15943,17 @@ status collapsed
 
 \end_inset
 
-X) 
-\lang english
-This uses the program 
+X) Diese verwendet das Programm 
 \family typewriter
 XeTeX
 \family default
- that converts your Datei directly to PDF.
+, das Ihr Dokument direkt in ein PDF konvertiert.
  
 \family typewriter
 XeTeX
 \family default
- is a new engine that provides direct Unicode support und support für direct
- font access (siehe Abschnitt
+ ist ein neuer Prozessor, der direkte Unterstützung für Unicode und für
+ die Direktwahl von Schriften bietet (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16004,7 +15965,8 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- It is particularly good at typesetting different scripts.
+ Er ist besonders geeignet für die Verwendung verschiedener Schriftsysteme
+ (Arabisch, Lateinisch, Japanisch, usw.).
 \end_layout
 
 \begin_layout Description
@@ -16023,23 +15985,21 @@ status collapsed
 
 \end_inset
 
-X) 
-\lang english
-This uses the program 
+X) Diese verwendet das Programm 
 \family typewriter
 LuaTeX
 \family default
- that converts your Datei directly to PDF.
+, das Ihr Dokument direkt in ein PDF konvertiert.
  
 \family typewriter
 LuaTeX
 \family default
- is an even newer engine, derived from 
+ ist ein neuer Prozessor, der aus 
 \family typewriter
 pdflatex
 \family default
-, that auch provides direct Unicode support und support für direct font
- access (siehe Abschnitt
+ weiter entwickelt wurde und direkte Unterstützung für Unicode und für die
+ Direktwahl von Schriften bietet (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16051,14 +16011,12 @@ reference "sub:LaTeX-Schriftunterstützung"
 \end_inset
 
 ).
- LuaTeX is still work in progress, but it might develop into the next standard
- TeX processor.
+ LuaTeX ist noch in der Entwicklung, könnte aber der nächste Standard TeX-Prozes
+sor werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-We recommend to use 
+Wir empfehlen 
 \family sans
 PDF
 \begin_inset space ~
@@ -16066,15 +16024,15 @@ PDF
 
 (pdflatex)
 \family default
- because 
+ zu verwenden, denn 
 \family typewriter
 pdftex
 \family default
- supports all the Features of actual PDF-versions, is quick, stable, und
- works ohne problems.
- If you rely on multiscript support and\SpecialChar \slash{}
-or specific OpenType Schriften, you
- might want to try out 
+ unterstützt alle Funktionen von aktuellen PDF-Versionen, ist schnell, stabil
+ und arbeitet ohne Probleme.
+ Wenn Sie verschiedene Schriftsysteme und\SpecialChar \slash{}
+oder spezielle OpenType Schriften
+ verwenden, sollten Sie stattdessen 
 \family sans
 PDF
 \begin_inset space ~
@@ -16112,12 +16070,11 @@ status collapsed
 
 X)
 \family default
- instead, bearing in mind that these two programs are not yet as mature
- as 
+ ausprobieren auch wenn sie noch nicht so ausentwickelt wie 
 \family typewriter
 pdflatex
 \family default
-.
+ sind.
 \end_layout
 
 \begin_layout Subsubsection
@@ -16145,9 +16102,7 @@ HTML
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This Datei type has the extension 
+Dieses Dateiformat hat die Endung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16160,7 +16115,9 @@ This Datei type has the extension
 \end_inset
 
 .
- It is a Datei suitable für viewing in web browsers.
+ 
+\lang english
+It is a Datei suitable für viewing in web browsers.
  It does not itself contain images und the like but nur links them, und
  when LyX produces XHTML, it auch generates corresponding images in formats
  suitable für the purpose.
@@ -16174,10 +16131,8 @@ Output
 \lang ngerman
 , die in Abschnitt 
 \emph on
-\lang english
-Math Output in XHTML
+Mathe-Ausgabe in XHTML
 \emph default
-\lang ngerman
  der 
 \emph on
 Handbuchergänzungen
@@ -16186,25 +16141,19 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-XHTML output remains 
+Die XHTM-Ausgabe ist noch 
 \begin_inset Quotes gld
 \end_inset
 
-under development
+unter Entwicklung
 \begin_inset Quotes grd
 \end_inset
 
-, und not all LyX Features are supported yet.
-
-\lang ngerman
+ so dass noch nicht alle Funktionen von LyX unterstützt werden.
  Siehe das Kapitel 
 \emph on
-\lang english
-LyX und the World Wide Web
+LyX und das World Wide Web
 \emph default
-\lang ngerman
  in den 
 \emph on
 Handbuchergänzungen
@@ -16213,13 +16162,13 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can export your Dokument as an XHTML Datei using the
-\lang ngerman
- Menü Datei\SpecialChar \menuseparator
+Sie können Ihr Dokument mit dem Menü 
+\family sans
+Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
-LyX-HTML.
+LyX-HTML
+\family default
+ als XHTML-Datei exportieren.
 \end_layout
 
 \begin_layout Subsection
@@ -16249,20 +16198,24 @@ View
 \family sans
 View
 \family default
- or the toolbar button 
+ 
+\lang ngerman
+oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
 .
- A viewing program will pop up showing the output in the defined default
- output format, which is globally set in the preferences (see sec.
-\begin_inset space \thinspace{}
+ 
+\lang english
+A viewing program will pop up showing the output in the defined default
+ output format, which is globally set in the preferences
+\lang ngerman
+ (siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -16270,15 +16223,14 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-
+) und 
 \lang english
-) and can also be altered for single documents in the document settings
- (see sec.
-\begin_inset space \thinspace{}
+can also be altered for single documents in the document settings
+\lang ngerman
+ (siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -16286,15 +16238,16 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-
-\lang english
 ).
- Further output formats can be selected via 
+ Weitere Ausgabeformate können über 
 \family sans
 Ansicht\SpecialChar \menuseparator
+
+\lang english
 Other Formats
 \family default
- or the toolbar button 
+\lang ngerman
+ oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/view-others.png
 	scale 85
@@ -16302,24 +16255,28 @@ Other Formats
 
 \end_inset
 
-.
+ ausgewählt werden.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
 If you have changed your document, you can refresh the output in the same
- viewer window using the menu 
+ viewer window using das Menü 
 \family sans
 Ansicht\SpecialChar \menuseparator
 Update
 \family default
- or 
+ bzw.
+\begin_inset space \space{}
+\end_inset
+
+
 \family sans
 Ansicht\SpecialChar \menuseparator
 Update (Other Formats)
 \family default
-, respectively.
+.
 \end_layout
 
 \begin_layout Standard
@@ -16345,24 +16302,24 @@ name "sub:Datei-ausdrucken"
 
 \lang english
 Instead of exporting your Datei und then printing it, you can auch print
- it directly from within LyX.
- To print a Datei, select the 
+ it directly from within
 \lang ngerman
-Menü 
+ LyX.
+ Um eine Datei zu drucken, wählen Sie das Menü 
 \family sans
 Datei\SpecialChar \menuseparator
 Drucken
 \family default
- oder 
-\lang english
-click on the Werkzeugleistenknopf 
+ oder drücken Sie den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
 \end_inset
 
 .
- LyX will internally call LaTeX to produce a DVI.
+ LyX 
+\lang english
+will internally call LaTeX to produce a DVI.
  This Datei is then processed by the program 
 \family typewriter
 dvips
@@ -16378,9 +16335,9 @@ Ghostscript
 \begin_layout Standard
 
 \lang english
-You can choose to print nur even-numbered oder odd-numbered pages — this
- is useful für printing on two sides: You can re-insert the pages nach printing
- one set to print on the other side.
+You can choose to print nur gerade oder ungerade Seiten — this is useful
+ für printing on two sides: You can re-insert the pages nach printing one
+ set to print on the other side.
  Some printers spit out pages face-up, others, face-down.
  By choosing a particular order to print in, you can take the entire stack
  of pages out of the printer ohne needing to reorder them.
