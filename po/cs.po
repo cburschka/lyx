@@ -5373,7 +5373,7 @@ msgstr "Pøípad"
 
 #: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
 msgid "Case \\thecase."
-msgstr "Case \\thecase."
+msgstr "Pøípad \\thecase."
 
 #: lib/layouts/AEA.layout:136 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:391
@@ -9149,18 +9149,16 @@ msgid "LandscapeSlide"
 msgstr "LandscapeSlide"
 
 #: lib/layouts/seminar.layout:26
-#, fuzzy
 msgid "Landscape Slide"
-msgstr "Landscape Slide:"
+msgstr "Landscape Slide"
 
 #: lib/layouts/seminar.layout:38 lib/layouts/seminar.layout:100
 msgid "PortraitSlide"
 msgstr "PortraitSlide"
 
 #: lib/layouts/seminar.layout:40
-#, fuzzy
 msgid "Portrait Slide"
-msgstr "Portrait Slide:"
+msgstr "Portrait Slide"
 
 #: lib/layouts/seminar.layout:45
 msgid "SlideHeading"
@@ -9175,18 +9173,16 @@ msgid "ListOfSlides"
 msgstr "ListOfSlides"
 
 #: lib/layouts/seminar.layout:60
-#, fuzzy
 msgid "List of Slides"
-msgstr "[List Of Slides]"
+msgstr "List of Slides"
 
 #: lib/layouts/seminar.layout:67 lib/layouts/seminar.layout:126
 msgid "SlideContents"
 msgstr "SlideContents"
 
 #: lib/layouts/seminar.layout:69
-#, fuzzy
 msgid "Slide Contents"
-msgstr "SlideContents"
+msgstr "Slide Contents"
 
 #: lib/layouts/seminar.layout:73 lib/layouts/seminar.layout:132
 msgid "ProgressContents"
@@ -10284,24 +10280,20 @@ msgid "Claim \\thetheorem."
 msgstr "Tvrzení \\thetheorem."
 
 #: lib/layouts/theorems-case.inc:12
-#, fuzzy
 msgid "Case \\arabic{casei}."
-msgstr "Case \\arabic{case}"
+msgstr "Pøípad \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
-#, fuzzy
 msgid "Case \\roman{caseii}."
-msgstr "Case \\arabic{case}"
+msgstr "Pøípad \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:20
-#, fuzzy
 msgid "Case \\alph{caseiii}."
-msgstr "Case \\thecase."
+msgstr "Pøípad \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:24
-#, fuzzy
 msgid "Case \\arabic{caseiv}."
-msgstr "Case \\arabic{case}"
+msgstr "Pøípad \\arabic{caseiv}."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -12248,7 +12240,6 @@ msgid "Apply Last Text Style|A"
 msgstr "Pou¾ít poslední Styl textu|y"
 
 #: lib/ui/stdcontext.inc:314
-#, fuzzy
 msgid "Text Style|x"
 msgstr "Styl textu|t"
 
@@ -12490,9 +12481,8 @@ msgid "Select Section|S"
 msgstr "Vybrat sekce|e"
 
 #: lib/ui/stdcontext.inc:596
-#, fuzzy
 msgid "Wrap by Preview|y"
-msgstr "Obalit náhledem (preview)"
+msgstr "Obalit náhledem (preview)|O"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -16530,7 +16520,7 @@ msgstr "Prostý text, spojit øádky"
 
 #: lib/configure.py:600
 msgid "Info (Beamer)"
-msgstr ""
+msgstr "Info (Beamer)"
 
 #: lib/configure.py:603
 msgid "Gnumeric spreadsheet"
