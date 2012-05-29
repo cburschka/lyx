@@ -767,11 +767,6 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("xargs"))
 		packages << "\\usepackage{xargs}[2008/03/08]\n";
 
-	// bibtopic -- the dot provides the aux file naming which
-	// LyX can detect.
-	if (mustProvide("bibtopic"))
-		packages << "\\usepackage[dot]{bibtopic}\n";
-
 	if (mustProvide("xy"))
 		packages << "\\usepackage[all]{xy}\n";
 

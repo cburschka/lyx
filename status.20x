@@ -124,6 +124,9 @@ What's new
 
 - Fix generation of a lyx archive when included files have spaces embedded
   in their names (bug 8164).
+  
+- Load bibtopic after hyperref, thus preventing a LaTeX error when back
+  references are used (bug 8005).
 
 
 * USER INTERFACE
