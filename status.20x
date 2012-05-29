@@ -131,7 +131,7 @@ What's new
 
 * USER INTERFACE
 
-- Fixed crash when modifying or pasting an equation label and there
+- Fix crash when modifying or pasting an equation label and there
   are references to that label in math (bug 8095).
 
 - Fix crash when clicking away in the same math inset just after hitting '\'
@@ -139,6 +139,8 @@ What's new
 
 - Fix crash when dissolving a math macro whose first argument is another
   parameterless macro (bug 8105).
+
+- Fix crash when removing all converters in preferences (bug 8178).
 
 - Update the current view after dispatching a command through the lyxserver.
   The missing screen update could cause either a failure in executing the

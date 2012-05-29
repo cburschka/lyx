@@ -1695,10 +1695,16 @@ void PrefConverters::updateButtons()
 	bool const valid = !(converterED->text().isEmpty()
 		|| from.name() == to.name());
 
-	int const cnr = convertersLW->currentItem()->type();
-	Converter const & c = form_->converters().get(cnr);
-	string const old_command = c.command;
-	string const old_flag = c.flags;
+	string old_command;
+	string old_flag;
+
+	if (convertersLW->count() > 0) {
+		int const cnr = convertersLW->currentItem()->type();
+		Converter const & c = form_->converters().get(cnr);
+		old_command = c.command;
+		old_flag = c.flags;
+	}
+
 	string const new_command = fromqstr(converterED->text());
 	string const new_flag = fromqstr(converterFlagED->text());
 
