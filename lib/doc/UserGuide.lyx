@@ -15023,9 +15023,9 @@ This file type has the extension
 
 .
  It is a file suitable for viewing in web browsers.
- It does not itself contain images and the like but only links to them,
- and when LyX produces XHTML, it also generates corresponding images in
- formats suitable for the purpose.
+ It does not itself contain images and the like but only links to them.
+ When LyX produces XHTML, it also generates corresponding images in formats
+ suitable for the purpose.
  For the math output you can choose in the menu 
 \family sans
 Document\SpecialChar \menuseparator
@@ -15103,7 +15103,7 @@ View
 \family sans
 View
 \family default
- or the toolbar button 
+ or use the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
@@ -15221,7 +15221,7 @@ You can choose to print only even-numbered or odd-numbered pages — this
 \end_layout
 
 \begin_layout Standard
-You can set the parameters in the 
+You can set the following print parameters in the 
 \family sans
 Print
 \begin_inset space ~
@@ -15229,7 +15229,7 @@ Print
 
 Destination
 \family default
- box as follows:
+ box:
 \end_layout
 
 \begin_layout Labeling
@@ -17473,7 +17473,7 @@ Graphics Dialog
 
 \begin_layout Standard
 The graphics dialog can be called at any time by clicking on an image.
- The image will appear in the output exactly at the position where it is
+ Images will appear in the output exactly at the position where they are
  in the text.
  This is an example image within a separate, horizontally centered paragraph:
  
@@ -18284,7 +18284,7 @@ one
  cell, spread over more than one column/row.
  Multicolumn cells are treated as own rows, so that the alignment, width,
  and border settings affect only the multicolumn cell.
- Here's an example table with a multicolumn cell in the first row and one
+ Here is an example table with a multicolumn cell in the first row and one
  in the last row without the upper border:
 \end_layout
 
@@ -18430,7 +18430,11 @@ D
 \begin_layout Standard
 Adept users can declare special LaTeX-arguments for the table.
  They are necessary for special table formatting, like for multirow cells,
- explained in the tables section of the 
+ explained in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -18610,8 +18614,8 @@ Objects
 \begin_layout Standard
 You can also specify a row where the table is split.
  If you set more than one option in the same table row, you should be aware
- that only the first one is used in the given table row.
- The others will then be defined as 
+ that then only the first option is used; the others will be defined as
+ 
 \emph on
 empty
 \emph default
@@ -18634,10 +18638,9 @@ First
 \begin_inset space ~
 \end_inset
 
-header.
-
+header
 \family default
- See the following longtable to see how it works:
+; see the following longtable to see how it works:
 \end_layout
 
 \begin_layout Standard
@@ -20825,8 +20828,7 @@ A table cell can contain text, inline equations, a figure, or another table.
 \family sans
 Section*
 \family default
-, etc.), nor set spacing options etc.
- for the cell's paragraph.
+, etc.), nor set spacing options for the cell's paragraph.
 \end_layout
 
 \begin_layout Standard
@@ -21150,15 +21152,15 @@ Margin
 Notes
 \family default
  are also floats, because they can float to the next page when there are
- too many notes on the page.
+ too many notes on the current page.
 \end_layout
 
 \begin_layout Standard
 Floats make it possible to get a high quality layout.
- Images and tables can be spread evenly over the pages to avoid whitespace
+ Images and tables can be distributed evenly over the pages to avoid whitespace
  and pages without text.
- As the floating often destroys the context between the text and the image/table
-, every float can be referenced in the text.
+ As the floating often destroys the spatial context between the text and
+ the image/table, every float can be referenced in the text.
  Floats are therefore numbered.
  Referencing is described in section
 \begin_inset space ~
@@ -21890,7 +21892,7 @@ name "sec:Minipages"
 LaTeX provides a mechanism to produce essentially a page within a page,
  called minipage.
  Within a minipage, all the usual rules of indentation, line wrapping, etc.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 apply.
@@ -22025,8 +22027,8 @@ This is a minipage with some stupid dummy text.
 \end_layout
 
 \begin_layout Standard
-When you right-click on a minipage box, you can change the box from a minipage
- to other box types.
+When you right-click on a minipage box, you can transform the box to another
+ box type.
  All box types and their settings are explained in detail in chapter 
 \emph on
 Boxes

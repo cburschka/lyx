@@ -8347,7 +8347,11 @@ Programm-Code-Listen
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs erklärt.
 \end_layout
@@ -15429,6 +15433,10 @@ Sie können ihr Dokument nach ASCII über das Menü
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
+
+\begin_inset Newline newline
+\end_inset
+
 Einfacher
 \begin_inset space ~
 \end_inset
@@ -15509,7 +15517,7 @@ eX
 \family default
  exportieren.
  Die verschiedenen LaTeX-Export-Varianten sind in Abschnitt
-\begin_inset space ~
+\begin_inset Newline linebreak
 \end_inset
 
 
@@ -15744,6 +15752,10 @@ Sie können ihr Dokument als PostScript über das Menü
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
+
+\begin_inset Newline newline
+\end_inset
+
 PostScript
 \family default
  exportieren.
@@ -15893,7 +15905,8 @@ PDF
 \family typewriter
 ps2pdf
 \family default
-, das ein PDF aus einer PostScript-Version Ihres Dokuments erstellt.
+, das ein PDF aus einer Post\SpecialChar \-
+Script-Version Ihres Dokuments erstellt.
  Die PostScript-Version wird vom Programm 
 \family typewriter
 dvips
@@ -16114,22 +16127,17 @@ Dieses Dateiformat hat die Endung
 \begin_inset Quotes grd
 \end_inset
 
-.
- 
-\lang english
-It is a Datei suitable für viewing in web browsers.
- It does not itself contain images und the like but nur links them, und
- when LyX produces XHTML, it auch generates corresponding images in formats
- suitable für the purpose.
- For the math output you can choose in the menu 
+ und eignet sich besonders für die Ansicht in Webbrowsern.
+ Es enthält keine Bilder, sondern verlinkt sie nur.
+ Wenn LyX XHTML erzeugt, werden Teile des Dokuments wenn nötig in Bilder
+ umgewandelt.
+ Für die Ausgabe von Mathe können Sie im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-Output
+Ausgabe
 \family default
- between different formats
-\lang ngerman
-, die in Abschnitt 
+ zwischen verschiedenen Formaten wählen, die in Abschnitt 
 \emph on
 Mathe-Ausgabe in XHTML
 \emph default
@@ -16141,7 +16149,7 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Standard
-Die XHTM-Ausgabe ist noch 
+Die XHTML-Ausgabe ist noch 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16186,33 +16194,28 @@ Dokument ! Vorschau
 \end_layout
 
 \begin_layout Standard
+Um das fertige Dokument mit allen Seitenumbrüchen, Fußnoten usw.
+\begin_inset space \space{}
+\end_inset
 
-\lang english
-To get a look at the final version of your document, with all of the page
- breaks in place, the footnotes correctly numbered, and so on, use the menu
- 
+anzusehen, verwenden Sie das Menü 
 \family sans
-View
+Ansicht
 \family default
- and choose 
+ und wählen 
 \family sans
-View
+Ansehen 
 \family default
- 
-\lang ngerman
-oder den Werkzeugleistenknopf 
+oder drücken den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
 .
- 
-\lang english
-A viewing program will pop up showing the output in the defined default
- output format, which is globally set in the preferences
-\lang ngerman
- (siehe Abschnitt
+ Es wird sich dann ein Betrachtungsprogramm öffnen und das Dokument im voreinges
+tellten Ausgabeformat anzeigen.
+ Für mehr über die globale Voreinstellung siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16223,11 +16226,7 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-) und 
-\lang english
-can also be altered for single documents in the document settings
-\lang ngerman
- (siehe Abschnitt
+ für die dokumentspezifische Einstellung siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16238,15 +16237,12 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-).
+.
  Weitere Ausgabeformate können über 
 \family sans
 Ansicht\SpecialChar \menuseparator
-
-\lang english
-Other Formats
+Andere Formate ansehen
 \family default
-\lang ngerman
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/view-others.png
@@ -16259,13 +16255,11 @@ Other Formats
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you have changed your document, you can refresh the output in the same
- viewer window using das Menü 
+Wenn Sie Ihr Dokument geändert haben, können Sie die Ansicht mit dem Menü
+ 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Update
+Aktualisieren
 \family default
  bzw.
 \begin_inset space \space{}
@@ -16274,17 +16268,15 @@ Update
 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Update (Other Formats)
+Andere Formate aktualisieren
 \family default
-.
+ aktualisieren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you preview a file, the output file is only generated in LyX's temporary
- directory.
- To have a real output, export your document.
+Beim Vorschauen eines Dokuments wird die Ausgabedatei nur in LyXs temporärem
+ Verzeichnis erzeugt.
+ Für eine permanente Ausgabe muss das Dokument exportiert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -16299,12 +16291,8 @@ name "sub:Datei-ausdrucken"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Instead of exporting your Datei und then printing it, you can auch print
- it directly from within
-\lang ngerman
- LyX.
+Statt Ihre Dokument zu exportieren und dann zu drucken, können Sie es auch
+ direkt von LyX aus drucken.
  Um eine Datei zu drucken, wählen Sie das Menü 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -16317,40 +16305,32 @@ arg   "dialog-show print"
 \end_inset
 
 .
- LyX 
-\lang english
-will internally call LaTeX to produce a DVI.
- This Datei is then processed by the program 
+ LyX ruft dann intern LaTeX auf um ein DVI zu erzeugen.
+ Diese Datei wird dann vom Programm 
 \family typewriter
 dvips
 \family default
- to PostScript-Datei, which is finally printed using the program 
+ in eine PostScript-Datei gewandelt und anschließend mit dem Programm 
 \family typewriter
 Ghostscript
 \family default
-.
- Due to these steps in the background, this method is not the fastest.
+ gedruckt.
+ Durch diese Schritte im Hintergrund ist diese Methode nicht die schnellste.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can choose to print nur gerade oder ungerade Seiten — this is useful
- für printing on two sides: You can re-insert the pages nach printing one
- set to print on the other side.
- Some printers spit out pages face-up, others, face-down.
- By choosing a particular order to print in, you can take the entire stack
- of pages out of the printer ohne needing to reorder them.
+Sie können wählen nur gerade oder ungerade Seiten zu drucken — dies ist
+ für zweiseitigen Druck ohne Duplexer nützlich: Man kann die Seiten nach
+ dem einseitigen Drucken je nach Drucker neu einlegen um anschließend die
+ Rückseite zu bedrucken.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can set the Parameter in the 
+Man kann folgende Druckparameter in der 
 \family sans
 Druckziel
 \family default
- Box as follows:
+ Box festlegen:
 \end_layout
 
 \begin_layout Labeling
@@ -16850,7 +16830,11 @@ Silbentrennung unterbinden
 
  des 
 \emph on
-EingebetteteObjekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs beschrieben.
 \end_layout
@@ -18351,41 +18335,34 @@ name "sec:Abbildungen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To insert an image in your Dokument, place the Cursor at the text position
- you want and click on the Werkzeugleiste icon 
+Um ein Bild einzufügen, setzt man den Cursor an die gewünschte Position
+ und klickt auf den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
- or select 
+ oder verwendet das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Graphics
+Grafik
 \family default
- from the menu.
- Then a dialog will appear to choose the Datei to load.
+.
+ Es erscheint dann ein Dialog in dem man das zu ladende Bild auswählt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This dialog has numerous mostly self-explanatory parameters.
- The 
+Dieser Dialog bietet eine Vielzahl an selbsterklärenden Parametern.
+ In der Karteikarte 
 \family sans
-Graphics
+Grafik
 \family default
- tab allows you to choose your image Datei.
- The image can be transformed by setting a rotation angle and a scaling
- factor.
- The scaling units are explained in Appendix
+ wählt man die Bilddatei aus.
+ Das Bild kann skaliert und rotiert werden.
+ Die Einheiten der Skalierung sind in Anhang
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18393,112 +18370,87 @@ reference "chap:In-LyX-verfügbare"
 
 \end_inset
 
-
-\lang english
-.
+ erklärt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the tab 
+In der Karteikarte 
 \family sans
-Clipping
+Ausschnitt
 \family default
- it is possible to set image coordinates to adjust the height and width
- of the image in the output.
- The coordinates can also be calculated automatically by pressing the button
- 
+ können Bildkoordinaten angegeben werden um das Bild in der Ausgabe zuzuschneide
+n.
+ Koordinaten können außerdem automatisch mit dem Knopf 
 \family sans
-Get
+Lese
 \begin_inset space ~
 \end_inset
 
-from
+aus
 \begin_inset space ~
 \end_inset
 
-file
+Datei
 \family default
-.
- The Option 
+ berechnet werden.
+ Die Option 
 \family sans
-Clip
+Auf
 \begin_inset space ~
 \end_inset
 
-to
+Begrenzungsbox
 \begin_inset space ~
 \end_inset
 
-bounding
-\begin_inset space ~
-\end_inset
-
-box
+zuschneiden
 \family default
- will only print the image region within the given coordinates.
- Normally you don't need to take care about image coordinates and can ignore
- the tab 
+ druckt nur die Bildregion innerhalb der angegebenen Koordinaten.
+ Normalerweise muss man sich nicht um Bildkoordinaten kümmern und kann die
+ Karteikarte 
 \family sans
-Clipping
+Ausschnitt 
 \family default
-.
+ignorieren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the 
+In der Karteikarte 
 \family sans
-LaTeX and LyX options
+LaTeX und LyX-Optionen
 \family default
- tab LaTeX experts can specify additional LaTeX Optionen.
- You can also specify here the appearance of the image inside LyX.
- The Option 
+ können LaTeX-Experten zusätzliche LaTeX-Optionen angeben.
+ Man kann zudem angeben wie das Bild innerhalb von LyX angezeigt wird.
+ Die Option 
 \family sans
-Draft
-\begin_inset space ~
-\end_inset
-
-mode
+Entwurfsmodus
 \family default
- has the effect that the image doesn't appear in the output, only a frame
- with the image size is printed.
- The Option 
+ hat den Effekt dass das Bild nicht in der Ausgabe erscheint, sondern nur
+ ein Rahmen in der Größe des Bildes.
+ Die Option 
 \family sans
-Don't
-\begin_inset space ~
-\end_inset
-
-unzip
-\begin_inset space ~
-\end_inset
-
-on
-\begin_inset space ~
-\end_inset
-
-export
+Beim Exportieren nicht entpacken
 \family default
- is explained in the 
+ ist im Handbuch 
 \emph on
-Embedded Objects
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
- manual in section 
+ im Abschnitt 
 \emph on
-Graphics Dialog
+Grafik-Dialog
 \emph default
-.
+ erklärt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The graphics dialog can be called at any time by clicking on an image.
- The image will appear in the output exactly at the Position where it is
- in the text.
- This is an example image within a separate, horizontally centered Absatz:
+Der Grafikdialog kann jederzeit durch Klicken auf ein Bild geöffnet werden.
+ Bilder erscheinen in der Ausgabe genau an der Stelle, an der sie sich im
+ Text befinden.
+ Dies ist ein Beispielbild in einem separaten, horizontal zentrierten Absatz:
  
 \end_layout
 
@@ -18514,12 +18466,8 @@ The graphics dialog can be called at any time by clicking on an image.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need image captions and want to reference images, you have to put
- the image into a float, see section
-\lang ngerman
-
+Wenn man Bildbeschriftungen benötigt und Bilder referenzieren will, muss
+ man das Bild in ein Gleitobjekt setzen, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -18920,8 +18868,6 @@ Portable Document Format
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PDF
 \end_layout
 
@@ -18929,7 +18875,7 @@ PDF
 
  sein.
  Wir sagen sie können, da man jedes Pixel-Grafikformat in ein PDF oder EPS
- convertieren kann und das Ergebnis trotzdem nicht skalierbar sein wird.
+ konvertieren kann und das Ergebnis trotzdem nicht skalierbar sein wird.
  In diesen Fällen wird nur ein Vorspann mit dem Bildeigenschaften zum Originalbi
 ld hinzugefügt.
 \begin_inset Foot
@@ -19040,27 +18986,25 @@ name "sec:Tabellen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can insert a table using either the Werkzeugleistenknopf 
+Man kann Tabellen entweder über den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "tabular-insert"
 \end_inset
 
- or the menu 
+ oder das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Tabelle
 \family default
-.
- A dialog will appear, asking you for the number of rows and columns.
- The default table has lines around any cell and the first row appears separated
- from the rest of the table.
- This separation appears due to a double line: The cells of the first row
- have a line below them and the cells of the second row have a line above
- them.
- Here's an example table:
+ einfügen.
+ Es erscheint dann ein Dialog, der nach der Anzahl an Spalten und Zeilen
+ fragt.
+ Die voreingestellte Tabelle besitzt Linien um jede Zelle und die erste
+ Zeile erscheint von der restlichen Tabelle etwas abgesetzt.
+ Dies kommt durch eine doppelte Linie zustande: Die Zellen der ersten Zeile
+ haben eine untere Linie und die Zellen der zweiten Zeile eine obere Linie.
+ Hier ist eine Beispieltabelle:
 \end_layout
 
 \begin_layout Standard
@@ -19248,11 +19192,14 @@ Tabellen ! -dialog
 \begin_layout Standard
 
 \lang english
-You can alter a table by clicking on it with the right mouse button, which
- brings up the table dialog.
- Here you can adjust the Einstellungen of the cell and row/column respectively
- where the Cursor is placed currently.
- Most of the dialog Optionen also work on selections.
+You can alter a Tabelle by clicking on it with the right mouse button, which
+ brings up the Tabellendialog.
+ Here you can adjust the Einstellungen of the cell and 
+\lang ngerman
+Zeile/Spalte
+\lang english
+ respectively where the Cursor is placed currently.
+ Most of the Dialogoptionen also work on selections.
  This means that if you select more cells, columns or rows the action is
  done on all of your selection.
 \end_layout
@@ -19260,30 +19207,24 @@ You can alter a table by clicking on it with the right mouse button, which
 \begin_layout Standard
 
 \lang english
-Additionally to the table dialog, the 
+Additionally to the Tabellendialog, the 
 \family sans
-table
-\begin_inset space ~
-\end_inset
-
-toolbar
+\lang ngerman
+Tabellen-Werkzeugleiste
 \family default
- helps you in setting table properties.
- It appears when the Cursor is inside a table.
+\lang english
+ helps you in setting Tabelle properties.
+ It appears when the Cursor is inside a Tabelle.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the tab 
+In der Karteikarte 
 \family sans
-Table
-\begin_inset space ~
-\end_inset
-
-Settings
+Tabellen-Einstellungen
 \family default
- of the table dialog you can set the alignment for the current row.
+ des Tabellendialogs 
+\lang english
+you can set the alignment for the current row.
  If you add a row or column, it will be inserted right beside or below the
  current cell respectively.
  The vertical alignment of a column can only be adjusted when a column width
@@ -19308,8 +19249,11 @@ reference "sub:Tabellenzellen"
 \begin_layout Standard
 
 \lang english
-You can mark multiple cells of one row/column as a multicolumn/row cell
- using the check box 
+You can mark multiple cells of one
+\lang ngerman
+ Zeile/Spalte
+\lang english
+ as a multicolumn/row cell using the check box 
 \family sans
 Multicolumn
 \family default
@@ -19322,11 +19266,15 @@ Multirow
 \emph on
 one
 \emph default
- cell, spread over more than one column/row.
+ cell, spread over more than one 
+\lang ngerman
+Zeile/Spalte
+\lang english
+.
  Multicolumn cells are treated as own rows, so that the alignment, width,
  and border Einstellungen affect only the multicolumn cell.
- Here's an example table with a multicolumn cell in the first row and one
- in the last row without the upper border:
+ Here's an example Tabelle with a multicolumn cell in the first row and
+ one in the last row without the upper border:
 \end_layout
 
 \begin_layout Standard
@@ -19460,44 +19408,43 @@ D
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Adept users can declare special LaTeX-arguments for the table.
- They are necessary for special table formatting, like for multirow cells,
- explained in the tables section of the 
+Versierte Nutzer können spezielle LaTeX-Argumente für die Tabelle angeben.
+ Diese sind für besondere Formatierungen wie Mehrfachzellen nötig, die im
+ Kapitel 
 \emph on
-Embedded
+Tabellen
+\emph default
+ des Handbuchs 
+\emph on
+Eingebettete
 \begin_inset space ~
 \end_inset
 
-Objects
+Objekte
 \emph default
- manual.
- You can also rotate the current cell or the whole table 90
+ erklärt sind.
+ Man kann außerdem die aktuelle Zelle oder die ganze Tabelle um 90
 \begin_inset space \thinspace{}
 \end_inset
 
-degrees counterclockwise.
- These rotations are not visible in LyX but in the output.
+Grad gegen den Uhrzeigersinn drehen.
+ Diese Rotationen sind in LyX nicht sichtbar, aber in der Ausgabe.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Achtung:
 \series default
- Most DVI-viewers are 
+ Viele DVI-Betrachter können 
 \emph on
-not
+keine
 \emph default
- able to display rotations.
+ Rotationen darstellen.
 \end_layout
 
 \end_inset
@@ -19506,18 +19453,16 @@ not
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+In der Karteikarte 
 \family sans
-Borders
+Rahmenlinien
 \family default
- tab allows you to add and delete border lines for the current row/column.
- The button 
+ können Linien für die aktuelle Zeile/Spalte hinzugefügt und entfernt werden.
+ Der Knopf 
 \family sans
-Default
+Festlegen
 \family default
- adds lines for all cell borders.
+ fügt Linien um alle Zellen ein.
 \end_layout
 
 \begin_layout Subsection
@@ -19535,148 +19480,134 @@ Tabellen ! lange
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the table is too long to fit on one page, you can use the Option 
+Wenn eine Tabelle zu lang ist, um auf eine Seite zu passen, können Sie im
+ Dialogfenster 
 \family sans
-Use
+Tabellen-Einstellungen
+\family default
+ auf der Karteikarte  
+\family sans
+Lange
 \begin_inset space ~
 \end_inset
 
-long
+Tabelle
+\family default
+ die Option 
+\family sans
+Lange
 \begin_inset space ~
 \end_inset
 
-table
+Tabelle
+\begin_inset space ~
+\end_inset
+
+verwenden
 \family default
- in the tab 
-\family sans
-Longtable
-\family default
- of the table dialog to split the table automatically over more pages.
- Doing this enables some check boxes and you can now define:
+ aktivieren, damit die Tabelle automatisch auf mehrere Seiten verteilt wird.
+ Wird dies gemacht, werden folgende Optionen freigeschaltet:
 \end_layout
 
 \begin_layout Description
-
+Kopfzeile: Die aktuelle Zeile wird als eine Überschrifts-Zeile aller Seiten
+ festgelegt; mit Ausnahme der ersten, wenn 
 \family sans
-\lang english
-Header
-\family default
-: The current row and all rows above, that don't have any special Optionen
- defined, are defined to be the header rows of all pages of the longtable;
- except for the first page, if 
-\family sans
-First
+Erste
 \begin_inset space ~
 \end_inset
 
-header
+Kopfzeile
 \family default
- is defined.
+ aktiviert ist.
 \end_layout
 
 \begin_layout Description
-
-\family sans
+Erste
 \lang english
-First
+
 \begin_inset space ~
 \end_inset
 
-header
-\family default
-: The current row and all rows above, that don't have any special Optionen
- defined, are defined to be the header rows of the first page of the longtable.
+
+\lang ngerman
+Kopfzeile: Die aktuelle Zeile wird als eine Überschrifts-Zeile der ersten
+ Seite einer mehrseitigen Tabelle definiert.
 \end_layout
 
 \begin_layout Description
-
+Fußzeile: Die aktuelle Zeile wird als eine Fußzeile aller Seiten festgelegt;
+ mit Ausnahme der letzten, wenn 
 \family sans
-\lang english
-Footer
-\family default
-: The current row and all rows below, that don't have any special Optionen
- defined, are defined to be the footer rows of all pages of the longtable;
- except for the last page, if 
-\family sans
-Last
+Letzte
 \begin_inset space ~
 \end_inset
 
-footer
+Fußzeile
 \family default
- is defined.
+ aktiviert ist.
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
-Last
+Letzte
 \begin_inset space ~
 \end_inset
 
-footer
-\family default
-: The current row and all rows below, that don't have any special Optionen
- defined, are defined to be the footer rows of the last page of the longtable.
+Fußzeile: Die aktuelle Zeile wird als eine die Fußzeile der letzten Seite
+ einer mehrseitigen Tabelle definiert.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Caption: The first row is reset as a single column.
- You can now insert there the table caption via the menu 
+Legende: Die aktuelle Zeile enthält die Legende.
+ Sie wird als einzelne Spalte zurückgesetzt und eine Beschriftung wird über
+ das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Caption
+Legende
 \family default
-.
- More about longtable captions can be found in the 
+ eingefügt.
+ Mehr über Beschriftungen langer Tabellen ist im Handbuch 
 \emph on
-Embedded
+Eingebettete
 \begin_inset space ~
 \end_inset
 
-Objects
+Objekte
 \emph default
- manual.
+ erklärt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also specify a row where the table is split.
- If you set more than one Option in the same table row, you should be aware
- of the fact that only the first one is used in the given table row.
- The others will then be defined as 
+Sie können zudem eine Zeile angeben, an der die Tabelle gebrochen wird.
+ Wenn Sie mehr als eine Option für eine Tabellenzeile verwenden, sollten
+ Sie sich bewusst sein, dass dann nur die erste angegebene Option verwendet
+ wird, die anderen Optionen werden als 
 \emph on
-empty
+leer
 \emph default
-.
- In this context, first means first in this order: 
+ definiert.
+ In diesem Zusammenhang bedeutet zuerst das Zuerst in dieser Reihenfolge:
+ 
 \family sans
-Footer, Last
+Fußzeile, Letzte
 \begin_inset space ~
 \end_inset
 
-footer,
+Fußzeile,
 \family default
  
 \family sans
-Header,
+Kopfzeile,
 \family default
  
 \family sans
-First
+Erste
 \begin_inset space ~
 \end_inset
 
-header.
-
+Kopfzeile
 \family default
- See the following longtable to see how it works:
+; siehe die folgende Lange Tabelle als Beispiel wie es funktioniert:
 \end_layout
 
 \begin_layout Standard
@@ -21860,27 +21791,27 @@ Tabellen ! zellen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A table cell can contain text, inline equations, a figure, or another table.
- All these kinds of objects can be placed in the same cell.
- Font sizes and shapes can also be altered.
- But you can't put a special Umgebung in a cell (like 
+Eine Tabellenzelle kann Text, eingebettete Formeln, ein Bild oder eine andere
+ Tabelle enthalten.
+ All diese Arten von Objekten können in dieselbe Zelle gepackt werden.
+ Schriftgrößen und -schnitte können ebenfalls eingestellt werden.
+ Man kann aber keine speziellen Umgebungen (wie 
 \family sans
-Section*
+Abschnitt*
 \family default
-, etc.), nor set spacing Optionen etc.
- for the cell's Absatz.
+, u.
+\begin_inset space \thinspace{}
+\end_inset
+
+Ä.) einfügen oder Ausrichtungsoptionen für den Absatz der Zelle festlegen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To have multi-line entries in table cells, you have to declare a fixed width
- for the column in the table dialog.
- Your text is then automatically split into multiple lines and the cell
- is enlarged vertically when the length of the text exceeds the given width.
- An example:
+Um mehrzeilige Einträge in Tabellenzellen zu erstellen, muss man eine feste
+ Breite für die Spalte im Tabellendialog angegeben haben.
+ Der Text wird dann automatisch in mehrere Zeilen aufgeteilt und die Zelle
+ vertikal vergrößert, wenn die angegebene Breite überschritten wird.
+ Ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -21934,7 +21865,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
 \begin_inset Text
 
 \begin_layout Plain Layout
-This is a multi-line entry in a table.
+Dies ist ein mehrzeiliger Eintrag in einer Tabelle.
 \end_layout
 
 \end_inset
@@ -21963,7 +21894,7 @@ This is a multi-line entry in a table.
 \begin_inset Text
 
 \begin_layout Plain Layout
-This is longer now.
+Dieser ist nun länger.
 \end_layout
 
 \end_inset
@@ -21992,8 +21923,8 @@ This is longer now.
 \begin_inset Text
 
 \begin_layout Plain Layout
-This is a multi-line entry in a table.
- This is longer now.
+Dies ist ein mehrzeiliger Eintrag in einer Tabelle.
+ Dieser ist nun länger.
 \end_layout
 
 \end_inset
@@ -22018,7 +21949,8 @@ This is a multi-line entry in a table.
 \begin_layout Standard
 
 \lang english
-Cutting and pasting between tables and table cells works reasonably well.
+Cutting and pasting between Tabellen und Tabellenzellen works reasonably
+ well.
  You can cut and paste even more than one row.
 \begin_inset Foot
 status open
@@ -22038,8 +21970,8 @@ Note, that you cannot paste into a multicell selection because it would
 Umschalt
 \family default
  plus the arrow keys works as usual.
- You can also copy and paste the entire table as a single unit by starting
- the selection from outside the table.
+ You can also copy and paste the entire Tabelle as a single unit by starting
+ the selection from outside the Tabelle.
 \end_layout
 
 \begin_layout Section
@@ -22068,10 +22000,8 @@ Einführung
 \end_layout
 
 \begin_layout Standard
-Ein Gleitobjekt ist ein Textblock 
-\lang english
-associated with some sort of label, which doesn't have a fixed location.
- It can 
+Ein Gleitobjekt ist ein Teil eines Dokuments, das keinen festen Platz hat.
+ Es kann eine oder mehrere Seiten vorwärts oder rückwärts 
 \begin_inset Quotes gld
 \end_inset
 
@@ -22079,9 +22009,7 @@ gleiten
 \begin_inset Quotes grd
 \end_inset
 
- forward or backward a page or two, to wherever it fits best.
-
-\lang ngerman
+, dahin wo es am besten passt.
  
 \family sans
 Fußnoten
@@ -22090,31 +22018,25 @@ Fußnoten
 \family sans
 Randnotizen
 \family default
- sind ebenfalls Gleitobjekte, da 
-\lang english
-they can float to the next page when there are too many notes on the page.
+ sind ebenfalls Gleitobjekte, da sie zur nächsten Seite gleiten falls zu
+ viele Fußnoten/Notizen auf der aktuellen Seite sind.
 \end_layout
 
 \begin_layout Standard
-Gleitobjekt
-\lang english
-e make it possible to get a high quality layout.
- Images and tables can be spread evenly over the pages to avoid whitespace
- and pages without text.
- As the floating often destroys the context between the text and the image/table
-, every 
-\lang ngerman
-Gleitobjekt
-\lang english
- can be referenced in the text.
- 
-\lang ngerman
-Gleitobjekte 
-\lang english
-are therefore numbered.
- Referencing is described in
-\lang ngerman
- Abschnitt
+Gleitobjekte ermöglichen ein qualitativ hochwertiges Layout.
+ Bilder und Tabellen können gleichmäßig über die Seiten verteilt werden
+ um Leerraum und Seiten ohne Text zu vermeiden.
+ Da das Gleiten oft den räumlichen Bezug zwischen dem Text und dem Bild
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+der Tabelle zerstört, kann jedes Gleitobjekt im Text referenziert werden.
+ Gleitobjekte sind daher nummeriert.
+ Referenzierungen/Querverweise sind Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22125,34 +22047,22 @@ reference "sec:Querverweise"
 
 \end_inset
 
-.
+ beschrieben.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To insert a 
-\lang ngerman
-Gleitobjekt
-\lang english
-, use the Menü 
+Um ein Gleitobjekt einzufügen, verwendet man das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-
-\lang ngerman
 Gleitobjekt
 \family default
-\lang english
 .
- A box with a caption that has e.
+ Eine Box mit einer Legende, die z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-the label 
+B.
+ die Beschriftung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -22164,12 +22074,10 @@ Abbildung
 \begin_inset Quotes grd
 \end_inset
 
- (# is the actual number) will be inserted into your Dokument.
- The label will automatically be translated to the Dokument language in
- the output.
- After the label you can insert the caption text.
-\lang ngerman
-
+ hat (# ist die aktuelle Nummer) wird in das Dokument eingefügt.
+ Die Beschriftung wird automatisch in der Ausgabe in die Dokumentsprache
+ übersetzt.
+ Nach der Beschriftung kann man einen Text für die Legende eingeben.
 \begin_inset Index idx
 status collapsed
 
@@ -22179,42 +22087,24 @@ Gleitobjekte ! Legende
 
 \end_inset
 
- 
-\lang english
-The image or table is inserted above or below the caption in a separate
- Absatz within the 
-\lang ngerman
-Gleitobjekt
-\lang english
-s.
- To keep your LyX-Dokument readable, you can open and close the 
-\lang ngerman
-Gleitobjekt-B
-\lang english
-ox by left-clicking on the box label.
- A closed 
-\lang ngerman
-Gleitobjekt-B
-\lang english
-ox looks like this: 
+ Das Bild oder die Tabelle wird über oder unter der Legende in einen eigenen
+ Absatz innerhalb des Gleitobjekts eingefügt.
+ Um LyX-Dokumente lesbar zu halten, können Gleitobjekt-Boxen durch Links-klicken
+ auf die Box-Beschriftung geöffnet und geschlossen werden.
+ Eine geschlossene Gleitobjekt-Box sieht wie diese aus: 
 \begin_inset Graphics
 	filename clipart/GleitobjektQt4.png
 	scale 80
 
 \end_inset
 
- – a gray button with a red label.
+ – ein grauer Knopf mit roter Beschriftung.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is recommended to insert 
-\lang ngerman
-Gleitobjekte
-\lang english
- as a separate Absatz to avoid possible LaTeX-errors that can occur when
- the surrounding text is specially formatted.
+Es wird empfohlen Gleitobjekte als separaten Absatz einzufügen um mögliche
+ LaTeX-Fehler zu vermeiden, die auftreten können, wenn der umgebende Text
+ besonders formatiert ist.
 \end_layout
 
 \begin_layout Subsection
@@ -22766,7 +22656,7 @@ Gleitobjekte ! Details
 \end_layout
 
 \begin_layout Standard
-LyX unterstützt weitere Gleitojekt-Typen und auch rotierte Gleitobjekte.
+LyX unterstützt weitere Gleitobjekt-Typen und auch rotierte Gleitobjekte.
  Des Weiteren kann das Nummerierungsschema, die Gleitobjekt-Platzierung
  und die Formatierung der Beschriftung geändert werden.
  All diese Features sind im Detail in Kapitel 
@@ -22811,7 +22701,7 @@ Minipage
 LaTeX provides a mechanism to produce essentially a page within a page,
  called minipage.
  Within a minipage, all the usual rules of indentation, line wrapping, etc.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 apply.
@@ -22870,16 +22760,18 @@ Minipages are often used for text in another language or text that needs
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
+
+\lang english
 If you place two minipages side-by-side, you can use 
 \family sans
 Horizontal Fills
 \family default
- as described in Abschnitt
+ as described
+\lang ngerman
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22923,9 +22815,13 @@ This is a minipage with some stupid dummy text.
 \end_inset
 
 
+\lang ngerman
+
 \begin_inset space \hfill{}
 \end_inset
 
+
+\lang english
 
 \begin_inset Box Frameless
 position "t"
@@ -22953,8 +22849,6 @@ This is a minipage with some stupid dummy text.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -22964,11 +22858,11 @@ This is a minipage with some stupid dummy text.
 \begin_layout Standard
 
 \lang english
-When you right-click on a minipage box, you can change the box from a minipage
- to other box types.
- 
+Klickt man mit rechts auf eine Minipage-Box, kann man die Box in einen anderen
+ Boxtyp umwandeln
 \lang ngerman
-Alle Box-Typen und ihre Einstellungen sind im Detail in Kapitel 
+.
+ Alle Box-Typen und ihre Einstellungen sind im Detail in Kapitel 
 \emph on
 Boxen
 \emph default
@@ -23020,18 +22914,18 @@ Grundlagen
 \begin_layout Standard
 
 \lang english
-To create a math formula, you can just click on the toolbar icon 
+To create a math formula, you can just click on the
 \lang ngerman
-
+ Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "math-mode on"
 \end_inset
 
-
-\lang english
 .
- That will create a little blue rectangle, with purple markers around its
+ 
+\lang english
+That will create a little blue rectangle, with purple markers around its
  corners.
  That blue rectangle is the formula itself; the purple markers indicate
  what level of nesting within the formula you are at.
@@ -23153,12 +23047,8 @@ Formel
 \end_layout
 
 \begin_layout Standard
-Sie können auf eine existierende Gleichung klicken (
-\color black
-irgendetwas
-\color inherit
-, das blau aussieht), und Sie werden automatisch Mathed aktivieren und den
- Cursor in etwa dort vorfinden, wo Sie geklickt haben.
+Sie können auf eine existierende Gleichung klicken und den Cursor in etwa
+ dort vorfinden, wo Sie geklickt haben.
  In einer existierenden Formel hat man mit den Pfeiltasten die beste Kontrolle
  über die Cursorposition.
  Mathed benutzt manchmal kleine Rechtecke um anzuzeigen, wo etwas eingefügt
@@ -26935,7 +26825,11 @@ Auf Gleitobjekte verweisen
 
  im 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuch beschrieben.
 \end_layout
@@ -35803,7 +35697,11 @@ Unterdokumente
 \emph default
  im 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuch für mehr Informationen zu diesem Thema).
  Mit diesem Menü kann man das Hauptdokument vom Unterdokument aus ansehen/öffnen.
@@ -35864,7 +35762,11 @@ Unterdokumente
 \emph default
  im 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuch für mehr Informationen zu diesem Thema).
  Dieses Menü erlaubt es, die Ansicht eines Hauptdokuments vom Unterdokument
@@ -36762,7 +36664,11 @@ Externe Dateien
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs erklärt.
 \end_layout
@@ -36800,7 +36706,11 @@ Boxen
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs erläutert.
 \end_layout
@@ -36905,7 +36815,11 @@ Beschriftungen langer Tabellen
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs beschrieben.
 \end_layout
@@ -37124,7 +37038,11 @@ Programm-Code-Listen
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs erklärt.
 \end_layout
@@ -37144,7 +37062,11 @@ Externes Material
 \emph default
  des 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuchs erklärt und auch verglichen sind.
 \end_layout
@@ -39646,7 +39568,11 @@ Werkzeugleiste ! Tabelle
 
  im 
 \emph on
-Eingebettete Objekte
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
 \emph default
  Handbuch und die Mathe-Makro Werkzeugleiste
 \begin_inset Index idx
@@ -41264,7 +41190,9 @@ Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
-Siehe Abschnitt
+Hier können Sie die Nummerierungstiefe von Abschnittsüberschriften einstellen
+ und festlegen bis zu welcher Tiefe Abschnitte im Inhaltsverzeichnis erscheinen,
+ siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -41272,20 +41200,6 @@ Siehe Abschnitt
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Nummerierung-aendern"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inhaltsverzeichnis"
-
-\end_inset
-
- und Punkt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Nummerierung"
 
 \end_inset
 
