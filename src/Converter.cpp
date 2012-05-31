@@ -99,7 +99,7 @@ Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
 	: from(f), to(t), command(c), flags(l),
 	  From(0), To(0), latex(false), xml(false),
-	  need_aux(false)
+	  need_aux(false), nice(false)
 {}
 
 
