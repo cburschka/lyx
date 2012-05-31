@@ -233,6 +233,7 @@ public:
 		UNSET_LTLASTFOOT,
 		///
 		SET_LTNEWPAGE,
+		UNSET_LTNEWPAGE,
 		///
 		TOGGLE_LTCAPTION,
 		///
