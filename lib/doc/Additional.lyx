@@ -6463,18 +6463,27 @@ Sync
 
 \end_inset
 
- select Ly
-\begin_inset ERT
+ choose 
+\begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
+custom
 \end_layout
 
 \end_inset
 
-X.
+ preset and enter command 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+/Applications/LyX.app/Contents/MacOS/lyxeditor
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
