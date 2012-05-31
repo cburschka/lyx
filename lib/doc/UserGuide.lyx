@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 431
 \begin_document
 \begin_header
 \textclass scrbook
@@ -96,15 +96,21 @@ enumitem
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch Question
@@ -3000,7 +3006,7 @@ Each class has a default set of options.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -8376,7 +8382,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8505,7 +8511,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8643,7 +8649,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9593,7 +9599,7 @@ Here comes a table:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10383,7 +10389,7 @@ Width of the different horizontal spaces.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -15357,7 +15363,7 @@ em dash
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -16724,7 +16730,7 @@ Here is an example to show the differences:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -18006,7 +18012,7 @@ Table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -18292,7 +18298,7 @@ one
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -18443,7 +18449,120 @@ Embedded
 Objects
 \emph default
  manual.
- You can also rotate the current cell or the whole table 90
+ 
+\change_inserted 5863208 1338469967
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1338469996
+The argument must contain one of the following:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470006
+l left-justified column
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470011
+c centered column
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470016
+r right-justified column
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338469985
+p{width} paragraph column with text vertically aligned at the top
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1338469985
+By default, if the text in a column is too wide for the page, LaTeX won’t
+ automatically wrap it.
+ Using p{width} you can define a special type of column which will wrap-around
+ the text as in a normal paragraph.
+ You can pass the width using any unit supported by LaTeX, such as pt and
+ cm, or command lengths, such as 
+\backslash
+textwidth.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1338469985
+Additionally it can contain, before or after the column type:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470140
+| vertical line
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470146
+|| double vertical line
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338469985
+@{...} column seperator
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1338469985
+The column seperator is particularly useful.
+ It typically takes some text as its argument, and when appended to a column,
+ it will automatically insert that text into each cell in that column before
+ the actual data for that cell.
+ This command kills the inter-column space and replaces it with whatever
+ is between the curly braces.
+ To add space, use @{
+\backslash
+hspace{width}}.
+ To remove the space entirely use @{}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1338469985
+Examples:
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470167
+"r@{}" - set text right aligned and kill the inter-column space.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338470172
+"@{}l" - set text left aligned and kill the inter-column space.
+ Typically these two are used together
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 5863208 1338469985
+"(r)" - draw every element in the column surrounded with brackets
+\end_layout
+
+\begin_layout Standard
+You can also rotate the current cell or the whole table 90
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -18647,7 +18766,7 @@ header
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -20843,7 +20962,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -21636,7 +21755,7 @@ A table float.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23223,7 +23342,7 @@ Accent names and the corresponding commands.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24604,7 +24723,7 @@ Typefaces and the corresponding commands.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -30169,7 +30288,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="30line%">
 <column alignment="center" valignment="top" width="30line%">
 <column alignment="right" valignment="top" width="30line%">
@@ -32425,7 +32544,7 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -33229,7 +33348,7 @@ latin1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -41258,7 +41377,7 @@ Embedded Objects
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -41305,7 +41424,7 @@ pull-down box for the environments
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -42015,7 +42134,7 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -42873,7 +42992,7 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -48010,7 +48129,7 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>

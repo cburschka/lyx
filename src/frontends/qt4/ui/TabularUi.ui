@@ -1,87 +1,86 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
+<ui version="4.0" >
  <class>TabularUi</class>
- <widget class="QWidget" name="TabularUi">
-  <property name="geometry">
+ <widget class="QWidget" name="TabularUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
     <width>497</width>
-    <height>402</height>
+    <height>427</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string/>
   </property>
-  <property name="sizeGripEnabled" stdset="0">
+  <property name="sizeGripEnabled" stdset="0" >
    <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_9">
-   <property name="margin">
+  <layout class="QGridLayout" name="gridLayout_9" >
+   <property name="margin" >
     <number>0</number>
    </property>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="_3">
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" name="_3" >
      <item>
-      <widget class="QLabel" name="TextLabel1">
-       <property name="text">
+      <widget class="QLabel" name="TextLabel1" >
+       <property name="text" >
         <string>Current cell:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tabularRowED">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <widget class="QLineEdit" name="tabularRowED" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
+       <property name="maximumSize" >
         <size>
          <width>40</width>
          <height>32767</height>
         </size>
        </property>
-       <property name="focusPolicy">
+       <property name="focusPolicy" >
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="toolTip">
+       <property name="toolTip" >
         <string>Current row position</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tabularColumnED">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <widget class="QLineEdit" name="tabularColumnED" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
+       <property name="maximumSize" >
         <size>
          <width>40</width>
          <height>32767</height>
         </size>
        </property>
-       <property name="focusPolicy">
+       <property name="focusPolicy" >
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="toolTip">
+       <property name="toolTip" >
         <string>Current column position</string>
        </property>
       </widget>
      </item>
      <item>
       <spacer>
-       <property name="orientation">
+       <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType">
+       <property name="sizeType" >
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0">
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>20</width>
          <height>20</height>
@@ -91,333 +90,133 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <widget class="QTabWidget" name="TabWidget">
-     <property name="toolTip">
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="TabWidget" >
+     <property name="toolTip" >
       <string/>
      </property>
-     <property name="tabShape">
+     <property name="tabShape" >
       <enum>QTabWidget::Rounded</enum>
      </property>
-     <property name="currentIndex">
+     <property name="currentIndex" >
       <number>0</number>
      </property>
-     <widget class="QWidget" name="Settings">
-      <attribute name="title">
+     <widget class="QWidget" name="Settings" >
+      <attribute name="title" >
        <string>&amp;Table Settings</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_10">
-       <item row="0" column="0" colspan="2">
-        <widget class="QGroupBox" name="GroupBox12">
-         <property name="title">
-          <string>Column settings</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="hAlignLA">
-            <property name="text">
-             <string>&amp;Horizontal alignment:</string>
-            </property>
-            <property name="buddy">
-             <cstring>hAlignCO</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="hAlignCO">
-            <property name="toolTip">
-             <string>Horizontal alignment in column</string>
-            </property>
-            <property name="sizeAdjustPolicy">
-             <enum>QComboBox::AdjustToContents</enum>
-            </property>
-            <item>
-             <property name="text">
-              <string>Justified</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Left</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Center</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Right</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>At Decimal Separator</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>4</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="3" colspan="2">
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QLabel" name="decimalLA">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>&amp;Decimal separator:</string>
-              </property>
-              <property name="buddy">
-               <cstring>decimalPointED</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="decimalPointED">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>20</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="inputMask">
-               <string/>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="maxLength">
-               <number>32767</number>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="columnWidthLA">
-            <property name="text">
-             <string>&amp;Width:</string>
-            </property>
-            <property name="buddy">
-             <cstring>columnWidthED</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="3">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLineEdit" name="columnWidthED">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="toolTip">
-               <string>Fixed width of the column</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="LengthCombo" name="columnWidthUnitLC"/>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="4">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>109</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="vAlignLA">
-            <property name="text">
-             <string>&amp;Vertical alignment in row:</string>
-            </property>
-            <property name="buddy">
-             <cstring>vAlignCO</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="vAlignCO">
-            <property name="toolTip">
-             <string>Specifies the vertical alignment of this cell in relation to the baseline of the row.</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>Top</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Middle</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Bottom</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="multicolumnCB">
-            <property name="toolTip">
-             <string>Merge cells of different columns</string>
-            </property>
-            <property name="text">
-             <string>&amp;Multicolumn</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
+      <layout class="QGridLayout" name="gridLayout_10" >
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
           <string>Row setting</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="multirowCB">
-            <property name="toolTip">
+         <layout class="QGridLayout" name="gridLayout_6" >
+          <item row="0" column="0" >
+           <widget class="QCheckBox" name="multirowCB" >
+            <property name="toolTip" >
              <string>Merge cells of different rows</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>M&amp;ultirow</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
-             <widget class="QLabel" name="multirowOffsetLA">
-              <property name="toolTip">
+          <item row="1" column="0" >
+           <layout class="QGridLayout" name="gridLayout_3" >
+            <item row="0" column="0" >
+             <widget class="QLabel" name="multirowOffsetLA" >
+              <property name="toolTip" >
                <string/>
               </property>
-              <property name="text">
+              <property name="text" >
                <string>&amp;Vertical Offset:</string>
               </property>
-              <property name="buddy">
+              <property name="buddy" >
                <cstring>multirowOffsetED</cstring>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="multirowOffsetED">
-              <property name="enabled">
+            <item row="0" column="1" >
+             <widget class="QLineEdit" name="multirowOffsetED" >
+              <property name="enabled" >
                <bool>true</bool>
               </property>
-              <property name="toolTip">
+              <property name="toolTip" >
                <string>Optional vertical offset</string>
               </property>
-              <property name="text">
+              <property name="text" >
                <string/>
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="LengthCombo" name="multirowOffsetUnitLC"/>
+            <item row="0" column="2" >
+             <widget class="LengthCombo" name="multirowOffsetUnitLC" />
             </item>
            </layout>
           </item>
          </layout>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
+       <item row="1" column="1" >
+        <widget class="QGroupBox" name="groupBox_2" >
+         <property name="title" >
           <string>Cell setting</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QGridLayout" name="gridLayout_5" >
+          <item row="0" column="0" >
+           <layout class="QHBoxLayout" name="horizontalLayout_3" >
             <item>
-             <widget class="QCheckBox" name="rotateCellCB">
-              <property name="toolTip">
+             <widget class="QCheckBox" name="rotateCellCB" >
+              <property name="toolTip" >
                <string>Rotate this cell by 90 degrees</string>
               </property>
-              <property name="text">
+              <property name="text" >
                <string>Rotate</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="rotateCellAngleSB">
-              <property name="maximumSize">
+             <widget class="QSpinBox" name="rotateCellAngleSB" >
+              <property name="maximumSize" >
                <size>
                 <width>51</width>
                 <height>20</height>
                </size>
               </property>
-              <property name="toolTip">
+              <property name="toolTip" >
                <string>rotation angle</string>
               </property>
-              <property name="minimum">
+              <property name="minimum" >
                <number>-180</number>
               </property>
-              <property name="maximum">
+              <property name="maximum" >
                <number>180</number>
               </property>
-              <property name="singleStep">
+              <property name="singleStep" >
                <number>5</number>
               </property>
-              <property name="value">
+              <property name="value" >
                <number>90</number>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="rotateCellLA">
-              <property name="text">
+             <widget class="QLabel" name="rotateCellLA" >
+              <property name="text" >
                <string>degrees</string>
               </property>
-              <property name="buddy">
+              <property name="buddy" >
                <cstring>rotateCellAngleSB</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
+             <spacer name="horizontalSpacer_3" >
+              <property name="orientation" >
                <enum>Qt::Horizontal</enum>
               </property>
-              <property name="sizeHint" stdset="0">
+              <property name="sizeHint" stdset="0" >
                <size>
                 <width>13</width>
                 <height>41</height>
@@ -430,75 +229,75 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QGroupBox" name="tabAlignmentGB">
-         <property name="enabled">
+       <item row="2" column="0" colspan="2" >
+        <widget class="QGroupBox" name="tabAlignmentGB" >
+         <property name="enabled" >
           <bool>true</bool>
          </property>
-         <property name="title">
+         <property name="title" >
           <string>Table-wide settings</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="tabularWidthLA">
-            <property name="text">
+         <layout class="QGridLayout" name="gridLayout_4" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="tabularWidthLA" >
+            <property name="text" >
              <string>W&amp;idth:</string>
             </property>
-            <property name="buddy">
+            <property name="buddy" >
              <cstring>tabularWidthED</cstring>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="tabularWidthED"/>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="tabularWidthED" />
           </item>
-          <item row="0" column="2">
-           <widget class="LengthCombo" name="tabularWidthUnitLC"/>
+          <item row="0" column="2" >
+           <widget class="LengthCombo" name="tabularWidthUnitLC" />
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="TableAlignLA">
-            <property name="text">
+          <item row="1" column="0" >
+           <widget class="QLabel" name="TableAlignLA" >
+            <property name="text" >
              <string>Verti&amp;cal alignment:</string>
             </property>
-            <property name="buddy">
+            <property name="buddy" >
              <cstring>TableAlignCO</cstring>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="TableAlignCO">
-            <property name="toolTip">
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="TableAlignCO" >
+            <property name="toolTip" >
              <string>Vertical alignment of the table</string>
             </property>
-            <property name="currentIndex">
+            <property name="currentIndex" >
              <number>1</number>
             </property>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Top</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Middle</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Bottom</string>
              </property>
             </item>
            </widget>
           </item>
-          <item row="1" column="2">
-           <spacer name="spacer_2">
-            <property name="orientation">
+          <item row="1" column="2" >
+           <spacer name="spacer_2" >
+            <property name="orientation" >
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeType">
+            <property name="sizeType" >
              <enum>QSizePolicy::Expanding</enum>
             </property>
-            <property name="sizeHint" stdset="0">
+            <property name="sizeHint" stdset="0" >
              <size>
               <width>153</width>
               <height>20</height>
@@ -506,52 +305,52 @@
             </property>
            </spacer>
           </item>
-          <item row="1" column="3">
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item row="1" column="3" >
+           <layout class="QHBoxLayout" name="horizontalLayout_4" >
             <item>
-             <widget class="QCheckBox" name="rotateTabularCB">
-              <property name="enabled">
+             <widget class="QCheckBox" name="rotateTabularCB" >
+              <property name="enabled" >
                <bool>true</bool>
               </property>
-              <property name="toolTip">
+              <property name="toolTip" >
                <string>Rotate the table by 90 degrees</string>
               </property>
-              <property name="text">
+              <property name="text" >
                <string>&amp;Rotate</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="rotateTabularAngleSB">
-              <property name="maximumSize">
+             <widget class="QSpinBox" name="rotateTabularAngleSB" >
+              <property name="maximumSize" >
                <size>
                 <width>51</width>
                 <height>20</height>
                </size>
               </property>
-              <property name="toolTip">
+              <property name="toolTip" >
                <string>rotation angle</string>
               </property>
-              <property name="minimum">
+              <property name="minimum" >
                <number>-180</number>
               </property>
-              <property name="maximum">
+              <property name="maximum" >
                <number>180</number>
               </property>
-              <property name="singleStep">
+              <property name="singleStep" >
                <number>5</number>
               </property>
-              <property name="value">
+              <property name="value" >
                <number>90</number>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="rotateTabularLA">
-              <property name="text">
+             <widget class="QLabel" name="rotateTabularLA" >
+              <property name="text" >
                <string>degrees</string>
               </property>
-              <property name="buddy">
+              <property name="buddy" >
                <cstring>rotateTabularAngleSB</cstring>
               </property>
              </widget>
@@ -561,194 +360,397 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="specialAlignmentLA">
-         <property name="text">
-          <string>LaTe&amp;X argument:</string>
+       <item row="0" column="0" colspan="2" >
+        <widget class="QGroupBox" name="GroupBox12" >
+         <property name="title" >
+          <string>Column settings</string>
          </property>
-         <property name="buddy">
-          <cstring>specialAlignmentED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="specialAlignmentED">
-         <property name="toolTip">
-          <string>Custom column format (LaTeX)</string>
-         </property>
+         <layout class="QGridLayout" name="gridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="hAlignLA" >
+            <property name="text" >
+             <string>&amp;Horizontal alignment:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>hAlignCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QComboBox" name="hAlignCO" >
+            <property name="toolTip" >
+             <string>Horizontal alignment in column</string>
+            </property>
+            <property name="sizeAdjustPolicy" >
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+            <item>
+             <property name="text" >
+              <string>Justified</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Left</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Center</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Right</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>At Decimal Separator</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="2" >
+           <spacer name="horizontalSpacer" >
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>4</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="3" colspan="2" >
+           <layout class="QHBoxLayout" name="horizontalLayout" >
+            <item>
+             <widget class="QLabel" name="decimalLA" >
+              <property name="enabled" >
+               <bool>false</bool>
+              </property>
+              <property name="text" >
+               <string>&amp;Decimal separator:</string>
+              </property>
+              <property name="buddy" >
+               <cstring>decimalPointED</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="decimalPointED" >
+              <property name="enabled" >
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize" >
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="inputMask" >
+               <string/>
+              </property>
+              <property name="text" >
+               <string/>
+              </property>
+              <property name="maxLength" >
+               <number>32767</number>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="columnWidthLA" >
+            <property name="text" >
+             <string>&amp;Width:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>columnWidthED</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="3" >
+           <layout class="QHBoxLayout" name="horizontalLayout_2" >
+            <item>
+             <widget class="QLineEdit" name="columnWidthED" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+              <property name="toolTip" >
+               <string>Fixed width of the column</string>
+              </property>
+              <property name="text" >
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="LengthCombo" name="columnWidthUnitLC" />
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="4" >
+           <spacer name="horizontalSpacer_2" >
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>109</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="vAlignLA" >
+            <property name="text" >
+             <string>&amp;Vertical alignment in row:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>vAlignCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QComboBox" name="vAlignCO" >
+            <property name="toolTip" >
+             <string>Specifies the vertical alignment of this cell in relation to the baseline of the row.</string>
+            </property>
+            <item>
+             <property name="text" >
+              <string>Top</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Middle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>Bottom</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QCheckBox" name="multicolumnCB" >
+            <property name="toolTip" >
+             <string>Merge cells of different columns</string>
+            </property>
+            <property name="text" >
+             <string>&amp;Multicolumn</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" >
+           <widget class="QLabel" name="specialAlignmentLA" >
+            <property name="text" >
+             <string>LaTe&amp;X argument:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>specialAlignmentED</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" >
+           <widget class="QLineEdit" name="specialAlignmentED" >
+            <property name="toolTip" >
+             <string>Custom column format (LaTeX)</string>
+            </property>
+            <property name="whatsThis" >
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Borders">
-      <attribute name="title">
+     <widget class="QWidget" name="Borders" >
+      <attribute name="title" >
        <string>&amp;Borders</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8">
-       <item row="0" column="0">
-        <widget class="QGroupBox" name="setBordersGB">
-         <property name="title">
+      <layout class="QGridLayout" name="gridLayout_8" >
+       <item row="0" column="0" >
+        <widget class="QGroupBox" name="setBordersGB" >
+         <property name="title" >
           <string>Set Borders</string>
          </property>
-         <layout class="QGridLayout">
-          <item row="0" column="0">
-           <widget class="QFrame" name="bordersF">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QFrame" name="bordersF" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="palette">
+            <property name="palette" >
              <palette>
               <active>
-               <colorrole role="WindowText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="WindowText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Button">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Button" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>230</red>
                   <green>240</green>
                   <blue>249</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Light">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Light" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Midlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Midlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>242</red>
                   <green>247</green>
                   <blue>252</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Dark">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Dark" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>115</red>
                   <green>120</green>
                   <blue>124</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Mid">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Mid" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>154</red>
                   <green>160</green>
                   <blue>166</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Text">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Text" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="BrightText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="BrightText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="ButtonText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="ButtonText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Base">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Base" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Window">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Window" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Shadow">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Shadow" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Highlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Highlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>16</red>
                   <green>145</green>
                   <blue>210</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="HighlightedText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="HighlightedText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Link">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Link" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="LinkVisited">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="LinkVisited" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="AlternateBase">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="AlternateBase" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>232</red>
                   <green>232</green>
                   <blue>232</blue>
@@ -757,153 +759,153 @@
                </colorrole>
               </active>
               <inactive>
-               <colorrole role="WindowText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="WindowText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Button">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Button" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>230</red>
                   <green>240</green>
                   <blue>249</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Light">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Light" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Midlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Midlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Dark">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Dark" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>115</red>
                   <green>120</green>
                   <blue>124</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Mid">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Mid" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>154</red>
                   <green>160</green>
                   <blue>166</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Text">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Text" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="BrightText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="BrightText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="ButtonText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="ButtonText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Base">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Base" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Window">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Window" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Shadow">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Shadow" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Highlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Highlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>16</red>
                   <green>145</green>
                   <blue>210</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="HighlightedText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="HighlightedText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Link">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Link" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="LinkVisited">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="LinkVisited" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="AlternateBase">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="AlternateBase" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>232</red>
                   <green>232</green>
                   <blue>232</blue>
@@ -912,153 +914,153 @@
                </colorrole>
               </inactive>
               <disabled>
-               <colorrole role="WindowText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="WindowText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>128</red>
                   <green>128</green>
                   <blue>128</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Button">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Button" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>230</red>
                   <green>240</green>
                   <blue>249</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Light">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Light" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Midlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Midlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Dark">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Dark" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>115</red>
                   <green>120</green>
                   <blue>124</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Mid">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Mid" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>154</red>
                   <green>160</green>
                   <blue>166</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Text">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Text" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="BrightText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="BrightText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="ButtonText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="ButtonText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>128</red>
                   <green>128</green>
                   <blue>128</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Base">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Base" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Window">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Window" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Shadow">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Shadow" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>0</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Highlight">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Highlight" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>16</red>
                   <green>145</green>
                   <blue>210</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="HighlightedText">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="HighlightedText" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>255</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="Link">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="Link" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>0</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="LinkVisited">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="LinkVisited" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>255</red>
                   <green>0</green>
                   <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
-               <colorrole role="AlternateBase">
-                <brush brushstyle="SolidPattern">
-                 <color alpha="255">
+               <colorrole role="AlternateBase" >
+                <brush brushstyle="SolidPattern" >
+                 <color alpha="255" >
                   <red>232</red>
                   <green>232</green>
                   <blue>232</blue>
@@ -1068,22 +1070,22 @@
               </disabled>
              </palette>
             </property>
-            <property name="frameShape">
+            <property name="frameShape" >
              <enum>QFrame::StyledPanel</enum>
             </property>
-            <property name="frameShadow">
+            <property name="frameShadow" >
              <enum>QFrame::Sunken</enum>
             </property>
-            <layout class="QGridLayout">
-             <item row="0" column="0">
-              <widget class="GuiSetBorder" name="borders" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <layout class="QGridLayout" >
+             <item row="0" column="0" >
+              <widget class="GuiSetBorder" native="1" name="borders" >
+               <property name="sizePolicy" >
+                <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
-               <property name="toolTip">
+               <property name="toolTip" >
                 <string>Set borders of the current (selected) cell(s)</string>
                </property>
               </widget>
@@ -1094,28 +1096,28 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QGroupBox" name="allBordersGB">
-         <property name="title">
+       <item row="0" column="1" >
+        <widget class="QGroupBox" name="allBordersGB" >
+         <property name="title" >
           <string>All Borders</string>
          </property>
-         <layout class="QGridLayout">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="borderSetPB">
-            <property name="toolTip">
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QPushButton" name="borderSetPB" >
+            <property name="toolTip" >
              <string>Set all borders of the current (selected) cell(s)</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>&amp;Set</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="borderUnsetPB">
-            <property name="toolTip">
+          <item row="1" column="0" >
+           <widget class="QPushButton" name="borderUnsetPB" >
+            <property name="toolTip" >
              <string>Unset all borders of the current (selected) cell(s)</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>C&amp;lear</string>
             </property>
            </widget>
@@ -1123,31 +1125,31 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QGroupBox" name="borderStyleGB">
-         <property name="title">
+       <item row="0" column="2" >
+        <widget class="QGroupBox" name="borderStyleGB" >
+         <property name="title" >
           <string>Style</string>
          </property>
-         <layout class="QGridLayout">
-          <item row="1" column="0">
-           <widget class="QRadioButton" name="booktabsRB">
-            <property name="toolTip">
+         <layout class="QGridLayout" >
+          <item row="1" column="0" >
+           <widget class="QRadioButton" name="booktabsRB" >
+            <property name="toolTip" >
              <string>Use formal (a.k.a. booktabs) border style (no vertical borders)</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>Fo&amp;rmal</string>
             </property>
-            <property name="checked">
+            <property name="checked" >
              <bool>true</bool>
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="borderDefaultRB">
-            <property name="toolTip">
+          <item row="0" column="0" >
+           <widget class="QRadioButton" name="borderDefaultRB" >
+            <property name="toolTip" >
              <string>Use default (grid-like) border style</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>De&amp;fault</string>
             </property>
            </widget>
@@ -1155,15 +1157,15 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="3">
+       <item row="0" column="3" >
         <spacer>
-         <property name="orientation">
+         <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeType">
+         <property name="sizeType" >
           <enum>QSizePolicy::Expanding</enum>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>63</width>
            <height>20</height>
@@ -1171,126 +1173,126 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" colspan="4">
-        <widget class="QGroupBox" name="SpaceGB">
-         <property name="title">
+       <item row="1" column="0" colspan="4" >
+        <widget class="QGroupBox" name="SpaceGB" >
+         <property name="title" >
           <string>Additional Space</string>
          </property>
-         <layout class="QGridLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="topspaceLA">
-            <property name="text">
+         <layout class="QGridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="topspaceLA" >
+            <property name="text" >
              <string>T&amp;op of row:</string>
             </property>
-            <property name="buddy">
+            <property name="buddy" >
              <cstring>topspaceCO</cstring>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QLineEdit" name="topspaceED"/>
+          <item row="0" column="2" >
+           <widget class="QLineEdit" name="topspaceED" />
           </item>
-          <item row="0" column="3">
-           <widget class="LengthCombo" name="topspaceUnitLC"/>
+          <item row="0" column="3" >
+           <widget class="LengthCombo" name="topspaceUnitLC" />
           </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="topspaceCO">
+          <item row="0" column="1" >
+           <widget class="QComboBox" name="topspaceCO" >
             <item>
-             <property name="text">
+             <property name="text" >
               <string>None</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Default</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Custom</string>
              </property>
             </item>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="bottomspaceCO">
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="bottomspaceCO" >
             <item>
-             <property name="text">
+             <property name="text" >
               <string>None</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Default</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Custom</string>
              </property>
             </item>
            </widget>
           </item>
-          <item row="1" column="3">
-           <widget class="LengthCombo" name="bottomspaceUnitLC"/>
+          <item row="1" column="3" >
+           <widget class="LengthCombo" name="bottomspaceUnitLC" />
           </item>
-          <item row="1" column="2">
-           <widget class="QLineEdit" name="bottomspaceED"/>
+          <item row="1" column="2" >
+           <widget class="QLineEdit" name="bottomspaceED" />
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="bottomspaceLA">
-            <property name="text">
+          <item row="1" column="0" >
+           <widget class="QLabel" name="bottomspaceLA" >
+            <property name="text" >
              <string>Botto&amp;m of row:</string>
             </property>
-            <property name="buddy">
+            <property name="buddy" >
              <cstring>bottomspaceCO</cstring>
             </property>
            </widget>
           </item>
-          <item row="2" column="2">
-           <widget class="QLineEdit" name="interlinespaceED"/>
+          <item row="2" column="2" >
+           <widget class="QLineEdit" name="interlinespaceED" />
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="interlinespaceLA">
-            <property name="text">
+          <item row="2" column="0" >
+           <widget class="QLabel" name="interlinespaceLA" >
+            <property name="text" >
              <string>Bet&amp;ween rows:</string>
             </property>
-            <property name="buddy">
+            <property name="buddy" >
              <cstring>interlinespaceCO</cstring>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="interlinespaceCO">
+          <item row="2" column="1" >
+           <widget class="QComboBox" name="interlinespaceCO" >
             <item>
-             <property name="text">
+             <property name="text" >
               <string>None</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Default</string>
              </property>
             </item>
             <item>
-             <property name="text">
+             <property name="text" >
               <string>Custom</string>
              </property>
             </item>
            </widget>
           </item>
-          <item row="2" column="3">
-           <widget class="LengthCombo" name="interlinespaceUnitLC"/>
+          <item row="2" column="3" >
+           <widget class="LengthCombo" name="interlinespaceUnitLC" />
           </item>
          </layout>
         </widget>
        </item>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
+       <item row="2" column="1" >
+        <spacer name="verticalSpacer_2" >
+         <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
            <height>90</height>
@@ -1300,231 +1302,231 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Longtables">
-      <attribute name="title">
+     <widget class="QWidget" name="Longtables" >
+      <attribute name="title" >
        <string>&amp;Longtable</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_7">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="longTabularCB">
-         <property name="toolTip">
+      <layout class="QGridLayout" name="gridLayout_7" >
+       <item row="0" column="0" >
+        <widget class="QCheckBox" name="longTabularCB" >
+         <property name="toolTip" >
           <string>Select for tables that span multiple pages</string>
          </property>
-         <property name="text">
+         <property name="text" >
           <string>&amp;Use long table</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="longtableGB">
-         <property name="enabled">
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="longtableGB" >
+         <property name="enabled" >
           <bool>false</bool>
          </property>
-         <property name="title">
+         <property name="title" >
           <string>Row settings</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="1">
-           <widget class="QLabel" name="StatusLA">
-            <property name="text">
+         <layout class="QGridLayout" name="gridLayout_2" >
+          <item row="0" column="1" >
+           <widget class="QLabel" name="StatusLA" >
+            <property name="text" >
              <string>Status</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="BorderAboveLA">
-            <property name="text">
+          <item row="0" column="2" >
+           <widget class="QLabel" name="BorderAboveLA" >
+            <property name="text" >
              <string>Border above</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="BorderBelowLA">
-            <property name="text">
+          <item row="0" column="3" >
+           <widget class="QLabel" name="BorderBelowLA" >
+            <property name="text" >
              <string>Border below</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="4">
-           <widget class="QLabel" name="ContentsLA">
-            <property name="text">
+          <item row="0" column="4" >
+           <widget class="QLabel" name="ContentsLA" >
+            <property name="text" >
              <string>Contents</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="HeaderLA">
-            <property name="text">
+          <item row="1" column="0" >
+           <widget class="QLabel" name="HeaderLA" >
+            <property name="text" >
              <string>Header:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="headerStatusCB">
-            <property name="toolTip">
+          <item row="1" column="1" >
+           <widget class="QCheckBox" name="headerStatusCB" >
+            <property name="toolTip" >
              <string>Repeat this row as header on every (except the first) page</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>on</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
-           <widget class="QCheckBox" name="headerBorderAboveCB">
-            <property name="toolTip">
+          <item row="1" column="2" >
+           <widget class="QCheckBox" name="headerBorderAboveCB" >
+            <property name="toolTip" >
              <string/>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="3">
-           <widget class="QCheckBox" name="headerBorderBelowCB">
-            <property name="text">
+          <item row="1" column="3" >
+           <widget class="QCheckBox" name="headerBorderBelowCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="FirstHeaderLA">
-            <property name="text">
+          <item row="2" column="0" >
+           <widget class="QLabel" name="FirstHeaderLA" >
+            <property name="text" >
              <string>First header:</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="firstheaderStatusCB">
-            <property name="toolTip">
+          <item row="2" column="1" >
+           <widget class="QCheckBox" name="firstheaderStatusCB" >
+            <property name="toolTip" >
              <string>This row is the header of the first page</string>
             </property>
-            <property name="whatsThis">
+            <property name="whatsThis" >
              <string/>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>on</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="2">
-           <widget class="QCheckBox" name="firstheaderBorderAboveCB">
-            <property name="text">
+          <item row="2" column="2" >
+           <widget class="QCheckBox" name="firstheaderBorderAboveCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="3">
-           <widget class="QCheckBox" name="firstheaderBorderBelowCB">
-            <property name="text">
+          <item row="2" column="3" >
+           <widget class="QCheckBox" name="firstheaderBorderBelowCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="4">
-           <widget class="QCheckBox" name="firstheaderNoContentsCB">
-            <property name="toolTip">
+          <item row="2" column="4" >
+           <widget class="QCheckBox" name="firstheaderNoContentsCB" >
+            <property name="toolTip" >
              <string>Don't output the first header</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>is empty</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="FooterLA">
-            <property name="text">
+          <item row="3" column="0" >
+           <widget class="QLabel" name="FooterLA" >
+            <property name="text" >
              <string>Footer:</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="footerStatusCB">
-            <property name="toolTip">
+          <item row="3" column="1" >
+           <widget class="QCheckBox" name="footerStatusCB" >
+            <property name="toolTip" >
              <string>Repeat this row as footer on every (except the last) page</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>on</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="2">
-           <widget class="QCheckBox" name="footerBorderAboveCB">
-            <property name="text">
+          <item row="3" column="2" >
+           <widget class="QCheckBox" name="footerBorderAboveCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="3">
-           <widget class="QCheckBox" name="footerBorderBelowCB">
-            <property name="text">
+          <item row="3" column="3" >
+           <widget class="QCheckBox" name="footerBorderBelowCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="LastFooterLA">
-            <property name="text">
+          <item row="4" column="0" >
+           <widget class="QLabel" name="LastFooterLA" >
+            <property name="text" >
              <string>Last footer:</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="lastfooterStatusCB">
-            <property name="toolTip">
+          <item row="4" column="1" >
+           <widget class="QCheckBox" name="lastfooterStatusCB" >
+            <property name="toolTip" >
              <string>This row is the footer of the last page</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>on</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="2">
-           <widget class="QCheckBox" name="lastfooterBorderAboveCB">
-            <property name="text">
+          <item row="4" column="2" >
+           <widget class="QCheckBox" name="lastfooterBorderAboveCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="3">
-           <widget class="QCheckBox" name="lastfooterBorderBelowCB">
-            <property name="text">
+          <item row="4" column="3" >
+           <widget class="QCheckBox" name="lastfooterBorderBelowCB" >
+            <property name="text" >
              <string>double</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="4">
-           <widget class="QCheckBox" name="lastfooterNoContentsCB">
-            <property name="toolTip">
+          <item row="4" column="4" >
+           <widget class="QCheckBox" name="lastfooterNoContentsCB" >
+            <property name="toolTip" >
              <string>Don't output the last footer</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>is empty</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
+          <item row="5" column="0" >
+           <widget class="QLabel" name="label" >
+            <property name="text" >
              <string>Caption:</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="captionStatusCB">
-            <property name="text">
+          <item row="5" column="1" >
+           <widget class="QCheckBox" name="captionStatusCB" >
+            <property name="text" >
              <string>on</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0" colspan="3">
-           <widget class="QCheckBox" name="newpageCB">
-            <property name="enabled">
+          <item row="6" column="0" colspan="3" >
+           <widget class="QCheckBox" name="newpageCB" >
+            <property name="enabled" >
              <bool>false</bool>
             </property>
-            <property name="toolTip">
+            <property name="toolTip" >
              <string>Set a page break on the current row</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>Page &amp;break on current row</string>
             </property>
            </widget>
@@ -1532,38 +1534,38 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QGroupBox" name="alignmentGB">
-         <property name="enabled">
+       <item row="2" column="0" >
+        <widget class="QGroupBox" name="alignmentGB" >
+         <property name="enabled" >
           <bool>false</bool>
          </property>
-         <property name="toolTip">
+         <property name="toolTip" >
           <string>Horizontal alignment of the longtable</string>
          </property>
-         <property name="title">
+         <property name="title" >
           <string>Longtable alignment</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout9">
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="leftRB">
-            <property name="text">
+         <layout class="QGridLayout" name="gridLayout9" >
+          <item row="0" column="0" >
+           <widget class="QRadioButton" name="leftRB" >
+            <property name="text" >
              <string>Left</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="centerRB">
-            <property name="text">
+          <item row="0" column="1" >
+           <widget class="QRadioButton" name="centerRB" >
+            <property name="text" >
              <string>Center</string>
             </property>
-            <property name="checked">
+            <property name="checked" >
              <bool>true</bool>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QRadioButton" name="rightRB">
-            <property name="text">
+          <item row="0" column="2" >
+           <widget class="QRadioButton" name="rightRB" >
+            <property name="text" >
              <string>Right</string>
             </property>
            </widget>
@@ -1571,12 +1573,12 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
+       <item row="3" column="0" >
+        <spacer name="verticalSpacer" >
+         <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>20</width>
            <height>91</height>
@@ -1603,13 +1605,13 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>TabWidget</tabstop>
   <tabstop>hAlignCO</tabstop>
   <tabstop>decimalPointED</tabstop>
   <tabstop>columnWidthED</tabstop>
   <tabstop>columnWidthUnitLC</tabstop>
   <tabstop>vAlignCO</tabstop>
   <tabstop>multicolumnCB</tabstop>
+  <tabstop>specialAlignmentED</tabstop>
   <tabstop>multirowCB</tabstop>
   <tabstop>multirowOffsetED</tabstop>
   <tabstop>multirowOffsetUnitLC</tabstop>
@@ -1619,8 +1621,7 @@
   <tabstop>tabularWidthUnitLC</tabstop>
   <tabstop>TableAlignCO</tabstop>
   <tabstop>rotateTabularCB</tabstop>
-  <tabstop>specialAlignmentED</tabstop>
-  <tabstop>borderSetPB</tabstop>
+  <tabstop>rotateTabularAngleSB</tabstop>
   <tabstop>borderDefaultRB</tabstop>
   <tabstop>borderUnsetPB</tabstop>
   <tabstop>booktabsRB</tabstop>
@@ -1653,9 +1654,11 @@
   <tabstop>leftRB</tabstop>
   <tabstop>centerRB</tabstop>
   <tabstop>rightRB</tabstop>
+  <tabstop>borderSetPB</tabstop>
+  <tabstop>TabWidget</tabstop>
  </tabstops>
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
