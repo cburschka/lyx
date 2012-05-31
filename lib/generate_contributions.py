@@ -953,6 +953,14 @@ contributers = [
                  "",
                  u"Hungarian translation and bind file for menu shortcuts"),
 
+     contributer(u'Marcus Kriele',
+                 "mkriele () me ! com",
+                 "GPL",
+                 "License permission",
+                 "m=130384781027177",
+                 "26 April 2011",
+                 u"Fixing various sv* layouts"),
+
      contributer(u'Valeriy Kruchko',
                  "lerkru () gmail ! com",
                  "GPL",
