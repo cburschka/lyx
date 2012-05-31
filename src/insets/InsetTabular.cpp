@@ -165,6 +165,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_LTLASTFOOT, "set-ltlastfoot", true },
 	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot", true },
 	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage", false },
+	{ Tabular::UNSET_LTNEWPAGE, "unset-ltnewpage", false },
 	{ Tabular::TOGGLE_LTCAPTION, "toggle-ltcaption", false },
 	{ Tabular::SET_LTCAPTION, "set-ltcaption", false },
 	{ Tabular::UNSET_LTCAPTION, "unset-ltcaption", false },
@@ -4640,6 +4641,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::SET_LTNEWPAGE:
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
 			break;
+		case Tabular::UNSET_LTNEWPAGE:
+			status.setOnOff(!tabular.getLTNewPage(sel_row_start));
+			break;
 
 		// only one row in head/firsthead/foot/lasthead can be the caption
 		// and a multirow cannot be set as caption
@@ -5657,8 +5661,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		tabular.setLTFoot(row, flag, ltt, true);
 		break;
 
+	case Tabular::UNSET_LTNEWPAGE:
+		flag = false;
 	case Tabular::SET_LTNEWPAGE:
-		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
+		tabular.setLTNewPage(row, flag);
 		break;
 
 	case Tabular::SET_LTCAPTION: {

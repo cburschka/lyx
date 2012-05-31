@@ -580,6 +580,8 @@ docstring GuiTabular::dialogToParams() const
 	//
 	if (newpageCB->isChecked())
 		setParam(param_str, Tabular::SET_LTNEWPAGE);
+    else
+		setParam(param_str, Tabular::UNSET_LTNEWPAGE);
 	//
 	if (captionStatusCB->isChecked())
 		setParam(param_str, Tabular::SET_LTCAPTION);
