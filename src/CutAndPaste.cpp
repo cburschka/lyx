@@ -1002,7 +1002,6 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 	cur.recordUndo();
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second, errorList);
-	cur.setSelection();
 }
 
 
@@ -1026,7 +1025,6 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
 					buffer.params().documentClassPtr(), errorList);
-				cur.setSelection();
 				return;
 			}
 		}
@@ -1041,7 +1039,6 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
 		cur.text()->insertStringAsLines(cur, text, cur.current_font);
-	cur.setSelection();
 }
 
 
