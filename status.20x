@@ -151,6 +151,8 @@ What's new
 
 - Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
 
+- Fixed an assertion when trying to paste into a table (bug 7956).
+
 - Fixed an infinite loop after removing the first paragraph of the 
   document if it had a non-zero depth (bug 7641).
 
