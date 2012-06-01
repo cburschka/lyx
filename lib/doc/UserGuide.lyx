@@ -18215,10 +18215,16 @@ The Table dialog
 \end_layout
 
 \begin_layout Standard
-You can alter a table by clicking on it with the right mouse button, which
- brings up the table dialog.
- Here you can adjust the settings of the cell and row/column respectively
- where the cursor is placed currently.
+You can alter a table by clicking on it with the right mouse button and
+ then choosing 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+.
+ This brings up the table dialog.
+ Here you can adjust the settings of the cell, row and/or column where the
+ cursor is placed currently.
  Most of the dialog options also work on selections.
  This means that if you select more cells, columns or rows the action is
  done on all of your selection.
@@ -18234,7 +18240,7 @@ table
 toolbar
 \family default
  helps you in setting table properties.
- It appears when the cursor is inside a table.
+ It appears if the cursor is inside a table.
 \end_layout
 
 \begin_layout Standard
@@ -21906,7 +21912,7 @@ Insert\SpecialChar \menuseparator
 Box
 \family default
 .
- Right-clicking on the box allows you to alter the width of the minipage
+ Right-clicking on the box label allows you to alter the width of the minipage
  and its alignment within the page.
 \end_layout
 
@@ -21923,7 +21929,7 @@ width "30col%"
 special "none"
 height "1pt"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -21982,7 +21988,7 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is a minipage with some stupid dummy text.
@@ -22007,7 +22013,7 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is a minipage with some stupid dummy text.
@@ -22150,7 +22156,7 @@ math
 
 toolbar
 \family default
-, that appears when the cursor is in a formula.
+, that appears if the cursor is in a formula.
 \end_layout
 
 \begin_layout Standard

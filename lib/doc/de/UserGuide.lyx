@@ -19190,31 +19190,28 @@ Tabellen ! -dialog
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can alter a Tabelle by clicking on it with the right mouse button, which
- brings up the Tabellendialog.
- Here you can adjust the Einstellungen of the cell and 
-\lang ngerman
-Zeile/Spalte
-\lang english
- respectively where the Cursor is placed currently.
- Most of the Dialogoptionen also work on selections.
- This means that if you select more cells, columns or rows the action is
- done on all of your selection.
+Man kann Tabellen verändern, indem man mit der rechten Maustaste auf sie
+ klickt und dann 
+\family sans
+Mehr\SpecialChar \menuseparator
+Einstellungen
+\family default
+ wählt.
+ Dies öffnet den Tabellendialog.
+ Hier kann man die Einstellungen für Zellen, Zeilen und/oder Spalten vornehmen,
+ in denen sich gerade der Cursor befindet.
+ Die meisten der Dialogoptionen funktionieren auch für Auswahlen.
+ Das bedeutet dass wenn mehrere Zellen, Spalten oder Zeilen ausgewählt sind,
+ die Aktion für alle in der Auswahl durchgeführt wird.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Additionally to the Tabellendialog, the 
+Zusätzlich zum Tabellendialog hilft die 
 \family sans
-\lang ngerman
 Tabellen-Werkzeugleiste
 \family default
-\lang english
- helps you in setting Tabelle properties.
- It appears when the Cursor is inside a Tabelle.
+ um Tabelleneigenschaften zu verändern.
+ Sie erscheint wenn sich der Cursor in einer Tabelle befindet.
 \end_layout
 
 \begin_layout Standard
@@ -19222,17 +19219,16 @@ In der Karteikarte
 \family sans
 Tabellen-Einstellungen
 \family default
- des Tabellendialogs 
-\lang english
-you can set the alignment for the current row.
- If you add a row or column, it will be inserted right beside or below the
- current cell respectively.
- The vertical alignment of a column can only be adjusted when a column width
- is given.
- A given width will allow the cell to have line breaks and multiple Absätze
- of text
-\lang ngerman
-, siehe Abschnitt
+ des Tabellendialogs kann man die Ausrichtung der aktuellen Zeile festlegen.
+ Wenn man eine Zeile oder Spalte einfügt, wird diese rechts neben bzw.
+\begin_inset space \space{}
+\end_inset
+
+unter der aktuellen Zelle eingefügt.
+ Die vertikale Ausrichtung einer Spalte kann nur eingestellt werden wenn
+ eine Spaltenbreite angegeben ist.
+ Eine angegebene Spaltenbreite erlaubt es in der Zelle Zeilenumbrüche und
+ mehrere Absätze zu haben, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -19247,34 +19243,25 @@ reference "sub:Tabellenzellen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can mark multiple cells of one
-\lang ngerman
- Zeile/Spalte
-\lang english
- as a multicolumn/row cell using the check box 
+Man kann mehrere Zellen einer Zeile/Spalte als Mehrfachspalten-/Mehrfachzeilenze
+lle markieren, indem man die Option 
 \family sans
-Multicolumn
+Mehrfachspalte
 \family default
- or 
+ oder 
 \family sans
-Multirow
+Mehrfachzeile
 \family default
-.
- This will merge the cells to 
+ verwendet.
+ Dies vereint die Zellen zu 
 \emph on
-one
+einer
 \emph default
- cell, spread over more than one 
-\lang ngerman
-Zeile/Spalte
-\lang english
-.
- Multicolumn cells are treated as own rows, so that the alignment, width,
- and border Einstellungen affect only the multicolumn cell.
- Here's an example Tabelle with a multicolumn cell in the first row and
- one in the last row without the upper border:
+ Zelle, die sich über mehrere Zeilen/Spalten erstreckt.
+ Mehrfachspaltenzellen werden als eigene Zeilen behandelt, so dass die Ausrichtu
+ngs-, Breiten-, und Linieneinstellungen nur die Mehrfachspaltenzelle betrifft.
+ Hier ist eine Beispieltabelle mit einer Mehrfachspaltenzelle in der ersten
+ Zeile und einer in der letzten Zeile ohne obere Linie:
 \end_layout
 
 \begin_layout Standard
@@ -21947,31 +21934,26 @@ Dies ist ein mehrzeiliger Eintrag in einer Tabelle.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Cutting and pasting between Tabellen und Tabellenzellen works reasonably
- well.
- You can cut and paste even more than one row.
+Kopieren und Ersetzen funktioniert zwischen Tabellen und Tabellenzellen
+ gut; man kann sogar mehrere Zeilen kopieren und einfügen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Note, that you cannot paste into a multicell selection because it would
- not be clear what to do when pasting a single word in a selected 2×3.
- 
+Man beachte, dass man nicht in eine Auswahl mehrerer Zellen kopieren kann,
+ denn es wäre nicht klar wohin ein einzelnes Wort in einer Auswahl von 2×3
+ Zellen kopiert werden soll.
 \end_layout
 
 \end_inset
 
- Selection with the mouse or with 
+ Das Auswählen mit der Maus oder mit 
 \family sans
 Umschalt
 \family default
- plus the arrow keys works as usual.
- You can also copy and paste the entire Tabelle as a single unit by starting
- the selection from outside the Tabelle.
+ plus den Pfeiltasten funktioniert wie gewohnt.
+ Man kann auch ganze Tabellen kopieren indem man die Auswahl außerhalb der
+ Tabelle beginnt.
 \end_layout
 
 \begin_layout Section
@@ -22696,35 +22678,25 @@ Minipage
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LaTeX provides a mechanism to produce essentially a page within a page,
- called minipage.
- Within a minipage, all the usual rules of indentation, line wrapping, etc.
-\begin_inset space \space{}
-\end_inset
-
-apply.
- 
+LaTeX bietet einen Mechanismus an, um im Prinzip eine Seite innerhalb einer
+ Seite zu erstellen, eine sogenannte Minipage.
+ Innerhalb einer Minipage gelten alle üblichen Regeln wie die des Einzugs
+ oder der Silbentrennung 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Minipages in LyX have their own collapsible box inserted via the Menü 
+Minipages haben in LyX ihre eigene schließbare Box, die mit dem Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Box
 \family default
-.
- Right-clicking on the box allows you to alter the width of the minipage
- and its alignment within the page.
+ eingefügt wird.
+ Per Rechts-klicken auf die Boxmarke kann die Breite und Ausrichtung der
+ Minipage eingestellt werden.
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -22741,17 +22713,15 @@ status open
 \begin_layout Plain Layout
 
 \shape italic
-\lang english
-This is a minipage.
- The text is set in an italic style.
+Dies ist eine Minipage.
+ Der Text ist kursiv gesetzt.
 \end_layout
 
 \begin_layout Plain Layout
 
 \shape italic
-\lang english
-Minipages are often used for text in another language or text that needs
- another formatting.
+Minipages werden häufig für Text in einer anderen Sprache verwendet oder
+ für Text mit besonderen Formatierungen.
 \end_layout
 
 \end_inset
@@ -22763,15 +22733,11 @@ Minipages are often used for text in another language or text that needs
 \begin_inset VSpace medskip
 \end_inset
 
-
-\lang english
-If you place two minipages side-by-side, you can use 
+Wenn man zwei Minipages nebeneinander setzt, kann man 
 \family sans
-Horizontal Fills
+HFills
 \family default
- as described
-\lang ngerman
- in Abschnitt
+, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -22782,7 +22748,7 @@ reference "sub:Horizontaler-Leerraum"
 
 \end_inset
 
-:
+ beschrieben, verwenden:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -22790,8 +22756,6 @@ reference "sub:Horizontaler-Leerraum"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -22807,21 +22771,21 @@ status open
 
 \begin_layout Plain Layout
 
-\lang english
-This is a minipage with some stupid dummy text.
- This dummy text is used to increase the size of the minipage.
+\shape italic
+\emph on
+Dies ist eine Minipage
+\shape default
+\emph default
+ mit sinnlosem Text.
+ Dieser Sinnlostext wird verwendet um die Minipage zu vergrößern.
 \end_layout
 
 \end_inset
 
 
-\lang ngerman
-
 \begin_inset space \hfill{}
 \end_inset
 
-
-\lang english
 
 \begin_inset Box Frameless
 position "t"
@@ -22838,9 +22802,13 @@ status open
 
 \begin_layout Plain Layout
 
-\lang english
-This is a minipage with some stupid dummy text.
- This dummy text is used to increase the size of the minipage.
+\shape italic
+\emph on
+Dies ist eine Minipage
+\shape default
+\emph default
+ mit sinnlosem Text.
+ Dieser Sinnlostext wird verwendet um die Minipage zu vergrößern.
 \end_layout
 
 \end_inset
@@ -22856,12 +22824,8 @@ This is a minipage with some stupid dummy text.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Klickt man mit rechts auf eine Minipage-Box, kann man die Box in einen anderen
- Boxtyp umwandeln
-\lang ngerman
-.
+ Boxtyp umwandeln.
  Alle Box-Typen und ihre Einstellungen sind im Detail in Kapitel 
 \emph on
 Boxen
@@ -22912,72 +22876,51 @@ Grundlagen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To create a math formula, you can just click on the
-\lang ngerman
- Werkzeugleistenknopf 
+Um eine Formel zu erstellen, klickt man einfach auf den Werkzeugleistenknopf
+ 
 \begin_inset Info
 type  "icon"
 arg   "math-mode on"
 \end_inset
 
 .
- 
-\lang english
-That will create a little blue rectangle, with purple markers around its
- corners.
- That blue rectangle is the formula itself; the purple markers indicate
- what level of nesting within the formula you are at.
- You can also choose a particular formula type to insert via
-\lang ngerman
- des Menüs 
+ Dies erzeugt ein kleines, blaues Rechteck mit violetten Markierungen an
+ den Ecken.
+ Das blaue Rechteck ist die Formel, die Markierungen geben an, wo in der
+ Formel man sich befindet.
+ Man kann auch direkt einen bestimmten Formeltyp über das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Mathe
 \family default
-.
+ einfügen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Editing the parameters of a formula and adding math constructs can be done
- with the 
+Das Bearbeiten von Formelparametern und das Hinzufügen von Mathe-Konstrukten
+ kann man über die 
 \family sans
-math
-\begin_inset space ~
-\end_inset
-
-toolbar
+Mathe 
 \family default
-, that appears when the cursor is in a formula.
+Werkzeugleiste machen, die erscheint, wenn der Cursor in einer Formel ist.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are two main types of formulas, inline formulas and display formulas.
- Inline formulas appear within a text line, like this one:
+Es gibt zwei Haupttypen von Formeln, eingebettete und abgesetzte.
+ Eingebettete Formeln erscheinen innerhalb einer Textzeile, so wie diese:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a line with an inline formula 
+Dies ist eine Zeile mit einer 
 \begin_inset Formula $A=B$
 \end_inset
 
- in it.
+ eingebetteten Formel.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Displayed formulas appear outside the text like if they were in a separate
- paragraph, like this one:
-\lang ngerman
-
+Abgesetzte Formeln erscheinen außerhalb des Textes, als wären sie in einem
+ eigenen Absatz, so wie diese:
 \begin_inset Formula 
 \[
 A=B
@@ -22985,24 +22928,17 @@ A=B
 
 \end_inset
 
-
-\lang english
-You can only number and reference displayed formulas.
+Nur abgesetzte Formeln können nummeriert und referenziert werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX supports also many LaTeX math commands.
- E.
+LyX unterstützt auch viele LaTeX-Mathebefehle.
+ Tippt man z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-typing 
+B.
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -23016,20 +22952,17 @@ alpha
 \begin_inset Quotes grd
 \end_inset
 
-, followed by a space, in a formula will create the Greek letter 
+ gefolgt von einem Leerzeichen in eine Formel ein, wird der griechische
+ Buchstabe 
 \begin_inset Formula $\alpha$
 \end_inset
 
-.
- Typing commands might sometimes be faster than using the 
+ erzeugt.
+ Befehle einzugeben ist oft schneller als die 
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
+Mathe 
 \family default
-.
+Werkzeugleiste zu verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -23051,20 +22984,18 @@ Sie können auf eine existierende Gleichung klicken und den Cursor in etwa
  dort vorfinden, wo Sie geklickt haben.
  In einer existierenden Formel hat man mit den Pfeiltasten die beste Kontrolle
  über die Cursorposition.
- Mathed benutzt manchmal kleine Rechtecke um anzuzeigen, wo etwas eingefügt
- werden kann, weil Mathed Symbole nicht einfach nur linear anordnet.
 \end_layout
 
 \begin_layout Standard
-Die Pfeiltasten können benutzt werden, um sich in einer Mathed-Struktur
- zwischen Textgebieten zu bewegen.
- Wenn man eine Pfeiltaste am Rande von Mathed drückt, verlässt man Mathed,
- wenn der Pfeil aus dem Mathed-Kästchen herauszeigt.
+Die Pfeiltasten können benutzt werden, um sich in einer Struktur zwischen
+ Textgebieten zu bewegen.
+ Wenn man eine Pfeiltaste am Rande einer Formel drückt, verlässt man die
+ Formel, wenn der Pfeil aus dem Formel-Kästchen herauszeigt.
  Wenn man die 
 \family sans
 Leertaste
 \family default
- drückt, verlässt man einen Teil oder eine andere Mathed-Struktur (eine
+ drückt, verlässt man einen Teil oder eine andere Formel-Struktur (eine
  Quadratwurzel 
 \begin_inset Formula $\sqrt{2}$
 \end_inset
@@ -23080,23 +23011,23 @@ Leertaste
 \end{array}\right]$
 \end_inset
 
-), und bleibt innerhalb von Mathed.
+), und bleibt innerhalb der Formel.
  Mit 
 \family sans
 Esc
 \family default
- verlässt man Mathed, und der Cursor wird rechts vom Kästchen platziert.
+ verlässt man Formeln, und der Cursor wird rechts vom Kästchen platziert.
  Mit der 
 \family sans
 Leertaste
 \family default
- kann man Mathed auch verlassen, aber der Cursor wird um eine Leerstelle
+ kann man Formeln auch verlassen, aber der Cursor wird um eine Leerstelle
  neben dem Kästchen gestellt (wenn keine Leerstelle dort war, wird sie erzeugt).
  
 \family sans
 Tab
 \family default
- kann benutzt werden, um sich waagerecht in einer Mathed-Struktur zu bewegen,
+ kann benutzt werden, um sich waagerecht in einer Formel-Struktur zu bewegen,
  wie in den Zeilen einer Matrix oder den Stellen in einer mehrzeiligen Gleichung.
 \end_layout
 
@@ -23105,7 +23036,7 @@ Die
 \family sans
 Leertaste
 \family default
- scheint nichts innerhalb von Mathed zu bewirken, weil sie wirklich keinen
+ scheint nichts innerhalb von Formeln zu bewirken, weil sie wirklich keinen
  Zwischenraum zwischen Zeichen hinzufügt, aber sie verlässt eine geschachtelte
  Struktur.
  Deshalb muss man mit der 
@@ -23258,7 +23189,7 @@ iche Größen:
 \end_layout
 
 \begin_layout Standard
-Man kann viele teilweise gefüllte Mathed-Strukturen wie diese Matrix verlassen:
+Man kann viele teilweise gefüllte Formel-Strukturen wie diese Matrix verlassen:
 \begin_inset Formula 
 \[
 \left(\begin{array}{ccc}
@@ -23291,7 +23222,7 @@ Mathe- ! Text auswählen
 \end_layout
 
 \begin_layout Standard
-Innerhalb von Mathed können Sie Text auf zwei verschiedene Arten auswählen.
+Innerhalb von Formeln können Sie Text auf zwei verschiedene Arten auswählen.
  Stellen Sie den Cursor an das eine Ende der Zeichenkette, die Sie auswählen
  wollen, und drücken Sie 
 \family sans
@@ -23453,7 +23384,7 @@ a
 \begin_inset Formula $a_{1}$
 \end_inset
 
- zu erhalten, müssen Sie in Mathed 
+ zu erhalten, müssen Sie in eine Formel 
 \series bold
 a_1
 \begin_inset ERT
@@ -23505,8 +23436,7 @@ aus der
 Mathe-Werkzeugleiste
 \family default
  schreiben.
- Sie erhalten einen leeren Bruch mit zwei blauen Math\SpecialChar \-
-ed-Kästchen über und
+ Sie erhalten einen leeren Bruch mit zwei blauen Formel-Kästchen über und
  unter einem Bruchstrich.
  Der Cursor steht im Zähler.
  Mit der 
@@ -23689,7 +23619,7 @@ lim
 \backslash
 lim
 \series default
- in Mathed oder indem man es aus den 
+ in einer Formel oder indem man es aus den 
 \family sans
 Funktionen
 \family default
@@ -23723,51 +23653,39 @@ mathematische!Symbole
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Most math symbols can be found in the 
+Die meisten mathematischen Symbole sind in der 
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
+Mathe 
 \family default
- under one of several categories; including 
+Werkzeugleiste unter einer der verschiedenen Kategorien wie 
 \family sans
-Greek
+Griechisch
 \family default
 , 
 \family sans
-Operators
+Operatoren
 \family default
 , 
 \family sans
-Relations
+Relationen
 \family default
 , 
 \family sans
-Arrows
+Pfeile
 \family default
-.
- There are also the additional symbols provided by the American Mathematical
- Society (AMS).
+ zu finden.
+ Dort gibt es außerdem zusätzliche Symbole, die von der Amerikanisch Mathematisc
+hen Gesellschaft (AMS) zu Verfügung gestellt werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you know the LaTeX-command for a construct or symbol you wish to use,
- you don't have to use the 
+Wenn Sie den LaTeX-Befehl für ein Konstrukt oder ein Symbol kennen, müssen
+ Sie nicht die 
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
+Mathe 
 \family default
-; you can type the command directly into the formula.
- LyX will convert it to the corresponding symbol or construct.
+Werkzeugleiste benutzen sondern können den Befehl direkt in die Formel eingeben.
+ LyX wird ihn in das entsprechnde Konstrukt oder Symbol konvertieren.
 \end_layout
 
 \begin_layout Subsection
@@ -23911,7 +23829,7 @@ eintippen.
 \end_inset
 
 , nicht kursiv geschrieben.
- Gibt man in Mathed aber nur die Buchstaben 
+ Gibt man in einer Formel aber nur die Buchstaben 
 \begin_inset Formula $sin$
 \end_inset
 
@@ -23972,7 +23890,7 @@ Im Mathe-Modus setzt man Akzente wie im normalen Textmodus.
  Wie das gemacht wird, kann von Ihrer Tastatur und Ihrer Tastaturdatei abhängen.
  Sie können aber auch die LaTeX-Äquivalente als Makros benutzen.
  Wenn Ihre Tastatur keine Akzente ermöglicht, können Sie zum Beispiel in
- Mathed 
+ Formeln 
 \series bold
 
 \backslash
@@ -23994,7 +23912,8 @@ reference "tab:Akzente"
 
 \end_inset
 
- enthält die Akzentnamen im Textmodus, in Mathed und Beispiele für die Akzente.
+ enthält die Akzentnamen im Textmodus, in Formeln und Beispiele für die
+ Akzente.
 \end_layout
 
 \begin_layout Standard
@@ -25871,7 +25790,7 @@ arg   "math-insert \\style"
 Mathe-Werkzeugleiste
 \family default
  die entsprechende Größe aus, während der Cursor auf der Hauptlinie des
- Mathed-Kästchens steht: 
+ Formel-Kästchens steht: 
 \begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 

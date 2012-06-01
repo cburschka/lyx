@@ -25462,8 +25462,31 @@ arg   "tabular-insert"
 \bar no
 \noun off
 \color none
-表を右クリックすると、表ダイアログが表示されて、表を変更することができます。ここでは、現在カーソルが置かれているセルないし行・列の設定を調節することができます。
-また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つまり、複数のセルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。
+表を右クリックすると、表ダイアログが表示されて、表を変更することができます
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+and then choosing 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+。ここでは、現在カーソルが置かれているセルないし行・列の設定を調節することができます。また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つま
+り、複数のセルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。
 \end_layout
 
 \begin_layout Standard
