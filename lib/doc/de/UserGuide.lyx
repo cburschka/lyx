@@ -28878,7 +28878,11 @@ LaTeX-Paket ! splitidx
 
  um mehrere Stichwortverzeichnisse zu erzeugen.
  Dieses Paket ist in allen aktuellen LaTeX-Distributionen enthalten.
- Falls Ihre Distribution es nicht anbietet, konsultieren Sie den TeX-Katalog,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Falls Ihre Distribution es nicht anbietet, konsultieren Sie den TeX-Katalog,
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -28893,6 +28897,11 @@ key "TeX-Katalog"
  Lesen Sie die Dokumentation des Pakets für weitere Informationen.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Um LyX für mehrere Stichwortverzeichnisse einzurichten, gehen Sie ins Menü
  
@@ -28901,67 +28910,46 @@ Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Stichwortverzeichnis
 \family default
- und aktivieren 
+ und aktivieren die Option 
+\family sans
+Mehrere Indexe verwenden
+\family default
+.
+ Wie man sieht, enthält die Liste 
+\family sans
+Verfügbare Indexe
+\family default
+ bereits den Standard-Index 
 \begin_inset Quotes gld
 \end_inset
 
-Mehrere Indexe verwenden
+Stichwortverzeichnis
 \begin_inset Quotes grd
 \end_inset
 
 .
+ Um weitere Indexe hinzuzufügen, geben Sie den Namen des Indexes in das
+ Feld 
+\family sans
+Neuer Index
+\family default
+ ein (in der Form, in der er auch als Überschrift erscheinen soll) und drücken
  
-\lang english
-Note that the list of 
-\begin_inset Quotes gld
-\end_inset
-
-Verfügbare Indexe
-\begin_inset Quotes grd
-\end_inset
-
- below already contains the standard index.
- To add further indexes, add the name of the index (in the form that should
- also appear as a heading) to the 
-\begin_inset Quotes eld
-\end_inset
-
-New
-\begin_inset Quotes erd
-\end_inset
-
- input field and press the 
-\begin_inset Quotes eld
-\end_inset
-
-Add
-\begin_inset Quotes erd
-\end_inset
-
- button.
- The new index should now appear in the list as well.
- If you like, you can attribute an alternative label color to the new index
- by selecting the index in the list and hitting the 
-\begin_inset Quotes eld
-\end_inset
-
-Alter Color
-\begin_inset Quotes erd
-\end_inset
-
- button.
- The label color may help you to differentiate index entries of different
- indexes in the LyX work area.
+\family sans
+Hinzufügen
+\family default
+.
+ Der neue Index erscheint nun auch in der Liste.
+ Sie können dem neuen Index auch eine alternative Farbe für dessen Einfügungen
+ in LyX zuweisen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Once the Dokument changes have been applied, you can find the new index
- list in 
+Sobald die Änderungen übernommen wurden, findet man den neuen Index im Menü
+ 
 \family sans
 Einfügen\SpecialChar \menuseparator
-List
+Liste
 \begin_inset space ~
 \end_inset
 
@@ -28969,45 +28957,42 @@ List
 \begin_inset space ~
 \end_inset
 
-TOC
+Inhaltsverzeichnis
 \family default
- and the 
+ und das Menü 
 \family sans
-Insert
+Einfügen
 \family default
- menu has a separate index entry for each of the defined indexes.
- The workflow is basically the same as for the default index, but there
- are some additional features:
+ hat einen eigenen Eintrag für jeden definierten Index.
+ Das Arbeiten mit neuen Indexen ist im Prinzip dasselbe wie mit dem Stichwortver
+zeichnis aber es gibt zusätzliche Funktionen:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-If you want to change the attribution of a specific index entry, right-clicking
- on the entry will open a dialog where you can do that.
+Wenn Sie die Index-Zuweisung eines Indexeintrags ändern wollen, klicken
+ die mit Rechts auf die Marke des Eintrags.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-By right-clicking on an index, you can change its type.
- Furthermore, you can specify an index list to be a 
+Durch Rechtsklicken auf einen Index kann man dessen Typ ändern.
+ Man kann des weiteren einen Index als 
 \begin_inset Quotes gld
 \end_inset
 
-Subindex
+Unterindex
 \begin_inset Quotes grd
 \end_inset
 
-.
- If you do that, the heading of that list will be decreased by one level.
- E.
+ verwenden.
+ Wenn man das macht, wird die Überschrift des Indexes um eine Ebene verringert.
+ Das bedeutet, dass wenn man z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., if you use a book class, where the standard index heading is defined
- as a chapter, subindexes will be defined as sections and can thus be nested
- to the non-subindexes.
+B.
+ eine Buch-Dokumentklasse verwendet, in der der Titel des Stichwortverzeichnisse
+s als Kapitel definiert ist, der Titels des Unterindex' als Abschnitt definiert
+ wird und daher in Nicht-Unterindexe eingegliedert werden kann.
 \end_layout
 
 \begin_layout Section

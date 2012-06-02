@@ -36332,6 +36332,167 @@ xindy
 を使うことを考慮してみてください。
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+Multiple Indexes
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In many fields it is common to have more than one index.
+ For instance, you might need to set up a separate 
+\begin_inset Quotes eld
+\end_inset
+
+Index of Names
+\begin_inset Quotes erd
+\end_inset
+
+ next to the standard index.
+ LaTeX does not provide this possibility out of the box, but there are packages
+ that add this feature.
+ LyX uses the 
+\series bold
+splitidx
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeX-packages ! splitidx
+\end_layout
+
+\end_inset
+
+ package to generate multiple indexes.
+ The package is included in all recent LaTeX distributions.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+If yours does not ship it, consult the TeX-catalogue, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TeXCatalogue"
+
+\end_inset
+
+.
+ Note that the package does not only consist of a LaTeX style, but it also
+ includes specific preprocessor programs that need to be installed as well.
+ Please consult the package's manual for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To set up LyX for the use of multiple indexes, go to 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Indexes
+\family default
+ and select the option 
+\family sans
+Use multiple Indexes
+\family default
+.
+ Note that the list 
+\family sans
+Available Indexes
+\family default
+ already contains the standard index 
+\begin_inset Quotes eld
+\end_inset
+
+Index
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To add further indexes, add the name of the index (in the form that should
+ also appear as a heading) to the 
+\family sans
+New
+\family default
+ input field and press the 
+\family sans
+Add
+\family default
+ button.
+ The new index now also appears in the list.
+ If you like, you can attribute an alternative LyX label color to the new
+ index.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Once the document changes have been applied, you can find the new index
+ list in 
+\family sans
+Insert\SpecialChar \menuseparator
+List
+\begin_inset space ~
+\end_inset
+
+/
+\begin_inset space ~
+\end_inset
+
+TOC
+\family default
+ and the 
+\family sans
+Insert
+\family default
+ menu has a separate entry for each of the defined indexes.
+ The workflow is basically the same as for the default index, but there
+ are additional features:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+If you want to change the attribution of a specific index entry, right-clicking
+ on the entries' label will open a dialog where you can do that.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+By right-clicking on an index, you can change its type.
+ Furthermore, you can specify an index to be a 
+\begin_inset Quotes eld
+\end_inset
+
+Subindex
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If you do that, the heading of that list will be decreased by one level.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., if you use a book class, where the standard index heading is defined
+ as a chapter, subindexes will be defined as sections and can thus be nested
+ to the non-subindexes.
+\end_layout
+
 \begin_layout Section
 記号一覧／用語集
 \begin_inset Index idx

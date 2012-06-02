@@ -28525,7 +28525,11 @@ LaTeX, paquetes ! splitidx
 
  para generar índices múltiples.
  El paquete se incluye en las distribuciones recientes de LaTeX.
- Si no es así consulta TeX Catalogue, 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si no es así consulta TeX Catalogue, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -28536,6 +28540,11 @@ key "TeXCatalogue"
  Este paquete no solo consta de un archivo de estilo LaTeX, incluye además
  programas preprocesadores que también deben instalarse.
  Véase la documentación del paquete para más detalles.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28555,38 +28564,27 @@ Configuración\SpecialChar \menuseparator
 \family sans
 Índices disponibles
 \family default
- de abajo ya contiene el índice estándar.
+ ya contiene el índice estándar 
+\begin_inset Quotes fld
+\end_inset
+
+Índice
+\begin_inset Quotes frd
+\end_inset
+
+.
  Para añadir más índices, añade su nombre (en la forma en que deba aparecer
  como encabezado) en el campo 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Nuevo
-\begin_inset Quotes frd
-\end_inset
-
+\family default
  y pulsa el botón 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Añadir
-\begin_inset Quotes frd
-\end_inset
-
+\family default
 .
- El nuevo índice deberá aparecer ahora en la lista.
- Es posible asignar un color alternativo a la etiqueta del nuevo índice
- seleccionándolo en la lista y pulsando el botón 
-\begin_inset Quotes fld
-\end_inset
-
-Cambiar color...
-\begin_inset Quotes frd
-\end_inset
-
-.
- El color de la etiqueta ayuda a diferenciar las entradas de los diferentes
- índices en el área de trabajo de LyX.
+ El nuevo índice aparecerá ahora en la lista.
+ Es posible asignar un color alternativo a la etiqueta LyX del nuevo índice.
 \end_layout
 
 \begin_layout Standard
@@ -28596,6 +28594,14 @@ Una vez aplicados los cambios, encontrarás el nuevo índice definido en una
 Insertar\SpecialChar \menuseparator
 Índice
 \family default
+ y el menú 
+\family sans
+Insertar
+\family default
+ tiene 
+\lang english
+a separate entry for each of the defined indexes.
+\lang spanish
 .
  El funcionamiento es básicamente el mismo que el del índice estándar, pero
  tiene algunas características adicionales:
@@ -28603,7 +28609,8 @@ Insertar\SpecialChar \menuseparator
 
 \begin_layout Itemize
 Si quieres cambiar la atribución de una entrada de índice específica, haciendo
- clic derecho sobre la entrada abrirá un diálogo donde se puede hacer eso.
+ clic derecho sobre la etiqueta de la entrada abrirá un diálogo donde se
+ puede hacer eso.
 \end_layout
 
 \begin_layout Itemize

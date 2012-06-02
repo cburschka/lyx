@@ -27920,7 +27920,11 @@ LaTeX-packages ! splitidx
 
  package to generate multiple indexes.
  The package is included in all recent LaTeX distributions.
- If yours does not ship it, consult the TeX-catalogue, 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If yours does not ship it, consult the TeX-catalogue, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -27933,6 +27937,11 @@ key "TeXCatalogue"
  Please consult the package's manual for details.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 To set up LyX for the use of multiple indexes, go to 
 \family sans
@@ -27940,55 +27949,37 @@ Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Indexes
 \family default
- and select 
+ and select the option 
+\family sans
+Use multiple Indexes
+\family default
+.
+ Note that the list 
+\family sans
+Available Indexes
+\family default
+ already contains the standard index 
 \begin_inset Quotes eld
 \end_inset
 
-Use multiple Indexes
+Index
 \begin_inset Quotes erd
 \end_inset
 
 .
- Note that the list of 
-\begin_inset Quotes eld
-\end_inset
-
-Available Indexes
-\begin_inset Quotes erd
-\end_inset
-
- below already contains the standard index.
  To add further indexes, add the name of the index (in the form that should
  also appear as a heading) to the 
-\begin_inset Quotes eld
-\end_inset
-
+\family sans
 New
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  input field and press the 
-\begin_inset Quotes eld
-\end_inset
-
+\family sans
 Add
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  button.
- The new index should now appear in the list as well.
- If you like, you can attribute an alternative label color to the new index
- by selecting the index in the list and hitting the 
-\begin_inset Quotes eld
-\end_inset
-
-Alter Color
-\begin_inset Quotes erd
-\end_inset
-
- button.
- The label color may help you to differentiate between index entries of
- different indexes in the LyX work area.
+ The new index now also appears in the list.
+ If you like, you can attribute an alternative LyX label color to the new
+ index.
 \end_layout
 
 \begin_layout Standard
@@ -28010,19 +28001,19 @@ TOC
 \family sans
 Insert
 \family default
- menu has a separate index entry for each of the defined indexes.
+ menu has a separate entry for each of the defined indexes.
  The workflow is basically the same as for the default index, but there
- are some additional features:
+ are additional features:
 \end_layout
 
 \begin_layout Itemize
 If you want to change the attribution of a specific index entry, right-clicking
- on the entry will open a dialog where you can do that.
+ on the entries' label will open a dialog where you can do that.
 \end_layout
 
 \begin_layout Itemize
 By right-clicking on an index, you can change its type.
- Furthermore, you can specify an index list to be a 
+ Furthermore, you can specify an index to be a 
 \begin_inset Quotes eld
 \end_inset
 
