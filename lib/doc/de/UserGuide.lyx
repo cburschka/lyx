@@ -31821,7 +31821,7 @@ key "fancyhdr"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33335,87 +33335,94 @@ arg   "thesaurus-entry"
 
  während ein Wort markiert ist oder während sich der Cursor in einem Wort
  befindet.
- 
-\lang english
-A Dialog pops up showing you probably related words that you can use as
- replacement.
- The proposals are grouped into categories.
- Note that the thesaurus does not nur show synonyms, but auch hyperonyms
- und hyponyms (such as 
-\emph on
-plant
-\emph default
- for 
-\emph on
-tree
-\emph default
-), compounds (such as 
-\emph on
-tree diagram
-\emph default
-) und antonyms (such as 
-\emph on
-women
-\emph default
- for 
-\emph on
-men
-\emph default
-), which are marked as such.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The language is automatisch chosen from the language at the Cursor, but
- you can auch switch it in the Dialog, as you can enter new words to look
- up directly there.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the thesaurus cannot handle phrases (nur compounds that are in
- the dictionary, such as the above 
-\emph on
-tree diagram
-\emph default
-), und you have to use the so called lemma form, i.
+ Es öffnet sich ein Dialog und zeigt Wörter als Ersetzungsvorschläge an,
+ die wahrscheinlich dasselbe wie das aktuelle Wort bedeuten.
+ Die Vorschläge sind in Kategorien gruppiert.
+ Man beachte dass der Thesaurus nicht nur Synonyme anzeigt, sondern auch
+ Hyperonyme und Hyponyme (wie z.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
- the form that is used in the dictionaries (for many languages: first person
- singular indicative active für nouns, infinitive für verbs).
- For Beispiel looking up the word forms 
+B.
+ 
 \emph on
-reports
+Pflanze
+\emph default
+ für 
+\emph on
+Baum
+\emph default
+), Zusammensetzungen (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\emph on
+Baumdiagramm
+\emph default
+) und Antonyme (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\emph on
+Frau
+\emph default
+ für 
+\emph on
+Mann
+\emph default
+), die als solche gekennzeichnet sind.
+\end_layout
+
+\begin_layout Standard
+Die Sprachen wird automatisch von dem Wort übernommen, indem sich der Cursor
+ befindet, aber man kann sie auch im Dialog umstellen, genauso wie man dort
+ das Wort ändern kann.
+\end_layout
+
+\begin_layout Standard
+Man beachte dass der Thesaurus kann keine Phrasen handhaben kann (nur Zusammense
+tzungen, die im Wörterbuch stehen, so wie das obige
+\emph on
+ Baumdiagramm
+\emph default
+) und dass man die sogenannte Lemmaform verwenden muss; die Form, die auch
+ in Wörterbüchern verwendet wird (für die meisten Sprachen ist das: erste
+ Person Einzahl für Substantive, Infinitiv für Verben).
+ Schlägt man zum Beispiel für die Worte 
+\emph on
+Berichte
 \emph default
  oder 
 \emph on
-reporting
+berichtend
 \emph default
- yields no results, while results are shown für the word form 
+ nach, bekommt man keine Vorschläge, während es mehrere für 
 \emph on
-report
+Bericht
 \emph default
-.
- Your best bet is to highlight nur the relevant parts of such word (e.
+ gibt.
+ Die beste Vorgehensweise ist es nur die relevanten Teile von Worten zu
+ markieren (z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+B.
  
 \emph on
-report
+Bericht
 \emph default
  in 
 \emph on
-report
+Berichte
 \emph default
-s), then you get proposals ohne adjusting the query in the Dialog, und auch
- the replacement will probably be correct (as nur the highlighted part will
- be replaced, thus the ending remains).
+).
+ Dann bekommt man sofort Vorschläge ohne das Wort im Dialog erst anpassen
+ zu müssen und auch der Ersetzung wird dann wahrscheinlich sofort korrekt
+ sein (nur der markierte Teil wird ersetzt).
 \end_layout
 
 \begin_layout Section
