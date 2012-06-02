@@ -143,10 +143,11 @@ FunctionEnd
 # ------------------------------
 
 Function ConfigureMiKTeX
- # installs the LaTeX class files that are delivered with LyX
+ # installs the LaTeX class files that are delivered with LyX,
+ # a Perl interpreter for splitindex
  # and enable MiKTeX's automatic package installation
  
- # install LyX's LaTeX class and style files
+ # install LyX's LaTeX class and style files and a Perl interpreter
  ${if} $PathLaTeX != ""
   ${if} $MultiUser.Privileges != "Admin"
   ${orif} $MultiUser.Privileges != "Power"
@@ -163,15 +164,22 @@ Function ConfigureMiKTeX
    # LyX files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
-  
-   # refresh MiKTeX's file name database
-   ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
-    nsExec::ExecToLog '"$PathLaTeX\initexmf --admin --update-fndb"'
-   ${else} 
-    nsExec::ExecToLog '"$PathLaTeX\initexmf --update-fndb"'
-   ${endif}
-   Pop $UpdateFNDBReturn # Return value
   ${endif}
+  
+  # only install a Perl interpreter if it is not already installed
+  ${ifnot} ${FileExists} "$PathLaTeXLocal\miktex\bin\perl.exe"
+   SetOutPath "$PathLaTeXLocal"
+   File /r ${FILES_MIKTEX}
+  ${endif}
+  
+  # refresh MiKTeX's file name database (do this always to assure everything is in place)
+  ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
+   nsExec::ExecToLog '"$PathLaTeX\initexmf --admin --update-fndb"'
+  ${else} 
+   nsExec::ExecToLog '"$PathLaTeX\initexmf --update-fndb"'
+  ${endif}
+  Pop $UpdateFNDBReturn # Return value
+  
  ${endif}
   
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
