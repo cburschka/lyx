@@ -32209,7 +32209,7 @@ women
 \emph default
  for 
 \emph on
-men
+man
 \emph default
 ), which are marked as such.
 \end_layout
@@ -32231,7 +32231,10 @@ tree diagram
 \end_inset
 
 e.
- the form that is used in the dictionaries (for many languages: first person
+\begin_inset space \space{}
+\end_inset
+
+the form that is used in the dictionaries (for many languages: first person
  singular indicative active for nouns, infinitive for verbs).
  For example looking up the word forms 
 \emph on
@@ -32251,7 +32254,10 @@ report
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \emph on
 report
 \emph default
@@ -43468,12 +43474,6 @@ Text Layout
 You can specify if paragraphs should be separated by indentations or vertical
  skips.
  The line spacing and the number of text columns can also be specified here.
-
-\change_inserted 2090807402 1325640630
- You can also determine whether text will be shown as justified in LyX itself.
- Note that this does not affect whether the text is justified in the output.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
