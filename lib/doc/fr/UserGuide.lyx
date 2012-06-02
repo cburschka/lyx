@@ -29164,7 +29164,11 @@ Paquetages LaTeX ! splitidx
 
  pour créer des index multiples, paquetage inclus dans toutes les distributions
  LaTeX récentes.
- Si la vôtre ne l'inclut pas, consultez le catalogue TeX, 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si la vôtre ne l'inclut pas, consultez le catalogue TeX, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -29177,6 +29181,11 @@ key "TeXCatalogue"
  Consultez le manuel du paquetage pour les détails.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 La paramétrage de LyX pour l'utilisation de plusieurs index est accessible
  via 
@@ -29185,55 +29194,37 @@ Document\SpecialChar \menuseparator
 Paramètres\SpecialChar \menuseparator
 Index
 \family default
-, en cochant 
+, en cochant l'option 
+\family sans
+Utiliser plusieurs index
+\family default
+.
+ Noter que le liste 
+\family sans
+Index disponibles
+\family default
+ contient implicitement l'index standard 
 \begin_inset Quotes fld
 \end_inset
 
-Utiliser plusieurs index
+Index
 \begin_inset Quotes frd
 \end_inset
 
 .
- Noter que le liste des 
-\begin_inset Quotes fld
-\end_inset
-
-Index disponibles
-\begin_inset Quotes frd
-\end_inset
-
- contient implicitement l'index standard.
  Pour ajouter d'autres index, ajouter un nom d'index (tel qu'il devra apparaître
  dans l'en-tête) dans le champ 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Nouveau
-\begin_inset Quotes frd
-\end_inset
-
+\family default
  et appuyer sur 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Ajouter
-\begin_inset Quotes frd
-\end_inset
-
+\family default
 .
  Le nouvel index doit apparaître dans la liste.
- Si vous le désirez, vous pouvez attribuer une couleur aux étiquettes correspond
-antes en sélectionnant le bouton 
-\begin_inset Quotes fld
-\end_inset
-
-Changer la couleur
-\begin_inset Quotes frd
-\end_inset
-
-.
- La couleur de l'étiquette peut vous aider à reconnaître les entrées d'index
- dans la fenêtre LyX.
+ Si vous le désirez, vous pouvez attribuer une couleur LyX aux étiquettes
+ correspondantes.
 \end_layout
 
 \begin_layout Standard
@@ -29263,8 +29254,8 @@ Insérer
 
 \begin_layout Itemize
 si vous voulez changer l'attribution d'une entrée d'index particulière,
- un clic droit sur l'entrée ouvre une fenêtre dans laquelle cette action
- est possible;
+ un clic droit sur l'étiquette de l'entrée ouvre une fenêtre dans laquelle
+ cette action est possible;
 \end_layout
 
 \begin_layout Itemize
