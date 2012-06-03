@@ -319,13 +319,14 @@ Language english
 	LangCode         en_US
 End
 
-# Esperanto has no country code because it is an auxiliary language
+# Esperanto has no country code because it is an auxiliary language.
+# We therefore the name of its hunspell dictionary.
 Language esperanto
 	GuiName          "Esperanto"
 	BabelName        esperanto
 	PolyglossiaName  esperanto
 	Encoding         iso8859-3
-	LangCode         eo
+	LangCode         eo_EO
 End
 
 Language estonian
@@ -338,14 +339,13 @@ End
 
 # the preamble definitions are only used due to bugs in the
 # arabi-package -- remove them if they become unnecessary!
-# The country code is omitted because of the aspell dic naming.
 Language farsi
 	GuiName          "Farsi"
 	BabelName        farsi
 	PolyglossiaName  farsi
 	Encoding         utf8
 	RTL              true
-	LangCode         fa
+	LangCode         fa_IR
 	PostBabelPreamble
 	\DeclareTextSymbol{\guillemotright}{LFE}{62}
 	\DeclareTextSymbol{\guillemotleft}{LFE}{60}
@@ -470,13 +470,14 @@ Language icelandic
 	LangCode         is_IS
 End
 
-# Interlingua has no country code because it is an auxiliary language
+# Interlingua has no official country code because it is an auxiliary
+# language. We therefore the name of its hunspell dictionary.
 Language interlingua
 	GuiName          "Interlingua"
 	BabelName        interlingua
 	PolyglossiaName  interlingua
 	Encoding         iso8859-15
-	LangCode         ia
+	LangCode         ia_IA
 End
 
 Language irish
@@ -520,11 +521,10 @@ Language kazakh
 	LangCode        kk_KZ
 End
 
-# there is no country code for Korean because ko_KR is the same as ko_KI
 Language korean
 	GuiName         "Korean"
 	Encoding        euc-kr
-	LangCode        ko
+	LangCode        ko_KR
 End
 
 # Currently not supported (file format change!)
@@ -542,13 +542,14 @@ End
 # 	LangCode         lo
 # End
 
-# there is no country code for Latin because it is a dead language
+# There is no country code for Latin because it is a dead language.
+# We therefore the name of its hunspell dictionary.
 Language latin
 	GuiName          "Latin"
 	BabelName        latin
 	PolyglossiaName  latin
 	Encoding         iso8859-15
-	LangCode         la
+	LangCode         la_LA
 End
 
 # latvian must be loaded locally with babel options,
