@@ -33727,20 +33727,47 @@ arg   "thesaurus-entry"
  Une fenêtre de dialogue s'ouvre, affichant des mots dont le sens est probableme
 nt proche et qui peuvent être utilisés comme synonymes.
  Les propositions sont rassemblées en catégories.
- Notez que le dictionnaire ne donne pas seulement les synonymes, mais aussi
- les hyperonymes et les hyponymes (par exemple 
+ 
+\end_layout
+
+\begin_layout Standard
+Notez que le dictionnaire, 
+\lang english
+for some languages
+\lang french
+, ne donne pas seulement les synonymes, mais aussi 
+\lang english
+generic terms (such as 
 \emph on
-plante
+organism
 \emph default
- pour 
+ for 
 \emph on
-arbre
+plant
 \emph default
-), les compositions (comme 
+), related terms (such as 
+\emph on
+political
+\begin_inset space ~
+\end_inset
+
+theory
+\emph default
+ for 
+\emph on
+anarchistic
+\emph default
+),
+\lang french
+ les compositions (comme 
 \emph on
 arbre à cames
 \emph default
-) et les antonymes (comme 
+ si vous 
+\lang english
+look for 
+\lang french
+arbre) et les antonymes (comme 
 \emph on
 femme
 \emph default
@@ -33748,7 +33775,10 @@ femme
 \emph on
 homme
 \emph default
-), qui sont indiqués comme tels.
+).
+ 
+\lang english
+Generic terms, related terms and antonyms are marked as such.
 \end_layout
 
 \begin_layout Standard
