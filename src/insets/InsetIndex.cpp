@@ -496,6 +496,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 			break;
 		}
+		cur.recordUndo();
 		setParams(p);
 		break;
 	}
