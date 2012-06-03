@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'ÓêÊå ÇäÈÏÁ ÈÊÑãêÈ ÊèÒêÙÉ-äÊêã ÈÈÑæÇåÌ $\"MiKTeX$\".
 ${LangFileString} LatexError1 'äå êÊå ÇäÙËèÑ Ùäé ÊèÒêÙÉ-äÊêã!$\r$\n\
                       		      äÇ êåãæ ÇÓÊÎÏÇå äêã ÈÏèæ ÊèÒêÙÉ äÊêã åËä MiKTeX!$\r$\n\
 				      ÓêÊå ÇÌçÇÖ ÇäÊÑãêÈ.'
-				      
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'ÓêÊå ÇäÂæ ÊÑãêÈ ÈÑæÇåÌ JabRef.$\r$\n\
 				     ÊÓÊ×êÙ ÇÎÊêÇÑ ãä ÇäÎêÇÑÇÊ ÇËæÇÁ ÊÑãêÈ ÈÑæÇåÌ JabRef.'
 ${LangFileString} JabRefError 'äå êæÌÍ ÊÑãêÈ ÈÑæÇåÌ JabRef!$\r$\n\
 		                      ÓÊÓÊåÑ ÙåäêÉ ÇäÊÑãêÈ.$\r$\n\
 				      ÍÇèä ÊÑãêÈ JabRef äÇÍâÇë.'
-				      
+
 ${LangFileString} LatexConfigInfo "ÇäÙåäêÉ ÇäÊÇäêÉ ÓÊÓÊÚÑâ ÈÙÖ ÇäèâÊ."
 
 ${LangFileString} MiKTeXPathInfo "äãê êãèæ ãä åÓÊÎÏå âÇÏÑÇ Ùäé ÊÎÕêÕ miktex äÇÍâÇë ÍÓÈ ÇÍÊêÇÌÇÊç $\r$\n\

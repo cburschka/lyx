@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'これからLaTeXディストリビューション$\"MiKTeX$\"のイ
 ${LangFileString} LatexError1 'LaTeXディストリビューションを発見することができませんでした！$\r$\n\
                       		      LyXは、$\"MiKTeX$\"のようなLaTeXディストリビューションなしでは使うことができません！$\r$\n\
                       		      したがってインストールは中止します。'
-				      
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'これからプログラム$\"JabRef$\"のインストーラーを起動します。$\r$\n\
 				     JabRefインストーラーのデフォルトのオプションをすべて受け入れてかまいません。'
 ${LangFileString} JabRefError 'プログラム$\"JabRef$\"は正しくインストールされませんでした！$\r$\n\
 		                      インストーラーは、とりあえずこのままインストールを続けます。$\r$\n\
 		                      後でJabRefのインストールを再度試みてください。'
-				      
+
 ${LangFileString} LatexConfigInfo "以下のLyXの設定には少々時間がかかります。"
 
 ${LangFileString} MiKTeXPathInfo "すべてのユーザーが後で必要に応じてMiKTeXを$\r$\n\

@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Sekarang instalasi program distribusi LaTeX $\"MiKT
 ${LangFileString} LatexError1 'Distribusi LaTeX tidak ditemukan!$\r$\n\
                       		      LyX tidak bisa digunakan tanpa menggunakan salah satu distribusi LaTeX seperti $\"MiKTeX$\"!$\r$\n\
 				      Oleh karena itu proses instalasi dibatalkan.'
-			    
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Sekarang instalasi program $\"JabRef$\" akan dijalankan.$\r$\n\
 				     Anda boleh memilih semua pilihan default yang ada di program instalasi JabRef.'
 ${LangFileString} JabRefError 'Program $\"JabRef$\" tidak berhasil diinstal secara keseluruhan!$\r$\n\
 		                      Namun proses instalasi dapat diteruskan.$\r$\n\
 				      Anda dapat mengulang instalasi JabRef nanti.'
-				      
+
 ${LangFileString} LatexConfigInfo "Proses konfigurasi LyX selanjutnya akan memerlukan waktu beberapa saat."
 
 ${LangFileString} MiKTeXPathInfo "Agar memungkinkan semua pengguna dapat mengatur MiKTeX sesuai keinginannya$\r$\n\

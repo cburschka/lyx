@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Тепер буде запущено засіб встановлення дистрибутива
 ${LangFileString} LatexError1 'Дистрибутивів LaTeX не виявлено!$\r$\n\
                       		      Ви не зможете користуватися LyX без дистрибутива LaTeX на зразок $\"MiKTeX$\"!$\r$\n\
 				      З цієї причини встановлення буде припинено.'
-				      
+      
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Тепер буде запущено засіб для встановлення програми $\"JabRef$\".$\r$\n\
 				     У засобі для встановлення ви можете не змінювати типових параметрів JabRef.'
 ${LangFileString} JabRefError 'Не вдалося встановити програму $\"JabRef$\"!$\r$\n\
 		                      Процес встановлення LyX буде продовжено.$\r$\n\
 				      Спробуйте встановити JabRef пізніше самостійно.'
-				      
+
 ${LangFileString} LatexConfigInfo "Налаштування LyX може тривати досить довго."
 
 ${LangFileString} MiKTeXPathInfo "Щоб кожен з користувачів міг пізніше налаштувати MiKTeX згідно до власних потреб,$\r$\n\

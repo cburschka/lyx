@@ -129,13 +129,16 @@ ${LangFileString} LatexInfo 'Now the installer of the LaTeX-distribution $\"MiKT
 ${LangFileString} LatexError1 'No LaTeX-distribution could be found!$\r$\n\
                       		      LyX cannot be used without a LaTeX-distribution like $\"MiKTeX$\"!$\r$\n\
 				      The installation will therefore be aborted.'
-			    
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
 				     You can use all default options of the JabRef-installer.'
 ${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
 		                      The installer will continue anyway.$\r$\n\
 				      Try to install JabRef again later.'
-				      
+
 ${LangFileString} LatexConfigInfo "The following configuration of LyX will take a while."
 
 ${LangFileString} MiKTeXPathInfo "In order that every user is later able to customize MiKTeX for his needs$\r$\n\

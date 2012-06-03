@@ -49,6 +49,9 @@ ${LangFileString} LatexError1 'Hiç bir LaTeX daðýtýmý bulunamadý!$\r$\n\
                       		      LyX $\"MiKTeX$\" gibi bir LaTeX daðýtýmý olmadan kullanýlamaz!$\r$\n\
 				      Bu nedenle kurulum iptal edilecek.'
 
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
 				     You can use all default options of the JabRef-installer.'
 ${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\

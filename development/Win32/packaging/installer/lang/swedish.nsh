@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Nu kommer installationsprogrammet för LaTeX-distrib
 ${LangFileString} LatexError1 'Kan inte hitta någon LaTeX-distribution!$\r$\n\
                       		      LyX kan inte användas utan en LaTeX-distribution som tex $\"MiKTeX$\"!$\r$\n\
 				      Installation avbryts därför nu.'
-				    
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Nu kommer installationsprogrammet för $\"JabRef$\" att köras.$\r$\n\
 				     Du kan använda alla standardalternativ i installationsprogrammet för JabRef.'
 ${LangFileString} JabRefError 'Programmet $\"JabRef$\" kunde inte installeras ordentligt!$\r$\n\
 		                      Installationen av LyX kommer att fortsätta ändå.$\r$\n\
 				      Försök installera GSview igen senare.'
-				      
+
 ${LangFileString} LatexConfigInfo "Följande konfigurering av LyX kommer att ta ett tag."
 
 ${LangFileString} MiKTeXPathInfo "För att varje användare senare skall kunna anpassa MiKTeX för sina behov$\r$\n\

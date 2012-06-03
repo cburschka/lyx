@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Nyní bude spuštìn instalátor LaTeXové-distribuce $\
 ${LangFileString} LatexError1 'Žádná LaTeXová-distribuce nebyla nalezena!$\r$\n\
                       		      Nemùžete používat LyX bez distribuce LaTeXu jako je napø. $\"MiKTeX$\"!$\r$\n\
 				      Instalace bude proto pøerušena.'
-				      
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Nyní bude spuštìn instalátor programu $\"JabRef$\".$\r$\n\
 				     Mùžete použít všechny pøedvolby instalátoru JabRef.'
 ${LangFileString} JabRefError 'Program $\"JabRef$\" nebyl úspìšnì nainstalován.$\r$\n\
 		                      Instalátor bude navzdory tomu pokraèovat.$\r$\n\
 				      Pokuste se nainstalovat JabRef pozdìji.'
-				      
+
 ${LangFileString} LatexConfigInfo "Následující konfigurování LyXu chvíli potrvá."
 
 ${LangFileString} MiKTeXPathInfo "Aby každý uživatel mohl pozdìji pøizpùsobit MiKTeX pro své potøeby$\r$\n\

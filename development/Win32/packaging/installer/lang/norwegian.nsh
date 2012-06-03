@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Nå starter installasjon av LaTeX-distribusjonen $\"
 ${LangFileString} LatexError1 'Fant ikke noen LaTeX-distribusjon!$\r$\n\
                       		      LyX kan ikke brukes uten en LaTeX-distribusjion som $\"MiKTeX$\"!$\r$\n\
 				      Derfor avbrytes installasjonen.'
-		    
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
 				     You can use all default options of the JabRef-installer.'
 ${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
 		                      The installer will continue anyway.$\r$\n\
 				      Try to install JabRef again later.'
-				      
+
 ${LangFileString} LatexConfigInfo "Konfigurasjon av LyX vil ta en stund."
 
 ${LangFileString} MiKTeXPathInfo "In order that every user is later able to customize MiKTeX for his needs$\r$\n\

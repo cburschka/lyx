@@ -49,6 +49,9 @@ ${LangFileString} LatexError1 'Non se achou nengunha distribución de LaTeX!$\r$\
                       		      Non se pode usar o LyX sen unha distribución de LaTeX como a $\"MiKTeX$\"!$\r$\n\
 				      Por iso a instalación vai ser abortada.'
 
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Agora lanzará-se o instalador do programa $\"JabRef$\".$\r$\n\
 				     Pode usar todas as opcións por defeito no instalador do JabRef.'
 ${LangFileString} JabRefError 'Non se deu instalado o programa $\"JabRef$\"!$\r$\n\

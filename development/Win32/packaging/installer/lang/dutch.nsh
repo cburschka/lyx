@@ -49,12 +49,15 @@ ${LangFileString} LatexError1 'Er is geen LaTeX software gevonden!$\r$\n\
                       		      LyX kan niet worden gebruikt zonder LaTeX software zoals $\"MiKTeX$\"!$\r$\n\
 				      De installatie wordt daarom afgebroken.'
 
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Het installatie programma van $\"JabRef$\" wordt nu gestart.$\r$\n\
 				     U kunt de standaard opties gebruiken.'
 ${LangFileString} JabRefError 'Het programma $\"JabRef$\" kon niet worden geinstalleerd!$\r$\n\
 		                      De LyX installatie gaat desondanks verder.$\r$\n\
 				      Probeer JabRef later te installeren.'
-				      
+
 ${LangFileString} LatexConfigInfo "De volgende configuratie van LyX zal enige tijd duren."
 
 ${LangFileString} MiKTeXPathInfo "Opdat elke gebruiker zijn MiKTeX configuratie kan aanpassen$\r$\n\

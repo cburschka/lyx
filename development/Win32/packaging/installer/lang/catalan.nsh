@@ -48,13 +48,16 @@ ${LangFileString} LatexInfo 'Ara s$\'executarà l$\'instal·lador de la distribuci
 ${LangFileString} LatexError1 'No s$\'ha trobat cap distribució LaTeX!$\r$\n\
                       		      No podeu usar el LyX sense cap distribució LaTeX, com ara $\"MiKTeX$\"!$\r$\n\
 				      Es cancel·larà la instal·lació.'
-				      
+
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'Ara s$\'executarà l$\'instal·lador del programa $\"JabRef$\".$\r$\n\
 				     Podeu usar totes les opcions predeterminades de l$\'instal·lador del JabRef.'
 ${LangFileString} JabRefError 'El programa $\"JabRef$\" no s$\'ha instal·lat correctament!$\r$\n\
 		                      L$\'instal·lador continuarà igualment.$\r$\n\
 				      Intenteu instal·lar el JabRef altre cop més tard.'
-				      
+
 ${LangFileString} LatexConfigInfo "La configuració següent del LyX pot trigar una mica."
 
 ${LangFileString} MiKTeXPathInfo "Per a que cada usuari pugui personalitzar el MiKTeX segons les seves necessitats\r$\n\

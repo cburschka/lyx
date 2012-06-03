@@ -8,32 +8,29 @@ Function DownloadHunspellDictionary
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
  ${For} $5 1 114
   FileRead $R5 $String # $String is now the dictionary name
-  StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
-  MessageBox MB_OK|MB_ICONEXCLAMATION "$R3"
+  StrCpy $R3 $String 5 # $R3 is now the dictionary language code
   
   ${if} $DictCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   StrCpy $FileName $String 15 # extract the real file name
    # Download hunspell dictionaries,
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
-  
-   ${For} $4 1 5
+   
+   ${For} $4 1 8
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    MessageBox MB_OK|MB_ICONEXCLAMATION "http://downloads.sourceforge.net/project/lyxwininstaller/thesaurus/$String&use_mirror=$Search"
-    InetLoad::load /TIMEOUT=5000 "http://downloads.sourceforge.net/project/lyxwininstaller/thesaurus/$String&use_mirror=$Search" "$INSTDIR\Resources\dicts\$FileName" /END
+    InetLoad::load /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
     ${endif}
    ${Next}
-    
+   
    FileClose $R4
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "(AspellDownloadFailed) $R0"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed)"
     Goto abortinstall
    ${endif}
   ${endif} # end if $DictCode == $R3
@@ -42,7 +39,7 @@ Function DownloadHunspellDictionary
  FileClose $R5
 
   abortinstall:
-  Delete "$INSTDIR\$FileName"
+  Delete "$INSTDIR\$String"
 
 FunctionEnd
 
@@ -60,17 +57,15 @@ Function DownloadThesaurusDictionary
   
   ${if} $ThesCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
-   StrCpy $FileName $String 15 # extract the real file name
    # Download thesaurus dictionaries,
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 5
+   ${For} $4 1 8
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    MessageBox MB_OK|MB_ICONEXCLAMATION "http://downloads.sourceforge.net/project/lyxwininstaller/thesaurus/$String&use_mirror=$Search"
-    InetLoad::load /TIMEOUT=5000 "http://downloads.sourceforge.net/project/lyxwininstaller/thesaurus/$String&use_mirror=$Search" "$INSTDIR\Resources\thes\$FileName" /END
+    InetLoad::load /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
@@ -80,7 +75,7 @@ Function DownloadThesaurusDictionary
    FileClose $R4
    # if download failed
    ${if} $R0 != "OK"
-    MessageBox MB_OK|MB_ICONEXCLAMATION "(AspellDownloadFailed) $R0"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed)"
     Goto abortinstall
    ${endif}
   ${endif} # end if $ThesCode == $R3
@@ -89,7 +84,7 @@ Function DownloadThesaurusDictionary
  FileClose $R5
 
   abortinstall:
-  Delete "$INSTDIR\$FileName"
+  Delete "$INSTDIR\$String"
 
 FunctionEnd
 
@@ -104,9 +99,18 @@ Function InstallHunspellDictionary
  ${Do}
   StrCpy $DictCode $DictCodes 5
   StrCpy $DictCodes $DictCodes "" 5
-  MessageBox MB_OK|MB_ICONEXCLAMATION "$DictCode"
   Call DownloadHunspellDictionary
  ${LoopUntil} $DictCodes == ""
+ 
+ # some dictionaries need to be renamed
+ ${if} ${FileExists} "$INSTDIR\Resources\dicts\db_DE.aff"
+  Rename "$INSTDIR\Resources\dicts\db_DE.aff" "$INSTDIR\Resources\dicts\dsb_DE.aff"
+  Rename "$INSTDIR\Resources\dicts\db_DE.dic" "$INSTDIR\Resources\dicts\dsb_DE.dic"
+ ${endif}
+ ${if} ${FileExists} "$INSTDIR\Resources\dicts\hb_DE.aff"
+  Rename "$INSTDIR\Resources\dicts\hb_DE.aff" "$INSTDIR\Resources\dicts\hsb_DE.aff"
+  Rename "$INSTDIR\Resources\dicts\hb_DE.dic" "$INSTDIR\Resources\dicts\hsb_DE.dic"
+ ${endif}
  
 FunctionEnd
 
@@ -121,7 +125,6 @@ Function InstallThesaurusDictionary
  ${Do}
   StrCpy $ThesCode $ThesCodes 5
   StrCpy $ThesCodes $ThesCodes "" 5
-  MessageBox MB_OK|MB_ICONEXCLAMATION "$ThesCode"
   Call DownloadThesaurusDictionary
  ${LoopUntil} $ThesCodes == ""
  

@@ -133,7 +133,10 @@ ${LangFileString} LatexInfo 'Als Nächstes wird der Installer der LaTeX-Distribut
 ${LangFileString} LatexError1 'Es konnte keine LaTeX-Distribution gefunden werden!$\r$\n\
                       		      LyX kann ohne eine LaTeX-Distribution wie z.B. $\"MiKTeX$\" nicht benutzt werden!$\r$\n\
 				      Die Installation wird daher abgebrochen.'
-				    
+
+${LangFileString} HunspellFailed 'Herunterladen des Wörterbuchs für Sprache $\"$R3$\" fehlgeschlagen.'
+${LangFileString} ThesaurusFailed 'Herunterladen des Thesaurus für Sprache $\"$R3$\" fehlgeschlagen.'
+
 ${LangFileString} JabRefInfo 'Als Nächstes wird der Installer des Programms $\"JabRef$\" gestartet.$\r$\n\
 			             Sie können alle voreingestellten Optionen des JabRef-Installers verwenden.'
 ${LangFileString} JabRefError 'Das Programm $\"JabRef$\" konnte nicht erfolgreich installiert werden!$\r$\n\

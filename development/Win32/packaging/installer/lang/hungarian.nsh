@@ -49,6 +49,9 @@ ${LangFileString} LatexError1 'Nem találtam LaTeX-disztribúciót!$\r$\n\
                       		      A LyX nem használható egy LaTeX-disztibúció nélkül,(mint például a $\"MiKTeX$\")!$\r$\n\
 				      Ezért a telepítés nem folytatható!'
 
+${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
+${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+
 ${LangFileString} JabRefInfo 'A $\"JabRef$\" telepítõjének elindítása következik.$\r$\n\
 				     Használhatja az alapértelmezett opciókat.'
 ${LangFileString} JabRefError 'Nem tudom telepíteni a $\"JabRef$\" programot!$\r$\n\
