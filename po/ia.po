@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ia\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-05-25 15:37-0400\n"
+"POT-Creation-Date: 2012-06-03 10:20-0400\n"
 "PO-Revision-Date: 2011-12-05 10:51+0100\n"
 "Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua LyX Team <g.sora@tiscali.it>\n"
@@ -48,7 +48,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:338
 msgid "&Close"
 msgstr "&Claude"
 
@@ -61,7 +61,7 @@ msgid "The label as it appears in the document"
 msgstr "Il es le etiquetta como il appare in  le documento"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190
+#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:317
 msgid "&Label:"
 msgstr "&Etiquetta:"
 
@@ -126,16 +126,18 @@ msgstr "Generation de bibliographia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "&Processor:"
 msgstr "&Processor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:194
 msgid "Select a processor"
 msgstr "Selige un processor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868
+#: src/frontends/qt4/GuiPrefs.cpp:868 src/frontends/qt4/ui_IndicesUi.h:196
 msgid "&Options:"
 msgstr "&Optiones:"
 
@@ -172,7 +174,7 @@ msgstr "Inserta le nomine de catalogo BibTeX de usar se"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:349
+#: src/CutAndPaste.cpp:349 src/frontends/qt4/ui_IndicesUi.h:211
 msgid "&Add"
 msgstr "&Adde"
 
@@ -244,7 +246,7 @@ msgstr "Adde bibliographia al &indice general (Tabula de Contentos)"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:336
 msgid "&OK"
 msgstr "&OK"
 
@@ -309,21 +311,21 @@ msgstr "Alineamento horizontal del contento intra le quadrato"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:786
+#: src/frontends/qt4/GuiTabular.cpp:788
 msgid "Left"
 msgstr "A sinistra"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
 #: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:787
+#: src/frontends/qt4/GuiTabular.cpp:789
 msgid "Center"
 msgstr "Al centro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/GuiTabular.cpp:790
 msgid "Right"
 msgstr "A dextera"
 
@@ -414,7 +416,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2130 src/frontends/qt4/GuiPrefs.cpp:2153
+#: src/frontends/qt4/GuiPrefs.cpp:2136 src/frontends/qt4/GuiPrefs.cpp:2159
 msgid "None"
 msgstr "Necun"
 
@@ -485,7 +487,7 @@ msgid "Define or change background color"
 msgstr "Defini o cambia le color del fundo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:126
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:226
 msgid "Alter Co&lor..."
 msgstr "Modifica co&lor..."
 
@@ -495,7 +497,7 @@ msgstr "Remove le ramo seligite"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3811
-#: src/Buffer.cpp:3824
+#: src/Buffer.cpp:3824 src/frontends/qt4/ui_IndicesUi.h:218
 msgid "&Remove"
 msgstr "&Remove"
 
@@ -583,7 +585,7 @@ msgstr "Dimen&sion:"
 #: src/frontends/qt4/GuiDocument.cpp:3225 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2278 src/frontends/qt4/GuiPrefs.cpp:2530
+#: src/frontends/qt4/GuiPrefs.cpp:2284 src/frontends/qt4/GuiPrefs.cpp:2536
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:197
 msgid "Default"
@@ -711,7 +713,7 @@ msgstr "Series de font"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1313
-#: src/frontends/qt4/GuiPrefs.cpp:2233 src/frontends/qt4/Menus.cpp:849
+#: src/frontends/qt4/GuiPrefs.cpp:2239 src/frontends/qt4/Menus.cpp:849
 msgid "Language"
 msgstr "Linguage"
 
@@ -783,7 +785,7 @@ msgstr "Applica modificationes &immediatemente"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1906
-#: src/frontends/qt4/GuiDocument.cpp:3168
+#: src/frontends/qt4/GuiDocument.cpp:3168 src/frontends/qt4/ui_RefUi.h:337
 msgid "&Apply"
 msgstr "&Applica"
 
@@ -1794,6 +1796,7 @@ msgstr "Nomine associate con le URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
+#: src/frontends/qt4/ui_RefUi.h:331
 msgid "&Name:"
 msgstr "&Nomine:"
 
@@ -1907,6 +1910,7 @@ msgid "&Edit"
 msgstr "&Edita"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "A&vailable Indexes:"
 msgstr "&Indices disponibile:"
 
@@ -1914,61 +1918,63 @@ msgstr "&Indices disponibile:"
 msgid "Select the index this entry should be listed in."
 msgstr "Selige le indice ubi iste elemento deberea esser monstrate."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:189
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "Ci tu pote specifica un processor de indice alternative e su optiones."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:191
 msgid "Index generation"
 msgstr "Generation de indice"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:198
 msgid "Define program options of the selected processor."
 msgstr "Optiones de programma del processor seligite."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:201
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Marca si tu necessita de indices multiple (p.ex. un indice de nomines)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:203
 msgid "&Use multiple indexes"
 msgstr "&Usa indices multiple"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&New:[[index]]"
 msgstr "&Nove:[[index]]"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:206
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Inserta le nomine del indice desirate (p.ex.. \"Indice de nomines\") e "
 "pressa \"Adde\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:209
 msgid "Add a new index to the list"
 msgstr "Adde un nove indice al lista"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
+#: src/frontends/qt4/ui_IndicesUi.h:214 src/frontends/qt4/ui_RefUi.h:294
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:216
 msgid "Remove the selected index"
 msgstr "Remove le indice seligite"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:220
 msgid "Rename the selected index"
 msgstr "Renomina le indice seligite"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:222
 msgid "R&ename..."
 msgstr "&Renomina..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:224
 msgid "Define or change button color"
 msgstr "Defini o cambia le color del button"
 
@@ -2341,7 +2347,7 @@ msgid "Update the display"
 msgstr "Actualisa le schermo"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:82
+#: src/frontends/qt4/ui/ViewSourceUi.ui:82 src/frontends/qt4/ui_RefUi.h:335
 msgid "&Update"
 msgstr "Act&ualisa"
 
@@ -2854,7 +2860,7 @@ msgstr "Formato de papiro"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355
+#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:339
 msgid "&Format:"
 msgstr "&Formato:"
 
@@ -2938,8 +2944,8 @@ msgstr "Duple"
 #: src/frontends/qt4/GuiDocument.cpp:802 src/frontends/qt4/GuiDocument.cpp:854
 #: src/frontends/qt4/GuiDocument.cpp:1020 src/frontends/qt4/GuiHSpace.cpp:54
 #: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:850
-#: src/frontends/qt4/GuiPrefs.cpp:877 src/frontends/qt4/GuiPrefs.cpp:2132
-#: src/frontends/qt4/GuiPrefs.cpp:2155
+#: src/frontends/qt4/GuiPrefs.cpp:877 src/frontends/qt4/GuiPrefs.cpp:2138
+#: src/frontends/qt4/GuiPrefs.cpp:2161
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Personalisate"
@@ -3142,7 +3148,7 @@ msgstr "&Modifica"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2928 src/frontends/qt4/GuiPrefs.cpp:2992
+#: src/frontends/qt4/GuiPrefs.cpp:2934 src/frontends/qt4/GuiPrefs.cpp:2998
 msgid "Remo&ve"
 msgstr "Remo&ve"
 
@@ -4355,31 +4361,31 @@ msgstr "Monstra messages del barra de stato?"
 msgid "&Statusbar messages"
 msgstr "Messages barra de &stato"
 
-#: src/frontends/qt4/ui/RefUi.ui:22
+#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:291
 msgid "La&bels in:"
 msgstr "Etiquett&as in:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:292
 msgid "&References"
 msgstr "&Referentias"
 
-#: src/frontends/qt4/ui/RefUi.ui:76
+#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:295
 msgid "Fil&ter:"
 msgstr "Fil&tro:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89
+#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:297
 msgid "Enter string to filter the label list"
 msgstr "Inserta mascara per filtrar le lista del etiquettas"
 
-#: src/frontends/qt4/ui/RefUi.ui:99
+#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:301
 msgid "Filter case-sensitively"
 msgstr "Filtra differentiante inter majusculas e minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:102
+#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:303
 msgid "Case-sensiti&ve"
 msgstr "Majuscu&le/minuscule"
 
-#: src/frontends/qt4/ui/RefUi.ui:127
+#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:305
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4388,65 +4394,66 @@ msgstr ""
 "minusculas,\n"
 " a minus que on non ha seligite le option correspondente)"
 
-#: src/frontends/qt4/ui/RefUi.ui:130
+#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:307
 msgid "&Sort"
 msgstr "&Ordina"
 
-#: src/frontends/qt4/ui/RefUi.ui:140
+#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:309
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr ""
 "Ordina alphabeticamente le etiquettas distinguente inter majusculas e "
 "minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:143
+#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:311
 msgid "Cas&e-sensitive"
 msgstr "&Majusculas/minusculas"
 
-#: src/frontends/qt4/ui/RefUi.ui:150
+#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:313
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Gruppa etiquettas per prefixo (p.ex. \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:153
+#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:315
 msgid "Grou&p"
 msgstr "Gru&ppa"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Vade a etiquetta"
 
-#: src/frontends/qt4/ui/RefUi.ui:212
+#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:329
 msgid "Cross-reference as it appears in output"
 msgstr "Le referentias cruciate  como appare in exito"
 
-#: src/frontends/qt4/ui/RefUi.ui:216
+#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221
+#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:321
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226
+#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:322
 msgid "<page>"
 msgstr "<page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231
+#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:323
 msgid "on page <page>"
 msgstr "a pagina <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236
+#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:324
 msgid "<reference> on page <page>"
 msgstr "<reference> a pagina <page>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:325
 msgid "Formatted reference"
 msgstr "Referentias pre-formate"
 
-#: src/frontends/qt4/ui/RefUi.ui:246
+#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:326
 msgid "Textual reference"
 msgstr "Referentias textual"
 
-#: src/frontends/qt4/ui/RefUi.ui:291
+#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:333
 msgid "Update the label list"
 msgstr "Actualisa le lista de etiquettas"
 
@@ -4609,11 +4616,11 @@ msgid "Horizontal alignment in column"
 msgstr "Alineamento horizontal in columna"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:790
+#: src/frontends/qt4/GuiTabular.cpp:792
 msgid "Justified"
 msgstr "Justificate"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:792
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:794
 msgid "At Decimal Separator"
 msgstr "Al separator de decimales"
 
@@ -17423,7 +17430,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Classe del documento non disponibile"
 
-#: src/BufferParams.cpp:1980
+#: src/BufferParams.cpp:1985
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17438,11 +17445,11 @@ msgstr ""
 "con disposition predefinite. LyX non essera in grado de producer\n"
 "un exito correcte."
 
-#: src/BufferParams.cpp:1986
+#: src/BufferParams.cpp:1991
 msgid "Document class not found"
 msgstr "Classe de documento non trovate"
 
-#: src/BufferParams.cpp:1993
+#: src/BufferParams.cpp:1998
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17457,15 +17464,15 @@ msgstr ""
 "con disposition predefinite. LyX non essera in grado de producer\n"
 "un exito correcte."
 
-#: src/BufferParams.cpp:1999 src/BufferView.cpp:1292 src/BufferView.cpp:1324
+#: src/BufferParams.cpp:2004 src/BufferView.cpp:1292 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "Impossibile cargar classe"
 
-#: src/BufferParams.cpp:2033
+#: src/BufferParams.cpp:2038
 msgid "Error reading internal layout information"
 msgstr "Error durante le lectura del disposition interne"
 
-#: src/BufferParams.cpp:2034 src/TextClass.cpp:1349
+#: src/BufferParams.cpp:2039 src/TextClass.cpp:1349
 msgid "Read Error"
 msgstr "Error de lectura"
 
@@ -20020,7 +20027,7 @@ msgid "About %1"
 msgstr "Circa %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3197
+#: src/frontends/qt4/GuiPrefs.cpp:3203
 msgid "Preferences"
 msgstr "Preferentias"
 
@@ -21584,15 +21591,15 @@ msgstr "Hunspell"
 msgid "Converters"
 msgstr "Convertitores"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1874
+#: src/frontends/qt4/GuiPrefs.cpp:1880
 msgid "File Formats"
 msgstr "Formatos de file"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2060 src/frontends/qt4/GuiPrefs.cpp:2212
+#: src/frontends/qt4/GuiPrefs.cpp:2066 src/frontends/qt4/GuiPrefs.cpp:2218
 msgid "Format in use"
 msgstr "Formato in uso"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2061
+#: src/frontends/qt4/GuiPrefs.cpp:2067
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -21600,17 +21607,17 @@ msgstr ""
 "Tu non pote cambiar le nomine breve de un formato si illo es usate per un "
 "convertitor. Per favor, prime tu remove le convertitor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2213
+#: src/frontends/qt4/GuiPrefs.cpp:2219
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Non pote remover un formato usate per un convertitor. Prime tu remove le "
 "convertitor."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2299
+#: src/frontends/qt4/GuiPrefs.cpp:2305
 msgid "LyX needs to be restarted!"
 msgstr "On necessita de re-startar LyX!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2300
+#: src/frontends/qt4/GuiPrefs.cpp:2306
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -21618,76 +21625,76 @@ msgstr ""
 "Le modification de linguage per le interfacie de usator essera plenmente "
 "active postea un re-startar."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2371
+#: src/frontends/qt4/GuiPrefs.cpp:2377
 msgid "Printer"
 msgstr "Imprimitor"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2487 src/frontends/qt4/GuiPrefs.cpp:3240
+#: src/frontends/qt4/GuiPrefs.cpp:2493 src/frontends/qt4/GuiPrefs.cpp:3246
 msgid "User Interface"
 msgstr "Interfacie de usator"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2531
+#: src/frontends/qt4/GuiPrefs.cpp:2537
 msgid "Classic"
 msgstr "Classic"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2532
+#: src/frontends/qt4/GuiPrefs.cpp:2538
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2610
+#: src/frontends/qt4/GuiPrefs.cpp:2616
 msgid "Control"
 msgstr "Controlo"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2698
+#: src/frontends/qt4/GuiPrefs.cpp:2704
 msgid "Shortcuts"
 msgstr "Vias breve"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2703
+#: src/frontends/qt4/GuiPrefs.cpp:2709
 msgid "Function"
 msgstr "Function"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2704
+#: src/frontends/qt4/GuiPrefs.cpp:2710
 msgid "Shortcut"
 msgstr "Via breve"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2783
+#: src/frontends/qt4/GuiPrefs.cpp:2789
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor, mus e functiones de editar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2787
+#: src/frontends/qt4/GuiPrefs.cpp:2793
 msgid "Mathematical Symbols"
 msgstr "Symbolos mathematic"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2791
+#: src/frontends/qt4/GuiPrefs.cpp:2797
 msgid "Document and Window"
 msgstr "Documento e fenestra"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2795
+#: src/frontends/qt4/GuiPrefs.cpp:2801
 msgid "Font, Layouts and Textclasses"
 msgstr "Font, dispositiones e classes de texto"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2799
+#: src/frontends/qt4/GuiPrefs.cpp:2805
 msgid "System and Miscellaneous"
 msgstr "Systema e miscellanea"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2926 src/frontends/qt4/GuiPrefs.cpp:2972
+#: src/frontends/qt4/GuiPrefs.cpp:2932 src/frontends/qt4/GuiPrefs.cpp:2978
 msgid "Res&tore"
 msgstr "Res&tabili"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3083 src/frontends/qt4/GuiPrefs.cpp:3090
-#: src/frontends/qt4/GuiPrefs.cpp:3110 src/frontends/qt4/GuiPrefs.cpp:3129
+#: src/frontends/qt4/GuiPrefs.cpp:3089 src/frontends/qt4/GuiPrefs.cpp:3096
+#: src/frontends/qt4/GuiPrefs.cpp:3116 src/frontends/qt4/GuiPrefs.cpp:3135
 msgid "Failed to create shortcut"
 msgstr "Il falleva a crear via breve"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3084
+#: src/frontends/qt4/GuiPrefs.cpp:3090
 msgid "Unknown or invalid LyX function"
 msgstr "Function de LyX incognite o invalide"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3091
+#: src/frontends/qt4/GuiPrefs.cpp:3097
 msgid "Invalid or empty key sequence"
 msgstr "Sequentia de claves invalide o vacue"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3111
+#: src/frontends/qt4/GuiPrefs.cpp:3117
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21698,35 +21705,35 @@ msgstr ""
 "%2$s\n"
 "Tu necessita remover le association ante crea un nove."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3130
+#: src/frontends/qt4/GuiPrefs.cpp:3136
 msgid "Can not insert shortcut to the list"
 msgstr "Non pote insertar via breve in lista"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3161
+#: src/frontends/qt4/GuiPrefs.cpp:3167
 msgid "Identity"
 msgstr "Identitate"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3370
+#: src/frontends/qt4/GuiPrefs.cpp:3376
 msgid "Choose bind file"
 msgstr "Selige le file de associar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3371
+#: src/frontends/qt4/GuiPrefs.cpp:3377
 msgid "LyX bind files (*.bind)"
 msgstr "Files de associationes de LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3377
+#: src/frontends/qt4/GuiPrefs.cpp:3383
 msgid "Choose UI file"
 msgstr "Selige file UI"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3378
+#: src/frontends/qt4/GuiPrefs.cpp:3384
 msgid "LyX UI files (*.ui)"
 msgstr "Files UI de LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3384
+#: src/frontends/qt4/GuiPrefs.cpp:3390
 msgid "Choose keyboard map"
 msgstr "Selige mappa de claviero"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3385
+#: src/frontends/qt4/GuiPrefs.cpp:3391
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mappas de claviero de LyX (*.kmap)"
 
@@ -23753,7 +23760,7 @@ msgstr "Spatio horizontal protegite (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Typo de indice incognite"
 
-#: src/insets/InsetTabular.cpp:4764
+#: src/insets/InsetTabular.cpp:4768
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Le grandor del selection debe corresponder al contento in le area de "
