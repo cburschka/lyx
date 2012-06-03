@@ -32258,11 +32258,15 @@ e.
 
 the form that is used in the dictionaries (for many languages: first person
  singular indicative active for nouns, infinitive for verbs).
- For example looking up the word forms 
+ For example looking up the word form
+\change_deleted 2090807402 1338765333
+s 
 \emph on
 reports
 \emph default
- or 
+ or
+\change_unchanged
+ 
 \emph on
 reporting
 \emph default
@@ -32271,6 +32275,21 @@ reporting
 report
 \emph default
 .
+ 
+\change_inserted 2090807402 1338765282
+The thesuarus is able to resolve inflected forms (so if you enter 
+\emph on
+reports
+\emph default
+, it will resolve it to the form 
+\emph on
+report
+\emph default
+ which is in the dictionary).
+ However, this may not always work.
+ So if you do not get any results for inflected forms, try the lemma form.
+
+\change_unchanged
  Your best bet is to highlight only the relevant parts of such word (e.
 \begin_inset space \thinspace{}
 \end_inset
