@@ -210,6 +210,149 @@ SectionEnd
  SectionEnd
 !endif
 
+SectionGroup "Dictionaries" SecDictionaries
+
+Section /o "German (A)" SecDGermanAT
+ StrCpy $DictCodes "de_AT$DictCodes"
+ AddSize 1000
+SectionEnd
+
+Section /o "German (CH)" SecDGermanCH
+ StrCpy $DictCodes "de_CH$DictCodes"
+ AddSize 1000
+SectionEnd
+
+Section "German (D)" SecDGermanD
+ StrCpy $DictCodes "de_DE$DictCodes"
+ AddSize 2650
+SectionEnd
+
+Section "Magyar" SecDHungarian
+ StrCpy $DictCodes "hu_HU$DictCodes"
+ AddSize 3380
+SectionEnd
+
+Section "Serbšcina" SecDSorbian
+ StrCpy $DictCodes "db_DE$DictCodes"
+ AddSize 904
+SectionEnd
+
+SectionGroupEnd
+
+SectionGroup "Thesaurus" SecThesaurus
+
+Section /o "Bulgarian" SecTBulgarian
+ StrCpy $ThesCodes "bg_BG$ThesCodes"
+ AddSize 3020
+SectionEnd
+
+Section /o "Català" SecTCatalan
+ StrCpy $ThesCodes "ca_ES$ThesCodes"
+ AddSize 731
+SectionEnd
+
+Section /o "Ceština" SecTCzech
+ StrCpy $ThesCodes "cs_CZ$ThesCodes"
+ AddSize 635
+SectionEnd
+
+Section /o "Dansk" SecTDanish
+ StrCpy $ThesCodes "da_DK$ThesCodes"
+ AddSize 2360
+SectionEnd
+
+Section /o "Deutsch (D/A)" SecTGermanDA
+ StrCpy $ThesCodes "de_DE$ThesCodes"
+ AddSize 5360
+SectionEnd
+
+Section /o "Deutsch (CH)" SecTGermanCH
+ StrCpy $ThesCodes "de_CH$ThesCodes"
+ AddSize 5360
+SectionEnd
+
+Section /o "English (GB)" SecTEnglishGB
+ StrCpy $ThesCodes "en_GB$ThesCodes"
+ AddSize 20600
+SectionEnd
+
+Section /o "English (US/AU)" SecTEnglishUSAU
+ StrCpy $ThesCodes "en_US$ThesCodes"
+ AddSize 20600
+SectionEnd
+
+Section /o "Español" SecTSpanish
+ StrCpy $ThesCodes "es_ES$ThesCodes"
+ AddSize 2860
+SectionEnd
+
+Section /o "Français" SecTFrench
+ StrCpy $ThesCodes "fr_FR$ThesCodes"
+ AddSize 5060
+SectionEnd
+
+Section /o "Gaeilge" SecTGaelic
+ StrCpy $ThesCodes "ga_IR$ThesCodes"
+ AddSize 30600
+SectionEnd
+
+Section /o "Greek" SecTGreek
+ StrCpy $ThesCodes "el_GR$ThesCodes"
+ AddSize 903
+SectionEnd
+
+Section /o "Italiano" SecTItalian
+ StrCpy $ThesCodes "it_IT$ThesCodes"
+ AddSize 2640
+SectionEnd
+
+Section /o "Magyar" SecTHungarian
+ StrCpy $ThesCodes "hu_HU$ThesCodes"
+ AddSize 632
+SectionEnd
+
+Section /o "Norsk" SecTNorwegian
+ StrCpy $ThesCodes "no_NO$ThesCodes"
+ AddSize 2470
+SectionEnd
+
+Section /o "Polski" SecTPolish
+ StrCpy $ThesCodes "pl_PL$ThesCodes"
+ AddSize 5580
+SectionEnd
+
+Section /o "Português" SecTPortuguese
+ StrCpy $ThesCodes "pt_PT$ThesCodes"
+ AddSize 855
+SectionEnd
+
+Section /o "Româna" SecTRomanian
+ StrCpy $ThesCodes "ro_RO$ThesCodes"
+ AddSize 3640
+SectionEnd
+
+Section /o "Russian" SecTRussian
+ StrCpy $ThesCodes "ru_RU$ThesCodes"
+ AddSize 2080
+SectionEnd
+
+Section /o "Slovenšcina" SecTSlowenian
+ StrCpy $ThesCodes "sl_SI$ThesCodes"
+ AddSize 107
+SectionEnd
+
+Section /o "Slovenský" SecTSlowakian
+ StrCpy $ThesCodes "sk_SK$ThesCodes"
+ AddSize 907
+SectionEnd
+
+Section /o "Svenska" SecTSwedish
+ StrCpy $ThesCodes "sv_SE$ThesCodes"
+ AddSize 720
+SectionEnd
+
+SectionGroupEnd
+
 # Section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"

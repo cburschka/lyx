@@ -20,8 +20,11 @@ var AppSubfolder
 Var AppSuff
 Var CreateDesktopIcon
 Var CreateFileAssociations
+Var DictCode
+Var DictCodes
 Var DelPythonFiles
 Var EditorPath
+Var FileName
 Var GhostscriptPath
 Var GnumericPath
 Var ImageEditorPath
@@ -44,6 +47,8 @@ Var Search
 Var SVGPath
 Var StartmenuFolder
 Var String
+Var ThesCode
+Var ThesCodes
 Var UpdateFNDBReturn
 Var UserList
 Var WMFPath

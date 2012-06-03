@@ -132,6 +132,18 @@ Section -ProgramFiles SecProgramFiles
    Call ConfigureMiKTeX # Function from LaTeX.nsh
   ${endif}
   
+  # download dictionaries and thesaurus
+  ${if} $DictCodes != ""
+   Call InstallHunspellDictionary # Function from Thesaurus.nsh
+  ${endif}
+  ${if} $ThesCodes != ""
+   Call InstallThesaurusDictionary # Function from Thesaurus.nsh
+  ${endif}
+  # finally delete the list of dictionaries and mirrors
+  Delete "$INSTDIR\Resources\DictionaryMirrors.txt"
+  Delete "$INSTDIR\Resources\ThesaurusDictionaryNames.txt"
+  Delete "$INSTDIR\Resources\HunspellDictionaryNames.txt"
+  
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 

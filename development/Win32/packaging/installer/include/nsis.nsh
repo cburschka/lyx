@@ -47,6 +47,9 @@ Configuration of standard NSIS header files
  !include gui\LaTeXFolder.nsh
 !endif # end if != BUNDLE
 
+# Functions download dictionaries
+!include include\Thesaurus.nsh
+
 #--------------------------------
 # Include standard functions
 
