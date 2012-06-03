@@ -32535,19 +32535,51 @@ arg   "thesaurus-entry"
  estando seleccionada.
  Se muestra una ventana con palabras relacionadas con la anterior agrupadas
  en categorías.
- El tesauro no solo muestra sinónimos, también hiperónimos e hipónimos (
+ 
+\lang english
+For some languages
+\lang spanish
+ el tesauro no solo muestra sinónimos, también 
+\lang english
+generic terms
+\lang spanish
+ (como 
 \emph on
-planta
+organismo
 \emph default
  por 
 \emph on
-árbol
+planta
 \emph default
-), compuestas (
+), 
+\lang english
+related terms (such as 
 \emph on
-planta arbórea
+political
+\begin_inset space ~
+\end_inset
+
+theory
 \emph default
-) y antónimos (
+ por 
+\emph on
+anarchistic
+\emph default
+), compounds (como 
+\emph on
+tree
+\begin_inset space ~
+\end_inset
+
+diagram
+\emph default
+, if you look for 
+\emph on
+tree
+\emph default
+)
+\lang spanish
+ y antónimos (
 \emph on
 mujer
 \emph default
@@ -32555,7 +32587,10 @@ mujer
 \emph on
 hombre
 \emph default
-), marcados como tales.
+).
+ 
+\lang english
+Generic terms, related terms and antonyms are marked as such.
 \end_layout
 
 \begin_layout Standard

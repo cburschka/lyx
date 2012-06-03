@@ -40374,28 +40374,52 @@ type  "icon"
 arg   "thesaurus-entry"
 \end_inset
 
-を使うと、ダイアログが現れて、関連しているとみなされる単語が表示されるので、単語の置換に使用することができます。提案語はカテゴリごとに分類されています。類語辞典
-は、同義語を表示するだけでなく、包摂語や被包摂語(
+を使うと、ダイアログが現れて、関連しているとみなされる単語が表示されるので、単語の置換に使用することができます。提案語はカテゴリごとに分類されています。
+\lang english
+Note that, for some languages (such as English), the thesaurus does not
+ only show equivalent words (synonyms), but also generic terms (such as
+ 
 \emph on
-tree
+organism
 \emph default
-に対する
+ for 
 \emph on
 plant
 \emph default
-など)、複合語(
+), related terms (such as 
 \emph on
-tree diagram
+political
+\begin_inset space ~
+\end_inset
+
+theory
 \emph default
-など)、反対語(
+ for 
 \emph on
-men
+anarchistic
 \emph default
-に対する
+), compounds (such as 
 \emph on
-women
+tree
+\begin_inset space ~
+\end_inset
+
+diagram
 \emph default
-など)も分類とともに表示されます。
+, if you look for 
+\emph on
+tree
+\emph default
+) and opposites (antonyms) (such as 
+\emph on
+girl
+\emph default
+ for 
+\emph on
+boy
+\emph default
+).
+ Generic terms, related terms and antonyms are marked as such.
 \end_layout
 
 \begin_layout Standard

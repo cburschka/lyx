@@ -33338,43 +33338,51 @@ arg   "thesaurus-entry"
  Es öffnet sich ein Dialog und zeigt Wörter als Ersetzungsvorschläge an,
  die wahrscheinlich dasselbe wie das aktuelle Wort bedeuten.
  Die Vorschläge sind in Kategorien gruppiert.
- Man beachte dass der Thesaurus nicht nur Synonyme anzeigt, sondern auch
- Hyperonyme und Hyponyme (wie z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- 
+ Für manche Sprachen (beispielsweise Englisch) zeigt der Thesaurus nicht
+ nur bedeutungsähnliche Wörter (Synonyme) an, sondern auch Oberbegriffe
+ (wie 
 \emph on
-Pflanze
+organism
 \emph default
  für 
 \emph on
-Baum
+plant
 \emph default
-), Zusammensetzungen (z.
-\begin_inset space \thinspace{}
+), sachverwandte Wörter (wie 
+\emph on
+polical
+\begin_inset space ~
 \end_inset
 
-B.
- 
-\emph on
-Baumdiagramm
-\emph default
-) und Antonyme (z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- 
-\emph on
-Frau
+theory
 \emph default
  für 
 \emph on
-Mann
+anarchistic
 \emph default
-), die als solche gekennzeichnet sind.
+), Zusammengesetze Wörter (wie 
+\emph on
+tree
+\begin_inset space ~
+\end_inset
+
+diagram
+\emph default
+, wenn Sie 
+\emph on
+tree
+\emph default
+ eingeben) und Gegenbegriffe (Antonyme) (wie 
+\emph on
+boy
+\emph default
+ für 
+\emph on
+girl
+\emph default
+).
+ Das deutsche Thesauruswörterbuch zeigt momentan allerdings nur bedeutungsähnlic
+he und bedeutungsverwandte Wörter an.
 \end_layout
 
 \begin_layout Standard

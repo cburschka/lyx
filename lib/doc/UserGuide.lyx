@@ -32190,28 +32190,50 @@ arg   "thesaurus-entry"
  A dialog pops up showing you probably related words that you can use as
  a replacement.
  The proposals are grouped into categories.
- Note that the thesaurus does not only show synonyms, but also hyperonyms
- and hyponyms (such as 
+ Note that, for some languages (such as English), the thesaurus does not
+ only show equivalent words (synonyms), but also generic terms (such as
+ 
+\emph on
+organism
+\emph default
+ for 
 \emph on
 plant
 \emph default
+), related terms (such as 
+\emph on
+political
+\begin_inset space ~
+\end_inset
+
+theory
+\emph default
  for 
 \emph on
-tree
+anarchistic
 \emph default
 ), compounds (such as 
 \emph on
-tree diagram
+tree
+\begin_inset space ~
+\end_inset
+
+diagram
 \emph default
-) and antonyms (such as 
+, if you look for 
 \emph on
-women
+tree
+\emph default
+) and opposites (antonyms) (such as 
+\emph on
+girl
 \emph default
  for 
 \emph on
-man
+boy
 \emph default
-), which are marked as such.
+).
+ Generic terms, related terms and antonyms are marked as such.
 \end_layout
 
 \begin_layout Standard
