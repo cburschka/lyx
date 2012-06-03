@@ -18,6 +18,7 @@ Configuration of LyX installer
 !define FILES_UNOCONV "${FILES_DEPS}\bin"
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
+!define FILES_MIKTEX "${FILES_DEPS}\miktex"
 !define FILES_NETPBM "${FILES_DEPS}\bin"
 !define FILES_DTL "${FILES_DEPS}\bin"
 !define FILES_DVIPOST "${FILES_DEPS}\bin"
