@@ -23,7 +23,6 @@
 #include "DocIterator.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
-#include "ParagraphParameters.h"
 #include "Text.h"
 
 #include "mathed/MathSupport.h"
@@ -345,15 +344,6 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		advance(first, first_pit);
 		ParagraphList::const_iterator last = plist.begin();
 		advance(last, last_pit + 1);
-		// If the paragraphs after the last one have a
-		// non-zero depth and the depth of last paragraph is
-		// decremented, then these paragraphs may be affected
-		// (ticket #8159). We guard against that by saving
-		// these extra paragraphs.
-		while (last != plist.end() && last->params().depth() > 0) {
-			++last;
-			--undo.end;
-		}
 		undo.pars = new ParagraphList(first, last);
 	}
 
