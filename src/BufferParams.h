@@ -124,6 +124,10 @@ public:
 	bool setBaseClass(std::string const & classname);
 	/// Adds the module information to the baseClass information to
 	/// create our local DocumentClass.
+	/// NOTE: This should NEVER be called externally unless one immediately goes
+	/// on to class BufferView::updateDocumentClass(). The exception, of course,
+	/// is in GuiDocument, where we use a BufferParams simply to hold a copy of
+	/// the parameters from the active Buffer.
 	void makeDocumentClass();
 	/// Returns the DocumentClass currently in use: the BaseClass as modified
 	/// by modules.

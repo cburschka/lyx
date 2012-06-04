@@ -503,7 +503,7 @@ static void copy_params(BufferView const & bv, BufferView & dest_bv) {
 	Buffer & dest_buf = dest_bv.buffer();
 	dest_buf.params().setLanguage(lang);
 	dest_buf.params().setBaseClass(doc_class);
-	dest_buf.params().makeDocumentClass();
+	dest_bv.makeDocumentClass();
 	dest_bv.cursor().current_font.setLanguage(doc_bp.language);
 }
 

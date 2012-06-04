@@ -318,6 +318,8 @@ public:
 	void clearLastInset(Inset * inset) const;
 	/// Is the mouse hovering a clickable inset or element?
 	bool clickableInset() const;
+	///
+	void makeDocumentClass();
 
 private:
 	/// noncopyable

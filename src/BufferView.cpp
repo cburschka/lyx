@@ -941,6 +941,14 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 }
 
 
+void BufferView::makeDocumentClass()
+{
+	DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
+	buffer_.params().makeDocumentClass();
+	updateDocumentClass(olddc);
+}
+
+
 void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 {
 	message(_("Converting document to new document class..."));
@@ -955,6 +963,7 @@ void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 
 	buffer_.errors("Class Switch");
 }
+
 
 /** Return the change status at cursor position, taking in account the
  * status at each level of the document iterator (a table in a deleted
@@ -1256,11 +1265,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 		
 	case LFUN_LAYOUT_MODULES_CLEAR: {
-		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().clearLayoutModules();
-		buffer_.params().makeDocumentClass();
-		updateDocumentClass(oldClass);
+		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
@@ -1274,11 +1281,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				"conflicts with installed modules.");
 			break;
 		}
-		DocumentClassConstPtr oldClass = params.documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().addLayoutModule(argument);
-		buffer_.params().makeDocumentClass();
-		updateDocumentClass(oldClass);
+		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
@@ -1305,11 +1310,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		// Save the old, possibly modular, layout for use in conversion.
-		DocumentClassConstPtr oldDocClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		buffer_.params().setBaseClass(argument);
-		buffer_.params().makeDocumentClass();
-		updateDocumentClass(oldDocClass);
+		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
@@ -1330,12 +1333,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_LAYOUT_RELOAD: {
-		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
 		LayoutFileIndex bc = buffer_.params().baseClassID();
 		LayoutFileList::get().reset(bc);
 		buffer_.params().setBaseClass(bc);
-		buffer_.params().makeDocumentClass();
-		updateDocumentClass(oldClass);
+		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 		break;
