@@ -3316,10 +3316,6 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
 		}
-		TexRow texrow;
-		texrow.reset();
-		texrow.newline();
-		texrow.newline();
 		// output paragraphs
 		if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
@@ -3334,6 +3330,10 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		} else if (params().isDocBook()) {
 			docbookParagraphs(text(), *this, os, runparams);
 		} else {
+			TexRow texrow;
+			texrow.reset();
+			texrow.newline();
+			texrow.newline();
 			// latex or literate
 			otexstream ots(os, texrow);
 			latexParagraphs(*this, text(), ots, runparams);
@@ -3347,9 +3347,6 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		else if (output == OnlyBody)
 			os << _("Preview body");
 		os << "\n\n";
-		d->texrow.reset();
-		d->texrow.newline();
-		d->texrow.newline();
 		if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
 		} else if (runparams.flavor == OutputParams::TEXT) {
@@ -3361,6 +3358,9 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 				writeDocBookSource(os, absFileName(), runparams, output);
 		} else {
 			// latex or literate
+			d->texrow.reset();
+			d->texrow.newline();
+			d->texrow.newline();
 			otexstream ots(os, d->texrow);
 			writeLaTeXSource(ots, string(), runparams, output);
 		}
