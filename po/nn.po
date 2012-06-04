@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-06-03 10:20-0400\n"
-"PO-Revision-Date: 2012-02-11 18:59+0100\n"
-"Last-Translator: Ingar Pareliussen <ingar.pareliussen@_dmmh_no>\n"
+"PO-Revision-Date: 2012-06-04 21:13+0200\n"
+"Last-Translator: Ingar Pareliussen\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: nn_NO\n"
 "X-Source-Language: C\n"
@@ -1476,12 +1476,12 @@ msgid "FontUi"
 msgstr "SkrifttypeUI"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
-"Bruk OpenType- og TrueType-skriftypar direkte (du treng XeTeX eller LuaTeX )"
+"Bruk OpenType- og TrueType-skriftypar med fontspec-pakken (du treng XeTeX "
+"eller LuaTeX )"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -5063,32 +5063,28 @@ msgid "VFill"
 msgstr "Fyll vertikalt"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:32
-#, fuzzy
 msgid "F&ormat:"
-msgstr "&Format:"
+msgstr "F&ormat:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:45
 msgid "Select the output format"
 msgstr "Vel standard førehandsvising"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
-#, fuzzy
 msgid "Current Paragraph"
 msgstr "Dette avsnittet"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:61
-#, fuzzy
 msgid "Complete Source"
-msgstr "Vis heile kjeldekoden"
+msgstr "Heile kjeldekoden"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:66
 msgid "Preamble Only"
-msgstr ""
+msgstr "Berre LaTeX fortekst"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:71
-#, fuzzy
 msgid "Body Only"
-msgstr "Berre i framføring"
+msgstr "Berre tekstkroppen"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:89
 msgid "Automatic update"
@@ -6622,15 +6618,14 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:241
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Subsection.\\arabic{subsection}"
+msgstr ""
+"Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:255
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Subsection.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
 #: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
@@ -6660,7 +6655,7 @@ msgstr "Lysark igjen med etikett"
 
 #: lib/layouts/beamer.layout:389
 msgid "EndFrame"
-msgstr "Slutten på lysarket"
+msgstr "Avslutt lysarket"
 
 #: lib/layouts/beamer.layout:403
 msgid "________________________________"
@@ -6678,15 +6673,15 @@ msgstr "Kolonne"
 #: lib/layouts/beamer.layout:467 lib/layouts/beamer.layout:478
 #: lib/layouts/beamer.layout:496 lib/layouts/beamer.layout:527
 msgid "Columns"
-msgstr "Kolonnar"
+msgstr "Start kolonnar"
 
 #: lib/layouts/beamer.layout:454
 msgid "Start column (increase depth!), width:"
-msgstr "Start kolonne med innrykk:"
+msgstr "Start kolonne (auk djupne!), innrykk:"
 
 #: lib/layouts/beamer.layout:495
 msgid "ColumnsCenterAligned"
-msgstr "Sentrerte kolonnar"
+msgstr "Start sentrerte kolonnar"
 
 #: lib/layouts/beamer.layout:507
 msgid "Columns (center aligned)"
@@ -6694,7 +6689,7 @@ msgstr "kolonnar (Sentrerte kolonnar)"
 
 #: lib/layouts/beamer.layout:526
 msgid "ColumnsTopAligned"
-msgstr "Toppjusterte kolonnar"
+msgstr "Start toppjusterte kolonnar"
 
 #: lib/layouts/beamer.layout:538
 msgid "Columns (top aligned)"
@@ -9134,18 +9129,16 @@ msgid "LandscapeSlide"
 msgstr "LiggandeLysark"
 
 #: lib/layouts/seminar.layout:26
-#, fuzzy
 msgid "Landscape Slide"
-msgstr "Liggande lysark:"
+msgstr "Liggande lysark"
 
 #: lib/layouts/seminar.layout:38 lib/layouts/seminar.layout:100
 msgid "PortraitSlide"
 msgstr "StåandeLysark"
 
 #: lib/layouts/seminar.layout:40
-#, fuzzy
 msgid "Portrait Slide"
-msgstr "Ståande lysark:"
+msgstr "Ståande lysark"
 
 #: lib/layouts/seminar.layout:45
 msgid "SlideHeading"
@@ -9160,16 +9153,14 @@ msgid "ListOfSlides"
 msgstr "LysarkListe"
 
 #: lib/layouts/seminar.layout:60
-#, fuzzy
 msgid "List of Slides"
-msgstr "[Lysark liste]"
+msgstr "Liste over lysark"
 
 #: lib/layouts/seminar.layout:67 lib/layouts/seminar.layout:126
 msgid "SlideContents"
 msgstr "LysarkInnhald"
 
 #: lib/layouts/seminar.layout:69
-#, fuzzy
 msgid "Slide Contents"
 msgstr "LysarkInnhald"
 
@@ -9178,7 +9169,6 @@ msgid "ProgressContents"
 msgstr "ProgresjonInnhald"
 
 #: lib/layouts/seminar.layout:75
-#, fuzzy
 msgid "Progress Contents"
 msgstr "ProgresjonInnhald"
 
@@ -10270,24 +10260,20 @@ msgid "Claim \\thetheorem."
 msgstr "Påstand \\thetheorem"
 
 #: lib/layouts/theorems-case.inc:12
-#, fuzzy
 msgid "Case \\arabic{casei}."
-msgstr "Tilfelle \\arabic{case}"
+msgstr "Tilfelle \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
-#, fuzzy
 msgid "Case \\roman{caseii}."
-msgstr "Tilfelle \\arabic{case}"
+msgstr "Tilfelle \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:20
-#, fuzzy
 msgid "Case \\alph{caseiii}."
-msgstr "Saka \\thecase."
+msgstr "Tilfellet \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:24
-#, fuzzy
 msgid "Case \\arabic{caseiv}."
-msgstr "Tilfelle \\arabic{case}"
+msgstr "Tilfelle \\arabic{caseiv}."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -12217,9 +12203,8 @@ msgid "Apply Last Text Style|A"
 msgstr "Bruk førre tekststil|k"
 
 #: lib/ui/stdcontext.inc:314
-#, fuzzy
 msgid "Text Style|x"
-msgstr "Tekststil|k"
+msgstr "Tekststil|s"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:119
 msgid "Paragraph Settings...|P"
@@ -12459,9 +12444,8 @@ msgid "Select Section|S"
 msgstr "Vel bolken|V"
 
 #: lib/ui/stdcontext.inc:596
-#, fuzzy
 msgid "Wrap by Preview|y"
-msgstr "Brekk med førehandsvising|f"
+msgstr "Brekk om i førehandsvising|f"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -16499,7 +16483,7 @@ msgstr "Rein tekst, kopla saman linjer"
 
 #: lib/configure.py:600
 msgid "Info (Beamer)"
-msgstr ""
+msgstr "Info (Beamer)"
 
 #: lib/configure.py:603
 msgid "Gnumeric spreadsheet"
@@ -17117,14 +17101,12 @@ msgid "Preview source code"
 msgstr "Førehandsvising av kjeldekode"
 
 #: src/Buffer.cpp:3238
-#, fuzzy
 msgid "Preview preamble"
-msgstr "Førehandsvising klar"
+msgstr "Førehandsvising av LaTeX fortekst"
 
 #: src/Buffer.cpp:3240
-#, fuzzy
 msgid "Preview body"
-msgstr "Førehandsvising klar"
+msgstr "Førehandsvising av tekstkroppen"
 
 #: src/Buffer.cpp:3353
 #, c-format
@@ -23941,7 +23923,7 @@ msgid "Directory not found"
 msgstr "Kan ikkje finne katalogen"
 
 #: src/support/Systemcall.cpp:374
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command\n"
 "%1$s\n"
@@ -23949,23 +23931,23 @@ msgid ""
 "\n"
 "Do you want to stop it?"
 msgstr ""
-"Dokumentet %1$s har endringar som ikkje er lagra\n"
+"Kommandoen\n "
+"%1$s\n"
+"er ikkje ferdig enno.\n"
 "\n"
-"Vil du lagra dokumentet?"
+"Vil du stoppe det?"
 
 #: src/support/Systemcall.cpp:376
-#, fuzzy
 msgid "Stop command?"
-msgstr "Dato kommando"
+msgstr "Stopp kommandoen?"
 
 #: src/support/Systemcall.cpp:377
-#, fuzzy
 msgid "&Stop it"
-msgstr "&behald den"
+msgstr "&Stopp den"
 
 #: src/support/Systemcall.cpp:377
 msgid "Let it &run"
-msgstr ""
+msgstr "La den Køy&re"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
