@@ -24,6 +24,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "DocumentClassPtr.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyX.h"
@@ -127,7 +128,7 @@ struct LayoutBox::Private
 	///
 	GuiView & owner_;
 	///
-	DocumentClass const * text_class_;
+	DocumentClassConstPtr text_class_;
 	///
 	Inset const * inset_;
 	
@@ -530,11 +531,11 @@ void LayoutBox::setIconSize(QSize size)
 void LayoutBox::set(docstring const & layout)
 {
 	d->resetFilter();
-	
-	if (!d->text_class_)
+
+	if (!d->text_class_.get())
 		return;
 
-	if (!(*d->text_class_).hasLayout(layout))
+	if (!d->text_class_->hasLayout(layout))
 		return;
 
 	Layout const & lay = (*d->text_class_)[layout];
@@ -628,13 +629,13 @@ void LayoutBox::updateContents(bool reset)
 	if (!bv) {
 		d->model_->clear();
 		setEnabled(false);
-		d->text_class_ = 0;
+		d->text_class_.reset();
 		d->inset_ = 0;
 		return;
 	}
 	// we'll only update the layout list if the text class has changed
 	// or we've moved from one inset to another
-	DocumentClass const * text_class = &(bv->buffer().params().documentClass());
+	DocumentClassConstPtr text_class = bv->buffer().params().documentClassPtr();
 	Inset const * inset = &(bv->cursor().innerText()->inset());
 	if (!reset && d->text_class_ == text_class && d->inset_ == inset) {
 		set(bv->cursor().innerParagraph().layout().name());
@@ -686,7 +687,7 @@ void LayoutBox::selected(int index)
 		d->model_->itemFromIndex(mindex)->text());
 	d->owner_.setFocus();
 
-	if (!d->text_class_) {
+	if (!d->text_class_.get()) {
 		updateContents(false);
 		d->resetFilter();
 		return;
