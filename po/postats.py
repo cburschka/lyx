@@ -30,7 +30,7 @@ Invocation:
 # modify this when you change branch
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_branch="BRANCH_2_0_X"
+lyx_branch="2.0.x"
 # these po-files will be skipped:
 ommitted = ('en.po')
 
@@ -127,9 +127,9 @@ array ( 'langcode' => '%(langcode)s', "date" => "%(date)s",
 
 if __name__ == "__main__":
     if lyx_branch:
-        branch_tag = "branches/%s" % lyx_branch
+        branch_tag = lyx_branch
     else:
-        branch_tag = "trunk"
+        branch_tag = "master"
 
 
     print """<?php
