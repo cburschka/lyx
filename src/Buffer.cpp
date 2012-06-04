@@ -4434,7 +4434,17 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 	pit_type const lastpit = parit.lastpit();
 	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {
 		// reduce depth if necessary
-		parit->params().depth(min(parit->params().depth(), maxdepth));
+		if (parit->params().depth() > maxdepth) {
+			/** FIXME: this function is const, but
+			 * nevertheless it modifies the buffer. To be
+			 * cleaner, one should modify the buffer in
+			 * another function, which is actually
+			 * non-const. This would however be costly in
+			 * terms of code duplication.
+			 */
+			const_cast<Buffer *>(this)->undo().recordUndo(parit);
+			parit->params().depth(maxdepth);
+		}
 		maxdepth = parit->getMaxDepthAfter();
 
 		if (utype == OutputUpdate) {
