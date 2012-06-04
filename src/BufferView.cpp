@@ -1243,7 +1243,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	switch (act) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
-		DocumentClassConstPtr oldClass = buffer_.params().documentClassPtr();
+		DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		istringstream ss(to_utf8(cmd.argument()));
 		Lexer lex;
@@ -1254,7 +1254,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						<< unknown_tokens << " unknown token"
 						<< (unknown_tokens == 1 ? "" : "s"));
 		}
-		updateDocumentClass(oldClass);
+		updateDocumentClass(olddc);
 			
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
