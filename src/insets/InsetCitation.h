@@ -16,6 +16,7 @@
 #include "InsetCommand.h"
 
 #include "Citation.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 
@@ -33,6 +34,9 @@ public:
 	InsetCitation(Buffer * buf, InsetCommandParams const &);
 	///
 	~InsetCitation();
+
+	///
+	bool addKey(std::string const & key);
 
 	/// \name Public functions inherited from Inset class
 	//@{

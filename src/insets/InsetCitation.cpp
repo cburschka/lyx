@@ -122,6 +122,32 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetCitation::addKey(string const & key)
+{
+	docstring const ukey = from_utf8(key);
+	docstring const & curkeys = getParam("key");
+	if (curkeys.empty()) {
+		setParam("key", ukey);
+		cache.recalculate = true;
+		return true;
+	}
+
+	vector<docstring> keys = getVectorFromString(curkeys);
+	vector<docstring>::const_iterator it = keys.begin();
+	vector<docstring>::const_iterator en = keys.end();
+	for (; it != en; ++it) {
+		if (*it == ukey) {
+			LYXERR0("Key " << key << " already present.");
+			return false;
+		}
+	}
+	keys.push_back(ukey);
+	setParam("key", getStringFromVector(keys));
+	cache.recalculate = true;
+	return true;
+}
+
+
 docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 {
 	Buffer const & buf = bv.buffer();

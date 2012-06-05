@@ -54,6 +54,7 @@
 #include "WordLangTuple.h"
 
 #include "insets/InsetBibtex.h"
+#include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h" // ChangeRefs
 #include "insets/InsetExternal.h"
 #include "insets/InsetGraphics.h"
@@ -1906,6 +1907,23 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (contains(argument, "|")) {
 			arg = token(argument, '|', 0);
 			opt1 = token(argument, '|', 1);
+		}
+
+		// if our cursor is direclty in front of or behind a citation inset,
+		// we will instead add the new key to it.
+		Inset * inset = cur.nextInset();
+		if (!inset || inset->lyxCode() != CITE_CODE)
+			inset = cur.prevInset();
+		if (inset->lyxCode() == CITE_CODE) {
+			InsetCitation * icite = static_cast<InsetCitation *>(inset);
+			if (icite->addKey(arg)) {
+				dr.forceBufferUpdate();
+				dr.screenUpdate(Update::FitCursor | Update::SinglePar);
+				if (!opt1.empty())
+					LYXERR0("Discarding optional argument to citation-insert.");
+			}
+			dispatched = true;
+			break;
 		}
 		InsetCommandParams icp(CITE_CODE);
 		icp["key"] = from_utf8(arg);
