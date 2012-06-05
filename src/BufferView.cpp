@@ -1914,7 +1914,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Inset * inset = cur.nextInset();
 		if (!inset || inset->lyxCode() != CITE_CODE)
 			inset = cur.prevInset();
-		if (inset->lyxCode() == CITE_CODE) {
+		if (inset && inset->lyxCode() == CITE_CODE) {
 			InsetCitation * icite = static_cast<InsetCitation *>(inset);
 			if (icite->addKey(arg)) {
 				dr.forceBufferUpdate();
