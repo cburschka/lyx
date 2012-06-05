@@ -35,7 +35,8 @@ public:
 		XETEX,
 		XML,
 		HTML,
-		TEXT
+		TEXT,
+		LYX
 	};
 	
 	enum MathFlavor {

@@ -752,6 +752,9 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	case OutputParams::TEXT:
 		format = "text";
 		break;
+	case OutputParams::LYX:
+		format = "lyx";
+		break;
 	}
 	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);

@@ -3317,7 +3317,13 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			   << "\n\n";
 		}
 		// output paragraphs
-		if (runparams.flavor == OutputParams::HTML) {
+		if (runparams.flavor == OutputParams::LYX) {
+			Paragraph const & par = text().paragraphs()[par_begin];
+			ostringstream ods;
+			depth_type dt = par.getDepth();
+			par.write(ods, params(), dt);
+			os << from_utf8(ods.str());
+		} else if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
 			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
@@ -3347,7 +3353,16 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		else if (output == OnlyBody)
 			os << _("Preview body");
 		os << "\n\n";
-		if (runparams.flavor == OutputParams::HTML) {
+		if (runparams.flavor == OutputParams::LYX) {
+			ostringstream ods;
+			if (output == FullSource)
+				write(ods);
+			else if (output == OnlyPreamble)
+				params().writeFile(ods);
+			else if (output == OnlyBody)
+				text().write(ods);
+			os << from_utf8(ods.str());
+		}	else if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
 		} else if (runparams.flavor == OutputParams::TEXT) {
 			if (output == OnlyPreamble) {

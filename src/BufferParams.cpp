@@ -2180,6 +2180,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
 		result = OutputParams::HTML;
 	else if (dformat == "text")
 		result = OutputParams::TEXT;
+	else if (dformat == "lyx")
+		result = OutputParams::LYX;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();

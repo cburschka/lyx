@@ -209,9 +209,6 @@ void ViewSourceWidget::updateDefaultFormat()
 			LYXERR0("Can't find format for backend " << format << "!");
 			continue;
 		} 
-		if (fmt->name() == "lyx")
-			// we can't presently display the LyX format itself
-			continue;
 
 		QString const pretty = qt_(fmt->prettyname());
 		QString const qformat = toqstr(format);
