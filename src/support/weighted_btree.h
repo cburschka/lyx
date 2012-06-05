@@ -2023,7 +2023,7 @@ private:
 
                         slot -= inner->slotuse+1;
                         inner = static_cast<inner_node*>(*splitnode);
-                        BTREE_PRINT("btree::insert_descend switching to splitted node " << inner << " slot " << slot <<std::endl);
+                        BTREE_PRINT("btree::insert_descend switching to split node " << inner << " slot " << slot <<std::endl);
                     }
                 }
 

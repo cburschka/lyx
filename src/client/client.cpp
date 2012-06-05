@@ -293,7 +293,7 @@ bool LyXDataSocket::connected() const
 // Returns true if there was a complete line to input
 // A line is of the form <key>:<value>
 //   A line not of this form will not be passed
-// The line read is splitted and stored in 'key' and 'value'
+// The line read is split and stored in 'key' and 'value'
 bool LyXDataSocket::readln(string & line)
 {
 	int const charbuf_size = 100;

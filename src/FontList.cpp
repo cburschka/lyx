@@ -143,7 +143,7 @@ void FontList::set(pos_type pos, Font const & font)
 	bool const end = found && list_[i].pos() == pos;
 
 	if (!begin && !end) {
-		// The general case: The block is splitted into 3 blocks
+		// The general case: The block is split into 3 blocks
 		list_.insert(list_.begin() + i,
 				FontTable(pos - 1, list_[i].font()));
 		list_.insert(list_.begin() + i + 1,

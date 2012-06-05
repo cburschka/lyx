@@ -272,7 +272,7 @@ private:
 	/// around the middle snake.
 	void diff_i(DocRangePair const & rp);
 
-	/// Processes the splitted chunks. It either adds them as deleted,
+	/// Processes the split chunks. It either adds them as deleted,
 	/// as added, or call diff_i for further processing.
 	void diffPart(DocRangePair const & rp);
 

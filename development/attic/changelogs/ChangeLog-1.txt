@@ -10591,7 +10591,7 @@
 	* lib/reLyX/configure.in (LYX_DIR): re-introduce this variable
 	that I removed earlier... It is really needed.
 
-	* lib/examples/multicol.lyx: new file, splitted from Extended.lyx.
+	* lib/examples/multicol.lyx: new file, split from Extended.lyx.
 
 2000-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -11809,7 +11809,7 @@
 
 	* src/lyxfunc.C (Dispatch): added case for LFUN_SAVEPREFERENCES
 
-	* src/layout.[hC] : LayoutTags splitted into several enums, new
+	* src/layout.[hC] : LayoutTags split into several enums, new
 	methods created, better error handling cleaner use of lyxlex. Read
 	the diff.
 

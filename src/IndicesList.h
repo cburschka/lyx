@@ -25,7 +25,7 @@ namespace lyx {
  * \class Index
  *
  * A class describing an Index type, such as "Index of Names".
- * Different Index types are used in splitted Indices
+ * Different Index types are used in split Indices
  *
  * An Index has a name and a shortcut notation. It uses a
  * user-specifiable GUI colour. All these can be set and
