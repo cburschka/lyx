@@ -361,7 +361,7 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path)
 
 void SystemcallPrivate::processEvents()
 {
-	if(process_events_) {
+	if (process_events_) {
 		QCoreApplication::processEvents(/*QEventLoop::ExcludeUserInputEvents*/);
 	}
 }
