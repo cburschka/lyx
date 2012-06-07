@@ -104,7 +104,7 @@ End
 # 	GuiName          "Greek (ancient)"
 # 	PolyglossiaName  greek
 # 	PolyglossiaOpts  variant=ancient
-# 	LangCode         grc
+# 	LangCode         grc_GR
 # End
 
 # FIXME: dummy babel language for arabic_arabtex to be able
@@ -268,7 +268,7 @@ End
 # Language coptic
 # 	GuiName          "Coptic"
 # 	PolyglossiaName  coptic
-# 	LangCode         cop
+# 	LangCode         cop_EG
 # End
 
 Language croatian
@@ -299,7 +299,7 @@ End
 # Language divehi
 # 	GuiName          "Divehi (Maldivian)"
 # 	PolyglossiaName  divehi
-# 	LangCode         dv
+# 	LangCode         dv_MV
 # End
 
 Language dutch
@@ -448,7 +448,7 @@ End
 # 	GuiName          "Hindi"
 # 	PolyglossiaName  hindi
 # 	Encoding         utf8
-# 	LangCode         hi
+# 	LangCode         hi_IN
 # End
 
 # Currently not supported (file format change!)
@@ -539,7 +539,7 @@ End
 # Language lao
 # 	GuiName          "Lao"
 # 	PolyglossiaName  lao
-# 	LangCode         lo
+# 	LangCode         lo_LA
 # End
 
 # There is no country code for Latin because it is a dead language.
@@ -594,7 +594,7 @@ End
 # Language marathi
 # 	GuiName          "Marathi"
 # 	PolyglossiaName  marathi
-# 	LangCode         mr
+# 	LangCode         mr_IN
 # End
 
 # mongolian must be loaded locally with babel options,
@@ -636,7 +636,7 @@ End
 # Language occitan
 # 	GuiName          "Occitan"
 # 	PolyglossiaName  occitan
-# 	LangCode         oc
+# 	LangCode         oc_FR
 # End
 
 # Currently not supported (file format change!)
@@ -694,7 +694,7 @@ End
 # 	GuiName          "Sanskrit"
 # 	PolyglossiaName  sanskrit
 # 	Encoding         utf8
-# 	LangCode         sa
+# 	LangCode         sa_IN
 # End
 
 Language scottish
@@ -773,21 +773,21 @@ End
 # Language syriac
 # 	GuiName          "Syriac"
 # 	PolyglossiaName  syriac
-# 	LangCode         syr
+# 	LangCode         syr_SY
 # End
 
 # Currently not supported (file format change!)
 # Language tamil
 # 	GuiName          "Tamil"
 # 	PolyglossiaName  tamil
-# 	LangCode         Taml
+# 	LangCode         ta_IN
 # End
 
 # Currently not supported (file format change!)
 # Language telugu
 # 	GuiName          "Telugu"
 # 	PolyglossiaName  telugu
-# 	LangCode         te
+# 	LangCode         te_IN
 # End
 
 Language thai
@@ -843,7 +843,7 @@ End
 # Language urdu
 # 	GuiName          "Urdu"
 # 	PolyglossiaName  urdu
-# 	LangCode         ur
+# 	LangCode         ur_PK
 # End
 
 # vietnam must be loaded locally with babel options,
