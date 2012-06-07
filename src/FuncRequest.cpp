@@ -13,6 +13,7 @@
 #include "FuncRequest.h"
 #include "LyXAction.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <climits>
@@ -132,12 +133,19 @@ bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 ostream & operator<<(ostream & os, FuncRequest const & cmd)
 {
 	return os
-		<< " action: " << cmd.action() 
-		<< " [" << lyxaction.getActionName(cmd.action()) << "] " 
+		<< " action: " << cmd.action()
+		<< " [" << lyxaction.getActionName(cmd.action()) << "] "
 		<< " arg: '" << to_utf8(cmd.argument()) << "'"
 		<< " x: " << cmd.x()
 		<< " y: " << cmd.y();
 }
 
+
+LyXErr & operator<<(LyXErr &l, FuncRequest const &fr)
+{
+	ostringstream oss;
+	oss << fr;
+	return l << oss.str();
+}
 
 } // namespace lyx

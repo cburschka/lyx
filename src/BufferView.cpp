@@ -1204,14 +1204,7 @@ void BufferView::editInset(string const & name, Inset * inset)
 
 void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
-	//lyxerr << [ cmd = " << cmd << "]" << endl;
-
-	// Make sure that the cached BufferView is correct.
-	LYXERR(Debug::ACTION, " action[" << cmd.action() << ']'
-		<< " arg[" << to_utf8(cmd.argument()) << ']'
-		<< " x[" << cmd.x() << ']'
-		<< " y[" << cmd.y() << ']'
-		<< " button[" << cmd.button() << ']');
+	LYXERR(Debug::ACTION, "BufferView::dispatch: cmd: " << cmd);
 
 	string const argument = to_utf8(cmd.argument());
 	Cursor & cur = d->cursor_;

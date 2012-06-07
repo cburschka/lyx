@@ -291,6 +291,9 @@ What's new
 
 - Fixed compilation with clang.
 
+- In debugging messages related to LyX actions, make sure that the
+  action and its arguments are correctly reported. 
+
 - Included the qt gif plugin in the Windows installer. This
   enables the busy icon in the status bar.
 

@@ -21,6 +21,8 @@
 
 namespace lyx {
 
+class LyXErr;
+
 /**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
@@ -107,6 +109,8 @@ private:
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs);
 
 std::ostream & operator<<(std::ostream &, FuncRequest const &);
+
+LyXErr & operator<<(LyXErr &, FuncRequest const &);
 
 
 } // namespace lyx

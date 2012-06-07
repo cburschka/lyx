@@ -261,8 +261,7 @@ Inset * InsetText::editXY(Cursor & cur, int x, int y)
 
 void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
-		<< " [ cmd.action() = " << cmd.action() << ']');
+	LYXERR(Debug::ACTION, "InsetText::doDispatch(): cmd: " << cmd);
 
 	if (getLayout().isPassThru()) {
 		// Force any new text to latex_language FIXME: This
