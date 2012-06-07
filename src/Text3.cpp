@@ -1331,18 +1331,19 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CLIPBOARD_PASTE:
-		cur.clearSelection();
+		cap::replaceSelection(cur);
 		pasteClipboardText(cur, bv->buffer().errorList("Paste"),
 			       cmd.argument() == "paragraph");
 		bv->buffer().errors("Paste");
 		break;
 
 	case LFUN_CLIPBOARD_PASTE_SIMPLE:
-		cur.clearSelection();
+		cap::replaceSelection(cur);
 		pasteSimpleText(cur, cmd.argument() == "paragraph");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
+		cap::replaceSelection(cur);
 		pasteString(cur, theSelection().get(),
 			    cmd.argument() == "paragraph");
 		break;
@@ -1351,6 +1352,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Copy the selection buffer to the clipboard stack,
 		// because we want it to appear in the "Edit->Paste
 		// recent" menu.
+		cap::replaceSelection(cur);
 		cap::copySelectionToStack();
 		cap::pasteSelection(bv->cursor(), bv->buffer().errorList("Paste"));
 		bv->buffer().errors("Paste");
@@ -2836,7 +2838,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 void Text::pasteString(Cursor & cur, docstring const & clip,
 		bool asParagraphs)
 {
-	cur.clearSelection();
 	if (!clip.empty()) {
 		cur.recordUndo();
 		if (asParagraphs)
