@@ -143,7 +143,7 @@ const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 const char * const known_class_paper_sizes[] = { "a4paper", "a5paper",
 "executivepaper", "legalpaper", "letterpaper", 0};
 
-const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin", 
+const char * const known_paper_margins[] = { "lmargin", "tmargin", "rmargin",
 "bmargin", "headheight", "headsep", "footskip", "columnsep", 0};
 
 const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
@@ -677,7 +677,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 			delete_opt(options, known_languages);
 		}
 		else
-			h_preamble << "\\usepackage{babel}\n";						
+			h_preamble << "\\usepackage{babel}\n";
 	}
 
 	else if (name == "fontenc") {
