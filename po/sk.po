@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-05-12 09:24+0200\n"
+"POT-Creation-Date: 2012-06-08 09:50+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -11411,7 +11411,11 @@ msgstr "Albánsky"
 msgid "English (USA)"
 msgstr "Anglicky (USA)"
 
-#: lib/languages:113
+#: lib/languages:105
+msgid "Greek (ancient)"
+msgstr "Grécky (antický)"
+
+#: lib/languages:115
 msgid "Arabic (ArabTeX)"
 msgstr "Arabsky (ArabTeX)"
 
@@ -11488,6 +11492,10 @@ msgid "Chinese (traditional)"
 msgstr "Čínsky (tradičná)"
 
 #: lib/languages:275
+msgid "Coptic"
+msgstr "Koptčinsky"
+
+#: lib/languages:282
 msgid "Croatian"
 msgstr "Chorvátsky"
 
@@ -11499,7 +11507,11 @@ msgstr "Česky"
 msgid "Danish"
 msgstr "Dánsky"
 
-#: lib/languages:306
+#: lib/languages:307
+msgid "Divehi (Maldivian)"
+msgstr "Divehi (Maledivy)"
+
+#: lib/languages:314
 msgid "Dutch"
 msgstr "Holandsky"
 
@@ -11556,7 +11568,11 @@ msgstr "Grécky (polytonic)"
 msgid "Hebrew"
 msgstr "Hebrejsky"
 
-#: lib/languages:466
+#: lib/languages:456
+msgid "Hindi"
+msgstr "Hindčinsky"
+
+#: lib/languages:474
 msgid "Icelandic"
 msgstr "Islandsky"
 
@@ -11588,7 +11604,15 @@ msgstr "Kazachsky"
 msgid "Korean"
 msgstr "Kórejsky"
 
-#: lib/languages:547
+#: lib/languages:541
+msgid "Kurmanji"
+msgstr "Kurdsky (Kurmancî)"
+
+#: lib/languages:549 src/frontends/qt4/GuiSymbols.cpp:76
+msgid "Lao"
+msgstr "Laosky"
+
+#: lib/languages:558
 msgid "Latin"
 msgstr "Latinsky"
 
@@ -11608,7 +11632,11 @@ msgstr "Srbsky (Dolnolužicky)"
 msgid "Hungarian"
 msgstr "Maďarsky"
 
-#: lib/languages:602
+#: lib/languages:605
+msgid "Marathi"
+msgstr "Máráthčinsky"
+
+#: lib/languages:615
 msgid "Mongolian"
 msgstr "Mongolsky"
 
@@ -11624,7 +11652,11 @@ msgstr "Norsky (Bolmål)"
 msgid "Norwegian (Nynorsk)"
 msgstr "Nórsky (Nynorsk)"
 
-#: lib/languages:652
+#: lib/languages:649
+msgid "Occitan"
+msgstr "Okcitánčinsky"
+
+#: lib/languages:666
 msgid "Polish"
 msgstr "Poľsky"
 
@@ -11644,7 +11676,11 @@ msgstr "Rusky"
 msgid "North Sami"
 msgstr "Sámsky (Severný)"
 
-#: lib/languages:700
+#: lib/languages:707
+msgid "Sanskrit"
+msgstr "Sanskrit (stará indoárijčina)"
+
+#: lib/languages:714
 msgid "Scottish"
 msgstr "Škótsky"
 
@@ -11676,7 +11712,19 @@ msgstr "Španielsky (Mexiko)"
 msgid "Swedish"
 msgstr "Švédsky"
 
-#: lib/languages:793 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:787
+msgid "Syriac"
+msgstr "Syriac (stredoveká hebrejčina)"
+
+#: lib/languages:795 src/frontends/qt4/GuiSymbols.cpp:71
+msgid "Tamil"
+msgstr "Tamilsky"
+
+#: lib/languages:803 src/frontends/qt4/GuiSymbols.cpp:72
+msgid "Telugu"
+msgstr "Telugsky"
+
+#: lib/languages:810 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Thajsky"
 
@@ -11696,7 +11744,11 @@ msgstr "Ukrajinsky"
 msgid "Upper Sorbian"
 msgstr "Srbsky (Hornolužicky)"
 
-#: lib/languages:852
+#: lib/languages:860
+msgid "Urdu"
+msgstr "Urdsky"
+
+#: lib/languages:870
 msgid "Vietnamese"
 msgstr "Vietnamsky"
 
@@ -22197,14 +22249,6 @@ msgstr "Gujarati"
 msgid "Oriya"
 msgstr "Oriya"
 
-#: src/frontends/qt4/GuiSymbols.cpp:71
-msgid "Tamil"
-msgstr "Tamilsky"
-
-#: src/frontends/qt4/GuiSymbols.cpp:72
-msgid "Telugu"
-msgstr "Telugsky"
-
 #: src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Kannada"
 msgstr "Kanadsky"
@@ -22212,10 +22256,6 @@ msgstr "Kanadsky"
 #: src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Malayalam"
 msgstr "Malayalam"
-
-#: src/frontends/qt4/GuiSymbols.cpp:76
-msgid "Lao"
-msgstr "Laosky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Tibetan"
