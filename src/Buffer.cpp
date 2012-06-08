@@ -1478,7 +1478,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
 	bool const output_body =
-	  output == FullSource || output == OnlyBody;
+		output == FullSource || output == OnlyBody;
 
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
@@ -3362,7 +3362,7 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			else if (output == OnlyBody)
 				text().write(ods);
 			os << from_utf8(ods.str());
-		}	else if (runparams.flavor == OutputParams::HTML) {
+		} else if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
 		} else if (runparams.flavor == OutputParams::TEXT) {
 			if (output == OnlyPreamble) {
