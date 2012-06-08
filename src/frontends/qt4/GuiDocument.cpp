@@ -1060,6 +1060,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// language & quote
 	langModule = new UiWidget<Ui::LanguageUi>;
 	connect(langModule->languageCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(languageChanged(int)));
 	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
