@@ -133,8 +133,8 @@ const char * const polyglossia_languages[] = {
 "marathi", "spanish", 0};
 
 /**
- * the same as known_languages with .lyx names
- * please keep this in sync with known_languages line by line!
+ * the same as polyglossia_languages with .lyx names
+ * please keep this in sync with polyglossia_languages line by line!
  */
 const char * const coded_polyglossia_languages[] = {
 "albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
