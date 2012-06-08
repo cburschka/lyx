@@ -1244,8 +1244,22 @@ void BufferParams::validate(LaTeXFeatures & features) const
 			features.require("color");
 	}
 
-	if (features.runparams().flavor == OutputParams::XETEX
-	    && useNonTeXFonts)
+	// some languages are only available via polyglossia
+	if ( (features.runparams().flavor == OutputParams::XETEX
+		  || language->lang() == "ancientgreek"
+		  || language->lang() == "coptic"
+		  || language->lang() == "divehi"
+		  || language->lang() == "hindi"
+		  || language->lang() == "kurmanji"
+		  || language->lang() == "lao"
+		  || language->lang() == "marathi"
+		  || language->lang() == "occitan"
+		  || language->lang() == "sanskrit"
+		  || language->lang() == "syriac"
+		  || language->lang() == "tamil"
+		  || language->lang() == "telugu"
+		  || language->lang() == "urdu"
+		 ) && useNonTeXFonts)
 		features.require("polyglossia");
 
 	if (language->lang() == "vietnamese")

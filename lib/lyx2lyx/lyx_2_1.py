@@ -214,15 +214,14 @@ def revert_australian(document):
     "Set English language variants Australian and Newzealand to English" 
 
     if document.language == "australian" or document.language == "newzealand": 
-        document.language = "english" 
+        document.language = "english"
         i = find_token(document.header, "\\language", 0) 
         if i != -1: 
             document.header[i] = "\\language english" 
-
     j = 0 
     while True: 
         j = find_token(document.body, "\\lang australian", j) 
-        if j == -1: 
+        if j == -1:
             j = find_token(document.body, "\\lang newzealand", 0)
             if j == -1:
                 return
@@ -767,6 +766,47 @@ def revert_use_amssymb(document):
         add_to_preamble(document, ["\\usepackage{amssymb}"])
 
 
+def revert_ancientgreek(document):
+    "Set the document language for ancientgreek to greek" 
+
+    if document.language == "ancientgreek": 
+        document.language = "greek"
+        i = find_token(document.header, "\\language", 0) 
+        if i != -1: 
+            document.header[i] = "\\language greek" 
+    j = 0 
+    while True: 
+        j = find_token(document.body, "\\lang ancientgreek", j) 
+        if j == -1:
+            return
+        else:
+            document.body[j] = document.body[j].replace("\\lang ancientgreek", "\\lang greek") 
+        j += 1
+
+
+def revert_languages(document):
+    "Set the document language for new supported languages to English" 
+
+    languages = [
+                 "coptic", "divehi", "hindi", "kurmanji", "lao", "marathi", "occitan", "sanskrit",
+                 "syriac", "tamil", "telugu", "urdu"
+                ]
+    for n in range(len(languages)):
+        if document.language == languages[n]:
+            document.language = "english"
+            i = find_token(document.header, "\\language", 0) 
+            if i != -1: 
+                document.header[i] = "\\language english" 
+        j = 0
+        while j < len(document.body): 
+            j = find_token(document.body, "\\lang " + languages[n], j)
+            if j != -1:
+                document.body[j] = document.body[j].replace("\\lang " + languages[n], "\\lang english")
+                j += 1
+            else:
+                j = len(document.body)
+
+
 ##
 # Conversion hub
 #
@@ -791,9 +831,11 @@ convert = [
            [429, [convert_table_rotation]],
            [430, [convert_listoflistings]],
            [431, [convert_use_amssymb]],
+           [432, []]
           ]
 
 revert =  [
+           [431, [revert_languages, revert_ancientgreek]],
            [430, [revert_use_amssymb]],
            [429, [revert_listoflistings]],
            [428, [revert_table_rotation]],

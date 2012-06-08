@@ -167,8 +167,9 @@ const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
 /// packages that work only in xetex
+/// polyglossia is handled separately
 const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
-"fontbook", "fontwrap", "mathspec", "philokalia", "polyglossia", "unisugar",
+"fontbook", "fontwrap", "mathspec", "philokalia", "unisugar",
 "xeCJK", "xecolor", "xecyr", "xeindex", "xepersian", "xunicode", 0};
 
 /// packages that are automatically skipped if loaded by LyX
@@ -417,6 +418,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_font_sf_scale           = "100";
 	h_font_tt_scale           = "100";
 	h_graphics                = "default";
+	h_default_output_format   = "default";
 	h_html_be_strict          = "false";
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
@@ -687,6 +689,15 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_preamble << "\\usepackage{babel}\n";
 	}
 
+	else if (name == "polyglossia") {
+		h_language_package = "default";
+		h_default_output_format = "pdf4";
+		h_use_non_tex_fonts = "true";
+		xetex = true;
+		if (h_inputencoding == "auto")
+			p.setEncoding("utf8");
+	}
+
 	else if (name == "fontenc") {
 		h_fontencoding = getStringFromVector(options, ",");
 		/* We could do the following for better round trip support,
@@ -904,7 +915,8 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
 	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
-	   << "\\graphics " << h_graphics << "\n";
+	   << "\\graphics " << h_graphics << "\n"
+	   << "\\default_output_format " << h_default_output_format << "\n";
 	if (!h_float_placement.empty())
 		os << "\\float_placement " << h_float_placement << "\n";
 	os << "\\paperfontsize " << h_paperfontsize << "\n"
@@ -1056,6 +1068,30 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
+
+		else if (t.cs() == "setdefaultlanguage")
+			h_language = p.verbatim_item();
+
+		else if (t.cs() == "setotherlanguage")
+			;
+
+		else if (t.cs() == "setmainfont") {
+			// we don't care about the option
+			p.hasOpt() ? p.getOpt() : string();
+			h_font_roman = p.getArg('{', '}');
+		}
+
+		else if (t.cs() == "setsansfont") {
+			// we don't care about the option
+			p.hasOpt() ? p.getOpt() : string();
+			h_font_sans = p.getArg('{', '}');
+		}
+
+		else if (t.cs() == "setmonofont") {
+			// we don't care about the option
+			p.hasOpt() ? p.getOpt() : string();
+			h_font_typewriter = p.getArg('{', '}');
+		}
 
 		else if (t.cs() == "date") {
 			string argument = p.getArg('{', '}');

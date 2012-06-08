@@ -105,6 +105,7 @@ private:
 	std::string h_font_sf_scale;
 	std::string h_font_tt_scale;
 	std::string h_graphics;
+	std::string h_default_output_format;
 	std::string h_html_be_strict;
 	std::string h_html_css_as_file;
 	std::string h_html_math_output;

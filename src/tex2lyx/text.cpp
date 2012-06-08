@@ -117,6 +117,45 @@ char const * const known_ref_commands[] = { "ref", "pageref", "vref",
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "formatted", "eqref", 0 };
 
+/**
+ * known polyglossia language names (inluding synomyms)
+ */
+const char * const polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazil",
+"brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
+"lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
+"marathi", "spanish", 0};
+
+/**
+ * the same as known_languages with .lyx names
+ * please keep this in sync with known_languages line by line!
+ */
+const char * const coded_polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazilian",
+"brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
+"lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
+"marathi", "spanish", 0};
+
+string polyglossia2lyx(string const & language)
+{
+	char const * const * where = is_known(language, polyglossia_languages);
+	if (where)
+		return coded_polyglossia_languages[where - polyglossia_languages];
+	return language;
+}
+
 /*!
  * natbib commands.
  * The starred forms are also known except for "citefullauthor",
@@ -1210,6 +1249,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			// looks ugly in LyX.
 			eat_whitespace(p, os, parent_context, false);
 		}
+	}
+
+	else if (is_known(name, polyglossia_languages)) {
+		parent_context.check_layout(os);
+		parent_context.font.language = polyglossia2lyx(name);
+		os << "\n\\lang " << parent_context.font.language << "\n";
+		p.skip_spaces();
 	}
 
 	else if (unstarred_name == "tabular" || name == "longtable") {
@@ -3401,7 +3447,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			// save the language for the case that a
 			// \foreignlanguage is used
-
 			context.font.language = babel2lyx(p.verbatim_item());
 			os << "\n\\lang " << context.font.language << "\n";
 		}

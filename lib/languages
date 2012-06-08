@@ -75,6 +75,7 @@ End
 # Real languages
 #
 
+# not yet supported by polyglossia
 Language afrikaans
 	GuiName          "Afrikaans"
 	BabelName        afrikaans
@@ -99,13 +100,14 @@ Language american
 	LangCode         en_US
 End
 
-# Currently not supported (file format change!)
-# Language ancientgreek
-# 	GuiName          "Greek (ancient)"
-# 	PolyglossiaName  greek
-# 	PolyglossiaOpts  variant=ancient
-# 	LangCode         grc_GR
-# End
+# not supported by babel
+Language ancientgreek
+	GuiName          "Greek (ancient)"
+	PolyglossiaName  greek
+	PolyglossiaOpts  variant=ancient
+	Encoding         iso8859-7
+	LangCode         grc_GR
+End
 
 # FIXME: dummy babel language for arabic_arabtex to be able
 # to switch the language the way of the ArabTeX-package
@@ -127,6 +129,7 @@ Language arabic_arabi
 	LangCode         ar_SA
 End
 
+# not supported by babel
 Language armenian
 	GuiName          "Armenian"
 	PolyglossiaName  armenian
@@ -143,6 +146,7 @@ Language australian
 	LangCode         en_AU
 End
 
+# not yet supported by polyglossia
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
@@ -150,6 +154,7 @@ Language austrian
 	LangCode         de_AT
 End
 
+# not yet supported by polyglossia
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
@@ -181,6 +186,7 @@ Language basque
 	LangCode         eu_ES
 End
 
+# not yet supported by polyglossia
 Language belarusian
 	GuiName          "Belarusian"
 	BabelName        belarusian
@@ -264,12 +270,13 @@ Language chinese-traditional
 	LangCode        zh_CN
 End
 
-# Currently not supported (file format change!)
-# Language coptic
-# 	GuiName          "Coptic"
-# 	PolyglossiaName  coptic
-# 	LangCode         cop_EG
-# End
+# not supported by babel
+Language coptic
+	GuiName          "Coptic"
+	PolyglossiaName  coptic
+	Encoding         utf8
+	LangCode         cop_EG
+End
 
 Language croatian
 	GuiName          "Croatian"
@@ -295,12 +302,13 @@ Language danish
 	LangCode         da_DK
 End
 
-# Currently not supported (file format change!)
-# Language divehi
-# 	GuiName          "Divehi (Maldivian)"
-# 	PolyglossiaName  divehi
-# 	LangCode         dv_MV
-# End
+# not supported by babel
+Language divehi
+	GuiName          "Divehi (Maldivian)"
+	PolyglossiaName  divehi
+	Encoding         utf8
+	LangCode         dv_MV
+End
 
 Language dutch
 	GuiName          "Dutch"
@@ -443,13 +451,13 @@ Language hebrew
 	LangCode          he_IL
 End
 
-# Currently not supported (file format change!)
-# Language hindi
-# 	GuiName          "Hindi"
-# 	PolyglossiaName  hindi
-# 	Encoding         utf8
-# 	LangCode         hi_IN
-# End
+# not supported by babel
+Language hindi
+	GuiName          "Hindi"
+	PolyglossiaName  hindi
+	Encoding         utf8
+	LangCode         hi_IN
+End
 
 # Currently not supported (file format change!)
 # "hungarian" is a synonym for the "magyar" babel language option
@@ -514,6 +522,7 @@ Language japanese-cjk
 	LangCode        ja_JP
 End
 
+# not yet supported by polyglossia
 Language kazakh
 	GuiName         "Kazakh"
 	BabelName       kazakh
@@ -527,20 +536,21 @@ Language korean
 	LangCode        ko_KR
 End
 
-# Currently not supported (file format change!)
-# Language kurmanji
-# 	GuiName          "Kurmanji"
-# 	PolyglossiaName  kurmanji
-# 	Encoding         utf8
-# 	LangCode         kmr
-# End
+# not supported by babel
+Language kurmanji
+	GuiName          "Kurmanji"
+	PolyglossiaName  kurmanji
+	Encoding         utf8
+	LangCode         kmr
+End
 
-# Currently not supported (file format change!)
-# Language lao
-# 	GuiName          "Lao"
-# 	PolyglossiaName  lao
-# 	LangCode         lo_LA
-# End
+# not supported by babel
+Language lao
+	GuiName          "Lao"
+	PolyglossiaName  lao
+	Encoding         utf8
+	LangCode         lo_LA
+End
 
 # There is no country code for Latin because it is a dead language.
 # We therefore the name of its hunspell dictionary.
@@ -590,15 +600,17 @@ Language magyar
 	LangCode         hu_HU
 End
 
-# Currently not supported (file format change!)
-# Language marathi
-# 	GuiName          "Marathi"
-# 	PolyglossiaName  marathi
-# 	LangCode         mr_IN
-# End
+# not supported by babel
+Language marathi
+	GuiName          "Marathi"
+	PolyglossiaName  marathi
+	Encoding         utf8
+	LangCode         mr_IN
+End
 
 # mongolian must be loaded locally with babel options,
 # not globally via class options
+# not yet supported by polyglossia
 Language mongolian
 	GuiName          "Mongolian"
 	BabelName        mongolian
@@ -632,12 +644,13 @@ Language nynorsk
 	LangCode         nn_NO
 End
 
-# Currently not supported (file format change!)
-# Language occitan
-# 	GuiName          "Occitan"
-# 	PolyglossiaName  occitan
-# 	LangCode         oc_FR
-# End
+# not supported by babel
+Language occitan
+	GuiName          "Occitan"
+	PolyglossiaName  occitan
+	Encoding         utf8
+	LangCode         oc_FR
+End
 
 # Currently not supported (file format change!)
 # Russian orthography from the Petrine orthographic reforms of
@@ -689,13 +702,13 @@ Language samin
 	LangCode         se_NO
 End
 
-# Currently not supported (file format change!)
-# Language sanskrit
-# 	GuiName          "Sanskrit"
-# 	PolyglossiaName  sanskrit
-# 	Encoding         utf8
-# 	LangCode         sa_IN
-# End
+# not supported by babel
+Language sanskrit
+	GuiName          "Sanskrit"
+	PolyglossiaName  sanskrit
+	Encoding         utf8
+	LangCode         sa_IN
+End
 
 Language scottish
 	GuiName          "Scottish"
@@ -769,26 +782,29 @@ Language swedish
 	LangCode         sv_SE
 End
 
-# Currently not supported (file format change!)
-# Language syriac
-# 	GuiName          "Syriac"
-# 	PolyglossiaName  syriac
-# 	LangCode         syr_SY
-# End
+# not supported by babel
+Language syriac
+	GuiName          "Syriac"
+	PolyglossiaName  syriac
+	Encoding         utf8
+	LangCode         syr_SY
+End
 
-# Currently not supported (file format change!)
-# Language tamil
-# 	GuiName          "Tamil"
-# 	PolyglossiaName  tamil
-# 	LangCode         ta_IN
-# End
+# not supported by babel
+Language tamil
+	GuiName          "Tamil"
+	PolyglossiaName  tamil
+	Encoding         utf8
+	LangCode         ta_IN
+End
 
-# Currently not supported (file format change!)
-# Language telugu
-# 	GuiName          "Telugu"
-# 	PolyglossiaName  telugu
-# 	LangCode         te_IN
-# End
+# not supported by babel
+Language telugu
+	GuiName          "Telugu"
+	PolyglossiaName  telugu
+	Encoding         utf8
+	LangCode         te_IN
+End
 
 Language thai
 	GuiName          "Thai"
@@ -839,12 +855,13 @@ Language uppersorbian
 	LangCode         hsb_DE
 End
 
-# Currently not supported (file format change!)
-# Language urdu
-# 	GuiName          "Urdu"
-# 	PolyglossiaName  urdu
-# 	LangCode         ur_PK
-# End
+# not supported by babel
+Language urdu
+	GuiName          "Urdu"
+	PolyglossiaName  urdu
+	Encoding         utf8
+	LangCode         ur_PK
+End
 
 # vietnam must be loaded locally with babel options,
 # not globally via class options, see
