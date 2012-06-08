@@ -1245,21 +1245,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	}
 
 	// some languages are only available via polyglossia
-	if ( (features.runparams().flavor == OutputParams::XETEX
-		  || language->lang() == "ancientgreek"
-		  || language->lang() == "coptic"
-		  || language->lang() == "divehi"
-		  || language->lang() == "hindi"
-		  || language->lang() == "kurmanji"
-		  || language->lang() == "lao"
-		  || language->lang() == "marathi"
-		  || language->lang() == "occitan"
-		  || language->lang() == "sanskrit"
-		  || language->lang() == "syriac"
-		  || language->lang() == "tamil"
-		  || language->lang() == "telugu"
-		  || language->lang() == "urdu"
-		 ) && useNonTeXFonts)
+	if (features.runparams().flavor == OutputParams::XETEX
+	    && (features.hasPolyglossiaExclusiveLanguages()
+		|| useNonTeXFonts))
 		features.require("polyglossia");
 
 	if (language->lang() == "vietnamese")

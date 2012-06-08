@@ -106,7 +106,9 @@ public:
 	///
 	bool hasLanguages() const;
 	/// check if all used languages are supported by polyglossia
-	bool hasPolyglossiaLanguages() const;
+	bool hasOnlyPolyglossiaLanguages() const;
+	/// check if a language is supported only by polyglossia
+	bool hasPolyglossiaExclusiveLanguages() const;
 	///
 	std::string getLanguages() const;
 	///

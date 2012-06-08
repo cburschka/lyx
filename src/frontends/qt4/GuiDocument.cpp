@@ -1760,15 +1760,9 @@ void GuiDocument::deleteBoxBackgroundColor()
 void GuiDocument::languageChanged(int i)
 {
 	// some languages only work with polyglossia/XeTeX
-	string current_language = lyx::languages.getLanguage(
-		fromqstr(langModule->languageCO->itemData(i).toString()))->lang();
-	if (current_language == "ancientgreek"
-		|| current_language == "coptic"	|| current_language == "divehi"
-		|| current_language == "hindi" || current_language == "kurmanji"
-		|| current_language == "lao" || current_language == "marathi"
-		|| current_language == "occitan" || current_language == "sanskrit"
-		|| current_language == "syriac"	|| current_language == "tamil"
-		|| current_language == "telugu"	|| current_language == "urdu") {
+	Language const * lang = lyx::languages.getLanguage(
+		fromqstr(langModule->languageCO->itemData(i).toString()));
+	if (lang->babel().empty() && !lang->polyglossia().empty()) {
 			fontModule->osFontsCB->setChecked(true);
 			fontModule->osFontsCB->setEnabled(false);
 	}

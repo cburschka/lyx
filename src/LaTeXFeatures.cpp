@@ -313,12 +313,12 @@ bool LaTeXFeatures::usePolyglossia() const
 			&& isRequired("polyglossia")
 			&& isAvailable("polyglossia")
 			&& !params_.documentClass().provides("babel")
-			&& this->hasPolyglossiaLanguages();
+			&& this->hasOnlyPolyglossiaLanguages();
 	return (bufferParams().lang_package == "auto")
 		&& isRequired("polyglossia")
 		&& isAvailable("polyglossia")
 		&& !params_.documentClass().provides("babel")
-		&& this->hasPolyglossiaLanguages();
+		&& this->hasOnlyPolyglossiaLanguages();
 }
 
 
@@ -477,7 +477,7 @@ bool LaTeXFeatures::hasLanguages() const
 }
 
 
-bool LaTeXFeatures::hasPolyglossiaLanguages() const
+bool LaTeXFeatures::hasOnlyPolyglossiaLanguages() const
 {
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
@@ -487,6 +487,19 @@ bool LaTeXFeatures::hasPolyglossiaLanguages() const
 			return false;
 	}
 	return true;
+}
+
+
+bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
+{
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end();
+	     ++cit) {
+		if ((*cit)->babel().empty() && !(*cit)->polyglossia().empty())
+			return true;
+	}
+	return false;
 }
 
 
