@@ -1644,7 +1644,16 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 {
 	bool const tex_fonts = !nontexfonts;
 	updateFontlist();
+	// store default format
+	QString const dformat = outputModule->defaultFormatCO->itemData(
+		outputModule->defaultFormatCO->currentIndex()).toString();
 	updateDefaultFormat();
+	// try to restore default format
+	int index = outputModule->defaultFormatCO->findData(dformat);
+	// set to default if format is not found
+	if (index == -1)
+		index = 0;
+	outputModule->defaultFormatCO->setCurrentIndex(index);
 	langModule->encodingCO->setEnabled(tex_fonts &&
 		!langModule->defaultencodingRB->isChecked());
 	langModule->defaultencodingRB->setEnabled(tex_fonts);

@@ -176,8 +176,11 @@ What's new
 - Box settings dialog didn't work if you were actually inside the box 
   (bug 8124).
 
-- Mark the document modified when changing type of split index
+- Mark the document modified when changing type of split index 
   (bug 8182).
+
+- Do not lose default output format when toggling "Use Non-TeX Fonts"
+  (bug 8191).
 
 - Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
 
