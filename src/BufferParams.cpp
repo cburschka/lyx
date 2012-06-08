@@ -1383,7 +1383,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (global && !features.needBabelLangOptions())
+		if (global && !features.needBabelLangOptions()
+		    && !language_options.str().empty())
 			clsoptions << language_options.str() << ',';
 	}
 
