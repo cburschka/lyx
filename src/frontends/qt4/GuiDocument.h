@@ -120,6 +120,7 @@ private Q_SLOTS:
 	void deleteNoteFontColor();
 	void changeBoxBackgroundColor();
 	void deleteBoxBackgroundColor();
+	void languageChanged(int);
 	void osFontsChanged(bool);
 	void branchesRename(docstring const &, docstring const &);
 private:

@@ -1060,7 +1060,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// language & quote
 	langModule = new UiWidget<Ui::LanguageUi>;
 	connect(langModule->languageCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(languageChanged(int)));
 	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(langModule->otherencodingRB, SIGNAL(clicked()),
@@ -1754,6 +1754,26 @@ void GuiDocument::deleteBoxBackgroundColor()
 	colorModule->boxBackgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_boxbgcolor)));
 	changed();
+}
+
+
+void GuiDocument::languageChanged(int i)
+{
+	// some languages only work with polyglossia/XeTeX
+	string current_language = lyx::languages.getLanguage(
+		fromqstr(langModule->languageCO->itemData(i).toString()))->lang();
+	if (current_language == "ancientgreek"
+		|| current_language == "coptic"	|| current_language == "divehi"
+		|| current_language == "hindi" || current_language == "kurmanji"
+		|| current_language == "lao" || current_language == "marathi"
+		|| current_language == "occitan" || current_language == "sanskrit"
+		|| current_language == "syriac"	|| current_language == "tamil"
+		|| current_language == "telugu"	|| current_language == "urdu") {
+			fontModule->osFontsCB->setChecked(true);
+			fontModule->osFontsCB->setEnabled(false);
+	}
+	else
+		fontModule->osFontsCB->setEnabled(true);
 }
 
 
