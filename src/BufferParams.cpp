@@ -1250,10 +1250,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		|| useNonTeXFonts))
 		features.require("polyglossia");
 
-	if (language->lang() == "vietnamese")
-		features.require("vietnamese");
-	else if (language->lang() == "japanese")
-		features.require("japanese");
+	if (!language->requires().empty())
+		features.require(language->requires());
 }
 
 
@@ -2688,9 +2686,6 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		// If the "japanese" package (i.e. pLaTeX) is used,
 		// inputenc must be omitted.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if (package == Encoding::japanese)
-		     features.require("japanese");
-
 		if ((!encodings.empty() || package == Encoding::inputenc)
 		    && !features.isRequired("japanese")) {
 			os << "\\usepackage[";

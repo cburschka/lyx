@@ -74,6 +74,7 @@ bool Language::readLanguage(Lexer & lex)
 		LA_POLYGLOSSIAOPTS,
 		LA_POSTBABELPREAMBLE,
 		LA_PREBABELPREAMBLE,
+		LA_REQUIRES,
 		LA_RTL
 	};
 
@@ -91,6 +92,7 @@ bool Language::readLanguage(Lexer & lex)
 		{ "polyglossiaopts",      LA_POLYGLOSSIAOPTS },
 		{ "postbabelpreamble",    LA_POSTBABELPREAMBLE },
 		{ "prebabelpreamble",     LA_PREBABELPREAMBLE },
+		{ "requires",             LA_REQUIRES },
 		{ "rtl",                  LA_RTL }
 	};
 
@@ -151,6 +153,9 @@ bool Language::readLanguage(Lexer & lex)
 		case LA_PREBABELPREAMBLE:
 			babel_presettings_ =
 				lex.getLongString("EndPreBabelPreamble");
+			break;
+		case LA_REQUIRES:
+			lex >> requires_;
 			break;
 		case LA_RTL:
 			lex >> rightToLeft_;

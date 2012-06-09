@@ -21,6 +21,7 @@
 #	PostBabelPreamble
 #	  <extra latex code inserted after babel>
 #	EndPostBabelPreamble
+#	Requires           <requirement>
 # End
 #
 #
@@ -261,6 +262,7 @@ Language chinese-simplified
 	GuiName          "Chinese (simplified)"
 	Encoding         euc-cn
 	LangCode         zh_CN
+	Requires         CJK
 End
 
 # uses CJK package
@@ -268,6 +270,7 @@ Language chinese-traditional
 	GuiName         "Chinese (traditional)"
 	Encoding        utf8-cjk
 	LangCode        zh_CN
+	Requires         CJK
 End
 
 # not supported by babel
@@ -513,6 +516,7 @@ Language japanese
 	Encoding         jis-plain
 	LangCode         ja_JP
 	AsBabelOptions   true
+	Requires         japanese
 End
 
 # uses CJK package
@@ -520,6 +524,7 @@ Language japanese-cjk
 	GuiName         "Japanese (CJK)"
 	Encoding        euc-jp
 	LangCode        ja_JP
+	Requires        CJK
 End
 
 # not yet supported by polyglossia
@@ -534,6 +539,7 @@ Language korean
 	GuiName         "Korean"
 	Encoding        euc-kr
 	LangCode        ko_KR
+	Requires        CJK
 End
 
 # not supported by babel
@@ -873,6 +879,7 @@ Language vietnamese
 	Encoding         utf8
 	LangCode         vi_VN
 	AsBabelOptions   true
+	Requires         vietnamese
 End
 
 Language welsh

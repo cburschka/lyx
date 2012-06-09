@@ -40,6 +40,8 @@ public:
 	std::string const & polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
 	std::string const & polyglossiaOpts() const { return polyglossia_opts_; }
+	/// requirement (package, function)
+	std::string const & requires() const { return requires_; }
 	/// translatable GUI name
 	std::string const & display() const { return display_; }
 	/// is this a RTL language?
@@ -92,6 +94,8 @@ private:
 	std::string polyglossia_name_;
 	///
 	std::string polyglossia_opts_;
+	///
+	std::string requires_;
 	///
 	std::string display_;
 	///
