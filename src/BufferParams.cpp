@@ -2167,10 +2167,20 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
 
 	OutputParams::FLAVOR result = OutputParams::LATEX;
 
+	// FIXME It'd be better not to hardcode this, but to do
+	//       something with formats.
 	if (dformat == "xhtml")
 		result = OutputParams::HTML;
 	else if (dformat == "text")
 		result = OutputParams::TEXT;
+	else if (dformat == "pdflatex")
+ 		result = OutputParams::PDFLATEX;
+	else if (dformat == "xetex")
+		result = OutputParams::XETEX;
+	else if (dformat == "luatex")
+		result = OutputParams::LUATEX;
+	else if (dformat == "dviluatex")
+		result = OutputParams::DVILUATEX;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();
