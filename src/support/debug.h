@@ -171,6 +171,9 @@ public:
 	/// Returns true if t is part of the current debug level
 	bool debugging(Debug::Type t = Debug::ANY) const;
 
+	///
+	static char const * stripName(char const *);
+
 private:
 	/// The current debug level
 	Debug::Type dt_;
@@ -208,7 +211,7 @@ extern LyXErr lyxerr;
 #	include <boost/current_function.hpp>
 #	define CURRENT_POSITION BOOST_CURRENT_FUNCTION ": "
 #else
-# define CURRENT_POSITION __FILE__ << "(" << __LINE__ << "): "
+# define CURRENT_POSITION lyx::LyXErr::stripName(__FILE__) << " (" << __LINE__ << "): "
 #endif
 
 #define LYXERR(type, msg) \
