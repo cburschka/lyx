@@ -341,6 +341,7 @@ static int string_to_qkey(std::string const & str)
 	if (str == "yacute") return Qt::Key_Yacute;
 	if (str == "thorn") return Qt::Key_THORN;
 	if (str == "ydiaeresis") return Qt::Key_ydiaeresis;
+	if (str == "Dead_Caron") return Qt::Key_Dead_Caron;
 
 	// FIXME, correct for all these ?
 	if (str == "Super_L") return Qt::Key_Super_L;
@@ -559,6 +560,7 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_ssharp: return "ssharp";
 	case Qt::Key_ydiaeresis: return "ydiaeresis";
 	case Qt::Key_Bar: return "bar";
+	case Qt::Key_Dead_Caron: return "Dead_Caron";
 
 	// FIXME: these ones I don't know the names of ... help !
 	// what's here is basically guesses ...
