@@ -1164,8 +1164,20 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].content += os.str();
 
 				// add dummy cells for multicol
-				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
+				for (size_t i = 0; i + 1 < ncells; ++i) {
 					++col;
+					if (col >= colinfo.size()) {
+						cerr << "The cell '"
+							<< cells[cell]
+							<< "' specifies "
+							<< convert<string>(ncells)
+							<< " columns while the table has only "
+							<< convert<string>(colinfo.size())
+							<< " columns!"
+							<< " Therefore the surplus columns will be ignored."
+							<< endl;
+						break;
+					}
 					cellinfo[row][col].multi = CELL_PART_OF_MULTICOLUMN;
 					cellinfo[row][col].align = 'c';
 				}
