@@ -2742,12 +2742,6 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			break;
 		}
 	}
-
-	// The encoding "armscii8" (for Armenian) is only available when
-	// the package "armtex" is loaded.
-	if (language->encoding()->latexName() == "armscii8"
-	    || inputenc == "armscii8")
-		os << "\\usepackage{armtex}\n";
 }
 
 

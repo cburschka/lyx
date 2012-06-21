@@ -807,6 +807,24 @@ def revert_languages(document):
                 j = len(document.body)
 
 
+def convert_armenian(document):
+    "Use polyglossia and thus non-TeX fonts for Armenian" 
+
+    if document.language == "armenian": 
+        i = find_token(document.header, "\\use_non_tex_fonts", 0) 
+        if i != -1: 
+            document.header[i] = "\\use_non_tex_fonts true" 
+
+
+def revert_armenian(document):
+    "Use ArmTeX and thus TeX fonts for Armenian" 
+
+    if document.language == "armenian": 
+        i = find_token(document.header, "\\use_non_tex_fonts", 0) 
+        if i != -1: 
+            document.header[i] = "\\use_non_tex_fonts false" 
+
+
 ##
 # Conversion hub
 #
@@ -831,10 +849,12 @@ convert = [
            [429, [convert_table_rotation]],
            [430, [convert_listoflistings]],
            [431, [convert_use_amssymb]],
-           [432, []]
+           [432, []],
+           [433, [convert_armenian]]
           ]
 
 revert =  [
+           [432, [revert_armenian]],
            [431, [revert_languages, revert_ancientgreek]],
            [430, [revert_use_amssymb]],
            [429, [revert_listoflistings]],
