@@ -1164,7 +1164,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].content += os.str();
 
 				// add dummy cells for multicol
-				for (size_t i = 0; i + 1 < ncells; ++i) {
+				for (size_t i = 0; i < ncells - 1; ++i) {
 					++col;
 					if (col >= colinfo.size()) {
 						cerr << "The cell '"
