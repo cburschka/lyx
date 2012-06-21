@@ -1679,16 +1679,12 @@ Naviguer en arrière
  Ceci est utile lorsque, dans un document important, vous avez navigué ou
  parcouru un autre endroit du document pour vérifier quelque chose, et que
  vous désirez revenir à vos modifications en cours.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By pressing the 
-\family sans
-F5
-\family default
- key the cursor will be vertically centered in LyX's main window.
+Une pression sur la touche F5 centre verticalement le curseur dans la fenêtre
+ LyX principale.
 \end_layout
 
 \begin_layout Subsection
@@ -30789,13 +30785,10 @@ arg   "ert-insert"
 
 ).
  La boîte de code TeX, peut être ouverte avec un clic gauche et refermée
- avec un clic droit et 
-\lang english
-selecting 
+ avec un clic droit et en sélectionnant 
 \family sans
-Close Inset
+Fermer l'insert
 \family default
-\lang french
 .
 \end_layout
 
@@ -33731,43 +33724,32 @@ nt proche et qui peuvent être utilisés comme synonymes.
 \end_layout
 
 \begin_layout Standard
-Notez que le dictionnaire, 
-\lang english
-for some languages
-\lang french
-, ne donne pas seulement les synonymes, mais aussi 
-\lang english
-generic terms (such as 
+Notez que le dictionnaire, pour certaine langues, ne donne pas seulement
+ les synonymes, mais aussi des termes génériques (comme 
 \emph on
-organism
+organisme
 \emph default
- for 
+ pour 
 \emph on
-plant
+plante
 \emph default
-), related terms (such as 
+), des termes connexes (comme 
 \emph on
-political
-\begin_inset space ~
-\end_inset
-
-theory
+politique
 \emph default
- for 
+ pour 
 \emph on
-anarchistic
+anarchisme
 \emph default
-),
-\lang french
- les compositions (comme 
+), les compositions (comme 
 \emph on
 arbre à cames
 \emph default
- si vous 
-\lang english
-look for 
-\lang french
-arbre) et les antonymes (comme 
+ pour 
+\emph on
+arbre
+\emph default
+) et les antonymes (comme 
 \emph on
 femme
 \emph default
@@ -33776,9 +33758,8 @@ femme
 homme
 \emph default
 ).
- 
-\lang english
-Generic terms, related terms and antonyms are marked as such.
+ Les termes génériques, connexes et antonymes sont identifiés en tant que
+ tels.
 \end_layout
 
 \begin_layout Standard
