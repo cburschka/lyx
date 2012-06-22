@@ -783,7 +783,7 @@ contributers = [
                  "GPL Statement",
                  "m=117501689204059",
                  "27 March 2007",
-                 u"Bug fixes, layout modules, BibTeX code, XHTML export"),
+                 u"Bug fixes, layout modules, BibTeX code, XHTML export. Current stable branch maintainer."),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
@@ -913,6 +913,14 @@ contributers = [
                  "11 March 2005",
                  u"Gtk reference insertion dialog"),
 
+     contributer(u"Timo Kluck",
+                 "tkluck () gmail ! com",
+                 "GPL",
+                 "license statement",
+                 "m=132334049317495",
+                 "8 December 2011",
+                 u"Dutch translation, icon fixes"),
+
      contributer(u"Kostantino",
                  "ciclope10 () alice ! it",
                  "GPL",
@@ -920,6 +928,14 @@ contributers = [
                  "m=115513400621782",
                  "9 August 2006",
                  u"Italian localization of the interface"),
+
+     contributer(u"Scott Kostyshak",
+                 "skostysh@princeton.edu",
+                 "GPL",
+                 "GPL Statement",
+                 "m=133076234031944",
+                 "3 March 2012",
+                 u"Small UI fixes"),
 
      contributer(u"Michael Koziarski",
                  "koziarski () gmail ! com",
@@ -936,6 +952,14 @@ contributers = [
                  "",
                  "",
                  u"Hungarian translation and bind file for menu shortcuts"),
+
+     contributer(u'Marcus Kriele',
+                 "mkriele () me ! com",
+                 "GPL",
+                 "License permission",
+                 "m=130384781027177",
+                 "26 April 2011",
+                 u"Fixing various sv* layouts"),
 
      contributer(u'Valeriy Kruchko',
                  "lerkru () gmail ! com",
@@ -1481,6 +1505,14 @@ contributers = [
                  "23 February 2005",
                  u"contribution to the spanish internationalization"),
 
+     contributer(u"Nickolay Shashkin",
+                 "mecareful () gmail ! com",
+                 "GPL",
+                 "GPL statement",
+                 "m=134026564400578",
+                 "21 June 2012",
+                 u"bugfixes"),
+
      contributer(u"Miyata Shigeru",
                  "miyata () kusm ! kyoto-u ! ac ! jp",
                  "",
@@ -1535,7 +1567,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907530127164",
                  "22 February 2005",
-                 u"Qt frontend, bugfixes. Current stable branch maintainer."),
+                 u"Qt frontend, bugfixes. Former stable branch maintainer."),
 
      contributer(u"John Spray",
                  "jcs116 () york ! ac ! uk",
