@@ -1257,10 +1257,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.check_end_layout(os);
 			parent_context.new_paragraph(os);
 		}
-		// save the language for the case that a
-		// \textLANGUAGE is used
+		// save the language in the context so that it is
+		// handled by parse_text
 		parent_context.font.language = polyglossia2lyx(name);
-		os << "\n\\lang " << parent_context.font.language << "\n";
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
