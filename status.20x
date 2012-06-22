@@ -276,6 +276,8 @@ What's new
 
 - Fix missing backslash in import of \def ... \csname ... \endcsname (bug 8116).
 
+- Fix crash if TeX-files contain table logic bugs (bug 8204).
+
 
 * ADVANCED FIND AND REPLACE
 
