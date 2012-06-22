@@ -174,10 +174,11 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "booktabs", "calc", "color", "float",
+"amstext", "amsthm", "array", "booktabs", "calc", "color", "float", "fontspec",
 "graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
 "nomencl", "pdfpages", "rotating", "rotfloat", "splitidx", "setspace",
-"subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig", 0};
+"subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig",
+"xunicode", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
@@ -601,6 +602,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
 		h_use_non_tex_fonts = "true";
+		registerAutomaticallyLoadedPackage("fontspec");
 		if (h_inputencoding == "auto")
 			p.setEncoding("utf8");
 	}
@@ -694,6 +696,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_default_output_format = "pdf4";
 		h_use_non_tex_fonts = "true";
 		xetex = true;
+		registerAutomaticallyLoadedPackage("xunicode");
 		if (h_inputencoding == "auto")
 			p.setEncoding("utf8");
 	}
@@ -1069,11 +1072,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
 
-		else if (t.cs() == "setdefaultlanguage")
+		else if (t.cs() == "setdefaultlanguage") {
+			// FIXME: we don't yet care about the option because LyX doesn't
+			// support this yet, see bug #8214
+			p.hasOpt() ? p.getOpt() : string();
 			h_language = p.verbatim_item();
+		}
 
-		else if (t.cs() == "setotherlanguage")
-			;
+		else if (t.cs() == "setotherlanguage") {
+			// FIXME: we don't yet care about the option because LyX doesn't
+			// support this yet, see bug #8214
+			p.hasOpt() ? p.getOpt() : string();
+			p.verbatim_item();
+			// FIXME: there can be multiple occurences of
+			// \setotherlanguage, we need to handle them all not only the
+			// first one
+		}
 
 		else if (t.cs() == "setmainfont") {
 			// we don't care about the option

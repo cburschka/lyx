@@ -3471,7 +3471,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs().substr(4, string::npos), polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string const lang = polyglossia2lyx(t.cs().substr(4, string::npos));
-			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			// FIXME: we have to output the whole command if it has an option
+			// because lyX doesn't support this yet, see bug #8214
+			if (p.hasOpt())
+				handle_ert(os, t.asInput() + p.getOpt(), context);
+			else 
+				parse_text_attributes(p, os, FLAG_ITEM, outer,
 			                      context, "\\lang",
 			                      context.font.language, lang);
 		}
