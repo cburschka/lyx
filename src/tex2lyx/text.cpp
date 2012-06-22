@@ -1252,9 +1252,20 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (is_known(name, polyglossia_languages)) {
-		parent_context.check_layout(os);
+		// We must begin a new paragraph if not already done
+		if (! parent_context.atParagraphStart()) {
+			parent_context.check_end_layout(os);
+			parent_context.new_paragraph(os);
+		}
+		// save the language for the case that a
+		// \textLANGUAGE is used
 		parent_context.font.language = polyglossia2lyx(name);
 		os << "\n\\lang " << parent_context.font.language << "\n";
+		parse_text(p, os, FLAG_END, outer, parent_context);
+		// Just in case the environment is empty
+		parent_context.extra_stuff.erase();
+		// We must begin a new paragraph to reset the language
+		parent_context.new_paragraph(os);
 		p.skip_spaces();
 	}
 
@@ -3453,6 +3464,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "foreignlanguage") {
 			string const lang = babel2lyx(p.verbatim_item());
+			parse_text_attributes(p, os, FLAG_ITEM, outer,
+			                      context, "\\lang",
+			                      context.font.language, lang);
+		}
+		
+		else if (is_known(t.cs().substr(4, string::npos), polyglossia_languages)) {
+			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
+			string const lang = polyglossia2lyx(t.cs().substr(4, string::npos));
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
 			                      context, "\\lang",
 			                      context.font.language, lang);
