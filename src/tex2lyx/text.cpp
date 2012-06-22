@@ -3477,8 +3477,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, t.asInput() + p.getOpt(), context);
 			else 
 				parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                      context, "\\lang",
-			                      context.font.language, lang);
+			                          context, "\\lang",
+			                          context.font.language, lang);
 		}
 
 		else if (t.cs() == "inputencoding") {
