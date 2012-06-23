@@ -514,8 +514,17 @@ glt Do you have matches?
 
 \end_layout
 
+\begin_layout Subsection*
+Shortcomings of LyX's glosses
+\end_layout
+
 \begin_layout Standard
-Note that font changes are not allowed in glosses.
+LyX's glosse support is rather basic, and thus has some shortcomings, which
+ might be addressed in further releases:
+\end_layout
+
+\begin_layout Enumerate
+Font changes are not allowed in glosses.
  Hence, the 
 \family sans
 Character Style
@@ -558,9 +567,225 @@ french
 ngerman
 \family default
 .
- In the LaTeX output, this setting will be supressed.
+ In the LaTeX output, this setting will be suppressed.
 \end_layout
 
+\begin_layout Enumerate
+Since the content of glosses is passed verbatim to LaTeX, LyX does not adapt
+ the encoding to the contents.
+ That means that if you use characters in the glosse which are not covered
+ by the current encoding, you will run into an error message.
+ Here are the possible workarounds to this problem:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Either enter the text outside the glosse, open 
+\family sans
+View\SpecialChar \menuseparator
+View Source
+\family default
+ and copy the LaTeX code into the glosse,
+\end_layout
+
+\begin_layout Itemize
+or mark the whole glosse (from outside) and set the appropriate language
+ via 
+\family sans
+Edit\SpecialChar \menuseparator
+Language\SpecialChar \menuseparator
+More Languages\SpecialChar \ldots{}
+
+\family default
+,
+\end_layout
+
+\begin_layout Itemize
+or set the document encoding to 
+\emph on
+Unicode (utf8)
+\emph default
+ via 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Language
+\family default
+,
+\end_layout
+
+\begin_layout Itemize
+or check 
+\emph on
+Use non-TeX fonts (via XeTeX/LuaTeX)
+\emph default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Fonts
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Page breaks can occur within glosses, which is of course not desirable.
+ A workaround is to wrap glosses into boxes (via 
+\family sans
+Insert\SpecialChar \menuseparator
+Box\SpecialChar \menuseparator
+Frameless
+\family default
+).
+ If you want to automate this for all glosses, you can copy the following
+ code to 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+LaTeX Preamble
+\family default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Do not break pages at two-line glosses
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+@ifundefined{linggloss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+gll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Do not break pages at three-line glosses
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+@ifundefined{lingglosss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You might have to adapt the minipage width (
+\family typewriter
+.7
+\backslash
+textwidth
+\family default
+ in the example code) to fit your actual page width.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Optimality Theory Tableaux
 \end_layout
@@ -1106,12 +1331,9 @@ tipa
 ]).
  Given that
 \emph on
- preview-lat
-\family sans
+ preview-latex
 \emph default
-e
-\family default
-x is installed and you have switched on instant preview (in
+ is installed and you have switched on instant preview (in
 \family sans
  Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
