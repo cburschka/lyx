@@ -1,22 +1,20 @@
-%% LyX 2.1.0svn created this file.  For more info, see http://www.lyx.org/.
-%% Do not edit unless you really know what you are doing.
-\documentclass[basque]{article}
+\documentclass{article}
 \usepackage{fontspec}
-\setmainfont[Mapping=tex-text]{Aharoni}
+\setmainfont{Aharoni}
 \setsansfont[Mapping=tex-text]{AngsanaUPC}
 \setmonofont{Arial Black}
 \usepackage{xunicode}
 \usepackage{polyglossia}
-\setdefaultlanguage{basque}
+\setdefaultlanguage[variant=british, ordinalmonthday = false]{english}
 \setotherlanguage{albanian}
-\setotherlanguage{breton}
-\setotherlanguage{greek}
+\setotherlanguage[variant=polytonic]{greek}
 \setotherlanguage{german}
 \begin{document}
 
 \part{df}
 
-1 Basque \textgreek{Greek} Basque
+1 English \textgreek[variant=ancient]{ancient Greek} English
+\textgreek[numerals=arabic, variant=ancient]{ancient Greek with Arabic numerals} English
 
 \begin{albanian}%
 
@@ -29,21 +27,8 @@
 
 \part{df}
 
-3
+3 German
 
-\end{german}%
-\begin{breton}%
-
-\part{df}
-
-4
-
-\end{breton}%
-\begin{german}%
-
-\part{df}
-
-5
 \end{german}%
 
 %empty language paragraph
