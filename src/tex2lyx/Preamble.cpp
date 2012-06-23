@@ -1135,9 +1135,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// support this yet, see bug #8214
 			p.hasOpt() ? p.getOpt() : string();
 			p.verbatim_item();
-			// FIXME: there can be multiple occurences of
-			// \setotherlanguage, we need to handle them all not only the
-			// first one
 		}
 
 		else if (t.cs() == "setmainfont") {
