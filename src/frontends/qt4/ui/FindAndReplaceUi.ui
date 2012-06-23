@@ -132,6 +132,9 @@
     </item>
     <item row="6" column="0" >
      <widget class="QCheckBox" name="searchbackCB" >
+      <property name="toolTip" >
+       <string>Shift+Enter search backwards directly</string>
+      </property>
       <property name="text" >
        <string>Search &amp;backwards</string>
       </property>
