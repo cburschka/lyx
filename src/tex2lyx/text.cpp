@@ -118,7 +118,7 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "formatted", "eqref", 0 };
 
 /**
- * known polyglossia language names (inluding synomyms)
+ * known polyglossia language names (including variants)
  */
 const char * const polyglossia_languages[] = {
 "albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
@@ -130,7 +130,9 @@ const char * const polyglossia_languages[] = {
 "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
 "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish", 0};
+"marathi", "spanish"
+"american", "ancient", "australian", "british", "monotonic", "newzealand",
+"polytonic", 0};
 
 /**
  * the same as polyglossia_languages with .lyx names
@@ -146,15 +148,9 @@ const char * const coded_polyglossia_languages[] = {
 "brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
 "lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish", 0};
-
-string polyglossia2lyx(string const & language)
-{
-	char const * const * where = is_known(language, polyglossia_languages);
-	if (where)
-		return coded_polyglossia_languages[where - polyglossia_languages];
-	return language;
-}
+"marathi", "spanish"
+"american", "ancientgreek", "australian", "british", "greek", "newzealand",
+"polutonikogreek", 0};
 
 /*!
  * natbib commands.
@@ -3470,15 +3466,34 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		
 		else if (is_known(t.cs().substr(4, string::npos), polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
-			string const lang = polyglossia2lyx(t.cs().substr(4, string::npos));
-			// FIXME: we have to output the whole command if it has an option
-			// because lyX doesn't support this yet, see bug #8214
-			if (p.hasOpt())
-				handle_ert(os, t.asInput() + p.getOpt(), context);
-			else 
+			string lang;
+			// We have to output the whole command if it has an option
+			// because LyX doesn't support this yet, see bug #8214,
+			// only if there is a single option specifying a variant, we can handle it.
+			if (p.hasOpt()) {
+				string langopts = p.getOpt();
+				// check if the option contains a variant, if yes, extract it
+				string::size_type pos_var = langopts.find("variant");
+				string::size_type i = langopts.find(',');
+				if (pos_var != string::npos){
+					string variant;
+					if (i == string::npos) {
+						variant = langopts.substr(pos_var + 8, langopts.length() - pos_var - 9);
+						lang = polyglossia2lyx(variant);
+						parse_text_attributes(p, os, FLAG_ITEM, outer,
+							                  context, "\\lang",
+							                  context.font.language, lang);
+					}
+					else
+						handle_ert(os, t.asInput() + langopts, context);
+				} else
+					handle_ert(os, t.asInput() + langopts, context);
+			} else {
+				lang = polyglossia2lyx(t.cs().substr(4, string::npos));
 				parse_text_attributes(p, os, FLAG_ITEM, outer,
-			                          context, "\\lang",
-			                          context.font.language, lang);
+					                  context, "\\lang",
+					                  context.font.language, lang);
+			}
 		}
 
 		else if (t.cs() == "inputencoding") {

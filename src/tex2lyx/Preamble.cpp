@@ -92,6 +92,41 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
 0};
 
+/**
+ * known polyglossia language names (including variants)
+ */
+const char * const polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazil",
+"brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
+"lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
+"marathi", "spanish",
+"american", "ancient", "australian", "british", "monotonic", "newzealand",
+"polytonic", 0};
+
+/**
+ * the same as polyglossia_languages with .lyx names
+ * please keep this in sync with polyglossia_languages line by line!
+ */
+const char * const coded_polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazilian",
+"brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
+"lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
+"marathi", "spanish",
+"american", "ancientgreek", "australian", "british", "greek", "newzealand",
+"polutonikogreek", 0};
+
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
 "bahasa", "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
@@ -686,6 +721,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 			// reasons for it.
 			h_preamble << "\\usepackage[" << opts << "]{babel}\n";
 			delete_opt(options, known_languages);
+			// finally translate the babel name to a LyX name
+			h_language = babel2lyx(h_language);
 		}
 		else
 			h_preamble << "\\usepackage{babel}\n";
@@ -824,9 +861,6 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 
 bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 {
-	// translate from babel to LyX names
-	h_language = babel2lyx(h_language);
-
 	// set the quote language
 	// LyX only knows the following quotes languages:
 	// english, swedish, german, polish, french and danish
@@ -1073,14 +1107,31 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "setdefaultlanguage") {
-			// FIXME: we don't yet care about the option because LyX doesn't
-			// support this yet, see bug #8214
-			p.hasOpt() ? p.getOpt() : string();
-			h_language = p.verbatim_item();
+			xetex = true;
+			// We don't yet care about non-language variant options
+			// because LyX doesn't support this yet, see bug #8214
+			if (p.hasOpt()) {
+				string langopts = p.getOpt();
+				// check if the option contains a variant, if yes, extract it
+				string::size_type pos_var = langopts.find("variant");
+				string::size_type i = langopts.find(',', pos_var);
+				if (pos_var != string::npos){
+					string variant;
+					if (i == string::npos)
+						variant = langopts.substr(pos_var + 8, langopts.length() - pos_var - 9);
+					else
+						variant = langopts.substr(pos_var + 8, i - pos_var - 8);
+					h_language = variant;
+				}
+				p.verbatim_item();
+			} else
+				h_language = p.verbatim_item();
+			//finally translate the poyglossia name to a LyX name
+			h_language = polyglossia2lyx(h_language);
 		}
 
 		else if (t.cs() == "setotherlanguage") {
-			// FIXME: we don't yet care about the option because LyX doesn't
+			// We don't yet care about the option because LyX doesn't
 			// support this yet, see bug #8214
 			p.hasOpt() ? p.getOpt() : string();
 			p.verbatim_item();
@@ -1521,6 +1572,15 @@ string babel2lyx(string const & language)
 	char const * const * where = is_known(language, known_languages);
 	if (where)
 		return known_coded_languages[where - known_languages];
+	return language;
+}
+
+
+string polyglossia2lyx(string const & language)
+{
+	char const * const * where = is_known(language, polyglossia_languages);
+	if (where)
+		return coded_polyglossia_languages[where - polyglossia_languages];
 	return language;
 }
 

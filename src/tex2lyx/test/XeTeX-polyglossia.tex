@@ -1,20 +1,20 @@
-\documentclass[albanian]{article}
+\documentclass{article}
 \usepackage{fontspec}
-\setmainfont[Mapping=tex-text]{Aharoni}
+\setmainfont{Aharoni}
 \setsansfont[Mapping=tex-text]{AngsanaUPC}
 \setmonofont{Arial Black}
 \usepackage{xunicode}
 \usepackage{polyglossia}
-\setdefaultlanguage{coptic}
+\setdefaultlanguage[variant=british, ordinalmonthday = false]{english}
 \setotherlanguage{albanian}
-\setotherlanguage{divehi}
-\setotherlanguage[variant=monotonic]{greek}
+\setotherlanguage[variant=polytonic]{greek}
 \setotherlanguage{syriac}
 \begin{document}
 
 \part{df}
 
-1 Coptic \textgreek[variant=ancient]{ancient Greek} Coptic
+1 English \textgreek[variant=ancient]{ancient Greek} English
+\textgreek[numerals=arabic, variant=ancient]{ancient Greek with Arabic numerals} English
 
 \begin{albanian}%
 
@@ -23,26 +23,13 @@
 2 Albanian \textgreek{Greek} Albanian \textsc{smallcaps}
 
 \end{albanian}%
-\begin{divehi}%
-
-\part{df}
-
-3
-
-\end{divehi}%
 \begin{syriac}%
 
 \part{df}
 
-4
+3 Syriac
 
 \end{syriac}%
-\begin{divehi}%
-
-\part{df}
-
-5
-\end{divehi}%
 
 %empty language paragraph
 \begin{albanian}%
