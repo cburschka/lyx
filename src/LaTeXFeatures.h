@@ -110,7 +110,7 @@ public:
 	/// check if a language is supported only by polyglossia
 	bool hasPolyglossiaExclusiveLanguages() const;
 	///
-	std::string getLanguages() const;
+	std::string getBabelLanguages() const;
 	///
 	std::map<std::string, std::string> getPolyglossiaLanguages() const;
 	///

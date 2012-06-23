@@ -701,9 +701,10 @@ void Font::validate(LaTeXFeatures & features) const
 
 	// FIXME: Do something for background and soul package?
 
-	if (lang_->babel() != doc_language->babel() &&
-		lang_ != ignore_language &&
-		lang_ != latex_language)
+	if (((features.usePolyglossia() && lang_->polyglossia() != doc_language->polyglossia())
+	     || (features.useBabel() && lang_->babel() != doc_language->babel()))
+	    && lang_ != ignore_language
+	    && lang_ != latex_language)
 	{
 		features.useLanguage(lang_);
 		LYXERR(Debug::LATEX, "Found language " << lang_->lang());

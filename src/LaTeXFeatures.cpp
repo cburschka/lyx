@@ -451,7 +451,7 @@ void LaTeXFeatures::useFloat(string const & name, bool subfloat)
 
 void LaTeXFeatures::useLanguage(Language const * lang)
 {
-	if (!lang->babel().empty())
+	if (!lang->babel().empty() || !lang->polyglossia().empty())
 		UsedLanguages_.insert(lang);
 	if (!lang->requires().empty())
 		require(lang->requires());
@@ -503,16 +503,21 @@ bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
 }
 
 
-string LaTeXFeatures::getLanguages() const
+string LaTeXFeatures::getBabelLanguages() const
 {
 	ostringstream languages;
 
+	bool first = true;
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
 	     ++cit) {
-		if (cit != begin)
+		if ((*cit)->babel().empty())
+			continue;
+		if (!first)
 			languages << ',';
+		else
+			first = false;
 		languages << (*cit)->babel();
 	}
 	return languages.str();

@@ -1375,7 +1375,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	bool const use_polyglossia = features.usePolyglossia();
 	bool const global = lyxrc.language_global_options;
 	if (use_babel || (use_polyglossia && global)) {
-		language_options << features.getLanguages();
+		language_options << features.getBabelLanguages();
 		if (!language->babel().empty()) {
 			if (!language_options.str().empty())
 				language_options << ',';
