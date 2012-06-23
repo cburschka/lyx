@@ -130,7 +130,7 @@ const char * const polyglossia_languages[] = {
 "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
 "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish"
+"marathi", "spanish",
 "american", "ancient", "australian", "british", "monotonic", "newzealand",
 "polytonic", 0};
 
@@ -148,7 +148,7 @@ const char * const coded_polyglossia_languages[] = {
 "brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
 "lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish"
+"marathi", "spanish",
 "american", "ancientgreek", "australian", "british", "greek", "newzealand",
 "polutonikogreek", 0};
 
