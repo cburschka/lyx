@@ -764,7 +764,9 @@ void TeXOnePar(Buffer const & buf,
 		   || (runparams.isLastPar && par_language->babel() != outer_language->babel()));
 
 	if (closing_rtl_ltr_environment
-		|| (runparams.isLastPar && par_language->babel() != outer_language->babel())) {
+	    || (runparams.isLastPar
+	        && ((!use_polyglossia && par_language->babel() != outer_language->babel())
+		    || (use_polyglossia && par_language->polyglossia() != outer_language->polyglossia())))) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
 		// float.
