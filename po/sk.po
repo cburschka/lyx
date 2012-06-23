@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-06-08 09:50+0200\n"
+"POT-Creation-Date: 2012-06-23 15:29+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -540,13 +540,14 @@ msgstr "Prid&aj Všetko"
 #: src/Buffer.cpp:2467 src/Buffer.cpp:3929 src/Buffer.cpp:3992 src/LyXVC.cpp:89
 #: src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
-#: src/frontends/qt4/GuiDocument.cpp:1936 src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2146
-#: src/frontends/qt4/GuiView.cpp:2296 src/frontends/qt4/GuiView.cpp:2311
-#: src/frontends/qt4/GuiView.cpp:2386 src/frontends/qt4/GuiView.cpp:2434
-#: src/frontends/qt4/GuiView.cpp:2649 src/frontends/qt4/GuiView.cpp:2656
-#: src/frontends/qt4/GuiView.cpp:2755 src/frontends/qt4/GuiView.cpp:2783
-#: src/frontends/qt4/GuiView.cpp:3400 src/insets/InsetBibtex.cpp:153
+#: src/frontends/qt4/GuiDocument.cpp:1972
+#: src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2147
+#: src/frontends/qt4/GuiView.cpp:2298 src/frontends/qt4/GuiView.cpp:2313
+#: src/frontends/qt4/GuiView.cpp:2388 src/frontends/qt4/GuiView.cpp:2436
+#: src/frontends/qt4/GuiView.cpp:2651 src/frontends/qt4/GuiView.cpp:2658
+#: src/frontends/qt4/GuiView.cpp:2757 src/frontends/qt4/GuiView.cpp:2785
+#: src/frontends/qt4/GuiView.cpp:3402 src/insets/InsetBibtex.cpp:153
 msgid "&Cancel"
 msgstr "&Zrušiť"
 
@@ -573,18 +574,18 @@ msgstr "&Veľkosť:"
 #: src/frontends/qt4/ui/TabularUi.ui:1272 lib/ui/stdtoolbars.inc:112
 #: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:110
 #: src/frontends/qt4/GuiDocument.cpp:128 src/frontends/qt4/GuiDocument.cpp:144
-#: src/frontends/qt4/GuiDocument.cpp:157 src/frontends/qt4/GuiDocument.cpp:764
-#: src/frontends/qt4/GuiDocument.cpp:877 src/frontends/qt4/GuiDocument.cpp:882
-#: src/frontends/qt4/GuiDocument.cpp:923 src/frontends/qt4/GuiDocument.cpp:934
-#: src/frontends/qt4/GuiDocument.cpp:1095
-#: src/frontends/qt4/GuiDocument.cpp:1181
-#: src/frontends/qt4/GuiDocument.cpp:1791
-#: src/frontends/qt4/GuiDocument.cpp:1814
-#: src/frontends/qt4/GuiDocument.cpp:1815
-#: src/frontends/qt4/GuiDocument.cpp:1816
-#: src/frontends/qt4/GuiDocument.cpp:1891
-#: src/frontends/qt4/GuiDocument.cpp:2321
-#: src/frontends/qt4/GuiDocument.cpp:3390 src/frontends/qt4/GuiExternal.cpp:76
+#: src/frontends/qt4/GuiDocument.cpp:157 src/frontends/qt4/GuiDocument.cpp:775
+#: src/frontends/qt4/GuiDocument.cpp:888 src/frontends/qt4/GuiDocument.cpp:893
+#: src/frontends/qt4/GuiDocument.cpp:934 src/frontends/qt4/GuiDocument.cpp:945
+#: src/frontends/qt4/GuiDocument.cpp:1108
+#: src/frontends/qt4/GuiDocument.cpp:1194
+#: src/frontends/qt4/GuiDocument.cpp:1827
+#: src/frontends/qt4/GuiDocument.cpp:1850
+#: src/frontends/qt4/GuiDocument.cpp:1851
+#: src/frontends/qt4/GuiDocument.cpp:1852
+#: src/frontends/qt4/GuiDocument.cpp:1927
+#: src/frontends/qt4/GuiDocument.cpp:2357
+#: src/frontends/qt4/GuiDocument.cpp:3426 src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2291 src/frontends/qt4/GuiPrefs.cpp:2546
@@ -1324,6 +1325,10 @@ msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"
 #: src/frontends/qt4/ui/ThesaurusUi.ui:95
 msgid "&Replace"
 msgstr "Nah&radiť"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:136
+msgid "Shift+Enter search backwards directly"
+msgstr "Shift+Enter hľadať naspäť priamo"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:136
 #: src/frontends/qt4/ui/SearchUi.ui:196
@@ -2832,13 +2837,13 @@ msgstr "Dvojitý"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
-#: src/frontends/qt4/ui/TabularUi.ui:1210
-#: src/frontends/qt4/ui/TabularUi.ui:1229
-#: src/frontends/qt4/ui/TabularUi.ui:1277 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:765
-#: src/frontends/qt4/GuiDocument.cpp:769 src/frontends/qt4/GuiDocument.cpp:777
-#: src/frontends/qt4/GuiDocument.cpp:883 src/frontends/qt4/GuiDocument.cpp:935
-#: src/frontends/qt4/GuiDocument.cpp:1101 src/frontends/qt4/GuiHSpace.cpp:56
+#: src/frontends/qt4/ui/TabularUi.ui:1212
+#: src/frontends/qt4/ui/TabularUi.ui:1231
+#: src/frontends/qt4/ui/TabularUi.ui:1279 src/frontends/qt4/ui/VSpaceUi.ui:107
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:776
+#: src/frontends/qt4/GuiDocument.cpp:780 src/frontends/qt4/GuiDocument.cpp:788
+#: src/frontends/qt4/GuiDocument.cpp:894 src/frontends/qt4/GuiDocument.cpp:946
+#: src/frontends/qt4/GuiDocument.cpp:1114 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:851
 #: src/frontends/qt4/GuiPrefs.cpp:878 src/frontends/qt4/GuiPrefs.cpp:2140
 #: src/frontends/qt4/GuiPrefs.cpp:2163 src/frontends/qt4/GuiPrintNomencl.cpp:51
@@ -3468,7 +3473,7 @@ msgstr "Nepovinný indikátor veľkosti (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
 msgid "BibTeX command and options"
-msgstr "Príkaz a voľby pre BibTeX "
+msgstr "Príkaz a voľby pre BibTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:128
 #: src/frontends/qt4/ui/PrefLatexUi.ui:203
@@ -4462,54 +4467,6 @@ msgstr "Súčasná pozícia stĺpca"
 msgid "&Table Settings"
 msgstr "Nastavenia &tabuľky"
 
-#: src/frontends/qt4/ui/TabularUi.ui:113
-msgid "Column settings"
-msgstr "Nastavenia stĺpca"
-
-#: src/frontends/qt4/ui/TabularUi.ui:119
-msgid "&Horizontal alignment:"
-msgstr "&Horizontálne zarovnanie:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:129
-msgid "Horizontal alignment in column"
-msgstr "Horizontálne zarovnanie v stĺpcy"
-
-#: src/frontends/qt4/ui/TabularUi.ui:136 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:824
-msgid "Justified"
-msgstr "Do bloku"
-
-#: src/frontends/qt4/ui/TabularUi.ui:156 src/frontends/qt4/GuiTabular.cpp:826
-msgid "At Decimal Separator"
-msgstr "Na Decimálnom Separátore"
-
-#: src/frontends/qt4/ui/TabularUi.ui:182
-msgid "&Decimal separator:"
-msgstr "&Decimálny separátor:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:240
-msgid "Fixed width of the column"
-msgstr "Fixná šírka stĺpca"
-
-#: src/frontends/qt4/ui/TabularUi.ui:268
-msgid "&Vertical alignment in row:"
-msgstr "&Vertikálne zarovnanie v riadku:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:278
-msgid ""
-"Specifies the vertical alignment of this cell in relation to the baseline of "
-"the row."
-msgstr ""
-"Udáva vertikálne zarovnanie tejto bunky vzhľadom k základnej linke riadku."
-
-#: src/frontends/qt4/ui/TabularUi.ui:300
-msgid "Merge cells of different columns"
-msgstr "Zlúčiť bunky rozličných stĺpcov"
-
-#: src/frontends/qt4/ui/TabularUi.ui:303
-msgid "&Multicolumn"
-msgstr "Viac&stĺpcové"
-
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Row setting"
 msgstr "Nastavenie riadku"
@@ -4570,7 +4527,55 @@ msgstr "Otočiť tabuľku o 90 stupňov"
 msgid "&Rotate"
 msgstr "&Otočiť"
 
-#: src/frontends/qt4/ui/TabularUi.ui:567
+#: src/frontends/qt4/ui/TabularUi.ui:366
+msgid "Column settings"
+msgstr "Nastavenia stĺpca"
+
+#: src/frontends/qt4/ui/TabularUi.ui:372
+msgid "&Horizontal alignment:"
+msgstr "&Horizontálne zarovnanie:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:382
+msgid "Horizontal alignment in column"
+msgstr "Horizontálne zarovnanie v stĺpcy"
+
+#: src/frontends/qt4/ui/TabularUi.ui:389
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:826
+msgid "Justified"
+msgstr "Do bloku"
+
+#: src/frontends/qt4/ui/TabularUi.ui:409 src/frontends/qt4/GuiTabular.cpp:828
+msgid "At Decimal Separator"
+msgstr "Na Decimálnom Separátore"
+
+#: src/frontends/qt4/ui/TabularUi.ui:435
+msgid "&Decimal separator:"
+msgstr "&Decimálny separátor:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:493
+msgid "Fixed width of the column"
+msgstr "Fixná šírka stĺpca"
+
+#: src/frontends/qt4/ui/TabularUi.ui:521
+msgid "&Vertical alignment in row:"
+msgstr "&Vertikálne zarovnanie v riadku:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:531
+msgid ""
+"Specifies the vertical alignment of this cell in relation to the baseline of "
+"the row."
+msgstr ""
+"Udáva vertikálne zarovnanie tejto bunky vzhľadom k základnej linke riadku."
+
+#: src/frontends/qt4/ui/TabularUi.ui:553
+msgid "Merge cells of different columns"
+msgstr "Zlúčiť bunky rozličných stĺpcov"
+
+#: src/frontends/qt4/ui/TabularUi.ui:556
+msgid "&Multicolumn"
+msgstr "Viac&stĺpcové"
+
+#: src/frontends/qt4/ui/TabularUi.ui:563
 msgid "LaTe&X argument:"
 msgstr "LaTe&X argument:"
 
@@ -4687,13 +4692,14 @@ msgstr "Opakovať tento riadok ako hlavičku na všetkých stranách (okrem prve
 msgid "on"
 msgstr "zapnuté"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1378
-#: src/frontends/qt4/ui/TabularUi.ui:1385
-#: src/frontends/qt4/ui/TabularUi.ui:1412
-#: src/frontends/qt4/ui/TabularUi.ui:1419
-#: src/frontends/qt4/ui/TabularUi.ui:1453
-#: src/frontends/qt4/ui/TabularUi.ui:1460
-#: src/frontends/qt4/ui/TabularUi.ui:1484 src/frontends/qt4/ui/TabularUi.ui:1491
+#: src/frontends/qt4/ui/TabularUi.ui:1380
+#: src/frontends/qt4/ui/TabularUi.ui:1387
+#: src/frontends/qt4/ui/TabularUi.ui:1414
+#: src/frontends/qt4/ui/TabularUi.ui:1421
+#: src/frontends/qt4/ui/TabularUi.ui:1455
+#: src/frontends/qt4/ui/TabularUi.ui:1462
+#: src/frontends/qt4/ui/TabularUi.ui:1486
+#: src/frontends/qt4/ui/TabularUi.ui:1493
 msgid "double"
 msgstr "dvojitý"
 
@@ -5150,36 +5156,37 @@ msgid "Publication Issue:"
 msgstr "Publikačný Výdaj:"
 
 #: lib/layouts/AEA.layout:94 lib/layouts/IEEEtran.layout:188
-#: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322 lib/layouts/aa.layout:338
-#: lib/layouts/aapaper.layout:100 lib/layouts/aapaper.layout:203
-#: lib/layouts/aastex.layout:113 lib/layouts/aastex.layout:252
-#: lib/layouts/achemso.layout:186 lib/layouts/achemso.layout:203
-#: lib/layouts/acmsiggraph.layout:110 lib/layouts/acmsiggraph.layout:126
-#: lib/layouts/agutex.layout:130 lib/layouts/apa.layout:70
-#: lib/layouts/cl2emult.layout:81 lib/layouts/cl2emult.layout:92
-#: lib/layouts/ectaart.layout:42 lib/layouts/ectaart.layout:55
-#: lib/layouts/egs.layout:484 lib/layouts/elsart.layout:205
-#: lib/layouts/elsart.layout:220 lib/layouts/elsarticle.layout:247
-#: lib/layouts/elsarticle.layout:264 lib/layouts/entcs.layout:85
-#: lib/layouts/foils.layout:147 lib/layouts/ijmpc.layout:200
-#: lib/layouts/ijmpd.layout:207 lib/layouts/iopart.layout:170
-#: lib/layouts/iopart.layout:187 lib/layouts/isprs.layout:25
-#: lib/layouts/jasatex.layout:156 lib/layouts/jasatex.layout:173
-#: lib/layouts/kluwer.layout:259 lib/layouts/latex8.layout:107
-#: lib/layouts/llncs.layout:242 lib/layouts/ltugboat.layout:171
-#: lib/layouts/ltugboat.layout:185 lib/layouts/paper.layout:130
-#: lib/layouts/revtex.layout:139 lib/layouts/revtex4-1.layout:73
-#: lib/layouts/revtex4.layout:223 lib/layouts/siamltex.layout:251
-#: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
-#: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:149
-#: lib/layouts/svjog.layout:153 lib/layouts/svmono.layout:20
-#: lib/layouts/svmult.layout:95 lib/layouts/svmult.layout:99
-#: lib/layouts/svprobth.layout:183 lib/layouts/tufte-handout.layout:45
-#: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:239 lib/layouts/stdstruct.inc:12
-#: lib/layouts/stdstruct.inc:27 lib/layouts/svcommon.inc:422
-#: lib/layouts/svcommon.inc:428 src/output_plaintext.cpp:138
+#: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
+#: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
+#: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
+#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
+#: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
+#: lib/layouts/acmsiggraph.layout:126 lib/layouts/agutex.layout:130
+#: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:81
+#: lib/layouts/cl2emult.layout:92 lib/layouts/ectaart.layout:42
+#: lib/layouts/ectaart.layout:55 lib/layouts/egs.layout:484
+#: lib/layouts/elsart.layout:205 lib/layouts/elsart.layout:220
+#: lib/layouts/elsarticle.layout:247 lib/layouts/elsarticle.layout:264
+#: lib/layouts/entcs.layout:85 lib/layouts/foils.layout:147
+#: lib/layouts/ijmpc.layout:200 lib/layouts/ijmpd.layout:207
+#: lib/layouts/iopart.layout:170 lib/layouts/iopart.layout:187
+#: lib/layouts/isprs.layout:25 lib/layouts/jasatex.layout:156
+#: lib/layouts/jasatex.layout:173 lib/layouts/kluwer.layout:259
+#: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:242
+#: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
+#: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
+#: lib/layouts/revtex4-1.layout:73 lib/layouts/revtex4.layout:223
+#: lib/layouts/siamltex.layout:251 lib/layouts/sigplanconf.layout:153
+#: lib/layouts/sigplanconf.layout:169 lib/layouts/spie.layout:75
+#: lib/layouts/svglobal.layout:149 lib/layouts/svjog.layout:153
+#: lib/layouts/svmono.layout:20 lib/layouts/svmult.layout:95
+#: lib/layouts/svmult.layout:99 lib/layouts/svprobth.layout:183
+#: lib/layouts/tufte-handout.layout:45 lib/layouts/tufte-handout.layout:60
+#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:91
+#: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:239
+#: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
+#: lib/layouts/svcommon.inc:422 lib/layouts/svcommon.inc:428
+#: src/output_plaintext.cpp:138
 msgid "Abstract"
 msgstr "Súhrn"
 
@@ -5848,26 +5855,27 @@ msgstr "Dôkaz."
 #: lib/layouts/amsart.layout:63 lib/layouts/amsbook.layout:54
 #: lib/layouts/apa.layout:310 lib/layouts/beamer.layout:108
 #: lib/layouts/beamer.layout:139 lib/layouts/beamer.layout:140
-#: lib/layouts/beamer.layout:183 lib/layouts/egs.layout:30
-#: lib/layouts/europecv.layout:29 lib/layouts/isprs.layout:147
-#: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
-#: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
-#: lib/layouts/moderncv.layout:33 lib/layouts/paper.layout:58
-#: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4-1.layout:45 lib/layouts/revtex4.layout:64
-#: lib/layouts/siamltex.layout:357 lib/layouts/simplecv.layout:29
-#: lib/layouts/spie.layout:20 lib/layouts/tufte-book.layout:64
-#: lib/layouts/tufte-book.layout:85 lib/layouts/tufte-book.layout:86
-#: lib/layouts/tufte-handout.layout:23 lib/layouts/agu_stdsections.inc:32
-#: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:30
-#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:68
-#: lib/layouts/scrclass.inc:144 lib/layouts/stdsections.inc:13
-#: lib/layouts/stdsections.inc:41 lib/layouts/stdsections.inc:65
-#: lib/layouts/stdsections.inc:66 lib/layouts/svcommon.inc:116
-#: lib/layouts/svcommon.inc:153 lib/layouts/svcommon.inc:166
-#: lib/layouts/svcommon.inc:178 lib/layouts/svcommon.inc:190
-#: lib/layouts/svcommon.inc:410 src/frontends/qt4/GuiDocument.cpp:171
+#: lib/layouts/beamer.layout:183 lib/layouts/beamer.layout:227
+#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:29
+#: lib/layouts/isprs.layout:147 lib/layouts/kluwer.layout:60
+#: lib/layouts/latex8.layout:46 lib/layouts/llncs.layout:46
+#: lib/layouts/ltugboat.layout:45 lib/layouts/memoir.layout:70
+#: lib/layouts/memoir.layout:134 lib/layouts/moderncv.layout:33
+#: lib/layouts/paper.layout:58 lib/layouts/powerdot.layout:220
+#: lib/layouts/revtex.layout:38 lib/layouts/revtex4-1.layout:45
+#: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:357
+#: lib/layouts/simplecv.layout:29 lib/layouts/spie.layout:20
+#: lib/layouts/tufte-book.layout:64 lib/layouts/tufte-book.layout:85
+#: lib/layouts/tufte-book.layout:86 lib/layouts/tufte-handout.layout:23
+#: lib/layouts/agu_stdsections.inc:32 lib/layouts/aguplus.inc:29
+#: lib/layouts/db_stdsections.inc:30 lib/layouts/numrevtex.inc:6
+#: lib/layouts/scrclass.inc:68 lib/layouts/scrclass.inc:144
+#: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:41
+#: lib/layouts/stdsections.inc:65 lib/layouts/stdsections.inc:66
+#: lib/layouts/svcommon.inc:116 lib/layouts/svcommon.inc:153
+#: lib/layouts/svcommon.inc:166 lib/layouts/svcommon.inc:178
+#: lib/layouts/svcommon.inc:190 lib/layouts/svcommon.inc:410
+#: src/frontends/qt4/GuiDocument.cpp:171
 msgid "Section"
 msgstr "Sekcia"
 
@@ -5893,15 +5901,16 @@ msgstr "Podsekcia"
 #: lib/layouts/aapaper.layout:72 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:75 lib/layouts/aastex.layout:203
 #: lib/layouts/amsart.layout:127 lib/layouts/amsbook.layout:73
-#: lib/layouts/apa.layout:331 lib/layouts/isprs.layout:169
-#: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
-#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
-#: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
-#: lib/layouts/revtex.layout:59 lib/layouts/revtex4-1.layout:53
-#: lib/layouts/revtex4.layout:73 lib/layouts/siamltex.layout:377
-#: lib/layouts/agu_stdsections.inc:54 lib/layouts/db_stdsections.inc:48
-#: lib/layouts/numrevtex.inc:24 lib/layouts/scrclass.inc:84
-#: lib/layouts/stdsections.inc:106 lib/layouts/svcommon.inc:208
+#: lib/layouts/apa.layout:331 lib/layouts/beamer.layout:226
+#: lib/layouts/isprs.layout:169 lib/layouts/kluwer.layout:79
+#: lib/layouts/llncs.layout:64 lib/layouts/ltugboat.layout:85
+#: lib/layouts/memoir.layout:82 lib/layouts/paper.layout:76
+#: lib/layouts/recipebook.layout:97 lib/layouts/revtex.layout:59
+#: lib/layouts/revtex4-1.layout:53 lib/layouts/revtex4.layout:73
+#: lib/layouts/siamltex.layout:377 lib/layouts/agu_stdsections.inc:54
+#: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
+#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:106
+#: lib/layouts/svcommon.inc:208
 msgid "Subsubsection"
 msgstr "Podpodsekcia"
 
@@ -12010,7 +12019,7 @@ msgstr "Vzorec v riadku"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:304
 msgid "Displayed Formula|D"
-msgstr "Zobrazený vzorec"
+msgstr "Exponovaný vzorec"
 
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:305 lib/ui/stdmenus.inc:423
 msgid "Eqnarray Environment|E"
@@ -12128,18 +12137,19 @@ msgstr "Formátovaná Referencia|t"
 msgid "Textual Reference|x"
 msgstr "Textová Referencia"
 
-#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110 lib/ui/stdcontext.inc:120
-#: lib/ui/stdcontext.inc:128 lib/ui/stdcontext.inc:137
-#: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:155
-#: lib/ui/stdcontext.inc:219 lib/ui/stdcontext.inc:237
-#: lib/ui/stdcontext.inc:264 lib/ui/stdcontext.inc:358
-#: lib/ui/stdcontext.inc:371 lib/ui/stdcontext.inc:433
-#: lib/ui/stdcontext.inc:453 lib/ui/stdcontext.inc:464
-#: lib/ui/stdcontext.inc:472 lib/ui/stdcontext.inc:482
-#: lib/ui/stdcontext.inc:490 lib/ui/stdcontext.inc:498
-#: lib/ui/stdcontext.inc:506 lib/ui/stdcontext.inc:519
-#: lib/ui/stdcontext.inc:529 lib/ui/stdcontext.inc:550
-#: lib/ui/stdcontext.inc:558 lib/ui/stdcontext.inc:604 lib/ui/stdmenus.inc:512
+#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
+#: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:237 lib/ui/stdcontext.inc:264
+#: lib/ui/stdcontext.inc:358 lib/ui/stdcontext.inc:371
+#: lib/ui/stdcontext.inc:433 lib/ui/stdcontext.inc:453
+#: lib/ui/stdcontext.inc:464 lib/ui/stdcontext.inc:472
+#: lib/ui/stdcontext.inc:482 lib/ui/stdcontext.inc:490
+#: lib/ui/stdcontext.inc:498 lib/ui/stdcontext.inc:506
+#: lib/ui/stdcontext.inc:519 lib/ui/stdcontext.inc:529
+#: lib/ui/stdcontext.inc:550 lib/ui/stdcontext.inc:558
+#: lib/ui/stdcontext.inc:604 lib/ui/stdmenus.inc:513
 msgid "Settings...|S"
 msgstr "Nastavenia...|a"
 
@@ -13117,7 +13127,7 @@ msgstr "Štandard"
 
 #: lib/ui/stdmenus.inc:261
 msgid "Display|D"
-msgstr "Zobrazenie"
+msgstr "Exponované"
 
 #: lib/ui/stdmenus.inc:262
 msgid "Inline|I"
@@ -13445,7 +13455,7 @@ msgstr "Zlomiť zliatku (ligatúru)"
 
 #: lib/ui/stdmenus.inc:421
 msgid "Display Formula|D"
-msgstr "Zobraziť vzorec"
+msgstr "Exponovaný vzorec"
 
 #: lib/ui/stdmenus.inc:422
 msgid "Numbered Formula|N"
@@ -14001,7 +14011,7 @@ msgstr "Matematika"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Set display mode"
-msgstr "Zvoliť mód zobrazovania"
+msgstr "Zvoliť exponovaný mód"
 
 #: lib/ui/stdtoolbars.inc:174 src/insets/InsetScript.cpp:63
 msgid "Subscript"
@@ -14475,7 +14485,7 @@ msgstr "Iná odmocnina\t\\root"
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "Display style\t\\displaystyle"
-msgstr "Celoriadkový\t\\displaystyle"
+msgstr "Exponovaný\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:352
 msgid "Normal text style\t\\textstyle"
