@@ -542,12 +542,13 @@ Language korean
 	Requires        CJK
 End
 
-# not supported by babel
 Language kurmanji
 	GuiName          "Kurmanji"
+	BabelName        kurmanji
 	PolyglossiaName  kurmanji
 	Encoding         utf8
 	LangCode         kmr
+	AsBabelOptions   true
 End
 
 # not supported by babel

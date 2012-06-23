@@ -44,16 +44,12 @@ Preamble preamble;
 
 namespace {
 
-//add this to known_languages when updating to lyxformat 266:
-// "armenian" (needs special handling since not supported by standard babel)
 //add these to known_languages when updating to lyxformat 268:
 //"chinese-simplified", "chinese-traditional", "japanese", "korean"
-// Both changes require first that support for non-babel languages (CJK,
-// armtex) is added.
+// This requires first that support for CJK languages is added: bug #4377.
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
- * not yet supported by LyX: kurmanji
  * please keep this in sync with known_coded_languages line by line!
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
@@ -63,9 +59,9 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
 "french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
 "greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
-"irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
-"lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian", "newzealand",
-"ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
+"irish", "italian", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
+"lowersorbian", "lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian",
+"newzealand", "ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuges", "portuguese", "romanian", "russian", "russianb", "samin",
 "scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
 "swedish", "thai", "turkish", "turkmen", "ukraineb", "ukrainian",
@@ -83,9 +79,9 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
 "french", "french", "french", "french", "galician", "german", "german",
 "greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
-"irish", "italian", "kazakh", "latin", "latvian", "lithuanian", "lowersorbian",
-"lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian", "newzealand",
-"ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
+"irish", "italian", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
+"lowersorbian", "lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian",
+"newzealand", "ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuguese", "portuguese", "romanian", "russian", "russian", "samin",
 "scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
 "swedish", "thai", "turkish", "turkmen", "ukrainian", "ukrainian",
