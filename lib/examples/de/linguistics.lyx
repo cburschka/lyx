@@ -529,9 +529,18 @@ glt Do you have matches?
 
 \end_layout
 
+\begin_layout Subsection*
+Beschränkungen von LyX-Glossen
+\end_layout
+
 \begin_layout Standard
-Bitte beachten Sie auch, dass Schriftänderungen in den Glossen nicht möglich
- sind.
+Die Unterstützung für Glossen in LyX ist ziemlich basal und hat daher einige
+ Beschränkungen, die in zukünftigen LyX-Versionen möglicherweise behoben
+ werden:
+\end_layout
+
+\begin_layout Enumerate
+Schriftänderungen sind in den Glossen nicht möglich.
  Der Textstil-Dialog ist daher auch deaktiviert.
  Da Wörter in Glossen niemals getrennt werden, ist eine explizite Bestimmung
  der Sprache in der LaTeX-Ausgabe nicht nötig (und sie würde auch zu Fehlern
@@ -540,8 +549,8 @@ Bitte beachten Sie auch, dass Schriftänderungen in den Glossen nicht möglich
 covington
 \emph default
 -Paket dies nicht unterstützt).
- Dennoch mögen Sie vielleicht die Sprache in den Glossen festlegen wollen,
- damit die Rechtschreibprüfung in LyX richtig funktioniert.
+ Dennoch wollen Sie vielleicht die Sprache in den Glossen festlegen, damit
+ die Rechtschreibprüfung in LyX richtig funktioniert.
  Um das zu tun, müssen Sie folgendermaßen vorgehen: Markieren Sie den Text
  und führen Sie dann 
 \family sans
@@ -571,7 +580,11 @@ Minibuffer
 \begin_inset Quotes grs
 \end_inset
 
-), wobei Sie 
+, in den Sie dann 
+\family sans
+language <lang>
+\family default
+ eingeben), wobei Sie 
 \family sans
 <lang>
 \family default
@@ -588,8 +601,221 @@ english
 french
 \family default
 .
+ In der LaTeX-Ausgabe werden die Sprachumschaltungen nun zwar weiterhin
+ unterdrückt, aber die Rechtschreibprüfung erkennt die Sprache.
 \end_layout
 
+\begin_layout Enumerate
+Da der Inhalt von Glossen unverändert an LaTeX weitergegeben wird, passt
+ LyX die Textkodierung nicht an den Inhalt an.
+ Das heißt, dass Sie, wenn Sie in der Glosse Zeichen verwenden, die die
+ aktuelle Kodierung nicht abdeckt, eine Fehlermeldung bekommen werden.
+ Folgendermaßen können Sie das Problem umgehen:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Geben Sie entweder den Text außerhalb der Glosse ein, öffnen Sie dann 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Quelle ansehen
+\family default
+ und kopieren Sie den LaTeX-Code von dort in die Glosse,
+\end_layout
+
+\begin_layout Itemize
+oder markieren Sie die ganze Glosse (von außen) und stellen Sie über 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Sprache\SpecialChar \menuseparator
+Weitere Sprachen\SpecialChar \ldots{}
+ 
+\family default
+die angemessene Sprache ein,
+\end_layout
+
+\begin_layout Itemize
+oder ändern Sie in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Sprache
+\family default
+ die Kodierung auf 
+\emph on
+Unicode (utf8
+\emph default
+),
+\end_layout
+
+\begin_layout Itemize
+oder wählen Sie in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Schriften
+\family default
+ 
+\emph on
+Nicht-TeX-Schriften verwenden (via XeTeX/LuaTeX)
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Innerhalb von Glossen können Seiten umbrochen werden, was natürlich nicht
+ erwünscht ist.
+ Um dies zu umgehen, können Sie Glossen in Boxen packen (über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Box\SpecialChar \menuseparator
+Rahmenlos
+\family default
+).
+ Wenn Sie dies automatisch für alle Glossen im Dokument tun wollen, können
+ Sie den folgenden LaTeX-Code nach 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+LaTeX-Vorspann
+\family default
+ kopieren:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+% 
+Kein Seitenumbruch bei zweizeiligen Glossen
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+@ifundefined{linggloss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+gll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Kein Seitenumbruch bei dreizeiligen Glossen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+@ifundefined{lingglosss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Möglicherweise müssen Sie die Breite der Minipage (
+\family typewriter
+.7
+\backslash
+textwidth
+\family default
+ im Beispielcode) ändern, damit sie zur Seitenbreite Ihres Dokuments passt.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Tableaux für Optimalitätstheorie
 \end_layout
