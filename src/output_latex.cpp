@@ -109,16 +109,16 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 					 : priorpit->getParLanguage(bparams))
 		: doc_language;
 
-	bool const use_pg = runparams.use_polyglossia;
-	string const par_lang = use_pg ?
+	bool const use_polyglossia = runparams.use_polyglossia;
+	string const par_lang = use_polyglossia ?
 		getPolyglossiaEnvName(data.par_language) : data.par_language->babel();
-	string const prev_par_lang = use_pg ?
+	string const prev_par_lang = use_polyglossia ?
 		getPolyglossiaEnvName(prev_par_language) : prev_par_language->babel();
-	string const doc_lang = use_pg ?
+	string const doc_lang = use_polyglossia ?
 		getPolyglossiaEnvName(doc_language) : doc_language->babel();
-	string const lang_begin_command = use_pg ?
+	string const lang_begin_command = use_polyglossia ?
 		"\\begin{$$lang}" : lyxrc.language_command_begin;
-	string const lang_end_command = use_pg ?
+	string const lang_end_command = use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
 
 	if (par_lang != prev_par_lang) {
@@ -140,7 +140,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 				lang_begin_command,
 				"$$lang",
 				par_lang));
-			if (runparams.use_polyglossia
+			if (use_polyglossia
 			    && !data.par_language->polyglossiaOpts().empty())
 					os << "["
 					   << from_ascii(data.par_language->polyglossiaOpts())
@@ -505,18 +505,18 @@ void TeXOnePar(Buffer const & buf,
 		: outer_language;
 
 
-	bool const use_pg = runparams.use_polyglossia;
-	string const par_lang = use_pg ?
+	bool const use_polyglossia = runparams.use_polyglossia;
+	string const par_lang = use_polyglossia ?
 		getPolyglossiaEnvName(par_language): par_language->babel();
-	string const prev_lang = use_pg ?
+	string const prev_lang = use_polyglossia ?
 		getPolyglossiaEnvName(prev_language) : prev_language->babel();
-	string const doc_lang = use_pg ?
+	string const doc_lang = use_polyglossia ?
 		getPolyglossiaEnvName(doc_language) : doc_language->babel();
-	string const outer_lang = use_pg ?
+	string const outer_lang = use_polyglossia ?
 		getPolyglossiaEnvName(outer_language) : outer_language->babel();
-	string const lang_begin_command = use_pg ?
+	string const lang_begin_command = use_polyglossia ?
 		"\\begin{$$lang}" : lyxrc.language_command_begin;
-	string const lang_end_command = use_pg ?
+	string const lang_end_command = use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
 
 	if (par_lang != prev_lang
@@ -549,7 +549,7 @@ void TeXOnePar(Buffer const & buf,
 			// language paragraph should appear within an \L or \R (in addition
 			// to, outside of, the normal language switch commands).
 			// This behavior is not correct for ArabTeX, though.
-			if (!runparams.use_polyglossia
+			if (!use_polyglossia
 			    // not for ArabTeX
 				&& par_language->lang() != "arabic_arabtex"
 				&& outer_language->lang() != "arabic_arabtex"
@@ -586,7 +586,7 @@ void TeXOnePar(Buffer const & buf,
 					lang_begin_command,
 					"$$lang",
 					par_lang));
-				if (runparams.use_polyglossia
+				if (use_polyglossia
 				    && !par_language->polyglossiaOpts().empty())
 						os << "["
 						  << from_ascii(par_language->polyglossiaOpts())
@@ -752,7 +752,7 @@ void TeXOnePar(Buffer const & buf,
 	// Closing the language is needed for the last paragraph; it is also
 	// needed if we're within an \L or \R that we may have opened above (not
 	// necessarily in this paragraph) and are about to close.
-	bool closing_rtl_ltr_environment = !runparams.use_polyglossia
+	bool closing_rtl_ltr_environment = !use_polyglossia
 		// not for ArabTeX
 		&& (par_language->lang() != "arabic_arabtex"
 		    && outer_language->lang() != "arabic_arabtex")
@@ -781,7 +781,7 @@ void TeXOnePar(Buffer const & buf,
 					(runparams.isLastPar && runparams.master_language)
 						? runparams.master_language
 						: outer_language;
-				string const current_lang = runparams.use_polyglossia
+				string const current_lang = use_polyglossia
 					? getPolyglossiaEnvName(current_language)
 					: current_language->babel();
 				if (!current_lang.empty()) {
