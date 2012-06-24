@@ -168,6 +168,8 @@ extern bool pdflatex;
 extern bool xetex;
 /// Do we have CJK?
 extern bool have_CJK;
+/// Do we have non-CJK Japanese?
+extern bool is_nonCJKJapanese;
 /// LyX format that is created by tex2lyx
 extern int const LYX_FORMAT;
 

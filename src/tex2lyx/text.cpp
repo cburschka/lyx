@@ -2119,6 +2119,25 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		have_CJK = false;
 	}
 
+	// it is impossible to determine the correct encoding for non-CJK Japanese.
+	// Therefore write a note at the beginning of the document
+	if (is_nonCJKJapanese) {
+		context.check_layout(os);
+		begin_inset(os, "Note Note\n");
+		os << "status open\n\\begin_layout Plain Layout\n"
+		   << "\\series bold\n"
+		   << "Important information:\n"
+		   << "\\end_layout\n\n"
+		   << "\\begin_layout Plain Layout\n"
+		   << "This document is in Japanese (non-CJK).\n"
+		   << " It was therefore impossible for tex2lyx to determine the correct encoding."
+		   << " The encoding EUC-JP was assumed. If this is incorrect, please set the correct"
+		   << " encoding in the document settings.\n"
+		   << "\\end_layout\n";
+		end_inset(os);
+		is_nonCJKJapanese = false;
+	}
+
 #ifdef FILEDEBUG
 		debugToken(cerr, t, flags);
 #endif

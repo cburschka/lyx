@@ -333,6 +333,7 @@ bool noweb_mode = false;
 bool pdflatex = false;
 bool xetex = false;
 bool have_CJK = false;
+bool is_nonCJKJapanese = false;
 bool roundtrip = false;
 
 

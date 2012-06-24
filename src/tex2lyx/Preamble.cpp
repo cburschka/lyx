@@ -47,7 +47,6 @@ namespace {
 // "chinese-simplified", "chinese-traditional", "japanese-cjk", "korean"
 // cannot be supported because it is impossible to determine the correct document
 // language if CJK is used.
-// FIXME: missing support for "japanese" (non-CJK)
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
@@ -60,7 +59,7 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
 "french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
 "greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
-"irish", "italian", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
+"irish", "italian", "japanese", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
 "lowersorbian", "lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian",
 "newzealand", "ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuges", "portuguese", "romanian", "russian", "russianb", "samin",
@@ -80,7 +79,7 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
 "french", "french", "french", "french", "galician", "german", "german",
 "greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
-"irish", "italian", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
+"irish", "italian", "japanese", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
 "lowersorbian", "lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian",
 "newzealand", "ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
 "portuguese", "portuguese", "romanian", "russian", "russian", "samin",
@@ -206,8 +205,8 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "booktabs", "calc", "CJK", "color", "float", "fontspec",
-"graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
+"amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color", "float",
+"fontspec", "graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
 "nomencl", "pdfpages", "rotating", "rotfloat", "splitidx", "setspace",
 "subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig",
 "xunicode", 0};
@@ -718,16 +717,26 @@ void Preamble::handle_package(Parser &p, string const & name,
 			// call as document language. If there is no such language option, the
 			// last language in the documentclass options is used.
 			handle_opt(options, known_languages, h_language);
-			// If babel is called with options, LyX puts them by default into the
-			// document class options. This works for most languages, except
-			// for Latvian, Lithuanian, Mongolian, Turkmen and Vietnamese and
-			// perhaps in future others.
-			// Therefore keep the babel call as it is as the user might have
-			// reasons for it.
-			h_preamble << "\\usepackage[" << opts << "]{babel}\n";
-			delete_opt(options, known_languages);
-			// finally translate the babel name to a LyX name
+			// translate the babel name to a LyX name
 			h_language = babel2lyx(h_language);
+			// for Japanese we assume EUC-JP as encoding
+			// but we cannot determine the exact encoding and thus output also a note
+			if (h_language == "japanese") {
+				h_inputencoding = "euc";
+				p.setEncoding("EUC-JP");
+				is_nonCJKJapanese = true;
+				// in this case babel can be removed from the preamble
+				registerAutomaticallyLoadedPackage("babel");
+			} else {
+				// If babel is called with options, LyX puts them by default into the
+				// document class options. This works for most languages, except
+				// for Latvian, Lithuanian, Mongolian, Turkmen and Vietnamese and
+				// perhaps in future others.
+				// Therefore keep the babel call as it is as the user might have
+				// reasons for it.
+				h_preamble << "\\usepackage[" << opts << "]{babel}\n";
+			}
+			delete_opt(options, known_languages);
 		}
 		else
 			h_preamble << "\\usepackage{babel}\n";
