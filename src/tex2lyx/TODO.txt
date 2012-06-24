@@ -20,24 +20,19 @@ Format LaTeX feature                        LyX feature
 228    draft                                InsetExternal
 232    bibtopic                             InsetBibTeX
 254    esint.sty                            \use_esint
-266    armenian                             \language, \lang
 267    XeTeX                                utf8 encoding
-268    CJK.sty                              CJK encodings, languages
 269    listings.sty (inline, with args)     InsetListings
 270    \alert, \structure (beamer)          layout
 281    ?                                    modules
-292    japanese                             japanese-plain
 293    ?                                    InsetInfo
 309    \nocite                              InsetCitation
 310    \nocite{*}                           InsetBibtex
 322    ?                                    local layout
-325    japanese                             one japanese language
 326    PDFLaTeX for external insets         InsetExternal
 329    master documents                     \master
 332    ?                                    InsetGraphics groupId
 336    ?                                    \font_cjk
 343    ?                                    \use_default_options
-350    ?                                    \default_output_format
 353    \printsubindex                       InsetIndex
 354    \printindex*, \printsubindex*        InsetIndex
 358    custom bibtex command                \bibtex_command
@@ -64,7 +59,6 @@ Format LaTeX feature                        LyX feature
 402    \addcontentsline                     InsetBibtex bibtotoc option
 404    refstyle.sty                         InsetRef
 407    vertical offset for multirows        InsetTabular
-409    XeTeX                                \use_non_tex_fonts
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    undertilde.sty                       fonts
 427    tipa.sty \begin{IPA}, \textipa       InsetTIPA
