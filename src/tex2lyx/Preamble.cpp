@@ -435,8 +435,10 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	//h_backgroundcolor;
 	//h_boxbgcolor;
 	h_biblio_style            = "plain";
+	h_bibtex_command          = "default";
 	h_cite_engine             = "basic";
 	h_cite_engine_type        = "numerical";
+	h_color                   = "#008000";
 	h_defskip                 = "medskip";
 	//h_float_placement;
 	//h_fontcolor;
@@ -455,15 +457,19 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_html_be_strict          = "false";
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
+	h_index                   = "Index";
+	h_index_command           = "default";
 	h_inputencoding           = "auto";
 	h_justification           = "true";
 	h_language                = "english";
 	h_language_package        = "none";
 	//h_listings_params;
+	h_maintain_unincluded_children = "false";
 	//h_margins;
 	//h_notefontcolor;
 	//h_options;
 	h_output_changes          = "false";
+	h_output_sync             = "0";
 	h_papercolumns            = "1";
 	h_paperfontsize           = "default";
 	h_paperorientation        = "portrait";
@@ -489,6 +495,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	//h_pdf_quoted_options;
 	h_quotes_language         = "english";
 	h_secnumdepth             = "3";
+	h_shortcut                = "idx";
 	h_spacing                 = "single";
 	h_suppress_date           = "false";
 	h_textclass               = "article";
@@ -499,14 +506,14 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "0";
-	h_use_refstyle            = "0";
+	h_use_refstyle            = "1";
 	h_use_packages["amsmath"]    = "1";
-	h_use_packages["amssymb"]    = "0";
+	h_use_packages["amssymb"]    = "1";
 	h_use_packages["esint"]      = "1";
-	h_use_packages["mhchem"]     = "0";
-	h_use_packages["mathdots"]   = "0";
-	h_use_packages["mathtools"]  = "0";
-	h_use_packages["undertilde"] = "0";
+	h_use_packages["mhchem"]     = "1";
+	h_use_packages["mathdots"]   = "1";
+	h_use_packages["mathtools"]  = "1";
+	h_use_packages["undertilde"] = "1";
 }
 
 
@@ -946,7 +953,8 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 			os << *it << '\n';
 		os << "\\end_modules\n";
 	}
-	os << "\\language " << h_language << "\n"
+	os << "\\maintain_unincluded_children " << h_maintain_unincluded_children << "\n"
+	   << "\\language " << h_language << "\n"
 	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontencoding " << h_fontencoding << "\n"
@@ -958,9 +966,12 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
-	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
+	   << "\\font_tt_scale " << h_font_tt_scale << "\n\n"
 	   << "\\graphics " << h_graphics << "\n"
-	   << "\\default_output_format " << h_default_output_format << "\n";
+	   << "\\default_output_format " << h_default_output_format << "\n"
+	   << "\\output_sync " << h_output_sync << "\n"
+	   << "\\bibtex_command " << h_bibtex_command << "\n"
+	   << "\\index_command " << h_index_command << "\n";
 	if (!h_float_placement.empty())
 		os << "\\float_placement " << h_float_placement << "\n";
 	os << "\\paperfontsize " << h_paperfontsize << "\n"
@@ -1011,6 +1022,10 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 		os << "\\backgroundcolor " << h_backgroundcolor << '\n';
 	if (!h_boxbgcolor.empty())
 		os << "\\boxbgcolor " << h_boxbgcolor << '\n';
+	os << "\\index " << h_index << '\n'
+	   << "\\boxbgcolor " << h_boxbgcolor << '\n'
+	   << "\\color " << h_color << '\n'
+	   << "\\end_index\n";
 	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
