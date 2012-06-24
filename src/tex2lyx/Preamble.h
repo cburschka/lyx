@@ -35,6 +35,8 @@ public:
 	Preamble();
 
 	///
+	std::string h_language;
+	///
 	std::string inputencoding() const { return h_inputencoding; }
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
@@ -115,7 +117,6 @@ private:
 	std::string h_index_command;
 	std::string h_inputencoding;
 	std::string h_justification;
-	std::string h_language;
 	std::string h_language_package;
 	std::string h_listings_params;
 	std::string h_maintain_unincluded_children;
