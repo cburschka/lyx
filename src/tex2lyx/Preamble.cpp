@@ -44,9 +44,10 @@ Preamble preamble;
 
 namespace {
 
-//add these to known_languages when updating to lyxformat 268:
-//"chinese-simplified", "chinese-traditional", "japanese", "korean"
-// This requires first that support for CJK languages is added: bug #4377.
+// "chinese-simplified", "chinese-traditional", "japanese-cjk", "korean"
+// cannot be supported because it is impossible to determine the correct document
+// language if CJK is used.
+// FIXME: missing support for "japanese" (non-CJK)
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai

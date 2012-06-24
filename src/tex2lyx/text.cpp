@@ -159,7 +159,7 @@ const char * const supported_CJK_encodings[] = {
 "EUC-JP", "KS", "GB", "UTF8", 0};
 
 /**
- * the same as supported_CJK_encodings with .lyx names
+ * the same as supported_CJK_encodings with their corresponding LyX language name
  * please keep this in sync with supported_CJK_encodings line by line!
  */
 const char * const coded_supported_CJK_encodings[] = {
