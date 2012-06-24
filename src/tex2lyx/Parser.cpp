@@ -398,7 +398,14 @@ Parser::Arg Parser::getFullArg(char left, char right)
 	if (c != left) {
 		putback();
 		return make_pair(false, string());
-	} else
+	} else {
+		// in case of the '+' as delimiter single a '\' is allowed
+		// as content, for example "\verb+\+" (reported as bug #4468)
+		// we need special handling because single \ are normally ignored
+		// or taken as start of a command
+		if (c == '+')
+			if (next_token().cat() == catEscape)
+				result += '\\';
 		while ((c = getChar()) != right && good()) {
 			// Ignore comments
 			if (curr_token().cat() == catComment) {
@@ -408,7 +415,7 @@ Parser::Arg Parser::getFullArg(char left, char right)
 			else
 				result += curr_token().asInput();
 		}
-
+	}
 	return make_pair(true, result);
 }
 

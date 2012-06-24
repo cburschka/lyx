@@ -166,6 +166,8 @@ extern bool noweb_mode;
 extern bool pdflatex;
 /// Did we recognize any xetex-only construct?
 extern bool xetex;
+/// Do we have CJK?
+extern bool have_CJK;
 /// LyX format that is created by tex2lyx
 extern int const LYX_FORMAT;
 
