@@ -1023,7 +1023,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	if (!h_boxbgcolor.empty())
 		os << "\\boxbgcolor " << h_boxbgcolor << '\n';
 	os << "\\index " << h_index << '\n'
-	   << "\\boxbgcolor " << h_boxbgcolor << '\n'
+	   << "\\shortcut " << h_shortcut << '\n'
 	   << "\\color " << h_color << '\n'
 	   << "\\end_index\n";
 	os << h_margins
