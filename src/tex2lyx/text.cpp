@@ -152,6 +152,27 @@ const char * const coded_polyglossia_languages[] = {
 "american", "ancientgreek", "australian", "british", "greek", "newzealand",
 "polutonikogreek", 0};
 
+/**
+ * supported CJK encodings
+ */
+const char * const supported_CJK_encodings[] = {
+"EUC-JP", "KS", "GB", "UTF8", 0};
+
+/**
+ * the same as supported_CJK_encodings with .lyx names
+ * please keep this in sync with supported_CJK_encodings line by line!
+ */
+const char * const coded_supported_CJK_encodings[] = {
+"japanese-cjk", "korean", "chinese-simplified", "chinese-traditional", 0};
+
+string CJK2lyx(string const & encoding)
+{
+	char const * const * where = is_known(encoding, supported_CJK_encodings);
+	if (where)
+		return coded_supported_CJK_encodings[where - supported_CJK_encodings];
+	return encoding;
+}
+
 /*!
  * natbib commands.
  * The starred forms are also known except for "citefullauthor",
@@ -1433,6 +1454,57 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		os << "\n\\begin_layout Standard\n";
 	}
 
+	else if (name == "CJK") {
+		// the scheme is \begin{CJK}{encoding}{mapping}{text}
+		// It is impossible to decide if a CJK environment was in its own paragraph or within
+		// a line. We therefore always assume a paragraph since the latter is a rare case.
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_end_layout(os);
+		// store the encoding to be able to reset it
+		string const encoding_old = p.encoding_latex_;
+		string const encoding = p.getArg('{', '}');
+		// SJIS and BIG5 don't work with LaTeX according to the comment in unicode.cpp
+		// JIS does not work with LyX's encoding conversion
+		if (encoding != "SJIS" && encoding != "BIG5" && encoding != "JIS")
+			p.setEncoding(encoding);
+		else
+			p.setEncoding("utf8");
+		// LyX doesn't support the second argument so if
+		// this is used we need to output everything as ERT
+		string const mapping = p.getArg('{', '}');
+		if ( (!mapping.empty() && mapping != " ")
+			|| (!is_known(encoding, supported_CJK_encodings))) {
+			parent_context.check_layout(os);
+			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
+				       parent_context);
+			// we must parse the content as verbatim because e.g. SJIS can contain
+			// normally invalid characters
+			string const s = p.plainEnvironment("CJK");
+			string::const_iterator it2 = s.begin();
+			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
+				if (*it == '\\')
+					handle_ert(os, "\\", parent_context);
+				else if (*it == '$')
+					handle_ert(os, "$", parent_context);
+				else 
+					os << *it;
+			}
+			p.skip_spaces();
+			handle_ert(os, "\\end{" + name + "}",
+				       parent_context);
+		} else {
+			string const lang = CJK2lyx(encoding);
+			// store the language because we must reset it at the end
+			string const lang_old = parent_context.font.language;
+			parent_context.font.language = lang;
+			parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+			parent_context.font.language = lang_old;
+			parent_context.new_paragraph(os);
+		}
+		p.encoding_latex_ = encoding_old;
+		p.skip_spaces();
+	}
+
 	else if (name == "lyxgreyedout") {
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
@@ -2028,6 +2100,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	string last_env;
 	while (p.good()) {
 		Token const & t = p.get_token();
+
+	// it is impossible to determine the correct document language if CJK is used.
+	// Therefore write a note at the beginning of the document
+	if (have_CJK) {
+		context.check_layout(os);
+		begin_inset(os, "Note Note\n");
+		os << "status open\n\\begin_layout Plain Layout\n"
+		   << "\\series bold\n"
+		   << "Important information:\n"
+		   << "\\end_layout\n\n"
+		   << "\\begin_layout Plain Layout\n"
+		   << "This document contains text in Chinese, Japanese or Korean.\n"
+		   << " It was therefore impossible for tex2lyx to set the correct document langue for your document."
+		   << " Please set in the document settings by yourself!\n"
+		   << "\\end_layout\n";
+		end_inset(os);
+		have_CJK = false;
+	}
 
 #ifdef FILEDEBUG
 		debugToken(cerr, t, flags);

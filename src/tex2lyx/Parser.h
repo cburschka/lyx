@@ -251,6 +251,8 @@ public:
 	void setCatCode(char c, CatCode cat);
 	///
 	CatCode getCatCode(char c) const;
+	/// latex name of the current encoding
+	std::string encoding_latex_;
 
 private:
 	///
@@ -265,8 +267,6 @@ private:
 	idocstringstream * iss_;
 	///
 	idocstream & is_;
-	/// latex name of the current encoding
-	std::string encoding_latex_;
 };
 
 

@@ -205,7 +205,7 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "booktabs", "calc", "color", "float", "fontspec",
+"amstext", "amsthm", "array", "booktabs", "calc", "CJK", "color", "float", "fontspec",
 "graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
 "nomencl", "pdfpages", "rotating", "rotfloat", "splitidx", "setspace",
 "subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig",
@@ -732,6 +732,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 		registerAutomaticallyLoadedPackage("xunicode");
 		if (h_inputencoding == "auto")
 			p.setEncoding("utf8");
+	}
+
+	else if (name == "CJK") {
+		// It is impossible to determine the document language if CJK is used.
+		// All we can do is to notify the user that he has to set this by hisself.
+		have_CJK = true;
+		// set the encoding to "auto" because it might be set to "default" by the babel handling
+		// and this would not be correct for CJK
+		h_inputencoding = "auto";
+		registerAutomaticallyLoadedPackage("CJK");
 	}
 
 	else if (name == "fontenc") {
