@@ -534,9 +534,9 @@ Beschränkungen von LyX-Glossen
 \end_layout
 
 \begin_layout Standard
-Die Unterstützung für Glossen in LyX ist ziemlich basal und hat daher einige
- Beschränkungen, die in zukünftigen LyX-Versionen möglicherweise behoben
- werden:
+Die Unterstützung von Glossen in LyX steckt noch in den Kinderschuhen.
+ Es gibt einige Beschränkungen, die in zukünftigen LyX-Versionen möglicherweise
+ behoben werden:
 \end_layout
 
 \begin_layout Enumerate
@@ -694,11 +694,12 @@ inline false
 status open
 
 \begin_layout Plain Layout
-% 
-Kein Seitenumbruch bei zweizeiligen Glossen
+
+% Kein Seitenumbruch bei zweizeiligen Glossen
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 AtBeginDocument{%
@@ -706,17 +707,20 @@ AtBeginDocument{%
 
 \begin_layout Plain Layout
 
+
 \backslash
 @ifundefined{linggloss}{}{%
 \end_layout
 
 \begin_layout Plain Layout
 
+
 \backslash
 renewenvironment{linggloss}[1]{%
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 begin{minipage}{.7
@@ -725,6 +729,7 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 gll #1}{
@@ -735,6 +740,7 @@ end{minipage}}}
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
