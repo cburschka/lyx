@@ -581,7 +581,8 @@ void TeXOnePar(Buffer const & buf,
 					os << "\\L{";
 			}
 			// With CJK, the CJK tag has to be closed first (see below)
-			if (runparams.encoding->package() != Encoding::CJK) {
+			if (runparams.encoding->package() != Encoding::CJK
+			    && !par_lang.empty()) {
 				os << from_ascii(subst(
 					lang_begin_command,
 					"$$lang",
@@ -642,7 +643,8 @@ void TeXOnePar(Buffer const & buf,
 					os << "%\n";
 				}
 				// With CJK, the CJK tag had to be closed first (see above)
-				if (runparams.encoding->package() == Encoding::CJK) {
+				if (runparams.encoding->package() == Encoding::CJK
+				    && !par_lang.empty()) {
 					os << from_ascii(subst(
 						lang_begin_command,
 						"$$lang",
