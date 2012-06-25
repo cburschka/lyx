@@ -997,7 +997,7 @@ void BufferParams::writeFile(ostream & os) const
 	if (!fonts_cjk.empty()) {
 		os << "\\font_cjk " << fonts_cjk << '\n';
 	}
-	os << "\n\\graphics " << graphics_driver << '\n';
+	os << "\\graphics " << graphics_driver << '\n';
 	os << "\\default_output_format " << default_output_format << '\n';
 	os << "\\output_sync " << output_sync << '\n';
 	if (!output_sync_macro.empty())
