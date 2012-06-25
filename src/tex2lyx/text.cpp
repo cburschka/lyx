@@ -3954,8 +3954,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else {
 				string special = p.getFullOpt();
 				special += p.getOpt();
-				parse_outer_box(p, os, FLAG_ITEM, outer,
-				                context, t.cs(), special);
+				// LyX does not yet support \framebox without any option
+				if (!special.empty())
+					parse_outer_box(p, os, FLAG_ITEM, outer,
+					                context, t.cs(), special);
+				else {
+					eat_whitespace(p, os, context, false);
+					handle_ert(os, "\\framebox{", context);
+					eat_whitespace(p, os, context, false);
+					parse_text(p, os, FLAG_ITEM, outer, context);
+					handle_ert(os, "}", context);
+				}
 			}
 		}
 
