@@ -3573,7 +3573,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			                      context.font.language, lang);
 		}
 		
-		else if (is_known(t.cs().substr(4, string::npos), polyglossia_languages)) {
+		else if (prefixIs(t.cs(), "text") 
+			 && is_known(t.cs().substr(4), polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string lang;
 			// We have to output the whole command if it has an option
