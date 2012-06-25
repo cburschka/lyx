@@ -542,10 +542,10 @@ Language korean
 	Requires        CJK
 End
 
+# not yet supported by polyglossia
 Language kurmanji
 	GuiName          "Kurmanji"
 	BabelName        kurmanji
-	PolyglossiaName  kurmanji
 	Encoding         utf8
 	LangCode         kmr
 	AsBabelOptions   true
