@@ -1,14 +1,22 @@
 What's new in version 2.0.4?
 ----------------------------
 
-...
 We have migrated our development from subversion to the git revision 
 control sytem. If you follow or maintain packaging of up-to-date versions 
 of LyX 2.0.x, you must switch to the new repository address:
-	git://git.lyx.org/lyx
+  git://git.lyx.org/lyx
 Branch 2.0.x is the stable branch. See 
-	http://wiki.lyx.org/Devel/LyXGit 
+  http://wiki.lyx.org/Devel/LyXGit 
 for details.
+
+Most of the improvements in 2.0.4 are bug fixes, some of them important. In
+particular, we have fixed several crashes. The main outstanding problem is
+the inability to cancel the background export process. Some improvement has
+been made here, by updating the timeout mechanism, but more needs to be done,
+and hopefully will be done for 2.0.5.
+
+There have been several updates to LyX's XHTML export routines. Work on this
+will continue for 2.0.5.
 
 
 What's new in version 2.0.3?
