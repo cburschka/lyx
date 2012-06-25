@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Ukrainian"
 
-${LangFileString} WelcomePageText "За допомогою цього майстра ви зможете встановити LyX у вашу систему.$\r$\n\
-					  $\r$\n\
-					  Для того, щоб встановити LyX вам потрібні права адміністратора.$\r$\n\
-					  $\r$\n\
-					  Ми рекомендуємо вам закрити вікна всіх інших програм перш ніж розпочати встановлення. Це зробить можливим оновлення всіх потрібних системних файлів без перезавантаження вашого комп’ютера.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "За допомогою цього майстра ви зможете встановити LyX у вашу систему.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Документ LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Засіб для роботи з бібліографічними 
 ${LangFileString} SecAllUsersDescription "Визначає, чи слід встановити LyX для всіх користувачів, чи лише для поточного користувача."
 ${LangFileString} SecFileAssocDescription "Файли з суфіксом .lyx автоматично відкриватимуться за допомогою LyX."
 ${LangFileString} SecDesktopDescription "Піктограма LyX на стільниці."
-
-${LangFileString} LangSelectHeader "Вибір мови меню LyX"
-${LangFileString} AvailableLang " Доступні мови "
 
 ${LangFileString} EnterLaTeXHeader1 'Дистрибутив LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Вкажіть дистрибутив LaTeX, який має використовувати LyX.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'У LyX використовуватиметься дистрибутив LaTeX $\"M
 
 ${LangFileString} UpdateNotAllowed "Цей пакунок для оновлення призначено лише для ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Не вдалося встановити 'path_prefix' у скрипті налаштування"
-${LangFileString} CreateCmdFilesFailed "Не вдалося створити lyx.bat"
 ${LangFileString} RunConfigureFailed "Не вдалося виконати скрипт налаштування"
 ${LangFileString} NotAdmin "Для встановлення LyX вам потрібні привілеї адміністратора!"
 ${LangFileString} InstallRunning "Засіб для встановлення вже працює!"

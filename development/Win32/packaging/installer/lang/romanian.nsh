@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Romanian"
 
-${LangFileString} WelcomePageText "Acest asistent vã va ghida în procesul de instalare a programului LyX. $\r$\n\
-                                         $\r$\n\
-                                         Trebuie sã aveþi drepturi de administrator ca sã puteþi instala LyX. $\r$\n\
-                                         $\r$\n\
-                                         Este recomandat ca sã închideþi celelalte aplicaþii înainte de începerea instalãrii. Acest lucru va permite upgradarea fiºierelor de sistem relevante fãrã sã fiþi nevoiþi sã reporniþi calculatorul.  $\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Acest asistent vã va ghida în procesul de instalare a programului LyX. $\r$\n\
                                          $\r$\n\
                                          $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Document LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Gestionarul de Bibliografie ºi edito
 ${LangFileString} SecAllUsersDescription "Instaleazã LyX pentru toþi utilizatorii sau doar pentru utilizatorul curent."
 ${LangFileString} SecFileAssocDescription "Fiºierele cu extensia .lyx vor fi deschise automat cu LyX."
 ${LangFileString} SecDesktopDescription "A iconiþã LyX pe desktop."
-
-${LangFileString} LangSelectHeader "Selecþia de limbaj pentru meniurile LyX."
-${LangFileString} AvailableLang "Limbajele disponibile."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuþia LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Seteazã distribuþia LaTeX pe care sã o foloseascã LyX.'
@@ -70,7 +72,6 @@ ${LangFileString} MiKTeXInfo 'Distribuþia LaTeX $\"MiKTeX$\" va fi folositã cu L
 
 ${LangFileString} UpdateNotAllowed "Acest program de actualizare poate actualiza numai ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Nu am putut seta 'path_prefix' în procesul de configurare"
-${LangFileString} CreateCmdFilesFailed "Nu am putut crea lyx.bat"
 ${LangFileString} RunConfigureFailed "Nu am putut executa scriptul de configurare"
 ${LangFileString} NotAdmin "Trebuie sã aveþi drepturi de administrator pentru instalarea programului LyX!"
 ${LangFileString} InstallRunning "Programul de instalare este deja pornit!"

@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Japanese"
 
-${LangFileString} WelcomePageText "このウィザードが、あなたがLyXをインストールする間のご案内をします。$\r$\n\
-					  $\r$\n\
-					  LyXをインストールするには、管理者権限が必要です。$\r$\n\
-					  $\r$\n\
-					  セットアップを開始する前に、他のすべてのアプリケーションを終了することをお勧めします。そうすることによって、このコンピューターを再起動することなく、関連するシステムファイルを更新することができるようになります。$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "このウィザードが、あなたがLyXをインストールする間のご案内をします。$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX文書"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "参考文献管理およびBibTeXファイルエデ
 ${LangFileString} SecAllUsersDescription "LyXをすべてのユーザー用に装備するか、現在のユーザー向けだけに装備するか。"
 ${LangFileString} SecFileAssocDescription "拡張子が.lyxのファイルは自動的にLyXで開かれる。"
 ${LangFileString} SecDesktopDescription "デスクトップ上のLyXアイコン。"
-
-${LangFileString} LangSelectHeader "LyXのメニュー言語の選択"
-${LangFileString} AvailableLang " 選択可能な言語 "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeXディストリビューション'
 ${LangFileString} EnterLaTeXHeader2 'LyXが使うべきLaTeXディストリビューションを指定してください。'
@@ -70,7 +72,6 @@ ${LangFileString} MiKTeXInfo 'LyXとともに、LaTeXディストリビューション$\"MiKTeX$
 				     MiKTeXの更新分があるかどうか、いま確認しますか？'
 
 ${LangFileString} ModifyingConfigureFailed "configureスクリプト中で'path_prefix'を設定することができませんでした"
-${LangFileString} CreateCmdFilesFailed "lyx.batを生成することができませんでした"
 ${LangFileString} RunConfigureFailed "configureスクリプトを実行することができませんでした"
 ${LangFileString} NotAdmin "LyXをインストールするには、管理者権限を持っていなくてはなりません！"
 ${LangFileString} InstallRunning "インストーラーは既に動いています！"

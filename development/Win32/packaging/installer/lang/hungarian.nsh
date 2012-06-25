@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Hungarian"
 
-${LangFileString} WelcomePageText "A varázsló segítségével tudja telepíteni a LyX-et.$\r$\n\
-					  $\r$\n\
-					  A LyX telepítéséhez rendszergazdai jogra van szüksége.$\r$\n\
-					  $\r$\n\
-					  A telepítés megkezdése elõtt, javasolt kilépni minden futó alkalmazásból. Ez a lépés teszi lehetõvé, hogy frissítsünk fontos rendszerfájlokat újraindítás szükségessége nélkül.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "A varázsló segítségével tudja telepíteni a LyX-et.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-dokumentum"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Irodalomjegyzék-hivatkozás szerkeszt
 ${LangFileString} SecAllUsersDescription "Minden felhasználónak telepítsem vagy csak az aktuálisnak?"
 ${LangFileString} SecFileAssocDescription "A .lyx kiterjesztéssel rendelkezõ fájlok megnyitása automatikusan a LyX-el történjen."
 ${LangFileString} SecDesktopDescription "LyX-ikon elhelyezése az asztalon."
-
-${LangFileString} LangSelectHeader "A LyX felhasználói felület nyelvének kiválasztása"
-${LangFileString} AvailableLang " Választható nyelvek "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-disztribúció'
 ${LangFileString} EnterLaTeXHeader2 'Adja meg a LaTeX-disztribúciót, amit a LyX-nek használnia kell.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'A $\"MiKTeX$\" LaTeX-disztibúció lesz használva a 
 
 ${LangFileString} UpdateNotAllowed "Ez a frissítõ csomag csak a ${PRODUCT_VERSION_OLD} verziót tudja frissíteni!"
 ${LangFileString} ModifyingConfigureFailed "Nem tudom beállítani a 'path_prefix'-et a configure parancsfájlban!"
-${LangFileString} CreateCmdFilesFailed "Nem tudom létrehozni a lyx.bat fájlt."
 ${LangFileString} RunConfigureFailed "Nem tudom végrehajtani a configure parancsfájlt!"
 ${LangFileString} NotAdmin "A LyX telepítéséhez rendszergazdai jogok szükségesek!"
 ${LangFileString} InstallRunning "A telepítõ már fut!"

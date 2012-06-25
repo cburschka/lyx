@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Dutch"
 
-${LangFileString} WelcomePageText "Dit installatie programma zal LyX op uw systeem installeren.$\r$\n\
-					  $\r$\n\
-					  U heeft systeem-beheerrechten nodig om LyX te installeren.$\r$\n\
-					  $\r$\n\
-					  Het is aanbevolen om alle andere programma's af te sluiten voordat u Setup start. Dit zorgt ervoor dat Setup bepaalde systeembestanden kan bijwerken zonder uw systeem opnieuw op te starten.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Dit installatie programma zal LyX op uw systeem installeren.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 ${LangFileString} SecAllUsersDescription "Installeer LyX voor alle gebruikers of uitsluitend de huidige gebruiker?"
 ${LangFileString} SecFileAssocDescription "Associeer het LyX programma met de .lyx extensie."
 ${LangFileString} SecDesktopDescription "Een LyX pictogram op het Bureaublad."
-
-${LangFileString} LangSelectHeader "Taalselectie voor LyX's menu"
-${LangFileString} AvailableLang " Beschikbare Talen "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX software'
 ${LangFileString} EnterLaTeXHeader2 'Geef aan welke LaTeX-software LyX moet gebruiken.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'LyX gebruikt de LaTeX software $\"MiKTeX$\".$\r$\n
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Mislukte poging om 'path_prefix' te registreren tijdens de configuratie"
-${LangFileString} CreateCmdFilesFailed "lyx.bat kon niet worden aangemaakt"
 ${LangFileString} RunConfigureFailed "Mislukte configuratie poging"
 ${LangFileString} NotAdmin "U heeft systeem-beheerrechten nodig om LyX te installeren!"
 ${LangFileString} InstallRunning "Het installatieprogramma is al gestart!"

@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Norwegian"
 
-${LangFileString} WelcomePageText "Denne veiviseren installerer LyX på datamaskinen din.$\r$\n\
-					  $\r$\n\
-					  Du trenger administratorprivilegier for å installere LyX.$\r$\n\
-					  $\r$\n\
-					  Du bør lukke alle andre programmer først, dermed kan installasjonsprogrammet oppdatere relevante systemfiler uten å måtte restarte maskinen.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Denne veiviseren installerer LyX på datamaskinen din.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 ${LangFileString} SecAllUsersDescription "Installere LyX for alle brukere, eller kun den aktuelle brukeren."
 ${LangFileString} SecFileAssocDescription "Files med endelsen .lyx åpnes automatisk i LyX."
 ${LangFileString} SecDesktopDescription "Et LyX-ikon på skrivebordet."
-
-${LangFileString} LangSelectHeader "Utvalg av LyX's menyspråk"
-${LangFileString} AvailableLang " Tilgjengelige Språk "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribusjon'
 ${LangFileString} EnterLaTeXHeader2 'Velg LaTeX-distribusjonen LyX skal bruke.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 
 ${LangFileString} UpdateNotAllowed "This update package can only update LyX ${PRODUCT_VERSION_OLD}!"				     
 ${LangFileString} ModifyingConfigureFailed "Forsøket på å stille inn 'path_prefix' i konfigurasjonsscriptet mislyktes"
-${LangFileString} CreateCmdFilesFailed "Fikk ikke opprettet lyx.bat"
 ${LangFileString} RunConfigureFailed "Fikk ikke kjørt konfigurasjonsscriptet"
 ${LangFileString} NotAdmin "Du trenger administratorrettigheter for å installere LyX!"
 ${LangFileString} InstallRunning "Installasjonsprogrammet er allerede i gang!"

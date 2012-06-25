@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Arabic"
 
-${LangFileString} WelcomePageText "ÓÊגטÏד ÇהÈÑזÇוÌ ÎהÇה ÙוהךÉ ÊÑדךÈ ÈÑזÇוÌ הךד ÈךÓÑ טÓחטהÉ.$\r$\n\
-					  $\r$\n\
-					  טהÇ ÊזÓ Çז Êדטז ÈÕהÇÍךÉ ÇהוÏךÑ ÇËזÇÁ ÙוהךÉ ÇהÊÑדךÈ.$\r$\n\
-					  $\r$\n\
-					  דוÇ ךÍÓז Èד ÇÚהÇג ÌוךÙ ÇהÈÑÇוÌ ÇהÙÇוהÉ גÈה ÇהÈÏÁ ÈÊÑדךÈ ÇהÈÑזÇוÌ טÐהד הדך ךÊו ÊÍÏךË והבÇÊ ÇהזØÇו Ïטז ÇהÍÇÌÉ הÅÙÇÏÉ ÊÔÚךה ÇהÍÇÓטÈ.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "ÓÊגטÏד ÇהÈÑזÇוÌ ÎהÇה ÙוהךÉ ÊÑדךÈ ÈÑזÇוÌ הךד ÈךÓÑ טÓחטהÉ.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "וÓÊזÏ-הךד"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "וÏךÑ טÍÑÑ ÇהÈהטÚÑÇבךÇ ÇהÎÇÕÉ ÈוהבÇÊ 
 ${LangFileString} SecAllUsersDescription "ÊÑדךÈ ÈÑזÇוÌ הךד הדה ÇהוÓÊÎÏוךז Ãו ההוÓÊÎÏו ÇהÍÇהך בג×."
 ${LangFileString} SecFileAssocDescription "ÇהוהבÇÊ ÐÇÊ ÇהÇוÊÏÇÏ .lyx ÓךÊו בÊÍחÇ ÊהגÇÆךÇכ ÈÈÑזÇוÌ הךד."
 ${LangFileString} SecDesktopDescription "ÑוÒ הךד Ùהי Ó×Í ÇהודÊÈ."
-
-${LangFileString} LangSelectHeader "ÊÍÏךÏ הÚÉ גטÇÆו הךד"
-${LangFileString} AvailableLang " ÇההÚÇÊ ÇהוÊÇÍÉ "
 
 ${LangFileString} EnterLaTeXHeader1 'ÊטÒךÙÉ-הÊךד'
 ${LangFileString} EnterLaTeXHeader2 'ÇÌÙה ÊטÒךÙÉ-הÊךד ÇהÊטÒךÙÉ ÇהוÓÊÎÏו בך הךד.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'ÊטÒךÙÉ-הÊךד MiKTeX ÊÓÊÎÏו ÇךÖÇכ וז גÈה הךד.$\r$\n\
 
 ${LangFileString} UpdateNotAllowed "חÐÇ ÇהÊÍÏךË ÎÇÕ בג× Èא ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
-${LangFileString} CreateCmdFilesFailed "ÊÙÐÑ ÇזÔÇÁ lyx.bat"
 ${LangFileString} RunConfigureFailed "הÇ ךודז ÊזבךÐ Çהא configure script"
 ${LangFileString} NotAdmin "ךÌÈ Ãז Êדטז ÈÕהÇÍךÉ ÇהוÏךÑ הדך ההגךÇו ÈÙוהךÉ ÇהÊÑדךÈ!"
 ${LangFileString} InstallRunning "Êו ÈÇהבÙה ÇהÈÏÁ ÈÙוהךÉ ÇהÊÑדךÈ!"

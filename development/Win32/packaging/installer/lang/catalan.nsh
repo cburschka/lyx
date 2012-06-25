@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Catalan"
 
-${LangFileString} WelcomePageText "Aquest assistent us guiarà en la instal·lació del LyX.$\r$\n\
-					  $\r$\n\
-					  Necessiteu drets d'administrador per instal·lar el LyX.$\r$\n\
-					  $\r$\n\
-					  Abans de començar la instal·lació, és recomenable tancar totes les altres aplicacions. Això permet actualitzar alguns fitxerr del sistema sense haver de reiniciar l'ordinador.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Aquest assistent us guiarà en la instal·lació del LyX.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Document LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Gestor i editor de referències bibli
 ${LangFileString} SecAllUsersDescription "Instal·la el LyX per a tots els usuaris o només per a l'usuari actual."
 ${LangFileString} SecFileAssocDescription "Els fitxers amb extensió .lyx s'obriran automàticament amb el LyX."
 ${LangFileString} SecDesktopDescription "Una icona del LyX a l'escriptori."
-
-${LangFileString} LangSelectHeader "Selecció de la llengua de menús del LyX"
-${LangFileString} AvailableLang " Llengües disponibles "
 
 ${LangFileString} EnterLaTeXHeader1 'Distribució LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Establiu la distribució LaTeX que ha de fer servir el LyX.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'La distribució LaTeX $\"MiKTeX$\" conjuntament amb
 
 ${LangFileString} UpdateNotAllowed "Aquest paquet d'actualització només actualitza ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "No es pot establir 'path_prefix' durant el programa de configuració"
-${LangFileString} CreateCmdFilesFailed "No es pot crear el fitxer lyx.bat"
 ${LangFileString} RunConfigureFailed "No es pot executar el programa de configuració"
 ${LangFileString} NotAdmin "Necessiteu drets d'administrador per instal·lar el LyX!"
 ${LangFileString} InstallRunning "L'instal·lador ja s'està executant!"

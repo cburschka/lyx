@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Galician"
 
-${LangFileString} WelcomePageText "Este asistente vai-no guiar na instalación do LyX no seu computador.$\r$\n\
-					  $\r$\n\
-					  Para poder instalar o LyX precisa de priviléxios de administrador.$\r$\n\
-					  $\r$\n\
-					  Recomenda-se fechar todas as outras aplicacións antes de iniciar a instalación. Isto posibilita actualizar os ficheiros do sistema relevantes sen ter que reiniciar o computador.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Este asistente vai-no guiar na instalación do LyX no seu computador.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Documento LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Xestor de referéncias bibliográficas
 ${LangFileString} SecAllUsersDescription "Instalar o LyX monousuário ou multiusuário."
 ${LangFileString} SecFileAssocDescription "Asociar a extensión .lyx co LyX."
 ${LangFileString} SecDesktopDescription "Cria un icone do LyX no ambiente de traballo."
-
-${LangFileString} LangSelectHeader "Selección da lingua dos menus no LyX"
-${LangFileString} AvailableLang " Línguas disponíbeis "
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuición de LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolha a distribución de LaTeX que vai usar o LyX.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'Xunto co LyX vai-se empregar a distribución de LaT
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Non se puido engadir o 'path_prefix' no script de configuración"
-${LangFileString} CreateCmdFilesFailed "Non se deu criado o lyx.bat"
 ${LangFileString} RunConfigureFailed "Non se deu executado o script de configuración"
 ${LangFileString} NotAdmin "Precisa de priviléxios de administrador para instalar o LyX!"
 ${LangFileString} InstallRunning "O instalador xa está a correr!"

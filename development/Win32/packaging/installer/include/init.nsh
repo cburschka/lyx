@@ -42,7 +42,7 @@ Function .onInit
   ${endif}
 
   # check if LyX is already installed
-  ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+  ReadRegStr $0 SHCTX "${APP_UNINST_KEY}" "Publisher"
   ${if} $0 != ""
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
@@ -56,16 +56,6 @@ Function .onInit
   StrCpy $CreateFileAssociations "false"
  
   ${IfNot} ${Silent}
-  
-    !ifndef BUNDLE_IMAGEMAGICK & BUNDLE_GHOSTSCRIPT
-    # Warn the user when no Administrator or Power user privileges are available
-    # These privileges are required to install ImageMagick or Ghostscript
-    ${If} $MultiUser.Privileges != "Admin"
-    ${AndIf} $MultiUser.Privileges != "Power"
-      MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_NO_PRIVILEDGES)
-    ${EndIf}
-    !endif
-    
     # Show banner while installer is intializating 
     Banner::show /NOUNLOAD "Checking system"
   ${EndIf}

@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Danish"
 
-${LangFileString} WelcomePageText "Denne guide vil installere LyX på din computer.$\r$\n\
-                                        $\r$\n\
-                                        Du skal have administratorrettigheder for at installerer LyX.$\r$\n\
-                                        $\r$\n\
-                                        Det anbefales at du lukker alle kørende programmer inden start af setup-guiden. Dette vil tillade guiden at opdatere de nødvendiget systemfiler uden at skulle genstarte computeren.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Denne guide vil installere LyX på din computer.$\r$\n\
                                         $\r$\n\
                                         $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-Dokument"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 ${LangFileString} SecAllUsersDescription "Installer LyX til alle brugere, eller kun den aktuelle bruger."
 ${LangFileString} SecFileAssocDescription "Opret association mellem LyX og .lyx filer."
 ${LangFileString} SecDesktopDescription "Et LyX ikon på skrivebordet"
-
-${LangFileString} LangSelectHeader "Valg af sprog i LyX's menuer"
-${LangFileString} AvailableLang " Tilgængelige Sprog "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Vælg den LaTeX-distribution som LyX skal bruge.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'LaTeX-distributionen $\"MiKTeX$\" vil blive brugt 
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Forsoget på at indstille 'path_prefix' i konfigurationen mislykkedes"
-${LangFileString} CreateCmdFilesFailed "Kunne ikke oprette lyx.bat"
 ${LangFileString} RunConfigureFailed "Mislykket forsog på at afvikle konfigurations-scriptet"
 ${LangFileString} NotAdmin "Du skal have administrator-rettigheder for at installere LyX!"
 ${LangFileString} InstallRunning "Installationsprogrammet kører allerede!"

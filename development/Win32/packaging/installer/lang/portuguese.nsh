@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Portuguese"
 
-${LangFileString} WelcomePageText "Este assistente de instalação irá guiá-lo através da instalação do LyX.$\r$\n\
-					  $\r$\n\
-					  Precisa de privilégios de administrador para instalar o LyX.$\r$\n\
-					  $\r$\n\
-					  Recomenda-se fechar todas as outras aplicações antes de iniciar o programa de configuração. Isto torna possivel actualizar os ficheiros de sistema relevantes sem ter que reiniciar o computador.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Este assistente de instalação irá guiá-lo através da instalação do LyX.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Documento LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Gestor de referências bibliográficas
 ${LangFileString} SecAllUsersDescription "Instalar o LyX para todos os utilizadores ou apenas para o presente utilizador."
 ${LangFileString} SecFileAssocDescription "Os ficheiros com a extensão .lyx irão abrir automaticamente no LyX."
 ${LangFileString} SecDesktopDescription "Um icone do LyX no ambiente de trabalho."
-
-${LangFileString} LangSelectHeader "Selecção da linguagem dos menus no LyX"
-${LangFileString} AvailableLang " Línguas disponíveis "
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuição de LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolher a distribuição de LaTeX que o LyX deverá usar.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'Junto com o LyX vai-se utilizar a distribuição de 
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Não conseguimos establecer o 'path_prefix' no script de configuração"
-${LangFileString} CreateCmdFilesFailed "Não foi possível criar o lyx.bat"
 ${LangFileString} RunConfigureFailed "Não foi possível executar o script de configuração"
 ${LangFileString} NotAdmin "Precisa de privilégios de administrador para instalar o LyX!"
 ${LangFileString} InstallRunning "O instalador já está a correr!"

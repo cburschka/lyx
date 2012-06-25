@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Slovak"
 
-${LangFileString} WelcomePageText "Tento sprievodca Vám pomáha inštalova LyX.$\r$\n\
-					  $\r$\n\
-					  Pre inštaláciu LyX potrebujete administrátorské práva.$\r$\n\
-					  $\r$\n\
-					  Odporúèuje sa zavrie všetkı ostatné aplikácie pred štartom Setup. Tım sa umoòuje nahradi relevantné dáta sústavy bez nového štartu poèitaèe.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Tento sprievodca Vám pomáha inštalova LyX.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX dokument"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Manager pre bibliografickı odkaz a e
 ${LangFileString} SecAllUsersDescription "Inštalova LyX pre všetkıch uívatelov alebo len pre terajší uívate¾."
 ${LangFileString} SecFileAssocDescription "Data s lyx rozšírením sa automaticky otvárajú v LyX."
 ${LangFileString} SecDesktopDescription "Symbol LyX na desktopu."
-
-${LangFileString} LangSelectHeader "Vyber jazyka pre LyX"
-${LangFileString} AvailableLang " Pohotové jazyky "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX distribúcia'
 ${LangFileString} EnterLaTeXHeader2 'Urcujte LaTeX distribúciu, ktorú má uíva LyX.'
@@ -72,7 +74,6 @@ ${LangFileString} MiKTeXInfo 'LaTeX distribúcia $\"MiKTeX$\" sa pouíva spolu s 
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Nemohol uvies v platnost 'path_prefix' (zoznam s cestami programu) v konfiguraènom skripte"
-${LangFileString} CreateCmdFilesFailed "Nemohol prípravi lyx.bat"
 ${LangFileString} RunConfigureFailed "Nemohol vykona konfiguraènı skript"
 ${LangFileString} NotAdmin "Pre inštaláciu LyX potrebujete administrátorské práva!"
 ${LangFileString} InstallRunning "Inštalatér u behá!"

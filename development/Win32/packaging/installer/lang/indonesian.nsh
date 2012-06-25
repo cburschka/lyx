@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Indonesian"
 
-${LangFileString} WelcomePageText "Program ini akan memandu anda dalam melakukan instalasi LyX.$\r$\n\
-					  $\r$\n\
-					  Anda harus bertindak dan mempunyai hak sebagai administrator untuk instalasi LyX.$\r$\n\
-					  $\r$\n\
-					  Sangat disarankan anda menutup semua aplikasi sebelum memulai. Hal ini akan memungkinkan memperbarui berkas sistem yang relevan tanpa melakukan booting ulang komputer anda.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Program ini akan memandu anda dalam melakukan instalasi LyX.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "Dokumen-LyX"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Program manajemen acuan bibliografi 
 ${LangFileString} SecAllUsersDescription "Instal LyX untuk semua pengguna atau hanya untuk pengguna ini saja."
 ${LangFileString} SecFileAssocDescription "Berkas dengan ekstensi .lyx akan otomatis dibuka menggunakan LyX."
 ${LangFileString} SecDesktopDescription "Ikon LyX muncul di desktop."
-
-${LangFileString} LangSelectHeader "Pilihan bahasa untuk menu LyX"
-${LangFileString} AvailableLang " Bahasa yang tersedia "
 
 ${LangFileString} EnterLaTeXHeader1 'Distribusi LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Pengaturan distribusi LaTeX yang akan digunakan dalam LyX.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'Distribusi LaTeX $\"MiKTeX$\" akan digunakan denga
 
 ${LangFileString} UpdateNotAllowed "Program update ini hanya hanya dapat memperbarui ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Tidak bisa menyatakan 'path_prefix' pada skrip configure"
-${LangFileString} CreateCmdFilesFailed "Tidak bisa membuat berkas lyx.bat"
 ${LangFileString} RunConfigureFailed "Tidak bisa menjalankan skrip configure"
 ${LangFileString} NotAdmin "Anda harus berlaku dan mempunyai hak sebagai administrator untuk instalasi LyX!"
 ${LangFileString} InstallRunning "Program instalasi sedang berjalan!"

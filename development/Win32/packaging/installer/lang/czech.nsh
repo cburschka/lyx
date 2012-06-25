@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Czech"
 
-${LangFileString} WelcomePageText "Tento pomocník vás provede instalací LyXu.$\r$\n\
-					  $\r$\n\
-					  K instalaci LyXu budete potøebovat administrátorská práva.$\r$\n\
-					  $\r$\n\
-					  Je doporuèeno zavøít všechny ostatní aplikace pøed spuštìním instalace. Umožníte tím aktualizovat patøièné systémové soubory bez nutnosti restartovat poèítaè.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Tento pomocník vás provede instalací LyXu.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-dokumentù"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Správce pro bibliografii a editor so
 ${LangFileString} SecAllUsersDescription "Instalovat LyX pro všechny uživatele nebo pouze pro souèasného uživatele."
 ${LangFileString} SecFileAssocDescription "Soubory s pøíponou .lyx se automaticky otevøou v LyXu."
 ${LangFileString} SecDesktopDescription "Ikonu LyXu na plochu."
-
-${LangFileString} LangSelectHeader "Výbìr jazyka prostøedí LyXu"
-${LangFileString} AvailableLang " Dostupné jazyky "
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuce LaTeXu'
 ${LangFileString} EnterLaTeXHeader2 'Nastavte distribuci LaTeXu, kterou má LyX používat.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'LaTeXová distribuce $\"MiKTeX$\" bude použita dohr
 				     
 ${LangFileString} UpdateNotAllowed "Tento aktualizaèní balíèek mùže být použít jen na ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Nelze nastavit 'path_prefix' v konfiguraèním skriptu"
-${LangFileString} CreateCmdFilesFailed "Nelze vytvoøit lyx.bat"
 ${LangFileString} RunConfigureFailed "Nelze spustit konfiguraèní skript"
 ${LangFileString} NotAdmin "Potøebujete administrátorská práva pro nainstalování LyXu!"
 ${LangFileString} InstallRunning "Instalátor je již spuštìn!"

@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Swedish"
 
-${LangFileString} WelcomePageText "Denna guide tar dig igenom installationen av LyX.$\r$\n\
-					  $\r$\n\
-					  Du behöver administratörsrättigheter för att installera LyX.$\r$\n\
-					  $\r$\n\
-					  Det rekommenderas att du avslutar alla andra program innan du fortsätter installationen. Detta tillåter att installationen uppdaterar nödvändiga systemfiler utan att behöva starta om din dator.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Denna guide tar dig igenom installationen av LyX.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-dokument"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Program för att hantera bibliografis
 ${LangFileString} SecAllUsersDescription "Installera LyX för alla användare, eller enbart för den aktuella användare."
 ${LangFileString} SecFileAssocDescription "Skapa en association mellan programmet och filtilläget .lyx."
 ${LangFileString} SecDesktopDescription "En LyXikon på skrivbordet."
-
-${LangFileString} LangSelectHeader "Val av språk i LyXs menyer"
-${LangFileString} AvailableLang " Tillgängliga språk "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Ställ in LaTeX-distributionen som LyX skall använda.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'LaTeX-distributionen $\"MiKTeX$\" kommer att använ
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Misslyckades med att sätta  'path_prefix' i konfigurationsskriptet"
-${LangFileString} CreateCmdFilesFailed "Kunde inte skapa filen (kommandoskriptet) lyx.bat"
 ${LangFileString} RunConfigureFailed "Misslyckades med att köra konfigurationsskriptet"
 ${LangFileString} NotAdmin "Du måste ha administratörsrättigheter för att installera LyX!"
 ${LangFileString} InstallRunning "Installationsprogrammet körs readan!"

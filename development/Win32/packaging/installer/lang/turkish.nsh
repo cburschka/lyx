@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Turkish"
 
-${LangFileString} WelcomePageText "Bu sihirbaz size LyX programýný kuracak.$\r$\n\
-					  $\r$\n\
-					  LyX kurabilmek için yönetici yetkilerine ihtiyacýnýz var.$\r$\n\
-					  $\r$\n\
-					  Kuruluma baþlamadan önce diðer programlarý kapatmanýz tavsiye edilir. Böylece bilgisayarýnýzý yeniden baþlatmanýza gerek kalmadan ilgili sistem dosyalarý güncellenebilir.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Bu sihirbaz size LyX programýný kuracak.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 ${LangFileString} SecAllUsersDescription "LyX tüm kullanýcýlar için mi yoksa yalnýzca bu kullanýcýya mý kurulacak."
 ${LangFileString} SecFileAssocDescription "Uzantýsý .lyx olan dosyalar otomatik olarak LyX ile açýlsýn."
 ${LangFileString} SecDesktopDescription "Masaüstüne bir LyX ikonu koy."
-
-${LangFileString} LangSelectHeader "LyX arabirim dili seçimi"
-${LangFileString} AvailableLang " Mevcut Diller "
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-daðýtýmý'
 ${LangFileString} EnterLaTeXHeader2 'LyX in kullanacaðý LaTeX daðýtýmýný seçin.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Yapýlandýrma programýnda 'path_prefix' ayarlanamadý"
-${LangFileString} CreateCmdFilesFailed "lyx.bat oluþturulamadý"
 ${LangFileString} RunConfigureFailed "Yapýlandýrma programý çalýþtýrýlamadý"
 ${LangFileString} NotAdmin "LyX kurabilmek için yönetici yetkileri gerekiyor!"
 ${LangFileString} InstallRunning "Kurulum programý zaten çalýþýyor!"

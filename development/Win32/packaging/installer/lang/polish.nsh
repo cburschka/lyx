@@ -1,12 +1,17 @@
 !insertmacro LANGFILE_EXT "Polish"
 
-${LangFileString} WelcomePageText "Kreator przeprowadzi Ciebie przez proces instalacji LyX-a.$\r$\n\
-					  $\r$\n\
-					  Wymagane s¹ prawa administratora aby zainstalowaæ LyX-a.$\r$\n\
-					  $\r$\n\
-					  Zalecane jest pozamykanie wszystkich innych aplikacji przed uruchomieniem programu instalacyjnego. Pozwoli to zaktualizowaæ pliki systemowe bez wymagania restartu komputera.$\r$\n\
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
+${LangFileString} TEXT_WELCOME "Kreator przeprowadzi Ciebie przez proces instalacji LyX-a.$\r$\n\
 					  $\r$\n\
 					  $_CLICK"
+
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+
+${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
+${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
 ${LangFileString} FileTypeTitle "LyX-Document"
 
@@ -20,9 +25,6 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 ${LangFileString} SecAllUsersDescription "Instalacja dla wszystkich u¿ytkowników lub tylko dla bie¿¹cego u¿ytkownika."
 ${LangFileString} SecFileAssocDescription "Skojarzenie LyX-a z plikami o rozszerzeniu .lyx."
 ${LangFileString} SecDesktopDescription "Ikona LyX-a na pulpicie."
-
-${LangFileString} LangSelectHeader "Wybór jêzyka menu LyX-a"
-${LangFileString} AvailableLang " Dostêpne jêzyki "
 
 ${LangFileString} EnterLaTeXHeader1 'Dystrybucja LaTeX-a'
 ${LangFileString} EnterLaTeXHeader2 'Wybierz dystrybucjê LaTeX-a, któr¹ chcesz u¿ywaæ z LyX-em.'
@@ -71,7 +73,6 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 
 ${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Nieudana próba ustawienia zmiennej 'path_prefix' w pliku skryptu konfigracyjnego"
-${LangFileString} CreateCmdFilesFailed "Niedana próba utworzenia plików lyx.bat"
 ${LangFileString} RunConfigureFailed "Niedana próba wykonania skryptu konfiguracyjnego"
 ${LangFileString} NotAdmin "Musisz mieæ prawa administratora aby zainstalowaæ LyX-a!"
 ${LangFileString} InstallRunning "Instalator jest ju¿ uruchomiony!"
