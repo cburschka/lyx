@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-06-19 15:46+0200\n"
+"POT-Creation-Date: 2012-06-25 08:28-0400\n"
 "PO-Revision-Date: 2012-04-12 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:339
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:338
 msgid "&Close"
 msgstr "&Zavøít"
 
@@ -56,7 +56,7 @@ msgid "The label as it appears in the document"
 msgstr "Znaèka tak, jak se objeví v dokumentu"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:318
+#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:317
 msgid "&Label:"
 msgstr "Z&naèka:"
 
@@ -120,18 +120,18 @@ msgstr "Generování bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
-#: src/frontends/qt4/ui_IndicesUi.h:193
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "&Processor:"
 msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
+#: src/frontends/qt4/ui_IndicesUi.h:194
 msgid "Select a processor"
 msgstr "Vybrat generátor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868 src/frontends/qt4/ui_IndicesUi.h:197
+#: src/frontends/qt4/GuiPrefs.cpp:868 src/frontends/qt4/ui_IndicesUi.h:196
 msgid "&Options:"
 msgstr "&Mo¾nosti:"
 
@@ -168,7 +168,7 @@ msgstr "Vlo¾it jméno BibTeX-ové databáze"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:349 src/frontends/qt4/ui_IndicesUi.h:212
+#: src/CutAndPaste.cpp:349 src/frontends/qt4/ui_IndicesUi.h:211
 msgid "&Add"
 msgstr "&Pøidat"
 
@@ -240,7 +240,7 @@ msgstr "Pøidat bibliografii k O&bsahu"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:337
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:336
 msgid "&OK"
 msgstr "&OK"
 
@@ -480,7 +480,7 @@ msgid "Define or change background color"
 msgstr "Definovat nebo zmìnit barvu pozadí"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:126
-#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:226
 msgid "Alter Co&lor..."
 msgstr "&Zmìnit barvu..."
 
@@ -490,7 +490,7 @@ msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3811
-#: src/Buffer.cpp:3824 src/frontends/qt4/ui_IndicesUi.h:219
+#: src/Buffer.cpp:3824 src/frontends/qt4/ui_IndicesUi.h:218
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -778,7 +778,7 @@ msgstr "&Okam¾itì pou¾ít zmìny"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177 src/frontends/qt4/ui_RefUi.h:338
+#: src/frontends/qt4/GuiDocument.cpp:3177 src/frontends/qt4/ui_RefUi.h:337
 msgid "&Apply"
 msgstr "&Pou¾ít"
 
@@ -1794,7 +1794,7 @@ msgstr "Jméno asociované s URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
-#: src/frontends/qt4/ui_RefUi.h:332
+#: src/frontends/qt4/ui_RefUi.h:331
 msgid "&Name:"
 msgstr "J&méno:"
 
@@ -1910,7 +1910,7 @@ msgid "&Edit"
 msgstr "&Editace"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
+#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "A&vailable Indexes:"
 msgstr "Dostupné &rejstøíky:"
 
@@ -1918,64 +1918,64 @@ msgstr "Dostupné &rejstøíky:"
 msgid "Select the index this entry should be listed in."
 msgstr "Zvolit rejstøík ve kterém má být tato polo¾ka vypsána."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:189
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr "Zde lze nastavit alternativní generátor rejstøíku a urèit jeho volby."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
-#: src/frontends/qt4/ui_IndicesUi.h:192
+#: src/frontends/qt4/ui_IndicesUi.h:191
 msgid "Index generation"
 msgstr "Generování rejstøíku"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:198
 msgid "Define program options of the selected processor."
 msgstr "Definovat volby zvoleného generátoru."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:201
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Za¹krtnìte pokud potøebujete vícenásobný rejstøík (napø. rejstøík jmen)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:203
 msgid "&Use multiple indexes"
 msgstr "&Vícenásobný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&New:[[index]]"
 msgstr "&Nový"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:206
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Vlo¾te pojmenování rejstøíku (napø. \"Rejstøík jmen\") a stisknìte \"Pøidat"
 "\")"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:209
 msgid "Add a new index to the list"
 msgstr "Pøidat nový rejstøík do seznamu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
-#: src/frontends/qt4/ui_IndicesUi.h:215 src/frontends/qt4/ui_RefUi.h:295
+#: src/frontends/qt4/ui_IndicesUi.h:214 src/frontends/qt4/ui_RefUi.h:294
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:216
 msgid "Remove the selected index"
 msgstr "Smazat vybraný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:220
 msgid "Rename the selected index"
 msgstr "Pøejmenovat vybraný rejstøík"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:222
 msgid "R&ename..."
 msgstr "Pøe&jmenovat..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:224
 msgid "Define or change button color"
 msgstr "Zmìnit barvu tlaèítka"
 
@@ -2349,7 +2349,7 @@ msgid "Update the display"
 msgstr "Aktualizuj zobrazení"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:82 src/frontends/qt4/ui_RefUi.h:336
+#: src/frontends/qt4/ui/ViewSourceUi.ui:82 src/frontends/qt4/ui_RefUi.h:335
 msgid "&Update"
 msgstr "&Aktualizace"
 
@@ -2863,7 +2863,7 @@ msgstr "Formát stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:340
+#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:339
 msgid "&Format:"
 msgstr "&Formát:"
 
@@ -4333,94 +4333,94 @@ msgstr "Zobrazovat zprávy ze stavového øádku?"
 msgid "&Statusbar messages"
 msgstr "Zprávy ze &stavového øádku"
 
-#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:292
+#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:291
 msgid "La&bels in:"
 msgstr "&Znaèky v:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:293
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:292
 msgid "&References"
 msgstr "&Reference"
 
-#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:296
+#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:295
 msgid "Fil&ter:"
 msgstr "Fil&tr:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:298
+#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:297
 msgid "Enter string to filter the label list"
 msgstr "Zadejte øetìzec pro filtrování seznamu znaèek"
 
-#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:302
+#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:301
 msgid "Filter case-sensitively"
 msgstr "Rozli¹ovat velikost písmen pøi filtrování"
 
-#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:304
+#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:303
 msgid "Case-sensiti&ve"
 msgstr "Velikost pís&men"
 
-#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:306
+#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:305
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
 msgstr "Tøídit znaèky v abecedním poøadí"
 
-#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:308
+#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:307
 msgid "&Sort"
 msgstr "&Setøídit"
 
-#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:310
+#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:309
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Rozli¹ovat velikost písmen pøi tøídìní znaèek v abecedním poøádku"
 
-#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:312
+#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:311
 msgid "Cas&e-sensitive"
 msgstr "Velikost písm&en"
 
-#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:314
+#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:313
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Seskupit znaèky dle prefixu (napø. \"sec:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:316
+#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:315
 msgid "Grou&p"
 msgstr "&Seskupit"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
-#: src/frontends/qt4/ui_RefUi.h:317
+#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Jdi na znaèku"
 
-#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:330
+#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:329
 msgid "Cross-reference as it appears in output"
 msgstr "Køí¾ový odkaz tak, jak se objeví na výstupu"
 
-#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:321
+#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:322
+#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:321
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:323
+#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:322
 msgid "<page>"
 msgstr "<strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:324
+#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:323
 msgid "on page <page>"
 msgstr "na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:325
+#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:324
 msgid "<reference> on page <page>"
 msgstr "<reference> na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:326
+#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:325
 msgid "Formatted reference"
 msgstr "Formátovaná reference"
 
-#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:327
+#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:326
 msgid "Textual reference"
 msgstr "Doslovná reference"
 
-#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:334
+#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:333
 msgid "Update the label list"
 msgstr "Aktualizuj seznam znaèek"
 
@@ -13480,11 +13480,11 @@ msgstr "Vytisknout dokument"
 msgid "Check spelling"
 msgstr "Kontrola pravopisu"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1342
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1335
 msgid "Undo"
 msgstr "Zpìt zmìnu"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1352
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1345
 msgid "Redo"
 msgstr "Znovu zmìnu"
 
@@ -16211,8 +16211,8 @@ msgid ""
 "both for gnumeric and excel files.\n"
 msgstr ""
 "Tabulka vytvoøená v prostøedí Gnumeric, Libre/OpenOffice nebo Excelu.\n"
-"Import pøevádí do dlouhých tabulek (longtable),"
-" excesivní ¹íøka neo¹etøována.\n"
+"Import pøevádí do dlouhých tabulek (longtable), excesivní ¹íøka "
+"neo¹etøována.\n"
 "Pro konverzi je potøebný program gnumeric.\n"
 
 #: lib/external_templates:76
@@ -16332,8 +16332,7 @@ msgstr ""
 "* pages={x,y,z} (pro konkrétní stránky)\n"
 "* pages=- (pro v¹echny stránky)\n"
 "* pages=last-1 (pro v¹echny stránky v obráceném poøadí)\n"
-"Pøeètìte si dokumentaci balíèku pdfpages "
-"pro dal¹í nastavení a detaily.\n"
+"Pøeètìte si dokumentaci balíèku pdfpages pro dal¹í nastavení a detaily.\n"
 
 #: lib/external_templates:346
 msgid ""
@@ -16835,12 +16834,12 @@ msgstr "chybí \\begin_header"
 msgid "\\begin_document is missing"
 msgstr "chybí \\begin_document"
 
-#: src/Buffer.cpp:875 src/Buffer.cpp:881 src/BufferView.cpp:1447
-#: src/BufferView.cpp:1453
+#: src/Buffer.cpp:875 src/Buffer.cpp:881 src/BufferView.cpp:1440
+#: src/BufferView.cpp:1446
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmìny nezobrazeny v LaTeX-ovém výstupu"
 
-#: src/Buffer.cpp:876 src/BufferView.cpp:1448
+#: src/Buffer.cpp:876 src/BufferView.cpp:1441
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16852,7 +16851,7 @@ msgstr ""
 "Prosím nainstalujte tyto balíèky nebo pøedefinujte \\lyxadded a "
 "\\lyxdeletedv LaTeX-ové preambuli."
 
-#: src/Buffer.cpp:882 src/BufferView.cpp:1454
+#: src/Buffer.cpp:882 src/BufferView.cpp:1447
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17380,7 +17379,7 @@ msgstr ""
 "Bude pou¾ita tøída se standardním rozvr¾ením.\n"
 "LyX nebude schopen vytvoøit korektní výstup."
 
-#: src/BufferParams.cpp:2004 src/BufferView.cpp:1292 src/BufferView.cpp:1324
+#: src/BufferParams.cpp:2004 src/BufferView.cpp:1285 src/BufferView.cpp:1317
 msgid "Could not load class"
 msgstr "Nelze naèíst tøídu"
 
@@ -17412,112 +17411,112 @@ msgstr "Dokument je jen ke ètení"
 msgid "This portion of the document is deleted."
 msgstr "Tato èást dokumentu je vymazána."
 
-#: src/BufferView.cpp:1043 src/BufferView.cpp:1937
+#: src/BufferView.cpp:1043 src/BufferView.cpp:1930
 #: src/frontends/qt4/GuiView.cpp:3183 src/frontends/qt4/GuiView.cpp:3258
 msgid "Absolute filename expected."
 msgstr "Je oèekávána absolutní cesta k souboru."
 
-#: src/BufferView.cpp:1290 src/BufferView.cpp:1322
+#: src/BufferView.cpp:1283 src/BufferView.cpp:1315
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Tøídu dokumentu `%1$s' se nepodaøilo naèíst."
 
-#: src/BufferView.cpp:1345
+#: src/BufferView.cpp:1338
 msgid "No further undo information"
 msgstr "®ádná dal¹í informace pro návrat zpìt (undo)"
 
-#: src/BufferView.cpp:1355
+#: src/BufferView.cpp:1348
 msgid "No further redo information"
 msgstr "®ádná dal¹í informace pro opakování akce (redo)"
 
-#: src/BufferView.cpp:1544 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1537 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Øetìzec nenalezen!"
 
-#: src/BufferView.cpp:1587
+#: src/BufferView.cpp:1580
 msgid "Mark off"
 msgstr "Znaèka vyp."
 
-#: src/BufferView.cpp:1593
+#: src/BufferView.cpp:1586
 msgid "Mark on"
 msgstr "Znaèka zap."
 
-#: src/BufferView.cpp:1600
+#: src/BufferView.cpp:1593
 msgid "Mark removed"
 msgstr "Znaèka smazána"
 
-#: src/BufferView.cpp:1603
+#: src/BufferView.cpp:1596
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1652
 msgid "Statistics for the selection:"
 msgstr "Statistika výbìru:"
 
-#: src/BufferView.cpp:1661
+#: src/BufferView.cpp:1654
 msgid "Statistics for the document:"
 msgstr "Statistika aktuálního dokumentu:"
 
-#: src/BufferView.cpp:1664
+#: src/BufferView.cpp:1657
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d slov"
 
-#: src/BufferView.cpp:1666
+#: src/BufferView.cpp:1659
 msgid "One word"
 msgstr "Jedno slovo"
 
-#: src/BufferView.cpp:1669
+#: src/BufferView.cpp:1662
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d znakù (vèetnì mezer)"
 
-#: src/BufferView.cpp:1672
+#: src/BufferView.cpp:1665
 msgid "One character (including blanks)"
 msgstr "Jeden znak (vèetnì mezer)"
 
-#: src/BufferView.cpp:1675
+#: src/BufferView.cpp:1668
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d znakù (kromì mezer)"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1671
 msgid "One character (excluding blanks)"
 msgstr "Jeden znak (kromì mezer)"
 
-#: src/BufferView.cpp:1680
+#: src/BufferView.cpp:1673
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/BufferView.cpp:1814
+#: src/BufferView.cpp:1807
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' pøeru¹en proto¾e poèet akcí je vy¹¹í ne¾li %1$d"
 
-#: src/BufferView.cpp:1816
+#: src/BufferView.cpp:1809
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" aplikováno na %2$d vlo¾ek"
 
-#: src/BufferView.cpp:1824
+#: src/BufferView.cpp:1817
 msgid "Branch name"
 msgstr "Jméno vìtve"
 
-#: src/BufferView.cpp:1831 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1824 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Vìtev ji¾ existuje"
 
-#: src/BufferView.cpp:1963
+#: src/BufferView.cpp:1956
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Vìtev \"%1$s\" neexistuje."
 
-#: src/BufferView.cpp:2312
+#: src/BufferView.cpp:2305
 msgid "Inverse Search Failed"
 msgstr "Chyba pøi zpìtném hledání"
 
-#: src/BufferView.cpp:2313
+#: src/BufferView.cpp:2306
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17525,22 +17524,22 @@ msgstr ""
 "Zpìtné hledání vy¾ádalo nekorektní pozici.\n"
 "Musíte aktualizovat prohlí¾ený dokument."
 
-#: src/BufferView.cpp:2692
+#: src/BufferView.cpp:2685
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.cpp:2703
+#: src/BufferView.cpp:2696
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.cpp:2705
+#: src/BufferView.cpp:2698
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
 
-#: src/BufferView.cpp:2970
+#: src/BufferView.cpp:2963
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17551,11 +17550,11 @@ msgstr ""
 "%1$s\n"
 "zpùsobeno chybou: %2$s"
 
-#: src/BufferView.cpp:2972
+#: src/BufferView.cpp:2965
 msgid "Could not read file"
 msgstr "Soubor nelze pøeèíst"
 
-#: src/BufferView.cpp:2979
+#: src/BufferView.cpp:2972
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17564,15 +17563,15 @@ msgstr ""
 "%1$s\n"
 " nelze pøeèíst."
 
-#: src/BufferView.cpp:2980 src/output.cpp:39
+#: src/BufferView.cpp:2973 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nelze otevøít soubor"
 
-#: src/BufferView.cpp:2987
+#: src/BufferView.cpp:2980
 msgid "Reading not UTF-8 encoded file"
 msgstr "Naèítání souboru v jiném kódování ne¾li je UTF-8"
 
-#: src/BufferView.cpp:2988
+#: src/BufferView.cpp:2981
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18550,7 +18549,7 @@ msgstr ""
 "\t-version        shrnout verzi a informace o sestavení.\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
-#: src/LyX.cpp:1099
+#: src/LyX.cpp:1099 src/support/Package.cpp:563
 msgid "No system directory"
 msgstr "®ádný systémový adresáø"
 
@@ -23935,6 +23934,67 @@ msgstr "Abstrakt: "
 msgid "References: "
 msgstr "Reference: "
 
+#: src/support/Package.cpp:444
+msgid "LyX binary not found"
+msgstr "Nenalezen spustitelný soubor LyX-u"
+
+#: src/support/Package.cpp:445
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Nepodaøilo se urèit cestu ke spustitelnému souboru LyX-u z pøíkazové øádky "
+"%1$s"
+
+#: src/support/Package.cpp:564
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
+"\t%1$s\n"
+"Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
+"prostøedí\n"
+"%2$s do systémového adresáøe LyX-u obsahujícího soubor `chkconfig.ltx'."
+
+#: src/support/Package.cpp:645 src/support/Package.cpp:672
+msgid "File not found"
+msgstr "Soubor nenalezen"
+
+#: src/support/Package.cpp:646
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Neplatný pøepínaè %1$s.\n"
+"Adresáø %2$s neobsahuje %3$s."
+
+#: src/support/Package.cpp:673
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Neplatná promìnná prostøedí %1$s.\n"
+"Adresáø %2$s neobsahuje %3$s."
+
+#: src/support/Package.cpp:697
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"Neplatná promìnná prostøedí %1$s.\n"
+"%2$s není adresáø."
+
+#: src/support/Package.cpp:699
+msgid "Directory not found"
+msgstr "Adresáø nenalezen"
+
 #: src/support/Systemcall.cpp:374
 #, c-format
 msgid ""
@@ -24134,54 +24194,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
-
-#~ msgid "LyX binary not found"
-#~ msgstr "Nenalezen spustitelný soubor LyX-u"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Nepodaøilo se urèit cestu ke spustitelnému souboru LyX-u z pøíkazové "
-#~ "øádky %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
-#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-#~ msgstr ""
-#~ "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
-#~ "\t%1$s\n"
-#~ "Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
-#~ "prostøedí\n"
-#~ "%2$s do systémového adresáøe LyX-u obsahujícího soubor `chkconfig.ltx'."
-
-#~ msgid "File not found"
-#~ msgstr "Soubor nenalezen"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatný pøepínaè %1$s.\n"
-#~ "Adresáø %2$s neobsahuje %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Neplatná promìnná prostøedí %1$s.\n"
-#~ "Adresáø %2$s neobsahuje %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Neplatná promìnná prostøedí %1$s.\n"
-#~ "%2$s není adresáø."
-
-#~ msgid "Directory not found"
-#~ msgstr "Adresáø nenalezen"
 
 #~ msgid "&Output Format:"
 #~ msgstr "&Výstupní formát:"

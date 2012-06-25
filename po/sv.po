@@ -212,14 +212,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-06-21 12:21+0200\n"
+"POT-Creation-Date: 2012-06-25 08:28-0400\n"
 "PO-Revision-Date: 2012-06-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -249,7 +249,7 @@ msgstr "Upphovsrätt"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58
 #: src/frontends/qt4/ui/ThesaurusUi.ui:138 src/frontends/qt4/ui/WrapUi.ui:173
-#: src/frontends/qt4/GuiParagraph.cpp:161
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/ui_RefUi.h:338
 msgid "&Close"
 msgstr "&Stäng"
 
@@ -262,7 +262,7 @@ msgid "The label as it appears in the document"
 msgstr "Etiketten som den visas i dokumentet"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190
+#: src/frontends/qt4/ui/RefUi.ui:190 src/frontends/qt4/ui_RefUi.h:317
 msgid "&Label:"
 msgstr "&Etikett:"
 
@@ -328,16 +328,18 @@ msgstr "Bibliografigenerering"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:139
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "&Processor:"
 msgstr "&Behandlare:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:194
 msgid "Select a processor"
 msgstr "Välj en behandlare"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868
+#: src/frontends/qt4/GuiPrefs.cpp:868 src/frontends/qt4/ui_IndicesUi.h:196
 msgid "&Options:"
 msgstr "&Alternativ:"
 
@@ -375,7 +377,7 @@ msgstr "Ange BibTeX-databasens namn"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:349
+#: src/CutAndPaste.cpp:349 src/frontends/qt4/ui_IndicesUi.h:211
 msgid "&Add"
 msgstr "Lä&gg till"
 
@@ -447,7 +449,7 @@ msgstr "Lägg till bibliografi till innehålls&förteckning"
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/WrapUi.ui:150 src/frontends/qt4/ui_RefUi.h:336
 msgid "&OK"
 msgstr "&Ok"
 
@@ -687,7 +689,7 @@ msgid "Define or change background color"
 msgstr "Definiera eller ändra bakgrundsfärg"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:126
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:226
 msgid "Alter Co&lor..."
 msgstr "Ändra &färg..."
 
@@ -697,7 +699,7 @@ msgstr "Ta bort vald gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3811
-#: src/Buffer.cpp:3824
+#: src/Buffer.cpp:3824 src/frontends/qt4/ui_IndicesUi.h:218
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -985,7 +987,7 @@ msgstr "T&illämpa ändringar omedelbart"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177
+#: src/frontends/qt4/GuiDocument.cpp:3177 src/frontends/qt4/ui_RefUi.h:337
 msgid "&Apply"
 msgstr "Tillämp&a"
 
@@ -1994,6 +1996,7 @@ msgstr "Namn förknippat med URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
+#: src/frontends/qt4/ui_RefUi.h:331
 msgid "&Name:"
 msgstr "&Namn:"
 
@@ -2107,6 +2110,7 @@ msgid "&Edit"
 msgstr "R&edigera"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "A&vailable Indexes:"
 msgstr "Till&gängliga index:"
 
@@ -2114,7 +2118,7 @@ msgstr "Till&gängliga index:"
 msgid "Select the index this entry should be listed in."
 msgstr "Välj index som denna post ska listas i."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:189
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -2123,53 +2127,55 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:202
+#: src/frontends/qt4/ui_IndicesUi.h:191
 msgid "Index generation"
 msgstr "Indexgenerering"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:198
 msgid "Define program options of the selected processor."
 msgstr "Definiera programalternativ för den valda behandlaren."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:201
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Markera om du behöver flera index (t.ex. ett namnindex)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:203
 msgid "&Use multiple indexes"
 msgstr "An&vänd flera index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&New:[[index]]"
 msgstr "&Ny:[[index]]"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:206
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Ange namnet på önskat index (t.ex. \"Namnindex\") och slå \"Lägg till\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:209
 msgid "Add a new index to the list"
 msgstr "Lägg till ett nytt index till listan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
+#: src/frontends/qt4/ui_IndicesUi.h:214 src/frontends/qt4/ui_RefUi.h:294
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:216
 msgid "Remove the selected index"
 msgstr "Ta bort valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:220
 msgid "Rename the selected index"
 msgstr "Byt namn på valt index"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:222
 msgid "R&ename..."
 msgstr "B&yt namn..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:224
 msgid "Define or change button color"
 msgstr "Definiera eller ändra knappfärg"
 
@@ -2542,7 +2548,7 @@ msgid "Update the display"
 msgstr "Uppdatera visning"
 
 #: src/frontends/qt4/ui/LogUi.ui:77 src/frontends/qt4/ui/RefUi.ui:294
-#: src/frontends/qt4/ui/ViewSourceUi.ui:82
+#: src/frontends/qt4/ui/ViewSourceUi.ui:82 src/frontends/qt4/ui_RefUi.h:335
 msgid "&Update"
 msgstr "&Uppdatera"
 
@@ -3054,7 +3060,7 @@ msgstr "Pappersformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:19
-#: src/frontends/qt4/ui/RefUi.ui:355
+#: src/frontends/qt4/ui/RefUi.ui:355 src/frontends/qt4/ui_RefUi.h:339
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -4533,31 +4539,31 @@ msgstr "Visa statusradens meddelanden?"
 msgid "&Statusbar messages"
 msgstr "&Statusradens meddelanden"
 
-#: src/frontends/qt4/ui/RefUi.ui:22
+#: src/frontends/qt4/ui/RefUi.ui:22 src/frontends/qt4/ui_RefUi.h:291
 msgid "La&bels in:"
 msgstr "Etiketter i:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
+#: src/frontends/qt4/ui/RefUi.ui:49 src/frontends/qt4/ui_RefUi.h:292
 msgid "&References"
 msgstr "&Referenser"
 
-#: src/frontends/qt4/ui/RefUi.ui:76
+#: src/frontends/qt4/ui/RefUi.ui:76 src/frontends/qt4/ui_RefUi.h:295
 msgid "Fil&ter:"
 msgstr "Fil&ter:"
 
-#: src/frontends/qt4/ui/RefUi.ui:89
+#: src/frontends/qt4/ui/RefUi.ui:89 src/frontends/qt4/ui_RefUi.h:297
 msgid "Enter string to filter the label list"
 msgstr "Ange sträng för att filtrera etikettlistan"
 
-#: src/frontends/qt4/ui/RefUi.ui:99
+#: src/frontends/qt4/ui/RefUi.ui:99 src/frontends/qt4/ui_RefUi.h:301
 msgid "Filter case-sensitively"
 msgstr "Filtrera skiftlägeskänsligt"
 
-#: src/frontends/qt4/ui/RefUi.ui:102
+#: src/frontends/qt4/ui/RefUi.ui:102 src/frontends/qt4/ui_RefUi.h:303
 msgid "Case-sensiti&ve"
 msgstr "Skiftlägeskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:127
+#: src/frontends/qt4/ui/RefUi.ui:127 src/frontends/qt4/ui_RefUi.h:305
 msgid ""
 "Sort labels in alphabetical order (case-insensitively unless the Case-"
 "sensitive option is checked)"
@@ -4565,63 +4571,64 @@ msgstr ""
 "Sortera etiketter i alfabetisk följd (skiftlägesokänsligt om inte "
 "alternativet skiftlägeskänslig är markerad)"
 
-#: src/frontends/qt4/ui/RefUi.ui:130
+#: src/frontends/qt4/ui/RefUi.ui:130 src/frontends/qt4/ui_RefUi.h:307
 msgid "&Sort"
 msgstr "&Sortera"
 
-#: src/frontends/qt4/ui/RefUi.ui:140
+#: src/frontends/qt4/ui/RefUi.ui:140 src/frontends/qt4/ui_RefUi.h:309
 msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "Sortera etiketter skiftlägeskänsligt i alfabetisk ordning"
 
-#: src/frontends/qt4/ui/RefUi.ui:143
+#: src/frontends/qt4/ui/RefUi.ui:143 src/frontends/qt4/ui_RefUi.h:311
 msgid "Cas&e-sensitive"
 msgstr "Skiftläg&eskänslig"
 
-#: src/frontends/qt4/ui/RefUi.ui:150
+#: src/frontends/qt4/ui/RefUi.ui:150 src/frontends/qt4/ui_RefUi.h:313
 msgid "Group labels by prefix (e.g. \"sec:\")"
 msgstr "Gruppera etiketter efter prefix (t.ex. \"sek:\")"
 
-#: src/frontends/qt4/ui/RefUi.ui:153
+#: src/frontends/qt4/ui/RefUi.ui:153 src/frontends/qt4/ui_RefUi.h:315
 msgid "Grou&p"
 msgstr "Grup&p"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui_RefUi.h:316
 msgid "&Go to Label"
 msgstr "&Gå till etikett"
 
-#: src/frontends/qt4/ui/RefUi.ui:212
+#: src/frontends/qt4/ui/RefUi.ui:212 src/frontends/qt4/ui_RefUi.h:329
 msgid "Cross-reference as it appears in output"
 msgstr "Korsreferens som den visas i utmatning"
 
-#: src/frontends/qt4/ui/RefUi.ui:216
+#: src/frontends/qt4/ui/RefUi.ui:216 src/frontends/qt4/ui_RefUi.h:320
 msgid "<reference>"
 msgstr "<referens>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221
+#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/ui_RefUi.h:321
 msgid "(<reference>)"
 msgstr "(<referens>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226
+#: src/frontends/qt4/ui/RefUi.ui:226 src/frontends/qt4/ui_RefUi.h:322
 msgid "<page>"
 msgstr "<sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231
+#: src/frontends/qt4/ui/RefUi.ui:231 src/frontends/qt4/ui_RefUi.h:323
 msgid "on page <page>"
 msgstr "på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236
+#: src/frontends/qt4/ui/RefUi.ui:236 src/frontends/qt4/ui_RefUi.h:324
 msgid "<reference> on page <page>"
 msgstr "<referens> på sida <sida>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/RefUi.ui:241 src/frontends/qt4/ui_RefUi.h:325
 msgid "Formatted reference"
 msgstr "Formaterad referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:246
+#: src/frontends/qt4/ui/RefUi.ui:246 src/frontends/qt4/ui_RefUi.h:326
 msgid "Textual reference"
 msgstr "Textuell referens"
 
-#: src/frontends/qt4/ui/RefUi.ui:291
+#: src/frontends/qt4/ui/RefUi.ui:291 src/frontends/qt4/ui_RefUi.h:333
 msgid "Update the label list"
 msgstr "Uppdatera etikettlistan"
 
@@ -13685,11 +13692,11 @@ msgstr "Skriv ut dokument"
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1342
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1335
 msgid "Undo"
 msgstr "Ångra"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1352
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1345
 msgid "Redo"
 msgstr "Gör om"
 
@@ -17044,12 +17051,12 @@ msgstr "\\begin_header saknas"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document saknas"
 
-#: src/Buffer.cpp:875 src/Buffer.cpp:881 src/BufferView.cpp:1447
-#: src/BufferView.cpp:1453
+#: src/Buffer.cpp:875 src/Buffer.cpp:881 src/BufferView.cpp:1440
+#: src/BufferView.cpp:1446
 msgid "Changes not shown in LaTeX output"
 msgstr "Ändringar som inte visas i LaTeX-utmatning"
 
-#: src/Buffer.cpp:876 src/BufferView.cpp:1448
+#: src/Buffer.cpp:876 src/BufferView.cpp:1441
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -17061,7 +17068,7 @@ msgstr ""
 "Vänligen installera dessa paket eller omdefiniera \\lyxadded och "
 "\\lyxdeleted i LaTeX-ingressen."
 
-#: src/Buffer.cpp:882 src/BufferView.cpp:1454
+#: src/Buffer.cpp:882 src/BufferView.cpp:1447
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17261,8 +17268,8 @@ msgstr "Okodbart tecken i filsökväg"
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely %2"
-"$s). This may result in incomplete output, unless TEXINPUTS contains the "
+"contains glyphs that are unknown in the current document encoding (namely "
+"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
 "document directory and you don't use explicitly relative paths (i.e., paths "
 "starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
@@ -17271,8 +17278,8 @@ msgid ""
 msgstr ""
 "Sökvägen för ditt dokument\n"
 "(%1$s)\n"
-"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen %2"
-"$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
+"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen "
+"%2$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
 "innehåller dokumentkatalogen och du inte använder uttryckliga relativa "
 "sökvägar (t.ex. sökvägar som börjar med './' eller '../') i ingressen eller "
 "i ERT.\n"
@@ -17597,7 +17604,7 @@ msgstr ""
 "standardutformningar kommer att användas.\n"
 "LyX kommer inte att kunna producera korrekt utmatning."
 
-#: src/BufferParams.cpp:2004 src/BufferView.cpp:1292 src/BufferView.cpp:1324
+#: src/BufferParams.cpp:2004 src/BufferView.cpp:1285 src/BufferView.cpp:1317
 msgid "Could not load class"
 msgstr "Kunde inte ladda klass"
 
@@ -17629,112 +17636,112 @@ msgstr "Dokument är skrivskyddat"
 msgid "This portion of the document is deleted."
 msgstr "Denna portion av dokumentet är raderad."
 
-#: src/BufferView.cpp:1043 src/BufferView.cpp:1937
+#: src/BufferView.cpp:1043 src/BufferView.cpp:1930
 #: src/frontends/qt4/GuiView.cpp:3183 src/frontends/qt4/GuiView.cpp:3258
 msgid "Absolute filename expected."
 msgstr "Absolut filnamn förväntas."
 
-#: src/BufferView.cpp:1290 src/BufferView.cpp:1322
+#: src/BufferView.cpp:1283 src/BufferView.cpp:1315
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Dokumentklassen `%1$s' kunde inte laddas."
 
-#: src/BufferView.cpp:1345
+#: src/BufferView.cpp:1338
 msgid "No further undo information"
 msgstr "Ingen ytterligare information för att ångra"
 
-#: src/BufferView.cpp:1355
+#: src/BufferView.cpp:1348
 msgid "No further redo information"
 msgstr "Ingen ytterligare information för att göra om"
 
-#: src/BufferView.cpp:1544 src/lyxfind.cpp:378 src/lyxfind.cpp:396
+#: src/BufferView.cpp:1537 src/lyxfind.cpp:378 src/lyxfind.cpp:396
 msgid "String not found!"
 msgstr "Sträng hittades inte!"
 
-#: src/BufferView.cpp:1587
+#: src/BufferView.cpp:1580
 msgid "Mark off"
 msgstr "Märke av"
 
-#: src/BufferView.cpp:1593
+#: src/BufferView.cpp:1586
 msgid "Mark on"
 msgstr "Märke på"
 
-#: src/BufferView.cpp:1600
+#: src/BufferView.cpp:1593
 msgid "Mark removed"
 msgstr "Märke borttaget"
 
-#: src/BufferView.cpp:1603
+#: src/BufferView.cpp:1596
 msgid "Mark set"
 msgstr "Märke satt"
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1652
 msgid "Statistics for the selection:"
 msgstr "Statistik för urvalet:"
 
-#: src/BufferView.cpp:1661
+#: src/BufferView.cpp:1654
 msgid "Statistics for the document:"
 msgstr "Statistik för dokumentet:"
 
-#: src/BufferView.cpp:1664
+#: src/BufferView.cpp:1657
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d ord"
 
-#: src/BufferView.cpp:1666
+#: src/BufferView.cpp:1659
 msgid "One word"
 msgstr "Ett ord"
 
-#: src/BufferView.cpp:1669
+#: src/BufferView.cpp:1662
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d tecken (inklusive blanka)"
 
-#: src/BufferView.cpp:1672
+#: src/BufferView.cpp:1665
 msgid "One character (including blanks)"
 msgstr "Ett tecken (inklusive blanka)"
 
-#: src/BufferView.cpp:1675
+#: src/BufferView.cpp:1668
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d tecken (exklusive blanka)"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1671
 msgid "One character (excluding blanks)"
 msgstr "Ett tecken (exklusive blanka)"
 
-#: src/BufferView.cpp:1680
+#: src/BufferView.cpp:1673
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1814
+#: src/BufferView.cpp:1807
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' avbröts eftersom antal handlingar är större än %1$d"
 
-#: src/BufferView.cpp:1816
+#: src/BufferView.cpp:1809
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Tillämpade \"%1$s\" till %2$d insättningar"
 
-#: src/BufferView.cpp:1824
+#: src/BufferView.cpp:1817
 msgid "Branch name"
 msgstr "Grennamn"
 
-#: src/BufferView.cpp:1831 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1824 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Gren finns redan"
 
-#: src/BufferView.cpp:1963
+#: src/BufferView.cpp:1956
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Gren \"%1$s\" finns inte."
 
-#: src/BufferView.cpp:2312
+#: src/BufferView.cpp:2305
 msgid "Inverse Search Failed"
 msgstr "Omvänd sökning misslyckades"
 
-#: src/BufferView.cpp:2313
+#: src/BufferView.cpp:2306
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17742,22 +17749,22 @@ msgstr ""
 "Ogiltig position begärd av omvänd sökning.\n"
 "Du behöver uppdatera det visade dokumentet."
 
-#: src/BufferView.cpp:2692
+#: src/BufferView.cpp:2685
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Infogar dokument %1$s..."
 
-#: src/BufferView.cpp:2703
+#: src/BufferView.cpp:2696
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s infogat."
 
-#: src/BufferView.cpp:2705
+#: src/BufferView.cpp:2698
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunde inte infoga dokument %1$s"
 
-#: src/BufferView.cpp:2970
+#: src/BufferView.cpp:2963
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17768,11 +17775,11 @@ msgstr ""
 "%1$s\n"
 "på grund av fel: %2$s"
 
-#: src/BufferView.cpp:2972
+#: src/BufferView.cpp:2965
 msgid "Could not read file"
 msgstr "Kunde inte läsa fil"
 
-#: src/BufferView.cpp:2979
+#: src/BufferView.cpp:2972
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17781,15 +17788,15 @@ msgstr ""
 "%1$s\n"
 " är inte läsbar."
 
-#: src/BufferView.cpp:2980 src/output.cpp:39
+#: src/BufferView.cpp:2973 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kunde inte öppna fil"
 
-#: src/BufferView.cpp:2987
+#: src/BufferView.cpp:2980
 msgid "Reading not UTF-8 encoded file"
 msgstr "Läser fil som inte är kodad som UTF-8"
 
-#: src/BufferView.cpp:2988
+#: src/BufferView.cpp:2981
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18243,8 +18250,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
-"1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
+"%1$s."
 
 #: src/Converter.cpp:673
 msgid "LaTeX failed"
@@ -18293,11 +18300,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:697
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
-"$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
-"2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
+"%2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:702
 msgid "Undefined flex inset"
