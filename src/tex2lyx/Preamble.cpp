@@ -1158,12 +1158,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// check if the option contains a variant, if yes, extract it
 				string::size_type pos_var = langopts.find("variant");
 				string::size_type i = langopts.find(',', pos_var);
+				string::size_type k = langopts.find('=', pos_var);
 				if (pos_var != string::npos){
 					string variant;
 					if (i == string::npos)
-						variant = langopts.substr(pos_var + 8, langopts.length() - pos_var - 9);
+						variant = langopts.substr(k + 1, langopts.length() - k - 2);
 					else
-						variant = langopts.substr(pos_var + 8, i - pos_var - 8);
+						variant = langopts.substr(k + 1, i - k - 1);
 					h_language = variant;
 				}
 				p.verbatim_item();
@@ -1186,16 +1187,30 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			h_font_roman = p.getArg('{', '}');
 		}
 
-		else if (t.cs() == "setsansfont") {
-			// we don't care about the option
-			p.hasOpt() ? p.getOpt() : string();
-			h_font_sans = p.getArg('{', '}');
-		}
-
-		else if (t.cs() == "setmonofont") {
-			// we don't care about the option
-			p.hasOpt() ? p.getOpt() : string();
-			h_font_typewriter = p.getArg('{', '}');
+		else if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
+			// LyX currently only supports the scale option
+			string scale;
+			if (p.hasOpt()) {
+				string fontopts = p.getArg('[', ']');
+				// check if the option contains a scaling, if yes, extract it
+				string::size_type pos = fontopts.find("Scale");
+				if (pos != string::npos) {
+					string::size_type i = fontopts.find(',');
+					if (i == string::npos)
+						scale = scale_as_percentage(fontopts.substr(pos + 1));
+					else
+						scale = scale_as_percentage(fontopts.substr(pos, i - pos));
+				}
+			}
+			if (t.cs() == "setsansfont") {
+				if (!scale.empty())
+					h_font_sf_scale = scale;
+				h_font_sans = p.getArg('{', '}');
+			} else {
+				if (!scale.empty())
+					h_font_tt_scale = scale;
+				h_font_typewriter = p.getArg('{', '}');
+			}
 		}
 
 		else if (t.cs() == "date") {

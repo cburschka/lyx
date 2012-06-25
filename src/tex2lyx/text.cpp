@@ -3585,17 +3585,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// check if the option contains a variant, if yes, extract it
 				string::size_type pos_var = langopts.find("variant");
 				string::size_type i = langopts.find(',');
-				if (pos_var != string::npos){
+				string::size_type k = langopts.find('=', pos_var);
+				if (pos_var != string::npos && i == string::npos) {
 					string variant;
-					if (i == string::npos) {
-						variant = langopts.substr(pos_var + 8, langopts.length() - pos_var - 9);
-						lang = polyglossia2lyx(variant);
-						parse_text_attributes(p, os, FLAG_ITEM, outer,
-							                  context, "\\lang",
-							                  context.font.language, lang);
-					}
-					else
-						handle_ert(os, t.asInput() + langopts, context);
+					variant = langopts.substr(k + 1, langopts.length() - k - 2);
+					lang = polyglossia2lyx(variant);
+					parse_text_attributes(p, os, FLAG_ITEM, outer,
+						                  context, "\\lang",
+						                  context.font.language, lang);
 				} else
 					handle_ert(os, t.asInput() + langopts, context);
 			} else {
