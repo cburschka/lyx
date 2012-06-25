@@ -4,19 +4,19 @@
 #   http://wiki.lyx.org/Devel/ReleaseProcedure
 # It also includes several other tests, to make sure the packages
 # works as it should.
-# Note that this is for svn, not for git.
 
 # A few variables need to be set, here at the top. 
-# where all the source trees live
+#
+# Where we will do our work
 BASE="/cvs/lyx/lyx-release";
-# where the svn directory lives
-SRCDIR="/cvs/lyx/lyx-pristine";
+# Where our git repository lives
+SRCDIR="/cvs/lyx/lyx-20";
 # editor 
 if [ -z "$EDITOR" ]; then EDITOR=vi; fi
-# options to make, when we compile
+# Options to make, when we compile
 MAKEOPTS="-j4";
 
-
+# Determine LyX version
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
 
@@ -24,15 +24,16 @@ echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
 read
 
-echo "Running svn export...";
+echo "Exporting clean tree...";
 rm -Rf $BASE/lyx-export/
-svn export . $BASE/lyx-export/
+git checkout-index -a -f --prefix=$BASE/lyx-export/
 cd $BASE/lyx-export/
 ./autogen.sh
 rm -Rf $BASE/lyx-build/
 mkdir $BASE/lyx-build/
 cd $BASE/lyx-build/
 
+echo "Building distribution...";
 $BASE/lyx-export/configure --enable-build-type=rel
 if ! make lyxdist; then
   echo "Couldn't make distribution!";
@@ -51,7 +52,7 @@ gpg -b lyx-$VERSION.tar.xz
 echo "Signatures created:"
 cp -v lyx-$VERSION.tar.*.sig $BASE;
 
-echo -n "Ready to test compilation.";
+echo -n "Ready to test compilation...";
 read
 
 rm -Rf $BASE/lyx-test/
@@ -80,17 +81,28 @@ LAST=$(($LASTNUM - 1));
 FIRST=$(echo $VERSION | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
-echo "Last version was $LAST.";
-echo -n "Ready to make patch...";
+
+if [ ! -d "$BASE/lyx-patch/" ]; then
+	mkdir "$BASE/lyx-patch/" || exit 1;
+fi
+
+if [ ! -d lyx-$LAST ]; then 
+  echo "Can't find directory for last version $LAST.";
+  echo "Will try to download from LyX site....";
+  read;
+  wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
+  tar -zxvf lyx-$LAST.tar.gz;
+  if [ ! -f lyx-$LAST.tar.gz ]; then
+    echo "Still unable to find directory for last version $LAST.";
+    exit 1;
+  fi
+fi
+
+echo -n "Ready to make patch against $LAST...";
 read
 
 cd $BASE/lyx-patch/;
 tar -zxvf $BASE/lyx-build/lyx-$VERSION.tar.gz >/dev/null;
-
-if [ ! -d lyx-$LAST ]; then 
-  echo "Can't find directory for last version $LAST!";
-  exit 1;
-fi
 
 diff -urN -x .svn -x version.cpp lyx-$LAST lyx-$VERSION > patch
 
@@ -114,13 +126,15 @@ $EDITOR patch-preamble;
 PATCH="patch-$VERSION";
 cat patch-preamble patch >$PATCH;
 gzip -c $PATCH > $PATCH.gz
-rm $PATCH.gz.sig;
+if [ -f $PATCH.gz.sig ]; then
+  rm $PATCH.gz.sig;
+fi
 gpg -b $PATCH.gz
 xz -zc $PATCH > $PATCH.xz
 rm $PATCH.xz.sig;
 gpg -b $PATCH.xz
 
 echo -n "Patch and signatures created...";
-cp -v $PATCH.gz $PATCH.xz $BASE;
+cp -v $PATCH.gz $PATCH.gz.sig $PATCH.xz $PATCH.xz.sig $BASE;
 
 
