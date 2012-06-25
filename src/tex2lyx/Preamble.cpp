@@ -985,7 +985,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
-	   << "\\font_tt_scale " << h_font_tt_scale << "\n\n"
+	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
 	   << "\\graphics " << h_graphics << "\n"
 	   << "\\default_output_format " << h_default_output_format << "\n"
 	   << "\\output_sync " << h_output_sync << "\n";
