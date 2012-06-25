@@ -106,9 +106,13 @@ def run_msgfmt(pofile):
     prop = {}
     prop["langcode"] = os.path.basename(pofile)[:-3]
     prop["date"] = header['PO-Revision-Date'].split()[0]
-    prop["email"] = header['Last-Translator'].split('<')[1][:-1]
-    prop["email"] = prop["email"].replace("@", " () ")
-    prop["email"] = prop["email"].replace(".", " ! ")
+    print header['Last-Translator']
+    try:
+      prop["email"] = header['Last-Translator'].split('<')[1][:-1]
+      prop["email"] = prop["email"].replace("@", " () ")
+      prop["email"] = prop["email"].replace(".", " ! ")
+    except:
+      prop["email"] = "lyx-devel()lyx!org"
     translator = header['Last-Translator'].split('<')[0].strip()
     try:
         prop["translator"] = translator.decode(charset).encode('ascii','xmlcharrefreplace')
