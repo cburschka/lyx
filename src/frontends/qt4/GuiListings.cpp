@@ -21,7 +21,6 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/convert.h"
-#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 

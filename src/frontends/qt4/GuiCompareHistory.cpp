@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <support/debug.h>
 
 #include "GuiCompareHistory.h"
 

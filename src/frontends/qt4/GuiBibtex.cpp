@@ -30,7 +30,6 @@
 
 #include "insets/InsetBibtex.h"
 
-#include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // changeExtension

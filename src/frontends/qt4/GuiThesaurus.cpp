@@ -24,7 +24,6 @@
 #include "lyxfind.h"
 #include "WordLangTuple.h"
 
-#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 

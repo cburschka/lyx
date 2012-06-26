@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>BoxUi</class>
  <widget class="QWidget" name="BoxUi">
@@ -15,13 +16,121 @@
   <property name="sizeGripEnabled" stdset="0">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="typeLA">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>&amp;Decoration:</string>
+     </property>
+     <property name="buddy">
+      <cstring>typeCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="typeCO">
+     <property name="toolTip">
+      <string>Supported box types</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="innerBoxLA">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Inner Bo&amp;x:</string>
+     </property>
+     <property name="buddy">
+      <cstring>innerBoxCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="innerBoxCO">
+     <property name="toolTip">
+      <string>Inner box -- needed for fixed width &amp; line breaks</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>None</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Parbox</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Minipage</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="widthCB">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>&amp;Width:</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="widthED">
+     <property name="toolTip">
+      <string>Width value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="LengthCombo" name="widthUnitsLC"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="heightCB">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>&amp;Height:</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="heightED">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>Height value</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="LengthCombo" name="heightUnitsLC">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0" colspan="2">
     <widget class="QCheckBox" name="pagebreakCB">
      <property name="toolTip">
@@ -181,117 +290,6 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="2">
-    <widget class="LengthCombo" name="heightUnitsLC">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="heightCB">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>&amp;Height:</string>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-     <property name="tristate">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="innerBoxLA">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>Inner Bo&amp;x:</string>
-     </property>
-     <property name="buddy">
-      <cstring>innerBoxCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="LengthCombo" name="widthUnitsLC"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="typeLA">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>&amp;Decoration:</string>
-     </property>
-     <property name="buddy">
-      <cstring>typeCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="widthLA">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>&amp;Width:</string>
-     </property>
-     <property name="buddy">
-      <cstring>widthED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="heightED">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="toolTip">
-      <string>Height value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="widthED">
-     <property name="toolTip">
-      <string>Width value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QComboBox" name="innerBoxCO">
-     <property name="toolTip">
-      <string>Inner box -- needed for fixed width &amp; line breaks</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>None</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Parbox</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Minipage</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QComboBox" name="typeCO">
-     <property name="toolTip">
-      <string>Supported box types</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -347,6 +345,38 @@
     <hint type="destinationlabel">
      <x>283</x>
      <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widthCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>widthED</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widthCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>widthUnitsLC</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>217</x>
+     <y>70</y>
     </hint>
    </hints>
   </connection>

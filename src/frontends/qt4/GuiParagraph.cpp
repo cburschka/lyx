@@ -28,7 +28,6 @@
 #include "ParagraphParameters.h"
 #include "Spacing.h"
 
-#include "support/debug.h"
 #include "support/gettext.h"
 
 #include <QCheckBox>

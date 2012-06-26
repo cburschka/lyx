@@ -16,8 +16,6 @@
 
 #include "GuiSelectionManager.h"
 
-#include "support/debug.h"
-
 #include <QAbstractListModel>
 #include <QItemSelection>
 #include <QListView>
