@@ -129,7 +129,11 @@ FunctionEnd
    ${endif}
    ${if} $PathLaTeX != ""
     # set package repository (MiKTeX's primary package repository)
-    WriteRegStr $MiKTeXUser "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+    ${if} $MiKTeXUser == "HKCU"
+     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+    ${else}
+     WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+    ${endif}
     StrCpy $LaTeXInstalled "MiKTeX"
     StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
    ${else}
