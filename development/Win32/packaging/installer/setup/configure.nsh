@@ -164,34 +164,6 @@ Section -Configure
 SectionEnd
 
 #--------------------------------
-# LaTeX files
-
-/*Var UpdateFNDBReturn
-
-Section -LaTeXFiles
-
-  # Install files in local root
-
-  ${If} $PathLaTeXLocal != ""
-    # dvipost
-    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
-    File "${FILES_DVIPOST_PKG}\dvipost.sty"
-    # LyX files in Resources\tex
-    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
-    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
-  ${EndIf}
-
-  # Update file name database
-
-  ${If} $PathLaTeX != ""
-    DetailPrint $(TEXT_CONFIGURE_MIKTEXFNDB)
-    nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" --update-fndb'
-    Pop $UpdateFNDBReturn # Return value
-  ${EndIf}
-  
-SectionEnd*/
-
-#--------------------------------
 # Postscript printer for metafile to EPS converter
 
 Section -PSPrinter

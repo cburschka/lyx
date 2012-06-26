@@ -31,12 +31,14 @@ Function LaTeXActions
    ${endif}
   ${endif}
   
-  ${if} $PathLaTeX == "" # check if MiKTeX is installed only for the current user
+  ${if} $PathLaTeX != ""
+   StrCpy $MiKTeXUser "HKLM" # needed later to configure MiKTeX
+  ${else} # check if MiKTeX is installed only for the current user
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck # function from LyXUtils.nsh
    ${if} $PathLaTeX != ""
-    StrCpy $MiKTeXUser "HKCU" # needed later to configure MiKTeX
+    StrCpy $MiKTeXUser "HKCU"
    ${endif}
   ${endif}
   ${if} $LaTeXName == "" # check for the MiKTeX version
@@ -117,7 +119,9 @@ FunctionEnd
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck # function from LyXUtils.nsh
-   ${if} $PathLaTeX == ""
+   ${if} $PathLaTeX != ""
+    StrCpy $MiKTeXUser "HKLM"
+   ${else}
     StrCpy $MiKTeXUser "HKCU"
     ReadRegStr $String HKCU "Environment" "Path"
     StrCpy $Search "miktex"
@@ -125,7 +129,7 @@ FunctionEnd
    ${endif}
    ${if} $PathLaTeX != ""
     # set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+    WriteRegStr $MiKTeXUser "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
     StrCpy $LaTeXInstalled "MiKTeX"
     StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
    ${else}
@@ -149,8 +153,8 @@ Function ConfigureMiKTeX
  
  # install LyX's LaTeX class and style files and a Perl interpreter
  ${if} $PathLaTeX != ""
-  ${if} $MultiUser.Privileges != "Admin"
-  ${orif} $MultiUser.Privileges != "Power"
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
    StrCpy $PathLaTeXLocal "$PathLaTeX" -11 # delete "\miktex\bin"
   ${else}
    StrCpy $PathLaTeXLocal "$APPDATA\MiKTeX\$MiKTeXVersion"
@@ -167,16 +171,38 @@ Function ConfigureMiKTeX
   ${endif}
   
   # only install a Perl interpreter if it is not already installed
-  ${ifnot} ${FileExists} "$PathLaTeXLocal\miktex\bin\perl.exe"
-   SetOutPath "$PathLaTeXLocal"
-   File /r ${FILES_MIKTEX}
+  # this is only possible if miktex and LyX is installed with the same privileges
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   ${if} $PathLaTeX != "$LOCALAPPDATA\MiKTeX\$MiKTeXVersion\miktex\bin"
+    ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
+     # FIXME: output a translatable message in this case
+     MessageBox MB_OK "LyX's multiple index feature will not work because MiKTeX was installed with admin privileges but you don't have them."
+    ${endif}
+   ${else}
+    ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
+     SetOutPath "$PathLaTeXLocal"
+     File /r ${FILES_MIKTEX}
+    ${endif}
+   ${endif}
+  ${else}
+   ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
+    SetOutPath "$PathLaTeXLocal"
+    File /r ${FILES_MIKTEX}
+   ${endif}
   ${endif}
   
   # refresh MiKTeX's file name database (do this always to assure everything is in place)
-  ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
-   nsExec::ExecToLog '"$PathLaTeX\initexmf --admin --update-fndb"'
-  ${else} 
-   nsExec::ExecToLog '"$PathLaTeX\initexmf --update-fndb"'
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+   nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+  ${else}
+   ${if} $MiKTeXUser != "HKCU" # call the admin version
+    nsExec::ExecToLog "$PathLaTeX\initexmf --admin --update-fndb"
+   ${else}
+    nsExec::ExecToLog "$PathLaTeX\initexmf --update-fndb"
+   ${endif}
   ${endif}
   Pop $UpdateFNDBReturn # Return value
   
@@ -213,12 +239,20 @@ Function UpdateMiKTeX
     StrCpy $0 $PathLaTeX -4 # remove "\bin"
     # the update wizard is either started by the copystart_admin.exe
     # or the miktex-update.exe (since MiKTeX 2.8)
-    ExecWait '"$PathLaTeX\copystart_admin.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
-    ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
-     ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard
-    ${else} 
-     ExecWait '"$PathLaTeX\internal\miktex-update.exe"' # run MiKTeX's update wizard
-    ${endif} 
+    ${if} $MultiUser.Privileges != "Admin"
+    ${andif} $MultiUser.Privileges != "Power"
+     # call the non-admin version
+     ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
+     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+    ${else}
+     ${if} $MiKTeXUser != "HKCU" # call the admin version
+      ExecWait '"$PathLaTeX\copystart_admin.exe" "$0\config\update.dat"'
+      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard
+     ${else}
+      ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
+      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+     ${endif}
+    ${endif}
    UpdateLater:
   ${endif}
 
