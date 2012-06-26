@@ -12,9 +12,9 @@ lilypond
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -31,7 +31,7 @@ lilypond
 \spacing single
 \use_hyperref true
 \pdf_title "LilyPond-book and LyX"
-\pdf_author "Your Name"
+\pdf_author "The LyX Team"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
@@ -83,17 +83,7 @@ LilyPond-book and LyX
 \end_layout
 
 \begin_layout Author
-Fake Author
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-author of this example file: Julien Rioux
-\end_layout
-
-\end_inset
-
-
+The LyX Team
 \end_layout
 
 \begin_layout Abstract
@@ -123,7 +113,7 @@ While LilyPond itself supports the display of title, author information,
 \end_layout
 
 \begin_layout Standard
-This document describes the use of the Lilypond music notation within LyX
+This document describes the use of the LilyPond music notation within LyX
  documents that use a LaTeX-based layout, thus combining the beauty and
  quality of the typesetting achieved by both LaTeX and LilyPond.
  While a basic understanding of the LilyPond syntax for music notation is
@@ -173,8 +163,8 @@ Settings
  You can use any LaTeX-based LyX layout and use the regular preview and
  export mechanism; LyX will take care of processing the mixed LaTeX/LilyPond
  code through LilyPond-book for you.
- LilyPond-book can also handle DocBook documents but LilyPond-DocBook support
- in LyX is missing at the moment.
+ LilyPond-book can also handle DocBook and HTML documents, but the integration
+ of these document types with LilyPond-book and LyX is missing at the moment.
 \end_layout
 
 \begin_layout Subsection
@@ -296,17 +286,19 @@ includegraphics{\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-Thus, the conversion path is as follow: 
+Thus, the conversion process is as follow: 
 \family sans
 LyX\SpecialChar \menuseparator
 LilyPond-book\SpecialChar \menuseparator
 LaTeX
 \family default
 .
+ LyX creates a .lytex file, LilyPond-book creates a .tex files and the accompanyin
+g image files, and LaTeX creates the final document.
  Every step of the tool chain obeys your spacing, so whether you put the
- musical extract in line, or in its own paragraph, centered, left-aligned,
+ musical extract inline, or in its own paragraph, centered, left-aligned,
  etc., what you see in the LyX window should be respected in the final format.
- An example of in-line use may be to display a chord name, such as
+ An example of inline use may be to display a chord name, such as
 \begin_inset Flex LilyPond
 status open
 
@@ -572,12 +564,19 @@ score given
 
 \end_layout
 
+\begin_layout Standard
+Writing the notes directly within braces without using any LilyPond command
+ is convenient when writing short snippets.
+ Advanced users will probably want to enter their musical content using
+ LilyPond variables and commands, which is of course supported.
+\end_layout
+
 \begin_layout Subsubsection
 Fret diagrams
 \end_layout
 
 \begin_layout Standard
-Another gotcha is with subsequent lilypond snippets with 
+Another gotcha is with subsequent LilyPond snippets with 
 \family typewriter
 
 \backslash
@@ -633,6 +632,44 @@ end{lilypond}
 \begin_layout Standard
 For some reason LilyPond-book version 2.13 barks on this when run in safe
  mode (which you always should use, unless you know what you are doing).
+ This has been corrected as of version 2.15 (was LilyPond issue #1900).
+\end_layout
+
+\begin_layout Subsubsection
+The 
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+ command
+\end_layout
+
+\begin_layout Standard
+LilyPond-book supports including LilyPond code that resides in external
+ files with the 
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+ command.
+ With this command, the LilyPond code is processed as if it was typed inside
+ the document and the output score follows the typesetting determined by
+ LaTeX with respect to line width, page breaks, and so on.
+ This is in contrast to the long-standing LyX feature to include LilyPond
+ scores as external material, which calls LilyPond on the external file
+ to produce a rigid figure, and includes this figure in the document, leaving
+ the typesetting decisions to LilyPond.
+ Unfortunately, support for the 
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+ command in LyX is not implemented yet, but it is possible to use it inside
+ a TeX-Code block, provided that one writes the complete, absolute path
+ to the desired file.
 \end_layout
 
 \begin_layout Section
@@ -654,7 +691,7 @@ reference "sub:Editorial-headword"
 
 \end_inset
 
- shows a complex example using many LilyPond constructs; some scheme code
+ shows a complex score using many LilyPond constructs; some scheme code
  has been removed from the original source of this snippet, to be able to
  run in safe mode.
  Example 
