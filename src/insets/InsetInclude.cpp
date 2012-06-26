@@ -1143,6 +1143,8 @@ void InsetInclude::updateCommand()
 
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 {
+	button_.update(screenLabel(), true);
+
 	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {
 		childbuffer->updateBuffer(Buffer::UpdateChildOnly, utype);
