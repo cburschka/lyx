@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 				     before you use LyX for the first time.$\r$\n\
 				     Would you now check for MiKTeX updates?'
 
-${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Yapýlandýrma programýnda 'path_prefix' ayarlanamadý"
 ${LangFileString} RunConfigureFailed "Yapýlandýrma programý çalýþtýrýlamadý"
 ${LangFileString} NotAdmin "LyX kurabilmek için yönetici yetkileri gerekiyor!"
 ${LangFileString} InstallRunning "Kurulum programý zaten çalýþýyor!"
 ${LangFileString} StillInstalled "LyX kurulu zaten! Önce onu kaldýrýn."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Tebrikler! LyX baþarýyla kuruldu.$\r$\n\
 					    $\r$\n\

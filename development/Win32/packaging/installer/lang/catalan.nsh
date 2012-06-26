@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'La distribució LaTeX $\"MiKTeX$\" conjuntament amb
 				     abans d$\'executar el LyX per primer cop.$\r$\n\
 				     Voleu comprobar ara si hi ha actualitzacions del MiKTeX?'
 
-${LangFileString} UpdateNotAllowed "Aquest paquet d'actualització només actualitza ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "No es pot establir 'path_prefix' durant el programa de configuració"
 ${LangFileString} RunConfigureFailed "No es pot executar el programa de configuració"
 ${LangFileString} NotAdmin "Necessiteu drets d'administrador per instal·lar el LyX!"
 ${LangFileString} InstallRunning "L'instal·lador ja s'està executant!"
 ${LangFileString} StillInstalled "El LyX ja es troba instal·lat! Desinstal·leu-lo primer."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Felicitats! Heu instal·lat correctament el LyX.$\r$\n\
 					    $\r$\n\

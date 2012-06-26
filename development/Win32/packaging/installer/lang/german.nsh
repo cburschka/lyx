@@ -79,12 +79,17 @@ ${LangFileString} MiKTeXInfo 'Die LaTeX-Distribution $\"MiKTeX$\" wird zusammen 
 				     installieren, bevor sie LyX das erste Mal benutzen.$\r$\n\
 				     Möchten Sie jetzt nach Updates für MiKTeX suchen?'
 
-${LangFileString} UpdateNotAllowed "Dieses Update-Paket kann nur ${PRODUCT_VERSION_OLD} updaten!"
 ${LangFileString} ModifyingConfigureFailed 'Der $\"PATH_präfix$\" (Liste mit Programmpfaden) konnte nicht im Konfigurationsskript gesetzt werden.'
 ${LangFileString} RunConfigureFailed "Konnte das Konfigurationsskript nicht ausführen."
 ${LangFileString} NotAdmin "Sie benötigen Administratorrechte um LyX zu installieren!"
 ${LangFileString} InstallRunning "Der Installer läuft bereits!"
 ${LangFileString} StillInstalled "LyX ist bereits installiert! Deinstallieren Sie LyX zuerst."
+
+${LangFileString} MultipleIndexesNotAvailable "Die Unterstützung für mehrere Indexe in einem Dokument wird nicht verfügbar sein, denn$\r$\n\
+					       MiKTeX wurde mit Administratorrechten installiert aber Sie installieren LyX ohne diese."
+${LangFileString} MetafileNotAvailable "Die LyX Unterstützung für Bilder im Format EMF oder WMF wird nicht verfügbar$\r$\n\
+					sein, denn dafür müsste ein Software-Drucker für Windows installiert werden,$\r$\n\
+					was jedoch nur mit Administratorrechten möglich ist."
 
 ${LangFileString} FinishPageMessage "Glückwunsch! LyX wurde erfolgreich installiert.$\r$\n\
 					    $\r$\n\

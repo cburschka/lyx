@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'ÊèÒêÙÉ-äÊêã MiKTeX ÊÓÊÎÏå ÇêÖÇë åæ âÈä äêã.$\r$\n\
 				     âÈä ÇÓÊÎÏÇå äêã äÃèä åÑÉ.$\r$\n\
 				     çä ÊÑÚÈ ÈÇäÊÍââ åæ ÇäÊÍÏêËÇÊ ÇäÂæ¿'
 
-${LangFileString} UpdateNotAllowed "çĞÇ ÇäÊÍÏêË ÎÇÕ áâ× Èà ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
 ${LangFileString} RunConfigureFailed "äÇ êåãæ ÊæáêĞ Çäà configure script"
 ${LangFileString} NotAdmin "êÌÈ Ãæ Êãèæ ÈÕäÇÍêÉ ÇäåÏêÑ äãê ääâêÇå ÈÙåäêÉ ÇäÊÑãêÈ!"
 ${LangFileString} InstallRunning "Êå ÈÇäáÙä ÇäÈÏÁ ÈÙåäêÉ ÇäÊÑãêÈ!"
 ${LangFileString} StillInstalled "Êå ÈÇäáÙä ÊÑãêÈ ÈÑæÇåÌ äêã äĞÇ Ùäêã ÇèäÇë ÇäÚÇÁ ÊÑãêÈ ÇäæÓÎÉÇäÓÇÈâÉ."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "ÊçÇæêæÇ! Êå ÊÑãêÈ äêã ÈæÌÇÍ.$\r$\n\
 					    $\r$\n\

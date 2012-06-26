@@ -77,6 +77,12 @@ ${LangFileString} NotAdmin "LyX‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAŠÇ—ÒŒ ŒÀ‚ğ‚Á‚Ä‚¢‚È‚­‚
 ${LangFileString} InstallRunning "ƒCƒ“ƒXƒg[ƒ‰[‚ÍŠù‚É“®‚¢‚Ä‚¢‚Ü‚·I"
 ${LangFileString} StillInstalled "LyX‚ÍŠù‚ÉƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚Ü‚·Iæ‚ÉLyX‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B"
 
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
+
 ${LangFileString} FinishPageMessage "‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·ILyX‚ª³‚µ‚­‘•”õ‚³‚ê‚Ü‚µ‚½B$\r$\n\
 					    $\r$\n\
 					    i‰‰ñ‚ÌLyX‚Ì‹N“®‚É‚ÍŠÔ‚ª‚©‚©‚è‚Ü‚·Bj"

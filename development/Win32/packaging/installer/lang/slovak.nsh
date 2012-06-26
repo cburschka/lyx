@@ -72,12 +72,17 @@ ${LangFileString} MiKTeXInfo 'LaTeX distribúcia $\"MiKTeX$\" sa pouíva spolu s 
 				     pred prvım pouívaním LyXu.$\r$\n\
 				     Chcete teraz testova MiKTeX aktualizácie?'
 
-${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Nemohol uvies v platnost 'path_prefix' (zoznam s cestami programu) v konfiguraènom skripte"
 ${LangFileString} RunConfigureFailed "Nemohol vykona konfiguraènı skript"
 ${LangFileString} NotAdmin "Pre inštaláciu LyX potrebujete administrátorské práva!"
 ${LangFileString} InstallRunning "Inštalatér u behá!"
 ${LangFileString} StillInstalled "LyX je u inštalovanı! Najprv treba odinštalova LyX."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Gratulácia! LyX bol úspešne inštalovanı.$\r$\n\
 					    $\r$\n\

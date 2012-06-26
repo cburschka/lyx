@@ -84,13 +84,19 @@ ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the c
 ${LangFileString} InstallRunning "The installer is already running!"
 ${LangFileString} StillInstalled "LyX is already installed! Deinstall LyX first."
 
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
+
 #${LangFileString} FinishPageMessage "Congratulations! LyX has been installed successfully.$\r$\n\
 #					    $\r$\n\
 #					    (The first start of LyX might take some seconds.)"
 ${LangFileString} FinishPageRun "Launch LyX"
 
 ${LangFileString} UnNotInRegistryLabel "Unable to find LyX in the registry.$\r$\n\
-					       Shortcuts on the desktop and in the Start Menu will not be removed."
+					Shortcuts on the desktop and in the Start Menu will not be removed."
 ${LangFileString} UnInstallRunning "You must close LyX at first!"
 ${LangFileString} UnNotAdminLabel "You must have administrator privileges to uninstall LyX!"
 ${LangFileString} UnReallyRemoveLabel "Are you sure you want to completely remove LyX and all of its components?"

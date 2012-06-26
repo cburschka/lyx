@@ -176,8 +176,7 @@ Function ConfigureMiKTeX
   ${andif} $MultiUser.Privileges != "Power"
    ${if} $PathLaTeX != "$LOCALAPPDATA\MiKTeX\$MiKTeXVersion\miktex\bin"
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
-     # FIXME: output a translatable message in this case
-     MessageBox MB_OK "LyX's multiple index feature will not work because MiKTeX was installed with admin privileges but you don't have them."
+     MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)"
     ${endif}
    ${else}
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"

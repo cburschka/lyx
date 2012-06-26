@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'Xunto co LyX vai-se empregar a distribución de LaT
 				     do MiKTeX co instalador $\"MiKTeX Update Wizard$\"$\r$\n\
 				     Desexa comprovar agora se ha actualizacións do MiKTeX?'
 
-${LangFileString} UpdateNotAllowed "This update package can only update ${PRODUCT_VERSION_OLD}!"
 ${LangFileString} ModifyingConfigureFailed "Non se puido engadir o 'path_prefix' no script de configuración"
 ${LangFileString} RunConfigureFailed "Non se deu executado o script de configuración"
 ${LangFileString} NotAdmin "Precisa de priviléxios de administrador para instalar o LyX!"
 ${LangFileString} InstallRunning "O instalador xa está a correr!"
 ${LangFileString} StillInstalled "O LyX xa está instalado! Desinstale o LyX primeiro."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Parabéns! O LyX foi instalado con suceso.$\r$\n\
 					    $\r$\n\

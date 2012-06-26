@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'A $\"MiKTeX$\" LaTeX-disztibúció lesz használva a 
 				     a LyX elsõ indítása elõtt.$\r$\n\
 				     Szeretné ellenõrizni a frissítéseket most?'
 
-${LangFileString} UpdateNotAllowed "Ez a frissítõ csomag csak a ${PRODUCT_VERSION_OLD} verziót tudja frissíteni!"
 ${LangFileString} ModifyingConfigureFailed "Nem tudom beállítani a 'path_prefix'-et a configure parancsfájlban!"
 ${LangFileString} RunConfigureFailed "Nem tudom végrehajtani a configure parancsfájlt!"
 ${LangFileString} NotAdmin "A LyX telepítéséhez rendszergazdai jogok szükségesek!"
 ${LangFileString} InstallRunning "A telepítõ már fut!"
 ${LangFileString} StillInstalled "A LyX már teleptve van! Elõször távolítsa el a régit."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Gratulálok! Sikeresen telepítette a LyX-et.$\r$\n\
 					    $\r$\n\

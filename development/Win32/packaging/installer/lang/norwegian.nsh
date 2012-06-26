@@ -71,12 +71,17 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 				     before you use LyX for the first time.$\r$\n\
 				     Would you now check for MiKTeX updates?'
 
-${LangFileString} UpdateNotAllowed "This update package can only update LyX ${PRODUCT_VERSION_OLD}!"				     
 ${LangFileString} ModifyingConfigureFailed "Forsøket på å stille inn 'path_prefix' i konfigurasjonsscriptet mislyktes"
 ${LangFileString} RunConfigureFailed "Fikk ikke kjørt konfigurasjonsscriptet"
 ${LangFileString} NotAdmin "Du trenger administratorrettigheter for å installere LyX!"
 ${LangFileString} InstallRunning "Installasjonsprogrammet er allerede i gang!"
 ${LangFileString} StillInstalled "LyX er allerede installert! Fjern LyX først."
+
+${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
+					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
+					available because that requires to install a software printer to$\r$\n\
+					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Gratulerer!! LyX er installert.$\r$\n\
 					    $\r$\n\

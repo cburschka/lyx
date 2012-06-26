@@ -168,15 +168,15 @@ SectionEnd
 
 Section -PSPrinter
 
-  ${If} $MultiUser.Privileges == "Admin"
-    ${OrIf} $MultiUser.Privileges == "Power"
-
-    # Delete printer
-    ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-    # Install printer and driver
-    ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
-
-  ${EndIf}
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
+   # Delete printer
+   ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
+   # Install printer and driver
+   ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
+  ${else}
+   MessageBox MB_OK|MB_ICONINFORMATION "$(MetafileNotAvailable)"
+  ${endif}
 
 SectionEnd
 
