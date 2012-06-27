@@ -1472,7 +1472,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// LyX doesn't support the second argument so if
 		// this is used we need to output everything as ERT
 		string const mapping = p.getArg('{', '}');
-		if ( (!mapping.empty() && mapping != " ")
+		if ((!mapping.empty() && mapping != " ")
 			|| (!is_known(encoding, supported_CJK_encodings))) {
 			parent_context.check_layout(os);
 			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
@@ -1480,7 +1480,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			// we must parse the content as verbatim because e.g. SJIS can contain
 			// normally invalid characters
 			string const s = p.plainEnvironment("CJK");
-			string::const_iterator it2 = s.begin();
 			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 				if (*it == '\\')
 					handle_ert(os, "\\", parent_context);
@@ -2113,7 +2112,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		   << "\\begin_layout Plain Layout\n"
 		   << "This document contains text in Chinese, Japanese or Korean.\n"
 		   << " It was therefore impossible for tex2lyx to set the correct document langue for your document."
-		   << " Please set in the document settings by yourself!\n"
+		   << " Please set the language manually in the document settings.\n"
 		   << "\\end_layout\n";
 		end_inset(os);
 		have_CJK = false;

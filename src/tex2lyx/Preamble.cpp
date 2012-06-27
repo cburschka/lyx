@@ -754,7 +754,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "CJK") {
 		// It is impossible to determine the document language if CJK is used.
-		// All we can do is to notify the user that he has to set this by hisself.
+		// All we can do is to notify the user that he has to set this by himself.
 		have_CJK = true;
 		// set the encoding to "auto" because it might be set to "default" by the babel handling
 		// and this would not be correct for CJK
