@@ -1500,7 +1500,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.font.language = lang_old;
 			parent_context.new_paragraph(os);
 		}
-		p.getEncoding() = encoding_old;
+		p.setEncoding(encoding_old);
 		p.skip_spaces();
 	}
 
