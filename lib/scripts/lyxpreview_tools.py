@@ -36,6 +36,7 @@ path = os.environ["PATH"].split(os.pathsep)
 extlist = ['']
 if "PATHEXT" in os.environ:
     extlist += os.environ["PATHEXT"].split(os.pathsep)
+extlist.append('.py')
 
 use_win32_modules = 0
 if os.name == "nt":
@@ -99,6 +100,9 @@ def find_exe(candidates):
                     # have found it). Return just the basename to avoid
                     # problems when the path to the executable contains
                     # spaces.
+                    if full_path.lower().endswith('.py'):
+                        return command.replace(prog, '"%s" "%s"'
+                            % (sys.executable, full_path))
                     return command
 
     return None
