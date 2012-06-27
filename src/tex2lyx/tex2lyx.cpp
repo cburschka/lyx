@@ -673,7 +673,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	stringstream ss;
 	// store the document language in the context to be able to handle the
 	// commands like \foreignlanguage and \textenglish etc.
-	context.font.language = preamble.h_language;
+	context.font.language = preamble.language();
 	// parse the main text
 	parse_text(p, ss, FLAG_END, true, context);
 	if (Context::empty)
