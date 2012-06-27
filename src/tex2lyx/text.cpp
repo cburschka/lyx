@@ -1461,7 +1461,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_end_layout(os);
 		// store the encoding to be able to reset it
-		string const encoding_old = p.encoding_latex_;
+		string const encoding_old = p.getEncoding();
 		string const encoding = p.getArg('{', '}');
 		// SJIS and BIG5 don't work with LaTeX according to the comment in unicode.cpp
 		// JIS does not work with LyX's encoding conversion
@@ -1500,7 +1500,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.font.language = lang_old;
 			parent_context.new_paragraph(os);
 		}
-		p.encoding_latex_ = encoding_old;
+		p.getEncoding() = encoding_old;
 		p.skip_spaces();
 	}
 
