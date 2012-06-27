@@ -1195,7 +1195,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// check if the option contains a scaling, if yes, extract it
 				string::size_type pos = fontopts.find("Scale");
 				if (pos != string::npos) {
-					string::size_type i = fontopts.find(',');
+					string::size_type i = fontopts.find(',', pos);
 					if (i == string::npos)
 						scale = scale_as_percentage(fontopts.substr(pos + 1));
 					else
