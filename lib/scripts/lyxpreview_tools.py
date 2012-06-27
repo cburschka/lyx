@@ -63,6 +63,7 @@ def find_exe(candidates, path):
     extlist = ['']
     if "PATHEXT" in os.environ:
         extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+    extlist.append('.py')
 
     for prog in candidates:
         for directory in path:
@@ -73,6 +74,8 @@ def find_exe(candidates, path):
                     # have found it). Return just the basename to avoid
                     # problems when the path to the executable contains
                     # spaces.
+                    if full_path.lower().endswith('.py'):
+                        return '"%s" "%s"' % (sys.executable, full_path)
                     return os.path.basename(full_path)
 
     return None
