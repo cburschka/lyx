@@ -25,6 +25,7 @@
 #include "version.h"
 
 #include "support/lassert.h"
+#include "support/debug.h"
 
 #include <QApplication>
 #include <QHeaderView>

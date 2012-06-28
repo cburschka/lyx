@@ -32,6 +32,7 @@
 #include "insets/InsetTabular.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 
 #include <QCheckBox>
 #include <QPushButton>

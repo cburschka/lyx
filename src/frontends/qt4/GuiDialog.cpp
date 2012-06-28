@@ -15,6 +15,8 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
+#include "support/debug.h"
+
 #include <QCloseEvent>
 
 using namespace std;

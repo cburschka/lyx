@@ -39,6 +39,7 @@
 #include "FuncStatus.h"
 #include "LyX.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 using namespace std;
