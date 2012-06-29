@@ -52,7 +52,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Do not output empty language switch commands (bug 8216)
+- Do not output empty language switch commands (bug 8216).
+
+- When using Turkish language, use the xkeyval package to avoid
+  incompatibilities (bug 2005).
 
 
 * USER INTERFACE
