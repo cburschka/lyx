@@ -7,11 +7,12 @@ POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
 $(DOMAIN).pot-update: l10n_pots
 
+# The ui_*.h and moc_*.cpp filters must match the patterns in src/frontends/qt4/Makefile.am
 ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	LC_ALL=C ; export LC_ALL ; \
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
-	     grep -l "_(\".*\")" `find src \( -name '*.h' -o -name '*.cpp' -o -name '*.cpp.in' \) -print` |\
+	     grep -l "_(\".*\")" `find src \( \( -name '*.h' -a ! -name 'ui_*.h' \) -o \( -name '*.cpp' -a ! -name 'moc_*.cpp' \) \) -print` |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
