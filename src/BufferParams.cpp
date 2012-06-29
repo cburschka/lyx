@@ -2130,17 +2130,24 @@ bool BufferParams::isExportableFormat(string const & format) const
 vector<string> BufferParams::backends() const
 {
 	vector<string> v;
-	v.push_back(bufferFormat());
+	string const buffmt = bufferFormat();
+
 	// FIXME: Don't hardcode format names here, but use a flag
-	if (v.back() == "latex") {
-		v.push_back("pdflatex");
+	if (buffmt == "latex") {
+		if (!useNonTeXFonts) {
+			v.push_back("pdflatex");
+			v.push_back("latex");
+		}
 		v.push_back("luatex");
 		v.push_back("dviluatex");
 		v.push_back("xetex");
-	} else if (v.back() == "xetex") {
+	} else if (buffmt == "xetex") {
+		v.push_back("xetex");
 		v.push_back("luatex");
 		v.push_back("dviluatex");
-	}
+	} else
+		v.push_back(buffmt);
+
 	v.push_back("xhtml");
 	v.push_back("text");
 	v.push_back("lyx");
@@ -2162,6 +2169,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
 
 	if (dformat == "xhtml")
 		result = OutputParams::HTML;
+	else if (dformat == "text")
+		result = OutputParams::TEXT;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();

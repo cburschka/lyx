@@ -3225,6 +3225,12 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		else if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
 			xhtmlParagraphs(text(), *this, xs, runparams);
+		} else if (runparams.flavor == OutputParams::TEXT) {
+			bool dummy;
+			// FIXME Handles only one paragraph, unlike the others.
+			// Probably should have some routine with a signature like them.
+			writePlaintextParagraph(*this,
+				text().paragraphs()[par_begin], os, runparams, dummy);
 		} else {
 			// latex or literate
 			otexstream ots(os, texrow);

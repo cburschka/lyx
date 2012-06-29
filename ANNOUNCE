@@ -33,6 +33,12 @@ http://www.lyx.org
 What's new in LyX 2.0.5
 =======================
 
+The View>Source widget now allows you to select the backend to display,
+e.g., LaTeX or XHTML, rather than the output format. The previous choice
+really made no sense: You didn't see a PDF there if you chose one of the
+PDF output formats, but rather LaTeX. This solves some long-standing issues
+with View>Source.
+
 
 What's new
 ==========
