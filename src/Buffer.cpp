@@ -1432,6 +1432,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	LYXERR(Debug::LATEX, "  Validating buffer...");
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
+	runparams.use_polyglossia = features.usePolyglossia();
 	LYXERR(Debug::LATEX, "  Buffer validation done.");
 
 	bool const output_preamble =
@@ -1539,7 +1540,6 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		MacroSet parentMacros;
 		listParentMacros(parentMacros, features);
 
-		runparams.use_polyglossia = features.usePolyglossia();
 		// Write the preamble
 		runparams.use_babel = params().writeLaTeX(os, features,
 							  d->filename.onlyPath());
@@ -3232,6 +3232,12 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			writePlaintextParagraph(*this,
 				text().paragraphs()[par_begin], os, runparams, dummy);
 		} else {
+			// We need to validate the Buffer params' features here
+			// in order to know if we should output polyglossia
+			// macros (instead of babel macros)
+			LaTeXFeatures features(*this, params(), runparams);
+			params().validate(features);
+			runparams.use_polyglossia = features.usePolyglossia();
 			// latex or literate
 			otexstream ots(os, texrow);
 			latexParagraphs(*this, text(), ots, runparams);
