@@ -591,6 +591,7 @@ def checkFormatEntries(dtl_tools):
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"
 \Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"
+\Format dviluatex  tex    "LaTeX (dviluatex)"     "" "" "%%"	"document,menu=export"	""
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"
 \Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
