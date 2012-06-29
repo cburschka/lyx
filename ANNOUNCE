@@ -1,10 +1,10 @@
-Public release of LyX version 2.0.4
+Public release of LyX version 2.0.5
 ===================================
 
-We are pleased to announce the release of LyX 2.0.4. This is the fourth
+We are pleased to announce the release of LyX 2.0.5. This is the fourth
 maintenance release in the 2.0.x series.
 
-LyX 2.0.4 is the result of on-going efforts to make our stable version
+LyX 2.0.5 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
 a number of improvements. These are detailed below. We encourage all
 LyX users to upgrade to this version.
@@ -13,9 +13,9 @@ LyX is a document processor that encourages an approach to writing based
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.0.4 from http://www.lyx.org/Download/.
+You can download LyX 2.0.5 from http://www.lyx.org/Download/.
 
-If you think you found a bug in LyX 2.0.4, either e-mail the LyX
+If you think you found a bug in LyX 2.0.5, either e-mail the LyX
 developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
@@ -24,302 +24,15 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users at lists.lyx.org).
 
-We hope you enjoy using LyX 2.0.4.
+We hope you enjoy using LyX 2.0.5.
 
 The LyX team.
 http://www.lyx.org
 
 
-What's new in LyX 2.0.4
+What's new in LyX 2.0.5
 =======================
-
-Most of the improvements in 2.0.4 are bug fixes, some of them important. In
-particular, we have fixed several crashes. The main outstanding problem is
-the inability to cancel the background export process. Some improvement has
-been made here, by updating the timeout mechanism, but more needs to be done,
-and hopefully will be done for 2.0.5.
-
-There have been several updates to LyX's XHTML export routines. Work on this
-will continue for 2.0.5.
 
 
 What's new
 ==========
-
-** Updates:
-***********
-
-* DOCUMENT INPUT/OUTPUT
-
-- Add support for \subsubsection and \subsubsection* in beamer layout.
-
-- Made some minor improvements to the include_bib.py script.
-
-- Case environments provided by theorem modules should now nest
-  properly (bug 7611).
-
-- Allow makebeamerinfo script export beamer info (to be used by Impressive)
-  (bug 8018).
-
-- Output unicode glyph MICRO SIGN upright in mathed (bug 8153).
-
-- Remove wrong support for unicode glyph HYPHENATION POINT (bug 8153).
-
-- Add support for unicode glyph LATIN SMALL LETTER H WITH STROKE.
-
-- Export contents of included files rather than just an indication that there
-  was an excluded file (bug 8087).
-
-- Added LibreOffice to list of detected ODT viewers/editors.
-
-
-* TEX2LYX IMPROVEMENTS
-
-- Support for the LaTeX-command \sindex (for split indexes).
-
-- Better support for XeTeX and LuaTeX documents: automatically set default
-  encoding to utf-8 and select support for non-TeX fonts.
-
-
-* USER INTERFACE
-
-- New option to show only the preamble when viewing source (bug 7860).
-
-- Graphics insets show filename as a tooltip now.
-
-- New command for forward search with SumatraPDF without the need of an
-  external DDE program (requires SumatraPDF version 1.9 or higher).
-
-- When a command takes too long to complete, ask the user for what to do
-  instead of automatically stopping it after a timeout interval (bug 8032).
-
-- Recognize geany, leafpad and mousepad as viewers (bug #8021).
-
-- Improved example and layout file for Seminar slide documents (bug 7624).
-
-- Allow dead caron to be used in our key bindings (bug 8198).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Updated Basque, French, German, Interlingua, Italian, Nynnorsk, Slovakian,
-  Swedish and Ukrainian user interface localization.
-
-- Fixed on-screen display of nested enumerations in Spanish and Galician
-  documents.
-
-- Improved template file iop-article.lyx.
-
-- EmbeddedObjects manual:
-  - New section how to color every second table row.
-  - New section how rotate table cells by a custom angle.
-
-- Cleaned up the Customization manual a bit.
-
-- Linguistics manual: document shortcomings (and workarounds) of glosses.
-
-
-** Bug fixes:
-*************
-
-* DOCUMENT INPUT/OUTPUT
-
-- Fix crash when saving a child document to a new name/directory and attempting
-  to view/export the document afterwards (bug 8161).
-
-- Fixed an infinite loop when exporting a file with list or bibliography 
-  environments to DocBook (bug 7914).
-
-- Fixed reading the bounding box from EPS figures with negative
-  values (bug 8114).
-
-- Fix generation of auxiliary files for converters specifying the needaux
-  flag by using the same latex backend used for previewing the document
-  instead of always using the plain latex backend.
-
-- When configuring LyX, check for all LaTeX-packages LyX uses to display
-  symbols (bug 8102).
-
-- Fix the naming of some temporary files such that they are created
-  in LyX's temporary directory.
-
-- Fixed XHTML output of id's for bibitems (bug 8156).
-
-- Fix generation of a lyx archive when included files have spaces embedded
-  in their names (bug 8164).
-  
-- Load bibtopic after hyperref, thus preventing a LaTeX error when back
-  references are used (bug 8005).
-
-- Define Standard as default style in SIAM layout (bug 8194).
-
-
-* USER INTERFACE
-
-- Fix crash when modifying or pasting an equation label and there
-  are references to that label in math (bug 8095).
-
-- Fix crash when clicking away in the same math inset just after hitting '\'
-  (bug 8140).
-
-- Fix crash when dissolving a math macro whose first argument is another
-  parameterless macro (bug 8105).
-
-- Fix crash when removing all converters in preferences (bug 8178).
-
-- Update the current view after dispatching a command through the lyxserver.
-  The missing screen update could cause either a failure in executing the
-  command or could even crash LyX (bugs 6871 and 8119).
-
-- Fixed assertion on selection of insets in RTL text (bug 7518).
-
-- Fixed an infinite loop when pasting '\\ ' into math (bug 8089).
-
-- Fixed an assertion when trying to paste into a table (bug 7956).
-
-- Fixed an infinite loop after removing the first paragraph of the 
-  document if it had a non-zero depth (bug 7641).
-
-- Fixed problem when setting working directory on Windows to root of a
-  disk, e.g., C:\ (bug 7982).
-
-- Don't reset the selected format each time we click into a new paragraph
-  in View->Source (bug 7997).
-
-- Do not disable View/Update Other Formats button when "Use non-TeX fonts"
-  is active (bug 8069).
-
-- Stop screen from jumping around so much on undo and redo (bug 6367).
-
-- Do not allow to add a citation in the citation dialog using the
-  <Enter> key if the Add button is disabled.
-
-- Allow the <Enter> key to add a new branch in document settings.
-  Only <Ctrl+Enter> and numpad-<Enter> will also close the dialog.
-
-- Box settings dialog didn't work if you were actually inside the box 
-  (bug 8124).
-
-- Mark the document modified when changing type of split index 
-  (bug 8182).
-
-- Do not lose default output format when toggling "Use Non-TeX Fonts"
-  (bug 8191).
-
-- Fix tooltip for "Use Non-TeX Fonts" (bug 7787).
-
-- Fix pasting of LATIN CAPITAL LETTER SHARP S (bug 8057).
-
-- Setting a multirow offset no longer also changes table column
-  alignments (bug 8084).
-
-- Do not repeatedly show export errors of a previous export.
-
-- Fix the selection of rows below a multirow (bug 8083).
-
-- Allow rotations of tables with a defined width (bug 8092).
-
-- Fix display of "Block" environment in Beamer presentations (bug 8094).
-
-- Changes to BibTeX files not noticed when new BibTeX inset created
-  (bug 8107).
-
-- Made it possible to delete local layout in Document>Settings.
-
-- Improve thesaurus dialog completion (bug 8138)
-
-- Fix erroneous error message when calling "buffer-language" manually.
-
-- Fix the random coloring of text when change tracking is on and 
-  pixmap caching is enabled (bug 7667).
-
-- Fix coloring of insets that come after deleted text insets with
-  change tracking on.
-
-- Fix the coloring of Quotation marks with change tracking (bug 7653).
-
-- Fixed stray warning when inserting inserting plaintext file (bug 7916).
-
-- Fix undo warning when inserting plain text file (bug 7916).
-
-- Fix display of special characters like '\#', '{..}' and of auto-
-  completion in math insets with a special font, e.g. mathcal (bug 5167).
-
-- Fix the painting of underbar and strikeout which span spaces (bug 953).
-
-- Fixed painted of paragraphs with MARGIN_RIGHT_ADDRES_BOX such that
-  the contents can be edited even if it is a long row (bug 8152).
-
-- Allow an 'unnamed' document (names like newfile*.lyx) to be saved
-  under the temporary name in a different directory.
-
-- Fix cursor bug when using backspace after the spellchecker replaced 
-  a word.
-
-- Fix "Page break on current row" in tabular dialog (bug 8180).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Enable spell-checking for the languages Esperanto, Farsi, Interlingua,
-  Korean and Latin (bug 8183).
-
-- Fixed problem that the example file knitr.lyx could not be opened.
-
-- Re-enable the compilation of the modernCV.lyx example file (bug 8064).
-
-- Fix on screen display of nested enumerations in Spanish and Galician.
-
-
-* LYXHTML
-
-- Fixed assertions on Windows for XHTML output (bug 8078).
-
-- Fix reconfiguration on Windows when the user directory is a UNC path
-  (bug 8098).
-
-- Index entries in XHTML output no longer sorted case sensitively.
-
-- Fixed some problems XHTML output had with empty paragraphs.
-
-- Fixed XHTML export of sub- and superscripts.
-
-- Don't output extra body tags with included files when generating
-  XHTML.
-
-- Do not include deleted text in the title of the XHTML output.
-
-
-* TEX2LYX
-
-- Fix import of \date (regression, bug 8104).
-
-- Fix missing backslash in import of \def ... \csname ... \endcsname (bug 8116).
-
-- Fix crash if TeX-files contain table logic bugs (bug 8204).
-
-
-* BUILD/INSTALLATION
-
-- Fix reconfiguration on Windows when the temporary directory used by
-  python contains non-ASCII characters.
-
-- Allow configuration with autoconf 2.69 and automake 1.12.
-
-- Fixed compilation with clang.
-
-- In debugging messages related to LyX actions, make sure that the
-  action and its arguments are correctly reported. 
-
-- Included the qt gif plugin in the Windows installer. This
-  enables the busy icon in the status bar.
-
-- Remove a temporary log file from the user directory after reconfigure.
-
-- Windows installer now detects Gnumeric which is needed for the
-  spreadsheet external inset template (bug 7870).
-
-- Windows installer now detects Inkscape on installation.
-
-- Fixed links in the Windows uninstaller.
-
