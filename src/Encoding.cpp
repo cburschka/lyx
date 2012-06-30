@@ -22,6 +22,7 @@
 #include "LyXRC.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -396,6 +397,44 @@ pair<docstring, bool> Encoding::latexChar(char_type c) const
 		return make_pair(
 			"\\ensuremath{" + it->second.mathcommand + '}', false);
 	return make_pair(it->second.textcommand, !it->second.textnotermination());
+}
+
+
+pair<docstring, docstring> Encoding::latexString(docstring const input, bool dryrun) const
+{
+	docstring result;
+	docstring uncodable;
+	bool terminate = false;
+	for (size_t n = 0; n < input.size(); ++n) {
+		try {
+			char_type const c = input[n];
+			pair<docstring, bool> latex_char = latexChar(c);
+			docstring const latex = latex_char.first;
+			if (terminate && !prefixIs(latex, '\\')
+			    && !prefixIs(latex, '{')
+			    && !prefixIs(latex, '}')) {
+					// Prevent eating of a following
+					// space or command corruption by
+					// following characters
+					if (latex == " ")
+						result += "{}";
+					else
+						result += " ";
+				}
+			result += latex;
+			terminate = latex_char.second;
+		} catch (EncodingException & /* e */) {
+			LYXERR0("Uncodable character in latexString!");
+			if (dryrun) {
+				result += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+				result += docstring(1, input[n]);
+				result += "'>";
+			} else
+				uncodable += input[n];
+		}
+	}
+	return make_pair(result, uncodable);
 }
 
 

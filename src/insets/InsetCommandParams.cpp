@@ -372,36 +372,16 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 	docstring result;
 	switch (handling) {
 	case ParamInfo::HANDLING_LATEXIFY: {
-		docstring uncodable;
-		for (size_t n = 0; n < command.size(); ++n) {
-			try {
-				char_type const c = command[n];
-				docstring const latex = runparams.encoding->latexChar(c).first;
-				result += latex;
-				if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
-					// Prevent eating of a following
-					// space or command corruption by
-					// following characters
-					result +=  "{}";
-				}
-			} catch (EncodingException & /* e */) {
-				LYXERR0("Uncodable character in command inset!");
-				if (runparams.dryrun) {
-					result += "<" + _("LyX Warning: ")
-						+ _("uncodable character") + " '";
-					result += docstring(1, command[n]);
-					result += "'>";
-				} else
-					uncodable += command[n];
-			}
-		}
-		if (!uncodable.empty()) {
+		pair<docstring, docstring> command_latexed =
+			runparams.encoding->latexString(command, runparams.dryrun);
+		result = command_latexed.first;
+		if (!command_latexed.second.empty()) {
 			// issue a warning about omitted characters
 			// FIXME: should be passed to the error dialog
 			frontend::Alert::warning(_("Uncodable characters"),
 				bformat(_("The following characters that are used in the inset %1$s are not\n"
 					  "representable in the current encoding and therefore have been omitted:\n%2$s."),
-					from_utf8(insetType()), uncodable));
+					from_utf8(insetType()), command_latexed.second));
 		}
 		break;
 	} 

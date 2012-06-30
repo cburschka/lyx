@@ -33,6 +33,7 @@
 
 #include "frontends/FontMetrics.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -276,20 +277,13 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 		return symb;
 
 	// we have to encode the string properly
-	docstring latex_symb;
-	for (size_t n = 0; n < symb.size(); ++n) {
-		try {
-			latex_symb += runparams.encoding->latexChar(symb[n]).first;
-		} catch (EncodingException & /* e */) {
-			if (runparams.dryrun) {
-				latex_symb += "<" + _("LyX Warning: ")
-					   + _("uncodable character") + " '";
-				latex_symb += docstring(1, symb[n]);
-				latex_symb += "'>";
-			}
-		}
-	}
-	return latex_symb;
+	pair<docstring, docstring> latex_symb =
+		runparams.encoding->latexString(symb, runparams.dryrun);
+	if (!latex_symb.second.empty())
+		LYXERR0("Omitting uncodable characters '"
+			<< latex_symb.second
+			<< "' in nomencl widest string!");
+	return latex_symb.first;
 }
 } // namespace anon
 

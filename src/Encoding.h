@@ -80,6 +80,19 @@ public:
 	 * the command needs to be terminated by {} or a space.
 	 */
 	std::pair<docstring, bool> latexChar(char_type c) const;
+	/**
+	 * Convert \p input to something that LaTeX can understand.
+	 * This is either the string itself (if it is representable
+	 * in this encoding), or a LaTeX macro.
+	 * If a character is not representable in this encoding, but no
+	 * LaTeX macro is known, a warning is given of lyxerr, and the
+	 * character is returned in the second string of the pair and
+	 * omitted in the first.
+	 * \p dryrun specifies whether the string is used within source
+	 * preview (which yields a special warning).
+	 */
+	std::pair<docstring, docstring> latexString(docstring const input,
+						    bool dryrun = false) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding

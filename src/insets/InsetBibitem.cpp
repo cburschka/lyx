@@ -291,20 +291,9 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 	}
 
 	if (!lbl.empty()) {
-		docstring latex_lbl;
-		for (size_t n = 0; n < lbl.size(); ++n) {
-			try {
-				latex_lbl += runparams.encoding->latexChar(lbl[n]).first;
-			} catch (EncodingException & /* e */) {
-				if (runparams.dryrun) {
-					latex_lbl += "<" + _("LyX Warning: ")
-						  + _("uncodable character") + " '";
-					latex_lbl += docstring(1, lbl[n]);
-					latex_lbl += "'>";
-				}
-			}
-		}
-		return latex_lbl;
+		pair<docstring, docstring> latex_lbl =
+			runparams.encoding->latexString(lbl, runparams.dryrun);
+		return latex_lbl.first;
 	}
 
 	return from_ascii("99");
