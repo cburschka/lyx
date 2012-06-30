@@ -681,6 +681,10 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	active_environments.push_back("document");
 	Context context(true, textclass);
 	stringstream ss;
+	// store the document language in the context to be able to handle the
+	// commands like \foreignlanguage and \textenglish etc.
+	context.font.language = preamble.language();
+	// parse the main text
 	parse_text(p, ss, FLAG_END, true, context);
 	if (Context::empty)
 		// Empty document body. LyX needs at least one paragraph.
