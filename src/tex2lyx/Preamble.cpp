@@ -44,12 +44,16 @@ Preamble preamble;
 
 namespace {
 
-// "chinese-simplified", "chinese-traditional", "japanese-cjk", "korean"
-// cannot be supported because it is impossible to determine the correct document
-// language if CJK is used.
+//add this to known_languages when updating to lyxformat 266:
+// "armenian" (needs special handling since not supported by standard babel)
+//add these to known_languages when updating to lyxformat 268:
+//"chinese-simplified", "chinese-traditional", "japanese", "korean"
+// Both changes require first that support for non-babel languages (CJK,
+// armtex) is added.
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
+ * not yet supported by LyX: kurmanji
  * please keep this in sync with known_coded_languages line by line!
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
@@ -102,7 +106,7 @@ const char * const polyglossia_languages[] = {
 "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
 "marathi", "spanish",
-"american", "ancient", "british", "monotonic",
+"american", "ancient", "australian", "british", "monotonic", "newzealand",
 "polytonic", 0};
 
 /**
@@ -120,7 +124,7 @@ const char * const coded_polyglossia_languages[] = {
 "lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
 "welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
 "marathi", "spanish",
-"american", "ancientgreek", "british", "greek",
+"american", "ancientgreek", "australian", "british", "greek", "newzealand",
 "polutonikogreek", 0};
 
 /// languages with english quotes (.lyx names)
