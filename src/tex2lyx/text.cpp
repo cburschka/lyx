@@ -118,41 +118,6 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "formatted", "eqref", 0 };
 
 /**
- * known polyglossia language names (including variants)
- */
-const char * const polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazil",
-"brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
-"lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
-"welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish",
-"american", "ancient", "australian", "british", "monotonic", "newzealand",
-"polytonic", 0};
-
-/**
- * the same as polyglossia_languages with .lyx names
- * please keep this in sync with polyglossia_languages line by line!
- */
-const char * const coded_polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazilian",
-"brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
-"lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
-"welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish",
-"american", "ancientgreek", "australian", "british", "greek", "newzealand",
-"polutonikogreek", 0};
-
-/**
  * supported CJK encodings
  */
 const char * const supported_CJK_encodings[] = {
@@ -1268,7 +1233,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 	}
 
-	else if (is_known(name, polyglossia_languages)) {
+	else if (is_known(name, preamble.polyglossia_languages)) {
 		// We must begin a new paragraph if not already done
 		if (! parent_context.atParagraphStart()) {
 			parent_context.check_end_layout(os);
@@ -1276,7 +1241,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		// save the language in the context so that it is
 		// handled by parse_text
-		parent_context.font.language = polyglossia2lyx(name);
+		parent_context.font.language = preamble.polyglossia2lyx(name);
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty
 		parent_context.extra_stuff.erase();
@@ -3573,7 +3538,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 		
 		else if (prefixIs(t.cs(), "text") 
-			 && is_known(t.cs().substr(4), polyglossia_languages)) {
+			 && is_known(t.cs().substr(4), preamble.polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string lang;
 			// We have to output the whole command if it has an option
@@ -3588,14 +3553,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (pos_var != string::npos && i == string::npos) {
 					string variant;
 					variant = langopts.substr(k + 1, langopts.length() - k - 2);
-					lang = polyglossia2lyx(variant);
+					lang = preamble.polyglossia2lyx(variant);
 					parse_text_attributes(p, os, FLAG_ITEM, outer,
 						                  context, "\\lang",
 						                  context.font.language, lang);
 				} else
 					handle_ert(os, t.asInput() + langopts, context);
 			} else {
-				lang = polyglossia2lyx(t.cs().substr(4, string::npos));
+				lang = preamble.polyglossia2lyx(t.cs().substr(4, string::npos));
 				parse_text_attributes(p, os, FLAG_ITEM, outer,
 					                  context, "\\lang",
 					                  context.font.language, lang);
