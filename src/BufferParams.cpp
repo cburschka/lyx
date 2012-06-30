@@ -1744,10 +1744,20 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		IndicesList::const_iterator iit = indiceslist().begin();
 		IndicesList::const_iterator iend = indiceslist().end();
 		for (; iit != iend; ++iit) {
+			pair<docstring, docstring> indexname_latex =
+				features.runparams().encoding->latexString(iit->index(), features.runparams().dryrun);
+			if (!indexname_latex.second.empty()) {
+				// issue a warning about omitted characters
+				// FIXME: should be passed to the error dialog
+				frontend::Alert::warning(_("Uncodable characters"),
+					bformat(_("The following characters that are used in an index name are not\n"
+							  "representable in the current encoding and therefore have been omitted:\n%1$s."),
+							indexname_latex.second));
+			}
 			lyxpreamble += "\\newindex[";
-			lyxpreamble += iit->index();
+			lyxpreamble += indexname_latex.first;
 			lyxpreamble += "]{";
-			lyxpreamble += iit->shortcut();
+			lyxpreamble += escape(iit->shortcut());
 			lyxpreamble += "}\n";
 		}
 	}

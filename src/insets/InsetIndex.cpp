@@ -65,7 +65,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
 	    && params_.index != "idx") {
 		os << "\\sindex[";
-		os << params_.index;
+        os << escape(params_.index);
 		os << "]{";
 	} else {
 		os << "\\index";
@@ -134,15 +134,11 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 			// the sorting part are representable in the current
 			// encoding. If not try the LaTeX macro which might
 			// or might not be a good choice, and issue a warning.
-			docstring spart2;
-			for (size_t n = 0; n < spart.size(); ++n) {
-				try {
-					spart2 += runparams.encoding->latexChar(spart[n]).first;
-				} catch (EncodingException & /* e */) {
+			pair<docstring, docstring> spart_latexed =
+				runparams.encoding->latexString(spart, runparams.dryrun);
+			if (!spart_latexed.second.empty())
 					LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
-				}
-			}
-			if (spart != spart2 && !runparams.dryrun) {
+			if (spart != spart_latexed.first && !runparams.dryrun) {
 				// FIXME: warning should be passed to the error dialog
 				frontend::Alert::warning(_("Index sorting failed"),
 				bformat(_("LyX's automatic index sorting algorithm faced\n"
@@ -152,7 +148,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 			}
 			// remove remaining \'s for the sorting part
 			docstring const ppart =
-				subst(spart2, from_ascii("\\"), docstring());
+				subst(spart_latexed.first, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
 		}
@@ -429,7 +425,8 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("type", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("type", ParamInfo::LATEX_OPTIONAL,
+                        ParamInfo::HANDLING_ESCAPE);
 		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;
