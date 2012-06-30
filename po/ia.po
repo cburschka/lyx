@@ -2,13 +2,13 @@
 # Copyright (C) 2011 LyX Developers
 # basate sur le version initial in italiano
 # g.sora <g.sora@tiscali.it>, 2011.
-# Giovanni Sora, 2011.
+# Giovanni Sora, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ia\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-06-25 08:28-0400\n"
-"PO-Revision-Date: 2011-12-05 10:51+0100\n"
+"PO-Revision-Date: 2012-06-28 13:29+0200\n"
 "Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua LyX Team <g.sora@tiscali.it>\n"
 "Language: ia\n"
@@ -1482,11 +1482,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
-msgstr "Usa directemente font OpenType e TrueType (il require XeTeX o LuaTeX)"
+msgstr ""
+"Usa fonts OpenType e TrueType con le pacchetto fontspec (il require XeTeX o "
+"LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -5129,7 +5130,6 @@ msgid "VFill"
 msgstr "Completamento vertical"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:32
-#, fuzzy
 msgid "F&ormat:"
 msgstr "&Formato:"
 
@@ -5138,23 +5138,20 @@ msgid "Select the output format"
 msgstr "Selige le formato de exito"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
-#, fuzzy
 msgid "Current Paragraph"
-msgstr "&Indenta le paragrapho"
+msgstr "Paragrapho currente"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:61
-#, fuzzy
 msgid "Complete Source"
 msgstr "Fonte complete"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:66
 msgid "Preamble Only"
-msgstr ""
+msgstr "Solmente preambulo"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:71
-#, fuzzy
 msgid "Body Only"
-msgstr "Solmente"
+msgstr "Solmente corpore"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:89
 msgid "Automatic update"
@@ -6688,15 +6685,13 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:241
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Sub-section \\arabic{section}.\\arabic{subsection}"
+msgstr "Sub-sub-section \\arabic{section}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:255
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Sub-section \\arabic{section}.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
 #: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
@@ -9200,18 +9195,16 @@ msgid "LandscapeSlide"
 msgstr "Diapositiva horizontal"
 
 #: lib/layouts/seminar.layout:26
-#, fuzzy
 msgid "Landscape Slide"
-msgstr "Diapositiva horizontal:"
+msgstr "Diapositiva horizontal"
 
 #: lib/layouts/seminar.layout:38 lib/layouts/seminar.layout:100
 msgid "PortraitSlide"
 msgstr "Diapositiva vertical"
 
 #: lib/layouts/seminar.layout:40
-#, fuzzy
 msgid "Portrait Slide"
-msgstr "Diapositiva vertical:"
+msgstr "Diapositiva vertical"
 
 #: lib/layouts/seminar.layout:45
 msgid "SlideHeading"
@@ -9226,16 +9219,14 @@ msgid "ListOfSlides"
 msgstr "Lista diapositivas"
 
 #: lib/layouts/seminar.layout:60
-#, fuzzy
 msgid "List of Slides"
-msgstr "[Lista diapositivas]"
+msgstr "Lista de diapositivas"
 
 #: lib/layouts/seminar.layout:67 lib/layouts/seminar.layout:126
 msgid "SlideContents"
 msgstr "Contentos de diapositiva"
 
 #: lib/layouts/seminar.layout:69
-#, fuzzy
 msgid "Slide Contents"
 msgstr "Contentos de diapositiva"
 
@@ -9244,7 +9235,6 @@ msgid "ProgressContents"
 msgstr "Contentos in progression"
 
 #: lib/layouts/seminar.layout:75
-#, fuzzy
 msgid "Progress Contents"
 msgstr "Contentos in progression"
 
@@ -10336,24 +10326,20 @@ msgid "Claim \\thetheorem."
 msgstr "Assertion  \\thetheorem."
 
 #: lib/layouts/theorems-case.inc:12
-#, fuzzy
 msgid "Case \\arabic{casei}."
-msgstr "Caso \\arabic{case}"
+msgstr "Caso \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
-#, fuzzy
 msgid "Case \\roman{caseii}."
-msgstr "Caso \\arabic{case}"
+msgstr "Caso \\roman{caseii}"
 
 #: lib/layouts/theorems-case.inc:20
-#, fuzzy
 msgid "Case \\alph{caseiii}."
-msgstr "Caso \\thecase."
+msgstr "Caso \\alph{caseiii}"
 
 #: lib/layouts/theorems-case.inc:24
-#, fuzzy
 msgid "Case \\arabic{caseiv}."
-msgstr "Caso \\arabic{case}"
+msgstr "Caso \\arabic{caseiv}"
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -12305,9 +12291,8 @@ msgid "Apply Last Text Style|A"
 msgstr "Applica ultime stilo de texto|A"
 
 #: lib/ui/stdcontext.inc:314
-#, fuzzy
 msgid "Text Style|x"
-msgstr "Stilo de texto|S"
+msgstr "Stilo de texto|x"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:119
 msgid "Paragraph Settings...|P"
@@ -12547,9 +12532,8 @@ msgid "Select Section|S"
 msgstr "Selige section|S"
 
 #: lib/ui/stdcontext.inc:596
-#, fuzzy
 msgid "Wrap by Preview|y"
-msgstr "Inserta in vista preliminar|a"
+msgstr "Inveloppa per vista preliminar|y"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -16590,7 +16574,7 @@ msgstr "Texto plan, uni lineas"
 
 #: lib/configure.py:600
 msgid "Info (Beamer)"
-msgstr ""
+msgstr "Info (Beamer)"
 
 #: lib/configure.py:603
 msgid "Gnumeric spreadsheet"
@@ -17217,14 +17201,12 @@ msgid "Preview source code"
 msgstr "Vista preliminar del codice fonte"
 
 #: src/Buffer.cpp:3238
-#, fuzzy
 msgid "Preview preamble"
-msgstr "Vista preliminar preste"
+msgstr "Preambulo de vista preliminar "
 
 #: src/Buffer.cpp:3240
-#, fuzzy
 msgid "Preview body"
-msgstr "Vista preliminar preste"
+msgstr "Corpore de vista preliminar"
 
 #: src/Buffer.cpp:3353
 #, c-format
@@ -24129,7 +24111,7 @@ msgid "Directory not found"
 msgstr "Directorio non trovate"
 
 #: src/support/Systemcall.cpp:374
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command\n"
 "%1$s\n"
@@ -24137,23 +24119,23 @@ msgid ""
 "\n"
 "Do you want to stop it?"
 msgstr ""
-"Le documento %1$s ancora non ha essite salveguardate.\n"
+"Le commando\n"
+"%1$s\n"
+"non ha ancora completate.\n"
 "\n"
-"Tu vole salveguardar le documento?"
+"Tu vole stoppar lo?"
 
 #: src/support/Systemcall.cpp:376
-#, fuzzy
 msgid "Stop command?"
-msgstr "Commando de data"
+msgstr "Stoppa commando?"
 
 #: src/support/Systemcall.cpp:377
-#, fuzzy
 msgid "&Stop it"
-msgstr "Fixa linea superior"
+msgstr "&Stoppa lo"
 
 #: src/support/Systemcall.cpp:377
 msgid "Let it &run"
-msgstr ""
+msgstr "Lassa lo executa&r"
 
 #: src/support/debug.cpp:41
 msgid "No debugging messages"
