@@ -39,7 +39,7 @@ public:
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
-	std::string language() const { return h_language; } 
+	std::string language() const { return h_language; }
 	///
 	std::string use_indices() const { return h_use_indices; }
 	///
