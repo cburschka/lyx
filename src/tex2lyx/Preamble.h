@@ -43,6 +43,8 @@ public:
 	///
 	std::string use_indices() const { return h_use_indices; }
 	///
+	std::string polyglossia2lyx(std::string const & language);
+	///
 	bool indentParagraphs() const;
 	///
 	bool isPackageUsed(std::string const & package) const;
@@ -66,12 +68,16 @@ public:
 	/// Get author named \p name (must be registered first)
 	Author const & getAuthor(std::string const & name) const;
 
-
 	/// Parses the LaTeX preamble into internal data
 	void parse(Parser & p, std::string const & forceclass,
 	           TeX2LyXDocClass & tc);
 	/// Writes the LyX file header from internal data
 	bool writeLyXHeader(std::ostream & os, bool subdoc);
+
+	/// known polyglossia language names (including variants)
+	static const char * const polyglossia_languages[];
+	/// the same as polyglossia_languages with .lyx names
+	static const char * const coded_polyglossia_languages[];
 
 private:
 	///

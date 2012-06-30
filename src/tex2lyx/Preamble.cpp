@@ -88,41 +88,6 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
 0};
 
-/**
- * known polyglossia language names (including variants)
- */
-const char * const polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazil",
-"brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
-"lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
-"welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish",
-"american", "ancient", "british", "monotonic",
-"polytonic", 0};
-
-/**
- * the same as polyglossia_languages with .lyx names
- * please keep this in sync with polyglossia_languages line by line!
- */
-const char * const coded_polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazilian",
-"brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
-"lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
-"welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish",
-"american", "ancientgreek", "british", "greek",
-"polutonikogreek", 0};
-
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "bahasa",
 "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
@@ -306,6 +271,40 @@ string process_keyval_opt(vector<string> & options, string name)
 }
 
 } // anonymous namespace
+
+
+/**
+ * known polyglossia language names (including variants)
+ */
+const char * const Preamble::polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazil",
+"brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", "french",
+"lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
+"marathi", "spanish",
+"american", "british", "monotonic", "polytonic", 0};
+
+/**
+ * the same as polyglossia_languages with .lyx names
+ * please keep this in sync with polyglossia_languages line by line!
+ */
+const char * const Preamble::coded_polyglossia_languages[] = {
+"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
+"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
+"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
+"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
+"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
+"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "urdu", "brazilian",
+"brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton", "french",
+"lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar", "slovak",
+"welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
+"marathi", "spanish",
+"american", "british", "greek", "polutonikogreek", 0};
 
 
 bool Preamble::indentParagraphs() const
@@ -1587,7 +1586,7 @@ string babel2lyx(string const & language)
 }
 
 
-string polyglossia2lyx(string const & language)
+string Preamble::polyglossia2lyx(string const & language)
 {
 	char const * const * where = is_known(language, polyglossia_languages);
 	if (where)
