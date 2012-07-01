@@ -65,7 +65,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
 	    && params_.index != "idx") {
 		os << "\\sindex[";
-	os << escape(params_.index);
+		os << escape(params_.index);
 		os << "]{";
 	} else {
 		os << "\\index";
