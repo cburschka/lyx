@@ -684,6 +684,7 @@ public:
 class KeyChecker : public QObject {
 private:
 	bool pressed_;
+	bool started_;
 public:
 	KeyChecker() {
 		pressed_ = false;
@@ -691,13 +692,18 @@ public:
 	void start() {
 		QCoreApplication::instance()->installEventFilter(this);
 		pressed_ = false;
+		started_ = true;
 	}
 	void stop() {
 		QCoreApplication::instance()->removeEventFilter(this);
+		started_ = false;
 	}
 	bool pressed() {
 		QCoreApplication::processEvents();
 		return pressed_;
+	}
+	bool started() const {
+		return started_;
 	}
 	bool eventFilter(QObject *obj, QEvent *event) {
 		LYXERR(Debug::ACTION, "Event Type: " << event->type());
@@ -2676,6 +2682,11 @@ bool GuiApplication::longOperationCancelled() {
 
 void GuiApplication::stopLongOperation() {
 	d->key_checker_.stop();
+}
+
+
+bool GuiApplication::longOperationStarted() {
+	return d->key_checker_.started();
 }
 
 

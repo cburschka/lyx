@@ -92,6 +92,11 @@ int doPrompt(docstring const & title0, docstring const & question,
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
+	/// Long operation in progress prevents user from Ok-ing the error dialog
+	bool long_op = theApp()->longOperationStarted();
+	if (long_op)
+		theApp()->stopLongOperation();
+
 	// For some reason, sometimes Qt uses a hourglass or watch cursor when
 	// displaying the alert. Hence, we ask for the standard cursor shape.
 	qApp->setOverrideCursor(Qt::ArrowCursor);
@@ -115,6 +120,9 @@ int doPrompt(docstring const & title0, docstring const & question,
 	int res = msg_box.exec();
 
 	qApp->restoreOverrideCursor();
+
+	if (long_op)
+		theApp()->startLongOperation();
 
 	// Qt bug: can return -1 on cancel or WM close, despite the docs.
 	if (res == -1)
@@ -197,6 +205,11 @@ void doError(docstring const & title0, docstring const & message)
 		return;
 	}
 
+	/// Long operation in progress prevents user from Ok-ing the error dialog
+	bool long_op = theApp()->longOperationStarted();
+	if (long_op)
+		theApp()->stopLongOperation();
+
 	// Don't use a hourglass cursor while displaying the alert
 	qApp->setOverrideCursor(Qt::ArrowCursor);
 
@@ -205,6 +218,9 @@ void doError(docstring const & title0, docstring const & message)
 		toqstr(message));
 
 	qApp->restoreOverrideCursor();
+
+	if (long_op)
+		theApp()->startLongOperation();
 }
 
 void error(docstring const & title0, docstring const & message)

@@ -246,6 +246,8 @@ public:
 	virtual bool longOperationCancelled() = 0;
 	/// Stop the long operation mode (i.e., release the GUI)
 	virtual void stopLongOperation() = 0;
+	/// A started long operation is still in progress ?
+	virtual bool longOperationStarted() = 0;
 
 };
 

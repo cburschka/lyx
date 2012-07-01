@@ -175,7 +175,8 @@ public:
 	bool longOperationCancelled();
 	/// Stop the long operation mode (i.e., release the GUI)
 	void stopLongOperation();
-
+	/// A started long operation is still in progress ?
+	bool longOperationStarted();
 private Q_SLOTS:
 	///
 	void execBatchCommands();
