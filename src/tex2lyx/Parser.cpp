@@ -402,9 +402,9 @@ Parser::Arg Parser::getFullArg(char left, char right)
 		// for \verb a single '\' is allowed no matter what the delimiter is
 		// for example "\verb+\+" (reported as bug #4468)
 		// To support this, we allow single '\' if it is the only character
-		// within the delimiters
+		// within equal delimiters
 		if (next_token().cat() == catEscape)
-			if (next_token().character() == c)
+			if (next_token().character() == right && right == left)
 				result += '\\';
 		while ((c = getChar()) != right && good()) {
 			// Ignore comments
