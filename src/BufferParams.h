@@ -200,6 +200,9 @@ public:
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
 
+	/// translate quote style string to enum value
+	InsetQuotes::QuoteLanguage getQuoteStyle(std::string const qs) const;
+
 	/* these are for the PaperLayout */
 	/// the papersize
 	PAPER_SIZE papersize;

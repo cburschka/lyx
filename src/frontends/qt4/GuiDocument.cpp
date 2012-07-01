@@ -1097,12 +1097,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 	encodinglist.sort();
 	langModule->encodingCO->addItems(encodinglist);
 
-	langModule->quoteStyleCO->addItem(qt_("``text''"));
-	langModule->quoteStyleCO->addItem(qt_("''text''"));
-	langModule->quoteStyleCO->addItem(qt_(",,text``"));
-	langModule->quoteStyleCO->addItem(qt_(",,text''"));
-	langModule->quoteStyleCO->addItem(qt_("<<text>>"));
-	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
+	langModule->quoteStyleCO->addItem(
+		qt_("``text''"),InsetQuotes::EnglishQuotes);
+	langModule->quoteStyleCO->addItem(
+		qt_("''text''"), InsetQuotes::SwedishQuotes);
+	langModule->quoteStyleCO->addItem
+		(qt_(",,text``"), InsetQuotes::GermanQuotes);
+	langModule->quoteStyleCO->addItem(
+		qt_(",,text''"), InsetQuotes::PolishQuotes);
+	langModule->quoteStyleCO->addItem(
+		qt_("<<text>>"), InsetQuotes::FrenchQuotes);
+	langModule->quoteStyleCO->addItem(
+		qt_(">>text<<"), InsetQuotes::DanishQuotes);
 
 	langModule->languagePackageCO->addItem(
 		qt_("Default"), toqstr("default"));
@@ -1770,6 +1776,12 @@ void GuiDocument::languageChanged(int i)
 	}
 	else
 		fontModule->osFontsCB->setEnabled(true);
+
+	// set appropriate quotation mark style
+	if (!lang->quoteStyle().empty()) {
+		langModule->quoteStyleCO->setCurrentIndex(
+			bp_.getQuoteStyle(lang->quoteStyle()));
+	}
 }
 
 
@@ -2450,28 +2462,8 @@ void GuiDocument::applyView()
 		}
 	}
 
-	InsetQuotes::QuoteLanguage lga = InsetQuotes::EnglishQuotes;
-	switch (langModule->quoteStyleCO->currentIndex()) {
-	case 0:
-		lga = InsetQuotes::EnglishQuotes;
-		break;
-	case 1:
-		lga = InsetQuotes::SwedishQuotes;
-		break;
-	case 2:
-		lga = InsetQuotes::GermanQuotes;
-		break;
-	case 3:
-		lga = InsetQuotes::PolishQuotes;
-		break;
-	case 4:
-		lga = InsetQuotes::FrenchQuotes;
-		break;
-	case 5:
-		lga = InsetQuotes::DanishQuotes;
-		break;
-	}
-	bp_.quotes_language = lga;
+	bp_.quotes_language = (InsetQuotes::QuoteLanguage) langModule->quoteStyleCO->itemData(
+		langModule->quoteStyleCO->currentIndex()).toInt();
 
 	QString const lang = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();

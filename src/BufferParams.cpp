@@ -2257,6 +2257,12 @@ Font const BufferParams::getFont() const
 }
 
 
+InsetQuotes::QuoteLanguage BufferParams::getQuoteStyle(string const qs) const
+{
+	return quoteslangtranslator().find(qs);
+}
+
+
 bool BufferParams::isLatex() const
 {
 	return documentClass().outputType() == LATEX;
