@@ -1349,7 +1349,6 @@ void GuiWorkArea::setReadOnly(bool read_only)
 		return;
 	read_only_ = read_only;
 	updateWindowTitle();
-	lyx_view_->updateDialogs();
 }
 
 
