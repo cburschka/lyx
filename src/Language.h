@@ -40,6 +40,8 @@ public:
 	std::string const & polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
 	std::string const & polyglossiaOpts() const { return polyglossia_opts_; }
+	/// quotation marks style
+	std::string const & quoteStyle() const { return quote_style_; }
 	/// requirement (package, function)
 	std::string const & requires() const { return requires_; }
 	/// translatable GUI name
@@ -94,6 +96,8 @@ private:
 	std::string polyglossia_name_;
 	///
 	std::string polyglossia_opts_;
+	///
+	std::string quote_style_;
 	///
 	std::string requires_;
 	///

@@ -10,6 +10,7 @@
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
 #	Encoding           <encoding>
+#	QuoteStyle         <quotation mark style>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
 #	AsBabelOptions     <true|false>
@@ -80,6 +81,7 @@ End
 Language afrikaans
 	GuiName          "Afrikaans"
 	BabelName        afrikaans
+	QuoteStyle       polish
 	Encoding         iso8859-15
 	LangCode         af_ZA
 End
@@ -88,6 +90,7 @@ Language albanian
 	GuiName          "Albanian"
 	BabelName        albanian
 	PolyglossiaName  albanian
+	QuoteStyle       french
 	Encoding         iso8859-2
 	LangCode         sq_AL
 End
@@ -97,6 +100,7 @@ Language american
 	BabelName        american
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=american"
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_US
 End
@@ -106,6 +110,7 @@ Language ancientgreek
 	GuiName          "Greek (ancient)"
 	PolyglossiaName  greek
 	PolyglossiaOpts  variant=ancient
+	QuoteStyle        french
 	Encoding         iso8859-7
 	LangCode         grc_GR
 End
@@ -115,6 +120,7 @@ End
 Language arabic_arabtex
 	GuiName          "Arabic (ArabTeX)"
 	BabelName        arabtex
+	QuoteStyle       french
 	Encoding         cp1256
 	RTL              true
 	LangCode         ar_SA
@@ -125,6 +131,7 @@ Language arabic_arabi
 	GuiName          "Arabic (Arabi)"
 	BabelName        arabic
 	PolyglossiaName  arabic
+	QuoteStyle       french
 	Encoding         cp1256
 	RTL              true
 	LangCode         ar_SA
@@ -134,6 +141,7 @@ End
 Language armenian
 	GuiName          "Armenian"
 	PolyglossiaName  armenian
+	QuoteStyle       french
 	Encoding         utf8
 	LangCode         hy_AM
 End
@@ -144,6 +152,7 @@ Language australian
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=australian"
 	Encoding         iso8859-15
+	QuoteStyle       english
 	LangCode         en_AU
 End
 
@@ -151,6 +160,7 @@ End
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
+	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_AT
 End
@@ -159,6 +169,7 @@ End
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
+	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_AT
 End
@@ -167,6 +178,7 @@ Language bahasa
 	GuiName          "Indonesian"
 	BabelName        bahasa
 	PolyglossiaName  bahasai
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         id_ID
 End
@@ -175,6 +187,7 @@ Language bahasam
 	GuiName          "Malay"
 	BabelName        bahasam
 	PolyglossiaName  bahasam
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         ms_MY
 End
@@ -183,6 +196,7 @@ Language basque
 	GuiName          "Basque"
 	BabelName        basque
 	PolyglossiaName  basque
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         eu_ES
 End
@@ -191,6 +205,7 @@ End
 Language belarusian
 	GuiName          "Belarusian"
 	BabelName        belarusian
+	QuoteStyle       french
 	Encoding         cp1251
 	LangCode         be_BY
 End
@@ -199,6 +214,7 @@ Language brazilian
 	GuiName          "Portuguese (Brazil)"
 	BabelName        brazil
 	PolyglossiaName  brazil
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         pt_BR
 End
@@ -207,6 +223,7 @@ Language breton
 	GuiName          "Breton"
 	BabelName        breton
 	PolyglossiaName  breton
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         br_FR
 End
@@ -216,6 +233,7 @@ Language british
 	BabelName        british
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=british"
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_GB
 End
@@ -224,6 +242,7 @@ Language bulgarian
 	GuiName          "Bulgarian"
 	BabelName        bulgarian
 	PolyglossiaName  bulgarian
+	QuoteStyle       german
 	Encoding         cp1251
 	LangCode         bg_BG
 End
@@ -234,6 +253,7 @@ Language canadian
 	BabelName        canadian
 #	PolyglossiaName  english
 #	PolyglossiaOpts  "variant=canadian"
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_CA
 End
@@ -244,6 +264,7 @@ Language canadien
 	BabelName        canadien
 #	PolyglossiaName  french
 #	PolyglossiaOpts  "variant=canadien"
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         fr_CA
 End
@@ -253,6 +274,7 @@ Language catalan
 	BabelName        catalan
 	PolyglossiaName  catalan
 	PolyglossiaOpts  "babelshorthands=true"
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         ca_ES
 End
@@ -261,6 +283,7 @@ End
 Language chinese-simplified
 	GuiName          "Chinese (simplified)"
 	Encoding         euc-cn
+	QuoteStyle       english
 	LangCode         zh_CN
 	Requires         CJK
 End
@@ -268,6 +291,7 @@ End
 # uses CJK package
 Language chinese-traditional
 	GuiName         "Chinese (traditional)"
+	QuoteStyle       english
 	Encoding        utf8-cjk
 	LangCode        zh_CN
 	Requires         CJK
@@ -285,6 +309,7 @@ Language croatian
 	GuiName          "Croatian"
 	BabelName        croatian
 	PolyglossiaName  croatian
+	QuoteStyle       polish
 	Encoding         iso8859-2
 	LangCode         hr_HR
 End
@@ -293,6 +318,7 @@ Language czech
 	GuiName          "Czech"
 	BabelName        czech
 	PolyglossiaName  czech
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         cs_CZ
 End
@@ -301,6 +327,7 @@ Language danish
 	GuiName          "Danish"
 	BabelName        danish
 	PolyglossiaName  danish
+	QuoteStyle       danish
 	Encoding         iso8859-15
 	LangCode         da_DK
 End
@@ -318,6 +345,7 @@ Language dutch
 	BabelName        dutch
 	PolyglossiaName  dutch
 	PolyglossiaOpts  "babelshorthands=true"
+	QuoteStyle       polish
 	Encoding         iso8859-15
 	LangCode         nl_NL
 End
@@ -326,6 +354,7 @@ Language english
 	GuiName          "English"
 	BabelName        english
 	PolyglossiaName  english
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_US
 End
@@ -336,6 +365,7 @@ Language esperanto
 	GuiName          "Esperanto"
 	BabelName        esperanto
 	PolyglossiaName  esperanto
+	QuoteStyle       english
 	Encoding         iso8859-3
 	LangCode         eo_EO
 End
@@ -344,6 +374,7 @@ Language estonian
 	GuiName          "Estonian"
 	BabelName        estonian
 	PolyglossiaName  estonian
+	QuoteStyle       polish
 	Encoding         iso8859-15
 	LangCode         et_EE
 End
@@ -367,6 +398,7 @@ Language finnish
 	GuiName          "Finnish"
 	BabelName        finnish
 	PolyglossiaName  finnish
+	QuoteStyle       swedish
 	Encoding         iso8859-15
 	LangCode         fi_FI
 End
@@ -376,6 +408,7 @@ Language french
 	GuiName          "French"
 	BabelName        french
 	PolyglossiaName  french
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         fr_FR
 	PostBabelPreamble
@@ -390,6 +423,7 @@ Language galician
 	GuiName          "Galician"
 	BabelName        galician
 	PolyglossiaName  galician
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         gl_ES
 End
@@ -400,6 +434,7 @@ Language german
 	BabelName        german
 	PolyglossiaName  german
 	PolyglossiaOpts  "spelling=old,babelshorthands=true"
+	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de
 	LangVariety      alt
@@ -410,6 +445,7 @@ Language ngerman
 	BabelName        ngerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "babelshorthands=true"
+	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_DE
 End
@@ -421,6 +457,7 @@ Language german-ch
 	BabelName        ngerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "babelshorthands=true"
+	QuoteStyle       danish
 	Encoding         iso8859-15
 	LangCode         de_CH
 End
@@ -429,6 +466,7 @@ Language greek
 	GuiName           "Greek"
 	BabelName         greek
 	PolyglossiaName   greek
+	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
 	LangCode          el_GR
@@ -439,6 +477,7 @@ Language polutonikogreek
 	BabelName         polutonikogreek
 	PolyglossiaName   greek
 	PolyglossiaOpts   "variant=polytonic"
+	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
 	LangCode          el_GR
@@ -449,6 +488,7 @@ Language hebrew
 	BabelName         hebrew
 	PolyglossiaName   hebrew
 	Encoding          cp1255
+	QuoteStyle        english
 	InternalEncoding  true
 	RTL               true
 	LangCode          he_IL
@@ -477,6 +517,7 @@ Language icelandic
 	GuiName          "Icelandic"
 	BabelName        icelandic
 	PolyglossiaName  icelandic
+	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         is_IS
 End
@@ -495,6 +536,7 @@ Language irish
 	GuiName          "Irish"
 	BabelName        irish
 	PolyglossiaName  irish
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         ga_IE
 End
@@ -503,6 +545,7 @@ Language italian
 	GuiName          "Italian"
 	BabelName        italian
 	PolyglossiaName  italian
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         it_IT
 End
@@ -538,6 +581,7 @@ End
 Language korean
 	GuiName         "Korean"
 	Encoding        euc-kr
+	QuoteStyle      english
 	LangCode        ko_KR
 	Requires        CJK
 End
@@ -575,6 +619,7 @@ Language latvian
 	GuiName          "Latvian"
 	BabelName        latvian
 	PolyglossiaName  latvian
+	QuoteStyle       danish
 	Encoding         iso8859-4
 	LangCode         lv_LV
 	AsBabelOptions   true
@@ -586,6 +631,7 @@ Language lithuanian
 	GuiName          "Lithuanian"
 	BabelName        lithuanian
 	PolyglossiaName  lithuanian
+	QuoteStyle       german
 	Encoding         iso8859-13
 	LangCode         lt_LT
 	AsBabelOptions   true
@@ -595,6 +641,7 @@ Language lowersorbian
 	GuiName          "Lower Sorbian"
 	BabelName        lowersorbian
 	PolyglossiaName  lsorbian
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         dsb_DE
 End
@@ -603,6 +650,7 @@ Language magyar
 	GuiName          "Hungarian"
 	BabelName        magyar
 	PolyglossiaName  magyar
+	QuoteStyle       polish
 	Encoding         iso8859-2
 	LangCode         hu_HU
 End
@@ -631,6 +679,7 @@ Language newzealand
 	BabelName        newzealand
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=newzealand"
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_NZ
 End
@@ -639,6 +688,7 @@ Language norsk
 	GuiName          "Norwegian (Bokmaal)"
 	BabelName        norsk
 	PolyglossiaName  norsk
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         nb_NO
 End
@@ -647,6 +697,7 @@ Language nynorsk
 	GuiName          "Norwegian (Nynorsk)"
 	BabelName        nynorsk
 	PolyglossiaName  nynorsk
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         nn_NO
 End
@@ -655,6 +706,7 @@ End
 Language occitan
 	GuiName          "Occitan"
 	PolyglossiaName  occitan
+	QuoteStyle       french
 	Encoding         utf8
 	LangCode         oc_FR
 End
@@ -673,6 +725,7 @@ Language polish
 	GuiName          "Polish"
 	BabelName        polish
 	PolyglossiaName  polish
+	QuoteStyle       polish
 	Encoding         iso8859-2
 	LangCode         pl_PL
 End
@@ -681,6 +734,7 @@ Language portuguese
 	GuiName          "Portuguese"
 	BabelName        portuges
 	PolyglossiaName  portuges
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         pt_PT
 End
@@ -689,6 +743,7 @@ Language romanian
 	GuiName          "Romanian"
 	BabelName        romanian
 	PolyglossiaName  romanian
+	QuoteStyle       polish
 	Encoding         iso8859-2
 	LangCode         ro_RO
 End
@@ -697,6 +752,7 @@ Language russian
 	GuiName          "Russian"
 	BabelName        russian
 	PolyglossiaName  russian
+	QuoteStyle       french
 	Encoding         koi8
 	LangCode         ru_RU
 End
@@ -721,6 +777,7 @@ Language scottish
 	GuiName          "Scottish"
 	BabelName        scottish
 	PolyglossiaName  scottish
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         gd_GB
 End
@@ -729,6 +786,7 @@ Language serbian
 	GuiName          "Serbian"
 	BabelName        serbian
 	PolyglossiaName  serbian
+	QuoteStyle       german
 	Encoding         iso8859-5
 	LangCode         sr_RS
 End
@@ -738,6 +796,7 @@ Language serbian-latin
 	BabelName        serbian
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=latin"
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         sr_RS
 End
@@ -746,6 +805,7 @@ Language slovak
 	GuiName          "Slovak"
 	BabelName        slovak
 	PolyglossiaName  slovak
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         sk_SK
 End
@@ -754,6 +814,7 @@ Language slovene
 	GuiName          "Slovene"
 	BabelName        slovene
 	PolyglossiaName  slovenian
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         sl_SI
 End
@@ -762,6 +823,7 @@ Language spanish
 	GuiName          "Spanish"
 	BabelName        spanish
 	PolyglossiaName  spanish
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         es_ES
 	PostBabelPreamble
@@ -774,6 +836,7 @@ Language spanish-mexico
 	GuiName          "Spanish (Mexico)"
 	BabelName        spanish
 	PolyglossiaName  spanish
+	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         es_MX
 	PostBabelPreamble
@@ -785,6 +848,7 @@ Language swedish
 	GuiName          "Swedish"
 	BabelName        swedish
 	PolyglossiaName  swedish
+	QuoteStyle       swedish
 	Encoding         iso8859-15
 	LangCode         sv_SE
 End
@@ -817,6 +881,7 @@ Language thai
 	GuiName          "Thai"
 	BabelName        thai
 	PolyglossiaName  thai
+	QuoteStyle       english
 	Encoding         tis620-0
 	LangCode         th_TH
 	PostBabelPreamble
@@ -828,6 +893,7 @@ Language turkish
 	GuiName          "Turkish"
 	BabelName        turkish
 	PolyglossiaName  turkish
+	QuoteStyle       french
 	Encoding         iso8859-9
 	LangCode         tr_TR
 	PostBabelPreamble
@@ -841,6 +907,7 @@ Language turkmen
 	GuiName          "Turkmen"
 	BabelName        turkmen
 	PolyglossiaName  turkmen
+	QuoteStyle       french
 	Encoding         utf8
 	LangCode         tk_TM
 	AsBabelOptions   true
@@ -850,6 +917,7 @@ Language ukrainian
 	GuiName          "Ukrainian"
 	BabelName        ukrainian
 	PolyglossiaName  ukrainian
+	QuoteStyle       french
 	Encoding         koi8-u
 	LangCode         uk_UA
 End
@@ -858,6 +926,7 @@ Language uppersorbian
 	GuiName          "Upper Sorbian"
 	BabelName        uppersorbian
 	PolyglossiaName  usorbian
+	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         hsb_DE
 End
@@ -877,6 +946,7 @@ Language vietnamese
 	GuiName          "Vietnamese"
 	BabelName        vietnam
 	PolyglossiaName  vietnamese
+	QuoteStyle       french
 	Encoding         utf8
 	LangCode         vi_VN
 	AsBabelOptions   true
@@ -887,6 +957,7 @@ Language welsh
 	GuiName          "Welsh"
 	BabelName        welsh
 	PolyglossiaName  welsh
+	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         cy_GB
 End
