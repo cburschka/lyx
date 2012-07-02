@@ -23,6 +23,7 @@ Section -InstallData
   
   # Start Menu shortcut
   # There is only one shortcut to the application, so it should be in the main group
+  SetOutPath "$INSTDIR\bin" # this is the folder in which the shortcut is executed
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${APP_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
   # create desktop icon
@@ -59,7 +60,7 @@ Section -Configure
   # Associate .lyx files with LyX for current user of all users
 
   ${if} $CreateFileAssociations == "true"
-   WriteRegStr HKLM "${APP_DIR_REGKEY}" "" "$INSTDIR\${APP_RUN}"
+   WriteRegStr SHCTX "${APP_DIR_REGKEY}" "" "$INSTDIR\${APP_RUN}"
   ${endif}
 
   # Write information about file type

@@ -107,7 +107,7 @@ SectionEnd
 
 #---------------------------------
 # user preferences
-Section "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
+Section /o "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
 
  # remove LyX's config files
  StrCpy $AppSubfolder ${APP_DIR_USERDATA}
@@ -117,7 +117,7 @@ SectionEnd
 
 #---------------------------------
 # MiKTeX
-Section "un.MiKTeX" un.SecUnMiKTeX
+Section /o "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $LaTeXInstalled == "MiKTeX" # only uninstall MiKTeX when it was installed together with LyX 
   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"

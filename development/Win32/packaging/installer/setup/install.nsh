@@ -176,7 +176,7 @@ SectionEnd
 !macroend
 
 #--------------------------------
-# Extenral components
+# External components
 
 #Var PathAllUsers
 #Var PathCurrentUser
