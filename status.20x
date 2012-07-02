@@ -67,6 +67,9 @@ What's new
 - Export correct language change commands if document contains different
   CJK languages (bug 8215).
 
+- Fix bug that Elsevier docments became uncompilable when using refstlye for
+  cross-references.
+
 
 * USER INTERFACE
 
@@ -90,7 +93,7 @@ What's new
 
 * TEX2LYX
 
-- Fix bug that language change was not recognized (bug 8210).
+- Fix bug that language change commands were not always recognized (bug 8210).
 
 
 * ADVANCED FIND AND REPLACE
