@@ -46,32 +46,19 @@ fi
 cd ../../;
 LYXROOT=$(pwd);
 
+# We need to make sure that we have a tree without any unstaged 
+# commits. Otherwise commit will fail.
+if git status --porcelain -uno | grep -q .; then
+  echo "Your git tree is not clean. Please correct the situation and re-run.";
+  echo;
+  git status --porcelain -uno;
+  exit 10;
+fi
+
 # Are we in trunk or branch?
 TRUNK="TRUE";
 if ls status.* 2>/dev/null | grep -q status; then 
   TRUNK="";
-fi
-
-# Git or SVN?
-VCS="";
-if svn log -l 5 >/dev/null 2>&1; then
-  VCS="svn";
-elif git diff >/dev/null 2>&1; then
-  VCS="git";
-  # We need to make sure that we have a tree without any unpushed 
-  # commits. Otherwise git svn dcommit would commit more than we
-  # want.
-  if git status | grep -Pq 'Your branch is (?:ahead|behind)'; then
-    echo "Your git tree is not clean. Please correct the situation and re-run.";
-    echo;
-    git status;
-    exit 10;
-  fi
-fi
-
-if [ -z "$VCS" ]; then 
-  echo "Unable to determine version control system!";
-  exit 1;
 fi
 
 # Sanity check
@@ -103,35 +90,40 @@ fi
 
 if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
   echo No string differences found.
-  # So we will revert the changes to po files, which are probably
-  # just dates and such.
-  if [ "$VCS" = "svn" ]; then
-    svn revert *.po;
-  else
-    git checkout *.po;
-  fi
+  git checkout *.po;
   exit 0;
 fi
 
 # So there are differences.
-
 if [ -z "$COMMIT" ]; then
   echo "Differences found!";
-  diff -w $I18NFILE $FARM/$I18NFILE | less;
-  if [ "$VCS" = "svn" ]; then
-    svn revert *.po;
-  else
-    git checkout *.po;
-  fi
+  diff -wu $FARM/$I18NFILE $I18NFILE | less;
+  git checkout *.po;
   exit 0;
 fi
 
-if [ "$VCS" = "svn" ]; then
-  $DEBUG svn ci *.po;
-else
-  $DEBUG git commit *.po -m "Remerge strings.";
-  $DEBUG git svn dcommit;
+$DEBUG git commit *.po -m "Remerge strings.";
+COMMITS=$(git push -n 2>&1 | tail -n 1 | grep -v "Everything" | sed -e 's/^ *//' -e 's/ .*//');
+
+if [ -z "$COMMITS" ]; then
+  echo "We seem to be missing the commit of the po files!";
+  exit 1;
 fi
+
+git log $COMMITS;
+
+#Do we want to go ahead?
+echo
+echo "Do you want to push these commits?"
+select answer in Yes No; do
+  if [ "$answer" != "Yes" ]; then
+    echo "You will need to push that commit manually, then.";
+    break;
+  else 
+    git push;
+    break;
+  fi
+done
 
 echo
 
@@ -150,8 +142,3 @@ mv $LYXROOT/po/$I18NFILE .;
 echo Committing...;
 $DEBUG svn commit -m "* $I18NFILE: update stats" $I18NFILE;
 
-if [ -n "$NOTSAFE" ]; then
-  echo
-  echo "Your LyX tree was not clean.";
-  echo "Your will need to push changes to po files manually."
-fi
