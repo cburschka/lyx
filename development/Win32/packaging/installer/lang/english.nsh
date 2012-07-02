@@ -11,7 +11,7 @@ Author: Joost Verburg, Uwe Stöhr
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
 ${LangFileString} TEXT_WELCOME "This wizard will guide you through the installation of $(^NameDA), $\r$\n\
-					  $\r$\n}\
+					  $\r$\n\
 					  $_CLICK"
 
 #${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
