@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-06-23 15:29+0200\n"
+"POT-Creation-Date: 2012-07-02 20:53+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17674,6 +17674,21 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Nedostupná trieda dokumentu"
 
+#: src/insets/InsetCommandParams.cpp:401
+msgid "Uncodable characters"
+msgstr "Nekódovateľné znaky"
+
+#: src/BufferParams.cpp:1754
+#, c-format
+msgid ""
+"The following characters that are used in an index name are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+"Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
+"v aktuálnom kódovaní a boli vynechané:\n"
+"%1$s."
+
 #: src/BufferParams.cpp:1973
 #, c-format
 msgid ""
@@ -17914,39 +17929,24 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
-#: src/Changes.cpp:363 src/Paragraph.cpp:2564
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
-#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:182
-#: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:212
-#: src/insets/InsetNomencl.cpp:285 src/mathed/InsetMathString.cpp:161
-msgid "LyX Warning: "
-msgstr "LyX varovanie: "
-
-#: src/Changes.cpp:364 src/Paragraph.cpp:2565 src/insets/InsetBibitem.cpp:301
-#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:183
-#: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:286
-#: src/mathed/InsetMathString.cpp:162
-msgid "uncodable character"
-msgstr "Nekódovatelný znak"
-
 #: src/Changes.cpp:379
 msgid "Uncodable character in author name"
 msgstr "Nekódovateľný znak v mene autora"
 
-#: src/Changes.cpp:380
+#: src/Changes.cpp:370
 #, c-format
 msgid ""
 "The author name '%1$s',\n"
-"used for change tracking, contains glyphs that cannot be\n"
-"represented in the current encoding. The respective glyphs\n"
-"will be omitted in the exported LaTeX file.\n"
+"used for change tracking, contains the following glyphs that\n"
+"cannot be represented in the current encoding: %2$s.\n"
+"These glyphs will be omitted in the exported LaTeX file.\n"
 "\n"
 "Choose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
 "Meno autora '%1$s',\n"
 "použité na sledovanie zmien, obsahuje glyfy,\n"
-"ktoré sa v aktuálnom kódovaní nedajú reprezentovať.\n"
+"ktoré sa v aktuálnom kódovaní %2$ nedajú reprezentovať.\n"
 "Príslušné glyfy budú pri exporte do LaTeX-u vynechané.\n"
 "\n"
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
@@ -18412,6 +18412,21 @@ msgstr ""
 #: src/CutAndPaste.cpp:703
 msgid "Undefined flex inset"
 msgstr "Nedefinované flexibilná vložka"
+
+#: src/Changes.cpp:363 src/Paragraph.cpp:2564
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
+#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:182
+#: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:212
+#: src/insets/InsetNomencl.cpp:285 src/mathed/InsetMathString.cpp:161
+msgid "LyX Warning: "
+msgstr "LyX varovanie: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2565 src/insets/InsetBibitem.cpp:301
+#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:183
+#: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:286
+#: src/mathed/InsetMathString.cpp:162
+msgid "uncodable character"
+msgstr "Nekódovatelný znak"
 
 #: src/Exporter.cpp:50
 msgid "&Keep file"
@@ -23502,10 +23517,6 @@ msgstr "Neznáme meno parametra: "
 #: src/insets/InsetCommandParams.cpp:313
 msgid "Missing \\end_inset at this point: "
 msgstr "Tu chýba \\end_inset: "
-
-#: src/insets/InsetCommandParams.cpp:401
-msgid "Uncodable characters"
-msgstr "Nekódovateľné znaky"
 
 #: src/insets/InsetCommandParams.cpp:402
 #, c-format
