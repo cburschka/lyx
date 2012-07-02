@@ -189,33 +189,10 @@ Style FourAffiliations
 End
 
 
-Style Journal
-	LatexName             journal
-	LatexType             Command
-	InTitle               1
-End
-
-
 Style Copyright
 	LatexName             ccoppy
 	LatexType             Command
 	InTitle               1
-End
-
-
-Style CopNum
-	LatexName             copnum
-	LatexType             Command
-	InTitle               1
-End
-
-
-Style Note
-	LatexName             note
-	LatexType             Command
-	Font
-	  Size                Small
-	EndFont
 End
 
 
