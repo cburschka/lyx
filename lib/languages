@@ -10,7 +10,7 @@
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
 #	Encoding           <encoding>
-#	QuoteStyle         <quotation mark style>
+#	QuoteStyle         <danish|english|french|german|polish|swedish>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
 #	AsBabelOptions     <true|false>
@@ -26,10 +26,20 @@
 # End
 #
 #
-# NOTE:
+# NOTES:
 #
 # * Omitted elements will be treated as empty (if string) or "false"
 #   (if boolean).
+# * The QuoteStyle arguments correspond to the following styles:
+#   - danish:  >>text<<  >text<   (inward guillemets)
+#   - english: ``text''  `text'   (66_99)
+#   - french:  <<text>>  <text>   (outward guillemets)
+#   - german:  ,,text``  ,text`   (99/66)
+#   - polish:  ,,text''  ,text'   (99/99)
+#   - swedish: ''text''  'text'   (99_99)
+#   Note that the option names have been selected (rather arbitrarily)
+#   because the respective styles are common in the respective countries.
+#   Of course this does not imply any fixed relation to those countries.
 # * Encoding is not relevant for XeTeX (which is utf8 always), and if
 #   Document > Settings > Language > Encoding is not set to "Language
 #   Default"
