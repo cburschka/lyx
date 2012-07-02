@@ -399,7 +399,7 @@ Parser::Arg Parser::getFullArg(char left, char right)
 		putback();
 		return make_pair(false, string());
 	} else {
-		// for \verb a single '\' is allowed no matter what the delimiter is
+		// a single '\' is only allowed within \verb, no matter what the delimiter is,
 		// for example "\verb+\+" (reported as bug #4468)
 		// To support this, we allow single '\' if it is the only character
 		// within equal delimiters
