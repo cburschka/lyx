@@ -450,6 +450,8 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	//h_notefontcolor;
 	//h_options;
 	h_output_changes          = "false";
+	h_output_sync             = "0";
+	//h_output_sync_macro
 	h_papercolumns            = "1";
 	h_paperfontsize           = "default";
 	h_paperorientation        = "portrait";
@@ -749,6 +751,15 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
+	else if (name == "srcltx") {
+		h_output_sync = "1";
+		if (!opts.empty()) {
+			h_output_sync_macro = "\\usepackage[" + opts + "]{srcltx}";
+			options.clear();
+		} else
+			h_output_sync_macro = "\\usepackage{srcltx}";
+	}
+
 	else if (is_known(name, known_old_language_packages)) {
 		// known language packages from the times before babel
 		// if they are found and not also babel, they will be used as
@@ -956,7 +967,10 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
 	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
 	   << "\\graphics " << h_graphics << "\n"
-	   << "\\default_output_format " << h_default_output_format << "\n";
+	   << "\\default_output_format " << h_default_output_format << "\n"
+	   << "\\output_sync " << h_output_sync << "\n";
+	if (h_output_sync == "1")
+		os << "\\output_sync_macro \"" << h_output_sync_macro << "\"\n";
 	if (!h_float_placement.empty())
 		os << "\\float_placement " << h_float_placement << "\n";
 	os << "\\paperfontsize " << h_paperfontsize << "\n"
@@ -1444,6 +1458,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "setstretch")
 			h_spacing = "other " + p.verbatim_item();
+
+		else if (t.cs() == "synctex") {
+			// the scheme is \synctex=value
+			// where value can only be "1" or "-1"
+			h_output_sync = "1";
+			// there can be any character behind the value (e.g. a linebreak or a '\'
+			// therefore we extract it char by char
+			p.get_token();
+			string value = p.get_token().asInput();
+			if (value == "-")
+				value += p.get_token().asInput();
+			h_output_sync_macro = "\\synctex=" + value;
+		}
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');

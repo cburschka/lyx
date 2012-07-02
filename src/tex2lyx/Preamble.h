@@ -123,6 +123,8 @@ private:
 	std::string h_notefontcolor;
 	std::string h_options;
 	std::string h_output_changes;
+	std::string h_output_sync;
+	std::string h_output_sync_macro;
 	std::string h_papercolumns;
 	std::string h_paperfontsize;
 	std::string h_paperorientation;
