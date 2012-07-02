@@ -42,7 +42,16 @@ Function .onInit
   ${endif}
 
   # check if LyX is already installed
-  ReadRegStr $0 SHCTX "${APP_UNINST_KEY}" "Publisher"
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
+   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+  ${else}
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "Publisher"
+   # handle also the case that LyX is already installed in HKLM
+   ${if} $0 == ""
+    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+   ${endif}
+  ${endif}
   ${if} $0 != ""
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
