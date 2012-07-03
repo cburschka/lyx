@@ -49,10 +49,10 @@ delete $options{i} if $silent_mode;
 
 my $check_args = (!%options or defined($options{a}));
 my $check_colons = (!%options or defined($options{c}));
-my $check_spaces = (!%options or defined($options{m}));
+my $check_spaces = (!%options or defined($options{s}));
 my $check_periods = (!%options or defined($options{p}));
 my $check_qt = (!%options or defined($options{q}));
-my $check_menu = (!%options or defined($options{s}));
+my $check_menu = (!%options or defined($options{m}));
 my $check_trans = (!%options or defined($options{t}));
 
 my %trans;
@@ -107,6 +107,9 @@ foreach my $pofilename ( @ARGV ) {
     # nothing to do if one of them is empty. 
     # (surely that is always $msgstr?)
     next if ($msgid eq "" or $msgstr eq "");
+
+    # discard [[...]] from the end of msgid, this is used only as hint to translation
+    $msgid =~ s/\[\[.*\]\]$//;
 
     # Check for matching %1$s, etc.
       if ($check_args) {
