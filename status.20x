@@ -107,4 +107,6 @@ What's new
 
 * BUILD/INSTALLATION
 
+- recognize version numbers like 2.0.5dev as development versions when
+  computing the default value of --enable-build-type.
 
