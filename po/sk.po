@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-02 20:53+0200\n"
+"POT-Creation-Date: 2012-07-03 11:05+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6437,33 +6437,6 @@ msgstr "Tri Príslušenstva"
 msgid "FourAffiliations"
 msgstr "Štyri Príslušenstva"
 
-#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:335
-msgid "Journal"
-msgstr "Denník"
-
-#: lib/layouts/apa.layout:206
-msgid "CopNum"
-msgstr "CopNum"
-
-#: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
-#: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
-#: lib/layouts/powerdot.layout:194 lib/layouts/slides.layout:167
-#: lib/layouts/stdinsets.inc:101 lib/layouts/theorems-without-preamble.inc:388
-#: lib/layouts/theorems-without-preamble.inc:395
-#: lib/layouts/theorems-without-preamble.inc:398
-#: lib/layouts/theorems-ams-extended-bytype.module:199
-#: lib/layouts/theorems-ams-extended-bytype.module:208
-#: lib/layouts/theorems-ams-extended-bytype.module:211
-#: lib/layouts/theorems-ams-extended-bytype.module:226
-#: lib/layouts/theorems-ams-extended-bytype.module:229
-#: lib/layouts/theorems-ams-extended.module:174
-#: lib/layouts/theorems-ams-extended.module:183
-#: lib/layouts/theorems-ams-extended.module:186
-#: lib/layouts/theorems-ams-extended.module:200
-#: lib/layouts/theorems-ams-extended.module:203
-msgid "Note"
-msgstr "Poznámka"
-
 #: lib/layouts/apa.layout:234
 msgid "Acknowledgements:"
 msgstr "Poďakovania:"
@@ -7505,6 +7478,10 @@ msgstr "Autor:"
 msgid "Affil"
 msgstr "Príslušenstvo"
 
+#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:335
+msgid "Journal"
+msgstr "Denník"
+
 #: lib/layouts/egs.layout:348
 msgid "Journal:"
 msgstr "Denník:"
@@ -7631,6 +7608,25 @@ msgstr "Problém \\arabic{theorem}"
 #: lib/layouts/elsart.layout:388
 msgid "Remark \\arabic{theorem}"
 msgstr "Pripomienka \\arabic{theorem}"
+
+#: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
+#: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
+#: lib/layouts/powerdot.layout:194 lib/layouts/slides.layout:167
+#: lib/layouts/stdinsets.inc:101 lib/layouts/theorems-without-preamble.inc:388
+#: lib/layouts/theorems-without-preamble.inc:395
+#: lib/layouts/theorems-without-preamble.inc:398
+#: lib/layouts/theorems-ams-extended-bytype.module:199
+#: lib/layouts/theorems-ams-extended-bytype.module:208
+#: lib/layouts/theorems-ams-extended-bytype.module:211
+#: lib/layouts/theorems-ams-extended-bytype.module:226
+#: lib/layouts/theorems-ams-extended-bytype.module:229
+#: lib/layouts/theorems-ams-extended.module:174
+#: lib/layouts/theorems-ams-extended.module:183
+#: lib/layouts/theorems-ams-extended.module:186
+#: lib/layouts/theorems-ams-extended.module:200
+#: lib/layouts/theorems-ams-extended.module:203
+msgid "Note"
+msgstr "Poznámka"
 
 #: lib/layouts/elsart.layout:395
 msgid "Note \\arabic{theorem}"
@@ -24717,6 +24713,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "CopNum"
+#~ msgstr "CopNum"
 
 #~ msgid "Listings"
 #~ msgstr "Výpisy"
