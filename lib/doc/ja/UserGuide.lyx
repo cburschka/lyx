@@ -9330,14 +9330,21 @@ Example:
 \end_layout
 
 \begin_layout Subsubsection
-LyX
+
+\lang english
+Labeling
 \family sans
-リスト
+\lang japanese
+
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き!LyXりすと@------（LyXリスト）
+かじょうがき@箇条書き!LyXりすと@------（
+\lang english
+Labeling
+\lang japanese
+）
 \end_layout
 
 \end_inset
@@ -9357,7 +9364,27 @@ status collapsed
 \bar no
 \noun off
 \color none
-環境はLyXがLaTeXを拡張したものです。
+環境は
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+Labeling
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+がLaTeXを拡張したものです。
 \end_layout
 
 \begin_layout Standard
@@ -9556,7 +9583,34 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 \bar no
 \noun off
 \color none
-ダイアログを開いてください。
+ダイアログを開いてください
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+(toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+。
 \family sans
 \series default
 \shape default
@@ -9602,20 +9656,6 @@ M」はアルファベット中でもっとも幅の広い文字なので、LaTe
 \end_inset
 
 あらかじめ定められた既定幅は、「00.00.0000」の文字列と同じ長さ（6M相当）になっています。
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-ラベル幅を変えるためだけにリスト項目にカーソルを設定しても、LyX内での幅が変わるだけで、出力には変わりありません。
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -17569,6 +17609,18 @@ status open
 
 \begin_layout Subsection
 段落の配置
+\family sans
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+だんらく@段落!段落の配置
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17577,7 +17629,17 @@ status open
 編集\SpecialChar \menuseparator
 段落設定
 \family default
-ダイアログで変更することができます。選択肢は5つあります。
+ダイアログで変更することができます
+\lang english
+(toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)。選択肢は5つあります。
 \end_layout
 
 \begin_layout Itemize

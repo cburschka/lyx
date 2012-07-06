@@ -6142,16 +6142,18 @@ Notez qu'après la première ligne, LyX indente les lignes suivantes en les
 \end_layout
 
 \begin_layout Subsubsection
-La Liste LyX (environnement 
+
 \family sans
-Liste
+Étiquetage
 \family default
-)
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Listes ! Liste LyX
+Listes ! 
+\family sans
+Étiquetage
 \end_layout
 
 \end_inset
@@ -6162,35 +6164,9 @@ Listes ! Liste LyX
 \begin_layout Standard
 L'environnement 
 \family sans
-Liste
-\family default
- est une extension LyX de LaTeX.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note :
-\series default
- Quand vous utilisez la classe de document KOMA-Script, comme c'est le cas
- de ce document, l'environnement 
-\family sans
-Liste
-\family default
- se nomme 
-\family sans
 Étiquetage
 \family default
-.
-\end_layout
-
-\end_inset
-
-
+ est une extension LyX de LaTeX.
 \end_layout
 
 \begin_layout Standard
@@ -6200,7 +6176,7 @@ Description
 \family default
 , l'environnement 
 \family sans
-Liste
+Étiquetage
 \family default
  a des marqueurs définis par l'utilisateur pour chaque élément.
  Il y a quelques différences fondamentales entre cet environnement de liste
@@ -6273,7 +6249,7 @@ implicite Vous pouvez la modifier très facilement.
  Vous pouvez ainsi vous assurer sans dommage que le texte de tous les éléments
  d'un environnement 
 \family sans
-Liste
+Étiquetage
 \family default
  partage la même marge de gauche.
 \begin_inset Newline newline
@@ -6292,7 +6268,17 @@ de
 \begin_inset space ~
 \end_inset
 
-paragraphe, 
+paragraphe 
+\family default
+(bouton 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)
+\family sans
+, 
 \family default
 dans la rubrique 
 \family sans
@@ -6386,39 +6372,12 @@ La largeur implicitement prédéfinie dans LyX est la longueur de la chaîne
 \end_inset
 
 , égale à 6 M.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Note : Si vous mettez le curseur dans un élément de liste pour changer la
- taille de son marqueur, vous changerez celle-ci dans LyX, mais pas dans
- la sortie.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-J'ai pas bien compris ce que cela veut dire (NdT).
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Utilisez l'environnement 
 \family sans
-Liste
+Étiquetage
 \family default
  pour la même chose que l'environnement 
 \family sans
@@ -6427,7 +6386,7 @@ Description
 : lorsque vous devez faire ressortir un mot du texte qui sert à l'expliciter.
  L'environnement 
 \family sans
-Liste
+Étiquetage
 \family default
  vous donne un autre moyen de le faire, avec une apparence finale différente.
 \end_layout
@@ -6435,7 +6394,7 @@ Liste
 \begin_layout Standard
 Vous pouvez bien sûr emboîter des environnements 
 \family sans
-Liste
+Étiquetage
 \family default
  les uns dans les autres, les emboîter dans d'autres types de listes, et
  ainsi de suite.
@@ -6457,7 +6416,7 @@ reference "sec:Emboîter-les-Environnements"
 \begin_layout Standard
 Il y a encore un trait de l'environnement 
 \family sans
-Liste
+Étiquetage
 \family default
  dont nous devons vous entretenir.
  Comme vous le voyez dans les exemples, LyX justifie à gauche  implicitement
@@ -6498,7 +6457,7 @@ reference "sub:Ressorts-Horizontaux"
 \labelwidthstring 00.00.0000
 Gauche La valeur implicite pour les marqueurs d'élément de 
 \family sans
-List
+Étiquetage
 \family default
 .
 \end_layout
@@ -11683,6 +11642,18 @@ Protégé
 
 \begin_layout Subsection
 Alignement des paragraphes
+\family sans
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paragraphe ! Alignement
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11692,7 +11663,13 @@ Vous pouvez modifier la justification des paragraphes avec la fenêtre de
 Éditer\SpecialChar \menuseparator
 Paramètres de paragraphe
 \family default
-.
+ (bouton 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
  Il y a cinq possibilités: 
 \end_layout
 
