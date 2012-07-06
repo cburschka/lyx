@@ -1331,7 +1331,6 @@ dist_layouts_DATA =\
 	layouts/amsdefs.inc \
 	layouts/apa.layout \
 	layouts/arab-article.layout \
-	layouts/armenian-article.layout \
 	layouts/article.layout \
 	layouts/article-beamer.layout \
 	layouts/basic.module \
