@@ -3909,7 +3909,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
 				handle_ert(os, arg + '{', context);
-				eat_whitespace(p, os, context, false);
 				parse_text(p, os, FLAG_ITEM, outer, context);
 				handle_ert(os, "}", context);
 			} else {
@@ -3922,7 +3921,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				else {
 					eat_whitespace(p, os, context, false);
 					handle_ert(os, "\\framebox{", context);
-					eat_whitespace(p, os, context, false);
 					parse_text(p, os, FLAG_ITEM, outer, context);
 					handle_ert(os, "}", context);
 				}
@@ -3939,7 +3937,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
 				handle_ert(os, arg + '{', context);
-				eat_whitespace(p, os, context, false);
 				parse_text(p, os, FLAG_ITEM, outer, context);
 				handle_ert(os, "}", context);
 			} else
