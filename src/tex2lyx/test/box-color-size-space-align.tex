@@ -352,10 +352,6 @@ Visible\textvisiblespace{}a
 
 Thin\,a
 
-Medium\:a
-
-Thick\;a
-
 NegThin\negthinspace{}a
 
 NegMed\negmedspace{}a
@@ -370,19 +366,38 @@ quad\quad{}a
 
 qquad\qquad{}a
 
-\subsubsection*{now some math examples:}
 
-$a\hfill b$
+\subsubsection*{now in math:}
 
-$a\hspace*{2cm}b$
+fill: $a\hfill b$
 
-$a\hspace{1cm}b$
+protected fill: $a\hspace*{\fill} b$
 
-$a\hspace*{\fill} b$
+2\,cm: $a\hspace*{2cm}b$
 
-$a\enskip b$
+protected 2\,cm: $a\hspace{1cm}b$
 
-$a\enspace b$
+enskip: $a\enskip b$
+
+enspace: $a\enspace b$
+
+thin: $a\, b$
+
+medium: $a\: b$
+
+thick: $a\; b$
+
+negative thin: $a\negthinspace b$
+
+negative medium: $a\negmedspace b$
+
+negative thick: $a\negthickspace b$
+
+quad: $a\quad b$
+
+qquad: $a\qquad b$
+
+interword: $a\ b$
 
 
 \subsection{Vertical spaces}
