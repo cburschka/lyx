@@ -119,7 +119,7 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
 
 /**
  * supported CJK encodings
- * SJIS anf Bg5 cannot be supported as this is not
+ * SJIS and Bg5 cannot be supported as they are not
  * supported by iconv
  * JIS does not work with LyX's encoding conversion
  */
@@ -1431,7 +1431,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// store the encoding to be able to reset it
 		string const encoding_old = p.getEncoding();
 		string const encoding = p.getArg('{', '}');
-		// SJIS and Bg5 cammopt be handled by iconv
+		// SJIS and Bg5 cannot be handled by iconv
 		// JIS does not work with LyX's encoding conversion
 		if (encoding != "Bg5" && encoding != "JIS" && encoding != "SJIS")
 			p.setEncoding(encoding);
