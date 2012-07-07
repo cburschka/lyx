@@ -6041,7 +6041,7 @@ Beschreibung
 status collapsed
 
 \begin_layout Plain Layout
-Beschreibung
+Liste ! Beschreibung
 \end_layout
 
 \end_inset
@@ -6190,45 +6190,13 @@ Beachten Sie, dass LyX auch hier ab der zweiten Zeile einrückt.
 \end_layout
 
 \begin_layout Subsubsection
-LyX-
-\family sans
 Liste
-\family default
-
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+Liste ! Liste
 \end_layout
-
-\end_inset
-
-X!-Liste
-\end_layout
-
-\end_inset
-
- und Liste
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Liste
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "LyX-Liste-und-Liste"
 
 \end_inset
 
@@ -6241,42 +6209,6 @@ Die
 Liste
 \family default
 -Umgebung ist eine LyX-Erweiterung von LaTeX.
- Wenn Sie direkt hierher gelangt sind, ohne die Abschnitte 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Auflistung"
-
-\end_inset
-
- - 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Beschreibung"
-
-\end_inset
-
- gelesen zu haben, sind Sie aufgeschmissen.
- Die 
-\family sans
-Liste
-\family default
--Umgebung erzeugt 
-\emph on
-keine
-\emph default
- nummerierten Listen.
- Das macht 
-\family sans
-Aufzählung
-\family default
-, und es ist in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Aufzählung"
-
-\end_inset
-
- beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -6317,9 +6249,13 @@ Wort
 \family sans
 Beschreibung
 \family default
--Umgebung behandelt (siehe Abschnitt 
+-Umgebung behandelt (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Beschreibung"
 
 \end_inset
@@ -6402,35 +6338,21 @@ Liste
  den Cursor einfach in dieses Element.
  Dann öffnen Sie das Menü 
 \family sans
+Bearbeiten\SpecialChar \menuseparator
 Absatz
 \family default
 -
 \family sans
 Einstellungen
 \family default
- 
-\family sans
-(Bearbeiten\SpecialChar \menuseparator
-Absatz
-\family default
--
-\family sans
-Einstellungen
-\family default
-\SpecialChar \ldots{}
- oder 
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 85
-	groupId Icon
-
+ oder drücken 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 ).
-\begin_inset Newline newline
-\end_inset
-
-Der Text im Feld 
+ Der Text im Feld 
 \family sans
 Längste
 \begin_inset space ~
@@ -6439,9 +6361,43 @@ Längste
 Marke
 \family default
  bestimmt die Standardmarkenbreite.
- Wenn Sie wirklich wollen, aber nur dann, können Sie hier den Text Ihrer
- breitesten Marke eintragen, aber Sie müssen es nicht.
- Voreingestellt ist 
+ Wenn Sie wollen, können Sie hier den Text Ihrer breitesten Marke eintragen
+ oder stattdesse den Buchstaben 
+\begin_inset Quotes gld
+\end_inset
+
+M
+\begin_inset Quotes grd
+\end_inset
+
+ mehrfach hintereinander verwenden.
+ Das M ist der breiteste Buchstabe und eine Standard-Einheit von Längen
+ in LaTeX.
+ Verwendet man 
+\begin_inset Quotes gld
+\end_inset
+
+M
+\begin_inset Quotes grd
+\end_inset
+
+ als Einheit der Breite, muss man die 
+\family sans
+Längste
+\begin_inset space ~
+\end_inset
+
+Marke
+\family default
+ nicht jedes Mal anpassen, wenn man eine Marke in einer 
+\family sans
+Liste
+\family default
+ ändert.
+\begin_inset Newline newline
+\end_inset
+
+Die voreingestellte Breite ist die Länge von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6449,14 +6405,15 @@ Marke
 \begin_inset Quotes grd
 \end_inset
 
-.
- Natürlich können Sie etwas völlig Anderes benutzen.
- 
+ (entspricht 6
+\begin_inset space ~
+\end_inset
+
+M).
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Gebrauch Die 
+\begin_layout Standard
+Die 
 \family sans
 Liste
 \family default
@@ -6474,77 +6431,55 @@ Liste
  anderen Aussehen.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Schachtelung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schachtelung
-\end_layout
-
-\end_inset
-
- Sie können 
+\begin_layout Standard
+Sie können 
 \family sans
 Liste
 \family default
 -Umgebungen ineinander oder in andere schachteln usw., wie bei den anderen
  Listen-Umgebungen auch.
- In Abschnitt 
+ In Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
 
-ff erfahren Sie mehr darüber.
+ erfahren Sie mehr darüber.
 \end_layout
 
 \begin_layout Standard
-Wie Sie sehen, hat diese Absatzumgebung eine Menge Funktionen!
-\end_layout
-
-\begin_layout Standard
-Es gibt noch eine Funktion der 
+Es gibt noch eine weitere Funktion der 
 \family sans
 Liste
 \family default
--Umgebung, von der wir Ihnen erzählen müssen.
+-Umgebung.
  Wie Sie in den Beispielen sehen können, richtet LyX die Marken standardmäßig
  linksbündig aus.
- In Wirklichkeit ist ein variabler horizontaler Abstand
-\family sans
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Abstand ! variabler horizontaler
-\end_layout
-
+ Man kann zusätzliche variable horizontale Abstände benutzen, damit LyX
+ die Marken anders ausrichtet.
+ Variable horizontale Abstände sind in Abschnitt
+\begin_inset space ~
 \end_inset
 
 
-\family default
- am Ende der Marke eingebaut.
- Man kann zusätzliche variable horizontale Abstände benutzen, damit LyX
- die Marken anders ausrichtet.
- Wir werden variable horizontale Abstände später in Abschnitt 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Variabler-horiz-Abstand"
 
 \end_inset
 
- erläutern.
+ erläutert.
  Hier sind einige Beispiele:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-L Die Standardausrichtung.
+Links Die Standardausrichtung.
 \end_layout
 
 \begin_layout Labeling
@@ -6552,8 +6487,8 @@ L Die Standardausrichtung.
 \begin_inset space \hfill{}
 \end_inset
 
-R Ein variabler horizontaler Abstand am Anfang der Marke richtet sie nach
- rechts aus.
+Rechts Ein variabler horizontaler Abstand am Anfang der Marke richtet sie
+ nach rechts aus.
 \end_layout
 
 \begin_layout Labeling
@@ -6561,34 +6496,12 @@ R Ein variabler horizontaler Abstand am Anfang der Marke richtet sie nach
 \begin_inset space \hfill{}
 \end_inset
 
-Z
+Zentriert
 \begin_inset space \hfill{}
 \end_inset
 
  Je ein variabler horizontaler Abstand am Anfang und am Ende zentriert die
  Marke.
-\end_layout
-
-\begin_layout Standard
-Machen Sie sich nichts daraus, wenn Sie noch nicht wissen, was variabler
- horizontaler Abstand ist.
- Merken Sie sich nur, dass Sie ihn zum Anpassen der 
-\family sans
-Liste
-\family default
--Umgebung benutzen können.
-\end_layout
-
-\begin_layout Standard
-Das ist alles über die vier Absatzumgebungen zum Erstellen von Listen.
- Augenblick – haben wir erwähnt, dass Sie Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Umgebungen-schachteln"
-
-\end_inset
-
-ff wegen Schachtelungen lesen sollten?
 \end_layout
 
 \begin_layout Subsection
@@ -11854,14 +11767,14 @@ Schützen
 \begin_layout Subsection
 Absatz
 \family sans
--Einstellungen
+-Ausrichtung
 \family default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Absatz ! -Einstellungen
+Absatz ! -ausrichtung
 \end_layout
 
 \end_inset
@@ -11891,150 +11804,7 @@ Absatz-Einstellungen
 
 \end_inset
 
-) können Sie die Absatzformatierung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Absatz!-formatierung
-\end_layout
-
-\end_inset
-
- ändern.
-\end_layout
-
-\begin_layout Subsubsection
-Zeilenabstand
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Zeilenabstand
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\paragraph_spacing double
-Zur Änderung des 
-\family sans
-Zeilenabstand
-\family default
-es habe Sie folgende Auswahlmöglichkeiten: 
-\family sans
-Standard
-\family default
-, 
-\family sans
-Einfach
-\family default
-, 
-\family sans
-1.5
-\family default
-, 
-\family sans
-Doppelt
-\family default
- und 
-\family sans
-Benutzerdefiniert
-\family default
-.
- Für diesen Absatz wurde 
-\family sans
-Doppelt
-\family default
- gewählt.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie 
-\family sans
-Benutzerdefiniert
-\family default
- auswählen, müssen Sie rechts davon eine Zahl (zum Beispiel 3.5) eingeben,
- die ein Vielfaches des einzeiligen Abstandes definiert.
-\end_layout
-
-\begin_layout Subsubsection
-Markenbreite
-\end_layout
-
-\begin_layout Standard
-Siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "LyX-Liste-und-Liste"
-
-\end_inset
-
-, Standardbreite.
-\end_layout
-
-\begin_layout Subsubsection
-Absatz einrücken
-\end_layout
-
-\begin_layout Standard
-Je nachdem, was in 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Textformat
-\family default
- unter 
-\family sans
-Absätze
-\begin_inset space \space{}
-\end_inset
-
-trennen
-\begin_inset space \space{}
-\end_inset
-
-durch
-\family default
- aktiviert ist, ist auch 
-\family sans
-Absatz
-\begin_inset space \space{}
-\end_inset
-
-einrücken
-\family default
- angekreuzt oder nicht.
- Diese Voreinstellung können Sie ändern.
-\end_layout
-
-\begin_layout Subsubsection
-Ausrichtung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Absatz ! -ausrichtung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mit 
-\family sans
-Ausrichtung
-\family default
- ändern Sie einen oder mehrere Absätze.
+) können Sie die Ausrichtung ändern.
  Normalerweise ist 
 \family sans
 Voreinstellung
@@ -12098,22 +11868,6 @@ Strg+Eingabe
 Eingabe
 \family default
  benutzen.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie 
-\family sans
-Direkt
-\begin_inset space \space{}
-\end_inset
-
-übernehmen
-\family default
- ankreuzen, wird die Änderung auch ohne 
-\family sans
-Übernehmen
-\family default
- durchgeführt.
 \end_layout
 
 \begin_layout Subsection

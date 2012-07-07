@@ -6078,12 +6078,12 @@ Observa que después de la primera línea, LyX sangra las siguientes respecto
 \end_layout
 
 \begin_layout Subsubsection
-La Lista LyX
+Etiquetado
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Listas ! Lista LyX
+Listas ! Etiquetado
 \end_layout
 
 \end_inset
@@ -6094,35 +6094,9 @@ Listas ! Lista LyX
 \begin_layout Standard
 El entorno 
 \family sans
-Lista
-\family default
- es una extensión a LaTeX en LyX.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Si, como en este documento, se está usando la clase KOMA-Script, el entorno
- 
-\family sans
-Lista
-\family default
- se denomina 
-\family sans
 Etiquetado
 \family default
-.
-\end_layout
-
-\end_inset
-
-
+ es una extensión a LaTeX en LyX.
 \end_layout
 
 \begin_layout Standard
@@ -6194,7 +6168,7 @@ anchura
 predeterminada Puedes fijar esta anchura para asegurar que el texto de todos
  los ítems en un entorno 
 \family sans
-Lista
+Etiquetado
 \family default
  tienen el mismo margen izquierdo.
 \begin_inset Newline newline
@@ -6212,7 +6186,17 @@ del
 \begin_inset space ~
 \end_inset
 
-párrafo,
+párrafo 
+\family default
+(botón 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)
+\family sans
+,
 \family default
  el texto escrito en 
 \family sans
@@ -6282,32 +6266,13 @@ La anchura predefinida es la longitud de «00.00.0000» (equivalente a 6
 \begin_inset space ~
 \end_inset
 
-M)
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Si se pone el cursor en un ítem de una lista para cambiar la anchura sólo
- de esa etiqueta, funcionará sólo en LyX, no en la salida.
-\end_layout
-
-\end_inset
-
-
+M).
 \end_layout
 
 \begin_layout Standard
 Deberías emplear el entorno 
 \family sans
-Lista
+Etiquetado
 \family default
  de la misma manera que 
 \family sans
@@ -6316,7 +6281,7 @@ Descripción
 : Cuando necesites que una palabra sobresalga del texto que describe.
  El entorno 
 \family sans
-Lista
+Etiquetado
 \family default
  te permite otra manera de hacerlo con un formato distinto.
 \end_layout
@@ -6324,7 +6289,7 @@ Lista
 \begin_layout Standard
 Puedes anidar entornos 
 \family sans
-Lista
+Etiquetado
 \family default
  en otras listas.
  Funcionan igual que los otros entornos de párrafo tipo lista.
@@ -6345,7 +6310,7 @@ reference "sec:Anidación"
 \begin_layout Standard
 Aún queda otra característica de 
 \family sans
-Lista
+Etiquetado
 \family default
 : Como ves en los ejemplos, LyX, por omisión, alinea las etiquetas a la
  izquierda.
@@ -6393,7 +6358,7 @@ reference "sub:Espacio-horizontal"
 \labelwidthstring 00.00.0000
 Izquierda Predeterminado para etiquetas de ítems en una 
 \family sans
-Lista
+Etiquetado
 \family default
 .
 \end_layout
@@ -11425,7 +11390,13 @@ del
 
 párrafo
 \family default
-.
+ (botón 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
  Hay cinco posibilidades: 
 \end_layout
 

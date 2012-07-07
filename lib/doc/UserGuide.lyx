@@ -5920,16 +5920,12 @@ Notice that after the first line, LyX indents subsequent lines, offsetting
 \end_layout
 
 \begin_layout Subsubsection
-The LyX 
-\family sans
-List
-\family default
-
+Labeling
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! LyX list
+Lists ! Labeling
 \end_layout
 
 \end_inset
@@ -5940,35 +5936,9 @@ Lists ! LyX list
 \begin_layout Standard
 The 
 \family sans
-List
-\family default
- environment is a LyX extension to LaTeX.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- When you are using a KOMA-Script document class, like in this document,
- the 
-\family sans
-List
-\family default
- environment is named 
-\family sans
 Labeling
 \family default
-.
-\end_layout
-
-\end_inset
-
-
+ environment is a LyX extension to LaTeX.
 \end_layout
 
 \begin_layout Standard
@@ -5976,12 +5946,13 @@ Like the
 \family sans
 Description
 \family default
- environment the 
+ list the 
 \family sans
-List
+Labeling
 \family default
- environment has user-defined labels for each list item.
- There are the following properties of this list environment:
+ list has user-defined labels for each list item but it provides some additional
+ features.
+ Here are its properties:
 \end_layout
 
 \begin_layout Labeling
@@ -6047,7 +6018,7 @@ default
 width You can set the default label width to ensure that the text of all
  items in a 
 \family sans
-List
+Labeling
 \family default
  environment has the same left margin.
 \begin_inset Newline newline
@@ -6063,7 +6034,13 @@ Paragraph
 
 Settings
 \family default
- dialog.
+ dialog (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
  The text in the box 
 \family sans
 Longest
@@ -6121,34 +6098,14 @@ The predefined default width is the length of
 \end_inset
 
 M).
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Setting the cursor into a list item to change only its label width will
- only change the width inside LyX but not in the output.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 You should use the 
 \family sans
-List
+Labeling
 \family default
- environment the same way as the 
+ list the same way as the 
 \family sans
 Description
 \family default
@@ -6156,7 +6113,7 @@ Description
  it.
  The 
 \family sans
-List
+Labeling
 \family default
  environment gives you another way to do this, using a different overall
  layout.
@@ -6165,10 +6122,9 @@ List
 \begin_layout Standard
 You can nest 
 \family sans
-List
+Labeling
 \family default
- environments inside one another, nest them in other types of lists, and
- so on.
+ lists inside one another, nest them in other types of lists, and so on.
  They work just like the other list paragraph environments.
  Read section
 \begin_inset space ~
@@ -6187,10 +6143,10 @@ reference "sec:Nesting"
 \begin_layout Standard
 There is yet another feature of the 
 \family sans
-List
+Labeling
 \family default
- environment: As you can see in the examples, LyX left-justifies the item
- labels by default.
+ list: As you can see in the examples, LyX left-justifies the item labels
+ by default.
  You can use additional 
 \family sans
 HFills
@@ -6219,7 +6175,7 @@ reference "sub:Horizontal-Space"
 \labelwidthstring 00.00.0000
 Left The default for 
 \family sans
-List
+Labeling
 \family default
  item labels.
 \end_layout
@@ -11153,6 +11109,16 @@ Protect
 
 \begin_layout Subsection
 Paragraph Alignment
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paragraph ! Alignment
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11161,7 +11127,13 @@ You can change the paragraph alignment with the
 Edit\SpecialChar \menuseparator
 Paragraph Settings
 \family default
- dialog.
+ dialog (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
  There are five possibilities: 
 \end_layout
 
