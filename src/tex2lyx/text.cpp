@@ -119,6 +119,9 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
 
 /**
  * supported CJK encodings
+ * SJIS anf Bg5 cannot be supported as this is not
+ * supported by iconv
+ * JIS does not work with LyX's encoding conversion
  */
 const char * const supported_CJK_encodings[] = {
 "EUC-JP", "KS", "GB", "UTF8", 0};
@@ -1428,9 +1431,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// store the encoding to be able to reset it
 		string const encoding_old = p.getEncoding();
 		string const encoding = p.getArg('{', '}');
-		// SJIS and BIG5 don't work with LaTeX according to the comment in unicode.cpp
+		// SJIS and Bg5 cammopt be handled by iconv
 		// JIS does not work with LyX's encoding conversion
-		if (encoding != "SJIS" && encoding != "BIG5" && encoding != "JIS")
+		if (encoding != "Bg5" && encoding != "JIS" && encoding != "SJIS")
 			p.setEncoding(encoding);
 		else
 			p.setEncoding("utf8");
@@ -1442,7 +1445,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.check_layout(os);
 			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
 				       parent_context);
-			// we must parse the content as verbatim because e.g. SJIS can contain
+			// we must parse the content as verbatim because e.g. JIS can contain
 			// normally invalid characters
 			string const s = p.plainEnvironment("CJK");
 			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
@@ -1453,7 +1456,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				else 
 					os << *it;
 			}
-			p.skip_spaces();
 			handle_ert(os, "\\end{" + name + "}",
 				       parent_context);
 		} else {
