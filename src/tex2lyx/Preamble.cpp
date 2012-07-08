@@ -507,14 +507,14 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "0";
-	h_use_refstyle            = "1";
+	h_use_refstyle            = "0";
 	h_use_packages["amsmath"]    = "1";
-	h_use_packages["amssymb"]    = "1";
+	h_use_packages["amssymb"]    = "0";
 	h_use_packages["esint"]      = "1";
-	h_use_packages["mhchem"]     = "1";
-	h_use_packages["mathdots"]   = "1";
-	h_use_packages["mathtools"]  = "1";
-	h_use_packages["undertilde"] = "1";
+	h_use_packages["mhchem"]     = "0";
+	h_use_packages["mathdots"]   = "0";
+	h_use_packages["mathtools"]  = "0";
+	h_use_packages["undertilde"] = "0";
 }
 
 
