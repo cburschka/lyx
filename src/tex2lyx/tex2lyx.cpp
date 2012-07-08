@@ -771,6 +771,8 @@ bool tex2tex(string const & infilename, FileName const & outfilename,
 		command += " -f none";
 	if (pdflatex)
 		command += " -e pdflatex ";
+	else if (xetex)
+		command += " -e xetex ";
 	else
 		command += " -e latex ";
 	command += quoteName(outfilename.toFilesystemEncoding());
