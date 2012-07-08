@@ -759,7 +759,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 		have_CJK = true;
 		// set the encoding to "auto" because it might be set to "default" by the babel handling
 		// and this would not be correct for CJK
-		h_inputencoding = "auto";
+		if (h_inputencoding == "default")
+			h_inputencoding = "auto";
 		registerAutomaticallyLoadedPackage("CJK");
 	}
 
