@@ -20,6 +20,7 @@ AM_CPPFLAGS += -DTEX2LYX $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
 
 TEST_FILES = \
+	test/runtests.py \
 	test/box-color-size-space-align.tex \
 	test/CJK.tex \
 	test/DummyDocument.tex \
@@ -29,6 +30,8 @@ TEST_FILES = \
 	test/test.ltx \
 	test/test-structure.tex \
 	test/XeTeX-polyglossia.tex
+
+TESTS = test/runtests.py
 
 LINKED_FILES = \
 	../Author.cpp \

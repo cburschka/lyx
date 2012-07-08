@@ -1,0 +1,536 @@
+#LyX file created by tex2lyx 2.1.0svn
+\lyxformat 430
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% This is a test document for tex2lyx
+ %some comments
+
+%comments
+\def\blah{\blahblah}
+% And more comments
+
+%more comments
+
+\end_preamble
+\use_default_options false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 11
+\spacing single
+\use_hyperref 0
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+Test Document
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+First Section
+\end_layout
+
+\begin_layout Standard
+
+This 
+\size large
+a 
+\size small
+b 
+\size tiny
+c
+\size large
+ 
+\size huge
+d
+\size default
+ is some text. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%Midline comment
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "3in"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+What are you doing \SpecialChar \ldots{}
+Dave
+\end_layout
+
+\end_inset
+
+. This is more text.
+\end_layout
+
+\begin_layout Section*
+
+MySection
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mysection"
+
+\end_inset
+
+This is some 
+\begin_inset Quotes eld
+\end_inset
+
+quoted
+\begin_inset Quotes erd
+\end_inset
+
+ text in a new section. I 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ am
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+This is a great footnote because: 
+\end_layout
+
+\begin_layout Itemize
+
+The footnote is not 
+\emph on
+emphasized
+\emph default
+. 
+\end_layout
+
+\begin_layout Itemize
+
+The text is 
+\end_layout
+
+\begin_layout Standard
+
+How cool is that!?
+\end_layout
+
+\end_inset
+
+ emphasizing 
+\begin_inset Quotes eld
+\end_inset
+
+text.
+\end_layout
+
+\begin_layout Standard
+
+I keep
+\begin_inset Quotes erd
+\end_inset
+
+ emphasizing
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+. This 
+\begin_inset space ~
+
+\end_inset
+
+ is text in a new par\SpecialChar \-
+agraph.
+\begin_inset Newline newline
+\end_inset
+
+ It has \SpecialChar \ldots{}
+an 
+\begin_inset Formula $ \alpha $
+\end_inset
+
+ in it, which is OK\SpecialChar \@.
+ I can type special characters
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+i.e., characters which must be escaped
+\end_layout
+
+\end_inset
+
+ like & and #.
+\end_layout
+
+\begin_layout Standard
+
+_ is a neat token. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% This line won't print!
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Now I 
+\family sans
+want 
+\family typewriter
+to
+\family sans
+ write
+\family default
+ some math in a displayed equation. 
+\begin_inset Formula \begin{eqnarray*}
+q^{(i)}_O & = & q^{water}_{O}+dq_{O}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{H}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{p}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P^{(i+1)}_{deg})
+\end{eqnarray*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Here's an itemized list 
+\end_layout
+
+\begin_layout Itemize
+
+this is an item 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+this is a numbered item
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+But now I want to write some text. 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+this is another numbered item
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+More text 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+
+Yet more text
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+this is another unnumbered item
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+Final text 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+
+
+\begin_inset Argument
+status collapsed
+
+
+\begin_layout Standard
+
+hi
+\end_layout
+
+\end_inset
+
+New Section
+\end_layout
+
+\begin_layout Standard
+
+Here's a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ quotation: 
+\end_layout
+
+\begin_layout Quotation
+
+Hello there how are you?
+\end_layout
+
+\begin_layout Quotation
+
+I am fine. Thanks 
+\end_layout
+
+\begin_layout Standard
+
+This
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ is a reference to section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mysection"
+
+\end_inset
+
+ on page 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:mysection"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+foo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+bar 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+bar 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+foo 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Let's try a few unicode characters: the (R) symbol ®(and the same one with braces ® and a space after) or maybe an accented a á or this one á or this î.
+\end_layout
+
+\begin_layout Standard
+
+Watch out: ®should be glued to its successor here.
+\end_layout
+
+\begin_layout Standard
+
+Final Text. 
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,2270 @@
+#LyX file created by tex2lyx 2.1.0svn
+\lyxformat 430
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\setlength{\fboxsep}{3mm}
+
+\definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+
+\color[rgb]{0,0,0}
+
+\usepackage{ifpdf}% part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={tex2lyx testcase},pdfsubject={tex2lyx},
+  pdfkeywords={LyX, tex2lyx}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+
+
+\end_preamble
+\options b4paper
+\use_default_options false
+\language english
+\language_package none
+\inputencoding latin9
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing other 1.2
+\use_hyperref 0
+\papersize b4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation landscape
+\suppress_date false
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\backgroundcolor #ff5500
+\boxbgcolor #ffff00
+\leftmargin 3cm
+\topmargin 1cm
+\rightmargin 4cm
+\bottommargin 2cm
+\headheight 6cm
+\headsep 5cm
+\footskip 7cm
+\columnsep 8cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip 3mm
+\quotes_language english
+\papercolumns 2
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+Boxes
+\end_layout
+
+\begin_layout Subsection
+
+Frameless Boxes
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+mbox
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Plain Layout
+
+makebox 1
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Plain Layout
+
+makebox 2
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Frameless
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Plain Layout
+
+makebox 3
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setlength{
+\backslash
+unitlength}{.2in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{picture}
+\end_layout
+
+\end_inset
+
+(8,6) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+put
+\end_layout
+
+\end_inset
+
+(0,0)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+makebox(0,0)[tr]{
+\end_layout
+
+\end_inset
+
+AAA
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+put
+\end_layout
+
+\end_inset
+
+(8,0)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+makebox(0,0){
+\end_layout
+
+\end_inset
+
+BBB
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+put
+\end_layout
+
+\end_inset
+
+(0,8)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+framebox(0,0){
+\end_layout
+
+\end_inset
+
+x
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+put
+\end_layout
+
+\end_inset
+
+(1,0)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+line
+\end_layout
+
+\end_inset
+
+(1,0)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{picture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raisebox{8.5mm}{
+\end_layout
+
+\end_inset
+
+test
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raisebox{-6.5mm}{
+\end_layout
+
+\end_inset
+
+tset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+Framed Boxes
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Framed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+framed
+\end_layout
+
+\end_inset
+
+blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Framed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset Box Framed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+nested framed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+fbox
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+framebox{
+\end_layout
+
+\end_inset
+
+fr
+\color blue
+ame
+\color inherit
+box 1 blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+framebox 2
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Boxed
+position "c"
+hor_pos "l"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+framebox 3
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+This is an example text. 
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "s"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Plain Layout
+\align center
+
+The box content 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+is evenly distributed 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+over the 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+box height. 
+\end_layout
+
+\end_inset
+
+ This is an example text.
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box ovalbox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+ovalbox
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Ovalbox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+Ovalbox
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Shadowbox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+shadowbox
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+blabla 
+\begin_inset Box Doublebox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+doublebox
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula $\boxed{\int A=B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+LyX
+\end_layout
+
+\end_inset
+
+ Boxes
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+
+\series bold
+Note:
+\series default
+ Not all DVI-viewers are able to display rotations. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Box Shaded
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Standard
+
+Shaded background box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Box Shaded
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+
+\begin_layout Plain Layout
+
+Shaded background box, with inner minipage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+Colors
+\end_layout
+
+\begin_layout Subsection
+
+Predefined Colors
+\end_layout
+
+\begin_layout Standard
+
+test 
+\color blue
+blue
+\color inherit
+ test 
+\color red
+red red red
+\color inherit
+ test 
+\color green
+bla
+\color inherit
+
+\color magenta
+blub
+\color inherit
+ test 
+\color green
+c
+\color inherit
+
+\color red
+o
+\color inherit
+
+\color blue
+l
+\color inherit
+
+\color green
+o
+\color inherit
+
+\color red
+r
+\color inherit
+
+\end_layout
+
+\begin_layout Subsection
+
+Custom Colors
+\end_layout
+
+\begin_layout Standard
+
+test 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textcolor{darkgreen}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+dark green
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ test
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+definecolor{violet}{rgb}{0.5, 0, 1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+test 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textcolor{violet}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+violet
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ test
+\end_layout
+
+\begin_layout Section
+
+Font sizes
+\end_layout
+
+\begin_layout Standard
+
+
+\size giant
+Huge text
+\end_layout
+
+\begin_layout Standard
+
+\size giant
+
+
+\size huge
+huge text
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+
+
+\size largest
+LARGE text
+\end_layout
+
+\begin_layout Standard
+
+\size largest
+
+
+\size larger
+Large text
+\end_layout
+
+\begin_layout Standard
+
+\size larger
+
+
+\size large
+large text
+\end_layout
+
+\begin_layout Standard
+
+\size large
+
+
+\size normal
+normalsize text
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\size small
+small text
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+
+\size footnotesize
+footnotesize text
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+
+
+\size scriptsize
+scriptsize text
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+
+
+\size tiny
+tiny text
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+
+
+\size giant
+Huge text 
+\size huge
+huge text 
+\size largest
+LARGE text 
+\size larger
+Large text 
+\size large
+large text 
+\size normal
+normalsize text 
+\size small
+small text 
+\size footnotesize
+footnotesize text 
+\size scriptsize
+scriptsize text 
+\size tiny
+tiny text
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+
+
+\size normal
+Font size switches don't affect section headings!
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\size scriptsize
+bla blub
+\end_layout
+
+\begin_layout Section
+
+Font size dummy 1
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+
+bla blub
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+
+bla blub
+\end_layout
+
+\begin_layout Section*
+
+Font size dummy 2
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+
+bla blub 
+\size normal
+
+\end_layout
+
+\begin_layout Section
+
+Strikeout, underlined etc.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Emphasized: 
+\emph on
+test
+\emph default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Underbar: 
+\bar under
+test
+\bar default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Double underbar: 
+\uuline on
+test
+\uuline default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Wavy underbar: 
+\uwave on
+test
+\uwave default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Strike out: 
+\strikeout on
+test
+\strikeout default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Crossed out: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+xout
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+test
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Noun: 
+\noun on
+test
+\noun default
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Underbar, emphasized, strikeout: 
+\emph on
+
+\bar under
+
+\strikeout on
+test
+\strikeout default
+
+\bar default
+
+\emph default
+
+\end_layout
+
+\begin_layout Section
+
+Paragraph spacing
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+bla
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+
+\size normal
+
+singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+
+\size normal
+
+onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+
+\size normal
+
+onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blub
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+
+\size normal
+
+onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blablub
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing double
+
+\size normal
+
+doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing other 1.2
+
+\size normal
+
+ 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 
+\end_layout
+
+\begin_layout Section
+
+Paragraph alignment
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+bla
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size normal
+
+center single center single center single center single center single center single center single center single center single center single 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blabla
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\size normal
+
+flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\size normal
+
+flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blub
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\size normal
+
+flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blablub
+\end_layout
+
+\begin_layout Standard
+\align right
+
+\size normal
+
+flushright single flushright single flushright single flushright single flushright single flushright single flushright single flushright single 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+bla
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ centering single centering single centering single centering single centering single centering single centering single centering single
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+blabla
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+ raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raggedleft
+\end_layout
+
+\end_inset
+
+ raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%set back to justified
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+Horizontal spaces
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Lines can have an hfill 
+\begin_inset space \hfill{}
+
+\end_inset
+
+in the middle. Lines can have an hfill 
+\begin_inset space \hfill{}
+\end_inset
+
+ in the middle. Lines can have a protected hfill 
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+ in the middle. Lines can have a dotted fill 
+\begin_inset space \dotfill{}
+
+\end_inset
+
+in the middle. Lines can have a rule fill 
+\begin_inset space \hrulefill{}
+
+\end_inset
+
+in the middle. Lines can have a left arrow fill 
+\begin_inset space \leftarrowfill{}
+
+\end_inset
+
+in the middle. Lines can have a right arrow fill 
+\begin_inset space \rightarrowfill{}
+
+\end_inset
+
+in the middle. Lines can have a upbrace fill 
+\begin_inset space \upbracefill{}
+
+\end_inset
+
+in the middle. Lines can have a downbrace fill 
+\begin_inset space \downbracefill{}
+
+\end_inset
+
+in the middle. Lines can have space 
+\begin_inset space \hspace{}
+\length 2cm
+\end_inset
+
+ in the middle. Lines can have protected space 
+\begin_inset space \hspace*{}
+\length 2cm
+\end_inset
+
+ in the middle.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+We also handle defined spaces:
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Interword
+\begin_inset space \space{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Visible
+\begin_inset space \textvisiblespace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Thin
+\begin_inset space \thinspace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+NegThin
+\begin_inset space \negthinspace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+NegMed
+\begin_inset space \negmedspace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+NegThick
+\begin_inset space \negthickspace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+enspace
+\begin_inset space \enspace{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+enskip
+\begin_inset space \enskip{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+quad
+\begin_inset space \quad{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+qquad
+\begin_inset space \qquad{}
+
+\end_inset
+
+a
+\end_layout
+
+\begin_layout Subsubsection*
+
+now in math:
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+fill: 
+\begin_inset Formula $a\hfill b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+protected fill: 
+\begin_inset Formula $a\hspace*{\fill} b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+2
+\begin_inset space \thinspace{}
+
+\end_inset
+
+cm: 
+\begin_inset Formula $a\hspace*{2cm}b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+protected 2
+\begin_inset space \thinspace{}
+
+\end_inset
+
+cm: 
+\begin_inset Formula $a\hspace{1cm}b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+enskip: 
+\begin_inset Formula $a\enskip b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+enspace: 
+\begin_inset Formula $a\enspace b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+thin: 
+\begin_inset Formula $a\, b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+medium: 
+\begin_inset Formula $a\: b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+thick: 
+\begin_inset Formula $a\; b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+negative thin: 
+\begin_inset Formula $a\negthinspace b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+negative medium: 
+\begin_inset Formula $a\negmedspace b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+negative thick: 
+\begin_inset Formula $a\negthickspace b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+quad: 
+\begin_inset Formula $a\quad b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+qquad: 
+\begin_inset Formula $a\qquad b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+interword: 
+\begin_inset Formula $a\ b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+Vertical spaces
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+Lines can have a vfill 
+\begin_inset VSpace vfill
+\end_inset
+
+in the middle. Lines can have a vfill 
+\begin_inset VSpace vfill
+\end_inset
+
+ in the middle. Lines can have a protected vfill 
+\begin_inset VSpace vfill*
+\end_inset
+
+ in the middle. Lines can have vertical space 
+\begin_inset VSpace 2cm
+\end_inset
+
+ in the middle. Lines can have protected vertical space 
+\begin_inset VSpace 2cm*
+\end_inset
+
+ in the middle.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+We also handle skips:
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+bigskip 1:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+bigskip 2:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+medskip 1:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+medskip 2:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+smallskip 1:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+
+smallskip 2:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
