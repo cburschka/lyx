@@ -36,12 +36,15 @@ def main(argv):
              'box-color-size-space-align.tex', 'CJK.tex', \
              'XeTeX-polyglossia.tex']
 
+    errors = []
     for f in files:
         texfile = os.path.join(os.path.dirname(argv[0]), f)
         cmd = '%s -roundtrip -f %s' % (tex2lyx, texfile)
         if os.system(cmd) != 0:
-            error('Running `%s´ failed.' % cmd)
+            errors.append(f)
 
+    if len(errors) > 0:
+        error('Converting the following files failed: %s' % ', '.join(errors))
 
 if __name__ == "__main__":
     main(sys.argv)
