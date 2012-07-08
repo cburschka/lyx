@@ -21,12 +21,14 @@ AM_CPPFLAGS += -DTEX2LYX $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 
 TEST_FILES = \
 	test/box-color-size-space-align.tex \
+	test/CJK.tex \
 	test/DummyDocument.tex \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
 	test/test.ltx \
-	test/test-structure.tex
+	test/test-structure.tex \
+	test/XeTeX-polyglossia.tex
 
 LINKED_FILES = \
 	../Author.cpp \
