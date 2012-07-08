@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0svn
-\lyxformat 430
+\lyxformat 433
 \begin_document
 \begin_header
 \textclass article
@@ -10,6 +10,7 @@
 
 \end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \language_package none
 \inputencoding latin9
@@ -24,12 +25,17 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref 0
 \papersize a4paper
 \use_geometry false
 \use_package amsmath 2
+\use_package amssymb 0
 \use_package esint 1
 \use_package mathdots 0
 \use_package mathtools 0
@@ -64,6 +70,27 @@
 \begin_layout Title
 
 Title
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%stupid stuff
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
@@ -4582,96 +4609,22 @@ two
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" rotate="-50" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{turn}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
--50
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
 lonely
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" usebox="none">
+<cell alignment="right" valignment="top" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{sideways}
-\end_layout
-
-\end_inset
-
 lines
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{sideways}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
@@ -6642,7 +6595,10 @@ Mathematics
 \begin_layout Standard
 
 Let 
-\begin_inset Formula $f:\left[  a,b\right]  \rightarrow\mathbb{R}
+\begin_inset Formula $f:\left[  a,b\right]  \rightarrow%TCIMACRO{\U{211d} }%
+%BeginExpansion
+\mathbb{R}
+%EndExpansion
 $
 \end_inset
 

@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0svn
-\lyxformat 430
+\lyxformat 433
 \begin_document
 \begin_header
 \textclass article
@@ -39,6 +39,7 @@
 \end_preamble
 \options b4paper
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \language_package none
 \inputencoding latin9
@@ -53,12 +54,17 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing other 1.2
 \use_hyperref 0
 \papersize b4paper
 \use_geometry true
 \use_package amsmath 2
+\use_package amssymb 0
 \use_package esint 1
 \use_package mathdots 0
 \use_package mathtools 0
@@ -740,7 +746,18 @@ fr
 \color blue
 ame
 \color inherit
-box 1 blabla
+box 1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ blabla
 \end_layout
 
 \begin_layout Standard
@@ -800,7 +817,20 @@ framebox 3
 \begin_layout Standard
 
 This is an example text. 
-\begin_inset Box Boxed
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+framebox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
 position "c"
 hor_pos "c"
 has_inner_box 1
@@ -836,6 +866,17 @@ over the
 \align center
 
 box height. 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
 \end_layout
 
 \end_inset

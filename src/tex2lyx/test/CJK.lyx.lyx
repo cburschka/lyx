@@ -1,11 +1,11 @@
 #LyX file created by tex2lyx 2.1.0svn
-\lyxformat 430
+\lyxformat 433
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 
-\usepackage{CJK}\usepackage{babel}
+\usepackage{babel}
 
 
 % It is impossible to get the document language because the document could start with a command,
@@ -15,6 +15,7 @@
 
 \end_preamble
 \use_default_options false
+\maintain_unincluded_children false
 \language english
 \language_package default
 \inputencoding utf8
@@ -29,12 +30,17 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref 0
 \papersize default
 \use_geometry false
 \use_package amsmath 1
+\use_package amssymb 0
 \use_package esint 1
 \use_package mathdots 0
 \use_package mathtools 0
@@ -68,112 +74,40 @@
 
 \begin_layout Standard
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-EUC-JP
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
+\lang japanese-cjk
 
 Japanese 
-\begin_inset ERT
-status collapsed
+\end_layout
 
 \begin_layout Standard
 
-
-\backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-UTF8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
+\lang chinese-traditional
 
 Chinese traditional
+\end_layout
+
+\begin_layout Standard
+
+\lang japanese-cjk
+
+ Japanese 
+\end_layout
+
+\begin_layout Standard
+
+hello 
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-simplified
+
+Chinese simplified 
+\end_layout
+
+\begin_layout Standard
+
+
 \begin_inset ERT
 status collapsed
 
@@ -181,53 +115,7 @@ status collapsed
 
 
 \backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-EUC-JP
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
+begin{CJK}{EUC-JP}{hei}
 \end_layout
 
 \end_inset
@@ -245,195 +133,14 @@ end{CJK}
 
 \end_inset
 
- hello 
-\begin_inset ERT
-status collapsed
+
+\end_layout
 
 \begin_layout Standard
 
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-GB
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
+\lang chinese-simplified
 
 Chinese simplified 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-EUC-JP
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-hei
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
- Japanese 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-GB
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-Chinese simplified 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -446,45 +153,14 @@ status collapsed
 
 
 \backslash
-begin{CJK}
+begin{CJK}{Bg5}{}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+Big5 文鼎楷書
 
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Bg5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
- Big5 文鼎楷書 
 \begin_inset ERT
 status collapsed
 
@@ -517,45 +193,14 @@ status collapsed
 
 
 \backslash
-begin{CJK}
+begin{CJK}{SJIS}{}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+Shift_JIS 日本語の文章
 
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-SJIS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
- ShiftJIS æ¥æ¬èªã®æç«  
 \begin_inset ERT
 status collapsed
 
@@ -586,49 +231,49 @@ status collapsed
 
 
 \backslash
-begin{CJK}
+begin{CJK}{JIS}{}
 \end_layout
 
 \end_inset
 
 
+JIS-code 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{
+$
 \end_layout
 
 \end_inset
 
-JIS
+BF|K
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
+\backslash
+
 \end_layout
 
 \end_inset
 
-
+8l
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+$
 \end_layout
 
 \end_inset
 
- JIS-code 
-\begin_inset Formula $BF|K\8l$
-\end_inset
+NJ8>O(B
 
-NJ8>O(B 
 \begin_inset ERT
 status collapsed
 
@@ -646,66 +291,9 @@ end{CJK}
 
 \begin_layout Standard
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-begin{CJK}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-KS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
+\lang korean
 
 Korean 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-end{CJK}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
