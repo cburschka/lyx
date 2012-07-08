@@ -43,12 +43,18 @@ Configuration of LyX installer
 
 !define APP_NAME "LyX"
 !define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}.${APP_VERSION_BUILD}"
-!define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}"
+# for the proposed install folder we use the scheme "LyX 2.0" while we need for the registry the scheme "LyX 2.0.4"
+# to check if it is exactly this version (to support side by side installations)
+!define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}"
 !define APP_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
 !define APP_DIR "${APP_NAME} ${APP_SERIES_NAME}"
 !define APP_DIR_USERDATA "${APP_NAME}${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
+!define APP_WEBPAGE "http://www.lyx.org/"
+!define APP_WEBPAGE_INFO "${APP_NAME} Website"
+!define APP_WIKI "http://wiki.lyx.org"
+!define APP_WIKI_INFO "${APP_NAME} Wiki"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2012 by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
