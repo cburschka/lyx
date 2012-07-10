@@ -279,6 +279,7 @@ InsetLayout Caption:Above
 			margin: 1ex;
 		}
 	EndHTMLStyle
+	HTMLAttr "class='float-caption float-caption-above'"
 End
 
 
@@ -298,6 +299,7 @@ InsetLayout Caption:Below
 			margin: 1ex;
 		}
 	EndHTMLStyle
+	HTMLAttr "class='float-caption float-caption-below'"
 End
 
 
