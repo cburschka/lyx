@@ -1778,7 +1778,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 
 	if (output_preamble) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n"
+		   << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/2001/REC-MathML2-20010221/dtd/xhtml-math11-f.dtd\">\n"
 		   // FIXME Language should be set properly.
 		   << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
 		   << "<head>\n"
