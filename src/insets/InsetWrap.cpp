@@ -226,12 +226,13 @@ docstring InsetWrap::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	string const len = params_.width.asHTMLString();
 	string const width = len.empty() ? "50%" : len;
-	string const attr = "class='wrap' style='width: " + width + ";'";
-	xs << html::StartTag("div", attr);
+	InsetLayout const & il = getLayout();
+	string const tag = il.htmltag();
+	string const attr = il.htmlattr() + " style='width:" + width + ";'";
+	xs << html::StartTag(tag, attr);
 	docstring const deferred = 
 		InsetText::insetAsXHTML(xs, rp, InsetText::WriteInnerTag);
-	if (!len.empty())
-		xs << html::EndTag("div");
+	xs << html::EndTag(tag);
 	return deferred;
 }
 
