@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-04 11:41+0200\n"
+"POT-Creation-Date: 2012-07-11 20:27+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17163,6 +17163,10 @@ msgstr "Prehľad preambule"
 #: src/Buffer.cpp:3252
 msgid "Preview body"
 msgstr "Prehľad tela"
+
+#: src/Buffer.cpp:3274
+msgid "% Plaintext does not have a preamble."
+msgstr "% Prostý text nemá preambulu."
 
 #: src/Buffer.cpp:3365
 #, c-format
