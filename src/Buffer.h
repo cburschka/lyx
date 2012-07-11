@@ -676,6 +676,8 @@ public:
 	int charCount(bool with_blanks) const;
 
 private:
+	///
+	void setMathFlavor(OutputParams & op) const;
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(support::FileName const & fname);
 	///
