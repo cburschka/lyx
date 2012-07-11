@@ -3215,14 +3215,14 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
 		}
-		TexRow texrow;
-		texrow.reset();
-		texrow.newline();
-		texrow.newline();
 		// output paragraphs
-		if (params().isDocBook())
-			docbookParagraphs(text(), *this, os, runparams);
-		else if (runparams.flavor == OutputParams::HTML) {
+		if (runparams.flavor == OutputParams::LYX) {
+			Paragraph const & par = text().paragraphs()[par_begin];
+			ostringstream ods;
+			depth_type dt = par.getDepth();
+			par.write(ods, params(), dt);
+			os << from_utf8(ods.str());
+		} else if (runparams.flavor == OutputParams::HTML) {
 			XHTMLStream xs(os);
 			setMathFlavor(runparams);
 			xhtmlParagraphs(text(), *this, xs, runparams);
@@ -3232,6 +3232,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			// Probably should have some routine with a signature like them.
 			writePlaintextParagraph(*this,
 				text().paragraphs()[par_begin], os, runparams, dummy);
+		} else if (params().isDocBook()) {
+			docbookParagraphs(text(), *this, os, runparams);
 		} else {
 			// We need to validate the Buffer params' features here
 			// in order to know if we should output polyglossia
@@ -3239,28 +3241,46 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			LaTeXFeatures features(*this, params(), runparams);
 			params().validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
+			TexRow texrow;
+			texrow.reset();
+			texrow.newline();
+			texrow.newline();
 			// latex or literate
 			otexstream ots(os, texrow);
 			latexParagraphs(*this, text(), ots, runparams);
 		}
 	} else {
 		os << "% ";
-		if (output == FullSource) 
+		if (output == FullSource)
 			os << _("Preview source code");
 		else if (output == OnlyPreamble)
 			os << _("Preview preamble");
 		else if (output == OnlyBody)
 			os << _("Preview body");
 		os << "\n\n";
-		d->texrow.reset();
-		d->texrow.newline();
-		d->texrow.newline();
-		if (params().isDocBook())
-			writeDocBookSource(os, absFileName(), runparams, output);
-		else if (runparams.flavor == OutputParams::HTML)
+		if (runparams.flavor == OutputParams::LYX) {
+			ostringstream ods;
+			if (output == FullSource)
+				write(ods);
+			else if (output == OnlyPreamble)
+				params().writeFile(ods);
+			else if (output == OnlyBody)
+				text().write(ods);
+			os << from_utf8(ods.str());
+		} else if (runparams.flavor == OutputParams::HTML) {
 			writeLyXHTMLSource(os, runparams, output);
-		else {
+		} else if (runparams.flavor == OutputParams::TEXT) {
+			if (output == OnlyPreamble) {
+				os << _("% Plaintext does not have a preamble.");
+			} else
+				writePlaintextFile(*this, os, runparams);
+		} else if (params().isDocBook()) {
+				writeDocBookSource(os, absFileName(), runparams, output);
+		} else {
 			// latex or literate
+			d->texrow.reset();
+			d->texrow.newline();
+			d->texrow.newline();
 			otexstream ots(os, d->texrow);
 			writeLaTeXSource(ots, string(), runparams, output);
 		}

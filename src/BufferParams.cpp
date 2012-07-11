@@ -2181,6 +2181,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
 		result = OutputParams::LUATEX;
 	else if (dformat == "dviluatex")
 		result = OutputParams::DVILUATEX;
+	else if (dformat == "lyx")
+		result = OutputParams::LYX;
 	else {
 		// Try to determine flavor of default output format
 		vector<string> backs = backends();

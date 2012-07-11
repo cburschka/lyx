@@ -43,6 +43,8 @@ What's new
 
 - Show backends, not formats, in View>Source (bug #7652).
 
+- Allow native LyX format to be shown in View>Source.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -89,6 +91,8 @@ What's new
 - Make sure that undo restores environment depth correctly (bug 8159).
 
 - Fix enumitem module translation (bug #8201).
+
+- Set math display format when showing XHTML in View>Source.
 
 
 * DOCUMENTATION AND LOCALIZATION
