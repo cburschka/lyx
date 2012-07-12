@@ -2041,7 +2041,7 @@ Las casillas de giro rotan la celda actual, una selección o toda el cuadro
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Rotated-Table-Cells"
+reference "sec:Celdas de cuadro giradas"
 
 \end_inset
 
@@ -6238,7 +6238,7 @@ Nota
 \begin_inset space \thinspace{}
 \end_inset
 
-e., el cuadro
+ej., el cuadro
 \begin_inset space ~
 \end_inset
 
@@ -7508,7 +7508,7 @@ in, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
  3.99
 \begin_inset space \thinspace{}
 \end_inset
@@ -13756,7 +13756,7 @@ La anchura adecuada para las celdas divididas se calcula automáticamente.
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -13837,7 +13837,7 @@ Si hace falta una determinada anchura para columnas con celdas divididas,
 \series bold
 width=3cm
 \series default
- (donde 3cm puede cambiarse por la cantidad deseada).
+ (donde '3cm' puede cambiarse por la cantidad deseada).
  En el cuadro siguiente se ha puesto 4
 \begin_inset space \thinspace{}
 \end_inset
@@ -13896,7 +13896,7 @@ tabcolsep}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -16914,7 +16914,7 @@ dentro del comando
 >{ }
 \series default
 .
- Más sobre el comando 
+ El comando 
 \series bold
 >{}
 \series default
@@ -17031,7 +17031,11 @@ definecolor{nombre del color}{modelo de color}{valores de color}
 \end_layout
 
 \begin_layout Standard
-El modelo de color puede ser
+El 
+\emph on
+modelo de color
+\emph default
+ puede ser
 \end_layout
 
 \begin_layout Labeling
@@ -17050,8 +17054,12 @@ gray: gray
 \end_layout
 
 \begin_layout Standard
-y los valores de color son números separados por comas entre 0 y 1 que describen
- el factor para el color correspondiente del modelo de color.
+y los 
+\emph on
+valores de color
+\emph default
+ son números separados por comas entre 0 y 1 que describen el factor para
+ el color correspondiente del modelo de color.
 \end_layout
 
 \begin_layout Standard
@@ -17199,8 +17207,7 @@ centering}c
 
 \begin_layout Standard
 como argumento LaTeX para esta columna.
- La primera fila debe ser celeste, por tanto inserta el comando en código
- TeX
+ La primera fila debe ser cian, por tanto inserta el comando en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -17213,8 +17220,8 @@ rowcolor{cyan}
 
 \begin_layout Standard
 en la primera celda de esta fila.
- Observa que esto sobreescribe el color de la columna para la primera celda.
- La última celda de la última fila se colorea castaño insertando el comando
+ Observa que esto sobrescribe el color de la columna para la primera celda.
+ La última celda de la última fila se colorea granate insertando el comando
  en código TeX
 \end_layout
 
@@ -17489,18 +17496,12 @@ fi
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Colored Rows
-\lang spanish
-
+Filas coloreadas
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Color ! 
-\lang english
-for Rows
+Cuadros ! Color ! para filas
 \end_layout
 
 \end_inset
@@ -17510,9 +17511,7 @@ for Rows
 status collapsed
 
 \begin_layout Plain Layout
-Color ! 
-\lang english
-for Table Rows
+Color ! para filas de cuadros
 \end_layout
 
 \end_inset
@@ -17521,15 +17520,12 @@ for Table Rows
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In case every second table row needs to be colored there is an alternative
- to the method described in the previous section: One loads the package
- 
+En caso de querer colorear una de cada dos filas, hay un método alternativo
+ al descrito en la sección anterior.
+ Se carga el paquete 
 \series bold
 xcolor
 \series default
-\lang spanish
 
 \begin_inset Index idx
 status collapsed
@@ -17553,9 +17549,7 @@ vspace{4mm}
 
 \end_inset
 
-
-\lang english
- in the document preamble with the command
+ en el preámbulo del documento con el comando
 \end_layout
 
 \begin_layout Standard
@@ -17569,14 +17563,12 @@ usepackage[table]{xcolor}
 \begin_layout Standard
 
 \series bold
-\lang english
 xcolor
 \series default
- automatically loads also the package 
+ carga automáticamente el paquete 
 \series bold
 colortbl
 \series default
-\lang spanish
 
 \begin_inset Index idx
 status collapsed
@@ -17587,13 +17579,11 @@ LaTeX-paquetes ! colortbl
 
 \end_inset
 
-
-\lang english
-, so 
+, por tanto 
 \series bold
 colortbl
 \series default
- must be installed in your LaTeX-distribution, otherwise you get LaTeX-errors.
+ debe estar instalado, de lo contrario se producen errores de LaTeX.
 \end_layout
 
 \begin_layout Standard
@@ -17628,34 +17618,32 @@ colortbl
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The table rows are colored with the command
+Las filas del cuadro se colorean con el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-rowcolors[commands]{row number}{odd row color}{even row color}
+rowcolors[comandos]{número_de_fila}{color_fila_impar}{color_fila_par}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-that is either inserted in the document preamble or as TeX-Code before the
- first table to be colored.
- row
-\begin_inset space ~
-\end_inset
-
-number is the number of the first row which should be colored according
- to the odd row color.
- commands can be additional commands that are executed before every table
- row.
- So for example the command
+que se inserta en el preámbulo del documento o en código TeX delante del
+ primer cuadro a colorear.
+ 
+\emph on
+número_de_fila
+\emph default
+ es el número de la primera fila que debe colorearse con el color de fila
+ impar, 
+\emph on
+comandos
+\emph default
+ pueden ser comandos adicionales que se ejecutan antes de cada fila del
+ cuadro.
+ Por ejemplo, 
 \end_layout
 
 \begin_layout Standard
@@ -17667,21 +17655,19 @@ rowcolors{1}{white}{lightgray}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
+genera el esquema de colores del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-rowcolors"
+reference "tab:Cuadro-filas_color"
 
 \end_inset
 
 .
- The command
+ El comando
 \end_layout
 
 \begin_layout Standard
@@ -17695,37 +17681,20 @@ hline]{1}{lightgray}{cyan}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
+genera el esquema de colores del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-rowcolors-2"
+reference "tab:Cuadro-filas_color2"
 
 \end_inset
 
 .
- If odd
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color and/or even
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color are left empty, no color will be used so that the command
+ Si el color de la fila impar y/o el de la fila par se dejan vacíos no se
+ usará ningún color, de forma que el comando
 \end_layout
 
 \begin_layout Standard
@@ -17737,16 +17706,7 @@ rowcolors{1}{}{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-deletes all colors.
- 
-\series bold
-
-\backslash
-rowcolors
-\series default
- affects all tables following that command.
+deja sin color las filas de todos los cuadros siguientes.
 \end_layout
 
 \begin_layout Standard
@@ -17780,11 +17740,13 @@ status open
 \lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-rowcolors"
+name "tab:Cuadro-filas_color"
 
 \end_inset
 
-Table where every second row is colored light gray.
+
+\lang spanish
+Cuadro con filas alternas coloreadas en gris claro.
 \end_layout
 
 \end_inset
@@ -17957,16 +17919,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-rowcolors-2"
+name "tab:Cuadro-filas_color2"
 
 \end_inset
 
-Table where every second row is colored cyan and at which there is a line
- between each row.
+Cuadro con filas alternas coloreadas en cian y líneas entre las filas.
 \end_layout
 
 \end_inset
@@ -18128,9 +18087,7 @@ rowcolors{1}{}{}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-turns off the row coloring
+Desactiva el coloreado de filas
 \end_layout
 
 \end_inset
@@ -18153,7 +18110,7 @@ else
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
@@ -18882,25 +18839,19 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Rotated Table Cells
-\lang spanish
-
+Celdas de cuadro rotadas
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Rotated-Table-Cells"
+name "sec:Celdas de cuadro giradas"
 
 \end_inset
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! 
-\lang english
-Rotated Cells
+Cuadros ! Celdas rotadas
 \end_layout
 
 \end_inset
@@ -18927,10 +18878,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Not all DVI-viewers are able to display rotations.
+ No todos los visores DVI pueden mostrar rotaciones.
 \end_layout
 
 \end_inset
@@ -18939,15 +18889,13 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently LyX only offers to rotate table cells by 90
+Actualmente, LyX solo permite la rotación de celdas 90
 \begin_inset space \thinspace{}
 \end_inset
 
-° counter-clockwise.
- To rotate cells by an angle of your choice, you have to add this to the
- document preamble:
+° en sentido horario.
+ Para otros ángulos de rotación hay que añadir lo siguiente en el preámbulo
+ del documento:
 \end_layout
 
 \begin_layout Standard
@@ -18961,10 +18909,8 @@ usepackage{rotating}}{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the table cell that should be rotated, add at the beginning this command
- as TeX-code:
+En la celda que se desee rotar, se añade al principio el siguiente comando
+ en código TeX:
 \end_layout
 
 \begin_layout Standard
@@ -18976,10 +18922,12 @@ begin{turn}{ángulo}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where ángulo is the rotation angle in °.
- At the end of the cell the command
+donde 
+\emph on
+ángulo
+\emph default
+ es el ángulo de rotación en grados.
+ Al final de la celda se inserta en código TeX el comando
 \end_layout
 
 \begin_layout Standard
@@ -18991,30 +18939,18 @@ end{turn}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is inserted as TeX-code.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Table
+El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-rotated-multi"
+reference "tab:Cuadro-celdas-rotadas"
 
 \end_inset
 
- is an example where 3
-\begin_inset space ~
-\end_inset
-
-cells were rotated by 45
+ es un ejemplo con tres celdas rotadas 45
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19022,28 +18958,22 @@ cells were rotated by 45
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-rotated"
+name "tab:Cuadro-celdas-rotadas"
 
 \end_inset
 
-Table with rotated cells in the first row.
+Cuadro con celdas rotadas en la primera fila.
 \end_layout
 
 \end_inset
@@ -19054,8 +18984,6 @@ Table with rotated cells in the first row.
 \begin_layout Plain Layout
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features tabularvalignment="middle">
@@ -19067,8 +18995,6 @@ Table with rotated cells in the first row.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19081,7 +19007,7 @@ begin{turn}{45}
 
 \end_inset
 
-cups
+copas
 \begin_inset ERT
 status collapsed
 
@@ -19103,8 +19029,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19117,7 +19041,7 @@ begin{turn}{45}
 
 \end_inset
 
-plates
+platos
 \begin_inset ERT
 status collapsed
 
@@ -19139,8 +19063,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19153,7 +19075,7 @@ begin{turn}{45}
 
 \end_inset
 
-saucers
+fuentes
 \begin_inset ERT
 status collapsed
 
@@ -19177,8 +19099,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -19188,8 +19108,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 33
 \end_layout
 
@@ -19199,8 +19117,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 21
 \end_layout
 
@@ -19220,24 +19136,21 @@ end{turn}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Line breaks (shortcut 
+ Los saltos de línea (atajo 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-) are not allowed in rotated cells.
+) no están permitidos en celdas rotadas.
 \end_layout
 
 \end_inset
@@ -19246,19 +19159,13 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to rotate table cells containing line breaks, you have to put
- the cell content into a minipage or a parbox.
+Para rotar celdas de cuadro que contengan saltos de línea, hay que poner
+ el contenido de la celda en una minipágina o en un marco de párrafo.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For more about these boxes
-\lang spanish
- véase sección
+Más información acerca de estos cuadros en la sección
 \begin_inset space ~
 \end_inset
 
@@ -19277,28 +19184,29 @@ reference "sec:Marcos-de-Párrafo"
 \end_inset
 
 .
+ 
 \end_layout
 
 \end_inset
 
- If you rotate this cell by 90
+ Si esta celda se rota 90
 \begin_inset space \thinspace{}
 \end_inset
 
-° the width of the box is the height of the cell.
- Table
+°, la anchura del marco es la altura de la celda.
+ El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-rotated-multi"
+reference "tab:Cuadro-rotación-multilínea"
 
 \end_inset
 
- is an example for a rotated multiline cell where the box width was set
- to 3
+ es un ejemplo de una celda rotada con salto de línea en la que la anchura
+ del marco se ha establecido en 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19314,20 +19222,16 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-rotated-multi"
+name "tab:Cuadro-rotación-multilínea"
 
 \end_inset
 
-Table with rotated multiline cell.
+Cuadro con salto de línea en una celda rotada
 \end_layout
 
 \end_inset
@@ -19338,8 +19242,6 @@ Table with rotated multiline cell.
 \begin_layout Plain Layout
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features tabularvalignment="middle">
@@ -19351,8 +19253,6 @@ Table with rotated multiline cell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 a
 \end_layout
 
@@ -19362,8 +19262,6 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -19378,13 +19276,11 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-rotated cell
+celda rotada
 \begin_inset Newline newline
 \end_inset
 
-with line break
+con salto de línea
 \end_layout
 
 \end_inset
@@ -19398,8 +19294,6 @@ with line break
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 e
 \end_layout
 
@@ -19411,8 +19305,6 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 b
 \end_layout
 
@@ -19422,8 +19314,6 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 c
 \end_layout
 
@@ -19433,8 +19323,6 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 d
 \end_layout
 
@@ -20536,7 +20424,7 @@ A veces mejora la presentación si las entradas en las celdas de una columna
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -21235,7 +21123,11 @@ newcolumntype{nombre del formato}[número de argumentos]{comandos}
 \end_layout
 
 \begin_layout Standard
-El nombre de formato puede ser una sola letra.
+El 
+\emph on
+nombre de formato
+\emph default
+ puede ser una sola letra.
  Las letras 
 \emph on
 b, c, l, m, p
@@ -24169,9 +24061,9 @@ floatname{algorithm}{nombre}
 
 \begin_layout Standard
 donde 
-\family sans
+\emph on
 nombre
-\family default
+\emph default
  es la palabra «
 \emph on
 algoritmo
@@ -24200,9 +24092,9 @@ listof{algorithm}{nombre}
 
 \begin_layout Standard
 donde 
-\family sans
+\emph on
 nombre
-\family default
+\emph default
  es, por ejemplo, «
 \emph on
 Índice de algoritmos
@@ -24437,7 +24329,7 @@ arg   "label-insert"
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -24790,7 +24682,7 @@ reference "fig:Dos-imágenes-distorsionadas"
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -26362,7 +26254,7 @@ name "tab:Dos-subcuadros-uno-sobre"
 
 \end_inset
 
-Dos subcuadros colocados una sobre otra.
+Dos subcuadros colocados uno sobre otro.
  El cuadro (a) con 4 celdas, el (b) con 5 celdas.
 \end_layout
 
@@ -27932,7 +27824,11 @@ sidecaptionvpos{tipo de flotante}{colocación}
 
 \begin_layout Standard
 en el preámbulo o en código TeX antes del flotante.
- El tipo de flotante es 
+ El 
+\emph on
+tipo de flotante
+\emph default
+ es 
 \family sans
 figure
 \family default
@@ -27940,7 +27836,11 @@ figure
 \family sans
 table
 \family default
-, la colocación puede ser «
+, la 
+\emph on
+colocación
+\emph default
+ puede ser «
 \family sans
 t
 \family default
@@ -30144,7 +30044,7 @@ mm, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., con el comando siguiente en el preámbulo:
+ej., con el comando siguiente en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -31924,7 +31824,7 @@ Alto Es la altura del texto que está dentro del marco.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -32149,7 +32049,7 @@ Nota:
 \begin_inset space \thinspace{}
 \end_inset
 
-e., uno de ellos tiene sombreado y el otro no.
+ej., uno de ellos tiene sombreado y el otro no.
 \end_layout
 
 \end_inset
@@ -32809,7 +32709,7 @@ pt.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -33751,7 +33651,7 @@ La configuración global de párrafos se ignora en las minipáginas.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -35448,7 +35348,15 @@ scalebox{horizontal}[vertical]{contenido del marco}
 \end_layout
 
 \begin_layout Standard
-Horizontal y vertical son los factores de escala correspondientes.
+
+\emph on
+horizontal
+\emph default
+ y 
+\emph on
+vertical
+\emph default
+ son los factores de escala correspondientes.
  Si no se especifica factor vertical, su valor será el mismo que el factor
  de escala horizontal.
  
@@ -36208,7 +36116,7 @@ Nota:
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -39220,7 +39128,7 @@ reference "sec:Colocación-de-Flotantes"
 
 
 \family default
-e.
+ej.
 \begin_inset space ~
 \end_inset
 

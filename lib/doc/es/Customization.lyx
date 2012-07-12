@@ -11552,7 +11552,7 @@ PassThru 1
 
 \end_inset
 
-, esto permite emular un edtidor de texto simple (como un recuadro ERT).
+, esto permite emular un editor de texto simple (como un recuadro ERT).
 \end_layout
 
 \begin_layout Description
@@ -14329,22 +14329,13 @@ status collapsed
 
 \end_inset
 
-] Whether to include the contents of this inset in the strings generated
- for the `Outline' pane.
- One would not, for example, want the content of a footnote in a section
- header to be included in the TOC displayed in the outline, but one would
- normally want the content of a character style displayed.
- Default is false: not to include.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-UNTRANSLATED
-\end_layout
-
-\end_inset
-
-
+] Incluye o no el contenido de este inset en la cadena generada para el
+ panel 'Navegador de contorno'.
+ El no sería, por ejemplo, para que el contenido de una nota al pie en un
+ encabezado de sección no aparezca en el índice que se despliega en el navegador
+ de contorno, sin embargo, normalmente sí se incluiría el contenido de un
+ estilo de carácter.
+ Predeterminado es false: no incluir.
 \end_layout
 
 \begin_layout Description

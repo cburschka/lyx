@@ -958,14 +958,12 @@ Una flecha como
 \end_inset
 
  indica el uso de la correspondiente tecla de flecha.
- 
-\lang english
-The 
+ La tecla 
 \family sans
 Tab
 \family default
- key can often be used instead of 
-\begin_inset Formula $\to$
+ se puede usar a menudo en vez de 
+\begin_inset Formula $\rightarrow$
 \end_inset
 
  y 
@@ -974,11 +972,9 @@ Tab
 
 , y 
 \family sans
-Shift+Tab
+Mayús+Tab
 \family default
- instead of 
-\lang spanish
-
+ en vez de 
 \begin_inset Formula $\leftarrow$
 \end_inset
 
@@ -3630,7 +3626,7 @@ phantom
 
 \end_inset
 
- del submenú de espaciado de ecuaciones
+ del submenú de espacios en ecuaciones
 \begin_inset Foot
 status collapsed
 
@@ -28663,10 +28659,8 @@ reference "sub:Entorno-align-estándar"
 \end_inset
 
 .
- 
-\lang english
-The align environment is recommended because it provides in any case a typograph
-ically correct output.
+ Se recomienda el entorno align porque proporciona una salida tipográficamente
+ correcta en cualquier caso.
 \end_layout
 
 \begin_layout Standard
@@ -30543,15 +30537,12 @@ Etiqueta
 
  de la barra de herramientas.
  El cursor debe estar dentro de una ecuación en modo presentación.
+ Como alternativa, se puede hacer clic derecha sobre la fórmula y elegir
  
-\lang english
-Alternatively you can right-click on the formula and choose 
 \family sans
-Equation Label
+Etiqueta de ecuación
 \family default
 .
-
-\lang spanish
  Surge un diálogo con el prefijo 
 \series bold
 eq:
@@ -30570,7 +30561,7 @@ equation
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
+ej.
 \begin_inset space ~
 \end_inset
 
@@ -30580,13 +30571,11 @@ de las etiquetas de sección.
 Insertar\SpecialChar \menuseparator
 Etiqueta 
 \family default
-o 
-\lang english
-you right-click on a formula and then on 
+o la opción 
 \family sans
-Equation Label
+Etiqueta de ecuación
 \family default
-.
+ al hacer clic derecha sobre una fórmula.
 \end_layout
 
 \begin_layout Standard

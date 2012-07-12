@@ -1077,7 +1077,7 @@ target "http://www.ctan.org/"
  para detalles, y consulta el capítulo 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Special-features"
+reference "chap:Características-especiales"
 
 \end_inset
 
@@ -1837,7 +1837,7 @@ trucos sucios
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Special-features"
+reference "chap:Características-especiales"
 
 \end_inset
 
@@ -6432,15 +6432,11 @@ Sincronizar con salida
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that the method 
+El método 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 synctex=1
@@ -6448,14 +6444,12 @@ synctex=1
 
 \end_inset
 
- enables gzip compression.
- If your viewer does not support it, you should instead use 
+ activa compresión gzip.
+ Si el visor no lo soporta, sería mejor usar 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 synctex=-1
@@ -10621,14 +10615,12 @@ Publicaciones de Elsevier
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-See the LyX template file 
+Véase el archivo de plantilla de LyX 
 \family typewriter
 elsarticle.lyx
 \family default
 .
- It contains all infos you need.
+ Contiene la información necesaria.
 \end_layout
 
 \begin_layout Section
@@ -22500,8 +22492,6 @@ Comparar con revisión anterior...
 .
  Se pueden comparar dos revisiones determinadas o se puede simplemente comparar
  la versión actual del texto editado con revisiones anteriores (donde '
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
@@ -22511,8 +22501,6 @@ status collapsed
 
 \end_inset
 
-
-\lang spanish
 ' revisiones atrás quiere decir comparar el archivo en edición con la última
  revisión remitida).
  
@@ -24097,14 +24085,10 @@ El siguiente asunto es la presencia visible del carácter salto de línea
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Special features
-\lang spanish
-
+Características especiales
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:Special-features"
+name "chap:Características-especiales"
 
 \end_inset
 
@@ -24112,22 +24096,20 @@ name "chap:Special-features"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can do everything with LyX that you can do with LaTeX.
- However, LyX cannot support every LaTeX feature directly.
- But you can always use TeX Code.
- This chapter shows you some more special things you might want to use.
- For other special things you can do with figures, tables, floats, boxes
- and notes, have a look at the 
+Con LyX puedes hacer todo lo que puedes hacer con LateX.
+ Sin embargo, LyX no puede soportar directamente todas las características
+ de LaTeX, aunque siempre puedes usar código TeX.
+ Este capítulo muestra algunas cosas especiales que te podrían interesar.
+ Para otro tipo de cosas especiales con figuras, cuadros, flotantes, marcos
+ y notas, echa un vistazo al manual 
 \emph on
-EmbeddedObjects
+Objetos insertados
 \emph default
- manual.
+.
 \end_layout
 
 \begin_layout Section
-Columnas múltiples
+Texto en columnas múltiples
 \end_layout
 
 \begin_layout Standard
