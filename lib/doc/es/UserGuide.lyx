@@ -1414,13 +1414,12 @@ Navegar atrás
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By pressing the 
+Pulsando la tecla 
 \family sans
 F5
 \family default
- key the cursor will be vertically centered in LyX's main window.
+ el texto se desplaza de modo que el cursor queda centrado verticalmente
+ en el escritorio de LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -3844,8 +3843,8 @@ no
 El espacio entre párrafos, así como el espacio entre líneas, entre encabezado
  y texto —en definitiva, cada uno de los espacios para cada cosa— están
  precodificados en LyX.
- Como ya hemos dicho, no debes preocuparte por el espaciado que hay que
- añadir en cada caso.
+ Como ya hemos dicho, no debes preocuparte por el espacio que hay que añadir
+ en cada caso.
  LyX se ocupa de ello.
  De hecho, esos espacios verticales precodificados no son una longitud fija
  sino un rango.
@@ -14149,7 +14148,7 @@ Azul
 \family default
 , 
 \family sans
-Cyan
+Cian
 \family default
 , 
 \family sans
@@ -21732,7 +21731,7 @@ type  "icon"
 arg   "label-insert"
 \end_inset
 
- y haga referencia a ella con el menú 
+ y haz referencia a ella con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia
@@ -28569,11 +28568,7 @@ Insertar\SpecialChar \menuseparator
 \family sans
 Insertar
 \family default
- tiene 
-\lang english
-a separate entry for each of the defined indexes.
-\lang spanish
-.
+ tiene una entrada separada para cada uno de los índices definidos.
  El funcionamiento es básicamente el mismo que el del índice estándar, pero
  tiene algunas características adicionales:
 \end_layout
@@ -32374,7 +32369,7 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 , incluida en LyX).
  Por tanto, LyX puede acceder directamente a los diccionarios de sinónimos
- de OpenOffice, que están disponibles para muchos idiomas.
+ de Libre/OpenOffice, que están disponibles para muchos idiomas.
 \end_layout
 
 \begin_layout Standard
@@ -32506,15 +32501,8 @@ arg   "thesaurus-entry"
  estando seleccionada.
  Se muestra una ventana con palabras relacionadas con la anterior agrupadas
  en categorías.
- 
-\lang english
-For some languages
-\lang spanish
- el tesauro no solo muestra sinónimos, también 
-\lang english
-generic terms
-\lang spanish
- (como 
+ Para ciertos idiomas el tesauro no solo muestra sinónimos, también términos
+ genéricos (como 
 \emph on
 organismo
 \emph default
@@ -32522,35 +32510,23 @@ organismo
 \emph on
 planta
 \emph default
-), 
-\lang english
-related terms (such as 
+), términos relacionados (como 
 \emph on
-political
-\begin_inset space ~
-\end_inset
-
-theory
+teoría política
 \emph default
  por 
 \emph on
-anarchistic
+anarquismo
 \emph default
-), compounds (como 
+), compuestos (como 
 \emph on
-tree
-\begin_inset space ~
-\end_inset
-
-diagram
+diagrama en árbol
 \emph default
-, if you look for 
+ al buscar 
 \emph on
-tree
+árbol
 \emph default
-)
-\lang spanish
- y antónimos (
+) y antónimos (
 \emph on
 mujer
 \emph default
@@ -32559,9 +32535,8 @@ mujer
 hombre
 \emph default
 ).
- 
-\lang english
-Generic terms, related terms and antonyms are marked as such.
+ Los términos genéricos, los relacionados y los antónimos se marcan como
+ tales.
 \end_layout
 
 \begin_layout Standard
