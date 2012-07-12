@@ -2,44 +2,54 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass europecv
+\textclass moderncv
 \begin_preamble
-\usepackage{graphicx}
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
 
-% Define personal data
-\ecvname{Testmann, Paul}
-\ecvfootername{Paul Testmann}
-\ecvnationality{Swiss}
-\ecvdateofbirth{June 23, 1962}
-\ecvaddress{Teststreet\newline 03333 Nicecity\newline Switzerland}
-\ecvemail{testman@testman.xx}
-% the optional phnoe number is for the mobile
-\ecvtelephone[+43(0)777 7777]{+43(0)999 9999}
+% required
+\moderncvtheme[blue]{classic}
+% possible themes are "classic" and "casual"
+% optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 
-% for the gender and fax number
-%\ecvgender{male}
-%\ecvfax{fax}
+% required
+\firstname{Pablo}
+% required
+\familyname{Testman}
 
-% define text or image alignment and position:
-% in this case the image is shifted 6cm to the right
-\ecvbeforepicture{\hspace{6cm}}
+% optional, remove the line if not wanted
+\title{Curriculum Vitae}
 
-% image
-\ecvpicture[height=3cm]{CV-image}
+% optional
+% \address{street and number}{postcode city}
+% '\\' adds a line break
+\address{C/ Test 17}{03333 Ciudad\protect\\[0.1em] Suiza\protect\\[0.2em]}
 
-% define text or space after the image
-% in this case the following shifted 2cm to the image
-\ecvafterpicture{\ecvspace{-2cm}}
+% optional
+\phone{+43(0)999 9999}
+% optional
+\mobile{+43(0)999 888}
+% optional
+\fax{+43(0)999 7777}
+% optional
+\email{testman@testmail.xx}
+% optional
+\extrainfo{www.lyx.org}
 
-% if you e.g. only want the page number to be printed in the footer
-%\ecvpage{\thepage}
+% optional
+% \photo[height]{name}
+% 'height' is the height the picture is resized to
+% 'name' is the name of the picture file
+\photo[64pt]{../CV-image}
+
+% optional
+\quote{"Solo se vive una vez." (cita opcional)}
 \end_preamble
-\options nologo
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
-\inputencoding utf8x
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -56,11 +66,11 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 10
+\paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize default
-\use_geometry true
+\papersize a4paper
+\use_geometry false
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -75,12 +85,8 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
-\topmargin 2cm
-\rightmargin 2cm
-\bottommargin 3cm
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 0
+\tocdepth -1
 \paragraph_separation skip
 \defskip medskip
 \quotes_language english
@@ -96,19 +102,6 @@
 
 \begin_body
 
-\begin_layout Begin
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Keep entries with green labels empty!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -116,10 +109,10 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- The personal data like your name, image, address, etc.
- are set in the document preamble.
+ Los datos personales, nombre, foto, dirección, etc., se ponen en el preámbulo
+ del documento.
 \end_layout
 
 \end_inset
@@ -132,8 +125,14 @@ Note:
 status open
 
 \begin_layout Plain Layout
-The europecv-class offers lots of customization possibilities; to find out
- more, look at its documentation.
+La clase moderncv ofrece muchas posibilidades se personalización; algunas
+ se explican en el preámbulo de este documento.
+ Para más información echa un vistazo a la documentación del paquete LaTeX
+ 
+\series bold
+moderncv
+\series default
+.
 \end_layout
 
 \end_inset
@@ -141,12 +140,25 @@ The europecv-class offers lots of customization possibilities; to find out
 
 \end_layout
 
-\begin_layout PersonalInfo
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Inserts the personal data.
+Imprime la parte del tulo como la dirección
 \end_layout
 
 \end_inset
@@ -155,11 +167,12 @@ Inserts the personal data.
 \end_layout
 
 \begin_layout Section
-Education
+Estudios.
+ Titulos académicos
 \end_layout
 
 \begin_layout Item
-2003--2006
+2001--2005
 \begin_inset ERT
 status collapsed
 
@@ -170,94 +183,7 @@ status collapsed
 
 \end_inset
 
-Master of Economics, Institution, City, Country, Description
-\end_layout
-
-\begin_layout Item
-2001--2003
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-Bachelor of Economics, Institution, City, Country, Description
-\end_layout
-
-\begin_layout Section
-Master Thesis
-\end_layout
-
-\begin_layout BulletedItem
-Title
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\emph on
-Title of the thesis
-\end_layout
-
-\begin_layout BulletedItem
-Supervisors
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-Names of supervisors
-\end_layout
-
-\begin_layout BulletedItem
-Description
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\size small
-Description text
-\end_layout
-
-\begin_layout Section
-Experience
-\end_layout
-
-\begin_layout Item
-February 2006--current
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-Maintainer of OpenSource projects
+Licenciatura en Economía, Institución, Ciudad, País, Descripción
 \end_layout
 
 \begin_layout Item
@@ -272,32 +198,41 @@ status collapsed
 
 \end_inset
 
-Employer, Corp.
- name, City, Country
+Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Section
-Languages
+Tesis, Tesina\SpecialChar \ldots{}
+
 \end_layout
 
-\begin_layout MotherTongue
-\begin_inset Argument
+\begin_layout Item
+Título
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-10pt
+
+}{
 \end_layout
 
 \end_inset
 
-French
+
+\emph on
+Título de la tesis
+\emph default
+
+\begin_inset VSpace -0.5cm
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-The optional parameter is the vertical height behind the item; negative
- values are allowed.
- It is available for every kind of entries.
+añade espacio negativo o positivo a voluntad
 \end_layout
 
 \end_inset
@@ -305,19 +240,187 @@ The optional parameter is the vertical height behind the item; negative
 
 \end_layout
 
-\begin_layout LangHeader
-(
-\begin_inset Formula $\star$
-\end_inset
-
-)
-\begin_inset Note Note
+\begin_layout Item
+Supervisores
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Inserts the language level explanation and sets the symbol for the reference
- footnote.
- 
+
+}{
+\end_layout
+
+\end_inset
+
+Nombres de los supervisores
+\end_layout
+
+\begin_layout Item
+Descripción
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\size small
+Texto descriptivo
+\end_layout
+
+\begin_layout Section
+Experiencia
+\end_layout
+
+\begin_layout Entry
+Febrero 2006--
+\begin_inset Newline newline
+\end_inset
+
+actual
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Mantenedor de proyectos Open Source
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Mantenedor de la documentación xxx
+\end_layout
+
+\begin_layout Entry
+2005--2006
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Empleador
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Nombre Corp.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Ciudad
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+País
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Descripción
+\end_layout
+
+\begin_layout Section
+Idiomas
+\end_layout
+
+\begin_layout Language
+Español
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Nativo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
 \end_layout
 
 \end_inset
@@ -326,7 +429,7 @@ Inserts the language level explanation and sets the symbol for the reference
 \end_layout
 
 \begin_layout Language
-German
+Holandés
 \begin_inset ERT
 status collapsed
 
@@ -337,20 +440,7 @@ status collapsed
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvBTwo
-\end_layout
-
-\end_inset
-
-
+Casi nativo
 \begin_inset ERT
 status collapsed
 
@@ -361,262 +451,15 @@ status collapsed
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvCOne
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvATwo
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvATwo
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvBOne
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The language level codes can be found in the documentation of the europecv-packa
-ge.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LastLanguage
-Italian
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvATwo
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvBOne
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvAOne
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvAOne
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ecvAOne
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LangFooter
-(
-\begin_inset Formula $\star$
-\end_inset
-
-)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The footer and header should be the same character.
-\end_layout
-
-\end_inset
-
-
+Título en educación primaria en un colegio holandés
 \end_layout
 
 \begin_layout Section
-Computer skills
+Conocimientos de informática
 \end_layout
 
-\begin_layout Item
-\begin_inset Argument
-status collapsed
-
-\begin_layout Plain Layout
-2.5ex
-\end_layout
-
-\end_inset
-
-OS
+\begin_layout Computer
+Sistemas
 \begin_inset ERT
 status collapsed
 
@@ -627,11 +470,33 @@ status collapsed
 
 \end_inset
 
-Linux, Unix, Windows, administration, Apache, Mailman
+Linux, Unix, Windows
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
 \end_layout
 
-\begin_layout Item
-Programming
+\end_inset
+
+Administración
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Apache, Mailman
+\end_layout
+
+\begin_layout Computer
+Programación
 \begin_inset ERT
 status collapsed
 
@@ -646,20 +511,7 @@ status collapsed
 \shape smallcaps
 Java
 \shape default
-, C/C++, scripting, PHP, Shell, Ruby
-\end_layout
-
-\begin_layout Item
-\begin_inset Argument
-status collapsed
-
-\begin_layout Plain Layout
-2.5ex
-\end_layout
-
-\end_inset
-
-Scientific
+, C/C++
 \begin_inset ERT
 status collapsed
 
@@ -670,15 +522,63 @@ status collapsed
 
 \end_inset
 
-Matlab, Autocad, Abaqus, typography, LaTeX, ConTeXt, Scribus, QuarkXPress
+Scripting
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
 \end_layout
 
-\begin_layout Item
+\end_inset
+
+PHP, Shell, Ruby
+\end_layout
+
+\begin_layout Computer
+Científicos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Matlab, AutoCAD, Abaqus
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Tipografía
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+LaTeX, ConTeXt, Scribus, QuarkXPress
+\end_layout
+
+\begin_layout Computer
+Diseño
+\begin_inset space ~
+\end_inset
+
 Web
-\begin_inset space ~
-\end_inset
-
-design
 \begin_inset ERT
 status collapsed
 
@@ -689,28 +589,37 @@ status collapsed
 
 \end_inset
 
-XHTML, CSS, AJAX, database, MySQL, PostgreSQL
-\end_layout
-
-\begin_layout Section
-Interests
-\end_layout
-
-\begin_layout Item
-\begin_inset Argument
+XHTML, CSS, AJAX
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-2.5ex
+
+}{
 \end_layout
 
 \end_inset
 
-Adventure
-\begin_inset space ~
+Bases de datos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
 \end_inset
 
-sports
+MySQL, PostgreSQL
+\end_layout
+
+\begin_layout Section
+Aficiones
+\end_layout
+
+\begin_layout Item
+Deportes
 \begin_inset ERT
 status collapsed
 
@@ -723,21 +632,12 @@ status collapsed
 
 
 \size small
-I like practicing adventure sports like skiing, rock climbing and scuba
- diving, and have been a boy scout for five years.
+Practico deportes como esquí, montañismo y submarinismo; he sido boy scout
+ durante cinco años.
 \end_layout
 
 \begin_layout Item
-\begin_inset Argument
-status collapsed
-
-\begin_layout Plain Layout
-2.5ex
-\end_layout
-
-\end_inset
-
-Travelling
+Viajes
 \begin_inset ERT
 status collapsed
 
@@ -750,15 +650,52 @@ status collapsed
 
 
 \size small
-I love travelling around the world.
+Me gusta viajar por todo el mundo.
 \end_layout
 
 \begin_layout Section
-Publications
+Sección con una lista
 \end_layout
 
-\begin_layout Item
-References
+\begin_layout ListItem
+Ítem sencillo
+\end_layout
+
+\begin_layout ListItem
+Otro ítem sencillo.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Sub-ítem.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout DoubleItem
+Doble\SpecialChar \ldots{}
+
 \begin_inset ERT
 status collapsed
 
@@ -769,47 +706,141 @@ status collapsed
 
 \end_inset
 
-[1] Helmut Kopka and Patrick W.
+\SpecialChar \ldots{}
+ ítem.
+\end_layout
+
+\begin_layout DoubleItem
+Otro doble\SpecialChar \ldots{}
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+\SpecialChar \ldots{}
+ ítem.
+\end_layout
+
+\begin_layout Subsection
+Subsección
+\end_layout
+
+\begin_layout ListItem
+ítem en una subsección
+\end_layout
+
+\begin_layout CloseSection
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Esto acaba el entorno sección.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+¡Las entradas con etiqueta verde se dejan vacías!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sección con su propio contenido
+\end_layout
+
+\begin_layout Standard
+Aquí va el contenido, en un entorno sin formato.
+ Aquí puedes usar, por ejemplo, ecuaciones matemáticas 
+\begin_inset Formula 
+\[
+E=mc^{2}
+\]
+
+\end_inset
+
+cuadros, figuras, etc.
+\end_layout
+
+\begin_layout EmptySection
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Crea una sección sin encabezado.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Item
+Ahora
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Volvemos al formato moderncv, sin poner sección nueva
+\end_layout
+
+\begin_layout CloseSection
+
+\end_layout
+
+\begin_layout Standard
+Puedes usar bibitems:
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "latexguide"
+
+\end_inset
+
+Helmut Kopka and Patrick W.
  Daly: 
 \emph on
 A Guide to LaTeX Fourth Edition.
 
 \emph default
  Addison-Wesley, 2003
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newline%
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newline%
-\end_layout
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "latexbook"
 
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-[2] Leslie Lamport: 
+Leslie Lamport: 
 \emph on
 LaTeX: A Document Preparation System.
 
@@ -817,51 +848,19 @@ LaTeX: A Document Preparation System.
  Addison-Wesley, second edition, 1994
 \end_layout
 
-\begin_layout Section
-Publications
+\begin_layout Standard
+o referencias BibTeX:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-You can also use BibTeX references:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Item
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace -1cm*
-\end_inset
-
-
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintAll"
-bibfiles "biblioExample"
+bibfiles "../biblioExample"
 options "plain"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout End
 
 \end_layout
 
