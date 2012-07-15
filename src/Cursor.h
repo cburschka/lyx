@@ -34,9 +34,61 @@ class Row;
 class InsetMathUnknown;
 class Encoding;
 
+/**
+ * This class describes the position of a cursor within a document,
+ * but does not contain any detail about the view. It is currently
+ * only used to save cursor position in Undo, but culd be extended to
+ * handle the methods that only need this data.
+ **/
+class CursorData : public DocIterator
+{
+public:
+	///
+	CursorData();
+	///
+	explicit CursorData(Buffer * buffer);
+	///
+	explicit CursorData(DocIterator const & dit);
+protected:
+	/// the anchor position
+	DocIterator anchor_;
+	/// the start of the new born word
+	DocIterator new_word_;
+	///
+	mutable DispatchResult disp_;
+	/// do we have a selection?
+	bool selection_;
+	/// are we on the way to get one?
+	bool mark_;
+	/// are we in word-selection mode? This is set when double clicking.
+	bool word_selection_;
+	/// If true, we are behind the previous char, otherwise we are in front
+	// of the next char. This only make a difference when we are in front
+	// of a big inset spanning a whole row and computing coordinates for
+	// displaying the cursor.
+	bool logicalpos_;
+
+// FIXME: make them protected.
+public:
+	/// the current font settings
+	Font current_font;
+	/// the current font
+	Font real_current_font;
+
+protected:
+
+	//
+	// math specific stuff that could be promoted to "global" later
+	//
+	/// do we allow autocorrection
+	bool autocorrect_;
+	/// are we entering a macro name?
+	bool macromode_;
+};
+
 
 /// The cursor class describes the position of a cursor within a document.
-class Cursor : public DocIterator
+class Cursor : public CursorData
 {
 public:
 	/// create the cursor of a BufferView
@@ -60,6 +112,8 @@ public:
 	bool popForward();
 	/// make sure we are outside of given inset
 	void leaveInset(Inset const & inset);
+	/// set the cursor data
+	void setCursorData(CursorData const & data);
 	/// sets cursor part
 	void setCursor(DocIterator const & it);
 	/// sets the cursor to the normalized selection anchor
@@ -320,10 +374,6 @@ private:
 private:
 	///
 	BufferView * bv_;
-	/// the anchor position
-	DocIterator anchor_;
-	/// the start of the new born word
-	DocIterator new_word_;
 	///
 	mutable DispatchResult disp_;
 	/**
@@ -341,41 +391,11 @@ private:
 	int x_target_;
 	/// if a x_target cannot be hit exactly in a text, put the difference here
 	int textTargetOffset_;
-	/// do we have a selection?
-	bool selection_;
-	/// are we on the way to get one?
-	bool mark_;
-	/// are we in word-selection mode? This is set when double clicking.
-	bool word_selection_;
-	/// If true, we are behind the previous char, otherwise we are in front
-	// of the next char. This only make a difference when we are in front
-	// of a big inset spanning a whole row and computing coordinates for
-	// displaying the cursor.
-	bool logicalpos_;
 	/// position before dispatch started
 	DocIterator beforeDispatchCursor_;
 	/// cursor screen coordinates before dispatch started
 	int beforeDispatchPosX_;
 	int beforeDispatchPosY_;
-
-
-// FIXME: make them private.
-public:
-	/// the current font settings
-	Font current_font;
-	/// the current font
-	Font real_current_font;
-
-private:
-
-	//
-	// math specific stuff that could be promoted to "global" later
-	//
-	/// do we allow autocorrection
-	bool autocorrect_;
-	/// are we entering a macro name?
-	bool macromode_;
-
 
 ///////////////////////////////////////////////////////////////////
 //

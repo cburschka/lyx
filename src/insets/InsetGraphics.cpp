@@ -1164,7 +1164,7 @@ void unifyGraphicsGroups(Buffer & b, string const & argument)
 			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
 			InsetGraphicsParams inspar = ins.getParams();
 			if (params.groupId == inspar.groupId) {
-				b.undo().recordUndo(it);
+				b.undo().recordUndo(CursorData(it));
 				params.filename = inspar.filename;
 				ins.setParams(params);
 			}

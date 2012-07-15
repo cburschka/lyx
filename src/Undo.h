@@ -23,7 +23,7 @@ namespace lyx {
 
 class Buffer;
 class BufferParams;
-class DocIterator;
+class CursorData;
 class Inset;
 class MathData;
 class ParagraphList;
@@ -57,10 +57,10 @@ public:
 	void clear();
 
 	/// this will undo the last action - returns false if no undo possible
-	bool textUndo(DocIterator &);
+	bool textUndo(CursorData &);
 
 	/// this will redo the last undo - returns false if no redo possible
-	bool textRedo(DocIterator &);
+	bool textRedo(CursorData &);
 
 	/// End a sequence of INSERT_UNDO or DELETE_UNDO type of undo
 	/// operations (grouping of consecutive characters insertion/deletion).
@@ -85,7 +85,7 @@ public:
 	void endUndoGroup();
 
 	/// end the current undo group and set UndoElement::cur_after if necessary.
-	void endUndoGroup(DocIterator const &);
+	void endUndoGroup(CursorData const &);
 
 	/// The general case: record undo information for an arbitrary range.
 	/**
@@ -95,25 +95,25 @@ public:
 	 * changes to the paragraph, and it will record the original
 	 * information of the paragraphs in the undo stack.
 	 */
-	void recordUndo(DocIterator const & cur, UndoKind kind,
+	void recordUndo(CursorData const & cur, UndoKind kind,
 		pit_type from, pit_type to);
 
 	/// Convenience: record undo information for the range between
 	/// 'from' and cursor.
-	void recordUndo(DocIterator const & cur, UndoKind kind, pit_type from);
+	void recordUndo(CursorData const & cur, UndoKind kind, pit_type from);
 
 	/// Convenience: record undo information for the single
 	/// paragraph or cell containing the cursor.
-	void recordUndo(DocIterator const & cur, UndoKind kind = ATOMIC_UNDO);
+	void recordUndo(CursorData const & cur, UndoKind kind = ATOMIC_UNDO);
 
 	/// Convenience: record undo information for the inset
 	/// containing the cursor.
-	void recordUndoInset(DocIterator const & cur,
+	void recordUndoInset(CursorData const & cur,
 			     UndoKind kind = ATOMIC_UNDO,
 			     Inset const * inset = 0);
 
 	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullDocument(DocIterator const & cur);
+	void recordUndoFullDocument(CursorData const & cur);
 
 private:
 	struct Private;

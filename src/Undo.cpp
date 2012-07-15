@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
-#include "DocIterator.h"
+#include "Cursor.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "Text.h"
@@ -65,7 +65,7 @@ where to insert the stored bits when performining undo.
 struct UndoElement
 {
 	///
-	UndoElement(UndoKind kin, StableDocIterator const & cb, 
+	UndoElement(UndoKind kin, CursorData const & cb, 
 	            StableDocIterator const & cel,
 	            pit_type fro, pit_type en, ParagraphList * pl, 
 	            MathData * ar, BufferParams const & bp, 
@@ -103,9 +103,9 @@ struct UndoElement
 	/// Which kind of operation are we recording for?
 	UndoKind kind;
 	/// the position of the cursor before recordUndo
-	StableDocIterator cur_before;
+	CursorData cur_before;
 	/// the position of the cursor at the end of the undo group
-	StableDocIterator cur_after;
+	CursorData cur_after;
 	/// the position of the cell described
 	StableDocIterator cell;
 	/// counted from begin of cell
@@ -188,17 +188,17 @@ struct Undo::Private
 				   group_id(0), group_level(0) {}
 	
 	// Do one undo/redo step
-	void doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack, 
+	void doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack, 
 			      UndoElementStack & otherStack);
 	// Apply one undo/redo group. Returns false if no undo possible.
-	bool textUndoOrRedo(DocIterator & cur, bool isUndoOperation);
+	bool textUndoOrRedo(CursorData & cur, bool isUndoOperation);
 
 	///
 	void doRecordUndo(UndoKind kind,
 		DocIterator const & cell,
 		pit_type first_pit,
 		pit_type last_pit,
-		StableDocIterator const & cur,
+		CursorData const & cur,
 		bool isFullBuffer,
 		UndoElementStack & stack);
 	///
@@ -206,7 +206,7 @@ struct Undo::Private
 		DocIterator const & cell,
 		pit_type first_pit,
 		pit_type last_pit,
-		DocIterator const & cur,
+		CursorData const & cur,
 		bool isFullBuffer);
 
 	///
@@ -291,7 +291,7 @@ static bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
 void Undo::Private::doRecordUndo(UndoKind kind,
 	DocIterator const & cell,
 	pit_type first_pit, pit_type last_pit,
-	StableDocIterator const & cur_before,
+	CursorData const & cur_before,
 	bool isFullBuffer,
 	UndoElementStack & stack)
 {
@@ -316,7 +316,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	    && stack.top().from == from
 	    && stack.top().end == end) {
 		// reset cur_after; it will be filled correctly by endUndoGroup.
-		stack.top().cur_after = StableDocIterator();
+		stack.top().cur_after = CursorData();
 		return;
 	}
 
@@ -356,7 +356,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 void Undo::Private::recordUndo(UndoKind kind,
 			       DocIterator const & cell,
 			       pit_type first_pit, pit_type last_pit,
-			       DocIterator const & cur,
+			       CursorData const & cur,
 			       bool isFullBuffer)
 {
 	LASSERT(first_pit <= cell.lastpit(), /**/);
@@ -378,7 +378,7 @@ void Undo::Private::recordUndo(UndoKind kind,
 }
 
 
-void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack, UndoElementStack & otherstack)
+void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack, UndoElementStack & otherstack)
 {
 	// Adjust undo stack and get hold of current undo data.
 	UndoElement & undo = stack.top();
@@ -446,8 +446,8 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	LASSERT(undo.pars == 0, /**/);
 	LASSERT(undo.array == 0, /**/);
 
-	if (undo.cur_before.size())
-		cur = undo.cur_before.asDocIterator(&buffer_);
+	if (!undo.cur_before.empty())
+		cur = undo.cur_before;
 	if (undo.lyx_clean)
 		buffer_.markClean();
 	else
@@ -457,7 +457,7 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 }
 
 
-bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
+bool Undo::Private::textUndoOrRedo(CursorData & cur, bool isUndoOperation)
 {
 	undo_finished_ = true;
 
@@ -486,13 +486,13 @@ void Undo::finishUndo()
 }
 
 
-bool Undo::textUndo(DocIterator & cur)
+bool Undo::textUndo(CursorData & cur)
 {
 	return d->textUndoOrRedo(cur, true);
 }
 
 
-bool Undo::textRedo(DocIterator & cur)
+bool Undo::textRedo(CursorData & cur)
 {
 	return d->textUndoOrRedo(cur, false);
 }
@@ -521,10 +521,10 @@ void Undo::endUndoGroup()
 }
 
 
-void Undo::endUndoGroup(DocIterator const & cur)
+void Undo::endUndoGroup(CursorData const & cur)
 {
 	endUndoGroup();
-	if (!d->undostack_.empty() && !d->undostack_.top().cur_after.size())
+	if (!d->undostack_.empty() && d->undostack_.top().cur_after.empty())
 		d->undostack_.top().cur_after = cur;
 }
 
@@ -533,13 +533,13 @@ void Undo::endUndoGroup(DocIterator const & cur)
 // Private::recordUndo public as sole interface. The code in the
 // convenience functions can move to Cursor.cpp.
 
-void Undo::recordUndo(DocIterator const & cur, UndoKind kind)
+void Undo::recordUndo(CursorData const & cur, UndoKind kind)
 {
 	d->recordUndo(kind, cur, cur.pit(), cur.pit(), cur, false);
 }
 
 
-void Undo::recordUndoInset(DocIterator const & cur, UndoKind kind,
+void Undo::recordUndoInset(CursorData const & cur, UndoKind kind,
 			   Inset const * inset)
 {
 	if (!inset || inset == &cur.inset()) {
@@ -553,20 +553,20 @@ void Undo::recordUndoInset(DocIterator const & cur, UndoKind kind,
 }
 
 
-void Undo::recordUndo(DocIterator const & cur, UndoKind kind, pit_type from)
+void Undo::recordUndo(CursorData const & cur, UndoKind kind, pit_type from)
 {
 	d->recordUndo(kind, cur, cur.pit(), from, cur, false);
 }
 
 
-void Undo::recordUndo(DocIterator const & cur, UndoKind kind,
+void Undo::recordUndo(CursorData const & cur, UndoKind kind,
 	pit_type from, pit_type to)
 {
 	d->recordUndo(kind, cur, from, to, cur, false);
 }
 
 
-void Undo::recordUndoFullDocument(DocIterator const & cur)
+void Undo::recordUndoFullDocument(CursorData const & cur)
 {
 	// This one may happen outside of the main undo group, so we
 	// put it in its own subgroup to avoid complaints.

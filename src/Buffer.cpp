@@ -24,6 +24,7 @@
 #include "Chktex.h"
 #include "Converter.h"
 #include "Counters.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "DocIterator.h"
 #include "Encoding.h"
@@ -2353,7 +2354,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			if (it->lyxCode() == BRANCH_CODE) {
 				InsetBranch & ins = static_cast<InsetBranch &>(*it);
 				if (ins.branch() == oldname) {
-					undo().recordUndo(it);
+					undo().recordUndo(CursorData(it));
 					ins.rename(newname);
 					success = true;
 					continue;
@@ -4442,7 +4443,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 			 * non-const. This would however be costly in
 			 * terms of code duplication.
 			 */
-			const_cast<Buffer *>(this)->undo().recordUndo(parit);
+			const_cast<Buffer *>(this)->undo().recordUndo(CursorData(parit));
 			parit->params().depth(maxdepth);
 		}
 		maxdepth = parit->getMaxDepthAfter();

@@ -250,13 +250,32 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 } // namespace anon
 
 
+CursorData::CursorData()
+	: DocIterator(), anchor_(),
+	  selection_(false), mark_(false), word_selection_(false),
+	  logicalpos_(false), current_font(inherit_font)
+{}
+
+
+CursorData::CursorData(Buffer * buffer)
+	: DocIterator(buffer), anchor_(),
+	  selection_(false), mark_(false), word_selection_(false),
+	  logicalpos_(false), current_font(inherit_font)
+{}
+
+
+CursorData::CursorData(DocIterator const & dit)
+	: DocIterator(dit), anchor_(),
+	  selection_(false), mark_(false), word_selection_(false),
+	  logicalpos_(false), current_font(inherit_font)
+{}
+
+
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
-	: DocIterator(&bv.buffer()), bv_(&bv), anchor_(),
-	  x_target_(-1), textTargetOffset_(0),
-	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font)
+	: CursorData(&bv.buffer()), bv_(&bv), 
+	  x_target_(-1), textTargetOffset_(0)
 {}
 
 
@@ -276,6 +295,25 @@ void Cursor::reset()
 void Cursor::setCursor(DocIterator const & cur)
 {
 	DocIterator::operator=(cur);
+}
+
+
+void Cursor::setCursorToAnchor()
+{
+	if (selection()) {
+		DocIterator normal = anchor_;
+		while (depth() < normal.depth())
+			normal.pop_back();
+		if (depth() < anchor_.depth() && top() <= anchor_[depth() - 1])
+			++normal.pos();
+		setCursor(normal);
+	}
+}
+
+
+void Cursor::setCursorData(CursorData const & data)
+{
+	CursorData::operator=(data);
 }
 
 
@@ -502,19 +540,6 @@ void Cursor::resetAnchor()
 {
 	anchor_ = *this;
 	checkNewWordPosition();
-}
-
-
-void Cursor::setCursorToAnchor()
-{
-	if (selection()) {
-		DocIterator normal = anchor_;
-		while (depth() < normal.depth())
-			normal.pop_back();
-		if (depth() < anchor_.depth() && top() <= anchor_[depth() - 1])
-			++normal.pos();
-		setCursor(normal);
-	}
 }
 
 
@@ -2373,13 +2398,8 @@ void Cursor::setCurrentFont()
 
 bool Cursor::textUndo()
 {
-	DocIterator dit = *this;
-	// Undo::textUndo() will modify dit.
-	if (!buffer()->undo().textUndo(dit))
+	if (!buffer()->undo().textUndo(*this))
 		return false;
-	// Set cursor
-	setCursor(dit);
-	clearSelection();
 	fixIfBroken();
 	return true;
 }
@@ -2387,13 +2407,8 @@ bool Cursor::textUndo()
 
 bool Cursor::textRedo()
 {
-	DocIterator dit = *this;
-	// Undo::textRedo() will modify dit.
-	if (!buffer()->undo().textRedo(dit))
+	if (!buffer()->undo().textRedo(*this))
 		return false;
-	// Set cursor
-	setCursor(dit);
-	clearSelection();
 	fixIfBroken();
 	return true;
 }

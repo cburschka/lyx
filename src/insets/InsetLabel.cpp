@@ -111,7 +111,7 @@ void InsetLabel::updateReferences(docstring const & old_label,
 	Buffer::References::iterator it = refs.begin();
 	Buffer::References::iterator end = refs.end();
 	for (; it != end; ++it) {
-		buffer().undo().recordUndo(it->second);
+		buffer().undo().recordUndo(CursorData(it->second));
 		if (it->first->lyxCode() == MATH_REF_CODE) {
 			InsetMathRef * mi = it->first->asInsetMath()->asRefInset();
 			mi->changeTarget(new_label);
