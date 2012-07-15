@@ -1702,7 +1702,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_CLOSE_TAB_GROUP:
-		enable = d.currentTabWorkArea();
+		enable = d.tabWorkAreaCount() > 1;
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE: {
