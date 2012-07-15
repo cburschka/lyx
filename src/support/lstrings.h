@@ -229,6 +229,7 @@ docstring const ltrim(docstring const & a, char const * p = " ");
     will be the whole of the string if no delimiter is found.
     The return value is what follows delim, if anything. So the return
     value is the null string if no delimiter is found.
+    'a' and 'piece' must be different variables.
     Examples:
     \code
     s1= "a;bc"; s2= ""
