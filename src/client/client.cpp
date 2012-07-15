@@ -16,6 +16,7 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 #include "support/unicode.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -73,6 +74,21 @@ struct LyXRC {
 // Keep the linker happy on Windows
 void lyx_exit(int)
 {}
+
+// Dummy language support
+Messages const & getGuiMessages()
+{
+	static Messages lyx_messages;
+
+	return lyx_messages;
+}
+
+
+Messages const & getMessages(string const &)
+{
+	return getGuiMessages();
+}
+
 
 namespace support {
 

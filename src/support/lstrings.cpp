@@ -1296,12 +1296,6 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
-string const languageTestString()
-{
-	return N_("[[Replace with the code of your language]]");
-}
-
-
 template<>
 docstring bformat(docstring const & fmt, int arg1)
 {

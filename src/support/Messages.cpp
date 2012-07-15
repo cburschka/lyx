@@ -22,19 +22,18 @@
 
 #include <cerrno>
 
+#  define N_(str) (str)              // for marking strings to be translated
+
 using namespace std;
 
 namespace lyx {
-
-// Instanciate static member.
-string Messages::main_lang_;
 
 void cleanTranslation(docstring & trans) 
 {
 	/*
 	  Some english words have different translations, depending on
 	  context. In these cases the original string is augmented by
-	  context information (e.g. "To:[[as in 'From page x to page
+	  context information (e.g. "To:[[[as in 'From page x to page
 	  y']]" and "To:[[as in 'From format x to format y']]". This
 	  means that we need to filter out everything in double square
 	  brackets at the end of the string, otherwise the user sees
@@ -68,22 +67,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-void Messages::setDefaultLanguage()
-{
-	char const * env_lang[5] = {"LANGUAGE", "LC_ALL", "LC_MESSAGES",
-		"LC_MESSAGE", "LANG"};
-	for (size_t i = 0; i != 5; ++i) {
-		string const lang = getEnv(env_lang[i]);
-		if (lang.empty())
-			continue;
-		Messages::main_lang_ = lang;
-		return;
-	}
-	// Not found!
-	LYXERR(Debug::LOCALE, "Default language not found!");
-}
-
-
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
 	: lang_(l), warned_(false)
@@ -113,17 +96,25 @@ void Messages::init()
 	}
 
 	textdomain(PACKAGE);
+}
 
-	// Reset default language;
-	setDefaultLanguage();
+
+string Messages::language() const
+{
+	// get the language from the gmo file
+	string const test = N_("[[Replace with the code of your language]]");
+	string const trans = to_utf8(get(test));
+	if (trans == test) {
+		LYXERR0("Something is weird.");
+		return string();
+	} else
+		return trans;
 }
 
 
 bool Messages::available() const
 {
-	string const test = languageTestString();
-	string const trans = to_utf8(get(test));
-	return !trans.empty() && trans != test;
+	return !language().empty();
 }
 
 

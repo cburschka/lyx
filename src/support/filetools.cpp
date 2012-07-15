@@ -30,6 +30,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/Messages.h"
 #include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
@@ -282,7 +283,7 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 	   each po file is able to tell us its name. (JMarc)
 	*/
 
-	string lang = to_ascii(_(languageTestString()));
+	string lang = getGuiMessages().language();
 	string const language = getEnv("LANGUAGE");
 	if (!lang.empty() && !language.empty())
 		lang = language;

@@ -141,10 +141,6 @@ struct LyX::Impl
 {
 	Impl() : spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
 	{
-		// Set the default User Interface language as soon as possible.
-		// The language used will be derived from the environment
-		// variables.
-		messages_["GUI"] = Messages();
 	}
 
 	~Impl()
@@ -262,25 +258,6 @@ Messages & LyX::messages(string const & language)
 
 	LASSERT(result.second, /**/);
 	return result.first->second;
-}
-
-
-void setRcGuiLanguage()
-{
-	LASSERT(singleton_, /**/);
-	if (lyxrc.gui_language == "auto")
-		return;
-	Language const * language = languages.getLanguage(lyxrc.gui_language);
-	if (language) {
-		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << language->code());
-		if (!setEnv("LANGUAGE", language->code()))
-			LYXERR(Debug::LOCALE, "\t... failed!");
-	}
-	LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
-	if (!setEnv("LC_ALL", "en_US"))
-		LYXERR(Debug::LOCALE, "\t... failed!");
-	Messages::init();
-	singleton_->pimpl_->messages_["GUI"] = Messages();
 }
 
 
@@ -753,9 +730,6 @@ bool LyX::init()
 	if (!readRcFile("lyxrc.dist"))
 		return false;
 
-	// Set the language defined by the distributor.
-	setRcGuiLanguage();
-
 	// Set the PATH correctly.
 #if !defined (USE_POSIX_PACKAGING)
 	// Add the directory containing the LyX executable to the path
@@ -796,9 +770,6 @@ bool LyX::init()
 	// Read lyxrc.dist again to be able to override viewer auto-detection.
 	readRcFile("lyxrc.dist");
 
-	// Set again the language defined by the distributor.
-	setRcGuiLanguage();
-
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	pimpl_->system_converters_ = pimpl_->converters_;
@@ -813,9 +784,6 @@ bool LyX::init()
 		return false;
 	if (!readLanguagesFile("languages"))
 		return false;
-
-	// Set the language defined by the user.
-	setRcGuiLanguage();
 
 	LYXERR(Debug::INIT, "Reading layouts...");
 	// Load the layouts
@@ -1396,7 +1364,19 @@ Messages const & getMessages(string const & language)
 Messages const & getGuiMessages()
 {
 	LASSERT(singleton_, /**/);
-	return singleton_->pimpl_->messages_["GUI"];
+	// A cache to translate full language name to language code
+	static string last_language = "auto";
+	static string code;
+	if (lyxrc.gui_language != last_language) {
+		if (lyxrc.gui_language == "auto")
+			code.clear();
+		else {
+			Language const * l = languages.getLanguage(lyxrc.gui_language);
+			code = l ? l->code() : string();
+		}
+		last_language = lyxrc.gui_language;
+	}
+	return singleton_->messages(code);
 }
 
 
