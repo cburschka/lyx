@@ -230,6 +230,7 @@ InsetLayout Listings
 	FreeSpacing           true
 	ForceLTR              true
 	RefPrefix             lst
+	HTMLTag               pre
 End
 
 InsetLayout Branch

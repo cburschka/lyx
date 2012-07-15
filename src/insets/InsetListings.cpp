@@ -280,11 +280,18 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 			    << caption << html::EndTag("div");
 	}
 
-	out << html::StartTag("pre");
+	InsetLayout const & il = getLayout();
+	string const tag = il.htmltag();
+	string attr = "class ='listings";
+	string const lang = params().getParamValue("language");
+	if (!lang.empty())
+		attr += " " + lang;
+	attr += "'";
+	out << html::StartTag(tag, attr);
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
 	docstring def = InsetText::insetAsXHTML(out, newrp, InsetText::JustText);
-	out << html::EndTag("pre");
+	out << html::EndTag(tag);
 
 	if (isInline) {
 		out << html::CompTag("br");
