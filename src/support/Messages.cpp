@@ -33,7 +33,7 @@ void cleanTranslation(docstring & trans)
 	/*
 	  Some english words have different translations, depending on
 	  context. In these cases the original string is augmented by
-	  context information (e.g. "To:[[[as in 'From page x to page
+	  context information (e.g. "To:[[as in 'From page x to page
 	  y']]" and "To:[[as in 'From format x to format y']]". This
 	  means that we need to filter out everything in double square
 	  brackets at the end of the string, otherwise the user sees
