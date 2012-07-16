@@ -82,8 +82,8 @@ public:
 	/// set layout over selection
 	void setLayout(pit_type start, pit_type end,
 		docstring const & layout);
-	/// Set given layout to current cursor position.
-	/// FIXME: replace Cursor with DocIterator.
+	/// Set given layout to current cursor position or selection.
+	/// Handles undo.
 	void setLayout(Cursor & cur, docstring const & layout);
 
 	/// what type of depth change to make
@@ -343,10 +343,6 @@ private:
 	/// The InsetText owner shall have access to everything.
 	friend class InsetText;
 
-	/// return past-the-last paragraph influenced by a layout
-	/// change on pit
-	pit_type undoSpan(pit_type pit);
-
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	static void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
@@ -375,7 +371,7 @@ private:
 	void readParagraph(Paragraph & par, Lexer & lex, ErrorList & errorList);
 	/// Set Label Width string to all paragraphs of the same layout
     /// and depth in a sequence.
-	void setLabelWidthStringToSequence(pit_type const par_offset, docstring const & s);
+	void setLabelWidthStringToSequence(Cursor const & cur, docstring const & s);
 
 	/// Owner Inset.
 	InsetText * owner_;

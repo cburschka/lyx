@@ -183,25 +183,6 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 }
 
 
-// return past-the-last paragraph influenced by a layout change on pit
-pit_type Text::undoSpan(pit_type pit)
-{
-	pit_type const end = paragraphs().size();
-	pit_type nextpit = pit + 1;
-	if (nextpit == end)
-		return nextpit;
-	//because of parindents
-	if (!pars_[pit].getDepth())
-		return boost::next(nextpit);
-	//because of depth constrains
-	for (; nextpit != end; ++pit, ++nextpit) {
-		if (!pars_[pit].getDepth())
-			break;
-	}
-	return nextpit;
-}
-
-
 void Text::setLayout(pit_type start, pit_type end,
 		     docstring const & layout)
 {
@@ -227,8 +208,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
-	pit_type undopit = undoSpan(end - 1);
-	recUndo(cur, start, undopit - 1);
+	cur.recordUndoSelection();
 	setLayout(start, end, layout);
 	cur.forceBufferUpdate();
 }
@@ -431,31 +411,31 @@ docstring Text::getStringToIndex(Cursor const & cur)
 }
 
 
-void Text::setLabelWidthStringToSequence(pit_type const par_offset,
+void Text::setLabelWidthStringToSequence(Cursor const & cur,
 		docstring const & s)
 {
-	pit_type offset = par_offset;
+	Cursor c = cur;
 	// Find first of same layout in sequence
-	while (!isFirstInSequence(offset)) {
-		offset = depthHook(offset, pars_[offset].getDepth());
+	while (!isFirstInSequence(c.pit())) {
+		c.pit() = depthHook(c.pit(), c.paragraph().getDepth());
 	}
 
 	// now apply label width string to every par
 	// in sequence
-	pit_type const end = pars_.size();
-	depth_type const depth = pars_[offset].getDepth();
-	Layout const & layout = pars_[offset].layout();
-	for (pit_type pit = offset; pit != end; ++pit) {
-		while (pars_[pit].getDepth() > depth) {
-			++pit;
-			if (pit == end)
+	depth_type const depth = c.paragraph().getDepth();
+	Layout const & layout = c.paragraph().layout();
+	for ( ; c.pit() <= c.lastpit() ; ++c.pit()) {
+		while (c.paragraph().getDepth() > depth) {
+			++c.pit();
+			if (c.pit() > c.lastpit())
 				return;
 		}
-		if (pars_[pit].getDepth() < depth)
+		if (c.paragraph().getDepth() < depth)
 			return;
-		if (pars_[pit].layout() != layout)
+		if (c.paragraph().layout() != layout)
 			return;
-		pars_[pit].setLabelWidthString(s);
+		c.recordUndo();
+		c.paragraph().setLabelWidthString(s);
 	}
 }
 
@@ -463,26 +443,25 @@ void Text::setLabelWidthStringToSequence(pit_type const par_offset,
 void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
 	LASSERT(cur.text(), /**/);
-	// make sure that the depth behind the selection are restored, too
-	pit_type undopit = undoSpan(cur.selEnd().pit());
-	recUndo(cur, cur.selBegin().pit(), undopit - 1);
 
 	//FIXME UNICODE
 	string const argument = to_utf8(arg);
 	depth_type priordepth = -1;
 	Layout priorlayout;
-	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
-	     pit <= end; ++pit) {
-		Paragraph & par = pars_[pit];
+	Cursor c(cur.bv());
+	c.setCursor(cur.selectionBegin());
+	for ( ; c <= cur.selectionEnd() ; ++c.pit()) {
+		Paragraph & par = c.paragraph();
 		ParagraphParameters params = par.params();
 		params.read(argument, merge);
 		// Changes to label width string apply to all paragraphs
 		// with same layout in a sequence.
 		// Do this only once for a selected range of paragraphs
 		// of the same layout and depth.
-		if (par.getDepth() != priordepth || par.layout() != priorlayout)
-			setLabelWidthStringToSequence(pit, params.labelWidthString());
+		cur.recordUndo();
 		par.params().apply(params, par.layout());
+		if (par.getDepth() != priordepth || par.layout() != priorlayout)
+			setLabelWidthStringToSequence(c, params.labelWidthString());
 		priordepth = par.getDepth();
 		priorlayout = par.layout();
 	}
@@ -495,23 +474,22 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p) 
 {
 	LASSERT(cur.text(), /**/);
-	// make sure that the depth behind the selection are restored, too
-	pit_type undopit = undoSpan(cur.selEnd().pit());
-	recUndo(cur, cur.selBegin().pit(), undopit - 1);
 
 	depth_type priordepth = -1;
 	Layout priorlayout;
-	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
-	     pit <= end; ++pit) {
-		Paragraph & par = pars_[pit];
+	Cursor c(cur.bv());
+	c.setCursor(cur.selectionBegin());
+	for ( ; c < cur.selectionEnd() ; ++c.pit()) {
+		Paragraph & par = c.paragraph();
 		// Changes to label width string apply to all paragraphs
 		// with same layout in a sequence.
 		// Do this only once for a selected range of paragraphs
 		// of the same layout and depth.
-		if (par.getDepth() != priordepth || par.layout() != priorlayout)
-			setLabelWidthStringToSequence(pit,
-				par.params().labelWidthString());
+		cur.recordUndo();
 		par.params().apply(p, par.layout());
+		if (par.getDepth() != priordepth || par.layout() != priorlayout)
+			setLabelWidthStringToSequence(c,
+				par.params().labelWidthString());
 		priordepth = par.getDepth();
 		priorlayout = par.layout();
 	}

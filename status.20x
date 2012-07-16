@@ -109,13 +109,16 @@ What's new
 - Fix various crashes when single document is edited in more windows
   (bug 8203).
 
-- Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
-
 - Fix crash when renaming a child buffer.
 
-- Replace current selection when pasting (bug 8027).
+- Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
 
 - Make sure that undo restores environment depth correctly (bug 8159).
+
+- Make sure that undo restores paragraph longest label width correctly
+  (bug 8242).
+
+- Replace current selection when pasting (bug 8027).
 
 - Fix enumitem module translation (bug #8201).
 
