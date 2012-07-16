@@ -724,8 +724,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 		return;
 	}
 
-	// a layout change may affect also the following paragraph
-	recUndo(cur, cur.pit(), undoSpan(cur.pit()) - 1);
+	cur.recordUndo();
 
 	// Always break behind a space
 	// It is better to erase the space (Dekel)
