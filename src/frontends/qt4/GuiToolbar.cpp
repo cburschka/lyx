@@ -358,7 +358,7 @@ void GuiToolbar::restoreSession()
 		settings.value(sessionKey() + "/visibility", error_val).toInt();
 	if (visibility == error_val || visibility == 0) {
 		// This should not happen, but in case we use the defaults
-		LYXERR0("Session settings could not be found! Defaults are used instead.");
+		LYXERR(Debug::GUI, "Session settings could not be found! Defaults are used instead.");
 		visibility = 
 			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
 	}
