@@ -95,6 +95,8 @@ What's new
 - Fix various crashes when single document is edited in more windows
   (bug 8203).
 
+- Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
+
 - Replace current selection when pasting (bug 8027).
 
 - Make sure that undo restores environment depth correctly (bug 8159).
