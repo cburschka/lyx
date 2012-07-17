@@ -2313,6 +2313,14 @@ bool Cursor::fixIfBroken()
 }
 
 
+void Cursor::sanitize()
+{
+	setBuffer(&bv_->buffer());
+	DocIterator::sanitize();
+	anchor_.sanitize();
+}
+
+
 bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 {
 	// find inset in common
@@ -2400,7 +2408,7 @@ bool Cursor::textUndo()
 {
 	if (!buffer()->undo().textUndo(*this))
 		return false;
-	fixIfBroken();
+	sanitize();
 	return true;
 }
 
@@ -2409,7 +2417,7 @@ bool Cursor::textRedo()
 {
 	if (!buffer()->undo().textRedo(*this))
 		return false;
-	fixIfBroken();
+	sanitize();
 	return true;
 }
 

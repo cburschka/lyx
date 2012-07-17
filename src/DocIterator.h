@@ -231,6 +231,9 @@ public:
 	/// fix DocIterator in circumstances that should never happen.
 	/// \return true if the DocIterator was fixed.
 	bool fixIfBroken();
+	/// Repopulate the slices insets from bottom to top. Useful
+	/// for stable iterators or Undo data.
+	void sanitize();
 
 	/// find index of CursorSlice with &cell() == &cell (or -1 if not found)
 	int find(MathData const & cell) const;

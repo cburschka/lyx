@@ -306,6 +306,9 @@ public:
 	/// fix cursor in circumstances that should never happen.
 	/// \retval true if a fix occured.
 	bool fixIfBroken();
+	/// Repopulate the slices insets from bottom to top. Useful
+	/// for stable iterators or Undo data.
+	void sanitize();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);

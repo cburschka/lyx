@@ -530,6 +530,35 @@ bool DocIterator::fixIfBroken()
 }
 
 
+void DocIterator::sanitize()
+{
+	// this function re-creates the cache of inset pointers
+	//lyxerr << "converting:\n" << *this << endl;
+	if (buffer_)
+		inset_ = &buffer_->inset();
+	Inset * inset = inset_;
+	for (size_t i = 0, n = slices_.size(); i != n; ++i) {
+		if (inset == 0) {
+			// FIXME
+			LYXERR0(" Should not happen, but does e.g. after "
+				"C-n C-l C-z S-C-z\n"
+				<< " or when a Buffer has been concurrently edited by two views"
+				<< '\n' << "dit: " << *this << '\n'
+				<< " lastpos: " << slices_[i].lastpos());
+			fixIfBroken();
+			break;
+		}
+		slices_[i].inset_ = inset;
+		if (fixIfBroken())
+			break;
+		if (i + 1 != n)
+			inset = slices_[i].inset().inMathed() ? slices_[i].cell()[slices_[i].pos()].nucleus() 
+				: slices_[i].paragraph().getInset(pos());
+	}
+	//lyxerr << "convert:\n" << *this << " to:\n" << dit << endl;
+}
+
+
 int DocIterator::find(MathData const & cell) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
@@ -597,29 +626,9 @@ StableDocIterator::StableDocIterator(DocIterator const & dit)
 
 DocIterator StableDocIterator::asDocIterator(Buffer * buf) const
 {
-	// this function re-creates the cache of inset pointers
-	//lyxerr << "converting:\n" << *this << endl;
-	Inset * inset = &buf->inset();
-	DocIterator dit = DocIterator(buf, inset);
-	for (size_t i = 0, n = data_.size(); i != n; ++i) {
-		if (inset == 0) {
-			// FIXME
-			LYXERR0(" Should not happen, but does e.g. after "
-				"C-n C-l C-z S-C-z\n"
-				<< " or when a Buffer has been concurrently edited by two views"
-				<< '\n' << "dit: " << dit << '\n'
-				<< " lastpos: " << dit.lastpos());
-			dit.fixIfBroken();
-			break;
-		}
-		dit.push_back(data_[i]);
-		dit.top().inset_ = inset;
-		if (dit.fixIfBroken())
-			break;
-		if (i + 1 != n)
-			inset = dit.nextInset();
-	}
-	//lyxerr << "convert:\n" << *this << " to:\n" << dit << endl;
+	DocIterator dit = DocIterator(buf);
+	dit.slices_ = data_;
+	dit.sanitize();
 	return dit;
 }
 
