@@ -3229,70 +3229,61 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 }
 
 
-int Paragraph::checkBiblio(Buffer const & buffer)
+bool Paragraph::brokenBiblio() const
 {
-	// FIXME From JS:
-	// This is getting more and more a mess. ...We really should clean
-	// up this bibitem issue for 1.6.
+	// there is a problem if there is no bibitem at position 0 or
+	// if there is another bibitem in the paragraph.
+	return d->layout_->labeltype == LABEL_BIBLIO
+		&& (d->insetlist_.find(BIBITEM_CODE) != 0
+		    || d->insetlist_.find(BIBITEM_CODE, 1) > 0);
+}
 
-	// Add bibitem insets if necessary
+
+int Paragraph::fixBiblio(Buffer const & buffer)
+{
+	// FIXME: What about the case where paragraph is not BIBLIO
+	// but there is an InsetBibitem?
+	// FIXME: when there was already an inset at 0, the return value is 1,
+	// which does not tell whether another inset has been remove; the
+	// cursor cannot be correctly updated.
+
 	if (d->layout_->labeltype != LABEL_BIBLIO)
 		return 0;
 
-	bool hasbibitem = !d->insetlist_.empty()
-		// Insist on it being in pos 0
-		&& d->text_[0] == META_INSET
-		&& d->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
+	bool const track_changes = buffer.params().trackChanges;
+	int bibitem_pos = d->insetlist_.find(BIBITEM_CODE);
+	bool const hasbibitem0 = bibitem_pos == 0;
 
-	bool track_changes = buffer.params().trackChanges;
-
-	docstring oldkey;
-	docstring oldlabel;
-
-	// remove a bibitem in pos != 0
-	// restore it later in pos 0 if necessary
-	// (e.g. if a user inserts contents _before_ the item)
-	// we're assuming there's only one of these, which there
-	// should be.
-	int erasedInsetPosition = -1;
-	InsetList::iterator it = d->insetlist_.begin();
-	InsetList::iterator end = d->insetlist_.end();
-	for (; it != end; ++it)
-		if (it->inset->lyxCode() == BIBITEM_CODE
-		      && it->pos > 0) {
-			InsetCommand * olditem = it->inset->asInsetCommand();
-			oldkey = olditem->getParam("key");
-			oldlabel = olditem->getParam("label");
-			erasedInsetPosition = it->pos;
-			eraseChar(erasedInsetPosition, track_changes);
-			break;
-	}
-
-	// There was an InsetBibitem at the beginning, and we didn't
-	// have to erase one.
-	if (hasbibitem && erasedInsetPosition < 0)
+	if (hasbibitem0) {
+		bibitem_pos = d->insetlist_.find(BIBITEM_CODE, 1);
+		// There was an InsetBibitem at pos 0, and no other one => OK
+		if (bibitem_pos == -1)
 			return 0;
-
-	// There was an InsetBibitem at the beginning and we did have to
-	// erase one. So we give its properties to the beginning inset.
-	if (hasbibitem) {
-		InsetCommand * inset = d->insetlist_.begin()->inset->asInsetCommand();
-		if (!oldkey.empty())
-			inset->setParam("key", oldkey);
-		inset->setParam("label", oldlabel);
-		return -erasedInsetPosition;
+		// there is a bibitem at the 0 position, but since
+		// there is a second one, we copy the second on the
+		// first. We're assuming there are at most two of
+		// these, which there should be.
+		// FIXME: why does it make sense to do that rather
+		// than keep the first? (JMarc)
+		Inset * inset = d->insetlist_.release(bibitem_pos);
+		eraseChar(bibitem_pos, track_changes);
+		d->insetlist_.begin()->inset = inset;
+		return -bibitem_pos;
 	}
 
-	// There was no inset at the beginning, so we need to create one with
-	// the key and label of the one we erased.
-	InsetBibitem * inset =
-		new InsetBibitem(const_cast<Buffer *>(&buffer), InsetCommandParams(BIBITEM_CODE));
-	// restore values of previously deleted item in this par.
-	if (!oldkey.empty())
-		inset->setParam("key", oldkey);
-	inset->setParam("label", oldlabel);
-	insertInset(0, inset,
-		    Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
+	// We need to create an inset at the beginning
+	Inset * inset = 0;
+	if (bibitem_pos > 0) {
+		// there was one somewhere in the paragraph, let's move it
+		inset = d->insetlist_.release(bibitem_pos);
+		eraseChar(bibitem_pos, track_changes);
+	} else
+		// make a fresh one
+		inset = new InsetBibitem(const_cast<Buffer *>(&buffer),
+					 InsetCommandParams(BIBITEM_CODE));
+
+	insertInset(0, inset, Change(track_changes ? Change::INSERTED 
+				                   : Change::UNCHANGED));
 
 	return 1;
 }
