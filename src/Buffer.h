@@ -225,7 +225,8 @@ public:
 	/// read a new document from a string
 	bool readString(std::string const &);
 	/// Reloads the LyX file
-	ReadStatus reload();
+	/// \param clearUndo if false, leave alone the undo stack.
+	ReadStatus reload(bool clearUndo = true);
 //FIXME: The following function should be private
 //private:
 	/// read the header, returns number of unknown tokens
