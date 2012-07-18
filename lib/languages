@@ -209,6 +209,9 @@ Language basque
 	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         eu_ES
+	PostBabelPreamble
+	\addto\extrasbasque{\bbl@deactivate{~}}
+	EndPostBabelPreamble
 End
 
 # not yet supported by polyglossia
@@ -387,6 +390,9 @@ Language estonian
 	QuoteStyle       polish
 	Encoding         iso8859-15
 	LangCode         et_EE
+	PostBabelPreamble
+	\addto\extrasestonian{\bbl@deactivate{~}}
+	EndPostBabelPreamble
 End
 
 # the preamble definitions are only used due to bugs in the
@@ -436,6 +442,9 @@ Language galician
 	QuoteStyle       french
 	Encoding         iso8859-15
 	LangCode         gl_ES
+	PostBabelPreamble
+	\addto\shorthandsgalician{\galiciandeactivate{~}}
+	EndPostBabelPreamble
 End
 
 # german does not use a country code (due to the variety)
