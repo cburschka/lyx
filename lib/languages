@@ -170,6 +170,9 @@ Language basque
 	PolyglossiaName  basque
 	Encoding         iso8859-15
 	LangCode         eu_ES
+	PostBabelPreamble
+	\addto\extrasbasque{\bbl@deactivate{~}}
+	EndPostBabelPreamble
 End
 
 Language belarusian
@@ -326,6 +329,9 @@ Language estonian
 	PolyglossiaName  estonian
 	Encoding         iso8859-15
 	LangCode         et_EE
+	PostBabelPreamble
+	\addto\extrasestonian{\bbl@deactivate{~}}
+	EndPostBabelPreamble
 End
 
 # the preamble definitions are only used due to bugs in the
@@ -372,6 +378,9 @@ Language galician
 	PolyglossiaName  galician
 	Encoding         iso8859-15
 	LangCode         gl_ES
+	PostBabelPreamble
+	\addto\shorthandsgalician{\galiciandeactivate{~}}
+	EndPostBabelPreamble
 End
 
 # german does not use a country code (due to the variety)
