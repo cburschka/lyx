@@ -8,6 +8,8 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 	encodings layouttranslations languages symbols syntax.default \
 	unicodesymbols
 
+nodist_pkgdata_DATA = installed_translations
+
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
 dist_pkgdata_DATA += configure.py 

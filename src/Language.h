@@ -50,6 +50,8 @@ public:
 	bool rightToLeft() const { return rightToLeft_; }
 	/// Is an (at least partial) translation of this language available?
 	bool translated() const { return translated_; }
+	/// Is an (at least partial) translation of this language available?
+	void translated(bool trans) { translated_ = trans; }
 	/**
 	 * Translate a string from the layout files that appears in the output.
 	 * It takes the translations from lib/layouttranslations instead of
@@ -146,6 +148,8 @@ public:
 	void read(support::FileName const & filename);
 	///
 	void readLayoutTranslations(support::FileName const & filename);
+	///
+	void readInstalledTranslations(support::FileName const & filename);
 	///
 	Language const * getLanguage(std::string const & language) const;
 	///
