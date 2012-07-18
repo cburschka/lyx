@@ -979,7 +979,10 @@ string const LaTeXFeatures::getBabelPresettings() const
 	if (!params_.language->babel_presettings().empty())
 		tmp << params_.language->babel_presettings() << '\n';
 
-	return tmp.str();
+	if (!contains(tmp.str(), '@'))
+		return tmp.str();
+
+	return "\\makeatletter\n" + tmp.str() + "\\makeatother\n";
 }
 
 
@@ -995,7 +998,10 @@ string const LaTeXFeatures::getBabelPostsettings() const
 	if (!params_.language->babel_postsettings().empty())
 		tmp << params_.language->babel_postsettings() << '\n';
 
-	return tmp.str();
+	if (!contains(tmp.str(), '@'))
+		return tmp.str();
+
+	return "\\makeatletter\n" + tmp.str() + "\\makeatother\n";
 }
 
 
