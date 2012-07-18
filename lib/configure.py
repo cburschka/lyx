@@ -62,7 +62,7 @@ def cmdOutput(cmd):
     '''
     if os.name == 'nt':
         b = False
-        cmd = 'cmd /d /c pushd ' + os.getcwd() + '&' + cmd
+        cmd = 'cmd /d /c pushd ' + shortPath(os.getcwdu()) + '&' + cmd
     else:
         b = True
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
@@ -71,6 +71,18 @@ def cmdOutput(cmd):
     output = pipe.stdout.read()
     pipe.stdout.close()
     return output.strip()
+
+
+def shortPath(path):
+    ''' On Windows, return the short version of "path" if possible '''
+    if os.name == 'nt':
+        from ctypes import windll, create_unicode_buffer
+        GetShortPathName = windll.kernel32.GetShortPathNameW
+        shortlen = GetShortPathName(path, 0, 0)
+        shortpath = create_unicode_buffer(shortlen)
+        if GetShortPathName(path, shortpath, shortlen):
+            return shortpath.value
+    return path
 
 
 def setEnviron():
@@ -110,18 +122,10 @@ def checkTeXPaths():
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
             from locale import getdefaultlocale
-            from ctypes import windll, create_unicode_buffer
-            GetShortPathName = windll.kernel32.GetShortPathNameW
             language, encoding = getdefaultlocale()
             if encoding == None:
                 encoding = 'latin1'
-            longname = unicode(tmpfname, encoding)
-            shortlen = GetShortPathName(longname, 0, 0)
-            shortname = create_unicode_buffer(shortlen)
-            if GetShortPathName(longname, shortname, shortlen):
-                inpname = shortname.value.replace('\\', '/')
-            else:
-                inpname = tmpfname.replace('\\', '/')
+            inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
