@@ -128,11 +128,15 @@ ADD_CUSTOM_COMMAND(
 # otherwise they would be modified (inside the macro GETTEXT_CREATE_TRANSLATIONS())
 # This makes the "svn up" on po-files work again
 file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
+list(SORT LYX_BASE_PO_FILES)
 set(LYX_PO_FILES)
 SET(LYX_UPDATED_PO_FILES)
 SET(LYX_DEST_PO ${TOP_SRC_DIR}/po)
 
+set(INSTALLED_LANGUAGES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
+  string(REGEX REPLACE "^(.*)\\.po$" "\\1 " _inst_lng ${_pofile})
+  list(APPEND INSTALLED_LANGUAGES ${_inst_lng})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     COMMAND ${CMAKE_COMMAND} -E copy ${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
@@ -140,6 +144,13 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
     )
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
+
+add_custom_command(
+  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_languages"
+  COMMAND "$CMAKE_COMMAND}" -E echo ${INSTALLED_LANGUAGES} ">" "${CMAKE_CURRENT_BINARY_DIR}/installed_languages"
+  DEPENDS ${LYX_PO_FILES}
+)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/installed_languages" DESTINATION .)
 
 set(LYX_UPDATED_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
