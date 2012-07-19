@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-03 11:05+0200\n"
+"POT-Creation-Date: 2012-07-15 18:54+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6480,22 +6480,6 @@ msgstr "Seriate"
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
-#: lib/layouts/armenian-article.layout:9
-msgid "LatinOn"
-msgstr "LatinOn"
-
-#: lib/layouts/armenian-article.layout:18
-msgid "Latin on"
-msgstr "Latin on"
-
-#: lib/layouts/armenian-article.layout:25
-msgid "LatinOff"
-msgstr "LatinOff"
-
-#: lib/layouts/armenian-article.layout:34
-msgid "Latin off"
-msgstr "Latin off"
-
 #: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:226
 #: lib/layouts/scrarticle-beamer.layout:22
 msgid "BeginFrame"
@@ -12488,6 +12472,10 @@ msgstr "Nastavenia odstavca...|a"
 #: lib/ui/stdcontext.inc:319
 msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
+
+#: lib/ui/stdcontext.inc:320
+msgid "Close Current View"
+msgstr "Zavri Aktuálny Náhľad"
 
 #: lib/ui/stdcontext.inc:327
 msgid "Anything|A"
@@ -24713,6 +24701,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "LatinOn"
+#~ msgstr "LatinOn"
+
+#~ msgid "Latin on"
+#~ msgstr "Latin on"
+
+#~ msgid "LatinOff"
+#~ msgstr "LatinOff"
+
+#~ msgid "Latin off"
+#~ msgstr "Latin off"
 
 #~ msgid "CopNum"
 #~ msgstr "CopNum"
