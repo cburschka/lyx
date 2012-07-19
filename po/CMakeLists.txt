@@ -140,17 +140,23 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     COMMAND ${CMAKE_COMMAND} -E copy ${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
-    DEPENDS ${TOP_SRC_DIR}/po/${_pofile}
+    DEPENDS ${TOP_SRC_DIR}/po/${_pofile} "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
     )
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
 add_custom_command(
-  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_languages"
-  COMMAND "$CMAKE_COMMAND}" -E echo ${INSTALLED_LANGUAGES} ">" "${CMAKE_CURRENT_BINARY_DIR}/installed_languages"
-  DEPENDS ${LYX_PO_FILES}
+  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
+  COMMAND "${CMAKE_COMMAND}" -E echo ${INSTALLED_LANGUAGES} ">" "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
 )
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/installed_languages" DESTINATION .)
+
+add_custom_command(
+  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
+  COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp" "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
+  DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
+)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/installed_translations" DESTINATION .)
 
 set(LYX_UPDATED_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
