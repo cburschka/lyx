@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-15 18:54+0200\n"
+"POT-Creation-Date: 2012-07-20 11:25+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -20271,6 +20271,12 @@ msgstr "Príkaz bez spracovávania"
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
 
+#: src/frontends/qt4/GuiApplication.cpp:1083
+msgid "Command not allowed without any visible document in the active window"
+msgstr ""
+"Príkaz nie je povolený pokiaľ nie je viditeľný aspoň jeden dokument v "
+"aktívnom okne"
+
 #: src/frontends/qt4/GuiApplication.cpp:1243
 msgid "Running configure..."
 msgstr "Spúšťam konfigurovanie..."
@@ -20327,6 +20333,32 @@ msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
+
+#: src/frontends/qt4/GuiApplication.cpp:1611
+msgid ""
+"Applied the following command to all visible buffers in the active window: "
+msgstr ""
+"Nasledujúci príkaz bol použitý na všetky viditeľné zásobníky v aktívnom "
+"okne: "
+
+#: src/frontends/qt4/GuiApplication.cpp:1615
+msgid ""
+"Applied the following command to all visible and hidden buffers in the "
+"active window: "
+msgstr ""
+"Nasledujúci príkaz bol použitý na všetky viditeľné a skryté zásobníky v "
+"aktívnom okne:."
+
+#: src/frontends/qt4/GuiApplication.cpp:1623
+msgid ""
+"Applied the following command to all hidden buffers in the active window: "
+msgstr ""
+"Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom okne:."
+
+#: src/frontends/qt4/GuiApplication.cpp:1626
+#, c-format
+msgid "%1$s%2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiApplication.cpp:1636
 #, c-format
@@ -24442,6 +24474,10 @@ msgstr "Súhrn: "
 msgid "References: "
 msgstr "Referencie: "
 
+#: src/support/lstrings.cpp:1300
+msgid "[[Replace with the code of your language]]"
+msgstr "sk"
+
 #: src/support/Package.cpp:470
 msgid "LyX binary not found"
 msgstr "Spustiteľný súbor LyX nebol nájdený"
@@ -24669,10 +24705,6 @@ msgstr "Všetky ladiace hlásenia"
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"
-
-#: src/support/lstrings.cpp:1300
-msgid "[[Replace with the code of your language]]"
-msgstr "sk"
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
