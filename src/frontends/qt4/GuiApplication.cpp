@@ -38,6 +38,7 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "GuiWorkArea.h"
 #include "Intl.h"
 #include "KeyMap.h"
 #include "Language.h"
@@ -1077,6 +1078,15 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		enable = true;
 		break;
 
+	case LFUN_BUFFER_FORALL: {
+		if (!currentView() || !currentView()->currentBufferView() || !&currentView()->currentBufferView()->buffer()) {
+			flag.message(from_utf8(N_("Command not allowed without any visible document in the active window")));
+			flag.setEnabled(false);
+		}
+		break;
+	}
+
+
 	default:
 		return false;
 	}
@@ -1589,6 +1599,63 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// the buffer may have been closed by one action
 		if (theBufferList().isLoaded(buffer))
 			buffer->undo().endUndoGroup();
+		break;
+	}
+
+	case LFUN_BUFFER_FORALL: {
+		GuiView * gv = currentView();
+		Buffer * const buf = &gv->currentBufferView()->buffer();
+
+		bool processVisible = true;
+		bool processHidden = false;
+		docstring msg = _("Applied the following command to all visible buffers in the active window: ");
+		string commandToRun = argument;
+		if (cmd.getArg(0) == "both") {
+			processHidden = true;
+			msg = _("Applied the following command to all visible and hidden buffers in the active window: ");
+			commandToRun = cmd.getLongArg(1);
+		} else if (cmd.getArg(0) == "visible") {
+			commandToRun = cmd.getLongArg(1);
+		} else if (cmd.getArg(0) == "hidden") {
+			processHidden = true;
+			processVisible = false;
+			commandToRun = cmd.getLongArg(1);
+			msg = _("Applied the following command to all hidden buffers in the active window: ");
+		}
+		FuncRequest const funcToRun = lyxaction.lookupFunc(commandToRun);
+		dr.setMessage(bformat(_("%1$s%2$s"), msg, from_utf8(commandToRun)));
+
+		Buffer * const last = theBufferList().last();
+		Buffer * b = theBufferList().first();
+		Buffer * nextBuf = 0;
+		// We cannot use a for loop as the buffer list cycles.
+		while (true) {
+			if (b != last)
+				nextBuf = theBufferList().next(b); //get next now bc LFUN might close current 
+
+			bool const hidden = !(gv && gv->workArea(*b));
+			if (hidden) {
+				if (processHidden) {
+					gv->setBuffer(b);
+					lyx::dispatch(funcToRun);
+					gv->currentWorkArea()->view().hideWorkArea(gv->currentWorkArea());
+				}
+			}
+
+			else {
+				if (processVisible) {
+					gv->setBuffer(b);
+					lyx::dispatch(funcToRun);
+				}
+			}
+
+			if (b == last)
+				break;
+			b = nextBuf;
+		}
+
+		if (theBufferList().isLoaded(buf)) //the LFUN might have closed buf
+			gv->setBuffer(buf);
 		break;
 	}
 

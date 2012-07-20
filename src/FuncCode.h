@@ -452,6 +452,7 @@ enum FuncCode
 	// 350
 	LFUN_CLIPBOARD_PASTE_SIMPLE,	// tommaso, 20111028
 	LFUN_IPA_INSERT,                // spitz, 20120305
+	LFUN_BUFFER_FORALL,             // scottkostyshak, 20120720
 
 	LFUN_LASTACTION                 // end of the table
 };
