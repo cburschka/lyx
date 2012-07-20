@@ -133,10 +133,23 @@ set(LYX_PO_FILES)
 SET(LYX_UPDATED_PO_FILES)
 SET(LYX_DEST_PO ${TOP_SRC_DIR}/po)
 
-set(INSTALLED_LANGUAGES)
+set(CONFIGURED_LANGUAGES)		# from file LINGUAS
+set(INSTALLED_LANGUAGES)		# from names of existing po-files
+
+file(STRINGS "${TOP_SRC_DIR}/po/LINGUAS" _lang_lines)
+foreach(_c_l ${_lang_lines})
+  if(NOT _c_l MATCHES "^#.*")
+    string(REPLACE " " ";" _c_l ${_c_l}) #Split ${_c_l}
+    list(APPEND CONFIGURED_LANGUAGES ${_c_l})
+  endif()
+endforeach(_c_l)
+
 foreach(_pofile ${LYX_BASE_PO_FILES})
-  string(REGEX REPLACE "^(.*)\\.po$" "\\1 " _inst_lng ${_pofile})
-  list(APPEND INSTALLED_LANGUAGES ${_inst_lng})
+  string(REGEX REPLACE "^(.*)\\.po$" "\\1" _inst_lng ${_pofile})
+  list(FIND CONFIGURED_LANGUAGES ${_inst_lng} _lng_idx)
+  if(_lng_idx GREATER -1)
+    list(APPEND INSTALLED_LANGUAGES "${_inst_lng} ")
+  endif()
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     COMMAND ${CMAKE_COMMAND} -E copy ${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
@@ -145,16 +158,8 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
-add_custom_command(
-  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
-  COMMAND "${CMAKE_COMMAND}" -E echo ${INSTALLED_LANGUAGES} ">" "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
-)
-
-add_custom_command(
-  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
-  COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp" "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
-  DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/installed_translations.tmp"
-)
+# We mimic the autoconf behaviour, e.g write this file at "configure" time
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/installed_translations" ${INSTALLED_LANGUAGES})
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/installed_translations" DESTINATION .)
 
