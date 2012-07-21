@@ -397,6 +397,8 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	///
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
+	///
+	Layout const & getTOCLayout() const;
 	/// the paragraph style to use for TOCs, Bibliography, etc
 	/// we will attempt to calculate this if it was not given
 	Layout const & htmlTOCLayout() const;

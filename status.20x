@@ -41,6 +41,8 @@ What's new
 
 * USER INTERFACE
 
+- Reset only the top-level counter when starting the appendix.
+
 - Show backends, not formats, in View>Source (bug #7652).
 
 - Allow native LyX format to be shown in View>Source.
@@ -65,6 +67,8 @@ What's new
 *************
 
 * DOCUMENT INPUT/OUTPUT
+
+- Fix assertion when start of appendix is in ERT (bug 8271).
 
 - Do not output empty language switch commands (bug 8216).
 

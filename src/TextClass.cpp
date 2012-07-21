@@ -1387,27 +1387,32 @@ bool DocumentClass::hasTocLevels() const
 }
 
 
+Layout const & DocumentClass::getTOCLayout() const
+{
+	// we're going to look for the layout with the minimum toclevel
+	TextClass::LayoutList::const_iterator lit = begin();
+	TextClass::LayoutList::const_iterator const len = end();
+	int minlevel = 1000;
+	Layout const * lay = NULL;
+	for (; lit != len; ++lit) {
+		int const level = lit->toclevel;
+		// we don't want Part
+		if (level == Layout::NOT_IN_TOC || level < 0 || level >= minlevel)
+			continue;
+		lay = &*lit;
+		minlevel = level;
+	}
+	if (lay)
+		return *lay;
+	// hmm. that is very odd, so we'll do our best.
+	return operator[](defaultLayoutName());
+}
+
+
 Layout const & DocumentClass::htmlTOCLayout() const
 {
 	if (html_toc_section_.empty()) {
-		// we're going to look for the layout with the minimum toclevel
-		TextClass::LayoutList::const_iterator lit = begin();
-		TextClass::LayoutList::const_iterator const len = end();
-		int minlevel = 1000;
-		Layout const * lay = NULL;
-		for (; lit != len; ++lit) {
-			int const level = lit->toclevel;
-			// we don't want Part
-			if (level == Layout::NOT_IN_TOC || level < 0 || level >= minlevel)
-				continue;
-			lay = &*lit;
-			minlevel = level;
-		}
-		if (lay)
-			html_toc_section_ = lay->name();
-		else
-			// hmm. that is very odd, so we'll do our best
-			html_toc_section_ = defaultLayoutName();
+		html_toc_section_ = getTOCLayout().name();
 	}
 	return operator[](html_toc_section_);
 }
