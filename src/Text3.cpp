@@ -2282,6 +2282,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_APPENDIX:
+		// FIXME We really should not allow this to be put, e.g.,
+		// in a footnote, or in ERT. But it would make sense in a 
+		// branch, so I'm not sure what to do.
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
 		break;
 
