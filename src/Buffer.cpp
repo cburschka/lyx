@@ -4301,9 +4301,11 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	Counters & counters = textclass.counters();
 
 	if (par.params().startOfAppendix()) {
-		// FIXME: only the counter corresponding to toplevel
-		// sectioning should be reset
-		counters.reset();
+		// We want to reset the counter corresponding to toplevel sectioning
+		Layout const & lay = textclass.getTOCLayout();
+		docstring const cnt = lay.counter;
+		if (!cnt.empty())
+			counters.reset(cnt);
 		counters.appendix(true);
 	}
 	par.params().appendix(counters.appendix());

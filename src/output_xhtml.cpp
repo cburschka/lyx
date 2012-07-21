@@ -967,11 +967,15 @@ void xhtmlParagraphs(Text const & text,
 	while (bpit < epit) {
 		ParagraphList::const_iterator par = paragraphs.constIterator(bpit);
 		if (par->params().startOfAppendix()) {
-			// FIXME: only the counter corresponding to toplevel
-			// sectioning should be reset
-			Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
-			cnts.reset();
-			cnts.appendix(true);
+			// We want to reset the counter corresponding to toplevel sectioning
+			Layout const & lay =
+				buf.masterBuffer()->params().documentClass().getTOCLayout();
+			docstring const cnt = lay.counter;
+			if (!cnt.empty()) {
+				Counters const & cnts =
+					buf.masterBuffer()->params().documentClass().counters();
+				cnts.reset(cnt);
+			}
 		}
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator const lastpar = par;
