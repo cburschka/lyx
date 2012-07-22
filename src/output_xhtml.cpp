@@ -972,7 +972,7 @@ void xhtmlParagraphs(Text const & text,
 				buf.masterBuffer()->params().documentClass().getTOCLayout();
 			docstring const cnt = lay.counter;
 			if (!cnt.empty()) {
-				Counters const & cnts =
+				Counters & cnts =
 					buf.masterBuffer()->params().documentClass().counters();
 				cnts.reset(cnt);
 			}
