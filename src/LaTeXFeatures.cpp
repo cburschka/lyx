@@ -292,16 +292,14 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 
 bool LaTeXFeatures::useBabel() const
 {
-	if (usePolyglossia())
+	if (usePolyglossia()
+	    || bufferParams().lang_package == "none"
+	    || (bufferParams().lang_package == "default"
+	        && lyxrc.language_package_selection == LyXRC::LP_NONE))
 		return false;
-	if (bufferParams().lang_package == "default")
-		return (lyxrc.language_package_selection != LyXRC::LP_NONE)
-			|| (bufferParams().language->lang() != lyxrc.default_language
-			    && !bufferParams().language->babel().empty())
-			|| this->hasLanguages();
-	return (bufferParams().lang_package != "none")
-		|| (bufferParams().language->lang() != lyxrc.default_language
-		    && !bufferParams().language->babel().empty())
+
+	return (bufferParams().language->lang() != lyxrc.default_language
+		&& !bufferParams().language->babel().empty())
 		|| this->hasLanguages();
 }
 
