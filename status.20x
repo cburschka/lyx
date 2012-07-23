@@ -88,10 +88,13 @@ What's new
 
 - Write correct DTD for MathML (bug #8160).
 
-- Make the ~ char in Basque, Estonian and Galician non-active (bug #8265).
+- Make the ~ char in Basque, Estonian and Galician non-active (bug 8265).
 
 - Embrace babel settings to \makeatletter ... \makeatother if they contain
   an @ glyph.
+
+- Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
+  (part of bug 8251).
 
 
 * USER INTERFACE
