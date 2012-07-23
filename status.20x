@@ -96,6 +96,9 @@ What's new
 - Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
   (part of bug 8251).
 
+- Fix brackets direction in Hebrew documents when using XeTeX/Polyglossia
+  and in Arabic documents on plain text output (part of bug 8251).
+
 - Fix babel call with Arabic (arabi).
 
 - Fix suppression of language package.
