@@ -86,7 +86,7 @@ What's new
 - Fixed the layout file for scientific articles published by the American
   Psychological Association (APA) (bug 8187). 
 
-- Write correct DTD for MathML (bug #8160).
+- Write correct DTD for MathML (bug 8160).
 
 - Make the ~ char in Basque, Estonian and Galician non-active (bug 8265).
 
@@ -95,6 +95,8 @@ What's new
 
 - Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
   (part of bug 8251).
+
+- Fix babel call with Arabic (arabi).
 
 
 * USER INTERFACE
