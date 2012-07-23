@@ -2493,7 +2493,8 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		Paragraph const & par = inset->paragraphs().front();
 		bool rtl = par.isRTL(buffer().params())
 			&& !par.empty()
-			&& getPWidth(cell).zero();
+			&& getPWidth(cell).zero()
+			&& !runparams.use_polyglossia;
 
 		if (rtl) {
 			string const lang =
