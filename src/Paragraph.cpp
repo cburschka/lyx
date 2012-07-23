@@ -1910,8 +1910,8 @@ char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 	// unified with Hebrew or at least if all bracket types should be
 	// handled the same (file format change in either case).
 	string const & lang = getFontSettings(bparams, pos).language()->lang();
-	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" ||
-						lang == "farsi";
+	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi"
+		|| lang == "farsi";
 	char_type uc = c;
 	switch (c) {
 	case '(':
