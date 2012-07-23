@@ -2625,7 +2625,8 @@ string BufferParams::babelCall(string const & lang_opts, bool const langoptions)
 	if (lang_package != "auto" && lang_package != "babel"
 	    && lang_package != "default" && lang_package != "none")
 		return lang_package;
-	if (lyxrc.language_package_selection == LyXRC::LP_CUSTOM)
+	if (lang_package == "default"
+	    && lyxrc.language_package_selection == LyXRC::LP_CUSTOM)
 		return lyxrc.language_custom_package;
 	// suppress the babel call if there is no BabelName defined
 	// for the document language in the lib/languages file and if no
