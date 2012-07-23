@@ -237,6 +237,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	str.reserve(100);
 	str.push_back(prev_char);
 
+	// FIXME: Why only round brackets and why the difference to
+	// Hebrew? See also Paragraph::getUChar
 	if (arabic) {
 		char_type c = str[0];
 		if (c == '(')
@@ -326,6 +328,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 			break;
 		*/
 
+		// FIXME: Why only round brackets and why the difference to
+		// Hebrew? See also Paragraph::getUChar
 		if (arabic) {
 			if (c == '(')
 				c = ')';

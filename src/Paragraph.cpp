@@ -330,6 +330,7 @@ public:
 	///
 	void latexSpecialChar(
 				   otexstream & os,
+				   BufferParams const & bparams,
 				   OutputParams const & runparams,
 				   Font const & running_font,
 				   Change const & running_change,
@@ -1156,6 +1157,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 
 
 void Paragraph::Private::latexSpecialChar(otexstream & os,
+					  BufferParams const & bparams,
 					  OutputParams const & runparams,
 					  Font const & running_font,
 					  Change const & running_change,
@@ -1164,7 +1166,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  pos_type end_pos,
 					  unsigned int & column)
 {
-	char_type const c = text_[i];
+	// With polyglossia, brackets and stuff need not be reversed
+	// in RTL scripts (see bug #8251)
+	char_type const c = (runparams.use_polyglossia) ?
+		owner_->getUChar(bparams, i) : text_[i];
 
 	if (style.pass_thru || runparams.pass_thru) {
 		if (c != '\0') {
@@ -1897,16 +1902,23 @@ FontSize Paragraph::highestFontInRange
 char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	char_type c = d->text_[pos];
-	if (!lyxrc.rtl_support)
+	if (!lyxrc.rtl_support || !getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
+	// FIXME: The arabic special casing is due to the difference of arabic
+	// round brackets input introduced in r18599. Check if this should be
+	// unified with Hebrew or at least if all bracket types should be
+	// handled the same (file format change in either case).
+	string const & lang = getFontSettings(bparams, pos).language()->lang();
+	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" ||
+						lang == "farsi";
 	char_type uc = c;
 	switch (c) {
 	case '(':
-		uc = ')';
+		uc = arabic ? c : ')';
 		break;
 	case ')':
-		uc = '(';
+		uc = arabic ? c : '(';
 		break;
 	case '[':
 		uc = ']';
@@ -1927,9 +1939,8 @@ char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 		uc = '<';
 		break;
 	}
-	if (uc != c && getFontSettings(bparams, pos).isRightToLeft())
-		return uc;
-	return c;
+
+	return uc;
 }
 
 
@@ -2567,7 +2578,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		} else {
 			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
 				try {
-					d->latexSpecialChar(os, rp, running_font, runningChange,
+					d->latexSpecialChar(os, bparams, rp, running_font, runningChange,
 							    style, i, end_pos, column);
 				} catch (EncodingException & e) {
 				if (runparams.dryrun) {
