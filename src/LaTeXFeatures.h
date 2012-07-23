@@ -43,6 +43,13 @@ class Language;
  */
 class LaTeXFeatures {
 public:
+	/// Which Language package do we use?
+	enum LangPackage {
+		LANG_PACK_NONE,
+		LANG_PACK_BABEL,
+		LANG_PACK_POLYGLOSSIA,
+		LANG_PACK_CUSTOM
+	};
 	///
 	LaTeXFeatures(Buffer const &, BufferParams const &,
 		      OutputParams const &);
@@ -125,10 +132,12 @@ public:
 	void setBuffer(Buffer const &);
 	///
 	BufferParams const & bufferParams() const;
-	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
-	bool useBabel() const;
-	///
-	bool usePolyglossia() const;
+	/// Which language package do we need?
+	LangPackage langPackage() const;
+	/// Convenience function to test if we use babel
+	bool useBabel() const { return langPackage() == LANG_PACK_BABEL; }
+	/// Convenience function to test if we use polyglossia
+	bool usePolyglossia() const { return langPackage() == LANG_PACK_POLYGLOSSIA; }
 	/// are we in a float?
 	bool inFloat() const { return in_float_; }
 	/// are we in a float?

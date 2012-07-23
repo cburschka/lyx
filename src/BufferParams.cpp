@@ -1923,6 +1923,15 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		}
 	}
 
+	// Load custom language package here
+	if (features.langPackage() == LaTeXFeatures::LANG_PACK_CUSTOM) {
+		if (lang_package == "default")
+			lyxpreamble += from_utf8(lyxrc.language_custom_package);
+		else
+			lyxpreamble += from_utf8(lang_package);
+		lyxpreamble += '\n';
+	}
+
 	docstring const i18npreamble =
 		features.getTClassI18nPreamble(use_babel, use_polyglossia);
 	if (!i18npreamble.empty())
@@ -2645,12 +2654,6 @@ string const BufferParams::font_encoding() const
 
 string BufferParams::babelCall(string const & lang_opts, bool const langoptions) const
 {
-	if (lang_package != "auto" && lang_package != "babel"
-	    && lang_package != "default" && lang_package != "none")
-		return lang_package;
-	if (lang_package == "default"
-	    && lyxrc.language_package_selection == LyXRC::LP_CUSTOM)
-		return lyxrc.language_custom_package;
 	// suppress the babel call if there is no BabelName defined
 	// for the document language in the lib/languages file and if no
 	// other languages are used (lang_opts is then empty)

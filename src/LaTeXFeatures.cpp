@@ -290,33 +290,69 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 {}
 
 
-bool LaTeXFeatures::useBabel() const
+LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 {
-	if (usePolyglossia()
-	    || bufferParams().lang_package == "none"
-	    || (bufferParams().lang_package == "default"
-	        && lyxrc.language_package_selection == LyXRC::LP_NONE))
-		return false;
+	string const local_lp = bufferParams().lang_package;
 
-	return (bufferParams().language->lang() != lyxrc.default_language
-		&& !bufferParams().language->babel().empty())
-		|| this->hasLanguages();
-}
+	// Locally, custom is just stored as a string
+	// in bufferParams().lang_package.
+	if (local_lp != "auto"
+	    && local_lp != "babel"
+	    && local_lp != "default"
+	    && local_lp != "none")
+		 return LANG_PACK_CUSTOM;
 
+	if (local_lp == "none")
+		return LANG_PACK_NONE;
 
-bool LaTeXFeatures::usePolyglossia() const
-{
-	if (bufferParams().lang_package == "default")
-		return (lyxrc.language_package_selection == LyXRC::LP_AUTO)
-			&& isRequired("polyglossia")
-			&& isAvailable("polyglossia")
-			&& !params_.documentClass().provides("babel")
-			&& this->hasOnlyPolyglossiaLanguages();
-	return (bufferParams().lang_package == "auto")
-		&& isRequired("polyglossia")
+	/* If "auto" is selected, we load polyglossia if required,
+	 * else we select babel.
+	 * If babel is selected (either directly or via the "auto"
+	 * mechanism), we really do only require it if we have
+	 * a language that needs it.
+	 */
+	bool const polyglossia_required =
+		isRequired("polyglossia")
 		&& isAvailable("polyglossia")
 		&& !params_.documentClass().provides("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
+	bool const babel_required = 
+		(bufferParams().language->lang() != lyxrc.default_language
+		 && !bufferParams().language->babel().empty())
+		|| !this->getBabelLanguages().empty();
+
+	if (local_lp == "auto") {
+		// polyglossia requirement has priority over babel
+		if (polyglossia_required)
+			return LANG_PACK_POLYGLOSSIA;
+		else if (babel_required)
+			return LANG_PACK_BABEL;
+	}
+
+	if (local_lp == "babel") {
+		if (babel_required)
+			return LANG_PACK_BABEL;
+	}
+
+	if (local_lp == "default") {
+		switch (lyxrc.language_package_selection) {
+		case LyXRC::LP_AUTO:
+			// polyglossia requirement has priority over babel
+			if (polyglossia_required)
+				return LANG_PACK_POLYGLOSSIA;
+			else if (babel_required)
+				return LANG_PACK_BABEL;
+		case LyXRC::LP_BABEL:
+			if (babel_required)
+				return LANG_PACK_BABEL;
+		case LyXRC::LP_CUSTOM:
+			return LANG_PACK_CUSTOM;
+		case LyXRC::LP_NONE:
+			return LANG_PACK_NONE;
+		}
+	}
+
+	return LANG_PACK_NONE;
 }
 
 
