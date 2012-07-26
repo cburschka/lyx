@@ -315,8 +315,13 @@ void SpellcheckerWidget::on_replacePB_clicked()
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
-	docstring const datastring = replace2string(replacement, textfield,
-		true, true, false, false);
+	docstring const datastring = 
+		replace2string(replacement, textfield,
+			true,   // case sensitive
+			true,   // match word
+			false,  // all words
+			true,   // forward
+			false); // find next
 
 	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));
@@ -332,8 +337,13 @@ void SpellcheckerWidget::on_replaceAllPB_clicked()
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
-	docstring const datastring = replace2string(replacement, textfield,
-		true, true, true, true);
+	docstring const datastring =
+		replace2string(replacement, textfield,
+			true,   // case sensitive
+			true,   // match word
+			true,   // all words
+			true,   // forward
+			false); // find next
 
 	LYXERR(Debug::GUI, "Replace all (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));
