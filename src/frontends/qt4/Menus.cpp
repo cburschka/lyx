@@ -783,7 +783,11 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 					MenuItem w(MenuItem::Command, toqstr(suggestion),
 						FuncRequest(LFUN_WORD_REPLACE,
 							replace2string(suggestion, selection,
-								true, true, false, true, false)));
+								true,     // case sensitive
+								true,     // match word
+								false,    // all words
+								true,     // forward
+								false))); // find next
 					if (i < m)
 						add(w);
 					else
