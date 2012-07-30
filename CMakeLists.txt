@@ -668,6 +668,7 @@ endif()
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
 add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
+add_subdirectory(lib/examples "${TOP_BINARY_DIR}/lib/examples")
 
 
 if(LYX_INSTALL)
