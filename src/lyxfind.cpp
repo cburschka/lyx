@@ -275,9 +275,6 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	if (forward) {
 		cur.pos() += replacestr.length();
 		LASSERT(cur.pos() <= cur.lastpos(), /* */);
-	} else {
-		cur.pos() -= replacestr.length();
-		LASSERT(cur.pos() >= 0, /* */);
 	}
 	if (findnext)
 		findOne(bv, searchstr, case_sens, whole, forward, false);
