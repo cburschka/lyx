@@ -63,6 +63,8 @@ endif()
 
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
+add_subdirectory(test)
+
 if(LYX_BUNDLE)
 	install(TARGETS ${_tex2lyx}
 		RUNTIME DESTINATION bin

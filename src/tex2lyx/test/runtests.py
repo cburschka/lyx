@@ -15,17 +15,21 @@ import os, string, sys
 
 
 def usage(prog_name):
-    return "Usage: %s [<tex2lyx binary>]" % prog_name
+  return "Usage: %s [<tex2lyx binary> [<script dir>]]" % prog_name
 
 
 def main(argv):
     # Parse and manipulate the command line arguments.
-    sys.path.append(os.path.join(os.path.dirname(sys.argv[0]), '../../../lib/scripts'))
+    if len(argv) == 3:
+	sys.path.append(os.path.join(sys.argv[2]))
+    else:
+	sys.path.append(os.path.join(os.path.dirname(sys.argv[0]), '../../../lib/scripts'))
+
     from lyxpreview_tools import error
 
-    if len(argv) == 1:
+    if len(argv) < 2:
         tex2lyx = './tex2lyx'
-    elif len(argv) == 2:
+    elif len(argv) <= 3:
         tex2lyx = argv[1]
     else:
         error(usage(argv[0]))
