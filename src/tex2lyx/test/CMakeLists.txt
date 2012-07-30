@@ -6,8 +6,8 @@
 
 project(test)
 
-set(_test_depend "${TOP_SRC_DIR}/src/tex2lyx/test/test.ltx")
-set(_test_output "${TOP_SRC_DIR}/src/tex2lyx/test/test.lyx.tex")
+set(_test_depend "${CMAKE_CURRENT_BINARY_DIR}/test.ltx")
+set(_test_output "${CMAKE_CURRENT_BINARY_DIR}/test.lyx.tex")
 foreach(_arg runtests.py DummyDocument.tex test.ltx foo.eps foo.png)
   configure_file("${TOP_SRC_DIR}/src/tex2lyx/test/${_arg}" "${CMAKE_CURRENT_BINARY_DIR}/${_arg}" COPYONLY)
 endforeach(_arg)
@@ -29,7 +29,8 @@ ADD_CUSTOM_COMMAND(
   ARGS "${CMAKE_CURRENT_BINARY_DIR}/runtests.py" "${TOP_BINARY_DIR}/bin/${_tex2lyx}" "${TOP_SRC_DIR}/lib/scripts"
   WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
   DEPENDS ${_tex2lyx} ${_test_depend}
+  COMMENT "${LYX_PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_BINARY_DIR}/runtests.py" "${TOP_BINARY_DIR}/bin/${_tex2lyx}" "${TOP_SRC_DIR}/lib/scripts"
 )
 
-ADD_CUSTOM_TARGET(test DEPENDS ${_tex2lyx} ${_test_output})
+ADD_CUSTOM_TARGET(test DEPENDS ${_tex2lyx} ${_lyx} ${_test_output})
 
