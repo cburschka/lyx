@@ -2854,7 +2854,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				retval += inset->xhtml(xs, np);
 			}
 		} else {
-			char_type c = d->text_[i];
+			char_type c = d->text_[getUChar(buf.params(), i)];
 
 			if (style.pass_thru)
 				xs << c;
