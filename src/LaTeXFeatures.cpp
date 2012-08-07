@@ -317,7 +317,7 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 		&& !params_.documentClass().provides("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
 	bool const babel_required = 
-		(bufferParams().language->lang() != lyxrc.default_language
+		(bufferParams().language->lang() != "english"
 		 && !bufferParams().language->babel().empty())
 		|| !this->getBabelLanguages().empty();
 
