@@ -119,9 +119,9 @@ public:
 	void setBuffer(Buffer const &);
 	///
 	BufferParams const & bufferParams() const;
-	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
+	/// Do we use Babel?
 	bool useBabel() const;
-	///
+	/// Do we use Polyglossia?
 	bool usePolyglossia() const;
 	/// are we in a float?
 	bool inFloat() const { return in_float_; }
