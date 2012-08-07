@@ -247,13 +247,10 @@ void Languages::read(FileName const & filename)
 			languagelist[l.lang()] = l;
 	}
 
-	default_language = getLanguage(lyxrc.default_language);
+	default_language = getLanguage("english");
 	if (!default_language) {
-		LYXERR0("Default language \"" << lyxrc.default_language
-		       << "\" not found!");
-		default_language = getLanguage("english");
-		if (!default_language)
-			default_language = &(*languagelist.begin()).second;
+		LYXERR0("Default language \"english\" not found!");
+		default_language = &(*languagelist.begin()).second;
 		LYXERR0("Using \"" << default_language->lang() << "\" instead!");
 	}
 

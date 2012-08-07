@@ -71,7 +71,6 @@ public:
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LENGTH_UNIT,
-		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_VIEW_FORMAT,
 		RC_DEFFILE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
@@ -418,8 +417,6 @@ public:
 	bool auto_number;
 	///
 	bool mark_foreign_language;
-	///
-	std::string default_language;
 	///
 	std::string gui_language;
 	///

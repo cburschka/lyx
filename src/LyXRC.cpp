@@ -91,7 +91,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
-	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
@@ -319,7 +318,6 @@ void LyXRC::setDefaults()
 	language_command_local = "\\foreignlanguage{$$lang}{";
 	sort_layouts = false;
 	group_layouts = true;
-	default_language = "english";
 	gui_language = "auto";
 	show_banner = true;
 	windows_style_tex_paths = false;
@@ -1159,10 +1157,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_DEFAULT_VIEW_FORMAT:
 			lexrc >> default_view_format;
-			break;
-
-		case RC_DEFAULT_LANGUAGE:
-			lexrc >> default_language;
 			break;
 
 		case RC_GUI_LANGUAGE:
@@ -2639,13 +2633,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_DEFAULT_LANGUAGE:
-		if (ignore_system_lyxrc ||
-		    default_language != system_lyxrc.default_language) {
-			os << "\\default_language " << default_language << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_GUI_LANGUAGE:
 		if (ignore_system_lyxrc ||
 		    gui_language != system_lyxrc.gui_language) {
@@ -2916,7 +2903,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
 	case LyXRC::RC_DATE_INSERT_FORMAT:
-	case LyXRC::RC_DEFAULT_LANGUAGE:
 	case LyXRC::RC_GUI_LANGUAGE:
 	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
 	case LyXRC::RC_DEFFILE:
@@ -3151,10 +3137,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DEFAULT_VIEW_FORMAT:
 		str = _("The default format used with LFUN_BUFFER_[VIEW|UPDATE].");
-		break;
-
-	case RC_DEFAULT_LANGUAGE:
-		str = _("New documents will be assigned this language.");
 		break;
 
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
