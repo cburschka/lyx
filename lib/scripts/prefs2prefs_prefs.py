@@ -43,7 +43,7 @@
 #   Add "nice" flag for converters
 #   No conversion necessary.
 
-# Incremented to format 9, by spitz
+# Incremented to format 9, a18af620 by spitz
 #  Remove default_language rc.
 
 import re

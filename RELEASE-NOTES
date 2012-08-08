@@ -32,6 +32,9 @@ The following pref variables are obsoleted in 2.1:
 - \\default_language
 - \\default_papersize
 
+To set the default language and paper size for new documents, use the
+"Save As Document Defaults" button in Document > Settings.
+
 The following new LyX functions have been introduced:
 
 - LFUN_BUFFER_EXPORT_AS <format> <filename>
