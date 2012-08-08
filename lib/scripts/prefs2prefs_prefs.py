@@ -43,6 +43,9 @@
 #   Add "nice" flag for converters
 #   No conversion necessary.
 
+# Incremented to format 9, by spitz
+#  Remove default_language rc.
+
 import re
 
 ###########################################################
@@ -229,6 +232,12 @@ def add_mime_types(line):
 		converted = converted + '       ""'
 	return (True, converted)
 
+def remove_default_language(line):
+	if not line.lower().startswith("\\default_language"):
+		return no_match
+	return (True, "")
+
+
 # End conversions for LyX 2.0 to 2.1
 ####################################
 
@@ -247,5 +256,6 @@ conversions = [
 	[ 5, []],
 	[ 6, []],
 	[ 7, [add_mime_types]],
-	[ 8, []]
+	[ 8, []],
+	[ 9, [ remove_default_language ]]
 ]
