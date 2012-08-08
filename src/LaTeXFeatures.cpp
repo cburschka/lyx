@@ -342,9 +342,11 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 				return LANG_PACK_POLYGLOSSIA;
 			else if (babel_required)
 				return LANG_PACK_BABEL;
+			break;
 		case LyXRC::LP_BABEL:
 			if (babel_required)
 				return LANG_PACK_BABEL;
+			break;
 		case LyXRC::LP_CUSTOM:
 			return LANG_PACK_CUSTOM;
 		case LyXRC::LP_NONE:
