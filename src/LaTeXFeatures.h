@@ -101,9 +101,9 @@ public:
 	static bool isAvailable(std::string const & name);
 	/// Has the package been required?
 	bool isRequired(std::string const & name) const;
-	/* Is it necessary to load the package? This is true if
-	   isRequired is true and the feature is not provided by the
-	   textclass.
+	/** Is it necessary to load the package? This is true if
+	    isRequired is true and the feature is not provided by the
+	    textclass.
 	*/
 	bool mustProvide(std::string const & name) const;
 	///
@@ -132,8 +132,8 @@ public:
 	void setBuffer(Buffer const &);
 	///
 	BufferParams const & bufferParams() const;
-	/* Which language package do we require? \p englishbabel determines
-	 * if we require babel even if English is the only language.
+	/** Which language package do we require? \p englishbabel determines
+	 *  if we require babel even if English is the only language.
 	 */
 	LangPackage langPackage(bool englishbabel = false) const;
 	/// Convenience function to test if we use babel

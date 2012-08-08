@@ -310,6 +310,9 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
 	 * If babel is selected (either directly or via the "auto"
 	 * mechanism), we really do only require it if we have
 	 * a language that needs it.
+	 * English alone normally does not require babel (since it is
+	 * the default language of LaTeX). However, in some cases we
+	 * need to surpass this exception (see Font::validate).
 	 */
 	bool const polyglossia_required =
 		isRequired("polyglossia")
