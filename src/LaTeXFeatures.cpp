@@ -290,7 +290,7 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 {}
 
 
-LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
+LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
 {
 	string const local_lp = bufferParams().lang_package;
 
@@ -317,7 +317,7 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 		&& !params_.documentClass().provides("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
 	bool const babel_required = 
-		(bufferParams().language->lang() != "english"
+		((englishbabel || bufferParams().language->lang() != "english")
 		 && !bufferParams().language->babel().empty())
 		|| !this->getBabelLanguages().empty();
 

@@ -132,10 +132,12 @@ public:
 	void setBuffer(Buffer const &);
 	///
 	BufferParams const & bufferParams() const;
-	/// Which language package do we need?
-	LangPackage langPackage() const;
+	/* Which language package do we require? \p englishbabel determines
+	 * if we require babel even if English is the only language.
+	 */
+	LangPackage langPackage(bool englishbabel = false) const;
 	/// Convenience function to test if we use babel
-	bool useBabel() const { return langPackage() == LANG_PACK_BABEL; }
+	bool useBabel(bool englishbabel = false) const { return langPackage(englishbabel) == LANG_PACK_BABEL; }
 	/// Convenience function to test if we use polyglossia
 	bool usePolyglossia() const { return langPackage() == LANG_PACK_POLYGLOSSIA; }
 	/// are we in a float?
