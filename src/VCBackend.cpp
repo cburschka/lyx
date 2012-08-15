@@ -102,9 +102,11 @@ bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 {
 	FileName dirname = file.onlyPath();
 	FileName tocheck = FileName(addName(dirname.absFileName(),pathname));
+	LYXERR(Debug::LYXVC, "check file: " << tocheck.absFileName());
 	bool result = tocheck.exists();
 	while ( !result && !dirname.empty() ) {
 		dirname = dirname.parentPath();
+		LYXERR(Debug::LYXVC, "check directory: " << dirname.absFileName());
 		tocheck = FileName(addName(dirname.absFileName(),pathname));
 		result = tocheck.exists();
 	}
