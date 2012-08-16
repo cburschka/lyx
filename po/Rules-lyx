@@ -38,6 +38,9 @@ $(top_srcdir)/lib/layouttranslations: $(POFILES) $(top_srcdir)/lib/layouts/*.lay
 languages_l10n.pot: $(top_srcdir)/lib/languages
 	$(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t languages ${top_srcdir}/lib/languages
 
+latexfonts_l10n.pot: $(top_srcdir)/lib/latexfonts
+	$(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t latexfonts ${top_srcdir}/lib/latexfonts
+
 encodings_l10n.pot: $(top_srcdir)/lib/encodings
 	$(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t encodings ${top_srcdir}/lib/encodings
 

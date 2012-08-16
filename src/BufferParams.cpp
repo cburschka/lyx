@@ -30,6 +30,7 @@
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
+#include "LaTeXFonts.h"
 #include "ModuleList.h"
 #include "Font.h"
 #include "Lexer.h"
@@ -2856,115 +2857,50 @@ string const BufferParams::loadFonts(string const & rm,
 		return os.str();
 	}
 
+	// Tex Fonts
+	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
+
 	// ROMAN FONTS
-	// Computer Modern (must be explicitly selectable -- there might be classes
-	// that define a different default font!
-	if (rm == "cmr") {
-		os << "\\renewcommand{\\rmdefault}{cmr}\n";
-		// osf for Computer Modern needs eco.sty
-		if (osf)
-			os << "\\usepackage{eco}\n";
+	LaTeXFont roman = theLaTeXFonts().getLaTeXFont(from_ascii(rm));
+	if (roman.switchdefault())
+		os << "\\renewcommand{\\rmdefault}{" << to_ascii(roman.name()) << "}\n";
+	else {
+		bool const complete = (sf == "default" && tt == "default");
+		string const package = roman.getAvailablePackage(ot1, complete);
+		string const packageopts = roman.getPackageOptions(ot1, sc, osf);
+		if (packageopts.empty() && !package.empty())
+			os << "\\usepackage{" << package << "}\n";
+		else if (!packageopts.empty() && !package.empty())
+			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
-	// Latin Modern Roman
-	else if (rm == "lmodern")
-		os << "\\usepackage{lmodern}\n";
-	// AE
-	else if (rm == "ae") {
-		// not needed when using OT1 font encoding.
-		if (font_encoding() != "default")
-			os << "\\usepackage{ae,aecompl}\n";
-	}
-	// Times
-	else if (rm == "times") {
-		// try to load the best available package
-		if (LaTeXFeatures::isAvailable("mathptmx"))
-			os << "\\usepackage{mathptmx}\n";
-		else if (LaTeXFeatures::isAvailable("mathptm"))
-			os << "\\usepackage{mathptm}\n";
-		else
-			os << "\\usepackage{times}\n";
-	}
-	// Palatino
-	else if (rm == "palatino") {
-		// try to load the best available package
-		if (LaTeXFeatures::isAvailable("mathpazo")) {
-			os << "\\usepackage";
-			if (osf || sc) {
-				os << '[';
-				if (!osf)
-					os << "sc";
-				else
-					// "osf" includes "sc"!
-					os << "osf";
-				os << ']';
-			}
-			os << "{mathpazo}\n";
-		}
-		else if (LaTeXFeatures::isAvailable("mathpple"))
-			os << "\\usepackage{mathpple}\n";
-		else
-			os << "\\usepackage{palatino}\n";
-	}
-	// Utopia
-	else if (rm == "utopia") {
-		// fourier supersedes utopia.sty, but does
-		// not work with OT1 encoding.
-		if (LaTeXFeatures::isAvailable("fourier")
-		    && font_encoding() != "default") {
-			os << "\\usepackage";
-			if (osf || sc) {
-				os << '[';
-				if (sc)
-					os << "expert";
-				if (osf && sc)
-					os << ',';
-				if (osf)
-					os << "oldstyle";
-				os << ']';
-			}
-			os << "{fourier}\n";
-		}
-		else
-			os << "\\usepackage{utopia}\n";
-	}
-	// Bera (complete fontset)
-	else if (rm == "bera" && sf == "default" && tt == "default")
-		os << "\\usepackage{bera}\n";
-	// everything else
-	else if (rm != "default")
-		os << "\\usepackage" << "{" << rm << "}\n";
+	if (osf && roman.providesOSF(ot1) && !roman.osfpackage().empty())
+		os << "\\usepackage{" << to_ascii(roman.osfpackage()) << "}\n";
 
 	// SANS SERIF
-	// Helvetica, Bera Sans
-	if (sf == "helvet" || sf == "berasans") {
-		if (sfscale != 100)
-			os << "\\usepackage[scaled=" << float(sfscale) / 100
-			   << "]{" << sf << "}\n";
-		else
-			os << "\\usepackage{" << sf << "}\n";
+	LaTeXFont sans = theLaTeXFonts().getLaTeXFont(from_ascii(sf));
+	if (sans.switchdefault())
+		os << "\\renewcommand{\\sfdefault}{" << to_ascii(sans.name()) << "}\n";
+	else {
+		string const package = sans.getAvailablePackage(ot1);
+		string const packageopts = sans.getPackageOptions(ot1, sc, osf, sfscale);
+		if (packageopts.empty() && !package.empty())
+			os << "\\usepackage{" << package << "}\n";
+		else if (!packageopts.empty() && !package.empty())
+			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
-	// Avant Garde
-	else if (sf == "avant")
-		os << "\\usepackage{" << sf << "}\n";
-	// Computer Modern, Latin Modern, CM Bright
-	else if (sf != "default")
-		os << "\\renewcommand{\\sfdefault}{" << sf << "}\n";
 
-	// monospaced/typewriter
-	// Courier, LuxiMono
-	if (tt == "luximono" || tt == "beramono") {
-		if (ttscale != 100)
-			os << "\\usepackage[scaled=" << float(ttscale) / 100
-			   << "]{" << tt << "}\n";
-		else
-			os << "\\usepackage{" << tt << "}\n";
+	// MONOSPACED/TYPEWRITER
+	LaTeXFont mono = theLaTeXFonts().getLaTeXFont(from_ascii(tt));
+	if (mono.switchdefault())
+		os << "\\renewcommand{\\ttdefault}{" << to_ascii(mono.name()) << "}\n";
+	else {
+		string const package = mono.getAvailablePackage(ot1);
+		string const packageopts = mono.getPackageOptions(ot1, sc, osf, ttscale);
+		if (packageopts.empty() && !package.empty())
+			os << "\\usepackage{" << package << "}\n";
+		else if (!packageopts.empty() && !package.empty())
+			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
-	// Courier
-	else if (tt == "courier" )
-		os << "\\usepackage{" << tt << "}\n";
-	// Computer Modern, Latin Modern, CM Bright
-	else if (tt != "default")
-		os << "\\renewcommand{\\ttdefault}{" << tt << "}\n";
 
 	return os.str();
 }

@@ -28,6 +28,7 @@ class ErrorItem;
 class FuncRequest;
 class FuncStatus;
 class KeyMap;
+class LaTeXFonts;
 class Messages;
 class Mover;
 class Movers;
@@ -148,6 +149,7 @@ private:
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
 	friend Session & theSession();
+	friend LaTeXFonts & theLaTeXFonts();
 	friend CmdDef & theTopLevelCmdDef();
 	friend SpellChecker * theSpellChecker();
 	friend void setSpellChecker();

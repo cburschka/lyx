@@ -228,14 +228,12 @@ private:
 	void setLanguage() const;
 	///
 	void saveAsDefault() const;
-	///
-	bool isFontAvailable(std::string const & font) const;
 	/// does this font provide Old Style figures?
-	bool providesOSF(std::string const & font) const;
+	bool providesOSF(QString const & font) const;
 	/// does this font provide true Small Caps?
-	bool providesSC(std::string const & font) const;
+	bool providesSC(QString const & font) const;
 	/// does this font provide size adjustment?
-	bool providesScale(std::string const & font) const;
+	bool providesScale(QString const & font) const;
 	///
 	void executeBranchRenaming() const;
 	///
@@ -245,6 +243,12 @@ private:
 	void loadModuleInfo();
 	///
 	void updateUnknownBranches();
+	///
+	void updateTexFonts();
+	///
+	void updateFontOptions();
+	///
+	bool ot1() const;
 	///
 	BufferParams bp_;
 	/// List of names of available modules

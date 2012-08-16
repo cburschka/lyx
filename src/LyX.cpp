@@ -34,6 +34,7 @@
 #include "HunspellChecker.h"
 #include "KeyMap.h"
 #include "Language.h"
+#include "LaTeXFonts.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyX.h"
@@ -139,12 +140,13 @@ void reconfigureUserLyXDir()
 /// The main application class private implementation.
 struct LyX::Impl
 {
-	Impl() : spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
+	Impl() : latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
 	{
 	}
 
 	~Impl()
 	{
+		delete latexfonts_;
 		delete apple_spell_checker_;
 		delete aspell_checker_;
 		delete enchant_checker_;
@@ -187,6 +189,9 @@ struct LyX::Impl
 	bool first_start;
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
+	
+	///
+	LaTeXFonts * latexfonts_;
 
 	///
 	SpellChecker * spell_checker_;
@@ -1384,6 +1389,15 @@ Session & theSession()
 {
 	LASSERT(singleton_, /**/);
 	return *singleton_->pimpl_->session_.get();
+}
+
+
+LaTeXFonts & theLaTeXFonts()
+{
+	LASSERT(singleton_, /**/);
+	if (!singleton_->pimpl_->latexfonts_)
+		singleton_->pimpl_->latexfonts_ = new LaTeXFonts;
+	return *singleton_->pimpl_->latexfonts_;
 }
 
 

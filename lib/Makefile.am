@@ -5,7 +5,7 @@ SUBDIRS = doc lyx2lyx
 CHMOD = chmod
 
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
-	encodings layouttranslations languages symbols syntax.default \
+	encodings layouttranslations languages latexfonts symbols syntax.default \
 	unicodesymbols
 
 nodist_pkgdata_DATA = installed_translations

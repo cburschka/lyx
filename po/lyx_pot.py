@@ -435,6 +435,26 @@ def languages_l10n(input_files, output, base):
     out.close()
 
 
+def latexfonts_l10n(input_files, output, base):
+    '''Generate pot file from lib/latexfonts'''
+    out = open(output, 'w')
+    GuiName = re.compile(r'^[^#]*GuiName\s+(.*)', re.IGNORECASE)
+    
+    for src in input_files:
+        descStartLine = -1
+        descLines = []
+        lineno = 0
+        for line in open(src).readlines():
+            lineno += 1
+            res = GuiName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+               
+    out.close()
+
+
 def external_l10n(input_files, output, base):
     '''Generate pot file from lib/external_templates'''
     output = open(output, 'w')
@@ -553,6 +573,7 @@ where
         layouttranslations: create lib/layouttranslations from po/*.po and lib/layouts/*
         qt4: qt4 ui files
         languages: file lib/languages
+        latexfonts: file lib/latexfonts
         encodings: file lib/encodings
         external: external templates file
         formats: formats predefined in lib/configure.py
@@ -579,7 +600,7 @@ if __name__ == '__main__':
         elif opt in ['-s', '--src_file']:
             input_files = [f.strip() for f in open(value)]
 
-    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'encodings', 'external', 'formats'] or output is None:
+    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt4', 'languages', 'latexfonts', 'encodings', 'external', 'formats'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
 
@@ -587,6 +608,8 @@ if __name__ == '__main__':
 
     if input_type == 'ui':
         ui_l10n(input_files, output, base)
+    elif input_type == 'latexfonts':
+        latexfonts_l10n(input_files, output, base)
     elif input_type == 'layouts':
         layouts_l10n(input_files, output, base, False)
     elif input_type == 'layouttranslations':

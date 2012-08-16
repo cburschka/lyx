@@ -1,0 +1,242 @@
+##########################################################################
+#
+# LaTeX fonts natively supported by LyX.
+#
+# Syntax:
+#
+# Font <name>
+#	GuiName            "<Gui Name>"
+#	Family             <rm|sf|tt>
+#	SwitchDefault      <0|1>
+#	Package            <LaTeX package to be loaded>
+#	Requires           <LaTeX package to test for>
+#	AltPackages        <alternative packages (comma-separated)>
+#	OT1Package         <alternative package specifically for OT1 encoding>
+#	CompletePackage    <alternative package for the complete family>
+#	OsfOption          <option for oldstyle figure support>
+#	ScOption           <option for true smallcaps support>
+#	OsfScOption        <option for combined osf and true smallcaps support>
+#	ScaleOption        <option for font scaling>
+# EndFont
+#
+#
+# NOTES:
+#
+# * Adding a new font results in a FILE FORMAT CHANGE. So if a new font
+#   is added for the LyX distribution, the according changes need to be
+#   done.
+# * "SwitchDefault 1" makes the font to be loaded by switching the default
+#   family to <name> (e.g., \renewcommand{\rmdefault}{cmr}), whereas
+#   Package <package> loads it via \usepackage{package}. Normally, only
+#   one of these options is used per font.
+# * If AltPackages are defined, LyX will try to load them in the defined
+#   order if the main package is not available. So
+#       Package          mathptmx
+#       AltPackages      mathptm,times
+#   will try to load mathptm if mathptmx is not available and then times
+#   if mathptm is not available either.
+# * If Requires is set, LyX will check for this. If not, it will check
+#   for Package and AltPackages.
+# * OT1Package will load the defined package instead of the default
+#   package if the font encoding is OT1. This is necessary since some
+#   newer packages for a font do not support this encoding.
+#   The value "none" tells LyX not to load a package in OT1 encoding.
+# * CompletePackage is a package that is loaded if the current font is
+#   selected as rm and both sf and tt are set to "default" (this allows
+#   f. ex. to load "bera" as opposed to "beraserif").
+# * OsfScOption overrides any OsfOption and ScOption if both features
+#   are selected.
+# * ScaleOption supports the placeholder $$val for the scale value.
+#
+##########################################################################
+
+#
+# Roman fonts
+#
+
+Font cmr
+	GuiName          "Computer Modern Roman"
+	Family           rm
+	SwitchDefault    1
+	OsfPackage       eco
+EndFont
+
+Font lmodern
+	GuiName          "Latin Modern Roman"
+	Family           rm
+	Package          lmodern
+EndFont
+
+Font ae
+	GuiName          "AE (Almost European)"
+	Family           rm
+	Package          "ae,aecompl"
+	OT1Package       none
+	Requires         ae
+EndFont
+
+Font times
+	GuiName          "Times Roman"
+	Family           rm
+	Package          mathptmx
+	AltPackages      "mathptm,times"
+	Requires         psnfss
+EndFont
+
+Font palatino
+	GuiName          "Palatino"
+	Family           rm
+	OsfOption        osf
+	ScOption         sc
+	OsfScOption      osf
+	Package          mathpazo
+	AltPackages      "mathpple,palatino"
+	Requires         psnfss
+EndFont
+
+Font charter
+	GuiName          "Bitstream Charter"
+	Family           rm
+	Package          charter
+EndFont
+
+Font newcent
+	GuiName          "New Century Schoolbook"
+	Family           rm
+	Package          newcent
+EndFont
+
+Font bookman
+	GuiName          "Bookman"
+	Family           rm
+	Package          bookman
+EndFont
+
+# fourier supersedes utopia.sty, but does
+# not work with OT1 encoding.
+Font utopia
+	GuiName          "Utopia"
+	Family           rm
+	OsfOption        oldstyle
+	ScOption         expert
+	Package          fourier
+	AltPackages      utopia
+	OT1Package       utopia
+EndFont
+
+Font beraserif
+	GuiName          "Bera Serif"
+	Family           rm
+	Package          beraserif
+	CompletePackage  bera
+	Requires         bera
+EndFont
+
+Font ccfonts
+	GuiName          "Concrete Roman"
+	Family           rm
+	Package          ccfonts
+EndFont
+
+Font chancery
+	GuiName          "Zapf Chancery"
+	Family           rm
+	Package          chancery
+EndFont
+
+
+#
+# SansSerif fonts
+#
+
+
+Font cmss
+	GuiName          "Computer Modern Sans"
+	Family           sf
+	SwitchDefault    1
+EndFont
+
+
+Font lmss
+	GuiName          "Latin Modern Sans"
+	Family           sf
+	SwitchDefault    1
+	Requires         lmodern
+EndFont
+
+Font helvet
+	GuiName          "Helvetica"
+	Family           sf
+	ScaleOption      scaled=$$val
+	Package          helvet
+	Requires         psnfss
+EndFont
+
+Font avant
+	GuiName          "Avant Garde"
+	Family           sf
+	Package          avant
+EndFont
+
+Font berasans
+	GuiName          "Bera Sans"
+	Family           sf
+	ScaleOption      scaled=$$val
+	Package          berasans
+	Requires         bera
+EndFont
+
+Font cmbr
+	GuiName          "CM Bright"
+	Family           sf
+	SwitchDefault    1
+	Requires         cmbright
+EndFont
+
+
+#
+# Monospaced fonts
+#
+
+Font cmtt
+	GuiName          "Computer Modern Typewriter"
+	Family           tt
+	SwitchDefault    1
+EndFont
+
+Font lmtt
+	GuiName          "Latin Modern Typewriter"
+	Family           tt
+	SwitchDefault    1
+	Requires         lmodern
+EndFont
+
+Font courier
+	GuiName          "Courier"
+	Family           tt
+	Package          courier
+	Requires         psnfss
+EndFont
+
+Font beramono
+	GuiName          "Bera Mono"
+	Family           tt
+	ScaleOption      scaled=$$val
+	Package          beramono
+	Requires         bera
+EndFont
+
+Font luximono
+	GuiName          "LuxiMono"
+	Family           tt
+	ScaleOption      scaled=$$val
+	Package          luximono
+EndFont
+
+Font cmtl
+	GuiName          "CM Typewriter Light"
+	Family           tt
+	SwitchDefault    1
+	Requires         cmbright
+EndFont
+

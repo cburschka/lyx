@@ -85,6 +85,8 @@ lyx_SOURCES = \
 	$(ENCHANT) \
 	$(HUNSPELL) \
 	$(PWL) \
+	LaTeXFonts.cpp \
+	LaTeXFonts.h \
 	PrinterParams.cpp \
 	PrinterParams.h \
 	Thesaurus.cpp \

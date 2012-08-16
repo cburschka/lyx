@@ -38,6 +38,7 @@
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
+#include "LaTeXFonts.h"
 #include "Layout.h"
 #include "LayoutModuleList.h"
 #include "LyXRC.h"
@@ -115,51 +116,6 @@ char const * const tex_graphics_gui[] =
 };
 
 
-char const * const tex_fonts_roman[] =
-{
-	"default", "cmr", "lmodern", "ae", "times", "palatino",
-	"charter", "newcent", "bookman", "utopia", "beraserif",
-	"ccfonts", "chancery", ""
-};
-
-
-char const * tex_fonts_roman_gui[] =
-{
-	N_("Default"), N_("Computer Modern Roman"), N_("Latin Modern Roman"),
-	N_("AE (Almost European)"), N_("Times Roman"), N_("Palatino"),
-	N_("Bitstream Charter"), N_("New Century Schoolbook"), N_("Bookman"),
-	N_("Utopia"),  N_("Bera Serif"), N_("Concrete Roman"), N_("Zapf Chancery"),
-	""
-};
-
-
-char const * const tex_fonts_sans[] =
-{
-	"default", "cmss", "lmss", "helvet", "avant", "berasans", "cmbr", ""
-};
-
-
-char const * tex_fonts_sans_gui[] =
-{
-	N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"),
-	N_("Helvetica"), N_("Avant Garde"), N_("Bera Sans"), N_("CM Bright"), ""
-};
-
-
-char const * const tex_fonts_monospaced[] =
-{
-	"default", "cmtt", "lmtt", "courier", "beramono", "luximono", "cmtl", ""
-};
-
-
-char const * tex_fonts_monospaced_gui[] =
-{
-	N_("Default"), N_("Computer Modern Typewriter"),
-	N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"),
-	N_("LuxiMono"), N_("CM Typewriter Light"), ""
-};
-
-
 char const * backref_opts[] =
 {
 	"false", "section", "slide", "page", ""
@@ -208,6 +164,10 @@ char const * packages_gui[][4] =
 
 vector<string> engine_types_;
 vector<pair<string, QString> > pagestyles;
+
+QMap<QString, QString> rmfonts_;
+QMap<QString, QString> sffonts_;
+QMap<QString, QString> ttfonts_;
 
 
 } // anonymous namespace
@@ -890,9 +850,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
 
-	fontModule->fontencCO->addItem(qt_("Default"));
-	fontModule->fontencCO->addItem(qt_("Custom"));
-	fontModule->fontencCO->addItem(qt_("None (no fontenc)"));
+	fontModule->fontencCO->addItem(qt_("Default"), QString("global"));
+	fontModule->fontencCO->addItem(qt_("Custom"), QString("custom"));
+	fontModule->fontencCO->addItem(qt_("None (no fontenc)"), QString("default"));
 
 	for (int n = 0; GuiDocument::fontfamilies_gui[n][0]; ++n)
 		fontModule->fontsDefaultCO->addItem(
@@ -1808,28 +1768,39 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	fontModule->fontsDefaultLA->setEnabled(tex_fonts);
 	fontModule->cjkFontLE->setEnabled(tex_fonts);
 	fontModule->cjkFontLA->setEnabled(tex_fonts);
-	string font;
-	if (tex_fonts)
-		font = tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
-	bool scaleable = providesScale(font);
-	fontModule->scaleSansSB->setEnabled(scaleable);
-	fontModule->scaleSansLA->setEnabled(scaleable);
-	if (tex_fonts)
-		font = tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
-	scaleable = providesScale(font);
-	fontModule->scaleTypewriterSB->setEnabled(scaleable);
-	fontModule->scaleTypewriterLA->setEnabled(scaleable);
-	if (tex_fonts)
-		font = tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
-	fontModule->fontScCB->setEnabled(providesSC(font));
-	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+
+	updateFontOptions();
 
 	fontModule->fontencLA->setEnabled(tex_fonts);
 	fontModule->fontencCO->setEnabled(tex_fonts);
 	if (!tex_fonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
-		fontencChanged(fontModule->fontencCO->currentIndex());
+		fontencChanged(fontModule->fontencCO->currentIndex()); 
+}
+
+
+void GuiDocument::updateFontOptions()
+{
+	bool const tex_fonts = !fontModule->osFontsCB->isChecked();
+	QString font;
+	if (tex_fonts)
+		font = fontModule->fontsSansCO->itemData(
+				fontModule->fontsSansCO->currentIndex()).toString();
+	bool scaleable = providesScale(font);
+	fontModule->scaleSansSB->setEnabled(scaleable);
+	fontModule->scaleSansLA->setEnabled(scaleable);
+	if (tex_fonts)
+		font = fontModule->fontsTypewriterCO->itemData(
+				fontModule->fontsTypewriterCO->currentIndex()).toString();
+	scaleable = providesScale(font);
+	fontModule->scaleTypewriterSB->setEnabled(scaleable);
+	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	if (tex_fonts)
+		font = fontModule->fontsRomanCO->itemData(
+				fontModule->fontsRomanCO->currentIndex()).toString();
+	fontModule->fontScCB->setEnabled(providesSC(font));
+	fontModule->fontOsfCB->setEnabled(providesOSF(font));
 }
 
 
@@ -1847,6 +1818,40 @@ void GuiDocument::updateFontsize(string const & items, string const & sel)
 			fontModule->fontsizeCO->setCurrentIndex(n);
 			break;
 		}
+	}
+}
+
+
+bool GuiDocument::ot1() const
+{
+	QString const fontenc =
+		fontModule->fontencCO->itemData(fontModule->fontencCO->currentIndex()).toString();
+	return (fontenc == "default"
+		|| (fontenc == "global" && (lyxrc.fontenc == "default" || lyxrc.fontenc == "OT1"))
+		|| (fontenc == "custom" && fontModule->fontencLE->text() == "OT1"));
+}
+
+
+void GuiDocument::updateTexFonts()
+{
+	LaTeXFonts::TexFontMap texfontmap = theLaTeXFonts().getLaTeXFonts();
+
+	LaTeXFonts::TexFontMap::const_iterator it = texfontmap.begin();
+	LaTeXFonts::TexFontMap::const_iterator end = texfontmap.end();
+	for (; it != end; ++it) {
+		LaTeXFont lf = it->second;
+		if (lf.name().empty())
+			return;
+		docstring const family = lf.family();
+		docstring guiname = translateIfPossible(lf.guiname());
+		if (!lf.available(ot1()))
+			guiname += _(" (not installed)");
+		if (family == "rm")
+			rmfonts_.insert(toqstr(guiname), toqstr(it->first));
+		else if (family == "sf")
+			sffonts_.insert(toqstr(guiname), toqstr(it->first));
+		else if (family == "tt")
+			ttfonts_.insert(toqstr(guiname), toqstr(it->first));
 	}
 }
 
@@ -1873,30 +1878,39 @@ void GuiDocument::updateFontlist()
 		return;
 	}
 
-	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
-		QString font = qt_(tex_fonts_roman_gui[n]);
-		if (!isFontAvailable(tex_fonts_roman[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsRomanCO->addItem(font, qt_(tex_fonts_roman[n]));
+	if (rmfonts_.empty())
+		updateTexFonts();
+
+	fontModule->fontsRomanCO->addItem(qt_("Default"), QString("default"));
+	QMap<QString, QString>::const_iterator rmi = rmfonts_.constBegin();
+	while (rmi != rmfonts_.constEnd()) {
+		fontModule->fontsRomanCO->addItem(rmi.key(), rmi.value());
+		++rmi;
 	}
-	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
-		QString font = qt_(tex_fonts_sans_gui[n]);
-		if (!isFontAvailable(tex_fonts_sans[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsSansCO->addItem(font, qt_(tex_fonts_sans[n]));
+	
+	fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
+	QMap<QString, QString>::const_iterator sfi = sffonts_.constBegin();
+	while (sfi != sffonts_.constEnd()) {
+		fontModule->fontsSansCO->addItem(sfi.key(), sfi.value());
+		++sfi;
 	}
-	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
-		QString font = qt_(tex_fonts_monospaced_gui[n]);
-		if (!isFontAvailable(tex_fonts_monospaced[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsTypewriterCO->addItem(font, qt_(tex_fonts_monospaced[n]));
+	
+	fontModule->fontsTypewriterCO->addItem(qt_("Default"), QString("default"));
+	QMap<QString, QString>::const_iterator tti = ttfonts_.constBegin();
+	while (tti != ttfonts_.constEnd()) {
+		fontModule->fontsTypewriterCO->addItem(tti.key(), tti.value());
+		++tti;
 	}
 }
 
 
 void GuiDocument::fontencChanged(int item)
 {
-	fontModule->fontencLE->setEnabled(item == 1);
+	fontModule->fontencLE->setEnabled(
+		fontModule->fontencCO->itemData(item).toString() == "custom");
+	// The availability of TeX fonts depends on the font encoding
+	updateTexFonts();
+	updateFontOptions();
 }
 
 
@@ -1904,7 +1918,8 @@ void GuiDocument::romanChanged(int item)
 {
 	if (fontModule->osFontsCB->isChecked())
 		return;
-	string const font = tex_fonts_roman[item];
+	QString const font =
+		fontModule->fontsRomanCO->itemData(item).toString();
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
 }
@@ -1914,7 +1929,8 @@ void GuiDocument::sansChanged(int item)
 {
 	if (fontModule->osFontsCB->isChecked())
 		return;
-	string const font = tex_fonts_sans[item];
+	QString const font =
+		fontModule->fontsSansCO->itemData(item).toString();
 	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
@@ -1925,7 +1941,8 @@ void GuiDocument::ttChanged(int item)
 {
 	if (fontModule->osFontsCB->isChecked())
 		return;
-	string const font = tex_fonts_monospaced[item];
+	QString const font =
+		fontModule->fontsTypewriterCO->itemData(item).toString();
 	bool scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
@@ -2680,12 +2697,12 @@ void GuiDocument::applyView()
 		fromqstr(fontModule->fontsTypewriterCO->
 			itemData(fontModule->fontsTypewriterCO->currentIndex()).toString());
 
-	if (fontModule->fontencCO->currentIndex() == 0)
-		bp_.fontenc = "global";
-	else if (fontModule->fontencCO->currentIndex() == 1)
+	QString const fontenc =
+		fontModule->fontencCO->itemData(fontModule->fontencCO->currentIndex()).toString();
+	if (fontenc == "custom")
 		bp_.fontenc = fromqstr(fontModule->fontencLE->text());
-	else if (fontModule->fontencCO->currentIndex() == 2)
-		bp_.fontenc = "default";
+	else
+		bp_.fontenc = fromqstr(fontenc);
 
 	bp_.fonts_cjk =
 		fromqstr(fontModule->cjkFontLE->text());
@@ -3136,11 +3153,9 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
-	if (bp_.fontenc == "global") {
-		fontModule->fontencCO->setCurrentIndex(0);
-		fontModule->fontencLE->setEnabled(false);
-	} else if (bp_.fontenc == "default") {
-		fontModule->fontencCO->setCurrentIndex(2);
+	if (bp_.fontenc == "global" || bp_.fontenc == "default") {
+		fontModule->fontencCO->setCurrentIndex(
+			fontModule->fontencCO->findData(toqstr(bp_.fontenc)));
 		fontModule->fontencLE->setEnabled(false);
 	} else {
 		fontModule->fontencCO->setCurrentIndex(1);
@@ -3599,61 +3614,29 @@ void GuiDocument::saveAsDefault() const
 }
 
 
-bool GuiDocument::isFontAvailable(string const & font) const
-{
-	if (font == "default" || font == "cmr"
-	    || font == "cmss" || font == "cmtt")
-		// these are standard
-		return true;
-	if (font == "lmodern" || font == "lmss" || font == "lmtt")
-		return LaTeXFeatures::isAvailable("lmodern");
-	if (font == "times" || font == "palatino"
-		 || font == "helvet" || font == "courier")
-		return LaTeXFeatures::isAvailable("psnfss");
-	if (font == "cmbr" || font == "cmtl")
-		return LaTeXFeatures::isAvailable("cmbright");
-	if (font == "utopia")
-		return LaTeXFeatures::isAvailable("utopia")
-			|| LaTeXFeatures::isAvailable("fourier");
-	if (font == "beraserif" || font == "berasans"
-		|| font == "beramono")
-		return LaTeXFeatures::isAvailable("bera");
-	return LaTeXFeatures::isAvailable(font);
-}
-
-
-bool GuiDocument::providesOSF(string const & font) const
+bool GuiDocument::providesOSF(QString const & font) const
 {
 	if (fontModule->osFontsCB->isChecked())
 		// FIXME: we should check if the fonts really
 		// have OSF support. But how?
 		return true;
-	if (font == "cmr")
-		return isFontAvailable("eco");
-	if (font == "palatino")
-		return isFontAvailable("mathpazo");
-	return false;
+	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesOSF(ot1());
 }
 
 
-bool GuiDocument::providesSC(string const & font) const
+bool GuiDocument::providesSC(QString const & font) const
 {
 	if (fontModule->osFontsCB->isChecked())
 		return false;
-	if (font == "palatino")
-		return isFontAvailable("mathpazo");
-	if (font == "utopia")
-		return isFontAvailable("fourier");
-	return false;
+	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesSC(ot1());
 }
 
 
-bool GuiDocument::providesScale(string const & font) const
+bool GuiDocument::providesScale(QString const & font) const
 {
 	if (fontModule->osFontsCB->isChecked())
 		return true;
-	return font == "helvet" || font == "luximono"
-		|| font == "berasans"  || font == "beramono";
+	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesScale(ot1());
 }
 
 

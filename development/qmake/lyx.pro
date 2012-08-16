@@ -91,6 +91,7 @@ SOURCES += \
 ../../src/Language.cpp \
 ../../src/LaTeX.cpp \
 ../../src/LaTeXFeatures.cpp \
+../../src/LaTeXFonts.cpp \
 ../../src/Layout.cpp \
 ../../src/LayoutFile.cpp \
 ../../src/LayoutModuleList.cpp \
@@ -439,6 +440,7 @@ HEADERS += \
 ../../src/KeySequence.h \
 ../../src/Language.h \
 ../../src/LaTeXFeatures.h \
+../../src/LaTeXFonts.h \
 ../../src/LaTeX.h \
 ../../src/LayoutEnums.h \
 ../../src/LayoutFile.h \
