@@ -100,7 +100,7 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 
 bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 {
-	FileName dirname = file.onlyPath();
+	FileName dirname = FileName(file.absFileName()).onlyPath();
 	FileName tocheck = FileName(addName(dirname.absFileName(),pathname));
 	LYXERR(Debug::LYXVC, "check file: " << tocheck.absFileName());
 	bool result = tocheck.exists();
