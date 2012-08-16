@@ -16,7 +16,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
+l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
 	cat $^ | \
 	msguniq -o $(DOMAIN).po && rm -f  $^
 
