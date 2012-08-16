@@ -78,6 +78,7 @@ SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERA
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
 add_gettext_python(layouts lib/layouts *.layout *.inc *.module)
 add_gettext_python(languages lib languages)
+add_gettext_python(latexfonts lib latexfonts)
 add_gettext_python(encodings lib encodings)
 add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib external_templates)
@@ -126,7 +127,7 @@ ADD_CUSTOM_COMMAND(
 #
 # We have to copy the po-files first,
 # otherwise they would be modified (inside the macro GETTEXT_CREATE_TRANSLATIONS())
-# This makes the "svn up" on po-files work again
+# This makes the "git pull" on po-files work again
 file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
 list(SORT LYX_BASE_PO_FILES)
 set(LYX_PO_FILES)
@@ -153,7 +154,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
     COMMAND ${CMAKE_COMMAND} -E copy ${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
-    DEPENDS ${TOP_SRC_DIR}/po/${_pofile} "${CMAKE_CURRENT_BINARY_DIR}/installed_translations"
+    DEPENDS ${TOP_SRC_DIR}/po/${_pofile}
     )
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
