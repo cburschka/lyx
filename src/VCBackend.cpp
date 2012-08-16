@@ -100,12 +100,13 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 
 bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 {
-	FileName dirname = FileName(file.absFileName()).onlyPath();
+	FileName dirname = file.onlyPath();
 	FileName tocheck = FileName(addName(dirname.absFileName(),pathname));
 	LYXERR(Debug::LYXVC, "check file: " << tocheck.absFileName());
 	bool result = tocheck.exists();
 	while ( !result && !dirname.empty() ) {
-		dirname = dirname.parentPath();
+		//this construct because of #8295
+		dirname = FileName(dirname.absFileName()).parentPath();
 		LYXERR(Debug::LYXVC, "check directory: " << dirname.absFileName());
 		tocheck = FileName(addName(dirname.absFileName(),pathname));
 		result = tocheck.exists();
