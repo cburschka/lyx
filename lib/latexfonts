@@ -51,21 +51,8 @@
 ##########################################################################
 
 #
-# Roman fonts
+# ROMAN FONTS
 #
-
-Font cmr
-	GuiName          "Computer Modern Roman"
-	Family           rm
-	SwitchDefault    1
-	OsfPackage       eco
-EndFont
-
-Font lmodern
-	GuiName          "Latin Modern Roman"
-	Family           rm
-	Package          lmodern
-EndFont
 
 Font ae
 	GuiName          "AE (Almost European)"
@@ -75,61 +62,18 @@ Font ae
 	Requires         ae
 EndFont
 
-Font times
-	GuiName          "Times Roman"
-	Family           rm
-	Package          mathptmx
-	AltPackages      "mathptm,times"
-	Requires         psnfss
-EndFont
-
-Font palatino
-	GuiName          "Palatino"
-	Family           rm
-	OsfOption        osf
-	ScOption         sc
-	OsfScOption      osf
-	Package          mathpazo
-	AltPackages      "mathpple,palatino"
-	Requires         psnfss
-EndFont
-
-Font charter
-	GuiName          "Bitstream Charter"
-	Family           rm
-	Package          charter
-EndFont
-
-Font newcent
-	GuiName          "New Century Schoolbook"
-	Family           rm
-	Package          newcent
-EndFont
-
-Font bookman
-	GuiName          "Bookman"
-	Family           rm
-	Package          bookman
-EndFont
-
-# fourier supersedes utopia.sty, but does
-# not work with OT1 encoding.
-Font utopia
-	GuiName          "Utopia"
-	Family           rm
-	OsfOption        oldstyle
-	ScOption         expert
-	Package          fourier
-	AltPackages      utopia
-	OT1Package       utopia
-EndFont
-
 Font beraserif
 	GuiName          "Bera Serif"
 	Family           rm
 	Package          beraserif
 	CompletePackage  bera
 	Requires         bera
+EndFont
+
+Font bookman
+	GuiName          "Bookman"
+	Family           rm
+	Package          bookman
 EndFont
 
 Font ccfonts
@@ -144,33 +88,66 @@ Font chancery
 	Package          chancery
 EndFont
 
-
-#
-# SansSerif fonts
-#
-
-
-Font cmss
-	GuiName          "Computer Modern Sans"
-	Family           sf
-	SwitchDefault    1
+Font charter
+	GuiName          "Bitstream Charter"
+	Family           rm
+	Package          charter
 EndFont
 
-
-Font lmss
-	GuiName          "Latin Modern Sans"
-	Family           sf
+Font cmr
+	GuiName          "Computer Modern Roman"
+	Family           rm
 	SwitchDefault    1
-	Requires         lmodern
+	OsfPackage       eco
 EndFont
 
-Font helvet
-	GuiName          "Helvetica"
-	Family           sf
-	ScaleOption      scaled=$$val
-	Package          helvet
+Font lmodern
+	GuiName          "Latin Modern Roman"
+	Family           rm
+	Package          lmodern
+EndFont
+
+Font newcent
+	GuiName          "New Century Schoolbook"
+	Family           rm
+	Package          newcent
+EndFont
+
+Font palatino
+	GuiName          "Palatino"
+	Family           rm
+	OsfOption        osf
+	ScOption         sc
+	OsfScOption      osf
+	Package          mathpazo
+	AltPackages      "mathpple,palatino"
 	Requires         psnfss
 EndFont
+
+Font times
+	GuiName          "Times Roman"
+	Family           rm
+	Package          mathptmx
+	AltPackages      "mathptm,times"
+	Requires         psnfss
+EndFont
+
+# fourier supersedes utopia.sty, but does
+# not work with OT1 encoding.
+Font utopia
+	GuiName          "Utopia"
+	Family           rm
+	OsfOption        oldstyle
+	ScOption         expert
+	Package          fourier
+	AltPackages      utopia
+	OT1Package       utopia
+EndFont
+
+
+#
+# SANS SERIF FONTS
+#
 
 Font avant
 	GuiName          "Avant Garde"
@@ -193,30 +170,31 @@ Font cmbr
 	Requires         cmbright
 EndFont
 
-
-#
-# Monospaced fonts
-#
-
-Font cmtt
-	GuiName          "Computer Modern Typewriter"
-	Family           tt
+Font cmss
+	GuiName          "Computer Modern Sans"
+	Family           sf
 	SwitchDefault    1
 EndFont
 
-Font lmtt
-	GuiName          "Latin Modern Typewriter"
-	Family           tt
+Font helvet
+	GuiName          "Helvetica"
+	Family           sf
+	ScaleOption      scaled=$$val
+	Package          helvet
+	Requires         psnfss
+EndFont
+
+Font lmss
+	GuiName          "Latin Modern Sans"
+	Family           sf
 	SwitchDefault    1
 	Requires         lmodern
 EndFont
 
-Font courier
-	GuiName          "Courier"
-	Family           tt
-	Package          courier
-	Requires         psnfss
-EndFont
+
+#
+# MONOSPACED FONTS
+#
 
 Font beramono
 	GuiName          "Bera Mono"
@@ -226,13 +204,6 @@ Font beramono
 	Requires         bera
 EndFont
 
-Font luximono
-	GuiName          "LuxiMono"
-	Family           tt
-	ScaleOption      scaled=$$val
-	Package          luximono
-EndFont
-
 Font cmtl
 	GuiName          "CM Typewriter Light"
 	Family           tt
@@ -240,3 +211,29 @@ Font cmtl
 	Requires         cmbright
 EndFont
 
+Font cmtt
+	GuiName          "Computer Modern Typewriter"
+	Family           tt
+	SwitchDefault    1
+EndFont
+
+Font courier
+	GuiName          "Courier"
+	Family           tt
+	Package          courier
+	Requires         psnfss
+EndFont
+
+Font lmtt
+	GuiName          "Latin Modern Typewriter"
+	Family           tt
+	SwitchDefault    1
+	Requires         lmodern
+EndFont
+
+Font luximono
+	GuiName          "LuxiMono"
+	Family           tt
+	ScaleOption      scaled=$$val
+	Package          luximono
+EndFont
