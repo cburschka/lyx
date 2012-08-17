@@ -844,6 +844,17 @@ def revert_libertine(document):
             document.header[j] = "\\font_osf false"
 
 
+def revert_txtt(document):
+    " Revert native txtt font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        i = find_token(document.header, "\\font_typewriter txtt", 0)
+        if i != -1:
+            preamble = "\\renewcommand{\\ttdefault}{txtt}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = "\\font_typewriter default"
+
+
 ##
 # Conversion hub
 #
@@ -870,10 +881,12 @@ convert = [
            [431, [convert_use_amssymb]],
            [432, []],
            [433, [convert_armenian]],
-           [434, []]
+           [434, []],
+           [435, []]
           ]
 
 revert =  [
+           [434, [revert_txtt]],
            [433, [revert_libertine]],
            [432, [revert_armenian]],
            [431, [revert_languages, revert_ancientgreek]],

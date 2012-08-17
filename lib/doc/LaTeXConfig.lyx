@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 433
+\lyxformat 435
 \begin_document
 \begin_header
 \textclass article
@@ -968,6 +968,35 @@ Special Character\SpecialChar \menuseparator
 Symbols
 \family default
  dialog.
+\end_layout
+
+\begin_layout Subsection
+TX Fonts
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "txfonts"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/txfonts/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+txfonts
+\family default
+ package provides fonts based on Times Roman with math support.
+ In LyX, only the monospaced shape (TXTT) is currently natively supported.
 \end_layout
 
 \begin_layout Section

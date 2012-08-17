@@ -244,3 +244,10 @@ Font luximono
 	ScaleOption      scaled=$$val
 	Package          luximono
 EndFont
+
+Font txtt
+	GuiName          "TX Typewriter"
+	Family           tt
+	SwitchDefault    1
+	Requires         txfonts
+EndFont
