@@ -729,7 +729,7 @@ docstring FileName::displayName(int threshold) const
 docstring FileName::fileContents(string const & encoding) const
 {
 	if (!isReadableFile()) {
-		LYXERR0("File '" << *this << "' is not redable!");
+		LYXERR0("File '" << *this << "' is not readable!");
 		return docstring();
 	}
 
