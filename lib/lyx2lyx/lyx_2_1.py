@@ -825,6 +825,25 @@ def revert_armenian(document):
             document.header[i] = "\\use_non_tex_fonts false" 
 
 
+def revert_libertine(document):
+    " Revert native libertine font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        i = find_token(document.header, "\\font_roman libertine", 0)
+        if i != -1:
+            osf = False
+            j = find_token(document.header, "\\font_osf true", 0)
+            if j != -1:
+                osf = True
+            preamble = "\\usepackage"
+            if osf:
+                preamble += "[osf]"
+            preamble += "{libertine}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = "\\font_roman default"
+            document.header[j] = "\\font_osf false"
+
+
 ##
 # Conversion hub
 #
@@ -850,10 +869,12 @@ convert = [
            [430, [convert_listoflistings]],
            [431, [convert_use_amssymb]],
            [432, []],
-           [433, [convert_armenian]]
+           [433, [convert_armenian]],
+           [434, []]
           ]
 
 revert =  [
+           [433, [revert_libertine]],
            [432, [revert_armenian]],
            [431, [revert_languages, revert_ancientgreek]],
            [430, [revert_use_amssymb]],
