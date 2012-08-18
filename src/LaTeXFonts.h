@@ -63,20 +63,24 @@ public:
 	bool providesSC(bool ot1 = false) const;
 	/// Does this font provide scaling?
 	bool providesScale(bool ot1 = false) const;
-	/// Return the preferred available package 
-	std::string const getAvailablePackage(bool dryrun = false,
-					      bool ot1 = false,
-					      bool complete = false);
-	/// Return the package options
-	std::string const getPackageOptions(bool const & ot1,
-					    bool const & sc,
-					    bool const & osf,
-					    int const & scale = 100);
+	/// Return the LaTeX Code
+	std::string const getLaTeXCode(bool dryrun, bool ot1, bool complete,
+				       bool sc, bool osf,
+				       int const & scale = 100);
 	///
 	bool read(Lexer & lex);
 	///
 	bool readFont(Lexer & lex);
 private:
+	/// Return the preferred available package 
+	std::string const getAvailablePackage(bool dryrun,
+					      bool ot1,
+					      bool complete);
+	/// Return the package options
+	std::string const getPackageOptions(bool ot1,
+					    bool sc,
+					    bool osf,
+					    int scale);
 	///
 	docstring name_;
 	///

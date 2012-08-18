@@ -2785,17 +2785,7 @@ string const BufferParams::loadFonts(string const & rm,
 				     bool const & use_systemfonts,
 				     LaTeXFeatures & features) const
 {
-	/* The LaTeX font world is in a flux. In the PSNFSS font interface,
-	   several packages have been replaced by others, that might not
-	   be installed on every system. We have to take care for that
-	   (see psnfss.pdf). We try to support all psnfss fonts as well
-	   as the fonts that have become de facto standard in the LaTeX
-	   world (e.g. Latin Modern). We do not support obsolete fonts
-	   (like PSLatex). In general, it should be possible to mix any
-	   rm font with any sf or tt font, respectively. (JSpitzm)
-	   TODO:
-		-- separate math fonts.
-	*/
+	// TODO: separate math fonts.
 
 	if (rm == "default" && sf == "default" && tt == "default")
 		//nothing to do
@@ -2860,67 +2850,16 @@ string const BufferParams::loadFonts(string const & rm,
 	// Tex Fonts
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
+	bool const complete = (sf == "default" && tt == "default");
 
 	// ROMAN FONTS
-	LaTeXFont roman = theLaTeXFonts().getLaTeXFont(from_ascii(rm));
-	if (roman.switchdefault()) {
-		if (roman.available(ot1) || dryrun)
-			os << "\\renewcommand{\\rmdefault}{" << to_ascii(roman.name()) << "}\n";
-		else
-			frontend::Alert::warning(_("Font not available"),
-					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
-						  "is not available on your system. LyX will fall back to the default font."),
-						roman.requires(), roman.guiname()), true);
-	} else {
-		bool const complete = (sf == "default" && tt == "default");
-		string const package =
-			roman.getAvailablePackage(dryrun, ot1, complete);
-		string const packageopts = roman.getPackageOptions(ot1, sc, osf);
-		if (packageopts.empty() && !package.empty())
-			os << "\\usepackage{" << package << "}\n";
-		else if (!packageopts.empty() && !package.empty())
-			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
-	}
-	if (osf && roman.providesOSF(ot1) && !roman.osfpackage().empty())
-		os << "\\usepackage{" << to_ascii(roman.osfpackage()) << "}\n";
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(rm)).getLaTeXCode(dryrun, ot1, complete, sc, osf);
 
 	// SANS SERIF
-	LaTeXFont sans = theLaTeXFonts().getLaTeXFont(from_ascii(sf));
-	if (sans.switchdefault()) {
-		if (sans.available(ot1) || dryrun)
-			os << "\\renewcommand{\\sfdefault}{" << to_ascii(sans.name()) << "}\n";
-		else
-			frontend::Alert::warning(_("Font not available"),
-					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
-						  "is not available on your system. LyX will fall back to the default font."),
-						sans.requires(), sans.guiname()), true);
-	} else {
-		string const package = sans.getAvailablePackage(dryrun, ot1);
-		string const packageopts = sans.getPackageOptions(ot1, sc, osf, sfscale);
-		if (packageopts.empty() && !package.empty())
-			os << "\\usepackage{" << package << "}\n";
-		else if (!packageopts.empty() && !package.empty())
-			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
-	}
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(sf)).getLaTeXCode(dryrun, ot1, complete, sc, osf, sfscale);
 
 	// MONOSPACED/TYPEWRITER
-	LaTeXFont mono = theLaTeXFonts().getLaTeXFont(from_ascii(tt));
-	if (mono.switchdefault()) {
-		if (mono.available(ot1) || dryrun)
-			os << "\\renewcommand{\\ttdefault}{" << to_ascii(mono.name()) << "}\n";
-		else
-			frontend::Alert::warning(_("Font not available"),
-					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
-						  "is not available on your system. LyX will fall back to the default font."),
-						mono.requires(), mono.guiname()), true);
-	} else {
-		string const package = mono.getAvailablePackage(dryrun, ot1);
-		string const packageopts = mono.getPackageOptions(ot1, sc, osf, ttscale);
-		if (packageopts.empty() && !package.empty())
-			os << "\\usepackage{" << package << "}\n";
-		else if (!packageopts.empty() && !package.empty())
-			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
-	}
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(tt)).getLaTeXCode(dryrun, ot1, complete, sc, osf, ttscale);
 
 	return os.str();
 }

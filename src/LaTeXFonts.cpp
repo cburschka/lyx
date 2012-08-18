@@ -92,7 +92,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete
 						ot1package_, guiname_), true);
 		return string();
 	}
-	if (complete && !completepackage_.empty()) {
+	if (family_ == "rm" && complete && !completepackage_.empty()) {
 		if (LaTeXFeatures::isAvailable(to_ascii(completepackage_)) || dryrun)
 			return to_ascii(completepackage_);
 	}
@@ -120,8 +120,7 @@ string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete
 }
 
 
-string const LaTeXFont::getPackageOptions(bool const & ot1, bool const & sc,
-					  bool const & osf, int const & scale)
+string const LaTeXFont::getPackageOptions(bool ot1, bool sc, bool osf, int scale)
 {
 	if (ot1 && !ot1package_.empty())
 		return string();
@@ -142,6 +141,40 @@ string const LaTeXFont::getPackageOptions(bool const & ot1, bool const & sc,
 		os << subst(to_ascii(scaleoption_), "$$val",
 			    convert<std::string>(float(scale) / 100));
 	}
+	return os.str();
+}
+
+
+string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
+				     bool osf, int const & scale)
+{
+	ostringstream os;
+
+	if (switchdefault_) {
+		if (family_.empty()) {
+			LYXERR0("Error: Font `" << name_ << "' has no family defined!");
+			return string();
+		}
+		if (available(ot1) || dryrun)
+			os << "\\renewcommand{\\" << to_ascii(family_) << "default}{"
+			<< to_ascii(name_) << "}\n";
+		else
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						requires_, guiname_), true);
+	} else {
+		string const package =
+			getAvailablePackage(dryrun, ot1, complete);
+		string const packageopts = getPackageOptions(ot1, sc, osf, scale);
+		if (packageopts.empty() && !package.empty())
+			os << "\\usepackage{" << package << "}\n";
+		else if (!packageopts.empty() && !package.empty())
+			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
+	}
+	if (osf && providesOSF(ot1) && !osfpackage_.empty())
+		os << "\\usepackage{" << to_ascii(osfpackage_) << "}\n";
+
 	return os.str();
 }
 
