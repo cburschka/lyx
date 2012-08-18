@@ -92,7 +92,6 @@ string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete
 						ot1package_, guiname_), true);
 		return string();
 	}
-	docstring dryrunpackage;
 	if (complete && !completepackage_.empty()) {
 		if (LaTeXFeatures::isAvailable(to_ascii(completepackage_)) || dryrun)
 			return to_ascii(completepackage_);
