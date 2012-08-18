@@ -13,6 +13,7 @@
 #	AltPackages        <alternative packages (comma-separated)>
 #	OT1Package         <alternative package specifically for OT1 encoding>
 #	CompletePackage    <alternative package for the complete family>
+#	PackageOptions     <general options to be passed to the package>
 #	OsfOption          <option for oldstyle figure support>
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
@@ -27,20 +28,23 @@
 #   done.
 # * "SwitchDefault 1" makes the font to be loaded by switching the default
 #   family to <name> (e.g., \renewcommand{\rmdefault}{cmr}), whereas
-#   Package <package> loads it via \usepackage{package}. Normally, only
-#   one of these options is used per font.
+#   Package <package> loads it via \usepackage{package}. Only one of these
+#   options is used per font (SwitchDefault takes precendende). Note that
+#   SwitchDefault uses the font name.
 # * If AltPackages are defined, LyX will try to load them in the defined
 #   order if the main package is not available. So
 #       Package          mathptmx
 #       AltPackages      mathptm,times
 #   will try to load mathptm if mathptmx is not available and then times
 #   if mathptm is not available either.
+#   No options will be passed to alternative packages!
 # * If Requires is set, LyX will check for this. If not, it will check
 #   for Package and AltPackages.
 # * OT1Package will load the defined package instead of the default
 #   package if the font encoding is OT1. This is necessary since some
 #   newer packages for a font do not support this encoding.
 #   The value "none" tells LyX not to load a package in OT1 encoding.
+#   No options will be passed to OT1 packages!
 # * CompletePackage is a package that is loaded if the current font is
 #   selected as rm and both sf and tt are set to "default" (this allows
 #   f. ex. to load "bera" as opposed to "beraserif").

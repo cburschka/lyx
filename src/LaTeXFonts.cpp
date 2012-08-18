@@ -79,7 +79,7 @@ bool LaTeXFont::providesScale(bool ot1) const
 }
 
 
-string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete)
+string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete, bool & alt)
 {
 	if (ot1 && !ot1package_.empty()) {
 		if (ot1package_ != "none"
@@ -103,8 +103,10 @@ string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete
 			return to_ascii(package_);
 		else if (!altpackages_.empty()) {
 			for (size_t i = 0; i < altpackages_.size(); ++i) {
-				if (LaTeXFeatures::isAvailable(to_ascii(altpackages_[i])))
+				if (LaTeXFeatures::isAvailable(to_ascii(altpackages_[i]))) {
+					alt = true;
 					return to_ascii(altpackages_[i]);
+				}
 			}
 		}
 		// Output unavailable packages in source preview
@@ -126,7 +128,11 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool sc, bool osf, int scale
 		return string();
 
 	ostringstream os;
+	if (!packageoption_.empty())
+		os << to_ascii(packageoption_);
 	if (sc && osf && providesOSF() && providesSC()) {
+		if (!os.str().empty())
+			os << ',';
 		if (!osfscoption_.empty())
 			os << to_ascii(osfscoption_);
 		else
@@ -164,9 +170,11 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 						  "is not available on your system. LyX will fall back to the default font."),
 						requires_, guiname_), true);
 	} else {
+		bool alt = false;
 		string const package =
-			getAvailablePackage(dryrun, ot1, complete);
-		string const packageopts = getPackageOptions(ot1, sc, osf, scale);
+			getAvailablePackage(dryrun, ot1, complete, alt);
+		// Package options are not for alternative packages
+		string const packageopts = alt ? string() : getPackageOptions(ot1, sc, osf, scale);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
 		else if (!packageopts.empty() && !package.empty())
@@ -192,6 +200,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_OSFSCOPTION,
 		LF_OT1_PACKAGE,
 		LF_PACKAGE,
+		LF_PACKAGEOPTION,
 		LF_REQUIRES,
 		LF_SCALEOPTION,
 		LF_SCOPTION,
@@ -210,6 +219,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "osfscoption",          LF_OSFSCOPTION },
 		{ "ot1package",           LF_OT1_PACKAGE },
 		{ "package",              LF_PACKAGE },
+		{ "packageoption",        LF_PACKAGEOPTION },
 		{ "requires",             LF_REQUIRES },
 		{ "scaleoption",          LF_SCALEOPTION },
 		{ "scoption",             LF_SCOPTION },
@@ -268,6 +278,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 			break;
 		case LF_PACKAGE:
 			lex >> package_;
+			break;
+		case LF_PACKAGEOPTION:
+			lex >> packageoption_;
 			break;
 		case LF_REQUIRES:
 			lex >> requires_;

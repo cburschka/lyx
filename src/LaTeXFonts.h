@@ -43,6 +43,8 @@ public:
 	docstring const & ot1package() { return ot1package_; }
 	/// A package that provides Old Style Figures for this font
 	docstring const & osfpackage() { return osfpackage_; }
+	/// A package option needed to load this font
+	docstring const & packageoption() { return packageoption_; }
 	/// A package option for Old Style Figures
 	docstring const & osfoption() { return osfoption_; }
 	/// A package option for true SmallCaps
@@ -75,7 +77,8 @@ private:
 	/// Return the preferred available package 
 	std::string const getAvailablePackage(bool dryrun,
 					      bool ot1,
-					      bool complete);
+					      bool complete,
+					      bool & alt);
 	/// Return the package options
 	std::string const getPackageOptions(bool ot1,
 					    bool sc,
@@ -97,6 +100,8 @@ private:
 	docstring ot1package_;
 	///
 	docstring osfpackage_;
+	///
+	docstring packageoption_;
 	///
 	docstring osfoption_;
 	///
