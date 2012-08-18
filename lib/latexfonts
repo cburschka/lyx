@@ -93,7 +93,7 @@ Font chancery
 EndFont
 
 Font charter
-	GuiName          "Bitstream Charter"
+	GuiName          "Bitstream Charter (PSNFSS)"
 	Family           rm
 	Package          charter
 EndFont
@@ -116,6 +116,39 @@ Font lmodern
 	GuiName          "Latin Modern Roman"
 	Family           rm
 	Package          lmodern
+EndFont
+
+Font mdbch
+	GuiName          "Bitstream Charter (Mathdesign)"
+	Family           rm
+	OsfOption        expert
+	ScOption         expert
+	OsfScOption      expert
+	Package          mathdesign
+	PackageOption    charter
+	Requires         mdbch
+EndFont
+
+Font mdput
+	GuiName          "Utopia (Mathdesign)"
+	Family           rm
+	OsfOption        expert
+	ScOption         expert
+	OsfScOption      expert
+	Package          mathdesign
+	PackageOption    utopia
+	Requires         mdput
+EndFont
+
+Font mdugm
+	GuiName          "Adobe Garamond (Mathdesign)"
+	Family           rm
+	OsfOption        expert
+	ScOption         expert
+	OsfScOption      expert
+	Package          mathdesign
+	PackageOption    garamond
+	Requires         mdugm
 EndFont
 
 Font newcent
@@ -146,7 +179,7 @@ EndFont
 # fourier supersedes utopia.sty, but does
 # not work with OT1 encoding.
 Font utopia
-	GuiName          "Utopia"
+	GuiName          "Utopia (Fourier)"
 	Family           rm
 	OsfOption        oldstyle
 	ScOption         expert

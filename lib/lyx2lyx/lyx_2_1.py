@@ -838,10 +838,10 @@ def revert_libertine(document):
             preamble = "\\usepackage"
             if osf:
                 preamble += "[osf]"
+                document.header[j] = "\\font_osf false"
             preamble += "{libertine}"
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_roman default"
-            document.header[j] = "\\font_osf false"
 
 
 def revert_txtt(document):
@@ -854,6 +854,37 @@ def revert_txtt(document):
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_typewriter default"
 
+
+def revert_mathdesign(document):
+    " Revert native mathdesign font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        mathdesign_dict = {
+        "mdbch":  "charter",
+        "mdput":  "utopia",
+        "mdugm":  "garamond"
+        }
+        i = find_token(document.header, "\\font_roman", 0)
+        if i == -1:
+            return
+        val = get_value(document.header, "\\font_roman", i)
+        if val in mathdesign_dict.keys():
+            preamble = "\\usepackage[%s" % mathdesign_dict[val]
+            expert = False
+            j = find_token(document.header, "\\font_osf true", 0)
+            if j != -1:
+                expert = True
+                document.header[j] = "\\font_osf false"
+            l = find_token(document.header, "\\font_sc true", 0)
+            if l != -1:
+                expert = True
+                document.header[l] = "\\font_sc false"
+            if expert:
+                preamble += ",expert"
+            preamble += "]{mathdesign}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = "\\font_roman default"
+    
 
 ##
 # Conversion hub
@@ -882,10 +913,12 @@ convert = [
            [432, []],
            [433, [convert_armenian]],
            [434, []],
-           [435, []]
+           [435, []],
+           [436, []]
           ]
 
 revert =  [
+           [434, [revert_mathdesign]],
            [434, [revert_txtt]],
            [433, [revert_libertine]],
            [432, [revert_armenian]],

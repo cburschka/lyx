@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 435
+\lyxformat 436
 \begin_document
 \begin_header
 \textclass article
@@ -618,6 +618,110 @@ libertine(-legacy)
 \end_layout
 
 \begin_layout Subsection
+Mathdesign
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mathdesign"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/mathdesign/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+mathdesign
+\family default
+ package provides access to three popular roman fonts and extends them with
+ matching math fonts.
+ If you select one of the following roman fonts in LyX via 
+\family sans
+\size normal
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Fonts
+\family default
+\size default
+, the 
+\family sans
+mathdesign
+\family default
+ package and thus the respective math fonts is automatically loaded:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Adobe Garamond (Mathdesign)
+\family default
+.
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdugm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Bitstream Charter (Mathdesign)
+\family default
+.
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdbch"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Utopia (Mathdesign)
+\family default
+.
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdput"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you only want the text fonts and retain LaTeX's default math font, select
+ a non-mathdesign variant of the respective font instead.
+\end_layout
+
+\begin_layout Subsection
 psnfss
 \end_layout
 
@@ -652,7 +756,8 @@ psnfss
  fonts in 
 \family sans
 \size normal
-Layout->Document
+Layout\SpecialChar \menuseparator
+Document
 \family default
 \size default
 .
