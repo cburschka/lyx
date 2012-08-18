@@ -15,10 +15,13 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 
+#include "frontends/alert.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 
@@ -76,15 +79,22 @@ bool LaTeXFont::providesScale(bool ot1) const
 }
 
 
-string const LaTeXFont::getAvailablePackage(bool ot1, bool complete)
+string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete)
 {
 	if (ot1 && !ot1package_.empty()) {
-		if (ot1package_ != "none" && LaTeXFeatures::isAvailable(to_ascii(ot1package_)))
+		if (ot1package_ != "none"
+		    && (LaTeXFeatures::isAvailable(to_ascii(ot1package_)) || dryrun))
 			return to_ascii(ot1package_);
+		if (!dryrun && ot1package_ != "none")
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						ot1package_, guiname_), true);
 		return string();
 	}
+	docstring dryrunpackage;
 	if (complete && !completepackage_.empty()) {
-		if (LaTeXFeatures::isAvailable(to_ascii(completepackage_)))
+		if (LaTeXFeatures::isAvailable(to_ascii(completepackage_)) || dryrun)
 			return to_ascii(completepackage_);
 	}
 	if (!package_.empty()) {
@@ -98,6 +108,14 @@ string const LaTeXFont::getAvailablePackage(bool ot1, bool complete)
 					return to_ascii(altpackages_[i]);
 			}
 		}
+		// Output unavailable packages in source preview
+		if (dryrun)
+			return to_ascii(package_);
+		docstring const req = requires_.empty() ? package_ : requires_;
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						req, guiname_), true);
 	}
 	return string();
 }

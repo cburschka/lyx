@@ -2859,14 +2859,22 @@ string const BufferParams::loadFonts(string const & rm,
 
 	// Tex Fonts
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
+	bool const dryrun = features.runparams().dryrun;
 
 	// ROMAN FONTS
 	LaTeXFont roman = theLaTeXFonts().getLaTeXFont(from_ascii(rm));
-	if (roman.switchdefault())
-		os << "\\renewcommand{\\rmdefault}{" << to_ascii(roman.name()) << "}\n";
-	else {
+	if (roman.switchdefault()) {
+		if (roman.available(ot1) || dryrun)
+			os << "\\renewcommand{\\rmdefault}{" << to_ascii(roman.name()) << "}\n";
+		else
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						roman.requires(), roman.guiname()), true);
+	} else {
 		bool const complete = (sf == "default" && tt == "default");
-		string const package = roman.getAvailablePackage(ot1, complete);
+		string const package =
+			roman.getAvailablePackage(dryrun, ot1, complete);
 		string const packageopts = roman.getPackageOptions(ot1, sc, osf);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
@@ -2878,10 +2886,16 @@ string const BufferParams::loadFonts(string const & rm,
 
 	// SANS SERIF
 	LaTeXFont sans = theLaTeXFonts().getLaTeXFont(from_ascii(sf));
-	if (sans.switchdefault())
-		os << "\\renewcommand{\\sfdefault}{" << to_ascii(sans.name()) << "}\n";
-	else {
-		string const package = sans.getAvailablePackage(ot1);
+	if (sans.switchdefault()) {
+		if (sans.available(ot1) || dryrun)
+			os << "\\renewcommand{\\sfdefault}{" << to_ascii(sans.name()) << "}\n";
+		else
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						sans.requires(), sans.guiname()), true);
+	} else {
+		string const package = sans.getAvailablePackage(dryrun, ot1);
 		string const packageopts = sans.getPackageOptions(ot1, sc, osf, sfscale);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
@@ -2891,10 +2905,16 @@ string const BufferParams::loadFonts(string const & rm,
 
 	// MONOSPACED/TYPEWRITER
 	LaTeXFont mono = theLaTeXFonts().getLaTeXFont(from_ascii(tt));
-	if (mono.switchdefault())
-		os << "\\renewcommand{\\ttdefault}{" << to_ascii(mono.name()) << "}\n";
-	else {
-		string const package = mono.getAvailablePackage(ot1);
+	if (mono.switchdefault()) {
+		if (mono.available(ot1) || dryrun)
+			os << "\\renewcommand{\\ttdefault}{" << to_ascii(mono.name()) << "}\n";
+		else
+			frontend::Alert::warning(_("Font not available"),
+					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+						  "is not available on your system. LyX will fall back to the default font."),
+						mono.requires(), mono.guiname()), true);
+	} else {
+		string const package = mono.getAvailablePackage(dryrun, ot1);
 		string const packageopts = mono.getPackageOptions(ot1, sc, osf, ttscale);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";

@@ -64,7 +64,9 @@ public:
 	/// Does this font provide scaling?
 	bool providesScale(bool ot1 = false) const;
 	/// Return the preferred available package 
-	std::string const getAvailablePackage(bool ot1 = false, bool complete = false);
+	std::string const getAvailablePackage(bool dryrun = false,
+					      bool ot1 = false,
+					      bool complete = false);
 	/// Return the package options
 	std::string const getPackageOptions(bool const & ot1,
 					    bool const & sc,
