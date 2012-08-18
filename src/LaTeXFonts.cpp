@@ -137,10 +137,15 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool sc, bool osf, int scale
 			os << to_ascii(osfscoption_);
 		else
 			os << to_ascii(osfoption_) << ',' << to_ascii(scoption_);
-	} else if (osf && providesOSF())
+	} else if (osf && providesOSF()) {
+		if (!os.str().empty())
+			os << ',';
 		os << to_ascii(osfoption_);
-	else if (sc && providesSC())
+	} else if (sc && providesSC()) {
+		if (!os.str().empty())
+			os << ',';
 		os << to_ascii(scoption_);
+	}
 	if (scale != 100 && !scaleoption_.empty()) {
 		if (!os.str().empty())
 			os << ',';
