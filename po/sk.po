@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-20 11:25+0200\n"
+"POT-Creation-Date: 2012-08-18 13:20+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -11745,6 +11745,110 @@ msgstr "Vietnamsky"
 msgid "Welsh"
 msgstr "Walesky"
 
+#: src/frontends/qt4/GuiDocument.cpp:129
+msgid "AE (Almost European)"
+msgstr "AE (Almost European)"
+
+#: src/frontends/qt4/GuiDocument.cpp:131
+msgid "Bera Serif"
+msgstr "Bera Serif"
+
+#: src/frontends/qt4/GuiDocument.cpp:130
+msgid "Bookman"
+msgstr "Bookman"
+
+#: src/frontends/qt4/GuiDocument.cpp:131
+msgid "Concrete Roman"
+msgstr "Concrete Roman"
+
+#: src/frontends/qt4/GuiDocument.cpp:131
+msgid "Zapf Chancery"
+msgstr "Zapf Chancery"
+
+#: src/frontends/qt4/GuiDocument.cpp:130
+msgid "Bitstream Charter"
+msgstr "Bitstream Charter"
+
+#: src/frontends/qt4/GuiDocument.cpp:128
+msgid "Computer Modern Roman"
+msgstr "Computer Modern Roman"
+
+#: lib/latexfonts:109
+msgid "Libertine"
+msgstr "Libertine"
+
+#: src/frontends/qt4/GuiDocument.cpp:128
+msgid "Latin Modern Roman"
+msgstr "Latin Modern Roman"
+
+#: src/frontends/qt4/GuiDocument.cpp:130
+msgid "New Century Schoolbook"
+msgstr "New Century Schoolbook"
+
+#: src/frontends/qt4/GuiDocument.cpp:129
+msgid "Palatino"
+msgstr "Palatino"
+
+#: src/frontends/qt4/GuiDocument.cpp:129
+msgid "Times Roman"
+msgstr "Times Roman"
+
+#: src/frontends/qt4/GuiDocument.cpp:131
+msgid "Utopia"
+msgstr "Utopia"
+
+#: src/frontends/qt4/GuiDocument.cpp:145
+msgid "Avant Garde"
+msgstr "Avant Garde"
+
+#: src/frontends/qt4/GuiDocument.cpp:145
+msgid "Bera Sans"
+msgstr "Bera Sans"
+
+#: src/frontends/qt4/GuiDocument.cpp:145
+msgid "CM Bright"
+msgstr "CM Bright"
+
+#: src/frontends/qt4/GuiDocument.cpp:144
+msgid "Computer Modern Sans"
+msgstr "Computer Modern Sans"
+
+#: src/frontends/qt4/GuiDocument.cpp:145
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: src/frontends/qt4/GuiDocument.cpp:144
+msgid "Latin Modern Sans"
+msgstr "Latin Modern Sans"
+
+#: src/frontends/qt4/GuiDocument.cpp:158
+msgid "Bera Mono"
+msgstr "Bera Mono"
+
+#: src/frontends/qt4/GuiDocument.cpp:159
+msgid "CM Typewriter Light"
+msgstr "CM Typewriter Light"
+
+#: src/frontends/qt4/GuiDocument.cpp:157
+msgid "Computer Modern Typewriter"
+msgstr "Computer Modern Typewriter"
+
+#: src/frontends/qt4/GuiDocument.cpp:158
+msgid "Courier"
+msgstr "Courier"
+
+#: src/frontends/qt4/GuiDocument.cpp:158
+msgid "Latin Modern Typewriter"
+msgstr "Latin Modern Typewriter"
+
+#: src/frontends/qt4/GuiDocument.cpp:159
+msgid "LuxiMono"
+msgstr "LuxiMono"
+
+#: lib/latexfonts:253
+msgid "TX Typewriter"
+msgstr "TX Typewriter"
+
 #: lib/encodings:14
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
@@ -18629,6 +18733,19 @@ msgstr "Spúšťam BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam MakeIndex pre nomencl."
 
+#: src/LaTeXFonts.cpp:89 src/LaTeXFonts.cpp:116 src/LaTeXFonts.cpp:168
+msgid "Font not available"
+msgstr "Font nie je dostupný"
+
+#: src/LaTeXFonts.cpp:90 src/LaTeXFonts.cpp:117 src/LaTeXFonts.cpp:169
+#, c-format
+msgid ""
+"The LaTeX package `%1$s' needed for the font `%2$s'\n"
+"is not available on your system. LyX will fall back to the default font."
+msgstr ""
+"Balík LaTeXa `%1$s' ktorý font `%2$s potrebuje\n"
+"nie je dostupný na vašom systéme. LyX sa stiahne na štandardný font."
+
 #: src/LyX.cpp:120
 msgid "Could not read configuration file"
 msgstr "Nemôžem čítať konfiguračný súbor"
@@ -19058,10 +19175,6 @@ msgstr ""
 #: src/LyXRC.cpp:3153
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Štandardný formát použitý s LFUN_BUFFER_[VIEW|UPDATE]."
-
-#: src/LyXRC.cpp:3157
-msgid "New documents will be assigned this language."
-msgstr "Novým dokumentom bude priradený tento jazyk."
 
 #: src/LyXRC.cpp:3161
 msgid ""
@@ -20300,9 +20413,9 @@ msgstr ""
 "pracovať správne.\n"
 "Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
-#: src/frontends/qt4/GuiApplication.cpp:1266
+#: src/frontends/qt4/GuiApplication.cpp:1290
 msgid "System reconfigured"
-msgstr "Systém je prekonfigurovaný"
+msgstr "Systém je rekonfigurovaný"
 
 #: src/frontends/qt4/GuiApplication.cpp:1267
 msgid ""
@@ -20798,102 +20911,6 @@ msgstr "(Žiadne)"
 #: src/frontends/qt4/GuiDelimiter.cpp:209
 msgid "Variable"
 msgstr "Variabilná"
-
-#: src/frontends/qt4/GuiDocument.cpp:128
-msgid "Computer Modern Roman"
-msgstr "Computer Modern Roman"
-
-#: src/frontends/qt4/GuiDocument.cpp:128
-msgid "Latin Modern Roman"
-msgstr "Latin Modern Roman"
-
-#: src/frontends/qt4/GuiDocument.cpp:129
-msgid "AE (Almost European)"
-msgstr "AE (Almost European)"
-
-#: src/frontends/qt4/GuiDocument.cpp:129
-msgid "Times Roman"
-msgstr "Times Roman"
-
-#: src/frontends/qt4/GuiDocument.cpp:129
-msgid "Palatino"
-msgstr "Palatino"
-
-#: src/frontends/qt4/GuiDocument.cpp:130
-msgid "Bitstream Charter"
-msgstr "Bitstream Charter"
-
-#: src/frontends/qt4/GuiDocument.cpp:130
-msgid "New Century Schoolbook"
-msgstr "New Century Schoolbook"
-
-#: src/frontends/qt4/GuiDocument.cpp:130
-msgid "Bookman"
-msgstr "Bookman"
-
-#: src/frontends/qt4/GuiDocument.cpp:131
-msgid "Utopia"
-msgstr "Utopia"
-
-#: src/frontends/qt4/GuiDocument.cpp:131
-msgid "Bera Serif"
-msgstr "Bera Serif"
-
-#: src/frontends/qt4/GuiDocument.cpp:131
-msgid "Concrete Roman"
-msgstr "Concrete Roman"
-
-#: src/frontends/qt4/GuiDocument.cpp:131
-msgid "Zapf Chancery"
-msgstr "Zapf Chancery"
-
-#: src/frontends/qt4/GuiDocument.cpp:144
-msgid "Computer Modern Sans"
-msgstr "Computer Modern Sans"
-
-#: src/frontends/qt4/GuiDocument.cpp:144
-msgid "Latin Modern Sans"
-msgstr "Latin Modern Sans"
-
-#: src/frontends/qt4/GuiDocument.cpp:145
-msgid "Helvetica"
-msgstr "Helvetica"
-
-#: src/frontends/qt4/GuiDocument.cpp:145
-msgid "Avant Garde"
-msgstr "Avant Garde"
-
-#: src/frontends/qt4/GuiDocument.cpp:145
-msgid "Bera Sans"
-msgstr "Bera Sans"
-
-#: src/frontends/qt4/GuiDocument.cpp:145
-msgid "CM Bright"
-msgstr "CM Bright"
-
-#: src/frontends/qt4/GuiDocument.cpp:157
-msgid "Computer Modern Typewriter"
-msgstr "Computer Modern Typewriter"
-
-#: src/frontends/qt4/GuiDocument.cpp:158
-msgid "Latin Modern Typewriter"
-msgstr "Latin Modern Typewriter"
-
-#: src/frontends/qt4/GuiDocument.cpp:158
-msgid "Courier"
-msgstr "Courier"
-
-#: src/frontends/qt4/GuiDocument.cpp:158
-msgid "Bera Mono"
-msgstr "Bera Mono"
-
-#: src/frontends/qt4/GuiDocument.cpp:159
-msgid "LuxiMono"
-msgstr "LuxiMono"
-
-#: src/frontends/qt4/GuiDocument.cpp:159
-msgid "CM Typewriter Light"
-msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/GuiDocument.cpp:171
 msgid "Page"
@@ -24734,6 +24751,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "New documents will be assigned this language."
+#~ msgstr "Novým dokumentom bude priradený tento jazyk."
+
 #~ msgid "LatinOn"
 #~ msgstr "LatinOn"
 
@@ -24954,9 +24974,6 @@ msgstr "Neznámy používateľ"
 #, qt-format
 #~ msgid "List of %1$s"
 #~ msgstr "Zoznam od %1$s"
-
-#~ msgid "Liber"
-#~ msgstr "Liber"
 
 #, qt-format
 #~ msgid "%1$s unknown"
