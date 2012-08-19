@@ -884,6 +884,35 @@ def revert_mathdesign(document):
             preamble += "]{mathdesign}"
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_roman default"
+
+
+def revert_texgyre(document):
+    " Revert native TeXGyre font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        texgyre_fonts = ["tgadventor", "tgbonum", "tgchorus", "tgcursor", \
+                         "tgheros", "tgpagella", "tgschola", "tgtermes"]
+        i = find_token(document.header, "\\font_roman", 0)
+        if i != -1:
+            val = get_value(document.header, "\\font_roman", i)
+            if val in texgyre_fonts:
+                preamble = "\\usepackage{%s}" % val
+                add_to_preamble(document, [preamble])
+                document.header[i] = "\\font_roman default"
+        i = find_token(document.header, "\\font_sans", 0)
+        if i != -1:
+            val = get_value(document.header, "\\font_sans", i)
+            if val in texgyre_fonts:
+                preamble = "\\usepackage{%s}" % val
+                add_to_preamble(document, [preamble])
+                document.header[i] = "\\font_sans default"
+        i = find_token(document.header, "\\font_typewriter", 0)
+        if i != -1:
+            val = get_value(document.header, "\\font_typewriter", i)
+            if val in texgyre_fonts:
+                preamble = "\\usepackage{%s}" % val
+                add_to_preamble(document, [preamble])
+                document.header[i] = "\\font_typewriter default"
     
 
 ##
@@ -914,10 +943,12 @@ convert = [
            [433, [convert_armenian]],
            [434, []],
            [435, []],
-           [436, []]
+           [436, []],
+           [437, []]
           ]
 
 revert =  [
+           [434, [revert_texgyre]],
            [434, [revert_mathdesign]],
            [434, [revert_txtt]],
            [433, [revert_libertine]],

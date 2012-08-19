@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 436
+\lyxformat 437
 \begin_document
 \begin_header
 \textclass article
@@ -1020,6 +1020,208 @@ Found:
 \begin_inset Info
 type  "package"
 arg   "utopia"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The TeX Gyre collection of fonts
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/tex-gyre
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+tex-gyre
+\family default
+ collection provides extensive remakes and extensions of the freely available
+ 35 base PostScript fonts.
+ The fonts have specifically been designed for the use with LaTeX.
+ The following fonts are currently available and natively supported by LyX:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgadventor
+\family default
+ (TeX Gyre Adventor): A sans serif font based on URW Gothic L (itself an
+ Avant Garde clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgadventor"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgbonum
+\family default
+ (TeX Gyre Bonum): A roman font based on URW Bookman L (an ITC Bookman clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgbonum"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgchorus
+\family default
+ (TeX Gyre Chorus): A roman (script) font based on URW Chancery L (a Zapf
+ Chancery clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgchorus"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgcursor
+\family default
+ (TeX Gyre Cursor): A monospaced font based on URW Nimbus Mono L (a Courier
+ clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgcursor"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgheros
+\family default
+ (TeX Gyre Heros): A sans serif font based on URW Nimbus Sans L (a Helvetica
+ clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgheros"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgpagella
+\family default
+ (TeX Gyre Pagella): A roman font based on URW Palladio L (a Palatino clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgpagella"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgschola
+\family default
+ (TeX Gyre Schola): A roman font based on URW Century Schoolbook L.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgschola"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgtermes
+\family default
+ (TeX Gyre Termes): A roman font based on URW Nimbus Roman No9 L (a Times
+ New Roman clone).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgtermes"
 \end_inset
 
 

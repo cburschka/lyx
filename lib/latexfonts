@@ -176,6 +176,36 @@ Font times
 	Requires         psnfss
 EndFont
 
+Font tgbonum
+	GuiName          "TeX Gyre Bonum"
+	Family           rm
+	Package          tgbonum
+EndFont
+
+Font tgchorus
+	GuiName          "TeX Gyre Chorus"
+	Family           rm
+	Package          tgchorus
+EndFont
+
+Font tgpagella
+	GuiName          "TeX Gyre Pagella"
+	Family           rm
+	Package          tgpagella
+EndFont
+
+Font tgschola
+	GuiName          "TeX Gyre Schola"
+	Family           rm
+	Package          tgschola
+EndFont
+
+Font tgtermes
+	GuiName          "TeX Gyre Termes"
+	Family           rm
+	Package          tgtermes
+EndFont
+
 # fourier supersedes utopia.sty, but does
 # not work with OT1 encoding.
 Font utopia
@@ -235,6 +265,18 @@ Font lmss
 	Requires         lmodern
 EndFont
 
+Font tgadventor
+	GuiName          "TeX Gyre Adventor"
+	Family           sf
+	Package          tgadventor
+EndFont
+
+Font tgheros
+	GuiName          "TeX Gyre Heros"
+	Family           sf
+	Package          tgheros
+EndFont
+
 
 #
 # MONOSPACED FONTS
@@ -280,6 +322,12 @@ Font luximono
 	Family           tt
 	ScaleOption      scaled=$$val
 	Package          luximono
+EndFont
+
+Font tgcursor
+	GuiName          "TeX Gyre Cursor"
+	Family           tt
+	Package          tgcursor
 EndFont
 
 Font txtt
