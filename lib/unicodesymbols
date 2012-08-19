@@ -602,11 +602,11 @@
 #0x02c5 ""                         "" "" # MODIFIER LETTER DOWN ARROWHEAD
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\v{ }"                   "" "" # CARON
-0x02c8 "\\textprimstress"         "tipa" "force,tipashortcut=\"" # MODIFIER LETTER VERTICAL LINE
+0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
 0x02c9 "\\={ }"                   "" "" # MODIFIER LETTER MACRON
 0x02ca "\\'{ }"                   "" "" # MODIFIER LETTER ACUTE ACCENT
 0x02cb "\\`{ }"                   "" "" # MODIFIER LETTER GRAVE ACCENT
-0x02cc "\\textsecstress"          "tipa" "force,tipashortcut=\"\"" # MODIFIER LETTER LOW VERTICAL LINE
+0x02cc "\\textsecstress"          "tipa" "force" # MODIFIER LETTER LOW VERTICAL LINE
 0x02cd "\\b{ }"                   "" "" # MODIFIER LETTER LOW MACRON
 0x02ce "\\textsubgrave{ }"        "tipa" "force" # MODIFIER LETTER LOW GRAVE ACCENT
 0x02cf "\\textsubacute{ }"        "tipa" "force" # MODIFIER LETTER LOW ACUTE ACCENT
@@ -1604,7 +1604,7 @@
 0x2014 "\\textemdash"             "" "" # EM DASH
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" ""
-0x2016 "\\textbardbl"             "textcomp,notermination=math" "" "\\|" "" # DOUBLE VERTICAL LINE
+0x2016 "\\textbardbl"             "textcomp,notermination=math" "tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
 0x2017 "\\subdoublebar{ }"        "tipa" "" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
@@ -1646,6 +1646,7 @@
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
 0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" ""
+0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ }" # UNDERTIE
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL

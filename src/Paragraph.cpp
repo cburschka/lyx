@@ -1358,15 +1358,18 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 
 
 bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
-	pos_type /*i*/, unsigned int & /*column*/)
+	pos_type /*i*/, unsigned int & column)
 {
 	switch (c) {
 	case '*':
 	case '[':
 	case ']':
-	case '|':
 	case '\"':
 		os.put(c);
+		return true;
+	case '|':
+		os << "\\textvertline{}";
+		column += 14;
 		return true;
 	default:
 		return false;
