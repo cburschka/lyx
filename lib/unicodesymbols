@@ -1093,6 +1093,12 @@
 0x1d7e "\\textbaru"               "tipa" "force,tipashortcut=0" # LATIN SMALL CAPITAL LETTER U WITH STROKE
 #0x1d7f ""                         "" "" # LATIN SMALL LETTER UPSILON WITH STROKE
 #
+# Combining Diacritical Marks Supplement
+#
+0x1dc4 "\\texthighrise"            "tipa" "combining,force" "" "" # COMBINING MACRON-ACUTE
+0x1dc5 "\\textlowrise"             "tipa" "combining,force" "" "" # COMBINING GRAVE-MACRON
+0x1dc8 "\\textrisefall"            "tipa" "combining,force" "" "" # COMBINING GRAVE-ACUTE-GRAVE
+#
 # Latin Extended Additional
 #
 0x1e00 "\\textsubring{A}"         "tipa" "force,mathalpha" "\\subring{A}" "accents,subring" # LATIN CAPITAL LETTER A WITH RING BELOW
@@ -1850,7 +1856,8 @@
 0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
 0x2196 "Home"                     "" "notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
-0x2198 "End"                      "" "notermination=text" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
+0x2197 "\\textglobrise"           "tipa" "" "" "" # NORTH EAST ARROW
+0x2198 "End"                      "" "notermination=text,tipashortcut=\\textglobfall{}" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
 0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
 0x21de "Option-Up Arrow"          "" "notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
@@ -2270,6 +2277,11 @@
 #0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
+#
+# Modifier tone letters
+#
+0xa71b "\\textupstep"              "tipa" "" "" "" # MODIFIER LETTER RAISED UP ARROW
+0xa71c "\\textdownstep"            "tipa" "" "" "" # MODIFIER LETTER RAISED DOWN ARROW
 #
 # ligatures
 #
