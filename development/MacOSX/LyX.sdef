@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+ 
+<!--
+ This file is part of LyX, the document processor.
+ Licence details can be found in the file COPYING.
+
+ author: Benjamin Piwowarski
+
+ Full author contact details are available in file CREDITS.
+ 
+-->
+ 
+ 
+    <!-- declare the namespace for using XInclude so we can include the standard suite -->
+<dictionary xmlns:xi="http://www.w3.org/2003/XInclude">
+ 
+ 
+        <!-- use XInclude to include the standard suite -->
+    <!-- <xi:include href="file:///System/Library/ScriptingDefinitions/CocoaStandard.sdef" xpointer="xpointer(/dictionary/suite)"/> -->
+ 
+ 
+        <!-- our special scripting suite for this example -->
+    <suite name="Lyx" code="LYX " description="LyX scripting facilities.">
+        
+        <record-type name="LyX return value" code="LyxR">
+            <property name="code" code="code" type="integer"
+                description="Error code (0 in case of success).">
+                <cocoa key="code"/>
+            </property>            
+            <property name="message" code="mess" type="text"
+                description="The returned message.">
+                <cocoa key="message"/>
+            </property>
+        </record-type>
+        
+        <command name="run" code="SLyxComm" description="run a simple command with one parameter">
+			<cocoa class="LyxCommand"/>
+			
+			<direct-parameter description="The command to be executed.">
+                <type type="text" list="no"/>
+            </direct-parameter>
+            
+            <parameter name="with argument" code="args" type="text">
+                <cocoa key="arg"/>
+            </parameter>
+            
+			<result type="LyX return value" description="Contains a code (0 for success) and the message returned by LyX"/>
+		</command>
+
+    </suite>
+    
+    
+</dictionary>

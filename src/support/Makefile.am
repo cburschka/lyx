@@ -120,6 +120,9 @@ if INSTALL_MACOSX
 liblyxsupport_a_SOURCES += \
 	AppleSpeller.h \
 	AppleSpeller.m \
+	AppleScript.h \
+	AppleScript.m \
+	AppleScriptProxy.cpp \
 	linkback/LinkBack.h \
 	linkback/LinkBack.m \
 	linkback/LinkBackProxy.h \

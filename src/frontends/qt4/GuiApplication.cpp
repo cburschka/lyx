@@ -72,6 +72,7 @@
 #include "support/Systemcall.h"
 
 #ifdef Q_WS_MACX
+#include "support/AppleScript.h"
 #include "support/linkback/LinkBackProxy.h"
 #endif
 
@@ -843,6 +844,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	/// A translator suitable for the entries in the LyX menu.
 	/// Only needed with Qt/Mac.
 	installTranslator(new MenuTranslator(this));
+	///
+    setupApplescript();
 #endif
 
 #ifdef Q_WS_X11
