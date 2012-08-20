@@ -631,11 +631,11 @@
 0x02e2 "\\textsuperscript{s}"     "" "" # MODIFIER LETTER SMALL S
 0x02e3 "\\textsuperscript{x}"     "" "" # MODIFIER LETTER SMALL X
 0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
-0x02e5 "\\tone{55}"               "tipa" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
-0x02e6 "\\tone{44}"               "tipa" "force" # MODIFIER LETTER HIGH TONE BAR
-0x02e7 "\\tone{33}"               "tipa" "force" # MODIFIER LETTER MID TONE BAR
-0x02e8 "\\tone{22}"               "tipa" "force" # MODIFIER LETTER LOW TONE BAR
-0x02e9 "\\tone{11}"               "tipa" "force" # MODIFIER LETTER EXTRA-LOW TONE BAR
+0x02e5 "\\tone{55}"               "tone" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
+0x02e6 "\\tone{44}"               "tone" "force" # MODIFIER LETTER HIGH TONE BAR
+0x02e7 "\\tone{33}"               "tone" "force" # MODIFIER LETTER MID TONE BAR
+0x02e8 "\\tone{22}"               "tone" "force" # MODIFIER LETTER LOW TONE BAR
+0x02e9 "\\tone{11}"               "tone" "force" # MODIFIER LETTER EXTRA-LOW TONE BAR
 #0x02ea ""                         "" "" # MODIFIER LETTER YIN DEPARTING TONE MARK
 #0x02eb ""                         "" "" # MODIFIER LETTER YANG DEPARTING TONE MARK
 0x02ec "\\textsubwedge{ }"        "tipa" "force" # MODIFIER LETTER VOICING

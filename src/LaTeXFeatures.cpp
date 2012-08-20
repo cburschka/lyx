@@ -621,6 +621,7 @@ char const * simplefeatures[] = {
 	"units",
 	"tipa",
 	"tipx",
+	"tone",
 	"framed",
 	"soul",
 	"textcomp",
