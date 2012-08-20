@@ -37,5 +37,9 @@
 	<string>@VERSION@</string>
 	<key>CFBundleSignature</key>
 	<string>OLYX</string>
+	<key>NSAppleScriptEnabled</key>
+	<string>YES</string>
+	<key>OSAScriptingDefinition</key>
+    <string>LyX.sdef</string>
 </dict>
 </plist>

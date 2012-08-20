@@ -574,6 +574,7 @@ HEADERS += \
 ../../src/support/gzstream.h \
 ../../src/support/lassert.h \
 ../../src/support/limited_stack.h \
+../../src/support/linkback/AppleScript.h \
 ../../src/support/linkback/LinkBack.h \
 ../../src/support/linkback/LinkBackProxy.h \
 ../../src/support/linkback/LinkBackServer.h \

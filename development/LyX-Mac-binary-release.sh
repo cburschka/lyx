@@ -5,10 +5,10 @@
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
 # latest changes by Stephan Witt
-# Last modified: January 2011
+# Last modified: August 2012
 
 MAC_API=-cocoa
-Qt4Version="4.6.3"
+Qt4Version=${Qt4Version:-"4.6.3"}
 Qt4SourceVersion="qt-everywhere-opensource-src-${Qt4Version}"
 Qt4BuildSubDir="qt-${Qt4Version}-build${MAC_API}"
 
@@ -34,7 +34,7 @@ Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -noma
 Qt4ConfigureOptions="${Qt4ConfigureOptions} ${MAC_API}"
 
 aspell_dictionaries="no"
-hunspell_dictionaries="no"
+hunspell_dictionaries="yes"
 
 aspell_deployment="yes"
 hunspell_deployment="yes"
@@ -46,23 +46,23 @@ MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
 SDKROOT="/Developer/SDKs/MacOSX10.5.sdk" # Leopard build is default
 
 # detection of script home
-LyxSourceDir=`dirname "$0"`
+LyxSourceDir=$(dirname "$0")
 if [ ! -d "${LyxSourceDir}" ]; then
 	echo Missing LyX source directory.
 	exit 2
 fi
 case "${LyxSourceDir}" in
 /*/development)
-	LyxSourceDir=`dirname "${LyxSourceDir}"`
+	LyxSourceDir=$(dirname "${LyxSourceDir}")
 	;;
 /*)
 	;;
 */development|development)
-	LyxSourceDir=`dirname "${LyxSourceDir}"`
-	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
+	LyxSourceDir=$(dirname "${LyxSourceDir}")
+	LyxSourceDir=$(cd "${LyxSourceDir}";pwd)
 	;;
 *)
-	LyxSourceDir=`cd "${LyxSourceDir}";pwd`
+	LyxSourceDir=$(cd "${LyxSourceDir}";pwd)
 	;;
 esac
 
@@ -93,7 +93,7 @@ usage() {
 while [ $# -gt 0 ]; do
 	case "${1}" in
 	--with-qt4-frameworks=*)
-		configure_qt4_frameworks=`echo ${1}|cut -d= -f2`
+		configure_qt4_frameworks=$(echo ${1}|cut -d= -f2)
 		if [ "$configure_qt4_frameworks" = "yes" ]; then
 			unset QTDIR
 			qt4_deployment="no"
@@ -101,15 +101,15 @@ while [ $# -gt 0 ]; do
 		shift
 		;;
 	--with-qt4-dir=*)
-		QTDIR=`echo ${1}|cut -d= -f2`
+		QTDIR=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--with-macosx-target=*)
-		MACOSX_DEPLOYMENT_TARGET=`echo ${1}|cut -d= -f2`
+		MACOSX_DEPLOYMENT_TARGET=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--with-sdkroot=*)
-		SDKROOT=`echo ${1}|cut -d= -f2`
+		SDKROOT=$(echo ${1}|cut -d= -f2)
 		case "${SDKROOT}" in
 		10.4)
 			SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"
@@ -127,34 +127,34 @@ while [ $# -gt 0 ]; do
 		shift
 		;;
 	--aspell-deployment=*)
-		aspell_deployment=`echo ${1}|cut -d= -f2`
+		aspell_deployment=$(echo ${1}|cut -d= -f2)
 		aspell_dictionaries=$aspell_deployment
 		shift
 		;;
 	--hunspell-deployment=*)
-		hunspell_deployment=`echo ${1}|cut -d= -f2`
+		hunspell_deployment=$(echo ${1}|cut -d= -f2)
 		hunspell_dictionaries=$hunspell_deployment
 		shift
 		;;
 	--thesaurus-deployment=*)
-		thesaurus_deployment=`echo ${1}|cut -d= -f2`
+		thesaurus_deployment=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--qt4-deployment=*)
-		qt4_deployment=`echo ${1}|cut -d= -f2`
+		qt4_deployment=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--with-arch=*)
-		ARCH=`echo ${1}|cut -d= -f2|tr ',' ' '`
+		ARCH=$(echo ${1}|cut -d= -f2|tr ',' ' ')
 		ARCH_LIST="${ARCH_LIST} ${ARCH}"
 		shift
 		;;
 	--with-dmg-location=*)
-		DMGLocation=`echo ${1}|cut -d= -f2`
+		DMGLocation=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--with-build-path=*)
-		LyxBuildDir=`echo ${1}|cut -d= -f2`
+		LyxBuildDir=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--help|--help=*)
@@ -171,7 +171,7 @@ while [ $# -gt 0 ]; do
 		shift
 		;;
 	--only-package=*)
-		LyxOnlyPackage=`echo ${1}|cut -d= -f2`
+		LyxOnlyPackage=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--*)
@@ -196,26 +196,26 @@ ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 strip="-strip"
 aspellstrip=
 
-LyxBuildDir=${LyxBuildDir:-`dirname "${LyxSourceDir}"`/lyx-build}
+LyxBuildDir=${LyxBuildDir:-$(dirname "${LyxSourceDir}")/lyx-build}
 DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
 
-ASpellSourceDir=${ASPELLDIR:-`dirname "${LyxSourceDir}"`/${ASpellSourceVersion}}
+ASpellSourceDir=${ASPELLDIR:-$(dirname "${LyxSourceDir}")/${ASpellSourceVersion}}
 ASpellInstallDir=${ASpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
-HunSpellSourceDir=${HUNSPELLDIR:-`dirname "${LyxSourceDir}"`/${HunSpellSourceVersion}}
+HunSpellSourceDir=${HUNSPELLDIR:-$(dirname "${LyxSourceDir}")/${HunSpellSourceVersion}}
 HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/SpellChecker.lib}
-Qt4SourceDir=${QT4SOURCEDIR:-`dirname "${LyxSourceDir}"`/${Qt4SourceVersion}}
+Qt4SourceDir=${QT4SOURCEDIR:-$(dirname "${LyxSourceDir}")/${Qt4SourceVersion}}
 Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
-DictionarySourceDir=${DICTIONARYDIR:-`dirname "${LyxSourceDir}"`/dictionaries}
-DocumentationDir=`dirname "${LyxSourceDir}"`/Documents
+DictionarySourceDir=${DICTIONARYDIR:-$(dirname "${LyxSourceDir}")/dictionaries}
+DocumentationDir=$(dirname "${LyxSourceDir}")/Documents
 DmgBackground="${LyxSourceDir}"/development/MacOSX/dmg-background.png
 
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
 if [ -z "${LyXVersion}" ]; then
-	LyXVersion=`grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()"`
+	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()")
 fi
-LyXVersionSuffix=${LyXVersionSuffix:-`echo "${LyXVersion}" | cut -d. -f1-2`}
+LyXVersionSuffix=${LyXVersionSuffix:-$(echo "${LyXVersion}" | cut -d. -f1-2)}
 
 LyxName="LyX"
 LyxBase="${LyxName}-${LyXVersion}"
@@ -237,7 +237,7 @@ DMGNAME="${LyxBase}"
 DMGSIZE="550m"
 
 # Check for existing SDKs
-SDKs=`echo /Developer/SDKs/MacOSX10*sdk`
+SDKs=$(echo /Developer/SDKs/MacOSX10*sdk)
 case "$SDKs" in
 ${SDKROOT})
 	;;
@@ -301,7 +301,7 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 	# we have a private HunSpell source tree at hand...
 	# so let's build and install it
 	if [ -z "${HunSpellVersion}" ]; then
-		HunSpellVersion=`grep AC_INIT "${HunSpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()"`
+		HunSpellVersion=$(grep AC_INIT "${HunSpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
 	fi
 
 	HunSpellName="Hunspell"
@@ -322,7 +322,7 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
-		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
+		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
 			${HunspellConfigureOptions}
@@ -364,7 +364,7 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 	# we have a private ASpell source tree at hand...
 	# so let's build and install it
 	if [ -z "${ASpellVersion}" ]; then
-		ASpellVersion=`grep AC_INIT "${ASpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()"`
+		ASpellVersion=$(grep AC_INIT "${ASpellSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
 	fi
 
 	ASpellName="Aspell"
@@ -386,7 +386,7 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
-		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
+		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
 			${AspellConfigureOptions}
@@ -442,7 +442,7 @@ build_lyx() {
 		( cd "${LyxSourceDir}" && sh autogen.sh )
 	else
 		find "${LyxSourceDir}" -name Makefile.am -print | while read file ; do
-			dname=`dirname "$file"`
+			dname=$(dirname "$file")
 			if [ -f "$dname/Makefile.in" -a "$dname/Makefile.in" -ot "$file" ]; then
 				( cd "${LyxSourceDir}" && sh autogen.sh )
 				break
@@ -459,8 +459,8 @@ build_lyx() {
 	fi
 
 	if [ -d "${HunSpellInstallDir}" -a "yes" = "${hunspell_deployment}" ]; then
-		HunSpellFramework=`framework_name Hunspell`
-		HunSpellFramework=`basename "${HunSpellFramework}"`
+		HunSpellFramework=$(framework_name Hunspell)
+		HunSpellFramework=$(basename "${HunSpellFramework}")
 		ConfigureExtraInc="--with-extra-inc=${HunSpellInstallDir}/include"
 		ConfigureExtraLib="--with-extra-lib=${HunSpellInstallDir}/lib"
 		# LyXConfigureOptions="${LyXConfigureOptions} --with-hunspell-framework=${HunSpellFramework}"
@@ -475,7 +475,7 @@ build_lyx() {
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		HOSTSYSTEM=`eval "echo \\$HostSystem_$arch"`
+		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 
 		if [ "$configure_qt4_frameworks" = "yes" ]; then
 			export QT4_CORE_CFLAGS="-FQtCore"
@@ -512,17 +512,17 @@ build_lyx() {
 
 content_directory() {
 	target="$1"
-	content=`dirname "${target}"`
-	content=`dirname "${content}"`
+	content=$(dirname "${target}")
+	content=$(dirname "${content}")
 	echo "${content}"
 }
 
 private_framework() {
-	fwdir=`framework_name "$1"`
+	fwdir=$(framework_name "$1")
 	source="$2"
 	target="$3"
-	condir=`content_directory "${target}"`
-	libnm=`basename "${source}"`
+	condir=$(content_directory "${target}")
+	libnm=$(basename "${source}")
 	mkdir -p "${condir}/${fwdir}"
 	if [ ! -f "${condir}/${fwdir}/${libnm}" ]; then
 		cp -p "${source}" "${condir}/${fwdir}"
@@ -537,7 +537,7 @@ deploy_qtlibs() {
 	source="${QtInstallDir}"
 	target="$1"
 	version="Versions/${QtFrameworkVersion}/"
-	condir=`content_directory "${target}"`
+	condir=$(content_directory "${target}")
 	mkdir -p "${condir}/Resources"
 	test -f "${condir}/Resources/qt.conf" || cat - > "${condir}/Resources/qt.conf" <<-EOF
 [Paths]
@@ -548,24 +548,24 @@ EOF
 		mkdir -p "${condir}/PlugIns"
 		find "${source}/plugins" -name \*.dylib -print | while read libname ; do
 			echo Copy plugin "${libname}"
-			dylib=`basename "${libname}"`
-			dirname=`dirname "${libname}"`
-			dirname=`basename "${dirname}"`
+			dylib=$(basename "${libname}")
+			dirname=$(dirname "${libname}")
+			dirname=$(basename "${dirname}")
 			mkdir -p "${condir}/PlugIns/${dirname}"
 			cp -p "${libname}" "${condir}/PlugIns/${dirname}"
 		done
 	fi
 	for libnm in ${QtLibraries} ; do
-		fwdir=`framework_name "$libnm"`
-		dirname=`dirname "${fwdir}"`
+		fwdir=$(framework_name "$libnm")
+		dirname=$(dirname "${fwdir}")
 		mkdir -p "${condir}/${dirname}"
-		dirname=`basename "${fwdir}"`
+		dirname=$(basename "${fwdir}")
 		test -d "${condir}/${fwdir}" || (
-			echo Copy framework "${source}/lib/"`basename "${fwdir}"`
-			cp -pR "${source}/lib/"`basename "${fwdir}"` "${condir}/${fwdir}"
+			echo Copy framework "${source}/lib/"$(basename "${fwdir}")
+			cp -pR "${source}/lib/"$(basename "${fwdir}") "${condir}/${fwdir}"
 			echo Set library id in "${condir}/${fwdir}/${version}${libnm}"
 			install_name_tool -id "@executable_path/../${fwdir}/${version}${libnm}" "${condir}/${fwdir}/${version}${libnm}"
-			find "${condir}/PlugIns" "${condir}/"`dirname "${fwdir}"` -name Headers -prune -o -type f -print | while read filename ; do
+			find "${condir}/PlugIns" "${condir}/"$(dirname "${fwdir}") -name Headers -prune -o -type f -print | while read filename ; do
 				if [ "${filename}" != "${target}" ]; then
 					otool -L "${filename}" 2>/dev/null | sort -u | while read library ; do
 						# pattern match for: /path/to/qt4/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
@@ -697,9 +697,9 @@ EOF
 make_dmg() {
 	cd "${1}"
 
-	BGSIZE=`file "$DmgBackground" | awk -F , '/PNG/{print $2 }' | tr x ' '`
-	BG_W=`echo ${BGSIZE} | awk '{print $1 }'`
-	BG_H=`echo ${BGSIZE} | awk '{print $2 }'`
+	BGSIZE=$(file "$DmgBackground" | awk -F , '/PNG/{print $2 }' | tr x ' ')
+	BG_W=$(echo ${BGSIZE} | awk '{print $1 }')
+	BG_H=$(echo ${BGSIZE} | awk '{print $2 }')
 
 	rm -f "${DMGNAME}.sparseimage" "${DMGNAME}.dmg"
 
