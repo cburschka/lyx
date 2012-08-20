@@ -532,12 +532,14 @@ bool DocIterator::fixIfBroken()
 
 void DocIterator::sanitize()
 {
-	// this function re-creates the cache of inset pointers
-	//lyxerr << "converting:\n" << *this << endl;
+	// keep a copy of the slices
+	vector<CursorSlice> const sl = slices_;
+	slices_.clear();
 	if (buffer_)
 		inset_ = &buffer_->inset();
 	Inset * inset = inset_;
-	for (size_t i = 0, n = slices_.size(); i != n; ++i) {
+	// re-add the slices one by one, and adjust the inset pointer.
+	for (size_t i = 0, n = sl.size(); i != n; ++i) {
 		if (inset == 0) {
 			// FIXME
 			LYXERR0(" Should not happen, but does e.g. after "
@@ -548,14 +550,13 @@ void DocIterator::sanitize()
 			fixIfBroken();
 			break;
 		}
-		slices_[i].inset_ = inset;
+		push_back(sl[i]);
+		top().inset_ = inset;
 		if (fixIfBroken())
 			break;
 		if (i + 1 != n)
-			inset = slices_[i].inset().inMathed() ? slices_[i].cell()[slices_[i].pos()].nucleus() 
-				: slices_[i].paragraph().getInset(pos());
+			inset = nextInset();
 	}
-	//lyxerr << "convert:\n" << *this << " to:\n" << dit << endl;
 }
 
 
@@ -626,7 +627,7 @@ StableDocIterator::StableDocIterator(DocIterator const & dit)
 
 DocIterator StableDocIterator::asDocIterator(Buffer * buf) const
 {
-	DocIterator dit = DocIterator(buf);
+	DocIterator dit(buf);
 	dit.slices_ = data_;
 	dit.sanitize();
 	return dit;
