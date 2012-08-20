@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-08-18 13:20+0200\n"
+"POT-Creation-Date: 2012-08-19 17:38+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -11765,9 +11765,9 @@ msgstr "Concrete Roman"
 msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
-#: src/frontends/qt4/GuiDocument.cpp:130
-msgid "Bitstream Charter"
-msgstr "Bitstream Charter"
+#: lib/latexfonts:96
+msgid "Bitstream Charter (PSNFSS)"
+msgstr "Bitstream Charter (PSNFSS)"
 
 #: src/frontends/qt4/GuiDocument.cpp:128
 msgid "Computer Modern Roman"
@@ -11781,6 +11781,18 @@ msgstr "Libertine"
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
+#: lib/latexfonts:122
+msgid "Bitstream Charter (Mathdesign)"
+msgstr "Bitstream Charter (Mathdesign)"
+
+#: lib/latexfonts:133
+msgid "Utopia (Mathdesign)"
+msgstr "Utopia (Mathdesign)"
+
+#: lib/latexfonts:144
+msgid "Adobe Garamond (Mathdesign)"
+msgstr "Adobe Garamond (Mathdesign)"
+
 #: src/frontends/qt4/GuiDocument.cpp:130
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
@@ -11793,9 +11805,29 @@ msgstr "Palatino"
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: src/frontends/qt4/GuiDocument.cpp:131
-msgid "Utopia"
-msgstr "Utopia"
+#: lib/latexfonts:180
+msgid "TeX Gyre Bonum"
+msgstr "TeX Gyre Bonum"
+
+#: lib/latexfonts:186
+msgid "TeX Gyre Chorus"
+msgstr "TeX Gyre Chorus"
+
+#: lib/latexfonts:192
+msgid "TeX Gyre Pagella"
+msgstr "TeX Gyre Pagella"
+
+#: lib/latexfonts:198
+msgid "TeX Gyre Schola"
+msgstr "TeX Gyre Schola"
+
+#: lib/latexfonts:204
+msgid "TeX Gyre Termes"
+msgstr "TeX Gyre Termes"
+
+#: lib/latexfonts:212
+msgid "Utopia (Fourier)"
+msgstr "Utopia (Fourier)"
 
 #: src/frontends/qt4/GuiDocument.cpp:145
 msgid "Avant Garde"
@@ -11821,6 +11853,14 @@ msgstr "Helvetica"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
+#: lib/latexfonts:269
+msgid "TeX Gyre Adventor"
+msgstr "TeX Gyre Adventor"
+
+#: lib/latexfonts:275
+msgid "TeX Gyre Heros"
+msgstr "TeX Gyre Heros"
+
 #: src/frontends/qt4/GuiDocument.cpp:158
 msgid "Bera Mono"
 msgstr "Bera Mono"
@@ -11844,6 +11884,10 @@ msgstr "Latin Modern Typewriter"
 #: src/frontends/qt4/GuiDocument.cpp:159
 msgid "LuxiMono"
 msgstr "LuxiMono"
+
+#: lib/latexfonts:328
+msgid "TeX Gyre Cursor"
+msgstr "TeX Gyre Cursor"
 
 #: lib/latexfonts:253
 msgid "TX Typewriter"
@@ -24750,6 +24794,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Utopia"
+#~ msgstr "Utopia"
 
 #~ msgid "New documents will be assigned this language."
 #~ msgstr "Novým dokumentom bude priradený tento jazyk."
