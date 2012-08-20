@@ -15,6 +15,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetMathBrace.h"
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "InsetMathSymbol.h"
@@ -547,8 +548,16 @@ void InsetMathScript::write(WriteStream & os) const
 	if (hasDown() /*&& down().size()*/)
 		os << "_{" << down() << '}';
 
-	if (hasUp() /*&& up().size()*/)
-		os << "^{" << up() << '}';
+	if (hasUp() /*&& up().size()*/) {
+		// insert space if up() is empty or an empty brace inset
+		// (see bug 8305)
+		if (os.latex() && (up().size() == 0 ||
+		    (up().size() == 1 && up().back()->asBraceInset() &&
+		     up().back()->asBraceInset()->cell(0).empty())))
+			os << "^ {}";
+		else
+			os << "^{" << up() << '}';
+	}
 
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
