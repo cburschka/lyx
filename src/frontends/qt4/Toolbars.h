@@ -108,8 +108,9 @@ public:
 		TABLE = 256, //< show when in table
 		REVIEW = 512, //< show when change tracking is enabled
 		MATHMACROTEMPLATE = 1024, //< show in math macro template
-		ALLOWAUTO = MATH | TABLE | REVIEW | MATHMACROTEMPLATE,
-		SAMEROW = 2048 //place to the current row, no new line
+		SAMEROW = 2048, //place to the current row, no new line
+		IPA = 4096, //< show when in IPA inset
+		ALLOWAUTO = MATH | TABLE | REVIEW | MATHMACROTEMPLATE | IPA
 	};
 
 	typedef std::vector<ToolbarInfo> Infos;

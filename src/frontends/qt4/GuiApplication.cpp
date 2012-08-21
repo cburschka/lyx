@@ -372,14 +372,18 @@ QString iconName(FuncRequest const & f, bool unknown)
 		}
 	}
 
-	QString imagedir = "images/" + path;
-	FileName fname = imageLibFileSearch(imagedir, name1, "png");
-	if (fname.exists())
-		return toqstr(fname.absFileName());
+	QStringList imagedirs;
+	imagedirs << "images/" << "images/ipa/";
+	for (int i = 0; i < imagedirs.size(); ++i) { 
+		QString imagedir = imagedirs.at(i) + path;
+		FileName fname = imageLibFileSearch(imagedir, name1, "png");
+		if (fname.exists())
+			return toqstr(fname.absFileName());
 
-	fname = imageLibFileSearch(imagedir, name2, "png");
-	if (fname.exists())
-		return toqstr(fname.absFileName());
+		fname = imageLibFileSearch(imagedir, name2, "png");
+		if (fname.exists())
+			return toqstr(fname.absFileName());
+	}
 
 	path = ":/images/" + path;
 	QDir res(path);
@@ -404,8 +408,8 @@ QString iconName(FuncRequest const & f, bool unknown)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
 	if (unknown) {
-		imagedir = "images/";
-		fname = imageLibFileSearch(imagedir, "unknown", "png");
+		QString imagedir = "images/";
+		FileName fname = imageLibFileSearch(imagedir, "unknown", "png");
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 		return QString(":/images/unknown.png");

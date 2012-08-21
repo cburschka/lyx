@@ -174,14 +174,15 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 	setStatusTip(label);
 	setText(label);
 	QString const name = toqstr(tbitem_.name_);
-	QString imagedir = "images/math/";
-	FileName const fname = imageLibFileSearch(imagedir, name, "png");
-	if (fname.exists()) {
-		setIcon(QIcon(getPixmap(imagedir, name, "png")));
-	} else {
-		imagedir = "images/";
-		imageLibFileSearch(imagedir, name, "png");
-		setIcon(QIcon(getPixmap(imagedir, name, "png")));
+	QStringList imagedirs;
+	imagedirs << "images/math/" << "images/";
+	for (int i = 0; i < imagedirs.size(); ++i) { 
+		QString imagedir = imagedirs.at(i);
+		FileName const fname = imageLibFileSearch(imagedir, name, "png");
+		if (fname.exists()) {
+			setIcon(QIcon(getPixmap(imagedir, name, "png")));
+			break;
+		}
 	}
 	if (sticky)
 		connect(this, SIGNAL(triggered(QAction *)),
@@ -309,13 +310,14 @@ void GuiToolbar::add(ToolbarItem const & item)
 
 
 void GuiToolbar::update(bool in_math, bool in_table, bool in_review, 
-	bool in_mathmacrotemplate)
+	bool in_mathmacrotemplate, bool in_ipa)
 {
 	if (visibility_ & Toolbars::AUTO) {
 		bool show_it = (in_math && (visibility_ & Toolbars::MATH))
 			|| (in_table && (visibility_ & Toolbars::TABLE))
 			|| (in_review && (visibility_ & Toolbars::REVIEW))
-			|| (in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE));
+			|| (in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE))
+			|| (in_ipa && (visibility_ & Toolbars::IPA));
 		setVisible(show_it);
 	}
 

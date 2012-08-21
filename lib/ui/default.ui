@@ -35,6 +35,7 @@ Include "stdtoolbars.inc"
 # mathmacrotemplate: the toolbar is visible only when in a macro definition
 # table: the toolbar is visible only when in a table
 # review: the toolbar is visible only when inside a tracked change
+# ipa: the toolbar is only visible when inside an ipa inset
 #
 # top: the toolbar should be at the top of the window
 # bottom: the toolbar should be at the bottom of the window
@@ -54,5 +55,6 @@ Toolbars
 	"math_panels" "auto,math,bottom"
 	"math" "auto,math,bottom"
 	"mathmacrotemplate" "auto,mathmacrotemplate,bottom"
+	"ipa" "auto,ipa,bottom"
 	"minibuffer" "off,bottom"
 End

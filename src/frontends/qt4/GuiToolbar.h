@@ -90,7 +90,7 @@ public:
 
 	/// Refresh the contents of the bar.
 	void update(bool in_math, bool in_table, bool review,
-		bool in_mathmacrotemplate);
+		bool in_mathmacrotemplate, bool in_ipa);
 
 	///
 	void toggle();

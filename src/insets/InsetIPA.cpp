@@ -90,6 +90,10 @@ bool InsetIPA::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		break;
 	}
+	case LFUN_IN_IPA:
+		flag.setEnabled(true);
+		return true;
+		break;
 	default:
 		break;
 	}
@@ -207,6 +211,7 @@ void InsetIPA::validate(LaTeXFeatures & features) const
 		return;
 	features.require("tipa");
 	features.require("tipx");
+	InsetText::validate(features);
 }
 
 

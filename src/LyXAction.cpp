@@ -550,6 +550,17 @@ void LyXAction::init()
  * \endvar
  */
         { LFUN_IPA_INSERT, "ipa-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_IN_IPA
+ * \li Action: Only active in IPA inset.
+ * \li Notion: Dummy function which is only active in a IPA inset.
+               It's used to toggle the IPA toolbar if the cursor moves
+               into an IPA inset.
+ * \li Syntax: in-ipa
+ * \li Origin: spitz, 20 May 2012
+ * \endvar
+ */
+		{ LFUN_IN_IPA, "in-ipa", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_NOMENCL_INSERT

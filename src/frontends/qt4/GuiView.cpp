@@ -1404,12 +1404,14 @@ void GuiView::updateToolbars()
 			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true);
 		bool const mathmacrotemplate =
 			lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled();
+		bool const ipa =
+			lyx::getStatus(FuncRequest(LFUN_IN_IPA)).enabled();
 
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update(math, table, review, mathmacrotemplate);
+			it->second->update(math, table, review, mathmacrotemplate, ipa);
 	} else
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update(false, false, false, false);
+			it->second->update(false, false, false, false, false);
 }
 
 

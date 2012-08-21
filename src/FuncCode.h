@@ -406,7 +406,7 @@ enum FuncCode
 	LFUN_SET_GRAPHICS_GROUP,
 	LFUN_COMPLETION_CANCEL,
 	LFUN_COMPLETION_ACCEPT,
- 	LFUN_COMMAND_ALTERNATIVES,
+	LFUN_COMMAND_ALTERNATIVES,
 	// 315
 	LFUN_TAB_INSERT,
 	LFUN_TAB_DELETE,
@@ -450,10 +450,10 @@ enum FuncCode
 	LFUN_SCRIPT_INSERT,             // gb, 20101123
 	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
 	// 350
-	LFUN_CLIPBOARD_PASTE_SIMPLE,	// tommaso, 20111028
+	LFUN_CLIPBOARD_PASTE_SIMPLE,    // tommaso, 20111028
 	LFUN_IPA_INSERT,                // spitz, 20120305
 	LFUN_BUFFER_FORALL,             // scottkostyshak, 20120720
-
+	LFUN_IN_IPA,                    // spitz, 20120520
 	LFUN_LASTACTION                 // end of the table
 };
 
