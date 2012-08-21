@@ -689,7 +689,7 @@
 0x031d "\\textraising"            "tipa" "combining,force" # COMBINING UP TACK BELOW
 0x031e "\\textlowering"           "tipa" "combining,force" # COMBINING DOWN TACK BELOW
 0x031f "\\textsubplus"            "tipa" "combining,force" # COMBINING PLUS SIGN BELOW
-0x0320 "\\b"                      "" "combining,force" # COMBINING MINUS SIGN BELOW
+0x0320 "\\b"                      "" "combining,force,tipashortcut=\\=*" # COMBINING MINUS SIGN BELOW
 #0x0321 ""                         "" "combining,force" # COMBINING PALATALIZED HOOK BELOW
 #0x0322 ""                         "" "combining,force" # COMBINING RETROFLEX HOOK BELOW
 0x0323 "\\d"                      "" "combining,force" # COMBINING DOT BELOW
@@ -698,7 +698,7 @@
 #0x0326 ""                         "" "combining,force" # COMBINING COMMA BELOW
 0x0327 "\\c"                      "" "combining,force" # COMBINING CEDILLA
 0x0328 "\\k"                      "" "combining,force" # COMBINING OGONEK
-0x0329 "\\textsyllabic"           "tipa" "combining,force" # COMBINING VERTICAL LINE BELOW
+0x0329 "\\textsyllabic"           "tipa" "combining,force,tipashortcut=\\s" # COMBINING VERTICAL LINE BELOW
 0x032a "\\textsubbridge"          "tipa" "combining,force" # COMBINING BRIDGE BELOW
 0x032b "\\textsubw"               "tipa" "combining,force" # COMBINING INVERTED DOUBLE ARCH BELOW
 0x032c "\\textsubwedge"           "tipa" "combining,force" # COMBINING CARON BELOW
