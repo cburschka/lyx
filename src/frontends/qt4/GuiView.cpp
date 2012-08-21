@@ -2294,7 +2294,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 	bool const saved = saveBuffer(b, fname);
 	if (saved)
-		b.reload();
+		b.reload(false);
 	return saved;
 }
 
