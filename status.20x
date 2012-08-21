@@ -119,6 +119,8 @@ What's new
 - Fix support for mhchem upward arrows, which in mathed are rendered as
   empty (brace insets) superscripts (bug 8305).
 
+- Fix tex2lyx import of mhchem commands outside math mode (bug 8306).
+
 
 * USER INTERFACE
 
