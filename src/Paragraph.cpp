@@ -859,7 +859,13 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 	// FIXME: change tracking
 	// Is this correct WRT change tracking?
 	Encoding const & encoding = *(runparams.encoding);
-	docstring const latex1 = encoding.latexChar(next).first;
+	docstring latex1 = encoding.latexChar(next).first;
+	if (runparams.inIPA) {
+		string const tipashortcut = Encodings::TIPAShortcut(next);
+		if (!tipashortcut.empty()) {
+			latex1 = from_ascii(tipashortcut);
+		}
+	}
 	docstring const latex2 = encoding.latexChar(c).first;
 	if (docstring(1, next) == latex1) {
 		// the encoding supports the combination
