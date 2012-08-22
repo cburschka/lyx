@@ -49,7 +49,7 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
       ADD_CUSTOM_COMMAND( 
          OUTPUT ${_gmoFile} 
          COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none ${_absFile} ${_absPotFile}
-         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -c --statistics -o ${_gmoFile} ${_absFile}
          DEPENDS ${_absPotFile} ${_absFile} 
       )
 
