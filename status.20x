@@ -135,6 +135,9 @@ What's new
 
 - Fix display of file names that contain many non-ascii characters.
 
+- When using a non-default language for the GUI, do not change locale
+  settings of child proceses (bug 7741).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

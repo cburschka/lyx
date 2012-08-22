@@ -156,7 +156,6 @@ private:
 	friend CmdDef & theTopLevelCmdDef();
 	friend SpellChecker * theSpellChecker();
 	friend void setSpellChecker();
-	friend void setRcGuiLanguage();
 	friend void emergencyCleanup();
 	friend void execBatchCommands();
 	friend void lyx_exit(int exit_code);
@@ -169,8 +168,6 @@ void emergencyCleanup();
 /// \p exit_code is 0 by default, if a non zero value is passed,
 /// emergencyCleanup() will be called before exiting.
 void lyx_exit(int exit_code);
-/// Set the language defined by the user.
-void setRcGuiLanguage();
 /// Execute batch commands if available.
 void execBatchCommands();
 

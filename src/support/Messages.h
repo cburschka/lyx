@@ -26,18 +26,14 @@ public:
 	Messages(std::string const & l = std::string());
 	///
 	docstring const get(std::string const & msg) const;
+	/// What is the language associated with this translation?
+	std::string language() const;
 	/// Is an (at least partial) translation of this language available?
 	bool available() const;
 	///
 	static void init();
-	///
-	static std::string const & defaultLanguage() { return main_lang_; }
 
 private:
-	///
-	static void setDefaultLanguage();
-	///
-	static std::string main_lang_;
 	///
 	std::string lang_;
 	/// Did we warn about unavailable locale already?

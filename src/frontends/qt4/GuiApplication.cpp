@@ -1959,10 +1959,7 @@ void GuiApplication::exit(int status)
 
 void GuiApplication::setGuiLanguage()
 {
-	// Set the language defined by the user.
-	setRcGuiLanguage();
-
-	QString const default_language = toqstr(Messages::defaultLanguage());
+	QString const default_language = toqstr(getGuiMessages().language());
 	LYXERR(Debug::LOCALE, "Trying to set default locale to: " << default_language);
 	QLocale const default_locale(default_language);
 	QLocale::setDefault(default_locale);

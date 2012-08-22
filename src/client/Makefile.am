@@ -29,9 +29,7 @@ endif
 
 SOURCEFILES = \
   boost.cpp \
-  client.cpp \
-  gettext.cpp \
-  Messages.cpp
+  client.cpp
 
 HEADERFILES = \
   Messages.h
