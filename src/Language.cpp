@@ -196,6 +196,10 @@ bool Language::read(Lexer & lex)
 		encoding_ = encodings.fromLyXName("iso8859-1");
 		LYXERR0("Unknown encoding " << encodingStr_);
 	}
+	// cache translation status. Calling getMessages() directly in
+	// PrefLanguage::PrefLanguage() did only work if the gui language
+	// was set to auto (otherwise all languages would be marked as available).
+	translated_ = getMessages(code()).available();
 	return true;
 }
 
@@ -255,12 +259,8 @@ void Languages::read(FileName const & filename)
 	}
 
 	// Read layout translations
-	FileName path = libFileSearch(string(), "layouttranslations");
+	FileName const path = libFileSearch(string(), "layouttranslations");
 	readLayoutTranslations(path);
-
-	// Read installed translations
-	path = libFileSearch(string(), "installed_translations");
-	readInstalledTranslations(path);
 }
 
 
@@ -364,32 +364,6 @@ void Languages::readLayoutTranslations(support::FileName const & filename)
 			lit->second.readLayoutTranslations(tit->second,
 			                                   m == ExactMatch);
 		}
-	}
-
-}
-
-
-void Languages::readInstalledTranslations(support::FileName const & filename)
-{
-	Lexer lex;
-	lex.setFile(filename);
-	lex.setContext("Languages::read");
-
-	// 1) read all installed gmo files names
-	set<string> installed_translations;
-	string lang_code;
-	while (lex.isOK()) {
-		lex >> lang_code;
-		installed_translations.insert(lang_code);
-	}
-
-	// 2) mark all corresponding languages as translated.
-	LanguageList::iterator lit = languagelist.begin();
-	LanguageList::iterator const lend = languagelist.end();
-	for ( ; lit != lend ; ++lit) {
-		if (installed_translations.count(lit->second.code())
-		    || installed_translations.count(token(lit->second.code(), '_', 0)))
-			lit->second.translated(true);
 	}
 
 }

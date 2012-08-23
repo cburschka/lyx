@@ -180,10 +180,6 @@ m4_defun([AC_GNU_SOURCE],[])
 AM_GNU_GETTEXT([no-libtool])
 AM_GNU_GETTEXT_VERSION([0.16.1])
 AC_LANG_POP(C)
-AC_CONFIG_COMMANDS([lib/installed_translation], [
-  rm -f lib/installed_translations
-  echo $CATALOGS | sed 's/\.gmo//g' > lib/installed_translations
-])
 
 # some standard header files
 AC_HEADER_MAJOR
@@ -375,7 +371,7 @@ AC_CONFIG_FILES([Makefile \
       development/cygwin/lyxrc.dist \
       development/lyx.spec \
       intl/Makefile \
-      lib/lyx.desktop-temp:lib/lyx.desktop.in \
+      lib/lyx.desktop-temp:lib/lyx.desktop.in
       lib/Makefile \
       lib/doc/Makefile \
       lib/lyx2lyx/lyx2lyx_version.py \
