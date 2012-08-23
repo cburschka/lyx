@@ -1021,6 +1021,8 @@ ToolbarSet
 		Item "Voiced alveolo-palatal fricative" "unicode-insert 0x0291"
 		Item "Voiced alveolar lateral flap" "unicode-insert 0x027a"
 		Item "Simultaneous voiceless postalveolar and velar fricative" "unicode-insert 0x0267"
+		Item "Top tie bar" "ipamacro-insert deco toptiebar"
+		Item "Bottom tie bar" "ipamacro-insert deco bottomtiebar"
 	End
 
 	Toolbar "ipa_suprasegmentals" "IPA Suprasegmentals"
@@ -1084,15 +1086,15 @@ ToolbarSet
 		Item "Downstep" "unicode-insert 0xa71c"
 		Item "Upstep" "unicode-insert 0xa71b"
 		Item "Rising (accent)" "unicode-insert 0x030c"
-#		Item "Rising (tone letter)" "" // Not covered by Unicode (def. as a sequence 0x02e9 0x02e5)
+		Item "Rising (tone letter)" "ipamacro-insert tone-rising"
 		Item "Falling (accent)" "unicode-insert 0x0302"
-#		Item "Falling (tone letter)" "" // Not covered by Unicode (def. as a sequence 0x02e5 0x02e9)
+		Item "Falling (tone letter)" "ipamacro-insert tone-falling"
 		Item "High rising (accent)" "unicode-insert 0x1dc4"
-#		Item "High rising (tone letter)" "" // Not covered by Unicode (def. as a sequence 0x02e7 0x02e5)
+		Item "High rising (tone letter)" "ipamacro-insert tone-high-rising"
 		Item "Low rising (accent)" "unicode-insert 0x1dc5"
-#		Item "Low rising (tone letter)" "" // Not covered by Unicode (def. as a sequence 0x02e9 0x02e7)
+		Item "Low rising (tone letter)" "ipamacro-insert tone-low-rising"
 		Item "Rising-falling (accent)" "unicode-insert 0x1dc8"
-#		Item "Rising-falling (tone letter)" "" // Not covered by Unicode (def. as a sequence 0x02e8 0x02e5 0x02e8)
+		Item "Rising-falling (tone letter)" "ipamacro-insert tone-high-rising-falling"
 		Item "Global rise" "unicode-insert 0x2197"
 		Item "Global fall" "unicode-insert 0x2198"
 	End

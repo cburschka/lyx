@@ -233,6 +233,10 @@ enum InsetCode {
 	///
 	IPA_CODE,
 	///
+	IPACHAR_CODE,
+	///
+	IPADECO_CODE,
+	///
 	INSET_CODE_SIZE
 };
 

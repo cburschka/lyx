@@ -207,10 +207,10 @@ bool InsetIPA::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 void InsetIPA::validate(LaTeXFeatures & features) const
 {
-	if (buffer_->params().useNonTeXFonts)
-		return;
-	features.require("tipa");
-	features.require("tipx");
+	if (!buffer_->params().useNonTeXFonts) {
+		features.require("tipa");
+		features.require("tipx");
+	}
 	InsetText::validate(features);
 }
 
@@ -239,6 +239,8 @@ bool InsetIPA::insetAllowed(InsetCode code) const
 	switch (code) {
 	// code that is allowed
 	case ERT_CODE:
+	case IPACHAR_CODE:
+	case IPADECO_CODE:
 	case SCRIPT_CODE:
 		return true;
 	default:

@@ -58,6 +58,7 @@
 #include "insets/InsetFloatList.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
+#include "insets/InsetIPAMacro.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetQuotes.h"
 #include "insets/InsetSpecialChar.h"
@@ -223,6 +224,15 @@ static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 	cur.recordUndo();
 	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
+	cur.posForward();
+}
+
+
+static void ipaChar(Cursor & cur, InsetIPAChar::Kind kind)
+{
+	cur.recordUndo();
+	cap::replaceSelection(cur);
+	cur.insert(new InsetIPAChar(kind));
 	cur.posForward();
 }
 
@@ -1171,6 +1181,35 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			lyxerr << "LyX function 'specialchar-insert' needs an argument." << endl;
 		else
 			lyxerr << "Wrong argument for LyX function 'specialchar-insert'." << endl;
+		break;
+	}
+
+	case LFUN_IPAMACRO_INSERT: {
+		string const arg = cmd.getArg(0);
+		if (arg == "deco") {
+			// Open the inset, and move the current selection
+			// inside it.
+			doInsertInset(cur, this, cmd, true, true);
+			cur.posForward();
+			// Some insets are numbered, others are shown in the outline pane so
+			// let's update the labels and the toc backend.
+			cur.forceBufferUpdate();
+			break;
+		}
+		if (arg == "tone-falling")
+			ipaChar(cur, InsetIPAChar::TONE_FALLING);
+		else if (arg == "tone-rising")
+			ipaChar(cur, InsetIPAChar::TONE_RISING);
+		else if (arg == "tone-high-rising")
+			ipaChar(cur, InsetIPAChar::TONE_HIGH_RISING);
+		else if (arg == "tone-low-rising")
+			ipaChar(cur, InsetIPAChar::TONE_LOW_RISING);
+		else if (arg == "tone-high-rising-falling")
+			ipaChar(cur, InsetIPAChar::TONE_HIGH_RISING_FALLING);
+		else if (arg.empty())
+			lyxerr << "LyX function 'ipamacro-insert' needs an argument." << endl;
+		else
+			lyxerr << "Wrong argument for LyX function 'ipamacro-insert'." << endl;
 		break;
 	}
 
@@ -2497,6 +2536,14 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		code = HYPERLINK_CODE;
 		break;
+	case LFUN_IPAMACRO_INSERT: {
+		string const arg = cmd.getArg(0);
+		if (arg == "deco")
+			code = IPADECO_CODE;
+		else
+			code = IPACHAR_CODE;
+		break;
+	}
 	case LFUN_QUOTE_INSERT:
 		// always allow this, since we will inset a raw quote
 		// if an inset is not allowed.

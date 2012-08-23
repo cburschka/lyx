@@ -94,6 +94,9 @@ static void build_translator()
 	insetnames[FLOAT_CODE] = InsetName("float", _("Float"));
 	insetnames[WRAP_CODE] = InsetName("wrap");
 	insetnames[SPECIALCHAR_CODE] = InsetName("specialchar");
+	insetnames[IPA_CODE] = InsetName("ipa");
+	insetnames[IPACHAR_CODE] = InsetName("ipachar");
+	insetnames[IPADECO_CODE] = InsetName("ipadeco");
 	insetnames[TABULAR_CODE] = InsetName("tabular", _("Table"));
 	insetnames[EXTERNAL_CODE] = InsetName("external");
 	insetnames[CAPTION_CODE] = InsetName("caption");

@@ -562,6 +562,7 @@ SOURCEFILESINSETS = \
 	insets/InsetIndex.cpp \
 	insets/InsetInfo.cpp \
 	insets/InsetIPA.cpp \
+	insets/InsetIPAMacro.cpp \
 	insets/InsetLabel.cpp \
 	insets/InsetLayout.cpp \
 	insets/InsetLine.cpp \
@@ -619,6 +620,7 @@ HEADERFILESINSETS = \
 	insets/InsetIndex.h \
 	insets/InsetInfo.h \
 	insets/InsetIPA.h \
+	insets/InsetIPAMacro.h \
 	insets/InsetPreview.h \
 	insets/InsetLabel.h \
 	insets/InsetLayout.h \

@@ -561,7 +561,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_IN_IPA, "in-ipa", Noop, Edit },
-
+/*!
+ * \var lyx::FuncCode lyx::LFUN_IPAMACRO_INSERT
+ * \li Action: Inserts special IPA characters into the document.
+ * \li Syntax: ipamacro-insert <CHAR>
+ * \li Params: <CHAR>: tone-falling, tone-rising, tone-high-rising, tone-low-rising,
+ *                     tone-high-rising-falling.
+ * \li Origin: JSpitzm, 22 Aug 2012
+ * \endvar
+ */
+		{ LFUN_IPAMACRO_INSERT, "ipamacro-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_NOMENCL_INSERT
  * \li Action: Inserts Nomenclature entry.

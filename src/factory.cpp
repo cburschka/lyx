@@ -39,6 +39,7 @@
 #include "insets/InsetIndex.h"
 #include "insets/InsetInfo.h"
 #include "insets/InsetIPA.h"
+#include "insets/InsetIPAMacro.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetMarginal.h"
@@ -129,6 +130,16 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			if (arg.empty())
 				arg = "Phantom";
 			return new InsetPhantom(buf, arg);
+		}
+
+		case LFUN_IPAMACRO_INSERT: {
+			string const arg1 = cmd.getArg(0);
+			string const arg2 = cmd.getArg(1);
+			if (arg1 != "deco") {
+				LYXERR0("LFUN_IPAMACRO_INSERT: wrong argument");
+				return 0;
+			}
+			return new InsetIPADeco(buf, arg2);
 		}
 
 		case LFUN_ERT_INSERT:
@@ -621,6 +632,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetInfo(buf));
 		} else if (tmptok == "IPA") {
 			inset.reset(new InsetIPA(buf));
+		} else if (tmptok == "IPADeco") {
+			inset.reset(new InsetIPADeco(buf, tmptok));
 		} else if (tmptok == "Preview") {
 			inset.reset(new InsetPreview(buf));
 		} else {

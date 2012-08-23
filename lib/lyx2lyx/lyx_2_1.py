@@ -913,6 +913,76 @@ def revert_texgyre(document):
                 preamble = "\\usepackage{%s}" % val
                 add_to_preamble(document, [preamble])
                 document.header[i] = "\\font_typewriter default"
+
+
+def revert_ipadeco(document):
+    " Revert IPA decorations to ERT "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset IPADeco", i)
+      if i == -1:
+          return
+      end = find_end_of_inset(document.body, i)
+      if end == -1:
+          document.warning("Can't find end of inset at line " + str(i))
+          i += 1
+          continue
+      line = document.body[i]
+      rx = re.compile(r'\\begin_inset IPADeco (.*)$')
+      m = rx.match(line)
+      decotype = m.group(1)
+      if decotype != "toptiebar" and decotype != "bottomtiebar":
+          document.warning("Invalid IPADeco type: " + decotype)
+          i = end
+          continue
+      blay = find_token(document.body, "\\begin_layout Plain Layout", i, end)
+      if blay == -1:
+          document.warning("Can't find layout for inset at line " + str(i))
+          i = end
+          continue
+      bend = find_end_of_layout(document.body, blay)
+      if bend == -1:
+          document.warning("Malformed LyX document: Could not find end of IPADeco inset's layout.")
+          i = end
+          continue
+      substi = ["\\begin_inset ERT", "status collapsed", "",
+                "\\begin_layout Plain Layout", "", "", "\\backslash", 
+                decotype + "{", "\\end_layout", "", "\\end_inset"]
+      substj = ["\\size default", "", "\\begin_inset ERT", "status collapsed", "",
+                "\\begin_layout Plain Layout", "", "}", "\\end_layout", "", "\\end_inset"]
+      # do the later one first so as not to mess up the numbering
+      document.body[bend:end + 1] = substj
+      document.body[i:blay + 1] = substi
+      i = end + len(substi) + len(substj) - (end - bend) - (blay - i) - 2
+      add_to_preamble(document, "\\usepackage{tipa}")
+
+
+def revert_ipachar(document):
+    ' Revert \\IPAChar to ERT '
+    i = 0
+    found = False
+    while i < len(document.body):
+        m = re.match(r'(.*)\\IPAChar \\(\w+\{\w+\})(.*)', document.body[i])
+        if m:
+            found = True
+            before = m.group(1)
+            ipachar = m.group(2)
+            after = m.group(3)
+            subst = [before,
+                     '\\begin_inset ERT',
+                     'status collapsed', '',
+                     '\\begin_layout Standard',
+                     '', '', '\\backslash',
+                     ipachar,
+                     '\\end_layout', '',
+                     '\\end_inset', '',
+                     after]
+            document.body[i: i+1] = subst
+            i = i + len(subst)
+        else:
+            i = i + 1
+    if found:
+        add_to_preamble(document, "\\usepackage{tone}")
     
 
 ##
@@ -944,12 +1014,14 @@ convert = [
            [434, []],
            [435, []],
            [436, []],
-           [437, []]
+           [437, []],
+           [438, []]
           ]
 
 revert =  [
-           [434, [revert_texgyre]],
-           [434, [revert_mathdesign]],
+           [437, [revert_ipadeco, revert_ipachar]],
+           [436, [revert_texgyre]],
+           [435, [revert_mathdesign]],
            [434, [revert_txtt]],
            [433, [revert_libertine]],
            [432, [revert_armenian]],

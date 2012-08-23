@@ -170,6 +170,16 @@ InsetLayout Phantom
 	ForcePlain            true
 End
 
+InsetLayout IPADeco
+	Decoration            minimalistic
+	Font
+	  Color               foreground
+	EndFont
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
+End
+
 InsetLayout TOC:Listings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.

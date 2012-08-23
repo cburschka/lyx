@@ -55,6 +55,7 @@
 #include "insets/InsetNewline.h"
 #include "insets/InsetNewpage.h"
 #include "insets/InsetArgument.h"
+#include "insets/InsetIPAMacro.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
@@ -476,6 +477,12 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\SpecialChar") {
 		auto_ptr<Inset> inset;
 		inset.reset(new InsetSpecialChar);
+		inset->read(lex);
+		inset->setBuffer(*buf);
+		par.insertInset(par.size(), inset.release(), font, change);
+	} else if (token == "\\IPAChar") {
+		auto_ptr<Inset> inset;
+		inset.reset(new InsetIPAChar);
 		inset->read(lex);
 		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);

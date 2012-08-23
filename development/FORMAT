@@ -11,6 +11,35 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-08-23 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 438 
+	  Support for some IPA macros that are not unicoded.
+	  (1) tone symbols from tipa's "tone" subpackage:
+	  -- \tone{51} => \IPAChar \tone{51}
+	  -- \tone{15} => \IPAChar \tone{15}
+	  -- \tone{45} => \IPAChar \tone{45}
+	  -- \tone{12} => \IPAChar \tone{12}
+	  -- \tone{454} => \IPAChar \tone{454}
+	  (2) TIPA tie bars:
+	  -- \toptiebar{<content>} =>
+	      \begin_inset IPADeco toptiebar
+	      status open
+
+	      \begin_layout Plain Layout
+	      <content>
+	      \end_layout
+
+	      \end_inset
+	  -- \bottomtiebar{<content>} =>
+	      \begin_inset IPADeco bottomtiebar
+	      status open
+
+	      \begin_layout Plain Layout
+	      <content>
+	      \end_layout
+
+	      \end_inset
+
 2012-08-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 437 
 	  Support for the TeX Gyre LaTeX fonts.
