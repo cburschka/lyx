@@ -115,9 +115,22 @@ string Messages::language() const
 }
 
 
-bool Messages::available() const
+bool Messages::available(string const & c)
 {
-	return !language().empty();
+	static string locale_dir = package().locale_dir().toFilesystemEncoding();
+	string code = c;
+	// this loops at most twice
+	while (true) {
+		string const filen = locale_dir + "/" + code 
+			+ "/LC_MESSAGES/"PACKAGE".mo";
+		if (FileName(filen).isReadableFile())
+			return true;
+		if (contains(code, '_'))
+			code = token(code, '_', 0);
+		else return false;
+	}
+	return false;
+
 }
 
 

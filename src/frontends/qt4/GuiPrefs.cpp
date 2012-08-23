@@ -45,6 +45,7 @@
 #include "support/foreach.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 
@@ -2288,9 +2289,13 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		// each language code only once
 		string const name = fromqstr(index.data(Qt::UserRole).toString());
 		Language const * lang = languages.getLanguage(name);
+		if (!lang)
+			continue;
 		// never remove the currently selected language
-		if (lang && name != form->rc().gui_language && name != lyxrc.gui_language)
-			if (!lang->translated() || added.find(lang->code()) != added.end())
+		if (name != form->rc().gui_language 
+		    && name != lyxrc.gui_language
+		    && (!Messages::available(lang->code())
+			|| added.find(lang->code()) != added.end()))
 				continue;
 		added.insert(lang->code());
 		uiLanguageCO->addItem(index.data(Qt::DisplayRole).toString(),

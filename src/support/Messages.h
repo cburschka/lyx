@@ -28,8 +28,8 @@ public:
 	docstring const get(std::string const & msg) const;
 	/// What is the language associated with this translation?
 	std::string language() const;
-	/// Is an (at least partial) translation of this language available?
-	bool available() const;
+	/// Is an (at least partial) translation of language with code \p c available?
+	static bool available(std::string const & c);
 	///
 	static void init();
 
