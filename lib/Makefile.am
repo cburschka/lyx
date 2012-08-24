@@ -1002,6 +1002,13 @@ dist_imagesmath_DATA = \
 
 imagesipadir = $(imagesdir)/ipa
 dist_imagesipa_DATA = \
+	images/ipa/ipamacro-insert_deco_bottomtiebar.png \
+	images/ipa/ipamacro-insert_deco_toptiebar.png \
+	images/ipa/ipamacro-insert_tone-falling.png \
+	images/ipa/ipamacro-insert_tone-high-rising-falling.png \
+	images/ipa/ipamacro-insert_tone-high-rising.png \
+	images/ipa/ipamacro-insert_tone-low-rising.png \
+	images/ipa/ipamacro-insert_tone-rising.png \
 	images/ipa/unicode-insert_0x002e.png \
 	images/ipa/unicode-insert_0x0061.png \
 	images/ipa/unicode-insert_0x0062.png \
