@@ -284,8 +284,23 @@ void InsetIPADeco::latex(otexstream & os, OutputParams const & runparams) const
 int InsetIPADeco::plaintext(odocstream & os,
 			    OutputParams const & runparams) const
 {
-	// FIXME: Any plaintext option here?
-	return InsetCollapsable::plaintext(os, runparams);
+	odocstringstream ods;
+	int h = (int)(InsetCollapsable::plaintext(ods, runparams) / 2);
+	docstring result = ods.str();
+	docstring const before = result.substr(0, h);
+	docstring const after = result.substr(h, result.size());
+	
+	if (params_.type == InsetIPADecoParams::Toptiebar) {
+		os << before;
+		os.put(0x0361);
+		os << after;
+	}
+	else if (params_.type == InsetIPADecoParams::Bottomtiebar) {
+		os << before;
+		os.put(0x035c);
+		os << after;
+	}
+	return result.size();
 }
 
 
@@ -298,7 +313,9 @@ int InsetIPADeco::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetIPADeco::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 {
-	// FIXME: Any xhtml option here?
+	// FIXME: Like in plaintext, the combining characters "&#x361;" (toptiebar)
+	// or "&#x35c;" (bottomtiebar) would need to be inserted just in the mid
+	// of the text string. (How) can this be done with the xhtml stream?
 	return InsetCollapsable::xhtml(xs, runparams);
 }
 
@@ -528,6 +545,7 @@ int InsetIPAChar::docbook(odocstream & /*os*/, OutputParams const &) const
 {
 	switch (kind_) {
 	// FIXME
+	LYXERR0("IPA tone macros not yet implemented with DocBook!");
 	case TONE_FALLING:
 	case TONE_RISING:
 	case TONE_HIGH_RISING:
