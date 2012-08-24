@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-08-21 15:31+0200\n"
+"POT-Creation-Date: 2012-08-24 08:52+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -14273,9 +14273,9 @@ msgstr "IPA Suprasegmentály"
 msgid "IPA Diacritics"
 msgstr "IPA Diakritické Znamienka"
 
-#: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1073
+#: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1075
 msgid "IPA Tones and Word Accents"
-msgstr "IPA Zvuky a Slovné Akcenty"
+msgstr "IPA Tóny a Slovné Prízvuky"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Command Buffer"
@@ -17083,13 +17083,21 @@ msgstr "Znelá alveolárna laterárna verberanta"
 msgid "Simultaneous voiceless postalveolar and velar fricative"
 msgstr "Neznelá palatálnovelárna frikatíva"
 
-#: lib/ui/stdtoolbars.inc:1027
-msgid "Long"
-msgstr "Predĺženie"
+#: lib/ui/stdtoolbars.inc:1024 src/insets/InsetIPAMacro.cpp:54
+msgid "Top tie bar"
+msgstr "Spájajúci oblúk hore"
 
-#: lib/ui/stdtoolbars.inc:1028
+#: lib/ui/stdtoolbars.inc:1025 src/insets/InsetIPAMacro.cpp:55
+msgid "Bottom tie bar"
+msgstr "Spájajúci oblúk dole"
+
+#: lib/ui/stdtoolbars.inc:1029
+msgid "Long"
+msgstr "Trvanie dlhé"
+
+#: lib/ui/stdtoolbars.inc:1030
 msgid "Half-long"
-msgstr "Pol predĺženia"
+msgstr "Polodlhé"
 
 #: lib/ui/stdtoolbars.inc:1029
 msgid "Extra short"
@@ -17099,9 +17107,9 @@ msgstr "Extra krátke"
 msgid "Primary stress"
 msgstr "Hlavný prízvuk"
 
-#: lib/ui/stdtoolbars.inc:1031
+#: lib/ui/stdtoolbars.inc:1033
 msgid "Secondary stress"
-msgstr "Vedĺajší prízvuk"
+msgstr "Vedľajší prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1032
 msgid "Minor (foot) group"
@@ -17111,9 +17119,9 @@ msgstr "Podradená Skupina"
 msgid "Major (intonation) group"
 msgstr "Nadradená (intonačná) skupina"
 
-#: lib/ui/stdtoolbars.inc:1034
+#: lib/ui/stdtoolbars.inc:1036
 msgid "Syllable break"
-msgstr "Ohraničenie slabiky"
+msgstr "Slabičná hranica"
 
 #: lib/ui/stdtoolbars.inc:1035
 msgid "Linking (absence of a break)"
@@ -17139,17 +17147,17 @@ msgstr "Šepkaný hlas"
 msgid "Creaky voiced"
 msgstr "Vŕzganý hlas"
 
-#: lib/ui/stdtoolbars.inc:1044
-msgid "Linguolabial"
-msgstr "Linguolabial"
-
-#: lib/ui/stdtoolbars.inc:1045
-msgid "Dental"
-msgstr "Dentál"
-
 #: lib/ui/stdtoolbars.inc:1046
+msgid "Linguolabial"
+msgstr "Jazyčno-perné"
+
+#: lib/ui/stdtoolbars.inc:1047
+msgid "Dental"
+msgstr "Zubné"
+
+#: lib/ui/stdtoolbars.inc:1048
 msgid "Apical"
-msgstr "Apikál"
+msgstr "Apikálne"
 
 #: lib/ui/stdtoolbars.inc:1047
 msgid "Laminal"
@@ -17295,25 +17303,45 @@ msgstr "Klesajúce"
 msgid "Upstep"
 msgstr "Stúpajúce"
 
-#: lib/ui/stdtoolbars.inc:1086
-msgid "Rising (accent)"
-msgstr "Stúpajúce (akcent)"
-
 #: lib/ui/stdtoolbars.inc:1088
-msgid "Falling (accent)"
-msgstr "Klesajúce (akzent)"
+msgid "Rising (accent)"
+msgstr "Stúpavý prízvuk"
+
+#: lib/ui/stdtoolbars.inc:1089
+msgid "Rising (tone letter)"
+msgstr "Stúpavý tón"
 
 #: lib/ui/stdtoolbars.inc:1090
-msgid "High rising (accent)"
-msgstr "Silne stúpajúce (akcent)"
+msgid "Falling (accent)"
+msgstr "Klesavý prízvuk"
+
+#: lib/ui/stdtoolbars.inc:1091
+msgid "Falling (tone letter)"
+msgstr "Klesavý tón"
 
 #: lib/ui/stdtoolbars.inc:1092
-msgid "Low rising (accent)"
-msgstr "Slabo stúpajúce (akcent)"
+msgid "High rising (accent)"
+msgstr "Silne stúpavý prízvuk"
+
+#: lib/ui/stdtoolbars.inc:1093
+msgid "High rising (tone letter)"
+msgstr "Silne stúpavý tón"
 
 #: lib/ui/stdtoolbars.inc:1094
+msgid "Low rising (accent)"
+msgstr "Slabo stúpavý prízvuk"
+
+#: lib/ui/stdtoolbars.inc:1095
+msgid "Low rising (tone letter)"
+msgstr "Silne klesavý tón"
+
+#: lib/ui/stdtoolbars.inc:1096
 msgid "Rising-falling (accent)"
-msgstr "Stúpajúce-klesajúce (akcent)"
+msgstr "Stúpavo-klesavý prízvuk"
+
+#: lib/ui/stdtoolbars.inc:1097
+msgid "Rising-falling (tone letter)"
+msgstr "Stúpavo-klesavý tón"
 
 #: lib/ui/stdtoolbars.inc:1096
 msgid "Global rise"
