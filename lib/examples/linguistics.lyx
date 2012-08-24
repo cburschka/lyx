@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 438
 \begin_document
 \begin_header
 \textclass article
@@ -26,7 +26,6 @@ linguistics
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -46,15 +45,21 @@ linguistics
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -832,7 +837,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1271,11 +1276,12 @@ Phonetic Symbols (IPA)
 You do not need the Linguistics module to insert phonetic symbols, this
  is a base functionality of LyX.
  However, since this is frequently used by linguists, we will describe it
- (briefly) in this paper nevertheless.
+ (briefly) in this manual nevertheless.
 \end_layout
 
 \begin_layout Standard
-A prerequisite to use LyX's IPA support is the LaTeX package 
+If you use traditional LaTeX or PDFLaTeX, a prerequisite to use LyX's IPA
+ support is the LaTeX package 
 \emph on
 tipa
 \emph default
@@ -1287,6 +1293,33 @@ key "tipa"
 \end_inset
 
 .
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If you use XeTeX or LuaTeX (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., if you have clicked 
+\begin_inset Quotes eld
+\end_inset
+
+Use non-TeX fonts
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts
+\family default
+), no extra package is needed.
+\end_layout
+
+\end_inset
+
  Additionally, if you want to have instant preview, you should have the
  
 \emph on
@@ -1303,32 +1336,38 @@ key "preview"
 \end_layout
 
 \begin_layout Standard
-Phonetic symbols can be entered via 
+The recommended way to insert phonetic symbols is via 
 \family sans
 Insert\SpecialChar \menuseparator
 Special characters\SpecialChar \menuseparator
 Phonetic symbols.
  
 \family default
-You get a little frame, where you can insert the symbols using the shortcut
- notation which is described in the 
-\emph on
-tipa
-\emph default
- manual.
- Example: 
-\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+This gives you an input box, where you can insert the symbols, and a toolbar
+ opens, which provides the basic set of phonetic symbols (sorted by the
+ IPA categories).
+ Each of the toolbar's panels can be torn off the bar by clicking on the
+ dashed line on its top.
+ This way, you can insert most symbols quite comfortably: 
+\begin_inset IPA
+
+\begin_layout Standard
+[l
+\begin_inset IPADeco bottomtiebar
+status open
+
+\begin_layout Plain Layout
+ai
+\end_layout
+
 \end_inset
 
- (
-\emph on
-tipa
-\emph default
- shortcut notation: 
-\family typewriter
-[Ekspl@"neIS@n
-\family default
-]).
+k ðɪs]
+\end_layout
+
+\end_inset
+
+.
  Given that
 \emph on
  preview-latex
@@ -1339,56 +1378,75 @@ tipa
 Preferences\SpecialChar \menuseparator
 Graphi
 \family default
-cs), you'll get a nice preview as soon as the cursor leaves the frame.
-\end_layout
+cs), you'll get a nice WYSIWYG preview as soon as the cursor leaves the
+ box.
+ Alternatively to the toolbar, you can also insert the symbols directly
+ via the shortcut notation which is described in the 
+\emph on
+tipa
+\emph default
+ manual: here's 
+\begin_inset IPA
 
 \begin_layout Standard
-Furthermore, most IPA glyphs can also be inserted (e.
-\begin_inset space \thinspace{}
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+[@n Iɡ"zA:mpl]
+\end_layout
+
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-via 
+ (
+\emph on
+tipa
+\emph default
+ shortcut notation: 
+\family typewriter
+[@n Iɡ"zA:mpl
+\family default
+]).
+ Furthermore, you can insert symbols via 
 \family sans
 Insert\SpecialChar \menuseparator
 Special characters\SpecialChar \menuseparator
 Symbols\SpecialChar \ldots{}
 
 \family default
-) or pasted directly into LyX: [ɛkspləˈneɪʃən].
+ (which might be useful for symbols that are not yet covered by the toolbar),
+ or you can simply paste unicode-encoded text (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., from other applications) into the box.
+ The output should be equal, no matter what input method you chose.
+\end_layout
+
+\begin_layout Standard
+Note that you can also insert or paste most IPA glyphs outside the specific
+ IPA input box: [əz ʃəʊn hɪə].
  In the output, they will be automatically transformed into the correct
  
 \emph on
 tipa
 \emph default
- macro (if not, please inform me).
- However, please note that the former method produces better output quality
- for two reasons:
-\end_layout
-
-\begin_layout Enumerate
-direct input might result in a mix of fonts (in the above example, the latin
- characters are taken from the base font, the IPA glyphs from the IPA font,
- whereas 
-\family sans
-Insert\SpecialChar \menuseparator
-Special characters\SpecialChar \menuseparator
-Phonetic symbol
-\family default
-s uses the IPA font for all characters)
-\end_layout
-
-\begin_layout Enumerate
-the letter kerning is not preserved
-\end_layout
-
-\begin_layout Standard
-So unless you only need to insert single IPA characters, the former method
- is recommended, and it's worth learning the (pretty intuitive) IPA shortcut
- notation.
+ macro (if not, please inform us).
+ However, please note that this method produces inferior output quality,
+ since it will most likely result in a mix of fonts (the latin characters
+ are taken from the base document font, the IPA glyphs from the IPA font).
+ Within the IPA input box, on the other hand, the IPA font is used for all
+ characters.
+ So unless you only need to insert single IPA characters, this method is
+ highly recommended.
 \end_layout
 
 \begin_layout Section

@@ -134,6 +134,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller" 
 \author 5863208 "ab" 
 \author 2090807402 "usti" 
 \end_header
@@ -39623,10 +39624,31 @@ Single
 \begin_inset space ~
 \end_inset
 
-Quote Inserts this quote: 
+Quote Inserts 
+\change_deleted -712698321 1345809482
+this
+\change_inserted -712698321 1345809484
+a single
+\change_unchanged
+ quote
+\change_deleted -712698321 1345809487
+: 
 \begin_inset Quotes ers
 \end_inset
 
+
+\change_inserted -712698321 1345809513
+ in the quotation marks style selected in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ dialog under 
+\family sans
+Language
+\family default
+.
+\change_unchanged
 
 \end_layout
 
@@ -39682,9 +39704,36 @@ Language ! Phonetic symbols
 
 \end_inset
 
-Creates a formula with a so called tipa inset.
- Here you can insert commands to create IPA phonetic symbols.
- For this feature you must have the LaTeX-package 
+
+\change_deleted -712698321 1345808954
+Creates a formula with a so called tipa inset
+\change_inserted -712698321 1345808969
+Inserts a box where
+\change_deleted -712698321 1345809001
+.
+ Here
+\change_unchanged
+ you can insert 
+\change_deleted -712698321 1345809047
+commands to create IPA phonetic 
+\change_unchanged
+symbols
+\change_inserted -712698321 1345809189
+ from the International Phonetic Alphabet (IPA) and opens a toolbar which
+ provides a large set of these symbols
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1345809068
+For
+\change_inserted -712698321 1345809068
+To use
+\change_unchanged
+ this feature 
+\change_inserted -712698321 1345809224
+with traditional LaTeX 
+\change_unchanged
+you must have the LaTeX-package 
 \series bold
 tipa
 \series default
@@ -39702,8 +39751,15 @@ LaTeX-packages ! tipa
 \begin_inset Newline newline
 \end_inset
 
-For more information about this feature we refer you to the documentation
- of 
+
+\change_deleted -712698321 1345809282
+For m
+\change_inserted -712698321 1345809283
+M
+\change_unchanged
+ore information about this feature 
+\change_deleted -712698321 1345809286
+we refer you to the documentation of 
 \series bold
 tipa, 
 \begin_inset CommandInset citation
@@ -39729,6 +39785,16 @@ http://wiki.lyx.org/LyX/LinguistLyX
 
 \end_inset
 
+
+\change_inserted -712698321 1345809397
+can be found in the Linguistics manual (
+\family sans
+Help\SpecialChar \menuseparator
+Specific Manuals\SpecialChar \menuseparator
+Linguistics Manual
+\family default
+).
+\change_unchanged
 
 \end_layout
 

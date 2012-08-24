@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 438
 \begin_document
 \begin_header
 \textclass article
@@ -26,7 +26,6 @@ linguistics
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -46,15 +45,21 @@ linguistics
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Stichwortverzeichnis
 \shortcut idx
@@ -873,7 +878,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1345,7 +1350,8 @@ Um phonetische Zeichen einzugeben, brauchen Sie das Linguistikmodul nicht.
 \end_layout
 
 \begin_layout Standard
-Um LyX' IPA-Funktion zu benutzen, müssen Sie das Paket 
+Um LyX' IPA-Funktion mit klassischem LaTeX oder PDFLaTeX zu benutzen, müssen
+ Sie das Paket 
 \emph on
 tipa
 \emph default
@@ -1357,6 +1363,29 @@ key "tipa"
 \end_inset
 
  installiert haben.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wenn Sie XeTeX oder LuaTeX verwenden (und 
+\begin_inset Quotes gld
+\end_inset
+
+Nicht-TeX-Schriften verwenden
+\begin_inset Quotes grd
+\end_inset
+
+ in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Schriften
+\family default
+ aktiviert haben), brauchen Sie kein zusätzliches Paket.
+\end_layout
+
+\end_inset
+
  Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie
  weiterhin das 
 \emph on
@@ -1381,33 +1410,31 @@ Sonderzeichen\SpecialChar \menuseparator
 Phonetische Symbole 
 \family default
 aktivieren.
- Es wird ein kleiner umrahmter Bereich eingefügt, in den Sie die Zeichen
- mithilfe der Kurznotation eingeben können, die im 
-\emph on
-tipa
-\emph default
--Handbuch erläutert wird.
- Ein Beispiel: 
-\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+ Es wird ein kleiner umrahmter Eingabebereich eingefügt und eine Symbolleiste
+ aktiviert, die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert)
+ bereitstellt.
+ Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte
+ Linie abgetrennt werden.
+ Dadurch kann phonetische Notation recht komfortabel eingegeben werden:
+ 
+\begin_inset IPA
+
+\begin_layout Standard
+[ˈɛtva zo:]
+\end_layout
+
 \end_inset
 
- (
-\emph on
-tipa
-\emph default
--Kurznotation: 
-\family typewriter
-[Ekspl@"neIS@n
-\family default
-]).
+.
  Wenn
 \emph on
  preview-lat
-\family sans
 \emph default
 e
-\family default
-x installiert ist und Sie weiterhin in
+\emph on
+x
+\emph default
+ installiert ist und Sie weiterhin in
 \family sans
  Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
@@ -1424,65 +1451,62 @@ Sofortige Vorschau
 
  aktiviert haben, zeigt LyX eine schöne WYSIWYG-Vorschau der Notation an,
  sobald der Cursor den IPA-Bereich verlässt.
-\end_layout
+ Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe
+ der Kurznotation eingeben können, die im 
+\emph on
+tipa
+\emph default
+-Handbuch erläutert wird: hier eine 
+\begin_inset IPA
 
 \begin_layout Standard
-Alternativ können die meisten IPA-Zeichen auch direkt eingegeben (z.
-\begin_inset space \thinspace{}
+[kOst"pro:b@]
+\end_layout
+
 \end_inset
 
-B.
- über 
+ (
+\emph on
+tipa
+\emph default
+-Kurznotation: 
+\family typewriter
+[kOst"pro:b@
+\family default
+]).
+ Alternativ können Sie die meisten IPA-Zeichen auch über 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Sonderzeichen\SpecialChar \menuseparator
 Symbole\SpecialChar \ldots{}
 
 \family default
-) oder aus einem anderen Dokument kopiert und in LyX eingefügt werden, so
- wie hier: [ɛkspləˈneɪʃən].
+ in das Eingabefeld eingeben oder sie aus einem anderen Dokument kopieren
+ und dort einfügen.
+ Die Ausgabe sollte immer identisch sein, egal welche Eingabemethode Sie
+ wählen.
+\end_layout
+
+\begin_layout Standard
+Bitte beachten Sie, dass Sie die meisten IPA-Zeichen über die zuletzt genannten
+ Methoden auch außerhalb des IPA-Eingabebereichs einfügen können: [zoː viː
+ hiːɐ̯].
  In der Ausgabe werden diese Zeichen dann ebenfalls direkt in die korrekten
  
 \emph on
 tipa
 \emph default
--Makros umgewandelt (lassen Sie es mich wissen, falls das nicht der Fall
+-Makros umgewandelt (lassen Sie es uns wissen, falls das nicht der Fall
  ist).
- Dieses Verfahren erscheint auf den ersten Blick besser, da man die Kurznotation
- nicht lernen muss.
- Es hat aber gravierende Nachteile gegenüber der IPA-Umgebung von LyX:
-\end_layout
-
-\begin_layout Enumerate
-Die direkte Eingabe resultiert häufig in unerwünschter Schriftmischung (im
- Beispiel oben werden die lateinischen Buchstaben aus der Grundschrift,
- die speziellen IPA-Zeichen aber aus der IPA-Schrift genommen, und diese
- beiden Schriften passen nicht notwendigerweise zusammen; 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
-Phonetische Symbole
-\family default
- verwendet dagegen für alle Zeichen dieselbe Schrift, nämlich die mit 
-\emph on
-tipa
-\emph default
- gelieferte IPA-Schrift).
-\end_layout
-
-\begin_layout Enumerate
-Die Zurichtung der Zeichen (
-\emph on
-Kerning
-\emph default
-) wird unter Umständen negativ beeinträchtigt.
-\end_layout
-
-\begin_layout Standard
-Deshalb sollten Sie, wenn Sie nicht wirklich nur Einzelzeichen eingeben,
- unbedingt das erste Vorgehen wählen.
- Die tipa-Kurznotation ist übrigens ziemlich intuitiv.
- Hat man sie einmal gelernt, kann man damit sehr schnell arbeiten.
+ Dieses Verfahren hat aber gravierende Nachteile gegenüber der IPA-Umgebung,
+ denn die direkte Eingabe resultiert in der Regel in unerwünschter Schriftmischu
+ng (die lateinischen Buchstaben werden aus der Grundschrift, die speziellen
+ IPA-Zeichen aber aus der IPA-Schrift genommen, und diese beiden Schriften
+ passen nicht notwendigerweise zusammen).
+ Innerhalb der IPA-Eingabeumgebung wird dagegen für alle Zeichen dieselbe
+ Schrift verwendet.
+ Deshalb sollten Sie, wenn Sie nicht wirklich nur Einzelzeichen eingeben,
+ unbedingt dieses Vorgehen wählen.
 \end_layout
 
 \begin_layout Section
@@ -1508,7 +1532,6 @@ key "linguistlyx"
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "covington"
@@ -1530,7 +1553,6 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "csquotes"
@@ -1552,7 +1574,6 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
@@ -1574,7 +1595,6 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "float"
@@ -1596,7 +1616,6 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "linguistlyx"
@@ -1620,7 +1639,6 @@ http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "preview"
@@ -1642,7 +1660,6 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
