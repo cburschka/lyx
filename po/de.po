@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-08-21 16:55+0200\n"
-"PO-Revision-Date: 2012-08-21 18:12+0200\n"
+"POT-Creation-Date: 2012-08-24 08:13+0200\n"
+"PO-Revision-Date: 2012-08-24 08:24+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1893,8 +1893,8 @@ msgstr "Den Abstand auch nach einem Zeilenumbruch einfügen"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:207
-#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:366
-#: lib/layouts/stdinsets.inc:369 lib/layouts/minimalistic.module:26
+#: lib/layouts/amsdefs.inc:153 lib/layouts/stdinsets.inc:376
+#: lib/layouts/stdinsets.inc:379 lib/layouts/minimalistic.module:26
 msgid "URL"
 msgstr "URL"
 
@@ -2262,8 +2262,8 @@ msgstr "Geben Sie hier die Listings-Parameter ein."
 msgid "Feedback window"
 msgstr "Feedback-Fenster"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:192
-#: lib/layouts/stdinsets.inc:198 src/insets/InsetCaption.cpp:332
+#: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:202
+#: lib/layouts/stdinsets.inc:208 src/insets/InsetCaption.cpp:332
 #: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
 msgid "Listing"
 msgstr "Listing"
@@ -2963,7 +2963,7 @@ msgstr "Längste &Marke"
 msgid "Line &spacing"
 msgstr "Zeilen&abstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1850
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1857
 #: src/frontends/qt4/GuiDocument.cpp:742
 msgid "Single"
 msgstr "Einfach"
@@ -2972,7 +2972,7 @@ msgstr "Einfach"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1856
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1863
 #: src/frontends/qt4/GuiDocument.cpp:746
 msgid "Double"
 msgstr "Doppelt"
@@ -7012,7 +7012,7 @@ msgstr "Präsentation"
 
 #: lib/layouts/beamer.layout:1239 lib/layouts/powerdot.layout:373
 #: lib/layouts/stdfloats.inc:11 lib/ui/stdtoolbars.inc:142
-#: src/insets/Inset.cpp:97
+#: src/insets/Inset.cpp:100
 msgid "Table"
 msgstr "Tabelle"
 
@@ -10321,23 +10321,23 @@ msgstr "Grauschrift"
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:180 lib/layouts/stdinsets.inc:186
+#: lib/layouts/stdinsets.inc:190 lib/layouts/stdinsets.inc:196
 msgid "Listings[[List of Listings]]"
 msgstr "Programm-Listings"
 
-#: lib/layouts/stdinsets.inc:204 src/frontends/qt4/GuiDocument.cpp:1406
+#: lib/layouts/stdinsets.inc:214 src/frontends/qt4/GuiDocument.cpp:1406
 msgid "Listings[[inset]]"
 msgstr "Programm-Listings"
 
-#: lib/layouts/stdinsets.inc:237
+#: lib/layouts/stdinsets.inc:247
 msgid "Idx"
 msgstr "Stichwort"
 
-#: lib/layouts/stdinsets.inc:393
+#: lib/layouts/stdinsets.inc:403
 msgid "opt"
 msgstr "Opt"
 
-#: lib/layouts/stdinsets.inc:474
+#: lib/layouts/stdinsets.inc:484
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -12743,17 +12743,17 @@ msgid "Justified Line Break|J"
 msgstr "Rechtsbündiger Zeilenumbruch|b"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1241 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1280 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1246 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1285 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:105 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1194 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1233 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Einfügen"
@@ -14473,15 +14473,15 @@ msgstr "IPA: Vokale"
 msgid "IPA Other Symbols"
 msgstr "IPA: Andere Symbole"
 
-#: lib/ui/stdtoolbars.inc:218 lib/ui/stdtoolbars.inc:1026
+#: lib/ui/stdtoolbars.inc:218 lib/ui/stdtoolbars.inc:1028
 msgid "IPA Suprasegmentals"
 msgstr "IPA: Suprasegmentalia"
 
-#: lib/ui/stdtoolbars.inc:219 lib/ui/stdtoolbars.inc:1038
+#: lib/ui/stdtoolbars.inc:219 lib/ui/stdtoolbars.inc:1040
 msgid "IPA Diacritics"
 msgstr "IPA: Diakritika"
 
-#: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1073
+#: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1075
 msgid "IPA Tones and Word Accents"
 msgstr "IPA: Ton- und Wortakzentzeichen"
 
@@ -17293,243 +17293,271 @@ msgstr "Stimmhafter alveolarer lateraler Flap"
 msgid "Simultaneous voiceless postalveolar and velar fricative"
 msgstr "Stimmmloser gleichzeitig postalveolarer und velarer Frikativ"
 
-#: lib/ui/stdtoolbars.inc:1027
+#: lib/ui/stdtoolbars.inc:1024
+msgid "Top tie bar"
+msgstr "Bindebogen oben"
+
+#: lib/ui/stdtoolbars.inc:1025
+msgid "Bottom tie bar"
+msgstr "Bindebogen unten"
+
+#: lib/ui/stdtoolbars.inc:1029
 msgid "Long"
 msgstr "Längung"
 
-#: lib/ui/stdtoolbars.inc:1028
+#: lib/ui/stdtoolbars.inc:1030
 msgid "Half-long"
 msgstr "Halbe Längung"
 
-#: lib/ui/stdtoolbars.inc:1029
+#: lib/ui/stdtoolbars.inc:1031
 msgid "Extra short"
 msgstr "Extrakurz"
 
-#: lib/ui/stdtoolbars.inc:1030
+#: lib/ui/stdtoolbars.inc:1032
 msgid "Primary stress"
 msgstr "Hauptbetonung"
 
-#: lib/ui/stdtoolbars.inc:1031
+#: lib/ui/stdtoolbars.inc:1033
 msgid "Secondary stress"
 msgstr "Nebenbetonung:"
 
-#: lib/ui/stdtoolbars.inc:1032
+#: lib/ui/stdtoolbars.inc:1034
 msgid "Minor (foot) group"
 msgstr "Untergeordnete Gruppe"
 
-#: lib/ui/stdtoolbars.inc:1033
+#: lib/ui/stdtoolbars.inc:1035
 msgid "Major (intonation) group"
 msgstr "Übergeordnete (Intonations-)Gruppe "
 
-#: lib/ui/stdtoolbars.inc:1034
+#: lib/ui/stdtoolbars.inc:1036
 msgid "Syllable break"
 msgstr "Silbengrenze"
 
-#: lib/ui/stdtoolbars.inc:1035
+#: lib/ui/stdtoolbars.inc:1037
 msgid "Linking (absence of a break)"
 msgstr "Verbindung (Abwesenheit einer Pause) "
 
-#: lib/ui/stdtoolbars.inc:1039
+#: lib/ui/stdtoolbars.inc:1041
 msgid "Voiceless"
 msgstr "Stimmlos"
 
-#: lib/ui/stdtoolbars.inc:1040
+#: lib/ui/stdtoolbars.inc:1042
 msgid "Voiceless (above)"
 msgstr "Stimmlos (oberhalb)"
 
-#: lib/ui/stdtoolbars.inc:1041
+#: lib/ui/stdtoolbars.inc:1043
 msgid "Voiced"
 msgstr "Stimmhaft"
 
-#: lib/ui/stdtoolbars.inc:1042
+#: lib/ui/stdtoolbars.inc:1044
 msgid "Breathy voiced"
 msgstr "Gehauchte Stimme"
 
-#: lib/ui/stdtoolbars.inc:1043
+#: lib/ui/stdtoolbars.inc:1045
 msgid "Creaky voiced"
 msgstr "Knarrstimme"
 
-#: lib/ui/stdtoolbars.inc:1044
+#: lib/ui/stdtoolbars.inc:1046
 msgid "Linguolabial"
 msgstr "Lingolabial"
 
-#: lib/ui/stdtoolbars.inc:1045
+#: lib/ui/stdtoolbars.inc:1047
 msgid "Dental"
 msgstr "Dental"
 
-#: lib/ui/stdtoolbars.inc:1046
+#: lib/ui/stdtoolbars.inc:1048
 msgid "Apical"
 msgstr "Apikal"
 
-#: lib/ui/stdtoolbars.inc:1047
+#: lib/ui/stdtoolbars.inc:1049
 msgid "Laminal"
 msgstr "Laminal"
 
-#: lib/ui/stdtoolbars.inc:1048
+#: lib/ui/stdtoolbars.inc:1050
 msgid "Aspirated"
 msgstr "Aspiriert"
 
-#: lib/ui/stdtoolbars.inc:1049
+#: lib/ui/stdtoolbars.inc:1051
 msgid "More rounded"
 msgstr "Mehr gerundet"
 
-#: lib/ui/stdtoolbars.inc:1050
+#: lib/ui/stdtoolbars.inc:1052
 msgid "Less rounded"
 msgstr "Weniger gerundet"
 
-#: lib/ui/stdtoolbars.inc:1051
+#: lib/ui/stdtoolbars.inc:1053
 msgid "Advanced"
 msgstr "Vorgelagert "
 
-#: lib/ui/stdtoolbars.inc:1052
+#: lib/ui/stdtoolbars.inc:1054
 msgid "Retracted"
 msgstr "Zurückgelagert"
 
-#: lib/ui/stdtoolbars.inc:1053
+#: lib/ui/stdtoolbars.inc:1055
 msgid "Centralized"
 msgstr "Zentralisiert"
 
-#: lib/ui/stdtoolbars.inc:1054
+#: lib/ui/stdtoolbars.inc:1056
 msgid "Mid-centralized"
 msgstr "Mitten-zentralisiert"
 
-#: lib/ui/stdtoolbars.inc:1055
+#: lib/ui/stdtoolbars.inc:1057
 msgid "Syllabic"
 msgstr "Silbisch"
 
-#: lib/ui/stdtoolbars.inc:1056
+#: lib/ui/stdtoolbars.inc:1058
 msgid "Non-syllabic"
 msgstr "Nicht-silbisch"
 
-#: lib/ui/stdtoolbars.inc:1057
+#: lib/ui/stdtoolbars.inc:1059
 msgid "Rhoticity"
 msgstr "Rhotisch"
 
-#: lib/ui/stdtoolbars.inc:1058
+#: lib/ui/stdtoolbars.inc:1060
 msgid "Labialized"
 msgstr "Labialisiert"
 
-#: lib/ui/stdtoolbars.inc:1059
+#: lib/ui/stdtoolbars.inc:1061
 msgid "Palatized"
 msgstr "Palatalisiert"
 
-#: lib/ui/stdtoolbars.inc:1060
+#: lib/ui/stdtoolbars.inc:1062
 msgid "Velarized"
 msgstr "Velarisiert"
 
-#: lib/ui/stdtoolbars.inc:1061
+#: lib/ui/stdtoolbars.inc:1063
 msgid "Pharyngialized"
 msgstr "Pharyngalisiert"
 
-#: lib/ui/stdtoolbars.inc:1062
+#: lib/ui/stdtoolbars.inc:1064
 msgid "Velarized or pharyngialized"
 msgstr "Velarisiert oder pharyngalisiert"
 
-#: lib/ui/stdtoolbars.inc:1063
+#: lib/ui/stdtoolbars.inc:1065
 msgid "Raised"
 msgstr "Angehoben"
 
-#: lib/ui/stdtoolbars.inc:1064
+#: lib/ui/stdtoolbars.inc:1066
 msgid "Lowered"
 msgstr "Abgesenkt"
 
-#: lib/ui/stdtoolbars.inc:1065
+#: lib/ui/stdtoolbars.inc:1067
 msgid "Advanced tongue root"
 msgstr "Vorverlagerte Zungenwurzel"
 
-#: lib/ui/stdtoolbars.inc:1066
+#: lib/ui/stdtoolbars.inc:1068
 msgid "Retracted tongue root"
 msgstr "Zurückverlagerte Zungenwurzel"
 
-#: lib/ui/stdtoolbars.inc:1067
+#: lib/ui/stdtoolbars.inc:1069
 msgid "Nasalized"
 msgstr "Nasalisiert"
 
-#: lib/ui/stdtoolbars.inc:1068
+#: lib/ui/stdtoolbars.inc:1070
 msgid "Nasal release"
 msgstr "Nasale Verschlusslösung"
 
-#: lib/ui/stdtoolbars.inc:1069
+#: lib/ui/stdtoolbars.inc:1071
 msgid "Lateral release"
 msgstr "Laterale Verschlusslösung"
 
-#: lib/ui/stdtoolbars.inc:1070
+#: lib/ui/stdtoolbars.inc:1072
 msgid "No audible release"
 msgstr "Keine hörbare Verschlusslösung "
 
-#: lib/ui/stdtoolbars.inc:1074
+#: lib/ui/stdtoolbars.inc:1076
 msgid "Extra high (accent)"
 msgstr "Extrahohes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1075
+#: lib/ui/stdtoolbars.inc:1077
 msgid "Extra high (tone letter)"
 msgstr "Extrahohes Level (Tonzeichen)"
 
-#: lib/ui/stdtoolbars.inc:1076
+#: lib/ui/stdtoolbars.inc:1078
 msgid "High (accent)"
 msgstr "Hohes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1077
+#: lib/ui/stdtoolbars.inc:1079
 msgid "High (tone letter)"
 msgstr "Hohes Level (Tonzeichen)"
 
-#: lib/ui/stdtoolbars.inc:1078
+#: lib/ui/stdtoolbars.inc:1080
 msgid "Mid (accent)"
 msgstr "Mittleres Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1079
+#: lib/ui/stdtoolbars.inc:1081
 msgid "Mid (tone letter)"
 msgstr "Mittleres Level (Tonzeichen)"
 
-#: lib/ui/stdtoolbars.inc:1080
+#: lib/ui/stdtoolbars.inc:1082
 msgid "Low (accent)"
 msgstr "Tiefes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1081
+#: lib/ui/stdtoolbars.inc:1083
 msgid "Low (tone letter)"
 msgstr "Tiefes Level (Tonzeichen)"
 
-#: lib/ui/stdtoolbars.inc:1082
+#: lib/ui/stdtoolbars.inc:1084
 msgid "Extra low (accent)"
 msgstr "Extratiefes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1083
+#: lib/ui/stdtoolbars.inc:1085
 msgid "Extra low (tone letter)"
 msgstr "Extratiefes Level (Tonzeichen)"
 
-#: lib/ui/stdtoolbars.inc:1084
+#: lib/ui/stdtoolbars.inc:1086
 msgid "Downstep"
 msgstr "Absteigend"
 
-#: lib/ui/stdtoolbars.inc:1085
+#: lib/ui/stdtoolbars.inc:1087
 msgid "Upstep"
 msgstr "Ansteigend"
 
-#: lib/ui/stdtoolbars.inc:1086
+#: lib/ui/stdtoolbars.inc:1088
 msgid "Rising (accent)"
 msgstr "Ansteigendes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1088
+#: lib/ui/stdtoolbars.inc:1089
+msgid "Rising (tone letter)"
+msgstr "Ansteigendes Level (Tonzeichen)"
+
+#: lib/ui/stdtoolbars.inc:1090
 msgid "Falling (accent)"
 msgstr "Fallendes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1090
+#: lib/ui/stdtoolbars.inc:1091
+msgid "Falling (tone letter)"
+msgstr "Fallendes Level (Tonzeichen)"
+
+#: lib/ui/stdtoolbars.inc:1092
 msgid "High rising (accent)"
 msgstr "Stark ansteigendes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1092
+#: lib/ui/stdtoolbars.inc:1093
+msgid "High rising (tone letter)"
+msgstr "Stark ansteigendes Level (Tonzeichen)"
+
+#: lib/ui/stdtoolbars.inc:1094
 msgid "Low rising (accent)"
 msgstr "Schwach ansteigendes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1094
+#: lib/ui/stdtoolbars.inc:1095
+msgid "Low rising (tone letter)"
+msgstr "Schwach ansteigendes Level (Tonzeichen)"
+
+#: lib/ui/stdtoolbars.inc:1096
 msgid "Rising-falling (accent)"
 msgstr "Ansteigend-abnehmendes Level (Akzent)"
 
-#: lib/ui/stdtoolbars.inc:1096
+#: lib/ui/stdtoolbars.inc:1097
+msgid "Rising-falling (tone letter)"
+msgstr "Ansteigend-abnehmendes Level (Akzent)"
+
+#: lib/ui/stdtoolbars.inc:1098
 msgid "Global rise"
 msgstr "Global Anstieg"
 
-#: lib/ui/stdtoolbars.inc:1097
+#: lib/ui/stdtoolbars.inc:1099
 msgid "Global fall"
 msgstr "Global Abfall"
 
@@ -18180,7 +18208,7 @@ msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
 
-#: src/Buffer.cpp:834 src/Text.cpp:511
+#: src/Buffer.cpp:834 src/Text.cpp:518
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
@@ -19456,12 +19484,12 @@ msgstr "Unbekannter Zweig"
 msgid "&Don't Add"
 msgstr "&Nicht hinzufügen"
 
-#: src/CutAndPaste.cpp:662 src/Text.cpp:390
+#: src/CutAndPaste.cpp:662 src/Text.cpp:391
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Der Absatzstil `%1$s' wurde nicht gefunden."
 
-#: src/CutAndPaste.cpp:664 src/Text.cpp:392
+#: src/CutAndPaste.cpp:664 src/Text.cpp:393
 msgid "Layout Not Found"
 msgstr "Absatzstil nicht gefunden"
 
@@ -20720,24 +20748,24 @@ msgstr "Speicherproblem"
 msgid "Paragraph not properly initialized"
 msgstr "Absatz nicht richtig initialisiert"
 
-#: src/Text.cpp:417
+#: src/Text.cpp:418
 msgid "Unknown Inset"
 msgstr "Unbekannte Einfügung"
 
-#: src/Text.cpp:498
+#: src/Text.cpp:505
 msgid "Change tracking error"
 msgstr "Fehler der Änderungsverfolgung"
 
-#: src/Text.cpp:499
+#: src/Text.cpp:506
 #, c-format
 msgid "Unknown author index for change: %1$d\n"
 msgstr "Unbekannter Autor-Index für die Einfügung: %1$d\n"
 
-#: src/Text.cpp:510
+#: src/Text.cpp:517
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/Text.cpp:973
+#: src/Text.cpp:980
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -20745,67 +20773,67 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/Text.cpp:981
+#: src/Text.cpp:988
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/Text.cpp:1816
+#: src/Text.cpp:1823
 msgid "[Change Tracking] "
 msgstr "[Änderungsverfolgung] "
 
-#: src/Text.cpp:1822
+#: src/Text.cpp:1829
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1833
 msgid " at "
 msgstr " am "
 
-#: src/Text.cpp:1836
+#: src/Text.cpp:1843
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1848
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/Text.cpp:1847
+#: src/Text.cpp:1854
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:1853 src/frontends/qt4/GuiDocument.cpp:744
+#: src/Text.cpp:1860 src/frontends/qt4/GuiDocument.cpp:744
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/Text.cpp:1859
+#: src/Text.cpp:1866
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:1868
+#: src/Text.cpp:1875
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Text.cpp:1869
+#: src/Text.cpp:1876
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:1870
+#: src/Text.cpp:1877
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1871
+#: src/Text.cpp:1878
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1877
+#: src/Text.cpp:1884
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:1879
+#: src/Text.cpp:1886
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -20821,39 +20849,39 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/Text3.cpp:194
+#: src/Text3.cpp:195
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/Text3.cpp:196
+#: src/Text3.cpp:197
 msgid "No valid math formula"
 msgstr "Keine gültige Matheformel"
 
-#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:205 src/mathed/InsetMathNest.cpp:1029
 msgid "Already in regular expression mode"
 msgstr "Bereits im Regexp-Modus"
 
-#: src/Text3.cpp:217
+#: src/Text3.cpp:218
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1306
+#: src/Text3.cpp:1345
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1307
+#: src/Text3.cpp:1346
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1783 src/frontends/qt4/GuiApplication.cpp:1454
+#: src/Text3.cpp:1822 src/frontends/qt4/GuiApplication.cpp:1454
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:1932 src/Text3.cpp:1944
+#: src/Text3.cpp:1971 src/Text3.cpp:1983
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2151 src/Text3.cpp:2162
+#: src/Text3.cpp:2190 src/Text3.cpp:2201
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -21707,7 +21735,7 @@ msgstr "Breite"
 msgid "Makebox"
 msgstr "Makebox"
 
-#: src/frontends/qt4/GuiBranches.cpp:53 src/insets/Inset.cpp:108
+#: src/frontends/qt4/GuiBranches.cpp:53 src/insets/Inset.cpp:111
 msgid "Branch"
 msgstr "Zweig"
 
@@ -24457,23 +24485,23 @@ msgstr "TeX-Code"
 msgid "Float"
 msgstr "Gleitobjekt"
 
-#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:130
+#: src/insets/Inset.cpp:112 src/insets/InsetBox.cpp:130
 msgid "Box"
 msgstr "Box"
 
-#: src/insets/Inset.cpp:111
+#: src/insets/Inset.cpp:114
 msgid "Horizontal Space"
 msgstr "Horizontaler Abstand"
 
-#: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:112
+#: src/insets/Inset.cpp:115 src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
 msgstr "Vertikaler Abstand"
 
-#: src/insets/Inset.cpp:115
+#: src/insets/Inset.cpp:118
 msgid "Info"
 msgstr "Info"
 
-#: src/insets/Inset.cpp:160
+#: src/insets/Inset.cpp:163
 msgid "Horizontal Math Space"
 msgstr "Horizontaler Mathe-Abstand"
 
