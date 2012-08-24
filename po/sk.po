@@ -17127,33 +17127,33 @@ msgstr "Slabičná hranica"
 msgid "Linking (absence of a break)"
 msgstr "Spoj (neprítomnosť pauzy)"
 
-#: lib/ui/stdtoolbars.inc:1039
-msgid "Voiceless"
-msgstr "Neznelá"
-
-#: lib/ui/stdtoolbars.inc:1040
-msgid "Voiceless (above)"
-msgstr "Neznelá (ponad)"
-
 #: lib/ui/stdtoolbars.inc:1041
-msgid "Voiced"
-msgstr "Znelá"
+msgid "Voiceless"
+msgstr "Neznelo"
 
 #: lib/ui/stdtoolbars.inc:1042
-msgid "Breathy voiced"
-msgstr "Šepkaný hlas"
+msgid "Voiceless (above)"
+msgstr "Neznelo (ponad)"
 
 #: lib/ui/stdtoolbars.inc:1043
+msgid "Voiced"
+msgstr "Znelo"
+
+#: lib/ui/stdtoolbars.inc:1044
+msgid "Breathy voiced"
+msgstr "Šepkaným hlasom"
+
+#: lib/ui/stdtoolbars.inc:1045
 msgid "Creaky voiced"
-msgstr "Vŕzganý hlas"
+msgstr "Vŕzganým hlasom"
 
 #: lib/ui/stdtoolbars.inc:1046
 msgid "Linguolabial"
-msgstr "Jazyčno-perné"
+msgstr "Jazyčno-perne"
 
 #: lib/ui/stdtoolbars.inc:1047
 msgid "Dental"
-msgstr "Zubné"
+msgstr "Zubne"
 
 #: lib/ui/stdtoolbars.inc:1048
 msgid "Apical"
@@ -17163,73 +17163,73 @@ msgstr "Apikálne"
 msgid "Laminal"
 msgstr "Hrotom jazyka"
 
-#: lib/ui/stdtoolbars.inc:1048
-msgid "Aspirated"
-msgstr "Vdychovaný"
-
-#: lib/ui/stdtoolbars.inc:1049
-msgid "More rounded"
-msgstr "Viac zaokrúhlené"
-
 #: lib/ui/stdtoolbars.inc:1050
-msgid "Less rounded"
-msgstr "Menej zaokrúhlené"
+msgid "Aspirated"
+msgstr "Vdychovane"
 
 #: lib/ui/stdtoolbars.inc:1051
-msgid "Advanced"
-msgstr "Predložený"
+msgid "More rounded"
+msgstr "Viac zaokrúhlene"
 
 #: lib/ui/stdtoolbars.inc:1052
-msgid "Retracted"
-msgstr "Zatiahnutý"
+msgid "Less rounded"
+msgstr "Menej zaokrúhlene"
 
 #: lib/ui/stdtoolbars.inc:1053
-msgid "Centralized"
-msgstr "Centrovaný"
+msgid "Advanced"
+msgstr "Predložene"
 
 #: lib/ui/stdtoolbars.inc:1054
-msgid "Mid-centralized"
-msgstr "V strede centrovaný"
+msgid "Retracted"
+msgstr "Zatiahnuto"
 
 #: lib/ui/stdtoolbars.inc:1055
-msgid "Syllabic"
-msgstr "Slabičný"
+msgid "Centralized"
+msgstr "Centrované"
 
 #: lib/ui/stdtoolbars.inc:1056
+msgid "Mid-centralized"
+msgstr "V strede centrované"
+
+#: lib/ui/stdtoolbars.inc:1057
+msgid "Syllabic"
+msgstr "Slabičné"
+
+#: lib/ui/stdtoolbars.inc:1058
 msgid "Non-syllabic"
-msgstr "Neslabičný"
+msgstr "Neslabičné"
 
 #: lib/ui/stdtoolbars.inc:1057
 msgid "Rhoticity"
 msgstr "Anglická výslovnosť 'r'"
 
-#: lib/ui/stdtoolbars.inc:1058
-msgid "Labialized"
-msgstr "Labializovaný"
-
-#: lib/ui/stdtoolbars.inc:1059
-msgid "Palatized"
-msgstr "Palatalizovaný"
-
 #: lib/ui/stdtoolbars.inc:1060
-msgid "Velarized"
-msgstr "Velarizovaný"
+msgid "Labialized"
+msgstr "Labializovane"
 
 #: lib/ui/stdtoolbars.inc:1061
-msgid "Pharyngialized"
-msgstr "Faryngalizovaný"
+msgid "Palatized"
+msgstr "Palatalizovane"
 
 #: lib/ui/stdtoolbars.inc:1062
-msgid "Velarized or pharyngialized"
-msgstr "Velarizovaný alebo Faryngalizovaný"
+msgid "Velarized"
+msgstr "Velarizovane"
 
 #: lib/ui/stdtoolbars.inc:1063
-msgid "Raised"
-msgstr "Stúpavá"
+msgid "Pharyngialized"
+msgstr "Faryngalizovane"
 
 #: lib/ui/stdtoolbars.inc:1064
+msgid "Velarized or pharyngialized"
+msgstr "Velarizovane alebo Faryngalizovane"
+
+#: lib/ui/stdtoolbars.inc:1065
+msgid "Raised"
+msgstr "Stúpavé"
+
+#: lib/ui/stdtoolbars.inc:1066
 msgid "Lowered"
-msgstr "Klesavá"
+msgstr "Klesavé"
 
 #: lib/ui/stdtoolbars.inc:1065
 msgid "Advanced tongue root"
@@ -17239,9 +17239,9 @@ msgstr "Predpoložený koreň jazyka"
 msgid "Retracted tongue root"
 msgstr "Vtiahnutý koreň jazyka"
 
-#: lib/ui/stdtoolbars.inc:1067
+#: lib/ui/stdtoolbars.inc:1069
 msgid "Nasalized"
-msgstr "Nazalisovaný"
+msgstr "Nazalisovane"
 
 #: lib/ui/stdtoolbars.inc:1068
 msgid "Nasal release"
@@ -17255,53 +17255,53 @@ msgstr "Laterálne uvolnenie"
 msgid "No audible release"
 msgstr "Nezvučné uvolnenie"
 
-#: lib/ui/stdtoolbars.inc:1074
-msgid "Extra high (accent)"
-msgstr "Extra vysoké (akcent)"
-
-#: lib/ui/stdtoolbars.inc:1075
-msgid "Extra high (tone letter)"
-msgstr "Extra vysoké (značka tónu)"
-
 #: lib/ui/stdtoolbars.inc:1076
-msgid "High (accent)"
-msgstr "Vysoké (akcent)"
+msgid "Extra high (accent)"
+msgstr "Extra vysoký prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1077
-msgid "High (tone letter)"
-msgstr "Vysoké (značka tónu)"
+msgid "Extra high (tone letter)"
+msgstr "Extra vysoký tón"
 
 #: lib/ui/stdtoolbars.inc:1078
-msgid "Mid (accent)"
-msgstr "Stredné (akzent)"
+msgid "High (accent)"
+msgstr "Vysoký prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1079
-msgid "Mid (tone letter)"
-msgstr "Stredné (značka tónu)"
+msgid "High (tone letter)"
+msgstr "Vysoký tón"
 
 #: lib/ui/stdtoolbars.inc:1080
-msgid "Low (accent)"
-msgstr "Nízke (akzent)"
+msgid "Mid (accent)"
+msgstr "Stredný prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1081
-msgid "Low (tone letter)"
-msgstr "Nízke (značka tónu)"
+msgid "Mid (tone letter)"
+msgstr "Stredný tón"
 
 #: lib/ui/stdtoolbars.inc:1082
-msgid "Extra low (accent)"
-msgstr "Extra nízke (akzent)"
+msgid "Low (accent)"
+msgstr "Nízky prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1083
-msgid "Extra low (tone letter)"
-msgstr "Extra nízke (značka tónu)"
+msgid "Low (tone letter)"
+msgstr "Nízky tón"
 
 #: lib/ui/stdtoolbars.inc:1084
-msgid "Downstep"
-msgstr "Klesajúce"
+msgid "Extra low (accent)"
+msgstr "Extra nízky prízvuk"
 
 #: lib/ui/stdtoolbars.inc:1085
+msgid "Extra low (tone letter)"
+msgstr "Extra nízky tón"
+
+#: lib/ui/stdtoolbars.inc:1086
+msgid "Downstep"
+msgstr "Klesajúci"
+
+#: lib/ui/stdtoolbars.inc:1087
 msgid "Upstep"
-msgstr "Stúpajúce"
+msgstr "Stúpajúci"
 
 #: lib/ui/stdtoolbars.inc:1088
 msgid "Rising (accent)"
