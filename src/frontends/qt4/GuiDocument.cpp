@@ -1840,8 +1840,10 @@ void GuiDocument::updateTexFonts()
 	LaTeXFonts::TexFontMap::const_iterator end = texfontmap.end();
 	for (; it != end; ++it) {
 		LaTeXFont lf = it->second;
-		if (lf.name().empty())
-			return;
+		if (lf.name().empty()) {
+			LYXERR0("Error: Unnamed font: " << it->first);
+			continue;
+		}
 		docstring const family = lf.family();
 		docstring guiname = translateIfPossible(lf.guiname());
 		if (!lf.available(ot1()))

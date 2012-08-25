@@ -394,8 +394,14 @@ LaTeXFonts::TexFontMap LaTeXFonts::getLaTeXFonts()
 
 LaTeXFont LaTeXFonts::getLaTeXFont(docstring const & name)
 {
+	if (name == "default")
+		return LaTeXFont();
 	if (texfontmap_.empty())
 		readLaTeXFonts();
+	if (texfontmap_.find(name) == texfontmap_.end()) {
+		LYXERR0("LaTeXFonts::getLaTeXFont: font '" << name << "' not found!");
+		return LaTeXFont();
+	}
 	return texfontmap_[name];
 }
 
