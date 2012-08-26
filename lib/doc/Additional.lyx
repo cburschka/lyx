@@ -7064,7 +7064,21 @@ $$t
 
 \end_inset
 
-: name of the (temporary) exported .tex file
+: name of the (temporary) exported .tex file (without path)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$f
+\end_layout
+
+\end_inset
+
+: name of the (temporary) exported .tex file (including path)
 \end_layout
 
 \begin_layout Itemize

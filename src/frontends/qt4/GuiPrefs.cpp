@@ -407,13 +407,13 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	dviCB->addItem("");
 	dviCB->addItem("xdvi -sourceposition '$$n:\\ $$t' $$o");
 	dviCB->addItem("yap -1 -s \"$$n $$t\" $$o");
-	dviCB->addItem("okular --unique \"file:$$o#src:$$n $$t\"");
+	dviCB->addItem("okular --unique \"$$o#src:$$n $$f\"");
 	dviCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -i %{page+1} $$o\"");
 	pdfCB->addItem("");
 	pdfCB->addItem("CMCDDE SUMATRA control [ForwardSearch(\\\"$$o\\\",\\\"$$t\\\",$$n,0,0,1)]");
 	pdfCB->addItem("SumatraPDF -reuse-instance $$o -forward-search $$t $$n");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
-	pdfCB->addItem("okular --unique \"file:$$o#src:$$n $$t\"");
+	pdfCB->addItem("okular --unique \"$$o#src:$$n $$f\"");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -i %{page+1} $$o\"");
 	pdfCB->addItem("/Applications/Skim.app/Contents/SharedSupport/displayline $$n $$o $$t");
 }
