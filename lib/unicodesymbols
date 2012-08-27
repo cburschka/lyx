@@ -601,11 +601,11 @@
 0x02e2 "\\textsuperscript{s}"     "" "" # MODIFIER LETTER SMALL S
 0x02e3 "\\textsuperscript{x}"     "" "" # MODIFIER LETTER SMALL X
 0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
-0x02e5 "\\tone{55}"               "tipa" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
-0x02e6 "\\tone{44}"               "tipa" "force" # MODIFIER LETTER HIGH TONE BAR
-0x02e7 "\\tone{33}"               "tipa" "force" # MODIFIER LETTER MID TONE BAR
-0x02e8 "\\tone{22}"               "tipa" "force" # MODIFIER LETTER LOW TONE BAR
-0x02e9 "\\tone{11}"               "tipa" "force" # MODIFIER LETTER EXTRA-LOW TONE BAR
+0x02e5 "\\tone{55}"               "tone" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
+0x02e6 "\\tone{44}"               "tone" "force" # MODIFIER LETTER HIGH TONE BAR
+0x02e7 "\\tone{33}"               "tone" "force" # MODIFIER LETTER MID TONE BAR
+0x02e8 "\\tone{22}"               "tone" "force" # MODIFIER LETTER LOW TONE BAR
+0x02e9 "\\tone{11}"               "tone" "force" # MODIFIER LETTER EXTRA-LOW TONE BAR
 #0x02ea ""                         "" "" # MODIFIER LETTER YIN DEPARTING TONE MARK
 #0x02eb ""                         "" "" # MODIFIER LETTER YANG DEPARTING TONE MARK
 0x02ec "\\textsubwedge{ }"        "tipa" "force" # MODIFIER LETTER VOICING
@@ -1041,6 +1041,12 @@
 #0x1d7d ""                         "" "" # LATIN SMALL LETTER P WITH STROKE
 0x1d7e "\\textbaru"               "tipa" "force" # LATIN SMALL CAPITAL LETTER U WITH STROKE
 #0x1d7f ""                         "" "" # LATIN SMALL LETTER UPSILON WITH STROKE
+#
+# Combining Diacritical Marks Supplement
+#
+0x1dc4 "\\texthighrise"            "tipa" "combining,force" # COMBINING MACRON-ACUTE
+0x1dc5 "\\textlowrise"             "tipa" "combining,force" # COMBINING GRAVE-MACRON
+0x1dc8 "\\textrisefall"            "tipa" "combining,force" # COMBINING GRAVE-ACUTE-GRAVE
 #
 # Latin Extended Additional
 #
@@ -1584,6 +1590,7 @@
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
 0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" ""
+0x203f "\\textbottomtiebar{ }"    "tipa" "" # UNDERTIE
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL
@@ -1778,6 +1785,7 @@
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
 0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
+0x2197 "\\textglobrise"           "tipa" "" "" "" # NORTH EAST ARROW
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
 0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # RETURN KEY
 #
@@ -2121,6 +2129,11 @@
 #0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
+#
+# Modifier tone letters
+#
+0xa71b "\\textupstep"              "tipa" "" "" "" # MODIFIER LETTER RAISED UP ARROW
+0xa71c "\\textdownstep"            "tipa" "" "" "" # MODIFIER LETTER RAISED DOWN ARROW
 #
 # ligatures
 #

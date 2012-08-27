@@ -30,6 +30,8 @@ What's new
 
 - Add explicit dvilualatex output format.
 
+- Add support for some IPA diacritics.
+
 
 * TEX2LYX IMPROVEMENTS
 
@@ -105,6 +107,8 @@ What's new
 - Fix forward search with the Okular viewer. If you were affected by this,
   please change the forward search command in Preferences > Output to
   okular --unique "$$o#src:$$n $$f" (as provided now in the dropdown list).
+
+- Fix LaTeX output of IPA tone symbols.
 
 
 * USER INTERFACE
