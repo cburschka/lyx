@@ -31,7 +31,6 @@ What's new
 - Add explicit dvilualatex output format.
 
 
-
 * TEX2LYX IMPROVEMENTS
 
 - The polyglossia/XeTeX language commands are now supported (bug 8212).
@@ -102,6 +101,10 @@ What's new
 - Fix babel call with Arabic (arabi).
 
 - Fix suppression of language package.
+
+- Fix forward search with the Okular viewer. If you were affected by this,
+  please change the forward search command in Preferences > Output to
+  okular --unique "$$o#src:$$n $$f" (as provided now in the dropdown list).
 
 
 * USER INTERFACE

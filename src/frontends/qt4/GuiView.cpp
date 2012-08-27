@@ -3538,6 +3538,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					doc_buffer->absFileName(),
 						"tex")).mangledFileName()
 				: doc_buffer->latexName();
+			string const fulltexname = 
+				support::makeAbsPath(texname, doc_master->temppath()).absFileName();
 			string const mastername =
 				removeExtension(doc_master->latexName());
 			FileName const dviname(addName(path.absFileName(),
@@ -3573,6 +3575,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string texrow = convert<string>(row);
 
 			command = subst(command, "$$n", texrow);
+			command = subst(command, "$$f", fulltexname);
 			command = subst(command, "$$t", texname);
 			command = subst(command, "$$o", outname);
 
