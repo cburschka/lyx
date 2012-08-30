@@ -142,6 +142,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	string const cmd = getCmdName();
 	docstring const data = getEscapedLabel(rp);
 
+	if (rp.inulemcmd)
+		os << "\\mbox{";
+
 	if (cmd == "eqref" && buffer().params().use_refstyle) {
 		os << '(' << from_ascii("\\ref{") << data << from_ascii("})");
 	} 
@@ -159,6 +162,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		p["reference"] = ref;
 		os << p.getCommand(rp);
 	}
+
+	if (rp.inulemcmd)
+		os << "}";
 }
 
 

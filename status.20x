@@ -32,6 +32,9 @@ What's new
 
 - Add support for some IPA diacritics.
 
+- Enclose underlined \ref{} commands in \mbox{} to protect them when
+  using the package soul in place of (or together with) ulem.
+
 
 * TEX2LYX IMPROVEMENTS
 
