@@ -142,6 +142,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	string const cmd = getCmdName();
 	docstring const data = getEscapedLabel(rp);
 
+	if (rp.inulemcmd)
+		os << "\\mbox{";
+
 	if (cmd == "eqref" && buffer().params().use_refstyle) {
 		// we advertise this as printing "(n)", so we'll do that, at least
 		// for refstyle, since refstlye's own \eqref prints, by default,
@@ -163,6 +166,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		p["reference"] = ref;
 		os << p.getCommand(rp);
 	}
+
+	if (rp.inulemcmd)
+		os << "}";
 }
 
 
