@@ -691,9 +691,8 @@ private:
 	bool pressed_;
 	bool started_;
 public:
-	KeyChecker() {
-		pressed_ = false;
-	}
+	KeyChecker() : pressed_(false), started_(false) {}
+
 	void start() {
 		QCoreApplication::instance()->installEventFilter(this);
 		pressed_ = false;
