@@ -159,11 +159,6 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
-# We mimic the autoconf behaviour, e.g write this file at "configure" time
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/installed_translations" ${INSTALLED_LANGUAGES})
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/installed_translations" DESTINATION .)
-
 set(LYX_UPDATED_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
   if(WIN32)
