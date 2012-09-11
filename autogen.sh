@@ -85,7 +85,10 @@ else
 fi
 
 echo "Building po/POTFILES.in..."
-make -s -f po/Rules-lyx srcdir=po top_srcdir=. po/POTFILES.in
+if (! make -s -f po/Rules-lyx srcdir=po top_srcdir=. po/POTFILES.in ); then
+	echo "Building po/POTFILES.in failed -- aborting"
+	exit 1
+fi
 
 echo
 echo 'run "./configure && make"'
