@@ -212,9 +212,9 @@ void GuiTabular::checkEnabled()
 	// decimal alignment is only possible for non-multicol and non-multirow cells
 	if ((multicolumnCB->isChecked() || multirowCB->isChecked())
 		&& hAlignCO->findText(qt_("At Decimal Separator")))
-		hAlignCO->removeItem(3);
+		hAlignCO->removeItem(hAlignCO->findText(qt_("At Decimal Separator")));
 	else if (!multicolumnCB->isChecked() && !multirowCB->isChecked()
-		&& !hAlignCO->findText(qt_("At Decimal Separator")))
+		&& hAlignCO->findText(qt_("At Decimal Separator")) == -1)
 		hAlignCO->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
 	bool const dalign = 
 		hAlignCO->itemData(hAlignCO->currentIndex()).toString() == QString("decimal");
