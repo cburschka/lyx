@@ -1022,8 +1022,9 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 
 void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
-	QObject::disconnect(d.current_work_area_, SIGNAL(busy(bool)),
-		this, SLOT(setBusy(bool)));
+	if (d.current_work_area_)
+		QObject::disconnect(d.current_work_area_, SIGNAL(busy(bool)),
+			this, SLOT(setBusy(bool)));
 	disconnectBuffer();
 	disconnectBufferView();
 	connectBufferView(wa->bufferView());
