@@ -997,8 +997,8 @@ typedef boost::function<int(string const &, string const &, string &)> cmd_helpe
 int parse_dbg(string const & arg, string const &, string &)
 {
 	if (arg.empty()) {
-		lyxerr << to_utf8(_("List of supported debug flags:")) << endl;
-		Debug::showTags(lyxerr);
+		cout << to_utf8(_("List of supported debug flags:")) << endl;
+		Debug::showTags(cout);
 		exit(0);
 	}
 	lyxerr << to_utf8(bformat(_("Setting debug level to %1$s"), from_utf8(arg))) << endl;
@@ -1011,7 +1011,7 @@ int parse_dbg(string const & arg, string const &, string &)
 
 int parse_help(string const &, string const &, string &)
 {
-	lyxerr <<
+	cout <<
 		to_utf8(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
 		  "\t-help              summarize LyX usage\n"
@@ -1054,11 +1054,11 @@ int parse_help(string const &, string const &, string &)
 
 int parse_version(string const &, string const &, string &)
 {
-	lyxerr << "LyX " << lyx_version
+	cout << "LyX " << lyx_version
 	       << " (" << lyx_release_date << ")" << endl;
-	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+	cout << "Built on " << __DATE__ << ", " << __TIME__ << endl;
 
-	lyxerr << lyx_version_info << endl;
+	cout << lyx_version_info << endl;
 	exit(0);
 	return 0;
 }
