@@ -47,9 +47,9 @@ What's new
 
 - Reset only the top-level counter when starting the appendix.
 
-- Show backends, not formats, in View>Source (bug #7652).
+- Show backends, not formats, in menu View->Source (bug #7652).
 
-- Allow native LyX format to be shown in View>Source.
+- Allow native LyX format to be shown in menu View->Source.
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -116,6 +116,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash in text replacement with spell checker (bug 8238).
+
 - Fix various crashes when single document is edited in more windows
   (bug 8203).
 
@@ -134,7 +136,7 @@ What's new
 
 - Fix enumitem module translation (bug #8201).
 
-- Set math display format when showing XHTML in View>Source.
+- Set math display format when showing XHTML in menu View->Source.
 
 - Fix problem with configure.py when the user profile path on Windows
   contains non-ascii characters (bug 8254).
@@ -147,8 +149,6 @@ What's new
 
 - When using a non-default language for the GUI, do not change locale
   settings of child proceses (bug 7741).
-
-- Fix crash in text replacement with spell checker (bug 8238).
 
 
 * DOCUMENTATION AND LOCALIZATION
