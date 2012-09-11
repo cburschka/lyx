@@ -311,8 +311,10 @@ void GuiTabular::checkEnabled()
 	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION)
 		&& longtabular);
 
-	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN) && !dalign);
-	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW) && !dalign);
+	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN)
+		&& !dalign && !multirowCB->isChecked());
+	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW)
+		&& !dalign && !multicolumnCB->isChecked());
 	bool const enable_mr = multirowCB->isChecked();
 	multirowOffsetLA->setEnabled(enable_mr);
 	multirowOffsetED->setEnabled(enable_mr);
