@@ -3,7 +3,7 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by several developers.
 
-# This include files contains all numbered sectionning-related
+# This include file contains all numbered sectionning-related
 # commands that are useful for article-like document classes, but not
 # for letters.
 

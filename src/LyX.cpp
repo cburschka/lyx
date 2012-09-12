@@ -871,7 +871,7 @@ void emergencyCleanup()
 static bool needsUpdate(string const & file)
 {
 	// We cannot initialize configure_script directly because the package
-	// is not initialized yet when  static objects are constructed.
+	// is not initialized yet when static objects are constructed.
 	static FileName configure_script;
 	static bool firstrun = true;
 	if (firstrun) {
@@ -1024,8 +1024,8 @@ int parse_help(string const &, string const &, string &)
 		  "\t-x [--execute] command\n"
 		  "                  where command is a lyx command.\n"
 		  "\t-e [--export] fmt\n"
-		  "                  where fmt is the export format of choice.\n"
-		  "                  Look on Tools->Preferences->File formats->Format\n"
+		  "                  where fmt is the export format of choice. Look in\n"
+		  "                  Tools->Preferences->File Handling->File Formats->Short Name\n"
 		  "                  to get an idea which parameters should be passed.\n"
 		  "                  Note that the order of -e and -x switches matters.\n"
 		  "\t-E [--export-to] fmt filename\n"

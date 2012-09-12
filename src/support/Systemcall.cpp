@@ -430,7 +430,7 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 		return state != Error;
 	} 
 
-	// process events while waiting whith timeout
+	// process events while waiting with timeout
 	QTime timer;
 	timer.start();
 	while (state == waitwhile && state != Error && !timedout) {

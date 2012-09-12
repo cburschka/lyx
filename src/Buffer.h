@@ -84,7 +84,7 @@ typedef std::set<Buffer *> CloneList;
 
 
 /** The buffer object.
- * This is the buffer object. It contains all the informations about
+ * This is the buffer object. It contains all the information about
  * a document loaded into LyX.
  * The buffer object owns the Text (wrapped in an InsetText), which
  * contains the individual paragraphs of the document.
@@ -141,7 +141,7 @@ public:
 	/// isExternallyModified()
 	/**
 	 * timestamp is fast but inaccurate. For example, the granularity
-	 * of timestamp on a FAT filesystem is 2 second. Also, various operations
+	 * of timestamp on a FAT filesystem is 2 seconds. Also, various operations
 	 * may touch the timestamp of a file even when its content is unchanged.
 	 *
 	 * checksum is accurate but slow, which can be a problem when it is

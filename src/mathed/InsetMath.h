@@ -45,7 +45,7 @@ math editor only, it isn't a general LyX inset. It's used to represent all
 the math objects.
 
 Math insets do not know there parents, a cursor position or things
-like that. The are dumb object that are contained in other math insets
+like that. They are dumb objects that are contained in other math insets
 (InsetMathNests, in fact) thus forming a tree. The root of this tree is
 always a InsetMathHull, which provides an interface to the Outer World by
 inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.

@@ -1295,7 +1295,7 @@ void GuiApplication::reconfigure(string const & option)
 	if (ret)
 		Alert::information(_("System reconfiguration failed"),
 			   _("The system reconfiguration has failed.\n"
-				  "Default textclass is used but LyX may "
+				  "Default textclass is used but LyX may\n"
 				  "not be able to work properly.\n"
 				  "Please reconfigure again if needed."));
 	else

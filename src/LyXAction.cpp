@@ -1768,7 +1768,7 @@ void LyXAction::init()
  * \li Notion: Selection can be used to determine the input for the external program.
  * \li Syntax: math-extern <LANG> [<COMMAND>]
  * \li Params: <LANG>: octave|maxima|maple|mathematica|script \n
-                       where "script" stands fot the external script (normalized
+                       where "script" stands for the external script (normalized
                        expression will be passed)
  * \li Origin: Andre, 24 Apr 2001
  * \li Sample: math-extern maple simplify
