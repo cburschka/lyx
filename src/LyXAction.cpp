@@ -527,7 +527,7 @@ void LyXAction::init()
  * \li Notion: It automatically takes the word on the cursor position.
  * \li Syntax: index-insert [<TYPE:Name>]
  * \li Params: <TYPE:Name>: name of the index, if multiple indices are defined.
-               with an empty argument, the default index is selected.
+               With an empty argument, the default index is selected.
  * \li Origin: leeming, 3 Aug 2000
  * \endvar
  */
@@ -537,7 +537,7 @@ void LyXAction::init()
  * \li Action: Inserts list of Index entries on a new page.
  * \li Syntax: index-print [<TYPE:Name>]
  * \li Params: <TYPE:Name>: name of the index, if multiple indices are defined.
-               with an empty argument, the default index is selected.
+               With an empty argument, the default index is selected.
  * \li Origin: Lgb, 27 Feb 1997
  * \endvar
  */
@@ -591,7 +591,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_NOTE_INSERT
- * \li Action: Inserts Note on the current cursor postion,
+ * \li Action: Inserts Note on the current cursor position,
                move selection inside the inset.
  * \li Syntax: note-insert [<TYPE>]
  * \li Params: <TYPE>: <Note|Greyedout|Comment> default: Note
@@ -600,14 +600,14 @@ void LyXAction::init()
 		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_NOTE_NEXT
- * \li Action: Moves the cursor to the begining of next Note inset.
+ * \li Action: Moves the cursor to the beginning of next Note inset.
  * \li Syntax: note-next
  * \endvar
  */
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PHANTOM_INSERT
- * \li Action: Inserts phantom on the current cursor postion,
+ * \li Action: Inserts phantom on the current cursor position,
                move selection inside the inset.
  * \li Syntax: phantom-insert [<TYPE>]
  * \li Params: <TYPE>: <Phantom|HPhantom|VPhantom> default: Phantom
@@ -844,7 +844,7 @@ void LyXAction::init()
 		{ LFUN_WORD_BACKWARD_SELECT, "word-backward-select", ReadOnly | SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_DELETE_BACKWARD
- * \li Action: Deletes characters to the begining of the word (usually the "C+BackSpace" key).
+ * \li Action: Deletes characters to the beginning of the word (usually the "C+BackSpace" key).
  * \li Syntax: word-delete-backward
  * \endvar
  */
@@ -876,7 +876,7 @@ void LyXAction::init()
 		{ LFUN_WORD_FIND_BACKWARD, "word-find-backward", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FIND
- * \li Action: Search for next occurence of a string.
+ * \li Action: Search for next occurrence of a string.
  * \li Syntax: word-find [<DATA>]
  * \li Params: <DATA>: data encoded from Find dialog (see #lyx::find2string()).
                        If no parameter is given, search with last find-dialog
@@ -899,7 +899,7 @@ void LyXAction::init()
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FINDADV
- * \li Action: Search for next occurence of a pattern.
+ * \li Action: Search for next occurrence of a pattern.
  * \li Syntax: word-findadv [<DATA>]
  * \li Params: <DATA>: data encoded from FindAdv dialog (see #lyx::findadv2string()).
                        If no parameter is given, search with last find-dialog
@@ -1150,7 +1150,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN
- * \li Action: Move the cursor to the begining of the (screen) line.
+ * \li Action: Move the cursor to the beginning of the (screen) line.
  * \li Syntax: line-begin
  * \endvar
  */
@@ -1188,7 +1188,7 @@ void LyXAction::init()
 		{ LFUN_LINE_DELETE, "line-delete-forward", Noop, Edit }, // there is no line-delete-backward
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY
- * \li Action: Copies to the clipboard the last edit.
+ * \li Action: Copies the current selection to the clipboard.
  * \li Syntax: copy
  * \endvar
  */
@@ -1410,7 +1410,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_APPLY
  * \li Action: Toggle user-defined (=last-time used) text style.
  * \li Notion: This style is set via #LFUN_TEXTSTYLE_UPDATE, which is
-               automatically trigerred when using Text Style dialog.
+               automatically triggered when using Text Style dialog.
  * \li Syntax: textstyle-apply
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
@@ -1460,7 +1460,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BIBTEX_DATABASE_ADD
  * \li Action: Adds database, which will be used for bibtex citations.
  * \li Notion: Databases are added to the first BibTeX inset
-               (Inset->List/TOC->BibTeX bibliography) found from the cursor postion.
+               (Inset->List/TOC->BibTeX bibliography) found from the cursor position.
  * \li Syntax: bibtex-database-add <DATABASE-NAME>
  * \li Origin: Ale, 30 May 1997
  * \endvar
@@ -1470,7 +1470,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BIBTEX_DATABASE_DEL
  * \li Action: Adds database, which will be used for bibtex citations.
  * \li Notion: Databases are deleted from the first BibTeX inset
-               (Inset->List/TOC->BibTeX bibliography) found from the cursor postion.
+               (Inset->List/TOC->BibTeX bibliography) found from the cursor position.
  * \li Syntax: bibtex-database-del <DATABASE-NAME>
  * \li Origin: Ale, 30 May 1997
  * \endvar
@@ -1948,7 +1948,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UP
- * \li Action: Move the cursor to the next paragraph (or begining of the current one)
+ * \li Action: Move the cursor to the next paragraph (or beginning of the current one)
                in upward direction.
  * \li Syntax: paragraph-up
  * \li Origin: Asger, 1 Oct 1996
@@ -1958,7 +1958,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UP_SELECT
  * \li Action: Move the cursor and select the text to the next paragraph (or
-               begining of the current one) in upward direction.
+               beginning of the current one) in upward direction.
  * \li Syntax: paragraph-up-select
  * \li Origin: Asger, 1 Oct 1996
  * \endvar
@@ -1966,7 +1966,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_UP_SELECT, "paragraph-up-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_DOWN
- * \li Action: Move the cursor to the next paragraph (or begining of the current one)
+ * \li Action: Move the cursor to the next paragraph (or beginning of the current one)
                in downward direction.
  * \li Syntax: paragraph-down
  * \li Origin: Asger, 1 Oct 1996
@@ -1976,7 +1976,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_DOWN_SELECT
  * \li Action: Move the cursor and select the text to the next paragraph (or
-               begining of the current one) in downward direction.
+               beginning of the current one) in downward direction.
  * \li Syntax: paragraph-down-select
  * \li Origin: Asger, 1 Oct 1996
  * \endvar
@@ -2035,7 +2035,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UPDATE
  * \li Action: Updates the values inside the paragraph dialog from the paragraph.
- * \li Notion: This is internal LFUN, not to be used by users. Called internally
+ * \li Notion: This is an internal LFUN, not to be used by users. Called internally
                by #LFUN_DIALOG_UPDATE.
  * \li Origin: leeming, 13 Mar 2003
  * \endvar
@@ -2395,7 +2395,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
  * \li Action: Updates the values inside the dialog from the inset.
- * \li Notion: This is internal LFUN, not to be used by users. Called internally
+ * \li Notion: This is an internal LFUN, not to be used by users. Called internally
                by #LFUN_DIALOG_UPDATE
  * \li Params: <DIALOG-NAME>
  * \li Origin: leeming, 25 Feb 2003
@@ -2410,18 +2410,18 @@ void LyXAction::init()
                listings, note, phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-settings <INSET>
  * \li Params: <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|\n
-                         graphics|href|include|index|index_print|label|line|
+                         graphics|href|include|index|index_print|label|line|\n
                          listings|note|phantom|ref|space|tabular|vspace|wrap>.
  * \endvar
  */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly | AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
- * \li Action: Toggles the collapsable inset at cursor position,
+ * \li Action: Toggles the collapsible inset at cursor position,
                or the inset we are currently in.
  * \li Syntax: inset-toggle [<ARG>]
  * \li Params: <ARG>: <open|close|toggle|assign>. \n
-               open/close/toggle are for collapsable insets. toggle is used when no argument is given.\n
+               open/close/toggle are for collapsible insets. toggle is used when no argument is given.\n
                assign synchronize the branch-inset with activation status of the branch.
                Used for global toggling when changed activation.
  * \li Origin: lasgouttes, 19 Jul 2001
@@ -2554,7 +2554,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_BOOKMARK_GOTO
  * \li Action: Moves the cursor to the numbered bookmark, opening the file
-               if necessary. Note that bookmarsk are saved per-session, not
+               if necessary. Note that bookmarks are saved per-session, not
                per file.
  * \li Notion: Bookmark 0 has a special purpose. It is automatically set \n
                1. to the paragraph you are currently editing \n
@@ -2666,7 +2666,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SPLIT_VIEW
  * \li Action: Creates another split view of current buffer.
- * \li Notion: All split views act in the same way indpendently.
+ * \li Notion: All split views act in the same way independently.
  * \li Syntax: split-view <vertical|horizontal>
  * \li Params: horizontal : The work areas are laid out side by side.\n
                vertical   : The work areas laid out vertically.
@@ -2678,7 +2678,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_CLOSE_TAB_GROUP
  * \li Action: Close the current tab group.
- * \li Notion: This only closes the work areas, not the buffer themselves.
+ * \li Notion: This only closes the work areas, not the buffers themselves.
                The still opened buffers can be visualized in another tab group.
  * \li Syntax: close-tab-group
  * \li Origin: Abdel, 21 Feb 2008
@@ -2687,7 +2687,7 @@ void LyXAction::init()
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
- * \li Action: Shows hidden dialog or create new one for a given function/inset settings etc.
+ * \li Action: Shows hidden dialog or creates new one for a given function/inset settings etc.
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
                compare|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|\n
@@ -2755,7 +2755,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MOUSE_PRESS
  * \li Action: This function is called when mouse button is pressed (inside workarea).
                Action depends on the context.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is an internal LFUN, not to be used by users.
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
@@ -2764,7 +2764,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MOUSE_DOUBLE
  * \li Action: This function is called when double click on mouse button is
                pressed (inside workarea). Action depends on the context.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is an internal LFUN, not to be used by users.
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
@@ -2773,7 +2773,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MOUSE_TRIPLE
  * \li Action: This function is called when triple click on mouse button is
                pressed (inside workarea). Action depends on the context.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is an internal LFUN, not to be used by users.
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
@@ -2782,7 +2782,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MOUSE_MOTION
  * \li Action: This function is called when mouse cursor is moving over the text.
                Action depends on the context.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is an internal LFUN, not to be used by users.
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
@@ -2791,7 +2791,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MOUSE_RELEASE
  * \li Action: This function is called when mouse button is released (inside workarea).
                Action depends on the context.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is an internal LFUN, not to be used by users.
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
@@ -2809,7 +2809,7 @@ void LyXAction::init()
  * \li Action: Turn on the primary keyboard map.
  * \li Notion: Maps were widely used in past, when X-windows didn't have nowadays
                keyboard support. They can be still used to maintain uniform keyboard
-               layout across the various plaforms.\n
+               layout across the various platforms.\n
                The language is to be set in the Preferences dialog.
  * \li Syntax: keymap-primary
  * \endvar
@@ -2891,7 +2891,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_SET_XY
  * \li Action: Sets the cursor position based on the editing area coordinates
-               (similar as clicking on that point with left mouse button).
+               (similar to clicking on that point with left mouse button).
  * \li Syntax: server-set-xy <X> <Y>
  * \endvar
  */
@@ -2908,7 +2908,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUILD_PROGRAM
  * \li Action: Generates the code (literate programming).
  * \li Notion: Latex file with extension \literate_extension is generated.
-               Then LyX invokes \build_command (with a default of``make'') to generate the code and
+               Then LyX invokes \build_command (with a default of ``make'') to generate the code and
                \build_error_filter to process the compilation error messages. \n
                In case you want to process your literate file with a script, or some other program,
                just insert in your lyxrc file an entry with:\n
@@ -3041,7 +3041,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_IMPORT
  * \li Action: Import a given file as a lyx document.
  * \li Notion: File can be imported iff lyx file format is (transitively) reachable via
-               defined convertors in preferences. Look into File->Import menu to get
+               defined converters in preferences. Look in the File->Import menu to get
                an idea of the currently active import formats.
  * \li Syntax: buffer-import <FORMAT> [<FILE>]
  * \li Origin: Asger, 24 Jul 1998
@@ -3050,7 +3050,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_IMPORT, "buffer-import", NoBuffer, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_NEW
- * \li Action: Creates a new buffer (that is, document).
+ * \li Action: Creates a new buffer (that is, document) and switches to it.
  * \li Notion: Implicit path can be set in Preferences dialog.
  * \li Syntax: buffer-new [<FILE>]
  * \li Params: <FILE>: filename of created file with absolute path.
@@ -3077,7 +3077,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_SWITCH
- * \li Action: Display/switch to the given buffer.
+ * \li Action: Display and switch to the given buffer.
  * \li Syntax: buffer-switch <BUFFER>
  * \li Params: <BUFFER>: path and filename of already opened (but possibly hidden)
                          document which is to be shown.
@@ -3114,7 +3114,7 @@ void LyXAction::init()
  * \li Action: Exports the current document and put the result into the
                temporary directory.
  * \li Notion: In case you are already viewing the exported document (see #LFUN_BUFFER_VIEW)
-               the output will be rewriten - updated. This is useful in case your viewer
+               the output will be rewritten - updated. This is useful in case your viewer
                is able to detect such changes (e.g. ghostview for postscript).
  * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
@@ -3410,8 +3410,8 @@ void LyXAction::init()
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE
- * \li Action: Determine whether keep cursor inside the editing window regardless
-               the scrollbar movement.
+ * \li Action: Determine whether to keep cursor inside the editing window regardless
+               of the scrollbar movement.
  * \li Syntax: toggle-cursor-follows-scrollbar
  * \li Origin: ARRae, 2 Dec 1997
  * \endvar
