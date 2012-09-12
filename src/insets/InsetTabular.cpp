@@ -5235,7 +5235,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::ALIGN_DECIMAL:
 		if (tabular.column_info[tabular.cellColumn(cur.idx())].alignment == LYX_ALIGN_DECIMAL)
-			setAlign = LYX_ALIGN_LEFT;
+			setAlign = LYX_ALIGN_CENTER;
 		else
 			setAlign = LYX_ALIGN_DECIMAL;
 		break;
