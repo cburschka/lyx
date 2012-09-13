@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-08-24 08:52+0200\n"
+"POT-Creation-Date: 2012-09-13 13:32+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1805,7 +1805,7 @@ msgstr "Odkaz na e-mailovú adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90
 msgid "&Email"
-msgstr "&Email"
+msgstr "&E-mail"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:97
 msgid "Link to a file"
@@ -3215,7 +3215,7 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
-msgstr "In&terné Meno:"
+msgstr "Skratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtensions:"
@@ -5988,7 +5988,7 @@ msgstr "odtlačok"
 #: lib/layouts/svglobal.layout:133 lib/layouts/svjog.layout:137
 #: lib/layouts/svprobth.layout:167
 msgid "Mail"
-msgstr "Mail"
+msgstr "Pošta"
 
 #: lib/layouts/aa.layout:85 lib/layouts/aa.layout:287
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
@@ -6025,11 +6025,11 @@ msgstr "Poďakovania."
 
 #: lib/layouts/aa.layout:299
 msgid "institutemark"
-msgstr "inštitútnaznačka"
+msgstr "znak inštitútu"
 
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
-msgstr "inštitútna značka"
+msgstr "znak inštitútu"
 
 #: lib/layouts/aa.layout:367
 msgid "Key words."
@@ -6048,7 +6048,7 @@ msgstr "E-mail"
 #: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
 #: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
-#: lib/layouts/elsarticle.layout:237 lib/layouts/iopart.layout:160
+#: lib/layouts/elsarticle.layout:238 lib/layouts/iopart.layout:160
 #: lib/layouts/jasatex.layout:131 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
 #: lib/layouts/llncs.layout:234 lib/layouts/aapaper.inc:46
@@ -6056,11 +6056,11 @@ msgstr "E-mail"
 #: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
 #: lib/layouts/svcommon.inc:670
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
 msgid "email"
-msgstr "email"
+msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:46
@@ -7020,28 +7020,28 @@ msgstr "Adresa:"
 #: lib/layouts/heb-letter.layout:10 lib/layouts/lettre.layout:33
 #: lib/layouts/lettre.layout:137 lib/layouts/stdletter.inc:24
 msgid "My Address"
-msgstr "Moja Adresa"
+msgstr "Adresa odosialteľa"
 
 #: lib/layouts/dinbrief.layout:63 lib/layouts/scrlttr2.layout:179
 msgid "Sender Address:"
-msgstr "Adresa Odosielateľa:"
+msgstr "Adresa odosielateľa:"
 
 #: lib/layouts/dinbrief.layout:71
 msgid "Return address"
-msgstr "Návratová adresa"
+msgstr "Návratná adresa"
 
 #: lib/layouts/dinbrief.layout:73 lib/layouts/scrlettr.layout:170
 #: lib/layouts/scrlttr2.layout:251
 msgid "Backaddress:"
-msgstr "Návratová Adresa:"
+msgstr "Návratná adresa:"
 
 #: lib/layouts/dinbrief.layout:81
 msgid "Postal comment"
-msgstr "Poštový záznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/dinbrief.layout:83
 msgid "Postal Remark:"
-msgstr "Poštový Záznam:"
+msgstr "Doručovací údaj:"
 
 #: lib/layouts/dinbrief.layout:88
 msgid "Handling"
@@ -7055,23 +7055,23 @@ msgstr "Zaobchádzanie:"
 #: lib/layouts/g-brief2.layout:757 lib/layouts/lettre.layout:59
 #: lib/layouts/lettre.layout:450
 msgid "YourRef"
-msgstr "Vaša značka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/dinbrief.layout:96 lib/layouts/scrlettr.layout:206
 #: lib/layouts/scrlttr2.layout:292
 msgid "Your ref.:"
-msgstr "Vaša značka:"
+msgstr "Vaše číslo:"
 
 #: lib/layouts/dinbrief.layout:100 lib/layouts/g-brief.layout:96
 #: lib/layouts/g-brief2.layout:736 lib/layouts/lettre.layout:61
 #: lib/layouts/lettre.layout:466
 msgid "MyRef"
-msgstr "Moja značka"
+msgstr "Moje číslo"
 
 #: lib/layouts/dinbrief.layout:102 lib/layouts/scrlettr.layout:227
 #: lib/layouts/scrlttr2.layout:316
 msgid "Our ref.:"
-msgstr "Naša značka:"
+msgstr "Naše číslo:"
 
 #: lib/layouts/dinbrief.layout:106
 msgid "Writer"
@@ -7098,11 +7098,11 @@ msgstr "Podpis:"
 
 #: lib/layouts/dinbrief.layout:119
 msgid "Bottomtext"
-msgstr "Spodný text"
+msgstr "Doplňujúce údaje"
 
 #: lib/layouts/dinbrief.layout:121
 msgid "Bottom text:"
-msgstr "Spodný text:"
+msgstr "Doplňujúce údaje:"
 
 #: lib/layouts/dinbrief.layout:129
 msgid "Area code"
@@ -7180,24 +7180,24 @@ msgstr "Záverečný pozdrav"
 #: lib/layouts/g-brief2.layout:876 lib/layouts/lettre.layout:559
 #: lib/layouts/scrlttr2.layout:118 lib/layouts/stdletter.inc:95
 msgid "Closing:"
-msgstr "Pozdrav:"
+msgstr "Záverečný pozdrav:"
 
 #: lib/layouts/dinbrief.layout:199 lib/layouts/lettre.layout:69
 #: lib/layouts/lettre.layout:605 lib/layouts/stdletter.inc:111
 msgid "encl"
-msgstr "prílohy"
+msgstr "Prílohy"
 
 #: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:610
 #: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:141
 #: lib/layouts/stdletter.inc:114
 msgid "encl:"
-msgstr "prílohy:"
+msgstr "Prílohy:"
 
 #: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief.layout:222
 #: lib/layouts/g-brief2.layout:932 lib/layouts/lettre.layout:71
 #: lib/layouts/lettre.layout:628 lib/layouts/stdletter.inc:99
 msgid "cc"
-msgstr "kópia"
+msgstr "Kópia"
 
 #: lib/layouts/dinbrief.layout:216 lib/layouts/g-brief.layout:227
 #: lib/layouts/g-brief2.layout:943 lib/layouts/lettre.layout:632
@@ -7217,24 +7217,24 @@ msgstr "Postskriptum:"
 
 #: lib/layouts/dinbrief.layout:235 lib/layouts/scrlttr2.layout:175
 msgid "SenderAddress"
-msgstr "AdresaOdosielateľa"
+msgstr "Adresa odosielateľa"
 
 #: lib/layouts/dinbrief.layout:240 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:247
 msgid "Backaddress"
-msgstr "Návratová-Adresa"
+msgstr "Návratná-Adresa"
 
 #: lib/layouts/dinbrief.layout:245
 msgid "RetourAdresse"
-msgstr "Návratová-Adresa"
+msgstr "Návratná-Adresa"
 
 #: lib/layouts/dinbrief.layout:255
 msgid "Adresse"
-msgstr "Adresa"
+msgstr "Adresa prijímateľa"
 
 #: lib/layouts/dinbrief.layout:260
 msgid "Postvermerk"
-msgstr "Poštový záznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/dinbrief.layout:265
 msgid "Zusatz"
@@ -7242,20 +7242,20 @@ msgstr "Prídavok"
 
 #: lib/layouts/dinbrief.layout:270
 msgid "IhrZeichen"
-msgstr "VašaZnačka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/dinbrief.layout:275 lib/layouts/g-brief.layout:110
 #: lib/layouts/g-brief2.layout:779
 msgid "YourMail"
-msgstr "VášMejl"
+msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:280
 msgid "IhrSchreiben"
-msgstr "Váš List"
+msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:285
 msgid "MeinZeichen"
-msgstr "MojaZnačka"
+msgstr "Moje číslo"
 
 #: lib/layouts/dinbrief.layout:290
 msgid "Unterschrift"
@@ -7290,7 +7290,7 @@ msgstr "Dátum"
 #: lib/layouts/dinbrief.layout:330 lib/layouts/g-brief.layout:196
 #: lib/layouts/g-brief2.layout:820
 msgid "Reference"
-msgstr "Referencia"
+msgstr "Predmet"
 
 #: lib/layouts/dinbrief.layout:335
 msgid "Betreff"
@@ -7304,11 +7304,11 @@ msgstr "Oslovenie"
 #: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
 #: lib/layouts/scrlettr.layout:40
 msgid "Letter"
-msgstr "TextListu"
+msgstr "Text listu"
 
 #: lib/layouts/dinbrief.layout:350
 msgid "Brieftext"
-msgstr "TextListu"
+msgstr "Text listu"
 
 #: lib/layouts/dinbrief.layout:355
 msgid "Gruss"
@@ -7334,7 +7334,7 @@ msgstr "Kópia"
 
 #: lib/layouts/dinbrief.layout:379
 msgid "Verteiler"
-msgstr "Na vedomie"
+msgstr "Kópia"
 
 #: lib/layouts/ectaart.layout:21
 msgid "RunTitle"
@@ -7523,12 +7523,12 @@ msgstr "Adresa Autora"
 #: lib/layouts/elsart.layout:147 lib/layouts/revtex4-1.layout:123
 #: lib/layouts/revtex4.layout:197
 msgid "Author Email"
-msgstr "Email Autora"
+msgstr "E-mail Autora"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/lettre.layout:404
 #: lib/layouts/llncs.layout:238
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-mail:"
 
 #: lib/layouts/elsart.layout:168 lib/layouts/revtex4-1.layout:138
 #: lib/layouts/revtex4.layout:213
@@ -7907,7 +7907,7 @@ msgstr "Definícia*"
 
 #: lib/layouts/g-brief.layout:26 lib/layouts/g-brief2.layout:48
 msgid "Letter:"
-msgstr "List:"
+msgstr "Text listu:"
 
 #: lib/layouts/g-brief.layout:35 lib/layouts/g-brief2.layout:57
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:145
@@ -7953,25 +7953,25 @@ msgstr "Štát:"
 
 #: lib/layouts/g-brief.layout:89 lib/layouts/g-brief2.layout:674
 msgid "ReturnAddress"
-msgstr "Návratová adresa"
+msgstr "Návratná adresa"
 
 #: lib/layouts/g-brief.layout:92 lib/layouts/g-brief2.layout:685
 msgid "ReturnAddress:"
-msgstr "NávratováAdresa:"
+msgstr "Návratná adresa:"
 
 #: lib/layouts/g-brief.layout:99 lib/layouts/g-brief2.layout:747
 #: lib/layouts/lettre.layout:472
 msgid "MyRef:"
-msgstr "MojaZnačka:"
+msgstr "Moje číslo:"
 
 #: lib/layouts/g-brief.layout:106 lib/layouts/g-brief2.layout:768
 #: lib/layouts/lettre.layout:456
 msgid "YourRef:"
-msgstr "VašaZnačka:"
+msgstr "Vaše číslo:"
 
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
-msgstr "VášMejl:"
+msgstr "Váš list:"
 
 #: lib/layouts/g-brief.layout:120
 msgid "Phone:"
@@ -7995,11 +7995,11 @@ msgstr "Telex:"
 
 #: lib/layouts/g-brief.layout:138
 msgid "EMail"
-msgstr "EMail"
+msgstr "E-Mail"
 
 #: lib/layouts/g-brief.layout:141
 msgid "EMail:"
-msgstr "EMail:"
+msgstr "E-Mail:"
 
 #: lib/layouts/g-brief.layout:145
 msgid "HTTP"
@@ -8019,11 +8019,11 @@ msgstr "Banka:"
 
 #: lib/layouts/g-brief.layout:159
 msgid "BankCode"
-msgstr "KódBanky"
+msgstr "Kód banky"
 
 #: lib/layouts/g-brief.layout:162
 msgid "BankCode:"
-msgstr "KódBanky:"
+msgstr "Kód banky:"
 
 #: lib/layouts/g-brief.layout:166
 msgid "BankAccount"
@@ -8035,15 +8035,15 @@ msgstr "Bankový účet:"
 
 #: lib/layouts/g-brief.layout:173 lib/layouts/g-brief2.layout:695
 msgid "PostalComment"
-msgstr "PoštovýZáznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/g-brief.layout:176 lib/layouts/g-brief2.layout:705
 msgid "PostalComment:"
-msgstr "PoštovýZáznam:"
+msgstr "Doručovací údaj:"
 
 #: lib/layouts/g-brief.layout:201 lib/layouts/g-brief2.layout:832
 msgid "Reference:"
-msgstr "Referencia:"
+msgstr "Predmet:"
 
 #: lib/layouts/g-brief.layout:218 lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
@@ -8662,7 +8662,7 @@ msgstr "Fax:"
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
 msgid "Closings"
-msgstr "Záverečný pozdrav"
+msgstr "Záver"
 
 #: lib/layouts/lettre.layout:525
 msgid "EndOfMessage."
@@ -9044,11 +9044,11 @@ msgstr "Titul:"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:288
 msgid "Yourref"
-msgstr "Vaša značka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/scrlettr.layout:217 lib/layouts/scrlttr2.layout:304
 msgid "Yourmail"
-msgstr "Váš mejl"
+msgstr "Váš list"
 
 #: lib/layouts/scrlettr.layout:220 lib/layouts/scrlttr2.layout:308
 msgid "Your letter of:"
@@ -9056,7 +9056,7 @@ msgstr "Váš dopis od:"
 
 #: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:312
 msgid "Myref"
-msgstr "Moja značka"
+msgstr "Moje číslo"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:320
 msgid "Customer"
@@ -9084,19 +9084,19 @@ msgstr "Ďalšia Adresa:"
 
 #: lib/layouts/scrlttr2.layout:157
 msgid "Sender Name:"
-msgstr "Názov odosielateľa:"
+msgstr "Meno odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:187
 msgid "Sender Phone:"
-msgstr "Odosielateľ Telefón:"
+msgstr "Telefón odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:195
 msgid "Sender Fax:"
-msgstr "Odosielateľ Fax:"
+msgstr "Fax odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:203
 msgid "Sender E-Mail:"
-msgstr "Odosielateľ E-Mail:"
+msgstr "E-mail odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:211
 msgid "Sender URL:"
@@ -9503,7 +9503,7 @@ msgstr "OkrajnýObrázok"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr "email:"
+msgstr "E-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -13063,7 +13063,7 @@ msgstr "TeX Kód nastavenia..."
 
 #: lib/ui/stdmenus.inc:137
 msgid "Float Settings...|a"
-msgstr "Nastavenia plávajúceho objektu"
+msgstr "Nastavenia plávajúceho objektu..."
 
 #: lib/ui/stdmenus.inc:138
 msgid "Text Wrap Settings...|W"
@@ -16889,7 +16889,7 @@ msgstr "Znelá velárna laterálna aproximanta"
 
 #: lib/ui/stdtoolbars.inc:969
 msgid "Bilabial click"
-msgstr "Bilabiálna mľaskavka "
+msgstr "Bilabiálna mľaskavka"
 
 #: lib/ui/stdtoolbars.inc:970
 msgid "Dental click"
@@ -19689,7 +19689,7 @@ msgstr "Zoznam podporovaných ladiacich indikátorov:"
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1042
+#: src/LyX.cpp:1015
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -19703,8 +19703,9 @@ msgid ""
 "\t-x [--execute] command\n"
 "                  where command is a lyx command.\n"
 "\t-e [--export] fmt\n"
-"                  where fmt is the export format of choice.\n"
-"                  Look on Tools->Preferences->File formats->Format\n"
+"                  where fmt is the export format of choice. Look in\n"
+"                  Tools->Preferences->File Handling->File Formats->Short "
+"Name\n"
 "                  to get an idea which parameters should be passed.\n"
 "                  Note that the order of -e and -x switches matters.\n"
 "\t-E [--export-to] fmt filename\n"
@@ -19742,9 +19743,9 @@ msgstr ""
 "\t-x [--execute] príkaz\n"
 "                  spustí lyx-príkaz príkaz.\n"
 "\t-e [--export] fmt\n"
-"                  kde fmt je vybraný exportný formát.\n"
-"                  Pozrite si Nástroje->Preferencie->Obsluha "
-"súborov->Formáty\n"
+"                  kde fmt je vybraný exportný formát. Pozrite si\n"
+"                  Nástroje->Preferencie...->Obsluha súborov->Formáty Súborov-"
+">Skratka\n"
 "                  aby ste dostali predstavu o tom, ktoré  parametre sú "
 "vhodné.\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
@@ -20149,7 +20150,7 @@ msgstr "Maximálny počet posledných súborov. Až %1$d ich môže byť v ponuk
 
 #: src/LyXRC.cpp:3317
 msgid "Shows a typeset preview of things such as math"
-msgstr "Zobrazuje náhľad na sadu vecí typu matematiky a pod."
+msgstr "Zobrazuje náhľad na sadu vecí ako napr. z matematiky"
 
 #: src/LyXRC.cpp:3321
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
@@ -21173,15 +21174,16 @@ msgstr "Nové načítanie konfigurácie..."
 msgid "System reconfiguration failed"
 msgstr "Rekonfigurácia systému zlyhala"
 
-#: src/frontends/qt4/GuiApplication.cpp:1261
+#: src/frontends/qt4/GuiApplication.cpp:1297
 msgid ""
 "The system reconfiguration has failed.\n"
-"Default textclass is used but LyX may not be able to work properly.\n"
+"Default textclass is used but LyX may\n"
+"not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
 "Rekonfigurácia systému zlyhala.\n"
-"Bola nastavená štandardná trieda (textclass), ale LyX možno nebude schopný "
-"pracovať správne.\n"
+"Bola nastavená štandardná trieda (textclass),\n"
+"ale LyX možno nebude schopný pracovať správne.\n"
 "Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
 #: src/frontends/qt4/GuiApplication.cpp:1290
@@ -22800,12 +22802,12 @@ msgstr "Formáty Súborov"
 msgid "Format in use"
 msgstr "Formát v použití"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2069
+#: src/frontends/qt4/GuiPrefs.cpp:2076
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"Nemôžte zmeniť krátke meno formátu používané konvertorom. Odstráňte najprv "
+"Nemôžte zmeniť skratku formátu používané konvertorom. Odstráňte najprv "
 "konvertor."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2221
