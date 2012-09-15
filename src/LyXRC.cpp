@@ -210,6 +210,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\viewer", LyXRC::RC_VIEWER},
 	{ "\\viewer_alternatives", LyXRC::RC_VIEWER_ALTERNATIVES },
 	{ "\\visual_cursor", LyXRC::RC_VISUAL_CURSOR },
+	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
 	{ "format", LyXRC::RC_LYXRCFORMAT }
 };
 
@@ -370,6 +371,7 @@ void LyXRC::setDefaults()
 	default_decimal_point = ".";
 	default_length_unit = Length::CM;
 	cursor_width = 1;
+	close_buffer_with_last_view = "yes";
 }
 
 
@@ -1041,6 +1043,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_VISUAL_CURSOR:
 			lexrc >> visual_cursor;
+			break;
+		case RC_CLOSE_BUFFER_WITH_LAST_VIEW:
+			lexrc >> close_buffer_with_last_view;
 			break;
 		case RC_AUTO_NUMBER:
 			lexrc >> auto_number;
@@ -2528,6 +2533,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_CLOSE_BUFFER_WITH_LAST_VIEW:
+		if (ignore_system_lyxrc ||
+			close_buffer_with_last_view != system_lyxrc.close_buffer_with_last_view) {
+			os << "# When closing last view, buffer closes (yes), hides (no), or ask the user (ask)\n";
+			os << "\\close_buffer_with_last_view " << close_buffer_with_last_view << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_LANGUAGE_CUSTOM_PACKAGE:
 		if (ignore_system_lyxrc ||
 		    language_custom_package != system_lyxrc.language_custom_package) {
@@ -3025,6 +3038,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
 	case LyXRC::RC_FULL_SCREEN_WIDTH:
 	case LyXRC::RC_VISUAL_CURSOR:
+	case LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW:
 	case LyXRC::RC_VIEWER:
 	case LyXRC::RC_VIEWER_ALTERNATIVES:
 	case LyXRC::RC_FORWARD_SEARCH_DVI:
@@ -3385,6 +3399,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_VISUAL_CURSOR:
 		str = _("Select to have visual bidi cursor movement, unselect for logical movement.");
+		break;
+
+	case RC_CLOSE_BUFFER_WITH_LAST_VIEW:
+		str = _("Specify whether, closing the last view of an open document, LyX should close the document (yes), hide it (no), or ask the user (ask).");
 		break;
 
 	case RC_SCREEN_DPI:

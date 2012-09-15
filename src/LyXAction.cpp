@@ -2685,6 +2685,18 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VIEW_CLOSE
+ * \li Action: Close the current document work area.
+ * \li Notion: Close the current work area. If no other work areas are showing the buffer,
+               then close the associated buffer as well.
+ * \li Syntax: view-close
+ * \li Origin: Tommaso, 15 Sep 2012
+ * \endvar
+ */
+		{ LFUN_VIEW_CLOSE, "view-close", ReadOnly, Buffer },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
  * \li Action: Shows hidden dialog or creates new one for a given function/inset settings etc.

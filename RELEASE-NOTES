@@ -6,6 +6,17 @@ when upgrading from earlier versions to a version of the 2.1.x series.
 Interface changes
 -----------------
 
+Whenever the user closes a (tabbed) view on a document, either by
+clicking on the tab close button, or by using the File->Close menu,
+LyX now closes exclusively that specific view. If there are other
+views showing the same document, they are not closed. When the user
+closes the last view, LyX can be configured for either closing the
+document, or keeping it into memory as a hidden document (that can be
+shown again through the View->Hidden-> submenu).
+
+A new configurable preference option has been added, allowing for either
+(close_buffer_with_last_view)
+
 There have been some changes to the LyX command line. The following new
 options have been added:
 
@@ -27,6 +38,11 @@ search operation by hitting the ESC key.
 
 The following pref variables were changed in 2.1:
 
+- \\close_buffer_with_last_view [yes|no|ask]
+  When user closes the last view on a document, close the document
+  as well ("yes"), or hide the document ("no"), or ask the user
+  ("ask").
+
 The following pref variables are obsoleted in 2.1:
 
 - \\default_language
@@ -45,6 +61,10 @@ The following new LyX functions have been introduced:
   This is also available through a new menu voice within the
   [Edit]->[Paste Special...] sub-menu.
 
+- LFUN_VIEW_CLOSE
+  Close the current document view only, if there are no more views
+  on the document, either close or hide it (see the new preference
+  option \\close_buffer_with_last_view)
 
 The following LyX functions have been removed:
 

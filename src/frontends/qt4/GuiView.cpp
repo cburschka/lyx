@@ -330,6 +330,18 @@ struct GuiView::GuiViewPrivate
 		return tabWorkArea(0);
 	}
 
+	int countWorkAreasOf(Buffer & buf)
+	{
+		int areas = tabWorkAreaCount();
+		int count = 0;
+		for (int i = 0; i != areas;  ++i) {
+			TabWorkArea * twa = tabWorkArea(i);
+			if (twa->workArea(buf))
+				++count;
+		}
+		return count;
+	}
+
 #if (QT_VERSION >= 0x040400)
 	void setPreviewFuture(QFuture<Buffer::ExportStatus> const & f)
 	{
@@ -1688,6 +1700,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_CLOSE:
+	case LFUN_VIEW_CLOSE:
 		enable = doc_buffer;
 		break;
 
@@ -2458,10 +2471,45 @@ bool GuiView::hideWorkArea(GuiWorkArea * wa)
 }
 
 
+// We only want to close the buffer if it is not visible in other workareas
+// of the same view, nor in other views, and if this is not a child
 bool GuiView::closeWorkArea(GuiWorkArea * wa)
 {
 	Buffer & buf = wa->bufferView().buffer();
-	return closeWorkArea(wa, !buf.parent());
+
+	bool last_wa = d.countWorkAreasOf(buf) == 1
+		&& !inOtherView(buf) && !buf.parent();
+
+	bool close_buffer = last_wa;
+
+	if (last_wa) {
+		if (lyxrc.close_buffer_with_last_view == "yes")
+			; // Nothing to do
+		else if (lyxrc.close_buffer_with_last_view == "no")
+			close_buffer = false;
+		else {
+			docstring file;
+			if (buf.isUnnamed())
+				file = from_utf8(buf.fileName().onlyFileName());
+			else
+				file = buf.fileName().displayName(30);
+			docstring const text = bformat(
+				_("Last view on document %1$s is being closed.\n"
+				  "Would you like to close or hide the document?\n"
+				  "\n"
+				  "Hidden documents can be displayed back through\n"
+				  "the menu: View->Hidden->...\n"
+				  "\n"
+				  "To remove this question, set your preference in:\n"
+				  "  Tools->Preferences->Look&Feel->UserInterface\n"
+				), file);
+			int ret = Alert::prompt(_("Close or hide document?"),
+				text, 0, 1, _("&Close"), _("&Hide"));
+			close_buffer = (ret == 0);
+		}
+	}
+
+	return closeWorkArea(wa, close_buffer);
 }
 
 
@@ -3558,6 +3606,21 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeTabWorkArea(twa);
+				d.current_work_area_ = 0;
+				twa = d.currentTabWorkArea();
+				// Switch to the next GuiWorkArea in the found TabWorkArea.
+				if (twa) {
+					// Make sure the work area is up to date.
+					setCurrentWorkArea(twa->currentWorkArea());
+				} else {
+					setCurrentWorkArea(0);
+				}
+			}
+			break;
+
+		case LFUN_VIEW_CLOSE:
+			if (TabWorkArea * twa = d.currentTabWorkArea()) {
+				closeWorkArea(twa->currentWorkArea());
 				d.current_work_area_ = 0;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.

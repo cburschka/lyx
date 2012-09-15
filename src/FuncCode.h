@@ -456,6 +456,7 @@ enum FuncCode
 	LFUN_IN_IPA,                    // spitz, 20120520
 	LFUN_IPAMACRO_INSERT,           // spitz, 20120822
 	// 355
+	LFUN_VIEW_CLOSE,		// Tommaso, 20120915
 	LFUN_LASTACTION                 // end of the table
 };
 

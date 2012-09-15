@@ -145,7 +145,7 @@ public:
 
 	/// hides the workarea and makes sure it is clean
 	bool hideWorkArea(GuiWorkArea * wa);
-	/// closes the workarea
+	/// closes workarea; close buffer only if no other workareas point to it
 	bool closeWorkArea(GuiWorkArea * wa);
 	/// closes the buffer
 	bool closeBuffer(Buffer & buf);
