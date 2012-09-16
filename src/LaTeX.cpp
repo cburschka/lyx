@@ -984,8 +984,10 @@ bool handleFoundFile(string const & ff, DepTable & head)
 }
 
 
-bool checkLineBreak(string const & ff, DepTable & head)
+bool completeFilename(string const & ff, DepTable & head)
 {
+	// If we do not find a dot, we suspect
+	// a fragmental file name
 	if (!contains(ff, '.'))
 		return false;
 
@@ -1014,7 +1016,7 @@ void LaTeX::deplog(DepTable & head)
 	//   Writing index file sample.idx
 	static regex const reg4("Writing index file (.+).*");
 	// files also can be enclosed in <...>
-	static regex const reg5("<([^>]+)(.).*");
+	static regex const reg5("[^<]*<([^>]+)(.).*");
 	static regex const regoldnomencl("Writing glossary file (.+).*");
 	static regex const regnomencl("Writing nomenclature file (.+).*");
 	// If a toc should be created, MikTex does not write a line like
@@ -1024,6 +1026,7 @@ void LaTeX::deplog(DepTable & head)
 	// This line is also written by tetex.
 	// This line is not present if no toc should be created.
 	static regex const miktexTocReg("\\\\tf@toc=\\\\write.*");
+	// (...) somewhere on the line
 	static regex const reg6(".*\\([^)]+.*");
 
 	FileName const fn = makeAbsPath(logfile);
@@ -1031,10 +1034,12 @@ void LaTeX::deplog(DepTable & head)
 	string lastline;
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
-		// Sometimes files are named by "File:� xxx" only
-		// So I think we should use some regexps to find files instead.
+		// Sometimes files are named by "File: xxx" only
+		// Therefore we use some regexps to find files instead.
 		// Note: all file names and paths might contains spaces.
-		bool found_file = false;
+		// Also, file names might be broken across lines. Therefore
+		// we mark (potential) fragments and merge those lines.
+		bool fragment = false;
 		string token;
 		getline(ifs, token);
 		// MikTeX sometimes inserts \0 in the log file. They can't be
@@ -1083,54 +1088,52 @@ void LaTeX::deplog(DepTable & head)
 
 		// (1) "File: file.ext"
 		if (regex_match(token, sub, reg1)) {
-			// check for dot
-			found_file = checkLineBreak(sub.str(1), head);
+			// is this a fragmental file name?
+			fragment = !completeFilename(sub.str(1), head);
 			// However, ...
 			if (suffixIs(token, ")"))
-				// no line break for sure
-				// pretend we've been successfully searching
-				found_file = true;
+				// no fragment for sure
+				fragment = false;
 		// (2) "No file file.ext"
 		} else if (regex_match(token, sub, reg2)) {
 			// file names must contains a dot, line ends with dot
 			if (contains(sub.str(1), '.') && sub.str(2) == ".")
-				found_file = handleFoundFile(sub.str(1), head);
+				fragment = !handleFoundFile(sub.str(1), head);
 			else
 				// we suspect a line break
-				found_file = false;
+				fragment = true;
 		// (3) "\openout<nr> = `file.ext'."
 		} else if (regex_match(token, sub, reg3)) {
 			// search for closing '. at the end of the line
 			if (sub.str(2) == "\'.")
-				found_file = handleFoundFile(sub.str(1), head);
+				fragment = !handleFoundFile(sub.str(1), head);
 			else
-				// probable line break
-				found_file = false;
+				// potential fragment
+				fragment = true;
 		// (4) "Writing index file file.ext"
 		} else if (regex_match(token, sub, reg4))
-			// check for dot
-			found_file = checkLineBreak(sub.str(1), head);
+			// fragmential file name?
+			fragment = !completeFilename(sub.str(1), head);
 		// (5) "<file.ext>"
 		else if (regex_match(token, sub, reg5)) {
 			// search for closing '>' and dot ('*.*>') at the eol
 			if (contains(sub.str(1), '.') && sub.str(2) == ">")
-				found_file = handleFoundFile(sub.str(1), head);
+				fragment = !handleFoundFile(sub.str(1), head);
 			else
-				// probable line break
-				found_file = false;
+				// potential fragment
+				fragment = true;
 		// (6) "Writing nomenclature file file.ext"
 		} else if (regex_match(token, sub, regnomencl) ||
 			   regex_match(token, sub, regoldnomencl))
-			// check for dot
-			found_file = checkLineBreak(sub.str(1), head);
+			// fragmental file name?
+			fragment= !completeFilename(sub.str(1), head);
 		// (7) "\tf@toc=\write<nr>" (for MikTeX)
 		else if (regex_match(token, sub, miktexTocReg))
-			found_file = handleFoundFile(onlyFileName(changeExtension(
+			fragment = !handleFoundFile(onlyFileName(changeExtension(
 						file.absFileName(), ".toc")), head);
 		else
 			// not found, but we won't check further
-			// pretend we've been successfully searching
-			found_file = true;
+			fragment = false;
 
 		// (8) "(file.ext"
 		// note that we can have several of these on one line
@@ -1152,31 +1155,30 @@ void LaTeX::deplog(DepTable & head)
 						handleFoundFile(what.str(1), head);
 						// since we had a closing bracket,
 						// do not investigate further
-						found_file = true;
+						fragment = false;
 					} else
 						// if we have no closing bracket,
 						// try to handle as file nevertheless
-						found_file = handleFoundFile(
+						fragment = !handleFoundFile(
 							what.str(1) + what.str(2), head);
 				}
 				// if we do not have a dot, check if the line has
 				// a closing bracket (else, we suspect a line break)
 				else if (what.str(2) != ")") {
 					first = what[0].second;
-					found_file = false;
+					fragment = true;
 				} else {
 					// we have a closing bracket, so the content
 					// is not a file name.
 					// no need to investigate further
-					// pretend we've been successfully searching
 					first = what[0].second;
-					found_file = true;
+					fragment = false;
 				}
 			}
 		}
 
-		if (!found_file)
-			// probable linebreak:
+		if (fragment)
+			// probable linebreak within file name:
 			// save this line
 			lastline = token;
 		else
