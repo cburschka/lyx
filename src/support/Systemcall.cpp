@@ -245,7 +245,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 	string infile;
 	string outfile;
 	string errfile;
-	QString cmd = QString::fromLocal8Bit(
+	QString const cmd = QString::fromLocal8Bit(
 			parsecmd(what, infile, outfile, errfile).c_str());
 
 	SystemcallPrivate d(infile, outfile, errfile);

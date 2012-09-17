@@ -156,7 +156,7 @@ void InsetMathString::write(WriteStream & os) const
 			// and the last char is ASCII.
 			if (termination)
 				os.pendingSpace(true);
-		} catch (EncodingException & e) {
+		} catch (EncodingException const & e) {
 			switch (os.output()) {
 			case WriteStream::wsDryrun: {
 				os << "<" << _("LyX Warning: ")

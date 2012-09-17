@@ -1391,7 +1391,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 	ofdocstream ofs;
 	try { ofs.reset(encoding); }
-	catch (iconv_codecvt_facet_exception & e) {
+	catch (iconv_codecvt_facet_exception const & e) {
 		lyxerr << "Caught iconv exception: " << e.what() << endl;
 		Alert::error(_("Iconv software exception Detected"), bformat(_("Please "
 			"verify that the support software for your encoding (%1$s) is "
@@ -1418,7 +1418,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		os.texrow().reset();
 		writeLaTeXSource(os, original_path, runparams, output);
 	}
-	catch (EncodingException & e) {
+	catch (EncodingException const & e) {
 		odocstringstream ods;
 		ods.put(e.failed_char);
 		ostringstream oss;
@@ -1432,7 +1432,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 				e.par_id, e.pos, e.pos + 1));
 		failed_export = true;
 	}
-	catch (iconv_codecvt_facet_exception & e) {
+	catch (iconv_codecvt_facet_exception const & e) {
 		errorList.push_back(ErrorItem(_("iconv conversion failed"),
 			_(e.what()), -1, 0, 0));
 		failed_export = true;

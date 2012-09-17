@@ -1283,7 +1283,7 @@ void GuiApplication::reconfigure(string const & option)
 	string configure_command = package().configure_command();
 	configure_command += option;
 	Systemcall one;
-	int ret = one.startscript(Systemcall::Wait, configure_command);
+	int const ret = one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
 	if (current_view_)
@@ -2423,7 +2423,7 @@ bool GuiApplication::closeAllViews()
 	// are already entries in the lastOpened list.
 	theSession().lastOpened().clear();
 
-	QList<GuiView *> views = d->views_.values();
+	QList<GuiView *> const views = d->views_.values();
 	foreach (GuiView * view, views) {
 		if (!view->closeScheduled())
 			return false;
@@ -2443,7 +2443,7 @@ GuiView & GuiApplication::view(int id) const
 
 void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 {
-	QList<GuiView *> views = d->views_.values();
+	QList<GuiView *> const views = d->views_.values();
 	foreach (GuiView * view, views)
 		view->hideDialog(name, inset);
 }
@@ -2452,7 +2452,7 @@ void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 Buffer const * GuiApplication::updateInset(Inset const * inset) const
 {
 	Buffer const * buffer_ = 0;
-	QHash<int, GuiView *>::iterator end = d->views_.end();
+	QHash<int, GuiView *>::const_iterator end = d->views_.end();
 	for (QHash<int, GuiView *>::iterator it = d->views_.begin(); it != end; ++it) {
 		if (Buffer const * ptr = (*it)->updateInset(inset))
 			buffer_ = ptr;

@@ -688,7 +688,7 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 	try {
 		reg_exp.assign(to_utf8(expr), case_sensitive ?
 			lyx::regex_constants::ECMAScript : lyx::regex_constants::icase);
-	} catch (lyx::regex_error & e) {
+	} catch (lyx::regex_error const & e) {
 		// lyx::regex throws an exception if the regular expression is not
 		// valid.
 		LYXERR(Debug::GUI, e.what());
@@ -718,7 +718,7 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 			if (lyx::regex_search(data, reg_exp))
 				foundKeys.push_back(*it);
 		}
-		catch (lyx::regex_error & e) {
+		catch (lyx::regex_error const & e) {
 			LYXERR(Debug::GUI, e.what());
 			return vector<docstring>();
 		}

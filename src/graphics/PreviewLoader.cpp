@@ -547,7 +547,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	Encoding const & enc = buffer_.params().encoding();
 	ofdocstream of;
 	try { of.reset(enc.iconvName()); }
-	catch (iconv_codecvt_facet_exception & e) {
+	catch (iconv_codecvt_facet_exception const & e) {
 		LYXERR0("Caught iconv exception: " << e.what()
 			<< "\nUnable to create LaTeX file: " << latexfile);
 		return;

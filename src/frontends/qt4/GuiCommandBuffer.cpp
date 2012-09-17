@@ -147,7 +147,7 @@ void GuiCommandBuffer::cancel()
 
 void GuiCommandBuffer::dispatch()
 {
-	QString cmd = edit_->text();
+	QString const cmd = edit_->text();
 	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
