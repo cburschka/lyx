@@ -1243,13 +1243,6 @@ void PrefDisplay::on_instantPreviewCO_currentIndexChanged(int index)
 }
 
 
-void PrefDisplay::on_displayGraphicsCB_toggled(bool on)
-{
-	instantPreviewCO->setEnabled(on);
-	previewSizeSB->setEnabled(on && instantPreviewCO->currentIndex() > 0);
-}
-
-
 void PrefDisplay::apply(LyXRC & rc) const
 {
 	switch (instantPreviewCO->currentIndex()) {
@@ -1293,7 +1286,6 @@ void PrefDisplay::update(LyXRC const & rc)
 	}
 
 	displayGraphicsCB->setChecked(rc.display_graphics);
-	instantPreviewCO->setEnabled(rc.display_graphics);
 	previewSizeSB->setValue(rc.preview_scale_factor);
 	paragraphMarkerCB->setChecked(rc.paragraph_markers);
 	previewSizeSB->setEnabled(

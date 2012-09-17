@@ -156,6 +156,9 @@ What's new
 - When using a non-default language for the GUI, do not change locale
   settings of child proceses (bug 7741).
 
+- Do not disable Instant Preview widgets in preferences when Display
+  Graphics is unchecked (bug 7462).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
