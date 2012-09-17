@@ -1044,7 +1044,7 @@ int iterateLine(string const token, regex const reg, string const closing,
 	// result = -1 means we did not find a fragment!
 	int result = -1;
 	int last_match_pos = -1;
-	if (token.find(last_match) != string::npos)
+	if (!last_match.empty() && token.find(last_match) != string::npos)
 		last_match_pos = int(token.find(last_match));
 	if (fragment) {
 		if (last_match_pos > fragment_pos)
@@ -1054,6 +1054,7 @@ int iterateLine(string const token, regex const reg, string const closing,
 	} else
 		if (last_match_pos < fragment_pos)
 			result = fragment_pos;
+
 	return result;
 }
 
