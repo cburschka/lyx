@@ -995,6 +995,68 @@ bool completeFilename(string const & ff, DepTable & head)
 	return handleFoundFile(ff, head);
 }
 
+
+int iterateLine(string const token, regex const reg, string const closing,
+		int fragment_pos, DepTable & head)
+{
+	smatch what;
+	string::const_iterator first = token.begin();
+	string::const_iterator end = token.end();
+	bool fragment = false;
+	string last_match;
+
+	while (regex_search(first, end, what, reg)) {
+		// if we have a dot, try to handle as file
+		if (contains(what.str(1), '.')) {
+			first = what[0].second;
+			if (what.str(2) == closing) {
+				handleFoundFile(what.str(1), head);
+				// since we had a closing bracket,
+				// do not investigate further
+				fragment = false;
+			} else
+				// if we have no closing bracket,
+				// try to handle as file nevertheless
+				fragment = !handleFoundFile(
+					what.str(1) + what.str(2), head);
+		}
+		// if we do not have a dot, check if the line has
+		// a closing bracket (else, we suspect a line break)
+		else if (what.str(2) != closing) {
+			first = what[0].second;
+			fragment = true;
+		} else {
+			// we have a closing bracket, so the content
+			// is not a file name.
+			// no need to investigate further
+			first = what[0].second;
+			fragment = false;
+		}
+		last_match = what.str(1);
+	}
+
+	// We need to consider the result from previous line iterations:
+	// We might not find a fragment here, but another one might follow
+	// E.g.: (filename.ext) <filenam
+	// Vice versa, we consider the search completed if a real match
+	// follows a potential fragment from a previous iteration.
+	// E.g. <some text we considered a fragment (filename.ext)
+	// result = -1 means we did not find a fragment!
+	int result = -1;
+	int last_match_pos = -1;
+	if (!last_match.empty() && token.find(last_match) != string::npos)
+		last_match_pos = int(token.find(last_match));
+	if (fragment) {
+		if (last_match_pos > fragment_pos)
+			result = last_match_pos;
+		else
+			result = fragment_pos;
+	} else
+		if (last_match_pos < fragment_pos)
+			result = fragment_pos;
+	return result;
+}
+
 } // anon namespace
 
 
@@ -1015,8 +1077,6 @@ void LaTeX::deplog(DepTable & head)
 	// but instead only a line like this into the log:
 	//   Writing index file sample.idx
 	static regex const reg4("Writing index file (.+).*");
-	// files also can be enclosed in <...>
-	static regex const reg5("[^<]*<([^>]+)(.).*");
 	static regex const regoldnomencl("Writing glossary file (.+).*");
 	static regex const regnomencl("Writing nomenclature file (.+).*");
 	// If a toc should be created, MikTex does not write a line like
@@ -1026,7 +1086,9 @@ void LaTeX::deplog(DepTable & head)
 	// This line is also written by tetex.
 	// This line is not present if no toc should be created.
 	static regex const miktexTocReg("\\\\tf@toc=\\\\write.*");
-	// (...) somewhere on the line
+	// file names can be enclosed in <...> (anywhere on the line)
+	static regex const reg5(".*<[^>]+.*");
+	// and also (...) anywhere on the line
 	static regex const reg6(".*\\([^)]+.*");
 
 	FileName const fn = makeAbsPath(logfile);
@@ -1114,20 +1176,12 @@ void LaTeX::deplog(DepTable & head)
 		} else if (regex_match(token, sub, reg4))
 			// fragmential file name?
 			fragment = !completeFilename(sub.str(1), head);
-		// (5) "<file.ext>"
-		else if (regex_match(token, sub, reg5)) {
-			// search for closing '>' and dot ('*.*>') at the eol
-			if (contains(sub.str(1), '.') && sub.str(2) == ">")
-				fragment = !handleFoundFile(sub.str(1), head);
-			else
-				// potential fragment
-				fragment = true;
-		// (6) "Writing nomenclature file file.ext"
-		} else if (regex_match(token, sub, regnomencl) ||
+		// (5) "Writing nomenclature file file.ext"
+		else if (regex_match(token, sub, regnomencl) ||
 			   regex_match(token, sub, regoldnomencl))
 			// fragmental file name?
 			fragment= !completeFilename(sub.str(1), head);
-		// (7) "\tf@toc=\write<nr>" (for MikTeX)
+		// (6) "\tf@toc=\write<nr>" (for MikTeX)
 		else if (regex_match(token, sub, miktexTocReg))
 			fragment = !handleFoundFile(onlyFileName(changeExtension(
 						file.absFileName(), ".toc")), head);
@@ -1135,46 +1189,29 @@ void LaTeX::deplog(DepTable & head)
 			// not found, but we won't check further
 			fragment = false;
 
-		// (8) "(file.ext"
-		// note that we can have several of these on one line
+		int fragment_pos = -1;
+		// (7) "<file.ext>"
+		// We can have several of these on one line
+		// (and in addition to those above)
+		if (regex_match(token, sub, reg5)) {
+			// search for strings in <...>
+			static regex reg5_1("<([^>]+)(.)");
+			fragment_pos = iterateLine(token, reg5_1, ">",
+						   fragment_pos, head);
+			fragment = (fragment_pos != -1);
+		}
+
+		// (8) "(file.ext)"
+		// We can have several of these on one line
 		// this must be queried separated, because of
 		// cases such as "File: file.ext (type eps)"
 		// where "File: file.ext" would be skipped
 		if (regex_match(token, sub, reg6)) {
 			// search for strings in (...)
 			static regex reg6_1("\\(([^()]+)(.)");
-			smatch what;
-			string::const_iterator first = token.begin();
-			string::const_iterator end = token.end();
-
-			while (regex_search(first, end, what, reg6_1)) {
-				// if we have a dot, try to handle as file
-				if (contains(what.str(1), '.')) {
-					first = what[0].second;
-					if (what.str(2) == ")") {
-						handleFoundFile(what.str(1), head);
-						// since we had a closing bracket,
-						// do not investigate further
-						fragment = false;
-					} else
-						// if we have no closing bracket,
-						// try to handle as file nevertheless
-						fragment = !handleFoundFile(
-							what.str(1) + what.str(2), head);
-				}
-				// if we do not have a dot, check if the line has
-				// a closing bracket (else, we suspect a line break)
-				else if (what.str(2) != ")") {
-					first = what[0].second;
-					fragment = true;
-				} else {
-					// we have a closing bracket, so the content
-					// is not a file name.
-					// no need to investigate further
-					first = what[0].second;
-					fragment = false;
-				}
-			}
+			fragment_pos = iterateLine(token, reg6_1, ")",
+						   fragment_pos, head);
+			fragment = (fragment_pos != -1);
 		}
 
 		if (fragment)

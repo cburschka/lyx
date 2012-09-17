@@ -97,6 +97,9 @@ What's new
 - Embrace babel settings to \makeatletter ... \makeatother if they contain
   an @ glyph.
 
+- Improve the external file monitor. LyX should now also honor changes in
+  graphics that are included via ERT or generated via knitr (bug 8336).
+
 - Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
   (part of bug 8251).
 
