@@ -249,8 +249,10 @@ void Undo::clear()
 	d->undostack_.clear();
 	d->redostack_.clear();
 	d->undo_finished_ = true;
-	d->group_id = 0;
-	d->group_level = 0;
+	// We used to do that, but I believe it is better to keep
+	// groups (only used in Buffer::reload for now (JMarc)
+	//d->group_id = 0;
+	//d->group_level = 0;
 }
 
 
@@ -511,8 +513,10 @@ void Undo::beginUndoGroup()
 
 void Undo::endUndoGroup()
 {
-	if (d->group_level == 0)
+	if (d->group_level == 0) {
 		LYXERR0("There is no undo group to end here");
+		return;
+	}
 	--d->group_level;
 	if (d->group_level == 0) {
 		// real end of the group
