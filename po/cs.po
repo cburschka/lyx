@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-20 00:48+0200\n"
+"POT-Creation-Date: 2012-09-20 00:30+0200\n"
 "PO-Revision-Date: 2012-04-12 05:50+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -16493,9 +16493,8 @@ msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:598
-#, fuzzy
 msgid "LaTeX (dviluatex)"
-msgstr "LaTeX (pdflatex)"
+msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:599
 msgid "LaTeX (XeTeX)"
@@ -17149,7 +17148,7 @@ msgstr "Tìlo náhledu"
 
 #: src/Buffer.cpp:3274
 msgid "Plain text does not have a preamble."
-msgstr ""
+msgstr "Prostý text nemá preambuli."
 
 #: src/Buffer.cpp:3386
 #, c-format
