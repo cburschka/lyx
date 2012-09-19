@@ -101,9 +101,12 @@ public:
 	static bool isAvailable(std::string const & name);
 	/// Has the package been required?
 	bool isRequired(std::string const & name) const;
+	/** Is this feature already provided
+	 *  e.g. by the document class?
+	*/
+	bool isProvided(std::string const & name) const;
 	/** Is it necessary to load the package? This is true if
-	    isRequired is true and the feature is not provided by the
-	    textclass.
+	    isRequired is true and the feature is not already provided
 	*/
 	bool mustProvide(std::string const & name) const;
 	///

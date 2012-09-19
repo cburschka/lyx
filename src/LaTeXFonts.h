@@ -55,6 +55,8 @@ public:
 	docstring const & scaleoption() { return scaleoption_; }
 	/// Alternative requirement to test for
 	docstring const & requires() { return requires_; }
+	/// Does this font provide a given \p feature
+	bool provides(std::string const & name) const;
 	/// Issue the familydefault switch
 	bool switchdefault() const { return switchdefault_; }
 	/// Is this font available?
@@ -110,6 +112,8 @@ private:
 	docstring osfscoption_;
 	///
 	docstring scaleoption_;
+	///
+	std::vector<std::string> provides_;
 	///
 	docstring requires_;
 	///

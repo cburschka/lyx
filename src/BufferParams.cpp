@@ -1204,7 +1204,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		if (it->first == "amsmath") {
 			// AMS Style is at document level
 			if (it->second == package_on ||
-			    documentClass().provides("amsmath"))
+			    features.isProvided("amsmath"))
 				features.require(it->first);
 		} else if (it->second == package_on)
 			features.require(it->first);
@@ -1372,7 +1372,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		features.useLanguage(default_language);
 
 	ostringstream language_options;
-	bool const use_babel = features.useBabel() && !tclass.provides("babel");
+	bool const use_babel = features.useBabel() && !features.isProvided("babel");
 	bool const use_polyglossia = features.usePolyglossia();
 	bool const global = lyxrc.language_global_options;
 	if (use_babel || (use_polyglossia && global)) {
@@ -1432,7 +1432,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// LFE encoding
 	// XeTeX and LuaTeX (with OS fonts) work without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !useNonTeXFonts && !tclass.provides("fontenc")) {
+	    && !useNonTeXFonts && !features.isProvided("fontenc")) {
 		size_t fars = language_options.str().find("farsi");
 		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
@@ -1490,7 +1490,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << from_utf8(par)
 		   << "}\n";
 	}
-	if (!tclass.provides("geometry")
+	if (!features.isProvided("geometry")
 	    && (use_geometry || nonstandard_papersize)) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
@@ -1765,7 +1765,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// Line spacing
-	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
+	lyxpreamble += from_utf8(spacing().writePreamble(features.isProvided("SetSpace")));
 
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
@@ -1783,7 +1783,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 		OutputParams tmp_params = features.runparams();
 		pdfoptions().writeLaTeX(tmp_params, os,
-					documentClass().provides("hyperref"));
+					features.isProvided("hyperref"));
 		// set back for the rest
 		lyxpreamble.clear();
 		// correctly break URLs with hyperref and dvi output

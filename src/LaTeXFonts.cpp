@@ -78,6 +78,17 @@ bool LaTeXFont::providesScale(bool ot1) const
 	return (!scaleoption_.empty());
 }
 
+bool LaTeXFont::provides(std::string const & name) const
+{
+	if (provides_.empty())
+		return false;
+	for (size_t i = 0; i < provides_.size(); ++i) {
+		if (provides_[i] == name)
+			return true;
+	}
+	return false;
+}
+
 
 string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete, bool & alt)
 {
@@ -206,6 +217,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_OT1_PACKAGE,
 		LF_PACKAGE,
 		LF_PACKAGEOPTION,
+		LF_PROVIDES,
 		LF_REQUIRES,
 		LF_SCALEOPTION,
 		LF_SCOPTION,
@@ -225,6 +237,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "ot1package",           LF_OT1_PACKAGE },
 		{ "package",              LF_PACKAGE },
 		{ "packageoption",        LF_PACKAGEOPTION },
+		{ "provides",             LF_PROVIDES },
 		{ "requires",             LF_REQUIRES },
 		{ "scaleoption",          LF_SCALEOPTION },
 		{ "scoption",             LF_SCOPTION },
@@ -255,8 +268,8 @@ bool LaTeXFont::readFont(Lexer & lex)
 			finished = true;
 			break;
 		case LF_ALT_PACKAGES: {
-			docstring altp;
-			lex >> altp;
+			lex.eatLine();
+			docstring altp = lex.getDocString();
 			altpackages_ = getVectorFromString(altp);
 			break;
 		}
@@ -287,6 +300,12 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_PACKAGEOPTION:
 			lex >> packageoption_;
 			break;
+		case LF_PROVIDES: {
+			lex.eatLine();
+			string features = lex.getString();
+			provides_ = getVectorFromString(features);
+			break;
+		}
 		case LF_REQUIRES:
 			lex >> requires_;
 			break;

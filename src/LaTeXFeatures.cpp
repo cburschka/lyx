@@ -24,6 +24,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "Language.h"
+#include "LaTeXFonts.h"
 #include "LaTeXPackages.h"
 #include "Layout.h"
 #include "Lexer.h"
@@ -317,7 +318,7 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
 	bool const polyglossia_required =
 		isRequired("polyglossia")
 		&& isAvailable("polyglossia")
-		&& !params_.documentClass().provides("babel")
+		&& !isProvided("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
 	bool const babel_required = 
 		((englishbabel || bufferParams().language->lang() != "english")
@@ -435,9 +436,17 @@ bool LaTeXFeatures::isRequired(string const & name) const
 }
 
 
+bool LaTeXFeatures::isProvided(string const & name) const
+{
+	return params_.documentClass().provides(name)
+		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_roman)).provides(name)
+		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_sans)).provides(name)
+		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_typewriter)).provides(name);
+}
+
 bool LaTeXFeatures::mustProvide(string const & name) const
 {
-	return isRequired(name) && !params_.documentClass().provides(name);
+	return isRequired(name) && !isProvided(name);
 }
 
 
@@ -721,7 +730,6 @@ string const LaTeXFeatures::getColorOptions() const
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
-	DocumentClass const & tclass = params_.documentClass();
 
 	// FIXME: currently, we can only load packages and macros known
 	// to LyX.
@@ -792,9 +800,9 @@ string const LaTeXFeatures::getPackages() const
 
 	// makeidx.sty
 	if (isRequired("makeidx") || isRequired("splitidx")) {
-		if (!tclass.provides("makeidx") && !isRequired("splitidx"))
+		if (!isProvided("makeidx") && !isRequired("splitidx"))
 			packages << "\\usepackage{makeidx}\n";
-		if (!tclass.provides("splitidx") && isRequired("splitidx"))
+		if (mustProvide("splitidx"))
 			packages << "\\usepackage{splitidx}\n";
 		packages << "\\makeindex\n";
 	}
@@ -814,7 +822,7 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";
 
 	// setspace.sty
-	if (mustProvide("setspace") && !tclass.provides("SetSpace"))
+	if (mustProvide("setspace") && !isProvided("SetSpace"))
 		packages << "\\usepackage{setspace}\n";
 
 	// esint must be after amsmath and wasysym, since it will redeclare
@@ -827,7 +835,7 @@ string const LaTeXFeatures::getPackages() const
 	// Some classes load natbib themselves, but still allow (or even require)
 	// plain numeric citations (ReVTeX is such a case, see bug 5182).
 	// This special case is indicated by the "natbib-internal" key.
-	if (mustProvide("natbib") && !tclass.provides("natbib-internal")) {
+	if (mustProvide("natbib") && !isProvided("natbib-internal")) {
 		packages << "\\usepackage[";
 		if (params_.citeEngineType() == ENGINE_TYPE_NUMERICAL)
 			packages << "numbers";

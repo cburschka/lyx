@@ -18,6 +18,7 @@
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
 #	ScaleOption        <option for font scaling>
+#	Provides           <features provided by the font packages (comma-separated)>
 # EndFont
 #
 #
@@ -127,6 +128,7 @@ Font mdbch
 	Package          mathdesign
 	PackageOption    charter
 	Requires         mdbch
+	Provides         amssymb,amsfonts
 EndFont
 
 Font mdput
@@ -138,6 +140,7 @@ Font mdput
 	Package          mathdesign
 	PackageOption    utopia
 	Requires         mdput
+	Provides         amssymb,amsfonts
 EndFont
 
 Font mdugm
@@ -149,6 +152,7 @@ Font mdugm
 	Package          mathdesign
 	PackageOption    garamond
 	Requires         mdugm
+	Provides         amssymb,amsfonts
 EndFont
 
 Font newcent
