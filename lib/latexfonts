@@ -15,6 +15,7 @@
 #	CompletePackage    <alternative package for the complete family>
 #	PackageOptions     <general options to be passed to the package>
 #	OsfOption          <option for oldstyle figure support>
+#	OsfDefault         <0|1>
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
 #	ScaleOption        <option for font scaling>
@@ -51,6 +52,9 @@
 #   f. ex. to load "bera" as opposed to "beraserif").
 # * OsfScOption overrides any OsfOption and ScOption if both features
 #   are selected.
+# * Set OsfDefault to true for fonts which have Old Style Figures by
+#   default and provide an option for lining figures. Pass this option
+#   to OsfOption.
 # * ScaleOption supports the placeholder $$val for the scale value.
 #
 ##########################################################################
@@ -152,6 +156,15 @@ Font mdugm
 	Package          mathdesign
 	PackageOption    garamond
 	Requires         mdugm
+	Provides         amssymb,amsfonts
+EndFont
+
+Font minionpro
+	GuiName          "Minion Pro"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          MinionPro
 	Provides         amssymb,amsfonts
 EndFont
 

@@ -59,6 +59,8 @@ public:
 	bool provides(std::string const & name) const;
 	/// Issue the familydefault switch
 	bool switchdefault() const { return switchdefault_; }
+	/// Does the font provide Old Style Figures as default?
+	bool osfDefault() const { return osfdefault_; }
 	/// Is this font available?
 	bool available(bool ot1 = false) const;
 	/// Does this font provide Old Style Figures?
@@ -116,6 +118,8 @@ private:
 	std::vector<std::string> provides_;
 	///
 	docstring requires_;
+	///
+	bool osfdefault_;
 	///
 	bool switchdefault_;
 	///

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 437
+\lyxformat 438
 \begin_document
 \begin_header
 \textclass article
@@ -604,7 +604,7 @@ arg   "libertine"
 
 \begin_layout Description
 CTAN: 
-\family sans
+\family typewriter
 fonts/libertine-legacy/
 \end_layout
 
@@ -719,6 +719,36 @@ arg   "mdput"
 \begin_layout Standard
 If you only want the text fonts and retain LaTeX's default math font, select
  a non-mathdesign variant of the respective font instead.
+\end_layout
+
+\begin_layout Subsection
+MinionPro
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "MinionPro"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/minionpro
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+MinionPro
+\family default
+ package provides support for the Minion Pro font.
+ Note that the font itself is not part of the package and must be installed
+ separately (please consult the MinionPro package manual for details).
 \end_layout
 
 \begin_layout Subsection

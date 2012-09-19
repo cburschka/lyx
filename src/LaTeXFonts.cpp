@@ -139,16 +139,17 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool sc, bool osf, int scale
 		return string();
 
 	ostringstream os;
+	bool const needosfopt = (osf != osfdefault_);
 	if (!packageoption_.empty())
 		os << to_ascii(packageoption_);
-	if (sc && osf && providesOSF() && providesSC()) {
+	if (sc && needosfopt && providesOSF() && providesSC()) {
 		if (!os.str().empty())
 			os << ',';
 		if (!osfscoption_.empty())
 			os << to_ascii(osfscoption_);
 		else
 			os << to_ascii(osfoption_) << ',' << to_ascii(scoption_);
-	} else if (osf && providesOSF()) {
+	} else if (needosfopt && providesOSF()) {
 		if (!os.str().empty())
 			os << ',';
 		os << to_ascii(osfoption_);
@@ -211,6 +212,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_END,
 		LF_FAMILY,
 		LF_GUINAME,
+		LF_OSFDEFAULT,
 		LF_OSFOPTION,
 		LF_OSFPACKAGE,
 		LF_OSFSCOPTION,
@@ -231,6 +233,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "endfont",              LF_END },
 		{ "family",               LF_FAMILY },
 		{ "guiname",              LF_GUINAME },
+		{ "osfdefault",           LF_OSFDEFAULT },
 		{ "osfoption",            LF_OSFOPTION },
 		{ "osfpackage",           LF_OSFPACKAGE },
 		{ "osfscoption",          LF_OSFSCOPTION },
@@ -288,6 +291,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_OSFPACKAGE:
 			lex >> osfpackage_;
 			break;
+		case LF_OSFDEFAULT:
+			lex >> osfdefault_;
+			break;
 		case LF_OSFSCOPTION:
 			lex >> osfscoption_;
 			break;
@@ -332,6 +338,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 bool LaTeXFont::read(Lexer & lex)
 {
 	switchdefault_ = 0;
+	osfdefault_ = 0;
 
 	if (!lex.next()) {
 		lex.printError("No name given for LaTeX font: `$$Token'.");

@@ -983,7 +983,26 @@ def revert_ipachar(document):
             i = i + 1
     if found:
         add_to_preamble(document, "\\usepackage{tone}")
-    
+
+
+def revert_minionpro(document):
+    " Revert native MinionPro font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        i = find_token(document.header, "\\font_roman minionpro", 0)
+        if i != -1:
+            osf = False
+            j = find_token(document.header, "\\font_osf true", 0)
+            if j != -1:
+                osf = True
+            preamble = "\\usepackage"
+            if osf:
+                document.header[j] = "\\font_osf false"
+            else:
+                preamble += "[lf]"
+            preamble += "{MinionPro}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = "\\font_roman default"
 
 ##
 # Conversion hub
@@ -1015,10 +1034,12 @@ convert = [
            [435, []],
            [436, []],
            [437, []],
-           [438, []]
+           [438, []],
+           [439, []]
           ]
 
 revert =  [
+           [438, [revert_minionpro]],
            [437, [revert_ipadeco, revert_ipachar]],
            [436, [revert_texgyre]],
            [435, [revert_mathdesign]],
