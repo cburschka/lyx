@@ -60,6 +60,7 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -1955,7 +1956,15 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	if (!name.empty())
 		text = name + ':' + text;
 
-	return text;
+	// We need a unique label
+	docstring label = text;
+	int i = 1;
+	while (cur.buffer()->insetLabel(label)) {
+			label = text + '-' + convert<docstring>(i);
+			++i;
+		}
+
+	return label;
 }
 
 
