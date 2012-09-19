@@ -55,9 +55,11 @@ InsetLabel::InsetLabel(Buffer * buf, InsetCommandParams const & p)
 
 void InsetLabel::initView()
 {
-	// FIXME: This seems to be used only for inset creation so
-	// we probably just need to call updateLabel() here.
-	updateLabelAndRefs(getParam("name"));
+	// This seems to be used only for inset creation.
+	// Therefore we do not update refs here, since this would
+	// erroneously change refs from existing duplicate labels
+	// (#8141).
+	updateLabel(getParam("name"));
 }
 
 
