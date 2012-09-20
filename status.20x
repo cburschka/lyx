@@ -106,6 +106,8 @@ What's new
 - Fix brackets direction in Hebrew documents when using XeTeX/Polyglossia
   and in Arabic documents on plain text output (part of bug 8251).
 
+- Fix bracket output with RTL languages (bug 8278).
+
 - Fix babel call with Arabic (arabi).
 
 - Fix suppression of language package.
