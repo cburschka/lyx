@@ -133,6 +133,9 @@ What's new
 
 - Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
 
+- Fix bug where references were erroneously changed when a duplicate label
+  name was resolved (bug 8147). 
+
 - Make sure that undo restores environment depth correctly (bug 8159).
 
 - Make sure that undo restores paragraph longest label width correctly
