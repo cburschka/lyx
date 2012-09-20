@@ -996,7 +996,7 @@ bool completeFilename(string const & ff, DepTable & head)
 }
 
 
-int iterateLine(string const token, regex const reg, string const closing,
+int iterateLine(string const token, regex const reg, string const & closing,
 		int fragment_pos, DepTable & head)
 {
 	smatch what;
