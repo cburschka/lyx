@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-07-11 20:27+0200\n"
+"POT-Creation-Date: 2012-09-20 15:31+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -17165,8 +17165,8 @@ msgid "Preview body"
 msgstr "Prehľad tela"
 
 #: src/Buffer.cpp:3274
-msgid "% Plaintext does not have a preamble."
-msgstr "% Prostý text nemá preambulu."
+msgid "Plain text does not have a preamble."
+msgstr "Prostý text nemá preambulu."
 
 #: src/Buffer.cpp:3365
 #, c-format
@@ -18747,7 +18747,7 @@ msgstr "Novým dokumentom bude priradený tento jazyk."
 
 #: src/LyXRC.cpp:3184
 msgid "Specify the default paper size."
-msgstr "Určite štandardné veľkosti stránky"
+msgstr "Určite štandardné veľkosti stránky."
 
 #: src/LyXRC.cpp:3188
 msgid ""
@@ -23946,6 +23946,10 @@ msgstr "Súhrn: "
 msgid "References: "
 msgstr "Referencie: "
 
+#: src/support/lstrings.cpp:1300
+msgid "[[Replace with the code of your language]]"
+msgstr "sk"
+
 #: src/support/Package.cpp:444
 msgid "LyX binary not found"
 msgstr "Spustiteľný súbor LyX nebol nájdený"
@@ -24173,10 +24177,6 @@ msgstr "Všetky ladiace hlásenia"
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"
-
-#: src/support/lstrings.cpp:1300
-msgid "[[Replace with the code of your language]]"
-msgstr "sk"
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
