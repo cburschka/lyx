@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-13 13:32+0200\n"
+"POT-Creation-Date: 2012-09-20 15:35+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -11793,6 +11793,10 @@ msgstr "Utopia (Mathdesign)"
 msgid "Adobe Garamond (Mathdesign)"
 msgstr "Adobe Garamond (Mathdesign)"
 
+#: lib/latexfonts:163
+msgid "Minion Pro"
+msgstr "Minion Pro"
+
 #: src/frontends/qt4/GuiDocument.cpp:130
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
@@ -18329,9 +18333,9 @@ msgstr "Prehľad preambule"
 msgid "Preview body"
 msgstr "Prehľad tela"
 
-#: src/Buffer.cpp:3342
-msgid "% Plaintext does not have a preamble."
-msgstr "% Prostý text nemá preambulu."
+#: src/Buffer.cpp:3376
+msgid "Plain text does not have a preamble."
+msgstr "Prostý text nemá preambulu."
 
 #: src/Buffer.cpp:3440
 #, c-format
