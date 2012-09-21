@@ -4323,8 +4323,9 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	WordLangTuple wl;
 	suggestions.clear();
 	word_lang = WordLangTuple();
+	bool const to_end = to.empty();
+	DocIterator const end = to_end ? doc_iterator_end(this) : to;
 	// OK, we start from here.
-	DocIterator const end = doc_iterator_end(this);
 	for (; from != end; from.forwardPos()) {
 		// We are only interested in text so remove the math CursorSlice.
 		while (from.inMathed()) {
@@ -4332,8 +4333,8 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 			from.pos()++;
 		}
 		// If from is at the end of the document (which is possible
-		// when leaving the mathed) LyX will crash later.
-		if (from == end)
+		// when leaving the mathed) LyX will crash later otherwise.
+		if (from.atEnd() || (!to_end && from >= end))
 			break;
 		to = from;
 		from.paragraph().spellCheck();
