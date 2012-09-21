@@ -7,7 +7,11 @@
 cmake_minimum_required(VERSION 2.6.4)
 
 
-set(LYX_PROJECT lyx)
+if(APPLE)
+	set(LYX_PROJECT LyX)
+else()
+	set(LYX_PROJECT lyx)
+endif()
 
 set(LYX_CMAKE_DIR "development/cmake")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/${LYX_CMAKE_DIR}/modules")
