@@ -13,6 +13,17 @@ if(LYX_BUNDLE)
 	endif()
 endif()
 
+# Overwrite package name dependent on platform
+# (Ignores the top project)
+if(APPLE)
+	# true on all systems whre __APPLE__ is defined in header files
+	set(CPACK_PACKAGE_NAME LyX)
+elseif(UNIX)
+	# True also for cygwin
+	set(CPACK_PACKAGE_NAME lyx)
+else()
+	set(CPACK_PACKAGE_NAME LyX)
+endif()
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 set(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
