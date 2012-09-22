@@ -154,7 +154,7 @@ void InsetIPADeco::metrics(MetricsInfo & mi, Dimension & dim) const
 		int d = 0;
 		docstring const label(1, char_type(0x2040));
 		theFontMetrics(font).rectText(label, w, a, d);
-		dim.asc += a * 0.5;
+		dim.asc += int(a * 0.5);
 	}
 	if (params_.type == InsetIPADecoParams::Bottomtiebar) {
 		// consider width of the inset label
@@ -167,7 +167,7 @@ void InsetIPADeco::metrics(MetricsInfo & mi, Dimension & dim) const
 		int d = 0;
 		docstring const label(1, char_type(0x203f));
 		theFontMetrics(font).rectText(label, w, a, d);
-		dim.des += d * 1.5;
+		dim.des += int(d * 1.5);
 	}
 
 	// cache the inset dimension
@@ -197,7 +197,7 @@ void InsetIPADeco::draw(PainterInfo & pi, int x, int y) const
 		docstring const label(1, char_type(0x2040));
 		theFontMetrics(font).rectText(label, w, a, d);
 		int const ww = max(dim.wid, w);
-		pi.pain.rectText(x + (ww - w) / 2, y - (asc / 2.5),
+		pi.pain.rectText(x + (ww - w) / 2, y - int(asc / 2.5),
 			label, font, Color_none, Color_none);
 	}
 
@@ -213,7 +213,7 @@ void InsetIPADeco::draw(PainterInfo & pi, int x, int y) const
 		docstring const label(1, char_type(0x203f));
 		theFontMetrics(font).rectText(label, w, a, d);
 		int const ww = max(dim.wid, w);
-		pi.pain.rectText(x + (ww - w) / 2, y + (desc / 1.5),
+		pi.pain.rectText(x + (ww - w) / 2, y + int(desc / 1.5),
 			label, font, Color_none, Color_none);
 	}
 }
@@ -449,7 +449,7 @@ void InsetIPAChar::draw(PainterInfo & pi, int x, int y) const
 		int h = fm.ascent(char_type('M'));
 		int x2 = x + w;
 		int y2 = y - h;
-		int y3 = y - (h * 0.75);
+		int y3 = y - int(h * 0.75);
 
 		pi.pain.line(x2, y, x2, y2, Color_foreground);
 		pi.pain.line(x2, y2, x, y3, Color_foreground);
@@ -461,7 +461,7 @@ void InsetIPAChar::draw(PainterInfo & pi, int x, int y) const
 		int h = fm.ascent(char_type('M'));
 		int x2 = x + w;
 		int y2 = y - h;
-		int y3 = y - (h * 0.25);
+		int y3 = y - int(h * 0.25);
 
 		pi.pain.line(x2, y, x2, y2, Color_foreground);
 		pi.pain.line(x2, y3, x, y, Color_foreground);
@@ -473,8 +473,8 @@ void InsetIPAChar::draw(PainterInfo & pi, int x, int y) const
 		int h = fm.ascent(char_type('M'));
 		int x2 = x + w;
 		int y2 = y - h;
-		int x3 = x + (w * 0.5);
-		int y3 = y - (h * 0.75);
+		int x3 = x + int(w * 0.5);
+		int y3 = y - int(h * 0.75);
 
 		pi.pain.line(x2, y, x2, y2, Color_foreground);
 		pi.pain.line(x2, y3, x3, y2, Color_foreground);
