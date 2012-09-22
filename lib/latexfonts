@@ -6,13 +6,14 @@
 #
 # Font <name>
 #	GuiName            "<Gui Name>"
-#	Family             <rm|sf|tt>
+#	Family             <rm|sf|tt|math>
 #	SwitchDefault      <0|1>
 #	Package            <LaTeX package to be loaded>
 #	Requires           <LaTeX package to test for>
 #	AltFonts           <alternative fonts (comma-separated)>
 #	OT1Font            <alternative font specifically for OT1 encoding>
 #	CompleteFont       <alternative package for the complete family>
+#	NoMathFont         <alternative font that does not change math>
 #	PackageOptions     <general options to be passed to the package>
 #	OsfOption          <option for oldstyle figure support>
 #	OsfFont            <extra font for oldstyle figures>
@@ -49,7 +50,7 @@
 #   for Package and AltFonts.
 # * OT1Font will load the defined font if the font encoding is OT1. This is
 #   necessary since some newer font packages do not support this encoding.
-#   The value "none" tells LyX not to load a package in OT1 encoding.
+#   The value "none" tells LyX not to load any font in OT1 encoding.
 #   OT1Fonts need to be defined separately using AltFont ... EndFont tags.
 # * The CompleteFont is loaded if the current font is selected as rm and
 #   both sf and tt are set to "default" (this allows f. ex. to load "bera"
@@ -148,6 +149,14 @@ Font lmodern
 	GuiName          "Latin Modern Roman"
 	Family           rm
 	Package          lmodern
+	NoMathFont       lmr
+EndFont
+
+AltFont lmr
+	GuiName          "Latin Modern Roman"
+	Family           rm
+	SwitchDefault    1
+	Requires         lmodern
 EndFont
 
 Font mdbch
@@ -193,6 +202,16 @@ Font minionpro
 	OsfDefault       1
 	Package          MinionPro
 	Provides         amssymb,amsfonts
+	NoMathFont       minionpro-nomath
+EndFont
+
+AltFont minionpro-nomath
+	GuiName          "Minion Pro"
+	Family           rm
+	OsfOption        lf
+	OsfDefault       1
+	Package          MinionPro
+	PackageOption    onlytext
 EndFont
 
 Font newcent
@@ -209,6 +228,7 @@ Font palatino
 	OsfScOption      osf
 	Package          mathpazo
 	AltFonts         mathpple,palatino-sty
+	NoMathFont       ppl
 	Requires         psnfss
 EndFont
 
@@ -216,6 +236,7 @@ AltFont mathpple
 	GuiName          "Palatino"
 	Family           rm
 	Package          mathpple
+	NoMathFont       ppl
 EndFont
 
 AltFont palatino-sty
@@ -224,11 +245,25 @@ AltFont palatino-sty
 	Package          palatino
 EndFont
 
+AltFont ppl
+	GuiName          "Palatino"
+	Family           rm
+	OsfFont          pplj
+	SwitchDefault    1
+EndFont
+
+AltFont pplj
+	GuiName          "Palatino"
+	Family           rm
+	SwitchDefault    1
+EndFont
+
 Font times
 	GuiName          "Times Roman"
 	Family           rm
 	Package          mathptmx
 	AltFonts         mathptm,times-sty
+	NoMathFont       ptm
 	Requires         psnfss
 EndFont
 
@@ -236,12 +271,19 @@ AltFont mathptm
 	GuiName          "Times Roman"
 	Family           rm
 	Package          mathptm
+	NoMathFont       ptm
 EndFont
 
 AltFont times-sty
 	GuiName          "Times Roman"
 	Family           rm
 	Package          times
+EndFont
+
+AltFont ptm
+	GuiName          "Times Roman"
+	Family           rm
+	SwitchDefault    1
 EndFont
 
 Font tgbonum
@@ -409,4 +451,15 @@ Font txtt
 	Family           tt
 	SwitchDefault    1
 	Requires         txfonts
+EndFont
+
+
+#
+# MATH FONTS
+#
+
+Font eulervm
+	GuiName          "Euler VM"
+	Family           math
+	Package          eulervm
 EndFont

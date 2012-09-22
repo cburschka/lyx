@@ -12,6 +12,16 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-09-22 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 440 
+	  Math (TeX) font UI.
+	  New Buffer param "\math_font <value>",
+	  supported values are:
+	  * "auto": automatically adapt math font (the status quo ante).
+	  * "default": use class default, i.e. prevent TeX font packages
+	    from changing the math font, if possible.
+	  * "eulervm": use the eulervm package.
+
 2012-09-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 439 
 	  Support for the MinionPro LaTeX font.

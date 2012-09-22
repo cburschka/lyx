@@ -40,11 +40,13 @@ LaTeXFont LaTeXFont::altFont(docstring const & name)
 }
 
 
-bool LaTeXFont::available(bool ot1)
+bool LaTeXFont::available(bool ot1, bool nomath)
 {
-	if (ot1 && !ot1font_.empty())
+	if (nomath && !nomathfont_.empty())
+		return altFont(nomathfont_).available(ot1, nomath);
+	else if (ot1 && !ot1font_.empty())
 		return (ot1font_ == "none") ?
-			true : altFont(ot1font_).available(ot1);
+			true : altFont(ot1font_).available(ot1, nomath);
 	else if (requires_.empty() && package_.empty())
 		return true;
 	else if (!requires_.empty()
@@ -55,7 +57,7 @@ bool LaTeXFont::available(bool ot1)
 		return true;
 	else if (!altfonts_.empty()) {
 		for (size_t i = 0; i < altfonts_.size(); ++i) {
-			if (altFont(altfonts_[i]).available(ot1))
+			if (altFont(altfonts_[i]).available(ot1, nomath))
 				return true;
 		}
 	}
@@ -63,16 +65,29 @@ bool LaTeXFont::available(bool ot1)
 }
 
 
-bool LaTeXFont::providesOSF(bool ot1, bool complete)
+bool LaTeXFont::providesNoMath(bool ot1, bool complete)
 {
-	docstring const usedfont = getUsedFont(ot1, complete);
+	docstring const usedfont = getUsedFont(ot1, complete, false);
 
 	if (usedfont.empty())
 		return false;
 	else if (usedfont != name_)
-		return altFont(usedfont).providesOSF(ot1, complete);
+		return altFont(usedfont).providesNoMath(ot1, complete);
+
+	return (!nomathfont_.empty() && available(ot1, true));
+}
+
+
+bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
+{
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+
+	if (usedfont.empty())
+		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).providesOSF(ot1, complete, nomath);
 	else if (!osffont_.empty())
-		return altFont(osffont_).available(ot1);
+		return altFont(osffont_).available(ot1, nomath);
 	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
@@ -80,14 +95,14 @@ bool LaTeXFont::providesOSF(bool ot1, bool complete)
 }
 
 
-bool LaTeXFont::providesSC(bool ot1, bool complete)
+bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
 
 	if (usedfont.empty())
 		return false;
 	else if (usedfont != name_)
-		return altFont(usedfont).providesSC(ot1, complete);
+		return altFont(usedfont).providesSC(ot1, complete, nomath);
 	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
@@ -95,28 +110,28 @@ bool LaTeXFont::providesSC(bool ot1, bool complete)
 }
 
 
-bool LaTeXFont::providesScale(bool ot1, bool complete)
+bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
 
 	if (usedfont.empty())
 		return false;
 	else if (usedfont != name_)
-		return altFont(usedfont).providesScale(ot1, complete);
+		return altFont(usedfont).providesScale(ot1, complete, nomath);
 	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
 	return (!scaleoption_.empty());
 }
 
-bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete)
+bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete, bool nomath)
 {
-	docstring const usedfont = getUsedFont(ot1, complete);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
 
 	if (usedfont.empty())
 		return false;
 	else if (usedfont != name_)
-		return altFont(usedfont).provides(name, ot1, complete);
+		return altFont(usedfont).provides(name, ot1, complete, nomath);
 	else if (provides_.empty())
 		return false;
 
@@ -128,12 +143,14 @@ bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete)
 }
 
 
-docstring const LaTeXFont::getUsedFont(bool ot1, bool complete)
+docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 {
-	if (ot1 && !ot1font_.empty())
+	if (nomath && !nomathfont_.empty() && available(ot1, true))
+		return nomathfont_;
+	else if (ot1 && !ot1font_.empty())
 		return (ot1font_ == "none") ? docstring() : ot1font_;
 	else if (family_ == "rm" && complete && !completefont_.empty()
-	         && altFont(completefont_).available(ot1))
+	         && altFont(completefont_).available(ot1, nomath))
 			return completefont_;
 	else if (switchdefault_) {
 		if (requires_.empty()
@@ -150,8 +167,8 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete)
 	else if (!altfonts_.empty()) {
 		for (size_t i = 0; i < altfonts_.size(); ++i) {
 			LaTeXFont altf = altFont(altfonts_[i]);
-			if (altf.available(ot1))
-				return altf.getUsedFont(ot1, complete);
+			if (altf.available(ot1, nomath))
+				return altf.getUsedFont(ot1, complete, nomath);
 		}
 	}
 
@@ -183,12 +200,13 @@ string const LaTeXFont::getAvailablePackage(bool dryrun)
 }
 
 
-string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf, int scale)
+string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf,
+					  int scale, bool nomath)
 {
 	ostringstream os;
 	bool const needosfopt = (osf != osfdefault_);
-	bool const has_osf = providesOSF(ot1, complete);
-	bool const has_sc = providesSC(ot1, complete);
+	bool const has_osf = providesOSF(ot1, complete, nomath);
+	bool const has_sc = providesSC(ot1, complete, nomath);
 
 	if (!packageoption_.empty())
 		os << to_ascii(packageoption_);
@@ -212,7 +230,7 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 	}
 
 	if (scale != 100 && !scaleoption_.empty()
-	    && providesScale(ot1, complete)) {
+	    && providesScale(ot1, complete, nomath)) {
 		if (!os.str().empty())
 			os << ',';
 		os << subst(to_ascii(scaleoption_), "$$val",
@@ -223,22 +241,22 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 
 
 string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool sc,
-				     bool osf, int const & scale)
+				     bool osf, bool nomath, int const & scale)
 {
 	ostringstream os;
 
-	docstring const usedfont = getUsedFont(ot1, complete);
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
 	if (usedfont.empty())
 		return string();
 	else if (usedfont != name_)
-		return altFont(usedfont).getLaTeXCode(dryrun, ot1, complete, sc, osf, scale);
+		return altFont(usedfont).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
 
 	if (switchdefault_) {
 		if (family_.empty()) {
 			LYXERR0("Error: Font `" << name_ << "' has no family defined!");
 			return string();
 		}
-		if (available(ot1) || dryrun)
+		if (available(ot1, nomath) || dryrun)
 			os << "\\renewcommand{\\" << to_ascii(family_) << "default}{"
 			   << to_ascii(name_) << "}\n";
 		else
@@ -249,14 +267,14 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 	} else {
 		string const package =
 			getAvailablePackage(dryrun);
-		string const packageopts = getPackageOptions(ot1, complete, sc, osf, scale);
+		string const packageopts = getPackageOptions(ot1, complete, sc, osf, scale, nomath);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
 		else if (!packageopts.empty() && !package.empty())
 			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
-	if (osf && providesOSF(ot1, complete) && !osffont_.empty())
-		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, scale);
+	if (osf && providesOSF(ot1, complete, nomath) && !osffont_.empty())
+		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
 
 	return os.str();
 }
@@ -270,6 +288,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_END,
 		LF_FAMILY,
 		LF_GUINAME,
+		LF_NOMATHFONT,
 		LF_OSFDEFAULT,
 		LF_OSFFONT,
 		LF_OSFOPTION,
@@ -291,6 +310,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "endfont",              LF_END },
 		{ "family",               LF_FAMILY },
 		{ "guiname",              LF_GUINAME },
+		{ "nomathfont",           LF_NOMATHFONT },
 		{ "osfdefault",           LF_OSFDEFAULT },
 		{ "osffont",              LF_OSFFONT },
 		{ "osfoption",            LF_OSFOPTION },
@@ -342,6 +362,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 			break;
 		case LF_GUINAME:
 			lex >> guiname_;
+			break;
+		case LF_NOMATHFONT:
+			lex >> nomathfont_;
 			break;
 		case LF_OSFOPTION:
 			lex >> osfoption_;
@@ -462,7 +485,7 @@ LaTeXFonts::TexFontMap LaTeXFonts::getLaTeXFonts()
 
 LaTeXFont LaTeXFonts::getLaTeXFont(docstring const & name)
 {
-	if (name == "default")
+	if (name == "default" || name == "auto")
 		return LaTeXFont();
 	if (texfontmap_.empty())
 		readLaTeXFonts();
@@ -476,7 +499,7 @@ LaTeXFont LaTeXFonts::getLaTeXFont(docstring const & name)
 
 LaTeXFont LaTeXFonts::getAltFont(docstring const & name)
 {
-	if (name == "default")
+	if (name == "default" || name == "auto")
 		return LaTeXFont();
 	if (texaltfontmap_.empty())
 		readLaTeXFonts();

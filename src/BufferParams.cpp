@@ -376,6 +376,7 @@ BufferParams::BufferParams()
 	fonts_roman = "default";
 	fonts_sans = "default";
 	fonts_typewriter = "default";
+	fonts_math = "auto";
 	fonts_default_family = "default";
 	useNonTeXFonts = false;
 	fonts_expert_sc = false;
@@ -663,6 +664,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\font_typewriter") {
 		lex.eatLine();
 		fonts_typewriter = lex.getString();
+	} else if (token == "\\font_math") {
+		lex.eatLine();
+		fonts_math = lex.getString();
 	} else if (token == "\\font_default_family") {
 		lex >> fonts_default_family;
 	} else if (token == "\\use_non_tex_fonts") {
@@ -988,6 +992,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\font_roman " << fonts_roman
 	   << "\n\\font_sans " << fonts_sans
 	   << "\n\\font_typewriter " << fonts_typewriter
+	   << "\n\\font_math " << fonts_math
 	   << "\n\\font_default_family " << fonts_default_family
 	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
 	   << "\n\\font_sc " << convert<string>(fonts_expert_sc)
@@ -2776,10 +2781,9 @@ string const BufferParams::parseFontName(string const & name) const
 
 string const BufferParams::loadFonts(LaTeXFeatures & features) const
 {
-	// TODO: separate math fonts.
-
 	if (fonts_roman == "default" && fonts_sans == "default"
-	    && fonts_typewriter == "default")
+	    && fonts_typewriter == "default"
+	    && (fonts_math == "default" || fonts_math == "auto"))
 		//nothing to do
 		return string();
 
@@ -2843,18 +2847,27 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
 	bool const complete = (fonts_sans == "default" && fonts_typewriter == "default");
+	bool const nomath = (fonts_math == "default");
 
 	// ROMAN FONTS
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_roman)).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures);
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		nomath);
 
 	// SANS SERIF
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_sans)).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures, fonts_sans_scale);
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		nomath, fonts_sans_scale);
 
 	// MONOSPACED/TYPEWRITER
 	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_typewriter)).getLaTeXCode(
-		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures, fonts_typewriter_scale);
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		nomath, fonts_typewriter_scale);
+
+	// MATH
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_math)).getLaTeXCode(
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
+		nomath);
 
 	return os.str();
 }

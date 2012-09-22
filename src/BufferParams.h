@@ -248,6 +248,8 @@ public:
 	std::string fonts_sans;
 	/// the tt font
 	std::string fonts_typewriter;
+	/// the math font
+	std::string fonts_math;
 	/// the default family (rm, sf, tt)
 	std::string fonts_default_family;
 	/// use the fonts of the OS (OpenType, True Type) directly

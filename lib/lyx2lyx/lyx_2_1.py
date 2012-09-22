@@ -1004,6 +1004,39 @@ def revert_minionpro(document):
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_roman default"
 
+
+def revert_mathfonts(document):
+    " Revert native math font definitions to LaTeX " 
+
+    i = find_token(document.header, "\\font_math", 0)
+    if i == -1:
+       return
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        val = get_value(document.header, "\\font_math", i)
+        if val == "eulervm":
+            add_to_preamble(document, "\\usepackage{eulervm}")
+        elif val == "default":
+            mathfont_dict = {
+            "lmodern":  "\\renewcommand{\\rmdefault}{lmr}",
+            "minionpro":  "\\usepackage[onlytext,lf]{MinionPro}",
+            "minionpro-osf":  "\\usepackage[onlytext]{MinionPro}",
+            "palatino":  "\\renewcommand{\\rmdefault}{ppl}",
+            "palatino-osf":  "\\renewcommand{\\rmdefault}{pplj}",
+            "times":  "\\renewcommand{\\rmdefault}{ptm}",
+            }
+            j = find_token(document.header, "\\font_roman", 0)
+            if j != -1:
+                rm = get_value(document.header, "\\font_roman", j)
+                k = find_token(document.header, "\\font_osf true", 0)
+                if k != -1:
+                    rm += "-osf"
+                if rm in mathfont_dict.keys():
+                    add_to_preamble(document, mathfont_dict[rm])
+                    document.header[j] = "\\font_roman default"
+                    if k != -1:
+                        document.header[k] = "\\font_osf false"
+    del document.header[i]
+
 ##
 # Conversion hub
 #
@@ -1035,10 +1068,12 @@ convert = [
            [436, []],
            [437, []],
            [438, []],
-           [439, []]
+           [439, []],
+           [440, []]
           ]
 
 revert =  [
+           [439, [revert_mathfonts]],
            [438, [revert_minionpro]],
            [437, [revert_ipadeco, revert_ipachar]],
            [436, [revert_texgyre]],

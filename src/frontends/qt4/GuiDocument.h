@@ -122,6 +122,7 @@ private Q_SLOTS:
 	void deleteBoxBackgroundColor();
 	void languageChanged(int);
 	void osFontsChanged(bool);
+	void mathFontChanged(int);
 	void branchesRename(docstring const &, docstring const &);
 private:
 	/// validate listings parameters and return an error message, if any
@@ -234,6 +235,8 @@ private:
 	bool providesSC(QString const & font) const;
 	/// does this font provide size adjustment?
 	bool providesScale(QString const & font) const;
+	/// does this font provide an alternative without math?
+	bool providesNoMath(QString const & font) const;
 	///
 	void executeBranchRenaming() const;
 	///
@@ -246,11 +249,15 @@ private:
 	///
 	void updateTexFonts();
 	///
+	void updateMathFonts(QString const & rm);
+	///
 	void updateFontOptions();
 	///
 	bool ot1() const;
 	///
 	bool completeFontset() const;
+	///
+	bool noMathFont() const;
 	///
 	BufferParams bp_;
 	/// List of names of available modules

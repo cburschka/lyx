@@ -56,25 +56,28 @@ public:
 	/// Alternative requirement to test for
 	docstring const & requires() { return requires_; }
 	/// Does this font provide a given \p feature
-	bool provides(std::string const & name, bool ot1, bool complete);
+	bool provides(std::string const & name, bool ot1,
+		      bool complete, bool nomath);
 	/// Issue the familydefault switch
 	bool switchdefault() const { return switchdefault_; }
 	/// Does the font provide Old Style Figures as default?
 	bool osfDefault() const { return osfdefault_; }
 	/// Is this font available?
-	bool available(bool ot1);
+	bool available(bool ot1, bool nomath);
+	/// Does this font provide an alternative without math? 
+	bool providesNoMath(bool ot1, bool complete);
 	/// Does this font provide Old Style Figures?
-	bool providesOSF(bool ot1, bool complete);
+	bool providesOSF(bool ot1, bool complete, bool nomath);
 	/// Does this font provide optional true SmallCaps?
-	bool providesSC(bool ot1, bool complete);
+	bool providesSC(bool ot1, bool complete, bool nomath);
 	/// Does this font provide scaling?
-	bool providesScale(bool ot1, bool complete);
+	bool providesScale(bool ot1, bool complete, bool nomath);
 	/// Return the LaTeX Code
 	std::string const getLaTeXCode(bool dryrun, bool ot1, bool complete,
-				       bool sc, bool osf,
+				       bool sc, bool osf, bool nomath,
 				       int const & scale = 100);
 	/// Return the actually used font
-	docstring const getUsedFont(bool ot1, bool complete);
+	docstring const getUsedFont(bool ot1, bool complete, bool nomath);
 	///
 	bool read(Lexer & lex);
 	///
@@ -87,7 +90,8 @@ private:
 					    bool complete,
 					    bool sc,
 					    bool osf,
-					    int scale);
+					    int scale,
+					    bool nomath);
 	/// Return an alternative font
 	LaTeXFont altFont(docstring const & name);
 	///
@@ -102,6 +106,8 @@ private:
 	std::vector<docstring> altfonts_;
 	///
 	docstring completefont_;
+	///
+	docstring nomathfont_;
 	///
 	docstring ot1font_;
 	///

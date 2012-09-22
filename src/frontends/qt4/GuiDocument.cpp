@@ -168,6 +168,7 @@ vector<pair<string, QString> > pagestyles;
 QMap<QString, QString> rmfonts_;
 QMap<QString, QString> sffonts_;
 QMap<QString, QString> ttfonts_;
+QMap<QString, QString> mathfonts_;
 
 
 } // anonymous namespace
@@ -817,6 +818,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontsTypewriterCO, SIGNAL(activated(int)),
 		this, SLOT(ttChanged(int)));
+	connect(fontModule->fontsMathCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontsMathCO, SIGNAL(activated(int)),
+		this, SLOT(mathFontChanged(int)));
 	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontencCO, SIGNAL(activated(int)),
@@ -1773,10 +1778,18 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 
 	fontModule->fontencLA->setEnabled(tex_fonts);
 	fontModule->fontencCO->setEnabled(tex_fonts);
+	fontModule->fontsMathCO->setEnabled(tex_fonts);
+	fontModule->fontsMathLA->setEnabled(tex_fonts);
 	if (!tex_fonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
 		fontencChanged(fontModule->fontencCO->currentIndex()); 
+}
+
+
+void GuiDocument::mathFontChanged(int)
+{
+	updateFontOptions();
 }
 
 
@@ -1801,6 +1814,7 @@ void GuiDocument::updateFontOptions()
 				fontModule->fontsRomanCO->currentIndex()).toString();
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+	updateMathFonts(font);
 }
 
 
@@ -1841,6 +1855,13 @@ bool GuiDocument::completeFontset() const
 }
 
 
+bool GuiDocument::noMathFont() const
+{
+	return (fontModule->fontsMathCO->itemData(
+	        fontModule->fontsMathCO->currentIndex()).toString() == "default");
+}
+
+
 void GuiDocument::updateTexFonts()
 {
 	LaTeXFonts::TexFontMap texfontmap = theLaTeXFonts().getLaTeXFonts();
@@ -1855,7 +1876,7 @@ void GuiDocument::updateTexFonts()
 		}
 		docstring const family = lf.family();
 		docstring guiname = translateIfPossible(lf.guiname());
-		if (!lf.available(ot1()))
+		if (!lf.available(ot1(), noMathFont()))
 			guiname += _(" (not installed)");
 		if (family == "rm")
 			rmfonts_.insert(toqstr(guiname), toqstr(it->first));
@@ -1863,6 +1884,8 @@ void GuiDocument::updateTexFonts()
 			sffonts_.insert(toqstr(guiname), toqstr(it->first));
 		else if (family == "tt")
 			ttfonts_.insert(toqstr(guiname), toqstr(it->first));
+		else if (family == "math")
+			mathfonts_.insert(toqstr(guiname), toqstr(it->first));
 	}
 }
 
@@ -1872,6 +1895,7 @@ void GuiDocument::updateFontlist()
 	fontModule->fontsRomanCO->clear();
 	fontModule->fontsSansCO->clear();
 	fontModule->fontsTypewriterCO->clear();
+	fontModule->fontsMathCO->clear();
 
 	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
 	if (fontModule->osFontsCB->isChecked()) {
@@ -1912,6 +1936,14 @@ void GuiDocument::updateFontlist()
 		fontModule->fontsTypewriterCO->addItem(tti.key(), tti.value());
 		++tti;
 	}
+
+	fontModule->fontsMathCO->addItem(qt_("Automatic"), QString("auto"));
+	fontModule->fontsMathCO->addItem(qt_("Class Default"), QString("default"));
+	QMap<QString, QString>::const_iterator mmi = mathfonts_.constBegin();
+	while (mmi != mathfonts_.constEnd()) {
+		fontModule->fontsMathCO->addItem(mmi.key(), mmi.value());
+		++mmi;
+	}
 }
 
 
@@ -1925,6 +1957,24 @@ void GuiDocument::fontencChanged(int item)
 }
 
 
+void GuiDocument::updateMathFonts(QString const & rm)
+{
+	if (fontModule->osFontsCB->isChecked())
+		return;
+	QString const math =
+		fontModule->fontsMathCO->itemData(fontModule->fontsMathCO->currentIndex()).toString();
+	int const i = fontModule->fontsMathCO->findData("default");
+	if (providesNoMath(rm) && i == -1)
+		fontModule->fontsMathCO->insertItem(1, qt_("Class Default"), QString("default"));
+	else if (!providesNoMath(rm) && i != -1) {
+		int const c = fontModule->fontsMathCO->currentIndex();
+		fontModule->fontsMathCO->removeItem(i);
+		if (c == i)
+			fontModule->fontsMathCO->setCurrentIndex(0);
+	}
+}
+
+
 void GuiDocument::romanChanged(int item)
 {
 	if (fontModule->osFontsCB->isChecked())
@@ -1933,6 +1983,7 @@ void GuiDocument::romanChanged(int item)
 		fontModule->fontsRomanCO->itemData(item).toString();
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+	updateMathFonts(font);
 }
 
 
@@ -2708,6 +2759,10 @@ void GuiDocument::applyView()
 		fromqstr(fontModule->fontsTypewriterCO->
 			itemData(fontModule->fontsTypewriterCO->currentIndex()).toString());
 
+	bp_.fonts_math =
+		fromqstr(fontModule->fontsMathCO->
+			itemData(fontModule->fontsMathCO->currentIndex()).toString());
+
 	QString const fontenc =
 		fontModule->fontencCO->itemData(fontModule->fontencCO->currentIndex()).toString();
 	if (fontenc == "custom")
@@ -3136,14 +3191,26 @@ void GuiDocument::paramsToDialog()
 	}
 	fontModule->fontsTypewriterCO->setCurrentIndex(tpos);
 
+	font = toqstr(bp_.fonts_math);
+	int mpos = fontModule->fontsMathCO->findData(font);
+	if (mpos == -1) {
+		mpos = fontModule->fontsMathCO->count();
+		fontModule->fontsMathCO->addItem(font + qt_(" (not installed)"), font);
+	}
+	fontModule->fontsMathCO->setCurrentIndex(mpos);
+
 	if (bp_.useNonTeXFonts && os_fonts_available) {
 		fontModule->fontencLA->setEnabled(false);
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
+		fontModule->fontsMathCO->setEnabled(false);
+		fontModule->fontsMathLA->setEnabled(false);
 	} else {
 		fontModule->fontencLA->setEnabled(true);
 		fontModule->fontencCO->setEnabled(true);
 		fontModule->fontencLE->setEnabled(true);
+		fontModule->fontsMathCO->setEnabled(true);
+		fontModule->fontsMathLA->setEnabled(true);
 		romanChanged(rpos);
 		sansChanged(spos);
 		ttChanged(tpos);
@@ -3632,7 +3699,9 @@ bool GuiDocument::providesOSF(QString const & font) const
 		// have OSF support. But how?
 		return true;
 	return theLaTeXFonts().getLaTeXFont(
-				qstring_to_ucs4(font)).providesOSF(ot1(), completeFontset());
+				qstring_to_ucs4(font)).providesOSF(ot1(),
+								   completeFontset(),
+								   noMathFont());
 }
 
 
@@ -3641,7 +3710,9 @@ bool GuiDocument::providesSC(QString const & font) const
 	if (fontModule->osFontsCB->isChecked())
 		return false;
 	return theLaTeXFonts().getLaTeXFont(
-				qstring_to_ucs4(font)).providesSC(ot1(), completeFontset());
+				qstring_to_ucs4(font)).providesSC(ot1(),
+								  completeFontset(),
+								  noMathFont());
 }
 
 
@@ -3650,7 +3721,19 @@ bool GuiDocument::providesScale(QString const & font) const
 	if (fontModule->osFontsCB->isChecked())
 		return true;
 	return theLaTeXFonts().getLaTeXFont(
-				qstring_to_ucs4(font)).providesScale(ot1(), completeFontset());
+				qstring_to_ucs4(font)).providesScale(ot1(),
+								     completeFontset(),
+								     noMathFont());
+}
+
+
+bool GuiDocument::providesNoMath(QString const & font) const
+{
+	if (fontModule->osFontsCB->isChecked())
+		return false;
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).providesNoMath(ot1(),
+								      completeFontset());
 }
 
 

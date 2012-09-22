@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 438
+\lyxformat 440
 \begin_document
 \begin_header
 \textclass article
@@ -12,6 +12,7 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -414,6 +415,34 @@ eco
 Computer Modern
 \family default
  font family.
+\end_layout
+
+\begin_layout Subsection
+Euler Virtual Math
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "eulervm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/eulervm/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+eulervm
+\family default
+ package provides access to the Euler math fonts.
  
 \end_layout
 
