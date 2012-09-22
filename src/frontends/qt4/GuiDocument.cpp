@@ -1832,6 +1832,15 @@ bool GuiDocument::ot1() const
 }
 
 
+bool GuiDocument::completeFontset() const
+{
+	return (fontModule->fontsSansCO->itemData(
+			fontModule->fontsSansCO->currentIndex()).toString() == "default"
+		&& fontModule->fontsSansCO->itemData(
+			fontModule->fontsSansCO->currentIndex()).toString() == "default");
+}
+
+
 void GuiDocument::updateTexFonts()
 {
 	LaTeXFonts::TexFontMap texfontmap = theLaTeXFonts().getLaTeXFonts();
@@ -3622,7 +3631,8 @@ bool GuiDocument::providesOSF(QString const & font) const
 		// FIXME: we should check if the fonts really
 		// have OSF support. But how?
 		return true;
-	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesOSF(ot1());
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).providesOSF(ot1(), completeFontset());
 }
 
 
@@ -3630,7 +3640,8 @@ bool GuiDocument::providesSC(QString const & font) const
 {
 	if (fontModule->osFontsCB->isChecked())
 		return false;
-	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesSC(ot1());
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).providesSC(ot1(), completeFontset());
 }
 
 
@@ -3638,7 +3649,8 @@ bool GuiDocument::providesScale(QString const & font) const
 {
 	if (fontModule->osFontsCB->isChecked())
 		return true;
-	return theLaTeXFonts().getLaTeXFont(qstring_to_ucs4(font)).providesScale(ot1());
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).providesScale(ot1(), completeFontset());
 }
 
 

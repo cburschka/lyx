@@ -34,54 +34,92 @@ namespace lyx {
 LaTeXFonts latexfonts;
 
 
-bool LaTeXFont::available(bool ot1) const
+LaTeXFont LaTeXFont::altFont(docstring const & name)
 {
-	return ot1 ? available_ot1_ : available_;
+	return theLaTeXFonts().getAltFont(name);
 }
 
 
-bool LaTeXFont::providesOSF(bool ot1) const
+bool LaTeXFont::available(bool ot1)
 {
-	if (!osfpackage_.empty())
-		return LaTeXFeatures::isAvailable(to_ascii(osfpackage_));
+	if (ot1 && !ot1font_.empty())
+		return (ot1font_ == "none") ?
+			true : altFont(ot1font_).available(ot1);
+	else if (requires_.empty() && package_.empty())
+		return true;
+	else if (!requires_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(requires_)))
+		return true;
+	else if (!package_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
+		return true;
+	else if (!altfonts_.empty()) {
+		for (size_t i = 0; i < altfonts_.size(); ++i) {
+			if (altFont(altfonts_[i]).available(ot1))
+				return true;
+		}
+	}
+	return false;
+}
 
-	if (ot1 && !ot1package_.empty() && ot1package_ != "none")
+
+bool LaTeXFont::providesOSF(bool ot1, bool complete)
+{
+	docstring const usedfont = getUsedFont(ot1, complete);
+
+	if (usedfont.empty())
 		return false;
-
-	if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	else if (usedfont != name_)
+		return altFont(usedfont).providesOSF(ot1, complete);
+	else if (!osffont_.empty())
+		return altFont(osffont_).available(ot1);
+	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
 	return (!osfoption_.empty() || !osfscoption_.empty());
 }
 
 
-bool LaTeXFont::providesSC(bool ot1) const
+bool LaTeXFont::providesSC(bool ot1, bool complete)
 {
-	if (ot1 && !ot1package_.empty() && ot1package_ != "none")
-		return false;
+	docstring const usedfont = getUsedFont(ot1, complete);
 
-	if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	if (usedfont.empty())
+		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).providesSC(ot1, complete);
+	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
 	return (!scoption_.empty() || !osfscoption_.empty());
 }
 
 
-bool LaTeXFont::providesScale(bool ot1) const
+bool LaTeXFont::providesScale(bool ot1, bool complete)
 {
-	if (ot1 && !ot1package_.empty() && ot1package_ != "none")
-		return false;
+	docstring const usedfont = getUsedFont(ot1, complete);
 
-	if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	if (usedfont.empty())
+		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).providesScale(ot1, complete);
+	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return false;
 
 	return (!scaleoption_.empty());
 }
 
-bool LaTeXFont::provides(std::string const & name) const
+bool LaTeXFont::provides(std::string const & name, bool ot1, bool complete)
 {
-	if (provides_.empty())
+	docstring const usedfont = getUsedFont(ot1, complete);
+
+	if (usedfont.empty())
 		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).provides(name, ot1, complete);
+	else if (provides_.empty())
+		return false;
+
 	for (size_t i = 0; i < provides_.size(); ++i) {
 		if (provides_[i] == name)
 			return true;
@@ -90,75 +128,91 @@ bool LaTeXFont::provides(std::string const & name) const
 }
 
 
-string const LaTeXFont::getAvailablePackage(bool dryrun, bool ot1, bool complete, bool & alt)
+docstring const LaTeXFont::getUsedFont(bool ot1, bool complete)
 {
-	if (ot1 && !ot1package_.empty()) {
-		if (ot1package_ != "none"
-		    && (LaTeXFeatures::isAvailable(to_ascii(ot1package_)) || dryrun))
-			return to_ascii(ot1package_);
-		if (!dryrun && ot1package_ != "none")
-			frontend::Alert::warning(_("Font not available"),
-					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
-						  "is not available on your system. LyX will fall back to the default font."),
-						ot1package_, guiname_), true);
-		return string();
+	if (ot1 && !ot1font_.empty())
+		return (ot1font_ == "none") ? docstring() : ot1font_;
+	else if (family_ == "rm" && complete && !completefont_.empty()
+	         && altFont(completefont_).available(ot1))
+			return completefont_;
+	else if (switchdefault_) {
+		if (requires_.empty()
+		    || (!requires_.empty()
+		        && LaTeXFeatures::isAvailable(to_ascii(requires_))))
+			return name_;
 	}
-	if (family_ == "rm" && complete && !completepackage_.empty()) {
-		if (LaTeXFeatures::isAvailable(to_ascii(completepackage_)) || dryrun)
-			return to_ascii(completepackage_);
-	}
-	if (!package_.empty()) {
-		if (!requires_.empty() && LaTeXFeatures::isAvailable(to_ascii(requires_)))
-			return to_ascii(package_);
-		if (LaTeXFeatures::isAvailable(to_ascii(package_)))
-			return to_ascii(package_);
-		else if (!altpackages_.empty()) {
-			for (size_t i = 0; i < altpackages_.size(); ++i) {
-				if (LaTeXFeatures::isAvailable(to_ascii(altpackages_[i]))) {
-					alt = true;
-					return to_ascii(altpackages_[i]);
-				}
-			}
+	else if (!requires_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(requires_)))
+			return name_;
+	else if (!package_.empty()
+		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
+			return name_;
+	else if (!altfonts_.empty()) {
+		for (size_t i = 0; i < altfonts_.size(); ++i) {
+			LaTeXFont altf = altFont(altfonts_[i]);
+			if (altf.available(ot1))
+				return altf.getUsedFont(ot1, complete);
 		}
-		// Output unavailable packages in source preview
-		if (dryrun)
-			return to_ascii(package_);
-		docstring const req = requires_.empty() ? package_ : requires_;
-			frontend::Alert::warning(_("Font not available"),
-					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
-						  "is not available on your system. LyX will fall back to the default font."),
-						req, guiname_), true);
 	}
+
+	return docstring();
+}
+
+
+string const LaTeXFont::getAvailablePackage(bool dryrun)
+{
+	if (package_.empty())
+		return string();
+
+	string const package = to_ascii(package_);
+	if (!requires_.empty() && LaTeXFeatures::isAvailable(to_ascii(requires_)))
+		return package;
+	else if (LaTeXFeatures::isAvailable(package))
+		return package;
+	// Output unavailable packages in source preview
+	else if (dryrun)
+		return package;
+
+	docstring const req = requires_.empty() ? package_ : requires_;
+	frontend::Alert::warning(_("Font not available"),
+			bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
+				  "is not available on your system. LyX will fall back to the default font."),
+				req, guiname_), true);
+
 	return string();
 }
 
 
-string const LaTeXFont::getPackageOptions(bool ot1, bool sc, bool osf, int scale)
+string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool osf, int scale)
 {
-	if (ot1 && !ot1package_.empty())
-		return string();
-
 	ostringstream os;
 	bool const needosfopt = (osf != osfdefault_);
+	bool const has_osf = providesOSF(ot1, complete);
+	bool const has_sc = providesSC(ot1, complete);
+
 	if (!packageoption_.empty())
 		os << to_ascii(packageoption_);
-	if (sc && needosfopt && providesOSF() && providesSC()) {
+
+	if (sc && needosfopt && has_osf && has_sc) {
 		if (!os.str().empty())
 			os << ',';
 		if (!osfscoption_.empty())
 			os << to_ascii(osfscoption_);
 		else
-			os << to_ascii(osfoption_) << ',' << to_ascii(scoption_);
-	} else if (needosfopt && providesOSF()) {
+			os << to_ascii(osfoption_)
+			   << ',' << to_ascii(scoption_);
+	} else if (needosfopt && has_osf) {
 		if (!os.str().empty())
 			os << ',';
 		os << to_ascii(osfoption_);
-	} else if (sc && providesSC()) {
+	} else if (sc && has_sc) {
 		if (!os.str().empty())
 			os << ',';
 		os << to_ascii(scoption_);
 	}
-	if (scale != 100 && !scaleoption_.empty()) {
+
+	if (scale != 100 && !scaleoption_.empty()
+	    && providesScale(ot1, complete)) {
 		if (!os.str().empty())
 			os << ',';
 		os << subst(to_ascii(scaleoption_), "$$val",
@@ -173,6 +227,12 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 {
 	ostringstream os;
 
+	docstring const usedfont = getUsedFont(ot1, complete);
+	if (usedfont.empty())
+		return string();
+	else if (usedfont != name_)
+		return altFont(usedfont).getLaTeXCode(dryrun, ot1, complete, sc, osf, scale);
+
 	if (switchdefault_) {
 		if (family_.empty()) {
 			LYXERR0("Error: Font `" << name_ << "' has no family defined!");
@@ -180,25 +240,23 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 		}
 		if (available(ot1) || dryrun)
 			os << "\\renewcommand{\\" << to_ascii(family_) << "default}{"
-			<< to_ascii(name_) << "}\n";
+			   << to_ascii(name_) << "}\n";
 		else
 			frontend::Alert::warning(_("Font not available"),
 					bformat(_("The LaTeX package `%1$s' needed for the font `%2$s'\n"
 						  "is not available on your system. LyX will fall back to the default font."),
 						requires_, guiname_), true);
 	} else {
-		bool alt = false;
 		string const package =
-			getAvailablePackage(dryrun, ot1, complete, alt);
-		// Package options are not for alternative packages
-		string const packageopts = alt ? string() : getPackageOptions(ot1, sc, osf, scale);
+			getAvailablePackage(dryrun);
+		string const packageopts = getPackageOptions(ot1, complete, sc, osf, scale);
 		if (packageopts.empty() && !package.empty())
 			os << "\\usepackage{" << package << "}\n";
 		else if (!packageopts.empty() && !package.empty())
 			os << "\\usepackage[" << packageopts << "]{" << package << "}\n";
 	}
-	if (osf && providesOSF(ot1) && !osfpackage_.empty())
-		os << "\\usepackage{" << to_ascii(osfpackage_) << "}\n";
+	if (osf && providesOSF(ot1, complete) && !osffont_.empty())
+		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, scale);
 
 	return os.str();
 }
@@ -207,16 +265,16 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 bool LaTeXFont::readFont(Lexer & lex)
 {
 	enum LaTeXFontTags {
-		LF_ALT_PACKAGES = 1,
-		LF_COMPLETE_PACKAGE,
+		LF_ALT_FONTS = 1,
+		LF_COMPLETE_FONT,
 		LF_END,
 		LF_FAMILY,
 		LF_GUINAME,
 		LF_OSFDEFAULT,
+		LF_OSFFONT,
 		LF_OSFOPTION,
-		LF_OSFPACKAGE,
 		LF_OSFSCOPTION,
-		LF_OT1_PACKAGE,
+		LF_OT1_FONT,
 		LF_PACKAGE,
 		LF_PACKAGEOPTION,
 		LF_PROVIDES,
@@ -228,16 +286,16 @@ bool LaTeXFont::readFont(Lexer & lex)
 
 	// Keep these sorted alphabetically!
 	LexerKeyword latexFontTags[] = {
-		{ "altpackages",          LF_ALT_PACKAGES },
-		{ "completepackage",      LF_COMPLETE_PACKAGE },
+		{ "altfonts",             LF_ALT_FONTS },
+		{ "completefont",         LF_COMPLETE_FONT },
 		{ "endfont",              LF_END },
 		{ "family",               LF_FAMILY },
 		{ "guiname",              LF_GUINAME },
 		{ "osfdefault",           LF_OSFDEFAULT },
+		{ "osffont",              LF_OSFFONT },
 		{ "osfoption",            LF_OSFOPTION },
-		{ "osfpackage",           LF_OSFPACKAGE },
 		{ "osfscoption",          LF_OSFSCOPTION },
-		{ "ot1package",           LF_OT1_PACKAGE },
+		{ "ot1font",              LF_OT1_FONT },
 		{ "package",              LF_PACKAGE },
 		{ "packageoption",        LF_PACKAGEOPTION },
 		{ "provides",             LF_PROVIDES },
@@ -270,14 +328,14 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_END: // end of structure
 			finished = true;
 			break;
-		case LF_ALT_PACKAGES: {
+		case LF_ALT_FONTS: {
 			lex.eatLine();
 			docstring altp = lex.getDocString();
-			altpackages_ = getVectorFromString(altp);
+			altfonts_ = getVectorFromString(altp);
 			break;
 		}
-		case LF_COMPLETE_PACKAGE:
-			lex >> completepackage_;
+		case LF_COMPLETE_FONT:
+			lex >> completefont_;
 			break;
 		case LF_FAMILY:
 			lex >> family_;
@@ -288,8 +346,8 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_OSFOPTION:
 			lex >> osfoption_;
 			break;
-		case LF_OSFPACKAGE:
-			lex >> osfpackage_;
+		case LF_OSFFONT:
+			lex >> osffont_;
 			break;
 		case LF_OSFDEFAULT:
 			lex >> osfdefault_;
@@ -297,8 +355,8 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_OSFSCOPTION:
 			lex >> osfscoption_;
 			break;
-		case LF_OT1_PACKAGE:
-			lex >> ot1package_;
+		case LF_OT1_FONT:
+			lex >> ot1font_;
 			break;
 		case LF_PACKAGE:
 			lex >> package_;
@@ -352,26 +410,6 @@ bool LaTeXFont::read(Lexer & lex)
 		return false;
 	}
 
-	bool available = true;
-	if (!requires_.empty())
-		available = LaTeXFeatures::isAvailable(to_ascii(requires_));
-	else if (!package_.empty()) {
-		available = LaTeXFeatures::isAvailable(to_ascii(package_));
-		if (!available && !altpackages_.empty()) {
-			for (size_t i = 0; i < altpackages_.size(); ++i) {
-				available = LaTeXFeatures::isAvailable(to_ascii(altpackages_[i]));
-				if (available)
-					break;
-			}
-		}
-	}
-	available_ = available;
-
-	if (!ot1package_.empty() && ot1package_ != "none")
-		available_ot1_ = LaTeXFeatures::isAvailable(to_ascii(ot1package_));
-	else
-		available_ot1_ = available;
-
 	return true;
 }
 
@@ -396,7 +434,8 @@ void LaTeXFonts::readLaTeXFonts()
 		default:
 			break;
 		}
-		if (lex.getString() != "Font") {
+		string const type = lex.getString();
+		if (type != "Font" && type != "AltFont") {
 			lex.printError("Unknown LaTeXFont tag `$$Token'");
 			continue;
 		}
@@ -405,7 +444,10 @@ void LaTeXFonts::readLaTeXFonts()
 		if (!lex)
 			break;
 
-		texfontmap_[f.name()] = f;
+		if (type == "AltFont")
+			texaltfontmap_[f.name()] = f;
+		else
+			texfontmap_[f.name()] = f;
 	}
 }
 
@@ -429,6 +471,20 @@ LaTeXFont LaTeXFonts::getLaTeXFont(docstring const & name)
 		return LaTeXFont();
 	}
 	return texfontmap_[name];
+}
+
+
+LaTeXFont LaTeXFonts::getAltFont(docstring const & name)
+{
+	if (name == "default")
+		return LaTeXFont();
+	if (texaltfontmap_.empty())
+		readLaTeXFonts();
+	if (texaltfontmap_.find(name) == texaltfontmap_.end()) {
+		LYXERR0("LaTeXFonts::getAltFont: alternative font '" << name << "' not found!");
+		return LaTeXFont();
+	}
+	return texaltfontmap_[name];
 }
 
 

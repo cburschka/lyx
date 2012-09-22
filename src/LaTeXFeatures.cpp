@@ -438,10 +438,17 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::isProvided(string const & name) const
 {
+	bool const ot1 = (params_.font_encoding() == "default"
+		|| params_.font_encoding() == "OT1");
+	bool const complete = (params_.fonts_sans == "default")
+		&& (params_.fonts_typewriter == "default");
 	return params_.documentClass().provides(name)
-		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_roman)).provides(name)
-		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_sans)).provides(name)
-		|| theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_typewriter)).provides(name);
+		|| theLaTeXFonts().getLaTeXFont(
+			from_ascii(params_.fonts_roman)).provides(name, ot1, complete)
+		|| theLaTeXFonts().getLaTeXFont(
+			from_ascii(params_.fonts_sans)).provides(name, ot1, complete)
+		|| theLaTeXFonts().getLaTeXFont(
+			from_ascii(params_.fonts_typewriter)).provides(name, ot1, complete);
 }
 
 bool LaTeXFeatures::mustProvide(string const & name) const

@@ -250,6 +250,8 @@ private:
 	///
 	bool ot1() const;
 	///
+	bool completeFontset() const;
+	///
 	BufferParams bp_;
 	/// List of names of available modules
 	std::list<modInfoStruct> moduleNames_;

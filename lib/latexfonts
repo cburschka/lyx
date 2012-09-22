@@ -10,11 +10,12 @@
 #	SwitchDefault      <0|1>
 #	Package            <LaTeX package to be loaded>
 #	Requires           <LaTeX package to test for>
-#	AltPackages        <alternative packages (comma-separated)>
-#	OT1Package         <alternative package specifically for OT1 encoding>
-#	CompletePackage    <alternative package for the complete family>
+#	AltFonts           <alternative fonts (comma-separated)>
+#	OT1Font            <alternative font specifically for OT1 encoding>
+#	CompleteFont       <alternative package for the complete family>
 #	PackageOptions     <general options to be passed to the package>
 #	OsfOption          <option for oldstyle figure support>
+#	OsfFont            <extra font for oldstyle figures>
 #	OsfDefault         <0|1>
 #	ScOption           <option for true smallcaps support>
 #	OsfScOption        <option for combined osf and true smallcaps support>
@@ -33,23 +34,30 @@
 #   Package <package> loads it via \usepackage{package}. Only one of these
 #   options is used per font (SwitchDefault takes precendende). Note that
 #   SwitchDefault uses the font name.
-# * If AltPackages are defined, LyX will try to load them in the defined
+# * In addition to normal fonts, you can also define alternative fonts
+#   using the AltFont...EndFont tags. These alternative fonts will not
+#   be added to the GUI, but LyX will fall back on them under specific
+#   circumstances (e.g. if the main font is not available; see below).
+# * If AltFonts are defined, LyX will try to load them in the defined
 #   order if the main package is not available. So
 #       Package          mathptmx
-#       AltPackages      mathptm,times
+#       AltFonts         mathptm,times
 #   will try to load mathptm if mathptmx is not available and then times
 #   if mathptm is not available either.
-#   No options will be passed to alternative packages!
+#   AltFonts need to be defined separately using AltFont ... EndFont tags.
 # * If Requires is set, LyX will check for this. If not, it will check
-#   for Package and AltPackages.
-# * OT1Package will load the defined package instead of the default
-#   package if the font encoding is OT1. This is necessary since some
-#   newer packages for a font do not support this encoding.
+#   for Package and AltFonts.
+# * OT1Font will load the defined font if the font encoding is OT1. This is
+#   necessary since some newer font packages do not support this encoding.
 #   The value "none" tells LyX not to load a package in OT1 encoding.
-#   No options will be passed to OT1 packages!
-# * CompletePackage is a package that is loaded if the current font is
-#   selected as rm and both sf and tt are set to "default" (this allows
-#   f. ex. to load "bera" as opposed to "beraserif").
+#   OT1Fonts need to be defined separately using AltFont ... EndFont tags.
+# * The CompleteFont is loaded if the current font is selected as rm and
+#   both sf and tt are set to "default" (this allows f. ex. to load "bera"
+#   as opposed to "beraserif").
+#   CompleteFonts need to be defined separately using AltFont ... EndFont
+#   tags.
+# * OsfFont is a font that is loaded additionally in and that provides
+#   Old Style Figures for a given font (e.g. eco).
 # * OsfScOption overrides any OsfOption and ScOption if both features
 #   are selected.
 # * Set OsfDefault to true for fonts which have Old Style Figures by
@@ -67,7 +75,7 @@ Font ae
 	GuiName          "AE (Almost European)"
 	Family           rm
 	Package          "ae,aecompl"
-	OT1Package       none
+	OT1Font          none
 	Requires         ae
 EndFont
 
@@ -75,8 +83,14 @@ Font beraserif
 	GuiName          "Bera Serif"
 	Family           rm
 	Package          beraserif
-	CompletePackage  bera
+	CompleteFont     bera
 	Requires         bera
+EndFont
+
+AltFont bera
+	GuiName          "Bera Serif"
+	Family           rm
+	Package          bera
 EndFont
 
 Font bookman
@@ -107,7 +121,12 @@ Font cmr
 	GuiName          "Computer Modern Roman"
 	Family           rm
 	SwitchDefault    1
-	OsfPackage       eco
+	OsfFont          eco
+EndFont
+
+AltFont eco
+	Family           rm
+	Package          eco
 EndFont
 
 Font libertine
@@ -181,16 +200,40 @@ Font palatino
 	ScOption         sc
 	OsfScOption      osf
 	Package          mathpazo
-	AltPackages      "mathpple,palatino"
+	AltFonts         mathpple,palatino
 	Requires         psnfss
+EndFont
+
+AltFont mathpple
+	GuiName          "Palatino"
+	Family           rm
+	Package          mathpple
+EndFont
+
+AltFont palatino
+	GuiName          "Palatino"
+	Family           rm
+	Package          palatino
 EndFont
 
 Font times
 	GuiName          "Times Roman"
 	Family           rm
 	Package          mathptmx
-	AltPackages      "mathptm,times"
+	AltFonts         mathptm,times
 	Requires         psnfss
+EndFont
+
+AltFont mathptm
+	GuiName          "Times Roman"
+	Family           rm
+	Package          mathptm
+EndFont
+
+AltFont times
+	GuiName          "Times Roman"
+	Family           rm
+	Package          times
 EndFont
 
 Font tgbonum
@@ -231,8 +274,14 @@ Font utopia
 	OsfOption        oldstyle
 	ScOption         expert
 	Package          fourier
-	AltPackages      utopia
-	OT1Package       utopia
+	AltFonts         utopia-sty
+	OT1Font          utopia-sty
+EndFont
+
+AltFont utopia-sty
+	GuiName          "Utopia (Fourier)"
+	Family           rm
+	Package          utopia
 EndFont
 
 

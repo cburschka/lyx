@@ -35,14 +35,14 @@ public:
 	docstring const & family() { return family_; }
 	/// The package that provides this font
 	docstring const & package() { return package_; }
-	/// Alternative packages if package() is not available
-	std::vector<docstring> const & altpackages() { return altpackages_; }
-	/// A package that provides all families
-	docstring const & completepackage() { return completepackage_; }
-	/// A package specifically needed for OT1 font encoding
-	docstring const & ot1package() { return ot1package_; }
-	/// A package that provides Old Style Figures for this font
-	docstring const & osfpackage() { return osfpackage_; }
+	/// Alternative font if package() is not available
+	std::vector<docstring> const & altfonts() { return altfonts_; }
+	/// A font that provides all families
+	docstring const & completefont() { return completefont_; }
+	/// A font specifically needed for OT1 font encoding
+	docstring const & ot1font() { return ot1font_; }
+	/// A font that provides Old Style Figures for this type face
+	docstring const & osffont() { return osffont_; }
 	/// A package option needed to load this font
 	docstring const & packageoption() { return packageoption_; }
 	/// A package option for Old Style Figures
@@ -56,38 +56,40 @@ public:
 	/// Alternative requirement to test for
 	docstring const & requires() { return requires_; }
 	/// Does this font provide a given \p feature
-	bool provides(std::string const & name) const;
+	bool provides(std::string const & name, bool ot1, bool complete);
 	/// Issue the familydefault switch
 	bool switchdefault() const { return switchdefault_; }
 	/// Does the font provide Old Style Figures as default?
 	bool osfDefault() const { return osfdefault_; }
 	/// Is this font available?
-	bool available(bool ot1 = false) const;
+	bool available(bool ot1);
 	/// Does this font provide Old Style Figures?
-	bool providesOSF(bool ot1 = false) const;
+	bool providesOSF(bool ot1, bool complete);
 	/// Does this font provide optional true SmallCaps?
-	bool providesSC(bool ot1 = false) const;
+	bool providesSC(bool ot1, bool complete);
 	/// Does this font provide scaling?
-	bool providesScale(bool ot1 = false) const;
+	bool providesScale(bool ot1, bool complete);
 	/// Return the LaTeX Code
 	std::string const getLaTeXCode(bool dryrun, bool ot1, bool complete,
 				       bool sc, bool osf,
 				       int const & scale = 100);
+	/// Return the actually used font
+	docstring const getUsedFont(bool ot1, bool complete);
 	///
 	bool read(Lexer & lex);
 	///
 	bool readFont(Lexer & lex);
 private:
 	/// Return the preferred available package 
-	std::string const getAvailablePackage(bool dryrun,
-					      bool ot1,
-					      bool complete,
-					      bool & alt);
+	std::string const getAvailablePackage(bool dryrun);
 	/// Return the package options
 	std::string const getPackageOptions(bool ot1,
+					    bool complete,
 					    bool sc,
 					    bool osf,
 					    int scale);
+	/// Return an alternative font
+	LaTeXFont altFont(docstring const & name);
 	///
 	docstring name_;
 	///
@@ -97,13 +99,13 @@ private:
 	///
 	docstring package_;
 	///
-	std::vector<docstring> altpackages_;
+	std::vector<docstring> altfonts_;
 	///
-	docstring completepackage_;
+	docstring completefont_;
 	///
-	docstring ot1package_;
+	docstring ot1font_;
 	///
-	docstring osfpackage_;
+	docstring osffont_;
 	///
 	docstring packageoption_;
 	///
@@ -122,10 +124,6 @@ private:
 	bool osfdefault_;
 	///
 	bool switchdefault_;
-	///
-	bool available_;
-	///
-	bool available_ot1_;
 };
   
   
@@ -139,11 +137,15 @@ public:
 	TexFontMap getLaTeXFonts();
 	/// Get a specific LaTeXFont \p name
 	LaTeXFont getLaTeXFont(docstring const & name);
+	/// Get a specific AltFont \p name
+	LaTeXFont getAltFont(docstring const & name);
 private:
 	///
 	void readLaTeXFonts();
 	///
 	TexFontMap texfontmap_;
+	///
+	TexFontMap texaltfontmap_;
 };
 
 /// Implementation is in LyX.cpp
