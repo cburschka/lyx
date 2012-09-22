@@ -275,6 +275,42 @@ static docstring const lyxref_def = from_ascii(
 		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n" 
 		"  {}\n");
 
+// Make sure the columns are also outputed as rtl
+static docstring const rtloutputdblcol_def = from_ascii(
+	"\\def\\@outputdblcol{%\n"
+	"  \\if@firstcolumn\n"
+	"    \\global \\@firstcolumnfalse\n"
+	"    \\global \\setbox\\@leftcolumn \\box\\@outputbox\n"
+	"  \\else\n"
+	"    \\global \\@firstcolumntrue\n"
+	"    \\setbox\\@outputbox \\vbox {%\n"
+	"      \\hb@xt@\\textwidth {%\n"
+	"      \\kern\\textwidth \\kern-\\columnwidth %**\n"
+	"      \\hb@xt@\\columnwidth {%\n"
+	"         \\box\\@leftcolumn \\hss}%\n"
+	"      \\kern-\\textwidth %**\n"
+	"      \\hfil\n"
+	"      {\\normalcolor\\vrule \\@width\\columnseprule}%\n"
+	"      \\hfil\n"
+	"      \\kern-\\textwidth  %**\n"
+	"      \\hb@xt@\\columnwidth {%\n"
+	"         \\box\\@outputbox \\hss}%\n"
+	"      \\kern-\\columnwidth \\kern\\textwidth %**\n"
+	"    }%\n"
+	"  }%\n"
+	"  \\@combinedblfloats\n"
+	"  \\@outputpage\n"
+	"  \\begingroup\n"
+	"  \\@dblfloatplacement\n"
+	"  \\@startdblcolumn\n"
+	"  \\@whilesw\\if@fcolmade \\fi\n"
+	"  {\\@outputpage\n"
+	"    \\@startdblcolumn}%\n"
+	"  \\endgroup\n"
+	"  \\fi\n"
+	"}\n"
+	"\\@mparswitchtrue\n");
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -961,6 +997,9 @@ docstring const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;
+
+	if (mustProvide("rtloutputdblcol"))
+		macros << rtloutputdblcol_def;
 
 	return macros.str();
 }
