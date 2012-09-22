@@ -1163,6 +1163,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 {
 	features.require(documentClass().requires());
 
+	if (columns > 1 && language->rightToLeft())
+		features.require("rtloutputdblcol");
+
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
