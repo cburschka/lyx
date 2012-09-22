@@ -166,7 +166,7 @@ public:
 
 
 MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const sticky)
-	: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
+	: QToolButton(bar), bar_(bar), tbitem_(item)
 {
 	setPopupMode(QToolButton::InstantPopup);
 	QString const label = qt_(to_ascii(tbitem_.label_));
@@ -189,17 +189,12 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 			this, SLOT(actionTriggered(QAction *)));
 	connect(bar, SIGNAL(iconSizeChanged(QSize)),
 		this, SLOT(setIconSize(QSize)));
+	initialize();
 }
 
-void MenuButton::mousePressEvent(QMouseEvent * e)
+
+void MenuButton::initialize()
 {
-	if (initialized_) {
-		QToolButton::mousePressEvent(e);
-		return;
-	}
-
-	initialized_ = true;
-
 	QString const label = qt_(to_ascii(tbitem_.label_));
 	ButtonMenu * m = new ButtonMenu(label, this);
 	m->setWindowTitle(label);
@@ -217,8 +212,6 @@ void MenuButton::mousePressEvent(QMouseEvent * e)
 		if (!getStatus(it->func_).unknown())
 			m->add(bar_->addItem(*it));
 	setMenu(m);
-
-	QToolButton::mousePressEvent(e);
 }
 
 

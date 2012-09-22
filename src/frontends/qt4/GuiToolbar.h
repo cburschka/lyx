@@ -45,16 +45,14 @@ public:
 	///
 	MenuButton(GuiToolbar * bar, ToolbarItem const & item,
 		bool const sticky = false);
-	///
-	void mousePressEvent(QMouseEvent * e);
 
 private:
+	///
+	void initialize();
 	///
 	GuiToolbar * bar_;
 	///
 	ToolbarItem const & tbitem_;
-	///
-	bool initialized_;
 
 private Q_SLOTS:
 	///
