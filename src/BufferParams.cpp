@@ -1415,11 +1415,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "\\usepackage{fontspec}\n";
 
 	// font selection must be done before loading fontenc.sty
-	string const fonts =
-		loadFonts(fonts_roman, fonts_sans, fonts_typewriter,
-			  fonts_expert_sc, fonts_old_figures,
-			  fonts_sans_scale, fonts_typewriter_scale,
-			  useNonTeXFonts, features);
+	string const fonts = loadFonts(features);
 	if (!fonts.empty())
 		os << from_utf8(fonts);
 
@@ -2778,16 +2774,12 @@ string const BufferParams::parseFontName(string const & name) const
 }
 
 
-string const BufferParams::loadFonts(string const & rm,
-				     string const & sf, string const & tt,
-				     bool const & sc, bool const & osf,
-				     int const & sfscale, int const & ttscale,
-				     bool const & use_systemfonts,
-				     LaTeXFeatures & features) const
+string const BufferParams::loadFonts(LaTeXFeatures & features) const
 {
 	// TODO: separate math fonts.
 
-	if (rm == "default" && sf == "default" && tt == "default")
+	if (fonts_roman == "default" && fonts_sans == "default"
+	    && fonts_typewriter == "default")
 		//nothing to do
 		return string();
 
@@ -2803,7 +2795,7 @@ string const BufferParams::loadFonts(string const & rm,
 	 *    -- if there's a way to find out if a font really supports
 	 *       OldStyle, enable/disable the widget accordingly.
 	*/
-	if (use_systemfonts && features.isAvailable("fontspec")) {
+	if (useNonTeXFonts && features.isAvailable("fontspec")) {
 		// "Mapping=tex-text" and "Ligatures=TeX" are equivalent.
 		// However, until v.2 (2010/07/11) fontspec only knew
 		// Mapping=tex-text (for XeTeX only); then "Ligatures=TeX"
@@ -2816,28 +2808,28 @@ string const BufferParams::loadFonts(string const & rm,
 		string const texmapping =
 			(features.runparams().flavor == OutputParams::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
-		if (rm != "default") {
+		if (fonts_roman != "default") {
 			os << "\\setmainfont[" << texmapping;
-			if (osf)
+			if (fonts_old_figures)
 				os << ",Numbers=OldStyle";
-			os << "]{" << parseFontName(rm) << "}\n";
+			os << "]{" << parseFontName(fonts_roman) << "}\n";
 		}
-		if (sf != "default") {
-			string const sans = parseFontName(sf);
-			if (sfscale != 100)
+		if (fonts_sans != "default") {
+			string const sans = parseFontName(fonts_sans);
+			if (fonts_sans_scale != 100)
 				os << "\\setsansfont[Scale="
-				   << float(sfscale) / 100
+				   << float(fonts_sans_scale) / 100
 				   << "," << texmapping << "]{"
 				   << sans << "}\n";
 			else
 				os << "\\setsansfont[" << texmapping << "]{"
 				   << sans << "}\n";
 		}
-		if (tt != "default") {
-			string const mono = parseFontName(tt);
-			if (ttscale != 100)
+		if (fonts_typewriter != "default") {
+			string const mono = parseFontName(fonts_typewriter);
+			if (fonts_typewriter_scale != 100)
 				os << "\\setmonofont[Scale="
-				   << float(ttscale) / 100
+				   << float(fonts_typewriter_scale) / 100
 				   << "]{"
 				   << mono << "}\n";
 			else
@@ -2850,16 +2842,19 @@ string const BufferParams::loadFonts(string const & rm,
 	// Tex Fonts
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
-	bool const complete = (sf == "default" && tt == "default");
+	bool const complete = (fonts_sans == "default" && fonts_typewriter == "default");
 
 	// ROMAN FONTS
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(rm)).getLaTeXCode(dryrun, ot1, complete, sc, osf);
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_roman)).getLaTeXCode(
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures);
 
 	// SANS SERIF
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(sf)).getLaTeXCode(dryrun, ot1, complete, sc, osf, sfscale);
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_sans)).getLaTeXCode(
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures, fonts_sans_scale);
 
 	// MONOSPACED/TYPEWRITER
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(tt)).getLaTeXCode(dryrun, ot1, complete, sc, osf, ttscale);
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_typewriter)).getLaTeXCode(
+		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures, fonts_typewriter_scale);
 
 	return os.str();
 }

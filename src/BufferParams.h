@@ -406,12 +406,7 @@ public:
 	///
 	std::string const parseFontName(std::string const & name) const;
 	/// set up the document fonts
-	std::string const loadFonts(std::string const & rm,
-				     std::string const & sf, std::string const & tt,
-				     bool const & sc, bool const & osf,
-				     int const & sfscale, int const & ttscale,
-				     bool const & use_nonlatexfonts,
-				     LaTeXFeatures & features) const;
+	std::string const loadFonts(LaTeXFeatures & features) const;
 
 	/// the cite engine modules
 	LayoutModuleList const & citeEngine() const
