@@ -596,7 +596,7 @@ Libertine
 Found: 
 \begin_inset Info
 type  "package"
-arg   "libertine"
+arg   "libertine-type1"
 \end_inset
 
 
@@ -605,16 +605,26 @@ arg   "libertine"
 \begin_layout Description
 CTAN: 
 \family typewriter
-fonts/libertine-legacy/
+fonts/libertine-type1/
 \end_layout
 
 \begin_layout Description
 Notes: The 
 \family sans
-libertine(-legacy)
+libertine-type1
 \family default
- package provides support for the Libertine roman and the Biolinum sans
- serif families of fonts.
+ package provides support for the Libertine roman family of fonts.
+ And older version of the package, 
+\family sans
+libertine-legacy
+\family default
+ (found: 
+\begin_inset Info
+type  "package"
+arg   "libertine"
+\end_inset
+
+), is also supported and used as a fallback.
 \end_layout
 
 \begin_layout Subsection
