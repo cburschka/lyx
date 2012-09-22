@@ -200,7 +200,7 @@ Font palatino
 	ScOption         sc
 	OsfScOption      osf
 	Package          mathpazo
-	AltFonts         mathpple,palatino
+	AltFonts         mathpple,palatino-sty
 	Requires         psnfss
 EndFont
 
@@ -210,7 +210,7 @@ AltFont mathpple
 	Package          mathpple
 EndFont
 
-AltFont palatino
+AltFont palatino-sty
 	GuiName          "Palatino"
 	Family           rm
 	Package          palatino
@@ -220,7 +220,7 @@ Font times
 	GuiName          "Times Roman"
 	Family           rm
 	Package          mathptmx
-	AltFonts         mathptm,times
+	AltFonts         mathptm,times-sty
 	Requires         psnfss
 EndFont
 
@@ -230,7 +230,7 @@ AltFont mathptm
 	Package          mathptm
 EndFont
 
-AltFont times
+AltFont times-sty
 	GuiName          "Times Roman"
 	Family           rm
 	Package          times
