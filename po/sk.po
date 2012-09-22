@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-20 15:35+0200\n"
+"POT-Creation-Date: 2012-09-22 19:09+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1514,9 +1514,9 @@ msgstr "Vyberte serifové (roman serif) písmo"
 msgid "&Sans Serif:"
 msgstr "&Bezserifové:"
 
-#: src/frontends/qt4/ui/FontUi.ui:123
+#: src/frontends/qt4/ui/FontUi.ui:124
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Vyberte bezserifovú rodinu písma (Sans Serif)"
+msgstr "Vyberte bezserifové písmo (Sans Serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:130
 msgid "S&cale (%):"
@@ -1532,9 +1532,9 @@ msgstr ""
 msgid "&Typewriter:"
 msgstr "S&trojopisné:"
 
-#: src/frontends/qt4/ui/FontUi.ui:163
+#: src/frontends/qt4/ui/FontUi.ui:164
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Vyberte strojopisnú rodinu písma"
+msgstr "Vyberte strojopisné písmo"
 
 #: src/frontends/qt4/ui/FontUi.ui:170
 msgid "Sc&ale (%):"
@@ -1545,6 +1545,14 @@ msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
 "Zmente mierku strojopisného fontu tak, aby pasoval k rozmerom základného "
 "fontu"
+
+#: src/frontends/qt4/ui/FontUi.ui:194
+msgid "&Math:"
+msgstr "Matematika:"
+
+#: src/frontends/qt4/ui/FontUi.ui:204
+msgid "Select the math typeface"
+msgstr "Vyberte typ písma pre matematiku"
 
 #: src/frontends/qt4/ui/FontUi.ui:193
 msgid "C&JK:"
@@ -11897,6 +11905,11 @@ msgstr "TeX Gyre Cursor"
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
+# euler virtual math fonts
+#: lib/latexfonts:462
+msgid "Euler VM"
+msgstr "Euler VM"
+
 #: lib/encodings:14
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
@@ -21231,19 +21244,19 @@ msgstr ""
 "Nasledujúci príkaz bol použitý na všetky viditeľné zásobníky v aktívnom "
 "okne: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1615
+#: src/frontends/qt4/GuiApplication.cpp:1627
 msgid ""
 "Applied the following command to all visible and hidden buffers in the "
 "active window: "
 msgstr ""
 "Nasledujúci príkaz bol použitý na všetky viditeľné a skryté zásobníky v "
-"aktívnom okne:."
+"aktívnom okne: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1623
+#: src/frontends/qt4/GuiApplication.cpp:1635
 msgid ""
 "Applied the following command to all hidden buffers in the active window: "
 msgstr ""
-"Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom okne:."
+"Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom okne: "
 
 #: src/frontends/qt4/GuiApplication.cpp:1626
 #, c-format
@@ -22147,6 +22160,11 @@ msgstr "Štan&dard..."
 #: src/frontends/qt4/GuiDocument.cpp:3071 src/frontends/qt4/GuiDocument.cpp:3079
 msgid " (not installed)"
 msgstr " (nie je inštalovaný)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1941
+#: src/frontends/qt4/GuiDocument.cpp:1968
+msgid "Class Default"
+msgstr "Štandardné nastavenie triedy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1918
 msgid "Layouts|#o#O"
