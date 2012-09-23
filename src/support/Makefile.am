@@ -28,7 +28,7 @@ liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 ##################################################################
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) 
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_INCLUDES)
 
 liblyxsupport_a_SOURCES = \
 	FileMonitor.h \

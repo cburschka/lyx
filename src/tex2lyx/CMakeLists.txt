@@ -49,6 +49,7 @@ target_link_libraries(${_tex2lyx}
 	support
 	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
+	${QT_QTGUI_LIBRARY}
 	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY})
 

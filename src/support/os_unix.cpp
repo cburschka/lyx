@@ -26,7 +26,7 @@
 #include <stdlib.h>
 
 #ifdef __APPLE__
-#include <Carbon/Carbon.h>
+#include <CoreServices/CoreServices.h>
 #endif
 
 using namespace std;

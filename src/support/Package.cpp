@@ -36,7 +36,9 @@
 #endif
 
 #if defined (USE_MACOSX_PACKAGING)
-# include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
+# include "support/qstring_helpers.h"
+# include <QDir>
+# include <QDesktopServices>
 #endif
 
 using namespace std;
@@ -169,6 +171,8 @@ FileName const & Package::get_home_dir()
 {
 #if defined (USE_WINDOWS_PACKAGING)
 	static FileName const home_dir(getEnv("USERPROFILE"));
+#elif defined (USE_MACOSX_PACKAGING)
+	static FileName const home_dir(fromqstr(QDir::homePath()));
 #else // Posix-like.
 	static FileName const home_dir(getEnv("HOME"));
 #endif
@@ -370,6 +374,9 @@ FileName const get_document_dir(FileName const & home_dir)
 	(void)home_dir; // Silence warning about unused variable.
 	os::GetFolderPath win32_folder_path;
 	return FileName(win32_folder_path(os::GetFolderPath::PERSONAL));
+#elif defined (USE_MACOSX_PACKAGING)
+	(void)home_dir; // Silence warning about unused variable.
+	return FileName(fromqstr(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)));
 #else // Posix-like.
 	return home_dir;
 #endif
@@ -635,23 +642,7 @@ FileName const get_default_user_support_dir(FileName const & home_dir)
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
-
-	FSRef fsref;
-	OSErr const error_code =
-		FSFindFolder(kUserDomain, kApplicationSupportFolderType,
-			     kDontCreateFolder, &fsref);
-	if (error_code != 0)
-		return FileName();
-
-	// FSRefMakePath returns the result in utf8
-	char store[PATH_MAX + 1];
-	OSStatus const status_code =
-		FSRefMakePath(&fsref,
-			      reinterpret_cast<UInt8*>(store), PATH_MAX);
-	if (status_code != 0)
-		return FileName();
-
-	return FileName(addPath(reinterpret_cast<char const *>(store), PACKAGE));
+	return FileName(addPath(fromqstr(QDesktopServices::storageLocation(QDesktopServices::DataLocation)), PACKAGE));
 
 #else // USE_POSIX_PACKAGING
 	return FileName(addPath(home_dir.absFileName(), string(".") + PACKAGE));
