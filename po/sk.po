@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-22 19:09+0200\n"
+"POT-Creation-Date: 2012-09-23 21:37+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1933,7 +1933,7 @@ msgstr "Použiť &viac registrov"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&Nový:"
+msgstr "&Nový register:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -4081,7 +4081,7 @@ msgstr "Číslo prvej strany na tlačenie"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&Do:"
+msgstr "&Do strany:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -7329,7 +7329,7 @@ msgstr "ps"
 #: lib/layouts/dinbrief.layout:364 lib/layouts/g-brief.layout:214
 #: lib/layouts/g-brief2.layout:911
 msgid "Encl."
-msgstr "Prílohy"
+msgstr "Príloha"
 
 #: lib/layouts/dinbrief.layout:369
 msgid "Anlagen"
@@ -11910,6 +11910,18 @@ msgstr "TX Typewriter"
 msgid "Euler VM"
 msgstr "Euler VM"
 
+#: lib/latexfonts:507
+msgid "Libertine (New TX)"
+msgstr "Libertine (New TX)"
+
+#: lib/latexfonts:515
+msgid "Minion Pro (New TX)"
+msgstr "Minion Pro (New TX)"
+
+#: lib/latexfonts:524
+msgid "Times Roman (New TX)"
+msgstr "Times Roman (New TX)"
+
 #: lib/encodings:14
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
@@ -12132,7 +12144,7 @@ msgstr "Oddeľovače..."
 
 #: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:439
 msgid "Matrix...|x"
-msgstr "Matrica..."
+msgstr "Matica..."
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:440
 msgid "Macro|o"
@@ -13076,7 +13088,7 @@ msgstr "Rozpustiť vložku"
 
 #: lib/ui/stdmenus.inc:135
 msgid "TeX Code Settings...|C"
-msgstr "TeX Kód nastavenia..."
+msgstr "Nastavenia TeX Kódu..."
 
 #: lib/ui/stdmenus.inc:137
 msgid "Float Settings...|a"
@@ -13104,7 +13116,7 @@ msgstr "Nastavenia rámku..."
 
 #: lib/ui/stdmenus.inc:143
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia pre Heslá Registra..."
+msgstr "Nastavenia Registrových Hesiel..."
 
 #: lib/ui/stdmenus.inc:144
 msgid "Index Settings...|x"
@@ -13694,9 +13706,9 @@ msgstr "Komprimované|m"
 msgid "Track Changes|T"
 msgstr "Sleduj zmeny"
 
-#: lib/ui/stdmenus.inc:517
+#: lib/ui/stdmenus.inc:518
 msgid "Merge Changes...|M"
-msgstr "Zmeny prijať, alebo zahodiť..."
+msgstr "Zmeny Zlúčiť..."
 
 #: lib/ui/stdmenus.inc:518
 msgid "Accept Change|A"
@@ -13782,9 +13794,9 @@ msgstr "Kontrola TeXu"
 msgid "TeX Information|I"
 msgstr "TeX informácia|X"
 
-#: lib/ui/stdmenus.inc:561
+#: lib/ui/stdmenus.inc:562
 msgid "Compare...|C"
-msgstr "Porovnaj..."
+msgstr "Porovnávať..."
 
 #: lib/ui/stdmenus.inc:566
 msgid "Reconfigure|R"
