@@ -491,6 +491,10 @@ bool LaTeXFeatures::isProvided(string const & name) const
 		|| theLaTeXFonts().getLaTeXFont(
 			from_ascii(params_.fonts_typewriter)).provides(name, ot1,
 								       complete,
+								       nomath)
+		|| theLaTeXFonts().getLaTeXFont(
+			from_ascii(params_.fonts_math)).provides(name, ot1,
+								       complete,
 								       nomath);
 }
 
