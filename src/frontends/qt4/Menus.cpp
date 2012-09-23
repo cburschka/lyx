@@ -1754,8 +1754,8 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
 		 QAction::PreferencesRole},
-		{LFUN_RECONFIGURE, "", "Reconfigure",
-		 QAction::ApplicationSpecificRole},
+		/* {LFUN_RECONFIGURE, "", "Reconfigure",
+		 QAction::ApplicationSpecificRole}, */
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
