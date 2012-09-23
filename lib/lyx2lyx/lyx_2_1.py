@@ -839,7 +839,7 @@ def revert_libertine(document):
             if osf:
                 preamble += "[osf]"
                 document.header[j] = "\\font_osf false"
-            preamble += "{libertine}"
+            preamble += "{libertine-type1}"
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_roman default"
 
@@ -1082,6 +1082,24 @@ def convert_mdnomath(document):
              document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
 
 
+def revert_newtxmath(document):
+    " Revert native newtxmath definitions to LaTeX " 
+
+    i = find_token(document.header, "\\font_math", 0)
+    if i == -1:
+       return
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        val = get_value(document.header, "\\font_math", i)
+        mathfont_dict = {
+        "libertine-ntxm":  "\\usepackage[libertine]{newtxmath}",
+        "minion-ntxm":  "\\usepackage[minion]{newtxmath}",
+        "newtxmath":  "\\usepackage{newtxmath}",
+        }
+        if val in mathfont_dict.keys():
+            add_to_preamble(document, mathfont_dict[val])
+            document.header[i] = "\\font_math auto"
+
+
 ##
 # Conversion hub
 #
@@ -1115,10 +1133,12 @@ convert = [
            [438, []],
            [439, []],
            [440, []],
-           [441, [convert_mdnomath]]
+           [441, [convert_mdnomath]],
+           [442, []]
           ]
 
 revert =  [
+           [441, [revert_newtxmath]],
            [440, [revert_mdnomath]],
            [439, [revert_mathfonts]],
            [438, [revert_minionpro]],

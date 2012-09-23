@@ -12,6 +12,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 442: support for the newtxmath fonts:
+	  - \usepackage{newtxmath} > \math_font newtxmath
+	  - \usepackage[libertine]{newtxmath} > \math_font libertine-ntxm
+	  - \usepackage[minion]{newtxmath} > \math_font minion-ntxm
+
+2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 441:
 	  - rename fonts: mdbch > md-charter, mdput > md-utopia, mdugm > md-garamond
 	  - add support for the mathdesign fonts without loading mathfonts

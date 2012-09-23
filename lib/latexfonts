@@ -502,3 +502,27 @@ Font eulervm
 	Family           math
 	Package          eulervm
 EndFont
+
+Font libertine-ntxm
+	GuiName          "Libertine (New TX)"
+	Family           math
+	Package          newtxmath
+	PackageOption    libertine
+	Provides         amssymb,amsfonts
+EndFont
+
+Font minion-ntxm
+	GuiName          "Minion Pro (New TX)"
+	Family           math
+	Package          newtxmath
+	PackageOption    minion
+	Requires         minion2newtx
+	Provides         amssymb,amsfonts
+EndFont
+
+Font newtxmath
+	GuiName          "Times Roman (New TX)"
+	Family           math
+	Package          newtxmath
+	Provides         amssymb,amsfonts
+EndFont

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 440
+\lyxformat 442
 \begin_document
 \begin_header
 \textclass article
@@ -788,6 +788,69 @@ MinionPro
  package provides support for the Minion Pro font.
  Note that the font itself is not part of the package and must be installed
  separately (please consult the MinionPro package manual for details).
+\end_layout
+
+\begin_layout Subsection
+NewTX Math
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "newtxmath"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/newtx
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+newtxmath
+\family default
+ package provides support for matching math fonts for 
+\emph on
+Times Roman
+\emph default
+ (or 
+\emph on
+NewTX
+\emph default
+), 
+\emph on
+Libertine
+\emph default
+ and 
+\emph on
+MinionPro
+\emph default
+.
+ Please note that 
+\emph on
+MinionPro
+\emph default
+ support requires the supplementary 
+\family sans
+minion2newtx
+\family default
+ package (found: 
+\begin_inset Info
+type  "package"
+arg   "minion2newtx"
+\end_inset
+
+) as well as external fonts (please consult the 
+\family sans
+minion2newtx
+\family default
+ documentation for details).
 \end_layout
 
 \begin_layout Subsection
