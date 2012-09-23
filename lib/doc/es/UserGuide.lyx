@@ -32135,7 +32135,11 @@ type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- inicia la revisión a partir de la posición del cursor.
+ inicia la revisión o a partir de la posición del cursor o a la 
+\lang english
+beginning of the currently selected text
+\lang spanish
+.
  Se muestra una ventana en la que aparece un cuadro con cualquier palabra
  incorrecta o desconocida, que puedes reemplazar en el cuadro siguiente.
  Siempre que se encuentra una palabra incorrecta el texto se desplaza hasta

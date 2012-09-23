@@ -33154,168 +33154,63 @@ name "sec:Correcteur-Orthographique"
 \end_layout
 
 \begin_layout Standard
-LyX n'a pas lui-même de correcteur orthographique incorporé.
- Il utilise plutôt un programme extérieur comme 
-\family typewriter
-aspell
-\family default
-, 
-\family typewriter
-ispell
-\family default
-, 
-\family typewriter
-hspell
-\family default
-, ou encore 
-\family typewriter
-pspell
-\family default
-.
- Cette section suppose que vous avez déjà installé et configuré un de ces
- programmes.
- 
-\family typewriter
-aspell
-\family default
- peut être considéré comme le successeur de
-\family typewriter
- ispell
-\family default
-, il est donc préférable d'utiliser 
-\family typewriter
-aspell
-\family default
-.
- 
-\family typewriter
-hspell
-\family default
- est un correcteur orthographique en Hébreu.
- Le correcteur orthographique utilisé et ses paramètres sont modifiés dans
- le menu 
+
+\lang english
+LyX has a built-in spell checker.
+ The menu
 \family sans
+ 
+\lang french
 Outils\SpecialChar \menuseparator
-Préférences
-\family default
- dans la rubrique 
-\family sans
-Paramètres
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-langue
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-Avec LyX pour Windows, la case de sélection pour le programme de correction
- orthographique est désactivée puisque seul 
-\family typewriter
-aspell
-\family default
- peut être utilisé.
-\end_layout
-
-\begin_layout Standard
-LyX est doté d'un correcteur orthographique intégré.
- On appelle le correcteur orthographique à partir de la position courante
- du curseur, soit en activant le menu
-\family sans
- Outils\SpecialChar \menuseparator
 Correcteur
 \begin_inset space ~
 \end_inset
 
 orthographique
 \family default
-, soit en cliquant sur le bouton 
+\lang english
+, the key 
+\family sans
+F7
+\family default
+ or the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- de la barre d'outils, soit encore en utilisant le raccourci clavier 
+ starts the spell checking beginning from either the current cursor position
+ or the beginning of the currently selected text.
+ A sidebar will appear showing any incorrect (or unknown) word found, allowing
+ you to edit and replace it in a second line.
+ Whenever an unknown word is found, the word is highlighted and the text
+ scrolled so that it is visible.
+ In the spellchecker sidebar, there is a box showing suggestions for a correctio
+n, if any could be found.
+ Clicking on one of the corrections will copy it to the 
 \family sans
-F7
+Replacement
 \family default
-.
- Une fenêtre latérale s'ouvre et montre tout mot incorrect ou inconnu trouvé.
- Elle vous permet de le corriger ou de le remplacer.
- Dès qu'un mot inconnu est trouvé, il est affiché et le texte défile pour
- le rendre visible.
- Dans la fenêtre latérale du correcteur orthographique, il y a une case
- qui vous propose des suggestions de correction, si il en a trouvé.
- En cliquant sur une de ces suggestions elle est recopiée dans le champ
- 
-\family sans
-Remplace
-\family default
-r, en double-cliquant on effectue directement le remplacement.
- Un mot inconnu du correcteur, mais qui serait correctement écrit, peut
- être ajouté à votre dictionnaire personnel.
+ field, double-click directly invokes the replacement.
+ Unknown but correctly typed words can be added to the personal dictionary.
 \end_layout
 
 \begin_layout Standard
-Implicitement le dictionnaire qui est utilisé est déterminé par la langue
- du document qui est fixée dans la fenêtre de dialogue 
+
+\lang english
+By default, the dictionary file used is determined by the document language
+ that is set in the 
 \family sans
 Document\SpecialChar \menuseparator
-Paramètres
+Settings
 \family default
-.
- Vous pouvez utiliser un autre dictionnaire en donnant le nom d'une autre
- langue dans le menu déroulant 
-\family sans
-Langue
-\family default
- en haut de la fenêtre latérale du correcteur.
- LyX peut effectuer la correction dans les documents multilingues, si vous
- avez marqué le texte avec la langue appropriée et si les dictionnaires
- adéquats sont installés: LyX commute automatiquement vers le bon dictionnaire.
-\end_layout
-
-\begin_layout Standard
-Quand la vérification orthographique est terminée, vous êtes informés du
- nombre de mots qui ont été vérifiés.
-\end_layout
-
-\begin_layout Subsubsection*
-Limitations
-\end_layout
-
-\begin_layout Standard
-Il n'est pas possible de changer en une seule opération l'orthographe d'un
- mot dans tout le document, il faut soit le faire pour chaque occurrence
- du mot séparément, soit utiliser 
-\family sans
-Rechercher
-\begin_inset space ~
-\end_inset
-
-et
-\begin_inset space ~
-\end_inset
-
-Remplacer
-\family default
- pour le faire.
-\end_layout
-
-\begin_layout Standard
-LyX ne peut pas faire une vérification d'orthographe correcte sur un document
- contenant plusieurs langues.
- En principe cela marche avec 
-\family typewriter
-pspell
-\family default
-, à condition de bien avoir marqué les différents langages.
+ dialog.
+ You can specify the language of a word in the spellchecker dialog by choosing
+ a different one at the top of the dialog.
+ LyX can correctly spell check documents containing multiple languages.
+ This work if you have marked the different languages appropriately and
+ have the spell checker dictionaries installed.
+ LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
 \begin_layout Subsection
@@ -33386,7 +33281,9 @@ man-page
  peuvent être disponibles.
  Avec Windows, on ne trouve que 
 \family typewriter
-hunspell;
+hunspell
+\family default
+;
 \end_layout
 
 \begin_layout Description

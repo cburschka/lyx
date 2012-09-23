@@ -32730,7 +32730,8 @@ arg   "dialog-show spellchecker"
 \end_inset
 
  starten.
- Die Prüfung beginnt an der Cursorposition.
+ Die Prüfung beginnt entweder an der aktuellen Cursorposition oder dem Beginn
+ des momentan markierten Textabschnitts.
  Eine Seitenleiste erscheint und zeigt jedes falsche (oder unbekannte) gefundene
  Wort an und erlaubt es diese zu korrigieren.
  Wenn ein unbekanntes Wort gefunden wird, wird das Wort markiert und der
@@ -35736,12 +35737,12 @@ Nicht-typographisches
 \end_inset
 
 Anführungszeichen Fügt dieses Anführungszeichen ein: ", unabhängig vom Anführung
-szeichen-Stil der im Menü 
+szeichen-Stil der im Dialog 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
- Dialog unter 
+ unter 
 \family sans
 Sprache
 \family default
@@ -35753,11 +35754,17 @@ Einfaches
 \begin_inset space ~
 \end_inset
 
-Anführungszeichen Fügt dieses Anführungszeichen ein: 
-\begin_inset Quotes grs
-\end_inset
-
-
+Anführungszeichen Fügt ein einfaches Anführungszeichen im Anführungszeichenstil
+ ein, der im Dialog 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen
+\family default
+ unter 
+\family sans
+Sprache
+\family default
+ eingestellt ist.
 \end_layout
 
 \begin_layout Description
@@ -35818,9 +35825,11 @@ Symbole
 
 \end_inset
 
-Erstellt eine Formel mit einer sogenannten tipa-Einfügung.
- In diese kann man Befehle eingeben um phonetische Symbole der IPA zu erzeugen.
- Für dieses Feature muss das LaTeX-Paket 
+Erstellt eine Einfügung, in die man Symbole des Internationalen Phonetischen
+ Alphabets (IPA) eingeben kann, und öffnet eine Symbolleiste, die einen
+ Großteil dieser Symbole bereitstellt.
+ Um dieses Feature mit traditionellem LaTeX nutzen zu können, muss das LaTeX-Pak
+et 
 \series bold
 tipa
 \series default
@@ -35838,34 +35847,13 @@ LaTeX-Paket ! tipa
 \begin_inset Newline newline
 \end_inset
 
-Für weitere Informationen über dieses Feature siehe die Dokumentation von
- 
-\series bold
-tipa, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tipa"
-
-\end_inset
-
-
-\series default
- und diese Wiki-Seite:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LinguistLyX
-\end_layout
-
-\end_inset
-
-
+Weitere Informationen über dieses Feature bietet das Linguistik-Handbuch
+ unter 
+\family sans
+Hilfe\SpecialChar \menuseparator
+Spezielle Handbücher
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
