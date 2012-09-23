@@ -133,7 +133,8 @@ EndFont
 Font libertine
 	GuiName          "Libertine"
 	Family           rm
-	OsfOption        osf
+	OsfOption        lining
+	OsfDefault       1
 	Package          libertine-type1
 	AltFonts         libertine-legacy
 EndFont
