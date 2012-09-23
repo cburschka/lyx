@@ -8,7 +8,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#import <Carbon/Carbon.h>
 #import <Cocoa/Cocoa.h>
 
 #import <AvailabilityMacros.h>
