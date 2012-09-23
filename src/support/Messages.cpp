@@ -234,9 +234,14 @@ docstring const Messages::get(string const & m) const
 	return trans;
 }
 
+std::string Messages::language() const
+    {
+        return string();
+    }
 
-bool Messages::available() const
+bool Messages::available(string const & c)
 {
+	(void)c;
 	return false;
 }
 
