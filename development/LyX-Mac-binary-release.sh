@@ -12,6 +12,8 @@ Qt4Version=${Qt4Version:-"4.6.3"}
 Qt4SourceVersion="qt-everywhere-opensource-src-${Qt4Version}"
 Qt4BuildSubDir="qt-${Qt4Version}-build${MAC_API}"
 
+unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
+
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
 # * Qt4 - build with shared or static libraries for the used platforms (default: i386 and ppc)
@@ -42,8 +44,17 @@ thesaurus_deployment="yes"
 
 qt4_deployment="yes"
 
-MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
-SDKROOT="/Developer/SDKs/MacOSX10.5.sdk" # Leopard build is default
+if [ -d "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs" ]; then
+	DEVELOPER_SDKS="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
+	XCODE_DEVELOPER="/Applications/Xcode.app/Contents/Developer"
+	MACOSX_DEPLOYMENT_TARGET="10.7" # Tiger support is default
+	SDKROOT="${DEVELOPER_SDKS}/MacOSX10.7.sdk" # Leopard build is default
+elif [ -d "/Developer/SDKs" ]; then
+	DEVELOPER_SDKS="/Developer/SDKs"
+	XCODE_DEVELOPER="/Developer"
+	MACOSX_DEPLOYMENT_TARGET="10.4" # Tiger support is default
+	SDKROOT="${DEVELOPER_SDKS}/MacOSX10.5.sdk" # Leopard build is default
+fi
 
 # detection of script home
 LyxSourceDir=$(dirname "$0")
@@ -112,13 +123,13 @@ while [ $# -gt 0 ]; do
 		SDKROOT=$(echo ${1}|cut -d= -f2)
 		case "${SDKROOT}" in
 		10.4)
-			SDKROOT="/Developer/SDKs/MacOSX10.4u.sdk"
+			SDKROOT="${DEVELOPER_SDKS}/MacOSX10.4u.sdk"
 			export CC=gcc-4.0
 			export OBJC=gcc-4.0
 			export CXX=g++-4.0
 			;;
-		10.5|10.6)
-			SDKROOT="/Developer/SDKs/MacOSX${SDKROOT}.sdk"
+		10.5|10.6|10.7|10.8)
+			SDKROOT="${DEVELOPER_SDKS}/MacOSX${SDKROOT}.sdk"
 			;;
 		*)
 			usage
@@ -237,24 +248,24 @@ DMGNAME="${LyxBase}"
 DMGSIZE="550m"
 
 # Check for existing SDKs
-SDKs=$(echo /Developer/SDKs/MacOSX10*sdk)
-case "$SDKs" in
-${SDKROOT})
+SDKs=$(echo ${DEVELOPER_SDKS}/MacOSX10*sdk)
+case $SDKs in
+*${SDKROOT}*)
 	;;
 *10.6*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.5"}; export MACOSX_DEPLOYMENT_TARGET
 	case "${MACOSX_DEPLOYMENT_TARGET}" in
 	10.6)
-		SDKROOT="/Developer/SDKs/MacOSX10.6.sdk"; export SDKROOT
+		SDKROOT="${DEVELOPER_SDKS}/MacOSX10.6.sdk"; export SDKROOT
 		;;
 	10.5|10.4)
-		SDKROOT=${SDKROOT:-"/Developer/SDKs/MacOSX10.5.sdk"}; export SDKROOT
+		SDKROOT=${SDKROOT:-"${DEVELOPER_SDKS}/MacOSX10.5.sdk"}; export SDKROOT
 		;;
 	esac
 	;;
 *10.5*)
 	MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-"10.4"}; export MACOSX_DEPLOYMENT_TARGET
-	SDKROOT=${SDKROOT:-"/Developer/SDKs/MacOSX10.5.sdk"}; export SDKROOT
+	SDKROOT=${SDKROOT:-"${DEVELOPER_SDKS}/MacOSX10.5.sdk"}; export SDKROOT
 	;;
 *)
 	echo Unknown or missing SDK for Mac OS X.
@@ -725,7 +736,7 @@ make_dmg() {
 	ln -s /Applications/ "${VOLUME}"/Applications
 	test -d "${DocumentationDir}" && cp -r "${DocumentationDir}" "${VOLUME}"
 	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H}
-	/Developer/Tools/SetFile -a C "${VOLUME}"
+	${XCODE_DEVELOPER}/Tools/SetFile -a C "${VOLUME}"
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
 
 	# Unmount the disk image
