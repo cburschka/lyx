@@ -202,10 +202,18 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 		done
 		QT4_CORE_INCLUDES="-I$qt4_cv_includes -I$qt4_cv_includes/QtCore"
 	fi
-	if test -n "$qt4_cv_libraries"; then
+	case "$qt4_cv_libraries" in
+	*framework*)
+		QT4_LDFLAGS="-F$qt4_cv_libraries"
+		QT4_CORE_LDFLAGS="-F$qt4_cv_libraries"
+		;;
+	"")
+		;;
+	*)
 		QT4_LDFLAGS="-L$qt4_cv_libraries"
 		QT4_CORE_LDFLAGS="-L$qt4_cv_libraries"
-	fi
+		;;
+	esac
 	AC_SUBST(QT4_INCLUDES)
 	AC_SUBST(QT4_CORE_INCLUDES)
 	AC_SUBST(QT4_LDFLAGS)
