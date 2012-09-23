@@ -13,9 +13,9 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 442: support for the newtxmath fonts:
-	  - \usepackage{newtxmath} > \math_font newtxmath
-	  - \usepackage[libertine]{newtxmath} > \math_font libertine-ntxm
-	  - \usepackage[minion]{newtxmath} > \math_font minion-ntxm
+	  - \usepackage{newtxmath} > \font_math newtxmath
+	  - \usepackage[libertine]{newtxmath} > \font_math libertine-ntxm
+	  - \usepackage[minion]{newtxmath} > \font_math minion-ntxm
 
 2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 441:
@@ -26,7 +26,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2012-09-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 440:
 	  Math (TeX) font UI.
-	  New Buffer param "\math_font <value>",
+	  New Buffer param "\font_math <value>",
 	  supported values are:
 	  * "auto": automatically adapt math font (the status quo ante).
 	  * "default": use class default, i.e. prevent TeX font packages
