@@ -105,6 +105,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when clicking on a completion in math mode (bug 8296).
+
 - Fix regression in which clicking in the main work area always resets
   the selected format in View -> Source (bug 8411).
   

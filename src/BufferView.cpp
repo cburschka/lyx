@@ -2443,6 +2443,8 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		cap::saveSelection(cursor());
 
 	d->cursor_.macroModeClose();
+	// If a macro has been finalized, the cursor might have been broken
+	cur.fixIfBroken();
 
 	// Has the cursor just left the inset?
 	bool const leftinset = (&d->cursor_.inset() != &cur.inset());
