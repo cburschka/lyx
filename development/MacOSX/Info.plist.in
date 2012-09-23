@@ -40,6 +40,10 @@
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>OSAScriptingDefinition</key>
-    <string>LyX.sdef</string>
+	<string>LyX.sdef</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 </dict>
 </plist>
