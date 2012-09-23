@@ -1023,6 +1023,8 @@ def revert_mathfonts(document):
             "palatino":  "\\renewcommand{\\rmdefault}{ppl}",
             "palatino-osf":  "\\renewcommand{\\rmdefault}{pplj}",
             "times":  "\\renewcommand{\\rmdefault}{ptm}",
+            "utopia":  "\\renewcommand{\\rmdefault}{futs}",
+            "utopia-osf":  "\\renewcommand{\\rmdefault}{futj}",
             }
             j = find_token(document.header, "\\font_roman", 0)
             if j != -1:
@@ -1036,6 +1038,49 @@ def revert_mathfonts(document):
                     if k != -1:
                         document.header[k] = "\\font_osf false"
     del document.header[i]
+
+
+def revert_mdnomath(document):
+    " Revert mathdesign and fourier without math " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        mathdesign_dict = {
+        "md-charter": "mdbch",
+        "md-utopia": "mdput",
+        "md-garamond": "mdugm"
+        }
+        i = find_token(document.header, "\\font_roman", 0)
+        if i == -1:
+            return
+        val = get_value(document.header, "\\font_roman", i)
+        if val in mathdesign_dict.keys():
+            j = find_token(document.header, "\\font_math", 0)
+            if j == -1:
+                document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
+            mval = get_value(document.header, "\\font_math", j)
+            if mval == "default":
+                document.header[i] = "\\font_roman default"
+                add_to_preamble(document, "\\renewcommand{\\rmdefault}{%s}" % mathdesign_dict[val])
+            else:
+                document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
+
+
+def convert_mdnomath(document):
+    " Change mathdesign font name " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        mathdesign_dict = {
+        "mdbch":  "md-charter",
+        "mdput":  "md-utopia",
+        "mdugm":  "md-garamond"
+        }
+        i = find_token(document.header, "\\font_roman", 0)
+        if i == -1:
+            return
+        val = get_value(document.header, "\\font_roman", i)
+        if val in mathdesign_dict.keys():
+             document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
+
 
 ##
 # Conversion hub
@@ -1069,10 +1114,12 @@ convert = [
            [437, []],
            [438, []],
            [439, []],
-           [440, []]
+           [440, []],
+           [441, [convert_mdnomath]]
           ]
 
 revert =  [
+           [440, [revert_mdnomath]],
            [439, [revert_mathfonts]],
            [438, [revert_minionpro]],
            [437, [revert_ipadeco, revert_ipachar]],
