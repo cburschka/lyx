@@ -1419,8 +1419,13 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (useNonTeXFonts && !ams.empty())
 		os << from_ascii(ams);
 
-	if (useNonTeXFonts)
+	if (useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
+		if (fonts_math != "auto" && features.isAvailable("unicode-math")) {
+			features.require("unicode-math");
+			os << "\\usepackage{unicode-math}\n";
+		}
+	}
 
 	// font selection must be done before loading fontenc.sty
 	string const fonts = loadFonts(features);

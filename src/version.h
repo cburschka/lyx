@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 442 // spitz: support for newtxmath
-#define LYX_FORMAT_TEX2LYX 442 // spitz: support for newtxmath
+#define LYX_FORMAT_LYX 443 // spitz: basic support for unicode-math
+#define LYX_FORMAT_TEX2LYX 443 // spitz: basic support for unicode-math
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

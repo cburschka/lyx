@@ -698,7 +698,9 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 		                      (!for_mathed && !it->second.textcommand.empty());
 		bool const plain_utf8 = (features.runparams().encoding->name() == "utf8-plain");
 		// with utf8-plain, we only load packages when in mathed (see #7766)
-		if (math_mode || (use_math && !plain_utf8)) {
+		// and if we do not use unicode-math
+		if ((math_mode && !features.isRequired("unicode-math"))
+		     || (use_math && !plain_utf8)) {
 			if (!it->second.mathpreamble.empty()) {
 				if (it->second.mathfeature()) {
 					string feats = it->second.mathpreamble;

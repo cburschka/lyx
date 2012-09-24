@@ -1778,8 +1778,6 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 
 	fontModule->fontencLA->setEnabled(tex_fonts);
 	fontModule->fontencCO->setEnabled(tex_fonts);
-	fontModule->fontsMathCO->setEnabled(tex_fonts);
-	fontModule->fontsMathLA->setEnabled(tex_fonts);
 	if (!tex_fonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
@@ -1902,6 +1900,11 @@ void GuiDocument::updateFontlist()
 		fontModule->fontsRomanCO->addItem(qt_("Default"), QString("default"));
 		fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
 		fontModule->fontsTypewriterCO->addItem(qt_("Default"), QString("default"));
+		QString unimath = qt_("Non-TeX Fonts Default");
+		if (!LaTeXFeatures::isAvailable("unicode-math"))
+			unimath += qt_(" (not available)");
+		fontModule->fontsMathCO->addItem(qt_("Class Default (TeX Fonts)"), QString("auto"));
+		fontModule->fontsMathCO->addItem(unimath, QString("default"));
 
 		QFontDatabase fontdb;
 		QStringList families(fontdb.families());
@@ -3203,14 +3206,10 @@ void GuiDocument::paramsToDialog()
 		fontModule->fontencLA->setEnabled(false);
 		fontModule->fontencCO->setEnabled(false);
 		fontModule->fontencLE->setEnabled(false);
-		fontModule->fontsMathCO->setEnabled(false);
-		fontModule->fontsMathLA->setEnabled(false);
 	} else {
 		fontModule->fontencLA->setEnabled(true);
 		fontModule->fontencCO->setEnabled(true);
 		fontModule->fontencLE->setEnabled(true);
-		fontModule->fontsMathCO->setEnabled(true);
-		fontModule->fontsMathLA->setEnabled(true);
 		romanChanged(rpos);
 		sansChanged(spos);
 		ttChanged(tpos);

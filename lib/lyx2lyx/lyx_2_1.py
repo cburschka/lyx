@@ -1134,10 +1134,12 @@ convert = [
            [439, []],
            [440, []],
            [441, [convert_mdnomath]],
-           [442, []]
+           [442, []],
+           [443, []]
           ]
 
 revert =  [
+           [442, []],
            [441, [revert_newtxmath]],
            [440, [revert_mdnomath]],
            [439, [revert_mathfonts]],

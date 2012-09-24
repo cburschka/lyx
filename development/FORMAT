@@ -11,6 +11,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+
+2012-09-24 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 443: basic support for unicode-math:
+	  Empty file format change (in case it turns out we need to
+	  do something).
+
 2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 442: support for the newtxmath fonts:
 	  - \usepackage{newtxmath} > \font_math newtxmath
