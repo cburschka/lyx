@@ -281,7 +281,6 @@ public:
 
 private Q_SLOTS:
 	void on_instantPreviewCO_currentIndexChanged(int);
-	void on_displayGraphicsCB_toggled(bool);
 };
 
 

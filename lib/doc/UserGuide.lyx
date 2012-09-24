@@ -31784,7 +31784,8 @@ type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- starts the spell checking beginning from the current cursor position.
+ starts the spell checking from either the current cursor position or the
+ beginning of the currently selected text.
  A sidebar will appear showing any incorrect (or unknown) word found, allowing
  you to edit and replace it in a second line.
  Whenever an unknown word is found, the word is highlighted and the text

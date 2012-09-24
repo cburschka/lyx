@@ -51,6 +51,8 @@ What's new
 
 - Allow native LyX format to be shown in menu View->Source.
 
+- Implementation of spell check of current selection (bug #2511).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -97,11 +99,16 @@ What's new
 - Embrace babel settings to \makeatletter ... \makeatother if they contain
   an @ glyph.
 
+- Improve the external file monitor. LyX should now also honor changes in
+  graphics that are included via ERT or generated via knitr (bug 8336).
+
 - Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
   (part of bug 8251).
 
 - Fix brackets direction in Hebrew documents when using XeTeX/Polyglossia
   and in Arabic documents on plain text output (part of bug 8251).
+
+- Fix bracket output with RTL languages (bug 8278).
 
 - Fix babel call with Arabic (arabi).
 
@@ -112,6 +119,11 @@ What's new
   okular --unique "$$o#src:$$n $$f" (as provided now in the dropdown list).
 
 - Fix LaTeX output of IPA tone symbols.
+
+- Fix support for mhchem upward arrows, which in mathed are rendered as
+  empty (brace insets) superscripts (bug 8305).
+
+- Fix tex2lyx import of mhchem commands outside math mode (bug 8306).
 
 
 * USER INTERFACE
@@ -125,10 +137,16 @@ What's new
 
 - Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
 
+- Fix bug where references were erroneously changed when a duplicate label
+  name was resolved (bug 8147). 
+
 - Make sure that undo restores environment depth correctly (bug 8159).
 
 - Make sure that undo restores paragraph longest label width correctly
   (bug 8242).
+
+- Fix undo machinery confusion after checking in a document under version
+  control (bug 8342).
 
 - Do not forget the undo information when doing a Save As...
 
@@ -149,6 +167,9 @@ What's new
 
 - When using a non-default language for the GUI, do not change locale
   settings of child proceses (bug 7741).
+
+- Do not disable Instant Preview widgets in preferences when Display
+  Graphics is unchecked (bug 7462).
 
 
 * DOCUMENTATION AND LOCALIZATION
