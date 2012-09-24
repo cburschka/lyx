@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-20 19:18-0400\n"
-"PO-Revision-Date: 2012-09-20 16:13+0200\n"
+"POT-Creation-Date: 2012-09-24 18:19+0200\n"
+"PO-Revision-Date: 2012-09-24 18:22+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -222,8 +222,8 @@ msgid "Select a processor"
 msgstr "Wählen Sie einen Prozessor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
-#: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868
+#: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:774
+#: src/frontends/qt4/GuiPrefs.cpp:869
 msgid "&Options:"
 msgstr "&Optionen:"
 
@@ -501,7 +501,7 @@ msgstr "Innere Box -- benötigt für feste Breite & Zeilenumbrüche"
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2128 src/frontends/qt4/GuiPrefs.cpp:2151
+#: src/frontends/qt4/GuiPrefs.cpp:2129 src/frontends/qt4/GuiPrefs.cpp:2152
 msgid "None"
 msgstr "Keine"
 
@@ -670,7 +670,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiDocument.cpp:3234 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2276 src/frontends/qt4/GuiPrefs.cpp:2528
+#: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2533
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:197
 msgid "Default"
@@ -798,7 +798,7 @@ msgstr "Strichstärke"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1313
-#: src/frontends/qt4/GuiPrefs.cpp:2231 src/frontends/qt4/Menus.cpp:853
+#: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:853
 msgid "Language"
 msgstr "Sprache"
 
@@ -1178,7 +1178,7 @@ msgstr ""
 msgid "Save as Document Defaults"
 msgstr "Als Dokument-Voreinstellung speichern"
 
-#: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1230
+#: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1231
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2843,7 +2843,7 @@ msgstr "Bilder"
 #: src/frontends/qt4/ui/OutputUi.ui:172 lib/layouts/aapaper.layout:61
 #: lib/layouts/egs.layout:615 lib/languages:69
 #: src/frontends/qt4/GuiErrorList.cpp:48 src/frontends/qt4/GuiLog.cpp:226
-#: src/frontends/qt4/GuiPrefs.cpp:696
+#: src/frontends/qt4/GuiPrefs.cpp:697
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3047,9 +3047,9 @@ msgstr "Doppelt"
 #: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
 #: src/frontends/qt4/GuiDocument.cpp:802 src/frontends/qt4/GuiDocument.cpp:854
 #: src/frontends/qt4/GuiDocument.cpp:1020 src/frontends/qt4/GuiHSpace.cpp:54
-#: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:850
-#: src/frontends/qt4/GuiPrefs.cpp:877 src/frontends/qt4/GuiPrefs.cpp:2130
-#: src/frontends/qt4/GuiPrefs.cpp:2153
+#: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:851
+#: src/frontends/qt4/GuiPrefs.cpp:878 src/frontends/qt4/GuiPrefs.cpp:2131
+#: src/frontends/qt4/GuiPrefs.cpp:2154
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Benutzerdefiniert"
@@ -3181,7 +3181,7 @@ msgid "Cursor i&ndicator"
 msgstr "Cursor-Markieru&ng"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:118
-#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:388
+#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:389
 msgid "General"
 msgstr "Allgemein"
 
@@ -3253,7 +3253,7 @@ msgstr "&Ändern"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2926 src/frontends/qt4/GuiPrefs.cpp:2990
+#: src/frontends/qt4/GuiPrefs.cpp:2931 src/frontends/qt4/GuiPrefs.cpp:2995
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -3310,7 +3310,7 @@ msgstr "Absatzenden auf dem Bildschirm mit einem Alinea-Zeichen markieren."
 msgid "&Mark end of paragraphs"
 msgstr "Absatzenden &markieren"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:251
+#: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
 msgstr "Bearbeiten"
 
@@ -3724,8 +3724,8 @@ msgstr "Spezieller BibTeX-Befehl (mit Optionen) für pLaTeX (Japanisch)"
 msgid "Pr&ocessor:"
 msgstr "Pr&ozessor:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:240 src/frontends/qt4/GuiPrefs.cpp:798
-#: src/frontends/qt4/GuiPrefs.cpp:895
+#: src/frontends/qt4/ui/PrefLatexUi.ui:240 src/frontends/qt4/GuiPrefs.cpp:799
+#: src/frontends/qt4/GuiPrefs.cpp:896
 msgid "Op&tions:"
 msgstr "&Optionen:"
 
@@ -4419,7 +4419,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Wählen Sie, welcher Index an dieser Stelle ausgegeben werden soll."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1324 src/frontends/qt4/GuiPrefs.cpp:253
+#: src/frontends/qt4/GuiDocument.cpp:1324 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Ausgabe"
 
@@ -4629,8 +4629,9 @@ msgstr ""
 "Sie können den Inhalt mit dem Kopf 'Entfernen' zurücksetzen."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:192
-#: src/frontends/qt4/GuiSpellchecker.cpp:394
+#: src/frontends/qt4/GuiSpellchecker.cpp:251
+#: src/frontends/qt4/GuiSpellchecker.cpp:258
+#: src/frontends/qt4/GuiSpellchecker.cpp:539
 msgid "Spell Checker"
 msgstr "Rechtschreibprüfung"
 
@@ -17489,21 +17490,21 @@ msgstr ""
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4440
+#: src/Buffer.cpp:4441
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4444
+#: src/Buffer.cpp:4445
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
-#: src/Buffer.cpp:4511
+#: src/Buffer.cpp:4512
 msgid "Included File Invalid"
 msgstr "Eingebundene Datei ungültig"
 
-#: src/Buffer.cpp:4512
+#: src/Buffer.cpp:4513
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -20181,7 +20182,7 @@ msgid "About %1"
 msgstr "Über %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3195
+#: src/frontends/qt4/GuiPrefs.cpp:3200
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -21056,7 +21057,7 @@ msgstr "Textformat"
 msgid "Page Margins"
 msgstr "Seitenränder"
 
-#: src/frontends/qt4/GuiDocument.cpp:1314 src/frontends/qt4/GuiPrefs.cpp:1108
+#: src/frontends/qt4/GuiDocument.cpp:1314 src/frontends/qt4/GuiPrefs.cpp:1109
 msgid "Colors"
 msgstr "Farben"
 
@@ -21660,113 +21661,113 @@ msgstr ""
 msgid "Phantom Settings"
 msgstr "Phantom Einstellungen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:140
+#: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "System files|#S#s"
 msgstr "Systemdateien|#S#s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:144
+#: src/frontends/qt4/GuiPrefs.cpp:145
 msgid "User files|#U#u"
 msgstr "Benutzerdateien|#B#b"
 
-#: src/frontends/qt4/GuiPrefs.cpp:250
+#: src/frontends/qt4/GuiPrefs.cpp:251
 msgid "Look & Feel"
 msgstr "Aussehen & Handhabung"
 
-#: src/frontends/qt4/GuiPrefs.cpp:252
+#: src/frontends/qt4/GuiPrefs.cpp:253
 msgid "Language Settings"
 msgstr "Spracheinstellungen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiPrefs.cpp:255
 msgid "File Handling"
 msgstr "Datei-Handhabung"
 
-#: src/frontends/qt4/GuiPrefs.cpp:480
+#: src/frontends/qt4/GuiPrefs.cpp:481
 msgid "Keyboard/Mouse"
 msgstr "Tastatur/Maus"
 
-#: src/frontends/qt4/GuiPrefs.cpp:610
+#: src/frontends/qt4/GuiPrefs.cpp:611
 msgid "Input Completion"
 msgstr "Eingabevervollständigung"
 
-#: src/frontends/qt4/GuiPrefs.cpp:757 src/frontends/qt4/GuiPrefs.cpp:782
-#: src/frontends/qt4/GuiPrefs.cpp:872 src/frontends/qt4/GuiPrefs.cpp:899
+#: src/frontends/qt4/GuiPrefs.cpp:758 src/frontends/qt4/GuiPrefs.cpp:783
+#: src/frontends/qt4/GuiPrefs.cpp:873 src/frontends/qt4/GuiPrefs.cpp:900
 msgid "Co&mmand:"
 msgstr "&Befehl:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:931
+#: src/frontends/qt4/GuiPrefs.cpp:932
 msgid "Screen Fonts"
 msgstr "Bildschirmschriften"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1304
+#: src/frontends/qt4/GuiPrefs.cpp:1305
 msgid "Paths"
 msgstr "Pfade"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1391
+#: src/frontends/qt4/GuiPrefs.cpp:1392
 msgid "Select directory for example files"
 msgstr "Wählen Sie ein Verzeichnis für Beispieldateien"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1400
+#: src/frontends/qt4/GuiPrefs.cpp:1401
 msgid "Select a document templates directory"
 msgstr "Wählen Sie ein Verzeichnis für die Dokumentvorlagen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1409
+#: src/frontends/qt4/GuiPrefs.cpp:1410
 msgid "Select a temporary directory"
 msgstr "Wählen Sie ein temporäres Verzeichnis"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1418
+#: src/frontends/qt4/GuiPrefs.cpp:1419
 msgid "Select a backups directory"
 msgstr "Wählen Sie ein Verzeichnis für Sicherungen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1427
+#: src/frontends/qt4/GuiPrefs.cpp:1428
 msgid "Select a document directory"
 msgstr "Wählen Sie ein Dokumentverzeichnis"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1436
+#: src/frontends/qt4/GuiPrefs.cpp:1437
 msgid "Set the path to the thesaurus dictionaries"
 msgstr "Den Pfad zum Thesaurus-Wörterbuch festlegen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1445
+#: src/frontends/qt4/GuiPrefs.cpp:1446
 msgid "Set the path to the Hunspell dictionaries"
 msgstr "Den Pfad zu den Hunspell-Wörterbüchern festlegen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1454
+#: src/frontends/qt4/GuiPrefs.cpp:1455
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1467
-#: src/frontends/qt4/GuiSpellchecker.cpp:450
+#: src/frontends/qt4/GuiPrefs.cpp:1468
+#: src/frontends/qt4/GuiSpellchecker.cpp:592
 msgid "Spellchecker"
 msgstr "Rechtschreibprüfung"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1473
+#: src/frontends/qt4/GuiPrefs.cpp:1474
 msgid "Native"
 msgstr "Nativ"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1479
+#: src/frontends/qt4/GuiPrefs.cpp:1480
 msgid "Aspell"
 msgstr "Aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1482
+#: src/frontends/qt4/GuiPrefs.cpp:1483
 msgid "Enchant"
 msgstr "Enchant"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1485
+#: src/frontends/qt4/GuiPrefs.cpp:1486
 msgid "Hunspell"
 msgstr "Hunspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1558
+#: src/frontends/qt4/GuiPrefs.cpp:1559
 msgid "Converters"
 msgstr "Konverter"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1872
+#: src/frontends/qt4/GuiPrefs.cpp:1873
 msgid "File Formats"
 msgstr "Dateiformate"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2058 src/frontends/qt4/GuiPrefs.cpp:2210
+#: src/frontends/qt4/GuiPrefs.cpp:2059 src/frontends/qt4/GuiPrefs.cpp:2211
 msgid "Format in use"
 msgstr "Format wird verwendet"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2059
+#: src/frontends/qt4/GuiPrefs.cpp:2060
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -21774,17 +21775,17 @@ msgstr ""
 "Der Kurztitel eines Formats, das von einem Konverter verwendet wird, kann "
 "nicht umbenannt werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2211
+#: src/frontends/qt4/GuiPrefs.cpp:2212
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2297
+#: src/frontends/qt4/GuiPrefs.cpp:2302
 msgid "LyX needs to be restarted!"
 msgstr "LyX muss neu gestartet werden!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2298
+#: src/frontends/qt4/GuiPrefs.cpp:2303
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -21792,76 +21793,76 @@ msgstr ""
 "Die Änderung der Sprache der Benutzeroberfläche wird erst nach einem "
 "Neustart von LyX wirksam."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2369
+#: src/frontends/qt4/GuiPrefs.cpp:2374
 msgid "Printer"
 msgstr "Drucker"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2485 src/frontends/qt4/GuiPrefs.cpp:3238
+#: src/frontends/qt4/GuiPrefs.cpp:2490 src/frontends/qt4/GuiPrefs.cpp:3243
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2529
+#: src/frontends/qt4/GuiPrefs.cpp:2534
 msgid "Classic"
 msgstr "Klassisch"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2530
+#: src/frontends/qt4/GuiPrefs.cpp:2535
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2608
+#: src/frontends/qt4/GuiPrefs.cpp:2613
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2696
+#: src/frontends/qt4/GuiPrefs.cpp:2701
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2701
+#: src/frontends/qt4/GuiPrefs.cpp:2706
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2702
+#: src/frontends/qt4/GuiPrefs.cpp:2707
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2781
+#: src/frontends/qt4/GuiPrefs.cpp:2786
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2785
+#: src/frontends/qt4/GuiPrefs.cpp:2790
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2789
+#: src/frontends/qt4/GuiPrefs.cpp:2794
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2793
+#: src/frontends/qt4/GuiPrefs.cpp:2798
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2797
+#: src/frontends/qt4/GuiPrefs.cpp:2802
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2924 src/frontends/qt4/GuiPrefs.cpp:2970
+#: src/frontends/qt4/GuiPrefs.cpp:2929 src/frontends/qt4/GuiPrefs.cpp:2975
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3081 src/frontends/qt4/GuiPrefs.cpp:3088
-#: src/frontends/qt4/GuiPrefs.cpp:3108 src/frontends/qt4/GuiPrefs.cpp:3127
+#: src/frontends/qt4/GuiPrefs.cpp:3086 src/frontends/qt4/GuiPrefs.cpp:3093
+#: src/frontends/qt4/GuiPrefs.cpp:3113 src/frontends/qt4/GuiPrefs.cpp:3132
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3082
+#: src/frontends/qt4/GuiPrefs.cpp:3087
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3089
+#: src/frontends/qt4/GuiPrefs.cpp:3094
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3109
+#: src/frontends/qt4/GuiPrefs.cpp:3114
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21871,35 +21872,35 @@ msgstr ""
 "Tastenkürzel `%1$s' ist bereits mit %2$s belegt\n"
 " Sie müssen die Belegung erst entfernen bevor Sie eine neue setzen können."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3128
+#: src/frontends/qt4/GuiPrefs.cpp:3133
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3159
+#: src/frontends/qt4/GuiPrefs.cpp:3164
 msgid "Identity"
 msgstr "Identität"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3368
+#: src/frontends/qt4/GuiPrefs.cpp:3373
 msgid "Choose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3369
+#: src/frontends/qt4/GuiPrefs.cpp:3374
 msgid "LyX bind files (*.bind)"
 msgstr "LyX-Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3375
+#: src/frontends/qt4/GuiPrefs.cpp:3380
 msgid "Choose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3376
+#: src/frontends/qt4/GuiPrefs.cpp:3381
 msgid "LyX UI files (*.ui)"
 msgstr "LyX-UI-Dateien (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3382
+#: src/frontends/qt4/GuiPrefs.cpp:3387
 msgid "Choose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3383
+#: src/frontends/qt4/GuiPrefs.cpp:3388
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
@@ -21975,14 +21976,18 @@ msgstr "Zeige Datei"
 msgid "Error -> Cannot load file!"
 msgstr "Fehler -> Kann Datei nicht laden!"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:193
+#: src/frontends/qt4/GuiSpellchecker.cpp:252
+msgid "Spell check of the selection done, did not find any errors."
+msgstr "Rechtschreibprüfung der Auswahl abgeschlossen, keine Fehler gefunden."
+
+#: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
 msgstr ""
 "Das Ende des Dokuments wurde erreicht. Möchten Sie am Anfang weitermachen?"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:395
+#: src/frontends/qt4/GuiSpellchecker.cpp:540
 msgid "Spell checker has no dictionaries."
 msgstr "Das Rechtschreibprogramm findet keine Wörterbücher."
 
