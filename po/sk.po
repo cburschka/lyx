@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-23 21:37+0200\n"
+"POT-Creation-Date: 2012-09-24 18:54+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1069,7 +1069,7 @@ msgstr "Obnovte štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "Použiť štandardné nastavenie triedy"
+msgstr "Použiť triedny štandard"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
@@ -22173,10 +22173,22 @@ msgstr "Štan&dard..."
 msgid " (not installed)"
 msgstr " (nie je inštalovaný)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1941
-#: src/frontends/qt4/GuiDocument.cpp:1968
+#: src/frontends/qt4/GuiDocument.cpp:1903
+msgid "Non-TeX Fonts Default"
+msgstr "Štandard pre Non-TeX fonty"
+
+#: src/frontends/qt4/GuiDocument.cpp:1905
+msgid " (not available)"
+msgstr " (nedostupný)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1906
+msgid "Class Default (TeX Fonts)"
+msgstr "Triedny Štandard (TeX fonty)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1944
+#: src/frontends/qt4/GuiDocument.cpp:1971
 msgid "Class Default"
-msgstr "Štandardné nastavenie triedy"
+msgstr "Triedny štandard"
 
 #: src/frontends/qt4/GuiDocument.cpp:1918
 msgid "Layouts|#o#O"
