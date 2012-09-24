@@ -1259,6 +1259,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		|| useNonTeXFonts))
 		features.require("polyglossia");
 
+	if (useNonTeXFonts && fonts_math != "auto")
+		features.require("unicode-math");
+
 	if (!language->requires().empty())
 		features.require(language->requires());
 }
@@ -1421,10 +1424,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	if (useNonTeXFonts) {
 		os << "\\usepackage{fontspec}\n";
-		if (fonts_math != "auto" && features.isAvailable("unicode-math")) {
-			features.require("unicode-math");
+		if (features.mustProvide("unicode-math")
+		    && features.isAvailable("unicode-math"))
 			os << "\\usepackage{unicode-math}\n";
-		}
 	}
 
 	// font selection must be done before loading fontenc.sty
