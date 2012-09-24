@@ -168,6 +168,9 @@ What's new
 - When using a non-default language for the GUI, do not change locale
   settings of child proceses (bug 7741).
 
+- Change the logic for listing available languages for the GUI, which
+  broke the possibility of loading non-english help file on Mac OS X.
+
 - Do not disable Instant Preview widgets in preferences when Display
   Graphics is unchecked (bug 7462).
 
