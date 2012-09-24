@@ -243,8 +243,11 @@ Notes: The
 \family sans
 AE
 \family default
- package provide virtual PostScript versions of LaTeX' standard font (Computer
- Modern).
+ package provide virtual PostScript versions of LaTeX's standard font (
+\emph on
+Computer Modern
+\emph default
+).
  Unless you rely on special characters, we recommend to use 
 \family sans
 Latin Modern
@@ -274,9 +277,28 @@ fonts/bera
 \end_layout
 
 \begin_layout Description
-Notes: The bera fonts are a clone of Bitstream Vera, including Bera Serif
- (a slab-serif Roman), Bera Sans (a Frutiger descendant), and Bera Mono
- (monospaced/typewriter).
+Notes: The bera fonts are a clone of 
+\emph on
+Bitstream Vera
+\emph default
+, including 
+\emph on
+Bera Serif
+\emph default
+ (a slab-serif Roman), 
+\emph on
+Bera Sans
+\emph default
+ (a 
+\emph on
+Frutiger
+\emph default
+ descendant), and 
+\emph on
+Bera Mono
+\emph default
+ (a matching monospaced\SpecialChar \slash{}
+typewriter font).
 \end_layout
 
 \begin_layout Subsection
@@ -334,7 +356,11 @@ ccfonts
 \emph on
 Concrete Mathematics
 \emph default
- book, hence called concrete fonts.
+ book, hence called 
+\emph on
+concrete 
+\emph default
+fonts.
 \end_layout
 
 \begin_layout Subsection
@@ -358,31 +384,40 @@ fonts/ec
 \end_layout
 
 \begin_layout Description
-Notes: LaTeX does not require the use of 
-\family sans
-ec
-\family default
- fonts, however they are strongly recommended.
+Notes: The 
+\emph on
+EC
+\emph default
+ fonts (
+\emph on
+European Computer Modern
+\emph default
+) provide an enhanced version of the original 
+\emph on
+Computer Modern
+\emph default
+ family that were the default TeX fonts.
  The 
-\family sans
-ec
-\family default
- fonts are available in a more natural range of sizes and allow better hyphenati
-on and kerning than the old fonts such as 
-\family sans
-cmr10
-\family default
+\emph on
+EC
+\emph default
+ fonts are available in a more natural range of sizes, cover more glyphs
+ and allow for better hyphenation and kerning than traditional 
+\emph on
+Computer Modern
+\emph default
 .
- If you already have the so-called 
-\family sans
-dc
-\family default
- fonts installed, please upgrade to the 
-\family sans
-ec
-\family default
- fonts, which replace them.
- They are used automatically if LyX determines that you have them installed.
+ With modern LaTeX distributions, the EC fonts are used automatically as
+ a default (or if you select 
+\emph on
+Computer Modern
+\emph default
+) if you have them installed and if you use the T1 font encoding.
+ For math and OT1 encoding, traditional 
+\emph on
+Computer Modern
+\emph default
+ type faces are used.
 \end_layout
 
 \begin_layout Subsection
@@ -411,9 +446,10 @@ Notes: The
 eco
 \family default
  package is used by LyX to access the old style numerals of the 
-\family sans
-Computer Modern
-\family default
+\emph on
+Computer Modern\SpecialChar \slash{}
+EC
+\emph default
  font family.
 \end_layout
 
@@ -442,7 +478,11 @@ Notes: The
 \family sans
 eulervm
 \family default
- package provides access to the Euler math fonts.
+ package provides access to the 
+\emph on
+Euler
+\emph default
+ math fonts.
  
 \end_layout
 
@@ -471,16 +511,14 @@ Notes: The package
 \family sans
 feyn
 \family default
- is used when you use 
-\family sans
-Feynman
-\family default
- diagrams in formulas (LaTeX-command 
-\series bold
+ provides a font for in-text Feynman diagrams.
+ It is used by LyX if you insert such diagrams in formulas (LaTeX command
+ 
+\family typewriter
 
 \backslash
 Diagram
-\series default
+\family default
 ).
 \end_layout
 
@@ -540,7 +578,11 @@ Notes: The
 \family sans
 fourier
 \family default
- package provides support for the Utopia PostScript font.
+ package provides support for the 
+\emph on
+Utopia
+\emph default
+ PostScript font.
  Contrary to the 
 \family sans
 utopia
@@ -554,7 +596,11 @@ PSNFSS
 \family sans
 utopia
 \family default
- if you select the Utopia font.
+ if you select the 
+\emph on
+Utopia (Fourier)
+\emph default
+ font.
 \end_layout
 
 \begin_layout Subsection
@@ -582,10 +628,17 @@ Notes: The
 \family sans
 Latin Modern
 \family default
- fonts are PostScript versions of LaTeX' standard font (Computer Modern).
- They aim to become the default LaTeX font eventually.
+ fonts are PostScript versions of LaTeX's standard font (
+\emph on
+Computer Modern
+\emph default
+).
  We recommend to use them instead of other PostScript versions of Computer
- Modern (like AE).
+ Modern (such as 
+\emph on
+AE
+\emph default
+).
  
 \end_layout
 
@@ -614,7 +667,11 @@ Notes: The
 \family sans
 luximono
 \family default
- package provides support for the monospaced Luxida Mono font.
+ package provides support for the monospaced 
+\emph on
+Luxida Mono
+\emph default
+ font.
 \end_layout
 
 \begin_layout Subsection
@@ -642,7 +699,11 @@ Notes: The
 \family sans
 libertine-type1
 \family default
- package provides support for the Libertine roman family of fonts.
+ package provides support for the 
+\emph on
+Libertine
+\emph default
+ roman family of fonts.
  And older version of the package, 
 \family sans
 libertine-legacy
@@ -695,7 +756,7 @@ Fonts
 \family sans
 mathdesign
 \family default
- package and thus the respective math fonts is automatically loaded:
+ package and thus the respective math font is automatically loaded:
 \end_layout
 
 \begin_layout Itemize
@@ -757,7 +818,18 @@ arg   "mdput"
 
 \begin_layout Standard
 If you only want the text fonts and retain LaTeX's default math font, select
- a non-mathdesign variant of the respective font instead.
+ a non-mathdesign variant of the respective font instead or select 
+\emph on
+Class Default
+\emph default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts\SpecialChar \menuseparator
+Math
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -785,7 +857,11 @@ Notes: The
 \family sans
 MinionPro
 \family default
- package provides support for the Minion Pro font.
+ package provides support for the 
+\emph on
+Minion Pro
+\emph default
+ font.
  Note that the font itself is not part of the package and must be installed
  separately (please consult the MinionPro package manual for details).
 \end_layout
@@ -854,7 +930,7 @@ minion2newtx
 \end_layout
 
 \begin_layout Subsection
-psnfss
+PSNFSS
 \end_layout
 
 \begin_layout Description
@@ -878,31 +954,22 @@ Notes: The
 \family sans
 psnfss
 \family default
- bundle allows you to change the fonts used by LyX to one of the 35 classical
+ bundle allows you to change the fonts used by LyX to some of the 35 classical
  fonts available on PostScript printers.
- Currently, the support for 
-\family sans
-psnfss
-\family default
- is limited in LyX: you can only chose a few combinations of PostScript
- fonts in 
-\family sans
-\size normal
-Layout\SpecialChar \menuseparator
-Document
-\family default
-\size default
-.
+ 
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
-Different versions of 
+Note that different versions of 
 \family sans
 psnfss
 \family default
  provide different font packages.
- Even if LyX supports the deprecated packages as well, we recommend that
- you take care to have the newest ones installed.
+ Some packages are declared obsolete and were replaced by newer ones.
+ Even if LyX supports the deprecated packages as well, we strongly recommend
+ that you take care to have the newest ones installed (which are then preferred
+ by LyX).
  A recent 
 \family sans
 psnfss
@@ -915,7 +982,11 @@ psnfss
 \family sans
 avant
 \family default
- (Avant Garde).
+ (
+\emph on
+Avant Garde
+\emph default
+).
  
 \series bold
 Found:
@@ -934,7 +1005,11 @@ arg   "avant"
 \family sans
 bookman
 \family default
- (Bookman).
+ (
+\emph on
+Bookman
+\emph default
+).
  
 \series bold
 Found:
@@ -953,7 +1028,11 @@ arg   "bookman"
 \family sans
 chancery
 \family default
- (Zapf Chancery).
+ (
+\emph on
+Zapf Chancery
+\emph default
+).
  
 \series bold
 Found:
@@ -972,7 +1051,11 @@ arg   "chancery"
 \family sans
 charter
 \family default
- (Charter).
+ (
+\emph on
+Charter
+\emph default
+).
  
 \series bold
 Found:
@@ -991,7 +1074,11 @@ arg   "charter"
 \family sans
 courier
 \family default
- (Courier).
+ (
+\emph on
+Courier
+\emph default
+).
  
 \series bold
 Found:
@@ -1010,7 +1097,11 @@ arg   "courier"
 \family sans
 helvet
 \family default
- (Helvetica).
+ (
+\emph on
+Helvetica
+\emph default
+).
  
 \series bold
 Found:
@@ -1029,7 +1120,11 @@ arg   "helvet"
 \family sans
 mathpazo
 \family default
- (newest Palatino support).
+ (newest 
+\emph on
+Palatino
+\emph default
+ support including matching math fonts).
  
 \series bold
 Found:
@@ -1048,7 +1143,15 @@ arg   "mathpazo"
 \family sans
 mathpple
 \family default
- (deprecated Palatino support).
+ (deprecated 
+\emph on
+Palatino
+\emph default
+ support; 
+\family sans
+mathpazo
+\family default
+ should be used instead).
  
 \series bold
 Found:
@@ -1067,7 +1170,15 @@ arg   "mathpple"
 \family sans
 mathptm
 \family default
- (deprecated Times support).
+ (deprecated 
+\emph on
+Times
+\emph default
+ support; 
+\family sans
+mathptmx
+\family default
+ should be used instead).
  
 \series bold
 Found:
@@ -1086,7 +1197,11 @@ arg   "mathptm"
 \family sans
 mathptmx
 \family default
- (newest Times support).
+ (newest 
+\emph on
+Times
+\emph default
+ support including matching math fonts).
  
 \series bold
 Found:
@@ -1105,7 +1220,11 @@ arg   "mathptmx"
 \family sans
 newcent
 \family default
- (New Century Gothic).
+ (
+\emph on
+New Century Gothic
+\emph default
+).
  
 \series bold
 Found:
@@ -1122,9 +1241,40 @@ arg   "newcent"
 \begin_layout Itemize
 
 \family sans
+palatino
+\family default
+ (deprecated 
+\emph on
+Palatino
+\emph default
+ support; 
+\family sans
+mathpazo
+\family default
+ should be used instead).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "psnfss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 pifont
 \family default
- (Zapf Dingbats).
+ (
+\emph on
+Zapf Dingbats
+\emph default
+).
  
 \series bold
 Found:
@@ -1141,9 +1291,48 @@ arg   "pifont"
 \begin_layout Itemize
 
 \family sans
+times
+\family default
+ (deprecated 
+\emph on
+Times
+\emph default
+ support; 
+\family sans
+mathptmx
+\family default
+ should be used instead).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "psnfss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 utopia
 \family default
- (Utopia).
+ (deprecated 
+\emph on
+Utopia
+\emph default
+ support; 
+\family sans
+fourier
+\family default
+ or 
+\family sans
+mathdesign
+\family default
+ should be used instead).
  
 \series bold
 Found:
@@ -1157,6 +1346,24 @@ arg   "utopia"
 
 \end_layout
 
+\begin_layout Standard
+Note that some of these fonts automatically select a matching math font.
+ If you only want the text fonts and retain LaTeX's default math font, select
+ 
+\emph on
+Class Default
+\emph default
+ in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts\SpecialChar \menuseparator
+Math
+\family default
+.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 The TeX Gyre collection of fonts
 \end_layout
@@ -1173,7 +1380,11 @@ Notes: The
 tex-gyre
 \family default
  collection provides extensive remakes and extensions of the freely available
- 35 base PostScript fonts.
+ 35 base PostScript fonts that can be used as an alternative to the 
+\family sans
+psnfss
+\family default
+ fonts.
  The fonts have specifically been designed for the use with LaTeX.
  The following fonts are currently available and natively supported by LyX:
 \end_layout
@@ -1183,8 +1394,19 @@ tex-gyre
 \family sans
 tgadventor
 \family default
- (TeX Gyre Adventor): A sans serif font based on URW Gothic L (itself an
- Avant Garde clone).
+ (
+\emph on
+TeX Gyre Adventor
+\emph default
+): A sans serif font based on 
+\emph on
+URW Gothic L
+\emph default
+ (itself an 
+\emph on
+Avant Garde
+\emph default
+ clone).
 \begin_inset Newline newline
 \end_inset
 
@@ -1206,7 +1428,19 @@ arg   "tgadventor"
 \family sans
 tgbonum
 \family default
- (TeX Gyre Bonum): A roman font based on URW Bookman L (an ITC Bookman clone).
+ (
+\emph on
+TeX Gyre Bonum
+\emph default
+): A roman font based on 
+\emph on
+URW Bookman L
+\emph default
+ (an 
+\emph on
+ITC Bookman
+\emph default
+ clone).
 \begin_inset Newline newline
 \end_inset
 
@@ -1228,8 +1462,19 @@ arg   "tgbonum"
 \family sans
 tgchorus
 \family default
- (TeX Gyre Chorus): A roman (script) font based on URW Chancery L (a Zapf
- Chancery clone).
+ (
+\emph on
+TeX Gyre Chorus
+\emph default
+): A roman (script) font based on 
+\emph on
+URW Chancery L
+\emph default
+ (a 
+\emph on
+Zapf Chancery
+\emph default
+ clone).
 \begin_inset Newline newline
 \end_inset
 
@@ -1251,7 +1496,18 @@ arg   "tgchorus"
 \family sans
 tgcursor
 \family default
- (TeX Gyre Cursor): A monospaced font based on URW Nimbus Mono L (a Courier
+ (
+\emph on
+TeX Gyre Cursor
+\emph default
+): A monospaced font based on 
+\emph on
+URW Nimbus Mono L
+\emph default
+ (a 
+\emph on
+Courier
+\emph default
  clone).
 \begin_inset Newline newline
 \end_inset
@@ -1274,7 +1530,18 @@ arg   "tgcursor"
 \family sans
 tgheros
 \family default
- (TeX Gyre Heros): A sans serif font based on URW Nimbus Sans L (a Helvetica
+ (
+\emph on
+TeX Gyre Heros
+\emph default
+): A sans serif font based on 
+\emph on
+URW Nimbus Sans L
+\emph default
+ (a 
+\emph on
+Helvetica
+\emph default
  clone).
 \begin_inset Newline newline
 \end_inset
@@ -1297,7 +1564,19 @@ arg   "tgheros"
 \family sans
 tgpagella
 \family default
- (TeX Gyre Pagella): A roman font based on URW Palladio L (a Palatino clone).
+ (
+\emph on
+TeX Gyre Pagella
+\emph default
+): A roman font based on 
+\emph on
+URW Palladio L
+\emph default
+ (a 
+\emph on
+Palatino
+\emph default
+ clone).
 \begin_inset Newline newline
 \end_inset
 
@@ -1319,7 +1598,15 @@ arg   "tgpagella"
 \family sans
 tgschola
 \family default
- (TeX Gyre Schola): A roman font based on URW Century Schoolbook L.
+ (
+\emph on
+TeX Gyre Schola
+\emph default
+): A roman font based on 
+\emph on
+URW Century Schoolbook L
+\emph default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -1341,8 +1628,19 @@ arg   "tgschola"
 \family sans
 tgtermes
 \family default
- (TeX Gyre Termes): A roman font based on URW Nimbus Roman No9 L (a Times
- New Roman clone).
+ (
+\emph on
+TeX Gyre Termes
+\emph default
+): A roman font based on 
+\emph on
+URW Nimbus Roman No9 L
+\emph default
+ (a 
+\emph on
+Times New Roman
+\emph default
+ clone).
 \begin_inset Newline newline
 \end_inset
 
@@ -1434,8 +1732,16 @@ Notes: The
 \family sans
 txfonts
 \family default
- package provides fonts based on Times Roman with math support.
- In LyX, only the monospaced shape (TXTT) is currently natively supported.
+ package provides fonts based on 
+\emph on
+Times Roman
+\emph default
+ with math support.
+ In LyX, only the monospaced shape (
+\emph on
+TXTT
+\emph default
+) is currently natively supported.
 \end_layout
 
 \begin_layout Section
