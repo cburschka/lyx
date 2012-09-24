@@ -9,7 +9,7 @@
 % This script is in fact a complete rewrite of the original chkconfig
 % script. Expect bugs.
 
-%%% If you want to add new packages/documentclasses to be recognized,
+%%% If you want to add new packages/document classes to be recognized,
 %%% read the explanation that follow and jump to the section 'Actual
 %%% inspection code' below. You do not need to understand the ugly
 %%% LaTeX code below to help improving chkconfig.ltx :-)
@@ -26,6 +26,9 @@
 %%%    info-insert package <name>
 %%%    This inset will automatically display a boxed "yes" or "no"
 %%%    depending on the availability of the package.
+%%%
+%%% Since \TestPackage does not find font metric (tfm) files, there's an
+%%% additional test \TestFont[<file>]{<name>} for this purpose.
 %%%
 %%% For document classes, things are even simpler, since you do not
 %%% need to edit this file. Just put your layout file in some place
@@ -51,7 +54,9 @@
 %      script generates the needed macro calls automatically.
 %    \TestPackage[<file>]{<name>} tests whether <name>.sty (or <file>,
 %      if it is provided) exists.
-%   Both commands call \AddVariable to give value 'yes' or 'no' to
+%    \TestFont[<file>]{<name>} test whether <name>.tfm (or <file>.tfm,
+%      if provided) exists.
+%   These three commands call \AddVariable to give value 'yes' or 'no' to
 %   the variable chk_<name>.
 %%%
 
@@ -107,6 +112,23 @@
     \message{no^^J}
     \AddVariable{#2}{no}
     #6
+  \fi}
+
+% Adapted from ltxcheck.tex
+\newcommand{\TestFont}[2][\default]{
+  \def\default{#2}
+  \batchmode
+  \font\test=#1\relax
+  \nonstopmode
+  \message{^^J\prefix checking for font #2 [#1]...}
+  \ifx\test\nullfont
+    \message{no^^J}
+    \AddVariable{#2}{no}
+    \@tempswatrue
+  \else
+    \message{yes^^J}
+    \AddVariable{#2}{yes}
+    \AddPackage{#2}
   \fi}
 
 \newcommand{\TestPackage}[2][\default]{
@@ -369,7 +391,7 @@
 \TestPackage{mdput}
 \TestPackage{mdugm}
 \TestPackage{MinionPro}
-\TestPackage[zmnr.pfb]{minion2newtx}
+\TestFont[rzmnr]{minion2newtx}
 \TestPackage{newtxmath}
 \TestPackage{tgadventor}
 \TestPackage{tgbonum}
