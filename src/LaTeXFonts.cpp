@@ -52,7 +52,7 @@ bool LaTeXFont::available(bool ot1, bool nomath)
 	else if (!requires_.empty()
 		&& LaTeXFeatures::isAvailable(to_ascii(requires_)))
 		return true;
-	else if (!package_.empty()
+	else if (requires_.empty() && !package_.empty()
 		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
 		return true;
 	else if (!altfonts_.empty()) {
