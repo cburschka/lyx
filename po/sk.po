@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-20 19:18-0400\n"
+"POT-Creation-Date: 2012-09-24 18:04+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -21691,6 +21691,10 @@ msgstr "Zobraziť súbor"
 #: src/frontends/qt4/GuiShowFile.cpp:47
 msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nemôžem nahrať súbor!"
+
+#: src/frontends/qt4/GuiSpellchecker.cpp:252
+msgid "Spell check of the selection done, did not find any errors."
+msgstr "Kontrola pravopisu skončila, nenašli sa žiadne chyby."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:193
 msgid ""
