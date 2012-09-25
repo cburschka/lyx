@@ -714,7 +714,7 @@ def checkConverterEntries():
     # Check if LyXBlogger is installed
     lyxblogger_found = checkModule('lyxblogger')
     if lyxblogger_found:
-      addToRC(r'\Format    blog       blog       "LyXBlogger"           "" "" ""  "document"')
+      addToRC(r'\Format    blog       blog       "LyXBlogger"           "" "" ""  "document"  ""')
       addToRC(r'\converter xhtml      blog       "python -m lyxblogger $$i"       ""')
 
     #
