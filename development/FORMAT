@@ -39,9 +39,9 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  - add support for the mathdesign fonts without loading mathfonts:
 	    \renewcommand{\rmfamily}{mdbch} >  \font_roman md-charter
 	                                       \font_math default
-	    \renewcommand{mdput} >             \font_roman md-utopia
+	    \renewcommand{\rmfamily}{mdput} >  \font_roman md-utopia
 	                                       \font_math default
-	    \renewcommand{mdugm} >             \font_roman md-garamond
+	    \renewcommand{\rmfamily}{mdugm} >  \font_roman md-garamond
 	                                       \font_math default
 
 2012-09-22 Jürgen Spitzmüller <spitz@lyx.org>
