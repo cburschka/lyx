@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 442
+\lyxformat 444
 \begin_document
 \begin_header
 \textclass article
@@ -299,6 +299,69 @@ Bera Mono
 \emph default
  (a matching monospaced\SpecialChar \slash{}
 typewriter font).
+\end_layout
+
+\begin_layout Subsection
+Biolinum
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "biolinum-type1"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/biolinum-type1/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+biolinum-type1
+\family default
+ package provides support for the 
+\emph on
+Biolinum
+\emph default
+ sans serif family of fonts, which has been designed as a companion to the
+ 
+\emph on
+Libertine
+\emph default
+ roman font.
+ 
+\emph on
+Biolinum
+\emph default
+ supports Old Style Figures, which will be automatically activated if those
+ figures are available and requested for the roman font.
+ An older version of the font is provided by the package 
+\family sans
+libertine-legacy
+\family default
+ (found: 
+\begin_inset Info
+type  "package"
+arg   "libertine"
+\end_inset
+
+).
+ If you only have this package, you will need to set the roman font to 
+\emph on
+Libertine
+\emph default
+ and the Sans Serif font to 
+\emph on
+Standard
+\emph default
+ in order to get Biolinum.
 \end_layout
 
 \begin_layout Subsection
@@ -704,7 +767,7 @@ libertine-type1
 Libertine
 \emph default
  roman family of fonts.
- And older version of the package, 
+ An older version of the package, 
 \family sans
 libertine-legacy
 \family default

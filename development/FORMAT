@@ -12,6 +12,16 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-09-25 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 444: Support for the Biolinum LaTeX font.
+	  - \usepackage{biolinum-type1} > \font_sans biolinum
+	     - [lf], [lining] > \font_osf false
+	     - [osf], [oldstyle], no option > \font_osf true
+	  - \usepackage{libertine-legacy} or
+	    \usepackage{libertine} > \font_sans biolinum
+	     - [nf], no option > \font_osf false
+	     - [osf] > \font_osf true
+
 2012-09-24 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 443: basic support for unicode-math:
 	  Empty file format change (in case it turns out we need to
@@ -26,8 +36,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2012-09-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 441:
 	  - rename fonts: mdbch > md-charter, mdput > md-utopia, mdugm > md-garamond
-	  - add support for the mathdesign fonts without loading mathfonts
-	    (via \renewcommand{\rmfamily}{mdbch|mdput|mdugm}
+	  - add support for the mathdesign fonts without loading mathfonts:
+	    \renewcommand{\rmfamily}{mdbch} >  \font_roman md-charter
+	                                       \font_math default
+	    \renewcommand{mdput} >             \font_roman md-utopia
+	                                       \font_math default
+	    \renewcommand{mdugm} >             \font_roman md-garamond
+	                                       \font_math default
 
 2012-09-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 440:
@@ -36,12 +51,34 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  supported values are:
 	  * "auto": automatically adapt math font (the status quo ante).
 	  * "default": use class default, i.e. prevent TeX font packages
-	    from changing the math font, if possible.
-	  * "eulervm": use the eulervm package.
+	    from changing the math font, if possible:
+	    \renewcommand{\rmdefault}{lmr} >      \font_roman lmodern
+	                                          \font_math default
+            \usepackage[onlytext,lf]{MinionPro} > \font_roman minionpro
+                                                  \font_math default
+            \usepackage[onlytext]{MinionPro} >    \font_roman minionpro
+                                                  \font_osf true
+                                                  \font_math default
+            \renewcommand{\rmdefault}{ppl} >      \font_roman palatino
+                                                  \font_math default
+            \renewcommand{\rmdefault}{pplj} >     \font_roman palatino
+                                                  \font_osf true
+                                                  \font_math default
+            \renewcommand{\rmdefault}{ptm} >      \font_roman times
+                                                  \font_math default
+            \renewcommand{\rmdefault}{futs} >     \font_roman utopia
+                                                  \font_math default
+            \renewcommand{\rmdefault}{futj} >     \font_roman utopia
+                                                  \font_osf true
+                                                  \font_math default
+	  * "eulervm": use the eulervm package (\usepackage{eulervm}.
 
 2012-09-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 439 
 	  Support for the MinionPro LaTeX font.
+	  - \usepackage{MinionPro} > \font_roman minionpro
+	  - [osf], [oldstyle], no option > \font_osf true
+	  - [lf], [lining] > \font_osf false
 
 2012-08-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 438 
@@ -75,18 +112,37 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2012-08-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 437 
 	  Support for the TeX Gyre LaTeX fonts.
+	  - \usepackage{tgadventor} > \font_sans tgadventor
+	  - \usepackage{tgbonum} > \font_roman tgbonum
+	  - \usepackage{tgchorus} > \font_roman tgchorus
+	  - \usepackage{tgcursor} > \font_typewriter tgcursor
+	  - \usepackage{tgheros} > \font_sans tgheros
+	  - \usepackage{tgpagella} > \font_roman tgpagella
+	  - \usepackage{tgschola} > \font_roman tgschola
+	  - \usepackage{tgtermes} > \font_roman tgtermes
 
 2012-08-18 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 436 
 	  Support for the mathdesign LaTeX fonts.
+	  - \usepackage[mdbch]{mathdesign} > \font_roman md-charter
+	  - \usepackage[mdput]{mathdesign} > \font_roman md-utopia
+	  - \usepackage[mdugm]{mathdesign} > \font_roman md-garamond
 
 2012-08-17 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 435 
 	  Support for the txtt LaTeX font.
+	  - \renewcommand{\ttdefault}{txtt} > \font_typewriter txtt
 
 2012-08-17 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 434 
 	  Support for the libertine LaTeX font.
+	  - \usepackage{libertine-type1} > \font_roman libertine
+	     - [lf], [lining] > \font_osf false
+	     - [osf], [oldstyle], no option > \font_osf true
+	  - \usepackage{libertine-legacy} or
+	    \usepackage{libertine} > \font_roman libertine
+	     - [nf], no option > \font_osf false
+	     - [osf] > \font_osf true
 
 2012-06-22 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 433 

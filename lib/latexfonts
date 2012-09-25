@@ -392,6 +392,14 @@ Font berasans
 	Requires         bera
 EndFont
 
+Font biolinum
+	GuiName          "Biolinum"
+	Family           sf
+	OsfOption        lining
+	OsfDefault       1
+	Package          biolinum-type1
+EndFont
+
 Font cmbr
 	GuiName          "CM Bright"
 	Family           sf

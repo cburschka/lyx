@@ -837,8 +837,9 @@ def revert_libertine(document):
                 osf = True
             preamble = "\\usepackage"
             if osf:
-                preamble += "[osf]"
                 document.header[j] = "\\font_osf false"
+            else:
+                preamble += "[lining]"
             preamble += "{libertine-type1}"
             add_to_preamble(document, [preamble])
             document.header[i] = "\\font_roman default"
@@ -1100,6 +1101,24 @@ def revert_newtxmath(document):
             document.header[i] = "\\font_math auto"
 
 
+def revert_biolinum(document):
+    " Revert native biolinum font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        i = find_token(document.header, "\\font_sans biolinum", 0)
+        if i != -1:
+            osf = False
+            j = find_token(document.header, "\\font_osf true", 0)
+            if j != -1:
+                osf = True
+            preamble = "\\usepackage"
+            if not osf:
+                preamble += "[lf]"
+            preamble += "{biolinum-type1}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = "\\font_sans default"
+
+
 ##
 # Conversion hub
 #
@@ -1135,10 +1154,12 @@ convert = [
            [440, []],
            [441, [convert_mdnomath]],
            [442, []],
-           [443, []]
+           [443, []],
+           [444, []]
           ]
 
 revert =  [
+           [443, [revert_biolinum]],
            [442, []],
            [441, [revert_newtxmath]],
            [440, [revert_mdnomath]],
