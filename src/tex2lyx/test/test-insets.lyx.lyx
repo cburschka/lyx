@@ -957,6 +957,19 @@ target "ftp://www.test.test"
 
 \end_layout
 
+\begin_layout Standard
+
+parser test (stupid, but valid):
+\begin_inset CommandInset href
+LatexCommand href
+name "}"
+target "http://www.test.test"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 
 Lists
