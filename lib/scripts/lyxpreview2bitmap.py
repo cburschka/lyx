@@ -367,8 +367,7 @@ def main(argv):
     progress("Altering the latex file for font size and colors")
 
     # Omit font size specification in latex file.
-    if not fix_latex_file(latex_file):
-        warning("Unable to remove font size from the latex file")
+    fix_latex_file(latex_file)
 
     if lilypond:
         progress("Preprocess the latex file through %s" % lilypond_book)
