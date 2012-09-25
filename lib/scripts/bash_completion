@@ -15,9 +15,15 @@ _lyx()
 
 	local dbg_cmds=( "none info init key gui \
 			parser lyxrc kbmap latex mathed font tclass \
-			lyxvc lyxserver roff action lyxlex depend insets \
+			lyxvc lyxserver action lyxlex depend insets \
 			files workarea insettext graphics changes \
-			external painting debug any" )
+			external painting debug any undo scrolling \
+			macros rtl locale selection find" )
+
+	# The below code would get rid of the hardcoding, but could be fragile:
+	# local dbg_cmds=$( lyx -dbg | awk '{print $2}' | tail -n +2 )
+	# If it is ever used, please put a comment in the code for -dbg output
+	# about breaking auto completion if the format is changed.
 
 	#echo "cmds: '$dbg_cmds'"
 
@@ -28,7 +34,7 @@ _lyx()
 	fi
 
 	case "$last" in
-	+\(--export|-e\))
+	--export|-e)
 		_filedir '+(pdf[1234]|PDF[1234]|pdf|PDF|ps|PS|xhtml|XHTML)';;
 	-dbg)
 		# check for multiple debug commands
@@ -38,13 +44,17 @@ _lyx()
 		else
 			COMPREPLY=( $( compgen -W '$dbg_cmds' -- $cur ) )
 		fi;;
+	--force-overwrite|-f)
+		COMPREPLY=( $( compgen -W 'all main none' -- $cur ) );;
 	*)
           case "$cur" in
           -*)
 		# LyX command line options
                 COMPREPLY=( $( compgen -W '-help -userdir -sysdir \
 				-geometry -dbg -x --execute -e --export \
- 				-i --import -version -batch ' -- $cur ) ) ;;
+ 				-i --import -version -batch -E --export-to \
+				-f --force-overwrite -n --no-remote \
+				-r --remote ' -- $cur ) ) ;;
 	  
           *)
 		# LyX files
