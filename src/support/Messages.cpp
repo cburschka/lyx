@@ -239,9 +239,8 @@ std::string Messages::language() const
         return string();
     }
 
-bool Messages::available(string const & c)
+bool Messages::available(string const & /* c */)
 {
-	(void)c;
 	return false;
 }
 
