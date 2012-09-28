@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-25 12:13+0200\n"
+"POT-Creation-Date: 2012-09-28 15:56+0200\n"
 "PO-Revision-Date: 2012-04-08 11:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -24445,6 +24445,17 @@ msgstr "Konverziu %1$s netreba"
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafický súbor: %1$s"
+
+#: src/insets/InsetHyperlink.cpp:198
+#, c-format
+msgid ""
+"The following characters that are used in the href inset are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+"Nasledujúce znaky použité vo vložke href sú nereprezentovateľné\n"
+"v aktuálnom kódovaní a boli vynechané:\n"
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:259
 msgid "www"
