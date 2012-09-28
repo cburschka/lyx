@@ -15,6 +15,7 @@
 
 #include "Buffer.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -22,11 +23,14 @@
 #include "OutputParams.h"
 #include "output_xhtml.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -185,7 +189,40 @@ void InsetHyperlink::latex(otexstream & os,
 			(pos = name.find('~', i)) != string::npos;
 			i = pos + 1)
 			name.replace(pos, 1, sim);
-
+		docstring name_latex;
+		docstring uncodable;
+		// validate encoding
+		for (size_t n = 0; n < name.size(); ++n) {
+			try {
+				char_type const c = name[n];
+				docstring const latex = runparams.encoding->latexChar(c);
+				name_latex += latex;
+				if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+					// Prevent eating of a following
+					// space or command corruption by
+					// following characters
+					name_latex += "{}";
+				}
+			} catch (EncodingException & /* e */) {
+				LYXERR0("Uncodable character in href inset!");
+				if (runparams.dryrun) {
+					name_latex += "<" + _("LyX Warning: ")
+						   + _("uncodable character") + " '";
+					name_latex += docstring(1, name[n]);
+					name_latex += "'>";
+				} else
+					uncodable += name[n];
+			}
+		}
+		if (!uncodable.empty()) {
+			// issue a warning about omitted characters
+			// FIXME: should be passed to the error dialog
+			frontend::Alert::warning(_("Uncodable characters"),
+				bformat(_("The following characters that are used in the href inset are not\n"
+					  "representable in the current encoding and therefore have been omitted:\n%1$s."),
+					uncodable));
+		}
+		name = name_latex;
 	}  // end if (!name.empty())
 	
 	if (runparams.moving_arg)
