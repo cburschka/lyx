@@ -15,6 +15,7 @@
 
 #include "Buffer.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -27,6 +28,8 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -185,7 +188,17 @@ void InsetHyperlink::latex(otexstream & os,
 			(pos = name.find('~', i)) != string::npos;
 			i = pos + 1)
 			name.replace(pos, 1, sim);
-
+		pair<docstring, docstring> name_latexed =
+			runparams.encoding->latexString(name, runparams.dryrun);
+		name = name_latexed.first;
+		if (!name_latexed.second.empty()) {
+			// issue a warning about omitted characters
+			// FIXME: should be passed to the error dialog
+			frontend::Alert::warning(_("Uncodable characters"),
+				bformat(_("The following characters that are used in the href inset are not\n"
+					  "representable in the current encoding and therefore have been omitted:\n%1$s."),
+					name_latexed.second));
+		}
 	}  // end if (!name.empty())
 	
 	if (runparams.moving_arg)
