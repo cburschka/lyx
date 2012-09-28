@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-24 18:19+0200\n"
-"PO-Revision-Date: 2012-09-24 18:22+0200\n"
+"POT-Creation-Date: 2012-09-28 16:07+0200\n"
+"PO-Revision-Date: 2012-09-28 16:08+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -6295,7 +6295,7 @@ msgstr "E-Mail"
 msgid "Email"
 msgstr "E-Mail"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:298
 msgid "email"
 msgstr "E-Mail"
 
@@ -17785,16 +17785,17 @@ msgstr ""
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2523
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
-#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:182
-#: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:212
-#: src/insets/InsetNomencl.cpp:285 src/mathed/InsetMathString.cpp:161
+#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetHyperlink.cpp:209
+#: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
+#: src/insets/InsetListings.cpp:212 src/insets/InsetNomencl.cpp:285
+#: src/mathed/InsetMathString.cpp:161
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2524 src/insets/InsetBibitem.cpp:301
-#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:183
-#: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:286
-#: src/mathed/InsetMathString.cpp:162
+#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetHyperlink.cpp:210
+#: src/insets/InsetListings.cpp:183 src/insets/InsetListings.cpp:191
+#: src/insets/InsetNomencl.cpp:286 src/mathed/InsetMathString.cpp:162
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
@@ -23290,7 +23291,7 @@ msgstr "Unbekannter Argumentname: "
 msgid "Missing \\end_inset at this point: "
 msgstr "Fehlendes \\end_inset an dieser Stelle:"
 
-#: src/insets/InsetCommandParams.cpp:401
+#: src/insets/InsetCommandParams.cpp:401 src/insets/InsetHyperlink.cpp:220
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
 
@@ -23366,15 +23367,28 @@ msgstr "Es ist keine Konvertierung von %1$s notwendig"
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/InsetHyperlink.cpp:259
+#: src/insets/InsetHyperlink.cpp:221
+#, c-format
+msgid ""
+"The following characters that are used in the href inset are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+"Die folgenden Zeichen, die in der Hyperlink-Einfügung verwendet werden, sind "
+"in "
+"der\n"
+"aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
+"%1$s."
+
+#: src/insets/InsetHyperlink.cpp:296
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:263
+#: src/insets/InsetHyperlink.cpp:300
 msgid "file"
 msgstr "Datei"
 
-#: src/insets/InsetHyperlink.cpp:264
+#: src/insets/InsetHyperlink.cpp:301
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlink (%1$s) to %2$s"
