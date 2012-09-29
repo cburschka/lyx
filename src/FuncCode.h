@@ -58,6 +58,7 @@ enum FuncCode
 	LFUN_TEXTSTYLE_APPLY,
 	LFUN_TEXTSTYLE_UPDATE,
 	LFUN_FONT_EMPH,
+	LFUN_CLIPBOARD_PASTE_SIMPLE,    // tommaso, 20111028
 	// 25
 	LFUN_FONT_BOLD,
 	LFUN_FONT_BOLDSYMBOL,
@@ -134,6 +135,8 @@ enum FuncCode
 	LFUN_SERVER_GET_XY,
 	LFUN_SERVER_SET_XY,
 	LFUN_VIEW_SPLIT,
+	LFUN_VIEW_CLOSE,		// Tommaso, 20120915
+	LFUN_BUFFER_FORALL,             // scottkostyshak, 20120720
 	// 90
 	LFUN_SERVER_GET_LAYOUT,
 	LFUN_SERVER_GET_FILENAME,
@@ -243,6 +246,9 @@ enum FuncCode
 	LFUN_FOOTNOTE_INSERT,           // Jug 20000307
 	LFUN_MATH_AMS_MATRIX,           // uwestoehr 12-07-2009
 	// 180
+	LFUN_IPA_INSERT,                // spitz, 20120305
+	LFUN_IN_IPA,                    // spitz, 20120520
+	LFUN_IPAMACRO_INSERT,           // spitz, 20120822
 	LFUN_TABULAR_INSERT,            // Jug 20000412
 	LFUN_SET_COLOR,                 // SLior 20000611
 	// 185
@@ -444,13 +450,6 @@ enum FuncCode
 	LFUN_SCRIPT_INSERT,             // gb, 20101123
 	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
 	// 350
-	LFUN_CLIPBOARD_PASTE_SIMPLE,    // tommaso, 20111028
-	LFUN_IPA_INSERT,                // spitz, 20120305
-	LFUN_BUFFER_FORALL,             // scottkostyshak, 20120720
-	LFUN_IN_IPA,                    // spitz, 20120520
-	LFUN_IPAMACRO_INSERT,           // spitz, 20120822
-	// 355
-	LFUN_VIEW_CLOSE,		// Tommaso, 20120915
 	LFUN_LASTACTION                 // end of the table
 };
 
