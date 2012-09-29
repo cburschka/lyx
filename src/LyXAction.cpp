@@ -2676,17 +2676,6 @@ void LyXAction::init()
 		{ LFUN_VIEW_SPLIT, "view-split", ReadOnly, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_CLOSE
- * \li Action: Close the current tab group.
- * \li Notion: This only closes the work areas, not the buffers themselves.
-               The still opened buffers can be visualized in another tab group.
- * \li Syntax: tab-group-close
- * \li Origin: Abdel, 21 Feb 2008
- * \endvar
- */
-		{ LFUN_TAB_GROUP_CLOSE, "tab-group-close", ReadOnly, Buffer },
-
-/*!
  * \var lyx::FuncCode lyx::LFUN_VIEW_CLOSE
  * \li Action: Close the current document work area.
  * \li Notion: Close the current work area. If no other work areas are showing the buffer,
@@ -2696,6 +2685,17 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VIEW_CLOSE, "view-close", ReadOnly, Buffer },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_CLOSE
+ * \li Action: Close the current tab group.
+ * \li Notion: This only closes the work areas, not the buffers themselves.
+               The still opened buffers can be visualized in another tab group.
+ * \li Syntax: tab-group-close
+ * \li Origin: Abdel, 21 Feb 2008
+ * \endvar
+ */
+		{ LFUN_TAB_GROUP_CLOSE, "tab-group-close", ReadOnly, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
