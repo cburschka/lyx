@@ -1708,7 +1708,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = theBufferList().last() != theBufferList().first();
 		break;
 
-	case LFUN_SPLIT_VIEW:
+	case LFUN_VIEW_SPLIT:
 		if (cmd.getArg(0) == "vertical")
 			enable = doc_buffer && (d.splitter_->count() == 1 ||
 					 d.splitter_->orientation() == Qt::Vertical);
@@ -3593,7 +3593,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 
-		case LFUN_SPLIT_VIEW: {
+		case LFUN_VIEW_SPLIT: {
 			LASSERT(doc_buffer, break);
 			string const orientation = cmd.getArg(0);
 			d.splitter_->setOrientation(orientation == "vertical"
