@@ -1368,7 +1368,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 
-	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_PARAGRAPH_BREAK:
 		// just swallow this
 		break;
 
@@ -1570,7 +1570,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	// we never allow this in math, and we want to bind enter
 	// to another actions in command-alternatives
-	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_PARAGRAPH_BREAK:
 		status.setEnabled(false);
 		return true;
 	case LFUN_MATH_MUTATE: {

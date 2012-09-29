@@ -68,7 +68,7 @@ Format 1
 #  +: "Control-N"                    # Move down one line
 \bind "M-n"                          "down"
 #  +: "Control-O"                    # Insert a new line after the cursor
-\bind "M-o"                          "break-paragraph"
+\bind "M-o"                          "paragraph-break"
 #  -: "Control-P"                    # Move up one line
 # used by menu.bind - layouts
 #  +: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
@@ -347,7 +347,7 @@ Format 1
 
 \bind "A-Delete"                     "word-delete-forward"
 \bind "A-BackSpace"                  "word-delete-backward"
-\bind "M-Return"                     "break-paragraph inverse"
+\bind "M-Return"                     "paragraph-break inverse"
 \bind "C-Return"                     "newline-insert newline"
 \bind "C-S-Return"                   "newline-insert linebreak"
 \bind "A-space"                      "command-alternatives space-insert protected ; math-space"

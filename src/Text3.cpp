@@ -1063,7 +1063,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_PARAGRAPH_BREAK:
 		cap::replaceSelection(cur);
 		breakParagraph(cur, cmd.argument() == "inverse");
 		cur.resetAnchor();
@@ -2747,7 +2747,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setOnOff(to_utf8(cmd.argument()) == cur.real_current_font.language()->lang());
 		break;
 
-	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_PARAGRAPH_BREAK:
 		enable = cur.inset().getLayout().isMultiPar();
 		break;
 	

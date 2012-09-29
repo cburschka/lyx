@@ -221,7 +221,7 @@ Format 1
 \bind "C-Delete"		"word-delete-forward"
 \bind "M-d"                     "word-delete-forward"
 \bind "C-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph inverse"
+\bind "M-Return"		"paragraph-break inverse"
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"
 \bind "C-S-L"			"specialchar-insert ligature-break"
@@ -332,7 +332,7 @@ Format 1
 
 \bind "C-c percent"		"layout Comment"
 
-\bind "C-c Return"		"break-paragraph inverse"
+\bind "C-c Return"		"paragraph-break inverse"
 #
 ## End AucTeX
 #

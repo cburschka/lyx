@@ -37,11 +37,11 @@ Format 1
 
 \bind "Prior"      "screen-up"
 \bind "Next"       "screen-down"
-\bind "Return"     "break-paragraph"
+\bind "Return"     "paragraph-break"
 \bind "Delete"     "char-delete-forward"
 \bind "BackSpace"  "char-delete-backward"
 
-\bind "KP_Enter"   "break-paragraph"
+\bind "KP_Enter"   "paragraph-break"
 \bind "KP_Right"   "char-right"
 \bind "KP_Left"    "char-left"
 \bind "KP_Up"      "up"

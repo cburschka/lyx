@@ -222,7 +222,7 @@ Format 1
 
 \bind "C-Delete"		"word-delete-forward"
 \bind "C-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph inverse"
+\bind "M-Return"		"paragraph-break inverse"
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"
 \bind "C-k"			"line-delete-forward"

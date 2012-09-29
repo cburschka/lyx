@@ -1996,16 +1996,16 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly | NoInternal, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_BREAK
  * \li Action: Breaks the current paragraph at the current location.
  * \li Notion: Removes the selection.
- * \li Syntax: break-paragraph [<LAYOUT>]
+ * \li Syntax: paragraph-break [<LAYOUT>]
  * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
                          to default layout) when the cursor is at the end of
                          the line.
  * \endvar
  */
-		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
+		{ LFUN_PARAGRAPH_BREAK, "paragraph-break", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings.
