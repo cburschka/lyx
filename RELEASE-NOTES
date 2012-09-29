@@ -85,13 +85,17 @@ The following LyX functions have been changed:
 -  LFUN_SPIT_VIEW ("split-view") was renamed to
    LFUN_VIEW_SPLIT ("view-split").
 
+- LFUN_BREAK_PARAGRAPH ("break-paragraph") was renamed to
+  LFUN_PARAGRAPH_BREAK ("paragraph-break").
+
 The following LyX key bindings have been changed:
 
 //template, remove this entry later on
 - LFUN_MATH_MACRO_FOLD ("math-macro-fold")
   The binding to "C-minus" has changed to "C-S-underscore".
 
-- The binding "C-w" was moved from "buffer-close" to "view-close".
+- The binding "C-w" was moved from "buffer-close" to "view-close"
+  (only in cua.bind).
 
 
 Linux desktop file specification and scalable icon has been included
