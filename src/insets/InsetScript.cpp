@@ -272,7 +272,6 @@ bool InsetScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLOAT_LIST_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
-	case LFUN_HFILL_INSERT:
 	case LFUN_INDEX_PRINT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
