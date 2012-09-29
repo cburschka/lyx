@@ -66,8 +66,7 @@
    <item row="1" column="1">
     <widget class="QComboBox" name="iconSetCO">
      <property name="toolTip">
-      <string>The icon set to use. Warning: normal size of icons may be
-wrong until you save the preferences and restart LyX.</string>
+      <string>The icon set to use. Warning: normal size of icons may be&#x0a;wrong until you save the preferences and restart LyX.</string>
      </property>
     </widget>
    </item>
@@ -261,8 +260,7 @@ wrong until you save the preferences and restart LyX.</string>
       <item row="5" column="0" colspan="2">
        <widget class="QCheckBox" name="singleInstanceCB">
         <property name="toolTip">
-         <string>Whether to open documents in an already running instance of LyX.
-(Set the LyXServer pipe path and restart LyX to enable this feature)</string>
+         <string>Whether to open documents in an already running instance of LyX.&#x0a;(Set the LyXServer pipe path and restart LyX to enable this feature)</string>
         </property>
         <property name="text">
          <string>S&amp;ingle instance</string>
