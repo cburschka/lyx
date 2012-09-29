@@ -79,7 +79,7 @@ Format 1
 #\bind "C-x b"                 "buffer-previous"
 \bind "C-x d"                  "buffer-new"
 \bind "C-x g"                  "buffer-view ps"
-\bind "C-x k"                  "buffer-close"
+\bind "C-x k"                  "view-close"
 \bind "C-x p"                  "buffer-view dvi"
 \bind "C-x r"                  "buffer-update dvi"
 # Should have been "buffer-write-some"
