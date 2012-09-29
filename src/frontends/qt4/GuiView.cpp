@@ -1717,7 +1717,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 					 d.splitter_->orientation() == Qt::Horizontal);
 		break;
 
-	case LFUN_CLOSE_TAB_GROUP:
+	case LFUN_TAB_GROUP_CLOSE:
 		enable = d.tabWorkAreaCount() > 1;
 		break;
 
@@ -3603,7 +3603,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			setCurrentWorkArea(wa);
 			break;
 		}
-		case LFUN_CLOSE_TAB_GROUP:
+		case LFUN_TAB_GROUP_CLOSE:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeTabWorkArea(twa);
 				d.current_work_area_ = 0;

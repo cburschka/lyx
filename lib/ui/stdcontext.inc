@@ -317,7 +317,7 @@ Menuset
 		LanguageSelector
 		Separator
 		Item "Fullscreen Mode" "ui-toggle fullscreen"
-		OptItem "Close Current View" "close-tab-group"
+		OptItem "Close Current View" "tab-group-close"
 	End
 
 

@@ -2676,15 +2676,15 @@ void LyXAction::init()
 		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_CLOSE_TAB_GROUP
+ * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_CLOSE
  * \li Action: Close the current tab group.
  * \li Notion: This only closes the work areas, not the buffers themselves.
                The still opened buffers can be visualized in another tab group.
- * \li Syntax: close-tab-group
+ * \li Syntax: tab-group-close
  * \li Origin: Abdel, 21 Feb 2008
  * \endvar
  */
-		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
+		{ LFUN_TAB_GROUP_CLOSE, "tab-group-close", ReadOnly, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_VIEW_CLOSE

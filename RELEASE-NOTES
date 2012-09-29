@@ -79,6 +79,8 @@ The following LyX functions have been changed:
   to show the settings dialog. This is no longer possible and one should use
   inset-settings for this purpose.
  
+-  LFUN_CLOSE_TAB_GROUP_CLOSE ("close-tab-group") was renamed to
+   LFUN_TAB_GROUP_CLOSE ("tab-group-close").
 
 The following LyX key bindings have been changed:
 

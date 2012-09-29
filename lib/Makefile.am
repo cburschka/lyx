@@ -355,7 +355,7 @@ dist_images_DATA = \
 	images/changes-output.png \
 	images/changes-track.png \
 	images/closetab.png \
-	images/close-tab-group.png \
+	images/tab-group-close.png \
 	images/copy.png \
 	images/cut.png \
 	images/demote.png \
@@ -1212,7 +1212,7 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/change-reject.png \
 	images/oxygen/changes-output.png \
 	images/oxygen/changes-track.png \
-	images/oxygen/close-tab-group.png \
+	images/oxygen/tab-group-close.png \
 	images/oxygen/closetab.png \
 	images/oxygen/copy.png \
 	images/oxygen/cut.png \
@@ -1322,7 +1322,7 @@ dist_imagesclassic_DATA = \
 	images/classic/changes-merge.png  \
 	images/classic/changes-output.png  \
 	images/classic/changes-track.png  \
-	images/classic/close-tab-group.png  \
+	images/classic/tab-group-close.png  \
 	images/classic/copy.png  \
 	images/classic/cut.png  \
 	images/classic/demote.png  \
