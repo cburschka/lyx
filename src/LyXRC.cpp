@@ -73,6 +73,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
+	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
 	{ "\\completion_cursor_text", LyXRC::RC_COMPLETION_CURSOR_TEXT },
 	{ "\\completion_inline_delay", LyXRC::RC_COMPLETION_INLINE_DELAY },
 	{ "\\completion_inline_dots", LyXRC::RC_COMPLETION_INLINE_DOTS },
@@ -210,7 +211,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\viewer", LyXRC::RC_VIEWER},
 	{ "\\viewer_alternatives", LyXRC::RC_VIEWER_ALTERNATIVES },
 	{ "\\visual_cursor", LyXRC::RC_VISUAL_CURSOR },
-	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
 	{ "format", LyXRC::RC_LYXRCFORMAT }
 };
 
