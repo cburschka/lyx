@@ -30,6 +30,10 @@ class GuiRef : public GuiDialog, public Ui::RefUi
 
 public:
 	GuiRef(GuiView & lv);
+	/// Dialog inherited methods
+	//@{
+	void enableView(bool enable);
+	//@}
 
 private Q_SLOTS:
 	void changed_adaptor();
