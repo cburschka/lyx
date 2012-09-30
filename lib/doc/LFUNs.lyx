@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 444
 \begin_document
 \begin_header
 \textclass article
@@ -22,13 +22,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -39,15 +39,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -75,7 +81,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2011-12-15
+LFUNs documentation automatically generated 2012-09-29
 \end_layout
 
 \begin_layout Standard
@@ -816,8 +822,13 @@ Syntax space-insert <NAME> [<LEN>]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: normal, protected, thin, quad, qquad, enspace, enskip, negthinspa
-ce, hfill, hfill*, dotfill, hrulefill, hspace, hspace*
+Params <NAME>: normal, protected, visible, thin, quad, qquad, enspace, enskip,
+ negthinspace, negmedspace, negthickspace, hfill, hfill*, dotfill, hrulefill,
+ hspace, hspace*
+\begin_inset Newline newline
+\end_inset
+
+Only in math mode: med and thick.
 \begin_inset Newline newline
 \end_inset
 
@@ -923,7 +934,7 @@ Syntax index-insert [<TYPE:Name>]
 
 \begin_layout Description
 Params <TYPE:Name>: name of the index, if multiple indices are defined.
- with an empty argument, the default index is selected.
+ With an empty argument, the default index is selected.
 \end_layout
 
 \begin_layout Description
@@ -944,11 +955,69 @@ Syntax index-print [<TYPE:Name>]
 
 \begin_layout Description
 Params <TYPE:Name>: name of the index, if multiple indices are defined.
- with an empty argument, the default index is selected.
+ With an empty argument, the default index is selected.
 \end_layout
 
 \begin_layout Description
 Origin Lgb, 27 Feb 1997
+\end_layout
+
+\begin_layout Subsection*
+LFUN_IPA_INSERT
+\end_layout
+
+\begin_layout Description
+Action Inserts an IPA inset.
+\end_layout
+
+\begin_layout Description
+Syntax ipa-insert
+\end_layout
+
+\begin_layout Description
+Origin spitz, 05 Mar 2012
+\end_layout
+
+\begin_layout Subsection*
+LFUN_IN_IPA
+\end_layout
+
+\begin_layout Description
+Action Only active in IPA inset.
+\end_layout
+
+\begin_layout Description
+Notion Dummy function which is only active in a IPA inset.
+ It's used to toggle the IPA toolbar if the cursor moves into an IPA inset.
+\end_layout
+
+\begin_layout Description
+Syntax in-ipa
+\end_layout
+
+\begin_layout Description
+Origin spitz, 20 May 2012
+\end_layout
+
+\begin_layout Subsection*
+LFUN_IPAMACRO_INSERT
+\end_layout
+
+\begin_layout Description
+Action Inserts special IPA macros into the document.
+\end_layout
+
+\begin_layout Description
+Syntax ipamacro-insert <CHAR>
+\end_layout
+
+\begin_layout Description
+Params <CHAR>: tone-falling, tone-rising, tone-high-rising, tone-low-rising,
+ tone-high-rising-falling, deco bottomtiebar, deco toptiebar.
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 22 Aug 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -993,7 +1062,7 @@ LFUN_NOTE_INSERT
 \end_layout
 
 \begin_layout Description
-Action Inserts Note on the current cursor postion, move selection inside
+Action Inserts Note on the current cursor position, move selection inside
  the inset.
 \end_layout
 
@@ -1010,7 +1079,7 @@ LFUN_NOTE_NEXT
 \end_layout
 
 \begin_layout Description
-Action Moves the cursor to the begining of next Note inset.
+Action Moves the cursor to the beginning of next Note inset.
 \end_layout
 
 \begin_layout Description
@@ -1022,7 +1091,7 @@ LFUN_PHANTOM_INSERT
 \end_layout
 
 \begin_layout Description
-Action Inserts phantom on the current cursor postion, move selection inside
+Action Inserts phantom on the current cursor position, move selection inside
  the inset.
 \end_layout
 
@@ -1450,8 +1519,8 @@ LFUN_WORD_DELETE_BACKWARD
 \end_layout
 
 \begin_layout Description
-Action Deletes characters to the begining of the word (usually the "C+BackSpace"
- key).
+Action Deletes characters to the beginning of the word (usually the "C+BackSpace
+" key).
 \end_layout
 
 \begin_layout Description
@@ -1518,7 +1587,7 @@ LFUN_WORD_FIND
 \end_layout
 
 \begin_layout Description
-Action Search for next occurence of a string.
+Action Search for next occurrence of a string.
 \end_layout
 
 \begin_layout Description
@@ -1557,7 +1626,7 @@ Params <DATA>: data is of the form "<replace>
 \begin_inset Newline newline
 \end_inset
 
-<casesensitive> <matchword> <all> <forward>"
+<casesensitive> <matchword> <all> <forward> <findnext>"
 \end_layout
 
 \begin_layout Description
@@ -1569,7 +1638,7 @@ LFUN_WORD_FINDADV
 \end_layout
 
 \begin_layout Description
-Action Search for next occurence of a pattern.
+Action Search for next occurrence of a pattern.
 \end_layout
 
 \begin_layout Description
@@ -2017,7 +2086,7 @@ LFUN_LINE_BEGIN
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the begining of the (screen) line.
+Action Move the cursor to the beginning of the (screen) line.
 \end_layout
 
 \begin_layout Description
@@ -2080,7 +2149,7 @@ LFUN_COPY
 \end_layout
 
 \begin_layout Description
-Action Copies to the clipboard the last edit.
+Action Copies the current selection to the clipboard.
 \end_layout
 
 \begin_layout Description
@@ -2166,7 +2235,7 @@ LFUN_SELECTION_PASTE
 \end_layout
 
 \begin_layout Description
-Action Pastes the the internal selection text in permanent selection.
+Action Pastes the internal selection text in permanent selection.
 \end_layout
 
 \begin_layout Description
@@ -2180,6 +2249,23 @@ Syntax selection-paste
 
 \begin_layout Description
 Origin lasgouttes, 14 Jan 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CLIPBOARD_PASTE_SIMPLE
+\end_layout
+
+\begin_layout Description
+Action Pastes simple unformatted text from the active clipboard.
+\end_layout
+
+\begin_layout Description
+Syntax clipboard-paste-simple [<ARG>]
+\end_layout
+
+\begin_layout Description
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
+ "Join lines".
 \end_layout
 
 \begin_layout Subsection*
@@ -2482,7 +2568,7 @@ Action Toggle user-defined (=last-time used) text style.
 
 \begin_layout Description
 Notion This style is set via LFUN_TEXTSTYLE_UPDATE, which is automatically
- trigerred when using Text Style dialog.
+ triggered when using Text Style dialog.
 \end_layout
 
 \begin_layout Description
@@ -2586,7 +2672,7 @@ Action Adds database, which will be used for bibtex citations.
 
 \begin_layout Description
 Notion Databases are added to the first BibTeX inset (Inset->List/TOC->BibTeX
- bibliography) found from the cursor postion.
+ bibliography) found from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -2607,7 +2693,7 @@ Action Adds database, which will be used for bibtex citations.
 
 \begin_layout Description
 Notion Databases are deleted from the first BibTeX inset (Inset->List/TOC->BibTe
-X bibliography) found from the cursor postion.
+X bibliography) found from the cursor position.
 \end_layout
 
 \begin_layout Description
@@ -3252,7 +3338,7 @@ Params <LANG>: octave|maxima|maple|mathematica|script
 \begin_inset Newline newline
 \end_inset
 
-where "script" stands fot the external script (normalized expression will
+where "script" stands for the external script (normalized expression will
  be passed)
 \end_layout
 
@@ -3615,6 +3701,12 @@ Action Moves the current paragraph upwards in the document.
 \end_layout
 
 \begin_layout Description
+Notion Movement through the document will possibly break the paragraph-depth
+ (e.g.
+ itemize structure).
+\end_layout
+
+\begin_layout Description
 Syntax paragraph-move-up
 \end_layout
 
@@ -3627,7 +3719,7 @@ LFUN_PARAGRAPH_UP
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the next paragraph (or begining of the current
+Action Move the cursor to the next paragraph (or beginning of the current
  one) in upward direction.
 \end_layout
 
@@ -3644,7 +3736,7 @@ LFUN_PARAGRAPH_UP_SELECT
 \end_layout
 
 \begin_layout Description
-Action Move the cursor and select the text to the next paragraph (or begining
+Action Move the cursor and select the text to the next paragraph (or beginning
  of the current one) in upward direction.
 \end_layout
 
@@ -3661,7 +3753,7 @@ LFUN_PARAGRAPH_DOWN
 \end_layout
 
 \begin_layout Description
-Action Move the cursor to the next paragraph (or begining of the current
+Action Move the cursor to the next paragraph (or beginning of the current
  one) in downward direction.
 \end_layout
 
@@ -3678,7 +3770,7 @@ LFUN_PARAGRAPH_DOWN_SELECT
 \end_layout
 
 \begin_layout Description
-Action Move the cursor and select the text to the next paragraph (or begining
+Action Move the cursor and select the text to the next paragraph (or beginning
  of the current one) in downward direction.
 \end_layout
 
@@ -3722,7 +3814,7 @@ Origin Dekel, 26 Aug 2000
 \end_layout
 
 \begin_layout Subsection*
-LFUN_BREAK_PARAGRAPH
+LFUN_PARAGRAPH_BREAK
 \end_layout
 
 \begin_layout Description
@@ -3734,7 +3826,7 @@ Notion Removes the selection.
 \end_layout
 
 \begin_layout Description
-Syntax break-paragraph [<LAYOUT>]
+Syntax paragraph-break [<LAYOUT>]
 \end_layout
 
 \begin_layout Description
@@ -3830,7 +3922,7 @@ Action Updates the values inside the paragraph dialog from the paragraph.
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
  Called internally by LFUN_DIALOG_UPDATE.
 \end_layout
 
@@ -4489,7 +4581,7 @@ Syntax inset-insert <INSET> <ARGS>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular|
+Params <INSET>: <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|
 \begin_inset Newline newline
 \end_inset
 
@@ -4605,7 +4697,7 @@ Action Updates the values inside the dialog from the inset.
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
  Called internally by LFUN_DIALOG_UPDATE
 \end_layout
 
@@ -4640,8 +4732,11 @@ Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
 \begin_inset Newline newline
 \end_inset
 
-graphics|href|include|index|index_print|label|line| listings|note|phantom|ref|sp
-ace|tabular|vspace|wrap>.
+graphics|href|include|index|index_print|label|line|
+\begin_inset Newline newline
+\end_inset
+
+listings|note|phantom|ref|space|tabular|vspace|wrap>.
 \end_layout
 
 \begin_layout Subsection*
@@ -4649,7 +4744,7 @@ LFUN_INSET_TOGGLE
 \end_layout
 
 \begin_layout Description
-Action Toggles the collapsable inset at cursor position, or the inset we
+Action Toggles the collapsible inset at cursor position, or the inset we
  are currently in.
 \end_layout
 
@@ -4662,7 +4757,7 @@ Params <ARG>: <open|close|toggle|assign>.
 \begin_inset Newline newline
 \end_inset
 
-open/close/toggle are for collapsable insets.
+open/close/toggle are for collapsible insets.
  toggle is used when no argument is given.
 \begin_inset Newline newline
 \end_inset
@@ -4915,7 +5010,7 @@ LFUN_BOOKMARK_GOTO
 
 \begin_layout Description
 Action Moves the cursor to the numbered bookmark, opening the file if necessary.
- Note that bookmarsk are saved per-session, not per file.
+ Note that bookmarks are saved per-session, not per file.
 \end_layout
 
 \begin_layout Description
@@ -5157,7 +5252,7 @@ Origin Abdel, 23 Oct 2006
 \end_layout
 
 \begin_layout Subsection*
-LFUN_SPLIT_VIEW
+LFUN_VIEW_SPLIT
 \end_layout
 
 \begin_layout Description
@@ -5165,11 +5260,11 @@ Action Creates another split view of current buffer.
 \end_layout
 
 \begin_layout Description
-Notion All split views act in the same way indpendently.
+Notion All split views act in the same way independently.
 \end_layout
 
 \begin_layout Description
-Syntax split-view <vertical|horizontal>
+Syntax view-split <vertical|horizontal>
 \end_layout
 
 \begin_layout Description
@@ -5185,7 +5280,29 @@ Origin Abdel, 20 Feb 2008
 \end_layout
 
 \begin_layout Subsection*
-LFUN_CLOSE_TAB_GROUP
+LFUN_VIEW_CLOSE
+\end_layout
+
+\begin_layout Description
+Action Close the current document work area.
+\end_layout
+
+\begin_layout Description
+Notion Close the current work area.
+ If no other work areas are showing the buffer, then close the associated
+ buffer as well.
+\end_layout
+
+\begin_layout Description
+Syntax view-close
+\end_layout
+
+\begin_layout Description
+Origin Tommaso, 15 Sep 2012
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TAB_GROUP_CLOSE
 \end_layout
 
 \begin_layout Description
@@ -5193,12 +5310,12 @@ Action Close the current tab group.
 \end_layout
 
 \begin_layout Description
-Notion This only closes the work areas, not the buffer themselves.
+Notion This only closes the work areas, not the buffers themselves.
  The still opened buffers can be visualized in another tab group.
 \end_layout
 
 \begin_layout Description
-Syntax close-tab-group
+Syntax tab-group-close
 \end_layout
 
 \begin_layout Description
@@ -5210,7 +5327,7 @@ LFUN_DIALOG_SHOW
 \end_layout
 
 \begin_layout Description
-Action Shows hidden dialog or create new one for a given function/inset
+Action Shows hidden dialog or creates new one for a given function/inset
  settings etc.
 \end_layout
 
@@ -5381,7 +5498,7 @@ Action This function is called when mouse button is pressed (inside workarea).
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
 \end_layout
 
 \begin_layout Description
@@ -5399,7 +5516,7 @@ Action This function is called when double click on mouse button is pressed
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
 \end_layout
 
 \begin_layout Description
@@ -5417,7 +5534,7 @@ Action This function is called when triple click on mouse button is pressed
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
 \end_layout
 
 \begin_layout Description
@@ -5434,7 +5551,7 @@ Action This function is called when mouse cursor is moving over the text.
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
 \end_layout
 
 \begin_layout Description
@@ -5451,7 +5568,7 @@ Action This function is called when mouse button is released (inside workarea).
 \end_layout
 
 \begin_layout Description
-Notion This is internal LFUN, not to be used by users.
+Notion This is an internal LFUN, not to be used by users.
 \end_layout
 
 \begin_layout Description
@@ -5482,7 +5599,7 @@ Action Turn on the primary keyboard map.
 Notion Maps were widely used in past, when X-windows didn't have nowadays
  keyboard support.
  They can be still used to maintain uniform keyboard layout across the various
- plaforms.
+ platforms.
 \begin_inset Newline newline
 \end_inset
 
@@ -5645,7 +5762,7 @@ LFUN_SERVER_SET_XY
 
 \begin_layout Description
 Action Sets the cursor position based on the editing area coordinates (similar
- as clicking on that point with left mouse button).
+ to clicking on that point with left mouse button).
 \end_layout
 
 \begin_layout Description
@@ -5678,7 +5795,7 @@ Notion Latex file with extension
 literate_extension is generated.
  Then LyX invokes 
 \backslash
-build_command (with a default of``make'') to generate the code and 
+build_command (with a default of ``make'') to generate the code and 
 \backslash
 build_error_filter to process the compilation error messages.
 \begin_inset Newline newline
@@ -5847,7 +5964,7 @@ Action Exports the current buffer (document) to the given format.
 \end_layout
 
 \begin_layout Description
-Syntax buffer-export <FORMAT>
+Syntax buffer-export <FORMAT> [<DEST>]
 \end_layout
 
 \begin_layout Description
@@ -5861,6 +5978,9 @@ Params <FORMAT> is either "custom" or one of the formats which you can find
 In case of "custom" you will be asked for a format you want to start from
  and for the command that you want to apply to this format.
  Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
+ 		<DEST>	If present, this argument provides the export destination 			filename.
+ Its containing folder will also be the destination 			folder, where all
+ the needed external files will be copied.
 \end_layout
 
 \begin_layout Description
@@ -5896,6 +6016,22 @@ Sample buffer-export-custom dvi dvips -f $$FName -o myfile.ps
 
 \begin_layout Description
 Origin leeming, 27 Mar 2004
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_EXPORT_AS
+\end_layout
+
+\begin_layout Description
+Action Pops up a dialog for exporting the current buffer.
+\end_layout
+
+\begin_layout Description
+Syntax buffer-export-as
+\end_layout
+
+\begin_layout Description
+Origin tommaso, 6 Oct 2011
 \end_layout
 
 \begin_layout Subsection*
@@ -5944,8 +6080,8 @@ Action Import a given file as a lyx document.
 
 \begin_layout Description
 Notion File can be imported iff lyx file format is (transitively) reachable
- via defined convertors in preferences.
- Look into File->Import menu to get an idea of the currently active import
+ via defined converters in preferences.
+ Look in the File->Import menu to get an idea of the currently active import
  formats.
 \end_layout
 
@@ -5962,7 +6098,7 @@ LFUN_BUFFER_NEW
 \end_layout
 
 \begin_layout Description
-Action Creates a new buffer (that is, document).
+Action Creates a new buffer (that is, document) and switches to it.
 \end_layout
 
 \begin_layout Description
@@ -6019,7 +6155,7 @@ LFUN_BUFFER_SWITCH
 \end_layout
 
 \begin_layout Description
-Action Display/switch to the given buffer.
+Action Display and switch to the given buffer.
 \end_layout
 
 \begin_layout Description
@@ -6089,7 +6225,7 @@ Action Exports the current document and put the result into the temporary
 
 \begin_layout Description
 Notion In case you are already viewing the exported document (see LFUN_BUFFER_VI
-EW) the output will be rewriten - updated.
+EW) the output will be rewritten - updated.
  This is useful in case your viewer is able to detect such changes (e.g.
  ghostview for postscript).
 \end_layout
@@ -6141,6 +6277,80 @@ Syntax buffer-write-as <FILENAME>
 \begin_layout Description
 Params <FILENAME>: New name of the buffer/file.
  A relative path is with respect to the original location of the buffer/file.
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_FORALL
+\end_layout
+
+\begin_layout Description
+Action Applies a command to all visible, hidden, or both types of buffers
+ in the active window.
+\end_layout
+
+\begin_layout Description
+Syntax buffer-forall [<BUFFER-TYPE>] <LFUN-COMMAND>
+\end_layout
+
+\begin_layout Description
+Params <BUFFER-TYPE>: <visible|hidden|both default:> default: visible <LFUN-COMM
+AND>: The command that is to be applied to the buffers.
+\end_layout
+
+\begin_layout Description
+Sample Close all Notes in all visible documents:
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall inset-forall Note inset-toggle close
+\begin_inset Newline newline
+\end_inset
+
+Toggle change tracking on all documents:
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall both changes-track
+\begin_inset Newline newline
+\end_inset
+
+Toggle read-only for all visible documents:
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall buffer-toggle-read-only
+\begin_inset Newline newline
+\end_inset
+
+Show statistics for each document:
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall both statistics
+\begin_inset Newline newline
+\end_inset
+
+Activate the branch named "Solutions" in all visible documents:
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall branch-activate Solutions
+\begin_inset Newline newline
+\end_inset
+
+Export all visible documents to PDF (pdflatex):
+\begin_inset Newline newline
+\end_inset
+
+	           buffer-forall buffer-export pdf2
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Origin scottkostyshak, 20 Jul 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -6633,8 +6843,8 @@ LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE
 \end_layout
 
 \begin_layout Description
-Action Determine whether keep cursor inside the editing window regardless
- the scrollbar movement.
+Action Determine whether to keep cursor inside the editing window regardless
+ of the scrollbar movement.
 \end_layout
 
 \begin_layout Description

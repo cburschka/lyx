@@ -146,6 +146,15 @@ def Bar2bar(line):
 	newline = btype + " \"" + mod + "bar\"" + rest
 	return (True, newline)
 
+def paragraph_break(line):
+	return simple_renaming(line, "break-paragraph", "paragraph-break")
+
+def tab_group_close(line):
+	return simple_renaming(line, "close-tab-group", "tab-group-close")
+
+def view_split(line):
+	return simple_renaming(line, "split-view", "view-split")
+
 #
 #
 ###########################################################
@@ -154,7 +163,7 @@ def Bar2bar(line):
 # Conversion chain
 
 conversions = [
-	[  1, [ # this will be a long list of conversions to format 1
+	[  1, [ # this will be a long list of conversions to format 1, LyX 2.0
 		next_inset_toggle,
 		next_inset_modify,
 		optional_insert,
@@ -165,6 +174,11 @@ conversions = [
 		paragraph_spacing,
 		tabular_feature,
 		Bar2bar
+	]],
+	[  2, [ # list of conversions to format 2, LyX 2.1
+		paragraph_break,
+		tab_group_close,
+		view_split
 	]],
 ]
 

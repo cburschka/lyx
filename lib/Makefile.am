@@ -355,7 +355,7 @@ dist_images_DATA = \
 	images/changes-output.png \
 	images/changes-track.png \
 	images/closetab.png \
-	images/close-tab-group.png \
+	images/tab-group-close.png \
 	images/copy.png \
 	images/cut.png \
 	images/demote.png \
@@ -434,8 +434,8 @@ dist_images_DATA = \
 	images/reload.png \
 	images/script-insert_subscript.png \
 	images/script-insert_superscript.png \
-	images/split-view_horizontal.png \
-	images/split-view_vertical.png \
+	images/view-split_horizontal.png \
+	images/view-split_vertical.png \
 	images/standard.png \
 	images/tabular-feature_align-decimal.png \
 	images/tabular-feature_append-column.png \
@@ -1212,7 +1212,7 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/change-reject.png \
 	images/oxygen/changes-output.png \
 	images/oxygen/changes-track.png \
-	images/oxygen/close-tab-group.png \
+	images/oxygen/tab-group-close.png \
 	images/oxygen/closetab.png \
 	images/oxygen/copy.png \
 	images/oxygen/cut.png \
@@ -1258,8 +1258,8 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/paste.png \
 	images/oxygen/redo.png \
 	images/oxygen/reload.png \
-	images/oxygen/split-view_horizontal.png \
-	images/oxygen/split-view_vertical.png \
+	images/oxygen/view-split_horizontal.png \
+	images/oxygen/view-split_vertical.png \
 	images/oxygen/tabular-insert.png \
 	images/oxygen/textstyle-apply.png \
 	images/oxygen/thesaurus-entry.png \
@@ -1322,7 +1322,7 @@ dist_imagesclassic_DATA = \
 	images/classic/changes-merge.png  \
 	images/classic/changes-output.png  \
 	images/classic/changes-track.png  \
-	images/classic/close-tab-group.png  \
+	images/classic/tab-group-close.png  \
 	images/classic/copy.png  \
 	images/classic/cut.png  \
 	images/classic/demote.png  \
@@ -1395,8 +1395,8 @@ dist_imagesclassic_DATA = \
 	images/classic/reload.png  \
 	images/classic/script-insert_subscript.png  \
 	images/classic/script-insert_superscript.png  \
-	images/classic/split-view_horizontal.png  \
-	images/classic/split-view_vertical.png  \
+	images/classic/view-split_horizontal.png  \
+	images/classic/view-split_vertical.png  \
 	images/classic/tabular-feature_align-decimal.png  \
 	images/classic/tabular-feature_append-column.png  \
 	images/classic/tabular-feature_append-row.png  \

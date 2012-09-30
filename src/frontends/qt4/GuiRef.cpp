@@ -48,14 +48,6 @@ GuiRef::GuiRef(GuiView & lv)
 
 	at_ref_ = false;
 
-	// Enabling is set in updateRefs. Disable for now in case no
-	// call to updateContents follows (e.g. read-only documents).
-	sortCB->setEnabled(false);
-	caseSensitiveCB->setEnabled(false);
-	caseSensitiveCB->setChecked(false);
-	refsTW->setEnabled(false);
-	gotoPB->setEnabled(false);
-
 	refsTW->setColumnCount(1);
 	refsTW->header()->setVisible(false);
 
@@ -98,16 +90,19 @@ GuiRef::GuiRef(GuiView & lv)
 	bc().setOK(okPB);
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
-	bc().addReadOnly(refsTW);
-	bc().addReadOnly(sortCB);
-	bc().addReadOnly(caseSensitiveCB);
-	bc().addReadOnly(nameED);
-	bc().addReadOnly(referenceED);
 	bc().addReadOnly(typeCO);
-	bc().addReadOnly(bufferCO);
 
 	restored_buffer_ = -1;
 	active_buffer_ = -1;
+}
+
+
+void GuiRef::enableView(bool enable)
+{
+	if (!enable)
+		// In the opposite case, updateContents() will be called anyway.
+		updateContents();
+	GuiDialog::enableView(enable);
 }
 
 
@@ -139,9 +134,6 @@ void GuiRef::selectionChanged()
 
 void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 {
-	if (isBufferReadonly())
-		return;
-
 	if (sel->childCount() > 0) {
 		sel->setExpanded(true);
 		return;
@@ -158,7 +150,7 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 	if (at_ref_)
 		gotoRef();
 	gotoPB->setEnabled(true);
-	if (typeAllowed())
+	if (typeAllowed() && !isBufferReadonly())
 		typeCO->setEnabled(true);
 	nameED->setHidden(!nameAllowed());
 	nameL->setHidden(!nameAllowed());
@@ -235,11 +227,13 @@ void GuiRef::updateContents()
 {
 	int orig_type = typeCO->currentIndex();
 
-	referenceED->setText(toqstr(params_["reference"]));
+	referenceED->clear();
+	nameED->clear();
 
+	referenceED->setText(toqstr(params_["reference"]));
 	nameED->setText(toqstr(params_["name"]));
-	nameED->setHidden(!nameAllowed() && !isBufferReadonly());
-	nameL->setHidden(!nameAllowed() && !isBufferReadonly());
+	nameED->setHidden(!nameAllowed());
+	nameL->setHidden(!nameAllowed());
 
 	// restore type settings for new insets
 	if (params_["reference"].empty())
@@ -449,7 +443,7 @@ void GuiRef::updateRefs()
 		FileName const & name = theBufferList().fileNames()[the_buffer];
 		Buffer const * buf = theBufferList().getBuffer(name);
 		buf->getLabelList(refs_);
-	}	
+	}
 	sortCB->setEnabled(!refs_.empty());
 	caseSensitiveCB->setEnabled(sortCB->isEnabled() && sortCB->isChecked());
 	refsTW->setEnabled(!refs_.empty());

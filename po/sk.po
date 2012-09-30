@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-28 15:56+0200\n"
-"PO-Revision-Date: 2012-04-08 11:27+0100\n"
+"POT-Creation-Date: 2012-09-30 15:04+0200\n"
+"PO-Revision-Date: 2012-09-30 15:14+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -303,7 +303,7 @@ msgstr "Z&mazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr "Vybrať aby rámok mohol prejsť aj na druhú stránku"
+msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
 msgid "Allow &page breaks"
@@ -372,7 +372,7 @@ msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú li
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
 msgid "&Box:"
-msgstr "&Rámok:"
+msgstr "&Rámik:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:154
 msgid "Co&ntent:"
@@ -393,7 +393,7 @@ msgstr "&Výška:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:213
 msgid "Inner Bo&x:"
-msgstr "V&nútorný rámok:"
+msgstr "V&nútorný rámik:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:229
 msgid "&Decoration:"
@@ -415,7 +415,7 @@ msgstr "Hodnota Šírky"
 
 #: src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Vnútorný rámok -- potrebný pre pevnú šírku a lom riadkov"
+msgstr "Vnútorný rámik -- potrebný pre pevnú šírku a lom riadkov"
 
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -1260,9 +1260,10 @@ msgstr "x"
 msgid "Right &top:"
 msgstr "Vpravo &hore:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:514 src/frontends/qt4/ui/GraphicsUi.ui:437
+#: src/frontends/qt4/ui/ExternalUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
-msgstr "Získať ohraničujúci rámok z (EPS) súboru"
+msgstr "Získať ohraničujúci rámik z (EPS) súboru"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:517 src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
@@ -3150,7 +3151,7 @@ msgstr "&Zoskupiť prostredia odstavcov podľa kategórií"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:99
 msgid "Edit Math Macros inline with a box around"
-msgstr "Zobraz rámok pri editácii matematických makrov v riadku"
+msgstr "Zobraz rámik pri editácii matematických makrov v riadku"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:104
 msgid "Edit Math Macros inline with the name in the status bar"
@@ -3947,7 +3948,7 @@ msgstr "Súbor s &užívateľským rozhraním:"
 msgid "&Icon Set:"
 msgstr "Sada &ikon:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:68
+#: src/frontends/qt4/ui/PrefUi.ui:69
 msgid ""
 "The icon set to use. Warning: normal size of icons may be\n"
 "wrong until you save the preferences and restart LyX."
@@ -4022,7 +4023,7 @@ msgstr "&Maximum posledných súborov:"
 msgid "&Open documents in tabs"
 msgstr "&Otvoriť dokumenty v paneloch"
 
-#: src/frontends/qt4/ui/PrefUi.ui:262
+#: src/frontends/qt4/ui/PrefUi.ui:263
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -4042,6 +4043,22 @@ msgstr "Dať tlačidlo \"Zavrieť\" na každý panel, alebo len jediné vľavo h
 #: src/frontends/qt4/ui/PrefUi.ui:275
 msgid "&Single close-tab button"
 msgstr "&Jediné tlačidlo na zavretie panelov"
+
+#: src/frontends/qt4/ui/PrefUi.ui:285
+msgid "Closing last view:"
+msgstr "Pri zavieraní posledného náhľadu:"
+
+#: src/frontends/qt4/ui/PrefUi.ui:293
+msgid "Closes document"
+msgstr "Zavrieť dokument"
+
+#: src/frontends/qt4/ui/PrefUi.ui:298
+msgid "Hides document"
+msgstr "Skryť dokument"
+
+#: src/frontends/qt4/ui/PrefUi.ui:303
+msgid "Ask the user"
+msgstr "Opýtať sa, čo zrobiť"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2649
 #: src/frontends/qt4/GuiView.cpp:2656 src/frontends/qt4/GuiView.cpp:2755
@@ -4581,7 +4598,7 @@ msgstr "Zlúčiť bunky rozličných stĺpcov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:556
 msgid "&Multicolumn"
-msgstr "Viac&stĺpcové"
+msgstr "Viac-&stĺpcové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:563
 msgid "LaTe&X argument:"
@@ -10499,11 +10516,11 @@ msgstr "Braille_zrkadlenie_vyp"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
-msgstr "BrailleRámok"
+msgstr "BrailleRámik"
 
 #: lib/layouts/braille.module:167
 msgid "Braille box"
-msgstr "Braille rámok"
+msgstr "Braille rámik"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
@@ -11261,7 +11278,7 @@ msgid ""
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a nečíslované typy. Implicitne sú vety číslované "
+"dispozícii sú číslované a ne-číslované typy. Implicitne sú vety číslované "
 "postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z "
 "'Teorémy (Číslované podľa ...)' modulu."
 
@@ -12846,13 +12863,21 @@ msgstr "Info Dokumentu"
 msgid "Copy Text|o"
 msgstr "Kopíruj Text"
 
-#: lib/ui/stdcontext.inc:441 lib/ui/stdcontext.inc:461
+#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:464
 msgid "Activate Branch|A"
-msgstr "Aktivuj Vetvu|A"
+msgstr "Aktivuj vetvu|A"
 
-#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:462
+#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:465
 msgid "Deactivate Branch|e"
-msgstr "Dezaktivuj Vetvu|e"
+msgstr "Dezaktivuj vetvu|e"
+
+#: lib/ui/stdcontext.inc:444
+msgid "Activate Branch in Master|M"
+msgstr "Aktivuj vetvu v hlavnom dokumente|H"
+
+#: lib/ui/stdcontext.inc:445
+msgid "Deactivate Branch in Master|v"
+msgstr "Dezaktivuj vetvu v hlavnom dokumente|v"
 
 #: lib/ui/stdcontext.inc:451
 msgid "Insert Reference at Cursor Position|I"
@@ -13004,7 +13029,7 @@ msgstr "Prevziať na Úpravu"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Update Local Directory From Repository|d"
-msgstr "Aktualizuj Lokálny Adresár Z Repositáru"
+msgstr "Aktualizuj Lokálny Adresár Z Repozitáru"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Revert to Repository Version|v"
@@ -13484,7 +13509,7 @@ msgstr "Súbor|S"
 
 #: lib/ui/stdmenus.inc:359
 msgid "Box[[Menu]]"
-msgstr "Rámok"
+msgstr "Rámik"
 
 #: lib/ui/stdmenus.inc:362
 msgid "Citation...|C"
@@ -14056,7 +14081,7 @@ msgstr "Vložiť poznámku"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert box"
-msgstr "Vložiť rámok"
+msgstr "Vložiť rámik"
 
 #: lib/ui/stdtoolbars.inc:132
 msgid "Insert hyperlink"
@@ -14402,9 +14427,9 @@ msgstr "Vložiť Info Verzie"
 msgid "Use SVN file locking property"
 msgstr "Použiť blokovanie súborov z SVN"
 
-#: lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:279
 msgid "Update local directory from repository"
-msgstr "Aktualizuj lokálny adresár z repositáru"
+msgstr "Aktualizuj lokálny adresár z repozitáru"
 
 #: lib/ui/stdtoolbars.inc:272
 msgid "Math Panels"
@@ -18961,7 +18986,7 @@ msgstr "vložka textu phantom"
 
 #: src/Color.cpp:230
 msgid "shaded box"
-msgstr "tieňovaný rámok"
+msgstr "tieňovaný rámik"
 
 #: src/Color.cpp:231
 msgid "listings background"
@@ -19957,7 +19982,7 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
-"Zobraziť malý rámok okolo mat. makra spolu s menom makra keď je kurzor "
+"Zobraziť malý rámik okolo mat. makra spolu s menom makra keď je kurzor "
 "vnútri."
 
 #: src/LyXRC.cpp:3145
@@ -20288,6 +20313,15 @@ msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr "Vyberte pre vizuálny/logický pohyb kurzoru v dvojsmernom móde (bidi)."
+
+#: src/LyXRC.cpp:3405
+msgid ""
+"Specify whether, closing the last view of an open document, LyX should close "
+"the document (yes), hide it (no), or ask the user (ask)."
+msgstr ""
+"Definuje čo by sa malo robiť pri zavieraní posledného náhľadu otvoreného "
+"dokumentu. LyX by mal zavrieť dokument(yes), skryť ho(no), alebo pýtať sa čo "
+"zrobiť(ask)."
 
 #: src/LyXRC.cpp:3409
 msgid ""
@@ -23701,6 +23735,35 @@ msgstr "Premenovať a uložiť ?"
 msgid "&Retry"
 msgstr "Zopakuj"
 
+#: src/frontends/qt4/GuiView.cpp:2497
+#, c-format
+msgid ""
+"Last view on document %1$s is being closed.\n"
+"Would you like to close or hide the document?\n"
+"\n"
+"Hidden documents can be displayed back through\n"
+"the menu: View->Hidden->...\n"
+"\n"
+"To remove this question, set your preference in:\n"
+"  Tools->Preferences->Look&Feel->UserInterface\n"
+msgstr ""
+"Posledný náhľad dokumentu %1$s sa zaviera.\n"
+"Chcete ho zavrieť alebo len skryť?\n"
+"\n"
+"Skryté dokumenty možno zase vidieť cez\n"
+"menu: Zobraziť->Skryté->...\n"
+"\n"
+"Na zbavenie sa tejto otázky, nastavte preferenciu v:\n"
+"  Nástroje Preferencie...->Vzhľad->Užívateľské Rozhranie\n"
+
+#: src/frontends/qt4/GuiView.cpp:2506
+msgid "Close or hide document?"
+msgstr "Zavrieť alebo skryť dokument?"
+
+#: src/frontends/qt4/GuiView.cpp:2507
+msgid "&Hide"
+msgstr "Skryť"
+
 #: src/frontends/qt4/GuiView.cpp:2540
 msgid "Close document"
 msgstr "Zavrieť dokument"
@@ -23886,9 +23949,9 @@ msgstr " (iba pre čítanie)"
 msgid "Close File"
 msgstr "Zavrieť Súbor"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1976
+#: src/frontends/qt4/GuiWorkArea.cpp:1996
 msgid "Hide tab"
-msgstr "Panel schovať"
+msgstr "Panel skryť"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1978
 msgid "Close tab"
@@ -24177,9 +24240,9 @@ msgstr "TeX kód"
 msgid "Float"
 msgstr "Plávajúci objekt"
 
-#: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:130
+#: src/insets/Inset.cpp:112 src/insets/InsetBox.cpp:130
 msgid "Box"
-msgstr "Rámok"
+msgstr "Rámik"
 
 #: src/insets/Inset.cpp:111
 msgid "Horizontal Space"
@@ -24293,7 +24356,7 @@ msgstr "s tieňom"
 
 #: src/insets/InsetBox.cpp:72
 msgid "shaded background"
-msgstr "pozadie tieňovaný rámok"
+msgstr "pozadie tieňovaný rámik"
 
 #: src/insets/InsetBox.cpp:73
 msgid "double frame"
@@ -24317,6 +24380,11 @@ msgstr "aktívna"
 msgid "non-active"
 msgstr "ne-aktívna"
 
+#: src/insets/InsetBranch.cpp:73
+#, c-format
+msgid "master: %1$s, child: %2$s"
+msgstr "hlavný dokument:%1$s, potomok: %2$s"
+
 #: src/insets/InsetBranch.cpp:70
 #, c-format
 msgid "Branch (%1$s): %2$s"
@@ -24329,6 +24397,10 @@ msgstr "Vetva: "
 #: src/insets/InsetBranch.cpp:84
 msgid "Branch (child only): "
 msgstr "Vetva (len potomok): "
+
+#: src/insets/InsetBranch.cpp:93
+msgid "Branch (master only): "
+msgstr "Vetva (len hlavný dokument): "
 
 #: src/insets/InsetBranch.cpp:86
 msgid "Branch (undefined): "
@@ -24599,9 +24671,9 @@ msgstr "Neznámy typ registra!"
 msgid "All indexes"
 msgstr "Všetky registre"
 
-#: src/insets/InsetIndex.cpp:456
+#: src/insets/InsetIndex.cpp:453
 msgid "subindex"
-msgstr "Podregister"
+msgstr "Pod-register"
 
 #: src/insets/InsetInfo.cpp:119
 #, c-format

@@ -328,9 +328,9 @@ Menuset
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
-		Item "Split View Into Left and Right Half|i" "split-view horizontal"
-		Item "Split View Into Upper and Lower Half|e" "split-view vertical"
-		OptItem "Close Current View|w" "close-tab-group"
+		Item "Split View Into Left and Right Half|i" "view-split horizontal"
+		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
+		OptItem "Close Current View|w" "tab-group-close"
 		Item "Fullscreen|l" "ui-toggle fullscreen"	
 		Submenu "Toolbars|b" "toolbars"
 		Separator

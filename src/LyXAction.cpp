@@ -1996,16 +1996,16 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly | NoInternal, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_BREAK
  * \li Action: Breaks the current paragraph at the current location.
  * \li Notion: Removes the selection.
- * \li Syntax: break-paragraph [<LAYOUT>]
+ * \li Syntax: paragraph-break [<LAYOUT>]
  * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
                          to default layout) when the cursor is at the end of
                          the line.
  * \endvar
  */
-		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop, Edit },
+		{ LFUN_PARAGRAPH_BREAK, "paragraph-break", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_PARAMS
  * \li Action: Change paragraph settings.
@@ -2664,27 +2664,39 @@ void LyXAction::init()
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_SPLIT_VIEW
+ * \var lyx::FuncCode lyx::LFUN_VIEW_SPLIT
  * \li Action: Creates another split view of current buffer.
  * \li Notion: All split views act in the same way independently.
- * \li Syntax: split-view <vertical|horizontal>
+ * \li Syntax: view-split <vertical|horizontal>
  * \li Params: horizontal : The work areas are laid out side by side.\n
                vertical   : The work areas laid out vertically.
  * \li Origin: Abdel, 20 Feb 2008
  * \endvar
  */
-		{ LFUN_SPLIT_VIEW, "split-view", ReadOnly, Buffer },
+		{ LFUN_VIEW_SPLIT, "view-split", ReadOnly, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_CLOSE_TAB_GROUP
+ * \var lyx::FuncCode lyx::LFUN_VIEW_CLOSE
+ * \li Action: Close the current document work area.
+ * \li Notion: Close the current work area. If no other work areas are showing the buffer,
+               then close the associated buffer as well.
+ * \li Syntax: view-close
+ * \li Origin: Tommaso, 15 Sep 2012
+ * \endvar
+ */
+		{ LFUN_VIEW_CLOSE, "view-close", ReadOnly, Buffer },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_GROUP_CLOSE
  * \li Action: Close the current tab group.
  * \li Notion: This only closes the work areas, not the buffers themselves.
                The still opened buffers can be visualized in another tab group.
- * \li Syntax: close-tab-group
+ * \li Syntax: tab-group-close
  * \li Origin: Abdel, 21 Feb 2008
  * \endvar
  */
-		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
+		{ LFUN_TAB_GROUP_CLOSE, "tab-group-close", ReadOnly, Buffer },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
  * \li Action: Shows hidden dialog or creates new one for a given function/inset settings etc.
@@ -3489,7 +3501,7 @@ void LyXAction::init()
  * \li Origin: spitz, 7 Jul 2009
  * \endvar
  */
-		{ LFUN_BRANCH_ADD, "branch-add", Noop, Buffer },
+		{ LFUN_BRANCH_ADD, "branch-add", AtPoint, Buffer },
 
 
 /*!
@@ -3513,6 +3525,27 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", AtPoint, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_MASTER_ACTIVATE
+ * \li Action: Activate the branch in the master buffer.
+ * \li Syntax: branch-master-activate <BRANCH>
+ * \li Params: <BRANCH>: The branch to activate
+ * \li Sample: lyx -x "branch-activate answers" -e pdf2 finalexam.lyx \n
+               could be used to export a pdf with the answers branch included
+               without one's having to open LyX and activate the branch manually.
+ * \li Origin: spitz, 30 Sep 2012
+ * \endvar
+ */
+		{ LFUN_BRANCH_MASTER_ACTIVATE, "branch-master-activate", AtPoint, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_MASTER_DEACTIVATE
+ * \li Action: De-activate the branch in the master buffer.
+ * \li Syntax: branch-master-deactivate <BRANCH>
+ * \li Params: <BRANCH>: The branch to deactivate
+ * \li Origin: spitz, 30 Sep 2012
+ * \endvar
+ */
+		{ LFUN_BRANCH_MASTER_DEACTIVATE, "branch-master-deactivate", AtPoint, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCHES_RENAME

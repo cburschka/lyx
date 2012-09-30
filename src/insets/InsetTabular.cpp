@@ -4729,7 +4729,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	// disable in non-fixed-width cells
-	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_PARAGRAPH_BREAK:
 		// multirow does not allow paragraph breaks
 		if (tabular.isMultiRow(cur.idx())) {
 			status.setEnabled(false);

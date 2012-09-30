@@ -1839,8 +1839,10 @@ void fix_relative_filename(string & name)
 	if (FileName::isAbsolute(name))
 		return;
 
-	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFileName()),
-				   from_utf8(getParentFilePath())));
+	string const absMaster = makeAbsPath(getMasterFilePath()).absFileName();
+	string const absParent = makeAbsPath(getParentFilePath()).absFileName();
+	string const abs = makeAbsPath(name, absMaster).absFileName();
+	name = to_utf8(makeRelPath(from_utf8(abs), from_utf8(absParent)));
 }
 
 
@@ -2531,7 +2533,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						skip_braces(p);
 						p.get_token();
 						string name = normalize_filename(p.verbatim_item());
-						string const path = getMasterFilePath();
+						string const path = makeAbsPath(getMasterFilePath()).absFileName();
 						// We want to preserve relative / absolute filenames,
 						// therefore path is only used for testing
 						// The file extension is in every case ".tex".
@@ -2758,7 +2760,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				opts["clip"] = string();
 			string name = normalize_filename(p.verbatim_item());
 
-			string const path = getMasterFilePath();
+			string const path = makeAbsPath(getMasterFilePath()).absFileName();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {
@@ -3723,7 +3725,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				name += p.get_token().asInput();
 			context.check_layout(os);
 			string filename(normalize_filename(p.getArg('{', '}')));
-			string const path = getMasterFilePath();
+			string const path = makeAbsPath(getMasterFilePath()).absFileName();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if ((t.cs() == "include" || t.cs() == "input") &&
@@ -4183,7 +4185,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			vector<string> keys;
 			split_map(arg, opts, keys);
 			string name = normalize_filename(p.verbatim_item());
-			string const path = getMasterFilePath();
+			string const path = makeAbsPath(getMasterFilePath()).absFileName();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {
@@ -4248,7 +4250,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "loadgame") {
 			p.skip_spaces();
 			string name = normalize_filename(p.verbatim_item());
-			string const path = getMasterFilePath();
+			string const path = makeAbsPath(getMasterFilePath()).absFileName();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {

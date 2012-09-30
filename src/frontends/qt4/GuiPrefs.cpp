@@ -2526,6 +2526,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(iconSetCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(closeLastViewCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 	connect(restoreCursorCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(loadSessionCB, SIGNAL(clicked()),
@@ -2572,6 +2574,19 @@ void PrefUserInterface::apply(LyXRC & rc) const
 #if QT_VERSION < 0x040500
 	rc.single_close_tab_button = true;
 #endif
+	switch (closeLastViewCO->currentIndex()) {
+	case 0:
+		rc.close_buffer_with_last_view = "yes";
+		break;
+	case 1:
+		rc.close_buffer_with_last_view = "no";
+		break;
+	case 2:
+		rc.close_buffer_with_last_view = "ask";
+		break;
+	default:
+		;
+	}
 }
 
 
@@ -2601,6 +2616,12 @@ void PrefUserInterface::update(LyXRC const & rc)
 	singleInstanceCB->setChecked(rc.single_instance && !rc.lyxpipes.empty());
 	singleInstanceCB->setEnabled(!rc.lyxpipes.empty());
 	singleCloseTabButtonCB->setChecked(rc.single_close_tab_button);
+	if (rc.close_buffer_with_last_view == "yes")
+		closeLastViewCO->setCurrentIndex(0);
+	else if (rc.close_buffer_with_last_view == "no")
+		closeLastViewCO->setCurrentIndex(1);
+	else if (rc.close_buffer_with_last_view == "ask")
+		closeLastViewCO->setCurrentIndex(2);
 }
 
 

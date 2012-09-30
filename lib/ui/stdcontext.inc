@@ -317,7 +317,7 @@ Menuset
 		LanguageSelector
 		Separator
 		Item "Fullscreen Mode" "ui-toggle fullscreen"
-		OptItem "Close Current View" "close-tab-group"
+		OptItem "Close Current View" "tab-group-close"
 	End
 
 
@@ -441,6 +441,9 @@ Menuset
 	Menu "context-branch"
 		OptItem "Activate Branch|A" "branch-activate"
 		OptItem "Deactivate Branch|e" "branch-deactivate"
+		OptItem "Activate Branch in Master|M" "branch-master-activate"
+		OptItem "Deactivate Branch in Master|v" "branch-master-deactivate"
+		OptItem "Add Unknown Branch|w" "branch-add"
 	End
 
 #

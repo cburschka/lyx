@@ -190,6 +190,7 @@ public:
 		RC_VIEWER,
 		RC_VIEWER_ALTERNATIVES,
 		RC_VISUAL_CURSOR,
+		RC_CLOSE_BUFFER_WITH_LAST_VIEW,
 		RC_LAST
 	};
 
@@ -547,6 +548,8 @@ public:
 	bool force_paint_single_char;
 	///
 	int cursor_width;
+	/// One of: yes, no, ask
+	std::string close_buffer_with_last_view;
 };
 
 

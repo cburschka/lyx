@@ -4394,7 +4394,7 @@ Return
  use 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  instead.
@@ -5353,7 +5353,7 @@ Standard
  depth, you can use 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  to break paragraphs.
@@ -7199,7 +7199,7 @@ Return
 \family default
  is the 
 \family typewriter
-break-paragraph
+paragraph-break
 \family default
  function, and the individual lines of an address are not paragraphs.
  Thus, you have to use 
@@ -8841,7 +8841,7 @@ List
  We created it by using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -8872,7 +8872,7 @@ arg   "depth-increment"
  by hitting 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -8903,7 +8903,7 @@ Standard
  We did this by hitting 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -8941,7 +8941,7 @@ Standard
  paragraph, also at level #4, made with just a 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -8953,7 +8953,7 @@ arg   "break-paragraph inverse"
  We hit 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  and changed the paragraph environment back to 
@@ -9003,7 +9003,7 @@ and this is level #6.
  Just hit 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by a 
@@ -9021,7 +9021,7 @@ arg   "depth-decrement"
 #4-b After another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by a 
@@ -9192,7 +9192,7 @@ This is level #2.
  We used 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -9226,7 +9226,7 @@ Itemize
  (We got here by using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -9247,7 +9247,7 @@ Itemize
 Here's level #4, produced using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -9315,7 +9315,7 @@ don't
 Oh, as if you couldn't guess by now, we're just using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  to keep the current environment and depth but create a new item.
@@ -9331,7 +9331,7 @@ arg   "depth-decrement"
  to decrease the depth after the next 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -9372,7 +9372,7 @@ did
 Another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  
@@ -9395,7 +9395,7 @@ Enumerate
 The same thing happens if we do another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  
@@ -9526,7 +9526,7 @@ Bippitey boppitey boo!
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -9641,7 +9641,7 @@ blue-fish
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -9657,7 +9657,7 @@ arg   "depth-increment"
  3 times, 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -9733,7 +9733,7 @@ Quotation
  We will use 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  to preserve the depth.

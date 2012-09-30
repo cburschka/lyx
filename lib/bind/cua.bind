@@ -39,7 +39,7 @@ Format 1
 \bind "C-n"			"buffer-new"
 \bind "C-S-N"			"buffer-new-template"
 \bind "C-o"			"file-open"
-\bind "C-w"			"buffer-close"
+\bind "C-w"			"view-close"
 \bind "C-s"			"buffer-write"
 \bind "C-S-S"			"buffer-write-as"
 \bind "C-p"			"dialog-show print"
@@ -222,7 +222,7 @@ Format 1
 
 \bind "C-Delete"		"word-delete-forward"
 \bind "C-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph inverse"
+\bind "M-Return"		"paragraph-break inverse"
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"
 \bind "C-k"			"line-delete-forward"
