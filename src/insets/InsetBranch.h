@@ -88,9 +88,9 @@ private:
 	void setParams(InsetBranchParams const & params) { params_ = params; }
 
 	/** \returns true if params_.branch is listed as 'selected' in
-	    \c buffer. This handles the case of child documents.
+		\c buffer. \p child only checks within child documents.
 	 */
-	bool isBranchSelected() const;
+	bool isBranchSelected(bool const child = false) const;
 	/*!
 	 * Is the content of this inset part of the output document?
 	 *

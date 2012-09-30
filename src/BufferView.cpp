@@ -1188,8 +1188,13 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	// handle their dispatch here, for reasons explained there, so we'll
 	// handle this here, too, for consistency.
 	case LFUN_BRANCH_ACTIVATE:
-	case LFUN_BRANCH_DEACTIVATE: {
-		BranchList const & branchList = buffer().params().branchlist();
+	case LFUN_BRANCH_DEACTIVATE:
+	case LFUN_BRANCH_MASTER_ACTIVATE:
+	case LFUN_BRANCH_MASTER_DEACTIVATE: {
+		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
+							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+		BranchList const & branchList = master ? buffer().masterBuffer()->params().branchlist()
+											   : buffer().params().branchlist();
 		docstring const branchName = cmd.argument();
 		flag.setEnabled(!branchName.empty() && branchList.find(branchName));
 		break;
@@ -1969,15 +1974,21 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	// So, if this does get fixed, this code can be moved back to Buffer.cpp,
 	// and the corresponding code in getStatus() should be moved back, too.
 	case LFUN_BRANCH_ACTIVATE:
-	case LFUN_BRANCH_DEACTIVATE: {
-		BranchList & branch_list = buffer().params().branchlist();
+	case LFUN_BRANCH_DEACTIVATE:
+	case LFUN_BRANCH_MASTER_ACTIVATE:
+	case LFUN_BRANCH_MASTER_DEACTIVATE: {
+		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
+							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+		Buffer * buf = master ? const_cast<Buffer *>(buffer().masterBuffer())
+							  : &buffer();
+
 		docstring const branch_name = cmd.argument();
 		// the case without a branch name is handled elsewhere
 		if (branch_name.empty()) {
 			dispatched = false;
 			break;
 		}
-		Branch * branch = branch_list.find(branch_name);
+		Branch * branch = buf->params().branchlist().find(branch_name);
 		if (!branch) {
 			LYXERR0("Branch " << branch_name << " does not exist.");
 			dr.setError(true);
@@ -1986,7 +1997,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(msg);
 			break;
 		}
-		bool activate = cmd.action() == LFUN_BRANCH_ACTIVATE;
+		bool activate = (cmd.action() == LFUN_BRANCH_ACTIVATE
+						 || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
 		if (branch->isSelected() != activate) {
 			branch->setSelected(activate);
 			cur.recordUndoFullDocument();

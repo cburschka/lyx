@@ -3525,6 +3525,27 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", AtPoint, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_MASTER_ACTIVATE
+ * \li Action: Activate the branch in the master buffer.
+ * \li Syntax: branch-master-activate <BRANCH>
+ * \li Params: <BRANCH>: The branch to activate
+ * \li Sample: lyx -x "branch-activate answers" -e pdf2 finalexam.lyx \n
+               could be used to export a pdf with the answers branch included
+               without one's having to open LyX and activate the branch manually.
+ * \li Origin: spitz, 30 Sep 2012
+ * \endvar
+ */
+        { LFUN_BRANCH_MASTER_ACTIVATE, "branch-master-activate", AtPoint, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_MASTER_DEACTIVATE
+ * \li Action: De-activate the branch in the master buffer.
+ * \li Syntax: branch-master-deactivate <BRANCH>
+ * \li Params: <BRANCH>: The branch to deactivate
+ * \li Origin: spitz, 30 Sep 2012
+ * \endvar
+ */
+        { LFUN_BRANCH_MASTER_DEACTIVATE, "branch-master-deactivate", AtPoint, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCHES_RENAME

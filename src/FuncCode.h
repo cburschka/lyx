@@ -450,6 +450,8 @@ enum FuncCode
 	LFUN_SCRIPT_INSERT,             // gb, 20101123
 	LFUN_BUFFER_EXPORT_AS,          // tommaso 20111006
 	// 350
+	LFUN_BRANCH_MASTER_ACTIVATE,    // spitz 20120930
+	LFUN_BRANCH_MASTER_DEACTIVATE,  // spitz 20120930
 	LFUN_LASTACTION                 // end of the table
 };
 

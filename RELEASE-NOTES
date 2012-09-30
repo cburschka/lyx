@@ -53,6 +53,12 @@ To set the default language and paper size for new documents, use the
 
 The following new LyX functions have been introduced:
 
+- LFUN_BRANCH_MASTER_ACTIVATE <branch>:
+  LFUN_BRANCH_MASTER_DEACTIVATE <branch>:
+  Activates or deactivates a branch in a master document from within
+  a child (as opposed to the existing LFUN_BRANCH_[DE]ACTIVATE, which
+  toggle the branch in the document itself).
+
 - LFUN_BUFFER_EXPORT_AS <format> <filename>
   Equivalent to the new -export-to command-line switch (see above).
 

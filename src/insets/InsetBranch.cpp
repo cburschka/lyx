@@ -64,8 +64,14 @@ void InsetBranch::read(Lexer & lex)
 
 docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 {
-	docstring const status = isBranchSelected() ? 
+	docstring const masterstatus = isBranchSelected() ?
 		_("active") : _("non-active");
+	docstring const childstatus = isBranchSelected(true) ?
+		_("active") : _("non-active");
+	docstring const status = (masterstatus == childstatus) ?
+		masterstatus :
+		support::bformat(_("master: %1$s, child: %2$s"),
+						 masterstatus, childstatus);
 	docstring const heading = 
 		support::bformat(_("Branch (%1$s): %2$s"), status, params_.branch);
 	if (isOpen(bv))
@@ -79,10 +85,13 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 	docstring s = _("Branch: ") + params_.branch;
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
-	if (!branchlist.find(params_.branch)
-	    && buffer().params().branchlist().find(params_.branch))
+	bool const inmaster = branchlist.find(params_.branch);
+	bool const inchild = buffer().params().branchlist().find(params_.branch);
+	if (!inmaster && inchild)
 		s = _("Branch (child only): ") + params_.branch;
-	else if (!branchlist.find(params_.branch))
+	else if (inmaster && !inchild)
+		s = _("Branch (master only): ") + params_.branch;
+	else if (!inmaster)
 		s = _("Branch (undefined): ") + params_.branch;
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
@@ -90,7 +99,12 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 		if (c == Color_none)
 			s = _("Undef: ") + s;
 	}
-	s = char_type(isBranchSelected() ? 0x2714 : 0x2716) + s;
+	bool const master_selected = isBranchSelected();
+	bool const child_selected = isBranchSelected(true);
+	docstring symb = docstring(1, char_type(master_selected ? 0x2714 : 0x2716));
+	if (inchild && master_selected != child_selected)
+		symb += char_type(child_selected ? 0x2714 : 0x2716);
+	s = symb + s;
 	if (decoration() == InsetLayout::CLASSIC)
 		return isOpen(bv) ? s : getNewLabel(s);
 	else
@@ -125,26 +139,26 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_BRANCH_ACTIVATE:
-	case LFUN_BRANCH_DEACTIVATE: {
-		Buffer * buf = const_cast<Buffer *>(buffer().masterBuffer());
-		// is the branch in our master buffer?
-		bool branch_in_master = (buf != &buffer());
+	case LFUN_BRANCH_DEACTIVATE:
+	case LFUN_BRANCH_MASTER_ACTIVATE:
+	case LFUN_BRANCH_MASTER_DEACTIVATE: {
+		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
+							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+		Buffer * buf = master ? const_cast<Buffer *>(buffer().masterBuffer())
+							  : &buffer();
 
 		Branch * our_branch = buf->params().branchlist().find(params_.branch);
-		if (branch_in_master && !our_branch) {
-			// child only?
-			our_branch = buffer().params().branchlist().find(params_.branch);
-			if (!our_branch)
-				break;
-			branch_in_master = false;
-		}
-		bool const activate = (cmd.action() == LFUN_BRANCH_ACTIVATE);
+		if (!our_branch)
+			break;
+
+		bool const activate = (cmd.action() == LFUN_BRANCH_ACTIVATE
+							   || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
 		if (our_branch->isSelected() != activate) {
 			// FIXME If the branch is in the master document, we cannot
-			// call recordUndo..., becuase the master may be hidden, and
+			// call recordUndo..., because the master may be hidden, and
 			// the code presently assumes that hidden documents can never
 			// be dirty. See GuiView::closeBufferAll(), for example.
-			if (!branch_in_master)
+			if (!master)
 				buffer().undo().recordUndoFullDocument(cur);
 			our_branch->setSelected(activate);
 			cur.forceBufferUpdate();
@@ -174,11 +188,19 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_BRANCH_ACTIVATE:
-		flag.setEnabled(!isBranchSelected());
+		flag.setEnabled(!isBranchSelected(true));
 		break;
 
 	case LFUN_BRANCH_DEACTIVATE:
-		flag.setEnabled(isBranchSelected());
+		flag.setEnabled(isBranchSelected(true));
+		break;
+
+	case LFUN_BRANCH_MASTER_ACTIVATE:
+		flag.setEnabled(buffer().parent() && !isBranchSelected());
+		break;
+
+	case LFUN_BRANCH_MASTER_DEACTIVATE:
+		flag.setEnabled(buffer().parent() && isBranchSelected());
 		break;
 
 	case LFUN_INSET_TOGGLE:
@@ -195,9 +217,9 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-bool InsetBranch::isBranchSelected() const
+bool InsetBranch::isBranchSelected(bool const child) const
 {
-	Buffer const & realbuffer = *buffer().masterBuffer();
+	Buffer const & realbuffer = child ? buffer() : *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	Branch const * ourBranch = branchlist.find(params_.branch);
 
