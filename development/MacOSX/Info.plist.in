@@ -37,5 +37,9 @@
 	<string>@VERSION@</string>
 	<key>CFBundleSignature</key>
 	<string>OLYX</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 </dict>
 </plist>
