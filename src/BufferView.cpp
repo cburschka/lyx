@@ -1192,9 +1192,9 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BRANCH_MASTER_ACTIVATE:
 	case LFUN_BRANCH_MASTER_DEACTIVATE: {
 		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
-							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+				    || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
 		BranchList const & branchList = master ? buffer().masterBuffer()->params().branchlist()
-											   : buffer().params().branchlist();
+						       : buffer().params().branchlist();
 		docstring const branchName = cmd.argument();
 		flag.setEnabled(!branchName.empty() && branchList.find(branchName));
 		break;
@@ -1978,9 +1978,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_BRANCH_MASTER_ACTIVATE:
 	case LFUN_BRANCH_MASTER_DEACTIVATE: {
 		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
-							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+				     || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
 		Buffer * buf = master ? const_cast<Buffer *>(buffer().masterBuffer())
-							  : &buffer();
+				      : &buffer();
 
 		docstring const branch_name = cmd.argument();
 		// the case without a branch name is handled elsewhere
@@ -1998,7 +1998,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		bool activate = (cmd.action() == LFUN_BRANCH_ACTIVATE
-						 || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
+				 || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
 		if (branch->isSelected() != activate) {
 			branch->setSelected(activate);
 			cur.recordUndoFullDocument();
