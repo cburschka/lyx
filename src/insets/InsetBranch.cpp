@@ -143,16 +143,16 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BRANCH_MASTER_ACTIVATE:
 	case LFUN_BRANCH_MASTER_DEACTIVATE: {
 		bool const master = (cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE
-							 || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
+				     || cmd.action() == LFUN_BRANCH_MASTER_DEACTIVATE);
 		Buffer * buf = master ? const_cast<Buffer *>(buffer().masterBuffer())
-							  : &buffer();
+				      : &buffer();
 
 		Branch * our_branch = buf->params().branchlist().find(params_.branch);
 		if (!our_branch)
 			break;
 
 		bool const activate = (cmd.action() == LFUN_BRANCH_ACTIVATE
-							   || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
+				       || cmd.action() == LFUN_BRANCH_MASTER_ACTIVATE);
 		if (our_branch->isSelected() != activate) {
 			// FIXME If the branch is in the master document, we cannot
 			// call recordUndo..., because the master may be hidden, and
