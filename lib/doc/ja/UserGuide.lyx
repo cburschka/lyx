@@ -40049,7 +40049,12 @@ type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
-を使用すると、現在のカーソル位置からスペルチェックが始まります。
+
+\lang english
+starts the spell checking beginning from either the current cursor position
+ or the beginning of the currently selected text.
+\lang japanese
+。
 \lang english
 A sidebar will appear showing any incorrect (or unknown) word found, allowing
  you to edit and replace it in a second line.

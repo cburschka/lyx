@@ -32730,7 +32730,8 @@ arg   "dialog-show spellchecker"
 \end_inset
 
  starten.
- Die Prüfung beginnt an der Cursorposition.
+ Die Prüfung beginnt entweder an der aktuellen Cursorposition oder dem Beginn
+ des momentan markierten Textabschnitts.
  Eine Seitenleiste erscheint und zeigt jedes falsche (oder unbekannte) gefundene
  Wort an und erlaubt es diese zu korrigieren.
  Wenn ein unbekanntes Wort gefunden wird, wird das Wort markiert und der
