@@ -294,7 +294,12 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			// Merge multiple paragraphs -- hack
 			while (cur.lastpit() > 0)
 				mergeParagraph(bparams, cur.text()->paragraphs(), 0);
+			Cursor old = cur;
 			cur.leaveInset(*inset);
+			if (cmd.action() == LFUN_PREVIEW_INSERT
+			    || cmd.action() == LFUN_IPA_INSERT)
+				// trigger preview
+				notifyCursorLeavesOrEnters(old, cur);
 		}
 	} else {
 		cur.leaveInset(*inset);
