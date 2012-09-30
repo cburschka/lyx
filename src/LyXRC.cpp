@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 9; // spitz: remove \\default_language
+static unsigned int const LYXRC_FILEFORMAT = 10; // tommaso: new prefs option: close_buffer_with_last_view
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {

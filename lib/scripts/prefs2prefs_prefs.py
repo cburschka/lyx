@@ -46,6 +46,10 @@
 # Incremented to format 9, a18af620 by spitz
 #  Remove default_language rc.
 
+# Incremented to format 10, 4985015 by tommaso
+#  Add close_buffer_with_last_view in preferences.
+#  No conversion necessary.
+
 import re
 
 ###########################################################
@@ -257,5 +261,6 @@ conversions = [
 	[ 6, []],
 	[ 7, [add_mime_types]],
 	[ 8, []],
-	[ 9, [ remove_default_language ]]
+	[ 9, [ remove_default_language ]],
+	[ 10, []]
 ]
