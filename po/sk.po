@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-29 11:05+0200\n"
-"PO-Revision-Date: 2012-09-29 12:41+0200\n"
+"POT-Creation-Date: 2012-09-30 15:04+0200\n"
+"PO-Revision-Date: 2012-09-30 15:14+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3948,6 +3948,14 @@ msgstr "Súbor s &užívateľským rozhraním:"
 msgid "&Icon Set:"
 msgstr "Sada &ikon:"
 
+#: src/frontends/qt4/ui/PrefUi.ui:69
+msgid ""
+"The icon set to use. Warning: normal size of icons may be\n"
+"wrong until you save the preferences and restart LyX."
+msgstr ""
+"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
+"nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
+
 #: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
 msgstr "Automatická nápoveda"
@@ -4014,6 +4022,15 @@ msgstr "&Maximum posledných súborov:"
 #: src/frontends/qt4/ui/PrefUi.ui:255
 msgid "&Open documents in tabs"
 msgstr "&Otvoriť dokumenty v paneloch"
+
+#: src/frontends/qt4/ui/PrefUi.ui:263
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+"Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
+"(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
+"vlastnosť)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:265
 msgid "S&ingle instance"
@@ -12846,13 +12863,21 @@ msgstr "Info Dokumentu"
 msgid "Copy Text|o"
 msgstr "Kopíruj Text"
 
-#: lib/ui/stdcontext.inc:441 lib/ui/stdcontext.inc:461
+#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:464
 msgid "Activate Branch|A"
-msgstr "Aktivuj Vetvu|A"
+msgstr "Aktivuj vetvu|A"
 
-#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:462
+#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:465
 msgid "Deactivate Branch|e"
-msgstr "Dezaktivuj Vetvu|e"
+msgstr "Dezaktivuj vetvu|e"
+
+#: lib/ui/stdcontext.inc:444
+msgid "Activate Branch in Master|M"
+msgstr "Aktivuj vetvu v hlavnom dokumente|H"
+
+#: lib/ui/stdcontext.inc:445
+msgid "Deactivate Branch in Master|v"
+msgstr "Dezaktivuj vetvu v hlavnom dokumente|v"
 
 #: lib/ui/stdcontext.inc:451
 msgid "Insert Reference at Cursor Position|I"
@@ -24355,6 +24380,11 @@ msgstr "aktívna"
 msgid "non-active"
 msgstr "ne-aktívna"
 
+#: src/insets/InsetBranch.cpp:73
+#, c-format
+msgid "master: %1$s, child: %2$s"
+msgstr "hlavný dokument:%1$s, potomok: %2$s"
+
 #: src/insets/InsetBranch.cpp:70
 #, c-format
 msgid "Branch (%1$s): %2$s"
@@ -24367,6 +24397,10 @@ msgstr "Vetva: "
 #: src/insets/InsetBranch.cpp:84
 msgid "Branch (child only): "
 msgstr "Vetva (len potomok): "
+
+#: src/insets/InsetBranch.cpp:93
+msgid "Branch (master only): "
+msgstr "Vetva (len hlavný dokument): "
 
 #: src/insets/InsetBranch.cpp:86
 msgid "Branch (undefined): "
@@ -25623,21 +25657,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid ""
-#~ "The icon set to use. Warning: normal size of icons may be\n"
-#~ "wrong until you save the preferences and restart LyX."
-#~ msgstr ""
-#~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
-#~ "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
-
-#~ msgid ""
-#~ "Whether to open documents in an already running instance of LyX.\n"
-#~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-#~ msgstr ""
-#~ "Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
-#~ "(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
-#~ "vlastnosť)"
 
 #~ msgid "Utopia"
 #~ msgstr "Utopia"
