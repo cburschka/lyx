@@ -3501,7 +3501,7 @@ void LyXAction::init()
  * \li Origin: spitz, 7 Jul 2009
  * \endvar
  */
-		{ LFUN_BRANCH_ADD, "branch-add", Noop, Buffer },
+		{ LFUN_BRANCH_ADD, "branch-add", AtPoint, Buffer },
 
 
 /*!
@@ -3536,7 +3536,7 @@ void LyXAction::init()
  * \li Origin: spitz, 30 Sep 2012
  * \endvar
  */
-        { LFUN_BRANCH_MASTER_ACTIVATE, "branch-master-activate", AtPoint, Buffer },
+		{ LFUN_BRANCH_MASTER_ACTIVATE, "branch-master-activate", AtPoint, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_MASTER_DEACTIVATE
  * \li Action: De-activate the branch in the master buffer.
@@ -3545,7 +3545,7 @@ void LyXAction::init()
  * \li Origin: spitz, 30 Sep 2012
  * \endvar
  */
-        { LFUN_BRANCH_MASTER_DEACTIVATE, "branch-master-deactivate", AtPoint, Buffer },
+		{ LFUN_BRANCH_MASTER_DEACTIVATE, "branch-master-deactivate", AtPoint, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCHES_RENAME

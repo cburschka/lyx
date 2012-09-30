@@ -23,6 +23,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
@@ -165,6 +166,9 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 	}
+	case LFUN_BRANCH_ADD:
+		lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, params_.branch));
+		break;
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign")
 			setStatus(cur, isBranchSelected() ? Open : Collapsed);
@@ -182,13 +186,20 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
+	bool const known_branch =
+		buffer().params().branchlist().find(params_.branch);
+
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		break;
 
 	case LFUN_BRANCH_ACTIVATE:
-		flag.setEnabled(!isBranchSelected(true));
+		flag.setEnabled(known_branch && !isBranchSelected(true));
+		break;
+
+	case LFUN_BRANCH_ADD:
+		flag.setEnabled(!known_branch);
 		break;
 
 	case LFUN_BRANCH_DEACTIVATE:
@@ -196,7 +207,9 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_BRANCH_MASTER_ACTIVATE:
-		flag.setEnabled(buffer().parent() && !isBranchSelected());
+		flag.setEnabled(buffer().parent()
+				&& buffer().masterBuffer()->params().branchlist().find(params_.branch)
+				&& !isBranchSelected());
 		break;
 
 	case LFUN_BRANCH_MASTER_DEACTIVATE:
