@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 442
 \begin_document
 \begin_header
 \textclass literate-article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -1679,7 +1685,11 @@ if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
 \end_layout
 
 \begin_layout Scrap
-notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
+if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
+\end_layout
+
+\begin_layout Scrap
+notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors.c
 \end_layout
 
 \begin_layout Scrap
@@ -1710,7 +1720,7 @@ build-script
 \begin_inset Newline newline
 \end_inset
 
-notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$r sh
 \end_layout
 
 \begin_layout LyX-Code

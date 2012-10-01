@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 442
 \begin_document
 \begin_header
 \textclass literate-article
@@ -26,13 +26,13 @@
 \font_roman times
 \font_sans helvet
 \font_typewriter courier
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -43,15 +43,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -306,14 +312,17 @@ listerrors
 \end_layout
 
 \begin_layout Scrap
+
 <<listerrors>>=
 \end_layout
 
 \begin_layout Scrap
+
 #!/usr/bin/python -tt
 \end_layout
 
 \begin_layout Scrap
+
 """reformat noweb and compiler errors for LyX.
 \end_layout
 
@@ -322,10 +331,12 @@ listerrors
 \end_layout
 
 \begin_layout Scrap
+
 Expects to read from stdin and output to stdout.
 \end_layout
 
 \begin_layout Scrap
+
 """
 \end_layout
 
@@ -334,36 +345,44 @@ Expects to read from stdin and output to stdout.
 \end_layout
 
 \begin_layout Scrap
+
 __author__ = "Kayvan A.
  Sylvan <kayvan@sylvan.com>"
 \end_layout
 
 \begin_layout Scrap
+
 __date__ = "$Date: 2005/07/18 09:42:26 $"
 \end_layout
 
 \begin_layout Scrap
+
 __version__ = "$Revision: 1.5 $"
 \end_layout
 
 \begin_layout Scrap
+
 __credits__ = """Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
 \end_layout
 
 \begin_layout Scrap
+
     original Literate support for LyX.
 \end_layout
 
 \begin_layout Scrap
+
 Bernard Michael Hurley <berhardh@westherts.ac.uk>
 \end_layout
 
 \begin_layout Scrap
+
     modifications to original listerrors."""
 \end_layout
 
 \begin_layout Scrap
+
 __copyright__ = "Copyright 2002 - Kayvan Sylvan."
 \end_layout
 
@@ -372,6 +391,7 @@ __copyright__ = "Copyright 2002 - Kayvan Sylvan."
 \end_layout
 
 \begin_layout Scrap
+
 import sys, string
 \end_layout
 
@@ -380,6 +400,7 @@ import sys, string
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>
 \end_layout
 
@@ -388,14 +409,17 @@ import sys, string
 \end_layout
 
 \begin_layout Scrap
+
 if __name__ == "__main__":
 \end_layout
 
 \begin_layout Scrap
+
   main()
 \end_layout
 
 \begin_layout Scrap
+
 @
 \end_layout
 
@@ -408,14 +432,17 @@ The following function mimics the TeX error message format.
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def write_error(msg, tool = "noweb", line_number = 1):
 \end_layout
 
 \begin_layout Scrap
+
   """Write out the given message in TeX error style.
 \end_layout
 
@@ -428,6 +455,7 @@ def write_error(msg, tool = "noweb", line_number = 1):
 \end_layout
 
 \begin_layout Scrap
+
   called like: write_error(msg, tool, line_number)."""
 \begin_inset Newline newline
 \end_inset
@@ -506,10 +534,12 @@ pushline
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 __lines = [] # lines pushed back
 \end_layout
 
@@ -518,10 +548,12 @@ __lines = [] # lines pushed back
 \end_layout
 
 \begin_layout Scrap
+
 def getline(file = sys.stdin):
 \end_layout
 
 \begin_layout Scrap
+
   """read a line from internal stack or from file.
 \end_layout
 
@@ -530,34 +562,42 @@ def getline(file = sys.stdin):
 \end_layout
 
 \begin_layout Scrap
+
   optional file argument defaults to sys.stdin."""
 \end_layout
 
 \begin_layout Scrap
+
   global __lines
 \end_layout
 
 \begin_layout Scrap
+
   lines = __lines
 \end_layout
 
 \begin_layout Scrap
+
   if lines:
 \end_layout
 
 \begin_layout Scrap
+
     line = lines.pop()
 \end_layout
 
 \begin_layout Scrap
+
   else:
 \end_layout
 
 \begin_layout Scrap
+
     line = file.readline()
 \end_layout
 
 \begin_layout Scrap
+
   return line
 \end_layout
 
@@ -566,6 +606,7 @@ def getline(file = sys.stdin):
 \end_layout
 
 \begin_layout Scrap
+
 @ %def getline
 \end_layout
 
@@ -574,14 +615,17 @@ And now for the corresponding pushline function:
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def pushline(line):
 \end_layout
 
 \begin_layout Scrap
+
   "push a line onto the pushback stack."
 \end_layout
 
@@ -590,6 +634,7 @@ def pushline(line):
 \end_layout
 
 \begin_layout Scrap
+
   global __lines
 \begin_inset Newline newline
 \end_inset
@@ -627,14 +672,17 @@ listerrors
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def main():
 \end_layout
 
 \begin_layout Scrap
+
   """Entry point for listerrors.
  Takes no options.
 \end_layout
@@ -644,6 +692,7 @@ def main():
 \end_layout
 
 \begin_layout Scrap
+
   Reads stdin and writes to stdout.
  Filter errors"""
 \end_layout
@@ -653,22 +702,27 @@ def main():
 \end_layout
 
 \begin_layout Scrap
+
   while 1:
 \end_layout
 
 \begin_layout Scrap
+
     line = getline()
 \end_layout
 
 \begin_layout Scrap
+
     if line == "": break
 \end_layout
 
 \begin_layout Scrap
+
     <<Check line against patterns and take action>>
 \end_layout
 
 \begin_layout Scrap
+
 @ %def main
 \end_layout
 
@@ -678,6 +732,7 @@ For each line read in, we need to find out if it matches any of our tools
 \end_layout
 
 \begin_layout Scrap
+
 <<Check line against patterns and take action>>=
 \end_layout
 
@@ -686,6 +741,7 @@ For each line read in, we need to find out if it matches any of our tools
 \end_layout
 
 \begin_layout Scrap
+
 try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
 \begin_inset Newline newline
 \end_inset
@@ -721,14 +777,17 @@ Noweb errors are output on a single line, so examining just the current
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def noweb_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   """see if line is a noweb error.
 \end_layout
 
@@ -737,27 +796,33 @@ def noweb_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
 \begin_layout Scrap
+
   retval = 0
 \end_layout
 
 \begin_layout Scrap
+
   <<Look for the unescaped angle-brackets in documentation>>
 \end_layout
 
 \begin_layout Scrap
+
   <<Look for anything with double angle brackets>>
 \end_layout
 
 \begin_layout Scrap
+
   <<Last ditch effort scan for specific strings>>
 \end_layout
 
 \begin_layout Scrap
+
   return retval
 \end_layout
 
@@ -766,6 +831,7 @@ def noweb_try(line):
 \end_layout
 
 \begin_layout Scrap
+
 @ %def noweb_try
 \end_layout
 
@@ -787,46 +853,57 @@ unescaped < < in documentation chunk
 \end_layout
 
 \begin_layout Scrap
+
 <<Look for the unescaped angle-brackets in documentation>>=
 \end_layout
 
 \begin_layout Scrap
+
 if string.find(line, ": unescaped << in documentation chunk") != -1:
 \end_layout
 
 \begin_layout Scrap
+
   line_parts = string.split(line, ':')
 \end_layout
 
 \begin_layout Scrap
+
   num_str = line_parts[1]
 \end_layout
 
 \begin_layout Scrap
+
   num_len = len(num_str)
 \end_layout
 
 \begin_layout Scrap
+
   i = 0
 \end_layout
 
 \begin_layout Scrap
+
   while i < num_len and (num_str[i] in string.digits): i = i + 1
 \end_layout
 
 \begin_layout Scrap
+
   if i == num_len:
 \end_layout
 
 \begin_layout Scrap
+
     write_error(":" + line_parts[2], "noweb", int(num_str))
 \end_layout
 
 \begin_layout Scrap
+
     retval = 1
 \end_layout
 
 \begin_layout Scrap
+
 @
 \end_layout
 
@@ -836,6 +913,7 @@ Some noweb messages are simply about undefined scraps.
 \end_layout
 
 \begin_layout Scrap
+
 <<Look for anything with double angle brackets>>=
 \end_layout
 
@@ -844,6 +922,7 @@ Some noweb messages are simply about undefined scraps.
 \end_layout
 
 \begin_layout Scrap
+
 if (not retval):
 \begin_inset Newline newline
 \end_inset
@@ -878,82 +957,102 @@ Finally, here is an additional list of explicit strings to check for.
 \end_layout
 
 \begin_layout Scrap
+
 <<Last ditch effort scan for specific strings>>=
 \end_layout
 
 \begin_layout Scrap
+
 if (not retval):
 \end_layout
 
 \begin_layout Scrap
+
   msgs_to_try = ("couldn't open file",
 \end_layout
 
 \begin_layout Scrap
+
     "couldn't open temporary file",
 \end_layout
 
 \begin_layout Scrap
+
     "error writing temporary file",
 \end_layout
 
 \begin_layout Scrap
+
     "ill-formed option",
 \end_layout
 
 \begin_layout Scrap
+
     "unknown option",
 \end_layout
 
 \begin_layout Scrap
+
     "Bad format sequence",
 \end_layout
 
 \begin_layout Scrap
+
     "Can't open output file",
 \end_layout
 
 \begin_layout Scrap
+
     "Can't open temporary file",
 \end_layout
 
 \begin_layout Scrap
+
     "Capacity exceeded:",
 \end_layout
 
 \begin_layout Scrap
+
     "Ignoring unknown option -",
 \end_layout
 
 \begin_layout Scrap
+
     "This can't happen:",
 \end_layout
 
 \begin_layout Scrap
+
     "non-numeric line number in")
 \end_layout
 
 \begin_layout Scrap
+
   for msg in msgs_to_try:
 \end_layout
 
 \begin_layout Scrap
+
     if string.find(line, msg) != -1:
 \end_layout
 
 \begin_layout Scrap
+
       write_error(line, "noweb")
 \end_layout
 
 \begin_layout Scrap
+
       retval = 1
 \end_layout
 
 \begin_layout Scrap
+
       break
 \end_layout
 
 \begin_layout Scrap
+
 @
 \end_layout
 
@@ -970,10 +1069,12 @@ foo.c: In function `main':
 \end_layout
 
 \begin_layout Scrap
+
 foo.c:3: `bar' undeclared (first use in this function) 
 \end_layout
 
 \begin_layout Scrap
+
 foo.c:3: (Each undeclared identifier is reported only once 
 \end_layout
 
@@ -982,6 +1083,7 @@ foo.c:3: (Each undeclared identifier is reported only once
 \end_layout
 
 \begin_layout Scrap
+
 foo.c:3: for each function it appears in.) 
 \begin_inset Newline newline
 \end_inset
@@ -995,14 +1097,17 @@ In order to parse this, the gcc error handler has to look ahead and return
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def gcc_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   """See if line is a gcc error.
  Read ahead to handle all the lines.
 \end_layout
@@ -1012,19 +1117,23 @@ def gcc_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
 \begin_layout Scrap
+
   retval = 0
 \end_layout
 
 \begin_layout Scrap
+
   <<Handle the gcc error message>>
 \end_layout
 
 \begin_layout Scrap
+
   return retval
 \end_layout
 
@@ -1033,6 +1142,7 @@ def gcc_try(line):
 \end_layout
 
 \begin_layout Scrap
+
 @ %def gcc_try
 \end_layout
 
@@ -1042,6 +1152,7 @@ The error message starts with a gcc header (as above) without an associated
 \end_layout
 
 \begin_layout Scrap
+
 <<Handle the gcc error message>>= 
 \begin_inset Newline newline
 \end_inset
@@ -1111,54 +1222,67 @@ At the point in the code that we know that we are in the middle of an error
 \end_layout
 
 \begin_layout Scrap
+
 <<Accumulate gcc error lines and print it>>=
 \end_layout
 
 \begin_layout Scrap
+
 num_str = next_line[first_space:num_end]
 \end_layout
 
 \begin_layout Scrap
+
 msgs = [line[first_space:]]
 \end_layout
 
 \begin_layout Scrap
+
 msgs.append(next_line[num_end + 1:])
 \end_layout
 
 \begin_layout Scrap
+
 header_to_see = next_line[:num_end]
 \end_layout
 
 \begin_layout Scrap
+
 next_line = getline()
 \end_layout
 
 \begin_layout Scrap
+
 while next_line and next_line[:num_end] == header_to_see:
 \end_layout
 
 \begin_layout Scrap
+
   msgs.append(next_line[num_end + 1:])
 \end_layout
 
 \begin_layout Scrap
+
   next_line = getline()
 \end_layout
 
 \begin_layout Scrap
+
 if next_line: pushline(next_line)
 \end_layout
 
 \begin_layout Scrap
+
 write_error(msgs, "gcc", int(num_str))
 \end_layout
 
 \begin_layout Scrap
+
 retval = 1
 \end_layout
 
 \begin_layout Scrap
+
 @
 \end_layout
 
@@ -1201,14 +1325,17 @@ re
 \end_layout
 
 \begin_layout Scrap
+
 <<Function Bodies>>=
 \end_layout
 
 \begin_layout Scrap
+
 def xlc_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   """see if line is an xlc error.
 \end_layout
 
@@ -1217,64 +1344,79 @@ def xlc_try(line):
 \end_layout
 
 \begin_layout Scrap
+
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
 \begin_layout Scrap
+
   retval = 0
 \end_layout
 
 \begin_layout Scrap
+
   if line[0] == '"': # This is the first character of all xlc errors
 \end_layout
 
 \begin_layout Scrap
+
     next_quote = string.find(line, '"', 1)
 \end_layout
 
 \begin_layout Scrap
+
     first_space = string.find(line, ' ')
 \end_layout
 
 \begin_layout Scrap
+
     if (next_quote != -1) and (first_space > next_quote): # no space inisde
  quotes
 \end_layout
 
 \begin_layout Scrap
+
       if line[first_space - 1:first_space + 6] == ", line ":
 \end_layout
 
 \begin_layout Scrap
+
         num_start = num_end = first_space + 6
 \end_layout
 
 \begin_layout Scrap
+
         while line[num_end] in string.digits: num_end = num_end + 1
 \end_layout
 
 \begin_layout Scrap
+
         if num_end > num_start:
 \end_layout
 
 \begin_layout Scrap
+
           write_error(line, "xlc", int(line[num_start : num_end]))
 \end_layout
 
 \begin_layout Scrap
+
           retval = 1
 \end_layout
 
 \begin_layout Scrap
+
   return retval
 \end_layout
 
 \begin_layout Scrap
+
   
 \end_layout
 
 \begin_layout Scrap
+
 @ %def xlc_try
 \end_layout
 
@@ -1312,26 +1454,37 @@ This section defines our build-script, which extracts the code.
 \end_layout
 
 \begin_layout Scrap
+
 <<build-script>>=
 \end_layout
 
 \begin_layout Scrap
+
 #!/bin/sh
 \end_layout
 
 \begin_layout Scrap
+
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=listerrors.nw; fi
 \end_layout
 
 \begin_layout Scrap
-notangle -Rlisterrors ${NOWEB_SOURCE} > listerrors
+
+if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
 \end_layout
 
 \begin_layout Scrap
-chmod +x listerrors
+
+notangle -Rlisterrors ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors
 \end_layout
 
 \begin_layout Scrap
+
+chmod +x ${NOWEB_OUTPUT_DIR}/listerrors
+\end_layout
+
+\begin_layout Scrap
+
 @
 \end_layout
 

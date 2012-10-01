@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 431
+\lyxformat 442
 \begin_document
 \begin_header
 \textclass scrbook
@@ -68,13 +68,13 @@ End
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -139,6 +139,7 @@ End
 \html_be_strict true
 \author -195340706 "Georg Baum" 
 \author 5863208 "ab" 
+\author 1082167584 "Kayvan Sylvan" kayvan@sylvan.com
 \author 1414654397 "Richard Heck" 
 \end_header
 
@@ -1814,6 +1815,36 @@ $$o
 \end_inset
 
  The output file
+\change_inserted 1082167584 1348453985
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1082167584 1348453986
+$$b The base name (without filename extension) in the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1082167584 1348453986
+$$p The full directory path of the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1082167584 1348453986
+$$r The full pathname to the original LyX file being processed
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted 1082167584 1348453986
+$$f The filename (without any directory path) of the LyX file.
 \end_layout
 
 \begin_layout Labeling
@@ -1828,6 +1859,8 @@ $$l
 \end_inset
 
  The `LaTeX name'
+\change_inserted 1082167584 1348453720
+
 \end_layout
 
 \begin_layout Standard
