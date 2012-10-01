@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-30 15:04+0200\n"
-"PO-Revision-Date: 2012-09-30 15:14+0200\n"
+"POT-Creation-Date: 2012-10-01 13:38+0200\n"
+"PO-Revision-Date: 2012-10-01 13:45+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -12879,6 +12879,10 @@ msgstr "Aktivuj vetvu v hlavnom dokumente|H"
 msgid "Deactivate Branch in Master|v"
 msgstr "Dezaktivuj vetvu v hlavnom dokumente|v"
 
+#: lib/ui/stdcontext.inc:446
+msgid "Add Unknown Branch|w"
+msgstr "Pridaj Neznámu vetvu"
+
 #: lib/ui/stdcontext.inc:451
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Vlož Referenciu na Pozícii Kurzoru"
@@ -13722,10 +13726,6 @@ msgstr "Prehľad|e"
 #: lib/ui/stdmenus.inc:508
 msgid "Start Appendix Here|A"
 msgstr "Začni Prílohy Tu|P"
-
-#: lib/ui/stdmenus.inc:510
-msgid "Save in Bundled Format|F"
-msgstr "Uložiť v zbalenom formáte"
 
 #: lib/ui/stdmenus.inc:511
 msgid "Compressed|m"
@@ -24410,6 +24410,19 @@ msgstr "Vetva (ne-definovaná): "
 msgid "Undef: "
 msgstr "Undef: "
 
+#: src/insets/InsetBranch.cpp:169
+msgid "Branch state changes in master document"
+msgstr "Štatus vetvy v hlavnom dokumente sa zmenil"
+
+#: src/insets/InsetBranch.cpp:170
+#, c-format
+msgid ""
+"The state of the branch '%1$s' was changed in the master file. Please make "
+"sure to save the master."
+msgstr ""
+"Štatus vetvy '%1$s v hlavnom dokumente sa zmenil. Zaistite uloženie hlavného "
+"dokument."
+
 #: src/insets/InsetCaption.cpp:338
 #, c-format
 msgid "Sub-%1$s"
@@ -25657,6 +25670,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Save in Bundled Format|F"
+#~ msgstr "Uložiť v zbalenom formáte"
 
 #~ msgid "Utopia"
 #~ msgstr "Utopia"
