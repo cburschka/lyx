@@ -33,6 +33,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 
 #include <sstream>
@@ -159,10 +160,19 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// call recordUndo..., because the master may be hidden, and
 			// the code presently assumes that hidden documents can never
 			// be dirty. See GuiView::closeBufferAll(), for example.
+			// An option would be to check if the master is hidden.
+			// If it is, unhide.
 			if (!master)
 				buffer().undo().recordUndoFullDocument(cur);
+			else
+				// at least issue a warning for now (ugly, but better than dataloss).
+				frontend::Alert::warning(_("Branch state changes in master document"),
+				    lyx::support::bformat(_("The state of the branch '%1$s' "
+					"was changed in the master file. "
+					"Please make sure to save the master."), params_.branch), true);
 			our_branch->setSelected(activate);
-			cur.forceBufferUpdate();
+			// cur.forceBufferUpdate() is not enough
+			buf->updateBuffer();
 		}
 		break;
 	}
