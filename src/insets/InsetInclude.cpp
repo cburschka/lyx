@@ -624,6 +624,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.master_language = buffer().params().language;
 		runparams.par_begin = 0;
 		runparams.par_end = tmp->paragraphs().size();
+		runparams.is_child = true;
 		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
 				onlyPath().absFileName(), runparams, Buffer::OnlyBody)) {
 			docstring msg = bformat(_("Included file `%1$s' "
@@ -639,6 +640,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		}
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
+		runparams.is_child = false;
 
 		// If needed, use converters to produce a latex file from the child
 		if (tmpwritefile != writefile) {

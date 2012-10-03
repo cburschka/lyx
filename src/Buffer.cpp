@@ -211,6 +211,9 @@ public:
 	 */
 	bool file_fully_loaded;
 
+	/// Ignore the parent (e.g. when exporting a child standalone)?
+	bool ignore_parent;
+
 	///
 	mutable TocBackend toc_backend;
 
@@ -281,6 +284,10 @@ public:
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
 	Buffer const * parent() const {
+		// ignore_parent temporarily "orphans" a buffer
+		// (e.g. if a child is compiled standalone)
+		if (ignore_parent)
+			return 0;
 		// if parent_buffer is not loaded, then it has been unloaded,
 		// which means that parent_buffer is an invalid pointer. So we
 		// set it to null in that case.
@@ -360,9 +367,9 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	Buffer const * cloned_buffer)
 	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  internal_buffer(false), read_only(readonly_), filename(file),
-	  file_fully_loaded(false), toc_backend(owner), macro_lock(false),
-	  timestamp_(0), checksum_(0), wa_(0), gui_(0), undo_(*owner),
-	  bibinfo_cache_valid_(false), bibfile_cache_valid_(false),
+	  file_fully_loaded(false), ignore_parent(false), toc_backend(owner),
+	  macro_lock(false), timestamp_(0), checksum_(0), wa_(0), gui_(0),
+	  undo_(*owner), bibinfo_cache_valid_(false), bibfile_cache_valid_(false),
 	  cite_labels_valid_(false), preview_loader_(0),
 	  cloned_buffer_(cloned_buffer), clone_list_(0),
 	  doing_export(false), parent_buffer(0)
@@ -1461,11 +1468,18 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 void Buffer::writeLaTeXSource(otexstream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
-         OutputWhat output) const
+			   OutputWhat output) const
 {
 	// The child documents, if any, shall be already loaded at this point.
 
 	OutputParams runparams = runparams_in;
+
+	// If we are compiling a file standalone, even if this is the
+	// child of some other buffer, let's cut the link here, so the
+	// file is really independent and no concurring settings from
+	// the master (e.g. branch state) interfere (see #8100).
+	if (!runparams.is_child)
+		d->ignore_parent = true;
 
 	// Classify the unicode characters appearing in math insets
 	Encodings::initUnicodeMath(*this);
@@ -1598,21 +1612,12 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
-	// if we are doing a real file with body, even if this is the
-	// child of some other buffer, let's cut the link here.
-	// This happens for example if only a child document is printed.
-	Buffer const * save_parent = 0;
-	if (output_preamble) {
-		save_parent = d->parent();
-		d->setParent(0);
-	}
-
 	// the real stuff
 	latexParagraphs(*this, text(), os, runparams);
 
 	// Restore the parenthood if needed
-	if (output_preamble)
-		d->setParent(save_parent);
+	if (!runparams.is_child)
+		d->ignore_parent = false;
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -3337,6 +3342,12 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 		} else if (params().isDocBook()) {
 			docbookParagraphs(text(), *this, os, runparams);
 		} else {
+			// If we are previewing a paragraph, even if this is the
+			// child of some other buffer, let's cut the link here,
+			// so that no concurring settings from the master
+			// (e.g. branch state) interfere (see #8101).
+			// FIXME: Add an optional "from master" perspective.
+			d->ignore_parent = true;
 			// We need to validate the Buffer params' features here
 			// in order to know if we should output polyglossia
 			// macros (instead of babel macros)
@@ -3349,7 +3360,12 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			texrow.newline();
 			// latex or literate
 			otexstream ots(os, texrow);
+
+			// the real stuff
 			latexParagraphs(*this, text(), ots, runparams);
+
+			// Restore the parenthood
+			d->ignore_parent = false;
 		}
 	} else {
 		os << "% ";

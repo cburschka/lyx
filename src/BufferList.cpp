@@ -221,8 +221,10 @@ Buffer * BufferList::previous(Buffer const * buf) const
 
 
 void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
-					OutputParams const & runparams)
+					OutputParams const & runparams_in)
 {
+	OutputParams runparams = runparams_in;
+	runparams.is_child = true;
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
@@ -233,6 +235,7 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 			(*it)->markDepClean(masterTmpDir);
 		}
 	}
+	runparams.is_child = false;
 }
 
 
