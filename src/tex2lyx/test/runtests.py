@@ -9,18 +9,22 @@
 
 # Full author contact details are available in file CREDITS
 
-# This script reads a unicode symbol file and completes it in the given range
+# This script is a very basic test suite runner for tex2lyx
+# The defaults for optional command line arguments are tailored to the
+# standard use case of testing without special build settings like a version
+# suffix, since I don't know how to transport command line arguments through
+# the autotools "make check" mechanism.
 
 import os, string, sys
 
 
 def usage(prog_name):
-  return "Usage: %s [<tex2lyx binary> [<script dir>]]" % prog_name
+  return "Usage: %s [<tex2lyx binary> [<script dir>] [<output dir>]]" % prog_name
 
 
 def main(argv):
     # Parse and manipulate the command line arguments.
-    if len(argv) == 3:
+    if len(argv) >= 3:
 	sys.path.append(os.path.join(sys.argv[2]))
     else:
 	sys.path.append(os.path.join(os.path.dirname(sys.argv[0]), '../../../lib/scripts'))
@@ -29,12 +33,17 @@ def main(argv):
 
     if len(argv) < 2:
         tex2lyx = './tex2lyx'
-    elif len(argv) <= 3:
+    elif len(argv) <= 4:
         tex2lyx = argv[1]
     else:
         error(usage(argv[0]))
 
-    basedir = os.path.dirname(argv[0])
+    inputdir = os.path.dirname(argv[0])
+    if len(argv) >= 4:
+        outputdir = sys.argv[3]
+    else:
+        outputdir = inputdir
+#        outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
 
     files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
              'box-color-size-space-align.tex', 'CJK.tex', \
@@ -42,8 +51,12 @@ def main(argv):
 
     errors = []
     for f in files:
-        texfile = os.path.join(os.path.dirname(argv[0]), f)
-        cmd = '%s -roundtrip -f %s' % (tex2lyx, texfile)
+        texfile = os.path.join(inputdir, f)
+        if outputdir == inputdir:
+            cmd = '%s -roundtrip -f %s' % (tex2lyx, texfile)
+        else:
+            lyxfile = os.path.join(outputdir, f)
+            cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
         if os.system(cmd) != 0:
             errors.append(f)
 
