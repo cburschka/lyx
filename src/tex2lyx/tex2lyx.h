@@ -173,10 +173,14 @@ extern bool is_nonCJKJapanese;
 /// LyX format that is created by tex2lyx
 extern int const LYX_FORMAT;
 
-/// path of the master .tex file
-extern std::string getMasterFilePath();
-/// path of the currently processed .tex file
-extern std::string getParentFilePath();
+/// Absolute path of the master .lyx or .tex file
+extern std::string getMasterFilePath(bool input);
+/// Absolute path of the currently processed .lyx or .tex file
+extern std::string getParentFilePath(bool input);
+/// Is it allowed to overwrite existing files?
+extern bool overwriteFiles();
+/// Do we need to copy included files to the output directory?
+extern bool copyFiles();
 
 
 /*!

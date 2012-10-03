@@ -1834,15 +1834,88 @@ string const normalize_filename(string const & name)
 
 /// Convert \p name from TeX convention (relative to master file) to LyX
 /// convention (relative to .lyx file) if it is relative
-void fix_relative_filename(string & name)
+void fix_child_filename(string & name)
 {
-	if (FileName::isAbsolute(name))
-		return;
+	string const absMasterTeX = getMasterFilePath(true);
+	bool const isabs = FileName::isAbsolute(name);
+	// convert from "relative to .tex master" to absolute original path
+	if (!isabs)
+		name = makeAbsPath(name, absMasterTeX).absFileName();
+	bool copyfile = copyFiles();
+	// convert from absolute original path to "relative to master file"
+	string const rel = to_utf8(makeRelPath(from_utf8(name),
+	                                       from_utf8(absMasterTeX)));
+	// Do not copy if the file is not in or below the directory of the
+	// master, since in this case the new path might be impossible to
+	// create. Example:
+	// absMasterTeX = "/foo/bar/"
+	// absMasterLyX = "/bar/"
+	// name = "/baz.eps" => new absolute name would be "/../baz.eps"
+	if (copyfile && rel.substr(0, 3) == "../")
+		copyfile = false;
+	string const absParentLyX = getParentFilePath(false);
+	if (copyfile) {
+		// re-interpret "relative to .tex file" as "relative to .lyx file"
+		// (is different if the master .lyx file resides in a
+		// different path than the master .tex file)
+		string const absMasterLyX = getMasterFilePath(false);
+		name = makeAbsPath(rel, absMasterLyX).absFileName();
+		if (!isabs) {
+			// convert from absolute original path to
+			// "relative to .lyx file"
+			name = to_utf8(makeRelPath(from_utf8(name),
+			                           from_utf8(absParentLyX)));
+		}
+	}
+	else if (!isabs) {
+		// convert from absolute original path to "relative to .lyx file"
+		name = to_utf8(makeRelPath(from_utf8(name),
+		                           from_utf8(absParentLyX)));
+	}
+}
 
-	string const absMaster = makeAbsPath(getMasterFilePath()).absFileName();
-	string const absParent = makeAbsPath(getParentFilePath()).absFileName();
-	string const abs = makeAbsPath(name, absMaster).absFileName();
-	name = to_utf8(makeRelPath(from_utf8(abs), from_utf8(absParent)));
+
+void copy_file(FileName const & src, string dstname)
+{
+	if (!copyFiles())
+		return;
+	string const absParent = getParentFilePath(false);
+	FileName dst;
+	if (FileName::isAbsolute(dstname))
+		dst = FileName(dstname);
+	else
+		dst = makeAbsPath(dstname, absParent);
+	string const absMaster = getMasterFilePath(false);
+	string const rel = to_utf8(makeRelPath(from_utf8(dst.absFileName()),
+	                                       from_utf8(absMaster)));
+	// Do not copy if the file is not in or below the directory of the
+	// master (see above)
+	if (rel.substr(0, 3) == "../")
+		return;
+	FileName const srcpath = src.onlyPath();
+	FileName const dstpath = dst.onlyPath();
+	if (equivalent(srcpath, dstpath))
+		return;
+	if (!dstpath.isDirectory()) {
+		if (!dstpath.createPath()) {
+			cerr << "Warning: Could not create directory for file `"
+			     << dst.absFileName() << "´." << endl;
+			return;
+		}
+	}
+	if (dst.isReadableFile()) {
+		if (overwriteFiles())
+			cerr << "Warning: Overwriting existing file `"
+			     << dst.absFileName() << "´." << endl;
+		else {
+			cerr << "Warning: Not overwriting existing file `"
+			     << dst.absFileName() << "´." << endl;
+			return;
+		}
+	}
+	if (!src.copyTo(dst))
+		cerr << "Warning: Could not copy file `" << src.absFileName()
+		     << "´ to `" << dst.absFileName() << "´." << endl;
 }
 
 
@@ -2533,7 +2606,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						skip_braces(p);
 						p.get_token();
 						string name = normalize_filename(p.verbatim_item());
-						string const path = makeAbsPath(getMasterFilePath()).absFileName();
+						string const path = getMasterFilePath(true);
 						// We want to preserve relative / absolute filenames,
 						// therefore path is only used for testing
 						// The file extension is in every case ".tex".
@@ -2548,9 +2621,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 							if (!Gnumeric_name.empty())
 								name = Gnumeric_name;
 						}
-						if (makeAbsPath(name, path).exists())
-							fix_relative_filename(name);
-						else
+						FileName const absname = makeAbsPath(name, path);
+						if (absname.exists()) {
+							fix_child_filename(name);
+							copy_file(absname, name);
+						} else
 							cerr << "Warning: Could not find file '"
 							     << name << "'." << endl;
 						context.check_layout(os);
@@ -2560,7 +2635,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						end_inset(os);
 						context.check_layout(os);
 						macro = false;
-						// register the packages that are automatically reloaded
+						// register the packages that are automatically loaded
 						// by the Gnumeric template
 						registerExternalTemplatePackages("GnumericSpreadsheet");
 					}
@@ -2760,7 +2835,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				opts["clip"] = string();
 			string name = normalize_filename(p.verbatim_item());
 
-			string const path = makeAbsPath(getMasterFilePath()).absFileName();
+			string const path = getMasterFilePath(true);
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {
@@ -2795,9 +2870,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 			}
 
-			if (makeAbsPath(name, path).exists())
-				fix_relative_filename(name);
-			else
+			FileName const absname = makeAbsPath(name, path);
+			if (absname.exists()) {
+				fix_child_filename(name);
+				copy_file(absname, name);
+			} else
 				cerr << "Warning: Could not find graphics file '"
 				     << name << "'." << endl;
 
@@ -3725,7 +3802,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				name += p.get_token().asInput();
 			context.check_layout(os);
 			string filename(normalize_filename(p.getArg('{', '}')));
-			string const path = makeAbsPath(getMasterFilePath()).absFileName();
+			string const path = getMasterFilePath(true);
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if ((t.cs() == "include" || t.cs() == "input") &&
@@ -3743,13 +3820,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
 					makeAbsPath(filename, path).absFileName();
-				string const abslyxname =
-					changeExtension(abstexname, ".lyx");
 				string const absfigname =
 					changeExtension(abstexname, ".fig");
-				fix_relative_filename(filename);
+				fix_child_filename(filename);
 				string const lyxname =
 					changeExtension(filename, ".lyx");
+				string const abslyxname = makeAbsPath(
+					lyxname, getParentFilePath(false)).absFileName();
 				bool xfig = false;
 				external = FileName(absfigname).exists();
 				if (t.cs() == "input") {
@@ -3795,16 +3872,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 				if (external) {
 					outname = changeExtension(filename, ".fig");
+					FileName abssrc(changeExtension(abstexname, ".fig"));
+					copy_file(abssrc, outname);
 				} else if (xfig) {
 					// Don't try to convert, the result
 					// would be full of ERT.
 					outname = filename;
+					FileName abssrc(abstexname);
+					copy_file(abssrc, outname);
 				} else if (t.cs() != "verbatiminput" &&
 				    tex2lyx(abstexname, FileName(abslyxname),
 					    p.getEncoding())) {
 					outname = lyxname;
+					// no need to call copy_file
+					// tex2lyx creates the file
 				} else {
 					outname = filename;
+					FileName abssrc(abstexname);
+					copy_file(abssrc, outname);
 				}
 			} else {
 				cerr << "Warning: Could not find included file '"
@@ -4185,7 +4270,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			vector<string> keys;
 			split_map(arg, opts, keys);
 			string name = normalize_filename(p.verbatim_item());
-			string const path = makeAbsPath(getMasterFilePath()).absFileName();
+			string const path = getMasterFilePath(true);
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {
@@ -4199,9 +4284,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					pdflatex = true;
 				}
 			}
-			if (makeAbsPath(name, path).exists())
-				fix_relative_filename(name);
-			else
+			FileName const absname = makeAbsPath(name, path);
+			if (absname.exists())
+			{
+				fix_child_filename(name);
+				copy_file(absname, name);
+			} else
 				cerr << "Warning: Could not find file '"
 				     << name << "'." << endl;
 			// write output
@@ -4250,7 +4338,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "loadgame") {
 			p.skip_spaces();
 			string name = normalize_filename(p.verbatim_item());
-			string const path = makeAbsPath(getMasterFilePath()).absFileName();
+			string const path = getMasterFilePath(true);
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (!makeAbsPath(name, path).exists()) {
@@ -4262,9 +4350,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!lyxskak_name.empty())
 					name = lyxskak_name;
 			}
-			if (makeAbsPath(name, path).exists())
-				fix_relative_filename(name);
-			else
+			FileName const absname = makeAbsPath(name, path);
+			if (absname.exists())
+			{
+				fix_child_filename(name);
+				copy_file(absname, name);
+			} else
 				cerr << "Warning: Could not find file '"
 				     << name << "'." << endl;
 			context.check_layout(os);

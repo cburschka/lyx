@@ -21,7 +21,7 @@ options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 [ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [
-\fB\-roundtrip\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
+\fB\-roundtrip\fR ] [ \fB\-copyfiles\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
 .\" .PP
 .\" \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 .\" [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
@@ -70,11 +70,20 @@ Specify a user directory. Normally, you shouldn't need this. Your LyX user direc
 chosen. Cf. the section \f(CWFILES\fR for details.
 .TP
 .BI \-roundtrip
-Call LyX to re-export the created output file to LaTeX. The output file name
-is always determined automatically to avoid over-writing the input file by
-accident: If the input file is named \fIfoo.tex\fR the output file will be
+Call LyX to re-export the created output file to LaTeX. If the output file name
+is not given it is determined automatically to avoid over-writing the input file
+by accident: If the input file is named \fIfoo.tex\fR the output file will be
 named \fIfoo.lyx.lyx\fR, and the re-exported file will be named
 \fIfoo.lyx.tex\fR.
+.TP
+.BI \-copyfiles
+Copy all included files below the input directory and that \fBtex2lyx\fR is
+aware of to the output directory if the output file is located in a different
+directory than the input file. This is useful if you want to ensure that no
+included file is overwritten (either in roundtrip mode or by a later export
+from LyX). Please note that the resulting document may be uncompilable. This
+happens if it needs files that \fBtex2lyx\fR does not know about and therefore
+does not copy to the output directory.
 .TP
 .BI \-help
 Help. Print out usage information and quit.

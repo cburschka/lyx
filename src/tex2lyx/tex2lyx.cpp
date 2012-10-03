@@ -446,6 +446,7 @@ void read_syntaxfile(FileName const & file_name)
 string documentclass;
 string default_encoding;
 string syntaxfile;
+bool copy_files = false;
 bool overwrite_files = false;
 int error_code = 0;
 
@@ -458,6 +459,7 @@ int parse_help(string const &, string const &)
 	cerr << "Usage: tex2lyx [options] infile.tex [outfile.lyx]\n"
 		"Options:\n"
 		"\t-c textclass       Declare the textclass.\n"
+		"\t-copyfiles         Copy all included files to the directory of outfile.lyx.\n"
 		"\t-e encoding        Set the default encoding (latex name).\n"
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
@@ -571,6 +573,13 @@ int parse_roundtrip(string const &, string const &)
 }
 
 
+int parse_copyfiles(string const &, string const &)
+{
+	copy_files = true;
+	return 0;
+}
+
+
 void easyParse(int & argc, char * argv[])
 {
 	map<string, cmd_helper> cmdmap;
@@ -589,6 +598,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
 	cmdmap["-roundtrip"] = parse_roundtrip;
+	cmdmap["-copyfiles"] = parse_copyfiles;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
@@ -619,21 +629,42 @@ void easyParse(int & argc, char * argv[])
 
 
 // path of the first parsed file
-string masterFilePath;
+string masterFilePathLyX;
+string masterFilePathTeX;
 // path of the currently parsed file
-string parentFilePath;
+string parentFilePathTeX;
 
 } // anonymous namespace
 
 
-string getMasterFilePath()
+string getMasterFilePath(bool input)
 {
-	return masterFilePath;
+	return input ? masterFilePathTeX : masterFilePathLyX;
 }
 
-string getParentFilePath()
+string getParentFilePath(bool input)
 {
-	return parentFilePath;
+	if (input)
+		return parentFilePathTeX;
+	string const rel = to_utf8(makeRelPath(from_utf8(masterFilePathTeX),
+	                                       from_utf8(parentFilePathTeX)));
+	if (rel.substr(0, 3) == "../") {
+		// The parent is not below the master - keep the path
+		return parentFilePathTeX;
+	}
+	return makeAbsPath(rel, masterFilePathLyX).absFileName();
+}
+
+
+bool copyFiles()
+{
+	return copy_files;
+}
+
+
+bool overwriteFiles()
+{
+	return overwrite_files;
 }
 
 
@@ -645,7 +676,7 @@ namespace {
  *  be used more than once for included documents.
  *  Caution: Overwrites the existing preamble settings if the new document
  *  contains a preamble.
- *  You must ensure that \p parentFilePath is properly set before calling
+ *  You must ensure that \p parentFilePathTeX is properly set before calling
  *  this function!
  */
 bool tex2lyx(idocstream & is, ostream & os, string encoding)
@@ -720,10 +751,10 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 		     << "\" for reading." << endl;
 		return false;
 	}
-	string const oldParentFilePath = parentFilePath;
-	parentFilePath = onlyPath(infilename.absFileName());
+	string const oldParentFilePath = parentFilePathTeX;
+	parentFilePathTeX = onlyPath(infilename.absFileName());
 	bool retval = tex2lyx(is, os, encoding);
-	parentFilePath = oldParentFilePath;
+	parentFilePathTeX = oldParentFilePath;
 	return retval;
 }
 
@@ -826,20 +857,28 @@ int main(int argc, char * argv[])
 	infilename = makeAbsPath(infilename).absFileName();
 
 	string outfilename;
-	if (roundtrip) {
-		if (argc > 2) {
-			// Do not allow a user supplied output filename
-			// (otherwise it could easily happen that LyX would
-			// overwrite the original .tex file)
-			cerr << "Error: output filename must not be given in roundtrip mode."
-			     << endl;
-			return EXIT_FAILURE;
-		}
-		outfilename = changeExtension(infilename, ".lyx.lyx");
-	} else if (argc > 2) {
+	if (argc > 2) {
 		outfilename = internal_path(os::utf8_argv(2));
 		if (outfilename != "-")
 			outfilename = makeAbsPath(outfilename).absFileName();
+		if (roundtrip) {
+			if (outfilename == "-") {
+				cerr << "Error: Writing to standard output is "
+				        "not supported in roundtrip mode."
+				     << endl;
+				return EXIT_FAILURE;
+			}
+			string texfilename = changeExtension(outfilename, ".tex");
+			if (equivalent(FileName(infilename), FileName(texfilename))) {
+				cerr << "Error: The input file `" << infilename
+				     << "´ would be overwritten by the TeX file exported from `"
+				     << outfilename << "´ in roundtrip mode." << endl;
+				return EXIT_FAILURE;
+			}
+		}
+	} else if (roundtrip) {
+		// avoid overwriting the input file
+		outfilename = changeExtension(infilename, ".lyx.lyx");
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
@@ -876,17 +915,22 @@ int main(int argc, char * argv[])
 	theModuleList.read();
 
 	// The real work now.
-	masterFilePath = onlyPath(infilename);
-	parentFilePath = masterFilePath;
+	masterFilePathTeX = onlyPath(infilename);
+	parentFilePathTeX = masterFilePathTeX;
 	if (outfilename == "-") {
+		// assume same directory as input file
+		masterFilePathLyX = masterFilePathTeX;
 		if (tex2lyx(FileName(infilename), cout, default_encoding))
 			return EXIT_SUCCESS;
-	} else if (roundtrip) {
-		if (tex2tex(infilename, FileName(outfilename), default_encoding))
-			return EXIT_SUCCESS;
 	} else {
-		if (tex2lyx(infilename, FileName(outfilename), default_encoding))
-			return EXIT_SUCCESS;
+		masterFilePathLyX = onlyPath(outfilename);
+		if (roundtrip) {
+			if (tex2tex(infilename, FileName(outfilename), default_encoding))
+				return EXIT_SUCCESS;
+		} else {
+			if (tex2lyx(infilename, FileName(outfilename), default_encoding))
+				return EXIT_SUCCESS;
+		}
 	}
 	return EXIT_FAILURE;
 }
