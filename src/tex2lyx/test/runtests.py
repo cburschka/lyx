@@ -15,7 +15,7 @@
 # suffix, since I don't know how to transport command line arguments through
 # the autotools "make check" mechanism.
 
-import os, string, sys
+import os, string, sys, time, difflib, filecmp
 
 
 def usage(prog_name):
@@ -50,15 +50,32 @@ def main(argv):
              'XeTeX-polyglossia.tex']
 
     errors = []
+    overwrite = (outputdir == inputdir)
     for f in files:
+        (base, ext) = os.path.splitext(f)
         texfile = os.path.join(inputdir, f)
-        if outputdir == inputdir:
+        if overwrite:
             cmd = '%s -roundtrip -f %s' % (tex2lyx, texfile)
         else:
-            lyxfile = os.path.join(outputdir, f)
+            lyxfile = os.path.join(outputdir, base + ".lyx")
             cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
         if os.system(cmd) != 0:
             errors.append(f)
+        elif not overwrite:
+            lyxfile1 = os.path.join(inputdir, base + ".lyx.lyx")
+            lyxfile2 = os.path.join(outputdir, base + ".lyx")
+            if not filecmp.cmp(lyxfile1, lyxfile2, False):
+                t1 = time.ctime(os.path.getmtime(lyxfile1))
+                t2 = time.ctime(os.path.getmtime(lyxfile2))
+                f1 = open(lyxfile1, 'r')
+                f2 = open(lyxfile2, 'r')
+                lines1 = f1.readlines()
+                lines2 = f2.readlines()
+                diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
+                f1.close()
+                f2.close()
+                sys.stdout.writelines(diff)
+                errors.append(f)
 
     if len(errors) > 0:
         error('Converting the following files failed: %s' % ', '.join(errors))
