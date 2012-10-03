@@ -32,6 +32,8 @@ TEST_FILES = \
 	test/XeTeX-polyglossia.tex
 
 TESTS = test/runtests.py
+updatetests:
+	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx ../../../lib/scripts "$(srcdir)/test"
 
 LINKED_FILES = \
 	../Author.cpp \

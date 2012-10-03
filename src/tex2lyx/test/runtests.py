@@ -42,8 +42,8 @@ def main(argv):
     if len(argv) >= 4:
         outputdir = sys.argv[3]
     else:
-        outputdir = inputdir
-#        outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
+#        outputdir = inputdir
+        outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
 
     files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
              'box-color-size-space-align.tex', 'CJK.tex', \
