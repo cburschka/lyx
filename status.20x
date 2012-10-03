@@ -88,10 +88,15 @@ What's new
 
 - Do not output empty language switch commands (bug 8216).
 
+- Do not let the master document interfere when a child is compiled standalone
+  (bug 8000).
+
 - When using Turkish language, use the xkeyval package to avoid
   incompatibilities (bug 2005).
 
 - Do not ignore polyglossia commands in partial source preview (bug 8209).
+
+- Show enabled child-only branches content in source preview (bug 8001).
 
 - Export correct language change commands if document contains different
   CJK languages (bug 8215).

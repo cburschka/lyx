@@ -81,6 +81,12 @@ public:
 	*/
 	bool nice;
 
+	/** Is this a real child (i.e., compiled as a child)?
+	    This depends on wherefrom we export the buffer. Even children
+	    that have a master can be compiled standalone.
+	*/
+	mutable bool is_child;
+
 	/** moving_arg == true means that the environment in which the inset
 	    is typeset is a moving argument. The inset should take care about
 	    fragile commands by preceding the latex with \\protect.
