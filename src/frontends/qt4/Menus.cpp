@@ -887,7 +887,7 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 			}
 		}
 		MenuItem w(MenuItem::Command, label,
-			FuncRequest(LFUN_LANGUAGE, (*cit)->lang()));
+			FuncRequest(LFUN_LANGUAGE, (*cit)->lang() + " set"));
 		item.submenu().addWithStatusCheck(w);
 	}
 	item.submenu().add(MenuItem(MenuItem::Separator));

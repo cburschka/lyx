@@ -1895,12 +1895,19 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LANGUAGE: {
-		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
-		if (!lang)
+		string const lang_arg = cmd.getArg(0);
+		bool const reset = (lang_arg.empty() || lang_arg == "reset");
+		Language const * lang =
+			reset ? reset_language
+			      : languages.getLanguage(lang_arg);
+		// we allow reset_language, which is 0, but only if it
+		// was requested via empty or "reset" arg.
+		if (!lang && !reset)
 			break;
+		bool const toggle = (cmd.getArg(1) != "set");
 		selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 		Font font(ignore_font, lang);
-		toggleAndShow(cur, this, font, false);
+		toggleAndShow(cur, this, font, toggle);
 		break;
 	}
 
@@ -2667,7 +2674,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LANGUAGE:
 		enable = !cur.paragraph().isPassThru();
-		flag.setOnOff(to_utf8(cmd.argument()) == cur.real_current_font.language()->lang());
+		flag.setOnOff(cmd.getArg(0) == cur.real_current_font.language()->lang());
 		break;
 
 	case LFUN_BREAK_PARAGRAPH:
