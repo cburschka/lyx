@@ -2514,9 +2514,14 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_LANGUAGE
  * \li Action: Set language from the current cursor position.
- * \li Syntax: language <LANG>
+ * \li Syntax: language <LANG> [set]
  * \li Params: <LANG>: Requested language. Look in lib/languages for
-                       the list.
+                       the list. "language reset" or "language" (without param)
+                       reset to the document language.
+                  set: If used, the language will be set to the specified
+                       language. Otherwise, the language will be toggled (i.e., if
+                       the current language is LANG, switch to the document language
+                       or the default language, if LANG is the document language).
  * \li Origin: Dekel, 2 Mar 2000
  * \endvar
  */
