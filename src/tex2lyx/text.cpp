@@ -2953,8 +2953,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "href") {
 			context.check_layout(os);
-			string target = p.getArg('{', '}');
-			string name = p.getArg('{', '}');
+			string target = convert_command_inset_arg(p.verbatim_item());
+			string name = convert_command_inset_arg(p.verbatim_item());
 			string type;
 			size_t i = target.find(':');
 			if (i != string::npos) {
@@ -3469,7 +3469,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "verb") {
 			context.check_layout(os);
 			char const delimiter = p.next_token().character();
-			string const arg = p.getArg(delimiter, delimiter);
+			// \verb is special: The usual escaping rules do not
+			// apply, e.g. "\verb+\+" is valid and denotes a single
+			// backslash (bug #4468). Therefore we do not allow
+			// escaping in getArg().
+			string const arg = p.getArg(delimiter, delimiter, false);
 			ostringstream oss;
 			oss << "\\verb" << delimiter << arg << delimiter;
 			handle_ert(os, oss.str(), context);

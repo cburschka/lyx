@@ -383,7 +383,7 @@ bool Parser::hasOpt()
 }
 
 
-Parser::Arg Parser::getFullArg(char left, char right)
+Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 {
 	skip_spaces(true);
 
@@ -393,36 +393,40 @@ Parser::Arg Parser::getFullArg(char left, char right)
 		return make_pair(false, string());
 
 	string result;
-	char c = getChar();
+	Token t = get_token();
 
-	if (c != left) {
+	if (t.cat() == catComment || t.cat() == catEscape ||
+	    t.character() != left) {
 		putback();
 		return make_pair(false, string());
 	} else {
-		// a single '\' is only allowed within \verb, no matter what the delimiter is,
-		// for example "\verb+\+" (reported as bug #4468)
-		// To support this, we allow single '\' if it is the only character
-		// within equal delimiters
-		if (next_token().cat() == catEscape)
-			if (next_token().character() == right && right == left)
-				result += '\\';
-		while ((c = getChar()) != right && good()) {
+		for (t = get_token(); good(); t = get_token()) {
 			// Ignore comments
-			if (curr_token().cat() == catComment) {
-				if (!curr_token().cs().empty())
-					cerr << "Ignoring comment: " << curr_token().asInput();
+			if (t.cat() == catComment) {
+				if (!t.cs().empty())
+					cerr << "Ignoring comment: " << t.asInput();
+				continue;
 			}
-			else
-				result += curr_token().asInput();
+			if (allow_escaping) {
+				if (t.cat() != catEscape && t.character() == right)
+					break;
+			} else {
+				if (t.character() == right) {
+					if (t.cat() == catEscape)
+						result += '\\';
+					break;
+				}
+			}
+			result += t.asInput();
 		}
 	}
 	return make_pair(true, result);
 }
 
 
-string Parser::getArg(char left, char right)
+string Parser::getArg(char left, char right, bool allow_escaping)
 {
-	return getFullArg(left, right).second;
+	return getFullArg(left, right, allow_escaping).second;
 }
 
 
