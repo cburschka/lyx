@@ -1119,7 +1119,9 @@ status collapsed
 
 
 \backslash
-verb~~
+verb~
+\backslash
+~
 \end_layout
 
 \end_inset
@@ -1139,7 +1141,22 @@ item[ABC] first item+
 
 \end_inset
 
+ 
+\begin_inset ERT
+status collapsed
 
+\begin_layout Standard
+
+
+\backslash
+verb+something
+\backslash
++
+\end_layout
+
+\end_inset
+
+ bug 4468
 \end_layout
 
 \begin_layout Standard
