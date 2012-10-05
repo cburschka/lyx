@@ -1592,8 +1592,12 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 		runparams.use_japanese = features.isRequired("japanese");
 
-		if (!output_body)
+		if (!output_body) {
+			// Restore the parenthood if needed
+			if (!runparams.is_child)
+				d->ignore_parent = false;
 			return;
+		}
 
 		// make the body.
 		os << "\\begin{document}\n";
