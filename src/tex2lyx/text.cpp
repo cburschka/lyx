@@ -2153,7 +2153,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		   << "\\end_layout\n\n"
 		   << "\\begin_layout Plain Layout\n"
 		   << "This document contains text in Chinese, Japanese or Korean.\n"
-		   << " It was therefore impossible for tex2lyx to set the correct document langue for your document."
+		   << " It was therefore impossible for tex2lyx to set the correct document language for your document."
 		   << " Please set the language manually in the document settings.\n"
 		   << "\\end_layout\n";
 		end_inset(os);
@@ -2739,8 +2739,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			p.skip_spaces();
 			begin_inset(os, "Caption\n");
-			Context newcontext(true, context.textclass);
-			newcontext.font = context.font;
+			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
@@ -2790,8 +2789,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << "\n\\begin_layout Plain Layout";
 					p.skip_spaces();
 					begin_inset(os, "Caption\n");
-					Context newcontext(true, context.textclass);
-					newcontext.font = context.font;
+					Context newcontext(true, context.textclass,
+					                   0, 0, context.font);
 					newcontext.check_layout(os);
 					os << caption << "\n";
 					newcontext.check_end_layout(os);
