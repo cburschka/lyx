@@ -38,6 +38,8 @@ else()
 	set(support_linkback_headers "")
 endif()
 
+add_subdirectory(tests)
+
 # needed to compile tex2lyx in merged mode
 set(dont_merge ${dont_merge} ${TOP_SRC_DIR}/src/support/gettext.cpp)
 
