@@ -156,18 +156,21 @@ check_convert_LDADD = liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) $(QT
 check_convert_LDFLAGS = $(QT4_LDFLAGS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
+	tests/dummy_functions.cpp \
 	tests/boost.cpp
 
 check_filetools_LDADD = liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 check_filetools_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
+	tests/dummy_functions.cpp \
 	tests/boost.cpp
 
 check_lstrings_LDADD = liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \
+	tests/dummy_functions.cpp \
 	tests/boost.cpp
 
 makeregfiles: ${check_PROGRAMS}
