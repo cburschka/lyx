@@ -648,10 +648,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	// roman fonts
-	if (is_known(name, known_roman_fonts)) {
+	if (is_known(name, known_roman_fonts))
 		h_font_roman = name;
-		p.skip_spaces();
-	}
 
 	if (name == "fourier") {
 		h_font_roman = "utopia";
@@ -816,10 +814,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
-		if (!in_lyx_preamble)
+		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
-			           << name << "}\n" << package_end_sep;
+			           << name << '}';
+			if (p.next_token().cat() == catNewline ||
+			    (p.next_token().cat() == catSpace &&
+			     p.next_next_token().cat() == catNewline))
+				h_preamble << '\n';
+			h_preamble << package_end_sep;
+		}
 	}
 
 	else if (name == "geometry")
@@ -859,12 +863,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
-			h_preamble << "\\usepackage{" << name << "}\n";
+			h_preamble << "\\usepackage{" << name << '}';
 		else {
 			h_preamble << "\\usepackage[" << opts << "]{"
-				   << name << "}\n";
+				   << name << '}';
 			options.clear();
 		}
+		if (p.next_token().cat() == catNewline ||
+		    (p.next_token().cat() == catSpace &&
+		     p.next_next_token().cat() == catNewline))
+			h_preamble << '\n';
 	}
 
 	// We need to do something with the options...

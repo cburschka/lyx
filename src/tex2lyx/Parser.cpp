@@ -552,7 +552,7 @@ void Parser::tokenize_one()
 		push_back(Token(s, catSpace));
 		break;
 	}
-		
+
 	case catNewline: {
 		++lineno_;
 		docstring s(1, getNewline(is_, c));
@@ -565,7 +565,7 @@ void Parser::tokenize_one()
 		push_back(Token(s, catNewline));
 		break;
 	}
-		
+
 	case catComment: {
 		// We don't treat "%\n" combinations here specially because
 		// we want to preserve them in the preamble
@@ -581,7 +581,7 @@ void Parser::tokenize_one()
 		push_back(Token(s, catComment));
 		break;
 	}
-		
+
 	case catEscape: {
 		is_.get(c);
 		if (!is_) {
@@ -599,12 +599,12 @@ void Parser::tokenize_one()
 		}
 		break;
 	}
-		
+
 	case catIgnore: {
 		cerr << "ignoring a char: " << c << "\n";
 		break;
 	}
-		
+
 	default:
 		push_back(Token(docstring(1, c), catcode(c)));
 	}
