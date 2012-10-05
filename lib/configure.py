@@ -1322,6 +1322,17 @@ def checkTeXAllowSpaces():
         removeFiles( [ 'a b.tex', 'a b.log', 'texput.log' ])
 
 
+def rescanTeXFiles():
+    ''' Run kpsewhich to update information about TeX files '''
+    logger.info("+Indexing TeX files... ")
+    if not os.path.isfile( os.path.join(srcdir, 'scripts', 'TeXFiles.py') ):
+        logger.error("configure: error: cannot find TeXFiles.py script")
+        sys.exit(1)
+    tfp = cmdOutput("python -tt " + os.path.join(srcdir, 'scripts', 'TeXFiles.py'))
+    logger.info(tfp)
+    logger.info("\tdone")
+
+
 def removeTempFiles():
     # Final clean-up
     if not lyx_keep_temps:
@@ -1332,6 +1343,7 @@ def removeTempFiles():
 
 if __name__ == '__main__':
     lyx_check_config = True
+    lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
     lyxrc_fileformat = 7
     rc_entries = ''
@@ -1344,10 +1356,13 @@ if __name__ == '__main__':
 Options:
     --help                   show this help lines
     --keep-temps             keep temporary files (for debug. purposes)
+    --without-kpsewhich      do not update TeX files information via kpsewhich
     --without-latex-config   do not run LaTeX to determine configuration
     --with-version-suffix=suffix suffix of binary installed files
 '''
             sys.exit(0)
+        elif op == '--without-kpsewhich':
+            lyx_kpsewhich = False
         elif op == '--without-latex-config':
             lyx_check_config = False
         elif op == '--keep-temps':
@@ -1392,6 +1407,8 @@ Format %i
     if windows_style_tex_paths != '':
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
     checkOtherEntries()
+    if lyx_kpsewhich:
+        rescanTeXFiles()
     checkModulesConfig()
     # --without-latex-config can disable lyx_check_config
     ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
