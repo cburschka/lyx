@@ -458,7 +458,6 @@ if(LYX_NLS)
 		message(FATAL_ERROR "Python 2.6 needed!")
 	endif()
 	find_package(LyXGettext REQUIRED)
-	include_directories(${TOP_SRC_DIR}/po)
 	add_subdirectory(po "${TOP_BINARY_DIR}/po")
 endif()
 
