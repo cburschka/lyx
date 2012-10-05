@@ -716,6 +716,8 @@ void PreviewLoader::Impl::dumpPreamble(otexstream & os) const
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
+	if (buffer_.parent())
+		runparams.is_child = true;
 	buffer_.writeLaTeXSource(os, buffer_.filePath(), runparams, Buffer::OnlyPreamble);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
