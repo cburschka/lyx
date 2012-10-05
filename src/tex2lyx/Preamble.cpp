@@ -446,6 +446,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_font_roman              = "default";
 	h_font_sans               = "default";
 	h_font_typewriter         = "default";
+	h_font_math               = "auto";
 	h_font_default_family     = "default";
 	h_use_non_tex_fonts       = "false";
 	h_font_sc                 = "false";
@@ -506,7 +507,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_indices             = "false";
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
-	h_use_hyperref            = "0";
+	h_use_hyperref            = "false";
 	h_use_refstyle            = "0";
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
@@ -522,7 +523,7 @@ void Preamble::handle_hyperref(vector<string> & options)
 {
 	// FIXME swallow inputencoding changes that might surround the
 	//       hyperref setup if it was written by LyX
-	h_use_hyperref = "1";
+	h_use_hyperref = "true";
 	// swallow "unicode=true", since LyX does always write that
 	vector<string>::iterator it =
 		find(options.begin(), options.end(), "unicode=true");
@@ -990,6 +991,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_roman " << h_font_roman << "\n"
 	   << "\\font_sans " << h_font_sans << "\n"
 	   << "\\font_typewriter " << h_font_typewriter << "\n"
+	   << "\\font_math " << h_font_math << "\n"
 	   << "\\font_default_family " << h_font_default_family << "\n"
 	   << "\\use_non_tex_fonts " << h_use_non_tex_fonts << "\n"
 	   << "\\font_sc " << h_font_sc << "\n"
@@ -1008,7 +1010,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	os << "\\paperfontsize " << h_paperfontsize << "\n"
 	   << "\\spacing " << h_spacing << "\n"
 	   << "\\use_hyperref " << h_use_hyperref << '\n';
-	if (h_use_hyperref == "1") {
+	if (h_use_hyperref == "true") {
 		if (!h_pdf_title.empty())
 			os << "\\pdf_title \"" << h_pdf_title << "\"\n";
 		if (!h_pdf_author.empty())

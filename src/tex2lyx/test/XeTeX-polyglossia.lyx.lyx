@@ -23,6 +23,7 @@
 \font_roman Linux Libertine O
 \font_sans Linux Biolinum O
 \font_typewriter Linux Biolinum O
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
@@ -36,7 +37,7 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref 0
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_package amsmath 1

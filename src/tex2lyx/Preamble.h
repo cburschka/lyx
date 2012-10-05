@@ -105,6 +105,7 @@ private:
 	std::string h_float_placement;
 	std::string h_fontcolor;
 	std::string h_fontencoding;
+	std::string h_font_math;
 	std::string h_font_roman;
 	std::string h_font_sans;
 	std::string h_font_typewriter;

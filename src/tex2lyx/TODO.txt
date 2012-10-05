@@ -62,6 +62,20 @@ Format LaTeX feature                        LyX feature
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    undertilde.sty                       fonts
 427    tipa.sty \begin{IPA}, \textipa       InsetTIPA
+434    libertine-type1, libertine.sty,      \font_osf, \font_roman
+       libertine-legacy.sty
+435    txtt LaTeX font                      \font_typewriter
+436    mathdesign.sty                       \font_roman
+437    TeX Gyre LaTeX fonts                 \font_*
+438    \tone{51}, \tone{15}, \tone{45},     InsetTIPA
+       \tone{12}, \tone{454}, \toptiebar,
+       \bottomtiebar
+439    MinionPro.sty                        \font_roman, \font_osf
+440    MinionPro.sty, eulervm.sty           \font_math
+442    newtxmath.sty,                       \font_math
+443    unicode-math.sty                     InsetMath*
+444    biolinum-type1.sty, libertine.sty,   \font_osf, \font_sans
+       libertine-legacy.sty
 
 
 General
