@@ -1922,7 +1922,11 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	params().validate(features);
+	// Validate the buffer params, but not for included
+	// files, since they also use the parent buffer's
+	// params (# 5941)
+	if (!features.runparams().is_child)
+		params().validate(features);
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::validate, _1, ref(features)));
