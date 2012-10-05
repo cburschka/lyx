@@ -3303,7 +3303,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 void Buffer::getSourceCode(odocstream & os, string const format,
 			   pit_type par_begin, pit_type par_end,
-			   OutputWhat output) const
+			   OutputWhat output, bool master) const
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
@@ -3350,8 +3350,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			// child of some other buffer, let's cut the link here,
 			// so that no concurring settings from the master
 			// (e.g. branch state) interfere (see #8101).
-			// FIXME: Add an optional "from master" perspective.
-			d->ignore_parent = true;
+			if (!master)
+				d->ignore_parent = true;
 			// We need to validate the Buffer params' features here
 			// in order to know if we should output polyglossia
 			// macros (instead of babel macros)
@@ -3369,7 +3369,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			latexParagraphs(*this, text(), ots, runparams);
 
 			// Restore the parenthood
-			d->ignore_parent = false;
+			if (!master)
+				d->ignore_parent = false;
 		}
 	} else {
 		os << "% ";
@@ -3404,6 +3405,8 @@ void Buffer::getSourceCode(odocstream & os, string const format,
 			d->texrow.newline();
 			d->texrow.newline();
 			otexstream ots(os, d->texrow);
+			if (master)
+				runparams.is_child = true;
 			writeLaTeXSource(ots, string(), runparams, output);
 		}
 	}

@@ -589,7 +589,8 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(odocstream & os, std::string const format,
-			   pit_type par_begin, pit_type par_end, OutputWhat output) const;
+			   pit_type par_begin, pit_type par_end, OutputWhat output,
+			   bool master) const;
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related

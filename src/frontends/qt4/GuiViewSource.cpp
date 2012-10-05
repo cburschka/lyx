@@ -55,6 +55,8 @@ ViewSourceWidget::ViewSourceWidget()
 		updatePB, SLOT(setDisabled(bool)));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		this, SLOT(updateView()));
+	connect(masterPerspectiveCB, SIGNAL(toggled(bool)),
+		this, SLOT(updateView()));
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateView()));
 	connect(outputFormatCO, SIGNAL(activated(int)),
@@ -91,7 +93,8 @@ static size_t crcCheck(docstring const & s)
 	\return true if the content has changed since last call.
  */
 static bool getContent(BufferView const * view, Buffer::OutputWhat output,
-		       QString & qstr, string const format, bool force_getcontent)
+		       QString & qstr, string const format, bool force_getcontent,
+		       bool master)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -108,7 +111,8 @@ static bool getContent(BufferView const * view, Buffer::OutputWhat output,
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1, output);
+	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1,
+				     output, master);
 	docstring s = ostr.str();
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);
@@ -165,7 +169,8 @@ void ViewSourceWidget::updateView()
 	else if (contentsCO->currentIndex() == 3)
 		output = Buffer::OnlyBody;
 
-	if (getContent(bv_, output, content, format, force_getcontent_))
+	if (getContent(bv_, output, content, format,
+		      force_getcontent_, masterPerspectiveCB->isChecked()))
 		document_->setPlainText(content);
 
 	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
@@ -243,6 +248,7 @@ void GuiViewSource::updateView()
 		widget_->setBufferView(bufferview());
 		widget_->updateView();
 	}
+	widget_->masterPerspectiveCB->setEnabled(buffer().parent());
 }
 
 

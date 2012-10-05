@@ -73,17 +73,17 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QPushButton" name="updatePB" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
+   <item row="2" column="1" colspan="2" >
+    <widget class="QCheckBox" name="masterPerspectiveCB" >
      <property name="text" >
-      <string>&amp;Update</string>
+      <string>&amp;Master's perspective</string>
+     </property>
+     <property name="toolTip" >
+      <string>Show the source as the master document gets it</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2" >
+   <item row="3" column="1" colspan="2" >
     <widget class="QCheckBox" name="autoUpdateCB" >
      <property name="text" >
       <string>Automatic update</string>
@@ -93,13 +93,17 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QPushButton" name="updatePB" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>&amp;Update</string>
+     </property>
+    </widget>
+   </item>
   </layout>
-  <zorder>viewSourceTV</zorder>
-  <zorder>outputFormatLA</zorder>
-  <zorder>outputFormatCO</zorder>
-  <zorder>contentsCO</zorder>
-  <zorder>updatePB</zorder>
-  <zorder>autoUpdateCB</zorder>
  </widget>
  <tabstops>
   <tabstop>viewSourceTV</tabstop>
