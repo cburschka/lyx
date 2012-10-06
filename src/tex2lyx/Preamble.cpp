@@ -44,9 +44,8 @@ Preamble preamble;
 
 namespace {
 
-// "chinese-simplified", "chinese-traditional", "japanese-cjk", "korean"
-// cannot be supported because it is impossible to determine the correct document
-// language if CJK is used.
+// CJK languages are handled in text.cpp, polyglossia languages are listed
+// further down.
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
@@ -87,6 +86,9 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "swedish", "thai", "turkish", "turkmen", "ukrainian", "ukrainian",
 "uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
 0};
+
+/// languages with danish quotes (.lyx names)
+const char * const known_danish_quotes_languages[] = {"danish", 0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
@@ -639,6 +641,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	vector<string> options = split_options(opts);
 	add_package(name, options);
 	string scale;
+	char const * const * where = 0;
 
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
@@ -753,9 +756,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "CJK") {
-		// It is impossible to determine the document language if CJK is used.
-		// All we can do is to notify the user that he has to set this by himself.
-		have_CJK = true;
 		// set the encoding to "auto" because it might be set to "default" by the babel handling
 		// and this would not be correct for CJK
 		if (h_inputencoding == "default")
@@ -833,8 +833,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "subfig")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if (is_known(name, known_languages))
-		h_language = name;
+	else if ((where = is_known(name, known_languages)))
+		h_language = known_coded_languages[where - known_languages];
 
 	else if (name == "natbib") {
 		h_biblio_style = "plainnat";
@@ -914,7 +914,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	// http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
 	// (quotes for kazakh and interlingua are unknown)
 	// danish
-	if (h_language == "danish")
+	if (is_known(h_language, known_danish_quotes_languages))
 		h_quotes_language = "danish";
 	// french
 	else if (is_known(h_language, known_french_quotes_languages))
@@ -1643,6 +1643,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		ostringstream ss;
 		ss << tc.sides();
 		h_papersides = ss.str();
+	}
+
+	// If the CJK package is used we cannot set the document language from
+	// the babel options. Instead, we guess which language is used most
+	// and set this one.
+	default_language = h_language;
+	if (is_full_document && auto_packages.find("CJK") != auto_packages.end()) {
+		p.pushPosition();
+		h_language = guessLanguage(p, default_language);
+		p.popPosition();
 	}
 }
 
