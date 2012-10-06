@@ -814,8 +814,18 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			if (inner_type != "makebox") {
 				latex_height = p.getArg('[', ']');
 				translate_box_len(latex_height, height_value, height_unit, height_special);
-			} else
-				hor_pos = p.getArg('[', ']');
+			} else {
+				string const opt = p.getArg('[', ']');
+				if (!opt.empty()) {
+					hor_pos = opt;
+					if (hor_pos != "l" && hor_pos != "c" &&
+					    hor_pos != "r" && hor_pos != "s") {
+						cerr << "invalid hor_pos " << hor_pos
+						     << " for " << inner_type << endl;
+						hor_pos = "c";
+					}
+				}
+			}
 
 			if (p.hasOpt()) {
 				inner_pos = p.getArg('[', ']');
@@ -839,7 +849,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			if (!opt.empty()) {
 				hor_pos = opt;
 				if (hor_pos != "l" && hor_pos != "c" &&
-				    hor_pos != "r") {
+				    hor_pos != "r" && hor_pos != "s") {
 					cerr << "invalid hor_pos " << hor_pos
 					     << " for " << outer_type << endl;
 					hor_pos = "c";
