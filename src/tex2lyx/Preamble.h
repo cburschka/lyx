@@ -38,8 +38,10 @@ public:
 	std::string inputencoding() const { return h_inputencoding; }
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
-	///
-	std::string language() const { return h_language; }
+	/// The document language
+	std::string docLanguage() const { return h_language; }
+	/// The language of text which is not explicitly marked
+	std::string defaultLanguage() const  { return default_language; }
 	///
 	std::string use_indices() const { return h_use_indices; }
 	///
@@ -89,6 +91,8 @@ private:
 
 	/// needed to handle encodings with babel
 	bool one_language;
+	/// the main non-CJK language
+	std::string default_language;
 
 	/// was at least one title layout found?
 	bool title_layout_found;
@@ -105,6 +109,7 @@ private:
 	std::string h_float_placement;
 	std::string h_fontcolor;
 	std::string h_fontencoding;
+	std::string h_font_math;
 	std::string h_font_roman;
 	std::string h_font_sans;
 	std::string h_font_typewriter;

@@ -67,6 +67,10 @@ void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags,
                          bool outer, Context const & context,
                          InsetLayout const * layout = 0);
 
+/// Guess document language from \p p if CJK is used.
+/// \p lang is used for all non-CJK contents.
+std::string guessLanguage(Parser & p, std::string const & lang);
+
 
 /// in math.cpp
 void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
@@ -166,8 +170,6 @@ extern bool noweb_mode;
 extern bool pdflatex;
 /// Did we recognize any xetex-only construct?
 extern bool xetex;
-/// Do we have CJK?
-extern bool have_CJK;
 /// Do we have non-CJK Japanese?
 extern bool is_nonCJKJapanese;
 /// LyX format that is created by tex2lyx

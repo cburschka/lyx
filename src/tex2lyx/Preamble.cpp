@@ -44,9 +44,8 @@ Preamble preamble;
 
 namespace {
 
-// "chinese-simplified", "chinese-traditional", "japanese-cjk", "korean"
-// cannot be supported because it is impossible to determine the correct document
-// language if CJK is used.
+// CJK languages are handled in text.cpp, polyglossia languages are listed
+// further down.
 /**
  * known babel language names (including synonyms)
  * not in standard babel: arabic, arabtex, armenian, belarusian, serbian-latin, thai
@@ -87,6 +86,9 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "swedish", "thai", "turkish", "turkmen", "ukrainian", "ukrainian",
 "uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
 0};
+
+/// languages with danish quotes (.lyx names)
+const char * const known_danish_quotes_languages[] = {"danish", 0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
@@ -446,6 +448,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_font_roman              = "default";
 	h_font_sans               = "default";
 	h_font_typewriter         = "default";
+	h_font_math               = "auto";
 	h_font_default_family     = "default";
 	h_use_non_tex_fonts       = "false";
 	h_font_sc                 = "false";
@@ -506,7 +509,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_indices             = "false";
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
-	h_use_hyperref            = "0";
+	h_use_hyperref            = "false";
 	h_use_refstyle            = "0";
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
@@ -522,7 +525,7 @@ void Preamble::handle_hyperref(vector<string> & options)
 {
 	// FIXME swallow inputencoding changes that might surround the
 	//       hyperref setup if it was written by LyX
-	h_use_hyperref = "1";
+	h_use_hyperref = "true";
 	// swallow "unicode=true", since LyX does always write that
 	vector<string>::iterator it =
 		find(options.begin(), options.end(), "unicode=true");
@@ -638,6 +641,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	vector<string> options = split_options(opts);
 	add_package(name, options);
 	string scale;
+	char const * const * where = 0;
 
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
@@ -648,10 +652,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	// roman fonts
-	if (is_known(name, known_roman_fonts)) {
+	if (is_known(name, known_roman_fonts))
 		h_font_roman = name;
-		p.skip_spaces();
-	}
 
 	if (name == "fourier") {
 		h_font_roman = "utopia";
@@ -754,9 +756,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "CJK") {
-		// It is impossible to determine the document language if CJK is used.
-		// All we can do is to notify the user that he has to set this by himself.
-		have_CJK = true;
 		// set the encoding to "auto" because it might be set to "default" by the babel handling
 		// and this would not be correct for CJK
 		if (h_inputencoding == "default")
@@ -816,10 +815,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
-		if (!in_lyx_preamble)
+		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
-			           << name << "}\n" << package_end_sep;
+			           << name << '}';
+			if (p.next_token().cat() == catNewline ||
+			    (p.next_token().cat() == catSpace &&
+			     p.next_next_token().cat() == catNewline))
+				h_preamble << '\n';
+			h_preamble << package_end_sep;
+		}
 	}
 
 	else if (name == "geometry")
@@ -828,8 +833,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "subfig")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if (is_known(name, known_languages))
-		h_language = name;
+	else if ((where = is_known(name, known_languages)))
+		h_language = known_coded_languages[where - known_languages];
 
 	else if (name == "natbib") {
 		h_biblio_style = "plainnat";
@@ -859,12 +864,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
-			h_preamble << "\\usepackage{" << name << "}\n";
+			h_preamble << "\\usepackage{" << name << '}';
 		else {
 			h_preamble << "\\usepackage[" << opts << "]{"
-				   << name << "}\n";
+				   << name << '}';
 			options.clear();
 		}
+		if (p.next_token().cat() == catNewline ||
+		    (p.next_token().cat() == catSpace &&
+		     p.next_next_token().cat() == catNewline))
+			h_preamble << '\n';
 	}
 
 	// We need to do something with the options...
@@ -905,7 +914,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	// http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
 	// (quotes for kazakh and interlingua are unknown)
 	// danish
-	if (h_language == "danish")
+	if (is_known(h_language, known_danish_quotes_languages))
 		h_quotes_language = "danish";
 	// french
 	else if (is_known(h_language, known_french_quotes_languages))
@@ -982,6 +991,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_roman " << h_font_roman << "\n"
 	   << "\\font_sans " << h_font_sans << "\n"
 	   << "\\font_typewriter " << h_font_typewriter << "\n"
+	   << "\\font_math " << h_font_math << "\n"
 	   << "\\font_default_family " << h_font_default_family << "\n"
 	   << "\\use_non_tex_fonts " << h_use_non_tex_fonts << "\n"
 	   << "\\font_sc " << h_font_sc << "\n"
@@ -1000,7 +1010,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	os << "\\paperfontsize " << h_paperfontsize << "\n"
 	   << "\\spacing " << h_spacing << "\n"
 	   << "\\use_hyperref " << h_use_hyperref << '\n';
-	if (h_use_hyperref == "1") {
+	if (h_use_hyperref == "true") {
 		if (!h_pdf_title.empty())
 			os << "\\pdf_title \"" << h_pdf_title << "\"\n";
 		if (!h_pdf_author.empty())
@@ -1633,6 +1643,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		ostringstream ss;
 		ss << tc.sides();
 		h_papersides = ss.str();
+	}
+
+	// If the CJK package is used we cannot set the document language from
+	// the babel options. Instead, we guess which language is used most
+	// and set this one.
+	default_language = h_language;
+	if (is_full_document && auto_packages.find("CJK") != auto_packages.end()) {
+		p.pushPosition();
+		h_language = guessLanguage(p, default_language);
+		p.popPosition();
 	}
 }
 

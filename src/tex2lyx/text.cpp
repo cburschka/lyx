@@ -130,16 +130,8 @@ const char * const supported_CJK_encodings[] = {
  * the same as supported_CJK_encodings with their corresponding LyX language name
  * please keep this in sync with supported_CJK_encodings line by line!
  */
-const char * const coded_supported_CJK_encodings[] = {
+const char * const supported_CJK_languages[] = {
 "japanese-cjk", "korean", "chinese-simplified", "chinese-traditional", 0};
-
-string CJK2lyx(string const & encoding)
-{
-	char const * const * where = is_known(encoding, supported_CJK_encodings);
-	if (where)
-		return coded_supported_CJK_encodings[where - supported_CJK_encodings];
-	return encoding;
-}
 
 /*!
  * natbib commands.
@@ -1440,8 +1432,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// LyX doesn't support the second argument so if
 		// this is used we need to output everything as ERT
 		string const mapping = p.getArg('{', '}');
-		if ((!mapping.empty() && mapping != " ")
-			|| (!is_known(encoding, supported_CJK_encodings))) {
+		char const * const * const where =
+			is_known(encoding, supported_CJK_encodings);
+		if ((!mapping.empty() && mapping != " ") || !where) {
 			parent_context.check_layout(os);
 			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
 				       parent_context);
@@ -1459,7 +1452,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			handle_ert(os, "\\end{" + name + "}",
 				       parent_context);
 		} else {
-			string const lang = CJK2lyx(encoding);
+			string const lang =
+				supported_CJK_languages[where - supported_CJK_encodings];
 			// store the language because we must reset it at the end
 			string const lang_old = parent_context.font.language;
 			parent_context.font.language = lang;
@@ -2142,24 +2136,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	while (p.good()) {
 		Token const & t = p.get_token();
 
-	// it is impossible to determine the correct document language if CJK is used.
-	// Therefore write a note at the beginning of the document
-	if (have_CJK) {
-		context.check_layout(os);
-		begin_inset(os, "Note Note\n");
-		os << "status open\n\\begin_layout Plain Layout\n"
-		   << "\\series bold\n"
-		   << "Important information:\n"
-		   << "\\end_layout\n\n"
-		   << "\\begin_layout Plain Layout\n"
-		   << "This document contains text in Chinese, Japanese or Korean.\n"
-		   << " It was therefore impossible for tex2lyx to set the correct document langue for your document."
-		   << " Please set the language manually in the document settings.\n"
-		   << "\\end_layout\n";
-		end_inset(os);
-		have_CJK = false;
-	}
-
 	// it is impossible to determine the correct encoding for non-CJK Japanese.
 	// Therefore write a note at the beginning of the document
 	if (is_nonCJKJapanese) {
@@ -2739,8 +2715,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			p.skip_spaces();
 			begin_inset(os, "Caption\n");
-			Context newcontext(true, context.textclass);
-			newcontext.font = context.font;
+			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
@@ -2790,8 +2765,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << "\n\\begin_layout Plain Layout";
 					p.skip_spaces();
 					begin_inset(os, "Caption\n");
-					Context newcontext(true, context.textclass);
-					newcontext.font = context.font;
+					Context newcontext(true, context.textclass,
+					                   0, 0, context.font);
 					newcontext.check_layout(os);
 					os << caption << "\n";
 					newcontext.check_end_layout(os);
@@ -4425,6 +4400,79 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			break;
 		}
 	}
+}
+
+
+string guessLanguage(Parser & p, string const & lang)
+{
+	typedef std::map<std::string, size_t> LangMap;
+	// map from language names to number of characters
+	LangMap used;
+	used[lang] = 0;
+	for (char const * const * i = supported_CJK_languages; *i; i++)
+		used[string(*i)] = 0;
+
+	while (p.good()) {
+		Token const t = p.get_token();
+		// comments are not counted for any language
+		if (t.cat() == catComment)
+			continue;
+		// commands are not counted as well, but we need to detect
+		// \begin{CJK} and switch encoding if needed
+		if (t.cat() == catEscape) {
+			if (t.cs() == "inputencoding") {
+				string const enc = subst(p.verbatim_item(), "\n", " ");
+				p.setEncoding(enc);
+				continue;
+			}
+			if (t.cs() != "begin")
+				continue;
+		} else {
+			// Non-CJK content is counted for lang.
+			// We do not care about the real language here:
+			// If we have more non-CJK contents than CJK contents,
+			// we simply use the language that was specified as
+			// babel main language.
+			used[lang] += t.asInput().length();
+			continue;
+		}
+		// Now we are starting an environment
+		p.pushPosition();
+		string const name = p.getArg('{', '}');
+		if (name != "CJK") {
+			p.popPosition();
+			continue;
+		}
+		// It is a CJK environment
+		p.popPosition();
+		/* name = */ p.getArg('{', '}');
+		string const encoding = p.getArg('{', '}');
+		/* mapping = */ p.getArg('{', '}');
+		string const encoding_old = p.getEncoding();
+		char const * const * const where =
+			is_known(encoding, supported_CJK_encodings);
+		if (where)
+			p.setEncoding(encoding);
+		else
+			p.setEncoding("utf8");
+		string const text = p.verbatimEnvironment("CJK");
+		p.setEncoding(encoding_old);
+		p.skip_spaces();
+		if (!where) {
+			// ignore contents in unknown CJK encoding
+			continue;
+		}
+		// the language of the text
+		string const cjk =
+			supported_CJK_languages[where - supported_CJK_encodings];
+		used[cjk] += text.length();
+	}
+	LangMap::const_iterator use = used.begin();
+	for (LangMap::const_iterator it = used.begin(); it != used.end(); ++it) {
+		if (it->second > use->second)
+			use = it;
+	}
+	return use->first;
 }
 
 // }])

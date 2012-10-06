@@ -1,5 +1,5 @@
-#LyX file created by tex2lyx 2.1.0svn
-\lyxformat 433
+#LyX file created by tex2lyx 2.1.0dev
+\lyxformat 444
 \begin_document
 \begin_header
 \textclass article
@@ -47,6 +47,7 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -60,7 +61,7 @@
 \index_command default
 \paperfontsize 12
 \spacing other 1.2
-\use_hyperref 0
+\use_hyperref false
 \papersize b4paper
 \use_geometry true
 \use_package amsmath 2
@@ -82,6 +83,10 @@
 \notefontcolor #0000ff
 \backgroundcolor #ff5500
 \boxbgcolor #ffff00
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 3cm
 \topmargin 1cm
 \rightmargin 4cm

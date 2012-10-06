@@ -332,7 +332,6 @@ bool checkModule(string const & name, bool command)
 bool noweb_mode = false;
 bool pdflatex = false;
 bool xetex = false;
-bool have_CJK = false;
 bool is_nonCJKJapanese = false;
 bool roundtrip = false;
 
@@ -704,7 +703,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	stringstream ss;
 	// store the document language in the context to be able to handle the
 	// commands like \foreignlanguage and \textenglish etc.
-	context.font.language = preamble.language();
+	context.font.language = preamble.defaultLanguage();
 	// parse the main text
 	parse_text(p, ss, FLAG_END, true, context);
 	if (Context::empty)

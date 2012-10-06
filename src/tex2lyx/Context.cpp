@@ -113,6 +113,9 @@ void Context::begin_layout(ostream & os, Layout const * const & l)
 	}
 	// FIXME: This is not enough for things like
 	// \\Huge par1 \\par par2
+	// FIXME: If the document language is not english this outputs a
+	// superflous language change. Fortunately this is only file format
+	// bloat an does not change the TeX export of LyX.
 	output_font_change(os, normalfont, font);
 }
 
