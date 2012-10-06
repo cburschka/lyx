@@ -142,6 +142,9 @@ What's new
 
 - Fix tex2lyx import of mhchem commands outside math mode (bug 8306).
 
+- Fix failure of lyxknitr.R to move files when /tmp was on a different
+  file system (e.g. an encrypted home partition).
+
 
 * USER INTERFACE
 
