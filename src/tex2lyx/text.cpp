@@ -1836,28 +1836,31 @@ void fix_child_filename(string & name)
 	if (!isabs)
 		name = makeAbsPath(name, absMasterTeX).absFileName();
 	bool copyfile = copyFiles();
-	// convert from absolute original path to "relative to master file"
-	string const rel = to_utf8(makeRelPath(from_utf8(name),
-	                                       from_utf8(absMasterTeX)));
-	// Do not copy if the file is not in or below the directory of the
-	// master, since in this case the new path might be impossible to
-	// create. Example:
-	// absMasterTeX = "/foo/bar/"
-	// absMasterLyX = "/bar/"
-	// name = "/baz.eps" => new absolute name would be "/../baz.eps"
-	if (copyfile && rel.substr(0, 3) == "../")
-		copyfile = false;
 	string const absParentLyX = getParentFilePath(false);
+	string abs = name;
 	if (copyfile) {
+		// convert from absolute original path to "relative to master file"
+		string const rel = to_utf8(makeRelPath(from_utf8(name),
+		                                       from_utf8(absMasterTeX)));
 		// re-interpret "relative to .tex file" as "relative to .lyx file"
 		// (is different if the master .lyx file resides in a
 		// different path than the master .tex file)
 		string const absMasterLyX = getMasterFilePath(false);
-		name = makeAbsPath(rel, absMasterLyX).absFileName();
-		if (!isabs) {
+		abs = makeAbsPath(rel, absMasterLyX).absFileName();
+		// Do not copy if the new path is impossible to create. Example:
+		// absMasterTeX = "/foo/bar/"
+		// absMasterLyX = "/bar/"
+		// name = "/baz.eps" => new absolute name would be "/../baz.eps"
+		if (contains(name, "/../"))
+			copyfile = false;
+	}
+	if (copyfile) {
+		if (isabs)
+			name = abs;
+		else {
 			// convert from absolute original path to
 			// "relative to .lyx file"
-			name = to_utf8(makeRelPath(from_utf8(name),
+			name = to_utf8(makeRelPath(from_utf8(abs),
 			                           from_utf8(absParentLyX)));
 		}
 	}
@@ -1880,12 +1883,6 @@ void copy_file(FileName const & src, string dstname)
 	else
 		dst = makeAbsPath(dstname, absParent);
 	string const absMaster = getMasterFilePath(false);
-	string const rel = to_utf8(makeRelPath(from_utf8(dst.absFileName()),
-	                                       from_utf8(absMaster)));
-	// Do not copy if the file is not in or below the directory of the
-	// master (see above)
-	if (rel.substr(0, 3) == "../")
-		return;
 	FileName const srcpath = src.onlyPath();
 	FileName const dstpath = dst.onlyPath();
 	if (equivalent(srcpath, dstpath))
