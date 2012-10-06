@@ -474,6 +474,9 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::isProvided(string const & name) const
 {
+	if (params_.useNonTeXFonts)
+		return params_.documentClass().provides(name);
+
 	bool const ot1 = (params_.font_encoding() == "default"
 		|| params_.font_encoding() == "OT1");
 	bool const complete = (params_.fonts_sans == "default")
