@@ -11,7 +11,7 @@
 ## author Yihui Xie
 
 ## knitr is an alternative package to Sweave, and has more features
-## and flexibility; see https://yihui.github.com/knitr
+## and flexibility; see https://yihui.name/knitr
 
 ## Rscript $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r
 ## $$p the path of the output (temp dir)
@@ -31,18 +31,7 @@ options(encoding = .cmdargs[3])
 ## can put your data files there and functions like read.table() can
 ## work correctly without specifying the full path
 setwd(.cmdargs[4])
+opts_knit$set(root.dir = getwd())
 
-## copy the Rnw file to the current working directory if it does not exist
-.tmp.file = tempfile(); .rnw.file = basename(.cmdargs[1])
-.rnw.exists = file.exists(.rnw.file)
-if (.rnw.exists) file.rename(.rnw.file, .tmp.file)
-file.copy(.cmdargs[1], '.')
 ## run knit() to get .tex or .R
-knit(.rnw.file, tangle = 'tangle' %in% .cmdargs)
-
-setwd(.cmdargs[4])
-## remove the copied .Rnw if it did not exist, otherwise move the original one back
-if (.rnw.exists) file.rename(.tmp.file, .rnw.file) else unlink(.rnw.file)
-file.rename(basename(.cmdargs[2]), .cmdargs[2])  # move .tex to the temp dir
-rm(.tmp.file, .rnw.file, .rnw.exists)  # clean up these variables
-
+knit(.cmdargs[1], output = .cmdargs[2], tangle = 'tangle' %in% .cmdargs)
