@@ -31,8 +31,7 @@ SOURCEFILES = \
   boost.cpp \
   client.cpp
 
-HEADERFILES = \
-  Messages.h
+HEADERFILES = 
 
 
 lyxclient.cpp:
