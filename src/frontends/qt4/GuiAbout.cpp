@@ -132,6 +132,18 @@ static QString version()
 	return res;
 }
 
+static QString buildinfo()
+{
+	QString res;
+	QTextStream out(&res);
+	out << "LyX " << lyx_version
+		<< " (" << lyx_release_date << ")" << endl;
+	out << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+
+	out << lyx_version_info << endl;
+	return res;
+}
+
 
 struct GuiAbout::Private
 {
@@ -152,6 +164,7 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.copyrightTB->append(disclaimer());
 
 	d->ui.versionLA->setText(version());
+	d->ui.buildinfoTB->setText(buildinfo());
 	d->ui.creditsTB->setHtml(credits());
 }
 

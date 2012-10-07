@@ -94,6 +94,22 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="buildinfotab" >
+      <attribute name="title" >
+       <string>Build Info</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QTextBrowser" name="buildinfoTB" />
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="1" column="0" >
