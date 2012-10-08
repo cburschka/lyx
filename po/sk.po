@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-07 19:12+0200\n"
+"POT-Creation-Date: 2012-10-08 19:42+0200\n"
 "PO-Revision-Date: 2012-10-07 19:17+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -23987,8 +23987,9 @@ msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
 
 #: src/frontends/qt4/LayoutBox.cpp:573
-msgid " (unknown)"
-msgstr " (neznáme)"
+#, c-format
+msgid "%1$s (unknown)"
+msgstr "%1$s (neznámy)"
 
 #: src/frontends/qt4/Menus.cpp:664
 msgid "More...|M"
@@ -25683,6 +25684,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid " (unknown)"
+#~ msgstr " (neznáme)"
+
 #~ msgid "Save in Bundled Format|F"
 #~ msgstr "Uložiť v zbalenom formáte"
 
@@ -25912,10 +25916,6 @@ msgstr "Neznámy používateľ"
 #, qt-format
 #~ msgid "List of %1$s"
 #~ msgstr "Zoznam od %1$s"
-
-#, qt-format
-#~ msgid "%1$s unknown"
-#~ msgstr "%1$s neznámy"
 
 #~ msgid "Edit"
 #~ msgstr "Upraviť"
