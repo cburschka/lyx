@@ -487,7 +487,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 	string const file_in = file.absFileName();
 	string const only_path = onlyPath(file_in);
 	if (rtrim(onlyPath(file_in) , "/") == rtrim(dir, "/"))
-		return make_pair(IDENTICAL_PATHS, file_in);
+		return make_pair(IDENTICAL_PATHS, FileName(file_in));
 
 	string mangled = file.mangledFileName();
 	if (formats.isZippedFile(file)) {
