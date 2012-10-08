@@ -569,9 +569,9 @@ void LayoutBox::addItemSort(docstring const & item, docstring const & category,
 	bool sorted, bool sortedByCat, bool unknown)
 {
 	QString qitem = toqstr(item);
-	// FIXME This is wrong for RTL, I'd suppose.
-	QString titem = toqstr(translateIfPossible(item) +
-	                       (unknown ? _(" (unknown)") : from_ascii("")));
+	docstring const loc_item = translateIfPossible(item);
+	QString titem = unknown ? toqstr(bformat(_("%1$s (unknown)"), loc_item))
+				: toqstr(loc_item);
 	QString qcat = toqstr(translateIfPossible(category));
 
 	QList<QStandardItem *> row;
