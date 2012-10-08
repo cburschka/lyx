@@ -322,25 +322,24 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
 	if test x$lyx_cv_with_included_boost != xyes ; then
 		AC_LANG_PUSH(C++)
-		SAVED_LDFLAGS=$LDFLAGS
+		save_LIBS=$LIBS
 
-		LDFLAGS="$SAVED_LDFLAGS -lboost_signals -lm"
-		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_underscore=yes], [])
-		LDFLAGS="$SAVED_LDFLAGS -lboost_signals-mt -lm $LIBTHREAD"
-		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_underscore_mt=yes], [])
+		LIBS="$save_LIBS -lboost_signals -lm"
+		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_plain=yes], [])
+		LIBS="$save_LIBS -lboost_signals-mt -lm $LIBTHREAD"
+		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_mt=yes], [])
 
-		LDFLAGS=$SAVED_LDFLAGS
+		LIBS=$save_LIBS
 		AC_LANG_POP(C++)
 
-		if test x$lyx_boost_underscore_mt = xyes ; then
+		if test x$lyx_boost_mt = xyes ; then
 			BOOST_MT="-mt"
 		else
 			BOOST_MT=""
-			if test x$lyx_boost_plain != xyes -a x$lyx_boost_underscore != xyes ; then
+			if test x$lyx_boost_plain != xyes ; then
 				LYX_ERROR([No suitable boost library found (do not use --without-included-boost)])
 			fi
 		fi
-		AC_SUBST(BOOST_SEP)
 		AC_SUBST(BOOST_MT)
 	fi
 ])
