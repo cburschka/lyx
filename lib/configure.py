@@ -1063,7 +1063,7 @@ def processLayoutFile(file, bool_docbook):
                 return classdeclaration + " " + categorydeclaration
         if qres != None:
              categorydeclaration = '"%s"' % (qres.groups()[0])
-             if classdeclaration != "":
+             if classdeclaration != '""':
                  return classdeclaration + " " + categorydeclaration
     if classdeclaration != "":
         return classdeclaration + " " + categorydeclaration
