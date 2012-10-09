@@ -72,11 +72,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
 
 lyx_add_msvc_pch(lyx)
 
-if (LYX_DEVEL_VERSION)
-	add_definitions(-DDEVEL_VERSION)
-endif()
-
-
 if (LYX_MERGE_FILES)
 	if(dont_merge)
 		list(REMOVE_ITEM lyx_sources ${dont_merge})
