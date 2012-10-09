@@ -17,7 +17,6 @@
 
 #include "BufferParams.h"
 #include "BulletsModule.h"
-#include "CategorizedCombo.h"
 #include "GuiDialog.h"
 #include "GuiIdListModel.h"
 
@@ -48,7 +47,6 @@ class TextClass;
 
 namespace frontend {
 
-class CategorizedCombo;
 class FloatPlacement;
 class GuiBranches;
 class GuiIndices;
