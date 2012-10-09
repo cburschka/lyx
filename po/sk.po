@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-08 19:42+0200\n"
-"PO-Revision-Date: 2012-10-07 19:17+0200\n"
+"POT-Creation-Date: 2012-10-09 11:04+0200\n"
+"PO-Revision-Date: 2012-10-09 12:48+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -5106,6 +5106,42 @@ msgstr "Povoľuje premenlivé umiestnenie"
 msgid "Allow &floating"
 msgstr "U&možni plávajúce objekty"
 
+#: lib/layouts/AEA.layout:3
+msgid "American Economic Association (AEA)"
+msgstr "American Economic Association (AEA)"
+
+#: lib/layouts/AEA.layout:4 lib/layouts/IEEEtran.layout:4
+#: lib/layouts/aa.layout:4 lib/layouts/aapaper.layout:4
+#: lib/layouts/aastex.layout:4 lib/layouts/achemso.layout:4
+#: lib/layouts/acmsiggraph.layout:4 lib/layouts/agums.layout:4
+#: lib/layouts/agutex.layout:4 lib/layouts/amsart.layout:4
+#: lib/layouts/apa.layout:4 lib/layouts/arab-article.layout:4
+#: lib/layouts/article-beamer.layout:4 lib/layouts/article.layout:4
+#: lib/layouts/chess.layout:4 lib/layouts/cl2emult.layout:4
+#: lib/layouts/ctex-article.layout:4 lib/layouts/doublecol-new.layout:4
+#: lib/layouts/dtk.layout:4 lib/layouts/ectaart.layout:4
+#: lib/layouts/egs.layout:4 lib/layouts/elsart.layout:4
+#: lib/layouts/elsarticle.layout:4 lib/layouts/entcs.layout:4
+#: lib/layouts/extarticle.layout:4 lib/layouts/heb-article.layout:4
+#: lib/layouts/ijmpc.layout:4 lib/layouts/ijmpd.layout:4
+#: lib/layouts/iopart.layout:4 lib/layouts/isprs.layout:4
+#: lib/layouts/jarticle.layout:4 lib/layouts/jasatex.layout:4
+#: lib/layouts/jgrga.layout:4 lib/layouts/jsarticle.layout:4
+#: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
+#: lib/layouts/latex8.layout:4 lib/layouts/literate-article.layout:4
+#: lib/layouts/llncs.layout:4 lib/layouts/ltugboat.layout:4
+#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
+#: lib/layouts/revtex.layout:4 lib/layouts/revtex4-1.layout:4
+#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
+#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
+#: lib/layouts/sigplanconf.layout:4 lib/layouts/singlecol-new.layout:4
+#: lib/layouts/singlecol.layout:4 lib/layouts/spie.layout:4
+#: lib/layouts/svglobal.layout:4 lib/layouts/svglobal3.layout:4
+#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
+#: lib/layouts/tarticle.layout:4
+msgid "Articles"
+msgstr "Články"
+
 #: lib/layouts/AEA.layout:55 lib/layouts/apa.layout:92
 msgid "ShortTitle"
 msgstr "KrátkyTitul"
@@ -5651,6 +5687,10 @@ msgstr "Popis: "
 msgid "Proof"
 msgstr "Dôkaz"
 
+#: lib/layouts/IEEEtran.layout:3
+msgid "IEEE Transactions"
+msgstr "IEEE Transactions"
+
 #: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
 #: lib/layouts/achemso.layout:32 lib/layouts/acmsiggraph.layout:34
@@ -5886,6 +5926,10 @@ msgstr "ŽivotopisBezFotky"
 msgid "Proof."
 msgstr "Dôkaz."
 
+#: lib/layouts/aa.layout:3
+msgid "Astronomy & Astrophysics"
+msgstr "Astronomy & Astrophysics"
+
 #: lib/layouts/aa.layout:42 lib/layouts/aa.layout:229
 #: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:137
 #: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:177
@@ -6099,10 +6143,18 @@ msgstr "E-mail"
 msgid "email"
 msgstr "E-mail"
 
+#: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
+msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
+msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
+
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:46
 msgid "Thesaurus"
 msgstr "Tezaurus"
+
+#: lib/layouts/aastex.layout:3
+msgid "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX)"
 
 #: lib/layouts/aastex.layout:79 lib/layouts/agutex.layout:149
 #: lib/layouts/amsbook.layout:126 lib/layouts/apa.layout:341
@@ -6264,6 +6316,10 @@ msgstr "Obj:"
 msgid "Dataset:"
 msgstr "Dataset:"
 
+#: lib/layouts/achemso.layout:3
+msgid "American Chemical Society (ACS)"
+msgstr "American Chemical Society (ACS)"
+
 #: lib/layouts/achemso.layout:100
 msgid "Alt Affiliation"
 msgstr "Alternatívne Príslušenstvo"
@@ -6323,6 +6379,10 @@ msgstr "Chemistry"
 msgid "chemistry"
 msgstr "chemistry"
 
+#: lib/layouts/acmsiggraph.layout:3
+msgid "ACM SIGGRAPH"
+msgstr "ACM SIGGRAPH"
+
 #: lib/layouts/acmsiggraph.layout:64
 msgid "Teaser"
 msgstr "Teaser"
@@ -6357,6 +6417,22 @@ msgstr "Computing Review Categories"
 msgid "Acknowledgments"
 msgstr "Poďakovania"
 
+#: lib/layouts/agu-dtd.layout:3
+msgid "American Geophysical Union (AGU, SGML Article)"
+msgstr "American Geophysical Union (AGU, SGML článok)"
+
+#: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
+msgid "Articles (DocBook)"
+msgstr "Články (DocBook)"
+
+#: lib/layouts/agums.layout:3
+msgid "American Geophysical Union (AGUPLUS Manuscript)"
+msgstr "American Geophysical Union (AGUPLUS Manuskript)"
+
+#: lib/layouts/agutex.layout:3
+msgid "American Geophysical Union (AGUTeX)"
+msgstr "American Geophysical Union (AGUTeX)"
+
 #: lib/layouts/agutex.layout:72
 msgid "Authors"
 msgstr "Autori"
@@ -6384,6 +6460,10 @@ msgstr "Súhrn."
 #: lib/layouts/agutex.layout:189
 msgid "Acknowledgments."
 msgstr "Poďakovania."
+
+#: lib/layouts/amsart.layout:3
+msgid "American Mathematical Society (AMS) Article"
+msgstr "American Mathematical Society (AMS) Článok"
 
 #: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:83
 #: lib/layouts/beamer.layout:172 lib/layouts/egs.layout:579
@@ -6424,9 +6504,28 @@ msgstr "Podsekcia*"
 msgid "Subsubsection*"
 msgstr "Podpodsekcia*"
 
+#: lib/layouts/amsbook.layout:3
+msgid "American Mathematical Society (AMS) Book"
+msgstr "American Mathematical Society (AMS) Kniha"
+
+#: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
+#: lib/layouts/ctex-book.layout:4 lib/layouts/extbook.layout:4
+#: lib/layouts/jbook.layout:4 lib/layouts/jsbook.layout:4
+#: lib/layouts/literate-book.layout:4 lib/layouts/memoir.layout:4
+#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
+#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
+#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
+#: lib/layouts/tufte-book.layout:4
+msgid "Books"
+msgstr "Knihy"
+
 #: lib/layouts/amsbook.layout:135
 msgid "Chapter Exercises"
 msgstr "Kapitola Úlohy"
+
+#: lib/layouts/apa.layout:3
+msgid "American Psychological Association (APA)"
+msgstr "American Psychological Association (APA)"
 
 #: lib/layouts/apa.layout:51
 msgid "RightHeader"
@@ -6517,10 +6616,22 @@ msgstr "Seriate"
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
+#: lib/layouts/arab-article.layout:3
+msgid "Arabic Article"
+msgstr "Arabský článok"
+
+#: lib/layouts/article-beamer.layout:3
+msgid "Beamer Article (Standard Class)"
+msgstr "Beamer článok (Štandardná Trieda)"
+
 #: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:226
 #: lib/layouts/scrarticle-beamer.layout:22
 msgid "BeginFrame"
 msgstr "BeginFrame"
+
+#: lib/layouts/article.layout:3
+msgid "Article (Standard Class)"
+msgstr "Článok (Štandardná Trieda)"
 
 #: lib/layouts/article.layout:19 lib/layouts/beamer.layout:107
 #: lib/layouts/beamer.layout:122 lib/layouts/memoir.layout:52
@@ -6538,6 +6649,16 @@ msgstr "Časť"
 #: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr "Časť*"
+
+#: lib/layouts/beamer.layout:3
+msgid "Beamer"
+msgstr "Beamer"
+
+#: lib/layouts/beamer.layout:4 lib/layouts/foils.layout:4
+#: lib/layouts/powerdot.layout:4 lib/layouts/seminar.layout:4
+#: lib/layouts/slides.layout:4
+msgid "Presentations"
+msgstr "Prezentácie"
 
 #: lib/layouts/beamer.layout:154
 msgid "Section \\arabic{section}"
@@ -6872,6 +6993,18 @@ msgstr "Obrázok"
 msgid "List of Figures"
 msgstr "Zoznam obrázkov"
 
+#: lib/layouts/book.layout:3
+msgid "Book (Standard Class)"
+msgstr "Kniha (Štandardná Trieda)"
+
+#: lib/layouts/broadway.layout:3
+msgid "Broadway"
+msgstr "Broadway"
+
+#: lib/layouts/broadway.layout:4 lib/layouts/hollywood.layout:4
+msgid "Scripts"
+msgstr "Skripty"
+
 #: lib/layouts/broadway.layout:31 lib/layouts/hollywood.layout:40
 msgid "Dialogue"
 msgstr "Dialóg"
@@ -6929,6 +7062,10 @@ msgstr "OPONA"
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Adresa vpravo"
+
+#: lib/layouts/chess.layout:3
+msgid "Chess"
+msgstr "Šach"
 
 #: lib/layouts/chess.layout:35
 msgid "Mainline"
@@ -7033,6 +7170,41 @@ msgstr "KnightMove"
 #: lib/layouts/chess.layout:191
 msgid "KnightMove:"
 msgstr "KnightMove:"
+
+#: lib/layouts/cl2emult.layout:3
+msgid "Springer cl2emult"
+msgstr "Springer cl2emult"
+
+#: lib/layouts/ctex-article.layout:3
+msgid "Chinese Article (CTeX)"
+msgstr "Čínsky článok (CTeX)"
+
+#: lib/layouts/ctex-book.layout:3
+msgid "Chinese Book (CTeX)"
+msgstr "Čínska kniha (CTeX)"
+
+#: lib/layouts/ctex-report.layout:3
+msgid "Chinese Report (CTeX)"
+msgstr "Čínsky referát (CTeX)"
+
+#: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
+#: lib/layouts/jreport.layout:4 lib/layouts/literate-report.layout:4
+#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
+#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
+msgid "Reports"
+msgstr "Referáty"
+
+#: lib/layouts/dinbrief.layout:3
+msgid "DIN-Brief"
+msgstr "Din-Brief"
+
+#: lib/layouts/dinbrief.layout:4 lib/layouts/extletter.layout:4
+#: lib/layouts/frletter.layout:4 lib/layouts/g-brief.layout:4
+#: lib/layouts/g-brief2.layout:4 lib/layouts/heb-letter.layout:4
+#: lib/layouts/letter.layout:4 lib/layouts/lettre.layout:4
+#: lib/layouts/scrlettr.layout:4 lib/layouts/scrlttr2.layout:4
+msgid "Letters"
+msgstr "Listy"
 
 #: lib/layouts/dinbrief.layout:28
 msgid "DinBrief"
@@ -7373,6 +7545,39 @@ msgstr "Kópia"
 msgid "Verteiler"
 msgstr "Kópia"
 
+#: lib/layouts/docbook-book.layout:3
+msgid "DocBook Book (SGML)"
+msgstr "DocBook-kniha (SGML)"
+
+#: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
+#: lib/layouts/docbook-section.layout:4
+msgid "Books (DocBook)"
+msgstr "Knihy (DocBook)"
+
+#: lib/layouts/docbook-chapter.layout:3
+msgid "DocBook Chapter (SGML)"
+msgstr "DocBook kapitola (SGML)"
+
+#: lib/layouts/docbook-section.layout:3
+msgid "DocBook Section (SGML)"
+msgstr "DocBook sekcia (SGML)"
+
+#: lib/layouts/docbook.layout:3
+msgid "DocBook Article (SGML)"
+msgstr "DocBook článok (SGML)"
+
+#: lib/layouts/doublecol-new.layout:3
+msgid "Inderscience A4 Journals"
+msgstr "Inderscience A4 časopisy"
+
+#: lib/layouts/dtk.layout:3
+msgid "Die TeXnische Komoedie"
+msgstr "Die TeXnische Komödie"
+
+#: lib/layouts/ectaart.layout:3
+msgid "Econometrica"
+msgstr "Econometrica"
+
 #: lib/layouts/ectaart.layout:21
 msgid "RunTitle"
 msgstr "Hlavička: Titul"
@@ -7483,6 +7688,10 @@ msgstr "Od Rovnakého Autora (bib)"
 msgid "bysame"
 msgstr "od rovnakého autora"
 
+#: lib/layouts/egs.layout:3
+msgid "European Geophysical Society (EGS)"
+msgstr "European Geophysical Society (EGS)"
+
 #: lib/layouts/egs.layout:145 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
 msgstr "00.00.0000"
@@ -7552,6 +7761,10 @@ msgstr "Vyrovnania"
 #: lib/layouts/egs.layout:460
 msgid "reprint_reqs_to:"
 msgstr "reprint_reqs_to:"
+
+#: lib/layouts/elsart.layout:3
+msgid "Elsevier (Obsolete Version)"
+msgstr "Elsevier (zastaralá verzia)"
 
 #: lib/layouts/elsart.layout:131
 msgid "Author Address"
@@ -7665,6 +7878,10 @@ msgstr "Súhrn \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Prípad \\arabic{case}"
 
+#: lib/layouts/elsarticle.layout:3
+msgid "Elsevier"
+msgstr "Elsevier"
+
 #: lib/layouts/elsarticle.layout:54
 msgid "BeginFrontmatter"
 msgstr "BeginFrontmatter"
@@ -7729,9 +7946,22 @@ msgstr "Korešpondujúci autor"
 msgid "Corresponding author text:"
 msgstr "Korešpondujúci autor text:"
 
+#: lib/layouts/entcs.layout:3
+msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
+msgstr "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
+
 #: lib/layouts/entcs.layout:110 lib/layouts/siamltex.layout:306
 msgid "Key words:"
 msgstr "Heslá:"
+
+#: lib/layouts/europecv.layout:3
+msgid "Europe CV"
+msgstr "Europe CV"
+
+#: lib/layouts/europecv.layout:4 lib/layouts/moderncv.layout:4
+#: lib/layouts/simplecv.layout:4
+msgid "Curricula Vitae"
+msgstr "Životopisy"
 
 #: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:82
 msgid "Item"
@@ -7808,6 +8038,26 @@ msgstr "Koniec"
 #: lib/layouts/europecv.layout:148
 msgid "End of CV"
 msgstr "Koniec CV"
+
+#: lib/layouts/extarticle.layout:3
+msgid "Article (Standard Class with Extra Font Sizes)"
+msgstr "Article (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#: lib/layouts/extbook.layout:3
+msgid "Book (Standard Class with Extra Font Sizes)"
+msgstr "Book (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#: lib/layouts/extletter.layout:3
+msgid "Letter (Standard Class with Extra Font Sizes)"
+msgstr "Letter (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#: lib/layouts/extreport.layout:3
+msgid "Report (Standard Class with Extra Font Sizes)"
+msgstr "Report (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#: lib/layouts/foils.layout:3
+msgid "FoilTeX"
+msgstr "FoilTeX"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -7941,6 +8191,14 @@ msgstr "Tvrdenie."
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:148
 msgid "Definition*"
 msgstr "Definícia*"
+
+#: lib/layouts/frletter.layout:3
+msgid "French Letter (frletter)"
+msgstr "Francúzsky list (frletter)"
+
+#: lib/layouts/g-brief.layout:3
+msgid "G-Brief (V. 1, Obsolete)"
+msgstr "G-Brief (V. 1, zastaralé)"
 
 #: lib/layouts/g-brief.layout:26 lib/layouts/g-brief2.layout:48
 msgid "Letter:"
@@ -8085,6 +8343,10 @@ msgstr "Predmet:"
 #: lib/layouts/g-brief.layout:218 lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
 msgstr "Prílohy:"
+
+#: lib/layouts/g-brief2.layout:3
+msgid "G-Brief (V. 2)"
+msgstr "G-Brief (V. 2)"
 
 #: lib/layouts/g-brief2.layout:77
 msgid "NameRowA"
@@ -8334,6 +8596,10 @@ msgstr "Banka Riadok F"
 msgid "BankRowF:"
 msgstr "Banka Riadok F:"
 
+#: lib/layouts/heb-article.layout:3
+msgid "Hebrew Article"
+msgstr "Hebrejský článok"
+
 #: lib/layouts/heb-article.layout:68
 msgid "Claim #."
 msgstr "Nárok #."
@@ -8350,6 +8616,14 @@ msgstr "Pripomienky #."
 #: lib/layouts/ijmpd.layout:327
 msgid "Proof:"
 msgstr "Dôkaz:"
+
+#: lib/layouts/heb-letter.layout:3
+msgid "Hebrew Letter"
+msgstr "Hebrejský list"
+
+#: lib/layouts/hollywood.layout:3
+msgid "Hollywood"
+msgstr "Hollywood"
 
 #: lib/layouts/hollywood.layout:55
 msgid "More"
@@ -8402,6 +8676,10 @@ msgstr "FADE OUT"
 #: lib/layouts/hollywood.layout:293
 msgid "Scene"
 msgstr "Scéna"
+
+#: lib/layouts/ijmpc.layout:3
+msgid "Int. Journal of Modern Physics C"
+msgstr "Int. Journal of Modern Physics C"
 
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpc.layout:84
 #: lib/layouts/ijmpc.layout:92 lib/layouts/ijmpd.layout:85
@@ -8509,9 +8787,17 @@ msgstr "Téza(prop)"
 msgid "Appendix \\Alph{appendix}."
 msgstr "Príloha \\Alph{appendix}."
 
+#: lib/layouts/ijmpd.layout:3
+msgid "Int. Journal of Modern Physics D"
+msgstr "Int. Journal of Modern Physics D"
+
 #: lib/layouts/ijmpd.layout:190 lib/layouts/ijmpd.layout:194
 msgid "Comby"
 msgstr "Comby"
+
+#: lib/layouts/iopart.layout:3
+msgid "Institute of Physics (IOP)"
+msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:77
 msgid "Review"
@@ -8571,6 +8857,10 @@ msgstr "Bibliografia (prostá)"
 msgid "Bibliography heading"
 msgstr "Nadpis bibliografie"
 
+#: lib/layouts/isprs.layout:3
+msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
+msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
+
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
 msgstr "SÚHRN:"
@@ -8586,6 +8876,14 @@ msgstr "Komisia"
 #: lib/layouts/isprs.layout:218
 msgid "ACKNOWLEDGEMENTS"
 msgstr "POĎAKOVANIA"
+
+#: lib/layouts/jarticle.layout:3
+msgid "Japanese Article (jarticle)"
+msgstr "Japonský článok (jarticle)"
+
+#: lib/layouts/jasatex.layout:3
+msgid "Journal of the Acoustical Society of America (JASA)"
+msgstr "Journal of the Acoustical Society of America (JASA)"
 
 #: lib/layouts/jasatex.layout:114
 msgid "Alternative Affiliation"
@@ -8611,6 +8909,34 @@ msgstr "Predtlač číslo:"
 msgid "Online citation"
 msgstr "Online citácia"
 
+#: lib/layouts/jbook.layout:3
+msgid "Japanese Book (jbook)"
+msgstr "Japonská kniha (jbook)"
+
+#: lib/layouts/jgrga.layout:3
+msgid "American Geophysical Union (AGUPLUS JGR)"
+msgstr "American Geophysical Union (AGUPLUS JGR)"
+
+#: lib/layouts/jreport.layout:3
+msgid "Japanese Report (jreport)"
+msgstr "Japonský referát (jreport)"
+
+#: lib/layouts/jsarticle.layout:3
+msgid "Japanese Article (jsarticle)"
+msgstr "Japonský článok (jsarticle)"
+
+#: lib/layouts/jsbook.layout:3
+msgid "Japanese Book (jsbook)"
+msgstr "Japonská kniha (jsbook)"
+
+#: lib/layouts/jss.layout:3
+msgid "Journal of Statistical Software (JSS)"
+msgstr "Journal of Statistical Software (JSS)"
+
+#: lib/layouts/kluwer.layout:3
+msgid "Kluwer"
+msgstr "Kluwer"
+
 #: lib/layouts/kluwer.layout:198
 msgid "AddressForOffprints"
 msgstr "Adresa_pre_výtlačky"
@@ -8635,6 +8961,18 @@ msgstr "StĺpecAutor"
 #: lib/layouts/kluwer.layout:245 lib/layouts/svcommon.inc:405
 msgid "Running author:"
 msgstr "Stĺpec autor:"
+
+#: lib/layouts/latex8.layout:3
+msgid "Latex8 Article (Obsolete)"
+msgstr "Latex8 článok (zastaralý)"
+
+#: lib/layouts/letter.layout:3
+msgid "Letter (Standard Class)"
+msgstr "Letter (Štandardná trieda)"
+
+#: lib/layouts/lettre.layout:3
+msgid "French Letter (lettre)"
+msgstr "Francúzsky list (lettre)"
 
 #: lib/layouts/lettre.layout:39 lib/layouts/lettre.layout:316
 msgid "NoTelephone"
@@ -8712,6 +9050,22 @@ msgstr "KoniecSúboru."
 #: lib/layouts/lettre.layout:657
 msgid "P.S.:"
 msgstr "P.S.:"
+
+#: lib/layouts/literate-article.layout:3
+msgid "Noweb Article"
+msgstr "Noweb článok"
+
+#: lib/layouts/literate-book.layout:3
+msgid "Noweb Book"
+msgstr "Noweb kniha"
+
+#: lib/layouts/literate-report.layout:3
+msgid "Noweb Report"
+msgstr "Noweb referát"
+
+#: lib/layouts/llncs.layout:3
+msgid "Lecture Notes in Comp. Science (LNCS)"
+msgstr "Lecture Notes in Comp. Science (LNCS)"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:59
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
@@ -8801,6 +9155,14 @@ msgstr "Pripomienka #."
 msgid "Solution #."
 msgstr "Riešenie #."
 
+#: lib/layouts/ltugboat.layout:3
+msgid "TUGboat"
+msgstr "TUGboat"
+
+#: lib/layouts/memoir.layout:3
+msgid "Memoir"
+msgstr "Memoir"
+
 #: lib/layouts/memoir.layout:65 lib/layouts/db_stdstarsections.inc:24
 #: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:245
 msgid "Chapter*"
@@ -8829,6 +9191,10 @@ msgstr "TitulBásne*"
 #: lib/layouts/memoir.layout:176
 msgid "Legend"
 msgstr "Legenda"
+
+#: lib/layouts/moderncv.layout:3
+msgid "Modern CV"
+msgstr "Modern CV"
 
 #: lib/layouts/moderncv.layout:66
 msgid "Entry"
@@ -8894,6 +9260,22 @@ msgstr "--Oddeľovač--"
 msgid "--- Separate Environment ---"
 msgstr "-- Oddeliť Prostredie --"
 
+#: lib/layouts/mwart.layout:3
+msgid "Polish Article (MW Bundle)"
+msgstr "Poľský článok (MW balík)"
+
+#: lib/layouts/mwbk.layout:3
+msgid "Polish Book (MW Bundle)"
+msgstr "Poľská kniha (MW balík)"
+
+#: lib/layouts/mwrep.layout:3
+msgid "Polish Report (MW Bundle)"
+msgstr "Poľský referát (MW balík)"
+
+#: lib/layouts/paper.layout:3
+msgid "Paper (Standard Class)"
+msgstr "Paper (Štandardná trieda)"
+
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
 msgstr "PodTitul"
@@ -8901,6 +9283,10 @@ msgstr "PodTitul"
 #: lib/layouts/paper.layout:159
 msgid "Institution"
 msgstr "Inštitúcia"
+
+#: lib/layouts/powerdot.layout:3
+msgid "Powerdot"
+msgstr "Powerdot"
 
 #: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:36
 #: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:171
@@ -8947,6 +9333,10 @@ msgstr "EnumerateType1"
 msgid "List of Algorithms"
 msgstr "Zoznam algoritmov"
 
+#: lib/layouts/recipebook.layout:3
+msgid "Recipe Book"
+msgstr "Receptár"
+
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
 msgid "\\thechapter"
 msgstr "\\thechapter"
@@ -8966,6 +9356,18 @@ msgstr "Prísady"
 #: lib/layouts/recipebook.layout:123
 msgid "Ingredients:"
 msgstr "Prísady:"
+
+#: lib/layouts/report.layout:3
+msgid "Report (Standard Class)"
+msgstr "Report (Štandardná trieda)"
+
+#: lib/layouts/revtex.layout:3
+msgid "REVTeX (Obsolete Version)"
+msgstr "REVTeX (zastaralá verzia)"
+
+#: lib/layouts/revtex4-1.layout:3
+msgid "REVTeX (V. 4.1)"
+msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:151
 msgid "Affiliation (alternate)"
@@ -9037,6 +9439,10 @@ msgstr "Zoznam Videí"
 msgid "Float Link"
 msgstr "Plávajúci odkaz"
 
+#: lib/layouts/revtex4.layout:3
+msgid "REVTeX (V. 4)"
+msgstr "REVTeX (V. 4)"
+
 #: lib/layouts/revtex4.layout:169
 msgid "AltAffiliation"
 msgstr "Druhé príslušenstvo"
@@ -9044,6 +9450,22 @@ msgstr "Druhé príslušenstvo"
 #: lib/layouts/revtex4.layout:257
 msgid "PACS number:"
 msgstr "PACS-číslo:"
+
+#: lib/layouts/scrartcl.layout:3
+msgid "KOMA-Script Article"
+msgstr "KOMA-Script článok"
+
+#: lib/layouts/scrarticle-beamer.layout:3
+msgid "Beamer Article (KOMA-Script)"
+msgstr "Beamer článok (KOMA-Script)"
+
+#: lib/layouts/scrbook.layout:3
+msgid "KOMA-Script Book"
+msgstr "KOMA-Script kniha"
+
+#: lib/layouts/scrlettr.layout:3
+msgid "KOMA-Script Letter (V. 1, Obsolete)"
+msgstr "KOMA-Script list (V. 1, zastaralý)"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
@@ -9111,6 +9533,10 @@ msgstr "Účet"
 msgid "Invoice no.:"
 msgstr "Účet č.:"
 
+#: lib/layouts/scrlttr2.layout:3
+msgid "KOMA-Script Letter (V. 2)"
+msgstr "KOMA-Script list (V. 2)"
+
 #: lib/layouts/scrlttr2.layout:73
 msgid "NextAddress"
 msgstr "ĎalšiaAdresa"
@@ -9154,6 +9580,14 @@ msgstr "KoniecDopis"
 #: lib/layouts/scrlttr2.layout:349
 msgid "End of letter"
 msgstr "Koniec dopisu"
+
+#: lib/layouts/scrreprt.layout:3
+msgid "KOMA-Script Report"
+msgstr "KOMA-Script referát"
+
+#: lib/layouts/seminar.layout:3
+msgid "Seminar"
+msgstr "Seminar"
 
 #: lib/layouts/seminar.layout:25 lib/layouts/seminar.layout:84
 msgid "LandscapeSlide"
@@ -9231,6 +9665,10 @@ msgstr "[Obsah fólie]"
 msgid "[Progress Contents]"
 msgstr "[Obsah Pokroku]"
 
+#: lib/layouts/siamltex.layout:3
+msgid "Society for Industrial and Applied Mathematics (SIAM)"
+msgstr "Society for Industrial and Applied Mathematics (SIAM)"
+
 #: lib/layouts/siamltex.layout:111 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:114
 msgid "Conjecture*"
@@ -9253,6 +9691,10 @@ msgstr "TematickáTrieda"
 #: lib/layouts/siamltex.layout:313
 msgid "AMS subject classifications:"
 msgstr "AMS tematické klasifikácie:"
+
+#: lib/layouts/sigplanconf.layout:3
+msgid "ACM SIGPLAN"
+msgstr "ACM SIGPLAN"
 
 #: lib/layouts/sigplanconf.layout:67
 msgid "Conference"
@@ -9286,9 +9728,25 @@ msgstr "Pojmy"
 msgid "Terms:"
 msgstr "Pojmy:"
 
+#: lib/layouts/simplecv.layout:3
+msgid "Simple CV"
+msgstr "Simple CV"
+
 #: lib/layouts/simplecv.layout:59
 msgid "Topic"
 msgstr "Námet"
+
+#: lib/layouts/singlecol-new.layout:3
+msgid "Inderscience 9.5 x 6.5 Journals"
+msgstr "Inderscience časopisy (9.5 x 6.5)"
+
+#: lib/layouts/singlecol.layout:3
+msgid "Inderscience Journals (Obsolete Version)"
+msgstr "Inderscience časopisy (zastaralá verzia)"
+
+#: lib/layouts/slides.layout:3
+msgid "Slides"
+msgstr "Fólie"
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
@@ -9322,6 +9780,10 @@ msgstr "Viditeľný text"
 msgid "<Visible Text Follows>"
 msgstr "<Viditeľný text nasleduje>"
 
+#: lib/layouts/spie.layout:3
+msgid "SPIE Proceedings"
+msgstr "SPIE rokovacie zväzky"
+
 #: lib/layouts/spie.layout:55
 msgid "Authorinfo"
 msgstr "Autori-Info"
@@ -9337,6 +9799,10 @@ msgstr "SÚHRN"
 #: lib/layouts/spie.layout:95
 msgid "ACKNOWLEDGMENTS"
 msgstr "POĎAKOVANIA"
+
+#: lib/layouts/svglobal.layout:3
+msgid "Springer SV Global (Obsolete Version)"
+msgstr "Springer SV Global (zastaralá Verzia)"
 
 #: lib/layouts/svglobal.layout:70 lib/layouts/svjog.layout:74
 #: lib/layouts/svprobth.layout:104
@@ -9390,6 +9856,10 @@ msgstr "Odtlačky"
 msgid "Offprints:"
 msgstr "Odtlačky:"
 
+#: lib/layouts/svglobal3.layout:3
+msgid "Springer SV Global (V. 3)"
+msgstr "Springer SV Global (V. 3)"
+
 #: lib/layouts/svglobal3.layout:72
 msgid "Subclass"
 msgstr "Podtrieda"
@@ -9410,6 +9880,14 @@ msgstr "CR Podmet Klasifikácia"
 msgid "Solution \\thesolution"
 msgstr "Riešenie \\thesolution"
 
+#: lib/layouts/svjog.layout:3
+msgid "Springer SV Jour/Jog"
+msgstr "Springer SV Jour/Jog"
+
+#: lib/layouts/svmono.layout:3
+msgid "Springer SV Mono"
+msgstr "Springer SV Mono"
+
 #: lib/layouts/svmono.layout:88 lib/layouts/svcommon.inc:647
 msgid "Proof(QED)"
 msgstr "Dôkaz(QED)"
@@ -9417,6 +9895,10 @@ msgstr "Dôkaz(QED)"
 #: lib/layouts/svmono.layout:92 lib/layouts/svcommon.inc:656
 msgid "Proof(smartQED)"
 msgstr "Dôkaz(smartQED)"
+
+#: lib/layouts/svmult.layout:3
+msgid "Springer SV Mult"
+msgstr "Springer SV Mult"
 
 #: lib/layouts/svmult.layout:33
 msgid "Title*"
@@ -9486,6 +9968,26 @@ msgstr "Predslov"
 msgid "ChapMotto"
 msgstr "KapMotto"
 
+#: lib/layouts/svprobth.layout:3
+msgid "Springer SV Jour/PTRF"
+msgstr "Springer SV Jour/PTRF"
+
+#: lib/layouts/tarticle.layout:3
+msgid "Japanese Article (Vertical Writing)"
+msgstr "Japonský článok (vertikálne písanie)"
+
+#: lib/layouts/tbook.layout:3
+msgid "Japanese Book (Vertical Writing)"
+msgstr "Japonská kniha (vertikálne písanie)"
+
+#: lib/layouts/treport.layout:3
+msgid "Japanese Report (Vertical Writing)"
+msgstr "Japonský referát  (vertikálne písanie)"
+
+#: lib/layouts/tufte-book.layout:3
+msgid "Tufte Book"
+msgstr "Tufte kniha"
+
 #: lib/layouts/tufte-book.layout:123
 msgid "Sidenote"
 msgstr "Poznámka na okraji (číslovaná)"
@@ -9537,6 +10039,14 @@ msgstr "Okrajná tabuľka"
 #: lib/layouts/tufte-book.layout:230
 msgid "MarginFigure"
 msgstr "OkrajnýObrázok"
+
+#: lib/layouts/tufte-handout.layout:3
+msgid "Tufte Handout"
+msgstr "Tufte Handout"
+
+#: lib/layouts/tufte-handout.layout:4
+msgid "Handouts"
+msgstr "Handouts"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -21055,6 +21565,20 @@ msgstr "Dings 3"
 msgid "Dings 4"
 msgstr "Dings 4"
 
+#: src/frontends/qt4/CategorizedCombo.cpp:186
+msgid "Unavailable:"
+msgstr "Nedostupné:"
+
+#: src/frontends/qt4/CategorizedCombo.cpp:496
+msgid "Unavailable: %1"
+msgstr "Nedostupné: %1"
+
+#: src/frontends/qt4/CategorizedCombo.cpp:498
+#: src/frontends/qt4/CategorizedCombo.cpp:523
+#: src/frontends/qt4/CategorizedCombo.cpp:524
+msgid "Uncategorized"
+msgstr "Nie kategorizované"
+
 #: src/frontends/qt4/FileDialog.cpp:191
 msgid "Directories"
 msgstr "Adresári"
@@ -22136,10 +22660,20 @@ msgstr "AMS a LeTeX-ové balíky každopádne použiť"
 msgid "The LaTeX package %1$s is always used"
 msgstr "LaTeX balík %1$s sa vždy použije"
 
-#: src/frontends/qt4/GuiDocument.cpp:1290
+#: src/frontends/qt4/GuiDocument.cpp:1276
+#: src/frontends/qt4/GuiDocument.cpp:2107
 #, c-format
-msgid "Unavailable: %1$s"
-msgstr "Nedostupné: %1$s"
+msgid "%1$s [Class '%2$s']"
+msgstr "%1$s [Trieda '%2$s']"
+
+#: src/frontends/qt4/GuiDocument.cpp:1279
+#, c-format
+msgid ""
+"Class not found by LyX. Please check if you have the matching %1$s class and "
+"all requires packages (%2$s) installed."
+msgstr ""
+"LyX triedu nenašiel. Overte si, či máte príslušnú triedu %1$s a potrebné "
+"balíky (%2$s) inštalované."
 
 #: src/frontends/qt4/GuiDocument.cpp:1386
 #: src/frontends/qt4/GuiDocument.cpp:1487
@@ -22271,6 +22805,10 @@ msgstr "&Nastaviť formát"
 #: src/frontends/qt4/GuiDocument.cpp:1950
 msgid "Unable to read local layout file."
 msgstr "Nepodarilo sa čítať lokálny súbor schémy."
+
+#: src/frontends/qt4/GuiDocument.cpp:2108
+msgid "This is a local layout file."
+msgstr "Toto je lokálny súbor schémy."
 
 #: src/frontends/qt4/GuiDocument.cpp:1972
 msgid "Select master document"
@@ -27418,9 +27956,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Backreference by pa&ge number"
 #~ msgstr "<referencia> na strane <strana>"
-
-#~ msgid "American"
-#~ msgstr "Americky"
 
 #~ msgid "Austrian"
 #~ msgstr "Rakúsky"
