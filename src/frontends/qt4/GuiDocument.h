@@ -17,6 +17,7 @@
 
 #include "BufferParams.h"
 #include "BulletsModule.h"
+#include "CategorizedCombo.h"
 #include "GuiDialog.h"
 #include "GuiIdListModel.h"
 
@@ -47,6 +48,7 @@ class TextClass;
 
 namespace frontend {
 
+class CategorizedCombo;
 class FloatPlacement;
 class GuiBranches;
 class GuiIndices;
@@ -176,8 +178,6 @@ private:
 	///
 	void setLayoutComboByIDString(std::string const & idString);
 
-	/// available classes
-	GuiIdListModel classes_model_;
 	/// available modules
 	GuiIdListModel modules_av_model_;
 	/// selected modules

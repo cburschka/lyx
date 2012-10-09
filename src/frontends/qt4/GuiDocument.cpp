@@ -13,6 +13,7 @@
 
 #include "GuiDocument.h"
 
+#include "CategorizedCombo.h"
 #include "GuiApplication.h"
 #include "GuiBranches.h"
 #include "GuiIndices.h"
@@ -40,6 +41,7 @@
 #include "LaTeXFeatures.h"
 #include "LaTeXFonts.h"
 #include "Layout.h"
+#include "LayoutEnums.h"
 #include "LayoutModuleList.h"
 #include "LyXRC.h"
 #include "ModuleList.h"
@@ -1260,7 +1262,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex classes
-	latexModule->classCO->setModel(&classes_model_);
 	LayoutFileList const & bcl = LayoutFileList::get();
 	vector<LayoutFileIndex> classList = bcl.classList();
 	sort(classList.begin(), classList.end(), less_textclass_avail_desc());
@@ -1269,10 +1270,22 @@ GuiDocument::GuiDocument(GuiView & lv)
 	vector<LayoutFileIndex>::const_iterator cen = classList.end();
 	for (int i = 0; cit != cen; ++cit, ++i) {
 		LayoutFile const & tc = bcl[*cit];
-		docstring item = (tc.isTeXClassAvailable()) ?
-			from_utf8(tc.description()) :
-			bformat(_("Unavailable: %1$s"), from_utf8(tc.description()));
-		classes_model_.insertRow(i, toqstr(item), *cit);
+		bool const available = tc.isTeXClassAvailable();
+		docstring const guiname = translateIfPossible(from_utf8(tc.description()));
+		// tooltip sensu "KOMA-Script Article [Class 'scrartcl']"
+		QString tooltip = toqstr(bformat(_("%1$s [Class '%2$s']"), guiname, from_utf8(tc.latexname())));
+		if (!available) {
+			docstring const output_type = (tc.outputType() == lyx::DOCBOOK) ? _("DocBook") : _("LaTeX");
+			tooltip += '\n' + toqstr(wrap(bformat(_("Class not found by LyX. "
+							   "Please check if you have the matching %1$s class "
+							   "and all requires packages (%2$s) installed."),
+							 output_type, from_utf8(tc.prerequisites(", ")))));
+		}
+		latexModule->classCO->addItemSort(toqstr(tc.name()),
+						  toqstr(guiname),
+						  toqstr(translateIfPossible(from_utf8(tc.category()))),
+						  tooltip,
+						  true, true, true, available);
 	}
 
 
@@ -2086,12 +2099,19 @@ void GuiDocument::browseLayout()
 		return;
 
 	// add to combo box
-	int idx = latexModule->classCO->findText(toqstr(name));
-	if (idx == -1) {
-		classes_model_.insertRow(0, toqstr(name), name);
-		latexModule->classCO->setCurrentIndex(0);
-	} else
-		latexModule->classCO->setCurrentIndex(idx);
+	bool const avail = latexModule->classCO->set(toqstr(name));
+	if (!avail) {
+		LayoutFile const & tc = bcl[name];
+		docstring const guiname = translateIfPossible(from_utf8(tc.description()));
+		// tooltip sensu "KOMA-Script Article [Class 'scrartcl']"
+		QString tooltip = toqstr(bformat(_("%1$s [Class '%2$s']"), guiname, from_utf8(tc.latexname())));
+		tooltip += '\n' + qt_("This is a local layout file.");
+		latexModule->classCO->addItemSort(toqstr(tc.name()), toqstr(guiname),
+						  toqstr(translateIfPossible(from_utf8(tc.category()))),
+						  tooltip,
+						  true, true, true, true);
+		latexModule->classCO->set(toqstr(name));
+	}
 
 	classChanged();
 }
@@ -2117,7 +2137,7 @@ void GuiDocument::classChanged()
 	int idx = latexModule->classCO->currentIndex();
 	if (idx < 0)
 		return;
-	string const classname = classes_model_.getIDString(idx);
+	string const classname = fromqstr(latexModule->classCO->getData(idx));
 
 	// check whether the selected modules have changed.
 	bool modules_changed = false;
@@ -2442,7 +2462,7 @@ void GuiDocument::updateDefaultFormat()
 	param_copy.useNonTeXFonts = fontModule->osFontsCB->isChecked();
 	int const idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
-		string const classname = classes_model_.getIDString(idx);
+		string const classname = fromqstr(latexModule->classCO->getData(idx));
 		param_copy.setBaseClass(classname);
 		param_copy.makeDocumentClass();
 	}
@@ -2586,7 +2606,7 @@ void GuiDocument::applyView()
 	// text layout
 	int idx = latexModule->classCO->currentIndex();
 	if (idx >= 0) {
-		string const classname = classes_model_.getIDString(idx);
+		string const classname = fromqstr(latexModule->classCO->getData(idx));
 		bp_.setBaseClass(classname);
 	}
 
@@ -3456,7 +3476,7 @@ void GuiDocument::useClassDefaults()
 	}
 
 	int idx = latexModule->classCO->currentIndex();
-	string const classname = classes_model_.getIDString(idx);
+	string const classname = fromqstr(latexModule->classCO->getData(idx));
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
@@ -3468,12 +3488,9 @@ void GuiDocument::useClassDefaults()
 
 void GuiDocument::setLayoutComboByIDString(string const & idString)
 {
-	int idx = classes_model_.findIDString(idString);
-	if (idx < 0)
+	if (!latexModule->classCO->set(toqstr(idString)))
 		Alert::warning(_("Can't set layout!"),
 			bformat(_("Unable to set layout for ID: %1$s"), from_utf8(idString)));
-	else
-		latexModule->classCO->setCurrentIndex(idx);
 }
 
 

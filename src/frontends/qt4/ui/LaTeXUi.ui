@@ -26,7 +26,7 @@
        <number>6</number>
       </property>
       <item row="0" column="0">
-       <widget class="QComboBox" name="classCO">
+       <widget class="CategorizedCombo" name="classCO">
         <property name="maxVisibleItems">
          <number>20</number>
         </property>
@@ -209,6 +209,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CategorizedCombo</class>
+   <extends>QComboBox</extends>
+   <header>CategorizedCombo.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>classCO</tabstop>
   <tabstop>layoutPB</tabstop>
