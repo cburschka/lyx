@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 442
+\lyxformat 444
 \begin_document
 \begin_header
 \textclass scrbook
@@ -137,6 +137,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller" 
 \author -195340706 "Georg Baum" 
 \author 5863208 "ab" 
 \author 1082167584 "Kayvan Sylvan" kayvan@sylvan.com
@@ -7234,6 +7235,10 @@ default
 
 \begin_layout Subsection
 The document class declaration
+\change_inserted -712698321 1349766602
+ and classification
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -7259,7 +7264,15 @@ status collapsed
 
 \end_inset
 
- files should begin with a line like:
+ files should begin with 
+\change_deleted -712698321 1349766533
+a 
+\change_unchanged
+line
+\change_inserted -712698321 1349766536
+s
+\change_unchanged
+ like:
 \end_layout
 
 \begin_layout LyX-Code
@@ -7273,11 +7286,45 @@ status collapsed
 \size small
 #  
 \backslash
-DeclareLaTeXClass{article}
+DeclareLaTeXClass{
+\change_deleted -712698321 1349766193
+article
+\change_inserted -712698321 1349766201
+Article (Standard Class)
+\change_unchanged
+}
+\change_inserted -712698321 1349766538
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1349766581
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The second line is used when you (re)configure LyX.
+The second 
+\change_inserted -712698321 1349766695
+and third 
+\change_unchanged
+line
+\change_inserted -712698321 1349766626
+s
+\change_unchanged
+ 
+\change_deleted -712698321 1349766628
+is
+\change_inserted -712698321 1349766628
+are
+\change_unchanged
+ used when you (re)configure LyX.
  The layout file is read by the LaTeX script 
 \begin_inset Flex Code
 status collapsed
@@ -7299,8 +7346,19 @@ status collapsed
 \end_inset
 
  is ignored.
- The first line is just a LaTeX comment, and the second one contains the
- declaration of the text class.
+ The first line is just a LaTeX comment, 
+\change_deleted -712698321 1349766656
+and 
+\change_unchanged
+the second one contains the 
+\change_inserted -712698321 1349766650
+mandatory 
+\change_unchanged
+declaration of the text class
+\change_inserted -712698321 1349766689
+, and the third line contains the optional classification of the class
+\change_unchanged
+.
  If these lines appear in a file named 
 \begin_inset Flex Code
 status collapsed
@@ -7336,7 +7394,13 @@ article.cls
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_deleted -712698321 1349766253
 article
+\change_inserted -712698321 1349766260
+Article (Standard Class)
+\change_unchanged
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -7352,6 +7416,90 @@ Settings
 \end_inset
 
  dialog.
+
+\change_inserted -712698321 1349767097
+ The category (
+\begin_inset Quotes eld
+\end_inset
+
+Articles
+\begin_inset Quotes erd
+\end_inset
+
+ in the example) is also used in the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1349766801
+Document\SpecialChar \menuseparator
+Settings
+\end_layout
+
+\end_inset
+
+ dialog: the text classes are grouped by these categories (which are usually
+ genres, so typical categories are 
+\begin_inset Quotes eld
+\end_inset
+
+Articles
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Books
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Reports
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Letters
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Presentations
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Curricula Vitae
+\begin_inset Quotes erd
+\end_inset
+
+ etc.).
+ If no category has been declared, the class will be put in the 
+\begin_inset Quotes eld
+\end_inset
+
+Uncategorized
+\begin_inset Quotes erd
+\end_inset
+
+ group.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -7390,7 +7538,45 @@ myarticle.layout
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article]{article (with my own headings)}
+DeclareLaTeXClass[article]{
+\change_deleted -712698321 1349766303
+a
+\change_inserted -712698321 1349766303
+A
+\change_unchanged
+rticle (with 
+\change_deleted -712698321 1349766338
+m
+\change_inserted -712698321 1349766338
+M
+\change_unchanged
+y 
+\change_deleted -712698321 1349766340
+o
+\change_inserted -712698321 1349766340
+O
+\change_unchanged
+wn 
+\change_deleted -712698321 1349766343
+h
+\change_inserted -712698321 1349766343
+H
+\change_unchanged
+eadings)}
+\change_inserted -712698321 1349767223
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1349767223
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -7418,7 +7604,31 @@ article.cls
 \begin_inset Quotes eld
 \end_inset
 
-article (with my own headings)
+
+\change_deleted -712698321 1349766329
+a
+\change_inserted -712698321 1349766329
+A
+\change_unchanged
+rticle (with 
+\change_deleted -712698321 1349766347
+m
+\change_inserted -712698321 1349766347
+M
+\change_unchanged
+y 
+\change_deleted -712698321 1349766350
+o
+\change_inserted -712698321 1349766350
+O
+\change_unchanged
+wn 
+\change_deleted -712698321 1349766352
+h
+\change_inserted -712698321 1349766352
+H
+\change_unchanged
+eadings)
 \begin_inset Quotes erd
 \end_inset
 
@@ -7437,7 +7647,45 @@ article (with my own headings)
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article,foo.sty]{article (with my own headings)}
+DeclareLaTeXClass[article,foo.sty]{
+\change_deleted -712698321 1349766366
+a
+\change_inserted -712698321 1349766366
+A
+\change_unchanged
+rticle (with 
+\change_deleted -712698321 1349766369
+m
+\change_inserted -712698321 1349766369
+M
+\change_unchanged
+y 
+\change_deleted -712698321 1349766371
+o
+\change_inserted -712698321 1349766371
+O
+\change_unchanged
+wn 
+\change_deleted -712698321 1349766374
+h
+\change_inserted -712698321 1349766374
+H
+\change_unchanged
+eadings)}
+\change_inserted -712698321 1349767240
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1349767240
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -7467,7 +7715,27 @@ foo.sty
 \size small
 # 
 \backslash
-DeclareDocBookClass[article]{SGML (DocBook article)}
+DeclareDocBookClass[article]{SGML (DocBook 
+\change_deleted -712698321 1349766387
+a
+\change_inserted -712698321 1349766387
+A
+\change_unchanged
+rticle)}
+\change_inserted -712698321 1349767247
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1349767302
+
+\size small
+# 
+\backslash
+DeclareCategory{Articles (DocBook)}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -7485,6 +7753,20 @@ So, to be as explicit as possible, the form of the layout declaration is:
 #  
 \backslash
 DeclareLaTeXClass[class,package.sty]{layout description}
+\change_inserted -712698321 1349767329
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1349767339
+
+\size small
+#  
+\backslash
+DeclareCategory{category}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
