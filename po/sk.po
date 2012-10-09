@@ -21569,9 +21569,10 @@ msgstr "Dings 4"
 msgid "Unavailable:"
 msgstr "Nedostupné:"
 
-#: src/frontends/qt4/CategorizedCombo.cpp:496
-msgid "Unavailable: %1"
-msgstr "Nedostupné: %1"
+#: src/frontends/qt4/CategorizedCombo.cpp:497
+#, c-format
+msgid "Unavailable: %1$s"
+msgstr "Nedostupné: %1$s"
 
 #: src/frontends/qt4/CategorizedCombo.cpp:498
 #: src/frontends/qt4/CategorizedCombo.cpp:523
