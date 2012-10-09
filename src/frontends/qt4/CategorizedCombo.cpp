@@ -493,7 +493,9 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 				   bool sorted, bool sortedByCat, bool sortCats,
 				   bool available)
 {
-	QString titem = available ? guiname : qt_("Unavailable: %1").arg(guiname);
+	QString titem = available ? guiname
+				  : toqstr(bformat(_("Unavailable: %1$s"),
+						   qstring_to_ucs4(guiname)));
 	bool const uncategorized = category.isEmpty();
 	QString qcat = uncategorized ? qt_("Uncategorized") : category;
 
