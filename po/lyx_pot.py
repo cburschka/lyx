@@ -78,6 +78,8 @@ def ui_l10n(input_files, output, base):
 
 def layouts_l10n(input_files, output, base, layouttranslations):
     '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
+    ClassDescription = re.compile(r'^\s*#\s*\\Declare(LaTeX|DocBook)Class.*\{(.*)\}$', re.IGNORECASE)
+    ClassCategory = re.compile(r'^\s*#\s*\\DeclareCategory\{(.*)\}$', re.IGNORECASE)
     Style = re.compile(r'^\s*Style\s+(.*)\s*$', re.IGNORECASE)
     # match LabelString, EndLabelString, LabelStringAppendix and maybe others but no comments
     LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)\s*$', re.IGNORECASE)
@@ -174,6 +176,18 @@ def layouts_l10n(input_files, output, base, layouttranslations):
         lineno = 0
         for line in open(src).readlines():
             lineno += 1
+            res = ClassDescription.search(line)
+            if res != None:
+                string = res.group(2)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno + 1, string)
+                continue
+            res = ClassCategory.search(line)
+            if res != None:
+                string = res.group(1)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno + 1, string)
+                continue
             if readingDescription:
                 res = DescEnd.search(line)
                 if res != None:
