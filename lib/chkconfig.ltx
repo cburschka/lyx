@@ -64,7 +64,13 @@
 
 \newcommand{\AddLayout}[5][\default]{
   \def\default{#2}
-  \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"   "#5"}}
+  \@ifundefined{category@#2}{%
+       \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"   "#5"   ""}%
+   }{%
+       \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"   "#5"   "\@nameuse{category@#2}"}%
+   }
+}
+       
 
 \newcommand{\AddVariable}[2]{
   \immediate\write\vars{chk_#1='#2'}}
@@ -146,6 +152,12 @@
   \TestItem[#1]{\layoutname}{document class}{cls}
            {\AddLayout[\firstelement]{\layoutname}{#2}{true}{\missingelements}}
            {\AddLayout[\firstelement]{\layoutname}{#2}{false}{\missingelements}}
+}
+
+\newcommand{\DeclareCategory}[2]{
+   \@ifundefined{category@#1}
+     {\global\@namedef{category@#1}{#2}}%
+     {}% we have already defined this one.
 }
 
 % Only for compatibility. Will be removed later.

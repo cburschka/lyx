@@ -40,13 +40,14 @@ namespace lyx {
 
 
 LayoutFile::LayoutFile(string const & fn, string const & cln,
-			   string const & desc, string const & prereq,
-				 bool texclassavail) 
+		       string const & desc, string const & prereq,
+		       string const & category, bool texclassavail) 
 {
 	name_ = fn;
 	latexname_ = cln;
 	description_ = desc;
 	prerequisites_ = prereq;
+	category_ = category;
 	tex_class_avail_ = texclassavail;
 }
 
@@ -141,9 +142,13 @@ bool LayoutFileList::read()
 					break;
 				string const prereq = lex.getString();
 				LYXERR(Debug::TCLASS, "Prereq: " << prereq);
+				if (!lex.next()) 
+					break;
+				string const category = lex.getString();
+				LYXERR(Debug::TCLASS, "Category: " << category);
 				// This code is run when we have
 				// fname, clname, desc, prereq, and avail
-				LayoutFile * tmpl = new LayoutFile(fname, clname, desc, prereq, avail);
+				LayoutFile * tmpl = new LayoutFile(fname, clname, desc, prereq, category, avail);
 				if (lyxerr.debugging(Debug::TCLASS)) {
 					// only system layout files are loaded here so no
 					// buffer path is needed.
@@ -182,7 +187,8 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
 		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
-		               tc->prerequisites(), tc->isTeXClassAvailable());
+		               tc->prerequisites(), tc->category(),
+			       tc->isTeXClassAvailable());
 	classmap_[classname] = tmpl;
 	delete tc;
 }
@@ -227,7 +233,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// the last parameter to true will suppress a warning message about missing
 	// tex class.
 	LayoutFile * tc = new LayoutFile(textclass, textclass, 
-			"Unknown text class " + textclass, textclass + ".cls", true);
+			"Unknown text class " + textclass, textclass + ".cls", "", true);
 
 	if (!tc->load(tempLayout.absFileName())) {
 		// The only way this happens is because the hardcoded layout file 
@@ -272,7 +278,12 @@ LayoutFileIndex
 		ifstream ifs(layout_file.toFilesystemEncoding().c_str());
 		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
 			"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
+		static regex const catreg("^#\\s*\\\\DeclareCategory\\{(.*)\\}");
 		string line;
+		string class_name;
+		string class_prereq;
+		string category;
+		bool have_declaration = false;
 		while (getline(ifs, line)) {
 			// look for the \DeclareXXXClass line
 			smatch sub;
@@ -280,26 +291,34 @@ LayoutFileIndex
 				// returns: whole string, classtype (not used here), class name, description
 				LASSERT(sub.size() == 4, /**/);
 				// now, create a TextClass with description containing path information
-				string class_name(sub.str(2) == "" ? textclass : sub.str(2));
-				string class_prereq(class_name + ".cls");
-				LayoutFile * tmpl = 
-					new LayoutFile(textclass, class_name, textclass, class_prereq, true);
-				//FIXME: The prerequisites are available from the layout file and
-				//       can be extracted from the above regex, but for now this
-				//       field is simply set to class_name + ".cls"
-				// This textclass is added on request so it will definitely be
-				// used. Load it now because other load() calls may fail if they
-				// are called in a context without buffer path information.
-				tmpl->load(path);
-				// There will be only one textclass with this name, even if different
-				// layout files are loaded from different directories.
-				if (haveClass(textclass)) {
-					LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
-					delete classmap_[textclass];
-				}
-				classmap_[textclass] = tmpl;
-				return textclass;
+				class_name = (sub.str(2) == "" ? textclass : sub.str(2));
+				class_prereq = class_name + ".cls";
+				have_declaration = true;
 			}
+			else if (regex_match(line, sub, catreg)) {
+				category = sub.str(1);
+			}
+			if (have_declaration && !category.empty())
+				break;
+		}
+		if (have_declaration) {
+			LayoutFile * tmpl = 
+				new LayoutFile(textclass, class_name, textclass, class_prereq, category, true);
+			//FIXME: The prerequisites are available from the layout file and
+			//       can be extracted from the above regex, but for now this
+			//       field is simply set to class_name + ".cls"
+			// This textclass is added on request so it will definitely be
+			// used. Load it now because other load() calls may fail if they
+			// are called in a context without buffer path information.
+			tmpl->load(path);
+			// There will be only one textclass with this name, even if different
+			// layout files are loaded from different directories.
+			if (haveClass(textclass)) {
+				LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
+				delete classmap_[textclass];
+			}
+			classmap_[textclass] = tmpl;
+			return textclass;
 		}
 	}
 	// If .layout is not in local directory, or an invalid layout is found, return null

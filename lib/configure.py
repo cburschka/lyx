@@ -1006,17 +1006,29 @@ def checkOtherEntries():
 def processLayoutFile(file, bool_docbook):
     ''' process layout file and get a line of result
 
-        Declare lines look like this: (article.layout, scrbook.layout, svjog.layout)
+        Declare lines look like this:
 
+        \DeclareLaTeXClass[<requirements>]{<description>}
+        
+        Optionally, a \DeclareCategory line follows:
+        
+        \DeclareCategory{<category>}
+        
+        So for example (article.layout, scrbook.layout, svjog.layout)
+        
         \DeclareLaTeXClass{article}
+        \DeclareCategory{Articles}
+        
         \DeclareLaTeXClass[scrbook]{book (koma-script)}
+        \DeclareCategory{Books}
+        
         \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
 
-        we expect output:
+        we'd expect this output:
 
-        "article" "article" "article" "false" "article.cls"
-        "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls"
-        "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo"
+        "article" "article" "article" "false" "article.cls" "Articles"
+        "scrbook" "scrbook" "book (koma-script)" "false" "scrbook.cls" "Books"
+        "svjog" "svjour" "article (Springer - svjour/jog)" "false" "svjour.cls,svjog.clo" ""
     '''
     def checkForClassExtension(x):
         '''if the extension for a latex class is not
@@ -1028,8 +1040,12 @@ def processLayoutFile(file, bool_docbook):
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
     p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+    q = re.compile(r'\DeclareCategory{(.*)}')
+    classdeclaration = ""
+    categorydeclaration = '""'
     for line in open(file).readlines():
         res = p.search(line)
+        qres = q.search(line)
         if res != None:
             (classtype, optAll, opt, opt1, desc) = res.groups()
             avai = {'LaTeX':'false', 'DocBook':bool_docbook}[classtype]
@@ -1042,7 +1058,15 @@ def processLayoutFile(file, bool_docbook):
                 prereq_latex = ','.join(prereq_list)
             prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
             prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
-            return '"%s" "%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai, prereq)
+            classdeclaration = '"%s" "%s" "%s" "%s" "%s"' % (classname, opt, desc, avai, prereq)
+            if categorydeclaration != "":
+                return classdeclaration + " " + categorydeclaration
+        if qres != None:
+             categorydeclaration = '"%s"' % (qres.groups()[0])
+             if classdeclaration != "":
+                 return classdeclaration + " " + categorydeclaration
+    if classdeclaration != "":
+        return classdeclaration + " " + categorydeclaration
     logger.warning("Layout file " + file + " has no \DeclareXXClass line. ")
     return ""
 
@@ -1112,6 +1136,7 @@ def checkLatexConfig(check_config, bool_docbook):
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
     declare = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+    category = re.compile(r'\DeclareCategory{(.*)}')
     empty = re.compile(r'^\s*$')
     testclasses = list()
     for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
@@ -1120,14 +1145,23 @@ def checkLatexConfig(check_config, bool_docbook):
         if not os.path.isfile(file):
             continue
         classname = file.split(os.sep)[-1].split('.')[0]
+        decline = ""
+        catline = ""
         for line in open(file).readlines():
             if not empty.match(line) and line[0] != '#':
-                logger.warning("Failed to find valid \Declare line for layout file `" + file + "'.\n\t=> Skipping this file!")
-                nodeclaration = True
+                if decline == "":
+                    logger.warning("Failed to find valid \Declare line for layout file `" + file + "'.\n\t=> Skipping this file!")
+                    nodeclaration = True
+                # A class, but no category declaration. Just break.
                 break
-            if declare.search(line) == None:
+            if declare.search(line) != None:
+                decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
+                testclasses.append(decline)
+            elif category.search(line) != None:
+                catline = "\\DeclareCategory{%s}{%s}" % (classname, category.search(line).groups()[0])
+                testclasses.append(catline)
+            if catline == "" or decline == "":
                 continue
-            testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
             break
         if nodeclaration:
             continue
@@ -1151,7 +1185,7 @@ def checkLatexConfig(check_config, bool_docbook):
     if rmcopy:
         removeFiles( [ 'chkconfig.ltx' ] )
     #
-    # currently, values in chhkconfig are only used to set
+    # currently, values in chkconfig are only used to set
     # \font_encoding
     values = {}
     for line in open('chkconfig.vars').readlines():

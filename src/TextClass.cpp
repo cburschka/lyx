@@ -1228,11 +1228,11 @@ bool TextClass::readFloat(Lexer & lexrc)
 }
 
 
-string const & TextClass::prerequisites() const
+string const & TextClass::prerequisites(string const & sep) const
 {
 	if (contains(prerequisites_, ',')) {
 		vector<string> const pres = getVectorFromString(prerequisites_);
-		prerequisites_ = getStringFromVector(pres, "\n\t");
+		prerequisites_ = getStringFromVector(pres, sep);
 	}
 	return prerequisites_;
 }

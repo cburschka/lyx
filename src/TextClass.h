@@ -189,11 +189,13 @@ public:
 	///
 	std::string const & name() const { return name_; }
 	///
+	std::string const & category() const { return category_; }
+	///
 	std::string const & description() const { return description_; }
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
-	std::string const & prerequisites() const;
+	std::string const & prerequisites(std::string const & sep = "\n\t") const;
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
@@ -231,6 +233,8 @@ protected:
 	mutable LayoutList layoutlist_;
 	/// Layout file name
 	std::string name_;
+	/// Class category
+	std::string category_;
 	/// document class name
 	std::string latexname_;
 	/// document class description

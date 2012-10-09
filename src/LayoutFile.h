@@ -76,6 +76,7 @@ private:
 			std::string const & className = std::string(),
 			std::string const & description = std::string(),
 			std::string const & prerequisites = std::string(),
+			std::string const & category = std::string(),
 			bool texclassavail = false);
 	/// The only class that should create a LayoutFile is
 	/// LayoutFileList, which calls the private constructor.
