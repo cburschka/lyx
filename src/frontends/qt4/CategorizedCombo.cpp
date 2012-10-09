@@ -516,9 +516,12 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 	// find category
 	int i = 0;
 	if (sortedByCat) {
+		// If sortCats == true, sort categories alphabetically, uncategorized at the end.
 		while (i < end && d->model_->item(i, 2)->text() != qcat
-		       && (!sortCats || (d->model_->item(i, 2)->text().localeAwareCompare(qcat) < 0)
-			   || (uncategorized && d->model_->item(i, 2)->text() == qt_("Uncategorized"))))
+		       && (!sortCats 
+			   || (!uncategorized && d->model_->item(i, 2)->text().localeAwareCompare(qcat) < 0
+			       && d->model_->item(i, 2)->text() != qt_("Uncategorized"))
+			   || (uncategorized && d->model_->item(i, 2)->text() != qt_("Uncategorized"))))
 			++i;
 	}
 
