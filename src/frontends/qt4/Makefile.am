@@ -58,6 +58,7 @@ SOURCEFILES = \
 	Action.cpp \
 	BulletsModule.cpp \
 	ButtonController.cpp \
+	CategorizedCombo.cpp \
 	ColorCache.cpp \
 	CustomizedWidgets.cpp \
 	EmptyTable.cpp \
@@ -176,6 +177,7 @@ NOMOCHEADER = \
 MOCHEADER = \
 	Action.h \
 	BulletsModule.h \
+	CategorizedCombo.h \
 	CustomizedWidgets.h \
 	EmptyTable.h \
 	FancyLineEdit.h \
