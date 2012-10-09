@@ -1059,11 +1059,11 @@ def processLayoutFile(file, bool_docbook):
             prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
             prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
             classdeclaration = '"%s" "%s" "%s" "%s" "%s"' % (classname, opt, desc, avai, prereq)
-            if categorydeclaration != "":
+            if categorydeclaration != '""':
                 return classdeclaration + " " + categorydeclaration
         if qres != None:
              categorydeclaration = '"%s"' % (qres.groups()[0])
-             if classdeclaration != '""':
+             if classdeclaration != "":
                  return classdeclaration + " " + categorydeclaration
     if classdeclaration != "":
         return classdeclaration + " " + categorydeclaration
