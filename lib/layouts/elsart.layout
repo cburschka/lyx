@@ -1,5 +1,6 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[elsart,amssymb.sty,latexsym.sty]{article (obsolete Elsevier version)}
+#  \DeclareLaTeXClass[elsart,amssymb.sty,latexsym.sty]{Elsevier (Obsolete Version)}
+#  \DeclareCategory{Articles}
 # Author: Rod Pinna <rpinna@civil.uwa.edu.au>
 # The Elsevier doc style also duplicates the theorem
 # environments used by the AMS. The definitions here have been

@@ -1,5 +1,6 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[aa]{article (A&A V4)}
+#  \DeclareLaTeXClass[aa]{Astronomy & Astrophysics (V. 4, Obsolete)}
+#  \DeclareCategory{Articles}
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
@@ -9,7 +10,7 @@
 # If you want to keep the layout for old papers I'd suggest to rename
 # the old style file to aa-old and change the second line in this file to
 #
-#  \DeclareLaTeXClass[aa-old]{article (A&A V4)}
+#  \DeclareLaTeXClass[aa-old]{Astronomy & Astrophysics (V. 4, Obsolete)}
 #
 # and reconfigure LyX (after running texhash, of course).
 
