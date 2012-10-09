@@ -24,6 +24,12 @@
 #endif
 
 
+#cmakedefine LYX_DEVEL_VERSION 1
+#if defined(LYX_DEVEL_VERSION)
+	#define DEVEL_VERSION 1
+#else
+	#undef DEVEL_VERSION
+#endif
 #cmakedefine PACKAGE "${PACKAGE}"
 #cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
 #define PACKAGE_STRING "LyX ${PACKAGE_VERSION}"
