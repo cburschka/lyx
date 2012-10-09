@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-09 08:03+0200\n"
-"PO-Revision-Date: 2012-10-09 08:34+0200\n"
+"POT-Creation-Date: 2012-10-09 16:07+0200\n"
+"PO-Revision-Date: 2012-10-09 16:10+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2732,15 +2732,15 @@ msgstr "&Globaler Knopf zum Schließen von Registerkarten"
 msgid "Closing last view:"
 msgstr "Beim Schließen der letzten &Ansicht:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:291
+#: src/frontends/qt4/ui/PrefUi.ui:294
 msgid "Closes document"
 msgstr "Dokument schließen"
 
-#: src/frontends/qt4/ui/PrefUi.ui:296
+#: src/frontends/qt4/ui/PrefUi.ui:299
 msgid "Hides document"
 msgstr "Dokument verbergen"
 
-#: src/frontends/qt4/ui/PrefUi.ui:301
+#: src/frontends/qt4/ui/PrefUi.ui:304
 msgid "Ask the user"
 msgstr "Nachfragen"
 
@@ -12064,7 +12064,7 @@ msgstr ""
 msgid "Enumerate-Resume"
 msgstr "Aufzählung fortführen"
 
-#: lib/layouts/linguistics.module:2
+#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
 msgstr "Linguistik"
 
@@ -12086,59 +12086,59 @@ msgstr "Nummeriertes Beispiel (mehrere Zeilen)"
 msgid "Example:"
 msgstr "Beispiel:"
 
-#: lib/layouts/linguistics.module:37
+#: lib/layouts/linguistics.module:38
 msgid "Numbered Examples (consecutive)"
 msgstr "Nummeriertes Beispiel (konsekutiv)"
 
-#: lib/layouts/linguistics.module:41
+#: lib/layouts/linguistics.module:42
 msgid "Examples:"
 msgstr "Beispiele:"
 
-#: lib/layouts/linguistics.module:46
+#: lib/layouts/linguistics.module:47
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
-#: lib/layouts/linguistics.module:50
+#: lib/layouts/linguistics.module:51
 msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
-#: lib/layouts/linguistics.module:65 lib/layouts/linguistics.module:67
+#: lib/layouts/linguistics.module:66 lib/layouts/linguistics.module:68
 msgid "Glosse"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:94 lib/layouts/linguistics.module:96
+#: lib/layouts/linguistics.module:95 lib/layouts/linguistics.module:97
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:122
+#: lib/layouts/linguistics.module:123
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:124
+#: lib/layouts/linguistics.module:125
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:137
+#: lib/layouts/linguistics.module:138
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:139
+#: lib/layouts/linguistics.module:140
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:152
+#: lib/layouts/linguistics.module:153
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:154
+#: lib/layouts/linguistics.module:155
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:168
+#: lib/layouts/linguistics.module:169
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:173
+#: lib/layouts/linguistics.module:174
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -21902,12 +21902,14 @@ msgstr "Dings 4"
 msgid "Unavailable:"
 msgstr "Nicht verfügbar:"
 
-#: src/frontends/qt4/CategorizedCombo.cpp:496
-msgid "Unavailable: %1"
-msgstr "Nicht verfügbar: %1"
+#: src/frontends/qt4/CategorizedCombo.cpp:497
+#, c-format
+msgid "Unavailable: %1$s"
+msgstr "Nicht verfügbar: %1$s"
 
-#: src/frontends/qt4/CategorizedCombo.cpp:498
-#: src/frontends/qt4/CategorizedCombo.cpp:521
+#: src/frontends/qt4/CategorizedCombo.cpp:500
+#: src/frontends/qt4/CategorizedCombo.cpp:525
+#: src/frontends/qt4/CategorizedCombo.cpp:526
 msgid "Uncategorized"
 msgstr "Nicht kategorisiert"
 
@@ -23018,8 +23020,7 @@ msgid ""
 "all requires packages (%2$s) installed."
 msgstr ""
 "Klasse wurde von LyX nicht gefunden. Bitte prüfen Sie, ob Sie die "
-"entsprechende %1$s-Klasse "
-"und alle nötigen Pakete (%2$s) installiert haben."
+"entsprechende %1$s-Klasse und alle nötigen Pakete (%2$s) installiert haben."
 
 #: src/frontends/qt4/GuiDocument.cpp:1404
 #: src/frontends/qt4/GuiDocument.cpp:1505
