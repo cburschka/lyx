@@ -16,7 +16,6 @@ endif()
 
 if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
 	set(ENCHANT_FOUND TRUE)
-	add_definitions(-DUSE_ENCHANT=1)
 	message(STATUS "Building with USE_ENCHANT")
 else()
 	message(STATUS "Enchant not found, building without enchant support")
