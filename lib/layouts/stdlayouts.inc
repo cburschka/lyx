@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 36
+Format 40
 
 Style Quotation
 	Category              MainText

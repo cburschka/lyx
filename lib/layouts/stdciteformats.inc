@@ -2,9 +2,9 @@
 #
 # Author: Richard Heck <rgheck@comcast.net>
 
-Format 36
+Format 40
 
-CiteFormat
+CiteFormat default
 	# translatable bits
 	_pptext pp.
 	_edtext ed.

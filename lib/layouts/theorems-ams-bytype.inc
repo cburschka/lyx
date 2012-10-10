@@ -21,7 +21,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 36
+Format 40
 Counter theorem
 End
 Counter corollary
