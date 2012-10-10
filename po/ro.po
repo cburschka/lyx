@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-09-20 19:18-0400\n"
+"POT-Creation-Date: 2012-10-10 10:26-0400\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -131,8 +131,8 @@ msgid "Select a processor"
 msgstr "Selectați un procesor"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
-#: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:773
-#: src/frontends/qt4/GuiPrefs.cpp:868
+#: src/frontends/qt4/ui/PrefLatexUi.ui:152 src/frontends/qt4/GuiPrefs.cpp:774
+#: src/frontends/qt4/GuiPrefs.cpp:869
 msgid "&Options:"
 msgstr "&Opțiuni:"
 
@@ -411,7 +411,7 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1104 src/frontends/qt4/GuiBox.cpp:193
 #: src/frontends/qt4/GuiBox.cpp:311 src/frontends/qt4/GuiBox.cpp:388
 #: src/frontends/qt4/GuiDocument.cpp:113 src/frontends/qt4/GuiGraphics.cpp:579
-#: src/frontends/qt4/GuiPrefs.cpp:2128 src/frontends/qt4/GuiPrefs.cpp:2151
+#: src/frontends/qt4/GuiPrefs.cpp:2129 src/frontends/qt4/GuiPrefs.cpp:2152
 msgid "None"
 msgstr "Nimic"
 
@@ -491,8 +491,8 @@ msgid "Remove the selected branch"
 msgstr "Șterge versiunea de document selectată"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3851
-#: src/Buffer.cpp:3864
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3871
+#: src/Buffer.cpp:3884
 msgid "&Remove"
 msgstr "&Elimină"
 
@@ -528,8 +528,8 @@ msgstr "Adaugă &toate"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1140
-#: src/Buffer.cpp:2386 src/Buffer.cpp:3826 src/Buffer.cpp:3889
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1147
+#: src/Buffer.cpp:2395 src/Buffer.cpp:3846 src/Buffer.cpp:3909
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -583,7 +583,7 @@ msgstr "&Mărime:"
 #: src/frontends/qt4/GuiDocument.cpp:3234 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2276 src/frontends/qt4/GuiPrefs.cpp:2528
+#: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2533
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:197
 msgid "Default"
@@ -713,7 +713,7 @@ msgstr "Serii font"
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
 #: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1313
-#: src/frontends/qt4/GuiPrefs.cpp:2231 src/frontends/qt4/Menus.cpp:853
+#: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:853
 msgid "Language"
 msgstr "Limbaj"
 
@@ -1088,7 +1088,7 @@ msgstr "Salvează setările ca model implicit LyX"
 msgid "Save as Document Defaults"
 msgstr "Salvează valorile ca implicite pentru document"
 
-#: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1230
+#: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1231
 msgid "Display"
 msgstr "Afișare"
 
@@ -1904,8 +1904,8 @@ msgstr "Intrare"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1137
-#: src/insets/InsetInclude.cpp:1143
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1139
+#: src/insets/InsetInclude.cpp:1145
 msgid "Program Listing"
 msgstr "Listare program"
 
@@ -2779,7 +2779,7 @@ msgstr "Pagini"
 #: src/frontends/qt4/ui/OutputUi.ui:172 lib/layouts/aapaper.layout:61
 #: lib/layouts/egs.layout:615 lib/languages:69
 #: src/frontends/qt4/GuiErrorList.cpp:48 src/frontends/qt4/GuiLog.cpp:226
-#: src/frontends/qt4/GuiPrefs.cpp:696
+#: src/frontends/qt4/GuiPrefs.cpp:697
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -2985,9 +2985,9 @@ msgstr "Dublu"
 #: src/frontends/qt4/GuiDocument.cpp:690 src/frontends/qt4/GuiDocument.cpp:698
 #: src/frontends/qt4/GuiDocument.cpp:802 src/frontends/qt4/GuiDocument.cpp:854
 #: src/frontends/qt4/GuiDocument.cpp:1020 src/frontends/qt4/GuiHSpace.cpp:54
-#: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:850
-#: src/frontends/qt4/GuiPrefs.cpp:877 src/frontends/qt4/GuiPrefs.cpp:2130
-#: src/frontends/qt4/GuiPrefs.cpp:2153
+#: src/frontends/qt4/GuiHSpace.cpp:63 src/frontends/qt4/GuiPrefs.cpp:851
+#: src/frontends/qt4/GuiPrefs.cpp:878 src/frontends/qt4/GuiPrefs.cpp:2131
+#: src/frontends/qt4/GuiPrefs.cpp:2154
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Personalizat"
@@ -3124,7 +3124,7 @@ msgid "Cursor i&ndicator"
 msgstr "Cursor i&ndicator"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:118
-#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:388
+#: lib/layouts/hollywood.layout:280 src/frontends/qt4/GuiPrefs.cpp:389
 msgid "General"
 msgstr "General"
 
@@ -3197,7 +3197,7 @@ msgstr "&Modifică"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2926 src/frontends/qt4/GuiPrefs.cpp:2990
+#: src/frontends/qt4/GuiPrefs.cpp:2931 src/frontends/qt4/GuiPrefs.cpp:2995
 msgid "Remo&ve"
 msgstr "&Elimină"
 
@@ -3257,7 +3257,7 @@ msgstr ""
 msgid "&Mark end of paragraphs"
 msgstr "&Indentare paragraf"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:251
+#: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
 msgstr "Editare"
 
@@ -3693,8 +3693,8 @@ msgstr "Comandă si opțiuni BibTeX"
 msgid "Pr&ocessor:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:240 src/frontends/qt4/GuiPrefs.cpp:798
-#: src/frontends/qt4/GuiPrefs.cpp:895
+#: src/frontends/qt4/ui/PrefLatexUi.ui:240 src/frontends/qt4/GuiPrefs.cpp:799
+#: src/frontends/qt4/GuiPrefs.cpp:896
 #, fuzzy
 msgid "Op&tions:"
 msgstr "&Opțiuni:"
@@ -4408,7 +4408,7 @@ msgstr ""
 "Specifică valorile implicite ale familiei de fonturi pentru documentul dat"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1324 src/frontends/qt4/GuiPrefs.cpp:253
+#: src/frontends/qt4/GuiDocument.cpp:1324 src/frontends/qt4/GuiPrefs.cpp:254
 #, fuzzy
 msgid "Output"
 msgstr "Ieșire"
@@ -4524,7 +4524,7 @@ msgstr ""
 msgid "Grou&p"
 msgstr "&Nume:"
 
-#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:314
+#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:308
 msgid "&Go to Label"
 msgstr "&Mergi la etichetă"
 
@@ -4632,8 +4632,9 @@ msgstr ""
 "butonul 'Șterge'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
-#: src/frontends/qt4/GuiSpellchecker.cpp:192
-#: src/frontends/qt4/GuiSpellchecker.cpp:394
+#: src/frontends/qt4/GuiSpellchecker.cpp:251
+#: src/frontends/qt4/GuiSpellchecker.cpp:258
+#: src/frontends/qt4/GuiSpellchecker.cpp:539
 #, fuzzy
 msgid "Spell Checker"
 msgstr "Verificator ortografic"
@@ -6344,7 +6345,7 @@ msgstr "E-Mail"
 msgid "Email"
 msgstr "Email"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
+#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:298
 msgid "email"
 msgstr "email"
 
@@ -10967,7 +10968,7 @@ msgstr ""
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
-"it depends on R >= 2.14.1. For more info see http://yihui.github.com/knitr"
+"it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
@@ -17368,69 +17369,69 @@ msgstr ""
 msgid "Print document failed"
 msgstr "Verteiler"
 
-#: src/Buffer.cpp:347
+#: src/Buffer.cpp:354
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:348
+#: src/Buffer.cpp:355
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Nu pot șterge director temporar"
 
-#: src/Buffer.cpp:460
+#: src/Buffer.cpp:467
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 
-#: src/Buffer.cpp:462
+#: src/Buffer.cpp:469
 #, fuzzy
 msgid "Attempting to close changed document!"
 msgstr "Revine la ultima versiune salvată"
 
-#: src/Buffer.cpp:471
+#: src/Buffer.cpp:478
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Nu pot șterge director temporar"
 
-#: src/Buffer.cpp:472
+#: src/Buffer.cpp:479
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Nu pot șterge director temporar"
 
-#: src/Buffer.cpp:824
+#: src/Buffer.cpp:831
 #, fuzzy
 msgid "Unknown document class"
 msgstr "Clasă document necunoscută"
 
-#: src/Buffer.cpp:825
+#: src/Buffer.cpp:832
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:829 src/Text.cpp:487
+#: src/Buffer.cpp:836 src/Text.cpp:487
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "necunoscut"
 
-#: src/Buffer.cpp:833 src/Buffer.cpp:840 src/Buffer.cpp:863
+#: src/Buffer.cpp:840 src/Buffer.cpp:847 src/Buffer.cpp:870
 #, fuzzy
 msgid "Document header error"
 msgstr "Document nesalvat"
 
-#: src/Buffer.cpp:839
+#: src/Buffer.cpp:846
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:862
+#: src/Buffer.cpp:869
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:875 src/Buffer.cpp:881 src/BufferView.cpp:1440
+#: src/Buffer.cpp:882 src/Buffer.cpp:888 src/BufferView.cpp:1440
 #: src/BufferView.cpp:1446
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:876 src/BufferView.cpp:1441
+#: src/Buffer.cpp:883 src/BufferView.cpp:1441
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -17438,7 +17439,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:882 src/BufferView.cpp:1447
+#: src/Buffer.cpp:889 src/BufferView.cpp:1447
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17446,187 +17447,187 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:920 src/BufferParams.cpp:414
+#: src/Buffer.cpp:927 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
 #: src/insets/InsetIndex.cpp:714
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:993 src/Buffer.cpp:1037
+#: src/Buffer.cpp:1000 src/Buffer.cpp:1044
 #, fuzzy
 msgid "Document format failure"
 msgstr "Documentul "
 
-#: src/Buffer.cpp:994
+#: src/Buffer.cpp:1001
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:1038
+#: src/Buffer.cpp:1045
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "Formatez documentul..."
 
-#: src/Buffer.cpp:1063
+#: src/Buffer.cpp:1070
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Conversie fișier"
 
-#: src/Buffer.cpp:1064
+#: src/Buffer.cpp:1071
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:1074
+#: src/Buffer.cpp:1081
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Controlul versiunii|v"
 
-#: src/Buffer.cpp:1075
+#: src/Buffer.cpp:1082
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:1098 src/Buffer.cpp:1105
+#: src/Buffer.cpp:1105 src/Buffer.cpp:1112
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Conversie fișier"
 
-#: src/Buffer.cpp:1099
+#: src/Buffer.cpp:1106
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:1106
+#: src/Buffer.cpp:1113
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
 
-#: src/Buffer.cpp:1127 src/Buffer.cpp:3836 src/Buffer.cpp:3898
+#: src/Buffer.cpp:1134 src/Buffer.cpp:3856 src/Buffer.cpp:3918
 #, fuzzy
 msgid "File is read-only"
 msgstr "Documente"
 
-#: src/Buffer.cpp:1128
+#: src/Buffer.cpp:1135
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 
-#: src/Buffer.cpp:1137
+#: src/Buffer.cpp:1144
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:1139
+#: src/Buffer.cpp:1146
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Vizualizează fișierul"
 
-#: src/Buffer.cpp:1140 src/Buffer.cpp:2386 src/Exporter.cpp:50
+#: src/Buffer.cpp:1147 src/Buffer.cpp:2395 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
 #: src/frontends/qt4/GuiView.cpp:2287
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Mașină de scris:"
 
-#: src/Buffer.cpp:1169
+#: src/Buffer.cpp:1176
 #, fuzzy
 msgid "Backup failure"
 msgstr "Cale fișiere de rezervă:#B"
 
-#: src/Buffer.cpp:1170
+#: src/Buffer.cpp:1177
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writable."
 msgstr ""
 
-#: src/Buffer.cpp:1196
+#: src/Buffer.cpp:1203
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Formatez documentul..."
 
-#: src/Buffer.cpp:1211
+#: src/Buffer.cpp:1218
 #, fuzzy
 msgid " could not write file!"
 msgstr "Listă de slide-uri"
 
-#: src/Buffer.cpp:1219
+#: src/Buffer.cpp:1226
 #, fuzzy
 msgid " done."
 msgstr "Nimic"
 
-#: src/Buffer.cpp:1234
+#: src/Buffer.cpp:1241
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "Revine la ultima versiune salvată"
 
-#: src/Buffer.cpp:1244 src/Buffer.cpp:1257 src/Buffer.cpp:1271
+#: src/Buffer.cpp:1251 src/Buffer.cpp:1264 src/Buffer.cpp:1278
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr ""
 
-#: src/Buffer.cpp:1247
+#: src/Buffer.cpp:1254
 msgid "Save failed! Trying again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1261
+#: src/Buffer.cpp:1268
 msgid "Save failed! Trying yet again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1275
+#: src/Buffer.cpp:1282
 msgid "Save failed! Bummer. Document is lost."
 msgstr ""
 
-#: src/Buffer.cpp:1362
+#: src/Buffer.cpp:1369
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1362
+#: src/Buffer.cpp:1369
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1391
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1387
+#: src/Buffer.cpp:1394
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1394
+#: src/Buffer.cpp:1401
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Conversie fișier"
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1406
 #, fuzzy
 msgid "conversion failed"
 msgstr "Conversie fișier"
 
-#: src/Buffer.cpp:1500
+#: src/Buffer.cpp:1514
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "caracter special"
 
-#: src/Buffer.cpp:1502
+#: src/Buffer.cpp:1516
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17640,51 +17641,51 @@ msgid ""
 "(such as utf8) or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1819
+#: src/Buffer.cpp:1828
 #, fuzzy
 msgid "Running chktex..."
 msgstr "Running_LaTeX_Title"
 
-#: src/Buffer.cpp:1833
+#: src/Buffer.cpp:1842
 #, fuzzy
 msgid "chktex failure"
 msgstr "Cale fișiere de rezervă:#B"
 
-#: src/Buffer.cpp:1834
+#: src/Buffer.cpp:1843
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Listă de slide-uri"
 
-#: src/Buffer.cpp:2088
+#: src/Buffer.cpp:2097
 #, fuzzy, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/Buffer.cpp:2152 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2161 src/frontends/qt4/GuiView.cpp:3130
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/Buffer.cpp:2235
+#: src/Buffer.cpp:2244
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2300
+#: src/Buffer.cpp:2309
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Caracteristici tabular"
 
-#: src/Buffer.cpp:2307
+#: src/Buffer.cpp:2316
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Caracteristici tabular"
 
-#: src/Buffer.cpp:2317
+#: src/Buffer.cpp:2326
 msgid "Error exporting to DVI."
 msgstr ""
 
-#: src/Buffer.cpp:2382 src/Exporter.cpp:45
+#: src/Buffer.cpp:2391 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17692,97 +17693,97 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Buffer.cpp:2385 src/Exporter.cpp:48
+#: src/Buffer.cpp:2394 src/Exporter.cpp:48
 #, fuzzy
 msgid "Overwrite file?"
 msgstr ""
 "?Suprascrie fișierul? / Scrie deasupra? / Înregistrează deasupra? / "
 "Înregistrează deasupra fișierului original?"
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2411
 #, fuzzy
 msgid "Error running external commands."
 msgstr "Configurare LaTeX|L"
 
-#: src/Buffer.cpp:3209
+#: src/Buffer.cpp:3218
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:3213
+#: src/Buffer.cpp:3222
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:3255
+#: src/Buffer.cpp:3275
 #, fuzzy
 msgid "Preview source code"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:3257
+#: src/Buffer.cpp:3277
 #, fuzzy
 msgid "Preview preamble"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:3259
+#: src/Buffer.cpp:3279
 #, fuzzy
 msgid "Preview body"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:3274
+#: src/Buffer.cpp:3294
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3386
+#: src/Buffer.cpp:3406
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:3440
+#: src/Buffer.cpp:3460
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Interval de salvare automată:"
 
-#: src/Buffer.cpp:3501
+#: src/Buffer.cpp:3521
 #, fuzzy
 msgid "Autosaving current document..."
 msgstr "Formatez documentul..."
 
-#: src/Buffer.cpp:3591
+#: src/Buffer.cpp:3611
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Înlocuiește"
 
-#: src/Buffer.cpp:3592
+#: src/Buffer.cpp:3612
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/Buffer.cpp:3648
+#: src/Buffer.cpp:3668
 #, fuzzy
 msgid "File name error"
 msgstr "Nume de fișier"
 
-#: src/Buffer.cpp:3649
+#: src/Buffer.cpp:3669
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:3733
+#: src/Buffer.cpp:3753
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3743
+#: src/Buffer.cpp:3763
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3749
+#: src/Buffer.cpp:3769
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:3822
+#: src/Buffer.cpp:3842
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17790,65 +17791,65 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3825
+#: src/Buffer.cpp:3845
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:3826
+#: src/Buffer.cpp:3846
 #, fuzzy
 msgid "&Recover"
 msgstr "&Elimină"
 
-#: src/Buffer.cpp:3826
+#: src/Buffer.cpp:3846
 #, fuzzy
 msgid "&Load Original"
 msgstr "&Origine:"
 
-#: src/Buffer.cpp:3837
+#: src/Buffer.cpp:3857
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3843
+#: src/Buffer.cpp:3863
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3845
+#: src/Buffer.cpp:3865
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3866
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Selectați fișierul de ieșire"
 
-#: src/Buffer.cpp:3850 src/Buffer.cpp:3862
+#: src/Buffer.cpp:3870 src/Buffer.cpp:3882
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Selectați fișierul de ieșire"
 
-#: src/Buffer.cpp:3851 src/Buffer.cpp:3864
+#: src/Buffer.cpp:3871 src/Buffer.cpp:3884
 #, fuzzy
 msgid "&Keep"
 msgstr "Menține"
 
-#: src/Buffer.cpp:3855
+#: src/Buffer.cpp:3875
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3856
+#: src/Buffer.cpp:3876
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3863
+#: src/Buffer.cpp:3883
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:3886
+#: src/Buffer.cpp:3906
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17856,48 +17857,48 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:3888
+#: src/Buffer.cpp:3908
 #, fuzzy
 msgid "Load backup?"
 msgstr "&Global"
 
-#: src/Buffer.cpp:3889
+#: src/Buffer.cpp:3909
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Global"
 
-#: src/Buffer.cpp:3889
+#: src/Buffer.cpp:3909
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:3899
+#: src/Buffer.cpp:3919
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4241 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4261 src/insets/InsetCaption.cpp:326
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Fără sens: "
 
-#: src/Buffer.cpp:4440
+#: src/Buffer.cpp:4461
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documente"
 
-#: src/Buffer.cpp:4444
+#: src/Buffer.cpp:4464
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nu pot insera documentul"
 
-#: src/Buffer.cpp:4511
+#: src/Buffer.cpp:4531
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Include fișier...|d"
 
-#: src/Buffer.cpp:4512
+#: src/Buffer.cpp:4532
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18158,17 +18159,18 @@ msgstr ""
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2523
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:300
-#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetListings.cpp:182
-#: src/insets/InsetListings.cpp:190 src/insets/InsetListings.cpp:212
-#: src/insets/InsetNomencl.cpp:285 src/mathed/InsetMathString.cpp:161
+#: src/insets/InsetCommandParams.cpp:390 src/insets/InsetHyperlink.cpp:209
+#: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
+#: src/insets/InsetListings.cpp:212 src/insets/InsetNomencl.cpp:285
+#: src/mathed/InsetMathString.cpp:161
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versiune...|V"
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2524 src/insets/InsetBibitem.cpp:301
-#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetListings.cpp:183
-#: src/insets/InsetListings.cpp:191 src/insets/InsetNomencl.cpp:286
-#: src/mathed/InsetMathString.cpp:162
+#: src/insets/InsetCommandParams.cpp:391 src/insets/InsetHyperlink.cpp:210
+#: src/insets/InsetListings.cpp:183 src/insets/InsetListings.cpp:191
+#: src/insets/InsetNomencl.cpp:286 src/mathed/InsetMathString.cpp:162
 #, fuzzy
 msgid "uncodable character"
 msgstr "caracter special"
@@ -19869,12 +19871,12 @@ msgstr "necunoscut"
 msgid "Missing argument"
 msgstr "Parametrii listă"
 
-#: src/Text3.cpp:1909 src/Text3.cpp:1921
+#: src/Text3.cpp:1916 src/Text3.cpp:1928
 #, fuzzy
 msgid "Character set"
 msgstr "Caracter"
 
-#: src/Text3.cpp:2128 src/Text3.cpp:2139
+#: src/Text3.cpp:2135 src/Text3.cpp:2146
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf"
@@ -20377,7 +20379,7 @@ msgid "About %1"
 msgstr "Despre LyX"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3195
+#: src/frontends/qt4/GuiPrefs.cpp:3200
 msgid "Preferences"
 msgstr "Preferințe"
 
@@ -21308,7 +21310,7 @@ msgstr "Format|F"
 msgid "Page Margins"
 msgstr "Margini"
 
-#: src/frontends/qt4/GuiDocument.cpp:1314 src/frontends/qt4/GuiPrefs.cpp:1108
+#: src/frontends/qt4/GuiDocument.cpp:1314 src/frontends/qt4/GuiPrefs.cpp:1109
 msgid "Colors"
 msgstr "Culori"
 
@@ -21962,236 +21964,236 @@ msgstr ""
 msgid "Phantom Settings"
 msgstr "&Setări principale"
 
-#: src/frontends/qt4/GuiPrefs.cpp:140
+#: src/frontends/qt4/GuiPrefs.cpp:141
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "Ghidul utilizatorului|G"
 
-#: src/frontends/qt4/GuiPrefs.cpp:144
+#: src/frontends/qt4/GuiPrefs.cpp:145
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Ghidul utilizatorului|G"
 
-#: src/frontends/qt4/GuiPrefs.cpp:250
+#: src/frontends/qt4/GuiPrefs.cpp:251
 msgid "Look & Feel"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:252
+#: src/frontends/qt4/GuiPrefs.cpp:253
 #, fuzzy
 msgid "Language Settings"
 msgstr "Setări imprimantă"
 
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiPrefs.cpp:255
 #, fuzzy
 msgid "File Handling"
 msgstr "Modificare font|f"
 
-#: src/frontends/qt4/GuiPrefs.cpp:480
+#: src/frontends/qt4/GuiPrefs.cpp:481
 #, fuzzy
 msgid "Keyboard/Mouse"
 msgstr "Tastatură"
 
-#: src/frontends/qt4/GuiPrefs.cpp:610
+#: src/frontends/qt4/GuiPrefs.cpp:611
 #, fuzzy
 msgid "Input Completion"
 msgstr "Caption"
 
-#: src/frontends/qt4/GuiPrefs.cpp:757 src/frontends/qt4/GuiPrefs.cpp:782
-#: src/frontends/qt4/GuiPrefs.cpp:872 src/frontends/qt4/GuiPrefs.cpp:899
+#: src/frontends/qt4/GuiPrefs.cpp:758 src/frontends/qt4/GuiPrefs.cpp:783
+#: src/frontends/qt4/GuiPrefs.cpp:873 src/frontends/qt4/GuiPrefs.cpp:900
 #, fuzzy
 msgid "Co&mmand:"
 msgstr "&Comandă:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:931
+#: src/frontends/qt4/GuiPrefs.cpp:932
 #, fuzzy
 msgid "Screen Fonts"
 msgstr "Fonturi ecran"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1304
+#: src/frontends/qt4/GuiPrefs.cpp:1305
 #, fuzzy
 msgid "Paths"
 msgstr "Part"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1391
+#: src/frontends/qt4/GuiPrefs.cpp:1392
 #, fuzzy
 msgid "Select directory for example files"
 msgstr "Selectați fișierul de ieșire"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1400
+#: src/frontends/qt4/GuiPrefs.cpp:1401
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "&Utilizează director temporar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1409
+#: src/frontends/qt4/GuiPrefs.cpp:1410
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "&Utilizează director temporar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1418
+#: src/frontends/qt4/GuiPrefs.cpp:1419
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/GuiPrefs.cpp:1427
+#: src/frontends/qt4/GuiPrefs.cpp:1428
 #, fuzzy
 msgid "Select a document directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/GuiPrefs.cpp:1436
+#: src/frontends/qt4/GuiPrefs.cpp:1437
 msgid "Set the path to the thesaurus dictionaries"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1445
+#: src/frontends/qt4/GuiPrefs.cpp:1446
 #, fuzzy
 msgid "Set the path to the Hunspell dictionaries"
 msgstr "Ajustează adincimea copacului de navigare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1454
+#: src/frontends/qt4/GuiPrefs.cpp:1455
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1467
-#: src/frontends/qt4/GuiSpellchecker.cpp:450
+#: src/frontends/qt4/GuiPrefs.cpp:1468
+#: src/frontends/qt4/GuiSpellchecker.cpp:592
 msgid "Spellchecker"
 msgstr "Verificator ortografic"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1473
+#: src/frontends/qt4/GuiPrefs.cpp:1474
 #, fuzzy
 msgid "Native"
 msgstr "acute"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1479
+#: src/frontends/qt4/GuiPrefs.cpp:1480
 #, fuzzy
 msgid "Aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1482
+#: src/frontends/qt4/GuiPrefs.cpp:1483
 #, fuzzy
 msgid "Enchant"
 msgstr "tabel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1485
+#: src/frontends/qt4/GuiPrefs.cpp:1486
 #, fuzzy
 msgid "Hunspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1558
+#: src/frontends/qt4/GuiPrefs.cpp:1559
 #, fuzzy
 msgid "Converters"
 msgstr "&Convertoare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1872
+#: src/frontends/qt4/GuiPrefs.cpp:1873
 #, fuzzy
 msgid "File Formats"
 msgstr "Formate de &fișier"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2058 src/frontends/qt4/GuiPrefs.cpp:2210
+#: src/frontends/qt4/GuiPrefs.cpp:2059 src/frontends/qt4/GuiPrefs.cpp:2211
 #, fuzzy
 msgid "Format in use"
 msgstr "&Format:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2059
+#: src/frontends/qt4/GuiPrefs.cpp:2060
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2211
+#: src/frontends/qt4/GuiPrefs.cpp:2212
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2297
+#: src/frontends/qt4/GuiPrefs.cpp:2302
 msgid "LyX needs to be restarted!"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2298
+#: src/frontends/qt4/GuiPrefs.cpp:2303
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2369
+#: src/frontends/qt4/GuiPrefs.cpp:2374
 #, fuzzy
 msgid "Printer"
 msgstr "Imprimantă"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2485 src/frontends/qt4/GuiPrefs.cpp:3238
+#: src/frontends/qt4/GuiPrefs.cpp:2490 src/frontends/qt4/GuiPrefs.cpp:3243
 #, fuzzy
 msgid "User Interface"
 msgstr "&Fișier interfață utilizator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2529
+#: src/frontends/qt4/GuiPrefs.cpp:2534
 #, fuzzy
 msgid "Classic"
 msgstr "Închide|C"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2530
+#: src/frontends/qt4/GuiPrefs.cpp:2535
 msgid "Oxygen"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2608
+#: src/frontends/qt4/GuiPrefs.cpp:2613
 #, fuzzy
 msgid "Control"
 msgstr "Înregistrare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2696
+#: src/frontends/qt4/GuiPrefs.cpp:2701
 #, fuzzy
 msgid "Shortcuts"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2701
+#: src/frontends/qt4/GuiPrefs.cpp:2706
 #, fuzzy
 msgid "Function"
 msgstr "&Funcții"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2702
+#: src/frontends/qt4/GuiPrefs.cpp:2707
 #, fuzzy
 msgid "Shortcut"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2781
+#: src/frontends/qt4/GuiPrefs.cpp:2786
 msgid "Cursor, Mouse and Editing Functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2785
+#: src/frontends/qt4/GuiPrefs.cpp:2790
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Mathematica"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2789
+#: src/frontends/qt4/GuiPrefs.cpp:2794
 #, fuzzy
 msgid "Document and Window"
 msgstr "Document nesalvat"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2793
+#: src/frontends/qt4/GuiPrefs.cpp:2798
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2797
+#: src/frontends/qt4/GuiPrefs.cpp:2802
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "Diverse AMS"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2924 src/frontends/qt4/GuiPrefs.cpp:2970
+#: src/frontends/qt4/GuiPrefs.cpp:2929 src/frontends/qt4/GuiPrefs.cpp:2975
 #, fuzzy
 msgid "Res&tore"
 msgstr "&Reface"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3081 src/frontends/qt4/GuiPrefs.cpp:3088
-#: src/frontends/qt4/GuiPrefs.cpp:3108 src/frontends/qt4/GuiPrefs.cpp:3127
+#: src/frontends/qt4/GuiPrefs.cpp:3086 src/frontends/qt4/GuiPrefs.cpp:3093
+#: src/frontends/qt4/GuiPrefs.cpp:3113 src/frontends/qt4/GuiPrefs.cpp:3132
 msgid "Failed to create shortcut"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:3082
+#: src/frontends/qt4/GuiPrefs.cpp:3087
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "necunoscut"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3089
+#: src/frontends/qt4/GuiPrefs.cpp:3094
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:3109
+#: src/frontends/qt4/GuiPrefs.cpp:3114
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -22199,42 +22201,42 @@ msgid ""
 "You need to remove that binding before creating a new one."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:3128
+#: src/frontends/qt4/GuiPrefs.cpp:3133
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Adaugă o noua versiune a documentului la listă"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3159
+#: src/frontends/qt4/GuiPrefs.cpp:3164
 #, fuzzy
 msgid "Identity"
 msgstr "&Indentare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3368
+#: src/frontends/qt4/GuiPrefs.cpp:3373
 #, fuzzy
 msgid "Choose bind file"
 msgstr "Alegeți un fișier de stil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3369
+#: src/frontends/qt4/GuiPrefs.cpp:3374
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "Adaugă un fișier bază de date BibTeX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3375
+#: src/frontends/qt4/GuiPrefs.cpp:3380
 #, fuzzy
 msgid "Choose UI file"
 msgstr "Alegeți un fișier de stil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3376
+#: src/frontends/qt4/GuiPrefs.cpp:3381
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "Adaugă un fișier bază de date BibTeX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3382
+#: src/frontends/qt4/GuiPrefs.cpp:3387
 #, fuzzy
 msgid "Choose keyboard map"
 msgstr "Cuvînt cheie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3383
+#: src/frontends/qt4/GuiPrefs.cpp:3388
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Utilizează mapare de &tastatură"
@@ -22286,21 +22288,21 @@ msgstr "&Modifică"
 msgid "Cross-reference"
 msgstr "Referință încrucișată...|R"
 
-#: src/frontends/qt4/GuiRef.cpp:306
+#: src/frontends/qt4/GuiRef.cpp:300
 #, fuzzy
 msgid "&Go Back"
 msgstr "&Global"
 
-#: src/frontends/qt4/GuiRef.cpp:308
+#: src/frontends/qt4/GuiRef.cpp:302
 msgid "Jump back"
 msgstr ""
 
-#: src/frontends/qt4/GuiRef.cpp:316
+#: src/frontends/qt4/GuiRef.cpp:310
 #, fuzzy
 msgid "Jump to label"
 msgstr "Cea mai &lungă etichetă"
 
-#: src/frontends/qt4/GuiRef.cpp:371 src/frontends/qt4/GuiRef.cpp:390
+#: src/frontends/qt4/GuiRef.cpp:365 src/frontends/qt4/GuiRef.cpp:384
 msgid "<No prefix>"
 msgstr ""
 
@@ -22324,13 +22326,17 @@ msgstr "TitluScurt"
 msgid "Error -> Cannot load file!"
 msgstr "Înlocuiește"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:193
+#: src/frontends/qt4/GuiSpellchecker.cpp:252
+msgid "Spell check of the selection done, did not find any errors."
+msgstr ""
+
+#: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:395
+#: src/frontends/qt4/GuiSpellchecker.cpp:540
 #, fuzzy
 msgid "Spell checker has no dictionaries."
 msgstr "Documentul nu poate fi citit"
@@ -23730,7 +23736,7 @@ msgstr "necunoscut"
 msgid "Missing \\end_inset at this point: "
 msgstr ""
 
-#: src/insets/InsetCommandParams.cpp:401
+#: src/insets/InsetCommandParams.cpp:401 src/insets/InsetHyperlink.cpp:220
 #, fuzzy
 msgid "Uncodable characters"
 msgstr "caracter special"
@@ -23787,7 +23793,7 @@ msgstr ""
 msgid "footnote"
 msgstr "Notă de subsol"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:670
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23805,16 +23811,24 @@ msgstr ""
 msgid "Graphics file: %1$s"
 msgstr "Grafică"
 
-#: src/insets/InsetHyperlink.cpp:259
+#: src/insets/InsetHyperlink.cpp:221
+#, c-format
+msgid ""
+"The following characters that are used in the href inset are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+
+#: src/insets/InsetHyperlink.cpp:296
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:263
+#: src/insets/InsetHyperlink.cpp:300
 #, fuzzy
 msgid "file"
 msgstr "Include document"
 
-#: src/insets/InsetHyperlink.cpp:264
+#: src/insets/InsetHyperlink.cpp:301
 #, fuzzy, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "%1$s și %2$s"
@@ -23834,13 +23848,13 @@ msgstr "Verbatim"
 msgid "Include (excluded)"
 msgstr "Include document"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:770
-#: src/insets/InsetInclude.cpp:836
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:772
+#: src/insets/InsetInclude.cpp:838
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:771
-#: src/insets/InsetInclude.cpp:837
+#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:773
+#: src/insets/InsetInclude.cpp:839
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
@@ -23886,23 +23900,23 @@ msgstr ""
 msgid "Module not found"
 msgstr "Reconfigurează|R"
 
-#: src/insets/InsetInclude.cpp:623 src/insets/InsetInclude.cpp:646
+#: src/insets/InsetInclude.cpp:624 src/insets/InsetInclude.cpp:648
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:632 src/insets/InsetInclude.cpp:654
+#: src/insets/InsetInclude.cpp:633 src/insets/InsetInclude.cpp:656
 #, fuzzy
 msgid "Export failure"
 msgstr "Cale fișiere de rezervă:#B"
 
-#: src/insets/InsetInclude.cpp:758
+#: src/insets/InsetInclude.cpp:760
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:759
+#: src/insets/InsetInclude.cpp:761
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
