@@ -135,6 +135,9 @@ import os, re, string, sys
 # Incremented to format 39, 15 April 2012 by sanda
 # Introduce styling of branches via "InsetLayout Branch:".
 
+# Incremented to format 40, 10 October 2012 by rgh
+# Re-do layout names for layout categories
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -142,7 +145,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 39
+currentFormat = 40
 
 
 def usage(prog_name):
@@ -328,11 +331,12 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 38:
+        if format == 39:
+          # something more substantil will be inserted here shortly
           i += 1
           continue
 
-        if format == 37:
+        if format == 37 or format == 38:
           i += 1
           continue
 

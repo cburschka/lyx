@@ -60,7 +60,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 39; //sanda branch styling
+int const LAYOUT_FORMAT = 40; // rgh categorized layouts
 
 namespace {
 
