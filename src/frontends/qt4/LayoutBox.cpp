@@ -350,6 +350,10 @@ static QString charFilterRegExp(QString const & filter)
 
 void LayoutBox::Private::setFilter(QString const & s)
 {
+	// exit early if nothing has to be done
+	if (filter_ == s)
+		return;
+
 	bool enabled = p->view()->updatesEnabled();
 	p->view()->setUpdatesEnabled(false);
 
