@@ -242,6 +242,12 @@ def convert(lines):
     re_QInsetLayout2 = re.compile(r'^\s*InsetLayout\s+"([^"]+)"\s*$', re.IGNORECASE)
     re_IsFlex = re.compile(r'\s*LyXType.*$', re.IGNORECASE)
     re_CopyStyle2 = re.compile(r'(\s*CopyStyle\s+)"?([^"]+)"?\s*$')
+    # for categories
+    re_Declaration = re.compile(r'^#\s*\\Declare\w+Class.*$')
+    re_ExtractCategory = re.compile(r'^(#\s*\\Declare\w+Class(?:\[[^]]*?\])?){([^(]+?)\s+\(([^)]+?)\)\s*}\s*$')
+    ConvDict = {"article": "Articles", "book" : "Books", "letter" : "Letters", "report": "Reports", \
+                "presentation" : "Presentations", "curriculum vitae" : "Curricula Vitae", "handout" : "Handouts"}
+
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -290,8 +296,10 @@ def convert(lines):
     flexstyles = []
 
     while i < len(lines):
-        # Skip comments and empty lines
-        if re_Comment.match(lines[i]) or re_Empty.match(lines[i]):
+        # Skip comments and empty lines, but not if it's the declaration 
+        # line (we'll deal with it below)
+        if (re_Comment.match(lines[i]) or re_Empty.match(lines[i])) \
+          and not re_Declaration.match(lines[i]):
             i += 1
             continue
 
@@ -332,13 +340,22 @@ def convert(lines):
             continue
 
         if format == 39:
-          # something more substantil will be inserted here shortly
-          i += 1
-          continue
+            match = re_ExtractCategory.match(lines[i])
+            if match:
+                lpre = match.group(1)
+                lcat = match.group(2)
+                lnam = match.group(3)
+                if lcat in ConvDict:
+                    lcat = ConvDict[lcat]
+                lines[i] = lpre + "{" + lnam + "}"
+                lines.insert(i+1, "#  \\DeclareCategory{" + lcat + "}")
+                i += 1 
+            i += 1
+            continue
 
         if format == 37 or format == 38:
-          i += 1
-          continue
+            i += 1
+            continue
 
         if format == 36:
             match = re_CiteFormat.match(lines[i]);
