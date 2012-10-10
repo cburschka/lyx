@@ -10603,16 +10603,15 @@ msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
-#, fuzzy
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Pou¾ít balíèek knitr pro dynamické generování reportù. Tento balíèek pro "
-"jazykR musí být naistalován pro správnou funkci modulu: install.packages"
+"jazyk R musí být naistalován pro správnou funkci modulu: install.packages"
 "('knitr'). R je potøebné alespoò ve verzi >= 2.14.1. Dal¹í informace viz "
-"http://yihui.github.com/knitr"
+"http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -21681,7 +21680,7 @@ msgstr "Chyba -> Nelze naèíst soubor!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "Kontrola pravopisu ve výbìru dokonèena, chyby nebyly nalezeny."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -23067,15 +23066,15 @@ msgid "Graphics file: %1$s"
 msgstr "Soubor s obrázkem: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Následující znaky pou¾ité ve vlo¾ce %1$s nejsou reprezentovatelné\n"
+"Následující znaky pou¾ité ve vlo¾ce hypertextového odkazu nejsou\n reprezentovatelné "
 "ve zvoleném kódování a byly vynechány:\n"
-"%2$s."
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:296
 msgid "www"
