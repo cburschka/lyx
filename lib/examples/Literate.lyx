@@ -1679,7 +1679,11 @@ if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
 \end_layout
 
 \begin_layout Scrap
-notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
+if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
+\end_layout
+
+\begin_layout Scrap
+notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors.c
 \end_layout
 
 \begin_layout Scrap
@@ -1710,7 +1714,7 @@ build-script
 \begin_inset Newline newline
 \end_inset
 
-notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$r sh
 \end_layout
 
 \begin_layout LyX-Code

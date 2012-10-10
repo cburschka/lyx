@@ -1324,11 +1324,15 @@ if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=listerrors.nw; fi
 \end_layout
 
 \begin_layout Scrap
-notangle -Rlisterrors ${NOWEB_SOURCE} > listerrors
+if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
 \end_layout
 
 \begin_layout Scrap
-chmod +x listerrors
+notangle -Rlisterrors ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors
+\end_layout
+
+\begin_layout Scrap
+chmod +x ${NOWEB_OUTPUT_DIR}/listerrors
 \end_layout
 
 \begin_layout Scrap

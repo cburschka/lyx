@@ -1737,6 +1737,26 @@ $$o
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+$$b The base name (without filename extension) in the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$p The full directory path of the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$r The full pathname to the original LyX file being processed
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$f The filename (without any directory path) of the LyX file.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Flex Code
 status collapsed
 
