@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-09 11:04+0200\n"
+"POT-Creation-Date: 2012-10-10 22:32+0200\n"
 "PO-Revision-Date: 2012-10-09 12:48+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4922,7 +4922,7 @@ msgstr "&Výber:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:92
 msgid "Replace the entry with the selection"
-msgstr "Zameň záznam s vybraným"
+msgstr "Zameň záznam s výberom"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
@@ -19233,9 +19233,9 @@ msgstr "Značka odstránená"
 msgid "Mark set"
 msgstr "Značka nastavená"
 
-#: src/BufferView.cpp:1664
+#: src/BufferView.cpp:1661
 msgid "Statistics for the selection:"
-msgstr "Štatistika pre výber:"
+msgstr "Štatistika výberu:"
 
 #: src/BufferView.cpp:1666
 msgid "Statistics for the document:"
@@ -20416,7 +20416,7 @@ msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
-"Zrušte výber ak nechcete, aby aktuálna voľba bola automaticky nahradená s "
+"Zrušte voľbu ak nechcete, aby aktuálny výber bol automaticky nahradený s "
 "tým, čo píšete."
 
 #: src/LyXRC.cpp:3079
@@ -23648,7 +23648,7 @@ msgstr "Chyba -> Nemôžem nahrať súbor!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr "Kontrola pravopisu hotová, nenašli sa žiadne chyby."
+msgstr "Kontrola pravopisu vo výbere skončila, nenašli sa žiadne chyby."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -25659,9 +25659,9 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4756
+#: src/insets/InsetTabular.cpp:4761
 msgid "Selection size should match clipboard content."
-msgstr "Veľkosť výberu by mala zodpovedať obsahu klipsovej dosky."
+msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
 
 #: src/insets/InsetWrap.cpp:46 src/insets/InsetWrap.cpp:121
 msgid "wrap: "
