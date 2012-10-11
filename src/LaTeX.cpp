@@ -94,7 +94,7 @@ bool operator!=(AuxInfo const & a, AuxInfo const & o)
 
 LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	     FileName const & f, string const & p)
-	: cmd(latex), file(f), path(p), runparams(rp)
+	: cmd(latex), file(f), path(p), runparams(rp), biber(false)
 {
 	num_errors = 0;
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
