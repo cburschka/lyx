@@ -3,6 +3,7 @@
 #include "../convert.h"
 
 #include <iostream>
+#include <string>
 
 using lyx::convert;
 
