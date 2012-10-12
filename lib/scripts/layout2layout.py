@@ -351,6 +351,8 @@ def convert(lines):
             continue
 
         if format == 39:
+            # There is a conversion with format 40, but it is done within the
+            # initial comment block and so is above.
             i += 1
             continue
 
