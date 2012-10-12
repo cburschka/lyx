@@ -296,12 +296,23 @@ def convert(lines):
     flexstyles = []
 
     while i < len(lines):
-        # Skip comments and empty lines, but not if it's the declaration 
-        # line (we'll deal with it below)
-        if (re_Comment.match(lines[i]) or re_Empty.match(lines[i])) \
-          and not re_Declaration.match(lines[i]):
-            i += 1
-            continue
+        # Skip comments and empty lines
+        if (re_Comment.match(lines[i]) or re_Empty.match(lines[i])):
+          # We need to deal with this conversion here, because it happens
+          # inside the initial comment block.
+          if only_comment and format == 39:
+              match = re_ExtractCategory.match(lines[i])
+              if match:
+                  lpre = match.group(1)
+                  lcat = match.group(2)
+                  lnam = match.group(3)
+                  if lcat in ConvDict:
+                      lcat = ConvDict[lcat]
+                  lines[i] = lpre + "{" + lnam + "}"
+                  lines.insert(i+1, "#  \\DeclareCategory{" + lcat + "}")
+                  i += 1 
+          i += 1
+          continue
 
         # insert file format if not already there
         if (only_comment):
@@ -340,16 +351,6 @@ def convert(lines):
             continue
 
         if format == 39:
-            match = re_ExtractCategory.match(lines[i])
-            if match:
-                lpre = match.group(1)
-                lcat = match.group(2)
-                lnam = match.group(3)
-                if lcat in ConvDict:
-                    lcat = ConvDict[lcat]
-                lines[i] = lpre + "{" + lnam + "}"
-                lines.insert(i+1, "#  \\DeclareCategory{" + lcat + "}")
-                i += 1 
             i += 1
             continue
 
