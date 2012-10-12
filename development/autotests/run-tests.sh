@@ -15,6 +15,12 @@ if [ "$XVKBD_HACKED" != "" ]; then
     fi
 fi
 
+if [ "$(which wmctrl)" == "" ]; then
+    echo "You need to install wmctrl first, try:"
+    echo "  sudo apt-get install wmctrl"
+    exit -1;
+fi
+
 export XVKBD_EXE=../$XVKBD_EXE
 export KEYTEST=../keytest.py
 LYX_HOME=out-home
