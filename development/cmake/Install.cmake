@@ -2,7 +2,21 @@
 # TODO: set correct path in call to cmake
 # e.g. cmake /usr/src/lyx/lyx-devel/development/cmake -DCMAKE_INSTALL_PREFIX=/usr/local/share/lyx2.0 -Dnls=1
 
-message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
+if(NOT(LYX_BUNDLE) AND APPLE)
+        message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
+endif()
+set(OSX_BUNDLE_FILES "")
+
+# Install files into OS X bundle
+macro(lyx_install_osx basedir files)
+  if(LYX_BUNDLE_PROPERTY_MODE STREQUAL "ON")
+    foreach(file ${files})
+      set_source_files_properties("${file}" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources/${basedir}")
+    endforeach()
+  else()
+    list(APPEND OSX_BUNDLE_FILES "${files}")
+  endif()
+endmacro(lyx_install_osx)
 
 # the macro scans the directories "_parent_src_dir/_dir/_current_dir" for *._file_type files
 # and installs the files in CMAKE_INSTALL_PREFIX/_current_dir
@@ -59,13 +73,21 @@ macro(lyx_install _parent_src_dir _gl_dir _file_type)
           endif()
           #message(STATUS "install ${LYX_DATA_SUBDIR}${_dir}/${_base_dir}: ${files_list} ")
           #message(STATUS "install at ${CMAKE_INSTALL_PREFIX}/${LYX_DATA_SUBDIR}${_dir}/${_base_dir}")
-          install(FILES ${files_list} DESTINATION ${LYX_DATA_SUBDIR}${_dir}/${_base_dir})
+	  if(APPLE)
+	    lyx_install_osx("${_dir}/${_based_dir}" "${files_list}")
+	  else()
+	    install(FILES ${files_list} DESTINATION ${LYX_DATA_SUBDIR}${_dir}/${_base_dir})
+	  endif(APPLE)
         endif()
 	if(program_list)
 	  if(_glob_dir STREQUAL ".")
 	    set(_base_dir .)
 	  endif()
-	  install(PROGRAMS ${program_list} DESTINATION ${LYX_DATA_SUBDIR}${_dir}/${_base_dir})
+	  if(APPLE)
+	    lyx_install_osx("${_dir}/${_based_dir}" "${program_list}")
+	  else()
+	    install(PROGRAMS ${program_list} DESTINATION ${LYX_DATA_SUBDIR}${_dir}/${_base_dir})
+	  endif(APPLE)
 	endif()
       endforeach(_current_dir)
     endforeach(_glob_dir)
@@ -98,6 +120,13 @@ lyx_install(${TOP_SRC_DIR}/lib templates    *      . attic springer thesis)
 lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
 lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
 lyx_install(${TOP_SRC_DIR}/lib .            *      .)
+
+# Install
+if(APPLE)
+    lyx_install(${TOP_SRC_DIR}/development/MacOSX . *.sdef   .)
+    lyx_install(${TOP_SRC_DIR}/development/MacOSX . *.icns   .)
+    lyx_install(${TOP_SRC_DIR}/development/MacOSX . qt.conf   .)
+endif()
 
 install(PROGRAMS ${TOP_SRC_DIR}/lib/scripts/listerrors DESTINATION scripts)
 

@@ -4,7 +4,7 @@
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-set(_lyx ${PACKAGE_BASE}${PROGRAM_SUFFIX})
+set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
 project(${_lyx})
 
 include_directories(${TOP_SRC_DIR}/src)
@@ -100,6 +100,9 @@ lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.msvc)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/modules/*)
 lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
+if (APPLE AND LYX_BUNDLE)
+        include(../Install)
+endif()
 
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
@@ -110,6 +113,7 @@ add_executable(${_lyx}
 	${FILE_RC}
 	${lyx_info_files}
 	${lyx_cmake_files}
+	${OSX_BUNDLE_FILES}
 )
 
 
@@ -165,7 +169,10 @@ if(LYX_BUNDLE)
 	if(NOT APPLE)
 		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/bin/${_lyx}${CMAKE_EXECUTABLE_SUFFIX})
 	else()
+		set_target_properties(${_lyx} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_BINARY_DIR}/../Info.plist")
 		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/${_lyx}.app)
+		set(LYX_BUNDLE_PROPERTY_MODE "ON")
+		include("../Install")
 	endif()
 	install(CODE "include(BundleUtilities)
 			fixup_bundle(\"${installed_lyx}\" \"\" \"\") " COMPONENT RUNTIME)

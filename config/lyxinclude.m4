@@ -56,6 +56,7 @@ AC_ARG_WITH(version-suffix,
    AC_SUBST(version_suffix,$withval)
    RPM_VERSION_SUFFIX="--with-version-suffix=$withval"])
 AC_SUBST(RPM_VERSION_SUFFIX)
+AC_SUBST(program_base_name,"lyx")
 AC_MSG_RESULT([$withval])
 ])
 
@@ -498,6 +499,7 @@ case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
 	   PACKAGE=LyX${version_suffix}
 	   default_prefix="/Applications/${PACKAGE}.app"
+	   AC_SUBST(osx_bundle_program_name,"${program_base_name}")
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
 	   datarootdir='${prefix}/Contents/Resources'
