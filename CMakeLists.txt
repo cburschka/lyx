@@ -264,6 +264,10 @@ if (LYX_LOCALVERSIONING)
 		  MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
 		  set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
 		endif()
+		# Override the value from configure.ac, if possible
+		EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} "log" "-1" "--format=%cd"
+			WORKING_DIRECTORY "${TOP_SRC_DIR}"
+			OUTPUT_VARIABLE LYX_DATE OUTPUT_STRIP_TRAILING_WHITESPACE)
 	else()
 		set(LYX_REVISION_VERSION git) #TODO use date
 	endif()
