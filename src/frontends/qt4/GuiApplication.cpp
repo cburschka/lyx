@@ -492,7 +492,7 @@ public:
 
 	QString translate(const char * /*context*/,
 	  const char * sourceText,
-	  const char * /*comment*/ = 0)
+	  const char * /*comment*/ = 0) const
 	{
 		string const s = sourceText;
 		if (s == N_("About %1")	|| s == N_("Preferences")
