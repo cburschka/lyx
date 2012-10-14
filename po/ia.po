@@ -10643,7 +10643,6 @@ msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
-#, fuzzy
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
@@ -17205,7 +17204,7 @@ msgstr "Corpore de vista preliminar"
 
 #: src/Buffer.cpp:3294
 msgid "Plain text does not have a preamble."
-msgstr ""
+msgstr "Texto plan non ha un preambulo."
 
 #: src/Buffer.cpp:3406
 #, c-format
@@ -21793,7 +21792,7 @@ msgstr "Error -> Non pote aperir le file!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "Facite le controlo orthographic sur le selection, il non trovava alcun error."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -23179,15 +23178,14 @@ msgid "Graphics file: %1$s"
 msgstr "Files graphic: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
-#, fuzzy, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Le sequente characteres usate in inserto %1$s  non es\n"
-"representabile in le codifica currente e il ha essite omittite:\n"
-"%2$s."
+"Le sequente characteres que es usate in le inserto href non es\n"
+"representabile in le codifica currente e tum il ha essite omittite:\n"
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:296
 msgid "www"
