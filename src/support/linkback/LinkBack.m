@@ -71,7 +71,7 @@ NSString* LinkBackUniqueItemKey()
 	
 	NSString* base = [[NSBundle mainBundle] bundleIdentifier] ;
 	unsigned long time = [NSDate timeIntervalSinceReferenceDate] ;
-	return [NSString stringWithFormat: @"%@%.8x.%.4x",base,time,counter++] ;
+	return [NSString stringWithFormat: @"%@%.8lx.%.4x",base,time,counter++] ;
 }
 
 BOOL LinkBackDataBelongsToActiveApplication(id data) 
@@ -313,7 +313,7 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 }
 
 // this method is called whenever the link is about to be or has been closed by the other side.
-- (void)remoteCloseLink 
+- (oneway void)remoteCloseLink 
 {
 	if (peer) {
 		[peer release] ;
