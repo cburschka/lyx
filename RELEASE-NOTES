@@ -51,6 +51,9 @@ The following pref variables are obsoleted in 2.1:
 To set the default language and paper size for new documents, use the
 "Save As Document Defaults" button in Document > Settings.
 
+The support for ArmTeX (a special typesetting engine for Armenian) was removed.
+Writing text in Armenian is now possible in a native way using XeTeX.
+
 The following new LyX functions have been introduced:
 
 - LFUN_BRANCH_MASTER_ACTIVATE <branch>:
