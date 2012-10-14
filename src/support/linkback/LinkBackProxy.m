@@ -89,7 +89,7 @@ static NSAutoreleasePool * pool = nil;
 		NSMutableDictionary * linkBackDataDict
 		= [NSUnarchiver unarchiveObjectWithData:linkBackData];
 		if (linkBackDataDict == nil) {
-			NSLog(@"LinkBack data in %@ corrupted");
+			NSLog(@"LinkBack data in %@ corrupted", fileName);
 			return NO;
 		}
 		
