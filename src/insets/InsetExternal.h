@@ -113,7 +113,7 @@ public:
 	///
 	std::string contextMenuName() const;
 	///
-	bool setMouseHover(BufferView const * bv, bool mouse_hover);
+	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
 	bool clickable(int, int) const { return true; }
 private:

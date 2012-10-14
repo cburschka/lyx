@@ -392,7 +392,7 @@ InsetExternal::~InsetExternal()
 }
 
 
-bool InsetExternal::setMouseHover(BufferView const * bv, bool mouse_hover)
+bool InsetExternal::setMouseHover(BufferView const * bv, bool mouse_hover) const
 {
 	mouse_hover_[bv] = mouse_hover;
 	return true;
