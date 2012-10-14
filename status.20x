@@ -147,6 +147,9 @@ What's new
 - Fix failure of lyxknitr.R to move files when /tmp was on a different
   file system (e.g. an encrypted home partition).
 
+- Removed unnecessary dependency on the package europs.sty from the
+  g-brief layout files.
+
 
 * USER INTERFACE
 
