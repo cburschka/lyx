@@ -83,8 +83,8 @@ BOOL LinkBackServerIsSupported(NSString* name, id supportedServers)
 	if (supportedServers) {
 		if ([supportedServers isKindOfClass: [NSArray class]]) {
 			idx = [supportedServers count] ;
-			while((NO==ret) && (--idx >= 0)) {
-				curServer = [supportedServers objectAtIndex: idx] ;
+			while((NO==ret) && (idx > 0)) {
+				curServer = [supportedServers objectAtIndex: --idx] ;
 				ret = [curServer isEqualToString: name] ;
 			}
 		} else ret = [curServer isEqualToString: name] ; 
@@ -119,8 +119,8 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 	
 	// find all .app bundles in the directory and test them.
 	idx = (contents) ? [contents count] : 0 ;
-	while((nil==ret) && (--idx >= 0)) {
-		cpath = [contents objectAtIndex: idx] ;
+	while((nil==ret) && (idx > 0)) {
+		cpath = [contents objectAtIndex: --idx] ;
 		
 		if ([[cpath pathExtension] isEqualToString: @"app"]) {
 			cpath = [dir stringByAppendingPathComponent: cpath] ;
@@ -137,10 +137,10 @@ NSString* FindLinkBackServer(NSString* bundleIdentifier, NSString* serverName, N
 	// if the app was not found, descend into non-app dirs.  only descend 4 levels to avoid taking forever.
 	if ((nil==ret) && (level<4)) {
 		idx = (contents) ? [contents count] : 0 ;
-		while((nil==ret) && (--idx >= 0)) {
+		while((nil==ret) && (idx > 0)) {
 			BOOL isdir ;
 			
-			cpath = [contents objectAtIndex: idx] ;
+			cpath = [contents objectAtIndex: --idx] ;
 			[fm fileExistsAtPath: cpath isDirectory: &isdir] ;
 			if (isdir && (![[cpath pathExtension] isEqualToString: @"app"])) {
 				cpath = [dir stringByAppendingPathComponent: cpath] ;
