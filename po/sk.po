@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-10 22:32+0200\n"
+"POT-Creation-Date: 2012-10-15 17:08+0200\n"
 "PO-Revision-Date: 2012-10-09 12:48+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4011,9 +4011,9 @@ msgstr "Zálohovať originálne dokumenty pri uložení"
 msgid "&Backup documents, every"
 msgstr "Zá&lohovať dokumenty, každých"
 
-#: src/frontends/qt4/ui/PrefUi.ui:198
+#: src/frontends/qt4/ui/PrefUi.ui:199
 msgid "minutes"
-msgstr "min."
+msgstr "minút"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "&Save documents compressed by default"
@@ -19281,7 +19281,7 @@ msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 #: src/BufferView.cpp:1841
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr "Použité \"%1$s\" pri %2$d vložkách"
+msgstr "Aplikované \"%1$s\" na %2$d vložkách"
 
 #: src/BufferView.cpp:1849
 msgid "Branch name"
@@ -21760,11 +21760,13 @@ msgstr "Príkaz bez spracovávania"
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1083
-msgid "Command not allowed without any visible document in the active window"
-msgstr ""
-"Príkaz nie je povolený pokiaľ nie je viditeľný aspoň jeden dokument v "
-"aktívnom okne"
+#: src/frontends/qt4/GuiApplication.cpp:1095
+msgid "Command not allowed without a buffer open"
+msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden zásobník"
+
+#: src/frontends/qt4/GuiApplication.cpp:1102
+msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
+msgstr "argument pre <LFUN-COMMAND> buffer-forall je neplatný"
 
 #: src/frontends/qt4/GuiApplication.cpp:1243
 msgid "Running configure..."
@@ -21824,31 +21826,10 @@ msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
-#: src/frontends/qt4/GuiApplication.cpp:1611
-msgid ""
-"Applied the following command to all visible buffers in the active window: "
-msgstr ""
-"Nasledujúci príkaz bol použitý na všetky viditeľné zásobníky v aktívnom "
-"okne: "
-
-#: src/frontends/qt4/GuiApplication.cpp:1627
-msgid ""
-"Applied the following command to all visible and hidden buffers in the "
-"active window: "
-msgstr ""
-"Nasledujúci príkaz bol použitý na všetky viditeľné a skryté zásobníky v "
-"aktívnom okne: "
-
-#: src/frontends/qt4/GuiApplication.cpp:1635
-msgid ""
-"Applied the following command to all hidden buffers in the active window: "
-msgstr ""
-"Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom okne: "
-
-#: src/frontends/qt4/GuiApplication.cpp:1626
+#: src/frontends/qt4/GuiApplication.cpp:1691
 #, c-format
-msgid "%1$s%2$s"
-msgstr "%1$s, %2$s"
+msgid "Applied \"%1$s\" to %2$d buffer(s)"
+msgstr "Aplikované \"%1$s\" na %2$d zásobníkoch"
 
 #: src/frontends/qt4/GuiApplication.cpp:1636
 #, c-format
@@ -26222,6 +26203,35 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Command not allowed without any visible document in the active window"
+#~ msgstr ""
+#~ "Príkaz nie je povolený pokiaľ nie je viditeľný aspoň jeden dokument v "
+#~ "aktívnom okne"
+
+#~ msgid ""
+#~ "Applied the following command to all visible buffers in the active "
+#~ "window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky viditeľné zásobníky v aktívnom "
+#~ "okne: "
+
+#~ msgid ""
+#~ "Applied the following command to all visible and hidden buffers in the "
+#~ "active window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky viditeľné a skryté zásobníky v "
+#~ "aktívnom okne: "
+
+#~ msgid ""
+#~ "Applied the following command to all hidden buffers in the active window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom "
+#~ "okne: "
+
+#~ msgid "%1$s%2$s"
+#~ msgstr "%1$s, %2$s"
 
 #~ msgid " (unknown)"
 #~ msgstr " (neznáme)"
