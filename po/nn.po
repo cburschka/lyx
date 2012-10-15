@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-10-10 10:26-0400\n"
-"PO-Revision-Date: 2012-06-04 21:13+0200\n"
+"PO-Revision-Date: 2012-10-15 21:57+0200\n"
 "Last-Translator: Ingar Pareliussen\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
@@ -10573,7 +10573,6 @@ msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
-#, fuzzy
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
@@ -10581,8 +10580,7 @@ msgid ""
 msgstr ""
 "Brukar knitr pakken for å lage dynamiske rapportar i R. Denne R pakken må "
 "vere installert for at modulen skal virke: install.packages(\"knitr\").Merk "
-"at den er avhengig av R >= 2.14.1. For meir info sjå http://yihui.github.com/"
-"knitr"
+"at den er avhengig av R >= 2.14.1. For meir info sjå http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -16445,9 +16443,8 @@ msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:598
-#, fuzzy
 msgid "LaTeX (dviluatex)"
-msgstr "LaTeX (pdflatex)"
+msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:599
 msgid "LaTeX (XeTeX)"
@@ -17106,7 +17103,7 @@ msgstr "Førehandsvising av tekstkroppen"
 
 #: src/Buffer.cpp:3294
 msgid "Plain text does not have a preamble."
-msgstr ""
+msgstr "Rein tekst har ikkje ein fortekst"
 
 #: src/Buffer.cpp:3406
 #, c-format
@@ -21624,7 +21621,7 @@ msgstr "Feil->Kan ikkje laste fila!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "Vi har sett over rettskrivinga i utvalet, og fann ingen feil."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -23003,15 +23000,15 @@ msgid "Graphics file: %1$s"
 msgstr "Grafikk-fil: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Desse teikna i innskotet %1$s er\n"
-"ikkje mogeleg å vise i denne teiknkodinga og er ungått:\n"
-"%2$s."
+"Desse teikna brukt i href innskotet er ikkje\n"
+"funnen i den valde teiknkodinga og har derfor vore utelat\n"
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:296
 msgid "www"
