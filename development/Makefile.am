@@ -141,6 +141,7 @@ cmake/configCompiler.h.cmake \
 cmake/doc/CMakeLists.txt \
 cmake/doc/ReplaceValues.pl \
 cmake/doc/ReplaceValues.py \
+cmake/lyx_date.h.cmake \
 cmake/man/CMakeLists.txt \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
@@ -150,6 +151,7 @@ cmake/modules/FindHunspell.cmake \
 cmake/modules/FindICONV.cmake \
 cmake/modules/FindLibintl.cmake \
 cmake/modules/FindLyXGettext.cmake \
+cmake/modules/FindMagic.cmake \
 cmake/modules/FindMyThesLIB.cmake \
 cmake/modules/FindOpenSSL.cmake \
 cmake/modules/FindQt4.cmake \
