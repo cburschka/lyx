@@ -147,6 +147,9 @@ What's new
 - Fix failure of lyxknitr.R to move files when /tmp was on a different
   file system (e.g. an encrypted home partition).
 
+- Do not load the color or xcolor package with the beamer class, since
+  beamer already loads it itself (bug 8103).
+
 - Do not suppress the loading of geometry and hyperref if the class
   "article (koma + beamer)".
 

@@ -10,6 +10,8 @@ Input beamer.layout
 # override settings inherited from beamer.layout
 Provides geometry 0
 Provides hyperref 0
+Provides color    0
+Provides xcolor   0
 
 Preamble
 	\usepackage{beamerarticle,pgf}
