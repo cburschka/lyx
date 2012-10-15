@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-10-10 10:26-0400\n"
-"PO-Revision-Date: 2012-06-03 18:40+0300\n"
+"PO-Revision-Date: 2012-10-10 19:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -10654,7 +10654,6 @@ msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
-#, fuzzy
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
@@ -16549,9 +16548,8 @@ msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:598
-#, fuzzy
 msgid "LaTeX (dviluatex)"
-msgstr "LaTeX (pdflatex)"
+msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:599
 msgid "LaTeX (XeTeX)"
@@ -17217,7 +17215,7 @@ msgstr "Текст попереднього перегляду"
 
 #: src/Buffer.cpp:3294
 msgid "Plain text does not have a preamble."
-msgstr ""
+msgstr "У простого тексту не буває преамбули."
 
 #: src/Buffer.cpp:3406
 #, c-format
@@ -21790,6 +21788,8 @@ msgstr "Помилка -> Не вдалося завантажити файл!"
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
 msgstr ""
+"Перевірку правопису у позначеному фрагменті тексту завершено. Помилок не "
+"знайдено."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -23172,15 +23172,15 @@ msgid "Graphics file: %1$s"
 msgstr "Зображення: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Наведені нижче символи, які використано у вкладці %1$s, неможливо\n"
+"Наведені нижче символи, які використано у вкладці href, неможливо\n"
 "представити у поточному кодуванні, ці символи буде вилучено:\n"
-"%2$s."
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:296
 msgid "www"
