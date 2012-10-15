@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-15 17:08+0200\n"
+"POT-Creation-Date: 2012-10-15 22:53+0200\n"
 "PO-Revision-Date: 2012-10-09 12:48+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -13962,20 +13962,16 @@ msgid "Fold Math Macro|d"
 msgstr "Zabaliť Matematické Makro"
 
 #: lib/ui/stdmenus.inc:324
+msgid "View Outline|u"
+msgstr "Zobraziť prehľad"
+
+#: lib/ui/stdmenus.inc:324
 msgid "View Source|S"
 msgstr "Zobraziť zdrojový text (LaTeX)"
 
 #: lib/ui/stdmenus.inc:325
 msgid "View Messages|g"
 msgstr "Zobraz Hlásenia"
-
-#: lib/ui/stdmenus.inc:328
-msgid "View Master Document|M"
-msgstr "Zobraz Hlavný Dokument"
-
-#: lib/ui/stdmenus.inc:329
-msgid "Update Master Document|a"
-msgstr "Aktualizuj Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:331
 msgid "Split View Into Left and Right Half|i"
@@ -14241,13 +14237,17 @@ msgstr "Vytvoriť program"
 msgid "LaTeX Log|L"
 msgstr "LaTeX Protokol|L"
 
-#: lib/ui/stdmenus.inc:507
-msgid "Outline|O"
-msgstr "Prehľad|e"
-
 #: lib/ui/stdmenus.inc:508
 msgid "Start Appendix Here|A"
 msgstr "Začni Prílohy Tu|P"
+
+#: lib/ui/stdmenus.inc:328
+msgid "View Master Document|M"
+msgstr "Zobraz Hlavný Dokument"
+
+#: lib/ui/stdmenus.inc:329
+msgid "Update Master Document|a"
+msgstr "Aktualizuj Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:511
 msgid "Compressed|m"
