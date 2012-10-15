@@ -39,7 +39,7 @@ list(REMOVE_ITEM lyx_headers
 
 if(NOT APPLE)
 	list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/AppleSpellChecker.cpp)
-
+	list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/AppleSpellChecker.h)
 endif()
 
 if(NOT ASPELL_FOUND)
