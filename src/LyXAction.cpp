@@ -3165,21 +3165,22 @@ void LyXAction::init()
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_FORALL
- * \li Action: Applies a command to all visible, hidden, or both types of buffers in the active window.
- * \li Syntax: buffer-forall [<BUFFER-TYPE>] <LFUN-COMMAND>
- * \li Params: <BUFFER-TYPE>: <visible|hidden|both default:> default: visible               
-               <LFUN-COMMAND>: The command that is to be applied to the buffers.
- * \li Sample: Close all Notes in all visible documents: \n
+ * \li Action: Applies a command to all non-hidden buffers.
+ * \li Notion: a buffer is `hidden' if it is internally open in LyX, but not
+               visible in any window.
+ * \li Syntax: buffer-forall <LFUN-COMMAND>
+ * \li Params: <LFUN-COMMAND>: The command to be applied to the buffers.
+ * \li Sample: Close all Notes in buffers: \n
 	           buffer-forall inset-forall Note inset-toggle close \n
-               Toggle change tracking on all documents: \n
-	           buffer-forall both changes-track \n
-               Toggle read-only for all visible documents: \n
+               Toggle change tracking on buffers: \n
+	           buffer-forall changes-track \n
+               Toggle read-only for buffers: \n
 	           buffer-forall buffer-toggle-read-only \n
-               Show statistics for each document: \n
-	           buffer-forall both statistics \n
-               Activate the branch named "Solutions" in all visible documents: \n
+               Show statistics for individual buffers: \n
+	           buffer-forall statistics \n
+               Activate the branch named "Solutions" in buffers: \n
 	           buffer-forall branch-activate Solutions \n
-               Export all visible documents to PDF (pdflatex): \n
+               Export buffers to PDF (pdflatex): \n
 	           buffer-forall buffer-export pdf2 \n
  * \li Origin: scottkostyshak, 20 Jul 2012
  * \endvar

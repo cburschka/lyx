@@ -1091,8 +1091,15 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		break;
 
 	case LFUN_BUFFER_FORALL: {
-		if (!currentView() || !currentView()->currentBufferView() || !&currentView()->currentBufferView()->buffer()) {
-			flag.message(from_utf8(N_("Command not allowed without any visible document in the active window")));
+		if (theBufferList().empty()) {
+			flag.message(from_utf8(N_("Command not allowed without a buffer open")));
+			flag.setEnabled(false);
+			break;
+		}
+
+		FuncRequest const cmdToPass = lyxaction.lookupFunc(cmd.getLongArg(0));
+		if (cmdToPass.action() == LFUN_UNKNOWN_ACTION) {
+			flag.message(from_utf8(N_("the <LFUN-COMMAND> argument of buffer-forall is not valid")));
 			flag.setEnabled(false);
 		}
 		break;
@@ -1615,59 +1622,73 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_BUFFER_FORALL: {
-		GuiView * gv = currentView();
-		Buffer * const buf = &gv->currentBufferView()->buffer();
+		FuncRequest const funcToRun = lyxaction.lookupFunc(cmd.getLongArg(0));
 
-		bool processVisible = true;
-		bool processHidden = false;
-		docstring msg = _("Applied the following command to all visible buffers in the active window: ");
-		string commandToRun = argument;
-		if (cmd.getArg(0) == "both") {
-			processHidden = true;
-			msg = _("Applied the following command to all visible and hidden buffers in the active window: ");
-			commandToRun = cmd.getLongArg(1);
-		} else if (cmd.getArg(0) == "visible") {
-			commandToRun = cmd.getLongArg(1);
-		} else if (cmd.getArg(0) == "hidden") {
-			processHidden = true;
-			processVisible = false;
-			commandToRun = cmd.getLongArg(1);
-			msg = _("Applied the following command to all hidden buffers in the active window: ");
-		}
-		FuncRequest const funcToRun = lyxaction.lookupFunc(commandToRun);
-		dr.setMessage(bformat(_("%1$s%2$s"), msg, from_utf8(commandToRun)));
+		map<Buffer *, GuiView *> views_lVisible;
+		map<GuiView *, Buffer *> activeBuffers;
 
+		QList<GuiView *> allViews = d->views_.values();
+
+		// this foreach does not modify any buffer. It just collects info on local visibility of buffers
+		// and on which buffer is active in each view.
 		Buffer * const last = theBufferList().last();
+		foreach (GuiView * view, allViews) {
+			// all of the buffers might be locally hidden. That is, there is no active buffer.
+			if (!view || !view->currentBufferView() || !&view->currentBufferView()->buffer())
+				activeBuffers[view] = 0;
+			else
+				activeBuffers[view] = &view->currentBufferView()->buffer();
+
+			// find out if each is locally visible or locally hidden.
+			// we don't use a for loop as the buffer list cycles.
+			Buffer * b = theBufferList().first();
+			while (true) {
+				bool const locallyVisible = view && view->workArea(*b);
+				if (locallyVisible) {
+					bool const exists_ = (views_lVisible.find(b) != views_lVisible.end());
+					// only need to overwrite/add if we don't already know a buffer is globally
+					// visible or we do know but we would prefer to dispatch LFUN from the
+					// current view because of cursor position issues.
+					if (!exists_ || (exists_ && views_lVisible[b] != current_view_))
+						views_lVisible[b] = view;
+				}
+				if (b == last)
+					break;
+				b = theBufferList().next(b);
+			}
+		}
+
+		GuiView * const homeView = currentView();
 		Buffer * b = theBufferList().first();
 		Buffer * nextBuf = 0;
-		// We cannot use a for loop as the buffer list cycles.
+		int numProcessed = 0;
 		while (true) {
 			if (b != last)
-				nextBuf = theBufferList().next(b); //get next now bc LFUN might close current 
+				nextBuf = theBufferList().next(b); // get next now bc LFUN might close current.
 
-			bool const hidden = !(gv && gv->workArea(*b));
-			if (hidden) {
-				if (processHidden) {
-					gv->setBuffer(b);
-					lyx::dispatch(funcToRun);
-					gv->currentWorkArea()->view().hideWorkArea(gv->currentWorkArea());
-				}
+			bool const visible = (views_lVisible.find(b) != views_lVisible.end());
+			if (visible) {
+				// first change to a view where b is locally visible, preferably current_view_.
+				GuiView * const vLv = views_lVisible[b];
+				vLv->setBuffer(b);
+				lyx::dispatch(funcToRun);
+				numProcessed++;
 			}
-
-			else {
-				if (processVisible) {
-					gv->setBuffer(b);
-					lyx::dispatch(funcToRun);
-				}
-			}
-
 			if (b == last)
 				break;
 			b = nextBuf;
 		}
 
-		if (theBufferList().isLoaded(buf)) //the LFUN might have closed buf
-			gv->setBuffer(buf);
+		// put things back to how they were (if possible).
+		foreach (GuiView * view, allViews) {
+			Buffer * originalBuf = activeBuffers[view];
+			// there might not have been an active buffer in this view or it might have been closed by the LFUN.
+			if (theBufferList().isLoaded(originalBuf))
+				view->setBuffer(originalBuf);
+		}
+		homeView->setFocus();
+
+		dr.setMessage(bformat(_("Applied \"%1$s\" to %2$d buffer(s)"), from_utf8(cmd.getLongArg(0)), numProcessed));
 		break;
 	}
 
