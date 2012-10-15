@@ -31,8 +31,6 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/lyxinsets.cpp
 	${TOP_SRC_DIR}/src/lyxmathed.cpp)
 
-set_property(SOURCE "${TOP_SRC_DIR}/src/version.cpp" APPEND PROPERTY COMPILE_DEFINITIONS  LYX_DATE="${LYX_DATE}")
-
 list(REMOVE_ITEM lyx_headers
 	${TOP_SRC_DIR}/src/Variables.h
 	${TOP_SRC_DIR}/src/Section.h)

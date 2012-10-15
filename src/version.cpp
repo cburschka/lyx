@@ -10,6 +10,9 @@
  */
 
 #include <config.h>
+#if ! defined(LYX_DATE)
+	#include <lyx_date.h>
+#endif
 
 ///
 extern char const * const lyx_version = PACKAGE_VERSION;

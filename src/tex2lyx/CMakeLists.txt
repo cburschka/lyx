@@ -21,8 +21,6 @@ foreach(_src graphics/GraphicsParams insets/ExternalTemplate
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)
 endforeach(_src)
 
-set_property(SOURCE "${TOP_SRC_DIR}/src/version.cpp" APPEND PROPERTY COMPILE_DEFINITIONS  LYX_DATE="${LYX_DATE}")
-
 file(GLOB tex2lyx_sources ${TOP_SRC_DIR}/src/tex2lyx/${LYX_CPP_FILES})
 
 file(GLOB tex2lyx_headers ${TOP_SRC_DIR}/src/tex2lyx/${LYX_HPP_FILES})

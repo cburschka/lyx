@@ -673,6 +673,7 @@ else()
 endif()
 
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
+configure_file(${LYX_CMAKE_DIR}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.h)
 
 # Compute qt4-version from ${QTVERSION}
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
