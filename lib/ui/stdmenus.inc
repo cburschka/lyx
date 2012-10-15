@@ -321,12 +321,9 @@ Menuset
 		Item "Unfold Math Macro|n" "math-macro-unfold"
 		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
+		Item "View Outline|u" "dialog-toggle toc"
 		Item "View Source|S" "dialog-toggle view-source"
 		Item "View Messages|g" "dialog-toggle progress"
-		ViewFormats
-		UpdateFormats
-		OptItem "View Master Document|M" "master-buffer-view"
-		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
 		Item "Split View Into Left and Right Half|i" "view-split horizontal"
 		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
@@ -505,8 +502,12 @@ Menuset
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
-		Item "Outline|O" "dialog-toggle toc"
 		Item "Start Appendix Here|A" "appendix"
+		Separator
+		ViewFormats
+		UpdateFormats
+		OptItem "View Master Document|M" "master-buffer-view"
+		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
 		Item "Compressed|m" "buffer-toggle-compression"
 		Item "Settings...|S" "dialog-show document"
