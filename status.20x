@@ -147,6 +147,9 @@ What's new
 - Fix failure of lyxknitr.R to move files when /tmp was on a different
   file system (e.g. an encrypted home partition).
 
+- Do not suppress the loading of geometry and hyperref if the class
+  "article (koma + beamer)".
+
 
 * USER INTERFACE
 
