@@ -28325,6 +28325,39 @@ emph
 .
 \end_layout
 
+\begin_layout Standard
+If the characters |
+\begin_inset space \space{}
+\end_inset
+
+,
+\begin_inset space \space{}
+\end_inset
+
+!
+\begin_inset space \space{}
+\end_inset
+
+, @ and
+\begin_inset space \space{}
+\end_inset
+
+"
+\begin_inset space \space{}
+\end_inset
+
+should appear in nomenclature entries they need to be escaped by adding
+ a quote character in front of them.
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "\"@, \"|, \"!, \"\""
+description "The quote sign is output by writing ' \"\"\"\" '"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Sort Order of Nomenclature Entries
 \begin_inset Index idx

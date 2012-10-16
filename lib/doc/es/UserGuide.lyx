@@ -28805,7 +28805,9 @@ reference "sub:LaTeX-Sintaxis"
 \end_layout
 
 \begin_layout Standard
-El diálogo Estilo
+El diálogo 
+\family sans
+Estilo
 \begin_inset space ~
 \end_inset
 
@@ -28813,9 +28815,7 @@ del
 \begin_inset space ~
 \end_inset
 
-t
-\family sans
-exto
+texto
 \family default
  no se puede emplear para formatear la descripción, hay que usar comandos
  LaTeX.
@@ -28884,6 +28884,51 @@ cursiva
 emph
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the characters |
+\begin_inset space \space{}
+\end_inset
+
+,
+\begin_inset space \space{}
+\end_inset
+
+!
+\begin_inset space \space{}
+\end_inset
+
+, @ and
+\begin_inset space \space{}
+\end_inset
+
+"
+\begin_inset space \space{}
+\end_inset
+
+should appear in nomenclature entries they need to be escaped by adding
+ a quote character in front of them.
+ To avoid that the 
+\begin_inset space \space{}
+\end_inset
+
+"
+\begin_inset space \space{}
+\end_inset
+
+character influences the following characters the sequence is ended by an
+ empty pair of braces: ""{}
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "\"@, \"|, \"!, \"\"{}"
+description "The quote sign is output by writing ' \"\"{}\"\"{} '"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
