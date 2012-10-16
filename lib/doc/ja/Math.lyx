@@ -30951,6 +30951,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 （注意）
 \series default
 ラテン文字を使うと、一つの文書の中で、最大26個の数式しか番号を振ることができません。
@@ -31783,6 +31784,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 【註】
 \backslash
 ce
@@ -31815,6 +31817,43 @@ hyphen$Cl}
 \end_inset
 
 ）のようにTeXコードを使わなくてはなりません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+\lang english
+Note:
+\series default
+ It is not possible in LyX to use the character ^ to get an up-arrow as
+ described in the 
+\series bold
+mhchem
+\series default
+ manual.
+ One instead uses a negative thin space followed by the command 
+\series bold
+
+\backslash
+uparrow
+\series default
+: 
+\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34050,7 +34089,7 @@ Maxima
 
 \series bold
 \lang english
-command-alternatives paragraph-break;math-extern maxima
+command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
 \begin_layout Standard
