@@ -321,9 +321,9 @@ Menuset
 		Item "Unfold Math Macro|n" "math-macro-unfold"
 		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
-		Item "View Outline|u" "dialog-toggle toc"
-		Item "View Source|S" "dialog-toggle view-source"
-		Item "View Messages|g" "dialog-toggle progress"
+		Item "Outline Pane|u" "dialog-toggle toc"
+		Item "Source Pane|S" "dialog-toggle view-source"
+		Item "Messages Pane|g" "dialog-toggle progress"
 		Separator
 		Item "Split View Into Left and Right Half|i" "view-split horizontal"
 		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
