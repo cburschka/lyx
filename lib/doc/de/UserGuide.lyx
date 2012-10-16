@@ -29060,6 +29060,41 @@ emph
 .
 \end_layout
 
+\begin_layout Standard
+Sollen die Zeichen |
+\begin_inset space \space{}
+\end_inset
+
+,
+\begin_inset space \space{}
+\end_inset
+
+!
+\begin_inset space \space{}
+\end_inset
+
+, @ und
+\begin_inset space \space{}
+\end_inset
+
+"
+\begin_inset space \space{}
+\end_inset
+
+in Nomenklatureinträgen erscheinen, müssen sie geschützt werden.
+ indem man ein Anführungszeichen davor setzt.
+ Um zu verhindern, dass das Zeichen " nachfolgende Zeichen beeinflusst,
+ wird es mit einem leeren TeX-Klammerpaar abgeschlossen: ""{}
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "\"@, \"|, \"!, \"\"{}"
+description "Das Anführungszeichen wird mit der Sequenz ' \"\"{}\"\"{} ' ausgegeben"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Nomenklatur-Einträge sortieren
 \begin_inset Index idx
