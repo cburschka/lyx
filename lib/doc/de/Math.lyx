@@ -31584,10 +31584,14 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Achtung:
 \series default
- Es können nur maximal 26 Formeln in einem Dokument mit lateinischen Buchstaben
- nummeriert werden.
+ Es können nur maximal 26
+\begin_inset space ~
+\end_inset
+
+Formeln in einem Dokument mit lateinischen Buchstaben nummeriert werden.
 \end_layout
 
 \end_inset
@@ -32430,6 +32434,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Achtung:
 \series default
  Wenn eine Formel in eine 
@@ -32444,7 +32449,11 @@ ce
 \end_inset
 
 B.
- für 
+ für
+\begin_inset Newline newline
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -32472,6 +32481,45 @@ hyphen$Cl}
 \end_inset
 
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Achtung:
+\series default
+ Es ist nicht möglich in LyX das Zeichen ^ zu verwenden um einen Pfeil nach
+ oben zu bekommen, wie es im 
+\series bold
+mhchem
+\series default
+-Handbuch steht.
+ Man verwendet stattdessen einen kleinen negativen Leerraum gefolgt vom
+ Befehl 
+\series bold
+
+\backslash
+uparrow
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -32805,6 +32853,13 @@ status collapsed
  wird eine neue Zeile erstellt.
  Horizontale Beziehungen werden in ungerade Zeilen, vertikale in gerade
  Zeilen der Formel eingegeben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

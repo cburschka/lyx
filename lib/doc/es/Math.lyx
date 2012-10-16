@@ -31992,9 +31992,14 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Nota:
 \series default
- Con letras latinas sólo se puede numerar hasta un máximo de 26 ecuaciones.
+ Con letras latinas sólo se puede numerar hasta un máximo de 26
+\begin_inset space ~
+\end_inset
+
+ecuaciones.
 \end_layout
 
 \end_inset
@@ -32917,6 +32922,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Nota:
 \series default
  Insertar modo matemático en un marco 
@@ -32954,6 +32960,43 @@ hyphen$Cl}
 \end_inset
 
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+\lang english
+Note:
+\series default
+ It is not possible in LyX to use the character ^ to get an up-arrow as
+ described in the 
+\series bold
+mhchem
+\series default
+ manual.
+ One instead uses a negative thin space followed by the command 
+\series bold
+
+\backslash
+uparrow
+\series default
+: 
+\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35287,6 +35330,15 @@ Maxima
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Consejos prácticos
 \begin_inset Index idx
@@ -36504,7 +36556,7 @@ red
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36535,7 +36587,7 @@ color{red}}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 

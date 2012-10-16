@@ -31518,9 +31518,14 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Note:
 \series default
- Only maximal 26 formulas can be numbered with Latin letters in one document.
+ Only maximal 26
+\begin_inset space ~
+\end_inset
+
+formulas can be numbered with Latin letters in one document.
 \end_layout
 
 \end_inset
@@ -32371,6 +32376,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
+\color none
 Note:
 \series default
  Inserting a formula to a 
@@ -32408,6 +32414,40 @@ hyphen$Cl}
 \end_inset
 
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Note:
+\series default
+ It is not possible in LyX to use the character ^ to get an up-arrow as
+ described in the 
+\series bold
+mhchem
+\series default
+ manual.
+ One instead uses a negative thin space followed by the command 
+\series bold
+
+\backslash
+uparrow
+\series default
+: 
+\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
