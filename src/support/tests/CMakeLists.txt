@@ -28,20 +28,22 @@ include_directories(
 
 set(check_PROGRAMS check_convert check_filetools check_lstrings)
 
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/regfiles")
+
 set(_depends)
 foreach(_src ${check_PROGRAMS})
 	sources(${_src} ${_src}.cpp dummy_functions.cpp boost.cpp)
-	#message(STATUS "${_src}_SOURCES = " ${${_src}_SOURCES})
 	string(REPLACE "check_" "" _srcx ${_src})
+	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
+	set(created_data_file "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}_data")
 	add_custom_command(
-		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}
-		COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/regfiles"
-		COMMAND "${CMAKE_BINARY_DIR}/bin/${_src}" > ${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}
-		COMMAND ${CMAKE_COMMAND} -E compare_files "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}" "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}"
-		DEPENDS	"${CMAKE_BINARY_DIR}/bin/${_src}" "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}"
-		COMMENT "'${CMAKE_BINARY_DIR}/bin/${_src}' > '${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}'"
+		OUTPUT "${created_data_file}"
+		COMMAND ${_src} > "${created_data_file}"
+		COMMAND ${CMAKE_COMMAND} -E compare_files "${src_data_file}" "${created_data_file}"
+		DEPENDS	${_src} "${src_data_file}"
+		COMMENT "${_src} > '${created_data_file}'"
 	)
-	list(APPEND _depends "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}")
+	list(APPEND _depends "${created_data_file}")
 endforeach()
 
 add_custom_target(checkregfiles DEPENDS support ${_depends})
