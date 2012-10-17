@@ -4367,9 +4367,7 @@ Return
 Standard
 \family default
 .
- LyX will still reset the nesting depth, however.
- Usually, starting a new paragraph resets both the paragraph environment
- and the nesting depth (for more on nesting see section
+ Also the the nesting depth is preserved (for more on nesting see section
 \begin_inset space ~
 \end_inset
 
@@ -4381,20 +4379,6 @@ reference "sec:Nesting"
 \end_inset
 
 ).
- At the moment, all this is context-specific; you're better off expecting
- 
-\family sans
-Return
-\family default
- to reset the paragraph environment and depth.
- If you want a new paragraph to keep the current environment and depth,
- use 
-\begin_inset Info
-type  "shortcut"
-arg   "break-paragraph inverse"
-\end_inset
-
- instead.
 \end_layout
 
 \begin_layout Subsection

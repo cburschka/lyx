@@ -4249,10 +4249,11 @@ Entrar
 Normal
 \family default
 .
- Sin embargo, LyX sí restablecerá la profundidad de anidación.
- En general, al empezar un párrafo nuevo se reinician las dos cosas, el
- entorno y la profundidad de anidación del párrafo (más sobre anidación
- en la sección
+ 
+\lang english
+Also the the nesting depth is preserved
+\lang spanish
+ (más sobre anidación en la sección
 \begin_inset space ~
 \end_inset
 
@@ -4264,22 +4265,6 @@ reference "sec:Anidación"
 \end_inset
 
 ).
- De momento, todo esto es específico del contexto; es mejor suponer que
- 
-\family sans
-Entrar
-\family default
- reinicia el entorno y la profundidad del párrafo.
- Si quieres mantener el entorno y la sangría actuales en un nuevo párrafo
- usa 
-\family sans
-Alt+Entrar
-\family default
- en vez de 
-\family sans
-Entrar
-\family default
-.
 \end_layout
 
 \begin_layout Subsection

@@ -4554,10 +4554,11 @@ Entrée
 Standard
 \family default
 .
- LyX réinitialisera toutefois la profondeur d'emboîtement.
- Habituellement, commencer un nouveau paragraphe réinitialise à la fois
- l'environnement de paragraphe et la profondeur d'emboîtement (les détails
- sur l'emboîtement dans dans la section
+ 
+\lang english
+Also the the nesting depth is preserved
+\lang french
+ (les détails sur l'emboîtement dans dans la section
 \begin_inset space ~
 \end_inset
 
@@ -4569,20 +4570,6 @@ reference "sec:Emboîter-les-Environnements"
 \end_inset
 
 ).
- Pour le moment, tout ceci est spécifique au contexte; attendez-vous une
- fois pour toute à ce que 
-\family sans
-Entrée
-\family default
- réinitialise ces paramètres.
- Si vous voulez que le nouveau paragraphe conserve l'environnement ainsi
- que la profondeur actuels, utilisez 
-\begin_inset Info
-type  "shortcut"
-arg   "break-paragraph inverse"
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
