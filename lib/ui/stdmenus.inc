@@ -324,12 +324,12 @@ Menuset
 		Item "Outline Pane|u" "dialog-toggle toc"
 		Item "Source Pane|S" "dialog-toggle view-source"
 		Item "Messages Pane|g" "dialog-toggle progress"
+		Submenu "Toolbars|b" "toolbars"
 		Separator
 		Item "Split View Into Left and Right Half|i" "view-split horizontal"
 		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
 		OptItem "Close Current View|w" "tab-group-close"
 		Item "Fullscreen|l" "ui-toggle fullscreen"	
-		Submenu "Toolbars|b" "toolbars"
 		Separator
 		Documents
 	End
