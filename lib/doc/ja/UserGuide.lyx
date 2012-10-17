@@ -5940,7 +5940,7 @@ Return
 \size small
 リセット
 \size normal
-されることに注意してください。通常の場合は、新しい段落を開始すると
+されることに注意してください。
 \family default
 \series default
 \shape default
@@ -5949,7 +5949,8 @@ Return
 \bar default
 \noun default
 \color inherit
-、
+\lang english
+ Also the the nesting depth is preserved
 \family roman
 \series medium
 \shape up
@@ -5958,7 +5959,8 @@ Return
 \bar no
 \noun off
 \color none
-段落環境も入れ子階層の深さもリセットされます（入れ子については第
+\lang japanese
+ （入れ子については第
 \family default
 \series default
 \shape default
@@ -5983,60 +5985,7 @@ reference "sec:入れ子"
 \bar no
 \noun off
 \color none
-節を参照してください）。今のところ、これらは全て文脈に依存しますので、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-Return
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を押すと、段落環境も入れ子の深さもリセットされると考えておいた方が安全でしょう。新規の段落に、現在の環境と階層を維持させたいときには
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-、
-\family sans
-
-\begin_inset Info
-type  "shortcut"
-arg   "break-paragraph inverse"
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-をお使い下さい
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-。
+節を参照してください）。
 \end_layout
 
 \begin_layout Subsection

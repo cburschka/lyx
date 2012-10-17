@@ -3693,10 +3693,11 @@ Sartu
 Arrunta
 \family default
  ingurunera joan beharrean.
- LyX-ek habiaratze-sakonera guztiak berrezarriko ditu, hala ere.
- Gehienetan, paragrafo berri bat hasterakoan bai paragrafo-ingurunea bai
- habiaratze-sakonera berrezartzen dira (habiaratzeari buruzko azalpen gehiago
  
+\lang english
+Also the the nesting depth is preserved
+\lang basque
+ (habiaratzeari buruzko azalpen gehiago 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Habiaratzea"
@@ -3708,17 +3709,6 @@ reference "sec:Habiaratzea"
 \end_inset
 
 atalean aurkituko duzu).
- Oraingoz, hau dena testuinguruaren araberakoa da; hobe duzu 
-\family sans
-Sartu
-\family default
- tekla erabiltzea paragrafo-ingurunea eta sakonera berrezartzeko.
- Uneko ingurunea darabilen paragrafo berri bat sortzea nahi baduzu, orduan
- erabili 
-\family sans
-Alt+Sartu
-\family default
-.
 \end_layout
 
 \begin_layout Subsection
