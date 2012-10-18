@@ -1114,6 +1114,12 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context)
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
+	if (p.hasOpt()) {
+		string arg = p.verbatimOption();
+		os << "lstparams " << '"' << arg << '"' << '\n';
+		if (arg.find("\\color") != string::npos)
+	                preamble.registerAutomaticallyLoadedPackage("color");
+	}
 	os << "inline false\n"
 	   << "status collapsed\n";
 	Context context(true, parent_context.textclass);
