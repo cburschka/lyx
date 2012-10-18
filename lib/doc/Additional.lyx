@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 442
+\lyxformat 444
 \begin_document
 \begin_header
 \textclass scrbook
@@ -130,11 +130,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 274215730 "scott" 
 \end_header
 
 \begin_body
@@ -21379,6 +21380,10 @@ Starting from there you can reach many other interesting links and even
 
 \begin_layout Subsection
 LyX and Literate Programming
+\change_inserted 274215730 1350434640
+ with Noweb
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -21536,9 +21541,13 @@ LyX should be prevented from making any special interpretation of what has
 \end_layout
 
 \begin_layout Standard
-The down side of the Scrap paragraph layout is that consecutive paragraphs
- of code will be spaced with one empty line in the source code and also
- in the printed documentation.
+The down
+\change_deleted 274215730 1350432842
+ 
+\change_unchanged
+side of the Scrap paragraph layout is that consecutive paragraphs of code
+ will be spaced with one empty line in the source code and also in the printed
+ documentation.
  The work around is to enter each line of code within a single Scrap, with
  a newline (ctrl-return).
  The example above will look like this:
@@ -22206,8 +22215,11 @@ Helpers
 \end_layout
 
 \begin_layout Standard
-I take advantage of the new created LyX server function and this ddd feature,
- and set 
+I take advantage of the new
+\change_inserted 274215730 1350432999
+ly
+\change_unchanged
+ created LyX server function and this ddd feature, and set 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22225,9 +22237,15 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \begin_layout Standard
 With this, whenever you are using ddd and find a point in the program that
  you want to edit, you just press shift-ctrl-V (in the ddd window), and
- ddd you forward this information to LyX through the LyX server and then
- the LyX window will show the same file with the cursor at the same position
- ddd was pointing to.
+ ddd 
+\change_deleted 274215730 1350433047
+you
+\change_inserted 274215730 1350433047
+will
+\change_unchanged
+ forward this information to LyX through the LyX server and then the LyX
+ window will show the same file with the cursor at the same position ddd
+ was pointing to.
  No more guessing or long scrolling to locate a point in the program back
  from debugging !
 \end_layout
@@ -22433,7 +22451,26 @@ The next thing is the visible presence of the newline character in the screen.
  I recommend you choosing a color that is close to the background but not
  equal, that way you still can see it is there, but it is not bothering
  you anymore.
+
+\change_deleted 274215730 1350434691
  
+\change_inserted 274215730 1350434708
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 274215730 1350434732
+LyX and knitr/Sweave
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 274215730 1350434777
+Support for knitr and Sweave is documented in the knitr.lyx example file
+ and in the Sweave manual (in the Help > Specific Manuals submenu).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Chapter
