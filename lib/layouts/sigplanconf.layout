@@ -140,13 +140,14 @@ End
 Style Terms
 	CopyStyle		Conference
 	LatexName		terms
+	InTitle			0
 	LabelString		"Terms:"
 End
 
 
 Style Keywords
-	CopyStyle		Conference
-	LatexName		terms
+	CopyStyle		Terms
+	LatexName		keywords
 	LabelString		"Keywords:"
 End
 
