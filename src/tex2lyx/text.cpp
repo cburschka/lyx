@@ -1154,6 +1154,8 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 	if (p.hasOpt()) {
 		string arg = p.verbatimOption();
 		os << "lstparams " << '"' << arg << '"' << '\n';
+		if (arg.find("\\color") != string::npos)
+	                preamble.registerAutomaticallyLoadedPackage("color");
 	}
 	if (in_line)
 		os << "inline true\n";
