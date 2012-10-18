@@ -447,6 +447,7 @@ string default_encoding;
 string syntaxfile;
 bool copy_files = false;
 bool overwrite_files = false;
+bool skip_children = false;
 int error_code = 0;
 
 /// return the number of arguments consumed
@@ -463,6 +464,7 @@ int parse_help(string const &, string const &)
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
 		"\t-n                 translate a noweb (aka literate programming) file.\n"
+		"\t-skipchildren      Do not translate included child documents.\n"
 		"\t-roundtrip         re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
 		"\t-s syntaxfile      read additional syntax file.\n"
 		"\t-sysdir SYSDIR     Set system directory to SYSDIR.\n"
@@ -565,6 +567,13 @@ int parse_noweb(string const &, string const &)
 }
 
 
+int parse_skipchildren(string const &, string const &)
+{
+	skip_children = true;
+	return 0;
+}
+
+
 int parse_roundtrip(string const &, string const &)
 {
 	roundtrip = true;
@@ -594,6 +603,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-f"] = parse_force;
 	cmdmap["-s"] = parse_syntaxfile;
 	cmdmap["-n"] = parse_noweb;
+	cmdmap["-skipchildren"] = parse_skipchildren;
 	cmdmap["-sysdir"] = parse_sysdir;
 	cmdmap["-userdir"] = parse_userdir;
 	cmdmap["-roundtrip"] = parse_roundtrip;
@@ -664,6 +674,12 @@ bool copyFiles()
 bool overwriteFiles()
 {
 	return overwrite_files;
+}
+
+
+bool skipChildren()
+{
+	return skip_children;
 }
 
 

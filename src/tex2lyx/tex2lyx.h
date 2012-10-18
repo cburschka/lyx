@@ -183,6 +183,8 @@ extern std::string getParentFilePath(bool input);
 extern bool overwriteFiles();
 /// Do we need to copy included files to the output directory?
 extern bool copyFiles();
+/// Shall we skip child documents and keep them as TeX?
+extern bool skipChildren();
 
 
 /*!

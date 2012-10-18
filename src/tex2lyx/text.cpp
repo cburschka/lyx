@@ -3814,8 +3814,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string const abslyxname = makeAbsPath(
 					lyxname, getParentFilePath(false)).absFileName();
 				bool xfig = false;
-				external = FileName(absfigname).exists();
-				if (t.cs() == "input") {
+				if (!skipChildren())
+					external = FileName(absfigname).exists();
+				if (t.cs() == "input" && !skipChildren()) {
 					string const ext = getExtension(abstexname);
 
 					// Combined PS/LaTeX:
@@ -3867,6 +3868,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					FileName abssrc(abstexname);
 					copy_file(abssrc, outname);
 				} else if (t.cs() != "verbatiminput" &&
+				           !skipChildren() &&
 				    tex2lyx(abstexname, FileName(abslyxname),
 					    p.getEncoding())) {
 					outname = lyxname;

@@ -48,6 +48,11 @@ Use the \fB\-f\fR option (carefully) to clobber any existing files.
 Noweb. Translate a noweb (aka literate programming) file. This should be
 (almost?) equivalent to running \*[lq]noweb2lyx foo.tex foo.lyx\*[rq]. This option
 requires the \fB\-c\fR option.
+.TP
+.BI \-skipchildren
+Do not translate child documents included via \f(CW\einclude\fR and \f(CW\einput\fR.
+This option is useful if the child documents are generated files and/or contain many
+commands that \fBtex2lyx\fR does not understand yet.
 .\" .TP
 .\" .BI \-r
 .\" Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
