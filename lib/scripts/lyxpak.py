@@ -160,7 +160,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
             j = 0
             while j < len(bibfiles):
                 if os.path.isabs(bibfiles[j]):
-                    file = bibfiles[j]
+                    file = bibfiles[j] + '.bib'
                 else:
                     file = os.path.join(curdir, bibfiles[j] + '.bib')
                 if os.path.exists(file):
