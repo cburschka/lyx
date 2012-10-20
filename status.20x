@@ -158,6 +158,8 @@ What's new
 - Removed unnecessary dependency on the package europs.sty from the
   g-brief layout files.
 
+- Do not skip bibtex files specified by their full path when creating
+  a LyX archive (bug 8379).
 
 * USER INTERFACE
 
