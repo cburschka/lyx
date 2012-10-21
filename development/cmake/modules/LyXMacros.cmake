@@ -229,6 +229,11 @@ macro(lyx_qt_resources_file _qrc_name _to_dir _list)
 		file(APPEND  ${_qrc_name} "</qresource>\n")
 		file(APPEND  ${_qrc_name} "</RCC>\n")
 	endif()
+	add_custom_command(
+	  OUTPUT ${_qrc_name}
+	  COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target rebuild_cache
+	  )
+
 endmacro(lyx_qt_resources_file)
 
 
