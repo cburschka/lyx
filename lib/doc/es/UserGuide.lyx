@@ -31824,9 +31824,6 @@ Una palabra sencilla, la búsqueda no incluirá las coincidencias de la palabra
 \begin_layout Itemize
 Una palabra en énfasis o negrita, la búsqueda encontrará solo las coincidencias
  con el mismo aspecto y solo en el mismo estilo de texto.
- Hay que tener en cuenta que, por ejemplo, un texto en énfasis se buscará
- no solo cuando aparezca aislado, sino también si forma parte de una frase
- más larga en estilo énfasis.
 \end_layout
 
 \begin_layout Itemize
@@ -32093,8 +32090,20 @@ Por último, se pueden usar referencias a (sub)expresiones en regexp en la
 \end_layout
 
 \begin_layout Standard
-Hay que tener en cuenta que las referencias funcionan cuando aparecen dentro
- de la misma 
+El uso de referencias en el texto reemplazado no está implementado (todavía).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Nota:
+\series default
+ Las referencias funcionan cuando aparecen dentro de la misma 
 \family typewriter
 regexp
 \family default
@@ -32103,10 +32112,6 @@ regexp
 regexp
 \family default
 , donde la numeración de referencias a sub-expresiones es absoluta, es decir,
- 
-\begin_inset space ~
-\end_inset
-
  
 \begin_inset Formula $\backslash1$
 \end_inset
@@ -32118,9 +32123,9 @@ regexp
  en todas las regexps introducidas.
 \end_layout
 
-\begin_layout Standard
-Además, el uso de referencias en el texto reemplazado no está implementado
- (todavía).
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

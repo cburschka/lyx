@@ -32199,57 +32199,47 @@ Suche nach Text
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Enter into the 
+Man gibt in das Editorfeld 
 \family sans
-Find
+Suchen
 \family default
- LyX mini-editor a simple word, und search für occurrences of it by clicking
- on the 
+ ein unformatiertes Wort ein und und sucht danach mit dem Knopf 
 \family sans
-Find Next
+Nächstes suchen
 \family default
- button at the bottom of the Dialogs (or just press the 
+ unten im Dialog (oder drückt einfach die 
 \family sans
-Return
+Entertaste
 \family default
- key).
- The entered word is found both in text mode und in math mode, und in emphasized
-, bold oder normal face, und in both in section titles und in standard text.
- Pressing repeatedly 
+).
+ Das eingegebene Wort wird überall im Text in jeder beliebigen Formatierung
+ als auch in Formeln gefunden.
+ Mehrmaliges Drücken von 
 \family sans
 Enter
 \family default
- keeps searching forward.
- Similarly, pressing 
+ sucht weiter vorwärts während 
 \family sans
-\lang ngerman
-Umschalt
-\lang english
-+Enter
+Umschalt+Enter
 \family default
- searches für the entered text backwards.
+ rückwärts sucht.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-While searching, the 
+Die Option 
 \family sans
-Case sensitive
+Groß-/Kleinschreibung beachten
 \family default
- Option allows matches to occur nur mit the same case as entered in the
- 
+ findet nur Dinge mit derselben Großschreibung wie im Feld 
 \family sans
-Find
+Suchen
 \family default
- editor.
- The 
+.
+ Die Option 
 \family sans
-Whole words
+Ganze Wörter
 \family default
- Option allows matches to occur nur at word boundaries.
+ findet keine Wortteile.
 \end_layout
 
 \begin_layout Subsubsection
@@ -32285,55 +32275,53 @@ Suche nach Textformatierung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is auch possible to search für text mit specific styles.
- This is done by switching to the 
+Es ist auch möglich nach Text in einer bestimmten Formatierung zu suchen.
+ Dies wird erreicht, indem man im Tab 
 \family sans
-Advanced
+Einstellungen
 \family default
- tab of the Dialogs und unchecking the 
+ des Dialogs die Option 
 \family sans
-Ignore format
+Ignoriere Format
 \family default
- Option.
- This way, entering in the 
+ ausschaltet.
+ Die Eingabe in das Feld 
 \family sans
-Find
+Suchen
 \family default
- editor
+ von
 \end_layout
 
 \begin_layout Itemize
+einem unformatierten Wort wird keine Treffer liefern, wenn das Wort im Dokument
+ z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-a plain word und searching für it would not find instances of the word occurring
- in emphasized oder boldface.
+B.
+ fett oder kursiv ist.
 \end_layout
 
 \begin_layout Itemize
+z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-an emphasized oder boldface word und searching für it would find the respective
- instances mit same face only, und within the same text style only.
- Note that, zum Beispiel, an emphasized text is found not nur when occurring
- alone, but auch when it is contained in a longer emphasized sentence.
+B.
+ einem kursiven oder fetten Wort liefert nur Treffer, wenn das Wort im Dokument
+ dieselbe Formatierung hat.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-a plain word in a section heading, und searching für it, finds occurrences
- of if nur within section headings.
- Also, if the text to search is given an emphasized oder bold face, in addition
- to a section style, then it is found nur when occurring mit the same style.
+einem unformatierten Wort in einer Abschnittsüberschrift führt nur zu Treffern,
+ wenn sich das Wort in einer Abschnittsüberschrift befindet.
+ Wenn das Wort zusätzlich eine Formatierung hat, wird nur gefunden, was
+ in einer Abschnittsüberschrift steht und ebenfalls diese Formatierung hat.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-some mathematics in a displayed formula will nur find instances of this
- formula that are auch displayed formulas (and not inline formulas).
+einer abgesetzten Formel findet diese Formel nur, wenn sie im Dokument ebenfalls
+ eine eingebettete Formel ist (keine in einer Textzeile eingebettete Formel).
 \end_layout
 
 \begin_layout Subsubsection
@@ -32345,11 +32333,11 @@ Ersetzen
 \lang english
 The text segments matching the text entered in the 
 \family sans
-Find
+Suchen
 \family default
  editor may be replaced mit the text segments entered in the 
 \family sans
-Replace
+Ersetzen durch
 \family default
 \noun on
  
@@ -32357,7 +32345,7 @@ Replace
 editor.
  In order to find the next occurrence und replace it, click on the 
 \family sans
-Replace
+Ersetzen
 \family default
  button oder alternatively
 \noun on
@@ -32369,11 +32357,11 @@ Enter
 \family default
  oder 
 \family sans
-Shift+Enter
+Umschalt+Enter
 \family default
  while being in the 
 \family sans
-Replace
+Ersetzen durch
 \family default
 \noun on
  
@@ -32593,16 +32581,12 @@ Einstellungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Finally, references to (Unter)Ausdruck in regexp may be used as usual, enclosing
- parts of the expression within round braces 
+Allgemein können Referenzen auf (Unter)Ausdrücke in Regexp wie üblich verwendet
+ werden: Gruppieren eines Teils des Ausdrucks mit runden Klammern 
 \begin_inset Formula $()$
 \end_inset
 
-, und referring back to them through
-\lang ngerman
- 
+ und dessen Referenzierung mit 
 \begin_inset Formula $\backslash1$
 \end_inset
 
@@ -32610,57 +32594,40 @@ Finally, references to (Unter)Ausdruck in regexp may be used as usual, enclosing
 \begin_inset Formula $\backslash2$
 \end_inset
 
-, usw., 
-\lang english
-where a 
-\lang ngerman
-
-\begin_inset Formula $\backslash$
-\end_inset
-
-
-\lang english
- symbol is entered in regexp mode by pressing twice the backslash key.
- For Beispiel, try searching für the regexp
-\lang ngerman
- 
+, usw..
+ Versuchen Sie zum Beispiel mit dem regulären Ausdruck 
 \begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
 \end_inset
 
- 
-\lang english
-in order to find word repetitions, if there are any.
+ zu suchen, um Wortwiederholungen zu finden, falls es welche gibt.
 \end_layout
 
 \begin_layout Standard
+Die Verwendung von Referenzen im ersetzten Text ist (noch) nicht implementiert.
+\end_layout
 
-\lang english
-Note that back references work both when occurring within the same regexp,
- und when occurring in multiple different regexps, where the numbering of
- back-referenced sub-expressions is absolute, i.
-\begin_inset space \thinspace{}
-\end_inset
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
 
-e.
-\begin_inset space ~
-\end_inset
+\begin_layout Plain Layout
 
- 
+\series bold
+\color none
+Achtung:
+\series default
+ Referenzen funktionieren innerhalb einer Regexp als auch in mehreren Regexps,
+ wobei die Nummerierung der referenzierten Unterausdrücke absolut ist.
+ Das heißt, dass 
 \begin_inset Formula $\backslash1$
 \end_inset
 
- always refers to the first occurrence of 
-\begin_inset Formula $()$
-\end_inset
-
- in all entered regexps.
+ immer das erste Auftreten von () in allen eingefügten Regexps referenziert.
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\lang english
-Note auch that the use of back references in the replaced text is not (yet)
- implemented.
+
 \end_layout
 
 \begin_layout Section

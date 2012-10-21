@@ -32249,17 +32249,12 @@ Les aperçus sont générés quand vous chargez un document et quand vous avez
 status open
 
 \begin_layout Plain Layout
-\begin_inset Flex Strong
-status collapsed
 
-\begin_layout Plain Layout
-Note
-\end_layout
-
-\end_inset
-
-: les aperçus d'un document déjà chargé ne sont pas toujours créés en sélectionn
-ant juste 
+\series bold
+Note:
+\series default
+ les aperçus d'un document déjà chargé ne sont pas toujours créés en sélectionna
+nt juste 
 \family sans
 Aperçu
 \begin_inset space ~
@@ -32810,9 +32805,7 @@ un mot ordinaire, on ne trouvera pas les occurrences de ce mot mises en
 
 \begin_layout Itemize
 un mot mis en évidence ou en police grasse, on ne trouvera que les occurrences
- dans la même police de caractères, et dans le même style de texte.
- Noter que par exemple, un texte mis e évidence sera trouvé s'il est seul,
- mais également s'il est encapsulé dans une phrase elle-même mise en évidence;
+ dans la même police de caractères, et dans le même style de texte;
 \end_layout
 
 \begin_layout Itemize
@@ -33124,13 +33117,39 @@ Enfin, le référencement de (sous-)expressions dans les expressions régulière
 \end_layout
 
 \begin_layout Standard
-Notez que le référencement arrière fonctionne à la fois dans le même expression
- régulière ou dans différentes expressions indépendantes, lorsque la numérotatio
-n du référencement est absolu, i.e.
+L'utilisation du référencement arrière n'est pas (encore) implanté dans
+ la fonction 
+\begin_inset Quotes fld
+\end_inset
+
+Remplacer.
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Note:
+\series default
+ Le référencement arrière fonctionne à la fois dans le même expression régulière
+ ou dans différentes expressions indépendantes, lorsque la numérotation
+ du référencement est absolu, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset Formula $\backslash1$
 \end_inset
 
@@ -33141,14 +33160,6 @@ n du référencement est absolu, i.e.
  dans toutes les expressions saisies.
 \end_layout
 
-\begin_layout Standard
-Notez également que l'utilisation du référencement arrière n'est pas (encore)
- implanté dans la fonction 
-\begin_inset Quotes fld
-\end_inset
-
-Remplacer.
-\begin_inset Quotes frd
 \end_inset
 
 
