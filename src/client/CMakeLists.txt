@@ -29,7 +29,7 @@ add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 target_link_libraries(${_lyxclient}
 	support
 	${Lyx_Boost_Libraries}
-	${LIBINTL_LIBRARIES}
+	${intl_link}
 	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY})

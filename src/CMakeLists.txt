@@ -126,11 +126,10 @@ target_link_libraries(${_lyx}
 	frontend_qt4
 	graphics
 	support
-	${LIBINTL_LIBRARIES}
+	${intl_link}
 	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
-
 
 if(HUNSPELL_FOUND)
 	target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})

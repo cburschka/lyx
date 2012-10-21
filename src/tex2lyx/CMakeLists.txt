@@ -50,7 +50,7 @@ target_link_libraries(${_tex2lyx}
 	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY}
-	${LIBINTL_LIBRARIES}
+	${intl_link}
 	${ICONV_LIBRARY})
 
 if(WIN32)

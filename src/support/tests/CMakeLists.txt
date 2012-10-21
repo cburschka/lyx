@@ -13,9 +13,9 @@ macro(sources _program)
 	endforeach()
 	set(${_program}_SOURCES ${_tmplist})
 	add_executable(${_program} ${_tmplist})
-	target_link_libraries(${_program} support
+	target_link_libraries(${_program} support ${intl_link}
 		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
-		${ZLIB_LIBRARY} ${LIBINTL_LIBRARIES} ${ICONV_LIBRARY})
+		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 endmacro()
 
 file(GLOB test_sources ${TOP_SRC_DIR}/src/support/tests/${LYX_CPP_FILES})

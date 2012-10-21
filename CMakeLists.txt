@@ -492,6 +492,12 @@ if(LYX_NLS)
 	endif()
 endif()
 
+if(LYX_EXTERNAL_LIBINTL)
+	set(intl_link ${LIBINTL_LIBRARIES})
+else()
+	set(intl_link intl)
+endif()
+
 find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
 
