@@ -273,7 +273,7 @@ void Loader::reset(Params const & params) const
 
 void Loader::startLoading() const
 {
-	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
+	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_)
 		return;
 	pimpl_->startLoading();
 }
@@ -287,7 +287,7 @@ void Loader::reload() const
 
 void Loader::startMonitoring() const
 {
-	if (!pimpl_->cached_item_.get())
+	if (!pimpl_->cached_item_)
 		return;
 
 	pimpl_->cached_item_->startMonitoring();
@@ -296,7 +296,7 @@ void Loader::startMonitoring() const
 
 bool Loader::monitoring() const
 {
-	if (!pimpl_->cached_item_.get())
+	if (!pimpl_->cached_item_)
 		return false;
 
 	return pimpl_->cached_item_->monitoring();
@@ -305,7 +305,7 @@ bool Loader::monitoring() const
 
 unsigned long Loader::checksum() const
 {
-	if (!pimpl_->cached_item_.get())
+	if (!pimpl_->cached_item_)
 		return 0;
 
 	return pimpl_->cached_item_->checksum();
@@ -315,7 +315,7 @@ unsigned long Loader::checksum() const
 FileName const & Loader::filename() const
 {
 	static FileName const empty;
-	return pimpl_->cached_item_.get() ?
+	return pimpl_->cached_item_ ?
 		pimpl_->cached_item_->filename() : empty;
 }
 
@@ -352,7 +352,7 @@ Loader::Impl::~Impl()
 
 void Loader::Impl::resetFile(FileName const & file)
 {
-	FileName const old_file = cached_item_.get() ?
+	FileName const old_file = cached_item_ ?
 		cached_item_->filename() : FileName();
 
 	if (file == old_file)
@@ -375,10 +375,10 @@ void Loader::Impl::resetFile(FileName const & file)
 		}
 	}
 
-	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
+	status_ = cached_item_ ? cached_item_->status() : WaitingToLoad;
 	image_.reset();
 
-	if (cached_item_.get() || file.empty())
+	if (cached_item_ || file.empty())
 		return;
 
 	Cache & gc = Cache::get();
@@ -402,14 +402,14 @@ void Loader::Impl::resetParams(Params const & params)
 		return;
 
 	params_ = params;
-	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
+	status_ = cached_item_ ? cached_item_->status() : WaitingToLoad;
 	image_.reset();
 }
 
 
 void Loader::Impl::statusChanged()
 {
-	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
+	status_ = cached_item_ ? cached_item_->status() : WaitingToLoad;
 	createPixmap();
 	signal_();
 }
@@ -420,7 +420,7 @@ void Loader::Impl::createPixmap()
 	if (!params_.display || status_ != Loaded)
 		return;
 
-	if (!cached_item_.get()) {
+	if (!cached_item_) {
 		LYXERR(Debug::GRAPHICS, "pixmap not cached yet");
 		return;
 	}

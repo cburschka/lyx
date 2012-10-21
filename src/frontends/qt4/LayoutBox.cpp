@@ -536,7 +536,7 @@ void LayoutBox::set(docstring const & layout)
 {
 	d->resetFilter();
 
-	if (!d->text_class_.get())
+	if (!d->text_class_)
 		return;
 
 	if (!d->text_class_->hasLayout(layout))
@@ -691,7 +691,7 @@ void LayoutBox::selected(int index)
 		d->model_->itemFromIndex(mindex)->text());
 	d->owner_.setFocus();
 
-	if (!d->text_class_.get()) {
+	if (!d->text_class_) {
 		updateContents(false);
 		d->resetFilter();
 		return;

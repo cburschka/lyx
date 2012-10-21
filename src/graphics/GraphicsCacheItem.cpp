@@ -235,7 +235,7 @@ void CacheItem::Impl::reset()
 	file_to_load_.erase();
 	to_.erase();
 
-	if (image_.get())
+	if (image_)
 		image_.reset();
 
 	status_ = WaitingToLoad;
