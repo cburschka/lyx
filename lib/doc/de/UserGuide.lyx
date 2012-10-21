@@ -32111,63 +32111,42 @@ Das fortgeschrittene Suchen und Ersetzen von LyX erlaubt es nach komplexen
 \end_inset
 
 Ersetzen Dialogs.
- Die Hauptfeatures sind:
+ Die Haupteigenschaften sind:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Both searching of text und of mathematical formulas is allowed, where the
- latter is done by entering mathematics in the usual way; not nur entire
- mathematical formulas are found, but auch parts occurring within more complex
- formulas
+Beides, das Suchen nach Text und nach mathematischen Formeln ist möglich,
+ wobei Letzteres durch die normale Eingabe einer Formel in das Suchfenster
+ geschieht; es werden eigenständige Formeln aber auch Teile von Formeln
+ gefunden
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Search may be format-insensitive, so that the searched text is found in
- any context/style (standard text, section headings, notes, und even mathematics
-), oder it may be format-sensitive, so that, zum Beispiel, a word entered
- mit a section heading will nur be found within section headings
+Die Suche kann formatierungsunabhängig sein, so dass Text in jedem Kontext/Stil
+ (Standardtext, Abschnittsüberschrift, Notizen, und sogar in Formeln) gefunden
+ wird, oder er ist formatierungsabhängig, so dass zum Beispiel ein Wort,
+ das in einer Abschnittsüberschrift eingegeben wurde, auch nur in Abschnittsüber
+schriften gefunden wird
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Search may be widened to a specific 
+Die Suche kann auf bestimmte 
 \emph on
-scope
+Bereiche
 \emph default
-, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-a set of Dateien which may be all the children of the Dokument being edited,
- all the open Dateien, oder all the Handbuchs available from the 
+ ausgeweitet werden, das heißt ein Datensatz, der entweder die Unterdokumente
+ des Dokuments einschließt, aus allen geöffneten Dokumenten oder allen Handbüche
+rn besteht, die im Menü 
 \family sans
-Help
+Hilfe
 \family default
- menu
+ verfügbar sind
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Replace may optionally preserve capitalization, so that the replaced text
- capitalization is adapted to the matching text (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-all lowercase, all uppercase, first uppercase followed by lowercase)
+Das Ersetzen kann die Großschreibung beibehalten so dass die Großschreibung
+ des ersetzten Texts an den gefundenen Text angepasst wird (das heißt alles
+ groß-, alles klein- oder erster Buchstabe groß-, die anderen kleingeschrieben)
 \end_layout
 
 \begin_layout Subsection
@@ -32278,26 +32257,23 @@ Suche nach Formeln
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Mathematical formulas may be searched für by typing in the 
+Nach mathematischen Formeln kann gesucht werden, indem man diese im Feld
+ 
 \family sans
-Find
+Suchen
 \family default
- editor a mathematical formula, such as 
+ eingibt, so wie 
 \begin_inset Formula $x^{2}$
 \end_inset
 
- oder auch something more complex like 
+ oder 
 \begin_inset Formula $\frac{x^{2}}{1+x^{2}}$
 \end_inset
 
 .
- When searching für a formula, it is found both when it is alone und when
- it occurs in sub-formulas und nested parts of sub-formulas, zum Beispiel
- the mentioned segments would be found in something like
-\lang ngerman
- 
+ Wenn nach Formeln gesucht wird, werden diese gefunden, wenn sie allein
+ stehen, aber auch wenn sie Teil einer Formel sind.
+ Zum Beispiel werden die beiden Beispiele in dieser Formel gefunden: 
 \begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
 \end_inset
 
@@ -32520,7 +32496,7 @@ Es gibt einen Regulärer Ausdruck (Regexp)-basierten Suchmodus.
 status collapsed
 
 \begin_layout Plain Layout
-Der Wikipedia-Eintrag 
+Der Wikipedia-Artikel 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://de.wikipedia.org/wiki/Regulärer_Ausdruck"
@@ -32548,69 +32524,57 @@ Regulären Ausdruck einfügen
 Suchen
 \family default
 -Editor befindet.
- Zeichen in Regexp-Einfügungen 
-\lang english
-are matched according to the regular expression matching rules
+ Zeichen in Regexp-Einfügungen werden entsprechend der Regeln für reguläre
+ Ausdrücke gefunden
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Under the constraint that any (sub)expression must match a well-formed LyX
- text segment, i.
+Mit der Bedingung, dass jeder (Unter)Ausdruck ein korrekt formatiertes LyX-Segme
+nt sein muss.
+ Das heißt, dass z.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
-\begin_inset space ~
-\end_inset
-
-when matching LaTeX code, no segments mit unbalanced {} braces are allowed
- to match expressions.
+B.
+ TeX-Code keine ungeschlossenen {}-Klammern haben darf.
 \end_layout
 
 \end_inset
 
-, while text entered outside regexp Einfügungen is matched exactly against
- the same text in the Dokument.
- Note that it is allowed to cut und paste Regexp-mode Einfügungen as usual.
- Examples of using such a Feature may be:
+ während Text außerhalb der Einfügungen nur Treffer liefert, die exakt diesem
+ Text entsprechen.
+ Das Kopieren und Ersetzen funktioniert wie gewohnt auch in Regexp-Einfügungen.
+ Anwendungen von Suchen mit regulären Ausdrücken sind zum Beispiel:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Searching für all fractions mit a given denominator: zum Beispiel, entering
- in the 
-\family sans
-Find
-\family default
- editor the fraction 
+Suche in allen Brüchen nach einem bestimmten Nenner: zum Beispiel findet
+ man mit dem Bruch 
 \begin_inset Formula $\frac{.*}{1+x^{2}}$
 \end_inset
 
- (where the 
+ (
 \begin_inset Formula $.*$
 \end_inset
 
- on the numerator is the match-everything regular expression) finds all
- fractions mit the given denominator.
+ ist der reguläre Ausdruck für einen Platzhalter), im Feld 
+\family sans
+Suchen
+\family default
+ alle Brüche mit diesem Nenner.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Searching für all text mit a given style: für Beispiel, nach unchecking
- the 
+Suche nach Text in einem bestimmten Stil: ist die Option 
 \family sans
-Ignore format
+Ignoriere Format
 \family default
- Option from the 
+ im Reiter 
 \family sans
-Advanced
+Einstellungen
 \family default
- tab, entering a 
+ ausgeschaltet, kann man den regulären Ausdruck 
 \series bold
 
 \begin_inset Formula $.*$
@@ -32618,21 +32582,21 @@ Advanced
 
 
 \series default
- regular expression und adding für it an emphasized oder bold face, finds
- all emphasized und bold face text, respectively.
- Also, inserting a 
+ eingeben und für ihn zum Beispiel den Textstil kursiv oder fett wählen
+ um alle kursiven oder fettgedruckten Textstellen im Dokument zu finden.
+ Der reguläre Ausdruck 
 \begin_inset Formula $.*$
 \end_inset
 
- regular expression in a bullet oder enumerated list oder a section heading,
- you can find all bullet oder enumerated lists oder section headings.
+ in einer nummerierten Liste oder einer Abschnittsüberschrift findet alle
+ nummerierten Listen oder Abschnittsüberschriften.
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Finally, references to (sub)expressions in regexp may be used as usual,
- enclosing parts of the expression within round braces 
+Finally, references to (Unter)Ausdruck in regexp may be used as usual, enclosing
+ parts of the expression within round braces 
 \begin_inset Formula $()$
 \end_inset
 
