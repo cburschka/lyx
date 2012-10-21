@@ -12,6 +12,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-10-20 Liviu Andronic <landronimirc@gmail.com>
+	* Format incremented to 445: support for the URW Classico font,
+	  an Optima clone.
+	  - \renewcommand{\sffamily}{uop} > \font_sans uop
+
 2012-09-25 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 444: Support for the Biolinum LaTeX font.
 	  - \usepackage{biolinum-type1} > \font_sans biolinum

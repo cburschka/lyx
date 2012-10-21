@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 444
+\lyxformat 445
 \begin_document
 \begin_header
 \textclass article
@@ -1805,6 +1805,35 @@ Times Roman
 TXTT
 \emph default
 ) is currently natively supported.
+\end_layout
+
+\begin_layout Subsection
+URW Classico (Optima)
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "urwclassico"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+/fonts/urw/classico/
+\end_layout
+
+\begin_layout Description
+Notes: URW Classico is a clone of the Optima typeface, a very well-known
+ sans serif face designed by Hermann Zapf.
+ The fonts are available for non-commercial use under the Aladdin Free Public
+ License.
+ Under TeX Live the font needs to be installed via the 'getnonfreefonts-sys'
+ utility.
 \end_layout
 
 \begin_layout Section
