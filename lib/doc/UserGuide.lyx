@@ -31295,7 +31295,7 @@ e.
 \begin_inset space ~
 \end_inset
 
-all lowercase, all uppercase, first uppercase followed by lowercase)
+all lowercase, all uppercase, first letter uppercase followed by lowercase)
 \end_layout
 
 \begin_layout Subsection
@@ -31391,11 +31391,11 @@ Searching for mathematics
 \end_layout
 
 \begin_layout Standard
-Mathematical formulas may be searched for by typing in the 
+Mathematical formulas may be searched for by typing them in the 
 \family sans
 Find
 \family default
- editor a mathematical formula, such as 
+ editor, such as 
 \begin_inset Formula $x^{2}$
 \end_inset
 
@@ -31405,8 +31405,8 @@ Find
 
 .
  When searching for a formula, it is found both when it is alone and when
- it occurs in sub-formulas and nested parts of sub-formulas, for example
- the mentioned segments would be found in something like 
+ it occurs in sub-formulas and nested parts of sub-formulas.
+ For example the mentioned segments would be found in something like 
 \begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
 \end_inset
 
@@ -31648,7 +31648,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Under the constraint that any (sub)expression must match a well-formed LyX
- text segment, i.
+ segment, i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31664,7 +31664,7 @@ when matching LaTeX code, no segments with unbalanced {} braces are allowed
 
 , while text entered outside regexp insets is matched exactly against the
  same text in the document.
- Note that it is allowed to cut and paste regexp-mode insets as usual.
+ It is allowed to cut and paste regexp-mode insets as usual.
  Examples of using such a feature may be:
 \end_layout
 
