@@ -96,11 +96,10 @@ void LoaderQueue::loadNext()
 		if (ptr->status() == WaitingToLoad)
 			ptr->startLoading();
 	}
-	if (!cache_queue_.empty()) {
+	if (!cache_queue_.empty())
 		startLoader();
-	} else {
+	else
 		stopLoader();
-	}
 }
 
 

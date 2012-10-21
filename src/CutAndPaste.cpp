@@ -631,7 +631,7 @@ bool multipleCellsSelected(Cursor const & cur)
 }
 
 
-void switchBetweenClasses(DocumentClassConstPtr  oldone,
+void switchBetweenClasses(DocumentClassConstPtr oldone,
 		DocumentClassConstPtr newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
