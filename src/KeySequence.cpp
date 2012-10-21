@@ -125,8 +125,7 @@ size_t KeySequence::parse(string const & s)
 		}
 	}
 
-	// empty sequence?
-	if (sequence.size() == 0)
+	if (sequence.empty())
 		return 0;
 
 	// everything is fine

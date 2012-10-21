@@ -462,7 +462,7 @@ docstring clientName =
 
 int n(vector<docstring> const & arg)
 {
-	if (arg.size() < 1) {
+	if (arg.empty()) {
 		cerr << "lyxclient: The option -n requires 1 argument."
 		     << endl;
 		return -1;
@@ -477,7 +477,7 @@ docstring singleCommand;
 
 int c(vector<docstring> const & arg)
 {
-	if (arg.size() < 1) {
+	if (arg.empty()) {
 		cerr << "lyxclient: The option -c requires 1 argument."
 		     << endl;
 		return -1;
@@ -507,7 +507,7 @@ docstring serverAddress;
 
 int a(vector<docstring> const & arg)
 {
-	if (arg.size() < 1) {
+	if (arg.empty()) {
 		cerr << "lyxclient: The option -a requires 1 argument."
 		     << endl;
 		return -1;
@@ -522,7 +522,7 @@ int a(vector<docstring> const & arg)
 
 int t(vector<docstring> const & arg)
 {
-	if (arg.size() < 1) {
+	if (arg.empty()) {
 		cerr << "lyxclient: The option -t requires 1 argument."
 		     << endl;
 		return -1;
@@ -537,7 +537,7 @@ string serverPid; // Init to empty string
 
 int p(vector<docstring> const & arg)
 {
-	if (arg.size() < 1) {
+	if (arg.empty()) {
 		cerr << "lyxclient: The option -p requires 1 argument."
 		     << endl;
 		return -1;

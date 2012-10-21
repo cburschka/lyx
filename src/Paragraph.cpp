@@ -3733,7 +3733,7 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 
 	wl = WordLangTuple(word, lang);
 
-	if (!word.size())
+	if (word.empty())
 		return result;
 
 	if (needsSpellCheck() || check_learned) {
@@ -3830,7 +3830,7 @@ void Paragraph::Private::markMisspelledWords(
 void Paragraph::spellCheck() const
 {
 	SpellChecker * speller = theSpellChecker();
-	if (!speller || !size() ||!needsSpellCheck())
+	if (!speller || empty() ||!needsSpellCheck())
 		return;
 	pos_type start;
 	pos_type endpos;

@@ -149,7 +149,7 @@ void initAutoCorrect()
 	string line;
 	ifstream is(file.toFilesystemEncoding().c_str());
 	while (getline(is, line)) {
-		if (line.size() == 0 || line[0] == '#') {
+		if (line.empty() || line[0] == '#') {
 			//LYXERR(Debug::MATHED, "ignoring line '" << line << '\'');
 			continue;
 		}

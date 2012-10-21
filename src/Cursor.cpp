@@ -588,7 +588,7 @@ void Cursor::checkNewWordPosition()
 			clearNewWordPosition();
 		else {
 			FontSpan nw = locateWord(WHOLE_WORD);
-			if (nw.size()) {
+			if (!nw.empty()) {
 				FontSpan ow = new_word_.locateWord(WHOLE_WORD);
 				if (nw.intersect(ow).empty())
 					clearNewWordPosition();
@@ -1637,7 +1637,7 @@ bool Cursor::macroModeClose()
 		// we have to resolve the macro here manually and check its arity
 		// to put the selection behind it if arity > 0.
 		MacroData const * data = buffer()->getMacro(atomAsMacro->name());
-		if (selection.size() > 0 && data && data->numargs() - data->optionals() > 0) {
+		if (!selection.empty() && data && data->numargs() - data->optionals() > 0) {
 			macroArg = true;
 			atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT, 1);
 		} else

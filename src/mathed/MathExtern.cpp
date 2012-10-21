@@ -352,7 +352,7 @@ void splitScripts(MathData & ar)
 			continue;
 
 		// we must have a nucleus if we only have a superscript
-		if (!script->hasDown() && script->nuc().size() == 0)
+		if (!script->hasDown() && script->nuc().empty())
 			continue;
 
 		if (script->nuc().size() == 1) {
@@ -619,7 +619,7 @@ bool testIntegral(MathAtom const & at)
 	return
 	 testIntSymbol(at) ||
 		( at->asScriptInset()
-		  && at->asScriptInset()->nuc().size()
+		  && !at->asScriptInset()->nuc().empty()
 			&& testIntSymbol(at->asScriptInset()->nuc().back()) );
 }
 
@@ -719,7 +719,7 @@ bool testSum(MathAtom const & at)
 	return
 	 testSumSymbol(at) ||
 		( at->asScriptInset()
-		  && at->asScriptInset()->nuc().size()
+		  && !at->asScriptInset()->nuc().empty()
 			&& testSumSymbol(at->asScriptInset()->nuc().back()) );
 }
 
@@ -800,7 +800,7 @@ bool testDiffItem(MathAtom const & at)
 
 bool testDiffArray(MathData const & ar)
 {
-	return ar.size() && testDiffItem(ar.front());
+	return !ar.empty() && testDiffItem(ar.front());
 }
 
 
@@ -1419,7 +1419,7 @@ void mathmlize(MathData const & dat, MathStream & os)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
-	if (ar.size() == 0)
+	if (ar.empty())
 		os << "<mrow/>";
 	else if (ar.size() == 1)
 		os << ar.front();
@@ -1436,7 +1436,7 @@ void htmlize(MathData const & dat, HtmlStream & os)
 {
 	MathData ar = dat;
 	extractStructure(ar, HTML);
-	if (ar.size() == 0) 
+	if (ar.empty())
 		return;
 	if (ar.size() == 1) {
 		os << ar.front();

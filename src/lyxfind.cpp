@@ -968,10 +968,10 @@ string MatchStringAdv::normalize(docstring const & s, bool hack_braces) const
 	else
 		t = lyx::to_utf8(s);
 	// Remove \n at begin
-	while (t.size() > 0 && t[0] == '\n')
+	while (!t.empty() && t[0] == '\n')
 		t = t.substr(1);
 	// Remove \n at end
-	while (t.size() > 0 && t[t.size() - 1] == '\n')
+	while (!t.empty() && t[t.size() - 1] == '\n')
 		t = t.substr(0, t.size() - 1);
 	size_t pos;
 	// Replace all other \n with spaces

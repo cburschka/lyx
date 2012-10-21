@@ -282,9 +282,9 @@ void InsetMathMakebox::write(WriteStream & os) const
 {
 	ModeSpecifier specifier(os, TEXT_MODE);
 	os << (framebox_ ? "\\framebox" : "\\makebox");
-	if (cell(0).size() || !os.latex()) {
+	if (!cell(0).empty() || !os.latex()) {
 		os << '[' << cell(0) << ']';
-		if (cell(1).size() || !os.latex())
+		if (!cell(1).empty() || !os.latex())
 			os << '[' << cell(1) << ']';
 	}
 	os << '{' << cell(2) << '}';

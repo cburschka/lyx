@@ -66,7 +66,7 @@ docstring familyName(docstring const & name)
 	vector<docstring>::const_iterator it = pieces.begin();
 	vector<docstring>::const_iterator en = pieces.end();
 	for (; it != en; ++it) {
-		if ((*it).size() == 0)
+		if ((*it).empty())
 			continue;
 		char_type const c = (*it)[0];
 		if (isLower(c))
@@ -99,7 +99,7 @@ docstring convertLaTeXCommands(docstring const & str)
 	bool scanning_cmd = false;
 	bool scanning_math = false;
 	bool escaped = false; // used to catch \$, etc.
-	while (val.size()) {
+	while (!val.empty()) {
 		char_type const ch = val[0];
 
 		// if we're scanning math, we output everything until we
@@ -323,7 +323,7 @@ namespace {
 		fmt = fmt.substr(2);
 		// we'll remove characters from the front of fmt as we
 		// deal with them
-		while (fmt.size()) {
+		while (!fmt.empty()) {
 			if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
 				// that's the end
 				fmt = fmt.substr(2);
@@ -415,7 +415,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 	string fmt = format;
 	// we'll remove characters from the front of fmt as we
 	// deal with them
-	while (fmt.size()) {
+	while (!fmt.empty()) {
 		if (counter++ > max_passes) {
 			LYXERR0("Recursion limit reached while parsing `"
 			        << format << "'.");

@@ -142,9 +142,9 @@ void InsetMathXYArrow::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\ar";
-	if (cell(0).size())
+	if (!cell(0).empty())
 		os << '[' << cell(0) << ']';
-	if (cell(1).size())
+	if (!cell(1).empty())
 		os << (up_ ? '^' : '_') << '{' << cell(1) << '}';
 	os << " ";
 }

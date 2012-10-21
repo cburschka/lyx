@@ -89,7 +89,7 @@ void LoaderQueue::loadNext()
 	LYXERR(Debug::GRAPHICS, "LoaderQueue: "
 		<< cache_queue_.size() << " items in the queue");
 	int counter = s_numimages_;
-	while (cache_queue_.size() && counter--) {
+	while (!cache_queue_.empty() && counter--) {
 		Cache::ItemPtr ptr = cache_queue_.front();
 		cache_set_.erase(ptr);
 		cache_queue_.pop_front();

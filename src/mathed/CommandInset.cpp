@@ -67,7 +67,7 @@ void CommandInset::write(WriteStream & os) const
 	ModeSpecifier specifier(os, currentMode(), lockedMode(), asciiOnly());
 	MathEnsurer ensurer(os, needs_math_mode_);
 	os << '\\' << name_;
-	if (cell(1).size())
+	if (!cell(1).empty())
 		os << '[' << cell(1) << ']';
 	os << '{' << cell(0) << '}';
 }

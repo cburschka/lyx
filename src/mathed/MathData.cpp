@@ -339,13 +339,13 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		docstring s1 = completion.substr(0, uniqueTo);
 		docstring s2 = completion.substr(uniqueTo);
 		
-		if (s1.size() > 0) {
+		if (!s1.empty()) {
 			f.setColor(Color_inlinecompletion);
 			pi.pain.text(x, y, s1, f);
 			x += mathed_string_width(f, s1);
 		}
 		
-		if (s2.size() > 0) {
+		if (!s2.empty()) {
 			f.setColor(Color_nonunique_inlinecompletion);
 			pi.pain.text(x, y, s2, f);
 			x += mathed_string_width(f, s2);

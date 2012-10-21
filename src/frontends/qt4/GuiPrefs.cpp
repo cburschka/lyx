@@ -1678,7 +1678,7 @@ void PrefConverters::changeConverter()
 
 void PrefConverters::updateButtons()
 {
-	if (form_->formats().size() == 0)
+	if (form_->formats().empty())
 		return;
 	Format const & from = form_->formats().get(converterFromCO->currentIndex());
 	Format const & to = form_->formats().get(converterToCO->currentIndex());
@@ -1975,7 +1975,7 @@ void PrefFileformats::updateView()
 
 void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 {
-	if (form_->formats().size() == 0)
+	if (form_->formats().empty())
 		return;
 	int const nr = formatsCB->itemData(i).toInt();
 	Format const f = form_->formats().get(nr);

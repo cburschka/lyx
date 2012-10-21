@@ -465,7 +465,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
-	if (cells_.size() > 0)
+	if (!cells_.empty())
 		InsetMathNest::drawSelection(pi, x, y);
 }
 
@@ -507,8 +507,7 @@ bool MathMacro::validName() const
 {
 	docstring n = name();
 
-	// empty name?
-	if (n.size() == 0)
+	if (n.empty())
 		return false;
 
 	// converting back and force doesn't swallow anything?

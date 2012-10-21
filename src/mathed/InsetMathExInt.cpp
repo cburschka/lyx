@@ -76,7 +76,7 @@ void InsetMathExInt::draw(PainterInfo &, int, int) const
 void InsetMathExInt::maple(MapleStream & os) const
 {
 	os << symbol_ << '(';
-	if (cell(0).size())
+	if (!cell(0).empty())
 		os << cell(0);
 	else
 		os << '1';
@@ -94,7 +94,7 @@ void InsetMathExInt::maxima(MaximaStream & os) const
 	else
 		os << symbol_ << '(';
 
-	if (cell(0).size())
+	if (!cell(0).empty())
 		os << cell(0) << ',';
 	else
 		os << '1' << ',';
@@ -113,7 +113,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 	else
 		os << symbol_ << '[';
 
-	if (cell(0).size())
+	if (!cell(0).empty())
 		os << cell(0) << ',';
 	else
 		os << '1' << ',';

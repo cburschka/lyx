@@ -1769,7 +1769,7 @@ public:
             clear();
 
             key_less = other.key_comp();
-            if (other.size() != 0)
+            if (!other.empty())
             {
                 stats.leaves = stats.innernodes = 0;
                 root = copy_recursive(other.root);
@@ -1788,7 +1788,7 @@ public:
           stats( other.stats ),
           key_less( other.key_comp() )
     {
-        if (size() > 0)
+        if (!empty())
         {
             stats.leaves = stats.innernodes = 0;
             root = copy_recursive(other.root);
