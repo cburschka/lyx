@@ -38,15 +38,14 @@ foreach(_src ${check_PROGRAMS})
 	string(REPLACE "check_" "" _srcx ${_src})
 	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
 	set(created_data_file "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}_data")
-	add_custom_command(
-		OUTPUT "${created_data_file}"
-		COMMAND ${_src} > "${created_data_file}"
-		COMMAND ${CMAKE_COMMAND} -E compare_files "${src_data_file}" "${created_data_file}"
-		DEPENDS	${_src} "${src_data_file}"
-		COMMENT "${_src} > '${created_data_file}'"
-	)
-	list(APPEND _depends "${created_data_file}")
+        add_test(NAME build_${_srcx}
+	  COMMAND "${CMAKE_COMMAND}" --build ${CMAKE_BINARY_DIR} --target ${_src})
+	add_test(NAME data_${_srcx}
+	  COMMAND ${_src} > "${created_data_file}")
+	add_test(NAME compare_${_srcx}
+	  COMMAND ${CMAKE_COMMAND} -E compare_files "${src_data_file}" "${created_data_file}")
+	set_tests_properties(data_${_srcx} PROPERTIES DEPENDS build_${_srcx} )
+	set_tests_properties(compare_${_srcx} PROPERTIES DEPENDS data_${_srcx})
 endforeach()
 
-add_custom_target(checkregfiles DEPENDS support ${_depends})
 
