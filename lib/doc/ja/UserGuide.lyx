@@ -39770,8 +39770,7 @@ arg   "dialog-toggle findreplaceadv"
 \end_layout
 
 \begin_layout Itemize
-強調体またはボールド体の単語を入力して検索を行うと、同じフェイスかつ同じ文字様式を持つ単語にのみ一致します。ただし、例えば強調文字は、単独で検出されるだけでなく
-、より長い強調文に含まれる部分にも一致することに注意してください。
+強調体またはボールド体の単語を入力して検索を行うと、同じフェイスかつ同じ文字様式を持つ単語にのみ一致します。
 \end_layout
 
 \begin_layout Itemize
@@ -39978,6 +39977,21 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+The usage of back references in the replaced text is not (yet) implemented.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+【註】
+\series default
 後方参照は、同じregexp内で使われるときでも、異なる複数のregexp内で使われるときでも機能することに注意してください。後者の場合、後方参照表現は絶対表現
 あり、例えば
 \begin_inset Formula $\backslash1$
@@ -39986,8 +40000,9 @@ status collapsed
 は、つねに入力されている全てのregexpのうち、最初の部分に一致します。
 \end_layout
 
-\begin_layout Standard
-置換文字列での後方参照は、(まだ)実装されていないことに注意してください。
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

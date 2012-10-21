@@ -31360,16 +31360,15 @@ Return
 \family sans
 Enter
 \family default
- keeps searching forward.
- Similarly, pressing 
+ keeps searching forward while pressing 
 \family sans
 Shift+Enter
 \family default
- searches for the entered text backwards.
+ searches backwards.
 \end_layout
 
 \begin_layout Standard
-While searching, the 
+The 
 \family sans
 Case sensitive
 \family default
@@ -31443,8 +31442,6 @@ a plain word and searching for it would not find instances of the word occurring
 \begin_layout Itemize
 an emphasized or boldface word and searching for it would find the respective
  instances with same face only, and within the same text style only.
- Note that, for example, an emphasized text is found not only when occurring
- alone, but also when it is contained in a longer emphasized sentence.
 \end_layout
 
 \begin_layout Itemize
@@ -31456,8 +31453,8 @@ a plain word in a section heading, and searching for it, finds occurrences
 \end_layout
 
 \begin_layout Itemize
-some mathematics in a displayed formula will only find instances of this
- formula that are also displayed formulas (and not inline formulas).
+a displayed formula will only find instances of this formula that are also
+ displayed formulas (and not inline formulas).
 \end_layout
 
 \begin_layout Subsubsection
@@ -31715,8 +31712,8 @@ Settings
 \end_layout
 
 \begin_layout Standard
-Finally, references to (sub)expressions in regexp may be used as usual,
- enclosing parts of the expression within round braces 
+Finally, references to (sub)expressions in regexp may be used as usual:
+ Enclosing parts of the expression within round braces 
 \begin_inset Formula $()$
 \end_inset
 
@@ -31737,9 +31734,23 @@ Finally, references to (sub)expressions in regexp may be used as usual,
 \end_layout
 
 \begin_layout Standard
-Note that back references work both when occurring within the same regexp,
- and when occurring in multiple different regexps, where the numbering of
- back-referenced sub-expressions is absolute, i.
+The usage of back references in the replaced text is not (yet) implemented.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Note:
+\series default
+ Back references work both when occurring within the same regexp, and when
+ occurring in multiple different regexps, where the numbering of back-referenced
+ sub-expressions is absolute.
+ I.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31747,7 +31758,7 @@ e.
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset Formula $\backslash1$
 \end_inset
 
@@ -31758,9 +31769,9 @@ e.
  in all entered regexps.
 \end_layout
 
-\begin_layout Standard
-Note also that the use of back references in the replaced text is not (yet)
- implemented.
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
