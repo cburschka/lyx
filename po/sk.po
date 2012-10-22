@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-15 22:53+0200\n"
-"PO-Revision-Date: 2012-10-09 12:48+0200\n"
+"POT-Creation-Date: 2012-10-22 10:58+0200\n"
+"PO-Revision-Date: 2012-10-19 09:05+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1439,7 +1439,7 @@ msgstr "&Vrch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
-msgstr "&Ignoruj pravidla LaTeX-u"
+msgstr "&Ignoruj pravidlá LaTeX-u"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
@@ -2560,7 +2560,7 @@ msgstr "Len LyX- interné"
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX &Note"
-msgstr "LyX - &Poznámka"
+msgstr "LyX - zá&pis"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
@@ -12416,6 +12416,10 @@ msgstr "TeX Gyre Adventor"
 msgid "TeX Gyre Heros"
 msgstr "TeX Gyre Heros"
 
+#: lib/latexfonts:444
+msgid "URW Classico (Optima)"
+msgstr "URW Classico (Optima)"
+
 #: src/frontends/qt4/GuiDocument.cpp:158
 msgid "Bera Mono"
 msgstr "Bera Mono"
@@ -12913,9 +12917,9 @@ msgstr "Pozadie s tieňom|P"
 msgid "Double Frame|u"
 msgstr "Dvojitý Rám"
 
-#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:478
+#: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:476
 msgid "LyX Note|N"
-msgstr "Poznámka LyXu"
+msgstr "Zápis LyXu"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Comment|m"
@@ -13962,16 +13966,16 @@ msgid "Fold Math Macro|d"
 msgstr "Zabaliť Matematické Makro"
 
 #: lib/ui/stdmenus.inc:324
-msgid "View Outline|u"
-msgstr "Zobraziť prehľad"
-
-#: lib/ui/stdmenus.inc:324
-msgid "View Source|S"
-msgstr "Zobraziť zdrojový text (LaTeX)"
+msgid "Outline Pane|u"
+msgstr "Políčko prehľad"
 
 #: lib/ui/stdmenus.inc:325
-msgid "View Messages|g"
-msgstr "Zobraz Hlásenia"
+msgid "Source Pane|S"
+msgstr "Políčko zdrojový text"
+
+#: lib/ui/stdmenus.inc:326
+msgid "Messages Pane|g"
+msgstr "Políčko hlásenia"
 
 #: lib/ui/stdmenus.inc:331
 msgid "Split View Into Left and Right Half|i"
@@ -14597,9 +14601,9 @@ msgstr "Vložiť poznámku pod čiarou"
 msgid "Insert margin note"
 msgstr "Vložiť okrajovú poznámku"
 
-#: lib/ui/stdtoolbars.inc:130 lib/ui/stdtoolbars.inc:229
-msgid "Insert note"
-msgstr "Vložiť poznámku"
+#: lib/ui/stdtoolbars.inc:130
+msgid "Insert LyX note"
+msgstr "Vložiť LyX zápis"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert box"
@@ -14896,6 +14900,10 @@ msgstr "Akceptuj všetky zmeny"
 #: lib/ui/stdtoolbars.inc:227
 msgid "Reject all changes"
 msgstr "Odhoď všetky zmeny"
+
+#: lib/ui/stdtoolbars.inc:130 lib/ui/stdtoolbars.inc:229
+msgid "Insert note"
+msgstr "Vložiť poznámku"
 
 #: lib/ui/stdtoolbars.inc:230
 msgid "Next note"
@@ -26203,6 +26211,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "View Outline|u"
+#~ msgstr "Zobraziť prehľad"
 
 #~ msgid ""
 #~ "Command not allowed without any visible document in the active window"
