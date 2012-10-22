@@ -492,19 +492,20 @@ Escapes const & get_regexp_escapes()
 {
 	static Escapes escape_map;
 	if (escape_map.empty()) {
-		escape_map.push_back(pair<string, string>("$", "\\$"));
-		escape_map.push_back(pair<string, string>("{", "\\{"));
-		escape_map.push_back(pair<string, string>("}", "\\}"));
-		escape_map.push_back(pair<string, string>("[", "\\["));
-		escape_map.push_back(pair<string, string>("]", "\\]"));
-		escape_map.push_back(pair<string, string>("(", "\\("));
-		escape_map.push_back(pair<string, string>(")", "\\)"));
-		escape_map.push_back(pair<string, string>("+", "\\+"));
-		escape_map.push_back(pair<string, string>("*", "\\*"));
-		escape_map.push_back(pair<string, string>(".", "\\."));
+		escape_map.push_back(pair<string, string>("$", "_x_$"));
+		escape_map.push_back(pair<string, string>("{", "_x_{"));
+		escape_map.push_back(pair<string, string>("}", "_x_}"));
+		escape_map.push_back(pair<string, string>("[", "_x_["));
+		escape_map.push_back(pair<string, string>("]", "_x_]"));
+		escape_map.push_back(pair<string, string>("(", "_x_("));
+		escape_map.push_back(pair<string, string>(")", "_x_)"));
+		escape_map.push_back(pair<string, string>("+", "_x_+"));
+		escape_map.push_back(pair<string, string>("*", "_x_*"));
+		escape_map.push_back(pair<string, string>(".", "_x_."));
 		escape_map.push_back(pair<string, string>("\\", "(?:\\\\|\\\\backslash)"));
 		escape_map.push_back(pair<string, string>("~", "(?:\\\\textasciitilde|\\\\sim)"));
 		escape_map.push_back(pair<string, string>("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
+		escape_map.push_back(pair<string, string>("_x_", "\\"));
 	}
 	return escape_map;
 }
