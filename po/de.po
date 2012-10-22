@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-16 10:01+0200\n"
-"PO-Revision-Date: 2012-10-16 10:13+0200\n"
+"POT-Creation-Date: 2012-10-22 08:27+0200\n"
+"PO-Revision-Date: 2012-10-22 08:32+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5319,8 +5319,8 @@ msgstr "Bücher"
 #: lib/layouts/paper.layout:131 lib/layouts/svprobth.layout:184
 #: lib/layouts/egs.layout:485 lib/layouts/revtex.layout:140
 #: lib/layouts/aa.layout:89 lib/layouts/aa.layout:323
-#: lib/layouts/aa.layout:339 lib/layouts/sigplanconf.layout:154
-#: lib/layouts/sigplanconf.layout:170 lib/layouts/AEA.layout:95
+#: lib/layouts/aa.layout:339 lib/layouts/sigplanconf.layout:155
+#: lib/layouts/sigplanconf.layout:171 lib/layouts/AEA.layout:95
 #: lib/layouts/ectaart.layout:43 lib/layouts/ectaart.layout:56
 #: lib/layouts/apa.layout:71 lib/layouts/entcs.layout:86
 #: lib/layouts/spie.layout:76 lib/layouts/llncs.layout:243
@@ -5485,7 +5485,7 @@ msgstr "Beides markieren"
 #: lib/layouts/aa.layout:148 lib/layouts/aa.layout:163
 #: lib/layouts/aa.layout:187 lib/layouts/aa.layout:327
 #: lib/layouts/sigplanconf.layout:72 lib/layouts/sigplanconf.layout:125
-#: lib/layouts/sigplanconf.layout:158 lib/layouts/AEA.layout:57
+#: lib/layouts/sigplanconf.layout:159 lib/layouts/AEA.layout:57
 #: lib/layouts/AEA.layout:100 lib/layouts/ectaart.layout:23
 #: lib/layouts/ectaart.layout:48 lib/layouts/ectaart.layout:71
 #: lib/layouts/entcs.layout:75 lib/layouts/tufte-handout.layout:50
@@ -5620,7 +5620,7 @@ msgstr "Überarbeitet"
 #: lib/layouts/elsart.layout:63 lib/layouts/revtex4.layout:262
 #: lib/layouts/paper.layout:173 lib/layouts/svprobth.layout:148
 #: lib/layouts/svprobth.layout:151 lib/layouts/aa.layout:353
-#: lib/layouts/sigplanconf.layout:147 lib/layouts/spie.layout:42
+#: lib/layouts/sigplanconf.layout:148 lib/layouts/spie.layout:42
 #: lib/layouts/aastex.layout:117 lib/layouts/aastex.layout:328
 #: lib/layouts/kluwer.layout:283 lib/layouts/elsarticle.layout:278
 #: lib/layouts/jasatex.layout:186 lib/layouts/svjog.layout:118
@@ -5893,7 +5893,7 @@ msgstr "Anhang"
 #: lib/layouts/siamltex.layout:320 lib/layouts/iopart.layout:244
 #: lib/layouts/iopart.layout:266 lib/layouts/iopart.layout:289
 #: lib/layouts/revtex4.layout:232 lib/layouts/aa.layout:210
-#: lib/layouts/sigplanconf.layout:185 lib/layouts/aastex.layout:458
+#: lib/layouts/sigplanconf.layout:186 lib/layouts/aastex.layout:458
 #: lib/layouts/aastex.layout:490 lib/layouts/elsarticle.layout:303
 #: lib/layouts/jasatex.layout:224 lib/layouts/jasatex.layout:263
 #: lib/layouts/acmsiggraph.layout:156 lib/layouts/beamer.layout:927
@@ -6291,7 +6291,7 @@ msgstr "Comby"
 
 #: lib/layouts/ijmpd.layout:225 lib/layouts/iopart.layout:211
 #: lib/layouts/revtex4.layout:267 lib/layouts/paper.layout:176
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/ectaart.layout:121
+#: lib/layouts/sigplanconf.layout:151 lib/layouts/ectaart.layout:121
 #: lib/layouts/spie.layout:49 lib/layouts/kluwer.layout:290
 #: lib/layouts/elsarticle.layout:291 lib/layouts/jasatex.layout:200
 #: lib/layouts/revtex4-1.layout:172 lib/layouts/agu_stdtitle.inc:123
@@ -6887,7 +6887,7 @@ msgstr "Einreichen für Journal:"
 
 #: lib/layouts/iopart.layout:240 lib/layouts/iopart.layout:254
 #: lib/layouts/revtex4.layout:231 lib/layouts/revtex4.layout:241
-#: lib/layouts/sigplanconf.layout:182 lib/layouts/sigplanconf.layout:189
+#: lib/layouts/sigplanconf.layout:183 lib/layouts/sigplanconf.layout:190
 #: lib/layouts/apa.layout:221 lib/layouts/spie.layout:91
 #: lib/layouts/jasatex.layout:221 lib/layouts/jasatex.layout:226
 #: lib/layouts/acmsiggraph.layout:153 lib/layouts/acmsiggraph.layout:160
@@ -7865,7 +7865,7 @@ msgstr "Urheberrecht Daten:"
 msgid "Terms"
 msgstr "Begriffe"
 
-#: lib/layouts/sigplanconf.layout:143
+#: lib/layouts/sigplanconf.layout:144
 msgid "Terms:"
 msgstr "Begriffe:"
 
@@ -12629,51 +12629,55 @@ msgstr "TeX Gyre Adventor"
 msgid "TeX Gyre Heros"
 msgstr "TeX Gyre Heros"
 
-#: lib/latexfonts:449
+#: lib/latexfonts:444
+msgid "URW Classico (Optima)"
+msgstr "URW Classico (Optima)"
+
+#: lib/latexfonts:456
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: lib/latexfonts:457
+#: lib/latexfonts:464
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: lib/latexfonts:464
+#: lib/latexfonts:471
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: lib/latexfonts:470
+#: lib/latexfonts:477
 msgid "Courier"
 msgstr "Courier"
 
-#: lib/latexfonts:477
+#: lib/latexfonts:484
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: lib/latexfonts:484
+#: lib/latexfonts:491
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:491
+#: lib/latexfonts:498
 msgid "TeX Gyre Cursor"
 msgstr "TeX Gyre Cursor"
 
-#: lib/latexfonts:497
+#: lib/latexfonts:504
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
-#: lib/latexfonts:509
+#: lib/latexfonts:516
 msgid "Euler VM"
 msgstr "Euler VM"
 
-#: lib/latexfonts:515
+#: lib/latexfonts:522
 msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
-#: lib/latexfonts:523
+#: lib/latexfonts:530
 msgid "Minion Pro (New TX)"
 msgstr "Minion Pro (New TX)"
 
-#: lib/latexfonts:532
+#: lib/latexfonts:539
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
@@ -13554,16 +13558,16 @@ msgid "Fold Math Macro|d"
 msgstr "Mathe-Makro zuklappen|z"
 
 #: lib/ui/stdmenus.inc:324
-msgid "View Outline|u"
-msgstr "Gliederung ansehen|G"
+msgid "Outline Pane|u"
+msgstr "Gliederung des Dokuments|G"
 
 #: lib/ui/stdmenus.inc:325
-msgid "View Source|S"
-msgstr "Quelle ansehen|Q"
+msgid "Source Pane|S"
+msgstr "Quellenvorschau|Q"
 
 #: lib/ui/stdmenus.inc:326
-msgid "View Messages|g"
-msgstr "Meldungen anzeigen|e"
+msgid "Messages Pane|g"
+msgstr "Statusmeldungen|e"
 
 #: lib/ui/stdmenus.inc:328
 msgid "Split View Into Left and Right Half|i"
@@ -14813,9 +14817,9 @@ msgstr "Fußnote einfügen"
 msgid "Insert margin note"
 msgstr "Randnotiz einfügen"
 
-#: lib/ui/stdtoolbars.inc:130 lib/ui/stdtoolbars.inc:239
-msgid "Insert note"
-msgstr "Notiz einfügen"
+#: lib/ui/stdtoolbars.inc:130
+msgid "Insert LyX note"
+msgstr "LyX-Notiz einfügen"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert box"
@@ -15114,6 +15118,10 @@ msgstr "Alle Änderungen akzeptieren"
 #: lib/ui/stdtoolbars.inc:237
 msgid "Reject all changes"
 msgstr "Alle Änderungen ablehnen"
+
+#: lib/ui/stdtoolbars.inc:239
+msgid "Insert note"
+msgstr "Notiz einfügen"
 
 #: lib/ui/stdtoolbars.inc:240
 msgid "Next note"
@@ -26167,15 +26175,15 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1410
+#: src/lyxfind.cpp:1411
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1415
+#: src/lyxfind.cpp:1416
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1419
+#: src/lyxfind.cpp:1420
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -26589,6 +26597,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "View Outline|u"
+#~ msgstr "Gliederung ansehen|G"
 
 #~ msgid ""
 #~ "Command not allowed without any visible document in the active window"
