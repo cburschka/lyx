@@ -294,6 +294,7 @@ endif()
 add_custom_target(lyx_version ALL
   COMMAND ${CMAKE_COMMAND} -DTOP_SRC_DIR=${TOP_SRC_DIR} -DTOP_CMAKE_PATH=${TOP_CMAKE_PATH} -DTOP_BINARY_DIR=${TOP_BINARY_DIR} -DLYX_DATE=${LYX_DATE} -P ${TOP_SCRIPT_PATH}/LyXGetVersion.cmake
   )
+set_target_properties(lyx_version PROPERTIES FOLDER "applications")
 
 if(APPLE)
 	set(osx_bundle_program_name ${PACKAGE_BASE}${PROGRAM_SUFFIX})

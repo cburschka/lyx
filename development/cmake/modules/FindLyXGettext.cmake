@@ -59,6 +59,7 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
    ENDFOREACH (_currentPoFile )
 
    ADD_CUSTOM_TARGET(translations ${_addToAll} DEPENDS ${_gmoFiles})
+   set_target_properties(translations PROPERTIES FOLDER "i18n")
 
 ENDMACRO(GETTEXT_CREATE_TRANSLATIONS )
 

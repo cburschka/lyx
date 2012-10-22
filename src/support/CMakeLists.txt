@@ -74,6 +74,7 @@ else()
 	add_library(support ${library_type} ${_allinone_files} ${support_separate}
 		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
+set_target_properties(support PROPERTIES FOLDER "applications/LyX")
 
 target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 

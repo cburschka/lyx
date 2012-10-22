@@ -22,6 +22,7 @@ else()
 	lyx_const_touched_files(_allinone  graphics_sources)
 	add_library(graphics ${library_type} ${_allinone_files})
 endif()
+set_target_properties(graphics PROPERTIES FOLDER "applications/LyX")
 
 lyx_add_gcc_pch(graphics)
 

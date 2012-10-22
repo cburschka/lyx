@@ -43,6 +43,7 @@ else()
 	lyx_const_touched_files(_allinone_linked  LINKED_sources)
 	add_executable(${_tex2lyx} ${_allinone_files} ${_allinone_linked_files} ${FILE_RC})
 endif()
+set_target_properties(${_tex2lyx} PROPERTIES FOLDER "applications/TeX2LyX")
 
 target_link_libraries(${_tex2lyx}
 	support

@@ -22,6 +22,7 @@ else()
 	lyx_const_touched_files(_allinone  insets_sources)
 	add_library(insets ${library_type} ${_allinone_files})
 endif()
+set_target_properties(insets PROPERTIES FOLDER "applications/LyX")
 
 lyx_add_gcc_pch(insets)
 

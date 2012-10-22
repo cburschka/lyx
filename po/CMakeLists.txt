@@ -51,6 +51,7 @@ macro(add_gettext_python  _par _dir)
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
     ADD_CUSTOM_TARGET(layouttranslations1 DEPENDS "${_dst}")
+	set_target_properties(layouttranslations1 PROPERTIES FOLDER "i18n")
     if (LYX_DATA_SUBDIR STREQUAL "")
       install(FILES "${TOP_SRC_DIR}/lib/layouttranslations" DESTINATION .)
     else()
@@ -194,5 +195,6 @@ GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${_addAL
 # Create a new target to remerge po files
 # ALL omitted here, to prevent from automatic creation
 ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES})
+set_target_properties(update-po PROPERTIES FOLDER "i18n")
 add_dependencies(update-po translations)
 

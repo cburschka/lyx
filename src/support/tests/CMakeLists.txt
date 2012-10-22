@@ -43,6 +43,8 @@ foreach(_src ${check_PROGRAMS})
                                    -DInput=${src_data_file}
                                    -DOutput=${created_data_file}
                                    -P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
+
+	set_target_properties(${_src} PROPERTIES FOLDER "tests/support")
 endforeach()
 
 

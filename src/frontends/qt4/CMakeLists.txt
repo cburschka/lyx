@@ -52,6 +52,7 @@ if(LYX_MERGE_FILES)
 else()
 	add_library(frontend_qt4 ${library_type} ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 endif()
+set_target_properties(frontend_qt4 PROPERTIES FOLDER "applications/LyX")
 
 
 target_link_libraries(frontend_qt4

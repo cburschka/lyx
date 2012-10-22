@@ -8,6 +8,9 @@ project(${_lyx})
 
 include_directories(${TOP_SRC_DIR}/src)
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
+
 add_subdirectory(frontends)
 add_subdirectory(graphics)
 add_subdirectory(insets)
@@ -117,6 +120,8 @@ add_executable(${_lyx}
 )
 
 add_dependencies(${_lyx} lyx_version)
+
+set_target_properties(${_lyx} PROPERTIES FOLDER "applications/LyX")
 
 lyx_add_gcc_pch(${_lyx})
 
