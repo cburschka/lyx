@@ -20,7 +20,8 @@ call it from the command line only if you need to use more complicated
 options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
-[ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [
+[ \fB\-f\fR ] [ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ]
+[\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [ \fB\-skipchildren\fR ] [
 \fB\-roundtrip\fR ] [ \fB\-copyfiles\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
 .\" .PP
 .\" \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
@@ -53,14 +54,6 @@ requires the \fB\-c\fR option.
 Do not translate child documents included via \f(CW\einclude\fR and \f(CW\einput\fR.
 This option is useful if the child documents are generated files and/or contain many
 commands that \fBtex2lyx\fR does not understand yet.
-.\" .TP
-.\" .BI \-r
-.\" Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
-.\" environment, separate them with commas (not spaces). You'll probably need to
-.\" quote the environment list, especially if it has asterisk environments (foo*)
-.\" in it. If you use this command often, considering creating a personal syntax
-.\" file. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
-.\" not yet been implemented in \fBtex2lyx\fR).
 .TP
 .BI \-s
 Syntax files. Input (one or more quoted, comma-separated) syntax files to read
