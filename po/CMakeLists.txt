@@ -120,7 +120,12 @@ ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
-    ARGS --default-domain=${_lyxname} --directory=${TOP_SRC_DIR} --add-comments=TRANSLATORS: --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_ --files-from="${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in" --copyright-holder="LyX Developers" --msgid-bugs-address=lyx-devel@lists.lyx.org -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
+      --default-domain=${_lyxname} --directory=${TOP_SRC_DIR}
+      --add-comments=TRANSLATORS:
+      --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_
+      --files-from=${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in
+      --copyright-holder="LyX Developers" --msgid-bugs-address=lyx-devel@lists.lyx.org
+      -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" ${_potfiles_dep}
     )
 
