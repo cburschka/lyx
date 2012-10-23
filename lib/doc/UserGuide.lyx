@@ -31375,19 +31375,23 @@ Find
 Find Next
 \family default
  button at the bottom of the dialog (or just press the 
-\family sans
-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph"
+\end_inset
+
  key).
  The entered word is found both in text mode and in math mode, and in emphasized
 , bold or normal face, and in both in section titles and in standard text.
  Pressing repeatedly 
-\family sans
-Enter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph"
+\end_inset
+
  keeps searching forward while pressing 
 \family sans
-Shift+Enter
+Shift+Return
 \family default
  searches backwards.
 \end_layout
@@ -31487,11 +31491,11 @@ Replace
 \end_layout
 
 \begin_layout Standard
-The text segments matching the text entered in the 
+The document segments entered in the 
 \family sans
 Find
 \family default
- editor may be replaced with the text segments entered in the 
+ editor can be replaced with the text segments entered in the 
 \family sans
 Replace
 \family default
@@ -31508,14 +31512,16 @@ Replace
  
 \noun default
 press 
-\family sans
-Enter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph"
+\end_inset
+
  or 
 \family sans
-Shift+Enter
+Shift+Return
 \family default
- while being in the 
+ while the cursor is in the 
 \family sans
 Replace
 \family default
@@ -31526,8 +31532,7 @@ editor.
 \end_layout
 
 \begin_layout Standard
-You can replace full-featured formatted LyX segments in place of the matching
- text segments in your document.
+You can replace with full-featured formatted LyX segments.
  Typical scenarios in which to use this capability may be (just to mention
  a few):
 \end_layout
@@ -31543,16 +31548,18 @@ func()
 \end_inset
 
  with its typewriter version 
-\family typewriter
-
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 func()
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-;
+
 \end_layout
 
 \begin_layout Itemize
