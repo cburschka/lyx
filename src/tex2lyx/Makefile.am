@@ -29,7 +29,10 @@ TEST_FILES = \
 	test/test-insets.tex \
 	test/test.ltx \
 	test/test-structure.tex \
-	test/XeTeX-polyglossia.tex
+	test/XeTeX-polyglossia.tex \
+	test/xfigtest.fig \
+	test/xfigtest.pstex \
+	test/xfigtest.pstex_t
 
 TESTS = test/runtests.py
 updatetests: tex2lyx
