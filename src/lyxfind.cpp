@@ -495,54 +495,62 @@ typedef vector<pair<string, string> > Escapes;
 /// @note Beware of order
 Escapes const & get_regexp_escapes()
 {
+	typedef std::pair<std::string, std::string> P;
+
 	static Escapes escape_map;
 	if (escape_map.empty()) {
-		escape_map.push_back(pair<string, string>("$", "_x_$"));
-		escape_map.push_back(pair<string, string>("{", "_x_{"));
-		escape_map.push_back(pair<string, string>("}", "_x_}"));
-		escape_map.push_back(pair<string, string>("[", "_x_["));
-		escape_map.push_back(pair<string, string>("]", "_x_]"));
-		escape_map.push_back(pair<string, string>("(", "_x_("));
-		escape_map.push_back(pair<string, string>(")", "_x_)"));
-		escape_map.push_back(pair<string, string>("+", "_x_+"));
-		escape_map.push_back(pair<string, string>("*", "_x_*"));
-		escape_map.push_back(pair<string, string>(".", "_x_."));
-		escape_map.push_back(pair<string, string>("\\", "(?:\\\\|\\\\backslash)"));
-		escape_map.push_back(pair<string, string>("~", "(?:\\\\textasciitilde|\\\\sim)"));
-		escape_map.push_back(pair<string, string>("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
-		escape_map.push_back(pair<string, string>("_x_", "\\"));
+		escape_map.push_back(P("$", "_x_$"));
+		escape_map.push_back(P("{", "_x_{"));
+		escape_map.push_back(P("}", "_x_}"));
+		escape_map.push_back(P("[", "_x_["));
+		escape_map.push_back(P("]", "_x_]"));
+		escape_map.push_back(P("(", "_x_("));
+		escape_map.push_back(P(")", "_x_)"));
+		escape_map.push_back(P("+", "_x_+"));
+		escape_map.push_back(P("*", "_x_*"));
+		escape_map.push_back(P(".", "_x_."));
+		escape_map.push_back(P("\\", "(?:\\\\|\\\\backslash)"));
+		escape_map.push_back(P("~", "(?:\\\\textasciitilde|\\\\sim)"));
+		escape_map.push_back(P("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
+		escape_map.push_back(P("_x_", "\\"));
 	}
 	return escape_map;
 }
 
 /// A map of lyx escaped strings and their unescaped equivalent.
-Escapes const & get_lyx_unescapes() {
+Escapes const & get_lyx_unescapes()
+{
+	typedef std::pair<std::string, std::string> P;
+
 	static Escapes escape_map;
 	if (escape_map.empty()) {
-		escape_map.push_back(pair<string, string>("\\%", "%"));
-		escape_map.push_back(pair<string, string>("\\mathcircumflex ", "^"));
-		escape_map.push_back(pair<string, string>("\\mathcircumflex", "^"));
-		escape_map.push_back(pair<string, string>("\\backslash ", "\\"));
-		escape_map.push_back(pair<string, string>("\\backslash", "\\"));
-		escape_map.push_back(pair<string, string>("\\\\{", "_x_<"));
-		escape_map.push_back(pair<string, string>("\\\\}", "_x_>"));
-		escape_map.push_back(pair<string, string>("\\sim ", "~"));
-		escape_map.push_back(pair<string, string>("\\sim", "~"));
+		escape_map.push_back(P("\\%", "%"));
+		escape_map.push_back(P("\\mathcircumflex ", "^"));
+		escape_map.push_back(P("\\mathcircumflex", "^"));
+		escape_map.push_back(P("\\backslash ", "\\"));
+		escape_map.push_back(P("\\backslash", "\\"));
+		escape_map.push_back(P("\\\\{", "_x_<"));
+		escape_map.push_back(P("\\\\}", "_x_>"));
+		escape_map.push_back(P("\\sim ", "~"));
+		escape_map.push_back(P("\\sim", "~"));
 	}
 	return escape_map;
 }
 
 /// A map of escapes turning a regexp matching text to one matching latex.
-Escapes const & get_regexp_latex_escapes() {
+Escapes const & get_regexp_latex_escapes()
+{
+	typedef std::pair<std::string, std::string> P;
+
 	static Escapes escape_map;
 	if (escape_map.empty()) {
-		escape_map.push_back(pair<string, string>("\\\\", "(?:\\\\\\\\|\\\\backslash|\\\\textbackslash\\{\\})"));
-		escape_map.push_back(pair<string, string>("(<?!\\\\\\\\textbackslash)\\{", "\\\\\\{"));
-		escape_map.push_back(pair<string, string>("(<?!\\\\\\\\textbackslash\\\\\\{)\\}", "\\\\\\}"));
-		escape_map.push_back(pair<string, string>("\\[", "\\{\\[\\}"));
-		escape_map.push_back(pair<string, string>("\\]", "\\{\\]\\}"));
-		escape_map.push_back(pair<string, string>("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
-		escape_map.push_back(pair<string, string>("%", "\\\\\\%"));
+		escape_map.push_back(P("\\\\", "(?:\\\\\\\\|\\\\backslash|\\\\textbackslash\\{\\})"));
+		escape_map.push_back(P("(<?!\\\\\\\\textbackslash)\\{", "\\\\\\{"));
+		escape_map.push_back(P("(<?!\\\\\\\\textbackslash\\\\\\{)\\}", "\\\\\\}"));
+		escape_map.push_back(P("\\[", "\\{\\[\\}"));
+		escape_map.push_back(P("\\]", "\\{\\]\\}"));
+		escape_map.push_back(P("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
+		escape_map.push_back(P("%", "\\\\\\%"));
 	}
 	return escape_map;
 }
