@@ -32329,29 +32329,24 @@ Ersetzen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The text segments matching the text entered in the 
+Dokumentsegmente, die im 
 \family sans
 Suchen
 \family default
- editor may be replaced mit the text segments entered in the 
+ Feld eingegeben wurden, können mit Segmenten ersetzt werden, die im 
 \family sans
 Ersetzen durch
 \family default
 \noun on
  
 \noun default
-editor.
- In order to find the next occurrence und replace it, click on the 
+Feld eingegeben werden.
+ Um das nächste Auftreten zu finden und dieses zu ersetzen, drückt man den
+ Knopf 
 \family sans
 Ersetzen
 \family default
- button oder alternatively
-\noun on
- 
-\noun default
-press 
+ oder drückt alternativ 
 \family sans
 Enter
 \family default
@@ -32359,30 +32354,29 @@ Enter
 \family sans
 Umschalt+Enter
 \family default
- while being in the 
+ während der Cursor sich im Feld 
 \family sans
 Ersetzen durch
 \family default
 \noun on
  
 \noun default
-editor.
+befindet.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can replace full-featured formatted LyX segments in place of the matching
- text segments in your Dokument.
- Typical scenarios in which to use this capability may be (just to mention
- a few):
+Man kann mit formatierten Segmenten ersetzen.
+ Typische Szenarios in denen das nützlich ist (nur um einige zu nennen),
+ sind:
 \end_layout
 
 \begin_layout Itemize
+das Ersetzen mit einer formatierten Version des selben Wortes, z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-replacing occurrences of a word mit a benutzerdefinierten formatted version
- of the same word, zum Beispiel replacing occurrences of a name like 
+B.
+ Ersetzen des Namens 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32390,24 +32384,28 @@ func()
 \begin_inset Quotes grd
 \end_inset
 
- mit its typewriter version 
+ mit seiner Version im Stil Schreibmaschine 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
-
-\begin_inset Quotes gld
-\end_inset
-
 func()
+\family default
+
 \begin_inset Quotes grd
 \end_inset
 
-;
+
 \end_layout
 
 \begin_layout Itemize
+Änderung der mathematischen Notation, z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-performing a notation rework of mathematical symbols, zum Beispiel replacing
- occurrences of 
+B.
+ um alle Vorkommen von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32431,23 +32429,23 @@ performing a notation rework of mathematical symbols, zum Beispiel replacing
 \begin_inset Quotes grd
 \end_inset
 
- (you may want to enable the 
+ zu ersetzen (dabei hilft es eventuell, die Optionen 
 \family sans
-Whole words
+Ganze Wörter
 \family default
  und 
 \family sans
-Case sensitive
+Groß-/Kleinschreibung beachten
 \family default
- Optionen und disable the 
+ zu verwenden und die Option 
 \family sans
-Ignore format
+Ignoriere Format
 \family default
- Option in the 
+ im Tab 
 \family sans
-Advanced
+Einstellungen
 \family default
- tab, in order to avoid replacing all 
+ zu deaktivieren, um zu verhindern, dass alle 
 \begin_inset Quotes eld
 \end_inset
 
@@ -32455,7 +32453,7 @@ R
 \begin_inset Quotes erd
 \end_inset
 
- letters occurring in normal text), oder occurrences of 
+ im normalen Text ersetzt werden), oder 
 \begin_inset Formula $x_{j}^{i}$
 \end_inset
 
@@ -32463,7 +32461,7 @@ R
 \begin_inset Formula $x_{i,\, j}$
 \end_inset
 
-, oder occurrences of 
+ zu ersetzen oder 
 \begin_inset Formula $x[k]$
 \end_inset
 
