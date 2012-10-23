@@ -476,7 +476,7 @@ bool Formats::isZippedFile(support::FileName const & filename) const {
 		return it->second.zipped;
 	string const & format = getFormatFromFile(filename);
 	bool zipped = (format == "gzip" || format == "zip");
-	zipped_.insert(pair<string, ZippedInfo>(fname, ZippedInfo(zipped, timestamp)));
+	zipped_.insert(make_pair(fname, ZippedInfo(zipped, timestamp)));
 	return zipped;
 }
 
