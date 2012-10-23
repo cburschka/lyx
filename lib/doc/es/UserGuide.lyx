@@ -4251,7 +4251,7 @@ Normal
 .
  
 \lang english
-Also the the nesting depth is preserved
+Also the nesting depth is preserved
 \lang spanish
  (más sobre anidación en la sección
 \begin_inset space ~
@@ -16050,8 +16050,8 @@ A-b c
 
  y lo interpreta como posibilidad de ruptura, lo que en este caso quedaría
  feo.
- Para impedir que se parta esa secuencia de letras, puedes ponerla en en
- un cuadro, tal como se describe en la sección 
+ Para impedir que se parta esa secuencia de letras, puedes ponerla en un
+ cuadro, tal como se describe en la sección 
 \begin_inset Quotes fld
 \end_inset
 
@@ -32082,11 +32082,17 @@ Por último, se pueden usar referencias a (sub)expresiones en regexp en la
 \end_inset
 
  se introduce en modo regexp pulsando dos veces la tecla correspondiente.
- Por ejemplo, prueba la búsqueda de la regexp 
-\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+ Por ejemplo, prueba la búsqueda de la regexp
+\begin_inset Newline newline
 \end_inset
 
- para encontrar repeticiones de palabras, si las hay.
+[[:space:]]([[:alpha:]]+)[[:space:]]
+\backslash
+1[[:space:]]
+\begin_inset Newline newline
+\end_inset
+
+para encontrar repeticiones de palabras, si las hay.
 \end_layout
 
 \begin_layout Standard
@@ -46783,7 +46789,7 @@ Nota:
 \family sans
 Ejemplos
 \family default
- no existe en en los sistemas Mac OS o Windows.
+ no existe en los sistemas Mac OS o Windows.
 \end_layout
 
 \end_inset
@@ -48209,8 +48215,8 @@ Personalización
 \begin_layout Standard
 Puesto que todas las conversiones de un formato a otro tienen lugar en el
  directorio temporal de LyX, a veces es preciso modificar un archivo antes
- de copiarlo al directorio temporal, con el fin de de que la conversión
- pueda llevarse a cabo.
+ de copiarlo al directorio temporal, con el fin de que la conversión pueda
+ llevarse a cabo.
  Esto se hace especificando un 
 \family sans
 Copiador

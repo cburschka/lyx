@@ -4367,7 +4367,7 @@ Return
 Standard
 \family default
 .
- Also the the nesting depth is preserved (for more on nesting see section
+ Also the nesting depth is preserved (for more on nesting see section
 \begin_inset space ~
 \end_inset
 
@@ -26004,7 +26004,7 @@ of
 Contents
 \family default
 .
- Is is displayed in LyX as a gray box.
+ It is displayed in LyX as a gray box.
  If you click on it, the 
 \family sans
 Outline
@@ -31733,11 +31733,17 @@ Finally, references to (sub)expressions in regexp may be used as usual:
 \end_inset
 
 , etc..
- For example, try searching for the regexp 
-\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+ For example, try searching for the regexp
+\begin_inset Newline newline
 \end_inset
 
- in order to find word repetitions, if there are any.
+[[:space:]]([[:alpha:]]+)[[:space:]]
+\backslash
+1[[:space:]]
+\begin_inset Newline newline
+\end_inset
+
+in order to find word repetitions, if there are any.
 \end_layout
 
 \begin_layout Standard
@@ -47176,8 +47182,7 @@ Plain
 text
 \family default
 .
- Setting the line line length to 0 means all text is printed in one endless
- line.
+ Setting the line length to 0 means all text is printed in one endless line.
 \end_layout
 
 \begin_layout Description

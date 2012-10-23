@@ -39970,7 +39970,13 @@ status collapsed
 \end_inset
 
 記号は、バックスラッシュ鍵を2回押すことで入力することができます)。たとえば、
-\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+\begin_inset Newline newline
+\end_inset
+
+[[:space:]]([[:alpha:]]+)[[:space:]]
+\backslash
+1[[:space:]]
+\begin_inset Newline newline
 \end_inset
 
 という表現は、単語の繰り返しがあればそれに一致します。
