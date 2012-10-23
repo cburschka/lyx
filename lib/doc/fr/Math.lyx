@@ -260,6 +260,12 @@ auteur: Uwe Stöhr
 traducteur: Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
+\begin_layout Plain Layout
+Dernière revue : 22/10/2012 pour 2.0.5 (quelques mises à jour de Uwe -> 19/10/2012
+) par J.P.
+ Chrétien
+\end_layout
+
 \end_inset
 
 
@@ -988,13 +994,11 @@ Une flèche comme celle-ci
 \end_inset
 
  indique que l'on doit appuyer sur la flèche correspondante du clavier.
- 
-\lang english
-The 
+ La touche
 \family sans
-Tab
+ Tab
 \family default
- key can often be used instead of 
+ peut être fréquemment utilisée à la place de
 \begin_inset Formula $\to$
 \end_inset
 
@@ -1006,9 +1010,7 @@ Tab
 \family sans
 Shift+Tab
 \family default
- instead of 
-\lang french
-
+ à la place de 
 \begin_inset Formula $\leftarrow$
 \end_inset
 
@@ -28254,10 +28256,12 @@ reference "sub:Environnement-align-standard"
 \end_inset
 
 .
- 
-\lang english
-The align environment is recommended because it provides in any case a typograph
-ically correct output.
+ L'environnement
+\series bold
+ align
+\series default
+ est recommandé car il produit une sortie typographiquement correcte dans
+ tous les cas.
 \end_layout
 
 \begin_layout Standard
@@ -30220,12 +30224,12 @@ Insérer\SpecialChar \menuseparator
  de la barre d'outils.
  Pour cela, le curseur doit se trouver à l'intérieur d'une formule hors
  ligne.
+ Vous pouvez également effectuer un clic droit sur la formule et choisir
  
-\lang english
-Alternatively you can right-click on the formula and choose 
 \family sans
-Equation Label
+Étiquette d'équation
 \family default
+\lang english
 .
 
 \lang french
@@ -30246,16 +30250,14 @@ eq:
  et rend plus facile la recherche d'une étiquette dans les grand documents
  en l'identifiant comme une étiquette de formule et pas, par exemple comme
  une étiquette de section.
- Pour modifier l'étiquette on doit repasser par le menu 
+ Pour modifier l'étiquette vous devez repasser par le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Étiquette 
 \family default
-ou 
-\lang english
-you right-click on a formula and then on 
+ou effectuer un clic droit sur la formule et choisir 
 \family sans
-Equation Label
+Étiquette d'équation
 \family default
 .
 \end_layout
@@ -31630,7 +31632,7 @@ status open
 \color none
 Note:
 \series default
- On peut numéroter au maximum 26
+ on peut numéroter au maximum 26
 \begin_inset space ~
 \end_inset
 
