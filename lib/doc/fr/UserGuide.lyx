@@ -2093,7 +2093,7 @@ Auto-correction
 autocorrect
 \family default
  qui se trouve dans le répertoire d'installation.
- L'auto-correction peut être activée à tout moment en en saisissant le point
+ L'auto-correction peut être activée à tout moment en saisissant le point
  d'exclamation 
 \begin_inset Quotes fld
 \end_inset
@@ -4556,9 +4556,9 @@ Standard
 .
  
 \lang english
-Also the the nesting depth is preserved
+Also the nesting depth is preserved
 \lang french
- (les détails sur l'emboîtement dans dans la section
+ (les détails sur l'emboîtement dans la section
 \begin_inset space ~
 \end_inset
 
@@ -33115,11 +33115,17 @@ Enfin, le référencement de (sous-)expressions dans les expressions régulière
 \end_inset
 
  est saisi en pressant deux fois la touche de barre oblique arrière.
- Par exemple, essayez de rechercher l'expression 
-\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+ Par exemple, essayez de rechercher l'expression
+\begin_inset Newline newline
 \end_inset
 
- pour trouver les répétitions de mots, s'il y en a.
+[[:space:]]([[:alpha:]]+)[[:space:]]
+\backslash
+1[[:space:]]
+\begin_inset Newline newline
+\end_inset
+
+pour trouver les répétitions de mots, s'il y en a.
 \end_layout
 
 \begin_layout Standard

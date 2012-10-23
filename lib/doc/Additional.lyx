@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 444
+\lyxformat 445
 \begin_document
 \begin_header
 \textclass scrbook
@@ -3054,8 +3054,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-As the bibliography list is in a comment, LaTeX won't use use it and the
- references will look like this: [?], instead of like this: [1].
+As the bibliography list is in a comment, LaTeX won't use it and the references
+ will look like this: [?], instead of like this: [1].
  One solution is to use the LaTeX-package 
 \begin_inset Flex Code
 status collapsed
@@ -8943,8 +8943,7 @@ Theorems (AMS)
 
 \end_inset
 
- module, which is loaded by default when when you select one of the AMS
- classes.
+ module, which is loaded by default when you select one of the AMS classes.
  (It can also be used with other classes and can be removed, if you would
  rather use something else.) Less commonly used environments are in the 
 \begin_inset Flex Code

@@ -12392,7 +12392,7 @@ Wenn Sie wissen wollen, welche Schriftarten in einem PDF-Dokument benutzt
 \family typewriter
 Adobe Reader
 \family default
- sind sie unter unter 
+ sind sie unter 
 \family sans
 Datei\SpecialChar \menuseparator
 Dokumenteigenschaften\SpecialChar \menuseparator
@@ -32593,11 +32593,17 @@ Allgemein können Referenzen auf (Unter)Ausdrücke in Regexp wie üblich verwend
 \end_inset
 
 , usw..
- Versuchen Sie zum Beispiel mit dem regulären Ausdruck 
-\begin_inset Formula $([a-z]+)[[:blank:]]\backslash1$
+ Versuchen Sie zum Beispiel mit dem regulären Ausdruck
+\begin_inset Newline newline
 \end_inset
 
- zu suchen, um Wortwiederholungen zu finden, falls es welche gibt.
+[[:space:]]([[:alpha:]]+)[[:space:]]
+\backslash
+1[[:space:]]
+\begin_inset Newline newline
+\end_inset
+
+zu suchen, um Wortwiederholungen zu finden, falls es welche gibt.
 \end_layout
 
 \begin_layout Standard
@@ -34795,7 +34801,7 @@ kdeprintfax
 \family default
  senden.
  Das voreingestellte Format der gesendeten Datei ist PostScript.
- Das Format kann in LyXs Grundeinstellungen, wie in in Abschnitt
+ Das Format kann in LyXs Grundeinstellungen, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
