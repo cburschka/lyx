@@ -154,6 +154,7 @@ int const LYX_FORMAT = LYX_FORMAT_TEX2LYX;
 
 /// used modules
 LayoutModuleList used_modules;
+vector<string> preloaded_modules;
 
 
 void convertArgs(string const & o1, bool o2, vector<ArgumentType> & arguments)
@@ -234,28 +235,16 @@ InsetLayout const * findInsetLayoutWithoutModule(TextClass const & textclass,
 }
 
 
-bool checkModule(string const & name, bool command)
+namespace {
+
+typedef map<string, DocumentClassPtr> ModuleMap;
+ModuleMap modules;
+void initModules()
 {
-	// Cache to avoid slowdown by repated searches
-	static set<string> failed[2];
-
-	// Only add the module if the command was actually defined in the LyX preamble
-	if (command) {
-		if (possible_textclass_commands.find('\\' + name) == possible_textclass_commands.end())
-			return false;
-	} else {
-		if (possible_textclass_environments.find(name) == possible_textclass_environments.end())
-			return false;
-	}
-	if (failed[command].find(name) != failed[command].end())
-		return false;
-
 	// Create list of dummy document classes if not already done.
 	// This is needed since a module cannot be read on its own, only as
 	// part of a document class.
 	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
-	typedef map<string, DocumentClassPtr > ModuleMap;
-	static ModuleMap modules;
 	static bool init = true;
 	if (init) {
 		baseClass.load();
@@ -272,6 +261,49 @@ bool checkModule(string const & name, bool command)
 		}
 		init = false;
 	}
+}
+
+
+bool addModule(string const & module)
+{
+	initModules();
+	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
+	if (!used_modules.moduleCanBeAdded(module, &baseClass))
+		return false;
+	FileName layout_file = libFileSearch("layouts", module, "module");
+	if (textclass.read(layout_file, TextClass::MODULE)) {
+		used_modules.push_back(module);
+		// speed up further searches:
+		// the module does not need to be checked anymore.
+		ModuleMap::iterator const it = modules.find(module);
+		if (it != modules.end())
+			modules.erase(it);
+		return true;
+	}
+	return false;
+}
+
+}
+
+
+bool checkModule(string const & name, bool command)
+{
+	// Cache to avoid slowdown by repated searches
+	static set<string> failed[2];
+
+	// Only add the module if the command was actually defined in the LyX preamble
+	if (command) {
+		if (possible_textclass_commands.find('\\' + name) == possible_textclass_commands.end())
+			return false;
+	} else {
+		if (possible_textclass_environments.find(name) == possible_textclass_environments.end())
+			return false;
+	}
+	if (failed[command].find(name) != failed[command].end())
+		return false;
+
+	initModules();
+	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
 
 	// Try to find a module that defines the command.
 	// Only add it if the definition can be found in the preamble of the
@@ -289,7 +321,7 @@ bool checkModule(string const & name, bool command)
 			continue;
 		if (findInsetLayoutWithoutModule(textclass, name, command))
 			continue;
-		DocumentClassConstPtr  c = it->second;
+		DocumentClassConstPtr c = it->second;
 		Layout const * layout = findLayoutWithoutModule(*c, name, command);
 		InsetLayout const * insetlayout = layout ? 0 :
 			findInsetLayoutWithoutModule(*c, name, command);
@@ -459,6 +491,7 @@ int parse_help(string const &, string const &)
 	cerr << "Usage: tex2lyx [options] infile.tex [outfile.lyx]\n"
 		"Options:\n"
 		"\t-c textclass       Declare the textclass.\n"
+		"\t-m mod1[,mod2...]  Load the given modules.\n"
 		"\t-copyfiles         Copy all included files to the directory of outfile.lyx.\n"
 		"\t-e encoding        Set the default encoding (latex name).\n"
 		"\t-f                 Force overwrite of .lyx files.\n"
@@ -507,6 +540,15 @@ int parse_class(string const & arg, string const &)
 	if (arg.empty())
 		error_message("Missing textclass string after -c switch");
 	documentclass = arg;
+	return 1;
+}
+
+
+int parse_module(string const & arg, string const &)
+{
+	if (arg.empty())
+		error_message("Missing modules string after -m switch");
+	split(arg, preloaded_modules, ',');
 	return 1;
 }
 
@@ -599,6 +641,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-version"] = parse_version;
 	cmdmap["--version"] = parse_version;
 	cmdmap["-c"] = parse_class;
+	cmdmap["-m"] = parse_module;
 	cmdmap["-e"] = parse_encoding;
 	cmdmap["-f"] = parse_force;
 	cmdmap["-s"] = parse_syntaxfile;
@@ -713,6 +756,21 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	//p.dump();
 
 	preamble.parse(p, documentclass, textclass);
+
+	// Load preloaded modules.
+	// This needs to be done after the preamble is parsed, since the text
+	// class may not be known before. It neds to be done before parsing
+	// body, since otherwise the commands/environments provided by the
+	// modules would be parsed as ERT.
+	for (size_t i = 0; i < preloaded_modules.size(); ++i) {
+		if (!addModule(preloaded_modules[i])) {
+			cerr << "Error: Could not load module \""
+			     << preloaded_modules[i] << "\"." << endl;
+			return false;
+		}
+	}
+	// Ensure that the modules are not loaded again for included files
+	preloaded_modules.clear();
 
 	active_environments.push_back("document");
 	Context context(true, textclass);

@@ -21,6 +21,7 @@ options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 [ \fB\-f\fR ] [ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ]
+[\ \fB\-m\fR \fImodule1\fR[,\fImodule2\fR...]]
 [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [ \fB\-skipchildren\fR ] [
 \fB\-roundtrip\fR ] [ \fB\-copyfiles\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
 .\" .PP
@@ -40,6 +41,13 @@ This option is needed if the input file is a LaTeX fragment, with no preamble
 matter or \f(CW\ebegin{document}\fR command. LyX files created by
 \fBtex2lyx\fR from partial files can be included in an existing LyX file using
 the \*[lq]Include LyX File\*[rq] command from LyX's Insert menu.
+.TP
+.BI \-m
+Module. Load the given modules. This is useful if \fBtex2lyx\fR does not
+automatically detect a given module, but you know the modules that provide
+some commands or environments that are used in the imported file. The modules
+are loaded in the given order. If a module \fIfoo\fR depends on a module
+\fIbar\fR, \fIbar\fR must be given before \fIfoo\fR.
 .TP
 .BI \-f
 Force. \fBtex2lyx\fR will not run if the .lyx file it would generate already exists.
