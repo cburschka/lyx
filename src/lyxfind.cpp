@@ -240,12 +240,12 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
 			findOne(bv, searchstr, case_sens, whole, forward);
-			return pair<bool, int>(true, 0);
+			return make_pair(true, 0);
 		}
 		// empty search string
 		if (!cur.inTexted())
 			// bail in math
-			return pair<bool, int>(false, 0);
+			return make_pair(false, 0);
 		// select current word and treat it as the search string
 		cur.innerText()->selectWord(cur, WHOLE_WORD);
 		searchstr = cur.selectionAsString(false);
@@ -254,7 +254,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// if we still don't have a search string, report the error
 	// and abort.
 	if (!searchAllowed(searchstr))
-		return pair<bool, int>(false, 0);
+		return make_pair(false, 0);
 	
 	bool have_selection = cur.selection();
 	docstring const selected = cur.selectionAsString(false);
@@ -267,13 +267,13 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// just find the search word
 	if (!have_selection || !match) {
 		findOne(bv, searchstr, case_sens, whole, forward);
-		return pair<bool, int>(true, 0);
+		return make_pair(true, 0);
 	}
 
 	// we're now actually ready to replace. if the buffer is
 	// read-only, we can't, though.
 	if (bv->buffer().isReadonly())
-		return pair<bool, int>(false, 0);
+		return make_pair(false, 0);
 
 	cap::replaceSelectionWithString(cur, replacestr);
 	if (forward) {
@@ -283,7 +283,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	if (findnext)
 		findOne(bv, searchstr, case_sens, whole, forward, false);
 
-	return pair<bool, int>(true, 1);
+	return make_pair(true, 1);
 }
 
 } // namespace anon
