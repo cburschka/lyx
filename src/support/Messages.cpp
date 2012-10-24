@@ -119,7 +119,7 @@ bool Messages::available(string const & c)
 	// this loops at most twice
 	while (true) {
 		string const filen = locale_dir + "/" + code 
-			+ "/LC_MESSAGES/"PACKAGE".mo";
+			+ "/LC_MESSAGES/" PACKAGE ".mo";
 		if (FileName(filen).isReadableFile())
 			return true;
 		if (contains(code, '_'))
