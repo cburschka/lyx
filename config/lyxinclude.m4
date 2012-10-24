@@ -232,6 +232,10 @@ AC_ARG_ENABLE(pch,
 	enable_pch=no;)
 lyx_pch_comp=no
 
+AC_ARG_ENABLE(cxx11,
+  AC_HELP_STRING([--enable-cxx11],[enable C++11 mode]),,
+  enable_cxx11=no;)
+
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
   [AS_CASE([$build_type], [dev*|pre*], [enable_assertions=yes],
@@ -305,6 +309,18 @@ if test x$GXX = xyes; then
 	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
     esac
+  fi
+  if test x$enable_cxx11 = xyes ; then
+      case $gxx_version in
+	  4.3*|4.4*|4.5*|4.6*)
+	      lyx_flags="$lyx_flags c++11-mode"
+	      CXXFLAGS="-std=gnu++0x $CXXFLAGS"
+	      ;;
+	  4.7*|4.8*)
+	      lyx_flags="$lyx_flags c++11-mode"
+	      CXXFLAGS="-std=gnu++11 $CXXFLAGS"
+	      ;;
+      esac
   fi
 fi
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
