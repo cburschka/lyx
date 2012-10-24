@@ -997,6 +997,16 @@ int main(int argc, char * argv[])
 			return EXIT_SUCCESS;
 	} else {
 		masterFilePathLyX = onlyPath(outfilename);
+		if (copy_files) {
+			FileName const path(masterFilePathLyX);
+			if (!path.isDirectory()) {
+				if (!path.createPath()) {
+					cerr << "Warning: Could not create directory for file `"
+					     << masterFilePathLyX << "´." << endl;
+					return EXIT_FAILURE;
+				}
+			}
+		}
 		if (roundtrip) {
 			if (tex2tex(infilename, FileName(outfilename), default_encoding))
 				return EXIT_SUCCESS;
