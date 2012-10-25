@@ -26,7 +26,20 @@ file(GLOB_RECURSE frontend_qt4_images_png      ${TOP_SRC_DIR}/lib/images/*.png)
 file(GLOB_RECURSE frontend_qt4_images_gif      ${TOP_SRC_DIR}/lib/images/*.gif)
 set(resource_name ${CMAKE_CURRENT_BINARY_DIR}/Resources.qrc)
 set(frontend_qt4_images ${frontend_qt4_images_png} ${frontend_qt4_images_gif})
-lyx_qt_resources_file(${resource_name} "${TOP_SRC_DIR}/lib/" frontend_qt4_images)
+
+#lyx_qt_resources_file(${resource_name} "${TOP_SRC_DIR}/lib/" frontend_qt4_images)
+
+add_custom_command(
+	OUTPUT	${resource_name}
+	COMMAND ${CMAKE_COMMAND}
+		-DIMAGES_DIR=${TOP_SRC_DIR}/lib/images
+		-DRESOURCE_NAME=${resource_name}
+		-DMAPPED_DIR=${TOP_SRC_DIR}/lib/
+		-P ${TOP_SRC_DIR}/development/cmake/modules/LyXCreateImagesResource.cmake
+	)
+
+add_custom_target(Resources.qrc DEPENDS ${resource_name})
+
 qt4_add_resources(resource_files ${resource_name})
 
 
