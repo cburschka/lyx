@@ -24,11 +24,10 @@
 #  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# To call this script, one has to proved following parameters
+# To call this script, one has to provide following parameters
 # IMAGES_DIR                # root for the directory-tree for .png and .git image files 
 # RESOURCE_NAME             # full path of the resulting resource-file
-# MAPPED_DIR                # Path-prefix to be removed from the file names
-# -P ${TOP_SRC_DIR}/development/cmake/modules/LyXCreateImagesResource.cmake
+# MAPPED_DIR                # Path-prefix to be removed from the file name entries
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
@@ -37,8 +36,6 @@ file(GLOB_RECURSE images_gif      ${IMAGES_DIR}/*.gif)
 
 set(images ${images_png} ${images_gif})
 set(resource_name ${RESOURCE_NAME})
-
-#lyx_qt_resources_file(${resource_name} "${MAPPED_DIR}" frontend_qt4_images)
 
 message(STATUS "Generating ${resource_name}")
 
