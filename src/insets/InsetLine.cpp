@@ -118,7 +118,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// set a minimal width
 	int const minw = (dim.wid < 0) ? 24 : 4;
-	dim.wid = max(minw, max(dim.wid, -dim.wid));
+	dim.wid = max(minw, abs(dim.wid));
 
 	Length height = Length(to_ascii(getParam("height")));
 	height_ = height.inPixels(max_width, fm.width(char_type('M')));
