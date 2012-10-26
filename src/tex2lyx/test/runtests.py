@@ -46,8 +46,8 @@ def main(argv):
         outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
 
     files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
-             'box-color-size-space-align.tex', 'CJK.tex', \
-             'XeTeX-polyglossia.tex']
+             'test-modules.tex', 'box-color-size-space-align.tex', \
+             'CJK.tex', 'XeTeX-polyglossia.tex']
 
     errors = []
     overwrite = (outputdir == inputdir)

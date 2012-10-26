@@ -106,6 +106,8 @@ void add_known_command(std::string const & command, std::string const & o1,
 extern void add_known_environment(std::string const & environment,
 	std::string const & o1, bool o2, docstring const & beg,
 	docstring const & end);
+extern void add_known_theorem(std::string const & theorem,
+	std::string const & o1, bool o2, docstring const & definition);
 extern Layout const * findLayoutWithoutModule(TextClass const & textclass,
 	std::string const & name, bool command);
 extern InsetLayout const * findInsetLayoutWithoutModule(
@@ -164,6 +166,8 @@ extern CommandMap known_math_environments;
 extern FullCommandMap possible_textclass_commands;
 /// Environments that might be defined by the document class or modules
 extern FullEnvironmentMap possible_textclass_environments;
+/// Theorems that might be defined by the document class or modules
+extern FullCommandMap possible_textclass_theorems;
 ///
 extern bool noweb_mode;
 /// Did we recognize any pdflatex-only construct?

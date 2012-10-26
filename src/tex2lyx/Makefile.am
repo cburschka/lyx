@@ -28,6 +28,7 @@ TEST_FILES = \
 	test/foo.png \
 	test/test-insets.tex \
 	test/test.ltx \
+	test/test-modules.tex \
 	test/test-structure.tex \
 	test/XeTeX-polyglossia.tex \
 	test/xfigtest.fig \

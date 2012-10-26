@@ -1428,6 +1428,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		}
 
+		else if (t.cs() == "newtheorem") {
+			string const name = p.getArg('{', '}');
+			string const opt1 = p.getFullOpt();
+			string const opt2 = p.getFullOpt();
+			string const body = p.verbatim_item();
+			string const opt3 = p.getFullOpt();
+
+			add_known_theorem(name, opt1, !opt2.empty(),
+				from_utf8("\\newtheorem{" + name + '}' +
+				          opt1 + opt2 + '{' + body + '}' + opt3));
+
+			if (!in_lyx_preamble)
+				h_preamble << "\\newtheorem{" << name << '}'
+				           << opt1 << opt2 << '{' << '}' << opt3;
+		}
+
 		else if (t.cs() == "def") {
 			string name = p.get_token().cs();
 			// In fact, name may be more than the name:

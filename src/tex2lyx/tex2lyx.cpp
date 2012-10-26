@@ -36,6 +36,7 @@
 #include "support/Systemcall.h"
 
 #include <cstdlib>
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -150,6 +151,7 @@ CommandMap known_environments;
 CommandMap known_math_environments;
 FullCommandMap possible_textclass_commands;
 FullEnvironmentMap possible_textclass_environments;
+FullCommandMap possible_textclass_theorems;
 int const LYX_FORMAT = LYX_FORMAT_TEX2LYX;
 
 /// used modules
@@ -206,6 +208,17 @@ void add_known_environment(string const & environment, string const & o1,
 }
 
 
+void add_known_theorem(string const & theorem, string const & o1,
+                       bool o2, docstring const & definition)
+{
+	vector<ArgumentType> arguments;
+	convertArgs(o1, o2, arguments);
+	if (!definition.empty())
+		possible_textclass_theorems[theorem] =
+			FullCommand(arguments, definition);
+}
+
+
 Layout const * findLayoutWithoutModule(TextClass const & textclass,
                                        string const & name, bool command)
 {
@@ -239,6 +252,69 @@ namespace {
 
 typedef map<string, DocumentClassPtr> ModuleMap;
 ModuleMap modules;
+
+
+bool addModule(string const module, LayoutFile const & baseClass, LayoutModuleList & m, vector<string> & visited)
+{
+	// avoid endless loop for circular dependency
+	vector<string>::const_iterator const vb = visited.begin();
+	vector<string>::const_iterator const ve = visited.end();
+	if (find(vb, ve, module) != ve) {
+		cerr << "Circular dependency detected for module " << module << '\n';
+		return false;
+	}
+	LyXModule const * const lm = theModuleList[module];
+	if (!lm) {
+		cerr << "Could not find module " << module << " in module list.\n";
+		return false;
+	}
+	bool foundone = false;
+	LayoutModuleList::const_iterator const exclmodstart = baseClass.excludedModules().begin();
+	LayoutModuleList::const_iterator const exclmodend = baseClass.excludedModules().end();
+	LayoutModuleList::const_iterator const provmodstart = baseClass.providedModules().begin();
+	LayoutModuleList::const_iterator const provmodend = baseClass.providedModules().end();
+	vector<string> const reqs = lm->getRequiredModules();
+	if (reqs.empty())
+		foundone = true;
+	else {
+		LayoutModuleList::const_iterator mit = m.begin();
+		LayoutModuleList::const_iterator men = m.end();
+		vector<string>::const_iterator rit = reqs.begin();
+		vector<string>::const_iterator ren = reqs.end();
+		for (; rit != ren; ++rit) {
+			if (find(mit, men, *rit) != men) {
+				foundone = true;
+				break;
+			}
+			if (find(provmodstart, provmodend, *rit) != provmodend) {
+				foundone = true;
+				break;
+			}
+		}
+		if (!foundone) {
+			visited.push_back(module);
+			for (rit = reqs.begin(); rit != ren; ++rit) {
+				if (find(exclmodstart, exclmodend, *rit) == exclmodend) {
+					if (addModule(*rit, baseClass, m, visited)) {
+						foundone = true;
+						break;
+					}
+				}
+			}
+			visited.pop_back();
+		}
+	}
+	if (!foundone) {
+		cerr << "Could not add required modules for " << module << ".\n";
+		return false;
+	}
+	if (!m.moduleCanBeAdded(module, &baseClass))
+		return false;
+	m.push_back(module);
+	return true;
+}
+
+
 void initModules()
 {
 	// Create list of dummy document classes if not already done.
@@ -253,10 +329,9 @@ void initModules()
 		for (; it != end; ++it) {
 			string const module = it->getID();
 			LayoutModuleList m;
-			// FIXME this excludes all modules that depend on another one
-			if (!m.moduleCanBeAdded(module, &baseClass))
+			vector<string> v;
+			if (!addModule(module, baseClass, m, v))
 				continue;
-			m.push_back(module);
 			modules[module] = getDocumentClass(baseClass, m);
 		}
 		init = false;
@@ -292,12 +367,17 @@ bool checkModule(string const & name, bool command)
 	static set<string> failed[2];
 
 	// Only add the module if the command was actually defined in the LyX preamble
+	bool theorem = false;
 	if (command) {
 		if (possible_textclass_commands.find('\\' + name) == possible_textclass_commands.end())
 			return false;
 	} else {
-		if (possible_textclass_environments.find(name) == possible_textclass_environments.end())
-			return false;
+		if (possible_textclass_environments.find(name) == possible_textclass_environments.end()) {
+			if (possible_textclass_theorems.find(name) != possible_textclass_theorems.end())
+				theorem = true;
+			else
+				return false;
+		}
 	}
 	if (failed[command].find(name) != failed[command].end())
 		return false;
@@ -315,7 +395,7 @@ bool checkModule(string const & name, bool command)
 	ModuleMap::iterator const end = modules.end();
 	for (ModuleMap::iterator it = modules.begin(); it != end; ++it) {
 		string const module = it->first;
-		if (!used_modules.moduleCanBeAdded(module, &baseClass))
+		if (used_modules.moduleConflicts(module, &baseClass))
 			continue;
 		if (findLayoutWithoutModule(textclass, name, command))
 			continue;
@@ -337,6 +417,11 @@ bool checkModule(string const & name, bool command)
 			FullCommand const & cmd =
 				possible_textclass_commands['\\' + name];
 			if (preamble.find(cmd.def) != docstring::npos)
+				add = true;
+		} else if (theorem) {
+			FullCommand const & thm =
+				possible_textclass_theorems[name];
+			if (preamble.find(thm.def) != docstring::npos)
 				add = true;
 		} else {
 			FullEnvironment const & env =
@@ -756,6 +841,12 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 	//p.dump();
 
 	preamble.parse(p, documentclass, textclass);
+	list<string> removed_modules;
+	LayoutFile const & baseClass = LayoutFileList::get()[textclass.name()];
+	if (!used_modules.adaptToBaseClass(&baseClass, removed_modules)) {
+		cerr << "Could not load default modules for text class." << endl;
+		return false;
+	}
 
 	// Load preloaded modules.
 	// This needs to be done after the preamble is parsed, since the text
@@ -795,7 +886,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 			preamble.addModule(*it);
 	}
 	if (!preamble.writeLyXHeader(os, !active_environments.empty())) {
-		cerr << "Could write LyX file header." << endl;
+		cerr << "Could not write LyX file header." << endl;
 		return false;
 	}
 
