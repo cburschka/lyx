@@ -231,7 +231,7 @@ GuiViewSource::GuiViewSource(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "view-source", qt_("LaTeX Source"), area, flags)
 {
-	widget_ = new ViewSourceWidget();
+	widget_ = new ViewSourceWidget;
 	setWidget(widget_);
 }
 

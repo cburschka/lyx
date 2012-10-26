@@ -86,7 +86,7 @@ PanelStack::PanelStack(QWidget * parent)
 
 	// Create the output layout, horizontal plus a VBox on the left with the search
 	// box and the tree
-	QVBoxLayout * left_layout = new QVBoxLayout();
+	QVBoxLayout * left_layout = new QVBoxLayout;
 	left_layout->addWidget(search_, 0);
 	left_layout->addWidget(list_, 1);
 

@@ -37,7 +37,7 @@ WordList * theWordList(Language const & lang)
 	if (it != theGlobalWordList.end())
 		return it->second;
 	else
-		theGlobalWordList[lang] = new WordList();
+		theGlobalWordList[lang] = new WordList;
 	return theGlobalWordList[lang];
 }
 

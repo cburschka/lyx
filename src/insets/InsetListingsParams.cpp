@@ -757,7 +757,7 @@ void InsetListingsParams::addParam(string const & key,
 	// check onoff flag
 	// onoff parameter with value false
 	if (!par_validator)
-		par_validator = new ParValidator();
+		par_validator = new ParValidator;
 	if (par_validator->onoff(key) && (value == "false" || value == "{false}"))
 		params_[keyname] = string();
 	// if the parameter is surrounded with {}, good
@@ -884,7 +884,7 @@ docstring InsetListingsParams::validate() const
 {
 	docstring msg;
 	if (!par_validator)
-		par_validator = new ParValidator();
+		par_validator = new ParValidator;
 	for (map<string, string>::const_iterator it = params_.begin();
 		it != params_.end(); ++it) {
 		msg = par_validator->validate(it->first, it->second);

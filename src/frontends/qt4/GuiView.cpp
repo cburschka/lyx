@@ -238,7 +238,7 @@ struct GuiView::GuiViewPrivate
 		// TODO cleanup, remove the singleton, handle multiple Windows?
 		progress_ = ProgressInterface::instance();
 		if (!dynamic_cast<GuiProgress*>(progress_)) {
-			progress_ = new GuiProgress();  // TODO who deletes it
+			progress_ = new GuiProgress;  // TODO who deletes it
 			ProgressInterface::setInstance(progress_);
 		}
 		QObject::connect(

@@ -737,7 +737,7 @@ struct GuiApplication::Private
 	{
 	#ifdef Q_WS_WIN
 		/// WMF Mime handler for Windows clipboard.
-		wmf_mime_ = new QWindowsMimeMetafile();
+		wmf_mime_ = new QWindowsMimeMetafile;
 	#endif
 		initKeySequences(&theTopLevelKeymap());
 	}
@@ -2145,7 +2145,7 @@ void GuiApplication::execBatchCommands()
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
 	// This must be done after the session was recovered to know the "last files".
-	d->global_menubar_ = new GlobalMenuBar();
+	d->global_menubar_ = new GlobalMenuBar;
 	d->menus_.fillMenuBar(d->global_menubar_, 0, true);
 #endif
 
