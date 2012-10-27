@@ -623,6 +623,7 @@ string escape_for_regex(string s, bool match_latex)
 	return s;
 }
 
+
 /// Wrapper for lyx::regex_replace with simpler interface
 bool regex_replace(string const & s, string & t, string const & searchstr,
 		   string const & replacestr)
@@ -636,6 +637,7 @@ bool regex_replace(string const & s, string & t, string const & searchstr,
 	t = oss.str();
 	return rv;
 }
+
 
 /** Checks if supplied string segment is well-formed from the standpoint of matching open-closed braces.
  **
@@ -677,6 +679,7 @@ bool braces_match(string::const_iterator const & beg,
 	LYXERR(Debug::FIND, "Braces match as expected");
 	return true;
 }
+
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
  **/
@@ -762,7 +765,8 @@ static docstring buffer_to_latex(Buffer & buffer)
 }
 
 
-static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions const & opt) {
+static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions const & opt)
+{
 	docstring str;
 	if (!opt.ignoreformat) {
 		str = buffer_to_latex(buffer);
@@ -787,7 +791,8 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 
 
 /// Return separation pos between the leading material and the rest
-static size_t identifyLeading(string const & s)  {
+static size_t identifyLeading(string const & s)
+{
 	string t = s;
 	// @TODO Support \item[text]
 	while (regex_replace(t, t, "^\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
@@ -801,7 +806,8 @@ static size_t identifyLeading(string const & s)  {
 
 
 // Remove trailing closure of math, macros and environments, so to catch parts of them.
-static int identifyClosing(string & t) {
+static int identifyClosing(string & t)
+{
 	int open_braces = 0;
 	do {
 		LYXERR(Debug::FIND, "identifyClosing(): t now is '" << t << "'");
@@ -1211,7 +1217,8 @@ int findMostBackwards(DocIterator & cur, MatchStringAdv const & match)
 
 
 /// Finds backwards
-int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
+int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
+{
 	if (! cur)
 		return 0;
 	// Backup of original position
@@ -1290,7 +1297,8 @@ namespace {
 
 
 /** Check if 'len' letters following cursor are all non-lowercase */
-static bool allNonLowercase(DocIterator const & cur, int len) {
+static bool allNonLowercase(DocIterator const & cur, int len)
+{
 	pos_type end_pos = cur.pos() + len;
 	for (pos_type pos = cur.pos(); pos != end_pos; ++pos)
 		if (isLowerCase(cur.paragraph().getChar(pos)))
@@ -1300,7 +1308,8 @@ static bool allNonLowercase(DocIterator const & cur, int len) {
 
 
 /** Check if first letter is upper case and second one is lower case */
-static bool firstUppercase(DocIterator const & cur) {
+static bool firstUppercase(DocIterator const & cur)
+{
 	char_type ch1, ch2;
 	if (cur.pos() >= cur.lastpos() - 1) {
 		LYXERR(Debug::FIND, "No upper-case at cur: " << cur);
@@ -1321,13 +1330,15 @@ static bool firstUppercase(DocIterator const & cur) {
  **
  ** \fixme What to do with possible further paragraphs in replace buffer ?
  **/
-static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase others_case) {
+static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase others_case)
+{
 	ParagraphList::iterator pit = buffer.paragraphs().begin();
 	pos_type right = pos_type(1);
 	pit->changeCase(buffer.params(), pos_type(0), right, first_case);
 	right = pit->size() + 1;
 	pit->changeCase(buffer.params(), right, right, others_case);
 }
+
 } // anon namespace
 
 ///

@@ -265,11 +265,13 @@ bool BufferList::exists(FileName const & fname) const
 
 
 namespace {
+
 struct equivalent_to : public binary_function<FileName, FileName, bool>
 {
 	bool operator()(FileName const & x, FileName const & y) const
 	{ return equivalent(x, y); }
 };
+
 }
 
 

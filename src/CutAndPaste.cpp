@@ -848,6 +848,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
 }
 
+
 namespace {
 
 void copySelectionToStack(Cursor const & cur, CutStack & cutstack)

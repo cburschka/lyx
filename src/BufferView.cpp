@@ -105,6 +105,7 @@ T * getInsetByCode(Cursor const & cur, InsetCode code)
 	return 0;
 }
 
+
 /// Note that comparing contents can only be used for InsetCommand
 bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 	docstring const & contents)

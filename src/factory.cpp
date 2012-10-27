@@ -564,12 +564,15 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		}
 		inset->setBuffer(*buf);
 	} else { 
-		// FIXME This branch should be made to use inset codes as the preceding 
-		// branch does. Unfortunately, that will take some doing. It requires
-		// converting the representation of the insets in LyX files so that they
-		// use the inset names listed in Inset.cpp. Then, as above, the inset names
-		// can be translated to inset codes using insetCode(). And the insets'
-		// write() routines should use insetName() rather than hardcoding it.
+		// FIXME This branch should be made to use inset codes
+		// as the preceding branch does. Unfortunately, that
+		// will take some doing. It requires converting the
+		// representation of the insets in LyX files so that
+		// they use the inset names listed in Inset.cpp. Then,
+		// as above, the inset names can be translated to
+		// inset codes using insetCode(). And the insets'
+		// write() routines should use insetName() rather than
+		// hardcoding it.
 		if (tmptok == "Quotes") {
 			inset.reset(new InsetQuotes(buf));
 		} else if (tmptok == "External") {

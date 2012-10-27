@@ -85,6 +85,7 @@ RGBColor rgbFromHexName(string const & x11hexname)
 	return c;
 }
 
+
 string const outputLaTeXColor(RGBColor const & color)
 {
 	// this routine returns a LaTeX readable color string in the form

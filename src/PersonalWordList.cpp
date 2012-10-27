@@ -92,6 +92,7 @@ void PersonalWordList::save()
 	LYXERR(Debug::FILES, "count of saved items: " << words_.size());
 }
 
+
 bool PersonalWordList::equalwords(docstring const & w1, docstring const & w2) const
 {
 	return w1 == w2;

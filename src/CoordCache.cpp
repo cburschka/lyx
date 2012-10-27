@@ -32,6 +32,7 @@ Point::Point(int x, int y)
 	LASSERT(y <  1000000, /**/);
 }
 
+
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {

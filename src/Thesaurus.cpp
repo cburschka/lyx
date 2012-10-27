@@ -128,9 +128,8 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 			break;
 		}
 	}
-	if (idx.empty()) {
+	if (idx.empty())
 		return make_pair(string(), string());
-	}
 	for (support::FileNameList::const_iterator it = data_files.begin(); it != data_files.end(); ++it) {
 		if (contains(it->onlyFileName(), basename)) {
 			data = it->absFileName();
@@ -150,9 +149,8 @@ pair<string,string> Thesaurus::Private::getThesaurus(docstring const & lang)
 	if (thesaurusAvailable(lang))
 		return make_pair(string(), string());
 
-	if (!thes_path.empty()) {
+	if (!thes_path.empty())
 		result = getThesaurus(thes_path, lang);
-	}
 	if (result.first.empty() || result.second.empty()) {
 		string const sys_path = external_path(addName(lyx::support::package().system_support().absFileName(),dataDirectory())) ;
 		result = getThesaurus(sys_path, lang);
@@ -271,7 +269,8 @@ Thesaurus::Meanings Thesaurus::lookup(WordLangTuple const & wl)
 }
 
 
-Thesaurus::Thesaurus() : d(new Thesaurus::Private)
+Thesaurus::Thesaurus()
+	: d(new Thesaurus::Private)
 {
 }
 

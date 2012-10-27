@@ -98,6 +98,7 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 	return true;
 }
 
+
 bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 {
 	FileName dirname = file.onlyPath();

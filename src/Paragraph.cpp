@@ -69,8 +69,10 @@ using namespace lyx::support;
 namespace lyx {
 
 namespace {
+
 /// Inset identifier (above 0x10ffff, for ucs-4)
 char_type const META_INSET = 0x200001;
+
 }
 
 
@@ -129,7 +131,8 @@ private:
 
 class SpellCheckerState {
 public:
-	SpellCheckerState() {
+	SpellCheckerState()
+	{
 		needs_refresh_ = true;
 		current_change_number_ = 0;
 	}
@@ -209,20 +212,24 @@ public:
 		return empty_;
 	}
 
-	bool needsRefresh() const {
+	bool needsRefresh() const
+	{
 		return needs_refresh_;
 	}
 
-	SpellChecker::ChangeNumber currentChangeNumber() const {
+	SpellChecker::ChangeNumber currentChangeNumber() const
+	{
 		return current_change_number_;
 	}
 
-	void refreshRange(pos_type & first, pos_type & last) const {
+	void refreshRange(pos_type & first, pos_type & last) const
+	{
 		first = refresh_.first;
 		last = refresh_.last;
 	}
 
-	void needsRefresh(pos_type pos) {
+	void needsRefresh(pos_type pos)
+	{
 		if (needs_refresh_ && pos != -1) {
 			if (pos < refresh_.first)
 				refresh_.first = pos;
@@ -237,13 +244,13 @@ public:
 		needs_refresh_ = pos != -1;
 	}
 
-	void needsCompleteRefresh(SpellChecker::ChangeNumber change_number) {
+	void needsCompleteRefresh(SpellChecker::ChangeNumber change_number)
+	{
 		needs_refresh_ = true;
 		refresh_.first = 0;
 		refresh_.last = -1;
 		current_change_number_ = change_number;
 	}
-
 private:
 	typedef vector<SpellResultRange> Ranges;
 	typedef Ranges::const_iterator RangesIterator;
@@ -384,9 +391,10 @@ public:
 	Language * getSpellLanguage(pos_type const from) const;
 
 	Language * locateSpellRange(pos_type & from, pos_type & to,
-								SkipPositions & skips) const;
+				    SkipPositions & skips) const;
 
-	bool hasSpellerChange() const {
+	bool hasSpellerChange() const
+	{
 		SpellChecker::ChangeNumber speller_change_number = 0;
 		if (theSpellChecker())
 			speller_change_number = theSpellChecker()->changeNumber();
@@ -405,14 +413,16 @@ public:
 		speller_state_.setRange(fp, state);
 	}
 
-	void requestSpellCheck(pos_type pos) {
+	void requestSpellCheck(pos_type pos)
+	{
 		if (pos == -1)
 			speller_state_.needsCompleteRefresh(speller_state_.currentChangeNumber());
 		else
 			speller_state_.needsRefresh(pos);
 	}
 
-	void readySpellCheck() {
+	void readySpellCheck()
+	{
 		speller_state_.needsRefresh(-1);
 	}
 

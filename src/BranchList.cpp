@@ -30,7 +30,9 @@ namespace {
 class BranchNamesEqual : public std::unary_function<Branch, bool>
 {
 public:
-	BranchNamesEqual(docstring const & name) : name_(name) {}
+	BranchNamesEqual(docstring const & name)
+		: name_(name)
+	{}
 
 	bool operator()(Branch const & branch) const
 	{
@@ -39,6 +41,7 @@ public:
 private:
 	docstring name_;
 };
+
 }
 
 

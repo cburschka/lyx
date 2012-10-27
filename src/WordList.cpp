@@ -42,7 +42,8 @@ WordList * theWordList(Language const & lang)
 }
 
 
-void WordList::cleanupWordLists() {
+void WordList::cleanupWordLists()
+{
 	map<Language, WordList *>::const_iterator it = theGlobalWordList.begin();
 	for (; it != theGlobalWordList.end(); ++it)
 		delete it->second;

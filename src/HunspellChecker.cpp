@@ -56,7 +56,7 @@ struct HunspellChecker::Private
 	~Private();
 
 	void cleanCache();
-	void setUserPath(std::string path);
+	void setUserPath(std::string const & path);
 	const string dictPath(int selector);
 	bool haveLanguageFiles(string const & hpath);
 	bool haveDictionary(Language const * lang, string & hpath);
@@ -107,7 +107,7 @@ HunspellChecker::Private::~Private()
 }
 
 
-void HunspellChecker::Private::setUserPath(std::string path)
+void HunspellChecker::Private::setUserPath(std::string const & path)
 {
 	if (user_path_ != lyxrc.hunspelldir_path) {
 		cleanCache();
@@ -167,9 +167,8 @@ const string HunspellChecker::Private::dictPath(int selector)
 
 bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hpath)
 {
-	if (hpath.empty()) {
+	if (hpath.empty())
 		return false;
-	}
 
 	LYXERR(Debug::FILES, "check hunspell path: " << hpath
 				<< " for language " << (lang ? lang->lang() : "NULL" ));
@@ -183,9 +182,8 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hp
 	}
 	// another try with code, '_' replaced by '-'
 	h_path = addName(hpath, subst(lang->code(), '_', '-'));
-	if (!haveLanguageFiles(h_path)) {
+	if (!haveLanguageFiles(h_path))
 		return false;
-	}
 	LYXERR(Debug::FILES, "  found " << h_path);
 	hpath = h_path;
 	return true;
@@ -197,7 +195,7 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang)
 	bool result = false;
 
 	setUserPath(lyxrc.hunspelldir_path);
-	for ( int p = 0; !result && p < maxLookupSelector(); p++ ) {
+	for (int p = 0; !result && p < maxLookupSelector(); ++p) {
 		string lpath = dictPath(p);
 		result = haveDictionary(lang, lpath);
 	}
@@ -213,9 +211,8 @@ Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
 	setUserPath(lyxrc.hunspelldir_path);
 	Spellers::iterator it = spellers_.find(lang->lang());
-	if (it != spellers_.end()) {
+	if (it != spellers_.end())
 		return it->second;
-	}
 	return addSpeller(lang);
 }
 
@@ -239,11 +236,11 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & p
 Hunspell * HunspellChecker::Private::addSpeller(Language const * lang)
 {
 	Hunspell * h = 0;
-	for ( int p = 0; p < maxLookupSelector() && 0 == h; p++ ) {
+	for (int p = 0; p < maxLookupSelector() && 0 == h; ++p) {
 		string lpath = dictPath(p);
 		h = addSpeller(lang, lpath);
 	}
-	if (0 != h) {
+	if (h) {
 		string const encoding = h->get_dic_encoding();
 		PersonalWordList * pd = new PersonalWordList(lang->lang());
 		pd->load();
@@ -265,9 +262,8 @@ int HunspellChecker::Private::numDictionaries() const
 	Spellers::const_iterator it = spellers_.begin();
 	Spellers::const_iterator et = spellers_.end();
 
-	for (; it != et; ++it) {
+	for (; it != et; ++it)
 		result += it->second != 0;
-	}
 	return result;
 }
 
@@ -276,9 +272,9 @@ bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
 {
 	IgnoreList::const_iterator it = ignored_.begin();
 	for (; it != ignored_.end(); ++it) {
-		if ((*it).lang()->code() != wl.lang()->code())
+		if (it->lang()->code() != wl.lang()->code())
 			continue;
-		if ((*it).word() == wl.word())
+		if (it->word() == wl.word())
 			return true;
 	}
 	return false;
@@ -324,9 +320,9 @@ bool HunspellChecker::Private::learned(WordLangTuple const & wl)
 }
 
 
-HunspellChecker::HunspellChecker(): d(new Private)
-{
-}
+HunspellChecker::HunspellChecker()
+	: d(new Private)
+{}
 
 
 HunspellChecker::~HunspellChecker()
@@ -436,7 +432,7 @@ bool HunspellChecker::hasDictionary(Language const * lang) const
 {
 	if (!lang)
 		return false;
-	return (d->haveDictionary(lang));
+	return d->haveDictionary(lang);
 }
 
 

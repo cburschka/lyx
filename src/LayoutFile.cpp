@@ -182,7 +182,8 @@ std::vector<LayoutFileIndex> LayoutFileList::classList() const
 }
 
 
-void LayoutFileList::reset(LayoutFileIndex const & classname) {
+void LayoutFileList::reset(LayoutFileIndex const & classname)
+{
 	LASSERT(haveClass(classname), /**/);
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
@@ -215,6 +216,7 @@ string layoutpost =
 		"End\n";
 	
 }
+
 
 LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 {
@@ -257,8 +259,8 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 }
 
 
-LayoutFileIndex 
-	LayoutFileList::addLocalLayout(string const & textclass, string const & path)
+LayoutFileIndex  LayoutFileList::addLocalLayout(
+	string const & textclass, string const & path)
 {
 	// FIXME  There is a bug here: 4593
 	//
@@ -321,7 +323,8 @@ LayoutFileIndex
 			return textclass;
 		}
 	}
-	// If .layout is not in local directory, or an invalid layout is found, return null
+	// If .layout is not in local directory, or an invalid layout
+	// is found, return null
 	return string();
 }
 

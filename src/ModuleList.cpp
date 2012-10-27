@@ -46,7 +46,8 @@ LyXModule::LyXModule(string const & n, string const & i,
 }
 
 
-vector<string> LyXModule::prerequisites() const {
+vector<string> LyXModule::prerequisites() const
+{
 #ifdef TEX2LYX
 	return vector<string>();
 #else
@@ -57,7 +58,8 @@ vector<string> LyXModule::prerequisites() const {
 }
 
 
-bool LyXModule::isAvailable() const {
+bool LyXModule::isAvailable() const
+{
 #ifdef TEX2LYX
 	return true;
 #else
@@ -115,8 +117,7 @@ bool LyXModule::areCompatible(string const & mod1, string const & mod2)
 
 
 // used when sorting the module list.
-class ModuleSorter
-{
+class ModuleSorter {
 public:
 	int operator()(LyXModule const & lm1, LyXModule const & lm2) const
 	{
@@ -264,6 +265,7 @@ LyXModule const * ModuleList::operator[](string const & str) const
 		}
 	return 0;
 }
+
 
 LyXModule * ModuleList::operator[](string const & str)
 {

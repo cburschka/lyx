@@ -2127,9 +2127,12 @@ bool BufferParams::isExportable(string const & format) const
 
 
 namespace {
-bool formatSorter(Format const * lhs, Format const * rhs) {
+
+bool formatSorter(Format const * lhs, Format const * rhs)
+{
 	return _(lhs->prettyname()) < _(rhs->prettyname());
 }
+
 }
 
 

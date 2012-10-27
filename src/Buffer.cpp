@@ -282,7 +282,8 @@ public:
 
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
-	Buffer const * parent() const {
+	Buffer const * parent() const
+	{
 		// ignore_parent temporarily "orphans" a buffer
 		// (e.g. if a child is compiled standalone)
 		if (ignore_parent)
@@ -299,7 +300,8 @@ public:
 	}
 
 	///
-	void setParent(Buffer const * pb) {
+	void setParent(Buffer const * pb)
+	{
 		if (parent_buffer == pb)
 			// nothing to do
 			return;
@@ -324,10 +326,14 @@ public:
 	/// \p from initial position
 	/// \p to points to the end position
 	void updateStatistics(DocIterator & from, DocIterator & to,
-						  bool skipNoOutput = true);
+			      bool skipNoOutput = true);
 	/// statistics accessor functions
-	int wordCount() const { return word_count_; }
-	int charCount(bool with_blanks) const {
+	int wordCount() const
+	{
+		return word_count_;
+	}
+	int charCount(bool with_blanks) const
+	{
 		return char_count_
 		+ (with_blanks ? blank_count_ : 0);
 	}

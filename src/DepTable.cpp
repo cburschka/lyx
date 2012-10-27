@@ -108,7 +108,8 @@ bool DepTable::sumchange() const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (cit->second.changed()) return true;
+		if (cit->second.changed())
+			return true;
 	}
 	return false;
 }
@@ -144,9 +145,8 @@ bool DepTable::ext_exist(string const & ext) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (suffixIs(cit->first.absFileName(), ext)) {
+		if (suffixIs(cit->first.absFileName(), ext))
 			return true;
-		}
 	}
 	return false;
 }

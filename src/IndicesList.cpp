@@ -30,7 +30,9 @@ namespace {
 class IndexNamesEqual : public std::unary_function<Index, bool>
 {
 public:
-	IndexNamesEqual(docstring const & name) : name_(name) {}
+	IndexNamesEqual(docstring const & name)
+		: name_(name)
+	{}
 
 	bool operator()(Index const & index) const
 	{
@@ -44,7 +46,9 @@ private:
 class IndexHasShortcut : public std::unary_function<Index, bool>
 {
 public:
-	IndexHasShortcut(docstring const & shortcut) : shortc_(shortcut) {}
+	IndexHasShortcut(docstring const & shortcut)
+		: shortc_(shortcut)
+	{}
 
 	bool operator()(Index const & index) const
 	{

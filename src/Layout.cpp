@@ -911,7 +911,8 @@ string const & Layout::htmllabelattr() const
 }
 
 
-docstring Layout::htmlstyle() const {
+docstring Layout::htmlstyle() const
+{
 	if (!htmlstyle_.empty() && !htmlforcecss_)
 		return htmlstyle_;
 	if (htmldefaultstyle_.empty()) 
@@ -951,15 +952,19 @@ string Layout::defaultCSSClass() const
 
 
 namespace {
-	string makeMarginValue(char const * side, double d) {
-		ostringstream os;
-		os << "margin-" << side << ": " << d << "ex;\n";
-		return os.str();
-	}
+
+string makeMarginValue(char const * side, double d)
+{
+	ostringstream os;
+	os << "margin-" << side << ": " << d << "ex;\n";
+	return os.str();
+}
+
 }
 
 
-void Layout::makeDefaultCSS() const {
+void Layout::makeDefaultCSS() const
+{
 	// this never needs to be redone, since reloading layouts will
 	// wipe out what we did before.
 	if (!htmldefaultstyle_.empty()) 

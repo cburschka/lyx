@@ -55,9 +55,9 @@ AppleSpellChecker::Private::~Private()
 }
 
 
-AppleSpellChecker::AppleSpellChecker(): d(new Private)
-{
-}
+AppleSpellChecker::AppleSpellChecker()
+	: d(new Private)
+{}
 
 
 AppleSpellChecker::~AppleSpellChecker()

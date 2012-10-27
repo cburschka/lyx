@@ -152,7 +152,7 @@ void CmdDef::release(string const & name)
 
 
 CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name, 
-										  string const & def)
+					  string const & def)
 {
 	string const name2 = trim(name);
 

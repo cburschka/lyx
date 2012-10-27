@@ -59,7 +59,8 @@ string const token_socket_format("$$a");
 class FormatNamesEqual : public unary_function<Format, bool> {
 public:
 	FormatNamesEqual(string const & name)
-		: name_(name) {}
+		: name_(name)
+	{}
 	bool operator()(Format const & f) const
 	{
 		return f.name() == name_;
@@ -72,7 +73,8 @@ private:
 class FormatExtensionsEqual : public unary_function<Format, bool> {
 public:
 	FormatExtensionsEqual(string const & extension)
-		: extension_(extension) {}
+		: extension_(extension)
+	{}
 	bool operator()(Format const & f) const
 	{
 		return f.hasExtension(extension_);
@@ -85,7 +87,8 @@ private:
 class FormatMimeEqual : public unary_function<Format, bool> {
 public:
 	FormatMimeEqual(string const & mime)
-		: mime_(mime) {}
+		: mime_(mime)
+	{}
 	bool operator()(Format const & f) const
 	{
 		// The test for empty mime strings is needed since we allow
@@ -100,7 +103,8 @@ private:
 class FormatPrettyNameEqual : public unary_function<Format, bool> {
 public:
 	FormatPrettyNameEqual(string const & prettyname)
-		: prettyname_(prettyname) {}
+		: prettyname_(prettyname)
+	{}
 	bool operator()(Format const & f) const
 	{
 		return f.prettyname() == prettyname_;
@@ -763,7 +767,9 @@ string const Formats::extensions(string const & name) const
 
 
 namespace {
+
 typedef Translator<OutputParams::FLAVOR, string> FlavorTranslator;
+
 
 FlavorTranslator initFlavorTranslator()
 {
@@ -784,6 +790,7 @@ FlavorTranslator const & flavorTranslator()
 	static FlavorTranslator translator = initFlavorTranslator();
 	return translator;
 }
+
 }
 
 

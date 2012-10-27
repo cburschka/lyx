@@ -47,6 +47,7 @@ char const * const unit_name_gui[] = {
 	N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
 	N_("Text Height %"), N_("Page Height %"), "" };
 
+
 Length::UNIT unitFromString(string const & data)
 {
 	int i = 0;
@@ -207,6 +208,7 @@ LaTeXLength table[] = {
 
 
 } // namespace anon
+
 
 const char * stringFromUnit(int unit)
 {

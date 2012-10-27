@@ -40,7 +40,6 @@ string const sec_lastcommands = "[last commands]";
 
 namespace lyx {
 
-
 LastFilesSection::LastFilesSection(unsigned int num) :
 	default_num_last_files(4),
 	absolute_max_last_files(100)

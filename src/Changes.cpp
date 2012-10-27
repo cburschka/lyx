@@ -340,6 +340,7 @@ void Changes::merge()
 
 
 namespace {
+
 docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 			 docstring const & chgTime,
 			 OutputParams const & runparams)
@@ -379,6 +380,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 
 	return ods.str();
 }
+
 } //namespace anon
 
 

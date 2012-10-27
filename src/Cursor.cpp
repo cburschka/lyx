@@ -214,9 +214,10 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	for ( ; it != et; it.forwardPos()) {
 		// avoid invalid nesting when selecting
 		if (bv.cursorStatus(it) == CUR_INSIDE
-				&& (!cur.selection() || positionable(it, cur.realAnchor()))) {
-			// If this function is ever used again, check whether this
-			// is the same as "bv.getPos(it, false)" with boundary = false.
+		    && (!cur.selection() || positionable(it, cur.realAnchor()))) {
+			// If this function is ever used again, check
+			// whether this is the same as "bv.getPos(it,
+			// false)" with boundary = false.
 			Point p = bv.getPos(it);
 			int xo = p.x_;
 			int yo = p.y_;
@@ -638,8 +639,9 @@ bool Cursor::posVisRight(bool skip_inset)
 	new_cur.boundary(false);
 	if (!skip_inset &&
 		text()->checkAndActivateInsetVisual(new_cur, right_pos >= pos(), false)) {
-		// we actually move the cursor at the end of this function, for now
-		// we just keep track of the new position in new_cur...
+		// we actually move the cursor at the end of this
+		// function, for now we just keep track of the new
+		// position in new_cur...
 		LYXERR(Debug::RTL, "entering inset at: " << new_cur.pos());
 	}
 
@@ -652,8 +654,9 @@ bool Cursor::posVisRight(bool skip_inset)
 			return false;
 		}
 		
-		// we actually move the cursor at the end of this function, for now 
-		// just keep track of the new position in new_cur...
+		// we actually move the cursor at the end of this
+		// function, for now just keep track of the new
+		// position in new_cur...
 		LYXERR(Debug::RTL, "right edge, moving: " << int(new_cur.pit()) << "," 
 			<< int(new_cur.pos()) << "," << (new_cur.boundary() ? 1 : 0));
 
@@ -661,28 +664,33 @@ bool Cursor::posVisRight(bool skip_inset)
 	// normal movement to the right
 	else {
 		new_cur = *this;
-		// Recall, if the cursor is at position 'x', that means *before* 
-		// the character at position 'x'. In RTL, "before" means "to the 
-		// right of", in LTR, "to the left of". So currently our situation
-		// is this: the position to our right is 'right_pos' (i.e., we're 
-		// currently to the left of 'right_pos'). In order to move to the 
-		// right, it depends whether or not the character at 'right_pos' is RTL.
+		// Recall, if the cursor is at position 'x', that
+		// means *before* the character at position 'x'. In
+		// RTL, "before" means "to the right of", in LTR, "to
+		// the left of". So currently our situation is this:
+		// the position to our right is 'right_pos' (i.e.,
+		// we're currently to the left of 'right_pos'). In
+		// order to move to the right, it depends whether or
+		// not the character at 'right_pos' is RTL.
 		new_pos_is_RTL = paragraph().getFontSettings(
 			buffer()->params(), right_pos).isVisibleRightToLeft();
-		// If the character at 'right_pos' *is* LTR, then in order to move to
-		// the right of it, we need to be *after* 'right_pos', i.e., move to
-		// position 'right_pos' + 1.
+		// If the character at 'right_pos' *is* LTR, then in
+		// order to move to the right of it, we need to be
+		// *after* 'right_pos', i.e., move to position
+		// 'right_pos' + 1.
 		if (!new_pos_is_RTL) {
 			new_cur.pos() = right_pos + 1;
 			// set the boundary to true in two situations:
 			if (
-			// 1. if new_pos is now lastpos, and we're in an RTL paragraph
-			// (this means that we're moving right to the end of an LTR chunk
+			// 1. if new_pos is now lastpos, and we're in
+			// an RTL paragraph (this means that we're
+			// moving right to the end of an LTR chunk
 			// which is at the end of an RTL paragraph);
 				(new_cur.pos() == lastpos()
 				 && paragraph().isRTL(buffer()->params()))
-			// 2. if the position *after* right_pos is RTL (we want to be 
-			// *after* right_pos, not before right_pos + 1!)
+			// 2. if the position *after* right_pos is RTL
+			// (we want to be *after* right_pos, not
+			// before right_pos + 1!)
 				|| paragraph().getFontSettings(buffer()->params(),
 						new_cur.pos()).isVisibleRightToLeft()
 			)
@@ -690,9 +698,9 @@ bool Cursor::posVisRight(bool skip_inset)
 			else // set the boundary to false
 				new_cur.boundary(false);
 		}
-		// Otherwise (if the character at position 'right_pos' is RTL), then
-		// moving to the right of it is as easy as setting the new position
-		// to 'right_pos'.
+		// Otherwise (if the character at position 'right_pos'
+		// is RTL), then moving to the right of it is as easy
+		// as setting the new position to 'right_pos'.
 		else {
 			new_cur.pos() = right_pos;
 			new_cur.boundary(false);
@@ -731,8 +739,9 @@ bool Cursor::posVisLeft(bool skip_inset)
 	new_cur.boundary(false);
 	if (!skip_inset && 
 		text()->checkAndActivateInsetVisual(new_cur, left_pos >= pos(), true)) {
-		// we actually move the cursor at the end of this function, for now 
-		// we just keep track of the new position in new_cur...
+		// we actually move the cursor at the end of this
+		// function, for now we just keep track of the new
+		// position in new_cur...
 		LYXERR(Debug::RTL, "entering inset at: " << new_cur.pos());
 	}
 
@@ -745,8 +754,9 @@ bool Cursor::posVisLeft(bool skip_inset)
 			return false;
 		}
 		
-		// we actually move the cursor at the end of this function, for now 
-		// just keep track of the new position in new_cur...
+		// we actually move the cursor at the end of this
+		// function, for now just keep track of the new
+		// position in new_cur...
 		LYXERR(Debug::RTL, "left edge, moving: " << int(new_cur.pit()) << "," 
 			<< int(new_cur.pos()) << "," << (new_cur.boundary() ? 1 : 0));
 
@@ -754,28 +764,33 @@ bool Cursor::posVisLeft(bool skip_inset)
 	// normal movement to the left
 	else {
 		new_cur = *this;
-		// Recall, if the cursor is at position 'x', that means *before* 
-		// the character at position 'x'. In RTL, "before" means "to the 
-		// right of", in LTR, "to the left of". So currently our situation
-		// is this: the position to our left is 'left_pos' (i.e., we're 
-		// currently to the right of 'left_pos'). In order to move to the 
-		// left, it depends whether or not the character at 'left_pos' is RTL.
+		// Recall, if the cursor is at position 'x', that
+		// means *before* the character at position 'x'. In
+		// RTL, "before" means "to the right of", in LTR, "to
+		// the left of". So currently our situation is this:
+		// the position to our left is 'left_pos' (i.e., we're
+		// currently to the right of 'left_pos'). In order to
+		// move to the left, it depends whether or not the
+		// character at 'left_pos' is RTL.
 		new_pos_is_RTL = paragraph().getFontSettings(
 			buffer()->params(), left_pos).isVisibleRightToLeft();
-		// If the character at 'left_pos' *is* RTL, then in order to move to
-		// the left of it, we need to be *after* 'left_pos', i.e., move to
-		// position 'left_pos' + 1.
+		// If the character at 'left_pos' *is* RTL, then in
+		// order to move to the left of it, we need to be
+		// *after* 'left_pos', i.e., move to position
+		// 'left_pos' + 1.
 		if (new_pos_is_RTL) {
 			new_cur.pos() = left_pos + 1;
 			// set the boundary to true in two situations:
 			if (
-			// 1. if new_pos is now lastpos and we're in an LTR paragraph
-			// (this means that we're moving left to the end of an RTL chunk
+			// 1. if new_pos is now lastpos and we're in
+			// an LTR paragraph (this means that we're
+			// moving left to the end of an RTL chunk
 			// which is at the end of an LTR paragraph);
 				(new_cur.pos() == lastpos()
 				 && !paragraph().isRTL(buffer()->params()))
-			// 2. if the position *after* left_pos is not RTL (we want to be 
-			// *after* left_pos, not before left_pos + 1!)
+			// 2. if the position *after* left_pos is not
+			// RTL (we want to be *after* left_pos, not
+			// before left_pos + 1!)
 				|| !paragraph().getFontSettings(buffer()->params(),
 						new_cur.pos()).isVisibleRightToLeft()
 			)
@@ -783,9 +798,9 @@ bool Cursor::posVisLeft(bool skip_inset)
 			else // set the boundary to false
 				new_cur.boundary(false);
 		}
-		// Otherwise (if the character at position 'left_pos' is LTR), then
-		// moving to the left of it is as easy as setting the new position
-		// to 'left_pos'.
+		// Otherwise (if the character at position 'left_pos'
+		// is LTR), then moving to the left of it is as easy
+		// as setting the new position to 'left_pos'.
 		else {
 			new_cur.pos() = left_pos;
 			new_cur.boundary(false);
@@ -818,14 +833,16 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 
 	LYXERR(Debug::RTL, "bidi: " << row.pos() << "--" << row.endpos());
 
-	// The cursor is painted *before* the character at pos(), or, if 'boundary'
-	// is true, *after* the character at (pos() - 1). So we already have one
-	// known position around the cursor:
+	// The cursor is painted *before* the character at pos(), or,
+	// if 'boundary' is true, *after* the character at (pos() -
+	// 1). So we already have one known position around the
+	// cursor:
 	pos_type const known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
 	
-	// edge case: if we're at the end of the paragraph, things are a little 
-	// different (because lastpos is a position which does not really "exist" 
-	// --- there's no character there yet).
+	// edge case: if we're at the end of the paragraph, things are
+	// a little different (because lastpos is a position which
+	// does not really "exist" --- there's no character there
+	// yet).
 	if (known_pos == lastpos()) {
 		if (par.isRTL(buf.params())) {
 			left_pos = -1;
@@ -838,28 +855,31 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		return;
 	}
 	
-	// Whether 'known_pos' is to the left or to the right of the cursor depends
-	// on whether it is an RTL or LTR character...
+	// Whether 'known_pos' is to the left or to the right of the
+	// cursor depends on whether it is an RTL or LTR character...
 	bool const cur_is_RTL = 
 		par.getFontSettings(buf.params(), known_pos).isVisibleRightToLeft();
 	// ... in the following manner:
-	// For an RTL character, "before" means "to the right" and "after" means
-	// "to the left"; and for LTR, it's the reverse. So, 'known_pos' is to the
-	// right of the cursor if (RTL && boundary) or (!RTL && !boundary):
+	// For an RTL character, "before"
+	// means "to the right" and "after" means "to the left"; and
+	// for LTR, it's the reverse. So, 'known_pos' is to the right
+	// of the cursor if (RTL && boundary) or (!RTL && !boundary):
 	bool const known_pos_on_right = cur_is_RTL == boundary();
 
-	// So we now know one of the positions surrounding the cursor. Let's 
-	// determine the other one:	
+	// So we now know one of the positions surrounding the cursor.
+	// Let's determine the other one:
 	if (known_pos_on_right) {
 		right_pos = known_pos;
 		// *visual* position of 'left_pos':
 		pos_type v_left_pos = bidi.log2vis(right_pos) - 1;
-		// If the position we just identified as 'left_pos' is a "skipped 
-		// separator" (a separator which is at the logical end of a row,
-		// except for the last row in a paragraph; such separators are not
-		// painted, so they "are not really there"; note that in bidi text,
-		// such a separator could appear visually in the middle of a row),
-		// set 'left_pos' to the *next* position to the left.
+		// If the position we just identified as 'left_pos' is
+		// a "skipped separator" (a separator which is at the
+		// logical end of a row, except for the last row in a
+		// paragraph; such separators are not painted, so they
+		// "are not really there"; note that in bidi text,
+		// such a separator could appear visually in the
+		// middle of a row), set 'left_pos' to the *next*
+		// position to the left.
 		if (bidi.inRange(v_left_pos) 
 				&& bidi.vis2log(v_left_pos) + 1 == row.endpos() 
 				&& row.endpos() < lastpos()
@@ -871,8 +891,9 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 			left_pos = -1;
 		else
 			left_pos = bidi.vis2log(v_left_pos);
-		// If the position we identified as 'right_pos' is a "skipped 
-		// separator", set 'right_pos' to the *next* position to the right.
+		// If the position we identified as 'right_pos' is a
+		// "skipped separator", set 'right_pos' to the *next*
+		// position to the right.
 		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos() 
 				&& par.isSeparator(right_pos)) {
 			pos_type const v_right_pos = bidi.log2vis(right_pos) + 1;
@@ -886,8 +907,9 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		left_pos = known_pos;
 		// *visual* position of 'right_pos'
 		pos_type v_right_pos = bidi.log2vis(left_pos) + 1;
-		// If the position we just identified as 'right_pos' is a "skipped 
-		// separator", set 'right_pos' to the *next* position to the right.
+		// If the position we just identified as 'right_pos'
+		// is a "skipped separator", set 'right_pos' to the
+		// *next* position to the right.
 		if (bidi.inRange(v_right_pos) 
 				&& bidi.vis2log(v_right_pos) + 1 == row.endpos() 
 				&& row.endpos() < lastpos()
@@ -899,8 +921,9 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 			right_pos = -1;
 		else
 			right_pos = bidi.vis2log(v_right_pos);
-		// If the position we identified as 'left_pos' is a "skipped 
-		// separator", set 'left_pos' to the *next* position to the left.
+		// If the position we identified as 'left_pos' is a
+		// "skipped separator", set 'left_pos' to the *next*
+		// position to the left.
 		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos() 
 				&& par.isSeparator(left_pos)) {
 			pos_type const v_left_pos = bidi.log2vis(left_pos) - 1;
@@ -921,16 +944,16 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 	Row const & row = textRow();
 	bool par_is_LTR = !par.isRTL(buf.params());
 
-	// Inside a table, determining whether to move to the next or previous row
-	// should be done based on the table's direction. 
+	// Inside a table, determining whether to move to the next or
+	// previous row should be done based on the table's direction.
 	int s = depth() - 1;
 	if (s >= 1 && (*this)[s].inset().asInsetTabular()) {
 		par_is_LTR = !(*this)[s].inset().asInsetTabular()->isRightToLeft(*this);
 		LYXERR(Debug::RTL, "Inside table! par_is_LTR=" << (par_is_LTR ? 1 : 0));
 	}
 	
-	// if moving left in an LTR paragraph or moving right in an RTL one, 
-	// move to previous row
+	// if moving left in an LTR paragraph or moving right in an
+	// RTL one, move to previous row
 	if (par_is_LTR == movingLeft) {
 		if (row.pos() == 0) { // we're at first row in paragraph
 			if (pit() == 0) // no previous paragraph! don't move
@@ -944,8 +967,8 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 			boundary(false);
 		}
 	}
-	// if moving left in an RTL paragraph or moving right in an LTR one, 
-	// move to next row
+	// if moving left in an RTL paragraph or moving right in an
+	// LTR one, move to next row
 	else {
 		if (row.endpos() == lastpos()) { // we're at last row in paragraph
 			if (pit() == lastpit()) // last paragraph! don't move
@@ -987,30 +1010,43 @@ void Cursor::posVisToRowExtremity(bool left)
 		else {
 			pos() = bidi.vis2log(row.pos());
 
-			// Moving to the leftmost position in the row, the cursor should
-			// normally be placed to the *left* of the leftmost position.
-			// A very common exception, though, is if the leftmost character 
-			// also happens to be the separator at the (logical) end of the row
-			// --- in this case, the separator is positioned beyond the left 
-			// margin, and we don't want to move the cursor there (moving to 
-			// the left of the separator is equivalent to moving to the next
-			// line). So, in this case we actually want to place the cursor 
-			// to the *right* of the leftmost position (the separator). 
-			// Another exception is if we're moving to the logically last 
-			// position in the row, which is *not* a separator: this means
-			// that the entire row has no separators (if there were any, the 
-			// row would have been broken there); and therefore in this case
-			// we also move to the *right* of the last position (this indicates
-			// to the user that there is no space after this position, and is 
-			// consistent with the behavior in the middle of a row --- moving
-			// right or left moves to the next/previous character; if we were
-			// to move to the *left* of this position, that would simulate 
-			// a separator which is not really there!). 
-			// Finally, there is an exception to the previous exception: if 
-			// this non-separator-but-last-position-in-row is an inset, then
-			// we *do* want to stay to the left of it anyway: this is the 
+			// Moving to the leftmost position in the row,
+			// the cursor should normally be placed to the
+			// *left* of the leftmost position. A very
+			// common exception, though, is if the
+			// leftmost character also happens to be the
+			// separator at the (logical) end of the row
+			// --- in this case, the separator is
+			// positioned beyond the left margin, and we
+			// don't want to move the cursor there (moving
+			// to the left of the separator is equivalent
+			// to moving to the next line). So, in this
+			// case we actually want to place the cursor
+			// to the *right* of the leftmost position
+			// (the separator). Another exception is if
+			// we're moving to the logically last position
+			// in the row, which is *not* a separator:
+			// this means that the entire row has no
+			// separators (if there were any, the row
+			// would have been broken there); and
+			// therefore in this case we also move to the
+			// *right* of the last position (this
+			// indicates to the user that there is no
+			// space after this position, and is
+			// consistent with the behavior in the middle
+			// of a row --- moving right or left moves to
+			// the next/previous character; if we were to
+			// move to the *left* of this position, that
+			// would simulate a separator which is not
+			// really there!). Finally, there is an
+			// exception to the previous exception: if
+			// this non-separator-but-last-position-in-row
+			// is an inset, then we *do* want to stay to
+			// the left of it anyway: this is the
 			// "boundary" which we simulate at insets.
-			// Another exception is when row.endpos() is 0.
+			
+			// Another exception is when row.endpos() is
+			// 0.
 			
 			// do we want to be to the right of pos?
 			// as explained above, if at last pos in row, stay to the right
@@ -1036,30 +1072,41 @@ void Cursor::posVisToRowExtremity(bool left)
 		else {
 			pos() = row.endpos() > 0 ? bidi.vis2log(row.endpos() - 1) : 0;
 
-			// Moving to the rightmost position in the row, the cursor should
-			// normally be placed to the *right* of the rightmost position.
-			// A very common exception, though, is if the rightmost character 
-			// also happens to be the separator at the (logical) end of the row
-			// --- in this case, the separator is positioned beyond the right 
-			// margin, and we don't want to move the cursor there (moving to 
-			// the right of the separator is equivalent to moving to the next
-			// line). So, in this case we actually want to place the cursor 
-			// to the *left* of the rightmost position (the separator). 
-			// Another exception is if we're moving to the logically last 
-			// position in the row, which is *not* a separator: this means
-			// that the entire row has no separators (if there were any, the 
-			// row would have been broken there); and therefore in this case
-			// we also move to the *left* of the last position (this indicates
-			// to the user that there is no space after this position, and is 
-			// consistent with the behavior in the middle of a row --- moving
-			// right or left moves to the next/previous character; if we were
-			// to move to the *right* of this position, that would simulate 
-			// a separator which is not really there!). 
-			// Finally, there is an exception to the previous exception: if 
-			// this non-separator-but-last-position-in-row is an inset, then
-			// we *do* want to stay to the right of it anyway: this is the 
-			// "boundary" which we simulate at insets.
-			// Another exception is when row.endpos() is 0.
+			// Moving to the rightmost position in the
+			// row, the cursor should normally be placed
+			// to the *right* of the rightmost position. A
+			// very common exception, though, is if the
+			// rightmost character also happens to be the
+			// separator at the (logical) end of the row
+			// --- in this case, the separator is
+			// positioned beyond the right margin, and we
+			// don't want to move the cursor there (moving
+			// to the right of the separator is equivalent
+			// to moving to the next line). So, in this
+			// case we actually want to place the cursor
+			// to the *left* of the rightmost position
+			// (the separator). Another exception is if
+			// we're moving to the logically last position
+			// in the row, which is *not* a separator:
+			// this means that the entire row has no
+			// separators (if there were any, the row
+			// would have been broken there); and
+			// therefore in this case we also move to the
+			// *left* of the last position (this indicates
+			// to the user that there is no space after
+			// this position, and is consistent with the
+			// behavior in the middle of a row --- moving
+			// right or left moves to the next/previous
+			// character; if we were to move to the
+			// *right* of this position, that would
+			// simulate a separator which is not really
+			// there!). Finally, there is an exception to
+			// the previous exception: if this
+			// non-separator-but-last-position-in-row is
+			// an inset, then we *do* want to stay to the
+			// right of it anyway: this is the "boundary"
+			// which we simulate at insets. Another
+			// exception is when row.endpos() is 0.
 			
 			// do we want to be to the left of pos?
 			// as explained above, if at last pos in row, stay to the left,
@@ -1915,6 +1962,7 @@ bool Cursor::atFirstOrLastRow(bool up)
 	return false;
 }
 
+
 bool Cursor::upDownInText(bool up, bool & updateNeeded)
 {
 	LASSERT(text(), /**/);
@@ -1932,14 +1980,16 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		setTargetX(xo);
 	else if (xo - textTargetOffset() != x_target() &&
 					 depth() == beforeDispatchCursor_.depth()) {
-		// In text mode inside the line (not left or right) possibly set a new target_x,
-		// but only if we are somewhere else than the previous target-offset.
+		// In text mode inside the line (not left or right)
+		// possibly set a new target_x, but only if we are
+		// somewhere else than the previous target-offset.
 		
-		// We want to keep the x-target on subsequent up/down movements
-		// that cross beyond the end of short lines. Thus a special
-		// handling when the cursor is at the end of line: Use the new
-		// x-target only if the old one was before the end of line
-		// or the old one was after the beginning of the line
+		// We want to keep the x-target on subsequent up/down
+		// movements that cross beyond the end of short lines.
+		// Thus a special handling when the cursor is at the
+		// end of line: Use the new x-target only if the old
+		// one was before the end of line or the old one was
+		// after the beginning of the line
 		bool inRTL = isWithinRtlParagraph(*this);
 		bool left;
 		bool right;
@@ -2128,6 +2178,7 @@ void Cursor::errorMessage(docstring const & msg) const
 
 
 namespace {
+
 docstring parbreak(Cursor const * cur)
 {
 	odocstringstream os;
@@ -2138,6 +2189,7 @@ docstring parbreak(Cursor const * cur)
 		os << '\n';
 	return os.str();
 }
+
 }
 
 
@@ -2267,9 +2319,9 @@ void Cursor::noScreenUpdate() const
 
 Font Cursor::getFont() const
 {
-	// The logic here should more or less match to the Cursor::setCurrentFont
-	// logic, i.e. the cursor height should give a hint what will happen
-	// if a character is entered.
+	// The logic here should more or less match to the
+	// Cursor::setCurrentFont logic, i.e. the cursor height should
+	// give a hint what will happen if a character is entered.
 	
 	// HACK. far from being perfect...
 

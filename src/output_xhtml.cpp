@@ -71,7 +71,8 @@ docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e)
 
 
 // escape what needs escaping
-docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e) {
+docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e)
+{
 	odocstringstream d;
 	docstring::const_iterator it = str.begin();
 	docstring::const_iterator en = str.end();
@@ -109,7 +110,8 @@ string escapeChar(char c, XHTMLStream::EscapeSettings e)
 
 
 // escape what needs escaping
-string htmlize(string const & str, XHTMLStream::EscapeSettings e) {
+string htmlize(string const & str, XHTMLStream::EscapeSettings e)
+{
 	ostringstream d;
 	string::const_iterator it = str.begin();
 	string::const_iterator en = str.end();
@@ -915,10 +917,10 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 
 
 void makeCommand(Buffer const & buf,
-					  XHTMLStream & xs,
-					  OutputParams const & runparams,
-					  Text const & text,
-					  ParagraphList::const_iterator const & pbegin)
+		 XHTMLStream & xs,
+		 OutputParams const & runparams,
+		 Text const & text,
+		 ParagraphList::const_iterator const & pbegin)
 {
 	Layout const & style = pbegin->layout();
 	if (!style.counter.empty())
@@ -1020,7 +1022,8 @@ void xhtmlParagraphs(Text const & text,
 }
 
 
-string alignmentToCSS(LyXAlignment align) {
+string alignmentToCSS(LyXAlignment align)
+{
 	switch (align) {
 	case LYX_ALIGN_BLOCK:
 		// we are NOT going to use text-align: justify!!

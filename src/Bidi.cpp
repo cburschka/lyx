@@ -46,6 +46,7 @@ bool Bidi::inRange(pos_type pos) const
 	return start_ == -1 || (start_ <= pos && pos <= end_);
 }
 
+
 bool Bidi::same_direction() const
 {
 	return same_direction_;

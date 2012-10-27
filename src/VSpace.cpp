@@ -200,6 +200,7 @@ string VSpace::asHTMLLength() const
 	return result;
 }
 
+
 int VSpace::inPixels(BufferView const & bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)

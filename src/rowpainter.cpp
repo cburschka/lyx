@@ -54,6 +54,7 @@ namespace lyx {
 using frontend::Painter;
 using frontend::FontMetrics;
 
+
 RowPainter::RowPainter(PainterInfo & pi,
 	Text const & text, pit_type pit, Row const & row, Bidi & bidi, int x, int y)
 	: pi_(pi), text_(text),
@@ -692,6 +693,7 @@ void RowPainter::paintTopLevelLabel()
 	}
 	pi_.pain.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 }
+
 
 /** Check if the current paragraph is the last paragraph in a
     proof environment */

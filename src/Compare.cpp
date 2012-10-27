@@ -97,13 +97,15 @@ size_t DocRange::length() const
 
 class DocPair {
 public:
-	DocPair() {}
+	DocPair()
+	{}
 
 	DocPair(DocIterator o_, DocIterator n_)
 		: o(o_), n(n_)
 	{}
 
-	bool operator!=(DocPair const & rhs) {
+	bool operator!=(DocPair const & rhs)
+	{
 		// this might not be intuitive but correct for our purpose
 		return o != rhs.o && n != rhs.n;
 	}
@@ -146,10 +148,16 @@ public:
 	{}
 
 	/// Returns the from pair
-	DocPair from() const { return DocPair(o.from, n.from); }
+	DocPair from() const
+	{
+		return DocPair(o.from, n.from);
+	}
 
 	/// Returns the to pair
-	DocPair to() const { return DocPair(o.to, n.to); }
+	DocPair to() const
+	{
+		return DocPair(o.to, n.to);
+	}
 
 	DocRange o;
 	DocRange n;
@@ -181,7 +189,8 @@ static DocRangePair stepIntoInset(DocPair const & inset_location)
 template<class T>
 class compl_vector {
 public:
-	compl_vector() {}
+	compl_vector()
+	{}
 
 	void reset(T const & def)
 	{
@@ -223,7 +232,8 @@ public:
 	{}
 
 	///
-	~Impl() {}
+	~Impl()
+	{}
 
 	// Algorithm to find the shortest edit string. This algorithm 
 	// only needs a linear amount of memory (linear with the sum
@@ -235,7 +245,8 @@ public:
 	bool abort_;
 
 	///
-	QString status() {
+	QString status()
+	{
 		QString status;
 		status += toqstr("recursion level:") + " " + QString::number(recursion_level_)
 			+ " " + toqstr("differences:") + " " + QString::number(D_);
@@ -444,7 +455,8 @@ static bool equal(Inset const * i_o, Inset const * i_n)
 }
 
 
-static bool equal(DocIterator & o, DocIterator & n) {
+static bool equal(DocIterator & o, DocIterator & n)
+{
 	// Explicitly check for this, so we won't call
 	// Paragraph::getChar for the last pos.
 	bool const o_lastpos = o.pos() == o.lastpos();

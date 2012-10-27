@@ -57,6 +57,7 @@ ostream & operator<<(ostream & os, Author const & a)
 	return os;
 }
 
+
 istream & operator>>(istream & is, Author & a)
 {
 	string s;
@@ -69,15 +70,15 @@ istream & operator>>(istream & is, Author & a)
 }
 
 
-bool author_smaller(Author const & lhs, Author const & rhs) {
+bool author_smaller(Author const & lhs, Author const & rhs)
+{
 	return lhs.bufferId() < rhs.bufferId();
 }
 
 
 AuthorList::AuthorList()
 	: last_id_(0)
-{
-}
+{}
 
 
 int AuthorList::record(Author const & a)
@@ -133,12 +134,14 @@ AuthorList::Authors::const_iterator AuthorList::end() const
 }
 
 
-void AuthorList::sort() {
+void AuthorList::sort()
+{
 	std::sort(authors_.begin(), authors_.end(), author_smaller);
 }
 
 
-ostream & operator<<(ostream & os, AuthorList const & a) {
+ostream & operator<<(ostream & os, AuthorList const & a)
+{
 	// Copy the authorlist, because we don't want to sort the original
 	AuthorList sorted = a;
 	sorted.sort();

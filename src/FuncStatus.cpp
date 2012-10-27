@@ -17,8 +17,7 @@ namespace lyx {
 
 FuncStatus::FuncStatus()
 	: v_(OK)
-{
-}
+{}
 
 
 void FuncStatus::clear()

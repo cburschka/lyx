@@ -138,11 +138,10 @@ void reconfigureUserLyXDir()
 } // namespace anon
 
 /// The main application class private implementation.
-struct LyX::Impl
-{
-	Impl() : latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
-	{
-	}
+struct LyX::Impl {
+	Impl()
+		: latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
+	{}
 
 	~Impl()
 	{
@@ -204,6 +203,7 @@ struct LyX::Impl
 	///
 	SpellChecker * hunspell_checker_;
 };
+
 
 ///
 frontend::Application * theApp()
