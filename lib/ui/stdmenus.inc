@@ -590,6 +590,7 @@ Menuset
 	Menu "examples"
 		Item "Braille Manual|B" "help-open Braille"
 		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
+		Item "Knitr Manual|K" "help-open knitr"
 		Item "LilyPond Manual|M" "help-open lilypond"
 		Item "Linguistics Manual|L" "help-open linguistics"
 		Item "Multilingual Captions Manual|C" "help-open MultilingualCaptions"
