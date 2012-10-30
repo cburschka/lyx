@@ -588,15 +588,15 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Braille Manual|B" "help-open Braille"
-		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
-		Item "Knitr Manual|K" "help-open knitr"
-		Item "LilyPond Manual|M" "help-open lilypond"
-		Item "Linguistics Manual|L" "help-open linguistics"
-		Item "Multilingual Captions Manual|C" "help-open MultilingualCaptions"
-		Item "Risk and Safety Statements Manual|R" "help-open R-S-statements"
-		Item "Sweave Manual|S" "help-open sweave"
-		Item "XY-pic Manual|X" "help-open xypic"
+		Item "Braille|B" "help-open Braille"
+		Item "Feynman-diagram|F" "help-open FeynmanDiagrams"
+		Item "Knitr|K" "help-open knitr"
+		Item "LilyPond|P" "help-open lilypond"
+		Item "Linguistics|L" "help-open linguistics"
+		Item "Multilingual Captions|C" "help-open MultilingualCaptions"
+		Item "Risk and Safety Statements|R" "help-open R-S-statements"
+		Item "Sweave|S" "help-open sweave"
+		Item "XY-pic|X" "help-open xypic"
 	End
 
 
