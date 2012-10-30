@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -49,7 +49,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics dvips
 \default_output_format default
 \output_sync 0
@@ -76,8 +75,8 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
-\use_mhchem 1
 \use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -1149,33 +1148,19 @@ arg   "layout Enumerate"
 \family sans
 箇条書き（一覧）
 \family default
-の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう
-\lang english
-(
-\family sans
-\lang japanese
-
+の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう(
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
 \end_inset
 
-
-\family default
-\lang english
- and 
-\lang japanese
-
+または
 \begin_inset Info
 type  "icon"
 arg   "layout List"
 \end_inset
 
-
-\lang english
-)
-\lang japanese
-。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
+)。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
 \family sans
 Return
 \family default
@@ -2741,16 +2726,16 @@ arg   "inset-modify tabular delete-column"
 \end_layout
 
 \begin_layout Subsection
-別行建てモード
+別行立てモード
 \end_layout
 
 \begin_layout Standard
 ここまではテキストと同じ行に数式を入れる方法について説明して来ました。行内表示と呼ばれるものです。これは短い、簡単な数式の場合はいいのですが、長い数式を書く場合
-やテキストから独立させたい場合には別行建てモードで書く必要があります。また数式にラベルや式番号（
+やテキストから独立させたい場合には別行立てモードで書く必要があります。また数式にラベルや式番号（
 \emph on
 ユーザーの手引き
 \emph default
-を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も、別行建てモードにする必要があります。
+を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も、別行立てモードにする必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -2760,7 +2745,7 @@ arg   "inset-modify tabular delete-column"
 \family default
 の
 \family sans
-別行建て
+別行立て
 \family default
 ボタン
 \begin_inset Info
@@ -2771,13 +2756,13 @@ arg   "math-display"
 を押して下さい。こうすると、数式が中央揃えになり、上下に空白行が加えられます。何か数式を入力してファイルをコンパイルし、どのように表示されるかご覧になって下さい
 。
 \family sans
-別行建て
+別行立て
 \family default
-ボタンは実は切替スイッチになっています。入力した数式のいくつかを、別行建てモードにしたり、戻したりしてみてください。
+ボタンは実は切替スイッチになっています。入力した数式のいくつかを、別行立てモードにしたり、戻したりしてみてください。
 \end_layout
 
 \begin_layout Standard
-別行建てモードはいくつかの点で行内数式モードと異なっています：
+別行立てモードはいくつかの点で行内数式モードと異なっています：
 \end_layout
 
 \begin_layout Itemize
@@ -2792,7 +2777,7 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Itemize
-別行建てモードではlimitや和記号（積分記号は違います）につく上付き文字や下付き文字が記号の隣ではなく上下に付く
+別行立てモードではlimitや和記号（積分記号は違います）につく上付き文字や下付き文字が記号の隣ではなく上下に付く
 \end_layout
 
 \begin_layout Itemize
@@ -2800,32 +2785,32 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Standard
-このようにいくつかの違いはありますが、別行建て表示と行内表示は非常に似たものです。
+このようにいくつかの違いはありますが、別行立て表示と行内表示は非常に似たものです。
 \end_layout
 
 \begin_layout Standard
-最後に一つ、別行建て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
+最後に一つ、別行立て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
 を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。すると使用中の文書の段落設定によって、字下げされたり
 空白があいたりすることになるので、望ましいものとはならないでしょう。
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：
 \family typewriter
 example_raw.lyx
 \family default
-の数式を別行建てモードにしてどのように組版されるか見て下さい。
+の数式を別行立てモードにしてどのように組版されるか見て下さい。
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：本節で習った色々なツールを使って次のような数式を書いて下さい
 \begin_inset Foot
 status collapsed
@@ -2946,18 +2931,12 @@ arg   "tabular-insert"
 表設定
 \family default
 ダイアログボックスが現れるので、そこで表の詳しい編集ができます。
-\lang english
-By pressing 
-\lang japanese
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-
-\lang english
- the table toolbar will appear permanently.
+を押すと、表ツールバーが固定的に表示されるようになります。
 \end_layout
 
 \begin_layout Itemize

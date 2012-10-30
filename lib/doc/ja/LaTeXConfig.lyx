@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -18,7 +18,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -31,8 +30,8 @@
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
-\use_mhchem 1
 \use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -132,37 +131,15 @@ LyXに欲しい機能であり、LaTeX装備にも追加したいと思うよう
 \end_layout
 
 \begin_layout Standard
-これらのパッケージのほとんどは、teTeXのような新しいTeX頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めたら、LyXにそのこ
-とを教えなくてはなりません。インストールし終えたら、メニュー項目
+これらのパッケージのほとんどは、TeXLiveやMiKTeXのような新しいTeX頒布版を使っていれば、利用可能です。もし、存在しないアイテムを導入しようと決めた
+ら、LyXにそのことを教えなくてはなりません。導入後、メニュー項目
 \family sans
 ツール\SpecialChar \menuseparator
 再初期設定
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-あるいは、もしシステム全体の設定を変えたいならば、LyXシステムディレクトリ（既定では
-\family typewriter
-/usr/local/lib/lyx/
-\family default
-）でコマンド
-\family typewriter
-./configure
-\family default
-を実行してください。
-\end_layout
-
-\end_inset
-
-を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「???」となっているときは、何らかの理由
-で現在のLaTeX設定の一覧を取得できなかったことを示しています。もしteTeXをお使いならば、装備済みの新しいパッケージが見つからなかったことを示しているかも
-しれません。teTeXに設定を更新させるコマンド
-\family typewriter
-texhash
-\family default
-を実行し忘れた可能性があります。
+を実行して、このファイルを再度読み込み、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「いいえ」となっているときは、何らかの理由で現
+在のLaTeX設定の一覧を取得できなかったことを示しています。大抵、ファイル名データベース(texhash)を更新するのを忘れた場合が殆どです。これを適切に行う
+にはどうすればよいか、お使いのLaTeX頒布版の取扱説明書をご覧ください。
 \end_layout
 
 \begin_layout Section
@@ -398,6 +375,36 @@ Diagram
 \end_layout
 
 \begin_layout Subsection
+fontspec
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "fontspec"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/fontspec
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+fontspec
+\family default
+パッケージを使うと、お使いの基本システムに存在するOpenType・TrueType・PostScriptフォントにアクセスできるようになります。このパッケージ
+は、これを実現するために、XeTeXかLuaTeXエンジンが必要です。LuaTeXは、fontspec第2.0版(2010/07/11)以降でのみサポートされます
+。
+\end_layout
+
+\begin_layout Subsection
 fourier-GUTenberg
 \end_layout
 
@@ -552,101 +559,6 @@ psnfss
 \begin_layout Itemize
 
 \family sans
-mathpazo
-\family default
- (newest Palatino support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpazo"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathpple
-\family default
- (deprecated Palatino support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpple"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptmx
-\family default
- (newest Times support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptmx"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptm
-\family default
- (deprecated Times support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptm"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-utopia
-\family default
- (Utopia).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "utopia"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 avant
 \family default
  (Avant Garde).
@@ -685,6 +597,25 @@ arg   "bookman"
 \begin_layout Itemize
 
 \family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "chancery"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 charter
 \family default
  (Charter).
@@ -696,6 +627,120 @@ charter
 \begin_inset Info
 type  "package"
 arg   "charter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+courier
+\family default
+ (Courier).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "courier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+helvet
+\family default
+ (Helvetica).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "helvet"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (newest Palatino support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpazo"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (deprecated Palatino support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpple"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (deprecated Times support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (newest Times support).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptmx"
 \end_inset
 
 
@@ -723,9 +768,9 @@ arg   "newcent"
 \begin_layout Itemize
 
 \family sans
-chancery
+utopia
 \family default
- (Zapf Chancery).
+ (Utopia).
  
 \series bold
 検出：
@@ -733,7 +778,7 @@ chancery
  
 \begin_inset Info
 type  "package"
-arg   "chancery"
+arg   "utopia"
 \end_inset
 
 
@@ -764,10 +809,24 @@ fonts/tipa/
 \family sans
 tipa
 \family default
-パッケージは、『国際音声字母(IPA)』で定義されているように、発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、LyXの数式
-エディタあるいは挿入\SpecialChar \menuseparator
+及び
+\family sans
+tipx
+\family default
+パッケージは、『国際音声字母(IPA)』で定義されているように、発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、
+\family sans
+挿入\SpecialChar \menuseparator
 特殊文字\SpecialChar \menuseparator
-記号ダイアログから入力することができます。
+発音記号
+\family default
+か、LyXの数式エディタ、あるいは
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号\SpecialChar \ldots{}
+
+\family default
+ダイアログから入力することができます。
 \end_layout
 
 \begin_layout Section
@@ -3888,6 +3947,38 @@ enumitem
 パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
 \end_layout
 
+\begin_layout Subsection
+『リスクと安全性に関する表示』モジュール
+\end_layout
+
+\begin_layout Subsubsection
+rsphrase
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "rsphrase"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mhchem/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+rsphrase
+\family default
+パッケージは、公式の化学リスクと安全性に関する表示を挿入するのに用いられます。
+\end_layout
+
 \begin_layout Section
 
 \series bold
@@ -4201,6 +4292,58 @@ breakurl
 \end_layout
 
 \begin_layout Subsection
+cancel
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "esint"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/cancel/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+cancel
+\family default
+パッケージは、数式の消去を組版するのに用いられます。
+\family sans
+
+\backslash
+cancel
+\family default
+・
+\family sans
+
+\backslash
+bcancel
+\family default
+・
+\family sans
+
+\backslash
+xcancel
+\family default
+・
+\family sans
+
+\backslash
+cancelto
+\family default
+の各コマンドが使えます。
+\end_layout
+
+\begin_layout Subsection
 CJKutf8
 \end_layout
 
@@ -4363,6 +4506,37 @@ fancyhdr
 fancyheadings
 \family default
 という名称でした）は、文書レイアウトポップアップで「装飾的（fancy）」を選択した時に用いられます。これは、2ページごとに交代するヘッダとフッタを提供します。
+\end_layout
+
+\begin_layout Subsection
+fix-cm
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "fix-cm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/unpacked/fix-cm.sty
+\end_layout
+
+\begin_layout Description
+備考: T1及びTS1エンコードのCMフォント（「EC」フォントとも呼ばれます）の外観を、出来る限り、伝統的な（OT1エンコードの）フォントに近づけるために、C
+omputer Modernフォントの定義を変更します。特に、壊れていたりデザインが醜い大きさのものの使用は回避され、ボールド・サンセリフ体の大寸法の書体は、大
+幅に改善された上に、テキストフォントと対応する数式フォントの間の齟齬は解消されています。Computer Modernフォントは、任意の寸法で使用出来ます。通常
+Type1形式でも利用できるフォント寸法のみが用いられます。これは
+\family sans
+fix-cm
+\family default
+モジュールを取り込むことでも使用することができます。
 \end_layout
 
 \begin_layout Subsection
@@ -4634,6 +4808,34 @@ iddots
 数式オプション
 \family default
 タブで読み込ませることができ、文書中すべての数式ドットの外観を変更することもできます。
+\end_layout
+
+\begin_layout Subsection
+mathtools
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "mathdots"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mh/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+mathtools
+\family default
+モジュールは、いくつかのunicode記号のために、LyXが使用します。
 \end_layout
 
 \begin_layout Subsection
@@ -5118,6 +5320,40 @@ ulem
 \family default
 パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、LyXが、変更追跡が有効になっている文書で、
 取消線を引いた文章をPDFに出力するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+undertilde
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "undertilde"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/undertilde/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+undertilde
+\family default
+パッケージは、
+\family sans
+
+\backslash
+utilde
+\family default
+コマンドを提供します。LyXが、数式中でチルダのついた記号に下線を引くのに使用します。
 \end_layout
 
 \begin_layout Subsection

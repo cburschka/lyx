@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -46,7 +46,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -73,8 +72,8 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
-\use_mhchem 1
 \use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -329,13 +328,13 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-スタイル
+様式（スタイル）
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-公正を期するために付け加えれば、もっとも人気のあるオフィススイートの最新版では、同様のマークアップ法を使った、ある種のスタイルシートを使うことができます。しかし
-ながら、われわれの経験によれば、現実にはほとんど使われていません。
+公正を期するために付け加えれば、もっとも人気のあるオフィススイートの最新版では、同様のマークアップ法を使った、ある種の様式シートを使うことができます。しかしなが
+ら、われわれの経験によれば、現実にはほとんど使われていません。
 \end_layout
 
 \end_inset
@@ -3837,7 +3836,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \end_layout
 
 \end_inset

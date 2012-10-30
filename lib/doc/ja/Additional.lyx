@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -50,6 +50,7 @@
 logicalmkup
 theorems-ams
 theorems-ams-extended
+multicol
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -68,7 +69,7 @@ EndPreamble
 End
 \end_local_layout
 \language japanese
-\language_package default
+\language_package none
 \inputencoding JIS-pLaTeX
 \fontencoding global
 \font_roman default
@@ -80,7 +81,6 @@ End
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -107,14 +107,15 @@ End
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
-\use_mhchem 1
 \use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index 索引
 \shortcut idx
 \color #008000
@@ -375,7 +376,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-エクスポート\SpecialChar \menuseparator
+書き出し\SpecialChar \menuseparator
 LaTeX
 \end_layout
 
@@ -463,11 +464,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
 表示\SpecialChar \menuseparator
-
-\emph on
 書式
 \end_layout
 
@@ -483,12 +480,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
 表示\SpecialChar \menuseparator
 更新\SpecialChar \menuseparator
-
-\emph on
 書式
 \end_layout
 
@@ -504,13 +497,11 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
 ファイル
-\bar default
+\bar under
 \SpecialChar \menuseparator
 
-\bar under
+\bar default
 印刷
 \end_layout
 
@@ -526,13 +517,11 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
 ファイル
-\bar default
+\bar under
 \SpecialChar \menuseparator
 
-\bar under
+\bar default
 ファックス
 \end_layout
 
@@ -582,15 +571,6 @@ LyXが編集中のファイルをLaTeXにかけるとき、LyXは以下の段階
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 .lyx
 \end_layout
 
@@ -601,15 +581,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 .tex
 \end_layout
 
@@ -633,15 +604,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 .tex
 \end_layout
 
@@ -652,15 +614,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 bibtex
 \end_layout
 
@@ -671,15 +624,6 @@ bibtex
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 makeindex
 \end_layout
 
@@ -748,14 +692,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\family typewriter
 表示\SpecialChar \menuseparator
 PostScript
 \end_layout
@@ -1113,15 +1050,6 @@ name "sec:LaTeXコードを挿入する"
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 TeXコード
 \end_layout
 
@@ -1147,6 +1075,30 @@ status collapsed
 TeXコード
 \end_layout
 
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+かキーボード短絡キー
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
 \end_inset
 
 
@@ -1275,7 +1227,7 @@ TeXコード
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1373,15 +1325,6 @@ TeXコードを使用する方法に加えて、複雑なLaTeXコードを含む
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 挿入\SpecialChar \menuseparator
 ファイル\SpecialChar \menuseparator
 子文書
@@ -1869,15 +1812,6 @@ LyXがLaTeXファイルのプリアンブルに追加するコマンドは、つ
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 文書\SpecialChar \menuseparator
 設定
 \end_layout
@@ -1889,15 +1823,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 LaTeXプリアンブル
 \end_layout
 
@@ -4123,6 +4048,158 @@ http://wiki.lyx.org/FAQ/Unsorted#toc31
 \end_layout
 
 \begin_layout Section
+LyX書庫
+\end_layout
+
+\begin_layout Standard
+ユーザは、出版社に送付したり共著者と共有したりするために、LyXファイルと共に、しばしば、それが必要とする画像(及び他のファイル)のすべてを、「同梱」できる必要
+に迫られます。LyX 2.0は、この過程を自動化するPythonスクリプト(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpak.py
+\end_layout
+
+\end_inset
+
+)を持っています。これを使用するためには、使用中のシステムに、pythonモジュールの
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zipfile
+\end_layout
+
+\end_inset
+
+か
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tarfile
+\end_layout
+
+\end_inset
+
+が導入されている必要があります。既定では、このスクリプトは、UNIX系システムでは
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+gzip
+\end_layout
+
+\end_inset
+
+圧縮
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+形式を優先し、Windows系では
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+形式を優先します。
+\end_layout
+
+\begin_layout Standard
+LyXの初期設定プロセスを走らせると、このスクリプトは「LyX書庫」形式へ書き出すよう設定され、この形式が
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+書き出し
+\end_layout
+
+\end_inset
+
+の下に表示されるようになります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+変換子
+\end_layout
+
+\end_inset
+
+で、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LyX\SpecialChar \menuseparator
+LyX書庫
+\end_layout
+
+\end_inset
+
+変換子に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-t
+\end_layout
+
+\end_inset
+
+スイッチ(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+形式の場合)や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-z
+\end_layout
+
+\end_inset
+
+スイッチ(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+形式の場合)を渡すと、プラットホーム非依存で、特定の圧縮形式を生成することを強制することができます(スイッチをスクリプト名の前でなく後に渡すように注意してくださ
+い)。
+\end_layout
+
+\begin_layout Section
 装飾的なヘッダ・フッタ
 \end_layout
 
@@ -4144,6 +4221,31 @@ article
 \emph default
 』に述べられているように、文書ページスタイルを「装飾的（fancy）」に設定する必要があります。この節では、望んだとおりの効果を得るために、LaTeXプリアンブ
 ルに挿入する必要のあるLaTeXコードについて解説します。
+\end_layout
+
+\begin_layout Standard
+装飾的ヘッダについては、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+fancyhdr
+\end_layout
+
+\end_inset
+
+パッケージ取扱説明書を参照してください(
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
+\end_layout
+
+\end_inset
+
+)。
 \end_layout
 
 \begin_layout Standard
@@ -4451,32 +4553,6 @@ thispagestyle{fancy}
 のようなコマンドを使えば、各ページごとにへッダ・フッタ設定を有効にしたり無効にしたりすることができます。設定を変更したいページに、これらのコマンドをTeXコード
 として挿入してください。実は、タイトルページは、その後のページは大域的に装飾的（fancy）に設定されていれば装飾的（fancy）になるにもかかわらず、既定でプ
 レーン（plain）になるように設定されているのです。
-\end_layout
-
-\begin_layout Standard
-奇数ページの左上だけに何かを挿入するなど、もっと複雑なコマンドもあるのですが、詳しい解説は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-fancyhdr
-\end_layout
-
-\end_inset
-
-パッケージの取扱説明書をご参照ください（
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-fancyhdr.dvi
-\end_layout
-
-\end_inset
-
-を探してください）。
 \end_layout
 
 \begin_layout Standard
@@ -5132,145 +5208,117 @@ LyXとインターネット網
 \end_layout
 
 \begin_layout Standard
-LyX has long supported the export of documents to various web-friendly formats,
- such as HTML.
- Before verson 2.0, however, HTML export was always accomplished by the use
- of external converters.
+LyXは、これまでも長い間、HTMLを始めとするウェブフレンドリーな文書諸形式への書き出しをサポートしてきました。しかしながら、第2.0版以前では、HTMLへの書
+き出しは、常に外部変換子を用いることで実現されていました
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-For details on the use of external converters with LyX, see the 
+LyXで外部変換子を使うことについての詳細は、取扱説明書『
 \emph on
-Converters
+カスタマイズ篇
 \emph default
- section of the Customization manual.
+』の「
+\emph on
+変換子
+\emph default
+」の節をご覧ください。
 \end_layout
 
 \end_inset
 
- These fall into two large groups: there are converters that use LaTeX as
- an intermediate format, such as 
+。これらは2つのグループに大別できます。1つは、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 htlatex
 \end_layout
 
 \end_inset
 
-, 
+・
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 html2latex
 \end_layout
 
 \end_inset
 
-, and 
+・
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 plastex
 \end_layout
 
 \end_inset
 
-, relying upon LyX to produce the LaTeX; and there is a converter that works
- directly on LyX files, 
+のように、LaTeXを中間形式として用い、そのLaTeXを生成するのにLyXを用いるもの。2つめは、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 eLyXer
 \end_layout
 
 \end_inset
 
-.
- All of these have different advantages and disadvantages.
- 
+のように、直接LyXファイルに働きかける変換子です。これらは、それぞれに長所・短所を有しています。
 \end_layout
 
 \begin_layout Standard
-The LaTeX-based converters have the advantage that, in principle, they know
- everything about the exported document that LaTeX does.
- Such converters do not care, for example, if a certain block of code was
- produced by LyX or was Evil Red Text.
- These converters know about 
+LaTeXベースの変換子は、原則として、LaTeXが書きだす文書についてのすべてを知っているという長所があります。この種の変換子は、例えば、特定のコードのくだり
+が、LyXによって生成されたのか、TeXコードで書かれたのかについては気にしません。これらの変換子は、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 aux
 \end_layout
 
 \end_inset
 
- files, counters, and references, and can often make use of the 
+ファイルやカウンタや参照を取り扱うことができ、BibTeXが生成する
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 bbl
 \end_layout
 
 \end_inset
 
- files generated by BibTeX.
- On the other hand, LaTeX is a very hard language to parse---it is sometimes
- said that only TeX itself understands TeX---and LaTeX-based converters
- will often choke on what seem to be quite simple constructs; complex ones
- can throw them completely, and as of this writing, for example, the 
+ファイルも利用することがよくあります。一方で、LaTeXは解析の非常に難しい言語であり---TeX自身だけがTeXを理解することができると言われたりすることがあ
+ります---、LaTeXベースの変換子は、非常に簡単な文法に見えるものでさえ飲み込めず、複雑なものになると全く歯が立たないこともあります。例えば、この現行を書い
+ている時点では、取扱説明書『
 \emph on
-Embedded Objects
+埋込オブジェクト篇
 \emph default
- manual will not export with 
+』は、他の変換子では書き出しができるのに、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 htlatex
 \end_layout
 
 \end_inset
 
-, though the others will.
- The other issue concerns how math is handled.
- These converters typically convert the formulae into little pictures that
- are then linked from the HTML document.
- Since these are actually generated by LaTeX, they are accurate.
- But they do not scale well, and just getting them to look as if they are
- actually meant to be in your document---so that the font sizes seem to
- be roughly the same---can be a challenge.
+では行うことができません。他には、数式をどう取り扱うかという問題があります。これらの変換子の典型的なものは、数式を小さな画像に変換して、HTML文書からこれらの
+画像へのリンクを張ります。これらの画像は、実はLaTeXによって生成されているので、正確です。しかしながら、これらはうまく伸縮できないので、実際の文書の中で表現
+されるように---フォント寸法が凡そ正しくなるように---見せようとすると、大変な苦労を伴います。
 \end_layout
 
 \begin_layout Standard
-Alex Fernandez's 
+Alex Fernandezの
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 eLyXer
 \end_layout
 
@@ -5284,217 +5332,151 @@ target "http://elyxer.nongnu.org/"
 
 \end_inset
 
-) solves some of these problems.
- In particular, the formulae it produces scale perfectly, since it renders
- math using a combination of HTML and CSS rather than converting the formulae
- to images.
- But even moderately complex formula are rendered less well than with 
+)は、これらの問題の一部を解決します。特に、これは数式を画像に変換するのではなく、HTMLとCSSを組み合わせて数式を生成するので、生成される数式は完璧な大きさ
+に伸縮されて表示されます。しかしながら、ちょっとだけ複雑な数式でさえ、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 htlatex
 \end_layout
 
 \end_inset
 
-; this reflects the limitations of HTML.
+よりも質が落ちます。これはHTMLの限界を示しています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-That said, 
+とはいえ、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 eLyXer
 \end_layout
 
 \end_inset
 
- can also use jsMath and MathJax for equations, but this setting is only
- available globally and requires one to have access to a server that runs
- the backend.
+では、数式用にjsMathとMathJaxを使用することもできます。ただし、この設定はグローバルにしか設定することができず、バックエンドで実行させるサーバへのア
+クセスが利用できる必要があります。
 \end_layout
 
 \end_inset
 
- More importantly (as of version 1.1.1, at least), 
+。さらに重要なことは(少なくとも第1.1.1版においては)、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 eLyXer
 \end_layout
 
 \end_inset
 
- has limited support for math macros and no support for user-defined paragraph
- or character styles.
- These limitations make 
+は数式マクロを一部しかサポートしておらず、ユーザ定義の段落様式や文字様式をサポートしていません。これらの制約によって、LyXユーザが生成する文書の多くにとっては
+、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 eLyXer
 \end_layout
 
 \end_inset
 
- unsuitable for many of the documents LyX users produce.
- In principle, of course, these problems could be solved, but the LyX developers
- have decided to follow a different path and have made LyX itself capable
- of writing XHTML, just as it is capable of writing LaTeX, DocBook, and
- plaintext.
+は不向きなものになっています。もちろん、原理的に、これらの問題を解決することもできたのですが、LyX開発陣は別の方法を採ることとし、LyXがLaTeXやDocB
+ook、平文を書き出すことができるのと同様に、LyX自身にXHTMLを書きだす能力を身につけさせることとしたのです。
 \end_layout
 
 \begin_layout Standard
-As of this writing, XHTML output remains under development and should probably
- be regarded as 
-\begin_inset Quotes eld
-\end_inset
-
-experimental
-\begin_inset Quotes erd
-\end_inset
-
-.
+この原稿執筆時点では、XHTML出力は開発途上であり、おそらく「実験的」機能として解されるべきでしょう
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-The file 
+LyXソースツリーもしくは
+\begin_inset CommandInset href
+LatexCommand href
+name "オンラインでのアクセス"
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/development/HTML/HTML.notes"
+
+\end_inset
+
+にある
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 development/HTML.notes
 \end_layout
 
 \end_inset
 
-, which can be found in the LyX source tree or 
+ファイルには、通常、XHTML出力の現状についての最新の情報が収録されています。
 \begin_inset CommandInset href
 LatexCommand href
-name "accessed online"
-target "http://www.lyx.org/trac/browser/lyxgit/development/HTML/HTML.notes?rev=master"
-
-\end_inset
-
-, usually contains up-to-date information about the state of XHTML output.
- See also the list of XHTML bugs on 
-\begin_inset CommandInset href
-LatexCommand href
-name "the bug tracker"
+name "バグ追跡ページ"
 target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new&max=0&component=xhtml+export&order=id&col=id&col=summary&col=reporter&col=keywords&keywords=%21%7Efixedintrunk&desc=1"
 
 \end_inset
 
-.
+にあるXHTML関連バグ一覧も参照のこと。
 \end_layout
 
 \end_inset
 
- Still, the developers have chosen this approach because it has several
- potential advantages over the other two.
+。それでもこのアプローチは、他の2つの方法よりも、潜在的な利点がいくつもあるので、開発陣はこの方法を選択したのです。
 \end_layout
 
 \begin_layout Standard
-These advantages are primarily due to the fact that the XHTML output routines,
- since they are part of LyX, know everything LyX knows about the document
- being exported.
+これらの利点は、主に、XHTML出力ルーチンがLyXの一部となっているため、LyXが出力する文書についてLyXが関知しているところのものは、すべて知り得るという
+ところから来ています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Another advantage is that, since these routines are internal to LyX, they
- are immune to changes in LyX's file format, or to changes in the semantics
- of existing insets.
+他には、これらのルーチンがLyX内部にあるため、LyXファイル形式や既存の差込枠の文法に変更があっても、影響を受けずに済むという利点もあります。
 \end_layout
 
 \end_inset
 
- So they know about the table of contents (as displayed in the outline),
- about the counters associated with different paragraph styles, and about
- user-defined styles.
- The XHTML output routines know what LyX knows about internationalization,
- too, so they will output 
-\begin_inset Quotes eld
-\end_inset
-
-Chapter 1
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-Kapitel 1
-\begin_inset Quotes erd
-\end_inset
-
-, depending upon the language in effect at the time.
- 
+。つまり、XHTML出力ルーチンは、(文書構造に表示されるような形での)目次や、それぞれの段落様式に関連付けられたカウンタや、ユーザ定義の様式についても知ってい
+るのです。XHTML出力ルーチンは、国際化についてLyXが関知しているものも知っているので、ちょうどその時に有効になっている言語に依存して、「Chapter
+ 1」と出力されたり、「Kapitel 1」と出力されたりするのです。
 \end_layout
 
 \begin_layout Standard
-Quite generally, the output routines know what LyX knows about document
- layout, that is, about how the document is to be rendered on screen.
- We use this information when we output the document as XHTML.
- In particular, LyX 
+汎く一般的に、出力ルーチンは、LyXが文書レイアウトについて関知しているものは知っており、したがって、文書が画面上にどのように描画されるかも知っています。文書を
+XHTMLに出力するときには、この情報を利用します。特に、LyXは、文書を画面上に描画するときに使用するレイアウト情報に対応したCSSスタイル情報を
 \emph on
-automatically
+自動的に
 \emph default
- generates CSS style information corresponding to the layout information
- it uses to render the document on screen: if section headings are supposed
- to be sans-serif and bold as seen in LyX, then (by default) they will be
- sans-serif and bold when viewed in a web browser, too.
- And this is true not just for pre-defined styles, like Section, but for
- any style, including user-defined styles.
- Indeed, the XHTML output routines make no distinction between user-defined
- paragraph and character styles and LyX's own pre-defined styles: in each
- case, everything LyX knows about the styles is contained in the layout
- files.
- And much the same is true as regards pre-defined textual insets, such as
- footnotes, and various custom insets.
- 
+生成します。もし節見出しが、LyX中でサンセリフ体かつボールド体であるとすると、(既定では)ウェブブラウザに表示した時にも、サンセリフでボールドになります。これ
+は、節のような定義済み様式だけでなく、ユーザ定義のものも含めて、すべての様式でそうです。実際、XHTML出力ルーチンは、ユーザ定義の段落・文字様式と、LyX自身
+の定義済み様式とを区別しません。どちらの場合も、LyXが様式について関知しているところのものは、全てレイアウトファイルに含まれています。これは、脚注のような定義
+済み差込枠や、各種ユーザ設定差込枠でもそうです。
 \end_layout
 
 \begin_layout Standard
-The result is that XHTML output can be customized and extended in exactly
- the same way LaTeX output can be customized and extended: through layout
- files and modules.
- See chapter five of the 
+結果として、XHTML出力は、レイアウトファイルやモジュールを通して、LaTeX出力と全く同じように、ユーザが設定したり拡張したりすることができるのです。詳細に
+ついては、取扱説明書『
 \emph on
-Customization 
+カスタマイズ篇
 \emph default
-manual for the details.
+』の第5章をごらんください。
 \end_layout
 
 \begin_layout Standard
-The remainder of this chapter contains more detailed information on XHTML
- output, its limitations, and ways to work around those limitations.
+本章の残りでは、XHTML出力についての、さらに詳細な情報について取り扱い、その制約や、制約の回避の仕方を取り扱います。
 \end_layout
 
 \begin_layout Section
-Math Output in XHTML
+XHTMLにおける数式出力
 \end_layout
 
 \begin_layout Standard
-LyX offers four choices for how math is rendered.
- These have various advantages and disadvantages:
+LyXでは、数式描画に4つの方法を選択できます。以下に示すように、それぞれに利点と欠点があります。
 \end_layout
 
 \begin_layout Itemize
@@ -5502,28 +5484,24 @@ MathML
 \begin_inset Newline newline
 \end_inset
 
-MathML is a dialect of XML designed specifically for mathematics on the
- web, and it typically renders very well in browsers that support it.
- The disadvantage is that not all browsers support MathML, and support is
- not complete even in the Gecko-based browsers, such as Firefox.
+MathMLは、ウェブ上で数学を用いるために、特にデザインされたXMLの一方言であり、これをサポートするブラウザ上では、通常、特に美しい表現が得られます。欠点は
+、すべてのブラウザがMathMLをサポートしているわけではないという事と、FirefoxのようなGeckoベースのブラウザでも、サポートが完璧ではないという事で
+す。
 \begin_inset Newline newline
 \end_inset
 
-If LyX is unable to render a formula as MathML---for example, if the formula
- uses the 
+例えば、数式が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xymatrix
 \end_layout
 
 \end_inset
 
- package or ERT---then it will instead output the formula as an image.
- 
+パッケージを使用していたり、TeXコードを使用しているなどで、もしLyXが数式をMathMLとして描画できないとすると、LyXは数式を代わりに画像として出力しま
+す。 
 \end_layout
 
 \begin_layout Itemize
@@ -5531,154 +5509,134 @@ HTML
 \begin_inset Newline newline
 \end_inset
 
-As mentioned above, 
+前述のとおり、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 elyxer
 \end_layout
 
 \end_inset
 
- outputs math as HTML, styled by CSS.
+は、数式をCSSで装飾したHTMLとして出力します
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyX has borrowed some of the CSS for its HTML output from 
+LyXは、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 elyxer
 \end_layout
 
 \end_inset
 
-.
+からのHTML出力のために、CSSの一部を拝借しています。
 \end_layout
 
 \end_inset
 
- For simple formulae, this can work quite well, though with more complicated
- formulae it tends to break down.
- Still, this method has the advantage that it is very widely supported and
- so it may be appropriate for documents that contain only a little, fairly
- simple math.
-\begin_inset Newline newline
-\end_inset
-
-If Lyx is unable to render a formula as HTML---for example, if the formula
- uses the 
+。簡単な数式では、これは非常にうまく行きますが、少し複雑な数式になると、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+elyxer
+\end_layout
 
-\lang english
+\end_inset
+
+は歯が立たなくなります。それでも、この方法は非常に広くサポートされているという利点があり、かなり簡単な数式を少しだけ含んでいるような文書に適しているでしょう。
+\begin_inset Newline newline
+\end_inset
+
+例えば、数式が
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 xymatrix
 \end_layout
 
 \end_inset
 
- package or ERT---then it will instead output the formula as an image.
+パッケージを使用していたり、TeXコードを使用しているなどで、もしLyXが数式をHTMLとして描画できないとすると、LyXは数式を代わりに画像として出力します。
  
 \end_layout
 
 \begin_layout Itemize
-Images
+画像
 \begin_inset Newline newline
 \end_inset
 
-Like 
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 htlatex
 \end_layout
 
 \end_inset
 
-, LyX will output formulae as images, the very same images, in fact, that
- are used for instant preview.
+のように、LyXは数式を画像としても出力できます。この画像は、実は、自動プレビューで使用されているものと全く同じです
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Instant preview does 
+ただし、画像を出力に使うために、自動プレビューを入にしておく必要は
 \emph on
-not 
+ありません
 \emph default
-have to be on for images to be output, however.
+。
 \end_layout
 
 \end_inset
 
- The advantage to this method is that the images are simply generated by
- LaTeX, so they are very accurate.
- The disadvantage, as mentioned earlier, is that these are bitmapped images,
- so they do not scale terribly well, and one cannot copy them, etc.
- (As of this writing, there are also problems about equation numbering.
- See 
+。この方法の利点は、画像が他ならぬLaTeXによって生成されているので、非常に正確であることです。欠点は、前述したとおり、画像がビットマップなので、伸縮が全くう
+まく行かなかったり、コピーが出来なかったりといったことがあります(執筆時点においては、数式の付番にも問題があります。
 \begin_inset CommandInset href
 LatexCommand href
-name "bug 6894"
+name "バグ 6894"
 target "http://www.lyx.org/trac/ticket/6894"
 
 \end_inset
 
-.)
+を参照のこと。)。
 \begin_inset Newline newline
 \end_inset
 
-The size of the images can be controlled by setting the 
-\begin_inset Quotes eld
-\end_inset
-
-Math Images Scaling
-\begin_inset Quotes erd
-\end_inset
-
- parameter under 
+画像の寸法は、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力
 \end_layout
 
 \end_inset
 
-.
+の「数式画像の伸縮」パラメータを変更することで制御できます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-For those who want to know, this controls the resolution of the image in
- dots per inch and is based upon a default of 75 dpi.
+必要な方のために述べておくと、これは、画像の解像度をdpi (1インチあたりドット数)で制御するためのもので、75dpiを基準としています。
 \end_layout
 
 \end_inset
 
-
+。
 \begin_inset Newline newline
 \end_inset
 
-If LyX for some reason fails to create an image for a formula (e.g., if a
- required LaTeX package is not installed), then it will fall back to outputing
- the raw LaTeX.
+もしLyXが、何らかの理由によって数式の画像を生成できない(例えば、必要なLaTeXパッケージが導入済みでないなど)ときは、回避策として、生のLaTeXを出力し
+ます。
 \end_layout
 
 \begin_layout Itemize
@@ -5686,9 +5644,8 @@ LaTeX
 \begin_inset Newline newline
 \end_inset
 
-Finally, LyX will happily output math as LaTeX.
- As well as being the output of last resort, this method can be used with
- such tools as 
+最後に、LyXは、数式をLaTeXとしても出力することができます。この方法は、最終手段としての出力方法である一方で、HTML文書に埋め込まれたLaTeXを描画す
+るのにJavaScriptを使用する、
 \begin_inset CommandInset href
 LatexCommand href
 name "jsMath"
@@ -5696,130 +5653,96 @@ target "http://www.math.union.edu/~dpvc/jsMath/"
 
 \end_inset
 
-, which uses JavaScript to render LaTeX embedded in HTML documents.
- LyX wraps the LaTeX in either a 
+のようなツールとともに使用することもできます。LyXは、jsMathで必要とされているのと同じように、LaTeX部分を、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 span
 \end_layout
 
 \end_inset
 
- (for inline formulas) or 
+(行内数式用)または
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
 \end_inset
 
- (for displayed formulas) with 
+(別行立て数式用)に
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 class='math'
 \end_layout
 
 \end_inset
 
-, as is required for jsMath.
+を指定したもので、包んで出力します。
 \end_layout
 
 \begin_layout Standard
-One of these output methods must be selected under 
+これらの出力方法のいずれかを
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力
 \end_layout
 
 \end_inset
 
-.
- By default, LyX outputs MathML.
- This is a document-wide setting, therefore.
+で選択しなくてはなりません。既定では、LyXはMathMLで出力を行います。これは、文書全体に適用される設定となります。
 \end_layout
 
 \begin_layout Standard
-Eventually, LyX will offer the user the option to select an alternate output
- method for a particular inset, say, one that isn't being rendered very
- well by MathML.
+最後に、LyXでは、例えば、MathMLではあまりうまく出力されないような差込枠に対して、別の出力方法を選択できる選択肢が用意されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-That said, since LyX falls back to images if the inset contains ERT, then
- one can force output as an image by putting some harmless ERT into the
- math, for example: 
+その他にも、LyXは、差込枠にTeXコードが含まれていると画像出力に回帰するので、数式中に
 \begin_inset Formula $a=b\relax$
 \end_inset
 
-.
+のような無害なTeXコードを挿入することによって、画像出力を強制することができます。
 \end_layout
 
 \end_inset
 
-
+。
 \end_layout
 
 \begin_layout Section
-Bibliography and Citations
+書誌情報と引用
 \end_layout
 
 \begin_layout Standard
-XHTML output fully supports bibliographies and citations.
- 
+XHTML出力は、書誌情報と引用を完全にサポートしています。
 \end_layout
 
 \begin_layout Standard
-Citation labels are generated by the same machinery that generates LyX's
- on-screen labels, so the labels will look in the output much as they do
- in LyX, though better.
- If you are using numerical citations, then LyX will output numerical labels,
- such as [1] or [17], rather than simply showing the citation key in square
- brackets, as it does on-screen.
- If you are using author-year citations, then LyX will add lowercase letters
- to the years, just as BibTeX does, if it finds more than one citation for
- a given author-year combination.
- The labels will be printed with the bibliography entries.
- Note that there is, at present, no way to customize the appearance of the
- labels, for example, to choose between square brackets and parentheses.
+引用ラベルは、LyX画面上のラベルを生成するのと同じ機構で生成されているので、出力中のラベルは、LyX中の外見と同質またはそれよりも上質な仕上がりとなっています
+。連番引用を使用している場合には、LyXは、画面上で表示されるような各カッコに囲まれた引用鍵を単純に表示するのではなく、[1]や[17]などの連番ラベルを出力し
+ます。著者-出版年形式の引用を使用している場合で、同じ著者-出版年の組み合わせが複数ある場合、LyXは、BibTeXが行うように出版年に小文字を付します。ラベル
+は、書誌情報項目とともに印字されます。現在のところ、角括弧を丸括弧に変更するなど、ラベルの外見を変更する手段はありませんのでご注意ください。
 \end_layout
 
 \begin_layout Standard
-Bibliography output is handled by the same machinery that handles the presentati
-on of reference information in the citation dialog, so you will see in the
- XHTML output pretty much what you would see if you were to look at a given
- entry in the citation dialog.
- The formatting can be customized in your layout file or, preferably, in
- a module.
- See the 
-\emph on
-Customization
-\emph default
- manual for the details.
+書誌情報出力は、引用ダイアログで文献情報表示を取り扱うのと同じ機構で取り扱われているので、XHTML出力は、引用ダイアログで特定の文献項目を表示させた時のものに
+非常によく似ています。整形の仕方は、レイアウトファイルや望ましくはモジュールでカスタマイズすることができます。詳細については、取扱説明書『カスタマイズ篇』をご覧
+ください。
 \end_layout
 
 \begin_layout Standard
-The main defect at present is that cross-referenced information is printed
- with every entry with which it is associated.
- So you can see things like this:
+現在のところ、主だった瑕疵は、相互参照された情報が、関連した項目の全てに印字されてしまうことです。つまり、以下のような表示が為されます。
 \end_layout
 
 \begin_layout Quote
@@ -5857,123 +5780,81 @@ Language in Context: Selected Essays
 \end_layout
 
 \begin_layout Standard
-This should be fixed before long.
+これは、遠くないうちに修正されるでしょう。
 \end_layout
 
 \begin_layout Standard
-There is no support at present for sectioned bibliographies.
- If you have multiple bibliographies, then LyX will print the same bibliography
- over and over.
+現在のところ、節ごとの書誌情報出力はサポートされていません。複数の書誌情報がある場合には、LyXは同じ情報を繰り返し出力してしまいます。
 \end_layout
 
 \begin_layout Section
-Indexes
+索引
 \end_layout
 
 \begin_layout Standard
-LyX will happily export indexes as XHTML, but with certain limitations at
- the moment.
+LyXは、索引をXHTMLとして書きだすことができますが、現在のところ、若干の制約があります。
 \end_layout
 
 \begin_layout Standard
-Index export will be most reliable when you do not attempt to use the fancy
- constructs that are described in the section on indexes in the 
+索引の書き出しは、
 \emph on
-User's Guide
+ユーザーの手引き
 \emph default
-.
+の索引の節に書かれているような手の込んだ方法を使おうとしないほうが、信頼性が保てます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-The main issue here is that LyX itself does not really handle these.
- It just lets you enter what you would have to enter in raw LaTeX.
+ここでの主な問題は、これらの操作の際に、LyX自身は何もしていないという点です。つまり、生のLaTeXで入力しなくてはならないようなものをそのまま入力しているの
+です。
 \end_layout
 
 \end_inset
 
- We'll describe how they are handled using the subsection headings from
- that section.
-\end_layout
-
-\begin_layout Itemize
-Grouping Index Entries (aka, sub-entries): LyX makes an effort to support
- these, but the entries must be separated by 
-\begin_inset Quotes eld
-\end_inset
-
- ! 
-\begin_inset Quotes erd
-\end_inset
-
-, that is, there must be spaces around the exclamation point.
- This is because it is otherwise too difficult to check for escaped exclamation
- points, ones in math, and so forth.
+。当該節の小節見出しに沿って、それらがどう処理されるかを説明しましょう。
 \end_layout
 
 \begin_layout Itemize
-Page Ranges: There is no support at all for page ranges, since these make
- no sense with XHMTL.
- Instead, you will just get two index entries, one at either end.
+索引項目のグループ化(下層項目): LyXはこれらをサポートしようと努めていますが、項目は「 ! 」(感嘆符の周りに空白)で分離しなくてはなりません。これは、そ
+うしないと数式などで使われているエスケープされた感嘆符をチェックするのが非常に難しくなるからです。
 \end_layout
 
 \begin_layout Itemize
-Cross-referencing: There is no support for cross-referencing.
- If LyX finds an entry containing the 
-\begin_inset Quotes eld
-\end_inset
-
-|see\SpecialChar \ldots{}
-
-\begin_inset Quotes erd
-\end_inset
-
- construct, it is just dropped, and the rest is treated as an ordinary index
- entry.
+ページ範囲: ページ範囲については、XHTMLでは意味がないので、全くサポートされません。その代わりに、引用項目のはじめと終わりの頁それぞれに、2つの索引項目が
+得られるだけです。
 \end_layout
 
 \begin_layout Itemize
-Index Entry Order: LyX does support attempts to fix the sorting order.
- It will take what is before the first `@' it finds and use that for sorting,
- taking what follows the first `@' to be the actual entry.
- At present, LyX does not check for escaped `@', so do not try to index
- email addresses.
+相互参照: 相互参照のサポートはありません。LyXが「|see\SpecialChar \ldots{}
+」という下だりを持つ項目を検出すると、その部分はただ無視されて、残りの部分が通常の索引項目だとみな
+されます。
 \end_layout
 
 \begin_layout Itemize
-Index Entry Layout: You can format entries by using the text style dialog,
- or by using any other method available within LyX itself.
- There is no support for constructs like: 
-\begin_inset Quotes eld
-\end_inset
-
-entry|textbf
-\begin_inset Quotes erd
-\end_inset
-
-.
- Indeed, if LyX finds a pipe symbol, `|', in an entry, it will delete it
- and everything that follows it.
+索引項目の整序: LyXは整序順の変更をサポートします。LyXは、最初に検出した「@」の前の部分を取り出して、それを整序に用い、最初の「@」の後の部分を実際の項
+目として取り出します。現在のところ、LyXはエスケープされた「@」を取り扱わないので、電子メールアドレスを索引に使わないでください。
 \end_layout
 
 \begin_layout Itemize
-Multiple Indexes: There is no support for multiple indexes.
- Rather, all index entries will be printed as one large index.
- To avoid our printing several versions of the index, we print only the
- main index, so make sure you have one.
+索引項目のレイアウト: 項目は、テキスト様式ダイアログを使うなり、LyX内で使用可能な方法を用いることで、索引項目を成形することができます。「項目|textbf
+」のような文法はサポートされません。LyXは、項目内にパイプ記号「|」を検出すると、パイプ記号とその後に続くものすべてを削除してしまいます。
+\end_layout
+
+\begin_layout Itemize
+複数の索引: 複数の索引はサポートされていません。すべての項目は、ひとつの大きな索引として印字されます。索引が何度も印字されることを防ぐため、中心となる索引だけ
+を印字しますので、その索引は必ず置くようにしてください。
 \end_layout
 
 \begin_layout Section
-Nomenclature and Glossary
+記号一覧および用語集
 \end_layout
 
 \begin_layout Standard
-There is at present no support for glossaries.
- Adding it would be fairly trivial, and welcome.
+現在のところ、用語集のサポートはありません。この機能の追加は、比較的容易だと思われますので、あなたの貢献をお待ちしております。
 \end_layout
 
 \begin_layout Chapter
-LyXサーバー
+LyXサーバ
 \end_layout
 
 \begin_layout Section
@@ -5981,15 +5862,15 @@ LyXサーバー
 \end_layout
 
 \begin_layout Standard
-「LyXサーバー」を使用すると、他のプログラムが、LyXと通信したり、LyXコマンドを実行させたり、LyXの内部状態に関する情報を取得したりすることができるよう
-になります。これは熟練したユーザー向けの機能ですが、便利なはずです。たとえば、LyXサーバーに書き込むことによって、JabRefのような参考文献管理ソフトが、L
-yXに文献引用を「押し込む」ことが可能となります。
+「LyXサーバ」を使用すると、他のプログラムが、LyXと通信したり、LyXコマンドを実行させたり、LyXの内部状態に関する情報を取得したりすることができるように
+なります。これは熟練したユーザー向けの機能ですが、便利なはずです。たとえば、LyXサーバに書き込むことによって、JabRefのような参考文献管理ソフトが、LyX
+に文献引用を「押し込む」ことが可能となります。
 \end_layout
 
 \begin_layout Standard
 ただし、現在のところ、
 \emph on
-LyXサーバーはWindowsでは機能しない
+LyXサーバはWindowsでは機能しない
 \emph default
 ことに注意してください
 \begin_inset Foot
@@ -6005,11 +5886,11 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-LyXサーバーを開始するには
+LyXサーバを開始するには
 \end_layout
 
 \begin_layout Standard
-LyXサーバーは、名前をつけたパイプの対を利用することで機能します。パイプは、通常
+LyXサーバは、名前をつけたパイプの対を利用することで機能します。パイプは、通常
 \begin_inset Flex Code
 status collapsed
 
@@ -6118,7 +5999,7 @@ lyxpipe
 
 \end_inset
 
-」などに設定することができます。サーバーを開始するためには、これを
+」などに設定することができます。サーバを開始するためには、これを
 \emph on
 手動で設定しなくてはなりません
 \emph default
@@ -6146,14 +6027,14 @@ status collapsed
 
 \end_inset
 
-」を付け加えます。パイプがすでに存在していれば、LyXは他のLyXプロセスがすでに実行中であると判断して、サーバーを開始しません。POSIX（Unix型）システ
-ムでは、なんらかの理由で、LyXが終了する際に使用されていない「古い」パイプが削除されずに残ったりすると、LyXはこれを削除しようとします。何らかの理由でこれが
-失敗した場合、手動でパイプを削除したのちに、LyXを再起動する必要があります。Windowsでは、プログラムが終了したりクラッシュしたりすると、OSがパイプを削
-除するので、「古い」パイプが残ることはありません。
+」を付け加えます。パイプがすでに存在していれば、LyXは他のLyXプロセスがすでに実行中であると判断して、サーバを開始しません。POSIX（Unix型）システム
+では、なんらかの理由で、LyXが終了する際に使用されていない「古い」パイプが削除されずに残ったりすると、LyXはこれを削除しようとします。何らかの理由でこれが失
+敗した場合、手動でパイプを削除したのちに、LyXを再起動する必要があります。Windowsでは、プログラムが終了したりクラッシュしたりすると、OSがパイプを削除
+するので、「古い」パイプが残ることはありません。
 \end_layout
 
 \begin_layout Standard
-サーバーを使用するLyXプロセスを複数起動するには、それぞれのプロセスに、別のユーザーディレクトリを使用させたり、別々の
+サーバを使用するLyXプロセスを複数起動するには、それぞれのプロセスに、別のユーザーディレクトリを使用させたり、別々の
 \begin_inset Flex Code
 status collapsed
 
@@ -6167,7 +6048,7 @@ preferences
 \end_layout
 
 \begin_layout Standard
-クライアントプログラムを開発しようとされているのであれば、LyXサーバーからのデバッグ情報を有効にすると便利かもしれません。そのためには、Lyxを
+クライアントプログラムを開発しようとされているのであれば、LyXサーバからのデバッグ情報を有効にすると便利かもしれません。そのためには、Lyxを
 \begin_inset Flex Code
 status collapsed
 
@@ -6362,7 +6243,7 @@ NOTIFY:
 \end_layout
 
 \begin_layout Section
-単純なLyXサーバープロトコル
+単純なLyXサーバプロトコル
 \end_layout
 
 \begin_layout Standard
@@ -6441,84 +6322,64 @@ name "sub:遡及検索"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In most cases LyX will do the work for you by enabling the option 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Synchronize with Output
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力
 \end_layout
 
 \end_inset
 
- in the menu 
+メニューで
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output
+出力と同期
 \end_layout
 
 \end_inset
 
-.
- In such a case LyX will automatically insert the necessary SyncTeX macro
- (for PDF) or load the srcltx package (for DVI) respectively.
- This option can be easily reached also on 
+オプションを有効にすれば、ほとんどの場合、LyXがすべてをうまくこなしてくれます。その場合、LyXは、自動的に、必要なSyncTeXマクロ(PDFの場合)や、s
+rcltxパッケージ(DVIの場合)を挿入してくれます。このオプションは、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+表示/更新
+\end_layout
+
+\end_inset
+
+ツールバーからも容易にアクセスすることができます。
+\end_layout
+
+\begin_layout Standard
+もし、これとは別の設定が必要な場合には、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+出力と同期
+\end_layout
+
+\end_inset
+
+の直下にあるドロップダウンボックスから、自製マクロを選択ないし入力することができます。
+\end_layout
+
+\begin_layout Standard
+方式として
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-View/Update
-\end_layout
-
-\end_inset
-
- Toolbar.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you need a different setting, you can select or input a custom macro
- from the drop down box just below 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
-Synchronize with Output
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the method 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 
 \backslash
 synctex=1
@@ -6526,14 +6387,11 @@ synctex=1
 
 \end_inset
 
- enables gzip compression.
- If your viewer does not support it, you should instead use 
+を用いると、gzip圧縮が有効となることに注意してください。使用しているビューアがgzip圧縮をサポートしていない場合には、代わりに
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 synctex=-1
@@ -6541,89 +6399,63 @@ synctex=-1
 
 \end_inset
 
-.
+を指定してください。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Please aöso note that including the 
+また、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 srcltx
 \end_layout
 
 \end_inset
 
- package or 
+パッケージや
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 src-specials
 \end_layout
 
 \end_inset
 
- sometimes has an undesired impact on the typesetting.
- Thus, you should switch output synchronization off for the final typesetting
- if you use the 
+を取り込むと、組版上、不具合が生じることがあるのでご注意ください。したがって、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 srcltx
 \end_layout
 
 \end_inset
 
- package or 
+パッケージや
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 src-specials
 \end_layout
 
 \end_inset
 
-.
- 
+を使用している場合には、最終版を組版する際には、出力同期を無効にするべきです。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In case you need some more special settings that are not covered by the
- automatic settings, read the next section about how to set up output synchroniz
-ation manually.
- If the automatic setup suits your needs, you can readily jump to section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+自動設定でカバーされている範囲よりも、さらに特殊なものが必要な場合には、出力同期を手動で設定する仕方を述べた次節をお読みください。自動設定で事足りる場合には、自
+動設定・手動設定ともに必要となるビューア上の設定を述べた、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:特定のビューアを設定して使うには"
 
 \end_inset
 
-
-\lang english
-, where the necessary configuration steps in your viewer -- needed both
- with the automatic and the manual setup -- are described.
+節に進むことができます。
 \end_layout
 
 \begin_layout Subsection
@@ -7549,49 +7381,12 @@ PDF (pdflatex)
 status collapsed
 
 \begin_layout Plain Layout
-SumatraPDF.sh
+SumatraPDF -inverse-search "lyxeditor -g %f %l"
 \end_layout
 
 \end_inset
 
-と入力してください。ここで
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-SumatraPDF.sh
-\end_layout
-
-\end_inset
-
-は以下のようなスクリプトです（お使いのコマンドパスに置きます。
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-/usr/local/bin
-\end_layout
-
-\end_inset
-
-がもっとも良い選択肢でしょう）。
-\end_layout
-
-\begin_layout LyX-Code
-#!/bin/bash
-\begin_inset Newline newline
-\end_inset
-
-cd $(dirname $1)
-\begin_inset Newline newline
-\end_inset
-
-SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
-\end_layout
-
-\begin_layout Standard
-SumatraPDFは、Windowsネイティブのアプリケーションであり、LyXのCygwin版が使用するPOSIXパスを理解しないので、このラッパスクリプトが
-必要となります。SumatraPDF.exeがお使いのコマンドパスにない場合は、上記のスクリプトでPOSIXのフルパスを使用してください。
+と入力してください。SumatraPDF.exeがお使いのコマンドパスにない場合は、上記のスクリプトでPOSIXのフルパスを使用してください。
 \begin_inset Flex Code
 status collapsed
 
@@ -7627,11 +7422,37 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-前方検索
+順検索
 \end_layout
 
 \begin_layout Standard
-前方検索を有効にするためには、生成されたPDF/DVI出力ファイルに、TeXソースに関する情報を追加する必要があります。これは、第
+順検索は、名前のとおり、遡及検索の「逆」ということができます。これを使うと、LyX内部から、ビューアに特定の位置を表示させることができるようになります。(下記に
+述べるように)順検索を設定すると、LyX文書中の適当なところにカーソルをおいて、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+移動\SpecialChar \menuseparator
+順検索
+\end_layout
+
+\end_inset
+
+(またはマウスを右クリックした時に出るコンテクストメニューで
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+順検索
+\end_layout
+
+\end_inset
+
+を選ぶ)を選択すれば、ビューアもその位置にジャンプします。もちろん、これはお使いのビューアが、この機能をサポートしていることが前提です。
+\end_layout
+
+\begin_layout Standard
+順検索を有効にするためには、生成されたPDF/DVI出力ファイルに、TeXソースに関する情報を追加する必要があります。これは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:遡及検索"
@@ -7654,19 +7475,12 @@ status collapsed
 
 \end_inset
 
-で自分の使うビューアを利用するように、LyXを設定する必要があります。ただし、yap・xdvi・okular・Sumatra PDFなど、一部のビューアしかこの
-操作は利用できません
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sumatraの場合には、http://www.istri.fr/zip/CMCDDE.zipからダウンロードできるCMCDDEが必要です。
+で自分の使うビューアを利用するように、LyXを設定する必要があります。いくつかのビューアについては、既にテストされた設定が揃っていますので、それをドロップダウン
+リストから選択することができます。その中に使いたいものがない場合には、適切な設定をご自身で入力しなくてはなりません。定義に用いる文法でｈは、以下の変数を用いるこ
+とができます。
 \end_layout
 
-\end_inset
-
-。Evinceやxpdfなどの他のビューアでは、少なくとも、ファイルの特定頁を読み込み直したり、指し示したりすることができますが、これらの場合にはsynctex
-の外部コールを使用することができます。設定ダイアログに用意されている用例をよく研究してください。設定中で置き換えられる値は以下の通りです。
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7676,7 +7490,10 @@ $$n
 
 \end_inset
 
-は行番号を指し、
+: 行番号
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7686,7 +7503,10 @@ $$t
 
 \end_inset
 
-は書き出された一時.texファイル、
+: 書き出された一時.texファイル名
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7696,12 +7516,35 @@ $$o
 
 \end_inset
 
-は書き出された出力ファイルを指します（一時ディレクトリにどちらが存在するかに依存してdviあるいはpdf）。
+: 書き出された出力ファイル名(一時ディレクトリにどちらが存在するかに依存してdviあるいはpdf)
 \end_layout
 
 \begin_layout Standard
-閲覧時には、一時ディレクトリに.dviファイルがあるか.pdfファイルがあるか（特定の文書を閲覧するのにどの書式を使用したか）によって、適当なプレビュー書式をLyX
-が動的に選択します。
+ただし、yap・xdvi・okular・Sumatra PDFなど、一部のビューアしか、完全な順検索機能をサポートしていないことにご注意ください
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Sumatraの場合には、
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.istri.fr/zip/CMCDDE.zip"
+
+\end_inset
+
+からダウンロードできるCMCDDEが必要です。
+\end_layout
+
+\end_inset
+
+。汎く用いられているPDFビューア(中でもAdobe Reader)の多くは、順検索を全くサポートしていませんが、evinceやxpdfなどの他のビューアでは、
+少なくとも、ファイルを読み込み直して特定頁にジャンプすることができるので、少なくとも「近く」にまでは移動することができます。後者の機能は、synctexの外部コ
+ールによって提供されています(定義済みの用例の設定を参照)。
+\end_layout
+
+\begin_layout Standard
+順検索は、DVI出力でもPDF出力でも機能します。LyXは、直前にどちらの形式でプレビューを行ったかをチェックし(すなわち、どちらの形式のファイルが一時ディレク
+トリにあるかによって)、それぞれの形式に適切な設定を、LyXが選択します。
 \end_layout
 
 \begin_layout Chapter
@@ -8304,7 +8147,7 @@ referee
 \family default
 ダイアログの
 \family sans
-任意設定
+ユーザ設定
 \family default
 クラスオプションフィールドを使って行うことができます。この欄に
 \family typewriter
@@ -8728,7 +8571,7 @@ status collapsed
 \family default
 の
 \family sans
-任意設定
+ユーザ設定
 \family default
 ボックスに入力してください。
 \end_layout
@@ -10272,14 +10115,11 @@ Elsevier各誌
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-See the LyX template file 
+LyX用例ファイル
 \family typewriter
 elsarticle.lyx
 \family default
-.
- It contains all infos you need.
+に、必要な情報が全て含まれていますのでご参照ください。
 \end_layout
 
 \begin_layout Section
@@ -10572,7 +10412,7 @@ fancyheadings
 
 \end_deeper
 \begin_layout Subsubsection
-任意設定クラスオプション
+追加オプション
 \end_layout
 
 \begin_layout Standard
@@ -10580,7 +10420,7 @@ fancyheadings
 \family sans
 文書設定
 \family default
-ダイアログの任意設定クラスオプションボックスで使うことができます。
+ダイアログのユーザ設定クラスオプションボックスで使うことができます。
 \end_layout
 
 \begin_layout Labeling
@@ -17340,7 +17180,27 @@ LyXにおけるRCSコマンド
 ファイル\SpecialChar \menuseparator
 バージョン管理
 \family default
-のサブメニューにあります。LyXは、RCS 5.7に対して試験されています。
+のサブメニューにあります。LyXは、RCS 5.7/5.8に対して試験されています
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+古いDOS/MS Windowのビルド(5.7)では、LyXで正しく動作するためには環境変数を設定しなくてはなりません。特に、タイムゾーン(TZ)を設定し、さらに
+大切なのは、既定の書庫の場所を変更するためにRCSINITを設定しなくてはなりません(
+\begin_inset Quotes eld
+\end_inset
+
+SET RCSINIT=-x,v/
+\begin_inset Quotes erd
+\end_inset
+
+)---そうでないと、LyXは、圧縮ファイルが元の文書があるディレクトリと同じディレクトリにfile.lyx,vの形であると想定します。Windows
+ RCSバイナリとともに配布されているREADMEもご覧ください。
+\end_layout
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Subsubsection
@@ -17498,8 +17358,8 @@ CVSの一般的な利用法
 \end_layout
 
 \begin_layout Standard
-CVSを初めて使いたい場合には、外部ツールを使用して自分のレポジトリを作成し、作業コピーをチェックアウトする必要があります。クライアント＝サーバーモデルを使用し
-ている場合には、最初のレポジトリチェックアウトを行う前にログインする必要があるかもしれません。
+CVSを初めて使いたい場合には、外部ツールを使用して自分のレポジトリを作成し、作業コピーをチェックアウトする必要があります。クライアント＝サーバモデルを使用して
+いる場合には、最初のレポジトリチェックアウトを行う前にログインする必要があるかもしれません。
 \end_layout
 
 \begin_layout Standard
@@ -20217,7 +20077,7 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \end_layout
 
 \begin_layout Standard
-この機能が動くにはLyXサーバが利用可能でなければなりません（既定ではLyXサーバーは使えないようになっています）。LyXサーバを使えるようにするには、
+この機能が動くにはLyXサーバが利用可能でなければなりません（既定ではLyXサーバは使えないようになっています）。LyXサーバを使えるようにするには、
 \family sans
 
 \begin_inset Flex MenuItem
@@ -20258,7 +20118,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-LyXサーバーパイプ
+LyXサーバパイプ
 \family default
 に
 \end_layout
@@ -20445,33 +20305,16 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Special features
-\lang japanese
-
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Special-features"
-
-\end_inset
-
-
+特別な機能
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can do everything with LyX that you can do with LaTeX.
- However, LyX cannot support every LaTeX feature directly.
- But you can always use TeX Code.
- This chapter shows you some more special things you might want to use.
- For other special things you can do with figures, tables, floats, boxes
- and notes, have a look at the 
+LyXでは、LaTeXで可能なことは何でも出来ます。すべてのLaTeXの機能を直接サポートできるわけではありませんが、どんな場合でもTeXコードを使用することは
+できます。本章は、ユーザの興味が有りそうな特別な機能について、若干取り上げます。図表やフロート、ボックス、注釈に関する特別な機能については、取扱説明書『
 \emph on
-EmbeddedObjects
+埋込オブジェクト篇
 \emph default
- manual.
+』をご参照ください。
 \end_layout
 
 \begin_layout Section
@@ -20479,85 +20322,79 @@ EmbeddedObjects
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The aim for this section is to show how the LaTeX package 
-\series bold
-multicol
-\series default
- can be used in a LyX document.
- LyX does not support the 
-\series bold
-multicol
-\series default
- package natively yet, so you have to use some TeX code.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The 
-\series bold
-multicol
-\series default
- package allows switching between one and multicolumn format on the same
- page.
- Footnotes are handled correctly, but will be placed at the bottom of the
- page and not under each column.
- Within the different columns you can use everyting, with the limitation
- that for floats you need to use the option 
+この機能は、文書設定の
 \family sans
-Span colums
+本文レイアウト
 \family default
- for each column.
-\end_layout
-
-\begin_layout Subsection
-二段組み
+にある
+\family sans
+二段組文書
+\family default
+とは別の機能です。文書全体に二段組を行いたい場合には、
+\family sans
+二段組文書
+\family default
+オプションを利用することをお勧めします。その他の場合には、本機能をご使用ください。
 \end_layout
 
 \begin_layout Standard
-二段組みを使いたい場合には、二段組みのレイアウトを始めたい場所にLaTeXモードで
-\end_layout
-
-\begin_layout Standard
-
+文書中で多段組を行うには、LaTeXパッケージ
 \series bold
+multicol
+\series default
 
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\begin_layout Standard
-を挿入してください。そして二段組みを終わりたい場所に
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{multicols}
-\end_layout
-
-\begin_layout Standard
-を入れます。次の例を見てください。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
+LaTeXぱっけーじ @ LaTeXパッケージ ! multicol
 \end_layout
 
 \end_inset
 
+を導入した上で、(
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+モジュール
+\family default
+メニューから)
+\family sans
+多段組
+\family default
+モジュールを読み込んでください。
+\end_layout
 
+\begin_layout Standard
+多段組中の脚注は、ページ下部に置かれ、各段の下ごとには置かれません。各段においては、フロートに
+\family sans
+段をまたぐ
+\family default
+オプションを使用する必要があるほかは、通常通りの使用をすることができます。
+\end_layout
+
+\begin_layout Subsection
+基本
+\end_layout
+
+\begin_layout Standard
+文章中で二段組を使用したい場合には、段組を始める場所で
+\family sans
+多段組始まり
+\family default
+様式を指定してください。様式の中身には、段数を指定するので、この場合は「2」と書き込んでください。段組を終える場所では
+\family sans
+多段組終わり
+\family default
+様式を指定して、内容は空にしておいてください。
+\end_layout
+
+\begin_layout Standard
+下記はその例です。
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
 \end_layout
 
 \begin_layout Standard
@@ -20565,6 +20402,7 @@ begin{multicols}{2}
 
 \series bold
 \size small
+\lang english
 The Adventure of the Empty House
 \series default
 
@@ -20579,6 +20417,7 @@ Sir Arthur Conan Doyle
 \begin_layout Standard
 
 \size small
+\lang english
 It was in the spring of the year 1894 that all London was interested, and
  the fashionable world dismayed, by the murder of the Honourable Ronald
  Adair under most unusual and inexplicable circumstances.
@@ -20602,49 +20441,22 @@ ty which utterly submerged my mind.
  only withdrawn upon the third of last month.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout End Multiple Columns
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-多段組み
 \end_layout
 
 \begin_layout Standard
-二段以上の多段組みをする場合も同じようにできます。
+下記は三段組の例です。
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
+\begin_layout Begin Multiple Columns
+3
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
+\lang english
 It can be imagined that my close intimacy with Sherlock Holmes had interested
  me deeply in crime, and that after his disappearance I never failed to
  read with care the various problems which came before the public.
@@ -20666,53 +20478,39 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
  as they were known to the public at the conclusion of the inquest.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout End Multiple Columns
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
 \end_layout
 
+\begin_layout Standard
+お望みならば10段組まで組むことができますが、文書の読者にとっては、あまり気持ちのいいものではないでしょう。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-三段組み以上も可能ですが、読みにくくなり実用的ではないでしょう。
 \end_layout
 
 \begin_layout Subsection
-カラムの中のカラム
+段組中の段組
 \end_layout
 
 \begin_layout Standard
-カラムの中にカラムを入れることもできます。
+また、段中に段を組むこともできます。
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
+\begin_layout Begin Multiple Columns
+2
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
+\lang english
 The Honourable Ronald Adair was the second son of the Earl of Maynooth,
  at that time governor of one of the Australian colonies.
  Adair's mother had returned from Australia to undergo the operation for
@@ -20720,26 +20518,15 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
  at 427 Park Lane.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
+\begin_layout Begin Multiple Columns
+2
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society--had, so far as was known, no enemies
+\lang english
+The youth moved in the best society–had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -20751,27 +20538,16 @@ The youth moved in the best society--had, so far as was known, no enemies
  on the night of March 30, 1894.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
+\begin_layout End Multiple Columns
 
 \end_layout
 
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards--playing continually, but never for such
- stakes as would hurt him.
+\lang english
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -20780,8 +20556,8 @@ Ronald Adair was fond of cards--playing continually, but never for such
 \size default
  
 \size footnotesize
-The evidence of those who had played with him-- Mr.
- Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
@@ -20794,15 +20570,104 @@ The evidence of those who had played with him-- Mr.
  So much for his recent history as it came out at the inquest.
 \end_layout
 
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Subsection
+応用例
+\end_layout
+
 \begin_layout Standard
+本節の用例は、多段組のさらに特別な機能を示すためのものです。
+\end_layout
+
+\begin_layout Standard
+多段組機能についてさらに知りたい場合には、LaTeXパッケージ
+\series bold
+multicol
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ @ LaTeXパッケージ ! multicol
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "multicol"
+
+\end_inset
+
+の取扱説明書をご覧ください。
+\end_layout
+
+\begin_layout Subsubsection
+前書き
+\end_layout
+
+\begin_layout Standard
+多段組に前書きを追記するには、TeXコードとして、コマンド
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+}[
+\end_layout
+
+\begin_layout Standard
+を
+\family sans
+多段組始まり
+\family default
+様式の段数の後に置き、そのコマンドの後に、前書き文を書いてください。様式の終わりには、TeXコードで
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+]{
+\end_layout
+
+\begin_layout Standard
+コマンドを置いてください。前書きのある文章の例を上げます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\lang english
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
+}[
+\end_layout
 
-\backslash
-end{multicols}
+\end_inset
+
+And the story continues and continues and continues and continues\SpecialChar \ldots{}
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]{
 \end_layout
 
 \end_inset
@@ -20811,15 +20676,684 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-より複雑な形でカラムの中にカラムを入れる例や、へッダのスペース、縦のカラムを分ける線の入れ方などの例は、ファイル 
+
+\size small
 \lang english
-example file
-\lang japanese
+On the evening of the crime, he returned from the club exactly at ten.
+ His mother and sister were out spending the evening with a relation.
+ The servant deposed that she heard him enter the front room on the second
+ floor, generally used as his sitting-room.
+ She had lit a fire there, and as it smoked she had opened the window.
+ No sound was heard from the room until eleven-twenty, the hour of the return
+ of Lady Maynooth and her daughter.
+ Desiring to say good-night, she attempted to enter her son's room.
+ The door was locked on the inside, and no answer could be got to their
+ cries and knocking.
+ Help was obtained, and the door forced.
+ The unfortunate young man was found lying near the table.
+ His head had been horribly mutilated by an expanding revolver bullet, but
+ no weapon of any sort was to be found in the room.
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Standard
+最初のTeXコードの後に、節宣言コマンドをTeXコードとして使用すれば、節見出しを前書きとして使用することができます。例えば、
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+subsection{subsection title}
+\end_layout
+
+\begin_layout Standard
+というコマンドは、小節を生成します。以下の例では、前書きが小々節になっています。
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}[
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsubsection{
+\end_layout
+
+\end_inset
+
+This is a subsubsection heading as a preface
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+A minute examination of the circumstances served only to make the case more
+ complex.
+ In the first place, no reason could be given why the young man should have
+ fastened the door upon the inside.
+ There was the possibility that the murderer had done this, and had afterwards
+ escaped by the window.
+ The drop was at least twenty feet, however, and a bed of crocuses in full
+ bloom lay beneath.
+ Neither the flowers nor the earth showed any sign of having been disturbed,
+ nor were there any marks upon the narrow strip of grass which separated
+ the house from the road.
+ Apparently, therefore, it was the young man himself who had fastened the
+ door.
+ But how did he come by his death? No one could have climbed up to the window
+ without leaving traces.
+ Suppose a man had fired through the window, he would indeed be a remarkable
+ shot who could with a revolver inflict so deadly a wound.
+ Again, Park Lane is a frequented thoroughfare; there is a cab stand within
+ a hundred yards of the house.
+ No one had heard a shot.
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Standard
+多段組を開始する部分に、必要とされる6行を確保出来るだけの垂直スペースがページに残されていない場合、多段組の前に改行が挿入されます。前書きの行数如何では、この必
+要行数を変更したいかもしれません。これは、前書き定義の後で、かつ最後の
+\series bold
+]{
+\series default
+コマンドの前に、TeXコードとして
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+][行数
+\backslash
+baselineskip
+\end_layout
+
+\begin_layout Standard
+を挿入することで、指定することができます。ここで、
+\emph on
+行数
+\emph default
+は、必要とされる行数です。以下の例では、必要行数は7行に指定されています。
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}[
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+subsubsection{
+\end_layout
+
+\end_inset
+
+This is the sectioning command
+\begin_inset Newline newline
+\end_inset
+
+as a preface and
+\begin_inset Newline newline
+\end_inset
+
+with multiple text lines
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+][7
+\backslash
+baselineskip
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+On the evening of the crime, he returned from the club exactly at ten.
+ His mother and sister were out spending the evening with a relation.
+ The servant deposed that she heard him enter the front room on the second
+ floor, generally used as his sitting-room.
+ She had lit a fire there, and as it smoked she had opened the window.
+ No sound was heard from the room until eleven-twenty, the hour of the return
+ of Lady Maynooth and her daughter.
+ Desiring to say good-night, she attempted to enter her son's room.
+ The door was locked on the inside, and no answer could be got to their
+ cries and knocking.
+ Help was obtained, and the door forced.
+ The unfortunate young man was found lying near the table.
+ His head had been horribly mutilated by an expanding revolver bullet, but
+ no weapon of any sort was to be found in the room.
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Subsubsection
+周囲の余白
+\end_layout
+
+\begin_layout Standard
+多段組の前後の余白は、長さ
+\series bold
+
+\backslash
+multicolsep
+\series default
+を変えることで変更することができます。例えば、TeXコードで書かれたコマンド
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+multicolsep}{3cm}
+\end_layout
+
+\begin_layout Standard
+は、その値を3
+\begin_inset space \thinspace{}
+\end_inset
+
+cmに変更します。この変更は、多段組が始まる前に指定しなくてはなりません。既定値は13
+\begin_inset space \thinspace{}
+\end_inset
+
+ptです。
+\end_layout
+
+\begin_layout Standard
+以下の例では、
+\series bold
+
+\backslash
+multicolsep
+\series default
+は2.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cmに指定されています。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+multicolsep}{2.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+All day I turned these facts over in my mind, endeavouring to hit upon some
+ theory which could reconcile them all, and to find that line of least resistanc
+e which my poor friend had declared to be the starting-point of every investigat
+ion.
+ I confess that I made little progress.
+ In the evening I strolled across the Park, and found myself about six o'clock
+ at the Oxford Street end of Park Lane.
+ A group of loafers upon the pavements, all staring up at a particular window,
+ directed me to the house which I had come to see.
+ A tall, thin man with coloured glasses, whom I strongly suspected of being
+ a plain-clothes detective, was pointing out some theory of his own, while
+ the others crowded round to listen to what he said.
+ I got as near him as I could, but his observations seemed to me to be absurd,
+ so I withdrew again in some disgust.
+ As I did so I struck against an elderly, deformed man, who had been behind
+ me, and I knocked down several books which he was carrying.
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
  
-\family typewriter
-multicol.lyx
-\family default
-を読んでください。
+\series bold
+
+\backslash
+setlength
+\series default
+で指定した値は、再度変更されるまでは、以降のすべての多段組で使用されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+multicolsep}{13pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+既定値に戻します。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+段間隔
+\end_layout
+
+\begin_layout Standard
+段幅は自動的に計算されますが、段の間の余白は指定することができます。これは、長さ
+\series bold
+
+\backslash
+columnsep
+\series default
+を変更することで実現できます。既定値は10
+\begin_inset space \thinspace{}
+\end_inset
+
+ptです。以下は
+\series bold
+
+\backslash
+columnsep
+\series default
+を3
+\begin_inset space \thinspace{}
+\end_inset
+
+cmに設定した例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{3cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+My observations of No.
+\begin_inset space \space{}
+\end_inset
+
+427 Park Lane did little to clear up the problem in which I was interested.
+ The house was separated from the street by a low wall and railing, the
+ whole not more than five feet high.
+ It was perfectly easy, therefore, for anyone to get into the garden, but
+ the window was entirely inaccessible, since there was no water pipe or
+ anything which could help the most active man to climb it.
+ More puzzled than ever, I retraced my steps to Kensington.
+ I had not been in my study five minutes when the maid entered to say that
+ a person desired to see me.
+ To my astonishment it was none other than my strange old book collector,
+ his sharp, wizened face peering out from a frame of white hair, and his
+ precious volumes, a dozen of them at least, wedged under his right arm.
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{10pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+既定値に戻す
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+垂直線
+\end_layout
+
+\begin_layout Standard
+段間には、長さ
+\series bold
+
+\backslash
+columnseprule
+\series default
+の幅を持つ罫線が描かれます。罫線幅を0
+\begin_inset space \thinspace{}
+\end_inset
+
+ptにすると(これが既定値です)、罫線は出力されません。以下の例では、段を分かつ線は2
+\begin_inset space \thinspace{}
+\end_inset
+
+pt幅に設定されています。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{2pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Begin Multiple Columns
+2
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+--a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout End Multiple Columns
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+go back to the default
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -21110,6 +21644,34 @@ end{sloppypar}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "multicol"
+
+\end_inset
+
+LaTeXパッケージ
+\begin_inset CommandInset href
+LatexCommand href
+name "multicol"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXパッケージ @ LaTeXパッケージ ! multicol
+\end_layout
+
+\end_inset
+
+の取扱説明書
 \end_layout
 
 \end_body

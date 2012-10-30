@@ -1,4 +1,4 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
+#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -40,6 +40,15 @@
 %\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
 %\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
+% increase link area for cross-references and autoname them,
+\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\addto\extrasenglish{%
+ \renewcommand*{\equationautorefname}[1]{}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+}
+
 % don't load packages twice
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
@@ -62,8 +71,9 @@
 % provides caption formatting
 %\setkomafont{captionlabel}{\bfseries}
 
+%% because this is loaded twice, add "samesize" option as an global option
 % used in sec. 24.5
-\usepackage[samesize]{cancel}
+%\usepackage[samesize]{cancel}
 
 % enables calculation of values
 \usepackage{calc}
@@ -73,6 +83,9 @@
 
 % needed in sec. 19.4
 \usepackage{remreset}
+
+% for the Fourier transformation symbol
+\usepackage{mathrsfs}
 
 % define a color, used in sec.9.3
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
@@ -119,6 +132,13 @@
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
+% check for package cancel
+\newboolean{cancel}
+\IfFileExists{cancel.sty}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{false}}
+
 % needed in sec. 22.10
 % check for package upgreek
 \newboolean{upgreek}
@@ -129,8 +149,10 @@
 
 % make pdf bookmark sane with Japanese
 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+% Added by lyx2lyx
+\usepackage{cancel}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,samesize
 \use_default_options true
 \maintain_unincluded_children false
 \language japanese
@@ -146,7 +168,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -173,8 +194,8 @@
 \use_geometry true
 \use_amsmath 2
 \use_esint 1
-\use_mhchem 1
 \use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -484,12 +505,12 @@ arg   "math-mode"
 \begin_inset Newline newline
 \end_inset
 
-大きく別の段落として表示される別行建て数式
+大きく別の段落として表示される別行立て数式
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-すうしき ! べつぎょうだてようしき @ 数式 ! 別行建て様式
+すうしき ! べつぎょうだてようしき @ 数式 ! 別行立て様式
 \end_layout
 
 \end_inset
@@ -504,7 +525,7 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Standard
-別行建て様式の数式を行内数式に変更するには、カーソルを数式内に合わせて
+別行立て様式の数式を行内数式に変更するには、カーソルを数式内に合わせて
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
@@ -516,11 +537,11 @@ arg   "math-mode"
 数式\SpecialChar \menuseparator
 数式の表記を変更
 \family default
-メニューを使用して下さい。同じ方法が、行内数式を別行建て数式に変更するのにも使用できます。
+メニューを使用して下さい。同じ方法が、行内数式を別行立て数式に変更するのにも使用できます。
 \end_layout
 
 \begin_layout Standard
-行内数式の一部を別行建て数式の大きさで表示するには、
+行内数式の一部を別行立て数式の大きさで表示するには、
 \series bold
 
 \backslash
@@ -864,32 +885,6 @@ spce
 \end_inset
 
 のような矢印は、キーボードから対応する矢印キーを押すことを表します。
-\lang english
-The 
-\family sans
-Tab
-\family default
- key can often be used instead of 
-\begin_inset Formula $\to$
-\end_inset
-
- and 
-\begin_inset Formula $\downarrow$
-\end_inset
-
-, and 
-\family sans
-Shift+Tab
-\family default
- instead of 
-\begin_inset Formula $\leftarrow$
-\end_inset
-
- and 
-\begin_inset Formula $\uparrow$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection*
@@ -1581,7 +1576,7 @@ frac
 
 \end_inset
 
-で作ることができます。フォント寸法は、分数が行内数式にあるか別行建て数式にあるかに応じて、自動的に調整されます。数式ツールバーボタン
+で作ることができます。フォント寸法は、分数が行内数式にあるか別行立て数式にあるかに応じて、自動的に調整されます。数式ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/math/frac-square.png
 	scale 85
@@ -1610,7 +1605,7 @@ dfrac
 
 \end_inset
 
-を使えば、つねに別行建て数式の大きさを持つ分数を作成することができます。また、コマンド
+を使えば、つねに別行立て数式の大きさを持つ分数を作成することができます。また、コマンド
 \series bold
 
 \backslash
@@ -1807,6 +1802,19 @@ spce
 \end_inset
 
 e^
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \backslash
 frac
 \begin_inset ERT
@@ -1984,7 +1992,7 @@ D
 \backslash
 cfrac
 \series default
-は、他の分数中に入れ子になっている場合も含め、分数をつねに別行建て数式の大きさに設定します。
+は、他の分数中に入れ子になっている場合も含め、分数をつねに別行立て数式の大きさに設定します。
 \end_layout
 
 \begin_layout Standard
@@ -2007,13 +2015,21 @@ cfracright
 cfrac
 \series default
 は中央揃えです。以下の各分数は、それぞれの揃え位置を示しています。
+\begin_inset Newline newline
+\end_inset
+
+
 \series bold
 
-\begin_inset Formula 
-\[
-\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
-\]
+\begin_inset Formula $\cfrac[l]{A}{B+C}$
+\end_inset
 
+, 
+\begin_inset Formula $\cfrac{A}{B+C}$
+\end_inset
+
+, 
+\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -5623,34 +5639,25 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+【註】
 \series default
- LaTeX limits the number of matrix columns with decorations to 10.
- If you need more than 10
-\begin_inset space ~
-\end_inset
-
-columns, you have to add this line to the document preamble:
+LaTeXは、装飾のついた行列の列を10列までに制限しています。10列よりも多い列が必要な場合には、文書プリアンブルに
 \end_layout
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
-setcounter{MaxMatrixCols}{number}
+setcounter{MaxMatrixCols}{数}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-where 
+という行を書き加えなくてはなりません。ここで
 \emph on
-number
+数
 \emph default
- is the number of columns between 11 and 99.
+は列数を表し、11から99の値でなくてはなりません。
 \end_layout
 
 \end_inset
@@ -7944,13 +7951,6 @@ status collapsed
 か、以下の各小節に列挙してあるコマンドで挿入することができます。
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 水平矢印
 \begin_inset Index idx
@@ -9293,14 +9293,7 @@ reference "sub:自動の括弧丈"
 
 \end_inset
 
-節に述べられているコマンドを使うと、区分記号として使用することもできます。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
+節に述べられているコマンドを使うと、区分記号として使用することもできます。伊藤の公式を用いて
 \end_layout
 
 \begin_layout Section
@@ -12064,7 +12057,7 @@ hfill
 \backslash
 hfill
 \series default
-は、別行建て数式中では、
+は、別行立て数式中では、
 \series bold
 行頭下げ
 \series default
@@ -12438,13 +12431,13 @@ boxed
 \backslash
 fbox
 \series default
-コマンドは、数式がつねに本文の大きさに設定されてしまうので、別行建て数式に枠を付けるのには適していません。逆に
+コマンドは、数式がつねに本文の大きさに設定されてしまうので、別行立て数式に枠を付けるのには適していません。逆に
 \series bold
 
 \backslash
 boxed
 \series default
-は、数式がつねに別行建て数式の大きさに設定されてしまうので、行内数式に枠をつけるのには適していません。
+は、数式がつねに別行立て数式の大きさに設定されてしまうので、行内数式に枠をつけるのには適していません。
 \end_layout
 
 \begin_layout Standard
@@ -14643,7 +14636,7 @@ reference "sec:数式様式"
 \backslash
 ]
 \series default
-コマンドは別行建て数式を作るためのものです。
+コマンドは別行立て数式を作るためのものです。
 \end_layout
 
 \begin_layout Standard
@@ -15757,7 +15750,7 @@ A(x)
 \end_layout
 
 \begin_layout Standard
-行内数式では、範囲は演算子の右横に表示されます。別行建て数式での範囲は、積分範囲を除き、演算子の上と下に表示されます。
+行内数式では、範囲は演算子の右横に表示されます。別行立て数式での範囲は、積分範囲を除き、演算子の上と下に表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -15824,7 +15817,7 @@ op
 で終わるもの以外の積分記号では、範囲は、既定で演算子の横に設定されます。しかし、多重積分においては、範囲を演算子の下に置くべきときがあります。このことから、以下
 の例では、範囲形式を
 \series bold
-別行建て形式
+別行立て形式
 \series default
 にして積分記号の下に置くようにしています。
 \begin_inset Formula 
@@ -18792,13 +18785,6 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 数式内では、以下の寸法コマンドを使用して、寸法を変更することができます。
 \end_layout
 
@@ -19176,10 +19162,6 @@ A
 
 \begin_layout Standard
 ある記号を別の寸法で表示することができないときには、その記号はつねに既定寸法で表示されます。
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -20733,6 +20715,10 @@ theta
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -25610,7 +25596,7 @@ x=B
 \end_layout
 
 \begin_layout Standard
-別行建て数式では、極限は、以下のように通常どおり下に置かれます。
+別行立て数式では、極限は、以下のように通常どおり下に置かれます。
 \begin_inset Formula 
 \[
 \lim_{x\to A}x=B
@@ -25672,7 +25658,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-以下は、別行建て数式での派生型です。
+以下は、別行立て数式での派生型です。
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
@@ -25688,16 +25674,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。
-\lang english
-By default the modulo-functions take only the first following character
- into account.
- To use more than one character, one has to put them into TeX-braces:
+行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。既定では、剰余函数は、続く一文字目だけを考慮します。二文字以上を使いたい時には、下記
+のように文字をTeX括弧で囲みます。
 \begin_inset Formula 
 \begin{align*}
-\underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
+\underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
 \mathrm{a\backslash pod\textrm{\spce}bcd} &  & a\pod bcd\\
-\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
+\mathrm{a\backslash pod\backslash\{bc\backslash\}d} &  & a\pod{bc}d
 \end{align*}
 
 \end_inset
@@ -27591,6 +27574,10 @@ else
 textdegree
 \backslash
 fi}
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -27735,7 +27722,7 @@ leqno
 \end_layout
 
 \begin_layout Standard
-これで選択した様式は、文書中のすべての別行建て数式に用いられます。もし、中央揃えと行頭下げの両様式を同一文書中で用いたい場合には、
+これで選択した様式は、文書中のすべての別行立て数式に用いられます。もし、中央揃えと行頭下げの両様式を同一文書中で用いたい場合には、
 \series bold
 中央揃え
 \series default
@@ -27812,9 +27799,6 @@ reference "sub:標準align環境"
 align環境
 \series default
 が作り出されることになります。
-\lang english
-The align environment is recommended because it provides in any case a typograph
-ically correct output.
 \end_layout
 
 \begin_layout Standard
@@ -29262,7 +29246,7 @@ ed
 \end_layout
 
 \begin_layout Standard
-この数式を作るには、別行建て数式をまず作っておいて、そこに
+この数式を作るには、別行立て数式をまず作っておいて、そこに
 \series bold
 
 \backslash
@@ -29285,7 +29269,7 @@ aligned
 \end_layout
 
 \begin_layout Standard
-aligned環境は、長い数式を水平方向を揃えて表示するのにも向いています。別行建て数式内でalignedを用いるようにすると、数式番号を行末の、数式全高の中心
+aligned環境は、長い数式を水平方向を揃えて表示するのにも向いています。別行立て数式内でalignedを用いるようにすると、数式番号を行末の、数式全高の中心
 に配置できる利点があります。以下に例として、
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -29459,6 +29443,10 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \end_inset
 
 
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -29595,15 +29583,7 @@ status collapsed
 
 \end_inset
 
-で付けることができます。このとき、カーソルは別行建て数式の中になくてはなりません。
-\lang english
-Alternatively you can right-click on the formula and choose 
-\family sans
-Equation Label
-\family default
-.
-\lang japanese
-すると、テキストフィールドの中に
+で付けることができます。このとき、カーソルは別行立て数式の中になくてはなりません。すると、テキストフィールドの中に
 \series bold
 eq:と
 \series default
@@ -29613,14 +29593,7 @@ eq:と
 挿入\SpecialChar \menuseparator
 ラベル
 \family default
-メニューをもういちど使って下さい
-\lang english
-or you right-click on a formula and then on 
-\family sans
-Equation Label
-\family default
-\lang japanese
-。
+メニューをもういちど使って下さい。
 \end_layout
 
 \begin_layout Standard
@@ -30951,7 +30924,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 （注意）
 \series default
 ラテン文字を使うと、一つの文書の中で、最大26個の数式しか番号を振ることができません。
@@ -31784,7 +31756,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 【註】
 \backslash
 ce
@@ -31817,43 +31788,6 @@ hyphen$Cl}
 \end_inset
 
 ）のようにTeXコードを使わなくてはなりません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-\lang english
-Note:
-\series default
- It is not possible in LyX to use the character ^ to get an up-arrow as
- described in the 
-\series bold
-mhchem
-\series default
- manual.
- One instead uses a negative thin space followed by the command 
-\series bold
-
-\backslash
-uparrow
-\series default
-: 
-\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -32057,13 +31991,6 @@ key "mhchem"
 \end_inset
 
 の取扱説明書をご覧ください。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -32459,13 +32386,6 @@ LyXでのファインマン・ダイアグラムの作り方は、メニュー
 ファインマン・ダイアグラム
 \emph default
 』にあります。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -33260,7 +33180,7 @@ newcommand
 
 
 \begin_inset Graphics
-	filename ../clipart/macrobox.png
+	filename clipart/macrobox.png
 
 \end_inset
 
@@ -33936,73 +33856,49 @@ status open
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Computer Algebra Systems
+コンピュータ代数システム
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX offers the exchange between mathematical expressions written in LyX's
- math editor and external applications or user defined scripts.
- Currently supported applications are 
+LyXでは、LyXの数式エディタで書かれた数式表現と、外部プログラムやユーザ定義スクリプトとの間のやり取りが可能です。現在サポートされているプログラムは、
 \family sans
 Maple
 \family default
-, 
+・
 \family sans
 Mathematica
 \family default
-, 
+・
 \family sans
 Maxima
 \family default
- and 
+・
 \family sans
 Octave
 \family default
-.
- Note that the set of supported mathematical constructs is limited only
- to very simple cases.
+です。サポートされている数式表現は、非常に単純なものに限られていますので、ご注意ください。
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Usage
+使用法
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Write some expression in a formula, go to the 
+数式表現を書いた後、
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
-Use Computer Algebra System
+編集\SpecialChar \menuseparator
+数式\SpecialChar \menuseparator
+コンピュータ代数システムを使用
 \family default
- menu and choose the application you have installed on the computer.
- After that the result of computation should show on the right side of the
- expression together with the 
-\begin_inset Quotes eld
-\end_inset
-
-=
-\begin_inset Quotes erd
-\end_inset
-
- operator.
+メニューで、コンピュータに導入済みのプログラムを選択します。その後、計算結果が、数式表現の右に「=」演算子とともに表示されます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here are few simple examples (with results from 
+下記は、どのような計算が可能かをいくつか例示したものです（出力は
 \family typewriter
 Maxima
 \family default
-) to show what kind of computations can be performed:
+です）。
 \end_layout
 
 \begin_layout Itemize
@@ -34045,50 +33941,34 @@ Maxima
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Keyboard shortcut
+短絡キー
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently there is no keyboard shortcut for calling the algebra applications.
- One can easily bind a shortcut to the 
+現在のところ、代数プログラムを呼び出すための短絡キーはありません。しかし、短絡キーを
 \family sans
 math-extern
 \family default
- LyX function (see the 
+ LyX関数にバインドすることは容易です（取扱説明書『
 \family sans
 \emph on
-LyX Functions
+LyX関数篇
 \family default
 \emph default
- manual).
- One could e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-bind the 
+』参照)。例えば、数式エディタ中で
 \family sans
-Return
+リターン
 \family default
- key inside the math editor.
- To bind it to 
+キーをバインドさせることもできます。それを
 \family typewriter
 Maxima
 \family default
- one would use this shortcut definition command:
+にバインドするには、下記の短絡キー定義コマンドを使用します。
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
@@ -34781,7 +34661,7 @@ genfrac
 \begin_inset Text
 
 \begin_layout Plain Layout
-別行建て様式の数式
+別行立て様式の数式
 \end_layout
 
 \end_inset
@@ -34951,6 +34831,10 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 という行を入れます。
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34967,12 +34851,12 @@ genfrac{}{}{#1}{}{#2}{#3}}
 \end_layout
 
 \begin_layout Subsection
-数式の取り消し
+数式の消去
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! とりけし@取り消し
+すうしき@数式 ! しょうきょ@消去
 \end_layout
 
 \end_inset
@@ -34981,7 +34865,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式あるいはその一部を取り消すには、
+数式あるいはその一部を消去するには、
 \series bold
 cancel
 \series default
@@ -35025,7 +34909,7 @@ usepackage{cancel}
 \end_layout
 
 \begin_layout Standard
-数式を取り消すには、4つの方法があります。
+数式を消去するには、4つの方法があります。
 \end_layout
 
 \begin_layout Standard
@@ -35264,41 +35148,28 @@ cancelto
 
 \begin_layout Standard
 
-\lang english
-To change the size of 
 \series bold
 
 \backslash
 cancelto
 \series default
-'s 
-\begin_inset Quotes eld
-\end_inset
-
-subscript
-\begin_inset Quotes erd
-\end_inset
-
- value one can load the package 
+の「下付き」数字の寸法を変更するには、
 \series bold
 cancel
 \series default
- with either the option 
+パッケージを
 \series bold
 samesize
 \series default
- which leads to the same size as for the canceled value or with the option
- 
+オプションをつけて読み込んで、消去された数字と同じ大きさにするか、
 \series bold
 Smaller
 \series default
- which makes is it a bit smaller than the size one gets without using a
- package option.
- In this document 
+オプションをつけて、オプションを付けなかった時よりも少し小さな大きさにするかの2つの方法があります。この文書では、
 \series bold
 cancel
 \series default
- was loaded with this line:
+は
 \end_layout
 
 \begin_layout Standard
@@ -35310,9 +35181,7 @@ usepackage[samesize]{cancel}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the cancellation bar one adds this command as TeX code:
+という行で読み込まれています。取り消し線に色を付けるには、TeXコードで以下のコマンドを書き加えてください。
 \end_layout
 
 \begin_layout Standard
@@ -35328,12 +35197,11 @@ color{red}}
 \end_layout
 
 \begin_layout Standard
-
+ここで
 \series bold
-\lang english
 red
 \series default
- can be replaced by a color of your choice.
+は、お好みの色に変更することができます。
 \end_layout
 
 \begin_layout Standard
@@ -35385,15 +35253,11 @@ color{black}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-reset the color
+色をリセット
 \end_layout
 
 \end_inset
@@ -35402,22 +35266,18 @@ reset the color
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For further customizations, see the documentation of the package
-\lang japanese
- 
+他の微調整については、
 \series bold
 cancel
 \series default
-, 
+パッケージの取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cancel"
 
 \end_inset
 
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Subsection
@@ -35808,7 +35668,7 @@ mmの垂直空白を入れて下さい。
 \end_layout
 
 \begin_layout Standard
-以下は、別行建て数式を含む、多段組文の例です。
+以下は、別行立て数式を含む、多段組文の例です。
 \end_layout
 
 \begin_layout Standard
@@ -36304,6 +36164,10 @@ fi
 \end_inset
 
 
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -36688,36 +36552,6 @@ mathscr
 \end_inset
 
 で入れることができます。
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-mathscr
-\series default
-コマンドを使うためには、LaTeXパッケージの
-\series bold
-mathrsfs
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ぱっけーじ@パッケージ! mathrsfs
-\end_layout
-
-\end_inset
-
-を、LaTeXプリアンブルで
-\series bold
-
-\backslash
-usepackage{mathrsfs}
-\series default
-として読み込む必要があります。
 \end_layout
 
 \begin_layout Standard
