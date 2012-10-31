@@ -31,23 +31,43 @@
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
+if(NOT RESOURCE_NAME)
+  message(FATAL_ERROR "RESOURCE_NAME not given")
+endif()
+
+message(STATUS "Generating ${RESOURCE_NAME}")
+
+if(NOT IS_DIRECTORY ${IMAGES_DIR})
+  message(FATAL_ERROR "Directory ${IMAGES_DIR} does not exist")
+endif()
+
+if(NOT EXISTS ${MAPPED_DIR})
+  message(FATAL_ERROR "Directory ${MAPPED_DIR} does not exist")
+endif()
+
 file(GLOB_RECURSE images_png      ${IMAGES_DIR}/*.png)
 file(GLOB_RECURSE images_gif      ${IMAGES_DIR}/*.gif)
 
 set(images ${images_png} ${images_gif})
-set(resource_name ${RESOURCE_NAME})
 
-message(STATUS "Generating ${resource_name}")
+file(REMOVE ${RESOURCE_NAME})
+  if(EXISTS ${RESOURCE_NAME})
+    message(FATAL_ERROR "Cannot remove file ${RESOURCE_NAME}")
+  endif()
+endif()
 
-file(WRITE ${resource_name} "<!DOCTYPE RCC><RCC version=\"1.0\">\n")
-file(APPEND ${resource_name} "<qresource>\n")
+file(WRITE ${RESOURCE_NAME} "<!DOCTYPE RCC><RCC version=\"1.0\">\n")
+file(APPEND ${RESOURCE_NAME} "<qresource>\n")
 
 foreach (_current_FILE ${images})
   get_filename_component(_abs_FILE ${_current_FILE} ABSOLUTE)
   string(REGEX REPLACE "${MAPPED_DIR}" "" _file_name ${_abs_FILE})
-  file(APPEND ${resource_name} "	 <file alias=\"${_file_name}\">${_abs_FILE}</file>\n")
+  file(APPEND ${RESOURCE_NAME} "	 <file alias=\"${_file_name}\">${_abs_FILE}</file>\n")
 endforeach (_current_FILE)
 
-file(APPEND ${resource_name} "</qresource>\n")
-file(APPEND ${resource_name} "</RCC>\n")
+file(APPEND ${RESOURCE_NAME} "</qresource>\n")
+file(APPEND ${RESOURCE_NAME} "</RCC>\n")
 
+if(NOT EXISTS ${RESOURCE_NAME})
+  message(FATAL_ERROR "File ${RESOURCE_NAME} could not be created")
+endif()
