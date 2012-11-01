@@ -30,15 +30,15 @@ These four steps will compile, test and install LyX:
            if you want a smaller binary.
 
 
-Note for Subversion (SVN) checkouts
+Note for Subversion Git checkouts
 -----------------------------
 
-If you have checked this out from Subversion, you need to have:
+If you have checked this out from Git, you need to have:
 * automake >= 1.8
 * autoconf >= 2.59c
 * gettext >= 0.12
 Then type "./autogen.sh" to build the needed configuration
-files and proceed as stated below.
+files and proceed as stated above/below.
 
 You will also probably need GNU m4 (perhaps installed as gm4).
 
@@ -113,7 +113,7 @@ flags:
     The default are as follows in terms of version number
     release: stable release (1.x.y)
     prerelease: version number contains alpha, beta, rc or pre.
-    development: version number contains svn.
+    development: version number contains dev.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
