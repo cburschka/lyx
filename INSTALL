@@ -40,7 +40,7 @@ If you have checked this out from Git, you need to have:
 * autoconf >= 2.59c
 * gettext >= 0.16.1
 Then type "./autogen.sh" to build the needed configuration
-files and proceed as stated below.
+files and proceed as stated above/below.
 
 You will also probably need GNU m4 (perhaps installed as gm4).
 
@@ -115,7 +115,7 @@ flags:
     The default are as follows in terms of version number
     release: stable release (1.x.y)
     prerelease: version number contains alpha, beta, rc or pre.
-    development: version number contains svn.
+    development: version number contains dev.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
@@ -139,7 +139,7 @@ flags:
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
     own, by doing something like :
-       ./configure --with-version-suffix=-latestsvn
+       ./configure --with-version-suffix=-latestdev
 
     Note that the standard configure options --program-prefix,
     --program-suffix and the others will not affect the shared LyX
