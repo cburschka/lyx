@@ -275,12 +275,6 @@ if (LYX_LOCALVERSIONING)
 		  MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
 		  set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
 		endif()
-		# Override the value from configure.ac, if possible
-		EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} "log" "-1" "--format=%ci"
-			WORKING_DIRECTORY "${TOP_SRC_DIR}"
-			OUTPUT_VARIABLE LYX_DATEtmp OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-		string(REGEX MATCH "([0-9]+-[0-9]+-[0-9]+)" LYX_DATE ${LYX_DATEtmp})
 	else()
 		set(LYX_REVISION_VERSION git) #TODO use date
 	endif()
@@ -294,6 +288,9 @@ else()
 	set(PROGRAM_SUFFIX "")
 endif()
 
+add_custom_target(lyx_version ALL
+  COMMAND ${CMAKE_COMMAND} -DTOP_SRC_DIR=${TOP_SRC_DIR} -DLYX_CMAKE_DIR=${LYX_CMAKE_DIR} -DTOP_BINARY_DIR=${TOP_BINARY_DIR} -DLYX_DATE=${LYX_DATE} -P ${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/modules/LyXGetVersion.cmake
+  )
 
 if(APPLE)
 	set(osx_bundle_program_name ${PACKAGE_BASE}${PROGRAM_SUFFIX})
@@ -548,6 +545,8 @@ if(WIN32)
 	endif()
 endif()
 
+# Compute qt4-version from ${QTVERSION}
+
 message(STATUS "")
 foreach(_v PACKAGE PACKAGE_VERSION
 	PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
@@ -690,9 +689,7 @@ else()
 endif()
 
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
-configure_file(${LYX_CMAKE_DIR}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.h)
 
-# Compute qt4-version from ${QTVERSION}
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
 	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
 endif()

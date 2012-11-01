@@ -116,6 +116,7 @@ add_executable(${_lyx}
 	${OSX_BUNDLE_FILES}
 )
 
+add_dependencies(${_lyx} lyx_version)
 
 lyx_add_gcc_pch(${_lyx})
 

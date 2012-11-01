@@ -53,6 +53,8 @@ target_link_libraries(${_tex2lyx}
 	${intl_link}
 	${ICONV_LIBRARY})
 
+add_dependencies(${_tex2lyx} lyx_version)
+
 if(WIN32)
 	target_link_libraries(${_tex2lyx} shlwapi ole32 psapi)
 endif()
