@@ -30,7 +30,7 @@ These four steps will compile, test and install LyX:
            if you want a smaller binary.
 
 
-Note for Subversion Git checkouts
+Note for Git checkouts
 -----------------------------
 
 If you have checked this out from Git, you need to have:
@@ -137,7 +137,7 @@ flags:
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
     own, by doing something like :
-       ./configure --with-version-suffix=-latestsvn
+       ./configure --with-version-suffix=-latestdev
 
     Note that the standard configure options --program-prefix,
     --program-suffix and the others will not affect the shared LyX
