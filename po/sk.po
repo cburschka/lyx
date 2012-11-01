@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-22 10:58+0200\n"
+"POT-Creation-Date: 2012-10-31 08:57+0100\n"
 "PO-Revision-Date: 2012-10-19 09:05+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -14405,37 +14405,41 @@ msgstr "Špecifické manuály|Š"
 msgid "About LyX|X"
 msgstr "O programe LyX|X"
 
-#: lib/ui/stdmenus.inc:590
-msgid "Braille Manual|B"
-msgstr "Braille: Manuál"
-
 #: lib/ui/stdmenus.inc:591
-msgid "Feynman-diagram Manual|F"
-msgstr "Feynman-diagram Manuál"
+msgid "Braille|B"
+msgstr "Braille|B"
 
 #: lib/ui/stdmenus.inc:592
-msgid "LilyPond Manual|M"
-msgstr "LilyPond príručka"
+msgid "Feynman-diagram|F"
+msgstr "Feynman-diagram|F"
 
 #: lib/ui/stdmenus.inc:593
-msgid "Linguistics Manual|L"
-msgstr "Lingvistika: Manuál"
+msgid "Knitr|K"
+msgstr "Knitr|K"
 
 #: lib/ui/stdmenus.inc:594
-msgid "Multilingual Captions Manual|C"
-msgstr "Viac-jazykové Popisy: Manuál"
+msgid "LilyPond|P"
+msgstr "LilyPond|P"
+
+#: lib/ui/stdmenus.inc:595
+msgid "Linguistics|L"
+msgstr "Lingvistika|L"
 
 #: lib/ui/stdmenus.inc:596
-msgid "Risk and Safety Statements Manual|R"
-msgstr "Rizikové a Poistné Uzávierky Príručka"
+msgid "Multilingual Captions|C"
+msgstr "Viac-jazykové popisy|J"
 
 #: lib/ui/stdmenus.inc:597
-msgid "Sweave Manual|S"
-msgstr "Sweave Manuál|S"
+msgid "Risk and Safety Statements|R"
+msgstr "Rizikové a Poistné Uzávierky|R"
 
-#: lib/ui/stdmenus.inc:597
-msgid "XY-pic Manual|X"
-msgstr "XY-pic: Manuál"
+#: lib/configure.py:534
+msgid "Sweave|S"
+msgstr "Sweave|S"
+
+#: lib/ui/stdmenus.inc:599
+msgid "XY-pic|X"
+msgstr "XY-pic|X"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "New document"
@@ -18230,10 +18234,6 @@ msgstr "NoWeb"
 #: lib/configure.py:533
 msgid "NoWeb|N"
 msgstr "NoWeb"
-
-#: lib/configure.py:534
-msgid "Sweave|S"
-msgstr "Sweave|S"
 
 #: lib/configure.py:535
 msgid "R/S code"
@@ -26211,6 +26211,24 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Braille Manual|B"
+#~ msgstr "Braille: Manuál"
+
+#~ msgid "LilyPond Manual|M"
+#~ msgstr "LilyPond príručka"
+
+#~ msgid "Linguistics Manual|L"
+#~ msgstr "Lingvistika: Manuál"
+
+#~ msgid "Multilingual Captions Manual|C"
+#~ msgstr "Viac-jazykové Popisy: Manuál"
+
+#~ msgid "Risk and Safety Statements Manual|R"
+#~ msgstr "Rizikové a Poistné Uzávierky Príručka"
+
+#~ msgid "Sweave Manual|S"
+#~ msgstr "Sweave Manuál|S"
 
 #~ msgid "View Outline|u"
 #~ msgstr "Zobraziť prehľad"
