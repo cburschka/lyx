@@ -88,9 +88,9 @@ add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
-    ARGS   "${TOP_SRC_DIR}/development/cmake/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    ARGS   "${TOP_CMAKE_PATH}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
-      ARGS   "${TOP_SRC_DIR}/development/cmake/po/dos2unix.py" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+      ARGS   "${TOP_CMAKE_PATH}/po/dos2unix.py" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
 
@@ -170,7 +170,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
     add_custom_command(
       OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}.copied
       COMMAND ${LYX_PYTHON_EXECUTABLE}
-        ARGS   "${TOP_SRC_DIR}/development/cmake/po/unix2dos.py" "${CMAKE_CURRENT_BINARY_DIR}/${_pofile}"
+        ARGS   "${TOP_CMAKE_PATH}/po/unix2dos.py" "${CMAKE_CURRENT_BINARY_DIR}/${_pofile}"
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} ${LYX_DEST_PO}/${_pofile}
       COMMAND ${CMAKE_COMMAND} -E touch ${_pofile}.copied
       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}

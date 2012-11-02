@@ -6,16 +6,19 @@
 
 cmake_minimum_required(VERSION 2.6.4)
 
-
 set(LYX_PROJECT LyX)
 
 enable_testing()
 
-set(LYX_CMAKE_DIR "development/cmake")
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/${LYX_CMAKE_DIR}/modules")
-
 get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/README ABSOLUTE)
 get_filename_component(TOP_SRC_DIR ${lyx_dir_readme} PATH)
+
+set(LYX_CMAKE_DIR "development/cmake")
+set(TOP_CMAKE_PATH "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}")
+set(TOP_MODULE_PATH "${TOP_CMAKE_PATH}/modules")
+set(TOP_SCRIPT_PATH "${TOP_CMAKE_PATH}/scripts")
+
+set(CMAKE_MODULE_PATH "${TOP_MODULE_PATH}")
 
 set(CMAKE_PROJECT_NAME ${LYX_PROJECT})
 
@@ -289,7 +292,7 @@ else()
 endif()
 
 add_custom_target(lyx_version ALL
-  COMMAND ${CMAKE_COMMAND} -DTOP_SRC_DIR=${TOP_SRC_DIR} -DLYX_CMAKE_DIR=${LYX_CMAKE_DIR} -DTOP_BINARY_DIR=${TOP_BINARY_DIR} -DLYX_DATE=${LYX_DATE} -P ${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/modules/LyXGetVersion.cmake
+  COMMAND ${CMAKE_COMMAND} -DTOP_SRC_DIR=${TOP_SRC_DIR} -DTOP_CMAKE_PATH=${TOP_CMAKE_PATH} -DTOP_BINARY_DIR=${TOP_BINARY_DIR} -DLYX_DATE=${LYX_DATE} -P ${TOP_SCRIPT_PATH}/LyXGetVersion.cmake
   )
 
 if(APPLE)
@@ -565,8 +568,8 @@ if(LYX_PCH)
 	# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
 	# Not sure if it works for all non-msvc compilers
 	include(PCHSupport_26)
-	configure_file(${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/pcheaders.h      ${TOP_BINARY_DIR}/pcheaders.h)
-	configure_file(${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
+	configure_file(${TOP_CMAKE_PATH}/pcheaders.h      ${TOP_BINARY_DIR}/pcheaders.h)
+	configure_file(${TOP_CMAKE_PATH}/config.cpp.cmake ${TOP_BINARY_DIR}/config_pch.cpp)
 	add_definitions(-DLYX_ENABLE_PCH)
 
 	if(MSVC)
@@ -736,6 +739,6 @@ if(LYX_NLS)
 	message(STATUS)
 endif()
 
-include("${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/LyxPackaging.cmake")
+include("${TOP_CMAKE_PATH}/LyxPackaging.cmake")
 
 message(STATUS)

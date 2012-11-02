@@ -30,7 +30,7 @@ add_custom_command(
 		-DIMAGES_DIR=${TOP_SRC_DIR}/lib/images
 		-DRESOURCE_NAME=${resource_name}
 		-DMAPPED_DIR=${TOP_SRC_DIR}/lib/
-		-P ${TOP_SRC_DIR}/development/cmake/modules/LyXCreateImagesResource.cmake
+		-P ${TOP_SCRIPT_PATH}/LyXCreateImagesResource.cmake
 	)
 
 qt4_add_resources(resource_files ${resource_name})

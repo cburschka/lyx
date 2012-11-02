@@ -25,7 +25,7 @@
 #
 # To call this script, one has to provide following parameters
 # TOP_SRC_DIR
-# LYX_CMAKE_DIR
+# TOP_CMAKE_PATH
 # TOP_BINARY_DIR
 # LYX_DATE:	to be used if not under git control
 
@@ -46,7 +46,7 @@ if(LYX_GITVERSION)
   endif()
 endif()
 
-configure_file(${TOP_SRC_DIR}/${LYX_CMAKE_DIR}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.tmp)
+configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.tmp)
 EXECUTE_PROCESS(
   COMMAND ${CMAKE_COMMAND} -E copy_if_different ${TOP_BINARY_DIR}/lyx_date.tmp ${TOP_BINARY_DIR}/lyx_date.h
   COMMAND ${CMAKE_COMMAND} -E remove ${TOP_BINARY_DIR}/lyx_date.tmp

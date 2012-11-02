@@ -33,7 +33,7 @@ include_directories(BEFORE
 add_definitions(-DTEX2LYX)
 
 if(WIN32)
-	set(FILE_RC ${TOP_SRC_DIR}/development/cmake/lyx.rc)
+	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
