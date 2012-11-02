@@ -261,8 +261,9 @@ traducteur: Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
-Dernière revue : 22/10/2012 pour 2.0.5 (quelques mises à jour de Uwe -> 19/10/2012
-) par J.P.
+Dernière revue : 31/10/2012 pour 2.0.5 (quelques mises à jour de Uwe -> 19/10/2012
+ + remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Inser
+tion/Navigation) par J.P.
  Chrétien
 \end_layout
 
@@ -357,7 +358,7 @@ Formules Mathématiques
 La plupart des symboles et plusieurs constructions expliquées dans ce manuel
  sont aussi accessibles par le menu
 \family sans
- Insérer\SpecialChar \menuseparator
+ Insertion\SpecialChar \menuseparator
 Math
 \family default
 , ou par la 
@@ -540,7 +541,7 @@ Ctrl-M, Alt+C M, Alt+M M
 \family default
  ou utilisez 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Changer le type de formule
 \family default
@@ -652,7 +653,7 @@ Mode TeX
 
  de la barre d'outils ou en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code
 \begin_inset space ~
 \end_inset
@@ -740,12 +741,12 @@ eX
 Pour éditer des matrices, des différentiations de cas et des formules multiligne
 s après coup, on peut utiliser les menus 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math
 \family default
  and 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes
 \begin_inset space \thinspace{}
 \end_inset
@@ -3241,7 +3242,7 @@ cases
 \series default
  est aussi accessible par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Environnement
 \begin_inset space ~
@@ -4037,7 +4038,7 @@ reference "sub:Crochets-multilignes"
 Les réserves peuvent aussi être utilisées avec du texte en les insérant
  via le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -4404,7 +4405,7 @@ rule
  peut aussi être utilisé avec du texte si la ligne est insérée via le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -4882,7 +4883,7 @@ A_{n1} & \cdots & A_{nm}
 \begin_layout Standard
 Les points de suspension accessibles avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
@@ -5147,7 +5148,7 @@ On peut insérer des matrices avec le bouton
 
  de la barre d'outils mathématique ou en utilisant le menu
 \family sans
- Insérer\SpecialChar \menuseparator
+ Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Matrice
 \begin_inset space ~
@@ -5295,7 +5296,7 @@ Pour ajouter ou supprimer des lignes ou des colonnes après coup, on peut
 
 de la barre d'outils mathématique, ou le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes
 \begin_inset space \thinspace{}
 \end_inset
@@ -11859,7 +11860,7 @@ Les espaces sont nécessaires pour les unités physiques, parce que l'espace
  normale.
  Pour les unités dans le texte, l'espace fine est insérée avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -12375,7 +12376,7 @@ reference "sub:Points-de-suspension"
 Pour le texte, on peut insérer une espace de longueur variable avec le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -14012,7 +14013,7 @@ texte
 
  de la barre d'outils, ou avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -14453,7 +14454,7 @@ On peut créer une boîte qui peut contenir plusieurs lignes, voir des paragraph
  entiers, c'est ce que l'on nomme une boîte de paragraphe (parbox en anglais).
  On la crée avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Boîte
 \family default
  ou le bouton 
@@ -16231,7 +16232,7 @@ Pour les formules en lignes, les limites sont placées juste après l'opérateur
 Pour forcer les limites à être après l'opérateur, on place le curseur juste
  après l'opérateur et on change le type de limite avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Changer
 \begin_inset space ~
@@ -16475,7 +16476,7 @@ Tableaux
 \family default
  ou avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes
 \begin_inset space ~
 \end_inset
@@ -17818,7 +17819,7 @@ menu
 \family default
  du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractères
 \begin_inset space ~
 \end_inset
@@ -18851,7 +18852,7 @@ target "http://www.lyx.org/trac/ticket/4629"
 \begin_layout Standard
 À la place des commandes de style, on peut utiliser le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Style
 \begin_inset space ~
@@ -28268,7 +28269,7 @@ reference "sub:Environnement-align-standard"
 Il y a d'autres environnement de formules multi-lignes qui peuvent être
  créés en passant par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
 .
@@ -28299,7 +28300,7 @@ Ctrl+Entrée
 
  de la barre d'outils mathématique ou bien le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes
 \begin_inset space \thinspace{}
 \end_inset
@@ -29191,13 +29192,13 @@ Les environnement Align sont composés de colonnes.
 \begin_layout Standard
 Les environnement Align sont créés avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
 .
  Avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Change le type de formule
 \family default
@@ -29222,7 +29223,7 @@ Pour ajouter ou supprimer des colonnes, on peut utiliser soit les boutons
 
 , respectivement, soit le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes & colonnes
 \family default
 .
@@ -29256,7 +29257,7 @@ Ctrl+Entrée
 \family default
  dans une formule ou en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Environnement
 \begin_inset space ~
@@ -29790,7 +29791,7 @@ split
 .
  Ils peuvent être insérés en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
  ou en utilisant les commandes décrites dans cette section.
@@ -30085,7 +30086,7 @@ Généralités
 \begin_layout Standard
 On peut créer des formules numérotées avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Formule
 \begin_inset space ~
@@ -30104,7 +30105,7 @@ Ctrl+Alt
 N).
  On peut aussi numéroter des formules existantes avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 (Dés)Activer
 \begin_inset space ~
@@ -30146,7 +30147,7 @@ Quand on active la numérotation sur des formules multi-lignes, toutes les
  La numérotation peut ensuite être contrôlée pour chaque ligne avec le menu
  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 (Dés)Activer
 \begin_inset space ~
@@ -30211,7 +30212,7 @@ References@Références croisées ! à des formules
 On peut faire référence à toute formule ayant une étiquette.
  On ajoute une étiquette avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou avec le bouton 
@@ -30252,7 +30253,7 @@ eq:
  une étiquette de section.
  Pour modifier l'étiquette vous devez repasser par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette 
 \family default
 ou effectuer un clic droit sur la formule et choisir 
@@ -30271,7 +30272,7 @@ Le nom de l'étiquette est affiché dans LyX entre deux parenthèses, après
 \begin_layout Standard
 On insère une référence croisée avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -33962,7 +33963,7 @@ newcommand
 \begin_layout Standard
 Une macro est créée en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Macro
 \family default
@@ -34357,7 +34358,7 @@ La barre d'outils macro contient de la gauche vers la droite les boutons
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34408,7 +34409,7 @@ argument
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34455,7 +34456,7 @@ argument
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34477,7 +34478,7 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34529,7 +34530,7 @@ optionnel
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34551,7 +34552,7 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34599,7 +34600,7 @@ optionnel
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34650,7 +34651,7 @@ optionnel
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34701,7 +34702,7 @@ optionnel
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34739,7 +34740,7 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34795,7 +34796,7 @@ droite
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34829,7 +34830,7 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34881,7 +34882,7 @@ droite
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34915,7 +34916,7 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Définition
 \begin_inset space ~
@@ -34992,7 +34993,7 @@ Utilisation
 \begin_layout Standard
 Écrivez une expression dans une formule puis allez dans 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Maths
 \family default
 \SpecialChar \menuseparator
@@ -36509,7 +36510,7 @@ Propriétés du PDF
 Les deux problèmes peuvent être résolus en insérant à la fin de l'entête
  de section un titre court avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Titre
 \begin_inset space ~
 \end_inset
@@ -37693,7 +37694,7 @@ times
 \series default
  ou par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
@@ -37799,7 +37800,7 @@ F
 \series default
 , soit avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset

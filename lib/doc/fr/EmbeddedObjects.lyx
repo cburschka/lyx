@@ -280,7 +280,7 @@ type "mailto:"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 auteur original : Uwe Stöhr
@@ -288,6 +288,11 @@ auteur original : Uwe Stöhr
 
 \begin_layout Plain Layout
 Traduction française : Siegfried Meunier-Guttin-Cluzel
+\end_layout
+
+\begin_layout Plain Layout
+remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
+n/Navigation, 31/10/2012, JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
@@ -437,7 +442,7 @@ arg   "dialog-show-new-inset graphics"
 
  dans la barre d'outils, ou faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
 .
@@ -886,7 +891,7 @@ arg   "float-insert figure"
 
  de la barre d'outils et le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Figure
 \family default
@@ -1063,7 +1068,7 @@ reference "fig:escher"
  légende.
  On insère donc une étiquette dans la légende en utilisant le menu 
 \family sans
-Insérer
+Insertion
 \family default
 \SpecialChar \menuseparator
 
@@ -1079,7 +1084,7 @@ arg   "label-insert"
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -1882,7 +1887,7 @@ arg   "tabular-insert"
 
  soit 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Tableau
 \family default
 .
@@ -2857,12 +2862,12 @@ Note :
 \end_layout
 
 \begin_layout Section
-Le menu éditer tableau
+Le menu Édition tableau
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! Menu Éditer
+Tableau ! Menu Édition
 \end_layout
 
 \end_inset
@@ -2874,7 +2879,7 @@ Tableau ! Menu Éditer
 En plus de la fenêtre de dialogue et de la barre d'outils tableau, le menu
  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Tableau
 \family default
  vous permet d'ajouter ou de supprimer les lignes de bordure de la colonne
@@ -3076,7 +3081,7 @@ c & d
 \begin_layout Standard
 Les flottants de tableau sont insérés en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Tableau
 \family default
@@ -3221,7 +3226,7 @@ References@Références ! à des Tableaux
  en faisant référence à sa légende.
  On insère donc une étiquette dans la légende en utilisant le menu 
 \family sans
-Insérer
+Insertion
 \family default
 \SpecialChar \menuseparator
 
@@ -3237,7 +3242,7 @@ arg   "label-insert"
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -9773,7 +9778,7 @@ Il peut y avoir des problèmes quand un flottant apparaît sur la page où
  commence un tableau long.
  Pour éviter une telle situation, insérez un saut de page (menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -11774,7 +11779,7 @@ arg   "inset-modify tabular multicolumn"
 
  de la barre d'outils tableau, ou le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Tableau\SpecialChar \menuseparator
 Multi-colonnes
 \family default
@@ -12553,7 +12558,7 @@ arg   "inset-modify tabular multirow"
 
  de la barre d'outils tableau, ou le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Tableau\SpecialChar \menuseparator
 Multi-lignes
 \family default
@@ -17334,7 +17339,7 @@ i
 Si vous voulez seulement avoir du texte en couleur, sélectionnez les cellules
  et choisissez une couleur dans le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -17684,7 +17689,7 @@ Les deux commandes sont insérées au début d'une cellule comme du code TeX.
 Pour colorer de caractères dans un tableau, sélectionnez les cellules et
  choisissez une couleur dans le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -17789,7 +17794,7 @@ cellcolor{Maroon}
 \begin_layout Standard
 Les caractères peuvent maintenant être colorés en utilisant le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -24686,7 +24691,7 @@ reference "sec:Referencer-les-Flottants"
 \begin_layout Standard
 Pour insérer un flottant, on utilise un des sous menus du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant
 \family default
  (barre d'outils 
@@ -24870,7 +24875,7 @@ end loop
 \begin_layout Standard
 Ce type de flottant est inséré à l'aide du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Algorithme
 \family default
@@ -24975,7 +24980,7 @@ algorithme
 \begin_layout Standard
 Pour insérer la liste des algorithmes, vous pouvez utiliser le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -25308,7 +25313,7 @@ References@Références ! à des Flottants
 Pour faire référence à un flottant, insérez une étiquette dans sa légende
  en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou le bouton 
@@ -25343,7 +25348,7 @@ fig:
 L'étiquette sert à la fois de point d'ancrage et de nom pour la référence.
  Vous pouvez faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -29929,7 +29934,7 @@ De la même façon que la table des matières fait la liste des sections du
  exemple pour les figures du document.
  Vous pouvez les insérer en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -29981,7 +29986,7 @@ arg   "note-insert"
 
  de la barre d'outils ou avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \family default
 .
@@ -30282,7 +30287,7 @@ arg   "footnote-insert"
 
  de la barre d'outils, soit en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -31811,7 +31816,7 @@ Les notes en marge dans LyX ressemblent aux notes en bas de page et se comporten
 t de la même façon.
  Quand vous insérez une note en marge avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -32720,7 +32725,7 @@ reference "sec:Boîtes-colorées"
 \begin_layout Standard
 On peut insérer une boîte en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Boîte
 \family default
  ou avec le bouton 
@@ -34786,7 +34791,7 @@ Ci-dessous, vous avez deux exemples de minipages côte-à-côte.
 col% et elles sont séparées par un ressort horizontal, qui a été inséré
  via le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -35185,7 +35190,7 @@ motTrèsTrèsLong
 Bien sûr, maintenant le mot dépasse dans la marge latérale.
  Pour éviter cela, ajoutez un saut de ligne avant le mot avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -37488,7 +37493,7 @@ Ceci est une figure habillée.
  de sorte qu'elle n'occupe plus qu'une partie de la largeur de la colonne.
  Vous pouvez en insérer un en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Flottant
 \begin_inset space ~
@@ -38724,7 +38729,7 @@ Initial
  Ce dernier a un paramètre obligatoire et un autre facultatif.
  Le paramètre obligatoire est inséré avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Titre
 \begin_inset space ~
 \end_inset
@@ -39233,7 +39238,7 @@ Trucs externes
 \begin_layout Standard
 Avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier
 \family default
  vous pouvez insérer un contenu externe à votre document.
@@ -39344,7 +39349,7 @@ Externe
 \family default
  qui est accessible via le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichiers\SpecialChar \menuseparator
 Objet
 \begin_inset space ~
@@ -39411,7 +39416,7 @@ Retirer l'espace protégé quand le bug 4398 sera résolu !
 La date n'apparaîtra pas dans LyX, mais seulement dans la sortie imprimée.
  Il y a deux autre méthodes pour insérer une date : Avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Date
 \family default
  et avec la commande LaTeX 
@@ -39749,7 +39754,7 @@ Externe
  comme les images qui sont habituellement incorporées en utilisant le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
 , comme c'est décrit dans la section
@@ -39863,7 +39868,7 @@ Date
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Date
 \end_layout
 
@@ -40091,7 +40096,7 @@ Trucs externes ! Sous-documents
 status collapsed
 
 \begin_layout Plain Layout
-Fichiers ! Insérer
+Fichiers ! Insertion
 \end_layout
 
 \end_inset
@@ -40139,7 +40144,7 @@ Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
  Pour inclure des sous-documents dans un document maître , on utilise le
  menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -40344,7 +40349,7 @@ textvisiblespace
  .
  La différence avec la méthode qui consiste à utiliser le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Texte
 \begin_inset space ~
@@ -40596,7 +40601,7 @@ Listings
 \family default
  qui peut être créé grâce au menu 
 \family sans
-Insérer
+Insertion
 \family default
 \SpecialChar \menuseparator
 
@@ -40771,7 +40776,7 @@ Flottant
 \begin_layout Standard
 Vous pouvez ajouter une légende à un listing avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Légende
 \family default
 .
@@ -41101,7 +41106,7 @@ Il est aussi possible d'imprimer les lignes d'un fichier sous la forme d'un
  listing.
  Pour le faire, il suffit d'utiliser le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -41165,7 +41170,7 @@ Pour faire référence à un sous-document de type listing, tapez une étiquette
  dans le champ correspondant de la fenêtre de dialogue.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset

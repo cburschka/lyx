@@ -152,11 +152,12 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour pour 2.0.5 par JPChrétien, Date : 22/10/2012 
+Traduction : Mise à jour pour 2.0.5 par JPChrétien, Date : 31/10/2012 
 \end_layout
 
 \begin_layout Plain Layout
-Quelques corrections de Uwe
+Quelques corrections de Uwe + remplacement de Éditer/Visionner/Insérer/Naviguer
+ par Édition/Affichage/Insertion/Navigation
 \end_layout
 
 \begin_layout Plain Layout
@@ -252,7 +253,7 @@ Si votre distribution LaTeX est un peu ancienne ,
 \begin_inset Quotes fld
 \end_inset
 
-Visionner
+Affichage
 \begin_inset Quotes frd
 \end_inset
 
@@ -1041,7 +1042,7 @@ Comme la plupart des traitements de texte modernes, LyX peut opérer des
 \begin_layout Standard
 Comme vous pouvez vous y attendre, le menu 
 \family sans
-Éditer
+Édition
 \family default
  et la barre d'outils standard contiennent les commandes de copier-coller,
  ainsi que diverses autres fonctions d'édition.
@@ -1168,7 +1169,7 @@ Récente
 \begin_layout Standard
 Le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Collage
 \begin_inset space ~
 \end_inset
@@ -1208,7 +1209,7 @@ brut
 \begin_layout Standard
 L'élément 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Rechercher
 \begin_inset space ~
 \end_inset
@@ -1445,7 +1446,7 @@ Si vous faites une erreur, vous pouvez facilement la réparer, car LyX a
  un tampon d'annulation de grande capacité.
  Faites 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Annuler
 \family default
  ou utilisez le bouton 
@@ -1457,7 +1458,7 @@ arg   "undo"
 de la barre d'outils pour corriger une erreur.
  Si vous avez accidentellement annulé trop d'opérations, faites 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Refaire
 \family default
  ou utilisez le bouton 
@@ -1566,7 +1567,7 @@ bouton gauche
  LyX marque le texte entre les ancienne et nouvelle positions du pointeur.
  Utilisez 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Copier
 \family default
  pour créer une copie du texte dans le presse-papiers de LyX.
@@ -1575,7 +1576,7 @@ Copier
 \begin_layout Itemize
 Repositionnez le curseur et recollez le texte dans LyX en utilisant 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Coller
 \family default
 .
@@ -1595,7 +1596,7 @@ Cliquez avec le bouton droit pour modifier ses propriétés.
 
 \end_deeper
 \begin_layout Section
-Naviguer
+Navigation
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Naviguer"
@@ -1607,7 +1608,7 @@ name "sec:Naviguer"
 status collapsed
 
 \begin_layout Plain Layout
-Naviguer
+Navigation
 \end_layout
 
 \end_inset
@@ -1622,7 +1623,7 @@ LyX propose plusieurs façons de naviguer dans un document:
 \begin_layout Itemize
 le menu 
 \family sans
-Naviguer
+Navigation
 \family default
  liste toutes les sections du document sous la forme d'entrées de sous-menus
  sur lesquelles vous pouvez cliquer pour sauter à la partie correspondante
@@ -1655,7 +1656,7 @@ arg   "dialog-toggle toc"
 \begin_layout Itemize
 les signets, que vous pouvez poser depuis le menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets
 \family default
  et utiliser via le même menu.
@@ -1671,7 +1672,7 @@ arg   "bookmark-goto 0"
 
  de la barre d'outils (correspondant au menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets\SpecialChar \menuseparator
 Naviguer en arrière
 \family default
@@ -4247,7 +4248,7 @@ Réglage fin
 Vous pouvez aussi changer la méthode de séparation d'un paragraphe donné.
  Allez dans 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -5115,7 +5116,7 @@ LaTeX vous permet de donner un titre court pour une en-tête de section,
  matières, ce qui évite le problème cité.
  Pour définir un titre court, utilisez le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Titre court 
 \family default
 .
@@ -6045,7 +6046,7 @@ arg   "space-insert protected"
 
  soit avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Espace
 \begin_inset space ~
@@ -6246,7 +6247,7 @@ Pour changer la largeur implicite, sélectionnez tous les éléments de la
  liste.
  Ensuite ouvrez le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -7488,7 +7489,7 @@ arg   "newline-insert newline"
 
  ou 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -8224,7 +8225,7 @@ Comment mettre une liste dans une liste ? Désormais la réponse devrait vous
  C'est assez simple d'emboîter un environnement.
  Faites 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Augmenter
 \begin_inset space ~
 \end_inset
@@ -10431,7 +10432,7 @@ reference "sec:Bibliographie"
 .
  On crée une espace insécable grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Espace
 \bar under
@@ -10469,7 +10470,7 @@ Espace ! Horizontal
 \begin_layout Standard
 Tous les espace horizontaux peuvent être insérés grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie spéciale\SpecialChar \menuseparator
 Espacement horizontal
 \family default
@@ -10527,7 +10528,7 @@ reference "sub:Abbreviations"
  Pourtant, parfois, nous voulons quand même un espace normal.
  Dans ce cas, on en insère un avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie spéciale\SpecialChar \menuseparator
 Espace
 \begin_inset space ~
@@ -10634,7 +10635,7 @@ kg (espace fine)
 \begin_layout Standard
 L'espace fine s'insère en passant par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -11382,7 +11383,7 @@ Edge
  Pour obtenir cet effet, vous pouvez utiliser les insert fantômes accessibles
  par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie spéciale\SpecialChar \menuseparator
 Fantôme.
  
@@ -11442,7 +11443,7 @@ name "sub:Espacement-Vertical"
 Pour ajouter un espace supplémentaire au-dessus ou au-dessous d'un paragraphe,
  utilisez la fenêtre de dialogue 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie spéciale\SpecialChar \menuseparator
 Espacement
 \begin_inset space ~
@@ -11647,7 +11648,7 @@ Paragraphe ! Alignement
 Vous pouvez modifier la justification des paragraphes avec la fenêtre de
  dialogue  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres de paragraphe
 \family default
  (bouton 
@@ -11810,7 +11811,7 @@ Il y a deux sortes de sauts de page.
  Le premier termine la page sans entreprendre d'action spéciale.
  Il peut être inséré avant ou après un paragraphe avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -11837,7 +11838,7 @@ haut)
 .
  Le second type, qui est inséré avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -11917,7 +11918,7 @@ Alors que le saut de page forcé va placer tout ce qui suit l'instruction
 \begin_layout Standard
 Vous insérez un tel saut de page avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Saut
 \begin_inset space ~
@@ -11945,7 +11946,7 @@ tampon)
  Quand vous avez un document imprimé en recto-verso comme un livre, vous
  pouvez utiliser le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Saut
 \begin_inset space ~
@@ -11987,7 +11988,7 @@ Comme pour les sauts de page, il y a deux types de sauts de ligne.
  Le premier saute simplement à la ligne, on l'insère dans un paragraphe
  grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -12016,7 +12017,7 @@ arg   "newline-insert newline"
 .
  Le deuxième type de saut de ligne, qui est inséré avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -12113,7 +12114,7 @@ height "1pt"
 
 A partir du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Ligne
 \begin_inset space ~
@@ -12173,7 +12174,7 @@ Symboles
 \family default
  grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère spécial\SpecialChar \menuseparator
 Symboles.
 \end_layout
@@ -13563,7 +13564,7 @@ arg   "font-default"
 
  ou la fenêtre de dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \family default
 
@@ -13655,7 +13656,7 @@ Personnalisé
 \family default
  en faisant 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -14607,7 +14608,7 @@ Vous avez donc le choix d'un grand nombre de combinaisons.
  Quand vous avez choisi un nouveau style de caractères avec la fenêtre de
  dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -15881,7 +15882,7 @@ Pour avoir une idée de l'aspect final de votre document, avec tous ses sauts
  de pages à la bonne place, les notes de bas de page bien numérotées et
  ainsi de suite, utilisez le menu 
 \family sans
-Visionner
+Affichage
 \family default
  et choisissez Visionner ou le bouton de la barre d'outils 
 \begin_inset Info
@@ -15916,7 +15917,7 @@ reference "sec:Doc-Output"
 ).
  D'autres formats de sortie peuvent être sélectionnés par 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Visionner (autres formats)
 \family default
  ou le bouton de la barre d'outils 
@@ -15935,7 +15936,7 @@ Si vous avez modifié votre document depuis votre dernier visionnement, inutile
  de fermer la fenêtre de la visionneuse, appuyez juste sur un des boutons
  de mise à jour ou utilisez le menu 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mettre
 \begin_inset space ~
 \end_inset
@@ -15948,7 +15949,7 @@ jour
 \family default
 .ou 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mettre
 \begin_inset space ~
 \end_inset
@@ -16282,7 +16283,7 @@ tiret
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
@@ -16319,7 +16320,7 @@ tiret long
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
@@ -16569,7 +16570,7 @@ h3knix/m0n0wall
  Si, pour une raison quelconque, LaTeX n'arrivait pas à couper un mot correcteme
 nt, vous pouvez disposer les points de césure à la main, avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -16804,7 +16805,7 @@ Espace ! Fine
 \begin_layout Enumerate
 utiliser 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
@@ -17207,7 +17208,7 @@ Ctrl-"
 \family default
 , ou utilisez
 \family sans
- Insérer\SpecialChar \menuseparator
+ Insertion\SpecialChar \menuseparator
 Caractère spécial\SpecialChar \menuseparator
 Guillemet
 \begin_inset space ~
@@ -17361,7 +17362,7 @@ NdT : faute d'idée d'exemple en français\SpecialChar \ldots{}
  Pour empêcher une ligature, vous devez insérer un caractère spécial entre
  les lettres, avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
@@ -17679,7 +17680,7 @@ demi-espace
 
  pour les unités, utilisez le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Typographie spéciale\SpecialChar \menuseparator
 Espace
 \begin_inset space ~
@@ -18003,7 +18004,7 @@ arg   "note-insert"
 
  de la barre d'outils ou grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \family default
 .
@@ -18036,7 +18037,7 @@ Notes en bas de page
 LyX utilise des boîtes pour saisir et afficher les notes en bas de page:
  quand vous insérez une Note de bas de page avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -18184,7 +18185,7 @@ Dans LyX, les notes en marge ressemblent aux notes en bas de page et se
  comportent de la même façon.
  Quand vous insérez une note en marge avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -18295,7 +18296,7 @@ arg   "dialog-show-new-inset graphics"
 
  dans la barre d'outils, ou faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
 .
@@ -19005,7 +19006,7 @@ arg   "tabular-insert"
 
  soit 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Tableau
 \family default
 .
@@ -19650,7 +19651,7 @@ pied: la ligne courante et toutes celles situées au-dessous et qui n'ont
 Légende: la première ligne est transformée en une seule colonne.
  Vous pouvez maintenant y mettre la légende du tableau grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Légende
 \family default
 \series bold
@@ -22165,7 +22166,7 @@ reference "sec:Références-croisées"
 \begin_layout Standard
 Pour insérer un flottant, on utilise un des sous menus du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant.
 
 \family default
@@ -22255,7 +22256,7 @@ reference "fig:Ornithorinque"
 
  a été créée via le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Figure
 \family default
@@ -22269,7 +22270,7 @@ arg   "float-insert figure"
  L'image a été insérée en positionnant le curseur au(-dessus de la légende
  et en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
  ou le bouton 
@@ -22282,7 +22283,7 @@ arg   "dialog-show-new-inset graphics"
  L'image a été centrée horizontalement en positionnant le curseur devant
  ou derrière l'image et en appelant le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres de paragraphe
 \family default
  ou le bouton 
@@ -22340,7 +22341,7 @@ Ce flottant de figure montrent aussi comment ajouter une étiquette et créer
  une référence croisée pointant sur elle : Insérez-vous une étiquette dans
  la légende à l'aide du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou le bouton 
@@ -22352,7 +22353,7 @@ arg   "label-insert"
  de la barre d'outils, et ensuite y faire référence en utilisant le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -22593,7 +22594,7 @@ name "sec:Flottant-de-tableau"
 \begin_layout Standard
 Les flottants de tableau sont insérés en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Tableau ou le bouton
 \family default
@@ -22825,7 +22826,7 @@ ur d'une page.
 Les minipages de LyX ont leur propre boîte repliable qui peut être insérée
  grâce au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Boîte
 \family default
 .
@@ -23057,7 +23058,7 @@ Pour écrire une formule mathématique, vous pouvez simplement cliquer sur
  Vous pouvez aussi choisir une type particulier de formule avec le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
 .
@@ -23166,7 +23167,7 @@ Naviguer dans une formule
 status collapsed
 
 \begin_layout Plain Layout
-Math ! Naviguer
+Math ! Navigation
 \end_layout
 
 \end_inset
@@ -23753,7 +23754,7 @@ arg   "math-limits"
 
  ou en utilisant le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Changer
 \begin_inset space ~
@@ -24733,7 +24734,7 @@ Il est très facile de construire les crochets que vous souhaitez.
  gauche et sur celui que vous voulez à droite dans la fenêtre de droite,
  et placez-les dans le document en appuyant sur le bouton 
 \family sans
-Insérer
+Insertion
 \family default
 .
  Si vous voulez un côté sans délimiteur, utilisez le bouton vide.
@@ -24759,7 +24760,7 @@ Shift
  Ensuite, choisissez les délimiteurs gauche et droit appropriés, et cliquez
  sur 
 \family sans
-Insérer
+Insertion
 \family default
 .
  Les parenthèses seront placées autour de la structure sélectionnée.
@@ -24961,7 +24962,7 @@ arg   "newline-insert newline"
  dans la matrice, et vous pouvez ajouter des colonnes, et supprimer lignes
  et colonnes, dans le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math 
 \family default
 ou les boutons de la palette.
@@ -24980,7 +24981,7 @@ cas
 
  peut être inséré directement avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Environnement
 \begin_inset space ~
@@ -25259,7 +25260,7 @@ On peut faire référence à chaque formule hors ligne du document par son
  numéro en utilisant une étiquette.
  Comme d'habitude, on ajoute une étiquette en utilisant 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou en utilisant le bouton 
@@ -25316,7 +25317,7 @@ Toutes les lignes avec une étiquette sont numérotées, ce qui fait que LyX
  Comme pour toutes les étiquettes, vous pouvez faire référence à votre formule
  en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -25865,7 +25866,7 @@ boldsymbol
 Un certain nombre d'options pour les polices de caractères sont disponibles
  dans le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Style
 \family default
@@ -26170,7 +26171,7 @@ Toutes ces tailles de polices du mode mathématique sont relatives, ce qui
  veut dire que si tout une structure est mise à une certaine taille avec
  le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \family default
 
@@ -26465,7 +26466,7 @@ Troisième élément
 D'abord nous ajoutons une étiquette dans le second élément, soit avec le
  menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Etiquette
 \family default
  , soit en utilisant le bouton 
@@ -26540,7 +26541,7 @@ sec:
 Pour faire référence à l'élément que l'on vient d'identifier, nous allons
  utiliser le nom de son étiquette soit en activant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -26572,7 +26573,7 @@ arg   "dialog-show-new-inset ref"
 \begin_layout Standard
 Plutôt que d'utiliser 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -26588,7 +26589,7 @@ Copier comme référence
  La référence croisée à cette étiquette est copiée dans le presse-papier
  et peut être collée à la position courante du curseur avec le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Coller 
 \family default
 (raccourci clavier 
@@ -27107,7 +27108,7 @@ name "sub:Table-des-Matières"
 \begin_layout Standard
 La Table des Matières (TdM) est insérée à partir du menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -27206,7 +27207,7 @@ Les listes des figures, des tableaux et des algorithmes sont à peu près
  comme la tables des matières.
  Vous pouvez les insérer avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -27262,7 +27263,7 @@ name "sub:URLs"
 On peut insérer des liens vers des pages web ou des adresses mail grâce
  au menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 URL
 \family default
 .
@@ -27332,7 +27333,7 @@ name "sub:Hyperliens"
 \begin_layout Standard
 On insère des hyperliens avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Hyperlien 
 \family default
 ou avec le bouton 
@@ -27395,7 +27396,7 @@ Les hyperliens seront coupés automatiquement en fin de ligne dans une sortie
  Pour modifier le style du texte du lien, sélectionnez l'insert de l'hyperlien
  et utilisez la fenêtre de dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style de texte
 \family default
 .
@@ -27637,7 +27638,7 @@ latexcompanion
 A tout endroit de votre document vous pouvez faire référence à la clé de
  votre entrée bibliographique, soit en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Citation
 \family default
 , soit en utilisant le bouton 
@@ -27810,7 +27811,7 @@ vous trouverez une sélection de programmes pour gérer des bases de données
 Pour utiliser une base de données dans votre document, utilisez le menu
  
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -28190,7 +28191,7 @@ name "sec:Index"
 \begin_layout Standard
 Une entrée d'index est créée en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Entrée
 \begin_inset space ~
 \end_inset
@@ -28212,7 +28213,7 @@ arg   "index-insert"
 \begin_layout Standard
 L'index lui même est inséré dans le document avec le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -29191,7 +29192,7 @@ Ajouter
 Une fois ces modifications faites, vous devez retrouver le nouvel index
  dans 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -29204,7 +29205,7 @@ TdM
 \family default
 : le menu 
 \family sans
-Insérer
+Insertion
 \family default
  doit faire apparaître une entrée pour chacun des index supplémentaires
  que vous avez définis.
@@ -29332,7 +29333,7 @@ key "TeXCatalogue"
 Une entrée de glossaire est créée en plaçant le curseur juste après le symbole
  que l'on veut référencer en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Entrée
 \begin_inset space ~
 \end_inset
@@ -29483,7 +29484,7 @@ reference "sub:Syntaxe-de-Latex"
 \begin_layout Standard
 Vous ne pouvez pas utiliser le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -30015,7 +30016,7 @@ Glossaire ! Impression
 \begin_layout Standard
 Pour imprimer le glossaire dans votre document, utilisez 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -30212,7 +30213,7 @@ Dans ces cas, LyX permet de créer plusieurs branches pour le même document.
  Le texte n'apparaîtra dans la sortie que si sa branche est activée.
  Pour créer une branche, vous pouvez utiliser
 \family sans
- Insérer\SpecialChar \menuseparator
+ Insertion\SpecialChar \menuseparator
 Branche\SpecialChar \menuseparator
 Insérer une nouvelle branche
 \family default
@@ -30249,7 +30250,7 @@ branches inconnues
 Le texte qui est spécifique à une branche est mis dans des boîtes de branche.
  Ces boîtes sont insérées en passant par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Branche
 \family default
  où vous pouvez choisir la branche à laquelle doit être rattaché le texte.
@@ -30763,7 +30764,7 @@ Mais ne vous inquiétez pas, vous pouvez quand même utiliser votre paquetage
  Vous n'aurez qu'à les placer dans une boîte de code TeX.
  On crée une boîte de code TeX soit en utilisant le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code
 \begin_inset space ~
 \end_inset
@@ -31633,7 +31634,7 @@ trois
 Pour le paramétrage, vous aurez besoin de quelques commandes LaTeX insérée
  en code TeX (menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code
 \begin_inset space ~
 \end_inset
@@ -32289,7 +32290,7 @@ En dehors des mathématiques, il y a d'autres cas qui peuvent nécessiter
  par LyX.
  Pour ce faire, insérez un insert d'aperçu via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Aperçu
 \family default
 , ou collez ce que vous voulez voir dans un tel insert.
@@ -32671,7 +32672,7 @@ Rechercher et remplacer
 
  est activée par le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Rechercher et remplacer (élaboré)
 \family default
  (raccourci 
@@ -32997,7 +32998,7 @@ Rechercher
 .
  Ceci se fait par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Insérer une expression régulière
 \family default
  quand le curseur est dans l'éditeur 
@@ -34018,7 +34019,7 @@ arg   "change-next"
 \begin_layout Plain Layout
 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Modification
 \begin_inset space ~
 \end_inset
@@ -34295,7 +34296,7 @@ arg   "note-insert"
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note\SpecialChar \menuseparator
 Note
 \begin_inset space ~
@@ -34330,7 +34331,7 @@ arg   "note-next"
 \begin_layout Plain Layout
 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -38518,12 +38519,12 @@ Vous propose d'enregistrer tous les documents non enregistrés et puis quitte.
 \end_layout
 
 \begin_layout Section
-Le menu Éditer
+Le menu Édition
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Menu ! Éditer
+Menu ! Édition
 \end_layout
 
 \end_inset
@@ -38796,12 +38797,12 @@ reference "sub:Profondeur-section"
 \end_layout
 
 \begin_layout Section
-Le menu Visionner
+Le menu Affichage
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Visionner
+Menu ! Affichage
 \end_layout
 
 \end_inset
@@ -39290,12 +39291,12 @@ reference "sec:Barres-d'Outils"
 \end_layout
 
 \begin_layout Section
-Le menu Insérer
+Le menu Insertion
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Insérer
+Menu ! Insertion
 \end_layout
 
 \end_inset
@@ -40546,12 +40547,12 @@ reference "sec:Aperçu-de-morceaux"
 \end_layout
 
 \begin_layout Section
-Le menu Naviguer
+Le menu Navigation
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Menu ! Naviguer
+Menu ! Navigation
 \end_layout
 
 \end_inset
@@ -40590,7 +40591,7 @@ Avec ce menu, vous pouvez définir vos propres signets.
 
 2.5 et utilisez le menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets\SpecialChar \menuseparator
 Enregistrer
 \begin_inset space ~
@@ -40631,7 +40632,7 @@ Signet
  Maintenant vous pouvez facilement sauter entre ces deux sections en utilisant
  le menu (tous les signets sont listés en bas du menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets
 \family default
 ) ou les raccourcis claviers 
@@ -41440,7 +41441,7 @@ orthographique
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Annuler
 \end_layout
 
@@ -41470,7 +41471,7 @@ Annuler
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Refaire
 \end_layout
 
@@ -41500,7 +41501,7 @@ Refaire
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Couper
 \end_layout
 
@@ -41530,7 +41531,7 @@ Couper
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Copier
 \end_layout
 
@@ -41560,7 +41561,7 @@ Copier
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Coller
 \end_layout
 
@@ -41590,7 +41591,7 @@ Coller
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Rechercher
 \begin_inset space ~
 \end_inset
@@ -41628,7 +41629,7 @@ remplacer
 \begin_layout Plain Layout
 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets\SpecialChar \menuseparator
 Naviguer en arrière
 \end_layout
@@ -41659,7 +41660,7 @@ Naviguer en arrière
 \begin_layout Plain Layout
 Mise en évidence, fonction du dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -41697,7 +41698,7 @@ texte
 \begin_layout Plain Layout
 Donner le style nom propre au texte, fonction du dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -41735,7 +41736,7 @@ texte
 \begin_layout Plain Layout
 Donner au texte le dernier style sélectionné dans le dialogue 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -41773,7 +41774,7 @@ texte
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Formule
 \begin_inset space ~
@@ -41812,7 +41813,7 @@ ligne
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \end_layout
 
@@ -41842,7 +41843,7 @@ Graphique
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Tableau
 \end_layout
 
@@ -42147,7 +42148,7 @@ Description
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Augmenter
 \begin_inset space ~
 \end_inset
@@ -42185,7 +42186,7 @@ profondeur
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Réduire
 \begin_inset space ~
 \end_inset
@@ -42223,7 +42224,7 @@ profondeur
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Figure
 \end_layout
@@ -42254,7 +42255,7 @@ Figure
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottant\SpecialChar \menuseparator
 Tableau
 \end_layout
@@ -42285,7 +42286,7 @@ Tableau
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \end_layout
 
@@ -42315,7 +42316,7 @@ Insérer\SpecialChar \menuseparator
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence croisée
 \end_layout
 
@@ -42345,7 +42346,7 @@ Référence croisée
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Citation
 \end_layout
 
@@ -42375,7 +42376,7 @@ Citation
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Entrée
 \begin_inset space ~
 \end_inset
@@ -42409,7 +42410,7 @@ d'index
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Entrée
 \begin_inset space ~
 \end_inset
@@ -42447,7 +42448,7 @@ glossaire
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -42493,7 +42494,7 @@ page
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -42531,7 +42532,7 @@ marge
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note\SpecialChar \menuseparator
 Note
 \begin_inset space ~
@@ -42566,7 +42567,7 @@ LyX
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Boîte
 \end_layout
 
@@ -42596,7 +42597,7 @@ Boîte
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 URL
 \end_layout
 
@@ -42626,7 +42627,7 @@ URL
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code T
 \family default
 
@@ -42671,7 +42672,7 @@ eX
 \begin_layout Plain Layout
 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \end_layout
@@ -42702,7 +42703,7 @@ Sous-document
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -42740,7 +42741,7 @@ texte
 \begin_layout Plain Layout
 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -42871,7 +42872,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Visionner
 \end_layout
 
@@ -42901,7 +42902,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mettre à jour
 \end_layout
 
@@ -42931,7 +42932,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Visionner le document maître
 \end_layout
 
@@ -42961,7 +42962,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mettre à jour le document maître
 \end_layout
 
@@ -43025,7 +43026,7 @@ Synchroniser avec le résultat imprimable
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Visionner (autres formats)
 \end_layout
 
@@ -43055,7 +43056,7 @@ Visionner (autres formats)
 \begin_layout Plain Layout
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mettre à jour (autres formats)
 \end_layout
 
@@ -45060,11 +45061,7 @@ du
 \begin_inset space ~
 \end_inset
 
-résultat est le format utilisé quand vous sél
-\begin_inset Quotes frd
-\end_inset
-
-ctionnez 
+résultat est le format utilisé quand vous sélectionnez 
 \begin_inset Quotes fld
 \end_inset
 
@@ -45084,7 +45081,11 @@ Mettre à jour
 \begin_inset Quotes fld
 \end_inset
 
-Visionner le document maître' et 
+Visionner le document maître
+\begin_inset Quotes frd
+\end_inset
+
+ et 
 \begin_inset Quotes fld
 \end_inset
 
@@ -45097,13 +45098,13 @@ mettre à jour le document maître
 Visionner
 \family default
  ou dans la barre d'outils.
- La velur implicitee est fixée dans 
+ La velur implicite est fixée dans 
 \family sans
 Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
 Formats
 \family default
- de fichier, see sec.
+ de fichier, voir sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -45136,7 +45137,7 @@ résultat
 
 imprimable positionne les réglages pour le menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Recherche
 \begin_inset space ~
 \end_inset
@@ -45445,7 +45446,7 @@ LyX
 Maintenant voyons un exemple: supposons que nous utilisions souvent le menu
  
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Signets 
 \family default
 et que de ce fait nous voulions un signet supplémentaire, vous pouvez ajouter
@@ -47446,7 +47447,7 @@ Recherche
 
 directe définit les commandes à utiliser pour la rubrique de menu 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Recherche
 \begin_inset space ~
 \end_inset
@@ -48148,7 +48149,7 @@ Mettre à jour le document maître
 \family default
 du menu 
 \family sans
-Visionner
+Affichage
 \family default
  ou de la barre d'outils
 \end_layout

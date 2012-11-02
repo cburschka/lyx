@@ -140,14 +140,16 @@ Options avancées de LyX
 \begin_layout Subtitle
 Version 2.0.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/12011 
+Traduction : Mise à jour pour 2.0 par JPChrétien, Date : 30/07/12011, relecture
+ partielle pour 2.0.5, 31/10/2012, remplacement de Éditer/Visionner/Insérer/Navigu
+er par Édition/Affichage/Insertion/Navigation 
 \end_layout
 
 \begin_layout Plain Layout
@@ -427,7 +429,7 @@ LaTeX
 \family default
 , (ou bien 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Afficher le code LaTeX
 \family default
 ) puis regardez le préambule du fichier 
@@ -449,7 +451,7 @@ Il y a plusieurs commandes qui invoquent LaTeX automatiquement.
 \begin_layout Itemize
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 
 \emph on
 Format
@@ -458,7 +460,7 @@ Format
 \begin_layout Itemize
 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mise
 \begin_inset space ~
 \end_inset
@@ -535,7 +537,7 @@ S'il y a des erreurs, il affiche le journal d'erreurs.
 \begin_layout Standard
 Si vous avez lancé LaTeX avec 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 DVI
 \family default
 , LyX exécute alors 
@@ -545,7 +547,7 @@ xdvi
  sur le fichier DVI.
  Si vous avez utilisé 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 PostScript
 \family default
  ou 
@@ -646,7 +648,7 @@ code TeX
 \family default
 , que vous pouvez mettre dans votre document avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code
 \begin_inset space ~
 \end_inset
@@ -862,7 +864,7 @@ code TeX
  complexe.
  Vous pouvez alors utiliser 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -2459,9 +2461,9 @@ end{document}
 LyX permet l'inclusion de fichiers en sélectionnant 
 \family sans
 \bar under
-I
+Insertion
 \bar default
-nsérer\SpecialChar \menuseparator
+\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -2907,11 +2909,11 @@ book (KOMA script)
 \end_inset
 
  (livre), donc il est un peu plus fourni, mais pour réellement en mettre
- plein la vue, il faut choisir la mise en page 
+ plein la vue, il faut choisir le style d'en-têtes 
 \begin_inset Quotes fld
 \end_inset
 
-fancy
+sophistiqué
 \begin_inset Quotes frd
 \end_inset
 
@@ -3536,7 +3538,7 @@ pifont.sty
 \begin_layout Standard
 LyX ne vous empêche pas d'utiliser les puces correspondant à des paquetages
  que vous n'avez pas.
- Si vous obtenez des erreurs LaTeX lorsque vous essayez de Visionner ou
+ Si vous obtenez des erreurs LaTeX lorsque vous essayez de visionner ou
  d'imprimer le fichier, c'est sûrement qu'il vous manque un paquetage.
  LyX ne vous empêche pas d'agir car vous pourriez vouloir éditer quelque
  part et imprimer avec un autre système.
@@ -4729,7 +4731,7 @@ pipe
 .
  La racine de ces deux noms peut être définie dans la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
 Entrées\SpecialChar \menuseparator
 Répertoires
@@ -5225,6 +5227,8 @@ name "sub:rev-search"
 
 \end_inset
 
+
+\lang french
 Activation automatique
 \end_layout
 
@@ -5275,14 +5279,7 @@ Synchroniser avec la sortie imprimable
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the method 
-\lang french
-
+ Notez que la méthode 
 \begin_inset Flex Code
 status collapsed
 
@@ -5294,10 +5291,14 @@ synctex=1
 
 \end_inset
 
-
+ active la compression 
+\family sans
+gzip
+\family default
+.
+ Si votre visionneuse ne la supporte pas, vous devez utiliser à la place
 \lang english
- enables gzip compression.
- If your viewer does not support it, you should instead use 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -5313,7 +5314,7 @@ synctex=-1
 \end_layout
 
 \begin_layout Standard
-Notez bien que la l'inclusion des paquetages 
+Notez également que la l'inclusion des paquetages 
 \begin_inset Flex Code
 status collapsed
 
@@ -5455,7 +5456,7 @@ status collapsed
 
 \end_inset
 
-eX (plain)->DVI
+eX (standard)->DVI
 \end_layout
 
 \end_inset
@@ -5478,7 +5479,7 @@ status collapsed
 
 \end_inset
 
-eX (plain)->DraftDVI
+eX (standard)->DraftDVI
 \end_layout
 
 \end_inset
@@ -5719,7 +5720,7 @@ status collapsed
 
 \end_inset
 
-eX (plain) -> DVI
+eX (standard) -> DVI
 \end_layout
 
 \end_inset
@@ -5742,7 +5743,7 @@ status collapsed
 
 \end_inset
 
-eX (plain) -> DraftDVI
+eX (standard) -> DraftDVI
 \end_layout
 
 \end_inset
@@ -6744,7 +6745,7 @@ l'opposé
 status collapsed
 
 \begin_layout Plain Layout
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Recherche directe
 \end_layout
 
@@ -7104,19 +7105,17 @@ altaffiltext
  de modèle.
  Pour des commandes comme celles-là, le code LaTeX doit être entré directement
  et signalé comme tel.
- De telles commandes sont du Vilain Texte Rouge, ou ERT
-\begin_inset Foot
-status collapsed
+ De telles commandes sont dénommées 
+\begin_inset Quotes fld
+\end_inset
 
-\begin_layout Plain Layout
-NdT : Evil Red Text
-\end_layout
-
+code TeX
+\begin_inset Quotes frd
 \end_inset
 
 .
- J'essaye de minimiser la quantité de Vilain Texte Rouge nécessaire dans
- un document AASTeX, mais il y en a toujours trop.
+ J'essaye de minimiser la quantité de code TeX nécessaire dans un document
+ AASTeX, mais il y en a toujours trop.
 \end_layout
 
 \begin_layout Subsection
@@ -7799,7 +7798,7 @@ deluxetable
 , je vous suggère de l'éditer avec un éditeur de texte dans un fichier séparé,
  puis de faire 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -7921,7 +7920,7 @@ LyX, par défaut, tente de centrer la légende/titre du tableau.
  Vous devez donc cliquer quelque part dans la légende/titre, puis faire
  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -7993,7 +7992,7 @@ citep
 \begin_layout Enumerate
 entrez toutes vos citations en utilisant le mécanisme prédéfini 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Citation
 \family default
  ; au moins vous pourrez tirer avantage des insertions automatiques.
@@ -8429,7 +8428,7 @@ Si vous voulez placer des notes de bas de page dans le bloc d'en-tête, par
  exemple pour entrer votre adresse actuelle, utilisez les notes de bas de
  page standard avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -8756,7 +8755,7 @@ Il y a une seule chose spéciale : les figures avec la légende à côté.
 \begin_layout Enumerate
 Créez une grande figure flottante : faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottants\SpecialChar \menuseparator
 Figure
 \family default
@@ -8791,7 +8790,7 @@ Insérez votre figure.
 Positionnez le curseur derrière la figure et insérez un ressort horizontal
  : 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Formats\SpecialChar \menuseparator
 Ressort
 \begin_inset space ~
@@ -9286,7 +9285,7 @@ Traducteur
 \end_layout
 
 \begin_layout Standard
-Les environnments suivants sont fournis aussi bien par le module 
+Les environnements suivants sont fournis aussi bien par le module 
 \begin_inset Flex Code
 status collapsed
 
@@ -9464,7 +9463,7 @@ Utilisé parfois à la fin d'une argumentation
 \end_layout
 
 \begin_layout Fact
-Utilsable comme Propositon, à une échelle peut-être réduite
+Utilisable comme Proposition, à une échelle peut-être réduite
 \end_layout
 
 \begin_layout Standard
@@ -10103,7 +10102,7 @@ ou
 \emph default
  
 \emph on
-excutive
+executive
 \emph default
  
 \emph toggle
@@ -10187,7 +10186,7 @@ centré au bas de la page.
 
 \family sans
 \series bold
-empty
+vide
 \family default
 \series default
  Les diapos ne présenteront ni numéro de page, ni en-tête ou pied de page
@@ -10199,7 +10198,7 @@ empty
 
 \family sans
 \series bold
-plain
+ordinaire
 \family default
 \series default
  Les diapos auront un numéro de page centré en bas de la page.
@@ -10221,7 +10220,7 @@ foilheadings
 \labelwidthstring MMMMMMM
 
 \series bold
-fancy
+sophistiqué
 \series default
  Vous donne accès au paquetage 
 \family sans
@@ -10693,7 +10692,7 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-Les versions sans étoiles sont numérotées, tandis que celles avec étoiles
+Les versions sans étoile sont numérotées, tandis que celles avec étoile
  ne le sont pas.
  Il y a enfin des environnements de liste ajoutés par LyX :
 \end_layout
@@ -11558,14 +11557,15 @@ LogoOn
 \end_layout
 
 \begin_layout Standard
-Si vous voulez utiliser la mise en page 
+Si vous voulez utiliser le style d'en-têtes 
 \family sans
-fancy
+sophistiqué
 \family default
  dans la fenêtre 
 \family sans
 Document\SpecialChar \menuseparator
-Paramètres
+Paramètres\SpecialChar \menuseparator
+Format de la page
 \family default
 , il vous faudra sûrement ajouter 
 \family typewriter
@@ -11874,7 +11874,7 @@ Paramètres
 \begin_layout Description
 
 \family sans
-plain
+ordinaire
 \family default
  Le rendu final contient des numéros de page dans le coin inférieur droit.
 \end_layout
@@ -11882,20 +11882,17 @@ plain
 \begin_layout Description
 
 \family sans
-headings
+en-têtes
 \family default
- Comme 
-\family sans
-plain
-\family default
-, mais imprime aussi tous les marqueurs temporels que vous aurez placés.
- C'est le choix par défaut.
+ Comme ordinaire, mais imprime aussi tous les marqueurs temporels que vous
+ aurez placés.
+ C'est le choix implicite.
 \end_layout
 
 \begin_layout Description
 
 \family sans
-empty
+vide
 \family default
  Le rendu final ne contient pas de numéros de page, de marqueurs temporels
  ni de marqueurs d'alignement.
@@ -12083,7 +12080,7 @@ ListePuces
 \begin_layout Itemize
 
 \family sans
-Énumeration
+Énumération
 \end_layout
 
 \begin_layout Itemize
@@ -12532,7 +12529,7 @@ NewSlide:
 Les diapos sont sûrement les seules fois dans LyX où vous aurez à forcer
  la fin des pages (vous pouvez toujours le faire dans 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -14128,7 +14125,7 @@ ijmpd
 \emph on
 I
 \lang english
-ntenational Journal of Modern Physics D
+nternational Journal of Modern Physics D
 \emph default
 \lang french
 .
@@ -14226,7 +14223,7 @@ LyX ne vous laissera pas changer la taille de police ni la mise en page
 
 \begin_layout Enumerate
 La langue du document ne doit pas être modifiée.
- Avant de Visionner votre papier, assurez-vous que vous n'utilisez pas le
+ Avant de visionner votre papier, assurez-vous que vous n'utilisez pas le
  paquetage 
 \family typewriter
 babel
@@ -14431,7 +14428,7 @@ natbib
 .
  Dans LyX, les citations s'affichent comme d'habitude ; dans la sortie,
  les citations apparaissent comme des exposants.
- Si vous voules utiliser une citation en texte normal, vous devez utiliser
+ Si vous voulez utiliser une citation en texte normal, vous devez utiliser
  la commande 
 \family typewriter
 refcite
@@ -14470,7 +14467,7 @@ Il n'y a pas de section
 \begin_inset Quotes fld
 \end_inset
 
-Remerciments
+Remerciements
 \begin_inset Quotes frd
 \end_inset
 
@@ -14518,7 +14515,7 @@ Appendices Section
 \end_inset
 
  qui indique le début des appendices.
- Cet environnement doit être laissé vide ; il sert juste à emettre une commande
+ Cet environnement doit être laissé vide ; il sert juste à émettre une commande
  LaTeX, mais rien n'est imprimé.
  Dans LyX, le mot 
 \begin_inset Quotes fld
@@ -14529,7 +14526,7 @@ Appendices
 \end_inset
 
  apparaît en lettres bleues, comme indications que toutes les sections qui
- suvent ce point sont des appendices.
+ suivent ce point sont des appendices.
  Pour écrire un appendice, utilisez l'environnement 
 \begin_inset Quotes fld
 \end_inset
@@ -14553,7 +14550,7 @@ Section d'appendices
 \emph on
 doit
 \emph default
- être présente avant le premier appendice ; si ce n'est pasle cas, tous
+ être présente avant le premier appendice ; si ce n'est pas le cas, tous
  les appendices seront numérotés comme des sections normales, dans la sortie.
  Un appendice peut contenir des 
 \family sans
@@ -14586,7 +14583,7 @@ tbl
  pour les légendes des tableaux.
  La conséquence en est qu'un tableau créé avec LyX est affiché correctement,
  mais sans sa légende.
- Cependant, vous pouvez utiliser un peu d'ERT our contourner ce problème,
+ Cependant, vous pouvez utiliser un peu de code TeX pour contourner ce problème,
  de façon à ce que les légendes s'impriment comme prévu.
  Pour le faire, créez un flottant de tableau comme d'habitude, effacez la
  légende, et remplacez la par le code LaTeX 
@@ -14600,16 +14597,16 @@ tbl{votre légende de tableau}{
 }
 \family default
  immédiatement après votre tableau.
- Étudiez l'exemple de tableau qui est inclu dans le fichier modèle pour
+ Étudiez l'exemple de tableau qui est inclus dans le fichier modèle pour
  voir comme cette astuce est utilisée.
- Une autre soution, si vous avez besoin de légendes de tableaux, est de
+ Une autre solution, si vous avez besoin de légendes de tableaux, est de
  construire tout le tableau dans un fichier 
 \family typewriter
 .tex
 \family default
 , puis inclure celui-ci dans le document LyX (par 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
 Sous-document
 \family default
@@ -14651,14 +14648,14 @@ En fait, vous avez le choix entre LaTeX
 \begin_inset space ~
 \end_inset
 
-(plain) et LaTeX
+(standard) et LaTeX
 \begin_inset space ~
 \end_inset
 
 (pdflatex).
  Si vous prévoyez d'utiliser pdflatex pour préparer votre papier, vous devez
  utiliser l'option pdflatex pour que les graphiques soient convertis au
- format PDF, prêts à être utiliséspar pdflatex.
+ format PDF, prêts à être utilisés par pdflatex.
 \end_layout
 
 \end_inset
@@ -14723,9 +14720,9 @@ ijmpd.lyx
 \family default
 , le code TeX nécessaire est déjà là, et vous n'avez normalement pas besoin
  de l'effacer.
- Vous pouvez seulement changer le premier ERT pour spécifier ce qui s'imprime
- en haut des pages paires et impaires (respectivement le titre abrégé et
- le nom des auteurs).
+ Vous pouvez seulement changer le premier code TeX pour spécifier ce qui
+ s'imprime en haut des pages paires et impaires (respectivement le titre
+ abrégé et le nom des auteurs).
  Ce code TeX doit être de la forme 
 \family typewriter
 
@@ -14811,7 +14808,7 @@ Modèle
 \end_layout
 
 \begin_layout Itemize
-Pour pouvoir compiler votre document en PDF, PS ou DVI, vérifiez ques les
+Pour pouvoir compiler votre document en PDF, PS ou DVI, vérifiez que les
  deux options 
 \family sans
 Utilise
@@ -14883,7 +14880,7 @@ Topical
 \begin_layout Itemize
 
 \family sans
-Comment
+Commentaire
 \family default
  pour un commentaire (Comment)
 \end_layout
@@ -14907,7 +14904,7 @@ Paper
 \begin_layout Itemize
 
 \family sans
-Prelim
+CommPrelim
 \family default
  pour une communication préliminaire
 \end_layout
@@ -14915,7 +14912,7 @@ Prelim
 \begin_layout Itemize
 
 \family sans
-Rapid
+CommRapid
 \family default
  pour une communication rapide
 \end_layout
@@ -14943,8 +14940,8 @@ Il y a un environnement de titre général
 Article
 \family default
  qui n'est pas géré par LyX.
- Il peut être utilisé en ERT si votre document ne correspond pas à l'un
- des autres types de titres.
+ Il peut être utilisé en code TeX si votre document ne correspond pas à
+ l'un des autres types de titres.
 \end_layout
 
 \begin_layout Standard
@@ -15329,7 +15326,7 @@ particularités
 \end_layout
 
 \begin_layout Enumerate
-n'effacez pas le Texte Rouge qui se trouve dans le modèle, et
+n'effacez pas le code TeX qui se trouve dans le modèle, et
 \end_layout
 
 \begin_layout Enumerate
@@ -15414,7 +15411,7 @@ letter.cls
 \end_layout
 
 \begin_layout Itemize
-La taille de caractère standard est de 11
+la taille de caractère standard est de 11
 \begin_inset space ~
 \end_inset
 
@@ -15436,13 +15433,11 @@ book (koma-script)
 
 pt dans 
 \emph on
-letter (koma-script)
-\emph default
-.
+letter (koma-script);
 \end_layout
 
 \begin_layout Itemize
-Les en-têtes, les marqueurs de l'environnement 
+les en-têtes, les marqueurs de l'environnement 
 \family sans
 Description
 \family default
@@ -15533,12 +15528,11 @@ scrguien
 
 \end_inset
 
-.
- 
+.;
 \end_layout
 
 \begin_layout Itemize
-La principale méthode utilisée dans les classes de cocuments pour modifier
+la principale méthode utilisée dans les classes de cocuments pour modifier
  le type 
 \begin_inset Note Note
 status collapsed
@@ -15596,13 +15590,11 @@ Paramètres.
 \family typewriter
 scrguide
 \family default
- de la documentation Koma-script
-\family sans
-.
+ de la documentation Koma-script;
 \end_layout
 
 \begin_layout Itemize
-Les classes de document LaTeX de la famille Koma-Script définissent un certain
+les classes de document LaTeX de la famille Koma-Script définissent un certain
  nombre de commandes supplémentaires.
  Celles d'entre elles qui ont une signification dans LyX sont implémentées
  par des types de paragraphes y correspondant.
@@ -15870,7 +15862,7 @@ Maxime
  d'un chapitre.
  Si vous utilisez le paramètre optionnel (
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Titre
 \begin_inset space ~
 \end_inset
@@ -16481,9 +16473,9 @@ Ouverture
 \end_layout
 
 \begin_layout Standard
-Une implémentation de ces types dans une logique WYSIWYG n'aurait pas de
- sens, car l'aspect réel de la lettre produite ne dépendra pas seulement
- de l'utilisation d'un type donné, mais aussi d'autres facteurs.
+Une implantation de ces types dans une logique WYSIWYG n'aurait pas de sens,
+ car l'aspect réel de la lettre produite ne dépendra pas seulement de l'utilisat
+ion d'un type donné, mais aussi d'autres facteurs.
  Par exemple, dans le comportement par défaut, une signature entrée avec
  le type 
 \family sans
@@ -16916,7 +16908,7 @@ Logo
 \family default
  (par 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
 ) dans l'en-tête.
@@ -17011,7 +17003,7 @@ Avec LyX, la visualisation d'un document de classe Koma-Script peut poser
 \end_layout
 
 \begin_layout Itemize
-Le numéro de chapitre pour un type 
+le numéro de chapitre pour un type 
 \family sans
 Chapitre
 \family default
@@ -17022,12 +17014,11 @@ Chapitre
 \family sans
 Counter_Chapter
 \family default
- dans le fichier de format.
- 
+ dans le fichier de format;
 \end_layout
 
 \begin_layout Itemize
-Les en-têtes des types 
+les en-têtes des types 
 \family sans
 AjoutChap
 \family default
@@ -17048,11 +17039,11 @@ vraie
 Document\SpecialChar \menuseparator
 Plan
 \family default
-).
+);
 \end_layout
 
 \begin_layout Itemize
-Les paragraphes avec la classe de document 
+les paragraphes avec la classe de document 
 \emph on
 letter
 \emph default
@@ -17299,7 +17290,7 @@ lyx-devel@lists.lyx.org
 , beaucoup ne le seront probablement jamais, à cause des limitations de
  la structure de LyX.
  Bien sûr, vous pouvez quand même utiliser toutes les fonctions avec l'aide
- de quelques commandes LaTeX ( en ERT
+ de quelques commandes LaTeX (en code TeX
 \begin_inset Foot
 status collapsed
 
@@ -17323,8 +17314,8 @@ reference "sec:Insérer-du-code-LaTeX"
  ).
  Dans cette section, nous ne listerons que les fonctions qui sont gérées
  par LyX de façon native.
- Pour une description détaillée (et pour le reste des fonctions) nous recommendo
-ns de jetter un œil au manuel détaillé de la classe 
+ Pour une description détaillée (et pour le reste des fonctions) nous recommando
+ns de jeter un œil au manuel détaillé de la classe 
 \family sans
 Memoir
 \family default
@@ -17405,7 +17396,7 @@ page
 \begin_inset Quotes fld
 \end_inset
 
-fancy
+sophistiqué
 \begin_inset Quotes frd
 \end_inset
 
@@ -17467,7 +17458,7 @@ Sectionnement
  long).
  Dans LyX, vous pouvez le faire avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Titre
 \begin_inset space ~
 \end_inset
@@ -17741,8 +17732,8 @@ Memoir
 \family sans
 vers
 \family default
-, mais vous aurez besoin d'utiliser des ERT, puisqu'ils doivent être emboîtés
- à l'intérieur d'environnements 
+, mais vous aurez besoin d'utiliser du code TeX, puisqu'ils doivent être
+ emboîtés à l'intérieur d'environnements 
 \family sans
 vers
 \family default
@@ -17878,7 +17869,7 @@ texhash
 \family default
  dans le cas de teTeX, en tant que super-utilisateur si nécessaire – LyX
  ne s'occupe-t-il pas tout seul de ça ?), reconfigurez LyX et ça devrait
- marcher.
+ fonctionner.
 \end_layout
 
 \begin_layout Subsection
@@ -18255,8 +18246,7 @@ jgrga
 \family sans
 Options
 \family default
- de la classe de document.
- (C'est effectivement un bogue.)
+ de la classe de document (c'est effectivement un bogue.)
 \end_layout
 
 \begin_layout Enumerate
@@ -18918,45 +18908,45 @@ NdT : Certaines de ces règles me sont totalement inconnues.
 \end_layout
 
 \begin_layout Itemize
-De mauvais points de suspension :
+de mauvais points de suspension :
 \begin_inset Newline newline
 \end_inset
 
 Utiliser \SpecialChar \ldots{}
- et non pas ...
+ et non pas ...;
 \end_layout
 
 \begin_layout Itemize
-Des espaces à l'intérieur des parenthèses :
+des espaces à l'intérieur des parenthèses :
 \begin_inset Newline newline
 \end_inset
 
-( mauvais espacement )
+( mauvais espacement );
 \end_layout
 
 \begin_layout Itemize
-L'utisation d'espaces normaux dans des abréviations courantes :
+l'utilisation d'espaces normaux dans des abréviations courantes :
 \begin_inset Newline newline
 \end_inset
 
 Par exemple il y a ici trop d'espaces dans l'abréviation C.
  N.
  R.
- S.
+ S.;
 \end_layout
 
 \begin_layout Itemize
-L'utilisation d'un mauvais espacement à la fin d'une phrase dont la dernière
+l'utilisation d'un mauvais espacement à la fin d'une phrase dont la dernière
  lettre est une majuscule :
 \begin_inset Newline newline
 \end_inset
 
 Voici un TEST.
- Et l'espacement n'est pas bon.
+ Et l'espacement n'est pas bon;
 \end_layout
 
 \begin_layout Itemize
-L'insertion d'une espace avant une étiquette ou un autre objet de ce type
+l'insertion d'une espace avant une étiquette ou un autre objet de ce type
  :
 \begin_inset Newline newline
 \end_inset
@@ -18982,11 +18972,11 @@ Cette note peut apparaître sur une mauvaise page, car son appel (le petit
 \end_inset
 
 .
- L'étiquette est ici trop séparée.
+ L'étiquette est ici trop séparée;
 \end_layout
 
 \begin_layout Itemize
-L'utilisation d'espaces simples au lieu d'espaces insécables devant des
+l'utilisation d'espaces simples au lieu d'espaces insécables devant des
  références :
 \begin_inset Newline newline
 \end_inset
@@ -19008,11 +18998,11 @@ reference "sec:chktex"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
-L'utilisation d'un 
+l'utilisation d'un 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19040,7 +19030,7 @@ x
 \begin_inset Formula $2\times2$
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -19092,7 +19082,7 @@ ChkTeX
  Ces avertissements seront placés au plus près de l'erreur, et vous pourrez
  facilement les trouver avec 
 \family sans
-Naviguer\SpecialChar \menuseparator
+Navigation\SpecialChar \menuseparator
 Erreur
 \family default
 , ou par le raccourci clavier 
@@ -19213,12 +19203,12 @@ ChkTeX
 \family default
  dans 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
 Sorties\SpecialChar \menuseparator
-
+LaTeX
 \family default
-LaTeX, ou alors dans le fichier de configuration de l'installation de 
+, ou alors dans le fichier de configuration de l'installation de 
 \family sans
 ChkTeX
 \family default
@@ -23575,7 +23565,7 @@ Arrivé ici, vous avez déjà un nouveau fichier avec sa propre classe de docume
  Bien ; et maintenant, comment je l'imprime ? La réponse est simple : vous
  faites 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 DVI
 \family default
 , etc.
@@ -23591,7 +23581,7 @@ Pour vous aider à vous y retrouver, je vais vous expliquer ce qui se passe
 \begin_layout Enumerate
 Quand vous choisissez 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mise
 \begin_inset space ~
 \end_inset
@@ -23648,12 +23638,13 @@ status collapsed
 \begin_layout Plain Layout
 Les convertisseurs sont définis dans la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
-Préférences
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
+Gestion de fichiers
 \family default
 , dans l'onglet 
 \family sans
-Conversion
+Convertisseurs
 \family default
 .
 \end_layout
@@ -23964,11 +23955,11 @@ Configurer LyX
 Vous pouvez configurer ce qui concerne la Programmation Littéraire dans
  l'onglet 
 \family sans
-Conversion
+Convertisseurs
 \family default
  de la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Préférences
 \family default
 .
@@ -24194,17 +24185,14 @@ ddd
 \family default
  dans la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
-Helpers
+Gestion des fichiers\SpecialChar \menuseparator
+Formats de fichier
 \family default
  en changeant l'entrée 
 \family sans
-Edit
-\begin_inset space ~
-\end_inset
-
-Sources
+Éditeur
 \family default
 .
 \end_layout
@@ -24216,11 +24204,7 @@ ddd
 \family default
  en réglant 
 \family sans
-Edit
-\begin_inset space ~
-\end_inset
-
-Sources
+Éditeur
 \family default
  sur :
 \end_layout
@@ -24340,7 +24324,7 @@ LyX a tout une série de boutons qui peuvent être intégrés dans la barre
  Personnellement, j'ai combiné les six raccourcis ci-dessus avec deux autres
  : un pour 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Mise
 \begin_inset space ~
 \end_inset
@@ -24354,7 +24338,7 @@ DVI
 \family default
  et un autre pour 
 \family sans
-Visionner\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 DVI
 \family default
 .

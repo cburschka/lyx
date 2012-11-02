@@ -276,7 +276,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-10-10 10:26-0400\n"
-"PO-Revision-Date: 2012-10-19 11:27+0100\n"
+"PO-Revision-Date: 2012-10-31 17:24+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -5160,7 +5160,7 @@ msgstr "Afficher le contenu du fichier sélectionné. Seulement possible quand l
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
-msgstr "&Visionner"
+msgstr "&Affichage"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
@@ -12993,7 +12993,7 @@ msgstr "Fractionner cellule|u"
 
 #: lib/ui/stdcontext.inc:63
 msgid "Insert|s"
-msgstr "Insérer|I"
+msgstr "Insertion|I"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
@@ -13762,19 +13762,19 @@ msgstr "Enrober par l'aperçu|p"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
-msgstr "Éditer|e"
+msgstr "Édition|É"
 
 #: lib/ui/stdmenus.inc:32
 msgid "View|V"
-msgstr "Visionner|V"
+msgstr "Affichage|A"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Insert|I"
-msgstr "Insérer|I"
+msgstr "Insertion|I"
 
 #: lib/ui/stdmenus.inc:34
 msgid "Navigate|N"
-msgstr "Naviguer|N"
+msgstr "Navigation|N"
 
 #: lib/ui/stdmenus.inc:35
 msgid "Document|D"
@@ -24658,11 +24658,11 @@ msgstr "automatique, dernier saisi ou un chiffre"
 
 #: src/insets/InsetListingsParams.cpp:412
 msgid "This parameter should not be entered here. Please use the caption edit box (when using the child document dialog) or menu Insert->Caption (when defining a listing inset)"
-msgstr "Ce paramètre ne doit pas être entré ici. Utilisez la boîte de modification de la légende (si vous utilisez la fenêtre de dialogue Sous-document) ou  utilisez Insérer->Légende (si vous définissez un insert de listing)."
+msgstr "Ce paramètre ne doit pas être entré ici. Utilisez la boîte de modification de la légende (si vous utilisez la fenêtre de dialogue Sous-document) ou  utilisez Insertion->Légende (si vous définissez un insert de listing)."
 
 #: src/insets/InsetListingsParams.cpp:418
 msgid "This parameter should not be entered here. Please use the label edit box (when using the child document dialog) or menu Insert->Label (when defining a listing inset)"
-msgstr "Ce paramètre ne doit pas être entré ici. Utilisez la boîte d'édition de l'étiquette (si vous utilisez la  fenêtre de dialogue Sous-document) ou  utilisez Insérer->Étiquette (si vous définissez un insert de listing)."
+msgstr "Ce paramètre ne doit pas être entré ici. Utilisez la boîte d'édition de l'étiquette (si vous utilisez la  fenêtre de dialogue Sous-document) ou  utilisez Insertion->Étiquette (si vous définissez un insert de listing)."
 
 #: src/insets/InsetListingsParams.cpp:623
 msgid "Invalid (empty) listing parameter name."
