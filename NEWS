@@ -1,3 +1,21 @@
+What's new in version 2.0.5?
+----------------------------
+
+The View>Source widget now allows you to select the backend to display,
+e.g., LaTeX or XHTML, rather than the output format. The previous choice
+really made no sense: You didn't see a PDF there if you chose one of the
+PDF output formats, but rather LaTeX. This solves some long-standing issues
+with View>Source.
+
+There has been an important change in how the "language" lfun works.
+  - "language <LANG>" now toggles between languages
+    (status quo ante LyX 2.0.2)
+  - "language <LANG> set" sets to language <LANG>
+    (meaning of "language <LANG>" as of LyX 2.0.2)
+  - "language [reset]" resets to the document language.
+  - Menu functions are unchanged.
+
+
 What's new in version 2.0.4?
 ----------------------------
 
