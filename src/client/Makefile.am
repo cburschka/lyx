@@ -41,6 +41,7 @@ if MONOLITHIC_CLIENT
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
 BUILT_SOURCES = lyxclient.cpp
+CLEANFILES += lyxclient.cpp
 
 lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
 
