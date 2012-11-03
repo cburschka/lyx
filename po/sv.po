@@ -212,14 +212,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-21 12:21+0200\n"
+"POT-Creation-Date: 2012-11-03 18:39-0400\n"
 "PO-Revision-Date: 2012-10-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -5408,7 +5408,7 @@ msgstr "KortTitel"
 #: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
 #: lib/layouts/siamltex.layout:280 lib/layouts/siamltex.layout:300
 #: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
-#: lib/layouts/sigplanconf.layout:157 lib/layouts/svmult.layout:48
+#: lib/layouts/sigplanconf.layout:158 lib/layouts/svmult.layout:48
 #: lib/layouts/svmult.layout:98 lib/layouts/tufte-handout.layout:49
 #: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:48
 #: lib/layouts/amsdefs.inc:68 lib/layouts/amsdefs.inc:92
@@ -5475,7 +5475,7 @@ msgstr "Publikationsupplaga:"
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
 #: lib/layouts/revtex4.layout:220 lib/layouts/siamltex.layout:252
-#: lib/layouts/sigplanconf.layout:153 lib/layouts/sigplanconf.layout:169
+#: lib/layouts/sigplanconf.layout:154 lib/layouts/sigplanconf.layout:170
 #: lib/layouts/spie.layout:75 lib/layouts/svglobal.layout:37
 #: lib/layouts/svjog.layout:40 lib/layouts/svmono.layout:20
 #: lib/layouts/svmult.layout:95 lib/layouts/svmult.layout:99
@@ -6040,7 +6040,7 @@ msgstr "Sammandrag---"
 #: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:185
 #: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
 #: lib/layouts/revtex4.layout:258 lib/layouts/siamltex.layout:304
-#: lib/layouts/sigplanconf.layout:146 lib/layouts/spie.layout:41
+#: lib/layouts/sigplanconf.layout:147 lib/layouts/spie.layout:41
 #: lib/layouts/svglobal3.layout:56 lib/layouts/svglobal3.layout:59
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
 #: lib/layouts/svcommon.inc:456 lib/layouts/svcommon.inc:471
@@ -6067,7 +6067,7 @@ msgstr "Bilagor"
 #: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
 #: lib/layouts/jasatex.layout:223 lib/layouts/jasatex.layout:262
 #: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:319
-#: lib/layouts/sigplanconf.layout:184 lib/layouts/stdstruct.inc:57
+#: lib/layouts/sigplanconf.layout:185 lib/layouts/stdstruct.inc:57
 #: lib/layouts/svcommon.inc:536 lib/layouts/svcommon.inc:570
 msgid "BackMatter"
 msgstr "EfterText"
@@ -6603,8 +6603,8 @@ msgstr "Computing Review-kategorier"
 #: lib/layouts/agutex.layout:177 lib/layouts/apa.layout:220
 #: lib/layouts/iopart.layout:239 lib/layouts/iopart.layout:253
 #: lib/layouts/jasatex.layout:220 lib/layouts/jasatex.layout:225
-#: lib/layouts/revtex4.layout:227 lib/layouts/sigplanconf.layout:181
-#: lib/layouts/sigplanconf.layout:188 lib/layouts/spie.layout:90
+#: lib/layouts/revtex4.layout:227 lib/layouts/sigplanconf.layout:182
+#: lib/layouts/sigplanconf.layout:189 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
 msgstr "Tacksägelser"
 
@@ -7686,7 +7686,7 @@ msgstr "Nyckelord"
 #: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
 #: lib/layouts/jasatex.layout:199 lib/layouts/kluwer.layout:289
 #: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:149 lib/layouts/spie.layout:48
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
 #: lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
 msgstr "Nyckelord:"
@@ -9481,7 +9481,7 @@ msgstr "Upphovsrättsdata:"
 msgid "Terms"
 msgstr "Villkor"
 
-#: lib/layouts/sigplanconf.layout:142
+#: lib/layouts/sigplanconf.layout:143
 msgid "Terms:"
 msgstr "Villkor:"
 
@@ -17262,8 +17262,8 @@ msgstr "Okodbart tecken i filsökväg"
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely %2"
-"$s). This may result in incomplete output, unless TEXINPUTS contains the "
+"contains glyphs that are unknown in the current document encoding (namely "
+"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
 "document directory and you don't use explicitly relative paths (i.e., paths "
 "starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
@@ -17272,8 +17272,8 @@ msgid ""
 msgstr ""
 "Sökvägen för ditt dokument\n"
 "(%1$s)\n"
-"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen %2"
-"$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
+"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen "
+"%2$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
 "innehåller dokumentkatalogen och du inte använder uttryckliga relativa "
 "sökvägar (t.ex. sökvägar som börjar med './' eller '../') i ingressen eller "
 "i ERT.\n"
@@ -18249,8 +18249,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
-"1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
+"%1$s."
 
 #: src/Converter.cpp:673
 msgid "LaTeX failed"
@@ -18299,11 +18299,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:697
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
-"$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
-"2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
+"%2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:702
 msgid "Undefined flex inset"
