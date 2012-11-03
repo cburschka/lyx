@@ -69,8 +69,9 @@ Par l'équipe LyX
 \end_layout
 
 \begin_layout Standard
-Ce fichier fait la liste des raccourcis clavier qui sont utilisés actuellement
- et qui sont définis dans le fichier d'interface utilisateur 
+Ce fichier récapitule la liste des raccourcis clavier qui sont utilisés
+ actuellement et qui sont définis dans le fichier d'interface utilisateur
+ 
 \family typewriter
 
 \begin_inset Info
@@ -81,26 +82,24 @@ arg   "bind_file"
 
 \family default
 .
- Vous pouvez modifier les raccourcis 
-\lang english
-in the menu 
+ Vous pouvez modifier les raccourcis dans le menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
-Shortcuts
+ToolsOutils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
+Saisie\SpecialChar \menuseparator
+Raccourcis
 \family default
- as described in section 
-\begin_inset Quotes eld
+ comme il est expliqué dans la section 
+\begin_inset Quotes fld
 \end_inset
 
-Shortcuts
-\begin_inset Quotes erd
+Raccourcis
+\begin_inset Quotes frd
 \end_inset
 
- of the LyX 
+ du 
 \emph on
-User's Guide
+Guide de l'utilisateur
 \emph default
 .
 \end_layout
@@ -467,7 +466,7 @@ arg   "buffer-previous"
 \end_layout
 
 \begin_layout Subsection*
-Éditer
+Édition
 \end_layout
 
 \begin_layout Standard

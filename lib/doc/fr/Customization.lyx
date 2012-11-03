@@ -128,7 +128,7 @@ End
 \begin_layout Title
 Personnaliser LyX : fonctions pour l'utilisateur avancé
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -136,6 +136,11 @@ Informations de révision :
 
 \begin_layout Plain Layout
 Traduction : Mise à jour OK pour la publication 2.0.0, Date: 03/04/2011
+\end_layout
+
+\begin_layout Plain Layout
+remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
+n/Navigation, 31/10/2012
 \end_layout
 
 \begin_layout Plain Layout
@@ -327,7 +332,7 @@ RépLyX
  servir à personnaliser le comportement de LyX.
  Vous pouvez modifier ces fichiers depuis LyX lui-même avec la fenêtre 
 \family sans
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Préférences
 \family default
 .
@@ -1324,7 +1329,7 @@ Alt-V a D
 status collapsed
 
 \begin_layout Plain Layout
-Visionner
+Affichage
 \lang english
 \SpecialChar \menuseparator
 
@@ -1374,7 +1379,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Visionner
+Affichage
 \end_layout
 
 \end_inset
@@ -1422,8 +1427,11 @@ Exporter
 \end_inset
 
 .
- Le format apparaîtra également dans le menu Visionner si une visionneuse
- est définie pour lui.
+ Le format apparaîtra également dans le menu 
+\family sans
+Affichage
+\family default
+ si une visionneuse est définie pour lui.
  Les formats purement graphiques, comme png, ne doivent pas utiliser cette
  option.
  Les formats adaptés à la fois aux graphiques et aux documents, comme pdf,
@@ -5979,7 +5987,7 @@ Démarrez LyX et faites
 status collapsed
 
 \begin_layout Plain Layout
-Éditer\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
 Reconfigurer
 \end_layout
 
@@ -11756,7 +11764,7 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -11998,7 +12006,7 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -15097,7 +15105,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -16006,7 +16014,7 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -20482,7 +20490,7 @@ template
 status collapsed
 
 \begin_layout Plain Layout
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Objet
 \begin_inset space ~
 \end_inset
