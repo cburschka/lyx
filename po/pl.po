@@ -6,13 +6,13 @@
 # Arkadiusz Lipiec <alipiec@elka.pw.edu.pl>
 # Tomasz Łuczak <tlu@technodat.com.pl>, 2005, 2006.
 # Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>, 2006.
-# Michał Fita <michal.fita@gmail.com>, 2008-2011.
+# Michał Fita <michal.fita@gmail.com>, 2008-2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2012-10-10 10:26-0400\n"
-"PO-Revision-Date: 2011-06-01 21:05+0200\n"
+"PO-Revision-Date: 2012-11-03 01:01+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
 "Language: pl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Poedit-Bookmarks: 4413,273,4379,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-Basepath: /home/manveru/Projekty/lyx-devel\n"
 
@@ -410,8 +410,7 @@ msgstr "Szerokość"
 
 #: src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
-"Wnętrze pudełka -- potrzebne dla ustalenia szerokości i łamania wierszy"
+msgstr "Wnętrze pudełka -- potrzebne dla ustalenia szerokości i łamania wierszy"
 
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -449,7 +448,7 @@ msgstr "Wybierz swoją gałąź"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr ""
+msgstr "&Nowa:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -1368,9 +1367,8 @@ msgid "Replace &All"
 msgstr "&Wszystkie"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
-#, fuzzy
 msgid "S&ettings"
-msgstr "Ustawienia"
+msgstr "Ustawi&enia"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
@@ -1490,13 +1488,12 @@ msgid "FontUi"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
-"Podaj czcionkę do zastosowania dla skryptu chińskiego, japońskiego lub "
-"koreańskiego (CJK)"
+"Użyj czcionek OpenType i TrueType wraz z pakietem fontspec (wymaga XeTeX lub "
+"LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -1505,7 +1502,6 @@ msgstr ""
 "udostępnia"
 
 #: src/frontends/qt4/ui/FontUi.ui:42
-#, fuzzy
 msgid "&Default family:"
 msgstr "&Domyślna rodzina:"
 
@@ -1958,7 +1954,7 @@ msgstr "&Użyj wielu indeksów"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "&Nowy:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -2094,7 +2090,7 @@ msgstr "Zatu&szuj domyślną datę na stronie tytułowej"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr ""
+msgstr "&Użyj refstyle (nie prettyref) dla odsyłaczy"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:52
 msgid "&Quote Style:"
@@ -2124,10 +2120,11 @@ msgstr "Wybór używanego przez LyX pakietu językowego"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:142
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
-#, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "Podaj komendę do załadowania pakietu językowego (domyślnie: babel)"
+msgstr ""
+"Podaj komendę do załadowania pakietu językowego (domyślnie: "
+"\\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2330,9 +2327,8 @@ msgstr ""
 "Podaj tutaj parametry listingu. Wprowadź ? aby podejrzeć listę parametrów."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
-#, fuzzy
 msgid "Document-specific layout information"
-msgstr "Błąd odczytu wewnętrznych informacji z układu"
+msgstr "Specyficzne dla dokumentu informacje o układzie"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "Errors reported in terminal."
@@ -2344,9 +2340,8 @@ msgid "Press button to check validity..."
 msgstr "Naciśnij przycik, aby sprawdzić ważność..."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:51
-#, fuzzy
 msgid "&Validate"
-msgstr "&Wartość:"
+msgstr "&Sprawdź"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
@@ -2637,7 +2632,6 @@ msgid "S&elected:"
 msgstr "Wybran&e:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:13 src/insets/InsetNomencl.cpp:162
-#, fuzzy
 msgid "Nomenclature"
 msgstr "Nomenklatura"
 
@@ -2713,14 +2707,12 @@ msgid "S&ynchronize with Output"
 msgstr "S&ynchronizuj z wyjściem"
 
 #: src/frontends/qt4/ui/OutputUi.ui:87
-#, fuzzy
 msgid "C&ustom Macro:"
-msgstr "Nr Klienta:"
+msgstr "&Własne makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
-#, fuzzy
 msgid "Custom LaTeX preamble macro"
-msgstr "Preambuła LaTeX-a"
+msgstr "Własne makro preambuły LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:112
 msgid "XHTML Output Options"
@@ -2735,9 +2727,8 @@ msgid "&Strict XHTML 1.1"
 msgstr "&Surowy XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:137
-#, fuzzy
 msgid "&Math output:"
-msgstr "Wyjście rezultatów"
+msgstr "Wyjście &matematyki:"
 
 # "Output" można zmienić na publikację.
 #: src/frontends/qt4/ui/OutputUi.ui:153
@@ -2764,9 +2755,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:186
-#, fuzzy
 msgid "Math &image scaling:"
-msgstr "Odstępy matematyczne"
+msgstr "Skalowan&ie obrazów matematycznych:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:202
 msgid "Scaling factor for images used for math output."
@@ -3240,6 +3230,8 @@ msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
 msgstr ""
+"Ustawienie szerokości kursora tekstowego. W przypadku wartości 0 użyta "
+"będzie automatyczna kontrola szerokości zależna od powiększenia."
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:49
 msgid "Cursor width (&pixels):"
@@ -3320,11 +3312,11 @@ msgstr "Format pliku &dokumentu"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
+msgstr "Zaznacz, aby bieżący format był widoczny w menu File > Export"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr ""
+msgstr "Poka&zuj w menu export"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -3673,6 +3665,10 @@ msgid ""
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
+"Określa, czy LyX powinien tworzyć ścieżki do plików LaTeX w\n"
+"stylu Windows lub Cygwin. Nie należy zmieniać domyślnego\n"
+"ustawienia dopóki silnik TeX nie został poprawnie wykryty podczas\n"
+"konfiguracji. Uwaga: Zmiana tutaj nie zostanie zapisana."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3746,29 +3742,30 @@ msgid "&PATH prefix:"
 msgstr "&Prefiks PATH:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3338
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
 "Use the OS native format."
 msgstr ""
 "Określ te katalogi, które powinny znaleźć się na początku zmiennej "
-"środowiskowej PATH. Użyj formatu twojego systemu operacyjnego."
+"środowiskowej PATH.\n"
+"Użyj formatu twojego systemu operacyjnego."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 #, fuzzy
 msgid "TEX&INPUTS prefix:"
-msgstr "&Prefiks PATH:"
+msgstr "Prefiks TEX&INPUTS:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3497
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 "Określ te katalogi, które powinny znaleźć się na początku zmiennej "
-"środowiskowej PATH. Użyj formatu twojego systemu operacyjnego."
+"środowiskowej TEXINPUTS.\n"
+"\".\" odpowiada bieżącemu katalogowi dokumentu. Użyj formatu twojego systemu "
+"operacyjnego."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
 #: src/frontends/qt4/ui/PrefPathsUi.ui:98
@@ -4086,22 +4083,22 @@ msgid "&User interface file:"
 msgstr "Plik &interfejsu użytkownika:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
-#, fuzzy
 msgid "&Icon Set:"
-msgstr "&Kolumn:"
+msgstr "Zestaw &ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid ""
 "The icon set to use. Warning: normal size of icons may be\n"
 "wrong until you save the preferences and restart LyX."
 msgstr ""
+"Zestaw ikon do użycia. Ostrzeżenie: normalny rozmiar ikon może\n"
+"być nieprawidłowy do czasu zachowania ustawień i restartu LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Automatic help"
 msgstr "Automatyczna pomoc"
 
 #: src/frontends/qt4/ui/PrefUi.ui:93
-#, fuzzy
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -4136,7 +4133,6 @@ msgid "&Load opened files from last session"
 msgstr "Za&ładuj pliki otwarte w ostatniej sesji"
 
 #: src/frontends/qt4/ui/PrefUi.ui:142
-#, fuzzy
 msgid "&Clear all session information"
 msgstr "Wy&czyść wszystkie informacje o sesjach"
 
@@ -4173,11 +4169,12 @@ msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
+"Czy otwierać dokumenty w już działającej instancji LyX.\n"
+"(Ustaw ścieżkę rury LyXServer i zrestartuj LyX, aby uruchomić tą funkcję)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:265
-#, fuzzy
 msgid "S&ingle instance"
-msgstr "Pojedynczy cudzysłów|P"
+msgstr "Pojedyncza &instancja"
 
 #: src/frontends/qt4/ui/PrefUi.ui:272
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -4212,9 +4209,8 @@ msgid "Custom &Width:"
 msgstr "&Własna szerokość:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "Wartość użytkownika: wymagany \"Własny\" odstęp ."
+msgstr "Własna wartość. \"Wcięcie listy\" wymaga ustawienia na \"Własna\"."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4376,9 +4372,8 @@ msgid "La&bels in:"
 msgstr "Etykiety &w:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "&References"
-msgstr "Odnośniki"
+msgstr "&Odsyłacze"
 
 #: src/frontends/qt4/ui/RefUi.ui:76
 msgid "Fil&ter:"
@@ -4457,9 +4452,8 @@ msgid "Formatted reference"
 msgstr "Formatowane odnośniki"
 
 #: src/frontends/qt4/ui/RefUi.ui:246
-#, fuzzy
 msgid "Textual reference"
-msgstr "wszystkie odnośniki"
+msgstr "Odsyłacze tekstowe"
 
 #: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
@@ -4482,9 +4476,8 @@ msgid "&Export formats:"
 msgstr "&Formaty eksportu:"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
-#, fuzzy
 msgid "&Send exported file to command:"
-msgstr "Wyślij dokument do polecenia"
+msgstr "Wyślij ek&sportowany plik do komendy:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
@@ -4531,9 +4524,8 @@ msgstr ""
 #: src/frontends/qt4/GuiSpellchecker.cpp:251
 #: src/frontends/qt4/GuiSpellchecker.cpp:258
 #: src/frontends/qt4/GuiSpellchecker.cpp:539
-#, fuzzy
 msgid "Spell Checker"
-msgstr "Pisownia"
+msgstr "Sprawdzanie pisowni"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
@@ -4676,14 +4668,12 @@ msgid "M&ultirow"
 msgstr "Wiel&owierszowa"
 
 #: src/frontends/qt4/ui/TabularUi.ui:262
-#, fuzzy
 msgid "&Vertical Offset:"
-msgstr "&Odstęp pionowy"
+msgstr "Przesunięcie pio&nowe:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
-#, fuzzy
 msgid "Optional vertical offset"
-msgstr "&Odstęp pionowy"
+msgstr "Opcjonalne przesunięcie pionowy"
 
 #: src/frontends/qt4/ui/TabularUi.ui:293
 msgid "Cell setting"
@@ -4710,7 +4700,6 @@ msgid "Table-wide settings"
 msgstr "Ustawienia całej tabeli"
 
 #: src/frontends/qt4/ui/TabularUi.ui:338
-#, fuzzy
 msgid "Table w&idth:"
 msgstr "Szerokość tabel&i:"
 
@@ -4981,9 +4970,8 @@ msgid "Size of the indentation"
 msgstr "Rozmiar wcięcia"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:115
-#, fuzzy
 msgid "&Vertical space:"
-msgstr "&Odstęp pionowy"
+msgstr "Odstęp pio&nowy:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:125
 msgid "Size of the vertical space"
@@ -5150,28 +5138,24 @@ msgid "F&ormat:"
 msgstr "&Format:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:45
-#, fuzzy
 msgid "Select the output format"
-msgstr "Domyślna &drukarka:"
+msgstr "Wybierz format wyjścia"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
-#, fuzzy
 msgid "Current Paragraph"
 msgstr "Aktualny akapit"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:61
-#, fuzzy
 msgid "Complete Source"
 msgstr "Kompletne źródło"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:66
 msgid "Preamble Only"
-msgstr ""
+msgstr "Tylko preambuła"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:71
-#, fuzzy
 msgid "Body Only"
-msgstr "Tylko"
+msgstr "Tylko ciało"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:89
 msgid "Automatic update"
@@ -5289,9 +5273,8 @@ msgid "Publication Year"
 msgstr "Rok publikacji"
 
 #: lib/layouts/AEA.layout:79
-#, fuzzy
 msgid "Publication Year:"
-msgstr "Podwariant:"
+msgstr "Rok publikacji:"
 
 #: lib/layouts/AEA.layout:82
 msgid "Publication Volume"
@@ -5440,9 +5423,8 @@ msgid "Case"
 msgstr "Przypadek"
 
 #: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
-#, fuzzy
 msgid "Case \\thecase."
-msgstr "Stwierdzenie \\theclaim."
+msgstr "Przypadek \\the case."
 
 #: lib/layouts/AEA.layout:136 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:391
@@ -5716,9 +5698,8 @@ msgid "Solution"
 msgstr "Rozwiązanie"
 
 #: lib/layouts/AEA.layout:244 lib/layouts/theorems-without-preamble.inc:268
-#, fuzzy
 msgid "Solution \\thesolution."
-msgstr "Konkluzja \\arabic{conclusion}."
+msgstr "Rozwiązanie \\thesolution."
 
 #: lib/layouts/AEA.layout:250 lib/layouts/elsart.layout:406
 #: lib/layouts/theorems-ams-extended-bytype.module:269
@@ -5874,9 +5855,8 @@ msgid "After Title Text"
 msgstr "Tekst po tytule"
 
 #: lib/layouts/IEEEtran.layout:155
-#, fuzzy
 msgid "Page headings"
-msgstr "headings"
+msgstr "Nagłówki strony"
 
 #: lib/layouts/IEEEtran.layout:173 lib/layouts/ijmpc.layout:51
 #: lib/layouts/ijmpd.layout:56
@@ -5884,9 +5864,8 @@ msgid "MarkBoth"
 msgstr "ZaznaczOba"
 
 #: lib/layouts/IEEEtran.layout:178
-#, fuzzy
 msgid "Publication ID"
-msgstr "Wydawcy"
+msgstr "ID publikacji"
 
 #: lib/layouts/IEEEtran.layout:197
 msgid "Abstract---"
@@ -5990,9 +5969,8 @@ msgid "Biography without photo"
 msgstr "Biografia bez zdjęcia"
 
 #: lib/layouts/IEEEtran.layout:284
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biografia"
+msgstr "BiografiaBezZdjęcia"
 
 #: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:1094
 #: lib/layouts/foils.layout:281 lib/layouts/ijmpc.layout:336
@@ -6288,11 +6266,11 @@ msgstr "Zbiór danych"
 
 #: lib/layouts/aastex.layout:289
 msgid "Altaffilation"
-msgstr "Altafiliacja"
+msgstr "Altprzynależność"
 
 #: lib/layouts/aastex.layout:298
 msgid "Alternative affiliation:"
-msgstr "Alternatywna afiliacja:"
+msgstr "Alternatywna przynależność:"
 
 #: lib/layouts/aastex.layout:305
 msgid "altaffilmark"
@@ -6300,7 +6278,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
-msgstr "znak altafiliacji"
+msgstr "znak altprzynależności"
 
 #: lib/layouts/aastex.layout:340
 msgid "Subject headings:"
@@ -6378,14 +6356,12 @@ msgid "Dataset:"
 msgstr "Zbiór danych:"
 
 #: lib/layouts/achemso.layout:100
-#, fuzzy
 msgid "Alt Affiliation"
-msgstr "Afiliacja"
+msgstr "Alt przynależność"
 
 #: lib/layouts/achemso.layout:105
-#, fuzzy
 msgid "Also Affiliation"
-msgstr "Afiliacja"
+msgstr "Także przynależność"
 
 #: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
 #: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
@@ -6423,12 +6399,10 @@ msgid "List of Graphs"
 msgstr "Lista grafów"
 
 #: lib/layouts/achemso.layout:215
-#, fuzzy
 msgid "Bibnote"
 msgstr "Bibnotka"
 
 #: lib/layouts/achemso.layout:219
-#, fuzzy
 msgid "bibnote"
 msgstr "bibnotka"
 
@@ -6474,24 +6448,20 @@ msgid "Acknowledgments"
 msgstr "Podziękowania"
 
 #: lib/layouts/agutex.layout:72
-#, fuzzy
 msgid "Authors"
-msgstr "Autor"
+msgstr "Autorzy"
 
 #: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "Afiliacja"
+msgstr "Znak przynależności"
 
 #: lib/layouts/agutex.layout:112
-#, fuzzy
 msgid "Author affiliation"
-msgstr "Afiliacja"
+msgstr "Przynależność autora"
 
 #: lib/layouts/agutex.layout:122
-#, fuzzy
 msgid "Author affiliation:"
-msgstr "Afiliacja:"
+msgstr "Przynależność autora:"
 
 #: lib/layouts/agutex.layout:142 lib/layouts/egs.layout:498
 #: lib/layouts/kluwer.layout:271 lib/layouts/llncs.layout:256
@@ -6501,7 +6471,6 @@ msgid "Abstract."
 msgstr "Streszczenie."
 
 #: lib/layouts/agutex.layout:189
-#, fuzzy
 msgid "Acknowledgments."
 msgstr "Podziękowania."
 
@@ -6683,7 +6652,7 @@ msgstr "Sekcja \\arabic{section}"
 #: lib/layouts/beamer.layout:167 lib/layouts/powerdot.layout:231
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr "\\Alph{section}"
+msgstr "\\Alph{section}."
 
 #: lib/layouts/beamer.layout:197
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -6694,15 +6663,14 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}."
 
 #: lib/layouts/beamer.layout:241
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Podsekcja \\arabic{section}.\\arabic{subsection}"
+msgstr ""
+"Podpodsekcja \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:255
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Podsekcja \\arabic{section}.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}."
 
 #: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
 #: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
@@ -6724,11 +6692,11 @@ msgstr "Ramka (bez nagłówka/stopki/pasków bocznych)"
 
 #: lib/layouts/beamer.layout:350
 msgid "AgainFrame"
-msgstr ""
+msgstr "ZnówRamka"
 
 #: lib/layouts/beamer.layout:367
 msgid "Again frame with label"
-msgstr ""
+msgstr "Znów ramka z etykietą"
 
 #: lib/layouts/beamer.layout:389
 msgid "EndFrame"
@@ -6986,7 +6954,7 @@ msgstr "Artykuł"
 #: lib/layouts/beamer.layout:1227
 #, fuzzy
 msgid "PresentationMode"
-msgstr "Orientacja"
+msgstr "TrybPrezentacji"
 
 #: lib/layouts/beamer.layout:1232
 msgid "Presentation"
@@ -10868,7 +10836,7 @@ msgstr ""
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 #, fuzzy
 msgid "Hanging"
-msgstr "Margines"
+msgstr "Wysunięcie"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -10876,22 +10844,26 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
+"Dodaje środowisko dla akapitów z wysunięcie. Jest to taki akapit, gdzie "
+"pierwszy wiersz jest wyrównany do lewego marginesu, zaś kolejne wiersze są "
+"wcięte."
 
 #: lib/layouts/initials.module:2
 msgid "Initials"
-msgstr ""
+msgstr "Inicjały"
 
 #: lib/layouts/initials.module:6
 msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
 msgstr ""
+"Definiuje styl akapitu z inicjałem. Zobacz podręcznik EmbeddedObjects, aby "
+"zapoznać się za szczegółowym opisem."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
-#, fuzzy
 msgid "Initial"
-msgstr "Kursywa"
+msgstr "Inicjał"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:592
 msgid "Rnw (knitr)"
@@ -10903,16 +10875,19 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
+"Używa pakiety knitr w R do dynamicznego generowania raportów. Ten pakiet R "
+"musi być zainstalowany, aby ten moduł zadziałał: install.packages('knitr'). "
+"Zwróć uwagę na wymóg wersji R >= 2.14.1. Aby uzystać więcej informacji, "
+"odwiedź http://yuhui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
-#, fuzzy
 msgid "literate"
-msgstr "Dosłowny"
+msgstr ""
 
 #: lib/layouts/knitr.module:13 lib/layouts/sweave.module:23
 msgid "Chunk"
-msgstr ""
+msgstr "Kawałek"
 
 #: lib/layouts/knitr.module:14 lib/layouts/sweave.module:2
 #: lib/layouts/sweave.module:24 lib/configure.py:590
@@ -10920,24 +10895,20 @@ msgid "Sweave"
 msgstr "Sweave"
 
 #: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
-#, fuzzy
 msgid "Sweave Options"
-msgstr "Opcje LaTeX:"
+msgstr "Opcje Sweave"
 
 #: lib/layouts/knitr.module:40 lib/layouts/sweave.module:50
-#, fuzzy
 msgid "Sweave opts"
-msgstr "Czcionki ekranowe"
+msgstr "Opcje Sweave"
 
 #: lib/layouts/knitr.module:61 lib/layouts/sweave.module:71
-#, fuzzy
 msgid "S/R expression"
-msgstr "W&yrażenie regularne"
+msgstr "wyrażenie S/R"
 
 #: lib/layouts/knitr.module:62 lib/layouts/sweave.module:72
-#, fuzzy
 msgid "S/R expr"
-msgstr "exp"
+msgstr "wyr S/R"
 
 #: lib/layouts/lilypond.module:2
 msgid "LilyPond Book"
@@ -10948,6 +10919,8 @@ msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
+"Ten moduł dodaje wstawkę do wprowadzania kodu LilyPond bezpośrednio w LyX. "
+"Będzie od przetwarzany na wyjściu. Zobacz przykładowy plik lilypond.lyx."
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
 #: lib/external_templates:251
@@ -10955,9 +10928,8 @@ msgid "LilyPond"
 msgstr "LilyPond"
 
 #: lib/layouts/linguistics.module:2
-#, fuzzy
 msgid "Linguistics"
-msgstr "Lista"
+msgstr "Językoznawstwo"
 
 #: lib/layouts/linguistics.module:7
 msgid ""
@@ -10965,6 +10937,9 @@ msgid ""
 "glosses, semantic markup, tableau floats). See linguistics.lyx file in "
 "examples."
 msgstr ""
+"Definiuje pewne specjalne środowiska przydatne w językoznawstwie (numerowane "
+"przyłady, glosses, znaczniki semantyczne, wstawki tableau). Zobacz plik "
+"linguistics.lyx w przykładach."
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
@@ -10976,7 +10951,6 @@ msgstr "Przykład:"
 
 # Nie wiem jaki naprawdę.
 #: lib/layouts/linguistics.module:37
-#, fuzzy
 msgid "Numbered Examples (consecutive)"
 msgstr "Numerowany przykład (kolejny)"
 
@@ -11005,19 +10979,16 @@ msgid "Expression"
 msgstr "Wyrażenie"
 
 #: lib/layouts/linguistics.module:124
-#, fuzzy
 msgid "expr."
-msgstr "exp"
+msgstr "wyr."
 
 #: lib/layouts/linguistics.module:137
-#, fuzzy
 msgid "Concepts"
-msgstr "&Akceptuj"
+msgstr "Pomysły"
 
 #: lib/layouts/linguistics.module:139
-#, fuzzy
 msgid "concept"
-msgstr "&Akceptuj"
+msgstr "pomysł"
 
 #: lib/layouts/linguistics.module:152
 #, fuzzy
