@@ -88,6 +88,8 @@
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QFuture>
+#include <QFutureWatcher>
 #include <QLabel>
 #include <QList>
 #include <QMenu>
@@ -98,24 +100,22 @@
 #include <QPixmapCache>
 #include <QPoint>
 #include <QPushButton>
+#include <QScrollBar>
 #include <QSettings>
 #include <QShowEvent>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QtConcurrentRun>
 #include <QTime>
 #include <QTimer>
 #include <QToolBar>
 #include <QUrl>
-#include <QScrollBar>
 
 
 
 #define EXPORT_in_THREAD 1
 
-#include <QFuture>
-#include <QFutureWatcher>
-#include <QtConcurrentRun>
 
 #include "support/bind.h"
 
