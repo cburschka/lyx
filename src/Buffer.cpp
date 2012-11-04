@@ -3625,26 +3625,19 @@ bool Buffer::autoSave() const
 	buf->d->bak_clean = true;
 
 	FileName const fname = getAutosaveFileName();
-	if (d->cloned_buffer_) {
-		// If this buffer is cloned, we assume that
-		// we are running in a separate thread already.
-		FileName const tmp_ret = FileName::tempName("lyxauto");
-		if (!tmp_ret.empty()) {
-			writeFile(tmp_ret);
-			// assume successful write of tmp_ret
-			if (tmp_ret.moveTo(fname))
-				return true;
-		}
-		// failed to write/rename tmp_ret so try writing direct
-		return writeFile(fname);
-	} else {
-		/// This function is deprecated as the frontend needs to take care
-		/// of cloning the buffer and autosaving it in another thread. It
-		/// is still here to allow (QT_VERSION < 0x040400).
-		AutoSaveBuffer autosave(*this, fname);
-		autosave.start();
-		return true;
+	LASSERT(d->cloned_buffer_, return false);
+
+	// If this buffer is cloned, we assume that
+	// we are running in a separate thread already.
+	FileName const tmp_ret = FileName::tempName("lyxauto");
+	if (!tmp_ret.empty()) {
+		writeFile(tmp_ret);
+		// assume successful write of tmp_ret
+		if (tmp_ret.moveTo(fname))
+			return true;
 	}
+	// failed to write/rename tmp_ret so try writing direct
+	return writeFile(fname);
 }
 
 

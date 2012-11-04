@@ -1545,14 +1545,10 @@ void GuiView::autoSave()
 		return;
 	}
 
-#if (QT_VERSION >= 0x040400)
 	GuiViewPrivate::busyBuffers.insert(buffer);
 	QFuture<docstring> f = QtConcurrent::run(GuiViewPrivate::autosaveAndDestroy,
 		buffer, buffer->cloneBufferOnly());
 	d.autosave_watcher_.setFuture(f);
-#else
-	buffer->autoSave();
-#endif
 	resetAutosaveTimers();
 }
 
