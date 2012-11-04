@@ -1508,9 +1508,6 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 #ifdef Q_WS_MACX
 	setStyle(&noTabFrameMacStyle);
 #endif
-#if QT_VERSION < 0x040500
-	lyxrc.single_close_tab_button = true;
-#endif
 
 	QPalette pal = palette();
 	pal.setColor(QPalette::Active, QPalette::Button,
@@ -1547,10 +1544,8 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-#if QT_VERSION >= 0x040500
 	connect(tb, SIGNAL(tabCloseRequested(int)),
 		this, SLOT(closeTab(int)));
-#endif
 
 	setUsesScrollButtons(true);
 }
@@ -1608,9 +1603,7 @@ void TabWorkArea::showBar(bool show)
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
 	closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
-#if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
-#endif
 }
 
 
@@ -2019,9 +2012,7 @@ DragTabBar::DragTabBar(QWidget* parent)
 	: QTabBar(parent)
 {
 	setAcceptDrops(true);
-#if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
-#endif
 }
 
 
