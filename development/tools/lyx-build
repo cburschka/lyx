@@ -18,7 +18,7 @@ MAKEOPTS="-j4";
 
 # Determine LyX version
 cd $SRCDIR/
-VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/(\d\.\d+\.\d+)/; print $1;}');
+VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
 
 echo "This is version $VERSION.";
 echo -n "Ready to build source packages...";
@@ -86,16 +86,18 @@ if [ ! -d "$BASE/lyx-patch/" ]; then
 	mkdir "$BASE/lyx-patch/" || exit 1;
 fi
 
-if [ ! -d lyx-$LAST ]; then 
+if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
   echo "Can't find directory for last version $LAST.";
   echo "Will try to download from LyX site....";
   read;
+  pushd $BASE/lyx-patch/;
   wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
   tar -zxvf lyx-$LAST.tar.gz;
   if [ ! -f lyx-$LAST.tar.gz ]; then
     echo "Still unable to find directory for last version $LAST.";
     exit 1;
   fi
+  popd;
 fi
 
 echo -n "Ready to make patch against $LAST...";
@@ -131,7 +133,9 @@ if [ -f $PATCH.gz.sig ]; then
 fi
 gpg -b $PATCH.gz
 xz -zc $PATCH > $PATCH.xz
-rm $PATCH.xz.sig;
+if [ -f $PATCH.xz.sig ]; then
+	rm $PATCH.xz.sig;
+fi
 gpg -b $PATCH.xz
 
 echo -n "Patch and signatures created...";
