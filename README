@@ -92,8 +92,8 @@ What do I need to compile LyX from the source distribution?
       gcc/g++, but some others work also. As of LyX 1.6.0, you need at
       least gcc 3.2.x.
 
-    * The Qt4 library, at least version 4.2.2. For all features
-      newer versions (e.g. Qt 4.6) are recommended.
+    * The Qt4 library, at least version 4.5.0. For all features
+      newer versions (e.g. Qt 4.8) are recommended.
 
     Read the file "INSTALL" for more information on compiling.
 
@@ -135,10 +135,9 @@ Internet resources of relevance to LyX
 	ftp://ftp.lyx.org/pub/lyx/
 
     The LyX Development page has information about the development
-    effort. LyX is under Subversion control, so you can get the very
+    effort. LyX is under Git version control, so you can get the very
     latest sources from there at any time.
-	http://www.lyx.org/devel
-	ftp://ftp.devel.lyx.org/pub/lyx/
+	http://www.lyx.org/Development
 
 How do I submit a bug report?
 
@@ -146,7 +145,8 @@ How do I submit a bug report?
     You'll find detailed info on submitting bug reports there.
 
     If you can't do that, send details to the LyX Developers' mailing
-    list, or use the LyX bug tracker at http://www.lyx.org/trac/.
+    list, or use the LyX bug tracker at
+    http://www.lyx.org/trac/wiki/BugTrackerHome.
     Don't forget to mention which version you are having problems with!
 
 How can I participate in the development of LyX?
