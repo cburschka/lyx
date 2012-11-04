@@ -113,12 +113,9 @@
 
 #define EXPORT_in_THREAD 1
 
-// QtConcurrent was introduced in Qt 4.4
-#if (QT_VERSION >= 0x040400)
 #include <QFuture>
 #include <QFutureWatcher>
 #include <QtConcurrentRun>
-#endif
 
 #include "support/bind.h"
 
@@ -342,7 +339,6 @@ struct GuiView::GuiViewPrivate
 		return count;
 	}
 
-#if (QT_VERSION >= 0x040400)
 	void setPreviewFuture(QFuture<Buffer::ExportStatus> const & f)
 	{
 		if (processing_thread_watcher_.isRunning()) {
@@ -352,7 +348,6 @@ struct GuiView::GuiViewPrivate
 		}
 		processing_thread_watcher_.setFuture(f);
 	}
-#endif
 
 public:
 	GuiView * gv_;
@@ -391,17 +386,12 @@ public:
 	///
 	TocModels toc_models_;
 
-#if (QT_VERSION >= 0x040400)
 	///
 	QFutureWatcher<docstring> autosave_watcher_;
 	QFutureWatcher<Buffer::ExportStatus> processing_thread_watcher_;
 	///
 	string last_export_format;
 	string processing_format;
-#else
-	struct DummyWatcher { bool isRunning(){return false;} };
-	DummyWatcher processing_thread_watcher_;
-#endif
 
 	static QSet<Buffer const *> busyBuffers;
 	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
@@ -468,16 +458,12 @@ GuiView::GuiView(int id)
 
 #endif
 
-#if (QT_VERSION >= 0x040300)
 	// use tabbed dock area for multiple docks
 	// (such as "source" and "messages")
 	setDockOptions(QMainWindow::ForceTabbedDocks);
-#endif
 
 	// For Drag&Drop.
 	setAcceptDrops(true);
-
-#if (QT_VERSION >= 0x040400)
 
 	// add busy indicator to statusbar
 	QLabel * busylabel = new QLabel(statusBar());
@@ -503,8 +489,6 @@ GuiView::GuiView(int id)
 		SLOT(processingThreadStarted()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), this,
 		SLOT(processingThreadFinished()));
-
-#endif
 
 	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
 		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
@@ -576,8 +560,6 @@ static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 }
 
 
-#if QT_VERSION >= 0x040400
-
 void GuiView::processingThreadStarted()
 {
 }
@@ -608,23 +590,6 @@ void GuiView::autoSaveThreadFinished()
 	message(watcher->result());
 	updateToolbars();
 }
-
-#else
-
-void GuiView::processingThreadStarted()
-{
-}
-
-
-void GuiView::processingThreadFinished()
-{
-}
-
-
-void GuiView::autoSaveThreadFinished()
-{
-}
-#endif
 
 
 void GuiView::saveLayout() const
@@ -765,29 +730,20 @@ void GuiView::initToolbars()
 		}
 
 		if (visibility & Toolbars::BOTTOM) {
-			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
 			if (newline)
 				addToolBarBreak(Qt::BottomToolBarArea);
-#endif
 			addToolBar(Qt::BottomToolBarArea, tb);
 		}
 
 		if (visibility & Toolbars::LEFT) {
-			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
 			if (newline)
 				addToolBarBreak(Qt::LeftToolBarArea);
-#endif
 			addToolBar(Qt::LeftToolBarArea, tb);
 		}
 
 		if (visibility & Toolbars::RIGHT) {
-			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
-#if (QT_VERSION >= 0x040202)
 			if (newline)
 				addToolBarBreak(Qt::RightToolBarArea);
-#endif
 			addToolBar(Qt::RightToolBarArea, tb);
 		}
 
@@ -1167,9 +1123,7 @@ bool GuiView::event(QEvent * e)
 	}
 
 	case QEvent::ShortcutOverride: {
-
-// See bug 4888
-#if (!defined Q_WS_X11) || (QT_VERSION >= 0x040500)
+		// See bug 4888
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			// FIXME: we should also try to detect special LyX shortcut such as
@@ -1181,7 +1135,6 @@ bool GuiView::event(QEvent * e)
 				return QMainWindow::event(e);
 			}
 		}
-#endif
 		return QMainWindow::event(e);
 	}
 
@@ -1487,7 +1440,7 @@ void GuiView::errors(string const & error_type, bool from_master)
 	if (!bv)
 		return;
 
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+#if EXPORT_in_THREAD
 	// We are called with from_master == false by default, so we
 	// have to figure out whether that is the case or not.
 	ErrorList & el = bv->buffer().errorList(error_type);
@@ -1569,7 +1522,6 @@ BufferView const * GuiView::currentBufferView() const
 }
 
 
-#if (QT_VERSION >= 0x040400)
 docstring GuiView::GuiViewPrivate::autosaveAndDestroy(
 	Buffer const * orig, Buffer * clone)
 {
@@ -1580,7 +1532,6 @@ docstring GuiView::GuiViewPrivate::autosaveAndDestroy(
 		? _("Automatic save done.")
 		: _("Automatic save failed!");
 }
-#endif
 
 
 void GuiView::autoSave()
@@ -3082,7 +3033,6 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
-#if (QT_VERSION >= 0x040400)
 template<class T>
 Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * clone, string const & format)
 {
@@ -3117,32 +3067,6 @@ Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * o
 	return runAndDestroy(lyx::bind(mem_func, clone, _1), orig, clone, format);
 }
 
-#else
-
-// not used, but the linker needs them
-
-Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(
-		Buffer const *, Buffer *, string const &)
-{
-	return Buffer::ExportSuccess;
-}
-
-
-Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(
-		Buffer const *, Buffer *, string const &)
-{
-	return Buffer::ExportSuccess;
-}
-
-
-Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(
-		Buffer const *, Buffer *, string const &)
-{
-	return Buffer::ExportSuccess;
-}
-
-#endif
-
 
 bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 			   string const & argument,
@@ -3159,7 +3083,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	if (format.empty())
 		format = used_buffer->params().getDefaultOutputFormat();
 	processing_format = format;
-#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+#if EXPORT_in_THREAD
 	if (!msg.empty()) {
 		progress_->clearMessages();
 		gv_->message(msg);
@@ -3273,13 +3197,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
-#if QT_VERSION < 0x040400
-			if (!doc_buffer->doExport(argument, false)) {
-				dr.setError(true);
-				dr.setMessage(bformat(_("Error exporting to format: %1$s"),
-					cmd.argument()));
-			}
-#else
 			/* TODO/Review: Is it a problem to also export the children?
 					See the update_unincluded flag */
 			d.asyncBufferProcessing(argument,
@@ -3289,7 +3206,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						&Buffer::doExport,
 						0);
 			// TODO Inform user about success
-#endif
 			break;
 		}
 
@@ -3787,7 +3703,6 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 	} else if (ui_component == "menubar") {
 		menuBar()->setVisible(!menuBar()->isVisible());
 	} else
-#if QT_VERSION >= 0x040300
 	if (ui_component == "frame") {
 		int l, t, r, b;
 		getContentsMargins(&l, &t, &r, &b);
@@ -3799,7 +3714,6 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 			setContentsMargins(0, 0, 0, 0);
 		}
 	} else
-#endif
 	if (ui_component == "fullscreen") {
 		toggleFullScreen();
 	} else
@@ -3813,9 +3727,7 @@ void GuiView::toggleFullScreen()
 	if (isFullScreen()) {
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(false);
-#if QT_VERSION >= 0x040300
 		setContentsMargins(0, 0, 0, 0);
-#endif
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		restoreLayout();
 		menuBar()->show();
@@ -3825,9 +3737,7 @@ void GuiView::toggleFullScreen()
 		hideDialogs("prefs", 0);
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
-#if QT_VERSION >= 0x040300
 		setContentsMargins(-2, -2, -2, -2);
-#endif
 		saveLayout();
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		statusBar()->hide();

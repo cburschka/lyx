@@ -50,14 +50,6 @@ LyXFileDialog::LyXFileDialog(QString const & title,
 	: QFileDialog(qApp->focusWidget(), title, path)
 {
 	setFilters(filters);
-#if QT_VERSION < 0x040304
-	// FIXME: workaround for a bug in qt which makes LyX crash
-	// with hidden paths (bug 4513). Fixed as of Qt 4.3.4
-	QDir dir(path);
-	if (path.contains("/."))
-		dir.setFilter(QDir::Hidden);
-	setDirectory(dir);
-#endif
 	setWindowTitle(title);
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();

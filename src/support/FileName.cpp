@@ -98,13 +98,7 @@ struct FileName::Private
 	///
 	inline void refresh() 
 	{
-// There seems to be a bug in Qt >= 4.2.0 and < 4.5.0, that causes problems with
-// QFileInfo::refresh() on *nix. So we recreate the object in that case.
-#if defined(_WIN32) || (QT_VERSION >= 0x040500)
 		fi.refresh();
-#else
-		fi = QFileInfo(fi.absoluteFilePath());
-#endif
 	}
 
 

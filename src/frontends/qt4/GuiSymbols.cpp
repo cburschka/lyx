@@ -425,11 +425,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		char_type c = *it;
 		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
 			continue;
-#if QT_VERSION >= 0x040300
 		QChar::Category const cat = QChar::category(uint(c));
-#else
-		QChar::Category const cat = QChar(uint(c)).category();
-#endif
 		// we do not want control or space characters
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
