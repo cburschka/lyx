@@ -183,6 +183,8 @@ Encoding jis-plain jis "Japanese (non-CJK) (JIS)" ISO-2022-JP variable japanese
 End
 Encoding shift-jis-plain sjis "Japanese (non-CJK) (SJIS)" CP932 variable japanese
 End
+Encoding utf8 utf8 "Japanese (non-CJK) (utf8)" UTF-8 variable japanese
+End
 
 # This one needs hardcoded support, since the inputenc package does not know
 # tis620-0, and thailatex sets up babel directly to use tis620-0, so the
