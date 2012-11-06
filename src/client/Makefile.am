@@ -44,7 +44,6 @@ BUILT_SOURCES = lyxclient.cpp
 CLEANFILES += lyxclient.cpp
 
 lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
-CLEANFILES += lyxclient.cpp
 
 else
 
