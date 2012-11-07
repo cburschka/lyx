@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 431
+\lyxformat 445
 \begin_document
 \begin_header
 \textclass book
@@ -39,13 +39,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -1149,6 +1149,26 @@ Program vlna automaticky přidává chráněné mezery za neslabičné předlož
  vestavěného mechanismu konvertorů.
  Samotný program je součástí nových distribucí TeX Live, nebo ho lze samostatně
  stáhnout na internetu.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://math.feld.cvut.cz/pub/olsak/vlna/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
