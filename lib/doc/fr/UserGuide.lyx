@@ -4555,11 +4555,8 @@ Entrée
 Standard
 \family default
 .
- 
-\lang english
-Also the nesting depth is preserved
-\lang french
- (les détails sur l'emboîtement dans la section
+ La profondeur d'emboîtement est également préservée (voir les détails sur
+ l'emboîtement dans la section
 \begin_inset space ~
 \end_inset
 
@@ -29580,9 +29577,7 @@ emph
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the characters |
+Si les caractères |
 \begin_inset space \space{}
 \end_inset
 
@@ -29594,24 +29589,20 @@ If the characters |
 \begin_inset space \space{}
 \end_inset
 
-, @ and
+, @ et
 \begin_inset space \space{}
 \end_inset
 
-"
-\begin_inset space \space{}
+" apparaissent dans les entrées de la nomenclature, ils doivent être protégés
+ en ajoutant un caractère 
+\begin_inset Quotes fld
 \end_inset
 
-should appear in nomenclature entries they need to be escaped by adding
- a quote character in front of them.
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\""
-description "The quote sign is output by writing ' \"\"\"\" '"
-
+double apostrophe
+\begin_inset Quotes frd
 \end_inset
 
-
+ avant eux.
 \end_layout
 
 \begin_layout Subsection
