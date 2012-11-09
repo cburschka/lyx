@@ -12,7 +12,6 @@
 #
 # Subsequently: "lyx-fedora pull", "lyx-fedora rpm" and "lyx-fedora install"
 #
-VER=2.1.0dev
 EXT=fc$(sed 's/[^0-9]*\([0-9]*\)[^0-9]*/\1/' /etc/fedora-release)
 
 TOPDIR=$HOME/src
@@ -192,7 +191,7 @@ Requires: %{name}-common = %{version}-%{release}
 Requires: %{fontname}-fonts = %{version}-%{release}
 
 %if 0%{?fedora} > 8 || 0%{?rhel} > 5
-BuildRequires: tex(dvips) tex(latex) texlive-fonts
+BuildRequires: tex(dvips) tex(latex)
 Requires(post): texlive
 Requires(postun): texlive
 Requires: dvipdfm
@@ -411,6 +410,9 @@ fc-cache %{_fontdir} 2> /dev/null ||:
 
 
 %changelog
+* Sun Nov  4 2012 Kayvan Sylvan <kayvan@sylvan.com>
+- Remove texlive-fonts from BuildRequires (Fedora 18 obsoletes texlive-fonts)
+
 * Fri Nov  2 2012 Kayvan Sylvan <kayvan@sylvan.com> - 2.1
 - lyx-2.1 dev
 
@@ -772,9 +774,10 @@ Xrpm)
   cd $BUILDDIR
   make package_source
   mv LyX-2.1.tar.bz2 $HOME/rpmbuild/SOURCES
-  rpmbuild -bb $HOME/rpmbuild/SPECS/lyx-cmake.spec
+  rpmbuild -ba $HOME/rpmbuild/SPECS/lyx-cmake.spec
   ;;
 Xinstall)
+  VER=$(head $SRCDIR/configure.ac | grep AC_INIT|awk -F, '{print $2}')
   rpm -q lyx | grep -q lyx-$VER
   if [ $? -eq 0 ]
   then
