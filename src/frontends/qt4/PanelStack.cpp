@@ -21,7 +21,6 @@
 
 #include <QAbstractButton>
 #include <QApplication>
-#include <QColorGroup>
 #include <QComboBox>
 #include <QFontMetrics>
 #include <QGroupBox>

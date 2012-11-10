@@ -56,16 +56,19 @@
 
 #include <QContextMenuEvent>
 #include <QInputContext>
+#include <QDrag>
 #include <QHelpEvent>
 #ifdef Q_WS_MACX
 #include <QMacStyle>
 #endif
 #include <QMainWindow>
+#include <QMimeData>
 #include <QMenu>
 #include <QPainter>
 #include <QPalette>
 #include <QPixmapCache>
 #include <QScrollBar>
+#include <QStyleOption>
 #include <QStylePainter>
 #include <QTimer>
 #include <QToolButton>

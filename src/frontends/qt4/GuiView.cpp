@@ -94,6 +94,7 @@
 #include <QList>
 #include <QMenu>
 #include <QMenuBar>
+#include <QMimeData>
 #include <QMovie>
 #include <QPainter>
 #include <QPixmap>
