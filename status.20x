@@ -58,6 +58,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix regression in which clicking in the main work area always resets
+  the selected format in View>Source (bug #8411).
+  
 - When selecting text and Insert > Preview, immediately display the
   preview (bug #8075).
 
