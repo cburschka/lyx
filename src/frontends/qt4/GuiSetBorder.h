@@ -26,7 +26,7 @@ class GuiSetBorder : public QWidget
 {
 	Q_OBJECT
 public:
-	GuiSetBorder(QWidget * parent = 0, Qt::WFlags fl = 0);
+	GuiSetBorder(QWidget * parent = 0, Qt::WindowFlags fl = 0);
 
 	bool getLeft();
 	bool getRight();

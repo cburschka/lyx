@@ -18,7 +18,7 @@
 #include <QPaintEvent>
 
 
-GuiSetBorder::GuiSetBorder(QWidget * parent, Qt::WFlags fl)
+GuiSetBorder::GuiSetBorder(QWidget * parent, Qt::WindowFlags fl)
 	: QWidget(parent, fl), buffer(75, 75)
 {
 	/* length of corner line */
