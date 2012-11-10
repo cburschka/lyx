@@ -24,6 +24,8 @@ Var DictCode
 Var DictCodes
 Var DelPythonFiles
 Var EditorPath
+Var FoundDict
+Var FoundThes
 Var GhostscriptPath
 Var GnumericPath
 Var ImageEditorPath

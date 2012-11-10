@@ -139,10 +139,8 @@ Section -ProgramFiles SecProgramFiles
   ${if} $ThesCodes != ""
    Call InstallThesaurusDictionary # Function from Thesaurus.nsh
   ${endif}
-  # finally delete the list of dictionaries and mirrors
+  # finally delete the list of mirrors
   Delete "$INSTDIR\Resources\DictionaryMirrors.txt"
-  Delete "$INSTDIR\Resources\ThesaurusDictionaryNames.txt"
-  Delete "$INSTDIR\Resources\HunspellDictionaryNames.txt"
   
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"

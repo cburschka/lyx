@@ -6,7 +6,8 @@ Function DownloadHunspellDictionary
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
- ${For} $5 1 114
+ ${For} $5 1 120       # the file has 120 lines
+ 
   FileRead $R5 $String # $String is now the dictionary name
   StrCpy $R3 $String 5 # $R3 is now the dictionary language code
   
@@ -51,8 +52,9 @@ Function DownloadThesaurusDictionary
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
- ${For} $5 1 44
-  FileRead $R5 $String # $String is now the dictionary name
+ ${For} $5 1 44          # the file has 44 lines
+ 
+  FileRead $R5 $String   # $String is now the dictionary name
   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
   
   ${if} $ThesCode == $R3
@@ -91,18 +93,22 @@ FunctionEnd
 #--------------------------------
 
 Function InstallHunspellDictionary
- # install hunspell dictionaries
+ # install the selected hunspell dictionaries except of already existing ones
 
- # install the dictionary corresponding to the system and the chosen menu language
- # check if the system language and the chosen menu language are the same, if not install
- # both dictionaries
+ # download the dictionaries
  ${Do}
   StrCpy $DictCode $DictCodes 5
   StrCpy $DictCodes $DictCodes "" 5
-  Call DownloadHunspellDictionary
+  # don't dowload existing ones thus check if $DictCode is in $FoundDict
+  StrCpy $String $FoundDict
+  StrCpy $Search $DictCode
+  Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer == "-1"
+   Call DownloadHunspellDictionary
+  ${endif}
  ${LoopUntil} $DictCodes == ""
  
- # some dictionaries need to be renamed
+ # some dictionaries need to be renamed to have a 2 letter code
  ${if} ${FileExists} "$INSTDIR\Resources\dicts\db_DE.aff"
   Rename "$INSTDIR\Resources\dicts\db_DE.aff" "$INSTDIR\Resources\dicts\dsb_DE.aff"
   Rename "$INSTDIR\Resources\dicts\db_DE.dic" "$INSTDIR\Resources\dicts\dsb_DE.dic"
@@ -117,15 +123,19 @@ FunctionEnd
 #--------------------------------
 
 Function InstallThesaurusDictionary
- # install thesaurus dictionaries
+ # install the selected thesaurus dictionaries except of already existing ones
 
- # install the dictionary corresponding to the system and the chosen menu language
- # check if the system language and the chosen menu language are the same, if not install
- # both dictionaries
+ # download the dictionaries
  ${Do}
   StrCpy $ThesCode $ThesCodes 5
   StrCpy $ThesCodes $ThesCodes "" 5
-  Call DownloadThesaurusDictionary
+  # don't dowload existing ones thus check if $ThesCode is in $FoundThes
+  StrCpy $String $FoundThes
+  StrCpy $Search $ThesCode
+  Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer == "-1"
+   Call DownloadThesaurusDictionary
+  ${endif}
  ${LoopUntil} $ThesCodes == ""
  
  # some dictionaries of language variants are identic

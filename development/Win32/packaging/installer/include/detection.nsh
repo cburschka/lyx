@@ -11,10 +11,13 @@ Detection of external component locations
 # - SearchExternal, calls the functions:
 #    LaTeXActions
 #    MissingPrograms
+#    FindDictionaries
 #
 # - MissingPrograms, (check if third-party programs are installed), uses:
 #    SEARCH_MIKTEX
 #    SEARCH_TEXLIVE
+#
+# - FindDictionaries (finds installed spellcheck and thesaurus dictionaries)
 #
 # - EditorCheck,
 #    (test if an editor with syntax-highlighting for LaTeX-files is installed)
@@ -27,6 +30,7 @@ Detection of external component locations
 Function SearchExternal
   Call LaTeXActions # function from LaTeX.nsh
   Call MissingPrograms
+  Call FindDictionaries
 FunctionEnd
 
 # ---------------------------------------
@@ -92,21 +96,23 @@ Function MissingPrograms
 
   # test if an image editor is installed
   StrCpy $ImageEditorPath ""
-  ReadRegStr $ImageEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinGimp-2.0_is1" "DisplayIcon"
+  ReadRegStr $ImageEditorPath HKLM "Software\Classes\GIMP-2.8-xcf\shell\open\command" ""
   ${if} $ImageEditorPath != ""
-   StrCpy $ImageEditorPath "$ImageEditorPath" -13 # delete "\gimp-2.x.exe"
+   StrCpy $ImageEditorPath "$ImageEditorPath" -19 # delete '\gimp-2.x.exe" "%1"'
+   StrCpy $ImageEditorPath $ImageEditorPath "" 1 # remove the leading quote
   ${endif}
   # check for Photoshop
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\Photoshop.exe" "Path"
+  ReadRegStr $0 HKLM "Software\Classes\Applications\Photoshop.exe\shell\open\command" ""
   ${if} $0 != ""
-   StrCpy $0 "$0" -1 # delete the last "\"
+   StrCpy $0 "$0" -20 # delete '\photoshop.exe" "%1"'
+   StrCpy $0 $0 "" 1 # remove the leading quote
    ${if} $ImageEditorPath != ""
     StrCpy $ImageEditorPath "$ImageEditorPath;$0"
    ${else}
     StrCpy $ImageEditorPath $0
    ${endif}
   ${endif}
-
+  
   # test if and where the BibTeX-editor JabRef is installed
   ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
   ${if} $PathBibTeXEditor == ""
@@ -129,9 +135,6 @@ Function MissingPrograms
   # test if Inkscape is installed
   ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
   
-  # test if metafile2eps is installed
-  ReadRegStr $WMFPath HKLM "Software\Microsoft\Windows NT\CurrentVersion\Print\Printers\Metafile to EPS Converter" "Name"
-  
   # test if Gnumeric is installed
   ReadRegStr $0 HKLM "Software\Classes\Applications\gnumeric.exe\shell\Open\command" ""
   ${if} $0 != ""
@@ -139,6 +142,56 @@ Function MissingPrograms
    StrCpy $0 $0 "" 1 # remove the leading quote
    StrCpy $GnumericPath $0
   ${endif}
+
+FunctionEnd
+
+# ---------------------------------------
+
+Function FindDictionaries
+  # find the installed dictionaries
+
+  # start with empty strings
+  StrCpy $FoundDict ""
+  StrCpy $FoundThes ""
+  
+  # read out the possible spell-checker filenames from the file	
+  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
+  ${for} $5 1 60
+   # the file has 120 lines, but we only need to check for one of the 2 dictionary files per language
+   # therefore check only for every second line
+   FileRead $R5 $String   # $String is now the dictionary name
+   FileRead $R5 $String   # $String is now the dictionary name
+   StrCpy $String $String -2 # remove the linebreak characters
+   StrCpy $R3 $String -4 # $R3 is now the dictionary language code
+   # we have 2 cases where we renamed the file to a 3 letter code, see thesaurus.nsh
+   ${if} $String == "db_DE.dic"
+    StrCpy $String "dsb_DE.dic"
+   ${endif}
+   ${if} $String == "hb_DE.dic"
+    StrCpy $String "hsb_DE.dic"
+   ${endif}
+   !insertmacro FileCheck $4 $String "$INSTDIR\Resources\dicts" # macro from LyXUtils.nsh
+   ${if} $4 == "True"
+    StrCpy $FoundDict "$R3 $FoundDict"
+   ${endif}
+  ${next}
+  FileClose $R5
+  
+  # read out the possible thesaurus filenames from the file	
+  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
+  ${for} $5 1 22
+   # the file has 44 lines, but we only need to check for one of the 2 dictionary files per language
+   # therefore check only for every second line
+   FileRead $R5 $String   # $String is now the dictionary name
+   FileRead $R5 $String   # $String is now the dictionary name
+   StrCpy $String $String -2 # remove the linebreak characters
+   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
+   !insertmacro FileCheck $4 $String "$INSTDIR\Resources\thes" # macro from LyXUtils.nsh
+   ${if} $4 == "True"
+    StrCpy $FoundThes "$R3 $FoundThes"
+   ${endif}
+  ${next}
+  FileClose $R5
 
 FunctionEnd
 

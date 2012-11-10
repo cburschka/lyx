@@ -11,8 +11,8 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 0
-!define APP_VERSION_REVISION 4
-!define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
+!define APP_VERSION_REVISION 5
+!define APP_VERSION_BUILD 2 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}" # Version to display
 
@@ -38,7 +38,7 @@ These typically need to be modified for each LyX release
 !define FILES_LYX "C:\LyX\lyx-20-install"
 !define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
 !define FILES_BUNDLE "C:\LyX\depsbundle"
-!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.8.2"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.8.3"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
@@ -50,7 +50,7 @@ These typically need to be modified for each LyX release
 
 !define JabRefVersion "2.8"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.7.7"
+!define ImageMagickVersion "6.8.0"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE

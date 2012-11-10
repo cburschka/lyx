@@ -7,152 +7,6 @@ Initialization function
 */
 
 #--------------------------------
-# Installer initialization
-
-!macro PRINTER_INIT
-
-  ${If} ${AtLeastWinVista}
-    StrCpy $PrinterConf "printui.exe"
-  ${Else}
-    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
-  ${EndIf}
-
-!macroend
-
-Function .onInit
-
-  ${IfNot} ${IsNT}
-  ${OrIfNot} ${AtLeastWinXP}
-    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later."
-    Quit
-  ${EndIf}
-  
-  # check that the installer is not currently running
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
-  Pop $R0
-  ${if} $R0 != "0"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
-   Abort
-  ${endif}
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
-  Pop $R0
-  ${if} $R0 != "0"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
-   Abort
-  ${endif}
-
-  # check if LyX is already installed
-  ${if} $MultiUser.Privileges == "Admin"
-  ${orif} $MultiUser.Privileges == "Power"
-   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
-  ${else}
-   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "Publisher"
-   # handle also the case that LyX is already installed in HKLM
-   ${if} $0 == ""
-    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
-   ${endif}
-  ${endif}
-  ${if} $0 != ""
-   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
-   Abort
-  ${endif}
-
-  !insertmacro PRINTER_INIT
-  !insertmacro MULTIUSER_INIT
-  
-  # this can be reset to "true" in section SecDesktop
-  StrCpy $CreateDesktopIcon "false"
-  StrCpy $CreateFileAssociations "false"
- 
-  ${IfNot} ${Silent}
-    # Show banner while installer is intializating 
-    Banner::show /NOUNLOAD "Checking system"
-  ${EndIf}
- 
-  Call SearchExternal
-  #Call InitExternal
-  
-  !if ${SETUPTYPE} == BUNDLE
-   # don't let the installer sections appear when the programs are already installed
-   ${if} $PathBibTeXEditor != ""
-    SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
-   ${endif}
-  !endif
-  
-  ${IfNot} ${Silent}
-    Banner::destroy
-  ${EndIf}
-
-FunctionEnd
-
-# this function is called at first after starting the uninstaller
-Function un.onInit
-
-  !insertmacro PRINTER_INIT
-  !insertmacro MULTIUSER_UNINIT
-
-  # Check that LyX is not currently running
-  FindProcDLL::FindProc "lyx.exe"
-  ${if} $R0 == "1"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
-   Abort
-  ${endif}
-
-  # set registry root key
-  ${if} $MultiUser.Privileges == "Admin"
-  ${orif} $MultiUser.Privileges == "Power"
-    SetShellVarContext all
-  ${else}
-   SetShellVarContext current
-  ${endif}
-
-  # Ascertain whether the user has sufficient privileges to uninstall.
-  # abort when LyX was installed with admin permissions but the user doesn't have administrator privileges
-  ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayVersion"
-  ${if} $0 != ""
-  ${andif} $MultiUser.Privileges != "Admin"
-  ${andif} $MultiUser.Privileges != "Power"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
-   Abort
-  ${endif}
-  # abort when LyX couldn't be found in the registry
-  ${if} $0 == "" # check in HKCU
-   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayVersion"
-   ${if} $0 == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
-   ${endif}
-  ${endif}
-  
-  # Macro to investigate name of LyX's preferences folders to be able remove them
-  !insertmacro UnAppPreSuff $AppPre $AppSuff # macro from LyXUtils.nsh
-
-  # test if MiKTeX was installed together with LyX
-  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  ${if} $0 == "Yes${APP_SERIES_KEY}"
-   SectionSetText 2 "MiKTeX" # names the corersponding uninstaller section
-   StrCpy $LaTeXInstalled "MiKTeX"
-   DeleteRegValue HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  ${else}
-   SectionSetText 2 "" # hides the corresponding uninstaller section
-  ${endif}
-  
-  # test if JabRef was installed together with LyX
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
-  ${if} $0 == "Yes${APP_SERIES_KEY}"
-   SectionSetText 3 "JabRef" # names the corersponding uninstaller section
-   StrCpy $JabRefInstalled "Yes"
-   DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
-  ${else}
-   SectionSetText 3 "" # hides the corresponding uninstaller section
-  ${endif}
-
-  # question message if the user really wants to uninstall LyX
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2 # continue if yes
-  Abort
-
-FunctionEnd
-
-#--------------------------------
 # User initialization
 
 Var ComponentPath
@@ -283,6 +137,7 @@ SectionEnd
 
 Section "German (D)" SecDGermanD
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "de_DE$DictCodes"
  AddSize 2650
 SectionEnd
@@ -310,6 +165,7 @@ SectionEnd
 
 Section "English (GB)" SecDEnglishGB
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "en_GB$DictCodes"
  AddSize 757
 SectionEnd
@@ -322,18 +178,21 @@ SectionEnd
 
 Section "English (US)" SecDEnglishUS
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "en_US$DictCodes"
  AddSize 688
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "es_ES$DictCodes"
  AddSize 974
 SectionEnd
 
 Section "Español (MX)" SecDSpanishMX
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "es_MX$DictCodes"
  AddSize 924
 SectionEnd
@@ -355,6 +214,7 @@ SectionEnd
 
 Section "Français" SecDFrench
  # already installed by default
+ SectionIn RO
  #StrCpy $DictCodes "fr_FR$DictCodes"
  AddSize 1200
 SectionEnd
@@ -464,9 +324,8 @@ Section /o "Româna" SecDRomanian
  AddSize 1930
 SectionEnd
 
-Section "Russian" SecDRussian
- # already installed by default
- #StrCpy $DictCodes "ru_RU$DictCodes"
+Section /o "Russian" SecDRussian
+ StrCpy $DictCodes "ru_RU$DictCodes"
  AddSize 1920
 SectionEnd
 
@@ -645,4 +504,737 @@ SectionGroupEnd
  !insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
 !endif
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+
+#--------------------------------
+# Installer initialization
+
+!macro PRINTER_INIT
+
+  ${If} ${AtLeastWinVista}
+    StrCpy $PrinterConf "printui.exe"
+  ${Else}
+    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
+  ${EndIf}
+
+!macroend
+
+# .onInit must be here after the section definition because we have to set
+# the selection states of the dictionary sections
+Function .onInit
+
+  ${IfNot} ${IsNT}
+  ${OrIfNot} ${AtLeastWinXP}
+    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later."
+    Quit
+  ${EndIf}
+  
+  # check that the installer is not currently running
+  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
+  Pop $R0
+  ${if} $R0 != "0"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   Abort
+  ${endif}
+  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
+  Pop $R0
+  ${if} $R0 != "0"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   Abort
+  ${endif}
+
+  # check if this LyX version is already installed
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
+   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+  ${else}
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "Publisher"
+   # handle also the case that LyX is already installed in HKLM
+   ${if} $0 == ""
+    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+   ${endif}
+  ${endif}
+  ${if} $0 != ""
+   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
+   Abort
+  ${endif}
+
+  !insertmacro PRINTER_INIT
+  !insertmacro MULTIUSER_INIT
+  
+  # this can be reset to "true" in section SecDesktop
+  StrCpy $CreateDesktopIcon "false"
+  StrCpy $CreateFileAssociations "false"
+ 
+  ${IfNot} ${Silent}
+    # Show banner while installer is intializating 
+    Banner::show /NOUNLOAD "Checking system"
+  ${EndIf}
+ 
+  Call SearchExternal
+  #Call InitExternal
+  
+  !if ${SETUPTYPE} == BUNDLE
+   # don't let the installer sections appear when the programs are already installed
+   ${if} $PathBibTeXEditor != ""
+    SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
+   ${endif}
+  !endif
+  
+  # select sections of already installed spell-checker dictionaries, make them read-only
+  # and set the necessary size to 0 bytes
+  StrCpy $String $FoundDict
+  StrCpy $Search "af_ZA"
+  Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDAfrikaans} $0
+   SectionSetSize ${SecDAfrikaans} 0
+  ${endif}
+  StrCpy $Search "ar_DZ"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDArabic} $0
+   SectionSetSize ${SecDArabic} 0
+  ${endif}
+  StrCpy $Search "hy_AM"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDArmenian} $0
+   SectionSetSize ${SecDArmenian} 0
+  ${endif}
+  StrCpy $Search "id_ID"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDIndonesian} $0
+   SectionSetSize ${SecDIndonesian} 0
+  ${endif}
+  StrCpy $Search "ms_MY"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDMalayan} $0
+   SectionSetSize ${SecDMalayan} 0
+  ${endif}
+  StrCpy $Search "be_BY"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDBelarusian} $0
+   SectionSetSize ${SecDBelarusian} 0
+  ${endif}
+  StrCpy $Search "br_FR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDBreton} $0
+   SectionSetSize ${SecDBreton} 0
+  ${endif}
+  StrCpy $Search "bg_BG"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDBulgarian} $0
+   SectionSetSize ${SecDBulgarian} 0
+  ${endif}
+  StrCpy $Search "ca_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDCatalanian} $0
+   SectionSetSize ${SecDCatalanian} 0
+  ${endif}
+  StrCpy $Search "cs_CZ"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDCzech} $0
+   SectionSetSize ${SecDCzech} 0
+  ${endif}
+  StrCpy $Search "cy_GB"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDWelsh} $0
+   SectionSetSize ${SecDWelsh} 0
+  ${endif}
+  StrCpy $Search "da_DK"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDDanish} $0
+   SectionSetSize ${SecDDanish} 0
+  ${endif}
+  StrCpy $Search "de_AT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGermanAT} $0
+   SectionSetSize ${SecDGermanAT} 0
+  ${endif}
+  StrCpy $Search "de_CH"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGermanCH} $0
+   SectionSetSize ${SecDGermanCH} 0
+  ${endif}
+  StrCpy $Search "de_DE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGermanD} $0
+   SectionSetSize ${SecDGermanD} 0
+  ${endif}
+  StrCpy $Search "el_GR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGreek} $0
+   SectionSetSize ${SecDGreek} 0
+  ${endif}
+  StrCpy $Search "et_EE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDEstonian} $0
+   SectionSetSize ${SecDEstonian} 0
+  ${endif}
+  StrCpy $Search "en_AU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!
+ #  SectionSetFlags ${SecDEnglishAU} $0
+ #  SectionSetSize ${SecDEnglishAU} 0
+  ${endif}
+  StrCpy $Search "en_CA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDEnglishCA} $0
+   SectionSetSize ${SecDEnglishCA} 0
+  ${endif}
+  StrCpy $Search "en_GB"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDEnglishGB} $0
+   SectionSetSize ${SecDEnglishGB} 0
+  ${endif}
+  StrCpy $Search "en_NZ"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!
+ #  SectionSetFlags ${SecDEnglishNZ} $0
+ #  SectionSetSize ${SecDEnglishNZ} 0
+  ${endif}
+  StrCpy $Search "en_US"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDEnglishUS} $0
+   SectionSetSize ${SecDEnglishUS} 0
+  ${endif}
+  StrCpy $Search "es_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSpanishES} $0
+   SectionSetSize ${SecDSpanishES} 0
+  ${endif}
+  StrCpy $Search "es_MX"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSpanishMX} $0
+   SectionSetSize ${SecDSpanishMX} 0
+  ${endif}
+  StrCpy $Search "eo_EO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDEsperanto} $0
+   SectionSetSize ${SecDEsperanto} 0
+  ${endif}
+  StrCpy $Search "eu_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDBasque} $0
+   SectionSetSize ${SecDBasque} 0
+  ${endif}
+  StrCpy $Search "fa_IR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDFarsi} $0
+   SectionSetSize ${SecDFarsi} 0
+  ${endif}
+  StrCpy $Search "fr_FR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDFrench} $0
+   SectionSetSize ${SecDFrench} 0
+  ${endif}
+  StrCpy $Search "ga_IR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGaelic} $0
+   SectionSetSize ${SecDGaelic} 0
+  ${endif}
+  StrCpy $Search "gd_GB"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDScottish} $0
+   SectionSetSize ${SecDScottish} 0
+  ${endif}
+  StrCpy $Search "gl_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDGalician} $0
+   SectionSetSize ${SecDGalician} 0
+  ${endif}
+  StrCpy $Search "he_IL"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDHebrew} $0
+   SectionSetSize ${SecDHebrew} 0
+  ${endif}
+  StrCpy $Search "hr_HR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDCroatian} $0
+   SectionSetSize ${SecDCroatian} 0
+  ${endif}
+  StrCpy $Search "hu_HU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDHungarian} $0
+   SectionSetSize ${SecDHungarian} 0
+  ${endif}
+  StrCpy $Search "ia_IA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDInterlingua} $0
+   SectionSetSize ${SecDInterlingua} 0
+  ${endif}
+  StrCpy $Search "is_IS"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDIcelandic} $0
+   SectionSetSize ${SecDIcelandic} 0
+  ${endif}
+  StrCpy $Search "it_IT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDItalian} $0
+   SectionSetSize ${SecDItalian} 0
+  ${endif}
+  StrCpy $Search "kk_KZ"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDKazakh} $0
+   SectionSetSize ${SecDKazakh} 0
+  ${endif}
+  StrCpy $Search "ko_KR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDKorean} $0
+   SectionSetSize ${SecDKorean} 0
+  ${endif}
+  StrCpy $Search "la_LA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDLatin} $0
+   SectionSetSize ${SecDLatin} 0
+  ${endif}
+  StrCpy $Search "lt_LT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDLithuanian} $0
+   SectionSetSize ${SecDLithuanian} 0
+  ${endif}
+  StrCpy $Search "lv_LV"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDLatvian} $0
+   SectionSetSize ${SecDLatvian} 0
+  ${endif}
+  StrCpy $Search "nl_NL"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDDutch} $0
+   SectionSetSize ${SecDDutch} 0
+  ${endif}
+  StrCpy $Search "nb_NO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDNorwegianNB} $0
+   SectionSetSize ${SecDNorwegianNB} 0
+  ${endif}
+  StrCpy $Search "nn_NO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDNorwegianNN} $0
+   SectionSetSize ${SecDNorwegianNN} 0
+  ${endif}
+  StrCpy $Search "pl_PL"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDPolish} $0
+   SectionSetSize ${SecDPolish} 0
+  ${endif}
+  StrCpy $Search "pt_BR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDPortugueseBR} $0
+   SectionSetSize ${SecDPortugueseBR} 0
+  ${endif}
+  StrCpy $Search "pt_PT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDPortuguesePT} $0
+   SectionSetSize ${SecDPortuguesePT} 0
+  ${endif}
+  StrCpy $Search "ro_RO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDRomanian} $0
+   SectionSetSize ${SecDRomanian} 0
+  ${endif}
+  StrCpy $Search "ru_RU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDRussian} $0
+   SectionSetSize ${SecDRussian} 0
+  ${endif}
+  StrCpy $Search "db_DE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSorbianD} $0
+   SectionSetSize ${SecDSorbianD} 0
+  ${endif}
+  StrCpy $Search "hb_DE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSorbianH} $0
+   SectionSetSize ${SecDSorbianH} 0
+  ${endif}
+  StrCpy $Search "sq_AL"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDAlbanian} $0
+   SectionSetSize ${SecDAlbanian} 0
+  ${endif}
+  StrCpy $Search "sl_SI"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSlowenian} $0
+   SectionSetSize ${SecDSlowenian} 0
+  ${endif}
+  StrCpy $Search "sk_SK"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSlowakian} $0
+   SectionSetSize ${SecDSlowakian} 0
+  ${endif}
+  StrCpy $Search "sr_RS"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSerbian} $0
+   SectionSetSize ${SecDSerbian} 0
+  ${endif}
+  StrCpy $Search "sv_SE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSwedish} $0
+   SectionSetSize ${SecDSwedish} 0
+  ${endif}
+  StrCpy $Search "th_TH"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDThai} $0
+   SectionSetSize ${SecDThai} 0
+  ${endif}
+  StrCpy $Search "uk_UA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDUkrainian} $0
+   SectionSetSize ${SecDUkrainian} 0
+  ${endif}
+  StrCpy $Search "vi_VN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDVietnamese} $0
+   SectionSetSize ${SecDVietnamese} 0
+  ${endif}
+  
+  # select sections of already installed thesaurus dictionaries, make them read-only
+  # and set the necessary size to 0 bytes
+  StrCpy $String $FoundThes
+  StrCpy $Search "bg_BG"
+  Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTBulgarian} $0
+   SectionSetSize ${SecTBulgarian} 0
+  ${endif}
+  StrCpy $Search "ca_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTCatalan} $0
+   SectionSetSize ${SecTCatalan} 0
+  ${endif}
+  StrCpy $Search "cs_CZ"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTCzech} $0
+   SectionSetSize ${SecTCzech} 0
+  ${endif}
+  StrCpy $Search "da_DK"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTDanish} $0
+   SectionSetSize ${SecTDanish} 0
+  ${endif}
+  StrCpy $Search "de_DE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTGermanDA} $0
+   SectionSetSize ${SecTGermanDA} 0
+  ${endif} 
+  StrCpy $Search "de_CH"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTGermanCH} $0
+   SectionSetSize ${SecTGermanCH} 0
+  ${endif}
+  StrCpy $Search "en_GB"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTEnglishGB} $0
+   SectionSetSize ${SecTEnglishGB} 0
+  ${endif} 
+  StrCpy $Search "en_US"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTEnglishUSAU} $0
+   SectionSetSize ${SecTEnglishUSAU} 0
+  ${endif}
+  StrCpy $Search "es_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTSpanish} $0
+   SectionSetSize ${SecTSpanish} 0
+  ${endif}
+  StrCpy $Search "fr_FR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTFrench} $0
+   SectionSetSize ${SecTFrench} 0
+  ${endif}
+  StrCpy $Search "ga_IR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTGaelic} $0
+   SectionSetSize ${SecTGaelic} 0
+  ${endif}
+  StrCpy $Search "el_GR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTGreek} $0
+   SectionSetSize ${SecTGreek} 0
+  ${endif}
+  StrCpy $Search "it_IT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTItalian} $0
+   SectionSetSize ${SecTItalian} 0
+  ${endif}
+  StrCpy $Search "hu_HU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTHungarian} $0
+   SectionSetSize ${SecTHungarian} 0
+  ${endif}
+  StrCpy $Search "no_NO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTNorwegian} $0
+   SectionSetSize ${SecTNorwegian} 0
+  ${endif}
+  StrCpy $Search "pl_PL"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTPolish} $0
+   SectionSetSize ${SecTPolish} 0
+  ${endif}
+  StrCpy $Search "pt_PT"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTPortuguese} $0
+   SectionSetSize ${SecTPortuguese} 0
+  ${endif}
+  StrCpy $Search "ro_RO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTRomanian} $0
+   SectionSetSize ${SecTRomanian} 0
+  ${endif}
+  StrCpy $Search "ru_RU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTRussian} $0
+   SectionSetSize ${SecTRussian} 0
+  ${endif}
+  StrCpy $Search "sl_SI"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTSlowenian} $0
+   SectionSetSize ${SecTSlowenian} 0
+  ${endif}
+  StrCpy $Search "sk_SK"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTSlowakian} $0
+   SectionSetSize ${SecTSlowakian} 0
+  ${endif}
+  StrCpy $Search "sv_SE"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTSwedish} $0
+   SectionSetSize ${SecTSwedish} 0
+  ${endif}*/
+  
+  ${IfNot} ${Silent}
+    Banner::destroy
+  ${EndIf}
+
+FunctionEnd
+
+# this function is called at first after starting the uninstaller
+Function un.onInit
+
+  !insertmacro PRINTER_INIT
+  !insertmacro MULTIUSER_UNINIT
+
+  # Check that LyX is not currently running
+  FindProcDLL::FindProc "lyx.exe"
+  ${if} $R0 == "1"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
+   Abort
+  ${endif}
+
+  # set registry root key
+  ${if} $MultiUser.Privileges == "Admin"
+  ${orif} $MultiUser.Privileges == "Power"
+    SetShellVarContext all
+  ${else}
+   SetShellVarContext current
+  ${endif}
+
+  # Ascertain whether the user has sufficient privileges to uninstall.
+  # abort when LyX was installed with admin permissions but the user doesn't have administrator privileges
+  ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayVersion"
+  ${if} $0 != ""
+  ${andif} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
+   Abort
+  ${endif}
+  # abort when LyX couldn't be found in the registry
+  ${if} $0 == "" # check in HKCU
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayVersion"
+   ${if} $0 == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
+   ${endif}
+  ${endif}
+  
+  # Macro to investigate name of LyX's preferences folders to be able remove them
+  !insertmacro UnAppPreSuff $AppPre $AppSuff # macro from LyXUtils.nsh
+
+  # test if MiKTeX was installed together with LyX
+  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   SectionSetText 2 "MiKTeX" # names the corersponding uninstaller section
+   StrCpy $LaTeXInstalled "MiKTeX"
+   DeleteRegValue HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ${else}
+   SectionSetText 2 "" # hides the corresponding uninstaller section
+  ${endif}
+  
+  # test if JabRef was installed together with LyX
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   SectionSetText 3 "JabRef" # names the corersponding uninstaller section
+   StrCpy $JabRefInstalled "Yes"
+   DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ${else}
+   SectionSetText 3 "" # hides the corresponding uninstaller section
+  ${endif}
+
+  # question message if the user really wants to uninstall LyX
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2 # continue if yes
+  Abort
+
+FunctionEnd
 
