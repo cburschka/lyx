@@ -52,7 +52,6 @@ Var ThesCode
 Var ThesCodes
 Var UpdateFNDBReturn
 Var UserList
-Var WMFPath
 
 Var LangName
 

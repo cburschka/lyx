@@ -117,9 +117,6 @@ Section -Configure
   ${if} $SVGPath != ""
    StrCpy $PathPrefix "$PathPrefix;$SVGPath"
   ${endif}
-  ${if} $WMFPath != ""
-   StrCpy $PathPrefix "$PathPrefix;$WMFPath"
-  ${endif}
   ${if} $GnumericPath != ""
    StrCpy $PathPrefix "$PathPrefix;$GnumericPath"
   ${endif}
@@ -128,8 +125,8 @@ Section -Configure
   ${EndIf}
   ${if} $LilyPondPath != ""
    StrCpy $PathPrefix "$PathPrefix;$LilyPondPath"
-  ${endif}  
-
+  ${endif}
+  
   # Set the path prefix in lyxrc.dist
   ClearErrors
   Delete "$INSTDIR\Resources\lyxrc.dist"
