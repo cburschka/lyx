@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Yapýlandýrma programýnda 'path_prefi
 ${LangFileString} RunConfigureFailed "Yapýlandýrma programý çalýþtýrýlamadý"
 ${LangFileString} NotAdmin "LyX kurabilmek için yönetici yetkileri gerekiyor!"
 ${LangFileString} InstallRunning "Kurulum programý zaten çalýþýyor!"
-${LangFileString} StillInstalled "LyX kurulu zaten! Önce onu kaldýrýn."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} kurulu zaten! Önce onu kaldýrýn."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

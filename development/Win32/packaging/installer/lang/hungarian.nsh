@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Nem tudom beállítani a 'path_prefix'
 ${LangFileString} RunConfigureFailed "Nem tudom végrehajtani a configure parancsfájlt!"
 ${LangFileString} NotAdmin "A LyX telepítéséhez rendszergazdai jogok szükségesek!"
 ${LangFileString} InstallRunning "A telepítõ már fut!"
-${LangFileString} StillInstalled "A LyX már teleptve van! Elõször távolítsa el a régit."
+${LangFileString} StillInstalled "A LyX ${APP_SERIES_KEY2} már teleptve van! Elõször távolítsa el a régit."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

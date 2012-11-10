@@ -81,7 +81,7 @@ ${LangFileString} ModifyingConfigureFailed "Fallito tentativo di aggiornare 'pat
 ${LangFileString} RunConfigureFailed "Fallito tentativo di eseguire lo script di configurazione"
 ${LangFileString} NotAdmin "Occorrono i privilegi da amministratore per installare LyX!"
 ${LangFileString} InstallRunning "Il programma di installazione è già in esecuzione!"
-${LangFileString} StillInstalled "LyX è già installato! Occorre rimuoverlo per poter procedere."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} è già installato! Occorre rimuoverlo per poter procedere."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

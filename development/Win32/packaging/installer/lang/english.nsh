@@ -82,7 +82,7 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
 #${LangFileString} RunConfigureFailed "Could not execute the configure script"
 ${LangFileString} InstallRunning "The installer is already running!"
-${LangFileString} StillInstalled "LyX is already installed! Deinstall LyX first."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} is already installed! Deinstall LyX first."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

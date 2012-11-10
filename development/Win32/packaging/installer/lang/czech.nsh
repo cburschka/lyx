@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Nelze nastavit 'path_prefix' v konfi
 ${LangFileString} RunConfigureFailed "Nelze spustit konfiguraèní skript"
 ${LangFileString} NotAdmin "Potøebujete administrátorská práva pro nainstalování LyXu!"
 ${LangFileString} InstallRunning "Instalátor je již spuštìn!"
-${LangFileString} StillInstalled "LyX je již nainstalován! Nejprve LyX odinstalujte."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} je již nainstalován! Nejprve LyX odinstalujte."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

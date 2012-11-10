@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Tidak bisa menyatakan 'path_prefix' 
 ${LangFileString} RunConfigureFailed "Tidak bisa menjalankan skrip configure"
 ${LangFileString} NotAdmin "Anda harus berlaku dan mempunyai hak sebagai administrator untuk instalasi LyX!"
 ${LangFileString} InstallRunning "Program instalasi sedang berjalan!"
-${LangFileString} StillInstalled "LyX sudah pernah diinstal! Perlu menghapus LyX yang ada terlebih dahulu."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} sudah pernah diinstal! Perlu menghapus LyX yang ada terlebih dahulu."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

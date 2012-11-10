@@ -81,7 +81,7 @@ ${LangFileString} ModifyingConfigureFailed "Échec de l'allocation 'path_prefix' 
 ${LangFileString} RunConfigureFailed "Échec de la tentative de configuration initiale de LyX."
 ${LangFileString} NotAdmin "Vous devez avoir les droits d'administration pour installer LyX !"
 ${LangFileString} InstallRunning "Le programme d'installation est toujours en cours !"
-${LangFileString} StillInstalled "LyX est déjà installé ! Le désinstaller d'abord."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} est déjà installé ! Le désinstaller d'abord."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "configureスクリプト中で'path_prefix'
 ${LangFileString} RunConfigureFailed "configureスクリプトを実行することができませんでした"
 ${LangFileString} NotAdmin "LyXをインストールするには、管理者権限を持っていなくてはなりません！"
 ${LangFileString} InstallRunning "インストーラーは既に動いています！"
-${LangFileString} StillInstalled "LyXは既にインストールされています！先にLyXをアンインストールしてください。"
+${LangFileString} StillInstalled "LyX${APP_SERIES_KEY2}は既にインストールされています！先にLyXをアンインストールしてください。"
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

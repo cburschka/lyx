@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Nieudana próba ustawienia zmiennej '
 ${LangFileString} RunConfigureFailed "Niedana próba wykonania skryptu konfiguracyjnego"
 ${LangFileString} NotAdmin "Musisz mieæ prawa administratora aby zainstalowaæ LyX-a!"
 ${LangFileString} InstallRunning "Instalator jest ju¿ uruchomiony!"
-${LangFileString} StillInstalled "LyX jest ju¿ zainstalowany! Aby kontynowaæ musisz go najpierw usun¹æ."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} jest ju¿ zainstalowany! Aby kontynowaæ musisz go najpierw usun¹æ."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

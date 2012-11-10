@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Error al intentar añadir 'path_prefi
 ${LangFileString} RunConfigureFailed "Error al intentar ejecutar el programa de configuración"
 ${LangFileString} NotAdmin "Necesita privilegios de administrador para instalar LyX!"
 ${LangFileString} InstallRunning "El instalador ya esta siendo ejecutado!"
-${LangFileString} StillInstalled "¡LyX ya esta instalado! Antes desinstale LyX."
+${LangFileString} StillInstalled "¡LyX ${APP_SERIES_KEY2} ya esta instalado! Antes desinstale LyX."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

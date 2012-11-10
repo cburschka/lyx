@@ -75,7 +75,7 @@ ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the c
 ${LangFileString} RunConfigureFailed "‰« ÍÂ„Ê  Ê·Í– «‰‡ configure script"
 ${LangFileString} NotAdmin "ÍÃ» √Ê  „ËÊ »’‰«ÕÍ… «‰ÂœÍ— ‰„Í ‰‰‚Í«Â »ŸÂ‰Í… «‰ —„Í»!"
 ${LangFileString} InstallRunning " Â »«‰·Ÿ‰ «‰»œ¡ »ŸÂ‰Í… «‰ —„Í»!"
-${LangFileString} StillInstalled " Â »«‰·Ÿ‰  —„Í» »—Ê«ÂÃ ‰Í„ ‰–« Ÿ‰Í„ «Ë‰«Î «‰⁄«¡  —„Í» «‰Ê”Œ…«‰”«»‚…."
+${LangFileString} StillInstalled " Â ${APP_SERIES_KEY2} »«‰·Ÿ‰  —„Í» »—Ê«ÂÃ ‰Í„ ‰–« Ÿ‰Í„ «Ë‰«Î «‰⁄«¡  —„Í» «‰Ê”Œ…«‰”«»‚…."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

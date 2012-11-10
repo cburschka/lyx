@@ -76,7 +76,7 @@ ${LangFileString} ModifyingConfigureFailed "Nemohol uviesù v platnost 'path_pref
 ${LangFileString} RunConfigureFailed "Nemohol vykonaù konfiguraËn˝ skript"
 ${LangFileString} NotAdmin "Pre inötal·ciu LyX potrebujete administr·torskÈ pr·va!"
 ${LangFileString} InstallRunning "InötalatÈr uû beh·!"
-${LangFileString} StillInstalled "LyX je uû inötalovan˝! Najprv treba odinötalovaù LyX."
+${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} je uû inötalovan˝! Najprv treba odinötalovaù LyX."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
