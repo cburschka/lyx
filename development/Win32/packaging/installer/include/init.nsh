@@ -66,286 +66,292 @@ SectionEnd
 SectionGroup "Dictionaries" SecDictionaries
 
 Section /o "Afrikaans" SecDAfrikaans
- StrCpy $DictCodes "af_ZA$DictCodes"
+ StrCpy $DictCodes "af_ZA,$DictCodes"
  AddSize 1440
 SectionEnd
 
 Section /o "Arabic" SecDArabic
- StrCpy $DictCodes "ar_DZ$DictCodes"
+ StrCpy $DictCodes "ar_DZ,$DictCodes"
  AddSize 2500
 SectionEnd
 
 Section /o "Armenian" SecDArmenian
- StrCpy $DictCodes "hy_AM$DictCodes"
+ StrCpy $DictCodes "hy_AM,$DictCodes"
  AddSize 2000
 SectionEnd
 
 Section /o "Bahasa Indonesia" SecDIndonesian
- StrCpy $DictCodes "id_ID$DictCodes"
+ StrCpy $DictCodes "id_ID,$DictCodes"
  AddSize 217
 SectionEnd
 
 Section /o "Bahasa Melayu" SecDMalayan
- StrCpy $DictCodes "ms_MY$DictCodes"
+ StrCpy $DictCodes "ms_MY,$DictCodes"
  AddSize 227
 SectionEnd
 
 Section /o "Belarusian" SecDBelarusian 
- StrCpy $DictCodes "be_BY$DictCodes"
- AddSize 1040
+ StrCpy $DictCodes "be_BY,$DictCodes"
+ AddSize 1730
 SectionEnd
 
 Section /o "Brezhoneg" SecDBreton 
- StrCpy $DictCodes "br_FR$DictCodes"
+ StrCpy $DictCodes "br_FR,$DictCodes"
  AddSize 11000
 SectionEnd
 
 Section /o "Bulgarian" SecDBulgarian
- StrCpy $DictCodes "bg_BG$DictCodes"
+ StrCpy $DictCodes "bg_BG,$DictCodes"
  AddSize 985
 SectionEnd
 
 Section /o "Català" SecDCatalanian
- StrCpy $DictCodes "ca_ES$DictCodes"
+ StrCpy $DictCodes "ca_ES,$DictCodes"
  AddSize 1210
 SectionEnd
 
 Section /o "Ceština" SecDCzech
- StrCpy $DictCodes "cs_CZ$DictCodes"
+ StrCpy $DictCodes "cs_CZ,$DictCodes"
  AddSize 2190
 SectionEnd
 
+# enable this for LyX 2.1!
+#Section /o "Coptic" SecDCoptic
+# StrCpy $DictCodes "cop_EG,$DictCodes"
+# AddSize 151
+#SectionEnd
+
 Section /o "Cymraeg" SecDWelsh 
- StrCpy $DictCodes "cy_GB$DictCodes"
+ StrCpy $DictCodes "cy_GB,$DictCodes"
  AddSize 1540
 SectionEnd
 
 Section /o "Dansk" SecDDanish
- StrCpy $DictCodes "da_DK$DictCodes"
+ StrCpy $DictCodes "da_DK,$DictCodes"
  AddSize 2470
 SectionEnd
 
 Section /o "German (A)" SecDGermanAT
- StrCpy $DictCodes "de_AT$DictCodes"
- AddSize 1000
+ StrCpy $DictCodes "de_AT,$DictCodes"
+ AddSize 3620
 SectionEnd
 
 Section /o "German (CH)" SecDGermanCH
- StrCpy $DictCodes "de_CH$DictCodes"
- AddSize 1000
+ StrCpy $DictCodes "de_CH,$DictCodes"
+ AddSize 3620
 SectionEnd
 
 Section "German (D)" SecDGermanD
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "de_DE$DictCodes"
- AddSize 2650
+ #StrCpy $DictCodes "de_DE,$DictCodes"
+ AddSize 3620
 SectionEnd
 
 Section /o "Greek" SecDGreek
- StrCpy $DictCodes "el_GR$DictCodes"
+ StrCpy $DictCodes "el_GR,$DictCodes"
  AddSize 6550
 SectionEnd
 
 Section /o "Eesti" SecDEstonian
- StrCpy $DictCodes "et_EE$DictCodes"
+ StrCpy $DictCodes "et_EE,$DictCodes"
  AddSize 4400
 SectionEnd
 
 # enable this for LyX 2.1!
 #Section /o "English (AU)" SecDEnglishAU
-# StrCpy $DictCodes "en_AU$DictCodes"
+# StrCpy $DictCodes "en_AU,$DictCodes"
 # AddSize 587
 #SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
- StrCpy $DictCodes "en_CA$DictCodes"
+ StrCpy $DictCodes "en_CA,$DictCodes"
  AddSize 690
 SectionEnd
 
 Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "en_GB$DictCodes"
+ #StrCpy $DictCodes "en_GB,$DictCodes"
  AddSize 757
 SectionEnd
 
 # enable this for LyX 2.1!
 #Section /o "English (NZ)" SecDEnglishNZ
-# StrCpy $DictCodes "en_NZ$DictCodes"
+# StrCpy $DictCodes "en_NZ,$DictCodes"
 # AddSize 551
 #SectionEnd
 
 Section "English (US)" SecDEnglishUS
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "en_US$DictCodes"
+ #StrCpy $DictCodes "en_US,$DictCodes"
  AddSize 688
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "es_ES$DictCodes"
+ #StrCpy $DictCodes "es_ES,$DictCodes"
  AddSize 974
 SectionEnd
 
 Section "Español (MX)" SecDSpanishMX
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "es_MX$DictCodes"
+ #StrCpy $DictCodes "es_MX,$DictCodes"
  AddSize 924
 SectionEnd
 
 Section /o "Esperanto" SecDEsperanto
- StrCpy $DictCodes "eo_EO$DictCodes"
+ StrCpy $DictCodes "eo_EO,$DictCodes"
  AddSize 389
 SectionEnd
 
 Section /o "Euskara" SecDBasque
- StrCpy $DictCodes "eu_ES$DictCodes"
+ StrCpy $DictCodes "eu_ES,$DictCodes"
  AddSize 4850
 SectionEnd
 
 Section /o "Farsi" SecDFarsi
- StrCpy $DictCodes "fa_IR$DictCodes"
+ StrCpy $DictCodes "fa_IR,$DictCodes"
  AddSize 6710
 SectionEnd
 
 Section "Français" SecDFrench
  # already installed by default
  SectionIn RO
- #StrCpy $DictCodes "fr_FR$DictCodes"
+ #StrCpy $DictCodes "fr_FR,$DictCodes"
  AddSize 1200
 SectionEnd
 
 Section /o "Gaeilge" SecDGaelic
- StrCpy $DictCodes "ga_IR$DictCodes"
+ StrCpy $DictCodes "ga_IR,$DictCodes"
  AddSize 1090
 SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
- StrCpy $DictCodes "gd_GB$DictCodes"
+ StrCpy $DictCodes "gd_GB,$DictCodes"
  AddSize 2460
 SectionEnd
 
 Section /o "Galego" SecDGalician
- StrCpy $DictCodes "gl_ES$DictCodes"
+ StrCpy $DictCodes "gl_ES,$DictCodes"
  AddSize 916
 SectionEnd
 
 Section /o "Hebrew" SecDHebrew
- StrCpy $DictCodes "he_IL$DictCodes"
+ StrCpy $DictCodes "he_IL,$DictCodes"
  AddSize 3120
 SectionEnd
 
 Section /o "Hrvatski" SecDCroatian
- StrCpy $DictCodes "hr_HR$DictCodes"
+ StrCpy $DictCodes "hr_HR,$DictCodes"
  AddSize 2240
 SectionEnd
 
 Section /o "Magyar" SecDHungarian
- StrCpy $DictCodes "hu_HU$DictCodes"
+ StrCpy $DictCodes "hu_HU,$DictCodes"
  AddSize 3380
 SectionEnd
 
 Section /o "Interlingua" SecDInterlingua
- StrCpy $DictCodes "ia_IA$DictCodes"
+ StrCpy $DictCodes "ia_IA,$DictCodes"
  AddSize 649
 SectionEnd
 
 Section /o "Íslenska" SecDIcelandic
- StrCpy $DictCodes "is_IS$DictCodes"
+ StrCpy $DictCodes "is_IS,$DictCodes"
  AddSize 2320
 SectionEnd
 
 Section /o "Italiano" SecDItalian
- StrCpy $DictCodes "it_IT$DictCodes"
+ StrCpy $DictCodes "it_IT,$DictCodes"
  AddSize 1300
 SectionEnd
 
 Section /o "Kazakh" SecDKazakh
- StrCpy $DictCodes "kk_KZ$DictCodes"
+ StrCpy $DictCodes "kk_KZ,$DictCodes"
  AddSize 2120
 SectionEnd
 
 Section /o "Korean" SecDKorean
- StrCpy $DictCodes "ko_KR$DictCodes"
+ StrCpy $DictCodes "ko_KR,$DictCodes"
  AddSize 15200
 SectionEnd
 
 Section /o "Latina" SecDLatin
- StrCpy $DictCodes "la_LA$DictCodes"
+ StrCpy $DictCodes "la_LA,$DictCodes"
  AddSize 1250
 SectionEnd
 
 Section /o "Lietuviu" SecDLithuanian
- StrCpy $DictCodes "lt_LT$DictCodes"
+ StrCpy $DictCodes "lt_LT,$DictCodes"
  AddSize 1320
 SectionEnd
 
 Section /o "Latviešu" SecDLatvian
- StrCpy $DictCodes "lv_LV$DictCodes"
+ StrCpy $DictCodes "lv_LV,$DictCodes"
  AddSize 2140
 SectionEnd
 
 Section /o "Nederlands" SecDDutch
- StrCpy $DictCodes "nl_NL$DictCodes"
+ StrCpy $DictCodes "nl_NL,$DictCodes"
  AddSize 1820
 SectionEnd
 
 Section /o "Norsk (Bokmål)" SecDNorwegianNB
- StrCpy $DictCodes "nb_NO$DictCodes"
+ StrCpy $DictCodes "nb_NO,$DictCodes"
  AddSize 4890
 SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
- StrCpy $DictCodes "nn_NO$DictCodes"
+ StrCpy $DictCodes "nn_NO,$DictCodes"
  AddSize 2890
 SectionEnd
 
 Section /o "Polski" SecDPolish
- StrCpy $DictCodes "pl_PL$DictCodes"
+ StrCpy $DictCodes "pl_PL,$DictCodes"
  AddSize 4540
 SectionEnd
 
 Section /o "Português (BR)" SecDPortugueseBR
- StrCpy $DictCodes "pt_BR$DictCodes"
+ StrCpy $DictCodes "pt_BR,$DictCodes"
  AddSize 5280
 SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
- StrCpy $DictCodes "pt_PT$DictCodes"
+ StrCpy $DictCodes "pt_PT,$DictCodes"
  AddSize 1460
 SectionEnd
 
 Section /o "Româna" SecDRomanian
- StrCpy $DictCodes "ro_RO$DictCodes"
+ StrCpy $DictCodes "ro_RO,$DictCodes"
  AddSize 1930
 SectionEnd
 
 Section /o "Russian" SecDRussian
- StrCpy $DictCodes "ru_RU$DictCodes"
+ StrCpy $DictCodes "ru_RU,$DictCodes"
  AddSize 1920
 SectionEnd
 
 Section /o "Serbšcina (Dolno)" SecDSorbianD
- StrCpy $DictCodes "db_DE$DictCodes"
+ StrCpy $DictCodes "dsb_DE,$DictCodes"
  AddSize 904
 SectionEnd
 
 Section /o "Serbšcina (Horno)" SecDSorbianH
- StrCpy $DictCodes "hb_DE$DictCodes"
+ StrCpy $DictCodes "hsb_DE,$DictCodes"
  AddSize 740
 SectionEnd
 
 Section /o "Shqipe" SecDAlbanian
- StrCpy $DictCodes "sq_AL$DictCodes"
+ StrCpy $DictCodes "sq_AL,$DictCodes"
  AddSize 2400
 SectionEnd
 
 Section /o "Slovenšcina" SecDSlowenian
- StrCpy $DictCodes "sl_SI$DictCodes"
+ StrCpy $DictCodes "sl_SI,$DictCodes"
  AddSize 2840
 SectionEnd
 
@@ -355,28 +361,28 @@ Section /o "Slovenský" SecDSlowakian
 SectionEnd
 
 Section /o "Srpski" SecDSerbian
- StrCpy $DictCodes "sr_RS$DictCodes"
+ StrCpy $DictCodes "sr_RS,$DictCodes"
  AddSize 3460
 SectionEnd
 
 Section /o "Svenska" SecDSwedish
- StrCpy $DictCodes "sv_SE$DictCodes"
+ StrCpy $DictCodes "sv_SE,$DictCodes"
  AddSize 1030
 SectionEnd
  
 Section /o "Thai" SecDThai
- StrCpy $DictCodes "th_TH$DictCodes"
+ StrCpy $DictCodes "th_TH,$DictCodes"
  AddSize 351
 SectionEnd
 
 Section /o "Ukrainian" SecDUkrainian
- StrCpy $DictCodes "uk_UA$DictCodes"
+ StrCpy $DictCodes "uk_UA,$DictCodes"
  AddSize 2620
 SectionEnd
 
 Section /o "Vietnamese" SecDVietnamese
- StrCpy $DictCodes "vi_VN$DictCodes"
- AddSize 39600
+ StrCpy $DictCodes "vi_VN,$DictCodes"
+ AddSize 40
 SectionEnd
 
 SectionGroupEnd
@@ -653,6 +659,15 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDCzech} $0
    SectionSetSize ${SecDCzech} 0
+  ${endif}
+ 
+  StrCpy $Search "cop_EG"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+  # enable this for LyX 2.1!
+  # SectionSetFlags ${SecDCoptic} $0
+  # SectionSetSize ${SecDCoptic} 0
   ${endif}
   StrCpy $Search "cy_GB"
   Call StrPoint
@@ -936,14 +951,14 @@ Function .onInit
    SectionSetFlags ${SecDRussian} $0
    SectionSetSize ${SecDRussian} 0
   ${endif}
-  StrCpy $Search "db_DE"
+  StrCpy $Search "dsb_DE"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDSorbianD} $0
    SectionSetSize ${SecDSorbianD} 0
   ${endif}
-  StrCpy $Search "hb_DE"
+  StrCpy $Search "hsb_DE"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}

@@ -111,7 +111,7 @@ Section -Configure
   ${if} $ImageEditorPath != ""
     StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
   ${endif}
-   ${if} $GhostscriptPath != ""
+  ${if} $GhostscriptPath != ""
    StrCpy $PathPrefix "$PathPrefix;$GhostscriptPath"
   ${endif}
   ${if} $SVGPath != ""

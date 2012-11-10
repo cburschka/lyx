@@ -6,10 +6,10 @@ Function DownloadHunspellDictionary
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
- ${For} $5 1 120       # the file has 120 lines
+ ${For} $5 1 132       # the file has 132 lines
  
   FileRead $R5 $String # $String is now the dictionary name
-  StrCpy $R3 $String 5 # $R3 is now the dictionary language code
+  StrCpy $R3 $String -6 # $R3 is now the dictionary language code
   
   ${if} $DictCode == $R3
    StrCpy $String $String -2 # delete the linebreak characters at the end
@@ -97,8 +97,16 @@ Function InstallHunspellDictionary
 
  # download the dictionaries
  ${Do}
-  StrCpy $DictCode $DictCodes 5
-  StrCpy $DictCodes $DictCodes "" 5
+  # take the first code
+  StrCpy $Search ","
+  StrCpy $String $DictCodes
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   StrCpy $DictCode $DictCodes $Pointer
+   # remove the taken code from the list
+   IntOp $Pointer $Pointer + 1
+   StrCpy $DictCodes $DictCodes "" $Pointer
+  ${endif}
   # don't dowload existing ones thus check if $DictCode is in $FoundDict
   StrCpy $String $FoundDict
   StrCpy $Search $DictCode
@@ -107,16 +115,6 @@ Function InstallHunspellDictionary
    Call DownloadHunspellDictionary
   ${endif}
  ${LoopUntil} $DictCodes == ""
- 
- # some dictionaries need to be renamed to have a 2 letter code
- ${if} ${FileExists} "$INSTDIR\Resources\dicts\db_DE.aff"
-  Rename "$INSTDIR\Resources\dicts\db_DE.aff" "$INSTDIR\Resources\dicts\dsb_DE.aff"
-  Rename "$INSTDIR\Resources\dicts\db_DE.dic" "$INSTDIR\Resources\dicts\dsb_DE.dic"
- ${endif}
- ${if} ${FileExists} "$INSTDIR\Resources\dicts\hb_DE.aff"
-  Rename "$INSTDIR\Resources\dicts\hb_DE.aff" "$INSTDIR\Resources\dicts\hsb_DE.aff"
-  Rename "$INSTDIR\Resources\dicts\hb_DE.dic" "$INSTDIR\Resources\dicts\hsb_DE.dic"
- ${endif}
  
 FunctionEnd
 
@@ -127,8 +125,9 @@ Function InstallThesaurusDictionary
 
  # download the dictionaries
  ${Do}
-  StrCpy $ThesCode $ThesCodes 5
-  StrCpy $ThesCodes $ThesCodes "" 5
+  # all codes have 5 characters
+  StrCpy $ThesCode $ThesCodes 5 # take the first code
+  StrCpy $ThesCodes $ThesCodes "" 5 # remove the taken code from the list
   # don't dowload existing ones thus check if $ThesCode is in $FoundThes
   StrCpy $String $FoundThes
   StrCpy $Search $ThesCode

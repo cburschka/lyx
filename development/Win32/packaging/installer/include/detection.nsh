@@ -39,7 +39,15 @@ Function MissingPrograms
   # check if third-party programs are installed
 
   # test if Ghostscript is installed
+  # Ghostscript is a mandatory program for LyX thus check all cases:
+  # 1. 32bit Windows
+  # 2. 64bit Windows but 32bit Ghostscript
+  # 3. 64bit Windows and 64bit Ghostscript
   StrCpy $3 0
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
+  # case 1. and 3.
   GSloop:
   EnumRegKey $1 HKLM "Software\GPL Ghostscript" $3
   ${if} $1 != ""
@@ -60,6 +68,13 @@ Function MissingPrograms
     IntOp $3 $3 + 1
     goto GSloop
    ${endif} # if $2
+  ${endif}
+  SetRegView 32
+  # repeat for case 2.
+  ${if} ${RunningX64}
+  ${andif} $GhostscriptPath == ""
+   StrCpy $3 0
+   goto GSloop
   ${endif}
 
   # test if Python is installed
@@ -87,19 +102,37 @@ Function MissingPrograms
    StrCpy $Acrobat "Yes"
   ${endif}
 
-  # test if a PostScript-viewer is installed, only check for GSview32
-  StrCpy $PSVPath ""
-  ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
+  # test if a PostScript-viewer is installed, only check for GSview
+  # check all cases:
+  # 1. 32bit Windows
+  # 2. 64bit Windows but 32bit GSview
+  # 3. 64bit Windows and 64bit GSview
+  ${if} ${RunningX64}
+   SetRegView 64
+   StrCpy $PSVPath ""
+   ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview64.exe" "Path"
+   SetRegView 32
+  ${endif}
+  # repeat for case 2. and 3.
+  ${if} $PSVPath == ""
+   ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
+  ${endif}
 
   # test if an editor with syntax-highlighting for LaTeX-files is installed
   Call EditorCheck
 
   # test if an image editor is installed
   StrCpy $ImageEditorPath ""
-  ReadRegStr $ImageEditorPath HKLM "Software\Classes\GIMP-2.8-xcf\shell\open\command" ""
+  # first check for Gimp which is a 64bit application on x64 Windows
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
+  ReadRegStr $ImageEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GIMP-2_is1" "InstallLocation"
   ${if} $ImageEditorPath != ""
-   StrCpy $ImageEditorPath "$ImageEditorPath" -19 # delete '\gimp-2.x.exe" "%1"'
-   StrCpy $ImageEditorPath $ImageEditorPath "" 1 # remove the leading quote
+   StrCpy $ImageEditorPath "$ImageEditorPathbin" # add the bin folder
+  ${endif}
+  ${if} ${RunningX64}
+   SetRegView 32
   ${endif}
   # check for Photoshop
   ReadRegStr $0 HKLM "Software\Classes\Applications\Photoshop.exe\shell\open\command" ""
@@ -156,20 +189,13 @@ Function FindDictionaries
   
   # read out the possible spell-checker filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
-  ${for} $5 1 60
-   # the file has 120 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 66
+   # the file has 132 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
-   FileRead $R5 $String   # $String is now the dictionary name
-   FileRead $R5 $String   # $String is now the dictionary name
+   FileRead $R5 $String   # skip the .aff file
+   FileRead $R5 $String   # $String is now the .dic filename
    StrCpy $String $String -2 # remove the linebreak characters
    StrCpy $R3 $String -4 # $R3 is now the dictionary language code
-   # we have 2 cases where we renamed the file to a 3 letter code, see thesaurus.nsh
-   ${if} $String == "db_DE.dic"
-    StrCpy $String "dsb_DE.dic"
-   ${endif}
-   ${if} $String == "hb_DE.dic"
-    StrCpy $String "hsb_DE.dic"
-   ${endif}
    !insertmacro FileCheck $4 $String "$INSTDIR\Resources\dicts" # macro from LyXUtils.nsh
    ${if} $4 == "True"
     StrCpy $FoundDict "$R3 $FoundDict"
@@ -203,10 +229,16 @@ Function EditorCheck
   # (check for jEdit, PSPad, WinShell, ConTEXT, Crimson Editor, Vim, TeXnicCenter, LaTeXEditor, WinEdt, LEd, WinTeX)
   StrCpy $EditorPath ""
   StrCpy $0 ""
-  # check for jEdit
+  # check for jEdit which is a 64bit application on x64 Windows
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
   ReadRegStr $EditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\jEdit_is1" "InstallLocation"
   ${if} $EditorPath != ""
    StrCpy $EditorPath $EditorPath -1 # remove "\" from the end of the string
+  ${endif}
+  ${if} ${RunningX64}
+   SetRegView 32
   ${endif}
   # check for PSPad
   StrCpy $0 ""
@@ -234,13 +266,6 @@ Function EditorCheck
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Crimson Editor" "UninstallString"
   ${if} $0 != ""
    StrCpy $0 $0 -14 # remove "\uninstall.exe"
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
-  # check for Vim 6.x
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Classes\Applications\gvim.exe\shell\edit\command" ""
-  ${if} $0 != ""
-   StrCpy $0 $0 -13 # remove "gvim.exe "%1""
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
   # check for Vim 7.0

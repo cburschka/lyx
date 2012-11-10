@@ -35,6 +35,7 @@ Configuration of standard NSIS header files
 !include MultiUser.nsh
 !include nsDialogs.nsh
 !include InstallOptions.nsh
+!include x64.nsh
 
 # Set of various macros and functions
 !include include\LyXUtils.nsh
