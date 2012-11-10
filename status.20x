@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.0.5.
+This file describes what has been done in the preparation of LyX 2.0.6.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance. 
@@ -13,7 +13,7 @@ For more details on how to use the repository, please visit:
   http://wiki.lyx.org/Devel/LyXGit
 A list of bugs fixed for this release can also be found at:
   http://www.lyx.org/trac/wiki/BugTrackerHome
-as well as a list of bugs still targeted to the 2.0.5 release.
+as well as a list of bugs still targeted to the 2.0.6 release.
 
 Richard Heck
 Branch Maintainer
@@ -28,59 +28,22 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Add explicit dvilualatex output format.
-
-- Add support for some IPA diacritics.
-
-- Enclose underlined \ref{} commands in \mbox{} to protect them when
-  using the package soul in place of (or together with) ulem.
 
 
 * TEX2LYX IMPROVEMENTS
 
-- The polyglossia/XeTeX language commands are now supported (bug 8212).
-
-- It is now recognized if syncTeX is used (bug 8217).
 
 
 * USER INTERFACE
 
-- Reset only the top-level counter when starting the appendix.
-
-- Show backends, not formats, in menu View->Source (bug #7652).
-
-- Allow native LyX format to be shown in menu View->Source.
-
-- Implementation of spell check of current selection (bug #2511).
-
-- Add property list entries for high resolution display on Mac.
-
-- Semantic change of the "language" lfun (bug 8175):
-  - "language <LANG>" now toggles between languages
-    (status quo ante LyX 2.0.2)
-  - "language <LANG> set" sets to language <LANG>
-    (meaning of "language <LANG>" as of LyX 2.0.2)
-  - "language [reset]" resets to the document language.
-  - Menu functions are unchanged.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated French, German, Interlingua, Italian, Nynorsk, Polish,
-  Slovak, Spanish, Swedish and Ukrainian user interface localizations.
-
-- New Spanish example files europeCV.lyx and modernCV.lyx.
-
-- Updated Spanish translation of the LyX manuals.
-
-- Updated french translation of the linguistics manual.
-
-- Updated information about literate programming (noweb).
 
 
 * BUILD/INSTALLATION
 
-- 
 
 
 ** Bug fixes:
@@ -88,137 +51,14 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix assertion when start of appendix is in ERT (bug 8271).
 
-- Do not output empty language switch commands (bug 8216).
-
-- Do not let the master document interfere when a child is compiled standalone
-  (bug 8000).
-
-- When using Turkish language, use the xkeyval package to avoid
-  incompatibilities (bug 2005).
-
-- Do not ignore polyglossia commands in partial source preview (bug 8209).
-
-- Show enabled child-only branches content in source preview (bug 8001).
-
-- Export correct language change commands if document contains different
-  CJK languages (bug 8215).
-
-- Fix encoding problems in hyperlink name field (bug 8357).
-
-- Fix bug that Elsevier documents became uncompilable when using refstyle for
-  cross-references.
-
-- Fixed the layout and template file for scientific articles published by the
-  American Psychological Association (APA) (bug 8187).
-
-- Write correct DTD for MathML (bug 8160).
-
-- Make the ~ char in Basque, Estonian and Galician non-active (bug 8265).
-
-- Embrace babel settings to \makeatletter ... \makeatother if they contain
-  an @ glyph.
-
-- Improve the external file monitor. LyX should now also honor changes in
-  graphics that are included via ERT or generated via knitr (bug 8336).
-
-- Fix LaTeX errors with right-to-left text when using XeTeX/Polyglossia
-  (part of bug 8251).
-
-- Fix brackets direction in Hebrew documents when using XeTeX/Polyglossia
-  and in Arabic documents on plain text output (part of bug 8251).
-
-- Fix bracket output with RTL languages (bug 8278).
-
-- Fix babel call with Arabic (arabi).
-
-- Fix suppression of language package.
-
-- Fix forward search with the Okular viewer. If you were affected by this,
-  please change the forward search command in Preferences > Output to
-  okular --unique "$$o#src:$$n $$f" (as provided now in the dropdown list).
-
-- Fix LaTeX output of IPA tone symbols.
-
-- Fix support for mhchem upward arrows, which in mathed are rendered as
-  empty (brace insets) superscripts (bug 8305).
-
-- Fix tex2lyx import of mhchem commands outside math mode (bug 8306).
-
-- Fix failure of lyxknitr.R to move files when /tmp was on a different
-  file system (e.g. an encrypted home partition).
-
-- Do not load the color or xcolor package with the beamer class, since
-  beamer already loads it itself (bug 8103).
-
-- Do not suppress the loading of geometry and hyperref if the class
-  "article (koma + beamer)".
-
-- Fixed layout file for ACM Sigplan conference articles (bug 8378).
-
-- Removed unnecessary dependency on the package europs.sty from the
-  g-brief layout files.
-
-- Do not skip bibtex files specified by their full path when creating
-  a LyX archive (bug 8379).
 
 * USER INTERFACE
 
-- Fix crash in text replacement with spell checker (bug 8238).
-
-- Fix various crashes when single document is edited in more windows
-  (bug 8203).
-
-- Fix crash when renaming a child buffer.
-
-- Fix crash when using undo in a paragraph with layout Bibliography (bug 7111).
-
-- Fix bug where references were erroneously changed when a duplicate label
-  name was resolved (bug 8147). 
-
-- Make sure that undo restores environment depth correctly (bug 8159).
-
-- Make sure that undo restores paragraph longest label width correctly
-  (bug 8242).
-
-- Fix undo machinery confusion after checking in a document under version
-  control (bug 8342).
-
-- Replace current selection when pasting (bug 8027).
-
-- Fix issues with crossref dialog in read-only documents (#8177).
-
-- Fix enumitem module translation (bug #8201).
-
-- Set math display format when showing XHTML in menu View->Source.
-
-- Fix problem with configure.py when the user profile path on Windows
-  contains non-ascii characters (bug 8254).
-
-- Remove annoying startup debug message.
-
-- Shorten source file names in debug messages.
-
-- Fix display of file names that contain many non-ascii characters.
-
-- When using a non-default language for the GUI, do not change locale
-  settings of child proceses (bug 7741).
-
-- Change the logic for listing available languages for the GUI, which
-  broke the possibility of loading non-english help file on Mac OS X.
-
-- Do not disable Instant Preview widgets in preferences when Display
-  Graphics is unchecked (bug 7462).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update/correct in the Userguide the description of the labeling list
-  (bug 8224).
-
-- Add info in the Userguide how to handle special characters in nomenclature
-  entries (bug 8366).
 
 
 * LYXHTML
@@ -227,9 +67,6 @@ What's new
 
 * TEX2LYX
 
-- Fix bug that language change commands were not always recognized (bug 8210).
-
-- Fix wrong import of \xymatrix (bug 8396).
 
 
 * ADVANCED FIND AND REPLACE
@@ -238,6 +75,4 @@ What's new
 
 * BUILD/INSTALLATION
 
-- recognize version numbers like 2.0.5dev as development versions when
-  computing the default value of --enable-build-type.
 
