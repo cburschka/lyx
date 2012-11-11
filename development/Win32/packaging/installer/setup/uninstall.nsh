@@ -61,6 +61,8 @@ Section "un.LyX" un.SecUnProgramFiles
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}14"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
+   # enable this for LyX 2.1!
+   # DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
     DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
@@ -83,7 +85,6 @@ Section "un.LyX" un.SecUnProgramFiles
   DeleteRegKey HKCR "Applications\lyx.exe"
   
   # File associations
-  
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
   
   ${If} $FileAssociation == "${APP_REGNAME_DOC}"
@@ -92,16 +93,17 @@ Section "un.LyX" un.SecUnProgramFiles
   
   ${If} $MultiUser.Privileges != "Admin"
     ${OrIf} $MultiUser.Privileges != "Power"
-
     # Delete Postscript printer for metafile to EPS conversion
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-
   ${EndIf}
   
   # clean other registry entries
   DeleteRegKey SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
   DeleteRegKey SHCTX "SOFTWARE\${APP_REGKEY}"
   
+  # delete info that programs were installed together with LyX
+  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"  
 
 SectionEnd
 
@@ -120,7 +122,7 @@ SectionEnd
 Section /o "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $LaTeXInstalled == "MiKTeX" # only uninstall MiKTeX when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"
+  ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"
   ExecWait $1 # run MiKTeX's uninstaller
  ${endif}
 
@@ -131,7 +133,7 @@ SectionEnd
 Section "un.JabRef" un.SecUnJabRef
 
  ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+  ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
   ExecWait "$1" # run JabRef's uninstaller
  ${endif}
 

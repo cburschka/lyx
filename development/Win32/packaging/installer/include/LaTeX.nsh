@@ -1,5 +1,28 @@
+/*
+LaTeX.nsh
+
+Handling of LaTeX distributions
+*/
+
+# This script contains the following functions:
+#
+# - LaTeXActions (checks if MiKTeX or TeXLive is installed)
+#
+# - InstallMiKTeX (installs MiKTeX if not already installed),
+#   only for bunlde installer, uses:
+#    LaTeXCheck # function from LyXUtils.nsh
+#
+# - ConfigureMiKTeX
+#   (installs the LaTeX class files that are delivered with LyX,
+#    a Perl interpreter for splitindex
+#    and enable MiKTeX's automatic package installation)
+#
+# - UpdateMiKTeX (asks to update MiKTeX)
+
+# ---------------------------------------
+
 Function LaTeXActions
- # check if MiKTeX or TeXLive is installed
+ # checks if MiKTeX or TeXLive is installed
 
   # test if MiKTeX is installed
   # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
@@ -109,8 +132,8 @@ FunctionEnd
 !if ${SETUPTYPE} == BUNDLE
 
  Function InstallMiKTeX
+  # installs MiKTeX if not already installed
   
-  # install MiKTeX if not already installed
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
@@ -130,7 +153,9 @@ FunctionEnd
    ${if} $PathLaTeX != ""
     # set package repository (MiKTeX's primary package repository)
     ${if} $MiKTeXUser == "HKCU"
-     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+     # special entry that it was installed together with LyX
+     # so that we can later uninstall it together with LyX
+     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
     ${else}
      WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
     ${endif}
@@ -214,14 +239,14 @@ Function ConfigureMiKTeX
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
   ${if} $MiKTeXUser != "HKCU"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
   ${endif}
   # set package repository (MiKTeX's primary package repository)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for current user
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for current user
   ${if} $MiKTeXUser != "HKCU"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
   ${endif}
   
   # enable MiKTeX's automatic package installation
@@ -234,7 +259,7 @@ Function ConfigureMiKTeX
 FunctionEnd
 
 Function UpdateMiKTeX
- # ask to update MiKTeX
+ # asks to update MiKTeX
 
   ${if} $LaTeXInstalled == "MiKTeX"
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater

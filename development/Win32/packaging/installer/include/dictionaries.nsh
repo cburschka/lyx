@@ -1,6 +1,66 @@
-# download dictionaries
+/*
+dictionaries.nsh
 
-Function DownloadHunspellDictionary
+Handling of hunspell / MyThes dictionaries
+*/
+
+# This script contains the following functions:
+#
+# - FindDictionaries (finds already installed dictionaries)
+#
+# - DownloadHunspellDictionaries and DownloadThesaurusDictionaries
+#    (Downloads hunspell / MyThes dictionaries from a location that is
+#     given in the file $INSTDIR\Resources\HunspellDictionaryNames.txt)
+#
+# - InstallHunspellDictionaries and InstallThesaurusDictionaries
+#    (installs the selected hunspell / MyThes dictionaries except of
+#     already existing ones), uses:
+#    DownloadHunspellDictionaries or DownloadThesaurusDictionaries
+
+# ---------------------------------------
+
+Function FindDictionaries
+  # finds already installed dictionaries
+
+  # start with empty strings
+  StrCpy $FoundDict ""
+  StrCpy $FoundThes ""
+  
+  # read out the possible spell-checker filenames from the file	
+  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
+  ${for} $5 1 66
+   # the file has 132 lines, but we only need to check for one of the 2 dictionary files per language
+   # therefore check only for every second line
+   FileRead $R5 $String   # skip the .aff file
+   FileRead $R5 $String   # $String is now the .dic filename
+   StrCpy $String $String -2 # remove the linebreak characters
+   StrCpy $R3 $String -4 # $R3 is now the dictionary language code
+   ${if} ${FileExists} "$INSTDIR\Resources\dicts\$String"
+    StrCpy $FoundDict "$R3 $FoundDict"
+   ${endif}
+  ${next}
+  FileClose $R5
+  
+  # read out the possible thesaurus filenames from the file	
+  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
+  ${for} $5 1 22
+   # the file has 44 lines, but we only need to check for one of the 2 dictionary files per language
+   # therefore check only for every second line
+   FileRead $R5 $String   # $String is now the dictionary name
+   FileRead $R5 $String   # $String is now the dictionary name
+   StrCpy $String $String -2 # remove the linebreak characters
+   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
+   ${if} ${FileExists} "$INSTDIR\Resources\thes\$String"
+    StrCpy $FoundThes "$R3 $FoundThes"
+   ${endif}
+  ${next}
+  FileClose $R5
+
+FunctionEnd
+
+# ---------------------------------------
+
+Function DownloadHunspellDictionaries
  # Downloads hunspell dictionaries from a location that is given in the file
  # $INSTDIR\Resources\HunspellDictionaryNames.txt
  
@@ -46,7 +106,7 @@ FunctionEnd
 
 #--------------------------------
 
-Function DownloadThesaurusDictionary
+Function DownloadThesaurusDictionaries
  # Downloads thesaurus dictionaries from a location that is given in the file
  # $INSTDIR\Resources\ThesaurusDictionaryNames.txt
  
@@ -92,8 +152,8 @@ FunctionEnd
 
 #--------------------------------
 
-Function InstallHunspellDictionary
- # install the selected hunspell dictionaries except of already existing ones
+Function InstallHunspellDictionaries
+ # installs the selected hunspell dictionaries except of already existing ones
 
  # download the dictionaries
  ${Do}
@@ -112,7 +172,7 @@ Function InstallHunspellDictionary
   StrCpy $Search $DictCode
   Call StrPoint # function from LyXUtils.nsh
   ${if} $Pointer == "-1"
-   Call DownloadHunspellDictionary
+   Call DownloadHunspellDictionaries
   ${endif}
  ${LoopUntil} $DictCodes == ""
  
@@ -120,8 +180,8 @@ FunctionEnd
 
 #--------------------------------
 
-Function InstallThesaurusDictionary
- # install the selected thesaurus dictionaries except of already existing ones
+Function InstallThesaurusDictionaries
+ # installs the selected thesaurus dictionaries except of already existing ones
 
  # download the dictionaries
  ${Do}
@@ -133,7 +193,7 @@ Function InstallThesaurusDictionary
   StrCpy $Search $ThesCode
   Call StrPoint # function from LyXUtils.nsh
   ${if} $Pointer == "-1"
-   Call DownloadThesaurusDictionary
+   Call DownloadThesaurusDictionaries
   ${endif}
  ${LoopUntil} $ThesCodes == ""
  
@@ -155,3 +215,4 @@ Function InstallThesaurusDictionary
  RMDir "$INSTDIR\Resources\backup"
  
 FunctionEnd
+

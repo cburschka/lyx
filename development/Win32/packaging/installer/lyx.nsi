@@ -34,7 +34,7 @@ SetCompressor /SOLID lzma
 # set up the installer pages
 !include include\gui.nsh
 
-# 
+# sets the install sections and checks the system on starting the un/installer
 !include include\init.nsh
 
 # install LyX and needed third-party programs like Python etc.
@@ -46,8 +46,8 @@ SetCompressor /SOLID lzma
 # configure LyX (set start menu and write registry entries)
 !include setup\configure.nsh
 
-# 
-!include gui\external.nsh
+# provides downloads of external programs
+#!include gui\external.nsh
 
 #--------------------------------
 # Output file

@@ -1,9 +1,7 @@
 /*
-
 init.nsh
 
-Initialization function
-
+Initialization functions
 */
 
 #--------------------------------
@@ -58,7 +56,7 @@ SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
  Section /o "$(SecInstJabRefTitle)" SecInstJabRef
-  AddSize 5000
+  AddSize 12400
   StrCpy $InstallJabRef "true"
  SectionEnd
 !endif
@@ -540,6 +538,8 @@ SectionGroupEnd
 !if ${SETUPTYPE} == BUNDLE
  !insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
 !endif
+!insertmacro MUI_DESCRIPTION_TEXT ${SecDictionaries} "$(SecDictionariesDescription)"
+!insertmacro MUI_DESCRIPTION_TEXT ${SecThesaurus} "$(SecThesaurusDescription)"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
@@ -1313,7 +1313,7 @@ Function un.onInit
    MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
    Abort
   ${endif}
-  # abort when LyX couldn't be found in the registry
+  # warning when LyX couldn't be found in the registry
   ${if} $0 == "" # check in HKCU
    ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayVersion"
    ${if} $0 == ""
@@ -1329,17 +1329,15 @@ Function un.onInit
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    SectionSetText 2 "MiKTeX" # names the corersponding uninstaller section
    StrCpy $LaTeXInstalled "MiKTeX"
-   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   ${else}
    SectionSetText 2 "" # hides the corresponding uninstaller section
   ${endif}
   
   # test if JabRef was installed together with LyX
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    SectionSetText 3 "JabRef" # names the corersponding uninstaller section
    StrCpy $JabRefInstalled "Yes"
-   DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   ${else}
    SectionSetText 3 "" # hides the corresponding uninstaller section
   ${endif}

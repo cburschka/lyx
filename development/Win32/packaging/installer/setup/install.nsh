@@ -108,12 +108,19 @@ Section -ProgramFiles SecProgramFiles
      ExecWait "$INSTDIR\${JabRefInstall}"
      # test if JabRef is now installed
      StrCpy $PathBibTeXEditor ""
-     ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
+     ReadRegStr $PathBibTeXEditor SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
      ${if} $PathBibTeXEditor == ""
       MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
      ${else}
-      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
-     ${endif}
+      # special entry that it was installed together with LyX
+      # so that we can later uninstall it together with LyX
+      ${if} $MultiUser.Privileges == "Admin"
+      ${orif} $MultiUser.Privileges == "Power"
+       WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      ${else}
+       WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      ${endif}
+     ${endif} # end if PathBibTeXEditor
     ${endif}
    ${endif}
   !endif # end if BUNDLE
@@ -134,10 +141,10 @@ Section -ProgramFiles SecProgramFiles
   
   # download dictionaries and thesaurus
   ${if} $DictCodes != ""
-   Call InstallHunspellDictionary # Function from Thesaurus.nsh
+   Call InstallHunspellDictionaries # Function from dictionaries.nsh
   ${endif}
   ${if} $ThesCodes != ""
-   Call InstallThesaurusDictionary # Function from Thesaurus.nsh
+   Call InstallThesaurusDictionaries # Function from dictionaries.nsh
   ${endif}
   # finally delete the list of mirrors
   Delete "$INSTDIR\Resources\DictionaryMirrors.txt"

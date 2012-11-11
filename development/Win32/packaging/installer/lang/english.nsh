@@ -33,6 +33,8 @@ ${LangFileString} SecInstJabRefDescription "Bibliography reference manager and e
 #${LangFileString} SecAllUsersDescription "Install LyX for all users or just the current user."
 ${LangFileString} SecFileAssocDescription "Files with a .lyx extension will automatically open in LyX."
 ${LangFileString} SecDesktopDescription "A LyX icon on the desktop."
+${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Set the LaTeX-distribution that LyX should use.'
@@ -84,7 +86,7 @@ ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the c
 ${LangFileString} InstallRunning "The installer is already running!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} is already installed! Deinstall LyX first."
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really need this, you must uninstall the existing LyX $OldVersionNumber before."
+				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
@@ -106,7 +108,8 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
 
 ${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."
-${LangFileString} SecUnPreferencesDescription 'Deletes LyX$\'s configuration folder$\r$\n\
-					   "$AppPre\username\$AppSuff\${APP_DIR_USERDATA}"$\r$\n\
-					   for all users.'
+${LangFileString} SecUnPreferencesDescription 'Deletes LyX$\'s configuration$\r$\n\
+					      (folder $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+					      for you or for all users (if you are admin).'
 ${LangFileString} SecUnProgramFilesDescription "Uninstall LyX and all of its components."
+

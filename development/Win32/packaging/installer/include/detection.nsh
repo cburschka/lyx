@@ -30,7 +30,7 @@ Detection of external component locations
 Function SearchExternal
   Call LaTeXActions # function from LaTeX.nsh
   Call MissingPrograms
-  Call FindDictionaries
+  Call FindDictionaries # function from dictionaries.nsh
 FunctionEnd
 
 # ---------------------------------------
@@ -174,49 +174,6 @@ Function MissingPrograms
    StrCpy $0 $0 "" 1 # remove the leading quote
    StrCpy $GnumericPath $0
   ${endif}
-
-FunctionEnd
-
-# ---------------------------------------
-
-Function FindDictionaries
-  # find the installed dictionaries
-
-  # start with empty strings
-  StrCpy $FoundDict ""
-  StrCpy $FoundThes ""
-  
-  # read out the possible spell-checker filenames from the file	
-  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
-  ${for} $5 1 66
-   # the file has 132 lines, but we only need to check for one of the 2 dictionary files per language
-   # therefore check only for every second line
-   FileRead $R5 $String   # skip the .aff file
-   FileRead $R5 $String   # $String is now the .dic filename
-   StrCpy $String $String -2 # remove the linebreak characters
-   StrCpy $R3 $String -4 # $R3 is now the dictionary language code
-   !insertmacro FileCheck $4 $String "$INSTDIR\Resources\dicts" # macro from LyXUtils.nsh
-   ${if} $4 == "True"
-    StrCpy $FoundDict "$R3 $FoundDict"
-   ${endif}
-  ${next}
-  FileClose $R5
-  
-  # read out the possible thesaurus filenames from the file	
-  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
-  ${for} $5 1 22
-   # the file has 44 lines, but we only need to check for one of the 2 dictionary files per language
-   # therefore check only for every second line
-   FileRead $R5 $String   # $String is now the dictionary name
-   FileRead $R5 $String   # $String is now the dictionary name
-   StrCpy $String $String -2 # remove the linebreak characters
-   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
-   !insertmacro FileCheck $4 $String "$INSTDIR\Resources\thes" # macro from LyXUtils.nsh
-   ${if} $4 == "True"
-    StrCpy $FoundThes "$R3 $FoundThes"
-   ${endif}
-  ${next}
-  FileClose $R5
 
 FunctionEnd
 
