@@ -255,6 +255,12 @@ Section /o "Magyar" SecDHungarian
  AddSize 3380
 SectionEnd
 
+# enable this for LyX 2.1!
+#Section /o "Hindi" SecDHindi
+# StrCpy $DictCodes "hi_IN,$DictCodes"
+# AddSize 1900
+#SectionEnd
+
 Section /o "Interlingua" SecDInterlingua
  StrCpy $DictCodes "ia_IA,$DictCodes"
  AddSize 649
@@ -309,6 +315,12 @@ Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
  AddSize 2890
 SectionEnd
+
+# enable this for LyX 2.1!
+#Section /o "Occitan" SecDOccitan
+# StrCpy $DictCodes "oc_FR,$DictCodes"
+# AddSize 31710
+#SectionEnd
 
 Section /o "Polski" SecDPolish
  StrCpy $DictCodes "pl_PL,$DictCodes"
@@ -369,6 +381,18 @@ Section /o "Svenska" SecDSwedish
  StrCpy $DictCodes "sv_SE,$DictCodes"
  AddSize 1030
 SectionEnd
+
+# enable this for LyX 2.1!
+#Section /o "Tamil" SecDTamil
+# StrCpy $DictCodes "ta_IN,$DictCodes"
+# AddSize 5911
+#SectionEnd
+
+# enable this for LyX 2.1!
+#Section /o "Telugu" SecDTelugu
+# StrCpy $DictCodes "te_IN,$DictCodes"
+# AddSize 3400
+#SectionEnd
  
 Section /o "Thai" SecDThai
  StrCpy $DictCodes "th_TH,$DictCodes"
@@ -380,12 +404,19 @@ Section /o "Ukrainian" SecDUkrainian
  AddSize 2620
 SectionEnd
 
+# enable this for LyX 2.1!
+#Section /o "Urdu" SecDUrdu
+# StrCpy $DictCodes "ur_PK,$DictCodes"
+# AddSize 1401
+#SectionEnd
+
 Section /o "Vietnamese" SecDVietnamese
  StrCpy $DictCodes "vi_VN,$DictCodes"
  AddSize 40
 SectionEnd
 
 SectionGroupEnd
+
 
 SectionGroup "Thesaurus" SecThesaurus
 
@@ -549,6 +580,8 @@ Function .onInit
    Abort
   ${endif}
 
+  !insertmacro MULTIUSER_INIT
+  
   # check if this LyX version is already installed
   ${if} $MultiUser.Privileges == "Admin"
   ${orif} $MultiUser.Privileges == "Power"
@@ -564,9 +597,33 @@ Function .onInit
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
   ${endif}
+  
+  # check if there is an existing LyX installation of the same LyX series
+  # we usually don't release more than 10 versions so with 20 we are safe to check if a newer version is installed
+  IntOp $4 ${APP_VERSION_REVISION} + 20
+  ${for} $5 0 $4
+   ${if} $MultiUser.Privileges == "Admin"
+   ${orif} $MultiUser.Privileges == "Power"
+    ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$5" "DisplayVersion"
+   ${else}
+    ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$5" "DisplayVersion"
+   ${endif}
+   ${if} $0 != ""
+    StrCpy $R5 $0 # store the read version number
+    StrCpy $OldVersionNumber "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$5"
+    # we don't stop here because we want the latest installed version
+   ${endif} 
+  ${next}
+  ${if} $OldVersionNumber > ${APP_SERIES_KEY}
+   # store the version number and reformat it temporarily for the error message
+   StrCpy $R0 $OldVersionNumber
+   StrCpy $OldVersionNumber $R5
+   MessageBox MB_OK|MB_ICONSTOP "$(NewerInstalled)"
+   StrCpy $OldVersionNumber $R0
+   Abort
+  ${endif}
 
   !insertmacro PRINTER_INIT
-  !insertmacro MULTIUSER_INIT
   
   # this can be reset to "true" in section SecDesktop
   StrCpy $CreateDesktopIcon "false"
@@ -825,6 +882,14 @@ Function .onInit
    SectionSetFlags ${SecDHebrew} $0
    SectionSetSize ${SecDHebrew} 0
   ${endif}
+  StrCpy $Search "hi_IN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1! 
+  # SectionSetFlags ${SecDHindi} $0
+  # SectionSetSize ${SecDHindi} 0
+  ${endif}
   StrCpy $Search "hr_HR"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -916,6 +981,14 @@ Function .onInit
    SectionSetFlags ${SecDNorwegianNN} $0
    SectionSetSize ${SecDNorwegianNN} 0
   ${endif}
+  StrCpy $Search "oc_FR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!  
+  # SectionSetFlags ${SecDOccitan} $0
+  # SectionSetSize ${SecDOccitan} 0
+  ${endif}
   StrCpy $Search "pl_PL"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1000,6 +1073,22 @@ Function .onInit
    SectionSetFlags ${SecDSwedish} $0
    SectionSetSize ${SecDSwedish} 0
   ${endif}
+  StrCpy $Search "ta_IN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!
+  # SectionSetFlags ${SecDTamil} $0
+  # SectionSetSize ${SecDTamil} 0
+  ${endif}
+  StrCpy $Search "te_IN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!
+  # SectionSetFlags ${SecDTelugu} $0
+  # SectionSetSize ${SecDTelugu} 0
+  ${endif}
   StrCpy $Search "th_TH"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1013,6 +1102,14 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDUkrainian} $0
    SectionSetSize ${SecDUkrainian} 0
+  ${endif}
+  StrCpy $Search "ur_PK"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+ # enable this for LyX 2.1!
+  # SectionSetFlags ${SecDUrdu} $0
+  # SectionSetSize ${SecDUrdu} 0
   ${endif}
   StrCpy $Search "vi_VN"
   Call StrPoint
@@ -1228,11 +1325,11 @@ Function un.onInit
   !insertmacro UnAppPreSuff $AppPre $AppSuff # macro from LyXUtils.nsh
 
   # test if MiKTeX was installed together with LyX
-  ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  ReadRegStr $0 SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    SectionSetText 2 "MiKTeX" # names the corersponding uninstaller section
    StrCpy $LaTeXInstalled "MiKTeX"
-   DeleteRegValue HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   ${else}
    SectionSetText 2 "" # hides the corresponding uninstaller section
   ${endif}

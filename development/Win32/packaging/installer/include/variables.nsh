@@ -38,6 +38,7 @@ Var LaTeXInstalled
 Var LilyPondPath
 Var MiKTeXUser
 Var MiKTeXVersion
+Var OldVersionNumber
 Var Pointer
 Var PSVPath
 Var PythonPath

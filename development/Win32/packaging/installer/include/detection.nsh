@@ -38,8 +38,7 @@ FunctionEnd
 Function MissingPrograms
   # check if third-party programs are installed
 
-  # test if Ghostscript is installed
-  # Ghostscript is a mandatory program for LyX thus check all cases:
+  # test if Ghostscript is installed, check all cases:
   # 1. 32bit Windows
   # 2. 64bit Windows but 32bit Ghostscript
   # 3. 64bit Windows and 64bit Ghostscript
@@ -113,7 +112,7 @@ Function MissingPrograms
    ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview64.exe" "Path"
    SetRegView 32
   ${endif}
-  # repeat for case 2. and 3.
+  # repeat for case 1. and 2.
   ${if} $PSVPath == ""
    ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
   ${endif}
@@ -237,75 +236,57 @@ Function EditorCheck
   ${if} $EditorPath != ""
    StrCpy $EditorPath $EditorPath -1 # remove "\" from the end of the string
   ${endif}
-  ${if} ${RunningX64}
-   SetRegView 32
-  ${endif}
+  SetRegView 32
+  
   # check for PSPad
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PSPad editor_is1" "InstallLocation"
   ${if} $0 != ""
-   StrCpy $0 $0 -1
+   StrCpy $0 $0 -1 # remove the "\"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
+  
   # check for WinShell
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinShell_is1" "InstallLocation"
   ${if} $0 != ""
-   StrCpy $0 $0 -1
+   StrCpy $0 $0 -1 # remove the "\"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for ConTEXT
+  
+  # check for Vim which is a 64bit application on x64 Windows
   StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ConTEXTEditor_is1" "InstallLocation"
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
+  ReadRegStr $0 HKLM "Software\Vim\Gvim" "path"
   ${if} $0 != ""
-   StrCpy $0 $0 -1
+   StrCpy $0 $0 -9 # remove "\gvim.exe"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for Crimson Editor
+  SetRegView 32
+  
+  # check for TeXnicCenter which can be a 64bit application on x64 Windows
   StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Crimson Editor" "UninstallString"
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXnicCenter_is1" "InstallLocation"
   ${if} $0 != ""
-   StrCpy $0 $0 -14 # remove "\uninstall.exe"
+   StrCpy $0 $0 -1 # remove the "\"
+   StrCpy $EditorPath "$EditorPath;$0"
+  ${else}
+   SetRegView 32
+   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXnicCenter_is1" "InstallLocation"
+   StrCpy $0 $0 -1 # remove the "\"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
-  # check for Vim 7.0
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Vim 7.0" "UninstallString"
-  ${if} $0 != ""
-   StrCpy $0 $0 -18 # remove "\uninstall-gui.exe"
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
-  # check for TeXnicCenter
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXnicCenter_is1" "Inno Setup: App Path"
-  ${if} $0 != ""
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
-  # check for LaTeXEditor
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\LaTeX Editor" "InstallLocation"
-  ${if} $0 != ""
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
+  SetRegView 32
+  
   # check for WinEdt
   StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinEdt_is1" "InstallLocation"
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinEdt 7" "InstallLocation"
   ${if} $0 != ""
-   StrCpy $0 $0 -1
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
-  # check for LEd
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\LEd_is1" "InstallLocation"
-  ${if} $0 != ""
-   StrCpy $0 $0 -1
-   StrCpy $EditorPath "$EditorPath;$0"
-  ${endif}
-  # check for WinTeX
-  StrCpy $0 ""
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinTeX XP" "DisplayIcon"
-  ${if} $0 != ""
-   StrCpy $0 $0 -11 # remove "\wintex.exe"
    StrCpy $EditorPath "$EditorPath;$0"
   ${endif}
 

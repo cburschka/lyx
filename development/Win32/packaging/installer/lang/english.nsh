@@ -83,6 +83,8 @@ ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the c
 #${LangFileString} RunConfigureFailed "Could not execute the configure script"
 ${LangFileString} InstallRunning "The installer is already running!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} is already installed! Deinstall LyX first."
+${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
+				  If you really need this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 					       MiKTeX was installed with administrator privileges but you are installing LyX without them."

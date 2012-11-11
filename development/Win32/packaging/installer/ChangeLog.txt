@@ -1,0 +1,37 @@
+﻿Changelog for LyX-205-2:
+- the installer detects now existing spell-checker and thesaurus dictionaries
+  of existing LyX installations
+- fixed detection for already installed Ghostscript and GSview on 64bit Windows
+- fixed detection for jEdit, Vim, WinEdt and TeXnicCenter as LaTeX source file editor
+- fixed detection of Gimp and Photoshop as image manipulating program
+- updated spell-checker dictionaries for German and Belorussion
+  (To benefit from them you must uninstall an already installed LyX 2.0.x and
+   then use this installer.)
+- updated thesaurus for German
+  (need to uninstall to benefit from this)
+- bugfix: remove registry entries of existing LyX version when installing over it
+- don't allow to install an older LyX version over an existing newer one
+
+
+Changelog for LyX-205-1:
+- installs LyX 2.0.5
+- updated to Python 2.7.3
+- updated to ImageMagick 6.8.0-4
+- updated to Ghostscript 9.06
+
+
+Changelog for LyX-204-3:
+- renamed the proposed LyX installation folder to "LyX 2.0" instead of the former "LyX 2.0.4"
+  (reason: it should be default be possible to override existing older version of the LyX 2.0.x series)
+- link the LyX Wiki and website in LyX's start menu folder Changelog for LyX-204-2:
+- Prevent that LyX can first be installed with admin privileges and afterwards without them
+- In the uninstaller it is now the default not to uninstall the user preferences and settings
+- Fix the path in which the LyX start menu shortcut is executed - Also if LyX is installed without admin privileges, the .lyx file associations are set
+- Fix a typo in English translation
+
+
+Changelog for LyX-204-1:
+- It is now possible to install LyX also without administrator privileges.
+  (Note that the support for the image file formats WMF and EMF can only be installed if LyX is installed with administrator privileges.)
+- Added support for multiple indexes in LyX documents
+- Support to install spell checker and thesaurus dictionaries for all languages supported by LyX.
