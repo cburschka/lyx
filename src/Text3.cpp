@@ -285,8 +285,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 				mergeParagraph(bparams, cur.text()->paragraphs(), 0);
 			Cursor old = cur;
 			cur.leaveInset(*inset);
-			if (cmd.action() == LFUN_PREVIEW_INSERT
-			    || cmd.action() == LFUN_IPA_INSERT)
+			if (cmd.action() == LFUN_PREVIEW_INSERT)
 				// trigger preview
 				notifyCursorLeavesOrEnters(old, cur);
 		}
