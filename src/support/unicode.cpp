@@ -23,6 +23,7 @@
 #include <cerrno>
 #include <map>
 #include <ostream>
+#include <string>
 
 
 using namespace std;
