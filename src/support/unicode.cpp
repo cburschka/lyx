@@ -21,10 +21,8 @@
 #include <boost/cstdint.hpp>
 
 #include <cerrno>
-#include <iomanip>
 #include <map>
 #include <ostream>
-#include <string>
 
 
 using namespace std;
