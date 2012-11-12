@@ -3,8 +3,8 @@
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
 ${LangFileString} TEXT_WELCOME "За допомогою цього майстра ви зможете встановити LyX у вашу систему.$\r$\n\
-					  $\r$\n\
-					  $_CLICK"
+				$\r$\n\
+				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
@@ -25,71 +25,75 @@ ${LangFileString} SecInstJabRefDescription "Засіб для роботи з бібліографічними 
 ${LangFileString} SecAllUsersDescription "Визначає, чи слід встановити LyX для всіх користувачів, чи лише для поточного користувача."
 ${LangFileString} SecFileAssocDescription "Файли з суфіксом .lyx автоматично відкриватимуться за допомогою LyX."
 ${LangFileString} SecDesktopDescription "Піктограма LyX на стільниці."
+${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'Дистрибутив LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Вкажіть дистрибутив LaTeX, який має використовувати LyX.'
 ${LangFileString} EnterLaTeXFolder 'Крім того, ви можете встановити тут розташування файла $\"latex.exe$\" і таким чином \
-					   встановити дистрибутив LaTeX, який має бути використано LyX.$\r$\n\
-					   Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
-					   $\r$\n\
-					   Засобу встановлення програми вдалося виявити дистрибутив LaTeX \
-					   $\"$LaTeXName$\" у вашій системі. Нижче показано його розташування.'
+					встановити дистрибутив LaTeX, який має бути використано LyX.$\r$\n\
+					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
+					$\r$\n\
+					Засобу встановлення програми вдалося виявити дистрибутив LaTeX \
+					$\"$LaTeXName$\" у вашій системі. Нижче показано його розташування.'
 ${LangFileString} EnterLaTeXFolderNone 'Нижче ви маєте встановити розташування файла $\"latex.exe$\". Таким чином, ви встановите \
-					       дистрибутив LaTeX, який слід використовувати у LyX.$\r$\n\
-					       Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
-					       $\r$\n\
-					       Засобу встановлення не вдалося виявити дистрибутива LaTeX у вашій системі.'
+					дистрибутив LaTeX, який слід використовувати у LyX.$\r$\n\
+					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
+					$\r$\n\
+					Засобу встановлення не вдалося виявити дистрибутива LaTeX у вашій системі.'
 ${LangFileString} PathName 'Розташування файла $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Не використовувати LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'У вказаній теці немає файла $\"latex.exe$\".'
 
 ${LangFileString} LatexInfo 'Тепер буде запущено засіб встановлення дистрибутива LaTeX з назвою $\"MiKTeX$\".$\r$\n\
-			            Щоб встановити програму, натискайте кнопку $\"Next$\" у вікні засобу для встановлення, аж доки не розпочнеться процес встановлення.$\r$\n\
-				    $\r$\n\
-				    !!! Будь ласка, використовуйте лише типові параметри засобу для встановлення MiKTeX !!!'
+				Щоб встановити програму, натискайте кнопку $\"Next$\" у вікні засобу для встановлення, аж доки не розпочнеться процес встановлення.$\r$\n\
+				$\r$\n\
+				!!! Будь ласка, використовуйте лише типові параметри засобу для встановлення MiKTeX !!!'
 ${LangFileString} LatexError1 'Дистрибутивів LaTeX не виявлено!$\r$\n\
-                      		      Ви не зможете користуватися LyX без дистрибутива LaTeX на зразок $\"MiKTeX$\"!$\r$\n\
-				      З цієї причини встановлення буде припинено.'
+				Ви не зможете користуватися LyX без дистрибутива LaTeX на зразок $\"MiKTeX$\"!$\r$\n\
+				З цієї причини встановлення буде припинено.'
       
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
 ${LangFileString} JabRefInfo 'Тепер буде запущено засіб для встановлення програми $\"JabRef$\".$\r$\n\
-				     У засобі для встановлення ви можете не змінювати типових параметрів JabRef.'
+				У засобі для встановлення ви можете не змінювати типових параметрів JabRef.'
 ${LangFileString} JabRefError 'Не вдалося встановити програму $\"JabRef$\"!$\r$\n\
-		                      Процес встановлення LyX буде продовжено.$\r$\n\
-				      Спробуйте встановити JabRef пізніше самостійно.'
+				Процес встановлення LyX буде продовжено.$\r$\n\
+				Спробуйте встановити JabRef пізніше самостійно.'
 
 ${LangFileString} LatexConfigInfo "Налаштування LyX може тривати досить довго."
 
 ${LangFileString} MiKTeXPathInfo "Щоб кожен з користувачів міг пізніше налаштувати MiKTeX згідно до власних потреб,$\r$\n\
-					 слід встановити права на запис MiKTeX для всіх користувачів до теки, куди його встановлено:$\r$\n\
-					 $MiKTeXPath $\r$\n\
-					 і всіх підтек цієї теки."
+					слід встановити права на запис MiKTeX для всіх користувачів до теки, куди його встановлено:$\r$\n\
+					$MiKTeXPath $\r$\n\
+					і всіх підтек цієї теки."
 ${LangFileString} MiKTeXInfo 'У LyX використовуватиметься дистрибутив LaTeX $\"MiKTeX$\".$\r$\n\
-				     Ми рекомендуємо вам встановити всі доступні оновлення MiKTeX за допомогою програми $\"MiKTeX Update Wizard$\"$\r$\n\
-				     до того, як ви вперше скористаєтеся LyX.$\r$\n\
-				     Бажаєте перевірити наявність оновлень MiKTeX?'
+				Ми рекомендуємо вам встановити всі доступні оновлення MiKTeX за допомогою програми $\"MiKTeX Update Wizard$\"$\r$\n\
+				до того, як ви вперше скористаєтеся LyX.$\r$\n\
+				Бажаєте перевірити наявність оновлень MiKTeX?'
 
 ${LangFileString} ModifyingConfigureFailed "Не вдалося встановити 'path_prefix' у скрипті налаштування"
 ${LangFileString} RunConfigureFailed "Не вдалося виконати скрипт налаштування"
 ${LangFileString} NotAdmin "Для встановлення LyX вам потрібні привілеї адміністратора!"
 ${LangFileString} InstallRunning "Засіб для встановлення вже працює!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} вже встановлено! Спочатку вилучіть його LyX."
+${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
+				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+						MiKTeX was installed with administrator privileges but you are installing LyX without them."
 ${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
 					available because that requires to install a software printer to$\r$\n\
 					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Вітаємо! LyX було успішно встановлено.$\r$\n\
-					    $\r$\n\
-					    (Перший запуск LyX може тривати декілька секунд.)"
+					$\r$\n\
+					(Перший запуск LyX може тривати декілька секунд.)"
 ${LangFileString} FinishPageRun "Запустити LyX"
 
 ${LangFileString} UnNotInRegistryLabel "Не вдалося знайти записи LyX у регістрі.$\r$\n\
-					       Записи на стільниці і у меню запуску вилучено не буде."
+					Записи на стільниці і у меню запуску вилучено не буде."
 ${LangFileString} UnInstallRunning "Спочатку слід завершити роботу програми LyX!"
 ${LangFileString} UnNotAdminLabel "Для вилучення LyX вам слід мати привілеї адміністратора!"
 ${LangFileString} UnReallyRemoveLabel "Ви справді бажаєте повністю вилучити LyX і всі його компоненти?"
@@ -98,7 +102,7 @@ ${LangFileString} UnLyXPreferencesTitle 'Параметри LyX, встановлені користувачем
 ${LangFileString} SecUnMiKTeXDescription "Вилучає дистрибутив LaTeX - MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Вилучає засіб для роботи з бібліографічними даними JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Вилучає теку з налаштуваннями LyX$\r$\n\
-					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-					   для всіх користувачів.'
+						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						для всіх користувачів.'
 ${LangFileString} SecUnProgramFilesDescription "Вилучити LyX і всі його компоненти."
 

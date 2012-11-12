@@ -3,8 +3,8 @@
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
 ${LangFileString} TEXT_WELCOME "‚±‚ÌƒEƒBƒU[ƒh‚ªA‚ ‚È‚½‚ªLyX‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚éŠÔ‚Ì‚²ˆÄ“à‚ğ‚µ‚Ü‚·B$\r$\n\
-					  $\r$\n\
-					  $_CLICK"
+				$\r$\n\
+				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
@@ -25,47 +25,49 @@ ${LangFileString} SecInstJabRefDescription "Ql•¶Œ£ŠÇ—‚¨‚æ‚ÑBibTeXƒtƒ@ƒCƒ‹ƒGƒf
 ${LangFileString} SecAllUsersDescription "LyX‚ğ‚·‚×‚Ä‚Ìƒ†[ƒU[—p‚É‘•”õ‚·‚é‚©AŒ»İ‚Ìƒ†[ƒU[Œü‚¯‚¾‚¯‚É‘•”õ‚·‚é‚©B"
 ${LangFileString} SecFileAssocDescription "Šg’£q‚ª.lyx‚Ìƒtƒ@ƒCƒ‹‚Í©“®“I‚ÉLyX‚ÅŠJ‚©‚ê‚éB"
 ${LangFileString} SecDesktopDescription "ƒfƒXƒNƒgƒbƒvã‚ÌLyXƒAƒCƒRƒ“B"
+${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“'
 ${LangFileString} EnterLaTeXHeader2 'LyX‚ªg‚¤‚×‚«LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B'
 ${LangFileString} EnterLaTeXFolder '‚±‚±‚Å‚ÍA$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚»‚¤‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄA\
-					   LyX‚ªg—p‚·‚×‚«LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
-					   ‚à‚µLaTeX‚ğg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ğo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
-					   $\r$\n\
-					   ƒCƒ“ƒXƒg[ƒ‰[‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Æ‚µ‚Ä\
-					   $\"$LaTeXName$\"‚ª‚ ‚é‚±‚Æ‚ğŒŸo‚µ‚Ü‚µ‚½B‰º—“‚É‚Í‚»‚ÌƒpƒX‚ª•\¦‚³‚ê‚Ä‚¢‚Ü‚·B'
+					LyX‚ªg—p‚·‚×‚«LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
+					‚à‚µLaTeX‚ğg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ğo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
+					$\r$\n\
+					ƒCƒ“ƒXƒg[ƒ‰[‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Æ‚µ‚Ä\
+					$\"$LaTeXName$\"‚ª‚ ‚é‚±‚Æ‚ğŒŸo‚µ‚Ü‚µ‚½B‰º—“‚É‚Í‚»‚ÌƒpƒX‚ª•\¦‚³‚ê‚Ä‚¢‚Ü‚·B'
 ${LangFileString} EnterLaTeXFolderNone '‰º—“‚Å$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B‚»‚¤‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄA\
-					       LyX‚ª‚Ç‚ÌLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğg—p‚·‚é‚×‚«‚©w’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
-					       ‚à‚µLaTeX‚ğg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ğo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
-					   $\r$\n\
-					   ƒCƒ“ƒXƒg[ƒ‰[‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğŒ©‚Â‚¯‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B'
+					LyX‚ª‚Ç‚ÌLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğg—p‚·‚é‚×‚«‚©w’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
+					‚à‚µLaTeX‚ğg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ğo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
+					$\r$\n\
+					ƒCƒ“ƒXƒg[ƒ‰[‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğŒ©‚Â‚¯‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B'
 ${LangFileString} PathName '$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX'
 ${LangFileString} DontUseLaTeX "LaTeX‚ğg—p‚µ‚È‚¢"
 ${LangFileString} InvalidLaTeXFolder 'w’è‚³‚ê‚½ƒpƒX‚É$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB'
 
 ${LangFileString} LatexInfo '‚±‚ê‚©‚çLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“$\"MiKTeX$\"‚ÌƒCƒ“ƒXƒg[ƒ‰[‚ğ‹N“®‚µ‚Ü‚·B$\r$\n\
-			            ƒvƒƒOƒ‰ƒ€‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAƒCƒ“ƒXƒg[ƒ‹‚ªn‚Ü‚é‚Ü‚ÅƒCƒ“ƒXƒg[ƒ‰[‚ÌƒEƒBƒ“ƒhƒE‚É‚ ‚é$\"Next$\"ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B$\r$\n\
-			            $\r$\n\
-			            III‚·‚×‚ÄMiKTeXƒCƒ“ƒXƒg[ƒ‰[‚ÌƒfƒtƒHƒ‹ƒgƒIƒvƒVƒ‡ƒ“‚É]‚Á‚Ä‚­‚¾‚³‚¢BIII'
+				ƒvƒƒOƒ‰ƒ€‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAƒCƒ“ƒXƒg[ƒ‹‚ªn‚Ü‚é‚Ü‚ÅƒCƒ“ƒXƒg[ƒ‰[‚ÌƒEƒBƒ“ƒhƒE‚É‚ ‚é$\"Next$\"ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B$\r$\n\
+				$\r$\n\
+				III‚·‚×‚ÄMiKTeXƒCƒ“ƒXƒg[ƒ‰[‚ÌƒfƒtƒHƒ‹ƒgƒIƒvƒVƒ‡ƒ“‚É]‚Á‚Ä‚­‚¾‚³‚¢BIII'
 ${LangFileString} LatexError1 'LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ğ”­Œ©‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½I$\r$\n\
-                      		      LyX‚ÍA$\"MiKTeX$\"‚Ì‚æ‚¤‚ÈLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚È‚µ‚Å‚Íg‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
-                      		      ‚µ‚½‚ª‚Á‚ÄƒCƒ“ƒXƒg[ƒ‹‚Í’†~‚µ‚Ü‚·B'
+				LyX‚ÍA$\"MiKTeX$\"‚Ì‚æ‚¤‚ÈLaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚È‚µ‚Å‚Íg‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
+				‚µ‚½‚ª‚Á‚ÄƒCƒ“ƒXƒg[ƒ‹‚Í’†~‚µ‚Ü‚·B'
 
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
 ${LangFileString} JabRefInfo '‚±‚ê‚©‚çƒvƒƒOƒ‰ƒ€$\"JabRef$\"‚ÌƒCƒ“ƒXƒg[ƒ‰[‚ğ‹N“®‚µ‚Ü‚·B$\r$\n\
-				     JabRefƒCƒ“ƒXƒg[ƒ‰[‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒIƒvƒVƒ‡ƒ“‚ğ‚·‚×‚Äó‚¯“ü‚ê‚Ä‚©‚Ü‚¢‚Ü‚¹‚ñB'
+				JabRefƒCƒ“ƒXƒg[ƒ‰[‚ÌƒfƒtƒHƒ‹ƒg‚ÌƒIƒvƒVƒ‡ƒ“‚ğ‚·‚×‚Äó‚¯“ü‚ê‚Ä‚©‚Ü‚¢‚Ü‚¹‚ñB'
 ${LangFileString} JabRefError 'ƒvƒƒOƒ‰ƒ€$\"JabRef$\"‚Í³‚µ‚­ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ü‚¹‚ñ‚Å‚µ‚½I$\r$\n\
-		                      ƒCƒ“ƒXƒg[ƒ‰[‚ÍA‚Æ‚è‚ ‚¦‚¸‚±‚Ì‚Ü‚ÜƒCƒ“ƒXƒg[ƒ‹‚ğ‘±‚¯‚Ü‚·B$\r$\n\
-		                      Œã‚ÅJabRef‚ÌƒCƒ“ƒXƒg[ƒ‹‚ğÄ“x‚İ‚Ä‚­‚¾‚³‚¢B'
+				ƒCƒ“ƒXƒg[ƒ‰[‚ÍA‚Æ‚è‚ ‚¦‚¸‚±‚Ì‚Ü‚ÜƒCƒ“ƒXƒg[ƒ‹‚ğ‘±‚¯‚Ü‚·B$\r$\n\
+				Œã‚ÅJabRef‚ÌƒCƒ“ƒXƒg[ƒ‹‚ğÄ“x‚İ‚Ä‚­‚¾‚³‚¢B'
 
 ${LangFileString} LatexConfigInfo "ˆÈ‰º‚ÌLyX‚Ìİ’è‚É‚Í­XŠÔ‚ª‚©‚©‚è‚Ü‚·B"
 
 ${LangFileString} MiKTeXPathInfo "‚·‚×‚Ä‚Ìƒ†[ƒU[‚ªŒã‚Å•K—v‚É‰‚¶‚ÄMiKTeX‚ğ$\r$\n\
-					 ƒJƒXƒ^ƒ}ƒCƒY‚Å‚«‚é‚æ‚¤‚ÉAMiKTeX‚ÌƒCƒ“ƒXƒg[ƒ‹æƒtƒHƒ‹ƒ_$\r$\n\
-					 $MiKTeXPath $\r$\n\
-					 ‚Æ‚»‚Ì‰ºˆÊƒtƒHƒ‹ƒ_‚Ì‘‚İŒ ŒÀ‚ğA‚·‚×‚Ä‚Ìƒ†[ƒU[‚É—^‚¦‚é•K—v‚ª‚ ‚è‚Ü‚·B"
+					ƒJƒXƒ^ƒ}ƒCƒY‚Å‚«‚é‚æ‚¤‚ÉAMiKTeX‚ÌƒCƒ“ƒXƒg[ƒ‹æƒtƒHƒ‹ƒ_$\r$\n\
+					$MiKTeXPath $\r$\n\
+					‚Æ‚»‚Ì‰ºˆÊƒtƒHƒ‹ƒ_‚Ì‘‚İŒ ŒÀ‚ğA‚·‚×‚Ä‚Ìƒ†[ƒU[‚É—^‚¦‚é•K—v‚ª‚ ‚è‚Ü‚·B"
 ${LangFileString} MiKTeXInfo 'LyX‚Æ‚Æ‚à‚ÉALaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“$\"MiKTeX$\"‚ª—p‚¢‚ç‚ê‚Ü‚·B$\r$\n\
 				     LyX‚ğ‰‚ß‚Äg‚¤‘O‚ÉA$\"MiKTeXXVƒEƒBƒU[ƒh$\"ƒvƒƒOƒ‰ƒ€‚ğg‚Á‚ÄA$\r$\n\
 				     —˜—p‰Â”\‚ÈMiKTeXXV•ª‚ğƒCƒ“ƒXƒg[ƒ‹‚±‚Æ‚ğ„§‚µ‚Ü‚·B$\r$\n\
@@ -76,20 +78,22 @@ ${LangFileString} RunConfigureFailed "configureƒXƒNƒŠƒvƒg‚ğÀs‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚
 ${LangFileString} NotAdmin "LyX‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAŠÇ—ÒŒ ŒÀ‚ğ‚Á‚Ä‚¢‚È‚­‚Ä‚Í‚È‚è‚Ü‚¹‚ñI"
 ${LangFileString} InstallRunning "ƒCƒ“ƒXƒg[ƒ‰[‚ÍŠù‚É“®‚¢‚Ä‚¢‚Ü‚·I"
 ${LangFileString} StillInstalled "LyX${APP_SERIES_KEY2}‚ÍŠù‚ÉƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚Ü‚·Iæ‚ÉLyX‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B"
+${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
+				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+						MiKTeX was installed with administrator privileges but you are installing LyX without them."
 ${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
 					available because that requires to install a software printer to$\r$\n\
 					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·ILyX‚ª³‚µ‚­‘•”õ‚³‚ê‚Ü‚µ‚½B$\r$\n\
-					    $\r$\n\
-					    i‰‰ñ‚ÌLyX‚Ì‹N“®‚É‚ÍŠÔ‚ª‚©‚©‚è‚Ü‚·Bj"
+					$\r$\n\
+					‰‰ñ‚ÌLyX‚Ì‹N“®‚É‚ÍŠÔ‚ª‚©‚©‚è‚Ü‚·Bj"
 ${LangFileString} FinishPageRun "LyX‚ğ‹N“®‚·‚é"
 
 ${LangFileString} UnNotInRegistryLabel "ƒŒƒWƒXƒgƒŠ‚ÉLyX‚ªŒ©“–‚½‚è‚Ü‚¹‚ñB$\r$\n\
-					       ƒfƒXƒNƒgƒbƒv‚ÆƒXƒ^[ƒgƒƒjƒ…[‚ÌƒVƒ‡[ƒgƒJƒbƒg‚Ííœ‚³‚ê‚Ü‚¹‚ñB"
+					ƒfƒXƒNƒgƒbƒv‚ÆƒXƒ^[ƒgƒƒjƒ…[‚ÌƒVƒ‡[ƒgƒJƒbƒg‚Ííœ‚³‚ê‚Ü‚¹‚ñB"
 ${LangFileString} UnInstallRunning "‚Ü‚¸LyX‚ğ•Â‚¶‚Ä‚­‚¾‚³‚¢I"
 ${LangFileString} UnNotAdminLabel "LyX‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚·‚é‚É‚ÍAŠÇ—ÒŒ ŒÀ‚ğ‚Á‚Ä‚¢‚È‚­‚Ä‚Í‚È‚è‚Ü‚¹‚ñI"
 ${LangFileString} UnReallyRemoveLabel "–{“–‚ÉALyX‚Æ‚·‚×‚Ä‚Ì•‘®ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚µ‚Ä‚µ‚Ü‚¤Ï‚à‚è‚Å‚·‚©H"
@@ -98,7 +102,7 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX‚Ìƒ†[ƒU[İ’è'
 ${LangFileString} SecUnMiKTeXDescription "LaTeXƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“MiKTeX‚ğ’E‘•‚µ‚Ü‚·B"
 ${LangFileString} SecUnJabRefDescription "•¶Œ£ƒ}ƒl[ƒWƒƒ[JabRef‚ğ’E‘•‚µ‚Ü‚·B"
 ${LangFileString} SecUnPreferencesDescription 'ƒ†[ƒU[‹¤’Ê‚ÌLyX‚Ìİ’èƒtƒHƒ‹ƒ_$\r$\n\
-					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-					   ‚ğíœ‚µ‚Ü‚·B'
+						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						‚ğíœ‚µ‚Ü‚·B'
 ${LangFileString} SecUnProgramFilesDescription "LyX‚Æ‚·‚×‚Ä‚Ì•‘®ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’E‘•‚µ‚Ü‚·B"
 

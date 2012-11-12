@@ -3,8 +3,8 @@
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
 ${LangFileString} TEXT_WELCOME "Tento sprievodca Vám pomáha inštalova LyX.$\r$\n\
-					  $\r$\n\
-					  $_CLICK"
+				$\r$\n\
+				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
@@ -25,68 +25,72 @@ ${LangFileString} SecInstJabRefDescription "Manager pre bibliografickı odkaz a e
 ${LangFileString} SecAllUsersDescription "Inštalova LyX pre všetkıch uívatelov alebo len pre terajší uívate¾."
 ${LangFileString} SecFileAssocDescription "Data s lyx rozšírením sa automaticky otvárajú v LyX."
 ${LangFileString} SecDesktopDescription "Symbol LyX na desktopu."
+${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX distribúcia'
 ${LangFileString} EnterLaTeXHeader2 'Urcujte LaTeX distribúciu, ktorú má uíva LyX.'
 ${LangFileString} EnterLaTeXFolder 'Tu môete pouíva chod k $\"latex.exe$\" a tım pouíva chod \
-					   LaTeX-distribúciu, ktorá by mohla by pouívaná cestou LyXu.$\r$\n\
-					   Ak nepouívate LaTeX, LyX nemôe produkova dokumenty!$\r$\n\
-					   $\r$\n\
-					   Inštalatér detektoval LaTeX-distribúciu \
-					   $\"$LaTeXName$\" na vašej sústave. Dolu vidíte jeho chod.'
+					LaTeX-distribúciu, ktorá by mohla by pouívaná cestou LyXu.$\r$\n\
+					Ak nepouívate LaTeX, LyX nemôe produkova dokumenty!$\r$\n\
+					$\r$\n\
+					Inštalatér detektoval LaTeX-distribúciu \
+					$\"$LaTeXName$\" na vašej sústave. Dolu vidíte jeho chod.'
 ${LangFileString} EnterLaTeXFolderNone 'Pouívajte dolu chod k $\"latex.exe$\". Tım urcujete, ktorá \
-					       LaTeX-distribúcia má by pouívaná LyXom.$\r$\n\
-					       Ak nepouívate LaTeX, LyX nemôe produkova dokumenty!$\r$\n\
-					       $\r$\n\
-					       Inštalatér nemohol nájst LaTeX-distribúciu na vašej sústave.'
+					LaTeX-distribúcia má by pouívaná LyXom.$\r$\n\
+					Ak nepouívate LaTeX, LyX nemôe produkova dokumenty!$\r$\n\
+					$\r$\n\
+					Inštalatér nemohol nájst LaTeX-distribúciu na vašej sústave.'
 ${LangFileString} PathName 'Chod k $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Neuívajte LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'Mapa $\"latex.exe$\" nie je na špecifikovanej ceste.'
 
 ${LangFileString} LatexInfo 'Teraz môete štartova LaTeX distribúciu $\"MiKTeX$\".$\r$\n\
-			            Na inštalovanie programu tlaète gombík $\"Next$\" v inštalovacích oknách a sa zaèína inštalácia.$\r$\n\
-				    $\r$\n\
-				    !!! Prosím uívajte všetkı obsiahnuté nastavenia inštalatéra MiKTeX !!!'
+				Na inštalovanie programu tlaète gombík $\"Next$\" v inštalovacích oknách a sa zaèína inštalácia.$\r$\n\
+				$\r$\n\
+				!!! Prosím uívajte všetkı obsiahnuté nastavenia inštalatéra MiKTeX !!!'
 
 ${LangFileString} LatexError1 'LaTeX distribúcia sa nemohla nájst!$\r$\n\
-                      		      LyX sa nemôe uíva bez LaTeX distribúcie ako $\"MiKTeX$\"!$\r$\n\
-				      Preto sa inštalácia zastavila.'
+				LyX sa nemôe uíva bez LaTeX distribúcie ako $\"MiKTeX$\"!$\r$\n\
+				Preto sa inštalácia zastavila.'
 
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
 ${LangFileString} JabRefInfo 'Teraz sa štartuje inštalatér programu $\"JabRef$\".$\r$\n\
-				     Môzete všetkı obsiahnuté nastavenia inštalatéra JabRef.'
+				Môzete všetkı obsiahnuté nastavenia inštalatéra JabRef.'
 ${LangFileString} JabRefError 'Program $\"JabRef$\" sa nemohol inštalova úspešne!$\r$\n\
-		                      Predsa inštalácia pokraèuje.$\r$\n\
-				      Skúste inštalova JabRef ešte raz neskôr.'
+				Predsa inštalácia pokraèuje.$\r$\n\
+				Skúste inštalova JabRef ešte raz neskôr.'
 
 ${LangFileString} LatexConfigInfo "Na nasledujúcu konfiguráciu LyXu treba poèka chví¾u."
 
 ${LangFileString} MiKTeXPathInfo "Aby kadı pouívatel bol neskôr schopnı pouívat MiKTeX pre svoje potreby$\r$\n\
-					 je treba napísat povolenia pre všetkıch pouívatelov do inštalacného papiera MiKTeX $\r$\n\
-					 $MiKTeXPath $\r$\n\
-					 aj do podriadenıch papierov."
+					je treba napísat povolenia pre všetkıch pouívatelov do inštalacného papiera MiKTeX $\r$\n\
+					$MiKTeXPath $\r$\n\
+					aj do podriadenıch papierov."
 ${LangFileString} MiKTeXInfo 'LaTeX distribúcia $\"MiKTeX$\" sa pouíva spolu s LyXom.$\r$\n\
-				     Doporuèuje sa inštalovat platné MiKTeX aktualizácie pomocou programu $\"MiKTeX Update Wizard$\"$\r$\n\
-				     pred prvım pouívaním LyXu.$\r$\n\
-				     Chcete teraz testova MiKTeX aktualizácie?'
+				Doporuèuje sa inštalovat platné MiKTeX aktualizácie pomocou programu $\"MiKTeX Update Wizard$\"$\r$\n\
+				pred prvım pouívaním LyXu.$\r$\n\
+				Chcete teraz testova MiKTeX aktualizácie?'
 
 ${LangFileString} ModifyingConfigureFailed "Nemohol uvies v platnost 'path_prefix' (zoznam s cestami programu) v konfiguraènom skripte"
 ${LangFileString} RunConfigureFailed "Nemohol vykona konfiguraènı skript"
 ${LangFileString} NotAdmin "Pre inštaláciu LyX potrebujete administrátorské práva!"
 ${LangFileString} InstallRunning "Inštalatér u behá!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} je u inštalovanı! Najprv treba odinštalova LyX."
+${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
+				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-					       MiKTeX was installed with administrator privileges but you are installing LyX without them."
+						MiKTeX was installed with administrator privileges but you are installing LyX without them."
 ${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
 					available because that requires to install a software printer to$\r$\n\
 					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Gratulácia! LyX bol úspešne inštalovanı.$\r$\n\
-					    $\r$\n\
-					    (Prvı LyX štart môe trva niekolko sekund.)"
+					$\r$\n\
+					(Prvı LyX štart môe trva niekolko sekund.)"
 ${LangFileString} FinishPageRun "Štartova LyX"
 
 ${LangFileString} UnNotInRegistryLabel "Nemôe nájs LyX v registre.$\r$\n\
@@ -99,7 +103,7 @@ ${LangFileString} UnLyXPreferencesTitle 'LyX prednosti uívae¾a'
 ${LangFileString} SecUnMiKTeXDescription "Odinštaluje LaTeX distribúciu MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Odinštaluje bibliografickı manager JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Odstráni konfiguracné papiere LyXu $\r$\n\
-					   $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-					   pre všetkıch uivate¾ov.'
+						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						pre všetkıch uivate¾ov.'
 ${LangFileString} SecUnProgramFilesDescription "Odinštaluj LyX a všetkı jeho suèiastky."
 

@@ -54,11 +54,11 @@ ${LangFileString} DontUseLaTeX "Kein LaTeX benutzen"
 ${LangFileString} InvalidLaTeXFolder 'Kann die Datei $\"latex.exe$\" nicht finden.'
 
 ${LangFileString} LatexInfo 'Als Nächstes wird der Installer der LaTeX-Distribution $\"MiKTeX$\" gestartet.$\r$\n\
-			            Um das Programm zu installieren, drücken Sie den $\"Weiter$\"-Knopf in den Installerfenstern bis die Installation beginnt.$\r$\n\
-				    $\r$\n\
-				    !!! Bitte verwenden Sie alle voreingestellten Optionen des MiKTeX-Installers !!!'
+				Um das Programm zu installieren, drücken Sie den $\"Weiter$\"-Knopf in den Installerfenstern bis die Installation beginnt.$\r$\n\
+				$\r$\n\
+				!!! Bitte verwenden Sie alle voreingestellten Optionen des MiKTeX-Installers !!!'
 ${LangFileString} LatexError1 'Es konnte keine LaTeX-Distribution gefunden werden!$\r$\n\
-                      		LyX kann ohne eine LaTeX-Distribution wie z.B. $\"MiKTeX$\" nicht benutzt werden!$\r$\n\
+				LyX kann ohne eine LaTeX-Distribution wie z.B. $\"MiKTeX$\" nicht benutzt werden!$\r$\n\
 				Die Installation wird daher abgebrochen.'
 
 ${LangFileString} HunspellFailed 'Herunterladen des Wörterbuchs für Sprache $\"$R3$\" fehlgeschlagen.'
@@ -90,18 +90,18 @@ ${LangFileString} NewerInstalled "Sie versuchen eine Vesion von LyX zu installie
 				  Wenn Sie das wirklich wollen, müssen Sie erst das existierende LyX $OldVersionNumber deinstallieren."
 
 ${LangFileString} MultipleIndexesNotAvailable "Die Unterstützung für mehrere Indexe in einem Dokument wird nicht verfügbar sein, denn$\r$\n\
-					       MiKTeX wurde mit Administratorrechten installiert aber Sie installieren LyX ohne diese."
+						MiKTeX wurde mit Administratorrechten installiert aber Sie installieren LyX ohne diese."
 ${LangFileString} MetafileNotAvailable "Die LyX Unterstützung für Bilder im Format EMF oder WMF wird nicht verfügbar$\r$\n\
 					sein, denn dafür müsste ein Software-Drucker für Windows installiert werden,$\r$\n\
 					was jedoch nur mit Administratorrechten möglich ist."
 
 #${LangFileString} FinishPageMessage "Glückwunsch! LyX wurde erfolgreich installiert.$\r$\n\
-#					    $\r$\n\
-#					    (Der erste Start von LyX kann etwas länger dauern.)"
+#					$\r$\n\
+#					(Der erste Start von LyX kann etwas länger dauern.)"
 ${LangFileString} FinishPageRun "LyX starten"
 
 ${LangFileString} UnNotInRegistryLabel "Kann LyX nicht in der Registry finden.$\r$\n\
-					       Desktopsymbole und Einträge im Startmenü können nicht entfernt werden."
+					Desktopsymbole und Einträge im Startmenü können nicht entfernt werden."
 ${LangFileString} UnInstallRunning "Sie müssen LyX zuerst beenden!"
 ${LangFileString} UnNotAdminLabel "Sie benötigen Administratorrechte um LyX zu deinstallieren!"
 ${LangFileString} UnReallyRemoveLabel "Sind Sie sicher, dass sie LyX und all seine Komponenten deinstallieren möchten?"
