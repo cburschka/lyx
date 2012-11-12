@@ -45,13 +45,15 @@ FunctionEnd
 # visible installer sections
 
 Section "!${APP_NAME}" SecCore
-  SectionIn RO
+ SectionIn RO
 SectionEnd
+
 Section "$(SecFileAssocTitle)" SecFileAssoc
-  StrCpy $CreateFileAssociations "true"
+ StrCpy $CreateFileAssociations "true"
 SectionEnd
+
 Section "$(SecDesktopTitle)" SecDesktop
-  StrCpy $CreateDesktopIcon "true"
+ StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE

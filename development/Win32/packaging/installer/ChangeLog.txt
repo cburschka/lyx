@@ -1,6 +1,8 @@
 ﻿Changelog for LyX-205-2:
 - the installer detects now existing spell-checker and thesaurus dictionaries
   of existing LyX installations
+- fixed un/installation of Jabref if bundle installer is executed without having admin privileges
+- fixed uninstallation of Metafile2EPS printer
 - fixed detection for already installed Ghostscript and GSview on 64bit Windows
 - fixed detection for jEdit, Vim, WinEdt and TeXnicCenter as LaTeX source file editor
 - fixed detection of Gimp and Photoshop as image manipulating program
@@ -26,7 +28,8 @@ Changelog for LyX-204-3:
 - link the LyX Wiki and website in LyX's start menu folder Changelog for LyX-204-2:
 - Prevent that LyX can first be installed with admin privileges and afterwards without them
 - In the uninstaller it is now the default not to uninstall the user preferences and settings
-- Fix the path in which the LyX start menu shortcut is executed - Also if LyX is installed without admin privileges, the .lyx file associations are set
+- Fix the path in which the LyX start menu shortcut is executed
+- Also if LyX is installed without admin privileges, the .lyx file associations are set
 - Fix a typo in English translation
 
 

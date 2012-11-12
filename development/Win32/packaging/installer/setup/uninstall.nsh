@@ -12,6 +12,7 @@ Var FileAssociation
 
 Section "un.LyX" un.SecUnProgramFiles
 
+  SectionIn RO
   # LaTeX class files that were installed together with LyX
   # will not be uninstalled because other LyX versions will
   # need them and these few files don't harm to stay in LaTeX 
@@ -91,10 +92,10 @@ Section "un.LyX" un.SecUnProgramFiles
      DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_EXT}"
   ${EndIf}
   
-  ${If} $MultiUser.Privileges != "Admin"
-    ${OrIf} $MultiUser.Privileges != "Power"
-    # Delete Postscript printer for metafile to EPS conversion
-    ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
+  ${If} $MultiUser.Privileges == "Admin"
+  ${OrIf} $MultiUser.Privileges == "Power"
+   # Delete Postscript printer for metafile to EPS conversion
+   ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
   ${EndIf}
   
   # clean other registry entries
@@ -132,9 +133,17 @@ SectionEnd
 # JabRef
 Section "un.JabRef" un.SecUnJabRef
 
- ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX 
-  ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
-  ExecWait "$1" # run JabRef's uninstaller
+ ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX
+  ${If} $MultiUser.Privileges == "Admin"
+  ${OrIf} $MultiUser.Privileges == "Power"
+   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+   ExecWait "$1" # run JabRef's uninstaller
+  ${else}
+   # in this case we can only read the start menu location and then start the linked uninstaller
+   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
+   StrCpy $1 "$1\Uninstall JabRef 2.8.lnk"
+   ExecShell "" "$1" # run JabRef's uninstaller
+  ${endif}
  ${endif}
 
 SectionEnd

@@ -108,7 +108,13 @@ Section -ProgramFiles SecProgramFiles
      ExecWait "$INSTDIR\${JabRefInstall}"
      # test if JabRef is now installed
      StrCpy $PathBibTeXEditor ""
-     ReadRegStr $PathBibTeXEditor SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
+     ${if} $MultiUser.Privileges == "Admin"
+      ${orif} $MultiUser.Privileges == "Power"
+      ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+     ${else}
+      # for non-admin users we can only check if it is in the start menu
+      ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
+     ${endif}
      ${if} $PathBibTeXEditor == ""
       MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
      ${else}
