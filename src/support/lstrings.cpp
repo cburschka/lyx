@@ -15,14 +15,11 @@
 #include "support/lstrings.h"
 
 #include "support/convert.h"
-#include "support/gettext.h"
 #include "support/qstring_helpers.h"
-#include "support/textutils.h"
 
 #include "support/lassert.h"
 
 #include <QString>
-#include <QVector>
 
 #include <cstdio>
 #include <algorithm>

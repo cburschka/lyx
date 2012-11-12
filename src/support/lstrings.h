@@ -18,7 +18,6 @@
 
 #include "support/docstring.h"
 
-#include <string>
 #include <vector>
 
 
