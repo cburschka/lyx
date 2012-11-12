@@ -19,10 +19,10 @@
 
 #include <QFile>
 
+#include <typeinfo>
 #if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 #include <locale>
 #include <iostream>
-#include <typeinfo>
 #endif
 
 using namespace std;
