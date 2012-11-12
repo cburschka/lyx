@@ -19,10 +19,6 @@
 
 #include <QFile>
 
-#include <locale>
-#include <iostream>
-#include <typeinfo>
-
 using namespace std;
 
 using lyx::support::isHexChar;
