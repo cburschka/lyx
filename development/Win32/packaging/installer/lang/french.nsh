@@ -10,8 +10,8 @@ Author: Jean-Pierre Chrétien
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installation pour l'utilisateur courant)"
 
-${LangFileString} TEXT_WELCOME "Cet assistant va vous guider tout au long de l'installation de $(^NameDA).$\r$\n
-				$\r$\n
+${LangFileString} TEXT_WELCOME "Cet assistant va vous guider tout au long de l'installation de $(^NameDA).$\r$\n\
+				$\r$\n\
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Mise à jour de la base de données MiKTeX..."

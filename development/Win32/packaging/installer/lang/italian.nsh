@@ -10,8 +10,8 @@ Author: Enrico Forestieri
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
-${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)$\r$\n
-				$\r$\n
+${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)$\r$\n\
+				$\r$\n\
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
