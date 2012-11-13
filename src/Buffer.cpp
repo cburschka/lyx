@@ -761,7 +761,10 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(FileName const & fname)
 {
+	bool const changed = fname != d->filename;
 	d->filename = fname;
+	if (changed)
+		lyxvc().file_found_hook(fname);
 	setReadonly(d->filename.isReadOnly());
 	saveCheckSum();
 	updateTitles();
@@ -4021,6 +4024,7 @@ Buffer::ReadStatus Buffer::loadEmergency()
 					"file."), from_utf8(d->filename.absFileName())));
 			}
 			markDirty();
+			lyxvc().file_found_hook(d->filename);
 			str = _("Document was successfully recovered.");
 		} else
 			str = _("Document was NOT successfully recovered.");
@@ -4084,6 +4088,7 @@ Buffer::ReadStatus Buffer::loadAutosave()
 					from_utf8(d->filename.absFileName())));
 			}
 			markDirty();
+			lyxvc().file_found_hook(d->filename);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;
