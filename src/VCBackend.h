@@ -34,6 +34,7 @@ public:
 		NOLOCKING
 	};
 
+	VCS(Buffer * b) : owner_(b) {}
 	virtual ~VCS() {}
 
 	/// register a file for version control
@@ -71,8 +72,6 @@ public:
 	virtual void getLog(support::FileName const &) = 0;
 	/// return the current version description
 	virtual std::string const versionString() const = 0;
-	/// set the owning buffer
-	void owner(Buffer * b) { owner_ = b; }
 	/// return the owning buffer
 	Buffer * owner() const { return owner_; }
 	/// return the lock status of this file
@@ -119,7 +118,7 @@ protected:
 	VCStatus vcstatus;
 
 	/// The buffer using this VC
-	Buffer * owner_;
+	Buffer * const owner_;
 };
 
 
@@ -128,7 +127,7 @@ class RCS : public VCS {
 public:
 
 	explicit
-	RCS(support::FileName const & m);
+	RCS(support::FileName const & m, Buffer * b);
 
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
@@ -202,7 +201,7 @@ class CVS : public VCS {
 public:
 	///
 	explicit
-	CVS(support::FileName const & m, support::FileName const & f);
+	CVS(support::FileName const & m, Buffer * b);
 
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
@@ -272,7 +271,6 @@ protected:
 	};
 
 private:
-	support::FileName file_;
 	// revision number from scanMaster
 	std::string version_;
 
@@ -330,7 +328,7 @@ class SVN : public VCS {
 public:
 	///
 	explicit
-	SVN(support::FileName const & m, support::FileName const & f);
+	SVN(support::FileName const & m, Buffer * b);
 
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
@@ -389,7 +387,6 @@ protected:
 	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
 
 private:
-	support::FileName file_;
 	/// is the loaded file under locking policy?
 	bool locked_mode_;
 	/**

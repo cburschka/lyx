@@ -50,20 +50,17 @@ bool LyXVC::file_found_hook(FileName const & fn)
 	FileName found_file;
 	// Check if file is under RCS
 	if (!(found_file = RCS::findFile(fn)).empty()) {
-		vcs.reset(new RCS(found_file));
-		vcs->owner(owner_);
+		vcs.reset(new RCS(found_file, owner_));
 		return true;
 	}
 	// Check if file is under CVS
 	if (!(found_file = CVS::findFile(fn)).empty()) {
-		vcs.reset(new CVS(found_file, fn));
-		vcs->owner(owner_);
+		vcs.reset(new CVS(found_file, owner_));
 		return true;
 	}
 	// Check if file is under SVN
 	if (!(found_file = SVN::findFile(fn)).empty()) {
-		vcs.reset(new SVN(found_file, fn));
-		vcs->owner(owner_);
+		vcs.reset(new SVN(found_file, owner_));
 		return true;
 	}
 
@@ -127,20 +124,18 @@ bool LyXVC::registrer()
 		if (svn_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with SVN");
-			vcs.reset(new SVN(cvs_entries, filename));
+			vcs.reset(new SVN(cvs_entries, owner_));
 
 		} else if (cvs_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with CVS");
-			vcs.reset(new CVS(cvs_entries, filename));
+			vcs.reset(new CVS(cvs_entries, owner_));
 
 		} else {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with RCS");
-			vcs.reset(new RCS(FileName()));
+			vcs.reset(new RCS(FileName(), owner_));
 		}
-
-		vcs->owner(owner_);
 	}
 
 	LYXERR(Debug::LYXVC, "LyXVC: registrer");

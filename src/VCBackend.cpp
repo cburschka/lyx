@@ -122,7 +122,7 @@ bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 //
 /////////////////////////////////////////////////////////////////////
 
-RCS::RCS(FileName const & m)
+RCS::RCS(FileName const & m, Buffer * b) : VCS(b)
 {
 	master_ = m;
 	scanMaster();
@@ -472,10 +472,9 @@ bool RCS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-CVS::CVS(FileName const & m, FileName const & f)
+CVS::CVS(FileName const & m, Buffer * b) : VCS(b)
 {
 	master_ = m;
-	file_ = f;
 	have_rev_info_ = false;
 	scanMaster();
 }
@@ -510,7 +509,7 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string name = onlyFileName(file_.absFileName());
+	string name = onlyFileName(owner_->absFileName());
 	string tmpf = '/' + name + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
@@ -530,12 +529,13 @@ void CVS::scanMaster()
 
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
-			if (file_.isReadableFile()) {
-				time_t mod = file_.lastModified();
+			FileName file(owner_->absFileName());
+			if (file.isReadableFile()) {
+				time_t mod = file.lastModified();
 				string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 				LYXERR(Debug::LYXVC, "Date in Entries: `" << file_date
 					<< "'\nModification date of file: `" << mod_date << '\'');
-				if (file_.isReadOnly()) {
+				if (file.isReadOnly()) {
 					// readonly checkout is unlocked
 					vcstatus = UNLOCKED;
 				} else {
@@ -1044,11 +1044,9 @@ bool CVS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-SVN::SVN(FileName const & m, FileName const & f)
+SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
 {
-	owner_ = 0;
 	master_ = m;
-	file_ = f;
 	locked_mode_ = 0;
 	scanMaster();
 }
@@ -1103,9 +1101,9 @@ bool SVN::checkLockMode()
 	}
 
 	LYXERR(Debug::LYXVC, "Detecting locking mode...");
-	if (doVCCommandCall("svn proplist " + quoteName(file_.onlyFileName())
+	if (doVCCommandCall("svn proplist " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
-		    file_.onlyPath()))
+		    FileName(owner_->filePath())))
 		return false;
 
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
@@ -1128,8 +1126,9 @@ bool SVN::checkLockMode()
 
 bool SVN::isLocked() const
 {
-	file_.refresh();
-	return !file_.isReadOnly();
+	FileName file(owner_->absFileName());
+	file.refresh();
+	return !file.isReadOnly();
 }
 
 
