@@ -41,29 +41,33 @@ public:
 	virtual void registrer(std::string const & msg) = 0;
 	/// check in the current revision, returns log
 	virtual std::string checkIn(std::string const & msg) = 0;
-	// can be this operation processed in the current RCS?
+	/// can this operation be processed in the current VCS?
 	virtual bool checkInEnabled() = 0;
-	// should a log message provided for next checkin?
+	/// should a log message provided for next checkin?
 	virtual bool isCheckInWithConfirmation() = 0;
 	/// check out for editing, returns log
 	virtual std::string checkOut() = 0;
-	// can be this operation processed in the current RCS?
+	/// can this operation be processed in the current VCS?
 	virtual bool checkOutEnabled() = 0;
 	/// synchronize with repository, returns log
 	virtual std::string repoUpdate() = 0;
-	// can be this operation processed in the current RCS?
+	/// can this operation be processed in the current VCS?
 	virtual bool repoUpdateEnabled() = 0;
-	// toggle locking property of the file
+	/// toggle locking property of the file
 	virtual std::string lockingToggle() = 0;
-	// can be this operation processed in the current RCS?
+	/// can this operation be processed in the current VCS?
 	virtual bool lockingToggleEnabled() = 0;
 	/// revert current edits
 	virtual bool revert() = 0;
-	// should a confirmation before revert requested?
+	/// should a confirmation before revert requested?
 	virtual bool isRevertWithConfirmation() = 0;
-	/// FIXME
+	/**
+	 * Merge the current with the previous version
+	 * in a reverse patch kind of way, so that the
+	 * result is to revert the last changes.
+	 */
 	virtual void undoLast() = 0;
-	// can be this operation processed in the current RCS?
+	/// can this operation be processed in the current VCS?
 	virtual bool undoLastEnabled() = 0;
 	/**
 	 * getLog - read the revision log into the given file
@@ -81,13 +85,13 @@ public:
 	virtual bool toggleReadOnlyEnabled() = 0;
 	/// Return revision info specified by the argument.
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info) = 0;
-
+	/// can this operation be processed in the current VCS?
 	virtual bool prepareFileRevision(std::string const & rev, std::string & f) = 0;
-
+	/// can this operation be processed in the current VCS?
 	virtual bool prepareFileRevisionEnabled() = 0;
 
 	/// Check the directory of file and all parent directories
-	// for the existence of the given pathname
+	/// for the existence of the given pathname
 	static bool checkparentdirs(support::FileName const & file, std::string const & pathname);
 	
 protected:
@@ -98,7 +102,7 @@ protected:
 	/// If needed converts last or relative number to the absolute revision.
 	bool makeRCSRevision(std::string const &version, std::string &revis) const;
 	
-	// GUI container for doVCCommandCall
+	/// GUI container for doVCCommandCall
 	int doVCCommand(std::string const & cmd, support::FileName const & path, bool reportError = true);
 	/**
 	 * doVCCommandCall - call out to the version control utility

@@ -47,12 +47,13 @@ public:
 	  LyX loads a file. This function then checks for a master VC file (for
 	  RCS this is *,v or RCS/ *,v ; for CVS this is CVS/Entries and .svn/entries
 	  for SVN) if this file or entry is found, the loaded file is assumed to be
-	  under controll by VC, and the appropiate actions is taken.
+	  under control by VC, and the appropiate actions is taken.
 	  Returns true if the file is under control by a VCS.
 	  */
 	bool file_found_hook(support::FileName const & fn);
 
-	/** This function should be run when a file is requested for loading,
+	/** Is \p fn in under version control?
+	  This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
 	  file with the same name (see above function). If this exists the
 	  user should be asked if he/her wants to checkout a version for
@@ -64,7 +65,7 @@ public:
 	///
 	void setBuffer(Buffer *);
 
-	/// Register the document as an VC file.
+	/// Register the document as a VC file.
 	bool registrer();
 
 
