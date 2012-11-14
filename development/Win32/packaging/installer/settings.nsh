@@ -35,10 +35,10 @@ These typically need to be modified for each LyX release
 # File locations
 # !!! you need to adjust them to the folders in your Windows system !!!
 
-!define FILES_LYX "D:\LyXPackage2.0\LyX"
-!define FILES_DEPS "D:\LyXGit\2.0.x\lyx-windows-deps-msvc2008"
-!define FILES_BUNDLE "D:\LyX\depsbundle"
-!define FILES_QT "D:\Qt"
+!define FILES_LYX "C:\LyX\lyx-20-install"
+!define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
+!define FILES_BUNDLE "C:\LyX\depsbundle"
+!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.8.3"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
