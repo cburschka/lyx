@@ -111,6 +111,7 @@ Section -ProgramFiles SecProgramFiles
      ${if} $MultiUser.Privileges == "Admin"
       ${orif} $MultiUser.Privileges == "Power"
       ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+      StrCpy $PathBibTeXEditor $PathBibTeXEditor -14 # remove "\uninstall.exe"
      ${else}
       # for non-admin users we can only check if it is in the start menu
       ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"

@@ -235,8 +235,10 @@ Function EditorCheck
   ${else}
    SetRegView 32
    ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXnicCenter_is1" "InstallLocation"
-   StrCpy $0 $0 -1 # remove the "\"
-   StrCpy $EditorPath "$EditorPath;$0"
+   ${if} $0 != ""
+    StrCpy $0 $0 -1 # remove the "\"
+    StrCpy $EditorPath "$EditorPath;$0"
+   ${endif}
   ${endif}
   SetRegView 32
   
@@ -244,7 +246,7 @@ Function EditorCheck
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinEdt 7" "InstallLocation"
   ${if} $0 != ""
-   StrCpy $EditorPath "$EditorPath;$0"
+   StrCpy $EditorPath "$EditorPath;f$0"
   ${endif}
 
 FunctionEnd
