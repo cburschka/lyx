@@ -73,7 +73,11 @@ Function MissingPrograms
   ${if} ${RunningX64}
   ${andif} $GhostscriptPath == ""
    StrCpy $3 0
-   goto GSloop
+   # we have to assure that we only repeat once and not forever
+   ${if} $4 != "32"
+    StrCpy $4 "32"
+    goto GSloop
+   ${endif}
   ${endif}
 
   # test if Python is installed
