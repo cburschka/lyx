@@ -31,7 +31,7 @@ Function LaTeXActions
   Call LaTeXCheck # sets the path to the latex.exe to $PathLaTeX # Function from LyXUtils.nsh
   
   ${if} $PathLaTeX != ""
-   # check if MiKTeX 2.7 or newer is installed
+   # check if MiKTeX 2.8 or newer is installed
    StrCpy $0 0
    loopA:
     EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
@@ -40,10 +40,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopA
    doneA:
-   ${if} $String == "2.7"
-    StrCpy $MiKTeXVersion "2.7"
-    StrCpy $LaTeXName "MiKTeX 2.7"
-   ${endif}
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
@@ -73,10 +69,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopB
    doneB:
-   ${if} $String == "2.7"
-    StrCpy $MiKTeXVersion "2.7"
-    StrCpy $LaTeXName "MiKTeX 2.7"
-   ${endif}
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
@@ -119,7 +111,6 @@ Function LaTeXActions
    ${endif}
   ${endif}
   ${if} $PathLaTeX != ""
-  ${andif} $LaTeXName != "MiKTeX 2.7"
   ${andif} $LaTeXName != "MiKTeX 2.8"
   ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXName "TeXLive"
@@ -200,10 +191,11 @@ Function ConfigureMiKTeX
   ${endif}
   
   # only install a Perl interpreter if it is not already installed
-  # this is only possible if miktex and LyX is installed with the same privileges
+  # this is only possible if MikTeX _and_ LyX is installed with the same privileges
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX $MiKTeXVersion" "DisplayVersion"
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
-   ${if} $PathLaTeX != "$LOCALAPPDATA\MiKTeX\$MiKTeXVersion\miktex\bin"
+   ${if} $0 == ""
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
      MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)"
     ${endif}
@@ -265,20 +257,16 @@ Function UpdateMiKTeX
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
     StrCpy $0 $PathLaTeX -4 # remove "\bin"
-    # the update wizard is either started by the copystart_admin.exe
-    # or the miktex-update.exe (since MiKTeX 2.8)
+    # the update wizard is started by the miktex-update.exe
     ${if} $MultiUser.Privileges != "Admin"
     ${andif} $MultiUser.Privileges != "Power"
      # call the non-admin version
-     ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
-     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
     ${else}
      ${if} $MiKTeXUser != "HKCU" # call the admin version
-      ExecWait '"$PathLaTeX\copystart_admin.exe" "$0\config\update.dat"'
-      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard
+      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
      ${else}
-      ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
-      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+       ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
      ${endif}
     ${endif}
    UpdateLater:
