@@ -136,7 +136,7 @@ public:
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
 
-	static void retrieve(support::FileName const & file);
+	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 
@@ -209,6 +209,8 @@ public:
 
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
+
+	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 
@@ -336,6 +338,8 @@ public:
 
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
+
+	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 

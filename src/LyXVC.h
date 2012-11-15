@@ -43,6 +43,8 @@ public:
 	LyXVC();
 	///
 	~LyXVC();
+	/// Is \p fn under version control?
+	static bool fileInVC(support::FileName const & fn);
 	/** Not a good name perhaps. This function should be called whenever
 	  LyX loads a file. This function then checks for a master VC file (for
 	  RCS this is *,v or RCS/ *,v ; for CVS this is CVS/Entries and .svn/entries
@@ -52,7 +54,7 @@ public:
 	  */
 	bool file_found_hook(support::FileName const & fn);
 
-	/** Is \p fn in under version control?
+	/** Is \p fn under version control?
 	  This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
 	  file with the same name (see above function). If this exists the

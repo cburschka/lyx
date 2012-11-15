@@ -45,6 +45,18 @@ LyXVC::~LyXVC()
 {}
 
 
+bool LyXVC::fileInVC(FileName const & fn)
+{
+	if (!RCS::findFile(fn).empty())
+		return true;
+	if (!CVS::findFile(fn).empty())
+		return true;
+	if (!SVN::findFile(fn).empty())
+		return true;
+	return false;
+}
+
+
 bool LyXVC::file_found_hook(FileName const & fn)
 {
 	FileName found_file;
@@ -75,9 +87,10 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	// Check if file is under RCS.
 	// This happens if we are trying to load non existent
 	// file on disk, but existent in ,v version.
-	// Seems there is no reasonable scenario for adding implementation
-	// of retrieve for cvs or svn.
-	if (!RCS::findFile(fn).empty()) {	
+	bool foundRCS = !RCS::findFile(fn).empty();
+	bool foundCVS = foundRCS ? false : !CVS::findFile(fn).empty();
+	bool foundSVN = (foundRCS || foundCVS) ? false : !SVN::findFile(fn).empty();
+	if (foundRCS || foundCVS || foundSVN) {
 		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
 			bformat(_("Do you want to retrieve the document"
@@ -86,11 +99,17 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 			text, 0, 1, _("&Retrieve"), _("&Cancel"));
 
 		if (ret == 0) {
-			// How can we know _how_ to do the checkout?
-			// With the current VC support it has to be an RCS
-			// file since CVS and SVN do not have special ,v files.
-			RCS::retrieve(fn);
-			return true;
+			// Since the retrieve commands are implemented using
+			// more general update commands we need to ensure that
+			// we do not change an existing file by accident.
+			if (fn.exists())
+				return false;
+			if (foundRCS)
+				return RCS::retrieve(fn);
+			else if (foundCVS)
+				return CVS::retrieve(fn);
+			else
+				return SVN::retrieve(fn);
 		}
 	}
 	return false;

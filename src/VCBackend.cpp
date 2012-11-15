@@ -151,11 +151,12 @@ FileName const RCS::findFile(FileName const & file)
 }
 
 
-void RCS::retrieve(FileName const & file)
+bool RCS::retrieve(FileName const & file)
 {
 	LYXERR(Debug::LYXVC, "LyXVC::RCS: retrieve.\n\t" << file);
-	doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
-			 FileName());
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
+	                       FileName()) == 0;
 }
 
 
@@ -550,6 +551,15 @@ void CVS::scanMaster()
 			break;
 		}
 	}
+}
+
+
+bool CVS::retrieve(FileName const & file)
+{
+	LYXERR(Debug::LYXVC, "LyXVC::CVS: retrieve.\n\t" << file);
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("cvs -q update " + quoteName(file.toFilesystemEncoding()),
+	                       file.onlyPath()) == 0;
 }
 
 
@@ -1129,6 +1139,15 @@ bool SVN::isLocked() const
 	FileName file(owner_->absFileName());
 	file.refresh();
 	return !file.isReadOnly();
+}
+
+
+bool SVN::retrieve(FileName const & file)
+{
+	LYXERR(Debug::LYXVC, "LyXVC::SVN: retrieve.\n\t" << file);
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("svn update -q --non-interactive " + quoteName(file.onlyFileName()),
+	                       file.onlyPath()) == 0;
 }
 
 

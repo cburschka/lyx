@@ -1956,7 +1956,8 @@ void GuiView::openDocument(string const & fname)
 
 	// if the file doesn't exist and isn't already open (bug 6645),
 	// let the user create one
-	if (!fullname.exists() && !theBufferList().exists(fullname)) {
+	if (!fullname.exists() && !theBufferList().exists(fullname) &&
+	    !LyXVC::file_not_found_hook(fullname)) {
 		// the user specifically chose this name. Believe him.
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)
