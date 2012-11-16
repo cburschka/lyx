@@ -442,12 +442,12 @@ SectionEnd
 
 Section /o "Deutsch (D/A)" SecTGermanDA
  StrCpy $ThesCodes "de_DE$ThesCodes"
- AddSize 5360
+ AddSize 14600
 SectionEnd
 
 Section /o "Deutsch (CH)" SecTGermanCH
  StrCpy $ThesCodes "de_CH$ThesCodes"
- AddSize 5360
+ AddSize 14600
 SectionEnd
 
 Section /o "English (GB)" SecTEnglishGB

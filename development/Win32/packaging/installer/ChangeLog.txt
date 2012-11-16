@@ -1,4 +1,10 @@
-﻿Changelog for LyX-205-3:
+﻿Changelog for LyX-205-4:
+- fixed bug that EPS and PDF images were not be displayed if LyX was installed this time without admin privileges
+  but an older LyX version was once installed with admin privileges
+- correct the required disk space for the German thesaurus dictionaries 
+
+
+Changelog for LyX-205-3:
 - fixed infinite loop when starting the installer and not having Ghostscript previously installed (LyX bug #8417)
 - updated to JabRef 2.8.1
 - updated French and Spanish translation of the installer messages

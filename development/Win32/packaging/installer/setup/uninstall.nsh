@@ -18,16 +18,6 @@ Section "un.LyX" un.SecUnProgramFiles
   # need them and these few files don't harm to stay in LaTeX 
     
   # Binaries
-  #!insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListQtBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDll Delete "$INSTDIR\bin\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\bin\"
-  #!insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
   RMDir /r "$INSTDIR\bin"
 
   # Resources
@@ -36,25 +26,25 @@ Section "un.LyX" un.SecUnProgramFiles
   # Python
   RMDir /r "$INSTDIR\python"
   
-  # Components of ImageMagick
-  #!insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\imagemagick\"
+  # ImageMagick
   RMDir /r "$INSTDIR\imagemagick"
+  ReadRegStr $0 SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" # test if it was installed together with this LyX version
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" ""
+   DeleteRegKey SHCTX "Software\ImageMagick"
+  ${endif}
   
   # Components of Ghostscript
-  #!insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\ghostscript\"
   RMDir /r "$INSTDIR\ghostscript"
   
   # delete start menu folder
   ReadRegStr $0 SHCTX "${APP_UNINST_KEY}" "StartMenu"
   RMDir /r "$0"
-  #Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   # delete desktop icon
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   
   # remove file extension .lyx
-  ReadRegStr $0 SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" # special entry to test if they were registered by this LyX version
+  ReadRegStr $0 SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" # test if they were registered by this LyX version
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    ReadRegStr $R0 SHCTX "Software\Classes\${APP_EXT}" ""
    ${if} $R0 == "${APP_REGNAME_DOC}"

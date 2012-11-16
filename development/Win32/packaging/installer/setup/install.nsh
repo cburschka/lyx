@@ -88,6 +88,7 @@ Section -ProgramFiles SecProgramFiles
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
   WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
   
   # Components of Ghostscript
   ${if} $GhostscriptPath == ""
