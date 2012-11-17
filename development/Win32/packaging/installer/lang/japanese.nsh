@@ -1,3 +1,9 @@
+/*
+LyX Installer Language File
+Language: Japanese
+Author: Koji Yokata
+*/
+
 !insertmacro LANGFILE_EXT "Japanese"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(現ユーザー用に導入を行う)"

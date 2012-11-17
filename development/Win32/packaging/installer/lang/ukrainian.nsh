@@ -1,17 +1,23 @@
+/*
+LyX Installer Language File
+Language: Ukrainian
+Author: Yuri Chornoivan
+*/
+
 !insertmacro LANGFILE_EXT "Ukrainian"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Встановлено для поточного користувача)"
 
 ${LangFileString} TEXT_WELCOME "За допомогою цього майстра ви зможете встановити LyX у вашу систему.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Оновлення бази даних назв файлів MiKTeX..."
+${LangFileString} TEXT_CONFIGURE_LYX "Налаштовування LyX (може виникнути потреба у отриманні MiKTeX додаткових пакунків, зачекайте)..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Обробка скриптів Python..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
-${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
+${LangFileString} TEXT_FINISH_DESKTOP "Створити значок на стільниці"
+${LangFileString} TEXT_FINISH_WEBSITE "Відвідати lyx.org, щоб ознайомитися з новинами, довідковими матеріалами та підказками"
 
 ${LangFileString} FileTypeTitle "Документ LyX"
 
@@ -25,8 +31,8 @@ ${LangFileString} SecInstJabRefDescription "Засіб для роботи з бібліографічними 
 ${LangFileString} SecAllUsersDescription "Визначає, чи слід встановити LyX для всіх користувачів, чи лише для поточного користувача."
 ${LangFileString} SecFileAssocDescription "Файли з суфіксом .lyx автоматично відкриватимуться за допомогою LyX."
 ${LangFileString} SecDesktopDescription "Піктограма LyX на стільниці."
-${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
-${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
+${LangFileString} SecDictionariesDescription "Словники для перевірки правопису, які можна отримати і встановити."
+${LangFileString} SecThesaurusDescription "Словники синонімів, які можна отримати і встановити."
 
 ${LangFileString} EnterLaTeXHeader1 'Дистрибутив LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Вкажіть дистрибутив LaTeX, який має використовувати LyX.'
@@ -53,8 +59,8 @@ ${LangFileString} LatexError1 'Дистрибутивів LaTeX не виявлено!$\r$\n\
 				Ви не зможете користуватися LyX без дистрибутива LaTeX на зразок $\"MiKTeX$\"!$\r$\n\
 				З цієї причини встановлення буде припинено.'
       
-${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
-${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+${LangFileString} HunspellFailed 'Спроба отримання словника для мови $\"$R3$\" зазнала невдачі.'
+${LangFileString} ThesaurusFailed 'Спроба отримання словника синонімів для мови $\"$R3$\" зазнала невдачі.'
 
 ${LangFileString} JabRefInfo 'Тепер буде запущено засіб для встановлення програми $\"JabRef$\".$\r$\n\
 				У засобі для встановлення ви можете не змінювати типових параметрів JabRef.'
@@ -78,14 +84,14 @@ ${LangFileString} RunConfigureFailed "Не вдалося виконати скрипт налаштування"
 ${LangFileString} NotAdmin "Для встановлення LyX вам потрібні привілеї адміністратора!"
 ${LangFileString} InstallRunning "Засіб для встановлення вже працює!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} вже встановлено! Спочатку вилучіть його LyX."
-${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
+${LangFileString} NewerInstalled "Ви намагаєтеся встановити версію LyX, яка є застарілою порівняно з вже встановленою.$\r$\n\
+				  Якщо ви хочете встановити застарілу версію, вам слід спочатку вилучити вже встановлений LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-						MiKTeX was installed with administrator privileges but you are installing LyX without them."
-${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
-					available because that requires to install a software printer to$\r$\n\
-					Windows which is only possible with administrator privileges."
+${LangFileString} MultipleIndexesNotAvailable "Ви не зможете скористатися підтримкою декількох покажчиків у документі, оскільки $\r$\n\
+						MiKTeX було встановлено від імені адміністратора, а LyX - від імені звичайного користувача."
+${LangFileString} MetafileNotAvailable "Ви не зможете скористатися підтримкою роботи з зображеннями у форматах EMF і WMF,$\r$\n\
+					оскільки для роботи з такими зображеннями потрібен програмний принтер для$\r$\n\
+					Windows, встановити який можна лише від імені адміністратора системи."
 
 ${LangFileString} FinishPageMessage "Вітаємо! LyX було успішно встановлено.$\r$\n\
 					$\r$\n\

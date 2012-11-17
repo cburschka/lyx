@@ -1,3 +1,9 @@
+/*
+LyX Installer Language File
+Language: Spanish
+Author: Ignacio García
+*/
+
 !insertmacro LANGFILE_EXT "Spanish"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Instalado para el actual usuario)"

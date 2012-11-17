@@ -1,9 +1,7 @@
 /*
-
 LyX Installer Language File
 Language: English
 Author: Joost Verburg, Uwe Stöhr
-
 */
 
 !insertmacro LANGFILE_EXT "English"

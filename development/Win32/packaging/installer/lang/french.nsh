@@ -1,9 +1,7 @@
 /*
-
 LyX Installer Language File
 Language: French
-Author: Jean-Pierre Chrétien
-
+Authors: Jean-Pierre Chrétien and Siegfried Meunier-Guttin-Cluzel
 */
 
 !insertmacro LANGFILE_EXT "French"

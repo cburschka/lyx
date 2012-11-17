@@ -1,9 +1,7 @@
 /*
-
 LyX Installer Language File
 Language: German
 Author: Uwe Stöhr
-
 */
 
 !insertmacro LANGFILE_EXT "German"

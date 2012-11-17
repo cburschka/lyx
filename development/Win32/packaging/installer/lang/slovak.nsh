@@ -1,9 +1,7 @@
 /*
-
 LyX Installer Language File
 Language: Slovak
 Author: Kornel Benko
-
 */
 
 !insertmacro LANGFILE_EXT "Slovak"
