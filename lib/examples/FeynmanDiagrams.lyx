@@ -23,19 +23,7 @@
 
 \fi % end if pdflatex is used
 
-% increase link area for cross-references and autoname them,
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\AtBeginDocument{%
-\addto\extrasenglish{
- \renewcommand{\equationautorefname}{\hspace{-\abc}}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
-}
-
-% wird benutzt, um Tabellenzellen zu vergrößern
+% used to have extra space in table cells
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
 \setlength{\extrarowheight}{5pt}
@@ -112,6 +100,19 @@
 
 \begin_layout Title
 Feynman Diagrams
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+authors: Uwe Stöhr and Ronen Abravanel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
