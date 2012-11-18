@@ -23,12 +23,10 @@
 
 \fi % end if pdflatex is used
 
-% Folgendes Problem lösen:
-% Besteht die Kapitelnummer aus zu vielen Ziffern, wird  die
-% Kapitelüberschrift im Inhaltsverzeichnis direkt an oder über
-% die Kapitelnummer geschrieben.
-% Als Lösung wird mehr Platz zwischen Nummer und
-% Überschrift eingefügt.
+% solves the following problem:
+% If the dection number consits of too many numerals the section heading
+% will be printed in the TOC without a space between it and the section number.
+% As solution more space between the number and the heading is inserted:
 \renewcommand{\l@subsection}{\@dottedtocline{2}{1.5em}{2.8em}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{4.3em}{3.6em}}
 
@@ -39,6 +37,7 @@
 
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
 \addto\extrasenglish{%
  \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
