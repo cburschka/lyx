@@ -71,6 +71,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
+- Make the thesis template compilable again. (The reason for this bug
+  was that LyX no longer loads the babel package if the document
+  language is English and no other languages are used in the file.)
 
 
 * LYXHTML

@@ -5,7 +5,10 @@
 \textclass scrbook
 \begin_preamble
 % increases link area for cross-references and autoname them
+% if you change the document language to e.g. French
+% you must change "extrasenglish" to "extrasfrench"
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
 \addto\extrasenglish{%
  \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
