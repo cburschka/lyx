@@ -23,6 +23,7 @@
 #include <cerrno>
 #include <map>
 #include <ostream>
+//Needed in MSVC
 #include <string>
 
 

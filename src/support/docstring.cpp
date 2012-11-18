@@ -19,6 +19,7 @@
 
 #include <QFile>
 
+//Needed in Ubuntu
 #include <typeinfo>
 #if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 #include <locale>
