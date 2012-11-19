@@ -72,7 +72,11 @@ Style Title
   EndFont
   HTMLTag               h1
   HTMLTitle             true
-  OptionalArgs          1
+  Argument 1
+  	LabelString   "Short Title"
+  	Shortcut      S
+  	Tooltip       "Short Title which appears in the running headers"
+  EndArgument
 End  
 
 Style Author
@@ -95,7 +99,11 @@ End
 Style Affiliation
   CopyStyle             Author
   LatexName             affiliation
-  OptionalArgs          1
+  Argument 1
+  	LabelString   "Short Affiliation"
+  	Shortcut      S
+  	Tooltip       "Short version of the affiliation"
+  EndArgument
 End
 
 Style Alt_Affiliation

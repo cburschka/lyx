@@ -53,15 +53,24 @@ EndPreamble
 # argument. See enumitem.pdf_ for possible values.
 
 IfStyle Itemize
-	OptionalArgs          1
+	Argument option
+		LabelString   "Itemize Options"
+		Tooltip       "Optional arguments for this list (see enumitem manual)"
+	EndArgument
 End
 
 IfStyle Enumerate
-	OptionalArgs          1
+	Argument option
+		LabelString   "Enumerate Options"
+		Tooltip       "Optional arguments for this list (see enumitem manual)"
+	EndArgument
 End
 
 IfStyle Description
-	OptionalArgs          1
+	Argument option
+		LabelString   "Description Options"
+		Tooltip       "Optional arguments for this list (see enumitem manual)"
+	EndArgument
 End
 
 
@@ -93,7 +102,7 @@ End
 Style Enumerate-Resume
 	CopyStyle             Enumerate
 	LatexParam            [resume]
-	OptionalArgs          0
+	ResetArgs             1
 	# a blue label to indicate that this is not a WYSIWYG label
 	# because the numbering differs in the output
 	LabelFont

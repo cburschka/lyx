@@ -13,6 +13,7 @@
 #include "InsetText.h"
 
 #include "insets/InsetArgument.h"
+#include "insets/InsetLayout.h"
 
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -30,6 +31,7 @@
 #include "InsetList.h"
 #include "Intl.h"
 #include "Language.h"
+#include "Layout.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "lyxfind.h"
@@ -54,6 +56,7 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -327,6 +330,37 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (target_inset)
 			status.setEnabled(!main_inset && one_cell);
 		return target_inset;
+	}
+
+	case LFUN_ARGUMENT_INSERT: {
+		string const arg = cmd.getArg(0);
+		if (arg.empty()) {
+			status.setEnabled(false);
+			return true;
+		}
+		if (&buffer().inset() == this || !cur.paragraph().layout().latexargs().empty())
+			return text_.getStatus(cur, cmd, status);
+		Layout::LaTeXArgMap args = getLayout().latexargs();
+		Layout::LaTeXArgMap::const_iterator const lait =
+				args.find(convert<unsigned int>(arg));
+		if (lait != args.end()) {
+			InsetList::const_iterator it = cur.paragraph().insetList().begin();
+			InsetList::const_iterator end = cur.paragraph().insetList().end();
+			for (; it != end; ++it) {
+				if (it->inset->lyxCode() == ARG_CODE) {
+					InsetArgument const * ins =
+						static_cast<InsetArgument const *>(it->inset);
+					if (ins->name() == arg) {
+						// we have this already
+						status.setEnabled(false);
+						return true;
+					}
+				}
+			}
+			status.setEnabled(true);
+		} else
+			status.setEnabled(false);
+		return true;
 	}
 
 	default:

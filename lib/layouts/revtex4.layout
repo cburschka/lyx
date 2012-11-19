@@ -154,7 +154,11 @@ Style Affiliation_(alternate)
 	PassThru              1
 	ParbreakIsNewline     1
 	LatexName             altaffiliation
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Alternate Affiliation Option"
+		Shortcut      S
+		Tooltip       "Optional argument to the altaffiliation command"
+	EndArgument
 	LabelString           "Affiliation (alternate):"
 End
 
@@ -200,7 +204,11 @@ Style Author_Email
 	PassThru              1
 	ParbreakIsNewline     1
 	LatexName             email
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Electronic Address Option"
+		Shortcut      S
+		Tooltip       "Optional argument to the email command"
+	EndArgument
 	LabelString           "Electronic Address:"
 	TextFont
 	  Family              Typewriter
@@ -216,7 +224,11 @@ Style Author_URL
 	PassThru              1
 	ParbreakIsNewline     1
 	LatexName             homepage
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Author URL Option"
+		Shortcut      S
+		Tooltip       "Optional argument to the homepage command"
+	EndArgument
 	LabelString           "URL:"
 End
 

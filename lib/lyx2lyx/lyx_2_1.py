@@ -1130,6 +1130,31 @@ def revert_uop(document):
                 document.header[i] = "\\font_sans default"
 
 
+def convert_latexargs(document):
+    " Convert InsetArgument to new syntax "
+
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Argument", i)
+      if i == -1:
+        return
+      # We cannot do more here since we have no access to the layout
+      # InsetArgument itself will do the real work
+      document.body[i] = "\\begin_inset Argument 999"
+      i = i + 1
+
+
+def revert_latexargs(document):
+    " Revert InsetArgument to old syntax "
+
+    # What needs to be done is this:
+    # * find all arguments in a paragraph and reorder them
+    #   according to their name (which is deleted)
+    # So: \\begin_inset Argument 2 ... \\begin_inset Argument 1
+    # => \\begin_inset Argument ... \\begin_inset Argument
+    #    with correct order.
+
+
 ##
 # Conversion hub
 #
@@ -1167,10 +1192,12 @@ convert = [
            [442, []],
            [443, []],
            [444, []],
-           [445, []]
+           [445, []],
+           [446, [convert_latexargs]]
           ]
 
 revert =  [
+           [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
            [442, []],

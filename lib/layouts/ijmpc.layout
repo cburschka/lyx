@@ -103,7 +103,7 @@ Style Title
   LatexName	title
   Category	FrontMatter
   InTitle	1
-  OptionalArgs	0
+  ResetArgs     1
   ParSkip	0.4
   ItemSep	0
   TopSep	0
@@ -121,7 +121,10 @@ Style Author
   LatexType	Command
   Category	FrontMatter
   InTitle	1
-  OptionalArgs	1
+  Argument 1
+  	LabelString   "Author Option"
+  	Tooltip       "Optional argument for author"
+  EndArgument
   LatexName	author
   LabelSep	xxx
   ParSkip	0.4
@@ -294,7 +297,10 @@ Style RomanList
   Margin	Static
   LatexType	Item_Environment
   LatexName	romanlist
-  OptionalArgs	1
+  Argument 1
+  	LabelString   "RomanList Option"
+  	Tooltip       "Optional argument for RomanList"
+  EndArgument
   NextNoIndent	1
   LeftMargin	MMN
   LabelSep	xx
@@ -334,7 +340,7 @@ Style Proof
 End
 
 Style Theorem
-  OptionalArgs	0
+  ResetArgs      1
   LabelString	"Theorem \thetheorem."
   #Font
    #Shape	Up

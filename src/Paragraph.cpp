@@ -1461,9 +1461,9 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			// we have to provide all the optional arguments here, even though
 			// the last one is the only one we care about.
 			// Separate handling of optional argument inset.
-			if (layout_->optargs != 0 || layout_->reqargs != 0)
+			if (layout_->latexargs().size() != 0)
 				latexArgInsets(*owner_, os, features.runparams(),
-					layout_->reqargs, layout_->optargs);
+					       layout_->latexargs());
 			else
 				os << from_ascii(layout_->latexparam());
 		}

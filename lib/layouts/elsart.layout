@@ -122,7 +122,10 @@ Style Author
 	ItemSep               0
 	ParSep                0
 	Align                 Center
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Author Option"
+		Tooltip       "Optional argument for the author"
+	EndArgument
 	Font
 	  Series              Bold
 	EndFont
@@ -138,7 +141,10 @@ Style Author_Address
 	Labeltype             Static
 	LabelSep              M
 	LabelString           "Address:"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Address Option"
+		Tooltip       "Optional argument for the address"
+	EndArgument
 	LabelFont
 	  Shape               Italic
 	EndFont
@@ -194,7 +200,10 @@ Style Thanks
 	LatexType             Command
 	LatexName             thanks
 	InTitle               1
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Thanks Option"
+		Tooltip       "Optional argument for the Thanks statement"
+	EndArgument
 	Font
 	  Size                Small
 	  Family              Typewriter

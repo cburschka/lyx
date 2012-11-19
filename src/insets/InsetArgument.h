@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSETOPTARG_H
-#define INSETOPTARG_H
+#ifndef INSETARGUMENT_H
+#define INSETARGUMENT_H
 
 
 #include "InsetCollapsable.h"
@@ -27,11 +27,13 @@ class InsetArgument : public InsetCollapsable
 {
 public:
 	///
-	InsetArgument(Buffer *);
+	InsetArgument(Buffer *, std::string const &);
 
 	/// Outputting the parameter of a LaTeX command
 	void latexArgument(otexstream &, OutputParams const &,
-			bool optional) const;
+			docstring const&, docstring const &) const;
+
+	std::string name() const { return name_; }
 
 	/// \name Public functions inherited from Inset class
 	//@{
@@ -41,6 +43,8 @@ public:
 	InsetCode lyxCode() const { return ARG_CODE; }
 	///
 	docstring layoutName() const { return from_ascii("Argument"); }
+	/// Update the label string of this inset
+	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void latex(otexstream &, OutputParams const &) const { }
 	///
@@ -49,12 +53,29 @@ public:
 	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const 
-		{ return docstring(); };
+		{ return docstring(); }
 	///
 	void write(std::ostream & os) const;
 	///
+	void read(Lexer & lex);
+	///
 	bool neverIndent() const { return true; }
 	//@}
+	/// \name Public functions inherited from InsetCollapsable class
+	//@{
+	///
+	void setButtonLabel();
+	//@}
+
+private:
+	///
+	docstring toolTip(BufferView const & bv, int, int) const;
+	///
+	std::string name_;
+	///
+	docstring labelstring_;
+	///
+	docstring tooltip_;
 
 protected:
 	/// \name Protected functions inherited from Inset class
@@ -67,4 +88,4 @@ protected:
 
 } // namespace lyx
 
-#endif // INSETOPTARG_H
+#endif // INSETARGUMENT_H

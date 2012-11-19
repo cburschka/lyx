@@ -16,7 +16,10 @@ Style "Left Header"
   LabelSep		xx
   LatexName	        lhead
   LabelString		"Left Header:"
-  OptionalArgs		1
+  Argument even
+  	LabelString   "Even Header"
+  	Tooltip       "Alternative text for the even header"
+  EndArgument
   KeepEmpty		1
   ParSkip		0
   TopSep		0

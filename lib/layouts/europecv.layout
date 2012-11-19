@@ -33,7 +33,11 @@ Style Section
 	LatexName		ecvsection
 	NeedProtect		1
 	NextNoIndent		1
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Title as it appears in the header"
+	EndArgument
 	ParSkip			0.4
 	TopSep			1.3
 	BottomSep		0.7
@@ -52,7 +56,11 @@ Style Item
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		ecvitem
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Vertical Space (Item)"
+		Shortcut      S
+		Tooltip       "Adjust the vertical space of this item"
+	EndArgument
 	ParSkip			0.4
 	Align			Block
 	LabelSep		xx
@@ -98,7 +106,11 @@ Style MotherTongue
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		ecvmothertongue
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Vertical Space (Item)"
+		Shortcut      S
+		Tooltip       "Adjust the vertical space of this item"
+	EndArgument
 	ParSkip			0.4
 	Align			Block
 	LabelSep		xx
@@ -113,7 +125,7 @@ End
 Style LangHeader
 	CopyStyle		MotherTongue
 	LatexName		ecvlanguageheader
-	OptionalArgs		0
+	ResetArgs       	1
 	LabelString		"Language Header:"
 End
 
@@ -132,7 +144,7 @@ End
 Style LangFooter
 	CopyStyle		MotherTongue
 	LatexName		ecvlanguagefooter
-	OptionalArgs		0
+	ResetArgs       	1
 	LabelString		"Language Footer:"
 End
 

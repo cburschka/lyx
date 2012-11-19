@@ -45,7 +45,11 @@ Style Section
 	  Series              Bold
 	EndFont
 		TocLevel 1
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Section as it appears in the TOC/Headers"
+	EndArgument
 End
 
 

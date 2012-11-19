@@ -15,6 +15,7 @@
 #include "InsetLayout.h"
 
 #include "ColorSet.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
 
@@ -76,6 +77,7 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 {
 	enum {
+		IL_ARGUMENT,
 		IL_BABELPREAMBLE,
 		IL_BGCOLOR,
 		IL_CONTENTASLABEL,
@@ -120,6 +122,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 
 	LexerKeyword elementTags[] = {
+		{ "argument", IL_ARGUMENT },
 		{ "babelpreamble", IL_BABELPREAMBLE },
 		{ "bgcolor", IL_BGCOLOR },
 		{ "contentaslabel", IL_CONTENTASLABEL },
@@ -309,6 +312,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			labelfont_ = font_;
 			break;
 		}
+		case IL_ARGUMENT:
+			readArgument(lex);
+			break;
 		case IL_BGCOLOR:
 			lex >> tmp;
 			bgcolor_ = lcolor.getFromLyXName(tmp);
@@ -472,6 +478,77 @@ docstring InsetLayout::htmlstyle() const
 	if (!htmlstyle_.empty())
 		retval += '\n' + htmlstyle_ + '\n';
 	return retval;
+}
+
+void InsetLayout::readArgument(Lexer & lex)
+{
+	Layout::latexarg arg;
+	arg.mandatory = false;
+	bool error = false;
+	bool finished = false;
+	unsigned int nr;
+	lex >> nr;
+	while (!finished && lex.isOK() && !error) {
+		lex.next();
+		string const tok = support::ascii_lowercase(lex.getString());
+
+		if (tok.empty()) {
+			continue;
+		} else if (tok == "endargument") {
+			finished = true;
+		} else if (tok == "labelstring") {
+			lex.next();
+			arg.labelstring = lex.getDocString();
+		} else if (tok == "mandatory") {
+			lex.next();
+			arg.mandatory = lex.getBool();
+		} else if (tok == "leftdelim") {
+			lex.next();
+			arg.ldelim = lex.getDocString();
+		} else if (tok == "rightdelim") {
+			lex.next();
+			arg.rdelim = lex.getDocString();
+		} else if (tok == "tooltip") {
+			lex.next();
+			arg.tooltip = lex.getDocString();
+		} else if (tok == "shortcut") {
+			lex.next();
+			arg.shortcut = lex.getString();
+		} else if (tok == "requires") {
+			lex.next();
+			arg.requires = lex.getString();
+		} else {
+			lex.printError("Unknown tag");
+			error = true;
+		}
+	}
+	if (arg.labelstring.empty())
+		LYXERR0("Incomplete Argument definition!");
+	else
+		latexargs_[nr] = arg;
+}
+
+int InsetLayout::optArgs() const
+{
+	int nr = 0;
+	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();
+	for (; it != latexargs_.end(); ++it) {
+		if (!(*it).second.mandatory)
+			++nr;
+	}
+	return nr;
+}
+
+
+int InsetLayout::requiredArgs() const
+{
+	int nr = 0;
+	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();
+	for (; it != latexargs_.end(); ++it) {
+		if ((*it).second.mandatory)
+			++nr;
+	}
+	return nr;
 }
 
 

@@ -201,10 +201,6 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(false);
 		return true;
 
-	case LFUN_ARGUMENT_INSERT:
-		status.setEnabled(cur.paragraph().insetList().find(ARG_CODE) == -1);
-		return true;
-
 	case LFUN_INSET_TOGGLE:
 		// pass back to owner
 		cur.undispatched();
@@ -232,7 +228,7 @@ void InsetCaption::latex(otexstream & os,
 	// optional argument.
 	runparams.moving_arg = true;
 	os << "\\caption";
-	latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
+	getOptArg(os, runparams);
 	os << '{';
 	InsetText::latex(os, runparams);
 	os << "}\n";
@@ -287,7 +283,7 @@ void InsetCaption::getArgument(otexstream & os,
 void InsetCaption::getOptArg(otexstream & os,
 			OutputParams const & runparams) const
 {
-	latexArgInsets(paragraphs()[0], os, runparams, 0, 1);
+	latexArgInsets(paragraphs()[0], os, runparams, getLayout().latexargs());
 }
 
 

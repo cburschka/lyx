@@ -628,8 +628,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	context.check_deeper(os);
 	context.check_layout(os);
-	unsigned int optargs = 0;
-	while (optargs < context.layout->optargs) {
+	int optargs = 0;
+	while (optargs < context.layout->optArgs()) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().cat() == catEscape ||
 		    p.next_token().character() != '[')
@@ -642,8 +642,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		eat_whitespace(p, os, context, false);
 		++optargs;
 	}
-	unsigned int reqargs = 0;
-	while (reqargs < context.layout->reqargs) {
+	int reqargs = 0;
+	while (reqargs < context.layout->requiredArgs()) {
 		eat_whitespace(p, os, context, false);
 		if (p.next_token().cat() != catBegin)
 			break;
@@ -1603,8 +1603,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// but before the first \\item.
 		if (context.layout->latextype == LATEX_ENVIRONMENT) {
 			bool need_layout = true;
-			unsigned int optargs = 0;
-			while (optargs < context.layout->optargs) {
+			int optargs = 0;
+			while (optargs < context.layout->optArgs()) {
 				eat_whitespace(p, os, context, false);
 				if (p.next_token().cat() == catEscape ||
 				    p.next_token().character() != '[')
@@ -1621,8 +1621,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				eat_whitespace(p, os, context, false);
 				++optargs;
 			}
-			unsigned int reqargs = 0;
-			while (reqargs < context.layout->reqargs) {
+			int reqargs = 0;
+			while (reqargs < context.layout->requiredArgs()) {
 				eat_whitespace(p, os, context, false);
 				if (p.next_token().cat() != catBegin)
 					break;

@@ -369,7 +369,7 @@ Menuset
 		Item "Hyperlink...|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
-		Item "Short Title|S" "argument-insert"
+		Arguments
 		Item "TeX Code|X" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"

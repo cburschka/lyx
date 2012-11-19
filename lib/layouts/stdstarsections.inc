@@ -17,7 +17,7 @@ Style Part*
 	LatexName	part*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -28,7 +28,7 @@ Style Chapter*
 	LatexName	chapter*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -39,7 +39,7 @@ Style Section*
 	LatexName	section*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -50,7 +50,7 @@ Style Subsection*
 	LatexName	subsection*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -61,7 +61,7 @@ Style Subsubsection*
 	LatexName	subsubsection*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -72,7 +72,7 @@ Style Paragraph*
 	LatexName	paragraph*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End
 
 
@@ -83,5 +83,5 @@ Style Subparagraph*
 	LatexName	subparagraph*
 	LabelType	No_Label
 	LabelCounter	""
-	OptionalArgs	0
+	ResetArgs       1
 End

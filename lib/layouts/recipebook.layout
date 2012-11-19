@@ -114,7 +114,10 @@ End
 Style Ingredients
   LatexType		Command
   LatexName		ingred
-  OptionalArgs		1
+  Argument 1
+  	LabelString   "Ingredients Header"
+  	Tooltip       "Ingredients Header"
+  EndArgument
   Margin		Static
   LeftMargin		Ingredients_for_some:xx
   LabelSep		xx

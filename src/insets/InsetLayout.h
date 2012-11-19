@@ -15,6 +15,7 @@
 
 #include "ColorCode.h"
 #include "FontInfo.h"
+#include "Layout.h"
 
 #include "support/docstring.h"
 
@@ -80,6 +81,12 @@ public:
 	FontInfo labelfont() const { return labelfont_; }
 	///
 	ColorCode bgcolor() const { return bgcolor_; }
+	///
+	Layout::LaTeXArgMap latexargs() const { return latexargs_; }
+	///
+	int optArgs() const;
+	///
+	int requiredArgs() const;
 	///
 	docstring preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this inset
@@ -158,6 +165,8 @@ private:
 	std::string defaultCSSClass() const;
 	///
 	std::string defaultCSSLabelClass() const { return defaultCSSClass() + "_label"; }
+	///
+	void readArgument(Lexer &);
 	///
 	docstring name_;
 	/**
@@ -245,6 +254,8 @@ private:
 	bool resetsfont_;
 	///
 	bool display_;
+	///
+	Layout::LaTeXArgMap latexargs_;
 };
 
 ///

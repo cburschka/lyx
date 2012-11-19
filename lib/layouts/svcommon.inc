@@ -69,7 +69,7 @@ Style Front_Matter
 	LatexType	Command
 	LatexName	frontmatter
 	KeepEmpty	1
-	OptionalArgs	0
+	ResetArgs       1
 	Margin		First_Dynamic
 	NextNoIndent	1
 	ParSkip		0
@@ -135,7 +135,11 @@ Style PartBacktext
 	  Shape		Up
 	  Size		normal
 	EndFont
-	RequiredArgs	1
+	Argument 1
+		Mandatory     1
+		LabelString   "Part Title"
+		Tooltip       "The title of this part"
+	EndArgument
 	Preamble
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}
 	  \part{#1}}{\end{partbacktext}}
@@ -510,7 +514,10 @@ Style Foreword
 	BottomSep	0.8
 	ParSep		0.8
 	Align		Block
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Alternative Foreword Heading"
+		Tooltip       "Alternative foreword heading"
+	EndArgument
 	Font
 	  Series	Bold
 	  Size		Huge
@@ -586,7 +593,10 @@ Style Bibliography
 End
 
 Style Description
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Longest Description Label"
+		Tooltip       "Longest description label"
+	EndArgument
 	LabelFont
 	  Series	Medium
 	EndFont

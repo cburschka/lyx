@@ -68,7 +68,10 @@ Style Entry
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		cventry
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Entry Option"
+		Tooltip       "Optional Argument to the cventry command"
+	EndArgument
 	ParSkip			0.4
 	Align			Block
 	LabelSep		xx
@@ -84,7 +87,10 @@ Style Item
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		cvitem
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Item Option"
+		Tooltip       "Optional Argument to the cvitem command"
+	EndArgument
 	ParSkip			0.4
 	Align			Block
 	LabelSep		xx

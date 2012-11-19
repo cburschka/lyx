@@ -469,6 +469,11 @@ InsetLayout Info:shortcuts
 End
 
 InsetLayout Caption
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+	EndArgument
 	HTMLStyle
 		div.float-caption {
 			text-align: center;

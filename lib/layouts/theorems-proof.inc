@@ -16,7 +16,10 @@ Style Proof
 	LatexType             Environment
 	LatexName             proof
 	NextNoIndent          1
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Alternative Proof String"
+		Tooltip       "Alternative proof string"
+	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4

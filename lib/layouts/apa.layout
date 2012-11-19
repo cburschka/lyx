@@ -244,7 +244,11 @@ Style CenteredCaption
 	Align                 Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+	EndArgument
 	LabelFont
 	  Series              Bold
 	EndFont

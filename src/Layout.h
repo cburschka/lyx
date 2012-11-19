@@ -17,8 +17,10 @@
 #include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "Spacing.h"
+#include "support/debug.h"
 #include "support/docstring.h"
 
+#include <map>
 #include <set>
 #include <string>
 
@@ -72,6 +74,8 @@ public:
 	///
 	void readSpacing(Lexer &);
 	///
+	void readArgument(Lexer &);
+	///
 	docstring const & name() const { return name_; }
 	///
 	void setName(docstring const & n) { name_ = n; }
@@ -83,6 +87,24 @@ public:
 	std::string const & latexname() const { return latexname_; }
 	///
 	void setLatexName(std::string const & n) { latexname_ = n; }
+	/// The arguments of this layout
+	struct latexarg {
+		docstring labelstring;
+		bool mandatory;
+		docstring ldelim;
+		docstring rdelim;
+		docstring tooltip;
+		std::string shortcut;
+		std::string requires;
+	};
+	///
+	typedef std::map<unsigned int, latexarg> LaTeXArgMap;
+	///
+	LaTeXArgMap const & latexargs() const { return latexargs_; }
+	///
+	int optArgs() const;
+	///
+	int requiredArgs() const;
 	///
 	docstring const & labelstring(bool in_appendix) const 
 	{ return in_appendix ? labelstring_appendix_ : labelstring_; }
@@ -238,15 +260,6 @@ public:
 	bool intitle;
 	/// Is the content to go in the preamble rather than the body?
 	bool inpreamble;
-	/// Number of requried arguments for this command or environment
-	unsigned int reqargs;
-	/// Number of optional arguments for this command or environment
-	/// These MUST come at the beginning, so:
-	///  \cmd[opt1][opt2]{req1}{here is the text from LyX}
-	/// is fine. But:
-	///  \cmd[opt1]{req1}[opt2]{here is the text from LyX}
-	/// is not.
-	unsigned int optargs;
 	/// Which counter to step
 	docstring counter;
 	/// Prefix to use when creating labels
@@ -374,6 +387,8 @@ private:
 	docstring babelpreamble_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
+	///
+	LaTeXArgMap latexargs_;
 };
 
 } // namespace lyx

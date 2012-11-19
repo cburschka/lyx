@@ -51,49 +51,111 @@ Input numreport.inc
 
 
 Style Part
-	OptionalArgs         1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
 	TocLevel 	     -1
 End
       	
 
 
 Style Chapter
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 	     0
 End
 
 
 Style Chapter*
-	OptionalArgs         1
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
 End
 
 
 Style Section
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 1
 End
 
 
 Style Subsection
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 2
 End
 
 
 Style Subsubsection
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 3
 End
 
 
 Style Paragraph
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 4
 End
 
 
 Style Subparagraph
-	OptionalArgs         2
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	TocLevel 5
 End
 
@@ -129,12 +191,10 @@ Style Epigraph
 	Align                 Left
 End
 
-#FIXME: what is actually documented is \PoemTitle
-#but \poemtitle is defined nevertheless. Weird.
 Style Poemtitle
 	Category              Section
 	LatexType             Command
-	LatexName             poemtitle
+	LatexName             PoemTitle
 	NeedProtect           1
 	NextNoIndent          1
 	LabelSep              xxx
@@ -142,7 +202,16 @@ Style Poemtitle
 	TopSep                0.4
 	ParSep                0.4
 	Align                 center
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The Part as it appears in the Header"
+		Requires      shorttitle
+	EndArgument
 	Font
 	   Series             Bold
 	EndFont
@@ -152,8 +221,12 @@ End
 Style Poemtitle*
 	CopyStyle             Poemtitle
 	Category              Unnumbered
-	LatexName             poemtitle*
-	OptionalArgs          0
+	LatexName             PoemTitle*
+	Argument 1
+		LabelString   "Short Title (TOC)"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
 End
 
 

@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "support/docstream.h"
+#include "Layout.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "ParagraphList.h"
@@ -37,7 +38,7 @@ class Text;
 /// must all come first.
 void latexArgInsets(Paragraph const & par,
 		otexstream & os, OutputParams const & runparams,
-		unsigned int reqargs, unsigned int optargs);
+		Layout::LaTeXArgMap latexargs);
 
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is

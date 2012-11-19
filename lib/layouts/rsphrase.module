@@ -44,7 +44,11 @@ Style "Safety phrase"
 	LatexName		rsphrase
 	Category		MainText
 	NextNoIndent		1
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Safety Phrase Option"
+		Shortcut      S
+		Tooltip       "Optional argument to the rsphrase command"
+	EndArgument
 	KeepEmpty		1
 	Margin			Dynamic
 	LabelSep		xx

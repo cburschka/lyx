@@ -131,7 +131,10 @@ Style Slide
   LabelType     Counter
   LabelCounter  subsection
   LabelString   "    "
-  OptionalArgs  1
+  Argument 1
+  	LabelString   "Slide Option"
+  	Tooltip       "Optional arguments to the slide command (see powerdot manual)"
+  EndArgument
   Font
     Series      Bold
     Size        Large
@@ -154,7 +157,7 @@ Style EndSlide
   LabelBottomSep    0
   LeftMargin        MMMMMMM
   LabelString       "~=~"
-  OptionalArgs      0
+  ResetArgs         1
 
   Font
     Color       None
@@ -207,7 +210,7 @@ Style Note
   LabelString   "Note:"
   LeftMargin    MMMMMMM
   KeepEmpty     1
-  OptionalArgs  0
+  ResetArgs     1
   Font
     Series      Bold
     Size        Large

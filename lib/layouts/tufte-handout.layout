@@ -36,7 +36,11 @@ Style Part
 	ParSep		0.8
 	Align		Center
 	Alignpossible	Center
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC/Headers"
+	EndArgument
 	Font
 	  Series	Bold
 	  Size		Huge

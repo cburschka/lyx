@@ -84,7 +84,7 @@ Style Title
 	LatexName		title
 	Category		FrontMatter
 	InTitle			0
-	OptionalArgs		0
+	ResetArgs       	1
 	ParSkip			0.4
 	ItemSep			0
 	TopSep			0
@@ -127,7 +127,10 @@ Style "Title footnote"
 	LatexName		tnotetext
 	Category		FrontMatter
 	InTitle			0
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Footnote Option"
+		Tooltip       "Optional argument for the footnote"
+	EndArgument
 	ParSkip			0.4
 	BottomSep		0.5
 	Align			Left
@@ -146,7 +149,10 @@ Style Author
 	LatexType		Command
 	Category		FrontMatter
 	InTitle			0
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Author Option"
+		Tooltip       "Optional argument for the author"
+	EndArgument
 	LatexName		author
 	LabelSep		xxx
 	ParSkip			0.4
@@ -225,7 +231,10 @@ Style Address
 	Category		FrontMatter
 	LatexName		address
 	InTitle			0
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Address Option"
+		Tooltip       "Optional argument for the address"
+	EndArgument
 	ParSkip			0.4
 	Align			Center
 	AlignPossible		Left, Right

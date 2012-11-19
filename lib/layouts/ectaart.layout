@@ -63,7 +63,10 @@ End
 Style Address
 	CopyStyle	RunTitle
 	LatexName	address
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Address Option"
+		Tooltip       "Optional argument for the address"
+	EndArgument
 	LabelString	"Address:"
 End
 
@@ -71,7 +74,10 @@ Style Email
 	Category	FrontMatter
 	LatexType	Command
 	LatexName	lyxead
-	OptionalArgs	1
+	Argument 1
+		LabelString   "E-Mail Option"
+		Tooltip       "Optional argument for the E-Mail"
+	EndArgument
 	InTitle		1
 	Margin		First_Dynamic
 	LabelType	Static

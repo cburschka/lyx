@@ -27,7 +27,11 @@ Style Part
 	ParSep                0.8
 	Align                 Center
 	Alignpossible         Center
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Part as it appears in the TOC"
+	EndArgument
 	Font
 	  Series              Bold
 	  Size                Huge
@@ -53,7 +57,11 @@ Style Chapter
 	BottomSep             0.8
 	ParSep                0.8
 	Align                 Block
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Chapter as it appears in the TOC"
+	EndArgument
 	Font
 	  Series              Bold
 	  Size                Huge
@@ -78,7 +86,11 @@ Style Section
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Block
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Section as it appears in the TOC"
+	EndArgument
 	Font
 	  Series              Bold
 	  Size                Larger

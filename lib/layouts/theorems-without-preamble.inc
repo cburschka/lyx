@@ -37,7 +37,10 @@ Style Theorem
 	LatexType	Environment
 	LatexName	theorem
 	NextNoIndent	1
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Alternative Theorem String"
+		Tooltip       "Alternative theorem string"
+	EndArgument
 	LabelSep	xx
 	ParIndent	MMM
 	ParSkip		0.4
@@ -243,7 +246,7 @@ Style Prob
 	LabelString	"\theprob."
 	RefPrefix	pro
 	NextNoIndent	1
-	OptionalArgs	0
+	ResetArgs       1
 	LabelSep	xx
 	ParIndent	MMM
 	ParSkip		0.4
@@ -281,7 +284,11 @@ Style Sol
 	LatexName	sol
 	LabelType	Static
 	LabelString	"# [number of Prob]"
-	RequiredArgs	1
+	Argument 1
+		Mandatory     1
+		LabelString   "Solution"
+		Tooltip       "Mandatory argument to the sol environment"
+	EndArgument
 End
 
 

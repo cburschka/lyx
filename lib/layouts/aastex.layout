@@ -619,7 +619,11 @@ Style FigCaption
 	AlignPossible         Block, Left
 	LabelType             Static
 	LabelString           "Fig. ---"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Caption as it appears in the List of Figures"
+	EndArgument
 End
 
 # Facility style definition
@@ -662,7 +666,10 @@ Style Objectname
 	LabelType             Static
 	LabelSep              M
 	LabelString           "Obj:"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Recognized Name"
+		Tooltip       "Separate the recognized name of an object from text"
+	EndArgument
 	Font
 	  Family              Roman
 	  Shape               Up
@@ -689,7 +696,10 @@ Style Dataset
 	LabelType             Static
 	LabelSep              M
 	LabelString           "Dataset:"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Recognized Name"
+		Tooltip       "Separate the dataset ID from text"
+	EndArgument
 	Font
 	  Family              Roman
 	  Shape               Up

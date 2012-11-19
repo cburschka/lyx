@@ -73,7 +73,7 @@ Style Paragraph*
 	Margin                Static
 	LatexName             subsubsubsection*
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 End
 
 

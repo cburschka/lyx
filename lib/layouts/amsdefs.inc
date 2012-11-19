@@ -34,7 +34,11 @@ Style Title
 	ParSep                1
 	Align                 Center
 	LabelType             No_Label
-	OptionalArgs          1
+	Argument shorttitle
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "Short Title which appears in the running headers"
+	EndArgument
 	Font
 	  Shape               Smallcaps
 	  Series              Bold

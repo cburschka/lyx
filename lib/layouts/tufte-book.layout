@@ -76,7 +76,11 @@ Style Chapter
 	ParSep		0.8
 	Align		Block
 	RefPrefix chap
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Chapter as it appears in the TOC/Headers"
+	EndArgument
 	Font
 	  Series	Bold
 	  Size		Huge
@@ -100,7 +104,11 @@ Style Section
 	ParSep		0.7
 	Align		Block
 	RefPrefix sec
-	OptionalArgs	1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Section as it appears in the TOC/Headers"
+	EndArgument
 	Font
 	  Series	Bold
 	  Size		Larger

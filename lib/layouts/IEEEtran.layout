@@ -68,7 +68,7 @@ Style Title
   LatexName    title
   Category     FrontMatter
   InTitle      1
-  OptionalArgs 0
+  ResetArgs    1
   ParSkip      0.4
   ItemSep      0
   TopSep       0
@@ -117,7 +117,11 @@ Style Author
   LatexType    Command
   Category     FrontMatter
   InTitle      1
-  OptionalArgs 1
+  Argument 1
+  	LabelString   "Short Author"
+  	Shortcut      S
+  	Tooltip       "A Short version of the author name"
+  EndArgument
   LatexName    author
   LabelSep     xxx
   ParSkip      0.4
@@ -236,7 +240,10 @@ Style Appendix
   CopyStyle    Appendices
   LatexName    appendix
   LabelString  "Appendix"
-  OptionalArgs 1
+  Argument 1
+  	LabelString   "Appendix Title"
+  	Tooltip       "Optional title of the appendix"
+ EndArgument
 End
 
 
@@ -268,7 +275,10 @@ Style Biography
   LaTeXType    Environment
   LaTeXName    IEEEbiography
   Category     BackMatter
-  OptionalArgs 1
+  Argument 1
+  	LabelString   "Biography Photo"
+  	Tooltip       "Insert a photo to your biography"
+  EndArgument
   Align        Block
   TextFont
     Size       Small
@@ -279,7 +289,7 @@ End
 Style Biography_without_photo
   CopyStyle    Biography
   LaTeXName    IEEEbiographynophoto
-  OptionalArgs 0
+  ResetArgs    1
 End
 
 Style BiographyNoPhoto
@@ -293,7 +303,10 @@ Style Proof
   LatexType    Environment
   LatexName    IEEEproof
   NextNoIndent 1
-  OptionalArgs 1
+  Argument 1
+  	LabelString   "Alternative Proof String"
+  	Tooltip       "An alternative proof string"
+  EndArgument
   LabelSep     xx
   ParIndent    MMM
   ParSkip      0.4

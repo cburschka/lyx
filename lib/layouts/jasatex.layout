@@ -116,7 +116,10 @@ Style "Alternative Affiliation"
 	CopyStyle		Affiliation
 	LatexType		Command
 	LatexName		altaffiliation
-	OptionalArgs		1
+	Argument 1
+		LabelString   "Alternative Affiliation Option"
+		Tooltip       "Option to the Alternative Affiliation command"
+	EndArgument
 End
 
 

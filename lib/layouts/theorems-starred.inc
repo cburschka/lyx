@@ -28,7 +28,10 @@ Style Theorem*
 	LabelType             Static
 	LabelString           "Theorem."
 	NextNoIndent          1
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Alternative Theorem String"
+		Tooltip       "Alternative theorem string"
+	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4

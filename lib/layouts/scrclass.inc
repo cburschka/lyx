@@ -110,21 +110,33 @@ Input stdstarsections.inc
 Style Addpart
 	CopyStyle             Part*
 	LatexName             addpart
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Part as it will appeasr in the TOC and Headers"
+	EndArgument
 End
 
 
 Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Chapter as it will appeasr in the TOC and Headers"
+	EndArgument
 End
 
 
 Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Section as it will appeasr in the TOC and Headers"
+	EndArgument
 End
 
 
@@ -263,7 +275,11 @@ Style Captionabove
 	Align                 Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+	EndArgument
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -283,7 +299,11 @@ Style Captionbelow
 	Align                 Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+	EndArgument
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -300,7 +320,10 @@ Style Dictum
 	BottomSep            1.5
 	ParSep               1.5
 	Align                Left
-	OptionalArgs         1
+	Argument 1
+		LabelString   "Dictum Author"
+		Tooltip       "The author of this dictum"
+	EndArgument
 	Font
 	  Size               Normal
 	EndFont

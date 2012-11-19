@@ -51,6 +51,7 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
+#include "insets/InsetArgument.h"
 #include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetExternal.h"
@@ -2516,9 +2517,32 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_ARGUMENT_INSERT: {
 		code = ARG_CODE;
+		string const arg = cmd.getArg(0);
+		if (arg.empty()) {
+			enable = false;
+			break;
+		}
 		Layout const & lay = cur.paragraph().layout();
-		int const numargs = lay.reqargs + lay.optargs;
-		enable = cur.paragraph().insetList().count(ARG_CODE) < numargs;
+		Layout::LaTeXArgMap args = lay.latexargs();
+		Layout::LaTeXArgMap::const_iterator const lait =
+				args.find(convert<unsigned int>(arg));
+		if (lait != args.end()) {
+			InsetList::const_iterator it = cur.paragraph().insetList().begin();
+			InsetList::const_iterator end = cur.paragraph().insetList().end();
+			for (; it != end; ++it) {
+				if (it->inset->lyxCode() == ARG_CODE) {
+					InsetArgument const * ins =
+						static_cast<InsetArgument const *>(it->inset);
+					if (ins->name() == arg) {
+						// we have this already
+						enable = false;
+						break;
+					}
+				}
+			}
+			enable = true;
+		} else
+			enable = false;
 		break;
 	}
 	case LFUN_INDEX_INSERT:

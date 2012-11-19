@@ -30,9 +30,11 @@
 #include "insets/InsetArgument.h"
 
 #include "support/lassert.h"
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
 
+#include <algorithm>
 #include <boost/next_prior.hpp>
 #include <list>
 
@@ -160,8 +162,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	if (style.isEnvironment()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
-		if (style.optargs != 0 || style.reqargs != 0)
-			latexArgInsets(*pit, os, runparams, style.reqargs, style.optargs);
+		if (style.latexargs().size() != 0)
+		    latexArgInsets(*pit, os, runparams, style.latexargs());
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << '{'
 			   << pit->params().labelWidthString()
@@ -311,53 +313,85 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 
 void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, unsigned int reqargs,
-	unsigned int optargs)
+	OutputParams const & runparams, Layout::LaTeXArgMap latexargs)
 {
-	unsigned int totalargs = reqargs + optargs;
-	list<InsetArgument const *> ilist;
+	map<int, InsetArgument const *> ilist;
+	vector<string> required;
 
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
 		if (it->inset->lyxCode() == ARG_CODE) {
-			if (ilist.size() >= totalargs) {
-				LYXERR0("WARNING: Found extra argument inset.");
-				continue;
-			}
 			InsetArgument const * ins =
 				static_cast<InsetArgument const *>(it->inset);
-			ilist.push_back(ins);
+			if (ins->name().empty())
+				LYXERR0("Error: Unnamed argument inset!");
+			else {
+				unsigned int const nr = convert<unsigned int>(ins->name());
+				ilist[nr] = ins;
+				Layout::LaTeXArgMap::const_iterator const lit =
+						latexargs.find(nr);
+				if (lit != latexargs.end()) {
+					Layout::latexarg arg = (*lit).second;
+					if (!arg.requires.empty()) {
+						vector<string> req = getVectorFromString(arg.requires);
+						required.insert(required.end(), req.begin(), req.end());
+					}
+				}
+			}
 		}
 	}
 
-	if (!reqargs && ilist.empty())
+	unsigned int const argnr = latexargs.size();
+	if (argnr == 0)
 		return;
 
-	bool const have_optional_args = ilist.size() > reqargs;
-	if (have_optional_args) {
-		unsigned int todo = ilist.size() - reqargs;
-		for (unsigned int i = 0; i < todo; ++i) {
-			InsetArgument const * ins = ilist.front();
-			ilist.pop_front();
-			ins->latexArgument(os, runparams, true);
+	for (unsigned int i = 1; i <= argnr; ++i) {
+		map<int, InsetArgument const *>::const_iterator lit = ilist.find(i);
+		bool inserted = false;
+		if (lit != ilist.end()) {
+			InsetArgument const * ins = (*lit).second;
+			if (ins) {
+				Layout::LaTeXArgMap::const_iterator const lait =
+						latexargs.find(convert<unsigned int>(ins->name()));
+				if (lait != latexargs.end()) {
+					Layout::latexarg arg = (*lait).second;
+					docstring ldelim = arg.mandatory ?
+							from_ascii("{") : from_ascii("[");
+					docstring rdelim = arg.mandatory ?
+							from_ascii("}") : from_ascii("]");
+					if (!arg.ldelim.empty())
+						ldelim = arg.ldelim;
+					if (!arg.rdelim.empty())
+						rdelim = arg.rdelim;
+					ins->latexArgument(os, runparams, ldelim, rdelim);
+					inserted = true;
+				}
+			}
 		}
-	}
-
-	// we should now have no more insets than there are required
-	// arguments.
-	LASSERT(ilist.size() <= reqargs, /* */);
-	if (!reqargs)
-		return;
-
-	for (unsigned int i = 0; i < reqargs; ++i) {
-		if (ilist.empty())
-			// a required argument wasn't given, so we output {}
-			os << "{}";
-		else {
-			InsetArgument const * ins = ilist.front();
-			ilist.pop_front();
-			ins->latexArgument(os, runparams, false);
+		if (!inserted) {
+			Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
+			Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
+			for (; lait != laend; ++lait) {
+				if ((*lait).first == i) {
+					Layout::latexarg arg = (*lait).second;
+					if (arg.mandatory) {
+						docstring ldelim = arg.ldelim.empty() ?
+								from_ascii("{") : arg.ldelim;
+						docstring rdelim = arg.rdelim.empty() ?
+								from_ascii("}") : arg.rdelim;
+						os << ldelim << rdelim;
+					} else if (find(required.begin(), required.end(),
+						   convert<string>((*lait).first)) != required.end()) {
+						docstring ldelim = arg.ldelim.empty() ?
+								from_ascii("[") : arg.ldelim;
+						docstring rdelim = arg.rdelim.empty() ?
+								from_ascii("]") : arg.rdelim;
+						os << ldelim << rdelim;
+					} else
+						break;
+				}
+			}
 		}
 	}
 }
@@ -373,8 +407,8 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		os << '\\' << from_ascii(style.latexname());
 
 		// Separate handling of optional argument inset.
-		if (style.optargs != 0 || style.reqargs != 0)
-			latexArgInsets(par, os, runparams, style.reqargs, style.optargs);
+		if (style.latexargs().size() != 0)
+			latexArgInsets(par, os, runparams, style.latexargs());
 		else
 			os << from_ascii(style.latexparam());
 		break;

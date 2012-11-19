@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 445 // landroni: support for the URW Classico LaTeX font
-#define LYX_FORMAT_TEX2LYX 445 // landroni: support for the URW Classico LaTeX font
+#define LYX_FORMAT_LYX 446 // spitz: InsetArgument revision
+#define LYX_FORMAT_TEX2LYX 446 // landroni: InsetArgument revision
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

@@ -40,6 +40,7 @@
 #include "IndicesList.h"
 #include "KeyMap.h"
 #include "Language.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h"
@@ -172,7 +173,10 @@ public:
 		/// Words suggested by the spellchecker.
 		SpellingSuggestions,
 		/** Used Languages */
-		LanguageSelector
+		LanguageSelector,
+		/** This is the list of arguments available
+		    for insertion into the current layout. */
+		Arguments
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -348,6 +352,7 @@ public:
 	void expandGraphicsGroups(BufferView const *);
 	void expandSpellingSuggestions(BufferView const *);
 	void expandLanguageSelector(Buffer const * buf);
+	void expandArguments(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -455,10 +460,12 @@ void MenuDefinition::read(Lexer & lex)
 		md_toolbars,
 		md_graphicsgroups,
 		md_spellingsuggestions,
-		md_languageselector
+		md_languageselector,
+		md_arguments
 	};
 
 	LexerKeyword menutags[] = {
+		{ "arguments", md_arguments },
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
@@ -614,6 +621,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_indiceslistscontext:
 			add(MenuItem(MenuItem::IndicesListsContext));
+			break;
+
+		case md_arguments:
+			add(MenuItem(MenuItem::Arguments));
 			break;
 
 		case md_optsubmenu:
@@ -1527,6 +1538,33 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	}
 }
 
+
+void MenuDefinition::expandArguments(BufferView const * bv)
+{
+	if (!bv)
+		return;
+
+	Inset const * inset = &bv->cursor().inset();
+	Layout::LaTeXArgMap args;
+	if (inset && bv->cursor().paragraph().layout().latexargs().empty())
+		args = inset->getLayout().latexargs();
+	else
+		args = bv->cursor().paragraph().layout().latexargs();
+	if (args.empty())
+		return;
+	Layout::LaTeXArgMap::const_iterator lait = args.begin();
+	Layout::LaTeXArgMap::const_iterator const laend = args.end();
+	for (; lait != laend; ++lait) {
+		Layout::latexarg arg = (*lait).second;
+		QString item = toqstr(translateIfPossible(arg.labelstring));
+		if (!arg.shortcut.empty())
+			item += "|" + toqstr(arg.shortcut);
+		add(MenuItem(MenuItem::Command, item,
+			     FuncRequest(LFUN_ARGUMENT_INSERT,
+					 convert<docstring>((*lait).first))));
+	}
+}
+
 } // namespace anon
 
 
@@ -1670,7 +1708,8 @@ struct Menus::Impl {
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
-	    ViewFormats, ExportFormats, UpdateFormats, Branches, Indices
+	    ViewFormats, ExportFormats, UpdateFormats, Branches,
+	    Indices, Arguments
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -1889,6 +1928,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::LanguageSelector:
 			tomenu.expandLanguageSelector(buf);
+			break;
+
+		case MenuItem::Arguments:
+			tomenu.expandArguments(bv);
 			break;
 
 		case MenuItem::Submenu: {

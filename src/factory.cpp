@@ -154,8 +154,14 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_MARGINALNOTE_INSERT:
 			return new InsetMarginal(buf);
 
-		case LFUN_ARGUMENT_INSERT:
-			return new InsetArgument(buf);
+		case LFUN_ARGUMENT_INSERT: {
+			string arg = cmd.getArg(0);
+			if (arg.empty()) {
+				LYXERR0("argument-insert needs an argument!");
+				return 0;
+			}
+			return new InsetArgument(buf, arg);
+		}
 
 		case LFUN_FLOAT_INSERT: {
 			string argument = to_utf8(cmd.argument());
@@ -618,7 +624,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		} else if (tmptok == "Newline") {
 			inset.reset(new InsetNewline);
 		} else if (tmptok == "Argument") {
-			inset.reset(new InsetArgument(buf));
+			inset.reset(new InsetArgument(buf, tmptok));
 		} else if (tmptok == "Float") {
 			inset.reset(new InsetFloat(buf, string()));
 		} else if (tmptok == "Wrap") {

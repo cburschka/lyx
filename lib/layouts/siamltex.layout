@@ -158,7 +158,10 @@ Style Proof
 	LatexType             Environment
 	LatexName             proof
 	NextNoIndent          1
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Alternative Proof String"
+		Tooltip       "An alternative proof string"
+	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4
@@ -198,7 +201,11 @@ Style Title
 	ParSep                1
 	Align                 Center
 	LabelType             No_Label
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title"
+		Shortcut      S
+		Tooltip       "The Title as it appears in the running headers"
+	EndArgument
 	Font
 	  Shape               Smallcaps
 	  Series              Bold

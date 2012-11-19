@@ -40,6 +40,7 @@ const int Layout::NOT_IN_TOC = -1000;
 enum LayoutTags {
 	LT_ALIGN = 1,
 	LT_ALIGNPOSSIBLE,
+	LT_ARGUMENT,
 	LT_MARGIN,
 	LT_BOTTOMSEP,
 	LT_CATEGORY,
@@ -67,7 +68,6 @@ enum LayoutTags {
 	LT_ENDLABELTYPE,
 	LT_LATEXNAME,
 	LT_LATEXPARAM,
-	LT_OPTARGS,
 	LT_LATEXTYPE,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
@@ -101,7 +101,7 @@ enum LayoutTags {
 	LT_HTMLTITLE,
 	LT_SPELLCHECK,
 	LT_REFPREFIX,
-	LT_REQARGS,
+	LT_RESETARGS,
 	LT_INTITLE // keep this last!
 };
 
@@ -143,8 +143,6 @@ Layout::Layout()
 	htmlforcecss_ = false;
 	htmltitle_ = false;
 	spellcheck = true;
-	optargs = 0;
-	reqargs = 0;
 }
 
 
@@ -154,6 +152,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 	LexerKeyword layoutTags[] = {
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
+		{ "argument",       LT_ARGUMENT },
 		{ "babelpreamble",  LT_BABELPREAMBLE },
 		{ "bottomsep",      LT_BOTTOMSEP },
 		{ "category",       LT_CATEGORY },
@@ -201,7 +200,6 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
-		{ "optionalargs",   LT_OPTARGS },
 		{ "parbreakisnewline", LT_PARBREAK_IS_NEWLINE },
 		{ "parindent",      LT_PARINDENT },
 		{ "parsep",         LT_PARSEP },
@@ -209,8 +207,8 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "passthru",       LT_PASS_THRU },
 		{ "preamble",       LT_PREAMBLE },
 		{ "refprefix",      LT_REFPREFIX },
-		{ "requiredargs",   LT_REQARGS },
 		{ "requires",       LT_REQUIRES },
+		{ "resetargs",      LT_RESETARGS },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
 		{ "spellcheck",     LT_SPELLCHECK },
@@ -317,12 +315,15 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			lex >> toclevel;
 			break;
 
-		case LT_OPTARGS:
-			lex >> optargs;
+		case LT_RESETARGS:
+			bool reset;
+			lex >> reset;
+			if (reset)
+				latexargs_.clear();
 			break;
 
-		case LT_REQARGS:
-			lex >> reqargs;
+		case LT_ARGUMENT:
+			readArgument(lex);
 			break;
 
 		case LT_NEED_PROTECT:
@@ -855,6 +856,79 @@ void Layout::readSpacing(Lexer & lex)
 		spacing.set(Spacing::Other, lex.getString());
 		break;
 	}
+}
+
+
+void Layout::readArgument(Lexer & lex)
+{
+	latexarg arg;
+	arg.mandatory = false;
+	bool error = false;
+	bool finished = false;
+	unsigned int nr;
+	lex >> nr;
+	while (!finished && lex.isOK() && !error) {
+		lex.next();
+		string const tok = ascii_lowercase(lex.getString());
+
+		if (tok.empty()) {
+			continue;
+		} else if (tok == "endargument") {
+			finished = true;
+		} else if (tok == "labelstring") {
+			lex.next();
+			arg.labelstring = lex.getDocString();
+		} else if (tok == "mandatory") {
+			lex.next();
+			arg.mandatory = lex.getBool();
+		} else if (tok == "leftdelim") {
+			lex.next();
+			arg.ldelim = lex.getDocString();
+		} else if (tok == "rightdelim") {
+			lex.next();
+			arg.rdelim = lex.getDocString();
+		} else if (tok == "tooltip") {
+			lex.next();
+			arg.tooltip = lex.getDocString();
+		} else if (tok == "shortcut") {
+			lex.next();
+			arg.shortcut = lex.getString();
+		} else if (tok == "requires") {
+			lex.next();
+			arg.requires = lex.getString();
+		} else {
+			lex.printError("Unknown tag");
+			error = true;
+		}
+	}
+	if (arg.labelstring.empty())
+		LYXERR0("Incomplete Argument definition!");
+	else
+		latexargs_[nr] = arg;
+}
+
+
+int Layout::optArgs() const
+{
+	int nr = 0;
+	LaTeXArgMap::const_iterator it = latexargs_.begin();
+	for (; it != latexargs_.end(); ++it) {
+		if (!(*it).second.mandatory)
+			++nr;
+	}
+	return nr;
+}
+
+
+int Layout::requiredArgs() const
+{
+	int nr = 0;
+	LaTeXArgMap::const_iterator it = latexargs_.begin();
+	for (; it != latexargs_.end(); ++it) {
+		if ((*it).second.mandatory)
+			++nr;
+	}
+	return nr;
 }
 
 

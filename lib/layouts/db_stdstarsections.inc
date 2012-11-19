@@ -28,7 +28,7 @@ Style Chapter*
 	InnerTag	      "!-- --"
 	LatexName             bridgehead
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="chapter"
 End
 
@@ -40,7 +40,7 @@ Style Section*
 	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="sect1"
 End
 
@@ -52,7 +52,7 @@ Style Subsection*
 	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="sect2"
 End
 
@@ -76,7 +76,7 @@ Style Paragraph*
 	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="sect4"
 End
 
@@ -88,6 +88,6 @@ Style Subparagraph*
 	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="sect5"
 End
