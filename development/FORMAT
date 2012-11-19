@@ -12,6 +12,20 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-11-19 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 446: Change of InsetArgument syntax.
+	  InsetArgument now has a numeric identifier which determines
+	  its position (in the LaTeX output):
+	    \begin_inset Argument 1
+	    ...
+	    \end_inset
+	  Pre-2.1 documents' arguments all get the number "999", and then
+	  InsetArgument::updateBuffer() computes the correct number.
+	  This is because lyx2lyx has no access to layouts and hence does
+	  not know how many optional arguments a layout can have (if a command
+	  has two optional and one mandatory arguments and only one optional
+	  is actually given, the mandatory arg still must get number 3).
+
 2012-10-20 Liviu Andronic <landronimirc@gmail.com>
 	* Format incremented to 445: support for the URW Classico font,
 	  an Optima clone.
