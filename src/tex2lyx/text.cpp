@@ -628,6 +628,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	context.check_deeper(os);
 	context.check_layout(os);
+	// FIXME: Adjust to format 446!
 	int optargs = 0;
 	while (optargs < context.layout->optArgs()) {
 		eat_whitespace(p, os, context, false);
@@ -635,7 +636,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		    p.next_token().character() != '[')
 			break;
 		p.get_token(); // eat '['
-		begin_inset(os, "Argument\n");
+		// FIXME: Just a workaround
+		begin_inset(os, "Argument 999\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 		end_inset(os);
@@ -648,7 +650,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		if (p.next_token().cat() != catBegin)
 			break;
 		p.get_token(); // eat '{'
-		begin_inset(os, "Argument\n");
+		// FIXME: Just a workaround
+		begin_inset(os, "Argument 999\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 		end_inset(os);
@@ -1601,6 +1604,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
 		// It is impossible to place anything after the environment name,
 		// but before the first \\item.
+		// FIXME: Adjust to format 446!
 		if (context.layout->latextype == LATEX_ENVIRONMENT) {
 			bool need_layout = true;
 			int optargs = 0;
@@ -1614,7 +1618,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				begin_inset(os, "Argument\n");
+				// FIXME: Just a workaround
+				begin_inset(os, "Argument 999\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 				end_inset(os);
@@ -1631,7 +1636,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				begin_inset(os, "Argument\n");
+				// FIXME: Just a workaround
+				begin_inset(os, "Argument 999\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 				end_inset(os);
