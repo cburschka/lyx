@@ -344,6 +344,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		Layout::LaTeXArgMap::const_iterator const lait =
 				args.find(convert<unsigned int>(arg));
 		if (lait != args.end()) {
+			status.setEnabled(true);
 			InsetList::const_iterator it = cur.paragraph().insetList().begin();
 			InsetList::const_iterator end = cur.paragraph().insetList().end();
 			for (; it != end; ++it) {
@@ -357,7 +358,6 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 					}
 				}
 			}
-			status.setEnabled(true);
 		} else
 			status.setEnabled(false);
 		return true;
