@@ -67,8 +67,8 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		for (; parit != parend; ++parit) {
 			if (parit->inset->lyxCode() == ARG_CODE) {
 				++nr;
-			if (parit->inset == this)
-				ours = nr;
+				if (parit->inset == this)
+					ours = nr;
 			}
 		}
 		bool done = false;
