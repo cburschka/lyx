@@ -138,6 +138,9 @@ import os, re, string, sys
 # Incremented to format 40, 10 October 2012 by rgh
 # Re-do layout names for layout categories
 
+# Incremented to format 41, 20 November 2012 by spitz
+# New Argument syntax
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -145,7 +148,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 40
+currentFormat = 41
 
 
 def usage(prog_name):
@@ -247,6 +250,9 @@ def convert(lines):
     re_ExtractCategory = re.compile(r'^(#\s*\\Declare\w+Class(?:\[[^]]*?\])?){([^(]+?)\s+\(([^)]+?)\)\s*}\s*$')
     ConvDict = {"article": "Articles", "book" : "Books", "letter" : "Letters", "report": "Reports", \
                 "presentation" : "Presentations", "curriculum vitae" : "Curricula Vitae", "handout" : "Handouts"}
+    # Arguments
+    re_OptArgs = re.compile(r'^(\s*)OptionalArgs(\s+)(\d+)\D*$', re.IGNORECASE)
+    re_ReqArgs = re.compile(r'^(\s*)RequiredArgs(\s+)(\d+)\D*$', re.IGNORECASE)
 
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -294,6 +300,8 @@ def convert(lines):
     formatline = 0
     usemodules = []
     flexstyles = []
+    opts = 0
+    reqs = 0
 
     while i < len(lines):
         # Skip comments and empty lines
@@ -350,6 +358,70 @@ def convert(lines):
                 i += 1
             continue
 
+        if format == 40:
+            # reset counters on Style beginning
+            match = re_Style.match(lines[i])
+            if match:
+                opts = 0
+                reqs = 0
+                i += 1
+                continue
+            match = re_OptArgs.match(lines[i])
+            if match:
+                # Save number of optional arguments
+                space1 = match.group(1)
+                opts = int(match.group(3))
+                # OptionalArgs 0 > ResetArgs 1
+                if opts == 0:
+                    lines[i] = space1 + "ResetArgs\t1"
+                    i += 1
+                else:
+                    del lines[i]
+                continue
+            match = re_ReqArgs.match(lines[i])
+            if match:
+                # Save number of required arguments
+                space1 = match.group(1)
+                reqs = int(match.group(3))
+                del lines[i]
+                continue
+            # Insert the required number of arguments at the end of the style definition
+            match = re_End.match(lines[i])
+            if match:
+                newarg = ['']
+                # First the optionals (this is the required order pre 2.1)
+                if opts > 0:
+                    if opts == 1:
+                        newarg = [ '%sArgument 1' % (space1),
+                                   '%s\tLabelString\t\"Optional Layout Argument\"' % (space1),
+                                   '%sEndArgument' % (space1)]
+                    elif opts > 1:
+                        actopt = 1
+                        while actopt < (opts + 1):
+                            newarg += [ '%sArgument %d' % (space1, actopt),
+                               '%s\tLabelString\t\"Optional Layout Argument %d\"' % (space1, actopt),
+                               '%sEndArgument' % (space1)]
+                            actopt += 1
+                # Now the mandatories
+                if reqs > 0:
+                    actopt = opts + 1
+                    while actopt < (opts +  reqs + 1):
+                        newarg += [ '%sArgument %d' % (space1, actopt),
+                           '%s\tLabelString\t"Required Layout Argument %d"' % (space1, actopt - opts),
+                           '%s\tMandatory\t1' % (space1),
+                           '%sEndArgument' % (space1)]
+                        actopt += 1
+                # Since we replace the "End" line, re-add this line
+                if len(newarg) > 1:
+                    newarg += ['End']
+                    lines[i:i+1] = newarg
+                    i += len(newarg)
+                # Reset the counters
+                opts = 0
+                reqs = 0
+            i += 1
+            continue
+        
         if format == 39:
             # There is a conversion with format 40, but it is done within the
             # initial comment block and so is above.
