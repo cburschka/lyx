@@ -629,6 +629,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	context.check_deeper(os);
 	context.check_layout(os);
 	// FIXME: Adjust to format 446!
+	// Since format 446, layouts do not require anymore all optional
+	// arguments before the required ones. Needs to be implemented!
 	int optargs = 0;
 	while (optargs < context.layout->optArgs()) {
 		eat_whitespace(p, os, context, false);
@@ -636,7 +638,11 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		    p.next_token().character() != '[')
 			break;
 		p.get_token(); // eat '['
-		// FIXME: Just a workaround
+		// FIXME: Just a workaround. InsetArgument::updateBuffer
+		//        will compute a proper ID for all "999" Arguments
+		//        (which ia also what lyx2lyx produces).
+		//        However, tex2lyx should be able to output proper IDs
+		//        itself.
 		begin_inset(os, "Argument 999\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
@@ -650,7 +656,11 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		if (p.next_token().cat() != catBegin)
 			break;
 		p.get_token(); // eat '{'
-		// FIXME: Just a workaround
+		// FIXME: Just a workaround. InsetArgument::updateBuffer
+		//        will compute a proper ID for all "999" Arguments
+		//        (which ia also what lyx2lyx produces).
+		//        However, tex2lyx should be able to output proper IDs
+		//        itself.
 		begin_inset(os, "Argument 999\n");
 		os << "status collapsed\n\n";
 		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
@@ -1600,11 +1610,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		context.check_deeper(os);
 		// handle known optional and required arguments
-		// layouts require all optional arguments before the required ones
+		// FIXME: Since format 446, layouts do not require anymore all optional
+		// arguments before the required ones. Needs to be implemented!
 		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
 		// It is impossible to place anything after the environment name,
 		// but before the first \\item.
-		// FIXME: Adjust to format 446!
 		if (context.layout->latextype == LATEX_ENVIRONMENT) {
 			bool need_layout = true;
 			int optargs = 0;
@@ -1618,7 +1628,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				// FIXME: Just a workaround
+				// FIXME: Just a workaround. InsetArgument::updateBuffer
+				//        will compute a proper ID for all "999" Arguments
+				//        (which ia also what lyx2lyx produces).
+				//        However, tex2lyx should be able to output proper IDs
+				//        itself.
 				begin_inset(os, "Argument 999\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
@@ -1636,7 +1650,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					context.check_layout(os);
 					need_layout = false;
 				}
-				// FIXME: Just a workaround
+				// FIXME: Just a workaround. InsetArgument::updateBuffer
+				//        will compute a proper ID for all "999" Arguments
+				//        (which ia also what lyx2lyx produces).
+				//        However, tex2lyx should be able to output proper IDs
+				//        itself.
 				begin_inset(os, "Argument 999\n");
 				os << "status collapsed\n\n";
 				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
@@ -2730,10 +2748,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "Caption\n");
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
+			// FIXME InsetArgument is now properly implemented in InsetLayout
+			//       (for captions, but also for others)
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				begin_inset(os, "Argument\n");
+				begin_inset(os, "Argument 1\n");
 				os << "status collapsed\n";
 				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 				end_inset(os);
