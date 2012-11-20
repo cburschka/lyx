@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-10-31 08:57+0100\n"
+"POT-Creation-Date: 2012-11-08 10:16+0100\n"
 "PO-Revision-Date: 2012-10-19 09:05+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4964,11 +4964,11 @@ msgstr "Zväčšiť hĺbku zanorenia označeného člena"
 
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
-msgstr "Presuň označenú položku nadol"
+msgstr "Presuň označený prvok nadol"
 
 #: src/frontends/qt4/ui/TocUi.ui:179
 msgid "Move selected item up by one"
-msgstr "Presuň označenú položku nahor"
+msgstr "Presuň označený prvok nahor"
 
 #: src/frontends/qt4/ui/TocUi.ui:225
 msgid "Sort"
@@ -6004,13 +6004,13 @@ msgstr "Podpodsekcia"
 msgid "Itemize"
 msgstr "Položky"
 
-#: lib/layouts/aa.layout:57 lib/layouts/aapaper.layout:51
-#: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:379
-#: lib/layouts/beamer.layout:64 lib/layouts/egs.layout:149
-#: lib/layouts/powerdot.layout:261 lib/layouts/agu_stdlists.inc:21
+#: lib/layouts/aa.layout:58 lib/layouts/aapaper.layout:52
+#: lib/layouts/aastex.layout:87 lib/layouts/apa.layout:357
+#: lib/layouts/beamer.layout:67 lib/layouts/egs.layout:150
+#: lib/layouts/powerdot.layout:262 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
 msgid "Enumerate"
-msgstr "Výpočet"
+msgstr "Číslovanie"
 
 #: lib/layouts/aa.layout:60 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:89 lib/layouts/beamer.layout:84
@@ -9467,11 +9467,11 @@ msgstr "KOMA-Script kniha"
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
 msgstr "KOMA-Script list (V. 1, zastaralý)"
 
-#: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
+#: lib/layouts/scrlettr.layout:25 lib/layouts/scrlttr2.layout:29
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
 #: lib/layouts/enumitem.module:73
 msgid "Labeling"
-msgstr "Označovanie"
+msgstr "Etiketovanie"
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
@@ -11118,7 +11118,7 @@ msgstr ""
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
-msgstr "Výpočet-Pokračovať"
+msgstr "Číslovanie-Pokračovať"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -12649,6 +12649,10 @@ msgstr "Japonsky (non-CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japonsky (non-CJK) (SJIS)"
 
+#: lib/encodings:186
+msgid "Japanese (non-CJK) (utf8)"
+msgstr "Japonsky (non-CJK) (utf8)"
+
 #: lib/encodings:191
 msgid "Thai (TIS 620-0)"
 msgstr "Thajsky (TIS 620-0)"
@@ -13977,6 +13981,10 @@ msgstr "Políčko zdrojový text"
 msgid "Messages Pane|g"
 msgstr "Políčko hlásenia"
 
+#: lib/ui/stdmenus.inc:335
+msgid "Toolbars|b"
+msgstr "Lišty nástrojov"
+
 #: lib/ui/stdmenus.inc:331
 msgid "Split View Into Left and Right Half|i"
 msgstr "Pohľad rozdeliť na ľavú a pravú polovičku"
@@ -13992,10 +14000,6 @@ msgstr "Zavri aktuálny náhľad"
 #: lib/ui/stdmenus.inc:334
 msgid "Fullscreen|l"
 msgstr "Celoobrazovkový mód"
-
-#: lib/ui/stdmenus.inc:335
-msgid "Toolbars|b"
-msgstr "Lišty nástrojov"
 
 #: lib/ui/stdmenus.inc:350
 msgid "Math|h"
@@ -14563,11 +14567,11 @@ msgstr "Položková listina"
 
 #: lib/ui/stdtoolbars.inc:117
 msgid "Increase depth"
-msgstr "Zväčšiť hĺbku"
+msgstr "Zväčšiť odsadenie"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Decrease depth"
-msgstr "Zmenšiť hĺbku"
+msgstr "Zmenšiť odsadenie"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
@@ -24397,11 +24401,6 @@ msgstr "Chyba pri Exporte"
 msgid "Error cloning the Buffer."
 msgstr "Chyba pri klonovaní Zásobníka."
 
-#: src/frontends/qt4/GuiView.cpp:3226
-#, c-format
-msgid "Error exporting to format: %1$s"
-msgstr "Chyba pri exporte na formát: %1$s"
-
 #: src/frontends/qt4/GuiView.cpp:3234 src/frontends/qt4/GuiView.cpp:3251
 msgid "Exporting ..."
 msgstr "Exportujem ..."
@@ -26211,6 +26210,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Error exporting to format: %1$s"
+#~ msgstr "Chyba pri exporte na formát: %1$s"
 
 #~ msgid "Braille Manual|B"
 #~ msgstr "Braille: Manuál"
