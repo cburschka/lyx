@@ -640,7 +640,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		p.get_token(); // eat '['
 		// FIXME: Just a workaround. InsetArgument::updateBuffer
 		//        will compute a proper ID for all "999" Arguments
-		//        (which ia also what lyx2lyx produces).
+		//        (which is also what lyx2lyx produces).
 		//        However, tex2lyx should be able to output proper IDs
 		//        itself.
 		begin_inset(os, "Argument 999\n");
@@ -658,7 +658,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		p.get_token(); // eat '{'
 		// FIXME: Just a workaround. InsetArgument::updateBuffer
 		//        will compute a proper ID for all "999" Arguments
-		//        (which ia also what lyx2lyx produces).
+		//        (which is also what lyx2lyx produces).
 		//        However, tex2lyx should be able to output proper IDs
 		//        itself.
 		begin_inset(os, "Argument 999\n");
@@ -1630,7 +1630,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				}
 				// FIXME: Just a workaround. InsetArgument::updateBuffer
 				//        will compute a proper ID for all "999" Arguments
-				//        (which ia also what lyx2lyx produces).
+				//        (which is also what lyx2lyx produces).
 				//        However, tex2lyx should be able to output proper IDs
 				//        itself.
 				begin_inset(os, "Argument 999\n");
@@ -1652,7 +1652,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				}
 				// FIXME: Just a workaround. InsetArgument::updateBuffer
 				//        will compute a proper ID for all "999" Arguments
-				//        (which ia also what lyx2lyx produces).
+				//        (which is also what lyx2lyx produces).
 				//        However, tex2lyx should be able to output proper IDs
 				//        itself.
 				begin_inset(os, "Argument 999\n");
