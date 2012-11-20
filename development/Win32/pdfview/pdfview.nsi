@@ -35,9 +35,9 @@ RequestExecutionLevel user
 !define FALSE 0
 !define TRUE 1
 
-# http://msdn.microsoft.com/en-us/library/windows/desktop/aa364417%28v=vs.85%29.aspx
+# see http://msdn.microsoft.com/en-us/library/windows/desktop/aa364417%28v=vs.85%29.aspx
 !define FILE_NOTIFY_CHANGE_LAST_WRITE 0x00000010
-# http://msdn.microsoft.com/en-us/library/windows/desktop/ms687032%28v=vs.85%29.aspx
+# see http://msdn.microsoft.com/en-us/library/windows/desktop/ms687032%28v=vs.85%29.aspx
 !define WAIT_TIMEOUT 0x00000102
 
 #--------------------------------
@@ -198,6 +198,16 @@ Section "View PDF file"
 
   ${If} $Viewer == "AcroRd32.exe"
   ${OrIf} $Viewer == "Acrobat.exe"
+  
+    # get the version of Acrobat - currenly not necessary
+    #GetDLLVersion $ViewerFileName $R0 $R1
+    #IntOp $R2 $R0 >> 16
+    #IntOp $R2 $R2 & 0x0000FFFF ; $R2 now contains major version
+    #IntOp $R3 $R0 & 0x0000FFFF ; $R3 now contains minor version
+    #IntOp $R4 $R1 >> 16
+    #IntOp $R4 $R4 & 0x0000FFFF ; $R4 now contains release
+    #IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
+    #StrCpy $ViewerVersion "$R2"
     
     # Close existing view
     ${If} ${FileExists} $PDFFile
