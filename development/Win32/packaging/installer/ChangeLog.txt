@@ -2,6 +2,9 @@
 - support to update the view as PDF if Adobe Reader XI is used
 - fix long standing bug that updating a PDF view failed for larger
   LyX documents if Adobe Reader or Acrobat was used as PDF viewer
+- fixed bug that viewing PDF files could fail if Acrobat or Adobe Reader was
+  not used as default PDF viewer of the system while LyX was installed, but
+  it became later the default PDF viewer
 - fixed bug that EPS and PDF images were not displayed if LyX was installed
   this time without admin privileges
   but an older LyX version was once installed with admin privileges

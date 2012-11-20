@@ -143,22 +143,23 @@ Section -Configure
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}
-  ${if} $Acrobat == "Yes" # use pdfview for Acrobat / Adobe Reader
-   FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export"$\r$\n\
-   		  \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export"$\r$\n\
-   		  \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export"$\r$\n\
-   		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
-		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
-  ${endif}
+  
+  # use pdfview for all types of PDF files
+  FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export"$\r$\n\
+		 \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export"$\r$\n\
+		 \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export"$\r$\n\
+		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
+		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
+
   # if LilyPondPath was found
   # we need to add these entris because python scripts can only be executed
   # if the full path is given
   ${if} $LilyPondPath != ""
    FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export"$\r$\n\
-   		  \converter "lilypond-book" "pdflatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "xetex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "luatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
-   		  \converter "lilypond-book" "latex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --lily-output-dir=ly-eps $$$$i" ""$\r$\n'
+		  \converter "lilypond-book" "pdflatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+		  \converter "lilypond-book" "xetex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+		  \converter "lilypond-book" "luatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
+		  \converter "lilypond-book" "latex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --lily-output-dir=ly-eps $$$$i" ""$\r$\n'
   ${endif}
   FileClose $R1
   IfErrors 0 +2
