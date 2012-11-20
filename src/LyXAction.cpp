@@ -550,7 +550,7 @@ void LyXAction::init()
  * \li Origin: spitz, 05 Mar 2012
  * \endvar
  */
-        { LFUN_IPA_INSERT, "ipa-insert", Noop, Edit },
+		{ LFUN_IPA_INSERT, "ipa-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_IN_IPA
  * \li Action: Only active in IPA inset.
