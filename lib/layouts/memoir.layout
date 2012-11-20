@@ -54,7 +54,7 @@ Style Part
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 	TocLevel 	     -1
 End
@@ -65,11 +65,11 @@ Style Chapter
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The chapter as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The chapter as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 	     0
@@ -80,7 +80,7 @@ Style Chapter*
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The chapter as it appears in the table of contents"
 	EndArgument
 End
 
@@ -89,11 +89,11 @@ Style Section
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The section as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The section as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 1
@@ -104,11 +104,11 @@ Style Subsection
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The subsection as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The subsection as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 2
@@ -119,11 +119,11 @@ Style Subsubsection
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The subsubsection as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The subsubsection as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 3
@@ -134,11 +134,11 @@ Style Paragraph
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The paragraph as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The paragraph as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 4
@@ -149,11 +149,11 @@ Style Subparagraph
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The subparagraph as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The subparagraph as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	TocLevel 5
@@ -205,11 +205,11 @@ Style Poemtitle
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The poem title as it appears in the table of contents"
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
-		Tooltip       "The Part as it appears in the Header"
+		Tooltip       "The poem title as it appears in the running headers"
 		Requires      shorttitle
 	EndArgument
 	Font
@@ -225,7 +225,7 @@ Style Poemtitle*
 	Argument 1
 		LabelString   "Short Title (TOC)"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The poem title as it appears in the table of contents"
 	EndArgument
 End
 

@@ -472,7 +472,7 @@ InsetLayout Caption
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	HTMLStyle
 		div.float-caption {

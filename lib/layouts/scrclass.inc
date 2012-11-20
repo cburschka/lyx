@@ -113,7 +113,7 @@ Style Addpart
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Part as it will appeasr in the TOC and Headers"
+		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 End
 
@@ -124,7 +124,7 @@ Style Addchap
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Chapter as it will appeasr in the TOC and Headers"
+		Tooltip       "The chapter as it appears in the table of contents/running headers"
 	EndArgument
 End
 
@@ -135,7 +135,7 @@ Style Addsec
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Section as it will appeasr in the TOC and Headers"
+		Tooltip       "The section as it appears in the table of contents/running headers"
 	EndArgument
 End
 
@@ -278,7 +278,7 @@ Style Captionabove
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	LabelFont
 	  Series              Bold
@@ -302,7 +302,7 @@ Style Captionbelow
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Caption as it appears in the List of Figures/Tables"
+		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	LabelFont
 	  Series              Bold

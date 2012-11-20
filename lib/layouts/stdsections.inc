@@ -30,7 +30,7 @@ Style Part
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Part as it appears in the TOC"
+		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 	Font
 	  Series              Bold
@@ -60,7 +60,7 @@ Style Chapter
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Chapter as it appears in the TOC"
+		Tooltip       "The chapter as it appears in the table of contents/running headers"
 	EndArgument
 	Font
 	  Series              Bold
@@ -89,7 +89,7 @@ Style Section
 	Argument 1
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "The Section as it appears in the TOC"
+		Tooltip       "The section as it appears in the table of contents/running headers"
 	EndArgument
 	Font
 	  Series              Bold

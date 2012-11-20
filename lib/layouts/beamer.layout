@@ -54,7 +54,7 @@ Style Itemize
   Argument 1
   	LabelString   "Overlay Specifications"
   	Shortcut      S
-  	Tooltip       "Overlay Specifications for this List"
+  	Tooltip       "Overlay specifications for this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MMN
@@ -76,7 +76,7 @@ Style Enumerate
   Argument 1
   	LabelString   "Overlay Specifications"
   	Shortcut      S
-  	Tooltip       "Overlay Specifications for this List"
+  	Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
   	LabelString   "Mini template"
@@ -104,11 +104,11 @@ Style Description
   Argument 1
   	LabelString   "Overlay Specifications"
   	Shortcut      S
-  	Tooltip       "Overlay Specifications for this List"
+  	Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
   	LabelString   "Longest label"
-  	Tooltip       "The longest label in this List"
+  	Tooltip       "The longest label in this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MM
@@ -135,7 +135,7 @@ Style Part
   Argument 1
   	LabelString   "Short Title"
   	Shortcut      S
-  	Tooltip       "Short title for TOC and running headers"
+  	Tooltip       "The part as it appears in the table of contents/running headers"
   EndArgument
   NeedProtect      1
   NextNoIndent     1
@@ -183,7 +183,7 @@ Style Section
   Argument 1
   	LabelString   "Short Title"
   	Shortcut      S
-  	Tooltip       "Short title for TOC and running headers"
+  	Tooltip       "The section as it appears in the table of contents/running headers"
   EndArgument
 
   Font 
@@ -230,7 +230,7 @@ Style Subsection
   Argument 1
   	LabelString   "Short Title"
   	Shortcut      S
-  	Tooltip       "Short title for TOC and running headers"
+  	Tooltip       "The subsection as it appears in the table of contents/running headers"
   EndArgument
 
   # standard font definition
@@ -278,7 +278,7 @@ Style Subsubsection
   Argument 1
   	LabelString   "Short Title"
   	Shortcut      S
-  	Tooltip       "Short title for TOC and running headers"
+  	Tooltip       "The subsubsection as it appears in the table of contents/running headers"
   EndArgument
 
   # standard font definition
@@ -397,7 +397,7 @@ Style AgainFrame
   Argument 1
   	LabelString   "Overlay Specifications"
   	Shortcut      S
-  	Tooltip       "Overlay Specifications for this List"
+  	Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
   	LabelString   "Frame Options"
@@ -846,7 +846,7 @@ Style Title
   Argument 1
   	LabelString   "Short Title"
   	Shortcut      S
-  	Tooltip       "Short Title which appears in the sidebar"
+  	Tooltip       "Short title which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -882,7 +882,7 @@ Style Subtitle
   Argument 1
   	LabelString   "Short Subtitle"
   	Shortcut      S
-  	Tooltip       "Short Subtitle which appears in the sidebar"
+  	Tooltip       "Short subtitle which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -910,7 +910,7 @@ Style Author
   Argument 1
   	LabelString   "Short Author"
   	Shortcut      S
-  	Tooltip       "Short Author which appears in the sidebar"
+  	Tooltip       "Short author which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -936,7 +936,7 @@ Style Institute
   Argument 1
   	LabelString   "Short Institute"
   	Shortcut      S
-  	Tooltip       "Short Institute which appears in the sidebar"
+  	Tooltip       "Short institute which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -983,7 +983,7 @@ Style Date
   Argument 1
   	LabelString   "Short Date"
   	Shortcut      S
-  	Tooltip       "Short Date which appears in the sidebar"
+  	Tooltip       "Short date which appears in the sidebar/header"
   EndArgument
 
   # standard font definition

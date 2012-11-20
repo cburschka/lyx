@@ -37,7 +37,7 @@ Style Title
 	Argument shorttitle
 		LabelString   "Short Title"
 		Shortcut      S
-		Tooltip       "Short Title which appears in the running headers"
+		Tooltip       "Short title which appears in the running headers"
 	EndArgument
 	Font
 	  Shape               Smallcaps
