@@ -2320,6 +2320,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	FontInfo const & fontinfo = cur.real_current_font.fontInfo();
 	bool enable = true;
+	bool allow_in_passthru = false;
 	InsetCode code = NO_CODE;
 
 	switch (cmd.action()) {
@@ -2516,6 +2517,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_ARGUMENT_INSERT: {
 		code = ARG_CODE;
+		allow_in_passthru = true;
 		Layout const & lay = cur.paragraph().layout();
 		int const numargs = lay.reqargs + lay.optargs;
 		enable = cur.paragraph().insetList().count(ARG_CODE) < numargs;
@@ -2889,7 +2891,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	if (code != NO_CODE
 	    && (cur.empty() 
 		|| !cur.inset().insetAllowed(code)
-		|| cur.paragraph().layout().pass_thru))
+		|| (cur.paragraph().layout().pass_thru && !allow_in_passthru)))
 		enable = false;
 
 	flag.setEnabled(enable);
