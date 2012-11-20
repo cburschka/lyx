@@ -201,6 +201,8 @@ public:
 	///
 	const_iterator end() const { return formatlist.end(); }
 	///
+	bool empty() const { return formatlist.empty(); }
+	///
 	FormatList::size_type size() const { return formatlist.size(); }
 private:
 	///

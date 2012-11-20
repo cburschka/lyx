@@ -42,6 +42,7 @@ DocIterator::DocIterator()
 	: boundary_(false), inset_(0), buffer_(0)
 {}
 
+
 // We could be able to get rid of this if only every BufferView were
 // associated to a buffer on construction.
 DocIterator::DocIterator(Buffer * buf)

@@ -31,8 +31,7 @@ namespace lyx {
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)
 		: cmd(chktex), file(f), path(p)
-{
-}
+{}
 
 
 int Chktex::run(TeXErrors &terr)

@@ -332,7 +332,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 	}
 
-	// When the current language is Hebrew, Arabic, or Farsi
+	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.
@@ -428,7 +428,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 		os << '\\'
 		   << LaTeXSizeNames[f.size()]
-		   << ' ';
+		   << '{';
 		count += strlen(LaTeXSizeNames[f.size()]) + 2;
 	}
 	return count;
@@ -513,6 +513,8 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 			os << '}';
 			++count;
 		}
+		os << '}';
+		++count;
 	}
 
 	// When the current language is Hebrew, Arabic, or Farsi

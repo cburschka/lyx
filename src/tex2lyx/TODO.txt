@@ -76,6 +76,8 @@ Format LaTeX feature                        LyX feature
 443    unicode-math.sty                     InsetMath*
 444    biolinum-type1.sty, libertine.sty,   \font_osf, \font_sans
        libertine-legacy.sty
+445    URW Classico LaTeX font              \font_sans uop
+       \renewcommand{\sffamily}{uop}
 
 
 General

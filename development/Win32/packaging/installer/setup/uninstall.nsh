@@ -12,21 +12,12 @@ Var FileAssociation
 
 Section "un.LyX" un.SecUnProgramFiles
 
+  SectionIn RO
   # LaTeX class files that were installed together with LyX
   # will not be uninstalled because other LyX versions will
   # need them and these few files don't harm to stay in LaTeX 
     
   # Binaries
-  #!insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListQtBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDll Delete "$INSTDIR\bin\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\bin\"
-  #!insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
-  #!insertmacro FileListMetaFile2EPS Delete "$INSTDIR\bin\"
   RMDir /r "$INSTDIR\bin"
 
   # Resources
@@ -35,25 +26,25 @@ Section "un.LyX" un.SecUnProgramFiles
   # Python
   RMDir /r "$INSTDIR\python"
   
-  # Components of ImageMagick
-  #!insertmacro FileListImageMagick Delete "$INSTDIR\imagemagick\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\imagemagick\"
+  # ImageMagick
   RMDir /r "$INSTDIR\imagemagick"
+  ReadRegStr $0 SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" # test if it was installed together with this LyX version
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" ""
+   DeleteRegKey SHCTX "Software\ImageMagick"
+  ${endif}
   
   # Components of Ghostscript
-  #!insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
-  #!insertmacro FileListMSVC Delete "$INSTDIR\ghostscript\"
   RMDir /r "$INSTDIR\ghostscript"
   
   # delete start menu folder
   ReadRegStr $0 SHCTX "${APP_UNINST_KEY}" "StartMenu"
   RMDir /r "$0"
-  #Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   # delete desktop icon
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   
   # remove file extension .lyx
-  ReadRegStr $0 SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" # special entry to test if they were registered by this LyX version
+  ReadRegStr $0 SHCTX "${APP_DIR_REGKEY}" "OnlyWithLyX" # test if they were registered by this LyX version
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    ReadRegStr $R0 SHCTX "Software\Classes\${APP_EXT}" ""
    ${if} $R0 == "${APP_REGNAME_DOC}"
@@ -61,6 +52,8 @@ Section "un.LyX" un.SecUnProgramFiles
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}14"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
+   # enable this for LyX 2.1!
+   # DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
     DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
     DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
@@ -83,25 +76,25 @@ Section "un.LyX" un.SecUnProgramFiles
   DeleteRegKey HKCR "Applications\lyx.exe"
   
   # File associations
-  
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
   
   ${If} $FileAssociation == "${APP_REGNAME_DOC}"
      DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_EXT}"
   ${EndIf}
   
-  ${If} $MultiUser.Privileges != "Admin"
-    ${OrIf} $MultiUser.Privileges != "Power"
-
-    # Delete Postscript printer for metafile to EPS conversion
-    ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-
+  ${If} $MultiUser.Privileges == "Admin"
+  ${OrIf} $MultiUser.Privileges == "Power"
+   # Delete Postscript printer for metafile to EPS conversion
+   ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
   ${EndIf}
   
   # clean other registry entries
   DeleteRegKey SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
   DeleteRegKey SHCTX "SOFTWARE\${APP_REGKEY}"
   
+  # delete info that programs were installed together with LyX
+  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"  
 
 SectionEnd
 
@@ -120,7 +113,7 @@ SectionEnd
 Section /o "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $LaTeXInstalled == "MiKTeX" # only uninstall MiKTeX when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"
+  ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"
   ExecWait $1 # run MiKTeX's uninstaller
  ${endif}
 
@@ -130,9 +123,17 @@ SectionEnd
 # JabRef
 Section "un.JabRef" un.SecUnJabRef
 
- ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX 
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
-  ExecWait "$1" # run JabRef's uninstaller
+ ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX
+  ${If} $MultiUser.Privileges == "Admin"
+  ${OrIf} $MultiUser.Privileges == "Power"
+   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+   ExecWait "$1" # run JabRef's uninstaller
+  ${else}
+   # in this case we can only read the start menu location and then start the linked uninstaller
+   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
+   StrCpy $1 "$1\Uninstall JabRef 2.8.lnk"
+   ExecShell "" "$1" # run JabRef's uninstaller
+  ${endif}
  ${endif}
 
 SectionEnd

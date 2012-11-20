@@ -246,8 +246,7 @@ private:
 	/// \return \c true if file is not completely read.
 	bool readDocument(Lexer &);
 	/// Try to extract the file from a version control container
-	/// before reading if the file cannot be found. This is only
-	/// implemented for RCS.
+	/// before reading if the file cannot be found.
 	/// \sa LyXVC::file_not_found_hook
 	ReadStatus extractFromVC();
 	/// Reads the first tag of a LyX File and

@@ -40,7 +40,8 @@ typedef map<string, Speller> Spellers;
 
 struct EnchantChecker::Private
 {
-	Private() {}
+	Private()
+	{}
 
 	~Private();
 
@@ -60,9 +61,8 @@ EnchantChecker::Private::~Private()
 	Spellers::iterator it = spellers_.begin();
 	Spellers::iterator end = spellers_.end();
 
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		delete it->second.speller;
-	}
 }
 
 
@@ -97,9 +97,9 @@ enchant::Dict * EnchantChecker::Private::speller(string const & lang)
 }
 
 
-EnchantChecker::EnchantChecker(): d(new Private)
-{
-}
+EnchantChecker::EnchantChecker()
+	: d(new Private)
+{}
 
 
 EnchantChecker::~EnchantChecker()

@@ -241,7 +241,7 @@ public:
 		// Get the keys bound to this action, but keep only the
 		// first one later
 		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
-		if (bindings.size())
+		if (!bindings.empty())
 			return toqstr(bindings.begin()->print(KeySequence::ForGui));
 
 		LYXERR(Debug::KBMAP, "No binding for "
@@ -1301,7 +1301,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	if (cit == end)
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
-		if (cit->second.size() > 0 )
+		if (!cit->second.empty())
 			expandToc2(cit->second, 0, cit->second.size(), 0);
 		else
 			add(MenuItem(MenuItem::Info, qt_("<Empty Table of Contents>")));
@@ -1574,7 +1574,7 @@ static QString label(MenuItem const & mi)
 void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 {
 	LYXERR(Debug::GUI, "populating menu " << menu.name());
-	if (menu.size() == 0) {
+	if (menu.empty()) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu " << menu.name());
 		return;
 	}
@@ -1759,7 +1759,7 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
-	const bool first_call = mac_special_menu_.size() == 0;
+	const bool first_call = mac_special_menu_.empty();
 
 	// the special menu for Menus. Fill it up only once.
 	if (first_call) {
@@ -2050,7 +2050,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 
 	LYXERR(Debug::GUI, "populating menu bar" << d->menubar_.name());
 
-	if (d->menubar_.size() == 0) {
+	if (d->menubar_.empty()) {
 		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
 			<< d->menubar_.name());
 		return;
@@ -2115,7 +2115,7 @@ void Menus::updateMenu(Menu * qmenu)
 		MenuDefinition cat_menu = d->getMenu(toqstr(menu_name));
 		//FIXME: 50 is a wild guess. We should take into account here
 		//the expansion of menu items, disabled optional items etc.
-		bool const in_sub_menu = fromLyxMenu.size() > 0
+		bool const in_sub_menu = !fromLyxMenu.empty()
 			&& fromLyxMenu.size() + cat_menu.size() > 50 ;
 		if (in_sub_menu)
 			fromLyxMenu.catSub(menu_name);

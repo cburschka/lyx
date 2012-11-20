@@ -67,10 +67,8 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 	if (!lm)
 		return true;
 
-	// Is this module explicitly excluded by the document class?
-	const_iterator const exclmodstart = lay->excludedModules().begin();
-	const_iterator const exclmodend = lay->excludedModules().end();
-	if (find(exclmodstart, exclmodend, modName) != exclmodend)
+	// Does this module conflict with the document class or any loaded modules?
+	if (moduleConflicts(modName, lay))
 		return false;
 
 	// Is this module already provided by the document class?
@@ -79,26 +77,13 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 	if (find(provmodstart, provmodend, modName) != provmodend)
 		return false;
 
-	// Check for conflicts with used modules
-	// first the provided modules...
-	const_iterator provmodit = provmodstart;
-	for (; provmodit != provmodend; ++provmodit) {
-		if (!LyXModule::areCompatible(modName, *provmodit))
-			return false;
-	}
-	// and then the selected modules
-	const_iterator mit = begin();
-	const_iterator const men = end();
-	for (; mit != men; ++mit)
-		if (!LyXModule::areCompatible(modName, *mit))
-			return false;
-
 	// Check whether some required module is available
 	vector<string> const reqs = lm->getRequiredModules();
 	if (reqs.empty())
 		return true;
 
-	mit = begin(); // reset
+	const_iterator mit = begin();
+	const_iterator const men = end();
 	vector<string>::const_iterator rit = reqs.begin();
 	vector<string>::const_iterator ren = reqs.end();
 	bool foundone = false;
@@ -111,6 +96,32 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 	}
 
 	return foundone;
+}
+
+
+bool LayoutModuleList::moduleConflicts(string const & modName,
+                                       LayoutFile const * const lay) const
+{
+	// Is this module explicitly excluded by the document class?
+	const_iterator const exclmodstart = lay->excludedModules().begin();
+	const_iterator const exclmodend = lay->excludedModules().end();
+	if (find(exclmodstart, exclmodend, modName) != exclmodend)
+		return true;
+	// Check for conflicts with used modules
+	// first the provided modules...
+	const_iterator provmodit = lay->providedModules().begin();
+	const_iterator const provmodend = lay->providedModules().end();
+	for (; provmodit != provmodend; ++provmodit) {
+		if (!LyXModule::areCompatible(modName, *provmodit))
+			return true;
+	}
+	// and then the selected modules
+	const_iterator mit = begin();
+	const_iterator const men = end();
+	for (; mit != men; ++mit)
+		if (!LyXModule::areCompatible(modName, *mit))
+			return true;
+	return false;
 }
 
 

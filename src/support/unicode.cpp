@@ -21,9 +21,9 @@
 #include <boost/cstdint.hpp>
 
 #include <cerrno>
-#include <iomanip>
 #include <map>
 #include <ostream>
+//Needed in MSVC
 #include <string>
 
 

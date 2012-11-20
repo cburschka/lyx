@@ -222,50 +222,50 @@ enum TextClassTags {
 
 namespace {
 
-	LexerKeyword textClassTags[] = {
-		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
-		{ "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
-		{ "addtopreamble",     TC_ADDTOPREAMBLE },
-		{ "citeengine",        TC_CITEENGINE },
-		{ "citeenginetype",    TC_CITEENGINETYPE },
-		{ "citeformat",        TC_CITEFORMAT },
-		{ "classoptions",      TC_CLASSOPTIONS },
-		{ "columns",           TC_COLUMNS },
-		{ "counter",           TC_COUNTER },
-		{ "defaultbiblio",     TC_DEFAULTBIBLIO },
-		{ "defaultfont",       TC_DEFAULTFONT },
-		{ "defaultmodule",     TC_DEFAULTMODULE },
-		{ "defaultstyle",      TC_DEFAULTSTYLE },
-		{ "excludesmodule",    TC_EXCLUDESMODULE },
-		{ "float",             TC_FLOAT },
-		{ "format",            TC_FORMAT },
-		{ "fullauthorlist",    TC_FULLAUTHORLIST },
-		{ "htmlpreamble",      TC_HTMLPREAMBLE },
-		{ "htmlstyles",        TC_HTMLSTYLES },
-		{ "htmltocsection",    TC_HTMLTOCSECTION },
-		{ "ifcounter",         TC_IFCOUNTER },
-		{ "ifstyle",           TC_IFSTYLE },
-		{ "input",             TC_INPUT },
-		{ "insetlayout",       TC_INSETLAYOUT },
-		{ "leftmargin",        TC_LEFTMARGIN },
-		{ "nocounter",         TC_NOCOUNTER },
-		{ "nofloat",           TC_NOFLOAT },
-		{ "nostyle",           TC_NOSTYLE },
-		{ "outputformat",      TC_OUTPUTFORMAT },
-		{ "outputtype",        TC_OUTPUTTYPE },
-		{ "pagestyle",         TC_PAGESTYLE },
-		{ "preamble",          TC_PREAMBLE },
-		{ "provides",          TC_PROVIDES },
-		{ "providesmodule",    TC_PROVIDESMODULE },
-		{ "requires",          TC_REQUIRES },
-		{ "rightmargin",       TC_RIGHTMARGIN },
-		{ "secnumdepth",       TC_SECNUMDEPTH },
-		{ "sides",             TC_SIDES },
-		{ "style",             TC_STYLE },
-		{ "titlelatexname",    TC_TITLELATEXNAME },
-		{ "titlelatextype",    TC_TITLELATEXTYPE },
-		{ "tocdepth",          TC_TOCDEPTH }
-	};
+LexerKeyword textClassTags[] = {
+	{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
+	{ "addtohtmlstyles",   TC_ADDTOHTMLSTYLES },
+	{ "addtopreamble",     TC_ADDTOPREAMBLE },
+	{ "citeengine",        TC_CITEENGINE },
+	{ "citeenginetype",    TC_CITEENGINETYPE },
+	{ "citeformat",        TC_CITEFORMAT },
+	{ "classoptions",      TC_CLASSOPTIONS },
+	{ "columns",           TC_COLUMNS },
+	{ "counter",           TC_COUNTER },
+	{ "defaultbiblio",     TC_DEFAULTBIBLIO },
+	{ "defaultfont",       TC_DEFAULTFONT },
+	{ "defaultmodule",     TC_DEFAULTMODULE },
+	{ "defaultstyle",      TC_DEFAULTSTYLE },
+	{ "excludesmodule",    TC_EXCLUDESMODULE },
+	{ "float",             TC_FLOAT },
+	{ "format",            TC_FORMAT },
+	{ "fullauthorlist",    TC_FULLAUTHORLIST },
+	{ "htmlpreamble",      TC_HTMLPREAMBLE },
+	{ "htmlstyles",        TC_HTMLSTYLES },
+	{ "htmltocsection",    TC_HTMLTOCSECTION },
+	{ "ifcounter",         TC_IFCOUNTER },
+	{ "ifstyle",           TC_IFSTYLE },
+	{ "input",             TC_INPUT },
+	{ "insetlayout",       TC_INSETLAYOUT },
+	{ "leftmargin",        TC_LEFTMARGIN },
+	{ "nocounter",         TC_NOCOUNTER },
+	{ "nofloat",           TC_NOFLOAT },
+	{ "nostyle",           TC_NOSTYLE },
+	{ "outputformat",      TC_OUTPUTFORMAT },
+	{ "outputtype",        TC_OUTPUTTYPE },
+	{ "pagestyle",         TC_PAGESTYLE },
+	{ "preamble",          TC_PREAMBLE },
+	{ "provides",          TC_PROVIDES },
+	{ "providesmodule",    TC_PROVIDESMODULE },
+	{ "requires",          TC_REQUIRES },
+	{ "rightmargin",       TC_RIGHTMARGIN },
+	{ "secnumdepth",       TC_SECNUMDEPTH },
+	{ "sides",             TC_SIDES },
+	{ "style",             TC_STYLE },
+	{ "titlelatexname",    TC_TITLELATEXNAME },
+	{ "titlelatextype",    TC_TITLELATEXTYPE },
+	{ "tocdepth",          TC_TOCDEPTH }
+};
 
 } //namespace anon
 
@@ -1237,6 +1237,7 @@ string const & TextClass::prerequisites(string const & sep) const
 	return prerequisites_;
 }
 
+
 bool TextClass::hasLayout(docstring const & n) const
 {
 	docstring const name = n.empty() ? defaultLayoutName() : n;
@@ -1531,9 +1532,8 @@ Layout const & DocumentClass::getTOCLayout() const
 
 Layout const & DocumentClass::htmlTOCLayout() const
 {
-	if (html_toc_section_.empty()) {
+	if (html_toc_section_.empty())
 		html_toc_section_ = getTOCLayout().name();
-	}
 	return operator[](html_toc_section_);
 }
 

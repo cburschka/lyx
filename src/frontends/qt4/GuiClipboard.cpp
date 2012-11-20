@@ -66,7 +66,7 @@ static QMimeData const * read_clipboard()
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
 	if (!source) {
 		LYXERR0("0 bytes (no QMimeData)");
-		return new QMimeData();
+		return new QMimeData;
 	}
 	// It appears that doing IO between getting a mimeData object
 	// and using it can cause a crash (maybe Qt used IO

@@ -88,6 +88,7 @@ Section -ProgramFiles SecProgramFiles
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "LibPath" "$INSTDIR\imagemagick"
   WriteRegDWORD SHCTX "SOFTWARE\ImageMagick\Current" "QuantumDepth" 0x00000010
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
+  WriteRegStr SHCTX "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
   
   # Components of Ghostscript
   ${if} $GhostscriptPath == ""
@@ -108,12 +109,26 @@ Section -ProgramFiles SecProgramFiles
      ExecWait "$INSTDIR\${JabRefInstall}"
      # test if JabRef is now installed
      StrCpy $PathBibTeXEditor ""
-     ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
+     ${if} $MultiUser.Privileges == "Admin"
+      ${orif} $MultiUser.Privileges == "Power"
+      ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+      StrCpy $PathBibTeXEditor $PathBibTeXEditor -14 # remove "\uninstall.exe"
+     ${else}
+      # for non-admin users we can only check if it is in the start menu
+      ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
+     ${endif}
      ${if} $PathBibTeXEditor == ""
       MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
      ${else}
-      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
-     ${endif}
+      # special entry that it was installed together with LyX
+      # so that we can later uninstall it together with LyX
+      ${if} $MultiUser.Privileges == "Admin"
+      ${orif} $MultiUser.Privileges == "Power"
+       WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      ${else}
+       WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      ${endif}
+     ${endif} # end if PathBibTeXEditor
     ${endif}
    ${endif}
   !endif # end if BUNDLE
@@ -134,15 +149,13 @@ Section -ProgramFiles SecProgramFiles
   
   # download dictionaries and thesaurus
   ${if} $DictCodes != ""
-   Call InstallHunspellDictionary # Function from Thesaurus.nsh
+   Call InstallHunspellDictionaries # Function from dictionaries.nsh
   ${endif}
   ${if} $ThesCodes != ""
-   Call InstallThesaurusDictionary # Function from Thesaurus.nsh
+   Call InstallThesaurusDictionaries # Function from dictionaries.nsh
   ${endif}
-  # finally delete the list of dictionaries and mirrors
+  # finally delete the list of mirrors
   Delete "$INSTDIR\Resources\DictionaryMirrors.txt"
-  Delete "$INSTDIR\Resources\ThesaurusDictionaryNames.txt"
-  Delete "$INSTDIR\Resources\HunspellDictionaryNames.txt"
   
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"

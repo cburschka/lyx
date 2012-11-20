@@ -501,6 +501,7 @@ bool LaTeXFeatures::isProvided(string const & name) const
 								       nomath);
 }
 
+
 bool LaTeXFeatures::mustProvide(string const & name) const
 {
 	return isRequired(name) && !isProvided(name);
@@ -1280,6 +1281,7 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const
 
 
 namespace {
+
 docstring const getFloatI18nPreamble(docstring const & type,
 			docstring const & name, Language const * lang,
 			Encoding const & enc, bool const polyglossia)

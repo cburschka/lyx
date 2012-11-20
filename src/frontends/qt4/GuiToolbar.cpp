@@ -99,7 +99,7 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	// Get the keys bound to this action, but keep only the
 	// first one later
 	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(item.func_);
-	if (bindings.size())
+	if (!bindings.empty())
 		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
 	Action * act = new Action(&owner_, getIcon(item.func_, false),

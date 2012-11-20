@@ -334,9 +334,9 @@ public:
 	///
 	char_type character() const { return char_; }
 	///
-	docstring asString() const { return cs_.size() ? cs_ : docstring(1, char_); }
+	docstring asString() const { return !cs_.empty() ? cs_ : docstring(1, char_); }
 	///
-	docstring asInput() const { return cs_.size() ? '\\' + cs_ : docstring(1, char_); }
+	docstring asInput() const { return !cs_.empty() ? '\\' + cs_ : docstring(1, char_); }
 
 private:
 	///
@@ -350,7 +350,7 @@ private:
 
 ostream & operator<<(ostream & os, Token const & t)
 {
-	if (t.cs().size()) {
+	if (!t.cs().empty()) {
 		docstring const & cs = t.cs();
 		// FIXME: For some strange reason, the stream operator instanciate
 		// a new Token before outputting the contents of t.cs().
@@ -951,7 +951,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			bool up = (t.cat() == catSuper);
 			// we need no new script inset if the last thing was a scriptinset,
 			// which has that script already not the same script already
-			if (!cell->size())
+			if (cell->empty())
 				cell->push_back(MathAtom(new InsetMathScript(buf, up)));
 			else if (cell->back()->asScriptInset() &&
 					!cell->back()->asScriptInset()->has(up))
@@ -1029,7 +1029,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		//
 
 		else if (t.cs() == "lyxlock") {
-			if (cell->size())
+			if (!cell->empty())
 				cell->back().nucleus()->lock(true);
 		}
 
@@ -1377,7 +1377,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "sqrt") {
 			MathData ar;
 			parse(ar, FLAG_OPTION, mode);
-			if (ar.size()) {
+			if (!ar.empty()) {
 				cell->push_back(MathAtom(new InsetMathRoot(buf)));
 				cell->back().nucleus()->cell(0) = ar;
 				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
@@ -1399,7 +1399,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// Allowed formats \unit[val]{unit}
 			MathData ar;
 			parse(ar, FLAG_OPTION, mode);
-			if (ar.size()) {
+			if (!ar.empty()) {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNIT)));
 				cell->back().nucleus()->cell(0) = ar;
 				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
@@ -1413,7 +1413,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// Here allowed formats are \unitfrac[val]{num}{denom}
 			MathData ar;
 			parse(ar, FLAG_OPTION, mode);
-			if (ar.size()) {
+			if (!ar.empty()) {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNITFRAC, 3)));
 				cell->back().nucleus()->cell(2) = ar;
 			} else {
@@ -1845,10 +1845,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					rem.clear();
 				} else
 					cmd.clear();
-			} while (cmd.size());
+			} while (!cmd.empty());
 		}
 
-		else if (t.cs().size()) {
+		else if (!t.cs().empty()) {
 			bool const no_mhchem =
 				(t.cs() == "ce" || t.cs() == "cf")
 				&& buf && buf->params().use_package("mhchem") ==
@@ -1979,7 +1979,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					// this fails on \bigg[...\bigg]
 					//MathData opt;
 					//parse(opt, FLAG_OPTION, InsetMath::VERBATIM_MODE);
-					//if (opt.size()) {
+					//if (!opt.empty()) {
 					//	start = 1;
 					//	at.nucleus()->cell(0) = opt;
 					//}

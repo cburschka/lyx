@@ -1508,9 +1508,6 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 #ifdef Q_WS_MACX
 	setStyle(&noTabFrameMacStyle);
 #endif
-#if QT_VERSION < 0x040500
-	lyxrc.single_close_tab_button = true;
-#endif
 
 	QPalette pal = palette();
 	pal.setColor(QPalette::Active, QPalette::Button,
@@ -1547,10 +1544,8 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-#if QT_VERSION >= 0x040500
 	connect(tb, SIGNAL(tabCloseRequested(int)),
 		this, SLOT(closeTab(int)));
-#endif
 
 	setUsesScrollButtons(true);
 }
@@ -1608,9 +1603,7 @@ void TabWorkArea::showBar(bool show)
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
 	closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
-#if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
-#endif
 }
 
 
@@ -2019,23 +2012,8 @@ DragTabBar::DragTabBar(QWidget* parent)
 	: QTabBar(parent)
 {
 	setAcceptDrops(true);
-#if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
-#endif
 }
-
-
-#if QT_VERSION < 0x040300
-int DragTabBar::tabAt(QPoint const & position) const
-{
-	const int max = count();
-	for (int i = 0; i < max; ++i) {
-		if (tabRect(i).contains(position))
-			return i;
-	}
-	return -1;
-}
-#endif
 
 
 void DragTabBar::mousePressEvent(QMouseEvent * event)
@@ -2076,17 +2054,12 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 	mimeData->setData("action", "tab-reordering") ;
 	drag->setMimeData(mimeData);
 
-#if QT_VERSION >= 0x040300
 	// get tab pixmap as cursor
 	QRect r = tabRect(tab);
 	QPixmap pixmap(r.size());
 	render(&pixmap, - r.topLeft());
 	drag->setPixmap(pixmap);
 	drag->exec();
-#else
-	drag->start(Qt::MoveAction);
-#endif
-
 }
 
 

@@ -674,7 +674,7 @@ docstring InsetMathGrid::eolString(row_type row, bool fragile,
 	// make sure an upcoming '[' does not break anything
 	if (row + 1 < nrows()) {
 		MathData const & c = cell(index(row + 1, 0));
-		if (c.size() && c.front()->getChar() == '[')
+		if (!c.empty() && c.front()->getChar() == '[')
 			//eol += "[0pt]";
 			eol += "{}";
 	}
@@ -905,7 +905,7 @@ bool InsetMathGrid::idxDelete(idx_type & idx)
 
 	// try to delete entire sequence of ncols() empty cells if possible
 	for (idx_type i = idx; i < idx + ncols(); ++i)
-		if (cell(i).size())
+		if (!cell(i).empty())
 			return false;
 
 	// move cells if necessary

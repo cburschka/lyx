@@ -4384,7 +4384,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			/*
 			string s = t.asInput();
 			string z = p.verbatim_item();
-			while (p.good() && z != " " && z.size()) {
+			while (p.good() && z != " " && !z.empty()) {
 				//cerr << "read: " << z << endl;
 				s += z;
 				z = p.verbatim_item();

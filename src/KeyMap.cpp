@@ -115,13 +115,12 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 				LYXERR(Debug::KBMAP, "Warning: New binding for '"
 					<< to_utf8(seq->print(KeySequence::Portable))
 					<< "' is overriding old binding...");
-				if (it->prefixes.get()) {
+				if (it->prefixes)
 					it->prefixes.reset();
-				}
 				it->func = func;
 				it->func.setOrigin(FuncRequest::KEYBOARD);
 				return;
-			} else if (!it->prefixes.get()) {
+			} else if (!it->prefixes) {
 				lyxerr << "Error: New binding for '"
 				       << to_utf8(seq->print(KeySequence::Portable))
 				       << "' is overriding old binding..."
@@ -168,10 +167,10 @@ void KeyMap::unbind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 			if (r + 1 == seq->length()) {
 				if (it->func == func) {
 					remove = it;
-					if (it->prefixes.get())
+					if (it->prefixes)
 						it->prefixes.reset();
 				}
-			} else if (it->prefixes.get()) {
+			} else if (it->prefixes) {
 				it->prefixes->unbind(seq, func, r + 1);
 				if (it->prefixes->empty())
 					remove = it;
@@ -201,7 +200,7 @@ FuncRequest KeyMap::getBinding(KeySequence const & seq, unsigned int r)
 		    && mod2 == it->mod.second) {
 			if (r + 1 == seq.length())
 				return it->func;
-			else if (it->prefixes.get())
+			else if (it->prefixes)
 				return it->prefixes->getBinding(seq, r + 1);
 		}
 	}
@@ -441,7 +440,7 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 
 		if (cit->code == key && cit->mod.first == check) {
 			// match found
-			if (cit->prefixes.get()) {
+			if (cit->prefixes) {
 				// this is a prefix key - set new map
 				seq->curmap = cit->prefixes.get();
 				static FuncRequest prefix(LFUN_COMMAND_PREFIX);
@@ -507,7 +506,7 @@ KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func,
 
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		if (cit->prefixes.get()) {
+		if (cit->prefixes) {
 			KeySequence seq = prefix;
 			seq.addkey(cit->code, cit->mod.first);
 			Bindings res2 = cit->prefixes->findBindings(func, seq);
@@ -555,7 +554,7 @@ void KeyMap::listBindings(BindingList & list,
 	Table::const_iterator it_end = table.end();
 	for (; it != it_end; ++it) {
 		// a LFUN_COMMAND_PREFIX
-		if (it->prefixes.get()) {
+		if (it->prefixes) {
 			KeySequence seq = prefix;
 			seq.addkey(it->code, it->mod.first);
 			it->prefixes->listBindings(list, seq, tag);

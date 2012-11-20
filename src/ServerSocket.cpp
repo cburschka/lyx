@@ -41,7 +41,6 @@ using namespace std;
 using namespace lyx::support;
 
 
-
 namespace lyx {
 
 // Address is the unix address for the socket.

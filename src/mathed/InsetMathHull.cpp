@@ -1039,7 +1039,7 @@ void InsetMathHull::splitTo3Cols()
 	InsetMathGrid::addCol(2);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 3 * row + 1;
-		if (cell(i).size()) {
+		if (!cell(i).empty()) {
 			cell(i + 1) = MathData(buffer_, cell(i).begin() + 1, cell(i).end());
 			cell(i).erase(1, cell(i).size());
 		}
@@ -1309,7 +1309,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		MathData ar;
 		if (cur.inMathed() && cur.selection()) {
 			asArray(grabAndEraseSelection(cur), ar);
-		} else if (pos == cur.cell().size()) {
+		} else if (!pos == cur.cell().empty()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
 		} else {

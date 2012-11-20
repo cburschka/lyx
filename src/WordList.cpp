@@ -37,12 +37,13 @@ WordList * theWordList(Language const & lang)
 	if (it != theGlobalWordList.end())
 		return it->second;
 	else
-		theGlobalWordList[lang] = new WordList();
+		theGlobalWordList[lang] = new WordList;
 	return theGlobalWordList[lang];
 }
 
 
-void WordList::cleanupWordLists() {
+void WordList::cleanupWordLists()
+{
 	map<Language, WordList *>::const_iterator it = theGlobalWordList.begin();
 	for (; it != theGlobalWordList.end(); ++it)
 		delete it->second;

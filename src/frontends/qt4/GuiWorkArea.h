@@ -244,11 +244,6 @@ public:
 	///
 	DragTabBar(QWidget * parent = 0);
 
-#if QT_VERSION < 0x040300
-	///
-	int tabAt(QPoint const & position) const;
-#endif
-
 protected:
 	///
 	void mousePressEvent(QMouseEvent * event);

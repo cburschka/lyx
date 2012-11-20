@@ -695,6 +695,7 @@ $$
 \vspace{}
 \vspace*{}
 \whiledo{}{}
+\xymatrix{} % this is basically an array => the contents would be parsed badly (bug 8396)
 
 % LaTeX environments.
 % They have always one extra "argument":

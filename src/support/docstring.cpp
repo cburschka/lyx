@@ -19,9 +19,12 @@
 
 #include <QFile>
 
+//Needed in Ubuntu
+#include <typeinfo>
+#if ! defined(USE_WCHAR_T) && defined(__GNUC__)
 #include <locale>
 #include <iostream>
-#include <typeinfo>
+#endif
 
 using namespace std;
 
@@ -133,7 +136,7 @@ string const to_local8bit(docstring const & s)
 	if (s.empty())
 		return string();
 	QByteArray const local = toqstr(s).toLocal8Bit();
-	if (local.size() == 0)
+	if (local.isEmpty())
 		throw to_local8bit_failure();
 	return string(local.begin(), local.end());
 }

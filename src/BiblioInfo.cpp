@@ -66,7 +66,7 @@ docstring familyName(docstring const & name)
 	vector<docstring>::const_iterator it = pieces.begin();
 	vector<docstring>::const_iterator en = pieces.end();
 	for (; it != en; ++it) {
-		if ((*it).size() == 0)
+		if ((*it).empty())
 			continue;
 		char_type const c = (*it)[0];
 		if (isLower(c))
@@ -89,6 +89,7 @@ docstring familyName(docstring const & name)
 	return retval;
 }
 
+
 // converts a string containing LaTeX commands into unicode
 // for display.
 docstring convertLaTeXCommands(docstring const & str)
@@ -99,7 +100,7 @@ docstring convertLaTeXCommands(docstring const & str)
 	bool scanning_cmd = false;
 	bool scanning_math = false;
 	bool escaped = false; // used to catch \$, etc.
-	while (val.size()) {
+	while (!val.empty()) {
 		char_type const ch = val[0];
 
 		// if we're scanning math, we output everything until we
@@ -288,114 +289,116 @@ docstring const BibTeXInfo::getXRef() const
 
 
 namespace {
-	string parseOptions(string const & format, string & optkey,
-			string & ifpart, string & elsepart);
 
-	// Calls parseOptions to deal with an embedded option, such as:
-	//   {%number%[[, no.~%number%]]}
-	// which must appear at the start of format. ifelsepart gets the
-	// whole of the option, and we return what's left after the option.
-	// we return format if there is an error.
-	string parseEmbeddedOption(string const & format, string & ifelsepart)
-	{
-		LASSERT(format[0] == '{' && format[1] == '%', return format);
-		string optkey;
-		string ifpart;
-		string elsepart;
-		string const rest = parseOptions(format, optkey, ifpart, elsepart);
-		if (format == rest) { // parse error
-			LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
-			return format;
-		}
-		LASSERT(rest.size() <= format.size(), /* */);
-		ifelsepart = format.substr(0, format.size() - rest.size());
-		return rest;
+string parseOptions(string const & format, string & optkey,
+		    string & ifpart, string & elsepart);
+
+// Calls parseOptions to deal with an embedded option, such as:
+//   {%number%[[, no.~%number%]]}
+// which must appear at the start of format. ifelsepart gets the
+// whole of the option, and we return what's left after the option.
+// we return format if there is an error.
+string parseEmbeddedOption(string const & format, string & ifelsepart)
+{
+	LASSERT(format[0] == '{' && format[1] == '%', return format);
+	string optkey;
+	string ifpart;
+	string elsepart;
+	string const rest = parseOptions(format, optkey, ifpart, elsepart);
+	if (format == rest) { // parse error
+		LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
+		return format;
 	}
+	LASSERT(rest.size() <= format.size(), /* */);
+	ifelsepart = format.substr(0, format.size() - rest.size());
+		return rest;
+}
 
 
-	// Gets a "clause" from a format string, where the clause is
-	// delimited by '[[' and ']]'. Returns what is left after the
-	// clause is removed, and returns format if there is an error.
-	string getClause(string const & format, string & clause)
-	{
-		string fmt = format;
-		// remove '[['
-		fmt = fmt.substr(2);
-		// we'll remove characters from the front of fmt as we
-		// deal with them
-		while (fmt.size()) {
-			if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
-				// that's the end
-				fmt = fmt.substr(2);
-				break;
+// Gets a "clause" from a format string, where the clause is
+// delimited by '[[' and ']]'. Returns what is left after the
+// clause is removed, and returns format if there is an error.
+string getClause(string const & format, string & clause)
+{
+	string fmt = format;
+	// remove '[['
+	fmt = fmt.substr(2);
+	// we'll remove characters from the front of fmt as we
+	// deal with them
+	while (!fmt.empty()) {
+		if (fmt[0] == ']' && fmt.size() > 1 && fmt[1] == ']') {
+			// that's the end
+			fmt = fmt.substr(2);
+			break;
+		}
+		// check for an embedded option
+		if (fmt[0] == '{' && fmt.size() > 1 && fmt[1] == '%') {
+			string part;
+			string const rest = parseEmbeddedOption(fmt, part);
+			if (fmt == rest) {
+				LYXERR0("ERROR! Couldn't parse embedded option in `" << format <<"'.");
+				return format;
 			}
-			// check for an embedded option
-			if (fmt[0] == '{' && fmt.size() > 1 && fmt[1] == '%') {
-				string part;
-				string const rest = parseEmbeddedOption(fmt, part);
-				if (fmt == rest) {
-					LYXERR0("ERROR! Couldn't parse embedded option in `" << format <<"'.");
-					return format;
-				}
-				clause += part;
-				fmt = rest;
-			} else { // it's just a normal character
+			clause += part;
+			fmt = rest;
+		} else { // it's just a normal character
 				clause += fmt[0];
 				fmt = fmt.substr(1);
-			}
 		}
-		return fmt;
+	}
+	return fmt;
+}
+
+
+// parse an options string, which must appear at the start of the
+// format parameter. puts the parsed bits in optkey, ifpart, and
+// elsepart and returns what's left after the option is removed.
+// if there's an error, it returns format itself.
+string parseOptions(string const & format, string & optkey,
+		    string & ifpart, string & elsepart)
+{
+	LASSERT(format[0] == '{' && format[1] == '%', return format);
+	// strip '{%'
+	string fmt = format.substr(2);
+	size_t pos = fmt.find('%'); // end of key
+	if (pos == string::npos) {
+		LYXERR0("Error parsing  `" << format <<"'. Can't find end of key.");
+		return format;
+	}
+	optkey = fmt.substr(0,pos);
+	fmt = fmt.substr(pos + 1);
+	// [[format]] should be next
+	if (fmt[0] != '[' || fmt[1] != '[') {
+		LYXERR0("Error parsing  `" << format <<"'. Can't find '[[' after key.");
+		return format;
 	}
 
+	string curfmt = fmt;
+	fmt = getClause(curfmt, ifpart);
+	if (fmt == curfmt) {
+		LYXERR0("Error parsing  `" << format <<"'. Couldn't get if clause.");
+		return format;
+	}
 
-	// parse an options string, which must appear at the start of the
-	// format parameter. puts the parsed bits in optkey, ifpart, and
-	// elsepart and returns what's left after the option is removed.
-	// if there's an error, it returns format itself.
-	string parseOptions(string const & format, string & optkey,
-			string & ifpart, string & elsepart)
-	{
-		LASSERT(format[0] == '{' && format[1] == '%', return format);
-		// strip '{%'
-		string fmt = format.substr(2);
-		size_t pos = fmt.find('%'); // end of key
-		if (pos == string::npos) {
-			LYXERR0("Error parsing  `" << format <<"'. Can't find end of key.");
-			return format;
-		}
-		optkey = fmt.substr(0,pos);
-		fmt = fmt.substr(pos + 1);
-		// [[format]] should be next
-		if (fmt[0] != '[' || fmt[1] != '[') {
-			LYXERR0("Error parsing  `" << format <<"'. Can't find '[[' after key.");
-			return format;
-		}
-
-		string curfmt = fmt;
-		fmt = getClause(curfmt, ifpart);
-		if (fmt == curfmt) {
-			LYXERR0("Error parsing  `" << format <<"'. Couldn't get if clause.");
-			return format;
-		}
-
-		if (fmt[0] == '}') // we're done, no else clause
-			return fmt.substr(1);
-
-		// else part should follow
-		if (fmt[0] != '[' || fmt[1] != '[') {
-			LYXERR0("Error parsing  `" << format <<"'. Can't find else clause.");
-			return format;
-		}
-
-		curfmt = fmt;
-		fmt = getClause(curfmt, elsepart);
-		// we should be done
-		if (fmt == curfmt || fmt[0] != '}') {
-			LYXERR0("Error parsing  `" << format <<"'. Can't find end of option.");
-			return format;
-		}
+	if (fmt[0] == '}') // we're done, no else clause
 		return fmt.substr(1);
+
+	// else part should follow
+	if (fmt[0] != '[' || fmt[1] != '[') {
+		LYXERR0("Error parsing  `" << format <<"'. Can't find else clause.");
+		return format;
+	}
+
+	curfmt = fmt;
+	fmt = getClause(curfmt, elsepart);
+	// we should be done
+	if (fmt == curfmt || fmt[0] != '}') {
+		LYXERR0("Error parsing  `" << format <<"'. Can't find end of option.");
+		return format;
+	}
+	return fmt.substr(1);
 }
+
 
 } // anon namespace
 
@@ -415,7 +418,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 	string fmt = format;
 	// we'll remove characters from the front of fmt as we
 	// deal with them
-	while (fmt.size()) {
+	while (!fmt.empty()) {
 		if (counter++ > max_passes) {
 			LYXERR0("Recursion limit reached while parsing `"
 			        << format << "'.");
@@ -650,14 +653,16 @@ docstring BibTeXInfo::getValueForKey(string const & key,
 //////////////////////////////////////////////////////////////////////
 
 namespace {
+
 // A functor for use with sort, leading to case insensitive sorting
-	class compareNoCase: public binary_function<docstring, docstring, bool>
-	{
-		public:
-			bool operator()(docstring const & s1, docstring const & s2) const {
-				return compare_no_case(s1, s2) < 0;
-			}
-	};
+class compareNoCase: public binary_function<docstring, docstring, bool>
+{
+public:
+	bool operator()(docstring const & s1, docstring const & s2) const {
+		return compare_no_case(s1, s2) < 0;
+	}
+};
+
 } // namespace anon
 
 
@@ -827,19 +832,21 @@ void BiblioInfo::mergeBiblioInfo(BiblioInfo const & info)
 
 
 namespace {
-	// used in xhtml to sort a list of BibTeXInfo objects
-	bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
-	{
-		docstring const lauth = lhs->getAbbreviatedAuthor();
-		docstring const rauth = rhs->getAbbreviatedAuthor();
-		docstring const lyear = lhs->getYear();
-		docstring const ryear = rhs->getYear();
-		docstring const ltitl = lhs->operator[]("title");
-		docstring const rtitl = rhs->operator[]("title");
-		return  (lauth < rauth)
-				|| (lauth == rauth && lyear < ryear)
-				|| (lauth == rauth && lyear == ryear && ltitl < rtitl);
-	}
+
+// used in xhtml to sort a list of BibTeXInfo objects
+bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
+{
+	docstring const lauth = lhs->getAbbreviatedAuthor();
+	docstring const rauth = rhs->getAbbreviatedAuthor();
+	docstring const lyear = lhs->getYear();
+	docstring const ryear = rhs->getYear();
+	docstring const ltitl = lhs->operator[]("title");
+	docstring const rtitl = rhs->operator[]("title");
+	return  (lauth < rauth)
+		|| (lauth == rauth && lyear < ryear)
+		|| (lauth == rauth && lyear == ryear && ltitl < rtitl);
+}
+
 }
 
 

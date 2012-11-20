@@ -9,7 +9,7 @@ project(test)
 set(_test_depend "test.ltx")
 set(_test_output)
 
-foreach(_arg test-structure test-insets box-color-size-space-align CJK XeTeX-polyglossia)
+foreach(_arg test-structure test-insets test-modules box-color-size-space-align CJK XeTeX-polyglossia)
   list(APPEND _test_depend "${TOP_SRC_DIR}/src/tex2lyx/test/${_arg}.tex")
   list(APPEND _test_output "${CMAKE_CURRENT_BINARY_DIR}/${_arg}.lyx.tex")
   list(APPEND _test_output "${CMAKE_CURRENT_BINARY_DIR}/${_arg}.lyx.lyx")

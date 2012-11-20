@@ -115,8 +115,13 @@ dernière revue JPChrétien pour 1.6.10, mai 2005
 \end_layout
 
 \begin_layout Plain Layout
-(synchonisation avec l'interface, ajout d'un paragraphe section 3.2 mentionnant
+(synchronisation avec l'interface, ajout d'un paragraphe section 3.2 mentionnant
  le modèle lettre.lyx)
+\end_layout
+
+\begin_layout Plain Layout
+Remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
+n/Navigation, 31/10/2012
 \end_layout
 
 \end_inset
@@ -663,8 +668,8 @@ Sous\SpecialChar \ldots{}
 \begin_layout Itemize
 Générer un fichier PDF avec 
 \family sans
-Visualiser\SpecialChar \menuseparator
-Visualiser
+Affichage\SpecialChar \menuseparator
+Visionner
 \family default
  ou avec le bouton 
 \begin_inset Info
@@ -764,7 +769,7 @@ annuler
  Ça signifie que vous pouvez annuler tout ce que vous avez fait depuis le
  début de votre session d'édition, en faisant 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Annuler
 \family default
  (bouton 
@@ -776,7 +781,7 @@ arg   "undo"
  de la barre d'outils) de façon répétitive.
  Si vous annulez trop de fois, faites juste 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Refaire
 \family default
  (bouton 
@@ -799,7 +804,7 @@ Actuellement, le nombre maximal d'opérations que l'on peut annuler est de
 \begin_layout Description
 Couper/Copier/Coller Vous pouvez utiliser 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Couper
 \family default
  (bouton 
@@ -810,7 +815,7 @@ arg   "cut"
 
 ), 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Copier
 \family default
  (bouton 
@@ -821,7 +826,7 @@ arg   "copy"
 
 ), et 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Coller
 \family default
  (bouton 
@@ -846,7 +851,7 @@ de la souris
 \begin_layout Description
 Rechercher/Remplacer Utilisez 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Rechercher
 \begin_inset space ~
 \end_inset
@@ -916,7 +921,7 @@ Style Nom propre
  (généralement en petites capitales, utilisées pour les noms de personnes)
  à partir des listes déroulantes du menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -2709,7 +2714,7 @@ Allons à notre seconde section, dont le titre est
 .
  Cliquez en fin d'en-tête de cette section, et sélectionnez 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou cliquez sur le bouton 
@@ -2776,7 +2781,7 @@ section
 
  et faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -2884,7 +2889,7 @@ Copier comme référence
  et peut ensuite être copiée à la position courante du curseur via le menu
  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Coller (
 \family default
 raccourci 
@@ -3147,7 +3152,7 @@ arg   "footnote-insert"
 
 , dans la barre d'outils ou par menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -3296,7 +3301,7 @@ arg   "marginalnote-insert"
 
  de la barre d'outils, ou par le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -3444,7 +3449,7 @@ tutorielLyX
 Déplacez-vous alors à un endroit où vous souhaiteriez insérer une citation.
  Avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Citation
 \family default
  ou le bouton 
@@ -3571,7 +3576,7 @@ Entrée
  juste après le titre de votre document, et avant la première section, et
  faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -3667,7 +3672,7 @@ Plan
  ouverte tout au long de l'édition du document.
  Vous aurez également la même chose dans le menu 
 \family sans
-Naviguer
+Navigation
 \family default
 , dans lequel la table des matières apparaît automatiquement.
 \end_layout
@@ -3786,7 +3791,7 @@ arg   "math-mode"
 
  ou utilisez le menu 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Formule
 \begin_inset space ~
@@ -3920,7 +3925,7 @@ Arrière
  la souris.
  
 \family sans
-Éditer
+Édition
 \family default
 \SpecialChar \menuseparator
 
@@ -3953,7 +3958,7 @@ Suppr
 , l'expression entière est effacée.
  Heureusement, 
 \family sans
-Éditer
+Édition
 \family default
 \SpecialChar \menuseparator
 
@@ -4169,12 +4174,12 @@ Math
  Plusieurs de ces opérations peuvent être exécutées depuis le clavier ou
  les menus 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math
 \family default
  et 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
 .
@@ -4369,7 +4374,7 @@ Délimiteurs.
 \begin_layout Standard
 Une fois que vous avez choisi vos délimiteurs, cliquez sur 
 \family sans
-Insérer
+Insertion
 \family default
  pour les mettre dans votre expression .
  Si vous êtes paresseux, vous pouvez utiliser les parenthèses du clavier
@@ -4729,7 +4734,7 @@ Bas
 Si vous avez besoin de changer le nombre de lignes ou de colonnes, faites
  
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Lignes
 \begin_inset space ~
 \end_inset
@@ -4998,7 +5003,7 @@ status collapsed
 \begin_layout Plain Layout
 Après avoir sué sur cet exercice, essayez 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Environnement
 \begin_inset space ~
@@ -5124,7 +5129,7 @@ Insérés
 LyX traite les tableaux en mode WYSIWYM.
  Faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Tableau
 \family default
  (bouton 
@@ -5179,7 +5184,7 @@ Tableau
 \family default
  (également accessible par le menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Paramètres
 \begin_inset space ~
 \end_inset
@@ -5211,7 +5216,7 @@ LyX permet également d'inclure des images dans n'importe quel format à l'inté
 ur d'un document.
  (Vous l'avez deviné : 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Graphique
 \family default
 , ou bouton 
@@ -5414,7 +5419,7 @@ Tout ce que vous entrez en mode TeX est transmis tel quel à LaTeX et apparaît
  en rouge à l'écran.
  Vous pouvez mettre des commandes TeX dans LyX en faisant 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Code
 \begin_inset space ~
 \end_inset
@@ -5763,7 +5768,7 @@ LyX supporte BibTeX, qui vous permet de créer des bases de données de référe
  bibliographiques et de les utiliser dans plusieurs documents différents.
  Faites 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -5825,7 +5830,7 @@ Style
 Après ça, vous pouvez citer n'importe quel ouvrage des bibliographies que
  vous avez choisies, avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Citation
 \family default
  (voir la section
@@ -6087,7 +6092,7 @@ Les points de suspension s'obtiennent quant à eux avec trois points ordinaires
  successifs et les tirets longs – comme ici – avec deux tirets juxtaposés
  (ou via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset

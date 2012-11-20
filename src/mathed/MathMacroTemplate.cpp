@@ -994,7 +994,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_;
-			if (arg.size() != 0)
+			if (!arg.empty())
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
 			insertParameter(cur, cur, pos);
 		}
@@ -1006,7 +1006,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_ - 1;
-			if (arg.size() != 0)
+			if (!arg.empty())
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
 			removeParameter(cur, cur, pos);
 		}
@@ -1080,7 +1080,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 	switch (cmd.action()) {
 		case LFUN_MATH_MACRO_ADD_PARAM: {
 			int num = numargs_ + 1;
-			if (arg.size() != 0)
+			if (!arg.empty())
 				num = convert<int>(arg);
 			bool on = (num >= optionals_
 				   && numargs_ < 9 && num <= numargs_ + 1);
@@ -1095,7 +1095,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 		case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		case LFUN_MATH_MACRO_REMOVE_PARAM: {
 			int num = numargs_;
-			if (arg.size() != 0)
+			if (!arg.empty())
 				num = convert<int>(arg);
 			flag.setEnabled(num >= 1 && num <= numargs_);
 			break;
@@ -1266,8 +1266,7 @@ bool MathMacroTemplate::validName() const
 {
 	docstring n = name();
 
-	// empty name?
-	if (n.size() == 0)
+	if (n.empty())
 		return false;
 
 	// converting back and force doesn't swallow anything?
@@ -1316,7 +1315,7 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 	}
 
 	// now it should be valid if anything in the name survived
-	return data.size() > 0;
+	return !data.empty();
 }
 
 	

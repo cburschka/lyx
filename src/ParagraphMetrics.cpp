@@ -257,9 +257,8 @@ bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
 	}
 
 	// expand at the beginning of a row only if it is the first row of a paragraph
-	if (pos == row.pos()) {
+	if (pos == row.pos())
 		return pos == 0;
-	}
 
 	// do not expand in some labels
 	if (par_->layout().margintype != MARGIN_MANUAL && pos < par_->beginOfBody())

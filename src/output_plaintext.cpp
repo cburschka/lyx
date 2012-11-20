@@ -71,6 +71,7 @@ static pair<int, docstring> addDepth(int depth, int ldepth)
 	return make_pair(d, docstring(d, ' '));
 }
 
+
 void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & par,
 		    odocstream & os,

@@ -109,9 +109,7 @@
 #include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
-#if QT_VERSION >= 0x040400
 #include <QThreadPool>
-#endif
 #include <QWidget>
 
 #ifdef Q_WS_X11
@@ -737,7 +735,7 @@ struct GuiApplication::Private
 	{
 	#ifdef Q_WS_WIN
 		/// WMF Mime handler for Windows clipboard.
-		wmf_mime_ = new QWindowsMimeMetafile();
+		wmf_mime_ = new QWindowsMimeMetafile;
 	#endif
 		initKeySequences(&theTopLevelKeymap());
 	}
@@ -886,12 +884,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		this, SLOT(handleRegularEvents()));
 	d->general_timer_.start();
 
-#if QT_VERSION >= 0x040400
 	// maxThreadCount() defaults in general to 2 on single or dual-processor.
 	// This is clearly not enough in a time where we use threads for
 	// document preview and/or export. 20 should be OK.
 	QThreadPool::globalInstance()->setMaxThreadCount(20);
-#endif
 }
 
 
@@ -2145,7 +2141,7 @@ void GuiApplication::execBatchCommands()
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
 	// This must be done after the session was recovered to know the "last files".
-	d->global_menubar_ = new GlobalMenuBar();
+	d->global_menubar_ = new GlobalMenuBar;
 	d->menus_.fillMenuBar(d->global_menubar_, 0, true);
 #endif
 
@@ -2184,9 +2180,7 @@ QAbstractItemModel * GuiApplication::languageModel()
 	}
 	d->language_model_ = new QSortFilterProxyModel(this);
 	d->language_model_->setSourceModel(lang_model);
-#if QT_VERSION >= 0x040300
 	d->language_model_->setSortLocaleAware(true);
-#endif
 	return d->language_model_;
 }
 

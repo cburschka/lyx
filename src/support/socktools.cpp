@@ -51,6 +51,7 @@ int accept(int)
 
 #include <cerrno>
 #include <string>
+//needed for Mac OSX 10.5.2 Leopard
 #include <cstring>
 
 using namespace std;

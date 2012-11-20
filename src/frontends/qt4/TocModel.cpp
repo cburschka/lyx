@@ -76,9 +76,7 @@ TocModel::TocModel(QObject * parent)
 	sorted_model_(new QSortFilterProxyModel(parent)),
 	is_sorted_(false), maxdepth_(0), mindepth_(0)
 {
-#if QT_VERSION >= 0x040300
 	sorted_model_->setSortLocaleAware(true);
-#endif
 	sorted_model_->setSourceModel(model_);
 }
 
@@ -248,9 +246,7 @@ TocModels::TocModels()
 	names_ = new TocTypeModel(this);
 	names_sorted_ = new TocModelSortProxyModel(this);
 	names_sorted_->setSourceModel(names_);
-#if QT_VERSION >= 0x040300
 	names_sorted_->setSortLocaleAware(true);
-#endif
 	names_sorted_->sort(0);
 }
 

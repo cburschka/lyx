@@ -35,6 +35,7 @@ Configuration of standard NSIS header files
 !include MultiUser.nsh
 !include nsDialogs.nsh
 !include InstallOptions.nsh
+!include x64.nsh
 
 # Set of various macros and functions
 !include include\LyXUtils.nsh
@@ -47,8 +48,8 @@ Configuration of standard NSIS header files
  !include gui\LaTeXFolder.nsh
 !endif # end if != BUNDLE
 
-# Functions download dictionaries
-!include include\Thesaurus.nsh
+# Functions to download spell-checker and thesaurus dictionaries
+!include include\dictionaries.nsh
 
 #--------------------------------
 # Include standard functions

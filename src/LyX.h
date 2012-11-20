@@ -144,7 +144,7 @@ private:
 	friend Messages const & getGuiMessages();
 	friend KeyMap & theTopLevelKeymap();
 	friend Movers & theMovers();
-	friend Mover const & getMover(std::string  const & fmt);
+	friend Mover const & getMover(std::string const & fmt);
 	friend void setMover(std::string const & fmt, std::string const & command);
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
@@ -180,4 +180,3 @@ void dispatch(FuncRequest const & action, DispatchResult & dr);
 } // namespace lyx
 
 #endif // LYX_H
-

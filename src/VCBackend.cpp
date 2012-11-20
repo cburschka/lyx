@@ -98,6 +98,7 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 	return true;
 }
 
+
 bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 {
 	FileName dirname = file.onlyPath();
@@ -121,7 +122,7 @@ bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 //
 /////////////////////////////////////////////////////////////////////
 
-RCS::RCS(FileName const & m)
+RCS::RCS(FileName const & m, Buffer * b) : VCS(b)
 {
 	master_ = m;
 	scanMaster();
@@ -150,11 +151,12 @@ FileName const RCS::findFile(FileName const & file)
 }
 
 
-void RCS::retrieve(FileName const & file)
+bool RCS::retrieve(FileName const & file)
 {
 	LYXERR(Debug::LYXVC, "LyXVC::RCS: retrieve.\n\t" << file);
-	doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
-			 FileName());
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
+	                       FileName()) == 0;
 }
 
 
@@ -471,10 +473,9 @@ bool RCS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-CVS::CVS(FileName const & m, FileName const & f)
+CVS::CVS(FileName const & m, Buffer * b) : VCS(b)
 {
 	master_ = m;
-	file_ = f;
 	have_rev_info_ = false;
 	scanMaster();
 }
@@ -509,7 +510,7 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "LyXVC::CVS: scanMaster. \n     Checking: " << master_);
 	// Ok now we do the real scan...
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
-	string name = onlyFileName(file_.absFileName());
+	string name = onlyFileName(owner_->absFileName());
 	string tmpf = '/' + name + '/';
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
@@ -529,12 +530,13 @@ void CVS::scanMaster()
 
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
-			if (file_.isReadableFile()) {
-				time_t mod = file_.lastModified();
+			FileName file(owner_->absFileName());
+			if (file.isReadableFile()) {
+				time_t mod = file.lastModified();
 				string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 				LYXERR(Debug::LYXVC, "Date in Entries: `" << file_date
 					<< "'\nModification date of file: `" << mod_date << '\'');
-				if (file_.isReadOnly()) {
+				if (file.isReadOnly()) {
 					// readonly checkout is unlocked
 					vcstatus = UNLOCKED;
 				} else {
@@ -549,6 +551,15 @@ void CVS::scanMaster()
 			break;
 		}
 	}
+}
+
+
+bool CVS::retrieve(FileName const & file)
+{
+	LYXERR(Debug::LYXVC, "LyXVC::CVS: retrieve.\n\t" << file);
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("cvs -q update " + quoteName(file.toFilesystemEncoding()),
+	                       file.onlyPath()) == 0;
 }
 
 
@@ -1043,11 +1054,9 @@ bool CVS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-SVN::SVN(FileName const & m, FileName const & f)
+SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
 {
-	owner_ = 0;
 	master_ = m;
-	file_ = f;
 	locked_mode_ = 0;
 	scanMaster();
 }
@@ -1102,9 +1111,9 @@ bool SVN::checkLockMode()
 	}
 
 	LYXERR(Debug::LYXVC, "Detecting locking mode...");
-	if (doVCCommandCall("svn proplist " + quoteName(file_.onlyFileName())
+	if (doVCCommandCall("svn proplist " + quoteName(onlyFileName(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
-		    file_.onlyPath()))
+		    FileName(owner_->filePath())))
 		return false;
 
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
@@ -1127,8 +1136,18 @@ bool SVN::checkLockMode()
 
 bool SVN::isLocked() const
 {
-	file_.refresh();
-	return !file_.isReadOnly();
+	FileName file(owner_->absFileName());
+	file.refresh();
+	return !file.isReadOnly();
+}
+
+
+bool SVN::retrieve(FileName const & file)
+{
+	LYXERR(Debug::LYXVC, "LyXVC::SVN: retrieve.\n\t" << file);
+	// The caller ensures that file does not exists, so no need to check that.
+	return doVCCommandCall("svn update -q --non-interactive " + quoteName(file.onlyFileName()),
+	                       file.onlyPath()) == 0;
 }
 
 

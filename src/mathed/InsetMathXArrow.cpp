@@ -64,7 +64,7 @@ void InsetMathXArrow::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << '\\' << name_;
-	if (cell(1).size())
+	if (!cell(1).empty())
 		os << '[' << cell(1) << ']';
 	os << '{' << cell(0) << '}';
 }

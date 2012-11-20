@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 431
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass book
@@ -45,7 +45,6 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,21 +69,15 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_package amsmath 0
-\use_package amssymb 0
-\use_package esint 0
-\use_package mathdots 1
-\use_package mathtools 0
-\use_package mhchem 1
-\use_package undertilde 0
+\use_amsmath 0
+\use_esint 0
+\use_mathdots 1
+\use_mhchem 1
 \cite_engine basic
-\cite_engine_type numerical
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -1149,6 +1142,26 @@ Program vlna automaticky přidává chráněné mezery za neslabičné předlož
  vestavěného mechanismu konvertorů.
  Samotný program je součástí nových distribucí TeX Live, nebo ho lze samostatně
  stáhnout na internetu.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://math.feld.cvut.cz/pub/olsak/vlna/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2598,7 +2611,7 @@ Uživatelské příručce.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>

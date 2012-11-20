@@ -631,7 +631,7 @@ bool multipleCellsSelected(Cursor const & cur)
 }
 
 
-void switchBetweenClasses(DocumentClassConstPtr  oldone,
+void switchBetweenClasses(DocumentClassConstPtr oldone,
 		DocumentClassConstPtr newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
@@ -847,6 +847,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	// stuff the selection onto the X clipboard, from an explicit copy request
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
 }
+
 
 namespace {
 

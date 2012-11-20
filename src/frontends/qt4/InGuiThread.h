@@ -19,10 +19,6 @@
 #include "support/bind.h"
 #include "support/functional.h"
 
-#if QT_VERSION < 0x040400
-#define Q_EMIT
-#endif
-
 namespace lyx {
 namespace frontend {
 

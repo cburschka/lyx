@@ -26,6 +26,7 @@
 #include "LaTeX.h"
 #include "Layout.h"
 #include "LyX.h"
+#include "LyXVC.h"
 #include "TextClass.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
@@ -81,8 +82,10 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		return checkBuffer;
 	}
 
-	if (filename.exists()) {
-		if (!filename.isReadableFile()) {
+	bool const exists = filename.exists();
+	bool const tryVC = exists ? false : LyXVC::fileInVC(filename);
+	if (exists || tryVC) {
+		if (exists && !filename.isReadableFile()) {
 			docstring text = bformat(_("The file %1$s exists but is not "
 				"readable by the current user."),
 				from_utf8(filename.absFileName()));
@@ -178,7 +181,7 @@ Buffer * loadIfNeeded(FileName const & fname)
 {
 	Buffer * buffer = theBufferList().getBuffer(fname);
 	if (!buffer) {
-		if (!fname.exists())
+		if (!fname.exists() && !LyXVC::fileInVC(fname))
 			return 0;
 
 		buffer = theBufferList().newBuffer(fname.absFileName());

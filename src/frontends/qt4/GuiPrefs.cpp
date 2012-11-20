@@ -1678,7 +1678,7 @@ void PrefConverters::changeConverter()
 
 void PrefConverters::updateButtons()
 {
-	if (form_->formats().size() == 0)
+	if (form_->formats().empty())
 		return;
 	Format const & from = form_->formats().get(converterFromCO->currentIndex());
 	Format const & to = form_->formats().get(converterToCO->currentIndex());
@@ -1975,7 +1975,7 @@ void PrefFileformats::updateView()
 
 void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 {
-	if (form_->formats().size() == 0)
+	if (form_->formats().empty())
 		return;
 	int const nr = formatsCB->itemData(i).toInt();
 	Format const f = form_->formats().get(nr);
@@ -2515,9 +2515,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(singleInstanceCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-#if QT_VERSION < 0x040500
-	singleCloseTabButtonCB->setEnabled(false);
-#endif
 	connect(singleCloseTabButtonCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(uiFilePB, SIGNAL(clicked()),
@@ -2571,9 +2568,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
 	rc.single_instance = singleInstanceCB->isChecked();
 	rc.single_close_tab_button = singleCloseTabButtonCB->isChecked();
-#if QT_VERSION < 0x040500
-	rc.single_close_tab_button = true;
-#endif
+
 	switch (closeLastViewCO->currentIndex()) {
 	case 0:
 		rc.close_buffer_with_last_view = "yes";

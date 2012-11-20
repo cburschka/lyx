@@ -45,9 +45,9 @@ namespace lyx {
 namespace {
 
 enum OpenEncoding {
-		none,
-		inputenc,
-		CJK
+	none,
+	inputenc,
+	CJK
 };
 
 static int open_encoding_ = none;

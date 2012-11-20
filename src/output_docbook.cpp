@@ -42,7 +42,7 @@ namespace {
 
 ParagraphList::const_iterator searchParagraph(
 	ParagraphList::const_iterator p,
-  ParagraphList::const_iterator const & pend)
+	ParagraphList::const_iterator const & pend)
 {
 	for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p)
 		;
@@ -52,8 +52,8 @@ ParagraphList::const_iterator searchParagraph(
 
 
 ParagraphList::const_iterator searchCommand(
-		ParagraphList::const_iterator p,
-		ParagraphList::const_iterator const & pend)
+	ParagraphList::const_iterator p,
+	ParagraphList::const_iterator const & pend)
 {
 	Layout const & bstyle = p->layout();
 
@@ -68,8 +68,8 @@ ParagraphList::const_iterator searchCommand(
 
 
 ParagraphList::const_iterator searchEnvironment(
-		ParagraphList::const_iterator p,
-		ParagraphList::const_iterator const & pend)
+	ParagraphList::const_iterator p,
+	ParagraphList::const_iterator const & pend)
 {
 	Layout const & bstyle = p->layout();
 	size_t const depth = p->params().depth();
@@ -95,12 +95,13 @@ ParagraphList::const_iterator searchEnvironment(
 }
 
 
-ParagraphList::const_iterator makeParagraph(Buffer const & buf,
-					    odocstream & os,
-					    OutputParams const & runparams,
-					    Text const & text,
-					    ParagraphList::const_iterator const & pbegin,
-					    ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator makeParagraph(
+	Buffer const & buf,
+	odocstream & os,
+	OutputParams const & runparams,
+	Text const & text,
+	ParagraphList::const_iterator const & pbegin,
+	ParagraphList::const_iterator const & pend)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
@@ -123,12 +124,13 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 }
 
 
-ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
-					      odocstream & os,
-					      OutputParams const & runparams,
-					      Text const & text,
-					      ParagraphList::const_iterator const & pbegin,
-					      ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator makeEnvironment(
+	Buffer const & buf,
+	odocstream & os,
+	OutputParams const & runparams,
+	Text const & text,
+	ParagraphList::const_iterator const & pbegin,
+	ParagraphList::const_iterator const & pend)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = pbegin;
@@ -244,12 +246,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 }
 
 
-ParagraphList::const_iterator makeCommand(Buffer const & buf,
-					  odocstream & os,
-					  OutputParams const & runparams,
-					  Text const & text,
-					  ParagraphList::const_iterator const & pbegin,
-					  ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator makeCommand(
+	Buffer const & buf,
+	odocstream & os,
+	OutputParams const & runparams,
+	Text const & text,
+	ParagraphList::const_iterator const & pbegin,
+	ParagraphList::const_iterator const & pend)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = pbegin;

@@ -109,6 +109,7 @@ bool Counter::read(Lexer & lex)
 	return getout;
 }
 
+
 void Counter::set(int v)
 {
 	value_ = v;
@@ -361,7 +362,6 @@ char hebrewCounter(int const n)
 		return '?';
 	return hebrew[n - 1];
 }
-
 
 
 // On the special cases, see http://mathworld.wolfram.com/RomanNumerals.html

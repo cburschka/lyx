@@ -15,15 +15,11 @@
 #include "support/lstrings.h"
 
 #include "support/convert.h"
-#include "support/gettext.h"
 #include "support/qstring_helpers.h"
-#include "support/textutils.h"
 
-#include <boost/tokenizer.hpp>
 #include "support/lassert.h"
 
 #include <QString>
-#include <QVector>
 
 #include <cstdio>
 #include <algorithm>

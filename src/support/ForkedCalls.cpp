@@ -113,7 +113,7 @@ bool ForkedProcess::IAmAChild = false;
 
 void ForkedProcess::emitSignal()
 {
-	if (signal_.get()) {
+	if (signal_) {
 		signal_->operator()(pid_, retval_);
 	}
 }

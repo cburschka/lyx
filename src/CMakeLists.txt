@@ -88,16 +88,17 @@ if (LYX_VLD)
 endif()
 
 if(WIN32)
-	set(FILE_RC ${TOP_SRC_DIR}/development/cmake/lyx.rc)
+	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()
 
 lyx_find_info_files(LyXInfoFiles ${TOP_SRC_DIR}/*)
-lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.txt)
-lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.cmake)
-lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.h)
-lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/*.msvc)
-lyx_find_info_files(LyXCMakeFiles ${TOP_SRC_DIR}/development/cmake/modules/*)
+lyx_find_info_files(LyXCMakeFiles ${TOP_CMAKE_PATH}/*.txt)
+lyx_find_info_files(LyXCMakeFiles ${TOP_CMAKE_PATH}/*.cmake)
+lyx_find_info_files(LyXCMakeFiles ${TOP_CMAKE_PATH}/*.h)
+lyx_find_info_files(LyXCMakeFiles ${TOP_CMAKE_PATH}/*.msvc)
+lyx_find_info_files(LyXCMakeFiles ${TOP_MODULE_PATH}/*)
+lyx_find_info_files(LyXCMakeFiles ${TOP_SCRIPT_PATH}/*)
 lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
 if (APPLE AND LYX_BUNDLE)
@@ -116,6 +117,7 @@ add_executable(${_lyx}
 	${OSX_BUNDLE_FILES}
 )
 
+add_dependencies(${_lyx} lyx_version)
 
 lyx_add_gcc_pch(${_lyx})
 

@@ -142,6 +142,7 @@ string HSpace::asHTMLLength() const
 	return result;
 }
 
+
 int HSpace::inPixels(BufferView const & bv) const
 {
 	switch (kind_) {

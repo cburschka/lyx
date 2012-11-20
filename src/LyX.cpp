@@ -138,11 +138,10 @@ void reconfigureUserLyXDir()
 } // namespace anon
 
 /// The main application class private implementation.
-struct LyX::Impl
-{
-	Impl() : latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
-	{
-	}
+struct LyX::Impl {
+	Impl()
+		: latexfonts_(0), spell_checker_(0), apple_spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
+	{}
 
 	~Impl()
 	{
@@ -204,6 +203,7 @@ struct LyX::Impl
 	///
 	SpellChecker * hunspell_checker_;
 };
+
 
 ///
 frontend::Application * theApp()
@@ -1424,7 +1424,7 @@ void setSpellChecker()
 	if (lyxrc.spellchecker == "native") {
 #if defined(USE_MACOSX_PACKAGING)
 		if (!singleton_->pimpl_->apple_spell_checker_)
-			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker();
+			singleton_->pimpl_->apple_spell_checker_ = new AppleSpellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->apple_spell_checker_;
 #else
 		singleton_->pimpl_->spell_checker_ = 0;
@@ -1432,7 +1432,7 @@ void setSpellChecker()
 	} else if (lyxrc.spellchecker == "aspell") {
 #if defined(USE_ASPELL)
 		if (!singleton_->pimpl_->aspell_checker_)
-			singleton_->pimpl_->aspell_checker_ = new AspellChecker();
+			singleton_->pimpl_->aspell_checker_ = new AspellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->aspell_checker_;
 #else
 		singleton_->pimpl_->spell_checker_ = 0;
@@ -1440,7 +1440,7 @@ void setSpellChecker()
 	} else if (lyxrc.spellchecker == "enchant") {
 #if defined(USE_ENCHANT)
 		if (!singleton_->pimpl_->enchant_checker_)
-			singleton_->pimpl_->enchant_checker_ = new EnchantChecker();
+			singleton_->pimpl_->enchant_checker_ = new EnchantChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->enchant_checker_;
 #else
 		singleton_->pimpl_->spell_checker_ = 0;
@@ -1448,7 +1448,7 @@ void setSpellChecker()
 	} else if (lyxrc.spellchecker == "hunspell") {
 #if defined(USE_HUNSPELL)
 		if (!singleton_->pimpl_->hunspell_checker_)
-			singleton_->pimpl_->hunspell_checker_ = new HunspellChecker();
+			singleton_->pimpl_->hunspell_checker_ = new HunspellChecker;
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->hunspell_checker_;
 #else
 		singleton_->pimpl_->spell_checker_ = 0;

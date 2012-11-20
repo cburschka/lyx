@@ -53,7 +53,8 @@ typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
 struct AspellChecker::Private
 {
-	Private() {}
+	Private()
+	{}
 
 	~Private();
 
@@ -91,27 +92,38 @@ struct AspellChecker::Private
 
 	/// the location below system/user directory
 	/// there the rws files lookup will happen
-	const string dictDirectory(void) { return "dicts"; }
+	const string dictDirectory(void)
+	{
+		return "dicts";
+	}
 	/// there the dat+cmap files lookup will happen
-	const string dataDirectory(void) { return "data"; }
+	const string dataDirectory(void)
+	{
+		return "data";
+	}
 	/// os package directory constants
 	/// macports on Mac OS X or
 	/// aspell rpms on Linux
-	const string osPackageBase(void) {
+	const string osPackageBase(void)
+	{
 #ifdef USE_MACOSX_PACKAGING
 		return "/opt/local";
 #else
 		return "/usr";
 #endif
 	}
-	const string osPackageDictDirectory(void) {
+	const string osPackageDictDirectory(void)
+	{
 #ifdef USE_MACOSX_PACKAGING
 		return "/share/aspell";
 #else
 		return "/lib/aspell-0.60";
 #endif
 	}
-	const string osPackageDataDirectory(void) { return "/lib/aspell-0.60"; }
+	const string osPackageDataDirectory(void)
+	{
+		return "/lib/aspell-0.60";
+	}
 
 };
 
@@ -404,9 +416,9 @@ bool AspellChecker::Private::learned(WordLangTuple const & word)
 }
 
 
-AspellChecker::AspellChecker(): d(new Private)
-{
-}
+AspellChecker::AspellChecker()
+	: d(new Private)
+{}
 
 
 AspellChecker::~AspellChecker()
@@ -483,11 +495,13 @@ void AspellChecker::suggest(WordLangTuple const & wl,
 	delete_aspell_string_enumeration(els);
 }
 
+
 void AspellChecker::remove(WordLangTuple const & word)
 {
 	d->remove(word);
 	advanceChangeNumber();
 }
+
 
 bool AspellChecker::hasDictionary(Language const * lang) const
 {

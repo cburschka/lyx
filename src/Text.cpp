@@ -1812,6 +1812,7 @@ bool Text::read(Lexer & lex,
 	return res;
 }
 
+
 // Returns the current font and depth as a message.
 docstring Text::currentState(Cursor const & cur) const
 {

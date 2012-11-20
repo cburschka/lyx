@@ -177,7 +177,7 @@ int InsetMathScript::dy01(BufferView const & bv, int asc, int des, int what) con
 {
 	int dasc = 0;
 	int slevel = 0;
-	bool isCharBox = nuc().size() ? isAlphaSymbol(nuc().back()) : false;
+	bool isCharBox = !nuc().empty() ? isAlphaSymbol(nuc().back()) : false;
 	if (hasDown()) {
 		Dimension const & dimdown = down().dimension(bv);
 		dasc = dimdown.ascent();
@@ -271,25 +271,25 @@ int InsetMathScript::dxx(BufferView const & bv) const
 
 int InsetMathScript::nwid(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().dimension(bv).width() : 2;
+	return !nuc().empty() ? nuc().dimension(bv).width() : 2;
 }
 
 
 int InsetMathScript::nasc(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().dimension(bv).ascent() : 5;
+	return !nuc().empty() ? nuc().dimension(bv).ascent() : 5;
 }
 
 
 int InsetMathScript::ndes(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().dimension(bv).descent() : 0;
+	return !nuc().empty() ? nuc().dimension(bv).descent() : 0;
 }
 
 
 int InsetMathScript::nker(BufferView const * bv) const
 {
-	if (nuc().size()) {
+	if (!nuc().empty()) {
 		int kerning = nuc().kerning(bv);
 		return kerning > 0 ? kerning : 0;
 	}
@@ -351,7 +351,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView & bv = *pi.base.bv;
-	if (nuc().size())
+	if (!nuc().empty())
 		nuc().draw(pi, x + dxx(bv), y);
 	else {
 		nuc().setXY(bv, x + dxx(bv), y);
@@ -380,7 +380,7 @@ void InsetMathScript::metricsT(TextMetricsInfo const & mi, Dimension & dim) cons
 void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 {
 	// FIXME: BROKEN
-	if (nuc().size())
+	if (!nuc().empty())
 		nuc().drawT(pain, x + 1, y);
 	if (hasUp())
 		up().drawT(pain, x + 1, y - 1 /*dy1()*/);
@@ -399,7 +399,7 @@ bool InsetMathScript::hasLimits() const
 		return false;
 
 	// we can only display limits if the nucleus wants some
-	if (!nuc().size())
+	if (nuc().empty())
 		return false;
 	if (!nuc().back()->isScriptable())
 		return false;
@@ -530,7 +530,7 @@ void InsetMathScript::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 
-	if (nuc().size()) {
+	if (!nuc().empty()) {
 		os << nuc();
 		//if (nuc().back()->takesLimits()) {
 			if (limits_ == -1)
@@ -545,13 +545,13 @@ void InsetMathScript::write(WriteStream & os) const
 			os << "{}";
 	}
 
-	if (hasDown() /*&& down().size()*/)
+	if (hasDown() /*&& !down().empty()*/)
 		os << "_{" << down() << '}';
 
-	if (hasUp() /*&& up().size()*/) {
+	if (hasUp() /*&& !up().empty()*/) {
 		// insert space if up() is empty or an empty brace inset
 		// (see bug 8305)
-		if (os.latex() && (up().size() == 0 ||
+		if (os.latex() && (up().empty() ||
 		    (up().size() == 1 && up().back()->asBraceInset() &&
 		     up().back()->asBraceInset()->cell(0).empty())))
 			os << "^ {}";
@@ -566,8 +566,8 @@ void InsetMathScript::write(WriteStream & os) const
 
 void InsetMathScript::normalize(NormalStream & os) const
 {
-	bool d = hasDown() && down().size();
-	bool u = hasUp() && up().size();
+	bool d = hasDown() && !down().empty();
+	bool u = hasUp() && !up().empty();
 
 	if (u && d)
 		os << "[subsup ";
@@ -576,7 +576,7 @@ void InsetMathScript::normalize(NormalStream & os) const
 	else if (d)
 		os << "[sub ";
 
-	if (nuc().size())
+	if (!nuc().empty())
 		os << nuc() << ' ';
 	else
 		os << "[par]";
@@ -592,21 +592,21 @@ void InsetMathScript::normalize(NormalStream & os) const
 
 void InsetMathScript::maple(MapleStream & os) const
 {
-	if (nuc().size())
+	if (!nuc().empty())
 		os << nuc();
-	if (hasDown() && down().size())
+	if (hasDown() && !down().empty())
 		os << '[' << down() << ']';
-	if (hasUp() && up().size())
+	if (hasUp() && !up().empty())
 		os << "^(" << up() << ')';
 }
 
 
 void InsetMathScript::mathematica(MathematicaStream & os) const
 {
-	bool d = hasDown() && down().size();
-	bool u = hasUp() && up().size();
+	bool d = hasDown() && !down().empty();
+	bool u = hasUp() && !up().empty();
 
-	if (nuc().size()) {
+	if (!nuc().empty()) {
 		if (d)
 			os << "Subscript[" << nuc();
 		else
@@ -616,7 +616,7 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 	if (u)
 		os << "^(" << up() << ')';
 
-	if (nuc().size()) {
+	if (!nuc().empty()) {
 		if (d)
 			os << ',' << down() << ']';
 	}
@@ -629,8 +629,8 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 // need to know if we're in a display formula.
 void InsetMathScript::mathmlize(MathStream & os) const
 {
-	bool d = hasDown() && down().size();
-	bool u = hasUp() && up().size();
+	bool d = hasDown() && !down().empty();
+	bool u = hasUp() && !up().empty();
 
 	if (u && d)
 		os << MTag("msubsup");
@@ -639,7 +639,7 @@ void InsetMathScript::mathmlize(MathStream & os) const
 	else if (d)
 		os << MTag("msub");
 
-	if (nuc().size())
+	if (!nuc().empty())
 		os << MTag("mrow") << nuc() << ETag("mrow");
 	else
 		os << "<mrow />";
@@ -657,10 +657,10 @@ void InsetMathScript::mathmlize(MathStream & os) const
 
 void InsetMathScript::htmlize(HtmlStream & os) const
 {
-	bool d = hasDown() && down().size();
-	bool u = hasUp() && up().size();
+	bool d = hasDown() && !down().empty();
+	bool u = hasUp() && !up().empty();
 
-	if (nuc().size())
+	if (!nuc().empty())
 		os << nuc();
 
 	if (u && d)
@@ -677,11 +677,11 @@ void InsetMathScript::htmlize(HtmlStream & os) const
 
 void InsetMathScript::octave(OctaveStream & os) const
 {
-	if (nuc().size())
+	if (!nuc().empty())
 		os << nuc();
-	if (hasDown() && down().size())
+	if (hasDown() && !down().empty())
 		os << '[' << down() << ']';
-	if (hasUp() && up().size())
+	if (hasUp() && !up().empty())
 		os << "^(" << up() << ')';
 }
 

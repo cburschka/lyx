@@ -563,6 +563,7 @@ def checkFormatEntries(dtl_tools):
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+        'jedit', 'TeXnicCenter', 'WinEdt', 'WinShell', 'PSPad', \
         'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
         rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""	"text/x-bibtex"''' ])
     #

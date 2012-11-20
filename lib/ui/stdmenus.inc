@@ -324,12 +324,12 @@ Menuset
 		Item "Outline Pane|u" "dialog-toggle toc"
 		Item "Source Pane|S" "dialog-toggle view-source"
 		Item "Messages Pane|g" "dialog-toggle progress"
+		Submenu "Toolbars|b" "toolbars"
 		Separator
 		Item "Split View Into Left and Right Half|i" "view-split horizontal"
 		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
 		OptItem "Close Current View|w" "tab-group-close"
 		Item "Fullscreen|l" "ui-toggle fullscreen"	
-		Submenu "Toolbars|b" "toolbars"
 		Separator
 		Documents
 	End
@@ -588,14 +588,15 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Braille Manual|B" "help-open Braille"
-		Item "Feynman-diagram Manual|F" "help-open FeynmanDiagrams"
-		Item "LilyPond Manual|M" "help-open lilypond"
-		Item "Linguistics Manual|L" "help-open linguistics"
-		Item "Multilingual Captions Manual|C" "help-open MultilingualCaptions"
-		Item "Risk and Safety Statements Manual|R" "help-open R-S-statements"
-		Item "Sweave Manual|S" "help-open sweave"
-		Item "XY-pic Manual|X" "help-open xypic"
+		Item "Braille|B" "help-open Braille"
+		Item "Feynman-diagram|F" "help-open FeynmanDiagrams"
+		Item "Knitr|K" "help-open knitr"
+		Item "LilyPond|P" "help-open lilypond"
+		Item "Linguistics|L" "help-open linguistics"
+		Item "Multilingual Captions|C" "help-open MultilingualCaptions"
+		Item "Risk and Safety Statements|R" "help-open R-S-statements"
+		Item "Sweave|S" "help-open sweave"
+		Item "XY-pic|X" "help-open xypic"
 	End
 
 

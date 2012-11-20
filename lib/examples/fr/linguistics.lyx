@@ -88,7 +88,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Traduction française Jean-Pierre Chrétien, <jeanpierre.chretien@free.fr>,
- novembre 2009
+ novembre 2009, mise à jour octobre 2012
 \end_layout
 
 \end_inset
@@ -330,7 +330,7 @@ Un de plus
 Les références aux exemples sont créés comme d'habitude: insérer une étiquette
  dans l'exemple et une référence via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Références croisées
 \family default
 .
@@ -367,7 +367,7 @@ Gloses
 Le module linguistique offre deux sortes de gloses, qui peuvent être insérées,
  via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Inserts personnalisables
 \family default
 .
@@ -510,8 +510,25 @@ glt Do you have matches?
 
 \end_layout
 
+\begin_layout Subsection*
+Écueils des gloses LyX
+\end_layout
+
 \begin_layout Standard
-Noter que les changements de police ne sont pas autorisés dans les gloses.
+L'implantation de la fonctionnalité 
+\begin_inset Quotes fld
+\end_inset
+
+gloses
+\begin_inset Quotes frd
+\end_inset
+
+ dans LyX est élémentaire, et de ce fait présente quelques écueils, qui
+ pourront disparaître dans les publications ultérieures.
+\end_layout
+
+\begin_layout Enumerate
+Les changements de police ne sont pas autorisés dans les gloses.
  De ce fait, le menu 
 \family sans
 Style de texte
@@ -562,6 +579,226 @@ ngerman
  Ce paramétrage sera supprimé dans le résultat imprimé.
 \end_layout
 
+\begin_layout Enumerate
+Du fait que le texte des gloses est transmis tel quel à LaTeX, LyX ne modifie
+ pas leur encodage.
+ Ceci signifie que si vous utilisez dans les gloses des caractères inconnus
+ de l'encodage en cours, une erreur se produira.
+ Voici les solutions possibles pour résoudre ce problème:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+soit vous saisissez le texte en dehors de la glose, ouvrez 
+\family sans
+Affichage\SpecialChar \menuseparator
+Afficher le code LaTeX
+\family default
+ et copiez le code LaTeX dans la glose; 
+\end_layout
+
+\begin_layout Itemize
+soit vous marquez la totalité de la glose (bornes comprises) et vous positionnez
+ la langue appropriée via 
+\family sans
+Édition\SpecialChar \menuseparator
+Langue\SpecialChar \menuseparator
+Autre langues
+\family default
+\SpecialChar \ldots{}
+;
+\end_layout
+
+\begin_layout Itemize
+soit vous positionnez l'encodage du document à 
+\emph on
+Unicode (utf8)
+\emph default
+ via 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Langue;
+\end_layout
+
+\begin_layout Itemize
+soit vous cochez 
+\emph on
+Utiliser des polices non-TeX fonts (via XeTeX/LuaTeX)
+\emph default
+ dans 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Polices
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Des sauts de page peuvent apparaître dans des gloses, ce qui est bien entendu
+ regrettable.
+ Une solution consiste à inclure les gloses dans des boîtes (via 
+\family sans
+Insertion\SpecialChar \menuseparator
+Boîte\SpecialChar \menuseparator
+Sans cadre
+\family default
+).
+ Si vous voulez rendre ceci automatique pour toutes les gloses, vous pouvez
+ copier le code suivant dans le préambule via 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Préambule
+\family default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\lang english
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Éviter les sauts de page dans les gloses de deux lignes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+@ifundefined{linggloss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+gll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Éviter les sauts de page dans les gloses de trois lignes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+@ifundefined{lingglosss}{}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glll #1}{
+\backslash
+glend
+\backslash
+end{minipage}}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il vous faudra peut-être adapter la largeur de la minipage (
+\family typewriter
+.7
+\backslash
+textwidth
+\family default
+ dans l'exemple) pour l'adapter à votre propre largeur de page.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Tableaux résultant de la théorie de l'optimalité (TO)
 \end_layout
@@ -595,7 +832,7 @@ Liste des tableaux
 Le module linguistique permet de gérer les deux.
  Avec 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Flottants
 \family default
 , vous pourrez créer un tableau (TO) flottant:
@@ -945,7 +1182,7 @@ Liste des tableaux (TO)
 \emph default
  est accessible via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Listes & TdM
 \family default
 .
@@ -1015,7 +1252,7 @@ signification
 \begin_layout Standard
 Vous pouvez insérer les styles de caractères via le sous-menu 
 \family sans
-Éditer\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Style de texte
 \family default
 .
@@ -1122,7 +1359,7 @@ Affichage écran.
 \begin_layout Standard
 Les symboles phonétiques peuvent être saisis via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère spécial\SpecialChar \menuseparator
 Symboles phonétiques.
  
@@ -1149,12 +1386,9 @@ tipa
 ]).
  Si 
 \emph on
-preview-lat
-\family sans
+preview-latex
 \emph default
-e
-\family default
-x est installé et si l'aperçu sur le vif est actif, vous obtiendrez un aperçu
+ est installé et si l'aperçu sur le vif est actif, vous obtiendrez un aperçu
  satisfaisant dès que vous quitterez la fenêtre.
 \end_layout
 
@@ -1169,7 +1403,7 @@ g.
 
 via 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère spécial\SpecialChar \menuseparator
 Symboles\SpecialChar \ldots{}
 
@@ -1190,7 +1424,7 @@ la saisie directe peut conduire à un mélange de polices (dans l'exemple
  vu plus haut, les caractères latins appartiennent à la police de base,
  les glyphes API à la police API, alors que 
 \family sans
-Insérer\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Caractère spécial\SpecialChar \menuseparator
 Symboles phonétiques
 \family default

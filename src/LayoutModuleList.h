@@ -57,7 +57,10 @@ public:
 	std::list<std::string> const & list() const { return lml_; }
 	/// Checks to make sure module's requriements are satisfied, that it does
 	/// not conflict with already-present modules, isn't already loaded, etc.
-	bool moduleCanBeAdded(std::string const & modName, 
+	bool moduleCanBeAdded(std::string const & modName,
+			LayoutFile const * const lay) const;
+	/// Like !moduleCanBeAdded(), but does not check requirements
+	bool moduleConflicts(std::string const & modName,
 			LayoutFile const * const lay) const;
 	/// If the user changes the base class for a given document, then the
 	/// associated module list has to be updated. This just calls

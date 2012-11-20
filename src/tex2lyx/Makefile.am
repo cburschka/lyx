@@ -28,6 +28,7 @@ TEST_FILES = \
 	test/foo.png \
 	test/test-insets.tex \
 	test/test.ltx \
+	test/test-modules.tex \
 	test/test-structure.tex \
 	test/XeTeX-polyglossia.tex \
 	test/xfigtest.fig \
@@ -36,7 +37,7 @@ TEST_FILES = \
 
 TESTS = test/runtests.py
 updatetests: tex2lyx
-	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx ../../../lib/scripts "$(srcdir)/test"
+	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx "$(top_srcdir)/lib/scripts" "$(srcdir)/test"
 
 LINKED_FILES = \
 	../Author.cpp \

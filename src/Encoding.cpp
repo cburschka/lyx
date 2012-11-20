@@ -852,8 +852,7 @@ Encoding const * Encodings::fromLaTeXName(string const & n) const
 
 
 Encodings::Encodings()
-{
-}
+{}
 
 
 void Encodings::read(FileName const & encfile, FileName const & symbolsfile)

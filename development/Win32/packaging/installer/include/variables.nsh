@@ -24,6 +24,8 @@ Var DictCode
 Var DictCodes
 Var DelPythonFiles
 Var EditorPath
+Var FoundDict
+Var FoundThes
 Var GhostscriptPath
 Var GnumericPath
 Var ImageEditorPath
@@ -36,6 +38,7 @@ Var LaTeXInstalled
 Var LilyPondPath
 Var MiKTeXUser
 Var MiKTeXVersion
+Var OldVersionNumber
 Var Pointer
 Var PSVPath
 Var PythonPath
@@ -50,7 +53,6 @@ Var ThesCode
 Var ThesCodes
 Var UpdateFNDBReturn
 Var UserList
-Var WMFPath
 
 Var LangName
 

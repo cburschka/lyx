@@ -113,7 +113,6 @@
 #include <map>
 #include <set>
 #include <sstream>
-#include <stack>
 #include <vector>
 
 using namespace std;
@@ -283,7 +282,8 @@ public:
 
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
-	Buffer const * parent() const {
+	Buffer const * parent() const
+	{
 		// ignore_parent temporarily "orphans" a buffer
 		// (e.g. if a child is compiled standalone)
 		if (ignore_parent)
@@ -300,7 +300,8 @@ public:
 	}
 
 	///
-	void setParent(Buffer const * pb) {
+	void setParent(Buffer const * pb)
+	{
 		if (parent_buffer == pb)
 			// nothing to do
 			return;
@@ -325,10 +326,14 @@ public:
 	/// \p from initial position
 	/// \p to points to the end position
 	void updateStatistics(DocIterator & from, DocIterator & to,
-						  bool skipNoOutput = true);
+			      bool skipNoOutput = true);
 	/// statistics accessor functions
-	int wordCount() const { return word_count_; }
-	int charCount(bool with_blanks) const {
+	int wordCount() const
+	{
+		return word_count_;
+	}
+	int charCount(bool with_blanks) const
+	{
 		return char_count_
 		+ (with_blanks ? blank_count_ : 0);
 	}
@@ -494,7 +499,7 @@ Buffer::~Buffer()
 Buffer * Buffer::cloneFromMaster() const
 {
 	BufferMap bufmap;
-	cloned_buffers.push_back(new CloneList());
+	cloned_buffers.push_back(new CloneList);
 	CloneList * clones = cloned_buffers.back();
 
 	masterBuffer()->cloneWithChildren(bufmap, clones);
@@ -550,7 +555,7 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 
 
 Buffer * Buffer::cloneBufferOnly() const {
-	cloned_buffers.push_back(new CloneList());
+	cloned_buffers.push_back(new CloneList);
 	CloneList * clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
 	clones->insert(buffer_clone);
@@ -756,7 +761,10 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(FileName const & fname)
 {
+	bool const changed = fname != d->filename;
 	d->filename = fname;
+	if (changed)
+		lyxvc().file_found_hook(fname);
 	setReadonly(d->filename.isReadOnly());
 	saveCheckSum();
 	updateTitles();
@@ -3620,26 +3628,19 @@ bool Buffer::autoSave() const
 	buf->d->bak_clean = true;
 
 	FileName const fname = getAutosaveFileName();
-	if (d->cloned_buffer_) {
-		// If this buffer is cloned, we assume that
-		// we are running in a separate thread already.
-		FileName const tmp_ret = FileName::tempName("lyxauto");
-		if (!tmp_ret.empty()) {
-			writeFile(tmp_ret);
-			// assume successful write of tmp_ret
-			if (tmp_ret.moveTo(fname))
-				return true;
-		}
-		// failed to write/rename tmp_ret so try writing direct
-		return writeFile(fname);
-	} else {
-		/// This function is deprecated as the frontend needs to take care
-		/// of cloning the buffer and autosaving it in another thread. It
-		/// is still here to allow (QT_VERSION < 0x040400).
-		AutoSaveBuffer autosave(*this, fname);
-		autosave.start();
-		return true;
+	LASSERT(d->cloned_buffer_, return false);
+
+	// If this buffer is cloned, we assume that
+	// we are running in a separate thread already.
+	FileName const tmp_ret = FileName::tempName("lyxauto");
+	if (!tmp_ret.empty()) {
+		writeFile(tmp_ret);
+		// assume successful write of tmp_ret
+		if (tmp_ret.moveTo(fname))
+			return true;
 	}
+	// failed to write/rename tmp_ret so try writing direct
+	return writeFile(fname);
 }
 
 
@@ -4023,6 +4024,7 @@ Buffer::ReadStatus Buffer::loadEmergency()
 					"file."), from_utf8(d->filename.absFileName())));
 			}
 			markDirty();
+			lyxvc().file_found_hook(d->filename);
 			str = _("Document was successfully recovered.");
 		} else
 			str = _("Document was NOT successfully recovered.");
@@ -4086,6 +4088,7 @@ Buffer::ReadStatus Buffer::loadAutosave()
 					from_utf8(d->filename.absFileName())));
 			}
 			markDirty();
+			lyxvc().file_found_hook(d->filename);
 			return ReadSuccess;
 		}
 		return ReadAutosaveFailure;

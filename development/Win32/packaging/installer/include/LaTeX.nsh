@@ -1,5 +1,28 @@
+/*
+LaTeX.nsh
+
+Handling of LaTeX distributions
+*/
+
+# This script contains the following functions:
+#
+# - LaTeXActions (checks if MiKTeX or TeXLive is installed)
+#
+# - InstallMiKTeX (installs MiKTeX if not already installed),
+#   only for bunlde installer, uses:
+#    LaTeXCheck # function from LyXUtils.nsh
+#
+# - ConfigureMiKTeX
+#   (installs the LaTeX class files that are delivered with LyX,
+#    a Perl interpreter for splitindex
+#    and enable MiKTeX's automatic package installation)
+#
+# - UpdateMiKTeX (asks to update MiKTeX)
+
+# ---------------------------------------
+
 Function LaTeXActions
- # check if MiKTeX or TeXLive is installed
+ # checks if MiKTeX or TeXLive is installed
 
   # test if MiKTeX is installed
   # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
@@ -8,7 +31,7 @@ Function LaTeXActions
   Call LaTeXCheck # sets the path to the latex.exe to $PathLaTeX # Function from LyXUtils.nsh
   
   ${if} $PathLaTeX != ""
-   # check if MiKTeX 2.7 or newer is installed
+   # check if MiKTeX 2.8 or newer is installed
    StrCpy $0 0
    loopA:
     EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
@@ -17,10 +40,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopA
    doneA:
-   ${if} $String == "2.7"
-    StrCpy $MiKTeXVersion "2.7"
-    StrCpy $LaTeXName "MiKTeX 2.7"
-   ${endif}
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
@@ -50,10 +69,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopB
    doneB:
-   ${if} $String == "2.7"
-    StrCpy $MiKTeXVersion "2.7"
-    StrCpy $LaTeXName "MiKTeX 2.7"
-   ${endif}
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
@@ -96,7 +111,6 @@ Function LaTeXActions
    ${endif}
   ${endif}
   ${if} $PathLaTeX != ""
-  ${andif} $LaTeXName != "MiKTeX 2.7"
   ${andif} $LaTeXName != "MiKTeX 2.8"
   ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXName "TeXLive"
@@ -109,8 +123,8 @@ FunctionEnd
 !if ${SETUPTYPE} == BUNDLE
 
  Function InstallMiKTeX
+  # installs MiKTeX if not already installed
   
-  # install MiKTeX if not already installed
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
@@ -130,7 +144,9 @@ FunctionEnd
    ${if} $PathLaTeX != ""
     # set package repository (MiKTeX's primary package repository)
     ${if} $MiKTeXUser == "HKCU"
-     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to tell the uninstaller that it was installed with LyX
+     # special entry that it was installed together with LyX
+     # so that we can later uninstall it together with LyX
+     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
     ${else}
      WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
     ${endif}
@@ -175,10 +191,11 @@ Function ConfigureMiKTeX
   ${endif}
   
   # only install a Perl interpreter if it is not already installed
-  # this is only possible if miktex and LyX is installed with the same privileges
+  # this is only possible if MikTeX _and_ LyX is installed with the same privileges
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX $MiKTeXVersion" "DisplayVersion"
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
-   ${if} $PathLaTeX != "$LOCALAPPDATA\MiKTeX\$MiKTeXVersion\miktex\bin"
+   ${if} $0 == ""
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
      MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)"
     ${endif}
@@ -214,14 +231,14 @@ Function ConfigureMiKTeX
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
   ${if} $MiKTeXUser != "HKCU"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
   ${endif}
   # set package repository (MiKTeX's primary package repository)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for current user
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for current user
   ${if} $MiKTeXUser != "HKCU"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-   WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
+   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
   ${endif}
   
   # enable MiKTeX's automatic package installation
@@ -234,26 +251,22 @@ Function ConfigureMiKTeX
 FunctionEnd
 
 Function UpdateMiKTeX
- # ask to update MiKTeX
+ # asks to update MiKTeX
 
   ${if} $LaTeXInstalled == "MiKTeX"
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
     StrCpy $0 $PathLaTeX -4 # remove "\bin"
-    # the update wizard is either started by the copystart_admin.exe
-    # or the miktex-update.exe (since MiKTeX 2.8)
+    # the update wizard is started by the miktex-update.exe
     ${if} $MultiUser.Privileges != "Admin"
     ${andif} $MultiUser.Privileges != "Power"
      # call the non-admin version
-     ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
-     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
     ${else}
      ${if} $MiKTeXUser != "HKCU" # call the admin version
-      ExecWait '"$PathLaTeX\copystart_admin.exe" "$0\config\update.dat"'
-      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard
+      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
      ${else}
-      ExecWait '"$PathLaTeX\copystart.exe" "$0\config\update.dat"'
-      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+       ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
      ${endif}
     ${endif}
    UpdateLater:

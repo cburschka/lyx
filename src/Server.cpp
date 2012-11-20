@@ -695,6 +695,7 @@ string const LyXComm::pipeName(DWORD index) const
 LyXComm::LyXComm(string const &, Server *, ClientCallbackfct)
 {}
 
+
 void LyXComm::openConnection()
 {}
 
@@ -716,6 +717,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 void LyXComm::emergencyCleanup()
 {}
 
+
 void LyXComm::read_ready()
 {}
 
@@ -725,7 +727,6 @@ void LyXComm::send(string const & msg)
 
 
 #else // defined (HAVE_MKFIFO)
-
 
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
 	: pipename_(pip), client_(cli), clientcb_(ccb)
@@ -915,7 +916,6 @@ void LyXComm::read_ready()
 	int status;
 	// the single = is intended here.
 	while ((status = ::read(infd_, charbuf, charbuf_size - 1))) {
-
 		if (status > 0) {
 			charbuf[status] = '\0'; // turn it into a c string
 			read_buffer_ += rtrim(charbuf, "\r");
@@ -966,7 +966,8 @@ void LyXComm::send(string const & msg)
 
 	LYXERR(Debug::LYXSERVER, "LyXComm: Sending '" << msg << '\'');
 
-	if (pipename_.empty()) return;
+	if (pipename_.empty())
+		return;
 
 	if (!ready_) {
 		LYXERR0("LyXComm: Pipes are closed. Could not send " << msg);
@@ -1068,7 +1069,6 @@ Server::~Server()
 
 int compare(char const * a, char const * b, unsigned int len)
 {
-	using namespace std;
 	return strncmp(a, b, len);
 }
 
