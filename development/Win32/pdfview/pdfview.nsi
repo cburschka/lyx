@@ -1,15 +1,15 @@
 /*
 
 Windows PDF view helper
-Author: Joost Verburg
+Author: Joost Verburg and Uwe Stöhr
 
 This will be installed as pdfview.exe.
 
 The application will launch the default PDF viewer to display the PDF file,
-but works around the file locking problems of Adobe Reader.
+but works around the file locking problems of Adobe Reader and Acrobat.
 
-Source code of pdfopen/pdfclose is available at:
-http://magic.aladdin.cs.cmu.edu/2005/07/15/pdfopen-and-pdfclose/
+The files pdfopen/pdfclose are part of this archive:
+http://www.tex.ac.uk/tex-archive/systems/win32/w32tex/pdftex-w32.tar.xz
 
 */
 
@@ -25,7 +25,7 @@ Icon "..\packaging\icons\lyx.ico"
 SilentInstall silent
 
 #--------------------------------
-# Windows Vista settings
+# Windows Vista (and later) settings
 
 RequestExecutionLevel user
 
@@ -35,7 +35,9 @@ RequestExecutionLevel user
 !define FALSE 0
 !define TRUE 1
 
+# http://msdn.microsoft.com/en-us/library/windows/desktop/aa364417%28v=vs.85%29.aspx
 !define FILE_NOTIFY_CHANGE_LAST_WRITE 0x00000010
+# http://msdn.microsoft.com/en-us/library/windows/desktop/ms687032%28v=vs.85%29.aspx
 !define WAIT_TIMEOUT 0x00000102
 
 #--------------------------------
@@ -51,17 +53,12 @@ Var OriginalDir
 Var PDFFile
 Var ViewerFileName
 Var Viewer
-Var ViewerVersion
-Var DDEName
 
 Var ChangeNotification
 Var WaitReturn
 Var LockedFile
 
-Var OriginalTimeHigh
-Var OriginalTimeLow
-Var CurrentTimeHigh
-Var CurrentTimeLow
+Var TimeDiff
 
 #--------------------------------
 # Macros
@@ -88,6 +85,76 @@ Var CurrentTimeLow
   ${EndIf}
 
 !macroend
+
+# all following macros and functions are from
+# http://nsis.sourceforge.net/FileTimeDiff
+!define GetFileTimeS "!insertmacro _GetFileTimeS"
+
+!macro _GetFileTimeS _Time_ _File_
+
+   Push "${_File_}"
+   Call GetFileTimeS
+   Pop ${_Time_}
+   
+!macroend
+
+Function GetFileTimeS
+	
+   Exch $0  ;; File / hi
+   Push $1  ;; lo
+ 
+   ClearErrors
+   GetFileTime "$0" $0 $1
+   IfErrors err
+   System::Call '*(i r1, i r0) i .r0'
+   System::Call '*$0(l .r0)'
+   System::Int64Op $0 / 10000000  ;; Conversion From '100 ns' to '1 sec' unit
+   Goto end
+ 
+   err:
+      Push ""
+      SetErrors
+      Goto +3
+   end:
+   System::Free $0
+   Exch 2
+   Pop $0
+   Pop $1
+   
+FunctionEnd
+
+!define FileTimeDiff "!insertmacro _FileTimeDiff"
+
+!macro _FileTimeDiff _RetVal_ _FileA_ _FileB_
+
+   Push "${_FileB_}"
+   Push "${_FileA_}"
+   Call FileTimeDiff
+   Pop ${_RetVal_}
+   
+!macroend
+
+Function FileTimeDiff 
+   Exch $0  ;; FileA
+   Exch 
+   Exch $1  ;; FileB
+ 
+   ${GetFileTimeS} $0 "$0"
+   IfErrors err
+   ${GetFileTimeS} $1 "$1"
+   IfErrors err
+   System::Int64Op $0 - $1
+   Goto end
+ 
+   err:
+      Push ""
+      SetErrors
+   end:
+   Exch 2
+   Pop $0
+   Pop $1
+   
+FunctionEnd
 
 #--------------------------------
 # PDF viewing
@@ -130,55 +197,33 @@ Section "View PDF file"
   ${EndIf}
 
   ${If} $Viewer == "AcroRd32.exe"
-    ${OrIf} $Viewer == "Acrobat.exe"
+  ${OrIf} $Viewer == "Acrobat.exe"
     
-    # Using Adobe viewer
-
-    GetDLLVersion $ViewerFileName $R0 $R1
-    IntOp $R2 $R0 >> 16
-    IntOp $R2 $R2 & 0x0000FFFF ; $R2 now contains major version
-    IntOp $R3 $R0 & 0x0000FFFF ; $R3 now contains minor version
-    IntOp $R4 $R1 >> 16
-    IntOp $R4 $R4 & 0x0000FFFF ; $R4 now contains release
-    IntOp $R5 $R1 & 0x0000FFFF ; $R5 now contains build
-    StrCpy $ViewerVersion "$R2"
-
-    ${If} $ViewerVersion < 10
-      StrCpy $DDEName "AcroView"
-    ${Else}
-      ${If} $Viewer == "AcroRd32.exe"
-        StrCpy $DDEName "AcroViewR$ViewerVersion"
-      ${ElseIf} $Viewer == "Acrobat.exe"
-        StrCpy $DDEName "AcroViewA$ViewerVersion"
-      ${EndIf}
-    ${EndIf}
-
     # Close existing view
     ${If} ${FileExists} $PDFFile
-      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --reader "$ViewerFileName" --ddename "$DDEName" --file "$PDFFile"'
+      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
     ${EndIf}
     
     # Copy PDF to temporary file to allow LyX to overwrite the original
     CopyFiles /SILENT $OriginalFile $PDFFile
     
     # Open a new view
-    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --reader "$ViewerFileName" --ddename "$DDEName" --back --file "$PDFFile"'
-    
-    # Monitor for updates of the original file
-    GetFileTime $OriginalFile $OriginalTimeHigh $OriginalTimeLow
+    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --file "$PDFFile"'
+        
+    # check if a file in LyX's temp folder has been changed
     !insertmacro SystemCall "kernel32::FindFirstChangeNotification(t '$OriginalDir', \
       i 1, i ${FILE_NOTIFY_CHANGE_LAST_WRITE}) i.s"
     Pop $ChangeNotification
     
     ${Do}
     
+      # wait until the folder is not changed anymore, if so a "0" is returned
+      # otherwise a "258" (0x00000102) is returned
       !insertmacro SystemCall "kernel32::WaitForSingleObject(i $ChangeNotification, i 10000) i.s"
       Pop $WaitReturn
-           
-      # Check whether the lock is still active (if not, Adobe Reader is closed)
       
+      # Check whether the lock of the PDF file is still active (if not, Adobe Reader is closed)
       FileOpen $LockedFile $PDFFile a
-      
       ${If} $LockedFile != ""
         # Quit this application
         FileClose $LockedFile
@@ -187,29 +232,40 @@ Section "View PDF file"
         Quit
       ${EndIf}
       
+      # if the folder is (for now) not changed anymore
       ${IfNot} $WaitReturn = ${WAIT_TIMEOUT}
+      
+        # check if the PDF-file in our temp directory is older than the one
+        # in LyX's temp folder because then it has been changed by LaTeX
+        ${FileTimeDiff} $TimeDiff "$PDFFile" "$OriginalFile"
         
-        # The LyX temporary directory has been updated
-        # Check whether it's the PDF file that has been updated
+        # if the file is older than 1 second
+        ${If} $TimeDiff < -1
+          # close the PDF
+          !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
           
-        GetFileTime $OriginalFile $CurrentTimeHigh $CurrentTimeLow
-        
-        ${If} $OriginalTimeHigh != $CurrentTimeHigh
-          ${OrIf} $OriginalTimeLow != $CurrentTimeLow
-          # PDF has been modified, update view
-          !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --reader "$ViewerFileName" --ddename "$DDEName" --file "$PDFFile"'
-          CopyFiles /SILENT $OriginalFile $PDFFile
-          !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --reader "$ViewerFileName" --ddename "$DDEName" --back --file "$PDFFile"'
+          # The problem is now that LaTeX might need several runs and therefore the PDF can
+          # also be rewritten consecutively several times.
+          # If we would directly open the file we will get in troubles as the PDF can be
+          # unreadable. We also don't know the time of a LaTeX run.
+          # (As example take UserGuide.lyx, view it, then remove a letter in a section heading
+          # and finally update the view.)
+          # We therefore loop until the PDF is no longer changed and wait some time in each loop.
+          ${Do}
+           CopyFiles /SILENT $OriginalFile $PDFFile
+           # wait 1.666 seconds (is empirically enough time that the PDF can be changed)
+           Sleep 1666
+           ${FileTimeDiff} $TimeDiff "$PDFFile" "$OriginalFile"
+          ${LoopUntil} $TimeDiff = 0
           
-          # Time of new file
-          StrCpy $OriginalTimeHigh $CurrentTimeHigh
-          StrCpy $OriginalTimeLow  $CurrentTimeLow
+          # open the new file
+          !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --file "$PDFFile"'
         ${EndIf}
         
         #Monitor again
         !insertmacro SystemCall "kernel32::FindNextChangeNotification(i $ChangeNotification)"
         
-      ${EndIf}
+      ${EndIf} # end ifnot
     
     ${Loop}
     
