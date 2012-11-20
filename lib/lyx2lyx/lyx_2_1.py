@@ -1138,8 +1138,9 @@ def convert_latexargs(document):
       i = find_token(document.body, "\\begin_inset Argument", i)
       if i == -1:
         return
-      # We cannot do more here since we have no access to the layout
+      # We cannot do more here since we have no access to the layout.
       # InsetArgument itself will do the real work
+      # (see InsetArgument::updateBuffer())
       document.body[i] = "\\begin_inset Argument 999"
       i = i + 1
 
@@ -1149,7 +1150,7 @@ def revert_latexargs(document):
 
     # What needs to be done is this:
     # * find all arguments in a paragraph and reorder them
-    #   according to their name (which is deleted)
+    #   according to their ID (which is deleted)
     # So: \\begin_inset Argument 2 ... \\begin_inset Argument 1
     # => \\begin_inset Argument ... \\begin_inset Argument
     #    with correct order.
