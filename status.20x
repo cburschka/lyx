@@ -55,18 +55,18 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Do not let child document's settings override master settings
-  (bug #5941).
+- Do not let child document's settings override master settings (bug 5941).
 
+- Correct output of text in changed font size and with decorations (bug 8424).
 
 
 * USER INTERFACE
 
 - Fix regression in which clicking in the main work area always resets
-  the selected format in View > Source (bug #8411).
+  the selected format in View > Source (bug 8411).
   
 - When selecting text and Insert > Preview, immediately display the
-  preview (bug #8075).
+  preview (bug 8075).
 
 
 * DOCUMENTATION AND LOCALIZATION
