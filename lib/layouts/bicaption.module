@@ -11,7 +11,7 @@ Style "Caption setup"
 	LatexType		command
 	LatexName		captionsetup
 	Category		FrontMatter
-	Argument options
+	Argument 1
 		LabelString   "Caption Setup Options"
 		Shortcut      S
 		Tooltip       "Options for the caption setup command (see bicaption manual)"
@@ -39,11 +39,19 @@ Style Bicaption
 	CopyStyle		"Caption setup"
 	LatexName		bicaption
 	Category		MainText
-	Argument options
+	Argument 1
+		LabelString   "Second Language Caption Short Title"
+		Tooltip       "A short title (for list of figures/tables) in the second language"
+	EndArgument
+	Argument 2
 		Mandatory     1
-		LabelString   "Second language caption text"
+		LabelString   "Second Language Caption Text"
 		Shortcut      S
 		Tooltip       "The caption text in the second language"
+	EndArgument
+	Argument 3
+		LabelString   "Main Language Caption Short Title"
+		Tooltip       "A short title (for list of figures/tables) in the main language"
 	EndArgument
 	TopSep			0
 	Align			Center

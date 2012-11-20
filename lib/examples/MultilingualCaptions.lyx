@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 446
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -31,13 +31,13 @@ bicaption
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -59,15 +59,21 @@ bicaption
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date true
+\justification true
 \use_refstyle 1
 \notefontcolor #0000ff
 \index Index
@@ -275,7 +281,7 @@ reference "fig:example-figure"
 \end_layout
 
 \begin_layout Caption setup
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -340,7 +346,7 @@ A figure.
 \end_layout
 
 \begin_layout Bicaption
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -350,11 +356,23 @@ English short title
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
 English Title
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+
+\lang ngerman
+German short title
 \end_layout
 
 \end_inset
@@ -495,7 +513,7 @@ reference "sec:Float-List-Customization"
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -530,7 +548,7 @@ the label font should be bold, the label separator is a line break instead
 \end_layout
 
 \begin_layout Caption setup
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -564,7 +582,7 @@ the second language caption text should be sans-serif italic
 \end_layout
 
 \begin_layout Caption setup
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -629,7 +647,7 @@ A figure.
 \end_layout
 
 \begin_layout Bicaption
-\begin_inset Argument
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -836,10 +854,10 @@ key "bicaption"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="47" columns="2">
-<features booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
+<features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
-<row caption="true">
+<row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
