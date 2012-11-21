@@ -232,7 +232,7 @@ SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
- AddSize 2460
+ AddSize 1660
 SectionEnd
 
 Section /o "Galego" SecDGalician
@@ -362,12 +362,12 @@ Section /o "Shqipe" SecDAlbanian
  AddSize 2400
 SectionEnd
 
-Section /o "Slovenšcina" SecDSlowenian
+Section /o "Slovenšcina" SecDSlovenian
  StrCpy $DictCodes "sl_SI,$DictCodes"
- AddSize 2840
+ AddSize 2910
 SectionEnd
 
-Section /o "Slovenský" SecDSlowakian
+Section /o "Slovenský" SecDSlovakian
  StrCpy $DictCodes "sk_SK$ThesCodes"
  AddSize 4090
 SectionEnd
@@ -379,7 +379,7 @@ SectionEnd
 
 Section /o "Svenska" SecDSwedish
  StrCpy $DictCodes "sv_SE,$DictCodes"
- AddSize 1030
+ AddSize 2030
 SectionEnd
 
 # enable this for LyX 2.1!
@@ -515,12 +515,12 @@ Section /o "Russian" SecTRussian
  AddSize 2080
 SectionEnd
 
-Section /o "Slovenšcina" SecTSlowenian
+Section /o "Slovenšcina" SecTSlovenian
  StrCpy $ThesCodes "sl_SI$ThesCodes"
- AddSize 107
+ AddSize 1037
 SectionEnd
 
-Section /o "Slovenský" SecTSlowakian
+Section /o "Slovenský" SecTSlovakian
  StrCpy $ThesCodes "sk_SK$ThesCodes"
  AddSize 907
 SectionEnd
@@ -1051,15 +1051,15 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecDSlowenian} $0
-   SectionSetSize ${SecDSlowenian} 0
+   SectionSetFlags ${SecDSlovenian} $0
+   SectionSetSize ${SecDSlovenian} 0
   ${endif}
   StrCpy $Search "sk_SK"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecDSlowakian} $0
-   SectionSetSize ${SecDSlowakian} 0
+   SectionSetFlags ${SecDSlovakian} $0
+   SectionSetSize ${SecDSlovakian} 0
   ${endif}
   StrCpy $Search "sr_RS"
   Call StrPoint
@@ -1261,15 +1261,15 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecTSlowenian} $0
-   SectionSetSize ${SecTSlowenian} 0
+   SectionSetFlags ${SecTSlovenian} $0
+   SectionSetSize ${SecTSlovenian} 0
   ${endif}
   StrCpy $Search "sk_SK"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecTSlowakian} $0
-   SectionSetSize ${SecTSlowakian} 0
+   SectionSetFlags ${SecTSlovakian} $0
+   SectionSetSize ${SecTSlovakian} 0
   ${endif}
   StrCpy $Search "sv_SE"
   Call StrPoint
