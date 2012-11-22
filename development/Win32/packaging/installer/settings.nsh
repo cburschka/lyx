@@ -19,7 +19,7 @@ These typically need to be modified for each LyX release
 #--------------------------------
 # Installer file name
 
-# Typical names for the release are "LyX-201-1-Installer.exe" etc.
+# Typical names for the release are "LyX-201-Installer-1.exe" etc.
 
 !ifndef ExeFile
   !define ExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}-Installer-${APP_VERSION_BUILD}.exe"
@@ -55,8 +55,9 @@ These typically need to be modified for each LyX release
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.8.1-setup.exe"
+ !define SIZE_JABREF 12400
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4521.exe"
- !define SIZE_DOWNLOAD_LATEX 162476
- !define SIZE_LATEX 380000
+ #!define SIZE_DOWNLOAD_LATEX 157100
+ #!define SIZE_LATEX 600000
 !endif
 

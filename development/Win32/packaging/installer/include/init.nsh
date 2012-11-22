@@ -58,7 +58,7 @@ SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
  Section /o "$(SecInstJabRefTitle)" SecInstJabRef
-  AddSize 12400
+  AddSize ${SIZE_JABREF}
   StrCpy $InstallJabRef "true"
  SectionEnd
 !endif
@@ -637,7 +637,6 @@ Function .onInit
   ${EndIf}
  
   Call SearchExternal
-  #Call InitExternal
   
   !if ${SETUPTYPE} == BUNDLE
    # don't let the installer sections appear when the programs are already installed

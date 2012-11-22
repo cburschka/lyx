@@ -11,7 +11,6 @@ Installation of program files, dictionaries and external components
 
 Var PythonCompileFile
 Var PythonCompileReturn
-#Var DownloadResult
 
 Section -ProgramFiles SecProgramFiles
 
@@ -103,34 +102,33 @@ Section -ProgramFiles SecProgramFiles
    # install JabRef if not already installed and the user selected it
    # if no BibTeX editor is installed
    ${if} $PathBibTeXEditor == ""
-    ${if} $InstallJabRef == "true"
-     # launch installer
-     MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
-     ExecWait "$INSTDIR\${JabRefInstall}"
-     # test if JabRef is now installed
-     StrCpy $PathBibTeXEditor ""
-     ${if} $MultiUser.Privileges == "Admin"
-      ${orif} $MultiUser.Privileges == "Power"
-      ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
-      StrCpy $PathBibTeXEditor $PathBibTeXEditor -14 # remove "\uninstall.exe"
-     ${else}
-      # for non-admin users we can only check if it is in the start menu
-      ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
-     ${endif}
-     ${if} $PathBibTeXEditor == ""
-      MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
-     ${else}
-      # special entry that it was installed together with LyX
-      # so that we can later uninstall it together with LyX
-      ${if} $MultiUser.Privileges == "Admin"
-      ${orif} $MultiUser.Privileges == "Power"
-       WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-      ${else}
-       WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-      ${endif}
-     ${endif} # end if PathBibTeXEditor
+   ${andif} $InstallJabRef == "true"
+    # launch installer
+    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
+    ExecWait "$INSTDIR\${JabRefInstall}"
+    # test if JabRef is now installed
+    StrCpy $PathBibTeXEditor ""
+    ${if} $MultiUser.Privileges == "Admin"
+     ${orif} $MultiUser.Privileges == "Power"
+     ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+     StrCpy $PathBibTeXEditor $PathBibTeXEditor -14 # remove "\uninstall.exe"
+    ${else}
+     # for non-admin users we can only check if it is in the start menu
+     ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
     ${endif}
-   ${endif}
+    ${if} $PathBibTeXEditor == ""
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
+    ${else}
+     # special entry that it was installed together with LyX
+     # so that we can later uninstall it together with LyX
+     ${if} $MultiUser.Privileges == "Admin"
+     ${orif} $MultiUser.Privileges == "Power"
+      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+     ${else}
+      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+     ${endif}
+    ${endif} 
+   ${endif} # end if PathBibTeXEditor
   !endif # end if BUNDLE
   
    # install eLyXer

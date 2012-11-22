@@ -24,9 +24,6 @@ Detection of external component locations
 #
 #--------------------------
 
-#Var ReportReturn
-#Var CommandLineOutput
-
 Function SearchExternal
   Call LaTeXActions # function from LaTeX.nsh
   Call MissingPrograms
@@ -150,9 +147,9 @@ Function MissingPrograms
    ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
   ${endif}
 
-  ${IfNot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
-    StrCpy $PathBibTeXEditor ""
-    StrCpy $JabRefInstalled == "No"
+  ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
+   StrCpy $PathBibTeXEditor ""
+   StrCpy $JabRefInstalled == "No"
   ${else}
    StrCpy $JabRefInstalled == "Yes"
   ${endif}
