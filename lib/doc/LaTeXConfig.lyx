@@ -309,7 +309,7 @@ Biolinum
 Found: 
 \begin_inset Info
 type  "package"
-arg   "biolinum-type1"
+arg   "libertine"
 \end_inset
 
 
@@ -318,13 +318,13 @@ arg   "biolinum-type1"
 \begin_layout Description
 CTAN: 
 \family typewriter
-fonts/biolinum-type1/
+fonts/libertine/
 \end_layout
 
 \begin_layout Description
 Notes: The 
 \family sans
-biolinum-type1
+libertine
 \family default
  package provides support for the 
 \emph on
@@ -341,27 +341,23 @@ Libertine
 Biolinum
 \emph default
  supports Old Style Figures, which will be automatically activated if those
- figures are available and requested for the roman font.
+ figures are available and requested for the font.
  An older version of the font is provided by the package 
 \family sans
-libertine-legacy
+biolinum-type1
 \family default
  (found: 
 \begin_inset Info
 type  "package"
-arg   "libertine"
+arg   "biolinum-type1"
 \end_inset
 
 ).
- If you only have this package, you will need to set the roman font to 
-\emph on
-Libertine
-\emph default
- and the Sans Serif font to 
-\emph on
-Standard
-\emph default
- in order to get Biolinum.
+ It is selected automatically if the 
+\family sans
+libertine
+\family default
+ package is not available.
 \end_layout
 
 \begin_layout Subsection
@@ -745,7 +741,7 @@ Libertine
 Found: 
 \begin_inset Info
 type  "package"
-arg   "libertine-type1"
+arg   "libertine"
 \end_inset
 
 
@@ -754,30 +750,36 @@ arg   "libertine-type1"
 \begin_layout Description
 CTAN: 
 \family typewriter
-fonts/libertine-type1/
+fonts/libertine/
 \end_layout
 
 \begin_layout Description
 Notes: The 
-\family sans
-libertine-type1
+\family typewriter
+libertine
 \family default
  package provides support for the 
 \emph on
 Libertine
 \emph default
  roman family of fonts.
- An older version of the package, 
-\family sans
-libertine-legacy
-\family default
- (found: 
+ An older versions of the package, libertine-type1 (found: 
 \begin_inset Info
 type  "package"
-arg   "libertine"
+arg   "libertine-type1"
 \end_inset
 
-), is also supported and used as a fallback.
+) is also supported and used as a fallback, as well as the even older package
+ also called 
+\family typewriter
+libertine
+\family default
+ (for which, however, old style figures cannot be supported properly due
+ to option conflicts with the new 
+\family typewriter
+libertine
+\family default
+ package).
 \end_layout
 
 \begin_layout Subsection
