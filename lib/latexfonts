@@ -135,17 +135,8 @@ Font libertine
 	Family           rm
 	OsfOption        lining
 	OsfDefault       1
-	Package          libertine
-	PackageOption    rm
-	AltFonts         libertine-type1,libertine-legacy
-EndFont
-
-AltFont libertine-type1
-	GuiName          "Libertine"
-	Family           rm
-	OsfOption        lining
-	OsfDefault       1
 	Package          libertine-type1
+	AltFonts         libertine-legacy
 EndFont
 
 AltFont libertine-legacy
@@ -402,16 +393,6 @@ Font berasans
 EndFont
 
 Font biolinum
-	GuiName          "Biolinum"
-	Family           sf
-	OsfOption        lining
-	OsfDefault       1
-	Package          libertine
-	PackageOption    sf
-	AltFonts         biolinum-type1
-EndFont
-
-Font biolinum-type1
 	GuiName          "Biolinum"
 	Family           sf
 	OsfOption        lining
