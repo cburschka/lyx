@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Dit installatie programma zal LyX op uw systeem 
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'LaTeX software'
 ${LangFileString} EnterLaTeXHeader2 'Geef aan welke LaTeX-software LyX moet gebruiken.'
 ${LangFileString} EnterLaTeXFolder 'U kunt hier opgeven in welke map het programma $\"latex.exe$\" zich bevindt en op deze manier bepalen \
-					welke LaTeX software gebruikt wordt door LyX.$\r$\n\
-					Zonder LaTeX kan LyX geen documenten generen!$\r$\n\
-					$\r$\n\
+					welke LaTeX software gebruikt wordt door LyX.\r\n\
+					Zonder LaTeX kan LyX geen documenten generen!\r\n\
+					\r\n\
 					Het installatie programma heeft de LaTeX software \
 					$\"$LaTeXName$\" op uw systeem gevonden in de volgende map.'
 ${LangFileString} EnterLaTeXFolderNone 'U kunt hier opgeven in welke map het programma $\"latex.exe$\" zich bevindt en op deze manier bepalen \
-					welke LaTeX software gebruikt wordt door LyX.$\r$\n\
-					Zonder LaTeX kan LyX geen documenten generen!$\r$\n\
-					$\r$\n\
+					welke LaTeX software gebruikt wordt door LyX.\r\n\
+					Zonder LaTeX kan LyX geen documenten generen!\r\n\
+					\r\n\
 					Het installatie programma heeft geen LaTeX software op uw systeem gevonden.'
 ${LangFileString} PathName 'Map met het programma $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Gebruik geen LaTeX"

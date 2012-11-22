@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Denna guide tar dig igenom installationen av LyX
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Ställ in LaTeX-distributionen som LyX skall använda.'
 ${LangFileString} EnterLaTeXFolder 'Alternativt kan du här ställa in sökvägen till filen $\"latex.exe$\" och därmed manuellt bestämma vilken \
-					LaTeX-distribution som skall användas av LyX.$\r$\n\
-					Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution som skall användas av LyX.\r\n\
+					Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!\r\n\
+					\r\n\
 					Installationsprogrammet har upptäckt LaTeX-distributionen \
 					$\"$LaTeXName$\" i ditt system. Nedan visas dess sökväg.'
 ${LangFileString} EnterLaTeXFolderNone 'Sätt nedan sökvägen till filen $\"latex.exe$\". Därmed väljer du vilken \
-					LaTeX-distribution som skall användas av LyX.$\r$\n\
-					Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution som skall användas av LyX.\r\n\
+					Utan LaTeX kan LyX bara redigera LyX-filer, inte producera t.ex. PDF-dokument!\r\n\
+					\r\n\
 					Installationsprogrammetn kunde inte hitta LaTeX-distributionen i ditt system.'
 ${LangFileString} PathName 'Sökväg till filen $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Använd inte LaTeX"

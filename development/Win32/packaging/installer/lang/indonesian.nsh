@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Program ini akan memandu anda dalam melakukan in
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'Distribusi LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Pengaturan distribusi LaTeX yang akan digunakan dalam LyX.'
 ${LangFileString} EnterLaTeXFolder 'Anda dapat mengatur sendiri lokasi tempat berkas $\"latex.exe$\" berada dan mengatur lokasi \
-					tempat distribusi LaTeX yang akan digunakan oleh LyX.$\r$\n\
-					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!$\r$\n\
-					$\r$\n\
+					tempat distribusi LaTeX yang akan digunakan oleh LyX.\r\n\
+					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!\r\n\
+					\r\n\
 					Program instalasi ini mendeteksi adanya distribusi LaTeX \
 					$\"$LaTeXName$\" dalam sistem anda. Dibawah ini adalah lokasi keberadaannya.'
 ${LangFileString} EnterLaTeXFolderNone 'Aturlah lokasi tempat berkas $\"latex.exe$\" berada. Atur dan nyatakanlah lokasi \
-					tempat distribusi LaTeX yang akan digunakan oleh LyX.$\r$\n\
-					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!$\r$\n\
-					$\r$\n\
+					tempat distribusi LaTeX yang akan digunakan oleh LyX.\r\n\
+					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!\r\n\
+					\r\n\
 					Program instalasi ini tidak menemukan adanya distribusi LaTeX di sistem anda.'
 ${LangFileString} PathName 'Lokasi tempat berkas $\"latex.exe$\" berada'
 ${LangFileString} DontUseLaTeX "Tidak menggunakan LaTeX"

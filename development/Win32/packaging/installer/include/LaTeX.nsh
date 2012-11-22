@@ -17,6 +17,9 @@ Handling of LaTeX distributions
 #    a Perl interpreter for splitindex
 #    and enable MiKTeX's automatic package installation)
 #
+# - ConfigureTeXLive
+#   (installs the LaTeX class files that are delivered with LyX)
+#
 # - UpdateMiKTeX (asks to update MiKTeX)
 
 # ---------------------------------------
@@ -84,24 +87,29 @@ Function LaTeXActions
   ${endif}
   
   # test if TeXLive is installed
-  # as described at TeXLives' homepage there should be an entry in the PATH
+  # TeXLive can be installed so that it appears in the PATH variable and/or only as current user.
+  # The safest method is to first check for the PATH because this is independent of the TeXLive version.
   ${if} $PathLaTeX == ""
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
    StrCpy $Search "TeXLive"
    Call LaTeXCheck # function from LyXUtils.nsh
   ${endif}
-  # check for the current user Path variable (the case when it is a live CD/DVD)
+  # check for the current user Path variable
   ${if} $PathLaTeX == ""
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "texlive"
    StrCpy $2 "TeXLive"
    Call LaTeXCheck # function from LyXUtils.nsh
   ${endif}
-  # check if the variable TLroot exists (the case when it is installed using the program "tlpmgui")
+  # check if it was installed to the system
   ${if} $PathLaTeX == ""
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "TLroot"
+   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
    ${if} $String == ""
-    ReadRegStr $String HKCU "Environment" "TLroot" # the case when installed without admin permissions
+    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
+   ${endif}
+   ${if} $String != ""
+    StrCpy $String $String -27 # remove 'tlpkg\installer\uninst.bat"'
+    StrCpy $String $String "" 1 # remove the leading quote
    ${endif}
    StrCpy $PathLaTeX "$String\bin\win32"
    # check if the latex.exe exists in the $PathLaTeX folder
@@ -110,10 +118,20 @@ Function LaTeXActions
     StrCpy $PathLaTeX ""
    ${endif}
   ${endif}
+  # finally set the name
   ${if} $PathLaTeX != ""
   ${andif} $LaTeXName != "MiKTeX 2.8"
   ${andif} $LaTeXName != "MiKTeX 2.9"
-   StrCpy $LaTeXName "TeXLive"
+   StrCpy $LaTeXInstalled "TeXLive"
+   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "DisplayVersion"
+   ${if} $String == ""
+    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "DisplayVersion"
+   ${endif}
+   ${if} $String != ""
+    StrCpy $LaTeXName "TeXLive $String"
+   ${else}
+    StrCpy $LaTeXName "TeXLive"
+   ${endif}
   ${endif}
 
 FunctionEnd
@@ -185,7 +203,7 @@ Function ConfigureMiKTeX
    # dvipost
    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
    File "${FILES_DVIPOST_PKG}\dvipost.sty"
-   # LyX files in Resources\tex
+   # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
   ${endif}
@@ -226,7 +244,7 @@ Function ConfigureMiKTeX
   ${endif}
   Pop $UpdateFNDBReturn # Return value
   
- ${endif}
+ ${endif} # end if $PathLaTeX != ""
   
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
@@ -241,36 +259,64 @@ Function ConfigureMiKTeX
    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
   ${endif}
   
-  # enable MiKTeX's automatic package installation
+  # update MiKTeX's package file list
   ExecWait '$PathLaTeX\mpm.exe --update-fndb'
-  # the following feature is planned to be used for a possible CD-version
+  # the following feature is planned to be used for a possible Live version
   # copy LaTeX-packages needed by LyX
   # SetOutPath "$INSTDIR"
-  # File /r "${LaTeXPackagesDir}" 
+  # File /r "${LaTeXPackagesDir}"
   
 FunctionEnd
+
+# ------------------------------
+
+Function ConfigureTeXLive
+ # installs the LaTeX class files that are delivered with LyX
+ # (TeXLive comes already with a Perl interpreter.)
+ 
+ ${if} $PathLaTeX != ""
+  StrCpy $PathLaTeXLocal "$PathLaTeX" -10 # delete "\bin\win32"
+  
+  # only install the LyX packages if they are not already installed
+  ${ifnot} ${FileExists} "$PathLaTeXLocal\texmf-dist\tex\latex\lyx\broadway.cls"
+   # dvipost
+   SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\dvipost"
+   File "${FILES_DVIPOST_PKG}\dvipost.sty"
+   # files in Resources\tex
+   SetOutPath "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
+   CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\texmf-dist\tex\latex\lyx"
+  ${endif}
+ ${endif}
+ 
+ # update TeXLive's package file list
+ ExecWait '$PathLaTeX\texhash'
+ 
+ # update TeXLive
+ ExecWait '$PathLaTeX\tlmgr update --all'
+ 
+FunctionEnd
+
+# ------------------------------
 
 Function UpdateMiKTeX
  # asks to update MiKTeX
 
-  ${if} $LaTeXInstalled == "MiKTeX"
-   MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
-   UpdateNow:
-    StrCpy $0 $PathLaTeX -4 # remove "\bin"
-    # the update wizard is started by the miktex-update.exe
-    ${if} $MultiUser.Privileges != "Admin"
-    ${andif} $MultiUser.Privileges != "Power"
-     # call the non-admin version
-      ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
-    ${else}
-     ${if} $MiKTeXUser != "HKCU" # call the admin version
-      ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
-     ${else}
-       ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
-     ${endif}
-    ${endif}
-   UpdateLater:
+  MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
+  UpdateNow:
+  StrCpy $0 $PathLaTeX -4 # remove "\bin"
+  # the update wizard is started by the miktex-update.exe
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+    ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+  ${else}
+   ${if} $MiKTeXUser != "HKCU" # call the admin version
+    ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
+   ${else}
+     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+   ${endif}
   ${endif}
+  UpdateLater:
 
 FunctionEnd
 

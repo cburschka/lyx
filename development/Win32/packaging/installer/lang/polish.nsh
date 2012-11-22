@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Kreator przeprowadzi Ciebie przez proces instala
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aktualizacja bazy danych nazw plików MikTeX..."
-${LangFileString} TEXT_CONFIGURE_LYX "Konfigurowanie LyX (MiKTeX mo¿e pobraæ brakuj¹ce pakiety, co mo¿e zaj¹æ trochê czasu)..."
+${LangFileString} TEXT_CONFIGURE_LYX "Konfigurowanie LyX ($LaTeXInstalled mo¿e pobraæ brakuj¹ce pakiety, co mo¿e zaj¹æ trochê czasu)..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Kompilowanie skryptów Python..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Utwórz skrót na pulpicie"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "S³owniki tezaurusa, które mog¹ zostaæ
 ${LangFileString} EnterLaTeXHeader1 'Dystrybucja LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Wybierz dystrybucjê LaTeX, któr¹ chcesz u¿ywaæ z LyX.'
 ${LangFileString} EnterLaTeXFolder 'Mo¿esz opcjonalnie okreœliæ œcie¿kê do pliku $\"latex.exe$\" i w zwi¹zku z tym ustawiæ, \
-					która dystrybucja LaTeX ma byæ u¿ywana przez LyX.$\r$\n\
-					Je¿eli nie u¿yjesz LaTeX, LyX bêdzie niezdolny do wyprodukowania dokumentów!$\r$\n\
-					$\r$\n\
+					która dystrybucja LaTeX ma byæ u¿ywana przez LyX.\r\n\
+					Je¿eli nie u¿yjesz LaTeX, LyX bêdzie niezdolny do wyprodukowania dokumentów!\r\n\
+					\r\n\
 					Instalator wykry³ dystrybucjê LaTeX \
 					$\"$LaTeXName$\" w twoim systemie. Poni¿ej wyœwietlono jego œcie¿kê.'
 ${LangFileString} EnterLaTeXFolderNone 'Poni¿ej podaj œcie¿kê do pliku $\"latex.exe$\". W zwi¹zku z tym od Ciebie \
-					zale¿y, która dystrybucja LaTeX zostanie u¿yta przez LyX.$\r$\n\
-					Je¿eli nie u¿yjesz LaTeX, LyX bêdzie niezdolny do wyprodukowania dokumentów!$\r$\n\
-					$\r$\n\
+					zale¿y, która dystrybucja LaTeX zostanie u¿yta przez LyX.\r\n\
+					Je¿eli nie u¿yjesz LaTeX, LyX bêdzie niezdolny do wyprodukowania dokumentów!\r\n\
+					\r\n\
 					Instalator nie mo¿e odnaleŸæ dystrybucji LaTeX w twoim systemie.'
 ${LangFileString} PathName 'Œcie¿ka do pliku $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Nie u¿ywaj LaTeX-a"

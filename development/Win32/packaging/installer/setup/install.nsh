@@ -139,10 +139,14 @@ Section -ProgramFiles SecProgramFiles
    SetOutPath "$INSTDIR\Python\Lib"
    !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
 
-  # install the LaTeX class files that are delivered with LyX
+  # install the LaTeX class files that are delivered with LyX to MiKTeX
   # and enable MiKTeX's automatic package installation
   ${if} $LaTeXInstalled == "MiKTeX"
    Call ConfigureMiKTeX # Function from LaTeX.nsh
+  ${endif}
+  # install the LaTeX class files that are delivered with LyX to TeXLive
+  ${if} $LaTeXInstalled == "TeXLive"
+   Call ConfigureTeXLive # Function from LaTeX.nsh
   ${endif}
   
   # download dictionaries and thesaurus

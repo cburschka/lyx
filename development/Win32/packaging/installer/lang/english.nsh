@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "This wizard will guide you through the installat
 				$_CLICK"
 
 #${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Set the LaTeX-distribution that LyX should use.'
 ${LangFileString} EnterLaTeXFolder 'You can optionally set here the path to the file $\"latex.exe$\" and therewith set the \
-					LaTeX-distribution that should be used by LyX.$\r$\n\
-					If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution that should be used by LyX.\r\n\
+					If you don$\'t use LaTeX, LyX cannot output documents!\r\n\
+					\r\n\
 					The installer has detected the LaTeX-distribution \
 					$\"$LaTeXName$\" on your system. Displayed below is its path.'
 ${LangFileString} EnterLaTeXFolderNone 'Set below the path to the file $\"latex.exe$\". Therewith you set which \
-					LaTeX-distribution should be used by LyX.$\r$\n\
-					If you don$\'t use LaTeX, LyX cannot output documents!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution should be used by LyX.\r\n\
+					If you don$\'t use LaTeX, LyX cannot output documents!\r\n\
+					\r\n\
 					The installer couldn$\'t find a LaTeX-distribution on your system.'
 ${LangFileString} PathName 'Path to the file $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Don$\'t use LaTeX"

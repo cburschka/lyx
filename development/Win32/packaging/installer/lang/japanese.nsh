@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "‚±‚ÌƒEƒBƒU[ƒh‚ªA‚ ‚È‚½‚ÌLyX“±“üì‹Æ’†‚Ì‚²ˆÄ“à‚
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "MiKTeX‚Ìƒtƒ@ƒCƒ‹–¼ƒf[ƒ^ƒx[ƒX‚ðXV‚µ‚Ä‚¢‚Ü‚·..."
-${LangFileString} TEXT_CONFIGURE_LYX "LyX‚ð\¬‚µ‚Ä‚¢‚Ü‚· (MiKTeX‚ª•s‘«•ª‚ÌƒpƒbƒP[ƒW‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅAŽžŠÔ‚Ì‚©‚©‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "LyX‚ð\¬‚µ‚Ä‚¢‚Ü‚· ($LaTeXInstalled‚ª•s‘«•ª‚ÌƒpƒbƒP[ƒW‚ðƒ_ƒEƒ“ƒ[ƒh‚·‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅAŽžŠÔ‚Ì‚©‚©‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "PythonƒXƒNƒŠƒvƒg‚ðƒRƒ“ƒpƒCƒ‹‚µ‚Ä‚¢‚Ü‚·..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "ƒfƒXƒNƒgƒbƒv‚ÉƒVƒ‡[ƒgƒJƒbƒg‚ðì¬‚·‚é"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "ƒ_ƒEƒ“ƒ[ƒh‹y‚Ñ“±“ü‚ª‰Â”\‚È—Þ‹`ŒêŽ«“
 ${LangFileString} EnterLaTeXHeader1 'LaTeX”Ð•z”Å'
 ${LangFileString} EnterLaTeXHeader2 'LyX‚ªŽg‚¤‚×‚«LaTeX”Ð•z”Å‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B'
 ${LangFileString} EnterLaTeXFolder '‚±‚±‚Å‚ÍA$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX‚ðŽw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚»‚¤‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄA\
-					LyX‚ªŽg—p‚·‚×‚«LaTeX”Ð•z”Å‚ðŽw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
-					‚à‚µLaTeX‚ðŽg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ðo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
-					$\r$\n\
+					LyX‚ªŽg—p‚·‚×‚«LaTeX”Ð•z”Å‚ðŽw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B\r\n\
+					‚à‚µLaTeX‚ðŽg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ðo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI\r\n\
+					\r\n\
 					“±“üƒvƒƒOƒ‰ƒ€‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeX”Ð•z”Å‚Æ‚µ‚Ä\
 					$\"$LaTeXName$\"‚ª‚ ‚é‚±‚Æ‚ðŒŸo‚µ‚Ü‚µ‚½B‰º—“‚É‚Í‚»‚ÌƒpƒX‚ª•\Ž¦‚³‚ê‚Ä‚¢‚Ü‚·B'
 ${LangFileString} EnterLaTeXFolderNone '‰º—“‚Å$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B‚»‚¤‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄA\
-					LyX‚ª‚Ç‚ÌLaTeX”Ð•z”Å‚ðŽg—p‚·‚é‚×‚«‚©Žw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B$\r$\n\
-					‚à‚µLaTeX‚ðŽg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ðo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI$\r$\n\
-					$\r$\n\
+					LyX‚ª‚Ç‚ÌLaTeX”Ð•z”Å‚ðŽg—p‚·‚é‚×‚«‚©Žw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B\r\n\
+					‚à‚µLaTeX‚ðŽg‚í‚È‚¯‚ê‚ÎALyX‚Í•¶‘‚ðo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñI\r\n\
+					\r\n\
 					“±“üƒvƒƒOƒ‰ƒ€‚ÍAƒVƒXƒeƒ€ã‚ÉLaTeX”Ð•z”Å‚ðŒ©‚Â‚¯‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B'
 ${LangFileString} PathName '$\"latex.exe$\"ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX'
 ${LangFileString} DontUseLaTeX "LaTeX‚ðŽg—p‚µ‚È‚¢"
