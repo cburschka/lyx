@@ -156,6 +156,13 @@ Menuset
 	End
 
 #
+# InsetArgument context menu
+#
+	Menu "context-argument"
+		SwitchArguments
+	End
+
+#
 # InsetBox context menu
 #
 

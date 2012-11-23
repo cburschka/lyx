@@ -12,6 +12,9 @@
 
 #include "InsetArgument.h"
 
+#include "Cursor.h"
+#include "FuncStatus.h"
+#include "FuncRequest.h"
 #include "InsetList.h"
 #include "Layout.h"
 #include "Lexer.h"
@@ -112,6 +115,86 @@ docstring InsetArgument::toolTip(BufferView const & bv, int, int) const
 	if (isOpen(bv))
 		return tooltip_;
 	return toolTipText(tooltip_ + from_ascii(":\n"));
+}
+
+void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		bool const change_type = first_arg == "changetype";
+		if (!change_type) {
+			// not for us
+			// this will not be handled higher up
+			cur.undispatched();
+			return;
+		}
+		cur.recordUndoInset(ATOMIC_UNDO, this);
+		name_ = cmd.getArg(1);
+		cur.forceBufferUpdate();
+		break;
+	}
+
+	default:
+		InsetCollapsable::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action()) {
+
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		if (first_arg == "changetype") {
+			string const type = cmd.getArg(1);
+			flag.setOnOff(type == name_);
+			if (type == name_) {
+				flag.setEnabled(true);
+				return true;
+			}
+			Layout::LaTeXArgMap args;
+			bool const insetlayout = &cur.inset() && cur.paragraph().layout().latexargs().empty();
+			if (insetlayout)
+				args = cur.inset().getLayout().latexargs();
+			else
+				args = cur.paragraph().layout().latexargs();
+			Layout::LaTeXArgMap::const_iterator const lait =
+					args.find(convert<unsigned int>(type));
+			if (lait != args.end()) {
+				flag.setEnabled(true);
+				InsetList::const_iterator it = cur.paragraph().insetList().begin();
+				InsetList::const_iterator end = cur.paragraph().insetList().end();
+				for (; it != end; ++it) {
+					if (it->inset->lyxCode() == ARG_CODE) {
+						InsetArgument const * ins =
+							static_cast<InsetArgument const *>(it->inset);
+						if (ins->name() == type) {
+							// we have this already
+							flag.setEnabled(false);
+							return true;
+						}
+					}
+				}
+			} else
+				flag.setEnabled(false);
+			return true;
+		}
+		return InsetCollapsable::getStatus(cur, cmd, flag);
+	}
+
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, flag);
+	}
+}
+
+string InsetArgument::contextMenuName() const
+{
+	return "context-argument";
 }
 
 void InsetArgument::latexArgument(otexstream & os,

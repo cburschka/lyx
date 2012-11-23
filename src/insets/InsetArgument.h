@@ -60,6 +60,8 @@ public:
 	void read(Lexer & lex);
 	///
 	bool neverIndent() const { return true; }
+	///
+	std::string contextMenuName() const;
 	//@}
 	/// \name Public functions inherited from InsetCollapsable class
 	//@{
@@ -80,6 +82,10 @@ private:
 protected:
 	/// \name Protected functions inherited from Inset class
 	//@{
+	///
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetArgument(*this); }
 	//@}

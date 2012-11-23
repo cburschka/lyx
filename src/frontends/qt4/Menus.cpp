@@ -176,7 +176,10 @@ public:
 		LanguageSelector,
 		/** This is the list of arguments available
 		    for insertion into the current layout. */
-		Arguments
+		Arguments,
+		/** This is the list of arguments available
+		    for in the InsetArgument context menu. */
+		SwitchArguments
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -352,7 +355,7 @@ public:
 	void expandGraphicsGroups(BufferView const *);
 	void expandSpellingSuggestions(BufferView const *);
 	void expandLanguageSelector(Buffer const * buf);
-	void expandArguments(BufferView const *);
+	void expandArguments(BufferView const *, bool switcharg = false);
 	///
 	ItemList items_;
 	///
@@ -461,7 +464,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_graphicsgroups,
 		md_spellingsuggestions,
 		md_languageselector,
-		md_arguments
+		md_arguments,
+		md_switcharguments
 	};
 
 	LexerKeyword menutags[] = {
@@ -492,6 +496,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "separator", md_separator },
 		{ "spellingsuggestions", md_spellingsuggestions },
 		{ "submenu", md_submenu },
+		{ "switcharguments", md_switcharguments },
 		{ "toc", md_toc },
 		{ "toolbars", md_toolbars },
 		{ "updateformats", md_updateformats },
@@ -625,6 +630,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_arguments:
 			add(MenuItem(MenuItem::Arguments));
+			break;
+
+		case md_switcharguments:
+			add(MenuItem(MenuItem::SwitchArguments));
 			break;
 
 		case md_optsubmenu:
@@ -1539,7 +1548,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 }
 
 
-void MenuDefinition::expandArguments(BufferView const * bv)
+void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 {
 	if (!bv)
 		return;
@@ -1550,7 +1559,7 @@ void MenuDefinition::expandArguments(BufferView const * bv)
 		args = inset->getLayout().latexargs();
 	else
 		args = bv->cursor().paragraph().layout().latexargs();
-	if (args.empty())
+	if (args.empty() || (switcharg && args.size() == 1))
 		return;
 	Layout::LaTeXArgMap::const_iterator lait = args.begin();
 	Layout::LaTeXArgMap::const_iterator const laend = args.end();
@@ -1559,9 +1568,15 @@ void MenuDefinition::expandArguments(BufferView const * bv)
 		QString item = toqstr(translateIfPossible(arg.labelstring));
 		if (!arg.shortcut.empty())
 			item += "|" + toqstr(arg.shortcut);
-		add(MenuItem(MenuItem::Command, item,
-			     FuncRequest(LFUN_ARGUMENT_INSERT,
-					 convert<docstring>((*lait).first))));
+		if (switcharg)
+			add(MenuItem(MenuItem::Command, item,
+				     FuncRequest(LFUN_INSET_MODIFY,
+						 from_ascii("changetype ")
+						 + convert<docstring>((*lait).first))));
+		else
+			add(MenuItem(MenuItem::Command, item,
+				     FuncRequest(LFUN_ARGUMENT_INSERT,
+						 convert<docstring>((*lait).first))));
 	}
 }
 
@@ -1709,7 +1724,7 @@ struct Menus::Impl {
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats, Branches,
-	    Indices, Arguments
+	    Indices, Arguments, SwitchArguments
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -1931,7 +1946,11 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::Arguments:
-			tomenu.expandArguments(bv);
+			tomenu.expandArguments(bv, false);
+			break;
+
+		case MenuItem::SwitchArguments:
+			tomenu.expandArguments(bv, true);
 			break;
 
 		case MenuItem::Submenu: {
