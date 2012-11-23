@@ -1148,12 +1148,22 @@ def convert_latexargs(document):
 def revert_latexargs(document):
     " Revert InsetArgument to old syntax "
 
+    # FIXME: This method does not revert correctly (it does
+    #        not reorder the arguments)
     # What needs to be done is this:
     # * find all arguments in a paragraph and reorder them
     #   according to their ID (which is deleted)
     # So: \\begin_inset Argument 2 ... \\begin_inset Argument 1
     # => \\begin_inset Argument ... \\begin_inset Argument
     #    with correct order.
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Argument", i)
+      if i == -1:
+        return
+      # Convert the syntax so that LyX 2.0 can at least open this
+      document.body[i] = "\\begin_inset Argument"
+      i = i + 1
 
 
 ##
