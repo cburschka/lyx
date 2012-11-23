@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "Tento sprievodca Vám pomáha inštalova LyX.$\r$\
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aktualizácia MiKTeX-databázy súborovıch mien..."
-${LangFileString} TEXT_CONFIGURE_LYX "Konfigurácia LyXu (MiKTeX môe naèíta chıbajúce balíky, to môe trochu trva) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Konfigurácia LyXu ($LaTeXInstalled môe naèíta chıbajúce balíky, to môe trochu trva) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Kompilácia Python skriptov..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Vytvori skratku pre pracovnú plochu"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "Slovníky tezaura ktoré mono naèíta 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX distribúcia'
 ${LangFileString} EnterLaTeXHeader2 'Urèite LaTeX distribúciu, ktorú má pouíva LyX.'
 ${LangFileString} EnterLaTeXFolder 'Tu môte nastavi cestu k $\"latex.exe$\" a tım nastavi \
-					LaTeX-distribúciu, ktorá by mala by pouívaná LyXom.$\r$\n\
-					Bez LaTeXu, LyX nedokáe produkova dokumenty!$\r$\n\
-					$\r$\n\
+					LaTeX-distribúciu, ktorá by mala by pouívaná LyXom.\r\n\
+					Bez LaTeXu, LyX nedokáe produkova dokumenty!\r\n\
+					\r\n\
 					Inštalatér detegoval LaTeX-distribúciu \
 					$\"$LaTeXName$\" na vašom systéme. Dolu je zobrazená jeho cesta.'
 ${LangFileString} EnterLaTeXFolderNone 'Nastavte dolu cestu k $\"latex.exe$\". Tım nastavíte, ktorá \
-					LaTeX-distribúcia má by pouívaná LyXom.$\r$\n\
-					Bez LaTeXu LyX nedokáe produkova dokumenty!$\r$\n\
-					$\r$\n\
+					LaTeX-distribúcia má by pouívaná LyXom.\r\n\
+					Bez LaTeXu LyX nedokáe produkova dokumenty!\r\n\
+					\r\n\
 					Inštalatér nemohol nájs LaTeX-distribúciu na vašom systéme.'
 ${LangFileString} PathName 'Cesta na súbor $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Nepoui LaTeX"

@@ -24,9 +24,6 @@ Detection of external component locations
 #
 #--------------------------
 
-#Var ReportReturn
-#Var CommandLineOutput
-
 Function SearchExternal
   Call LaTeXActions # function from LaTeX.nsh
   Call MissingPrograms
@@ -97,14 +94,9 @@ Function MissingPrograms
    StrCpy $DelPythonFiles "True"
   ${endif}
   
-  # test if Acrobat or Adobe Reader is used as PDF-viewer
-  ReadRegStr $String HKCR ".pdf" ""
-  ${if} $String != "AcroExch.Document" # this name is only used by Acrobat and Adobe Reader
-   StrCpy $Acrobat "None"
-  ${else}
-   StrCpy $Acrobat "Yes"
-  ${endif}
-
+  # No test necessary for Acrobat or Adobe Reader because pdfview does this job
+  # each time it is called.
+  
   # test if a PostScript-viewer is installed, only check for GSview
   # check all cases:
   # 1. 32bit Windows
@@ -155,9 +147,9 @@ Function MissingPrograms
    ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
   ${endif}
 
-  ${IfNot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
-    StrCpy $PathBibTeXEditor ""
-    StrCpy $JabRefInstalled == "No"
+  ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
+   StrCpy $PathBibTeXEditor ""
+   StrCpy $JabRefInstalled == "No"
   ${else}
    StrCpy $JabRefInstalled == "Yes"
   ${endif}

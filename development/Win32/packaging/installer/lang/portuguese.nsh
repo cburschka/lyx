@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Este assistente de instalação irá guiá-lo atravé
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'Distribuição de LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolher a distribuição de LaTeX que o LyX deverá usar.'
 ${LangFileString} EnterLaTeXFolder 'Opcionalmente pode especificar o caminho do ficheiro $\"latex.exe$\" e posteriormente \
-					escolher a distribuição de LaTeX que vai usar o LyX.$\r$\n\
-					Sem LaTeX o LyX não pode (pré-)imprimir os documentos!$\r$\n\
-					$\r$\n\
+					escolher a distribuição de LaTeX que vai usar o LyX.\r\n\
+					Sem LaTeX o LyX não pode (pré-)imprimir os documentos!\r\n\
+					\r\n\
 					O instalador detectou a distribuição de LaTeX $\"$LaTeXName$\"\
 					no seu sistema, no caminho que se mostra abaixo.'
 ${LangFileString} EnterLaTeXFolderNone 'Especifique abaixo o caminho ao ficheiro $\"latex.exe$\". Posteriormente escolha \
-					a distribuição de LaTeX que deve usar o LyX.$\r$\n\
-					Sem LaTeX o LyX não pode (pré-)imprimir os documentos!$\r$\n\
-					$\r$\n\
+					a distribuição de LaTeX que deve usar o LyX.\r\n\
+					Sem LaTeX o LyX não pode (pré-)imprimir os documentos!\r\n\
+					\r\n\
 					O instalador não pudo achar nenhuma distribuição de LaTeX no seu sistema.'
 ${LangFileString} PathName 'Caminho ao ficheiro $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Não usar LaTeX"

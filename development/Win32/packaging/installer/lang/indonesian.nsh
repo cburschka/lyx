@@ -1,45 +1,51 @@
+/*
+LyX Installer Language File
+Language: Indonesian
+Author: Waluyo Adi Siswanto
+*/
+
 !insertmacro LANGFILE_EXT "Indonesian"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Pasang untuk Pengguna Yang Ini)"
 
 ${LangFileString} TEXT_WELCOME "Program ini akan memandu anda dalam melakukan instalasi LyX.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Memperbarui nama basisdata MiKTeX..."
+${LangFileString} TEXT_CONFIGURE_LYX "Konfigurasi LyX ($LaTeXInstalled mungkin mengunduh paket yang diperlukan, proses perlu waktu mohon tunggu) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Proses kompilasi skrip Python ..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
-${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
+${LangFileString} TEXT_FINISH_DESKTOP "Membuat pintasan ikon di destop"
+${LangFileString} TEXT_FINISH_WEBSITE "Kunjungi lyx.org untuk berita terbaru serta dukungan"
 
 ${LangFileString} FileTypeTitle "Dokumen-LyX"
 
 ${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Instal untuk semua pengguna?"
+${LangFileString} SecAllUsersTitle "Pasang untuk semua pengguna?"
 ${LangFileString} SecFileAssocTitle "Berkas yang terkait"
 ${LangFileString} SecDesktopTitle "Ikon Desktop"
 
 ${LangFileString} SecCoreDescription "Berkas-berkas LyX."
 ${LangFileString} SecInstJabRefDescription "Program manajemen acuan bibliografi dan penyunting berkas BibTeX."
-${LangFileString} SecAllUsersDescription "Instal LyX untuk semua pengguna atau hanya untuk pengguna ini saja."
+${LangFileString} SecAllUsersDescription "Pasang LyX untuk semua pengguna atau hanya untuk pengguna ini saja."
 ${LangFileString} SecFileAssocDescription "Berkas dengan ekstensi .lyx akan otomatis dibuka menggunakan LyX."
 ${LangFileString} SecDesktopDescription "Ikon LyX muncul di desktop."
-${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
-${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
+${LangFileString} SecDictionariesDescription "Kamus pemeriksa ejaan yang dapat diunduh dan dipasang."
+${LangFileString} SecThesaurusDescription "Kamus padanan kata yang dapat diunduh dan dipasang."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribusi LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Pengaturan distribusi LaTeX yang akan digunakan dalam LyX.'
 ${LangFileString} EnterLaTeXFolder 'Anda dapat mengatur sendiri lokasi tempat berkas $\"latex.exe$\" berada dan mengatur lokasi \
-					tempat distribusi LaTeX yang akan digunakan oleh LyX.$\r$\n\
-					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!$\r$\n\
-					$\r$\n\
+					tempat distribusi LaTeX yang akan digunakan oleh LyX.\r\n\
+					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!\r\n\
+					\r\n\
 					Program instalasi ini mendeteksi adanya distribusi LaTeX \
 					$\"$LaTeXName$\" dalam sistem anda. Dibawah ini adalah lokasi keberadaannya.'
 ${LangFileString} EnterLaTeXFolderNone 'Aturlah lokasi tempat berkas $\"latex.exe$\" berada. Atur dan nyatakanlah lokasi \
-					tempat distribusi LaTeX yang akan digunakan oleh LyX.$\r$\n\
-					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!$\r$\n\
-					$\r$\n\
+					tempat distribusi LaTeX yang akan digunakan oleh LyX.\r\n\
+					Apabila anda tidak menggunakan LaTeX, LyX tidak akan menampilkan output dokumen!\r\n\
+					\r\n\
 					Program instalasi ini tidak menemukan adanya distribusi LaTeX di sistem anda.'
 ${LangFileString} PathName 'Lokasi tempat berkas $\"latex.exe$\" berada'
 ${LangFileString} DontUseLaTeX "Tidak menggunakan LaTeX"
@@ -69,23 +75,23 @@ ${LangFileString} MiKTeXPathInfo "Agar memungkinkan semua pengguna dapat mengatu
 					$MiKTeXPath $\r$\n\
 					serta di semua subfoldernya."
 ${LangFileString} MiKTeXInfo 'Distribusi LaTeX $\"MiKTeX$\" akan digunakan dengan LyX.$\r$\n\
-				Sangat disarankan memperbarui program yang ada di MiKTeX menggunakan $\"MiKTeX Update Wizard$\"$\r$\n\
+				Sangat disarankan memperbarui program yang ada di MiKTeX menggunakan $\"Bantuan memperbarui MiKTeX$\"$\r$\n\
 				sebelum anda menggunakan LyX untuk yang pertama kali.$\r$\n\
 				Apakah anda akan memeriksa perlunya memperbarui MikTeX?'
 
 ${LangFileString} ModifyingConfigureFailed "Tidak bisa menyatakan 'path_prefix' pada skrip configure"
-${LangFileString} RunConfigureFailed "Tidak bisa menjalankan skrip configure"
+${LangFileString} RunConfigureFailed "Tidak bisa menjalankan skrip konfigurasi"
 ${LangFileString} NotAdmin "Anda harus berlaku dan mempunyai hak sebagai administrator untuk instalasi LyX!"
 ${LangFileString} InstallRunning "Program instalasi sedang berjalan!"
 ${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} sudah pernah diinstal! Perlu menghapus LyX yang ada terlebih dahulu."
-${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
+${LangFileString} NewerInstalled "Anda akan memasang versi LyX yang lama dari yang sudah terpasang.$\r$\n\
+				  Jika memang dikehendaki, anda harus menghapus dulu LyX yang ada, LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-						MiKTeX was installed with administrator privileges but you are installing LyX without them."
-${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
-					available because that requires to install a software printer to$\r$\n\
-					Windows which is only possible with administrator privileges."
+${LangFileString} MultipleIndexesNotAvailable "Tidak ada dukungan menggunakan beberapa indeks dalam dokumen karena$\r$\n\
+						MiKTeX dipasang oleh administrator tetapi anda akan memasang LyX bukan sebagai administrator."
+${LangFileString} MetafileNotAvailable "Tidak ada dukungan LyX untuk gambar dengan format EMF atau WMF$\r$\n\
+					karena memerlukan memasang perangkat lunak printer agar$\r$\n\
+					pada Windows yang memerlukan pengguna administrator."
 
 ${LangFileString} FinishPageMessage "Selamat! LyX berhasil diinstal dengan sukses.$\r$\n\
 					$\r$\n\

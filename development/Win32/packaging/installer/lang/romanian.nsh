@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Acest asistent vã va ghida în procesul de instal
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -30,14 +30,16 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuþia LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Seteazã distribuþia LaTeX pe care sã o foloseascã LyX.'
-${LangFileString} EnterLaTeXFolder 'Opþional puteþi seta calea cãtre fiºierul $\"latex.exe$\" ºi, implicit, seta distribuþia \ LaTeX pe care sã o foloseascã LyX. $\r$\n\
-					Dacã nu folosiþi LaTeX, LyX nu va putea sã producã fiºiere!$\r$\n\
-					$\r$\n\
+${LangFileString} EnterLaTeXFolder 'Opþional puteþi seta calea cãtre fiºierul $\"latex.exe$\" ºi, implicit, seta distribuþia \
+					LaTeX pe care sã o foloseascã LyX.\r\n\
+					Dacã nu folosiþi LaTeX, LyX nu va putea sã producã fiºiere!\r\n\
+					\r\n\
 					Programul de instalare a detectat distribuþia LaTeX \
 					$\"$LaTeXName$\" instalatã pe calculatorul dumneavoastrã. Dedesupt este afiºatã calea acestei distribuþii.'
-${LangFileString} EnterLaTeXFolderNone 'Setaþi calea cãtre fiºierul $\"latex.exe$\" ºi, implicit, seta distribuþia \ LaTeX pe care sã o foloseascã LyX. $\r$\n\
-					Dacã nu folosiþi LaTeX, LyX nu va putea sã producã fiºiere!$\r$\n\
-					$\r$\n\
+${LangFileString} EnterLaTeXFolderNone 'Setaþi calea cãtre fiºierul $\"latex.exe$\" ºi, implicit, seta distribuþia \
+					LaTeX pe care sã o foloseascã LyX.\r\n\
+					Dacã nu folosiþi LaTeX, LyX nu va putea sã producã fiºiere!\r\n\
+					\r\n\
 					Programul de instalare nu a detectat nici o distribuþia LaTeX instalatã pe calculatorul dumneavoastrã.'
 
 ${LangFileString} PathName 'Calea cãtre fiºierul $\"latex.exe$\"'

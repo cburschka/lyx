@@ -106,11 +106,10 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 	docstring symb = docstring(1, char_type(master_selected ? 0x2714 : 0x2716));
 	if (inchild && master_selected != child_selected)
 		symb += char_type(child_selected ? 0x2714 : 0x2716);
-	s = symb + s;
 	if (decoration() == InsetLayout::CLASSIC)
-		return isOpen(bv) ? s : getNewLabel(s);
+		return symb + (isOpen(bv) ? s : getNewLabel(s));
 	else
-		return params_.branch + ": " + getNewLabel(s);
+		return symb + params_.branch + ": " + getNewLabel(s);
 }
 
 

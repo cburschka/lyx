@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Denne guide vil installere LyX på din computer.$
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Vælg den LaTeX-distribution som LyX skal bruge.'
 ${LangFileString} EnterLaTeXFolder 'Du kan her vælge stien til filen $\"latex.exe$\" og derved vælge hvilken \
-					LaTeX-distribution som bruges LyX.$\r$\n\
-					Hvis du ikke vælger LaTeX, kan LyX ikke generere dokumenter!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution som bruges LyX.\r\n\
+					Hvis du ikke vælger LaTeX, kan LyX ikke generere dokumenter!\r\n\
+					\r\n\
 					Installationsprogrammet har detekteret LaTeX-distributionen \
 					$\"$LaTeXName$\" på din computer i nedenstående sti:'
 ${LangFileString} EnterLaTeXFolderNone 'Vælg nedenfor stien til filen $\"latex.exe$\". Herved kan du vælge hvilken \
-					LaTeX-distribution LyX skal bruge.$\r$\n\
-					Hvis du ikke vælger LaTeX, kan LyX ikke generere dokumenter!$\r$\n\
-					$\r$\n\
+					LaTeX-distribution LyX skal bruge.\r\n\
+					Hvis du ikke vælger LaTeX, kan LyX ikke generere dokumenter!\r\n\
+					\r\n\
 					Installationsprogrammet kunne ikke finde nogen LaTeX-distribution.'
 ${LangFileString} PathName 'Sti til filen $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Brug ikke LaTeX"

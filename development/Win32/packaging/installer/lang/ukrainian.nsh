@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "За допомогою цього майстра ви зможете встановити
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Оновлення бази даних назв файлів MiKTeX..."
-${LangFileString} TEXT_CONFIGURE_LYX "Налаштовування LyX (може виникнути потреба у отриманні MiKTeX додаткових пакунків, зачекайте)..."
+${LangFileString} TEXT_CONFIGURE_LYX "Налаштовування LyX (може виникнути потреба у отриманні $LaTeXInstalled додаткових пакунків, зачекайте)..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Обробка скриптів Python..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Створити значок на стільниці"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "Словники синонімів, які можна отримат
 ${LangFileString} EnterLaTeXHeader1 'Дистрибутив LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Вкажіть дистрибутив LaTeX, який має використовувати LyX.'
 ${LangFileString} EnterLaTeXFolder 'Крім того, ви можете встановити тут розташування файла $\"latex.exe$\" і таким чином \
-					встановити дистрибутив LaTeX, який має бути використано LyX.$\r$\n\
-					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
-					$\r$\n\
+					встановити дистрибутив LaTeX, який має бути використано LyX.\r\n\
+					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!\r\n\
+					\r\n\
 					Засобу встановлення програми вдалося виявити дистрибутив LaTeX \
 					$\"$LaTeXName$\" у вашій системі. Нижче показано його розташування.'
 ${LangFileString} EnterLaTeXFolderNone 'Нижче ви маєте встановити розташування файла $\"latex.exe$\". Таким чином, ви встановите \
-					дистрибутив LaTeX, який слід використовувати у LyX.$\r$\n\
-					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!$\r$\n\
-					$\r$\n\
+					дистрибутив LaTeX, який слід використовувати у LyX.\r\n\
+					Якщо ви не використовуватимете LaTeX, LyX не зможе створювати документів!\r\n\
+					\r\n\
 					Засобу встановлення не вдалося виявити дистрибутива LaTeX у вашій системі.'
 ${LangFileString} PathName 'Розташування файла $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Не використовувати LaTeX"

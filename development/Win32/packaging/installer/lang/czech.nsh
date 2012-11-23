@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Tento pomocník vás provede instalací LyXu.$\r$\n
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'Distribuce LaTeXu'
 ${LangFileString} EnterLaTeXHeader2 'Nastavte distribuci LaTeXu, kterou má LyX používat.'
 ${LangFileString} EnterLaTeXFolder 'Mùžete zde volitelnì nastavit cestu k souboru $\"latex.exe$\" a tím urèit \
-					distribuci LaTeXu, kterou bude používat Lyx.$\r$\n\
-					Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!$\r$\n\
-					$\r$\n\
+					distribuci LaTeXu, kterou bude používat Lyx.\r\n\
+					Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!\r\n\
+					\r\n\
 					Instalátor nalezl na vašem poèítaèi LaTeXovou distribuci \
 					$\"$LaTeXName$\". Níže je uvedena její cesta.'
 ${LangFileString} EnterLaTeXFolderNone 'Níže nastavte cestu k souboru $\"latex.exe$\". Urèíte tím, která \
-					distribuce LaTeXu bude používána LyXem.$\r$\n\
-					Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!$\r$\n\
-					$\r$\n\
+					distribuce LaTeXu bude používána LyXem.\r\n\
+					Pokud nepoužijete LaTeX, LyX nemùže vysázet výsledné dokumenty!\r\n\
+					\r\n\
 					Instalátor nemohl nalézt distribuci LaTeXu na vašem poèítaèi.'
 ${LangFileString} PathName 'Cesta k souboru $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Nepoužívat LaTeX"

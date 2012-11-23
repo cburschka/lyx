@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "ÓÊגטÏד ÇהÈÑזÇוÌ ÎהÇה ÙוהךÉ ÊÑדךÈ ÈÑזÇוÌ הךד ÈךÓÑ
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -29,15 +29,15 @@ ${LangFileString} SecDesktopDescription "ÑוÒ הךד Ùהי Ó×Í ÇהודÊÈ."
 ${LangFileString} EnterLaTeXHeader1 'ÊטÒךÙÉ-הÊךד'
 ${LangFileString} EnterLaTeXHeader2 'ÇÌÙה ÊטÒךÙÉ-הÊךד ÇהÊטÒךÙÉ ÇהוÓÊÎÏו בך הךד.'
 ${LangFileString} EnterLaTeXFolder 'ךודזד חזÇ ÇÎÊךÇÑ ÇהוÓÇÑ ההוהב  $\"latex.exe$\" טÍÏÏ הÐהד  \
-					ÊטÒךÙÉ-הÊךד ÇהÐך ךÌÈ ÇÓÊÎÏÇוח בך הךד.$\r$\n\
-					ÇÐÇ דזÊ הÇ ÊÓÊÎÏו הÊךד בÇז הךד הÇ ךÓÊ×ךÙ ÇÎÑÇÌ ÇהוÓÊזÏÇÊ!$\r$\n\
-					$\r$\n\
+					ÊטÒךÙÉ-הÊךד ÇהÐך ךÌÈ ÇÓÊÎÏÇוח בך הךד.\r\n\
+					ÇÐÇ דזÊ הÇ ÊÓÊÎÏו הÊךד בÇז הךד הÇ ךÓÊ×ךÙ ÇÎÑÇÌ ÇהוÓÊזÏÇÊ!\r\n\
+					\r\n\
 					Êו ÇהÙËטÑ Ùהי ÊטÒךÙÉ-הÊךד \
 					$\"$LaTeXName$\" בך זØÇוד טÊÌÏ וÓÇÑח בך ÇהÇÓבה.'
 ${LangFileString} EnterLaTeXFolderNone 'בךוÇ הך וÓÇÑ Çהוהב  $\"latex.exe$\". טÍÏÏ הÐהד \
-					ÊטÒךÙÉ-הÊךד ÇהÐך ךÌÈ ÇÓÊÎÏÇוח בך הךד.$\r$\n\
-					ÇÐÇ דזÊ הÇ ÊÓÊÎÏו הÊךד בÅז הךד הÇ ךÓÊ×ךÙ ÇÎÑÇÌ ÇהוÓÊזÏÇÊ!$\r$\n\
-					$\r$\n\
+					ÊטÒךÙÉ-הÊךד ÇהÐך ךÌÈ ÇÓÊÎÏÇוח בך הךד.\r\n\
+					ÇÐÇ דזÊ הÇ ÊÓÊÎÏו הÊךד בÅז הךד הÇ ךÓÊ×ךÙ ÇÎÑÇÌ ÇהוÓÊזÏÇÊ!\r\n\
+					\r\n\
 					הו ךÊו ÇהÙËטÑ Ùהי ÊטÒךÙÉ-הÊךד בך זØÇוד.'
 ${LangFileString} PathName 'וÓÇÑ Çהוהב  $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "הÇ ÊÓÊÎÏו הÊךד"

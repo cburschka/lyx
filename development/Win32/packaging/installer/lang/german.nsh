@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "Dieser Assistent wird Sie durch die Installation
 				$_CLICK"
 
 #${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aktualisiere MiKTeXs Dateinamen Datenbank..."
-${LangFileString} TEXT_CONFIGURE_LYX "Konfiguriere LyX (MiKTeX kann fehlende Pakte herunterladen, was etwas Zeit braucht) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Konfiguriere LyX ($LaTeXInstalled kann fehlende Pakte herunterladen, was etwas Zeit braucht) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Kompiliere Python Skripte..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Ein Symbol auf der Arbeitsoberfläche erzeugen"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus- Wörterbucher die herunterg
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-Distribution'
 ${LangFileString} EnterLaTeXHeader2 'Legen Sie die LaTeX-Distribution fest die LyX verwenden soll.'
 ${LangFileString} EnterLaTeXFolder 'Optional können Sie hier den Pfad zur Datei $\"latex.exe$\" angeben und damit die \
-					LaTeX-Distribution festlegen die LyX verwenden soll.$\r$\n\
-					Wenn Sie kein LaTeX verwenden, kann LyX keine Dokumente ausgeben!$\r$\n\
-					$\r$\n\
-					Der Installer hat auf Ihrem System die LaTeX-Distribution$\r$\n\
+					LaTeX-Distribution festlegen, die LyX verwenden soll.\r\n\
+					Wenn Sie kein LaTeX verwenden, kann LyX keine Dokumente ausgeben!\r\n\
+					\r\n\
+					Der Installer hat auf Ihrem System die LaTeX-Distribution\r\n\
 					$\"$LaTeXName$\" erkannt. Unten angegeben ist ihr Pfad.'
 ${LangFileString} EnterLaTeXFolderNone 'Geben Sie unten den Pfad zur Datei $\"latex.exe$\" an. Damit legen Sie fest welche \
-					LaTeX-Distribution LyX verwenden soll.$\r$\n\
-					Wenn Sie kein LaTeX verwenden, kann LyX keine Dokumente ausgeben!$\r$\n\
-					$\r$\n\
+					LaTeX-Distribution LyX verwenden soll.\r\n\
+					Wenn Sie kein LaTeX verwenden, kann LyX keine Dokumente ausgeben!\r\n\
+					\r\n\
 					Der Installer konnte auf Ihrem System keine LaTeX-Distribution finden.'
 ${LangFileString} PathName 'Pfad zur Datei $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Kein LaTeX benutzen"

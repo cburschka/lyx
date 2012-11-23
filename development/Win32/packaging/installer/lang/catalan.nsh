@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "Aquest assistent us guiarà en la instal·lació de
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'Distribució LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Establiu la distribució LaTeX que ha de fer servir el LyX.'
 ${LangFileString} EnterLaTeXFolder 'Opcionalment podeu establir aquí el camí al fitxer $\"latex.exe$\" i posteriorment establir la \
-					distribució LaTeX que el LyX ha de fer servir.$\r$\n\
-					Si no useu LaTeX, el LyX no podrà generar documents!$\r$\n\
-					$\r$\n\
+					distribució LaTeX que el LyX ha de fer servir.\r\n\
+					Si no useu LaTeX, el LyX no podrà generar documents!\r\n\
+					\r\n\
 					L$\'instal·lador ha detectat la distribució LaTeX \
 					$\"$LaTeXName$\" al sistema, al camí que es mostra avall.'
 ${LangFileString} EnterLaTeXFolderNone 'Indiqueu el camí al fitxer $\"latex.exe$\". Posteriorment establiu \
-					quina distribució LaTeX ha de fer servir el LyX.$\r$\n\
-					Si no useu LaTeX, el LyX no podrà generar documents!$\r$\n\
-					$\r$\n\
+					quina distribució LaTeX ha de fer servir el LyX.\r\n\
+					Si no useu LaTeX, el LyX no podrà generar documents!\r\n\
+					\r\n\
 					L$\'instal·lador no ha trobat cap distribució LaTeX al sistema.'
 ${LangFileString} PathName 'Camí al fitxer $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "No usis LaTeX"

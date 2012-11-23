@@ -7,7 +7,7 @@ ${LangFileString} TEXT_WELCOME "A varázsló segítségével tudja telepíteni a LyX-e
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
@@ -31,15 +31,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-disztribúció'
 ${LangFileString} EnterLaTeXHeader2 'Adja meg a LaTeX-disztribúciót, amit a LyX-nek használnia kell.'
 ${LangFileString} EnterLaTeXFolder 'Itt megadhatja az elérési útvonalat a $\"latex.exe$\" fájlhoz és ezzel meg is adja \
-					melyik LaTeX disztribúciót fogja használni a LyX.$\r$\n\
-					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!$\r$\n\
-					$\r$\n\
+					melyik LaTeX disztribúciót fogja használni a LyX.\r\n\
+					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!\r\n\
+					\r\n\
 					A telepítõ megtalálta az ön számítógépén a \
 					$\"$LaTeXName$\" disztribúciót. Lent láthatja az elérési útvonalát.'
 ${LangFileString} EnterLaTeXFolderNone 'Adja meg a használandó $\"latex.exe$\" fájl elérési útvonalát. Ezzel azt is megadja \
-					melyik LaTeX disztribúciót fogja használni a LyX.$\r$\n\
-					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!$\r$\n\
-					$\r$\n\
+					melyik LaTeX disztribúciót fogja használni a LyX.\r\n\
+					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!\r\n\
+					\r\n\
 					A telepítõ nem talált a számítógépén LaTeX disztribúciót!'
 ${LangFileString} PathName 'A $\"latex.exe$\" fájl elérési útja'
 ${LangFileString} DontUseLaTeX "Ne használja a LaTeX-et"

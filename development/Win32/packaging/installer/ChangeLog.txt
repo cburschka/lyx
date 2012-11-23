@@ -1,13 +1,25 @@
-﻿Changelog for LyX-205-4:
+﻿Changelog for LyX-205-5:
+- the installer supports now the usage of TeXLive as LaTeX distribution.
+  (TeXLive must be manually installed before LyX.) 
+- updated spell-checker dictionaries for Scottish and Swedish
+  (To benefit from them you must uninstall an already installed LyX 2.0.x and
+   then use this installer.)
+- updated thesaurus for Slovenian
+  (need to reinstall LyX to benefit from this)
+- updated Indonesian translation of the installer messages
+
+
+Changelog for LyX-205-4:
 - support to update the view as PDF if Adobe Reader XI is used
 - fix long standing bug that updating a PDF view failed for larger
   LyX documents if Adobe Reader or Acrobat was used as PDF viewer
-- fixed bug that EPS and PDF images were not displayed if LyX was installed
-  this time without admin privileges
-  but an older LyX version was once installed with admin privileges
+- fixed bug that viewing PDF files could fail if Acrobat or Adobe Reader was
+  not the default PDF viewer of the system while LyX was installed, but
+  became later the default PDF viewer
+- fixed bug that EPS and PDF images were not displayed if LyX was installed this time without
+  admin privileges but an older LyX version was once installed with admin privileges
 - correct the required disk space for the German thesaurus dictionaries
-- updated Japanese, Norwegian, Polish, Slovak and Ukrainian translation of
-  the installer messages
+- updated Japanese, Norwegian, Polish, Slovak and Ukrainian translation of the installer messages
 
 
 Changelog for LyX-205-3:
@@ -29,7 +41,7 @@ Changelog for LyX-205-2:
   (To benefit from them you must uninstall an already installed LyX 2.0.x and
    then use this installer.)
 - updated thesaurus for German
-  (need to uninstall to benefit from this)
+  (need to reinstall LyX to benefit from this)
 - bugfix: remove registry entries of existing LyX version when installing over it
 - don't allow to install an older LyX version over an existing newer one
 

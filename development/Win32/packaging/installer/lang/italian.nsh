@@ -15,7 +15,7 @@ ${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX (MiKTeX may download missing packages, this can take some time) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Crea icona sul desktop"
@@ -39,15 +39,15 @@ ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be do
 ${LangFileString} EnterLaTeXHeader1 'Distribuzione di LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Scegliere la distribuzione di LaTeX che LyX dovrà usare.'
 ${LangFileString} EnterLaTeXFolder 'Puoi impostare qui il percorso del file $\"latex.exe$\" e impostare di conseguenza \
-					la distribuzione di LaTeX che LyX dovrà usare.$\r$\n\
-					Senza LaTeX, LyX non può generare documenti!$\r$\n\
-					$\r$\n\
+					la distribuzione di LaTeX che LyX dovrà usare.\r\n\
+					Senza LaTeX, LyX non può generare documenti!\r\n\
+					\r\n\
 					Il programma di installazione ha rilevato la distribuzione di LaTeX \
 					$\"$LaTeXName$\" sul tuo sistema. Il suo percorso è riportato sotto.'
 ${LangFileString} EnterLaTeXFolderNone 'Imposta qui sotto il percorso del file $\"latex.exe$\". Con questo imposti quale \
-					distribuzione di LaTeX dovrà essere usata da LyX.$\r$\n\
-					Senza LaTeX, LyX non può generare documenti!$\r$\n\
-					$\r$\n\
+					distribuzione di LaTeX dovrà essere usata da LyX.\r\n\
+					Senza LaTeX, LyX non può generare documenti!\r\n\
+					\r\n\
 					Il programma di installazione non ha trovato una distribuzione di LaTeX sul tuo sistema.'
 ${LangFileString} PathName 'Percorso del file $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Non usare LaTeX"

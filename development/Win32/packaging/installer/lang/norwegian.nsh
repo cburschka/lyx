@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "Denne veiviseren installerer LyX på datamaskinen
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Oppdaterer MiKTeX filenavn database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Konfigurerer LyX (MiKTeX kan laste ned manglende pakker, så dette kan ta litt tid) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Konfigurerer LyX ($LaTeXInstalled kan laste ned manglende pakker, så dette kan ta litt tid) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Kompilerer Python script..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Lager snarveg på skrivebordet"
@@ -37,16 +37,16 @@ ${LangFileString} SecThesaurusDescription "Synonymordbøker som kan lastes ned og
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribusjon'
 ${LangFileString} EnterLaTeXHeader2 'Velg LaTeX-distribusjonen LyX skal bruke.'
 ${LangFileString} EnterLaTeXFolder 'Dersom du vil kan du sette stien til fila $\"latex.exe$\" og slik sette\
-					LaTeX-distribusjonen som LyX bruker.$\r$\n\
-					Om du ikke bruker LaTeX får du ikke vist dokument!$\r$\n\
-					$\r$\n\
+					LaTeX-distribusjonen som LyX bruker.\r\n\
+					Om du ikke bruker LaTeX får du ikke vist dokument!\r\n\
+					\r\n\
 					Installasjonsprosessen har funne  LaTeX-distribusjonen \
 					$\"$LaTeXName$\" i systemet ditt. Stien står nedenfor.'
 ${LangFileString} EnterLaTeXFolderNone 'Dersom du vil kan du sette stien til fila $\"latex.exe$\" og slik sette\
-                                        LaTeX-distribusjonen som LyX bruker.$\r$\n\
-                                        Om du ikke bruker LaTeX får du ikke vist dokument!$\r$\n\
-                                        $\r$\n\
-                                        Installasjonsprosessen har ikke funne noen LaTeX-distribusjon.'
+					LaTeX-distribusjonen som LyX bruker.\r\n\
+					Om du ikke bruker LaTeX får du ikke vist dokument!\r\n\
+					\r\n\
+					Installasjonsprosessen har ikke funne noen LaTeX-distribusjon.'
 ${LangFileString} PathName 'Stien til filen $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Ikke bruk LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'Filen $\"latex.exe$\" fins ikke i den oppgitte mappa.'

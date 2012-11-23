@@ -13,7 +13,7 @@ ${LangFileString} TEXT_WELCOME "Cet assistant va vous guider tout au long de l'i
 				$_CLICK"
 
 ${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Mise à jour de la base de données MiKTeX..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuration de LyX (MiKTeX peut télécharger les paquetages manquants, ceci peut prendre du temps) ..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configuration de LyX ($LaTeXInstalled peut télécharger les paquetages manquants, ceci peut prendre du temps) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compilation des scripts Python..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Créer un raccourci sur le bureau"
@@ -37,15 +37,15 @@ ${LangFileString} SecThesaurusDescription "Les dictionnaires de synonymes qui pe
 ${LangFileString} EnterLaTeXHeader1 'Distribution LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Choisir la distribution LaTeX que LyX devra utiliser.'
 ${LangFileString} EnterLaTeXFolder 'Éventuellement, vous pouvez fixer ici le chemin d$\'accès au fichier $\"latex.exe$\" et de ce fait fixer \
-					la distribution LaTeX utilisée par Lyx.$\r$\n\
-					Si vous n$\'utilisez pas LaTeX, LyX ne peut créer de documents !$\r$\n\
-					$\r$\n\
+					la distribution LaTeX utilisée par Lyx.\r\n\
+					Si vous n$\'utilisez pas LaTeX, LyX ne peut créer de documents !\r\n\
+					\r\n\
 					L$\'assistant d$\'installation a détecté la distribution LaTeX \
 					$\"$LaTeXName$\" sur votre système. Le chemin d$\'accès est affiché ci-dessous.'
 ${LangFileString} EnterLaTeXFolderNone 'Fixez ci-dessous le chemin d$\'accès au fichier $\"latex.exe$\". De ce fait vous fixez la \
-					distribution LaTeX utilisée par Lyx.$\r$\n\
-					Si vous n$\'utilisez pas LaTeX, LyX ne peut créer de documents !$\r$\n\
-					$\r$\n\
+					distribution LaTeX utilisée par Lyx.\r\n\
+					Si vous n$\'utilisez pas LaTeX, LyX ne peut créer de documents !\r\n\
+					\r\n\
 					L$\'assistant d$\'installation n$\'a pas pu trouver de distribution LaTeX sur votre système.'
 ${LangFileString} PathName 'Chemin vers le fichier $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "N'utilisez pas LaTeX"
