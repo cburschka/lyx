@@ -60,7 +60,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 40; // rgh categorized layouts
+int const LAYOUT_FORMAT = 41; // spitz: new InsetArgument syntax
 
 namespace {
 
