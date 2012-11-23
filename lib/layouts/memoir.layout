@@ -70,7 +70,7 @@ Style Chapter
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The chapter as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 	     0
 End
@@ -94,7 +94,7 @@ Style Section
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The section as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 1
 End
@@ -109,7 +109,7 @@ Style Subsection
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subsection as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 2
 End
@@ -124,7 +124,7 @@ Style Subsubsection
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subsubsection as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 3
 End
@@ -139,7 +139,7 @@ Style Paragraph
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The paragraph as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 4
 End
@@ -154,7 +154,7 @@ Style Subparagraph
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subparagraph as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	TocLevel 5
 End
@@ -210,7 +210,7 @@ Style Poemtitle
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The poem title as it appears in the running headers"
-		Requires      shorttitle
+		Requires      1
 	EndArgument
 	Font
 	   Series             Bold
