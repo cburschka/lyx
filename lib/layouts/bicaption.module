@@ -12,8 +12,7 @@ Style "Caption setup"
 	LatexName		captionsetup
 	Category		FrontMatter
 	Argument 1
-		LabelString   "Caption Setup Options"
-		Shortcut      S
+		LabelString   "Caption Setup Options|S"
 		Tooltip       "Options for the caption setup command (see bicaption manual)"
 	EndArgument
 	Margin			Dynamic
@@ -45,8 +44,7 @@ Style Bicaption
 	EndArgument
 	Argument 2
 		Mandatory     1
-		LabelString   "Second Language Caption Text"
-		Shortcut      S
+		LabelString   "Second Language Caption Text|S"
 		Tooltip       "The caption text in the second language"
 	EndArgument
 	Argument 3

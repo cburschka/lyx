@@ -35,8 +35,7 @@ Style Title
 	Align                 Center
 	LabelType             No_Label
 	Argument shorttitle
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "Short title which appears in the running headers"
 	EndArgument
 	Font

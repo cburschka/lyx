@@ -620,8 +620,7 @@ Style FigCaption
 	LabelType             Static
 	LabelString           "Fig. ---"
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures"
 	EndArgument
 End

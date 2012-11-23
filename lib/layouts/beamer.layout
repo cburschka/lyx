@@ -52,9 +52,8 @@ Style Itemize
   LatexType        Item_Environment
   LatexName        itemize
   Argument 1
-  	LabelString   "Overlay Specifications"
-  	Shortcut      S
-  	Tooltip       "Overlay specifications for this list"
+    LabelString   "Overlay Specifications|S"
+    Tooltip       "Overlay specifications for this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MMN
@@ -74,13 +73,12 @@ Style Enumerate
   LatexType        Item_Environment
   LatexName        enumerate
   Argument 1
-  	LabelString   "Overlay Specifications"
-  	Shortcut      S
-  	Tooltip       "Overlay specifications for this list"
+    LabelString   "Overlay Specifications|S"
+    Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
-  	LabelString   "Mini template"
-  	Tooltip       "Mini template for this List"
+    LabelString   "Mini template"
+    Tooltip       "Mini template for this List"
   EndArgument
   NextNoIndent     1
   LeftMargin       MMN
@@ -102,13 +100,12 @@ Style Description
   LatexType        Item_environment
   LatexName        description
   Argument 1
-  	LabelString   "Overlay Specifications"
-  	Shortcut      S
-  	Tooltip       "Overlay specifications for this list"
+    LabelString   "Overlay Specifications|S"
+    Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
-  	LabelString   "Longest label"
-  	Tooltip       "The longest label in this list"
+    LabelString   "Longest label|s"
+    Tooltip       "The longest label in this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MM
@@ -133,9 +130,8 @@ Style Part
   LatexType        Command
   LatexName        part
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "The part as it appears in the table of contents/running headers"
+    LabelString   "Short Title|S"
+    Tooltip       "The part as it appears in the table of contents/running headers"
   EndArgument
   NeedProtect      1
   NextNoIndent     1
@@ -147,7 +143,7 @@ Style Part
   Align            Center
   LabelType        Static
   LabelString      "Part"
-	RefPrefix        part
+  RefPrefix        part
 
   # standard font definition
   Font 
@@ -181,9 +177,8 @@ Style Section
   LabelString      "Section \arabic{section}"
   RefPrefix        sec
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "The section as it appears in the table of contents/running headers"
+    LabelString   "Short Title|S"
+    Tooltip       "The section as it appears in the table of contents/running headers"
   EndArgument
 
   Font 
@@ -226,11 +221,10 @@ Style Subsection
   LabelType        Counter
   LabelCounter     subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
-	RefPrefix        sub
+  RefPrefix        sub
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "The subsection as it appears in the table of contents/running headers"
+    LabelString   "Short Title|S"
+    Tooltip       "The subsection as it appears in the table of contents/running headers"
   EndArgument
 
   # standard font definition
@@ -274,11 +268,10 @@ Style Subsubsection
   LabelType        Counter
   LabelCounter     subsubsection
   LabelString      "Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
-	RefPrefix        sub
+  RefPrefix        sub
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "The subsubsection as it appears in the table of contents/running headers"
+    LabelString   "Short Title|S"
+    Tooltip       "The subsubsection as it appears in the table of contents/running headers"
   EndArgument
 
   # standard font definition
@@ -313,8 +306,8 @@ Style BeginFrame
   LatexType        Command
   LatexName        lyxframeend{}\lyxframe
   Argument 1
-  	LabelString   "Frame Options"
-  	Tooltip       "Frame options (see beamer manual)"
+    LabelString   "Frame Options"
+    Tooltip       "Frame options (see beamer manual)"
   EndArgument
   Margin           First_Dynamic
   NextNoIndent     1
@@ -395,13 +388,12 @@ Style AgainFrame
   LatexType         Command
   LatexName         lyxframeend{}\lyxagainframe
   Argument 1
-  	LabelString   "Overlay Specifications"
-  	Shortcut      S
-  	Tooltip       "Overlay specifications for this list"
+    LabelString   "Overlay Specifications|S"
+    Tooltip       "Overlay specifications for this list"
   EndArgument
   Argument 2
-  	LabelString   "Frame Options"
-  	Tooltip       "Frame options (see beamer manual)"
+    LabelString   "Frame Options"
+    Tooltip       "Frame options (see beamer manual)"
   EndArgument
   Margin            First_Dynamic
   NextNoIndent      1
@@ -502,8 +494,8 @@ Style Column
   LabelSep         xx
   LabelString      "Start column (increase depth!), width:"
   Argument 1
-  	LabelString   "Column Options"
-  	Tooltip       "Column options (see beamer manual)"
+    LabelString   "Column Options"
+    Tooltip       "Column options (see beamer manual)"
   EndArgument
   LeftMargin       "Start column (increase depth!), width:xx"
 
@@ -531,8 +523,8 @@ Style Columns
   LeftMargin       "Columnsxx"
   
   Argument 1
-  	LabelString   "Columns Options"
-  	Tooltip       "Columns options (see beamer manual)"
+    LabelString   "Columns Options"
+    Tooltip       "Columns options (see beamer manual)"
   EndArgument
 
   ParSkip          0.5
@@ -619,8 +611,8 @@ Style Pause
   LatexName         pause
   Margin            First_Dynamic
   Argument 1
-  	LabelString   "Pause number"
-  	Tooltip       "Number of slide where the pause takes effect"
+    LabelString   "Pause number"
+    Tooltip       "Number of slide where the pause takes effect"
   EndArgument
   NextNoIndent      1
   ParSkip           0
@@ -849,9 +841,8 @@ Style Title
   Align            Center
   LabelType        No_Label
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "Short title which appears in the sidebar/header"
+    LabelString   "Short Title|S"
+    Tooltip       "Short title which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -885,9 +876,8 @@ Style Subtitle
   Align            Center
   LabelType        No_Label
   Argument 1
-  	LabelString   "Short Subtitle"
-  	Shortcut      S
-  	Tooltip       "Short subtitle which appears in the sidebar/header"
+    LabelString   "Short Subtitle|S"
+    Tooltip       "Short subtitle which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -913,9 +903,8 @@ Style Author
   Align            Center
   LabelType        No_Label
   Argument 1
-  	LabelString   "Short Author"
-  	Shortcut      S
-  	Tooltip       "Short author which appears in the sidebar/header"
+    LabelString   "Short Author|S"
+    Tooltip       "Short author which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -939,9 +928,8 @@ Style Institute
   Align            Center
   LabelType        No_Label
   Argument 1
-  	LabelString   "Short Institute"
-  	Shortcut      S
-  	Tooltip       "Short institute which appears in the sidebar/header"
+    LabelString   "Short Institute|S"
+    Tooltip       "Short institute which appears in the sidebar/header"
   EndArgument
 
   # standard font definition
@@ -986,9 +974,8 @@ Style Date
   Align            Center
   LabelType        No_Label
   Argument 1
-  	LabelString   "Short Date"
-  	Shortcut      S
-  	Tooltip       "Short date which appears in the sidebar/header"
+    LabelString   "Short Date|S"
+    Tooltip       "Short date which appears in the sidebar/header"
   EndArgument
 
   # standard font definition

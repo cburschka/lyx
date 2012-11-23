@@ -73,9 +73,8 @@ Style Title
   HTMLTag               h1
   HTMLTitle             true
   Argument 1
-  	LabelString   "Short Title"
-  	Shortcut      S
-  	Tooltip       "Short title which appears in the running headers"
+    LabelString   "Short Title|S"
+    Tooltip       "Short title which appears in the running headers"
   EndArgument
 End  
 
@@ -100,9 +99,8 @@ Style Affiliation
   CopyStyle             Author
   LatexName             affiliation
   Argument 1
-  	LabelString   "Short Affiliation"
-  	Shortcut      S
-  	Tooltip       "Short version of the affiliation"
+    LabelString   "Short Affiliation|S"
+    Tooltip       "Short version of the affiliation"
   EndArgument
 End
 

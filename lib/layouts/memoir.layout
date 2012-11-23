@@ -52,8 +52,7 @@ Input numreport.inc
 
 Style Part
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 	TocLevel 	     -1
@@ -63,8 +62,7 @@ End
 
 Style Chapter
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The chapter as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -78,8 +76,7 @@ End
 
 Style Chapter*
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The chapter as it appears in the table of contents"
 	EndArgument
 End
@@ -87,8 +84,7 @@ End
 
 Style Section
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The section as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -102,8 +98,7 @@ End
 
 Style Subsection
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subsection as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -117,8 +112,7 @@ End
 
 Style Subsubsection
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subsubsection as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -132,8 +126,7 @@ End
 
 Style Paragraph
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The paragraph as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -147,8 +140,7 @@ End
 
 Style Subparagraph
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subparagraph as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -203,8 +195,7 @@ Style Poemtitle
 	ParSep                0.4
 	Align                 center
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The poem title as it appears in the table of contents"
 	EndArgument
 	Argument 2
@@ -223,8 +214,7 @@ Style Poemtitle*
 	Category              Unnumbered
 	LatexName             PoemTitle*
 	Argument 1
-		LabelString   "Short Title (TOC)"
-		Shortcut      S
+		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The poem title as it appears in the table of contents"
 	EndArgument
 End

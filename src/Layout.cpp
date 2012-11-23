@@ -890,9 +890,6 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "tooltip") {
 			lex.next();
 			arg.tooltip = lex.getDocString();
-		} else if (tok == "shortcut") {
-			lex.next();
-			arg.shortcut = lex.getString();
 		} else if (tok == "requires") {
 			lex.next();
 			arg.requires = lex.getString();

@@ -28,8 +28,7 @@ Style Part
 	Align                 Center
 	Alignpossible         Center
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 	Font
@@ -58,8 +57,7 @@ Style Chapter
 	ParSep                0.8
 	Align                 Block
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
 	EndArgument
 	Font
@@ -87,8 +85,7 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 	EndArgument
 	Font

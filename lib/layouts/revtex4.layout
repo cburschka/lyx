@@ -156,7 +156,6 @@ Style Affiliation_(alternate)
 	LatexName             altaffiliation
 	Argument 1
 		LabelString   "Alternate Affiliation Option"
-		Shortcut      S
 		Tooltip       "Optional argument to the altaffiliation command"
 	EndArgument
 	LabelString           "Affiliation (alternate):"
@@ -205,8 +204,7 @@ Style Author_Email
 	ParbreakIsNewline     1
 	LatexName             email
 	Argument 1
-		LabelString   "Electronic Address Option"
-		Shortcut      S
+		LabelString   "Electronic Address Option|s"
 		Tooltip       "Optional argument to the email command"
 	EndArgument
 	LabelString           "Electronic Address:"
@@ -226,7 +224,6 @@ Style Author_URL
 	LatexName             homepage
 	Argument 1
 		LabelString   "Author URL Option"
-		Shortcut      S
 		Tooltip       "Optional argument to the homepage command"
 	EndArgument
 	LabelString           "URL:"

@@ -118,9 +118,8 @@ Style Author
   Category     FrontMatter
   InTitle      1
   Argument 1
-  	LabelString   "Short Author"
-  	Shortcut      S
-  	Tooltip       "A short version of the author name"
+    LabelString   "Short Author|S"
+    Tooltip       "A short version of the author name"
   EndArgument
   LatexName    author
   LabelSep     xxx
@@ -241,8 +240,8 @@ Style Appendix
   LatexName    appendix
   LabelString  "Appendix"
   Argument 1
-  	LabelString   "Appendix Title"
-  	Tooltip       "Optional title of the appendix"
+    LabelString   "Appendix Title"
+    Tooltip       "Optional title of the appendix"
  EndArgument
 End
 
@@ -276,8 +275,8 @@ Style Biography
   LaTeXName    IEEEbiography
   Category     BackMatter
   Argument 1
-  	LabelString   "Biography Photo"
-  	Tooltip       "Insert a photo to your biography"
+    LabelString   "Biography Photo"
+    Tooltip       "Insert a photo to your biography"
   EndArgument
   Align        Block
   TextFont
@@ -304,8 +303,8 @@ Style Proof
   LatexName    IEEEproof
   NextNoIndent 1
   Argument 1
-  	LabelString   "Alternative Proof String"
-  	Tooltip       "An alternative proof string"
+    LabelString   "Alternative Proof String"
+    Tooltip       "An alternative proof string"
   EndArgument
   LabelSep     xx
   ParIndent    MMM

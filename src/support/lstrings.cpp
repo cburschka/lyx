@@ -1063,6 +1063,20 @@ string const rsplit(string const & a, string & piece, char delim)
 }
 
 
+docstring const rsplit(docstring const & a, docstring & piece, char_type delim)
+{
+	docstring tmp;
+	size_t i = a.rfind(delim);
+	if (i != string::npos) { // delimiter was found
+		piece = a.substr(0, i);
+		tmp = a.substr(i + 1);
+	} else { // delimiter was not found
+		piece.erase();
+	}
+	return tmp;
+}
+
+
 docstring const rsplit(docstring const & a, char_type delim)
 {
 	docstring tmp;

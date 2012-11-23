@@ -77,8 +77,7 @@ Style Chapter
 	Align		Block
 	RefPrefix chap
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
 	EndArgument
 	Font
@@ -105,8 +104,7 @@ Style Section
 	Align		Block
 	RefPrefix sec
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 	EndArgument
 	Font

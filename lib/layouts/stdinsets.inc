@@ -470,8 +470,7 @@ End
 
 InsetLayout Caption
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	HTMLStyle

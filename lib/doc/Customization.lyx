@@ -10336,7 +10336,7 @@ Argument
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1353680612
+\change_inserted -712698321 1353691469
 \begin_inset Flex Code
 status collapsed
 
@@ -10363,7 +10363,43 @@ status collapsed
 \end_inset
 
  The string that will appear both in the menu (to insert this argument)
- and on the argument inset button
+ and on the argument inset button.
+ For the menu, you can define an accelerator by appending the respective
+ character to the string, divided by 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353691482
+\begin_inset Quotes eld
+\end_inset
+
+Short Title|S
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
@@ -10394,35 +10430,6 @@ status collapsed
 
  A longer explanatory text that appears in the tooltip when hovering over
  the argument inset.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted -712698321 1353680719
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1353680677
-Shortcut
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1353680681
-[character]
-\end_layout
-
-\end_inset
-
- An accelerator for quick access in the menu.
 \end_layout
 
 \begin_layout Itemize

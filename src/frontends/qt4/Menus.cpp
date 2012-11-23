@@ -1566,8 +1566,6 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 	for (; lait != laend; ++lait) {
 		Layout::latexarg arg = (*lait).second;
 		QString item = toqstr(translateIfPossible(arg.labelstring));
-		if (!arg.shortcut.empty())
-			item += "|" + toqstr(arg.shortcut);
 		if (switcharg)
 			add(MenuItem(MenuItem::Command, item,
 				     FuncRequest(LFUN_INSET_MODIFY,

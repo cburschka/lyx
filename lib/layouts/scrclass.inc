@@ -111,8 +111,7 @@ Style Addpart
 	CopyStyle             Part*
 	LatexName             addpart
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
 End
@@ -122,8 +121,7 @@ Style Addchap
 	CopyStyle             Chapter*
 	LatexName             addchap
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
 	EndArgument
 End
@@ -133,8 +131,7 @@ Style Addsec
 	CopyStyle             Section*
 	LatexName             addsec
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 	EndArgument
 End
@@ -276,8 +273,7 @@ Style Captionabove
 	LabelType             Sensitive
 	LabelString           "Senseless!"
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	LabelFont
@@ -300,8 +296,7 @@ Style Captionbelow
 	LabelType             Sensitive
 	LabelString           "Senseless!"
 	Argument 1
-		LabelString   "Short Title"
-		Shortcut      S
+		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
 	LabelFont

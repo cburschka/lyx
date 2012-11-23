@@ -94,7 +94,6 @@ public:
 		docstring ldelim;
 		docstring rdelim;
 		docstring tooltip;
-		std::string shortcut;
 		std::string requires;
 	};
 	///

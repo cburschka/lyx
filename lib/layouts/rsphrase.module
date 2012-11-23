@@ -45,8 +45,7 @@ Style "Safety phrase"
 	Category		MainText
 	NextNoIndent		1
 	Argument 1
-		LabelString   "Safety Phrase Option"
-		Shortcut      S
+		LabelString   "Safety Phrase Option|S"
 		Tooltip       "Optional argument to the rsphrase command"
 	EndArgument
 	KeepEmpty		1
