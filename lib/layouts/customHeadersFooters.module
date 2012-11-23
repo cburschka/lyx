@@ -17,8 +17,8 @@ Style "Left Header"
   LatexName	        lhead
   LabelString		"Left Header:"
   Argument even
-  	LabelString   "Even Header"
-  	Tooltip       "Alternative text for the even header"
+    LabelString		"Even Header"
+    Tooltip		"Alternative text for the even header"
   EndArgument
   KeepEmpty		1
   ParSkip		0
@@ -26,7 +26,7 @@ Style "Left Header"
   BottomSep		0
   ParSep		0
   LabelFont
-	  Color		Green
+    Color		Green
   EndFont
 End
 
