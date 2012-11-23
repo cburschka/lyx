@@ -526,9 +526,14 @@ Style Columns
   LabelType        Static
   LabelSep         xx
 
-  LatexName        columns}%{
+  LatexName        columns
   LabelString      "Columns"
   LeftMargin       "Columnsxx"
+  
+  Argument 1
+  	LabelString   "Columns Options"
+  	Tooltip       "Columns options (see beamer manual)"
+  EndArgument
 
   ParSkip          0.5
   TopSep           1
