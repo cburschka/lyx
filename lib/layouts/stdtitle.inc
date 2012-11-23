@@ -8,7 +8,7 @@
 # a document, like title, author and such.
 
 
-Format 40
+Format 41
 
 # CSS for the TOC
 AddToHTMLStyles

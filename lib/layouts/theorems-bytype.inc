@@ -21,7 +21,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 40
+Format 41
 
 Style Theorem
 	Category              Theorem
