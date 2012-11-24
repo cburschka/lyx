@@ -95,9 +95,10 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 	Layout::LaTeXArgMap::const_iterator const lait =
 			args.find(convert<unsigned int>(name_));
 	if (lait != args.end()) {
-		docstring label;
-		support::rsplit(translateIfPossible((*lait).second.labelstring), label, '|');
-		labelstring_ = label;
+		docstring label = translateIfPossible((*lait).second.labelstring);
+		docstring striplabel;
+		support::rsplit(label, striplabel, '|');
+		labelstring_ = striplabel.empty() ? label: striplabel;
 		tooltip_ = translateIfPossible((*lait).second.tooltip);
 	} else {
 		labelstring_ = _("Unknown Argument");
