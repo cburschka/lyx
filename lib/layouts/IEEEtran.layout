@@ -38,7 +38,7 @@ Style Standard
   ParIndent	MM
   ParSkip	0.4
   Align		Block
-  AlignPossible Block, Left, Right, Center
+  AlignPossible	Block, Left, Right, Center
   LabelType	No_Label
 End
 
@@ -278,7 +278,7 @@ End
 Style Biography_without_photo
   CopyStyle	Biography
   LaTeXName	IEEEbiographynophoto
-  OptionalArgs 0
+  OptionalArgs	0
 End
 
 Style BiographyNoPhoto
@@ -301,7 +301,7 @@ Style Proof
   BottomSep	0.7
   ParSep	0.3
   Align		Block
-  AlignPossible Block, Left
+  AlignPossible	Block, Left
   LabelType	Static
   LabelString	"Proof."
   EndLabelType	Filled_Box
