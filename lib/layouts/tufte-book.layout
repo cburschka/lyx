@@ -77,8 +77,8 @@ Style Chapter
 	Align		Block
 	RefPrefix chap
 	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "The chapter as it appears in the table of contents/running headers"
+	  LabelString	"Short Title|S"
+	  Tooltip	"The chapter as it appears in the table of contents/running headers"
 	EndArgument
 	Font
 	  Series	Bold
@@ -104,8 +104,8 @@ Style Section
 	Align		Block
 	RefPrefix sec
 	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "The section as it appears in the table of contents/running headers"
+	  LabelString	"Short Title|S"
+	  Tooltip	"The section as it appears in the table of contents/running headers"
 	EndArgument
 	Font
 	  Series	Bold
@@ -246,10 +246,10 @@ Float
 End
 
 Style Bibliography
-	TopSep                4
-	LabelString           "Bibliography"
+	TopSep		4
+	LabelString	"Bibliography"
 	LabelFont
-	  Series              Bold
-	  Size                Huge
+	  Series	Bold
+	  Size		Huge
 	EndFont
 End
