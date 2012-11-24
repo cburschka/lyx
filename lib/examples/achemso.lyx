@@ -1,45 +1,13 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 446
 \begin_document
 \begin_header
 \textclass achemso
 \begin_preamble
-% Each author should be given as a separate \author command.
-%
-% Corresponding authors should have an e-mail given after the author
-% name as an \email command.
-%
-% The affiliation of authors is given after the authors; each
-% \affiliation command applies to all preceding authors not already
-% assigned an affiliation.
-%
-% The affiliation takes an option argument for the short name.  This
-% will typically be something like "University of Somewhere".
-%
-% Notice that \alsoaffiliation is used when one (or more) authors work
-% at multiple institutions, while \altaffiliation is intended for previous
-% addresses (or other notes). Only \affiliation applies to multiple
-% authors: both \alsoaffiliation and \altaffiliation are set on a per
-% author basis.
-
-\author{Author Person}
-\author{Second Bloke}
-\email{second.bloke@some.place}
-\affiliation[University of Sometown]{University of Somewhere, Sometown, USA}
-\altaffiliation{Previous address: Minute University, Nowhereville, USA}
-\author{Indus Trialguy}
-\email{i.trialguy@sponsor.co}
-\affiliation[SponsoCo]{Research Department, SponsorCo, BigCity, USA}
-\alsoaffiliation{University of Somewhere, Sometown, USA}
-
-% A short title can be given as a *suggestion* for running headers.
-\title[\texttt{achemso} demonstration]
-{A demonstration of the \textsf{achemso} \LaTeX class}
-
-% Some journals require a list of abbreviations or keywords to be
-% supplied.
-\abbreviations{IR,NMR,UV}
-\keywords{American Chemical Society, \LaTeX}
+% If issues arise when submitting your manuscript, you may want to
+% un-comment the next line. This provides information on the
+% version of every file you have used.
+%\listfiles
 \end_preamble
 \options journal=jacsat,manuscript=article
 \use_default_options false
@@ -54,13 +22,13 @@ theorems-ams
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -71,15 +39,21 @@ theorems-ams
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -137,13 +111,80 @@ status open
 \series bold
 Note:
 \series default
- The author, affiliation, email addresses, and the document title have to
- be set up in the LaTeX preamble of this document!
+ The journal where you want to submit is specified in the document class
+ options of this file.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Title
+A demonstration of the achemso LaTeX class
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\family sans
+achemso
+\family default
+ demonstration
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A footnote for the title
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Andrew N.
+ Other
+\end_layout
+
+\begin_layout Alt Affiliation
+A shared footnote
+\end_layout
+
+\begin_layout Author
+Fred T.
+ Secondauthor
+\end_layout
+
+\begin_layout Affiliation
+Current address: Some other place, Othertöwn, Germany
+\end_layout
+
+\begin_layout Author
+I.
+ Ken Groupleader
+\end_layout
+
+\begin_layout Affiliation
+A shared footnote
+\end_layout
+
+\begin_layout Email
+i.k.groupleader@unknown.uu
+\end_layout
+
+\begin_layout Phone
++123 (0)123 4445556
+\end_layout
+
+\begin_layout Fax
++123 (0)123 4445557
 \end_layout
 
 \begin_layout Standard
@@ -151,17 +192,69 @@ Note:
 status open
 
 \begin_layout Plain Layout
+The affiliation of authors is given after the authors; each 
+\family sans
+Affiliation
+\family default
+ applies to all preceding authors not already assigned an affiliation.
+\end_layout
 
-\series bold
-Note:
-\series default
- The journal where you want to sumit is specified in the document class
- options of this file.
+\begin_layout Plain Layout
+
+\family sans
+Altaffiliation
+\family default
+ should be used for new address, etc.
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+Alsoaffiliation
+\family default
+ is used on a per author basis when authors are associated with multiple
+ institutions.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Affiliation
+Department of Chemistry, Unknown University, Unknown Town
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Unknown University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Also Affiliation
+Department of Chemistry, Second University, Nearby Town
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Second University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abbreviations
+IR,NMR,UV
+\end_layout
+
+\begin_layout Keywords
+American Chemical Society, LaTeX
 \end_layout
 
 \begin_layout Abstract
@@ -413,64 +506,41 @@ H2SO4
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-acknowledgement
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Optional
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Acknowledgement
 Acknowledgments go here.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-suppinfo
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Optional
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout SupplementalInfo
 Supplemental informations go here.
+\end_layout
+
+\begin_layout TOC entry
+Some journals require a graphical entry for the Table of Contents.
+ This should be laid out ``print ready'' so that the sizing of the text
+ is correct.
+\end_layout
+
+\begin_layout TOC entry
+The surrounding frame is 9
+\begin_inset space \thinspace{}
+\end_inset
+
+cm by 3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm, which is the maximum permitted for 
+\emph on
+Journal of the American Chemical Society
+\emph default
+ graphical table of content entries.
+ The box will not resize if the content is too big: instead it will overflow
+ the edge of the box.
+\end_layout
+
+\begin_layout TOC entry
+This box and the associated title will always be printed on a separate page
+ at the end of the document.
 \end_layout
 
 \begin_layout Standard
