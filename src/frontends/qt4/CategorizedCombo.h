@@ -22,6 +22,9 @@
 #include <QComboBox>
 
 
+namespace lyx {
+namespace frontend {
+
 class CCItemDelegate;
 
 /**
@@ -71,5 +74,8 @@ private:
 	Private * const d;
 };
 
+
+} // namespace frontend
+} // namespace lyx
 
 #endif // LYX_CATEGORIZEDCOMBO_H

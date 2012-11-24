@@ -34,9 +34,10 @@
 #include <QStandardItemModel>
 #include <QTextFrame>
 
-using namespace std;
-using namespace lyx;
 using namespace lyx::support;
+
+namespace lyx {
+namespace frontend {
 
 
 class CCItemDelegate : public QItemDelegate {
@@ -128,13 +129,13 @@ struct CategorizedCombo::Private
 };
 
 
-static QString category(QAbstractItemModel const & model, int row)
+static QString categoryCC(QAbstractItemModel const & model, int row)
 {
 	return model.data(model.index(row, 2), Qt::DisplayRole).toString();
 }
 
 
-static int headerHeight(QStyleOptionViewItem const & opt)
+static int headerHeightCC(QStyleOptionViewItem const & opt)
 {
 	return opt.fontMetrics.height();
 }
@@ -148,10 +149,10 @@ void CCItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & opti
 	// default background
 	painter->fillRect(opt.rect, opt.palette.color(QPalette::Base));
 
-	QString cat = category(*index.model(), index.row());
+	QString cat = categoryCC(*index.model(), index.row());
 
 	// not the same as in the previous line?
-	if (index.row() == 0 || cat != category(*index.model(), index.row() - 1)) {
+	if (index.row() == 0 || cat != categoryCC(*index.model(), index.row() - 1)) {
 		painter->save();
 
 		// draw unselected background
@@ -162,10 +163,10 @@ void CCItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & opti
 
 		// draw category header
 		drawCategoryHeader(painter, opt, 
-			category(*index.model(), index.row()));
+			categoryCC(*index.model(), index.row()));
 
 		// move rect down below header
-		opt.rect.setTop(opt.rect.top() + headerHeight(opt));
+		opt.rect.setTop(opt.rect.top() + headerHeightCC(opt));
 
 		painter->restore();
 	}
@@ -216,9 +217,9 @@ QSize CCItemDelegate::sizeHint(QStyleOptionViewItem const & opt,
 	/// So we tweak this value accordingly. It's not nice, but the
 	/// only possible way it seems.
 	// Add space for the category headers here
-	QString cat = category(*index.model(), index.row());
-	if (index.row() == 0 || cat != category(*index.model(), index.row() - 1)) {
-		size.setHeight(size.height() + headerHeight(opt));
+	QString cat = categoryCC(*index.model(), index.row());
+	if (index.row() == 0 || cat != categoryCC(*index.model(), index.row() - 1)) {
+		size.setHeight(size.height() + headerHeightCC(opt));
 	}
 
 	return size;
@@ -289,7 +290,7 @@ QString CCItemDelegate::underlineFilter(QString const & s) const
 }
 
 
-static QString charFilterRegExp(QString const & filter)
+static QString charFilterRegExpCC(QString const & filter)
 {
 	QString re;
 	for (int i = 0; i < filter.length(); ++i) {
@@ -314,7 +315,7 @@ void CategorizedCombo::Private::setFilter(QString const & s)
 		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
 
 	filter_ = s;
-	filterModel_->setFilterRegExp(charFilterRegExp(filter_));
+	filterModel_->setFilterRegExp(charFilterRegExpCC(filter_));
 	countCategories();
 	
 	// restore old selection
@@ -582,6 +583,9 @@ QString const & CategorizedCombo::filter() const
 {
 	return d->filter_;
 }
+
+}  // namespace frontend
+}  // namespace lyx
 
 
 #include "moc_CategorizedCombo.cpp"
