@@ -142,6 +142,7 @@ End
 \author 5863208 "ab" 
 \author 1082167584 "Kayvan Sylvan" kayvan@sylvan.com
 \author 1414654397 "Richard Heck" 
+\author 2090807402 "usti" 
 \end_header
 
 \begin_body
@@ -10458,7 +10459,15 @@ status collapsed
 
 \end_inset
 
- Declare if this is a mandatory or an optional argument.
+ Declare if this is a mandatory 
+\change_inserted 2090807402 1353765594
+(1) 
+\change_inserted -712698321 1353680874
+or an optional 
+\change_inserted 2090807402 1353765599
+(0) 
+\change_inserted -712698321 1353680874
+argument.
  Mandatory arguments will be output empty if not given, while optional arguments
  will not be output at all.
  By default, mandatory arguments are delimited by 
