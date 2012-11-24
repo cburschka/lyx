@@ -1,15 +1,20 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[beamer,amssymb.sty,hyperref.sty,pgf.sty,xcolor.sty,xxcolor.sty]{Beamer}
 #  \DeclareCategory{Presentations}
-# Author : Till Tantau <tantau@users.sourceforge.net>
+# Original Author: Till Tantau <tantau@users.sourceforge.net>
+# Revised and extended by Jürgen Spitzmüller <spitz@lyx.org>, Uwe Stöhr <uwestoehr@lyx.org>,
+#   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
-# $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
+
+Format 41
+
+#
+# GLOBAL SETTINGS
+#
 
 # Includes
-Format 41
 Input stdcounters.inc
 Input stdinsets.inc
-
 
 # General textclass parameters
 Columns            1
@@ -30,8 +35,24 @@ DefaultFont
   Color            None
 EndFont
 
+# To give users the choice of a title frame with and without
+# head-/footline, we define our own maketitle command
+TitleLaTeXName makebeamertitle
+AddToPreamble
+  % this default might be overridden by plain title style
+  \newcommand\makebeamertitle{\frame{\maketitle}}%
+  \AtBeginDocument{%
+    \let\origtableofcontents=\tableofcontents
+    \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+    \def\gobbletableofcontents#1{\origtableofcontents}
+  }
+EndPreamble
 
-# Standard style definition
+
+#
+# STANDARD STYLE
+#
+
 Style Standard
   Category         MainText
   Margin           Static
@@ -44,16 +65,19 @@ Style Standard
   LabelType        No_Label
 End
 
-# List section
-# Itemize style definition
+
+#
+# LISTS
+#
+
 Style Itemize
   Category         List
   Margin           Static
   LatexType        Item_Environment
   LatexName        itemize
   Argument 1
-    LabelString   "Overlay Specifications|S"
-    Tooltip       "Overlay specifications for this list"
+    LabelString    "Overlay Specifications|S"
+    Tooltip        "Overlay specifications for this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MMN
@@ -66,19 +90,18 @@ Style Itemize
   LabelType        Itemize
 End
 
-# Enumerate style definition
 Style Enumerate
   Category         List
   Margin           Static
   LatexType        Item_Environment
   LatexName        enumerate
   Argument 1
-    LabelString   "Overlay Specifications|S"
-    Tooltip       "Overlay specifications for this list"
+    LabelString    "Overlay Specifications|S"
+    Tooltip        "Overlay specifications for this list"
   EndArgument
   Argument 2
-    LabelString   "Mini template"
-    Tooltip       "Mini template for this List"
+    LabelString    "Mini template"
+    Tooltip        "Mini template for this List"
   EndArgument
   NextNoIndent     1
   LeftMargin       MMN
@@ -93,19 +116,18 @@ Style Enumerate
   RefPrefix        enu
 End
 
-# Description style definition
 Style Description
   Category         List
   Margin           First_Dynamic
   LatexType        Item_environment
   LatexName        description
   Argument 1
-    LabelString   "Overlay Specifications|S"
-    Tooltip       "Overlay specifications for this list"
+    LabelString    "Overlay Specifications|S"
+    Tooltip        "Overlay specifications for this list"
   EndArgument
   Argument 2
-    LabelString   "Longest label|s"
-    Tooltip       "The longest label in this list"
+    LabelString    "Longest label|s"
+    Tooltip        "The longest label in this list"
   EndArgument
   NextNoIndent     1
   LeftMargin       MM
@@ -122,16 +144,19 @@ Style Description
   EndFont
 End
 
-# Sectioning section
-# Part style definition
+
+#
+# SECTIONING
+#
+
 Style Part
   Category         Section
   Margin           Dynamic
   LatexType        Command
   LatexName        part
   Argument 1
-    LabelString   "Short Title|S"
-    Tooltip       "The part as it appears in the table of contents/running headers"
+    LabelString    "Short Title|S"
+    Tooltip        "The part as it appears in the table of contents/running headers"
   EndArgument
   NeedProtect      1
   NextNoIndent     1
@@ -144,21 +169,17 @@ Style Part
   LabelType        Static
   LabelString      "Part"
   RefPrefix        part
-
-  # standard font definition
   Font 
     Family         Roman
     Series         Bold
     Size           Huge
   EndFont
-
   LabelFont
     Color          Latex
   EndFont
   TocLevel 0
 End
 
-# Section style definition
 Style Section
   Category         Section
   Margin           First_Dynamic
@@ -177,16 +198,14 @@ Style Section
   LabelString      "Section \arabic{section}"
   RefPrefix        sec
   Argument 1
-    LabelString   "Short Title|S"
-    Tooltip       "The section as it appears in the table of contents/running headers"
+    LabelString    "Short Title|S"
+    Tooltip        "The section as it appears in the table of contents/running headers"
   EndArgument
-
   Font 
     Family         Roman
     Series         Bold
     Size           huge
   EndFont
-
   LabelFont 
     Color          latex
   EndFont
@@ -194,7 +213,6 @@ Style Section
   TocLevel         1
 End
 
-# Section* style definition
 Style Section*
   CopyStyle        Section
   Category         Unnumbered
@@ -204,7 +222,6 @@ Style Section*
   ResetArgs        1
 End
 
-# Subsection style definition
 Style Subsection
   Category         Section
   Margin           First_Dynamic
@@ -223,17 +240,14 @@ Style Subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
   RefPrefix        sub
   Argument 1
-    LabelString   "Short Title|S"
-    Tooltip       "The subsection as it appears in the table of contents/running headers"
+    LabelString    "Short Title|S"
+    Tooltip        "The subsection as it appears in the table of contents/running headers"
   EndArgument
-
-  # standard font definition
   Font 
     Family         Roman
     Series         Bold
     Size           larger
   EndFont
-
   LabelFont 
     Color          latex
   EndFont
@@ -241,7 +255,6 @@ Style Subsection
   TocLevel 2
 End
 
-# Subsection* style definition
 Style Subsection*
   CopyStyle        Subsection
   Category         Unnumbered
@@ -251,7 +264,6 @@ Style Subsection*
   ResetArgs        1
 End
 
-# Subsubsection style definition
 Style Subsubsection
   Category         Section
   Margin           First_Dynamic
@@ -270,17 +282,14 @@ Style Subsubsection
   LabelString      "Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
   RefPrefix        sub
   Argument 1
-    LabelString   "Short Title|S"
-    Tooltip       "The subsubsection as it appears in the table of contents/running headers"
+    LabelString    "Short Title|S"
+    Tooltip        "The subsubsection as it appears in the table of contents/running headers"
   EndArgument
-
-  # standard font definition
   Font 
     Family         Roman
     Series         Bold
     Size           large
   EndFont
-
   LabelFont 
     Color          latex
   EndFont
@@ -288,7 +297,6 @@ Style Subsubsection
   TocLevel 2
 End
 
-# Subsubsection* style definition
 Style Subsubsection*
   CopyStyle        Subsubsection
   Category         Unnumbered
@@ -298,7 +306,11 @@ Style Subsubsection*
   ResetArgs        1
 End
 
-# Frame control definition
+
+#
+# FRAMES
+#
+
 Style BeginFrame
   Category         Frames
   TocLevel         4
@@ -306,8 +318,8 @@ Style BeginFrame
   LatexType        Command
   LatexName        lyxframeend{}\lyxframe
   Argument 1
-    LabelString   "Frame Options"
-    Tooltip       "Frame options (see beamer manual)"
+    LabelString    "Frame Options"
+    Tooltip        "Frame options (see beamer manual)"
   EndArgument
   Margin           First_Dynamic
   NextNoIndent     1
@@ -321,18 +333,15 @@ Style BeginFrame
   LeftMargin       M
   LabelSep         xx
   LabelString      "Frame"
-
   Font
     Series         Bold
     Size           Largest
     Color          Blue
   EndFont
-
   LabelFont 
     Family         Roman
     Color          latex
   EndFont
-
   Preamble
     \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
     \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
@@ -362,18 +371,15 @@ Style BeginPlainFrame
   LeftMargin        M
   LabelSep          xx
   LabelString       "Frame (no head/foot/sidebars)"
-
   Font
     Series          Bold
     Size            Largest
     Color           Blue
   EndFont
-
   LabelFont 
     Family          Roman
     Color           latex
   EndFont
-
   Preamble
     \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
     \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
@@ -388,12 +394,12 @@ Style AgainFrame
   LatexType         Command
   LatexName         lyxframeend{}\lyxagainframe
   Argument 1
-    LabelString   "Overlay Specifications|S"
-    Tooltip       "Overlay specifications for this list"
+    LabelString     "Overlay Specifications|S"
+    Tooltip         "Overlay specifications for this list"
   EndArgument
   Argument 2
-    LabelString   "Frame Options"
-    Tooltip       "Frame options (see beamer manual)"
+    LabelString     "Frame Options"
+    Tooltip         "Frame options (see beamer manual)"
   EndArgument
   Margin            First_Dynamic
   NextNoIndent      1
@@ -407,18 +413,15 @@ Style AgainFrame
   LeftMargin        M
   LabelSep          xx
   LabelString       "Again frame with label"
-
   Font
     Color           latex
   EndFont
-
   LabelFont 
     Family          Roman
     Color           latex
     Series          Bold
     Size            Largest
   EndFont
-
   Preamble
     \long\def\lyxagainframe#1{\@lyxagainframe#1\@lyxframestop}%
     \def\@lyxagainframe{\@ifnextchar<{\@@lyxagainframe}{\@@lyxagainframe<*>}}%
@@ -443,20 +446,17 @@ Style EndFrame
   LabelBottomSep    0
   LeftMargin        MMMMM
   LabelString       "________________________________"
-
   LabelFont 
     Family          typewriter
     Series          Medium
     Size            Normal
     Color           latex
   EndFont
-
   Preamble
     \def\lyxframeend{} % In case there is a superfluous frame end
   EndPreamble
 End
 
-# Frame decoration section
 Style FrameSubtitle
   Category         Frames
   Margin           Static
@@ -469,15 +469,16 @@ Style FrameSubtitle
   ParSep           1
   Align            Center
   LabelType        No_Label
-
-  # standard font definition
   Font 
     Series         Bold
     Color          Blue
   EndFont
-
 End
 
+
+#
+# COLUMS
+#
 
 Style Column
   Category         Columns
@@ -494,18 +495,15 @@ Style Column
   LabelSep         xx
   LabelString      "Start column (increase depth!), width:"
   Argument 1
-    LabelString   "Column Options"
-    Tooltip       "Column options (see beamer manual)"
+    LabelString    "Column Options"
+    Tooltip        "Column options (see beamer manual)"
   EndArgument
   LeftMargin       "Start column (increase depth!), width:xx"
-
-  # standard font definition
   LabelFont 
     Family         Roman
     Color          latex
   EndFont
 End
-
 
 Style Columns
   Category         Columns
@@ -517,24 +515,17 @@ Style Columns
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        columns
   LabelString      "Columns"
   LeftMargin       "Columnsxx"
-  
   Argument 1
-    LabelString   "Columns Options"
-    Tooltip       "Columns options (see beamer manual)"
+    LabelString    "Columns Options"
+    Tooltip        "Columns options (see beamer manual)"
   EndArgument
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          latex
@@ -551,21 +542,16 @@ Style ColumnsCenterAligned
   Align            left
   LabelType        Static
   LabelSep         xx
-
   LatexName        centercolumns}%{
   LabelString      "Columns (center aligned)"
   LeftMargin       "Columns (center aligned)xx"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
   Preamble
   \newenvironment{centercolumns}{\begin{columns}[c]}{\end{columns}}
   EndPreamble
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          latex
@@ -582,54 +568,52 @@ Style ColumnsTopAligned
   Align            left
   LabelType        Static
   LabelSep         xx
-
   LatexName        topcolumns}%{
   LabelString      "Columns (top aligned)"
   LeftMargin       "Columns (top aligned)xx"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
   Preamble
   \newenvironment{topcolumns}{\begin{columns}[t]}{\end{columns}}
   EndPreamble
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          latex
   EndFont
 End
 
-# Frame progression section
-Style Pause
-  Category          Overlays
-  KeepEmpty         1
-  LatexType         Command
-  LatexName         pause
-  Margin            First_Dynamic
-  Argument 1
-    LabelString   "Pause number"
-    Tooltip       "Number of slide where the pause takes effect"
-  EndArgument
-  NextNoIndent      1
-  ParSkip           0
-  TopSep            0
-  BottomSep         0.25
-  ParSep            0
-  Align             Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        MMMMM
-  LabelString       "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-  LabelFont 
-    Family          typewriter
-    Series          Medium
-    Size            Normal
-    Color           latex
+#
+# OVERLAYS
+#
+
+Style Pause
+  Category         Overlays
+  KeepEmpty        1
+  LatexType        Command
+  LatexName        pause
+  Margin           First_Dynamic
+  Argument 1
+    LabelString    "Pause number"
+    Tooltip        "Number of slide where the pause takes effect"
+  EndArgument
+  NextNoIndent     1
+  ParSkip          0
+  TopSep           0
+  BottomSep        0.25
+  ParSep           0
+  Align            Center
+  LabelType        Static
+  LabelBottomSep   0
+  LeftMargin       MMMMM
+  LabelString      "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+  LabelFont
+    Family         typewriter
+    Series         Medium
+    Size           Normal
+    Color          latex
   EndFont
 End
 
@@ -642,18 +626,13 @@ Style Overprint
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        overprint
   LabelString      "Overprint"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
   KeepEmpty        1
-
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          latex
@@ -669,17 +648,12 @@ Style OverlayArea
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        overlayarea
   LabelString      "Overlayarea"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          latex
@@ -694,18 +668,13 @@ Style Uncover
   ParIndent        MM
   Align            Left
   LabelType        Static
-
   LatexName        uncoverenv}%{
   LabelSep         xx
   LabelString      "Uncovered on slides"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   LabelFont 
     Family         Roman
     Color          Latex
@@ -720,25 +689,24 @@ Style Only
   ParIndent        MM
   Align            Left
   LabelType        Static
-
   LatexName        onlyenv}%{
   LabelSep         xx
   LabelString      "Only on slides"
-
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   LabelFont
     Family         Roman
     Color          Latex
   EndFont
 End
 
-# Blocks section
+
+#
+# BLOCKS
+#
+
 Style Block
   Category         Blocks
   Margin           Dynamic
@@ -748,17 +716,12 @@ Style Block
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        block
-  LabelString      "Block:"
-  
+  LabelString      "Block:"  
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   LabelFont
     Family         Roman
     Color          latex
@@ -774,21 +737,15 @@ Style ExampleBlock
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        exampleblock
   LabelString      "Example Block:"
-  
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   Font
     Color          green
   EndFont
-
   LabelFont 
     Family         Roman
     Color          latex
@@ -804,29 +761,26 @@ Style AlertBlock
   Align            Left
   LabelType        Static
   LabelSep         xx
-
   LatexName        alertblock
   LabelString      "Alert Block:"
-  
   ParSkip          0.5
   TopSep           1
   BottomSep        1
   ParSep           0
-
-  # font & label font definition
-
   Font
     Color          red
   EndFont
-
   LabelFont 
     Family         Roman
     Color          latex
   EndFont
 End
 
-# Title slide data section
-# Title style definition
+
+#
+# TITLING
+#
+
 Style Title
   Category         Titling
   Margin           Static
@@ -844,14 +798,11 @@ Style Title
     LabelString   "Short Title|S"
     Tooltip       "Short title which appears in the sidebar/header"
   EndArgument
-
-  # standard font definition
   Font 
     Size           Huge
     Series         Bold
     Color          Blue
   EndFont
-
 End
 
 Style Title_(Plain_Frame)
@@ -879,17 +830,13 @@ Style Subtitle
     LabelString   "Short Subtitle|S"
     Tooltip       "Short subtitle which appears in the sidebar/header"
   EndArgument
-
-  # standard font definition
   Font 
     Size           Large
     Series         Bold
     Color          Blue
   EndFont
-
 End
 
-# Author style definition
 Style Author
   Category         Titling
   Margin           Static
@@ -906,13 +853,10 @@ Style Author
     LabelString   "Short Author|S"
     Tooltip       "Short author which appears in the sidebar/header"
   EndArgument
-
-  # standard font definition
   Font 
     Size           Largest
     Color          Blue
   EndFont
-
 End
 
 Style Institute
@@ -931,8 +875,6 @@ Style Institute
     LabelString   "Short Institute|S"
     Tooltip       "Short institute which appears in the sidebar/header"
   EndArgument
-
-  # standard font definition
   Font 
     Size           Large
     Color          Blue
@@ -960,7 +902,6 @@ InsetLayout "Flex:InstituteMark"
   EndFont
 End
 
-# Date style definition
 Style Date
   Category         Titling
   Margin           Dynamic
@@ -977,16 +918,37 @@ Style Date
     LabelString   "Short Date|S"
     Tooltip       "Short date which appears in the sidebar/header"
   EndArgument
-
-  # standard font definition
   Font 
     Size           Largest
     Color          Blue
   EndFont
 End
 
-# Titles & bibliography section
-# Bibliography style definition
+Style TitleGraphic
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        titlegraphic
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Font 
+    Size           Huge
+    Series         Bold
+    Color          Blue
+  EndFont
+End
+
+
+#
+# BACK MATTER
+#
+
 Style Bibliography
   Category         BackMatter
   Margin           First_Dynamic
@@ -1003,13 +965,16 @@ Style Bibliography
   LabelType        Bibliography
   LabelString      "References"
   LabelBottomSep   0.7
-
-  # label font definition
   LabelFont 
     Series         Bold
     Size           Larger
   EndFont
 End
+
+
+#
+# QUOTATION
+#
 
 Style Quotation
   Category         MainText
@@ -1029,7 +994,6 @@ Style Quotation
   AlignPossible    Block, Left, Right, Center
 End
 
-
 Style Quote
   Category         MainText
   Margin           Static
@@ -1045,7 +1009,6 @@ Style Quote
   AlignPossible    Block, Left, Right, Center
   LabelType        No_Label
 End
-
 
 Style Verse
   # LaTeX type is first dynamic because of LaTeX implementation.
@@ -1067,30 +1030,10 @@ Style Verse
 End
 
 
-Style TitleGraphic
-  Category         Titling
-  Margin           Static
-  LatexType        Command
-  InTitle          1
-  LatexName        titlegraphic
-  ParSkip          0.4
-  ItemSep          0
-  TopSep           0
-  BottomSep        1
-  ParSep           1
-  Align            Center
-  LabelType        No_Label
+#
+# THEOREMS AND SUCH
+#
 
-  # standard font definition
-  Font 
-    Size           Huge
-    Series         Bold
-    Color          Blue
-  EndFont
-End
-
-
-# Theorems and such section
 Style Corollary
    Category        Theorems
    Margin          First_Dynamic
@@ -1100,18 +1043,13 @@ Style Corollary
    Align           Left
    LabelType       Static
    LabelSep        xx
-
    LatexName       corollary}%{
    LabelString     "Corollary."
- 
    ParSkip         0.5
    TopSep          1
    BottomSep       1
    ParSep          0
    KeepEmpty       1
- 
-   # font & label font definition
- 
    LabelFont
      Series        Bold
      Color         Blue
@@ -1135,7 +1073,6 @@ Style Example
   CopyStyle        Corollary
   LatexName        example}%{
   LabelString      "Example."
-
   LabelFont
     Series         Bold
     Color          Green
@@ -1147,7 +1084,6 @@ Style Examples
   LatexName        examples}%{
   LabelString      "Examples."
 End
-
 
 Style Fact
   CopyStyle        Corollary
@@ -1167,8 +1103,11 @@ Style Theorem
   LabelString      "Theorem."
 End
 
-# Misc. section
-# Separator style definition
+
+#
+# MISC.
+#
+
 Style Separator
   Category         MainText
   LatexType        Paragraph
@@ -1185,7 +1124,6 @@ Style Separator
   LabelBottomSep   0
   LabelString      "___"
   KeepEmpty        1
-
   LabelFont 
     Series         Medium
     Size           Normal
@@ -1194,7 +1132,7 @@ Style Separator
 End
  
 Style LyX-Code
-  Category              MainText
+  Category         MainText
   Margin           Static
   LatexType        Environment
   LatexName        lyxcode
@@ -1207,8 +1145,6 @@ Style LyX-Code
   AlignPossible    Block, Left, Right, Center
   LabelType        No_Label
   FreeSpacing      1
-
-  # define the environment lyxcode
   Preamble
   \newenvironment{lyxcode}
     {\par\begin{list}{}{
@@ -1224,8 +1160,6 @@ Style LyX-Code
      \item[]}
     {\end{list}}
   EndPreamble
-
-  # standard font definition
   Font 
     Family         Typewriter
   EndFont
@@ -1245,8 +1179,6 @@ Style NoteItem
   LabelSep         xx
   LabelString      "Note:"
   LeftMargin       "Note:xx"
- 
-  # standard font definition
   LabelFont 
     Family         Roman
     Color          latex
@@ -1256,11 +1188,13 @@ End
 
 # Input lyxmacros.inc
 
-# Charstyles:
+#
+# CHARSTYLES
+#
 
 InsetLayout Flex:Alert
-  LyXType charstyle
-  LabelString Alert
+  LyXType          charstyle
+  LabelString      Alert
   LatexType        command
   LatexName        alert
   Font
@@ -1268,10 +1202,9 @@ InsetLayout Flex:Alert
   EndFont
 End
 
-
 InsetLayout Flex:Structure
-  LyXType charstyle
-  LabelString Structure
+  LyXType          charstyle
+  LabelString      Structure
   LatexType        command
   LatexName        structure
   Font
@@ -1279,26 +1212,28 @@ InsetLayout Flex:Structure
   EndFont
 End
 
-
 InsetLayout Flex:ArticleMode
-   LyXType	custom
-   LatexName	mode<article>
-   LatexType	command
-   Decoration   classic
-   LabelString	Article
-   MultiPar     true
+   LyXType         custom
+   LatexName       mode<article>
+   LatexType       command
+   Decoration      classic
+   LabelString     Article
+   MultiPar        true
 End
-
 
 InsetLayout Flex:PresentationMode
-   LyXType	custom
-   LatexName	mode<presentation>
-   LatexType	command
-   Decoration   classic
-   LabelString	Presentation
-   MultiPar     true
+   LyXType         custom
+   LatexName       mode<presentation>
+   LatexType       command
+   Decoration      classic
+   LabelString     Presentation
+   MultiPar        true
 End
 
+
+#
+# FLOATS
+#
 
 Float
   Type             table
@@ -1313,7 +1248,6 @@ Float
   ListCommand      listoftables
 End
 
-
 Float
   Type             figure
   GuiName          Figure
@@ -1327,19 +1261,5 @@ Float
   ListCommand      listoffigures
 End
 
-
-# to give users the choice of a title frame with and without
-# head-/footline, we define our own maketitle command
-TitleLaTeXName makebeamertitle
-
-AddToPreamble
-  % this default might be overridden by plain title style
-  \newcommand\makebeamertitle{\frame{\maketitle}}%
-  \AtBeginDocument{
-    \let\origtableofcontents=\tableofcontents
-    \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
-    \def\gobbletableofcontents#1{\origtableofcontents}
-  }
-EndPreamble
 
 Input theorems-refprefix.inc
