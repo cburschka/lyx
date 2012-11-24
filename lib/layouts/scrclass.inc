@@ -2,7 +2,7 @@
 # Base definitions for the KOMA script layouts.
 # Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/23.
 # Update for Koma Script Release >=2.8q
-# Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/08.
+# Juergen Spitzmueller <spitz@lyx.org>, 2003/2/08.
 # Mapped List to Labeling
 # Guenter Milde <milde users.berlios.de>, 2009-02-02
 # Labeling is now used also in non-KOMA classes
