@@ -35,6 +35,11 @@
 % A short title can be given as a *suggestion* for running headers.
 \title[\texttt{achemso} demonstration]
 {A demonstration of the \textsf{achemso} \LaTeX class}
+
+% Some journals require a list of abbreviations or keywords to be
+% supplied.
+\abbreviations{IR,NMR,UV}
+\keywords{American Chemical Society, \LaTeX}
 \end_preamble
 \options journal=jacsat,manuscript=article
 \use_default_options false
@@ -133,7 +138,7 @@ status open
 Note:
 \series default
  The author, affiliation, email addresses, and the document title have to
- set up in the LaTeX preamble of this document!
+ be set up in the LaTeX preamble of this document!
 \end_layout
 
 \end_inset
