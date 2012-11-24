@@ -1,16 +1,20 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 446
 \begin_document
 \begin_header
 \textclass moderncv
 \begin_preamble
+% required
+\moderncvstyle{casual} % possible styles are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % possible colors are 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+%\renewcommand{\familydefault}{\sfdefault}    % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
+
 % adjust the page margins
 \usepackage[scale=0.75]{geometry}
-
-% required
-\moderncvtheme[blue]{classic}
-% possible themes are "classic" and "casual"
-% optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+%\setlength{\hintscolumnwidth}{3cm}           % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}      % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
 % required
 \firstname{Paul}
@@ -22,25 +26,27 @@
 
 % optional
 % \address{street and number}{postcode city}
-% '\\' adds a line break
-\address{Teststreet 17}{03333 Nicecity\protect\\[0.1em] Switzerland\protect\\[0.2em]}
+\address{Teststreet 17}{03333 Nicecity -- Switzerland}
 
 % optional
-\phone{+43(0)999 9999}
-% optional
 \mobile{+43(0)999 888}
+% optional
+\phone{+43(0)999 9999}
 % optional
 \fax{+43(0)999 7777}
 % optional
 \email{testman@testman.xx}
 % optional
+\homepage{www.johndoe.com}
+% optional
 \extrainfo{www.lyx.org}
 
 % optional
-% \photo[height]{name}
+% \photo[height][thickness]{name}
 % 'height' is the height the picture is resized to
+% 'thickness' is the thickness of the surrounding frame
 % 'name' is the name of the picture file
-\photo[64pt]{CV-image}
+\photo[64pt][0.4pt]{CV-image}
 
 % optional
 \quote{"You only live twice." (an optional quote)}
@@ -54,13 +60,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -71,15 +77,21 @@
 \use_hyperref false
 \papersize a4paper
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -131,7 +143,17 @@ The moderncv class offers lots of customization possibilities; some are
 \series bold
 moderncv
 \series default
-.
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/moderncv/examples/template.tex
 \end_layout
 
 \end_inset
@@ -139,25 +161,27 @@ moderncv
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
+\end_inset
+
+
+\end_layout
+
+\begin_layout MakeCVtitle
+\begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-maketitle
+outputs the title part; optional
 \end_layout
 
 \end_inset
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-outputs the title part like the address
+Keep entries with green labels empty!
 \end_layout
 
 \end_inset
@@ -170,57 +194,51 @@ Education
 \end_layout
 
 \begin_layout Entry
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 2003--2006
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Master of Economics
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 Institution
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 City
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Country
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 5
+status open
 
 \begin_layout Plain Layout
-
-}{
+Country
 \end_layout
 
 \end_inset
@@ -229,57 +247,51 @@ Description
 \end_layout
 
 \begin_layout Entry
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 2001--2003
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Bachelor of Economics
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 Institution
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 City
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Country
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 5
+status open
 
 \begin_layout Plain Layout
-
-}{
+Country
 \end_layout
 
 \end_inset
@@ -292,13 +304,11 @@ Master Thesis
 \end_layout
 
 \begin_layout Item
-Title
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Title
 \end_layout
 
 \end_inset
@@ -309,7 +319,7 @@ Title of the thesis
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace -0.5cm
+\begin_inset VSpace 0.5cm
 \end_inset
 
 
@@ -326,13 +336,11 @@ add negative or positive space as you like
 \end_layout
 
 \begin_layout Item
-Supervisors
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Supervisors
 \end_layout
 
 \end_inset
@@ -341,13 +349,11 @@ Names of supervisors
 \end_layout
 
 \begin_layout Item
-Description
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Description
 \end_layout
 
 \end_inset
@@ -362,61 +368,25 @@ Experience
 \end_layout
 
 \begin_layout Entry
-February 2006--
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2006--
 \begin_inset Newline newline
 \end_inset
 
 current
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Maintainer of Open Source projects
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -425,58 +395,52 @@ Maintainer of the xxx documentation
 \end_layout
 
 \begin_layout Entry
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 2005--2006
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Employer
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 Corp.
  name
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 City
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Country
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 5
+status open
 
 \begin_layout Plain Layout
-
-}{
+Country
 \end_layout
 
 \end_inset
@@ -488,25 +452,22 @@ Description
 Languages
 \end_layout
 
-\begin_layout Language
+\begin_layout ItemWithComment
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 French
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Native
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -514,25 +475,22 @@ status collapsed
 
 \end_layout
 
-\begin_layout Language
+\begin_layout ItemWithComment
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Dutch
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Near-native
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Near-native
 \end_layout
 
 \end_inset
@@ -540,40 +498,43 @@ status collapsed
 Primary education degree obtained in a Dutch college
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Computer skills
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 OS
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Linux, Unix, Windows
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-administration
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}{
+Administration
 \end_layout
 
 \end_inset
@@ -581,40 +542,36 @@ status collapsed
 Apache, Mailman
 \end_layout
 
-\begin_layout Computer
-Programming
-\begin_inset ERT
-status collapsed
+\begin_layout DoubleItem
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Programming
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 
 \shape smallcaps
 Java
 \shape default
 , C/C++
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-scripting
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}{
+Scripting
 \end_layout
 
 \end_inset
@@ -622,36 +579,32 @@ status collapsed
 PHP, Shell, Ruby
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Scientific
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Matlab, AutoCAD, Abaqus
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-typography
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}{
+Typography
 \end_layout
 
 \end_inset
@@ -659,40 +612,36 @@ status collapsed
 LaTeX, ConTeXt, Scribus, QuarkXPress
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Web
 \begin_inset space ~
 \end_inset
 
 design
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 XHTML, CSS, AJAX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-database
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}{
+Database
 \end_layout
 
 \end_inset
@@ -705,41 +654,40 @@ Interests
 \end_layout
 
 \begin_layout Item
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Adventure
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
 sports
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-
-\size small
 I like practicing adventure sports like skiing, rock climbing and scuba
  diving, and have been a boy scout for five years.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
 \begin_layout Item
-Travelling
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Travelling
 \end_layout
 
 \end_inset
 
-
-\size small
 I love travelling around the world.
 \end_layout
 
@@ -783,38 +731,95 @@ end{itemize}
 
 \end_layout
 
-\begin_layout DoubleItem
-Double\SpecialChar \ldots{}
-
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{
+
+\backslash
+renewcommand{
+\backslash
+listitemsymbol}{-~} 
 \end_layout
 
 \end_inset
 
-\SpecialChar \ldots{}
- item.
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional, changes the symbol for lists
 \end_layout
 
-\begin_layout DoubleItem
-Another double\SpecialChar \ldots{}
+\end_inset
 
+
+\end_layout
+
+\begin_layout DoubleListItem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Item 1
+\end_layout
+
+\end_inset
+
+Item 3
+\end_layout
+
+\begin_layout DoubleListItem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Item 2
+\end_layout
+
+\end_inset
+
+Item 4, see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jobs95"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{
+
+\backslash
+renewcommand{
+\backslash
+listitemsymbol}{
+\backslash
+labelitemi~} 
 \end_layout
 
 \end_inset
 
-\SpecialChar \ldots{}
- item.
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, resets the symbol for lists to the default one
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -835,16 +840,6 @@ status collapsed
 
 \begin_layout Plain Layout
 This ends the section formatting.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Keep entries with green labels empty!
 \end_layout
 
 \end_inset
@@ -880,13 +875,11 @@ Creates a section without a section heading.
 \end_layout
 
 \begin_layout Item
-Now
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Now
 \end_layout
 
 \end_inset
@@ -903,6 +896,64 @@ You can use bibitems:
 \end_layout
 
 \begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+to redefine the heading string ("Publications"), uncomment this:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+renewcommand{
+\backslash
+refname}{Articles}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+bibliographyitemlabel}{[
+\backslash
+arabic{enumiv}]}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional, numbers the bibliography items
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -940,6 +991,9 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
 or BibTeX references:
 \end_layout
 
@@ -952,6 +1006,133 @@ options "plain"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Recipient
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Company Recruitment team
+\end_layout
+
+\end_inset
+
+Company, Inc.
+\begin_inset Newline newline
+\end_inset
+
+123 somestreet
+\begin_inset Newline newline
+\end_inset
+
+some city
+\end_layout
+
+\begin_layout Date
+January 01, 1984
+\end_layout
+
+\begin_layout Opening
+Dear Sir or Madam,
+\end_layout
+
+\begin_layout Closing
+Yours faithfully,
+\end_layout
+
+\begin_layout Enclosing
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Attached
+\end_layout
+
+\end_inset
+
+curriculum vitae
+\end_layout
+
+\begin_layout MakeLetterTitle
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+generates the letter title; must be behind the letter closing and the enclosing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis.
+ Vivamus at neque arcu, sed tempor quam.
+ Curabitur pharetra tincidunt tincidunt.
+ Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat.
+ Duis tristique justo vel massa fermentum accumsan.
+ Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum.
+ Donec scelerisque lobortis ipsum eu vestibulum.
+ Pellentesque vel massa at felis accumsan rhoncus.
+\end_layout
+
+\begin_layout Standard
+Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque
+ orci, cursus tempor odio nisl euismod augue.
+ Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet.
+ Mauris a accumsan ligula.
+ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+ inceptos himenaeos.
+ Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus.
+ Phasellus et est urna, ut auctor erat.
+ Sed tincidunt odio id odio aliquam mattis.
+ Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor.
+ Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna,
+ vitae aliquet lectus orci nec velit.
+ Vivamus dapibus varius blandit.
+\end_layout
+
+\begin_layout Standard
+Duis sit amet magna ante, at sodales diam.
+ Aenean consectetur porta risus et sagittis.
+ Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor,
+ ut fermentum nunc metus a ante.
+ Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus.
+ Nunc sed orci lectus.
+ Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
+\end_layout
+
+\begin_layout Standard
+Albert Einstein discovered that 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ in 1905.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MakeLetterClosing
 
 \end_layout
 
