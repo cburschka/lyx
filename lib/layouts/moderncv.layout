@@ -32,322 +32,471 @@ Input stdcounters.inc
 Input stdinsets.inc
 Input stdlists.inc
 
-Style Section
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		section
-	NeedProtect		1
-	NextNoIndent		1
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0.7
-	ParSep			0.7
-	Align			Block
-	LabelSep		xxx
-	LabelType		No_Label
-	Font
-	  Family		Sans
-	  Series		Bold
+Style CVStyle
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	moderncvstyle
+	Category	FrontMatter
+	InPreamble	1
+	ParSkip		0.4
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"CV style:"
+	LabelFont
+	  Series	Bold
+	  Color		Blue
 	EndFont
-	TocLevel		1
+End
+
+Style CVColor
+	CopyStyle	CVStyle
+	LatexName	moderncvcolor
+	LabelString	"CV color scheme:"
+End
+
+Style FirstName
+	LatexType	command
+	LatexName	firstname
+	Category	FrontMatter
+	InPreamble	1
+	TopSep		0.7
+	Align		Center
+	Font
+	  Family	Sans
+	  Size		Largest
+	EndFont
+End
+
+Style FamilyName
+	CopyStyle	FirstName
+	LatexName	familyname
+	TopSep		0.3
+	LabelString	"Family Name:"
+End
+
+Style Title
+	Margin		Static
+	LatexType	Command
+	Category	FrontMatter
+	InPreamble	1
+	LatexName	title
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		1
+	Align		Center
+	LabelType	No_Label
+	Font
+	  Size		Larger
+	  Shape		Italic
+	  EndFont
+	HTMLTag		h1
+	HTMLTitle	true
+End
+
+Style Address
+	CopyStyle	CVStyle
+	LatexName	address
+	LabelString	"Address:"
+	BottomSep	0.3
+	TopSep		0
+	Argument 1
+	  Mandatory	1
+	  LabelString	"Street"
+	EndArgument
+End
+
+Style Mobile
+	CopyStyle	CVStyle
+	LatexName	mobile
+	LabelString	"Mobile:"
+End
+
+Style Phone
+	CopyStyle	CVStyle
+	LatexName	phone
+	LabelString	"Phone:"
+End
+
+Style Fax
+	CopyStyle	CVStyle
+	LatexName	fax
+	LabelString	"Fax:"
+End
+
+Style Email
+	CopyStyle	CVStyle
+	LatexName	email
+	LabelString	"Email:"
+End
+
+Style Homepage
+	CopyStyle	CVStyle
+	LatexName	homepage
+	LabelString	"Homepage:"
+End
+
+Style ExtraInfo
+	CopyStyle	CVStyle
+	LatexName	extrainfo
+	LabelString	"Extra Info:"
+End
+
+Style Photo
+	CopyStyle	CVStyle
+	LatexName	photo
+	LabelString	"Photo:"
+	Argument 1
+	  LabelString	"Height"
+	  Tooltip	"Height the photo is resized to"
+	EndArgument
+	Argument 2
+	  LabelString	"Thickness"
+	  Tooltip	"Thickness of the surrounding frame"
+	EndArgument
+End
+
+Style Quote
+	CopyStyle	CVStyle
+	LatexName	quote
+	LabelType	No_Label
+	Align		Center
+	BottomSep	0.7
+	TopSep		0.5
+	Font
+	  Shape		Italic
+	  Size		Large
+	EndFont
+End
+
+Style Section
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	section
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	LabelSep	xxx
+	LabelType	No_Label
+	Font
+	  Family	Sans
+	  Series	Bold
+	EndFont
+	TocLevel	1
 End
 
 Style Subsection
-	CopyStyle		Section
-	LatexName		subsection
-	TopSep			0.9
-	BottomSep		0
-	ParSep			0.5
+	CopyStyle	Section
+	LatexName	subsection
+	TopSep		0.9
+	BottomSep	0
+	ParSep		0.5
 	Font
-	  Family		Sans
-	  Series		Medium
+	  Family	Sans
+	  Series	Medium
 	EndFont
-	TocLevel		2
+	TocLevel	2
 End
 
 Style Entry
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		cventry
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	cventry
 	Argument 1
-	  Mandatory		1
-	  LabelString		"Time"
-	  Tooltip		"Time"
+	  Mandatory	1
+	  LabelString	"Time"
+	  Tooltip	"Time"
 	EndArgument
 	Argument 2
-	  Mandatory		1
-	  LabelString		"What?"
-	  Tooltip		"What?"
+	  Mandatory	1
+	  LabelString	"What?"
+	  Tooltip	"What?"
 	EndArgument
 	Argument 3
-	  Mandatory		1
-	  LabelString		"Affiliation"
-	  Tooltip		"Affiliation"
+	  Mandatory	1
+	  LabelString	"Affiliation"
+	  Tooltip	"Affiliation"
 	  #Font
-	  #  Shape		Italic
+	  #  Shape	Italic
 	  #EndFont
 	EndArgument
 	Argument 4
-	  Mandatory		1
-	  LabelString		"City"
-	  Tooltip		"City"
+	  Mandatory	1
+	  LabelString	"City"
+	  Tooltip	"City"
 	EndArgument
 	Argument 5
-	  Mandatory		1
-	  LabelString		"Country"
-	  Tooltip		"Country"
+	  Mandatory	1
+	  LabelString	"Country"
+	  Tooltip	"Country"
 	EndArgument
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Entry:"
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Entry:"
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style Item
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		cvitem
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	cvitem
 	Argument 1
-	  Mandatory		1
-	  LabelString		"Summary"
-	  Tooltip		"Summary"
+	  Mandatory	1
+	  LabelString	"Summary"
+	  Tooltip	"Summary"
 	EndArgument
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Item:"
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Item:"
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style ItemWithComment
-	CopyStyle		Item
-	LatexName		cvitemwithcomment
-	LabelString		"Item with comment:"
-	KeepEmpty		1
-	ResetArgs		1
+	CopyStyle	Item
+	LatexName	cvitemwithcomment
+	LabelString	"Item with comment:"
+	KeepEmpty	1
+	ResetArgs	1
 	Argument 1
-	  Mandatory		1
-	  LabelString		"Summary"
-	  Tooltip		"Summary"
+	  Mandatory	1
+	  LabelString	"Summary"
+	  Tooltip	"Summary"
 	EndArgument
 	Argument 2
-	  Mandatory		1
-	  LabelString		"Text"
-	  Tooltip		"Text"
+	  Mandatory	1
+	  LabelString	"Text"
+	  Tooltip	"Text"
+	  #Font
+	  #  Series	Bold
+	  #EndFont
 	EndArgument
+	Font
+	  Shape		Italic
+	EndFont
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	  Shape		Up
+	EndFont
 End
 
 Style ListItem
-	CopyStyle		Item
-	LatexName		cvlistitem
-	LabelString		"List Item:"
-	ResetArgs		1
+	CopyStyle	Item
+	LatexName	cvlistitem
+	LabelString	"List Item:"
+	ResetArgs	1
 End
 
 Style DoubleItem
-	CopyStyle		ListItem
-	LatexName		cvdoubleitem
-	LabelString		"Double Item:"
-	KeepEmpty		1
+	CopyStyle	ListItem
+	LatexName	cvdoubleitem
+	LabelString	"Double Item:"
+	KeepEmpty	1
 	Argument 1
-	  Mandatory		1
-	  LabelString		"Left summary"
-	  Tooltip		"Left summary"
+	  Mandatory	1
+	  LabelString	"Left summary"
+	  Tooltip	"Left summary"
 	EndArgument
 	Argument 2
-	  Mandatory		1
-	  LabelString		"Left text"
-	  Tooltip		"Left text"
+	  Mandatory	1
+	  LabelString	"Left text"
+	  Tooltip	"Left text"
 	EndArgument
 	Argument 3
-	  Mandatory		1
-	  LabelString		"Right summary"
-	  Tooltip		"Right summary"
+	  Mandatory	1
+	  LabelString	"Right summary"
+	  Tooltip	"Right summary"
 	EndArgument
 End
 
 Style DoubleListItem
-	CopyStyle		ListItem
-	LatexName		cvlistdoubleitem
-	LabelString		"Double List Item:"
-	ResetArgs		1
+	CopyStyle	ListItem
+	LatexName	cvlistdoubleitem
+	LabelString	"Double List Item:"
+	ResetArgs	1
 	Argument 1
-	  Mandatory		1
-	  LabelString		"First Item"
-	  Tooltip		"First Item"
+	  Mandatory	1
+	  LabelString	"First Item"
+	  Tooltip	"First Item"
 	EndArgument
 End
 
 Style Language
-	ObsoletedBy		ItemWithComment
+	ObsoletedBy	ItemWithComment
 End
 
 Style Computer
-	ObsoletedBy		DoubleItem
+	ObsoletedBy	DoubleItem
 End
 
 Style EmptySection
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		emptysection{}
-	KeepEmpty		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Empty Section"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	emptysection{}
+	KeepEmpty	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Empty Section"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
 	EndFont
 End
 
 Style CloseSection
-	CopyStyle		EmptySection
-	LatexName		closesection{}
-	LabelString		"Close Section"
+	CopyStyle	EmptySection
+	LatexName	closesection{}
+	LabelString	"Close Section"
 End
 
 Style MakeCVtitle
-	CopyStyle		EmptySection
-	LatexName		makecvtitle{}
-	LabelString		"Make CV title"
-	Category		Title
+	CopyStyle	EmptySection
+	LatexName	makecvtitle{}
+	LabelString	"Make CV title"
+	Category	Title
 End
 
 Style MakeLetterTitle
-	CopyStyle		EmptySection
-	LatexName		makelettertitle{}
-	LabelString		"Make letter title"
-	Category		Letter
+	CopyStyle	EmptySection
+	LatexName	makelettertitle{}
+	LabelString	"Make letter title"
+	Category	Letter
 End
 
 Style MakeLetterClosing
-	CopyStyle		EmptySection
-	LatexName		makeletterclosing{}
-	LabelString		"Close Letter"
-	Category		Letter
+	CopyStyle	EmptySection
+	LatexName	makeletterclosing{}
+	LabelString	"Close Letter"
+	Category	Letter
 End
 
 Style Bibliography
-	Margin			First_Dynamic
-	LatexType		Bib_Environment
-	LatexName		thebibliography
-	NextNoIndent		1
-	LeftMargin		MM
-	ParSkip			0.4
-	ItemSep			0
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.5
-	Align			Block
-	AlignPossible		Block, Left
-	LabelType		Bibliography
-	LabelString		"References"
-	LabelBottomSep		1.2
+	Margin		First_Dynamic
+	LatexType	Bib_Environment
+	LatexName	thebibliography
+	NextNoIndent	1
+	LeftMargin	MM
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.5
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Bibliography
+	LabelString	"References"
+	LabelBottomSep	1.2
 	LabelFont
-	  Series		Bold
-	  Size			Larger
-	  Family		Sans
+	  Series	Bold
+	  Size		Larger
+	  Family	Sans
 	EndFont
 End
 
 Style --Separator--
-	KeepEmpty		1
-	Margin			Dynamic
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	Align			Block
-	LabelType		Static
-	LabelString		"--- Separate Environment ---"
+	KeepEmpty	1
+	Margin		Dynamic
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	Align		Block
+	LabelType	Static
+	LabelString	"--- Separate Environment ---"
 	LabelFont
-	  Family		Roman
-	  Series		Medium
-	  Size			Normal
-	  Color			Blue
+	  Family	Roman
+	  Series	Medium
+	  Size		Normal
+	  Color		Blue
 	EndFont
-	HTMLLabel		NONE
+	HTMLLabel	NONE
 End
 
 Style Recipient
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		recipient
-	Category		Letter
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	recipient
+	Category	Letter
 	Argument 1
-	  Mandatory		1
-	  LabelString		"Company name"
-	  Tooltip		"Company name"
+	  Mandatory	1
+	  LabelString	"Company name"
+	  Tooltip	"Company name"
 	  #Font
-	  #  Series		Bold
+	  #  Series	Bold
 	  #EndFont
 	EndArgument
-	NextNoIndent		1
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0
-	ParSep			0.7
-	Align			Left
-	LabelSep		xxx
-	LabelType		No_Label
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0
+	ParSep		0.7
+	Align		Left
+	LabelSep	xxx
+	LabelType	No_Label
 	Font
-	  Shape			Italic
+	  Shape		Italic
 	EndFont
 End
 
 Style Date
-	CopyStyle		Recipient
-	LatexName		date
-	ResetArgs		1
-	TopSep			0
-	BottomSep		0
-	Align			Right
+	CopyStyle	Recipient
+	LatexName	date
+	ResetArgs	1
+	TopSep		0
+	BottomSep	0
+	Align		Right
 	Font
-	  Series		Medium
+	  Series	Medium
 	EndFont
 End
 
 Style Opening
-	CopyStyle		Date
-	LatexName		opening
-	TopSep			0
-	BottomSep		0.5
-	Align			Left
+	CopyStyle	Date
+	LatexName	opening
+	TopSep		0
+	BottomSep	0.5
+	Align		Left
 End
 
 Style Closing
-	CopyStyle		Opening
-	LatexName		closing
+	CopyStyle	Opening
+	LatexName	closing
 End
 
 Style Enclosing
-	Margin			Dynamic
-	CopyStyle		Opening
-	LatexName		enclosure
+	Margin		Dynamic
+	CopyStyle	Opening
+	LatexName	enclosure
 	Argument 1
-	  LabelString		"Alternative name"
-	  Tooltip		"Alternative instead of 'Enclosure'"
+	  LabelString	"Alternative name"
+	  Tooltip	"Alternative instead of 'Enclosure'"
 	EndArgument
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Enclosing:"
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Enclosing:"
 	Font
-	  Shape			Italic
+	  Shape		Italic
 	EndFont
 	LabelFont
-	  Shape			Up
-	  Series		Bold
-	  Color			Blue
+	  Shape		Up
+	  Series	Bold
+	  Color		Blue
 	EndFont
 	
 End

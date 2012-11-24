@@ -4,10 +4,6 @@
 \begin_header
 \textclass moderncv
 \begin_preamble
-% required
-\moderncvstyle{casual} % possible styles are 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{blue} % possible colors are 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-
 %\renewcommand{\familydefault}{\sfdefault}    % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
 %\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
 
@@ -15,41 +11,6 @@
 \usepackage[scale=0.75]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}           % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}      % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
-
-% required
-\firstname{Paul}
-% required
-\familyname{Testman}
-
-% optional, remove the line if not wanted
-\title{Curriculum Vitae}
-
-% optional
-% \address{street and number}{postcode city}
-\address{Teststreet 17}{03333 Nicecity -- Switzerland}
-
-% optional
-\mobile{+43(0)999 888}
-% optional
-\phone{+43(0)999 9999}
-% optional
-\fax{+43(0)999 7777}
-% optional
-\email{testman@testman.xx}
-% optional
-\homepage{www.johndoe.com}
-% optional
-\extrainfo{www.lyx.org}
-
-% optional
-% \photo[height][thickness]{name}
-% 'height' is the height the picture is resized to
-% 'thickness' is the thickness of the surrounding frame
-% 'name' is the name of the picture file
-\photo[64pt][0.4pt]{CV-image}
-
-% optional
-\quote{"You only live twice." (an optional quote)}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -119,24 +80,6 @@
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- The personal data like your name, image, address, etc.
- are set in the document preamble.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 The moderncv class offers lots of customization possibilities; some are
  explained in the preamble of this document; for more information look at
  the documentation of the LaTeX-package 
@@ -164,6 +107,137 @@ http://mirrors.ctan.org/macros/latex/contrib/moderncv/examples/template.tex
 \end_inset
 
 
+\end_layout
+
+\begin_layout CVStyle
+casual
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+required, possible styles are 'casual' (default), 'classic', 'oldstyle'
+ and 'banking'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVColor
+blue
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+required, possible colors are 'blue' (default), 'orange', 'green', 'red',
+ 'purple', 'grey' and 'black'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FirstName
+Paul
+\end_layout
+
+\begin_layout FamilyName
+Testman
+\end_layout
+
+\begin_layout Title
+Curriculum Vitae
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following personal entries are optional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Teststreet 17
+\end_layout
+
+\end_inset
+
+03333 Nicecity -- Switzerland
+\end_layout
+
+\begin_layout Mobile
++43(0)999 888
+\end_layout
+
+\begin_layout Phone
++43(0)999 9999
+\end_layout
+
+\begin_layout Fax
++43(0)999 7777
+\end_layout
+
+\begin_layout Email
+testman@testman.xx
+\end_layout
+
+\begin_layout Homepage
+www.johndoe.com
+\end_layout
+
+\begin_layout ExtraInfo
+www.lyx.org
+\end_layout
+
+\begin_layout Photo
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+64pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+0.4pt
+\end_layout
+
+\end_inset
+
+CV-image
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The name of the image file.
+ The first argument is the height the photo is resized to, the second one
+ the thickness of the surrounding frame
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+"You only live twice." (an optional quote)
 \end_layout
 
 \begin_layout MakeCVtitle
@@ -811,7 +885,7 @@ labelitemi~}
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 optional, resets the symbol for lists to the default one
@@ -904,7 +978,15 @@ You can use bibitems:
 status open
 
 \begin_layout Plain Layout
-to redefine the heading string ("Publications"), uncomment this:
+To redefine the heading string (
+\begin_inset Quotes eld
+\end_inset
+
+Publications
+\begin_inset Quotes erd
+\end_inset
+
+), uncomment this:
 \end_layout
 
 \end_inset
