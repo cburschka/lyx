@@ -2531,7 +2531,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (lait != args.end()) {
 			enable = true;
 			InsetList::const_iterator it = cur.paragraph().insetList().begin();
-			InsetList::const_iterator end = cur.paragraph().insetList().end();
+			InsetList::const_iterator const end = cur.paragraph().insetList().end();
 			for (; it != end; ++it) {
 				if (it->inset->lyxCode() == ARG_CODE) {
 					InsetArgument const * ins =

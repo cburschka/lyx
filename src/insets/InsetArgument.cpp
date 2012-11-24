@@ -59,12 +59,12 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	if (name_ == "999") {
-		int req = insetlayout ? it.inset().getLayout().requiredArgs()
+		unsigned int const req = insetlayout ? it.inset().getLayout().numRequiredArgs()
 				      : it.paragraph().layout().requiredArgs();
-		int opts = insetlayout ? it.inset().getLayout().optArgs()
+		unsigned int const opts = insetlayout ? it.inset().getLayout().numOptArgs()
 				      : it.paragraph().layout().optArgs();
-		int nr = 0;
-		int ours = 0;
+		unsigned int nr = 0;
+		unsigned int ours = 0;
 		InsetList::const_iterator parit = it.paragraph().insetList().begin();
 		InsetList::const_iterator parend = it.paragraph().insetList().end();
 		for (; parit != parend; ++parit) {
@@ -75,7 +75,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 			}
 		}
 		bool done = false;
-		int realopts = 0;
+		unsigned int realopts = 0;
 		if (nr > req) {
 			// We have optional arguments
 			realopts = nr - req;

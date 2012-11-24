@@ -162,7 +162,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	if (style.isEnvironment()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
-		if (style.latexargs().size() != 0)
+		if (!style.latexargs().empty())
 		    latexArgInsets(*pit, os, runparams, style.latexargs());
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << '{'
@@ -313,7 +313,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 
 void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, Layout::LaTeXArgMap latexargs)
+	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
@@ -332,7 +332,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 				Layout::LaTeXArgMap::const_iterator const lit =
 						latexargs.find(nr);
 				if (lit != latexargs.end()) {
-					Layout::latexarg arg = (*lit).second;
+					Layout::latexarg const & arg = (*lit).second;
 					if (!arg.requires.empty()) {
 						vector<string> req = getVectorFromString(arg.requires);
 						required.insert(required.end(), req.begin(), req.end());
@@ -407,7 +407,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		os << '\\' << from_ascii(style.latexname());
 
 		// Separate handling of optional argument inset.
-		if (style.latexargs().size() != 0)
+		if (!style.latexargs().empty())
 			latexArgInsets(par, os, runparams, style.latexargs());
 		else
 			os << from_ascii(style.latexparam());
