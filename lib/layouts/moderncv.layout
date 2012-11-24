@@ -114,8 +114,8 @@ Style Item
 	LatexName		cvitem
 	Argument 1
 	  Mandatory		1
-	  LabelString		"Item summary"
-	  Tooltip		"item summary"
+	  LabelString		"Summary"
+	  Tooltip		"Summary"
 	EndArgument
 	ParSkip			0.4
 	Align			Block
@@ -136,13 +136,13 @@ Style ItemWithComment
 	ResetArgs		1
 	Argument 1
 	  Mandatory		1
-	  LabelString		"Item summary"
-	  Tooltip		"Item summary"
+	  LabelString		"Summary"
+	  Tooltip		"Summary"
 	EndArgument
 	Argument 2
 	  Mandatory		1
-	  LabelString		"Item text"
-	  Tooltip		"Item text"
+	  LabelString		"Text"
+	  Tooltip		"Text"
 	EndArgument
 End
 
@@ -160,18 +160,18 @@ Style DoubleItem
 	KeepEmpty		1
 	Argument 1
 	  Mandatory		1
-	  LabelString		"Left item summary"
-	  Tooltip		"Left item summary"
+	  LabelString		"Left summary"
+	  Tooltip		"Left summary"
 	EndArgument
 	Argument 2
 	  Mandatory		1
-	  LabelString		"Left item text"
-	  Tooltip		"Left item text"
+	  LabelString		"Left text"
+	  Tooltip		"Left text"
 	EndArgument
 	Argument 3
 	  Mandatory		1
-	  LabelString		"Right item summary"
-	  Tooltip		"Right item summary"
+	  LabelString		"Right summary"
+	  Tooltip		"Right summary"
 	EndArgument
 End
 
@@ -335,8 +335,8 @@ Style Enclosing
 	CopyStyle		Opening
 	LatexName		enclosure
 	Argument 1
-	  LabelString		"Alternative enclosing name"
-	  Tooltip		"Alternative enclosing name"
+	  LabelString		"Alternative name"
+	  Tooltip		"Alternative instead of 'Enclosure'"
 	EndArgument
 	LabelSep		xx
 	LabelType		Static

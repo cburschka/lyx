@@ -39,7 +39,7 @@ Style Standard
   ParIndent	MM
   ParSkip	0.4
   Align		Block
-  AlignPossible Block, Left, Right, Center
+  AlignPossible	Block, Left, Right, Center
   LabelType	No_Label
 End
 
@@ -314,10 +314,10 @@ Style Proof
   BottomSep	0.7
   ParSep	0.3
   Align		Block
-  AlignPossible Block, Left
-  LabelType    Static
-  LabelString  "Proof."
-  EndLabelType Filled_Box
+  AlignPossible	Block, Left
+  LabelType	Static
+  LabelString	"Proof."
+  EndLabelType	Filled_Box
   Font
     Shape	Up
     Size	Normal
