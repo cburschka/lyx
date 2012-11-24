@@ -6,13 +6,13 @@
 
 # General textclass parameters
 Format 35
-	Columns			1
-	Sides			1
-	SecNumDepth		-1
-	TocDepth		-1
+	Columns		1
+	Sides		1
+	SecNumDepth	-1
+	TocDepth	-1
 
-Provides hyperref  1
-Provides url       1
+Provides hyperref	1
+Provides url		1
 
 
 # Standard style definition
@@ -47,7 +47,7 @@ Style Section
 	  Family		Sans
 	  Series		Bold
 	EndFont
-		TocLevel 1
+	TocLevel		1
 End
 
 Style Subsection
@@ -60,7 +60,7 @@ Style Subsection
 	  Family		Sans
 	  Series		Medium
 	EndFont
-	TocLevel 2
+	TocLevel		2
 End
 
 Style Entry
@@ -171,20 +171,20 @@ Style Bibliography
 End
 
 Style --Separator--
-	KeepEmpty             1
-	Margin                Dynamic
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	Align                 Block
-	LabelType             Static
-	LabelString           "--- Separate Environment ---"
+	KeepEmpty		1
+	Margin			Dynamic
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	Align			Block
+	LabelType		Static
+	LabelString		"--- Separate Environment ---"
 	LabelFont
-	  Family              Roman
-	  Series              Medium
-	  Size                Normal
-	  Color               Blue
+	  Family		Roman
+	  Series		Medium
+	  Size			Normal
+	  Color			Blue
 	EndFont
-	HTMLLabel             NONE
+	HTMLLabel		NONE
 End
 
