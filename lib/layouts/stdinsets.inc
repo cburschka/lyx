@@ -400,7 +400,7 @@ InsetLayout "Flex:URL"
 End
 
 InsetLayout Argument
-	LabelString           opt
+	LabelString           Argument
 	LabelFont
 	  Color               collapsable
 	  Size                Small
