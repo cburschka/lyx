@@ -469,6 +469,8 @@ InsetLayout Info:shortcuts
 End
 
 InsetLayout Caption
+	LaTeXType            command
+	LatexName            caption
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"

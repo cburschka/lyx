@@ -436,6 +436,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			if (runparams.moving_arg)
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());
+			getOptArg(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
 			os << '{';
@@ -588,6 +589,12 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	if (opts & WriteOuterTag)
 		xs << html::EndTag(il.htmltag());
 	return docstring();
+}
+
+void InsetText::getOptArg(otexstream & os,
+			OutputParams const & runparams) const
+{
+	latexArgInsets(paragraphs()[0], os, runparams, getLayout().latexargs());
 }
 
 

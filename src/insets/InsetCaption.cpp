@@ -227,11 +227,7 @@ void InsetCaption::latex(otexstream & os,
 	// FIXME: actually, it is moving only when there is no
 	// optional argument.
 	runparams.moving_arg = true;
-	os << "\\caption";
-	getOptArg(os, runparams);
-	os << '{';
 	InsetText::latex(os, runparams);
-	os << "}\n";
 	runparams_in.encoding = runparams.encoding;
 }
 
@@ -277,13 +273,6 @@ void InsetCaption::getArgument(otexstream & os,
 			OutputParams const & runparams) const
 {
 	InsetText::latex(os, runparams);
-}
-
-
-void InsetCaption::getOptArg(otexstream & os,
-			OutputParams const & runparams) const
-{
-	latexArgInsets(paragraphs()[0], os, runparams, getLayout().latexargs());
 }
 
 

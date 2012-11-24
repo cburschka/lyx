@@ -28,8 +28,6 @@ public:
 	docstring layoutName() const;
 	/// return the mandatory argument (LaTeX format) only
 	void getArgument(otexstream & os, OutputParams const &) const;
-	/// return the optional argument(s) only
-	void getOptArg(otexstream & os, OutputParams const &) const;
 	/// return the caption text
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML

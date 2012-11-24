@@ -93,6 +93,9 @@ public:
 	                       XHTMLOptions) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	
+	/// return the optional argument(s) only
+	void getOptArg(otexstream & os, OutputParams const &) const;
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
