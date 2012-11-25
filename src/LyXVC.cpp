@@ -176,6 +176,8 @@ bool LyXVC::registrer()
 string LyXVC::checkIn()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
+	if (!vcs)
+		return string();
 	docstring empty(_("(no log message)"));
 	docstring response;
 	string log;
@@ -201,6 +203,8 @@ string LyXVC::checkIn()
 
 string LyXVC::checkOut()
 {
+	if (!vcs)
+		return string();
 	//RCS allows checkOut only in ReadOnly mode
 	if (vcs->toggleReadOnlyEnabled() && !owner_->isReadonly())
 		return string();
@@ -213,6 +217,8 @@ string LyXVC::checkOut()
 string LyXVC::repoUpdate()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: repoUpdate");
+	if (!vcs)
+		return string();
 	return vcs->repoUpdate();
 }
 
@@ -220,6 +226,8 @@ string LyXVC::repoUpdate()
 string LyXVC::lockingToggle()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: toggle locking property");
+	if (!vcs)
+		return string();
 	return vcs->lockingToggle();
 }
 
@@ -227,6 +235,8 @@ string LyXVC::lockingToggle()
 bool LyXVC::revert()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: revert");
+	if (!vcs)
+		return false;
 
 	docstring const file = owner_->fileName().displayName(20);
 	docstring text = bformat(_("Reverting to the stored version of the "
@@ -243,12 +253,16 @@ bool LyXVC::revert()
 
 void LyXVC::undoLast()
 {
+	if (!vcs)
+		return;
 	vcs->undoLast();
 }
 
 
 void LyXVC::toggleReadOnly()
 {
+	if (!vcs)
+		return;
 	if (!vcs->toggleReadOnlyEnabled())
 		return;
 
@@ -277,12 +291,16 @@ bool LyXVC::inUse() const
 
 string const LyXVC::versionString() const
 {
+	if (!vcs)
+		return string();
 	return vcs->versionString();
 }
 
 
 bool LyXVC::locking() const
 {
+	if (!vcs)
+		return false;
 	return vcs->status() != VCS::NOLOCKING;
 }
 
