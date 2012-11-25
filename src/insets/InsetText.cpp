@@ -714,6 +714,18 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
+bool InsetText::insetAllowed(InsetCode code) const
+{
+	switch (code) {
+	// Arguments are also allowed in PassThru insets
+	case ARG_CODE:
+		return true;
+	default:
+		return !getLayout().isPassThru();
+	}
+}
+
+
 void InsetText::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	ParIterator it2 = it;

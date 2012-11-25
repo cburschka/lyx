@@ -19,6 +19,7 @@
 #include "InsetList.h"
 #include "Layout.h"
 #include "Lexer.h"
+#include "OutputParams.h"
 #include "ParIterator.h"
 
 #include "support/convert.h"
@@ -202,12 +203,15 @@ string InsetArgument::contextMenuName() const
 }
 
 void InsetArgument::latexArgument(otexstream & os,
-		OutputParams const & runparams, docstring const & ldelim,
+		OutputParams const & runparams_in, docstring const & ldelim,
 		docstring const & rdelim) const
 {
 	TexRow texrow;
 	odocstringstream ss;
 	otexstream ots(ss, texrow);
+	OutputParams runparams = runparams_in;
+	if (getLayout().isPassThru())
+		runparams.pass_thru = true;
 	InsetText::latex(ots, runparams);
 	docstring str = ss.str();
 	if (ldelim != "{" && support::contains(str, rdelim))

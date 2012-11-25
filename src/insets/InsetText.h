@@ -149,7 +149,7 @@ public:
 	///
 	ParagraphList const & paragraphs() const;
 	///
-	bool insetAllowed(InsetCode) const { return !getLayout().isPassThru(); }
+	bool insetAllowed(InsetCode) const;
 	///
 	bool allowSpellCheck() const { return getLayout().spellcheck() && !getLayout().isPassThru(); }
 	///
