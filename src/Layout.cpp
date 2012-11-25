@@ -69,6 +69,7 @@ enum LayoutTags {
 	LT_LATEXNAME,
 	LT_LATEXPARAM,
 	LT_LATEXTYPE,
+	LT_LEFTDELIM,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
@@ -102,6 +103,7 @@ enum LayoutTags {
 	LT_SPELLCHECK,
 	LT_REFPREFIX,
 	LT_RESETARGS,
+	LT_RIGHTDELIM,
 	LT_INTITLE // keep this last!
 };
 
@@ -194,6 +196,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "latexname",      LT_LATEXNAME },
 		{ "latexparam",     LT_LATEXPARAM },
 		{ "latextype",      LT_LATEXTYPE },
+		{ "leftdelim",      LT_LEFTDELIM },
 		{ "leftmargin",     LT_LEFTMARGIN },
 		{ "margin",         LT_MARGIN },
 		{ "needprotect",    LT_NEED_PROTECT },
@@ -209,6 +212,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "refprefix",      LT_REFPREFIX },
 		{ "requires",       LT_REQUIRES },
 		{ "resetargs",      LT_RESETARGS },
+		{ "rightdelim",     LT_RIGHTDELIM },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
 		{ "spellcheck",     LT_SPELLCHECK },
@@ -362,6 +366,14 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		case LT_LATEXPARAM:
 			lex >> latexparam_;
 			latexparam_ = subst(latexparam_, "&quot;", "\"");
+			break;
+
+		case LT_LEFTDELIM:
+			lex >> leftdelim_;
+			break;
+
+		case LT_RIGHTDELIM:
+			lex >> rightdelim_;
 			break;
 
 		case LT_INNERTAG:

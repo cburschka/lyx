@@ -2428,6 +2428,10 @@ void Paragraph::latex(BufferParams const & bparams,
 			os << '{';
 			++column;
 		}
+		if (!style.leftdelim().empty()) {
+			os << style.leftdelim();
+			column += style.leftdelim().size();
+		}
 		if (allowcust)
 			column += d->startTeXParParams(bparams, os, runparams);
 	}
@@ -2456,6 +2460,11 @@ void Paragraph::latex(BufferParams const & bparams,
 			if (style.isCommand()) {
 				os << '{';
 				++column;
+			}
+
+			if (!style.leftdelim().empty()) {
+				os << style.leftdelim();
+				column += style.leftdelim().size();
 			}
 
 			if (allowcust)
@@ -2646,6 +2655,11 @@ void Paragraph::latex(BufferParams const & bparams,
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {
 		os << "}]~";
+	}
+
+	if (!style.rightdelim().empty()) {
+		os << style.rightdelim();
+		column += style.rightdelim().size();
 	}
 
 	if (allowcust && d->endTeXParParams(bparams, os, runparams)

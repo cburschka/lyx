@@ -124,6 +124,10 @@ public:
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
+	docstring leftdelim() const { return leftdelim_; }
+	///
+	docstring rightdelim() const { return rightdelim_; }
+	///
 	std::string const & innertag() const { return innertag_; }
 	///
 	std::string const & labeltag() const { return labeltag_; }
@@ -314,6 +318,10 @@ private:
 	docstring labelstring_appendix_;
 	/// LaTeX parameter for environment
 	std::string latexparam_;
+	/// Left delimiter of the content
+	docstring leftdelim_;
+	/// Right delimiter of the content
+	docstring rightdelim_;
 	/// Internal tag to use (e.g., <title></title> for sect header)
 	std::string innertag_;
 	/// Internal tag to use (e.g. to surround varentrylist label)

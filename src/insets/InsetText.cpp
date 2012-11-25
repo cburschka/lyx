@@ -459,6 +459,10 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 		if (!il.latexparam().empty())
 			os << from_utf8(il.latexparam());
 	}
+
+	if (!il.leftdelim().empty())
+		os << il.leftdelim();
+
 	OutputParams rp = runparams;
 	if (il.isPassThru())
 		rp.pass_thru = true;
@@ -470,6 +474,9 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	// Output the contents of the inset
 	latexParagraphs(buffer(), text_, os, rp);
 	runparams.encoding = rp.encoding;
+
+	if (!il.rightdelim().empty())
+		os << il.rightdelim();
 
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {

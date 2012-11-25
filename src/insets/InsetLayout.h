@@ -76,6 +76,10 @@ public:
 	///
 	std::string latexparam() const { return latexparam_; }
 	///
+	docstring leftdelim() const { return leftdelim_; }
+	///
+	docstring rightdelim() const { return rightdelim_; }
+	///
 	FontInfo font() const { return font_; }
 	///
 	FontInfo labelfont() const { return labelfont_; }
@@ -187,6 +191,10 @@ private:
 	std::string latexname_;
 	///
 	std::string latexparam_;
+	///
+	docstring leftdelim_;
+	///
+	docstring rightdelim_;
 	///
 	FontInfo font_;
 	///

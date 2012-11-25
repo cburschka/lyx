@@ -106,6 +106,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_LATEXNAME,
 		IL_LATEXPARAM,
 		IL_LATEXTYPE,
+		IL_LEFTDELIM,
 		IL_LYXTYPE,
 		IL_KEEPEMPTY,
 		IL_MULTIPAR,
@@ -114,6 +115,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_PARBREAKISNEWLINE,
 		IL_PREAMBLE,
 		IL_REQUIRES,
+		IL_RIGHTDELIM,
 		IL_SPELLCHECK,
 		IL_REFPREFIX,
 		IL_RESETSFONT,
@@ -153,6 +155,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "latexname", IL_LATEXNAME },
 		{ "latexparam", IL_LATEXPARAM },
 		{ "latextype", IL_LATEXTYPE },
+		{ "leftdelim", IL_LEFTDELIM },
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
 		{ "needprotect", IL_NEEDPROTECT },
@@ -162,6 +165,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "refprefix", IL_REFPREFIX },
 		{ "requires", IL_REQUIRES },
 		{ "resetsfont", IL_RESETSFONT },
+		{ "rightdelim", IL_RIGHTDELIM },
 		{ "spellcheck", IL_SPELLCHECK }
 	};
 
@@ -228,6 +232,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_LATEXPARAM:
 			lex >> tmp;
 			latexparam_ = support::subst(tmp, "&quot;", "\"");
+			break;
+		case IL_LEFTDELIM:
+			lex >> leftdelim_;
+			break;
+		case IL_RIGHTDELIM:
+			lex >> rightdelim_;
 			break;
 		case IL_LABELFONT:
 			labelfont_ = lyxRead(lex, inherit_font);

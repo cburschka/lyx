@@ -12443,6 +12443,35 @@ depending upon the LaTeX type.
 
 \end_deeper
 \begin_layout Description
+
+\change_inserted -712698321 1353866861
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866852
+LeftDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866852
+string
+\end_layout
+
+\end_inset
+
+] A string that is put at the beginning of the style content.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -13440,6 +13469,35 @@ CopyStyle
 , but you do not want to inherit its (required and optional) arguments.
 \change_unchanged
 
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1353866881
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866876
+RightDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866873
+string
+\end_layout
+
+\end_inset
+
+] A string that is put at the end of the layout content.
 \end_layout
 
 \begin_layout Description
@@ -15178,7 +15236,15 @@ Note:Greyedout
 status collapsed
 
 \begin_layout Plain Layout
-OptArg
+
+\change_deleted -712698321 1353866704
+Opt
+\change_unchanged
+Arg
+\change_inserted -712698321 1353866707
+ument
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16422,6 +16488,39 @@ depending upon the LaTeX type.
 
 \end_deeper
 \begin_layout Description
+
+\change_inserted -712698321 1353866797
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866742
+LeftDelim
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866752
+string
+\end_layout
+
+\end_inset
+
+] A string that is put at the beginning of the layout content.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -16884,6 +16983,39 @@ status collapsed
 ] Whether this inset should use the font of its surrounding environment
  or uses its own.
  Default is true: uses its own.
+\change_inserted -712698321 1353866806
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1353866814
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866810
+RightDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1353866806
+string
+\end_layout
+
+\end_inset
+
+] A string that is put at the end of the layout content.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
