@@ -50,24 +50,24 @@ EndPreamble
 # ------------------------
 
 # With enumitem, the three standard list environments take an optional
-# argument. See enumitem.pdf_ for possible values.
+# argument. See enumitem.pdf for possible values.
 
 IfStyle Itemize
-	Argument option
+	Argument 1
 		LabelString   "Itemize Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument
 End
 
 IfStyle Enumerate
-	Argument option
+	Argument 1
 		LabelString   "Enumerate Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument
 End
 
 IfStyle Description
-	Argument option
+	Argument 1
 		LabelString   "Description Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument

@@ -34,7 +34,7 @@ Style Title
 	ParSep                1
 	Align                 Center
 	LabelType             No_Label
-	Argument shorttitle
+	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "Short title which appears in the running headers"
 	EndArgument

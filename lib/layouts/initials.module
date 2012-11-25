@@ -29,11 +29,11 @@ Style Initial
 	Margin			First_Dynamic
 	LabelType		static
 	LabelString		Initial
-	Argument option
+	Argument 1
 		LabelString   "Initial Option"
 		Tooltip       "Optional argument for initial (see lettrine manual)"
 	EndArgument
-	Argument inital
+	Argument 2
 		Mandatory     1
 		LabelString   "Initial"
 		Tooltip       "Initial letter"
