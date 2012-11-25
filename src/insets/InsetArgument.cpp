@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Martin Vermeer
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
