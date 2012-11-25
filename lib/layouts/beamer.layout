@@ -140,7 +140,7 @@ Style Description
   Align            Left
   LabelType        Manual
   LabelFont 
-    Series        Bold
+    Series         Bold
   EndFont
 End
 
@@ -412,7 +412,7 @@ Style AgainFrame
   LabelBottomSep    0
   LeftMargin        M
   LabelSep          xx
-  LabelString       "Again frame with label"
+  LabelString       "Repeat frame with label"
   Font
     Color           latex
   EndFont
@@ -519,8 +519,8 @@ Style Columns
   LabelString      "Columns"
   LeftMargin       "Columnsxx"
   Argument 1
-    LabelString    "Columns Options"
-    Tooltip        "Columns options (see beamer manual)"
+    LabelString    "Column Placement Options"
+    Tooltip        "Column placement options (t, T, c, b)"
   EndArgument
   ParSkip          0.5
   TopSep           1
@@ -533,55 +533,19 @@ Style Columns
 End
 
 Style ColumnsCenterAligned
-  Category         Columns
-  KeepEmpty        1
-  Margin           Static
-  LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
-  Align            left
-  LabelType        Static
-  LabelSep         xx
-  LatexName        centercolumns}%{
+  CopyStyle        Columns
+  LatexParam       [c]
   LabelString      "Columns (center aligned)"
   LeftMargin       "Columns (center aligned)xx"
-  ParSkip          0.5
-  TopSep           1
-  BottomSep        1
-  ParSep           0
-  Preamble
-  \newenvironment{centercolumns}{\begin{columns}[c]}{\end{columns}}
-  EndPreamble
-  LabelFont 
-    Family         Roman
-    Color          latex
-  EndFont
+  ResetArgs        1
 End
 
 Style ColumnsTopAligned
-  Category         Columns
-  KeepEmpty        1
-  Margin           Static
-  LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
-  Align            left
-  LabelType        Static
-  LabelSep         xx
-  LatexName        topcolumns}%{
+  CopyStyle        Columns
+  LatexParam       [t]
   LabelString      "Columns (top aligned)"
   LeftMargin       "Columns (top aligned)xx"
-  ParSkip          0.5
-  TopSep           1
-  BottomSep        1
-  ParSep           0
-  Preamble
-  \newenvironment{topcolumns}{\begin{columns}[t]}{\end{columns}}
-  EndPreamble
-  LabelFont 
-    Family         Roman
-    Color          latex
-  EndFont
+  ResetArgs        1
 End
 
 
@@ -597,7 +561,7 @@ Style Pause
   Margin           First_Dynamic
   Argument 1
     LabelString    "Pause number"
-    Tooltip        "Number of slide where the pause takes effect"
+    Tooltip        "Number of slide where the context below the pause gets visible"
   EndArgument
   NextNoIndent     1
   ParSkip          0
@@ -885,7 +849,7 @@ InsetLayout "Flex:InstituteMark"
   LyxType          custom
   LatexType        command
   LatexName        inst
-  LabelString      "Institute mark"
+  LabelString      "Institute Mark"
   Font
     Color          foreground
     Size           Small
@@ -1185,8 +1149,6 @@ Style NoteItem
   EndFont
 End
  
-
-# Input lyxmacros.inc
 
 #
 # CHARSTYLES
