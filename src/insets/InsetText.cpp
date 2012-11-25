@@ -442,16 +442,22 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			os << '{';
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
 			if (il.isDisplay())
-			    os << breakln;
+				os << breakln;
 			else
-			    os << safebreakln;
+				os << safebreakln;
 			if (runparams.lastid != -1)
 				os.texrow().start(runparams.lastid,
 						  runparams.lastpos);
-			os << "\\begin{" << from_utf8(il.latexname()) << "}\n";
+			os << "\\begin{" << from_utf8(il.latexname()) << "}";
+			getOptArg(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
+			os << '\n';
 		}
+	} else {
+		getOptArg(os, runparams);
+		if (!il.latexparam().empty())
+			os << from_utf8(il.latexparam());
 	}
 	OutputParams rp = runparams;
 	if (il.isPassThru())
