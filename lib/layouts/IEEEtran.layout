@@ -11,7 +11,7 @@
 
 Format 41
 
-Sides	1
+Sides		1
 SecNumDepth	3
 TocDepth	3
 DefaultStyle	Standard
@@ -240,9 +240,9 @@ Style Appendix
   LatexName	appendix
   LabelString	"Appendix"
   Argument 1
-    LabelString	"Appendix Title"
-    Tooltip	"Optional title of the appendix"
- EndArgument
+    LabelString	"Short Title"
+    Tooltip	"Short title for the appendix"
+  EndArgument
 End
 
 
@@ -275,8 +275,8 @@ Style Biography
   LaTeXName	IEEEbiography
   Category	BackMatter
   Argument 1
-    LabelString	"Biography Photo"
-    Tooltip	"Insert a photo to your biography"
+    LabelString	"Photo"
+    Tooltip	"Optional photo for biography"
   EndArgument
   Align	Block
   TextFont
