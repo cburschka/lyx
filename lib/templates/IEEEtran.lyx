@@ -393,7 +393,7 @@ Introduction
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The 
@@ -402,12 +402,15 @@ The
 \backslash
 IEEEPARstart
 \series default
- command is needed in the first paragraph fo the document.
+ command is needed in the first paragraph of the document.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -468,7 +471,7 @@ Methodology
 
 \begin_layout Theorem
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Theorem name
@@ -684,6 +687,25 @@ options "IEEEtran"
 \end_layout
 
 \begin_layout Biography
+\begin_inset Argument
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../examples/CV-image.png
+	width 1in
+	height 1.25in
+	keepAspectRatio
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -706,47 +728,6 @@ status collapsed
 \end_inset
 
  All about you and the what your interests are.
-\begin_inset Argument
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../examples/CV-image.png
-	width 1in
-	height 1.25in
-	keepAspectRatio
-	clip
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout --Separator--
