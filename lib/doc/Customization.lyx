@@ -16231,10 +16231,20 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1353867544
+
 \emph on
 Paragraph
 \emph default
-, Command, Environment, Item_Environment,
+, 
+\change_unchanged
+Command, Environment, 
+\change_inserted -712698321 1353867573
+None
+\change_deleted -712698321 1353867557
+Item_Environment,
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16244,7 +16254,15 @@ Paragraph
 status collapsed
 
 \begin_layout Plain Layout
-List_Environment, Bib_Environment
+
+\change_deleted -712698321 1353867564
+List_Environment
+\change_unchanged
+, 
+\change_deleted -712698321 1353867569
+Bib_Environment
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16278,7 +16296,13 @@ LatexType
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1353867582
 Paragraph
+\change_inserted -712698321 1353867583
+None
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16355,6 +16379,8 @@ LatexName
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1353867600
 \begin_inset Flex Code
 status collapsed
 
@@ -16391,6 +16417,8 @@ item
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1353867600
 \begin_inset Flex Code
 status collapsed
 
@@ -16456,6 +16484,8 @@ settings
 
  dialog.
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
