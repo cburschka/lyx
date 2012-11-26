@@ -216,14 +216,17 @@ Style Entry
 	  Mandatory	1
 	  LabelString	"What?"
 	  Tooltip	"What?"
+	  Font
+	    Series	Bold
+	  EndFont
 	EndArgument
 	Argument 3
 	  Mandatory	1
 	  LabelString	"Affiliation"
 	  Tooltip	"Affiliation"
-	  #Font
-	  #  Shape	Italic
-	  #EndFont
+	  Font
+	    Shape	Italic
+	  EndFont
 	EndArgument
 	Argument 4
 	  Mandatory	1
@@ -281,9 +284,10 @@ Style ItemWithComment
 	  Mandatory	1
 	  LabelString	"Text"
 	  Tooltip	"Text"
-	  #Font
-	  #  Series	Bold
-	  #EndFont
+	  Font
+	    Series	Bold
+	    Shape	Up
+	  EndFont
 	EndArgument
 	Font
 	  Shape		Italic
