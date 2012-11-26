@@ -1464,8 +1464,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			if (!layout_->latexargs().empty())
 				latexArgInsets(*owner_, os, features.runparams(),
 					       layout_->latexargs());
-			else
-				os << from_ascii(layout_->latexparam());
+			os << from_ascii(layout_->latexparam());
 		}
 		docstring::size_type const length = ods.str().length();
 		// this will output "{" at the beginning, but not at the end

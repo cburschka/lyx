@@ -409,8 +409,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		// Separate handling of optional argument inset.
 		if (!style.latexargs().empty())
 			latexArgInsets(par, os, runparams, style.latexargs());
-		else
-			os << from_ascii(style.latexparam());
+		os << from_ascii(style.latexparam());
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
