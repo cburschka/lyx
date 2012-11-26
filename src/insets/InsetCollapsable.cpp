@@ -173,7 +173,9 @@ void InsetCollapsable::read(Lexer & lex)
 Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 {
 	Dimension dim;
-	theFontMetrics(getLayout().labelfont()).buttonText(
+	FontInfo labelfont(getLabelfont());
+	labelfont.realize(sane_font);
+	theFontMetrics(labelfont).buttonText(
 		buttonLabel(bv), dim.wid, dim.asc, dim.des);
 	return dim;
 }
@@ -184,7 +186,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	auto_open_[mi.base.bv] = mi.base.bv->cursor().isInside(this);
 
 	FontInfo tmpfont = mi.base.font;
-	mi.base.font = getLayout().font();
+	mi.base.font = getFont();
 	mi.base.font.realize(tmpfont);
 
 	BufferView const & bv = *mi.base.bv;
@@ -201,7 +203,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case SubLabel: {
 		InsetText::metrics(mi, dim);
 		// consider width of the inset label
-		FontInfo font(getLayout().labelfont());
+		FontInfo font(getLabelfont());
 		font.realize(sane_font);
 		font.decSize();
 		font.decSize();
@@ -253,7 +255,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	auto_open_[&bv] = bv.cursor().isInside(this);
 
 	FontInfo tmpfont = pi.base.font;
-	pi.base.font = getLayout().font();
+	pi.base.font = getFont();
 	pi.base.font.realize(tmpfont);
 
 	// Draw button first -- top, left or only
@@ -267,7 +269,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = y - dimc.asc;
 		button_dim.y2 = y + dimc.des;
 
-		FontInfo labelfont = getLayout().labelfont();
+		FontInfo labelfont = getLabelfont();
 		labelfont.setColor(labelColor());
 		pi.pain.buttonText(x, y, buttonLabel(bv), labelfont,
 			mouse_hover_[&bv]);
@@ -334,7 +336,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 		// the label below the text. Can be toggled.
 		if (geometry(bv) == SubLabel) {
-			FontInfo font(getLayout().labelfont());
+			FontInfo font(getLabelfont());
 			font.realize(sane_font);
 			font.decSize();
 			font.decSize();

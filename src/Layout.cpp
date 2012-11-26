@@ -877,6 +877,8 @@ void Layout::readArgument(Lexer & lex)
 	arg.mandatory = false;
 	bool error = false;
 	bool finished = false;
+	arg.font = inherit_font;
+	arg.labelfont = inherit_font;
 	unsigned int nr;
 	lex >> nr;
 	while (!finished && lex.isOK() && !error) {
@@ -905,6 +907,13 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "requires") {
 			lex.next();
 			arg.requires = lex.getString();
+		} else if (tok == "decoration") {
+			lex.next();
+			arg.decoration = lex.getString();
+		} else if (tok == "font") {
+			arg.font = lyxRead(lex, arg.font);
+		} else if (tok == "labelfont") {
+			arg.labelfont = lyxRead(lex, arg.labelfont);
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

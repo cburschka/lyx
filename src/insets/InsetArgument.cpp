@@ -34,7 +34,8 @@ namespace lyx {
 
 
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
-    : InsetCollapsable(buf), name_(name), labelstring_(docstring())
+    : InsetCollapsable(buf), name_(name), labelstring_(docstring()),
+      font_(inherit_font), labelfont_(inherit_font), decoration_(string())
 {}
 
 
@@ -102,6 +103,9 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		support::rsplit(label, striplabel, '|');
 		labelstring_ = striplabel.empty() ? label: striplabel;
 		tooltip_ = translateIfPossible((*lait).second.tooltip);
+		font_ = (*lait).second.font;
+		labelfont_ = (*lait).second.labelfont;
+		decoration_ = (*lait).second.decoration;
 	} else {
 		labelstring_ = _("Unknown Argument");
 		tooltip_ = _("Argument not known in this Layout. Will be supressed in the output.");
@@ -200,6 +204,43 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 string InsetArgument::contextMenuName() const
 {
 	return "context-argument";
+}
+
+FontInfo InsetArgument::getFont() const
+{
+	if (font_ != inherit_font)
+		return font_;
+	return getLayout().font();
+}
+
+FontInfo InsetArgument::getLabelfont() const
+{
+	if (labelfont_ != inherit_font)
+		return labelfont_;
+	return getLayout().labelfont();
+}
+
+namespace {
+
+InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
+{
+	if (support::compare_ascii_no_case(str, "classic") == 0)
+		return InsetLayout::CLASSIC;
+	if (support::compare_ascii_no_case(str, "minimalistic") == 0)
+		return InsetLayout::MINIMALISTIC;
+	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
+		return InsetLayout::CONGLOMERATE;
+	return InsetLayout::DEFAULT;
+}
+
+}// namespace anon
+
+InsetLayout::InsetDecoration InsetArgument::decoration() const
+{
+	InsetLayout::InsetDecoration dec = getLayout().decoration();
+	if (!decoration_.empty())
+		dec = translateDecoration(decoration_);
+	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
 }
 
 void InsetArgument::latexArgument(otexstream & os,

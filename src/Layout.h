@@ -95,6 +95,9 @@ public:
 		docstring rdelim;
 		docstring tooltip;
 		std::string requires;
+		std::string decoration;
+		FontInfo font;
+		FontInfo labelfont;
 	};
 	///
 	typedef std::map<unsigned int, latexarg> LaTeXArgMap;

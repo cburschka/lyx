@@ -66,6 +66,12 @@ public:
 	/// \name Public functions inherited from InsetCollapsable class
 	//@{
 	///
+	InsetLayout::InsetDecoration decoration() const;
+	///
+	FontInfo getFont() const;
+	///
+	FontInfo getLabelfont() const;
+	///
 	void setButtonLabel();
 	//@}
 
@@ -78,6 +84,12 @@ private:
 	docstring labelstring_;
 	///
 	docstring tooltip_;
+	///
+	FontInfo font_;
+	///
+	FontInfo labelfont_;
+	///
+	std::string decoration_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

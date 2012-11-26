@@ -111,6 +111,10 @@ public:
 
 	/// Default looks
 	virtual InsetLayout::InsetDecoration decoration() const;
+	/// Inset font
+	virtual FontInfo getFont() const { return getLayout().font(); }
+	/// Label font
+	virtual FontInfo getLabelfont() const { return getLayout().labelfont(); }
 	///
 	enum Geometry {
 		TopButton,
