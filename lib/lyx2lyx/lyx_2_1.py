@@ -1193,7 +1193,13 @@ def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
 
 
 def revert_IEEEtran(document):
-    " Reverts InsetArgument to old syntax "
+    '''
+    Reverts InsetArgument of
+    Page headings
+    Biography
+    Biography without photo
+    to TeX-code
+    '''
     i = 0
     j = 0
     k = 0
@@ -1246,7 +1252,8 @@ def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
       lineArg = find_token(document.body, "\\begin_inset ERT", lineArg)
       if environment == False and lineArg != -1:
         bracePair = find_token(document.body, "}{", lineArg)
-        if bracePair == lineArg + 5: # assure that the "}{" is in this ERT
+        # assure that the "}{" is in this ERT (5 is or files saved with LyX 2.0, 4 for files exported by LyX 2.1)
+        if bracePair == lineArg + 5 or bracePair == lineArg + 4:
           end = find_token(document.body, "\\end_inset", bracePair)
           document.body[lineArg : end + 1] = ["\\end_layout", "", "\\end_inset"]
           document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
@@ -1255,13 +1262,13 @@ def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
           lineArg = lineArg + 1
       if environment == True and lineArg != -1:
         opening = find_token(document.body, "{", lineArg)
-        if opening == lineArg + 5: # assure that the "{" is in this ERT
+        if opening == lineArg + 5 or opening == lineArg + 4: # assure that the "{" is in this ERT
           end = find_token(document.body, "\\end_inset", opening)
           document.body[lineArg : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
           n = n + 1
           lineArg2 = find_token(document.body, "\\begin_inset ERT", lineArg)
           closing = find_token(document.body, "}", lineArg2)
-          if closing == lineArg2 + 5: # assure that the "}" is in this ERT
+          if closing == lineArg2 + 5 or closing == lineArg2 + 4: # assure that the "}" is in this ERT
             end2 = find_token(document.body, "\\end_inset", closing)
             document.body[lineArg2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
         else:
@@ -1305,6 +1312,32 @@ def convert_IEEEtran(document):
         return
 
 
+def revert_AASTeX(document):
+    " Reverts InsetArgument of Altaffilation to TeX-code "
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Altaffilation", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
+def convert_AASTeX(document):
+    " Converts ERT of Altaffilation to InsetArgument "
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Altaffilation", i)
+      if i != -1:
+        convert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -1344,11 +1377,11 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran]]
+           [447, [convert_IEEEtran, convert_AASTeX]]
           ]
 
 revert =  [
-           [446, [revert_IEEEtran]],
+           [446, [revert_IEEEtran, revert_AASTeX]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
