@@ -22,11 +22,14 @@ Sides              1
 SecNumDepth        2
 TocDepth           2
 DefaultStyle       Standard
+
+# Pre-loaded packages
 Provides hyperref  1
 Provides geometry  1
 Provides color     1
 Provides xcolor    1
 
+# The default font layout
 DefaultFont
   Family           Sans
   Series           Medium
@@ -35,8 +38,7 @@ DefaultFont
   Color            None
 EndFont
 
-# To give users the choice of a title frame with and without
-# head-/footline, we define our own maketitle command
+# Provide an own maketitle command, which can be altered by Title_(Plain_Frame)
 TitleLaTeXName makebeamertitle
 AddToPreamble
   % this default might be overridden by plain title style
@@ -177,7 +179,7 @@ Style Part
   LabelFont
     Color          Latex
   EndFont
-  TocLevel 0
+  TocLevel         0
 End
 
 Style Section
@@ -252,7 +254,7 @@ Style Subsection
     Color          latex
   EndFont
   LabelStringAppendix "\arabic{section}.\arabic{subsection}"
-  TocLevel 2
+  TocLevel         2
 End
 
 Style Subsection*
@@ -294,7 +296,7 @@ Style Subsubsection
     Color          latex
   EndFont
   LabelStringAppendix "\arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
-  TocLevel 2
+  TocLevel         3
 End
 
 Style Subsubsection*
