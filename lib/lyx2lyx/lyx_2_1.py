@@ -1338,6 +1338,32 @@ def convert_AASTeX(document):
         return
 
 
+def revert_AGUTeX(document):
+    " Reverts InsetArgument of Author affiliation to TeX-code "
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Author affiliation", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
+def convert_AGUTeX(document):
+    " Converts ERT of Author affiliation to InsetArgument "
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Author affiliation", i)
+      if i != -1:
+        convert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -1377,11 +1403,11 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran, convert_AASTeX]]
+           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX]]
           ]
 
 revert =  [
-           [446, [revert_IEEEtran, revert_AASTeX]],
+           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
