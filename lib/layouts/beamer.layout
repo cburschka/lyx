@@ -1133,7 +1133,8 @@ Style NoteItem
   Category         MainText
   Margin           Static
   LatexType        Command
-  LatexName        note[item]
+  LatexName        note
+  LatexParam       [item]
   ParSkip          0.5
   TopSep           1
   BottomSep        1
@@ -1185,7 +1186,8 @@ End
 
 InsetLayout Flex:PresentationMode
    LyXType         custom
-   LatexName       mode<presentation>
+   LatexName       mode
+   LatexParam      <presentation>
    LatexType       command
    Decoration      classic
    LabelString     Presentation
