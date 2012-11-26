@@ -6,14 +6,15 @@
 
 Format 41
 
-Columns                 1
-Sides                   1
-SecNumDepth             3
-TocDepth                3
-DefaultStyle            Standard
+Columns			1
+Sides			1
+SecNumDepth		3
+TocDepth		3
+DefaultStyle		Standard
+Provides natbib		1
 
 ClassOptions
-	FontSize		10|11|12
+	FontSize	10|11|12
 end
 
 Preamble
@@ -68,6 +69,10 @@ Style Title
 	ParSep			1
 	Align			Center
 	AlignPossible		Left, Right
+	Argument 1
+	  LabelString		"Short Title|S"
+	  Tooltip		"Short title that will appear in header line"
+	EndArgument
 	LabelType		No_Label
 	Font
 	  Size			Largest
@@ -117,8 +122,8 @@ Style "Alternative Affiliation"
 	LatexType		Command
 	LatexName		altaffiliation
 	Argument 1
-		LabelString   "Alternative Affiliation Option"
-		Tooltip       "Option to the alternative affiliation command"
+	  LabelString		"Affiliation Prefix"
+	  Tooltip		"A prefix like 'Also at '"
 	EndArgument
 End
 
