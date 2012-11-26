@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 447
 \begin_document
 \begin_header
 \textclass ijmpc
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -30,15 +30,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -128,13 +134,11 @@ Default
 \end_layout
 
 \begin_layout MarkBoth
-Authors' Names
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Authors' Names
 \end_layout
 
 \end_inset
@@ -333,8 +337,6 @@ Capitalize the first letter of the first word only.
 \end_layout
 
 \begin_layout Subsection
-
-\backslash
 Lists of items
 \end_layout
 
@@ -355,7 +357,7 @@ Items may also be numbered in lowercase roman numerals:
 \end_layout
 
 \begin_layout RomanList
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -373,7 +375,7 @@ item two
 
 \begin_deeper
 \begin_layout RomanList
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -674,7 +676,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">

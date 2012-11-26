@@ -1193,13 +1193,14 @@ def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
 
 
 def revert_IEEEtran(document):
-    '''
-    Reverts InsetArgument of
-    Page headings
-    Biography
-    Biography without photo
-    to TeX-code
-    '''
+  '''
+  Reverts InsetArgument of
+  Page headings
+  Biography
+  Biography without photo
+  to TeX-code
+  '''
+  if document.textclass == "IEEEtran":
     i = 0
     j = 0
     k = 0
@@ -1276,13 +1277,14 @@ def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
 
 
 def convert_IEEEtran(document):
-    '''
-    Converts ERT of
-    Page headings
-    Biography
-    Biography without photo
-    to InsetArgument
-    '''
+  '''
+  Converts ERT of
+  Page headings
+  Biography
+  Biography without photo
+  to InsetArgument
+  '''
+  if document.textclass == "IEEEtran":
     i = 0
     j = 0
     k = 0
@@ -1313,7 +1315,8 @@ def convert_IEEEtran(document):
 
 
 def revert_AASTeX(document):
-    " Reverts InsetArgument of Altaffilation to TeX-code "
+  " Reverts InsetArgument of Altaffilation to TeX-code "
+  if document.textclass == "aastex":
     i = 0
     while True:
       if i != -1:
@@ -1326,7 +1329,8 @@ def revert_AASTeX(document):
 
 
 def convert_AASTeX(document):
-    " Converts ERT of Altaffilation to InsetArgument "
+  " Converts ERT of Altaffilation to InsetArgument "
+  if document.textclass == "aastex":
     i = 0
     while True:
       if i != -1:
@@ -1339,7 +1343,8 @@ def convert_AASTeX(document):
 
 
 def revert_AGUTeX(document):
-    " Reverts InsetArgument of Author affiliation to TeX-code "
+  " Reverts InsetArgument of Author affiliation to TeX-code "
+  if document.textclass == "agutex":
     i = 0
     while True:
       if i != -1:
@@ -1352,11 +1357,40 @@ def revert_AGUTeX(document):
 
 
 def convert_AGUTeX(document):
-    " Converts ERT of Author affiliation to InsetArgument "
+  " Converts ERT of Author affiliation to InsetArgument "
+  if document.textclass == "agutex":
     i = 0
     while True:
       if i != -1:
         i = find_token(document.body, "\\begin_layout Author affiliation", i)
+      if i != -1:
+        convert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
+def revert_IJMP(document):
+  " Reverts InsetArgument of MarkBoth to TeX-code "
+  if document.textclass == "ijmpc" or document.textclass == "ijmpd":
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout MarkBoth", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
+def convert_IJMP(document):
+  " Converts ERT of MarkBoth to InsetArgument "
+  if document.textclass == "ijmpc" or document.textclass == "ijmpd":
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout MarkBoth", i)
       if i != -1:
         convert_Argument_to_TeX_brace(document, i, 1, 1, False)
         i = i + 1
@@ -1403,11 +1437,11 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX]]
+           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP]]
           ]
 
 revert =  [
-           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX]],
+           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
