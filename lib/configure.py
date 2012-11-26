@@ -577,7 +577,8 @@ def checkFormatEntries(dtl_tools):
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
     checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
-        'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
+        'jedit', 'TeXnicCenter', 'WinEdt', 'WinShell', 'PSPad', 'nedit', 'gedit', 'notepad', \
+        'geany', 'leafpad', 'mousepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
 \Format asciixfig  asc    "Plain text (Xfig output)"   "" ""	"%%"	""
@@ -628,7 +629,7 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
-    checkViewer('a PDF previewer', ['kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
+    checkViewer('a PDF previewer', ['pdfview', 'kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"
