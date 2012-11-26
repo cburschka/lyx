@@ -1166,6 +1166,145 @@ def revert_latexargs(document):
       i = i + 1
 
 
+def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
+    '''
+    Reverts an InsetArgument to TeX-code
+    usage:
+    revert_Argument_to_TeX_brace(document, LineOfBeginLayout, StartArgument, EndArgument, isEnvironment)
+    LineOfBeginLayout is the line  of the \begin_layout statement
+    StartArgument is the number of the first argument that needs to be converted
+    EndArgument is the number of the last argument that needs to be converted or the last defined one
+    isEnvironment must be true, if the layout id for a LaTeX environment
+    '''
+    lineArg = 0
+    while lineArg != -1 and n < nmax + 1:
+      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
+      if lineArg != -1:
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+        endLayout = find_token(document.body, "\\end_layout", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", endLayout)
+        if environment == False:
+          document.body[endLayout : endInset + 1] = put_cmd_in_ert("}{")
+          del(document.body[lineArg : beginPlain + 1])
+        else:
+          document.body[endLayout : endInset + 1] = put_cmd_in_ert("}")
+          document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
+        n = n + 1
+
+
+def revert_IEEEtran(document):
+    " Reverts InsetArgument to old syntax "
+    i = 0
+    j = 0
+    k = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Page headings", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if j != -1:
+        j = find_token(document.body, "\\begin_layout Biography without photo", j)
+      if j != -1:
+        revert_Argument_to_TeX_brace(document, j, 1, 1, True)
+        j = j + 1
+      if k != -1:
+        k = find_token(document.body, "\\begin_layout Biography", k)
+        kA = find_token(document.body, "\\begin_layout Biography without photo", k)
+        if k == kA and k != -1:
+          k = k + 1
+          continue
+      if k != -1:
+        # start with the second argument, therefore 2
+        revert_Argument_to_TeX_brace(document, k, 2, 2, True)
+        k = k + 1
+      if i == -1 and j == -1 and k == -1:
+        return
+
+
+def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
+    '''
+    Converts TeX code to an InsetArgument
+    !!! Be careful if the braces are different in your case as exppected here:
+    - }{ separates mandatory arguments of commands
+    - { and } surround a mandatory argument of an environment
+    usage:
+    convert_Argument_to_TeX_brace(document, LineOfBeginLayout, StartArgument, EndArgument, isEnvironment)
+    LineOfBeginLayout is the line  of the \begin_layout statement
+    StartArgument is the number of the first ERT that needs to be converted
+    EndArgument is the number of the last ERT that needs to be converted
+    isEnvironment must be true, if the layout id for a LaTeX environment
+    
+    Notes:
+    - this routine will fail if the user has additional TeX-braces (there is nothing we can do)
+    - this routine can currently handle only one mandatory argument of environments
+    Todo:
+    - support the case that }{ is in the file in 2 separate ERTs
+    '''
+    lineArg = line
+    while lineArg != -1 and n < nmax + 1:
+      lineArg = find_token(document.body, "\\begin_inset ERT", lineArg)
+      if environment == False and lineArg != -1:
+        bracePair = find_token(document.body, "}{", lineArg)
+        if bracePair == lineArg + 5: # assure that the "}{" is in this ERT
+          end = find_token(document.body, "\\end_inset", bracePair)
+          document.body[lineArg : end + 1] = ["\\end_layout", "", "\\end_inset"]
+          document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n = n + 1
+        else:
+          lineArg = lineArg + 1
+      if environment == True and lineArg != -1:
+        opening = find_token(document.body, "{", lineArg)
+        if opening == lineArg + 5: # assure that the "{" is in this ERT
+          end = find_token(document.body, "\\end_inset", opening)
+          document.body[lineArg : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n = n + 1
+          lineArg2 = find_token(document.body, "\\begin_inset ERT", lineArg)
+          closing = find_token(document.body, "}", lineArg2)
+          if closing == lineArg2 + 5: # assure that the "}" is in this ERT
+            end2 = find_token(document.body, "\\end_inset", closing)
+            document.body[lineArg2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
+        else:
+          lineArg = lineArg + 1
+
+
+def convert_IEEEtran(document):
+    '''
+    Converts ERT of
+    Page headings
+    Biography
+    Biography without photo
+    to InsetArgument
+    '''
+    i = 0
+    j = 0
+    k = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Page headings", i)
+      if i != -1:
+        convert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if j != -1:
+        j = find_token(document.body, "\\begin_layout Biography without photo", j)
+      if j != -1:
+        convert_Argument_to_TeX_brace(document, j, 1, 1, True)
+        j = j + 1
+      if k != -1:
+        # assure that we don't handle Biography Biography without photo
+        k = find_token(document.body, "\\begin_layout Biography", k)
+        kA = find_token(document.body, "\\begin_layout Biography without photo", k - 1)
+      if k == kA and k != -1:
+        k = k + 1
+        continue
+      if k != -1:
+        # the argument we want to convert is the second one
+        convert_Argument_to_TeX_brace(document, k, 2, 2, True)
+        k = k + 1
+      if i == -1 and j == -1 and k == -1:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -1204,10 +1343,12 @@ convert = [
            [443, []],
            [444, []],
            [445, []],
-           [446, [convert_latexargs]]
+           [446, [convert_latexargs]],
+           [447, [convert_IEEEtran]]
           ]
 
 revert =  [
+           [446, [revert_IEEEtran]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
