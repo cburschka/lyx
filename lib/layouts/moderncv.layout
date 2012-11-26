@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[moderncv,color.sty,fancyhdr.sty,hyperref.sty,ifpdf.sty,marvosym.sty]{curriculum vitae (modern)}
-# modern CV textclass definition file.
+# textclass definition file for modernCV 1.2.0
 # Author : Uwe Stöhr (uwestoehr@web.de)
 
 
@@ -17,174 +17,397 @@ Provides url		1
 
 # Standard style definition
 Style Standard
-	Margin			Static
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	ParSkip			0.4
-	Align			Block
-	AlignPossible		Block, Left, Right, Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 End
 
 Input stdcounters.inc
 Input stdinsets.inc
+Input stdlists.inc
+
+Style CVStyle
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	moderncvstyle
+	Category	FrontMatter
+	InPreamble	1
+	ParSkip		0.4
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"CV style:"
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	EndFont
+End
+
+Style CVColor
+	CopyStyle	CVStyle
+	LatexName	moderncvcolor
+	LabelString	"CV color scheme:"
+End
+
+Style FirstName
+	LatexType	command
+	LatexName	firstname
+	Category	FrontMatter
+	InPreamble	1
+	TopSep		0.7
+	Align		Center
+	Font
+	  Family	Sans
+	  Size		Largest
+	EndFont
+End
+
+Style FamilyName
+	CopyStyle	FirstName
+	LatexName	familyname
+	TopSep		0.3
+	LabelString	"Family Name:"
+End
+
+Style Title
+	Margin		Static
+	LatexType	Command
+	Category	FrontMatter
+	InPreamble	1
+	LatexName	title
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		1
+	Align		Center
+	LabelType	No_Label
+	Font
+	  Size		Larger
+	  Shape		Italic
+	  EndFont
+	HTMLTag		h1
+	HTMLTitle	true
+End
+
+Style Address
+	CopyStyle	CVStyle
+	LatexName	address
+	RequiredArgs	1
+	LabelString	"Address:"
+	BottomSep	0.3
+	TopSep		0
+End
+
+Style Mobile
+	CopyStyle	CVStyle
+	LatexName	mobile
+	LabelString	"Mobile:"
+End
+
+Style Phone
+	CopyStyle	CVStyle
+	LatexName	phone
+	LabelString	"Phone:"
+End
+
+Style Fax
+	CopyStyle	CVStyle
+	LatexName	fax
+	LabelString	"Fax:"
+End
+
+Style Email
+	CopyStyle	CVStyle
+	LatexName	email
+	LabelString	"Email:"
+End
+
+Style Homepage
+	CopyStyle	CVStyle
+	LatexName	homepage
+	LabelString	"Homepage:"
+End
+
+Style ExtraInfo
+	CopyStyle	CVStyle
+	LatexName	extrainfo
+	LabelString	"Extra Info:"
+End
+
+Style Photo
+	CopyStyle	CVStyle
+	LatexName	photo
+	LabelString	"Photo:"
+	OptionalArgs	2
+End
+
+Style Quote
+	CopyStyle	CVStyle
+	LatexName	quote
+	LabelType	No_Label
+	Align		Center
+	BottomSep	0.7
+	TopSep		0.5
+	Font
+	  Shape		Italic
+	  Size		Large
+	EndFont
+End
 
 Style Section
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		section
-	NeedProtect		1
-	NextNoIndent		1
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0.7
-	ParSep			0.7
-	Align			Block
-	LabelSep		xxx
-	LabelType		No_Label
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	section
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	LabelSep	xxx
+	LabelType	No_Label
 	Font
-	  Family		Sans
-	  Series		Bold
+	  Family	Sans
+	  Series	Bold
 	EndFont
-	TocLevel		1
+	TocLevel	1
 End
 
 Style Subsection
-	CopyStyle		Section
-	LatexName		subsection
-	TopSep			0.9
-	BottomSep		0
-	ParSep			0.5
+	CopyStyle	Section
+	LatexName	subsection
+	TopSep		0.9
+	BottomSep	0
+	ParSep		0.5
 	Font
-	  Family		Sans
-	  Series		Medium
+	  Family	Sans
+	  Series	Medium
 	EndFont
-	TocLevel		2
+	TocLevel	2
 End
 
 Style Entry
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		cventry
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Entry:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	cventry
+	RequiredArgs	5
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Entry:"
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style Item
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		cvitem
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Item:"
-	LabelFont
-	  Series		Bold
-	  Color			Blue
-	EndFont
+	CopyStyle	Entry
+	LatexName	cvitem
+	RequiredArgs	1
+	LabelString	"Item:"
 End
 
 Style ListItem
-	CopyStyle		Item
-	LatexName		cvlistitem
-	LabelString		"List Item:"
+	CopyStyle	Item
+	LatexName	cvlistitem
+	Category	List
+	RequiredArgs	0
+	LabelString	"List Item:"
+End
+
+Style ItemWithComment
+	CopyStyle	Item
+	LatexName	cvitemwithcomment
+	RequiredArgs	2
+	LabelString	"Item with comment:"
+	Font
+	  Shape		Italic
+	EndFont
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	  Shape		Up
+	EndFont
 End
 
 Style DoubleItem
-	CopyStyle		Item
-	LatexName		cvlistdoubleitem
-	LabelString		"Double Item:"
+	CopyStyle	Item
+	LatexName	cvdoubleitem
+	RequiredArgs	3
+	LabelString	"Double Item:"
+End
+
+Style DoubleListItem
+	CopyStyle	Item
+	LatexName	cvlistdoubleitem
+	Category	List
+	LabelString	"Double List Item:"
 End
 
 Style Space
-	CopyStyle		Item
-	LatexName		vspace*
-	LabelString		"Space:"
+	ObsoletedBy	VSpace
 End
 
 Style Language
-	CopyStyle		Item
-	LatexName		cvlanguage
-	LabelString		"Language:"
+	ObsoletedBy	ItemWithComment
 End
 
 Style Computer
-	CopyStyle		Item
-	LatexName		cvcomputer
-	LabelString		"Computer:"
+	ObsoletedBy	DoubleItem
 End
 
 Style EmptySection
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		emptysection{}
-	KeepEmpty		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Empty Section"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	emptysection{}
+	KeepEmpty	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Empty Section"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
 	EndFont
 End
 
 Style CloseSection
-	CopyStyle		EmptySection
-	LatexName		closesection{}
-	LabelString		"Close Section"
+	CopyStyle	EmptySection
+	LatexName	closesection{}
+	LabelString	"Close Section"
+End
+
+Style MakeCVtitle
+	CopyStyle	EmptySection
+	LatexName	makecvtitle{}
+	LabelString	"Make CV title"
+	Category	Title
+End
+
+Style MakeLetterTitle
+	CopyStyle	EmptySection
+	LatexName	makelettertitle{}
+	LabelString	"Make letter title"
+	Category	Letter
+End
+
+Style MakeLetterClosing
+	CopyStyle	EmptySection
+	LatexName	makeletterclosing{}
+	LabelString	"Close Letter"
+	Category	Letter
 End
 
 Style Bibliography
-	Margin			First_Dynamic
-	LatexType		Bib_Environment
-	LatexName		thebibliography
-	NextNoIndent		1
-	LeftMargin		MM
-	ParSkip			0.4
-	ItemSep			0
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.5
-	Align			Block
-	AlignPossible		Block, Left
-	LabelType		Bibliography
-	LabelString		"References"
-	LabelBottomSep		1.2
+	Margin		First_Dynamic
+	LatexType	Bib_Environment
+	LatexName	thebibliography
+	NextNoIndent	1
+	LeftMargin	MM
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.5
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Bibliography
+	LabelString	"References"
+	LabelBottomSep	1.2
 	LabelFont
-	  Series		Bold
-	  Size			Larger
-	  Family		Sans
+	  Series	Bold
+	  Size		Larger
+	  Family	Sans
 	EndFont
 End
 
 Style --Separator--
-	KeepEmpty		1
-	Margin			Dynamic
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	Align			Block
-	LabelType		Static
-	LabelString		"--- Separate Environment ---"
+	KeepEmpty	1
+	Margin		Dynamic
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	Align		Block
+	LabelType	Static
+	LabelString	"--- Separate Environment ---"
 	LabelFont
-	  Family		Roman
-	  Series		Medium
-	  Size			Normal
-	  Color			Blue
+	  Family	Roman
+	  Series	Medium
+	  Size		Normal
+	  Color		Blue
 	EndFont
-	HTMLLabel		NONE
+	HTMLLabel	NONE
+End
+
+Style Recipient
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	recipient
+	Category	Letter
+	RequiredArgs	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0
+	ParSep		0.7
+	Align		Left
+	LabelSep	xxx
+	LabelType	No_Label
+	Font
+	  Series	Bold
+	EndFont
+End
+
+Style Date
+	CopyStyle	Recipient
+	LatexName	date
+	RequiredArgs	0
+	TopSep		0
+	BottomSep	0
+	Align		Right
+	Font
+	  Series	Medium
+	EndFont
+End
+
+Style Opening
+	CopyStyle	Date
+	LatexName	opening
+	TopSep		0
+	BottomSep	0.5
+	Align		Left
+End
+
+Style Closing
+	CopyStyle	Opening
+	LatexName	closing
+End
+
+Style Enclosing
+	Margin		Dynamic
+	CopyStyle	Opening
+	LatexName	enclosure
+	OptionalArgs	1
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Enclosing:"
+	Font
+	  Shape		Italic
+	EndFont
+	LabelFont
+	  Shape		Up
+	  Series	Bold
+	  Color		Blue
+	EndFont
+	
 End
 
