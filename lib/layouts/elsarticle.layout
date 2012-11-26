@@ -128,8 +128,8 @@ Style "Title footnote"
 	Category		FrontMatter
 	InTitle			0
 	Argument 1
-		LabelString   "Footnote Option"
-		Tooltip       "Optional argument for the footnote"
+	  LabelString		"Footnote Label"
+	  Tooltip		"Label you refer to in the title"
 	EndArgument
 	ParSkip			0.4
 	BottomSep		0.5
@@ -150,8 +150,8 @@ Style Author
 	Category		FrontMatter
 	InTitle			0
 	Argument 1
-		LabelString   "Author Option"
-		Tooltip       "Optional argument for the author"
+	  LabelString		"Author Label"
+	  Tooltip		"Label you will reference in the address"
 	EndArgument
 	LatexName		author
 	LabelSep		xxx
@@ -193,6 +193,10 @@ Style "Author footnote"
 	CopyStyle		"Title footnote"
 	LatexName		fntext
 	LabelString		"Author footnote:"
+	Argument 1
+	  LabelString		"Author Footnote Label"
+	  Tooltip		"Label you refer to for an author"
+	EndArgument
 End
 
 
@@ -219,7 +223,7 @@ End
 
 
 Style "Corresponding author"
-	CopyStyle		"Title footnote"
+	CopyStyle		"Author footnote"
 	LatexName		cortext
 	LabelString		"Corresponding author text:"
 End
@@ -232,8 +236,8 @@ Style Address
 	LatexName		address
 	InTitle			0
 	Argument 1
-		LabelString   "Address Option"
-		Tooltip       "Optional argument for the address"
+	  LabelString		"Address Label"
+	  Tooltip		"Label of the author you refer to"
 	EndArgument
 	ParSkip			0.4
 	Align			Center
@@ -249,6 +253,10 @@ Style Email
 	CopyStyle		Address
 	LatexName		ead
 	AlignPossible		Block
+	Argument 1
+	  LabelString		"Internet"
+	  Tooltip		"if content is 'url', email becomes an Internet address"
+	EndArgument
 	Font
 	  Shape			Up
 	EndFont

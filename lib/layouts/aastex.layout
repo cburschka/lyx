@@ -32,33 +32,34 @@
 # Version 1.3   5/7/04   - Updated for AASTeX 5.2
 # Version 1.4   26/10/08 - new custom insets for \altaffilmark, \tablenotemark
 #                        - new environments for \altaffiltext and \tablenotetext
+# Version 1.5   26/11/12 - added mandatory argument for \altaffiltext
 
 
 Format 41
-Columns                 1
-Sides                   1
-#SecNumDepth            3
-TocDepth                0
-PageStyle               Plain
-Provides amsmath         1
-Provides natbib          1
-Provides url             1
+Columns			1
+Sides			1
+#SecNumDepth		3
+TocDepth		0
+PageStyle		Plain
+Provides amsmath	1
+Provides natbib		1
+Provides url		1
 
 
 ClassOptions
-	PageStyle             ""
+	PageStyle	""
 End
 
 
 Style Standard
-	Margin                Static
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	ParSkip               0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 End
 
 
@@ -66,19 +67,19 @@ End
 # Therefore I'll define the entries first, then fill them in
 
 Style Section
-	TocLevel 1
+	TocLevel	1
 End
 
 Style Subsection
-	TocLevel 2
+	TocLevel	2
 End
 
 Style Subsubsection
-	TocLevel 3
+	TocLevel	3
 End
 
 Style Paragraph
-	TocLevel 4
+	TocLevel	4
 End
 
 Style Itemize
@@ -176,334 +177,339 @@ NoStyle Bibliography
 
 
 Style Section
-	Align                 Center
-	NextNoIndent          0
-	TopSep                2.0
-	BottomSep             1.3
+	Align		Center
+	NextNoIndent	0
+	TopSep		2.0
+	BottomSep	1.3
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series	Bold
+	  Size		Normal
 	EndFont
-	TocLevel 1
+	TocLevel	1
 End
 
 
 Style Subsection
-	Align                 Center
-	NextNoIndent          0
-	TopSep                1.7
-	BottomSep             1.1
+	Align		Center
+	NextNoIndent	0
+	TopSep		1.7
+	BottomSep	1.1
 	Font
-	  Series              Bold
-	  Size                Normal
+	  Series	Bold
+	  Size		Normal
 	EndFont
-	TocLevel 2
+	TocLevel	2
 End
 
 
 Style Subsubsection
-	Align                 Center
-	NextNoIndent          0
-	TopSep                1.7
-	BottomSep             1.1
+	Align		Center
+	NextNoIndent	0
+	TopSep		1.7
+	BottomSep	1.1
 	Font
-	  Series              Medium
-	  Shape               Italic
-	  Size                Normal
+	  Series	Medium
+	  Shape		Italic
+	  Size		Normal
 	EndFont
-	TocLevel 3
+	TocLevel	3
 End
 
 
 Style Title
-	TopSep			2
-	BottomSep		1.3
-	Align			Center
-	InTitle			0
+	TopSep		2
+	BottomSep	1.3
+	Align		Center
+	InTitle		0
 	Font
-	  Series		Bold
-	  Size			Large
+	  Series	Bold
+	  Size		Large
 	EndFont
 End
 
 
 Style Author
-	Align			Center
-	LabelType		No_Label
-	InTitle			0
+	Align		Center
+	LabelType	No_Label
+	InTitle		0
 	Font
-	  Size			Normal
-	  Series		Medium
-	  Shape			SmallCaps
+	  Size		Normal
+	  Series	Medium
+	  Shape		SmallCaps
 	EndFont
 End
 
 
 Style Date
-	InTitle			0
-	LabelSep		""
-	TopSep			1.2
-	Align			Center
+	InTitle		0
+	LabelSep	""
+	TopSep		1.2
+	Align		Center
 	Font
-	  Size			Small
+	  Size		Small
 	EndFont
 End
 
 
 Style Abstract
-	LeftMargin		"MMM"
-	RightMargin		"MMM"
-	ParIndent		"MM"
-	InTitle			0
-	TopSep			1.4
-	BottomSep		0.7
-	LabelType		Centered_Top_Environment
-	Align			Block
-	AlignPossible		Block, Left, Right, Center
+	LeftMargin	"MMM"
+	RightMargin	"MMM"
+	ParIndent	"MM"
+	InTitle		0
+	TopSep		1.4
+	BottomSep	0.7
+	LabelType	Centered_Top_Environment
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
 	Font
-	  Size			Normal
+	  Size		Normal
 	EndFont
 	LabelFont
-	  Series		Bold
-	  Size			Normal
+	  Series	Bold
+	  Size		Normal
 	EndFont
 End
 
 
 Style Affiliation
-	Margin			Static
-	LatexType		Command
-	LatexName		affil
-	Category		FrontMatter
-	ParSkip			0.4
-	BottomSep		0.4
-	Align			Center
-	AlignPossible		Block, Left, Right, Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Command
+	LatexName	affil
+	Category	FrontMatter
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Center
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 	Font
-	  Family		Roman
-	  Size			Normal
+	  Family	Roman
+	  Size		Normal
 	EndFont
 End
 
 
 Style Altaffilation
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		altaffiltext
-	Category		FrontMatter
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Alternative affiliation:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	altaffiltext
+	Category	FrontMatter
+	ParSkip		0.4
+	Align		Block
+	Argument 1
+	  Mandatory	1
+	  LabelString	"Number"
+	  Tooltip	"Consecutive number for the alternative affiliations"
+	EndArgument
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Alternative affiliation:"
 	LabelFont
-	  Color			green
+	  Color		green
 	EndFont
 End
 
 
 InsetLayout "Flex:altaffilmark"
-	LyxType			custom
-	LatexType		command
-	LatexName		altaffilmark
-	LabelString		"altaffiliation mark"
+	LyxType		custom
+	LatexType	command
+	LatexName	altaffilmark
+	LabelString	"altaffiliation mark"
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color			green
-	  Size			Small
+	  Color		green
+	  Size		Small
 	EndFont
 End
 
 
 Style Keywords
-	LeftMargin		MMM
-	Margin			Dynamic
-	LatexType		Command
-	InTitle			0
-	LatexName		keywords
-	Category		FrontMatter
-	ParSkip			0.4
-	BottomSep		0.4
-	Align			Block
-	AlignPossible		Block, Left, Right, Center
-	LabelType		Static
-	LabelSep		M
-	LabelString		"Subject headings:"
+	LeftMargin	MMM
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	keywords
+	Category	FrontMatter
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Subject headings:"
 	Font
-	  Family		Roman
-	  Shape			Up
-	  Size			Normal
+	  Family	Roman
+	  Shape		Up
+	  Size		Normal
 	EndFont
 	LabelFont
-	  Family		Roman
-	  Shape			Italic
-	  Size			Normal
+	  Family	Roman
+	  Shape		Italic
+	  Size		Normal
 	EndFont
 End
 
 
 Style Email
-	Margin			Static
-	LatexType		Command
-	InTitle			0
-	LatexName		email
-	Category		FrontMatter
-	ParSkip			0.4
-	BottomSep		0.4
-	Align			Center
-	AlignPossible		Block, Left, Right, Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Command
+	InTitle		0
+	LatexName	email
+	Category	FrontMatter
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Center
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 	Font
-	  Family		Roman
-	  Size			Normal
-	  Shape			Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style Acknowledgements
-	Margin			Dynamic
-	LatexType		Command
-	InTitle			0
-	LatexName		acknowledgements
-	TopSep			1.2
-	ParSkip			0.4
-	BottomSep		0.8
-	Align			Left
-	LabelType		Static
-	LabelString		"[Acknowledgements]"
-	KeepEmpty		1
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	acknowledgements
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Left
+	LabelType	Static
+	LabelString	"[Acknowledgements]"
+	KeepEmpty	1
 	Font
-	  Family		Roman
-	  Size			Normal
-	  Shape			Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style And
-	Margin			Dynamic
-	LatexType		Command
-	InTitle			0
-	LatexName		and
-	Category		FrontMatter
-	TopSep			1.2
-	ParSkip			0.4
-	BottomSep		1.2
-	Align			Center
-	LabelType		Static
-	LabelString		"and"
-	KeepEmpty		1
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	and
+	Category	FrontMatter
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	1.2
+	Align		Center
+	LabelType	Static
+	LabelString	"and"
+	KeepEmpty	1
 	Font
-	  Family		Roman
-	  Size			Normal
+	  Family	Roman
+	  Size		Normal
 	EndFont
 End
 
 
 Style PlaceFigure
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             placefigure
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Left
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Place Figure here:"
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	placefigure
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Left
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Place Figure here:"
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style PlaceTable
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             placetable
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Left
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Place Table here:"
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	placetable
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Left
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Place Table here:"
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style Appendix
-	Margin                Dynamic
-	LatexType             Command
-	LatexName             appendix
-	Category		BackMatter
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Left
-	LabelType             Static
-	LabelString           "[Appendix]"
-	KeepEmpty             1
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	appendix
+	Category	BackMatter
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Left
+	LabelType	Static
+	LabelString	"[Appendix]"
+	KeepEmpty	1
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style MathLetters
-	LatexType             Environment
-	LatexName             mathletters
-	LabelType             No_Label
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
+	LatexType	Environment
+	LatexName	mathletters
+	LabelType	No_Label
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
 	Font
-	  Size                Normal
+	  Size		Normal
 	EndFont
 End
 
 
 Style References
-	Margin                First_Dynamic
-	LatexType             Bib_Environment
-	LatexName             thebibliography
-	Category		BackMatter
-	NextNoIndent          1
-	LeftMargin            MM
-	ParSkip               0.4
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0.5
-	LabelType             Bibliography
-	LabelString           "References"
-	LabelBottomSep        0.7
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
+	Margin		First_Dynamic
+	LatexType	Bib_Environment
+	LatexName	thebibliography
+	Category	BackMatter
+	NextNoIndent	1
+	LeftMargin	MM
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.5
+	LabelType	Bibliography
+	LabelString	"References"
+	LabelBottomSep	0.7
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
 	LabelFont
-	  Family              Roman
-	  Size                Normal
-	  Series              Bold
+	  Family	Roman
+	  Size		Normal
+	  Series	Bold
 	EndFont
 End
 
@@ -511,203 +517,203 @@ End
 # Need reordering below here
 
 Style NoteToEditor
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             notetoeditor
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Left
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Note to Editor:"
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	notetoeditor
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Left
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Note to Editor:"
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
 	EndFont
 End
 
 
 Style TableRefs
-	Margin                First_Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             tablerefs
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-        LabelSep              M
-	LabelString           "References. ---"
+	Margin		First_Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	tablerefs
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+        LabelSep	M
+	LabelString	"References. ---"
 	Font
-	  Family              Roman
-	  Size                Normal
+	  Family	Roman
+	  Size		Normal
 	EndFont
 End
 
 
 Style TableComments
-	Margin                First_Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             tablecomments
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-        LabelSep              M
-	LabelString           "Note. ---"
+	Margin		First_Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	tablecomments
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	0.8
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+        LabelSep	M
+	LabelString	"Note. ---"
 	Font
-	  Family              Roman
-	  Size                Normal
+	  Family	Roman
+	  Size		Normal
 	EndFont
 End
 
 
 Style "Table note"
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		tablenotetext
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Table note:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	tablenotetext
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Table note:"
 	LabelFont
-	  Color			magenta
+	  Color		magenta
 	EndFont
 End
 
 
 InsetLayout "Flex:tablenotemark"
-	LyxType			custom
-	LatexType		command
-	LatexName		tablenotemark
-	LabelString		"tablenote mark"
+	LyxType		custom
+	LatexType	command
+	LatexName	tablenotemark
+	LabelString	"tablenote mark"
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color			magenta
-	  Size			Small
+	  Color		magenta
+	  Size		Small
 	EndFont
 End
 
 
 Style FigCaption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             figcaption
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Fig. ---"
+	Margin		First_Dynamic
+	LatexType	Command
+	LatexName	figcaption
+	LabelSep	xx
+	ParSkip		0.4
+	TopSep		0.5
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Static
+	LabelString	"Fig. ---"
 	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "The caption as it appears in the list of figures"
+	  LabelString	"Short Title|S"
+	  Tooltip	"The caption as it appears in the list of figures"
 	EndArgument
 End
 
 # Facility style definition
 Style Facility
-	LeftMargin            MMM
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             facility
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Facility:"
+	LeftMargin	MMM
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	facility
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Facility:"
 	Font
-	  Family              Roman
-	  Shape               Up
-	  Size                Normal
+	  Family	Roman
+	  Shape		Up
+	  Size		Normal
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Shape               Italic
-	  Size                Normal
+	  Family	Roman
+	  Shape		Italic
+	  Size		Normal
 	EndFont
 End
 
 # Objectname style definition
 Style Objectname
-	LeftMargin            MMM
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             objectname
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Obj:"
+	LeftMargin	MMM
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	objectname
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Obj:"
 	Argument 1
-		LabelString   "Recognized Name"
-		Tooltip       "Separate the recognized name of an object from text"
+	  LabelString	"Recognized Name"
+	  Tooltip	"Separate the recognized name of an object from text"
 	EndArgument
 	Font
-	  Family              Roman
-	  Shape               Up
-	  Size                Normal
+	  Family	Roman
+	  Shape		Up
+	  Size		Normal
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Shape               Italic
-	  Size                Normal
+	  Family	Roman
+	  Shape		Italic
+	  Size		Normal
 	EndFont
 End
 
 # Dataset style definition
 Style Dataset
-	LeftMargin            MMM
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             dataset
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Dataset:"
+	LeftMargin	MMM
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	dataset
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	Static
+	LabelSep	M
+	LabelString	"Dataset:"
 	Argument 1
-		LabelString   "Recognized Name"
-		Tooltip       "Separate the dataset ID from text"
+	  LabelString	"Recognized Name"
+	  Tooltip	"Separate the dataset ID from text"
 	EndArgument
 	Font
-	  Family              Roman
-	  Shape               Up
-	  Size                Normal
+	  Family	Roman
+	  Shape		Up
+	  Size		Normal
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Shape               Italic
-	  Size                Normal
+	  Family	Roman
+	  Shape		Italic
+	  Size		Normal
 	EndFont
 End
 

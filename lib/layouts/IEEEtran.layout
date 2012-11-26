@@ -162,6 +162,11 @@ Style Page_headings
   Category	FrontMatter
   InTitle	1
   Align		Center
+  Argument 1
+    Mandatory	1
+    LabelString	"Left Side"
+    Tooltip	"Left side of the header line"
+  EndArgument
   Font
     Size	Small
   EndFont
@@ -278,6 +283,11 @@ Style Biography
     LabelString	"Photo"
     Tooltip	"Optional photo for biography"
   EndArgument
+  Argument 2
+    Mandatory	1
+    LabelString	"Name"
+    Tooltip	"Name of the author"
+  EndArgument
   Align	Block
   TextFont
     Size	Small
@@ -289,6 +299,11 @@ Style Biography_without_photo
   CopyStyle	Biography
   LaTeXName	IEEEbiographynophoto
   ResetArgs	1
+  Argument 1
+    Mandatory	1
+    LabelString	"Name"
+    Tooltip	"Name of the author"
+  EndArgument
 End
 
 Style BiographyNoPhoto

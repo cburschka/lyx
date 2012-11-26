@@ -14,30 +14,30 @@ DefaultStyle		Standard
 Provides natbib		1
 
 ClassOptions
-	FontSize		10|11|12
+	FontSize	10|11|12
 end
 
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-	Family			Roman
-	Series			Medium
-	Shape			Up
-	Size			Normal
-	Color			None
+	Family		Roman
+	Series		Medium
+	Shape		Up
+	Size		Normal
+	Color		None
 EndFont
 
 
 Style Standard
-	Margin			Static
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	ParSkip			0.4
-	Align			Block
-	AlignPossible		Block, Left, Right, Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
 End
 
 Input stdcounters.inc
@@ -53,171 +53,176 @@ NoStyle Chapter*
 
 
 Style Title
-	Margin			Static
-	LatexType		Command
-	LatexName		title
-	Category		FrontMatter
-	ParSkip			0.4
-	ItemSep			0
-	TopSep			0
-	BottomSep		1
-	ParSep			1
-	Align			Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Command
+	LatexName	title
+	Category	FrontMatter
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0
+	BottomSep	1
+	ParSep		1
+	Align		Center
+	LabelType	No_Label
 	Font
-	  Size			Largest
+	  Size		Largest
 	EndFont
 End
 
 
 Style Authors
-	Margin			Static
-	LatexType		Command
-	Category		FrontMatter
-	LatexName		authors
-	LabelSep		xxx
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0.7
-	ParSep			0.7
-	Align			Center
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Command
+	Category	FrontMatter
+	LatexName	authors
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Center
+	LabelType	No_Label
 	Font
-	  Size			Large
+	  Size		Large
 	EndFont
 End
 
 
 InsetLayout "Flex:Affiliation Mark"
-	LyxType			custom
-	LatexType		command
-	LatexName		altaffilmark
-	LabelString		"Affiliation Mark"
+	LyxType		custom
+	LatexType	command
+	LatexName	altaffilmark
+	LabelString	"Affiliation Mark"
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color			latex
-	  Size			Small
+	  Color		latex
+	  Size		Small
 	EndFont
 End
 
 
 Style "Author affiliation"
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		altaffiltext
-	Category		FrontMatter
-	ParSkip			0.4
-	BottomSep		0.5
-	Align			Left
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Author affiliation:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	altaffiltext
+	Category	FrontMatter
+	ParSkip		0.4
+	BottomSep	0.5
+	Align		Left
+	Argument 1
+	  Mandatory	1
+	  LabelString	"Number"
+	  Tooltip	"Consecutive number for the author affiliations"
+	EndArgument
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Author affiliation:"
 	LabelFont
-	  Color			Green
-	  Series		Bold
+	  Color		Green
+	  Series	Bold
 	EndFont
 End
 
 
 Style Abstract
-	Margin			Dynamic
-	LatexType		Environment
-	LatexName		abstract
-	Category		FrontMatter
-	NextNoIndent		1
-	LabelSep		xxx
-	ParSkip			0.4
-	TopSep			0.7
-	BottomSep		0.4
-	Align			Block
-	LabelType		Static
-	LabelString		"Abstract."
+	Margin		Dynamic
+	LatexType	Environment
+	LatexName	abstract
+	Category	FrontMatter
+	NextNoIndent	1
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		0.7
+	BottomSep	0.4
+	Align		Block
+	LabelType	Static
+	LabelString	"Abstract."
 	LabelFont
-	  Series		Bold
+	  Series	Bold
 	EndFont
 End
 
 
 Style Paragraph
-	CopyStyle		Subsection*
-	Category		BackMatter
-	LatexName		paragraph
-	TocLevel 4
+	CopyStyle	Subsection*
+	Category	BackMatter
+	LatexName	paragraph
+	TocLevel	4
 End
 
 
 Style Notation
-	Margin			Static
-	LatexType		Environment
-	LatexName		notation
-	Category		BackMatter
-	NextNoIndent		1
-	LabelSep		xxx
-	ParSkip			0.4
-	TopSep			0.7
-	BottomSep		0.4
-	Align			Block
-	LabelType		Top_Environment
-	LabelString		"Notation"
+	Margin		Static
+	LatexType	Environment
+	LatexName	notation
+	Category	BackMatter
+	NextNoIndent	1
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		0.7
+	BottomSep	0.4
+	Align		Block
+	LabelType	Top_Environment
+	LabelString	"Notation"
 	LabelFont
-	  Series		Bold
-	  Size			Larger
+	  Series	Bold
+	  Size		Larger
 	EndFont
 End
 
 
 Style Acknowledgments
-	Margin			Dynamic
-	LatexType		Environment
-	LatexName		acknowledgments
-	Category		BackMatter
-	NextNoIndent		1
-	LabelSep		xxx
-	ParSkip			0.4
-	TopSep			0.7
-	BottomSep		0.4
-	Align			Block
-	LabelType		Static
-	LabelString		"Acknowledgments."
+	Margin		Dynamic
+	LatexType	Environment
+	LatexName	acknowledgments
+	Category	BackMatter
+	NextNoIndent	1
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		0.7
+	BottomSep	0.4
+	Align		Block
+	LabelType	Static
+	LabelString	"Acknowledgments."
 	Font
-	  Size			Small
+	  Size		Small
 	EndFont
 	LabelFont
-	  Series		Bold
-	  Size			Small
+	  Series	Bold
+	  Size		Small
 	EndFont
 End
 
 
 Style Bibliography
-	Margin			First_Dynamic
-	LatexType		Bib_Environment
-	LatexName		thebibliography
-	Category		BackMatter
-	NextNoIndent		1
-	LeftMargin		MM
-	ParSkip			0.4
-	ItemSep			0
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.5
-	Align			Block
-	AlignPossible		Block, Left
-	LabelType		Bibliography
-	LabelString		"References"
-	LabelBottomSep		1.2
+	Margin		First_Dynamic
+	LatexType	Bib_Environment
+	LatexName	thebibliography
+	Category	BackMatter
+	NextNoIndent	1
+	LeftMargin	MM
+	ParSkip		0.4
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.5
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Bibliography
+	LabelString	"References"
+	LabelBottomSep	1.2
 	LabelFont
-	  Series		Bold
-	  Size			Larger
+	  Series	Bold
+	  Size		Larger
 	EndFont
 End
 
