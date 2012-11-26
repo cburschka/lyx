@@ -5,14 +5,15 @@
 
 Format 35
 
-Columns                 1
-Sides                   1
-SecNumDepth             3
-TocDepth                3
-DefaultStyle            Standard
+Columns			1
+Sides			1
+SecNumDepth		3
+TocDepth		3
+DefaultStyle		Standard
+Provides natbib		1
 
 ClassOptions
-	FontSize		10|11|12
+	FontSize	10|11|12
 end
 
 Preamble
@@ -60,6 +61,7 @@ Style Title
 	LatexName		title
 	Category		FrontMatter
 	InTitle			1
+	OptionalArgs		1
 	ParSkip			0.4
 	ItemSep			0
 	TopSep			0
