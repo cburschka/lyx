@@ -2,12 +2,13 @@
   # NSIS language file
   !insertmacro MUI_LANGUAGE "${LANG_NAME}"
   # LyX language file
-  !insertmacro LANGFILE_INCLUDE_WITHDEFAULT "lang\${LANG_NAME}.nsh" "lang\English.nsh"
+  !insertmacro LANGFILE_INCLUDE_WITHDEFAULT "lang\${LANG_NAME}.nsh" "lang\english.nsh"
 !macroend
 
 # list of all languages the installers are translated to
 !insertmacro LANG "english" # first language is the default
 !insertmacro LANG "arabic"
+!insertmacro LANG "basque"
 !insertmacro LANG "catalan"
 !insertmacro LANG "czech"
 !insertmacro LANG "danish"
