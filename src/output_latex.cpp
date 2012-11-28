@@ -162,8 +162,11 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	if (style.isEnvironment()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
-		if (!style.latexargs().empty())
-		    latexArgInsets(*pit, os, runparams, style.latexargs());
+		if (!style.latexargs().empty()) {
+		    OutputParams rp = runparams;
+		    rp.local_font = &pit->getFirstFontSettings(bparams);
+		    latexArgInsets(*pit, os, rp, style.latexargs());
+		}
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << '{'
 			   << pit->params().labelWidthString()
@@ -465,7 +468,7 @@ void TeXOnePar(Buffer const & buf,
 		open_encoding_ = none;
 	}
 
-	if (text.inset().getLayout().isPassThru()) {
+	if (text.inset().isPassThru()) {
 		Font const outerfont = text.outerFont(pit);
 
 		// No newline before first paragraph in this lyxtext
@@ -484,6 +487,7 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
+		runparams.local_font = &par.getFirstFontSettings(bparams);
 		parStartCommand(par, os, runparams, style);
 
 		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
@@ -712,8 +716,8 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	runparams.local_font = &par.getFirstFontSettings(bparams);
 	parStartCommand(par, os, runparams, style);
-
 	Font const outerfont = text.outerFont(pit);
 
 	// FIXME UNICODE

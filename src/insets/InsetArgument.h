@@ -62,6 +62,8 @@ public:
 	bool neverIndent() const { return true; }
 	///
 	std::string contextMenuName() const;
+	///
+	bool isPassThru() const { return pass_thru_; }
 	//@}
 	/// \name Public functions inherited from InsetCollapsable class
 	//@{
@@ -90,6 +92,8 @@ private:
 	FontInfo labelfont_;
 	///
 	std::string decoration_;
+	///
+	bool pass_thru_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

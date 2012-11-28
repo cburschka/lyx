@@ -17,6 +17,7 @@
 
 #include "ColorCode.h"
 #include "InsetCode.h"
+#include "InsetLayout.h"
 #include "LayoutEnums.h"
 #include "OutputEnums.h"
 
@@ -418,6 +419,8 @@ public:
 	virtual docstring layoutName() const;
 	///
 	virtual InsetLayout const & getLayout() const;
+	///
+	virtual bool isPassThru() const { return getLayout().isPassThru(); }
 	/// Is this inset's layout defined in the document's textclass?
 	bool undefined() const;
 	/// should this inset be handled like a normal character?

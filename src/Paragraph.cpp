@@ -1461,9 +1461,11 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			// we have to provide all the optional arguments here, even though
 			// the last one is the only one we care about.
 			// Separate handling of optional argument inset.
-			if (!layout_->latexargs().empty())
-				latexArgInsets(*owner_, os, features.runparams(),
-					       layout_->latexargs());
+			if (!layout_->latexargs().empty()) {
+				OutputParams rp = features.runparams();
+				rp.local_font = &owner_->getFirstFontSettings(bp);
+				latexArgInsets(*owner_, os, rp, layout_->latexargs());
+			}
 			os << from_ascii(layout_->latexparam());
 		}
 		docstring::size_type const length = ods.str().length();
@@ -2168,7 +2170,7 @@ bool Paragraph::usePlainLayout() const
 
 bool Paragraph::isPassThru() const
 {
-	return inInset().getLayout().isPassThru() || d->layout_->pass_thru;
+	return inInset().isPassThru() || d->layout_->pass_thru;
 }
 
 namespace {

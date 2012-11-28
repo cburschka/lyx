@@ -13,10 +13,13 @@
 
 #include "InsetArgument.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "Cursor.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
+#include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
 #include "OutputParams.h"
@@ -35,7 +38,8 @@ namespace lyx {
 
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsable(buf), name_(name), labelstring_(docstring()),
-      font_(inherit_font), labelfont_(inherit_font), decoration_(string())
+      font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
+      pass_thru_(false)
 {}
 
 
@@ -55,16 +59,19 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Layout::LaTeXArgMap args;
 	bool const insetlayout = &it.inset() && it.paragraph().layout().latexargs().empty();
-	if (insetlayout)
+	if (insetlayout) {
 		args = it.inset().getLayout().latexargs();
-	else
+		pass_thru_ = it.inset().getLayout().isPassThru();
+	} else {
 		args = it.paragraph().layout().latexargs();
-
+		pass_thru_ = it.paragraph().layout().pass_thru;
+	}
+	
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	if (name_ == "999") {
-		unsigned int const req = insetlayout ? it.inset().getLayout().numRequiredArgs()
+		unsigned int const req = insetlayout ? it.inset().getLayout().requiredArgs()
 				      : it.paragraph().layout().requiredArgs();
-		unsigned int const opts = insetlayout ? it.inset().getLayout().numOptArgs()
+		unsigned int const opts = insetlayout ? it.inset().getLayout().optArgs()
 				      : it.paragraph().layout().optArgs();
 		unsigned int nr = 0;
 		unsigned int ours = 0;
@@ -251,8 +258,6 @@ void InsetArgument::latexArgument(otexstream & os,
 	odocstringstream ss;
 	otexstream ots(ss, texrow);
 	OutputParams runparams = runparams_in;
-	if (getLayout().isPassThru())
-		runparams.pass_thru = true;
 	InsetText::latex(ots, runparams);
 	docstring str = ss.str();
 	if (ldelim != "{" && support::contains(str, rdelim))

@@ -266,7 +266,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch(): cmd: " << cmd);
 
-	if (getLayout().isPassThru()) {
+	if (isPassThru()) {
 		// Force any new text to latex_language FIXME: This
 		// should only be necessary in constructor, but new
 		// paragraphs that are created by pressing enter at
@@ -436,7 +436,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			if (runparams.moving_arg)
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());
-			getOptArg(os, runparams);
+			if (!il.latexargs().empty())
+				getOptArg(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
 			os << '{';
@@ -449,13 +450,15 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 				os.texrow().start(runparams.lastid,
 						  runparams.lastpos);
 			os << "\\begin{" << from_utf8(il.latexname()) << "}";
-			getOptArg(os, runparams);
+			if (!il.latexargs().empty())
+				getOptArg(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
 			os << '\n';
 		}
 	} else {
-		getOptArg(os, runparams);
+		if (!il.latexargs().empty())
+			getOptArg(os, runparams);
 		if (!il.latexparam().empty())
 			os << from_utf8(il.latexparam());
 	}
@@ -464,7 +467,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 		os << il.leftdelim();
 
 	OutputParams rp = runparams;
-	if (il.isPassThru())
+	if (isPassThru())
 		rp.pass_thru = true;
 	if (il.isNeedProtect())
 		rp.moving_arg = true;
@@ -605,8 +608,13 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 }
 
 void InsetText::getOptArg(otexstream & os,
-			OutputParams const & runparams) const
+			OutputParams const & runparams_in) const
 {
+	OutputParams runparams = runparams_in;
+	runparams.local_font =
+		&paragraphs()[0].getFirstFontSettings(buffer().masterBuffer()->params());
+	if (isPassThru())
+		runparams.pass_thru = true;
 	latexArgInsets(paragraphs()[0], os, runparams, getLayout().latexargs());
 }
 
@@ -728,7 +736,7 @@ bool InsetText::insetAllowed(InsetCode code) const
 	case ARG_CODE:
 		return true;
 	default:
-		return !getLayout().isPassThru();
+		return !isPassThru();
 	}
 }
 

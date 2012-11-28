@@ -544,7 +544,7 @@ void InsetLayout::readArgument(Lexer & lex)
 		latexargs_[nr] = arg;
 }
 
-unsigned int InsetLayout::numOptArgs() const
+unsigned int InsetLayout::optArgs() const
 {
 	unsigned int nr = 0;
 	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();
@@ -556,7 +556,7 @@ unsigned int InsetLayout::numOptArgs() const
 }
 
 
-unsigned int InsetLayout::numRequiredArgs() const
+unsigned int InsetLayout::requiredArgs() const
 {
 	unsigned int nr = 0;
 	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();

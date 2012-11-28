@@ -88,9 +88,9 @@ public:
 	///
 	Layout::LaTeXArgMap latexargs() const { return latexargs_; }
 	///
-	unsigned int numOptArgs() const;
+	unsigned int optArgs() const;
 	///
-	unsigned int numRequiredArgs() const;
+	unsigned int requiredArgs() const;
 	///
 	docstring preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this inset
