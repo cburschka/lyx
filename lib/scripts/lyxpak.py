@@ -174,7 +174,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
     return 0
 
 
-def find_lyx2lyx(progloc):
+def find_lyx2lyx(progloc, path):
     " Find a usable version of the lyx2lyx script. "
     # first we will see if the script is roughly where we are
     # i.e., we will assume we are in $SOMEDIR/scripts and look
@@ -275,7 +275,7 @@ def main(args):
     path = string.split(os.environ["PATH"], os.pathsep)
 
     if lyx2lyx == None:
-        lyx2lyx = find_lyx2lyx(ourprog)
+        lyx2lyx = find_lyx2lyx(ourprog, path)
 
     # Initialize the list with the specified LyX file and recursively
     # gather all required files (also from child documents).
