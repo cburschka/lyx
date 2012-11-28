@@ -162,6 +162,8 @@ public:
 	bool resetsFont() const { return resetsfont_; }
 	///
 	bool isDisplay() const { return display_; }
+	///
+	bool forcelocalfontswitch() const { return forcelocalfontswitch_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -262,6 +264,8 @@ private:
 	bool resetsfont_;
 	///
 	bool display_;
+	///
+	bool forcelocalfontswitch_;
 	///
 	Layout::LaTeXArgMap latexargs_;
 };

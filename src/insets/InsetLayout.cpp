@@ -41,7 +41,7 @@ InsetLayout::InsetLayout() :
 	passthru_(false), parbreakisnewline_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false), 
 	needprotect_(false), intoc_(false), spellcheck_(true), 
-	resetsfont_(true), display_(true)
+	resetsfont_(true), display_(true), forcelocalfontswitch_(false)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -87,6 +87,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_DECORATION,
 		IL_DISPLAY,
 		IL_FONT,
+		IL_FORCE_LOCAL_FONT_SWITCH,
 		IL_FORCELTR,
 		IL_FORCEPLAIN,
 		IL_FREESPACING,
@@ -135,6 +136,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "display", IL_DISPLAY },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
+		{ "forcelocalfontswitch", IL_FORCE_LOCAL_FONT_SWITCH },
 		{ "forceltr", IL_FORCELTR },
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
@@ -235,6 +237,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_LEFTDELIM:
 			lex >> leftdelim_;
+			break;
+		case IL_FORCE_LOCAL_FONT_SWITCH:
+			lex >> forcelocalfontswitch_;
 			break;
 		case IL_RIGHTDELIM:
 			lex >> rightdelim_;

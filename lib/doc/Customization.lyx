@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 446
+\lyxformat 448
 \begin_document
 \begin_header
 \textclass scrbook
@@ -140,6 +140,7 @@ End
 \author -712698321 "Jürgen Spitzmüller" 
 \author -195340706 "Georg Baum" 
 \author 5863208 "ab" 
+\author 155139281 "Jrgen Spitzmller" 
 \author 1082167584 "Kayvan Sylvan" kayvan@sylvan.com
 \author 1414654397 "Richard Heck" 
 \author 2090807402 "usti" 
@@ -15960,6 +15961,81 @@ LabelFont
 \end_inset
 
  later if you want them to be different.
+\change_inserted 155139281 1354130923
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 155139281 1354130923
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354130923
+ForceLocalFontSwitch
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354130923
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354130923
+1
+\end_layout
+
+\end_inset
+
+] When using babel, always use a local font switch (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354130923
+
+\backslash
+foreignlanguage
+\end_layout
+
+\end_inset
+
+), never a global one (such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354130923
+
+\backslash
+selectlanguage
+\end_layout
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -16670,7 +16746,7 @@ string
 \end_inset
 
 ] A string that is put at the beginning of the layout content.
-\change_unchanged
+\change_inserted 155139281 1354130509
 
 \end_layout
 

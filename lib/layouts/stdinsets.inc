@@ -406,6 +406,7 @@ InsetLayout Argument
 	  Size                Small
 	EndFont
 	MultiPar              false
+	ForceLocalFontSwitch  1
 End
 
 InsetLayout Info

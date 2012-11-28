@@ -551,10 +551,21 @@ void TeXOnePar(Buffer const & buf,
 		getPolyglossiaEnvName(doc_language) : doc_language->babel();
 	string const outer_lang = use_polyglossia ?
 		getPolyglossiaEnvName(outer_language) : outer_language->babel();
-	string const lang_begin_command = use_polyglossia ?
+	string lang_begin_command = use_polyglossia ?
 		"\\begin{$$lang}" : lyxrc.language_command_begin;
-	string const lang_end_command = use_polyglossia ?
+	string lang_end_command = use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
+	// the '%' is necessary to prevent unwanted whitespace
+	string lang_command_termination = "%\n";
+
+	// In some insets (such as Arguments), we cannot use \selectlanguage
+	bool const localswitch = !use_polyglossia
+		&& text.inset().getLayout().forcelocalfontswitch();
+	if (localswitch) {
+		lang_begin_command = lyxrc.language_command_local;
+		lang_end_command = "}";
+		lang_command_termination.clear();
+	}
 
 	if (par_lang != prev_lang
 		// check if we already put language command in TeXEnvironment()
@@ -570,8 +581,7 @@ void TeXOnePar(Buffer const & buf,
 			os << from_ascii(subst(lang_end_command,
 				"$$lang",
 				prev_lang))
-			   // the '%' is necessary to prevent unwanted whitespace
-			   << "%\n";
+			   << lang_command_termination;
 		}
 
 		// We need to open a new language if we couldn't close the previous
@@ -629,8 +639,7 @@ void TeXOnePar(Buffer const & buf,
 						os << "["
 						  << from_ascii(par_language->polyglossiaOpts())
 						  << "]";
-				   // the '%' is necessary to prevent unwanted whitespace
-				os << "%\n";
+				os << lang_command_termination;
 			}
 		}
 	}
@@ -686,8 +695,7 @@ void TeXOnePar(Buffer const & buf,
 						lang_begin_command,
 						"$$lang",
 						par_lang))
-					// the '%' is necessary to prevent unwanted whitespace
-					<< "%\n";
+					<< lang_command_termination;
 				}
 				runparams.encoding = encoding;
 			}
@@ -830,16 +838,16 @@ void TeXOnePar(Buffer const & buf,
 						lang_begin_command,
 						"$$lang",
 						current_lang));
-					pending_newline = true;
-					unskip_newline = true;
+					pending_newline = !localswitch;
+					unskip_newline = !localswitch;
 				}
 			} else if (!par_lang.empty()) {
 				os << from_ascii(subst(
 					lang_end_command,
 					"$$lang",
 					par_lang));
-				pending_newline = true;
-				unskip_newline = true;
+				pending_newline = !localswitch;
+				unskip_newline = !localswitch;
 			}
 		}
 	}
