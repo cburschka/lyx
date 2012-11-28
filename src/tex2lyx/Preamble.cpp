@@ -1648,8 +1648,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	// Force textclass if the user wanted it
 	if (!forceclass.empty())
 		h_textclass = forceclass;
-	if (noweb_mode && !prefixIs(h_textclass, "literate-"))
-		h_textclass.insert(0, "literate-");
 	tc.setName(h_textclass);
 	if (!tc.load()) {
 		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;

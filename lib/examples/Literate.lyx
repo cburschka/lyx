@@ -1,9 +1,12 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 442
+\lyxformat 448
 \begin_document
 \begin_header
-\textclass literate-article
+\textclass article
 \use_default_options false
+\begin_modules
+noweb
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -169,131 +172,131 @@ The filter is required to read from standard input, parse for error messages
 Algorithm
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 int
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 main (int argc, char **argv)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   if (argc == 2) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     switch (argv[1][0]) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 'n':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<Scan input for noweb error messages>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 'x':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<Scan input for xlc error messages>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 'a':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<AIX system using both noweb and xlc>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 's':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 'b':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<Solaris and Linux systems using both noweb and gcc>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     case 'g':
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     default:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<Scan input for gcc error messages>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     <<Scan input for gcc error messages>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 int main (int argc, char **argv);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -308,11 +311,11 @@ We resort to some global variables to allow access from several different
  input.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Global variables>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 char    buffer[200][200];
 \begin_inset Newline newline
 \end_inset
@@ -360,37 +363,37 @@ This function has been slightly changed from EW's original to make scanning
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 output_error (int buf_size, int error_line, char *tool)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   int     i;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   fprintf(stdout, "! Build Error: ==> %s ==>
 \backslash
 n", tool);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   fprintf(stdout, " ...
 \backslash
 n
@@ -400,49 +403,49 @@ nl.%d ...
 n", error_line);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   for (i=0; i<buf_size; i++)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (strlen(buffer[i]) != 0)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       fprintf(stdout, "%s", buffer[i]);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   fprintf(stdout, "
 \backslash
 n");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void output_error (int buf_size, int error_line, char *tool);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -459,39 +462,39 @@ Both noweave and notangle routines, always output one single line for each
  of the file.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Scan input for noweb error messages>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   while (fgets(buffer[0], 200, stdin)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (noweb_try(0))
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       output_error(1, err_line, "noweb");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -504,87 +507,87 @@ The examination itself is very inefficient.
  array.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Global variables>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 char *noweb_msgs[] = {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "couldn't open file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "couldn't open temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "error writing temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "ill-formed option",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "unknown option",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "Bad format sequence",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "Can't open output file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "Can't open temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "Capacity exceeded:",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "Ignoring unknown option -",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "This can't happen:",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   "non-numeric line number in"
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 };
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 char *noweb_msgs_mimic_gcc[] = {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   ": unescaped << in documentation chunk"
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 };
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -605,11 +608,11 @@ A noweb error message can be any string that contains a matching pair of
 > >, or any of the above strings
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \begin_inset Newline newline
 \end_inset
@@ -761,15 +764,15 @@ noweb_try (int buf_line)
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 int noweb_try (int buf_line);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -779,39 +782,39 @@ The xlc compiler always outputs one single line for each error found, thus
  line at a time.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Scan input for xlc error messages>>= 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (xlc_try(0))
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       output_error(1, err_line, "xlc");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -830,93 +833,93 @@ line
  The following routine tests if a given buffer line matches this criteria:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 int 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 xlc_try (int buf_line)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   char    *s, *t;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   t = buffer[buf_line];
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   s = t+1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   while (*s != '"' && *s != ' ' && *s != '
 \backslash
 0')
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     s++;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     return 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   s += 8;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   err_line = atoi(s);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   return 1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 int xlc_try (int buf_line);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -956,146 +959,146 @@ Every gcc error message contains a string with no space followed by a
 .
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Scan input for gcc error messages>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   char    *s, *t;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     /****** Skip lines until I find an error */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (s == NULL || *s == ' ')
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       continue; /* No gcc error found here */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     do {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       /****** OK It is an error message, get line number */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       err_line = atoi(s+1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       if (last_err_line == 0 || last_err_line == err_line) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
         last_err_line = err_line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
         continue; /* It's either a header or a continuation, don't output
  yet */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       discharge_buffer(1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     } while (fgets(buffer[last_buf_line], 200, stdin));
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   /****** EOF completes the scan of whatever was being scanned */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   discharge_buffer(0);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<gcc error message criteria is to find a "...:999:" or a "...: ">>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 /****** Search first ":" in the error number */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 last_buf_line++;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 if (s == NULL || *s == ' ') 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 /****** Search second ":" in the error number */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 t = (char *)strpbrk(s+1, " :");
 \begin_inset Newline newline
 \end_inset
@@ -1125,40 +1128,40 @@ if (t != s+1+strspn(s+1, "0123456789"))
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<No gcc error found here, but it might terminate the scanning of a previous
  one>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   err_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   discharge_buffer(1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   continue;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1178,107 +1181,107 @@ last line
  In those cases we empty the buffer completely.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 discharge_buffer (int save_last)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  if (last_err_line != 0) { 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
    clean_gcc_messages();
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
    if (save_last != 0) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       output_error(last_buf_line-1, last_err_line, "gcc");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       strcpy (buffer[0], buffer[last_buf_line-1]);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       last_err_line = err_line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       last_buf_line = 1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     } else { 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       ++last_buf_line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       clean_gcc_messages();
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       output_error(last_buf_line-1, last_err_line, "gcc");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       last_err_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       last_buf_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void discharge_buffer (int save_last);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1307,119 +1310,119 @@ More could be done.
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 clean_gcc_messages ()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   int index;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   char search [30]; 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   char *tail, *head; 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   int search_len = sprintf(search, ".nw:%d:", last_err_line);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   for (index = 0; index < last_buf_line-1; index++) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     tail = (char *)strstr (buffer[index], search);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if ( tail == NULL) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        tail = (char *) strstr (buffer[index], ".nw:");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        if (tail) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
           tail += 4;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        tail += search_len;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (tail != NULL) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        head = buffer[index];
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
        while (*(head++) = *(tail++));
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 void clean_gcc_messages ();
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1429,15 +1432,15 @@ To combine the scan of noweb error messages and xlc error messages is very
  We just try each one for every input line:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<AIX system using both noweb and xlc>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   last_buf_line = 0;
 \begin_inset Newline newline
 \end_inset
@@ -1481,129 +1484,129 @@ To combine the scan of noweb error messages and gcc error messages is simple
  the beginning of the scan:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Solaris and Linux systems using both noweb and gcc>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   char    *s, *t;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     /****** Skip lines until I find an error */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (last_buf_line == 0 && noweb_try(0)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       output_error(1, err_line, "noweb");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       continue;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     if (s == NULL || *s == ' ')
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       continue; /* No gcc error found here */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     do {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       /****** OK It is an error, get line number */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       err_line = atoi(s+1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       if (last_err_line == 0 || last_err_line == err_line) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
         last_err_line = err_line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
         continue; /* It's either a header or a continuation, don't output
  yet */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       discharge_buffer(1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
       break;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
     } while (fgets(buffer[last_buf_line], 200, stdin));
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   /****** EOF completes the scan of whatever was being scanned */
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
   discharge_buffer(0);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1611,35 +1614,35 @@ To combine the scan of noweb error messages and gcc error messages is simple
 Wrapping the code into a file
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<listerrors.c>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 #include <stdio.h>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 #include <strings.h>       
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Global variables>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function prototypes>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<Function bodies>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1672,31 +1675,31 @@ listerrors.c
  option to gcc.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 <<build-script>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 #!/bin/sh
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors.c
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 gcc -g -o listerrors listerrors.c
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 @
 \end_layout
 
@@ -1707,7 +1710,7 @@ This project can be tangled and compiled from LyX if you set
 \backslash
 build_command
 \family default
- to call a generic script that always extracts a scrap named 
+ to call a generic script that always extracts a chunk named 
 \family typewriter
 build-script
 \family default

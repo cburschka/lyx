@@ -7,8 +7,11 @@
 Format 41
 OutputType              literate
 
-# FIXME: Use the Chunk layout from the sweave module? 
-Style Scrap
+AddToPreamble
+	\usepackage{noweb}
+EndPreamble
+
+Style Chunk
 	Margin                First_Dynamic
 	LatexType             Paragraph
 	LatexName             dummy

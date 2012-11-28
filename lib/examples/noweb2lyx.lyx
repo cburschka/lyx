@@ -1,8 +1,8 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 448
 \begin_document
 \begin_header
-\textclass literate-article
+\textclass article
 \begin_preamble
 %
 % This relaxes the noweb constraint that chunks are
@@ -14,6 +14,9 @@
 \let\nwdocspar=\smallbreak
 \end_preamble
 \use_default_options false
+\begin_modules
+noweb
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -22,13 +25,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -39,15 +42,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -139,81 +148,100 @@ noweb
  file to LyX.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<noweb2lyx.in>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #!@PERL@
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # Copyright (C) 1999 Kayvan A.
  Sylvan <kayvan@sylvan.com>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # You are free to use and modify this code under the terms of
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # the GNU General Public Licence version 2 or later.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # Written with assistance from:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #   Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #   Amir Karger <karger@post.harvard.edu>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # $Id: noweb2lyx.lyx,v 1.5 2005/07/18 09:42:27 jamatos Exp $
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 # NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 #
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup variables from user supplied args>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Subroutines>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Convert noweb to LyX>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -234,11 +262,12 @@ noweb
 @ Here is some documentation.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 We can do arbitrary LaTeX code here.
 \begin_inset Newline newline
 \end_inset
@@ -400,7 +429,7 @@ end{reLyXskip}
 
 \begin_layout Standard
 Once reLyX is done with the input file, the problem is reduced to changing
- the code chunks from LyX's LaTeX layout to the Scrap layout.
+ the code chunks from LyX's LaTeX layout to the Chunk layout.
 \end_layout
 
 \begin_layout Standard
@@ -480,51 +509,63 @@ With all that preamble out of the way, we now have the basic high-level
  outline for our code:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Convert noweb to LyX>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if (!$post_only) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   <<Transform noweb for reLyX>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if ((!$pre_only) && (!$post_only)) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   <<Run reLyX on intermediate file>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if (!$pre_only) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   <<Fix up LyX file>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Clean up>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -539,27 +580,32 @@ In this section, we present the code that performs the task of creating
  This algorithm is outlined in the code that follows:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Transform noweb for reLyX>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup INPUT and OUTPUT>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 inputline: while(<INPUT>)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   if (/^
 \backslash
 s*
@@ -570,24 +616,28 @@ s*
 \backslash
 >
 \backslash
->=/) { # Beginning of a noweb scrap
+>=/) { # Beginning of a noweb chunk
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     <<Read in and output the noweb code chunk>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   } elsif (/^@
 \backslash
 s+(.*)/) { # Beginning of a documentation chunk
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     print OUTPUT $1; # We do not need the ``@'' part
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   } elsif (/
 \backslash
 [
@@ -599,31 +649,38 @@ s+(.*)/) { # Beginning of a documentation chunk
 ]/) { # noweb quoted code
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     <<Perform special input quoting of [[var]]>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     print OUTPUT; # Just let the line pass through
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Close INPUT and OUTPUT>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -633,11 +690,13 @@ In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
  constructs.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Perform special input quoting of [[var]]>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 s/
 \backslash
 [
@@ -693,23 +752,28 @@ noweb
  code chunk, we transform it into a form that is usable by reLyX.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Read in and output the noweb code chunk>>= 
 \end_layout
 
-\begin_layout Scrap
-<<Save the beginning of the scrap to savedScrap>>
+\begin_layout Chunk
+
+<<Save the beginning of the chunk to savedchunk>>
 \end_layout
 
-\begin_layout Scrap
-<<Concatenate the rest of the scrap>>
+\begin_layout Chunk
+
+<<Concatenate the rest of the chunk>>
 \end_layout
 
-\begin_layout Scrap
-<<print out the scrap in a reLyXskip block>>
+\begin_layout Chunk
+
+<<print out the chunk in a reLyXskip block>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -790,35 +854,43 @@ to read and write files.
  no need to create a temporary file.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup INPUT and OUTPUT>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if ($pre_only) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &setup_files($input_file, $output_file);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   $relyx_file = "temp$$";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &setup_files($input_file, $relyx_file);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -855,35 +927,42 @@ status collapsed
 , which we define below:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Subroutines>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 sub setup_files {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   my($in, $out) = @_;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   open(INPUT, "<$in") || die "Cannot read $in: $!
 \backslash
 n";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   open(OUTPUT, ">$out") || die "Cannot write $out: $!
 \backslash
 n";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @ %def setup_files   
 \end_layout
 
@@ -892,46 +971,51 @@ Reading in the
 \noun on
 noweb
 \noun default
- scrap
+ chunk
 \end_layout
 
 \begin_layout Standard
-After we see the beginning of the scrap, we need to read in and save the
- rest of the scrap for output.
+After we see the beginning of the chunk, we need to read in and save the
+ rest of the chunk for output.
 \end_layout
 
-\begin_layout Scrap
-<<Save the beginning of the scrap to savedScrap>>=
+\begin_layout Chunk
+
+<<Save the beginning of the chunk to savedchunk>>=
 \end_layout
 
-\begin_layout Scrap
-$savedScrap = $_;
+\begin_layout Chunk
+
+$savedchunk = $_;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 $endLine = "";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
-\begin_layout Scrap
-<<Concatenate the rest of the scrap>>=
+\begin_layout Chunk
+
+<<Concatenate the rest of the chunk>>=
 \begin_inset Newline newline
 \end_inset
 
-scrapline: while (<INPUT>) {
+chunkline: while (<INPUT>) {
 \begin_inset Newline newline
 \end_inset
 
-  last scrapline if /^@
+  last chunkline if /^@
 \backslash
 s+/;
 \begin_inset Newline newline
 \end_inset
 
-  $savedScrap .= $_;
+  $savedchunk .= $_;
 \begin_inset Newline newline
 \end_inset
 
@@ -945,19 +1029,19 @@ switch: {
 
   if (/^@
 \backslash
-s+$/) {$savedScrap .= $_; last switch; }
+s+$/) {$savedchunk .= $_; last switch; }
 \begin_inset Newline newline
 \end_inset
 
   if (/^@
 \backslash
-s+%def.*$/) {$savedScrap .= $_; last switch; }
+s+%def.*$/) {$savedchunk .= $_; last switch; }
 \begin_inset Newline newline
 \end_inset
 
   if (/^@
 \backslash
-s+(.*)$/) {$savedScrap .= "@
+s+(.*)$/) {$savedchunk .= "@
 \backslash
 n"; $endLine = "$1
 \backslash
@@ -973,18 +1057,20 @@ n"; }
 \end_layout
 
 \begin_layout Subsection
-Printing out the scrap
+Printing out the chunk
 \end_layout
 
 \begin_layout Standard
 The final piece of the first pass of the conversion is done by this code.
 \end_layout
 
-\begin_layout Scrap
-<<print out the scrap in a reLyXskip block>>=
+\begin_layout Chunk
+
+<<print out the chunk in a reLyXskip block>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 print OUTPUT "
 \backslash
 
@@ -994,11 +1080,13 @@ begin{reLyXskip}
 n";
 \end_layout
 
-\begin_layout Scrap
-print OUTPUT $savedScrap;
+\begin_layout Chunk
+
+print OUTPUT $savedchunk;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 print OUTPUT "
 \backslash
 
@@ -1010,11 +1098,13 @@ n
 n";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 print OUTPUT "$endLine";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1083,19 +1173,23 @@ status collapsed
 files.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Close INPUT and OUTPUT>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 close(INPUT);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 close(OUTPUT);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1148,19 +1242,23 @@ In order to run reLyX, we need to know the article class of the input document
  For this, we need to parse the intermediate file.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Run reLyX on intermediate file>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Parse for document class>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Run reLyX with document class>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1255,29 +1353,35 @@ noweb2lyx
  on itself and a produce a quite reasonable LyX file.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Parse for document class>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 open(INPUT, "<$relyx_file") ||
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   die "Cannot read $relyx_file: $!
 \backslash
 n";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 $class = "article"; # default if none found
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 parse: while(<INPUT>) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   if (/
 \backslash
 
@@ -1285,27 +1389,33 @@ parse: while(<INPUT>) {
 docu[m]entclass{(.*)}/) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     $class = $1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     last parse;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 close(INPUT);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1317,7 +1427,8 @@ Running reLyX with the corresponding literate document layout
 Now that we know what the document class ought to be, we do:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Run reLyX with document class>>= 
 \begin_inset Newline newline
 \end_inset
@@ -1364,43 +1475,53 @@ We need to perform some post-processing of what reLyX produces in order
  The outline of the post-processing steps are:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Fix up LyX file>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup INPUT and OUTPUT for the final output>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 line: while(<INPUT>)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   <<Fix code chunks in latex layout>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   <<Fix [[var]] noweb construct>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   print OUTPUT; # default
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 } 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Close INPUT and OUTPUT>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1540,48 +1661,57 @@ status collapsed
 is taken care of by this code:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup INPUT and OUTPUT for the final output>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if ($post_only) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &setup_files("$input_file", "$output_file");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &setup_files("$relyx_file.lyx", "$output_file");
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
 \begin_layout Subsection
-Making sure the code chunks are in the Scrap layout
+Making sure the code chunks are in the Chunk layout
 \end_layout
 
 \begin_layout Standard
 Now, as we outlined before, the final step is transforming the code-chunks
- which have been put into a LaTeX layout by LyX into the scrap layout.
+ which have been put into a LaTeX layout by LyX into the Chunk layout.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Fix code chunks in latex layout>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if (/
 \backslash
 
@@ -1589,65 +1719,76 @@ if (/
 latex latex/) { # Beginning of some latex code
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   if (($line = <INPUT>) =~ /^
 \backslash
-s*<</) { # code scrap
+s*<</) { # code chunk
 \end_layout
 
-\begin_layout Scrap
-    <<Transform this chunk into layout scrap>>
+\begin_layout Chunk
+
+    <<Transform this chunk into layout chunk>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     # print the 
 \backslash
 latex latex line + next line
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
     print OUTPUT "$_$line";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   next line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
 \begin_layout Standard
 When we are sure that we are in a code chunk, we must read in the rest of
- the code chunk and output a scrap layout for it:
+ the code chunk and output a chunk layout for it:
 \end_layout
 
-\begin_layout Scrap
-<<Transform this chunk into layout scrap>>=
+\begin_layout Chunk
+
+<<Transform this chunk into layout chunk>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
-$savedScrap = "
+\begin_layout Chunk
+
+$savedchunk = "
 \backslash
 
 \backslash
-layout Scrap
+layout Chunk
 \backslash
 n
 \backslash
@@ -1659,7 +1800,7 @@ codeline: while (<INPUT>) {
 \begin_inset Newline newline
 \end_inset
 
-  $savedScrap .= $_;
+  $savedchunk .= $_;
 \begin_inset Newline newline
 \end_inset
 
@@ -1673,7 +1814,7 @@ s+/;
 \begin_inset Newline newline
 \end_inset
 
-print OUTPUT $savedScrap;
+print OUTPUT $savedchunk;
 \begin_inset Newline newline
 \end_inset
 
@@ -1689,15 +1830,18 @@ Okay, now we just need to eat the rest of the latex layout.
  There should only be a few different types of lines for us to match:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Slurp up to the end of the latex layout>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 slurp: while (<INPUT>) {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   last slurp if /
 \backslash
 
@@ -1705,7 +1849,8 @@ slurp: while (<INPUT>) {
 latex /;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   next slurp if /
 \backslash
 
@@ -1713,21 +1858,25 @@ latex /;
 newline/;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   next slurp if /^
 \backslash
 s*$/;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   warn "confused by line: $_";
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1764,11 +1913,13 @@ noweb
  when it generates the final LaTeX code.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Fix [[var]] noweb construct>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if (/
 \backslash
 [
@@ -1780,7 +1931,8 @@ if (/
 ]/) { # special code for [[var]]
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   s/
 \backslash
 [
@@ -1806,19 +1958,23 @@ latex default
 n/g;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   print OUTPUT;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   next line;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1830,15 +1986,18 @@ Cleaning up intermediate files
 The cleanup code is very simple:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Clean up>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 system("rm -f $relyx_file*") unless ($post_only || $pre_only);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 
@@ -1856,75 +2015,93 @@ noweb2lyx
  files in the import pipeline.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Setup variables from user supplied args>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 &usage() if ($#ARGV < 1); # zero or one argument 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 if ($ARGV[0] eq "-pre") {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &usage unless ($#ARGV == 2);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 } elsif ($ARGV[0] eq "-post") {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &usage unless ($#ARGV == 2);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 } else {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   &usage unless ($#ARGV == 1);
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   $input_file = $ARGV[0]; $output_file = $ARGV[1];
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   $pre_only = 0; $post_only = 0;
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 }
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @ %def input_file output_file pre_only post_only
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<Subroutines>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 sub usage() {
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
   print "Usage: noweb2lyx [-pre | -post] input-file output-file
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1970,7 +2147,7 @@ The noweb2lyx script can be tangled from LyX if you set
 \backslash
 build_command
 \family default
- to call a generic script that always extracts a scrap named 
+ to call a generic script that always extracts a chunk named 
 \family typewriter
 build-script
 \family default
@@ -1983,30 +2160,36 @@ build-script
 \begin_inset Newline newline
 \end_inset
 
-notangle -Rbuild-script $1 | sh
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 <<build-script>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 PREFIX=/usr
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 notangle -Rnoweb2lyx.in noweb2lyx.nw > noweb2lyx.in
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 sed -e "s=@PERL@=$PREFIX/bin/perl=" noweb2lyx.in > noweb2lyx
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 chmod +x noweb2lyx
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
+
 @
 \end_layout
 

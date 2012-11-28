@@ -1397,6 +1397,37 @@ def convert_IJMP(document):
       if i == -1:
         return
 
+def revert_literate(document):
+    " Revert Literate document to old format "
+    if del_token(document.header, "noweb", 0):
+      document.textclass = "literate-" + document.textclass
+      i = 0
+      while True:
+        i = find_token(document.body, "\\begin_layout Chunk", i)
+        if i == -1:
+          break
+        document.body[i] = "\\begin_layout Scrap"
+        i = i + 1
+
+def convert_literate(document):
+    " Convert Literate document to new format"
+    i = find_token(document.header, "\\textclass", 0)    
+    if (i != -1) and "literate-" in document.header[i]:
+      document.textclass = document.header[i].replace("\\textclass literate-", "")
+      j = find_token(document.header, "\\begin_modules", 0)
+      if (j != -1):
+        document.header.insert(j + 1, "noweb")
+      else:
+        document.header.insert(i + 1, "\\end_modules")
+        document.header.insert(i + 1, "noweb")
+        document.header.insert(i + 1, "\\begin_modules")
+      i = 0
+      while True:
+        i = find_token(document.body, "\\begin_layout Scrap", i)
+        if i == -1:
+          break
+        document.body[i] = "\\begin_layout Chunk"
+        i = i + 1
 
 ##
 # Conversion hub
@@ -1437,10 +1468,12 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP]]
+           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP]],
+           [448, [convert_literate]]
           ]
 
 revert =  [
+           [447, [revert_literate]],
            [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],

@@ -1,8 +1,8 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 442
+\lyxformat 448
 \begin_document
 \begin_header
-\textclass literate-article
+\textclass article
 \begin_preamble
 %
 % ps2pdf stuff
@@ -18,6 +18,9 @@
 \let\nwdocspar=\smallbreak
 \end_preamble
 \use_default_options false
+\begin_modules
+noweb
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -311,114 +314,114 @@ listerrors
  available for all other platforms.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<listerrors>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 #!/usr/bin/python -tt
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 """reformat noweb and compiler errors for LyX.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 Expects to read from stdin and output to stdout.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 """
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __author__ = "Kayvan A.
  Sylvan <kayvan@sylvan.com>"
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __date__ = "$Date: 2005/07/18 09:42:26 $"
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __version__ = "$Revision: 1.5 $"
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __credits__ = """Edmar Wienskoski Jr.
  <edmar-w-jr@technologist.com>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     original Literate support for LyX.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 Bernard Michael Hurley <berhardh@westherts.ac.uk>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     modifications to original listerrors."""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __copyright__ = "Copyright 2002 - Kayvan Sylvan."
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 import sys, string
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if __name__ == "__main__":
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   main()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @
 \end_layout
@@ -431,30 +434,30 @@ LaTeX style error message
 The following function mimics the TeX error message format.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def write_error(msg, tool = "noweb", line_number = 1):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """Write out the given message in TeX error style.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   called like: write_error(msg, tool, line_number)."""
 \begin_inset Newline newline
@@ -533,79 +536,79 @@ pushline
  set of functions:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 __lines = [] # lines pushed back
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def getline(file = sys.stdin):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """read a line from internal stack or from file.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   optional file argument defaults to sys.stdin."""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   global __lines
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   lines = __lines
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   if lines:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     line = lines.pop()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   else:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     line = file.readline()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   return line
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @ %def getline
 \end_layout
@@ -614,26 +617,26 @@ def getline(file = sys.stdin):
 And now for the corresponding pushline function:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def pushline(line):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   "push a line onto the pushback stack."
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   global __lines
 \begin_inset Newline newline
@@ -671,57 +674,57 @@ listerrors
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def main():
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """Entry point for listerrors.
  Takes no options.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   Reads stdin and writes to stdout.
  Filter errors"""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   while 1:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     line = getline()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     if line == "": break
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     <<Check line against patterns and take action>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @ %def main
 \end_layout
@@ -731,16 +734,16 @@ For each line read in, we need to find out if it matches any of our tools
  (noweb, gcc, etc.) and act accordingly.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Check line against patterns and take action>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
 \begin_inset Newline newline
@@ -776,61 +779,61 @@ Noweb errors are output on a single line, so examining just the current
  line is enough.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def noweb_try(line):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """see if line is a noweb error.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   retval = 0
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   <<Look for the unescaped angle-brackets in documentation>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   <<Look for anything with double angle brackets>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   <<Last ditch effort scan for specific strings>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   return retval
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @ %def noweb_try
 \end_layout
@@ -848,80 +851,80 @@ unescaped < < in documentation chunk
  This is the only message with an associated line number from noweb.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Look for the unescaped angle-brackets in documentation>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if string.find(line, ": unescaped << in documentation chunk") != -1:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   line_parts = string.split(line, ':')
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   num_str = line_parts[1]
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   num_len = len(num_str)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   i = 0
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   while i < num_len and (num_str[i] in string.digits): i = i + 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   if i == num_len:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     write_error(":" + line_parts[2], "noweb", int(num_str))
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     retval = 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @
 \end_layout
 
 \begin_layout Standard
-Some noweb messages are simply about undefined scraps.
+Some noweb messages are simply about undefined chunks.
  These can be seen by looking for matching double-angle-brackets.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Look for anything with double angle brackets>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if (not retval):
 \begin_inset Newline newline
@@ -956,102 +959,102 @@ if (not retval):
 Finally, here is an additional list of explicit strings to check for.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Last ditch effort scan for specific strings>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if (not retval):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   msgs_to_try = ("couldn't open file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "couldn't open temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "error writing temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "ill-formed option",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "unknown option",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "Bad format sequence",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "Can't open output file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "Can't open temporary file",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "Capacity exceeded:",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "Ignoring unknown option -",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "This can't happen:",
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     "non-numeric line number in")
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   for msg in msgs_to_try:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     if string.find(line, msg) != -1:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
       write_error(line, "noweb")
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
       retval = 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
       break
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @
 \end_layout
@@ -1068,21 +1071,21 @@ The gcc errors can be multi-line, with the following format:
 foo.c: In function `main': 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 foo.c:3: `bar' undeclared (first use in this function) 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 foo.c:3: (Each undeclared identifier is reported only once 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 foo.c:3: for each function it appears in.) 
 \begin_inset Newline newline
@@ -1096,52 +1099,52 @@ In order to parse this, the gcc error handler has to look ahead and return
  any and all lines that do not match the expected pattern.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def gcc_try(line):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """See if line is a gcc error.
  Read ahead to handle all the lines.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   retval = 0
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   <<Handle the gcc error message>>
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   return retval
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @ %def gcc_try
 \end_layout
@@ -1151,7 +1154,7 @@ The error message starts with a gcc header (as above) without an associated
  line number.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Handle the gcc error message>>= 
 \begin_inset Newline newline
@@ -1221,67 +1224,67 @@ At the point in the code that we know that we are in the middle of an error
  message, we do the following:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Accumulate gcc error lines and print it>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 num_str = next_line[first_space:num_end]
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 msgs = [line[first_space:]]
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 msgs.append(next_line[num_end + 1:])
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 header_to_see = next_line[:num_end]
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 next_line = getline()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 while next_line and next_line[:num_end] == header_to_see:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   msgs.append(next_line[num_end + 1:])
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   next_line = getline()
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if next_line: pushline(next_line)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 write_error(msgs, "gcc", int(num_str))
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 retval = 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @
 \end_layout
@@ -1316,106 +1319,106 @@ re
  
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<Function Bodies>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 def xlc_try(line):
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   """see if line is an xlc error.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   Returns 1 on success, 0 otherwise.
  Outputs on stdout."""
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   retval = 0
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   if line[0] == '"': # This is the first character of all xlc errors
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     next_quote = string.find(line, '"', 1)
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     first_space = string.find(line, ' ')
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
     if (next_quote != -1) and (first_space > next_quote): # no space inisde
  quotes
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
       if line[first_space - 1:first_space + 6] == ", line ":
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
         num_start = num_end = first_space + 6
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
         while line[num_end] in string.digits: num_end = num_end + 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
         if num_end > num_start:
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
           write_error(line, "xlc", int(line[num_start : num_end]))
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
           retval = 1
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   return retval
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
   
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @ %def xlc_try
 \end_layout
@@ -1433,7 +1436,7 @@ Program
 \begin_inset Quotes erd
 \end_inset
 
- convertor to call a generic script that always extracts a scrap named 
+ convertor to call a generic script that always extracts a chunk named 
 \family typewriter
 build-script
 \family default
@@ -1443,47 +1446,47 @@ build-script
 
 \begin_layout LyX-Code
 #!/bin/sh
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+\begin_layout LyX-Code
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
 This section defines our build-script, which extracts the code.
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 <<build-script>>=
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 #!/bin/sh
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=listerrors.nw; fi
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 notangle -Rlisterrors ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 chmod +x ${NOWEB_OUTPUT_DIR}/listerrors
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Chunk
 
 @
 \end_layout

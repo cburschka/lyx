@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 445
+\lyxformat 447
 \begin_document
 \begin_header
 \textclass scrbook
@@ -38,6 +38,7 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\usepackage{enumitem}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -79,7 +80,7 @@ End
 \font_tt_scale 100
 \graphics default
 \default_output_format default
-\output_sync 1
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -135,7 +136,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 274215730 "scott" 
+\author 819523532 "Kayvan Sylvan" 
 \end_header
 
 \begin_body
@@ -14993,7 +14994,7 @@ Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 
 \begin_layout Section
 Article (mwart), book (mwbk) and report (mwrep)
-\begin_inset Argument
+\begin_inset Argument status
 status collapsed
 
 \begin_layout Plain Layout
@@ -21378,11 +21379,7 @@ Starting from there you can reach many other interesting links and even
 \end_layout
 
 \begin_layout Subsection
-LyX and Literate Programming
-\change_inserted 274215730 1350434640
- with Noweb
-\change_unchanged
-
+LyX and Literate Programming with Noweb
 \end_layout
 
 \begin_layout Standard
@@ -21413,51 +21410,38 @@ Generating documents and code (weaving and tangling)
 \end_layout
 
 \begin_layout Paragraph
-Selecting the document class
+Using the noweb module
 \end_layout
 
 \begin_layout Standard
 If you have installed Noweb and LyX successfully, whenever you open a new
- document or try to change the document class of an existing one, you will
- find that there are three new document classes available:
-\end_layout
-
-\begin_layout Itemize
-Article (Noweb)
-\end_layout
-
-\begin_layout Itemize
-Book (Noweb)
-\end_layout
-
-\begin_layout Itemize
-Report (Noweb)
-\end_layout
-
-\begin_layout Standard
-You must select one of them to create your literate documents from.
- 
-\end_layout
-
-\begin_layout Standard
-Note that literate documents are not limited to these three classes.
- New classes can be generated from other styles like letter or in combination
- with other class variations like Article (AMS).
- If you have special needs that cannot be covered by one of the existing
- classes, let the LyX developers list (lyx-devel@lists.lyx.org) know and we
- will arrange to insert a new entry, or teach you how to do it.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-It is very simple, it involves the creation of a file with four lines, and
- re-running of the auto configuration.
-\end_layout
-
+ document, after you have chosen its document class, use the Document->Settings
+ menu to add the 
+\begin_inset Quotes eld
 \end_inset
 
- Moreover, if you use a literate tool other than Noweb you may need to create
- a new set of document classes for it.
+noweb
+\begin_inset Quotes erd
+\end_inset
+
+ module.
+ If Noweb is correctly installed, when you click on the 
+\begin_inset Quotes eld
+\end_inset
+
+Modules
+\begin_inset Quotes erd
+\end_inset
+
+ link, you will see the 
+\begin_inset Quotes eld
+\end_inset
+
+noweb
+\begin_inset Quotes erd
+\end_inset
+
+ module in the available list and you can add it to your document.
 \end_layout
 
 \begin_layout Paragraph
@@ -21466,10 +21450,32 @@ Typing code in
 
 \begin_layout Standard
 LyX enables you to write code with a layout named 
+\change_inserted 819523532 1353904450
+
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 819523532 1353904450
+Chunk
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 819523532 1353904406
+
 \noun on
 Scrap
+\change_unchanged
+
 \noun default
 .
+\change_deleted 819523532 1353904396
+
 \begin_inset Foot
 status collapsed
 
@@ -21497,11 +21503,25 @@ scrap
 
 \end_inset
 
- Noweb delimits scraps like this:
+
+\change_unchanged
+ Noweb delimits 
+\change_deleted 819523532 1353904459
+scraps
+\change_inserted 819523532 1353904461
+chunks
+\change_unchanged
+ like this:
 \end_layout
 
 \begin_layout LyX-Code
-<<My scrap>>=
+<<My 
+\change_deleted 819523532 1353904469
+scrap
+\change_inserted 819523532 1353904470
+code
+\change_unchanged
+>>=
 \end_layout
 
 \begin_layout LyX-Code
@@ -21535,76 +21555,13 @@ e.
 
 LyX should be prevented from making any special interpretation of what has
  been written.
- This is handled by a special layout named Scrap, that works like a normal
- paragraph but has a free spacing capability.
-\end_layout
-
-\begin_layout Standard
-The down
-\change_deleted 274215730 1350432842
- 
+ This is handled by a special layout named 
+\change_deleted 819523532 1353904493
+Scrap
+\change_inserted 819523532 1353904494
+Chunk
 \change_unchanged
-side of the Scrap paragraph layout is that consecutive paragraphs of code
- will be spaced with one empty line in the source code and also in the printed
- documentation.
- The work around is to enter each line of code within a single Scrap, with
- a newline (ctrl-return).
- The example above will look like this:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-If you have a printed version of this document you will not see any difference
- between the previous example and this one.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LyX-Code
-<<My scrap>>=
-\begin_inset Newline newline
-\end_inset
-
-  code
-\begin_inset Newline newline
-\end_inset
-
-  more code
-\begin_inset Newline newline
-\end_inset
-
-  even more code
-\begin_inset Newline newline
-\end_inset
-
-  @
-\end_layout
-
-\begin_layout Standard
-This layout works fine.
- The only real inconvenience is that you have to type ctrl-return instead
- of a plain return.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-It is in my list of 
-\begin_inset Quotes eld
-\end_inset
-
-improvements
-\begin_inset Quotes erd
-\end_inset
-
- to fix that.
-\end_layout
-
-\end_inset
-
-
+, that works like a normal paragraph but has a free spacing capability.
 \end_layout
 
 \begin_layout Standard
@@ -21616,24 +21573,53 @@ As a special note, you can also use the
 \begin_inset Quotes erd
 \end_inset
 
- construct of Noweb in your scraps to add items to Noweb's identifier cross-refe
-rence:
+ construct of Noweb in your 
+\change_deleted 819523532 1353904503
+scraps
+\change_inserted 819523532 1353904504
+chunks
+\change_unchanged
+ to add items to Noweb's identifier cross-reference:
 \end_layout
 
 \begin_layout LyX-Code
-<<My scrap>>=
-\begin_inset Newline newline
-\end_inset
+<<My 
+\change_deleted 819523532 1353904516
+scrap
+\change_inserted 819523532 1353904517
+chunk
+\change_unchanged
+>>=
+\change_inserted 819523532 1353904523
 
-  def some_function(args):
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-    "This is the doc string for this function."
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
 
-    print "My args: ", args
+\change_deleted 819523532 1353904528
+  
+\change_unchanged
+def some_function(args):
+\change_inserted 819523532 1353904543
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_deleted 819523532 1353904543
+ 
+\change_unchanged
+   "This is the doc string for this function."
+\change_inserted 819523532 1353904550
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_deleted 819523532 1353904550
+ 
+\change_unchanged
+   print "My args: ", args
 \end_layout
 
 \begin_layout LyX-Code
@@ -21703,8 +21689,13 @@ literate
 \begin_layout Enumerate
 Note that the only difference so far is in the name of the file, no special
  processing is required by LyX.
- Given that you formatted the code using the Scrap layout that, by itself,
- takes care of the business.
+ Given that you formatted the code using the 
+\change_deleted 819523532 1353904586
+Scrap
+\change_inserted 819523532 1353904587
+Chunk
+\change_unchanged
+ layout that, by itself, takes care of the business.
 \end_layout
 
 \begin_layout Enumerate
@@ -21909,7 +21900,13 @@ Noweb->Program
  conversion may produce several files, and so most of these would then be
  deleted when LyX was closed.
  This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script scrap can place the generated files in that location.
+ the build-script 
+\change_deleted 819523532 1353904613
+scrap
+\change_inserted 819523532 1353904614
+chunk
+\change_unchanged
+ can place the generated files in that location.
 \end_layout
 
 \begin_layout Paragraph
@@ -21925,9 +21922,21 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
- scrap.
+ 
+\change_deleted 819523532 1353904625
+scrap
+\change_inserted 819523532 1353904625
+chunk
+\change_unchanged
+.
  Generally, the instructions for building your program should be embedded
- in a scrap of its own.
+ in a 
+\change_deleted 819523532 1353904630
+scrap
+\change_inserted 819523532 1353904630
+chunk
+\change_unchanged
+ of its own.
  The noweb-specific 
 \begin_inset Quotes eld
 \end_inset
@@ -21936,7 +21945,13 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
- above uses the notangle command to look for this scrap (called 
+ above uses the notangle command to look for this 
+\change_deleted 819523532 1353904632
+scrap
+\change_inserted 819523532 1353904632
+chunk
+\change_unchanged
+ (called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21956,50 +21971,21 @@ sh
 \end_layout
 
 \begin_layout Standard
-Typically, such a scrap would look something like this:
+Typically, such a 
+\change_deleted 819523532 1353904634
+scrap
+\change_inserted 819523532 1353904634
+chunk
+\change_unchanged
+ would look something like this:
 \end_layout
 
 \begin_layout LyX-Code
-<<build-script>>=
-\begin_inset Newline newline
-\end_inset
-
-#!/bin/sh
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-if [ -z "${NOWEB_SOURCE}" ]
-\begin_inset Newline newline
-\end_inset
-
-then
-\begin_inset Newline newline
-\end_inset
-
-  NOWEB_SOURCE=myfile.nw
-\begin_inset Newline newline
-\end_inset
-
-fi
-\begin_inset Newline newline
-\end_inset
-
-[...
+<<build-script>>=#!/bin/shif [ -z "${NOWEB_SOURCE}" ]then  NOWEB_SOURCE=myfile.nw
+fi[...
  code to extract files ...
- use NOWEB_OUTPUT_DIR here ...]
-\begin_inset Newline newline
-\end_inset
-
-[...
- code to compile files ...]
-\begin_inset Newline newline
-\end_inset
-
-@
+ use NOWEB_OUTPUT_DIR here ...][...
+ code to compile files ...]@
 \end_layout
 
 \begin_layout Standard
@@ -22214,11 +22200,8 @@ Helpers
 \end_layout
 
 \begin_layout Standard
-I take advantage of the new
-\change_inserted 274215730 1350432999
-ly
-\change_unchanged
- created LyX server function and this ddd feature, and set 
+I take advantage of the newly created LyX server function and this ddd feature,
+ and set 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22236,15 +22219,9 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \begin_layout Standard
 With this, whenever you are using ddd and find a point in the program that
  you want to edit, you just press shift-ctrl-V (in the ddd window), and
- ddd 
-\change_deleted 274215730 1350433047
-you
-\change_inserted 274215730 1350433047
-will
-\change_unchanged
- forward this information to LyX through the LyX server and then the LyX
- window will show the same file with the cursor at the same position ddd
- was pointing to.
+ ddd will forward this information to LyX through the LyX server and then
+ the LyX window will show the same file with the cursor at the same position
+ ddd was pointing to.
  No more guessing or long scrolling to locate a point in the program back
  from debugging !
 \end_layout
@@ -22314,8 +22291,14 @@ LaTeX
 LyX-Code
 \family default
 , and 
+\change_deleted 819523532 1353904643
+
 \family sans
 Scrap
+\change_inserted 819523532 1353904651
+Chunk
+\change_unchanged
+
 \family default
 .
  The last one is a short cut to the 
@@ -22381,7 +22364,13 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout Scrap"
+  Icon "layout 
+\change_deleted 819523532 1353904661
+Scrap
+\change_inserted 819523532 1353904668
+Chunk
+\change_unchanged
+"
 \end_layout
 
 \begin_layout LyX-Code
@@ -22431,9 +22420,19 @@ Preferences
 \family default
 .
  One of the things that bothers people is the LaTeX font color.
- The default color is red, since the scraps uses LaTeX font, and there is
- a lot of scraps in literate documents, you may get tired of seeing everything
- in red.
+ The default color is red, since the 
+\change_deleted 819523532 1353904675
+scrap
+\change_inserted 819523532 1353904675
+chunk
+\change_unchanged
+s uses LaTeX font, and there is a lot of 
+\change_deleted 819523532 1353904682
+scrap
+\change_inserted 819523532 1353904682
+chunk
+\change_unchanged
+s in literate documents, you may get tired of seeing everything in red.
  You can change it by going to the tabs 
 \family sans
 Look&Feel
@@ -22450,26 +22449,15 @@ The next thing is the visible presence of the newline character in the screen.
  I recommend you choosing a color that is close to the background but not
  equal, that way you still can see it is there, but it is not bothering
  you anymore.
-
-\change_deleted 274215730 1350434691
- 
-\change_inserted 274215730 1350434708
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 274215730 1350434732
 LyX and knitr/Sweave
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 274215730 1350434777
 Support for knitr and Sweave is documented in the knitr.lyx example file
  and in the Sweave manual (in the Help > Specific Manuals submenu).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Chapter

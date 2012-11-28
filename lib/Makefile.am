@@ -399,7 +399,7 @@ dist_images_DATA = \
 	images/layout_Itemize.png \
 	images/layout_List.png \
 	images/layout_LyX-Code.png \
-	images/layout_Scrap.png \
+	images/layout_Chunk.png \
 	images/layout_Section.png \
 	images/lyx-quit.png \
 	images/marginalnote-insert.png \
@@ -1365,7 +1365,7 @@ dist_imagesclassic_DATA = \
 	images/classic/layout_Itemize.png  \
 	images/classic/layout_List.png  \
 	images/classic/layout_LyX-Code.png  \
-	images/classic/layout_Scrap.png  \
+	images/classic/layout_Chunk.png  \
 	images/classic/layout_Section.png  \
 	images/classic/marginalnote-insert.png  \
 	images/classic/master-buffer-update.png  \
@@ -1588,10 +1588,6 @@ dist_layouts_DATA =\
 	layouts/lettre.layout \
 	layouts/lilypond.module \
 	layouts/linguistics.module \
-	layouts/literate-article.layout \
-	layouts/literate-book.layout \
-	layouts/literate-report.layout \
-	layouts/literate-scrap.inc \
 	layouts/llncs.layout \
 	layouts/logicalmkup.module \
 	layouts/ltugboat.layout \

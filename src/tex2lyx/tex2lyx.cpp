@@ -581,7 +581,7 @@ int parse_help(string const &, string const &)
 		"\t-e encoding        Set the default encoding (latex name).\n"
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
-		"\t-n                 translate a noweb (aka literate programming) file.\n"
+		"\t-n                 translate literate programming (noweb, sweave,... ) file.\n"
 		"\t-skipchildren      Do not translate included child documents.\n"
 		"\t-roundtrip         re-export created .lyx file infile.lyx.lyx to infile.lyx.tex.\n"
 		"\t-s syntaxfile      read additional syntax file.\n"

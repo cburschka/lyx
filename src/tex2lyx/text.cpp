@@ -1944,27 +1944,27 @@ void copy_file(FileName const & src, string dstname)
 }
 
 
-/// Parse a NoWeb Scrap section. The initial "<<" is already parsed.
+/// Parse a NoWeb Chunk section. The initial "<<" is already parsed.
 void parse_noweb(Parser & p, ostream & os, Context & context)
 {
 	// assemble the rest of the keyword
 	string name("<<");
-	bool scrap = false;
+	bool chunk = false;
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.asInput() == ">" && p.next_token().asInput() == ">") {
 			name += ">>";
 			p.get_token();
-			scrap = (p.good() && p.next_token().asInput() == "=");
-			if (scrap)
+			chunk = (p.good() && p.next_token().asInput() == "=");
+			if (chunk)
 				name += p.get_token().asInput();
 			break;
 		}
 		name += t.asInput();
 	}
 
-	if (!scrap || !context.new_layout_allowed ||
-	    !context.textclass.hasLayout(from_ascii("Scrap"))) {
+	if (!chunk || !context.new_layout_allowed ||
+	    !context.textclass.hasLayout(from_ascii("Chunk"))) {
 		cerr << "Warning: Could not interpret '" << name
 		     << "'. Ignoring it." << endl;
 		return;
@@ -1978,7 +1978,7 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 	// always must be in an own paragraph.
 	context.new_paragraph(os);
 	Context newcontext(true, context.textclass,
-		&context.textclass[from_ascii("Scrap")]);
+		&context.textclass[from_ascii("Chunk")]);
 	newcontext.check_layout(os);
 	os << name;
 	while (p.good()) {
@@ -1990,12 +1990,12 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 		else {
 			ostringstream oss;
 			Context tmp(false, context.textclass,
-			            &context.textclass[from_ascii("Scrap")]);
+			            &context.textclass[from_ascii("Chunk")]);
 			tmp.need_end_layout = true;
 			tmp.check_layout(oss);
 			os << subst(t.asInput(), "\n", oss.str());
 		}
-		// The scrap chunk is ended by an @ at the beginning of a line.
+		// The chunk is ended by an @ at the beginning of a line.
 		// After the @ the line may contain a comment and/or
 		// whitespace, but nothing else.
 		if (t.asInput() == "@" && p.prev_token().cat() == catNewline &&
@@ -2282,6 +2282,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
+		else if (t.asInput() == "<"
+			 && p.next_token().asInput() == "<" && noweb_mode) {
+			p.get_token();
+			parse_noweb(p, os, context);
+		}
+
 		else if (t.asInput() == "<" && p.next_token().asInput() == "<") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
@@ -2289,12 +2295,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
-		}
-
-		else if (t.asInput() == "<"
-			 && p.next_token().asInput() == "<" && noweb_mode) {
-			p.get_token();
-			parse_noweb(p, os, context);
 		}
 
 		else if (t.cat() == catSpace || (t.cat() == catNewline && ! p.isParagraph()))

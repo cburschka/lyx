@@ -12,6 +12,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-11-25 Kayvan Sylvan <kayvan@sylvan.com>
+	* Format incremented to 448: Change Noweb literate style Scrap
+	to Chunk to be consistent with all the other literate tools
+	(including noweb!) and add the needed preamble bits to Noweb module
+	support, also remove the literate-* layouts.
+
+2012-11-24 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 447: IEEEtran layout revision.
+
 2012-11-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 446: Change of InsetArgument syntax.
 	  InsetArgument now has a numeric identifier which determines
