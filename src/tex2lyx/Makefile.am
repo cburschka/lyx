@@ -26,7 +26,8 @@ TEST_FILES = \
 	test/foo.png \
 	test/test-insets.tex \
 	test/test.ltx \
-	test/test-structure.tex
+	test/test-structure.tex \
+	test/XeTeX-polyglossia.tex
 
 LINKED_FILES = \
 	../Author.cpp \
