@@ -71,6 +71,9 @@ What's new
 - Layout file for JASATeX: solved problems with natbib and added missing
   short title for the document title
 
+- Fix problem using lyxpak.py when outside the LyX tree: Variable was
+  undefined.
+
 
 * USER INTERFACE
 
