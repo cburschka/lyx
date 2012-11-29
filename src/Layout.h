@@ -100,9 +100,11 @@ public:
 		FontInfo labelfont;
 	};
 	///
-	typedef std::map<unsigned int, latexarg> LaTeXArgMap;
+	typedef std::map<std::string, latexarg> LaTeXArgMap;
 	///
 	LaTeXArgMap const & latexargs() const { return latexargs_; }
+	///
+	LaTeXArgMap const & itemargs() const { return itemargs_; }
 	///
 	int optArgs() const;
 	///
@@ -399,6 +401,8 @@ private:
 	std::set<std::string> requires_;
 	///
 	LaTeXArgMap latexargs_;
+	///
+	LaTeXArgMap itemargs_;
 };
 
 } // namespace lyx

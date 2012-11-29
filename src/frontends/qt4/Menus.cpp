@@ -1555,10 +1555,15 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 
 	Inset const * inset = &bv->cursor().inset();
 	Layout::LaTeXArgMap args;
-	if (inset && bv->cursor().paragraph().layout().latexargs().empty())
+	if (inset && bv->cursor().paragraph().layout().latexargs().empty()
+	    && bv->cursor().paragraph().layout().itemargs().empty())
 		args = inset->getLayout().latexargs();
-	else
+	else {
 		args = bv->cursor().paragraph().layout().latexargs();
+		Layout::LaTeXArgMap itemargs = bv->cursor().paragraph().layout().itemargs();
+		if (!itemargs.empty())
+			args.insert(itemargs.begin(), itemargs.end());
+	}
 	if (args.empty() || (switcharg && args.size() == 1))
 		return;
 	Layout::LaTeXArgMap::const_iterator lait = args.begin();
@@ -1570,11 +1575,11 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 			add(MenuItem(MenuItem::Command, item,
 				     FuncRequest(LFUN_INSET_MODIFY,
 						 from_ascii("changetype ")
-						 + convert<docstring>((*lait).first))));
+						 + from_ascii((*lait).first))));
 		else
 			add(MenuItem(MenuItem::Command, item,
 				     FuncRequest(LFUN_ARGUMENT_INSERT,
-						 convert<docstring>((*lait).first))));
+						 from_ascii((*lait).first))));
 	}
 }
 

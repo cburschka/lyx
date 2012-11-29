@@ -503,7 +503,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	bool finished = false;
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
-	unsigned int nr;
+	string nr;
 	lex >> nr;
 	while (!finished && lex.isOK() && !error) {
 		lex.next();

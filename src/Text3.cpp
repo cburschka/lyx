@@ -2526,8 +2526,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		Layout const & lay = cur.paragraph().layout();
 		Layout::LaTeXArgMap args = lay.latexargs();
+		Layout::LaTeXArgMap itemargs = lay.itemargs();
+		if (!itemargs.empty())
+			args.insert(itemargs.begin(), itemargs.end());
 		Layout::LaTeXArgMap::const_iterator const lait =
-				args.find(convert<unsigned int>(arg));
+				args.find(arg);
 		if (lait != args.end()) {
 			enable = true;
 			InsetList::const_iterator it = cur.paragraph().insetList().begin();

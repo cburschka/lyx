@@ -58,12 +58,16 @@ void InsetArgument::read(Lexer & lex)
 void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Layout::LaTeXArgMap args;
-	bool const insetlayout = &it.inset() && it.paragraph().layout().latexargs().empty();
+	bool const insetlayout = &it.inset() && it.paragraph().layout().latexargs().empty()
+	      && it.paragraph().layout().itemargs().empty();
 	if (insetlayout) {
 		args = it.inset().getLayout().latexargs();
 		pass_thru_ = it.inset().getLayout().isPassThru();
 	} else {
 		args = it.paragraph().layout().latexargs();
+		Layout::LaTeXArgMap itemargs = it.paragraph().layout().itemargs();
+		if (!itemargs.empty())
+			args.insert(itemargs.begin(), itemargs.end());
 		pass_thru_ = it.paragraph().layout().pass_thru;
 	}
 	
@@ -102,8 +106,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 			name_ = convert<string>(ours);
 		}
 	}
-	Layout::LaTeXArgMap::const_iterator const lait =
-			args.find(convert<unsigned int>(name_));
+	Layout::LaTeXArgMap::const_iterator const lait = args.find(name_);
 	if (lait != args.end()) {
 		docstring label = translateIfPossible((*lait).second.labelstring);
 		docstring striplabel;
@@ -179,8 +182,7 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 				args = cur.inset().getLayout().latexargs();
 			else
 				args = cur.paragraph().layout().latexargs();
-			Layout::LaTeXArgMap::const_iterator const lait =
-					args.find(convert<unsigned int>(type));
+			Layout::LaTeXArgMap::const_iterator const lait = args.find(type);
 			if (lait != args.end()) {
 				flag.setEnabled(true);
 				InsetList::const_iterator it = cur.paragraph().insetList().begin();

@@ -322,8 +322,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		case LT_RESETARGS:
 			bool reset;
 			lex >> reset;
-			if (reset)
+			if (reset) {
 				latexargs_.clear();
+				itemargs_.clear();
+			}
 			break;
 
 		case LT_ARGUMENT:
@@ -879,8 +881,10 @@ void Layout::readArgument(Lexer & lex)
 	bool finished = false;
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
-	unsigned int nr;
-	lex >> nr;
+	string id;
+	lex >> id;
+	bool const itemarg = prefixIs(id, "item:");
+
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
 		string const tok = ascii_lowercase(lex.getString());
@@ -921,8 +925,10 @@ void Layout::readArgument(Lexer & lex)
 	}
 	if (arg.labelstring.empty())
 		LYXERR0("Incomplete Argument definition!");
+	else if (itemarg)
+		itemargs_[id] = arg;
 	else
-		latexargs_[nr] = arg;
+		latexargs_[id] = arg;
 }
 
 

@@ -338,11 +338,11 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
-		if (&buffer().inset() == this || !cur.paragraph().layout().latexargs().empty())
+		if (&buffer().inset() == this || !cur.paragraph().layout().latexargs().empty()
+		    || !cur.paragraph().layout().itemargs().empty())
 			return text_.getStatus(cur, cmd, status);
 		Layout::LaTeXArgMap args = getLayout().latexargs();
-		Layout::LaTeXArgMap::const_iterator const lait =
-				args.find(convert<unsigned int>(arg));
+		Layout::LaTeXArgMap::const_iterator const lait = args.find(arg);
 		if (lait != args.end()) {
 			status.setEnabled(true);
 			InsetList::const_iterator it = cur.paragraph().insetList().begin();

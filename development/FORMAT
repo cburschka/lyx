@@ -12,6 +12,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-11-29 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 449: Support for \item arguments.
+	  Item arguments have the prefix "item:" and a number determining
+	  the order.
+	     \begin_inset Argument item:1
+	     ...
+	     \end_inset
+	  => \item[...]
+
 2012-11-25 Kayvan Sylvan <kayvan@sylvan.com>
 	* Format incremented to 448: Change Noweb literate style Scrap
 	  to Chunk to be consistent with all the other literate tools

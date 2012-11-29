@@ -28,6 +28,10 @@ Style Itemize
 	HTMLTag               ul
 	HTMLItem              li
 	HTMLLabel             NONE
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 
@@ -52,6 +56,10 @@ Style Enumerate
 	HTMLItem              li
 	HTMLLabel             NONE
 	RefPrefix             enu
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 Style Description

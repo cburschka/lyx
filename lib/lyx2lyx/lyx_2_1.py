@@ -25,13 +25,13 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_token, find_end_of, find_end_of_inset, \
+from parser_tools import del_token, find_token, find_token_backwards, find_end_of, find_end_of_inset, \
     find_end_of_layout, find_re, get_option_value, get_value, get_quoted_value, \
     set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
-  #find_token_backwards, is_in_inset, del_token, check_token
+  #is_in_inset, del_token, check_token
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
 
@@ -1232,7 +1232,7 @@ def revert_IEEEtran(document):
 def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
     '''
     Converts TeX code to an InsetArgument
-    !!! Be careful if the braces are different in your case as exppected here:
+    !!! Be careful if the braces are different in your case as expected here:
     - }{ separates mandatory arguments of commands
     - { and } surround a mandatory argument of an environment
     usage:
@@ -1429,6 +1429,23 @@ def convert_literate(document):
         document.body[i] = "\\begin_layout Chunk"
         i = i + 1
 
+def revert_itemargs(document):
+    " Reverts \\item arguments to TeX-code "
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument item:", 0)
+        j = find_end_of_inset(document.body, i)
+        if i == -1:
+            break
+        lastlay = find_token_backwards(document.body, "\\begin_layout", i)
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endLayout = find_token(document.body, "\\end_layout", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", endLayout)
+        content = document.body[beginPlain + 1 : endLayout]
+        del document.body[i:j+1]
+        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+        document.body[lastlay + 1:lastlay + 1] = subst
+        i = i + 1
+
 ##
 # Conversion hub
 #
@@ -1469,10 +1486,12 @@ convert = [
            [445, []],
            [446, [convert_latexargs]],
            [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP]],
-           [448, [convert_literate]]
+           [448, [convert_literate]],
+           [449, []]
           ]
 
 revert =  [
+           [448, [revert_itemargs]],
            [447, [revert_literate]],
            [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP]],
            [445, [revert_latexargs]],

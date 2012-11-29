@@ -354,6 +354,10 @@ Style Itemize
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Itemize
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 
@@ -373,6 +377,10 @@ Style Enumerate
 	AlignPossible         Block, Left
 	LabelType             Enumerate
 	RefPrefix             enu
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 

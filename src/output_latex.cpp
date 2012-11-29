@@ -316,7 +316,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 
 void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs)
+	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, bool item)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
@@ -330,10 +330,11 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			if (ins->name().empty())
 				LYXERR0("Error: Unnamed argument inset!");
 			else {
-				unsigned int const nr = convert<unsigned int>(ins->name());
+				string const name = item ? split(ins->name(), ':') : ins->name();
+				unsigned int const nr = convert<unsigned int>(name);
 				ilist[nr] = ins;
 				Layout::LaTeXArgMap::const_iterator const lit =
-						latexargs.find(nr);
+						latexargs.find(ins->name());
 				if (lit != latexargs.end()) {
 					Layout::latexarg const & arg = (*lit).second;
 					if (!arg.requires.empty()) {
@@ -356,7 +357,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			InsetArgument const * ins = (*lit).second;
 			if (ins) {
 				Layout::LaTeXArgMap::const_iterator const lait =
-						latexargs.find(convert<unsigned int>(ins->name()));
+						latexargs.find(ins->name());
 				if (lait != latexargs.end()) {
 					Layout::latexarg arg = (*lait).second;
 					docstring ldelim = arg.mandatory ?
@@ -376,7 +377,8 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
 			Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
 			for (; lait != laend; ++lait) {
-				if ((*lait).first == i) {
+				string const name = item ? "item:" + convert<string>(i) : convert<string>(i);
+				if ((*lait).first == name) {
 					Layout::latexarg arg = (*lait).second;
 					if (arg.mandatory) {
 						docstring ldelim = arg.ldelim.empty() ?
@@ -385,7 +387,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 								from_ascii("}") : arg.rdelim;
 						os << ldelim << rdelim;
 					} else if (find(required.begin(), required.end(),
-						   convert<string>((*lait).first)) != required.end()) {
+						   (*lait).first) != required.end()) {
 						docstring ldelim = arg.ldelim.empty() ?
 								from_ascii("[") : arg.ldelim;
 						docstring rdelim = arg.rdelim.empty() ?
@@ -409,14 +411,18 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 	case LATEX_COMMAND:
 		os << '\\' << from_ascii(style.latexname());
 
-		// Separate handling of optional argument inset.
+		// Command arguments
 		if (!style.latexargs().empty())
 			latexArgInsets(par, os, runparams, style.latexargs());
 		os << from_ascii(style.latexparam());
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		os << "\\item ";
+		os << "\\item";
+		// Item arguments
+		if (!style.itemargs().empty())
+			latexArgInsets(par, os, runparams, style.itemargs(), true);
+		os << " ";
 		break;
 	case LATEX_BIB_ENVIRONMENT:
 		// ignore this, the inset will write itself

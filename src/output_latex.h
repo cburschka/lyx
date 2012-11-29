@@ -38,7 +38,7 @@ class Text;
 /// must all come first.
 void latexArgInsets(Paragraph const & par,
 		otexstream & os, OutputParams const & runparams,
-		Layout::LaTeXArgMap const & latexargs);
+		Layout::LaTeXArgMap const & latexargs, bool item = false);
 
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is

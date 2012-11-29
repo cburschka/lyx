@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 448
+\lyxformat 449
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10815,6 +10815,79 @@ Classic
 \end_inset
 
 .
+\change_inserted 155139281 1354198988
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 155139281 1354199102
+Arguments for list 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354199013
+
+\backslash
+item
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+s (as in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354199102
+
+\backslash
+item[foo]
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) have the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354199044
+item:
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ followed by the number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1354199064
+Argument item:1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+)
 \change_unchanged
 
 \end_layout
