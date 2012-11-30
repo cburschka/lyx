@@ -1148,22 +1148,57 @@ def convert_latexargs(document):
 def revert_latexargs(document):
     " Revert InsetArgument to old syntax "
 
-    # FIXME: This method does not revert correctly (it does
-    #        not reorder the arguments)
-    # What needs to be done is this:
-    # * find all arguments in a paragraph and reorder them
-    #   according to their ID (which is deleted)
-    # So: \\begin_inset Argument 2 ... \\begin_inset Argument 1
-    # => \\begin_inset Argument ... \\begin_inset Argument
-    #    with correct order.
     i = 0
+    rx = re.compile(r'^\\begin_inset Argument (\d+)$')
+    args = dict()
     while True:
-      i = find_token(document.body, "\\begin_inset Argument", i)
-      if i == -1:
-        return
-      # Convert the syntax so that LyX 2.0 can at least open this
-      document.body[i] = "\\begin_inset Argument"
-      i = i + 1
+        # Search for Argument insets
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            break
+        m = rx.match(document.body[i])
+        if not m:
+            # No ID: inset already reverted
+            i = i + 1
+            continue
+        # Find beginning and end of the containing paragraph
+        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
+        if parbeg == -1:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            continue
+        parend = find_end_of_layout(document.body, parbeg)
+        if parend == -1:
+            document.warning("Malformed lyx document: Can't find end of parent paragraph layout")
+            continue
+        # Collect all arguments in this paragraph 
+        realparend = parend
+        for p in range(parbeg, parend):
+            m = rx.match(document.body[p])
+            if m:
+                val = int(m.group(1))
+                j = find_end_of_inset(document.body, p)
+                # Revert to old syntax
+                document.body[p] = "\\begin_inset Argument"
+                if j == -1:
+                    document.warning("Malformed lyx document: Can't find end of Argument inset")
+                    continue
+                if val > 0:
+                    args[val] = document.body[p : j + 1]
+                # Adjust range end
+                realparend = realparend - len(document.body[p : j + 1])
+                # Remove arg inset at this position
+                del document.body[p : j + 1]
+            if p >= realparend:
+                break
+        # Now sort the arg insets
+        subst = [""]
+        for f in sorted(args):
+            subst += args[f]
+            del args[f]
+        # Insert the sorted arg insets at paragraph begin
+        document.body[parbeg + 1:parbeg + 1] = subst
+
+        i = parbeg + 1 + len(subst)
 
 
 def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
