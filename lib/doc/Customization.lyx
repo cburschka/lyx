@@ -10583,7 +10583,7 @@ Argument 2
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1353681145
+\change_inserted -712698321 1354263104
 \begin_inset Flex Code
 status collapsed
 
@@ -10638,11 +10638,26 @@ status collapsed
 \end_inset
 
 ).
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263104
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1353917319
+\change_inserted -712698321 1354263106
 \begin_inset Flex Code
 status collapsed
 
@@ -10691,6 +10706,21 @@ status collapsed
 \end_inset
 
 ).
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263106
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -12642,7 +12672,7 @@ depending upon the LaTeX type.
 \end_deeper
 \begin_layout Description
 
-\change_inserted -712698321 1353866861
+\change_inserted -712698321 1354263086
 \begin_inset Flex Code
 status collapsed
 
@@ -12667,6 +12697,21 @@ string
 \end_inset
 
 ] A string that is put at the beginning of the style content.
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263086
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -13671,7 +13716,7 @@ CopyStyle
 
 \begin_layout Description
 
-\change_inserted -712698321 1353866881
+\change_inserted -712698321 1354263074
 \begin_inset Flex Code
 status collapsed
 
@@ -13696,6 +13741,21 @@ string
 \end_inset
 
 ] A string that is put at the end of the layout content.
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263069
+<br/>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -16792,7 +16852,7 @@ depending upon the LaTeX type.
 \end_deeper
 \begin_layout Description
 
-\change_inserted -712698321 1353866797
+\change_inserted -712698321 1354263128
 \begin_inset Flex Code
 status collapsed
 
@@ -16819,7 +16879,20 @@ string
 \end_inset
 
 ] A string that is put at the beginning of the layout content.
-\change_inserted 155139281 1354130509
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263128
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 
 \end_layout
 
@@ -17292,7 +17365,7 @@ status collapsed
 
 \begin_layout Description
 
-\change_inserted -712698321 1353866814
+\change_inserted -712698321 1354263134
 \begin_inset Flex Code
 status collapsed
 
@@ -17317,6 +17390,19 @@ string
 \end_inset
 
 ] A string that is put at the end of the layout content.
+ A line break in the output can be indicated by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354263134
+<br/>
+\end_layout
+
+\end_inset
+
+.
 \change_unchanged
 
 \end_layout

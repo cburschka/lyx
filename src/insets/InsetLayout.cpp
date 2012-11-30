@@ -237,12 +237,16 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_LEFTDELIM:
 			lex >> leftdelim_;
+			leftdelim_ = support::subst(leftdelim_, from_ascii("<br/>"),
+						    from_ascii("\n"));
 			break;
 		case IL_FORCE_LOCAL_FONT_SWITCH:
 			lex >> forcelocalfontswitch_;
 			break;
 		case IL_RIGHTDELIM:
 			lex >> rightdelim_;
+			rightdelim_ = support::subst(rightdelim_, from_ascii("<br/>"),
+						     from_ascii("\n"));
 			break;
 		case IL_LABELFONT:
 			labelfont_ = lyxRead(lex, inherit_font);
@@ -522,9 +526,13 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
+			arg.ldelim = support::subst(arg.ldelim,
+						    from_ascii("<br/>"), from_ascii("\n"));
 		} else if (tok == "rightdelim") {
 			lex.next();
 			arg.rdelim = lex.getDocString();
+			arg.rdelim = support::subst(arg.rdelim,
+						    from_ascii("<br/>"), from_ascii("\n"));
 		} else if (tok == "tooltip") {
 			lex.next();
 			arg.tooltip = lex.getDocString();

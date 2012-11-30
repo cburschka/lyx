@@ -372,10 +372,14 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_LEFTDELIM:
 			lex >> leftdelim_;
+			leftdelim_ = support::subst(leftdelim_, from_ascii("<br/>"),
+						    from_ascii("\n"));
 			break;
 
 		case LT_RIGHTDELIM:
 			lex >> rightdelim_;
+			rightdelim_ = support::subst(rightdelim_, from_ascii("<br/>"),
+						     from_ascii("\n"));
 			break;
 
 		case LT_INNERTAG:
@@ -902,9 +906,13 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
+			arg.ldelim = support::subst(arg.ldelim, from_ascii("<br/>"),
+						    from_ascii("\n"));
 		} else if (tok == "rightdelim") {
 			lex.next();
 			arg.rdelim = lex.getDocString();
+			arg.rdelim = support::subst(arg.rdelim, from_ascii("<br/>"),
+						    from_ascii("\n"));
 		} else if (tok == "tooltip") {
 			lex.next();
 			arg.tooltip = lex.getDocString();
