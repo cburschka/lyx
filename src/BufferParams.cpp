@@ -819,6 +819,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.eatLine();
 		string color = lex.getString();
 		boxbgcolor = lyx::rgbFromHexName(color);
+		lcolor.setColor("boxbgcolor", color);
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {

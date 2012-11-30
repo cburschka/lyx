@@ -17,6 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "ColorSet.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncStatus.h"
@@ -181,6 +182,20 @@ bool InsetBox::forcePlainLayout(idx_type) const
 {
 	return (!params_.inner_box || params_.use_makebox)
 		&& params_.type != "Shaded" && params_.type != "Framed";
+}
+
+
+ColorCode InsetBox::backgroundColor(PainterInfo const &) const
+{
+	if (params_.type != "Shaded")
+		return getLayout().bgcolor();
+	// FIXME: This hardcoded color is a hack!
+	if (buffer().params().boxbgcolor == lyx::rgbFromHexName("#ff0000"))
+		return getLayout().bgcolor();
+	ColorCode c = lcolor.getFromLyXName("boxbgcolor");
+	if (c == Color_none)
+		return getLayout().bgcolor();
+	return c;
 }
 
 

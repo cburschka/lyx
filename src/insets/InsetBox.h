@@ -102,6 +102,8 @@ public:
 	///
 	DisplayType display() const { return Inline; }
 	///
+	ColorCode backgroundColor(PainterInfo const &) const;
+	///
 	bool allowParagraphCustomization(idx_type = 0) const { return !forcePlainLayout(); }
 	///
 	bool forcePlainLayout(idx_type = 0) const;
