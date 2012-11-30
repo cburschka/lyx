@@ -1181,13 +1181,21 @@ def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
       lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
       if lineArg != -1:
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
-        endLayout = find_token(document.body, "\\end_layout", beginPlain)
-        endInset = find_token(document.body, "\\end_inset", endLayout)
+        # we have to assure that no other inset is in the Argument
+        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", beginPlain)
+        k = beginPlain + 1
+        l = k
+        while beginInset < endInset and beginInset != -1:
+          beginInset = find_token(document.body, "\\begin_inset", k)
+          endInset = find_token(document.body, "\\end_inset", l)
+          k = beginInset + 1
+          l = endInset + 1
         if environment == False:
-          document.body[endLayout : endInset + 1] = put_cmd_in_ert("}{")
+          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
           del(document.body[lineArg : beginPlain + 1])
         else:
-          document.body[endLayout : endInset + 1] = put_cmd_in_ert("}")
+          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
           document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
         n = n + 1
 
@@ -1257,8 +1265,12 @@ def convert_Argument_to_TeX_brace(document, line, n, nmax, environment):
         if bracePair == lineArg + 5 or bracePair == lineArg + 4:
           end = find_token(document.body, "\\end_inset", bracePair)
           document.body[lineArg : end + 1] = ["\\end_layout", "", "\\end_inset"]
-          document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          if n == 1:
+            document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          else:
+            document.body[endn + 1 : endn + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
           n = n + 1
+          endn = end
         else:
           lineArg = lineArg + 1
       if environment == True and lineArg != -1:
@@ -1397,6 +1409,47 @@ def convert_IJMP(document):
       if i == -1:
         return
 
+
+def revert_SIGPLAN(document):
+  " Reverts InsetArgument of MarkBoth to TeX-code "
+  if document.textclass == "sigplanconf":
+    i = 0
+    j = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Conference", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if j != -1:
+        j = find_token(document.body, "\\begin_layout Author", j)
+      if j != -1:
+        revert_Argument_to_TeX_brace(document, j, 1, 2, False)
+        j = j + 1
+      if i == -1 and j == -1:
+        return
+
+
+def convert_SIGPLAN(document):
+  " Converts ERT of MarkBoth to InsetArgument "
+  if document.textclass == "sigplanconf":
+    i = 0
+    j = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Conference", i)
+      if i != -1:
+        convert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        i = i + 1
+      if j != -1:
+        j = find_token(document.body, "\\begin_layout Author", j)
+      if j != -1:
+        convert_Argument_to_TeX_brace(document, j, 1, 2, False)
+        j = j + 1
+      if i == -1 and j == -1:
+        return
+
+
 def revert_literate(document):
     " Revert Literate document to old format "
     if del_token(document.header, "noweb", 0):
@@ -1408,6 +1461,7 @@ def revert_literate(document):
           break
         document.body[i] = "\\begin_layout Scrap"
         i = i + 1
+
 
 def convert_literate(document):
     " Convert Literate document to new format"
@@ -1429,6 +1483,7 @@ def convert_literate(document):
         document.body[i] = "\\begin_layout Chunk"
         i = i + 1
 
+
 def revert_itemargs(document):
     " Reverts \\item arguments to TeX-code "
     while True:
@@ -1445,6 +1500,7 @@ def revert_itemargs(document):
         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
         document.body[lastlay + 1:lastlay + 1] = subst
         i = i + 1
+
 
 ##
 # Conversion hub
@@ -1485,7 +1541,7 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP]],
+           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP, convert_SIGPLAN]],
            [448, [convert_literate]],
            [449, []]
           ]
@@ -1493,7 +1549,7 @@ convert = [
 revert =  [
            [448, [revert_itemargs]],
            [447, [revert_literate]],
-           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP]],
+           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],

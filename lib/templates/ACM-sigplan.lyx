@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 449
 \begin_document
 \begin_header
 \textclass sigplanconf
@@ -13,13 +13,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -31,15 +31,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -62,7 +68,7 @@
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -90,40 +96,16 @@ http://wiki.lyx.org/Examples/AcmSigplan
 \end_layout
 
 \begin_layout Conference
-PLDI ’05
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+PLDI ’05
 \end_layout
 
 \end_inset
 
 June 12--15, 2005, Chicago, Illinois, USA.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The Conference expects 2 infos that are separated by 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-}{
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- in TeX code.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout CopyrightYear
@@ -132,6 +114,34 @@ The Conference expects 2 infos that are separated by
 
 \begin_layout Copyrightdata
 1-59593-057-4/05/0004
+\end_layout
+
+\begin_layout TitleBanner
+Banner above paper title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+is ignored unless document class option 'preprint' is used
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PreprintFooter
+Short description of paper
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+is ignored unless document class option 'preprint' is used
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Title
@@ -150,9 +160,23 @@ This work was supported by ...
 
 \begin_layout Subtitle
 Subtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Suzi Smith
 \begin_inset ERT
 status collapsed
@@ -168,23 +192,16 @@ and
 
  Paul C.
  Anagnostopoulos
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Princeton University
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Princeton University
 \end_layout
 
 \end_inset
@@ -199,19 +216,6 @@ status open
 
 \begin_layout Plain Layout
 At least one autor is required.
- The Author field expects 3 infos that are separated by 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-}{
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- in TeX code.
 \end_layout
 
 \end_inset
@@ -220,17 +224,20 @@ At least one autor is required.
 \end_layout
 
 \begin_layout Author
-Fred Flymuffin
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Fred Flymuffin
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
 Washington University in St.
  Louis
 \begin_inset Newline newline
@@ -246,12 +253,6 @@ Department of Electrical and Computer Engineering
 
 St.
  Louis, XX 60616, USA
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -287,6 +288,9 @@ ed into hardware]
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -350,7 +354,7 @@ Bla, bla
 \end_layout
 
 \begin_layout Acknowledgments
-We would like to thank ...
+Acknowledgments, if needed.
 \end_layout
 
 \begin_layout Section
