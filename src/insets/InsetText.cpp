@@ -341,20 +341,24 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (&buffer().inset() == this || !cur.paragraph().layout().latexargs().empty()
 		    || !cur.paragraph().layout().itemargs().empty())
 			return text_.getStatus(cur, cmd, status);
+
 		Layout::LaTeXArgMap args = getLayout().latexargs();
 		Layout::LaTeXArgMap::const_iterator const lait = args.find(arg);
 		if (lait != args.end()) {
 			status.setEnabled(true);
-			InsetList::const_iterator it = cur.paragraph().insetList().begin();
-			InsetList::const_iterator end = cur.paragraph().insetList().end();
-			for (; it != end; ++it) {
-				if (it->inset->lyxCode() == ARG_CODE) {
-					InsetArgument const * ins =
-						static_cast<InsetArgument const *>(it->inset);
-					if (ins->name() == arg) {
-						// we have this already
-						status.setEnabled(false);
-						return true;
+			ParagraphList::const_iterator pit = paragraphs().begin();
+			for (; pit != paragraphs().end(); ++pit) {
+				InsetList::const_iterator it = pit->insetList().begin();
+				InsetList::const_iterator end = pit->insetList().end();
+				for (; it != end; ++it) {
+					if (it->inset->lyxCode() == ARG_CODE) {
+						InsetArgument const * ins =
+							static_cast<InsetArgument const *>(it->inset);
+						if (ins->name() == arg) {
+							// we have this already
+							status.setEnabled(false);
+							return true;
+						}
 					}
 				}
 			}
