@@ -1133,16 +1133,118 @@ def revert_uop(document):
 def convert_latexargs(document):
     " Convert InsetArgument to new syntax "
 
+    if find_token(document.body, "\\begin_inset Argument", 0) == -1:
+        # nothing to do.
+        return
+
+    # A list of layouts (document classes) with only optional or no arguments.
+    # These can be safely converted to the new syntax
+    # (I took the liberty to add some of my personal layouts/modules here; JSP)
+    safe_layouts = ["aa", "aapaper", "aastex", "achemso", "acmsiggraph", "AEA",
+                    "agu-dtd", "agums", "agutex", "amsart", "amsbook", "apa",
+                    "arab-article", "armenian-article", "article-beamer", "article",
+                    "beamer", "book", "broadway", "chess", "cl2emult", "ctex-article",
+                    "ctex-book", "ctex-report", "dinbrief", "docbook-book", "docbook-chapter",
+                    "docbook", "docbook-section", "doublecol-new", "dtk", "ectaart", "egs",
+                    "elsarticle", "elsart", "entcs", "europecv", "extarticle", "extbook",
+                    "extletter", "extreport", "foils", "frletter", "g-brief2", "g-brief",
+                    "heb-article", "heb-letter", "hollywood", "IEEEtran", "ijmpc", "ijmpd",
+                    "iopart", "isprs", "jarticle", "jasatex", "jbook", "jgrga", "jreport",
+                    "jsarticle", "jsbeamer", "jsbook", "jss", "kluwer", "latex8", "letter", "lettre",
+                    "literate-article", "literate-book", "literate-report", "llncs", "ltugboat",
+                    "memoir", "moderncv", "mwart", "mwbk", "mwrep", "paper", "powerdot",
+                    "recipebook", "report", "revtex4", "revtex", "scrartcl", "scrarticle-beamer",
+                    "scrbook", "scrlettr", "scrlttr2", "scrreprt", "seminar", "siamltex",
+                    "sigplanconf", "simplecv", "singlecol", "singlecol-new", "slides", "spie",
+                    "svglobal3", "svglobal", "svjog", "svmono", "svmult", "svprobth", "tarticle",
+                    "tbook", "treport", "tufte-book", "tufte-handout"]
+    # A list of "safe" modules, same as above
+    safe_modules = ["biblatex", "beameraddons", "beamersession", "braille", "customHeadersFooters",
+                    "endnotes", "enumitem", "eqs-within-sections", "figs-within-sections", "fix-cm",
+                    "fixltx2e", "foottoend", "hanging", "jscharstyles", "knitr", "lilypond",
+                    "linguistics", "linguisticx", "logicalmkup", "minimalistic", "nomindex", "noweb",
+                    "pdfcomment", "sweave", "tabs-within-sections", "theorems-ams-bytype",
+                    "theorems-ams-extended-bytype", "theorems-ams-extended", "theorems-ams", "theorems-bytype",
+                    "theorems-chap-bytype", "theorems-chap", "theorems-named", "theorems-sec-bytype",
+                    "theorems-sec", "theorems-starred", "theorems-std", "todonotes"]
+    # Modules we need to take care of
+    caveat_modules = ["initials"]
+    # information about the relevant styles in caveat_modules (number of opt and req args)
+    # use this if we get more caveat_modules. For now, use hard coding (see below).
+    # initials = [{'Layout' : 'Initial', 'opt' : 1, 'req' : 1}]
+
+    # Is this a known safe layout?
+    safe_layout = document.textclass in safe_layouts
+    if not safe_layout:
+        document.warning("Lyx2lyx knows nothing about textclass '%s'. "
+                         "Please check if short title insets have been converted correctly."
+                         % document.textclass)
+    # Do we use unsafe or unknown modules
+    mods = document.get_module_list()
+    unknown_modules = False
+    used_caveat_modules = list()
+    for mod in mods:
+        if mod in safe_modules:
+            continue
+        if mod in caveat_modules:
+            used_caveat_modules.append(mod)
+            continue
+        unknown_modules = True
+        document.warning("Lyx2lyx knows nothing about module '%s'. "
+                         "Please check if short title insets have been converted correctly."
+                         % mod)
+
     i = 0
     while True:
-      i = find_token(document.body, "\\begin_inset Argument", i)
-      if i == -1:
-        return
-      # We cannot do more here since we have no access to the layout.
-      # InsetArgument itself will do the real work
-      # (see InsetArgument::updateBuffer())
-      document.body[i] = "\\begin_inset Argument 999"
-      i = i + 1
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+
+        if not safe_layout or unknown_modules:
+            # We cannot do more here since we have no access to this layout.
+            # InsetArgument itself will do the real work
+            # (see InsetArgument::updateBuffer())
+            document.body[i] = "\\begin_inset Argument 999"
+            i = i + 1
+            continue
+        
+        # Find beginning and end of the containing paragraph
+        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
+        if parbeg == -1:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            continue
+        parend = find_end_of_layout(document.body, parbeg)
+        if parend == -1:
+            document.warning("Malformed lyx document: Can't find end of parent paragraph layout")
+            continue
+        allowed_opts = -1
+        first_req = -1
+        if len(used_caveat_modules) > 0:
+            # We know for now that this must be the initials module with the Initial layout
+            # If we get more such modules, we need some automating.
+            layoutname = get_value(document.body, "\\begin_layout", parbeg)
+            if layoutname == "Initial":
+                # Layout has 1 opt and 1 req arg.
+                # Count the actual arguments
+                actualargs = 0
+                for p in range(parbeg, parend):
+                    if document.body[p] == "\\begin_inset Argument":
+                        actualargs += 1
+                if actualargs == 1:
+                    allowed_opts = 0
+                    first_req = 2
+        # Collect all arguments in this paragraph
+        argnr = 0
+        for p in range(parbeg, parend):
+            if document.body[p] == "\\begin_inset Argument":
+                argnr += 1
+                if allowed_opts != -1:
+                    # We have less arguments than opt + required.
+                    # required must take precedence.
+                    if argnr > allowed_opts and argnr < first_req:
+                        argnr = first_req
+                document.body[p] = "\\begin_inset Argument %d" % argnr
+        i = i + 1
 
 
 def revert_latexargs(document):
