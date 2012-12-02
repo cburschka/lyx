@@ -18,6 +18,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "BufferParams.h"
+#include "ColorSet.h"
 #include "Counters.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
@@ -334,6 +335,19 @@ string InsetNote::contextMenuName() const
 bool InsetNote::allowSpellCheck() const
 {
 	return (params_.type == InsetNoteParams::Greyedout || lyxrc.spellcheck_notes);
+}
+
+FontInfo InsetNote::getFont() const
+{
+	FontInfo font = getLayout().font();
+	// FIXME: This hardcoded color is a hack!
+	if (params_.type == InsetNoteParams::Greyedout
+	    && buffer().params().notefontcolor != lyx::rgbFromHexName("#cccccc")) {
+		ColorCode c = lcolor.getFromLyXName("notefontcolor");
+		if (c != Color_none)
+			font.setColor(c);
+	}
+	return font;
 }
 
 

@@ -815,6 +815,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.eatLine();
 		string color = lex.getString();
 		notefontcolor = lyx::rgbFromHexName(color);
+		lcolor.setColor("notefontcolor", color);
 	} else if (token == "\\boxbgcolor") {
 		lex.eatLine();
 		string color = lex.getString();

@@ -73,6 +73,8 @@ private:
 	///
 	bool allowSpellCheck() const;
 	///
+	FontInfo getFont() const;
+	///
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
