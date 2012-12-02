@@ -1693,7 +1693,6 @@ def revert_itemargs(document):
             parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
-        endInset = find_end_of_inset(document.body, p)
         content = document.body[beginPlain + 1 : endPlain]
         del document.body[i:j+1]
         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
