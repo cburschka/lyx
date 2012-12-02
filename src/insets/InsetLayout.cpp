@@ -47,8 +47,6 @@ InsetLayout::InsetLayout() :
 }
 
 
-namespace {
-
 InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
 {
 	if (support::compare_ascii_no_case(str, "classic") == 0)
@@ -59,6 +57,8 @@ InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 		return InsetLayout::CONGLOMERATE;
 	return InsetLayout::DEFAULT;
 }
+
+namespace {
 
 InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 {

@@ -272,6 +272,7 @@ private:
 
 ///
 InsetLayout::InsetLyXType translateLyXType(std::string const & str);
+InsetLayout::InsetDecoration translateDecoration(std::string const & str);
 
 } // namespace lyx
 

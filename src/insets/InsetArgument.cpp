@@ -229,21 +229,6 @@ FontInfo InsetArgument::getLabelfont() const
 	return getLayout().labelfont();
 }
 
-namespace {
-
-InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
-{
-	if (support::compare_ascii_no_case(str, "classic") == 0)
-		return InsetLayout::CLASSIC;
-	if (support::compare_ascii_no_case(str, "minimalistic") == 0)
-		return InsetLayout::MINIMALISTIC;
-	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
-		return InsetLayout::CONGLOMERATE;
-	return InsetLayout::DEFAULT;
-}
-
-}// namespace anon
-
 InsetLayout::InsetDecoration InsetArgument::decoration() const
 {
 	InsetLayout::InsetDecoration dec = getLayout().decoration();
