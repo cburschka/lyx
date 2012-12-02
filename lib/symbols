@@ -1,6 +1,9 @@
 #
 # things supported by real insets in mathed
 #
+#
+# The syntax of lib/symbols is very ad hoc.
+# There are several possible formats of a line, which are quite different.
 
 # decorations
 acute               decoration none
@@ -190,6 +193,12 @@ tag*              mbox        forcetext
 #left              left        none
 #end               end         none
 
+
+# In order to use one of the decorations of MathSupport.cpp, the line must
+# be handled by a math inset which calls mathed_draw_deco(). 
+# If new symbol do not fit into any of the existing insets, it would be ignored
+# and new inset must be programmed.
+# Better solutions is to use the font to draw the symbols as below.
 
 #
 # symbols generated from fontmath.ltx
