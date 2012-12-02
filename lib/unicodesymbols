@@ -19,8 +19,8 @@
 # Do only add commands that give correct output, no hacks that look "similar".
 # TODO: fix "missing Qt keysequences (MacSpecialKey)" hacks (search for "Qt::")
 # Commands that modify other parts of the text should not be added either.
-# For this reason, all commands requiring txfonts, pxfonts, fourier and
-# mathdesign are commented out (these packages switch to fonts like times or
+# For this reason, all commands requiring txfonts, pxfonts, fourier, mathdesign
+# and MnSymbol are commented out (these packages switch to fonts like times or
 # palatino). mathabx is not used because of many clashes with AMS math.
 
 # syntax:
@@ -1846,6 +1846,12 @@
 #0x2181 ""                         "" "" "" "" # ROMAN NUMERAL FIVE THOUSAND
 #0x2182 ""                         "" "" "" "" # ROMAN NUMERAL TEN THOUSAND
 #0x2183 ""                         "" "" "" "" # ROMAN NUMERAL REVERSED ONE HUNDRED
+#0x2184 ""                         "" "" "" "" # LATIN SMALL LETTER REVERSED C
+#0x2185 ""                         "" "" "" "" # ROMAN NUMERAL SIX LATE FORM
+#0x2186 ""                         "" "" "" "" # ROMAN NUMERAL FIFTY EARLY FORM
+#0x2187 ""                         "" "" "" "" # ROMAN NUMERAL FIFTY THOUSAND
+#0x2188 ""                         "" "" "" "" # ROMAN NUMERAL ONE HUNDRED THOUSAND
+#0x2189 ""                         "" "" "" "" # VULGAR FRACTION ZERO THIRDS
 #
 # arrows
 #
@@ -1856,15 +1862,111 @@
 0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
 0x2196 "Home"                     "" "notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
-0x2197 "\\textglobrise"           "tipa" "" "" "" # NORTH EAST ARROW
+0x2197 "\\textglobrise"           "tipa" "" "\\nearrow" "" # NORTH EAST ARROW
 0x2198 "End"                      "" "notermination=text,tipashortcut=\\textglobfall{}" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
+0x2199 ""                         "" "" "\\swarrow" "" # SOUTH WEST ARROW
+0x219a ""                         "" "" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
+0x219b ""                         "" "" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
+#0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
+#0x219d ""                         "" "" "" "" # RIGHTWARDS WAVE ARROW
+0x219e ""                         "" "" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
+#0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
+0x21a0 ""                         "" "" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
+#0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
+0x21a2 ""                         "" "" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
+0x21a3 ""                         "" "" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
+#0x21a4 ""                         "" "" "" "" # LEFTWARDS ARROW FROM BAR
+#0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
+0x21a6 ""                         "" "" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
+#0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
 0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
+0x21a9 ""                         "" "" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
+0x21aa ""                         "" "" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
+0x21ab ""                         "" "" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
+0x21ac ""                         "" "" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
+#0x21ad ""                         "" "" "" "" # LEFT RIGHT WAVE ARROW
+0x21ae ""                         "" "" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
+0x21af ""                         "" "" "\\lightning" "wasysym" # DOWNWARDS ZIGZAG ARROW
+0x21b0 ""                         "" "" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
+0x21b1 ""                         "" "" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
+#0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
+#0x21b3 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP RIGHTWARDS
+#0x21b4 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH CORNER DOWNWARDS
 0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
+0x21b6 ""                         "" "" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
+0x21b7 ""                         "" "" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
+#0x21b8 ""                         "" "" "" "" # NORTH WEST ARROW TO LONG BAR
+#0x21b9 ""                         "" "" "" "" # LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR
+0x21ba ""                         "" "" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
+0x21bb ""                         "" "" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
+0x21bc ""                         "" "" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
+0x21bd ""                         "" "" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
+0x21be ""                         "" "" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
+0x21bf ""                         "" "" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
+0x21c0 ""                         "" "" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
+0x21c1 ""                         "" "" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
+0x21c2 ""                         "" "" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
+0x21c3 ""                         "" "" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
+0x21c4 ""                         "" "" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
+#0x21c5 ""                         "" "" "\\updownarrows" "mathabx" # UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW
+0x21c6 ""                         "" "" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
+0x21c7 ""                         "" "" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
+0x21c8 ""                         "" "" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
+0x21c9 ""                         "" "" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
+0x21ca ""                         "" "" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
+0x21cb ""                         "" "" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
+0x21cc ""                         "" "" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
+0x21cd ""                         "" "" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
+0x21ce ""                         "" "" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
+0x21cf ""                         "" "" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
+0x21d0 ""                         "" "" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
+0x21d1 ""                         "" "" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
+0x21d2 ""                         "" "" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
+0x21d3 ""                         "" "" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
+0x21d4 ""                         "" "" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
+0x21d5 ""                         "" "" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
+#0x21d6 ""                         "" "" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
+#0x21d7 ""                         "" "" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
+#0x21d8 ""                         "" "" "\\Searrow" "MnSymbol" # SOUTH EAST DOUBLE ARROW
+#0x21d9 ""                         "" "" "\\Swarrow" "MnSymbol" # SOUTH WEST DOUBLE ARROW
+0x21da ""                         "" "" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
+0x21db ""                         "" "" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
+#0x21dc ""                         "" "" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
+0x21dd ""                         "" "" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
 0x21de "Option-Up Arrow"          "" "notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
 0x21df "Option-Down Arrow"        "" "notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
+0x21e0 ""                         "" "" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
+#0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
+0x21e2 ""                         "" "" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
+#0x21e3 ""                         "" "" "" "" # DOWNWARDS DASHED ARROW
 0x21e4 "Shift-Tab"                "" "notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
 0x21e5 "Tab"                      "" "notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
+#0x21e6 ""                         "" "" "" "" # LEFTWARDS WHITE ARROW
+#0x21e7 ""                         "" "" "" "" # UPWARDS WHITE ARROW
+#0x21e8 ""                         "" "" "" "" # RIGHTWARDS WHITE ARROW
+#0x21e9 ""                         "" "" "" "" # DOWNWARDS WHITE ARROW
 0x21ea "Caps Lock"                "" "notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
+#0x21eb ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL
+#0x21ec ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH HORIZONTAL BAR
+#0x21ed ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH VERTICAL BAR
+#0x21ee ""                         "" "" "" "" # UPWARDS WHITE DOUBLE ARROW
+#0x21ef ""                         "" "" "" "" # UPWARDS WHITE DOUBLE ARROW ON PEDESTAL
+#0x21f0 ""                         "" "" "" "" # RIGHTWARDS WHITE ARROW FROM WALL
+#0x21f1 ""                         "" "" "" "" # NORTH WEST ARROW TO CORNER
+#0x21f2 ""                         "" "" "" "" # SOUTH EAST ARROW TO CORNER
+#0x21f3 ""                         "" "" "" "" # UP DOWN WHITE ARROW
+#0x21f4 ""                         "" "" "" "" # RIGHT ARROW WITH SMALL CIRCLE
+#0x21f5 ""                         "" "" "\\downuparrows" "mathabx" # DOWNWARDS ARROW LEFTWARDS OF UPWARDS ARROW
+#0x21f6 ""                         "" "" "" "" # THREE RIGHTWARDS ARROWS
+#0x21f7 ""                         "" "" "" "" # LEFTWARDS ARROW WITH VERTICAL STROKE
+#0x21f8 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH VERTICAL STROKE
+#0x21f9 ""                         "" "" "" "" # LEFT RIGHT ARROW WITH VERTICAL STROKE
+#0x21fa ""                         "" "" "" "" # LEFTWARDS ARROW WITH DOUBLE VERTICAL STROKE
+#0x21fb ""                         "" "" "" "" # RIGHTWARDS ARROW WITH DOUBLE VERTICAL STROKE
+#0x21fc ""                         "" "" "" "" # LEFT RIGHT ARROW WITH DOUBLE VERTICAL STROKE
+#0x21fd ""                         "" "" "" "" # LEFTWARDS OPEN-HEADED ARROW
+#0x21fe ""                         "" "" "" "" # RIGHTWARDS OPEN-HEADED ARROW
+#0x21ff ""                         "" "" "" "" # LEFT RIGHT OPEN-HEADED ARROW
 #
 # mathematical operators
 #
@@ -1971,15 +2073,201 @@
 #0x2263 ""                         "" "" "" "" # STRICTLY EQUIVALENT TO
 0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
 0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
+#0x2266 ""                         "" "" "" "" # LESS-THAN OVER EQUAL TO
+#0x2267 ""                         "" "" "" "" # GREATER-THAN OVER EQUAL TO
+#0x2268 ""                         "" "" "" "" # LESS-THAN BUT NOT EQUAL TO
+#0x2269 ""                         "" "" "" "" # GREATER-THAN BUT NOT EQUAL TO
+#0x226a ""                         "" "" "" "" # MUCH LESS-THAN
+#0x226b ""                         "" "" "" "" # MUCH GREATER-THAN
+#0x226c ""                         "" "" "" "" # BETWEEN
+#0x226d ""                         "" "" "" "" # NOT EQUIVALENT TO
+#0x226e ""                         "" "" "" "" # NOT LESS-THAN
+#0x226f ""                         "" "" "" "" # NOT GREATER-THAN
+#0x2270 ""                         "" "" "" "" # NEITHER LESS-THAN NOR EQUAL TO
+#0x2271 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR EQUAL TO
+#0x2272 ""                         "" "" "" "" # LESS-THAN OR EQUIVALENT TO
+#0x2273 ""                         "" "" "" "" # GREATER-THAN OR EQUIVALENT TO
+#0x2274 ""                         "" "" "" "" # NEITHER LESS-THAN NOR EQUIVALENT TO
+#0x2275 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR EQUIVALENT TO
+#0x2276 ""                         "" "" "" "" # LESS-THAN OR GREATER-THAN
+#0x2277 ""                         "" "" "" "" # GREATER-THAN OR LESS-THAN
+#0x2278 ""                         "" "" "" "" # NEITHER LESS-THAN NOR GREATER-THAN
+#0x2279 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR LESS-THAN
+#0x227a ""                         "" "" "" "" # PRECEDES
+#0x227b ""                         "" "" "" "" # SUCCEEDS
+#0x227c ""                         "" "" "" "" # PRECEDES OR EQUAL TO
+#0x227d ""                         "" "" "" "" # SUCCEEDS OR EQUAL TO
+#0x227e ""                         "" "" "" "" # PRECEDES OR EQUIVALENT TO
+#0x227f ""                         "" "" "" "" # SUCCEEDS OR EQUIVALENT TO
+#0x2280 ""                         "" "" "" "" # DOES NOT PRECEDE
+#0x2281 ""                         "" "" "" "" # DOES NOT SUCCEED
+#0x2282 ""                         "" "" "" "" # SUBSET OF
+#0x2283 ""                         "" "" "" "" # SUPERSET OF
+#0x2284 ""                         "" "" "" "" # NOT A SUBSET OF
+#0x2285 ""                         "" "" "" "" # NOT A SUPERSET OF
+#0x2286 ""                         "" "" "" "" # SUBSET OF OR EQUAL TO
+#0x2287 ""                         "" "" "" "" # SUPERSET OF OR EQUAL TO
+#0x2288 ""                         "" "" "" "" # NEITHER A SUBSET OF NOR EQUAL TO
+#0x2289 ""                         "" "" "" "" # NEITHER A SUPERSET OF NOR EQUAL TO
+#0x228a ""                         "" "" "" "" # SUBSET OF WITH NOT EQUAL TO
+#0x228b ""                         "" "" "" "" # SUPERSET OF WITH NOT EQUAL TO
+#0x228c ""                         "" "" "" "" # MULTISET
+#0x228d ""                         "" "" "" "" # MULTISET MULTIPLICATION
+0x228e ""                         "" "" "\\biguplus" "" # MULTISET UNION
+#0x228f ""                         "" "" "" "" # SQUARE IMAGE OF
+#0x2290 ""                         "" "" "" "" # SQUARE ORIGINAL OF
+#0x2291 ""                         "" "" "" "" # SQUARE IMAGE OF OR EQUAL TO
+#0x2292 ""                         "" "" "" "" # SQUARE ORIGINAL OF OR EQUAL TO
+#0x2293 ""                         "" "" "" "" # SQUARE CAP
+0x2294 ""                         "" "" "\\bigsqcup" "" # SQUARE CUP
+0x2295 ""                         "" "" "\\bigoplus" "" # CIRCLED PLUS
+#0x2296 ""                         "" "" "" "" # CIRCLED MINUS
+0x2297 ""                         "" "" "\\bigotimes" "" # CIRCLED TIMES
+#0x2298 ""                         "" "" "" "" # CIRCLED DIVISION SLASH
+0x2299 ""                         "" "" "\\bigodot" "" # CIRCLED DOT OPERATOR
+#0x229a ""                         "" "" "" "" # CIRCLED RING OPERATOR
+#0x229b ""                         "" "" "" "" # CIRCLED ASTERISK OPERATOR
+#0x229c ""                         "" "" "" "" # CIRCLED EQUALS
+#0x229d ""                         "" "" "" "" # CIRCLED DASH
+#0x229e ""                         "" "" "" "" # SQUARED PLUS
+#0x229f ""                         "" "" "" "" # SQUARED MINUS
+#0x22a0 ""                         "" "" "" "" # SQUARED TIMES
+#0x22a1 ""                         "" "" "" "" # SQUARED DOT OPERATOR
+#0x22a2 ""                         "" "" "" "" # RIGHT TACK
+#0x22a3 ""                         "" "" "" "" # LEFT TACK
+#0x22a4 ""                         "" "" "" "" # DOWN TACK
+#0x22a5 ""                         "" "" "" "" # UP TACK
+#0x22a6 ""                         "" "" "" "" # ASSERTION
+#0x22a7 ""                         "" "" "" "" # MODELS
+#0x22a8 ""                         "" "" "" "" # TRUE
+#0x22a9 ""                         "" "" "" "" # FORCES
+#0x22aa ""                         "" "" "" "" # TRIPLE VERTICAL BAR RIGHT TURNSTILE
+#0x22ab ""                         "" "" "" "" # DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
+#0x22ac ""                         "" "" "" "" # DOES NOT PROVE
+#0x22ad ""                         "" "" "" "" # NOT TRUE
+#0x22ae ""                         "" "" "" "" # DOES NOT FORCE
+#0x22af ""                         "" "" "" "" # NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
+#0x22b0 ""                         "" "" "" "" # PRECEDES UNDER RELATION
+#0x22b1 ""                         "" "" "" "" # SUCCEEDS UNDER RELATION
+#0x22b2 ""                         "" "" "" "" # NORMAL SUBGROUP OF
+#0x22b3 ""                         "" "" "" "" # CONTAINS AS NORMAL SUBGROUP
+#0x22b4 ""                         "" "" "" "" # NORMAL SUBGROUP OF OR EQUAL TO
+#0x22b5 ""                         "" "" "" "" # CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
+#0x22b6 ""                         "" "" "" "" # ORIGINAL OF
+#0x22b7 ""                         "" "" "" "" # IMAGE OF
+#0x22b8 ""                         "" "" "" "" # MULTIMAP
+#0x22b9 ""                         "" "" "" "" # HERMITIAN CONJUGATE MATRIX
+#0x22ba ""                         "" "" "" "" # INTERCALATE
+#0x22bb ""                         "" "" "" "" # XOR
+#0x22bc ""                         "" "" "" "" # NAND
+#0x22bd ""                         "" "" "" "" # NOR
+#0x22be ""                         "" "" "" "" # RIGHT ANGLE WITH ARC
+#0x22bf ""                         "" "" "" "" # RIGHT TRIANGLE
+#0x22c0 ""                         "" "" "" "" # N-ARY LOGICAL AND
+#0x22c1 ""                         "" "" "" "" # N-ARY LOGICAL OR
+#0x22c2 ""                         "" "" "" "" # N-ARY INTERSECTION
+#0x22c3 ""                         "" "" "" "" # N-ARY UNION
+#0x22c4 ""                         "" "" "" "" # DIAMOND OPERATOR
+#0x22c5 ""                         "" "" "" "" # DOT OPERATOR
+#0x22c6 ""                         "" "" "" "" # STAR OPERATOR
+#0x22c7 ""                         "" "" "" "" # DIVISION TIMES
+#0x22c8 ""                         "" "" "" "" # BOWTIE
+#0x22c9 ""                         "" "" "" "" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
+#0x22ca ""                         "" "" "" "" # RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
+#0x22cb ""                         "" "" "" "" # LEFT SEMIDIRECT PRODUCT
+#0x22cc ""                         "" "" "" "" # RIGHT SEMIDIRECT PRODUCT
+#0x22cd ""                         "" "" "" "" # REVERSED TILDE EQUALS
+#0x22ce ""                         "" "" "" "" # CURLY LOGICAL OR
+#0x22cf ""                         "" "" "" "" # CURLY LOGICAL AND
+#0x22d0 ""                         "" "" "" "" # DOUBLE SUBSET
+#0x22d1 ""                         "" "" "" "" # DOUBLE SUPERSET
+#0x22d2 ""                         "" "" "" "" # DOUBLE INTERSECTION
+#0x22d3 ""                         "" "" "" "" # DOUBLE UNION
+#0x22d4 ""                         "" "" "" "" # PITCHFORK
+#0x22d5 ""                         "" "" "" "" # EQUAL AND PARALLEL TO
+#0x22d6 ""                         "" "" "" "" # LESS-THAN WITH DOT
+#0x22d7 ""                         "" "" "" "" # GREATER-THAN WITH DOT
+#0x22d8 ""                         "" "" "" "" # VERY MUCH LESS-THAN
+#0x22d9 ""                         "" "" "" "" # VERY MUCH GREATER-THAN
+#0x22da ""                         "" "" "" "" # LESS-THAN EQUAL TO OR GREATER-THAN
+#0x22db ""                         "" "" "" "" # GREATER-THAN EQUAL TO OR LESS-THAN
+#0x22dc ""                         "" "" "" "" # EQUAL TO OR LESS-THAN
+#0x22dd ""                         "" "" "" "" # EQUAL TO OR GREATER-THAN
+#0x22de ""                         "" "" "" "" # EQUAL TO OR PRECEDES
+#0x22df ""                         "" "" "" "" # EQUAL TO OR SUCCEEDS
+#0x22e0 ""                         "" "" "" "" # DOES NOT PRECEDE OR EQUAL
+#0x22e1 ""                         "" "" "" "" # DOES NOT SUCCEED OR EQUAL
+#0x22e2 ""                         "" "" "" "" # NOT SQUARE IMAGE OF OR EQUAL TO
+#0x22e3 ""                         "" "" "" "" # NOT SQUARE ORIGINAL OF OR EQUAL TO
+#0x22e4 ""                         "" "" "" "" # SQUARE IMAGE OF OR NOT EQUAL TO
+#0x22e5 ""                         "" "" "" "" # SQUARE ORIGINAL OF OR NOT EQUAL TO
+#0x22e6 ""                         "" "" "" "" # LESS-THAN BUT NOT EQUIVALENT TO
+#0x22e7 ""                         "" "" "" "" # GREATER-THAN BUT NOT EQUIVALENT TO
+#0x22e8 ""                         "" "" "" "" # PRECEDES BUT NOT EQUIVALENT TO
+#0x22e9 ""                         "" "" "" "" # SUCCEEDS BUT NOT EQUIVALENT TO
+#0x22ea ""                         "" "" "" "" # NOT NORMAL SUBGROUP OF
+#0x22eb ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP
+#0x22ec ""                         "" "" "" "" # NOT NORMAL SUBGROUP OF OR EQUAL TO
+#0x22ed ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
+0x22ee "\\vdots"                  "" "" "\\vdots" "" # VERTICAL ELLIPSIS
+0x22ef ""                         "" "" "\\cdots" "" # MIDLINE HORIZONTAL ELLIPSIS
+0x22f0 ""                         "" "" "\\iddots" "mathdots" # UP RIGHT DIAGONAL ELLIPSIS
 0x22f1 ""                         "" "" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
+#0x22f2 ""                         "" "" "" "" # ELEMENT OF WITH LONG HORIZONTAL STROKE
+#0x22f3 ""                         "" "" "" "" # ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+#0x22f4 ""                         "" "" "" "" # SMALL ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+#0x22f5 ""                         "" "" "" "" # ELEMENT OF WITH DOT ABOVE
+#0x22f6 ""                         "" "" "" "" # ELEMENT OF WITH OVERBAR
+#0x22f7 ""                         "" "" "" "" # SMALL ELEMENT OF WITH OVERBAR
+#0x22f8 ""                         "" "" "" "" # ELEMENT OF WITH UNDERBAR
+#0x22f9 ""                         "" "" "" "" # ELEMENT OF WITH TWO HORIZONTAL STROKES
+#0x22fa ""                         "" "" "" "" # CONTAINS WITH LONG HORIZONTAL STROKE
+#0x22fb ""                         "" "" "" "" # CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+#0x22fc ""                         "" "" "" "" # SMALL CONTAINS WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
+#0x22fd ""                         "" "" "" "" # CONTAINS WITH OVERBAR
+#0x22fe ""                         "" "" "" "" # SMALL CONTAINS WITH OVERBAR
+#0x22ff ""                         "" "" "" "" # Z NOTATION BAG MEMBERSHIP
 #
 # miscellaneous technical
 #
+#0x2300 ""                         "" "" "" "" # DIAMETER SIGN
+#0x2301 ""                         "" "" "" "" # ELECTRIC ARROW
 0x2302 "{\\ascii\\DEL}"           "ascii" "" # HOUSE
+#0x2303 ""                         "" "" "" "" # UP ARROWHEAD
+#0x2304 ""                         "" "" "" "" # DOWN ARROWHEAD
+#0x2305 ""                         "" "" "" "" # PROJECTIVE
+#0x2306 ""                         "" "" "" "" # PERSPECTIVE
+#0x2307 ""                         "" "" "" "" # WAVY LINE
+#0x2308 ""                         "" "" "" "" # LEFT CEILING
+#0x2309 ""                         "" "" "" "" # RIGHT CEILING
+#0x230a ""                         "" "" "" "" # LEFT FLOOR
+#0x230b ""                         "" "" "" "" # RIGHT FLOOR
+#0x230c ""                         "" "" "" "" # BOTTOM RIGHT CROP
+#0x230d ""                         "" "" "" "" # BOTTOM LEFT CROP
+#0x230e ""                         "" "" "" "" # TOP RIGHT CROP
+#0x230f ""                         "" "" "" "" # TOP LEFT CROP
 0x2310 ""                         "" "" "\\invneg" "wasysym" # REVERSED NOT SIGN
+#0x2311 ""                         "" "" "" "" # SQUARE LOZENGE
+#0x2312 ""                         "" "" "" "" # ARC
+#0x2313 ""                         "" "" "" "" # SEGMENT
+#0x2314 ""                         "" "" "" "" # SECTOR
+#0x2315 ""                         "" "" "" "" # TELEPHONE RECORDER
+#0x2316 ""                         "" "" "" "" # POSITION INDICATOR
+#0x2317 ""                         "" "" "" "" # VIEWDATA SQUARE
+#0x2318 ""                         "" "" "" "" # PLACE OF INTEREST SIGN
+#0x2319 ""                         "" "" "" "" # TURNED NOT SIGN
 0x231a "\\Clocklogo"              "marvosym" "" # WATCH
-#0x2320 ""                         "" "" # TOP HALF INTEGRAL
-#0x2321 ""                         "" "" # BOTTOM HALF INTEGRAL
+#0x231b ""                         "" "" "" "" # HOURGLASS
+#0x231c ""                         "" "" "" "" # TOP LEFT CORNER
+#0x231d ""                         "" "" "" "" # TOP RIGHT CORNER
+#0x231e ""                         "" "" "" "" # BOTTOM LEFT CORNER
+#0x231f ""                         "" "" "" "" # BOTTOM RIGHT CORNER
+#0x2320 ""                         "" "" "" "" # TOP HALF INTEGRAL
+#0x2321 ""                         "" "" "" "" # BOTTOM HALF INTEGRAL
+#0x2322 ""                         "" "" "" "" # FROWN
+#0x2323 ""                         "" "" "" "" # SMILE
+#0x2324 ""                         "" "" "" "" # UP ARROWHEAD BETWEEN TWO HORIZONTAL BARS
+#0x2325 ""                         "" "" "" "" # OPTION KEY
 0x2326 "Delete"                   "" "notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
 0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
 0x232b "Backspace"                "" "notermination=text" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
