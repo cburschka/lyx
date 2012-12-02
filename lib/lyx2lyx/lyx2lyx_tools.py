@@ -117,7 +117,7 @@ def put_cmd_in_ert(arg):
     Returns a list of strings, with the lines so wrapped.
     '''
     
-    ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout", ""]
+    ret = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout", ""]
     # It will be faster for us to work with a single string internally. 
     # That way, we only go through the unicode_reps loop once.
     if type(arg) is list:
@@ -128,7 +128,7 @@ def put_cmd_in_ert(arg):
       s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
     s = s.replace('\\', "\\backslash\n")
     ret += s.splitlines()
-    ret += ["\\end_layout", "\\end_inset"]
+    ret += ["\\end_layout", "", "\\end_inset"]
     return ret
 
 

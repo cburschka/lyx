@@ -3,70 +3,6 @@
 \begin_document
 \begin_header
 \textclass acmsiggraph
-\begin_preamble
-% for the following cases use the listed document class option:
-% [annual] - Technical paper accepted for presentation at the ACM SIGGRAPH 
-%   or SIGGRAPH Asia annual conference.
-% [sponsored] - Short or full-length technical paper accepted for 
-%   presentation at an event sponsored by ACM SIGGRAPH
-%   (but not the annual conference Technical Papers program).
-% [abstract] - A one-page abstract of your accepted content
-%   (Technical Sketches, Posters, Emerging Technologies, etc.). 
-%   Content greater than one page in length should use the "[sponsored]"
-%   parameter.
-% [preprint] - A preprint version of your final content.
-% [review] - A technical paper submitted for review. Includes line
-%   numbers and anonymization of author and affiliation information.
-
-% When you submit your paper for review, please use the \TOGonlineID''
-% command to include the online ID value assigned to your paper by the
-% submission management system. Replace '45678' with the value you were
-% assigned.
-\TOGonlineid{45678}
-
-% If you are preparing a preprint of your accepted paper, and your paper
-% will be published in an issue of the ACM "Transactions on Graphics''
-% journal, replace the "0'' values in the commands below with the correct
-% volume and number values for that issue - you'll get them before your
-% final paper is due.
-\TOGvolume{0}
-\TOGnumber{0}
-
-% The TOGarticleDOI' command accepts the DOI information provided to you
-% during production, and which makes up the URLs which identifies the ACM
-% article page and direct PDF link in the ACM Digital Library.
-% Replace "1111111.2222222'' with the values you are given.
-\TOGarticleDOI{1111111.2222222}
-
-% If you would like to include links to personal repositories for auxiliary
-% material related your research contribution, you may use one or more of
-% these commands to define an appropriate URL. The "\TOGlinkslist'' command
-% found just before the first section of your document will add hyperlinked
-% icons to your document, in addition to hyperlinked icons which point to
-% the ACM Digital Library article page and the ACM Digital Library-held PDF.
-\TOGprojectURL{}
-\TOGvideoURL{}
-\TOGdataURL{}
-\TOGcodeURL{}
-
-% Paper title.
-\title{Global Illumination for Fun and Profit}
-
-% Author and Affiliation (single author).
-%\author{Name \thanks{e-mail: name@unknown.uu}\\ Research Institute}
-
-% Author and Affiliation (multiple authors).
-\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}\\ Starbucks Research %
-\and Ed Grimley\thanks{e-mail:ed.grimley@aol.com}\\Nigel Mansell\thanks{nigelf1@msn.com}\\ Grimley Widgets, Inc. %
-\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}\\ Martha Stewart Enterprises \\ Microsoft Research}
-
-% The ``pdfauthor'' command accepts the authors of the work,
-% comma-delimited, and adds this information to the PDF metadata.
-\pdfauthor{Roy G. Biv, Ed Grimley, Nigel Mansell, Martha Stewart}
-
-% Keywords that describe your work.
-\keywords{radiosity, global illumination, constant time}
-\end_preamble
 \options annual
 \use_default_options false
 \maintain_unincluded_children false
@@ -165,39 +101,302 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Note: 
 \series default
- The author, affiliation, email addresses, and the document title have to
- set up in the LaTeX preamble of this document!
+use one of these document class options:
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
 
 \begin_layout Plain Layout
 
-\series bold
-Note:
-\series default
- The document type (review etc.) is specified by using one of the document
- class options listed in the preamble of this file.
+\family sans
+annual
+\family default
+ - Technical paper accepted for presentation at the ACM SIGGRAPH or SIGGRAPH
+ Asia annual conference.
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+sponsored
+\family default
+ - Short or full-length technical paper accepted for presentation at an
+ event sponsored by ACM SIGGRAPH (but not the annual conference Technical
+ Papers program).
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+abstract
+\family default
+ - A one-page abstract of your accepted content (Technical Sketches, Posters,
+ Emerging Technologies, etc.).
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space \hspace*{}
+\length 1.5cm
+\end_inset
+
+Content greater than one page in length should use the document class option
+ 
+\family sans
+sponsored
+\family default
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+preprint
+\family default
+ - A preprint version of your final content.
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+review
+\family default
+ - A technical paper submitted for review.
+ Includes line numbers and anonymization of author and affiliation information.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout TOG online ID
+45678
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Should be filled with the online ID value you received when you submitted
+ your technical paper.
+ It will be printed out if you prepare a 
+\family sans
+review
+\family default
+ version of your paper.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TOG volume
+0
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Optional.
+\end_layout
+
+\begin_layout Plain Layout
+Should your technical paper be accepted, you will be given three pieces
+ of information: the volume and number of the issue of the ACM Transactions
+ on Graphics journal in which your paper will be published, and the ``article
+ DOI'' value, which is unique to your paper and provides the link to your
+ paper's page in the ACM Digital Library.
+ Fill in the volume, number' and article DOI with the three pieces of informatio
+n you receive.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TOG number
+0
+\end_layout
+
+\begin_layout TOG article DOI
+1111111.2222222
+\end_layout
+
+\begin_layout TOG project URL
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Optional.
+\end_layout
+
+\begin_layout Plain Layout
+By default, your technical paper will contain hyperlinked icons which point
+ to your paper's article page in the ACM Digital Library, and to the paper
+ itself in the ACM Digital Library.
+ You may wish to add one or more links to your own resources.
+ If any of the following four definitions have URLs in them, an appropriate
+ hyperlinked icon will be added to the list.
+ See the note behinf the command 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TOG video URL
+
+\end_layout
+
+\begin_layout TOG data URL
+
+\end_layout
+
+\begin_layout TOG code URL
+
+\end_layout
+
+\begin_layout Title
+The Title of Your Paper Goes Here
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Use capital letters as appropriate.
+ Setting the entire title in upper-case letters is not correct, nor is capitaliz
+ing only the first letter of the title.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Roy Giv
+\begin_inset Flex Thanks
+status open
+
+\begin_layout Plain Layout
+e-mail: roybiv@aol.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Star Research 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Ed Grim
+\begin_inset Flex Thanks
+status open
+
+\begin_layout Plain Layout
+e-mail: ed.grim@aol.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Nigel Mall
+\begin_inset Flex Thanks
+status open
+
+\begin_layout Plain Layout
+e-mail: nigelmall@msn.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Grim, Inc.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Robert A.
+ Smith
+\begin_inset Flex Thanks
+status open
+
+\begin_layout Plain Layout
+e-mail: rsmith@gmail.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Smith Research
+\begin_inset Newline newline
+\end_inset
+
+Star Research
+\end_layout
+
+\begin_layout PDF author
+Roy Giv, Ed Grim, Nigel Mall, Robert A.
+ Smith
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+the authors of the work, comma-delimited, are added to the PDF metadata
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keywords
+radiosity, global illumination, constant time
 \end_layout
 
 \begin_layout Teaser
 \begin_inset Graphics
 	filename ../examples/beamer-icsi-logo.pdf
 	width 40col%
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Optional
+\end_layout
 
 \end_inset
 
@@ -245,16 +444,11 @@ maketitle
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-The command 
-\series bold
-
-\backslash
-maketitle
-\series default
- prepares and prints the title block.
+Uses the author and title information defined above, and prepares the formatted
+ title.
 \end_layout
 
 \end_inset
@@ -279,36 +473,11 @@ key "Jobs95"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex ShortCite
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-shortcite
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Jobs95
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -364,7 +533,7 @@ status open
 \begin_layout Plain Layout
 See 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -386,68 +555,31 @@ http://www.acm.org/class/1998/
 status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 K.6.1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Management of Computing and Information Systems
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Project and People Management
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
 \end_layout
 
 \end_inset
@@ -462,93 +594,46 @@ Life Cycle
 status collapsed
 
 \begin_layout Plain Layout
-The CR categories expects 4 infos that are separated by 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-}{
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- in TeX code.
+Consecutive categories must be in the same paragaph separated by a forced
+ linebreak.
 \end_layout
 
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout CR categories
+
 \begin_inset Flex CRcat
 status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 K.7.m
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 The Computing Profession
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Miscellaneous
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
 \end_layout
 
 \end_inset
@@ -576,16 +661,10 @@ keywordlist
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-The command 
-\series bold
-
-\backslash
-keywordlist
-\series default
- prints out the keywords.
+Prints out the keywords.
 \end_layout
 
 \end_inset
@@ -593,8 +672,33 @@ keywordlist
 
 \end_layout
 
-\begin_layout Section
-Introduction
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TOGlinkslist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Adds hyperlinked icons to your document.
+ Has only an effect with the document class option 
+\family sans
+annual.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -615,21 +719,18 @@ copyrightspace
 status collapsed
 
 \begin_layout Plain Layout
-When you use a copyright note, the 
-\series bold
-
-\backslash
-copyrightspace
-\series default
- command must be the first command after the start of the first section
- of the body of your paper.
- It ensures the copyright space is left at the bottom of the first column
- on the first page of your paper.
+Only necessary if you use a copyright note.
+ It ensures that the copyright space is left at the bottom of the first
+ column on the first page of your paper.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Introduction
 \end_layout
 
 \begin_layout Standard
@@ -716,7 +817,7 @@ options "acmsiggraph"
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_body

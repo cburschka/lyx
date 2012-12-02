@@ -52,28 +52,28 @@ Input stdstarsections.inc
 
 # don't use the following styles
 NoStyle			Part
-NoCounter			part
+NoCounter		part
 NoStyle			Part*
 NoStyle			Chapter
-NoCounter			chapter
+NoCounter		chapter
 NoStyle			Chapter*
 NoStyle			Subparagraph
-NoCounter			subparagraph
+NoCounter		subparagraph
 NoStyle			Subparagraph*
 
 
-Style Teaser
+Style "TOG online ID"
 	Margin			Dynamic
 	LatexType		Command
-	LatexName		teaser
+	LatexName		TOGonlineid
 	Category		FrontMatter
-	InTitle			1
+	InPreamble		1
 	ParSkip			0.4
 	BottomSep		0.5
 	Align			Left
 	LabelSep		xx
 	LabelType		Static
-	LabelString		"Teaser image:"
+	LabelString		"Oneline ID:"
 	LabelFont
 	  Color			Green
 	  Series		Bold
@@ -81,29 +81,111 @@ Style Teaser
 End
 
 
+Style "TOG volume"
+	CopyStyle		"TOG online ID"
+	LatexName		TOGvolume
+	LabelString		"Volume number:"
+End
+
+
+Style "TOG number"
+	CopyStyle		"TOG online ID"
+	LatexName		TOGnumber
+	LabelString		"Article number:"
+End
+
+
+Style "TOG article DOI"
+	CopyStyle		"TOG online ID"
+	LatexName		TOGarticleDOI
+	LabelString		"Article DOI:"
+End
+
+
+Style "TOG project URL"
+	CopyStyle		"TOG online ID"
+	LatexName		TOGprojectURL
+	KeepEmpty		1
+	LabelString		"Project URL:"
+End
+
+
+Style "TOG video URL"
+	CopyStyle		"TOG project URL"
+	LatexName		TOGvideoURL
+	LabelString		"Video URL:"
+End
+
+
+Style "TOG data URL"
+	CopyStyle		"TOG project URL"
+	LatexName		TOGdataURL
+	LabelString		"Data URL:"
+End
+
+
+Style "TOG code URL"
+	CopyStyle		"TOG project URL"
+	LatexName		TOGcodeURL
+	LabelString		"Code URL:"
+End
+
+
 Input stdtitle.inc
 Input stdstruct.inc
+NoStyle			Date
 
 
-InsetLayout "Flex:CRcat"
-	LyxType			custom
-	LatexType		command
-	LatexName		CRcat
-	Decoration		classic
-	LabelString		"CR category"
+# modify the Title definition from stdtitle.inc
+Style Title
+	InTitle			0
+	InPreamble		1
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Family		Sans
 	EndFont
+End
+
+
+# modify the Author definition from stdtitle.inc
+Style Author
+	InTitle			0
+	InPreamble		1
+End
+
+
+Style "PDF author"
+	CopyStyle		"TOG project URL"
+	LatexName		pdfauthor
+	LabelString		"PDF author:"
+End
+
+Style Keywords
+	CopyStyle		"TOG project URL"
+	LatexName		keywords
+	LabelType		Static
+	LabelString		"Keywords:"
 	LabelFont
-	  Color			green
-	  Size			Small
+	  Series		Bold
+	  Size			Normal
+	EndFont
+End
+
+
+Style Teaser
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		teaser
+	Category		FrontMatter
+	ParSkip			0.4
+	BottomSep		0.5
+	Align			Left
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Teaser image:"
+	LabelFont
+	  Series		Bold
+	  Size			Normal
+	  Color			Green
 	EndFont
 End
 
@@ -139,13 +221,73 @@ End
 Style "CR categories"
 	CopyStyle		Abstract
 	LatexName		CRcatlist
-	Category		FrontMatter
-	LeftMargin		M
-	LabelType		Top_Environment
-	LabelString		"Computing Review Categories"
+	Margin			Dynamic
+	ParbreakIsNewline	1
+	LeftMargin		""
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"CR Categories:"
 	LabelFont
 	  Series		Bold
 	  Size			Normal
+	EndFont
+End
+
+
+InsetLayout "Flex:CRcat"
+	LyxType			custom
+	LatexType		command
+	LatexName		CRcat
+	Decoration		classic
+	LabelString		"CR category"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+	Argument 1
+          Mandatory		1
+          LabelString		"CR-number"
+          Tooltip		"Number of the category"
+        EndArgument
+        Argument 2
+          Mandatory		1
+          LabelString		"Subcategory"
+          Tooltip		"Subcategory"
+        EndArgument
+        Argument 3
+          Mandatory		1
+          LabelString		"Third-level"
+          Tooltip		"Third-level of the category"
+        EndArgument
+End
+
+
+InsetLayout "Flex:ShortCite"
+	CopyStyle		"Flex:CRcat"
+	ResetArgs		1
+	LatexName		shortcite
+	Decoration		Conglomerate
+	LabelString		"Short cite"
+End
+
+
+InsetLayout "Flex:Thanks"
+	CopyStyle		"Flex:ShortCite"
+	LatexName		thanks
+	Decoration		Classic
+	LabelString		"E-mail"
+	LabelFont
+	  Color			blue
 	EndFont
 End
 
