@@ -37,6 +37,8 @@
   \mainmatter }
 
 % makes caption labels bold
+% for more info about these settings, see
+% http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf
 \setkomafont{captionlabel}{\bfseries}
 \setcapindent{1em}
 
@@ -44,6 +46,8 @@
 \usepackage{calc}
 
 % fancy page header/footer settings
+% for more information see section 9 of
+% ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
@@ -157,11 +161,15 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
-\series default
- when renaming this file, you must also rename it in all its subdocuments
- in the document settings under 
+Notes:
+\end_layout
+
+\begin_layout Itemize
+When renaming this file, you must also rename it in all its subdocuments
+ in the document settings in the menu 
 \family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Document
 \begin_inset space ~
 \end_inset
@@ -180,6 +188,29 @@ master
 \end_inset
 
 document
+\end_layout
+
+\begin_layout Itemize
+For special settings like the header/footer lines or the font of captions,
+ see also the document preamble (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+LaTeX Preamble
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+If you change the document language you also need to check the document
+ preamble and replace there the English-specific setting.
+\end_layout
+
+\begin_layout Itemize
+This file is not designed to change the document class.
+ You can use it nevertheless as starting point if you have to use a special
+ docment class provided by your university, but no support can be granted
+ for this transition.
 \end_layout
 
 \end_inset
@@ -383,7 +414,97 @@ rightmark
 status collapsed
 
 \begin_layout Plain Layout
-defines the header line
+Defines the header line.
+ If your university does not have special rules what must be in the header/foote
+r, leave the settings as they are.
+\end_layout
+
+\begin_layout Plain Layout
+Quick explanation:
+\end_layout
+
+\begin_layout Itemize
+Stuff inside the 
+\family sans
+opt
+\family default
+ inset appears on even pages, stuff outside the 
+\family sans
+opt
+\family default
+ inset appears on uneven pages.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+rightmark
+\series default
+ is stuff that usualy appears on the right side.
+ This is normally the title of the current chapter or section.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+leftmark
+\series default
+ is the opposite of 
+\series bold
+
+\backslash
+rightmark
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+thepage
+\series default
+ prints the current page number, 
+\series bold
+
+\backslash
+thechapter
+\series default
+ the current chapter number, 
+\series bold
+
+\backslash
+thesection
+\series default
+ the current...
+\end_layout
+
+\begin_layout Itemize
+Further adjustments can be made in the LaTeX preamble of thios document
+ in the menu Document\SpecialChar \menuseparator
+Settings.
+ For a brief description how the header/footer lines can be modified, see
+ the manual of the LaTeX package 
+\series bold
+fancyhdr
+\series default
+: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -505,7 +626,8 @@ pagestyle{plain}
 status collapsed
 
 \begin_layout Plain Layout
-The summary should not have page headers.
+Usually the summary should not have page headers.
+ If it should, remove this TeX code.
 \end_layout
 
 \end_inset
@@ -548,6 +670,16 @@ status collapsed
 
 \backslash
 pagestyle{fancy}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Reset page style to get page headers again.
 \end_layout
 
 \end_inset
