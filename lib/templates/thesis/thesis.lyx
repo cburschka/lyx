@@ -7,9 +7,10 @@
 % increases link area for cross-references and autoname them
 % if you change the document language to e.g. French
 % you must change "extrasenglish" to "extrasfrench"
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
-\addto\extrasenglish{%
+\AtBeginDocument{%
+ \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
+}
+\def\refnamechanges{%
  \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
@@ -17,6 +18,7 @@
  \renewcommand{\figureautorefname}{Fig.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
 }
+\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 
 % in case somebody want to have the label "Equation"
 %\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
