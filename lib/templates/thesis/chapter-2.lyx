@@ -7,9 +7,10 @@
 % increases link area for cross-references and autoname them
 % if you change the document language to e.g. French
 % you must change "extrasenglish" to "extrasfrench"
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
-\addto\extrasenglish{%
+\AtBeginDocument{%
+ \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
+}
+\def\refnamechanges{%
  \renewcommand*{\equationautorefname}[1]{}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
@@ -17,6 +18,7 @@
  \renewcommand{\figureautorefname}{Fig.\negthinspace}
  \renewcommand{\tableautorefname}{Tab.\negthinspace}
 }
+\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 
 % in case somebody want to have the label "Equation"
 %\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
@@ -35,6 +37,8 @@
   \mainmatter }
 
 % makes caption labels bold
+% for more info about these settings, see
+% http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf
 \setkomafont{captionlabel}{\bfseries}
 \setcapindent{1em}
 
@@ -42,6 +46,8 @@
 \usepackage{calc}
 
 % fancy page header/footer settings
+% for more information see section 9 of
+% ftp://www.ctan.org/pub/tex-archive/macros/latex2e/contrib/fancyhdr/fancyhdr.pdf
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
