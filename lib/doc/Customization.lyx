@@ -17321,7 +17321,81 @@ reference "des:FreeSpacing"
 \end_inset
 
 ) for information on `features'.
+\change_inserted -712698321 1354439699
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1354439705
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354439699
+ResetArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354439699
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354439699
+1
+\end_layout
+
+\end_inset
+
+] Resets the LaTeX arguments of this layout (as defined via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354439699
+Argument
+\end_layout
+
+\end_inset
+
+ tag).
+ This is useful if you have copied a style via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1354439699
+CopyStyle
+\end_layout
+
+\end_inset
+
+, but you do not want to inherit its (required and optional) arguments.
+
+\change_deleted -712698321 1354439698
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

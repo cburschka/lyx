@@ -117,9 +117,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_PREAMBLE,
 		IL_REQUIRES,
 		IL_RIGHTDELIM,
-		IL_SPELLCHECK,
 		IL_REFPREFIX,
+		IL_RESETARGS,
 		IL_RESETSFONT,
+		IL_SPELLCHECK,
 		IL_END
 	};
 
@@ -166,6 +167,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "preamble", IL_PREAMBLE },
 		{ "refprefix", IL_REFPREFIX },
 		{ "requires", IL_REQUIRES },
+		{ "resetargs", IL_RESETARGS },
 		{ "resetsfont", IL_RESETSFONT },
 		{ "rightdelim", IL_RIGHTDELIM },
 		{ "spellcheck", IL_SPELLCHECK }
@@ -331,6 +333,12 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			labelfont_ = font_;
 			break;
 		}
+		case IL_RESETARGS:
+			bool reset;
+			lex >> reset;
+			if (reset)
+				latexargs_.clear();
+			break;
 		case IL_ARGUMENT:
 			readArgument(lex);
 			break;
