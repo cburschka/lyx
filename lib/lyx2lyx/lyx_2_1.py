@@ -1260,7 +1260,7 @@ def revert_latexargs(document):
         # Search for Argument insets
         i = find_token(document.body, "\\begin_inset Argument", i)
         if i == -1:
-            break
+            return
         m = rx.match(document.body[i])
         if not m:
             # No ID: inset already reverted
@@ -1268,6 +1268,9 @@ def revert_latexargs(document):
             continue
         # Find beginning and end of the containing paragraph
         parbeg = find_token_backwards(document.body, "\\begin_layout", i)
+        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
+            # Probably a preceding inset. Continue searching ...
+            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
         if parbeg == -1:
             document.warning("Malformed lyx document: Can't find parent paragraph layout")
             continue
@@ -1684,14 +1687,17 @@ def revert_itemargs(document):
         if i == -1:
             return
         j = find_end_of_inset(document.body, i)
-        lastlay = find_token_backwards(document.body, "\\begin_layout", i)
+        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
+        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
+            # Probably a preceding inset. Continue searching ...
+            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
-        endLayout = find_token(document.body, "\\end_layout", beginPlain)
-        endInset = find_token(document.body, "\\end_inset", endLayout)
-        content = document.body[beginPlain + 1 : endLayout]
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        endInset = find_end_of_inset(document.body, p)
+        content = document.body[beginPlain + 1 : endPlain]
         del document.body[i:j+1]
         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-        document.body[lastlay + 1:lastlay + 1] = subst
+        document.body[parbeg + 1:parbeg + 1] = subst
         i = i + 1
 
 
