@@ -1210,6 +1210,9 @@ def convert_latexargs(document):
         
         # Find beginning and end of the containing paragraph
         parbeg = find_token_backwards(document.body, "\\begin_layout", i)
+        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
+            # Probably a preceding inset. Continue searching ...
+            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
         if parbeg == -1:
             document.warning("Malformed lyx document: Can't find parent paragraph layout")
             continue
@@ -1675,11 +1678,12 @@ def convert_literate(document):
 
 def revert_itemargs(document):
     " Reverts \\item arguments to TeX-code "
+    i = 0
     while True:
-        i = find_token(document.body, "\\begin_inset Argument item:", 0)
-        j = find_end_of_inset(document.body, i)
+        i = find_token(document.body, "\\begin_inset Argument item:", i)
         if i == -1:
-            break
+            return
+        j = find_end_of_inset(document.body, i)
         lastlay = find_token_backwards(document.body, "\\begin_layout", i)
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endLayout = find_token(document.body, "\\end_layout", beginPlain)
