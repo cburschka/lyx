@@ -101,12 +101,6 @@ What's new
 - In order to avoid NFSS problems with certain font packages, load the needed
   font encodings when inserting Cyrillic and/or Greek characters (bug 8467).
 
-- Fix the output of LyXHTML bibliography with richtext (bug 8486).
-
-- Fix linking from citation to bibliography in LyXHTML output (bug 8490).
-
-- Use document language when exporting citations to LyXHTML (bug 7732).
-
 - Reordering citations in LyX is now rendered in the output (bug 6955).
 
 - Fix InsetLayout's LatexParam output: \begin{inset}[latexparam].
@@ -116,21 +110,9 @@ What's new
 - Properly output alias for formatted chapter references, so prettyref
   documents work when converted tor refstyle.
 
-- Do not convert --- and -- to entities when outputting listings to 
-  XHTML (bug 8561).
-
 - Fix lyx2lyx bug with non-ASCII layout file names (Debian bug 700828).
 
-- Reset counters properly when outputting included XHTML files (bug 8598).
-
-- Translate "elsewhere" when outputting XHTML (bug 8587).
-
-- Fix problem with XHTML output of captions with listings (bug 8604).
-
-- Fix problem with HTML output of simple formulas like "y[i]" (bug 8609).
-
-- Clean ids for citations before outputting them. Characters like ":" are
-  not allowed in HTML identifiers, apparently (bug 8606).
+- Made \lyxadded and \lyxdeleted robust (bug 8435).
 
 
 * USER INTERFACE
@@ -185,6 +167,26 @@ What's new
 
 
 * LYXHTML
+
+- Reset counters properly when outputting included XHTML files (bug 8598).
+
+- Fix the output of LyXHTML bibliography with richtext (bug 8486).
+
+- Fix linking from citation to bibliography in LyXHTML output (bug 8490).
+
+- Use document language when exporting citations to LyXHTML (bug 7732).
+
+- Do not convert --- and -- to entities when outputting listings to 
+  XHTML (bug 8561).
+
+- Translate "elsewhere" when outputting XHTML (bug 8587).
+
+- Fix problem with XHTML output of captions with listings (bug 8604).
+
+- Fix problem with HTML output of simple formulas like "y[i]" (bug 8609).
+
+- Clean ids for citations before outputting them. Characters like ":" are
+  not allowed in HTML identifiers, apparently (bug 8606).
 
 
 * TEX2LYX
