@@ -420,12 +420,16 @@ def get_containing_inset(lines, i):
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''
-  stins = find_token_backwards(lines, i, "\\begin_inset")
-  if stins == -1:
-      return False
-  endins = find_end_of_inset(lines, stins)
-  if endins < i:
-      return False
+  j = i
+  while True:
+      stins = find_token_backwards(lines, "\\begin_inset", j)
+      if stins == -1:
+          return False
+      endins = find_end_of_inset(lines, stins)
+      if endins > j:
+          break
+      j = stins - 1
+  
   inset = get_value(lines, "\\begin_inset", stins)
   if inset == "":
       # shouldn't happen
@@ -440,14 +444,18 @@ def get_containing_layout(lines, i):
   on which the layout begins, plus the starting and ending line.
   Returns False on any kind of error.
   '''
-  stins = find_token_backwards(lines, i, "\\begin_layout")
-  if stins == -1:
-      return False
-  endins = find_end_of_layout(lines, stins)
-  if endins < i:
-      return False
-  lay = get_value(lines, "\\begin_layout", stins)
+  j = i
+  while True:
+      stlay = find_token_backwards(lines, "\\begin_layout", j)
+      if stlay == -1:
+          return False
+      endlay = find_end_of_layout(lines, stlay)
+      if endlay > i:
+          break
+      j = stlay - 1
+  
+  lay = get_value(lines, "\\begin_layout", stlay)
   if lay == "":
       # shouldn't happen
       return False
-  return (lay, stins, endins)
+  return (lay, stlay, endlay)

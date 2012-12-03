@@ -25,9 +25,9 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_token, find_token_backwards, find_end_of, find_end_of_inset, \
-    find_end_of_layout, find_re, get_option_value, get_value, get_quoted_value, \
-    set_option_value
+from parser_tools import del_token, find_token, find_token_backwards, find_end_of, \
+    find_end_of_inset, find_end_of_layout, find_re, get_option_value, get_containing_layout, \
+    get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_token_exact, find_end_of_inset, find_end_of_layout, \
@@ -1208,25 +1208,20 @@ def convert_latexargs(document):
             i = i + 1
             continue
         
-        # Find beginning and end of the containing paragraph
-        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
-        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
-            # Probably a preceding inset. Continue searching ...
-            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
-        if parbeg == -1:
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
             document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
             continue
-        parend = find_end_of_layout(document.body, parbeg)
-        if parend == -1:
-            document.warning("Malformed lyx document: Can't find end of parent paragraph layout")
-            continue
+        parbeg = parent[1]
+        parend = parent[2]
         allowed_opts = -1
         first_req = -1
         if len(used_caveat_modules) > 0:
             # We know for now that this must be the initials module with the Initial layout
             # If we get more such modules, we need some automating.
-            layoutname = get_value(document.body, "\\begin_layout", parbeg)
-            if layoutname == "Initial":
+            if parent[0] == "Initial":
                 # Layout has 1 opt and 1 req arg.
                 # Count the actual arguments
                 actualargs = 0
@@ -1266,18 +1261,14 @@ def revert_latexargs(document):
             # No ID: inset already reverted
             i = i + 1
             continue
-        # Find beginning and end of the containing paragraph
-        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
-        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
-            # Probably a preceding inset. Continue searching ...
-            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
-        if parbeg == -1:
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
             document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
             continue
-        parend = find_end_of_layout(document.body, parbeg)
-        if parend == -1:
-            document.warning("Malformed lyx document: Can't find end of parent paragraph layout")
-            continue
+        parbeg = parent[1]
+        parend = parent[2]
         # Collect all arguments in this paragraph 
         realparend = parend
         for p in range(parbeg, parend):
@@ -1687,10 +1678,13 @@ def revert_itemargs(document):
         if i == -1:
             return
         j = find_end_of_inset(document.body, i)
-        parbeg = find_token_backwards(document.body, "\\begin_layout", i)
-        while get_value(document.body, "\\begin_layout", parbeg) == "Plain Layout":
-            # Probably a preceding inset. Continue searching ...
-            parbeg = find_token_backwards(document.body, "\\begin_layout", parbeg - 1)
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
         content = document.body[beginPlain + 1 : endPlain]
