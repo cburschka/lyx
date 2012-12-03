@@ -1,38 +1,12 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 449
 \begin_document
 \begin_header
 \textclass europecv
 \begin_preamble
-\usepackage{graphicx}
-
-% Define personal data
-\ecvname{Testmann, Paul}
-\ecvfootername{Paul Testmann}
-\ecvnationality{Swiss}
-\ecvdateofbirth{June 23, 1962}
-\ecvaddress{Teststreet\newline 03333 Nicecity\newline Switzerland}
-\ecvemail{testman@testman.xx}
-% the optional phnoe number is for the mobile
-\ecvtelephone[+43(0)777 7777]{+43(0)999 9999}
-
-% for the gender and fax number
-%\ecvgender{male}
-%\ecvfax{fax}
-
-% define text or image alignment and position:
-% in this case the image is shifted 6cm to the right
-\ecvbeforepicture{\hspace{6cm}}
-
-% image
-\ecvpicture[height=3cm]{CV-image}
-
-% define text or space after the image
-% in this case the following shifted 2cm to the image
-\ecvafterpicture{\ecvspace{-2cm}}
-
-% if you e.g. only want the page number to be printed in the footer
-%\ecvpage{\thepage}
+% to handle the picture
+% only load the package of not already loaded
+\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 \end_preamble
 \options nologo
 \use_default_options false
@@ -44,13 +18,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -61,15 +35,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -79,8 +59,8 @@
 \topmargin 2cm
 \rightmargin 2cm
 \bottommargin 3cm
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 1
+\tocdepth 1
 \paragraph_separation skip
 \defskip medskip
 \quotes_language english
@@ -96,12 +76,72 @@
 
 \begin_body
 
-\begin_layout Begin
-\begin_inset Note Note
+\begin_layout Name
+Testmann, Paul
+\end_layout
+
+\begin_layout FooterName
+Paul Testmann
+\end_layout
+
+\begin_layout Nationality
+Swiss
+\end_layout
+
+\begin_layout Birthday
+June 23, 1962
+\end_layout
+
+\begin_layout Address
+Teststreet
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline 
+\end_layout
+
+\end_inset
+
+03333 Nicecity
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline 
+\end_layout
+
+\end_inset
+
+Switzerland
+\end_layout
+
+\begin_layout Email
+testman@testman.ch
+\end_layout
+
+\begin_layout Telephone
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Keep entries with green labels empty!
++43(0)777 7777
+\end_layout
+
+\end_inset
+
++43(0)999 9999
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The mobile number is optional.
 \end_layout
 
 \end_inset
@@ -109,17 +149,128 @@ Keep entries with green labels empty!
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Gender
+Male
 \begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fax
+Fax number
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeforePicture
+\begin_inset space \hspace*{}
+\length 6cm
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, alignment and position of the picture or text, in this case the
+ picture is shifted 6
+\begin_inset space \thinspace{}
+\end_inset
+
+cm to the right
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Picture
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
+height=3cm
+\end_layout
 
-\series bold
-Note:
-\series default
- The personal data like your name, image, address, etc.
- are set in the document preamble.
+\end_inset
+
+CV-image
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The name of the image file.
+ The optional size is in this case the height the photo is resized to.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AfterPicture
+\begin_inset Flex VerticalSpace
+status open
+
+\begin_layout Plain Layout
+-2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, in this case the following material is shifted 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm to the picture
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, redefines what is printed in the footer, in this case only the
+ page number
 \end_layout
 
 \end_inset
@@ -133,7 +284,34 @@ status open
 
 \begin_layout Plain Layout
 The europecv-class offers lots of customization possibilities; to find out
- more, look at its documentation.
+ more, look at its documentation:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/europecv/europecv.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Begin
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Keep entries with green labels empty!
 \end_layout
 
 \end_inset
@@ -159,13 +337,11 @@ Education
 \end_layout
 
 \begin_layout Item
-2003--2006
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+2003--2006
 \end_layout
 
 \end_inset
@@ -174,13 +350,11 @@ Master of Economics, Institution, City, Country, Description
 \end_layout
 
 \begin_layout Item
-2001--2003
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+2001--2003
 \end_layout
 
 \end_inset
@@ -193,13 +367,11 @@ Master Thesis
 \end_layout
 
 \begin_layout BulletedItem
-Title
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Title
 \end_layout
 
 \end_inset
@@ -210,13 +382,11 @@ Title of the thesis
 \end_layout
 
 \begin_layout BulletedItem
-Supervisors
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Supervisors
 \end_layout
 
 \end_inset
@@ -225,13 +395,11 @@ Names of supervisors
 \end_layout
 
 \begin_layout BulletedItem
-Description
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Description
 \end_layout
 
 \end_inset
@@ -246,13 +414,11 @@ Experience
 \end_layout
 
 \begin_layout Item
-February 2006--current
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+2006--current
 \end_layout
 
 \end_inset
@@ -261,13 +427,11 @@ Maintainer of OpenSource projects
 \end_layout
 
 \begin_layout Item
-2005--2006
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+2005--2006
 \end_layout
 
 \end_inset
@@ -281,8 +445,8 @@ Languages
 \end_layout
 
 \begin_layout MotherTongue
-\begin_inset Argument
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 10pt
@@ -315,8 +479,8 @@ The optional parameter is the vertical height behind the item; negative
 status collapsed
 
 \begin_layout Plain Layout
-Inserts the language level explanation and sets the symbol for the reference
- footnote.
+Optional, inserts the language level explanation and sets the symbol for
+ the reference footnote.
  
 \end_layout
 
@@ -326,18 +490,20 @@ Inserts the language level explanation and sets the symbol for the reference
 \end_layout
 
 \begin_layout Language
-German
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+German
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -351,17 +517,15 @@ ecvBTwo
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -375,17 +539,15 @@ ecvCOne
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -399,17 +561,15 @@ ecvATwo
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 6
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -423,12 +583,6 @@ ecvATwo
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -448,11 +602,21 @@ ecvBOne
 
 
 \begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The last info is the level how good you think you can write.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-The language level codes can be found in the documentation of the europecv-packa
-ge.
+The language level codes can be found in the documentation of the package
+ europecv.
 \end_layout
 
 \end_inset
@@ -461,18 +625,20 @@ ge.
 \end_layout
 
 \begin_layout LastLanguage
-Italian
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Italian
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -486,17 +652,15 @@ ecvATwo
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -510,17 +674,15 @@ ecvBOne
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -534,17 +696,15 @@ ecvAOne
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument 6
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -558,12 +718,6 @@ ecvAOne
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -607,7 +761,7 @@ Computer skills
 \end_layout
 
 \begin_layout Item
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -616,13 +770,12 @@ status collapsed
 
 \end_inset
 
-OS
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+OS
 \end_layout
 
 \end_inset
@@ -631,13 +784,11 @@ Linux, Unix, Windows, administration, Apache, Mailman
 \end_layout
 
 \begin_layout Item
-Programming
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Programming
 \end_layout
 
 \end_inset
@@ -650,7 +801,7 @@ Java
 \end_layout
 
 \begin_layout Item
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -659,13 +810,12 @@ status collapsed
 
 \end_inset
 
-Scientific
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Scientific
 \end_layout
 
 \end_inset
@@ -674,17 +824,15 @@ Matlab, Autocad, Abaqus, typography, LaTeX, ConTeXt, Scribus, QuarkXPress
 \end_layout
 
 \begin_layout Item
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Web
 \begin_inset space ~
 \end_inset
 
 design
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -697,7 +845,7 @@ Interests
 \end_layout
 
 \begin_layout Item
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -706,17 +854,16 @@ status collapsed
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Adventure
 \begin_inset space ~
 \end_inset
 
 sports
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -728,7 +875,7 @@ I like practicing adventure sports like skiing, rock climbing and scuba
 \end_layout
 
 \begin_layout Item
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -737,13 +884,12 @@ status collapsed
 
 \end_inset
 
-Travelling
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Travelling
 \end_layout
 
 \end_inset
@@ -758,13 +904,11 @@ Publications
 \end_layout
 
 \begin_layout Item
-References
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+References
 \end_layout
 
 \end_inset
@@ -835,12 +979,11 @@ You can also use BibTeX references:
 \end_layout
 
 \begin_layout Item
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+References
 \end_layout
 
 \end_inset

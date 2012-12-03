@@ -27,138 +27,295 @@ End
 Input stdcounters.inc
 Input stdinsets.inc
 
-Style Section
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvsection
-	NeedProtect		1
-	NextNoIndent		1
-	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "The title as it appears in the header"
-	EndArgument
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0.7
-	ParSep			0.7
-	Align			Block
-	LabelSep		xxx
-	LabelType		No_Label
-	Font
-	  Family		Sans
-	  Series		Bold
+Style Name
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvname
+	Category	FrontMatter
+	InPreamble	1
+	ParSkip		0.4
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Name:"
+	LabelFont
+	  Series	Bold
+	  Color		Blue
 	EndFont
-		TocLevel 1
+End
+
+Style FooterName
+	CopyStyle	Name
+	LatexName	ecvfootername
+	LabelString	"Footer name:"
+End
+
+Style Nationality
+	CopyStyle	Name
+	LatexName	ecvnationality
+	LabelString	"Nationality:"
+End
+
+Style Birthday
+	CopyStyle	Name
+	LatexName	ecvdateofbirth
+	LabelString	"Date of birth:"
+End
+
+Style Address
+	CopyStyle	Name
+	LatexName	ecvaddress
+	LabelString	"Address:"
+End
+
+Style Email
+	CopyStyle	Name
+	LatexName	ecvemail
+	LabelString	"E-mail:"
+End
+
+Style Telephone
+	CopyStyle	Name
+	LatexName	ecvtelephone
+	LabelString	"Telephone:"
+	Argument 1
+	  LabelString	"Mobile"
+	  Tooltip	"Mobile phone number"
+	EndArgument
+End
+
+Style Gender
+	CopyStyle	Name
+	LatexName	ecvgender
+	LabelString	"Gender:"
+End
+
+Style Fax
+	CopyStyle	Name
+	LatexName	ecvfax
+	LabelString	"Fax:"
+End
+
+Style BeforePicture
+	CopyStyle	Name
+	LatexName	ecvbeforepicture
+	LabelString	"Space before picture:"
+End
+
+Style Picture
+	CopyStyle	Name
+	LatexName	ecvpicture
+	LabelString	"Picture:"
+	Argument 1
+	  LabelString	"Size"
+	  Tooltip	"Size the photo is resized to"
+	EndArgument
+End
+
+Style AfterPicture
+	CopyStyle	Name
+	LatexName	ecvafterpicture
+	LabelString	"Space after picture:"
+End
+
+Style Page
+	CopyStyle	Name
+	LatexName	ecvpage
+	LabelString	"Page:"
+End
+
+Style Section
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvsection
+	Category	MainText
+	NeedProtect	1
+	NextNoIndent	1
+	Argument 1
+	  LabelString	"Short Title|S"
+	  Tooltip	"The title as it appears in the header"
+	EndArgument
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	LabelSep	xxx
+	LabelType	No_Label
+	Font
+	  Family	Sans
+	  Series	Bold
+	EndFont
+	TocLevel	1
 End
 
 Style Item
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvitem
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvitem
+	Category	MainText
 	Argument 1
-		LabelString   "Vertical Space (Item)|S"
-		Tooltip       "Adjust the vertical space of this item"
+	  LabelString	"Vertical Space"
+	  Tooltip	"Additional vertical space"
 	EndArgument
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Item:"
+	Argument 2
+	  Mandatory	1
+	  LabelString	"Summary"
+	  Tooltip	"Summary of the item, can also be the time"
+	EndArgument
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Item:"
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style BulletedItem
-	CopyStyle		Item
-	LatexName		ecvitem*
-	LabelString		"Bulleted Item:"
+	CopyStyle	Item
+	LatexName	ecvitem*
+	LabelString	"Bulleted Item:"
 End
 
 Style Begin
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		begin{europecv}
-	KeepEmpty		1
-	BottomSep		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Begin of CV"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	begin{europecv}
+	Category	FrontMatter
+	KeepEmpty	1
+	TopSep		1
+	BottomSep	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Begin of CV"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
 	EndFont
 End
 
 Style PersonalInfo
-	CopyStyle		Begin
-	LatexName		ecvpersonalinfo{}
-	BottomSep		0
-	LabelString		"Personal Info"
+	CopyStyle	Begin
+	LatexName	ecvpersonalinfo{}
+	TopSep		0
+	BottomSep	0
+	LabelString	"Personal Info"
 End
 
 Style MotherTongue
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvmothertongue
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvmothertongue
+	Category	MainText
 	Argument 1
-		LabelString   "Vertical Space (Item)|S"
-		Tooltip       "Adjust the vertical space of this item"
+	  LabelString	"Vertical Space"
+	  Tooltip	"Additional vertical space"
 	EndArgument
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Mother Tongue:"
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Mother Tongue:"
+	Font
+	  Series	Bold
+	EndFont
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style LangHeader
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguageheader
-	ResetArgs		1
-	LabelString		"Language Header:"
+	CopyStyle	MotherTongue
+	LatexName	ecvlanguageheader
+	ResetArgs	1
+	LabelString	"Language Header:"
 End
 
 Style Language
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguage
-	LabelString		"Language:"
+	CopyStyle	MotherTongue
+	LatexName	ecvlanguage
+	LabelString	"Language:"
+	Argument 2
+	  Mandatory	1
+	  LabelString	"Language"
+	  Tooltip	"Name of the language"
+	EndArgument
+	Argument 3
+	  Mandatory	1
+	  LabelString	"Listening"
+	  Tooltip	"Level how good you think you can listen"
+	EndArgument
+	Argument 4
+	  Mandatory	1
+	  LabelString	"Reading"
+	  Tooltip	"Level how good you think you can read"
+	EndArgument
+	Argument 5
+	  Mandatory	1
+	  LabelString	"Interaction"
+	  Tooltip	"Level how good you think you can conversate"
+	EndArgument
+	Argument 6
+	  Mandatory	1
+	  LabelString	"Production"
+	  Tooltip	"Level how good you think you can freely talk"
+	EndArgument
 End
 
 Style LastLanguage
-	CopyStyle		MotherTongue
-	LatexName		ecvlastlanguage
-	LabelString		"Last Language:"
+	CopyStyle	Language
+	LatexName	ecvlastlanguage
+	LabelString	"Last Language:"
 End
 
 Style LangFooter
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguagefooter
-	ResetArgs		1
-	LabelString		"Language Footer:"
+	CopyStyle	LangHeader
+	LatexName	ecvlanguagefooter
+	LabelString	"Language Footer:"
 End
 
 Style End
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		end{europecv}
-	KeepEmpty		1
-	TopSep			1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"End of CV"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	end{europecv}
+	Category	BackMatter
+	KeepEmpty	1
+	TopSep		1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"End of CV"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
+	EndFont
+End
+
+InsetLayout "Flex:VerticalSpace"
+	LyxType		custom
+	LatexType	command
+	LatexName	ecvspace
+	Decoration	Conglomerate
+	LabelString	"Vertical space"
+	Font
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
+	EndFont
+	LabelFont
+	  Color		green
+	  Size		Small
 	EndFont
 End
 
