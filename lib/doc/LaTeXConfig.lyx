@@ -956,7 +956,7 @@ newtxmath
 \family default
  package provides support for matching math fonts for 
 \emph on
-Times Roman
+URW Garamond, Times Roman
 \emph default
  (or 
 \emph on
@@ -1877,6 +1877,11 @@ arg   "garamondx-fonts"
 garamondx
 \family default
  package provides old style figures.
+ Matching math fonts are provided by 
+\emph on
+URW Garamond (NewTX)
+\emph default
+.
  As a fallback, the package 
 \family sans
 ugm

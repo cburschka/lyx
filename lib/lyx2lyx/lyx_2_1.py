@@ -1795,6 +1795,19 @@ def revert_itemargs(document):
         i = i + 1
 
 
+def revert_garamondx_newtxmath(document):
+    " Revert native garamond newtxmath definition to LaTeX " 
+
+    i = find_token(document.header, "\\font_math", 0)
+    if i == -1:
+       return
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        val = get_value(document.header, "\\font_math", i)
+        if val == "garamondx-ntxm":
+            add_to_preamble(document, "\\usepackage[garamondx]{newtxmath}")
+            document.header[i] = "\\font_math auto"
+
+
 def revert_garamondx(document):
     " Revert native garamond font definition to LaTeX " 
 
@@ -1859,7 +1872,7 @@ convert = [
           ]
 
 revert =  [
-           [449, [revert_garamondx]],
+           [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],
            [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV]],

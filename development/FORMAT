@@ -15,6 +15,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* Format incremented to 450: Support for the URW Garamond LaTeX fonts.
 	  - \usepackage{garamondx} > \font_serif garamondx
 	     - [osf], [osfI] > \font_osf true
+	  - \usepackage[garamondx]{newtxmath} > \font_math garamondx-ntxm
 	  Also (fallback): 
 	  - \renewcommand{\sffamily}{ugm} > \font_serif garamondx
 

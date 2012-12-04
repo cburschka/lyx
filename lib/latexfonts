@@ -533,6 +533,14 @@ Font eulervm
 	Package          eulervm
 EndFont
 
+Font garamondx-ntxm
+	GuiName          "URW Garamond (New TX)"
+	Family           math
+	Package          newtxmath
+	PackageOption    garamondx
+	Provides         amssymb,amsfonts
+EndFont
+
 Font libertine-ntxm
 	GuiName          "Libertine (New TX)"
 	Family           math
