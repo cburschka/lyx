@@ -11,6 +11,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-12-04 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 450: Support for the URW Garamond LaTeX fonts.
+	  - \usepackage{garamondx} > \font_serif garamondx
+	     - [osf], [osfI] > \font_osf true
+	  Also (fallback): 
+	  - \renewcommand{\sffamily}{ugm} > \font_serif garamondx
 
 2012-11-29 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 449: Support for \item arguments.

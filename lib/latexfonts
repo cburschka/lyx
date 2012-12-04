@@ -130,6 +130,21 @@ AltFont eco
 	Package          eco
 EndFont
 
+Font garamondx
+	GuiName          "URW Garamond"
+	Family           rm
+	OsfOption        osfI
+	Package          garamondx
+	Requires         garamondx-fonts
+	AltFonts         ugm
+EndFont
+
+AltFont ugm
+	GuiName          "URW Garamond"
+	Family           rm
+	SwitchDefault    1
+EndFont
+
 Font libertine
 	GuiName          "Libertine"
 	Family           rm
@@ -201,7 +216,7 @@ AltFont mdput
 EndFont
 
 Font md-garamond
-	GuiName          "Adobe Garamond (Mathdesign)"
+	GuiName          "URW Garamond (Mathdesign)"
 	Family           rm
 	OsfOption        expert
 	ScOption         expert
@@ -214,7 +229,7 @@ Font md-garamond
 EndFont
 
 AltFont mdugm
-	GuiName          "Adobe Garamond (Mathdesign)"
+	GuiName          "URW Garamond (Mathdesign)"
 	Family           rm
 	SwitchDefault    1
 	Requires         mdugm

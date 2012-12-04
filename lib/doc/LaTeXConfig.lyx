@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 445
+\lyxformat 450
 \begin_document
 \begin_header
 \textclass article
@@ -825,7 +825,7 @@ mathdesign
 \begin_layout Itemize
 
 \family sans
-Adobe Garamond (Mathdesign)
+URW Garamond (Mathdesign)
 \family default
 .
  
@@ -1834,6 +1834,60 @@ Notes: URW Classico is a clone of the Optima typeface, a very well-known
  License.
  Under TeX Live the font needs to be installed via the 'getnonfreefonts-sys'
  utility.
+\end_layout
+
+\begin_layout Subsection
+URW Garamond
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "garamondx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+/fonts/garamondx/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+garamondx
+\family default
+ package provides access to the URW Garamond fonts.
+ These fonts are available for non-commercial use under the Aladdin Free
+ Public License.
+ Under TeX Live the fonts needs to be installed, separately from the package
+ itself, via the 'getnonfreefonts-sys' utility (installed: 
+\begin_inset Info
+type  "package"
+arg   "garamondx-fonts"
+\end_inset
+
+).
+ The 
+\family sans
+garamondx
+\family default
+ package provides old style figures.
+ As a fallback, the package 
+\family sans
+ugm
+\family default
+ (installed: 
+\begin_inset Info
+type  "package"
+arg   "ugm"
+\end_inset
+
+) is used, which however does not include old style figures.
 \end_layout
 
 \begin_layout Section
