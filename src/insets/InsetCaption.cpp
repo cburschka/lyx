@@ -272,7 +272,25 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 void InsetCaption::getArgument(otexstream & os,
 			OutputParams const & runparams) const
 {
-	InsetText::latex(os, runparams);
+	InsetLayout const & il = getLayout();
+
+	if (!il.leftdelim().empty())
+		os << il.leftdelim();
+  
+	OutputParams rp = runparams;
+	if (isPassThru())
+		rp.pass_thru = true;
+	if (il.isNeedProtect())
+		rp.moving_arg = true;
+	rp.par_begin = 0;
+	rp.par_end = paragraphs().size();
+
+	// Output the contents of the inset
+	latexParagraphs(buffer(), text(), os, rp);
+	runparams.encoding = rp.encoding;
+
+	if (!il.rightdelim().empty())
+		os << il.rightdelim();
 }
 
 
