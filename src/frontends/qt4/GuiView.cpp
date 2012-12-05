@@ -457,6 +457,7 @@ GuiView::GuiView(int id)
 #endif
 
 #endif
+	resetWindowTitleAndIconText();
 
 	// use tabbed dock area for multiple docks
 	// (such as "source" and "messages")
