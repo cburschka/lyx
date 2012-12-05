@@ -2061,17 +2061,16 @@ void BufferParams::makeDocumentClass()
 		return;
 
 	LayoutModuleList mods;
-	LayoutModuleList::iterator it;
-	LayoutModuleList::iterator en;
-
-	it = layout_modules_.begin();
-	en = layout_modules_.end();
+	LayoutModuleList::iterator it = layout_modules_.begin();
+	LayoutModuleList::iterator en = layout_modules_.end();
 	for (; it != en; ++it)
 		mods.push_back(*it);
+
 	it = cite_engine_.begin();
 	en = cite_engine_.end();
 	for (; it != en; ++it)
 		mods.push_back(*it);
+
 	doc_class_ = getDocumentClass(*baseClass(), mods);
 
 	if (!local_layout.empty()) {
