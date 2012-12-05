@@ -2084,10 +2084,15 @@ void BufferParams::makeDocumentClass()
 }
 
 
-bool BufferParams::moduleCanBeAdded(string const & modName) const
+bool BufferParams::layoutModuleCanBeAdded(string const & modName) const
 {
-	return cite_engine_.moduleCanBeAdded(modName, baseClass()) &&
-		layout_modules_.moduleCanBeAdded(modName, baseClass());
+	return layout_modules_.moduleCanBeAdded(modName, baseClass());
+}
+
+
+bool BufferParams::citationModuleCanBeAdded(string const & modName) const
+{
+	return cite_engine_.moduleCanBeAdded(modName, baseClass());
 }
 
 

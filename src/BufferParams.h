@@ -146,13 +146,15 @@ public:
 			{ return removed_modules_; }
 	///
 	/// Add a module to the list of modules in use. This checks only that the
-	/// module is not already in the list, so use moduleIsCompatible first if
-	/// you want to check for compatibility.
+	/// module is not already in the list, so use layoutModuleCanBeAdeed first 
+	/// if you want to check for compatibility.
 	/// \return true if module was successfully added.
 	bool addLayoutModule(std::string const & modName);
 	/// checks to make sure module's requriements are satisfied, that it does
 	/// not conflict with already-present modules, isn't already loaded, etc.
-	bool moduleCanBeAdded(std::string const & modName) const;
+	bool layoutModuleCanBeAdded(std::string const & modName) const;
+	/// same, but for citaton modules.
+	bool citationModuleCanBeAdded(std::string const & modName) const;
 	///
 	void addRemovedModule(std::string const & modName)
 			{ removed_modules_.push_back(modName); }

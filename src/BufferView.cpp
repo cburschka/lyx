@@ -1274,7 +1274,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_LAYOUT_MODULE_ADD: {
 		BufferParams const & params = buffer_.params();
-		if (!params.moduleCanBeAdded(argument)) {
+		if (!params.layoutModuleCanBeAdded(argument)) {
 			LYXERR0("Module `" << argument << 
 				"' cannot be added due to failed requirements or "
 				"conflicts with installed modules.");

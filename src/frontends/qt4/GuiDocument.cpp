@@ -341,7 +341,7 @@ void ModuleSelectionManager::updateAddPB()
 	string const modname = getAvailableModel()->getIDString(idx.row());
 
 	bool const enable =
-		container_->params().moduleCanBeAdded(modname);
+		container_->params().layoutModuleCanBeAdded(modname);
 	addPB->setEnabled(enable);
 }
 
