@@ -8,6 +8,10 @@
 
 Format 41
 
+# Beamer does not work with enumitem.
+# See bug #7047.
+ExcludesModule enumitem
+
 #
 # GLOBAL SETTINGS
 #
