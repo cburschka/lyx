@@ -33,9 +33,7 @@ namespace lyx {
 
 InsetFlex::InsetFlex(Buffer * buf, string const & layoutName)
 	: InsetCollapsable(buf), name_(layoutName)
-{
-	status_= Collapsed;
-}
+{}
 
 
 InsetFlex::InsetFlex(InsetFlex const & in)
