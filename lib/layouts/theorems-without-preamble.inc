@@ -38,8 +38,8 @@ Style Theorem
 	LatexName	theorem
 	NextNoIndent	1
 	Argument 1
-	  LabelString	"Alternative Theorem String"
-	  Tooltip	"Alternative theorem string"
+	  LabelString	"Name/Title"
+	  Tooltip	"Alternative optional name or title"
 	EndArgument
 	LabelSep	xx
 	ParIndent	MMM

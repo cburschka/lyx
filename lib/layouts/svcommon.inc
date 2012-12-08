@@ -632,36 +632,6 @@ Style Svgraybox
 	EndFont
 End
 
-# overwrite the label for the optional argument defined in
-# theorems-without-preamble.inc
-Style Theorem
-	Argument 1
-	  LabelString	"Name/Title"
-	  Tooltip	"Name/Title"
-	EndArgument
-End
-
-Style Definition
-	Argument 1
-	  LabelString	"Name/Title"
-	  Tooltip	"Name/Title"
-	EndArgument
-End
-
-Style Problem
-	Argument 1
-	  LabelString	"Name/Title"
-	  Tooltip	"Name/Title"
-	EndArgument
-End
-
-Style Solution
-	Argument 1
-	  LabelString	"Name/Title"
-	  Tooltip	"Name/Title"
-	EndArgument
-End
-
 Style Proof
 	Category	Theorem
 	LatexType	Environment
