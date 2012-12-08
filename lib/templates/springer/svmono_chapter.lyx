@@ -1043,16 +1043,6 @@ description
 \end_layout
 
 \begin_layout Description
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-optional argument for the description:
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument
 status open
 
@@ -1080,6 +1070,17 @@ reference "sec:Section-Heading"
 
 , Wilson discusses the role of human migration in infectious disease distributio
 ns and patterns.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The optional longest description label ca be used to set the space that
+ is necessary to contain all description labels.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -1290,6 +1291,16 @@ status collapsed
 
 \end_inset
 
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+adds an entry to the table of contents
+\end_layout
+
+\end_inset
+
  When placed at the end of a chapter or contribution (as opposed to at the
  end of the book), the numbering of tables, figures, and equations in the
  appendix section continues on from that in the main text.
@@ -1375,6 +1386,16 @@ status collapsed
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+adds an entry to the table of contents
 \end_layout
 
 \end_inset

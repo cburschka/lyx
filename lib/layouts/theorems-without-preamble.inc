@@ -38,8 +38,8 @@ Style Theorem
 	LatexName	theorem
 	NextNoIndent	1
 	Argument 1
-		LabelString   "Alternative Theorem String"
-		Tooltip       "Alternative theorem string"
+	  LabelString	"Alternative Theorem String"
+	  Tooltip	"Alternative theorem string"
 	EndArgument
 	LabelSep	xx
 	ParIndent	MMM
@@ -62,10 +62,10 @@ Style Theorem
 	  Series	Bold
 	EndFont
 	LangPreamble
-		\providecommand{\theoremname}{_(Theorem)}
+	  \providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 End
 
@@ -78,10 +78,10 @@ Style Corollary
 	LatexName	corollary
 	LabelString	"Corollary \thecorollary."
 	LangPreamble
-		\providecommand{\corollaryname}{_(Corollary)}
+	  \providecommand{\corollaryname}{_(Corollary)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
+	  \addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
 	EndBabelPreamble
 End
 
@@ -94,10 +94,10 @@ Style Lemma
 	LatexName	lemma
 	LabelString	"Lemma \thelemma."
 	LangPreamble
-		\providecommand{\lemmaname}{_(Lemma)}
+	  \providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
+	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
 	EndBabelPreamble
 End
 
@@ -110,10 +110,10 @@ Style Proposition
 	LatexName	proposition
 	LabelString	"Proposition \theproposition."
 	LangPreamble
-		\providecommand{\propositionname}{_(Proposition)}
+	  \providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
+	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
 	EndBabelPreamble
 End
 
@@ -149,10 +149,10 @@ Style Conjecture
 	  Shape		Italic
 	EndFont
 	LangPreamble
-		\providecommand{\conjecturename}{_(Conjecture)}
+	  \providecommand{\conjecturename}{_(Conjecture)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
+	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
 	EndBabelPreamble
 End
 
@@ -165,10 +165,10 @@ Style Fact
 	LatexName	fact
 	LabelString	"Fact \thefact."
 	LangPreamble
-		\providecommand{\factname}{_(Fact)}
+	  \providecommand{\factname}{_(Fact)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
+	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
 	EndBabelPreamble
 End
 
@@ -189,10 +189,10 @@ Style Definition
 	  Series	Bold
 	EndFont
 	LangPreamble
-		\providecommand{\definitionname}{_(Definition)}
+	  \providecommand{\definitionname}{_(Definition)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
+	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
 	EndBabelPreamble
 End
 
@@ -206,10 +206,10 @@ Style Example
 	LabelString	"Example \theexample."
 	RefPrefix	exa
 	LangPreamble
-		\providecommand{\examplename}{_(Example)}
+	  \providecommand{\examplename}{_(Example)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
+	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
 	EndBabelPreamble
 End
 
@@ -224,10 +224,10 @@ Style Problem
 	LabelString	"Problem \theproblem."
 	RefPrefix	prob
 	LangPreamble
-		\providecommand{\problemname}{_(Problem)}
+	  \providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
+	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
 	EndBabelPreamble
 End
 
@@ -271,10 +271,10 @@ Style Solution
 	LabelString	"Solution \thesolution."
 	RefPrefix	solu
 	LangPreamble
-		\providecommand{\solutionname}{_(Solution)}
+	  \providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
+	  \addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
 End
 
@@ -285,9 +285,9 @@ Style Sol
 	LabelType	Static
 	LabelString	"# [number of Prob]"
 	Argument 1
-		Mandatory     1
-		LabelString   "Solution"
-		Tooltip       "Mandatory argument to the sol environment"
+	  Mandatory	1
+	  LabelString	"Label of Problem"
+	  Tooltip	"Label of the corresponding problem"
 	EndArgument
 End
 
@@ -301,10 +301,10 @@ Style Exercise
 	LabelString	"Exercise \theexercise."
 	RefPrefix	exer
 	LangPreamble
-		\providecommand{\exercisename}{_(Exercise)}
+	  \providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
+	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
 End
 
@@ -318,10 +318,10 @@ Style Remark
 	LabelString	"Remark \theremark."
 	RefPrefix	rem
 	LangPreamble
-		\providecommand{\remarkname}{_(Remark)}
+	  \providecommand{\remarkname}{_(Remark)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
+	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
 	EndBabelPreamble
 End
 
@@ -331,10 +331,10 @@ Style		Claim
 	LatexName	claim
 	LabelString	"Claim"
 	LangPreamble
-		\providecommand{\claimname}{_(Claim)}
+	  \providecommand{\claimname}{_(Claim)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
+	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
 	EndBabelPreamble
 End
 
@@ -348,10 +348,10 @@ Style Case
 	LabelString	"Case \thecase."
 	RefPrefix	case
 	LangPreamble
-		\providecommand{\casename}{_(Case)}
+	  \providecommand{\casename}{_(Case)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
+	  \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
 	EndBabelPreamble
 End
 
@@ -365,10 +365,10 @@ Style Property
 	LabelString	"Property \theproperty."
 	RefPrefix	prop
 	LangPreamble
-		\providecommand{\propertyname}{_(Property)}
+	  \providecommand{\propertyname}{_(Property)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\propertyname}{_(Property)}}
+	  \addto\captions$$lang{\renewcommand{\propertyname}{_(Property)}}
 	EndBabelPreamble
 End
 
@@ -382,10 +382,10 @@ Style Question
 	LabelString	"Question \thequestion."
 	RefPrefix	que
 	LangPreamble
-		\providecommand{\questionname}{_(Question)}
+	  \providecommand{\questionname}{_(Question)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
+	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
 	EndBabelPreamble
 End
 
@@ -399,10 +399,10 @@ Style Note
 	LabelString	"Note \thenote."
 	RefPrefix	note
 	LangPreamble
-		\providecommand{\notename}{_(Note)}
+	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
+	  \addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
 	EndBabelPreamble
 End
 

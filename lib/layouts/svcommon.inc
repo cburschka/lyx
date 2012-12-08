@@ -136,9 +136,9 @@ Style PartBacktext
 	  Size		normal
 	EndFont
 	Argument 1
-		Mandatory     1
-		LabelString   "Part Title"
-		Tooltip       "The title of this part"
+	  Mandatory	1
+	  LabelString	"Part Title"
+	  Tooltip	"Title of this part"
 	EndArgument
 	Preamble
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}
@@ -515,8 +515,8 @@ Style Foreword
 	ParSep		0.8
 	Align		Block
 	Argument 1
-		LabelString   "Alternative Foreword Heading"
-		Tooltip       "Alternative foreword heading"
+	  LabelString	"Alternative Name"
+	  Tooltip	"Alternative name"
 	EndArgument
 	Font
 	  Series	Bold
@@ -594,8 +594,8 @@ End
 
 Style Description
 	Argument 1
-		LabelString   "Longest Description Label"
-		Tooltip       "Longest description label"
+	  LabelString	"Longest Description Label"
+	  Tooltip	"Longest description label"
 	EndArgument
 	LabelFont
 	  Series	Medium
@@ -632,6 +632,36 @@ Style Svgraybox
 	EndFont
 End
 
+# overwrite the label for the optional argument defined in
+# theorems-without-preamble.inc
+Style Theorem
+	Argument 1
+	  LabelString	"Name/Title"
+	  Tooltip	"Name/Title"
+	EndArgument
+End
+
+Style Definition
+	Argument 1
+	  LabelString	"Name/Title"
+	  Tooltip	"Name/Title"
+	EndArgument
+End
+
+Style Problem
+	Argument 1
+	  LabelString	"Name/Title"
+	  Tooltip	"Name/Title"
+	EndArgument
+End
+
+Style Solution
+	Argument 1
+	  LabelString	"Name/Title"
+	  Tooltip	"Name/Title"
+	EndArgument
+End
+
 Style Proof
 	Category	Theorem
 	LatexType	Environment
@@ -647,7 +677,7 @@ Style Proof
 	  Shape		Italic
 	EndFont
 	LangPreamble
-		\providecommand{\proofname}{_(Proof)}
+	  \providecommand{\proofname}{_(Proof)}
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\proofname}{_(Proof)}}
@@ -659,7 +689,7 @@ Style Proof(QED)
 	LatexName	svmultproof
 	EndLabelType	Box
 	Preamble
-		\newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
+	  \newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
 	EndPreamble
 End
 
@@ -668,7 +698,7 @@ Style Proof(smartQED)
 	LatexName	svmultproof2
 	EndLabelType	Box
 	Preamble
-		\newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
+	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
 	EndPreamble
 End
 
