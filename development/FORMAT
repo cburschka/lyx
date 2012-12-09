@@ -12,6 +12,9 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 2012-12-09 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 452: Support for beamer block arguments:
+	  \begin{block}<overlay>{title}
+	
 	* Format incremented to 451: Native support for beamer action/overlay arguments.
 	  \command<overlay> => \begin_inset Argument 1
 

@@ -25,9 +25,9 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_token, find_token_exact, find_token_backwards, find_end_of, \
-    find_end_of_inset, find_end_of_layout, find_re, get_option_value, get_containing_layout, \
-    get_value, get_quoted_value, set_option_value
+from parser_tools import count_pars_in_inset, del_token, find_token, find_token_exact, \
+    find_token_backwards, find_end_of, find_end_of_inset, find_end_of_layout, find_re, \
+    get_option_value, get_containing_layout, get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_end_of_inset, find_end_of_layout, \
@@ -2500,6 +2500,141 @@ def revert_beamerflex(document):
         i += 1
 
 
+def revert_beamerblocks(document):
+    " Reverts beamer block arguments to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    blocks = ["Block", "ExampleBlock", "AlertBlock"]
+
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        realparbeg = parent[3]
+        layoutname = parent[0]
+        realparend = parend
+        for p in range(parbeg, parend):
+            if p >= realparend:
+                i = realparend
+                break
+            if layoutname in blocks:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[realparbeg : realparbeg] = subst
+                    elif argnr == "2":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
+                        document.body[realparbeg : realparbeg] = subst
+        i = realparend
+
+
+
+def convert_beamerblocks(document):
+    " Converts beamer block ERT args to native InsetArgs "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    blocks = ["Block", "ExampleBlock", "AlertBlock"]
+    for lay in blocks:
+        i = 0
+        while True:
+            i = find_token_exact(document.body, "\\begin_layout " + lay, i)
+            if i == -1:
+                break
+            parent = get_containing_layout(document.body, i)
+            if parent == False or parent[1] != i:
+                document.warning("Wrong parent layout!")
+                i += 1
+                continue
+            j = parent[2]
+            parbeg = parent[3]
+            if i != -1:
+                if document.body[parbeg] == "\\begin_inset ERT":
+                    ertcont = parbeg + 5
+                    while True:
+                        if document.body[ertcont].startswith("<"):
+                            # This is an overlay specification
+                            # strip off the <
+                            document.body[ertcont] = document.body[ertcont][1:]
+                            if document.body[ertcont].endswith(">"):
+                                # strip off the >
+                                document.body[ertcont] = document.body[ertcont][:-1]
+                                # Convert to ArgInset
+                                document.body[parbeg] = "\\begin_inset Argument 1"
+                            elif document.body[ertcont].endswith("}"):
+                                # divide the args
+                                tok = document.body[ertcont].find('>{')
+                                if tok != -1:
+                                    document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
+                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                            document.body[ertcont][tok + 2:-1]]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 1"
+                        elif document.body[ertcont].startswith("{"):
+                            # This is the block title
+                            if document.body[ertcont].endswith("}"):
+                                # strip off the braces
+                                document.body[ertcont] = document.body[ertcont][1:-1]
+                                # Convert to ArgInset
+                                document.body[parbeg] = "\\begin_inset Argument 2"
+                            elif count_pars_in_inset(document.body, ertcont) > 1:
+                                # Multipar ERT. Skip this.
+                                break
+                            else:
+                                convert_TeX_brace_to_Argument(document, i, 2, 2, False, True)
+                        else:
+                            break
+                        j = find_end_of_layout(document.body, i)
+                        if j == -1:
+                            document.warning("end of layout not found!")
+                        k = find_token(document.body, "\\begin_inset Argument", i, j)
+                        if k == -1:
+                            document.warning("InsetArgument not found!")
+                            break
+                        l = find_end_of_inset(document.body, k)
+                        m = find_token(document.body, "\\begin_inset ERT", l, j)
+                        if m == -1:
+                            break
+                        ertcont = m + 5
+                        parbeg = m
+            i = j
+
+
+
 ##
 # Conversion hub
 #
@@ -2543,10 +2678,12 @@ convert = [
            [448, [convert_literate]],
            [449, []],
            [450, []],
-           [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]]
+           [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]],
+           [452, [convert_beamerblocks]]
           ]
 
 revert =  [
+           [451, [revert_beamerblocks]],
            [450, [revert_beamerargs, revert_beamerargs2, revert_beamerargs3, revert_beamerflex]],
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],

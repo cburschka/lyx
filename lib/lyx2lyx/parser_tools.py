@@ -470,3 +470,19 @@ def get_containing_layout(lines, i):
       if lines[stpar] not in par_params:
           break
   return (lay, stlay, endlay, stpar)
+
+
+def count_pars_in_inset(lines, i):
+  ''' 
+  Counts the paragraphs within this inset
+  '''
+  ins = get_containing_inset(lines, i)
+  if ins == -1:
+      return -1
+  pars = 0
+  for j in range(ins[1], ins[2]):
+      m = re.match(r'\\begin_layout (.*)', lines[j])
+      if m and get_containing_inset(lines, j)[0] == ins[0]:
+          pars += 1
+  
+  return pars

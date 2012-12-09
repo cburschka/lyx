@@ -792,8 +792,7 @@ Style Block
   Category         Blocks
   Margin           Dynamic
   LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
+  NextNoIndent     1
   Align            Left
   LabelType        Static
   LabelSep         xx
@@ -807,53 +806,39 @@ Style Block
     Family         Roman
     Color          latex
   EndFont
+  Argument 1
+    LabelString    "Action Specification|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+  EndArgument
+  Argument 2
+    LabelString    "Block Title"
+    Tooltip        "Enter the block title here"
+    Mandatory      1
+    Decoration     conglomerate
+    Font
+      Color        blue
+      Size         large
+    EndFont
+  EndArgument
 End
 
 Style ExampleBlock
-  Category         Blocks
-  Margin           First_Dynamic
-  LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
-  Align            Left
-  LabelType        Static
-  LabelSep         xx
+  CopyStyle        Block
   LatexName        exampleblock
   LabelString      "Example Block:"
-  ParSkip          0.5
-  TopSep           1
-  BottomSep        1
-  ParSep           0
   Font
     Color          green
-  EndFont
-  LabelFont 
-    Family         Roman
-    Color          latex
   EndFont
 End
 
 Style AlertBlock
-  Category         Blocks
-  Margin           First_Dynamic
-  LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
-  Align            Left
-  LabelType        Static
-  LabelSep         xx
+  CopyStyle        Block
   LatexName        alertblock
   LabelString      "Alert Block:"
-  ParSkip          0.5
-  TopSep           1
-  BottomSep        1
-  ParSep           0
   Font
     Color          red
-  EndFont
-  LabelFont 
-    Family         Roman
-    Color          latex
   EndFont
 End
 
