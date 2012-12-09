@@ -1912,79 +1912,80 @@ def convert_againframe_args(document):
         parbeg = parent[3]
         if i != -1:
             if document.body[parbeg] == "\\begin_inset ERT":
-                if document.body[i + 6].startswith("[<"):
+                ertcont = parbeg + 5
+                if document.body[ertcont].startswith("[<"):
                     # This is a default overlay specification
                     # strip off the [<
-                    document.body[i + 6] = document.body[i + 6][2:]
-                    if document.body[i + 6].endswith(">]"):
+                    document.body[ertcont] = document.body[ertcont][2:]
+                    if document.body[ertcont].endswith(">]"):
                         # strip off the >]
-                        document.body[i + 6] = document.body[i + 6][:-2]
-                    elif document.body[i + 6].endswith("]"):
+                        document.body[ertcont] = document.body[ertcont][:-2]
+                    elif document.body[ertcont].endswith("]"):
                         # divide the args
-                        tok = document.body[i + 6].find('>][')
+                        tok = document.body[ertcont].find('>][')
                         if tok != -1:
-                            subst = [document.body[i + 6][:tok],
+                            subst = [document.body[ertcont][:tok],
                                      '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
                                      'status collapsed', '', '\\begin_layout Plain Layout',
-                                     document.body[i + 6][tok + 3:-1]]
-                            document.body[i + 6 : i + 7] = subst
+                                     document.body[ertcont][tok + 3:-1]]
+                            document.body[ertcont : ertcont + 1] = subst
                      # Convert to ArgInset
-                    document.body[i + 1] = "\\begin_inset Argument 2"
+                    document.body[parbeg] = "\\begin_inset Argument 2"
                     i = j
                     continue
-                elif document.body[i + 6].startswith("<"):
+                elif document.body[ertcont].startswith("<"):
                     # This is an overlay specification
                     # strip off the <
-                    document.body[i + 6] = document.body[i + 6][1:]
-                    if document.body[i + 6].endswith(">"):
+                    document.body[ertcont] = document.body[ertcont][1:]
+                    if document.body[ertcont].endswith(">"):
                         # strip off the >
-                        document.body[i + 6] = document.body[i + 6][:-1]
+                        document.body[ertcont] = document.body[ertcont][:-1]
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 1"
-                    elif document.body[i + 6].endswith(">]"):
+                        document.body[parbeg] = "\\begin_inset Argument 1"
+                    elif document.body[ertcont].endswith(">]"):
                         # divide the args
-                        tok = document.body[i + 6].find('>[<')
+                        tok = document.body[ertcont].find('>[<')
                         if tok != -1:
-                           document.body[i + 6 : i + 7] = [document.body[i + 6][:tok],
+                           document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                            'status collapsed', '', '\\begin_layout Plain Layout',
-                                                           document.body[i + 6][tok + 3:-2]]
+                                                           document.body[ertcont][tok + 3:-2]]
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 1"
-                    elif document.body[i + 6].endswith("]"):
+                        document.body[parbeg] = "\\begin_inset Argument 1"
+                    elif document.body[ertcont].endswith("]"):
                         # divide the args
-                        tok = document.body[i + 6].find('>[<')
+                        tok = document.body[ertcont].find('>[<')
                         if tok != -1:
                            # divide the args
-                           tokk = document.body[i + 6].find('>][')
+                           tokk = document.body[ertcont].find('>][')
                            if tokk != -1:
-                               document.body[i + 6 : i + 7] = [document.body[i + 6][:tok],
+                               document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                                'status collapsed', '', '\\begin_layout Plain Layout',
-                                                               document.body[i + 6][tok + 3:tokk],
+                                                               document.body[ertcont][tok + 3:tokk],
                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
                                                                'status collapsed', '', '\\begin_layout Plain Layout',
-                                                               document.body[i + 6][tokk + 3:-1]]
+                                                               document.body[ertcont][tokk + 3:-1]]
                         else:
-                            tokk = document.body[i + 6].find('>[')
+                            tokk = document.body[ertcont].find('>[')
                             if tokk != -1:
-                                document.body[i + 6 : i + 7] = [document.body[i + 6][:tokk],
+                                document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tokk],
                                                                 '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
                                                                 'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                document.body[i + 6][tokk + 2:-1]]
+                                                                document.body[ertcont][tokk + 2:-1]]
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 1"
+                        document.body[parbeg] = "\\begin_inset Argument 1"
                     i = j
                     continue
-                elif document.body[i + 6].startswith("["):
+                elif document.body[ertcont].startswith("["):
                     # This is an ERT option
                     # strip off the [
-                    document.body[i + 6] = document.body[i + 6][1:]
-                    if document.body[i + 6].endswith("]"):
+                    document.body[ertcont] = document.body[ertcont][1:]
+                    if document.body[ertcont].endswith("]"):
                         # strip off the ]
-                        document.body[i + 6] = document.body[i + 6][:-1]
+                        document.body[ertcont] = document.body[ertcont][:-1]
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 3"
+                        document.body[parbeg] = "\\begin_inset Argument 3"
                     i = j
                     continue
         i = j
@@ -2011,35 +2012,36 @@ def convert_corollary_args(document):
             parbeg = parent[3]
             if i != -1:
                 if document.body[parbeg] == "\\begin_inset ERT":
-                    if document.body[i + 6].startswith("<"):
+                    ertcont = parbeg + 5
+                    if document.body[ertcont].startswith("<"):
                         # This is an overlay specification
                         # strip off the <
-                        document.body[i + 6] = document.body[i + 6][1:]
-                        if document.body[i + 6].endswith(">"):
+                        document.body[ertcont] = document.body[ertcont][1:]
+                        if document.body[ertcont].endswith(">"):
                             # strip off the >
-                            document.body[i + 6] = document.body[i + 6][:-1]
-                        elif document.body[i + 6].endswith("]"):
+                            document.body[ertcont] = document.body[ertcont][:-1]
+                        elif document.body[ertcont].endswith("]"):
                             # divide the args
-                            tok = document.body[i + 6].find('>[')
+                            tok = document.body[ertcont].find('>[')
                             if tok != -1:
-                                subst = [document.body[i + 6][:tok],
+                                subst = [document.body[ertcont][:tok],
                                          '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                          'status collapsed', '', '\\begin_layout Plain Layout',
-                                         document.body[i + 6][tok + 2:-1]]
-                                document.body[i + 6 : i + 7] = subst
+                                         document.body[ertcont][tok + 2:-1]]
+                                document.body[ertcont : ertcont + 1] = subst
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 1"
+                        document.body[parbeg] = "\\begin_inset Argument 1"
                         i = j
                         continue
-                    elif document.body[i + 6].startswith("["):
+                    elif document.body[ertcont].startswith("["):
                         # This is an ERT option
                         # strip off the [
-                        document.body[i + 6] = document.body[i + 6][1:]
-                        if document.body[i + 6].endswith("]"):
+                        document.body[ertcont] = document.body[ertcont][1:]
+                        if document.body[ertcont].endswith("]"):
                             # strip off the ]
-                            document.body[i + 6] = document.body[i + 6][:-1]
+                            document.body[ertcont] = document.body[ertcont][:-1]
                         # Convert to ArgInset
-                        document.body[i + 1] = "\\begin_inset Argument 2"
+                        document.body[parbeg] = "\\begin_inset Argument 2"
                     i = j
                     continue
             i = j
