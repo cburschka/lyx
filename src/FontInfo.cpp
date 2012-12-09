@@ -35,13 +35,13 @@ char const * LyXFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
   "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "wasy",
   "esint", "default", "error" };
 
-char const * LyXSeriesNames[4] =
+char const * LyXSeriesNames[NUM_SERIES + 2 /* default & error */] =
 { "medium", "bold", "default", "error" };
 
-char const * LyXShapeNames[6] =
+char const * LyXShapeNames[NUM_SHAPE + 2 /* default & error */] =
 { "up", "italic", "slanted", "smallcaps", "default", "error" };
 
-char const * LyXSizeNames[14] =
+char const * LyXSizeNames[NUM_SIZE + 4 /* increase, decrease, default & error */] =
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant",
   "increase", "decrease", "default", "error" };

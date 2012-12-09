@@ -44,9 +44,9 @@ namespace lyx {
 //
 // These are defined in FontInfo.cpp
 extern char const * LyXFamilyNames[NUM_FAMILIES + 2];
-extern char const * LyXSeriesNames[4];
-extern char const * LyXShapeNames[6];
-extern char const * LyXSizeNames[14];
+extern char const * LyXSeriesNames[NUM_SERIES + 2];
+extern char const * LyXShapeNames[NUM_SHAPE + 2];
+extern char const * LyXSizeNames[NUM_SIZE + 4];
 extern char const * LyXMiscNames[5];
 
 //
@@ -60,14 +60,14 @@ char const * GUIFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
   "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "rsfs", "wasy", "esint",
   N_("Inherit"), N_("Ignore") };
 
-char const * GUISeriesNames[4] =
+char const * GUISeriesNames[NUM_SERIES + 2 /* default & error */] =
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
 
-char const * GUIShapeNames[6] =
+char const * GUIShapeNames[NUM_SHAPE + 2 /* default & error */] =
 { N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
   N_("Ignore") };
 
-char const * GUISizeNames[14] =
+char const * GUISizeNames[NUM_SIZE + 4 /* increase, decrease, default & error */] =
 { N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"),
   N_("Inherit"), N_("Ignore") };
@@ -78,16 +78,18 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to write LaTeX files
 //
-char const * LaTeXFamilyNames[6] =
-{ "textrm", "textsf", "texttt", "error1", "error2", "error3" };
+char const * LaTeXFamilyNames[NUM_FAMILIES + 2] =
+{ "textrm", "textsf", "texttt", "error1", "error2", "error3", "error4",
+  "error5", "error6", "error7", "error8", "error9", "error10", "error11",
+  "error12", "error13" };
 
-char const * LaTeXSeriesNames[4] =
+char const * LaTeXSeriesNames[NUM_SERIES + 2] =
 { "textmd", "textbf", "error4", "error5" };
 
-char const * LaTeXShapeNames[6] =
+char const * LaTeXShapeNames[NUM_SHAPE + 2] =
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
 
-char const * LaTeXSizeNames[14] =
+char const * LaTeXSizeNames[NUM_SIZE + 4] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 

@@ -85,7 +85,7 @@ SymbolFont symbol_fonts[] = {
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
 
 /// BUTT ugly !
-static GuiFontInfo * fontinfo_[NUM_FAMILIES][2][4][10];
+static GuiFontInfo * fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE];
 
 
 /// Get font info (font + metrics) for the given LyX font.
@@ -93,9 +93,9 @@ static GuiFontInfo * fontinfo_[NUM_FAMILIES][2][4][10];
 GuiFontInfo & fontinfo(FontInfo const & f)
 {
 	LASSERT(f.family() < NUM_FAMILIES, /**/);
-	LASSERT(f.series() < 2, /**/);
-	LASSERT(f.realShape() < 4, /**/);
-	LASSERT(f.size() < 10, /**/);
+	LASSERT(f.series() < NUM_SERIES, /**/);
+	LASSERT(f.realShape() < NUM_SHAPE, /**/);
+	LASSERT(f.size() < NUM_SIZE, /**/);
 	// fi is a reference to the pointer type (GuiFontInfo *) in the
 	// fontinfo_ table.
 	GuiFontInfo * & fi =
@@ -211,9 +211,9 @@ FontLoader::FontLoader()
 	}
 
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
-		for (int i2 = 0; i2 < 2; ++i2)
-			for (int i3 = 0; i3 < 4; ++i3)
-				for (int i4 = 0; i4 < 10; ++i4)
+		for (int i2 = 0; i2 < NUM_SERIES; ++i2)
+			for (int i3 = 0; i3 < NUM_SHAPE; ++i3)
+				for (int i4 = 0; i4 < NUM_SIZE; ++i4)
 					fontinfo_[i1][i2][i3][i4] = 0;
 }
 
@@ -221,9 +221,9 @@ FontLoader::FontLoader()
 void FontLoader::update()
 {
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
-		for (int i2 = 0; i2 < 2; ++i2)
-			for (int i3 = 0; i3 < 4; ++i3)
-				for (int i4 = 0; i4 < 10; ++i4) {
+		for (int i2 = 0; i2 < NUM_SERIES; ++i2)
+			for (int i3 = 0; i3 < NUM_SHAPE; ++i3)
+				for (int i4 = 0; i4 < NUM_SIZE; ++i4) {
 					delete fontinfo_[i1][i2][i3][i4];
 					fontinfo_[i1][i2][i3][i4] = 0;
 				}

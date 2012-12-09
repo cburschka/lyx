@@ -69,7 +69,9 @@ enum FontSeries {
 	///
 	INHERIT_SERIES,
 	///
-	IGNORE_SERIES
+	IGNORE_SERIES,
+	///
+	NUM_SERIES = INHERIT_SERIES
 };
 
 ///
@@ -85,7 +87,9 @@ enum FontShape {
 	///
 	INHERIT_SHAPE,
 	///
-	IGNORE_SHAPE
+	IGNORE_SHAPE,
+	///
+	NUM_SHAPE = INHERIT_SHAPE
 };
 
 ///
@@ -117,7 +121,9 @@ enum FontSize {
 	///
 	FONT_SIZE_INHERIT,
 	///
-	FONT_SIZE_IGNORE
+	FONT_SIZE_IGNORE,
+	///
+	NUM_SIZE = FONT_SIZE_INCREASE
 };
 
 /// Used for emph, underbar, noun and latex toggles
