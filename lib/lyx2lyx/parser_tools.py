@@ -466,8 +466,7 @@ def get_containing_layout(lines, i):
                 "\\paragraph_spacing other", "\\align", "\\labelwidthstring"]
   stpar = stlay
   while True:
-      if lines[stpar + 1] in par_params:
-          stpar += 1
-      else:
+      stpar += 1
+      if lines[stpar] not in par_params:
           break
   return (lay, stlay, endlay, stpar)
