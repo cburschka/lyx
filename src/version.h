@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 450 // spitz: support for URW Garamond
-#define LYX_FORMAT_TEX2LYX 450 // spitz: support for URW Garamond
+#define LYX_FORMAT_LYX 451 // spitz: support for overlay args in beamer
+#define LYX_FORMAT_TEX2LYX 451 // spitz: support for overlay args in beamer
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

@@ -25,12 +25,12 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_token, find_token_backwards, find_end_of, \
+from parser_tools import del_token, find_token, find_token_exact, find_token_backwards, find_end_of, \
     find_end_of_inset, find_end_of_layout, find_re, get_option_value, get_containing_layout, \
     get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
-  #find_token_exact, find_end_of_inset, find_end_of_layout, \
+  #find_end_of_inset, find_end_of_layout, \
   #is_in_inset, del_token, check_token
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
@@ -1826,6 +1826,663 @@ def revert_garamondx(document):
             document.header[i] = "\\font_roman default"
 
 
+def convert_beamerargs(document):
+    " Converts beamer arguments to new layout "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    shifted_layouts = ["Part", "Section", "Subsection", "Subsubsection"]
+    list_layouts = ["Itemize", "Enumerate", "Description"]
+    rx = re.compile(r'^\\begin_inset Argument (\d+)$')
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        layoutname = parent[0]
+        for p in range(parbeg, parend):
+            if layoutname in shifted_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = int(m.group(1))
+                    argnr += 1
+                    document.body[p] = "\\begin_inset Argument %d" % argnr
+            if layoutname == "AgainFrame":
+                m = rx.match(document.body[p])
+                if m:
+                    document.body[p] = "\\begin_inset Argument 3"
+                    if document.body[p + 4] == "\\begin_inset ERT":
+                        if document.body[p + 9].startswith("<"):
+                            # This is an overlay specification
+                            # strip off the <
+                            document.body[p + 9] = document.body[p + 9][1:]
+                            if document.body[p + 9].endswith(">"):
+                                # strip off the >
+                                document.body[p + 9] = document.body[p + 9][:-1]
+                                # Shift this one
+                                document.body[p] = "\\begin_inset Argument 2"
+            if layoutname in list_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    if m.group(1) == "1":
+                        if document.body[p + 4] == "\\begin_inset ERT":
+                            if document.body[p + 9].startswith("<"):
+                                # This is an overlay specification
+                                # strip off the <
+                                document.body[p + 9] = document.body[p + 9][1:]
+                                if document.body[p + 9].endswith(">"):
+                                    # strip off the >
+                                    document.body[p + 9] = document.body[p + 9][:-1]
+                        elif layoutname != "Itemize":
+                            # Shift this one
+                            document.body[p] = "\\begin_inset Argument 2"
+        i = i + 1
+
+
+def convert_againframe_args(document):
+    " Converts beamer AgainFrame to new layout "
+
+    # FIXME: This currently only works if the arguments are in one single ERT
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout AgainFrame", i)
+        if i == -1:
+            break
+        j = find_end_of_layout(document.body, i)
+        if i != -1:
+            if document.body[i + 1] == "\\begin_inset ERT":
+                if document.body[i + 6].startswith("[<"):
+                    # This is a default overlay specification
+                    # strip off the [<
+                    document.body[i + 6] = document.body[i + 6][2:]
+                    if document.body[i + 6].endswith(">]"):
+                        # strip off the >]
+                        document.body[i + 6] = document.body[i + 6][:-2]
+                    elif document.body[i + 6].endswith("]"):
+                        # divide the args
+                        tok = document.body[i + 6].find('>][')
+                        if tok != -1:
+                            subst = [document.body[i + 6][:tok],
+                                     '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                     'status collapsed', '', '\\begin_layout Plain Layout',
+                                     document.body[i + 6][tok + 3:-1]]
+                            document.body[i + 6 : i + 7] = subst
+                     # Convert to ArgInset
+                    document.body[i + 1] = "\\begin_inset Argument 2"
+                    i = j
+                    continue
+                elif document.body[i + 6].startswith("<"):
+                    # This is an overlay specification
+                    # strip off the <
+                    document.body[i + 6] = document.body[i + 6][1:]
+                    if document.body[i + 6].endswith(">"):
+                        # strip off the >
+                        document.body[i + 6] = document.body[i + 6][:-1]
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 1"
+                    elif document.body[i + 6].endswith(">]"):
+                        # divide the args
+                        tok = document.body[i + 6].find('>[<')
+                        if tok != -1:
+                           document.body[i + 6 : i + 7] = [document.body[i + 6][:tok],
+                                                           '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                           'status collapsed', '', '\\begin_layout Plain Layout',
+                                                           document.body[i + 6][tok + 3:-2]]
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 1"
+                    elif document.body[i + 6].endswith("]"):
+                        # divide the args
+                        tok = document.body[i + 6].find('>[<')
+                        if tok != -1:
+                           # divide the args
+                           tokk = document.body[i + 6].find('>][')
+                           if tokk != -1:
+                               document.body[i + 6 : i + 7] = [document.body[i + 6][:tok],
+                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                               'status collapsed', '', '\\begin_layout Plain Layout',
+                                                               document.body[i + 6][tok + 3:tokk],
+                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                               'status collapsed', '', '\\begin_layout Plain Layout',
+                                                               document.body[i + 6][tokk + 3:-1]]
+                        else:
+                            tokk = document.body[i + 6].find('>[')
+                            if tokk != -1:
+                                document.warning(document.body[i + 6][tokk + 2:-1])
+                                document.body[i + 6 : i + 7] = [document.body[i + 6][:tokk],
+                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                                'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                document.body[i + 6][tokk + 2:-1]]
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 1"
+                    i = j
+                    continue
+                elif document.body[i + 6].startswith("["):
+                    # This is an ERT option
+                    # strip off the [
+                    document.body[i + 6] = document.body[i + 6][1:]
+                    if document.body[i + 6].endswith("]"):
+                        # strip off the ]
+                        document.body[i + 6] = document.body[i + 6][:-1]
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 3"
+                    i = j
+                    continue
+        i = j
+
+
+def convert_corollary_args(document):
+    " Converts beamer corrolary-style ERT arguments native InsetArgs "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    corollary_layouts = ["Corollary", "Definition", "Definitions", "Example", "Examples", "Fact", "Proof", "Theorem"]
+    for lay in corollary_layouts:
+        i = 0
+        while True:
+            i = find_token_exact(document.body, "\\begin_layout " + lay, i)
+            if i == -1:
+                break
+            j = find_end_of_layout(document.body, i)
+            if i != -1:
+                if document.body[i + 1] == "\\begin_inset ERT":
+                    if document.body[i + 6].startswith("<"):
+                        # This is an overlay specification
+                        # strip off the <
+                        document.body[i + 6] = document.body[i + 6][1:]
+                        if document.body[i + 6].endswith(">"):
+                            # strip off the >
+                            document.body[i + 6] = document.body[i + 6][:-1]
+                        elif document.body[i + 6].endswith("]"):
+                            # divide the args
+                            tok = document.body[i + 6].find('>[')
+                            if tok != -1:
+                                subst = [document.body[i + 6][:tok],
+                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                         'status collapsed', '', '\\begin_layout Plain Layout',
+                                         document.body[i + 6][tok + 2:-1]]
+                                document.body[i + 6 : i + 7] = subst
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 1"
+                        i = j
+                        continue
+                    elif document.body[i + 6].startswith("["):
+                        # This is an ERT option
+                        # strip off the [
+                        document.body[i + 6] = document.body[i + 6][1:]
+                        if document.body[i + 6].endswith("]"):
+                            # strip off the ]
+                            document.body[i + 6] = document.body[i + 6][:-1]
+                        # Convert to ArgInset
+                        document.body[i + 1] = "\\begin_inset Argument 2"
+                    i = j
+                    continue
+            i = j
+
+
+
+def convert_quote_args(document):
+    " Converts beamer quote style ERT args to native InsetArgs "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    quote_layouts = ["Uncover", "Only", "Quotation", "Quote", "Verse"]
+    for lay in quote_layouts:
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_layout " + lay, i)
+            if i == -1:
+                break
+            j = find_end_of_layout(document.body, i)
+            if i != -1:
+                if document.body[i + 1] == "\\begin_inset ERT":
+                    if document.body[i + 6].startswith("<"):
+                        # This is an overlay specification
+                        # strip off the <
+                        document.body[i + 6] = document.body[i + 6][1:]
+                        if document.body[i + 6].endswith(">"):
+                            # strip off the >
+                            document.body[i + 6] = document.body[i + 6][:-1]
+                            # Convert to ArgInset
+                            document.body[i + 1] = "\\begin_inset Argument 1"
+            i = j
+
+
+def revert_beamerargs(document):
+    " Reverts beamer arguments to old layout "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    list_layouts = ["Itemize", "Enumerate", "Description"]
+    headings = ["Part", "Section", "Section*", "Subsection", "Subsection*",
+                "Subsubsection", "Subsubsection*", "FrameSubtitle", "NoteItem"]
+    quote_layouts = ["Uncover", "Only", "Quotation", "Quote", "Verse"]
+    corollary_layouts = ["Corollary", "Definition", "Definitions", "Example", "Examples", "Fact", "Proof", "Theorem"]
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        layoutname = parent[0]
+        realparend = parend
+        for p in range(parbeg, parend):
+            if p >= realparend:
+                i = realparend
+                break
+            if layoutname in headings:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        # Find containing paragraph layout
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        argcontent = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        if layoutname == "FrameSubtitle":
+                            pre = put_cmd_in_ert("\\" + layoutname.lower() + "<") + argcontent + put_cmd_in_ert(">")
+                        elif layoutname == "NoteItem":
+                            pre = put_cmd_in_ert("\\note<") + argcontent + put_cmd_in_ert(">[item]")
+                        elif layoutname.endswith('*'):
+                            pre = put_cmd_in_ert("\\lyxframeend\\" + layoutname.lower()[:-1] + "<") + argcontent + put_cmd_in_ert(">*")
+                        else:
+                            pre = put_cmd_in_ert("\\lyxframeend\\" + layoutname.lower() + "<") + argcontent + put_cmd_in_ert(">")
+                        secarg = find_token(document.body, "\\begin_inset Argument 2", parbeg, parend)
+                        if secarg != -1:
+                            # Find containing paragraph layout
+                            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", secarg)
+                            endPlain = find_end_of_layout(document.body, beginPlain)
+                            endInset = find_end_of_inset(document.body, secarg)
+                            argcontent = document.body[beginPlain + 1 : endPlain]
+                            # Adjust range end
+                            realparend = realparend - len(document.body[secarg : endInset + 1])
+                            del document.body[secarg : endInset + 1]
+                            pre += put_cmd_in_ert("[") + argcontent + put_cmd_in_ert("]")
+                        pre += put_cmd_in_ert("{")
+                        document.body[parbeg] = "\\begin_layout Standard"
+                        document.body[parbeg + 1 : parbeg + 1] = pre
+                        pe = find_end_of_layout(document.body, parbeg)
+                        post = put_cmd_in_ert("}")
+                        document.body[pe : pe] = post
+                        realparend += len(pre) + len(post)
+            if layoutname == "AgainFrame":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "3":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname == "Overprint":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname == "OverlayArea":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "2":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname in list_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+                    elif argnr == "item:1":
+                        j = find_end_of_inset(document.body, i)
+                        # Find containing paragraph layout
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        del document.body[i:j+1]
+                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                        document.body[parbeg + 1 : parbeg + 1] = subst
+                    elif argnr == "item:2":
+                        j = find_end_of_inset(document.body, i)
+                        # Find containing paragraph layout
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        del document.body[i:j+1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname in quote_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname in corollary_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "2":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+        
+        i = realparend
+
+
+def revert_beamerargs2(document):
+    " Reverts beamer arguments to old layout, step 2 "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    shifted_layouts = ["Part", "Section", "Subsection", "Subsubsection"]
+    corollary_layouts = ["Corollary", "Definition", "Definitions", "Example", "Examples", "Fact", "Proof", "Theorem"]
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        layoutname = parent[0]
+        realparend = parend
+        for p in range(parbeg, parend):
+            if p >= realparend:
+                i = realparend
+                break
+            if layoutname in shifted_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "2":
+                        document.body[p] = "\\begin_inset Argument 1"       
+            if layoutname in corollary_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname == "OverlayArea":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+            if layoutname == "AgainFrame":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "2":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("[<") + content + put_cmd_in_ert(">]")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+        i = realparend
+
+
+def revert_beamerargs3(document):
+    " Reverts beamer arguments to old layout, step 3 "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        layoutname = parent[0]
+        realparend = parend
+        for p in range(parbeg, parend):
+            if p >= realparend:
+                i = realparend
+                break
+            if layoutname == "AgainFrame":
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "1":
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        endInset = find_end_of_inset(document.body, p)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        # Adjust range end
+                        realparend = realparend - len(document.body[p : endInset + 1])
+                        # Remove arg inset
+                        del document.body[p : endInset + 1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[parbeg + 1:parbeg + 1] = subst
+        i = realparend
+
+
+def revert_beamerflex(document):
+    " Reverts beamer Flex insets "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    new_flexes = {"Emphasize" : "\\emph", "Only" : "\\only", "Uncover" : "\\uncover",
+                  "Visible" : "\\visible", "Invisible" : "\\invisible",
+                  "Alternative" : "\\alt", "Beamer_Note" : "\\note"}
+    old_flexes = {"Alert" : "\\alert", "Structure" : "\\structure"}
+    rx = re.compile(r'^\\begin_inset Flex (.+)$')
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex", i)
+        if i == -1:
+            return
+        m = rx.match(document.body[i])
+        if m:
+            flextype = m.group(1)
+            z = find_end_of_inset(document.body, i)
+            if z == -1:
+                document.warning("Can't find end of Flex " + flextype + " inset.")
+                i += 1
+                continue
+            if flextype in new_flexes:
+                pre = put_cmd_in_ert(new_flexes[flextype])
+                arg = find_token(document.body, "\\begin_inset Argument 1", i, z)
+                if arg != -1:
+                    argend = find_end_of_inset(document.body, arg)
+                    if argend == -1:
+                        document.warning("Can't find end of Argument!")
+                        i += 1
+                        continue
+                    # Find containing paragraph layout
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    argcontent = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    z = z - len(document.body[arg : argend + 1])
+                    # Remove arg inset
+                    del document.body[arg : argend + 1]
+                    pre += put_cmd_in_ert("<") + argcontent + put_cmd_in_ert(">")
+                arg = find_token(document.body, "\\begin_inset Argument 2", i, z)
+                if arg != -1:
+                    argend = find_end_of_inset(document.body, arg)
+                    if argend == -1:
+                        document.warning("Can't find end of Argument!")
+                        i += 1
+                        continue
+                    # Find containing paragraph layout
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    argcontent = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    z = z - len(document.body[arg : argend + 1])
+                    # Remove arg inset
+                    del document.body[arg : argend + 1]
+                    pre += put_cmd_in_ert("[") + argcontent + put_cmd_in_ert("]")
+                pre += put_cmd_in_ert("{")
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                # Adjust range end
+                z = z - len(document.body[i : beginPlain + 1])
+                z += len(pre)
+                document.body[i : beginPlain + 1] = pre
+                post = put_cmd_in_ert("}")
+                document.body[z - 2 : z + 1] = post
+            elif flextype in old_flexes:
+                pre = put_cmd_in_ert(old_flexes[flextype])
+                arg = find_token(document.body, "\\begin_inset Argument 1", i, z)
+                if arg == -1:
+                    i += 1
+                    continue
+                argend = find_end_of_inset(document.body, arg)
+                if argend == -1:
+                    document.warning("Can't find end of Argument!")
+                    i += 1
+                    continue
+                # Find containing paragraph layout
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                argcontent = document.body[beginPlain + 1 : endPlain]
+                # Adjust range end
+                z = z - len(document.body[arg : argend + 1])
+                # Remove arg inset
+                del document.body[arg : argend + 1]
+                pre += put_cmd_in_ert("<") + argcontent + put_cmd_in_ert(">")
+                pre += put_cmd_in_ert("{")
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                # Adjust range end
+                z = z - len(document.body[i : beginPlain + 1])
+                z += len(pre)
+                document.body[i : beginPlain + 1] = pre
+                post = put_cmd_in_ert("}")
+                document.body[z - 2 : z + 1] = post
+        
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1868,10 +2525,12 @@ convert = [
            [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP, convert_SIGPLAN, convert_SIGGRAPH, convert_EuropeCV]],
            [448, [convert_literate]],
            [449, []],
-           [450, []]
+           [450, []],
+           [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]]
           ]
 
 revert =  [
+           [450, [revert_beamerargs, revert_beamerargs2, revert_beamerargs3, revert_beamerflex]],
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],

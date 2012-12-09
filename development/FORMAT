@@ -11,6 +11,10 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-12-09 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 451: Native support for beamer action/overlay arguments.
+	  \command<overlay> => \begin_inset Argument 1
+
 2012-12-04 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 450: Support for the URW Garamond LaTeX fonts.
 	  - \usepackage{garamondx} > \font_serif garamondx
