@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 452
 \begin_document
 \begin_header
 \textclass beamer
@@ -19,13 +19,13 @@
 \font_roman times
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -122,7 +128,7 @@ In principle, this file can be redistributed and/or modified under the terms
 
 \begin_layout Title
 Title As It Is In the Proceedings
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -220,7 +226,7 @@ InstituteMark
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -324,7 +330,7 @@ Keep it simple, no one is interested in your street address.
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -364,7 +370,7 @@ Not really informative to the audience, more for people (including yourself)
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -414,10 +420,6 @@ pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 %
 \backslash
 logo{
@@ -453,11 +455,7 @@ status open
 
 
 \backslash
-AtBeginSubsection[]{
-\end_layout
-
-\begin_layout Plain Layout
-
+AtBeginSubsection[]{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -469,17 +467,9 @@ frame<beamer>{
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 frametitle{Outline}   
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -491,15 +481,7 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
   }
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -610,7 +592,7 @@ Motivation
 
 \begin_layout Subsection
 The Basic Problem That We Studied
-\begin_inset Argument
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -674,12 +656,11 @@ Make Titles Informative.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -688,12 +669,11 @@ You can also use overlay specifications to create overlays.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<3->
+3-
 \end_layout
 
 \end_inset
@@ -702,12 +682,11 @@ This allows you to present things in any order.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -720,34 +699,11 @@ Make Titles Informative.
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+1-
 \end_layout
 
 \end_inset
@@ -766,34 +722,21 @@ Shown on all slides.
 
 \end_deeper
 \begin_layout ExampleBlock
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Some Example Block Title
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -827,12 +770,11 @@ Make Titles Informative.
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -846,12 +788,11 @@ On first slide.
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -899,12 +840,11 @@ Make Titles Informative.
 \end_layout
 
 \begin_layout Theorem
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -917,12 +857,11 @@ In left column.
 \end_layout
 
 \begin_layout Corollary
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -992,7 +931,7 @@ An outlook is always optional.
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

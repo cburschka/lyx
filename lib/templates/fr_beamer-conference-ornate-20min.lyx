@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 452
 \begin_document
 \begin_header
 \textclass beamer
@@ -19,13 +19,13 @@
 \font_roman times
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -137,7 +143,7 @@ Correction mineure (style Institute au lieu de style Date) des fichiers
 
 \begin_layout Title
 Titre tel qu'il apparaît dans les actes
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -233,7 +239,7 @@ Insérer->Inserts personnalisables->MarqueInstitution
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -325,7 +331,7 @@ inst uniquement s'il y a plusieurs affiliations.
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -365,7 +371,7 @@ n'a pas réellement d'importance pour l'assistance qui sera présente lors
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -465,7 +471,7 @@ pgfuseimage{institution-logo}}
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 À supprimer si vous ne voulez pas que la table des matières apparaisse au
@@ -479,17 +485,13 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-AtBeginSubsection[]{
-\end_layout
-
-\begin_layout Plain Layout
-
+AtBeginSubsection[]{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -501,17 +503,9 @@ frame<beamer>{
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 frametitle{Lignes directrices}   
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -533,10 +527,6 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -547,7 +537,7 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
@@ -562,7 +552,7 @@ Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -591,7 +581,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Structurer l'exposé est une tâche difficile et la structure suivante pourrait
@@ -647,7 +637,7 @@ Motivation
 
 \begin_layout Subsection
 Le problème étudié
-\begin_inset Argument
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -708,12 +698,11 @@ Faites des titres qui informent
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -723,12 +712,11 @@ ents
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<3->
+3-
 \end_layout
 
 \end_inset
@@ -737,12 +725,11 @@ Ceci vous permet d'afficher les lignes dans n'importe quel ordre
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -812,34 +799,11 @@ Faites des titres qui informent
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+1-
 \end_layout
 
 \end_inset
@@ -858,34 +822,21 @@ Affiché sur tous les transparents
 
 \end_deeper
 \begin_layout ExampleBlock
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Some Example Block Title
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -918,12 +869,11 @@ Faites des titres qui informent
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -936,12 +886,11 @@ Sur le premier transparent
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -987,12 +936,11 @@ Faites des titres qui informent
 \end_layout
 
 \begin_layout Theorem
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -1005,12 +953,11 @@ Dans la colonne de gauche
 \end_layout
 
 \begin_layout Corollary
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -1067,7 +1014,7 @@ troisième message
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
   Les perspectives sont toujours facultatives.
@@ -1080,7 +1027,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1146,7 +1093,7 @@ Lectures complémentaires
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

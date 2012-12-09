@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 452
 \begin_document
 \begin_header
 \textclass beamer
@@ -158,13 +158,13 @@
 \font_roman times
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -175,15 +175,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -219,12 +225,12 @@ Till Tantau
 \end_layout
 
 \begin_layout Institute
-International Computer Schience Institute
+International Computer Science Institute
 \begin_inset Newline newline
 \end_inset
 
 Berkeley, California
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -279,26 +285,14 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 % of every subsection.
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-AtBeginSubsection[]{
-\end_layout
-
-\begin_layout Plain Layout
-
+AtBeginSubsection[]{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -310,17 +304,9 @@ frame<handout:0>{
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 frametitle{Outline}   
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -332,15 +318,7 @@ tableofcontents[current,currentsubsection]
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
   }
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -387,90 +365,78 @@ begin{pgfpicture}{1.25cm}{-1cm}{7cm}{4cm}
 
 \begin_layout Plain Layout
 
+
+\backslash
+pgfnodebox{A}[virtual]{
+\backslash
+pgfxy(2,1)}{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-pgfnodebox{A}[virtual]{
-\backslash
-pgfxy(2,1)}{
 \backslash
 pgfuseimage{knight1}}{2pt}{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+pgfnodebox{B}[virtual]{
+\backslash
+pgfxy(6,1)}{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-pgfnodebox{B}[virtual]{
-\backslash
-pgfxy(6,1)}{
 \backslash
 pgfuseimage{knight2}}{2pt}{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+pgfnodebox{C}[virtual]{
+\backslash
+pgfxy(4,-1)}{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-pgfnodebox{C}[virtual]{
-\backslash
-pgfxy(4,-1)}{
 \backslash
 pgfuseimage{knight3}}{2pt}{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+pgfnodebox{D}[virtual]{
+\backslash
+pgfxy(4,3)}{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-pgfnodebox{D}[virtual]{
-\backslash
-pgfxy(4,3)}{
 \backslash
 pgfuseimage{knight4}}{2pt}{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<3->{
 \backslash
@@ -481,17 +447,9 @@ pgfarrowto}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
-only<2->{
-\end_layout
-
-\begin_layout Plain Layout
-
+only<2->{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -503,17 +461,9 @@ pgfsetlinewidth{0.6pt}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 pgfnodeconnline{A}{B}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -525,17 +475,9 @@ pgfnodeconnline{A}{C}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 pgfnodeconnline{D}{A}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -547,10 +489,6 @@ pgfnodeconnline{C}{B}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 pgfnodeconnline{B}{D}
@@ -558,17 +496,14 @@ pgfnodeconnline{B}{D}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
-pgfnodeconnline{C}{D}}
+pgfnodeconnline{C}{D}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -588,12 +523,11 @@ end{pgfpicture}
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{What is a Tournament?}
+What is a Tournament?
 \end_layout
 
 \end_inset
@@ -603,12 +537,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -617,12 +550,11 @@ A group of knights.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -631,12 +563,11 @@ Every pair has a joust.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<3->
+3-
 \end_layout
 
 \end_inset
@@ -672,33 +603,21 @@ begin{pgfpicture}{1.5cm}{-1cm}{6.5cm}{4cm}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetlinewidth{0.6pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{A}{
 \backslash
@@ -707,11 +626,7 @@ pgfxy(2.5,1)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{B}{
 \backslash
@@ -720,11 +635,7 @@ pgfxy(5.5,1)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{C}{
 \backslash
@@ -733,11 +644,7 @@ pgfxy(4,-0.5)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{D}{
 \backslash
@@ -746,30 +653,14 @@ pgfxy(4,2.5)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{white}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -780,11 +671,7 @@ pgfbox[center,center]{$v_2$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -795,11 +682,7 @@ pgfbox[center,center]{$v_3$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -810,11 +693,7 @@ pgfbox[center,center]{$v_4$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -825,30 +704,14 @@ pgfbox[center,center]{$v_1$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetendarrow{
 \backslash
@@ -857,94 +720,58 @@ pgfarrowto}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodesetsepstart{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodesetsepend{4pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{A}{B}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{A}{C}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{D}{A}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{C}{B}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{B}{D} 
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodeconnline{D}{C}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -964,12 +791,11 @@ end{pgfpicture}
 \end_layout
 
 \begin_layout Definition
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -1015,12 +841,11 @@ Tournaments Arise Naturally in Different Situations
 \end_layout
 
 \begin_layout ExampleBlock
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Applicatins in Ordering Theory}
+Applications in Ordering Theory
 \end_layout
 
 \end_inset
@@ -1044,12 +869,11 @@ The comparison relation may be cyclic, however.
 \end_layout
 
 \begin_layout ExampleBlock
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Applications in Sociology}
+Applications in Sociology
 \end_layout
 
 \end_inset
@@ -1073,12 +897,11 @@ Reviewers decide for any two candidates whom they prefer.
 \end_layout
 
 \begin_layout ExampleBlock
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Applications in Structural Complexity Theory}
+Applications in Structural Complexity Theory
 \end_layout
 
 \end_inset
@@ -1117,100 +940,133 @@ What Does ``Finding Paths'' Mean?
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
+Input for 
+\begin_inset Flex Only
+status open
 
-{
-\backslash
-strut Input for 
-\backslash
-ignorespaces
-\backslash
-def
-\backslash
-par{}% because LyX inserts superfluous paragraphs
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+Path Finding Problems
 \end_layout
 
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-only<1>{Path Finding Problems}
-\backslash
-ignorespaces
+\begin_layout Plain Layout
+2-3
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
+\end_inset
 
 
-\backslash
-only<2-3>{$
-\backslash
-Lang{reach}$}
-\backslash
-ignorespaces
-\end_layout
+\begin_inset Formula $\Lang{reach}$
+\end_inset
 
-\begin_layout Plain Layout
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-only<4-5>{the Construction Problem}
-\backslash
-ignorespaces
+\begin_layout Plain Layout
+4-5
 \end_layout
 
+\end_inset
+
+the Construction Problem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+6-7
+\end_layout
+
+\end_inset
+
+the Optimization Problem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+8-9
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Lang{distance}$
+\end_inset
+
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-only<6-7>{the Optimization Problem}
-\backslash
-ignorespaces
+\begin_layout Plain Layout
+10-
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
+the Approximation Problem
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
 
-\backslash
-only<8-9>{$
-\backslash
-Lang{distance}$}
-\backslash
-ignorespaces
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-only<10->{the Approximation Problem}}
 \end_layout
 
 \end_inset
@@ -1260,12 +1116,11 @@ target
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<only@-9| visible@8->
+only@-9| visible@8-
 \end_layout
 
 \end_inset
@@ -1301,12 +1156,11 @@ phantom{p}
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<only@10->
+only@10-
 \end_layout
 
 \end_inset
@@ -1365,7 +1219,7 @@ onslide<1,3,5,7,9,11-12>
 \end_layout
 
 \begin_layout Columns
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -1379,20 +1233,57 @@ t,onlytextwidth
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset Flex Alternative
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1-2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-alt<1-2>{
-\backslash
 column{
 \backslash
-textwidth}}{
+textwidth}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-column{5cm}}
+column{5cm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1401,12 +1292,11 @@ column{5cm}}
 \end_layout
 
 \begin_layout ExampleBlock
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Example Input}
+Example Input
 \end_layout
 
 \end_inset
@@ -1746,16 +1636,33 @@ end{pgfpicture}
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3-
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-only<3->{
-\backslash
-column{5cm}}
+column{5cm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1764,12 +1671,21 @@ column{5cm}}
 \end_layout
 
 \begin_layout ExampleBlock
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
+only@3-
+\end_layout
 
-<only@3->{Example Output}
+\end_inset
+
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Example Output
 \end_layout
 
 \end_inset
@@ -1791,44 +1707,28 @@ begin{pgfpicture}{2.5cm}{-0.6cm}{7.5cm}{2.6cm}
 
 \begin_layout Plain Layout
 
+
+\backslash
+only<5-8,10->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
 \backslash
-only<5-8,10->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfsetlinewidth{0.6pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{A}{
 \backslash
@@ -1837,11 +1737,7 @@ pgfxy(3,1)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{B}{
 \backslash
@@ -1850,11 +1746,7 @@ pgfxy(5,1)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{C}{
 \backslash
@@ -1863,11 +1755,7 @@ pgfxy(4,0)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{D}{
 \backslash
@@ -1876,30 +1764,14 @@ pgfxy(4,2)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 color{white}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfputat{
 \backslash
@@ -1910,11 +1782,7 @@ pgfbox[center,center]{$t$}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfputat{
 \backslash
@@ -1925,30 +1793,14 @@ pgfbox[center,center]{$s$}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfsetendarrow{
 \backslash
@@ -1957,42 +1809,21 @@ pgfarrowto}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodesetsepstart{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodesetsepend{4pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-                      
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<7,12>{
 \backslash
@@ -2001,11 +1832,7 @@ pgfnodeconnline{A}{B}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<5,11>{
 \backslash
@@ -2014,11 +1841,7 @@ pgfnodeconnline{A}{C}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<5,7,11-12>{
 \backslash
@@ -2027,11 +1850,7 @@ pgfnodeconnline{D}{A}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<5,11>{
 \backslash
@@ -2040,42 +1859,26 @@ pgfnodeconnline{C}{B}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B}{D}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D}{C}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 only<3,9>{
 \backslash
@@ -2086,10 +1889,6 @@ pgfxy(2.75,1)}{
 pgfbox[left,center]{
 \backslash
 alert{``Yes''}}}}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -2123,12 +1922,11 @@ onslide<2,4,6,8,10>
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Variants of Path Finding Problems}
+Variants of Path Finding Problems
 \end_layout
 
 \end_inset
@@ -2137,39 +1935,31 @@ status collapsed
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout Description
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-usedescriptionitemofwidthas{Approximation Problem:}
+Approximation Problem:
 \end_layout
 
 \end_inset
 
 
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+2-
 \end_layout
 
-\begin_layout Description
+\end_inset
+
 Reachability
 \begin_inset space ~
 \end_inset
 
-Problem: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-<2->
-\end_layout
-
-\end_inset
-
-Is there a path from 
+Problem: Is there a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2185,22 +1975,20 @@ Is there a path from
 \end_layout
 
 \begin_layout Description
-Construction
-\begin_inset space ~
-\end_inset
-
-Problem: 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-<4->
+4-
 \end_layout
 
 \end_inset
 
-Construct a path from 
+Construction
+\begin_inset space ~
+\end_inset
+
+Problem: Construct a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2216,22 +2004,20 @@ Construct a path from
 \end_layout
 
 \begin_layout Description
-Optimization
-\begin_inset space ~
-\end_inset
-
-Problem: 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-<6->
+6-
 \end_layout
 
 \end_inset
 
-Construct a shortest path from 
+Optimization
+\begin_inset space ~
+\end_inset
+
+Problem: Construct a shortest path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2247,22 +2033,20 @@ Construct a shortest path from
 \end_layout
 
 \begin_layout Description
-Distance
-\begin_inset space ~
-\end_inset
-
-Problem: 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-<8->
+8-
 \end_layout
 
 \end_inset
 
-Is the distance of 
+Distance
+\begin_inset space ~
+\end_inset
+
+Problem: Is the distance of 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2286,22 +2070,20 @@ Is the distance of
 \end_layout
 
 \begin_layout Description
-Approximation
-\begin_inset space ~
-\end_inset
-
-Problem: 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-<10->
+10-
 \end_layout
 
 \end_inset
 
-Construct a path from 
+Approximation
+\begin_inset space ~
+\end_inset
+
+Problem: Construct a path from 
 \begin_inset Formula $s$
 \end_inset
 
@@ -2359,7 +2141,7 @@ Logspace Turing Machines
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2370,11 +2152,7 @@ begin{pgfpicture}{-0.5cm}{0cm}{8cm}{5cm}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -2385,48 +2163,37 @@ tape{input tape (read only), $n$ symbols}{}{3401234*3143223=}}
 
 \begin_layout Plain Layout
 
+
+\backslash
+uncover<2->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-uncover<2->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
 \backslash
 pgfputat{
 \backslash
 pgfxy(0,0.5)}{
 \backslash
-tape{}{output tape (write only)}{10690836937182}}}
+tape{}{output tape (write only)}{10690836937182}}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+uncover<3->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-uncover<3->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
 \backslash
 pgfputat{
 \backslash
@@ -2439,11 +2206,7 @@ log n)$ symbols}{}{42}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfputat{
 \backslash
@@ -2456,50 +2219,26 @@ pgfuseimage{computer}}}
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetlinewidth{0.6pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{structure}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetendarrow{
 \backslash
@@ -2508,22 +2247,14 @@ pgfarrowto}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfxycurve(1.75,3.5)(1.75,3.75)(0,3.5)(0,3.85)
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 uncover<2->{
 \backslash
@@ -2532,19 +2263,11 @@ pgfxycurve(1.75,1.5)(1.75,1)(0,1.5)(0,1.05)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 uncover<3->{
 \backslash
 pgfxycurve(2.65,2.5)(3.75,2.5)(7,1)(7,1.9)}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -2564,12 +2287,11 @@ Logspace Turing Machines Are Quite Powerful
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Deterministic logspace machines can compute}
+Deterministic logspace machines can compute
 \end_layout
 
 \end_inset
@@ -2596,12 +2318,11 @@ reachability in forests.
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Non-deterministic logspace machines can compute}
+Non-deterministic logspace machines can compute
 \end_layout
 
 \end_inset
@@ -2650,22 +2371,14 @@ begin{pgfpicture}{-5.4cm}{0cm}{5.4cm}{5.5cm}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetlinewidth{0.8pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 heap{5.5}{3.5}{$
 \backslash
@@ -2674,22 +2387,14 @@ Class P$}{black}{1}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetdash{{2pt}}{0pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<2->{
 \backslash
@@ -2700,11 +2405,7 @@ Class{NC}^2$}{black!50!structure}{2}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 heap{3.5}{2.5}{$
 \backslash
@@ -2713,11 +2414,7 @@ Class{NL}$}{black!50!structure}{3}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 heap{2.5}{2}{$
 \backslash
@@ -2726,109 +2423,85 @@ Class{L}$}{black!50!structure}{4}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<2->{
 \backslash
 heap{1.75}{1.5}{$
 \backslash
-vphantom{A}
-\backslash
-smash{
-\backslash
-Class{NC}^1}$}{black!50!structure}{5}}
-\end_layout
-
-\begin_layout Plain Layout
-
+vphantom{A}%
 \end_layout
 
 \begin_layout Plain Layout
 
   
+\backslash
+smash{
+\backslash
+Class{NC}^1}$}{black!50!structure}{5}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
 pgfsetdash{}{0pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<2->{
 \backslash
 heap{1.1}{1}{$
 \backslash
-vphantom{A}
-\backslash
-smash{
-\backslash
-Class{AC}^0}$}{black}{6}}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
+vphantom{A}%
 \end_layout
 
 \begin_layout Plain Layout
 
   
+\backslash
+smash{
+\backslash
+Class{AC}^0}$}{black}{6}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
 pgfsetlinewidth{1.0pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 color{black}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfxyline(-5,0)(5,0)
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 only<1-2>{
 \backslash
@@ -2839,11 +2512,7 @@ Lang{reach}$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<1-2>{
 \backslash
@@ -2856,19 +2525,7 @@ operatorname{forest}}$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 only<2>{
 \backslash
@@ -2879,11 +2536,7 @@ Lang{addition}$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<2>{
 \backslash
@@ -2902,11 +2555,7 @@ Lang{parity}$}}}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<3-5>{
 \backslash
@@ -2925,11 +2574,7 @@ Lang{reach}$}}}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<4->{
 \backslash
@@ -2942,11 +2587,7 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
@@ -2959,11 +2600,7 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
@@ -2976,11 +2613,7 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
@@ -2993,26 +2626,23 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
 Lang{reach}_{
 \backslash
-operatorname{path}}$}}}}
+operatorname{path}}$}}}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  
+
 \backslash
 only<5->{
 \backslash
@@ -3025,11 +2655,7 @@ operatorname{tourn}}$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 only<6->{
 \backslash
@@ -3042,11 +2668,7 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
@@ -3059,11 +2681,7 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
@@ -3074,38 +2692,41 @@ ignorespaces
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 hbox{$
 \backslash
-Lang{reach}$}}}}
+Lang{reach}$}}}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<7->{
+\backslash
+pgfsetdash{{1pt}}{0pt}%
 \end_layout
 
 \begin_layout Plain Layout
 
   
 \backslash
-only<7->{
-\backslash
-pgfsetdash{{1pt}}{0pt}
-\backslash
 langat{2.375}{``$
 \backslash
 Lang{approx}_{
 \backslash
-operatorname{tourn}}$''}}
+operatorname{tourn}}$''}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -3155,10 +2776,6 @@ leftmargini{1em}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 nointerlineskip 
@@ -3170,7 +2787,7 @@ nointerlineskip
 \end_layout
 
 \begin_layout Columns
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -3188,27 +2805,15 @@ t
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Circuit Class 
 \begin_inset Formula $\Class{AC}^{0}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3258,27 +2863,15 @@ unbounded fan-in
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Circuit Class 
 \begin_inset Formula $\Class{NC}^{1}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3335,27 +2928,15 @@ bounded fan-in
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Circuit Class 
 \begin_inset Formula $\Class{NC}^{2}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3391,12 +2972,11 @@ bounded fan-in
 \end_deeper
 \end_deeper
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<2>
+2
 \end_layout
 
 \end_inset
@@ -3475,12 +3055,11 @@ the approximation problem in logspace iff
 
 \end_deeper
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<3>
+3
 \end_layout
 
 \end_inset
@@ -3489,7 +3068,7 @@ hierarchy
 \end_layout
 
 \begin_layout BeginFrame
-FindingPaths in Forests and Directed Paths is Easy,
+Finding Paths in Forests and Directed Paths is Easy,
 \begin_inset Newline newline
 \end_inset
 
@@ -3531,12 +3110,11 @@ But Not Trivial
 \end_layout
 
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<4>
+4
 \end_layout
 
 \end_inset
@@ -3621,12 +3199,11 @@ The Tournament Reachability Problem is Very Easy
 \end_layout
 
 \begin_layout AlertBlock
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Implications}
+Implications
 \end_layout
 
 \end_inset
@@ -3664,12 +3241,11 @@ easier
 
 \end_deeper
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<5>
+5
 \end_layout
 
 \end_inset
@@ -3831,7 +3407,7 @@ nointerlineskip
 \end_layout
 
 \begin_layout Columns
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -3867,16 +3443,10 @@ leftmargini{1.5em}
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Reduce 
 \begin_inset Formula $\Lang{reach}$
 \end_inset
@@ -3886,12 +3456,6 @@ Reduce
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3901,12 +3465,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<alert@1>
+alert@1
 \end_layout
 
 \end_inset
@@ -3923,12 +3486,11 @@ Is input
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<2-| alert@2-8>
+2-| alert@2-8
 \end_layout
 
 \end_inset
@@ -3945,12 +3507,11 @@ Map
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<9-| alert@9>
+9-| alert@9
 \end_layout
 
 \end_inset
@@ -3972,34 +3533,21 @@ Query:
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Correctness
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<10->
+10-
 \end_layout
 
 \end_inset
@@ -4009,12 +3557,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<10-| alert@10-11>
+10-| alert@10-11
 \end_layout
 
 \end_inset
@@ -4043,12 +3590,11 @@ a length-3 path in
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<12-| alert@12-13>
+12-| alert@12-13
 \end_layout
 
 \end_inset
@@ -4094,33 +3640,21 @@ begin{pgfpicture}{0cm}{-1.25cm}{4.5cm}{3.75cm}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetlinewidth{0.6pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{A}{
 \backslash
@@ -4129,11 +3663,7 @@ pgfxy(1,3.3)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{B}{
 \backslash
@@ -4142,11 +3672,7 @@ pgfxy(2,3.3)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{C}{
 \backslash
@@ -4155,11 +3681,7 @@ pgfxy(3,3.3)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 graphnode{D}{
 \backslash
@@ -4168,30 +3690,14 @@ pgfxy(4,3.3)}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{white}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -4202,11 +3708,7 @@ pgfbox[center,center]{$s$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -4217,30 +3719,14 @@ pgfbox[center,center]{$t$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfsetendarrow{
 \backslash
@@ -4249,33 +3735,21 @@ pgfarrowto}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodesetsepstart{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfnodesetsepend{2pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 alert<3>{
 \backslash
@@ -4284,11 +3758,7 @@ pgfnodeconnline{B}{A}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 alert<4>{
 \backslash
@@ -4297,11 +3767,7 @@ pgfnodeconnline{B}{C}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 alert<5,10-11,13>{
 \backslash
@@ -4310,11 +3776,7 @@ pgfnodeconnline{C}{D}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-  
 \backslash
 alert<6,10-11,13>{
 \backslash
@@ -4323,20 +3785,7 @@ pgfnodeconncurve{A}{C}{45}{135}{15pt}{15pt}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
 pgfputat{
 \backslash
@@ -4349,30 +3798,14 @@ colon$}}
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<2->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-only<2->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
 \backslash
 pgfputat{
 \backslash
@@ -4385,11 +3818,7 @@ colon$}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{A1}{
 \backslash
@@ -4398,11 +3827,7 @@ pgfxy(1,2.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{B1}{
 \backslash
@@ -4411,11 +3836,7 @@ pgfxy(2,2.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{C1}{
 \backslash
@@ -4424,11 +3845,7 @@ pgfxy(3,2.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{D1}{
 \backslash
@@ -4437,19 +3854,7 @@ pgfxy(4,2.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{A2}{
 \backslash
@@ -4458,11 +3863,7 @@ pgfxy(1,1.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{B2}{
 \backslash
@@ -4471,11 +3872,7 @@ pgfxy(2,1.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{C2}{
 \backslash
@@ -4484,11 +3881,7 @@ pgfxy(3,1.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{D2}{
 \backslash
@@ -4497,11 +3890,7 @@ pgfxy(4,1.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{A3}{
 \backslash
@@ -4510,11 +3899,7 @@ pgfxy(1,0.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{B3}{
 \backslash
@@ -4523,11 +3908,7 @@ pgfxy(2,0.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{C3}{
 \backslash
@@ -4536,11 +3917,7 @@ pgfxy(3,0.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{D3}{
 \backslash
@@ -4549,11 +3926,7 @@ pgfxy(4,0.25)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{A4}{
 \backslash
@@ -4562,11 +3935,7 @@ pgfxy(1,-.75)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{B4}{
 \backslash
@@ -4575,11 +3944,7 @@ pgfxy(2,-.75)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{C4}{
 \backslash
@@ -4588,11 +3953,7 @@ pgfxy(3,-.75)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 graphnode{D4}{
 \backslash
@@ -4601,22 +3962,14 @@ pgfxy(4,-.75)}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-     {
+   {
 \backslash
 color{white}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-      
+    
 \backslash
 pgfputat{
 \backslash
@@ -4627,11 +3980,7 @@ pgfbox[center,center]{$s'$}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-      
+    
 \backslash
 pgfputat{
 \backslash
@@ -4642,334 +3991,206 @@ pgfbox[center,center]{$t'$}}
 
 \begin_layout Plain Layout
 
+   }
 \end_layout
 
 \begin_layout Plain Layout
 
-  }}
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
 
-\begin_layout Plain Layout
-
-   
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<8->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
 \backslash
-only<8->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
 pgfsetlinewidth{0.4pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 color{beamerexample!25!averagebackgroundcolor}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A2}{C1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A2}{D1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{A1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{C1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{D1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C2}{D1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D2}{A1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D2}{B1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A3}{C2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A3}{D2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{A2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{C2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{D2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C3}{D2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D3}{A2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D3}{B2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A4}{C3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A4}{D3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B4}{A3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B4}{C3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B4}{D3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C4}{D3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D4}{A3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D4}{B3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfsetstartarrow{
 \backslash
@@ -4978,511 +4199,302 @@ pgfarrowto}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A1}{B1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B1}{C1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C1}{D1}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A2}{B2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{C2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C2}{D2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A3}{B3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{C3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C3}{D3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A4}{B4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B4}{C4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C4}{D4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfclearstartarrow
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{A3}{A1}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{A4}{A2}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{A4}{A1}{135}{-135}{15pt}{15pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{B3}{B1}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{B4}{B2}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{B4}{B1}{135}{-135}{15pt}{15pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{C3}{C1}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{C4}{C2}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{C4}{C1}{135}{-135}{15pt}{15pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{D3}{D1}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{D4}{D2}{135}{-135}{10pt}{10pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconncurve{D4}{D1}{135}{-135}{15pt}{15pt}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 color{beamerexample}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfsetlinewidth{0.6pt}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<3->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-only<3->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
 \backslash
 color<3>{red}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B1}{A2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{A3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{A4}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<4->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
-\backslash
-only<4->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
 \backslash
 color<4>{red}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B1}{C2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{C3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{C4}
 \end_layout
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-  
 \backslash
-only<5->{
+only<5->{%
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 color<5>{red}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C1}{D2} 
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<11>{
 \backslash
@@ -5491,11 +4503,7 @@ pgfnodeconnline{C2}{D3}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<12-13>{
 \backslash
@@ -5504,51 +4512,26 @@ pgfnodeconnline{C3}{D4}}
 
 \begin_layout Plain Layout
 
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-  }
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<6->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
 \backslash
-only<6->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
 color<6>{red}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<11>{
 \backslash
@@ -5557,11 +4540,7 @@ pgfnodeconnline{A1}{C2}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<12-13>{
 \backslash
@@ -5570,61 +4549,33 @@ pgfnodeconnline{A2}{C3}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A3}{C4}
 \end_layout
 
 \begin_layout Plain Layout
 
+} 
 \end_layout
 
 \begin_layout Plain Layout
 
-  } 
-\end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+only<7->{%
 \end_layout
 
 \begin_layout Plain Layout
 
   
 \backslash
-only<7->{
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
 color<7>{red}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<12-13>{
 \backslash
@@ -5633,121 +4584,77 @@ pgfnodeconnline{A1}{A2}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A2}{A3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{A3}{A4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B1}{B2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B2}{B3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{B3}{B4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C1}{C2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C2}{C3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{C3}{C4}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D1}{D2}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 pgfnodeconnline{D2}{D3}
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
+  
 \backslash
 alert<11>{
 \backslash
@@ -5756,15 +4663,7 @@ pgfnodeconnline{D3}{D4}}
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-  }
-\end_layout
-
-\begin_layout Plain Layout
-
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -5781,12 +4680,11 @@ end{pgfpicture}
 
 \end_deeper
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<6>
+6
 \end_layout
 
 \end_inset
@@ -5919,12 +4817,11 @@ beamergotobutton{More Details}}
 \end_layout
 
 \begin_layout AgainFrame
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<7>
+7
 \end_layout
 
 \end_inset
@@ -6097,12 +4994,11 @@ Summary
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Summary}
+Summary
 \end_layout
 
 \end_inset
@@ -6182,12 +5078,11 @@ in tournaments is
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-{Outlook}
+Outlook
 \end_layout
 
 \end_inset
@@ -6261,7 +5156,7 @@ For Further Reading
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -6451,13 +5346,13 @@ newblock
 \begin_layout Standard
 \start_of_appendix
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-AtBeginSubsection[]{} 
+AtBeginSubsection[]{}
 \end_layout
 
 \end_inset
@@ -6683,20 +5578,43 @@ the reachability problem in logspace iff
 
 \begin_layout Itemize
 the construction problem in logspace iff 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Alternative
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
 
 
-\backslash
-alt<1>{?}{
-\backslash
-alert{$
-\backslash
-Class L = 
-\backslash
-Class{SL}$}}
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Class L=\Class{SL}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6706,20 +5624,43 @@ Class{SL}$}}
 
 \begin_layout Itemize
 the optimization problem in logspace iff 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Alternative
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
 
 
-\backslash
-alt<1>{?}{
-\backslash
-alert{$
-\backslash
-Class L = 
-\backslash
-Class{NL}$}}
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Class L=\Class{NL}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

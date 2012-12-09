@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 452
 \begin_document
 \begin_header
 \textclass beamer
@@ -19,13 +19,13 @@
 \font_roman times
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,21 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Índice
 \shortcut idx
@@ -120,7 +126,7 @@ e específicamente como parte de otro programa/paquete, el autor otorga permiso
 
 \begin_layout Title
 Título tal como aparecerá en la presentación
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -210,7 +216,7 @@ Marca de Institución
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -302,7 +308,7 @@ inst sólo si hay varias afiliaciones.
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -342,7 +348,7 @@ o Vd.mismo) lean la presentación en línea.
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -369,7 +375,7 @@ opcional, debería ser una abreviatura del nombre de la conferencia
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si se dispone de un archivo como "institución-logo-nombrearchivo.xxx", donde
@@ -384,17 +390,13 @@ Si se dispone de un archivo como "institución-logo-nombrearchivo.xxx", donde
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 %
 \backslash
 pgfdeclareimage[height=0.5cm]{institution-logo}{institución-logo-nombrearchivo}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -413,7 +415,7 @@ pgfuseimage{institution-logo}}
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lo siguiente hace que se muestre un índice al inicio de cada subsección.
@@ -427,17 +429,13 @@ Lo siguiente hace que se muestre un índice al inicio de cada subsección.
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-AtBeginSubsection[]{
-\end_layout
-
-\begin_layout Plain Layout
-
+AtBeginSubsection[]{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -449,17 +447,9 @@ frame<beamer>{
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
     
 \backslash
 frametitle{Índice}   
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -471,15 +461,7 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
   }
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -494,7 +476,7 @@ tableofcontents[currentsection,currentsubsection]
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si quieres descubrir todo en modo paso a paso, descomenta el siguiente comando:
@@ -507,7 +489,7 @@ Si quieres descubrir todo en modo paso a paso, descomenta el siguiente comando:
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -597,7 +579,7 @@ Motivación
 
 \begin_layout Subsection
 El problema básico que estudiamos
-\begin_inset Argument
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -682,12 +664,11 @@ Poner títulos informativos
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -696,12 +677,11 @@ También se pueden usar estas especificaciones para crear solapados
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<3->
+3-
 \end_layout
 
 \end_inset
@@ -710,12 +690,11 @@ Esto permite presentar cosas en cualquier orden
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -728,34 +707,11 @@ Poner títulos informativos
 \end_layout
 
 \begin_layout Block
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+1-
 \end_layout
 
 \end_inset
@@ -774,34 +730,21 @@ Mostrado en todas las diapositivas.
 
 \end_deeper
 \begin_layout ExampleBlock
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 Título de algún Bloque de ejemplo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -887,12 +830,11 @@ end{eje}}
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -905,12 +847,11 @@ En la primera diapositiva.
 \end_layout
 
 \begin_layout Example
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
@@ -956,12 +897,11 @@ Poner títulos informativos
 \end_layout
 
 \begin_layout Theorem
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<1->
+1-
 \end_layout
 
 \end_inset
@@ -974,12 +914,11 @@ En la columna de la izquierda.
 \end_layout
 
 \begin_layout Corollary
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-<2->
+2-
 \end_layout
 
 \end_inset
