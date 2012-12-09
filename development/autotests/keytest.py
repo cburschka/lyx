@@ -402,6 +402,10 @@ while not failed:
             ccode = lang[0:idx]
         else:
             ccode = lang
+
+        print "Setting LANGUAGE=" + ccode + "\n"
+        os.environ['LANGUAGE'] = ccode
+
         idx = lang.find("_")
         if idx != -1:
             short_code = lang[0:idx]
