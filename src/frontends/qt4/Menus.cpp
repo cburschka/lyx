@@ -1570,7 +1570,8 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 	Layout::LaTeXArgMap::const_iterator const laend = args.end();
 	for (; lait != laend; ++lait) {
 		Layout::latexarg arg = (*lait).second;
-		QString item = toqstr(translateIfPossible(arg.labelstring));
+		docstring str = arg.menustring.empty()? arg.labelstring : arg.menustring;
+		QString item = toqstr(translateIfPossible(str));
 		if (switcharg)
 			add(MenuItem(MenuItem::Command, item,
 				     FuncRequest(LFUN_INSET_MODIFY,

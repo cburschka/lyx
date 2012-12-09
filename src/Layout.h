@@ -90,6 +90,7 @@ public:
 	/// The arguments of this layout
 	struct latexarg {
 		docstring labelstring;
+		docstring menustring;
 		bool mandatory;
 		docstring ldelim;
 		docstring rdelim;

@@ -93,7 +93,8 @@ Style Itemize
     Tooltip       "A customized item string"
   EndArgument
   Argument item:2
-    LabelString   "Item Overlay Specifications"
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
@@ -129,7 +130,8 @@ Style Enumerate
     Tooltip       "A customized item string"
   EndArgument
   Argument item:2
-    LabelString   "Item Overlay Specifications"
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
@@ -163,7 +165,8 @@ Style Description
     Tooltip        "The longest label in this list (to determine the indendation width)"
   EndArgument
   Argument item:1
-    LabelString   "Item Overlay Specifications"
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
@@ -194,7 +197,8 @@ Style Part
   LatexType        Command
   LatexName        part
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -243,7 +247,8 @@ Style Section
   LabelString      "Section \arabic{section}"
   RefPrefix        sec
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -272,7 +277,8 @@ Style Section*
   LabelType        No_Label
   ResetArgs        1
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -298,7 +304,8 @@ Style Subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
   RefPrefix        sub
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -327,7 +334,8 @@ Style Subsection*
   LabelType        No_Label
   ResetArgs        1
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -353,7 +361,8 @@ Style Subsubsection
   LabelString      "Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
   RefPrefix        sub
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -382,7 +391,8 @@ Style Subsubsection*
   LabelType        No_Label
   ResetArgs        1
   Argument 1
-    LabelString    "Mode Specification|S"
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
@@ -478,7 +488,8 @@ Style AgainFrame
   LatexType         Command
   LatexName         lyxframeend{}\againframe
   Argument 1
-    LabelString     "Overlay Specifications|S"
+    LabelString     "On Slide"
+    MenuString      "Overlay Specifications|S"
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
     RightDelim      >
@@ -490,7 +501,8 @@ Style AgainFrame
     RightDelim      >]
   EndArgument
   Argument 3
-    LabelString     "Frame Options"
+    MenuString      "Frame Options"
+    LabelString     "Options"
     Tooltip         "Frame options (see beamer manual)"
   EndArgument
   Margin            First_Dynamic
@@ -559,7 +571,8 @@ Style FrameSubtitle
     Color          Blue
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -586,7 +599,8 @@ Style Column
   LabelSep         xx
   LabelString      "Start column (increase depth!), width:"
   Argument 1
-    LabelString    "Column Options"
+    MenuString     "Column Options"
+    LabelString    "Options"
     Tooltip        "Column options (see beamer manual)"
   EndArgument
   LeftMargin       "Start column (increase depth!), width:xx"
@@ -693,7 +707,8 @@ Style Overprint
     Color          latex
   EndFont
   Argument 1
-    LabelString    "Overprint Area Width"
+    MenuString     "Overprint Area Width"
+    LabelString    "Width"
     Tooltip        "The width of the overprint area (default: text width)"
   EndArgument
 End
@@ -723,7 +738,8 @@ Style OverlayArea
     Mandatory      1
   EndArgument
   Argument 2
-    LabelString    "Overlay Area Height"
+    MenuString     "Overlay Area Height"
+    LabelString    "Height"
     Tooltip        "The height of the overlay area"
     Mandatory      1
   EndArgument
@@ -749,7 +765,8 @@ Style Uncover
     Color          Latex
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -776,7 +793,8 @@ Style Only
     Color          Latex
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -807,7 +825,8 @@ Style Block
     Color          latex
   EndFont
   Argument 1
-    LabelString    "Action Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specification|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1059,7 +1078,8 @@ Style Quotation
   Align            Block
   AlignPossible    Block, Left, Right, Center
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1081,7 +1101,8 @@ Style Quote
   AlignPossible    Block, Left, Right, Center
   LabelType        No_Label
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1106,7 +1127,8 @@ Style Verse
   AlignPossible    Block, Left
   LabelType        No_Label
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1140,7 +1162,8 @@ Style Corollary
      Size          Large
    EndFont
   Argument 1
-    LabelString    "Action Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1279,7 +1302,8 @@ Style NoteItem
     Color          latex
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1300,7 +1324,8 @@ InsetLayout Flex:Emphasize
     Shape          italic
   EndFont
   Argument 1
-    LabelString    "Action Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1316,7 +1341,8 @@ InsetLayout Flex:Alert
     Color          red
   EndFont
   Argument 1
-    LabelString    "Action Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1332,7 +1358,8 @@ InsetLayout Flex:Structure
     Color          blue
   EndFont
   Argument 1
-    LabelString    "Action Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1348,7 +1375,8 @@ InsetLayout Flex:Only
     Color          red
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1364,7 +1392,8 @@ InsetLayout Flex:Uncover
     Color          red
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1380,7 +1409,8 @@ InsetLayout Flex:Visible
     Color          red
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1396,7 +1426,8 @@ InsetLayout Flex:Invisible
     Color          red
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1412,7 +1443,8 @@ InsetLayout Flex:Alternative
     Color          red
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1434,7 +1466,8 @@ InsetLayout Flex:Beamer_Note
     Color          blue
   EndFont
   Argument 1
-    LabelString    "Overlay Specification|S"
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >

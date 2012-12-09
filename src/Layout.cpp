@@ -900,6 +900,9 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "labelstring") {
 			lex.next();
 			arg.labelstring = lex.getDocString();
+		} else if (tok == "menustring") {
+			lex.next();
+			arg.menustring = lex.getDocString();
 		} else if (tok == "mandatory") {
 			lex.next();
 			arg.mandatory = lex.getBool();

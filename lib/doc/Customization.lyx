@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 449
+\lyxformat 452
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10338,7 +10338,7 @@ Argument
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1353691469
+\change_inserted -712698321 1355076779
 \begin_inset Flex Code
 status collapsed
 
@@ -10365,7 +10365,19 @@ status collapsed
 \end_inset
 
  The string that will appear both in the menu (to insert this argument)
- and on the argument inset button.
+ and on the argument inset button (unless you also specify a separate 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355076779
+MenuString
+\end_layout
+
+\end_inset
+
+).
  For the menu, you can define an accelerator by appending the respective
  character to the string, divided by 
 \begin_inset Quotes eld
@@ -10402,6 +10414,85 @@ Short Title|S
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1355076754
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355076658
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355076654
+[string]
+\end_layout
+
+\end_inset
+
+ A separate string for the menu.
+ You can define an accelerator by appending the respective character to
+ the string, divided by 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355076654
+\begin_inset Quotes eld
+\end_inset
+
+Short Title|S
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+).
+ This specification is optional.
+ If it is not given the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355076736
+LabelString
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ will be used instead for the menu.
 \end_layout
 
 \begin_layout Itemize
