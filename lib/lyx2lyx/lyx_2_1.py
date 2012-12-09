@@ -1269,6 +1269,7 @@ def revert_latexargs(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
+        realparbeg = parent[3]
         # Collect all arguments in this paragraph 
         realparend = parend
         for p in range(parbeg, parend):
@@ -1295,9 +1296,9 @@ def revert_latexargs(document):
             subst += args[f]
             del args[f]
         # Insert the sorted arg insets at paragraph begin
-        document.body[parbeg + 1:parbeg + 1] = subst
+        document.body[realparbeg + 1 : realparbeg + 1] = subst
 
-        i = parbeg + 1 + len(subst)
+        i = realparbeg + 1 + len(subst)
 
 
 def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
@@ -1785,7 +1786,7 @@ def revert_itemargs(document):
             document.warning("Malformed lyx document: Can't find parent paragraph layout")
             i = i + 1
             continue
-        parbeg = parent[1]
+        parbeg = parent[3]
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
         content = document.body[beginPlain + 1 : endPlain]
@@ -2094,6 +2095,7 @@ def revert_beamerargs(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
+        realparbeg = parent[3]
         layoutname = parent[0]
         realparend = parend
         for p in range(parbeg, parend):
@@ -2135,7 +2137,7 @@ def revert_beamerargs(document):
                             pre += put_cmd_in_ert("[") + argcontent + put_cmd_in_ert("]")
                         pre += put_cmd_in_ert("{")
                         document.body[parbeg] = "\\begin_layout Standard"
-                        document.body[parbeg + 1 : parbeg + 1] = pre
+                        document.body[realparbeg + 1 : realparbeg + 1] = pre
                         pe = find_end_of_layout(document.body, parbeg)
                         post = put_cmd_in_ert("}")
                         document.body[pe : pe] = post
@@ -2154,7 +2156,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname == "Overprint":
                 m = rx.match(document.body[p])
                 if m:
@@ -2169,7 +2171,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname == "OverlayArea":
                 m = rx.match(document.body[p])
                 if m:
@@ -2184,7 +2186,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname in list_layouts:
                 m = rx.match(document.body[p])
                 if m:
@@ -2199,7 +2201,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
                     elif argnr == "item:1":
                         j = find_end_of_inset(document.body, i)
                         # Find containing paragraph layout
@@ -2208,7 +2210,7 @@ def revert_beamerargs(document):
                         content = document.body[beginPlain + 1 : endPlain]
                         del document.body[i:j+1]
                         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                        document.body[parbeg + 1 : parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
                     elif argnr == "item:2":
                         j = find_end_of_inset(document.body, i)
                         # Find containing paragraph layout
@@ -2217,7 +2219,7 @@ def revert_beamerargs(document):
                         content = document.body[beginPlain + 1 : endPlain]
                         del document.body[i:j+1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname in quote_layouts:
                 m = rx.match(document.body[p])
                 if m:
@@ -2232,7 +2234,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname in corollary_layouts:
                 m = rx.match(document.body[p])
                 if m:
@@ -2247,7 +2249,7 @@ def revert_beamerargs(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
         
         i = realparend
 
@@ -2276,6 +2278,7 @@ def revert_beamerargs2(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
+        realparbeg = parent[3]
         layoutname = parent[0]
         realparend = parend
         for p in range(parbeg, parend):
@@ -2302,7 +2305,7 @@ def revert_beamerargs2(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname == "OverlayArea":
                 m = rx.match(document.body[p])
                 if m:
@@ -2317,7 +2320,7 @@ def revert_beamerargs2(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
             if layoutname == "AgainFrame":
                 m = rx.match(document.body[p])
                 if m:
@@ -2332,7 +2335,7 @@ def revert_beamerargs2(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("[<") + content + put_cmd_in_ert(">]")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
         i = realparend
 
 
@@ -2357,6 +2360,7 @@ def revert_beamerargs3(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
+        realparbeg = parent[3]
         layoutname = parent[0]
         realparend = parend
         for p in range(parbeg, parend):
@@ -2377,7 +2381,7 @@ def revert_beamerargs3(document):
                         # Remove arg inset
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[parbeg + 1:parbeg + 1] = subst
+                        document.body[realparbeg + 1 : realparbeg + 1] = subst
         i = realparend
 
 

@@ -128,7 +128,8 @@ get_containing_inset(lines, i):
   on line 306.
 
 get_containing_layout(lines, i):
-  As get_containing_inset, but for layout.
+  As get_containing_inset, but for layout. Additionally returns the
+  position of real paragraph start (after par params) as 4th value.
 
 
 find_nonempty_line(lines, start[, end):
@@ -441,7 +442,8 @@ def get_containing_layout(lines, i):
   ''' 
   Finds out what kind of layout line i is within. Returns a 
   list containing (i) what follows \begin_layout on the the line 
-  on which the layout begins, plus the starting and ending line.
+  on which the layout begins, plus the starting and ending line
+  and the start of the apargraph (after all params).
   Returns False on any kind of error.
   '''
   j = i
@@ -458,4 +460,14 @@ def get_containing_layout(lines, i):
   if lay == "":
       # shouldn't happen
       return False
-  return (lay, stlay, endlay)
+  par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
+                "\\start_of_appendix", "\\paragraph_spacing single",
+                "\\paragraph_spacing onehalf", "\\paragraph_spacing double",
+                "\\paragraph_spacing other", "\\align", "\\labelwidthstring"]
+  stpar = stlay
+  while True:
+      if lines[stpar + 1] in par_params:
+          stpar += 1
+      else:
+          break
+  return (lay, stlay, endlay, stpar)
