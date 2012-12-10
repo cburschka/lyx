@@ -8,10 +8,6 @@
 
 Format 41
 
-# Beamer does not work with enumitem.
-# See bug #7047.
-ExcludesModule enumitem
-
 #
 # GLOBAL SETTINGS
 #
@@ -19,6 +15,10 @@ ExcludesModule enumitem
 # Includes
 Input stdcounters.inc
 Input stdinsets.inc
+
+# Beamer does not work with enumitem.
+# See bug #7047.
+ExcludesModule enumitem
 
 # General textclass parameters
 Columns            1
@@ -811,6 +811,7 @@ Style Block
   Margin           Dynamic
   LatexType        Environment
   NextNoIndent     1
+  KeepEmpty        1
   Align            Left
   LabelType        Static
   LabelSep         xx
