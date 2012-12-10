@@ -27,6 +27,7 @@
 #include "TexRow.h"
 
 #include "frontends/Application.h" // hexName
+#include "frontends/qt4/ColorCache.h"
 
 #include "insets/Inset.h"
 
@@ -36,6 +37,7 @@
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 
 #include "support/bind.h"
 
@@ -591,16 +593,26 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	// FIXME XHTML 
 	// The colors should be customizable.
 	ColorCode const bg = buffer_.isExporting() 
-	               ? Color_white : PreviewLoader::backgroundColor();
+		? Color_white : PreviewLoader::backgroundColor();
 	ColorCode const fg = buffer_.isExporting() 
-	               ? Color_black : PreviewLoader::foregroundColor();
+		? Color_black : PreviewLoader::foregroundColor();
+	std::string bg_name, fg_name;
+	if (theApp()) {
+		fg_name = theApp()->hexName(fg);
+		bg_name = theApp()->hexName(bg);
+	} else {
+		ColorCache cc;
+		fg_name = ltrim(fromqstr(cc.get(fg).name()), "#");
+		bg_name = ltrim(fromqstr(cc.get(bg).name()), "#");
+	}
+
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor) << ' '
-	   << theApp()->hexName(fg) << ' '
-	   << theApp()->hexName(bg);
+	   << fg_name << ' '
+	   << bg_name;
 	// FIXME what about LuaTeX?
 	if (buffer_.params().useNonTeXFonts)
 		cs << " xelatex";
