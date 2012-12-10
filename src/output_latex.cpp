@@ -368,7 +368,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 						ldelim = arg.ldelim;
 					if (!arg.rdelim.empty())
 						rdelim = arg.rdelim;
-					ins->latexArgument(os, runparams, ldelim, rdelim);
+					ins->latexArgument(os, runparams, ldelim, rdelim, arg.presetarg);
 					inserted = true;
 				}
 			}
@@ -385,7 +385,17 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 								from_ascii("{") : arg.ldelim;
 						docstring rdelim = arg.rdelim.empty() ?
 								from_ascii("}") : arg.rdelim;
-						os << ldelim << rdelim;
+						os << ldelim << arg.presetarg << rdelim;
+					} else if (!arg.presetarg.empty()) {
+						docstring ldelim = arg.mandatory ?
+								from_ascii("{") : from_ascii("[");
+						docstring rdelim = arg.mandatory ?
+								from_ascii("}") : from_ascii("]");
+						if (!arg.ldelim.empty())
+							ldelim = arg.ldelim;
+						if (!arg.rdelim.empty())
+							rdelim = arg.rdelim;
+						os << ldelim << arg.presetarg << rdelim;
 					} else if (find(required.begin(), required.end(),
 						   (*lait).first) != required.end()) {
 						docstring ldelim = arg.ldelim.empty() ?

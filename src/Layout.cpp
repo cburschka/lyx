@@ -916,6 +916,9 @@ void Layout::readArgument(Lexer & lex)
 			arg.rdelim = lex.getDocString();
 			arg.rdelim = support::subst(arg.rdelim, from_ascii("<br/>"),
 						    from_ascii("\n"));
+		} else if (tok == "presetarg") {
+			lex.next();
+			arg.presetarg = lex.getDocString();
 		} else if (tok == "tooltip") {
 			lex.next();
 			arg.tooltip = lex.getDocString();

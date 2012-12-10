@@ -10748,7 +10748,7 @@ status collapsed
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1354263106
+\change_inserted -712698321 1355144479
 \begin_inset Flex Code
 status collapsed
 
@@ -10810,6 +10810,39 @@ status collapsed
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1355144578
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144487
+PresetArg
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144500
+[string]
+\end_layout
+
+\end_inset
+
+ defines an argument that is inserted in any case (alone or in addition
+ to user-specified arguments).
+ Multiple arguments need to be separated by comma.
 \change_unchanged
 
 \end_layout
@@ -12494,7 +12527,42 @@ LatexName
 \end_inset
 
  stuff.
- This parameter cannot be changed from within LyX.
+ This parameter cannot be changed from within LyX
+\change_inserted -712698321 1355144804
+ (use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144804
+Argument
+\end_layout
+
+\end_inset
+
+ for customizable parameters)
+\change_unchanged
+.
+
+\change_inserted -712698321 1355144804
+ This will be output as is after all LaTeX 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144658
+Arguments
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -16636,7 +16704,40 @@ status collapsed
 \end_inset
 
 .
- This parameter cannot be changed from within LyX.
+ 
+\change_inserted -712698321 1355144715
+This will be output as is after all LaTeX 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144713
+Arguments
+\end_layout
+
+\end_inset
+
+.
+ 
+\change_unchanged
+This parameter cannot be changed from within LyX
+\change_inserted -712698321 1355144775
+ (use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355144747
+Argument
+\end_layout
+
+\end_inset
+
+ for customizable parameters)
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description

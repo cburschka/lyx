@@ -31,7 +31,8 @@ public:
 
 	/// Outputting the parameter of a LaTeX command
 	void latexArgument(otexstream &, OutputParams const &,
-			docstring const&, docstring const &) const;
+			   docstring const&, docstring const &,
+			   docstring const &) const;
 
 	std::string name() const { return name_; }
 

@@ -94,6 +94,7 @@ public:
 		bool mandatory;
 		docstring ldelim;
 		docstring rdelim;
+		docstring presetarg;
 		docstring tooltip;
 		std::string requires;
 		std::string decoration;

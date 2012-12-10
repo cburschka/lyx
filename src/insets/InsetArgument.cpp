@@ -239,7 +239,7 @@ InsetLayout::InsetDecoration InsetArgument::decoration() const
 
 void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams_in, docstring const & ldelim,
-		docstring const & rdelim) const
+		docstring const & rdelim, docstring const & presetarg) const
 {
 	TexRow texrow;
 	odocstringstream ss;
@@ -247,6 +247,9 @@ void InsetArgument::latexArgument(otexstream & os,
 	OutputParams runparams = runparams_in;
 	InsetText::latex(ots, runparams);
 	docstring str = ss.str();
+	docstring const sep = str.empty() ? docstring() : from_ascii(", ");
+	if (!presetarg.empty())
+		str = presetarg + sep + str;
 	if (ldelim != "{" && support::contains(str, rdelim))
 		str = '{' + str + '}';
 	os << ldelim << str << rdelim;
