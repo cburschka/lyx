@@ -2533,16 +2533,38 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 				args.find(arg);
 		if (lait != args.end()) {
 			enable = true;
-			InsetList::const_iterator it = cur.paragraph().insetList().begin();
-			InsetList::const_iterator const end = cur.paragraph().insetList().end();
-			for (; it != end; ++it) {
-				if (it->inset->lyxCode() == ARG_CODE) {
-					InsetArgument const * ins =
-						static_cast<InsetArgument const *>(it->inset);
-					if (ins->name() == arg) {
-						// we have this already
-						enable = false;
+			pit_type pit = cur.pit();
+			pit_type lastpit = cur.pit();
+			if (lay.isEnvironment() && !prefixIs(arg, "item:")) {
+				// In a sequence of "merged" environment layouts, we only allow
+				// non-item arguments once.
+				lastpit = cur.lastpit();
+				// get the first paragraph in sequence with this layout
+				depth_type const current_depth = cur.paragraph().params().depth();
+				while (true) {
+					if (pit == 0)
 						break;
+					Paragraph cpar = pars_[pit - 1];
+					if (cpar.layout() == lay && cpar.params().depth() == current_depth)
+						--pit;
+					else
+						break;
+				}
+			}
+			for (; pit <= lastpit; ++pit) {
+				if (pars_[pit].layout() != lay)
+					break;
+				InsetList::const_iterator it = pars_[pit].insetList().begin();
+				InsetList::const_iterator end = pars_[pit].insetList().end();
+				for (; it != end; ++it) {
+					if (it->inset->lyxCode() == ARG_CODE) {
+						InsetArgument const * ins =
+							static_cast<InsetArgument const *>(it->inset);
+						if (ins->name() == arg) {
+							// we have this already
+							enable = false;
+							break;
+						}
 					}
 				}
 			}
