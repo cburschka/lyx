@@ -76,6 +76,9 @@ What's new
 - Fix problem using lyxpak.py when outside the LyX tree: Variable was
   undefined.
 
+- Fix layout conversion bug involving quoted Flex inset names that do not
+  contain spaces.
+
 
 * USER INTERFACE
 

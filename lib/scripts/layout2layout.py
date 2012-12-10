@@ -315,9 +315,9 @@ def convert(lines):
             continue
 
         if format == 34:
-          match = re_InsetLayout2.match(lines[i])
+          match = re_QInsetLayout2.match(lines[i])
           if not match:
-            match = re_QInsetLayout2.match(lines[i])
+            match = re_InsetLayout2.match(lines[i])
           if not match:
             match = re_CopyStyle2.match(lines[i])
             if not match:
