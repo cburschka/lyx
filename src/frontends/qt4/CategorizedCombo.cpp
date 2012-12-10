@@ -557,7 +557,8 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 
 QString CategorizedCombo::getData(int row) const
 {
-	return d->model_->data(d->model_->index(row, 1), Qt::DisplayRole).toString();
+	int srow = d->filterModel_->mapToSource(d->filterModel_->index(row, 1)).row();
+	return d->model_->data(d->model_->index(srow, 1), Qt::DisplayRole).toString();
 }
 
 
