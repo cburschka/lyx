@@ -1,0 +1,25 @@
+
+file(GLOB lyx_files "${LYX_ROOT}/lib/doc/*.lyx")
+message(STATUS "lyx_files = ${lyx_files}")
+
+set(ERRORS)
+foreach(format lyx16x xhtml)
+  foreach(f ${lyx_files})
+    message(STATUS "Executing ${lyx} -e ${format} ${f}")
+    #execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${f} localtest.lyx)
+    execute_process(COMMAND ${CMAKE_COMMAND} -E remove localtest.xhtml localtest.16.lyx)
+    execute_process(
+      COMMAND ${lyx} -E ${format} localtest.lyx ${f}
+      RESULT_VARIABLE _err)
+    string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+    if(_erg)
+      list(APPEND ERRORS "Exporting ${f} to ${format}")
+    endif()
+  endforeach()
+endforeach()
+if(ERRORS)
+  foreach(m ${ERRORS})
+    message(STATUS ${m})
+  endforeach()
+  message(FATAL_ERROR "Export failed")
+endif()

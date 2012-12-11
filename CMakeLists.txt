@@ -716,6 +716,7 @@ if(LYX_INSTALL)
 endif()
 
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
+add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
 
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
