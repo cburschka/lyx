@@ -286,6 +286,8 @@ void Cursor::reset()
 	push_back(CursorSlice(buffer()->inset()));
 	anchor_ = doc_iterator_begin(buffer());
 	anchor_.clear();
+	new_word_ = doc_iterator_begin(buffer());
+	new_word_.clear();
 	clearTargetX();
 	selection_ = false;
 	mark_ = false;

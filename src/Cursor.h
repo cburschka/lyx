@@ -52,8 +52,6 @@ public:
 protected:
 	/// the anchor position
 	DocIterator anchor_;
-	/// the start of the new born word
-	DocIterator new_word_;
 	///
 	mutable DispatchResult disp_;
 	/// do we have a selection?
@@ -394,6 +392,8 @@ private:
 	int x_target_;
 	/// if a x_target cannot be hit exactly in a text, put the difference here
 	int textTargetOffset_;
+	/// the start of the new born word
+	DocIterator new_word_;
 	/// position before dispatch started
 	DocIterator beforeDispatchCursor_;
 	/// cursor screen coordinates before dispatch started
