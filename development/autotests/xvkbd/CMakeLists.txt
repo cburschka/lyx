@@ -5,7 +5,6 @@
 #
 project(xvkbd)
 
-find_package(X11 REQUIRED)
 find_package(PkgConfig)
 
 add_definitions(-DUSE_XTEST -DUSE_I18N)
