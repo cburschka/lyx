@@ -234,7 +234,7 @@ def RaiseWindow():
     #intr_system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
     ####intr_system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
     #intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
-    system_retry(30, "wmctrl -a '"+lyx_window_name+"'")
+    system_retry(30, "wmctrl -i -a '"+lyx_window_name+"'")
 
 
 lyx_pid = os.environ.get('LYX_PID')
@@ -359,7 +359,10 @@ while not failed:
             sendKeystring(c[4:], lyx_pid)
         else:
             ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
-            print 'No path /proc/' + lyx_pid + '/status, exiting'
+            if lyx_pid is None:
+              print 'No path /proc/xxxx/status, exiting'
+            else:
+              print 'No path /proc/' + lyx_pid + '/status, exiting'
             os._exit(1)
     elif c[0:4] == 'KD: ':
         key_delay = c[4:].rstrip('\n')
@@ -412,15 +415,17 @@ while not failed:
         else:
             short_code = ccode
         lyx_dir = os.popen("dirname \"" + lyx_exe + "\"").read().rstrip()
-        print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
-        lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
-        intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
-        if lyx_dir[0:3] == "../":
-            rel_dir = "../../" + lyx_dir
-        else:
-            rel_dir = lyx_dir
-        intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
-        intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+        # on cmake-build there is no Makefile in this directory
+        if os.path.exists(lyx_dir + "/Makefile"):
+          print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
+          lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
+          intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
+          if lyx_dir[0:3] == "../":
+              rel_dir = "../../" + lyx_dir
+          else:
+              rel_dir = lyx_dir
+          intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+          intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
     else:
         print "Unrecognised Command '" + c + "'\n"
         failed = True

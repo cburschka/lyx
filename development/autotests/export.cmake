@@ -5,11 +5,10 @@ message(STATUS "lyx_files = ${lyx_files}")
 set(ERRORS)
 foreach(format lyx16x xhtml)
   foreach(f ${lyx_files})
-    message(STATUS "Executing ${lyx} -e ${format} ${f}")
-    #execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${f} localtest.lyx)
+    message(STATUS "Executing ${lyx} -E ${format} localtest.${format} ${f}")
     execute_process(COMMAND ${CMAKE_COMMAND} -E remove localtest.xhtml localtest.16.lyx)
     execute_process(
-      COMMAND ${lyx} -E ${format} localtest.lyx ${f}
+      COMMAND ${lyx} -E ${format} localtest.${format} ${f}
       RESULT_VARIABLE _err)
     string(COMPARE NOTEQUAL  ${_err} 0 _erg)
     if(_erg)

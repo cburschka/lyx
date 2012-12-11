@@ -51,7 +51,7 @@ set(ENV{XVKBD_EXE} ${XVKBD_EXE})
 set(ENV{KEYTEST_INFILE} "${AUTOTEST_ROOT}/${KEYTEST_INFILE}")
 set(ENV{KEYTEST_OUTFILE} "${WORKDIR}/${KEYTEST_OUTFILE}")
 set(ENV{MAX_DROP} 1)
-file(GLOB _testfiles RELATIVE "${WORKDIR}" "test.*")
+file(GLOB _testfiles RELATIVE "${WORKDIR}" "test*.*" "#test*.*")
 if(_testfiles)
   # remove some leftover files from previous test
   execute_process(
