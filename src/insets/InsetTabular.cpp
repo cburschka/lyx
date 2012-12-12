@@ -5315,6 +5315,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::DELETE_ROW:
+		if (sel_row_end == tabular.nrows() - 1 && sel_row_start != 0) {
+			for (col_type c = 0; c < tabular.ncols(); c++)
+				tabular.setBottomLine(tabular.cellIndex(sel_row_start - 1, c),
+					tabular.bottomLine(tabular.cellIndex(sel_row_end, c)));
+		}
+
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			tabular.deleteRow(sel_row_start);
 		if (sel_row_start >= tabular.nrows())
@@ -5326,6 +5332,18 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::DELETE_COLUMN:
+		if (sel_col_end == tabular.ncols() - 1 && sel_col_start != 0) {
+			for (row_type r = 0; r < tabular.nrows(); r++)
+				tabular.setRightLine(tabular.cellIndex(r, sel_col_start - 1),
+					tabular.rightLine(tabular.cellIndex(r, sel_col_end)));
+		}
+
+		if (sel_col_start == 0 && sel_col_end != tabular.ncols() - 1) {
+			for (row_type r = 0; r < tabular.nrows(); r++)
+				tabular.setLeftLine(tabular.cellIndex(r, sel_col_end + 1),
+					tabular.leftLine(tabular.cellIndex(r, 0)));
+		}
+
 		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
 			tabular.deleteColumn(sel_col_start);
 		if (sel_col_start >= tabular.ncols())
