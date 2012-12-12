@@ -1,4 +1,17 @@
-
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2012 Kornel Benko kornel@lyx.org
+#
+#
+# LYX_ROOT  = ${TOP_SRC_DIR}
+# lyx       = ${TOP_BINARY_DIR}/bin/${CMAKE_CFG_INTDIR}/lyx
+#
+# Script should be called like:
+# cmake -DLYX_ROOT=xxx \
+#       -Dlyx=xxx \
+#       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
+#
 file(GLOB lyx_files "${LYX_ROOT}/lib/doc/*.lyx")
 message(STATUS "lyx_files = ${lyx_files}")
 

@@ -4,9 +4,16 @@
 # Copyright (c) 2012 Kornel Benko kornel@lyx.org
 #
 
-if(UNIX)
+if(Q_WS_X11)
+  # Make sure, the needed programs are in PATH
+  find_program(PCREGREP_EXE "pcregrep")
+  find_program(WMCTRL_EXE "wmctrl")
+  # This is needed to build xvkbd
+  # Programs pcregrep wmctrl and xvkbd are used in subsequent scripts
+  # while testing
   find_package(X11)
-  if(X11_FOUND)
+  if(X11_FOUND AND PCREGREP_EXE AND WMCTRL_EXE)
+    message(STATUS "PCREGREP_EXE and WMCTRL_EXE found")
     project(autotests)
 
     add_subdirectory(xvkbd)
@@ -36,9 +43,9 @@ if(UNIX)
         -DLOCALE_DIR=${LOCALE_DIR}
         -P ${TOP_SRC_DIR}/development/autotests/single-test.cmake)
     endforeach()
-    add_test(NAME lyx_export
-      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-      COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR} -Dlyx=${TOP_BINARY_DIR}/bin/${CMAKE_CFG_INTDIR}/lyx -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-    set_tests_properties(lyx_export PROPERTIES DEPENDS lyx)
   endif()
 endif()
+add_test(NAME lyx_export
+  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+  COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR} -Dlyx=${TOP_BINARY_DIR}/bin/${CMAKE_CFG_INTDIR}/lyx -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+set_tests_properties(lyx_export PROPERTIES DEPENDS lyx)
