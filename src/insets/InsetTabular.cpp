@@ -4054,6 +4054,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (select_whole && !empty_cell){
 				getText(cur.idx())->selectAll(cur);
 				cur.dispatched();
+				cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 				break;
 			}
 
