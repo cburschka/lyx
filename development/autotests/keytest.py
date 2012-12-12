@@ -250,6 +250,14 @@ max_loops = os.environ.get('MAX_LOOPS')
 if max_loops is None:
     max_loops = 3
 
+PACKAGE = os.environ.get('PACKAGE')
+if not PACKAGE is None:
+  print "PACKAGE = " + PACKAGE + "\n"
+
+PO_BUILD_DIR = os.environ.get('PO_BUILD_DIR')
+if not PO_BUILD_DIR is None:
+  print "PO_BUILD_DIR = " + PO_BUILD_DIR + "\n"
+
 lyx_exe = os.environ.get('LYX_EXE')
 if lyx_exe is None:
     lyx_exe = "lyx"
@@ -415,17 +423,27 @@ while not failed:
         else:
             short_code = ccode
         lyx_dir = os.popen("dirname \"" + lyx_exe + "\"").read().rstrip()
-        # on cmake-build there is no Makefile in this directory
-        if os.path.exists(lyx_dir + "/Makefile"):
-          print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
-          lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
-          intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
-          if lyx_dir[0:3] == "../":
-              rel_dir = "../../" + lyx_dir
+        if PACKAGE is None:
+          # on cmake-build there is no Makefile in this directory
+          # so PACKAGE has to be provided
+          if os.path.exists(lyx_dir + "/Makefile"):
+            print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
+            lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
           else:
-              rel_dir = lyx_dir
-          intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
-          intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+            print 'Could not determine PACKAGE name needed for translations\n'
+            failed = True
+        else:
+          lyx_name = PACKAGE
+        intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
+        intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+        if PO_BUILD_DIR is None:
+            if lyx_dir[0:3] == "../":
+                rel_dir = "../../" + lyx_dir
+            else:
+                rel_dir = lyx_dir
+            intr_system("ln -s " + rel_dir + "/../po/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
+        else:
+            intr_system("ln -s " + PO_BUILD_DIR + "/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
     else:
         print "Unrecognised Command '" + c + "'\n"
         failed = True

@@ -6,18 +6,23 @@
 # KEYTEST_OUTFILE = xxx-out.txt
 # BINDIR          = ${BUILD_DIR}/bin
 # WORKDIR         = ${BUILD_DIR}/autotests/out-home
+# LOCALE_DIR      = ${BUILD_DIR}/autotests/locale
+# PO_BUILD_DIR    = ${BUILD_DIR}/po
+# PACKAGE         = lyx2.1
 #
 # Script should be called like:
 # cmake -DAUTOTEST_ROOT=xxxx \
 #       -DKEYTEST_INFILE=xxxx \
 #       -DKEYTEST_OUTFILE=xxx \
 #       -DBINDIR=xxx \
-#       -WWORKDIR=xxx \
+#       -DWORKDIR=xxx \
+#       -DLOCALE_DIR=xxx \
+#       -DPO_BUILD_DIR=xxx \
+#       -DPACKAGE=xxx \
 #       -P ${AUTOTEST_ROOT}/single-test.cmake
 
 set(KEYTEST "${AUTOTEST_ROOT}/keytest.py")
 
-set(MAX_DROP 0)
 execute_process(COMMAND pidof lyx OUTPUT_VARIABLE LYX_PID RESULT_VARIABLE pidstat OUTPUT_VARIABLE pidres)
 message(STATUS "pidres = ${pidres}")
 if (NOT pidstat)
@@ -43,6 +48,9 @@ set(LYX_EXE "${BINDIR}/lyx")
 set(XVKBD_EXE "${BINDIR}/xvkbd")
 
 # Environments needed by keytest.py
+set(ENV{PACKAGE} ${PACKAGE})
+set(ENV{LOCALE_DIR} ${LOCALE_DIR})
+set(ENV{LYX_LOCALEDIR} "${WORKDIR}/../locale")
 set(ENV{LYX_USERDIR} ${LYX_USERDIR})
 set(ENV{LYX_PID} ${pidres})
 set(ENV{LYX_WINDOW_NAME} ${LYX_WINDOW_NAME})
@@ -50,6 +58,7 @@ set(ENV{LYX_EXE} ${LYX_EXE})
 set(ENV{XVKBD_EXE} ${XVKBD_EXE})
 set(ENV{KEYTEST_INFILE} "${AUTOTEST_ROOT}/${KEYTEST_INFILE}")
 set(ENV{KEYTEST_OUTFILE} "${WORKDIR}/${KEYTEST_OUTFILE}")
+set(ENV{PO_BUILD_DIR} "${PO_BUILD_DIR}")
 set(ENV{MAX_DROP} 1)
 file(GLOB _testfiles RELATIVE "${WORKDIR}" "test*.*" "#test*.*")
 if(_testfiles)

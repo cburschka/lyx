@@ -27,10 +27,13 @@ if(UNIX)
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
 	COMMAND ${CMAKE_COMMAND}
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
+        -DPO_BUILD_DIR=${TOP_BINARY_DIR}/po
         -DKEYTEST_INFILE=${_tf}
         -DBINDIR=${TOP_BINARY_DIR}/bin/${CMAKE_CFG_INTDIR}
 	-DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -DKEYTEST_OUTFILE=${_t}-out.txt
+        -DPACKAGE=${PACKAGE}
+        -DLOCALE_DIR=${LOCALE_DIR}
         -P ${TOP_SRC_DIR}/development/autotests/single-test.cmake)
     endforeach()
     add_test(NAME lyx_export
