@@ -4120,7 +4120,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.setCurrentFont();
 			return;
 		}
-		cur.screenUpdateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_UP_SELECT:
@@ -4158,7 +4158,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.setCurrentFont();
 			return;
 		}
-		cur.screenUpdateFlags(Update::FitCursor);
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 //	case LFUN_SCREEN_DOWN: {
