@@ -4093,6 +4093,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 			cur.setCurrentFont();
+			cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 			return;
 		}
 		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
@@ -4131,6 +4132,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.pit() = 0;
 			cur.pos() = cur.lastpos();
 			cur.setCurrentFont();
+			cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 			return;
 		}
 		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
