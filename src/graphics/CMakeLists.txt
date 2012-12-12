@@ -12,7 +12,9 @@ file(GLOB graphics_headers ${TOP_SRC_DIR}/src/graphics/${LYX_HPP_FILES})
 lyx_add_msvc_pch(graphics)
 
 
-include_directories(${TOP_SRC_DIR}/src/graphics)
+include_directories(${TOP_SRC_DIR}/src/graphics
+        ${QT_INCLUDES}
+)
 
 if(NOT LYX_MERGE_FILES)
 	add_library(graphics ${library_type} ${graphics_sources} ${graphics_headers})
