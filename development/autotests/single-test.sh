@@ -18,7 +18,7 @@ fi
 export MAX_DROP=0
 if [ "$(pidof lyx)" != "" ]; then
     export LYX_PID=$(pidof lyx)
-    export LYX_WINDOW_NAME=$(wmctrl -l | grep " $LYX_PID " | cut -d ' ' -f 1);
+    export LYX_WINDOW_NAME=$(wmctrl -l -p | grep " $LYX_PID " | cut -d ' ' -f 1);
 fi
 export MAX_LOOPS=1
 export LYX_EXE=${LYX_EXE:-../../src/lyx}
