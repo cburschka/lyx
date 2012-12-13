@@ -583,20 +583,22 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	double const font_scaling_factor = 
 		buffer_.isExporting() ? 75.0 * buffer_.params().html_math_img_scale 
 			: 0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor;
-
-	// FIXME XHTML 
-	// The colors should be customizable.
-	ColorCode const bg = buffer_.isExporting() 
-	               ? Color_white : PreviewLoader::backgroundColor();
-	ColorCode const fg = buffer_.isExporting() 
-	               ? Color_black : PreviewLoader::foregroundColor();
+	
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
-	   << " --dpi " << int(font_scaling_factor)
-	   << " --fg " << theApp()->hexName(fg)
-	   << " --bg " << theApp()->hexName(bg);
+	   << " --dpi " << int(font_scaling_factor);
+
+	// FIXME XHTML 
+	// The colors should be customizable.
+	if (!buffer_.isExporting()) {
+		ColorCode const fg = PreviewLoader::foregroundColor();
+		ColorCode const bg = PreviewLoader::backgroundColor();
+		cs << " --fg " << theApp()->hexName(fg) 
+		   << " --bg " << theApp()->hexName(bg);
+	}
+
 	// FIXME what about LuaTeX?
 	if (buffer_.params().useNonTeXFonts)
 		cs << " --latex=xelatex";
