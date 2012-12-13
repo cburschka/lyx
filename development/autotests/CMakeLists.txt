@@ -30,7 +30,7 @@ if(Q_WS_X11)
 
     foreach(_tf first-time-in.txt hello-world-in.txt ${TESTST})
       string(REGEX REPLACE "-in\\.(txt|sh)" "" _t ${_tf})
-      add_test(NAME "auto_${_t}"
+      add_test(NAME "autotests/${_t}"
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
 	COMMAND ${CMAKE_COMMAND}
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
@@ -50,7 +50,7 @@ file(GLOB lyx_files RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.
 foreach(f ${lyx_files})
   # Strip extension
   string(REGEX REPLACE "\\.lyx$" "" f ${f})
-  add_test(NAME export_${f}_lyx16
+  add_test(NAME autotests/export_${f}_lyx16
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
     COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
             -Dlyx=$<TARGET_FILE:lyx>
@@ -58,7 +58,7 @@ foreach(f ${lyx_files})
 	    -Dextension=16.lyx
 	    -Dfile=${f}
 	    -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-  add_test(NAME export_${f}_xhtml
+  add_test(NAME autotests/export_${f}_xhtml
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
     COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
             -Dlyx=$<TARGET_FILE:lyx>

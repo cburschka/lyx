@@ -32,17 +32,17 @@ ADD_CUSTOM_COMMAND(
 
 #ADD_CUSTOM_TARGET(test DEPENDS ${_tex2lyx} ${_lyx} ${_test_output})
 
-add_test(NAME build_tex2lyx
+add_test(NAME tex2lyx/create_tex2lyx
   COMMAND "${CMAKE_COMMAND}" --build ${CMAKE_BINARY_DIR} --target ${_tex2lyx})
-add_test(NAME build_lyx
+add_test(NAME tex2lyx/create_lyx
   COMMAND "${CMAKE_COMMAND}" --build ${CMAKE_BINARY_DIR} --target ${_lyx})
-add_test(NAME roundtrip_tex2lyx
+add_test(NAME tex2lyx/roundtrip
   WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
   COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py"
   "${TOP_BINARY_DIR}/bin/${CMAKE_CFG_INTDIR}/${_tex2lyx}"
   "${TOP_SRC_DIR}/lib/scripts"
   "${CMAKE_CURRENT_BINARY_DIR}")
 
-set_tests_properties(build_tex2lyx PROPERTIES DEPENDS build_lyx)
-set_tests_properties(roundtrip_tex2lyx PROPERTIES DEPENDS build_tex2lyx)
+set_tests_properties(tex2lyx/create_tex2lyx PROPERTIES DEPENDS tex2lyx/create_lyx)
+set_tests_properties(tex2lyx/roundtrip PROPERTIES DEPENDS tex2lyx/create_tex2lyx)
 
