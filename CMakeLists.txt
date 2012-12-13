@@ -716,7 +716,10 @@ if(LYX_INSTALL)
 endif()
 
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
-add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
+if(Q_WS_X11)
+	message(STATUS "Adding auto test...")
+	add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
+endif()
 
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
