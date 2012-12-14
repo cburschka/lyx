@@ -153,7 +153,6 @@ void Context::check_layout(ostream & os)
 		}
 		need_layout = false;
 		need_end_layout = true;
-		os << "\n";
 		empty = false;
 	}
 }
