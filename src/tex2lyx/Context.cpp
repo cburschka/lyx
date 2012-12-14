@@ -96,7 +96,7 @@ Context::Context(bool need_layout_,
 Context::~Context()
 {
 	if (!par_extra_stuff.empty())
-		cerr << "Bug: Ignoring par-level extra stuff '" 
+		cerr << "Bug: Ignoring par-level extra stuff '"
 		     << par_extra_stuff << '\'' << endl;
 }
 

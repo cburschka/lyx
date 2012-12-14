@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz 
+ * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -27,7 +27,7 @@ CatCode theCatcode[256];
 void catInit()
 {
 	static bool init_done = false;
-	if (init_done) 
+	if (init_done)
 		return;
 	init_done = true;
 
@@ -164,8 +164,8 @@ Parser::Parser(idocstream & is)
 
 
 Parser::Parser(string const & s)
-	: lineno_(0), pos_(0), 
-	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_), 
+	: lineno_(0), pos_(0),
+	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_),
 	  encoding_latex_("utf8")
 {
 }
@@ -539,7 +539,7 @@ void Parser::tokenize_one()
 {
 	catInit();
 	char_type c;
-	if (!is_.get(c)) 
+	if (!is_.get(c))
 		return;
 
 	switch (catcode(c)) {

@@ -925,7 +925,7 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 } // anonymous namespace
 
 
-bool tex2lyx(string const & infilename, FileName const & outfilename, 
+bool tex2lyx(string const & infilename, FileName const & outfilename,
 	     string const & encoding)
 {
 	if (outfilename.isReadableFile()) {
@@ -1002,7 +1002,7 @@ int main(int argc, char * argv[])
 
 	easyParse(argc, argv);
 
-	if (argc <= 1) 
+	if (argc <= 1)
 		error_message("Not enough arguments.");
 
 	try {
@@ -1059,13 +1059,13 @@ int main(int argc, char * argv[])
 	// Read the encodings table.
 	FileName const symbols_path = libFileSearch(string(), "unicodesymbols");
 	if (symbols_path.empty()) {
-		cerr << "Error: Could not find file \"unicodesymbols\"." 
+		cerr << "Error: Could not find file \"unicodesymbols\"."
 		     << endl;
 		return EXIT_FAILURE;
 	}
 	FileName const enc_path = libFileSearch(string(), "encodings");
 	if (enc_path.empty()) {
-		cerr << "Error: Could not find file \"encodings\"." 
+		cerr << "Error: Could not find file \"encodings\"."
 		     << endl;
 		return EXIT_FAILURE;
 	}

@@ -734,13 +734,13 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			}
 		}
 
-		else if (t.cat() == catSpace 
+		else if (t.cat() == catSpace
 			 || t.cat() == catNewline
-			 || t.cat() == catLetter 
-			 || t.cat() == catSuper 
-			 || t.cat() == catSub 
-			 || t.cat() == catOther 
-			 || t.cat() == catActive 
+			 || t.cat() == catLetter
+			 || t.cat() == catSuper
+			 || t.cat() == catSub
+			 || t.cat() == catOther
+			 || t.cat() == catActive
 			 || t.cat() == catParameter)
 			os << t.cs();
 

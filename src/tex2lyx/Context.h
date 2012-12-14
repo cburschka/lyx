@@ -113,7 +113,7 @@ public:
 	/// Add extra stuff if not already there
 	void add_extra_stuff(std::string const &);
 
-	/*! 
+	/*!
 	 *  Add paragraph-level extra stuff if not already there. This
 	 *  will be reset at the next check_layout()
 	 */

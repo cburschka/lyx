@@ -1430,7 +1430,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 				// This hack must be removed once bug 8049 is fixed!
 				if ((it + 1 != et) && (it + 2 != et || *it2 != '\n'))
 					os << "\n\\end_layout\n\\begin_layout Verbatim\n";
-			} else 
+			} else
 				os << *it;
 		}
 		os << "\n\\end_layout\n\n";
@@ -1471,7 +1471,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					handle_ert(os, "\\", parent_context);
 				else if (*it == '$')
 					handle_ert(os, "$", parent_context);
-				else 
+				else
 					os << *it;
 			}
 			handle_ert(os, "\\end{" + name + "}",
@@ -3625,8 +3625,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			                      context, "\\lang",
 			                      context.font.language, lang);
 		}
-		
-		else if (prefixIs(t.cs(), "text") 
+
+		else if (prefixIs(t.cs(), "text")
 			 && is_known(t.cs().substr(4), preamble.polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string lang;
