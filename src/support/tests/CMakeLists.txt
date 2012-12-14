@@ -38,14 +38,11 @@ foreach(_src ${check_PROGRAMS})
 	string(REPLACE "check_" "" _srcx ${_src})
 	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
 	set(created_data_file "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}_data")
-        add_test(NAME support/${_srcx}/build
-	  COMMAND "${CMAKE_COMMAND}" --build ${CMAKE_BINARY_DIR} --target ${_src})
-	add_test(NAME support/${_srcx}/createdata
-	  COMMAND ${_src} > "${created_data_file}")
-	add_test(NAME support/${_srcx}/compare
-	  COMMAND ${CMAKE_COMMAND} -E compare_files "${src_data_file}" "${created_data_file}")
-	set_tests_properties(support/${_srcx}/createdata PROPERTIES DEPENDS support/${_srcx}/build )
-	set_tests_properties(support/${_srcx}/compare PROPERTIES DEPENDS support/${_srcx}/createdata)
+        add_test(NAME support/${_srcx}
+          COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:${_src}>
+                                   -DInput=${src_data_file}
+                                   -DOutput=${created_data_file}
+                                   -P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
 endforeach()
 
 
