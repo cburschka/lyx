@@ -30,3 +30,4 @@ else()
 endif()
 
 target_link_libraries(xvkbd ${XVFBDLIBS})
+add_dependencies(lyx_run_tests xvkbd)

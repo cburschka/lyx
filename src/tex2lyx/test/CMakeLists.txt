@@ -25,4 +25,5 @@ foreach(_fl ${_tex_tests})
     ${fl})
 endforeach()
 
+add_dependencies(lyx_run_tests ${_tex2lyx} ${_lyx})
 

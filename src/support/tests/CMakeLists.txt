@@ -45,6 +45,7 @@ foreach(_src ${check_PROGRAMS})
                                    -P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
 
 	set_target_properties(${_src} PROPERTIES FOLDER "tests/support")
+	add_dependencies(lyx_run_tests ${_src})
 endforeach()
 
 

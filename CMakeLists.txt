@@ -700,6 +700,17 @@ endif()
 
 set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
 set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
+
+set (cmd ${CMAKE_CTEST_COMMAND})
+if (MSVC)
+	set (cmd ${cmd} -C ${CMAKE_CFG_INTDIR})
+else ()
+	set (cmd ${cmd} -C ${CMAKE_BUILD_TYPE})
+endif ()
+add_custom_target (lyx_run_tests COMMAND ${cmd})
+set_target_properties(lyx_run_tests PROPERTIES FOLDER "tests")
+
+
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
 add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
