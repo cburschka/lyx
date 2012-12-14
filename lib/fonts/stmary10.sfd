@@ -33,28 +33,31 @@ HheadDescent: 0
 HheadDOffset: 1
 OS2Vendor: 'PfEd'
 DEI: 91125
-Encoding: Custom
+Encoding: UnicodeBmp
 UnicodeInterp: none
 NameList: Adobe Glyph List
 DisplaySize: -96
 AntiAlias: 1
 FitToEm: 1
 WinInfo: 90 10 6
-BeginPrivate: 9
-BlueValues 7 [ 0 0 ]
-BlueScale 7 0.04379
-BlueShift 1 7
-BlueFuzz 1 1
-StdHW 6 [ 25 ]
-StdVW 6 [ 25 ]
-ForceBold 5 false
-StemSnapH 15 [ 25 40 67 81 ]
-StemSnapV 15 [ 25 40 67 81 ]
-EndPrivate
-BeginChars: 256 128
+BeginChars: 65539 131
+
+StartChar: .notdef
+Encoding: 65536 -1 0
+Width: 333
+Flags: W
+LayerCount: 2
+EndChar
+
+StartChar: .null
+Encoding: 65537 -1 1
+Width: 0
+Flags: W
+LayerCount: 2
+EndChar
 
 StartChar: shortrightarrow
-Encoding: 1 8594 0
+Encoding: 1 1 2
 Width: 778
 Flags: MW
 HStem: 72 21<538.5 539 539 547> 230 40<68.5 636 75 636> 408 20G<539 547 547 549.5>
@@ -87,7 +90,7 @@ EndSplineSet
 EndChar
 
 StartChar: shortuparrow
-Encoding: 2 8593 1
+Encoding: 2 2 3
 Width: 500
 Flags: MW
 HStem: -83 21<244 254> 564 20G<248 250>
@@ -119,7 +122,7 @@ EndSplineSet
 EndChar
 
 StartChar: shortdownarrow
-Encoding: 3 8595 2
+Encoding: 3 3 4
 Width: 500
 Flags: MW
 HStem: -84 21<248 250> 563 20G<229 254 244 269>
@@ -152,7 +155,7 @@ EndSplineSet
 EndChar
 
 StartChar: Yup
-Encoding: 4 -1 3
+Encoding: 4 4 5
 Width: 556
 Flags: MW
 HStem: 28 21<72.5 77.5 475.5 480.5> 508 20G<257 282.5 271.5 297>
@@ -181,7 +184,7 @@ EndSplineSet
 EndChar
 
 StartChar: Ydown
-Encoding: 5 -1 4
+Encoding: 5 5 6
 Width: 556
 Flags: MW
 HStem: -28 21<271.5 282.5> 452 20G<72.5 77.5 475.5 480.5>
@@ -210,7 +213,7 @@ EndSplineSet
 EndChar
 
 StartChar: Yleft
-Encoding: 6 -1 5
+Encoding: 6 6 7
 Width: 611
 Flags: MW
 HStem: 28 21<531.5 536.5> 230 40<69.5 324 75 324> 452 20G<531.5 536.5>
@@ -238,7 +241,7 @@ EndSplineSet
 EndChar
 
 StartChar: Yright
-Encoding: 7 -1 6
+Encoding: 7 7 8
 Width: 611
 Flags: MW
 HStem: 28 21<72.5 77.5> 230 40<285 534 285 534> 452 20G<72.5 77.5>
@@ -266,7 +269,7 @@ EndSplineSet
 EndChar
 
 StartChar: varcurlyvee
-Encoding: 8 -1 7
+Encoding: 8 8 9
 Width: 667
 Flags: MW
 HStem: -217 21<326.5 337.5> 674 20G<17 22 643 648>
@@ -293,7 +296,7 @@ EndSplineSet
 EndChar
 
 StartChar: varcurlywedge
-Encoding: 9 -1 8
+Encoding: 9 9 10
 Width: 667
 Flags: MW
 HStem: -217 21<17 22.5 642.5 648> 674 20G<326.5 337.5>
@@ -320,7 +323,7 @@ EndSplineSet
 EndChar
 
 StartChar: minuso
-Encoding: 10 -1 9
+Encoding: 10 10 11
 Width: 778
 Flags: MW
 HStem: 28 40<364 412 364 417.5> 230 40<69.5 166 75 166 206 569 609 700> 432 40<364 412>
@@ -361,7 +364,7 @@ EndSplineSet
 EndChar
 
 StartChar: baro
-Encoding: 11 -1 10
+Encoding: 11 11 12
 Width: 556
 Flags: MW
 HStem: -83 21<271.5 282.5> 30 40<257 257> 430 40<257 257> 563 20G<257 282.5 271.5 297>
@@ -402,7 +405,7 @@ EndSplineSet
 EndChar
 
 StartChar: sslash
-Encoding: 12 -1 11
+Encoding: 12 12 13
 Width: 667
 Flags: MW
 HStem: -250 21<75 80 241 246> 730 20G<418 423 585 590>
@@ -435,7 +438,7 @@ EndSplineSet
 EndChar
 
 StartChar: bbslash
-Encoding: 13 -1 12
+Encoding: 13 13 14
 Width: 667
 Flags: MW
 HStem: -250 21<418 423 585 590> 730 20G<75 80 241 246>
@@ -468,7 +471,7 @@ EndSplineSet
 EndChar
 
 StartChar: moo
-Encoding: 14 -1 13
+Encoding: 14 14 15
 Width: 778
 Flags: MW
 HStem: -22 40<214.5 274.5 501.5 561> 230 40<125.5 368 131 367 408 645> 502 20G<368 393.5 382.5 408>
@@ -509,7 +512,7 @@ EndSplineSet
 EndChar
 
 StartChar: varotimes
-Encoding: 15 -1 14
+Encoding: 15 15 16
 Width: 778
 Flags: MW
 HStem: -82 40<352.5 423.5 352.5 432> 542 40<352.5 423.5>
@@ -550,7 +553,7 @@ EndSplineSet
 EndChar
 
 StartChar: varoast
-Encoding: 16 -1 15
+Encoding: 16 16 17
 Width: 778
 Flags: MW
 HStem: -82 40<349 426.5 349 432> 542 40<349 426.5>
@@ -613,7 +616,7 @@ EndSplineSet
 EndChar
 
 StartChar: varobar
-Encoding: 17 -1 16
+Encoding: 17 17 18
 Width: 778
 Flags: MW
 HStem: -82 40<368 368> 542 40<368 368 408 408>
@@ -646,7 +649,7 @@ EndSplineSet
 EndChar
 
 StartChar: varodot
-Encoding: 18 -1 17
+Encoding: 18 18 19
 Width: 778
 Flags: MW
 HStem: -82 40<349 426.5 349 432> 542 40<349 426.5>
@@ -685,7 +688,7 @@ EndSplineSet
 EndChar
 
 StartChar: varoslash
-Encoding: 19 -1 18
+Encoding: 19 19 20
 Width: 778
 Flags: MW
 HStem: -82 40<352.5 426.5 352.5 432> 542 40<349 423.5>
@@ -718,7 +721,7 @@ EndSplineSet
 EndChar
 
 StartChar: varobslash
-Encoding: 20 -1 19
+Encoding: 20 20 21
 Width: 778
 Flags: MW
 HStem: -82 40<349 423.5 349 432> 542 40<352.5 426.5>
@@ -751,7 +754,7 @@ EndSplineSet
 EndChar
 
 StartChar: varocircle
-Encoding: 21 -1 20
+Encoding: 21 21 22
 Width: 778
 Flags: MW
 HStem: -82 40<349 426.5 349 432> 74 40<370 406 370 411.5> 386 40<370 406> 542 40<349 426.5>
@@ -799,7 +802,7 @@ EndSplineSet
 EndChar
 
 StartChar: varoplus
-Encoding: 22 -1 21
+Encoding: 22 22 23
 Width: 778
 Flags: MW
 HStem: -82 40<368 368> 230 40<96 368 96 368 408 680> 542 40<368 368 408 408>
@@ -840,7 +843,7 @@ EndSplineSet
 EndChar
 
 StartChar: varominus
-Encoding: 23 -1 22
+Encoding: 23 23 24
 Width: 778
 Flags: MW
 HStem: -82 40<349 426.5 349 432> 230 40<96 680 96 680> 542 40<349 426.5>
@@ -873,7 +876,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxast
-Encoding: 24 -1 23
+Encoding: 24 24 25
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 652 123 652 123 673> 515 40<123 652 123 123>
@@ -932,7 +935,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxbar
-Encoding: 25 -1 24
+Encoding: 25 25 26
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 368 123 368 408 652> 515 40<123 368 123 123 408 408 408 652>
@@ -963,7 +966,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxdot
-Encoding: 26 -1 25
+Encoding: 26 26 27
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 652 123 652 123 673> 515 40<123 652 123 123>
@@ -998,7 +1001,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxslash
-Encoding: 27 -1 26
+Encoding: 27 27 28
 Width: 778
 Flags: MW
 HStem: -55 40<152 652 152 673> 515 40<123 624 123 123>
@@ -1028,7 +1031,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxbslash
-Encoding: 28 -1 27
+Encoding: 28 28 29
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 624 123 624 123 673> 515 40<152 652 152 152>
@@ -1058,7 +1061,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxcircle
-Encoding: 29 -1 28
+Encoding: 29 29 30
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 652 123 652 123 673> 108 40<374.5 401.5 374.5 407> 352 40<374.5 401.5> 515 40<123 652 123 123>
@@ -1102,7 +1105,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxbox
-Encoding: 30 -1 29
+Encoding: 30 30 31
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 652 123 652 123 673> 116 40<268.5 482 294 482 294 502> 344 40<294 482 294 294> 515 40<123 652 123 123>
@@ -1142,7 +1145,7 @@ EndSplineSet
 EndChar
 
 StartChar: boxempty
-Encoding: 31 -1 30
+Encoding: 31 31 32
 Width: 778
 Flags: MW
 HStem: -55 40<97.5 652 123 652 123 673> 515 40<123 652 123 123>
@@ -1168,7 +1171,7 @@ EndSplineSet
 EndChar
 
 StartChar: lightning
-Encoding: 32 -1 31
+Encoding: 32 32 33
 Width: 611
 Flags: MW
 HStem: -194 21<175.5 178.5> -108 29<348.5 397 387 395> 674 20G<364 369>
@@ -1215,7 +1218,7 @@ EndSplineSet
 EndChar
 
 StartChar: merge
-Encoding: 33 -1 32
+Encoding: 33 33 34
 Width: 889
 Flags: MW
 HStem: 0 21<80 85 333 338.5 548.5 554 802 807> 717 20G<313 318 569 574>
@@ -1261,7 +1264,7 @@ EndSplineSet
 EndChar
 
 StartChar: vartimes
-Encoding: 34 -1 33
+Encoding: 34 34 35
 Width: 556
 Flags: MW
 HStem: 0 21<73 78.5 474.5 480> 674 20G<74 79.5 474.5 480>
@@ -1297,7 +1300,7 @@ EndSplineSet
 EndChar
 
 StartChar: fatsemi
-Encoding: 35 -1 34
+Encoding: 35 35 36
 Width: 333
 Flags: MW
 HStem: -194 21<128 133> 0 40<146.5 175> 181 40<146.5 185> 342 40<146.5 185 146.5 196.5> 522 40<146.5 185>
@@ -1335,7 +1338,7 @@ EndSplineSet
 EndChar
 
 StartChar: ssearrow
-Encoding: 36 -1 35
+Encoding: 36 36 37
 Width: 611
 Flags: MW
 HStem: -194 21<175.5 178.5> -108 29<348.5 401 387 395> 675 20G<529.5 538>
@@ -1370,7 +1373,7 @@ EndSplineSet
 EndChar
 
 StartChar: curlywedgeuparrow
-Encoding: 37 -1 36
+Encoding: 37 37 38
 Width: 611
 Flags: MW
 HStem: -194 21<430.5 433.5> -108 29<212.5 214 214 222 222 223> 675 20G<71 79.5>
@@ -1406,7 +1409,7 @@ EndSplineSet
 EndChar
 
 StartChar: sswarrow
-Encoding: 38 -1 37
+Encoding: 38 38 39
 Width: 667
 Flags: MW
 HStem: -194 21<17 22 643 648> 688 20G<330.5 333>
@@ -1449,7 +1452,7 @@ EndSplineSet
 EndChar
 
 StartChar: curlywedgedownarrow
-Encoding: 39 -1 38
+Encoding: 39 39 40
 Width: 667
 Flags: MW
 HStem: -225 21<422 424> -184 29G<77.5 86 86 115 574 587.5> 697 20G<326.5 337.5>
@@ -1516,7 +1519,7 @@ EndSplineSet
 EndChar
 
 StartChar: fatslash
-Encoding: 40 -1 39
+Encoding: 40 40 41
 Width: 722
 Flags: MW
 HStem: -250 40<293.5 509 328 509 328 523> 710 40<659 659 659 840>
@@ -1543,7 +1546,7 @@ EndSplineSet
 EndChar
 
 StartChar: fatbslash
-Encoding: 41 -1 40
+Encoding: 41 41 42
 Width: 722
 Flags: MW
 HStem: -250 40<417 616 435 616 435 645> 710 40<104 104 104 285>
@@ -1571,7 +1574,7 @@ EndSplineSet
 EndChar
 
 StartChar: lbag
-Encoding: 42 -1 41
+Encoding: 42 42 43
 Width: 444
 Flags: MW
 HStem: -250 40<304.5 372.5 304.5 372.5> 710 40<152.5 194>
@@ -1596,7 +1599,7 @@ EndSplineSet
 EndChar
 
 StartChar: rbag
-Encoding: 43 -1 42
+Encoding: 43 43 44
 Width: 444
 Flags: MW
 HStem: -250 40<69.5 136.5 69.5 163> 710 40<248.5 290>
@@ -1622,7 +1625,7 @@ EndSplineSet
 EndChar
 
 StartChar: varbigcirc
-Encoding: 44 -1 43
+Encoding: 44 44 45
 Width: 1000
 Flags: MW
 HStem: -194 41<445.5 552.5 445.5 558> 653 41<445.5 552.5>
@@ -1652,7 +1655,7 @@ EndSplineSet
 EndChar
 
 StartChar: leftrightarroweq
-Encoding: 45 -1 44
+Encoding: 45 45 46
 Width: 778
 Flags: MW
 HStem: 132 40<69.5 210 75 210 228 548 566 700> 328 40<125 650 125 650> 506 20G<215 223 223 226 553 561 561 563.5>
@@ -1704,7 +1707,7 @@ EndSplineSet
 EndChar
 
 StartChar: curlyveedownarrow
-Encoding: 46 -1 45
+Encoding: 46 46 47
 Width: 667
 Flags: MW
 HStem: -208 21<330.5 333> 674 20G<17 22 643 648>
@@ -1744,7 +1747,7 @@ EndSplineSet
 EndChar
 
 StartChar: curlyveeuparrow
-Encoding: 47 -1 46
+Encoding: 47 47 48
 Width: 667
 Flags: MW
 HStem: -217 21<326.5 337.5> 655 29<77.5 90 75 115.5 549.5 574 574 587.5> 706 20G<240 242.5 422.5 425>
@@ -1811,7 +1814,7 @@ EndSplineSet
 EndChar
 
 StartChar: nnwarrow
-Encoding: 48 -1 47
+Encoding: 48 48 49
 Width: 611
 Flags: MW
 HStem: -195 21<529.5 538> 579 29<386 387 387 395 395 397> 674 20G<175.5 178.5>
@@ -1847,7 +1850,7 @@ EndSplineSet
 EndChar
 
 StartChar: nnearrow
-Encoding: 49 -1 48
+Encoding: 49 49 50
 Width: 611
 Flags: MW
 HStem: -195 21<71 79.5> 579 29<209.5 223 214 222> 674 20G<430.5 435>
@@ -1886,7 +1889,7 @@ EndSplineSet
 EndChar
 
 StartChar: leftslice
-Encoding: 50 -1 49
+Encoding: 50 50 51
 Width: 778
 Flags: MW
 HStem: 9 21<607.5 611.5> 471 20G<607.5 611.5>
@@ -1916,7 +1919,7 @@ EndSplineSet
 EndChar
 
 StartChar: rightslice
-Encoding: 51 -1 50
+Encoding: 51 51 52
 Width: 778
 Flags: MW
 HStem: 9 21<163.5 167.5> 471 20G<163.5 167.5>
@@ -1946,7 +1949,7 @@ EndSplineSet
 EndChar
 
 StartChar: varolessthan
-Encoding: 52 -1 51
+Encoding: 52 52 53
 Width: 778
 Flags: MW
 HStem: -82 40<349 421.5 349 432> 542 40<349 421.5>
@@ -1982,7 +1985,7 @@ EndSplineSet
 EndChar
 
 StartChar: varogreaterthan
-Encoding: 53 -1 52
+Encoding: 53 53 54
 Width: 778
 Flags: MW
 HStem: -82 40<354.5 426.5 354.5 432> 542 40<354.5 426.5>
@@ -2018,7 +2021,7 @@ EndSplineSet
 EndChar
 
 StartChar: varovee
-Encoding: 54 -1 53
+Encoding: 54 54 55
 Width: 778
 Flags: MW
 HStem: -82 40<357 357> 542 40<351.5 424.5>
@@ -2054,7 +2057,7 @@ EndSplineSet
 EndChar
 
 StartChar: varowedge
-Encoding: 55 -1 54
+Encoding: 55 55 56
 Width: 778
 Flags: MW
 HStem: -82 40<351.5 424.5 351.5 432> 542 40G
@@ -2090,7 +2093,7 @@ EndSplineSet
 EndChar
 
 StartChar: talloblong
-Encoding: 56 -1 55
+Encoding: 56 56 57
 Width: 500
 Flags: MW
 HStem: -250 40<145.5 327 171 327 171 347> 710 40<171 327 171 171>
@@ -2116,7 +2119,7 @@ EndSplineSet
 EndChar
 
 StartChar: interleave
-Encoding: 57 -1 56
+Encoding: 57 57 58
 Width: 694
 Flags: MW
 HStem: -250 21<143.5 155 340.5 351.5 537.5 548.5> 730 20G<130 155 143.5 170>
@@ -2149,7 +2152,7 @@ EndSplineSet
 EndChar
 
 StartChar: obar
-Encoding: 58 629 57
+Encoding: 58 58 59
 Width: 778
 Flags: MW
 HStem: -83 25<375 375> 558 25<375 375 400 400>
@@ -2182,7 +2185,7 @@ EndSplineSet
 EndChar
 
 StartChar: obslash
-Encoding: 59 -1 58
+Encoding: 59 59 60
 Width: 778
 Flags: MW
 HStem: -83 25<347 426.5 347 432> 558 25<349 428.5>
@@ -2215,7 +2218,7 @@ EndSplineSet
 EndChar
 
 StartChar: olessthan
-Encoding: 60 -1 59
+Encoding: 60 60 61
 Width: 778
 Flags: MW
 HStem: -83 25<347 425.5 347 432> 558 25<347 425.5>
@@ -2251,7 +2254,7 @@ EndSplineSet
 EndChar
 
 StartChar: ogreaterthan
-Encoding: 61 -1 60
+Encoding: 61 61 62
 Width: 778
 Flags: MW
 HStem: -83 25<350.5 428.5 350.5 432> 558 25<350.5 428.5>
@@ -2287,7 +2290,7 @@ EndSplineSet
 EndChar
 
 StartChar: ovee
-Encoding: 62 -1 61
+Encoding: 62 62 63
 Width: 778
 Flags: MW
 HStem: -83 25<369 369> 558 25<348.5 427.5>
@@ -2323,7 +2326,7 @@ EndSplineSet
 EndChar
 
 StartChar: owedge
-Encoding: 63 -1 62
+Encoding: 63 63 64
 Width: 778
 Flags: MW
 HStem: -83 25<348.5 427.5 348.5 432> 558 25<369 369 407 407>
@@ -2359,7 +2362,7 @@ EndSplineSet
 EndChar
 
 StartChar: oblong
-Encoding: 64 -1 63
+Encoding: 64 64 65
 Width: 667
 Flags: MW
 HStem: 0 40<75.5 564 101 564 101 584> 558 40<101 564 101 101>
@@ -2385,7 +2388,7 @@ EndSplineSet
 EndChar
 
 StartChar: inplus
-Encoding: 65 -1 64
+Encoding: 65 65 66
 Width: 667
 Flags: MW
 HStem: -41 40<305.5 561 388 561> 230 40<124 326 124 326 366 561> 501 40<319 561 388 561>
@@ -2424,7 +2427,7 @@ EndSplineSet
 EndChar
 
 StartChar: niplus
-Encoding: 66 -1 65
+Encoding: 66 66 67
 Width: 667
 Flags: MW
 HStem: -41 40<97.5 277 103 277> 230 40<97.5 299 103 299 339 541> 501 40<97.5 277 103 277>
@@ -2463,7 +2466,7 @@ EndSplineSet
 EndChar
 
 StartChar: nplus
-Encoding: 67 -1 66
+Encoding: 67 67 68
 Width: 667
 Flags: MW
 HStem: -22 21<69.5 81 583.5 594.5> 251 40<150.5 312 156 312 352 509> 558 40<269 395>
@@ -2505,7 +2508,7 @@ EndSplineSet
 EndChar
 
 StartChar: subsetplus
-Encoding: 68 10943 67
+Encoding: 68 68 69
 Width: 778
 Flags: MW
 HStem: -41 40<305.5 673 388 673> 230 40<288.5 425 294 425 465 595> 501 40<315.5 673 388 673>
@@ -2547,7 +2550,7 @@ EndSplineSet
 EndChar
 
 StartChar: supsetplus
-Encoding: 69 10944 68
+Encoding: 69 69 70
 Width: 778
 Flags: MW
 HStem: -41 40<97.5 388 103 388> 230 40<174.5 311 180 311 351 482> 501 40<97.5 388 103 388>
@@ -2589,7 +2592,7 @@ EndSplineSet
 EndChar
 
 StartChar: subsetpluseq
-Encoding: 70 -1 69
+Encoding: 70 70 71
 Width: 778
 Flags: MW
 HStem: -143 40<117.5 673 123 673> 54 40<305.5 673 388 673> 325 40<288.5 425 294 425 465 595> 596 40<315.5 673 388 673>
@@ -2638,7 +2641,7 @@ EndSplineSet
 EndChar
 
 StartChar: supsetpluseq
-Encoding: 71 -1 70
+Encoding: 71 71 72
 Width: 778
 Flags: MW
 HStem: -143 40<97.5 652 103 652> 54 40<97.5 388 103 388> 325 40<174.5 311 180 311 351 482> 596 40<97.5 388 103 388>
@@ -2687,7 +2690,7 @@ EndSplineSet
 EndChar
 
 StartChar: Lbag
-Encoding: 72 -1 71
+Encoding: 72 72 73
 Width: 444
 Flags: W
 HStem: -250 22<312 380 312 380> 728 22<154 196>
@@ -2715,7 +2718,7 @@ EndSplineSet
 EndChar
 
 StartChar: Rbag
-Encoding: 73 -1 72
+Encoding: 73 73 74
 Width: 444
 Flags: W
 HStem: -250 22<62.5 130 62.5 147> 728 22<246.5 288>
@@ -2742,7 +2745,7 @@ EndSplineSet
 EndChar
 
 StartChar: llbracket
-Encoding: 74 -1 73
+Encoding: 74 74 75
 Width: 403
 Flags: MW
 HStem: -250 40<124 240 156 240 280 368> 710 40<156 240 156 156 280 368 280 280>
@@ -2774,7 +2777,7 @@ EndSplineSet
 EndChar
 
 StartChar: rrbracket
-Encoding: 75 -1 74
+Encoding: 75 75 76
 Width: 403
 Flags: MW
 HStem: -250 40<32 120 35 120 160 245> 710 40<32 274 35 120 160 245 160 160>
@@ -2806,7 +2809,7 @@ EndSplineSet
 EndChar
 
 StartChar: llparenthesis
-Encoding: 76 -1 75
+Encoding: 76 76 77
 Width: 389
 Flags: MW
 HStem: -250 21<320.5 323> 730 20G<318 321>
@@ -2832,7 +2835,7 @@ EndSplineSet
 EndChar
 
 StartChar: rrparenthesis
-Encoding: 77 -1 76
+Encoding: 77 77 78
 Width: 389
 Flags: MW
 HStem: -250 21<63.5 66.5> 730 20G<63.5 66.5>
@@ -2858,7 +2861,7 @@ EndSplineSet
 EndChar
 
 StartChar: binampersand
-Encoding: 78 -1 77
+Encoding: 78 78 79
 Width: 778
 Flags: MW
 HStem: -82 40<194.5 289.5 194.5 295.5> 542 40<342.5 414.5>
@@ -2901,7 +2904,7 @@ EndSplineSet
 EndChar
 
 StartChar: bindnasrepma
-Encoding: 79 -1 78
+Encoding: 79 79 80
 Width: 778
 Flags: MW
 HStem: -82 40<361 433 361 446> 542 40<486.5 581.5>
@@ -2944,7 +2947,7 @@ EndSplineSet
 EndChar
 
 StartChar: trianglelefteqslant
-Encoding: 80 -1 79
+Encoding: 80 80 81
 Width: 778
 Flags: MW
 HStem: -143 21<671.5 676.5> 616 20G<671.5 693>
@@ -2985,7 +2988,7 @@ EndSplineSet
 EndChar
 
 StartChar: trianglerighteqslant
-Encoding: 81 -1 80
+Encoding: 81 81 82
 Width: 778
 Flags: MW
 HStem: -143 21<99.5 104.5> 616 20G<83 104.5>
@@ -3027,7 +3030,7 @@ EndSplineSet
 EndChar
 
 StartChar: ntrianglelefteqslant
-Encoding: 82 -1 81
+Encoding: 82 82 83
 Width: 778
 Flags: MW
 HStem: -303 21<165.5 171> 783 20G<605 610.5>
@@ -3088,7 +3091,7 @@ EndSplineSet
 EndChar
 
 StartChar: ntrianglerighteqslant
-Encoding: 83 -1 82
+Encoding: 83 83 84
 Width: 778
 Flags: MW
 HStem: -303 21<165.5 171> 783 20G<605 610.5>
@@ -3150,7 +3153,7 @@ EndSplineSet
 EndChar
 
 StartChar: llfloor
-Encoding: 84 -1 83
+Encoding: 84 84 85
 Width: 556
 Flags: MW
 HStem: -250 40<134.5 317 160 317 357 533> 730 20G<120 145.5 134.5 160>
@@ -3177,7 +3180,7 @@ EndSplineSet
 EndChar
 
 StartChar: rrfloor
-Encoding: 85 -1 84
+Encoding: 85 85 86
 Width: 556
 Flags: MW
 HStem: -250 40<14.5 197 20 197 237 394> 730 20G<197 222.5 211.5 237>
@@ -3204,7 +3207,7 @@ EndSplineSet
 EndChar
 
 StartChar: llceil
-Encoding: 86 -1 85
+Encoding: 86 86 87
 Width: 556
 Flags: MW
 HStem: -250 21<134.5 145.5 331.5 342.5> 710 40<160 317 160 160 357 533 357 357>
@@ -3231,7 +3234,7 @@ EndSplineSet
 EndChar
 
 StartChar: rrceil
-Encoding: 87 -1 86
+Encoding: 87 87 88
 Width: 556
 Flags: MW
 HStem: -250 21<211.5 222.5 408.5 419.5> 710 40<14.5 414 20 197 237 237 237 394>
@@ -3258,7 +3261,7 @@ EndSplineSet
 EndChar
 
 StartChar: arrownot
-Encoding: 88 -1 87
+Encoding: 88 88 89
 Width: 0
 Flags: MW
 HStem: 63 21<386 391> 417 20G<607 612>
@@ -3280,7 +3283,7 @@ EndSplineSet
 EndChar
 
 StartChar: Arrownot
-Encoding: 89 -1 88
+Encoding: 89 89 90
 Width: 0
 Flags: MW
 HStem: -35 21<415 420> 515 20G<578 583>
@@ -3302,7 +3305,7 @@ EndSplineSet
 EndChar
 
 StartChar: Mapstochar
-Encoding: 90 -1 89
+Encoding: 90 90 91
 Width: 0
 Flags: MW
 HStem: -35 21<69.5 81> 515 20G<56 81 69.5 96>
@@ -3331,7 +3334,7 @@ EndSplineSet
 EndChar
 
 StartChar: mapsfromchar
-Encoding: 91 -1 90
+Encoding: 91 91 92
 Width: 0
 Flags: MW
 HStem: 63 21<-81 -69.5> 417 20G<-95 -69.5 -81 -55>
@@ -3355,7 +3358,7 @@ EndSplineSet
 EndChar
 
 StartChar: Mapsfromchar
-Encoding: 92 -1 91
+Encoding: 92 92 93
 Width: 0
 Flags: MW
 HStem: -35 21<-81 -69.5> 515 20G<-95 -69.5 -81 -55>
@@ -3384,7 +3387,7 @@ EndSplineSet
 EndChar
 
 StartChar: leftrightarrowtriangle
-Encoding: 93 -1 92
+Encoding: 93 93 94
 Width: 1000
 Flags: MW
 HStem: 83 21<328 335.5 662.5 670> 230 40<350 648 350 648> 397 20G<328 350>
@@ -3429,7 +3432,7 @@ EndSplineSet
 EndChar
 
 StartChar: leftarrowtriangle
-Encoding: 94 -1 93
+Encoding: 94 94 95
 Width: 1000
 Flags: MW
 HStem: 83 21<328 333.5> 230 40<350 922 350 922> 397 20G<328 350>
@@ -3464,7 +3467,7 @@ EndSplineSet
 EndChar
 
 StartChar: rightarrowtriangle
-Encoding: 95 -1 94
+Encoding: 95 95 96
 Width: 1000
 Flags: MW
 HStem: 83 21<664.5 670> 230 40<70 648 76 648> 397 20G<648 670>
@@ -3497,7 +3500,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigtriangledown
-Encoding: 96 -1 95
+Encoding: 96 96 97
 Width: 833
 Flags: MW
 HStem: -1000 21<409 418> -67 67<136 696 136 136>
@@ -3524,7 +3527,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigtriangleup
-Encoding: 97 -1 96
+Encoding: 97 97 98
 Width: 833
 Flags: MW
 HStem: -1000 67<87 696 136 696 136 743> -20 20G<414 418>
@@ -3553,7 +3556,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigcurlyvee
-Encoding: 98 -1 97
+Encoding: 98 98 99
 Width: 833
 Flags: MW
 HStem: -1000 21<406.5 425> -20 20G<83 91.5 739.5 748>
@@ -3580,7 +3583,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigcurlywedge
-Encoding: 99 -1 98
+Encoding: 99 99 100
 Width: 833
 Flags: MW
 HStem: -1000 21<83 91.5 739.5 748> -20 20G<406.5 425>
@@ -3607,7 +3610,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigsqcap
-Encoding: 100 -1 99
+Encoding: 100 100 101
 Width: 833
 Flags: MW
 HStem: -1000 21<79.5 98 733.5 752> -67 67<122 709 122 122>
@@ -3632,7 +3635,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigbox
-Encoding: 101 -1 100
+Encoding: 101 101 102
 Width: 833
 Flags: MW
 HStem: -1000 67<79.5 709 122 709 122 743> -67 67<122 709 122 122>
@@ -3658,7 +3661,7 @@ EndSplineSet
 EndChar
 
 StartChar: bigparallel
-Encoding: 102 -1 101
+Encoding: 102 102 103
 Width: 444
 Flags: MW
 HStem: -1000 21<79.5 98 344.5 363> -20 20G<79.5 98 344.5 363>
@@ -3684,7 +3687,7 @@ EndSplineSet
 EndChar
 
 StartChar: biginterleave
-Encoding: 103 -1 102
+Encoding: 103 103 104
 Width: 611
 Flags: MW
 HStem: -1000 21<79.5 98 328.5 347 577.5 596> -20 20G<79.5 98 328.5 347 577.5 596>
@@ -3717,7 +3720,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugetriangledown
-Encoding: 104 -1 103
+Encoding: 104 104 105
 Width: 1111
 Flags: MW
 HStem: -1400 21<551.5 556> -81 81<152 957 152 152>
@@ -3745,7 +3748,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugetriangleup
-Encoding: 105 -1 104
+Encoding: 105 105 106
 Width: 1111
 Flags: MW
 HStem: -1400 81<84.5 957 152 957 152 1013> -20 20G<552 562.5>
@@ -3772,7 +3775,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugecurlyvee
-Encoding: 106 -1 105
+Encoding: 106 106 107
 Width: 1111
 Flags: MW
 HStem: -1400 21<543.5 566> -20 20G<89 99.5 1009.5 1020>
@@ -3799,7 +3802,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugecurlywedge
-Encoding: 107 -1 106
+Encoding: 107 107 108
 Width: 1111
 Flags: MW
 HStem: -1400 21<89 99.5 1009.5 1020> -20 20G<543.5 566>
@@ -3826,7 +3829,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugesqcap
-Encoding: 108 -1 107
+Encoding: 108 108 109
 Width: 1111
 Flags: MW
 HStem: -1398 21<83.5 106.5 1001.5 1024.5> -81 81<136 136 136 973>
@@ -3851,7 +3854,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugebox
-Encoding: 109 -1 108
+Encoding: 109 109 110
 Width: 1111
 Flags: MW
 HStem: -1400 81<84.5 974 136 974 136 1013> -81 81<136 136 136 974>
@@ -3877,7 +3880,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugeparallel
-Encoding: 110 -1 109
+Encoding: 110 110 111
 Width: 556
 Flags: MW
 HStem: -1400 21<84.5 107 447 469> -20 20G<84.5 107 447 469>
@@ -3903,7 +3906,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugeinterleave
-Encoding: 111 -1 110
+Encoding: 111 111 112
 Width: 833
 Flags: MW
 HStem: -1400 21<85 107 445 467 805 827> -20 20G<85 107 445 467 805 827>
@@ -3936,7 +3939,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugenplus
-Encoding: 112 -1 111
+Encoding: 112 112 113
 Width: 833
 Flags: MW
 HStem: -1000 21<79.5 98 733.5 752> -561 66G<213 382 222 382 449 609> -67 67G<335.5 496.5>
@@ -3978,7 +3981,7 @@ EndSplineSet
 EndChar
 
 StartChar: largellbracket
-Encoding: 113 -1 112
+Encoding: 113 113 114
 Width: 528
 Flags: MW
 HStem: -1158 40<209.5 333 242 333 373 493> 0 40<242 333 242 242 373 493 373 373>
@@ -4010,7 +4013,7 @@ EndSplineSet
 EndChar
 
 StartChar: Largellbracket
-Encoding: 114 -1 113
+Encoding: 114 114 115
 Width: 583
 Flags: MW
 HStem: -1758 47<234 371 273 371 418 552> -7 47<273 371 273 273 418 552 418 418>
@@ -4042,7 +4045,7 @@ EndSplineSet
 EndChar
 
 StartChar: LARGEllbracket
-Encoding: 115 -1 114
+Encoding: 115 115 116
 Width: 639
 Flags: MW
 HStem: -2358 53<258.5 410 304 410 463 611> -13 53<304 410 304 304 463 611 463 463>
@@ -4074,7 +4077,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugellbracket
-Encoding: 116 -1 115
+Encoding: 116 116 117
 Width: 694
 Flags: MW
 HStem: -2958 60<283 448 335 448 508 670> -20 60<335 448 335 335 508 670 508 508>
@@ -4106,7 +4109,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugellbrackettop
-Encoding: 117 -1 116
+Encoding: 117 117 118
 Width: 778
 Flags: MW
 HStem: -1771 21<335 338 338 383 533 536 536 581> -29 67<394 525 394 394 592 756 592 592>
@@ -4136,7 +4139,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugellbracketbot
-Encoding: 118 -1 117
+Encoding: 118 118 119
 Width: 778
 Flags: MW
 HStem: -1758 67<335 525 394 525 592 756> 31 20G<338 383 383 386 536 581 581 584>
@@ -4166,7 +4169,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugellbracketex
-Encoding: 119 -1 118
+Encoding: 119 119 120
 Width: 778
 Flags: MW
 HStem: -602 21<335 338 338 383 533 536 536 581> -7 20G<338 383 383 386 536 581 581 584>
@@ -4196,7 +4199,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugenplus
-Encoding: 120 -1 119
+Encoding: 120 120 121
 Width: 1111
 Flags: MW
 HStem: -1400 21<84.5 107 1002 1024.5> -780 81G<246 514 257 514 595 852> -81 81G<440 669.5>
@@ -4238,7 +4241,7 @@ EndSplineSet
 EndChar
 
 StartChar: largerrbracket
-Encoding: 121 -1 120
+Encoding: 121 121 122
 Width: 528
 Flags: MW
 HStem: -1158 40<29.5 153 33 153 193 284> 0 40<29.5 313 33 153 193 284 193 193>
@@ -4270,7 +4273,7 @@ EndSplineSet
 EndChar
 
 StartChar: Largerrbracket
-Encoding: 122 -1 121
+Encoding: 122 122 123
 Width: 583
 Flags: MW
 HStem: -1758 47<26 163 29 163 210 309> -7 47<26 344 29 163 210 309 210 210>
@@ -4302,7 +4305,7 @@ EndSplineSet
 EndChar
 
 StartChar: LARGErrbracket
-Encoding: 123 -1 122
+Encoding: 123 123 124
 Width: 639
 Flags: MW
 HStem: -2358 53<23 174 26 174 227 333> -13 53<23 375 26 174 227 333 227 227>
@@ -4334,7 +4337,7 @@ EndSplineSet
 EndChar
 
 StartChar: hugerrbracket
-Encoding: 124 -1 123
+Encoding: 124 124 125
 Width: 694
 Flags: MW
 HStem: -2958 60<19.5 184 23 184 244 357> -20 60<19.5 406 23 184 244 357 244 244>
@@ -4366,7 +4369,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugerrbrackettop
-Encoding: 125 -1 124
+Encoding: 125 125 126
 Width: 778
 Flags: MW
 HStem: -1771 21<192 195 195 239 390 393 393 437> -29 67<16 437 19 184 251 382 251 251>
@@ -4396,7 +4399,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugerrbracketbot
-Encoding: 126 -1 125
+Encoding: 126 126 127
 Width: 778
 Flags: MW
 HStem: -1758 67<16 184 19 184 251 382> 31 20G<195 239 239 242.5 393 437 437 440.5>
@@ -4426,7 +4429,7 @@ EndSplineSet
 EndChar
 
 StartChar: Hugerrbracketex
-Encoding: 127 -1 126
+Encoding: 127 127 128
 Width: 778
 Flags: MW
 HStem: -602 21<192 195 195 239 390 393 393 437> -7 20G<195 239 239 242.5 393 437 437 440.5>
@@ -4456,7 +4459,7 @@ EndSplineSet
 EndChar
 
 StartChar: shortleftarrow
-Encoding: 0 8592 127
+Encoding: 0 0 129
 Width: 778
 Flags: MW
 HStem: 72 21<226.5 229 229 237> 230 40<139 700 139 700> 408 20G<229 237 237 240>
@@ -4483,6 +4486,33 @@ SplineSet
  248 86 248 85 248 83 c 0
  248 77 243 72 237 72 c 2
  229 72 l 2
+EndSplineSet
+EndChar
+
+StartChar: varcurlywedgex
+Encoding: 254 254 130
+Width: 667
+Flags: MW
+HStem: -217 21<17 22.5 642.5 648> 674 20G<326.5 337.5>
+VStem: 312 40<512.5 679.5>
+LayerCount: 2
+Fore
+SplineSet
+33 -212 m 0
+ 29 -215 25 -217 20 -217 c 0
+ 14 -217 9 -214 5 -210 c 0
+ 2 -206 0 -201 0 -196 c 0
+ 0 -190 3 -185 7 -181 c 0
+ 246 22 312 351 312 674 c 0
+ 312 685 321 694 332 694 c 0
+ 343 694 352 685 352 674 c 0
+ 352 351 419 22 658 -181 c 0
+ 662 -185 665 -190 665 -196 c 0
+ 665 -201 663 -206 660 -210 c 0
+ 656 -214 651 -217 645 -217 c 0
+ 640 -217 636 -215 632 -212 c 0
+ 453 -60 367 157 332 387 c 1
+ 298 157 212 -60 33 -212 c 0
 EndSplineSet
 EndChar
 EndChars
