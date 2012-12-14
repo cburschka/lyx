@@ -36,7 +36,7 @@ if(Q_WS_X11)
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
         -DPO_BUILD_DIR=${TOP_BINARY_DIR}/po
         -DKEYTEST_INFILE=${_tf}
-        -DBINDIR=$<TARGET_FILE_DIR:lyx>
+        -DBINDIR=$<TARGET_FILE_DIR:${_lyx}>
 	-DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -DKEYTEST_OUTFILE=${_t}-out.txt
         -DPACKAGE=${PACKAGE}
@@ -53,7 +53,7 @@ foreach(f ${lyx_files})
   add_test(NAME autotests/export_${f}_lyx16
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
     COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
-            -Dlyx=$<TARGET_FILE:lyx>
+            -Dlyx=$<TARGET_FILE:${_lyx}>
 	    -Dformat=lyx16x
 	    -Dextension=16.lyx
 	    -Dfile=${f}
@@ -61,7 +61,7 @@ foreach(f ${lyx_files})
   add_test(NAME autotests/export_${f}_xhtml
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
     COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
-            -Dlyx=$<TARGET_FILE:lyx>
+            -Dlyx=$<TARGET_FILE:${_lyx}>
 	    -Dformat=xhtml
 	    -Dextension=xhtml
 	    -Dfile=${f}

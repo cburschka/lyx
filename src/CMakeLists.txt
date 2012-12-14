@@ -4,7 +4,6 @@
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
 project(${_lyx})
 
 include_directories(${TOP_SRC_DIR}/src)

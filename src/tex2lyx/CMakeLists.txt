@@ -5,7 +5,6 @@
 # Copyright (c) 2008-2011 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
-set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
 project(${_tex2lyx})
 
 # There is no header file lengthcommon.h

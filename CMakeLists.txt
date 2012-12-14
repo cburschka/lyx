@@ -697,6 +697,8 @@ if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
 	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
 endif()
 
+set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
+set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
 add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
