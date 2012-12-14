@@ -114,7 +114,6 @@
 
 \begin_layout Standard
 
-
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -124,23 +123,19 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-
 Boxes
 \end_layout
 
 \begin_layout Subsection
-
 Frameless Boxes
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 mbox{
@@ -153,7 +148,6 @@ mbox
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -163,7 +157,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Frameless
 position "c"
@@ -180,7 +173,6 @@ status open
 
 
 \begin_layout Plain Layout
-
 makebox 1
 \end_layout
 
@@ -190,7 +182,6 @@ makebox 1
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Frameless
 position "t"
@@ -207,7 +198,6 @@ status open
 
 
 \begin_layout Plain Layout
-
 makebox 2
 \end_layout
 
@@ -217,7 +207,6 @@ makebox 2
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Frameless
 position "t"
@@ -234,7 +223,6 @@ status open
 
 
 \begin_layout Plain Layout
-
 makebox 3
 \end_layout
 
@@ -245,7 +233,6 @@ makebox 3
 
 \begin_layout Standard
 
-
 \begin_inset Float figure
 placement ht
 wide false
@@ -255,12 +242,10 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 centering
@@ -273,7 +258,6 @@ centering
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 setlength{
@@ -288,12 +272,10 @@ unitlength}{.2in}
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 begin{picture}
@@ -307,7 +289,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 put
 \end_layout
@@ -319,7 +300,6 @@ put
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -330,7 +310,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 makebox(0,0)[tr]{
@@ -343,7 +322,6 @@ AAA
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -354,7 +332,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -365,7 +342,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 put
@@ -378,7 +354,6 @@ put
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -389,7 +364,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 makebox(0,0){
@@ -402,7 +376,6 @@ BBB
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -413,7 +386,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -424,7 +396,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 put
@@ -437,7 +408,6 @@ put
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -448,7 +418,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 framebox(0,0){
@@ -461,7 +430,6 @@ x
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -472,7 +440,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -483,7 +450,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 put
@@ -496,7 +462,6 @@ put
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -507,7 +472,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 line
@@ -520,7 +484,6 @@ line
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -531,7 +494,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -542,7 +504,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -553,7 +514,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 end{picture}
@@ -571,12 +531,10 @@ end{picture}
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 raisebox{8.5mm}{
@@ -589,7 +547,6 @@ test
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -600,7 +557,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 raisebox{-6.5mm}{
@@ -613,7 +569,6 @@ tset
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -623,12 +578,10 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
 Framed Boxes
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Framed
 position "c"
@@ -645,7 +598,6 @@ status open
 
 
 \begin_layout Standard
-
 framed
 \end_layout
 
@@ -655,7 +607,6 @@ blabla
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Framed
 position "c"
@@ -673,7 +624,6 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Box Framed
 position "c"
 hor_pos "c"
@@ -689,7 +639,6 @@ status open
 
 
 \begin_layout Standard
-
 nested framed
 \end_layout
 
@@ -704,13 +653,11 @@ blabla
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 fbox{
@@ -723,7 +670,6 @@ fbox
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -733,13 +679,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 framebox{
@@ -756,7 +700,6 @@ box 1
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -766,7 +709,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Boxed
 position "c"
@@ -783,7 +725,6 @@ status open
 
 
 \begin_layout Standard
-
 framebox 2
 \end_layout
 
@@ -793,7 +734,6 @@ framebox 2
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Boxed
 position "c"
@@ -810,7 +750,6 @@ status open
 
 
 \begin_layout Standard
-
 framebox 3
 \end_layout
 
@@ -820,13 +759,11 @@ framebox 3
 \end_layout
 
 \begin_layout Standard
-
 This is an example text. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 framebox{
@@ -851,25 +788,21 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
 The box content 
 \end_layout
 
 \begin_layout Plain Layout
 \align center
-
 is evenly distributed 
 \end_layout
 
 \begin_layout Plain Layout
 \align center
-
 over the 
 \end_layout
 
 \begin_layout Plain Layout
 \align center
-
 box height. 
 \end_layout
 
@@ -880,7 +813,6 @@ box height.
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -890,7 +822,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box ovalbox
 position "c"
@@ -907,7 +838,6 @@ status open
 
 
 \begin_layout Standard
-
 ovalbox
 \end_layout
 
@@ -917,7 +847,6 @@ ovalbox
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Ovalbox
 position "c"
@@ -934,7 +863,6 @@ status open
 
 
 \begin_layout Standard
-
 Ovalbox
 \end_layout
 
@@ -944,7 +872,6 @@ Ovalbox
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Shadowbox
 position "c"
@@ -961,7 +888,6 @@ status open
 
 
 \begin_layout Standard
-
 shadowbox
 \end_layout
 
@@ -971,7 +897,6 @@ shadowbox
 \end_layout
 
 \begin_layout Standard
-
 blabla 
 \begin_inset Box Doublebox
 position "c"
@@ -988,7 +913,6 @@ status open
 
 
 \begin_layout Standard
-
 doublebox
 \end_layout
 
@@ -999,7 +923,6 @@ doublebox
 
 \begin_layout Standard
 
-
 \begin_inset Formula $\boxed{\int A=B}$
 \end_inset
 
@@ -1008,12 +931,10 @@ doublebox
 
 \begin_layout Subsection
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 LyX
 \end_layout
 
@@ -1024,12 +945,10 @@ LyX
 
 \begin_layout Standard
 
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Standard
-
 
 \series bold
 Note:
@@ -1043,7 +962,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Box Shaded
 position "c"
@@ -1060,7 +978,6 @@ status open
 
 
 \begin_layout Standard
-
 Shaded background box
 \end_layout
 
@@ -1070,7 +987,6 @@ Shaded background box
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Box Shaded
 position "c"
@@ -1087,7 +1003,6 @@ status open
 
 
 \begin_layout Plain Layout
-
 Shaded background box, with inner minipage
 \end_layout
 
@@ -1097,17 +1012,14 @@ Shaded background box, with inner minipage
 \end_layout
 
 \begin_layout Section
-
 Colors
 \end_layout
 
 \begin_layout Subsection
-
 Predefined Colors
 \end_layout
 
 \begin_layout Standard
-
 test 
 \color blue
 blue
@@ -1148,18 +1060,15 @@ r
 \end_layout
 
 \begin_layout Subsection
-
 Custom Colors
 \end_layout
 
 \begin_layout Standard
-
 test 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 textcolor{darkgreen}
@@ -1172,7 +1081,6 @@ textcolor{darkgreen}
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -1183,7 +1091,6 @@ dark green
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -1194,12 +1101,10 @@ status collapsed
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 definecolor{violet}{rgb}{0.5, 0, 1}
@@ -1211,13 +1116,11 @@ definecolor{violet}{rgb}{0.5, 0, 1}
 \end_layout
 
 \begin_layout Standard
-
 test 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 textcolor{violet}
@@ -1230,7 +1133,6 @@ textcolor{violet}
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -1241,7 +1143,6 @@ violet
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -1251,12 +1152,10 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 Font sizes
 \end_layout
 
 \begin_layout Standard
-
 
 \size giant
 Huge text
@@ -1266,7 +1165,6 @@ Huge text
 
 \size giant
 
-
 \size huge
 huge text
 \end_layout
@@ -1274,7 +1172,6 @@ huge text
 \begin_layout Standard
 
 \size huge
-
 
 \size largest
 LARGE text
@@ -1284,7 +1181,6 @@ LARGE text
 
 \size largest
 
-
 \size larger
 Large text
 \end_layout
@@ -1292,7 +1188,6 @@ Large text
 \begin_layout Standard
 
 \size larger
-
 
 \size large
 large text
@@ -1302,7 +1197,6 @@ large text
 
 \size large
 
-
 \size normal
 normalsize text
 \end_layout
@@ -1310,7 +1204,6 @@ normalsize text
 \begin_layout Standard
 
 \size normal
-
 
 \size small
 small text
@@ -1320,7 +1213,6 @@ small text
 
 \size small
 
-
 \size footnotesize
 footnotesize text
 \end_layout
@@ -1328,7 +1220,6 @@ footnotesize text
 \begin_layout Standard
 
 \size footnotesize
-
 
 \size scriptsize
 scriptsize text
@@ -1338,7 +1229,6 @@ scriptsize text
 
 \size scriptsize
 
-
 \size tiny
 tiny text
 \end_layout
@@ -1346,7 +1236,6 @@ tiny text
 \begin_layout Standard
 
 \size tiny
-
 
 \size giant
 Huge text 
@@ -1374,7 +1263,6 @@ tiny text
 
 \size tiny
 
-
 \size normal
 Font size switches don't affect section headings!
 \end_layout
@@ -1383,53 +1271,45 @@ Font size switches don't affect section headings!
 
 \size normal
 
-
 \size scriptsize
 bla blub
 \end_layout
 
 \begin_layout Section
-
 Font size dummy 1
 \end_layout
 
 \begin_layout Standard
 
 \size scriptsize
-
 bla blub
 \end_layout
 
 \begin_layout Standard
 
 \size scriptsize
-
 bla blub
 \end_layout
 
 \begin_layout Section*
-
 Font size dummy 2
 \end_layout
 
 \begin_layout Standard
 
 \size scriptsize
-
 bla blub 
 \size normal
 
 \end_layout
 
 \begin_layout Section
-
 Strikeout, underlined etc.
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 Emphasized: 
 \emph on
 test
@@ -1440,7 +1320,6 @@ test
 \begin_layout Standard
 
 \size normal
-
 Underbar: 
 \bar under
 test
@@ -1451,7 +1330,6 @@ test
 \begin_layout Standard
 
 \size normal
-
 Double underbar: 
 \uuline on
 test
@@ -1462,7 +1340,6 @@ test
 \begin_layout Standard
 
 \size normal
-
 Wavy underbar: 
 \uwave on
 test
@@ -1473,7 +1350,6 @@ test
 \begin_layout Standard
 
 \size normal
-
 Strike out: 
 \strikeout on
 test
@@ -1484,13 +1360,11 @@ test
 \begin_layout Standard
 
 \size normal
-
 Crossed out: 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 xout
@@ -1503,7 +1377,6 @@ xout
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -1514,7 +1387,6 @@ test
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -1526,7 +1398,6 @@ status collapsed
 \begin_layout Standard
 
 \size normal
-
 Noun: 
 \noun on
 test
@@ -1537,7 +1408,6 @@ test
 \begin_layout Standard
 
 \size normal
-
 Underbar, emphasized, strikeout: 
 \emph on
 
@@ -1554,14 +1424,12 @@ test
 \end_layout
 
 \begin_layout Section
-
 Paragraph spacing
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 bla
 \end_layout
 
@@ -1569,7 +1437,6 @@ bla
 \paragraph_spacing single
 
 \size normal
-
 singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single 
 \end_layout
 
@@ -1577,7 +1444,6 @@ singlespace single singlespace single singlespace single singlespace single sing
 \paragraph_spacing onehalf
 
 \size normal
-
 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1
 \end_layout
 
@@ -1585,14 +1451,12 @@ onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 oneha
 \paragraph_spacing onehalf
 
 \size normal
-
 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 blub
 \end_layout
 
@@ -1600,14 +1464,12 @@ blub
 \paragraph_spacing onehalf
 
 \size normal
-
 onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 blablub
 \end_layout
 
@@ -1615,7 +1477,6 @@ blablub
 \paragraph_spacing double
 
 \size normal
-
 doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single 
 \end_layout
 
@@ -1623,19 +1484,16 @@ doublespace single doublespace single doublespace single doublespace single doub
 \paragraph_spacing other 1.2
 
 \size normal
-
  1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 
 \end_layout
 
 \begin_layout Section
-
 Paragraph alignment
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 bla
 \end_layout
 
@@ -1643,14 +1501,12 @@ bla
 \align center
 
 \size normal
-
 center single center single center single center single center single center single center single center single center single center single 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 blabla
 \end_layout
 
@@ -1658,7 +1514,6 @@ blabla
 \align left
 
 \size normal
-
 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
 \end_layout
 
@@ -1666,14 +1521,12 @@ flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushlef
 \align left
 
 \size normal
-
 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 blub
 \end_layout
 
@@ -1681,14 +1534,12 @@ blub
 \align left
 
 \size normal
-
 flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 blablub
 \end_layout
 
@@ -1696,14 +1547,12 @@ blablub
 \align right
 
 \size normal
-
 flushright single flushright single flushright single flushright single flushright single flushright single flushright single flushright single 
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 bla
 \end_layout
 
@@ -1711,12 +1560,10 @@ bla
 
 \size normal
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 centering
@@ -1730,7 +1577,6 @@ centering
 \begin_layout Standard
 
 \size normal
-
 blabla
 \end_layout
 
@@ -1738,12 +1584,10 @@ blabla
 
 \size normal
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 raggedright
@@ -1757,7 +1601,6 @@ raggedright
 \begin_layout Standard
 
 \size normal
-
 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
 \end_layout
 
@@ -1765,12 +1608,10 @@ raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedrigh
 
 \size normal
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 raggedleft
@@ -1784,7 +1625,6 @@ raggedleft
 \begin_layout Standard
 
 \size normal
-
 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
 \end_layout
 
@@ -1792,17 +1632,14 @@ raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 ra
 
 \size normal
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 %set back to justified
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -1813,7 +1650,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 raggedright
@@ -1826,7 +1662,6 @@ raggedright
 status collapsed
 
 \begin_layout Standard
-
 {}
 \end_layout
 
@@ -1836,14 +1671,12 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
 Horizontal spaces
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 Lines can have an hfill 
 \begin_inset space \hfill{}
 
@@ -1903,14 +1736,12 @@ in the middle. Lines can have space
 \begin_layout Standard
 
 \size normal
-
 We also handle defined spaces:
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 Interword
 \begin_inset space \space{}
 
@@ -1922,7 +1753,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 Visible
 \begin_inset space \textvisiblespace{}
 
@@ -1934,7 +1764,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 Thin
 \begin_inset space \thinspace{}
 
@@ -1946,7 +1775,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 NegThin
 \begin_inset space \negthinspace{}
 
@@ -1958,7 +1786,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 NegMed
 \begin_inset space \negmedspace{}
 
@@ -1970,7 +1797,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 NegThick
 \begin_inset space \negthickspace{}
 
@@ -1982,7 +1808,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 enspace
 \begin_inset space \enspace{}
 
@@ -1994,7 +1819,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 enskip
 \begin_inset space \enskip{}
 
@@ -2006,7 +1830,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 quad
 \begin_inset space \quad{}
 
@@ -2018,7 +1841,6 @@ a
 \begin_layout Standard
 
 \size normal
-
 qquad
 \begin_inset space \qquad{}
 
@@ -2028,14 +1850,12 @@ a
 \end_layout
 
 \begin_layout Subsubsection*
-
 now in math:
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 fill: 
 \begin_inset Formula $a\hfill b$
 \end_inset
@@ -2046,7 +1866,6 @@ fill:
 \begin_layout Standard
 
 \size normal
-
 protected fill: 
 \begin_inset Formula $a\hspace*{\fill} b$
 \end_inset
@@ -2057,7 +1876,6 @@ protected fill:
 \begin_layout Standard
 
 \size normal
-
 2
 \begin_inset space \thinspace{}
 
@@ -2073,7 +1891,6 @@ cm:
 \begin_layout Standard
 
 \size normal
-
 protected 2
 \begin_inset space \thinspace{}
 
@@ -2089,7 +1906,6 @@ cm:
 \begin_layout Standard
 
 \size normal
-
 enskip: 
 \begin_inset Formula $a\enskip b$
 \end_inset
@@ -2100,7 +1916,6 @@ enskip:
 \begin_layout Standard
 
 \size normal
-
 enspace: 
 \begin_inset Formula $a\enspace b$
 \end_inset
@@ -2111,7 +1926,6 @@ enspace:
 \begin_layout Standard
 
 \size normal
-
 thin: 
 \begin_inset Formula $a\, b$
 \end_inset
@@ -2122,7 +1936,6 @@ thin:
 \begin_layout Standard
 
 \size normal
-
 medium: 
 \begin_inset Formula $a\: b$
 \end_inset
@@ -2133,7 +1946,6 @@ medium:
 \begin_layout Standard
 
 \size normal
-
 thick: 
 \begin_inset Formula $a\; b$
 \end_inset
@@ -2144,7 +1956,6 @@ thick:
 \begin_layout Standard
 
 \size normal
-
 negative thin: 
 \begin_inset Formula $a\negthinspace b$
 \end_inset
@@ -2155,7 +1966,6 @@ negative thin:
 \begin_layout Standard
 
 \size normal
-
 negative medium: 
 \begin_inset Formula $a\negmedspace b$
 \end_inset
@@ -2166,7 +1976,6 @@ negative medium:
 \begin_layout Standard
 
 \size normal
-
 negative thick: 
 \begin_inset Formula $a\negthickspace b$
 \end_inset
@@ -2177,7 +1986,6 @@ negative thick:
 \begin_layout Standard
 
 \size normal
-
 quad: 
 \begin_inset Formula $a\quad b$
 \end_inset
@@ -2188,7 +1996,6 @@ quad:
 \begin_layout Standard
 
 \size normal
-
 qquad: 
 \begin_inset Formula $a\qquad b$
 \end_inset
@@ -2199,7 +2006,6 @@ qquad:
 \begin_layout Standard
 
 \size normal
-
 interword: 
 \begin_inset Formula $a\ b$
 \end_inset
@@ -2208,14 +2014,12 @@ interword:
 \end_layout
 
 \begin_layout Subsection
-
 Vertical spaces
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 Lines can have a vfill 
 \begin_inset VSpace vfill
 \end_inset
@@ -2242,14 +2046,12 @@ in the middle. Lines can have a vfill
 \begin_layout Standard
 
 \size normal
-
 We also handle skips:
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-
 bigskip 1:
 \begin_inset VSpace bigskip
 \end_inset
@@ -2260,7 +2062,6 @@ bigskip 1:
 \begin_layout Standard
 
 \size normal
-
 bigskip 2:
 \begin_inset VSpace bigskip
 \end_inset
@@ -2271,7 +2072,6 @@ bigskip 2:
 \begin_layout Standard
 
 \size normal
-
 medskip 1:
 \begin_inset VSpace medskip
 \end_inset
@@ -2282,7 +2082,6 @@ medskip 1:
 \begin_layout Standard
 
 \size normal
-
 medskip 2:
 \begin_inset VSpace medskip
 \end_inset
@@ -2293,7 +2092,6 @@ medskip 2:
 \begin_layout Standard
 
 \size normal
-
 smallskip 1:
 \begin_inset VSpace smallskip
 \end_inset
@@ -2304,7 +2102,6 @@ smallskip 1:
 \begin_layout Standard
 
 \size normal
-
 smallskip 2:
 \begin_inset VSpace smallskip
 \end_inset
