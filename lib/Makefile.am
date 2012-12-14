@@ -13,6 +13,7 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 dist_pkgdata_DATA += configure.py 
 
 dist_noinst_DATA = \
+	fonts/stmary10.sfd \
 	images/README \
 	images/font-smallcaps.png \
 	images/math/ams_arrows.png \
