@@ -15,11 +15,10 @@
 # suffix, since I don't know how to transport command line arguments through
 # the autotools "make check" mechanism.
 
-import os, string, sys, time, difflib, filecmp
-
+import os, string, sys, time, difflib, filecmp, subprocess, re
 
 def usage(prog_name):
-  return "Usage: %s [<tex2lyx binary> [<script dir>] [<output dir>]]" % prog_name
+  return "Usage: %s [<tex2lyx binary> [[<script dir>] [[<output dir>] [testfile]]]]" % prog_name
 
 
 def main(argv):
@@ -33,11 +32,12 @@ def main(argv):
 
     if len(argv) < 2:
         tex2lyx = './tex2lyx'
-    elif len(argv) <= 4:
+    elif len(argv) <= 5:
         tex2lyx = argv[1]
     else:
         error(usage(argv[0]))
 
+    lyx = os.path.join(os.path.dirname(tex2lyx), "lyx")
     inputdir = os.path.dirname(argv[0])
     if len(argv) >= 4:
         outputdir = sys.argv[3]
@@ -45,7 +45,10 @@ def main(argv):
 #        outputdir = inputdir
         outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
 
-    files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
+    if len(argv) >= 5:
+        files = [sys.argv[4]]
+    else:
+        files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
              'test-modules.tex', 'box-color-size-space-align.tex', \
              'CJK.tex', 'XeTeX-polyglossia.tex']
 
@@ -59,7 +62,17 @@ def main(argv):
         else:
             lyxfile = os.path.join(outputdir, base + ".lyx")
             cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
-        if os.system(cmd) != 0:
+        proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+        proc.wait()
+        err = proc.returncode
+        errorstring = proc.stderr.read()
+        if not errorstring is None:
+            print errorstring
+            if err == 0:
+                matchObj = re.match(r'.*: +Error +in +.*', errorstring, re.M|re.S)
+                if matchObj:
+                    err = 9999
+        if err != 0:
             errors.append(f)
         elif not overwrite:
             lyxfile1 = os.path.join(inputdir, base + ".lyx.lyx")
