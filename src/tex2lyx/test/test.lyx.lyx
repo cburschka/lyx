@@ -78,12 +78,10 @@
 \begin_body
 
 \begin_layout Title
-
 Test Document
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -94,12 +92,10 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-
 First Section
 \end_layout
 
 \begin_layout Standard
-
 This 
 \size large
 a 
@@ -117,12 +113,10 @@ d
 status collapsed
 
 \begin_layout Standard
-
 %Midline comment
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -144,7 +138,6 @@ status open
 
 
 \begin_layout Standard
-
 What are you doing \SpecialChar \ldots{}
 Dave
 \end_layout
@@ -155,12 +148,10 @@ Dave
 \end_layout
 
 \begin_layout Section*
-
 MySection
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -181,7 +172,6 @@ quoted
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -192,7 +182,6 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 em
@@ -206,12 +195,10 @@ status collapsed
 
 
 \begin_layout Standard
-
 This is a great footnote because: 
 \end_layout
 
 \begin_layout Itemize
-
 The footnote is not 
 \emph on
 emphasized
@@ -220,12 +207,10 @@ emphasized
 \end_layout
 
 \begin_layout Itemize
-
 The text is 
 \end_layout
 
 \begin_layout Standard
-
 How cool is that!?
 \end_layout
 
@@ -239,7 +224,6 @@ text.
 \end_layout
 
 \begin_layout Standard
-
 I keep
 \begin_inset Quotes erd
 \end_inset
@@ -249,7 +233,6 @@ I keep
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -277,7 +260,6 @@ status collapsed
 
 
 \begin_layout Standard
-
 i.e., characters which must be escaped
 \end_layout
 
@@ -287,18 +269,15 @@ i.e., characters which must be escaped
 \end_layout
 
 \begin_layout Standard
-
 _ is a neat token. 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 % This line won't print!
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -308,7 +287,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 Now I 
 \family sans
 want 
@@ -329,36 +307,30 @@ q_{p}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P^{(i+1)}_{deg})
 \end_layout
 
 \begin_layout Standard
-
 Here's an itemized list 
 \end_layout
 
 \begin_layout Itemize
-
 this is an item 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
 this is a numbered item
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 But now I want to write some text. 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
 this is another numbered item
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 More text 
 \end_layout
 
@@ -366,32 +338,27 @@ More text
 \end_deeper
 \begin_deeper
 \begin_layout Standard
-
 Yet more text
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
 this is another unnumbered item
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Final text 
 \end_layout
 
 \end_deeper
 \begin_layout Section
 
-
 \begin_inset Argument 999
 status collapsed
 
 
 \begin_layout Standard
-
 hi
 \end_layout
 
@@ -401,13 +368,11 @@ New Section
 \end_layout
 
 \begin_layout Standard
-
 Here's a 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 {
 \end_layout
 
@@ -419,7 +384,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 em
 \end_layout
@@ -430,23 +394,19 @@ em
 \end_layout
 
 \begin_layout Quotation
-
 Hello there how are you?
 \end_layout
 
 \begin_layout Quotation
-
 I am fine. Thanks 
 \end_layout
 
 \begin_layout Standard
-
 This
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 }
 \end_layout
 
@@ -471,7 +431,6 @@ reference "sec:mysection"
 
 \begin_layout Standard
 
-
 \begin_inset Tabular 
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
@@ -482,7 +441,6 @@ reference "sec:mysection"
 \begin_inset Text
 
 \begin_layout Standard
-
 foo 
 \end_layout
 
@@ -492,7 +450,6 @@ foo
 \begin_inset Text
 
 \begin_layout Standard
-
 bar 
 \end_layout
 
@@ -504,7 +461,6 @@ bar
 \begin_inset Text
 
 \begin_layout Standard
-
 bar 
 \end_layout
 
@@ -514,7 +470,6 @@ bar
 \begin_inset Text
 
 \begin_layout Standard
-
 foo 
 \end_layout
 
@@ -529,17 +484,14 @@ foo
 \end_layout
 
 \begin_layout Standard
-
 Let's try a few unicode characters: the (R) symbol ®(and the same one with braces ® and a space after) or maybe an accented a á or this one á or this î.
 \end_layout
 
 \begin_layout Standard
-
 Watch out: ®should be glued to its successor here.
 \end_layout
 
 \begin_layout Standard
-
 Final Text. 
 \end_layout
 

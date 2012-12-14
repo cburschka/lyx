@@ -108,23 +108,19 @@ logicalmkup
 \begin_body
 
 \begin_layout Title
-
 Title
 \end_layout
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 % this should be recognized as empty date:
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -134,17 +130,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 This document contains all sorts of layouts we are supposed to support, along with weird nestings.
 \end_layout
 
 \begin_layout Standard
-
 At time you will see that I use subsubsections in weird places. The intent is just to make sure that I can include a macro-type layout everyzhere it makes sense.
 \end_layout
 
 \begin_layout Standard
-
 A normal paragraph 
 \begin_inset Formula \begin{equation}
 x = \sin y
@@ -155,23 +148,19 @@ with maths inside it.
 \end_layout
 
 \begin_layout Quote
-
 An environment...
 \end_layout
 
 \begin_layout Quote
-
 ... with two paragraphs 
 \end_layout
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 begin{foo}
@@ -185,7 +174,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 end{foo}
 \end_layout
@@ -196,19 +184,16 @@ end{foo}
 \end_layout
 
 \begin_layout Section
-
 A section
 \end_layout
 
 \begin_layout Section
-
 
 \begin_inset Argument 999
 status collapsed
 
 
 \begin_layout Standard
-
 Hello!
 \end_layout
 
@@ -218,13 +203,11 @@ A section with optional argument
 \end_layout
 
 \begin_layout Standard
-
 This causes the 
 \begin_inset Flex Flex:Strong
 status collapsed
 
 \begin_layout Standard
-
 logikalmkup
 \end_layout
 
@@ -234,12 +217,10 @@ logikalmkup
 \end_layout
 
 \begin_layout Quote
-
 An environment 
 \end_layout
 
 \begin_layout Standard
-
 We also support change tracking: 
 \change_inserted -443692588 1320572379
 Added text some parts remain 
@@ -248,12 +229,10 @@ This was the original text some parts remain
 \end_layout
 
 \begin_layout Section*
-
 A starred section for floats
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Float figure
 wide false
@@ -263,11 +242,9 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
  
 \emph on
 
@@ -291,7 +268,6 @@ is
 
 \begin_layout Standard
 
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -300,17 +276,14 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Standard
-
 s
 \noun on
 ho
@@ -339,7 +312,6 @@ is
 
 \begin_layout Standard
 
-
 \begin_inset Float table
 wide true
 sideways true
@@ -348,11 +320,9 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 rotated table, spanning all columns
 \end_layout
 
@@ -363,12 +333,10 @@ rotated table, spanning all columns
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 centering
@@ -381,7 +349,6 @@ centering
 status collapsed
 
 \begin_layout Standard
-
 {}
 \end_layout
 
@@ -398,7 +365,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-
 a 
 \end_layout
 
@@ -408,7 +374,6 @@ a
 \begin_inset Text
 
 \begin_layout Standard
-
 b
 \end_layout
 
@@ -420,7 +385,6 @@ b
 \begin_inset Text
 
 \begin_layout Standard
-
 d 
 \end_layout
 
@@ -430,7 +394,6 @@ d
 \begin_inset Text
 
 \begin_layout Standard
-
 c
 \end_layout
 
@@ -451,7 +414,6 @@ c
 
 \begin_layout Standard
 
-
 \begin_inset Wrap figure
 lines 4
 placement L
@@ -462,17 +424,14 @@ status open
 
 \begin_layout Standard
 \align center
-
 fdgsdfdh 
 \end_layout
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 test1
 \end_layout
 
@@ -487,12 +446,10 @@ test1
 \end_layout
 
 \begin_layout Standard
-
 LyX is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Wrap figure
 lines 0
@@ -504,17 +461,14 @@ status open
 
 \begin_layout Standard
 \align center
-
 fdgs 
 \end_layout
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 test2
 \end_layout
 
@@ -529,12 +483,10 @@ test2
 \end_layout
 
 \begin_layout Standard
-
 LyX is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Wrap table
 lines 0
@@ -546,11 +498,9 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 fdg
 \end_layout
 
@@ -561,12 +511,10 @@ fdg
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 centering
@@ -579,7 +527,6 @@ centering
 status collapsed
 
 \begin_layout Standard
-
 {}
 \end_layout
 
@@ -594,12 +541,10 @@ dfgd
 \end_layout
 
 \begin_layout Standard
-
 LyX is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Float table
 wide false
@@ -609,11 +554,9 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 lkälöä
 \end_layout
 
@@ -624,7 +567,6 @@ lkälöä
 
 \begin_layout Standard
 
-
 \begin_inset Float table
 wide false
 sideways false
@@ -632,7 +574,6 @@ status collapsed
 
 
 \begin_layout Standard
-
 klöä
 \end_layout
 
@@ -640,7 +581,6 @@ klöä
 \begin_inset Caption
 
 \begin_layout Standard
-
 ölkälö
 
 \end_layout
@@ -662,7 +602,6 @@ klöä
 
 \begin_layout Standard
 
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -671,7 +610,6 @@ status open
 
 \begin_layout Standard
 
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -679,7 +617,6 @@ status collapsed
 
 
 \begin_layout Standard
-
 sub
 \color red
 fig
@@ -691,7 +628,6 @@ u%re 1
 \begin_inset Caption
 
 \begin_layout Standard
-
 te%st
 
 \end_layout
@@ -708,7 +644,6 @@ te%st
 
 \begin_layout Standard
 
-
 \begin_inset space \hfill{}
 
 \end_inset
@@ -721,7 +656,6 @@ status collapsed
 
 
 \begin_layout Standard
-
 subfigure 2ö
 \end_layout
 
@@ -731,7 +665,6 @@ subfigure 2ö
 \begin_layout Standard
 
 
-
 \end_layout
 
 \end_inset
@@ -745,7 +678,6 @@ subfigure 2ö
 \end_layout
 
 \begin_layout Standard
-
 
 \begin_inset Float figure
 wide false
@@ -754,7 +686,6 @@ status collapsed
 
 
 \begin_layout Standard
-
 subfigure 3
 \end_layout
 
@@ -765,11 +696,9 @@ subfigure 3
 
 \begin_layout Standard
 
-
 \begin_inset Caption
 
 \begin_layout Standard
-
 figure caption
 \end_layout
 
@@ -779,7 +708,6 @@ figure caption
 \end_layout
 
 \begin_layout Standard
-
 strange usage, but valid 
 \end_layout
 
@@ -789,19 +717,16 @@ strange usage, but valid
 \end_layout
 
 \begin_layout Subsection
-
 Some paragraph stuff
 \end_layout
 
 \begin_layout Standard
-
 A paragraph
 \begin_inset Foot
 status collapsed
 
 
 \begin_layout Standard
-
 hello
 \end_layout
 
@@ -813,12 +738,10 @@ status collapsed
 
 
 \begin_layout Standard
-
 hello
 \end_layout
 
 \begin_layout Standard
-
 there
 \end_layout
 
@@ -832,178 +755,146 @@ there
 \end_layout
 
 \begin_layout Standard
-
 and another paragraph
 \end_layout
 
 \begin_layout Standard
 \align center
-
 Some centered stuff 
 \end_layout
 
 \begin_layout Quotation
-
 An environment
 \end_layout
 
 \begin_deeper
 \begin_layout Subsubsection*
-
 with a command inside it
 \end_layout
 
 \end_deeper
 \begin_layout --Separator--
 
-
 \end_layout
 
 \begin_layout Quotation
-
 Another environment
 \end_layout
 
 \begin_deeper
 \begin_layout Quotation
-
 With another one inside it (with same layout)
 \end_layout
 
 \begin_layout Quotation
-
 [this one even has several paragraphs!] 
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
 We can also nest enumerations
 \end_layout
 
 \begin_layout Enumerate
-
 Item1 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
 Item1.a
 \end_layout
 
 \begin_layout Enumerate
-
 Item1.b (there is a paragraph break in front of this) 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 Item1.b.* 
 \end_layout
 
 \begin_layout Itemize
-
 Item1.b.* 
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-
 Item2 
 \end_layout
 
 \begin_layout --Separator--
 
-
 \end_layout
 
 \begin_layout Enumerate
-
 Item1 (appears as Item3 with bug 5716)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 Normal paragraph in Item1
 \end_layout
 
 \begin_layout Enumerate
-
 Item1.a 
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
 Let's see what happens when normal paragraphs are inserted in lists:
 \end_layout
 
 \begin_layout Itemize
-
 the first item
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
 with some explanatory text under it
 \end_layout
 
 \begin_layout Standard
-
 and a second paragraph for good measure
 \end_layout
 
 \begin_layout Subsubsection*
-
 we can even have one as a subsubsection
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
 the second item
 \end_layout
 
 \begin_layout Itemize
-
 the third item
 \end_layout
 
 \begin_deeper
 \begin_layout Subsubsection*
-
 and a sssection heading inside it (why not?)
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
 What else? Well, we have descriptions: 
 \end_layout
 
 \begin_layout Description
-
 ABC first item 
 \end_layout
 
 \begin_layout Description
-
 BCD second one 
 \end_layout
 
 \begin_layout Description
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 x y z
 \end_layout
 
@@ -1014,17 +905,14 @@ x y z
 
 \begin_layout Description
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 x y % bla
 \end_layout
 
 \begin_layout Standard
-
 z
 \end_layout
 
@@ -1034,13 +922,11 @@ z
 \end_layout
 
 \begin_layout Standard
-
 labelings: 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
 label
 \begin_inset space ~
 
@@ -1050,7 +936,6 @@ label
 \end_layout
 
 \begin_layout Labeling
-
 label
 \begin_inset space ~
 
@@ -1061,12 +946,10 @@ label
 
 \begin_layout Labeling
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 $
 \backslash
 left[
@@ -1082,7 +965,6 @@ right]^{x}$
 \end_layout
 
 \begin_layout Standard
-
 verbatim: 
 \end_layout
 
@@ -1122,7 +1004,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 verb~
 \backslash
@@ -1136,7 +1017,6 @@ verb~
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 verb+
@@ -1152,7 +1032,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 verb+something
 \backslash
@@ -1165,12 +1044,10 @@ verb+something
 \end_layout
 
 \begin_layout Standard
-
 and bibliography: 
 \end_layout
 
 \begin_layout Bibliography
-
 
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
@@ -1187,7 +1064,6 @@ The Foo Book
 \end_layout
 
 \begin_layout Bibliography
-
 
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
@@ -1206,17 +1082,14 @@ The Müller Book
 \begin_layout Standard
 \start_of_appendix
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 %dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
 \end_layout
 
 \begin_layout Standard
-
 
 \end_layout
 
@@ -1226,18 +1099,15 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
 This is the Appendix
 \end_layout
 
 \begin_layout Standard
 \noindent
-
 blabla bla bla
 \end_layout
 
 \begin_layout Standard
-
 switch to german:
 \lang german
  Hallo! 
@@ -1284,21 +1154,18 @@ english
 \begin_layout Section
 
 \lang newzealand
-
 Another Appendix section
 \end_layout
 
 \begin_layout Standard
 
 \lang newzealand
-
 blub
 \end_layout
 
 \begin_layout Standard
 
 \lang newzealand
-
 Test for missing 
 \backslash
 end_deeper (file format 278). This must stay at the very end of the document! 
@@ -1307,7 +1174,6 @@ end_deeper (file format 278). This must stay at the very end of the document!
 \begin_layout Itemize
 
 \lang newzealand
-
 par1
 \end_layout
 
@@ -1315,14 +1181,12 @@ par1
 \begin_layout Standard
 
 \lang newzealand
-
 par2 
 \end_layout
 
 \begin_layout Enumerate
 
 \lang newzealand
-
 par1
 \end_layout
 
@@ -1330,7 +1194,6 @@ par1
 \begin_layout Standard
 
 \lang newzealand
-
 par2 
 \end_layout
 

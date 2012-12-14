@@ -74,28 +74,23 @@ theorems-ams
 \begin_body
 
 \begin_layout Standard
-
 This is a dummy file
 \end_layout
 
 \begin_layout Standard
-
 It has a theorem, a lemma and a proof.
 \end_layout
 
 \begin_layout Standard
-
 The theorem is recognized is a style provided by the module theorems-ams, since the preamble code matches.
 \end_layout
 
 \begin_layout Standard
-
 The lemma is not recognized as a command provided by a module, since the preamble code is from an older version of 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 LyX
 \end_layout
 
@@ -107,18 +102,15 @@ theorem.
 \end_layout
 
 \begin_layout Standard
-
 The proof is recognized as a builtin style provided by the text class.
 \end_layout
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-
 
 \backslash
 begin{lem}
@@ -132,7 +124,6 @@ status collapsed
 
 \begin_layout Standard
 
-
 \backslash
 end{lem}
 \end_layout
@@ -143,12 +134,10 @@ end{lem}
 \end_layout
 
 \begin_layout Theorem
-
 this is the theorem
 \end_layout
 
 \begin_layout Proof
-
 this is the proof 
 \end_layout
 
