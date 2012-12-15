@@ -334,6 +334,8 @@ public:
 	pit_type outerHook(pit_type par) const;
 	/// Is it the first par with same depth and layout?
 	bool isFirstInSequence(pit_type par) const;
+	/// Is this paragraph in the table of contents?
+	int getTocLevel(pit_type par) const;
 	/// Get the font of the "environment" of paragraph \p par_offset in \p pars.
 	/// All font changes of the paragraph are relative to this font.
 	Font const outerFont(pit_type par_offset) const;

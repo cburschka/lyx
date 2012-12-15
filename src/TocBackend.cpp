@@ -118,7 +118,7 @@ Toc & TocBackend::toc(string const & type)
 
 bool TocBackend::updateItem(DocIterator const & dit)
 {
-	if (dit.paragraph().layout().toclevel == Layout::NOT_IN_TOC)
+	if (dit.text()->getTocLevel(dit.pit()) == Layout::NOT_IN_TOC)
 		return false;
 
 	if (toc("tableofcontents").empty()) {
@@ -154,7 +154,7 @@ bool TocBackend::updateItem(DocIterator const & dit)
 		}
 	}
 
-	int const toclevel = par.layout().toclevel;
+	int const toclevel = toc_item->dit_.text()->getTocLevel(toc_item->dit_.pit());
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
 			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);

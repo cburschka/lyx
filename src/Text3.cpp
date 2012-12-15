@@ -344,7 +344,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	DocumentClass const & tc = buf.params().documentClass();
 
-	int const thistoclevel = start->layout().toclevel;
+	int const thistoclevel = buf.text().getTocLevel(distance(bgn, start));
 	int toclevel;
 
 	// Move out (down) from this section header
@@ -353,7 +353,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	// Seek the one (on same level) below
 	for (; finish != end; ++finish) {
-		toclevel = finish->layout().toclevel;
+		toclevel = buf.text().getTocLevel(distance(bgn, finish));
 		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 			break;
 	}
@@ -370,7 +370,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			// Search previous same-level header above
 			do {
 				--dest;
-				toclevel = dest->layout().toclevel;
+				toclevel = buf.text().getTocLevel(distance(bgn, dest));
 			} while(dest != bgn
 				&& (toclevel == Layout::NOT_IN_TOC
 				    || toclevel > thistoclevel));
@@ -393,7 +393,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			ParagraphList::iterator dest = boost::next(finish, 1);
 			// Go further down to find header to insert in front of:
 			for (; dest != end; ++dest) {
-				toclevel = dest->layout().toclevel;
+				toclevel = buf.text().getTocLevel(distance(bgn, dest));
 				if (toclevel != Layout::NOT_IN_TOC
 				      && toclevel <= thistoclevel)
 					break;
@@ -410,7 +410,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
-				toclevel = start->layout().toclevel;
+				toclevel = buf.text().getTocLevel(distance(bgn, start));
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
 				DocumentClass::const_iterator lit = tc.begin();
@@ -429,7 +429,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
 			for (; start != finish; ++start) {
-				toclevel = start->layout().toclevel;
+				toclevel = buf.text().getTocLevel(distance(bgn, start));
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
 				DocumentClass::const_iterator lit = tc.begin();
@@ -798,7 +798,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		ParagraphList::iterator finish = start;
 		ParagraphList::iterator end = pars.end();
 
-		int const thistoclevel = start->layout().toclevel;
+		int const thistoclevel = buf.text().getTocLevel(distance(bgn, start));
 		if (thistoclevel == Layout::NOT_IN_TOC)
 			break;
 
@@ -812,7 +812,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// Seek the one (on same level) below
 		for (; finish != end; ++finish, ++cur.pit()) {
-			int const toclevel = finish->layout().toclevel;
+			int const toclevel = buf.text().getTocLevel(distance(bgn, finish));
 			if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 				break;
 		}
@@ -2770,7 +2770,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_OUT:
 		// FIXME: LyX is not ready for outlining within inset.
 		enable = isMainText()
-			&& cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC;
+			&& cur.buffer()->text().getTocLevel(cur.pit()) != Layout::NOT_IN_TOC;
 		break;
 
 	case LFUN_NEWLINE_INSERT:

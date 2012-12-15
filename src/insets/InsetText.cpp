@@ -821,7 +821,7 @@ void InsetText::addToToc(DocIterator const & cdit) const
 				arginset = inset.asInsetText();
 		}
 		// now the toc entry for the paragraph
-		int const toclevel = par.layout().toclevel;
+		int const toclevel = text().getTocLevel(pit);
 		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			docstring tocstring;

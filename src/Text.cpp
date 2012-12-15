@@ -265,6 +265,17 @@ bool Text::isFirstInSequence(pit_type par_offset) const
 }
 
 
+int Text::getTocLevel(pit_type par_offset) const
+{
+	Paragraph const & par = pars_[par_offset];
+
+	if (par.layout().isEnvironment() && !isFirstInSequence(par_offset))
+		return Layout::NOT_IN_TOC;
+
+	return par.layout().toclevel;
+}
+
+
 Font const Text::outerFont(pit_type par_offset) const
 {
 	depth_type par_depth = pars_[par_offset].getDepth();
