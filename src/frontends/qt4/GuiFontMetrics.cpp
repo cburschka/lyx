@@ -38,7 +38,7 @@ namespace {
  * This is no real conversion but a simple cast in reality. This is the reason
  * why this works well for symbol fonts used in mathed too, even though
  * these are not real ucs4 characters. These are codepoints in the
- * modern fonts used, nothing unicode related.
+ * computer modern fonts used, nothing unicode related.
  * See comment in QLPainter::text() for more explanation.
  **/	
 inline QChar const ucs4_to_qchar(char_type const ucs4)

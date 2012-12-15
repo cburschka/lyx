@@ -14,6 +14,7 @@ dist_pkgdata_DATA += configure.py
 
 dist_noinst_DATA = \
 	fonts/stmary10.sfd \
+	fonts/test/stmary10.lyx \
 	images/README \
 	images/font-smallcaps.png \
 	images/math/ams_arrows.png \
@@ -298,6 +299,7 @@ dist_fonts_DATA = \
 	fonts/msbm10.ttf \
 	fonts/ReadmeBaKoMa4LyX.txt \
 	fonts/rsfs10.ttf \
+	fonts/stmary10.ttf \
 	fonts/wasy10.ttf
 
 imagesdir = $(pkgdatadir)/images

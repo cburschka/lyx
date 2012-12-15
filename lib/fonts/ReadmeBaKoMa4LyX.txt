@@ -56,6 +56,14 @@
       created by Eddie Saudrais using METAFONT, is freely available for general
       use.
 
+      In addition to the BaKoMa fonts, this font bundle contains the stmary font
+      'stmary10.ttf' from the stmaryrd package. It was converted from the type1
+      version available at
+      http://www.ctan.org/tex-archive/fonts/stmaryrd/ps-type1/hoekwater/.
+      This PostScript Type 1 implementation of the font stmary10, originally
+      created by Jeremy Gibbons and Alan Jeffrey using METAFONT, is in the
+      public domain.
+
 
       Ekkehart Schlicht
       schlicht@lmu.de

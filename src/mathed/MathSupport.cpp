@@ -574,6 +574,8 @@ fontinfo fontinfos[] = {
 			  inh_shape, Color_math},
 	{"msb",           MSB_FAMILY, inh_series,
 			  inh_shape, Color_math},
+	{"stmry",         STMARY_FAMILY, inh_series,
+			  inh_shape, Color_math},
 	{"wasy",          WASY_FAMILY, inh_series,
 			  inh_shape, Color_math},
 	{"esint",         ESINT_FAMILY, inh_series,

@@ -1,7 +1,9 @@
 #!/usr/bin/python
-import sys,string,re,os
+import sys,string,re,os,os.path
 
 def get_code(code, font):
+    if font != "dontknowwhichfontusesthisstrangeencoding":
+        return code
     if code < 10:
 	return code+161
     elif code < 32:
@@ -20,10 +22,16 @@ def process(file):
     fh = open(file)
     lines = fh.readlines()
     fh.close()
+    package, ext = os.path.splitext(os.path.basename(file))
+    if ext != ".sty":
+        package = ''
 
     n = len(lines)
     for i in xrange(n):
 	line = lines[i]
+        mo =  re.match(r'\s*%.*', line)
+        if mo != None:
+            continue
 	next_line = ""
 	if i+1 < n:
 	    next_line = lines[i+1]
@@ -36,19 +44,28 @@ def process(file):
 	if mo != None:
 	    font_names[mo.group(1)] = mo.group(3)
 
-	mo =  re.match(r'.*\\DeclareMath(Symbol|Delimiter)\s*\{?\\(\w*?)\}?\s*\{?\\(.*?)\}?\s*\{(.*?)\}\s*\{"(.*?)\}.*', line)
-	if mo != None:
-	    symbol = mo.group(2)
-	    type = mo.group(3)
-	    font = mo.group(4)
-	    code = mo.group(5)
-	else:
-	    mo = re.match(r'.*\\edef\\(\w*?)\{.*?\{\\hexnumber@\\sym(.*?)\}(.*?)\}', line)
-	    if mo != None:
-		symbol = mo.group(1)
-		type = "mathord"
-		font = mo.group(2)
-		code = mo.group(3)
+	mo =  re.match(r'.*\\DeclareMath(Symbol|Delimiter)\s*\{?\\(\w*?)\}?\s*\{?\\(.*?)\}?\s*\{(.*?)\}\s*\{([\'"]?)(.*?)\}.*', line)
+        code = -1
+        try:
+            if mo != None:
+                symbol = mo.group(2)
+                type = mo.group(3)
+                font = mo.group(4)
+                if mo.group(5) == '':
+                    code = int(mo.group(6))
+                elif mo.group(5) == '"':
+                    code = int(mo.group(6), 16)
+                else:
+                    code = int(mo.group(6), 8)
+            else:
+                mo = re.match(r'.*\\edef\\(\w*?)\{.*?\{\\hexnumber@\\sym(.*?)\}(.*?)\}', line)
+                if mo != None:
+                    symbol = mo.group(1)
+                    type = "mathord"
+                    font = mo.group(2)
+                    code = int(mo.group(3), 16)
+        except ValueError:
+                code = -1
 
 	if mo != None and symbol not in ignore_list:
 	    mo2 = re.match(r'\s*\\def\\(.*?)\{', next_line)
@@ -59,8 +76,8 @@ def process(file):
 	    if font_names.has_key(font):
 		font = font_names[font]
 
-	    code = get_code(string.atoi(code, 16), font)
-	    if code == 0:
+	    code = get_code(code, font)
+	    if code < 0:
 		continue
 
 	    xcode = 0
@@ -74,7 +91,10 @@ def process(file):
 		    sys.stderr.write("code is not equal!!!\n")
 	    else:
 		symbols[symbol] = code
-		print "%-18s %-4s %3d %3d %-6s" % (symbol,font,code,xcode,type)
+		if package == '':
+		    print "%-18s %-4s %3d %3d %-6s" % (symbol,font,code,xcode,type)
+		else:
+		    print "%-18s %-4s %3d %3d %-9s x  %s" % (symbol,font,code,xcode,type,package)
 
 
 path = os.path.split(sys.argv[0])[0]

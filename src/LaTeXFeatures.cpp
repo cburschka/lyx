@@ -850,6 +850,11 @@ string const LaTeXFeatures::getPackages() const
 	    params_.use_package("yhmath") != BufferParams::package_off)
 		packages << "\\usepackage{yhmath}\n";
 
+	// stmaryrd must be loaded after amsmath
+	if (mustProvide("stmaryrd") &&
+	    params_.use_package("stmaryrd") != BufferParams::package_off)
+		packages << "\\usepackage{stmaryrd}\n";
+
 	if (mustProvide("undertilde") &&
 		params_.use_package("undertilde") != BufferParams::package_off)
 		packages << "\\usepackage{undertilde}\n";

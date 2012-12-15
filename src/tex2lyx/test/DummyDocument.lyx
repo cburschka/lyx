@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 450
+\lyxformat 453
 \begin_document
 \begin_header
 \textclass article
@@ -44,6 +44,7 @@
 \use_package mathdots 0
 \use_package mathtools 0
 \use_package mhchem 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine natbib
 \cite_engine_type numerical
@@ -77,7 +78,6 @@
 
 \begin_layout Subsection
 
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:External-Subsection"
@@ -88,7 +88,6 @@ External Subsection
 \end_layout
 
 \begin_layout Standard
-
 This is a small dummy child document to show how files can be inserted to another document. Here are some accented characters to make sure the encoding is passed to included files: éè 
 \end_layout
 

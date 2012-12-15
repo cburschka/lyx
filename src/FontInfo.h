@@ -127,6 +127,7 @@ public:
 		case CMEX_FAMILY:
 		case MSA_FAMILY:
 		case MSB_FAMILY:
+		case STMARY_FAMILY:
 		case WASY_FAMILY:
 		case ESINT_FAMILY:
 			return true;

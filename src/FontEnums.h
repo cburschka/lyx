@@ -49,6 +49,8 @@ enum FontFamily {
 	///
 	RSFS_FAMILY,
 	///
+	STMARY_FAMILY,
+	///
 	WASY_FAMILY,
 	///
 	ESINT_FAMILY,

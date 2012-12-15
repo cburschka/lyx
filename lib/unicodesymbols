@@ -1868,14 +1868,14 @@
 0x219a ""                         "" "" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
 0x219b ""                         "" "" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
-#0x219d ""                         "" "" "" "" # RIGHTWARDS WAVE ARROW
+0x219d ""                         "" "" "\\leadsto" "amssymb" # RIGHTWARDS WAVE ARROW
 0x219e ""                         "" "" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
 #0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
 0x21a0 ""                         "" "" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
 #0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
 0x21a2 ""                         "" "" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
 0x21a3 ""                         "" "" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
-#0x21a4 ""                         "" "" "" "" # LEFTWARDS ARROW FROM BAR
+0x21a4 ""                         "" "" "\\mapsfromchar" "stmaryrd" # LEFTWARDS ARROW FROM BAR
 #0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
 0x21a6 ""                         "" "" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
 #0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
@@ -1886,7 +1886,7 @@
 0x21ac ""                         "" "" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
 #0x21ad ""                         "" "" "" "" # LEFT RIGHT WAVE ARROW
 0x21ae ""                         "" "" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
-0x21af ""                         "" "" "\\lightning" "wasysym" # DOWNWARDS ZIGZAG ARROW
+0x21af ""                         "" "" "\\lightning" "stmaryrd|wasysym" # DOWNWARDS ZIGZAG ARROW
 0x21b0 ""                         "" "" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
 0x21b1 ""                         "" "" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
@@ -2549,6 +2549,8 @@
 #
 # miscellaneous mathematical symbols-A
 #
+0x27e6 ""                         "" "" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
+0x27e7 ""                         "" "" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
 0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
 #

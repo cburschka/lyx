@@ -4,6 +4,9 @@
 #
 # The syntax of lib/symbols is very ad hoc.
 # There are several possible formats of a line, which are quite different.
+# New symbols for font packages may be created using
+# development/tools/generate_symbols_list.py (but may require manual fixes
+# as well).
 
 # decorations
 acute               decoration none
@@ -811,6 +814,150 @@ ocircle            wasy          35    0  mathbin &#x229A;
 logof              wasy          22    0  mathrel x
 varint             wasy         114    0  mathop  &int;
 varoint            wasy         117    0  mathop  &int;
+
+# Generated from stmaryrd.sty
+
+shortleftarrow     stmry   0   0 mathrel    x  stmaryrd
+shortrightarrow    stmry   1   0 mathrel    x  stmaryrd
+shortuparrow       stmry   2   0 mathrel    x  stmaryrd
+shortdownarrow     stmry   3   0 mathrel    x  stmaryrd
+Yup                stmry   4   0 mathbin    x  stmaryrd
+Ydown              stmry   5   0 mathbin    x  stmaryrd
+Yleft              stmry   6   0 mathbin    x  stmaryrd
+Yright             stmry   7   0 mathbin    x  stmaryrd
+varcurlyvee        stmry   8   0 mathbin    x  stmaryrd
+# qt does not display characters at the \t position (0x09)
+# therefore our .ttf font contains a copy at 254 (0xfe)
+#varcurlywedge      stmry   9   0 mathbin    x  stmaryrd
+varcurlywedge      stmry 254   0 mathbin    x  stmaryrd
+minuso             stmry  10   0 mathbin    x  stmaryrd
+baro               stmry  11   0 mathbin    x  stmaryrd
+sslash             stmry  12   0 mathbin    x  stmaryrd
+bbslash            stmry  13   0 mathbin    x  stmaryrd
+moo                stmry  14   0 mathbin    x  stmaryrd
+varotimes          stmry  15   0 mathbin    x  stmaryrd
+varoast            stmry  16   0 mathbin    x  stmaryrd
+varobar            stmry  17   0 mathbin    x  stmaryrd
+varodot            stmry  18   0 mathbin    x  stmaryrd
+varoslash          stmry  19   0 mathbin    x  stmaryrd
+varobslash         stmry  20   0 mathbin    x  stmaryrd
+varocircle         stmry  21   0 mathbin    x  stmaryrd
+varoplus           stmry  22   0 mathbin    x  stmaryrd
+varominus          stmry  23   0 mathbin    x  stmaryrd
+boxast             stmry  24   0 mathbin    x  stmaryrd
+boxbar             stmry  25   0 mathbin    x  stmaryrd
+boxdot             stmry  26   0 mathbin    x  stmaryrd
+boxslash           stmry  27   0 mathbin    x  stmaryrd
+boxbslash          stmry  28   0 mathbin    x  stmaryrd
+boxcircle          stmry  29   0 mathbin    x  stmaryrd
+boxbox             stmry  30   0 mathbin    x  stmaryrd
+boxempty           stmry  31   0 mathbin    x  stmaryrd
+#lightning          stmry  32   0 mathord   x  stmaryrd # already in wasy
+merge              stmry  33   0 mathbin    x  stmaryrd
+vartimes           stmry  34   0 mathbin    x  stmaryrd
+fatsemi            stmry  35   0 mathbin    x  stmaryrd
+sswarrow           stmry  36   0 mathrel    x  stmaryrd
+ssearrow           stmry  37   0 mathrel    x  stmaryrd
+curlywedgeuparrow  stmry  38   0 mathrel    x  stmaryrd
+curlywedgedownarrow stmry 39   0 mathrel    x  stmaryrd
+fatslash           stmry  40   0 mathbin    x  stmaryrd
+fatbslash          stmry  41   0 mathbin    x  stmaryrd
+lbag               stmry  42   0 mathbin    x  stmaryrd
+rbag               stmry  43   0 mathbin    x  stmaryrd
+varbigcirc         stmry  44   0 mathbin    x  stmaryrd
+leftrightarroweq   stmry  45   0 mathrel    x  stmaryrd
+curlyveedownarrow  stmry  46   0 mathrel    x  stmaryrd
+curlyveeuparrow    stmry  47   0 mathrel    x  stmaryrd
+nnwarrow           stmry  48   0 mathrel    x  stmaryrd
+nnearrow           stmry  49   0 mathrel    x  stmaryrd
+leftslice          stmry  50   0 mathbin    x  stmaryrd
+rightslice         stmry  51   0 mathbin    x  stmaryrd
+varolessthan       stmry  52   0 mathbin    x  stmaryrd
+varogreaterthan    stmry  53   0 mathbin    x  stmaryrd
+varovee            stmry  54   0 mathbin    x  stmaryrd
+varowedge          stmry  55   0 mathbin    x  stmaryrd
+talloblong         stmry  56   0 mathbin    x  stmaryrd
+interleave         stmry  57   0 mathbin    x  stmaryrd
+obar               stmry  58   0 mathbin    x  stmaryrd
+obslash            stmry  59   0 mathbin    x  stmaryrd
+olessthan          stmry  60   0 mathbin    x  stmaryrd
+ogreaterthan       stmry  61   0 mathbin    x  stmaryrd
+ovee               stmry  62   0 mathbin    x  stmaryrd
+owedge             stmry  63   0 mathbin    x  stmaryrd
+oblong             stmry  64   0 mathbin    x  stmaryrd
+inplus             stmry  65   0 mathrel    x  stmaryrd
+niplus             stmry  66   0 mathrel    x  stmaryrd
+nplus              stmry  67   0 mathbin    x  stmaryrd
+subsetplus         stmry  68   0 mathrel    x  stmaryrd
+supsetplus         stmry  69   0 mathrel    x  stmaryrd
+subsetpluseq       stmry  70   0 mathrel    x  stmaryrd
+supsetpluseq       stmry  71   0 mathrel    x  stmaryrd
+Lbag               stmry  72   0 mathopen   x  stmaryrd
+Rbag               stmry  73   0 mathclose  x  stmaryrd
+llbracket          stmry  74   0 mathopen  x  stmaryrd
+rrbracket          stmry  75   0 mathclose x  stmaryrd
+llparenthesis      stmry  76   0 mathopen   x  stmaryrd
+rrparenthesis      stmry  77   0 mathclose  x  stmaryrd
+binampersand       stmry  78   0 mathopen   x  stmaryrd
+bindnasrepma       stmry  79   0 mathclose  x  stmaryrd
+trianglelefteqslant stmry 80   0 mathrel    x  stmaryrd
+trianglerighteqslant stmry 81  0 mathrel    x  stmaryrd
+ntrianglelefteqslant stmry 82  0 mathrel    x  stmaryrd
+ntrianglerighteqslant stmry 83 0 mathrel    x  stmaryrd
+llfloor            stmry  84   0 mathopen   x  stmaryrd
+rrfloor            stmry  85   0 mathclose  x  stmaryrd
+llceil             stmry  86   0 mathopen   x  stmaryrd
+rrceil             stmry  87   0 mathclose  x  stmaryrd
+arrownot           stmry  88   0 mathrel    x  stmaryrd
+Arrownot           stmry  89   0 mathrel    x  stmaryrd
+Mapstochar         stmry  90   0 mathrel    x  stmaryrd
+mapsfromchar       stmry  91   0 mathrel    x  stmaryrd
+Mapsfromchar       stmry  92   0 mathrel    x  stmaryrd
+leftrightarrowtriangle stmry 93 0 mathrel   x  stmaryrd
+leftarrowtriangle  stmry  94   0 mathrel    x  stmaryrd
+rightarrowtriangle stmry  95   0 mathrel    x  stmaryrd
+#bigtriangledown    stmry  96   0 mathop    x  stmaryrd #already in cmsy
+#bigtriangleup      stmry  97   0 mathop    x  stmaryrd #already in cmsy
+bigcurlyvee        stmry  98   0 mathop    x  stmaryrd
+bigcurlywedge      stmry  99   0 mathop    x  stmaryrd
+bigsqcap           stmry 100   0 mathop    x  stmaryrd
+bigbox             stmry 101   0 mathop    x  stmaryrd
+bigparallel        stmry 102   0 mathop    x  stmaryrd
+biginterleave      stmry 103   0 mathop    x  stmaryrd
+#hugetriangledown   stmry 104   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugetriangleup     stmry 105   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugecurlyvee       stmry 106   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugecurlywedge     stmry 107   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugesqcap          stmry 108   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugebox            stmry 109   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugeparallel       stmry 110   0 mathop    x  stmaryrd # only in the font, not the .sty
+#hugeinterleave     stmry 111   0 mathop    x  stmaryrd # only in the font, not the .sty
+bignplus           stmry 112   0 mathop    x  stmaryrd # caution: named hugenplus in the font
+#largellbracket     stmry 113   0 mathopen  x  stmaryrd # only in the font, not the .sty
+#Largellbracket     stmry 114   0 mathopen  x  stmaryrd # only in the font, not the .sty
+#LARGEllbracket     stmry 115   0 mathopen  x  stmaryrd # only in the font, not the .sty
+#hugellbracket      stmry 116   0 mathopen  x  stmaryrd # only in the font, not the .sty
+#Largellbrackettop  stmry 117   0 mathopen  x  stmaryrd # only in the font, not the .sty
+#Largellbracketbot  stmry 118   0 mathopen  x  stmaryrd # only in the font, not the .sty caution: named Hugellbrackettop in the font
+#llbracketex        stmry 119   0 mathopen  x  stmaryrd # only in the font, not the .sty caution: named Hugellbracketbot in the font
+#hugenplus          stmry 120   0 mathop    x  stmaryrd # only in the font, not the .sty caution: named Hugenplus in the font
+#largerrbracket     stmry 121   0 mathclose x  stmaryrd # only in the font, not the .sty
+#Largerrbracket     stmry 122   0 mathclose x  stmaryrd # only in the font, not the .sty
+#LARGErrbracket     stmry 123   0 mathclose x  stmaryrd # only in the font, not the .sty
+#hugerrbracket      stmry 124   0 mathclose x  stmaryrd # only in the font, not the .sty
+#Largerrbrackettop  stmry 125   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbrackettop in the font
+#Largerrbracketbot  stmry 126   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
+#rrbracketex        stmry 127   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
+
+\def\varcopyright{c\kern-14mu\varbigcirc}                   stmaryrd
+\def\longarrownot{\kern5.5mu\arrownot\kern-5.5mu}           stmaryrd
+\def\Longarrownot{\kern5.5mu\Arrownot\kern-5.5mu}           stmaryrd
+\def\Mapsto{\Mapstochar\kern-9mu\Rightarrow}                stmaryrd
+\def\mapsfrom{\leftarrow\kern-9mu\mapsfromchar}             stmaryrd
+\def\Mapsfrom{\Leftarrow\kern-9mu\Mapsfromchar}             stmaryrd
+\def\Longmapsto{\Mapstochar\kern-7mu\Longrightarrow}        stmaryrd
+\def\longmapsfrom{\longleftarrow\kern-7mu\mapsfromchar}     stmaryrd
+\def\Longmapsfrom{\Longleftarrow\kern-7mu\Mapsfromchar}     stmaryrd
 
 # symbols from the mhchem package, all of them are equivalent to a math symbol
 # mhchem is not loaded because these commands can only be used inside

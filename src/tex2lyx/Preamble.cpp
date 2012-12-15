@@ -517,6 +517,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_use_packages["mhchem"]     = "0";
 	h_use_packages["mathdots"]   = "0";
 	h_use_packages["mathtools"]  = "0";
+	h_use_packages["stmaryrd"]   = "0";
 	h_use_packages["undertilde"] = "0";
 }
 
@@ -702,7 +703,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "amsmath" || name == "amssymb" ||
 	         name == "esint" || name == "mhchem" || name == "mathdots" ||
-	         name == "mathtools" || name == "undertilde")
+	         name == "mathtools" || name == "stmaryrd" ||
+		 name == "undertilde")
 		h_use_packages[name] = "2";
 
 	else if (name == "babel") {

@@ -417,6 +417,83 @@ def revert_use_mathtools(document):
             i = j
 
 
+def convert_use_stmaryrd(document):
+    "insert use_package stmaryrd"
+    i = find_token(document.header, "\\use_package", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_package.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{stmaryrd}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_package stmaryrd 0")
+    else:
+        document.header.insert(i + 1, "\\use_package stmaryrd 2")
+        del document.preamble[j]
+
+
+def revert_use_stmaryrd(document):
+    "remove use_package stmaryrd"
+    regexp = re.compile(r'(\\use_package\s+stmaryrd)')
+    i = find_re(document.header, regexp, 0)
+    value = "1" # default is auto
+    if i != -1:
+        value = get_value(document.header, "\\use_package" , i).split()[1]
+        del document.header[i]
+    if value == "2": # on
+        add_to_preamble(document, ["\\usepackage{stmaryrd}"])
+    elif value == "1": # auto
+        commands = ["shortleftarrow", "shortrightarrow", "shortuparrow", \
+                    "shortdownarrow", "Yup", "Ydown", "Yleft", "Yright", \
+                    "varcurlyvee", "varcurlywedge", "minuso", "baro", \
+                    "sslash", "bbslash", "moo", "varotimes", "varoast", \
+                    "varobar", "varodot", "varoslash", "varobslash", \
+                    "varocircle", "varoplus", "varominus", "boxast", \
+                    "boxbar", "boxdot", "boxslash", "boxbslash", "boxcircle", \
+                    "boxbox", "boxempty", "merge", "vartimes", \
+                    "fatsemi", "sswarrow", "ssearrow", "curlywedgeuparrow", \
+                    "curlywedgedownarrow", "fatslash", "fatbslash", "lbag", \
+                    "rbag", "varbigcirc", "leftrightarroweq", \
+                    "curlyveedownarrow", "curlyveeuparrow", "nnwarrow", \
+                    "nnearrow", "leftslice", "rightslice", "varolessthan", \
+                    "varogreaterthan", "varovee", "varowedge", "talloblong", \
+                    "interleave", "obar", "obslash", "olessthan", \
+                    "ogreaterthan", "ovee", "owedge", "oblong", "inplus", \
+                    "niplus", "nplus", "subsetplus", "supsetplus", \
+                    "subsetpluseq", "supsetpluseq", "Lbag", "Rbag", \
+                    "llbracket", "rrbracket", "llparenthesis", \
+                    "rrparenthesis", "binampersand", "bindnasrepma", \
+                    "trianglelefteqslant", "trianglerighteqslant", \
+                    "ntrianglelefteqslant", "ntrianglerighteqslant", \
+                    "llfloor", "rrfloor", "llceil", "rrceil", "arrownot", \
+                    "Arrownot", "Mapstochar", "mapsfromchar", "Mapsfromchar", \
+                    "leftrightarrowtriangle", "leftarrowtriangle", \
+                    "rightarrowtriangle", \
+                    "bigcurlyvee", "bigcurlywedge", "bigsqcap", "bigbox", \
+                    "bigparallel", "biginterleave", "bignplus", \
+                    "varcopyright", "longarrownot", "Longarrownot", \
+                    "Mapsto", "mapsfrom", "Mapsfrom" "Longmapsto", \
+                    "longmapsfrom", "Longmapsfrom"]
+        # commands provided by stmaryrd.sty but LyX uses other packages:
+        # lightning, bigtriangledown, bigtriangleup
+
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Formula', i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+                continue
+            code = "\n".join(document.body[i:j])
+            for c in commands:
+                if code.find("\\%s" % c) != -1:
+                    add_to_preamble(document, ["\\usepackage{stmaryrd}"])
+                    return
+            i = j
+
+
 def convert_cite_engine_type(document):
     "Determine the \\cite_engine_type from the citation engine."
     i = find_token(document.header, "\\cite_engine", 0)
@@ -2679,10 +2756,12 @@ convert = [
            [449, []],
            [450, []],
            [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]],
-           [452, [convert_beamerblocks]]
+           [452, [convert_beamerblocks]],
+           [453, [convert_use_stmaryrd]]
           ]
 
 revert =  [
+           [452, [revert_use_stmaryrd]],
            [451, [revert_beamerblocks]],
            [450, [revert_beamerargs, revert_beamerargs2, revert_beamerargs3, revert_beamerflex]],
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
