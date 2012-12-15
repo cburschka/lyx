@@ -58,10 +58,12 @@ def main(argv):
         (base, ext) = os.path.splitext(f)
         texfile = os.path.join(inputdir, f)
         if overwrite:
+            # we are updating the test references, so use roundtrip to allow
+            # for checking the LyX export as well.
             cmd = '%s -roundtrip -f %s' % (tex2lyx, texfile)
         else:
             lyxfile = os.path.join(outputdir, base + ".lyx")
-            cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
+            cmd = '%s -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
         proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
         proc.wait()
         err = proc.returncode
