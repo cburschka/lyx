@@ -10,17 +10,18 @@ KK: o\Axregexp-mode\[Return].* a\[Return]
 TestEnd
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8' lyx-log.txt
 
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
-KK: \CF
+TestBegin test.lyx -dbg find > lyx-log2.txt 2>&1
+KK: \C\[Home]\CF
 KK: o\Axregexp-mode\[Return][[:word:]]* a
-KD: 200
-KK: \Al\Ar\[Return]
+KK: \Al\Ar
+KD: 500
+KK: \[Return]
 KD: 100
 TestEnd
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6' lyx-log2.txt
 
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
-KK: \CF
+TestBegin test.lyx -dbg find > lyx-log3.txt 2>&1
+KK: \C\[Home]\CF
 KK: \Axregexp-mode\[Return].* \Al\Ar\[Return]\[Return]\[Return]
 TestEnd
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3' lyx-log3.txt

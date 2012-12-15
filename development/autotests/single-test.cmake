@@ -60,7 +60,7 @@ set(ENV{KEYTEST_INFILE} "${AUTOTEST_ROOT}/${KEYTEST_INFILE}")
 set(ENV{KEYTEST_OUTFILE} "${WORKDIR}/${KEYTEST_OUTFILE}")
 set(ENV{PO_BUILD_DIR} "${PO_BUILD_DIR}")
 set(ENV{MAX_DROP} 0)
-set(ENV{MAX_LOOP} 1)
+set(ENV{MAX_LOOPS} 1)
 file(GLOB _testfiles RELATIVE "${WORKDIR}" "test*.*" "#test*.*")
 if(_testfiles)
   # remove some leftover files from previous test
