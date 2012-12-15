@@ -100,7 +100,7 @@ for tf in $(echo "$TESTS"); do
     if $cmd > test-log.txt 2>&1; then
 	echo Ok
 	cd ..
-	rm -rf "out-$t";
+	if [ "$V" != "" ]; then rm -rf "out-$t"; fi
     else
 	echo FAILED
 	cd ..
