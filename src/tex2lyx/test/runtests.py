@@ -68,10 +68,6 @@ def main(argv):
         errorstring = proc.stderr.read()
         if not errorstring is None:
             print errorstring
-            if err == 0:
-                matchObj = re.match(r'.*: +Error +in +.*', errorstring, re.M|re.S)
-                if matchObj:
-                    err = 9999
         if err != 0:
             errors.append(f)
         elif not overwrite:

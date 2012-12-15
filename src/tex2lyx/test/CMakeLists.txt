@@ -6,9 +6,13 @@
 
 project(test)
 
-file(GLOB _tex_tests RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/*.ltx" "${CMAKE_CURRENT_SOURCE_DIR}/*.tex")
+#file(GLOB _tex_tests RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/*.ltx" "${CMAKE_CURRENT_SOURCE_DIR}/*.tex")
+#
+#list(REMOVE_ITEM _tex_tests DummyDocument.tex)
 
-list(REMOVE_ITEM _tex_tests DummyDocument.tex)
+set(_tex_tests test.ltx test-structure.tex test-insets.tex
+               test-modules.tex box-color-size-space-align.tex
+               CJK.tex XeTeX-polyglossia.tex)
 
 foreach(_fl ${_tex_tests})
   set(fl ${_fl})
