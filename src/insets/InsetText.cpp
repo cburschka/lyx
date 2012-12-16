@@ -338,8 +338,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
-		if (&buffer().inset() == this || !cur.paragraph().layout().latexargs().empty()
-		    || !cur.paragraph().layout().itemargs().empty())
+		if (&buffer().inset() == this || !cur.paragraph().layout().args().empty())
 			return text_.getStatus(cur, cmd, status);
 
 		Layout::LaTeXArgMap args = getLayout().latexargs();

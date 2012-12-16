@@ -105,6 +105,8 @@ public:
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;
 	///
+	LaTeXArgMap args() const;
+	///
 	LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
 	LaTeXArgMap const & itemargs() const { return itemargs_; }

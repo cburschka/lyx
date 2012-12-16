@@ -950,6 +950,15 @@ void Layout::readArgument(Lexer & lex)
 }
 
 
+Layout::LaTeXArgMap Layout::args() const
+{
+	LaTeXArgMap args = latexargs_;
+	if (!itemargs_.empty())
+		args.insert(itemargs_.begin(), itemargs_.end());
+	return args;
+}
+
+
 int Layout::optArgs() const
 {
 	int nr = 0;

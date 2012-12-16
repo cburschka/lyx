@@ -57,18 +57,12 @@ void InsetArgument::read(Lexer & lex)
 
 void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	Layout::LaTeXArgMap args;
-	bool const insetlayout = &it.inset() && it.paragraph().layout().latexargs().empty()
-	      && it.paragraph().layout().itemargs().empty();
+	Layout::LaTeXArgMap args = it.paragraph().layout().args();
+	pass_thru_ = it.paragraph().layout().pass_thru;
+	bool const insetlayout = &it.inset() && args.empty();
 	if (insetlayout) {
 		args = it.inset().getLayout().latexargs();
 		pass_thru_ = it.inset().getLayout().isPassThru();
-	} else {
-		args = it.paragraph().layout().latexargs();
-		Layout::LaTeXArgMap itemargs = it.paragraph().layout().itemargs();
-		if (!itemargs.empty())
-			args.insert(itemargs.begin(), itemargs.end());
-		pass_thru_ = it.paragraph().layout().pass_thru;
 	}
 	
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)

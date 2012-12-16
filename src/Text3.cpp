@@ -1374,10 +1374,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (change_layout)
 			setLayout(cur, layout);
 
-		Layout::LaTeXArgMap args = tclass[layout].latexargs();
-		Layout::LaTeXArgMap itemargs = tclass[layout].itemargs();
-		if (!itemargs.empty())
-			args.insert(itemargs.begin(), itemargs.end());
+		Layout::LaTeXArgMap args = tclass[layout].args();
 		Layout::LaTeXArgMap::const_iterator lait = args.begin();
 		Layout::LaTeXArgMap::const_iterator const laend = args.end();
 		for (; lait != laend; ++lait) {
@@ -2571,10 +2568,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 		}
 		Layout const & lay = cur.paragraph().layout();
-		Layout::LaTeXArgMap args = lay.latexargs();
-		Layout::LaTeXArgMap itemargs = lay.itemargs();
-		if (!itemargs.empty())
-			args.insert(itemargs.begin(), itemargs.end());
+		Layout::LaTeXArgMap args = lay.args();
 		Layout::LaTeXArgMap::const_iterator const lait =
 				args.find(arg);
 		if (lait != args.end()) {
