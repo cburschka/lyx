@@ -222,6 +222,8 @@ void initSymbols()
 		else
 			theMathWordList[tmp.name] = tmp;
 
+		// If you change the following output, please adjust
+		// development/tools/generate_symbols_images.py.
 		LYXERR(Debug::MATHED, "read symbol '" << to_utf8(tmp.name)
 			<< "  inset: " << to_utf8(tmp.inset)
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])

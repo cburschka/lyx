@@ -14,6 +14,8 @@ EXTRA_DIST = coding/Rules coding/Recommendations \
 	LyX-Mac-binary-release.sh \
 tools/convert_kmap.py \
 tools/gen_lfuns.py \
+tools/generate_symbols_images.lyx \
+tools/generate_symbols_images.py \
 tools/generate_symbols_list.py \
 tools/unicodesymbols.py \
 tools/x-font \
