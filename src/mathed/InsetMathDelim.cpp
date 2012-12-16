@@ -14,9 +14,12 @@
 #include "InsetMathDelim.h"
 
 #include "MathData.h"
+#include "MathFactory.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
+
+#include "LaTeXFeatures.h"
 
 #include "support/docstring.h"
 
@@ -55,6 +58,30 @@ InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring cons
 Inset * InsetMathDelim::clone() const
 {
 	return new InsetMathDelim(*this);
+}
+
+
+void InsetMathDelim::validate(LaTeXFeatures & features) const
+{
+	InsetMathNest::validate(features);
+	// The delimiters may be used without \left or \right as well.
+	// Therefore they are listed in lib/symbols, and if they have
+	// requirements, we need to add them here.
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(left_);
+	if (it != words.end())
+	{
+		docstring const req = it->second.requires;
+		if (!req.empty())
+			features.require(to_ascii(req));
+	}
+	it = words.find(right_);
+	if (it != words.end())
+	{
+		docstring const req = it->second.requires;
+		if (!req.empty())
+			features.require(to_ascii(req));
+	}
 }
 
 

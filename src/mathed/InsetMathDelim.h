@@ -46,6 +46,8 @@ public:
 	void draw(PainterInfo &, int x, int y) const;
 
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream &) const;

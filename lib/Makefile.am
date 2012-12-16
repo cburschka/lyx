@@ -708,6 +708,7 @@ dist_imagesmath_DATA = \
 	images/math/lfloor.png \
 	images/math/lfloor_rfloor.png \
 	images/math/ll.png \
+	images/math/llbracket.png \
 	images/math/llcorner.png \
 	images/math/Lleftarrow.png \
 	images/math/lll.png \
@@ -862,6 +863,7 @@ dist_imagesmath_DATA = \
 	images/math/risingdotseq.png \
 	images/math/root.png \
 	images/math/rparen.png \
+	images/math/rrbracket.png \
 	images/math/Rrightarrow.png \
 	images/math/Rsh.png \
 	images/math/rtimes.png \

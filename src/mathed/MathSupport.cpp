@@ -160,6 +160,15 @@ double const brack[] = {
 };
 
 
+double const dbrack[] = {
+	2, 4,
+	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,  0.95, 0.95,
+	2, 2,
+	0.50, 0.05,  0.50, 0.95,
+	0
+};
+
+
 double const corner[] = {
 	2, 3,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,
@@ -299,6 +308,8 @@ named_deco_struct deco_table[] = {
 	{"rbrace",         brace,      2 },
 	{"[",              brack,      0 },
 	{"]",              brack,      2 },
+	{"llbracket",      dbrack,     0 },
+	{"rrbracket",      dbrack,     2 },
 	{"|",              vert,       0 },
 	{"/",              slash,      0 },
 	{"slash",          slash,      0 },

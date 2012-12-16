@@ -41,6 +41,7 @@ namespace {
 static char const *  latex_delimiters[] = {
 	"(", ")", "{", "}", "[", "]",
 	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
+	"llbracket", "rrbracket",
 	"uparrow", "updownarrow", "Uparrow", "Updownarrow", "downarrow", "Downarrow",
 	"|", "Vert", "/", "backslash", ""
 };
@@ -114,6 +115,8 @@ void initMathSymbols()
 	math_symbols_["rfloor"] = MathSymbol(0x230B, 99, CMSY_FAMILY);
 	math_symbols_["langle"] = MathSymbol(0x2329, 104, CMSY_FAMILY);
 	math_symbols_["rangle"] = MathSymbol(0x232A, 105, CMSY_FAMILY);
+	math_symbols_["llbracket"] = MathSymbol(0x27e6, 74, STMARY_FAMILY);
+	math_symbols_["rrbracket"] = MathSymbol(0x27e7, 75, STMARY_FAMILY);
 	math_symbols_["uparrow"] = MathSymbol(0x2191, 34, CMSY_FAMILY);
 	math_symbols_["Uparrow"] = MathSymbol(0x21D1, 42, CMSY_FAMILY);
 	math_symbols_["updownarrow"] = MathSymbol(0x2195, 108, CMSY_FAMILY);
@@ -233,6 +236,8 @@ char_type GuiDelimiter::doMatch(char_type const symbol)
 	else if (str == "lfloor") match = "rfloor";
 	else if (str == "rangle") match = "langle";
 	else if (str == "langle") match = "rangle";
+	else if (str == "llbracket") match = "rrbracket";
+	else if (str == "rrbracket") match = "llbracket";
 	else if (str == "backslash") match = "/";
 	else if (str == "/") match = "backslash";
 	else return symbol;
