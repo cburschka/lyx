@@ -100,6 +100,7 @@ public:
 		std::string decoration;
 		FontInfo font;
 		FontInfo labelfont;
+		bool autoinsert;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 452
+\lyxformat 453
 \begin_document
 \begin_header
 \textclass scrbook
@@ -105,6 +105,7 @@ End
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -10907,7 +10908,7 @@ reference "sub:Font-description"
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1353917320
+\change_inserted -712698321 1355661048
 \begin_inset Flex Code
 status collapsed
 
@@ -10969,6 +10970,51 @@ Classic
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1355661160
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355661057
+AutoInsert
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355661049
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355661077
+1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, this argument is automatically inserted when the respective style is selected.
+ This option is currently only available for paragraph styles, not for InsetLayo
+uts.
 \change_inserted 155139281 1354198988
 
 \end_layout

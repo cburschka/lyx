@@ -1372,6 +1372,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (change_layout)
 			setLayout(cur, layout);
 
+		Layout::LaTeXArgMap args = tclass[layout].latexargs();
+		Layout::LaTeXArgMap itemargs = tclass[layout].itemargs();
+		if (!itemargs.empty())
+			args.insert(itemargs.begin(), itemargs.end());
+		Layout::LaTeXArgMap::const_iterator lait = args.begin();
+		Layout::LaTeXArgMap::const_iterator const laend = args.end();
+		for (; lait != laend; ++lait) {
+			Layout::latexarg arg = (*lait).second;
+			if (arg.autoinsert) {
+				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
+				lyx::dispatch(cmd);
+			}
+		}
+
 		break;
 	}
 
