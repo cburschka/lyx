@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-12-15 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 453
+	  support for the LaTeX-package stmaryrd (fix bug 8434)
+	  New buffer param \use_package stmaryrd
+
 2012-12-09 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 452: Support for beamer block arguments:
 	  \begin{block}<overlay>{title}
