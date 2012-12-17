@@ -889,6 +889,14 @@ contributers = [
                  "23 February 2005",
                  u"Tutorial, reLyX: the LaTeX to LyX translator"),
 
+     contributer(u"Zahari Dmitrov Kassabov",
+                 "zaharid () gmail ! com",
+                 "GPL",
+                 "GPL Statement",
+                 "m=135540059615508",
+                 "13 December 2012",
+                 u"Bug fixes"),
+
      contributer(u"Carmen Kauffmann",
                  "",
                  "",
