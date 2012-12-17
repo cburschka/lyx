@@ -295,6 +295,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			// Merge multiple paragraphs -- hack
 			while (cur.lastpit() > 0)
 				mergeParagraph(bparams, cur.text()->paragraphs(), 0);
+			if (cmd.action() == LFUN_FLEX_INSERT)
+				return true;
 			Cursor old = cur;
 			cur.leaveInset(*inset);
 			if (cmd.action() == LFUN_PREVIEW_INSERT
@@ -1699,7 +1701,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CAPTION_INSERT:
 	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_NOTE_INSERT:
-	case LFUN_FLEX_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
 	case LFUN_PHANTOM_INSERT:
@@ -1719,6 +1720,37 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// let's update the labels and the toc backend.
 		cur.forceBufferUpdate();
 		break;
+
+	case LFUN_FLEX_INSERT: {
+		// Open the inset, and move the current selection
+		// inside it.
+		bool const sel = cur.selection();
+		doInsertInset(cur, this, cmd, true, true);
+		// Insert auto-insert arguments
+		bool autoargs = false;
+		Layout::LaTeXArgMap args = cur.inset().getLayout().latexargs();
+		Layout::LaTeXArgMap::const_iterator lait = args.begin();
+		Layout::LaTeXArgMap::const_iterator const laend = args.end();
+		for (; lait != laend; ++lait) {
+			Layout::latexarg arg = (*lait).second;
+			if (arg.autoinsert) {
+				// The cursor might have been invalidated by the replaceSelection.
+				cur.buffer()->changed(true);
+				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
+				lyx::dispatch(cmd);
+				autoargs = true;
+			}
+		}
+		if (!autoargs) {
+			if (sel)
+				cur.leaveInset(cur.inset());
+			cur.posForward();
+		}
+		// Some insets are numbered, others are shown in the outline pane so
+		// let's update the labels and the toc backend.
+		cur.forceBufferUpdate();
+		break;
+	}
 
 	case LFUN_TABULAR_INSERT:
 		// if there were no arguments, just open the dialog

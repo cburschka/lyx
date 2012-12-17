@@ -1348,6 +1348,7 @@ InsetLayout Flex:Alert
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 
@@ -1365,6 +1366,7 @@ InsetLayout Flex:Structure
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 
@@ -1382,6 +1384,7 @@ InsetLayout Flex:Only
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 
@@ -1399,6 +1402,7 @@ InsetLayout Flex:Uncover
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 
