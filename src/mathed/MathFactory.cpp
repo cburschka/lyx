@@ -151,7 +151,15 @@ void initSymbols()
 			string macro;
 			string requires;
 			is >> macro >> requires;
-			MacroTable::globalMacros().insert(0, from_utf8(macro), requires);
+			MacroTable::iterator it = MacroTable::globalMacros().insert(
+					0, from_utf8(macro), requires);
+			// If you change the following output, please adjust
+			// development/tools/generate_symbols_images.py.
+			LYXERR(Debug::MATHED, "read symbol '" << to_utf8(it->first)
+				<< "  inset: macro"
+				<< "  draw: 0"
+				<< "  extra: "
+				<< "  requires: " << requires << '\'');
 			continue;
 		}
 

@@ -191,20 +191,28 @@ MacroData const * MacroTable::get(docstring const & name) const
 }
 
 
-void MacroTable::insert(docstring const & name, MacroData const & data)
+MacroTable::iterator
+MacroTable::insert(docstring const & name, MacroData const & data)
 {
 	//lyxerr << "MacroTable::insert: " << to_utf8(name) << endl;
-	operator[](name) = data;
+	iterator it = find(name);
+	if (it == end())
+		it = map<docstring, MacroData>::insert(
+				make_pair(name, data)).first;
+	else
+		it->second = data;
+	return it;
 }
 
 
-void MacroTable::insert(Buffer * buf, docstring const & def, string const & requires)
+MacroTable::iterator
+MacroTable::insert(Buffer * buf, docstring const & def, string const & requires)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	MathMacroTemplate mac(buf, def);
 	MacroData data(buf, mac);
 	data.requires() = requires;
-	insert(mac.name(), data);
+	return insert(mac.name(), data);
 }
 
 

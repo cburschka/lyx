@@ -153,9 +153,9 @@ class MacroTable : public std::map<docstring, MacroData>
 {
 public:
 	/// Parse full "\\def..." or "\\newcommand..." or ...
-	void insert(Buffer * buf, docstring const & definition, std::string const &);
+	iterator insert(Buffer * buf, docstring const & definition, std::string const &);
 	/// Insert pre-digested macro definition
-	void insert(docstring const & name, MacroData const & data);
+	iterator insert(docstring const & name, MacroData const & data);
 	///
 	MacroData const * get(docstring const & name) const;
 	///
