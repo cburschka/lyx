@@ -88,7 +88,7 @@
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="LengthCombo" name="paperheightUnitCO"/>
+       <widget class="lyx::frontend::LengthCombo" name="paperheightUnitCO"/>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="paperwidthL">
@@ -117,7 +117,7 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="LengthCombo" name="paperwidthUnitCO"/>
+       <widget class="lyx::frontend::LengthCombo" name="paperwidthUnitCO"/>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_3">
@@ -233,7 +233,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

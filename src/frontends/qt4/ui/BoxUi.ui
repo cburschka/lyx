@@ -182,7 +182,7 @@
     </widget>
    </item>
    <item row="3" column="2">
-    <widget class="LengthCombo" name="heightUnitsLC">
+    <widget class="lyx::frontend::LengthCombo" name="heightUnitsLC">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -218,7 +218,7 @@
     </widget>
    </item>
    <item row="2" column="2">
-    <widget class="LengthCombo" name="widthUnitsLC"/>
+    <widget class="lyx::frontend::LengthCombo" name="widthUnitsLC"/>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="typeLA">
@@ -296,7 +296,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

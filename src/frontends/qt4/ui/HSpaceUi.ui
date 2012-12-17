@@ -102,7 +102,7 @@
     </widget>
    </item>
    <item row="1" column="2" >
-    <widget class="LengthCombo" name="unitCO" />
+    <widget class="lyx::frontend::LengthCombo" name="unitCO" />
    </item>
    <item row="2" column="0" >
     <widget class="QLabel" name="fillPatternL" >
@@ -141,7 +141,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

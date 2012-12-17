@@ -210,7 +210,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="topUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="topUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -237,7 +237,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="bottomUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="bottomUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -261,7 +261,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="innerUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="innerUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -285,7 +285,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="outerUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="outerUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -309,7 +309,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="headsepUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="headsepUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -333,7 +333,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="headheightUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="headheightUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -357,7 +357,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="footskipUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="footskipUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -381,7 +381,7 @@
             </widget>
           </item>
           <item>
-            <widget class="LengthCombo" native="1" name="columnsepUnit" >
+            <widget class="lyx::frontend::LengthCombo" native="1" name="columnsepUnit" >
             <property name="enabled" >
               <bool>false</bool>
             </property>
@@ -397,7 +397,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QWidget</extends>
    <header>LengthCombo.h</header>
   </customwidget>

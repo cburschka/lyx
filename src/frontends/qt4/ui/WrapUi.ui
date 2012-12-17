@@ -23,7 +23,7 @@
     <number>6</number>
    </property>
    <item row="1" column="3" >
-    <widget class="LengthCombo" name="widthUnitLC" >
+    <widget class="lyx::frontend::LengthCombo" name="widthUnitLC" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>0</hsizetype>
@@ -248,7 +248,7 @@
     </widget>
    </item>
    <item row="2" column="3" >
-    <widget class="LengthCombo" name="overhangUnitLC" >
+    <widget class="lyx::frontend::LengthCombo" name="overhangUnitLC" >
      <property name="enabled" >
       <bool>false</bool>
      </property>
@@ -288,7 +288,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

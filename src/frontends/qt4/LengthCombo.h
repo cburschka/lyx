@@ -17,7 +17,8 @@
 #include "VSpace.h"
 
 
-//namespace lyx {
+namespace lyx {
+namespace frontend {
 
 /**
  * A combo box for selecting Length::UNIT types.
@@ -53,6 +54,7 @@ Q_SIGNALS:
 };
 
 
-//} // namespace lyx
+} // namesapce frontend
+} // namespace lyx
 
 #endif // LENGTHCOMBO_H

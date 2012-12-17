@@ -79,7 +79,7 @@
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="LengthCombo" name="indentLengthCO">
+       <widget class="lyx::frontend::LengthCombo" name="indentLengthCO">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -154,7 +154,7 @@
        </widget>
       </item>
       <item row="3" column="2">
-       <widget class="LengthCombo" name="skipLengthCO">
+       <widget class="lyx::frontend::LengthCombo" name="skipLengthCO">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -289,7 +289,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

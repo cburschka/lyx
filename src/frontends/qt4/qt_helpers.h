@@ -26,8 +26,6 @@ class QString;
 class QWidget;
 template <class T> class QList;
 
-class LengthCombo;
-
 namespace lyx {
 
 namespace support { class FileName; }
@@ -35,6 +33,8 @@ namespace support { class FileName; }
 class BufferParams;
 
 namespace frontend {
+
+class LengthCombo;
 
 /// method to get a Length from widgets (LengthCombo)
 std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);

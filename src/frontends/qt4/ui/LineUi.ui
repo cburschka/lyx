@@ -37,7 +37,7 @@
     </widget>
    </item>
    <item row="0" column="3" >
-    <widget class="LengthCombo" name="OffsetUnitCO" >
+    <widget class="lyx::frontend::LengthCombo" name="OffsetUnitCO" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
        <horstretch>0</horstretch>
@@ -73,7 +73,7 @@
     </widget>
    </item>
    <item row="1" column="3" >
-    <widget class="LengthCombo" name="WidthUnitCO" >
+    <widget class="lyx::frontend::LengthCombo" name="WidthUnitCO" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
        <horstretch>0</horstretch>
@@ -109,7 +109,7 @@
     </widget>
    </item>
    <item row="2" column="3" >
-    <widget class="LengthCombo" name="HeightUnitCO" >
+    <widget class="lyx::frontend::LengthCombo" name="HeightUnitCO" >
      <property name="sizePolicy" >
       <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
        <horstretch>0</horstretch>
@@ -128,7 +128,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

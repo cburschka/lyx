@@ -21,6 +21,9 @@
 #include <string>
 
 
+namespace lyx {
+namespace frontend {
+
 LengthCombo::LengthCombo(QWidget * parent)
 	: QComboBox(parent)
 {
@@ -122,5 +125,7 @@ void LengthCombo::addUnit(lyx::Length::UNIT unit)
 		   lyx::toqstr(lyx::unit_name[int(unit)]));
 }
 
+} // namespace frontend
+} // namespace lyx
 
 #include "moc_LengthCombo.cpp"

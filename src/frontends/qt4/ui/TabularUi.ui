@@ -151,7 +151,7 @@
              </widget>
             </item>
             <item row="0" column="2" >
-             <widget class="LengthCombo" name="multirowOffsetUnitLC" />
+             <widget class="lyx::frontend::LengthCombo" name="multirowOffsetUnitLC" />
             </item>
            </layout>
           </item>
@@ -252,7 +252,7 @@
            <widget class="QLineEdit" name="tabularWidthED" />
           </item>
           <item row="0" column="2" >
-           <widget class="LengthCombo" name="tabularWidthUnitLC" />
+           <widget class="lyx::frontend::LengthCombo" name="tabularWidthUnitLC" />
           </item>
           <item row="1" column="0" >
            <widget class="QLabel" name="TableAlignLA" >
@@ -498,7 +498,7 @@
              </widget>
             </item>
             <item>
-             <widget class="LengthCombo" name="columnWidthUnitLC" />
+             <widget class="lyx::frontend::LengthCombo" name="columnWidthUnitLC" />
             </item>
            </layout>
           </item>
@@ -1193,7 +1193,7 @@
            <widget class="QLineEdit" name="topspaceED" />
           </item>
           <item row="0" column="3" >
-           <widget class="LengthCombo" name="topspaceUnitLC" />
+           <widget class="lyx::frontend::LengthCombo" name="topspaceUnitLC" />
           </item>
           <item row="0" column="1" >
            <widget class="QComboBox" name="topspaceCO" >
@@ -1234,7 +1234,7 @@
            </widget>
           </item>
           <item row="1" column="3" >
-           <widget class="LengthCombo" name="bottomspaceUnitLC" />
+           <widget class="lyx::frontend::LengthCombo" name="bottomspaceUnitLC" />
           </item>
           <item row="1" column="2" >
            <widget class="QLineEdit" name="bottomspaceED" />
@@ -1282,7 +1282,7 @@
            </widget>
           </item>
           <item row="2" column="3" >
-           <widget class="LengthCombo" name="interlinespaceUnitLC" />
+           <widget class="lyx::frontend::LengthCombo" name="interlinespaceUnitLC" />
           </item>
          </layout>
         </widget>
@@ -1594,7 +1594,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>

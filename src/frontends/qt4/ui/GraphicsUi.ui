@@ -75,10 +75,10 @@
            <number>6</number>
           </property>
           <item row="1" column="2" >
-           <widget class="LengthCombo" name="widthUnit" />
+           <widget class="lyx::frontend::LengthCombo" name="widthUnit" />
           </item>
           <item row="2" column="2" >
-           <widget class="LengthCombo" name="heightUnit" />
+           <widget class="lyx::frontend::LengthCombo" name="heightUnit" />
           </item>
           <item row="1" column="1" >
            <widget class="QLineEdit" name="Width" >
@@ -773,7 +773,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LengthCombo</class>
+   <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>
