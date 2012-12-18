@@ -30,6 +30,9 @@
 # Both mathcommand and mathpreamble are optional.
 # textpreamble and mathpreamble can either be a feature known by the LaTeXFeatures
 # class (e.g. tipa), or a LaTeX command (e.g. \\usepackage{bla}).
+# Features may be combined using '|', in this case one of the alternatives is
+# chosen. The algorithm tries to satisfy as many requirements as possible.
+# Therefore it may depend on the whole document contents which feature is chosen.
 # Known flags:
 # - combining       This is a combining char that will get combined with a base char
 # - force           Always output replacement command
