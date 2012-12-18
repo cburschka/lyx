@@ -494,6 +494,8 @@ dist_imagesmath_DATA = \
 	images/math/angle.png \
 	images/math/approx.png \
 	images/math/approxeq.png \
+	images/math/arrownot.png \
+	images/math/arrownot2.png \
 	images/math/asymp.png \
 	images/math/backepsilon.png \
 	images/math/backprime.png \
@@ -501,20 +503,29 @@ dist_imagesmath_DATA = \
 	images/math/backsimeq.png \
 	images/math/backslash.png \
 	images/math/bar.png \
+	images/math/baro.png \
 	images/math/bars.png \
 	images/math/barwedge.png \
 	images/math/Bbbk.png \
+	images/math/bbslash.png \
 	images/math/bcancel.png \
 	images/math/because.png \
 	images/math/beta.png \
 	images/math/beth.png \
 	images/math/between.png \
+	images/math/bigbox.png \
 	images/math/bigcap.png \
 	images/math/bigcirc.png \
 	images/math/bigcup.png \
+	images/math/bigcurlyvee.png \
+	images/math/bigcurlywedge.png \
+	images/math/biginterleave.png \
+	images/math/bignplus.png \
 	images/math/bigodot.png \
 	images/math/bigoplus.png \
 	images/math/bigotimes.png \
+	images/math/bigparallel.png \
+	images/math/bigsqcap.png \
 	images/math/bigsqcup.png \
 	images/math/bigstar.png \
 	images/math/bigtriangledown.png \
@@ -522,6 +533,8 @@ dist_imagesmath_DATA = \
 	images/math/biguplus.png \
 	images/math/bigvee.png \
 	images/math/bigwedge.png \
+	images/math/binampersand.png \
+	images/math/bindnasrepma.png \
 	images/math/blacklozenge.png \
 	images/math/blacksquare.png \
 	images/math/blacktriangle.png \
@@ -530,9 +543,16 @@ dist_imagesmath_DATA = \
 	images/math/blacktriangleright.png \
 	images/math/bot.png \
 	images/math/bowtie.png \
+	images/math/boxast.png \
+	images/math/boxbar.png \
+	images/math/boxbox.png \
+	images/math/boxbslash.png \
+	images/math/boxcircle.png \
 	images/math/boxdot.png \
+	images/math/boxempty.png \
 	images/math/boxminus.png \
 	images/math/boxplus.png \
+	images/math/boxslash.png \
 	images/math/boxtimes.png \
 	images/math/breve.png \
 	images/math/bullet.png \
@@ -565,7 +585,11 @@ dist_imagesmath_DATA = \
 	images/math/curlyeqprec.png \
 	images/math/curlyeqsucc.png \
 	images/math/curlyvee.png \
+	images/math/curlyveedownarrow.png \
+	images/math/curlyveeuparrow.png \
 	images/math/curlywedge.png \
+	images/math/curlywedgedownarrow.png \
+	images/math/curlywedgeuparrow.png \
 	images/math/curvearrowleft.png \
 	images/math/curvearrowright.png \
 	images/math/dagger.png \
@@ -615,6 +639,9 @@ dist_imagesmath_DATA = \
 	images/math/exists.png \
 	images/math/export-others.png \
 	images/math/fallingdotseq.png \
+	images/math/fatbslash.png \
+	images/math/fatsemi.png \
+	images/math/fatslash.png \
 	images/math/fint.png \
 	images/math/fintop.png \
 	images/math/Finv.png \
@@ -664,8 +691,10 @@ dist_imagesmath_DATA = \
 	images/math/imath.png \
 	images/math/in.png \
 	images/math/infty.png \
+	images/math/inplus.png \
 	images/math/int.png \
 	images/math/intercal.png \
+	images/math/interleave.png \
 	images/math/intop.png \
 	images/math/iota.png \
 	images/math/jmath.png \
@@ -677,6 +706,8 @@ dist_imagesmath_DATA = \
 	images/math/landupint.png \
 	images/math/landupintop.png \
 	images/math/langle.png \
+	images/math/lbag.png \
+	images/math/lbag2.png \
 	images/math/lbrace.png \
 	images/math/lbrace_rbrace.png \
 	images/math/lbracket.png \
@@ -687,14 +718,18 @@ dist_imagesmath_DATA = \
 	images/math/leftarrow.png \
 	images/math/leftarrow2.png \
 	images/math/leftarrowtail.png \
+	images/math/leftarrowtriangle.png \
 	images/math/leftharpoondown.png \
 	images/math/leftharpoonup.png \
 	images/math/leftleftarrows.png \
 	images/math/leftrightarrow.png \
 	images/math/leftrightarrow2.png \
+	images/math/leftrightarroweq.png \
 	images/math/leftrightarrows.png \
+	images/math/leftrightarrowtriangle.png \
 	images/math/leftrightharpoons.png \
 	images/math/leftrightsquigarrow.png \
+	images/math/leftslice.png \
 	images/math/leftthreetimes.png \
 	images/math/leq.png \
 	images/math/leqq.png \
@@ -707,20 +742,29 @@ dist_imagesmath_DATA = \
 	images/math/lesssim.png \
 	images/math/lfloor.png \
 	images/math/lfloor_rfloor.png \
+	images/math/lightning.png \
 	images/math/ll.png \
 	images/math/llbracket.png \
+	images/math/llceil.png \
 	images/math/llcorner.png \
+	images/math/llfloor.png \
+	images/math/llparenthesis.png \
 	images/math/Lleftarrow.png \
 	images/math/lll.png \
 	images/math/lnapprox.png \
 	images/math/lneq.png \
 	images/math/lneqq.png \
 	images/math/lnsim.png \
+	images/math/longarrownot.png \
+	images/math/longarrownot2.png \
 	images/math/longleftarrow.png \
 	images/math/longleftarrow2.png \
 	images/math/longleftrightarrow.png \
 	images/math/longleftrightarrow2.png \
+	images/math/longmapsfrom.png \
+	images/math/longmapsfrom2.png \
 	images/math/longmapsto.png \
+	images/math/longmapsto2.png \
 	images/math/longrightarrow.png \
 	images/math/longrightarrow2.png \
 	images/math/looparrowleft.png \
@@ -732,7 +776,13 @@ dist_imagesmath_DATA = \
 	images/math/Lsh.png \
 	images/math/ltimes.png \
 	images/math/lvertneqq.png \
+	images/math/mapsfrom.png \
+	images/math/mapsfrom2.png \
+	images/math/mapsfromchar.png \
+	images/math/mapsfromchar2.png \
 	images/math/mapsto.png \
+	images/math/mapsto2.png \
+	images/math/mapstochar2.png \
 	images/math/mathbb_C.png \
 	images/math/mathbb_H.png \
 	images/math/mathbb_N.png \
@@ -750,9 +800,12 @@ dist_imagesmath_DATA = \
 	images/math/mathrm_T.png \
 	images/math/matrix.png \
 	images/math/measuredangle.png \
+	images/math/merge.png \
 	images/math/mho.png \
 	images/math/mid.png \
+	images/math/minuso.png \
 	images/math/models.png \
+	images/math/moo.png \
 	images/math/mp.png \
 	images/math/mu.png \
 	images/math/multimap.png \
@@ -768,6 +821,7 @@ dist_imagesmath_DATA = \
 	images/math/ngeqslant.png \
 	images/math/ngtr.png \
 	images/math/ni.png \
+	images/math/niplus.png \
 	images/math/nleftarrow.png \
 	images/math/nleftarrow2.png \
 	images/math/nleftrightarrow.png \
@@ -777,8 +831,11 @@ dist_imagesmath_DATA = \
 	images/math/nleqslant.png \
 	images/math/nless.png \
 	images/math/nmid.png \
+	images/math/nnearrow.png \
+	images/math/nnwarrow.png \
 	images/math/notin.png \
 	images/math/nparallel.png \
+	images/math/nplus.png \
 	images/math/nprec.png \
 	images/math/npreceq.png \
 	images/math/nrightarrow.png \
@@ -793,14 +850,20 @@ dist_imagesmath_DATA = \
 	images/math/nsupseteqq.png \
 	images/math/ntriangleleft.png \
 	images/math/ntrianglelefteq.png \
+	images/math/ntrianglelefteqslant.png \
 	images/math/ntriangleright.png \
 	images/math/ntrianglerighteq.png \
+	images/math/ntrianglerighteqslant.png \
 	images/math/nu.png \
 	images/math/nvdash.png \
 	images/math/nvdash2.png \
 	images/math/nvdash3.png \
 	images/math/nwarrow.png \
+	images/math/obar.png \
+	images/math/oblong.png \
+	images/math/obslash.png \
 	images/math/odot.png \
+	images/math/ogreaterthan.png \
 	images/math/oiint.png \
 	images/math/oiintop.png \
 	images/math/oint.png \
@@ -809,18 +872,21 @@ dist_imagesmath_DATA = \
 	images/math/ointctrclockwise.png \
 	images/math/ointctrclockwiseop.png \
 	images/math/ointop.png \
+	images/math/olessthan.png \
 	images/math/omega.png \
 	images/math/omega2.png \
 	images/math/ominus.png \
 	images/math/oplus.png \
 	images/math/oslash.png \
 	images/math/otimes.png \
+	images/math/ovee.png \
 	images/math/overbrace.png \
 	images/math/overleftarrow.png \
 	images/math/overleftrightarrow.png \
 	images/math/overline.png \
 	images/math/overrightarrow.png \
 	images/math/overset.png \
+	images/math/owedge.png \
 	images/math/parallel.png \
 	images/math/partial.png \
 	images/math/perp.png \
@@ -844,6 +910,8 @@ dist_imagesmath_DATA = \
 	images/math/psi.png \
 	images/math/psi2.png \
 	images/math/rangle.png \
+	images/math/rbag.png \
+	images/math/rbag2.png \
 	images/math/rbrace.png \
 	images/math/rbracket.png \
 	images/math/rceil.png \
@@ -853,25 +921,34 @@ dist_imagesmath_DATA = \
 	images/math/rightarrow.png \
 	images/math/rightarrow2.png \
 	images/math/rightarrowtail.png \
+	images/math/rightarrowtriangle.png \
 	images/math/rightharpoondown.png \
 	images/math/rightharpoonup.png \
 	images/math/rightleftarrows.png \
 	images/math/rightleftharpoons.png \
 	images/math/rightrightarrows.png \
+	images/math/rightslice.png \
 	images/math/rightsquigarrow.png \
 	images/math/rightthreetimes.png \
 	images/math/risingdotseq.png \
 	images/math/root.png \
 	images/math/rparen.png \
 	images/math/rrbracket.png \
+	images/math/rrceil.png \
+	images/math/rrfloor.png \
+	images/math/rrparenthesis.png \
 	images/math/Rrightarrow.png \
 	images/math/Rsh.png \
 	images/math/rtimes.png \
 	images/math/searrow.png \
 	images/math/setminus.png \
 	images/math/sharp.png \
+	images/math/shortdownarrow.png \
+	images/math/shortleftarrow.png \
 	images/math/shortmid.png \
 	images/math/shortparallel.png \
+	images/math/shortrightarrow.png \
+	images/math/shortuparrow.png \
 	images/math/sigma.png \
 	images/math/sigma2.png \
 	images/math/sim.png \
@@ -898,6 +975,9 @@ dist_imagesmath_DATA = \
 	images/math/sqsupset.png \
 	images/math/sqsupseteq.png \
 	images/math/square.png \
+	images/math/ssearrow.png \
+	images/math/sslash.png \
+	images/math/sswarrow.png \
 	images/math/star.png \
 	images/math/style.png \
 	images/math/sub.png \
@@ -907,6 +987,8 @@ dist_imagesmath_DATA = \
 	images/math/subseteqq.png \
 	images/math/subsetneq.png \
 	images/math/subsetneqq.png \
+	images/math/subsetplus.png \
+	images/math/subsetpluseq.png \
 	images/math/succ.png \
 	images/math/succapprox.png \
 	images/math/succcurlyeq.png \
@@ -922,8 +1004,11 @@ dist_imagesmath_DATA = \
 	images/math/supseteqq.png \
 	images/math/supsetneq.png \
 	images/math/supsetneqq.png \
+	images/math/supsetplus.png \
+	images/math/supsetpluseq.png \
 	images/math/surd.png \
 	images/math/swarrow.png \
+	images/math/talloblong.png \
 	images/math/tau.png \
 	images/math/textrm_AA.png \
 	images/math/textrm_O.png \
@@ -939,9 +1024,11 @@ dist_imagesmath_DATA = \
 	images/math/triangledown.png \
 	images/math/triangleleft.png \
 	images/math/trianglelefteq.png \
+	images/math/trianglelefteqslant.png \
 	images/math/triangleq.png \
 	images/math/triangleright.png \
 	images/math/trianglerighteq.png \
+	images/math/trianglerighteqslant.png \
 	images/math/twoheadleftarrow.png \
 	images/math/twoheadrightarrow.png \
 	images/math/ulcorner.png \
@@ -965,9 +1052,26 @@ dist_imagesmath_DATA = \
 	images/math/upuparrows.png \
 	images/math/urcorner.png \
 	images/math/utilde.png \
+	images/math/varbigcirc.png \
+	images/math/varcopyright.png \
+	images/math/varcurlyvee.png \
+	images/math/varcurlywedge.png \
 	images/math/varepsilon.png \
 	images/math/varkappa.png \
 	images/math/varnothing.png \
+	images/math/varoast.png \
+	images/math/varobar.png \
+	images/math/varobslash.png \
+	images/math/varocircle.png \
+	images/math/varodot.png \
+	images/math/varogreaterthan.png \
+	images/math/varolessthan.png \
+	images/math/varominus.png \
+	images/math/varoplus.png \
+	images/math/varoslash.png \
+	images/math/varotimes.png \
+	images/math/varovee.png \
+	images/math/varowedge.png \
 	images/math/varphi.png \
 	images/math/varpi.png \
 	images/math/varpropto.png \
@@ -978,6 +1082,7 @@ dist_imagesmath_DATA = \
 	images/math/varsupsetneq.png \
 	images/math/varsupsetneqq.png \
 	images/math/vartheta.png \
+	images/math/vartimes.png \
 	images/math/vartriangle.png \
 	images/math/vartriangleleft.png \
 	images/math/vartriangleright.png \
@@ -1000,6 +1105,10 @@ dist_imagesmath_DATA = \
 	images/math/xcancel.png \
 	images/math/xi.png \
 	images/math/xi2.png \
+	images/math/Ydown.png \
+	images/math/Yleft.png \
+	images/math/Yright.png \
+	images/math/Yup.png \
 	images/math/zeta.png
 
 imagesipadir = $(imagesdir)/ipa
