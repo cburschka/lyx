@@ -419,7 +419,6 @@ llcorner           msa         120   0 mathopen  &dlcorn;
 lrcorner           msa         121   0 mathclose  &drcorn;
 rightleftharpoons  msa         173   0 mathrel  &lrhar;
 angle              msa          92 208 mathord  &ang;
-hbar               msb         126   0 mathord  &planck;
 sqsubset           msa          64   0 mathrel  &sqsub;
 sqsupset           msa          65   0 mathrel  &sqsup;
 mho                msb         102   0 mathord  &mho;
@@ -432,8 +431,6 @@ vartriangleleft    msa          67   0 mathrel  &ltri;
 trianglerighteq    msa          68   0 mathrel  &rtrie;
 trianglelefteq     msa          69   0 mathrel  &ltrie;
 rightsquigarrow    msa         195   0 mathrel  &rarrw;
-# This may not be right, but is the closest I can find.
-leadsto            msa         195   0 mathrel  &rarrc;
 lhd                msa          67   0 mathbin  &ltri;
 unlhd              msa          69   0 mathbin  &ltrie;
 rhd                msa          66   0 mathbin  &rtri;
@@ -793,13 +790,13 @@ Thorn              wasy         106   0 x        &#x00DE;
 openo              wasy         108   0 x        &#x0254;
 inve               wasy          85   0 x        &#x0259;
 
-mho               wasy          48    0  mathord &mho;
+#mho               wasy          48    0  mathord &mho; # already in amsfonts
 #Join              wasy          49    0  mathrel x
 #Box               wasy          50    0  mathord x
 #Diamond           wasy          51    0  mathord x
-leadsto            wasy          59    0  mathrel &#x2933;
-sqsubset          wasy          60    0  mathrel &sqsub;
-sqsupset          wasy          61    0  mathrel &sqsup;
+leadsto            wasy          59    0  mathrel &rarrc;
+#sqsubset          wasy          60    0  mathrel &sqsub; # already in amsfonts
+#sqsupset          wasy          61    0  mathrel &sqsup; # already in amsfonts
 #lhd               wasy           1    0  mathbin x
 #unlhd             wasy           2    0  mathbin x
 LHD                wasy          16    0  mathbin &#x2C50;
@@ -846,7 +843,7 @@ varoplus           stmry  22   0 mathbin    x  stmaryrd
 varominus          stmry  23   0 mathbin    x  stmaryrd
 boxast             stmry  24   0 mathbin    x  stmaryrd
 boxbar             stmry  25   0 mathbin    x  stmaryrd
-boxdot             stmry  26   0 mathbin    x  stmaryrd
+#boxdot             stmry  26   0 mathbin    x  stmaryrd # already in amssymb
 boxslash           stmry  27   0 mathbin    x  stmaryrd
 boxbslash          stmry  28   0 mathbin    x  stmaryrd
 boxcircle          stmry  29   0 mathbin    x  stmaryrd

@@ -449,7 +449,7 @@ def revert_use_stmaryrd(document):
                     "sslash", "bbslash", "moo", "varotimes", "varoast", \
                     "varobar", "varodot", "varoslash", "varobslash", \
                     "varocircle", "varoplus", "varominus", "boxast", \
-                    "boxbar", "boxdot", "boxslash", "boxbslash", "boxcircle", \
+                    "boxbar", "boxslash", "boxbslash", "boxcircle", \
                     "boxbox", "boxempty", "merge", "vartimes", \
                     "fatsemi", "sswarrow", "ssearrow", "curlywedgeuparrow", \
                     "curlywedgedownarrow", "fatslash", "fatbslash", "lbag", \
@@ -475,7 +475,7 @@ def revert_use_stmaryrd(document):
                     "Mapsto", "mapsfrom", "Mapsfrom" "Longmapsto", \
                     "longmapsfrom", "Longmapsfrom"]
         # commands provided by stmaryrd.sty but LyX uses other packages:
-        # lightning, bigtriangledown, bigtriangleup
+        # boxdot lightning, bigtriangledown, bigtriangleup
 
         i = 0
         while True:

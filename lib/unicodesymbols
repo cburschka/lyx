@@ -1868,7 +1868,8 @@
 0x219a ""                         "" "" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
 0x219b ""                         "" "" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
-0x219d ""                         "" "" "\\leadsto" "amssymb" # RIGHTWARDS WAVE ARROW
+# amssymb and amsfonts define leadsto as well, but wrong (looks like 0x21dd)
+0x219d ""                         "" "" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
 0x219e ""                         "" "" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
 #0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
 0x21a0 ""                         "" "" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
