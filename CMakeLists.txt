@@ -277,6 +277,7 @@ if (LYX_LOCALVERSIONING)
 		  # We use this value than also to set the package-patch-value
 		  MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
 		  set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
+                  set(ENABLE_DIST ON)
 		endif()
 	else()
 		set(LYX_REVISION_VERSION git) #TODO use date
@@ -755,5 +756,22 @@ if(LYX_NLS)
 endif()
 
 include("${TOP_CMAKE_PATH}/LyxPackaging.cmake")
+
+if(ENABLE_DIST)
+  # Use git to create the source package
+  # git archive --format=tgz --output=/home/kornel/x.tar.gz master
+  if(UNIX)
+    set(DIST_FORMAT tgz)
+  else()
+    set(DIST_FORMAT zip)
+  endif()
+  set(DIST_NAME ${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}-${CMAKE_SYSTEM_NAME}.${DIST_FORMAT})
+
+  add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${DIST_NAME}
+    COMMAND  ${LYX_GITVERSION} archive --format=${DIST_FORMAT} --output=${CMAKE_CURRENT_BINARY_DIR}/${DIST_NAME} master
+    WORKING_DIRECTORY ${TOP_SRC_DIR})
+  add_custom_target(git-archive DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${DIST_NAME})
+endif()
 
 message(STATUS)
