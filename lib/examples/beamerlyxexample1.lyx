@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 452
+\lyxformat 454
 \begin_document
 \begin_header
 \textclass beamer
@@ -181,6 +181,7 @@
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -1198,19 +1199,11 @@ nointerlineskip
 \end_layout
 
 \begin_layout Overprint
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onslide<1,3,5,7,9,11-12>
+1,3,5,7,9,11-12
 \end_layout
 
 \end_inset
@@ -1218,6 +1211,7 @@ onslide<1,3,5,7,9,11-12>
 
 \end_layout
 
+\begin_deeper
 \begin_layout Columns
 \begin_inset Argument 1
 status open
@@ -1905,15 +1899,13 @@ end{pgfpicture}
 
 \end_deeper
 \end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onslide<2,4,6,8,10>
+2,4,6,8,10
 \end_layout
 
 \end_inset
@@ -1921,6 +1913,7 @@ onslide<2,4,6,8,10>
 
 \end_layout
 
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
 status collapsed
@@ -1936,16 +1929,6 @@ Variants of Path Finding Problems
 
 \begin_deeper
 \begin_layout Description
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-Approximation Problem:
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument item:1
 status open
 
@@ -1972,6 +1955,16 @@ Problem: Is there a path from
 \end_inset
 
 ?
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Approximation Problem:
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -2156,7 +2149,12 @@ begin{pgfpicture}{-0.5cm}{0cm}{8cm}{5cm}
 \backslash
 pgfputat{
 \backslash
-pgfxy(0,4)}{
+pgfxy(0,4)}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
 \backslash
 tape{input tape (read only), $n$ symbols}{}{3401234*3143223=}} 
 \end_layout
@@ -2174,7 +2172,12 @@ uncover<2->{%
 \backslash
 pgfputat{
 \backslash
-pgfxy(0,0.5)}{
+pgfxy(0,0.5)}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+     
 \backslash
 tape{}{output tape (write only)}{10690836937182}}
 \end_layout
@@ -2197,7 +2200,12 @@ uncover<3->{%
 \backslash
 pgfputat{
 \backslash
-pgfxy(7,2)}{
+pgfxy(7,2)}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+     
 \backslash
 shorttape{work tape (read/write), $O(
 \backslash
@@ -2210,7 +2218,12 @@ log n)$ symbols}{}{42}}
 \backslash
 pgfputat{
 \backslash
-pgfxy(1.75,2.5)}{
+pgfxy(1.75,2.5)}{%
+\end_layout
+
+\begin_layout Plain Layout
+
+     
 \backslash
 pgfbox[center,center]{
 \backslash
@@ -3242,7 +3255,7 @@ easier
 \end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 5
@@ -4681,7 +4694,7 @@ end{pgfpicture}
 \end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 6
