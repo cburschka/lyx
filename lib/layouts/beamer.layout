@@ -688,29 +688,32 @@ End
 
 Style Overprint
   Category         Overlays
-  Margin           First_Dynamic
-  LatexType        Environment
-  NextNoIndent     0
-  ParIndent        MM
-  Align            Left
-  LabelType        Static
-  LabelSep         xx
+  Margin           Static
+  LatexType        Item_Environment
   LatexName        overprint
-  LabelString      "Overprint"
-  ParSkip          0.5
-  TopSep           1
-  BottomSep        1
-  ParSep           0
-  KeepEmpty        1
-  LabelFont 
-    Family         Roman
-    Color          latex
-  EndFont
+  ItemCommand      onslide
   Argument 1
     MenuString     "Overprint Area Width"
     LabelString    "Width"
     Tooltip        "The width of the overprint area (default: text width)"
   EndArgument
+  Argument item:1
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+    AutoInsert     1
+  EndArgument
+  NextNoIndent     1
+  LeftMargin       MMN
+  LabelSep         xx
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Left
+  LabelType        Itemize
 End
 
 Style OverlayArea
@@ -1348,7 +1351,6 @@ InsetLayout Flex:Alert
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
-    AutoInsert     1
   EndArgument
 End
 
@@ -1420,6 +1422,7 @@ InsetLayout Flex:Visible
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 

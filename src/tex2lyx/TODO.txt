@@ -90,6 +90,10 @@ Format LaTeX feature                        LyX feature
 452    beamer block arguments               InsetArgument
        \begin{block}<overlay>{title}
 453    automatic stmaryrd loading           \use_package stmaryrd
+454    beamer overprint environment         InsetArgument, layout Overprint
+       \begin{overprint}[maxlength]
+       \onslide<slide> text ...
+       \end{overprint}
 
 
 General

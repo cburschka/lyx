@@ -104,6 +104,10 @@ find_end_of_inset(lines, i):
 find_end_of_layout(lines, i):
   Specialization of find_end_of for layouts.
 
+find_end_of_sequence(lines, i):
+  Find the end of the sequence of layouts of the same kind.
+  Considers nesting.
+
 is_in_inset(lines, i, inset):
   Checks if line i is in an inset of the given type.
   If so, returns starting and ending lines. Otherwise, 
@@ -140,6 +144,9 @@ check_token(line, token):
 
 is_nonempty_line(line):
   Does line contain something besides whitespace?
+
+count_pars_in_inset(lines, i):
+  Counts the paragraphs inside an inset.
 
 '''
 
@@ -486,3 +493,34 @@ def count_pars_in_inset(lines, i):
           pars += 1
   
   return pars
+
+
+def find_end_of_sequence(lines, i):
+  ''' 
+  Returns the end of a sequence of identical layouts.
+  '''
+  lay = get_containing_layout(lines, i)
+  if lay == False:
+      return -1
+  layout = lay[0]
+  endlay = lay[2]
+  i = endlay
+  while True:
+      m = re.match(r'\\begin_layout (.*)', lines[i])
+      if m and m.group(1) != layout:
+          return endlay
+      elif lines[i] == "\\begin_deeper":
+          j = find_end_of(lines, i, "\\begin_deeper", "\\end_deeper")
+          if j != -1:
+              i = j
+              continue
+      if m and m.group(1) == layout:
+          endlay = find_end_of_layout(lines, i)
+          i = endlay
+          continue
+      if i == len(lines) - 1:
+          break
+      i = i + 1
+
+  return endlay
+

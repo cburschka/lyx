@@ -26,8 +26,9 @@ import sys, os
 # Uncomment only what you need to import, please.
 
 from parser_tools import count_pars_in_inset, del_token, find_token, find_token_exact, \
-    find_token_backwards, find_end_of, find_end_of_inset, find_end_of_layout, find_re, \
-    get_option_value, get_containing_layout, get_value, get_quoted_value, set_option_value
+    find_token_backwards, find_end_of, find_end_of_inset, find_end_of_layout, \
+    find_end_of_sequence, find_re, get_option_value, get_containing_layout, \
+    get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_end_of_inset, find_end_of_layout, \
@@ -2711,6 +2712,131 @@ def convert_beamerblocks(document):
             i = j
 
 
+def convert_overprint(document):
+    " Convert old beamer overprint layouts to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Overprint", i)
+        if i == -1:
+            return
+        # Find end of sequence
+        j = find_end_of_sequence(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document. Cannot find end of Overprint sequence!")
+            i = i + 1
+            continue
+        endseq = j
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
+        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}") + ["\\end_layout"]
+        endseq = endseq + len(esubst) - len(document.body[j : j])
+        document.body[j : j] = esubst
+        argbeg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        if argbeg != -1:
+            argend = find_end_of_layout(document.body, argbeg)
+            if argend == -1:
+                document.warning("Malformed lyx document. Cannot find end of Overprint argument!")
+                i = i + 1
+                continue
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            content = document.body[beginPlain + 1 : endPlain]
+            # Adjust range end
+            endseq = endseq - len(document.body[argbeg : argend + 1])
+            # Remove arg inset
+            del document.body[argbeg : argend + 1]
+            subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+            
+        endseq = endseq - len(document.body[i : i])
+        document.body[i : i] = subst + ["\\end_layout"]
+        endseq += len(subst)
+        
+        for p in range(i, endseq):
+            if document.body[p] == "\\begin_layout Overprint":
+                document.body[p] = "\\begin_layout Standard"
+
+        i = endseq
+
+
+def revert_overprint(document):
+    " Revert old beamer overprint layouts to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Overprint", i)
+        if i == -1:
+            return
+        # Find end of sequence
+        j = find_end_of_sequence(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document. Cannot find end of Overprint sequence!")
+            i = i + 1
+            continue
+        endseq = j
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
+        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}")
+        endseq = endseq + len(esubst) - len(document.body[j : j])
+        document.body[j : j] = esubst
+        argbeg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        if argbeg != -1:
+            argend = find_end_of_inset(document.body, argbeg)
+            if argend == -1:
+                document.warning("Malformed lyx document. Cannot find end of Overprint argument!")
+                i = i + 1
+                continue
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            content = document.body[beginPlain + 1 : endPlain]
+            # Adjust range end
+            endseq = endseq - len(document.body[argbeg : argend])
+            # Remove arg inset
+            del document.body[argbeg : argend + 1]
+            subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+            
+        endseq = endseq - len(document.body[i : i])
+        document.body[i : i] = subst + ["\\end_layout"]
+        endseq += len(subst)
+     
+        p = i
+        while True:
+            if p >= endseq:
+                break
+            if document.body[p] == "\\begin_layout Overprint":
+                q = find_end_of_layout(document.body, p)
+                if q == -1:
+                    document.warning("Malformed lyx document. Cannot find end of Overprint layout!")
+                    p += 1
+                    continue
+                subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\onslide")
+                argbeg = find_token(document.body, "\\begin_inset Argument item:1", p, q)
+                if argbeg != -1:
+                    argend = find_end_of_inset(document.body, argbeg)
+                    if argend == -1:
+                        document.warning("Malformed lyx document. Cannot find end of Overprint item argument!")
+                        p += 1
+                        continue
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    endseq = endseq - len(document.body[argbeg : argend + 1])
+                    # Remove arg inset
+                    del document.body[argbeg : argend + 1]
+                    subst += put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                endseq = endseq - len(document.body[p : p + 1]) + len(subst)
+                document.body[p : p + 1] = subst
+            p = p + 1
+
+        i = endseq
+
 
 ##
 # Conversion hub
@@ -2757,10 +2883,12 @@ convert = [
            [450, []],
            [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]],
            [452, [convert_beamerblocks]],
-           [453, [convert_use_stmaryrd]]
+           [453, [convert_use_stmaryrd]],
+           [454, [convert_overprint]]
           ]
 
 revert =  [
+           [453, [revert_overprint]],
            [452, [revert_use_stmaryrd]],
            [451, [revert_beamerblocks]],
            [450, [revert_beamerargs, revert_beamerargs2, revert_beamerargs3, revert_beamerflex]],
