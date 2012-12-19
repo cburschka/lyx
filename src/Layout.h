@@ -86,6 +86,8 @@ public:
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
+	std::string const & itemcommand() const { return itemcommand_; }
+	///
 	void setLatexName(std::string const & n) { latexname_ = n; }
 	/// The arguments of this layout
 	struct latexarg {
@@ -328,6 +330,8 @@ private:
 	docstring labelstring_appendix_;
 	/// LaTeX parameter for environment
 	std::string latexparam_;
+	/// Item command in lists
+	std::string itemcommand_;
 	/// Left delimiter of the content
 	docstring leftdelim_;
 	/// Right delimiter of the content

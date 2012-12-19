@@ -11689,6 +11689,61 @@ TitleLatexName
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1355932296
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355932178
+ItemCommand
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355932181
+string="item"
+\end_layout
+
+\end_inset
+
+] The LaTeX command sequence declaring an item in a list.
+ The command is to be defined without the preceding backslash (the default
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+item
+\begin_inset Quotes erd
+\end_inset
+
+, resulting in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1355932279
+
+\backslash
+item
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ in the LaTeX output).
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 

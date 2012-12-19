@@ -428,7 +428,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		os << "\\item";
+		os << "\\" + style.itemcommand();
 		// Item arguments
 		if (!style.itemargs().empty())
 			latexArgInsets(par, os, runparams, style.itemargs(), true);

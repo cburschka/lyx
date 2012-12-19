@@ -53,6 +53,7 @@ enum LayoutTags {
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	LT_PARBREAK_IS_NEWLINE,
+	LT_ITEMCOMMAND,
 	LT_ITEMSEP,
 	LT_KEEPEMPTY,
 	LT_LABEL_BOTTOMSEP,
@@ -145,6 +146,7 @@ Layout::Layout()
 	htmlforcecss_ = false;
 	htmltitle_ = false;
 	spellcheck = true;
+	itemcommand_ = "item";
 }
 
 
@@ -180,6 +182,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "innertag",       LT_INNERTAG },
 		{ "inpreamble",     LT_INPREAMBLE },
 		{ "intitle",        LT_INTITLE },
+		{ "itemcommand",    LT_ITEMCOMMAND },
 		{ "itemsep",        LT_ITEMSEP },
 		{ "itemtag",        LT_ITEMTAG },
 		{ "keepempty",      LT_KEEPEMPTY },
@@ -392,6 +395,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_ITEMTAG:
 			lex >> itemtag_;
+			break;
+
+		case LT_ITEMCOMMAND:
+			lex >> itemcommand_;
 			break;
 
 		case LT_PREAMBLE:
