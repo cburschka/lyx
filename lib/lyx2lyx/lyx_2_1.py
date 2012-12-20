@@ -2732,7 +2732,11 @@ def convert_overprint(document):
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
-        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}") + ["\\end_layout"]
+        esubst = list()
+        if document.body[j] == "\\end_deeper":
+            esubst = ["", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}") + ["\\end_layout"]
+        else:
+            esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}") + ["\\end_layout"]
         endseq = endseq + len(esubst) - len(document.body[j : j])
         document.body[j : j] = esubst
         argbeg = find_token(document.body, "\\begin_inset Argument 1", i, j)

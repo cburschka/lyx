@@ -106,7 +106,9 @@ find_end_of_layout(lines, i):
 
 find_end_of_sequence(lines, i):
   Find the end of the sequence of layouts of the same kind.
-  Considers nesting.
+  Considers nesting. If the last paragraph in sequence is nested,
+  the position of the last \end_deeper is returned, else
+  the position of the last \end_layout.
 
 is_in_inset(lines, i, inset):
   Checks if line i is in an inset of the given type.
@@ -513,6 +515,7 @@ def find_end_of_sequence(lines, i):
           j = find_end_of(lines, i, "\\begin_deeper", "\\end_deeper")
           if j != -1:
               i = j
+              endlay = j
               continue
       if m and m.group(1) == layout:
           endlay = find_end_of_layout(lines, i)
