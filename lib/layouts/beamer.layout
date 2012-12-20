@@ -706,14 +706,19 @@ Style Overprint
     AutoInsert     1
   EndArgument
   NextNoIndent     1
-  LeftMargin       MMN
+  LeftMargin       MMMMMMMMN
   LabelSep         xx
   ItemSep          0.2
   TopSep           0.7
   BottomSep        0.7
   ParSep           0.3
   Align            Left
-  LabelType        Itemize
+  LabelType        Static
+  LabelString      "Overprint"
+  LabelFont 
+    Family         Roman
+    Color          latex
+  EndFont
 End
 
 Style OverlayArea
