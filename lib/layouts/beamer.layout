@@ -1325,9 +1325,27 @@ End
 # CHARSTYLES
 #
 
+
+InsetLayout Flex:Bold
+  LyXType          charstyle
+  LabelString      Bold
+  LatexType        command
+  LatexName        textbf
+  Font
+    Series         bold
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+  EndArgument
+End
+
 InsetLayout Flex:Emphasize
   LyXType          charstyle
-  LabelString      Emphasize
+  LabelString      Emph.
   LatexType        command
   LatexName        emph
   Font
@@ -1373,7 +1391,6 @@ InsetLayout Flex:Structure
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
-    AutoInsert     1
   EndArgument
 End
 
@@ -1445,6 +1462,7 @@ InsetLayout Flex:Invisible
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    AutoInsert     1
   EndArgument
 End
 

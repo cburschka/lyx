@@ -2483,9 +2483,10 @@ def revert_beamerflex(document):
     if document.textclass not in beamer_classes:
         return
 
-    new_flexes = {"Emphasize" : "\\emph", "Only" : "\\only", "Uncover" : "\\uncover",
-                  "Visible" : "\\visible", "Invisible" : "\\invisible",
-                  "Alternative" : "\\alt", "Beamer_Note" : "\\note"}
+    new_flexes = {"Bold" : "\\textbf", "Emphasize" : "\\emph", "Only" : "\\only",
+                  "Uncover" : "\\uncover", "Visible" : "\\visible",
+                  "Invisible" : "\\invisible", "Alternative" : "\\alt",
+                  "Beamer_Note" : "\\note"}
     old_flexes = {"Alert" : "\\alert", "Structure" : "\\structure"}
     rx = re.compile(r'^\\begin_inset Flex (.+)$')
 
