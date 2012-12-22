@@ -207,8 +207,6 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 			Paragraph const & par, int max_depth)
 {
-	if (par.layout().labeltype == LABEL_BIBLIO)
-		return false;
 	int const depth = par.params().depth();
 	if (type == Text::INC_DEPTH && depth < max_depth)
 		return true;
