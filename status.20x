@@ -66,6 +66,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Load the babel package also if the document is English-only (bug 8423).
+
 - Do not let child document's settings override master settings (bug 5941).
 
 - Correct output of text in changed font size and with decorations (bug 8424).
