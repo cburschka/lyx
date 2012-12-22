@@ -1389,15 +1389,27 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// XeTeX and LuaTeX (with OS fonts) work without fontenc
 	if (font_encoding() != "default" && language->lang() != "japanese"
 	    && !useNonTeXFonts && !tclass.provides("fontenc")) {
+		docstring extra_encoding;
+		if (features.mustProvide("textgreek"))
+			extra_encoding += from_ascii("LGR");
+		if (features.mustProvide("textcyr")) {
+			if (!extra_encoding.empty())
+				extra_encoding.push_back(',');
+			extra_encoding += from_ascii("T2A");
+		}
+		if (!extra_encoding.empty() && !font_encoding().empty())
+			extra_encoding.push_back(',');
 		size_t fars = language_options.str().find("farsi");
 		size_t arab = language_options.str().find("arabic");
 		if (language->lang() == "arabic_arabi"
 			|| language->lang() == "farsi" || fars != string::npos
 			|| arab != string::npos) {
-			os << "\\usepackage[" << from_ascii(font_encoding())
+			os << "\\usepackage[" << extra_encoding
+			   << from_ascii(font_encoding())
 			   << ",LFE,LAE]{fontenc}\n";
 		} else {
-			os << "\\usepackage[" << from_ascii(font_encoding())
+			os << "\\usepackage[" << extra_encoding
+			   << from_ascii(font_encoding())
 			   << "]{fontenc}\n";
 		}
 	}
