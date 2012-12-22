@@ -94,6 +94,8 @@ Format LaTeX feature                        LyX feature
        \begin{overprint}[maxlength]
        \onslide<slide> text ...
        \end{overprint}
+455    beamer frametitle command            \begin_layout FrameTitle
+       \frametitle<overlay>[short}{long}
 
 
 General

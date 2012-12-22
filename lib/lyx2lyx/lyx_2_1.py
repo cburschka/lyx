@@ -2843,6 +2843,61 @@ def revert_overprint(document):
         i = endseq
 
 
+def revert_frametitle(document):
+    " Reverts beamer frametitle layout to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout FrameTitle", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of FrameTitle layout")
+            i = i + 1
+            continue
+        endlay = j
+        document.body[j : j] = put_cmd_in_ert("}") + document.body[j : j]
+        endlay += len(put_cmd_in_ert("}"))
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\frametitle")
+        for p in range(i, j):
+            if p >= endlay:
+                break
+            m = rx.match(document.body[p])
+            if m:
+                argnr = m.group(1)
+                if argnr == "1":
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, p)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    endlay = endlay - len(document.body[p : endInset + 1])
+                    # Remove arg inset
+                    del document.body[p : endInset + 1]
+                    subst += put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                elif argnr == "2":
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, p)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    endlay = endlay - len(document.body[p : endInset + 1])
+                    # Remove arg inset
+                    del document.body[p : endInset + 1]
+                    subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                    
+        subst += put_cmd_in_ert("{")
+        document.body[i : i + 1] = subst
+        i = endlay
+
+
+
 ##
 # Conversion hub
 #
@@ -2889,10 +2944,12 @@ convert = [
            [451, [convert_beamerargs, convert_againframe_args, convert_corollary_args, convert_quote_args]],
            [452, [convert_beamerblocks]],
            [453, [convert_use_stmaryrd]],
-           [454, [convert_overprint]]
+           [454, [convert_overprint]],
+           [455, []]
           ]
 
 revert =  [
+           [454, [revert_frametitle]],
            [453, [revert_overprint]],
            [452, [revert_use_stmaryrd]],
            [451, [revert_beamerblocks]],

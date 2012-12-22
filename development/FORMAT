@@ -11,6 +11,10 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-12-22 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 455: Support for beamer \frametitle
+	  \frametitle<overlay>[short]{title} > begin_layout FrameTitle
+
 2012-12-19 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 454:
 	  Real support for beamer overprint environment. This environment has a
