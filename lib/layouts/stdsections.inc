@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 41
+Format 42
 
 Style Part
 	Category              Section

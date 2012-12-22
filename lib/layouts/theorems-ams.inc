@@ -19,7 +19,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 41
+Format 42
 
 Style Theorem
 	Category              Theorem
