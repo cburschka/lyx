@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-12-21 09:14+0100\n"
-"PO-Revision-Date: 2012-12-21 09:37+0100\n"
+"POT-Creation-Date: 2012-12-23 17:40+0100\n"
+"PO-Revision-Date: 2012-12-23 17:45+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5374,7 +5374,7 @@ msgstr "Bücher (DocBook)"
 #: lib/layouts/broadway.layout:186 lib/layouts/foils.layout:126
 #: lib/layouts/elsarticle.layout:81 lib/layouts/jasatex.layout:59
 #: lib/layouts/acmsiggraph.layout:140 lib/layouts/ltugboat.layout:137
-#: lib/layouts/scrlettr.layout:189 lib/layouts/beamer.layout:879
+#: lib/layouts/scrlettr.layout:189 lib/layouts/beamer.layout:909
 #: lib/layouts/tufte-book.layout:35 lib/layouts/moderncv.layout:77
 #: lib/layouts/moderncv.layout:377 lib/layouts/agutex.layout:55
 #: lib/layouts/latex8.layout:39 lib/layouts/revtex4-1.layout:212
@@ -5488,7 +5488,7 @@ msgstr "Liste der Mitwirkenden"
 #: lib/layouts/ijmpd.layout:129 lib/layouts/broadway.layout:200
 #: lib/layouts/foils.layout:134 lib/layouts/elsarticle.layout:147
 #: lib/layouts/jasatex.layout:84 lib/layouts/acmsiggraph.layout:150
-#: lib/layouts/ltugboat.layout:156 lib/layouts/beamer.layout:935
+#: lib/layouts/ltugboat.layout:156 lib/layouts/beamer.layout:965
 #: lib/layouts/tufte-book.layout:39 lib/layouts/IEEEtran.layout:115
 #: lib/layouts/scrclass.inc:187 lib/layouts/stdtitle.inc:76
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/svcommon.inc:342
@@ -5728,7 +5728,7 @@ msgstr "Kein Ort"
 #: lib/layouts/aastex.layout:243 lib/layouts/kluwer.layout:150
 #: lib/layouts/g-brief2.layout:801 lib/layouts/foils.layout:141
 #: lib/layouts/jasatex.layout:146 lib/layouts/scrlettr.layout:161
-#: lib/layouts/beamer.layout:1000 lib/layouts/tufte-book.layout:43
+#: lib/layouts/beamer.layout:1030 lib/layouts/tufte-book.layout:43
 #: lib/layouts/moderncv.layout:461 lib/layouts/revtex4-1.layout:164
 #: lib/layouts/scrclass.inc:194 lib/layouts/stdtitle.inc:95
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/svcommon.inc:368
@@ -5958,7 +5958,7 @@ msgstr "Behauptung."
 #: lib/layouts/siamltex.layout:156 lib/layouts/elsart.layout:298
 #: lib/layouts/AEA.layout:270 lib/layouts/llncs.layout:377
 #: lib/layouts/ijmpd.layout:326 lib/layouts/foils.layout:279
-#: lib/layouts/heb-article.layout:96 lib/layouts/beamer.layout:1221
+#: lib/layouts/heb-article.layout:96 lib/layouts/beamer.layout:1251
 #: lib/layouts/IEEEtran.layout:314 lib/layouts/theorems-proof.inc:13
 #: lib/layouts/theorems-proof-std.inc:6 lib/layouts/svcommon.inc:635
 #: lib/layouts/svcommon.inc:650 lib/layouts/svcommon.inc:653
@@ -5969,7 +5969,7 @@ msgstr "Beweis"
 #: lib/layouts/svmono.layout:86 lib/layouts/svmono.layout:90
 #: lib/layouts/svmono.layout:94 lib/layouts/siamltex.layout:175
 #: lib/layouts/llncs.layout:380 lib/layouts/foils.layout:282
-#: lib/layouts/beamer.layout:1224 lib/layouts/IEEEtran.layout:334
+#: lib/layouts/beamer.layout:1254 lib/layouts/IEEEtran.layout:334
 #: lib/layouts/theorems-proof.inc:33 lib/layouts/svcommon.inc:645
 msgid "Proof."
 msgstr "Beweis."
@@ -6117,7 +6117,7 @@ msgstr ""
 #: lib/layouts/elsart.layout:269 lib/layouts/AEA.layout:106
 #: lib/layouts/llncs.layout:418 lib/layouts/ijmpd.layout:329
 #: lib/layouts/ijmpd.layout:349 lib/layouts/foils.layout:219
-#: lib/layouts/heb-article.layout:19 lib/layouts/beamer.layout:1227
+#: lib/layouts/heb-article.layout:19 lib/layouts/beamer.layout:1257
 #: lib/layouts/IEEEtran.layout:315 lib/layouts/theorems-bytype.inc:26
 #: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:61
 #: lib/layouts/theorems-bytype.inc:64 lib/layouts/theorems-proof.inc:14
@@ -6187,7 +6187,7 @@ msgstr "Bemerkung \\theremark."
 #: lib/layouts/elsart.layout:332 lib/layouts/AEA.layout:167
 #: lib/layouts/llncs.layout:322 lib/layouts/ijmpd.layout:374
 #: lib/layouts/foils.layout:251 lib/layouts/heb-article.layout:56
-#: lib/layouts/beamer.layout:1153 lib/layouts/theorems-bytype.inc:70
+#: lib/layouts/beamer.layout:1183 lib/layouts/theorems-bytype.inc:70
 #: lib/layouts/theorems-bytype.inc:79 lib/layouts/theorems-bytype.inc:82
 #: lib/layouts/theorems-ams-bytype.inc:94
 #: lib/layouts/theorems-ams-bytype.inc:104
@@ -6336,7 +6336,7 @@ msgstr "Anhang"
 #: lib/layouts/achemso.layout:233 lib/layouts/ijmpd.layout:432
 #: lib/layouts/ijmpd.layout:456 lib/layouts/elsarticle.layout:320
 #: lib/layouts/jasatex.layout:232 lib/layouts/jasatex.layout:271
-#: lib/layouts/acmsiggraph.layout:298 lib/layouts/beamer.layout:1048
+#: lib/layouts/acmsiggraph.layout:298 lib/layouts/beamer.layout:1078
 #: lib/layouts/agutex.layout:157 lib/layouts/agutex.layout:167
 #: lib/layouts/agutex.layout:187 lib/layouts/agutex.layout:210
 #: lib/layouts/revtex4-1.layout:228 lib/layouts/IEEEtran.layout:230
@@ -6365,7 +6365,7 @@ msgstr "Anhang \\Alph{appendix}."
 #: lib/layouts/foils.layout:211 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwbk.layout:25 lib/layouts/elsarticle.layout:316
 #: lib/layouts/jasatex.layout:267 lib/layouts/memoir.layout:227
-#: lib/layouts/memoir.layout:229 lib/layouts/beamer.layout:1047
+#: lib/layouts/memoir.layout:229 lib/layouts/beamer.layout:1077
 #: lib/layouts/tufte-book.layout:248 lib/layouts/tufte-book.layout:250
 #: lib/layouts/moderncv.layout:394 lib/layouts/agutex.layout:206
 #: lib/layouts/latex8.layout:126 lib/layouts/IEEEtran.layout:254
@@ -6383,7 +6383,7 @@ msgstr "Literaturverzeichnis"
 #: lib/layouts/aastex.layout:505 lib/layouts/kluwer.layout:343
 #: lib/layouts/kluwer.layout:355 lib/layouts/cl2emult.layout:118
 #: lib/layouts/ijmpd.layout:467 lib/layouts/elsarticle.layout:331
-#: lib/layouts/jasatex.layout:282 lib/layouts/beamer.layout:1061
+#: lib/layouts/jasatex.layout:282 lib/layouts/beamer.layout:1091
 #: lib/layouts/moderncv.layout:408 lib/layouts/agutex.layout:221
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/stdstruct.inc:68
 #: lib/layouts/svcommon.inc:588 lib/layouts/amsdefs.inc:213
@@ -6623,10 +6623,10 @@ msgstr "Society for Industrial and Applied Mathematics (SIAM)"
 #: lib/layouts/revtex4.layout:46 lib/layouts/europecv.layout:130
 #: lib/layouts/europecv.layout:155 lib/layouts/europecv.layout:213
 #: lib/layouts/AEA.layout:261 lib/layouts/amsbook.layout:33
-#: lib/layouts/beamer.layout:64 lib/layouts/beamer.layout:1075
-#: lib/layouts/beamer.layout:1100 lib/layouts/beamer.layout:1125
-#: lib/layouts/beamer.layout:1239 lib/layouts/beamer.layout:1262
-#: lib/layouts/beamer.layout:1296 lib/layouts/tufte-book.layout:202
+#: lib/layouts/beamer.layout:64 lib/layouts/beamer.layout:1105
+#: lib/layouts/beamer.layout:1130 lib/layouts/beamer.layout:1155
+#: lib/layouts/beamer.layout:1269 lib/layouts/beamer.layout:1292
+#: lib/layouts/beamer.layout:1326 lib/layouts/tufte-book.layout:202
 #: lib/layouts/scrclass.inc:310 lib/layouts/stdlayouts.inc:13
 #: lib/layouts/stdlayouts.inc:34 lib/layouts/stdlayouts.inc:55
 #: lib/layouts/stdlayouts.inc:75 lib/layouts/stdlayouts.inc:99
@@ -6687,7 +6687,7 @@ msgstr "Algorithmus*"
 #: lib/layouts/siamltex.layout:127 lib/layouts/elsart.layout:360
 #: lib/layouts/AEA.layout:182 lib/layouts/llncs.layout:336
 #: lib/layouts/foils.layout:265 lib/layouts/heb-article.layout:76
-#: lib/layouts/beamer.layout:1187 lib/layouts/theorems-bytype.inc:160
+#: lib/layouts/beamer.layout:1217 lib/layouts/theorems-bytype.inc:160
 #: lib/layouts/theorems-bytype.inc:176 lib/layouts/theorems-bytype.inc:179
 #: lib/layouts/theorems-ams-bytype.inc:184
 #: lib/layouts/theorems-ams-bytype.inc:200
@@ -6731,7 +6731,7 @@ msgstr "Eine alternative Bezeichnung für den Beweis"
 #: lib/layouts/jasatex.layout:73 lib/layouts/memoir.layout:55
 #: lib/layouts/beamer.layout:207 lib/layouts/beamer.layout:257
 #: lib/layouts/beamer.layout:314 lib/layouts/beamer.layout:371
-#: lib/layouts/beamer.layout:893 lib/layouts/tufte-book.layout:80
+#: lib/layouts/beamer.layout:923 lib/layouts/tufte-book.layout:80
 #: lib/layouts/tufte-book.layout:107 lib/layouts/revtex4-1.layout:214
 #: lib/layouts/scrclass.inc:114 lib/layouts/scrclass.inc:124
 #: lib/layouts/scrclass.inc:134 lib/layouts/scrclass.inc:276
@@ -7090,7 +7090,7 @@ msgstr "Aufzählung"
 #: lib/layouts/aapaper.layout:80 lib/layouts/svprobth.layout:89
 #: lib/layouts/aa.layout:71 lib/layouts/aa.layout:120
 #: lib/layouts/sigplanconf.layout:125 lib/layouts/llncs.layout:129
-#: lib/layouts/kluwer.layout:130 lib/layouts/beamer.layout:911
+#: lib/layouts/kluwer.layout:130 lib/layouts/beamer.layout:941
 #: lib/layouts/scrclass.inc:178 lib/layouts/aapaper.inc:9
 #: lib/layouts/svcommon.inc:331
 msgid "Subtitle"
@@ -7132,7 +7132,7 @@ msgstr "Kommentar"
 
 #: lib/layouts/iopart.layout:99 lib/layouts/elsart.layout:402
 #: lib/layouts/powerdot.layout:198 lib/layouts/llncs.layout:363
-#: lib/layouts/beamer.layout:1475 lib/layouts/slides.layout:168
+#: lib/layouts/beamer.layout:1523 lib/layouts/slides.layout:168
 #: lib/layouts/theorems-without-preamble.inc:395
 #: lib/layouts/theorems-without-preamble.inc:402
 #: lib/layouts/theorems-without-preamble.inc:405 lib/layouts/stdinsets.inc:101
@@ -7343,7 +7343,7 @@ msgid "Conjecture \\arabic{theorem}"
 msgstr "Vermutung \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:381 lib/layouts/AEA.layout:189
-#: lib/layouts/llncs.layout:343 lib/layouts/beamer.layout:1199
+#: lib/layouts/llncs.layout:343 lib/layouts/beamer.layout:1229
 #: lib/layouts/theorems-bytype.inc:185 lib/layouts/theorems-bytype.inc:195
 #: lib/layouts/theorems-bytype.inc:198 lib/layouts/theorems-ams-bytype.inc:209
 #: lib/layouts/theorems-ams-bytype.inc:219
@@ -7596,13 +7596,13 @@ msgid "European Geophysical Society (EGS)"
 msgstr "European Geophysical Society (EGS)"
 
 #: lib/layouts/egs.layout:99 lib/layouts/powerdot.layout:312
-#: lib/layouts/beamer.layout:1074 lib/layouts/stdlayouts.inc:12
+#: lib/layouts/beamer.layout:1104 lib/layouts/stdlayouts.inc:12
 #: lib/layouts/db_stdlayouts.inc:19
 msgid "Quotation"
 msgstr "Zitat (lang)"
 
 #: lib/layouts/egs.layout:117 lib/layouts/powerdot.layout:332
-#: lib/layouts/beamer.layout:1099 lib/layouts/moderncv.layout:160
+#: lib/layouts/beamer.layout:1129 lib/layouts/moderncv.layout:160
 #: lib/layouts/stdlayouts.inc:33
 msgid "Quote"
 msgstr "Zitat (kurz)"
@@ -7626,7 +7626,7 @@ msgid "A customized item string"
 msgstr "Ein benutzerdefiniertes Zeichen für diesen Listeneintrag"
 
 #: lib/layouts/egs.layout:215 lib/layouts/powerdot.layout:350
-#: lib/layouts/beamer.layout:1122 lib/layouts/stdlayouts.inc:52
+#: lib/layouts/beamer.layout:1152 lib/layouts/stdlayouts.inc:52
 msgid "Verse"
 msgstr "Gedicht"
 
@@ -7695,7 +7695,7 @@ msgstr "Danksagungen."
 msgid "Acknowledgement."
 msgstr "Danksagung."
 
-#: lib/layouts/egs.layout:642 lib/layouts/beamer.layout:1261
+#: lib/layouts/egs.layout:642 lib/layouts/beamer.layout:1291
 #: lib/layouts/db_lyxmacros.inc:19 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX-Code"
@@ -7763,7 +7763,7 @@ msgid "Key words."
 msgstr "Schlagwörter."
 
 #: lib/layouts/aa.layout:390 lib/layouts/llncs.layout:217
-#: lib/layouts/cl2emult.layout:71 lib/layouts/beamer.layout:957
+#: lib/layouts/cl2emult.layout:71 lib/layouts/beamer.layout:987
 #: lib/layouts/svcommon.inc:351
 msgid "Institute"
 msgstr "Institut"
@@ -8538,7 +8538,7 @@ msgstr "Leere Folie"
 msgid "Empty slide:"
 msgstr "Leere Folie:"
 
-#: lib/layouts/powerdot.layout:210 lib/layouts/beamer.layout:1308
+#: lib/layouts/powerdot.layout:210 lib/layouts/beamer.layout:1338
 msgid "Note:"
 msgstr "Notiz:"
 
@@ -8559,24 +8559,24 @@ msgstr "AuflistungsTyp1"
 msgid "EnumerateType1"
 msgstr "AufzählungsTyp1"
 
-#: lib/layouts/powerdot.layout:377 lib/layouts/beamer.layout:1522
+#: lib/layouts/powerdot.layout:377 lib/layouts/beamer.layout:1570
 #: lib/layouts/stdfloats.inc:11 lib/ui/stdtoolbars.inc:142
 #: src/insets/Inset.cpp:100
 msgid "Table"
 msgstr "Tabelle"
 
-#: lib/layouts/powerdot.layout:381 lib/layouts/beamer.layout:1527
+#: lib/layouts/powerdot.layout:381 lib/layouts/beamer.layout:1575
 #: lib/layouts/tufte-book.layout:229 lib/layouts/stdfloats.inc:16
 #: src/insets/InsetFloatList.cpp:195
 msgid "List of Tables"
 msgstr "Tabellenverzeichnis"
 
-#: lib/layouts/powerdot.layout:389 lib/layouts/beamer.layout:1535
+#: lib/layouts/powerdot.layout:389 lib/layouts/beamer.layout:1583
 #: lib/layouts/stdfloats.inc:26
 msgid "Figure"
 msgstr "Abbildung"
 
-#: lib/layouts/powerdot.layout:393 lib/layouts/beamer.layout:1540
+#: lib/layouts/powerdot.layout:393 lib/layouts/beamer.layout:1588
 #: lib/layouts/tufte-book.layout:242 lib/layouts/stdfloats.inc:31
 #: src/insets/InsetFloatList.cpp:198
 msgid "List of Figures"
@@ -8644,8 +8644,7 @@ msgstr "Danksagung"
 msgid "Thanks \\theThanks:"
 msgstr "Danksagung \\theThanks:"
 
-#: lib/layouts/ectaart.layout:146 lib/layouts/beamer.layout:1328
-#: lib/layouts/beamer.layout:1330
+#: lib/layouts/ectaart.layout:146 lib/layouts/beamer.layout:1376
 msgid "Emphasize"
 msgstr "Hervorhebung"
 
@@ -9794,7 +9793,7 @@ msgstr "Fußzeile rechts"
 msgid "Right Footer:"
 msgstr "Fußzeile rechts:"
 
-#: lib/layouts/foils.layout:296 lib/layouts/beamer.layout:1230
+#: lib/layouts/foils.layout:296 lib/layouts/beamer.layout:1260
 #: lib/layouts/theorems-starred.inc:29
 msgid "Theorem."
 msgstr "Theorem."
@@ -9803,7 +9802,7 @@ msgstr "Theorem."
 msgid "Lemma."
 msgstr "Lemma."
 
-#: lib/layouts/foils.layout:310 lib/layouts/beamer.layout:1163
+#: lib/layouts/foils.layout:310 lib/layouts/beamer.layout:1193
 #: lib/layouts/theorems-starred.inc:69
 msgid "Corollary."
 msgstr "Korollar."
@@ -9812,7 +9811,7 @@ msgstr "Korollar."
 msgid "Proposition."
 msgstr "Satz."
 
-#: lib/layouts/foils.layout:324 lib/layouts/beamer.layout:1190
+#: lib/layouts/foils.layout:324 lib/layouts/beamer.layout:1220
 #: lib/layouts/theorems-starred.inc:155
 msgid "Definition."
 msgstr "Definition."
@@ -10332,10 +10331,10 @@ msgstr "Beamer"
 
 #: lib/layouts/beamer.layout:86 lib/layouts/beamer.layout:119
 #: lib/layouts/beamer.layout:158 lib/layouts/beamer.layout:492
-#: lib/layouts/beamer.layout:575 lib/layouts/beamer.layout:777
-#: lib/layouts/beamer.layout:805 lib/layouts/beamer.layout:1092
-#: lib/layouts/beamer.layout:1115 lib/layouts/beamer.layout:1141
-#: lib/layouts/beamer.layout:1316
+#: lib/layouts/beamer.layout:576 lib/layouts/beamer.layout:605
+#: lib/layouts/beamer.layout:807 lib/layouts/beamer.layout:835
+#: lib/layouts/beamer.layout:1122 lib/layouts/beamer.layout:1145
+#: lib/layouts/beamer.layout:1171 lib/layouts/beamer.layout:1346
 msgid "Overlay Specifications|S"
 msgstr "Overlay-Spezifikation"
 
@@ -10345,21 +10344,22 @@ msgid "Overlay specifications for this list"
 msgstr "Overlay-Spezifikation für diese Liste"
 
 #: lib/layouts/beamer.layout:96 lib/layouts/beamer.layout:133
-#: lib/layouts/beamer.layout:168 lib/layouts/beamer.layout:701
+#: lib/layouts/beamer.layout:168 lib/layouts/beamer.layout:731
 msgid "Item Overlay Specifications"
 msgstr "Eintrags-Overlay-Spezifikation"
 
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:134
 #: lib/layouts/beamer.layout:169 lib/layouts/beamer.layout:491
-#: lib/layouts/beamer.layout:574 lib/layouts/beamer.layout:702
-#: lib/layouts/beamer.layout:776 lib/layouts/beamer.layout:804
-#: lib/layouts/beamer.layout:1091 lib/layouts/beamer.layout:1114
-#: lib/layouts/beamer.layout:1140 lib/layouts/beamer.layout:1315
+#: lib/layouts/beamer.layout:575 lib/layouts/beamer.layout:604
+#: lib/layouts/beamer.layout:732 lib/layouts/beamer.layout:806
+#: lib/layouts/beamer.layout:834 lib/layouts/beamer.layout:1121
+#: lib/layouts/beamer.layout:1144 lib/layouts/beamer.layout:1170
+#: lib/layouts/beamer.layout:1345
 msgid "On Slide"
 msgstr "Auf Folie"
 
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:135
-#: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:703
+#: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:733
 msgid "Overlay specifications for this item"
 msgstr "Overlay-Spezifikation für diesen Eintrag"
 
@@ -10440,7 +10440,7 @@ msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:409 lib/layouts/beamer.layout:451
 #: lib/layouts/beamer.layout:486 lib/layouts/beamer.layout:532
-#: lib/layouts/beamer.layout:558
+#: lib/layouts/beamer.layout:558 lib/layouts/beamer.layout:588
 msgid "Frames"
 msgstr "Rahmen"
 
@@ -10482,7 +10482,7 @@ msgstr "Standard-Overlay-Spezifikation"
 msgid "Default overlay specifications within this frame"
 msgstr "Standard-Overlay-Spezifikation für diesen Rahmen"
 
-#: lib/layouts/beamer.layout:505 lib/layouts/beamer.layout:603
+#: lib/layouts/beamer.layout:505 lib/layouts/beamer.layout:633
 msgid "Options"
 msgstr "Optionen"
 
@@ -10499,301 +10499,315 @@ msgid "________________________________"
 msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:557
-msgid "FrameSubtitle"
-msgstr "RahmenUntertitel"
+msgid "FrameTitle"
+msgstr "Rahmentitel"
 
-#: lib/layouts/beamer.layout:576 lib/layouts/beamer.layout:778
-#: lib/layouts/beamer.layout:806 lib/layouts/beamer.layout:839
-#: lib/layouts/beamer.layout:1093 lib/layouts/beamer.layout:1116
-#: lib/layouts/beamer.layout:1142 lib/layouts/beamer.layout:1177
-#: lib/layouts/beamer.layout:1317 lib/layouts/beamer.layout:1339
-#: lib/layouts/beamer.layout:1356 lib/layouts/beamer.layout:1373
-#: lib/layouts/beamer.layout:1391 lib/layouts/beamer.layout:1409
-#: lib/layouts/beamer.layout:1427 lib/layouts/beamer.layout:1445
-#: lib/layouts/beamer.layout:1462 lib/layouts/beamer.layout:1485
+#: lib/layouts/beamer.layout:577 lib/layouts/beamer.layout:606
+#: lib/layouts/beamer.layout:808 lib/layouts/beamer.layout:836
+#: lib/layouts/beamer.layout:869 lib/layouts/beamer.layout:1123
+#: lib/layouts/beamer.layout:1146 lib/layouts/beamer.layout:1172
+#: lib/layouts/beamer.layout:1207 lib/layouts/beamer.layout:1347
+#: lib/layouts/beamer.layout:1370 lib/layouts/beamer.layout:1387
+#: lib/layouts/beamer.layout:1404 lib/layouts/beamer.layout:1421
+#: lib/layouts/beamer.layout:1438 lib/layouts/beamer.layout:1456
+#: lib/layouts/beamer.layout:1474 lib/layouts/beamer.layout:1492
+#: lib/layouts/beamer.layout:1510 lib/layouts/beamer.layout:1533
 msgid "Specify the overlay settings (see beamer manual)"
 msgstr ""
 "Legen Sie hier die Overlay-Spezifikationen fest (siehe Beamer-Anleitung)"
 
+#: lib/layouts/beamer.layout:582
+msgid "Short Frame Title|S"
+msgstr "Kurztitel|z"
+
+#: lib/layouts/beamer.layout:583
+msgid "A short form of the frame title used in some themes"
+msgstr "Eine Kurzform des Rahmentitels, die in manchen Themen verwendet wird."
+
 #: lib/layouts/beamer.layout:587
+msgid "FrameSubtitle"
+msgstr "RahmenUntertitel"
+
+#: lib/layouts/beamer.layout:617
 msgid "Column"
 msgstr "Spalte"
 
-#: lib/layouts/beamer.layout:588 lib/layouts/beamer.layout:613
-#: lib/layouts/beamer.layout:614 lib/layouts/beamer.layout:624
+#: lib/layouts/beamer.layout:618 lib/layouts/beamer.layout:643
+#: lib/layouts/beamer.layout:644 lib/layouts/beamer.layout:654
 msgid "Columns"
 msgstr "Spalten"
 
-#: lib/layouts/beamer.layout:600
+#: lib/layouts/beamer.layout:630
 msgid "Start column (increase depth!), width:"
 msgstr "Starte Spalte (erhöhe Tiefe!), Breite:"
 
-#: lib/layouts/beamer.layout:602
+#: lib/layouts/beamer.layout:632
 msgid "Column Options"
 msgstr "Spaltenoptionen"
 
-#: lib/layouts/beamer.layout:604
+#: lib/layouts/beamer.layout:634
 msgid "Column options (see beamer manual)"
 msgstr "Spaltenoptionen (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:627
+#: lib/layouts/beamer.layout:657
 msgid "Column Placement Options"
 msgstr "Spalten-Platzierungsoptionen"
 
-#: lib/layouts/beamer.layout:628
+#: lib/layouts/beamer.layout:658
 msgid "Column placement options (t, T, c, b)"
 msgstr "Spalten-Platzierungsoptionen (t, T, c, b)"
 
-#: lib/layouts/beamer.layout:640
+#: lib/layouts/beamer.layout:670
 msgid "ColumnsCenterAligned"
 msgstr "Spalten mittig ausgerichtet"
 
-#: lib/layouts/beamer.layout:643
+#: lib/layouts/beamer.layout:673
 msgid "Columns (center aligned)"
 msgstr "Spalten (mittig ausgerichtet)"
 
-#: lib/layouts/beamer.layout:648
+#: lib/layouts/beamer.layout:678
 msgid "ColumnsTopAligned"
 msgstr "Spalten oben ausgerichtet"
 
-#: lib/layouts/beamer.layout:651
+#: lib/layouts/beamer.layout:681
 msgid "Columns (top aligned)"
 msgstr "Spalten (oben ausgerichtet)"
 
-#: lib/layouts/beamer.layout:661
+#: lib/layouts/beamer.layout:691
 msgid "Pause"
 msgstr "Pause"
 
-#: lib/layouts/beamer.layout:662 lib/layouts/beamer.layout:690
-#: lib/layouts/beamer.layout:725 lib/layouts/beamer.layout:757
-#: lib/layouts/beamer.layout:785
+#: lib/layouts/beamer.layout:692 lib/layouts/beamer.layout:720
+#: lib/layouts/beamer.layout:755 lib/layouts/beamer.layout:787
+#: lib/layouts/beamer.layout:815
 msgid "Overlays"
 msgstr "Overlays"
 
-#: lib/layouts/beamer.layout:668
+#: lib/layouts/beamer.layout:698
 msgid "Pause number"
 msgstr "Pausennummer"
 
-#: lib/layouts/beamer.layout:669
+#: lib/layouts/beamer.layout:699
 msgid "Number of slide where the context below the pause gets visible"
 msgstr ""
 "Nummer der Folie, auf der der Text unterhalb dieser Pause sichtbar wird"
 
-#: lib/layouts/beamer.layout:680
+#: lib/layouts/beamer.layout:710
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
-#: lib/layouts/beamer.layout:689 lib/layouts/beamer.layout:717
+#: lib/layouts/beamer.layout:719 lib/layouts/beamer.layout:747
 msgid "Overprint"
 msgstr "Überdruck"
 
-#: lib/layouts/beamer.layout:696
+#: lib/layouts/beamer.layout:726
 msgid "Overprint Area Width"
 msgstr "Überdruckbereichsbreite"
 
-#: lib/layouts/beamer.layout:697 src/frontends/qt4/GuiBox.cpp:71
+#: lib/layouts/beamer.layout:727 src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
 msgstr "Breite"
 
-#: lib/layouts/beamer.layout:698
+#: lib/layouts/beamer.layout:728
 msgid "The width of the overprint area (default: text width)"
 msgstr "Die Breite des Überdruckbereichs (Voreinstellung: Textbreite)"
 
-#: lib/layouts/beamer.layout:724
+#: lib/layouts/beamer.layout:754
 msgid "OverlayArea"
 msgstr "ÜberlagerungsBereich"
 
-#: lib/layouts/beamer.layout:734
+#: lib/layouts/beamer.layout:764
 msgid "Overlayarea"
 msgstr "Überlagerungsbereich"
 
-#: lib/layouts/beamer.layout:744
+#: lib/layouts/beamer.layout:774
 msgid "Overlay Area Width"
 msgstr "Überlagerungsbereichsbreite"
 
-#: lib/layouts/beamer.layout:745
+#: lib/layouts/beamer.layout:775
 msgid "The width of the overlay area"
 msgstr "Die Breite des Überlagerungsbereichs"
 
-#: lib/layouts/beamer.layout:749
+#: lib/layouts/beamer.layout:779
 msgid "Overlay Area Height"
 msgstr "Überlagerungsbereichshöhe"
 
-#: lib/layouts/beamer.layout:750 lib/layouts/moderncv.layout:151
+#: lib/layouts/beamer.layout:780 lib/layouts/moderncv.layout:151
 #: src/frontends/qt4/GuiBox.cpp:70
 msgid "Height"
 msgstr "Höhe"
 
-#: lib/layouts/beamer.layout:751
+#: lib/layouts/beamer.layout:781
 msgid "The height of the overlay area"
 msgstr "Die Höhe des Überlagerungsbereichs"
 
-#: lib/layouts/beamer.layout:756 lib/layouts/beamer.layout:1398
-#: lib/layouts/beamer.layout:1400
+#: lib/layouts/beamer.layout:786 lib/layouts/beamer.layout:1445
+#: lib/layouts/beamer.layout:1447
 msgid "Uncover"
 msgstr "Aufdecken"
 
-#: lib/layouts/beamer.layout:766
+#: lib/layouts/beamer.layout:796
 msgid "Uncovered on slides"
 msgstr "Aufgedeckt auf Folien"
 
-#: lib/layouts/beamer.layout:784 lib/layouts/beamer.layout:1380
-#: lib/layouts/beamer.layout:1382
+#: lib/layouts/beamer.layout:814 lib/layouts/beamer.layout:1427
+#: lib/layouts/beamer.layout:1429
 msgid "Only"
 msgstr "Nur"
 
-#: lib/layouts/beamer.layout:794
+#: lib/layouts/beamer.layout:824
 msgid "Only on slides"
 msgstr "Nur auf Folien"
 
-#: lib/layouts/beamer.layout:817
+#: lib/layouts/beamer.layout:847
 msgid "Block"
 msgstr "Block"
 
-#: lib/layouts/beamer.layout:818
+#: lib/layouts/beamer.layout:848
 msgid "Blocks"
 msgstr "Blöcke"
 
-#: lib/layouts/beamer.layout:827
+#: lib/layouts/beamer.layout:857
 msgid "Block:"
 msgstr "Block:"
 
-#: lib/layouts/beamer.layout:837 lib/layouts/beamer.layout:1175
-#: lib/layouts/beamer.layout:1337 lib/layouts/beamer.layout:1354
-#: lib/layouts/beamer.layout:1371 lib/layouts/beamer.layout:1389
-#: lib/layouts/beamer.layout:1407 lib/layouts/beamer.layout:1425
-#: lib/layouts/beamer.layout:1443 lib/layouts/beamer.layout:1460
-#: lib/layouts/beamer.layout:1483
+#: lib/layouts/beamer.layout:867 lib/layouts/beamer.layout:1205
+#: lib/layouts/beamer.layout:1368 lib/layouts/beamer.layout:1385
+#: lib/layouts/beamer.layout:1402 lib/layouts/beamer.layout:1419
+#: lib/layouts/beamer.layout:1436 lib/layouts/beamer.layout:1454
+#: lib/layouts/beamer.layout:1472 lib/layouts/beamer.layout:1490
+#: lib/layouts/beamer.layout:1508 lib/layouts/beamer.layout:1531
 msgid "Action"
 msgstr "Aktion"
 
-#: lib/layouts/beamer.layout:838
+#: lib/layouts/beamer.layout:868
 msgid "Action Specification|S"
 msgstr "Aktionsspezifikation"
 
-#: lib/layouts/beamer.layout:844
+#: lib/layouts/beamer.layout:874
 msgid "Block Title"
 msgstr "Blocktitel"
 
-#: lib/layouts/beamer.layout:845
+#: lib/layouts/beamer.layout:875
 msgid "Enter the block title here"
 msgstr "Geben Sie hier den Blocktitel ein"
 
-#: lib/layouts/beamer.layout:856
+#: lib/layouts/beamer.layout:886
 msgid "ExampleBlock"
 msgstr "BeispielBlock"
 
-#: lib/layouts/beamer.layout:859
+#: lib/layouts/beamer.layout:889
 msgid "Example Block:"
 msgstr "Beispiel-Block:"
 
-#: lib/layouts/beamer.layout:865
+#: lib/layouts/beamer.layout:895
 msgid "AlertBlock"
 msgstr "AlarmBlock"
 
-#: lib/layouts/beamer.layout:868
+#: lib/layouts/beamer.layout:898
 msgid "Alert Block:"
 msgstr "Alarm-Block:"
 
-#: lib/layouts/beamer.layout:880 lib/layouts/beamer.layout:912
-#: lib/layouts/beamer.layout:936 lib/layouts/beamer.layout:958
-#: lib/layouts/beamer.layout:1001 lib/layouts/beamer.layout:1023
+#: lib/layouts/beamer.layout:910 lib/layouts/beamer.layout:942
+#: lib/layouts/beamer.layout:966 lib/layouts/beamer.layout:988
+#: lib/layouts/beamer.layout:1031 lib/layouts/beamer.layout:1053
 msgid "Titling"
 msgstr "Titelei"
 
-#: lib/layouts/beamer.layout:894
+#: lib/layouts/beamer.layout:924
 msgid "Short title which appears in the sidebar/header"
 msgstr "Kurztitel, der in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:903
+#: lib/layouts/beamer.layout:933
 msgid "Title (Plain Frame)"
 msgstr "Titel (schlichter Rahmen)"
 
-#: lib/layouts/beamer.layout:925
+#: lib/layouts/beamer.layout:955
 msgid "Short Subtitle|S"
 msgstr "Untertitel (kurz)|z"
 
-#: lib/layouts/beamer.layout:926
+#: lib/layouts/beamer.layout:956
 msgid "Short subtitle which appears in the sidebar/header"
 msgstr "Kurzform des Untertitels, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:948 lib/layouts/IEEEtran.layout:121
+#: lib/layouts/beamer.layout:978 lib/layouts/IEEEtran.layout:121
 msgid "Short Author|S"
 msgstr "Autor (Kurzform)|z"
 
-#: lib/layouts/beamer.layout:949
+#: lib/layouts/beamer.layout:979
 msgid "Short author which appears in the sidebar/header"
 msgstr "Kurzform des Autors, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:970
+#: lib/layouts/beamer.layout:1000
 msgid "Short Institute|S"
 msgstr "Institut (kurz)|z"
 
-#: lib/layouts/beamer.layout:971
+#: lib/layouts/beamer.layout:1001
 msgid "Short institute which appears in the sidebar/header"
 msgstr "Kurzform des Instituts, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:979
+#: lib/layouts/beamer.layout:1009
 msgid "InstituteMark"
 msgstr "Institutsfußnotenmarke"
 
-#: lib/layouts/beamer.layout:983
+#: lib/layouts/beamer.layout:1013
 msgid "Institute Mark"
 msgstr "Institutsmarke"
 
-#: lib/layouts/beamer.layout:1013
+#: lib/layouts/beamer.layout:1043
 msgid "Short Date|S"
 msgstr "Kurzdatum|z"
 
-#: lib/layouts/beamer.layout:1014
+#: lib/layouts/beamer.layout:1044
 msgid "Short date which appears in the sidebar/header"
 msgstr "Kurzform des Datums, die in der Seitenleiste/Kopfzeile erscheint"
 
-#: lib/layouts/beamer.layout:1022
+#: lib/layouts/beamer.layout:1052
 msgid "TitleGraphic"
 msgstr "Titelgrafik"
 
-#: lib/layouts/beamer.layout:1154 lib/layouts/theorems-std.module:2
+#: lib/layouts/beamer.layout:1184 lib/layouts/theorems-std.module:2
 msgid "Theorems"
 msgstr "Theoreme"
 
-#: lib/layouts/beamer.layout:1176 lib/layouts/beamer.layout:1338
-#: lib/layouts/beamer.layout:1355 lib/layouts/beamer.layout:1372
-#: lib/layouts/beamer.layout:1390 lib/layouts/beamer.layout:1408
-#: lib/layouts/beamer.layout:1426 lib/layouts/beamer.layout:1444
-#: lib/layouts/beamer.layout:1461 lib/layouts/beamer.layout:1484
+#: lib/layouts/beamer.layout:1206 lib/layouts/beamer.layout:1369
+#: lib/layouts/beamer.layout:1386 lib/layouts/beamer.layout:1403
+#: lib/layouts/beamer.layout:1420 lib/layouts/beamer.layout:1437
+#: lib/layouts/beamer.layout:1455 lib/layouts/beamer.layout:1473
+#: lib/layouts/beamer.layout:1491 lib/layouts/beamer.layout:1509
+#: lib/layouts/beamer.layout:1532
 msgid "Action Specifications|S"
 msgstr "Aktionsspezifikation"
 
-#: lib/layouts/beamer.layout:1182
+#: lib/layouts/beamer.layout:1212
 msgid "Additional Theorem Text"
 msgstr "Zusätzlicher Theoremtext"
 
-#: lib/layouts/beamer.layout:1183
+#: lib/layouts/beamer.layout:1213
 msgid "Additional text appended to the theorem header"
 msgstr "Zusatztext, der an den Theoremtitel angehängt wird"
 
-#: lib/layouts/beamer.layout:1193
+#: lib/layouts/beamer.layout:1223
 msgid "Definitions"
 msgstr "Definitionen"
 
-#: lib/layouts/beamer.layout:1196
+#: lib/layouts/beamer.layout:1226
 msgid "Definitions."
 msgstr "Definitionen."
 
-#: lib/layouts/beamer.layout:1202 lib/layouts/theorems-starred.inc:179
+#: lib/layouts/beamer.layout:1232 lib/layouts/theorems-starred.inc:179
 msgid "Example."
 msgstr "Beispiel."
 
-#: lib/layouts/beamer.layout:1209
+#: lib/layouts/beamer.layout:1239
 msgid "Examples"
 msgstr "Beispiele"
 
-#: lib/layouts/beamer.layout:1212
+#: lib/layouts/beamer.layout:1242
 msgid "Examples."
 msgstr "Beispiele."
 
-#: lib/layouts/beamer.layout:1215 lib/layouts/theorems-bytype.inc:142
+#: lib/layouts/beamer.layout:1245 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-bytype.inc:151 lib/layouts/theorems-bytype.inc:154
 #: lib/layouts/theorems-ams-bytype.inc:166
 #: lib/layouts/theorems-ams-bytype.inc:175
@@ -10810,77 +10824,86 @@ msgstr "Beispiele."
 msgid "Fact"
 msgstr "Fakt"
 
-#: lib/layouts/beamer.layout:1218 lib/layouts/theorems-starred.inc:137
+#: lib/layouts/beamer.layout:1248 lib/layouts/theorems-starred.inc:137
 msgid "Fact."
 msgstr "Fakt."
 
-#: lib/layouts/beamer.layout:1238
+#: lib/layouts/beamer.layout:1268
 msgid "Separator"
 msgstr "Trenner"
 
-#: lib/layouts/beamer.layout:1252
+#: lib/layouts/beamer.layout:1282
 msgid "___"
 msgstr "___"
 
-#: lib/layouts/beamer.layout:1295
+#: lib/layouts/beamer.layout:1325
 msgid "NoteItem"
 msgstr "NotizStichpunkt"
 
-#: lib/layouts/beamer.layout:1345 lib/layouts/beamer.layout:1347
+#: lib/layouts/beamer.layout:1359 lib/layouts/beamer.layout:1361
+#: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
+msgid "Bold"
+msgstr "Fett"
+
+#: lib/layouts/beamer.layout:1378
+msgid "Emph."
+msgstr "Hervg."
+
+#: lib/layouts/beamer.layout:1393 lib/layouts/beamer.layout:1395
 msgid "Alert"
 msgstr "Alarm"
 
-#: lib/layouts/beamer.layout:1362 lib/layouts/beamer.layout:1364
+#: lib/layouts/beamer.layout:1410 lib/layouts/beamer.layout:1412
 #: lib/layouts/svcommon.inc:68 lib/layouts/svcommon.inc:95
 #: lib/layouts/svcommon.inc:102
 msgid "Structure"
 msgstr "Struktur"
 
-#: lib/layouts/beamer.layout:1416 lib/layouts/beamer.layout:1418
+#: lib/layouts/beamer.layout:1463 lib/layouts/beamer.layout:1465
 msgid "Visible"
 msgstr "Sichtbar"
 
-#: lib/layouts/beamer.layout:1434 lib/layouts/beamer.layout:1436
+#: lib/layouts/beamer.layout:1481 lib/layouts/beamer.layout:1483
 msgid "Invisible"
 msgstr "Unsichtbar"
 
-#: lib/layouts/beamer.layout:1451 lib/layouts/beamer.layout:1453
+#: lib/layouts/beamer.layout:1499 lib/layouts/beamer.layout:1501
 msgid "Alternative"
 msgstr "Alternativ"
 
-#: lib/layouts/beamer.layout:1467
+#: lib/layouts/beamer.layout:1515
 msgid "Default Text"
 msgstr "Standardtext"
 
-#: lib/layouts/beamer.layout:1468
+#: lib/layouts/beamer.layout:1516
 msgid "Enter the default text here"
 msgstr "Geben Sie hier den Standardtext ein"
 
-#: lib/layouts/beamer.layout:1473
+#: lib/layouts/beamer.layout:1521
 msgid "Beamer Note"
 msgstr "Beamer-Notiz"
 
-#: lib/layouts/beamer.layout:1490
+#: lib/layouts/beamer.layout:1538
 msgid "Note Options"
 msgstr "Notiz-Optionen"
 
-#: lib/layouts/beamer.layout:1491
+#: lib/layouts/beamer.layout:1539
 msgid "Specifiy note options (see beamer manual)"
 msgstr "Geben Sie hier Notiz-Optionen ein (siehe Beamer-Anleitung)"
 
-#: lib/layouts/beamer.layout:1495
+#: lib/layouts/beamer.layout:1543
 msgid "ArticleMode"
-msgstr "Aufsatzmodus"
+msgstr "Artikelmodus"
 
-#: lib/layouts/beamer.layout:1501
+#: lib/layouts/beamer.layout:1549
 msgid "Article"
 msgstr "Aufsatz"
 
-#: lib/layouts/beamer.layout:1505
+#: lib/layouts/beamer.layout:1553
 msgid "PresentationMode"
 msgstr "Präsentationsmodus"
 
-#: lib/layouts/beamer.layout:1511
+#: lib/layouts/beamer.layout:1559
 msgid "Presentation"
 msgstr "Präsentation"
 
@@ -11077,11 +11100,11 @@ msgstr "Eintrag:"
 
 #: lib/layouts/moderncv.layout:272
 msgid "ItemWithComment"
-msgstr "Element:Kommentar"
+msgstr "Eintrag mit Kommentar"
 
 #: lib/layouts/moderncv.layout:275
 msgid "Item with comment:"
-msgstr "Kommentar-Element:"
+msgstr "Kommentar-Eintrag:"
 
 #: lib/layouts/moderncv.layout:285 lib/layouts/moderncv.layout:286
 msgid "Text"
@@ -20627,12 +20650,12 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1768 src/insets/InsetCommandParams.cpp:381
+#: src/BufferParams.cpp:1780 src/insets/InsetCommandParams.cpp:381
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
 
-#: src/BufferParams.cpp:1769
+#: src/BufferParams.cpp:1781
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -20643,7 +20666,7 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2015
+#: src/BufferParams.cpp:2027
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -20658,11 +20681,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2021
+#: src/BufferParams.cpp:2033
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2028
+#: src/BufferParams.cpp:2040
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -20677,15 +20700,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2034 src/BufferView.cpp:1300 src/BufferView.cpp:1329
+#: src/BufferParams.cpp:2046 src/BufferView.cpp:1300 src/BufferView.cpp:1329
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2081
+#: src/BufferParams.cpp:2093
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2082 src/TextClass.cpp:1470
+#: src/BufferParams.cpp:2094 src/TextClass.cpp:1470
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -21439,10 +21462,6 @@ msgstr "Übernehmen"
 #: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:110
 msgid "Medium"
 msgstr "Mittel"
-
-#: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
-msgid "Bold"
-msgstr "Fett"
 
 #: src/Font.cpp:67 src/frontends/qt4/GuiCharacter.cpp:43
 msgid "Upright"
@@ -22709,15 +22728,15 @@ msgstr ", Zeichen: 0x"
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
-#: src/Text2.cpp:406
+#: src/Text2.cpp:404
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
-#: src/Text2.cpp:446
+#: src/Text2.cpp:444
 msgid "Nothing to index!"
 msgstr "Nichts zu indizieren!"
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:446
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
