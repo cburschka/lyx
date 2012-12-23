@@ -3626,6 +3626,15 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_COPY_AS, "inset-copy-as", ReadOnly | NoUpdate | AtPoint, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_ENVIRONMENT_SPLIT
+ * \li Action: Splits the current environment with a Separator.
+ * \li Syntax: environment-split
+ * \li Origin: spitz, 23 Dec 2012
+ * \endvar
+ */
+		{ LFUN_ENVIRONMENT_SPLIT, "environment-split", Noop, Layout },
+
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};

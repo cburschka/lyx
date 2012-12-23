@@ -452,6 +452,7 @@ enum FuncCode
 	// 350
 	LFUN_BRANCH_MASTER_ACTIVATE,    // spitz 20120930
 	LFUN_BRANCH_MASTER_DEACTIVATE,  // spitz 20120930
+	LFUN_ENVIRONMENT_SPLIT,         // spitz 20121223
 	LFUN_LASTACTION                 // end of the table
 };
 

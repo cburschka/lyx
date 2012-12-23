@@ -1388,6 +1388,28 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_ENVIRONMENT_SPLIT: {
+		Paragraph const & para = cur.paragraph();
+		docstring const layout = para.layout().name();
+		if (cur.pos() > 0) {
+			FuncRequest cmd(LFUN_PARAGRAPH_BREAK);
+			lyx::dispatch(cmd);
+		}
+		bool const morecont = cur.lastpos() > cur.pos();
+		FuncRequest cmd2(LFUN_LAYOUT, "Separator");
+		lyx::dispatch(cmd2);
+		FuncRequest cmd3(LFUN_PARAGRAPH_BREAK, "inverse");
+		lyx::dispatch(cmd3);
+		if (morecont) {
+			FuncRequest cmd4(LFUN_DOWN);
+			lyx::dispatch(cmd4);
+		}
+		FuncRequest cmd5(LFUN_LAYOUT, layout);
+		lyx::dispatch(cmd5);
+
+		break;
+	}
+
 	case LFUN_CLIPBOARD_PASTE:
 		cap::replaceSelection(cur);
 		pasteClipboardText(cur, bv->buffer().errorList("Paste"),
@@ -2863,7 +2885,17 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LAYOUT:
 		enable = !cur.inset().forcePlainLayout();
 		break;
-		
+	
+	case LFUN_ENVIRONMENT_SPLIT: {
+		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
+		    || !cur.paragraph().layout().isEnvironment()) {
+			enable = false;
+			break;
+		}
+		enable = true;
+		break;
+	}
+
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_PARAGRAPH_PARAMS:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
