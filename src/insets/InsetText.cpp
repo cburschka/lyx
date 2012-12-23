@@ -618,7 +618,7 @@ void InsetText::getOptArg(otexstream & os,
 		&paragraphs()[0].getFirstFontSettings(buffer().masterBuffer()->params());
 	if (isPassThru())
 		runparams.pass_thru = true;
-	latexArgInsets(paragraphs()[0], os, runparams, getLayout().latexargs());
+	latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().latexargs());
 }
 
 

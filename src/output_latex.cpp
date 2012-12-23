@@ -163,9 +163,9 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	if (style.isEnvironment()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
 		if (!style.latexargs().empty()) {
-		    OutputParams rp = runparams;
-		    rp.local_font = &pit->getFirstFontSettings(bparams);
-		    latexArgInsets(*pit, os, rp, style.latexargs());
+			OutputParams rp = runparams;
+			rp.local_font = &pit->getFirstFontSettings(bparams);
+			latexArgInsets(paragraphs, pit, os, rp, style.latexargs());
 		}
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << '{'
@@ -312,40 +312,10 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << par_begin << " done.");
 }
 
-} // namespace anon
 
-
-void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, bool item)
+void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs,
+		  map<int, lyx::InsetArgument const *> ilist, vector<string> required, bool item)
 {
-	map<int, InsetArgument const *> ilist;
-	vector<string> required;
-
-	InsetList::const_iterator it = par.insetList().begin();
-	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end; ++it) {
-		if (it->inset->lyxCode() == ARG_CODE) {
-			InsetArgument const * ins =
-				static_cast<InsetArgument const *>(it->inset);
-			if (ins->name().empty())
-				LYXERR0("Error: Unnamed argument inset!");
-			else {
-				string const name = item ? split(ins->name(), ':') : ins->name();
-				unsigned int const nr = convert<unsigned int>(name);
-				ilist[nr] = ins;
-				Layout::LaTeXArgMap::const_iterator const lit =
-						latexargs.find(ins->name());
-				if (lit != latexargs.end()) {
-					Layout::latexarg const & arg = (*lit).second;
-					if (!arg.requires.empty()) {
-						vector<string> req = getVectorFromString(arg.requires);
-						required.insert(required.end(), req.begin(), req.end());
-					}
-				}
-			}
-		}
-	}
-
 	unsigned int const argnr = latexargs.size();
 	if (argnr == 0)
 		return;
@@ -409,6 +379,100 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			}
 		}
 	}
+}
+
+
+} // namespace anon
+
+
+void latexArgInsets(Paragraph const & par, otexstream & os,
+	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, bool item)
+{
+	map<int, InsetArgument const *> ilist;
+	vector<string> required;
+
+	InsetList::const_iterator it = par.insetList().begin();
+	InsetList::const_iterator end = par.insetList().end();
+	for (; it != end; ++it) {
+		if (it->inset->lyxCode() == ARG_CODE) {
+			InsetArgument const * ins =
+				static_cast<InsetArgument const *>(it->inset);
+			if (ins->name().empty())
+				LYXERR0("Error: Unnamed argument inset!");
+			else {
+				string const name = item ? split(ins->name(), ':') : ins->name();
+				unsigned int const nr = convert<unsigned int>(name);
+				ilist[nr] = ins;
+				Layout::LaTeXArgMap::const_iterator const lit =
+						latexargs.find(ins->name());
+				if (lit != latexargs.end()) {
+					Layout::latexarg const & arg = (*lit).second;
+					if (!arg.requires.empty()) {
+						vector<string> req = getVectorFromString(arg.requires);
+						required.insert(required.end(), req.begin(), req.end());
+					}
+				}
+			}
+		}
+	}
+	getArgInsets(os, runparams, latexargs, ilist, required, item);
+}
+
+
+void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pit,
+	otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs)
+{
+	map<int, InsetArgument const *> ilist;
+	vector<string> required;
+
+	depth_type const current_depth = pit->params().depth();
+	Layout const current_layout = pit->layout();
+
+	// get the first paragraph in sequence with this layout and depth
+	pit_type offset = 0;
+	while (true) {
+		if (boost::prior(pit, offset) == pars.begin())
+			break;
+		ParagraphList::const_iterator priorpit = boost::prior(pit, offset + 1);
+		if (priorpit->layout() == current_layout
+		    && priorpit->params().depth() == current_depth)
+			++offset;
+		else
+			break;
+	}
+
+	ParagraphList::const_iterator spit = boost::prior(pit, offset);
+
+	for (; spit != pars.end(); ++spit) {
+		if (spit->layout() != current_layout)
+			break;
+		InsetList::const_iterator it = spit->insetList().begin();
+		InsetList::const_iterator end = spit->insetList().end();
+		for (; it != end; ++it) {
+			if (it->inset->lyxCode() == ARG_CODE) {
+				InsetArgument const * ins =
+					static_cast<InsetArgument const *>(it->inset);
+				if (ins->name().empty())
+					LYXERR0("Error: Unnamed argument inset!");
+				else {
+					string const name = ins->name();
+					unsigned int const nr = convert<unsigned int>(name);
+					if (ilist.find(nr) == ilist.end())
+						ilist[nr] = ins;
+					Layout::LaTeXArgMap::const_iterator const lit =
+							latexargs.find(ins->name());
+					if (lit != latexargs.end()) {
+						Layout::latexarg const & arg = (*lit).second;
+						if (!arg.requires.empty()) {
+							vector<string> req = getVectorFromString(arg.requires);
+							required.insert(required.end(), req.begin(), req.end());
+						}
+					}
+				}
+			}
+		}
+	}
+	getArgInsets(os, runparams, latexargs, ilist, required, false);
 }
 
 namespace {

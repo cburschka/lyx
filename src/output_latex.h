@@ -32,14 +32,16 @@ class OutputParams;
 class TexRow;
 class Text;
 
-/// Export up to \p reqargs required arguments and
-/// \p optargs optional ones. If not enough required
-/// ones are given, we'll output: {}. The optional ones
-/// must all come first.
+/** Export optional and required arguments of the paragraph \p par.
+    Non-existing required arguments are output empty: {}.
+ */
 void latexArgInsets(Paragraph const & par,
 		otexstream & os, OutputParams const & runparams,
 		Layout::LaTeXArgMap const & latexargs, bool item = false);
-
+/// Same for multi-par sequences (e.g. merged environments or InsetLayouts)
+void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pit,
+		otexstream & os, OutputParams const & runparams,
+		Layout::LaTeXArgMap const & latexargs);
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is
     supposed to go to a file.
