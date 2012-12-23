@@ -327,7 +327,7 @@ LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 {}
 
 
-LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
+LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 {
 	string const local_lp = bufferParams().lang_package;
 
@@ -347,9 +347,6 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
 	 * If babel is selected (either directly or via the "auto"
 	 * mechanism), we really do only require it if we have
 	 * a language that needs it.
-	 * English alone normally does not require babel (since it is
-	 * the default language of LaTeX). However, in some cases we
-	 * need to surpass this exception (see Font::validate).
 	 */
 	bool const polyglossia_required =
 		isRequired("polyglossia")
@@ -357,8 +354,7 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage(bool englishbabel) const
 		&& !isProvided("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
 	bool const babel_required = 
-		((englishbabel || bufferParams().language->lang() != "english")
-		 && !bufferParams().language->babel().empty())
+		!bufferParams().language->babel().empty()
 		|| !this->getBabelLanguages().empty();
 
 	if (local_lp == "auto") {
