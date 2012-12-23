@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-11-03 18:39-0400\n"
-"PO-Revision-Date: 2012-10-11 11:21+0200\n"
+"POT-Creation-Date: 2012-12-13 09:07+0100\n"
+"PO-Revision-Date: 2012-12-01 12:12+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -292,7 +292,7 @@ msgstr "Z&mazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
-msgstr "Vybrať aby rámok mohol prejsť aj na druhú stránku"
+msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:31
 msgid "Allow &page breaks"
@@ -361,7 +361,7 @@ msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú li
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
 msgid "&Box:"
-msgstr "&Rámok:"
+msgstr "&Rámik:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:154
 msgid "Co&ntent:"
@@ -382,7 +382,7 @@ msgstr "&Výška:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:213
 msgid "Inner Bo&x:"
-msgstr "V&nútorný rámok:"
+msgstr "V&nútorný rámik:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:229
 msgid "&Decoration:"
@@ -404,7 +404,7 @@ msgstr "Hodnota Šírky"
 
 #: src/frontends/qt4/ui/BoxUi.ui:269
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Vnútorný rámok -- potrebný pre pevnú šírku a lom riadkov"
+msgstr "Vnútorný rámik -- potrebný pre pevnú šírku a lom riadkov"
 
 #: src/frontends/qt4/ui/BoxUi.ui:273 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -766,7 +766,7 @@ msgstr "Vš&etko prepnúť"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
-msgstr "Použiť každú zmenu automaticky"
+msgstr "Používať každú zmenu automaticky"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "Apply changes &immediately"
@@ -1071,7 +1071,7 @@ msgstr "Obnovte štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "Použiť štandardné nastavenie triedy"
+msgstr "Použiť triedny štandard"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
@@ -1111,7 +1111,7 @@ msgstr "&Chyby:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:53
 msgid "Description:"
-msgstr "Popis:"
+msgstr "Opis:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
@@ -1160,7 +1160,7 @@ msgstr "LaTe&X- a LyX- voľby"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:144
 msgid "LaTeX Options"
-msgstr "LaTeX Voľby"
+msgstr "Voľby LaTeX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:162
 msgid "O&ption:"
@@ -1278,7 +1278,7 @@ msgstr "Vpravo &hore:"
 #: src/frontends/qt4/ui/ExternalUi.ui:514
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
-msgstr "Získať ohraničujúci rámok z (EPS) súboru"
+msgstr "Získať ohraničujúci rámik z (EPS) súboru"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:517
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
@@ -1439,7 +1439,7 @@ msgstr "Použiť štan&dardné umiestňovanie"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:43
 msgid "Advanced Placement Options"
-msgstr "Rozšírené voľby umiestňovania"
+msgstr "Voľby Rozšírené Umiestňovanie"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:55
 msgid "&Top of page"
@@ -1447,7 +1447,7 @@ msgstr "&Vrch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
-msgstr "&Ignoruj pravidla LaTeX-u"
+msgstr "&Ignoruj pravidlá LaTeX-u"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
@@ -1471,7 +1471,7 @@ msgstr "&Preklenúť stĺpce"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
-msgstr "&Otočiť tabuľku bokom"
+msgstr "&Otočiť bokom"
 
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
@@ -1529,7 +1529,7 @@ msgstr "&Bezserifové:"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Vyberte bezserifovú rodinu písma (Sans Serif)"
+msgstr "Vyberte bezserifové písmo (Sans Serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:130
 msgid "S&cale (%):"
@@ -1547,7 +1547,7 @@ msgstr "S&trojopisné:"
 
 #: src/frontends/qt4/ui/FontUi.ui:163
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Vyberte strojopisnú rodinu písma"
+msgstr "Vyberte strojopisné písmo"
 
 #: src/frontends/qt4/ui/FontUi.ui:170
 msgid "Sc&ale (%):"
@@ -1766,7 +1766,7 @@ msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Vlastná hodnota. Potrebuje typ rozstupu  &quot;Vlastný&quot;."
+msgstr "Vlastná hodnota. Potrebuje typ rozstupu &quot;Vlastný&quot;."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -1824,7 +1824,7 @@ msgstr "Odkaz na e-mailovú adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90
 msgid "&Email"
-msgstr "&Email"
+msgstr "&E-mail"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:97
 msgid "Link to a file"
@@ -1945,7 +1945,7 @@ msgstr "Použiť &viac registrov"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&Nový:"
+msgstr "&Nový register:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -2029,7 +2029,7 @@ msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "&Lokálne schéma..."
+msgstr "&Lokálna schéma..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
@@ -2529,12 +2529,12 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"Balíky pre AMS a Latex sú použité len v prípade, že vo formulách sú vložené "
-"aj symboly z mat. lišty nástrojov AMS"
+"Balík amssymb bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z mat. lišty nástrojov AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:22
 msgid "&Use AMS math package automatically"
-msgstr "&Automaticky používať balík AMS math"
+msgstr "&Automaticky používať balík amsmath"
 
 #: src/frontends/qt4/ui/MathsUi.ui:32
 msgid "The AMS LaTeX packages are always used"
@@ -2542,7 +2542,7 @@ msgstr "AMS a LeTeX-ové balíky každopádne použiť"
 
 #: src/frontends/qt4/ui/MathsUi.ui:35
 msgid "Use AMS &math package"
-msgstr "Použiť balík AMS &matematiky"
+msgstr "Použiť balík ams&math"
 
 #: src/frontends/qt4/ui/MathsUi.ui:42
 msgid ""
@@ -2554,7 +2554,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
 msgid "Use esint package &automatically"
-msgstr "Automaticky použiť balík &esint"
+msgstr "Automaticky používať balík &esint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
 msgid "The LaTeX package esint is always used"
@@ -2594,7 +2594,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:88
 msgid "Use mhchem &package automatically"
-msgstr "Automaticky použiť balík mhchem"
+msgstr "Automaticky používať balík mhchem"
 
 #: src/frontends/qt4/ui/MathsUi.ui:98
 msgid "The LaTeX package mhchem is always used"
@@ -2632,7 +2632,7 @@ msgstr "&Triediť ako:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:38
 msgid "&Description:"
-msgstr "&Popis:"
+msgstr "O&pis:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:48
 msgid "&Symbol:"
@@ -2648,7 +2648,7 @@ msgstr "Len LyX- interné"
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX &Note"
-msgstr "LyX - &Poznámka"
+msgstr "LyX - zá&pis"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
@@ -2706,7 +2706,7 @@ msgstr "Vlastné makro do preambuly LaTeXu"
 
 #: src/frontends/qt4/ui/OutputUi.ui:112
 msgid "XHTML Output Options"
-msgstr "Východzie Voľby pre XHTML"
+msgstr "Voľby Východzie XHTML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
 msgid "Whether to comply strictly with XHTML 1.1."
@@ -3233,7 +3233,7 @@ msgstr "&Zoskupiť prostredia odstavcov podľa kategórií"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:99
 msgid "Edit Math Macros inline with a box around"
-msgstr "Zobraz rámok pri editácii matematických makrov v riadku"
+msgstr "Zobraz rámik pri editácii matematických makrov v riadku"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:104
 msgid "Edit Math Macros inline with the name in the status bar"
@@ -3306,15 +3306,15 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
-msgstr "In&terné Meno:"
+msgstr "Skratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtension:"
-msgstr "Prípona:"
+msgstr "Prípon&y:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "Shortc&ut:"
-msgstr "Klávesná &skratka:"
+msgstr "&Skratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "&Viewer:"
@@ -3591,7 +3591,7 @@ msgstr "Nepovinný indikátor veľkosti (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:162
 msgid "BibTeX command and options"
-msgstr "Príkaz a voľby pre BibTeX "
+msgstr "Príkaz a voľby pre BibTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:182
 #: src/frontends/qt4/ui/PrefLatexUi.ui:257
@@ -3789,7 +3789,7 @@ msgstr "Knižnice pre &hunspell:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
 msgid "Printer Command Options"
-msgstr "Voľby príkazu pre tlačiareň"
+msgstr "Voľby Príkaz Pre Tlačiareň"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "Extension to be used when printing to file."
@@ -4034,7 +4034,7 @@ msgstr "Kontroluj pravopis &nepretržite"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr "Kontrola pravopisu ignoruje tu vložené znaky. "
+msgstr "Kontrola pravopisu ignoruje tu vložené znaky."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "&Escape characters:"
@@ -4117,7 +4117,7 @@ msgstr "Zá&lohovať dokumenty, každých"
 
 #: src/frontends/qt4/ui/PrefUi.ui:198
 msgid "minutes"
-msgstr "min."
+msgstr "minút"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid "&Save documents compressed by default"
@@ -4190,7 +4190,7 @@ msgstr "Číslo prvej strany na tlačenie"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&Do:"
+msgstr "&Do strany:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -4619,7 +4619,7 @@ msgstr "Zlúčiť bunky rozličných stĺpcov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:231
 msgid "&Multicolumn"
-msgstr "Viac&stĺpcové"
+msgstr "Viac-&stĺpcové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:241
 msgid "Row setting"
@@ -5037,11 +5037,11 @@ msgstr "Zväčšiť hĺbku zanorenia označeného člena"
 
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
-msgstr "Presuň označenú položku nadol"
+msgstr "Presuň označený prvok nadol"
 
 #: src/frontends/qt4/ui/TocUi.ui:179
 msgid "Move selected item up by one"
-msgstr "Presuň označenú položku nahor"
+msgstr "Presuň označený prvok nahor"
 
 #: src/frontends/qt4/ui/TocUi.ui:225
 msgid "Sort"
@@ -6021,7 +6021,7 @@ msgstr "Položky"
 #: lib/layouts/powerdot.layout:261 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:34
 msgid "Enumerate"
-msgstr "Výpočet"
+msgstr "Číslovanie"
 
 #: lib/layouts/aa.layout:60 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:89 lib/layouts/beamer.layout:86
@@ -6032,7 +6032,7 @@ msgstr "Výpočet"
 #: lib/layouts/stdlists.inc:57 lib/layouts/svcommon.inc:588
 #: lib/ui/stdtoolbars.inc:116
 msgid "Description"
-msgstr "Popis"
+msgstr "Opis"
 
 #: lib/layouts/aa.layout:63 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:92 lib/layouts/beamer.layout:49
@@ -6077,7 +6077,7 @@ msgstr "odtlačok"
 
 #: lib/layouts/aa.layout:82 lib/layouts/aa.layout:182
 msgid "Mail"
-msgstr "Mail"
+msgstr "Pošta"
 
 #: lib/layouts/aa.layout:85 lib/layouts/aa.layout:287
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
@@ -6113,11 +6113,11 @@ msgstr "Poďakovania."
 
 #: lib/layouts/aa.layout:299
 msgid "institutemark"
-msgstr "inštitútnaznačka"
+msgstr "znak inštitútu"
 
 #: lib/layouts/aa.layout:303
 msgid "institute mark"
-msgstr "inštitútna značka"
+msgstr "znak inštitútu"
 
 #: lib/layouts/aa.layout:367
 msgid "Key words."
@@ -6135,20 +6135,20 @@ msgstr "E-mail"
 
 #: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
-#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/achemso.layout:90 lib/layouts/ectaart.layout:69
 #: lib/layouts/elsarticle.layout:213 lib/layouts/iopart.layout:160
-#: lib/layouts/jasatex.layout:131 lib/layouts/latex8.layout:64
+#: lib/layouts/jasatex.layout:133 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/aapaper.inc:46
-#: lib/layouts/amsdefs.inc:145 lib/layouts/db_stdcharstyles.inc:71
-#: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
-#: lib/layouts/svcommon.inc:670
+#: lib/layouts/llncs.layout:234 lib/layouts/moderncv.layout:124
+#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
+#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
+#: lib/layouts/svcommon.inc:665 lib/layouts/svcommon.inc:670
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:298
 msgid "email"
-msgstr "email"
+msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:46
@@ -6330,10 +6330,35 @@ msgstr "Prídavné Príslušenstvo"
 msgid "Fax"
 msgstr "Fax"
 
+#: lib/layouts/lettre.layout:355
+msgid "Fax:"
+msgstr "Fax:"
+
 #: lib/layouts/achemso.layout:115 lib/layouts/dinbrief.layout:295
 #: lib/layouts/g-brief.layout:117
 msgid "Phone"
 msgstr "Telefón"
+
+#: lib/layouts/g-brief.layout:120
+msgid "Phone:"
+msgstr "Telefón:"
+
+#: lib/layouts/achemso.layout:136
+msgid "Abbreviations"
+msgstr "Skratky"
+
+#: lib/layouts/achemso.layout:142
+msgid "Abbreviations:"
+msgstr "Skratky:"
+
+#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
+#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
+#: lib/layouts/jasatex.layout:199 lib/layouts/kluwer.layout:289
+#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
+#: lib/layouts/agu_stdtitle.inc:123
+msgid "Keywords:"
+msgstr "Heslá:"
 
 #: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
 msgid "Scheme"
@@ -6358,6 +6383,22 @@ msgstr "Grafika"
 #: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
 msgstr "Zoznam grafík"
+
+#: lib/layouts/achemso.layout:240
+msgid "SupplementalInfo"
+msgstr "SupplementalInfo"
+
+#: lib/layouts/achemso.layout:243
+msgid "Supporting Information Available"
+msgstr "Podporná informácia Dostupná"
+
+#: lib/layouts/achemso.layout:246
+msgid "TOC entry"
+msgstr "Záznam v obsahu"
+
+#: lib/layouts/achemso.layout:250
+msgid "Graphical TOC Entry"
+msgstr "Grafický záznam v obsahu"
 
 #: lib/layouts/achemso.layout:215
 msgid "Bibnote"
@@ -6389,7 +6430,7 @@ msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "CR category"
-msgstr "CR category"
+msgstr "CR kategórie"
 
 #: lib/layouts/acmsiggraph.layout:138
 msgid "CR categories"
@@ -6649,7 +6690,7 @@ msgstr "BeginPlainFrame"
 
 #: lib/layouts/beamer.layout:331
 msgid "Frame (no head/foot/sidebars)"
-msgstr "Rám (no head/foot/sidebars)"
+msgstr "Rám (žiadna hlavička/päta/bok)"
 
 #: lib/layouts/beamer.layout:352
 msgid "AgainFrame"
@@ -6657,7 +6698,7 @@ msgstr "AgainFrame"
 
 #: lib/layouts/beamer.layout:369
 msgid "Again frame with label"
-msgstr "Rám ešte raz s návestím"
+msgstr "Opakovať rámik s návestím"
 
 #: lib/layouts/beamer.layout:391
 msgid "EndFrame"
@@ -6725,7 +6766,7 @@ msgstr "OverlayArea"
 
 #: lib/layouts/beamer.layout:624
 msgid "Overlayarea"
-msgstr "Overlayarea"
+msgstr "Plochaprekrytia"
 
 #: lib/layouts/beamer.layout:639
 msgid "Uncover"
@@ -6745,7 +6786,7 @@ msgstr "Len na fóliách"
 
 #: lib/layouts/beamer.layout:692
 msgid "Block"
-msgstr "Do bloku"
+msgstr "Block"
 
 #: lib/layouts/beamer.layout:693 lib/layouts/beamer.layout:719
 #: lib/layouts/beamer.layout:749
@@ -6784,7 +6825,7 @@ msgstr "Titul (prostý rám)"
 
 #: lib/layouts/beamer.layout:880
 msgid "InstituteMark"
-msgstr "InštitútnaZnačka"
+msgstr "InstituteMark"
 
 #: lib/layouts/beamer.layout:884
 msgid "Institute mark"
@@ -7124,28 +7165,28 @@ msgstr "Adresa:"
 #: lib/layouts/heb-letter.layout:10 lib/layouts/lettre.layout:33
 #: lib/layouts/lettre.layout:137 lib/layouts/stdletter.inc:24
 msgid "My Address"
-msgstr "Moja Adresa"
+msgstr "Adresa odosialteľa"
 
 #: lib/layouts/dinbrief.layout:63 lib/layouts/scrlttr2.layout:179
 msgid "Sender Address:"
-msgstr "Adresa Odosielateľa:"
+msgstr "Adresa odosielateľa:"
 
 #: lib/layouts/dinbrief.layout:71
 msgid "Return address"
-msgstr "Návratová adresa"
+msgstr "Návratná adresa"
 
 #: lib/layouts/dinbrief.layout:73 lib/layouts/scrlettr.layout:170
 #: lib/layouts/scrlttr2.layout:251
 msgid "Backaddress:"
-msgstr "Návratová Adresa:"
+msgstr "Návratná adresa:"
 
 #: lib/layouts/dinbrief.layout:81
 msgid "Postal comment"
-msgstr "Poštový záznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/dinbrief.layout:83
 msgid "Postal Remark:"
-msgstr "Poštový Záznam:"
+msgstr "Doručovací údaj:"
 
 #: lib/layouts/dinbrief.layout:88
 msgid "Handling"
@@ -7159,23 +7200,23 @@ msgstr "Zaobchádzanie:"
 #: lib/layouts/g-brief2.layout:757 lib/layouts/lettre.layout:59
 #: lib/layouts/lettre.layout:450
 msgid "YourRef"
-msgstr "Vaša značka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/dinbrief.layout:96 lib/layouts/scrlettr.layout:206
 #: lib/layouts/scrlttr2.layout:292
 msgid "Your ref.:"
-msgstr "Vaša značka:"
+msgstr "Vaše číslo:"
 
 #: lib/layouts/dinbrief.layout:100 lib/layouts/g-brief.layout:96
 #: lib/layouts/g-brief2.layout:736 lib/layouts/lettre.layout:61
 #: lib/layouts/lettre.layout:466
 msgid "MyRef"
-msgstr "Moja značka"
+msgstr "Moje číslo"
 
 #: lib/layouts/dinbrief.layout:102 lib/layouts/scrlettr.layout:227
 #: lib/layouts/scrlttr2.layout:316
 msgid "Our ref.:"
-msgstr "Naša značka:"
+msgstr "Naše číslo:"
 
 #: lib/layouts/dinbrief.layout:106
 msgid "Writer"
@@ -7202,11 +7243,11 @@ msgstr "Podpis:"
 
 #: lib/layouts/dinbrief.layout:119
 msgid "Bottomtext"
-msgstr "Spodný text"
+msgstr "Doplňujúce údaje"
 
 #: lib/layouts/dinbrief.layout:121
 msgid "Bottom text:"
-msgstr "Spodný text:"
+msgstr "Doplňujúce údaje:"
 
 #: lib/layouts/dinbrief.layout:129
 msgid "Area code"
@@ -7283,24 +7324,24 @@ msgstr "Záverečný pozdrav"
 #: lib/layouts/g-brief2.layout:876 lib/layouts/lettre.layout:559
 #: lib/layouts/scrlttr2.layout:118 lib/layouts/stdletter.inc:95
 msgid "Closing:"
-msgstr "Pozdrav:"
+msgstr "Záverečný pozdrav:"
 
 #: lib/layouts/dinbrief.layout:199 lib/layouts/lettre.layout:69
 #: lib/layouts/lettre.layout:605 lib/layouts/stdletter.inc:111
 msgid "encl"
-msgstr "prílohy"
+msgstr "Prílohy"
 
 #: lib/layouts/dinbrief.layout:201 lib/layouts/lettre.layout:610
 #: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:141
 #: lib/layouts/stdletter.inc:114
 msgid "encl:"
-msgstr "prílohy:"
+msgstr "Prílohy:"
 
 #: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief.layout:222
 #: lib/layouts/g-brief2.layout:932 lib/layouts/lettre.layout:71
 #: lib/layouts/lettre.layout:628 lib/layouts/stdletter.inc:99
 msgid "cc"
-msgstr "kópia"
+msgstr "Kópia"
 
 #: lib/layouts/dinbrief.layout:216 lib/layouts/g-brief.layout:227
 #: lib/layouts/g-brief2.layout:943 lib/layouts/lettre.layout:632
@@ -7320,24 +7361,24 @@ msgstr "Postskriptum:"
 
 #: lib/layouts/dinbrief.layout:235 lib/layouts/scrlttr2.layout:175
 msgid "SenderAddress"
-msgstr "AdresaOdosielateľa"
+msgstr "Adresa odosielateľa"
 
 #: lib/layouts/dinbrief.layout:240 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:247
 msgid "Backaddress"
-msgstr "Návratová-Adresa"
+msgstr "Návratná-Adresa"
 
 #: lib/layouts/dinbrief.layout:245
 msgid "RetourAdresse"
-msgstr "Návratová-Adresa"
+msgstr "Návratná-Adresa"
 
 #: lib/layouts/dinbrief.layout:255
 msgid "Adresse"
-msgstr "Adresa"
+msgstr "Adresa prijímateľa"
 
 #: lib/layouts/dinbrief.layout:260
 msgid "Postvermerk"
-msgstr "Poštový záznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/dinbrief.layout:265
 msgid "Zusatz"
@@ -7345,20 +7386,20 @@ msgstr "Prídavok"
 
 #: lib/layouts/dinbrief.layout:270
 msgid "IhrZeichen"
-msgstr "VašaZnačka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/dinbrief.layout:275 lib/layouts/g-brief.layout:110
 #: lib/layouts/g-brief2.layout:779
 msgid "YourMail"
-msgstr "VášMejl"
+msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:280
 msgid "IhrSchreiben"
-msgstr "Váš List"
+msgstr "Váš list"
 
 #: lib/layouts/dinbrief.layout:285
 msgid "MeinZeichen"
-msgstr "MojaZnačka"
+msgstr "Moje číslo"
 
 #: lib/layouts/dinbrief.layout:290
 msgid "Unterschrift"
@@ -7393,7 +7434,7 @@ msgstr "Dátum"
 #: lib/layouts/dinbrief.layout:330 lib/layouts/g-brief.layout:196
 #: lib/layouts/g-brief2.layout:820
 msgid "Reference"
-msgstr "Referencia"
+msgstr "Predmet"
 
 #: lib/layouts/dinbrief.layout:335
 msgid "Betreff"
@@ -7405,13 +7446,14 @@ msgstr "Oslovenie"
 
 #: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
 #: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
-#: lib/layouts/scrlettr.layout:40
+#: lib/layouts/moderncv.layout:300 lib/layouts/moderncv.layout:307
+#: lib/layouts/moderncv.layout:355 lib/layouts/scrlettr.layout:40
 msgid "Letter"
-msgstr "TextListu"
+msgstr "Text listu"
 
 #: lib/layouts/dinbrief.layout:350
 msgid "Brieftext"
-msgstr "TextListu"
+msgstr "Text listu"
 
 #: lib/layouts/dinbrief.layout:355
 msgid "Gruss"
@@ -7424,7 +7466,7 @@ msgstr "ps"
 #: lib/layouts/dinbrief.layout:364 lib/layouts/g-brief.layout:214
 #: lib/layouts/g-brief2.layout:911
 msgid "Encl."
-msgstr "Prílohy"
+msgstr "Príloha"
 
 #: lib/layouts/dinbrief.layout:369
 msgid "Anlagen"
@@ -7437,7 +7479,7 @@ msgstr "Kópia"
 
 #: lib/layouts/dinbrief.layout:379
 msgid "Verteiler"
-msgstr "Na vedomie"
+msgstr "Kópia"
 
 #: lib/layouts/ectaart.layout:21
 msgid "RunTitle"
@@ -7480,15 +7522,6 @@ msgstr "Blok Autorov:"
 #: lib/layouts/agu_stdtitle.inc:403 lib/layouts/agu_stdtitle.inc:405
 msgid "Keyword"
 msgstr "Heslo"
-
-#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
-#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
-#: lib/layouts/jasatex.layout:199 lib/layouts/kluwer.layout:289
-#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "Heslá:"
 
 #: lib/layouts/ectaart.layout:126
 msgid "Thanks Text"
@@ -7624,12 +7657,12 @@ msgstr "Adresa Autora"
 
 #: lib/layouts/elsart.layout:147 lib/layouts/revtex4.layout:194
 msgid "Author Email"
-msgstr "Email Autora"
+msgstr "E-mail Autora"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/lettre.layout:404
-#: lib/layouts/llncs.layout:238
+#: lib/layouts/llncs.layout:238 lib/layouts/moderncv.layout:127
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-mail:"
 
 #: lib/layouts/elsart.layout:168 lib/layouts/revtex4.layout:210
 msgid "Author URL"
@@ -7991,7 +8024,7 @@ msgstr "Definícia*"
 
 #: lib/layouts/g-brief.layout:26 lib/layouts/g-brief2.layout:48
 msgid "Letter:"
-msgstr "List:"
+msgstr "Text listu:"
 
 #: lib/layouts/g-brief.layout:35 lib/layouts/g-brief2.layout:57
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:145
@@ -8037,29 +8070,25 @@ msgstr "Štát:"
 
 #: lib/layouts/g-brief.layout:89 lib/layouts/g-brief2.layout:674
 msgid "ReturnAddress"
-msgstr "Návratová adresa"
+msgstr "Návratná adresa"
 
 #: lib/layouts/g-brief.layout:92 lib/layouts/g-brief2.layout:685
 msgid "ReturnAddress:"
-msgstr "NávratováAdresa:"
+msgstr "Návratná adresa:"
 
 #: lib/layouts/g-brief.layout:99 lib/layouts/g-brief2.layout:747
 #: lib/layouts/lettre.layout:472
 msgid "MyRef:"
-msgstr "MojaZnačka:"
+msgstr "Moje číslo:"
 
 #: lib/layouts/g-brief.layout:106 lib/layouts/g-brief2.layout:768
 #: lib/layouts/lettre.layout:456
 msgid "YourRef:"
-msgstr "VašaZnačka:"
+msgstr "Vaše číslo:"
 
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
-msgstr "VášMejl:"
-
-#: lib/layouts/g-brief.layout:120
-msgid "Phone:"
-msgstr "Telefón:"
+msgstr "Váš list:"
 
 #: lib/layouts/g-brief.layout:124
 msgid "Telefax"
@@ -8079,11 +8108,11 @@ msgstr "Telex:"
 
 #: lib/layouts/g-brief.layout:138
 msgid "EMail"
-msgstr "EMail"
+msgstr "E-Mail"
 
 #: lib/layouts/g-brief.layout:141
 msgid "EMail:"
-msgstr "EMail:"
+msgstr "E-Mail:"
 
 #: lib/layouts/g-brief.layout:145
 msgid "HTTP"
@@ -8103,11 +8132,11 @@ msgstr "Banka:"
 
 #: lib/layouts/g-brief.layout:159
 msgid "BankCode"
-msgstr "KódBanky"
+msgstr "Kód banky"
 
 #: lib/layouts/g-brief.layout:162
 msgid "BankCode:"
-msgstr "KódBanky:"
+msgstr "Kód banky:"
 
 #: lib/layouts/g-brief.layout:166
 msgid "BankAccount"
@@ -8119,15 +8148,15 @@ msgstr "Bankový účet:"
 
 #: lib/layouts/g-brief.layout:173 lib/layouts/g-brief2.layout:695
 msgid "PostalComment"
-msgstr "PoštovýZáznam"
+msgstr "Doručovací údaj"
 
 #: lib/layouts/g-brief.layout:176 lib/layouts/g-brief2.layout:705
 msgid "PostalComment:"
-msgstr "PoštovýZáznam:"
+msgstr "Doručovací údaj:"
 
 #: lib/layouts/g-brief.layout:201 lib/layouts/g-brief2.layout:832
 msgid "Reference:"
-msgstr "Referencia:"
+msgstr "Predmet:"
 
 #: lib/layouts/g-brief.layout:218 lib/layouts/g-brief2.layout:922
 msgid "Encl.:"
@@ -8492,7 +8521,7 @@ msgstr "ItemList"
 
 #: lib/layouts/ijmpc.layout:279 lib/layouts/ijmpd.layout:282
 msgid "RomanList"
-msgstr "SerifováListina"
+msgstr "RomanList"
 
 #: lib/layouts/ijmpc.layout:316 lib/layouts/ijmpd.layout:341
 #: lib/layouts/theorems-ams-bytype.inc:68 lib/layouts/theorems-ams.inc:42
@@ -8744,14 +8773,10 @@ msgstr "Tel:"
 msgid "NoTel"
 msgstr "Bez Telefónu"
 
-#: lib/layouts/lettre.layout:355
-msgid "Fax:"
-msgstr "Fax:"
-
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
 msgid "Closings"
-msgstr "Záverečný pozdrav"
+msgstr "Záver"
 
 #: lib/layouts/lettre.layout:525
 msgid "EndOfMessage."
@@ -8882,6 +8907,62 @@ msgstr "TitulBásne*"
 msgid "Legend"
 msgstr "Legenda"
 
+#: lib/layouts/moderncv.layout:34
+msgid "CVStyle"
+msgstr "CVStyle"
+
+#: lib/layouts/moderncv.layout:43
+msgid "CV style:"
+msgstr "CV štýl:"
+
+#: lib/layouts/moderncv.layout:50
+msgid "CVColor"
+msgstr "CVColor"
+
+#: lib/layouts/moderncv.layout:53
+msgid "CV color scheme:"
+msgstr "CV farebné schéma:"
+
+#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
+msgid "FirstName"
+msgstr "KrstnéMeno"
+
+#: lib/layouts/moderncv.layout:69
+msgid "FamilyName"
+msgstr "FamilyName"
+
+#: lib/layouts/moderncv.layout:73
+msgid "Family Name:"
+msgstr "Priezvisko:"
+
+#: lib/layouts/moderncv.layout:106
+msgid "Mobile"
+msgstr "Mobile"
+
+#: lib/layouts/moderncv.layout:109
+msgid "Mobile:"
+msgstr "Mobil:"
+
+#: lib/layouts/moderncv.layout:133
+msgid "Homepage:"
+msgstr "Domáca stránka:"
+
+#: lib/layouts/moderncv.layout:136
+msgid "ExtraInfo"
+msgstr "ExtraInfo"
+
+#: lib/layouts/moderncv.layout:139
+msgid "Extra Info:"
+msgstr "Prídavná informácia:"
+
+#: lib/layouts/moderncv.layout:142
+msgid "Photo"
+msgstr "Photo"
+
+#: lib/layouts/moderncv.layout:145
+msgid "Photo:"
+msgstr "Fotografia:"
+
 #: lib/layouts/moderncv.layout:66
 msgid "Entry"
 msgstr "Záznam"
@@ -8898,6 +8979,14 @@ msgstr "ZáznamVListine"
 msgid "List Item:"
 msgstr "Záznam v listine:"
 
+#: lib/layouts/moderncv.layout:226
+msgid "ItemWithComment"
+msgstr "ItemWithComment"
+
+#: lib/layouts/moderncv.layout:230
+msgid "Item with comment:"
+msgstr "Prvok s komentárom:"
+
 #: lib/layouts/moderncv.layout:104
 msgid "DoubleItem"
 msgstr "Dvojitá položka"
@@ -8906,21 +8995,21 @@ msgstr "Dvojitá položka"
 msgid "Double Item:"
 msgstr "Dvojitá položka:"
 
+#: lib/layouts/moderncv.layout:248
+msgid "DoubleListItem"
+msgstr "DoubleListItem"
+
+#: lib/layouts/moderncv.layout:252
+msgid "Double List Item:"
+msgstr "Položka pre dvojitú listinu:"
+
 #: lib/layouts/moderncv.layout:110
 msgid "Space"
 msgstr "Medzera"
 
-#: lib/layouts/moderncv.layout:113
-msgid "Space:"
-msgstr "Medzera:"
-
 #: lib/layouts/moderncv.layout:122
 msgid "Computer"
 msgstr "Počítač"
-
-#: lib/layouts/moderncv.layout:125
-msgid "Computer:"
-msgstr "Počítač:"
 
 #: lib/layouts/moderncv.layout:128
 msgid "EmptySection"
@@ -8938,6 +9027,30 @@ msgstr "ZavriSekciu"
 msgid "Close Section"
 msgstr "Zavri Sekciu"
 
+#: lib/layouts/moderncv.layout:289
+msgid "MakeCVtitle"
+msgstr "MakeCVtitle"
+
+#: lib/layouts/moderncv.layout:292
+msgid "Make CV title"
+msgstr "Stvoriť CV titul"
+
+#: lib/layouts/moderncv.layout:296
+msgid "MakeLetterTitle"
+msgstr "MakeLetterTitle"
+
+#: lib/layouts/moderncv.layout:299
+msgid "Make letter title"
+msgstr "Stvoriť titul listu"
+
+#: lib/layouts/moderncv.layout:303
+msgid "MakeLetterClosing"
+msgstr "MakeLetterClosing"
+
+#: lib/layouts/moderncv.layout:306
+msgid "Close Letter"
+msgstr "Záver listu"
+
 #: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
 msgstr "--Oddeľovač--"
@@ -8945,6 +9058,18 @@ msgstr "--Oddeľovač--"
 #: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:83
 msgid "--- Separate Environment ---"
 msgstr "-- Oddeliť Prostredie --"
+
+#: lib/layouts/moderncv.layout:351
+msgid "Recipient"
+msgstr "Príjemca"
+
+#: lib/layouts/moderncv.layout:395
+msgid "Enclosing"
+msgstr "Enclosing"
+
+#: lib/layouts/moderncv.layout:402
+msgid "Enclosing:"
+msgstr "Záverečný pozdrav:"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -9047,7 +9172,7 @@ msgstr "PACS-číslo:"
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
 #: lib/layouts/enumitem.module:73
 msgid "Labeling"
-msgstr "Označovanie"
+msgstr "Etiketovanie"
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
@@ -9079,11 +9204,11 @@ msgstr "Titul:"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:288
 msgid "Yourref"
-msgstr "Vaša značka"
+msgstr "Vaše číslo"
 
 #: lib/layouts/scrlettr.layout:217 lib/layouts/scrlttr2.layout:304
 msgid "Yourmail"
-msgstr "Váš mejl"
+msgstr "Váš list"
 
 #: lib/layouts/scrlettr.layout:220 lib/layouts/scrlttr2.layout:308
 msgid "Your letter of:"
@@ -9091,7 +9216,7 @@ msgstr "Váš dopis od:"
 
 #: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:312
 msgid "Myref"
-msgstr "Moja značka"
+msgstr "Moje číslo"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:320
 msgid "Customer"
@@ -9119,19 +9244,19 @@ msgstr "Ďalšia Adresa:"
 
 #: lib/layouts/scrlttr2.layout:157
 msgid "Sender Name:"
-msgstr "Názov odosielateľa:"
+msgstr "Meno odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:187
 msgid "Sender Phone:"
-msgstr "Odosielateľ Telefón:"
+msgstr "Telefón odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:195
 msgid "Sender Fax:"
-msgstr "Odosielateľ Fax:"
+msgstr "Fax odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:203
 msgid "Sender E-Mail:"
-msgstr "Odosielateľ E-Mail:"
+msgstr "E-mail odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:211
 msgid "Sender URL:"
@@ -9491,7 +9616,7 @@ msgstr "OkrajnýObrázok"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr "email:"
+msgstr "E-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -9923,10 +10048,6 @@ msgstr "Revízia"
 #: lib/layouts/db_stdtitle.inc:78
 msgid "RevisionRemark"
 msgstr "RevíznaPripomienka"
-
-#: lib/layouts/db_stdtitle.inc:94
-msgid "FirstName"
-msgstr "Krstné_meno"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
 #: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
@@ -10428,11 +10549,11 @@ msgstr "Braille_zrkadlenie_vyp"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
-msgstr "BrailleRámok"
+msgstr "BrailleRámik"
 
 #: lib/layouts/braille.module:167
 msgid "Braille box"
-msgstr "Braille rámok"
+msgstr "Braille rámik"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
@@ -10485,9 +10606,8 @@ msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in TeX-code where you want the endnotes to appear."
 msgstr ""
-"Pridáva vložku pre koncové poznámky (Endnote).  Nutné je pridať "
-"\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
-"objaviť."
+"Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať \\theendnotes "
+"do vložky TeX-ového kódu tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
@@ -10502,13 +10622,13 @@ msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Kontroluje schéma pre enumerate, itemize, description a list/labeling. "
+"Kontroluje schému pre číslovanie, položky, opis a listina/labeling.\n"
 "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
 "vysvetlenie."
 
 #: lib/layouts/enumitem.module:93
 msgid "Enumerate-Resume"
-msgstr "Výpočet-Pokračovať"
+msgstr "Pokračovať číslovaním"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -10623,8 +10743,8 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
-"Používa balík knitr v R pre generáciu dynamickej reportáže.  Aby tento "
-"modul  pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
+"Používa balík knitr v R pre generáciu dynamickej reportáže. Aby tento modul "
+"pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
 "Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozri na "
 "http://yihui.name/knitr"
 
@@ -10644,7 +10764,7 @@ msgstr "Sweave"
 
 #: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
 msgid "Sweave Options"
-msgstr "Sweave Voľby"
+msgstr "Voľby Sweave"
 
 #: lib/layouts/knitr.module:40 lib/layouts/sweave.module:50
 msgid "Sweave opts"
@@ -11106,7 +11226,7 @@ msgid ""
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a nečíslované typy. Implicitne sú vety číslované "
+"dispozícii sú číslované a ne-číslované typy. Implicitne sú vety číslované "
 "postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z "
 "'Teorémy (Číslované podľa ...)' modulu."
 
@@ -11718,6 +11838,10 @@ msgstr "Japonsky (non-CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japonsky (non-CJK) (SJIS)"
 
+#: lib/encodings:186
+msgid "Japanese (non-CJK) (utf8)"
+msgstr "Japonsky (non-CJK) (utf8)"
+
 #: lib/encodings:191
 msgid "Thai (TIS 620-0)"
 msgstr "Thajsky (TIS 620-0)"
@@ -11760,7 +11884,7 @@ msgstr "Oddeľovače..."
 
 #: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:434
 msgid "Matrix...|x"
-msgstr "Matrica..."
+msgstr "Matica..."
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:435
 msgid "Macro|o"
@@ -11792,7 +11916,7 @@ msgstr "Vzorec v riadku"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:300
 msgid "Displayed Formula|D"
-msgstr "Zobrazený vzorec"
+msgstr "Exponovaný vzorec"
 
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:301 lib/ui/stdmenus.inc:418
 msgid "Eqnarray Environment|E"
@@ -11989,7 +12113,7 @@ msgstr "Dvojitý Rám"
 
 #: lib/ui/stdcontext.inc:178 lib/ui/stdmenus.inc:473
 msgid "LyX Note|N"
-msgstr "Poznámka LyXu"
+msgstr "Zápis LyXu"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Comment|m"
@@ -12205,7 +12329,7 @@ msgstr "Skoč späť na uloženú záložku"
 
 #: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:529
 msgid "Forward search|F"
-msgstr "Dopredu hľadať"
+msgstr "Dopredu Hľadať"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:114
 msgid "Move Paragraph Up|o"
@@ -12454,11 +12578,11 @@ msgstr "Kopíruj Text"
 
 #: lib/ui/stdcontext.inc:440 lib/ui/stdcontext.inc:460
 msgid "Activate Branch|A"
-msgstr "Aktivuj Vetvu|A"
+msgstr "Aktivuj vetvu|A"
 
 #: lib/ui/stdcontext.inc:441 lib/ui/stdcontext.inc:461
 msgid "Deactivate Branch|e"
-msgstr "Dezaktivuj Vetvu|e"
+msgstr "Dezaktivuj vetvu|e"
 
 #: lib/ui/stdcontext.inc:450
 msgid "Insert Reference at Cursor Position|I"
@@ -12610,7 +12734,7 @@ msgstr "Prevziať na Úpravu"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Update Local Directory From Repository|d"
-msgstr "Aktualizuj Lokálny Adresár Z Repositáru"
+msgstr "Aktualizuj Lokálny Adresár Z Repozitáru"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Revert to Repository Version|v"
@@ -12694,11 +12818,11 @@ msgstr "Rozpustiť vložku"
 
 #: lib/ui/stdmenus.inc:134
 msgid "TeX Code Settings...|C"
-msgstr "TeX Kód nastavenia..."
+msgstr "Nastavenia TeX Kódu..."
 
 #: lib/ui/stdmenus.inc:136
 msgid "Float Settings...|a"
-msgstr "Nastavenia plávajúceho objektu"
+msgstr "Nastavenia plávajúceho objektu..."
 
 #: lib/ui/stdmenus.inc:137
 msgid "Text Wrap Settings...|W"
@@ -12722,7 +12846,7 @@ msgstr "Nastavenia rámku..."
 
 #: lib/ui/stdmenus.inc:142
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia pre Heslá Registra..."
+msgstr "Nastavenia Registrových Hesiel..."
 
 #: lib/ui/stdmenus.inc:143
 msgid "Index Settings...|x"
@@ -12886,7 +13010,7 @@ msgstr "Štandard"
 
 #: lib/ui/stdmenus.inc:257
 msgid "Display|D"
-msgstr "Zobrazenie"
+msgstr "Exponované"
 
 #: lib/ui/stdmenus.inc:258
 msgid "Inline|I"
@@ -13006,11 +13130,11 @@ msgstr "Zabaliť Matematické Makro"
 
 #: lib/ui/stdmenus.inc:320
 msgid "View Source|S"
-msgstr "Zobraziť zdrojový text (LaTeX)"
+msgstr "Náhľad na zdrojový text"
 
 #: lib/ui/stdmenus.inc:321
 msgid "View Messages|g"
-msgstr "Zobraz Hlásenia"
+msgstr "Náhľad na protokolové hlásenia"
 
 #: lib/ui/stdmenus.inc:324
 msgid "View Master Document|M"
@@ -13062,11 +13186,11 @@ msgstr "Plávajúci objekt|a"
 
 #: lib/ui/stdmenus.inc:351
 msgid "Note|N"
-msgstr "Poznámka|P"
+msgstr "Poznámku|P"
 
 #: lib/ui/stdmenus.inc:352
 msgid "Branch|B"
-msgstr "Vetva|V"
+msgstr "Vetvu|V"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Custom Insets"
@@ -13078,7 +13202,7 @@ msgstr "Súbor|S"
 
 #: lib/ui/stdmenus.inc:355
 msgid "Box[[Menu]]"
-msgstr "Rámok"
+msgstr "Rámik"
 
 #: lib/ui/stdmenus.inc:358
 msgid "Citation...|C"
@@ -13110,7 +13234,7 @@ msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:368
 msgid "Hyperlink...|k"
-msgstr "Hyperlinku..."
+msgstr "Hyperlinku...|k"
 
 #: lib/ui/stdmenus.inc:369
 msgid "Footnote|F"
@@ -13118,7 +13242,7 @@ msgstr "Poznámku pod čiarou"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Marginal Note|M"
-msgstr "Okrajová Poznámka"
+msgstr "Okrajovú poznámku"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Short Title|S"
@@ -13210,7 +13334,7 @@ msgstr "Zlomiť zliatku (ligatúru)"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Display Formula|D"
-msgstr "Zobraziť vzorec"
+msgstr "Exponovaný vzorec"
 
 #: lib/ui/stdmenus.inc:417
 msgid "Numbered Formula|N"
@@ -13278,7 +13402,7 @@ msgstr "LaTeX Protokol|L"
 
 #: lib/ui/stdmenus.inc:502
 msgid "Outline|O"
-msgstr "Prehľad|e"
+msgstr "Prehľad"
 
 #: lib/ui/stdmenus.inc:503
 msgid "Start Appendix Here|A"
@@ -13298,7 +13422,7 @@ msgstr "Sleduj zmeny"
 
 #: lib/ui/stdmenus.inc:512
 msgid "Merge Changes...|M"
-msgstr "Zmeny prijať, alebo zahodiť..."
+msgstr "Zmeny Zlúčiť..."
 
 #: lib/ui/stdmenus.inc:513
 msgid "Accept Change|A"
@@ -13386,7 +13510,7 @@ msgstr "TeX informácia|X"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Compare...|C"
-msgstr "Porovnaj..."
+msgstr "Porovnávať..."
 
 #: lib/ui/stdmenus.inc:561
 msgid "Reconfigure|R"
@@ -13446,7 +13570,7 @@ msgstr "Braille: Manuál"
 
 #: lib/ui/stdmenus.inc:586
 msgid "Feynman-diagram Manual|F"
-msgstr "Feynman-diagram Manuál"
+msgstr "Feynman-diagram: Manuál|F"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Linguistics Manual|L"
@@ -13454,7 +13578,7 @@ msgstr "Lingvistika: Manuál"
 
 #: lib/ui/stdmenus.inc:588
 msgid "Multicolumn Manual|M"
-msgstr "Viacstĺpcová príručka"
+msgstr "Viacstĺpcové: Manuál"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Sweave Manual|S"
@@ -13462,7 +13586,7 @@ msgstr "Sweave Manuál|S"
 
 #: lib/ui/stdmenus.inc:590
 msgid "XY-pic Manual|X"
-msgstr "XY-pic: Manuál"
+msgstr "XY-pic: Manuál|X"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "New document"
@@ -13586,11 +13710,11 @@ msgstr "Položková listina"
 
 #: lib/ui/stdtoolbars.inc:117
 msgid "Increase depth"
-msgstr "Zväčšiť hĺbku"
+msgstr "Zväčšiť odsadenie"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Decrease depth"
-msgstr "Zmenšiť hĺbku"
+msgstr "Zmenšiť odsadenie"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
@@ -13634,7 +13758,7 @@ msgstr "Vložiť poznámku"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert box"
-msgstr "Vložiť rámok"
+msgstr "Vložiť rámik"
 
 #: lib/ui/stdtoolbars.inc:132
 msgid "Insert hyperlink"
@@ -13754,7 +13878,7 @@ msgstr "Matematika"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Set display mode"
-msgstr "Zvoliť mód zobrazovania"
+msgstr "Zvoliť exponovaný mód"
 
 #: lib/ui/stdtoolbars.inc:174 src/insets/InsetScript.cpp:63
 msgid "Subscript"
@@ -13950,7 +14074,7 @@ msgstr "Použiť blokovanie súborov z SVN"
 
 #: lib/ui/stdtoolbars.inc:269
 msgid "Update local directory from repository"
-msgstr "Aktualizuj lokálny adresár z repositáru"
+msgstr "Aktualizuj lokálny adresár z repozitáru"
 
 #: lib/ui/stdtoolbars.inc:272
 msgid "Math Panels"
@@ -14212,7 +14336,7 @@ msgstr "Iná odmocnina\t\\root"
 
 #: lib/ui/stdtoolbars.inc:347
 msgid "Display style\t\\displaystyle"
-msgstr "Celoriadkový\t\\displaystyle"
+msgstr "Exponovaný\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:348
 msgid "Normal text style\t\\textstyle"
@@ -17103,10 +17227,10 @@ msgstr "Chyba pri exporte na formát: %1$s."
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2309
+#: src/Buffer.cpp:2313
 #, c-format
 msgid "Unable to parse \"%1$s\""
-msgstr "Nemôžem analyzovať  \"%1$s\""
+msgstr "Nemôžem analyzovať \"%1$s\""
 
 #: src/Buffer.cpp:2316
 #, c-format
@@ -17363,7 +17487,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Nedostupná trieda dokumentu"
 
-#: src/BufferParams.cpp:1985
+#: src/BufferParams.cpp:1988
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17372,7 +17496,7 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Súbor pre schéma:\n"
+"Súbor schémy:\n"
 "%1$s\n"
 "sa nedá nájsť. Bude použitá štandardná\n"
 "trieda a schéma. LyX nebude schopný zrobiť\n"
@@ -17382,7 +17506,7 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Nenájdená trieda dokumentu"
 
-#: src/BufferParams.cpp:1998
+#: src/BufferParams.cpp:2001
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17391,9 +17515,9 @@ msgid ""
 "layouts will be used. LyX will not be able to produce\n"
 "correct output."
 msgstr ""
-"Kvôli chybe v ňom, súbor pre schéma:\n"
+"Súbor schémy:\n"
 "%1$s\n"
-"sa nedá nahrať. Bude použitá štandardná\n"
+"sa kvôli chybe v nej nedá nahrať. Bude použitá štandardná\n"
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
@@ -17401,9 +17525,9 @@ msgstr ""
 msgid "Could not load class"
 msgstr "Nepodarilo sa nahrať triedu"
 
-#: src/BufferParams.cpp:2038
+#: src/BufferParams.cpp:2041
 msgid "Error reading internal layout information"
-msgstr "Chyba pri čítaní vnútorných schéma-informácií"
+msgstr "Chyba pri čítaní vnútorných informácií pre schému"
 
 #: src/BufferParams.cpp:2039 src/TextClass.cpp:1349
 msgid "Read Error"
@@ -17515,7 +17639,7 @@ msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 #: src/BufferView.cpp:1809
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr "Použité \"%1$s\" pri %2$d vložkách"
+msgstr "Aplikované \"%1$s\" na %2$d vložkách"
 
 #: src/BufferView.cpp:1817
 msgid "Branch name"
@@ -17617,7 +17741,7 @@ msgstr "LyX varovanie: "
 #: src/insets/InsetListings.cpp:183 src/insets/InsetListings.cpp:191
 #: src/insets/InsetNomencl.cpp:286 src/mathed/InsetMathString.cpp:162
 msgid "uncodable character"
-msgstr "Nekódovatelný znak"
+msgstr "Nekódovateľný znak"
 
 #: src/Changes.cpp:379
 msgid "Uncodable character in author name"
@@ -17758,7 +17882,7 @@ msgstr "vložka textu phantom"
 
 #: src/Color.cpp:230
 msgid "shaded box"
-msgstr "tieňovaný rámok"
+msgstr "tieňovaný rámik"
 
 #: src/Color.cpp:231
 msgid "listings background"
@@ -18079,16 +18203,16 @@ msgstr "&Nepridať"
 #: src/CutAndPaste.cpp:664 src/Text.cpp:366
 #, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Lokálne schéma `%1$s' sa nenašlo."
+msgstr "Schéma `%1$s' sa nenašla."
 
 #: src/CutAndPaste.cpp:666 src/Text.cpp:368
 msgid "Layout Not Found"
-msgstr "Lokálne Schéma Nenájdené"
+msgstr "Schéma Nenájdená"
 
 #: src/CutAndPaste.cpp:694
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr "Flexibilná vložka %1$s je nedefinovaná po načítaní schémy `%2$s'."
+msgstr "Flexibilná vložka %1$s nie je definovaná po načítaní schémy `%2$s'."
 
 #: src/CutAndPaste.cpp:697
 #, c-format
@@ -18096,7 +18220,7 @@ msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Flexibilná vložka %1$s nedefinovaná kvôli konverzii z schémy `%2$s' na `"
+"Flexibilná vložka %1$s nie je definovaná kvôli konverzii z schémy `%2$s' na `"
 "%3$s'."
 
 #: src/CutAndPaste.cpp:702
@@ -18534,21 +18658,21 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Použitie: lyx [prepínače ] [ názov.lyx ... ]\n"
-"Prepínače (sú citlivé na veľkosť písmen):\n"
+"Prepínače (rozlišuje sa veľkosť písmen):\n"
 "\t-help              sumarizuje použitie LyX\n"
-"\t-userdir dir       pokúsi sa nastaviť používateľský adresár\n"
-"\t-sysdir dir        pokúsi sa nastaviť systémový adresár\n"
-"\t-geometry WxH+X+Y  nastaví geometriu hlavného okna\n"
-"\t-dbg feature[,feature]...\n"
-"                  vyberie patričnú vlastnosť na ladenie.\n"
-"                  Príkaz `lyx -dbg' vypíše zoznam ladiacich vlastností\n"
-"\t-x [--execute] command\n"
-"                  spustí lyx-príkaz command .\n"
+"\t-userdir dir       nastaviť používateľský adresár na dir\n"
+"\t-sysdir dir        nastaviť systémový adresár na dir\n"
+"\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
+"\t-dbg časť[,časť]...\n"
+"                  vyber patričné časti na ladenie.\n"
+"                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
+"\t-x [--execute] príkaz\n"
+"                  spustí lyx-príkaz príkaz.\n"
 "\t-e [--export] fmt\n"
-"                  kde fmt je vybraný exportný formát.\n"
-"                  Pozrite si Nástroje->Preferencie->Obsluha súborov-"
-">Formáty\n"
-"                  aby ste dostali predstavu o tom, ktoré  parametre sú "
+"                  kde fmt je vybraný exportný formát. Pozrite si\n"
+"                  Nástroje->Preferencie...->Obsluha súborov->Formáty Súborov-"
+">Skratka\n"
+"                  aby ste dostali predstavu o tom, ktoré parametre sú "
 "vhodné.\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
 "\ti [--import] fmt file.xxx\n"
@@ -18559,12 +18683,15 @@ msgstr ""
 "                  Keď `all', tak bude prepísaný každý súbor počas\n"
 "                    dávkového exportu.\n"
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
-"                  Keď `none' nebude nič prepísané.                  Všetko "
-"iné je rovnocenné k `all', len že nie je skonzumované.\n"
+"                  Keď `none' nebude nič prepísané.\n"
+"                  Všetko iné je rovnocenné k `all', len že nie je "
+"skonzumované.\n"
+"\t-n [--no-remote]\n"
+"                 otvorí dokumenty v novej inštancii\n"
 "\t-r [--remote]\n"
 "                  otvorí dokumenty v už spustenej inštancii\n"
-"                  (pracujúca lyx-pipa je potrebná)\n"
-"\t--batch    spusti príkazy bez GUI a skonč.\n"
+"                  (potrebujete pracujúci lyx-dátovod)\n"
+"\t-batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
@@ -18712,7 +18839,7 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
-"Zobraziť malý rámok okolo mat. makra spolu s menom makra keď je kurzor "
+"Zobraziť malý rámik okolo mat. makra spolu s menom makra keď je kurzor "
 "vnútri."
 
 #: src/LyXRC.cpp:3168
@@ -18742,7 +18869,7 @@ msgstr "Novým dokumentom bude priradený tento jazyk."
 
 #: src/LyXRC.cpp:3184
 msgid "Specify the default paper size."
-msgstr "Určite štandardné veľkosti stránky."
+msgstr "Určite štandardné veľkosti stránky"
 
 #: src/LyXRC.cpp:3188
 msgid ""
@@ -18946,7 +19073,7 @@ msgstr "Maximálny počet posledných súborov. Až %1$d ich môže byť v ponuk
 
 #: src/LyXRC.cpp:3344
 msgid "Shows a typeset preview of things such as math"
-msgstr "Zobrazuje náhľad na sadu vecí typu matematiky a pod."
+msgstr "Zobrazuje náhľad na sadu vecí ako napr. z matematiky"
 
 #: src/LyXRC.cpp:3348
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
@@ -19018,7 +19145,7 @@ msgid ""
 "arguments."
 msgstr ""
 "Keď nastavené, táto voľba automaticky tlačí do súboru a potom pre tlač tohto "
-"súboru volá \"spool\" program s daným menom a s danými  parametrami."
+"súboru volá \"spool\" program s daným menom a s danými parametrami."
 
 #: src/LyXRC.cpp:3408
 msgid ""
@@ -19181,11 +19308,11 @@ msgstr "Musíte uložiť dokument pred zaregistrovaním."
 
 #: src/LyXVC.cpp:148
 msgid "LyX VC: Initial description"
-msgstr "LyX VC: Počiatočný popis"
+msgstr "LyX VC: Počiatočný opis"
 
 #: src/LyXVC.cpp:149 src/LyXVC.cpp:156
 msgid "(no initial description)"
-msgstr "(bez počiatočného popisu)"
+msgstr "(bez počiatočného opisu)"
 
 #: src/LyXVC.cpp:165
 msgid "(no log message)"
@@ -19218,7 +19345,7 @@ msgstr "&Vrátiť"
 
 #: src/Paragraph.cpp:1967
 msgid "Senseless with this layout!"
-msgstr "S týmto schéma to nemá zmysel!"
+msgstr "S touto schémou to nemá zmysel!"
 
 #: src/Paragraph.cpp:2029
 msgid "Alignment not permitted"
@@ -19229,7 +19356,7 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-"Nové schéma nepovoľuje používané zarovnanie.\n"
+"Nová schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
 #: src/Paragraph.cpp:3109
@@ -19894,7 +20021,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:122
 msgid "Library directory: "
-msgstr "Adresár knižníc: "
+msgstr "Adresár systému: "
 
 #: src/frontends/qt4/GuiAbout.cpp:125
 msgid "User directory: "
@@ -19963,13 +20090,13 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 "Rekonfigurácia systému zlyhala.\n"
-"Bola nastavená štandardná trieda (textclass), ale LyX možno nebude schopný "
-"pracovať správne.\n"
+"Bola nastavená štandardná trieda (textclass),\n"
+"ale LyX možno nebude schopný pracovať správne.\n"
 "Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
 #: src/frontends/qt4/GuiApplication.cpp:1237
 msgid "System reconfigured"
-msgstr "Systém je prekonfigurovaný"
+msgstr "Systém je rekonfigurovaný"
 
 #: src/frontends/qt4/GuiApplication.cpp:1238
 msgid ""
@@ -20586,7 +20713,7 @@ msgstr "Žiadne (bez fontenc)"
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
-msgstr "Použiť  OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
+msgstr "Použiť OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
 
 #: src/frontends/qt4/GuiDocument.cpp:843
 msgid "empty"
@@ -20802,7 +20929,7 @@ msgstr "PDF Vlastnosti"
 
 #: src/frontends/qt4/GuiDocument.cpp:1319
 msgid "Math Options"
-msgstr "Voľby Matematiky"
+msgstr "Voľby Matematika"
 
 #: src/frontends/qt4/GuiDocument.cpp:1320
 msgid "Float Placement"
@@ -20845,7 +20972,7 @@ msgstr "Schémy dokumentov LyX-u (*.layout)"
 #: src/frontends/qt4/GuiDocument.cpp:1825
 #: src/frontends/qt4/GuiDocument.cpp:1834
 msgid "Local layout file"
-msgstr "Lokálny súbor schém"
+msgstr "Lokálny súbor pre schému"
 
 #: src/frontends/qt4/GuiDocument.cpp:1835
 msgid ""
@@ -21371,7 +21498,7 @@ msgid ""
 "the items is used."
 msgstr ""
 "Ako popísané v užívateľskej príručke, šírka tohto textu určuje šírku "
-"návestia v prostrediach typu Listina a Popis.\n"
+"návestia v prostrediach typu Listina a Opis.\n"
 "\n"
 "Toto obvykle netreba nastavovať, lebo je štandardne vybraná najdlhším "
 "návestím všetkých použitých položiek."
@@ -21491,7 +21618,7 @@ msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
 msgstr ""
-"Nemôžte zmeniť krátke meno formátu používané konvertorom. Odstráňte najprv "
+"Nemôžte zmeniť skratku formátu používané konvertorom. Odstráňte najprv "
 "konvertor."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2212
@@ -21826,7 +21953,7 @@ msgstr "Kombinovanie diakritických znamienok pre symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Letterlike Symbols"
-msgstr "Symboly písmenovité"
+msgstr "Symboly podobajúce sa písmenám"
 
 #: src/frontends/qt4/GuiSymbols.cpp:88
 msgid "Number Forms"
@@ -21842,7 +21969,7 @@ msgstr "Rôzne technické"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
 msgid "Control Pictures"
-msgstr "Kontrolné obrázky"
+msgstr "Kontrolné znaky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Optical Character Recognition"
@@ -22477,7 +22604,7 @@ msgstr "%1$s neznámy príkaz!"
 
 #: src/frontends/qt4/GuiView.cpp:3552
 msgid "Please, preview the document first."
-msgstr "Prehliadnite najprv dokument  prosím."
+msgstr "Prehliadnite najprv dokument prosím."
 
 #: src/frontends/qt4/GuiView.cpp:3572
 msgid "Couldn't proceed."
@@ -22518,7 +22645,7 @@ msgstr "Zavrieť Súbor"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1929
 msgid "Hide tab"
-msgstr "Panel schovať"
+msgstr "Panel skryť"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1931
 msgid "Close tab"
@@ -22757,7 +22884,7 @@ msgstr "Zoznam vetiev"
 
 #: src/frontends/qt4/qt_helpers.cpp:575
 msgid "List of Changes"
-msgstr "Zoznam zmien"
+msgstr "Zoznam Zmien"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:536
@@ -22796,7 +22923,7 @@ msgstr "Plávajúci objekt"
 
 #: src/insets/Inset.cpp:109 src/insets/InsetBox.cpp:130
 msgid "Box"
-msgstr "Rámok"
+msgstr "Rámik"
 
 #: src/insets/Inset.cpp:111
 msgid "Horizontal Space"
@@ -22910,7 +23037,7 @@ msgstr "s tieňom"
 
 #: src/insets/InsetBox.cpp:72
 msgid "shaded background"
-msgstr "pozadie tieňovaný rámok"
+msgstr "pozadie tieňovaný rámik"
 
 #: src/insets/InsetBox.cpp:73
 msgid "double frame"
@@ -23173,7 +23300,7 @@ msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
-"Zahrnutý súbor `%1$s'  nebol správne exportovaný.\n"
+"Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
 "Upozornenie: Možné, že LaTeXov export nie je úplný."
 
 #: src/insets/InsetInclude.cpp:633 src/insets/InsetInclude.cpp:656
@@ -23230,7 +23357,7 @@ msgstr "Všetky registre"
 
 #: src/insets/InsetIndex.cpp:456
 msgid "subindex"
-msgstr "Podregister"
+msgstr "Pod-register"
 
 #: src/insets/InsetInfo.cpp:118
 #, c-format
@@ -23488,7 +23615,7 @@ msgstr "Symbol nomenklatúry: "
 
 #: src/insets/InsetNomencl.cpp:88
 msgid "Description: "
-msgstr "Popis: "
+msgstr "Opis: "
 
 #: src/insets/InsetNomencl.cpp:91
 msgid "Sorting: "
@@ -23652,9 +23779,9 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
-#: src/insets/InsetTabular.cpp:4769
+#: src/insets/InsetTabular.cpp:4772
 msgid "Selection size should match clipboard content."
-msgstr "Veľkosť výberu by mala zodpovedať obsahu.klipovej dosky."
+msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
 
 #: src/insets/InsetWrap.cpp:46 src/insets/InsetWrap.cpp:121
 msgid "wrap: "
@@ -23900,7 +24027,7 @@ msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1040
 msgid "Regular expression editor mode"
-msgstr "Modus  pre editáciu regulárnych výrazov"
+msgstr "Modus pre editáciu regulárnych výrazov"
 
 #: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
 msgid "Autocorrect Off ('!' to enter)"
@@ -24216,11 +24343,2499 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Build Info"
+#~ msgstr "Produkčná informácia"
+
+#~ msgid "Bibliography Style"
+#~ msgstr "Štýl Bibliografie"
+
+#~ msgid "Default st&yle:"
+#~ msgstr "Štandardný štý&l:"
+
+#~ msgid "Define the default BibTeX style"
+#~ msgstr "Vyberte štandardný BibTeX štýl"
+
+#~ msgid "Shift+Enter search backwards directly"
+#~ msgstr "Shift+Enter hľadať naspäť priamo"
+
+#~ msgid "&Math:"
+#~ msgstr "Matematika:"
+
+#~ msgid "Select the math typeface"
+#~ msgstr "Vyberte typ písma pre matematiku"
+
+#~ msgid "Convert"
+#~ msgstr "Konvertovať"
+
+#~ msgid "Write CSS to File"
+#~ msgstr "Píš CSS do súboru"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "Minimum word length for completion"
+#~ msgstr "Minimálna dĺžka slova pre doplňovanie"
+
+#~ msgid "&MIME:"
+#~ msgstr "&MIME:"
+
+#~ msgid "Language &package:"
+#~ msgstr "Jazykový &balík:"
+
+#~ msgid "Default Decimal &Separator:"
+#~ msgstr "Štandardný Decimálny &Separátor:"
+
+#~ msgid "Default length &unit:"
+#~ msgstr "Štandardná jednotka &dĺžky:"
+
+#~ msgid "Closing last view:"
+#~ msgstr "Pri zavieraní posledného náhľadu:"
+
+#~ msgid "Closes document"
+#~ msgstr "Zavrieť dokument"
+
+#~ msgid "Hides document"
+#~ msgstr "Skryť dokument"
+
+#~ msgid "Ask the user"
+#~ msgstr "Opýtať sa, čo zrobiť"
+
+#~ msgid "rotation angle"
+#~ msgstr "uhol rotácie"
+
+#~ msgid "degrees"
+#~ msgstr "stupňov"
+
+#~ msgid "W&idth:"
+#~ msgstr "Šírk&a:"
+
+#~ msgid "&Rotate"
+#~ msgstr "&Otočiť"
+
+#~ msgid "BibTeX databases"
+#~ msgstr "BibTeX databázy"
+
+#~ msgid ""
+#~ "Justify text in the LyX editor (this does not affect whether the text is "
+#~ "justified in the output)"
+#~ msgstr ""
+#~ "Zarovnať text v LyX editore (to nemá vplyv na zarovnanie vo výstupe)"
+
+#~ msgid "Use &justification in LyX work area"
+#~ msgstr "Použiť zarovnanie v &LyX-ovej pracovnej ploche"
+
+#~ msgid "&Master's perspective"
+#~ msgstr "Perspektíva hlavného dokumentu"
+
+#~ msgid "Show the source as the master document gets it"
+#~ msgstr "Ukazovať zdroj tak, ako ho hlavný dokument dostane"
+
+#~ msgid "American Economic Association (AEA)"
+#~ msgstr "American Economic Association (AEA)"
+
+#~ msgid "Articles"
+#~ msgstr "Články"
+
+#~ msgid "IEEE Transactions"
+#~ msgstr "IEEE Transactions"
+
+#~ msgid "Short Author|S"
+#~ msgstr "Skratka Autora"
+
+#~ msgid "A short version of the author name"
+#~ msgstr "Skrátená verzia mena autora"
+
+#~ msgid "Left Side"
+#~ msgstr "Ľavá Strana"
+
+#~ msgid "Left side of the header line"
+#~ msgstr "Ľavá strana riadku hlavičky"
+
+#~ msgid "Short Title"
+#~ msgstr "Krátky Titul"
+
+#~ msgid "Short title for the appendix"
+#~ msgstr "Krátky titul pre prílohu"
+
+#~ msgid "Optional photo for biography"
+#~ msgstr "Nepovinná fotka do životopisu"
+
+#~ msgid "Name of the author"
+#~ msgstr "Meno autora"
+
+#~ msgid "Alternative Proof String"
+#~ msgstr "Alternatíva pre dôkaz"
+
+#~ msgid "An alternative proof string"
+#~ msgstr "Alternatívny reťazec dôkazu"
+
+#~ msgid "Astronomy & Astrophysics"
+#~ msgstr "Astronomy & Astrophysics"
+
+#~ msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
+#~ msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
+
+#~ msgid "American Astronomical Society (AASTeX)"
+#~ msgstr "American Astronomical Society (AASTeX)"
+
+#~ msgid "Consecutive number for the alternative affiliations"
+#~ msgstr "Následné číslo pre alternatívne príslušenstva"
+
+#~ msgid "The caption as it appears in the list of figures"
+#~ msgstr "Popis ako sa zobrazí v zozname obrázkov"
+
+#~ msgid "Recognized Name"
+#~ msgstr "Rozpoznané meno"
+
+#~ msgid "Separate the recognized name of an object from text"
+#~ msgstr "Oddeliť rozpoznané meno objektu od textu"
+
+#~ msgid "Separate the dataset ID from text"
+#~ msgstr "Oddeliť identifikátor datasetu od textu"
+
+#~ msgid "American Chemical Society (ACS)"
+#~ msgstr "American Chemical Society (ACS)"
+
+#~ msgid "Short title which will appear in the running header"
+#~ msgstr "Krátky titul ktorý sa zobrazí v priebežnej hlavičke"
+
+#~ msgid "Short name"
+#~ msgstr "Krátke meno"
+
+#~ msgid "Short name which appears in the footer of the title page"
+#~ msgstr "Krátke meno ktoré sa zjaví v päte titulnej strany"
+
+#~ msgid "ACM SIGGRAPH"
+#~ msgstr "ACM SIGGRAPH"
+
+#~ msgid "TOG online ID"
+#~ msgstr "TOG online ID"
+
+#~ msgid "Online ID:"
+#~ msgstr "Online ID:"
+
+#~ msgid "TOG volume"
+#~ msgstr "TOG volume"
+
+#~ msgid "Volume number:"
+#~ msgstr "Číslo zväzku:"
+
+#~ msgid "TOG number"
+#~ msgstr "TOG number"
+
+#~ msgid "Article number:"
+#~ msgstr "Číslo článku:"
+
+#~ msgid "TOG article DOI"
+#~ msgstr "TOG article DOI"
+
+#~ msgid "Article DOI:"
+#~ msgstr "DOI článku:"
+
+#~ msgid "TOG project URL"
+#~ msgstr "TOG project URL"
+
+#~ msgid "Project URL:"
+#~ msgstr "URL projektu:"
+
+#~ msgid "TOG video URL"
+#~ msgstr "TOG video URL"
+
+#~ msgid "Video URL:"
+#~ msgstr "URL Videa:"
+
+#~ msgid "TOG data URL"
+#~ msgstr "TOG data URL"
+
+#~ msgid "Data URL:"
+#~ msgstr "URL dát:"
+
+#~ msgid "TOG code URL"
+#~ msgstr "TOG code URL"
+
+#~ msgid "Code URL:"
+#~ msgstr "URL kódu:"
+
+#~ msgid "PDF author"
+#~ msgstr "PDF author"
+
+#~ msgid "PDF author:"
+#~ msgstr "PDF autora:"
+
+#~ msgid "CR Categories:"
+#~ msgstr "CR kategórií:"
+
+#~ msgid "CR-number"
+#~ msgstr "CR-číslo"
+
+#~ msgid "Number of the category"
+#~ msgstr "Číslo kategórie"
+
+#~ msgid "Subcategory"
+#~ msgstr "Podkategória"
+
+#~ msgid "Third-level"
+#~ msgstr "Tretia úroveň"
+
+#~ msgid "Third-level of the category"
+#~ msgstr "Tretia úroveň kategórie"
+
+#~ msgid "ShortCite"
+#~ msgstr "ShortCite"
+
+#~ msgid "Short cite"
+#~ msgstr "Krátke citovanie"
+
+#~ msgid "E-mail"
+#~ msgstr "E-mail"
+
+#~ msgid "American Geophysical Union (AGU, SGML Article)"
+#~ msgstr "American Geophysical Union (AGU, SGML článok)"
+
+#~ msgid "Articles (DocBook)"
+#~ msgstr "Články (DocBook)"
+
+#~ msgid "American Geophysical Union (AGUPLUS Manuscript)"
+#~ msgstr "American Geophysical Union (AGUPLUS Manuskript)"
+
+#~ msgid "American Geophysical Union (AGUTeX)"
+#~ msgstr "American Geophysical Union (AGUTeX)"
+
+#~ msgid "Consecutive number for the author affiliations"
+#~ msgstr "Následné číslo pre autorove príslušenstva"
+
+#~ msgid "American Mathematical Society (AMS) Article"
+#~ msgstr "American Mathematical Society (AMS) Článok"
+
+#~ msgid "American Mathematical Society (AMS) Book"
+#~ msgstr "American Mathematical Society (AMS) Kniha"
+
+#~ msgid "Books"
+#~ msgstr "Knihy"
+
+#~ msgid "American Psychological Association (APA)"
+#~ msgstr "American Psychological Association (APA)"
+
+#~ msgid "The caption as it appears in the list of figures/tables"
+#~ msgstr "Popis ako sa zobrazí v zozname obrázkov/tabuliek"
+
+#~ msgid "Custom Item|s"
+#~ msgstr "Vlastná Položka"
+
+#~ msgid "A customized item string"
+#~ msgstr "Prispôsobený reťazec položky"
+
+#~ msgid "Arabic Article"
+#~ msgstr "Arabský článok"
+
+#~ msgid "Beamer Article (Standard Class)"
+#~ msgstr "Beamer článok (Štandardná Trieda)"
+
+#~ msgid "Article (Standard Class)"
+#~ msgstr "Článok (Štandardná Trieda)"
+
+#~ msgid "Beamer"
+#~ msgstr "Beamer"
+
+#~ msgid "Presentations"
+#~ msgstr "Prezentácie"
+
+#~ msgid "Overlay Specifications|S"
+#~ msgstr "Špecifikácie prekrytia"
+
+#~ msgid "Overlay specifications for this list"
+#~ msgstr "Špecifikácie prekrytia tejto listiny"
+
+#~ msgid "Item Overlay Specifications"
+#~ msgstr "Špecifikácie prekrytia objektu"
+
+#~ msgid "On Slide"
+#~ msgstr "Na fólii"
+
+#~ msgid "Overlay specifications for this item"
+#~ msgstr "Špecifikácie prekrytia tohto objektu"
+
+#~ msgid "Mini Template"
+#~ msgstr "Mini šablóna"
+
+#~ msgid "Mini template for this list (see beamer manual for details)"
+#~ msgstr "Mini šablóna pre túto listinu (viď enumitem manuál)"
+
+#~ msgid "Longest label|s"
+#~ msgstr "Najdlhšie návestie"
+
+#~ msgid "The longest label in this list (to determine the indendation width)"
+#~ msgstr "Najdlhšie návestie v tejto listine (na určenie šírky odsadenia)"
+
+#~ msgid "Mode"
+#~ msgstr "Mód"
+
+#~ msgid "Mode Specification|S"
+#~ msgstr "Špecifikácie módu"
+
+#~ msgid ""
+#~ "Specify in which mode (article, presentation etc.) this header appears"
+#~ msgstr ""
+#~ "Špecifikuj v akom móde (article, presentation atď.) sa táto hlavička "
+#~ "zobrazí"
+
+#~ msgid "The part as it appears in the table of contents/running headers"
+#~ msgstr "Časť ako sa zobrazí v zozname/priebežných hlavičkách"
+
+#~ msgid "The section as it appears in the table of contents/running headers"
+#~ msgstr "Sekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+
+#~ msgid ""
+#~ "The subsection as it appears in the table of contents/running headers"
+#~ msgstr "Podsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+
+#~ msgid ""
+#~ "The subsubsection as it appears in the table of contents/running headers"
+#~ msgstr "Podpodsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
+
+#~ msgid "Frame Options"
+#~ msgstr "Voľby Rám"
+
+#~ msgid "Frame options (see beamer manual)"
+#~ msgstr "Rám voľby (viď beamer manuál)"
+
+#~ msgid "Overlay specifications for this frame"
+#~ msgstr "Špecifikácie prekrytia tohto rámca"
+
+#~ msgid "Default Overlay Specifications"
+#~ msgstr "Štandardné špecifikácie prekrytia"
+
+#~ msgid "Default overlay specifications within this frame"
+#~ msgstr "Štandardné špecifikácie prekrytia tohto rámca"
+
+#~ msgid "Options"
+#~ msgstr "Možnosti"
+
+#~ msgid "Specify the overlay settings (see beamer manual)"
+#~ msgstr "Špecifikuj voľby prekrytia (viď beamer manuál)"
+
+#~ msgid "Column Options"
+#~ msgstr "Voľby Stĺpec"
+
+#~ msgid "Column options (see beamer manual)"
+#~ msgstr "Voľby stĺpca (viď beamer manuál)"
+
+#~ msgid "Column Placement Options"
+#~ msgstr "Voľby Umiestňovanie Stĺpcov"
+
+#~ msgid "Column placement options (t, T, c, b)"
+#~ msgstr "Voľby umiestňovanie stĺpcov (t, T, c, b)"
+
+#~ msgid "Pause number"
+#~ msgstr "Číslo pauzy"
+
+#~ msgid "Number of slide where the context below the pause gets visible"
+#~ msgstr "Číslo tej fólie kde sa kontext pod pauzou stane viditeľným"
+
+#~ msgid "Overprint Area Width"
+#~ msgstr "Šírka plochy pretlačenia"
+
+#~ msgid "The width of the overprint area (default: text width)"
+#~ msgstr "Šírka plochy pretlačenia (štandard: šírka textu)"
+
+#~ msgid "Overlay Area Width"
+#~ msgstr "Šírka plochy prekrytia"
+
+#~ msgid "The width of the overlay area"
+#~ msgstr "Šírka plochy prekrytia"
+
+#~ msgid "Overlay Area Height"
+#~ msgstr "Výška plochy prekrytia"
+
+#~ msgid "The height of the overlay area"
+#~ msgstr "Výška plochy prekrytia"
+
+#~ msgid "Block:  "
+#~ msgstr "Blok:"
+
+#~ msgid "Action"
+#~ msgstr "Akcia"
+
+#~ msgid "Action Specification|S"
+#~ msgstr "Špecifikácie akcie"
+
+#~ msgid "Block Title"
+#~ msgstr "Titul Bloku"
+
+#~ msgid "Enter the block title here"
+#~ msgstr "Vlož sem titul bloku"
+
+#~ msgid "Short title which appears in the sidebar/header"
+#~ msgstr "Krátky titul ktorý sa zjaví na boku/hlavičke"
+
+#~ msgid "Short Subtitle|S"
+#~ msgstr "Krátky Podtitul"
+
+#~ msgid "Short subtitle which appears in the sidebar/header"
+#~ msgstr "Krátky podtitul ktorý sa zjaví na boku/hlavičke"
+
+#~ msgid "Short author which appears in the sidebar/header"
+#~ msgstr "Skratka autora ktorá sa zjaví na boku/hlavičke"
+
+#~ msgid "Short Institute|S"
+#~ msgstr "Krátky Inštitút"
+
+#~ msgid "Short institute which appears in the sidebar/header"
+#~ msgstr "Skratka inštitútu ktorá sa zjaví na boku/hlavičke"
+
+#~ msgid "Institute Mark"
+#~ msgstr "Inštitútna Značka"
+
+#~ msgid "Short Date|S"
+#~ msgstr "Krátky Dátum"
+
+#~ msgid "Short date which appears in the sidebar/header"
+#~ msgstr "Skratka dátumu ktorá sa zjaví na boku/hlavičke"
+
+#~ msgid "Action Specifications|S"
+#~ msgstr "Špecifikácie akcie"
+
+#~ msgid "Additional Theorem Text"
+#~ msgstr "Dodatočný Text Teorémy"
+
+#~ msgid "Additional text appended to the theorem header"
+#~ msgstr "Dodatočný text pripojený hlavičke teorémy"
+
+#~ msgid "Visible"
+#~ msgstr "Visible"
+
+#~ msgid "Invisible"
+#~ msgstr "Neviditeľný text"
+
+#~ msgid "Alternative"
+#~ msgstr "Alternative"
+
+#~ msgid "Default Text"
+#~ msgstr "Štandardný Text"
+
+#~ msgid "Enter the default text here"
+#~ msgstr "Vlož sem štandardný text"
+
+#~ msgid "Beamer Note"
+#~ msgstr "Beamer_Note"
+
+#~ msgid "Note Options"
+#~ msgstr "Voľbv Poznámky"
+
+#~ msgid "Specifiy note options (see beamer manual)"
+#~ msgstr "Špecifikuj voľby poznámky (viď beamer manuál)"
+
+#~ msgid "Book (Standard Class)"
+#~ msgstr "Kniha (Štandardná Trieda)"
+
+#~ msgid "Broadway"
+#~ msgstr "Broadway"
+
+#~ msgid "Scripts"
+#~ msgstr "Skripty"
+
+#~ msgid "Chess"
+#~ msgstr "Šach"
+
+#~ msgid "Springer cl2emult"
+#~ msgstr "Springer cl2emult"
+
+#~ msgid "Chinese Article (CTeX)"
+#~ msgstr "Čínsky článok (CTeX)"
+
+#~ msgid "Chinese Book (CTeX)"
+#~ msgstr "Čínska kniha (CTeX)"
+
+#~ msgid "Chinese Report (CTeX)"
+#~ msgstr "Čínsky referát (CTeX)"
+
+#~ msgid "Reports"
+#~ msgstr "Referáty"
+
+#~ msgid "DIN-Brief"
+#~ msgstr "Din-Brief"
+
+#~ msgid "Letters"
+#~ msgstr "Listy"
+
+#~ msgid "Signature|S"
+#~ msgstr "Podpis"
+
+#~ msgid "Here you can insert a signature scan"
+#~ msgstr "Tu sa dá vložiť snímka podpisu"
+
+#~ msgid "DocBook Book (SGML)"
+#~ msgstr "DocBook-kniha (SGML)"
+
+#~ msgid "Books (DocBook)"
+#~ msgstr "Knihy (DocBook)"
+
+#~ msgid "DocBook Chapter (SGML)"
+#~ msgstr "DocBook kapitola (SGML)"
+
+#~ msgid "DocBook Section (SGML)"
+#~ msgstr "DocBook sekcia (SGML)"
+
+#~ msgid "DocBook Article (SGML)"
+#~ msgstr "DocBook článok (SGML)"
+
+#~ msgid "Inderscience A4 Journals"
+#~ msgstr "Inderscience A4 časopisy"
+
+#~ msgid "Die TeXnische Komoedie"
+#~ msgstr "Die TeXnische Komödie"
+
+#~ msgid "Econometrica"
+#~ msgstr "Econometrica"
+
+#~ msgid "Address Option"
+#~ msgstr "Voľba Adresa"
+
+#~ msgid "Optional argument for the address"
+#~ msgstr "Nepovinný argument pre adresu"
+
+#~ msgid "E-Mail Option"
+#~ msgstr "Voľba E-mail"
+
+#~ msgid "Optional argument for the e-mail"
+#~ msgstr "Nepovinný argument pre e-mail"
+
+#~ msgid "European Geophysical Society (EGS)"
+#~ msgstr "European Geophysical Society (EGS)"
+
+#~ msgid "Elsevier (Obsolete Version)"
+#~ msgstr "Elsevier (zastaralá verzia)"
+
+#~ msgid "Author Option"
+#~ msgstr "Voľba Autor"
+
+#~ msgid "Optional argument for the author"
+#~ msgstr "Nepovinný argument pre autora"
+
+#~ msgid "Thanks Option"
+#~ msgstr "Voľba Vďaky"
+
+#~ msgid "Optional argument for the thanks statement"
+#~ msgstr "Nepovinný argument príkazu vďaka"
+
+#~ msgid "Elsevier"
+#~ msgstr "Elsevier"
+
+#~ msgid "BeginFrontmatter"
+#~ msgstr "BeginFrontmatter"
+
+#~ msgid "Begin frontmatter"
+#~ msgstr "Začiatok frontmatter"
+
+#~ msgid "EndFrontmatter"
+#~ msgstr "EndFrontmatter"
+
+#~ msgid "End frontmatter"
+#~ msgstr "Koniec frontmatter"
+
+#~ msgid "Footnote Label"
+#~ msgstr "Návestie Poznámky pod čiarou"
+
+#~ msgid "Label you refer to in the title"
+#~ msgstr "Návestie na ktoré sa v titule vzťahujete"
+
+#~ msgid "Author Label"
+#~ msgstr "Návestie Autora"
+
+#~ msgid "Label you will reference in the address"
+#~ msgstr "Návestie na ktoré sa v adrese chcete vzťahovať"
+
+#~ msgid "Author Footnote Label"
+#~ msgstr "Autor Návestia Poznámky pod čiarou"
+
+#~ msgid "Label you refer to for an author"
+#~ msgstr "Návestie pre autora na ktoré sa vzťahujete"
+
+#~ msgid "Address Label"
+#~ msgstr "Návestie Adresy"
+
+#~ msgid "Label of the author you refer to"
+#~ msgstr "Návestie autora na ktorého sa vzťahujete"
+
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgid "if content is 'url', email becomes an Internet address"
+#~ msgstr "Keď obsah je 'url', e-mail sa zmení na internetovú adresu"
+
+#~ msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
+#~ msgstr "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
+
+#~ msgid "Europe CV"
+#~ msgstr "Europe CV"
+
+#~ msgid "Curricula Vitae"
+#~ msgstr "Životopisy"
+
+#~ msgid "FooterName"
+#~ msgstr "FooterName"
+
+#~ msgid "Footer name:"
+#~ msgstr "Meno v päte:"
+
+#~ msgid "Nationality"
+#~ msgstr "Nationality"
+
+#~ msgid "Nationality:"
+#~ msgstr "Národnosť:"
+
+#~ msgid "Birthday"
+#~ msgstr "Birthday"
+
+#~ msgid "Date of birth:"
+#~ msgstr "Dátum narodenia:"
+
+#~ msgid "Mobile phone number"
+#~ msgstr "Telefónne číslo mobilu"
+
+#~ msgid "Gender"
+#~ msgstr "Gender"
+
+#~ msgid "Gender:"
+#~ msgstr "Pohlavie:"
+
+#~ msgid "BeforePicture"
+#~ msgstr "BeforePicture"
+
+#~ msgid "Space before picture:"
+#~ msgstr "Medzera pred obrázkom:"
+
+#~ msgid "Picture"
+#~ msgstr "Picture"
+
+#~ msgid "Picture:"
+#~ msgstr "Obrázok:"
+
+#~ msgid "Size"
+#~ msgstr "Veľkosť"
+
+#~ msgid "Size the photo is resized to"
+#~ msgstr "Výstupná veľkosť fotografie"
+
+#~ msgid "AfterPicture"
+#~ msgstr "AfterPicture"
+
+#~ msgid "Space after picture:"
+#~ msgstr "Medzera za obrázkom:"
+
+#~ msgid "The title as it appears in the header"
+#~ msgstr "Titul ako sa zobrazí v hlavičke"
+
+#~ msgid "Additional vertical space"
+#~ msgstr "Prídavná vertikálna medzera"
+
+#~ msgid "Summary of the item, can also be the time"
+#~ msgstr "Sumár objektu, môže byť aj čas"
+
+#~ msgid "Name of the language"
+#~ msgstr "Pomenovanie jazyka"
+
+#~ msgid "Listening"
+#~ msgstr "Počúvanie"
+
+#~ msgid "Level how good you think you can listen"
+#~ msgstr "Úroveň čo si myslíte ako dobre dokážete počúvať"
+
+#~ msgid "Reading"
+#~ msgstr "Čítanie"
+
+#~ msgid "Level how good you think you can read"
+#~ msgstr "Úroveň čo si myslíte ako dobre dokážete čítať"
+
+#~ msgid "Interaction"
+#~ msgstr "interakcia"
+
+#~ msgid "Level how good you think you can conversate"
+#~ msgstr "Úroveň čo si myslíte ako dobre sa rozprávate"
+
+#~ msgid "Production"
+#~ msgstr "Produkcia"
+
+#~ msgid "Level how good you think you can freely talk"
+#~ msgstr "Úroveň čo si myslíte ako dobre viete voľne hovoriť"
+
+#~ msgid "VerticalSpace"
+#~ msgstr "VerticalSpace"
+
+#~ msgid "Vertical space"
+#~ msgstr "Vertikálna medzera"
+
+#~ msgid "Article (Standard Class with Extra Font Sizes)"
+#~ msgstr "Article (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#~ msgid "Book (Standard Class with Extra Font Sizes)"
+#~ msgstr "Book (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#~ msgid "Letter (Standard Class with Extra Font Sizes)"
+#~ msgstr "Letter (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#~ msgid "Report (Standard Class with Extra Font Sizes)"
+#~ msgstr "Report (Štandardná trieda s ďalšími veľkosťami písma)"
+
+#~ msgid "FoilTeX"
+#~ msgstr "FoilTeX"
+
+#~ msgid "French Letter (frletter)"
+#~ msgstr "Francúzsky list (frletter)"
+
+#~ msgid "G-Brief (V. 1, Obsolete)"
+#~ msgstr "G-Brief (V. 1, zastaralé)"
+
+#~ msgid "G-Brief (V. 2)"
+#~ msgstr "G-Brief (V. 2)"
+
+#~ msgid "Hebrew Article"
+#~ msgstr "Hebrejský článok"
+
+#~ msgid "Hebrew Letter"
+#~ msgstr "Hebrejský list"
+
+#~ msgid "Hollywood"
+#~ msgstr "Hollywood"
+
+#~ msgid "Int. Journal of Modern Physics C"
+#~ msgstr "Int. Journal of Modern Physics C"
+
+#~ msgid "Author Names"
+#~ msgstr "Mená Autorov"
+
+#~ msgid "Author names that will appear in the header line"
+#~ msgstr "Mená autorov ktoré sa zobrazia v riadku hlavičky"
+
+#~ msgid "Numbering Scheme"
+#~ msgstr "Schéma Číslovania"
+
+#~ msgid ""
+#~ "Use the largest item number in your list, e.g. '(iv)' for 4 Roman "
+#~ "numbered items"
+#~ msgstr ""
+#~ "Použite číslo najväčšieho člena vašej listiny, napr. '(iv)' pre 4 rímsky "
+#~ "číslované členy"
+
+#~ msgid "Int. Journal of Modern Physics D"
+#~ msgstr "Int. Journal of Modern Physics D"
+
+#~ msgid "Institute of Physics (IOP)"
+#~ msgstr "Institute of Physics (IOP)"
+
+#~ msgid "Short title that will appear in header line"
+#~ msgstr "Krátky titul ktorý sa zobrazí v riadku hlavičky"
+
+#~ msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
+#~ msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
+
+#~ msgid "Japanese Article (jarticle)"
+#~ msgstr "Japonský článok (jarticle)"
+
+#~ msgid "Journal of the Acoustical Society of America (JASA)"
+#~ msgstr "Journal of the Acoustical Society of America (JASA)"
+
+#~ msgid "Affiliation Prefix"
+#~ msgstr "Prefix Príslušenstva"
+
+#~ msgid "A prefix like 'Also at '"
+#~ msgstr "Prefix ako napr. 'Aj na '"
+
+#~ msgid "Japanese Book (jbook)"
+#~ msgstr "Japonská kniha (jbook)"
+
+#~ msgid "American Geophysical Union (AGUPLUS JGR)"
+#~ msgstr "American Geophysical Union (AGUPLUS JGR)"
+
+#~ msgid "Japanese Report (jreport)"
+#~ msgstr "Japonský referát (jreport)"
+
+#~ msgid "Japanese Article (jsarticle)"
+#~ msgstr "Japonský článok (jsarticle)"
+
+#~ msgid "Japanese Book (jsbook)"
+#~ msgstr "Japonská kniha (jsbook)"
+
+#~ msgid "Journal of Statistical Software (JSS)"
+#~ msgstr "Journal of Statistical Software (JSS)"
+
+#~ msgid "Kluwer"
+#~ msgstr "Kluwer"
+
+#~ msgid "Latex8 Article (Obsolete)"
+#~ msgstr "Latex8 článok (zastaralý)"
+
+#~ msgid "Letter (Standard Class)"
+#~ msgstr "Letter (Štandardná trieda)"
+
+#~ msgid "French Letter (lettre)"
+#~ msgstr "Francúzsky list (lettre)"
+
+#~ msgid "Lecture Notes in Comp. Science (LNCS)"
+#~ msgstr "Lecture Notes in Comp. Science (LNCS)"
+
+#~ msgid "TUGboat"
+#~ msgstr "TUGboat"
+
+#~ msgid "Memoir"
+#~ msgstr "Memoir"
+
+#~ msgid "Short Title (TOC)|S"
+#~ msgstr "Krátky Titul(zoznam)"
+
+#~ msgid "The chapter as it appears in the table of contents"
+#~ msgstr "Kapitola ako sa zobrazí v zozname"
+
+#~ msgid "Short Title (Header)"
+#~ msgstr "Krátky titul (hlavička)"
+
+#~ msgid "The chapter as it appears in the running headers"
+#~ msgstr "Kapitola ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The section as it appears in the table of contents"
+#~ msgstr "Sekcia ako sa zobrazí v zozname"
+
+#~ msgid "The section as it appears in the running headers"
+#~ msgstr "Sekcia ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The subsection as it appears in the table of contents"
+#~ msgstr "Podsekcia ako sa zobrazí v zozname"
+
+#~ msgid "The subsection as it appears in the running headers"
+#~ msgstr "Podsekcia ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The subsubsection as it appears in the table of contents"
+#~ msgstr "Podpodsekcia ako sa zobrazí v zozname"
+
+#~ msgid "The subsubsection as it appears in the running headers"
+#~ msgstr "Podpodsekcia ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The paragraph as it appears in the table of contents"
+#~ msgstr "Odstavec ako sa zobrazí v zozname"
+
+#~ msgid "The paragraph as it appears in the running headers"
+#~ msgstr "Odstavec ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The subparagraph as it appears in the table of contents"
+#~ msgstr "Pododstavec ako sa zobrazí v zozname"
+
+#~ msgid "The subparagraph as it appears in the running headers"
+#~ msgstr "Pododstavec ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "The poem title as it appears in the table of contents"
+#~ msgstr "Titul básne ako sa zobrazí v zozname"
+
+#~ msgid "The poem title as it appears in the running headers"
+#~ msgstr "Titul básne ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "Modern CV"
+#~ msgstr "Modern CV"
+
+#~ msgid "Height the photo is resized to"
+#~ msgstr "Výstupná výška fotografie"
+
+#~ msgid "Thickness"
+#~ msgstr "Hrúbka"
+
+#~ msgid "Thickness of the surrounding frame"
+#~ msgstr "Hrúbka obklopujúceho rámu"
+
+#~ msgid "Time"
+#~ msgstr "Čas"
+
+#~ msgid "What?"
+#~ msgstr "Čo?"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Left summary"
+#~ msgstr "Ľavý súhrn"
+
+#~ msgid "Left text"
+#~ msgstr "Ľavý text"
+
+#~ msgid "Right summary"
+#~ msgstr "Pravý súhrn"
+
+#~ msgid "First Item"
+#~ msgstr "Prvá položka"
+
+#~ msgid "Company name"
+#~ msgstr "Meno firmy"
+
+#~ msgid "Alternative name"
+#~ msgstr "Alternatívne meno"
+
+#~ msgid "Alternative instead of 'Enclosure'"
+#~ msgstr "Alternatíva miesto 'Príloha'"
+
+#~ msgid "Polish Article (MW Bundle)"
+#~ msgstr "Poľský článok (MW balík)"
+
+#~ msgid "Polish Book (MW Bundle)"
+#~ msgstr "Poľská kniha (MW balík)"
+
+#~ msgid "Polish Report (MW Bundle)"
+#~ msgstr "Poľský referát (MW balík)"
+
+#~ msgid "Paper (Standard Class)"
+#~ msgstr "Paper (Štandardná trieda)"
+
+#~ msgid "Powerdot"
+#~ msgstr "Powerdot"
+
+#~ msgid "Slide Option"
+#~ msgstr "Voľba Fólia"
+
+#~ msgid "Optional arguments to the slide command (see powerdot manual)"
+#~ msgstr "Nepovinný argument pre príkaz fólia (viď powerdot manuál)"
+
+#~ msgid "Recipe Book"
+#~ msgstr "Receptár"
+
+#~ msgid "Ingredients Header"
+#~ msgstr "Hlavička Prísady"
+
+#~ msgid "Specify an optional ingredients header"
+#~ msgstr "Urči nepovinnú hlavičku prísad"
+
+#~ msgid "Report (Standard Class)"
+#~ msgstr "Report (Štandardná trieda)"
+
+#~ msgid "REVTeX (Obsolete Version)"
+#~ msgstr "REVTeX (zastaralá verzia)"
+
+#~ msgid "REVTeX (V. 4.1)"
+#~ msgstr "REVTeX (V. 4.1)"
+
+#~ msgid "Affiliation (alternate)"
+#~ msgstr "Príslušenstvo(alternatívne)"
+
+#~ msgid "Affiliation (alternate):"
+#~ msgstr "Príslušenstvo(alternatívne):"
+
+#~ msgid "Alternate Affiliation Option"
+#~ msgstr "Voľba Alternatívne Príslušenstvo"
+
+#~ msgid "Optional argument to the altaffiliation command"
+#~ msgstr "Nepovinný argument pre príkaz alternatívne príslušenstvo"
+
+#~ msgid "Affiliation (none)"
+#~ msgstr "Príslušenstvo(žiadne)"
+
+#~ msgid "No affiliation"
+#~ msgstr "Bez príslušenstva"
+
+#~ msgid "Electronic Address Option|s"
+#~ msgstr "Voľba elektronická adresa"
+
+#~ msgid "Optional argument to the email command"
+#~ msgstr "Nepovinný argument pre príkaz email"
+
+#~ msgid "Author URL Option"
+#~ msgstr "Voľba URL Autora"
+
+#~ msgid "Optional argument to the homepage command"
+#~ msgstr "Nepovinný argument pre referenciu na domácu stránku"
+
+#~ msgid "Collaboration"
+#~ msgstr "Spolupráca"
+
+#~ msgid "Collaboration:"
+#~ msgstr "Spolupráca:"
+
+#~ msgid "Short title as it appears in the running headers"
+#~ msgstr "Krátky titul ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "Ruled Table"
+#~ msgstr "Pevná Tabuľka"
+
+#~ msgid "Turn Page"
+#~ msgstr "Obrátiť Stránku"
+
+#~ msgid "Wide Text"
+#~ msgstr "Široký Text"
+
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgid "List of Videos"
+#~ msgstr "Zoznam Videí"
+
+#~ msgid "Float Link"
+#~ msgstr "Plávajúci odkaz"
+
+#~ msgid "REVTeX (V. 4)"
+#~ msgstr "REVTeX (V. 4)"
+
+#~ msgid "KOMA-Script Article"
+#~ msgstr "KOMA-Script článok"
+
+#~ msgid "Beamer Article (KOMA-Script)"
+#~ msgstr "Beamer článok (KOMA-Script)"
+
+#~ msgid "KOMA-Script Book"
+#~ msgstr "KOMA-Script kniha"
+
+#~ msgid "KOMA-Script Letter (V. 1, Obsolete)"
+#~ msgstr "KOMA-Script list (V. 1, zastaralý)"
+
+#~ msgid "KOMA-Script Letter (V. 2)"
+#~ msgstr "KOMA-Script list (V. 2)"
+
+#~ msgid "KOMA-Script Report"
+#~ msgstr "KOMA-Script referát"
+
+#~ msgid "Seminar"
+#~ msgstr "Seminar"
+
+#~ msgid "Society for Industrial and Applied Mathematics (SIAM)"
+#~ msgstr "Society for Industrial and Applied Mathematics (SIAM)"
+
+#~ msgid "The title as it appears in the running headers"
+#~ msgstr "Titul ako sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "ACM SIGPLAN"
+#~ msgstr "ACM SIGPLAN"
+
+#~ msgid "Name of the conference"
+#~ msgstr "Meno konferencie"
+
+#~ msgid "TitleBanner"
+#~ msgstr "TitleBanner"
+
+#~ msgid "Title banner:"
+#~ msgstr "Titul záhlavia:"
+
+#~ msgid "PreprintFooter"
+#~ msgstr "PreprintFooter"
+
+#~ msgid "Preprint footer:"
+#~ msgstr "Predtlač päta:"
+
+#~ msgid "Affiliation and/or address of the author"
+#~ msgstr "Príslušenstvo a/alebo adresa autora"
+
+#~ msgid "Simple CV"
+#~ msgstr "Simple CV"
+
+#~ msgid "Inderscience 9.5 x 6.5 Journals"
+#~ msgstr "Inderscience časopisy (9.5 x 6.5)"
+
+#~ msgid "Inderscience Journals (Obsolete Version)"
+#~ msgstr "Inderscience časopisy (zastaralá verzia)"
+
+#~ msgid "Slides"
+#~ msgstr "Fólie"
+
+#~ msgid "SPIE Proceedings"
+#~ msgstr "SPIE rokovacie zväzky"
+
+#~ msgid "Springer SV Global (Obsolete Version)"
+#~ msgstr "Springer SV Global (zastaralá Verzia)"
+
+#~ msgid "Headnote"
+#~ msgstr "Hlavičková poznámka"
+
+#~ msgid "Headnote (optional):"
+#~ msgstr "Hlavičková poznámka (nepovinná):"
+
+#~ msgid "thanks"
+#~ msgstr "vďaka"
+
+#~ msgid "Inst"
+#~ msgstr "Inst"
+
+#~ msgid "Institute #"
+#~ msgstr "Inštitút #"
+
+#~ msgid "Corr Author:"
+#~ msgstr "Zodpovedný Autor:"
+
+#~ msgid "Offprints"
+#~ msgstr "Odtlačky"
+
+#~ msgid "Offprints:"
+#~ msgstr "Odtlačky:"
+
+#~ msgid "Springer SV Global (V. 3)"
+#~ msgstr "Springer SV Global (V. 3)"
+
+#~ msgid "Springer SV Jour/Jog"
+#~ msgstr "Springer SV Jour/Jog"
+
+#~ msgid "Springer SV Mono"
+#~ msgstr "Springer SV Mono"
+
+#~ msgid "Springer SV Mult"
+#~ msgstr "Springer SV Mult"
+
+#~ msgid "Springer SV Jour/PTRF"
+#~ msgstr "Springer SV Jour/PTRF"
+
+#~ msgid "Japanese Article (Vertical Writing)"
+#~ msgstr "Japonský článok (vertikálne písanie)"
+
+#~ msgid "Japanese Book (Vertical Writing)"
+#~ msgstr "Japonská kniha (vertikálne písanie)"
+
+#~ msgid "Japanese Report (Vertical Writing)"
+#~ msgstr "Japonský referát (vertikálne písanie)"
+
+#~ msgid "Tufte Book"
+#~ msgstr "Tufte kniha"
+
+#~ msgid "The chapter as it appears in the table of contents/running headers"
+#~ msgstr "Kapitola ako sa zobrazí v zozname/priebežných hlavičkách"
+
+#~ msgid "Tufte Handout"
+#~ msgstr "Tufte Handout"
+
+#~ msgid "Handouts"
+#~ msgstr "Handouts"
+
+#~ msgid "Short title which appears in the running headers"
+#~ msgstr "Krátky titul ktorý sa zobrazí v priebežných hlavičkách"
+
+#~ msgid "Dictum Author"
+#~ msgstr "Autor výroku"
+
+#~ msgid "The author of this dictum"
+#~ msgstr "Autor tohto výroku"
+
+#~ msgid "Listings[[List of Listings]]"
+#~ msgstr "Zoznam výpisov"
+
+#~ msgid "Listings[[inset]]"
+#~ msgstr "Nastavenie výpisov"
+
+#~ msgid "Argument"
+#~ msgstr "Argument"
+
+#~ msgid "Part Title"
+#~ msgstr "Časť Titul"
+
+#~ msgid "Title of this part"
+#~ msgstr "Titul tejto časti"
+
+#~ msgid "Alternative Name"
+#~ msgstr "Alternatívne meno"
+
+#~ msgid "Longest Description Label"
+#~ msgstr "Najdlhšie Návestie Opisu"
+
+#~ msgid "Longest description label"
+#~ msgstr "Najdlhšie návestie opisu"
+
+#~ msgid "Alternative Theorem String"
+#~ msgstr "Alternatívny reťazec teorémy"
+
+#~ msgid "Alternative theorem string"
+#~ msgstr "Alternatívny reťazec teorémy"
+
+#~ msgid "Alternative proof string"
+#~ msgstr "Alternatívny reťazec dôkazu"
+
+#~ msgid "Name/Title"
+#~ msgstr "Meno/Titul"
+
+#~ msgid "Alternative optional name or title"
+#~ msgstr "Alternatívne nepovinné meno alebo titul"
+
+#~ msgid "Label of Problem"
+#~ msgstr "Návestie Problému"
+
+#~ msgid "Label of the corresponding problem"
+#~ msgstr "Návestie korešpondujúceho problému"
+
+#~ msgid "Default (basic)"
+#~ msgstr "Štd. (basic)"
+
+#~ msgid "Citation engine"
+#~ msgstr "Správa citácie"
+
+#~ msgid "Multilingual captions"
+#~ msgstr "Viac-jazykové popisy"
+
+#~ msgid ""
+#~ "Provides two styles to typeset multilingual captions. For a description "
+#~ "see the file MultilingualCaptions.lyx in LyX's examples folder."
+#~ msgstr ""
+#~ "Poskytuje dva štýly na sádzanie viac-jazykových popisov. Pre vysvetlenie "
+#~ "pozri súbor MultilingualCaptions.lyx v adresári príkladov."
+
+#~ msgid "Caption setup"
+#~ msgstr "Popis nastavenie"
+
+#~ msgid "Caption Setup Options|S"
+#~ msgstr "Voľby pre nastavenie popisu"
+
+#~ msgid "Options for the caption setup command (see bicaption manual)"
+#~ msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
+
+#~ msgid "Caption setup:"
+#~ msgstr "Popis nastavenie:"
+
+#~ msgid "Bicaption"
+#~ msgstr "Bicaption"
+
+#~ msgid "Second Language Caption Short Title"
+#~ msgstr "Druhý Jazyk Popis Krátky Titul"
+
+#~ msgid "A short title (for list of figures/tables) in the second language"
+#~ msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v druhom jazyku"
+
+#~ msgid "Second Language Caption Text|S"
+#~ msgstr "Druhý Jazyk Popis Text"
+
+#~ msgid "The caption text in the second language"
+#~ msgstr "Text popisu v druhom jazyku"
+
+#~ msgid "Main Language Caption Short Title"
+#~ msgstr "Hlavný Jazyk Popis Krátky Titul"
+
+#~ msgid "A short title (for list of figures/tables) in the main language"
+#~ msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v hlavnom jazyku"
+
+#~ msgid "Multilingual caption:"
+#~ msgstr "Viac-jazykový popis:"
+
+#~ msgid "Even Header"
+#~ msgstr "Párna Hlavička"
+
+#~ msgid "Alternative text for the even header"
+#~ msgstr "Alternatívny text pre párnu hlavičku"
+
+#~ msgid "Itemize Options"
+#~ msgstr "Parametre pre položky"
+
+#~ msgid "Optional arguments for this list (see enumitem manual)"
+#~ msgstr "Nepovinné argumenty pre túto listinu (viď enumitem manuál)"
+
+#~ msgid "Enumerate Options"
+#~ msgstr "Parametre pre číslovanie"
+
+#~ msgid "Description Options"
+#~ msgstr "Parametre pre opis"
+
+#~ msgid "Initial Option"
+#~ msgstr "Voľba Iniciálka"
+
+#~ msgid "Optional argument for initial (see lettrine manual)"
+#~ msgstr "Nepovinný argument pre iniciálku (viď lettrine manuál)"
+
+#~ msgid "Initial letter"
+#~ msgstr "Iniciálna litera"
+
+#~ msgid "Jurabib"
+#~ msgstr "Jurabib"
+
+#~ msgid "bibliography entry"
+#~ msgstr "zápis do bibliografie"
+
+#~ msgid "Bibliography entry."
+#~ msgstr "Zápis do bibliografie."
+
+#~ msgid "short title"
+#~ msgstr "krátky titul"
+
+#~ msgid "Multiple Columns"
+#~ msgstr "Viac Stĺpcové"
+
+#~ msgid ""
+#~ "Adds 2 styles to begin and end text in multiple columns. The begin style "
+#~ "contains the number of columns, the end style must be kept empty. See the "
+#~ "Additional manual for a detailed description of multiple columns."
+#~ msgstr ""
+#~ "Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. "
+#~ "Začiatočný štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. "
+#~ "Pozri špecifické manuály pre detailné vysvetlenie viac-stĺpcového "
+#~ "prostredia."
+
+#~ msgid "Begin Multiple Columns"
+#~ msgstr "Začiatok viac-stĺpcového prostredia"
+
+#~ msgid "---Begin Multiple Columns---"
+#~ msgstr "--Počiatok Viac-Stĺpcového Prostredia--"
+
+#~ msgid "End Multiple Columns"
+#~ msgstr "Koniec Viac-Stĺpcového Prostredia"
+
+#~ msgid "---End Multiple Columns---"
+#~ msgstr "--Koniec Viac-Stĺpcového Prostredia--"
+
+#~ msgid "Natbib"
+#~ msgstr "Natbib"
+
+#~ msgid "Risk and Safety Statements"
+#~ msgstr "Rizikové a Poistné Uzávierky"
+
+#~ msgid ""
+#~ "Provides two insets and one environment to typeset numbers and phrases of "
+#~ "chemical risk and safety statements. For a description see the file R-S-"
+#~ "statements.lyx in LyX's examples folder."
+#~ msgstr ""
+#~ "Poskytuje dve vložky a jedno prostredie na sádzanie čísiel a zvratov pre "
+#~ "poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozri súbor R-S-"
+#~ "statements.lyx v adresári príkladov."
+
+#~ msgid "R-S number"
+#~ msgstr "R-P číslo"
+
+#~ msgid "R-S phrase"
+#~ msgstr "R-P zvrat"
+
+#~ msgid "Safety phrase"
+#~ msgstr "Poistný zvrat"
+
+#~ msgid "Safety Phrase Option|S"
+#~ msgstr "Voľba Poistný Zvrat"
+
+#~ msgid "Optional argument to the rsphrase command"
+#~ msgstr "Nepovinný argument pre príkaz rsphrase"
+
+#~ msgid "S phrase:"
+#~ msgstr "P zvrat:"
+
+#~ msgid "Greek (ancient)"
+#~ msgstr "Grécky (antický)"
+
+#~ msgid "English (Australia)"
+#~ msgstr "Anglicky (Austrália)"
+
+#~ msgid "Coptic"
+#~ msgstr "Koptčinsky"
+
+#~ msgid "Divehi (Maldivian)"
+#~ msgstr "Divehi (Maledivy)"
+
+#~ msgid "Hindi"
+#~ msgstr "Hindčinsky"
+
+#~ msgid "Kurmanji"
+#~ msgstr "Kurdsky (Kurmancî)"
+
+#~ msgid "Marathi"
+#~ msgstr "Máráthčinsky"
+
+#~ msgid "English (New Zealand)"
+#~ msgstr "Anglicky (Nový Zéland)"
+
+#~ msgid "Occitan"
+#~ msgstr "Okcitánčinsky"
+
+#~ msgid "Sanskrit"
+#~ msgstr "Sanskrit (stará indoárijčina)"
+
+#~ msgid "Syriac"
+#~ msgstr "Syriac (stredoveká hebrejčina)"
+
+#~ msgid "Urdu"
+#~ msgstr "Urdsky"
+
+#~ msgid "URW Garamond"
+#~ msgstr "URW Garamond"
+
+#~ msgid "Libertine"
+#~ msgstr "Libertine"
+
+#~ msgid "Bitstream Charter (Mathdesign)"
+#~ msgstr "Bitstream Charter (Mathdesign)"
+
+#~ msgid "Utopia (Mathdesign)"
+#~ msgstr "Utopia (Mathdesign)"
+
+#~ msgid "URW Garamond (Mathdesign)"
+#~ msgstr "URW Garamond (Mathdesign)"
+
+#~ msgid "Minion Pro"
+#~ msgstr "Minion Pro"
+
+#~ msgid "TeX Gyre Bonum"
+#~ msgstr "TeX Gyre Bonum"
+
+#~ msgid "TeX Gyre Chorus"
+#~ msgstr "TeX Gyre Chorus"
+
+#~ msgid "TeX Gyre Pagella"
+#~ msgstr "TeX Gyre Pagella"
+
+#~ msgid "TeX Gyre Schola"
+#~ msgstr "TeX Gyre Schola"
+
+#~ msgid "TeX Gyre Termes"
+#~ msgstr "TeX Gyre Termes"
+
+#~ msgid "Utopia (Fourier)"
+#~ msgstr "Utopia (Fourier)"
+
+#~ msgid "Biolinum"
+#~ msgstr "Biolinum"
+
+#~ msgid "TeX Gyre Adventor"
+#~ msgstr "TeX Gyre Adventor"
+
+#~ msgid "TeX Gyre Heros"
+#~ msgstr "TeX Gyre Heros"
+
+#~ msgid "URW Classico (Optima)"
+#~ msgstr "URW Classico (Optima)"
+
+#~ msgid "TeX Gyre Cursor"
+#~ msgstr "TeX Gyre Cursor"
+
+#~ msgid "TX Typewriter"
+#~ msgstr "TX Typewriter"
+
+# euler virtual math fonts
+#~ msgid "Euler VM"
+#~ msgstr "Euler VM"
+
+#~ msgid "URW Garamond (New TX)"
+#~ msgstr "URW Garamond (New TX)"
+
+#~ msgid "Libertine (New TX)"
+#~ msgstr "Libertine (New TX)"
+
+#~ msgid "Minion Pro (New TX)"
+#~ msgstr "Minion Pro (New TX)"
+
+#~ msgid "Times Roman (New TX)"
+#~ msgstr "Times Roman (New TX)"
+
+#~ msgid "Visible Space|a"
+#~ msgstr "Viditeľná Medzera|a"
+
+#~ msgid "Close Current View"
+#~ msgstr "Zavri Aktuálny Náhľad"
+
+#~ msgid "Activate Branch in Master|M"
+#~ msgstr "Aktivuj vetvu v hlavnom dokumente|H"
+
+#~ msgid "Deactivate Branch in Master|v"
+#~ msgstr "Dezaktivuj vetvu v hlavnom dokumente|v"
+
+#~ msgid "Add Unknown Branch|w"
+#~ msgstr "Pridaj Neznámu vetvu"
+
+#~ msgid "Export As...|s"
+#~ msgstr "Exportuj Ako..."
+
+#~ msgid "Unformatted Text|U"
+#~ msgstr "Neformátovaný Text"
+
+#~ msgid "Unformatted, Join Lines|o"
+#~ msgstr "Neformátované, Riadky Spojiť"
+
+#~ msgid "Outline Pane|u"
+#~ msgstr "Políčko prehľad"
+
+#~ msgid "Source Pane|S"
+#~ msgstr "Políčko zdrojový text"
+
+#~ msgid "Visible Space|i"
+#~ msgstr "Viditeľná Medzera|i"
+
+#~ msgid "List of Listings|L"
+#~ msgstr "Zoznam Výpisov"
+
+#~ msgid "Braille|B"
+#~ msgstr "Braille|B"
+
+#~ msgid "Knitr|K"
+#~ msgstr "Knitr|K"
+
+#~ msgid "LilyPond|P"
+#~ msgstr "LilyPond|P"
+
+#~ msgid "Linguistics|L"
+#~ msgstr "Lingvistika|L"
+
+#~ msgid "Multilingual Captions|C"
+#~ msgstr "Viac-jazykové popisy|J"
+
+#~ msgid "Risk and Safety Statements|R"
+#~ msgstr "Rizikové a Poistné Uzávierky|R"
+
+#~ msgid "Insert LyX note"
+#~ msgstr "Vložiť LyX zápis"
+
+#~ msgid "Rotate cell by 90 degrees or unset rotation"
+#~ msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
+
+#~ msgid "Rotate table by 90 degrees or unset rotation"
+#~ msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
+
+#~ msgid "Phonetic Symbols"
+#~ msgstr "Fonetické Symboly"
+
+#~ msgid "IPA Pulmonic Consonants"
+#~ msgstr "IPA Pulmonické Spoluhlásky"
+
+#~ msgid "IPA Non-Pulmonic Consonants"
+#~ msgstr "IPA Nepulmonické Spoluhlásky"
+
+#~ msgid "IPA Vowels"
+#~ msgstr "IPA Samohlásky"
+
+#~ msgid "IPA Other Symbols"
+#~ msgstr "IPA Iné Symboly"
+
+#~ msgid "IPA Suprasegmentals"
+#~ msgstr "IPA Suprasegmentály"
+
+#~ msgid "IPA Diacritics"
+#~ msgstr "IPA Diakritické Znamienka"
+
+#~ msgid "IPA Tones and Word Accents"
+#~ msgstr "IPA Tóny a Slovné Prízvuky"
+
+#~ msgid "Smash \\smash"
+#~ msgstr "Nulovať(výšku a hĺbku) \\smash"
+
+#~ msgid "Left overlap \\mathllap"
+#~ msgstr "Prekrytie doľava \\mathllap"
+
+#~ msgid "Center overlap \\mathclap"
+#~ msgstr "Prekrytie na stred \\mathclap"
+
+#~ msgid "Right overlap \\mathrlap"
+#~ msgstr "Prekryte doprava \\mathrlap"
+
+#~ msgid "utilde"
+#~ msgstr "utilde"
+
+#~ msgid "cancel"
+#~ msgstr "preškrtnúť (s '/')"
+
+#~ msgid "bcancel"
+#~ msgstr "preškrtnúť (s '\\')"
+
+#~ msgid "xcancel"
+#~ msgstr "preškrtnúť (s 'X')"
+
+#~ msgid "cancelto"
+#~ msgstr "preškrtnúť až po"
+
+#~ msgid "Voiceless bilabial plosive"
+#~ msgstr "Neznelá bilabiálna plozíva"
+
+#~ msgid "Voiced bilabial plosive"
+#~ msgstr "Znelá bilabiálna plozíva"
+
+#~ msgid "Voiceless alveolar plosive"
+#~ msgstr "Neznelá alveolárna plozíva"
+
+#~ msgid "Voiced alveolar plosive"
+#~ msgstr "Znelá alveolárna plozíva"
+
+#~ msgid "Voiceless retroflex plosive"
+#~ msgstr "Neznelá retroflexná plozíva"
+
+#~ msgid "Voiced retroflex plosive"
+#~ msgstr "Znelá retroflexná plozíva"
+
+#~ msgid "Voiceless palatal plosive"
+#~ msgstr "Neznelá palatálna plozíva"
+
+#~ msgid "Voiced palatal plosive"
+#~ msgstr "Znelá palatálna plozíva"
+
+#~ msgid "Voiceless velar plosive"
+#~ msgstr "Neznelá velárna plozíva"
+
+#~ msgid "Voiced velar plosive"
+#~ msgstr "Znelá velárna plozíva"
+
+#~ msgid "Voiceless uvular plosive"
+#~ msgstr "Neznelá uvulárna plozíva"
+
+#~ msgid "Voiced uvular plosive"
+#~ msgstr "Znelá uvulárna plozíva"
+
+#~ msgid "Glottal plosive"
+#~ msgstr "Glotálna plozíva"
+
+#~ msgid "Voiced bilabial nasal"
+#~ msgstr "Znelá bilabiálna nazála"
+
+#~ msgid "Voiced labiodental nasal"
+#~ msgstr "Znelá labiodentálna nazála"
+
+#~ msgid "Voiced alveolar nasal"
+#~ msgstr "Znelá alveolárna nazála"
+
+#~ msgid "Voiced retroflex nasal"
+#~ msgstr "Znelá retroflexná nazála"
+
+#~ msgid "Voiced palatal nasal"
+#~ msgstr "Znelá palatálna nazála"
+
+#~ msgid "Voiced velar nasal"
+#~ msgstr "Znelá velárna nazála"
+
+#~ msgid "Voiced uvular nasal"
+#~ msgstr "Znelá uvulárna nazála"
+
+#~ msgid "Voiced bilabial trill"
+#~ msgstr "Znelá bilabiálna vibranta"
+
+#~ msgid "Voiced alveolar trill"
+#~ msgstr "Znelá alveolárna vibranta"
+
+#~ msgid "Voiced uvular trill"
+#~ msgstr "Znelá uvulárna vibranta"
+
+#~ msgid "Voiced alveolar tap"
+#~ msgstr "Znelá alveolárna verberanta"
+
+#~ msgid "Voiced retroflex flap"
+#~ msgstr "Znelá retroflexná verberanta"
+
+#~ msgid "Voiceless bilabial fricative"
+#~ msgstr "Neznelá bilabiálna frikatíva"
+
+#~ msgid "Voiced bilabial fricative"
+#~ msgstr "Znelá bilabiálna frikatíva"
+
+#~ msgid "Voiceless labiodental fricative"
+#~ msgstr "Neznelá labiodentálna frikatíva"
+
+#~ msgid "Voiced labiodental fricative"
+#~ msgstr "Znelá labiodentálna frikatíva"
+
+#~ msgid "Voiceless dental fricative"
+#~ msgstr "Neznelá dentálna frikatíva"
+
+#~ msgid "Voiced dental fricative"
+#~ msgstr "Znelá dentálna frikatíva"
+
+#~ msgid "Voiceless alveolar fricative"
+#~ msgstr "Neznelá alveolárna frikatíva"
+
+#~ msgid "Voiced alveolar fricative"
+#~ msgstr "Znelá alveolárna frikatíva"
+
+#~ msgid "Voiceless postalveolar fricative"
+#~ msgstr "Neznelá postalveolárna frikatíva"
+
+#~ msgid "Voiced postalveolar fricative"
+#~ msgstr "Znelá postalveolárna frikatíva"
+
+#~ msgid "Voiceless retroflex fricative"
+#~ msgstr "Neznelá retroflexná frikatíva"
+
+#~ msgid "Voiced retroflex fricative"
+#~ msgstr "Znelá retroflexná frikatíva"
+
+#~ msgid "Voiceless palatal fricative"
+#~ msgstr "Neznelá palatálna frikatíva"
+
+#~ msgid "Voiced palatal fricative"
+#~ msgstr "Znelá palatálna frikatíva"
+
+#~ msgid "Voiceless velar fricative"
+#~ msgstr "Neznelá velárna frikatíva"
+
+#~ msgid "Voiced velar fricative"
+#~ msgstr "Znelá velárna frikatíva"
+
+#~ msgid "Voiceless uvular fricative"
+#~ msgstr "Neznelá uvulárna frikatíva"
+
+#~ msgid "Voiced uvular fricative"
+#~ msgstr "Znelá uvulárna frikatíva"
+
+#~ msgid "Voiceless pharyngeal fricative"
+#~ msgstr "Neznelá faryngálna frikatíva"
+
+#~ msgid "Voiced pharyngeal fricative"
+#~ msgstr "Znelá faryngálna frikatíva"
+
+#~ msgid "Voiceless glottal fricative"
+#~ msgstr "Neznelá glotálna frikatíva"
+
+#~ msgid "Voiced glottal fricative"
+#~ msgstr "Znelá glotálna frikatíva"
+
+#~ msgid "Voiceless alveolar lateral fricative"
+#~ msgstr "Neznelá alveolárna laterálna frikatíva"
+
+#~ msgid "Voiced alveolar lateral fricative"
+#~ msgstr "Znelá alveolárna laterálna frikatíva"
+
+#~ msgid "Voiced labiodental approximant"
+#~ msgstr "Znelá labiodentálna aproximanta"
+
+#~ msgid "Voiced alveolar approximant"
+#~ msgstr "Znelá alveolárna aproximanta"
+
+#~ msgid "Voiced retroflex approximant"
+#~ msgstr "Znelá retroflexná aproximanta"
+
+#~ msgid "Voiced palatal approximant"
+#~ msgstr "Znelá palatálna aproximanta"
+
+#~ msgid "Voiced velar approximant"
+#~ msgstr "Znelá velárna aproximanta"
+
+#~ msgid "Voiced alveolar lateral approximant"
+#~ msgstr "Znelá alveolárna laterálna aproximanta"
+
+#~ msgid "Voiced retroflex lateral approximant"
+#~ msgstr "Znelá retroflexná laterálna aproximanta"
+
+#~ msgid "Voiced palatal lateral approximant"
+#~ msgstr "Znelá palatálna laterálna aproximanta"
+
+#~ msgid "Voiced velar lateral approximant"
+#~ msgstr "Znelá velárna laterálna aproximanta"
+
+#~ msgid "Bilabial click"
+#~ msgstr "Bilabiálna mľaskavka"
+
+#~ msgid "Dental click"
+#~ msgstr "Dentálna mľaskavka"
+
+#~ msgid "(Post)alveolar click"
+#~ msgstr "Alveolárna mľaskavka"
+
+#~ msgid "Palatoalveolar click"
+#~ msgstr "Palatálna mľaskavka"
+
+#~ msgid "Alveolar lateral click"
+#~ msgstr "Laterálna mľaskavka"
+
+#~ msgid "Voiced bilabial implosive"
+#~ msgstr "Znelá bilabiálna implozíva"
+
+#~ msgid "Voiced dental/alveolar implosive"
+#~ msgstr "Znelá alveolárna implozíva"
+
+#~ msgid "Voiced palatal implosive"
+#~ msgstr "Znelá palatálna implozíva"
+
+#~ msgid "Voiced velar implosive"
+#~ msgstr "Znelá velárna implozíva"
+
+#~ msgid "Voiced uvular implosive"
+#~ msgstr "Znelá uvulárna implozíva"
+
+#~ msgid "Ejective mark"
+#~ msgstr "Značka ejektívy"
+
+#~ msgid "Close front unrounded vowel"
+#~ msgstr "Zatvorená predná neokrúhla samohláska"
+
+#~ msgid "Close front rounded vowel"
+#~ msgstr "Zatvorená predná okrúhla samohláska"
+
+#~ msgid "Close central unrounded vowel"
+#~ msgstr "Zatvorená stredná neokrúhla samohláska"
+
+#~ msgid "Close central rounded vowel"
+#~ msgstr "Zatvorená stredná okrúhla samohláska"
+
+#~ msgid "Close back unrounded vowel"
+#~ msgstr "Zatvorená zadná neokrúhla samohláska"
+
+#~ msgid "Close back rounded vowel"
+#~ msgstr "Zatvorená zadná okrúhla samohláska"
+
+#~ msgid "Near-close near-front unrounded vowel"
+#~ msgstr "Skoro-zatvorená skoro-predná neokrúhla samohláska"
+
+#~ msgid "Near-close near-front rounded vowel"
+#~ msgstr "Skoro-zatvorená skoro-predná okrúhla samohláska"
+
+#~ msgid "Near-close near-back rounded vowel"
+#~ msgstr "Skoro-zatvorená skoro-zadná okrúhla samohláska"
+
+#~ msgid "Close-mid front unrounded vowel"
+#~ msgstr "Stredo-zatvorená predná neokrúhla samohláska"
+
+#~ msgid "Close-mid front rounded vowel"
+#~ msgstr "Stredo-zatvorená predná okrúhla samohláska"
+
+#~ msgid "Close-mid central unrounded vowel"
+#~ msgstr "Stredo-zatvorená stredná neokrúhla samohláska"
+
+#~ msgid "Close-mid central rounded vowel"
+#~ msgstr "Stredo-zatvorená stredná okrúhla samohláska"
+
+#~ msgid "Close-mid back unrounded vowel"
+#~ msgstr "Stredo-zatvorená zadná neokrúhla samohláska"
+
+#~ msgid "Close-mid back rounded vowel"
+#~ msgstr "Stredo-zatvorená zadná okrúhla samohláska"
+
+#~ msgid "Mid-central vowel (Schwa)"
+#~ msgstr "Stredo-stredná samohláska (Schwa)"
+
+#~ msgid "Open-mid front unrounded vowel"
+#~ msgstr "Stredo-otvorená predná neokrúhla samohláska"
+
+#~ msgid "Open-mid front rounded vowel"
+#~ msgstr "Stredo-otvorená predná okrúhla samohláska"
+
+#~ msgid "Open-mid central unrounded vowel"
+#~ msgstr "Stredo-otvorená stredná neokrúhla samohláska"
+
+#~ msgid "Open-mid central rounded vowel"
+#~ msgstr "Stredo-otvorená stredná okrúhla samohláska"
+
+#~ msgid "Open-mid back unrounded vowel"
+#~ msgstr "Stredo-otvorená zadná neokrúhla samohláska"
+
+#~ msgid "Open-mid back rounded vowel"
+#~ msgstr "Stredo-otvorená zadná okrúhla samohláska"
+
+#~ msgid "Near-open front unrounded vowel"
+#~ msgstr "Skoro otvorená predná neokrúhla samohláska"
+
+#~ msgid "Near-open vowel"
+#~ msgstr "Skoro otvorená samohláska"
+
+#~ msgid "Open front unrounded vowel"
+#~ msgstr "Otvorená predná neokrúhla samohláska"
+
+#~ msgid "Open front rounded vowel"
+#~ msgstr "Otvorená predná okrúhla samohláska"
+
+#~ msgid "Open back unrounded vowel"
+#~ msgstr "Otvorená zadná neokrúhla samohláska"
+
+#~ msgid "Open back rounded vowel"
+#~ msgstr "Otvorená zadná okrúhla samohláska"
+
+#~ msgid "Voiceless labial-velar fricative"
+#~ msgstr "Neznelá labiovelárna aproximanta"
+
+#~ msgid "Voiced labial-velar approximant"
+#~ msgstr "Znelá labiovelárna aproximanta"
+
+#~ msgid "Voiced labial-palatal approximant"
+#~ msgstr "Labiopalatálna aproximanta"
+
+#~ msgid "Voiceless epiglottal fricative"
+#~ msgstr "Neznelá epiglotálna frikatíva"
+
+#~ msgid "Voiced epiglottal fricative"
+#~ msgstr "Znelá epiglotálna frikatíva"
+
+#~ msgid "Epiglottal plosive"
+#~ msgstr "Epiglotálna plozíva"
+
+#~ msgid "Voiceless alveolo-palatal fricative"
+#~ msgstr "Neznelá alveolopalatálna frikatíva"
+
+#~ msgid "Voiced alveolo-palatal fricative"
+#~ msgstr "Znelá alveolopalatálna frikatíva"
+
+#~ msgid "Voiced alveolar lateral flap"
+#~ msgstr "Znelá alveolárna laterárna verberanta"
+
+#~ msgid "Simultaneous voiceless postalveolar and velar fricative"
+#~ msgstr "Neznelá palatálnovelárna frikatíva"
+
+#~ msgid "Top tie bar"
+#~ msgstr "Spájajúci oblúk hore"
+
+#~ msgid "Bottom tie bar"
+#~ msgstr "Spájajúci oblúk dole"
+
+#~ msgid "Long"
+#~ msgstr "Trvanie dlhé"
+
+#~ msgid "Half-long"
+#~ msgstr "Polodlhé"
+
+#~ msgid "Extra short"
+#~ msgstr "Extra krátke"
+
+#~ msgid "Primary stress"
+#~ msgstr "Hlavný prízvuk"
+
+#~ msgid "Secondary stress"
+#~ msgstr "Vedľajší prízvuk"
+
+#~ msgid "Minor (foot) group"
+#~ msgstr "Podradená Skupina"
+
+#~ msgid "Major (intonation) group"
+#~ msgstr "Nadradená (intonačná) skupina"
+
+#~ msgid "Syllable break"
+#~ msgstr "Slabičná hranica"
+
+#~ msgid "Linking (absence of a break)"
+#~ msgstr "Spoj (neprítomnosť pauzy)"
+
+#~ msgid "Voiceless"
+#~ msgstr "Neznelo"
+
+#~ msgid "Voiceless (above)"
+#~ msgstr "Neznelo (ponad)"
+
+#~ msgid "Voiced"
+#~ msgstr "Znelo"
+
+#~ msgid "Breathy voiced"
+#~ msgstr "Šepkaným hlasom"
+
+#~ msgid "Creaky voiced"
+#~ msgstr "Vŕzganým hlasom"
+
+#~ msgid "Linguolabial"
+#~ msgstr "Jazyčno-perne"
+
+#~ msgid "Dental"
+#~ msgstr "Zubne"
+
+#~ msgid "Apical"
+#~ msgstr "Apikálne"
+
+#~ msgid "Laminal"
+#~ msgstr "Hrotom jazyka"
+
+#~ msgid "Aspirated"
+#~ msgstr "Vdychovane"
+
+#~ msgid "More rounded"
+#~ msgstr "Viac zaokrúhlene"
+
+#~ msgid "Less rounded"
+#~ msgstr "Menej zaokrúhlene"
+
+#~ msgid "Advanced"
+#~ msgstr "Predložene"
+
+#~ msgid "Retracted"
+#~ msgstr "Zatiahnuto"
+
+#~ msgid "Centralized"
+#~ msgstr "Centrované"
+
+#~ msgid "Mid-centralized"
+#~ msgstr "V strede centrované"
+
+#~ msgid "Syllabic"
+#~ msgstr "Slabičné"
+
+#~ msgid "Non-syllabic"
+#~ msgstr "Neslabičné"
+
+#~ msgid "Rhoticity"
+#~ msgstr "Anglická výslovnosť 'r'"
+
+#~ msgid "Labialized"
+#~ msgstr "Labializovane"
+
+#~ msgid "Palatized"
+#~ msgstr "Palatalizovane"
+
+#~ msgid "Velarized"
+#~ msgstr "Velarizovane"
+
+#~ msgid "Pharyngialized"
+#~ msgstr "Faryngalizovane"
+
+#~ msgid "Velarized or pharyngialized"
+#~ msgstr "Velarizovane alebo Faryngalizovane"
+
+#~ msgid "Raised"
+#~ msgstr "Stúpavé"
+
+#~ msgid "Lowered"
+#~ msgstr "Klesavé"
+
+#~ msgid "Advanced tongue root"
+#~ msgstr "Predpoložený koreň jazyka"
+
+#~ msgid "Retracted tongue root"
+#~ msgstr "Vtiahnutý koreň jazyka"
+
+#~ msgid "Nasalized"
+#~ msgstr "Nazalisovane"
+
+#~ msgid "Nasal release"
+#~ msgstr "Uvolnenie oklúzie"
+
+#~ msgid "Lateral release"
+#~ msgstr "Laterálne uvolnenie"
+
+#~ msgid "No audible release"
+#~ msgstr "Nezvučné uvolnenie"
+
+#~ msgid "Extra high (accent)"
+#~ msgstr "Extra vysoký prízvuk"
+
+#~ msgid "Extra high (tone letter)"
+#~ msgstr "Extra vysoký tón"
+
+#~ msgid "High (accent)"
+#~ msgstr "Vysoký prízvuk"
+
+#~ msgid "High (tone letter)"
+#~ msgstr "Vysoký tón"
+
+#~ msgid "Mid (accent)"
+#~ msgstr "Stredný prízvuk"
+
+#~ msgid "Mid (tone letter)"
+#~ msgstr "Stredný tón"
+
+#~ msgid "Low (accent)"
+#~ msgstr "Nízky prízvuk"
+
+#~ msgid "Low (tone letter)"
+#~ msgstr "Nízky tón"
+
+#~ msgid "Extra low (accent)"
+#~ msgstr "Extra nízky prízvuk"
+
+#~ msgid "Extra low (tone letter)"
+#~ msgstr "Extra nízky tón"
+
+#~ msgid "Downstep"
+#~ msgstr "Klesajúci"
+
+#~ msgid "Upstep"
+#~ msgstr "Stúpajúci"
+
+#~ msgid "Rising (accent)"
+#~ msgstr "Stúpavý prízvuk"
+
+#~ msgid "Rising (tone letter)"
+#~ msgstr "Stúpavý tón"
+
+#~ msgid "Falling (accent)"
+#~ msgstr "Klesavý prízvuk"
+
+#~ msgid "Falling (tone letter)"
+#~ msgstr "Klesavý tón"
+
+#~ msgid "High rising (accent)"
+#~ msgstr "Silne stúpavý prízvuk"
+
+#~ msgid "High rising (tone letter)"
+#~ msgstr "Silne stúpavý tón"
+
+#~ msgid "Low rising (accent)"
+#~ msgstr "Slabo stúpavý prízvuk"
+
+#~ msgid "Low rising (tone letter)"
+#~ msgstr "Silne klesavý tón"
+
+#~ msgid "Rising-falling (accent)"
+#~ msgstr "Stúpavo-klesavý prízvuk"
+
+#~ msgid "Rising-falling (tone letter)"
+#~ msgstr "Stúpavo-klesavý tón"
+
+#~ msgid "Global rise"
+#~ msgstr "Globálne stúpa"
+
+#~ msgid "Global fall"
+#~ msgstr "Globálne klesá"
+
+#~ msgid "Raster image"
+#~ msgstr "Rastrový obrázok"
+
+#~ msgid "Xfig figure"
+#~ msgstr "Xfig obrázok"
+
+#~ msgid "Chess diagram"
+#~ msgstr "Šachový diagram"
+
+#~ msgid "PDF pages"
+#~ msgstr "PDF stránky"
+
+#~ msgid "Dia diagram"
+#~ msgstr "Dia diagram"
+
+#~ msgid "tgo"
+#~ msgstr "tgo"
+
+#~ msgid "sxd"
+#~ msgstr "sxd"
+
+#~ msgid "sxd|OpenOffice"
+#~ msgstr "sxd|OpenOffice"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "jpeg|JPEG"
+#~ msgstr "jpeg|JPEG"
+
+#~ msgid "EPS (uncropped)"
+#~ msgstr "EPS (neorezané)"
+
+#~ msgid "htm"
+#~ msgstr "htm"
+
+#~ msgid "htm|HTML"
+#~ msgstr "htm|HTML"
+
+#~ msgid "LyX 2.0.x"
+#~ msgstr "LyX 2.0.x"
+
+#~ msgid "Bibliography entry not found!"
+#~ msgstr "Bibliografické heslo nenájdené!"
+
+#~ msgid "File Not Found"
+#~ msgstr "Súbor Nenájdený"
+
+#~ msgid "Unable to open file `%1$s'."
+#~ msgstr "Nemôžem otvoriť súbor `%1$s'."
+
+#~ msgid ""
+#~ "The following characters that are used in an index name are not\n"
+#~ "representable in the current encoding and therefore have been omitted:\n"
+#~ "%1$s."
+#~ msgstr ""
+#~ "Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
+#~ "v aktuálnom kódovaní a boli vynechané:\n"
+#~ "%1$s."
+
+#~ msgid "Font not available"
+#~ msgstr "Font nie je dostupný"
+
+#~ msgid ""
+#~ "The LaTeX package `%1$s' needed for the font `%2$s'\n"
+#~ "is not available on your system. LyX will fall back to the default font."
+#~ msgstr ""
+#~ "Balík LaTeXa `%1$s' ktorý font `%2$s potrebuje\n"
+#~ "nie je dostupný na vašom systéme. LyX sa stiahne na štandardný font."
+
+#~ msgid "Missing file type [eg latex, ps...] after --export-to switch"
+#~ msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
+
+#~ msgid "Missing destination filename after --export-to switch"
+#~ msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
+
+#~ msgid ""
+#~ "Specify whether, closing the last view of an open document, LyX should "
+#~ "close the document (yes), hide it (no), or ask the user (ask)."
+#~ msgstr ""
+#~ "Definuje čo by sa malo robiť pri zavieraní posledného náhľadu otvoreného "
+#~ "dokumentu. LyX by mal zavrieť dokument(yes), skryť ho(no), alebo pýtať sa "
+#~ "čo zrobiť(ask)."
+
+#~ msgid "Unavailable:"
+#~ msgstr "Nedostupné:"
+
+#~ msgid "Uncategorized"
+#~ msgstr "Nie kategorizované"
+
+#~ msgid "Advanced search in progress (press ESC to cancel) . . ."
+#~ msgstr "Pokročilé hľadanie postupuje (klikni ESC na zrušenie) . . ."
+
+#~ msgid "Advanced search cancelled by user"
+#~ msgstr "Pokročilé hľadanie zrušené užívateľom"
+
+#~ msgid "Command not allowed without a buffer open"
+#~ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden zásobník"
+
+#~ msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
+#~ msgstr "argument pre <LFUN-COMMAND> buffer-forall je neplatný"
+
+#~ msgid "Applied \"%1$s\" to %2$d buffer(s)"
+#~ msgstr "Aplikované \"%1$s\" na %2$d zásobníkoch"
+
+#~ msgid ""
+#~ "The LaTeX package amsmath is only used if AMS formula types or symbols "
+#~ "from the AMS math toolbars are inserted into formulas"
+#~ msgstr ""
+#~ "Balík amsmath bude použitý len v prípade, že vo formulách sú vložené aj "
+#~ "symboly z mat. lišty nástrojov AMS"
+
+#~ msgid "&Use amssymb package automatically"
+#~ msgstr "Automaticky používať balík amssymb"
+
+#~ msgid "Use amssymb package"
+#~ msgstr "Použiť balík amssymb"
+
+#~ msgid "Use mathtools package automatically"
+#~ msgstr "Automaticky používať mat. balík mathtools"
+
+#~ msgid "Use mathtools package"
+#~ msgstr "Použiť mat. balík mathtools"
+
+#~ msgid ""
+#~ "The LaTeX package mathtools is only used if some mathematical relations "
+#~ "are inserted into formulas"
+#~ msgstr ""
+#~ "LaTeX balík mathtools sa použije len v prípade, keď sa vo formulách nájdu "
+#~ "aj niektoré matematické relácie"
+
+#~ msgid "Use stmaryrd package automatically"
+#~ msgstr "Automaticky používať balík stmaryrd"
+
+#~ msgid "Use stmaryrd package"
+#~ msgstr "Použiť balík stmaryrd"
+
+#~ msgid ""
+#~ "The LaTeX package stmaryrd is only used if symbols from the St Mary's "
+#~ "Road symbol font for theoretical computer science are inserted into "
+#~ "formulas"
+#~ msgstr ""
+#~ "Balík stmaryrd bude použitý len v prípade, že vo formulách sú vložené aj "
+#~ "symboly z fontu St Mary's Road pre teoretickú počítačovú vedu"
+
+#~ msgid "Use u&ndertilde package automatically"
+#~ msgstr "Automaticky používať balík undertilde"
+
+#~ msgid "Use undertilde pac&kage"
+#~ msgstr "Použiť balík undertilde"
+
+#~ msgid ""
+#~ "The LaTeX package undertilde is only used if you use the math frame "
+#~ "decoration 'utilde'"
+#~ msgstr ""
+#~ "LaTeX balík undertilde použiť len v prípade, keď sa vo formulách nájdu aj "
+#~ "dekorácie 'utilde'"
+
+#~ msgid "Conversion Failed!"
+#~ msgstr "Konverzia zlyhala!"
+
+#~ msgid "Failed to convert local layout to current format."
+#~ msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
+
+#~ msgid "Convert to current format"
+#~ msgstr "Konvertovať na aktuálny formát"
+
+#~ msgid "%1$s [Class '%2$s']"
+#~ msgstr "%1$s [Trieda '%2$s']"
+
+#~ msgid ""
+#~ "Class not found by LyX. Please check if you have the matching %1$s class "
+#~ "and all requires packages (%2$s) installed."
+#~ msgstr ""
+#~ "LyX triedu nenašiel. Overte si, či máte príslušnú triedu %1$s a potrebné "
+#~ "balíky (%2$s) inštalované."
+
+#~ msgid "Non-TeX Fonts Default"
+#~ msgstr "Štandard pre Non-TeX fonty"
+
+#~ msgid " (not available)"
+#~ msgstr " (nedostupný)"
+
+#~ msgid "Class Default (TeX Fonts)"
+#~ msgstr "Triedny Štandard (TeX fonty)"
+
+#~ msgid "Class Default"
+#~ msgstr "Triedny štandard"
+
+#~ msgid "This is a local layout file."
+#~ msgstr "Toto je lokálny súbor schémy."
+
+#~ msgid "Category: %1$s."
+#~ msgstr "Kategória: %1$s."
+
+#~ msgid "Visible Space"
+#~ msgstr "Viditeľná Medzera"
+
+#~ msgid "Choose a filename to export the document as"
+#~ msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť ako"
+
+#~ msgid ""
+#~ "Last view on document %1$s is being closed.\n"
+#~ "Would you like to close or hide the document?\n"
+#~ "\n"
+#~ "Hidden documents can be displayed back through\n"
+#~ "the menu: View->Hidden->...\n"
+#~ "\n"
+#~ "To remove this question, set your preference in:\n"
+#~ "  Tools->Preferences->Look&Feel->UserInterface\n"
+#~ msgstr ""
+#~ "Posledný náhľad dokumentu %1$s sa zaviera.\n"
+#~ "Chcete ho zavrieť alebo len skryť?\n"
+#~ "\n"
+#~ "Skryté dokumenty možno zase vidieť cez\n"
+#~ "menu: Zobraziť->Skryté->...\n"
+#~ "\n"
+#~ "Na zbavenie sa tejto otázky, nastavte preferenciu v:\n"
+#~ "  Nástroje Preferencie...->Vzhľad->Užívateľské Rozhranie\n"
+
+#~ msgid "Close or hide document?"
+#~ msgstr "Zavrieť alebo skryť dokument?"
+
+#~ msgid "&Hide"
+#~ msgstr "Skryť"
+
+#~ msgid "Export Error"
+#~ msgstr "Chyba pri Exporte"
+
+#~ msgid "Error cloning the Buffer."
+#~ msgstr "Chyba pri klonovaní Zásobníka."
+
+#~ msgid "%1$s (unknown)"
+#~ msgstr "%1$s (neznámy)"
+
+#~ msgid "Search"
+#~ msgstr "Hľadať"
+
+#~ msgid "Clear text"
+#~ msgstr "Text vyprázdniť"
+
+#~ msgid "Unknown Argument"
+#~ msgstr "Neznámy argument"
+
+#~ msgid "Argument not known in this Layout. Will be supressed in the output."
+#~ msgstr "Argument nie je známy v tejto schéme. Vo výstupe bude potlačený."
+
+#~ msgid "master: %1$s, child: %2$s"
+#~ msgstr "hlavný dokument:%1$s, potomok: %2$s"
+
+#~ msgid "Branch (master only): "
+#~ msgstr "Vetva (len hlavný dokument): "
+
+#~ msgid "Branch state changes in master document"
+#~ msgstr "Štatus vetvy v hlavnom dokumente sa zmenil"
+
+#~ msgid ""
+#~ "The state of the branch '%1$s' was changed in the master file. Please "
+#~ "make sure to save the master."
+#~ msgstr ""
+#~ "Štatus vetvy '%1$s v hlavnom dokumente sa zmenil. Zaistite uloženie "
+#~ "hlavného dokument."
+
+#~ msgid "Overlay Specification|S"
+#~ msgstr "Špecifikácie prekrytia"
+
+#~ msgid "Mini template for this List"
+#~ msgstr "Mini šablóna tejto listiny"
+
+#~ msgid "Alternative Foreword Heading"
+#~ msgstr "Alternatívne záhlavie predhovoru"
+
+#~ msgid "Alternative foreword heading"
+#~ msgstr "Alternatívne záhlavie predhovoru"
+
+#~ msgid "Mandatory argument to the sol environment"
+#~ msgstr "Povinný argument pre prostredie sol"
+
+#~ msgid "Vertical Space (Item)|S"
+#~ msgstr "Vertikálna medzera(položka)"
+
+#~ msgid "Adjust the vertical space of this item"
+#~ msgstr "Nastaviť vertikálnu medzeru tejto položky"
+
+#~ msgid "Noweb Article"
+#~ msgstr "Noweb článok"
+
+#~ msgid "Noweb Book"
+#~ msgstr "Noweb kniha"
+
+#~ msgid "Noweb Report"
+#~ msgstr "Noweb referát"
+
+#~ msgid "Footnote Option"
+#~ msgstr "Voľba Poznámka pod čiarou"
+
+#~ msgid "Optional argument for the footnote"
+#~ msgstr "Nepovinný argument pre poznámku pod čiarou"
+
+#~ msgid "Optional argument for author"
+#~ msgstr "Nepovinný argument pre autora"
+
+#~ msgid "RomanList Option"
+#~ msgstr "Voľba Serifová listina"
+
+#~ msgid "Optional argument for RomanList"
+#~ msgstr "Nepovinný argument pre serifovú listinu"
+
+#~ msgid "Alternative Affiliation Option"
+#~ msgstr "Voľba Alternatívne Príslušenstvo"
+
+#~ msgid "Columns Options"
+#~ msgstr "Voľby Stĺpce"
+
+#~ msgid "Columns options (see beamer manual)"
+#~ msgstr "Voľby stĺpcov (viď beamer manuál)"
+
+#~ msgid "Appendix Title"
+#~ msgstr "Titul pre prílohu"
+
+#~ msgid "Biography Photo"
+#~ msgstr "ŽivotopisFotka"
+
+#~ msgid "Short Affiliation|S"
+#~ msgstr "Skratka Príslušenstvo"
+
+#~ msgid "Short version of the affiliation"
+#~ msgstr "Skrátená verzia príslušenstva"
+
+#~ msgid "Entry Option"
+#~ msgstr "Voľba Záznam"
+
+#~ msgid "Optional argument to the cventry command"
+#~ msgstr "Nepovinný argument pre príkaz cventry"
+
+#~ msgid "Optional argument to the cvitem command"
+#~ msgstr "Nepovinný argument pre príkaz cvitem"
+
+#~ msgid "Space:"
+#~ msgstr "Medzera:"
+
+#~ msgid "Computer:"
+#~ msgstr "Počítač:"
+
+#~ msgid "Error exporting to format: %1$s"
+#~ msgstr "Chyba pri exporte na formát: %1$s"
+
+#~ msgid "LilyPond Manual|M"
+#~ msgstr "LilyPond príručka"
+
+#~ msgid "Multilingual Captions Manual|C"
+#~ msgstr "Viac-jazykové Popisy: Manuál"
+
+#~ msgid "Risk and Safety Statements Manual|R"
+#~ msgstr "Rizikové a Poistné Uzávierky Príručka"
+
+#~ msgid "View Outline|u"
+#~ msgstr "Zobraziť prehľad"
+
+#~ msgid ""
+#~ "Command not allowed without any visible document in the active window"
+#~ msgstr ""
+#~ "Príkaz nie je povolený pokiaľ nie je viditeľný aspoň jeden dokument v "
+#~ "aktívnom okne"
+
+#~ msgid ""
+#~ "Applied the following command to all visible buffers in the active "
+#~ "window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky viditeľné zásobníky v aktívnom "
+#~ "okne: "
+
+#~ msgid ""
+#~ "Applied the following command to all visible and hidden buffers in the "
+#~ "active window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky viditeľné a skryté zásobníky v "
+#~ "aktívnom okne: "
+
+#~ msgid ""
+#~ "Applied the following command to all hidden buffers in the active window: "
+#~ msgstr ""
+#~ "Nasledujúci príkaz bol použitý na všetky skryté zásobníky v aktívnom "
+#~ "okne: "
+
+#~ msgid "%1$s%2$s"
+#~ msgstr "%1$s, %2$s"
+
 #~ msgid "CopNum"
 #~ msgstr "CopNum"
 
-#~ msgid "&Output Format:"
-#~ msgstr "Výstupný Formát:"
+#~ msgid "EPS (ps2eps)"
+#~ msgstr "EPS (ps2eps)"
+
+#~ msgid "The LaTeX package undertilde is always used"
+#~ msgstr "LaTeX balík undertilde použiť každopádne"
 
 #~ msgid "*"
 #~ msgstr "*"
@@ -24270,50 +26885,17 @@ msgstr "Neznámy používateľ"
 #~ msgid "Note \\thenote"
 #~ msgstr "Poznámka \\thenote"
 
+#~ msgid "&Output Format:"
+#~ msgstr "Výstupný Formát:"
+
 #~ msgid "&New:"
 #~ msgstr "&Nové:"
 
 #~ msgid "Enter the command to load the language package (default: babel)"
 #~ msgstr "Zadajte príkaz na nahranie jazykového balíku (štandardne babel)"
 
-#~ msgid "Preface:"
-#~ msgstr "Predslov:"
-
-#~ msgid "Contributor \\Roman{svmultlsti}:"
-#~ msgstr "Prispievateľ \\Roman{svmultlsti}:"
-
-#~ msgid "Institute and e-mail: "
-#~ msgstr "Inštitút a e-mail: "
-
-#~ msgid "MiniTOC"
-#~ msgstr "Mini obsah"
-
-#~ msgid "TOC depth (provide a number):"
-#~ msgstr "Hĺbka obsahu (určite číslo):"
-
-#~ msgid "List of Abbreviations & Symbols"
-#~ msgstr "Zoznam skratiek a symbolov"
-
-#~ msgid "Inst"
-#~ msgstr "Inst"
-
-#~ msgid "Institute #"
-#~ msgstr "Inštitút #"
-
-#~ msgid "Headnote"
-#~ msgstr "Hlavičková poznámka"
-
-#~ msgid "Headnote (optional):"
-#~ msgstr "Hlavičková poznámka (nepovinná):"
-
-#~ msgid "Corr Author:"
-#~ msgstr "Zodpovedný Autor:"
-
-#~ msgid "Offprints"
-#~ msgstr "Odtlačky"
-
-#~ msgid "Offprints:"
-#~ msgstr "Odtlačky:"
+#~ msgid "branch"
+#~ msgstr "vetva"
 
 #~ msgid ""
 #~ "Define character style for initials. Hint: try to use math and its "
@@ -24322,56 +26904,11 @@ msgstr "Neznámy používateľ"
 #~ "Definujte štýl znakov pre iniciálky. Tip: pokúste sa použiť matematiku a "
 #~ "jej umelecké štýly ako Fractur alebo Calligraphic."
 
-#~ msgid "branch"
-#~ msgstr "vetva"
+#~ msgid "TOC Title:"
+#~ msgstr "Obsah Titul:"
 
-#~ msgid "Convert"
-#~ msgstr "Konvertovať"
-
-#~ msgid "Language &package:"
-#~ msgstr "Jazykový balí&k:"
-
-#~ msgid "Default Decimal &Separator:"
-#~ msgstr "Štandardný Decimálny Separátor:"
-
-#~ msgid "Affiliation (alternate)"
-#~ msgstr "Príslušenstvo(alternatívne)"
-
-#~ msgid "Affiliation (alternate):"
-#~ msgstr "Príslušenstvo(alternatívne):"
-
-#~ msgid "Affiliation (none)"
-#~ msgstr "Príslušenstvo(žiadne)"
-
-#~ msgid "No affiliation"
-#~ msgstr "Bez príslušenstva"
-
-#~ msgid "Collaboration"
-#~ msgstr "Spolupráca"
-
-#~ msgid "Collaboration:"
-#~ msgstr "Spolupráca:"
-
-#~ msgid "Ruled Table"
-#~ msgstr "Pevná Tabuľka"
-
-#~ msgid "Turn Page"
-#~ msgstr "Obrátiť Stránku"
-
-#~ msgid "Wide Text"
-#~ msgstr "Široký Text"
-
-#~ msgid "Video"
-#~ msgstr "Video"
-
-#~ msgid "List of Videos"
-#~ msgstr "Zoznam Videí"
-
-#~ msgid "Float Link"
-#~ msgstr "Plávajúci odkaz"
-
-#~ msgid "thanks"
-#~ msgstr "vďaka"
+#~ msgid "\\thesol"
+#~ msgstr "\\thesol"
 
 #~ msgid "at Address"
 #~ msgstr "na Adrese"
@@ -24379,8 +26916,20 @@ msgstr "Neznámy používateľ"
 #~ msgid "at address"
 #~ msgstr "na adrese"
 
+#~ msgid "Contributor \\Roman{svmultlsti}:"
+#~ msgstr "Prispievateľ \\Roman{svmultlsti}:"
+
+#~ msgid "MiniTOC"
+#~ msgstr "Mini obsah"
+
+#~ msgid "TOC depth (provide a number):"
+#~ msgstr "Hĺbka obsahu (určite číslo):"
+
 #~ msgid "List of Abbreviations & Symbols [Deprecated]"
 #~ msgstr "Zoznam skratiek a symbolov[odmietané]"
+
+#~ msgid "List of Abbreviations & Symbols"
+#~ msgstr "Zoznam skratiek a symbolov"
 
 #~ msgid "Contributor \\Roman{svmultlsti}"
 #~ msgstr "Prispievateľ \\Roman{svmultlsti}"
@@ -24391,35 +26940,14 @@ msgstr "Neznámy používateľ"
 #~ msgid "Motto"
 #~ msgstr "Motto"
 
-#~ msgid "TOC Title:"
-#~ msgstr "Obsah Titul:"
-
-#~ msgid "For Authors"
-#~ msgstr "Pre Autorov"
-
-#~ msgid "Unable to open file `%1$s'."
-#~ msgstr "Nemôžem otvoriť súbor `%1$s'."
-
-#~ msgid "Conversion Failed!"
-#~ msgstr "Konverzia zlyhala!"
-
-#~ msgid "Failed to convert local layout to current format."
-#~ msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
-
-#~ msgid "Convert to current format"
-#~ msgstr "Konvertovať na aktuálny formát"
-
-#~ msgid "Error exporting to format: %1$s"
-#~ msgstr "Chyba pri exporte na formát: %1$s"
-
-#~ msgid "Search"
-#~ msgstr "Hľadať"
-
-#~ msgid "Clear text"
-#~ msgstr "Stránku vyprázdniť"
-
 #~ msgid "Claim "
 #~ msgstr "Nárok "
+
+#~ msgid "Preface:"
+#~ msgstr "Predslov:"
+
+#~ msgid "Institute and e-mail: "
+#~ msgstr "Inštitút a e-mail: "
 
 #~ msgid "Step"
 #~ msgstr "Krok"
@@ -24444,12 +26972,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "List of %1$s"
 #~ msgstr "Zoznam od %1$s"
-
-#~ msgid "Liber"
-#~ msgstr "Liber"
-
-#~ msgid "%1$s unknown"
-#~ msgstr "%1$s neznámy"
 
 #~ msgid "Edit"
 #~ msgstr "Upraviť"
@@ -24597,9 +27119,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Cross-reference...|r"
 #~ msgstr "Krížová referencia...|r"
-
-#~ msgid "Short Title"
-#~ msgstr "Krátky titul"
 
 #~ msgid "Index Entry|I"
 #~ msgstr "Heslo Indexu"
@@ -24879,9 +27398,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "&Use babel"
 #~ msgstr "Použiť babel"
 
-#~ msgid "&Global"
-#~ msgstr "&Globálne"
-
 #~ msgid "Flex:Institute"
 #~ msgstr "Flex:Inštitút"
 
@@ -25029,9 +27545,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Foot"
 #~ msgstr "Päta"
 
-#~ msgid "Note:Comment"
-#~ msgstr "Poznámka:Komentár"
-
 #~ msgid "Note:Note"
 #~ msgstr "Poznámka:Poznámka"
 
@@ -25043,9 +27556,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Wrap"
 #~ msgstr "Obtekanie"
-
-#~ msgid "Argument"
-#~ msgstr "Argument"
 
 #~ msgid "Info:menu"
 #~ msgstr "Info:menu"
@@ -25107,17 +27617,11 @@ msgstr "Neznámy používateľ"
 #~ msgid "Keywordsr"
 #~ msgstr "Heslá"
 
-#~ msgid "Current paragraph"
-#~ msgstr "Aktuálny odstavec"
-
 #~ msgid "Current &paragraph"
 #~ msgstr "Aktuálny odstavec"
 
 #~ msgid "A&vailable indices:"
 #~ msgstr "Dostupné indexy:"
-
-#~ msgid "Width:"
-#~ msgstr "Šírka:"
 
 #~ msgid "&Horiz. Phantom"
 #~ msgstr "Horiz. Phantom"
@@ -25178,9 +27682,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Error compiling format: %1$s"
 #~ msgstr "Chyba pri preklade formátu: %1$s"
-
-#~ msgid "Invisible"
-#~ msgstr "Neviditeľný text"
 
 #~ msgid "Height:"
 #~ msgstr "Výška:"
@@ -25425,9 +27926,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Revert to Repository Version|R"
 #~ msgstr "Vrátiť sa k repozitárnej verzii"
 
-#~ msgid "Options"
-#~ msgstr "Možnosti"
-
 #~ msgid "Enter the text to replace in this full-featured LyX editing area"
 #~ msgstr "Vlož sem ten náhradný text"
 
@@ -25463,9 +27961,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Previous"
 #~ msgstr "&Predošlí"
-
-#~ msgid "&Advanced"
-#~ msgstr "Pokročilé"
 
 #~ msgid "Ch. "
 #~ msgstr "Kap. "
@@ -25516,9 +28011,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "D&elete"
 #~ msgstr "Z&mazať"
 
-#~ msgid "&Default language:"
-#~ msgstr "Štan&dardný jazyk:"
-
 #~ msgid "Select the default language of your documents"
 #~ msgstr "Vyberte štandardný jazyk pre vaše dokumenty"
 
@@ -25548,9 +28040,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Merge cells"
 #~ msgstr "Spojiť bunky"
-
-#~ msgid "Listing settings"
-#~ msgstr "Nastavenia výpisov"
 
 #~ msgid "Strasse"
 #~ msgstr "Ulica"
@@ -25658,9 +28147,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Unknown author index for deletion: %1$d\n"
 #~ msgstr "Neznámy index autora pre vymazanie: %1$d\n"
-
-#~ msgid "Unknown spacing argument: "
-#~ msgstr "Neznámy parameter rozstupu: "
 
 #~ msgid ""
 #~ "Aiksaurus returned the following error:\n"
@@ -25777,9 +28263,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Opened Note Inset"
 #~ msgstr "Otvorená vložka (poznámka)"
 
-#~ msgid "Opened Optional Argument Inset"
-#~ msgstr "Otvorená vložka (nepovinný argument)"
-
 #~ msgid "Opened table"
 #~ msgstr "Otvorená tabuľka"
 
@@ -25794,9 +28277,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Briefkopf:"
 #~ msgstr "ZáhlavieListu:"
-
-#~ msgid "Absender:"
-#~ msgstr "Odosielateľ:"
 
 #~ msgid "Zusatz:"
 #~ msgstr "Prídavok:"
@@ -25842,9 +28322,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Verteiler:"
 #~ msgstr "NaVedomie:"
-
-#~ msgid "Text:"
-#~ msgstr "Text:"
 
 #~ msgid "Strasse:"
 #~ msgstr "Ulica:"
@@ -25956,9 +28433,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Backreference by pa&ge number"
 #~ msgstr "<referencia> na strane <strana>"
-
-#~ msgid "American"
-#~ msgstr "Americky"
 
 #~ msgid "Austrian"
 #~ msgstr "Rakúsky"
@@ -26140,9 +28614,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Line Break|B"
 #~ msgstr "Zlom riadku|Z"
 
-#~ msgid "line break"
-#~ msgstr "Zlom riadku|Z"
-
 #~ msgid "Save this document in bundled format"
 #~ msgstr "Uložiť rozloženie ako štandardné"
 
@@ -26316,14 +28787,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Columns "
 #~ msgstr "Stĺpce"
 
-#~ msgid "Overprint "
-#~ msgstr "Separát"
-
 #~ msgid "Conjecture "
 #~ msgstr "Dohad"
-
-#~ msgid "Font st&yle:"
-#~ msgstr "Veľkosť písma"
 
 #~ msgid "Part "
 #~ msgstr "Časť"
@@ -26449,9 +28914,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Set math font"
 #~ msgstr "Nastaviť písmo matematiky"
 
-#~ msgid "Insert fraction"
-#~ msgstr "Vložiť zlomok"
-
 #~ msgid "Math Panel|l"
 #~ msgstr "Matematický panel|M"
 
@@ -26475,9 +28937,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Insert math delimiters"
 #~ msgstr "Vložiť oddeľovač"
-
-#~ msgid "E&xtra options"
-#~ msgstr "E&xtra nastavenia"
 
 #~ msgid "Alig&nment:"
 #~ msgstr "Zarov&nanie:"
