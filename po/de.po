@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-11-03 18:39-0400\n"
-"PO-Revision-Date: 2012-10-10 16:56+0200\n"
+"POT-Creation-Date: 2012-12-23 11:15+0100\n"
+"PO-Revision-Date: 2012-12-23 11:21+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -581,8 +581,8 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3871
-#: src/Buffer.cpp:3884
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3875
+#: src/Buffer.cpp:3888
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -616,7 +616,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1147
-#: src/Buffer.cpp:2395 src/Buffer.cpp:3846 src/Buffer.cpp:3909
+#: src/Buffer.cpp:2399 src/Buffer.cpp:3850 src/Buffer.cpp:3913
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -797,7 +797,7 @@ msgstr "Strichstärke"
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
-#: lib/layouts/moderncv.layout:116 src/frontends/qt4/GuiDocument.cpp:1313
+#: lib/layouts/moderncv.layout:259 src/frontends/qt4/GuiDocument.cpp:1313
 #: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:853
 msgid "Language"
 msgstr "Sprache"
@@ -1465,7 +1465,7 @@ msgstr "Der Bereich, auf den die Suche sich erstreckt"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:184
 msgid "Sco&pe"
-msgstr "Bereich"
+msgstr "&Bereich"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
 msgid "Current &document"
@@ -1859,8 +1859,7 @@ msgstr "&Wert:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
-"Benutzerdefinierter Wert. Benötigt Abstandsart &quot;Benutzerdefiniert&quot;."
+msgstr "Benutzerdefinierter Wert. Benötigt Abstandsart \"Benutzerdefiniert\"."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -1994,8 +1993,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1139
-#: src/insets/InsetInclude.cpp:1145
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1141
+#: src/insets/InsetInclude.cpp:1147
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -2092,7 +2091,7 @@ msgstr "Konfiguration von Inset-Parametern"
 msgid "Update dialog when moving context"
 msgstr ""
 "Aktualisiere dieses Dialogfenster, wenn der Cursor in eine andere Umgebung "
-"platziert wird."
+"platziert wird"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
 msgid "S&ynchronize Dialog"
@@ -2129,7 +2128,7 @@ msgstr "Hier klicken, um eine lokale Dokumentklassen-Datei auszuwählen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "&Lokales Format"
+msgstr "&Lokales Format..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
@@ -2783,7 +2782,7 @@ msgstr "Ausgabeformat"
 
 #: src/frontends/qt4/ui/OutputUi.ui:42 src/frontends/qt4/ui/OutputUi.ui:55
 msgid "Specify the default output format (for view/update)"
-msgstr "Geben Sie das Standard-Ausgabeformat an."
+msgstr "Geben Sie das Standard-Ausgabeformat an"
 
 #: src/frontends/qt4/ui/OutputUi.ui:45
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:177
@@ -2806,7 +2805,7 @@ msgstr "&Benutzerdefiniertes Makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:97
 msgid "Custom LaTeX preamble macro"
-msgstr "Benutzerdefiniertes Makro für die LaTeX-Präambel."
+msgstr "Benutzerdefiniertes Makro für den LaTeX-Vorspann"
 
 #: src/frontends/qt4/ui/OutputUi.ui:112
 msgid "XHTML Output Options"
@@ -2832,7 +2831,7 @@ msgstr "Format für die Mathe-Ausgabe."
 msgid "MathML"
 msgstr "MathML"
 
-#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:647
+#: src/frontends/qt4/ui/OutputUi.ui:162 lib/configure.py:648
 msgid "HTML"
 msgstr "HTML"
 
@@ -3359,7 +3358,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefEditUi.ui:130
 msgid "Skip trailing non-word characters"
 msgstr ""
-"Überspringe Zeichen, die nicht zu einem Wort gehören (Interpunktion etc.)."
+"Überspringe Zeichen, die nicht zu einem Wort gehören (Interpunktion etc.)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:133
 msgid "Use Mac-style for cursor moving between &words"
@@ -3409,7 +3408,7 @@ msgstr "&Dokumentformat"
 msgid "Check this to show the current format in the File > Export menu"
 msgstr ""
 "Wenn Sie dies wählen, wird das aktuelle Format im Menü Datei > Exportieren "
-"angezeigt."
+"angezeigt"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
@@ -3540,7 +3539,7 @@ msgstr "Sprache der Benutzer&oberfläche:"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:29
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr ""
-"Legen Sie hier die Sprache der Benutzeroberfläche (Menüs, Dialoge usw.) fest."
+"Legen Sie hier die Sprache der Benutzeroberfläche (Menüs, Dialoge usw.) fest"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 #: src/frontends/qt4/GuiDocument.cpp:1016
@@ -5146,7 +5145,7 @@ msgstr "Eintrag durch die Auswahl ersetzen"
 msgid "Click to select a proposal, double click to look it up."
 msgstr ""
 "Einmal klicken, um den Vorschlag auszuwählen, doppelt klicken, um ihn "
-"nachzuschlagen"
+"nachzuschlagen."
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -5332,7 +5331,7 @@ msgstr "Kurztitel"
 #: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
 #: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
 #: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
-#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
+#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:80
 #: lib/layouts/acmsiggraph.layout:68 lib/layouts/acmsiggraph.layout:114
 #: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:58
 #: lib/layouts/agutex.layout:75 lib/layouts/agutex.layout:116
@@ -5350,24 +5349,26 @@ msgstr "Kurztitel"
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:211
 #: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
 #: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
-#: lib/layouts/iopart.layout:203 lib/layouts/jasatex.layout:61
-#: lib/layouts/jasatex.layout:82 lib/layouts/jasatex.layout:102
-#: lib/layouts/jasatex.layout:140 lib/layouts/jasatex.layout:160
-#: lib/layouts/jasatex.layout:189 lib/layouts/revtex4.layout:112
-#: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
-#: lib/layouts/siamltex.layout:280 lib/layouts/siamltex.layout:300
-#: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
-#: lib/layouts/sigplanconf.layout:158 lib/layouts/svmult.layout:48
-#: lib/layouts/svmult.layout:98 lib/layouts/tufte-handout.layout:49
-#: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:48
-#: lib/layouts/amsdefs.inc:68 lib/layouts/amsdefs.inc:92
-#: lib/layouts/amsdefs.inc:119 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:60 lib/layouts/stdtitle.inc:81
-#: lib/layouts/stdtitle.inc:100 lib/layouts/svcommon.inc:348
-#: lib/layouts/svcommon.inc:372 lib/layouts/svcommon.inc:423
-#: lib/layouts/svcommon.inc:460 lib/layouts/svcommon.inc:478
-#: lib/layouts/svcommon.inc:499 lib/layouts/svcommon.inc:523
+#: lib/layouts/iopart.layout:203 lib/layouts/jasatex.layout:62
+#: lib/layouts/jasatex.layout:84 lib/layouts/jasatex.layout:104
+#: lib/layouts/jasatex.layout:142 lib/layouts/jasatex.layout:162
+#: lib/layouts/jasatex.layout:191 lib/layouts/moderncv.layout:38
+#: lib/layouts/moderncv.layout:59 lib/layouts/moderncv.layout:79
+#: lib/layouts/revtex4.layout:112 lib/layouts/revtex4.layout:150
+#: lib/layouts/revtex4.layout:247 lib/layouts/siamltex.layout:280
+#: lib/layouts/siamltex.layout:300 lib/layouts/sigplanconf.layout:71
+#: lib/layouts/sigplanconf.layout:124 lib/layouts/sigplanconf.layout:158
+#: lib/layouts/svmult.layout:48 lib/layouts/svmult.layout:98
+#: lib/layouts/tufte-handout.layout:49 lib/layouts/amsdefs.inc:25
+#: lib/layouts/amsdefs.inc:48 lib/layouts/amsdefs.inc:68
+#: lib/layouts/amsdefs.inc:92 lib/layouts/amsdefs.inc:119
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:60
+#: lib/layouts/stdtitle.inc:81 lib/layouts/stdtitle.inc:100
+#: lib/layouts/svcommon.inc:348 lib/layouts/svcommon.inc:372
+#: lib/layouts/svcommon.inc:423 lib/layouts/svcommon.inc:460
+#: lib/layouts/svcommon.inc:478 lib/layouts/svcommon.inc:499
+#: lib/layouts/svcommon.inc:523
 msgid "FrontMatter"
 msgstr "Vorspann"
 
@@ -5407,8 +5408,7 @@ msgstr "Ausgabe:"
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
 #: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
-#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
-#: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
+#: lib/layouts/aastex.layout:252 lib/layouts/acmsiggraph.layout:110
 #: lib/layouts/acmsiggraph.layout:126 lib/layouts/agutex.layout:130
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:81
 #: lib/layouts/cl2emult.layout:92 lib/layouts/ectaart.layout:42
@@ -5418,8 +5418,8 @@ msgstr "Ausgabe:"
 #: lib/layouts/entcs.layout:85 lib/layouts/foils.layout:147
 #: lib/layouts/ijmpc.layout:188 lib/layouts/ijmpd.layout:195
 #: lib/layouts/iopart.layout:170 lib/layouts/iopart.layout:187
-#: lib/layouts/isprs.layout:25 lib/layouts/jasatex.layout:156
-#: lib/layouts/jasatex.layout:173 lib/layouts/kluwer.layout:259
+#: lib/layouts/isprs.layout:25 lib/layouts/jasatex.layout:158
+#: lib/layouts/jasatex.layout:175 lib/layouts/kluwer.layout:259
 #: lib/layouts/latex8.layout:107 lib/layouts/llncs.layout:242
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:185
 #: lib/layouts/paper.layout:130 lib/layouts/revtex.layout:139
@@ -5439,6 +5439,7 @@ msgstr "Abstract"
 
 #: lib/layouts/AEA.layout:98 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
+#: lib/layouts/achemso.layout:223 lib/layouts/achemso.layout:230
 #: lib/layouts/egs.layout:530 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:146 lib/layouts/aapaper.inc:80
 #: lib/layouts/svcommon.inc:535
@@ -5873,7 +5874,7 @@ msgstr "Beweis"
 #: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
 #: lib/layouts/g-brief2.layout:30 lib/layouts/hollywood.layout:345
 #: lib/layouts/ijmpc.layout:22 lib/layouts/ijmpd.layout:27
-#: lib/layouts/iopart.layout:34 lib/layouts/jasatex.layout:34
+#: lib/layouts/iopart.layout:34 lib/layouts/jasatex.layout:35
 #: lib/layouts/kluwer.layout:33 lib/layouts/lettre.layout:30
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
 #: lib/layouts/memoir.layout:31 lib/layouts/moderncv.layout:19
@@ -5903,9 +5904,10 @@ msgstr "Standard"
 #: lib/layouts/entcs.layout:39 lib/layouts/foils.layout:125
 #: lib/layouts/hollywood.layout:331 lib/layouts/ijmpc.layout:87
 #: lib/layouts/ijmpd.layout:92 lib/layouts/iopart.layout:56
-#: lib/layouts/isprs.layout:93 lib/layouts/jasatex.layout:57
+#: lib/layouts/isprs.layout:93 lib/layouts/jasatex.layout:58
 #: lib/layouts/kluwer.layout:111 lib/layouts/latex8.layout:38
 #: lib/layouts/llncs.layout:106 lib/layouts/ltugboat.layout:136
+#: lib/layouts/moderncv.layout:76 lib/layouts/moderncv.layout:293
 #: lib/layouts/paper.layout:110 lib/layouts/powerdot.layout:41
 #: lib/layouts/revtex.layout:94 lib/layouts/revtex4.layout:124
 #: lib/layouts/scrlettr.layout:188 lib/layouts/scrlttr2.layout:271
@@ -5943,7 +5945,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/entcs.layout:50 lib/layouts/foils.layout:133
 #: lib/layouts/hollywood.layout:318 lib/layouts/ijmpc.layout:106
 #: lib/layouts/ijmpd.layout:111 lib/layouts/iopart.layout:126
-#: lib/layouts/isprs.layout:76 lib/layouts/jasatex.layout:78
+#: lib/layouts/isprs.layout:76 lib/layouts/jasatex.layout:80
 #: lib/layouts/kluwer.layout:165 lib/layouts/llncs.layout:180
 #: lib/layouts/ltugboat.layout:155 lib/layouts/paper.layout:120
 #: lib/layouts/powerdot.layout:64 lib/layouts/revtex.layout:102
@@ -5983,16 +5985,17 @@ msgstr "Abstract---"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:252
-#: lib/layouts/ijmpc.layout:201 lib/layouts/ijmpc.layout:205
-#: lib/layouts/ijmpd.layout:208 lib/layouts/iopart.layout:199
-#: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:185
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
-#: lib/layouts/revtex4.layout:258 lib/layouts/siamltex.layout:304
-#: lib/layouts/sigplanconf.layout:147 lib/layouts/spie.layout:41
-#: lib/layouts/svglobal3.layout:56 lib/layouts/svglobal3.layout:59
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svcommon.inc:456 lib/layouts/svcommon.inc:471
+#: lib/layouts/achemso.layout:148 lib/layouts/elsart.layout:62
+#: lib/layouts/elsarticle.layout:252 lib/layouts/ijmpc.layout:201
+#: lib/layouts/ijmpc.layout:205 lib/layouts/ijmpd.layout:208
+#: lib/layouts/iopart.layout:199 lib/layouts/isprs.layout:52
+#: lib/layouts/jasatex.layout:187 lib/layouts/kluwer.layout:282
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:258
+#: lib/layouts/siamltex.layout:304 lib/layouts/sigplanconf.layout:147
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:56
+#: lib/layouts/svglobal3.layout:59 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:456
+#: lib/layouts/svcommon.inc:471
 msgid "Keywords"
 msgstr "Schlagwörter"
 
@@ -6007,17 +6010,18 @@ msgstr "Anhänge"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:246
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:209
 #: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
-#: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
-#: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
-#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:926
-#: lib/layouts/elsarticle.layout:277 lib/layouts/ijmpc.layout:412
-#: lib/layouts/ijmpc.layout:436 lib/layouts/ijmpd.layout:436
-#: lib/layouts/ijmpd.layout:460 lib/layouts/iopart.layout:243
-#: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
-#: lib/layouts/jasatex.layout:223 lib/layouts/jasatex.layout:262
-#: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:319
-#: lib/layouts/sigplanconf.layout:185 lib/layouts/stdstruct.inc:57
-#: lib/layouts/svcommon.inc:536 lib/layouts/svcommon.inc:570
+#: lib/layouts/achemso.layout:226 lib/layouts/acmsiggraph.layout:155
+#: lib/layouts/agutex.layout:151 lib/layouts/agutex.layout:161
+#: lib/layouts/agutex.layout:181 lib/layouts/agutex.layout:204
+#: lib/layouts/beamer.layout:926 lib/layouts/elsarticle.layout:277
+#: lib/layouts/ijmpc.layout:412 lib/layouts/ijmpc.layout:436
+#: lib/layouts/ijmpd.layout:436 lib/layouts/ijmpd.layout:460
+#: lib/layouts/iopart.layout:243 lib/layouts/iopart.layout:265
+#: lib/layouts/iopart.layout:288 lib/layouts/jasatex.layout:225
+#: lib/layouts/jasatex.layout:264 lib/layouts/revtex4.layout:228
+#: lib/layouts/siamltex.layout:319 lib/layouts/sigplanconf.layout:185
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:536
+#: lib/layouts/svcommon.inc:570
 msgid "BackMatter"
 msgstr "Nachspann"
 
@@ -6031,42 +6035,42 @@ msgstr "Anhang"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
-#: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
-#: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:925
-#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
-#: lib/layouts/cl2emult.layout:103 lib/layouts/egs.layout:555
-#: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
-#: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
-#: lib/layouts/jasatex.layout:258 lib/layouts/latex8.layout:125
-#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
-#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:150
-#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
-#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
-#: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
-#: lib/layouts/recipebook.layout:48 lib/layouts/report.layout:12
-#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
-#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
-#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:318
-#: lib/layouts/simplecv.layout:145 lib/layouts/tufte-book.layout:241
-#: lib/layouts/tufte-book.layout:243 lib/layouts/aguplus.inc:172
-#: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:196
-#: lib/layouts/scrclass.inc:246 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svcommon.inc:566 src/frontends/qt4/GuiDocument.cpp:1316
+#: lib/layouts/aapaper.layout:220 lib/layouts/agutex.layout:200
+#: lib/layouts/beamer.layout:925 lib/layouts/book.layout:21
+#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:103
+#: lib/layouts/egs.layout:555 lib/layouts/elsarticle.layout:273
+#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:432
+#: lib/layouts/ijmpd.layout:456 lib/layouts/jasatex.layout:260
+#: lib/layouts/latex8.layout:125 lib/layouts/llncs.layout:263
+#: lib/layouts/memoir.layout:163 lib/layouts/memoir.layout:165
+#: lib/layouts/moderncv.layout:310 lib/layouts/mwbk.layout:22
+#: lib/layouts/mwbk.layout:24 lib/layouts/mwrep.layout:13
+#: lib/layouts/mwrep.layout:15 lib/layouts/powerdot.layout:287
+#: lib/layouts/recipebook.layout:46 lib/layouts/recipebook.layout:48
+#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
+#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
+#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
+#: lib/layouts/siamltex.layout:318 lib/layouts/simplecv.layout:145
+#: lib/layouts/tufte-book.layout:241 lib/layouts/tufte-book.layout:243
+#: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
+#: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:246
+#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:566
+#: src/frontends/qt4/GuiDocument.cpp:1316
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
 
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:485 lib/layouts/aastex.layout:498
-#: lib/layouts/achemso.layout:252 lib/layouts/agutex.layout:215
-#: lib/layouts/beamer.layout:939 lib/layouts/cl2emult.layout:117
-#: lib/layouts/egs.layout:569 lib/layouts/elsarticle.layout:288
-#: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:471
-#: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
-#: lib/layouts/jasatex.layout:273 lib/layouts/kluwer.layout:342
-#: lib/layouts/kluwer.layout:354 lib/layouts/llncs.layout:277
-#: lib/layouts/moderncv.layout:164 lib/layouts/siamltex.layout:333
-#: lib/layouts/amsdefs.inc:210 lib/layouts/stdstruct.inc:68
-#: lib/layouts/svcommon.inc:581 src/output_plaintext.cpp:145
+#: lib/layouts/agutex.layout:215 lib/layouts/beamer.layout:939
+#: lib/layouts/cl2emult.layout:117 lib/layouts/egs.layout:569
+#: lib/layouts/elsarticle.layout:288 lib/layouts/ijmpc.layout:447
+#: lib/layouts/ijmpd.layout:471 lib/layouts/iopart.layout:276
+#: lib/layouts/iopart.layout:291 lib/layouts/jasatex.layout:275
+#: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
+#: lib/layouts/llncs.layout:277 lib/layouts/moderncv.layout:324
+#: lib/layouts/siamltex.layout:333 lib/layouts/amsdefs.inc:210
+#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:581
+#: src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Literaturverzeichnis"
 
@@ -6102,7 +6106,7 @@ msgstr "Beweis."
 #: lib/layouts/isprs.layout:147 lib/layouts/kluwer.layout:60
 #: lib/layouts/latex8.layout:46 lib/layouts/llncs.layout:46
 #: lib/layouts/ltugboat.layout:45 lib/layouts/memoir.layout:70
-#: lib/layouts/memoir.layout:134 lib/layouts/moderncv.layout:33
+#: lib/layouts/memoir.layout:134 lib/layouts/moderncv.layout:162
 #: lib/layouts/paper.layout:58 lib/layouts/powerdot.layout:220
 #: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:64
 #: lib/layouts/siamltex.layout:358 lib/layouts/simplecv.layout:29
@@ -6128,7 +6132,7 @@ msgstr "Abschnitt"
 #: lib/layouts/egs.layout:52 lib/layouts/isprs.layout:159
 #: lib/layouts/kluwer.layout:69 lib/layouts/latex8.layout:55
 #: lib/layouts/llncs.layout:55 lib/layouts/ltugboat.layout:65
-#: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:53
+#: lib/layouts/memoir.layout:76 lib/layouts/moderncv.layout:182
 #: lib/layouts/paper.layout:67 lib/layouts/revtex.layout:50
 #: lib/layouts/revtex4.layout:73 lib/layouts/siamltex.layout:369
 #: lib/layouts/simplecv.layout:51 lib/layouts/tufte-book.layout:109
@@ -6188,7 +6192,8 @@ msgstr "Beschreibung"
 #: lib/layouts/beamer.layout:67 lib/layouts/beamer.layout:87
 #: lib/layouts/egs.layout:132 lib/layouts/ijmpc.layout:260
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:263
-#: lib/layouts/ijmpd.layout:283 lib/layouts/scrlettr.layout:32
+#: lib/layouts/ijmpd.layout:283 lib/layouts/moderncv.layout:221
+#: lib/layouts/moderncv.layout:251 lib/layouts/scrlettr.layout:32
 #: lib/layouts/scrlttr2.layout:37 lib/layouts/stdlists.inc:14
 #: lib/layouts/stdlists.inc:35 lib/layouts/stdlists.inc:58
 #: lib/layouts/stdlists.inc:87 lib/layouts/stdlyxlist.inc:7
@@ -6212,10 +6217,11 @@ msgstr "Untertitel"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:125 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:180
-#: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
-#: lib/layouts/siamltex.layout:279 lib/layouts/aapaper.inc:29
-#: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
+#: lib/layouts/moderncv.layout:97 lib/layouts/revtex.layout:120
+#: lib/layouts/revtex4.layout:180 lib/layouts/scrlettr.layout:139
+#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:279
+#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:118
+#: lib/layouts/lyxmacros.inc:44
 msgid "Address"
 msgstr "Adresse"
 
@@ -6234,17 +6240,18 @@ msgstr "Post"
 #: lib/layouts/beamer.layout:902 lib/layouts/dinbrief.layout:152
 #: lib/layouts/egs.layout:469 lib/layouts/foils.layout:140
 #: lib/layouts/frletter.layout:21 lib/layouts/g-brief.layout:189
-#: lib/layouts/g-brief2.layout:800 lib/layouts/jasatex.layout:137
+#: lib/layouts/g-brief2.layout:800 lib/layouts/jasatex.layout:139
 #: lib/layouts/kluwer.layout:149 lib/layouts/lettre.layout:51
-#: lib/layouts/lettre.layout:213 lib/layouts/powerdot.layout:85
-#: lib/layouts/revtex.layout:110 lib/layouts/revtex4.layout:140
-#: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
-#: lib/layouts/siamltex.layout:229 lib/layouts/tufte-book.layout:42
-#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
-#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:185
-#: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:364
-#: lib/ui/stdmenus.inc:374 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/layouts/lettre.layout:213 lib/layouts/moderncv.layout:370
+#: lib/layouts/powerdot.layout:85 lib/layouts/revtex.layout:110
+#: lib/layouts/revtex4.layout:140 lib/layouts/scrlettr.layout:160
+#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:229
+#: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
+#: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
+#: lib/layouts/scrclass.inc:185 lib/layouts/stdtitle.inc:97
+#: lib/layouts/svcommon.inc:364 lib/ui/stdmenus.inc:374
+#: lib/external_templates:343 lib/external_templates:344
+#: lib/external_templates:348
 msgid "Date"
 msgstr "Datum"
 
@@ -6284,14 +6291,14 @@ msgstr "E-Mail"
 
 #: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
-#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
+#: lib/layouts/achemso.layout:90 lib/layouts/ectaart.layout:69
 #: lib/layouts/elsarticle.layout:213 lib/layouts/iopart.layout:160
-#: lib/layouts/jasatex.layout:131 lib/layouts/latex8.layout:64
+#: lib/layouts/jasatex.layout:133 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/aapaper.inc:46
-#: lib/layouts/amsdefs.inc:145 lib/layouts/db_stdcharstyles.inc:71
-#: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
-#: lib/layouts/svcommon.inc:670
+#: lib/layouts/llncs.layout:234 lib/layouts/moderncv.layout:124
+#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
+#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
+#: lib/layouts/svcommon.inc:665 lib/layouts/svcommon.inc:670
 msgid "Email"
 msgstr "E-Mail"
 
@@ -6318,8 +6325,8 @@ msgid "Paragraph"
 msgstr "Paragraph"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
-#: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
-#: lib/layouts/jasatex.layout:98 lib/layouts/latex8.layout:88
+#: lib/layouts/achemso.layout:99 lib/layouts/apa.layout:150
+#: lib/layouts/jasatex.layout:100 lib/layouts/latex8.layout:88
 #: lib/layouts/revtex4.layout:149 lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:65
 msgid "Affiliation"
@@ -6465,62 +6472,105 @@ msgstr "Objekt:"
 msgid "Dataset:"
 msgstr "Datensatz:"
 
-#: lib/layouts/achemso.layout:100
+#: lib/layouts/achemso.layout:108
 msgid "Alt Affiliation"
 msgstr "Alternative Zugehörigkeit"
 
-#: lib/layouts/achemso.layout:105
+#: lib/layouts/achemso.layout:114
 msgid "Also Affiliation"
 msgstr "Zusätzliche Zugehörigkeit"
 
-#: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
-#: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
-#: lib/configure.py:663
+#: lib/layouts/achemso.layout:120 lib/layouts/lettre.layout:41
+#: lib/layouts/lettre.layout:342 lib/layouts/moderncv.layout:118
+#: lib/layouts/scrlttr2.layout:191 lib/configure.py:664
 msgid "Fax"
 msgstr "Fax"
 
-#: lib/layouts/achemso.layout:115 lib/layouts/dinbrief.layout:295
-#: lib/layouts/g-brief.layout:117
+#: lib/layouts/achemso.layout:126 lib/layouts/lettre.layout:355
+#: lib/layouts/moderncv.layout:121
+msgid "Fax:"
+msgstr "Fax:"
+
+#: lib/layouts/achemso.layout:129 lib/layouts/dinbrief.layout:295
+#: lib/layouts/g-brief.layout:117 lib/layouts/moderncv.layout:112
 msgid "Phone"
 msgstr "Telefon"
 
-#: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
+#: lib/layouts/achemso.layout:132 lib/layouts/g-brief.layout:120
+#: lib/layouts/moderncv.layout:115
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: lib/layouts/achemso.layout:136
+msgid "Abbreviations"
+msgstr "Abkürzungen"
+
+#: lib/layouts/achemso.layout:142
+msgid "Abbreviations:"
+msgstr "Abkürzungen:"
+
+#: lib/layouts/achemso.layout:151 lib/layouts/ectaart.layout:120
+#: lib/layouts/elsarticle.layout:265 lib/layouts/ijmpd.layout:212
+#: lib/layouts/iopart.layout:210 lib/layouts/jasatex.layout:201
+#: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
+#: lib/layouts/revtex4.layout:263 lib/layouts/sigplanconf.layout:150
+#: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
+msgid "Keywords:"
+msgstr "Schlagwörter:"
+
+#: lib/layouts/achemso.layout:157 lib/layouts/achemso.layout:168
 msgid "Scheme"
 msgstr "Schema"
 
-#: lib/layouts/achemso.layout:127
+#: lib/layouts/achemso.layout:162
 msgid "List of Schemes"
 msgstr "Verzeichnis der Schemata"
 
-#: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
+#: lib/layouts/achemso.layout:179 lib/layouts/achemso.layout:190
 msgid "Chart"
 msgstr "Diagramm"
 
-#: lib/layouts/achemso.layout:149
+#: lib/layouts/achemso.layout:184
 msgid "List of Charts"
 msgstr "Diagrammverzeichnis"
 
-#: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
+#: lib/layouts/achemso.layout:201 lib/layouts/achemso.layout:212
 msgid "Graph"
 msgstr "Schaubild"
 
-#: lib/layouts/achemso.layout:171
+#: lib/layouts/achemso.layout:206
 msgid "List of Graphs"
 msgstr "Schaubilderverzeichnis"
 
-#: lib/layouts/achemso.layout:215
+#: lib/layouts/achemso.layout:240
+msgid "SupplementalInfo"
+msgstr "Ergänzende Informationen"
+
+#: lib/layouts/achemso.layout:243
+msgid "Supporting Information Available"
+msgstr "Verfügbare unterstützende Informationen"
+
+#: lib/layouts/achemso.layout:246
+msgid "TOC entry"
+msgstr "Inhaltsverzeichniseintrag"
+
+#: lib/layouts/achemso.layout:250
+msgid "Graphical TOC Entry"
+msgstr "Grafischer Inhaltsverzeichniseintrag"
+
+#: lib/layouts/achemso.layout:254
 msgid "Bibnote"
 msgstr "Bibnotiz"
 
-#: lib/layouts/achemso.layout:219
+#: lib/layouts/achemso.layout:258
 msgid "bibnote"
 msgstr "Bibnotiz"
 
-#: lib/layouts/achemso.layout:261
+#: lib/layouts/achemso.layout:277
 msgid "Chemistry"
 msgstr "Chemie"
 
-#: lib/layouts/achemso.layout:264
+#: lib/layouts/achemso.layout:280
 msgid "chemistry"
 msgstr "Chemie"
 
@@ -6551,7 +6601,7 @@ msgstr "EDV-Review-Kategorien"
 #: lib/layouts/acmsiggraph.layout:152 lib/layouts/acmsiggraph.layout:159
 #: lib/layouts/agutex.layout:177 lib/layouts/apa.layout:220
 #: lib/layouts/iopart.layout:239 lib/layouts/iopart.layout:253
-#: lib/layouts/jasatex.layout:220 lib/layouts/jasatex.layout:225
+#: lib/layouts/jasatex.layout:222 lib/layouts/jasatex.layout:227
 #: lib/layouts/revtex4.layout:227 lib/layouts/sigplanconf.layout:182
 #: lib/layouts/sigplanconf.layout:189 lib/layouts/spie.layout:90
 msgid "Acknowledgments"
@@ -6947,7 +6997,8 @@ msgid "Quotation"
 msgstr "Zitat (lang)"
 
 #: lib/layouts/beamer.layout:968 lib/layouts/egs.layout:116
-#: lib/layouts/powerdot.layout:328 lib/layouts/stdlayouts.inc:33
+#: lib/layouts/moderncv.layout:149 lib/layouts/powerdot.layout:328
+#: lib/layouts/stdlayouts.inc:33
 msgid "Quote"
 msgstr "Zitat (kurz)"
 
@@ -7263,10 +7314,10 @@ msgstr "Empfänger-Adresse"
 
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
-#: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
-#: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:142
-#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:291
-#: lib/layouts/amsdefs.inc:130
+#: lib/layouts/g-brief2.layout:726 lib/layouts/moderncv.layout:101
+#: lib/layouts/revtex.layout:132 lib/layouts/revtex4.layout:183
+#: lib/layouts/scrlettr.layout:142 lib/layouts/scrlttr2.layout:62
+#: lib/layouts/siamltex.layout:291 lib/layouts/amsdefs.inc:130
 msgid "Address:"
 msgstr "Adresse:"
 
@@ -7410,8 +7461,8 @@ msgstr "Betreff:"
 #: lib/layouts/dinbrief.layout:175 lib/layouts/frletter.layout:36
 #: lib/layouts/g-brief.layout:205 lib/layouts/g-brief2.layout:843
 #: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:541
-#: lib/layouts/scrlettr.layout:60 lib/layouts/scrlttr2.layout:94
-#: lib/layouts/stdletter.inc:49
+#: lib/layouts/moderncv.layout:382 lib/layouts/scrlettr.layout:60
+#: lib/layouts/scrlttr2.layout:94 lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Anrede"
 
@@ -7424,8 +7475,8 @@ msgstr "Anrede:"
 #: lib/layouts/dinbrief.layout:191 lib/layouts/frletter.layout:44
 #: lib/layouts/g-brief.layout:231 lib/layouts/g-brief2.layout:865
 #: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:555
-#: lib/layouts/scrlettr.layout:70 lib/layouts/scrlttr2.layout:114
-#: lib/layouts/stdletter.inc:92
+#: lib/layouts/moderncv.layout:390 lib/layouts/scrlettr.layout:70
+#: lib/layouts/scrlttr2.layout:114 lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "Grußformel"
 
@@ -7555,7 +7606,8 @@ msgstr "Anrede"
 
 #: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
 #: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
-#: lib/layouts/scrlettr.layout:40
+#: lib/layouts/moderncv.layout:300 lib/layouts/moderncv.layout:307
+#: lib/layouts/moderncv.layout:355 lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr "Brieftext"
 
@@ -7630,15 +7682,6 @@ msgstr "Autorenblock:"
 #: lib/layouts/agu_stdtitle.inc:403 lib/layouts/agu_stdtitle.inc:405
 msgid "Keyword"
 msgstr "Schlagwort"
-
-#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
-#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
-#: lib/layouts/jasatex.layout:199 lib/layouts/kluwer.layout:289
-#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "Schlagwörter:"
 
 #: lib/layouts/ectaart.layout:126
 msgid "Thanks Text"
@@ -7777,7 +7820,7 @@ msgid "Author Email"
 msgstr "Autoren-E-Mail"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/lettre.layout:404
-#: lib/layouts/llncs.layout:238
+#: lib/layouts/llncs.layout:238 lib/layouts/moderncv.layout:127
 msgid "Email:"
 msgstr "E-Mail:"
 
@@ -7930,11 +7973,11 @@ msgstr "Korresp. Autor (Fußnotentext):"
 msgid "Key words:"
 msgstr "Schlagwörter:"
 
-#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:82
+#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:211
 msgid "Item"
 msgstr "Stichpunkt"
 
-#: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:91
+#: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:215
 msgid "Item:"
 msgstr "Stichpunkt:"
 
@@ -7978,7 +8021,7 @@ msgstr "SprachKopf"
 msgid "Language Header:"
 msgstr "Sprache Kopfzeile:"
 
-#: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
+#: lib/layouts/europecv.layout:122
 msgid "Language:"
 msgstr "Sprache:"
 
@@ -8206,10 +8249,6 @@ msgstr "Ihr Zeichen:"
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
 msgstr "Ihr Brief:"
-
-#: lib/layouts/g-brief.layout:120
-msgid "Phone:"
-msgstr "Telefon:"
 
 #: lib/layouts/g-brief.layout:124
 msgid "Telefax"
@@ -8739,7 +8778,7 @@ msgstr "Titelei"
 msgid "Rapid"
 msgstr "Schnell"
 
-#: lib/layouts/iopart.layout:218 lib/layouts/jasatex.layout:207
+#: lib/layouts/iopart.layout:218 lib/layouts/jasatex.layout:209
 #: lib/layouts/revtex4.layout:246 lib/layouts/svglobal3.layout:66
 #: lib/layouts/svglobal3.layout:69
 msgid "PACS"
@@ -8789,27 +8828,27 @@ msgstr "Kommission"
 msgid "ACKNOWLEDGEMENTS"
 msgstr "DANKSAGUNGEN"
 
-#: lib/layouts/jasatex.layout:114
+#: lib/layouts/jasatex.layout:116
 msgid "Alternative Affiliation"
 msgstr "Alternative Zugehörigkeit"
 
-#: lib/layouts/jasatex.layout:122
+#: lib/layouts/jasatex.layout:124 lib/layouts/moderncv.layout:130
 msgid "Homepage"
 msgstr "Homepage"
 
-#: lib/layouts/jasatex.layout:210
+#: lib/layouts/jasatex.layout:212
 msgid "PACS numbers:"
 msgstr "PACS-Nummern:"
 
-#: lib/layouts/jasatex.layout:213
+#: lib/layouts/jasatex.layout:215
 msgid "Preprint number"
 msgstr "Preprint-Nummer"
 
-#: lib/layouts/jasatex.layout:216
+#: lib/layouts/jasatex.layout:218
 msgid "Preprint number:"
 msgstr "Preprint-Nummer:"
 
-#: lib/layouts/jasatex.layout:236 lib/layouts/jasatex.layout:240
+#: lib/layouts/jasatex.layout:238 lib/layouts/jasatex.layout:242
 msgid "Online citation"
 msgstr "Online-Zitat"
 
@@ -8893,10 +8932,6 @@ msgstr "Telefon:"
 #: lib/layouts/lettre.layout:324
 msgid "NoTel"
 msgstr "Kein Telefon"
-
-#: lib/layouts/lettre.layout:355
-msgid "Fax:"
-msgstr "Fax:"
 
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
@@ -9032,69 +9067,169 @@ msgstr "Gedichttitel*"
 msgid "Legend"
 msgstr "Legende"
 
-#: lib/layouts/moderncv.layout:66
+#: lib/layouts/moderncv.layout:34
+msgid "CVStyle"
+msgstr "CVStil"
+
+#: lib/layouts/moderncv.layout:43
+msgid "CV style:"
+msgstr "CV-Stil:"
+
+#: lib/layouts/moderncv.layout:50
+msgid "CVColor"
+msgstr "CV-Farbe"
+
+#: lib/layouts/moderncv.layout:53
+msgid "CV color scheme:"
+msgstr "CV-Farbschema:"
+
+#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
+msgid "FirstName"
+msgstr "Vorname"
+
+#: lib/layouts/moderncv.layout:69
+msgid "FamilyName"
+msgstr "Nachname"
+
+#: lib/layouts/moderncv.layout:73
+msgid "Family Name:"
+msgstr "Nachname:"
+
+#: lib/layouts/moderncv.layout:106
+msgid "Mobile"
+msgstr "Mobil"
+
+#: lib/layouts/moderncv.layout:109
+msgid "Mobile:"
+msgstr "Mobil:"
+
+#: lib/layouts/moderncv.layout:133
+msgid "Homepage:"
+msgstr "Homepage:"
+
+#: lib/layouts/moderncv.layout:136
+msgid "ExtraInfo"
+msgstr "Extra-Info"
+
+#: lib/layouts/moderncv.layout:139
+msgid "Extra Info:"
+msgstr "Extra-Info:"
+
+#: lib/layouts/moderncv.layout:142
+msgid "Photo"
+msgstr "Foto"
+
+#: lib/layouts/moderncv.layout:145
+msgid "Photo:"
+msgstr "Foto:"
+
+#: lib/layouts/moderncv.layout:195
 msgid "Entry"
 msgstr "Eintrag"
 
-#: lib/layouts/moderncv.layout:75
+#: lib/layouts/moderncv.layout:204
 msgid "Entry:"
 msgstr "Eintrag:"
 
-#: lib/layouts/moderncv.layout:98
+#: lib/layouts/moderncv.layout:218
 msgid "ListItem"
 msgstr "Listeneintrag"
 
-#: lib/layouts/moderncv.layout:101
+#: lib/layouts/moderncv.layout:223
 msgid "List Item:"
 msgstr "Listeneintrag:"
 
-#: lib/layouts/moderncv.layout:104
+#: lib/layouts/moderncv.layout:226
+msgid "ItemWithComment"
+msgstr "Eintrag mit Kommentar"
+
+#: lib/layouts/moderncv.layout:230
+msgid "Item with comment:"
+msgstr "Kommentar-Eintrag:"
+
+#: lib/layouts/moderncv.layout:241
 msgid "DoubleItem"
 msgstr "DoppelterEintrag"
 
-#: lib/layouts/moderncv.layout:107
+#: lib/layouts/moderncv.layout:245
 msgid "Double Item:"
 msgstr "Doppelter Eintrag:"
 
-#: lib/layouts/moderncv.layout:110
+#: lib/layouts/moderncv.layout:248
+msgid "DoubleListItem"
+msgstr "Doppelter Leisteneintrag"
+
+#: lib/layouts/moderncv.layout:252
+msgid "Double List Item:"
+msgstr "Doppelter Listeneintrag:"
+
+#: lib/layouts/moderncv.layout:255
 msgid "Space"
 msgstr "Leerraum"
 
-#: lib/layouts/moderncv.layout:113
-msgid "Space:"
-msgstr "Leerraum:"
-
-#: lib/layouts/moderncv.layout:122
+#: lib/layouts/moderncv.layout:263
 msgid "Computer"
 msgstr "Computer"
 
-#: lib/layouts/moderncv.layout:125
-msgid "Computer:"
-msgstr "Computer:"
-
-#: lib/layouts/moderncv.layout:128
+#: lib/layouts/moderncv.layout:267
 msgid "EmptySection"
 msgstr "LeererAbschnitt"
 
-#: lib/layouts/moderncv.layout:137
+#: lib/layouts/moderncv.layout:276
 msgid "Empty Section"
 msgstr "Leerer Abschnitt"
 
-#: lib/layouts/moderncv.layout:144
+#: lib/layouts/moderncv.layout:283
 msgid "CloseSection"
 msgstr "SchließeAbschnitt"
 
-#: lib/layouts/moderncv.layout:147
+#: lib/layouts/moderncv.layout:286
 msgid "Close Section"
 msgstr "Schließe Abschnitt"
 
-#: lib/layouts/moderncv.layout:173 lib/layouts/stdlayouts.inc:74
+#: lib/layouts/moderncv.layout:289
+msgid "MakeCVtitle"
+msgstr "CV-Titel ausgeben"
+
+#: lib/layouts/moderncv.layout:292
+msgid "Make CV title"
+msgstr "CV-Titel ausgeben"
+
+#: lib/layouts/moderncv.layout:296
+msgid "MakeLetterTitle"
+msgstr "Brieftitel ausgeben"
+
+#: lib/layouts/moderncv.layout:299
+msgid "Make letter title"
+msgstr "Brieftitel ausgeben"
+
+#: lib/layouts/moderncv.layout:303
+msgid "MakeLetterClosing"
+msgstr "Briefschluss ausgeben"
+
+#: lib/layouts/moderncv.layout:306
+msgid "Close Letter"
+msgstr "Briefschluss"
+
+#: lib/layouts/moderncv.layout:333 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
 msgstr "--Trenner--"
 
-#: lib/layouts/moderncv.layout:181 lib/layouts/stdlayouts.inc:83
+#: lib/layouts/moderncv.layout:341 lib/layouts/stdlayouts.inc:83
 msgid "--- Separate Environment ---"
 msgstr "--- Umgebung trennen ---"
+
+#: lib/layouts/moderncv.layout:351
+msgid "Recipient"
+msgstr "Empfänger"
+
+#: lib/layouts/moderncv.layout:395
+msgid "Enclosing"
+msgstr "Anlagen"
+
+#: lib/layouts/moderncv.layout:402
+msgid "Enclosing:"
+msgstr "Anhang:"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -9492,7 +9627,7 @@ msgstr "Unterklasse"
 
 #: lib/layouts/svglobal3.layout:75
 msgid "Mathematics Subject Classification"
-msgstr "Mathematik-Sachgebiet-Klassifikation:"
+msgstr "Mathematik-Sachgebiet-Klassifikation"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
@@ -9500,7 +9635,7 @@ msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:81
 msgid "CR Subject Classification"
-msgstr "CR-Sachgebietsklassifikation:"
+msgstr "CR-Sachgebietsklassifikation"
 
 #: lib/layouts/svglobal3.layout:86
 msgid "Solution \\thesolution"
@@ -10073,10 +10208,6 @@ msgstr "Überarbeitung"
 #: lib/layouts/db_stdtitle.inc:78
 msgid "RevisionRemark"
 msgstr "Überarbeitungsbemerkung"
-
-#: lib/layouts/db_stdtitle.inc:94
-msgid "FirstName"
-msgstr "Vorname"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
 #: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
@@ -10762,7 +10893,7 @@ msgstr ""
 msgid "Initial"
 msgstr "Initiale"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:592
+#: lib/layouts/knitr.module:2 lib/configure.py:593
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -10787,7 +10918,7 @@ msgid "Chunk"
 msgstr "Stück"
 
 #: lib/layouts/knitr.module:14 lib/layouts/sweave.module:2
-#: lib/layouts/sweave.module:24 lib/configure.py:590
+#: lib/layouts/sweave.module:24 lib/configure.py:591
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -10825,7 +10956,7 @@ msgstr ""
 msgid "LilyPond"
 msgstr "LilyPond"
 
-#: lib/layouts/linguistics.module:2
+#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
 msgstr "Linguistik"
 
@@ -10847,59 +10978,59 @@ msgstr "Nummeriertes Beispiel (mehrere Zeilen)"
 msgid "Example:"
 msgstr "Beispiel:"
 
-#: lib/layouts/linguistics.module:37
+#: lib/layouts/linguistics.module:38
 msgid "Numbered Examples (consecutive)"
 msgstr "Nummeriertes Beispiel (konsekutiv)"
 
-#: lib/layouts/linguistics.module:41
+#: lib/layouts/linguistics.module:42
 msgid "Examples:"
 msgstr "Beispiele:"
 
-#: lib/layouts/linguistics.module:46
+#: lib/layouts/linguistics.module:47
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
-#: lib/layouts/linguistics.module:50
+#: lib/layouts/linguistics.module:51
 msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
-#: lib/layouts/linguistics.module:65 lib/layouts/linguistics.module:67
+#: lib/layouts/linguistics.module:66 lib/layouts/linguistics.module:68
 msgid "Glosse"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:94 lib/layouts/linguistics.module:96
+#: lib/layouts/linguistics.module:95 lib/layouts/linguistics.module:97
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:122
+#: lib/layouts/linguistics.module:123
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:124
+#: lib/layouts/linguistics.module:125
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:137
+#: lib/layouts/linguistics.module:138
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:139
+#: lib/layouts/linguistics.module:140
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:152
+#: lib/layouts/linguistics.module:153
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:154
+#: lib/layouts/linguistics.module:155
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:168
+#: lib/layouts/linguistics.module:169
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:173
+#: lib/layouts/linguistics.module:174
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -11871,15 +12002,19 @@ msgstr "Japanisch (nicht CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japanisch (nicht CJK) (SJIS)"
 
-#: lib/encodings:191
+#: lib/encodings:186
+msgid "Japanese (non-CJK) (utf8)"
+msgstr "Japanisch (nicht CJK) (utf8)"
+
+#: lib/encodings:193
 msgid "Thai (TIS 620-0)"
 msgstr "Thailändisch (TIS 620-0)"
 
-#: lib/encodings:196
+#: lib/encodings:198
 msgid "Unicode (XeTeX) (utf8)"
 msgstr "Unicode (XeTeX) (utf8)"
 
-#: lib/encodings:200
+#: lib/encodings:202
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -12333,17 +12468,17 @@ msgid "Justified Line Break|J"
 msgstr "Rechtsbündiger Zeilenumbruch|b"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1224 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1228 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1229 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1233 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1177 src/mathed/InsetMathGrid.cpp:1327
+#: src/Text3.cpp:1181 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Einfügen"
@@ -12479,7 +12614,7 @@ msgstr "Neu laden|u"
 #: lib/ui/stdcontext.inc:360 lib/ui/stdcontext.inc:372
 #: lib/ui/stdcontext.inc:473
 msgid "Edit Externally...|x"
-msgstr "Datei extern bearbeiten|x"
+msgstr "Datei extern bearbeiten...|x"
 
 #: lib/ui/stdcontext.inc:380
 msgid "Multicolumn|u"
@@ -12775,7 +12910,7 @@ msgstr "Letztes Einchecken widerrufen|w"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Compare with Older Revision...|C"
-msgstr "Vergleiche mit älterer Überarbeitung|V"
+msgstr "Vergleiche mit älterer Überarbeitung...|V"
 
 #: lib/ui/stdmenus.inc:81
 msgid "Show History...|H"
@@ -13051,7 +13186,7 @@ msgstr "Normale Mathe-Schrift|N"
 
 #: lib/ui/stdmenus.inc:264
 msgid "Math Calligraphic Family|C"
-msgstr "Kalligrafische Mathe-Schrift |K"
+msgstr "Kalligrafische Mathe-Schrift|K"
 
 #: lib/ui/stdmenus.inc:265
 msgid "Math Formal Script Family|o"
@@ -16587,328 +16722,328 @@ msgstr "XBM"
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:581
+#: lib/configure.py:582
 msgid "Plain text (chess output)"
 msgstr "Einfacher Text (Schach)"
 
-#: lib/configure.py:582
+#: lib/configure.py:583
 msgid "Plain text (image)"
 msgstr "Einfacher Text (Bild)"
 
-#: lib/configure.py:583
+#: lib/configure.py:584
 msgid "Plain text (Xfig output)"
 msgstr "Einfacher Text (XFig-Ausgabe)"
 
-#: lib/configure.py:584
+#: lib/configure.py:585
 msgid "date (output)"
 msgstr "Datum (Ausgabe)"
 
-#: lib/configure.py:585 src/frontends/qt4/GuiErrorList.cpp:42
+#: lib/configure.py:586 src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:585
+#: lib/configure.py:586
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:586
+#: lib/configure.py:587
 msgid "DocBook (XML)"
 msgstr "DocBook (XML)"
 
-#: lib/configure.py:587
+#: lib/configure.py:588
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:588
+#: lib/configure.py:589
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:589
+#: lib/configure.py:590
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:589
+#: lib/configure.py:590
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:590
+#: lib/configure.py:591
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/configure.py:591
+#: lib/configure.py:592
 msgid "R/S code"
 msgstr "R/S-Code"
 
-#: lib/configure.py:593
+#: lib/configure.py:594
 msgid "LilyPond music"
 msgstr "LilyPond-Musik"
 
-#: lib/configure.py:594
+#: lib/configure.py:595
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond-Buch (LaTeX)"
 
-#: lib/configure.py:595
+#: lib/configure.py:596
 msgid "LaTeX (plain)"
 msgstr "LaTeX (normal)"
 
-#: lib/configure.py:595
+#: lib/configure.py:596
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (normal)|L"
 
-#: lib/configure.py:596
+#: lib/configure.py:597
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:597
+#: lib/configure.py:598
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:598
+#: lib/configure.py:599
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:599
+#: lib/configure.py:600
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:600
+#: lib/configure.py:601
 msgid "Plain text"
 msgstr "Einfacher Text"
 
-#: lib/configure.py:600
+#: lib/configure.py:601
 msgid "Plain text|a"
 msgstr "Einfacher Text|E"
 
-#: lib/configure.py:601
+#: lib/configure.py:602
 msgid "Plain text (pstotext)"
 msgstr "Einfacher Text (pstotext)"
 
-#: lib/configure.py:602
+#: lib/configure.py:603
 msgid "Plain text (ps2ascii)"
 msgstr "Einfacher Text (ps2ascii)"
 
-#: lib/configure.py:603
+#: lib/configure.py:604
 msgid "Plain text (catdvi)"
 msgstr "Einfacher Text (catdvi)"
 
-#: lib/configure.py:604
+#: lib/configure.py:605
 msgid "Plain Text, Join Lines"
 msgstr "Einfacher Text, Zeilen verbinden"
 
-#: lib/configure.py:605
+#: lib/configure.py:606
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:608
+#: lib/configure.py:609
 msgid "Gnumeric spreadsheet"
 msgstr "Gnumeric-Tabelle"
 
-#: lib/configure.py:609
+#: lib/configure.py:610
 msgid "Excel spreadsheet"
 msgstr "Excel-Tabelle"
 
-#: lib/configure.py:610
+#: lib/configure.py:611
 msgid "OpenOffice spreadsheet"
 msgstr "OpenOffice-Tabelle"
 
-#: lib/configure.py:613 lib/configure.py:615
+#: lib/configure.py:614 lib/configure.py:616
 msgid "LyXHTML"
 msgstr "LyX-HTML"
 
-#: lib/configure.py:613 lib/configure.py:615
+#: lib/configure.py:614 lib/configure.py:616
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:623 src/frontends/qt4/GuiLog.cpp:230
+#: lib/configure.py:624 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:628
+#: lib/configure.py:629
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:629
+#: lib/configure.py:630
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:633
+#: lib/configure.py:634
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:633
+#: lib/configure.py:634
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:634
+#: lib/configure.py:635
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:634
+#: lib/configure.py:635
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:635
+#: lib/configure.py:636
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:635
+#: lib/configure.py:636
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:636
+#: lib/configure.py:637
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:636
+#: lib/configure.py:637
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:637
+#: lib/configure.py:638
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:637
+#: lib/configure.py:638
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:640
+#: lib/configure.py:641
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:640
+#: lib/configure.py:641
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:641
+#: lib/configure.py:642
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:641
+#: lib/configure.py:642
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:644
+#: lib/configure.py:645
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:647
+#: lib/configure.py:648
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:650
+#: lib/configure.py:651
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:653
+#: lib/configure.py:654
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:654
+#: lib/configure.py:655
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.org (sxw)"
 
-#: lib/configure.py:657
+#: lib/configure.py:658
 msgid "Rich Text Format"
 msgstr "Rich-Text-Format"
 
-#: lib/configure.py:658
+#: lib/configure.py:659
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:658
+#: lib/configure.py:659
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:661
+#: lib/configure.py:662
 msgid "date command"
 msgstr "date-Befehl"
 
-#: lib/configure.py:662
+#: lib/configure.py:663
 msgid "Table (CSV)"
 msgstr "Tabelle (CSV)"
 
-#: lib/configure.py:664 src/frontends/qt4/GuiView.cpp:1150
+#: lib/configure.py:665 src/frontends/qt4/GuiView.cpp:1150
 #: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:665
+#: lib/configure.py:666
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:666
+#: lib/configure.py:667
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:667
+#: lib/configure.py:668
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:668
+#: lib/configure.py:669
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:669
+#: lib/configure.py:670
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK-LyX 1.4.x (big5)"
 
-#: lib/configure.py:670
+#: lib/configure.py:671
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK-LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:671
+#: lib/configure.py:672
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK-LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:672
+#: lib/configure.py:673
 msgid "LyX Preview"
 msgstr "LyX-Vorschau"
 
-#: lib/configure.py:673
+#: lib/configure.py:674
 msgid "LyX Preview (LilyPond book)"
 msgstr "LyX-Vorschau (LilyPond-Buch)"
 
-#: lib/configure.py:674
+#: lib/configure.py:675
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyX-Vorschau (pLaTeX)"
 
-#: lib/configure.py:675
+#: lib/configure.py:676
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:676
+#: lib/configure.py:677
 msgid "Program"
 msgstr "Programm"
 
-#: lib/configure.py:677
+#: lib/configure.py:678
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:678 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:679 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:679 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:680 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Erweiterte Metadatei"
 
-#: lib/configure.py:680
+#: lib/configure.py:681
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:776
+#: lib/configure.py:777
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:985
+#: lib/configure.py:986
 msgid "LyX Archive (zip)"
 msgstr "LyX-Archiv (zip)"
 
-#: lib/configure.py:988
+#: lib/configure.py:989
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
@@ -17107,7 +17242,7 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1134 src/Buffer.cpp:3856 src/Buffer.cpp:3918
+#: src/Buffer.cpp:1134 src/Buffer.cpp:3860 src/Buffer.cpp:3922
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
@@ -17130,7 +17265,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Modifizierte Datei überschreiben?"
 
-#: src/Buffer.cpp:1147 src/Buffer.cpp:2395 src/Exporter.cpp:50
+#: src/Buffer.cpp:1147 src/Buffer.cpp:2399 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
 #: src/frontends/qt4/GuiView.cpp:2287
 msgid "&Overwrite"
@@ -17245,7 +17380,7 @@ msgstr ""
 "Kodierung des Dokuments (%2$s) unbekannt sind.\n"
 "Dies führt wahrscheinlich zu einer unvollständigen Ausgabe,\n"
 "es sei denn, die Variable TEXINPUTS enthält den Pfad des\n"
-"Dokuments und Sie verwenden in der Präambel und im TeX-\n"
+"Dokuments und Sie verwenden im LaTeX-Vorspann und im TeX-\n"
 "Modus ausschließlich relative Pfadangaben.\n"
 "\n"
 "Im Zweifel sollten Sie eine passende Dokumentkodierung (bspw. utf8)\n"
@@ -17263,36 +17398,36 @@ msgstr "ChkTeX ist fehlgeschlagen"
 msgid "Could not run chktex successfully."
 msgstr "Chktex konnte nicht erfolgreich ausgeführt werden."
 
-#: src/Buffer.cpp:2097
+#: src/Buffer.cpp:2101
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:2161 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2165 src/frontends/qt4/GuiView.cpp:3130
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:2244
+#: src/Buffer.cpp:2248
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Zweig \"%1$s\" existiert bereits."
 
-#: src/Buffer.cpp:2309
+#: src/Buffer.cpp:2313
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kann \"%1$s\" nicht parsen"
 
-#: src/Buffer.cpp:2316
+#: src/Buffer.cpp:2320
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Unbekanntes Ziel \"%1$s\""
 
-#: src/Buffer.cpp:2326
+#: src/Buffer.cpp:2330
 msgid "Error exporting to DVI."
 msgstr "Fehler beim Exportieren nach DVI."
 
-#: src/Buffer.cpp:2391 src/Exporter.cpp:45
+#: src/Buffer.cpp:2395 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17303,85 +17438,85 @@ msgstr ""
 "\n"
 "Möchten Sie diese Datei überschreiben?"
 
-#: src/Buffer.cpp:2394 src/Exporter.cpp:48
+#: src/Buffer.cpp:2398 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Datei überschreiben?"
 
-#: src/Buffer.cpp:2411
+#: src/Buffer.cpp:2415
 msgid "Error running external commands."
 msgstr "Fehler beim Ausführen externer Befehle."
 
-#: src/Buffer.cpp:3218
+#: src/Buffer.cpp:3222
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Quellcode für Absatz %1$d vorschauen"
 
-#: src/Buffer.cpp:3222
+#: src/Buffer.cpp:3226
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:3275
+#: src/Buffer.cpp:3279
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:3277
+#: src/Buffer.cpp:3281
 msgid "Preview preamble"
 msgstr "Vorschau des Vorspanns"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3283
 msgid "Preview body"
 msgstr "Vorschau des Haupttextes"
 
-#: src/Buffer.cpp:3294
+#: src/Buffer.cpp:3298
 msgid "Plain text does not have a preamble."
 msgstr "Einfacher Text hat keinen Vorspann."
 
-#: src/Buffer.cpp:3406
+#: src/Buffer.cpp:3410
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:3460
+#: src/Buffer.cpp:3464
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:3521
+#: src/Buffer.cpp:3525
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:3611
+#: src/Buffer.cpp:3615
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:3612
+#: src/Buffer.cpp:3616
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:3668
+#: src/Buffer.cpp:3672
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:3669
+#: src/Buffer.cpp:3673
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:3753
+#: src/Buffer.cpp:3757
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:3763
+#: src/Buffer.cpp:3767
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:3769
+#: src/Buffer.cpp:3773
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:3842
+#: src/Buffer.cpp:3846
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17392,19 +17527,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:3845
+#: src/Buffer.cpp:3849
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3850
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3850
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3857
+#: src/Buffer.cpp:3861
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17414,15 +17549,15 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:3863
+#: src/Buffer.cpp:3867
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3865
+#: src/Buffer.cpp:3869
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:3866
+#: src/Buffer.cpp:3870
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17432,27 +17567,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:3870 src/Buffer.cpp:3882
+#: src/Buffer.cpp:3874 src/Buffer.cpp:3886
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:3871 src/Buffer.cpp:3884
+#: src/Buffer.cpp:3875 src/Buffer.cpp:3888
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:3875
+#: src/Buffer.cpp:3879
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:3876
+#: src/Buffer.cpp:3880
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:3883
+#: src/Buffer.cpp:3887
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:3906
+#: src/Buffer.cpp:3910
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17463,19 +17598,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:3908
+#: src/Buffer.cpp:3912
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:3909
+#: src/Buffer.cpp:3913
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:3909
+#: src/Buffer.cpp:3913
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:3919
+#: src/Buffer.cpp:3923
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17485,25 +17620,25 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4261 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4265 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4461
+#: src/Buffer.cpp:4465
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4464
+#: src/Buffer.cpp:4468
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
 
-#: src/Buffer.cpp:4531
+#: src/Buffer.cpp:4535
 msgid "Included File Invalid"
 msgstr "Eingebundene Datei ungültig"
 
-#: src/Buffer.cpp:4532
+#: src/Buffer.cpp:4536
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17541,7 +17676,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1985
+#: src/BufferParams.cpp:1988
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -17556,11 +17691,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:1991
+#: src/BufferParams.cpp:1994
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:1998
+#: src/BufferParams.cpp:2001
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -17575,15 +17710,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2004 src/BufferView.cpp:1285 src/BufferView.cpp:1317
+#: src/BufferParams.cpp:2007 src/BufferView.cpp:1285 src/BufferView.cpp:1317
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2038
+#: src/BufferParams.cpp:2041
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2039 src/TextClass.cpp:1349
+#: src/BufferParams.cpp:2042 src/TextClass.cpp:1349
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -19054,7 +19189,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3252
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr "Der LaTeX-Befehl, um zur Sprache des Dokuments zurückzuwechseln."
+msgstr "Der LaTeX-Befehl, um zur Sprache des Dokuments zurück zu wechseln."
 
 #: src/LyXRC.cpp:3256
 msgid "The LaTeX command for local changing of the language."
@@ -19605,23 +19740,23 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1289
+#: src/Text3.cpp:1293
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1290
+#: src/Text3.cpp:1294
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1760 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1764 src/frontends/qt4/GuiApplication.cpp:1388
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:1916 src/Text3.cpp:1928
+#: src/Text3.cpp:1920 src/Text3.cpp:1932
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2135 src/Text3.cpp:2146
+#: src/Text3.cpp:2139 src/Text3.cpp:2150
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -22772,16 +22907,16 @@ msgstr "Bitte geben Sie das Dokument zunächst aus."
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiViewSource.cpp:222
-#: src/frontends/qt4/GuiViewSource.cpp:265
+#: src/frontends/qt4/GuiViewSource.cpp:226
+#: src/frontends/qt4/GuiViewSource.cpp:269
 msgid "LaTeX Source"
 msgstr "LaTeX-Quelle"
 
-#: src/frontends/qt4/GuiViewSource.cpp:267
+#: src/frontends/qt4/GuiViewSource.cpp:271
 msgid "DocBook Source"
 msgstr "DocBook-Quelle"
 
-#: src/frontends/qt4/GuiViewSource.cpp:269
+#: src/frontends/qt4/GuiViewSource.cpp:273
 msgid "Literate Source"
 msgstr "Literarische Quelle"
 
@@ -23288,7 +23423,7 @@ msgstr "Unbekannter Argumentname: "
 
 #: src/insets/InsetCommandParams.cpp:313
 msgid "Missing \\end_inset at this point: "
-msgstr "Fehlendes \\end_inset an dieser Stelle:"
+msgstr "Fehlendes \\end_inset an dieser Stelle: "
 
 #: src/insets/InsetCommandParams.cpp:401 src/insets/InsetHyperlink.cpp:220
 msgid "Uncodable characters"
@@ -23869,7 +24004,7 @@ msgstr "Formatiert"
 
 #: src/insets/InsetRef.cpp:345
 msgid "Format: "
-msgstr "Format:"
+msgstr "Format: "
 
 #: src/insets/InsetRef.cpp:346
 msgid "Reference to Name"
@@ -23949,7 +24084,7 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:4769
+#: src/insets/InsetTabular.cpp:4772
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -24096,15 +24231,15 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1429
+#: src/lyxfind.cpp:1430
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1434
+#: src/lyxfind.cpp:1435
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1438
+#: src/lyxfind.cpp:1439
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -24518,6 +24653,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Space:"
+#~ msgstr "Leerraum:"
+
+#~ msgid "Computer:"
+#~ msgstr "Computer:"
 
 #~ msgid "CopNum"
 #~ msgstr "Laufende Nummer"
@@ -25230,9 +25371,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Foot"
 #~ msgstr "Fußnote"
-
-#~ msgid "Note:Comment"
-#~ msgstr "Element:Kommentar"
 
 #~ msgid "Note:Note"
 #~ msgstr "Element:Notiz"
