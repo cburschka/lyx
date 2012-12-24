@@ -2890,7 +2890,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		} else {
 			char_type c = getUChar(buf.params(), i);
 
-			if (style.pass_thru)
+			if (style.pass_thru || runparams.pass_thru)
 				xs << c;
 			else if (c == '-') {
 				docstring str;

@@ -580,6 +580,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag)
 		xs << html::StartTag(il.htmltag(), il.htmlattr());
+
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
@@ -599,14 +600,21 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 
 	if (opts & WriteInnerTag)
 		xs << html::StartTag(il.htmlinnertag(), il.htmlinnerattr());
-	OutputParams ours = runparams;
+
+	// we will eventaully lose information about the containing inset
 	if (!il.isMultiPar() || opts == JustText)
-		ours.html_make_pars = false;
-	xhtmlParagraphs(text_, buffer(), xs, ours);
+		runparams.html_make_pars = false;
+	if (il.isPassThru())
+		runparams.pass_thru = true;
+
+	xhtmlParagraphs(text_, buffer(), xs, runparams);
+
 	if (opts & WriteInnerTag)
 		xs << html::EndTag(il.htmlinnertag());
+
 	if (opts & WriteOuterTag)
 		xs << html::EndTag(il.htmltag());
+
 	return docstring();
 }
 
