@@ -10,6 +10,7 @@
  * \author Jürgen Vigna
  * \author Edwin Leuven
  * \author Uwe Stöhr
+ * \author Scott Kostyshak
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -135,6 +136,14 @@ public:
 		COPY_ROW,
 		///
 		COPY_COLUMN,
+		///
+		MOVE_COLUMN_RIGHT,
+		///
+		MOVE_COLUMN_LEFT,
+		///
+		MOVE_ROW_DOWN,
+		///
+		MOVE_ROW_UP,
 		///
 		SET_LINE_TOP,
 		///
@@ -331,6 +340,16 @@ public:
 		CAPTION_ANY
 	};
 
+	enum RowDirection {
+		UP,
+		DOWN
+	};
+
+	enum ColDirection {
+		RIGHT,
+		LEFT
+	};
+
 	class ltType {
 	public:
 		// constructor
@@ -453,6 +472,10 @@ public:
 	///  
 	void insertRow(row_type row, bool copy);
 	///
+	void moveColumn(col_type col, ColDirection direction);
+	///
+	void moveRow(row_type row, RowDirection direction);
+	///
 	void appendColumn(col_type column);
 	///
 	void deleteColumn(col_type column);
@@ -483,6 +506,8 @@ public:
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
+	bool hasMultiColumn(col_type cell) const;
+	///
 	idx_type setMultiColumn(idx_type cell, idx_type number,
 			     bool const right_border);
 	///
@@ -493,6 +518,8 @@ public:
 	bool isPartOfMultiRow(row_type row, col_type column) const;
 	///
 	bool isMultiRow(idx_type cell) const;
+	///
+	bool hasMultiRow(row_type r) const;
 	///
 	idx_type setMultiRow(idx_type cell, idx_type number,
 			     bool const bottom_border);

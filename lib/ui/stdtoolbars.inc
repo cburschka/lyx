@@ -144,6 +144,10 @@ ToolbarSet
 		Item "Add column" "inset-modify tabular append-column"
 		Item "Delete row" "inset-modify tabular delete-row"
 		Item "Delete column" "inset-modify tabular delete-column"
+		Item "Move row up" "inset-modify tabular move-row-up"
+		Item "Move column left" "inset-modify tabular move-column-left"
+		Item "Move row down" "inset-modify tabular move-row-down"
+		Item "Move column right" "inset-modify tabular move-column-right"
 		Separator
 		Item "Set top line" "inset-modify tabular toggle-line-top"
 		Item "Set bottom line" "inset-modify tabular toggle-line-bottom"

@@ -416,12 +416,14 @@ Menuset
 		Item "Append Row|A" "inset-modify tabular append-row"
 		Item "Delete Row|D" "inset-modify tabular delete-row"
 		Item "Copy Row|o" "inset-modify tabular copy-row"
-		# Item "Swap Rows|S" "inset-modify tabular swap-row" # currently broken
+		Item "Move Row Up" "inset-modify tabular move-row-up"
+		Item "Move Row Down" "inset-modify tabular move-row-down"
 		Separator
 		Item "Append Column|p" "inset-modify tabular append-column"
 		Item "Delete Column|e" "inset-modify tabular delete-column"
 		Item "Copy Column|y" "inset-modify tabular copy-column"
-		# Item "Swap Columns|w" "inset-modify tabular swap-column" # currently broken
+		Item "Move Column Right|v" "inset-modify tabular move-column-right"
+		Item "Move Column Left" "inset-modify tabular move-column-left"
 		Separator
 		Item "Settings...|g" "inset-settings tabular"
 	End

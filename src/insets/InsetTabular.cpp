@@ -13,6 +13,7 @@
  * \author Jürgen Vigna
  * \author Uwe Stöhr
  * \author Edwin Leuven
+ * \author Scott Kostyshak
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -115,6 +116,10 @@ TabularFeature tabularFeature[] =
 	{ Tabular::DELETE_COLUMN, "delete-column", false },
 	{ Tabular::COPY_ROW, "copy-row", false },
 	{ Tabular::COPY_COLUMN, "copy-column", false },
+	{ Tabular::MOVE_COLUMN_RIGHT, "move-column-right", false },
+	{ Tabular::MOVE_COLUMN_LEFT, "move-column-left", false },
+	{ Tabular::MOVE_ROW_DOWN, "move-row-down", false },
+	{ Tabular::MOVE_ROW_UP, "move-row-up", false },
 	{ Tabular::SET_LINE_TOP, "set-line-top", true },
 	{ Tabular::SET_LINE_BOTTOM, "set-line-bottom", true },
 	{ Tabular::SET_LINE_LEFT, "set-line-left", true },
@@ -767,6 +772,50 @@ void Tabular::insertRow(row_type const row, bool copy)
 		if (buffer().params().trackChanges)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
+}
+
+
+void Tabular::moveColumn(col_type col, ColDirection direction)
+{
+	if (direction == Tabular::LEFT)
+		col = col - 1;
+
+	for (row_type r = 0; r < nrows(); ++r) {
+		std::swap(cell_info[r][col], cell_info[r][col + 1]);
+		std::swap(cell_info[r][col].left_line, cell_info[r][col + 1].left_line);
+		std::swap(cell_info[r][col].right_line, cell_info[r][col + 1].right_line);
+
+		// FIXME track changes is broken for tabular features (#8469)
+		idx_type const i = cellIndex(r, col);
+		idx_type const j = cellIndex(r, col + 1);
+		if (buffer().params().trackChanges) {
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+			cellInfo(j).inset->setChange(Change(Change::INSERTED));
+		}
+	}
+	updateIndexes();
+}
+
+
+void Tabular::moveRow(row_type row, RowDirection direction)
+{
+	if (direction == Tabular::UP)
+		row = row - 1;
+
+	for (col_type c = 0; c < ncols(); ++c) {
+		std::swap(cell_info[row][c], cell_info[row + 1][c]);
+		std::swap(cell_info[row][c].top_line, cell_info[row + 1][c].top_line);
+		std::swap(cell_info[row][c].bottom_line, cell_info[row + 1][c].bottom_line);
+
+		// FIXME track changes is broken for tabular features (#8469)
+		idx_type const i = cellIndex(row, c);
+		idx_type const j = cellIndex(row + 1, c);
+		if (buffer().params().trackChanges) {
+			cellInfo(i).inset->setChange(Change(Change::INSERTED));
+			cellInfo(j).inset->setChange(Change(Change::INSERTED));
+		}
+	}
+	updateIndexes();
 }
 
 
@@ -1604,6 +1653,16 @@ bool Tabular::isMultiColumn(idx_type cell) const
 }
 
 
+bool Tabular::hasMultiColumn(col_type c) const
+{
+	for (row_type r = 0; r < nrows(); ++r) {
+		if (isMultiColumn(cellIndex(r, c)))
+			return true;
+	}
+	return false;
+}
+
+
 Tabular::CellData & Tabular::cellInfo(idx_type cell) const
 {
 	return cell_info[cellRow(cell)][cellColumn(cell)];
@@ -1644,6 +1703,14 @@ bool Tabular::isMultiRow(idx_type cell) const
 		|| cellInfo(cell).multirow == CELL_PART_OF_MULTIROW);
 }
 
+bool Tabular::hasMultiRow(row_type r) const
+{
+	for (col_type c = 0; c < ncols(); ++c) {
+		if (isMultiRow(cellIndex(r, c)))
+			return true;
+	}
+	return false;
+}
 
 Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
 				       bool const bottom_border)
@@ -4412,6 +4479,56 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& tabular.tabular_valignment == Tabular::LYX_VALIGN_MIDDLE);
 			break;
 
+		case Tabular::MOVE_COLUMN_RIGHT:
+		case Tabular::MOVE_COLUMN_LEFT:
+		case Tabular::MOVE_ROW_DOWN:
+		case Tabular::MOVE_ROW_UP: {
+			if (cur.selection()) {
+				status.message(_("Selections not supported."));
+				status.setEnabled(false);
+				break;
+			}
+
+			if ((action == Tabular::MOVE_COLUMN_RIGHT &&
+				tabular.ncols() == tabular.cellColumn(cur.idx()) + 1) ||
+			    (action == Tabular::MOVE_COLUMN_LEFT &&
+				tabular.cellColumn(cur.idx()) == 0) ||
+			    (action == Tabular::MOVE_ROW_DOWN &&
+				tabular.nrows() == tabular.cellRow(cur.idx()) + 1) ||
+			    (action == Tabular::MOVE_ROW_UP &&
+				tabular.cellRow(cur.idx()) == 0)) {
+					status.setEnabled(false);
+					break;
+			}
+
+			if (action == Tabular::MOVE_COLUMN_RIGHT ||
+			    action == Tabular::MOVE_COLUMN_LEFT) {
+				if (tabular.hasMultiColumn(tabular.cellColumn(cur.idx())) ||
+				    tabular.hasMultiColumn(tabular.cellColumn(cur.idx()) +
+					(action == Tabular::MOVE_COLUMN_RIGHT ? 1 : -1))) {
+					status.message(_("Multi-column in current or"
+							 " destination column."));
+					status.setEnabled(false);
+					break;
+				}
+			}
+
+			if (action == Tabular::MOVE_ROW_DOWN ||
+			    action == Tabular::MOVE_ROW_UP) {
+				if (tabular.hasMultiRow(tabular.cellRow(cur.idx())) ||
+				    tabular.hasMultiRow(tabular.cellRow(cur.idx()) +
+					(action == Tabular::MOVE_ROW_DOWN ? 1 : -1))) {
+					status.message(_("Multi-row in current or"
+							 " destination row."));
+					status.setEnabled(false);
+					break;
+				}
+			}
+
+			status.setEnabled(true);
+			break;
+		}
+
 		case Tabular::SET_DECIMAL_POINT:
 			status.setEnabled(
 				tabular.getAlignment(cur.idx()) == LYX_ALIGN_DECIMAL);
@@ -5393,6 +5510,26 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 
+	case Tabular::MOVE_COLUMN_RIGHT:
+		tabular.moveColumn(column, Tabular::RIGHT);
+		cur.idx() = tabular.cellIndex(row, column + 1);
+		break;
+
+	case Tabular::MOVE_COLUMN_LEFT:
+		tabular.moveColumn(column, Tabular::LEFT);
+		cur.idx() = tabular.cellIndex(row, column - 1);
+		break;
+
+	case Tabular::MOVE_ROW_DOWN:
+		tabular.moveRow(row, Tabular::DOWN);
+		cur.idx() = tabular.cellIndex(row + 1, column);
+		break;
+
+	case Tabular::MOVE_ROW_UP:
+		tabular.moveRow(row, Tabular::UP);
+		cur.idx() = tabular.cellIndex(row - 1, column);
+		break;
+
 	case Tabular::SET_LINE_TOP:
 	case Tabular::TOGGLE_LINE_TOP: {
 		bool lineSet = (feature == Tabular::SET_LINE_TOP)
@@ -5468,7 +5605,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 					tabular.rightLine(cur.idx()));
 			break;
 		}
-		// we have a selection so this means we just add all this
+		// we have a selection so this means we just add all these
 		// cells to form a multicolumn cell
 		idx_type const s_start = cur.selBegin().idx();
 		row_type const col_start = tabular.cellColumn(s_start);
