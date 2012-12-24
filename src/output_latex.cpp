@@ -444,8 +444,10 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 	ParagraphList::const_iterator spit = boost::prior(pit, offset);
 
 	for (; spit != pars.end(); ++spit) {
-		if (spit->layout() != current_layout)
+		if (spit->layout() != current_layout || spit->params().depth() < current_depth)
 			break;
+		if (spit->params().depth() > current_depth)
+			continue;
 		InsetList::const_iterator it = spit->insetList().begin();
 		InsetList::const_iterator end = spit->insetList().end();
 		for (; it != end; ++it) {
