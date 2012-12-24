@@ -1391,21 +1391,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ENVIRONMENT_SPLIT: {
 		Paragraph const & para = cur.paragraph();
 		docstring const layout = para.layout().name();
-		if (cur.pos() > 0) {
-			FuncRequest cmd(LFUN_PARAGRAPH_BREAK);
-			lyx::dispatch(cmd);
-		}
+		if (cur.pos() > 0)
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
 		bool const morecont = cur.lastpos() > cur.pos();
-		FuncRequest cmd2(LFUN_LAYOUT, "Separator");
-		lyx::dispatch(cmd2);
-		FuncRequest cmd3(LFUN_PARAGRAPH_BREAK, "inverse");
-		lyx::dispatch(cmd3);
-		if (morecont) {
-			FuncRequest cmd4(LFUN_DOWN);
-			lyx::dispatch(cmd4);
-		}
-		FuncRequest cmd5(LFUN_LAYOUT, layout);
-		lyx::dispatch(cmd5);
+		lyx::dispatch(FuncRequest(LFUN_LAYOUT, "Separator"));
+		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
+		if (morecont) 
+			lyx::dispatch(FuncRequest(LFUN_DOWN));
+		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 
 		break;
 	}
@@ -2887,12 +2880,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	
 	case LFUN_ENVIRONMENT_SPLIT: {
-		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
-		    || !cur.paragraph().layout().isEnvironment()) {
-			enable = false;
+		if (cur.paragraph().layout().isEnvironment()
+		    && cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))) {
+			enable = true;
 			break;
 		}
-		enable = true;
+		enable = false;
 		break;
 	}
 
