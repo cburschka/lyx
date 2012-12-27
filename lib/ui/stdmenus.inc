@@ -148,6 +148,7 @@ Menuset
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
 		OptItem "Table Settings...|a" "layout-tabular"
+		OptItem "Split Environment|l" "environment-split"
 	End
 
 	Menu "edit_paste"
