@@ -1,0 +1,18 @@
+#\DeclareLyXModule[natbib.sty,apacite.sty]{Natbibapa}
+#DescriptionBegin 
+#This module adds support for using natbib together with
+#apacite (the bibliography style need not be apacite--it
+#         could be apacite, apacitex, or any bibliography
+#         that works with both the natbib and apacite
+#         packages.
+#DescriptionEnd 
+#Requires:
+#Excludes:
+
+Format 35
+
+Preamble
+    \usepackage[natbibapa]{apacite}
+EndPreamble
+
+Provides natbib 1

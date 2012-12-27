@@ -1,0 +1,286 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass apa6
+\options jou
+\use_default_options false
+\begin_modules
+natbibapa
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Style Journal
+LatexName             journal
+LatexType             Command
+#	InTitle               0
+    InPreamble            1
+End
+\end_local_layout
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Journal
+Journal of Important Stuff
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The journal name, volume, ccopy, and copnum appear only in jou and doc modes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Volume
+Vol.
+ 0 (2007), pp.~1--22
+\end_layout
+
+\begin_layout Copyright
+© The Author
+\end_layout
+
+\begin_layout CopNum
+ISSN XXX-XXXX-XXXX
+\end_layout
+
+\begin_layout Title
+Long Title of the Paper Which is Very Descriptive of the Work Being Done
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Warning: Don't force a newline in manuscript mode.
+ It won't compile.
+ If you want to in jou or doc mode, that's fine.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ShortTitle
+Short Title of Paper
+\end_layout
+
+\begin_layout Author
+Author Name
+\end_layout
+
+\begin_layout LeftHeader
+Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The left header is used for the author's last name(s), and appears on even-page
+ headers in jou mode.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Affiliation
+Big Name University
+\begin_inset Newline newline
+\end_inset
+
+Department of Psychology
+\end_layout
+
+\begin_layout Note
+Draft of 12/ 16/12.
+\end_layout
+
+\begin_layout Abstract
+This the abstract for my document.
+ The purpose of this document is to demonstrate the new apa6 class that
+ I have been working on.
+ There was a layout file for the original apa document class which was authored
+ by Randy Gobbel.
+ This document is based on that layout, but includes many additions and
+ updates.
+ I really don't like having relevant information in a preamble if it is
+ not necessary.
+ So, styles for all the necessary commands have been included as part of
+ the document instead.
+\end_layout
+
+\begin_layout Keywords
+apa6, layout, template, LyX
+\end_layout
+
+\begin_layout AuthorNote
+We would like to acknowledge all of the many people who contributed to this
+ work.
+\end_layout
+
+\begin_layout Section
+Section Heading
+\end_layout
+
+\begin_layout Standard
+Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ Standard text.
+ 
+\end_layout
+
+\begin_layout Standard
+This is more standard text.
+ This is more standard text.
+ This is more standard text.
+ This is more standard text.
+ This is more standard text.
+ This is more standard text.
+ 
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading
+\end_layout
+
+\begin_layout Standard
+This is more standard text.
+ If you use the nifty natbibapa module, then you can select apacite as the
+ bibliography style below.
+ This allows you to do awesome stuff.
+ For example, check out this inline citation.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "jame76"
+
+\end_inset
+
+ declared...notice that it uses 
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+ between names.
+ Now check out this one 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gree00"
+
+\end_inset
+
+.
+ It uses 
+\begin_inset Quotes eld
+\end_inset
+
+&
+\begin_inset Quotes erd
+\end_inset
+
+ between names just like it is supposed to.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Unlike the original apa class, the apa6 class does not override whatever
+ citation style is listed in the bibliography.
+ However, for compliance with apa6, you should set the style to apacite.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "sample"
+options "apacite"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
