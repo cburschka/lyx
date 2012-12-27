@@ -297,9 +297,7 @@ bool LaTeXFeatures::useBabel() const
 	        && lyxrc.language_package_selection == LyXRC::LP_NONE))
 		return false;
 
-	return (bufferParams().language->lang() != "english"
-		&& !bufferParams().language->babel().empty())
-		|| this->hasLanguages();
+	return !bufferParams().language->babel().empty() || this->hasLanguages();
 }
 
 
