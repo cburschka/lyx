@@ -433,6 +433,14 @@ contributers = [
                  "3 January 2009",
                  u"small bugfixes, CMake build system, Slovak translation"),
 
+     contributer(u"Jacob Bishop",
+                 "bishop.jacob () gmail ! com",
+                 "GPL",
+                 "Contributions...APA 6 Layout",
+                 "m=135654106502977",
+                 "26 December 2012",
+                 u"APA 6 Layout"),
+
      contributer(u"Punyashloka Biswal",
                  "punya.biswal () gmail ! com",
                  "GPL",
