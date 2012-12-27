@@ -266,7 +266,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch(): cmd: " << cmd);
 
-	if (isPassThru()) {
+	if (isPassThru() && lyxCode() != ARG_CODE) {
 		// Force any new text to latex_language FIXME: This
 		// should only be necessary in constructor, but new
 		// paragraphs that are created by pressing enter at
