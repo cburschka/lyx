@@ -345,7 +345,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (&buffer().inset() == this || !cur.paragraph().layout().args().empty())
 			return text_.getStatus(cur, cmd, status);
 
-		Layout::LaTeXArgMap args = getLayout().latexargs();
+		Layout::LaTeXArgMap args = getLayout().args();
 		Layout::LaTeXArgMap::const_iterator const lait = args.find(arg);
 		if (lait != args.end()) {
 			status.setEnabled(true);
@@ -444,7 +444,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());
 			if (!il.latexargs().empty())
-				getOptArg(os, runparams);
+				getArgs(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
 			os << '{';
@@ -458,14 +458,14 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 						  runparams.lastpos);
 			os << "\\begin{" << from_utf8(il.latexname()) << "}";
 			if (!il.latexargs().empty())
-				getOptArg(os, runparams);
+				getArgs(os, runparams);
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
 			os << '\n';
 		}
 	} else {
 		if (!il.latexargs().empty())
-			getOptArg(os, runparams);
+			getArgs(os, runparams);
 		if (!il.latexparam().empty())
 			os << from_utf8(il.latexparam());
 	}
@@ -491,12 +491,14 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			os << "}";
+			if (!il.postcommandargs().empty())
+				getArgs(os, runparams, true);
 		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
 			// A comment environment doesn't need a % before \n\end
 			if (il.isDisplay() || runparams.inComment)
-			    os << breakln;
+				os << breakln;
 			else
-			    os << safebreakln;
+				os << safebreakln;
 			os << "\\end{" << from_utf8(il.latexname()) << "}\n";
 			if (!il.isDisplay())
 				os.protectSpace(true);
@@ -622,15 +624,18 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	return docstring();
 }
 
-void InsetText::getOptArg(otexstream & os,
-			OutputParams const & runparams_in) const
+void InsetText::getArgs(otexstream & os, OutputParams const & runparams_in,
+			bool const post) const
 {
 	OutputParams runparams = runparams_in;
 	runparams.local_font =
 		&paragraphs()[0].getFirstFontSettings(buffer().masterBuffer()->params());
 	if (isPassThru())
 		runparams.pass_thru = true;
-	latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().latexargs());
+	if (post)
+		latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().postcommandargs(), "post:");
+	else
+		latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().latexargs());
 }
 
 

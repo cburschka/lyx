@@ -896,6 +896,7 @@ void Layout::readArgument(Lexer & lex)
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
+	bool const postcmd = prefixIs(id, "post:");
 
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
@@ -952,6 +953,8 @@ void Layout::readArgument(Lexer & lex)
 		LYXERR0("Incomplete Argument definition!");
 	else if (itemarg)
 		itemargs_[id] = arg;
+	else if (postcmd)
+		postcommandargs_[id] = arg;
 	else
 		latexargs_[id] = arg;
 }
@@ -960,6 +963,8 @@ void Layout::readArgument(Lexer & lex)
 Layout::LaTeXArgMap Layout::args() const
 {
 	LaTeXArgMap args = latexargs_;
+	if (!postcommandargs_.empty())
+		args.insert(postcommandargs_.begin(), postcommandargs_.end());
 	if (!itemargs_.empty())
 		args.insert(itemargs_.begin(), itemargs_.end());
 	return args;
@@ -974,6 +979,11 @@ int Layout::optArgs() const
 		if (!(*it).second.mandatory)
 			++nr;
 	}
+	LaTeXArgMap::const_iterator iit = postcommandargs_.begin();
+	for (; iit != postcommandargs_.end(); ++iit) {
+		if (!(*iit).second.mandatory)
+			++nr;
+	}
 	return nr;
 }
 
@@ -984,6 +994,11 @@ int Layout::requiredArgs() const
 	LaTeXArgMap::const_iterator it = latexargs_.begin();
 	for (; it != latexargs_.end(); ++it) {
 		if ((*it).second.mandatory)
+			++nr;
+	}
+	LaTeXArgMap::const_iterator iit = postcommandargs_.begin();
+	for (; iit != postcommandargs_.end(); ++iit) {
+		if (!(*iit).second.mandatory)
 			++nr;
 	}
 	return nr;

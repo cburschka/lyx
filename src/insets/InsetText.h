@@ -94,8 +94,8 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	
-	/// return the optional argument(s) only
-	void getOptArg(otexstream & os, OutputParams const &) const;
+	/// return the argument(s) only
+	void getArgs(otexstream & os, OutputParams const &, bool const post = false) const;
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,

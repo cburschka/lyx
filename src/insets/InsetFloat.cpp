@@ -482,7 +482,7 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 	TexRow texrow;
 	odocstringstream ods;
 	otexstream os(ods, texrow);
-	ins->getOptArg(os, runparams);
+	ins->getArgs(os, runparams);
 	ods << '[';
 	odocstringstream odss;
 	otexstream oss(odss, texrow);

@@ -518,6 +518,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	arg.labelfont = inherit_font;
 	string nr;
 	lex >> nr;
+	bool const postcmd = support::prefixIs(nr, "post:");
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
 		string const tok = support::ascii_lowercase(lex.getString());
@@ -571,15 +572,27 @@ void InsetLayout::readArgument(Lexer & lex)
 	}
 	if (arg.labelstring.empty())
 		LYXERR0("Incomplete Argument definition!");
+	else if (postcmd)
+		postcommandargs_[nr] = arg;
 	else
 		latexargs_[nr] = arg;
 }
 
+
+Layout::LaTeXArgMap InsetLayout::args() const
+{
+	Layout::LaTeXArgMap args = latexargs_;
+	if (!postcommandargs_.empty())
+		args.insert(postcommandargs_.begin(), postcommandargs_.end());
+	return args;
+}
+
+
 unsigned int InsetLayout::optArgs() const
 {
 	unsigned int nr = 0;
-	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();
-	for (; it != latexargs_.end(); ++it) {
+	Layout::LaTeXArgMap::const_iterator it = args().begin();
+	for (; it != args().end(); ++it) {
 		if (!(*it).second.mandatory)
 			++nr;
 	}
@@ -590,8 +603,8 @@ unsigned int InsetLayout::optArgs() const
 unsigned int InsetLayout::requiredArgs() const
 {
 	unsigned int nr = 0;
-	Layout::LaTeXArgMap::const_iterator it = latexargs_.begin();
-	for (; it != latexargs_.end(); ++it) {
+	Layout::LaTeXArgMap::const_iterator it = args().begin();
+	for (; it != args().end(); ++it) {
 		if ((*it).second.mandatory)
 			++nr;
 	}

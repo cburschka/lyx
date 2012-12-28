@@ -314,7 +314,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 
 void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs,
-		  map<int, lyx::InsetArgument const *> ilist, vector<string> required, bool item)
+		  map<int, lyx::InsetArgument const *> ilist, vector<string> required, string const & prefix)
 {
 	unsigned int const argnr = latexargs.size();
 	if (argnr == 0)
@@ -347,7 +347,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 			Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
 			Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
 			for (; lait != laend; ++lait) {
-				string const name = item ? "item:" + convert<string>(i) : convert<string>(i);
+				string const name = prefix + convert<string>(i);
 				if ((*lait).first == name) {
 					Layout::latexarg arg = (*lait).second;
 					if (arg.mandatory) {
@@ -386,7 +386,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 
 
 void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, bool item)
+	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, string const & prefix)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
@@ -400,7 +400,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			if (ins->name().empty())
 				LYXERR0("Error: Unnamed argument inset!");
 			else {
-				string const name = item ? split(ins->name(), ':') : ins->name();
+				string const name = prefix.empty() ? ins->name() : split(ins->name(), ':');
 				unsigned int const nr = convert<unsigned int>(name);
 				ilist[nr] = ins;
 				Layout::LaTeXArgMap::const_iterator const lit =
@@ -415,12 +415,13 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 			}
 		}
 	}
-	getArgInsets(os, runparams, latexargs, ilist, required, item);
+	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
 }
 
 
 void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pit,
-	otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs)
+	otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs,
+	string const & prefix)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
@@ -457,7 +458,7 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 				if (ins->name().empty())
 					LYXERR0("Error: Unnamed argument inset!");
 				else {
-					string const name = ins->name();
+					string const name = prefix.empty() ? ins->name() : split(ins->name(), ':');
 					unsigned int const nr = convert<unsigned int>(name);
 					if (ilist.find(nr) == ilist.end())
 						ilist[nr] = ins;
@@ -474,7 +475,7 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 			}
 		}
 	}
-	getArgInsets(os, runparams, latexargs, ilist, required, false);
+	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
 }
 
 namespace {
@@ -497,7 +498,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 		os << "\\" + style.itemcommand();
 		// Item arguments
 		if (!style.itemargs().empty())
-			latexArgInsets(par, os, runparams, style.itemargs(), true);
+			latexArgInsets(par, os, runparams, style.itemargs(), "item:");
 		os << " ";
 		break;
 	case LATEX_BIB_ENVIRONMENT:
@@ -837,6 +838,8 @@ void TeXOnePar(Buffer const & buf,
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
 	} else if (is_command) {
 		os << '}';
+		if (!style.postcommandargs().empty())
+			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
 			if (!runparams.isFullUnicode())

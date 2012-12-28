@@ -1472,8 +1472,14 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// this will output "{" at the beginning, but not at the end
 		owner_->latex(bp, f, os, features.runparams(), 0, -1, true);
 		if (ods.str().length() > length) {
-			if (is_command)
+			if (is_command) {
 				ods << '}';
+				if (!layout_->postcommandargs().empty()) {
+					OutputParams rp = features.runparams();
+					rp.local_font = &owner_->getFirstFontSettings(bp);
+					latexArgInsets(*owner_, os, rp, layout_->postcommandargs(), "post:");
+				}
+			}
 			string const snippet = to_utf8(ods.str());
 			features.addPreambleSnippet(snippet);
 		}

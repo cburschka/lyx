@@ -86,7 +86,11 @@ public:
 	///
 	ColorCode bgcolor() const { return bgcolor_; }
 	///
+	Layout::LaTeXArgMap args() const;
+	///
 	Layout::LaTeXArgMap latexargs() const { return latexargs_; }
+	///
+	Layout::LaTeXArgMap postcommandargs() const { return postcommandargs_; }
 	///
 	unsigned int optArgs() const;
 	///
@@ -268,6 +272,8 @@ private:
 	bool forcelocalfontswitch_;
 	///
 	Layout::LaTeXArgMap latexargs_;
+	///
+	Layout::LaTeXArgMap postcommandargs_;
 };
 
 ///

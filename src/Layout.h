@@ -111,6 +111,8 @@ public:
 	///
 	LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
+	LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
+	///
 	LaTeXArgMap const & itemargs() const { return itemargs_; }
 	///
 	int optArgs() const;
@@ -410,6 +412,8 @@ private:
 	std::set<std::string> requires_;
 	///
 	LaTeXArgMap latexargs_;
+	///
+	LaTeXArgMap postcommandargs_;
 	///
 	LaTeXArgMap itemargs_;
 };

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 453
+\lyxformat 455
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11016,6 +11016,99 @@ status collapsed
  Currently, only one argument per style\SpecialChar \slash{}
 layout can be automatically inserted.
 \change_inserted 155139281 1354198988
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1356689813
+By default, the text entered in the LyX workarea in the respective layout
+ is the last (mandatory) argument of a command if the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689619
+LatexType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689629
+Command
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ However, arguments with the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689679
+post:
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ are output after this workarea argument.
+ Note that post-argument numbering restarts at 1, so the first argument
+ following the workarea argument is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689813
+post:1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ Post-arguments are ignored in any other 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689801
+LatexType
+\end_layout
+
+\end_inset
+
+ than 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356689801
+Command
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 
 \end_layout
 

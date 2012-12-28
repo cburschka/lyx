@@ -61,7 +61,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 	pass_thru_ = it.paragraph().layout().pass_thru;
 	bool const insetlayout = &it.inset() && args.empty();
 	if (insetlayout) {
-		args = it.inset().getLayout().latexargs();
+		args = it.inset().getLayout().args();
 		pass_thru_ = it.inset().getLayout().isPassThru();
 	}
 	

@@ -1556,7 +1556,7 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 	Inset const * inset = &bv->cursor().inset();
 	Layout::LaTeXArgMap args = bv->cursor().paragraph().layout().args();
 	if (inset && args.empty())
-		args = inset->getLayout().latexargs();
+		args = inset->getLayout().args();
 	if (args.empty() || (switcharg && args.size() == 1))
 		return;
 	Layout::LaTeXArgMap::const_iterator lait = args.begin();
