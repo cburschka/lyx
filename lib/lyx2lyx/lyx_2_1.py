@@ -2928,7 +2928,7 @@ def convert_epigraph(document):
                 begsubst = ['\\begin_inset Argument post:1', 'status collapsed', '',
                             '\\begin_layout Plain Layout']
                 endsubst = ['\\end_layout', '', '\\end_inset', '', document.body[j]]
-                document.body[j : j] = endsubst
+                document.body[j : j + 1] = endsubst
                 document.body[endInset + 1 : endInset + 1] = begsubst
                 # Adjust range end
                 endlay += len(begsubst) + len(endsubst)
