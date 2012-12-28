@@ -1563,7 +1563,11 @@ void TabWorkArea::paintEvent(QPaintEvent * event)
 		// painting of the frame of the tab widget.
 		// This is needed for gtk style in Qt.
 		QStylePainter p(this);
+#if QT_VERSION < 0x050000
 		QStyleOptionTabWidgetFrameV2 opt;
+#else
+		QStyleOptionTabWidgetFrame opt;
+#endif
 		initStyleOption(&opt);
 		opt.rect = style()->subElementRect(QStyle::SE_TabWidgetTabPane,
 			&opt, this);
