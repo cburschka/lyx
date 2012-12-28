@@ -150,7 +150,7 @@ End
 
 
 Style Minisec
-	Category              Section
+	Category              Sectioning
 	LatexType             Command
 	LatexName             minisec
 	NeedProtect           1

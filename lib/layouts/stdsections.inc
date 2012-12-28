@@ -10,7 +10,7 @@
 Format 42
 
 Style Part
-	Category              Section
+	Category              Sectioning
 	Margin                Dynamic
 	LabelString           "Part \thepart"
 	LabelType             Counter
@@ -41,7 +41,7 @@ End
 
 Style Chapter
 	Margin                Static
-	Category              Section
+	Category              Sectioning
 	LabelString           "Chapter \thechapter"
 	LabelStringAppendix   "Appendix \thechapter"
 	LabelType             Counter
@@ -69,7 +69,7 @@ End
 
 
 Style Section
-	Category              Section
+	Category              Sectioning
 	Margin                Dynamic
 	LabelType             Counter
 	LabelCounter          section

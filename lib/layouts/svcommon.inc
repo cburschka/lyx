@@ -113,7 +113,7 @@ End
 ## text on the following page which would otherwise be blank.  
 
 Style PartBacktext
-	Category	Section
+	Category	Sectioning
 	Margin		First_Dynamic
 	LabelString	"Part \thepart"
 	LabelType	Counter
@@ -154,7 +154,7 @@ End
 Style ChapSubtitle
 	LatexName	chapsubtitle
 	LatexType	Command
-	Category	Section
+	Category	Sectioning
 	TopSep		0.7
 	Font
 	  Series	Bold
@@ -167,7 +167,7 @@ End
 Style ChapAuthor
 	LatexName	chapauthor
 	LatexType	Command
-	Category	Section
+	Category	Sectioning
 	TopSep		0.7
 	Font
 	  Series	Bold
@@ -179,7 +179,7 @@ End
 Style ChapMotto
 	LatexName	motto
 	LatexType	Command
-	Category	Section
+	Category	Sectioning
 	TopSep		0.7
 	BottomSep	0.7
 	Align		Left
@@ -411,7 +411,7 @@ End
 
 Style Running_Chapter
 	CopyStyle	Running_Title
-	Category	Section
+	Category	Sectioning
 	InTitle		0
 	LatexName	chaptermark
 	LabelString	"Running chapter:"

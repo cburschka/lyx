@@ -62,7 +62,7 @@ NoStyle Subparagraph*
 
 Style Chapter
 	Margin		Static
-	Category	Section
+	Category	Sectioning
 	LabelType	No_Label
 	LabelCounter	chapter
 	TocLevel	0
@@ -87,7 +87,7 @@ Style Chapter
 End
 
 Style Section
-	Category	Section
+	Category	Sectioning
 	Margin		Dynamic
 	LabelType	No_Label
 	LabelCounter	section

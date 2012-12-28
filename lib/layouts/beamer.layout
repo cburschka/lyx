@@ -192,7 +192,7 @@ End
 #
 
 Style Part
-  Category         Section
+  Category         Sectioning
   Margin           Dynamic
   LatexType        Command
   LatexName        part
@@ -230,7 +230,7 @@ Style Part
 End
 
 Style Section
-  Category         Section
+  Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
   LatexName        lyxframeend{}\section
@@ -287,7 +287,7 @@ Style Section*
 End
 
 Style Subsection
-  Category         Section
+  Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
   LatexName        lyxframeend{}\subsection
@@ -344,7 +344,7 @@ Style Subsection*
 End
 
 Style Subsubsection
-  Category         Section
+  Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
   LatexName        lyxframeend{}\subsubsection
