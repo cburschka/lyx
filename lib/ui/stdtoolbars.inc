@@ -435,6 +435,8 @@ ToolbarSet
 		Item "bcancel" "math-insert \bcancel"
 		Item "xcancel" "math-insert \xcancel"
 		Item "cancelto" "math-insert \cancelto"
+		Item "stackrel" "math-insert \stackrel"
+		Item "stackrelthree" "math-insert \stackrelthree"
 	End
 
 	Toolbar "latex_arrow" "Arrows"

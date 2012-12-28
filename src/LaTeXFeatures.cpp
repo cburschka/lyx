@@ -851,6 +851,10 @@ string const LaTeXFeatures::getPackages() const
 	    params_.use_package("stmaryrd") != BufferParams::package_off)
 		packages << "\\usepackage{stmaryrd}\n";
 
+	if (mustProvide("stackrel") &&
+	    params_.use_package("stackrel") != BufferParams::package_off)
+		packages << "\\usepackage{stackrel}\n";
+
 	if (mustProvide("undertilde") &&
 		params_.use_package("undertilde") != BufferParams::package_off)
 		packages << "\\usepackage{undertilde}\n";

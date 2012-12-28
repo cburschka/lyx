@@ -59,6 +59,7 @@ following hack as starting point to write some macros:
 #include "InsetMathSpace.h"
 #include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
+#include "InsetMathStackrel.h"
 #include "InsetMathString.h"
 #include "InsetMathTabular.h"
 #include "MathMacroTemplate.h"
@@ -1437,6 +1438,17 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					error("found invalid optional argument");
 					break;
 				}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+		}
+
+		else if (t.cs() == "stackrel") {
+			// Here allowed formats are \stackrel[subscript]{superscript}{operator}
+			MathData ar;
+			parse(ar, FLAG_OPTION, mode);
+			cell->push_back(MathAtom(new InsetMathStackrel(buf, !ar.empty())));
+			if (!ar.empty())
+				cell->back().nucleus()->cell(2) = ar;
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 		}

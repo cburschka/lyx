@@ -519,7 +519,7 @@ private:
 
 	typedef std::map<std::string, Package> PackageMap;
 	/** Whether and how to load packages like amsmath, esint, mhchem,
-	 *  mathdots and undertilde.
+	 *  mathdots, stackrel, stmaryrd and undertilde.
 	 */
 	PackageMap use_packages;
 

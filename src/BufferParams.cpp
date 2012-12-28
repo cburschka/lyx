@@ -454,6 +454,7 @@ vector<string> const & BufferParams::auto_packages()
 		packages.push_back("mathdots");
 		packages.push_back("mathtools");
 		packages.push_back("mhchem");
+		packages.push_back("stackrel");
 		packages.push_back("stmaryrd");
 		packages.push_back("undertilde");
 	}

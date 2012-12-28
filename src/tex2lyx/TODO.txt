@@ -97,6 +97,7 @@ Format LaTeX feature                        LyX feature
 455    beamer frametitle command            \begin_layout FrameTitle
        \frametitle<overlay>[short}{long}
 456    memoir: \epigraph{text}{source}      layout Epigraph, InsetArgument
+457    automatic stackrel loading           \use_package stackrel
 
 
 General

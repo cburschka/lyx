@@ -20,7 +20,9 @@ namespace lyx {
 class InsetMathStackrel : public InsetMathFracBase {
 public:
 	///
-	InsetMathStackrel(Buffer * buf);
+	InsetMathStackrel(Buffer * buf, bool sub);
+	///
+	bool idxUpDown(Cursor &, bool up) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

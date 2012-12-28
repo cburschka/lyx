@@ -495,6 +495,49 @@ def revert_use_stmaryrd(document):
             i = j
 
 
+def convert_use_stackrel(document):
+    "insert use_package stackrel"
+    i = find_token(document.header, "\\use_package", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_package.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{stackrel}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_package stackrel 0")
+    else:
+        document.header.insert(i + 1, "\\use_package stackrel 2")
+        del document.preamble[j]
+
+
+def revert_use_stackrel(document):
+    "remove use_package stackrel"
+    regexp = re.compile(r'(\\use_package\s+stackrel)')
+    i = find_re(document.header, regexp, 0)
+    value = "1" # default is auto
+    if i != -1:
+        value = get_value(document.header, "\\use_package" , i).split()[1]
+        del document.header[i]
+    if value == "2": # on
+        add_to_preamble(document, ["\\usepackage{stackrel}"])
+    elif value == "1": # auto
+        regcmd = re.compile(r'.*\\stackrel\s*\[')
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Formula', i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+                continue
+            code = "\n".join(document.body[i:j])
+            if regcmd.match(code):
+                add_to_preamble(document, ["\\usepackage{stackrel}"])
+                return
+            i = j
+
+
 def convert_cite_engine_type(document):
     "Determine the \\cite_engine_type from the citation engine."
     i = find_token(document.header, "\\cite_engine", 0)
@@ -3022,10 +3065,12 @@ convert = [
            [453, [convert_use_stmaryrd]],
            [454, [convert_overprint]],
            [455, []],
-           [456, [convert_epigraph]]
+           [456, [convert_epigraph]],
+           [457, [convert_use_stackrel]]
           ]
 
 revert =  [
+           [456, [revert_use_stackrel]],
            [455, [revert_epigraph]],
            [454, [revert_frametitle]],
            [453, [revert_overprint]],

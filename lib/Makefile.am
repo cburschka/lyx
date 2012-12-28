@@ -978,6 +978,8 @@ dist_imagesmath_DATA = \
 	images/math/ssearrow.png \
 	images/math/sslash.png \
 	images/math/sswarrow.png \
+	images/math/stackrel.png \
+	images/math/stackrelthree.png \
 	images/math/star.png \
 	images/math/style.png \
 	images/math/sub.png \

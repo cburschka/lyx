@@ -453,7 +453,10 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	if (s == "tabular")
 		return MathAtom(new InsetMathTabular(buf, s, 1, 1));
 	if (s == "stackrel")
-		return MathAtom(new InsetMathStackrel(buf));
+		return MathAtom(new InsetMathStackrel(buf, false));
+	// This string value is only for math toolbar use, no LaTeX name
+	if (s == "stackrelthree")
+		return MathAtom(new InsetMathStackrel(buf, true));
 	if (s == "binom")
 		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::BINOM));
 	if (s == "dbinom")
