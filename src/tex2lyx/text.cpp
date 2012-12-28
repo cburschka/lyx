@@ -2161,8 +2161,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	// (needed for bibtex inset)
 	string btprint;
 	string bibliographystyle = "default";
-	bool const use_natbib = preamble.isPackageUsed("natbib");
-	bool const use_jurabib = preamble.isPackageUsed("jurabib");
+	bool const use_natbib = isProvided("natbib");
+	bool const use_jurabib = isProvided("jurabib");
 	string last_env;
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -3371,6 +3371,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << convert_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			end_inset(os);
+			// Need to set the cite engine if natbib is loaded by
+			// the document class directly
+			if (preamble.citeEngine() == "basic")
+				preamble.citeEngine("natbib");
 		}
 
 		else if (use_jurabib &&
@@ -3421,6 +3425,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << citation << '"' << "\n";
 			end_inset(os);
+			// Need to set the cite engine if jurabib is loaded by
+			// the document class directly
+			if (preamble.citeEngine() == "basic")
+				preamble.citeEngine("jurabib");
 		}
 
 		else if (t.cs() == "cite"

@@ -62,6 +62,10 @@ public:
 	///
 	void suppressDate(bool suppress);
 	///
+	std::string citeEngine() const { return h_cite_engine; }
+	///
+	void citeEngine(std::string const & e) { h_cite_engine = e; }
+	///
 	bool titleLayoutFound() const { return title_layout_found; }
 	///
 	void titleLayoutFound(bool found) { title_layout_found = found; }

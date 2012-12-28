@@ -446,6 +446,13 @@ bool checkModule(string const & name, bool command)
 }
 
 
+bool isProvided(string const & name)
+{
+	// This works only for features that are named like the LaTeX packages
+	return textclass.provides(name) || preamble.isPackageUsed(name);
+}
+
+
 bool noweb_mode = false;
 bool pdflatex = false;
 bool xetex = false;
