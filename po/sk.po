@@ -3,12 +3,12 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009, 2010, 2011, 2012.
+# Kornel Benko <kornel@lyx.org>, 2009-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-12-20 14:48+0100\n"
+"POT-Creation-Date: 2012-12-28 10:22+0100\n"
 "PO-Revision-Date: 2012-12-01 12:12+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1301,7 +1301,7 @@ msgstr "Dbať aj na veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
 msgid "Case &sensitive"
-msgstr "Veľkosť pís&men"
+msgstr "Rozlišovať veľkosť pís&men"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:91
 msgid "Find next occurrence [Enter]"
@@ -2153,11 +2153,11 @@ msgstr "Umiestnenie"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Zvoliť pre výpisy vnútri riadku"
+msgstr "Zvoliť pre výpisy priamo do textu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "Výp&is vnútri riadku"
+msgstr "Vnútr&i riadku"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
@@ -2560,7 +2560,7 @@ msgstr "Len LyX- interné"
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX &Note"
-msgstr "LyX - zá&pis"
+msgstr "Zá&pis LyXu"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
@@ -2724,7 +2724,7 @@ msgstr "Povoľ rozdeliť odkazy na viac riadkov."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "&Rozdeliť odkazy na viac riadkov"
+msgstr "&Rozdeliť odkazy aj na viac riadkov"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
@@ -2732,7 +2732,7 @@ msgstr "Bez rá&mov okolo odkazov"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:242
 msgid "C&olor links"
-msgstr "Za&farbiť odkazy"
+msgstr "&Farebné odkazy"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
@@ -2756,7 +2756,7 @@ msgstr "Očí&slované záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 msgid "&Open bookmarks"
-msgstr "Rozbaliť zálož&ky"
+msgstr "Otvorené zálož&ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -3090,7 +3090,7 @@ msgstr "Zobraziť &grafiku"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
-msgstr "&Okamžitý náhľad (vzorky):"
+msgstr "&Okamžitý náhľad:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:76
 #: src/frontends/qt4/GuiDocument.cpp:171
@@ -3228,7 +3228,7 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
-msgstr "Skratka:"
+msgstr "Krátke Meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtensions:"
@@ -3240,7 +3240,7 @@ msgstr "&MIME:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:122
 msgid "Shortc&ut:"
-msgstr "Klávesná &skratka:"
+msgstr "&Skratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:145
 msgid "&Viewer:"
@@ -3280,7 +3280,7 @@ msgstr "Klávesnica"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:31
 msgid "Use &keyboard map"
-msgstr "Použiť &mapu klávies"
+msgstr "Použiť &mapu klávesov"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:44
 msgid "&First:"
@@ -3305,7 +3305,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr "Neprehadzuj klávesy Apple a Kontrol"
+msgstr "Neprehadzuj klávesy Apple a Control"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -4334,7 +4334,7 @@ msgstr "Formátovaná referencia"
 
 #: src/frontends/qt4/ui/RefUi.ui:246
 msgid "Textual reference"
-msgstr "Slovná referencia"
+msgstr "Textová referencia"
 
 #: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
@@ -4676,9 +4676,9 @@ msgstr "&Medzi riadkami:"
 msgid "&Longtable"
 msgstr "D&lhá tabuľka"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1311
+#: src/frontends/qt4/ui/TabularUi.ui:1313
 msgid "Select for tables that span multiple pages"
-msgstr "Vyber pre tabuľky presahujúce viac strán"
+msgstr "Vyberte to pre tabuľky presahujúce viac strán"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1314
 msgid "&Use long table"
@@ -5146,55 +5146,57 @@ msgstr "Články"
 msgid "ShortTitle"
 msgstr "KrátkyTitul"
 
-#: lib/layouts/AEA.layout:56 lib/layouts/AEA.layout:99
-#: lib/layouts/IEEEtran.layout:68 lib/layouts/IEEEtran.layout:117
-#: lib/layouts/IEEEtran.layout:158 lib/layouts/IEEEtran.layout:192
-#: lib/layouts/aa.layout:124 lib/layouts/aa.layout:147
-#: lib/layouts/aa.layout:162 lib/layouts/aa.layout:186
-#: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
-#: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
-#: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
-#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
-#: lib/layouts/acmsiggraph.layout:68 lib/layouts/acmsiggraph.layout:114
-#: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:58
-#: lib/layouts/agutex.layout:75 lib/layouts/agutex.layout:116
-#: lib/layouts/agutex.layout:134 lib/layouts/ectaart.layout:22
-#: lib/layouts/ectaart.layout:47 lib/layouts/ectaart.layout:70
-#: lib/layouts/elsarticle.layout:58 lib/layouts/elsarticle.layout:83
-#: lib/layouts/elsarticle.layout:126 lib/layouts/elsarticle.layout:145
-#: lib/layouts/elsarticle.layout:223 lib/layouts/elsarticle.layout:251
-#: lib/layouts/elsarticle.layout:280 lib/layouts/entcs.layout:74
-#: lib/layouts/ijmpc.layout:66 lib/layouts/ijmpc.layout:85
-#: lib/layouts/ijmpc.layout:103 lib/layouts/ijmpc.layout:121
-#: lib/layouts/ijmpc.layout:156 lib/layouts/ijmpc.layout:204
-#: lib/layouts/ijmpd.layout:71 lib/layouts/ijmpd.layout:90
-#: lib/layouts/ijmpd.layout:108 lib/layouts/ijmpd.layout:126
-#: lib/layouts/ijmpd.layout:146 lib/layouts/ijmpd.layout:211
-#: lib/layouts/ijmpd.layout:223 lib/layouts/iopart.layout:60
-#: lib/layouts/iopart.layout:130 lib/layouts/iopart.layout:149
-#: lib/layouts/iopart.layout:174 lib/layouts/iopart.layout:203
-#: lib/layouts/jasatex.layout:61 lib/layouts/jasatex.layout:82
-#: lib/layouts/jasatex.layout:102 lib/layouts/jasatex.layout:140
-#: lib/layouts/jasatex.layout:160 lib/layouts/jasatex.layout:189
-#: lib/layouts/revtex4-1.layout:79 lib/layouts/revtex4-1.layout:164
-#: lib/layouts/revtex4-1.layout:183 lib/layouts/revtex4.layout:103
-#: lib/layouts/revtex4.layout:133 lib/layouts/revtex4.layout:250
-#: lib/layouts/siamltex.layout:279 lib/layouts/siamltex.layout:299
-#: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
-#: lib/layouts/sigplanconf.layout:157 lib/layouts/svmult.layout:48
-#: lib/layouts/svmult.layout:98 lib/layouts/tufte-handout.layout:49
-#: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:48
-#: lib/layouts/amsdefs.inc:68 lib/layouts/amsdefs.inc:92
-#: lib/layouts/amsdefs.inc:119 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:58 lib/layouts/stdtitle.inc:79
-#: lib/layouts/stdtitle.inc:98 lib/layouts/svcommon.inc:348
-#: lib/layouts/svcommon.inc:372 lib/layouts/svcommon.inc:423
-#: lib/layouts/svcommon.inc:460 lib/layouts/svcommon.inc:478
-#: lib/layouts/svcommon.inc:499 lib/layouts/svcommon.inc:523
-#: lib/layouts/bicaption.module:13
+#: lib/layouts/AEA.layout:57 lib/layouts/AEA.layout:100
+#: lib/layouts/IEEEtran.layout:69 lib/layouts/IEEEtran.layout:118
+#: lib/layouts/IEEEtran.layout:162 lib/layouts/IEEEtran.layout:201
+#: lib/layouts/aa.layout:125 lib/layouts/aa.layout:148
+#: lib/layouts/aa.layout:163 lib/layouts/aa.layout:187
+#: lib/layouts/aa.layout:327 lib/layouts/aastex.layout:278
+#: lib/layouts/aastex.layout:295 lib/layouts/aastex.layout:340
+#: lib/layouts/aastex.layout:366 lib/layouts/aastex.layout:405
+#: lib/layouts/achemso.layout:58 lib/layouts/achemso.layout:84
+#: lib/layouts/acmsiggraph.layout:69 lib/layouts/acmsiggraph.layout:178
+#: lib/layouts/acmsiggraph.layout:197 lib/layouts/agutex.layout:59
+#: lib/layouts/agutex.layout:76 lib/layouts/agutex.layout:117
+#: lib/layouts/agutex.layout:140 lib/layouts/ectaart.layout:23
+#: lib/layouts/ectaart.layout:48 lib/layouts/ectaart.layout:74
+#: lib/layouts/elsarticle.layout:60 lib/layouts/elsarticle.layout:85
+#: lib/layouts/elsarticle.layout:128 lib/layouts/elsarticle.layout:150
+#: lib/layouts/elsarticle.layout:235 lib/layouts/elsarticle.layout:270
+#: lib/layouts/elsarticle.layout:299 lib/layouts/entcs.layout:75
+#: lib/layouts/europecv.layout:34 lib/layouts/europecv.layout:186
+#: lib/layouts/ijmpc.layout:67 lib/layouts/ijmpc.layout:91
+#: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpc.layout:127
+#: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpc.layout:209
+#: lib/layouts/ijmpd.layout:72 lib/layouts/ijmpd.layout:96
+#: lib/layouts/ijmpd.layout:114 lib/layouts/ijmpd.layout:132
+#: lib/layouts/ijmpd.layout:151 lib/layouts/ijmpd.layout:216
+#: lib/layouts/ijmpd.layout:228 lib/layouts/iopart.layout:61
+#: lib/layouts/iopart.layout:134 lib/layouts/iopart.layout:153
+#: lib/layouts/iopart.layout:178 lib/layouts/iopart.layout:207
+#: lib/layouts/jasatex.layout:63 lib/layouts/jasatex.layout:88
+#: lib/layouts/jasatex.layout:108 lib/layouts/jasatex.layout:149
+#: lib/layouts/jasatex.layout:169 lib/layouts/jasatex.layout:198
+#: lib/layouts/moderncv.layout:39 lib/layouts/moderncv.layout:60
+#: lib/layouts/moderncv.layout:80 lib/layouts/revtex4-1.layout:80
+#: lib/layouts/revtex4-1.layout:174 lib/layouts/revtex4-1.layout:193
+#: lib/layouts/revtex4.layout:104 lib/layouts/revtex4.layout:134
+#: lib/layouts/revtex4.layout:260 lib/layouts/siamltex.layout:287
+#: lib/layouts/siamltex.layout:307 lib/layouts/sigplanconf.layout:72
+#: lib/layouts/sigplanconf.layout:139 lib/layouts/sigplanconf.layout:187
+#: lib/layouts/svmult.layout:49 lib/layouts/svmult.layout:99
+#: lib/layouts/tufte-handout.layout:53 lib/layouts/amsdefs.inc:25
+#: lib/layouts/amsdefs.inc:51 lib/layouts/amsdefs.inc:71
+#: lib/layouts/amsdefs.inc:95 lib/layouts/amsdefs.inc:122
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:58
+#: lib/layouts/stdtitle.inc:79 lib/layouts/stdtitle.inc:98
+#: lib/layouts/svcommon.inc:352 lib/layouts/svcommon.inc:376
+#: lib/layouts/svcommon.inc:427 lib/layouts/svcommon.inc:464
+#: lib/layouts/svcommon.inc:482 lib/layouts/svcommon.inc:503
+#: lib/layouts/svcommon.inc:530 lib/layouts/bicaption.module:13
 msgid "FrontMatter"
-msgstr "FrontMatter"
+msgstr "VstupnáČasť"
 
 #: lib/layouts/AEA.layout:63
 msgid "Publication Month"
@@ -5212,13 +5214,13 @@ msgstr "Publikačný Rok"
 msgid "Publication Year:"
 msgstr "Publikačný Rok:"
 
-#: lib/layouts/AEA.layout:82
+#: lib/layouts/AEA.layout:83
 msgid "Publication Volume"
-msgstr "Publikačný Zväzok (knihy)"
+msgstr "Publikačný Diel"
 
-#: lib/layouts/AEA.layout:85
+#: lib/layouts/AEA.layout:86
 msgid "Publication Volume:"
-msgstr "Publikačný Zväzok (knihy):"
+msgstr "Publikačný Diel:"
 
 #: lib/layouts/AEA.layout:88
 msgid "Publication Issue"
@@ -5796,17 +5798,17 @@ msgstr "Skratka Autora"
 msgid "A short version of the author name"
 msgstr "Skrátená verzia mena autora"
 
-#: lib/layouts/IEEEtran.layout:134
+#: lib/layouts/IEEEtran.layout:138
 msgid "Special Paper Notice"
-msgstr "Špeciálna Článková Poznámka"
+msgstr "Špeciálna Poznámka"
 
-#: lib/layouts/IEEEtran.layout:145
+#: lib/layouts/IEEEtran.layout:149
 msgid "After Title Text"
-msgstr "Za Textom Titulku"
+msgstr "Text za Titulom"
 
-#: lib/layouts/IEEEtran.layout:155
+#: lib/layouts/IEEEtran.layout:159
 msgid "Page headings"
-msgstr "Nadpisy strany"
+msgstr "NadpisNaStrane"
 
 #: lib/layouts/IEEEtran.layout:167
 msgid "Left Side"
@@ -5848,31 +5850,32 @@ msgstr "Súhrn---"
 msgid "Keywords"
 msgstr "Heslá"
 
-#: lib/layouts/IEEEtran.layout:213
+#: lib/layouts/IEEEtran.layout:222
 msgid "Index Terms---"
-msgstr "Index Terms---"
+msgstr "Index Pojmov---"
 
 #: lib/layouts/IEEEtran.layout:217 lib/layouts/IEEEtran.layout:227
 msgid "Appendices"
 msgstr "Prílohy"
 
-#: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:246
-#: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:209
-#: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
-#: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
-#: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
-#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:924
-#: lib/layouts/elsarticle.layout:301 lib/layouts/ijmpc.layout:411
-#: lib/layouts/ijmpc.layout:435 lib/layouts/ijmpd.layout:424
-#: lib/layouts/ijmpd.layout:448 lib/layouts/iopart.layout:243
-#: lib/layouts/iopart.layout:265 lib/layouts/iopart.layout:288
-#: lib/layouts/jasatex.layout:223 lib/layouts/jasatex.layout:262
-#: lib/layouts/revtex4-1.layout:215 lib/layouts/revtex4.layout:231
-#: lib/layouts/siamltex.layout:318 lib/layouts/sigplanconf.layout:184
-#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:536
-#: lib/layouts/svcommon.inc:570
+#: lib/layouts/IEEEtran.layout:230 lib/layouts/IEEEtran.layout:258
+#: lib/layouts/IEEEtran.layout:281 lib/layouts/aa.layout:210
+#: lib/layouts/aastex.layout:464 lib/layouts/aastex.layout:496
+#: lib/layouts/achemso.layout:233 lib/layouts/acmsiggraph.layout:298
+#: lib/layouts/agutex.layout:157 lib/layouts/agutex.layout:167
+#: lib/layouts/agutex.layout:187 lib/layouts/agutex.layout:210
+#: lib/layouts/beamer.layout:1078 lib/layouts/elsarticle.layout:320
+#: lib/layouts/europecv.layout:286 lib/layouts/ijmpc.layout:419
+#: lib/layouts/ijmpc.layout:443 lib/layouts/ijmpd.layout:432
+#: lib/layouts/ijmpd.layout:456 lib/layouts/iopart.layout:247
+#: lib/layouts/iopart.layout:269 lib/layouts/iopart.layout:292
+#: lib/layouts/jasatex.layout:232 lib/layouts/jasatex.layout:271
+#: lib/layouts/revtex4-1.layout:228 lib/layouts/revtex4.layout:241
+#: lib/layouts/siamltex.layout:326 lib/layouts/sigplanconf.layout:215
+#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:543
+#: lib/layouts/svcommon.inc:577
 msgid "BackMatter"
-msgstr "BackMatter"
+msgstr "ZáverečnáČasť"
 
 #: lib/layouts/IEEEtran.layout:234 lib/layouts/IEEEtran.layout:237
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:453
@@ -5937,7 +5940,7 @@ msgstr "Životopis"
 
 #: lib/layouts/IEEEtran.layout:283 lib/layouts/moderncv.layout:146
 msgid "Photo"
-msgstr "Photo"
+msgstr "Fotka"
 
 #: lib/layouts/IEEEtran.layout:284
 msgid "Optional photo for biography"
@@ -5963,10 +5966,10 @@ msgstr "Životopis bez fotky"
 msgid "BiographyNoPhoto"
 msgstr "ŽivotopisBezFotky"
 
-#: lib/layouts/IEEEtran.layout:306 lib/layouts/siamltex.layout:162
+#: lib/layouts/IEEEtran.layout:321 lib/layouts/siamltex.layout:162
 #: lib/layouts/theorems-proof.inc:20
 msgid "Alternative Proof String"
-msgstr "Alternatíva pre dôkaz"
+msgstr "Alternatívny Reťazec Dôkazu"
 
 #: lib/layouts/IEEEtran.layout:307 lib/layouts/siamltex.layout:163
 msgid "An alternative proof string"
@@ -6258,7 +6261,7 @@ msgstr "KomentárTabuľky"
 
 #: lib/layouts/aastex.layout:139 lib/layouts/aastex.layout:540
 msgid "TableRefs"
-msgstr "ReferenciaTabuľky"
+msgstr "ReferencieTabuľky"
 
 #: lib/layouts/aastex.layout:143 lib/layouts/aastex.layout:480
 msgid "MathLetters"
@@ -6276,9 +6279,9 @@ msgstr "Zariadenie"
 msgid "Objectname"
 msgstr "Meno objektu"
 
-#: lib/layouts/aastex.layout:153 lib/layouts/aastex.layout:678
+#: lib/layouts/aastex.layout:155 lib/layouts/aastex.layout:691
 msgid "Dataset"
-msgstr "Dataset"
+msgstr "MnožinaDát"
 
 #: lib/layouts/aastex.layout:289
 msgid "Altaffilation"
@@ -6304,9 +6307,9 @@ msgstr "alt. príslušenstvo(záznam pod čiarou)"
 msgid "altaffiliation mark"
 msgstr "Alt. príslušenstvo(záznam pod čiarou)"
 
-#: lib/layouts/aastex.layout:340
+#: lib/layouts/aastex.layout:347
 msgid "Subject headings:"
-msgstr "Subject headings:"
+msgstr "Heslá:"
 
 #: lib/layouts/aastex.layout:383
 msgid "[Acknowledgements]"
@@ -6318,9 +6321,9 @@ msgstr "[Poďakovania]"
 msgid "and"
 msgstr "a"
 
-#: lib/layouts/aastex.layout:424
+#: lib/layouts/aastex.layout:431
 msgid "Place Figure here:"
-msgstr "Umiestni obrázok tu:"
+msgstr "Obrázok tu umiestniť:"
 
 #: lib/layouts/aastex.layout:444
 msgid "Place Table here:"
@@ -6342,29 +6345,29 @@ msgstr "Referencie. ---"
 msgid "Note. ---"
 msgstr "Poznámka. ---"
 
-#: lib/layouts/aastex.layout:573
+#: lib/layouts/aastex.layout:580
 msgid "Table note"
-msgstr "Tabuľka (Poznámka)"
-
-#: lib/layouts/aastex.layout:581
-msgid "Table note:"
-msgstr "Tabuľka (Poznámka):"
+msgstr "Poznámka Tabuľky"
 
 #: lib/layouts/aastex.layout:588
-msgid "tablenotemark"
-msgstr "tabuľka (značka poznámky)"
+msgid "Table note:"
+msgstr "Poznámka tabuľky:"
 
-#: lib/layouts/aastex.layout:592
+#: lib/layouts/aastex.layout:595
+msgid "tablenotemark"
+msgstr "značkaPoznámkyTabuľky"
+
+#: lib/layouts/aastex.layout:599
 msgid "tablenote mark"
-msgstr "tablenote mark"
+msgstr "značka poznámky tabuľky"
 
 #: lib/layouts/aastex.layout:617
 msgid "FigCaption"
 msgstr "PopisObrázka"
 
-#: lib/layouts/aastex.layout:620
+#: lib/layouts/aastex.layout:627
 msgid "Fig. ---"
-msgstr "Fig. ---"
+msgstr "Obr. ---"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Short Title|S"
@@ -6390,9 +6393,9 @@ msgstr "Rozpoznané meno"
 msgid "Separate the recognized name of an object from text"
 msgstr "Oddeliť rozpoznané meno objektu od textu"
 
-#: lib/layouts/aastex.layout:690
+#: lib/layouts/aastex.layout:703
 msgid "Dataset:"
-msgstr "Dataset:"
+msgstr "Množina dát:"
 
 #: lib/layouts/aastex.layout:700
 msgid "Separate the dataset ID from text"
@@ -6488,7 +6491,7 @@ msgstr "PodpornáInformácia"
 
 #: lib/layouts/achemso.layout:250
 msgid "Supporting Information Available"
-msgstr "Podporná informácia Dostupná"
+msgstr "Dostupné podporné informácie"
 
 #: lib/layouts/achemso.layout:253
 msgid "TOC entry"
@@ -6506,13 +6509,13 @@ msgstr "BibPoznámka"
 msgid "bibnote"
 msgstr "bibpoznámka"
 
-#: lib/layouts/achemso.layout:261
+#: lib/layouts/achemso.layout:284
 msgid "Chemistry"
-msgstr "Chemistry"
+msgstr "Chémia"
 
-#: lib/layouts/achemso.layout:264
+#: lib/layouts/achemso.layout:287
 msgid "chemistry"
-msgstr "chemistry"
+msgstr "chémia"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH"
@@ -6528,11 +6531,11 @@ msgstr "Online ID:"
 
 #: lib/layouts/acmsiggraph.layout:84
 msgid "TOG volume"
-msgstr "TOG volume"
+msgstr "TOG diel"
 
 #: lib/layouts/acmsiggraph.layout:87
 msgid "Volume number:"
-msgstr "Číslo zväzku:"
+msgstr "Číslo dielu:"
 
 #: lib/layouts/acmsiggraph.layout:91
 msgid "TOG number"
@@ -6584,11 +6587,11 @@ msgstr "URL kódu:"
 
 #: lib/layouts/acmsiggraph.layout:156
 msgid "PDF author"
-msgstr "PDF author"
+msgstr "PDF autor"
 
 #: lib/layouts/acmsiggraph.layout:159
 msgid "PDF author:"
-msgstr "PDF autora:"
+msgstr "PDF autor:"
 
 #: lib/layouts/acmsiggraph.layout:174
 msgid "Teaser"
@@ -6598,13 +6601,13 @@ msgstr "Hlavolam"
 msgid "Teaser image:"
 msgstr "Obrázok hlavolamu:"
 
-#: lib/layouts/acmsiggraph.layout:138
+#: lib/layouts/acmsiggraph.layout:221
 msgid "CR categories"
-msgstr "CR categories"
+msgstr "CR kategórie"
 
 #: lib/layouts/acmsiggraph.layout:229
 msgid "CR Categories:"
-msgstr "CR kategórií:"
+msgstr "CR kategórie:"
 
 #: lib/layouts/acmsiggraph.layout:237
 msgid "CRcat"
@@ -6809,9 +6812,9 @@ msgstr "ŠtyriaAutori"
 msgid "Affiliation:"
 msgstr "Príslušenstvo:"
 
-#: lib/layouts/apa.layout:171
+#: lib/layouts/apa.layout:172 lib/layouts/apa6.layout:168
 msgid "TwoAffiliations"
-msgstr "Dve Príslušenstva"
+msgstr "DvePríslušenstva"
 
 #: lib/layouts/apa.layout:179
 msgid "ThreeAffiliations"
@@ -6874,14 +6877,94 @@ msgstr "Vlastná Položka"
 msgid "A customized item string"
 msgstr "Prispôsobený reťazec položky"
 
-#: lib/layouts/apa.layout:398
+#: lib/layouts/apa.layout:387
 msgid "Seriate"
-msgstr "Seriate"
+msgstr "Vložené číslovanie"
 
 #: lib/layouts/apa.layout:414 lib/layouts/apa.layout:415
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
+
+#: lib/layouts/apa6.layout:3
+msgid "article (APA6)"
+msgstr "článok (APA6)"
+
+#: lib/layouts/apa6.layout:111
+msgid "FiveAuthors"
+msgstr "PäťAutorov"
+
+#: lib/layouts/apa6.layout:118
+msgid "SixAuthors"
+msgstr "ŠesťAutorov"
+
+#: lib/layouts/apa6.layout:125
+msgid "LeftHeader"
+msgstr "ĽaváHlavička"
+
+#: lib/layouts/apa6.layout:134
+msgid "Left header:"
+msgstr "Ľavá hlavička:"
+
+#: lib/layouts/apa6.layout:189
+msgid "FiveAffiliations"
+msgstr "PäťPríslušenstiev"
+
+#: lib/layouts/apa6.layout:196
+msgid "SixAffiliations"
+msgstr "ŠesťPríslušenstiev"
+
+#: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
+#: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
+#: lib/layouts/powerdot.layout:194 lib/layouts/slides.layout:167
+#: lib/layouts/stdinsets.inc:101 lib/layouts/theorems-without-preamble.inc:388
+#: lib/layouts/theorems-without-preamble.inc:395
+#: lib/layouts/theorems-without-preamble.inc:398
+#: lib/layouts/theorems-ams-extended-bytype.module:199
+#: lib/layouts/theorems-ams-extended-bytype.module:208
+#: lib/layouts/theorems-ams-extended-bytype.module:211
+#: lib/layouts/theorems-ams-extended-bytype.module:226
+#: lib/layouts/theorems-ams-extended-bytype.module:229
+#: lib/layouts/theorems-ams-extended.module:174
+#: lib/layouts/theorems-ams-extended.module:183
+#: lib/layouts/theorems-ams-extended.module:186
+#: lib/layouts/theorems-ams-extended.module:200
+#: lib/layouts/theorems-ams-extended.module:203
+msgid "Note"
+msgstr "Poznámka"
+
+#: lib/layouts/beamer.layout:1135 lib/layouts/powerdot.layout:206
+msgid "Note:"
+msgstr "Poznámka:"
+
+#: lib/layouts/apa6.layout:272
+msgid "AuthorNote"
+msgstr "PoznámkaAutor"
+
+#: lib/layouts/apa6.layout:291
+msgid "Author Note:"
+msgstr "Poznámka Autor:"
+
+#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:335
+msgid "Journal"
+msgstr "Denník"
+
+#: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
+#: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
+msgid "Preamble"
+msgstr "Preambula"
+
+#: lib/layouts/apa6.layout:322
+msgid "CopNum"
+msgstr "CopNum"
+
+#: lib/layouts/agu_stdclass.inc:146 lib/layouts/agu_stdclass.inc:148
+msgid "Volume"
+msgstr "Diel"
+
+#: lib/layouts/apa6.layout:466
+msgid "*"
+msgstr "*"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
@@ -6971,6 +7054,17 @@ msgstr "Najdlhšie návestie"
 #: lib/layouts/beamer.layout:165
 msgid "The longest label in this list (to determine the indendation width)"
 msgstr "Najdlhšie návestie v tejto listine (na určenie šírky odsadenia)"
+
+#: lib/layouts/beamer.layout:195 lib/layouts/beamer.layout:233
+#: lib/layouts/beamer.layout:290 lib/layouts/beamer.layout:347
+#: lib/layouts/memoir.layout:187 lib/layouts/tufte-book.layout:65
+#: lib/layouts/tufte-book.layout:90 lib/layouts/scrclass.inc:153
+#: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:44
+#: lib/layouts/stdsections.inc:72 lib/layouts/svcommon.inc:116
+#: lib/layouts/svcommon.inc:157 lib/layouts/svcommon.inc:170
+#: lib/layouts/svcommon.inc:182 lib/layouts/svcommon.inc:414
+msgid "Sectioning"
+msgstr "Členenie"
 
 #: lib/layouts/beamer.layout:200 lib/layouts/beamer.layout:250
 #: lib/layouts/beamer.layout:280 lib/layouts/beamer.layout:307
@@ -7100,9 +7194,9 @@ msgstr "KoniecRámu"
 msgid "________________________________"
 msgstr "________________________________"
 
-#: lib/layouts/beamer.layout:374
-msgid "FrameSubtitle"
-msgstr "RámPodTitul"
+#: lib/layouts/beamer.layout:557
+msgid "FrameTitle"
+msgstr "RámTitul"
 
 #: lib/layouts/beamer.layout:576 lib/layouts/beamer.layout:770
 #: lib/layouts/beamer.layout:798 lib/layouts/beamer.layout:830
@@ -7115,6 +7209,18 @@ msgstr "RámPodTitul"
 #: lib/layouts/beamer.layout:1448 lib/layouts/beamer.layout:1471
 msgid "Specify the overlay settings (see beamer manual)"
 msgstr "Špecifikuj voľby prekrytia (viď beamer manuál)"
+
+#: lib/layouts/beamer.layout:582
+msgid "Short Frame Title|S"
+msgstr "Krátky Titul Rámu"
+
+#: lib/layouts/beamer.layout:583
+msgid "A short form of the frame title used in some themes"
+msgstr "Krátka verzia titulu rámu použitá v niektorých témach"
+
+#: lib/layouts/beamer.layout:374
+msgid "FrameSubtitle"
+msgstr "RámPodTitul"
 
 #: lib/layouts/beamer.layout:397
 msgid "Column"
@@ -7330,13 +7436,13 @@ msgstr "Krátky Inštitút"
 msgid "Short institute which appears in the sidebar/header"
 msgstr "Skratka inštitútu ktorá sa zjaví na boku/hlavičke"
 
-#: lib/layouts/beamer.layout:971
+#: lib/layouts/beamer.layout:1009
 msgid "InstituteMark"
-msgstr "InštitútnaZnačka"
+msgstr "ZnakInštitútu"
 
-#: lib/layouts/beamer.layout:973
+#: lib/layouts/beamer.layout:1013
 msgid "Institute Mark"
-msgstr "Inštitútna Značka"
+msgstr "Znak Inštitútu"
 
 #: lib/layouts/beamer.layout:977
 msgid "Short Date|S"
@@ -7458,13 +7564,17 @@ msgstr "LyX-Kód"
 msgid "NoteItem"
 msgstr "PoznámkovýObjekt"
 
-#: lib/layouts/beamer.layout:1135 lib/layouts/powerdot.layout:206
-msgid "Note:"
-msgstr "Poznámka:"
+#: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
+msgid "Bold"
+msgstr "Tučné"
 
 #: lib/layouts/ectaart.layout:139
 msgid "Emphasize"
 msgstr "Zvýraznenie"
+
+#: lib/layouts/beamer.layout:1378
+msgid "Emph."
+msgstr "Dôraz"
 
 #: lib/layouts/beamer.layout:1151 lib/layouts/beamer.layout:1153
 msgid "Alert"
@@ -7499,25 +7609,6 @@ msgstr "Vlož sem štandardný text"
 #: lib/layouts/beamer.layout:1461
 msgid "Beamer Note"
 msgstr "Beamer Poznámka"
-
-#: lib/layouts/apa.layout:213 lib/layouts/elsart.layout:392
-#: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
-#: lib/layouts/powerdot.layout:194 lib/layouts/slides.layout:167
-#: lib/layouts/stdinsets.inc:101 lib/layouts/theorems-without-preamble.inc:388
-#: lib/layouts/theorems-without-preamble.inc:395
-#: lib/layouts/theorems-without-preamble.inc:398
-#: lib/layouts/theorems-ams-extended-bytype.module:199
-#: lib/layouts/theorems-ams-extended-bytype.module:208
-#: lib/layouts/theorems-ams-extended-bytype.module:211
-#: lib/layouts/theorems-ams-extended-bytype.module:226
-#: lib/layouts/theorems-ams-extended-bytype.module:229
-#: lib/layouts/theorems-ams-extended.module:174
-#: lib/layouts/theorems-ams-extended.module:183
-#: lib/layouts/theorems-ams-extended.module:186
-#: lib/layouts/theorems-ams-extended.module:200
-#: lib/layouts/theorems-ams-extended.module:203
-msgid "Note"
-msgstr "Poznámka"
 
 #: lib/layouts/beamer.layout:1478
 msgid "Note Options"
@@ -7614,9 +7705,9 @@ msgstr "AT RISE:"
 msgid "Speaker"
 msgstr "Hlásateľ"
 
-#: lib/layouts/broadway.layout:134 lib/layouts/hollywood.layout:159
+#: lib/layouts/broadway.layout:135 lib/layouts/hollywood.layout:160
 msgid "Parenthetical"
-msgstr "Parenthetical"
+msgstr "Zátvorkový"
 
 #: lib/layouts/broadway.layout:145 lib/layouts/hollywood.layout:170
 msgid "("
@@ -8117,10 +8208,10 @@ msgstr "Príloha"
 msgid "Anlagen"
 msgstr "Prílohy"
 
-#: lib/layouts/dinbrief.layout:374 lib/layouts/scrlettr.layout:91
-#: lib/layouts/scrlttr2.layout:130
+#: lib/layouts/dinbrief.layout:378 lib/layouts/scrlettr.layout:92
+#: lib/layouts/scrlttr2.layout:131
 msgid "CC"
-msgstr "Kópia"
+msgstr "KÓPIA"
 
 #: lib/layouts/dinbrief.layout:379
 msgid "Verteiler"
@@ -8282,9 +8373,9 @@ msgstr "European Geophysical Society (EGS)"
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
-#: lib/layouts/egs.layout:270
+#: lib/layouts/egs.layout:279
 msgid "LaTeX Title"
-msgstr "LaTeX Title"
+msgstr "LaTeX Titul"
 
 #: lib/layouts/egs.layout:304 lib/layouts/svmult.layout:82
 msgid "Author:"
@@ -8293,10 +8384,6 @@ msgstr "Autor:"
 #: lib/layouts/egs.layout:313
 msgid "Affil"
 msgstr "Príslušenstvo"
-
-#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:335
-msgid "Journal"
-msgstr "Denník"
 
 #: lib/layouts/egs.layout:348
 msgid "Journal:"
@@ -8344,9 +8431,9 @@ msgstr "Akceptované:"
 msgid "Offsets"
 msgstr "Vyrovnania"
 
-#: lib/layouts/egs.layout:460
+#: lib/layouts/egs.layout:469
 msgid "reprint_reqs_to:"
-msgstr "reprint_reqs_to:"
+msgstr "požiadavka pretlačenia na:"
 
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
@@ -8461,21 +8548,21 @@ msgstr "Prípad \\arabic{case}"
 msgid "Elsevier"
 msgstr "Elsevier"
 
-#: lib/layouts/elsarticle.layout:54
+#: lib/layouts/elsarticle.layout:56
 msgid "BeginFrontmatter"
-msgstr "BeginFrontmatter"
+msgstr "ZačiatokVstupnejČasti"
 
-#: lib/layouts/elsarticle.layout:64
+#: lib/layouts/elsarticle.layout:66
 msgid "Begin frontmatter"
-msgstr "Začiatok frontmatter"
+msgstr "Začiatok vstupnej časti"
 
-#: lib/layouts/elsarticle.layout:72
+#: lib/layouts/elsarticle.layout:74
 msgid "EndFrontmatter"
-msgstr "EndFrontmatter"
+msgstr "KoniecVstupnejČasti"
 
-#: lib/layouts/elsarticle.layout:75
+#: lib/layouts/elsarticle.layout:77
 msgid "End frontmatter"
-msgstr "Koniec frontmatter"
+msgstr "Koniec vstupnej časti"
 
 #: lib/layouts/elsarticle.layout:100
 msgid "Titlenotemark"
@@ -8589,7 +8676,7 @@ msgstr "Meno:"
 
 #: lib/layouts/europecv.layout:46
 msgid "FooterName"
-msgstr "FooterName"
+msgstr "Meno v päte"
 
 #: lib/layouts/europecv.layout:49
 msgid "Footer name:"
@@ -8597,7 +8684,7 @@ msgstr "Meno v päte:"
 
 #: lib/layouts/europecv.layout:52
 msgid "Nationality"
-msgstr "Nationality"
+msgstr "Národnosť"
 
 #: lib/layouts/europecv.layout:55
 msgid "Nationality:"
@@ -8605,15 +8692,15 @@ msgstr "Národnosť:"
 
 #: lib/layouts/europecv.layout:58
 msgid "Birthday"
-msgstr "Birthday"
+msgstr "Deň narodenia"
 
 #: lib/layouts/europecv.layout:61
 msgid "Date of birth:"
-msgstr "Dátum narodenia:"
+msgstr "Deň narodenia:"
 
 #: lib/layouts/europecv.layout:81 lib/layouts/moderncv.layout:110
 msgid "Mobile"
-msgstr "Mobile"
+msgstr "Mobil"
 
 #: lib/layouts/europecv.layout:82
 msgid "Mobile phone number"
@@ -8621,7 +8708,7 @@ msgstr "Telefónne číslo mobilu"
 
 #: lib/layouts/europecv.layout:86
 msgid "Gender"
-msgstr "Gender"
+msgstr "Pohlavie"
 
 #: lib/layouts/europecv.layout:89
 msgid "Gender:"
@@ -8629,7 +8716,7 @@ msgstr "Pohlavie:"
 
 #: lib/layouts/europecv.layout:98
 msgid "BeforePicture"
-msgstr "BeforePicture"
+msgstr "PredObrázkom"
 
 #: lib/layouts/europecv.layout:101
 msgid "Space before picture:"
@@ -8637,7 +8724,7 @@ msgstr "Medzera pred obrázkom:"
 
 #: lib/layouts/europecv.layout:104
 msgid "Picture"
-msgstr "Picture"
+msgstr "Obrázok"
 
 #: lib/layouts/europecv.layout:107
 msgid "Picture:"
@@ -8653,7 +8740,7 @@ msgstr "Výstupná veľkosť fotografie"
 
 #: lib/layouts/europecv.layout:114
 msgid "AfterPicture"
-msgstr "AfterPicture"
+msgstr "ZaObrázkom"
 
 #: lib/layouts/europecv.layout:117
 msgid "Space after picture:"
@@ -8695,37 +8782,37 @@ msgstr "OdrážkováPoložka"
 msgid "Bulleted Item:"
 msgstr "Odrážková Položka:"
 
-#: lib/layouts/europecv.layout:72
+#: lib/layouts/europecv.layout:182
 msgid "Begin"
-msgstr "Begin"
+msgstr "Začiatok"
 
-#: lib/layouts/europecv.layout:82
+#: lib/layouts/europecv.layout:194
 msgid "Begin of CV"
-msgstr "Begin of CV"
+msgstr "Začiatok životopisu"
 
-#: lib/layouts/europecv.layout:89
+#: lib/layouts/europecv.layout:201
 msgid "PersonalInfo"
-msgstr "PersonalInfo"
+msgstr "OsobnáInformácia"
 
-#: lib/layouts/europecv.layout:93
+#: lib/layouts/europecv.layout:206
 msgid "Personal Info"
-msgstr "Personal Info"
+msgstr "Osobná Informácia"
 
-#: lib/layouts/europecv.layout:96
+#: lib/layouts/europecv.layout:209
 msgid "MotherTongue"
-msgstr "MotherTongue"
+msgstr "MaterskýJazyk"
 
-#: lib/layouts/europecv.layout:105
+#: lib/layouts/europecv.layout:222
 msgid "Mother Tongue:"
-msgstr "Mother Tongue:"
+msgstr "Materský Jazyk:"
 
-#: lib/layouts/europecv.layout:112
+#: lib/layouts/europecv.layout:232
 msgid "LangHeader"
-msgstr "JazykHlavička"
+msgstr "HlavičkaJazyka"
 
-#: lib/layouts/europecv.layout:116
+#: lib/layouts/europecv.layout:236
 msgid "Language Header:"
-msgstr "Jazyk Hlavička:"
+msgstr "Hlavička Jazyka:"
 
 #: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
 msgid "Language:"
@@ -8793,7 +8880,7 @@ msgstr "Koniec CV"
 
 #: lib/layouts/europecv.layout:300
 msgid "VerticalSpace"
-msgstr "VerticalSpace"
+msgstr "VertikálnaMedzera"
 
 #: lib/layouts/europecv.layout:305
 msgid "Vertical space"
@@ -8819,33 +8906,33 @@ msgstr "Report (Štandardná trieda s ďalšími veľkosťami písma)"
 msgid "FoilTeX"
 msgstr "FoilTeX"
 
-#: lib/layouts/foils.layout:42
+#: lib/layouts/foils.layout:43
 msgid "Foilhead"
-msgstr "Foilhead"
+msgstr "Hlava fólie"
 
-#: lib/layouts/foils.layout:61
+#: lib/layouts/foils.layout:62
 msgid "ShortFoilhead"
-msgstr "ShortFoilhead"
+msgstr "Hlava fólie krátko"
 
-#: lib/layouts/foils.layout:67
+#: lib/layouts/foils.layout:68
 msgid "Rotatefoilhead"
-msgstr "Rotatefoilhead"
+msgstr "Hlava fólie otočená"
 
-#: lib/layouts/foils.layout:73
+#: lib/layouts/foils.layout:74
 msgid "ShortRotatefoilhead"
-msgstr "ShortRotatefoilhead"
+msgstr "Hlava fólie otočená krátko"
 
-#: lib/layouts/foils.layout:82
+#: lib/layouts/foils.layout:83
 msgid "TickList"
-msgstr "TickList"
+msgstr "HáčikováListina"
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
 msgstr "_/"
 
-#: lib/layouts/foils.layout:101
+#: lib/layouts/foils.layout:102
 msgid "CrossList"
-msgstr "CrossList"
+msgstr "KrížováListina"
 
 #: lib/layouts/foils.layout:116
 msgid "><"
@@ -9064,9 +9151,9 @@ msgstr "Kód banky"
 msgid "BankCode:"
 msgstr "Kód banky:"
 
-#: lib/layouts/g-brief.layout:166
+#: lib/layouts/g-brief.layout:167
 msgid "BankAccount"
-msgstr "Bankový účet"
+msgstr "BankovýÚčet"
 
 #: lib/layouts/g-brief.layout:169
 msgid "BankAccount:"
@@ -9373,21 +9460,21 @@ msgstr "Hollywood"
 msgid "More"
 msgstr "Ďalšie"
 
-#: lib/layouts/hollywood.layout:66
+#: lib/layouts/hollywood.layout:67
 msgid "(MORE)"
-msgstr "(MORE)"
+msgstr "(VIACEJ)"
 
-#: lib/layouts/hollywood.layout:79 lib/layouts/hollywood.layout:90
+#: lib/layouts/hollywood.layout:80 lib/layouts/hollywood.layout:91
 msgid "FADE IN:"
-msgstr "FADE IN:"
+msgstr "ZMIEŠAŤ DO:"
 
-#: lib/layouts/hollywood.layout:99 lib/layouts/hollywood.layout:109
+#: lib/layouts/hollywood.layout:100 lib/layouts/hollywood.layout:110
 msgid "INT."
-msgstr "INT."
+msgstr "VNÚTORNÁ"
 
-#: lib/layouts/hollywood.layout:113 lib/layouts/hollywood.layout:123
+#: lib/layouts/hollywood.layout:114 lib/layouts/hollywood.layout:124
 msgid "EXT."
-msgstr "EXT."
+msgstr "VONKAJŠIA"
 
 #: lib/layouts/hollywood.layout:185
 msgid "Continuing"
@@ -9413,9 +9500,9 @@ msgstr "PREPÍNANIE"
 msgid "INTERCUT WITH:"
 msgstr "PREPÍNANIE MEDZI:"
 
-#: lib/layouts/hollywood.layout:264 lib/layouts/hollywood.layout:275
+#: lib/layouts/hollywood.layout:265 lib/layouts/hollywood.layout:276
 msgid "FADE OUT"
-msgstr "FADE OUT"
+msgstr "SKONČIŤ ZMIEŠANIE"
 
 #: lib/layouts/hollywood.layout:293
 msgid "Scene"
@@ -9439,9 +9526,9 @@ msgstr "Mená autorov ktoré sa zobrazia v riadku hlavičky"
 msgid "Catchline"
 msgstr "Catchline"
 
-#: lib/layouts/ijmpc.layout:152 lib/layouts/ijmpd.layout:142
+#: lib/layouts/ijmpc.layout:157 lib/layouts/ijmpd.layout:147
 msgid "History"
-msgstr "História"
+msgstr "Priebeh"
 
 #: lib/layouts/ijmpc.layout:183 lib/layouts/ijmpc.layout:187
 #: lib/layouts/ijmpd.layout:173 lib/layouts/ijmpd.layout:177
@@ -9449,9 +9536,9 @@ msgstr "História"
 msgid "Revised"
 msgstr "Revidované"
 
-#: lib/layouts/ijmpc.layout:230
+#: lib/layouts/ijmpc.layout:235
 msgid "Classification Codes"
-msgstr "Classification Codes"
+msgstr "Klasifikačné Kódy"
 
 #: lib/layouts/ijmpc.layout:237 lib/layouts/ijmpd.layout:240
 #: lib/layouts/aguplus.inc:217
@@ -9462,21 +9549,21 @@ msgstr "Popis tabuľky"
 msgid "Table caption"
 msgstr "Popis tabuľky"
 
-#: lib/layouts/ijmpc.layout:254 lib/layouts/ijmpd.layout:257
+#: lib/layouts/ijmpc.layout:259 lib/layouts/ijmpd.layout:262
 msgid "Refcite"
-msgstr "Refcite"
+msgstr "ReferenciaNaCitáciu"
 
 #: lib/layouts/ijmpc.layout:258 lib/layouts/ijmpd.layout:261
 msgid "Cite reference"
 msgstr "Referencia na citáciu"
 
-#: lib/layouts/ijmpc.layout:271 lib/layouts/ijmpd.layout:274
+#: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:279
 msgid "ItemList"
-msgstr "ItemList"
+msgstr "BodováListina"
 
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:299
 msgid "RomanList"
-msgstr "RomanList"
+msgstr "RýmskaListina"
 
 #: lib/layouts/ijmpc.layout:302 lib/layouts/ijmpd.layout:305
 msgid "Numbering Scheme"
@@ -9587,9 +9674,9 @@ msgstr "Stránka"
 msgid "Prelim"
 msgstr "Predbežné"
 
-#: lib/layouts/iopart.layout:113
+#: lib/layouts/iopart.layout:117
 msgid "Rapid"
-msgstr "Rapid"
+msgstr "Rýchlo"
 
 #: lib/layouts/iopart.layout:218 lib/layouts/jasatex.layout:207
 #: lib/layouts/revtex4-1.layout:175 lib/layouts/revtex4.layout:249
@@ -9597,17 +9684,17 @@ msgstr "Rapid"
 msgid "PACS"
 msgstr "PACS"
 
-#: lib/layouts/iopart.layout:221
+#: lib/layouts/iopart.layout:225
 msgid "Physics and Astronomy Classification System number:"
-msgstr "Physics and Astronomy Classification System number:"
+msgstr "Systémové Číslo Klasifikácie pre Fyziku a Astronómiu:"
 
 #: lib/layouts/iopart.layout:225
 msgid "MSC"
 msgstr "MSC"
 
-#: lib/layouts/iopart.layout:228
+#: lib/layouts/iopart.layout:232
 msgid "Mathematics Subject Classification number:"
-msgstr "Mathematics Subject Classification number:"
+msgstr "Číslo Klasifikácie Matematickej Oblasti:"
 
 #: lib/layouts/iopart.layout:232
 msgid "submitto"
@@ -9725,18 +9812,18 @@ msgstr "Adresa pre výtlačky:"
 msgid "RunningTitle"
 msgstr "StĺpecNadpis"
 
-#: lib/layouts/kluwer.layout:224 lib/layouts/llncs.layout:163
-#: lib/layouts/svcommon.inc:399
+#: lib/layouts/kluwer.layout:225 lib/layouts/llncs.layout:164
+#: lib/layouts/svcommon.inc:403
 msgid "Running title:"
-msgstr "Stĺpec nadpis:"
+msgstr "titul v hlavičke:"
 
 #: lib/layouts/kluwer.layout:238
 msgid "RunningAuthor"
 msgstr "StĺpecAutor"
 
-#: lib/layouts/kluwer.layout:245 lib/layouts/svcommon.inc:405
+#: lib/layouts/kluwer.layout:246 lib/layouts/svcommon.inc:409
 msgid "Running author:"
-msgstr "Stĺpec autor:"
+msgstr "Autor v Hlavičke:"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
@@ -9781,14 +9868,14 @@ msgstr "KoniecSprávy"
 msgid "EndOfFile"
 msgstr "KoniecSúboru"
 
-#: lib/layouts/lettre.layout:139 lib/layouts/lettre.layout:158
-#: lib/layouts/lettre.layout:188 lib/layouts/lettre.layout:214
-#: lib/layouts/lettre.layout:237 lib/layouts/lettre.layout:257
-#: lib/layouts/lettre.layout:287 lib/layouts/lettre.layout:317
-#: lib/layouts/lettre.layout:343 lib/layouts/lettre.layout:373
-#: lib/layouts/lettre.layout:399
+#: lib/layouts/lettre.layout:140 lib/layouts/lettre.layout:159
+#: lib/layouts/lettre.layout:189 lib/layouts/lettre.layout:215
+#: lib/layouts/lettre.layout:238 lib/layouts/lettre.layout:258
+#: lib/layouts/lettre.layout:288 lib/layouts/lettre.layout:318
+#: lib/layouts/lettre.layout:344 lib/layouts/lettre.layout:374
+#: lib/layouts/lettre.layout:400
 msgid "Headings"
-msgstr "Záhlavie listu"
+msgstr "Záhlavie"
 
 #: lib/layouts/lettre.layout:169
 msgid "City:"
@@ -10029,7 +10116,7 @@ msgstr "Modern CV"
 
 #: lib/layouts/moderncv.layout:35
 msgid "CVStyle"
-msgstr "CVStyle"
+msgstr "CVŠtýl"
 
 #: lib/layouts/moderncv.layout:44
 msgid "CV style:"
@@ -10037,7 +10124,7 @@ msgstr "CV štýl:"
 
 #: lib/layouts/moderncv.layout:51
 msgid "CVColor"
-msgstr "CVColor"
+msgstr "CVFarba"
 
 #: lib/layouts/moderncv.layout:54
 msgid "CV color scheme:"
@@ -10049,7 +10136,7 @@ msgstr "KrstnéMeno"
 
 #: lib/layouts/moderncv.layout:70
 msgid "FamilyName"
-msgstr "FamilyName"
+msgstr "Priezvisko"
 
 #: lib/layouts/moderncv.layout:74
 msgid "Family Name:"
@@ -10113,7 +10200,7 @@ msgstr "Záznam:"
 
 #: lib/layouts/moderncv.layout:272
 msgid "ItemWithComment"
-msgstr "ItemWithComment"
+msgstr "Prvok:Komentár"
 
 #: lib/layouts/moderncv.layout:275
 msgid "Item with comment:"
@@ -10153,15 +10240,15 @@ msgstr "Pravý súhrn"
 
 #: lib/layouts/moderncv.layout:331
 msgid "DoubleListItem"
-msgstr "DoubleListItem"
+msgstr "ZáznamDvojitáListina"
 
 #: lib/layouts/moderncv.layout:334
 msgid "Double List Item:"
-msgstr "Položka pre dvojitú listinu:"
+msgstr "Záznam pre dvojitú listinu:"
 
 #: lib/layouts/moderncv.layout:338 lib/layouts/moderncv.layout:339
 msgid "First Item"
-msgstr "Prvá položka"
+msgstr "Prvý záznam"
 
 #: lib/layouts/moderncv.layout:122
 msgid "Computer"
@@ -10185,23 +10272,23 @@ msgstr "Zavri Sekciu"
 
 #: lib/layouts/moderncv.layout:373
 msgid "MakeCVtitle"
-msgstr "MakeCVtitle"
+msgstr "VydaťCVTitul"
 
 #: lib/layouts/moderncv.layout:376
 msgid "Make CV title"
-msgstr "Stvoriť CV titul"
+msgstr "Vydať CV titul"
 
 #: lib/layouts/moderncv.layout:380
 msgid "MakeLetterTitle"
-msgstr "MakeLetterTitle"
+msgstr "VydaťTitulListu"
 
 #: lib/layouts/moderncv.layout:383
 msgid "Make letter title"
-msgstr "Stvoriť titul listu"
+msgstr "Vydať titul listu"
 
 #: lib/layouts/moderncv.layout:387
 msgid "MakeLetterClosing"
-msgstr "MakeLetterClosing"
+msgstr "VydaťZáverListu"
 
 #: lib/layouts/moderncv.layout:390
 msgid "Close Letter"
@@ -10225,7 +10312,7 @@ msgstr "Meno firmy"
 
 #: lib/layouts/moderncv.layout:486
 msgid "Enclosing"
-msgstr "Enclosing"
+msgstr "Príloha"
 
 #: lib/layouts/moderncv.layout:491 lib/layouts/svcommon.inc:519
 msgid "Alternative name"
@@ -10237,7 +10324,7 @@ msgstr "Alternatíva miesto 'Príloha'"
 
 #: lib/layouts/moderncv.layout:496
 msgid "Enclosing:"
-msgstr "Záverečný pozdrav:"
+msgstr "Príloha:"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
@@ -10312,9 +10399,9 @@ msgstr "\\arabic{section}"
 msgid "ItemizeType1"
 msgstr "VýpisPoložiekTyp1"
 
-#: lib/layouts/powerdot.layout:279
+#: lib/layouts/powerdot.layout:283
 msgid "EnumerateType1"
-msgstr "EnumerateType1"
+msgstr "ČíslovanieTyp1"
 
 #: lib/layouts/powerdot.layout:401 lib/layouts/stdfloats.inc:46
 msgid "List of Algorithms"
@@ -10711,13 +10798,13 @@ msgstr "AMS"
 msgid "The title as it appears in the running headers"
 msgstr "Titul ako sa zobrazí v priebežných hlavičkách"
 
-#: lib/layouts/siamltex.layout:310 lib/layouts/amsdefs.inc:189
+#: lib/layouts/siamltex.layout:318 lib/layouts/amsdefs.inc:192
 msgid "Subjectclass"
-msgstr "TematickáTrieda"
+msgstr "TematickáOblasť"
 
-#: lib/layouts/siamltex.layout:313
+#: lib/layouts/siamltex.layout:321
 msgid "AMS subject classifications:"
-msgstr "AMS tematické klasifikácie:"
+msgstr "Klasifikácie oblasti AMS:"
 
 #: lib/layouts/sigplanconf.layout:3
 msgid "ACM SIGPLAN"
@@ -10753,7 +10840,7 @@ msgstr "Autorské práva dáta:"
 
 #: lib/layouts/sigplanconf.layout:107
 msgid "TitleBanner"
-msgstr "TitleBanner"
+msgstr "ÚvodnýNadpis"
 
 #: lib/layouts/sigplanconf.layout:110
 msgid "Title banner:"
@@ -10761,7 +10848,7 @@ msgstr "Titul záhlavia:"
 
 #: lib/layouts/sigplanconf.layout:114
 msgid "PreprintFooter"
-msgstr "PreprintFooter"
+msgstr "PredtlačPäta"
 
 #: lib/layouts/sigplanconf.layout:117
 msgid "Preprint footer:"
@@ -10871,10 +10958,10 @@ msgstr "Hlavičková poznámka (nepovinná):"
 msgid "thanks"
 msgstr "vďaka"
 
-#: lib/layouts/svglobal.layout:105 lib/layouts/svjog.layout:109
-#: lib/layouts/svprobth.layout:139
+#: lib/layouts/svglobal.layout:106 lib/layouts/svjog.layout:110
+#: lib/layouts/svprobth.layout:140
 msgid "Inst"
-msgstr "Inst"
+msgstr "Inšt"
 
 #: lib/layouts/svglobal.layout:108 lib/layouts/svjog.layout:112
 #: lib/layouts/svprobth.layout:142
@@ -10915,17 +11002,17 @@ msgstr "Springer SV Global (V. 3)"
 msgid "Subclass"
 msgstr "Podtrieda"
 
-#: lib/layouts/svglobal3.layout:75
+#: lib/layouts/svglobal3.layout:76
 msgid "Mathematics Subject Classification"
-msgstr "Mat. Podmet Klasifikácia"
+msgstr "Klasifikácia Oblasťi Matematiky"
 
 #: lib/layouts/svglobal3.layout:78
 msgid "CRSC"
 msgstr "CRSC"
 
-#: lib/layouts/svglobal3.layout:81
+#: lib/layouts/svglobal3.layout:82
 msgid "CR Subject Classification"
-msgstr "CR Podmet Klasifikácia"
+msgstr "Klasifikácia Oblasti CR"
 
 #: lib/layouts/svglobal3.layout:86
 msgid "Solution \\thesolution"
@@ -10981,9 +11068,9 @@ msgstr "Zoznam prispievateľov"
 msgid "For editors"
 msgstr "Pre vydavateľov"
 
-#: lib/layouts/svmult.layout:106 lib/layouts/svcommon.inc:115
+#: lib/layouts/svmult.layout:107 lib/layouts/svcommon.inc:115
 msgid "PartBacktext"
-msgstr "PartBacktext"
+msgstr "ČasťZadnejStrany"
 
 #: lib/layouts/svmult.layout:114 lib/layouts/svcommon.inc:408
 msgid "Running Chapter"
@@ -11076,13 +11163,13 @@ msgstr "Verzálky"
 msgid "allcaps"
 msgstr "versálky"
 
-#: lib/layouts/tufte-book.layout:182
+#: lib/layouts/tufte-book.layout:189
 msgid "SmallCaps"
-msgstr "Malé kapitálky"
+msgstr "Kapitálky"
 
-#: lib/layouts/tufte-book.layout:185
+#: lib/layouts/tufte-book.layout:192
 msgid "smallcaps"
-msgstr "malé kapitálky"
+msgstr "kapitálky"
 
 #: lib/layouts/tufte-book.layout:191
 msgid "Full Width"
@@ -11115,7 +11202,7 @@ msgstr "Thesaurus nepodporované v recentnom A&A:"
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/agu_stdclass.inc:36
 #: lib/layouts/db_stdcharstyles.inc:35 lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
-msgstr "Krstné_meno"
+msgstr "KrstnéMeno"
 
 #: lib/layouts/agu_stdclass.inc:48 lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
@@ -11130,7 +11217,7 @@ msgstr "Doslovné"
 #: lib/layouts/agu_stdclass.inc:108 lib/layouts/agu_stdclass.inc:110
 #: lib/layouts/logicalmkup.module:31 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
-msgstr "Zvýrazniť"
+msgstr "Dôraz"
 
 #: lib/layouts/agu_stdclass.inc:124 lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
@@ -11140,10 +11227,6 @@ msgstr "Skratka"
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "ČísloCitácie"
-
-#: lib/layouts/agu_stdclass.inc:146 lib/layouts/agu_stdclass.inc:148
-msgid "Volume"
-msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:157 lib/layouts/agu_stdclass.inc:159
 msgid "Day"
@@ -11159,15 +11242,15 @@ msgstr "Rok"
 
 #: lib/layouts/agu_stdclass.inc:190 lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
-msgstr "Issue-number"
+msgstr "Číslo vydania"
 
 #: lib/layouts/agu_stdclass.inc:201 lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
-msgstr "Issue-day"
+msgstr "Deň vydania"
 
 #: lib/layouts/agu_stdclass.inc:212 lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
-msgstr "Issue-months"
+msgstr "Mesiac vydania"
 
 #: lib/layouts/agu_stdsections.inc:86
 msgid "Subsubparagraph"
@@ -11191,31 +11274,31 @@ msgstr "Špeciálna-sekcia:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr "AGU-journal"
+msgstr "AGU-žurnál"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr "AGU-journal:"
+msgstr "AGU-žurnál:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr "ČísloCitácie:"
+msgstr "Číslo citácie:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr "AGU-volume"
+msgstr "AGU-diel"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr "AGU-volume:"
+msgstr "AGU-diel:"
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
-msgstr "AGU-issue"
+msgstr "AGU-vydanie"
 
 #: lib/layouts/agu_stdtitle.inc:76
 msgid "AGU-issue:"
-msgstr "AGU-issue:"
+msgstr "AGU-vydanie:"
 
 #: lib/layouts/agu_stdtitle.inc:84
 msgid "Copyright:"
@@ -11239,11 +11322,11 @@ msgstr "Pojem indexu:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 msgid "Cross-term"
-msgstr "Cross-term"
+msgstr "Krížny pojem"
 
 #: lib/layouts/agu_stdtitle.inc:115
 msgid "Cross-term:"
-msgstr "Cross-term:"
+msgstr "Krížny pojem:"
 
 #: lib/layouts/agu_stdtitle.inc:136
 msgid "Supplementary"
@@ -11255,11 +11338,11 @@ msgstr "Dodatkové..."
 
 #: lib/layouts/agu_stdtitle.inc:149
 msgid "Supp-note"
-msgstr "dodatočná poznámka"
+msgstr "Dodatočná poznámka"
 
 #: lib/layouts/agu_stdtitle.inc:153
 msgid "Sup-mat-note:"
-msgstr "Sup-mat-note:"
+msgstr "Dodatočná poznámka:"
 
 #: lib/layouts/agu_stdtitle.inc:158
 msgid "Cite-other"
@@ -11303,11 +11386,11 @@ msgstr "Citácia:"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
-msgstr "Posting-order"
+msgstr "PoradieOdoslania"
 
 #: lib/layouts/agu_stdtitle.inc:274
 msgid "Posting-order:"
-msgstr "Posting-order:"
+msgstr "Poradie odoslania:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
@@ -11343,11 +11426,11 @@ msgstr "Tabuľky:"
 
 #: lib/layouts/agu_stdtitle.inc:311
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "SkupinaDát"
 
 #: lib/layouts/agu_stdtitle.inc:314
 msgid "Datasets:"
-msgstr "Datasets:"
+msgstr "Skupina dát:"
 
 #: lib/layouts/agu_stdtitle.inc:321 lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
@@ -11376,7 +11459,7 @@ msgstr "Kód"
 
 #: lib/layouts/agu_stdtitle.inc:391 lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
-msgstr "Dscr"
+msgstr "Opis"
 
 #: lib/layouts/agu_stdtitle.inc:415 lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
@@ -11405,11 +11488,11 @@ msgstr "CCC Kód:"
 
 #: lib/layouts/aguplus.inc:148
 msgid "PaperId"
-msgstr "PaperId"
+msgstr "Id článku"
 
 #: lib/layouts/aguplus.inc:152
 msgid "Paper Id:"
-msgstr "Paper Id:"
+msgstr "Id článku:"
 
 #: lib/layouts/aguplus.inc:156
 msgid "AuthorAddr"
@@ -11421,11 +11504,11 @@ msgstr "Autorova Adresa:"
 
 #: lib/layouts/aguplus.inc:164
 msgid "SlugComment"
-msgstr "SlugComment"
+msgstr "TlačováPoznámka"
 
 #: lib/layouts/aguplus.inc:168
 msgid "Slug Comment:"
-msgstr "Slug Comment:"
+msgstr "Tlačová Poznámka:"
 
 #: lib/layouts/aguplus.inc:184
 msgid "Plate"
@@ -11433,7 +11516,7 @@ msgstr "Vyobrazenie"
 
 #: lib/layouts/aguplus.inc:195
 msgid "Planotable"
-msgstr "Planotable"
+msgstr "Plano-tabuľka"
 
 #: lib/layouts/aguplus.inc:207
 msgid "Table Caption"
@@ -11459,9 +11542,9 @@ msgstr "E-mail adresa:"
 msgid "Key words and phrases:"
 msgstr "Heslá a zvraty:"
 
-#: lib/layouts/amsdefs.inc:175
+#: lib/layouts/amsdefs.inc:178
 msgid "Dedicatory"
-msgstr "Venovací"
+msgstr "Venovanie"
 
 #: lib/layouts/amsdefs.inc:182
 msgid "Translator"
@@ -11471,9 +11554,9 @@ msgstr "Prekladateľ"
 msgid "Translator:"
 msgstr "Prekladateľ:"
 
-#: lib/layouts/amsdefs.inc:192
+#: lib/layouts/amsdefs.inc:195
 msgid "2000 Mathematics Subject Classification:"
-msgstr "2000 Mathematics Subject Classification:"
+msgstr "Klasifikácia Matematických Oblastí 2000:"
 
 #: lib/layouts/db_stdcharstyles.inc:20 lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
@@ -11481,11 +11564,11 @@ msgstr "Adresár"
 
 #: lib/layouts/db_stdcharstyles.inc:85 lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
-msgstr "KeyCombo"
+msgstr "Tastatúra"
 
 #: lib/layouts/db_stdcharstyles.inc:99 lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
-msgstr "KeyCap"
+msgstr "Cap"
 
 #: lib/layouts/db_stdcharstyles.inc:113 lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
@@ -11493,15 +11576,15 @@ msgstr "GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:127 lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
-msgstr "GuiMenuItem"
+msgstr "Položka v GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:141 lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
-msgstr "GuiButton"
+msgstr "Tlačidlo(Gui)"
 
 #: lib/layouts/db_stdcharstyles.inc:155 lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
-msgstr "MenuChoice"
+msgstr "MenuVýber"
 
 #: lib/layouts/db_stdlayouts.inc:31
 msgid "SGML"
@@ -11573,23 +11656,23 @@ msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:110
 msgid "Addpart"
-msgstr "Addpart"
+msgstr "Časť (zoznam)"
 
-#: lib/layouts/scrclass.inc:117
+#: lib/layouts/scrclass.inc:120
 msgid "Addchap"
-msgstr "Addchap"
+msgstr "Kapitola (zoznam)"
 
-#: lib/layouts/scrclass.inc:124
+#: lib/layouts/scrclass.inc:130
 msgid "Addsec"
-msgstr "Addsec"
+msgstr "Sekcia (zoznam)"
 
-#: lib/layouts/scrclass.inc:131
+#: lib/layouts/scrclass.inc:140
 msgid "Addchap*"
-msgstr "Addchap*"
+msgstr "Kapitola* (zoznam)"
 
-#: lib/layouts/scrclass.inc:137
+#: lib/layouts/scrclass.inc:146
 msgid "Addsec*"
-msgstr "Addsec*"
+msgstr "Sekcia* (zoznam)"
 
 #: lib/layouts/scrclass.inc:143
 msgid "Minisec"
@@ -11599,17 +11682,17 @@ msgstr "Minisekcia"
 msgid "Publishers"
 msgstr "Vydavatelia"
 
-#: lib/layouts/scrclass.inc:210
+#: lib/layouts/scrclass.inc:219
 msgid "Titlehead"
-msgstr "Hlavička titulku"
+msgstr "HlavičkaNaTitulnejStrane"
 
-#: lib/layouts/scrclass.inc:220
+#: lib/layouts/scrclass.inc:229
 msgid "Uppertitleback"
-msgstr "Zadný titul hore"
+msgstr "HornýTitulVzadu"
 
-#: lib/layouts/scrclass.inc:226
+#: lib/layouts/scrclass.inc:235
 msgid "Lowertitleback"
-msgstr "Zadný titul dole"
+msgstr "DolnýTitulVzadu"
 
 #: lib/layouts/scrclass.inc:232
 msgid "Extratitle"
@@ -11645,23 +11728,23 @@ msgstr "NEDEFINOVANÉ"
 
 #: lib/layouts/stdciteformats.inc:9
 msgid "pp."
-msgstr "pp."
+msgstr "str."
 
 #: lib/layouts/stdciteformats.inc:10
 msgid "ed."
-msgstr "ed."
+msgstr "vyd."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
-msgstr "vol."
+msgstr "diel"
 
 #: lib/layouts/stdciteformats.inc:12
 msgid "no."
-msgstr "nie."
+msgstr "č."
 
 #: lib/layouts/stdciteformats.inc:13
 msgid "in"
-msgstr "in"
+msgstr "v"
 
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
@@ -11729,9 +11812,9 @@ msgstr "Zoznam výpisov"
 msgid "Listings[[inset]]"
 msgstr "Nastavenie výpisov"
 
-#: lib/layouts/stdinsets.inc:227
+#: lib/layouts/stdinsets.inc:247
 msgid "Idx"
-msgstr "Idx"
+msgstr "Heslo"
 
 #: lib/layouts/stdinsets.inc:403
 msgid "Argument"
@@ -11755,27 +11838,27 @@ msgstr "Príloha \\thechapter"
 
 #: lib/layouts/svcommon.inc:67
 msgid "Front Matter"
-msgstr "Front Matter"
+msgstr "Vstupná Časť"
 
 #: lib/layouts/svcommon.inc:83
 msgid "--- Front Matter ---"
-msgstr "--- Front Matter ---"
+msgstr "--- Vstupná Časť ---"
 
 #: lib/layouts/svcommon.inc:93
 msgid "Main Matter"
-msgstr "Main Matter"
+msgstr "Hlavná Casť"
 
 #: lib/layouts/svcommon.inc:97
 msgid "--- Main Matter ---"
-msgstr "--- Main Matter ---"
+msgstr "--- Hlavná Časť ---"
 
 #: lib/layouts/svcommon.inc:100
 msgid "Back Matter"
-msgstr "Back Matter"
+msgstr "Zaverečná Časť"
 
 #: lib/layouts/svcommon.inc:104
 msgid "--- Back Matter ---"
-msgstr "--- Back Matter ---"
+msgstr "--- Zaverečná Časť ---"
 
 #: lib/layouts/svcommon.inc:140
 msgid "Part Title"
@@ -11813,9 +11896,9 @@ msgstr "Autor v Hlavičke"
 msgid "Running chapter:"
 msgstr "Kapitola v hlavičke:"
 
-#: lib/layouts/svcommon.inc:416
+#: lib/layouts/svcommon.inc:420
 msgid "Running Section"
-msgstr "Sekcia v Hlavičke"
+msgstr "SekciaVHlavičke"
 
 #: lib/layouts/svcommon.inc:419
 msgid "Running section:"
@@ -12082,9 +12165,9 @@ msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
 msgid "Caption setup:"
 msgstr "Popis nastavenie:"
 
-#: lib/layouts/bicaption.module:34
+#: lib/layouts/bicaption.module:37
 msgid "Bicaption"
-msgstr "Bicaption"
+msgstr "Dvojjazykový popis"
 
 #: lib/layouts/bicaption.module:42
 msgid "Second Language Caption Short Title"
@@ -12253,7 +12336,7 @@ msgid ""
 "Controls the layout of enumerate, itemize, description, and list/labeling. "
 "See section Customized Lists of the User's Guide for a detailed description."
 msgstr ""
-"Kontroluje schému pre číslovanie, položky, opis a listina/labeling.\n"
+"Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
 "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
 "vysvetlenie."
 
@@ -12280,14 +12363,14 @@ msgstr "Pokračovať číslovaním"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr "Očísluj rovnice podľa sekcie"
+msgstr "Číslovanie rovníc podľa sekcie"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
-"Vynuluj číslovanie rovníc na začiatku sekcie a predčísli ich sekciou, ako "
+"Vynuluje číslovanie rovníc na začiatku sekcie a predčísli ich sekciou, ako "
 "pri '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17
@@ -12296,14 +12379,14 @@ msgstr "\\thesection.\\arabic{rovnica}"
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
-msgstr "Očísluj obrázky podľa sekcie"
+msgstr "Číslovanie obrázkov podľa sekcie"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
 "Resets the figure number at section start and prepends the section number to "
 "the figure number, as in 'fig. 2.1'."
 msgstr ""
-"Vynuluj číslovanie obrázkov na začiatku sekcie a predčísli ich sekciou, ako "
+"Vynuluje číslovanie obrázkov na začiatku sekcie a predčísli ich sekciou, ako "
 "pri 'Obrázok 2.1'."
 
 #: lib/layouts/fix-cm.module:2
@@ -12373,7 +12456,7 @@ msgid ""
 "Define a style for paragraphs with an initial. See the EmbeddedObjects "
 "manual for a detailed description."
 msgstr ""
-"Definuj štýl pre odstavce s iniciálkou. Pozri manuál 'Vložené Objekty' pre "
+"Definuje štýl pre odstavce s iniciálkou. Pozri manuál 'Vložené Objekty' pre "
 "detailné vysvetlenie."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
@@ -12442,10 +12525,9 @@ msgstr "Kus"
 msgid "Sweave"
 msgstr "Sweave"
 
-#: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
-#: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
+#: lib/layouts/knitr.module:35 lib/layouts/sweave.module:45
 msgid "Scrap"
-msgstr "Scrap"
+msgstr "Odpad"
 
 #: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
 msgid "Sweave Options"
@@ -12480,9 +12562,9 @@ msgstr ""
 msgid "LilyPond"
 msgstr "LilyPond"
 
-#: lib/layouts/linguistics.module:2
+#: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
-msgstr "Lingvistiky"
+msgstr "Lingvistika"
 
 #: lib/layouts/linguistics.module:7
 msgid ""
@@ -12518,13 +12600,13 @@ msgstr "Podpríklad"
 msgid "Subexample:"
 msgstr "Podpríklad:"
 
-#: lib/layouts/linguistics.module:65 lib/layouts/linguistics.module:67
+#: lib/layouts/linguistics.module:66 lib/layouts/linguistics.module:68
 msgid "Glosse"
-msgstr "Glosse"
+msgstr "Glosa"
 
-#: lib/layouts/linguistics.module:94 lib/layouts/linguistics.module:96
+#: lib/layouts/linguistics.module:95 lib/layouts/linguistics.module:97
 msgid "Tri-Glosse"
-msgstr "Tri-Glosse"
+msgstr "Tri-Glosy"
 
 #: lib/layouts/linguistics.module:122
 msgid "Expression"
@@ -12538,9 +12620,9 @@ msgstr "výraz"
 msgid "Concepts"
 msgstr "Koncepty"
 
-#: lib/layouts/linguistics.module:139
+#: lib/layouts/linguistics.module:140
 msgid "concept"
-msgstr "concept"
+msgstr "koncept"
 
 #: lib/layouts/linguistics.module:152
 msgid "Meaning"
@@ -12605,7 +12687,7 @@ msgstr "Minimalistické"
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Predefinovať niektoré z vložiek ako minimalistické (Register, Vetva, URL)."
+"Predefinuje niektoré z vložiek ako minimalistické (Register, Vetva, URL)."
 
 #: lib/layouts/multicol.module:2
 msgid "Multiple Columns"
@@ -12640,6 +12722,16 @@ msgstr "--Koniec Viac-Stĺpcového Prostredia--"
 #: lib/layouts/natbib.module:2
 msgid "Natbib"
 msgstr "Natbib"
+
+#: lib/layouts/natbibapa.module:9
+msgid ""
+"This module adds support for using natbib together with apacite (the "
+"bibliography style need not be apacite--it could be apacite, apacitex, or "
+"any bibliography that works with both the natbib and apacite packages."
+msgstr ""
+"Tento modul pridáva podporu na používanie natbib spolu s apacite (štýl "
+"bibliografie nemusí byť apacite--môže byť apacite, apacitex,, alebo "
+"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkamy)."
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -12692,8 +12784,8 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Umožní použiť štatistický jazyk S/R ako nástroj pre \"literate programming\" "
-"cez funkciu z balíka Sweave(). Pre viac informácie pozri príkladný súbor "
+"Umožnuje použiť štatistický jazyk S/R ako nástroj pre \"literate programming"
+"\" cez funkciu z balíka Sweave(). Pre viac informácie pozri príkladný súbor "
 "sweave.lyx."
 
 #: lib/layouts/sweave.module:93 lib/layouts/sweave.module:94
@@ -12702,14 +12794,14 @@ msgstr "Sweave Vstupný Súbor"
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
-msgstr "Očísluj tabuľky podľa sekcie"
+msgstr "Číslovanie tabuliek podľa sekcie"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid ""
 "Resets the table number at section start and prepends the section number to "
 "the table number, as in 'Table 2.1'."
 msgstr ""
-"Vynuluj číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, ako "
+"Vynuluje číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, ako "
 "pri 'Tabuľka 2.1'."
 
 #: lib/layouts/theorems-ams-bytype.module:2
@@ -13036,7 +13128,7 @@ msgid ""
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
-"Očísluje mat. vety a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
+"Číslovanie mat. viet a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
 "začiatku každej kapitoly). Použite tento modul len s takou triedou "
 "dokumentov, ktorá podporuje prostredie kapitoly."
 
@@ -13049,7 +13141,7 @@ msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
 msgstr ""
-"Umožní používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
+"Umožnuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
 "Titul'."
 
 #: lib/layouts/theorems-named.module:11
@@ -13087,7 +13179,7 @@ msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"Očísluje vety a pod. podľa sekcie (čiže číslovanie sa nuluje na začiatku "
+"Číslovanie teorém a pod. podľa sekcie (čiže číslovanie sa nuluje na začiatku "
 "každej sekcie)."
 
 #: lib/layouts/theorems-starred.module:2
@@ -14104,9 +14196,9 @@ msgstr "Oválny, Tučný|v"
 msgid "Drop Shadow|w"
 msgstr "S Tieňom"
 
-#: lib/ui/stdcontext.inc:169 lib/ui/stdmenus.inc:473
+#: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:471
 msgid "Shaded Background|B"
-msgstr "Pozadie s tieňom|P"
+msgstr "Pozadie Tieňované|P"
 
 #: lib/ui/stdcontext.inc:170 lib/ui/stdmenus.inc:474
 msgid "Double Frame|u"
@@ -14132,17 +14224,17 @@ msgstr "Otvor všetky poznámky|p"
 msgid "Close All Notes|l"
 msgstr "Zavri všetky poznámky|o"
 
-#: lib/ui/stdcontext.inc:191 lib/ui/stdmenus.inc:490
+#: lib/ui/stdcontext.inc:198 lib/ui/stdmenus.inc:488
 msgid "Phantom|P"
-msgstr "Phantom"
+msgstr "Fantóm"
 
-#: lib/ui/stdcontext.inc:192 lib/ui/stdmenus.inc:491
+#: lib/ui/stdcontext.inc:199 lib/ui/stdmenus.inc:489
 msgid "Horizontal Phantom|H"
-msgstr "Horizontálny Phantom"
+msgstr "Horizontálny Fantóm"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdmenus.inc:492
+#: lib/ui/stdcontext.inc:200 lib/ui/stdmenus.inc:490
 msgid "Vertical Phantom|V"
-msgstr "Vertikálny Phantom"
+msgstr "Vertikálny Fantóm"
 
 #: lib/ui/stdcontext.inc:200 lib/ui/stdmenus.inc:399
 msgid "Interword Space|w"
@@ -14468,9 +14560,9 @@ msgstr "Viacriadkové"
 msgid "Top Line|n"
 msgstr "Vrchný riadok"
 
-#: lib/ui/stdcontext.inc:385
+#: lib/ui/stdcontext.inc:393
 msgid "Bottom Line|i"
-msgstr "Spodný riadok"
+msgstr "Spodný Riadok"
 
 #: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:192
 msgid "Left Line|L"
@@ -14628,9 +14720,9 @@ msgstr "Znížiť úroveň Sekcie"
 msgid "Move Section Down|w"
 msgstr "Presunúť Sekciu Nadol"
 
-#: lib/ui/stdcontext.inc:589
+#: lib/ui/stdcontext.inc:600
 msgid "Select Section|S"
-msgstr "Vyber Sekciu"
+msgstr "Vybrať Sekciu"
 
 #: lib/ui/stdcontext.inc:597
 msgid "Wrap by Preview|y"
@@ -14854,7 +14946,7 @@ msgstr "Nastavenia poznámky..."
 
 #: lib/ui/stdmenus.inc:140
 msgid "Phantom Settings...|h"
-msgstr "Nastavenia pre Phantom..."
+msgstr "Nastavenia pre Fantóm..."
 
 #: lib/ui/stdmenus.inc:141
 msgid "Branch Settings...|B"
@@ -14883,6 +14975,10 @@ msgstr "Nastavenia výpisu...|N"
 #: lib/ui/stdmenus.inc:150
 msgid "Table Settings...|a"
 msgstr "Nastavenia tabuľky..."
+
+#: lib/ui/stdmenus.inc:151
+msgid "Split Environment|l"
+msgstr "Rozdeliť Prostredie"
 
 #: lib/ui/stdmenus.inc:154
 msgid "Plain Text|T"
@@ -14958,7 +15054,7 @@ msgstr "Horný riadok"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Bottom Line|B"
-msgstr "Dolný riadok"
+msgstr "Spodný Riadok"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Top|p"
@@ -15010,7 +15106,7 @@ msgstr "Štýl textu|t"
 
 #: lib/ui/stdmenus.inc:230
 msgid "Use Computer Algebra System|S"
-msgstr "Použiť algebraické programy"
+msgstr "Použiť System Computer Algebra"
 
 #: lib/ui/stdmenus.inc:234
 msgid "Add Line Above|A"
@@ -15344,9 +15440,9 @@ msgstr "Horizontálna Línia..."
 msgid "Vertical Space...|V"
 msgstr "Vertikálna medzera...|V"
 
-#: lib/ui/stdmenus.inc:405
+#: lib/ui/stdmenus.inc:402
 msgid "Phantom|m"
-msgstr "Phantom"
+msgstr "Fantóm"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Hyphenation Point|H"
@@ -15432,9 +15528,9 @@ msgstr "LaTeX Protokol|L"
 msgid "Start Appendix Here|A"
 msgstr "Začni Prílohy Tu|P"
 
-#: lib/ui/stdmenus.inc:328
+#: lib/ui/stdmenus.inc:509
 msgid "View Master Document|M"
-msgstr "Zobraz Hlavný Dokument"
+msgstr "Zobraziť Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:329
 msgid "Update Master Document|a"
@@ -15718,7 +15814,7 @@ msgstr "Aktualizovať"
 
 #: lib/ui/stdtoolbars.inc:103
 msgid "View master document"
-msgstr "Prehliadnuť hlavný dokument"
+msgstr "Zobraziť hlavný dokument"
 
 #: lib/ui/stdtoolbars.inc:104
 msgid "Update master document"
@@ -15794,7 +15890,7 @@ msgstr "Vložiť okrajovú poznámku"
 
 #: lib/ui/stdtoolbars.inc:130
 msgid "Insert LyX note"
-msgstr "Vložiť LyX zápis"
+msgstr "Vložiť zápis LyXu"
 
 #: lib/ui/stdtoolbars.inc:131
 msgid "Insert box"
@@ -15846,7 +15942,7 @@ msgstr "Nastaviť hornú líniu"
 
 #: lib/ui/stdtoolbars.inc:149
 msgid "Set bottom line"
-msgstr "Nastaviť spodnú líniu"
+msgstr "Nastaviť spodný riadok"
 
 #: lib/ui/stdtoolbars.inc:150
 msgid "Set left line"
@@ -16080,9 +16176,9 @@ msgstr "Akceptovať zmeny vo výbere"
 msgid "Reject change inside selection"
 msgstr "Odmietnuť zmeny vo výbere"
 
-#: lib/ui/stdtoolbars.inc:225
+#: lib/ui/stdtoolbars.inc:235
 msgid "Merge changes"
-msgstr "Zmeny prijať, alebo zahodiť"
+msgstr "Zmeny zlúčiť"
 
 #: lib/ui/stdtoolbars.inc:226
 msgid "Accept all changes"
@@ -16386,17 +16482,17 @@ msgstr "Dvojitá kvadratická\t\\qquad"
 msgid "Negative space\t\\!"
 msgstr "Záporná medzera\t\\!"
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:346
 msgid "Phantom\t\\phantom"
-msgstr "Phantom\t\\phantom"
+msgstr "Fantóm\t\\phantom"
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:347
 msgid "Horizontal phantom\t\\hphantom"
-msgstr "Horizontálny phantom\t\\hphantom"
+msgstr "Horizontálny fantóm\t\\hphantom"
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:348
 msgid "Vertical phantom\t\\vphantom"
-msgstr "Vertikálny phantom\t\\vphantom"
+msgstr "Vertikálny fantóm\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:349
 msgid "Smash \\smash"
@@ -20697,9 +20793,9 @@ msgstr "zosivelý text vložky"
 msgid "greyedout inset background"
 msgstr "pozadie zosivelá vložka"
 
-#: src/Color.cpp:229
+#: src/Color.cpp:230
 msgid "phantom inset text"
-msgstr "vložka textu phantom"
+msgstr "vložka textu fantóm"
 
 #: src/Color.cpp:230
 msgid "shaded box"
@@ -21111,10 +21207,6 @@ msgstr "Zdedené"
 msgid "Medium"
 msgstr "Stredné"
 
-#: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
-msgid "Bold"
-msgstr "Tučné"
-
 #: src/Font.cpp:67 src/frontends/qt4/GuiCharacter.cpp:43
 msgid "Upright"
 msgstr "Vzpriamený"
@@ -21513,7 +21605,7 @@ msgstr ""
 "\t-sysdir dir        nastaviť systémový adresár na dir\n"
 "\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
 "\t-dbg časť[,časť]...\n"
-"                  vyber patričné časti na ladenie.\n"
+"                  vyberie patričné časti na ladenie.\n"
 "                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
 "\t-x [--execute] príkaz\n"
 "                  spustí lyx-príkaz príkaz.\n"
@@ -23163,7 +23255,7 @@ msgstr "S tieňom"
 
 #: src/frontends/qt4/GuiBox.cpp:56
 msgid "Shaded background"
-msgstr "Pozadie s tieňom"
+msgstr "Pozadie tieňované"
 
 #: src/frontends/qt4/GuiBox.cpp:57
 msgid "Double rectangular frame"
@@ -23243,7 +23335,7 @@ msgstr "Túto vetvu nebolo možné premenovať."
 
 #: src/frontends/qt4/GuiChanges.cpp:40
 msgid "Merge Changes"
-msgstr "Zmeny prijať alebo zahodiť"
+msgstr "Zmeny Zlúčiť"
 
 #: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
@@ -23648,33 +23740,33 @@ msgid ""
 "You need to install the package \"fontspec\" to use this feature"
 msgstr "Použiť OpenType a TrueType fonty priamo (potrebné XeTeX alebo LuaTeX)"
 
-#: src/frontends/qt4/GuiDocument.cpp:924
+#: src/frontends/qt4/GuiDocument.cpp:906
 msgid "empty"
-msgstr "prázdne"
+msgstr "prázdny"
 
 #: src/frontends/qt4/GuiDocument.cpp:925
 msgid "plain"
 msgstr "prostý"
 
-#: src/frontends/qt4/GuiDocument.cpp:926
+#: src/frontends/qt4/GuiDocument.cpp:908
 msgid "headings"
-msgstr "s nadpismi (headings)"
+msgstr "s nadpismi"
 
-#: src/frontends/qt4/GuiDocument.cpp:927
+#: src/frontends/qt4/GuiDocument.cpp:909
 msgid "fancy"
-msgstr "pestrý(fancy)"
+msgstr "pestrý"
 
-#: src/frontends/qt4/GuiDocument.cpp:936
+#: src/frontends/qt4/GuiDocument.cpp:918
 msgid "US letter"
-msgstr "US letter"
+msgstr "US list"
 
-#: src/frontends/qt4/GuiDocument.cpp:937
+#: src/frontends/qt4/GuiDocument.cpp:919
 msgid "US legal"
-msgstr "US-právna listina"
+msgstr "US právna listina"
 
-#: src/frontends/qt4/GuiDocument.cpp:938
+#: src/frontends/qt4/GuiDocument.cpp:920
 msgid "US executive"
-msgstr "US-exekutíva"
+msgstr "US exekutíva"
 
 #: src/frontends/qt4/GuiDocument.cpp:939
 msgid "A0"
@@ -23906,9 +23998,9 @@ msgstr "Registre"
 msgid "PDF Properties"
 msgstr "PDF Vlastnosti"
 
-#: src/frontends/qt4/GuiDocument.cpp:1422
+#: src/frontends/qt4/GuiDocument.cpp:1426
 msgid "Math Options"
-msgstr "Voľby Matematika"
+msgstr "Voľby pre Matematiku"
 
 #: src/frontends/qt4/GuiDocument.cpp:1426
 msgid "Float Placement"
@@ -24511,7 +24603,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
 msgid "Phantom Settings"
-msgstr "Nastavenia pre Phantom"
+msgstr "Nastavenia pre Fantóm"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "System files|#S#s"
@@ -24756,7 +24848,7 @@ msgstr "LyX klávesové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrint.cpp:43
 msgid "Print Document"
-msgstr "Tlač Dokumentu"
+msgstr "Tlač Dokument"
 
 #: src/frontends/qt4/GuiPrint.cpp:87
 msgid "Print to file"
@@ -25050,7 +25142,7 @@ msgstr "Surogáty dolné"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "Private Use Area"
-msgstr "Private Use Area"
+msgstr "Miesto pre vlastné použitie"
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "CJK Compatibility Ideographs"
@@ -26085,9 +26177,9 @@ msgstr "oválny, tučný"
 msgid "drop shadow"
 msgstr "s tieňom"
 
-#: src/insets/InsetBox.cpp:72
+#: src/insets/InsetBox.cpp:73
 msgid "shaded background"
-msgstr "pozadie tieňovaný rámik"
+msgstr "pozadie tieňované"
 
 #: src/insets/InsetBox.cpp:73
 msgid "double frame"
@@ -26137,9 +26229,9 @@ msgstr "Vetva (len hlavný dokument): "
 msgid "Branch (undefined): "
 msgstr "Vetva (ne-definovaná): "
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:102
 msgid "Undef: "
-msgstr "Undef: "
+msgstr "Nie def: "
 
 #: src/insets/InsetBranch.cpp:169
 msgid "Branch state changes in master document"
@@ -26154,10 +26246,10 @@ msgstr ""
 "Štatus vetvy '%1$s v hlavnom dokumente sa zmenil. Zaistite uloženie hlavného "
 "dokument."
 
-#: src/insets/InsetCaption.cpp:338
+#: src/insets/InsetCaption.cpp:341
 #, c-format
 msgid "Sub-%1$s"
-msgstr "Sub-%1$s"
+msgstr "Pod-%1$s"
 
 #: src/insets/InsetCitation.cpp:123
 msgid "No bibliography defined!"
@@ -26658,7 +26750,7 @@ msgstr "Zalomenie strany"
 
 #: src/insets/InsetNewpage.cpp:187
 msgid "Clear Page"
-msgstr "Stránku vyprázdniť (\\clearpage)"
+msgstr "Stránku Vyprázdniť"
 
 #: src/insets/InsetNewpage.cpp:190
 msgid "Clear Double Page"
@@ -26686,27 +26778,27 @@ msgstr "poznámka"
 
 #: src/insets/InsetPhantom.cpp:65
 msgid "Phantom"
-msgstr "Phantom"
+msgstr "Fantóm"
 
 #: src/insets/InsetPhantom.cpp:66
 msgid "HPhantom"
-msgstr "HPhantom"
+msgstr "HFantóm"
 
 #: src/insets/InsetPhantom.cpp:67
 msgid "VPhantom"
-msgstr "VPhantom"
+msgstr "VFantóm"
 
 #: src/insets/InsetPhantom.cpp:327
 msgid "phantom"
-msgstr "phantom"
+msgstr "fantóm"
 
 #: src/insets/InsetPhantom.cpp:329
 msgid "hphantom"
-msgstr "hphantom"
+msgstr "hfantóm"
 
 #: src/insets/InsetPhantom.cpp:331
 msgid "vphantom"
-msgstr "vphantom"
+msgstr "vfantóm"
 
 #: src/insets/InsetRef.cpp:219
 msgid "elsewhere"
@@ -26744,9 +26836,9 @@ msgstr "Textové číslo strany"
 msgid "TextPage: "
 msgstr "TextStrana: "
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:348 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
-msgstr "Štandard+Číslo strany"
+msgstr "Štandard+Textová strana"
 
 #: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
@@ -26764,9 +26856,9 @@ msgstr "Formát: "
 msgid "Reference to Name"
 msgstr "Referencia na Meno"
 
-#: src/insets/InsetRef.cpp:344
+#: src/insets/InsetRef.cpp:350
 msgid "NameRef:"
-msgstr "NameRef:"
+msgstr "MenoRef:"
 
 #: src/insets/InsetScript.cpp:366
 msgid "subscript"
@@ -27575,9 +27667,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Latin off"
 #~ msgstr "Latin off"
 
-#~ msgid "CopNum"
-#~ msgstr "CopNum"
-
 #~ msgid "Listings"
 #~ msgstr "Výpisy"
 
@@ -27607,9 +27696,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "The LaTeX package undertilde is always used"
 #~ msgstr "LaTeX balík undertilde použiť každopádne"
-
-#~ msgid "*"
-#~ msgstr "*"
 
 #~ msgid "MM"
 #~ msgstr "MM"
