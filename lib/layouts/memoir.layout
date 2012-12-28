@@ -171,7 +171,6 @@ Style Chapterprecis
 	EndFont
 End
 
-#FIXME: this takes two parameters!!!
 Style Epigraph
 	Category              Maintext
 	Margin                Right_Address_Box
@@ -181,6 +180,12 @@ Style Epigraph
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
+	Argument post:1
+		MenuString    "Epigraph Source|S"
+		LabelString   "Source"
+		Tooltip       "The source/author of ths epigraph"
+		Mandatory     1
+	EndArgument
 End
 
 Style Poemtitle

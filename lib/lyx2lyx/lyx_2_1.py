@@ -2897,6 +2897,82 @@ def revert_frametitle(document):
         i = endlay
 
 
+def convert_epigraph(document):
+    " Converts memoir epigraph to new syntax "
+    
+    if document.textclass != "memoir":
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Epigraph", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of Epigraph layout")
+            i = i + 1
+            continue
+        endlay = j
+        subst = list()
+        ert = find_token(document.body, "\\begin_inset ERT", i, j)
+        if ert != -1:
+            endInset = find_end_of_inset(document.body, ert)
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", ert)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            ertcont = beginPlain + 2
+            if document.body[ertcont] == "}{":
+                # strip off the <
+                # Convert to ArgInset
+                endlay = endlay - 2 * len(document.body[j])
+                begsubst = ['\\begin_inset Argument post:1', 'status collapsed', '',
+                            '\\begin_layout Plain Layout']
+                endsubst = ['\\end_layout', '', '\\end_inset', '', document.body[j]]
+                document.body[j : j] = endsubst
+                document.body[endInset + 1 : endInset + 1] = begsubst
+                # Adjust range end
+                endlay += len(begsubst) + len(endsubst)
+                endlay = endlay - len(document.body[ert : endInset + 1])
+                del document.body[ert : endInset + 1]
+                    
+        i = endlay
+
+
+def revert_epigraph(document):
+    " Reverts memoir epigraph argument to ERT "
+    
+    if document.textclass != "memoir":
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Epigraph", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of Epigraph layout")
+            i = i + 1
+            continue
+        endlay = j
+        subst = list()
+        p = find_token(document.body, "\\begin_layout Argument post:1", i, j)
+        if p != -1:
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            endInset = find_end_of_inset(document.body, p)
+            content = document.body[beginPlain + 1 : endPlain]
+            # Adjust range end
+            endlay = endlay - len(document.body[p : endInset + 1])
+            # Remove arg inset
+            del document.body[p : endInset + 1]
+            subst += put_cmd_in_ert("}{") + content
+        else:
+            subst += put_cmd_in_ert("}{")
+                    
+        document.body[j : j] = subst + document.body[j : j]
+        i = endlay
+
 
 ##
 # Conversion hub
@@ -2945,10 +3021,12 @@ convert = [
            [452, [convert_beamerblocks]],
            [453, [convert_use_stmaryrd]],
            [454, [convert_overprint]],
-           [455, []]
+           [455, []],
+           [456, [convert_epigraph]]
           ]
 
 revert =  [
+           [455, [revert_epigraph]],
            [454, [revert_frametitle]],
            [453, [revert_overprint]],
            [452, [revert_use_stmaryrd]],

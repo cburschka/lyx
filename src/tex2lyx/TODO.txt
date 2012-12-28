@@ -96,6 +96,7 @@ Format LaTeX feature                        LyX feature
        \end{overprint}
 455    beamer frametitle command            \begin_layout FrameTitle
        \frametitle<overlay>[short}{long}
+456    memoir: \epigraph{text}{source}      layout Epigraph, InsetArgument
 
 
 General

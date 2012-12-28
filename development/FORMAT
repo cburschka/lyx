@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2012-12-28 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 456: Proper support for memoir \epigraph
+	  \epigraph{text}{source} > begin_layout Epigraph, <source> as
+	  InsetArgument post:1
+
 2012-12-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 455: Support for beamer \frametitle
 	  \frametitle<overlay>[short]{title} > begin_layout FrameTitle

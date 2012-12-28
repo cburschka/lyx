@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 455 // spitz: support for beamer FrameTitle layout
-#define LYX_FORMAT_TEX2LYX 455 // spitz: support for beamer FrameTitle layout
+#define LYX_FORMAT_LYX 456 // spitz: proper support for memoir epigraph
+#define LYX_FORMAT_TEX2LYX 456 // spitz: proper support for memoir epigraph
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER
