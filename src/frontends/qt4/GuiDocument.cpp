@@ -1732,19 +1732,19 @@ void GuiDocument::updateFontlist()
 		QString font = qt_(tex_fonts_roman_gui[n]);
 		if (!isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsRomanCO->addItem(font, qt_(tex_fonts_roman[n]));
+		fontModule->fontsRomanCO->addItem(font, toqstr(tex_fonts_roman[n]));
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
 		QString font = qt_(tex_fonts_sans_gui[n]);
 		if (!isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsSansCO->addItem(font, qt_(tex_fonts_sans[n]));
+		fontModule->fontsSansCO->addItem(font, toqstr(tex_fonts_sans[n]));
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
 		QString font = qt_(tex_fonts_monospaced_gui[n]);
 		if (!isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
-		fontModule->fontsTypewriterCO->addItem(font, qt_(tex_fonts_monospaced[n]));
+		fontModule->fontsTypewriterCO->addItem(font, toqstr(tex_fonts_monospaced[n]));
 	}
 }
 
