@@ -32,6 +32,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -4695,6 +4696,31 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			break;
 		}
+		return true;
+	}
+
+	case LFUN_CAPTION_INSERT: {
+		// caption is only allowed in caption cell of longtable
+		if (!tabular.ltCaption(tabular.cellRow(cur.idx()))) {
+			status.setEnabled(false);
+			return true;
+		}
+		// check if there is already a caption
+		bool have_caption = false;
+		InsetTableCell itc = InsetTableCell(*tabular.cellInset(cur.idx()).get());
+		ParagraphList::const_iterator pit = itc.paragraphs().begin();
+		ParagraphList::const_iterator pend = itc.paragraphs().end();
+		for (; pit != pend; ++pit) {
+			InsetList::const_iterator it  = pit->insetList().begin();
+			InsetList::const_iterator end = pit->insetList().end();
+			for (; it != end; ++it) {
+				if (it->inset->lyxCode() == CAPTION_CODE) {
+					have_caption = true;
+					break;
+				}
+			}
+		}
+		status.setEnabled(!have_caption);
 		return true;
 	}
 
