@@ -1625,6 +1625,7 @@ dist_layouts_DATA =\
 	layouts/amsbook.layout \
 	layouts/amsdefs.inc \
 	layouts/apa.layout \
+	layouts/apa6.layout \
 	layouts/arab-article.layout \
 	layouts/article.layout \
 	layouts/article-beamer.layout \
@@ -1716,6 +1717,7 @@ dist_layouts_DATA =\
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
 	layouts/natbib.module \
+	layouts/natbibapa.module \
 	layouts/noweb.module \
 	layouts/numarticle.inc \
 	layouts/numreport.inc \
@@ -1839,6 +1841,7 @@ dist_templates_DATA = \
 	templates/AGUTeX.lyx \
 	templates/AGU_article.lyx \
 	templates/APA.lyx \
+	templates/APA6.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
 	templates/ctex.lyx \
 	templates/de_beamer-conference-ornate-20min.lyx \
