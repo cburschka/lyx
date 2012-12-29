@@ -32,6 +32,10 @@
 // standard C++ with new header file names and std:: namespace
 #include <iostream>
 #include <fstream>
+#include <QtCore>
+#if (defined Q_OS_WIN && QT_VERSION >= 0x050000)
+#define Z_PREFIX 1
+#endif
 #include <zlib.h>
 
 // For LyX
