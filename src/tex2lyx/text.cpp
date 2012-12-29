@@ -1839,7 +1839,7 @@ void get_cite_arguments(Parser & p, bool natbibOrder,
 /// can understand
 string const normalize_filename(string const & name)
 {
-	Parser p(trim(name, "\""));
+	Parser p(name);
 	ostringstream os;
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -1853,10 +1853,29 @@ string const normalize_filename(string const & name)
 		} else if (t.cs() == "space") {
 			os << ' ';
 			p.skip_spaces();
+		} else if (t.cs() == "string") {
+			// Convert \string" to " and \string~ to ~
+			Token const & n = p.next_token();
+			if (n.asInput() != "\"" && n.asInput() != "~")
+				os << t.asInput();
 		} else
 			os << t.asInput();
 	}
-	return os.str();
+	// Strip quotes. This is a bit complicated (see latex_path()).
+	string full = os.str();
+	if (!full.empty() && full[0] == '"') {
+		string base = removeExtension(full);
+		string ext = getExtension(full);
+		if (!base.empty() && base[base.length()-1] == '"')
+			// "a b"
+			// "a b".tex
+			return addExtension(trim(base, "\""), ext);
+		if (full[full.length()-1] == '"')
+			// "a b.c"
+			// "a b.c".tex
+			return trim(full, "\"");
+	}
+	return full;
 }
 
 
@@ -3925,6 +3944,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				registerExternalTemplatePackages("XFig");
 			} else {
 				begin_command_inset(os, "include", name);
+				outname = subst(outname, "\"", "\\\"");
 				os << "preview false\n"
 				      "filename \"" << outname << "\"\n";
 				if (t.cs() == "verbatiminput")

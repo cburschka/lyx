@@ -24,6 +24,8 @@ TEST_FILES = \
 	test/box-color-size-space-align.tex \
 	test/CJK.tex \
 	test/DummyDocument.tex \
+	test/Dummy~Document.tex \
+	test/Dummy\ Document.tex \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
