@@ -170,6 +170,12 @@ bool isAlnumASCII(char_type c)
 }
 
 
+bool isASCII(char_type c)
+{
+	return c < 0x80;
+}
+
+
 namespace support {
 
 int compare_no_case(docstring const & s, docstring const & s2)
@@ -403,14 +409,14 @@ bool isAscii(string const & str)
 
 char lowercase(char c)
 {
-	LASSERT(static_cast<unsigned char>(c) < 0x80, /**/);
+	LASSERT(isASCII(c), /**/);
 	return char(tolower(c));
 }
 
 
 char uppercase(char c)
 {
-	LASSERT(static_cast<unsigned char>(c) < 0x80, /**/);
+	LASSERT(isASCII(c), /**/);
 	return char(toupper(c));
 }
 

@@ -50,6 +50,9 @@ bool isDigitASCII(char_type c);
 /// return whether \p c is alpha or a digit in the ASCII range
 bool isAlnumASCII(char_type c);
 
+/// return whether \p c is in the ASCII range
+bool isASCII(char_type c);
+
 } // namespace lyx
 
 #endif // TEXTUTILS_H
