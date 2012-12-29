@@ -1,8 +1,9 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[apa6,apacite.sty,endfloat.sty,endnotes.sty,flushend.sty,txfonts.sty]{article (APA6)}
+#  \DeclareLaTeXClass[apa,apacite.sty,endfloat.sty,endnotes.sty,flushend.sty,txfonts.sty]{American Psychological Association (APA), v. 6}
+#  \DeclareCategory{Articles}
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
-Format 35
+Format 42
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -34,7 +35,7 @@ End
 
 
 Style Title
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             title
 	LatexType             Command
 	InTitle               1
@@ -47,7 +48,7 @@ End
 
 
 Style ShortTitle
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             shorttitle
 	LatexType             Command
 	InTitle               1
@@ -70,7 +71,7 @@ End
 
 
 Style Author
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             author
 	LatexType             Command
 	InTitle               1
@@ -86,7 +87,7 @@ End
 
 
 Style TwoAuthors
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             twoauthors
 	LatexType             Command
 	InTitle               1
@@ -94,7 +95,7 @@ End
 
 
 Style ThreeAuthors
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             threeauthors
 	LatexType             Command
 	InTitle               1
@@ -102,28 +103,28 @@ End
 
 
 Style FourAuthors
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             fourauthors
 	LatexType             Command
 	InTitle               1
 End
 
 Style FiveAuthors
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             fiveauthors
 	LatexType             Command
 	InTitle               1
 End
 
 Style SixAuthors
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             sixauthors
 	LatexType             Command
 	InTitle               1
 End
 
 Style LeftHeader
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             leftheader
 	LatexType             Command
 	InTitle               1
@@ -145,7 +146,7 @@ End
 
 
 Style Affiliation
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             affiliation
 	LatexType             Command
 	InTitle               1
@@ -166,35 +167,35 @@ Style Affiliation
 End
 
 Style TwoAffiliations
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             twoaffiliations
 	LatexType             Command
 	InTitle               1
 End
 
 Style ThreeAffiliations
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             threeaffiliations
 	LatexType             Command
 	InTitle               1
 End
 
 Style FourAffiliations
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             fouraffiliations
 	LatexType             Command
 	InTitle               1
 End
 
 Style FiveAffiliations
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             fiveaffiliations
 	LatexType             Command
 	InTitle               1
 End
 
 Style SixAffiliations
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             sixaffiliations
 	LatexType             Command
 	InTitle               1
@@ -202,7 +203,7 @@ End
 
 
 Style Note
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             note
 	LatexType             Command
 	InTitle               1
@@ -224,7 +225,7 @@ End
 
 
 Style Abstract
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             abstract
 	LatexType             Command
 	InTitle               1
@@ -246,7 +247,7 @@ Style Abstract
 End
 
 Style Keywords
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             keywords
 	LatexType             Command
 	InTitle               1
@@ -270,7 +271,7 @@ Style Keywords
 End
 
 Style AuthorNote
-    Category              FrontMatter
+	Category              FrontMatter
 	LatexName             authornote
 	LatexType             Command
 	InTitle               1
@@ -303,35 +304,35 @@ End
 
 
 Style Journal
-    Category              Preamble
+	Category              Preamble
 	LatexName             journal
 	LatexType             Command
-    InPreamble            1
+	InPreamble            1
 End
 
 
 Style Copyright
-    Category              Preamble
+	Category              Preamble
 	LatexName             ccoppy
 	LatexType             Command
-    InPreamble            1
+	InPreamble            1
 	Align                 Right
 End
 
 
 Style CopNum
-    Category              Preamble
+	Category              Preamble
 	LatexName             copnum
 	LatexType             Command
-    InPreamble            1
+	InPreamble            1
 	Align                 Right
 End
 
 Style Volume
-    Category              Preamble
+	Category              Preamble
 	LatexName             volume
 	LatexType             Command
-    InPreamble            1
+	InPreamble            1
 End
 
 Style ThickLine
@@ -355,7 +356,10 @@ Style CenteredCaption
 	Align                 Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
-	OptionalArgs          1
+	Argument 1
+		LabelString   "Short Title|S"
+		Tooltip       "The caption as it appears in the list of figures/tables"
+	EndArgument
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -403,7 +407,7 @@ Style Section
 	  Series              Bold
 	  Size                Huge
 	EndFont
-		TocLevel 1
+	TocLevel              1
 End
 
 
@@ -413,7 +417,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Larger
 	EndFont
-		TocLevel 2
+	TocLevel              2
 End
 
 
@@ -423,7 +427,7 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Large
 	EndFont
-		TocLevel 3
+	TocLevel              3
 End
 
 
@@ -433,7 +437,7 @@ Style Paragraph
 	  Series              Bold
 	  Size                Normal
 	EndFont
-		TocLevel 4
+	TocLevel              4
 End
 
 
@@ -444,12 +448,12 @@ Style Subparagraph
 	  Size                Normal
 	  Shape               Italic
 	EndFont
-		TocLevel 5
+	TocLevel              5
 End
 
 
 Style Itemize
-    Category              List
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             APAitemize
@@ -464,11 +468,15 @@ Style Itemize
 	AlignPossible         Block, Left
 	LabelType             Itemize
 	LabelString           "*"
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 
 Style Enumerate
-    Category              List
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             APAenumerate
@@ -484,11 +492,15 @@ Style Enumerate
 	AlignPossible         Block, Left
 	LabelType             Enumerate
 	RefPrefix             enu
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
 End
 
 
 Style Seriate
-    Category              List
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             seriate
@@ -508,4 +520,3 @@ Style Seriate
 	LabelStringAppendix   "(\alph{enumii})"
 	RefPrefix             ser
 End
-
