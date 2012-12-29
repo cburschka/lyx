@@ -6,13 +6,11 @@
 #         that works with both the natbib and apacite
 #         packages.
 #DescriptionEnd 
-#Requires:
-#Excludes:
 
-Format 35
+Format 42
 
 Preamble
-    \usepackage[natbibapa]{apacite}
+\usepackage[natbibapa]{apacite}
 EndPreamble
 
 Provides natbib 1
