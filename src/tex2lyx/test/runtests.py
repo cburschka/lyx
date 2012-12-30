@@ -70,7 +70,7 @@ def main(argv):
         else:
             lyxfile = os.path.join(outputdir, base + ".lyx")
             cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
-        proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+        proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         proc.wait()
         err = proc.returncode
         errorstring = proc.stderr.read()
