@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 42
+Format 43
 
 Provides stdinsets 1
 

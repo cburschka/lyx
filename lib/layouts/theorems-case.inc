@@ -6,7 +6,7 @@
 # Define Case as an enumeration environment
 # with its own counters
 
-Format 42
+Format 43
 
 Counter casei
         LabelString "Case \arabic{casei}."
