@@ -23,6 +23,7 @@ TEST_FILES = \
 	test/runtests.py \
 	test/box-color-size-space-align.tex \
 	test/CJK.tex \
+	test/CJKutf8.tex \
 	test/DummyDocument.tex \
 	test/Dummy~Document.tex \
 	test/Dummy\ Document.tex \

@@ -1343,7 +1343,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetMathGrid grid(buffer_, 1, 1);
 		if (!topaste.empty())
-			if ((topaste.size() == 1 && topaste.at(0) < 0x80)
+			if ((topaste.size() == 1 && isAscii(topaste))
 			    || !mathed_parse_normal(grid, topaste, parseflg)) {
 				resetGrid(grid);
 				mathed_parse_normal(grid, topaste, parseflg | Parse::VERBATIM);

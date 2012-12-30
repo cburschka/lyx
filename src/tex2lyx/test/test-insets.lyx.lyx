@@ -92,11 +92,11 @@ Title
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 %stupid stuff
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -577,13 +577,13 @@ key "article-crossref"
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % Remove duplicate call of 
 \backslash
 bibliography since LaTeX throws an error.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -593,13 +593,13 @@ bibliography since LaTeX throws an error.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 %
 \backslash
 bibliographystyle{unsrt}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -609,13 +609,13 @@ bibliographystyle{unsrt}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % 
 \backslash
 bibliography{xampl}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1248,7 +1248,7 @@ textbackslash etc.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 let
@@ -1264,7 +1264,7 @@ textsf
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 let
@@ -1280,7 +1280,7 @@ textsf
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 let
@@ -1296,7 +1296,7 @@ texttt
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 providecommand{
@@ -1336,7 +1336,7 @@ LINE!!!!
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 kill
@@ -1584,7 +1584,7 @@ of the table
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -1596,7 +1596,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1606,7 +1606,7 @@ longtable
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1636,7 +1636,7 @@ same way as in the
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -1648,7 +1648,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1658,7 +1658,7 @@ tabular
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1688,7 +1688,7 @@ environment.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -1700,7 +1700,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1710,7 +1710,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1749,7 +1749,7 @@ Each row ends with a
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -1761,7 +1761,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1775,7 +1775,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1796,7 +1796,7 @@ The
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -1808,7 +1808,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1822,7 +1822,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1872,7 +1872,7 @@ the
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -1884,7 +1884,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1894,7 +1894,7 @@ tabular
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -1924,7 +1924,7 @@ environment.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -1936,7 +1936,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -1950,7 +1950,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2060,7 +2060,7 @@ Also
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2072,7 +2072,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2084,7 +2084,7 @@ hline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2103,7 +2103,7 @@ as in
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -2115,7 +2115,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2125,7 +2125,7 @@ tabular
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2146,7 +2146,7 @@ That was a
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2158,7 +2158,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2170,7 +2170,7 @@ hline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2200,7 +2200,7 @@ That was
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2212,7 +2212,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2226,7 +2226,7 @@ hline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2256,7 +2256,7 @@ This is a
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2268,7 +2268,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2280,7 +2280,7 @@ multicolumn{2}{||c||}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2306,7 +2306,7 @@ If a page break occurs at a
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2318,7 +2318,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2330,7 +2330,7 @@ hline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2380,7 +2380,7 @@ The
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2392,7 +2392,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2402,7 +2402,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2412,7 +2412,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -2424,7 +2424,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2434,7 +2434,7 @@ tabular
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2473,7 +2473,7 @@ The optional argument may be one of
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -2485,7 +2485,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2495,7 +2495,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -2965,7 +2965,7 @@ Some lines may take up a lot of space, like this:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 raggedleft
@@ -2998,7 +2998,7 @@ will never break a page within such a row. Page breaks only occur between rows o
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 code
@@ -3010,7 +3010,7 @@ code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -3022,7 +3022,7 @@ hline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -3229,7 +3229,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 env
@@ -3241,7 +3241,7 @@ env
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -3251,7 +3251,7 @@ longtable
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -3320,7 +3320,7 @@ From bug 7412 another example with more captions (can currently not produced in
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -3391,7 +3391,7 @@ A long table -- continued
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -3401,7 +3401,7 @@ Continued on next page
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -4274,11 +4274,11 @@ A table*:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % some comment
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4371,7 +4371,7 @@ Special booktabs-table
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 centering
@@ -4383,7 +4383,7 @@ centering
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -4450,7 +4450,7 @@ Chip
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 cmidrule
@@ -4462,7 +4462,7 @@ cmidrule
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -4472,7 +4472,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -4482,7 +4482,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 cmidrule
@@ -4494,7 +4494,7 @@ cmidrule
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -4504,7 +4504,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -4514,7 +4514,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 morecmidrules
@@ -4526,7 +4526,7 @@ morecmidrules
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 cmidrule
@@ -4538,7 +4538,7 @@ cmidrule
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -4548,7 +4548,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -4714,7 +4714,7 @@ MTF at
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 morecmidrules
@@ -4726,7 +4726,7 @@ morecmidrules
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 cmidrule
@@ -4738,7 +4738,7 @@ cmidrule
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -4748,7 +4748,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -4872,7 +4872,7 @@ Macros
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -4902,7 +4902,7 @@ LyX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 providecommand{
@@ -4916,7 +4916,7 @@ macroe}[1]{e #1 e}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 providecommand*{
@@ -4940,7 +4940,7 @@ macrof}[1]{f #1 f}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 newcommand*{
@@ -4954,7 +4954,7 @@ macroi}[1]{i #1 i}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 renewcommand*{
@@ -4968,7 +4968,7 @@ macroi}[1]{j #1 j}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 providecommandx{
@@ -4982,7 +4982,7 @@ macrok}[1]{k #1 k}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 providecommandx*{
@@ -5006,7 +5006,7 @@ macrok}[1]{l #1 l}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 newcommandx*{
@@ -5020,7 +5020,7 @@ macroo}[1]{o #1 o}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 renewcommandx*{
@@ -5034,7 +5034,7 @@ macroo}[1]{p #1 p}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 DeclareRobustCommand{
@@ -5048,7 +5048,7 @@ macroq}[1]{q #1 q}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 DeclareRobustCommand*{
@@ -5062,7 +5062,7 @@ macror}[1]{r #1 r}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 DeclareRobustCommandx{
@@ -5076,7 +5076,7 @@ macros}[1]{s #1 s}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 DeclareRobustCommandx*{
@@ -5094,7 +5094,7 @@ Now use them all:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroa
@@ -5106,7 +5106,7 @@ macroa
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -5116,7 +5116,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5126,7 +5126,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrob
@@ -5138,7 +5138,7 @@ macrob
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -5148,7 +5148,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5158,7 +5158,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroc
@@ -5170,7 +5170,7 @@ macroc
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -5180,7 +5180,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5190,7 +5190,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrod
@@ -5202,7 +5202,7 @@ macrod
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -5212,7 +5212,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5222,7 +5222,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroe{
@@ -5234,7 +5234,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5244,7 +5244,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrof{
@@ -5256,7 +5256,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5266,7 +5266,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrog{
@@ -5278,7 +5278,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5288,7 +5288,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroi{
@@ -5300,7 +5300,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5310,7 +5310,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrok{
@@ -5322,7 +5322,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5332,7 +5332,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macrom{
@@ -5344,7 +5344,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5354,7 +5354,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroo{
@@ -5366,7 +5366,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5376,7 +5376,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macroq{
@@ -5388,7 +5388,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5398,7 +5398,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 macror{
@@ -5410,7 +5410,7 @@ x
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -5420,7 +5420,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 %
 \backslash
 macros{x} 
@@ -5428,7 +5428,7 @@ macros{x}
 macrot{x}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -5456,7 +5456,7 @@ Special formattings
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5729,7 +5729,7 @@ They can also or be broken by a newline
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 
@@ -5743,7 +5743,7 @@ or by a newline with space, comment and argument
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 
@@ -5765,7 +5765,7 @@ or by a defined line break
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 linebreak[4]
@@ -5781,7 +5781,7 @@ There are even newlines with weird arguments, but these are not handled by
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5791,7 +5791,7 @@ LyX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 
@@ -5831,7 +5831,7 @@ or by a defined page break
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 pagebreak[4]
@@ -5865,7 +5865,7 @@ Then one has those macros with a long name for a short meaning, like ~, ^ or
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX
 \end_layout
 
@@ -5882,7 +5882,7 @@ nation mark, ellipsis\SpecialChar \ldots{}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5898,7 +5898,7 @@ fy ligature break.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5908,7 +5908,7 @@ LyX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5918,7 +5918,7 @@ LyX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 TeX
 \end_layout
 
@@ -5928,7 +5928,7 @@ TeX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX
 \end_layout
 
@@ -5938,7 +5938,7 @@ LaTeX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX
 \end_layout
 
@@ -5948,7 +5948,7 @@ LaTeX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -5958,7 +5958,7 @@ LyX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 TeX
 \end_layout
 
@@ -5968,7 +5968,7 @@ TeX
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX
 \end_layout
 
@@ -5986,7 +5986,7 @@ builtin ^ unicodesymbols ȷ user
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 mycommand
@@ -5998,7 +5998,7 @@ mycommand
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -6012,7 +6012,7 @@ builtin ^ unicodesymbols ȷ user
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 mycommand
@@ -6024,7 +6024,7 @@ mycommand
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -6038,7 +6038,7 @@ builtin ^ unicodesymbols ȷ user
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 mycommand
@@ -6050,11 +6050,11 @@ mycommand
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % and another
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -6064,7 +6064,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -6156,7 +6156,7 @@ hello
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 settowidth{

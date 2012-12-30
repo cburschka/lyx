@@ -140,7 +140,7 @@ void InsetMathChar::write(WriteStream & os) const
 
 void InsetMathChar::validate(LaTeXFeatures & features) const
 {
-	if (char_ >= 0x80)
+	if (!isASCII(char_))
 		encodings.validate(char_, features, true);
 }
 

@@ -405,18 +405,18 @@ void Preamble::add_package(string const & name, vector<string> & options)
 
 namespace {
 
-// Given is a string like "scaled=0.9", return 0.9 * 100
-string const scale_as_percentage(string const & scale)
+// Given is a string like "scaled=0.9" or "Scale=0.9", return 0.9 * 100
+bool scale_as_percentage(string const & scale, string & percentage)
 {
 	string::size_type pos = scale.find('=');
 	if (pos != string::npos) {
 		string value = scale.substr(pos + 1);
-		if (isStrDbl(value))
-			return convert<string>(100 * convert<double>(value));
+		if (isStrDbl(value)) {
+			percentage = convert<string>(100 * convert<double>(value));
+			return true;
+		}
 	}
-	// If the input string didn't match our expectations.
-	// return the default value "100"
-	return "100";
+	return false;
 }
 
 
@@ -432,7 +432,8 @@ string remove_braces(string const & value)
 } // anonymous namespace
 
 
-Preamble::Preamble() : one_language(true), title_layout_found(false)
+Preamble::Preamble() : one_language(true), title_layout_found(false),
+	h_font_cjk_set(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -455,6 +456,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_font_osf                = "false";
 	h_font_sf_scale           = "100";
 	h_font_tt_scale           = "100";
+	//h_font_cjk
 	h_graphics                = "default";
 	h_default_output_format   = "default";
 	h_html_be_strict          = "false";
@@ -642,7 +644,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
-	string scale;
 	char const * const * where = 0;
 
 	if (is_known(name, known_xetex_packages)) {
@@ -673,9 +674,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans = name;
-		if (!opts.empty()) {
-			scale = opts;
-			h_font_sf_scale = scale_as_percentage(scale);
+		if (options.size() == 1) {
+			if (scale_as_percentage(opts, h_font_sf_scale))
+				options.clear();
 		}
 	}
 
@@ -685,9 +686,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// fourier as typewriter is handled in handling of \ttdefault
 		if (name != "fourier") {
 			h_font_typewriter = name;
-			if (!opts.empty()) {
-				scale = opts;
-				h_font_tt_scale = scale_as_percentage(scale);
+			if (options.size() == 1) {
+				if (scale_as_percentage(opts, h_font_tt_scale))
+					options.clear();
 			}
 		}
 	}
@@ -764,6 +765,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (h_inputencoding == "default")
 			h_inputencoding = "auto";
 		registerAutomaticallyLoadedPackage("CJK");
+	}
+
+	else if (name == "CJKutf8") {
+		h_inputencoding = "UTF8";
+		p.setEncoding(h_inputencoding);
+		registerAutomaticallyLoadedPackage("CJKutf8");
 	}
 
 	else if (name == "fontenc") {
@@ -1000,8 +1007,10 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
-	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
-	   << "\\graphics " << h_graphics << "\n"
+	   << "\\font_tt_scale " << h_font_tt_scale << '\n';
+	if (!h_font_cjk.empty())
+		os << "\\font_cjk " << h_font_cjk << '\n';
+	os << "\\graphics " << h_graphics << '\n'
 	   << "\\default_output_format " << h_default_output_format << "\n"
 	   << "\\output_sync " << h_output_sync << "\n";
 	if (h_output_sync == "1")
@@ -1212,9 +1221,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				if (pos != string::npos) {
 					string::size_type i = fontopts.find(',', pos);
 					if (i == string::npos)
-						scale = scale_as_percentage(fontopts.substr(pos + 1));
+						scale_as_percentage(fontopts.substr(pos + 1), scale);
 					else
-						scale = scale_as_percentage(fontopts.substr(pos, i - pos));
+						scale_as_percentage(fontopts.substr(pos, i - pos), scale);
 				}
 			}
 			if (t.cs() == "setsansfont") {
@@ -1666,7 +1675,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	// the babel options. Instead, we guess which language is used most
 	// and set this one.
 	default_language = h_language;
-	if (is_full_document && auto_packages.find("CJK") != auto_packages.end()) {
+	if (is_full_document &&
+	    (auto_packages.find("CJK") != auto_packages.end() ||
+	     auto_packages.find("CJKutf8") != auto_packages.end())) {
 		p.pushPosition();
 		h_language = guessLanguage(p, default_language);
 		p.popPosition();

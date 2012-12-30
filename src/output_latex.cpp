@@ -33,6 +33,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <algorithm>
 #include <boost/next_prior.hpp>
@@ -744,7 +745,7 @@ void TeXOnePar(Buffer const & buf,
 				par.getFontSettings(bparams, i).language()->encoding();
 			if (encoding->package() != Encoding::CJK
 				&& runparams.encoding->package() == Encoding::inputenc
-				&& c < 0x80)
+				&& isASCII(c))
 				continue;
 			if (par.isInset(i))
 				break;

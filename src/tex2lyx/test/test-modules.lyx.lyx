@@ -92,7 +92,7 @@ The lemma is not recognized as a command provided by a module, since the preambl
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX
 \end_layout
 
@@ -112,7 +112,7 @@ The proof is recognized as a builtin style provided by the text class.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 begin{lem}
@@ -124,7 +124,7 @@ begin{lem}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 end{lem}

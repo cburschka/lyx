@@ -38,6 +38,12 @@ public:
 	std::string inputencoding() const { return h_inputencoding; }
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
+	///
+	bool fontCJKSet() const { return h_font_cjk_set; }
+	///
+	std::string fontCJK() const { return h_font_cjk; }
+	///
+	void fontCJK(std::string const & f) { h_font_cjk_set = true; h_font_cjk = f; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
@@ -123,6 +129,8 @@ private:
 	std::string h_font_osf;
 	std::string h_font_sf_scale;
 	std::string h_font_tt_scale;
+	bool h_font_cjk_set;
+	std::string h_font_cjk;
 	std::string h_graphics;
 	std::string h_default_output_format;
 	std::string h_html_be_strict;

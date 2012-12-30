@@ -519,6 +519,9 @@ void handle_ert(ostream & os, string const & s, Context & context)
 	// We must have a valid layout before outputting the ERT inset.
 	context.check_layout(os);
 	Context newcontext(true, context.textclass);
+	InsetLayout const & layout = context.textclass.insetLayout(from_ascii("ERT"));
+	if (layout.forcePlainLayout())
+		newcontext.layout = &context.textclass.plainLayout();
 	begin_inset(os, "ERT");
 	os << "\nstatus collapsed\n";
 	newcontext.check_layout(os);
@@ -540,6 +543,9 @@ void handle_comment(ostream & os, string const & s, Context & context)
 {
 	// TODO: Handle this better
 	Context newcontext(true, context.textclass);
+	InsetLayout const & layout = context.textclass.insetLayout(from_ascii("ERT"));
+	if (layout.forcePlainLayout())
+		newcontext.layout = &context.textclass.plainLayout();
 	begin_inset(os, "ERT");
 	os << "\nstatus collapsed\n";
 	newcontext.check_layout(os);
@@ -1440,7 +1446,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (name == "CJK") {
-		// the scheme is \begin{CJK}{encoding}{mapping}{text}
+		// the scheme is \begin{CJK}{encoding}{mapping}text\end{CJK}
 		// It is impossible to decide if a CJK environment was in its own paragraph or within
 		// a line. We therefore always assume a paragraph since the latter is a rare case.
 		eat_whitespace(p, os, parent_context, false);
@@ -1452,19 +1458,27 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// JIS does not work with LyX's encoding conversion
 		if (encoding != "Bg5" && encoding != "JIS" && encoding != "SJIS")
 			p.setEncoding(encoding);
-		else
+		else {
+			// FIXME: This will read garbage, since the data is not encoded in utf8.
 			p.setEncoding("utf8");
-		// LyX doesn't support the second argument so if
-		// this is used we need to output everything as ERT
-		string const mapping = p.getArg('{', '}');
+		}
+		// LyX only supports the same mapping for all CJK
+		// environments, so we might need to output everything as ERT
+		string const mapping = trim(p.getArg('{', '}'));
 		char const * const * const where =
 			is_known(encoding, supported_CJK_encodings);
-		if ((!mapping.empty() && mapping != " ") || !where) {
+		if (!preamble.fontCJKSet())
+			preamble.fontCJK(mapping);
+		bool knownMapping = mapping == preamble.fontCJK();
+		if (!knownMapping || !where) {
 			parent_context.check_layout(os);
 			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
 				       parent_context);
 			// we must parse the content as verbatim because e.g. JIS can contain
 			// normally invalid characters
+			// FIXME: This works only for the most simple cases.
+			//        Since TeX control characters are not parsed,
+			//        things like comments are completely wrong.
 			string const s = p.plainEnvironment("CJK");
 			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 				if (*it == '\\')

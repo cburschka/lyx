@@ -120,7 +120,7 @@ void InsetMathString::write(WriteStream & os) const
 		docstring command(1, c);
 		try {
 			bool termination = false;
-			if (c < 0x80 ||
+			if (isASCII(c) ||
 			    Encodings::latexMathChar(c, mathmode, os.encoding(), command, termination)) {
 				if (os.textMode()) {
 					if (in_forced_mode) {
@@ -129,12 +129,12 @@ void InsetMathString::write(WriteStream & os) const
 						os.textMode(false);
 						in_forced_mode = false;
 					}
-					if (c >= 0x80 && os.textMode()) {
+					if (!isASCII(c) && os.textMode()) {
 						os << "\\ensuremath{";
 						os.textMode(false);
 						in_forced_mode = true;
 					}
-				} else if (c < 0x80 && in_forced_mode) {
+				} else if (isASCII(c) && in_forced_mode) {
 					// we were inside \ensuremath
 					os << '}';
 					os.textMode(true);

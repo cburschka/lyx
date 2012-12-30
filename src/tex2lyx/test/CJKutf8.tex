@@ -1,0 +1,39 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{babel}
+
+% It is impossible to get the document language because the document could start with a command,
+% whitespace, and English word or whatever and the rest is in Japanese. Checking for the first CJK
+% environment is no solution because the document could be English and contain only some Japanese.
+
+\begin{document}
+ 
+\begin{CJK}{UTF8}{}%
+Japanese \end{CJK} \begin{CJK}{UTF8}{}Chinese traditional\end{CJK} \begin{CJK}{UTF8}{}
+Japanese \end{CJK}
+hello
+\begin{CJK}{UTF8}{}%
+Chinese simplified \end{CJK}\begin{CJK}{UTF8}{hei} Japanese \end{CJK} \begin{CJK}{UTF8}{}Chinese simplified
+\end{CJK}
+
+\begin{CJK}{UTF8}{}
+Big5 文鼎楷書
+\end{CJK}
+
+\inputencoding{latin9}%
+\selectlanguage{english}%
+English
+
+\begin{CJK}{UTF8}{}
+日本語の文章
+\end{CJK}
+
+hello
+
+\begin{CJK}{UTF8}{}%
+Korean
+\end{CJK}
+
+\end{document}

@@ -56,7 +56,7 @@ def main(argv):
     else:
         files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
              'test-modules.tex', 'box-color-size-space-align.tex', \
-             'CJK.tex', 'XeTeX-polyglossia.tex']
+             'CJK.tex', 'CJKutf8.tex', 'XeTeX-polyglossia.tex']
 
     errors = []
     overwrite = (outputdir == inputdir)

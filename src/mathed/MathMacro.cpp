@@ -732,7 +732,7 @@ void MathMacro::write(WriteStream & os) const
 	for (; i < cells_.size(); ++i) {
 		if (cell(i).size() == 1 
 			&& cell(i)[0].nucleus()->asCharInset()
-			&& cell(i)[0].nucleus()->asCharInset()->getChar() < 0x80) {
+			&& isASCII(cell(i)[0].nucleus()->asCharInset()->getChar())) {
 			if (first)
 				os << " ";
 			os << cell(i);

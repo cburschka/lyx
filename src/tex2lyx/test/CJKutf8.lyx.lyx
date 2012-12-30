@@ -5,33 +5,33 @@
 \textclass article
 \begin_preamble
 
+\usepackage{babel}
 
 
-
-
-
-
+% It is impossible to get the document language because the document could start with a command,
+% whitespace, and English word or whatever and the rest is in Japanese. Checking for the first CJK
+% environment is no solution because the document could be English and contain only some Japanese.
 
 
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
-\language british
+\language chinese-traditional
 \language_package default
-\inputencoding auto
-\fontencoding default
-\font_roman Linux Libertine O
-\font_sans Linux Biolinum O
-\font_typewriter Linux Biolinum O
+\inputencoding UTF8
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
 \font_math auto
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 75
+\font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format pdf4
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -79,108 +79,94 @@
 
 \begin_body
 
-\begin_layout Part
+\begin_layout Standard
 
-\lang british
-df
+\lang chinese-traditional
+Japanese 
 \end_layout
 
 \begin_layout Standard
 
-\lang british
-1 English 
-\lang ancientgreek
-ancient Greek
-\lang british
- English 
+\lang chinese-traditional
+Chinese traditional
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+ Japanese 
+\end_layout
+
+\begin_layout Standard
+hello 
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+Chinese simplified 
+\end_layout
+
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-textgreek[numerals=arabic, variant=ancient]
+begin{CJK}{UTF8}{hei}
 \end_layout
 
 \end_inset
 
-
+ Japanese 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-{
-\end_layout
 
-\end_inset
-
-ancient G
-\family sans
-reek
-\family default
- with Arabic numerals
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- English
-\end_layout
-
-\begin_layout Part
-
-\lang albanian
-df
-\end_layout
-
-\begin_layout Standard
-
-\lang albanian
-2 Albanian 
-\lang greek
-Greek
-\lang albanian
- Albanian 
-\shape smallcaps
-smallcaps
-\shape default
-
-\end_layout
-
-\begin_layout Part
-
-\lang hebrew
-df
-\end_layout
-
-\begin_layout Standard
-
-\lang hebrew
-3 Hebrew
-\end_layout
-
-\begin_layout Standard
-
-\lang hebrew
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-%empty language paragraph
-\end_layout
-
-\begin_layout Plain Layout
-
+\backslash
+end{CJK}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+Chinese simplified 
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+ Big5 文鼎楷書 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+English
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+ 日本語の文章 
+\end_layout
+
+\begin_layout Standard
+hello
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+Korean 
 \end_layout
 
 \end_body

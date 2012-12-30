@@ -62,6 +62,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include "frontends/FontLoader.h"
 
@@ -588,7 +589,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 
 bool isAsciiOrMathAlpha(char_type c)
 {
-	return c < 0x80 || Encodings::isMathAlpha(c);
+	return isASCII(c) || Encodings::isMathAlpha(c);
 }
 
 

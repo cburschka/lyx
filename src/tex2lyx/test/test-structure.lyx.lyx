@@ -118,11 +118,11 @@ Title
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 % this should be recognized as empty date:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -162,7 +162,7 @@ An environment...
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 begin{foo}
@@ -174,7 +174,7 @@ begin{foo}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 end{foo}
@@ -338,7 +338,7 @@ rotated table, spanning all columns
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 centering
@@ -350,7 +350,7 @@ centering
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -516,7 +516,7 @@ fdg
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 centering
@@ -528,7 +528,7 @@ centering
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {}
 \end_layout
 
@@ -896,7 +896,7 @@ BCD second one
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 x y z
 \end_layout
 
@@ -910,11 +910,11 @@ x y z
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 x y % bla
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 z
 \end_layout
 
@@ -951,7 +951,7 @@ label
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 $
 \backslash
 left[
@@ -1004,7 +1004,7 @@ zzz \backslash section{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 verb~
@@ -1018,7 +1018,7 @@ verb~
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 verb+
@@ -1032,7 +1032,7 @@ item[ABC] first item+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 verb+something
@@ -1087,11 +1087,11 @@ The Müller Book
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 %dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
