@@ -2528,11 +2528,21 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		break;
 	}
-	case LFUN_CAPTION_INSERT:
+	case LFUN_CAPTION_INSERT: {
 		code = CAPTION_CODE;
-		// not allowed in description items
-		enable = !inDescriptionItem(cur);
+		bool varia = true;
+		if (cur.depth() > 0) {
+			if (&cur[cur.depth() - 1].inset()
+			    && !cur[cur.depth() - 1].inset().allowsCaptionVariation())
+				varia = false;
+		}
+		string arg = cmd.getArg(0);
+		// not allowed in description items,
+		// and in specific insets
+		enable = !inDescriptionItem(cur)
+			&& (varia || arg.empty() || arg == "Standard");
 		break;
+	}
 	case LFUN_NOTE_INSERT:
 		code = NOTE_CODE;
 		// in commands (sections etc.) and description items,

@@ -60,7 +60,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 42; // spitz: new Style tag ItemCommand
+int const LAYOUT_FORMAT = 43; // spitz: extended InsetCaption format
 
 namespace {
 

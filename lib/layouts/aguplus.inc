@@ -203,21 +203,18 @@ Float
 End
 
 
-
-Style Table_Caption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             tablecaption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	LabelType             Sensitive
-	LabelString           "TableCaption"
-	LabelFont
-	  Series              Bold
-	EndFont
+InsetLayout Caption:Table
+	LabelString          table
+	LaTeXType            command
+	LatexName            tablecaption
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
 
 

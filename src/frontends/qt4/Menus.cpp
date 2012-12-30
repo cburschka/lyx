@@ -178,8 +178,14 @@ public:
 		    for insertion into the current layout. */
 		Arguments,
 		/** This is the list of arguments available
-		    for in the InsetArgument context menu. */
-		SwitchArguments
+		    in the InsetArgument context menu. */
+		SwitchArguments,
+		/** This is the list of captions available
+		in the current layout. */
+		Captions,
+		/** This is the list of captions available
+		in the InsetCaption context menu. */
+		SwitchCaptions
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -356,6 +362,7 @@ public:
 	void expandSpellingSuggestions(BufferView const *);
 	void expandLanguageSelector(Buffer const * buf);
 	void expandArguments(BufferView const *, bool switcharg = false);
+	void expandCaptions(Buffer const * buf, bool switchcap = false);
 	///
 	ItemList items_;
 	///
@@ -465,13 +472,16 @@ void MenuDefinition::read(Lexer & lex)
 		md_spellingsuggestions,
 		md_languageselector,
 		md_arguments,
-		md_switcharguments
+		md_switcharguments,
+		md_captions,
+		md_switchcaptions
 	};
 
 	LexerKeyword menutags[] = {
 		{ "arguments", md_arguments },
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
+		{ "captions", md_captions },
 		{ "charstyles", md_charstyles },
 		{ "citestyles", md_citestyles },
 		{ "custom", md_custom },
@@ -497,6 +507,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "spellingsuggestions", md_spellingsuggestions },
 		{ "submenu", md_submenu },
 		{ "switcharguments", md_switcharguments },
+		{ "switchcaptions", md_switchcaptions },
 		{ "toc", md_toc },
 		{ "toolbars", md_toolbars },
 		{ "updateformats", md_updateformats },
@@ -634,6 +645,14 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_switcharguments:
 			add(MenuItem(MenuItem::SwitchArguments));
+			break;
+
+		case md_captions:
+			add(MenuItem(MenuItem::Captions));
+			break;
+
+		case md_switchcaptions:
+			add(MenuItem(MenuItem::SwitchCaptions));
 			break;
 
 		case md_optsubmenu:
@@ -1577,6 +1596,58 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 	}
 }
 
+
+void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
+{
+	if (!buf)
+		return;
+
+	vector<docstring> caps;
+	DocumentClass const & dc = buf->params().documentClass();
+	TextClass::InsetLayouts::const_iterator lit = dc.insetLayouts().begin();
+	TextClass::InsetLayouts::const_iterator len = dc.insetLayouts().end();
+	for (; lit != len; ++lit) {
+		if (prefixIs(lit->first, from_ascii("Caption:")))
+			caps.push_back(lit->first);
+	}
+
+	if (caps.empty() || (switchcap && caps.size() == 1))
+		return;
+	if (caps.size() == 1) {
+		docstring dummy;
+		docstring type = split(*caps.begin(), dummy, ':');
+		add(MenuItem(MenuItem::Command, qt_("Caption"),
+			 FuncRequest(LFUN_CAPTION_INSERT, translateIfPossible(type))));
+		return;
+	}
+
+	MenuDefinition captions;
+
+	vector<docstring>::const_iterator cit = caps.begin();
+	vector<docstring>::const_iterator end = caps.end();
+
+	for (int ii = 1; cit != end; ++cit, ++ii) {
+		docstring dummy;
+		docstring type = split(*cit, dummy, ':');
+		docstring item = bformat(_("Caption (%1$s)"), translateIfPossible(type));
+			if (switchcap)
+				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(item),
+					     FuncRequest(LFUN_INSET_MODIFY,
+							 from_ascii("changetype ")
+							 + type), QString(), true));
+			else
+				captions.addWithStatusCheck(MenuItem(MenuItem::Command,
+								     toqstr(item),
+								     FuncRequest(LFUN_CAPTION_INSERT,
+								     type), QString(), true));
+	}
+	if (!captions.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("Caption"));
+		item.setSubmenu(captions);
+		add(item);
+	}
+}
+
 } // namespace anon
 
 
@@ -1721,7 +1792,7 @@ struct Menus::Impl {
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats, Branches,
-	    Indices, Arguments, SwitchArguments
+	    Indices, Arguments, SwitchArguments, Captions, Switchcaptions
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -1948,6 +2019,14 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::SwitchArguments:
 			tomenu.expandArguments(bv, true);
+			break;
+
+		case MenuItem::Captions:
+			tomenu.expandCaptions(buf, false);
+			break;
+
+		case MenuItem::SwitchCaptions:
+			tomenu.expandCaptions(buf, true);
 			break;
 
 		case MenuItem::Submenu: {

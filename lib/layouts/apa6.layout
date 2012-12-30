@@ -345,26 +345,23 @@ End
 
 Input stdlayouts.inc
 
-Style CenteredCaption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	LabelType             Sensitive
-	LabelString           "Senseless!"
+
+InsetLayout Caption:Centered
+	LabelString          standard
+	LaTeXType            command
+	LatexName            centeredcaption
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
-	LabelFont
-	  Series              Bold
-	EndFont
-	LatexName             centeredcaption
-	Align                 Center
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
 
 

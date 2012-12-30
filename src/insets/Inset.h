@@ -347,6 +347,8 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// can we click at the specified position ?
 	virtual bool clickable(int, int) const { return false; }
+	/// Move one cell backwards
+	virtual bool allowsCaptionVariation() const { return false; }
 
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }

@@ -224,8 +224,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			return new InsetTabular(buf, r, c);
 		}
 
-		case LFUN_CAPTION_INSERT:
-			return new InsetCaption(buf);
+		case LFUN_CAPTION_INSERT: {
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "Standard";
+			return new InsetCaption(buf, arg);
+		}
 
 		case LFUN_INDEX_PRINT:  {
 			InsetCommandParams icp(INDEX_PRINT_CODE);
@@ -632,7 +636,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			string tmptok = lex.getString();
 			inset.reset(new InsetWrap(buf, tmptok));
 		} else if (tmptok == "Caption") {
-			inset.reset(new InsetCaption(buf));
+			lex.eatLine();
+			string s = lex.getString();
+			inset.reset(new InsetCaption(buf, s));
 		} else if (tmptok == "Index") {
 			inset.reset(new InsetIndex(buf, InsetIndexParams()));
 		} else if (tmptok == "FloatList") {

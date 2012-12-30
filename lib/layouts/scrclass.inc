@@ -260,49 +260,42 @@ End
 
 Input stdlayouts.inc
 
-Style Captionabove
-	Category              Captions
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	LabelType             Sensitive
-	LabelString           "Senseless!"
+
+InsetLayout Caption:Above
+	LabelString          above
+	LaTeXType            command
+	LatexName            captionabove
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
-	LabelFont
-	  Series              Bold
-	EndFont
-	LatexName            captionabove
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
 
 
-Style Captionbelow
-	Category              Captions
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	LabelType             Sensitive
-	LabelString           "Senseless!"
+InsetLayout Caption:Below
+	LabelString          below
+	LaTeXType            command
+	LatexName            captionbelow
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 	EndArgument
-	LabelFont
-	  Series              Bold
-	EndFont
-	LatexName            captionbelow
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
 
 

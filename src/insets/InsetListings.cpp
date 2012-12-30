@@ -335,9 +335,12 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_INSET_DIALOG_UPDATE:
 			status.setEnabled(true);
 			return true;
-		case LFUN_CAPTION_INSERT:
-			status.setEnabled(!params().isInline());
-			return true;
+		case LFUN_CAPTION_INSERT: {
+			if (params().isInline()) {
+				status.setEnabled(false);
+				return true;
+			}
+		}
 		default:
 			return InsetCollapsable::getStatus(cur, cmd, status);
 	}

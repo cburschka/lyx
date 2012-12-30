@@ -67,6 +67,8 @@ public:
 	void setNewLabel();
 	///
 	InsetFloatParams const & params() const { return params_; }
+	///
+	bool allowsCaptionVariation() const { return !params_.subfloat; }
 private:
 	///
 	docstring layoutName() const;

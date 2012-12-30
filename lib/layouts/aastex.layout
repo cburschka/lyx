@@ -614,22 +614,24 @@ InsetLayout "Flex:tablenotemark"
 End
 
 
-Style FigCaption
-	Margin		First_Dynamic
-	LatexType	Command
-	LatexName	figcaption
-	LabelSep	xx
-	ParSkip		0.4
-	TopSep		0.5
-	Align		Block
-	AlignPossible	Block, Left
-	LabelType	Static
-	LabelString	"Fig. ---"
+InsetLayout Caption:FigCaption
+	LabelString          fig.
+	LaTeXType            command
+	LatexName            figcaption
 	Argument 1
-	  LabelString	"Short Title|S"
-	  Tooltip	"The caption as it appears in the list of figures"
+	    LabelString   "Short Title|S"
+	    Tooltip       "The caption as it appears in the list of figures"
 	EndArgument
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
+
 
 # Facility style definition
 Style Facility

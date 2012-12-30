@@ -91,6 +91,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     NameRE = re.compile(r'^\s*#\s*\\DeclareLyXModule.*{(.*)}$', re.IGNORECASE)
     InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?\s*$', re.IGNORECASE)
     FlexCheck = re.compile(r'^Flex:(.*)', re.IGNORECASE)
+    CaptionCheck = re.compile(r'^Caption:(.*)', re.IGNORECASE)
     DescBegin = re.compile(r'^\s*#DescriptionBegin\s*$', re.IGNORECASE)
     DescEnd = re.compile(r'^\s*#\s*DescriptionEnd\s*$', re.IGNORECASE)
     Category = re.compile(r'^\s*#\s*Category:\s+(.*\S)\s*$', re.IGNORECASE)
@@ -287,6 +288,11 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 #if not layouttranslations:
                 #    writeString(out, src, base, lineno, string)
                 m = FlexCheck.search(string)
+                if m:
+                    if not layouttranslations:
+                        writeString(out, src, base, lineno, m.group(1))
+                continue
+                m = CaptionCheck.search(string)
                 if m:
                     if not layouttranslations:
                         writeString(out, src, base, lineno, m.group(1))

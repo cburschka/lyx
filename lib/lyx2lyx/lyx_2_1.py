@@ -3017,6 +3017,154 @@ def revert_epigraph(document):
         i = endlay
 
 
+def convert_captioninsets(document):
+    " Converts caption insets to new syntax "
+    
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Caption", i)
+      if i == -1:
+          return
+      document.body[i] = "\\begin_inset Caption Standard"
+      i = i + 1
+        
+
+
+def revert_captioninsets(document):
+    " Reverts caption insets to old syntax "
+    
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Caption Standard", i)
+      if i == -1:
+          return
+      document.body[i] = "\\begin_inset Caption"
+      i = i + 1
+
+
+def convert_captionlayouts(document):
+    " Convert caption layouts to caption insets. "
+    
+    caption_dict = {
+        "Captionabove":  "Above",
+        "Captionbelow":  "Below",
+        "FigCaption"  :  "FigCaption",
+        "Table_Caption" :  "Table",
+        "CenteredCaption" : "Centered",
+        "Bicaption" : "Bicaption",
+        }
+    
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_layout", i)
+        if val in caption_dict.keys():
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Missing `\\end_layout'.")
+                return
+
+            document.body[j:j] = ["\\end_layout", "", "\\end_inset", "", ""]
+            document.body[i:i+1] = ["\\begin_layout %s" % document.default_layout,
+                                    "\\begin_inset Caption %s" % caption_dict[val], "",
+                                    "\\begin_layout %s" % document.default_layout]
+        i = i + 1
+
+
+def revert_captionlayouts(document):
+    " Revert caption insets to caption layouts. "
+    
+    caption_dict = {
+        "Above" : "Captionabove",
+        "Below" : "Captionbelow",
+        "FigCaption"  :  "FigCaption",
+        "Table" : "Table_Caption",
+        "Centered" : "CenteredCaption",
+        "Bicaption" : "Bicaption",
+        }
+    
+    i = 0
+    rx = re.compile(r'^\\begin_inset Caption (\S+)$')
+    while True:
+        i = find_token(document.body, "\\begin_inset Caption", i)
+        if i == -1:
+            return
+
+        m = rx.match(document.body[i])
+        val = ""
+        if m:
+            val = m.group(1)
+        if val not in caption_dict.keys():
+            i = i + 1
+            continue
+        
+        # We either need to delete the previous \begin_layout line, or we
+        # need to end the previous layout if this inset is not in the first
+        # position of the paragraph.
+        layout_before = find_token_backwards(document.body, "\\begin_layout", i)
+        if layout_before == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout'.")
+            return
+        layout_line = document.body[layout_before]
+        del_layout_before = True
+        l = layout_before + 1
+        while l < i:
+            if document.body[l] != "":
+                del_layout_before = False
+                break
+            l = l + 1
+        if del_layout_before:
+            del document.body[layout_before:i]
+            i = layout_before
+        else:
+            document.body[i:i] = ["\\end_layout", ""]
+            i = i + 2
+
+        # Find start of layout in the inset and end of inset
+        j = find_token(document.body, "\\begin_layout", i)
+        if j == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout'.")
+            return
+        k = find_end_of_inset(document.body, i)
+        if k == -1:
+            document.warning("Malformed LyX document: Missing `\\end_inset'.")
+            return
+
+        # We either need to delete the following \end_layout line, or we need
+        # to restart the old layout if this inset is not at the paragraph end.
+        layout_after = find_token(document.body, "\\end_layout", k)
+        if layout_after == -1:
+            document.warning("Malformed LyX document: Missing `\\end_layout'.")
+            return
+        del_layout_after = True
+        l = k + 1
+        while l < layout_after:
+            if document.body[l] != "":
+                del_layout_after = False
+                break
+            l = l + 1
+        if del_layout_after:
+            del document.body[k+1:layout_after+1]
+        else:
+            document.body[k+1:k+1] = [layout_line, ""]
+
+        # delete \begin_layout and \end_inset and replace \begin_inset with
+        # "\begin_layout XXX". This works because we can only have one
+        # paragraph in the caption inset: The old \end_layout will be recycled.
+        del document.body[k]
+        if document.body[k] == "":
+            del document.body[k]
+        del document.body[j]
+        if document.body[j] == "":
+            del document.body[j]
+        document.body[i] = "\\begin_layout %s" % caption_dict[val]
+        if document.body[i+1] == "":
+            del document.body[i+1]
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -3066,10 +3214,12 @@ convert = [
            [454, [convert_overprint]],
            [455, []],
            [456, [convert_epigraph]],
-           [457, [convert_use_stackrel]]
+           [457, [convert_use_stackrel]],
+           [458, [convert_captioninsets, convert_captionlayouts]]
           ]
 
 revert =  [
+           [457, [revert_captioninsets, revert_captionlayouts]],
            [456, [revert_use_stackrel]],
            [455, [revert_epigraph]],
            [454, [revert_frametitle]],

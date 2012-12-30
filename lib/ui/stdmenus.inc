@@ -360,7 +360,7 @@ Menuset
 		Item "Citation...|C" "dialog-show-new-inset citation"
 		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
-		Item "Caption" "caption-insert"
+		Captions
 		Indices
 		Item "Nomenclature Entry...|y" "nomencl-insert"
 		Separator

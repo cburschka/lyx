@@ -4705,6 +4705,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
+		// only standard caption is allowed
+		string arg = cmd.getArg(0);
+		if (!arg.empty() && arg != "Standard") {
+			status.setEnabled(false);
+			return true;
+		}
 		// check if there is already a caption
 		bool have_caption = false;
 		InsetTableCell itc = InsetTableCell(*tabular.cellInset(cur.idx()).get());

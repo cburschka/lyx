@@ -11,6 +11,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+
+2012-12-30 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 458: Extended caption inset support.
+	Former special caption layouts (e.g. of KOMA) are now proper caption
+	insets.
+
 2012-12-28 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 457
 	  support for the LaTeX-package stackrel (fix bug 8464)

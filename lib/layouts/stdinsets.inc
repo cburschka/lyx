@@ -469,7 +469,8 @@ InsetLayout Info:shortcuts
 	EndHTMLStyle
 End
 
-InsetLayout Caption
+InsetLayout Caption:Standard
+	LabelString          standard
 	LaTeXType            command
 	LatexName            caption
 	Argument 1

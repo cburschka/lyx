@@ -49,8 +49,8 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetCaption::InsetCaption(Buffer * buf)
-	: InsetText(buf, InsetText::PlainLayout)
+InsetCaption::InsetCaption(Buffer * buf, string const & type)
+    : InsetText(buf, InsetText::PlainLayout), type_(type)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -60,7 +60,12 @@ InsetCaption::InsetCaption(Buffer * buf)
 
 void InsetCaption::write(ostream & os) const
 {
-	os << "Caption\n";
+	os << "Caption";
+	if (!type_.empty()) {
+		os << " "
+		   << type_;
+	}
+	os << "\n";
 	text().write(os);
 }
 
@@ -94,14 +99,14 @@ void InsetCaption::setCustomLabel(docstring const & label)
 
 void InsetCaption::addToToc(DocIterator const & cpit) const
 {
-	if (type_.empty())
+	if (floattype_.empty())
 		return;
 
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetCaption &>(*this)));
 
-	Toc & toc = buffer().tocBackend().toc(type_);
-	docstring str = full_label_ + ". ";
+	Toc & toc = buffer().tocBackend().toc(floattype_);
+	docstring str = full_label_;
 	text().forToc(str, TOC_ENTRY_LENGTH);
 	toc.push_back(TocItem(pit, 0, str));
 
@@ -192,10 +197,52 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 }
 
 
+void InsetCaption::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		bool const change_type = first_arg == "changetype";
+		if (change_type) {
+			cur.recordUndoInset(ATOMIC_UNDO, this);
+			type_ = cmd.getArg(1);
+			cur.forceBufferUpdate();
+			break;
+		}
+	}
+
+	default:
+		InsetText::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
 bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action()) {
+
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		if (first_arg == "changetype") {
+			string const type = cmd.getArg(1);
+			status.setOnOff(type == type_);
+			bool varia = true;
+			// check if the immediate parent inset allows caption variation
+			if (cur.depth() > 1) {
+				if (&cur[cur.depth() - 2].inset()
+				    && !cur[cur.depth() - 2].inset().allowsCaptionVariation())
+					varia = false;
+			}
+			status.setEnabled(varia
+					  && buffer().params().documentClass().hasInsetLayout(
+						from_ascii("Caption:" + type)));
+			return true;
+		}
+		return InsetText::getStatus(cur, cmd, status);
+	}
 
 	case LFUN_PARAGRAPH_BREAK:
 		status.setEnabled(false);
@@ -226,7 +273,7 @@ void InsetCaption::latex(otexstream & os,
 	OutputParams runparams = runparams_in;
 	// FIXME: actually, it is moving only when there is no
 	// optional argument.
-	runparams.moving_arg = true;
+	runparams.moving_arg = !runparams.inTableCell;
 	InsetText::latex(os, runparams);
 	runparams_in.encoding = runparams.encoding;
 }
@@ -259,8 +306,8 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (rp.html_disable_captions)
 		return docstring();
 	string attr = "class='float-caption";
-	if (!type_.empty())
-		attr += " float-caption-" + type_;
+	if (!floattype_.empty())
+		attr += " float-caption-" + floattype_;
 	attr += "'";
 	xs << html::StartTag("div", attr);
 	docstring def = getCaptionAsHTML(xs, rp);
@@ -324,7 +371,7 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 		cnts.saveLastCounter();
 	}
 	// Memorize type for addToToc().
-	type_ = type;
+	floattype_ = type;
 	if (type.empty())
 		full_label_ = master.B_("Senseless!!! ");
 	else {
@@ -337,23 +384,38 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 			name = master.B_(tclass.floats().getType(type).name());
 		docstring counter = from_utf8(type);
 		if (cnts.isSubfloat()) {
+			// only standard captions allowed in subfloats
+			type_ = "Standard";
 			counter = "sub-" + from_utf8(type);
 			name = bformat(_("Sub-%1$s"),
 				       master.B_(tclass.floats().getType(type).name()));
 		}
+		docstring sec;
 		if (cnts.hasCounter(counter)) {
 			cnts.step(counter, utype);
-			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
-					      name,
-					      cnts.theCounter(counter, lang));
-		} else
-			full_label_ = bformat(from_ascii("%1$s #:"), name);	
+			sec = cnts.theCounter(counter, lang);
+		}
+		if (getLayout().labelstring() != master.B_("standard")) {
+			if (!sec.empty())
+				sec += from_ascii(" ");
+			sec += bformat(from_ascii("(%1$s)"), getLayout().labelstring());
+		}
+		if (!sec.empty())
+			full_label_ = bformat(from_ascii("%1$s %2$s:"), name, sec);
+		else
+			full_label_ = bformat(from_ascii("%1$s #:"), name);
 	}
 
 	// Do the real work now.
 	InsetText::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
+}
+
+
+string InsetCaption::contextMenuName() const
+{
+	return "context-caption";
 }
 
 

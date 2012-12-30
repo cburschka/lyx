@@ -21,7 +21,7 @@ namespace lyx {
 class InsetCaption : public InsetText {
 public:
 	///
-	InsetCaption(Buffer *);
+	InsetCaption(Buffer *, std::string const &);
 	///
 	std::string const & type() const { return type_; }
 	///
@@ -32,6 +32,8 @@ public:
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML
 	docstring getCaptionAsHTML(XHTMLStream & os, OutputParams const &) const;
+	///
+	std::string contextMenuName() const;
 private:
 	///
 	void write(std::ostream & os) const;
@@ -59,6 +61,8 @@ private:
 	///
 	bool insetAllowed(InsetCode code) const;
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
@@ -85,6 +89,8 @@ private:
 	mutable docstring full_label_;
 	///
 	mutable int labelwidth_;
+	///
+	std::string floattype_;
 	///
 	std::string type_;
 	///

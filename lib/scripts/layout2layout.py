@@ -144,6 +144,9 @@ import os, re, string, sys
 # Incremented to format 42, 22 December 2012 by spitz
 # New Style tag "ItemCommand"
 
+# Incremented to format 43, 30 December 2012 by spitz
+# Extended InsetCaption format
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -151,7 +154,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 42
+currentFormat = 43
 
 
 def usage(prog_name):
@@ -361,6 +364,12 @@ def convert(lines):
                 i += 1
             continue
 
+        if format == 42:
+          if lines[i] == "InsetLayout Caption":
+            lines[i] = "InsetLayout Caption:Standard"
+          i += 1
+          continue
+        
         if format == 41:
             # nothing to do.
             i += 1

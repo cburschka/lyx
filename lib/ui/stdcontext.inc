@@ -162,6 +162,7 @@ Menuset
 		SwitchArguments
 	End
 
+
 #
 # InsetBox context menu
 #
@@ -176,6 +177,15 @@ Menuset
 		Item "Shaded Background|B" "inset-modify changetype Shaded"
 		Item "Double Frame|u" "inset-modify changetype Doublebox"
 	End
+
+
+#
+# InsetCaption context menu
+#
+	Menu "context-caption"
+		SwitchCaptions
+	End
+
 
 #
 # InsetNote context menu
