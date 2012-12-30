@@ -179,7 +179,11 @@ Parser::~Parser()
 
 void Parser::setEncoding(std::string const & e)
 {
-	Encoding const * enc = encodings.fromLaTeXName(e);
+	// We may (and need to) use unsafe encodings here: Since the text is
+	// converted to unicode while reading from is_, we never see text in
+	// the original encoding of the parser, but operate on utf8 strings
+	// instead. Therefore, we cannot misparse high bytes as {, } or \\.
+	Encoding const * enc = encodings.fromLaTeXName(e, true);
 	if (!enc) {
 		cerr << "Unknown encoding " << e << ". Ignoring." << std::endl;
 		return;

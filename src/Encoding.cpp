@@ -305,8 +305,9 @@ const char * EncodingException::what() const throw()
 
 
 Encoding::Encoding(string const & n, string const & l, string const & g,
-		   string const & i, bool f, Encoding::Package p)
-	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f), package_(p)
+		   string const & i, bool f, bool u, Encoding::Package p)
+	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f),
+	  unsafe_(u), package_(p)
 {
 	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
@@ -823,14 +824,18 @@ bool Encodings::isMathAlpha(char_type c)
 }
 
 
-Encoding const * Encodings::fromLyXName(string const & name) const
+Encoding const *
+Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
+	if (!allowUnsafe && it->second.unsafe())
+		return 0;
 	return it != encodinglist.end() ? &it->second : 0;
 }
 
 
-Encoding const * Encodings::fromLaTeXName(string const & n) const
+Encoding const *
+Encodings::fromLaTeXName(string const & n, bool allowUnsafe) const
 {
 	string name = n;
 	// FIXME: if we have to test for too many of these synonyms,
@@ -845,8 +850,11 @@ Encoding const * Encodings::fromLaTeXName(string const & n) const
 	// most at the top of lib/encodings.
 	EncodingList::const_iterator const end = encodinglist.end();
 	for (EncodingList::const_iterator it = encodinglist.begin(); it != end; ++it)
-		if (it->second.latexName() == name)
+		if (it->second.latexName() == name) {
+			if (!allowUnsafe && it->second.unsafe())
+				return 0;
 			return &it->second;
+		}
 	return 0;
 }
 
@@ -1005,10 +1013,15 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			lex.next();
 			string const width = lex.getString();
 			bool fixedwidth = false;
+			bool unsafe = false;
 			if (width == "fixed")
 				fixedwidth = true;
 			else if (width == "variable")
 				fixedwidth = false;
+			else if (width == "variableunsafe") {
+				fixedwidth = false;
+				unsafe = true;
+			}
 			else
 				lex.printError("Unknown width");
 
@@ -1028,7 +1041,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 
 			LYXERR(Debug::INFO, "Reading encoding " << name);
 			encodinglist[name] = Encoding(name, latexname,
-				guiname, iconvname, fixedwidth, package);
+				guiname, iconvname, fixedwidth, unsafe,
+				package);
 
 			if (lex.lex() != et_end)
 				lex.printError("Missing end");

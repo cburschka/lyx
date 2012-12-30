@@ -54,7 +54,7 @@ public:
 	///
 	Encoding(std::string const & n, std::string const & l,
 		 std::string const & g, std::string const & i,
-		 bool f, Package p);
+		 bool f, bool u, Package p);
 	///
 	void init() const;
 	///
@@ -66,7 +66,9 @@ public:
 	///
 	std::string const & iconvName() const { return iconvName_; }
 	///
-	bool const & hasFixedWidth() const { return fixedwidth_; }
+	bool hasFixedWidth() const { return fixedwidth_; }
+	///
+	bool unsafe() const { return unsafe_; }
 	/// \p c is representable in this encoding without a LaTeX macro
 	bool encodable(char_type c) const;
 	/**
@@ -108,6 +110,9 @@ private:
 	std::string iconvName_;
 	/// Is this a fixed width encoding?
 	bool fixedwidth_;
+	/// Is this encoding TeX unsafe, e.g. control characters like {, }
+	/// and \\ may appear in high bytes?
+	bool unsafe_;
 	///
 	typedef std::set<char_type> CharSet;
 	/// Set of UCS4 characters that we can encode (for singlebyte
@@ -157,9 +162,11 @@ public:
 	void read(support::FileName const & encfile,
 		  support::FileName const & symbolsfile);
 	/// Get encoding from LyX name \p name
-	Encoding const * fromLyXName(std::string const & name) const;
+	Encoding const *
+	fromLyXName(std::string const & name, bool allowUnsafe = false) const;
 	/// Get encoding from LaTeX name \p name
-	Encoding const * fromLaTeXName(std::string const & name) const;
+	Encoding const *
+	fromLaTeXName(std::string const & name, bool allowUnsafe = false) const;
 
 	///
 	const_iterator begin() const { return encodinglist.begin(); }

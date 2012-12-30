@@ -18,16 +18,24 @@ hello
 Chinese simplified \end{CJK}\begin{CJK}{EUC-JP}{hei} Japanese \end{CJK} \begin{CJK}{GB}{}Chinese simplified
 \end{CJK}
 
+% The following Bg5 encoded text cannot be processed as is by latex.
+% It needs to be preprocessed by bg5conv or bg5latex needs to be used.
+% See the documentation of CJK.sty for details.
+
 \begin{CJK}{Bg5}{}
-Big5 æ–‡é¼æ¥·æ›¸
+Big5 ¤å¹©·¢®Ñ
 \end{CJK}
 
 \inputencoding{latin9}%
 \selectlanguage{english}%
 English
 
+% The following SJIS encoded text cannot be processed as is by latex.
+% It needs to be preprocessed by sjisconv or sjislatex needs to be used.
+% See the documentation of CJK.sty for details.
+
 \begin{CJK}{SJIS}{}
-Shift_JIS æ—¥æœ¬èªã®æ–‡ç« 
+Shift\_JIS “ú–{Œê‚Ì•¶Í
 \end{CJK}
 
 hello

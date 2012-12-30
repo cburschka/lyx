@@ -119,19 +119,23 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
 
 /**
  * supported CJK encodings
- * SJIS and Bg5 cannot be supported as they are not
- * supported by iconv
  * JIS does not work with LyX's encoding conversion
  */
 const char * const supported_CJK_encodings[] = {
-"EUC-JP", "KS", "GB", "UTF8", 0};
+"EUC-JP", "KS", "GB", "UTF8",
+"Bg5", /*"JIS",*/ "SJIS", 0};
 
 /**
  * the same as supported_CJK_encodings with their corresponding LyX language name
+ * FIXME: The mapping "UTF8" => "chinese-traditional" is only correct for files
+ *        created by LyX.
+ * NOTE: "Bg5", "JIS" and "SJIS" are not supported by LyX, on re-export the
+ *       encodings "UTF8", "EUC-JP" and "EUC-JP" will be used.
  * please keep this in sync with supported_CJK_encodings line by line!
  */
 const char * const supported_CJK_languages[] = {
-"japanese-cjk", "korean", "chinese-simplified", "chinese-traditional", 0};
+"japanese-cjk", "korean", "chinese-simplified", "chinese-traditional",
+"chinese-traditional", /*"japanese-cjk",*/ "japanese-cjk", 0};
 
 /*!
  * natbib commands.
@@ -1454,9 +1458,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// store the encoding to be able to reset it
 		string const encoding_old = p.getEncoding();
 		string const encoding = p.getArg('{', '}');
-		// SJIS and Bg5 cannot be handled by iconv
-		// JIS does not work with LyX's encoding conversion
-		if (encoding != "Bg5" && encoding != "JIS" && encoding != "SJIS")
+		// FIXME: For some reason JIS does not work. Although the text
+		// in tests/CJK.tex is identical with the SJIS version if you
+		// convert both snippets using the recode command line utility,
+		// the resulting .lyx file contains some extra characters if
+		// you set buggy_encoding to false for JIS.
+		bool const buggy_encoding = encoding == "JIS";
+		if (!buggy_encoding)
 			p.setEncoding(encoding);
 		else {
 			// FIXME: This will read garbage, since the data is not encoded in utf8.
@@ -1467,10 +1475,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		string const mapping = trim(p.getArg('{', '}'));
 		char const * const * const where =
 			is_known(encoding, supported_CJK_encodings);
-		if (!preamble.fontCJKSet())
+		if (!buggy_encoding && !preamble.fontCJKSet())
 			preamble.fontCJK(mapping);
 		bool knownMapping = mapping == preamble.fontCJK();
-		if (!knownMapping || !where) {
+		if (buggy_encoding || !knownMapping || !where) {
 			parent_context.check_layout(os);
 			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
 				       parent_context);

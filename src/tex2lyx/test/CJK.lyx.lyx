@@ -16,7 +16,7 @@
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
-\language english
+\language japanese-cjk
 \language_package default
 \inputencoding utf8
 \fontencoding T1
@@ -147,28 +147,50 @@ Chinese simplified
 status collapsed
 
 \begin_layout Plain Layout
+% The following Bg5 encoded text cannot be processed as is by latex.
+\end_layout
 
-\backslash
-begin{CJK}{Bg5}{}
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-
-Big5 文鼎楷書
 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+% It needs to be preprocessed by bg5conv or bg5latex needs to be used.
+\end_layout
 
-\backslash
-end{CJK}
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% See the documentation of CJK.sty for details.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang chinese-traditional
+ Big5 文鼎楷書 
 \end_layout
 
 \begin_layout Standard
@@ -183,28 +205,50 @@ English
 status collapsed
 
 \begin_layout Plain Layout
+% The following SJIS encoded text cannot be processed as is by latex.
+\end_layout
 
-\backslash
-begin{CJK}{SJIS}{}
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
-
-Shift_JIS 日本語の文章
 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+% It needs to be preprocessed by sjisconv or sjislatex needs to be used.
+\end_layout
 
-\backslash
-end{CJK}
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% See the documentation of CJK.sty for details.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang japanese-cjk
+ Shift_JIS 日本語の文章 
 \end_layout
 
 \begin_layout Standard

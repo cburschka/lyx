@@ -6,8 +6,12 @@
 # It does support singlebyte encodings with variable with (e.g. utf8).
 # These are marked with the "variable" keyword.
 # Fixed width encodings are marked with the "fixed" keyword.
+# The code points of TeX control characters like {, } and \ can occur in the
+# second byte of some variable width encodings. These encodings must not be
+# set as document encodings and are marked with the "variableunsafe" keyword.
+# They are only needed for proper tex2lyx import.
 
-# Syntax: Encoding <LyX name> <LaTeX name> <GUI name> <iconv name> fixed|variable <package> End
+# Syntax: Encoding <LyX name> <LaTeX name> <GUI name> <iconv name> fixed|variable|variableunsafe <package> End
 
 # encodings used by inputenc.sty
 
@@ -131,16 +135,19 @@ End
 # Bg5+, GBt
 # See the NOTES file of libiconv for details.
 
-# The following encodings can't be handled directly, because the code points
-# of TeX control characters like {, } and \ can occur in the second byte:
-
 # For traditional chinese
-#Encoding big5 Bg5 "Chinese (traditional) (Big5)" BIG5 variable CJK
-#End
+Encoding big5 Bg5 "Chinese (traditional) (Big5)" BIG5 variableunsafe CJK
+End
 
 # For japanese
-#Encoding shift-jis SJIS "Japanese (CJK) (SJIS)" SJIS variable CJK
-#End
+# We use CP932 and not SJIS, since it is a super set of SJIS except that it
+# translates SJIS 0x5c to U+005C (REVERSE SOLIDUS aka backslash) instead of
+# U+00A5 (YEN SIGN). Strictly speaking this is wrong, but there is a long
+# standing confusion which translation is correct, and using CP932 is also
+# consistent with the SJIS example file <texmf>/doc/latex/cjk/examples/SJIS.tex
+# of the CJK package. The CP932 extensions over SJIS do not matter here.
+Encoding shift-jis SJIS "Japanese (CJK) (SJIS)" CP932 variableunsafe CJK
+End
 
 # The following encodings need hardcoded support of the encodable unicode
 # range, but are known by iconv:
@@ -181,6 +188,7 @@ Encoding euc-jp-plain euc "Japanese (non-CJK) (EUC-JP)" EUC-JP variable japanese
 End
 Encoding jis-plain jis "Japanese (non-CJK) (JIS)" ISO-2022-JP variable japanese
 End
+# FIXME: Should use variableunsafe (would be a file format change)
 Encoding shift-jis-plain sjis "Japanese (non-CJK) (SJIS)" CP932 variable japanese
 End
 Encoding utf8 utf8 "Japanese (non-CJK) (utf8)" UTF-8 variable japanese

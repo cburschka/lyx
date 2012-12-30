@@ -1068,7 +1068,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	Encodings::const_iterator it = encodings.begin();
 	Encodings::const_iterator const end = encodings.end();
 	for (; it != end; ++it)
-		encodinglist.append(qt_(it->guiName()));
+		if (!it->unsafe())
+			encodinglist.append(qt_(it->guiName()));
 	encodinglist.sort();
 	langModule->encodingCO->addItems(encodinglist);
 
@@ -2558,7 +2559,8 @@ void GuiDocument::applyView()
 			Encodings::const_iterator const end = encodings.end();
 			bool found = false;
 			for (; it != end; ++it) {
-				if (qt_(it->guiName()) == enc_gui) {
+				if (qt_(it->guiName()) == enc_gui &&
+				    !it->unsafe()) {
 					bp_.inputenc = it->latexName();
 					found = true;
 					break;
@@ -2966,7 +2968,8 @@ void GuiDocument::paramsToDialog()
 			Encodings::const_iterator it = encodings.begin();
 			Encodings::const_iterator const end = encodings.end();
 			for (; it != end; ++it) {
-				if (it->latexName() == bp_.inputenc) {
+				if (it->latexName() == bp_.inputenc &&
+				    !it->unsafe()) {
 					enc_gui = it->guiName();
 					break;
 				}
