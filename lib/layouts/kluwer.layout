@@ -32,6 +32,7 @@ EndFont
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -110,6 +111,7 @@ End
 
 
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             title
@@ -164,6 +166,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             author
@@ -300,6 +303,7 @@ End
 
 
 Style Acknowledgements
+	Category              BackMatter
 	Margin                Static
 	LatexType             Environment
 	LatexName             acknowledgements

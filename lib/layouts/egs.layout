@@ -17,6 +17,7 @@ Provides natbib          1
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -148,6 +149,7 @@ End
 
 
 Style Enumerate
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             enumerate
@@ -171,6 +173,7 @@ End
 
 
 Style Itemize
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             itemize
@@ -256,6 +259,7 @@ End
 
 
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             title
@@ -298,6 +302,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             author
@@ -491,6 +496,7 @@ End
 
 
 Style Abstract
+	Category              FrontMatter
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             abstract
@@ -512,6 +518,7 @@ End
 
 
 Style Acknowledgements
+	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             acknowledgements

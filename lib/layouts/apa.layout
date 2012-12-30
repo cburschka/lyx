@@ -23,6 +23,7 @@ EndPreamble
 
 
 Style Standard
+	Category              MainText
 	LatexName             dummy
 	LatexType             Paragraph
 	Margin                Static
@@ -38,6 +39,7 @@ End
 
 
 Style Title
+	Category              FrontMatter
 	LatexName             title
 	LatexType             Command
 	InTitle               1
@@ -69,6 +71,7 @@ End
 
 
 Style Abstract
+	Category              FrontMatter
 	LatexName             abstract
 	LatexType             Command
 	InTitle               1
@@ -91,6 +94,7 @@ End
 
 
 Style ShortTitle
+	Category              FrontMatter
 	LatexName             shorttitle
 	LatexType             Command
 	InTitle               1
@@ -113,6 +117,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	LatexName             author
 	LatexType             Command
 	InTitle               1
@@ -142,6 +147,7 @@ End
 
 
 Style FourAuthors
+	Category              FrontMatter
 	LatexName             fourauthors
 	LatexType             Command
 	InTitle               1
@@ -149,6 +155,7 @@ End
 
 
 Style Affiliation
+	Category              FrontMatter
 	LatexName             affiliation
 	LatexType             Command
 	InTitle               1
@@ -184,6 +191,7 @@ End
 
 
 Style FourAffiliations
+	Category              FrontMatter
 	LatexName             fouraffiliations
 	LatexType             Command
 	InTitle               1
@@ -198,6 +206,7 @@ End
 
 
 Style Acknowledgements
+	Category              BackMatter
 	LatexName             acknowledgements
 	LatexType             Command
 	Font
@@ -338,6 +347,7 @@ End
 
 
 Style Itemize
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             APAitemize
@@ -359,6 +369,7 @@ End
 
 
 Style Enumerate
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             APAenumerate
@@ -382,6 +393,7 @@ End
 
 
 Style Seriate
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             seriate

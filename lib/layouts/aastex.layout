@@ -52,6 +52,7 @@ End
 
 
 Style Standard
+	Category        MainText
 	Margin		Static
 	LatexType	Paragraph
 	LatexName	dummy
@@ -378,6 +379,7 @@ End
 
 
 Style Acknowledgements
+	Category        BackMatter
 	Margin		Dynamic
 	LatexType	Command
 	InTitle		0

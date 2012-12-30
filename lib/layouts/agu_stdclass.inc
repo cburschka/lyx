@@ -20,6 +20,7 @@ ClassOptions
 End
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             p

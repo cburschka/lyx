@@ -10,6 +10,7 @@ PageStyle               Empty
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy

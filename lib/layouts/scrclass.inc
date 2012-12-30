@@ -15,6 +15,7 @@ DefaultStyle            Standard
 Provides                subscript 1
 
 Style Standard
+	Category              MainText
 	LatexName             dummy
 	ParIndent             MM
 	ParSkip               0.4

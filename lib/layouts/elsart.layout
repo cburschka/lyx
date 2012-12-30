@@ -46,6 +46,7 @@ End
 
 
 Style Standard
+	Category              MainText
 	LatexName             dummy
 	LatexType             Paragraph
 	Margin                Static
@@ -90,6 +91,7 @@ Input stdcounters.inc
 
 
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -111,6 +113,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1

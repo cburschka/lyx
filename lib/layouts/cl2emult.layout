@@ -39,6 +39,7 @@ EndFont
 
 
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -57,6 +58,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -125,6 +127,7 @@ End
 
 
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy

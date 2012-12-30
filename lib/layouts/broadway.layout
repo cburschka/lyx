@@ -172,6 +172,7 @@ End
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
+	Category              MainText
 	Margin                Static
 	LatexType             Paragraph
 	LatexName             dummy
@@ -184,6 +185,7 @@ End
 
 
 Style Title
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             title
@@ -198,6 +200,7 @@ End
 
 
 Style Author
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             author

@@ -126,6 +126,7 @@ End
 
 
 Style Affiliation
+	Category              FrontMatter
 	CopyStyle             Special-section
 	LatexName             affiliation
 	LabelString           "Affiliation:"
