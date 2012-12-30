@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) pch.h
+EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) $(TEST_RESULTS) pch.h
 
 #noinst_LIBRARIES = libtexparser.a
 #
@@ -37,6 +37,19 @@ TEST_FILES = \
 	test/xfigtest.fig \
 	test/xfigtest.pstex \
 	test/xfigtest.pstex_t
+
+TEST_RESULTS = \
+	test/box-color-size-space-align.lyx.lyx \
+	test/CJK.lyx.lyx \
+	test/CJKutf8.lyx.lyx \
+	test/DummyDocument.lyx.lyx \
+	test/Dummy~Document.lyx.lyx \
+	test/Dummy\ Document.lyx.lyx \
+	test/test-insets.lyx.lyx \
+	test/test.lyx.lyx \
+	test/test-modules.lyx.lyx \
+	test/test-structure.lyx.lyx \
+	test/XeTeX-polyglossia.lyx.lyx
 
 TESTS = test/runtests.py
 updatetests: tex2lyx
