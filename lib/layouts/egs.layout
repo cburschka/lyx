@@ -30,6 +30,7 @@ End
 
 
 Style Section
+	Category              Sectioning
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             section
@@ -52,6 +53,7 @@ End
 
 
 Style Subsection
+	Category              Sectioning
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             subsection
@@ -569,6 +571,7 @@ End
 
 
 Style Bibliography
+	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography

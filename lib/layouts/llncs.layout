@@ -218,6 +218,7 @@ End
 
 
 Style Institute
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	InTitle               1
@@ -266,6 +267,7 @@ End
 
 
 Style Bibliography
+	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography
@@ -289,6 +291,7 @@ End
 
 # Mathematics-like definitions:
 Style Case
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             case

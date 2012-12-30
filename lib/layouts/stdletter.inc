@@ -48,6 +48,7 @@ End
 
 
 Style Opening
+	Category              Letter
 	Margin                Static
 	LatexType             Command
 	LatexName             opening
@@ -70,6 +71,7 @@ End
 
 
 Style Signature
+	Category              Letter
 	Margin                Static
 	LatexType             Command
 	LatexName             signature

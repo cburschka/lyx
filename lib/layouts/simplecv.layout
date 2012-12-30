@@ -29,6 +29,7 @@ End
 
 
 Style Section
+	Category              Sectioning
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             section
@@ -151,6 +152,7 @@ End
 
 Style Bibliography
 	CopyStyle             Topic
+	Category              BackMatter
 	LatexName             thebibliography
 	LatexType             Bib_Environment
 	LabelType             Bibliography

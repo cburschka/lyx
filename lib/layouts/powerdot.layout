@@ -226,6 +226,7 @@ End
 ###
 Style Section
   CopyStyle     Slide
+  Category      Sectioning
   TocLevel      1
   LatexName     lyxend\section
   LabelType     Counter
@@ -294,6 +295,7 @@ End
 # Bibliography style definition
 ###
 Style Bibliography
+  Category      BackMatter
   Margin        First_Dynamic
   LatexType     Bib_Environment
   LatexName     thebibliography

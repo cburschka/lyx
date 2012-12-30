@@ -843,6 +843,7 @@ End
 
 # Opening style definition
 Style Opening
+  Category              Letter
   Margin  		Static
   LatexType 		Command
   LatexName 		Anrede
@@ -865,6 +866,7 @@ End
 
 # Gruss style definition
 Style Closing
+  Category              Letter
   Margin  		Static
   LatexType 		Command
   LatexName 		LyxGruss
@@ -891,6 +893,7 @@ End
 
 # Unterschrift des Absenders
 Style Signature
+  Category              Letter
   Margin		Static
   LatexType		Command
   LatexName		Unterschrift

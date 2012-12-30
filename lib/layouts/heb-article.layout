@@ -17,6 +17,7 @@ EndPreamble
 
 
 Style Theorem
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             theorem
@@ -94,6 +95,7 @@ End
 
 
 Style Proof
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             proof

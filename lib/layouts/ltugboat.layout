@@ -45,6 +45,7 @@ End
 Input stdlists.inc
 
 Style Section
+	Category              Sectioning
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             section
@@ -65,6 +66,7 @@ End
 
 
 Style Subsection
+	Category              Sectioning
 	Margin                Dynamic
 	LatexType             Command
 	LatexName             subsection

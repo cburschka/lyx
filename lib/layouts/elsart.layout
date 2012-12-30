@@ -270,6 +270,7 @@ End
 
 
 Style Theorem
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
@@ -299,6 +300,7 @@ End
 
 # Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
 Style Proof
+	Category              Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	# elsart defines the unusual environment pf for proofs.

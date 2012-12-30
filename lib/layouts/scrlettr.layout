@@ -40,6 +40,7 @@ Input stdlayouts.inc
 
 
 Style Letter
+	Category              Letter
 	LatexType             Command
 	LatexName             letter
 	KeepEmpty             1
@@ -70,6 +71,7 @@ End
 
 
 Style Closing
+	Category              Letter
 	LatexType             Command
 	LatexName             closing
 	KeepEmpty             0
@@ -112,6 +114,7 @@ End
 
 
 Style Name
+	Category              Letter
 	LatexType             Command
 	LatexName             name
 	KeepEmpty             1

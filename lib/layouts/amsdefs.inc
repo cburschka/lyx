@@ -197,6 +197,7 @@ End
 
 
 Style Bibliography
+	Category              BackMatter
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography

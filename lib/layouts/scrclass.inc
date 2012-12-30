@@ -41,6 +41,7 @@ Style Description
 End
 
 Style Labeling
+	Category              List
 	LatexName             labeling
 	# overwrite the preamble code definition
 	Preamble
