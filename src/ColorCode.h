@@ -143,7 +143,7 @@ enum ColorCode {
 
 	/// Error box text color
 	Color_error,
-	/// EOL marker color
+	/// End of line (EOL) marker color
 	Color_eolmarker,
 	/// Added space colour
 	Color_added_space,
