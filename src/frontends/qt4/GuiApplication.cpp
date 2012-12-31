@@ -234,18 +234,33 @@ private:
 
 // this must be sorted alphabetically
 // Upper case comes before lower case
+// Please don't change the formatting, this list is parsed by
+// development/tools/generate_symbols_images.py.
 PngMap sorted_png_map[] = {
 	{ "Arrownot", "arrownot2"},
+	{ "Arrowvert", "arrowvert2"},
+	{ "Bowtie", "bowtie2" },
+	{ "Box", "box2" },
 	{ "Bumpeq", "bumpeq2" },
 	{ "Cap", "cap2" },
+	{ "Circle", "circle2" },
+	{ "Colonapprox", "colonapprox2" },
+	{ "Coloneq", "coloneq2" },
+	{ "Coloneqq", "coloneqq2" },
+	{ "Colonsim", "colonsim2" },
 	{ "Cup", "cup2" },
 	{ "Delta", "delta2" },
 	{ "Diamond", "diamond2" },
+	{ "Doteq", "doteq2" },
 	{ "Downarrow", "downarrow2" },
+	{ "Eqcolon", "eqcolon2" },
+	{ "Eqqcolon", "eqqcolon2" },
 	{ "Gamma", "gamma2" },
+	{ "LHD", "lhd2" },
 	{ "Lambda", "lambda2" },
 	{ "Lbag", "lbag2"},
 	{ "Leftarrow", "leftarrow2" },
+	{ "Leftcircle", "leftcircle2" },
 	{ "Leftrightarrow", "leftrightarrow2" },
 	{ "Longarrownot", "longarrownot2"},
 	{ "Longleftarrow", "longleftarrow2" },
@@ -261,12 +276,16 @@ PngMap sorted_png_map[] = {
 	{ "Phi", "phi2" },
 	{ "Pi", "pi2" },
 	{ "Psi", "psi2" },
+	{ "RHD", "rhd2" },
 	{ "Rbag", "rbag2"},
 	{ "Rightarrow", "rightarrow2" },
+	{ "Rightcircle", "rightcircle2" },
 	{ "Sigma", "sigma2" },
+	{ "Square", "square2" },
 	{ "Subset", "subset2" },
 	{ "Supset", "supset2" },
 	{ "Theta", "theta2" },
+	{ "Thorn", "thorn2" },
 	{ "Uparrow", "uparrow2" },
 	{ "Updownarrow", "updownarrow2" },
 	{ "Upsilon", "upsilon2" },
@@ -277,11 +296,24 @@ PngMap sorted_png_map[] = {
 	{ "nLeftrightarrow", "nleftrightarrow2" },
 	{ "nRightarrow", "nrightarrow2" },
 	{ "nVDash", "nvdash3" },
+	{ "nVdash", "nvdash4" },
 	{ "nvDash", "nvdash2" },
 	{ "textrm \\AA", "textrm_AA"},
 	{ "textrm \\O", "textrm_O"},
-	{ "vDash", "vdash2" }
+	{ "vDash", "vdash2" },
+	{ "varDelta", "vardelta2" },
+	{ "varGamma", "vargamma2" },
+	{ "varLambda", "varlambda2" },
+	{ "varOmega", "varomega2" },
+	{ "varPhi", "varphi2" },
+	{ "varPi", "varpi2" },
+	{ "varPsi", "varpsi2" },
+	{ "varSigma", "varsigma2" },
+	{ "varTheta", "vartheta2" },
+	{ "varUpsilon", "varupsilon2" },
+	{ "varXi", "varxi2" }
 };
+
 
 size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
 

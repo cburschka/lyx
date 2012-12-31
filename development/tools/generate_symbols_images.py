@@ -41,7 +41,8 @@ def getlist(lyxexe, lyxfile):
     regexp = re.compile(r'.*: read symbol \'(\S+)\s+inset:\s+(\S+)')
     # These insets are more complex than simply symbols, so the images need to
     # be created manually
-    skipinsets = ['big', 'font', 'matrix', 'mbox', 'oldfont', 'ref', 'space']
+    skipinsets = ['big', 'font', 'lyxblacktext', 'matrix', 'mbox', 'oldfont', \
+                  'ref', 'split', 'space', 'style']
     symbols = []
     for line in stderr.split('\n'):
         m = regexp.match(line)
@@ -52,17 +53,33 @@ def getlist(lyxexe, lyxfile):
     return symbols
 
 
-def createimage(name, path, template, lyxexe, tempdir):
+def getreplacements(filename):
+    replacements = {}
+    replacements['|'] = 'vert'
+    replacements['/'] = 'slash'
+    replacements['\\'] = 'backslash'
+    replacements['*'] = 'ast'
+    replacements['AA'] = 'textrm_AA'
+    replacements['O'] = 'textrm_O'
+    cppfile = open(filename, 'rt')
+    regexp = re.compile(r'.*"([^"]+)",\s*"([^"]+)"')
+    found = False
+    for line in cppfile.readlines():
+        if found:
+            m = regexp.match(line)
+            if m:
+                replacements[m.group(1)] = m.group(2)
+            else:
+                return replacements
+        elif line.find('PngMap sorted_png_map') == 0:
+            found = True
+
+
+def createimage(name, path, template, lyxexe, tempdir, replacements):
     """ Create the image file for symbol name in path. """
 
-    if name == '|':
-        filename = 'vert'
-    elif name == '/':
-        filename = 'slash'
-    elif name == '\\':
-        filename = 'backslash'
-    elif name == '*':
-        filename = 'ast'
+    if name in replacements.keys():
+        filename = replacements[name]
     elif name.startswith('lyx'):
         print 'Skipping ' + name
         return
@@ -121,13 +138,15 @@ def main(argv):
     if len(argv) == 3:
         (base, ext) = os.path.splitext(argv[0])
         symbols = getlist(argv[1], base)
+        cppfile = os.path.join(os.path.dirname(base), '../../src/frontends/qt4/GuiApplication.cpp')
+        replacements = getreplacements(cppfile)
         lyxtemplate = base + '.lyx'
         templatefile = open(base + '.lyx', 'rt')
         template = templatefile.read()
         templatefile.close()
         tempdir = tempfile.mkdtemp()
         for i in symbols:
-            createimage(i, argv[2], template, argv[1], tempdir)
+            createimage(i, argv[2], template, argv[1], tempdir, replacements)
         shutil.rmtree(tempdir)
     else:
         error(usage(argv[0]))
