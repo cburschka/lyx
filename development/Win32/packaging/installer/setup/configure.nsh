@@ -201,12 +201,11 @@ Section -ConfigureScript
   # ask to update MiKTeX
   ${if} $LaTeXInstalled == "MiKTeX"
    Call UpdateMiKTeX # function from latex.nsh
-   # for new installations a second run is necessary to give the users feedback about
-   # the ongoing installation of LaTeX packages
+   # especially for new installations a second run is necessary to install all missing package
+   # the reason for this is unknown, most probably it is a timeout problem, because with a fast
+   # Internet connection one run is sometimes sufficient
    # a new installed MiKTeX needs some time until it is ready to install packages
-   !if ${SETUPTYPE} == BUNDLE
-    nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
-   !endif # end if == BUNDLE
+   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   ${endif}
 
 SectionEnd
