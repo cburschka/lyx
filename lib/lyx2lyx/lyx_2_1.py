@@ -2330,12 +2330,9 @@ def revert_beamerargs(document):
                         endPlain = find_end_of_layout(document.body, beginPlain)
                         endInset = find_end_of_inset(document.body, p)
                         content = document.body[beginPlain + 1 : endPlain]
-                        # Adjust range end
-                        realparend = realparend - len(document.body[p : endInset + 1])
-                        # Remove arg inset
-                        del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
-                        document.body[realparbeg : realparbeg] = subst
+                        realparend = realparend + len(subst) - len(content)
+                        document.body[beginPlain + 1 : endPlain] = subst
                     elif argnr == "item:1":
                         j = find_end_of_inset(document.body, i)
                         # Find containing paragraph layout
@@ -2579,7 +2576,10 @@ def revert_beamerflex(document):
                     z = z - len(document.body[arg : argend + 1])
                     # Remove arg inset
                     del document.body[arg : argend + 1]
-                    pre += put_cmd_in_ert("[") + argcontent + put_cmd_in_ert("]")
+                    if flextype == "Alternative":
+                        pre += put_cmd_in_ert("{") + argcontent + put_cmd_in_ert("}")
+                    else:
+                        pre += put_cmd_in_ert("[") + argcontent + put_cmd_in_ert("]")
                 pre += put_cmd_in_ert("{")
                 beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
                 endPlain = find_end_of_layout(document.body, beginPlain)
