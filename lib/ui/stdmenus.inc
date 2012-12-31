@@ -589,7 +589,8 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Braille|B" "help-open Braille"
+		Item "Beamer Presentations|B" "help-open beamer"
+		Item "Braille|a" "help-open Braille"
 		Item "Feynman-diagram|F" "help-open FeynmanDiagrams"
 		Item "Knitr|K" "help-open knitr"
 		Item "LilyPond|P" "help-open lilypond"

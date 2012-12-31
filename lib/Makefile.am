@@ -232,6 +232,8 @@ dist_examples_DATA = \
 	examples/addressExample.adr \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
+	examples/beamer.lyx \
+	examples/beamer-article.lyx \
 	examples/beamer-g4.jpg \
 	examples/beamer-g4-mask.jpg \
 	examples/beamer-icsi-logo.pdf \
