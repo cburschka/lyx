@@ -1150,7 +1150,7 @@ Indem Sie LyX mit der Option
  Anstelle der Kommandozeilenoption können Sie übrigens auch die Umgebungsvariabl
 e 
 \family typewriter
-LYX_USERDIR_VER
+LYX_USERDIR_20x
 \family default
  auf das zu verwendende Verzeichnis setzen.
 \end_layout
@@ -5714,7 +5714,10 @@ Paths
 
 \lang english
 Note, by the way, that there is a template which has a particular meaning:
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -6006,7 +6009,11 @@ chkconfig.ltx
 -Zeichen ignoriert werden.
  Die erste Zeile ist einfach ein LaTeX-Kommentar, in der zweiten wird die
  Textklasse deklariert.
- Eine Datei namens 
+ Eine Datei namens
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 article.layout
 \family default
@@ -6712,17 +6719,33 @@ Columns
 \family default
 \series default
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 1
-\emph default
-, 2
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Gibt an, ob die Textklasse standardmäßig ein- oder zweispaltig gesetzt wird.
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] Gibt an, ob die Textklasse standardmäßig ein- oder zweispaltig gesetzt
+ wird.
  Kann im Popup-Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
@@ -7240,26 +7263,41 @@ End
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LeftMargin
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+string
+\end_layout
+
 \end_inset
 
-ist eine Zeichenkette, deren Länge die Breite des linken Randes festlegt,
- zum Beispiel 
+] ist ein String dessen Länge die Breite des linken Randes festlegt, zum
+ Beispiel 
 \begin_inset Quotes gld
 \end_inset
 
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 MMMMM
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -7434,14 +7472,7 @@ gen
 
 \family typewriter
 \series medium
-Preamble
-\begin_inset CommandInset label
-LatexCommand label
-name "Preamble"
-
-\end_inset
-
-\SpecialChar \ldots{}
+Preamble\SpecialChar \ldots{}
 EndPreamble
 \family default
 \series default
@@ -7467,36 +7498,49 @@ begin{document}
 
 \family typewriter
 \series medium
-Provides
-\begin_inset space ~
-\end_inset
-
-[string][
-\emph on
-0
-\emph default
-,
-\begin_inset space ~
-\end_inset
-
-1]
+Provides 
 \family default
 \series default
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
  
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Provides"
-
-\end_inset
-
+\family default
 zeigt an, ob die Klasse bereits die Funktion 
 \family typewriter
 string
@@ -7563,90 +7607,157 @@ X-Konfiguration
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 ProvidesModule
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
+ [
+\begin_inset Flex Code
+status collapsed
 
-
-\begin_inset Newline newline
-\end_inset
-
-zeigt an, dass dieses Layout die Funktionalität des Moduls 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 string
-\family default
-\series default
- liefert, das als Dateiname ohne die Erweiterung 
+\end_layout
+
+\end_inset
+
+] zeigt an, dass dieses Layout die Funktionalität des Moduls 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+ anbietet, das als Dateiname ohne die Erweiterung 
 \family typewriter
 .module
 \family default
- spezifiziert ist.
- Dies wird typischerweise benutzt, um anzuzeigen, dass es benutzt werden
- sollte.
- Es könnte in einem Modul benutzt werden, das eine andere Implementation
- derselben Funktion liefert.
+ angegeben wird.
+ Dies wird typischerweise benutzt, wenn das Layout das Modul direkt benutzt
+\lang english
+, rather than using the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DefaultModule
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-Requires
-\begin_inset space ~
 \end_inset
 
-[string] 
-\begin_inset space ~
-\end_inset
-
-
+ tag to indicate that it ought to be used
+\lang ngerman
+.
+ Es könnte auch in einem Modul benutzt werden, das eine andere Implementation
+ derselben Funktion liefert.
 \begin_inset Newline newline
 \end_inset
 
 
-\family default
-\series default
-zeigt an, ob die Klasse die Funktion 
-\family typewriter
+\lang english
+This will typically be used if the layout includes the module directl
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Requires
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
 \family default
+zeigt an, ob die Klasse die Funktion 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
  benötigt.
  Mehrfache Funktionen müssen durch Komma getrennt werden Beachten Sie, dass
  Sie nur unterstützte Funktionen anfordern können.
+ 
+\lang english
+(Again, see 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeXFeatures.cpp
+\end_layout
+
+\end_inset
+
+ for a list of these.)
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 RightMargin
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+string
+\end_layout
+
 \end_inset
 
-ist eine Zeichenkette, deren Länge die Breite des rechten Randes festlegt,
- zum Beispiel 
+] ist ein String dessen Länge die Breite des rechten Randes festlegt, zum
+ Beispiel 
 \begin_inset Quotes gld
 \end_inset
 
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 MMMMM
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -7654,207 +7765,335 @@ MMMMM
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 SecNumDepth
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+int=3
+\end_layout
+
 \end_inset
 
-legt die Nummerierungstiefe fest und korrespondiert mit dem LaTeX-Zähler
+] legt die Nummerierungstiefe fest; korrespondiert mit dem LaTeX-Zähler
  
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 secnumdepth
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Sides
-\family default
-\series default
- [
-\family typewriter
-\emph on
-1
-\emph default
-, 2
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+] Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
  gesetzt wird.
- Kann im Popup-Menü 
-\family sans
+ Kann im Dialog 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Dokument\SpecialChar \menuseparator
 Einstellungen
-\family default
-\SpecialChar \ldots{}
+\end_layout
+
+\end_inset
+
  geändert werden.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Style
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
+\end_inset
+
+] definiert einen neuen Absatzstil.
+ Wenn er bereits existiert, werden stattdessen einige seiner Parameter neu
+ definiert.
+ Muss mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beendet werden.
+\begin_inset Newline newline
+\end_inset
+
+Siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-definiert einen neuen Absatzstil.
- Wenn er bereits existiert, werden stattdessen einige seiner Parameter neu
- definiert (siehe auch 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
 
 \end_inset
 
-).
- Diese Marke muss mit 
-\family typewriter
-End
-\family default
- beendet werden.
+ für mehr über Absatzstile.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TitleLatexName
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string="maketitle"]
-\family default
-\series default
- 
-\begin_inset space ~
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string="maketitle"
+\end_layout
+
 \end_inset
 
+] ist der Name des Befehls oder der Umgebung, der für 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-ist der Name des Befehls oder der Umgebung, der für 
-\family typewriter
+\begin_layout Plain Layout
 TitleLatexType
-\family default
+\end_layout
+
+\end_inset
+
  benutzt werden soll.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TitleLatexType
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 CommandAfter
-\emph default
-,
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-Environment]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
+, 
+\begin_inset Flex Code
+status collapsed
 
-
-\begin_inset Newline newline
-\end_inset
-
-gibt an, wie der Dokumenttitel aussehen soll.
- 
-\family typewriter
-CommandAfter
-\family default
- bedeutet, dass das Makro namens 
-\family typewriter
-\series medium
-TitleLatexName
-\family default
-\series default
- nach dem letzten Layout mit 
-\family typewriter
-InTitle
-\begin_inset space \space{}
-\end_inset
-
-1
-\family default
- eingesetzt werden soll.
- 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Environment
-\family default
-\series default
- korrespondiert zu dem Fall, in dem der Absatzblock mit 
-\family typewriter
+\end_layout
+
+\end_inset
+
+] gibt an, wie der Dokumenttitel aussehen soll.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+CommandAfter
+\end_layout
+
+\end_inset
+
+ bedeutet, dass das Makro namens 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TitleLatexName
+\end_layout
+
+\end_inset
+
+ nach dem letzten Layout mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InTitle
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 1
-\family default
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt werden soll.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ ist für den Fall, dass alle Layouts mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InTitle
+\begin_inset space ~
+\end_inset
+
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
  in die 
-\family typewriter
-\series medium
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 TitleLatexName
-\family default
-\series default
--Umgebung einge\SpecialChar \-
-schlos\SpecialChar \-
-sen werden soll.
+\end_layout
+
+\end_inset
+
+-Umgebung gesetzt werden sollen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TocDepth
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+int=3
+\end_layout
+
 \end_inset
 
-legt fest, bis zu welcher Tiefe das Inhaltsverzeichnis gehen soll und korrespond
-iert mit dem LaTeX-Zähler 
-\family typewriter
+] legt fest, bis zu welcher Tiefe das Inhaltsverzeichnis gehen soll; korrespondi
+ert mit dem LaTeX-Zähler 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 tocdepth
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -7875,36 +8114,53 @@ name "sub:Der-Abschnitt-ClassOptions"
 
 \begin_layout Standard
 Der Abschnitt 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ClassOptions
-\family default
+\end_layout
+
+\end_inset
+
  kann folgende Einträge enthalten:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 FontSize
-\family default
-\series default
- [
-\family typewriter
-string="10|11|12"
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Eine Liste verfügbarer Größen für den Hauptzeichensatz; die Einträge werden
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string="10|11|12"
+\end_layout
+
+\end_inset
+
+] Eine Liste verfügbarer Größen für den Hauptzeichensatz; die Einträge werden
  mit 
 \begin_inset Quotes gld
 \end_inset
 
 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 |
-\family default
+\end_layout
+
+\end_inset
+
 
 \begin_inset Quotes grd
 \end_inset
@@ -7913,92 +8169,138 @@ Eine Liste verfügbarer Größen für den Hauptzeichensatz; die Einträge werden
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Header
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-wird benutzt, um die DTD-Zeile mit XML-basierten Klassen zu setzen.
+ wird benutzt, um die DTD-Zeile mit XML-basierten Klassen zu setzen.
  Zum Beispiel PUBLIC 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 -//OASIS//DTD DocBook V4.2//EN
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Other
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\family default
-[
-\family typewriter
+\begin_layout Plain Layout
 string=""
-\family default
-]
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Sonstige Optionen für die Dokumentenklasse, die durch Komma getrennt werden.
+] Sonstige Optionen für die Dokumentenklasse, die durch Komma getrennt werden.
  Sie werden in dem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+documentclass
+\end_layout
+
+\end_inset
+
+
 \family typewriter
-documentclass-
+-
 \family default
 Befehl als optionales Argument übergeben.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 PageStyle
-\family default
-\series default
- [
-\family typewriter
-string="empty|plain|headings|fancy"
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Eine Liste verfügbarer Seitenstile; die Einträge werden mit 
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string="empty|plain|headings|fancy"
+\end_layout
+
+\end_inset
+
+] Eine Liste verfügbarer Seitenstile; die Einträge werden mit 
 \begin_inset Quotes gld
 \end_inset
 
 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 |
-\family default
+\end_layout
+
+\end_inset
+
 
 \begin_inset Quotes grd
 \end_inset
 
  getrennt.
+\end_layout
+
+\begin_layout Standard
+Der Abschnitt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ClassOptions
+\end_layout
+
+\end_inset
+
+ muss mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beendet werden.
 \end_layout
 
 \begin_layout Subsection
@@ -8048,55 +8350,63 @@ Innerhalb des Blocks sind folgende Befehle erlaubt:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Align
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 block
 \emph default
 , left, right, center
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Gibt an, ob der Text im Blocksatz linksbündig, rechtsbündig oder zentriert
+] Gibt an, ob der Text im Blocksatz linksbündig, rechtsbündig oder zentriert
  gesetzt wird.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 AlignPossible
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 block
 \emph default
 , left, right, center
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Eine 
-\emph on
-Liste
-\emph default
- von möglichen Textausrichtungen, die durch Kommata voneinander getrennt
- werden.
- Einige LaTeX-Stile verbieten bestimmte Ausrichtungen, weil sie keinen Sinn
- machen.
- Beispielsweise sollte in einer Aufzählung der Text nicht rechtsbündig oder
- zentriert gesetzt werden.
+] Eine Liste von möglichen Textausrichtungen, die durch Kommata voneinander
+ getrennt werden.
+ (Einige LaTeX-Stile verbieten bestimmte Ausrichtungen, weil sie keinen
+ Sinn machen.
+ Beispielsweise sollte in einer nummerierten Aufzählung der Text nicht rechtsbün
+dig oder zentriert gesetzt werden.)
 \end_layout
 
 \begin_layout Description
@@ -8109,23 +8419,20 @@ BabelPreamble
 
 \end_inset
 
- 
-\lang english
-Note that this will completely override any prior 
+ Beachten Sie, dass dies alle vorhergehenden 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BabelPreamble
 \end_layout
 
 \end_inset
 
- declaration for this style.
- Must end with 
-\begin_inset Quotes eld
+-Dekla\SpecialChar \-
+ration für diesen Stil überschreibt.
+ Muss mit 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -8133,133 +8440,167 @@ BabelPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndBabelPreamble
 \end_layout
 
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
-.
- See section 
+ beendet werden.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
 
 \end_inset
 
- for details on its use.
+ für Details zur Verwendung.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 BottomSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Ähnlich wie 
-\family typewriter
-TopSep
-\family default
- -- nur ist dies der Abstand nach einer Serie von Absätzen.
- Ist der 
-\family typewriter
-TopSep
-\family default
- des nachfolgenden Layouts nicht 0, so werden die beiden Abstände 
-\emph on
-nicht
-\emph default
- addiert, sondern LyX wählt das Maximum der beiden Abstände.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float=0
+\end_layout
+
+\end_inset
+
+]
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes gld
+\end_inset
+
+float
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Gleitkommazahl, wie 
+\begin_inset Quotes gld
+\end_inset
+
+1,5
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Der vertikale Abstand, der die letzte Serie von Absätzen vom folgenden
+ Text trennt.
+ Wenn der nächste Paragraph einen anderen Stil hat, werden die Abstände
+ nicht einfach addiert, sondern das Maximum wird verwendet.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Category
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string]
-\family default
-\series default
- 
-\begin_inset space ~
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-ist die Kategorie für diesen Stil.
+] ist die Kategorie für diesen Stil.
  Sie wird benutzt, um zugehörige Stile in der Layout-Kombobox der Werkzeugleiste
  zu gruppieren.
- Eine beliebige Zei\SpecialChar \-
-chenkette kann benutzt werden, aber vielleicht wollen
- Sie vorhandene Ka\SpecialChar \-
+ Jeder beliebige String kann benutzt werden, aber es ist sinnvoll vorhandene
+ Ka\SpecialChar \-
 te\SpecialChar \-
-gorien zusammen mit Ihren eigenen Stilen benutzen.
+gorien zusammen mit Ihren eigenen Stilen zu benutzen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 CommandDepth
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-ist die Tiefe des XML-Befehls und wird nur für XML-Formate benutzt.
+ ist die Tiefe des XML-Befehls und wird nur für XML-Formate benutzt.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 CopyStyle
-\family default
-\series default
- Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
- aktuelle kopieren.
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Kopiert alle Eigenschaften eines bereits definierten Layouts in das aktuelle.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 DependsOn
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
 \end_inset
 
-ist der Name eines Stils, dessen Vorspann 
+] ist der Name eines Stils, dessen Vorspann 
 \emph on
 vor
 \emph default
@@ -8282,216 +8623,327 @@ Beachten Sie, dass es außer dieser Funktionalität keine andere Möglichkeit
 \end_layout
 
 \begin_layout Description
-
-\family typewriter
-\series medium
-EndLabelType
-\family default
-\series default
- 
-\family typewriter
-[
-\emph on
-No_Label
-\emph default
-, Box, Filled_Box, Static] 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-ist der Markentyp, der am Ende eines Absatzes steht (oder mehrerer Absätze,
- wenn 
-\family typewriter
-LaTe
-\begin_inset ERT
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
+EndLabeltype
 \end_layout
 
 \end_inset
 
-XType
-\family default
- auf 
-\family typewriter
-Environment
-\family default
- , 
-\family typewriter
-Item_Environment
-\family default
- oder 
-\family typewriter
-List_En\SpecialChar \-
-vironment
-\family default
- gesetzt ist).
- No_Label bedeutet 
-\emph on
-nichts
-\emph default
-, 
-\family typewriter
-Box
-\family default
- oder 
-\family typewriter
-Filled_Box
-\family default
- ist ein weißes oder schwarzes Quadrat, das für das Markieren eines Beweisendes
- geeignet ist.
- 
-\family typewriter
-Static
-\family default
- ist eine explizite Zeichenkette.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-EndLabelString
-\begin_inset space ~
-\end_inset
-
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-ist eine Zeichenkette, die für einen 
-\family typewriter
-Static
-\family default
- 
-\family typewriter
-\series medium
-EndLabelType
-\family default
-\series default
- benutzt wird.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Font
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Der Zeichensatz, der für den Textkörper 
-\emph on
-und
-\emph default
- die Marke verwendet wird (siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Beschreibung-des-Zeichensatzes"
-
-\end_inset
-
-).
- Wird 
-\family typewriter
-Font
-\family default
- gesetzt, dann erhält 
-\family typewriter
-Label\SpecialChar \-
-Font
-\family default
- automatisch denselben Wert.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-FreeSpacing
-\family default
-\series default
  [
-\family typewriter
-\emph on
-0
-\emph default
-, 1
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "FreeSpacing"
-
-\end_inset
-
-Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen Wörtern
- einzufügen.
- Diese Eigenschaft kann in bestimmten Fällen umständ\SpecialChar \-
-lich sein, zum Beispiel,
- wenn ein Programmcode eingegeben werden soll.
- In solchen Fällen kann 
-\family typewriter
-FreeSpacing
-\family default
- auf 
-\family typewriter
-1
-\family default
- gesetzt werden.
- LyX erzeugt in diesem Fall für jedes zusätzliche Leerzeichen ein geschütztes
- Leerzeichen, es sei denn, LyX befindet sich im LaTeX-Modus.
-\end_layout
-
-\begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\emph on
+No_Label
+\emph default
+, Box, Filled_Box, Static
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+ist der Markentyp, der am Ende eines Absatzes steht (oder mehrerer Absätze,
+ wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+ auf
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+List_Environment
+\end_layout
+
+\end_inset
+
+ gesetzt ist).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+No_Label
+\end_layout
+
+\end_inset
+
+ bedeutet 
+\begin_inset Quotes gld
+\end_inset
+
+nichts
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Box
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Filled_Box
+\end_layout
+
+\end_inset
+
+ ist ein weißes oder schwarzes Quadrat, das für das Markieren eines Beweisendes
+ geeignet ist.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Static
+\end_layout
+
+\end_inset
+
+ ist eine explizite Zeichenkette.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndLabelString
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string=""
+\end_layout
+
+\end_inset
+
+] ist eine Zeichenkette, die für einen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Static
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndLabelType
+\end_layout
+
+\end_inset
+
+ benutzt wird.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ Der Zeichensatz, der für den Textkörper 
+\emph on
+und
+\emph default
+ die Marke verwendet wird, siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.
+ Wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ gesetzt, dann erhält 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelFont
+\end_layout
+
+\end_inset
+
+ automatisch denselben Wert.
+ Daher sollte 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ zuerst definiert werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen
+ Wörtern einzufügen.
+ Diese Eigenschaft kann in bestimmten Fällen umständ\SpecialChar \-
+lich sein, zum Beispiel,
+ wenn ein Programmcode eingegeben werden soll.
+ In solchen Fällen kann 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+FreeSpacing
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt werden.
+ LyX erzeugt in diesem Falls sich LyX nicht im LaTeX-Modus befindet, erzeugt
+ es für jedes zusätzliche Leerzeichen ein geschütztes Leerzeichen.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTML*
 \end_layout
 
 \end_inset
 
- These tags are used with XHTML output.
- See 
+ Diese Tags kontrollieren die XHTML-Ausgabe.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Style-XHTML"
+reference "sec:Tags-for-XHTML"
 
 \end_inset
 
@@ -8499,21 +8951,16 @@ reference "sub:Paragraph-Style-XHTML"
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 InnerTag
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-wird nur für XML-Formate benutzt.
+ [[FIXME]] (Wird nur für XML-Formate benutzt.)
 \end_layout
 
 \begin_layout Description
@@ -8526,275 +8973,497 @@ InPreamble
 
 \end_inset
 
- 
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-[1, 0]
+
+\emph on
+0
 \end_layout
 
 \end_inset
 
- 
-\lang english
-If 1, marks the style as to be included in the document preamble rather
- than in the document body.
- This is useful for document classes that want such information as the title
- and author to appear in the preamble.
- Note that this works only for styles for which the 
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+1
+\end_layout
 
-\lang english
+\end_inset
+
+]Wenn auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+gesetzt, wird der Stil in den LaTeX-Vorspann gesetzt und nicht in den eigentlich
+en Dokumenttext.
+ Dies ist nützlich für Dokumentklassen, die Informationen wie den Titel
+ und Autor im Vorspann erwarten.
+ Beachten Sie, dass dies nur für Stile funktioniert, deren 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LatexType
 \end_layout
 
 \end_inset
 
- is 
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
 \end_inset
 
- or 
+ oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Paragraph
 \end_layout
 
 \end_inset
 
-.
+ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 InTitle
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
-1,
-\family default
- 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 0
-\family default
-\emph default
-]
-\begin_inset Newline newline
-\end_inset
-
-Bei 1 wird nach dem Layout noch ein 
-\family typewriter
-
-\backslash
-maketitle
-\family default
- in LaTeX eingefügt.
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-ItemSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
 \end_inset
 
-Dies ist ein zusätzlicher Abstand für die Unterpunkte eines 
-\family typewriter
-Environment
-\family default
--Layouts.
- Wenn in solch einem Layout andere Layouts integriert werden, so werden
- diese mit 
-\family typewriter
-ParSep
-\family default
- getrennt.
- Aber die einzelnen Unterpunkte der Umgebung werden 
-\emph on
-zusätzlich
-\emph default
- mit 
-\family typewriter
-ItemSep
-\family default
- getrennt.
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-ItemTag
-\family default
-\series default
- 
-\begin_inset space ~
 \end_inset
 
+] Wenn auf 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-wird nur für XML-Formate benutzt.
+\begin_layout Plain Layout
+1
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-KeepEmpty
-\family default
-\series default
- 
-\family typewriter
-[
-\emph on
-0
-\emph default
-, 1]
-\begin_inset Newline newline
 \end_inset
 
+gesetzt, wird der Stil als Teil des Titel-Abschnitts behandelt (siehe auch
+ die allgemeinen Textklassen-Parameter 
+\begin_inset Flex Code
+status collapsed
 
-\family default
-Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
- da das zu einer leeren LaTeX-Ausgabe führen würde.
- In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
- in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
- damit keiner vergisst, sie anzugeben.
- In anderen Klassen wird ein solcher Absatz als Unterbrechung verwendet,
- die keinen eigentlichen Text enthält.
+\begin_layout Plain Layout
+TitleLatexType
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelBottomSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
 \end_inset
 
-Der vertikale Abstand zwischen der Marke und dem folgenden Text.
- Wird nur für Marken benutzt, die über dem folgenden Text stehen (
-\family typewriter
-Top_En\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment
-\family default
-, 
-\family typewriter
-Center\SpecialChar \-
-ed_Top_Environment
-\family default
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TitleLatexName
+\end_layout
+
+\end_inset
+
 ).
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
+ItemSep
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float=0
+\end_layout
+
+\end_inset
+
+] Ein zusätzlicher Abstand zwischen Absätzen desselben Layouts.
+ Wenn in einer Umgebung andere Layouts integriert werden, so werden diese
+ mit dem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParSep
+\end_layout
+
+\end_inset
+
+ der Umgebung getrennt.
+ Die kompletten Unterpunkte der Umgebung werden jedoch 
+\emph on
+zusätzlich
+\emph default
+ mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ItemSep
+\end_layout
+
+\end_inset
+
+ getrennt.
+ Man beachte, dass 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ItemSep
+\end_layout
+
+\end_inset
+
+ein 
+\emph on
+Multiplikator
+\emph default
+ ist
+\emph on
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ItemTag
+\end_layout
+
+\end_inset
+
+ [[FIXME]] (Wird nur für XML-Formate benutzt.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+KeepEmpty
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
+ da das zu einer leeren LaTeX-Ausgabe führen würde.
+ In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
+ in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
+ damit keiner vergisst, sie anzugeben; in speziellen Klassen wird ein Absatz
+ als Unterbrechung verwendet, der keinen Text enthält.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelBottomsep
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float=0
+\end_layout
+
+\end_inset
+
+] Der vertikale Abstand zwischen der Marke und dem folgenden Text.
+ Wird nur für Marken benutzt, die über dem folgenden Text stehen (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Top_Environment
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Centered_Top_Environment
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelCounter
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string=""
+\end_layout
+
 \end_inset
 
-
+] ist der Name des Zählers zur automatischen Nummerierung.
 \begin_inset Newline newline
 \end_inset
 
-ist der Name des Zählers zur automatischen Nummerierung (siehe Abschnitt
-\begin_inset Newline linebreak
+Er 
+\emph on
+muss
+\emph default
+ angegeben werden, wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
 \end_inset
 
  
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Counter
+\end_layout
+
+\end_inset
+
+ ist.
+ In diesem Fall wird der Zähler jedes mal erhöht, wenn das entsprechende
+ Layout im Dokument verwendet wird.
+\begin_inset Newline newline
+\end_inset
+
+Er 
+\emph on
+kann
+\emph default
+ angegeben werden, wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+ ist.
+ In diesem Fall ist es etwas kompliziert: Angenommen Sie haben 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelCounter MeinZaehler
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ angegeben, dann lauten die eigentlichen Zähler 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MeinZaehleri
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MeinZaehlerii
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MeinZaehleriii
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MeinZaehleriv
+\end_layout
+
+\end_inset
+
+; so wie in LaTeX.
+ Diese Zähler müssen alle separat deklariert werden.
+\begin_inset Newline newline
+\end_inset
+
+Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Zähler"
 
 \end_inset
 
- für Einzelheiten).
- Er muss vorhanden sein, wenn 
-\family typewriter
-LabelType
-\family default
+ für Einzelheiten zu Zählern.
  
-\family typewriter
-Counter
-\family default
- ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelFont
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Der Zeichensatz, der für die Marke verwendet wird.
- (Siehe Abschnitt
+ Der Zeichensatz, der für die Marke verwendet wird.
+ Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
-.)
+.
 \end_layout
 
 \begin_layout Description
@@ -8807,339 +9476,460 @@ LabelIndent
 
 \end_inset
 
- 
-\lang english
-Text that indicates how far a label should be indented.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string=""
+\end_layout
+
+\end_inset
+
+] Text der angibt, wie weit die Marke eingerückt werden soll.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-LabelSep
-\family default
+\begin_layout Plain Layout
+Labelsep
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
-[
-\family typewriter
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 string=""
-\family default
-]
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Der horizontale Abstand zwischen der Marke und dem folgenden Text.
+] Text der den horizontalen Abstand zwischen der Marke und dem folgenden
+ Text angibt.
  Wird nur für Marken benutzt, die nicht über dem folgenden Text stehen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelString
-\family default
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
-[
-\family typewriter
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 string=""
-\family default
-]
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+] Der String, der für den 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-Der String, der für den 
-\family typewriter
+\begin_layout Plain Layout
 LabelType
-\family default
+\end_layout
+
+\end_inset
+
  
-\family typewriter
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Static
-\family default
-\emph default
+\end_layout
+
+\end_inset
+
  verwendet wird.
  Wenn 
-\family typewriter
-\series medium
-Label\SpecialChar \-
-Counter
-\family default
-\series default
- gesetzt wurde, kann diese Zeichenkette spezielle Formatierungsbefehle enthalten
-, wie sie in Abschnitt
-\begin_inset space \space{}
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelCounter
+\end_layout
+
+\end_inset
+
+ gesetzt wurde, kann der String spezielle Formatierungsbefehle enthalten,
+ wie sie in Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Zähler"
 
 \end_inset
 
  be\SpecialChar \-
 schrieben sind.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wegen der Rückwärtskompatibilität wird die Zeichenkette 
-\family typewriter
-\emph on
-@style-name@
-\family default
-\emph default
- durch den expandierten 
-\family typewriter
-\series medium
-LabelString
-\family default
-\series default
- mit dem Stil 
-\family typewriter
-\emph on
-style-name
-\family default
-\emph default
- ersetzt.
- Diese Funktion ist jetzt überflüssig und sollte durch die Mechanismen,
- die in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Zähler"
-
-\end_inset
-
- beschrieben sind, ersetzt werden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelStringAppendix
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
-\family default
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 string=""
-\family typewriter
-]
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+] wird im Anhang anstatt 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-wird im Anhang anstatt 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelString
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  benutzt.
- Beachten Sie, dass jeder 
-\family typewriter
-\series medium
+ Beachten Sie, dass jede Definition von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelString
-\family default
-\series default
--Befehl auch 
-\family typewriter
-\series medium
+\end_layout
+
+\end_inset
+
+ auch 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelStringAppendix
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  zurücksetzt.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelTag
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-wird nur für XML-Formate benutzt.
+ [FIXME] (Wird nur für XML-Formate benutzt.)
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelType
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 No_Label
 \emph default
-, Manual, Static, Top_Environment, Centered_Top_
-\family default
-
-\begin_inset Newline linebreak
+, Manual, Static, Top_Environment,
+\begin_inset Newline newline
 \end_inset
 
+Centered_Top_Environment, Counter, Sensitive, Enumerate,
+\begin_inset Newline newline
+\end_inset
 
-\family typewriter
-En\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment, Sensitive, Counter
-\family default
+Itemize, Bibliography
+\end_layout
+
+\end_inset
+
 ]
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-
-\family typewriter
-\series medium
-Manual
-\family default
-\series default
- bedeutet: die Marke ist das erste Wort (bis zum ersten echten Leerzeichen).
-\begin_inset Foot
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Wenn Sie mehr als ein Wort als Marke haben wollen, müssen Sie geschützte
- Leerzeichen benutzen.
+Manual
 \end_layout
 
 \end_inset
 
+ bedeutet: die Marke ist das erste Wort (bis zum ersten echten Leerzeichen).
+ Verwenden Sie geschützte Leerzeichen wenn Sie mehr als ein Wort als Marke
+ haben wollen.
  
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Static
-\family default
-\series default
- bedeutet: die Marke wird im Layout definiert (siehe: 
-\family typewriter
+\end_layout
+
+\end_inset
+
+ bedeutet: die Marke ist was als 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelString
-\family default
-).
+\end_layout
+
+\end_inset
+
+ definiert wurde.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Top_Environment
-\family default
- und
-\family typewriter
- Centered_Top_Environment
-\family default
-\series default
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Centered_Top_Environment
+\end_layout
+
+\end_inset
+
  sind Spezialfälle von
-\family typewriter
- Static
-\family default
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Static
+\end_layout
+
+\end_inset
+
 .
- Die Marke wird über dem Absatz abgebildet, aber nur am Anfang der Umgebung
- oder am Anfang einer Serie von Absätzen mit diesem Layout.
+ Die Marke erscheint über dem Absatz, aber nur am Anfang der Umgebung oder
+ am Anfang einer Serie von Absätzen mit diesem Layout.
  Dies benutzt man zum Beispiel im 
-\family sans
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Abstract
-\family default
--Layout oder im 
-\family sans
-Bibliography
-\family default
+\end_layout
+
+\end_inset
+
 -Layout.
- Dasselbe trifft auch für 
-\family typewriter
-Manual
-\family default
--Marken mit dem LaTeX-Typ 
-\family typewriter
-Environment
-\family default
- zu, damit Layouts für Theoreme korrekt arbeiten.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Sensitive
-\family default
-\series default
- ist ein Spezialfall von Bildunterschriften für Gleitobjekte (Abbildungen
- und Tabellen).
+\end_layout
+
+\end_inset
+
+ ist ein Spezialfall für die Bildunterschriftsmarken für Abbildungen und
+ Tabellen-Gleitobjekte.
  
-\family typewriter
-Sensi\SpecialChar \-
-tive
-\family default
- bedeutet, dass der gedruckte Text von der Art des Gleitobjekts abhängt.
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Sensitive
+\end_layout
+
+\end_inset
+
+ bedeutet, dass der gedruckte Text von der Art des Gleitobjekts abhängt:
+ Er ist fest einprogrammiert als 'GleitobjektTyp N', wobei N der Wert des
+ Zählers des Gleitobjekttyps ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-Counter 
-\family default
-\series default
-definiert automatisch nummerierte Zähler, wie in Abschnitt
-\begin_inset space \space{}
+\begin_layout Plain Layout
+Counter
+\end_layout
+
+\end_inset
+
+ definiert automatisch nummerierte Zähler.
+ Der 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ wird erweitert, damit er alle 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Counter
+\end_layout
+
+\end_inset
+
+ enthält: Das Ergebnis wird demnach zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Abschnitt 
+\backslash
+thechapter.
+\backslash
+thesection
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ sein.
+ Siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Zähler"
 
 \end_inset
 
- beschrieben.
+ für weitere Informationen über Zähler.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+ erzeugt die üblichen Marken für Nummerierungen.
+ Momentan sind diese fest auf arabische Zahlen, Kleinbuchstaben, kleine
+ römische Zahlen und Großbuchstaben (für die 4
+\begin_inset space ~
+\end_inset
+
+möglichen Schachtelungstiefen) programmiert.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Itemize
+\end_layout
+
+\end_inset
+
+ erzeugt je nach Schachtelungsebene verschiedene Auflistungszeichen, Diese
+ sind ebenfalls fest programmiert.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\end_inset
+
+ wird intern von LyX verwendet und sollte nur zusammen mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType BibEnvironment
+\end_layout
+
+\end_inset
+
+ verwendet werden.
 \end_layout
 
 \end_deeper
@@ -9153,23 +9943,19 @@ LangPreamble
 
 \end_inset
 
- 
-\lang english
-Note that this will completely override any prior 
+ Beachten Sie, dass dies alle vorhergehenden 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LangPreamble
 \end_layout
 
 \end_inset
 
- declaration for this style.
- Must end with 
-\begin_inset Quotes eld
+-Deklaration für diesen Stil überschreibt.
+ Muss mit 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -9177,107 +9963,156 @@ LangPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndLangPreamble
 \end_layout
 
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
-.
- See section 
+ beendet werden.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
 
 \end_inset
 
- for details on its use.
+ für Details zur Verwendung.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexName
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
 \end_inset
 
-Der Name, den LaTeX für dieses Layout wählt, das heißt entweder der Name
- eines LaTeX-Befehls oder der einer LaTeX-Umgebung.
+] Der LaTeX-Name für dieses Layout.
+ Das bedeutet entweder der Name eines LaTeX-Befehls oder der einer LaTeX-Umgebun
+g.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexParam
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+<Parameter>
+\end_layout
+
+\end_inset
+
+] Ein optionaler Parameter für den entsprechenden
 \begin_inset Newline newline
 \end_inset
 
-Ein optionaler Parameter, der 
-\family typewriter
-\series medium
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LatexName
-\family default
-\series default
- (dem zugehörigen Befehl oder der Umgebung) übergeben wird.
+\end_layout
+
+\end_inset
+
+.
  Dieser Parameter kann innerhalb von LyX nicht mehr geändert werden.
  
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexType
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 Paragraph
 \emph default
-, Command, Environment, Item_Environment, 
+, Command, Environment, Item_Environment,
 \begin_inset Newline newline
 \end_inset
 
-List_Environment
-\family default
-]
-\begin_inset Newline newline
+List_Environment, Bib_Environment
+\end_layout
+
 \end_inset
 
-Legt fest, wie das Layout in LaTeX überführt wird.
- 
+] Legt fest, wie das Layout in LaTeX übersetzt wird.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+ mag irreführend sein, denn dessen Regeln gelten auch für SGML-Klassen.
+ Siehe die SGML Klassendateien für spezielle Beispiele.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Paragraph
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  bewirkt nichts besonderes -- der Text wird als 
 \emph on
 normaler
@@ -9287,123 +10122,167 @@ normaler
 Absatz
 \emph default
  übernommen.
- 
 \end_layout
 
 \begin_layout Description
-
-\family typewriter
-\series medium
-Command
-\family default
-\series default
- behandelt den Text als Argument eines LaTeX-Befehls (
-\family typewriter
-\emph on
-
-\backslash
-LatexBe\SpecialChar \-
-fehl
-\emph default
- {\SpecialChar \ldots{}
-}
-\family default
-).
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Environment
-\family default
-\series default
- behandelt den Text als Kern einer LaTeX-Umgebung
-\begin_inset Foot
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Umgebung und LaTeX-Befehl sind hier etwas irreführend, denn diese
- Regeln gelten auch für SGML-Klassen.
- Schauen Sie sich am besten die SGML-Klassen-Dateien für Beispiele an.
+Command
 \end_layout
 
 \end_inset
 
- 
+ behandelt den Text als Argument eines LaTeX-Befehls
 \begin_inset Newline newline
 \end_inset
 
 (
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\emph on
+LatexName
+\emph default
+{\SpecialChar \ldots{}
+}
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ behandelt den Text als Kern einer LaTeX-Umgebung
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{
 \emph on
-LatexUmgebung
+LatexName
 \emph default
-} \SpecialChar \ldots{}
- 
+}\SpecialChar \ldots{}
+
 \backslash
 end{
 \emph on
-LatexUmgebung
+LatexName
 \emph default
 }
-\family default
+\end_layout
+
+\end_inset
+
 ).
- 
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Item_Environment
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  bewirkt dasselbe wie 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Environment
-\family default
+\end_layout
+
+\end_inset
+
 , nur dass vor jedem Absatz ein 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 item
-\family default
+\end_layout
+
+\end_inset
+
  eingefügt wird.
  
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 List_Environment
-\family default
-\series default
- funktioniert wie 
-\family typewriter
-Item_Environment
-\family default
-, nur dass
-\family typewriter
- Label\SpecialChar \-
-Width\SpecialChar \-
-String
-\family default
- als Argument an die Umgebung übergeben wird.
+\end_layout
 
-\family typewriter
- Label\SpecialChar \-
-WidthString
-\family default
+\end_inset
+
+ funktioniert wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Item_Environment
+\end_layout
+
+\end_inset
+
+, nur dass
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
+ als Argument an die Umgebung übergeben wird.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelWidthString
+\end_layout
+
+\end_inset
+
  kann im Menü 
-\family sans
-Absatz-Einstellungen
-\family default
- (
 \family sans
 Bearbeiten
 \family default
@@ -9429,12 +10308,48 @@ status open
 \end_inset
 
  definiert werden.
-
-\emph on
- 
 \end_layout
 
-\end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Bib_Environment
+\end_layout
+
+\end_inset
+
+ ist wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ aber fügt zusätzlich das notwendige Argument zum Begin-Befehl der Bibliography-
+Umgebung ein:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{thebibliography}{99}
+\end_layout
+
+\end_inset
+
+ Es ist daher nur für die Bibliography-Umgebung nützlich.
+\end_layout
+
 \begin_layout Standard
 Fasst man die letzten Sachen zusammen, wird die LaTeX-Ausgabe entweder so:
 \end_layout
@@ -9442,7 +10357,7 @@ Fasst man die letzten Sachen zusammen, wird die LaTeX-Ausgabe entweder so:
 \begin_layout LyX-Code
 
 \backslash
-latexname[latexparam]{\SpecialChar \ldots{}
+LatexName[LatexParam]{\SpecialChar \ldots{}
 }
 \end_layout
 
@@ -9453,78 +10368,174 @@ oder so:
 \begin_layout LyX-Code
 
 \backslash
-begin{latexname}[latexparam] \SpecialChar \ldots{}
+begin{LatexName}[LatexParam] \SpecialChar \ldots{}
  
 \backslash
-end{latexname}.
+end{LatexName}.
 \end_layout
 
 \begin_layout Standard
 aussehen, abhängig vom LaTeX-Typ.
 \end_layout
 
+\end_deeper
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LeftMargin
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
+\end_layout
+
 \end_inset
 
-Definiert den linken Einzug.
- Wenn ein Layout in ein anderes 
-\family typewriter
-Environment
-\family default
--Layout integriert wird, werden die Breiten der verschiedenen 
-\family typewriter
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string=""
+\end_layout
+
+\end_inset
+
+] Wenn ein Layout in ein anderes Layout für Umgebungen eingefügt wird, werden
+ die Breiten der verschiedenen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LeftMargin
-\family default
-s nicht einfach addiert, sondern vorher in Abhängigkeit zur Schachtelungstiefe
+\end_layout
+
+\end_inset
+
+ nicht einfach addiert, sondern vorher in Abhängigkeit zur Schachtelungstiefe
  mit dem Faktor 
 \begin_inset Formula $\frac{4}{\mathrm{Tiefe}+4}$
 \end_inset
 
  multipliziert.
- Dieser Parameter wird auch dann benutzt, wenn der Rand als 
-\family typewriter
+ Dieser Parameter wird auch dann benutzt, wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Margin
+\end_layout
+
+\end_inset
+
+ als 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Manual
-\family default
+\end_layout
+
+\end_inset
+
  oder 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Dynamic
-\family default
+\end_layout
+
+\end_inset
+
  definiert wurde.
  In diesem Fall wird der Wert zu den gegebenen manuellen oder dynamischen
  Rändern hinzugefügt.
- Für die Bedeutung des Wertes gilt das bei 
-\family typewriter
-ParIndent
-\family default
- Gesagte.
+\begin_inset Newline newline
+\end_inset
+
+Zum Beispiel bedeutet 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MM
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+, dass der Absatz mit der Breite eingerückt wird, die die Buchstaben 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MM
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ in der normalen Schriftart haben.
+ man kann negative Breite erzeugen, indem man den String mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beginnt.
+ Diese Art der Angabe wurde gewählt, damit der Text unabhängig von der verwendet
+en Bildschirmschriftart wie vorgesehen aussieht.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Margin
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  [
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 Static
 \emph default
 , Manual, Dynamic, First_Dynamic, Right_Address_Box
-\family default
+\end_layout
+
+\end_inset
+
 ]
 \begin_inset Newline newline
 \end_inset
@@ -9535,23 +10546,29 @@ legt fest, wie der linke Rand des Textes bestimmt wird.
 
 \begin_deeper
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Static
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  wählt feste Randbreiten.
  
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Manual
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  bedeutet, dass der Rand von der Einstellung der 
 \family sans
 Ausrichtung
@@ -9591,12 +10608,15 @@ status open
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Dynamic
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  bedeutet, der linke Rand hängt von der Größe der verwendeten Markierung
  ab.
  Dies wird zum Beispiel bei automatisch nummerierten Überschriften verwendet.
@@ -9623,16 +10643,25 @@ Dynamic
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 First_Dynamic
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  arbeitet ähnlich wie 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Dynamic
-\family default
+\end_layout
+
+\end_inset
+
 , aber nur die erste Zeile wird dynamisch gesetzt, die anderen statisch.
  Dies wird für die LaTeX
 \begin_inset ERT
@@ -9646,228 +10675,105 @@ status collapsed
 \end_inset
 
 Umgebung 
-\family sans
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 description
-\family default
+\end_layout
+
+\end_inset
+
  benutzt.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Right_Address_Box
-\family default
-\series default
- bedeutet, dass der Rand wird so gewählt, dass die längste Zeile des Absatzes
+\end_layout
+
+\end_inset
+
+ bedeutet, dass der Rand so gewählt wird, dass die längste Zeile des Absatzes
  gerade den rechten Rand berührt.
  Dies wird zum Setzen einer Adresse am rechten Rand der Seite eingesetzt.
 \end_layout
 
 \end_deeper
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 NeedProtect
-\family default
-\series default
-
-\begin_inset space ~
-\end_inset
-
-
-\series medium
-[
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob 
-\emph on
-zerbrechliche
-\emph default
- LaTeX-Befehle innerhalb dieses Layouts durch 
-\family typewriter
-
-\backslash
-protect
-\family default
- ge\SpecialChar \-
-schützt werden müssen.
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-Newline
-\family default
-\series default
-
-\begin_inset space ~
 \end_inset
 
-
-\series medium
-[
-\family typewriter
-0,
-\emph on
-
-\begin_inset space ~
-\end_inset
-
-1
-\family default
-\emph default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob Zeilenumbrüche in LaTeX als 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- dargestellt werden, oder nicht.
- Es macht Sinn, diese Option auszuschalten (Wert: 0), um LaTeX-Einschübe
- in LyX komfortabler editieren zu können.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-NextNoIndent
-\family default
-\series default
-
-\begin_inset space ~
-\end_inset
-
-
-\series medium
-[
-\family typewriter
-1,
-\emph on
-
-\begin_inset space ~
-\end_inset
-
-0
-\family default
-\emph default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob der nachfolgende Absatz einen linken Einzug haben darf oder
- nicht.
- 
-\family typewriter
-1
-\family default
- heißt, der Absatz erhält auf keinen Fall einen Einzug.
- (Zum Beispiel nach einer Überschrift.)
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ObsoletedBy
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-ist der Name eines Layouts, das durch dieses ersetzt wurde.
- So können Sie ein Layout umbenennen und die Rückwärtskompatibilität erhalten.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-OptionalArgs
-\begin_inset space ~
-\end_inset
-
-[int=0]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-ist die Zahl der optionalen Argumente, die in diesem Layout benutzt werden
- können.
- Dies ist zum Beispiel bei Abschnittsüberschriften hilfreich und macht nur
- mit LaTeX Sinn.
-\end_layout
-
-\begin_layout Description
-
-\series medium
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\series medium
-ParbreakIsNewline
+\emph on
+0
 \end_layout
 
 \end_inset
 
+,
+\begin_inset space \thinspace{}
+\end_inset
 
-\series default
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Gibt an, ob 
+\begin_inset Quotes gld
+\end_inset
+
+zerbrechliche
+\begin_inset Quotes grd
+\end_inset
+
+ LaTeX-Befehle innerhalb dieses Layouts durch 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+ geschützt werden müssen.
+ (Achtung: Diese Einstellung sagt nichts darüber aus, ob der Befehl an sich
+ geschützt werden soll.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Newline
+\end_layout
+
+\end_inset
+
  [
 \begin_inset Flex Code
 status collapsed
@@ -9878,7 +10784,85 @@ status collapsed
 
 \end_inset
 
-, 
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Gibt an, ob Zeilenumbrüche in LaTeX als 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ dargestellt werden, oder nicht.
+ Man kann dies ausschalten (Wert: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+), um TeX-Code in LyX komfortabler editieren zu können.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NextNoIndent
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -9888,197 +10872,308 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Indicates that paragraphs will not be separated by an empty line in LaTeX
- output, but only by a line break; together with 
+] Gibt an, ob der nachfolgende Absatz einen linken Einzug haben darf oder
+ nicht.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ heißt, der Absatz erhält auf keinen Fall einen Einzug (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nach einer Überschrift), wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DefaultStyle
+\end_layout
+
+\end_inset
+
+- (normalerweise 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Standard
+\end_layout
+
+\end_inset
+
+-) Paragraphen einen Einzug haben.
+ (Daher beeinflusst die Einstellung nur 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Standard
+\end_layout
+
+\end_inset
+
+-Paragraphen.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ObsoletedBy
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
+\end_inset
+
+] Der Name eines Layouts, das durch dieses ersetzt wurde.
+ So können Sie ein Layout umbenennen und die Rückwärtskompatibilität erhalten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+OptionalArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int=0
+\end_layout
+
+\end_inset
+
+] Die Zahl der optionalen Argumente, die in diesem Layout benutzt werden
+ können.
+ Dies ist zum Beispiel bei Abschnittsüberschriften hilfreich und macht nur
+ mit LaTeX Sinn.
+ Beachten Sie, dass in der Ausgabe die optionalen Argumente vor den benöigten
+ stehen werden (siehe unten).
+ Man kann also Konstrukte wie dieses hier haben:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+mycmd[optional1]{benötigt1}{Inhalt des Paragraphs}
+\end_layout
+
+\begin_layout Standard
+aber nicht:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+mycmd[optional1]{benötigt1}[optional2]{Inhalt des Paragraphs}
+\end_layout
+
+\begin_layout Standard
+zumindest nicht ohne TeX-Code (in den man alles schreiben kann).
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParbreakIsNewline
+\end_layout
+
+\end_inset
+
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Gibt an, dass ein Paragraph nicht durch eine leere Zeile in der LaTeX-Ausgabe
+ abgesetzt wird, sondern nur duch einen Zeilenumbruch.
+ Zusammen mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 PassThru 1
 \end_layout
 
 \end_inset
 
-, this allows to emulate a plain text editor (like the ERT inset).
+ erlaubt dies die Emulation eines reinen Texteditors (so wie die TeX-Code
+ Einfügung).
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 ParIndent
-\family default
-\series default
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\series medium
-[
-\family typewriter
+\begin_layout Plain Layout
 string=""
-\family default
-]
-\series default
+\end_layout
+
+\end_inset
+
+] Der Einzug der ersten Zeile eines Absatzes.
  
-\begin_inset space ~
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Parindent
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Der Einzug der ersten Zeile eines Absatzes.
- Als Argument wird eine Zeichenkette übergeben.
- Zum Beispiel bedeutet 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-MM
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-, dass die erste Zeile genau so weit eingezogen wird, wie die Breite von
- 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-MM
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- im normalen Zeichensatz ist.
- Einen negativen Wert können Sie angeben, indem Sie ein 
-\begin_inset Quotes gld
-\end_inset
-
--
-\begin_inset Quotes grd
-\end_inset
-
- voranstellen.
-\begin_inset Newline newline
-\end_inset
-
-Diese Methode wurde gewählt, damit das Aussehen auf dem Bildschirm bei unterschi
-edlichen Zeichensätzen möglichst ähnlich bleibt.
- 
-\family typewriter
-ParIndent
-\family default
  bleibt für ein bestimmtes Layout fest.
  Eine Ausnahme ist das Standard-Layout, denn dort kann der Einzug vom vorherigen
  Layout mit 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 NextNoIndent
-\family default
+\end_layout
+
+\end_inset
+
  verboten werden.
-\begin_inset Newline newline
+ Außerdem benutzt das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Standard
+\end_layout
+
 \end_inset
 
-Auch benutzt das Standard-Layout innerhalb von Umgebungen den Einzug der
- Umgebung und nicht den eigenen.
- Zum Beispiel haben Standardabsätze innerhalb einer Aufzählung keinen Einzug.
+-Layout innerhalb von Umgebungen den 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Parindent
+\end_layout
+
+\end_inset
+
+ der Umgebung und nicht den eigenen.
+ Zum Beispiel haben 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Standard
+\end_layout
+
+\end_inset
+
+-Absätze innerhalb einer Aufzählung keinen Einzug.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 ParSep
-\family default
-\series default
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\series medium
-[
-\family typewriter
+\begin_layout Plain Layout
 float=0
-\family default
-]
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Der vertikale Anstand zwischen den Absätzen dieses Layouts.
+] Der vertikale Anstand zwischen den Absätzen dieses Layouts.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-ParSkip
-\family default
+\begin_layout Plain Layout
+Parskip
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
-[
-\family typewriter
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 float=0
-\family default
-]
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-LyX erlaubt im Menü 
+] Der Benutzer kann in LyX wählen ob Absätze duch 
 \family sans
-Dokument
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Einstellungen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Textformat
-\family default
- die Einstellung 
-\family sans
-Absätze
-\begin_inset space \space{}
-\end_inset
-
-trennen
-\begin_inset space \space{}
-\end_inset
-
-durch
-\family default
-.
- Mögliche Einstellungen sind entweder 
-\family sans
-Einrü\SpecialChar \-
-ckung
+Einrückung
 \family default
  oder 
 \family sans
@@ -10088,8 +11183,23 @@ Vertikaler
 
 Abstand
 \family default
-.
+ getrennt werden.
  Wenn 
+\family sans
+Einrückung
+\family default
+ gewählt ist, wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Parskip
+\end_layout
+
+\end_inset
+
+ ignoriert.
+ Ist 
 \family sans
 Vertikaler
 \begin_inset space \space{}
@@ -10097,88 +11207,53 @@ Vertikaler
 
 Abstand
 \family default
- gewählt wird, wird in einem Layout mit 
-\family typewriter
-Latex\SpecialChar \-
-Type Paragraph
-\family default
- der Wert von 
-\family typewriter
-ParIndent
-\family default
- ignoriert.
- Stattdessen werden alle Absätze durch einen vertikalen Abstand getrennt.
- Die Länge dieses Abstands ist das Produkt von 
-\family typewriter
-ParSkip
-\family default
- und der Höhe des Standardzeichensatzes.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-PassThru
-\series default
-
-\begin_inset space ~
-\end_inset
-
-
-\series medium
-[0,
-\series default
- 1]
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
- ohne diverse von LaTeX benötigte Ersetzungen durchzuführen.
- Dies ersetzt in gewisser Weise das alte Zeichensatzattribut 
-\family typewriter
-LaTe
-\begin_inset ERT
+ gewählt wird 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
+ParIndent
 \end_layout
 
 \end_inset
 
-X
-\family default
-.
+ ignoriert und alle Absätze durch den vertikalen Abstand von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Parskip
 \end_layout
 
-\begin_layout Description
+\end_inset
 
-\family typewriter
-\series medium
-Preamble\SpecialChar \ldots{}
-EndPreamble
-\family default
-\series default
- 
+ getrennt.
+ Die Länge dieses Abstands berechnet sich mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Parskip
 \begin_inset space ~
 \end_inset
 
+* DefaultHeight
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
-Eine Serie von Makrodefinitionen, die in die Präambel (vor 
-\family typewriter
+ wobei 
+\begin_inset Flex Code
+status collapsed
 
-\backslash
-begin{docu\SpecialChar \-
-ment}
-\family default
-) eingefügt werden, falls dieses Layout benutzt wird.
+\begin_layout Plain Layout
+DefaultHeight
+\end_layout
+
+\end_inset
+
+ die Höhe einer Zeile in der normalen Schrift ist.
+ Dadurch bleibt das Aussehen mit verschiedenen Schriften gleich.
 \end_layout
 
 \begin_layout Description
@@ -10186,8 +11261,96 @@ ment}
 status collapsed
 
 \begin_layout Plain Layout
+PassThru
+\end_layout
 
-\series medium
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
+ ohne diverse von LaTeX benötigte Ersetzungen durchzuführen.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Preamble
+\end_layout
+
+\end_inset
+
+ Befehle und Definitionen, die in die Präambel (vor 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{docu\SpecialChar \-
+ment}
+\end_layout
+
+\end_inset
+
+) eingefügt werden, wenn dieses Layout benutzt wird.
+ Kann verwendet werden um Pakete zu laden, Makros zu definieren usw..
+ Muss mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 RefPrefix
 \end_layout
 
@@ -10203,10 +11366,9 @@ string
 
 \end_inset
 
-] 
-\lang english
-The prefix to use when creating labels referring to paragraphs of this type.
- This allows the use of formatted references.
+] Der Präfix, der verwendet werden soll, wenn auf Marken dieses Paragraphs
+ verwiesen wird.
+ Dies erlaubt die Verwendung von Formatierten Querverweisen.
 \end_layout
 
 \begin_layout Description
@@ -10214,8 +11376,6 @@ The prefix to use when creating labels referring to paragraphs of this type.
 status collapsed
 
 \begin_layout Plain Layout
-
-\series medium
 RequiredArgs
 \end_layout
 
@@ -10231,205 +11391,244 @@ int=0
 
 \end_inset
 
-] 
-\lang english
-The number of required arguments that the LaTeX command or environment correspon
-ding to this style expects.
- In the case of a command, these are required arguments 
+] Die Anzahl an benötigten Argumenten, die der LaTeX-Befehl oder die -Umgebung
+ benötigt.
+ Für Befehle sind die benötigte Argumente 
 \emph on
-other than
+andere
 \emph default
- that associated with the content of the paragraph itself.
- These do not actually have to be provided: LyX will output empty arguments
- if necessary.
- Note that optional arguments will be output before required arguments.
- See the discussion of the 
+ als die, die mit dem Inhalt des Absatzes zu tun haben.
+ Diese müssen nicht unbedingt angegeben werden: LyX wird leere Argumente
+ ausgeben, wenn nötig.
+ Beachten Sie, dass die optionalen Argumente vor den benötigten ausgegeben
+ werden.
+ Siehe die obige Diskussion in der Beschreibung von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OptionalArgs
 \end_layout
 
 \end_inset
 
- tag above for more information.
+ für weitere Informationen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-Requires
-\family default
-\series default
+\begin_layout Plain Layout
+Requires 
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\series medium
-[
-\family typewriter
+\begin_layout Plain Layout
 string
-\family default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series medium
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Requires-2"
+\end_layout
 
 \end_inset
 
+] legt fest, dass das Layout die Funktion 
+\begin_inset Flex Code
+status collapsed
 
-\series default
-legt fest, dass das Layout die Funktion 
-\family typewriter
+\begin_layout Plain Layout
 string
-\family default
+\end_layout
+
+\end_inset
+
  benötigt.
- Sehen Sie sich auch die Beschreibung von 
-\family typewriter
+ Siehe die Beschreibung von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Provides
-\family default
+\end_layout
+
+\end_inset
+
+ in Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Provides"
+LatexCommand ref
+reference "sub:Allgemeine-Parameter-für"
 
 \end_inset
 
- an.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-RightMargin
-\family default
-\series default
-
-\begin_inset space ~
-\end_inset
-
-
-\series medium
-[
-\family typewriter
-string=""
-\family default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Ähnlich wie 
-\family typewriter
-LeftMargin
-\family default
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
+RightMargin
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string=""
+\end_layout
+
+\end_inset
+
+] Ähnlich wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LeftMargin
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Spacing
-\family default
-\series default
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\series medium
-[
-\family typewriter
+\begin_layout Plain Layout
+
 \emph on
 single
-\emph default
-,
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-onehalf,
-\begin_inset space ~
-\end_inset
-
-double,
-\begin_inset space ~
-\end_inset
-
-other
-\family default
-\emph on
-
-\begin_inset space ~
-\end_inset
-
-Wert
-\emph default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Dies definiert die Voreinstellung für den Zeilenabstand des Layouts.
- Die Argumente 
-\family typewriter
-single
-\family default
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 onehalf
-\family default
- und 
-\family typewriter
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 double
-\family default
- entsprechen Multiplikatoren 1, 1.25 und 1.667.
- Wenn Sie als Argument 
-\family typewriter
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 other
-\family default
+\begin_inset space ~
+\end_inset
+
+<Wert>
+\end_layout
+
+\end_inset
+
+] Dies definiert die Voreinstellung für den Zeilenabstand des Layouts.
+ Die Argumente 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+single
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+onehalf
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+double
+\end_layout
+
+\end_inset
+
+ entsprechen den Multiplikatoren 1, 1.25 und 1.667.
+ Wenn Sie als Argument 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+other
+\end_layout
+
+\end_inset
+
  angeben, müssen Sie  als 
 \emph on
 Wert
 \emph default
  einen konkreten Multiplikator angeben.
  Im Gegensatz zu anderen Parametern erzeugt LyX, wenn 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Spacing
-\family default
- gesetzt wird, spezifischen LaTeX-Code, der auf das Paket 
-\family typewriter
-setspace.sty
-\family default
- zurückgreift.
+\end_layout
+
+\end_inset
+
+ gesetzt wird, spezifischen LaTeX-Code, der das LaTeX-Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+setspace
+\end_layout
+
+\end_inset
+
+ verwendet.
 \end_layout
 
 \begin_layout Description
@@ -10437,8 +11636,6 @@ setspace.sty
 status collapsed
 
 \begin_layout Plain Layout
-
-\series medium
 Spellcheck
 \end_layout
 
@@ -10455,98 +11652,99 @@ status collapsed
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-Spellcheck paragraphs of this style.
- Default is true.
+] Erlaubt es, den Inhalt des Paragraphs auf Rechtschreibung zu überprüfen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TextFont
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ Der Zeichensatz, der für den Textkörper verwendet wird.
+\begin_inset Newline newline
+\end_inset
+
+Siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-Der Zeichensatz, der für den Textkörper verwendet wird.
- (Siehe auch Abschnitt 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
-.)
+.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TocLevel
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[int]
-\family default
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int=3
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
  
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
+\family default
 ist die Stufe des Stils im Inhaltsverzeichnis und wird zur automatischen
  Nummerierung von Abschnittsüberschriften benutzt.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 TopSep
-\family default
-\series default
+\end_layout
 
-\begin_inset space ~
 \end_inset
 
 
 \series medium
+ 
+\series default
 [
 \family typewriter
 float=0
 \family default
-]
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Der vertikale Abstand, der die erste Serie von Absätzen vom vorangehenden
+] Der vertikale Abstand, der die erste Serie von Absätzen vom vorangehenden
  Text trennt.
 \end_layout
 
@@ -10560,21 +11758,6 @@ name "sub:I18n"
 \end_inset
 
 Internationalization of Paragraph Styles
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-LyX has long supported internationalization of layout information, but,
- until version 2.0, this applied only to the user interface and not to, say,
- PDF output.
- Thus, French authors were forced to resort to ugly hacks if they wanted
- `
-\lang french
-Théorème
-\lang english
- 1' instead of `Theorem 1'.
- Thanks to Georg Baum, that is no longer the case.
 \end_layout
 
 \begin_layout Standard
@@ -10885,7 +12068,11 @@ captionsfrench{
 \backslash
 renewcommand{
 \backslash
-claimname}{Affirmation}}   
+claimname}{Affirmation}}
+\begin_inset Newline newline
+\end_inset
+
+
 \backslash
 addto
 \backslash
@@ -10893,7 +12080,11 @@ captionsngerman{
 \backslash
 renewcommand{
 \backslash
-claimname}{Behauptung}}   
+claimname}{Behauptung}}
+\begin_inset Newline newline
+\end_inset
+
+
 \backslash
 providecommand{
 \backslash
@@ -10967,20 +12158,38 @@ name "sub:Gleitobjekte"
 \end_layout
 
 \begin_layout Standard
-Seit LyX 1.3.0 ist es möglich und nötig, Gleitobjekte (
-\family sans
+Es ist nötig Gleitobjekte (
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Abbildung
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family sans
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Tabelle
-\family default
+\end_layout
+
+\end_inset
+
 ,\SpecialChar \ldots{}
 ) in der Textklasse selber zu definieren.
  Standardgleitobjekte sind in der Datei 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 stdfloats.inc
-\family default
+\end_layout
+
+\end_inset
+
  enthalten, so dass Sie sie nur noch
 \end_layout
 
@@ -10996,187 +12205,458 @@ onen helfen:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Extension
+\end_layout
+
+\end_inset
+
 
 \family typewriter
 \series medium
-Extension
-\begin_inset space ~
-\end_inset
-
-[string=""]
+ 
 \family default
 \series default
- 
-\begin_inset space ~
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-Die Dateinamenerweiterung einer zusätzlichen Datei für das Abbildungsver\SpecialChar \-
-zeichnis
- (oder andere).
+] Die Dateinamenerweiterung einer zusätzlichen Datei für das Abbildungsver\SpecialChar \-
+zeichn
+is (oder andere).
  LaTeX schreibt die Beschriftungen in diese Datei.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 GuiName
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-Die Zeichenkette, die in den Menüs und für die Beschriftung benutzt wird.
+] Die Zeichenkette, die in den Menüs und für die Beschriftung benutzt wird.
  Dies wird in die aktuelle Sprache übersetzt, wenn babel verwendet wird.
 \end_layout
 
 \begin_layout Description
-
-\family typewriter
-\series medium
-LaTe
-\begin_inset ERT
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
+HTML*
 \end_layout
 
 \end_inset
 
-XBuiltin
-\begin_inset space ~
-\end_inset
-
-[0,
-\begin_inset space ~
-\end_inset
-
-1]
-\family default
-\series default
- 
+ Diese Tags kontrollieren die XHTML-Ausgabe.
+ Siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tags-for-XHTML"
+
 \end_inset
 
-1 bedeutet, das das Gleitobjekt bereits von der LaTeX-Dokumentklasse benutzt
- wird.
- 0 bedeutet, das das Gleitobjekt im LaTeX-Paket 
-\family typewriter
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IsPredefined
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\emph default
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Gibt an, ob das Gleitobjekt bereits in der Dokumentklasse definiert ist
+ oder ob das LaTeX-Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 float
-\family default
- definiert wird.
+\end_layout
+
+\end_inset
+
+ geladen werden muss, um es zu definieren.
+ Die Voreinstellung ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, was bedeutet, dass 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float
+\end_layout
+
+\end_inset
+
+ verwendet wird.
+ Es sollte auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt werden, wenn das Gleitobjekt bereits in der Dokumentklasse definiert
+ ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-ListName
-\begin_inset space ~
-\end_inset
-
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Die Überschrift für das Gleitobjekt-Verzeichnis.
- Dies wird in die Dokumentsprache übersetzt.
+\begin_layout Plain Layout
+ListCommand
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-NumberWithin
-\begin_inset space ~
 \end_inset
 
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
+ [
+\begin_inset Flex Code
+status collapsed
 
-
-\begin_inset Newline newline
-\end_inset
-
-Dieses optionale Argument bestimmt, ob Gleitobjekte dieser Klasse mit der
- Abschnittsnummer dieses Dokuments nummeriert werden.
- Wenn zum Beispiel [string="chapter"] gesetzt ist, werden die Gleitobjekte
- mit den Kapitelnummern nummeriert.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Placement
-\begin_inset space ~
-\end_inset
-
-[string=""]
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Die Standardplatzierung für die Gleitobjektklasse.
-\family typewriter
-
-\begin_inset Newline linebreak
-\end_inset
-
+\begin_layout Plain Layout
 string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Der Befehl der verwendet wird, um eine Liste der Gleitobjekte dieses Typs
+ zu generieren; das `
+\backslash
+' muss weggelassen werden.
+ Der Befehl 
+\emph on
+muss
+\emph default
+ angegeben werden, wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UsesFloatPkg
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ gesetzt ist, da es sonst keine Möglichkeit gibt, diesen Befehl zu erstellen.
+ Er wird ignoriert, falls 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UsesFloatPkg
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist, da es dann eine Möglichkeit gibt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ListName
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Die Überschrift für das Gleitobjekt-Verzeichnis (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abbildungsverzeichnis
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Sie wird für die Bildschirmmarke in LyX verwendet, von LaTeX für den Titel
+ verwendet und als Titel in der XHTML-Ausgabe.
+ Sie wird in die Dokumentsprache übersetzt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NumberWithin
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Dieses optionale Argument bestimmt, ob Gleitobjekte dieser Klasse mit
+ der Abschnittsnummer dieses Dokuments nummeriert werden.
+ Wenn zum Beispiel 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NumberWithin
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+chapter
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt ist, werden die Gleitobjekte mit den Kapitelnummern nummeriert.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Placement
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Die Standardplatzierung für die Gleitobjektklasse.
+
+\family typewriter
+ 
 \family default
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
  sollte die Standard-LaTeX-Werte 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 t
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 b
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 p
-\family default
+\end_layout
+
+\end_inset
+
  und 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 h
-\family default
+\end_layout
+
+\end_inset
+
  für oben, unten, Seite und hier enthalten.
 \begin_inset Foot
 status collapsed
@@ -11188,100 +12668,280 @@ Wie in LaTeX ist die Reihenfolge der Buchstaben unerheblich.
 \end_inset
 
  Zusätzlich gibt es den neuen Typ 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 H
-\family default
-, der mit Gleitobjekt nichts mehr zu tun hat, denn er bedeutet: drucke es
- 
+\end_layout
+
+\end_inset
+
+, der nicht wirklich für ein Gleitobjekt steht, denn er bedeutet: drucke
+ es 
 \emph on
 hier
 \emph default
  und nirgendwo sonst.
  Beachten Sie, dass 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 H
-\family default
+\end_layout
+
+\end_inset
+
  besonders ist und wegen der Implementierungsdetails nicht bei nicht-eingebauten
  Gleitobjekttypen benutzt werden kann.
- Wenn Sie das nicht verstehen, benutzen Sie einfach 
-\family typewriter
-"tbp"
-\family default
+ Wenn Sie die Platzierung nicht verstehen, benutzen Sie einfach 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tbp
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Präfix, der verwendet werden soll, wenn auf Marken dieser Gleitobjekte
+ verwiesen wird.
+ Dies erlaubt die Verwendung von Formatierten Querverweisen.
+ Man kann den 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RefPrefix
+\end_layout
+
+\end_inset
+
+ eines kopierten Stils entfernen, indem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Quotes gld
+\end_inset
+
+OFF
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt wird.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Style
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""] 
-\family default
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-ist der Gleitobjektstil, wenn er mit 
-\family typewriter
+] ist der Gleitobjektstil, wenn er mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 newfloat
-\family default
+\end_layout
+
+\end_inset
+
  definiert wird.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Type
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""] 
-\family default
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-ist der 
-\emph on
+] ist der 
+\begin_inset Quotes gld
+\end_inset
+
 Typ
-\emph default
- der neuen Gleitobjektklasse, wie Programm oder Algorithmus.
+\begin_inset Quotes grd
+\end_inset
+
+ der neuen Gleitobjektklasse, wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Programm oder Algorithmus.
  Nach dem entsprechenden 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 newfloat
-\family default
+\end_layout
+
+\end_inset
+
  stehen Befehle wie 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-be\SpecialChar \-
-gin{program}
-\family default
+begin{program}
+\end_layout
+
+\end_inset
+
  oder 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 end{algorithm*}
-\family default
+\end_layout
+
+\end_inset
+
  zur Verfügung.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UsesFloatPkg
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Gibt an, ob dieses Gleitobjekt mit Hilfe des LaTeX-Pakets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+float
+\end_layout
+
+\end_inset
+
+ definiert wurde, entweder durch die Dokumentklassen, ein anderes Paket
+ oder durch LyX.
 \end_layout
 
 \begin_layout Description
@@ -11309,40 +12969,59 @@ name "sub:Flexible-Einfügungen-und"
 \end_layout
 
 \begin_layout Standard
-Seit Version 1.4.0 unterstützt LyX Zeichenstile.
- Seit Version 1.6.0 heißen sie Flexible Einfügungen.
-\end_layout
-
-\begin_layout Standard
 Es gibt drei Arten von flexiblen Einfügungen:
 \end_layout
 
 \begin_layout Itemize
 Zeichenstil (
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 CharStyle
-\family default
+\end_layout
+
+\end_inset
+
 ): diese definieren semantische Textauszeichnungen, die mit LaTeX-Befehlen
  wie 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 noun
-\family default
+\end_layout
+
+\end_inset
+
  oder 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 code
-\family default
+\end_layout
+
+\end_inset
+
  korrespondieren.
 \end_layout
 
 \begin_layout Itemize
 benutzerdefiniert (
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Custom
-\family default
+\end_layout
+
+\end_inset
+
 ): diese können benutzt werden, um benutzer\SpecialChar \-
 de\SpecialChar \-
 fi\SpecialChar \-
@@ -11352,39 +13031,69 @@ te einklappbare Einfügungen
 no\SpecialChar \-
 te usw.
  Ein naheliegendes Beispiel ist die Endnotiz, die im 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 endnote
-\family default
+\end_layout
+
+\end_inset
+
 -Modul definiert ist.
 \end_layout
 
 \begin_layout Itemize
 XML-Element (
-\family sans
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Element
-\family default
+\end_layout
+
+\end_inset
+
 ): diese werden mit DocBook-Klassen benutzt.
 \end_layout
 
 \begin_layout Standard
 Flexible Einfügungen werden mit der 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
 -Marke definiert, die weiter unten erklärt wird.
 \end_layout
 
 \begin_layout Standard
 Die 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
 -Marke besitzt noch eine andere Funktion: sie kann benutzt werden, um das
  allgemeine Aussehen vieler verschiedener Einfügungstypen anzupassen.
  Zurzeit kann 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
  benutzt werden, um die Layout-Parameter für Fußnoten, Randnoten, eingefügten
  Noten, TeX-Code (ERT), Zweige, Stichwortverzeichnisse, Boxen, Tabellen,
  Algorithmen, URLs und optionaler Argumente anzupassen, ebenso um flexible
@@ -11393,23 +13102,33 @@ InsetLayout
 
 \begin_layout Standard
 Die 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
 -Definition muss mit folgender Zeile beginnen:
 \end_layout
 
 \begin_layout LyX-Code
-
-\family typewriter
-InsetLayout <Type>
+InsetLayout <Typ>
 \end_layout
 
 \begin_layout Standard
 Hier bezeichnet 
-\family typewriter
-<Type>
-\family default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
  die Einfügung, deren Layout definiert wird.
  Es gibt zwei Möglichkeiten.
 \end_layout
@@ -11417,147 +13136,332 @@ Hier bezeichnet
 \begin_layout Enumerate
 Das Layout für eine existierende Einfügung wird geändert.
  In diesem Fall kann 
-\family typewriter
-<Type>
-\family default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
  folgendes sein: 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Algorithm
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Branch
-\family default
-, Box, 
-\family typewriter
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Box
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Box:shaded
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ERT
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Figure
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Foot
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Index
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Info
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Info:menu
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Info:shortcut
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Info:shortcuts
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Listings
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Marginal
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Note:Comment
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Note:Note
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
-Note:GreyedOut
-\family default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Note:Greyedout
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 OptArg
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Table
-\family default
- oder 
-\family typewriter
+\end_layout
+
+\end_inset
+
+, oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 URL
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Enumerate
 Das Layout für eine flexible Einfügung wird definiert.
- In diesem Fall kann 
-\family typewriter
-<Type>
-\family default
- ein beliebiger gültiger Bezeichner sein, der in keiner existierenden Einfügung
- benutzt wird.
+ In diesem Fall muss 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
+ in der Form 
+\lang english
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Flex:<Name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\lang ngerman
+ sein, wobei 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+ ein beliebiger gültiger Bezeichner sein kann, der in keiner anderen existierend
+en Einfügung benutzt wird.
+ Der Bezeichner darf Leerzeichen enthalten, dann muss aber der komplette
+ Typ in Anführungszeichen gesetzt werden.
  Beachten Sie, dass die Definition einer flexiblen Einfügung 
 \emph on
 auch
 \emph default
  einen 
-\family typewriter
-Ly
-\begin_inset ERT
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-{}
+LyXType
 \end_layout
 
 \end_inset
 
-XType
-\family default
--Eintrag enthalten muss.
+-Eintrag enthalten muss, der festlegt welcher Einfügungstyp definiert wird.
 \end_layout
 
 \begin_layout Standard
 Die 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
 -Definition kann folgende Einträge enthalten:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-BGColor
-\family default
-\series default
- 
-\begin_inset space ~
+\begin_layout Plain Layout
+BgColor
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
 \end_inset
 
-ist die Hintergrundfarbe der Einfügung.
- Die gültigen Farben sind in 
-\family typewriter
-src/Co\SpecialChar \-
-lorCode.h
-\family default
+] ist die Hintergrundfarbe der Einfügung.
+ Die gültigen Farbnamen sind in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/ColorCode.h
+\end_layout
+
+\end_inset
+
  definiert.
 \end_layout
 
@@ -11576,12 +13480,18 @@ ContentAsLabel
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 0
 \end_layout
 
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11591,52 +13501,97 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Whether to use the content of the inset as the label, when the inset is
- closed.
- Default is false.
+] Ob der Inhalt der Einfügung als Marke verwendet werden soll, wenn die
+ Einfügung geschlossen ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 CopyStyle
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
 \end_inset
 
-Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
- aktuelle kopieren.
+.
+ Beachten Sie, dass der komplette Typ angegeben werden muss, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+CopyStyle Flex:<Name>
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 CustomPars
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 0
-\emph default
-,
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-1]
-\family default
-\series default
- zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog (
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog (
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
 	scale 70
@@ -11650,46 +13605,81 @@ CustomPars
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Decoration
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ kann 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-kann 
-\family typewriter
+\begin_layout Plain Layout
 Classic
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Minimalistic
-\family default
- oder 
-\family typewriter
+\end_layout
+
+\end_inset
+
+, oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Conglomerate
-\family default
+\end_layout
+
+\end_inset
+
  sein.
  Es beschreibt den Rendering-Stil für den Einfügungsrahmen und die -knöpfe.
  Fußnoten benutzen im allgemeinen 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Classic
-\family default
+\end_layout
+
+\end_inset
+
 , TeX-Code
 \family typewriter
- Minimalistic
+ 
 \family default
- und Buchstabenstile 
-\family typewriter
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Minimalistic
+\end_layout
+
+\end_inset
+
+ und Zeichenstile 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Conglomerate
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -11714,52 +13704,59 @@ status collapsed
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-Only useful if 
+] Nur sinnvoll wenn der 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- is 
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-.
- Indicates whether the environment will stand on its own in LaTeX output
- or will appear inline with the surrounding text.
- If set to false, it is supposed that the LaTeX environment ignores white
- space (including one newline character) after the 
+ ist.
+ Gibt an, ob die Umgebung in der Ausgabe abgesetzt erscheint oder in einer
+ Zeile mit dem umgebenden Text.
+ Wenn auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+0
+\end_layout
 
-\lang english
+\end_inset
+
+ gesetzt, wird angenommen, dass die LaTeX-Umgebung Leerraum nach den 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{
@@ -11771,13 +13768,11 @@ LatexName
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 end{
@@ -11789,160 +13784,218 @@ LatexName
 
 \end_inset
 
- tags.
- Default is true.
+ Befehlen ignoriert (inklusive des Zeilenumbruchzeichens).
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 End
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ beendet die 
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
-\end_inset
-
-beendet die 
-\family typewriter
+\begin_layout Plain Layout
 InsetLayout
-\family default
+\end_layout
+
+\end_inset
+
 -Definition.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Font
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-wird für den Text 
+ wird für den Text 
 \emph on
 und
 \emph default
  die Marke benutzt (siehe 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
 ).
  Beachten Sie, dass die Definition dieses Fonts automatisch dem 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelFont
-\family default
+\end_layout
+
+\end_inset
+
  denselben Wert zuweist, das heißt 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Font
-\family default
+\end_layout
+
+\end_inset
+
  muss zuerst definiert werden und 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelFont
-\family default
+\end_layout
+
+\end_inset
+
  danach, wenn sie unterschiedlich sein sollen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 ForceLTR
-\family default
-\series default
+\end_layout
+
+\end_inset
+
+ erzwingt die 
+\begin_inset Quotes gld
+\end_inset
+
+LaTeX-Sprache
+\begin_inset Quotes grd
+\end_inset
+
+ und führt zu einer links-nach-rechts-Ausgabe, zum Beispiel bei TeX-Code
+ oder URL.
  
-\begin_inset space ~
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLTR
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-erzwingt die 
-\emph on
-latex
-\emph default
--Sprache und führt zu einer links-nach-rechts-Ausgabe (latin), zum Beispiel
- bei TeX-Code oder URL.
- Es ist eine Behelfslösung.
+ ist eine Behelfslösung.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 ForcePlain
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 0
-\emph default
+\end_layout
+
+\end_inset
+
 ,
-\begin_inset space ~
-\end_inset
-
-1]
-\family default
-\series default
- 
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
 \end_inset
 
-zeigt an, ob PlainLayout benutzt werden soll oder ob der Benutzer den Absatzstil
- der Einfügung ändern darf.
+] zeigt an, ob stattdessen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PlainLayout
+\end_layout
+
+\end_inset
+
+ benutzt werden soll oder ob der Benutzer den Absatzstil der Einfügung ändern
+ darf.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 FreeSpacing
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
 \end_inset
 
-Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen Wörtern
- einzufügen.
- Diese Eigenschaft kann in bestimmten Fällen umständ\SpecialChar \-
-lich sein, zum Beispiel,
- wenn ein Programmcode eingegeben werden soll.
- In solchen Fällen kann 
-\family typewriter
-FreeSpacing
-\family default
- auf 
-\family typewriter
-1
-\family default
- gesetzt werden.
- LyX erzeugt in diesem Fall für jedes zusätzliche Leerzeichen ein geschütztes
- Leerzeichen, es sei denn, LyX befindet sich im LaTeX-Modus.
+.
 \end_layout
 
 \begin_layout Description
@@ -11955,10 +14008,12 @@ HTML*
 
 \end_inset
 
- 
-\lang english
-These tags control XHTML output.
- See section 
+ Diese Tags kontrollieren die XHTML-Ausgabe.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
@@ -11983,12 +14038,18 @@ InToc
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 0
 \end_layout
 
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11998,86 +14059,125 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Whether to include the contents of this inset in the strings generated for
- the `Outline' pane.
- One would not, for example, want the content of a footnote in a section
- header to be included in the TOC displayed in the outline, but one would
- normally want the content of a character style displayed.
- Default is false: not to include.
+] Ob der Inhalt der Einfügung für die Zeichenketten des 'Gliederungs'-Fensters
+ verwendet werden soll.
+ Zum Beispiel will man nicht, dass der Inhalt einer Fußzeile im Namen des
+ Abschnitts im Inhaltsverzeichnis des Gliederungs-Fensters erscheint.
+ Aber man will normalerweise, dass der Inhalt von Zeichenstilen erscheint.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 KeepEmpty
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+
+\emph default
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
 \end_inset
 
-Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
- da das zu einer leeren LaTeX-Ausgabe führen würde.
- In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
- in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
- damit keiner vergisst, sie anzugeben.
- In anderen Klassen wird ein solcher Absatz als Unterbrechung verwendet,
- die keinen eigentlichen Text enthält.
+.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelFont
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-ist der für die Marke benutze Font (siehe 
+ ist die für die Marke benutze Schrift (siehe 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
 ).
  Beachten Sie, dass diese Definition niemals vor 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Font
-\family default
+\end_layout
+
+\end_inset
+
  erscheinen darf, weil sie sonst unwirksam ist.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelString
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-wird auf dem Knopf und anderswo als Einfügungsmarke angezeigt.
+] wird auf dem Knopf und anderswo als Einfügungsmarke angezeigt.
  Einige Einfügungstypen (TeX-Code und Zweig) ändern diese Marke im Vo\SpecialChar \-
 rü\SpecialChar \-
 ber\SpecialChar \-
@@ -12085,373 +14185,368 @@ gehen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexName
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+<Name>
+\end_layout
+
 \end_inset
 
-ist der Name des zugehörigen LaTeX-Stoffes, entweder der Umgebungs- oder
- Befehlsname.
+] ist der Name der LaTeX-Umgebung oder des LaTeX-Befehls.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexParam
-\family default
-\series default
- 
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+<Parameter>
+\end_layout
+
 \end_inset
 
-ist ein optionaler Parameter für den zugehörigen 
-\family typewriter
-\series medium
+] ist ein optionaler Parameter für den zugehörigen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LatexName
-\family default
-\series default
--Stoff, einschließ\SpecialChar \-
+\end_layout
+
+\end_inset
+
+, einschließ\SpecialChar \-
 lich möglicher Klammerpaare wie 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 []
-\family default
+\end_layout
+
+\end_inset
+
 .
  Dieser Parameter kann in LyX nicht geändert werden.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LatexType
-\family default
-\series default
- 
+\end_layout
+
+\end_inset
+
+ Wie bei Absatz-Layouts, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
 \end_inset
 
-[
-\family typewriter
-\emph on
-Paragraph
-\emph default
-, Command, Environment, Item_Environment, 
-\begin_inset Newline newline
-\end_inset
-
-List_Environment
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Legt fest, wie das Layout in LaTeX überführt wird.
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\family typewriter
-\series medium
-Paragraph
-\family default
-\series default
- bewirkt nichts besonderes -- der Text wird als 
-\emph on
-normaler
-\emph default
- 
-\emph on
-Absatz
-\emph default
- übernommen.
- 
+.
 \end_layout
 
 \begin_layout Description
-
-\family typewriter
-\series medium
-Command
-\family default
-\series default
- behandelt den Text als Argument eines LaTeX-Befehls (
-\family typewriter
-\emph on
-
-\backslash
-LatexBe\SpecialChar \-
-fehl
-\emph default
- {\SpecialChar \ldots{}
-}
-\family default
-).
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Environment
-\family default
-\series default
- behandelt den Text als Kern einer LaTeX-Umgebung
-\begin_inset Foot
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Umgebung und LaTeX-Befehl sind hier etwas irreführend, denn diese
- Regeln gelten auch für SGML-Klassen.
- Schauen Sie sich am besten die SGML-Klassen-Dateien für Beispiele an.
+LyxType
 \end_layout
 
 \end_inset
 
- 
-\begin_inset Newline newline
-\end_inset
-
-(
-\family typewriter
-
-\backslash
-begin{
-\emph on
-LatexUmgebung
-\emph default
-} \SpecialChar \ldots{}
- 
-\backslash
-end{
-\emph on
-LatexUmgebung
-\emph default
-}
-\family default
-).
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Item_Environment
-\family default
-\series default
- bewirkt dasselbe wie 
-\family typewriter
-Environment
-\family default
-, nur dass vor jedem Absatz ein 
-\family typewriter
-
-\backslash
-item
-\family default
- eingefügt wird.
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-List_Environment
-\family default
-\series default
- funktioniert wie 
-\family typewriter
-Item_Environment
-\family default
-, nur dass
-\family typewriter
- Label\SpecialChar \-
-Width\SpecialChar \-
-String
-\family default
- als Argument an die Umgebung übergeben wird.
-
-\family typewriter
- Label\SpecialChar \-
-WidthString
-\family default
- kann im Menü 
-\family sans
-Absatz-Einstellungen
-\family default
- (
-\family sans
-Bearbeiten
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Absatz-Einstellungen
-\family default
- 
-\begin_inset Marginal
-status open
+ kann 
+\begin_inset Flex Code
+status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- definiert werden.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-
-\family typewriter
-\series medium
-LyxType
-\family default
-\series default
- kann die Werte 
-\family typewriter
 charstyle
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 custom
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 element
-\family default
+\end_layout
+
+\end_inset
+
  oder 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 end
-\family default
- (zeigt das Ende einer Definition an).
+\end_layout
+
+\end_inset
+
+ (zeigt das Ende einer Definition an) sein.
  Dieser Eintrag wird für flexible Einfügungen benötigt und ist nur dort
  sinnvoll.
  Neben anderen Dingen legt er fest, in welchem Menü diese Einfügung erscheinen
  wird.
+ Wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+charstyle
+\end_layout
+
+\end_inset
+
+ gesetzt, wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ automatisch auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ gesetzt.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ kann auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ für 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+charstyle
+\end_layout
+
+\end_inset
+
+-Einfügungen gesetzt werden, indem es 
+\emph on
+nach
+\emph default
+ dem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+ spezifiziert wird.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 MultiPar
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 0
-\emph default
+\end_layout
+
+\end_inset
+
 ,
-\begin_inset space ~
-\end_inset
-
-1]
-\family default
-\series default
- 
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
 \end_inset
 
-zeigt an, ob in dieser Einfügung mehrfache Absätze erlaubt sind.
+] zeigt an, ob in dieser Einfügung mehrfache Absätze erlaubt sind.
  Dadurch wird 
-\family typewriter
-\series medium
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 CustomPars
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  auf denselben Wert gesetzt und 
-\family typewriter
-\series medium
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ForcePlain
-\family default
-\series default
+\end_layout
+
+\end_inset
+
  auf den anderen.
  Diese können auf andere Werte gesetzt werden, wenn sie 
 \emph on
 nach
 \emph default
  
-\family typewriter
-\series medium
-Multi\SpecialChar \-
-Par
-\family default
-\series default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
  benutzt werden.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 NeedProtect
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
 0
-\emph default
+\end_layout
+
+\end_inset
+
 ,
-\begin_inset space ~
-\end_inset
-
-1] 
-\family default
-\series default
-
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
 \end_inset
 
-zeigt an, ob 
+] zeigt an, ob 
 \emph on
 zerbrechliche
 \emph default
  Befehle in diesem Layout ge\SpecialChar \-
 schützt (
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 protect
-\family default
+\end_layout
+
+\end_inset
+
 ) werden sollen.
  Es zeigt 
 \emph on
@@ -12475,130 +14570,113 @@ ParbreakIsNewline
 status collapsed
 
 \begin_layout Plain Layout
-0
-\end_layout
 
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-] 
-\lang english
-Indicates that paragraphs will not be separated by an empty line in LaTeX
- output, but only by a line break; together with 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-PassThru 1
-\end_layout
-
-\end_inset
-
-, this allows to emulate a plain text editor (like the ERT inset).
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-PassThru
-\begin_inset space ~
-\end_inset
-
-[
 \emph on
 0
-\emph default
-,
-\begin_inset space ~
-\end_inset
-
-1] 
-\family default
-\series default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
- ohne diverse von LaTeX benötigte Ersetzungen durchzuführen.
- Dies ersetzt in gewisser Weise das alte Zeichensatzattribut 
-\family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
 \end_layout
 
 \end_inset
 
-X
-\family default
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
-Preamble\SpecialChar \ldots{}
-EndPreamble
-\family default
-\series default
- 
+\begin_layout Plain Layout
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
 \end_inset
 
-Eine Serie von Makrodefinitionen, die in die Präambel (vor 
-\family typewriter
+.
+\end_layout
 
-\backslash
-begin{docu\SpecialChar \-
-ment}
-\family default
-) eingefügt werden, falls dieses Layout benutzt wird.
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Preamble
+\end_layout
+
+\end_inset
+
+ Wie bei Absatz-Layouts, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -12621,48 +14699,43 @@ string
 
 \end_inset
 
-] 
-\lang english
-The prefix to use when creating labels referring to insets of this type.
- This allows the use of formatted references.
+] Der Präfix, der verwendet werden soll, wenn auf Marken dieser Einfügung
+ verwiesen wird.
+ Dies erlaubt die Verwendung von Formatierten Querverweisen.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 Requires
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string] 
-\family default
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Legt fest, dass das Layout die Funktion 
-\family typewriter
+\begin_layout Plain Layout
 string
-\family default
- benötigt.
- Sehen Sie sich auch die Beschreibung von 
-\family typewriter
-Provides
-\family default
+\end_layout
+
+\end_inset
+
+] Wie bei Absatz-Layouts, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Provides"
+LatexCommand ref
+reference "sub:Einzelne-Absatz-Layouts"
 
 \end_inset
 
- an.
+.
 \end_layout
 
 \begin_layout Description
@@ -12686,20 +14759,36 @@ status collapsed
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-Whether this inset should use the font of its surrounding environment or
- uses its own.
- Default is true: uses its own.
+] Ob die Einfügung die Schrift der benachbarten Umgebungen verwenden soll
+ oder seine eigene.
+ Voreinstellung ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+: verwendet seine Eigene.
 \end_layout
 
 \begin_layout Description
@@ -12723,19 +14812,22 @@ status collapsed
 \end_inset
 
 ,
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 1
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-Spellcheck the contents of this inset.
- Default is true.
+] Erlaubt es, den Inhalt der Einfügung auf Rechtschreibung zu überprüfen.
 \end_layout
 
 \begin_layout Subsection
@@ -12750,24 +14842,38 @@ name "sub:Zähler"
 \end_layout
 
 \begin_layout Standard
-Seit LyX-Version 1.3.0 ist es möglich und notwendig, Zähler (
-\family typewriter
+Es ist notwendig Zähler (
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 chapter
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 figure
-\family default
+\end_layout
+
+\end_inset
+
 ,\SpecialChar \ldots{}
 ) in der Textklasse selber zu definieren.
  Die Standardzähler sind in der Datei 
-\family typewriter
-lib/
-\begin_inset Newline linebreak
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+stdcounters.inc
+\end_layout
+
 \end_inset
 
-layouts/stdcounters.inc
-\family default
  definiert, so dass Sie nur die Zeile
 \end_layout
 
@@ -12782,20 +14888,32 @@ zu zu Ihrer Layout-Datei hinzufügen müssen, damit sie arbeiten.
 \end_layout
 
 \begin_layout LyX-Code
-Counter name
+Counter <Name>
 \end_layout
 
 \begin_layout Standard
 wobei 
-\family typewriter
-name
-\family default
- der Name Ihres Zählers ist.
- Die Deklaration endet mit
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Name>
 \end_layout
 
-\begin_layout LyX-Code
+\end_inset
+
+ der Name Ihres Zählers ist.
+ Die Deklaration endet mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 End
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -12803,214 +14921,407 @@ Folgende Parameter können auch benutzt werden:
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelString
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""]
-\family default
- 
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-definiert, wie der Zähler dargestellt wird.
+] definiert, wie der Zähler dargestellt wird.
  Hierdurch wird 
-\family typewriter
-LabelStringAp\SpecialChar \-
-pen\SpecialChar \-
-dix
-\family default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelStringAppendix
+\end_layout
+
+\end_inset
+
  auf denselben Wert gesetzt.
  In der Zeichenkette können folgende Konstrukte benutzt werden:
 \end_layout
 
 \begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 
 \backslash
 thecounter
-\family default
+\end_layout
+
+\end_inset
+
  wird durch die Erweiterung von 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelString
-\family default
- (oder 
-\family typewriter
-Label\SpecialChar \-
-StringAppendix
-\family default
+\end_layout
+
+\end_inset
+
+ (oder
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelStringAppendix
+\end_layout
+
+\end_inset
+
 ) des Zählers 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 counter
-\family default
+\end_layout
+
+\end_inset
+
  ersetzt.
 \end_layout
 
 \begin_layout Itemize
 Zählerwerte können durch LaTeX-ähnliche Makros wie 
-\family typewriter
-\emph on
-
-\backslash
-numbertype{coun\SpecialChar \-
-ter}
-\family default
-\emph default
- ausgedrückt werden, wobei 
-\family typewriter
-\emph on
-numbertype
-\family default
-\emph default
- folgendes sein kann:
-\begin_inset Foot
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Genaugenommen ist die Situation etwas komplizierter: andere 
+
+\backslash
+
 \emph on
 numbertype
 \emph default
- als die beschriebenen erzeugen arabische Zahlen.
- Wahrscheinlich wird sich das in Zukunft ändern.
+{
+\emph on
+counter
+\emph default
+}
 \end_layout
 
 \end_inset
 
- 
-\family typewriter
+ ausgedrückt werden, wobei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+numbertype
+\end_layout
+
+\end_inset
+
+ Folgendes sein kann: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 arabic
-\family default
+\end_layout
+
+\end_inset
+
 : 1, 2, 3,\SpecialChar \ldots{}
 ; 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 alph
-\family default
+\end_layout
+
+\end_inset
+
  für Kleinbuchstaben: a, b, c,\SpecialChar \ldots{}
 ; 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Alph
-\family default
+\end_layout
+
+\end_inset
+
  für Großbuchstaben: A, B, C,\SpecialChar \ldots{}
 ; 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 roman
-\family default
+\end_layout
+
+\end_inset
+
  für kleine römische Zahlen: i, ii, iii,\SpecialChar \ldots{}
 ; 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Roman
-\family default
- für große römische Zahlen: I, II, III,\SpecialChar \ldots{}
-; 
-\family typewriter
-hebrew
-\family default
- für hebräische Zahlen.
+\end_layout
+
+\end_inset
+
+ für große römische Zahlen: I, II, III.
 \end_layout
 
 \begin_layout Standard
 Wenn 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelString
-\family default
+\end_layout
+
+\end_inset
+
  nicht definiert ist, wird ein Standardwert wie folgt benutzt: wenn der
  Zähler einen Hauptzähler 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 master
-\emph default
+\end_layout
+
+\end_inset
+
  (über 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Within
-\family default
- definiert) hat, wird 
-\family typewriter
+\end_layout
+
+\end_inset
+
+ definiert) hat, wird der String 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 themaster.
 \backslash
 arabic{counter}
-\family default
- benutzt, sonst 
-\family typewriter
+\end_layout
+
+\end_inset
+
+ benutzt, ansonsten 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 arabic{counter}
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
 LabelStringAppendix
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""]
-\family default
- 
-\series default
+ [
+\begin_inset Flex Code
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-ist dasselbe wie 
-\family typewriter
-\series medium
+] ist dasselbe wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LabelString
-\family default
-\series default
-, wird aber in Anhängen benutzt.
+\end_layout
+
+\end_inset
+
+, aber für den Anhang.
 \end_layout
 
 \begin_layout Description
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-\series medium
+\begin_layout Plain Layout
+PrettyFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Ein Format, das für Formatierte Querverweise auf einen Zähler verwendet
+ wird.
+ Möchte man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Referenzen auf Abschnitte in der Form 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt
+\begin_inset space ~
+\end_inset
+
+2.4
+\begin_inset Quotes grd
+\end_inset
+
+ haben, sollte der String 
+\begin_inset Quotes gld
+\end_inset
+
+##
+\begin_inset Quotes grd
+\end_inset
+
+ enthalten.
+ Diese Zeichen werden später durch die referenzierte Abschnittsnummer ersetzt.
+ Also für Abschnitte lautet der String dann 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt ##
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Within
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-[string=""]
-\family default
- 
-\begin_inset space ~
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset Newline newline
+\begin_inset Quotes erd
 \end_inset
 
-Wenn dies auf den Namen eines anderen Zählers gesetzt wird, wird der gegenwärtig
-e Zähler jedesmal zurückgesetzt, wenn der andere erhöht wird.
+] Wenn dies auf den Namen eines anderen Zählers gesetzt wird, wird der gegenwärt
+ige Zähler jedes mal zurückgesetzt, wenn der andere erhöht wird.
  Zum Beispiel wird 
-\family typewriter
-\series default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 subsection
-\family default
-\series medium
+\end_layout
+
+\end_inset
+
  innerhalb 
-\family typewriter
-\series default
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 section
-\family default
-\series medium
+\end_layout
+
+\end_inset
+
  nummeriert.
 \end_layout
 
@@ -13207,27 +15518,21 @@ Misc
 
 \end_inset
 
- 
-\lang english
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Valid arguments are: 
+] Zulässige Argumente sind: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 emph
 \end_layout
 
@@ -13238,8 +15543,6 @@ emph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 noun
 \end_layout
 
@@ -13250,8 +15553,6 @@ noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 strikeout
 \end_layout
 
@@ -13262,8 +15563,6 @@ strikeout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 underbar
 \end_layout
 
@@ -13274,8 +15573,6 @@ underbar
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 uuline
 \end_layout
 
@@ -13286,8 +15583,6 @@ uuline
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 uwave
 \end_layout
 
@@ -13298,8 +15593,6 @@ uwave
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_emph
 \end_layout
 
@@ -13310,8 +15603,6 @@ no_emph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_noun
 \end_layout
 
@@ -13322,8 +15613,6 @@ no_noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_strikeout
 \end_layout
 
@@ -13334,8 +15623,6 @@ no_strikeout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_bar
 \end_layout
 
@@ -13346,72 +15633,73 @@ no_bar
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_uuline
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_uwave
 \end_layout
 
 \end_inset
 
 .
- Each of these turns on or off the corresponding attribute.
- For example, 
+ Jedes schaltet die entsprechende Eigenschaft an oder aus.
+ Zum Beispiel führt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 emph
 \end_layout
 
 \end_inset
 
- turns on emphasis, and 
+ zum Stil 
+\emph on
+Hervorhebung
+\emph default
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_emph
 \end_layout
 
 \end_inset
 
- turns it off.
- 
+ schaltet diesen aus.
 \begin_inset Newline newline
 \end_inset
 
-If the latter seems puzzling, remember that the font settings for the present
- context are generally inherited from the surrounding context.
- So 
+Falls Sie Letzteres verwirrt, erinnern Sie sich, dass die Schrifteinstellungen
+ standardmäßig von den umgebenden Stilen übernommen wird.
+ Daher schaltet 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 no_emph
 \end_layout
 
 \end_inset
 
- would turn off the emphasis that was anyway in effect, say, in a theorem
- environment.
+ die 
+\emph on
+Hervorhebung
+\emph default
+ aus, die z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ in einer Theorem-Umgebung aktiv ist.
 \end_layout
 
 \begin_layout Description
@@ -13764,7 +16052,10 @@ vol.
 
  followed by the volume key.
  It is also possible to have an else clause in the conditional, such as:
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -13776,8 +16067,11 @@ status collapsed
 
 \end_inset
 
-.
- Here, the 
+
+\begin_inset Newline newline
+\end_inset
+
+Here, the 
 \begin_inset Flex Code
 status collapsed
 
@@ -14036,15 +16330,26 @@ stdciteformats.inc
 
 \lang english
 So here then is an example that use all these features:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\noindent
+
+\family typewriter
+\lang english
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
 \begin_layout Standard
 
 \lang english
+\begin_inset VSpace defskip
+\end_inset
+
 This defines a macro that prints the author, followed by a comma, if the
  
 \begin_inset Flex Code
@@ -14665,8 +16970,22 @@ status collapsed
 \emph on
 \lang english
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
 \end_layout
 
 \end_inset
@@ -15030,8 +17349,22 @@ status collapsed
 \emph on
 \lang english
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
 \end_layout
 
 \end_inset
@@ -15230,8 +17563,22 @@ status collapsed
 \emph on
 \lang english
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
 \end_layout
 
 \end_inset
@@ -15517,8 +17864,22 @@ status collapsed
 \emph on
 \lang english
 0
-\emph default
-,1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
 \end_layout
 
 \end_inset
@@ -15667,8 +18028,23 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-0,
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
 \emph on
+\lang english
 1
 \end_layout
 
