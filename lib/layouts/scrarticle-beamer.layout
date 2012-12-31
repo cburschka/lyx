@@ -25,6 +25,24 @@ Preamble
 	}
 EndPreamble
 
+##########################################
+# OBSOLETE STUFF
+# Everything below should be removed
+# (but this is a file format change)
+#
+#  TODO:
+#   * conversion of old frame
+#     and plain frame to new layout
+##########################################
+
+#
+# Backwards compatible definitions
+#
+
+AddToPreamble
+\providecommand\lyxframeend{}
+EndPreamble
+
 # Frame control definition
 Style BeginFrame
 # This redefinition is needed to make beamerarticle work

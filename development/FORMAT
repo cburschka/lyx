@@ -12,6 +12,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 
+2012-12-31 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 459: Introduce new beamer frames:
+	  Frame, PlainFrame, FragileFrame (LaTeX: \begin{frame},
+	  \begin{frame}[plain], \begin{frame}[fragile]). These will
+	  eventually replace the old BeginFrame, BeginPlainFrame, which
+	  still exist.
+
 2012-12-30 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 458: Extended caption inset support.
 	Former special caption layouts (e.g. of KOMA) are now proper caption

@@ -3165,6 +3165,197 @@ def revert_captionlayouts(document):
         i = i + 1
 
 
+def revert_fragileframe(document):
+    " Reverts beamer FragileFrame layout to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout FragileFrame", i)
+        if i == -1:
+            return
+        # Find end of sequence
+        j = find_end_of_sequence(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document. Cannot find end of FragileFrame sequence!")
+            i = i + 1
+            continue
+        endseq = j
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{frame}")
+        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{frame}")
+        endseq = endseq + len(esubst) - len(document.body[j : j])
+        if document.body[j] == "\\end_deeper":
+            document.body[j : j] = ["\\end_deeper", ""] + esubst
+        else:
+            document.body[j : j] = esubst
+        for q in range(i, j):
+            if document.body[q] == "\\begin_layout FragileFrame":
+                document.body[q] = "\\begin_layout %s" % document.default_layout
+        r = i
+        while r < j:
+            if document.body[r] == "\\begin_deeper":
+                s = find_end_of(document.body, r, "\\begin_deeper", "\\end_deeper")
+                if s != -1:
+                    document.body[r] = ""
+                    document.body[s] = ""
+                    r = s
+                    continue
+            r = r + 1
+        for p in range(1, 5):
+            arg = find_token(document.body, "\\begin_inset Argument %d" % p, i, j)
+            if arg != -1:
+                if p == 1:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    j = j - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                elif p == 2:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    j = j - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("[<") + content + put_cmd_in_ert(">]")
+                elif p == 3:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    j = j - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("[fragile,") + content + put_cmd_in_ert("]")
+                elif p == 4:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    j = j - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
+            elif p == 3:
+                subst += put_cmd_in_ert("[fragile]")
+                    
+        document.body[i : i + 1] = subst
+        i = j
+
+
+def revert_newframes(document):
+    " Reverts beamer Frame and PlainFrame layouts to old forms "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    frame_dict = {
+        "Frame" : "BeginFrame",
+        "PlainFrame" : "BeginPlainFrame",
+        }
+
+    rx = re.compile(r'^\\begin_layout (\S+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            return
+
+        m = rx.match(document.body[i])
+        val = ""
+        if m:
+            val = m.group(1)
+        if val not in frame_dict.keys():
+            i = i + 1
+            continue
+        # Find end of sequence
+        j = find_end_of_sequence(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document. Cannot find end of Frame sequence!")
+            i = i + 1
+            continue
+        endseq = j
+        subst = ["\\begin_layout %s" % frame_dict[val]]
+        esubst = ["\\end_layout", "", "\\begin_layout EndFrame", "", "\\end_layout"]
+        endseq = endseq + len(esubst) - len(document.body[j : j])
+        if document.body[j] == "\\end_deeper":
+            document.body[j : j] = ["\\end_deeper", ""] + esubst
+        else:
+            document.body[j : j] = esubst
+        for q in range(i, j):
+            if document.body[q] == "\\begin_layout %s" % val:
+                document.body[q] = "\\begin_layout %s" % document.default_layout
+        r = i
+        while r < j:
+            if document.body[r] == "\\begin_deeper":
+                s = find_end_of(document.body, r, "\\begin_deeper", "\\end_deeper")
+                if s != -1:
+                    document.body[r] = ""
+                    document.body[s] = ""
+                    r = s
+                    continue
+            r = r + 1
+        l = find_end_of_layout(document.body, i)
+        for p in range(1, 5):
+            arg = find_token(document.body, "\\begin_inset Argument %d" % p, i, l)
+            if arg != -1:
+                if p == 1:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    l = l - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                elif p == 2:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    l = l - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("[<") + content + put_cmd_in_ert(">]")
+                elif p == 3:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    l = l - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                elif p == 4:
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, arg)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    l = l - len(document.body[arg : endInset + 1])
+                    # Remove arg inset
+                    del document.body[arg : endInset + 1]
+                    subst += content
+                    
+        document.body[i : i + 1] = subst
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -3215,10 +3406,12 @@ convert = [
            [455, []],
            [456, [convert_epigraph]],
            [457, [convert_use_stackrel]],
-           [458, [convert_captioninsets, convert_captionlayouts]]
+           [458, [convert_captioninsets, convert_captionlayouts]],
+           [459, []]
           ]
 
 revert =  [
+           [458, [revert_fragileframe, revert_newframes]],
            [457, [revert_captioninsets, revert_captionlayouts]],
            [456, [revert_use_stackrel]],
            [455, [revert_epigraph]],

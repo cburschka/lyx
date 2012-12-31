@@ -233,7 +233,7 @@ Style Section
   Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
-  LatexName        lyxframeend{}\section
+  LatexName        section
   NeedProtect      1
   NextNoIndent     1
   LabelSep         xx
@@ -273,7 +273,7 @@ Style Section*
   CopyStyle        Section
   Category         Unnumbered
   Margin           Static
-  LatexName        lyxframeend{}\section
+  LatexName        section
   LabelType        No_Label
   ResetArgs        1
   Argument 1
@@ -290,7 +290,7 @@ Style Subsection
   Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
-  LatexName        lyxframeend{}\subsection
+  LatexName        subsection
   NeedProtect      1
   NextNoIndent     1
   LabelSep         xx
@@ -330,7 +330,7 @@ Style Subsection*
   CopyStyle        Subsection
   Category         Unnumbered
   Margin           Static
-  LatexName        lyxframeend{}\subsection
+  LatexName        subsection
   LabelType        No_Label
   ResetArgs        1
   Argument 1
@@ -347,7 +347,7 @@ Style Subsubsection
   Category         Sectioning
   Margin           First_Dynamic
   LatexType        Command
-  LatexName        lyxframeend{}\subsubsection
+  LatexName        subsubsection
   NeedProtect      1
   NextNoIndent     1
   LabelSep         xx
@@ -387,7 +387,7 @@ Style Subsubsection*
   CopyStyle        Subsubsection
   Category         Unnumbered
   Margin           Static
-  LatexName        lyxframeend{}\subsubsection
+  LatexName        subsubsection
   LabelType        No_Label
   ResetArgs        1
   Argument 1
@@ -405,90 +405,88 @@ End
 # FRAMES
 #
 
-Style BeginFrame
+Style Frame
   Category         Frames
+  Margin           Dynamic
+  LatexType        Environment
+  LatexName        frame
+  LabelString      "Frame"  
   TocLevel         4
   KeepEmpty        1
-  LatexType        Command
-  LatexName        lyxframeend{}\lyxframe
-  Argument 1
-    LabelString    "Frame Options"
-    Tooltip        "Frame options (see beamer manual)"
-  EndArgument
-  Margin           First_Dynamic
   NextNoIndent     1
-  ParSkip          0
-  TopSep           2.5
-  BottomSep        0.5
-  ParSep           0
-  Align            Center
+  Align            Left
   LabelType        Static
-  LabelBottomSep   0
-  LeftMargin       M
   LabelSep         xx
-  LabelString      "Frame"
-  Font
-    Series         Bold
-    Size           Largest
-    Color          Blue
-  EndFont
-  LabelFont 
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Size           largest
     Family         Roman
     Color          latex
   EndFont
-  Preamble
-    \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
-    \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
-    \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
-    \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
-    \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
-    \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
-      \frame<#1>[#2][#3]{\frametitle{#4}#5}}
-  EndPreamble
+  Argument 1
+    LabelString     "Action"
+    MenuString      "Overlay Specifications|S"
+    Tooltip         "Overlay specifications for this frame"
+    LeftDelim       <
+    RightDelim      >
+  EndArgument
+  Argument 2
+    LabelString     "Default Overlay Specifications"
+    Tooltip         "Default overlay specifications within this frame"
+    LeftDelim       [<
+    RightDelim      >]
+  EndArgument
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+  EndArgument
+  Argument 4
+    LabelString    "Frame Title"
+    Tooltip        "Enter the block title here"
+    LeftDelim      {
+    RightDelim     }
+    Decoration     conglomerate
+    Font
+      Color        blue
+      Size         largest
+    EndFont
+    AutoInsert     1
+  EndArgument
 End
 
-Style BeginPlainFrame
-  Category          Frames
-  TocLevel          4
-  KeepEmpty         1
-  LatexType         Command
-  LatexName         lyxframeend{}\lyxplainframe
-  Margin            First_Dynamic
-  NextNoIndent      1
-  ParSkip           0
-  TopSep            2.5
-  BottomSep         0.5
-  ParSep            0
-  Align             Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        M
-  LabelSep          xx
-  LabelString       "Frame (no head/foot/sidebars)"
-  Font
-    Series          Bold
-    Size            Largest
-    Color           Blue
-  EndFont
-  LabelFont 
-    Family          Roman
-    Color           latex
-  EndFont
-  Preamble
-    \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
-    \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
-    \long\def\@@lyxplainframe<#1>#2\@lyxframestop#3\lyxframeend{%
-      \frame<#1>[plain]{\frametitle{#2}#3}}
-  EndPreamble
+Style PlainFrame
+  CopyStyle         Frame
+  LabelString       "Frame (plain)"
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+    PresetArg       "plain"
+  EndArgument
+End
+
+Style FragileFrame
+  CopyStyle         Frame
+  LabelString       "Frame (fragile)"
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+    PresetArg       "fragile"
+  EndArgument
 End
 
 Style AgainFrame
   Category          Frames
   KeepEmpty         0
   LatexType         Command
-  LatexName         lyxframeend{}\againframe
+  LatexName         againframe
   Argument 1
-    LabelString     "On Slide"
+    LabelString     "Slide"
     MenuString      "Overlay Specifications|S"
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
@@ -511,7 +509,6 @@ Style AgainFrame
   TopSep            3
   BottomSep         3
   ParSep            0
-  Align             Center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
@@ -523,35 +520,8 @@ Style AgainFrame
   LabelFont 
     Family          Roman
     Color           latex
-    Series          Bold
     Size            Largest
   EndFont
-End
-
-Style EndFrame
-  Category          Frames
-  KeepEmpty         1
-  LatexType         Command
-  LatexName         lyxframeend
-  Margin            First_Dynamic
-  ParSkip           0
-  TopSep            0
-  BottomSep         3
-  ParSep            0
-  Align             Center
-  LabelType         Static
-  LabelBottomSep    0
-  LeftMargin        MMMMM
-  LabelString       "________________________________"
-  LabelFont 
-    Family          typewriter
-    Series          Medium
-    Size            Normal
-    Color           latex
-  EndFont
-  Preamble
-    \def\lyxframeend{} % In case there is a superfluous frame end
-  EndPreamble
 End
 
 Style FrameTitle
@@ -564,10 +534,9 @@ Style FrameTitle
   TopSep           0
   BottomSep        1
   ParSep           1
-  Align            Center
+  Align            Block
   LabelType        No_Label
   Font 
-    Series         Bold
     Color          Blue
     Size           Largest
   EndFont
@@ -594,10 +563,9 @@ Style FrameSubtitle
   TopSep           0
   BottomSep        1
   ParSep           1
-  Align            Center
+  Align            Block
   LabelType        No_Label
   Font 
-    Series         Bold
     Color          Blue
   EndFont
   Argument 1
@@ -1593,3 +1561,158 @@ End
 
 
 Input theorems-refprefix.inc
+
+
+##########################################
+# OBSOLETE STUFF
+# Everything below should be removed
+# (but this is a file format change)
+#
+#  TODO:
+#   * conversion of old frame
+#     and plain frame to new layout
+##########################################
+
+#
+# Backwards compatible definitions
+#
+
+AddToPreamble
+\providecommand\lyxframeend{}
+EndPreamble
+
+IfStyle Section
+  LatexName        lyxframeend{}\section
+End
+
+IfStyle Section*
+  LatexName        lyxframeend{}\section
+End
+
+IfStyle Subsection
+  LatexName        lyxframeend{}\subsection
+End
+
+IfStyle Subsection*
+  LatexName        lyxframeend{}\subsection
+End
+
+IfStyle Subsubsection
+  LatexName        lyxframeend{}\subsubsection
+End
+
+IfStyle Subsubsection*
+  LatexName        lyxframeend{}\subsubsection
+End
+
+IfStyle AgainFrame
+  LatexName        lyxframeend{}\againframe
+End
+
+
+#
+# Deprecated Styles
+#
+
+Style BeginFrame
+  Category         "Deprecated Styles"
+  TocLevel         4
+  KeepEmpty        1
+  LatexType        Command
+  LatexName        lyxframeend{}\lyxframe
+  Argument 1
+    LabelString    "Frame Options"
+    Tooltip        "Frame options (see beamer manual)"
+  EndArgument
+  Margin           First_Dynamic
+  NextNoIndent     1
+  ParSkip          0
+  TopSep           2.5
+  BottomSep        0.5
+  ParSep           0
+  Align            Center
+  LabelType        Static
+  LabelBottomSep   0
+  LeftMargin       M
+  LabelSep         xx
+  LabelString      "Frame"
+  Font
+    Series         Bold
+    Size           Largest
+    Color          Blue
+  EndFont
+  LabelFont 
+    Family         Roman
+    Color          latex
+  EndFont
+  Preamble
+    \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
+    \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
+    \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
+    \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
+    \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
+    \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
+      \frame<#1>[#2][#3]{\frametitle{#4}#5}}
+  EndPreamble
+End
+
+Style BeginPlainFrame
+  Category          "Deprecated Styles"
+  TocLevel          4
+  KeepEmpty         1
+  LatexType         Command
+  LatexName         lyxframeend{}\lyxplainframe
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            2.5
+  BottomSep         0.5
+  ParSep            0
+  Align             Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        M
+  LabelSep          xx
+  LabelString       "Frame (no head/foot/sidebars)"
+  Font
+    Series          Bold
+    Size            Largest
+    Color           Blue
+  EndFont
+  LabelFont 
+    Family          Roman
+    Color           latex
+  EndFont
+  Preamble
+    \long\def\lyxplainframe#1{\@lyxplainframe#1\@lyxframestop}%
+    \def\@lyxplainframe{\@ifnextchar<{\@@lyxplainframe}{\@@lyxplainframe<*>}}%
+    \long\def\@@lyxplainframe<#1>#2\@lyxframestop#3\lyxframeend{%
+      \frame<#1>[plain]{\frametitle{#2}#3}}
+  EndPreamble
+End
+
+Style EndFrame
+  Category          "Deprecated Styles"
+  KeepEmpty         1
+  LatexType         Command
+  LatexName         lyxframeend
+  Margin            First_Dynamic
+  ParSkip           0
+  TopSep            0
+  BottomSep         3
+  ParSep            0
+  Align             Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        MMMMM
+  LabelString       "________________________________"
+  LabelFont 
+    Family          typewriter
+    Series          Medium
+    Size            Normal
+    Color           latex
+  EndFont
+  Preamble
+    \def\lyxframeend{} % In case there is a superfluous frame end
+  EndPreamble
+End
