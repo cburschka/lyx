@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 458
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass scrbook
@@ -15976,8 +15976,13 @@ InsetLayout
 
  can be used to customize the layout parameters for footnotes, marginal
  notes, note insets, TeX code (ERT) insets, branches, listings, indexes,
- boxes, tables, algorithms, URLs, and optional arguments, as well as to
- define Flex insets.
+ boxes, tables, algorithms, URLs, and 
+\change_deleted -712698321 1356964515
+optional argument
+\change_inserted -712698321 1356964516
+caption
+\change_unchanged
+s, as well as to define Flex insets.
 \end_layout
 
 \begin_layout Standard
@@ -16010,8 +16015,10 @@ status collapsed
 \end_inset
 
  indicates the inset whose layout is being defined, and here there are 
-\change_inserted 5863208 1334489266
+\change_deleted -712698321 1356964888
 three
+\change_inserted -712698321 1356964888
+four
 \change_deleted 5863208 1334489267
 two
 \change_unchanged
@@ -16071,6 +16078,24 @@ Box:shaded
 \end_inset
 
 , 
+\change_inserted -712698321 1356964563
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356964560
+Caption:Standard
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -16201,6 +16226,8 @@ Note:Greyedout
 \end_inset
 
 , 
+\change_deleted -712698321 1356964592
+
 \begin_inset Flex Code
 status collapsed
 
@@ -16219,6 +16246,8 @@ ument
 \end_inset
 
 , 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -16356,6 +16385,112 @@ name
  be wrapped in quotes.
  The main purpose of this feature is to allow LaTeX wrapping around specific
  branches as user needs.
+\change_inserted -712698321 1356964893
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1356965125
+The layout of a user (or class) specific caption is being defined.
+ In this case, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356964939
+<Type>
+\end_layout
+
+\end_inset
+
+ must be of the form 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356964943
+Caption:<name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356964939
+name
+\end_layout
+
+\end_inset
+
+ specifies the name of the caption as it appears in the menu.
+ Have a look at the standard caption (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356964987
+Caption:Standard
+\end_layout
+
+\end_inset
+
+), the specific captions of the KOMA-Script classes (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356965018
+Caption:Above
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356965021
+Caption:Below
+\end_layout
+
+\end_inset
+
+) or the 
+\emph on
+biling
+\emph default
+ module (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1356965045
+Caption:Bicaption
+\end_layout
+
+\end_inset
+
+) for applications.
 \change_unchanged
 
 \end_layout
