@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 446
+\lyxformat 458
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -65,6 +65,8 @@ bicaption
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -232,37 +234,44 @@ reference "tab:List-of-babel"
 \end_layout
 
 \begin_layout Standard
-To add a multilingual caption to a float, delete the caption that is automatical
-ly added when inserting a new float and choose the style 
+To add a multilingual caption to a float, press the right mouse button on
+ the caption that is automatically added when inserting a new float and
+ select 
 \family sans
+Caption (Bicaption
+\family default
+) from the context menu.
+ If no caption is inserted, you can insert the multilingual caption via
+ 
+\family sans
+Insert\SpecialChar \menuseparator
+Caption\SpecialChar \menuseparator
 Bicaption
 \family default
 .
- This style has a mandatory argument that is inserted via the menu 
+ The caption text in the document language must be inserted in the inset
+ which is inserted in the caption via 
 \family sans
 Insert\SpecialChar \menuseparator
-Short
-\begin_inset space ~
-\end_inset
-
-Title
+Main Language Caption Text
 \family default
 .
- Insert there the caption text in the document language.
- The caption text in the second language is inserted as normal text behind
- the mandatory argument.
+ The caption text in the second language is inserted as normal text in the
+ caption.
 \end_layout
 
 \begin_layout Standard
-The 
+Short Titles for both languages (for the List of Tables\SpecialChar \slash{}
+Figures) can be inserted
+ via 
 \family sans
-Bicaption
+Insert\SpecialChar \menuseparator
+Main Language Caption Short Title
 \family default
- style has also an optional argument and is inserted the same way as the
- mandatory argument.
- In LyX the first of the two argument insets is the optional one.
- Insert there a short title for the caption in the document language.
- This short title will be used for the list of figures/tables.
+ and 
+\family sans
+Insert\SpecialChar \menuseparator
+Second Language Caption Short Title.
 \end_layout
 
 \begin_layout Standard
@@ -345,7 +354,10 @@ A figure.
 
 \end_layout
 
-\begin_layout Bicaption
+\begin_layout Plain Layout
+\begin_inset Caption Bicaption
+
+\begin_layout Plain Layout
 \begin_inset Argument 1
 status open
 
@@ -385,6 +397,11 @@ German Title
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:example-figure"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -646,7 +663,10 @@ A figure.
 
 \end_layout
 
-\begin_layout Bicaption
+\begin_layout Plain Layout
+\begin_inset Caption Bicaption
+
+\begin_layout Plain Layout
 \begin_inset Argument 2
 status open
 
@@ -664,6 +684,11 @@ Angepasstes Beschriftungsformat
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:example-figure-custom"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -862,7 +887,7 @@ key "bicaption"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
