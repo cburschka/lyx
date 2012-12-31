@@ -40,6 +40,7 @@ Function MissingPrograms
   # 2. 64bit Windows but 32bit Ghostscript
   # 3. 64bit Windows and 64bit Ghostscript
   StrCpy $3 0
+  StrCpy $4 "0"
   ${if} ${RunningX64}
    SetRegView 64
   ${endif}
