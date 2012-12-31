@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-12-31 14:51+0100\n"
-"PO-Revision-Date: 2012-12-31 14:57+0100\n"
+"POT-Creation-Date: 2012-12-31 15:28+0100\n"
+"PO-Revision-Date: 2012-12-31 15:29+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5371,7 +5371,8 @@ msgstr "Briefe"
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/stdletter.inc:12
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/svcommon.inc:26
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:344
+#: lib/layouts/stdinsets.inc:472 lib/ui/stdtoolbars.inc:69
+#: src/insets/InsetRef.cpp:344
 msgid "Standard"
 msgstr "Standard"
 
@@ -8061,6 +8062,10 @@ msgstr "Band"
 msgid "ThickLine"
 msgstr "Dicke Linie"
 
+#: lib/layouts/apa6.layout:350 lib/layouts/apa.layout:250
+msgid "Centered"
+msgstr "Zentriert"
+
 #: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
 #: lib/layouts/stdinsets.inc:473 src/insets/InsetCaption.cpp:398
 msgid "standard"
@@ -8768,8 +8773,8 @@ msgid "EnumerateType1"
 msgstr "AufzählungsTyp1"
 
 #: lib/layouts/powerdot.layout:384 lib/layouts/beamer.layout:1538
-#: lib/layouts/stdfloats.inc:11 lib/ui/stdtoolbars.inc:142
-#: src/insets/Inset.cpp:100
+#: lib/layouts/stdfloats.inc:11 lib/layouts/aguplus.inc:206
+#: lib/ui/stdtoolbars.inc:142 src/insets/Inset.cpp:100
 msgid "Table"
 msgstr "Tabelle"
 
@@ -9373,6 +9378,10 @@ msgstr "Tabellenfußnotenmarke"
 #: lib/layouts/aastex.layout:601
 msgid "tablenote mark"
 msgstr "Tabellenfußnotenmarke"
+
+#: lib/layouts/aastex.layout:619
+msgid "FigCaption"
+msgstr "Abbildungslegende"
 
 #: lib/layouts/aastex.layout:620
 msgid "fig."
@@ -11612,9 +11621,17 @@ msgstr "Innenseite unten"
 msgid "Extratitle"
 msgstr "Zusatztitel"
 
+#: lib/layouts/scrclass.inc:266
+msgid "Above"
+msgstr "Oberhalb"
+
 #: lib/layouts/scrclass.inc:267
 msgid "above"
 msgstr "oberhalb"
+
+#: lib/layouts/scrclass.inc:285
+msgid "Below"
+msgstr "Unterhalb"
 
 #: lib/layouts/scrclass.inc:286
 msgid "below"
@@ -13205,6 +13222,10 @@ msgstr "Optionen für den captionsetup-Befehl (siehe Bicaption-Anleitung)"
 #: lib/layouts/bicaption.module:28
 msgid "Caption setup:"
 msgstr "Legenden-Einstellungen:"
+
+#: lib/layouts/bicaption.module:38
+msgid "Bicaption"
+msgstr "Zweisprachig"
 
 #: lib/layouts/bicaption.module:39
 msgid "bilingual"
@@ -28091,9 +28112,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Senseless!"
 #~ msgstr "Sinnlos!"
 
-#~ msgid "FigCaption"
-#~ msgstr "Abbildungslegende"
-
 #~ msgid "Fig. ---"
 #~ msgstr "Abb. ---"
 
@@ -28105,9 +28123,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Table Caption"
 #~ msgstr "Tabellenlegende"
-
-#~ msgid "Bicaption"
-#~ msgstr "Zweisprachige Legende"
 
 #~ msgid "Multilingual caption:"
 #~ msgstr "Zweisprachige Legende:"
