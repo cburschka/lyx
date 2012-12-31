@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-12-28 10:22+0100\n"
+"POT-Creation-Date: 2012-12-31 16:59+0100\n"
 "PO-Revision-Date: 2012-12-01 12:12+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3388,7 +3388,7 @@ msgstr "LaTeXovský príkaz na zakončenie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Separator:"
-msgstr "Štandardný Decimálny &Separátor:"
+msgstr "Štandardný Decimálny &Oddeľovač:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
 msgid "Default length &unit:"
@@ -4573,13 +4573,14 @@ msgstr "Horizontálne zarovnanie v stĺpcy"
 msgid "Justified"
 msgstr "Do bloku"
 
-#: src/frontends/qt4/ui/TabularUi.ui:409 src/frontends/qt4/GuiTabular.cpp:828
+#: src/frontends/qt4/ui/TabularUi.ui:409 src/frontends/qt4/GuiTabular.cpp:218
+#: src/frontends/qt4/GuiTabular.cpp:837
 msgid "At Decimal Separator"
-msgstr "Na Decimálnom Separátore"
+msgstr "Na Decimálnom Oddeľovači"
 
 #: src/frontends/qt4/ui/TabularUi.ui:435
 msgid "&Decimal separator:"
-msgstr "&Decimálny separátor:"
+msgstr "&Decimálny oddeľovač:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:493
 msgid "Fixed width of the column"
@@ -6365,9 +6366,9 @@ msgstr "značka poznámky tabuľky"
 msgid "FigCaption"
 msgstr "PopisObrázka"
 
-#: lib/layouts/aastex.layout:627
-msgid "Fig. ---"
-msgstr "Obr. ---"
+#: lib/layouts/aastex.layout:620
+msgid "fig."
+msgstr "obr."
 
 #: lib/ui/stdmenus.inc:375
 msgid "Short Title|S"
@@ -6545,9 +6546,9 @@ msgstr "TOG number"
 msgid "Article number:"
 msgstr "Číslo článku:"
 
-#: lib/layouts/acmsiggraph.layout:98
+#: lib/layouts/acmsiggraph.layout:99
 msgid "TOG article DOI"
-msgstr "TOG article DOI"
+msgstr "TOG článok DOI"
 
 #: lib/layouts/acmsiggraph.layout:101
 msgid "Article DOI:"
@@ -6832,14 +6833,14 @@ msgstr "Poďakovania:"
 msgid "ThickLine"
 msgstr "HrubáČiara"
 
-#: lib/layouts/apa.layout:236
-msgid "CenteredCaption"
-msgstr "CentrovanýPopis"
+#: lib/layouts/apa.layout:250 lib/layouts/apa6.layout:350
+msgid "Centered"
+msgstr "Na stred"
 
-#: lib/layouts/apa.layout:268 lib/layouts/scrclass.inc:265
-#: lib/layouts/scrclass.inc:285
-msgid "Senseless!"
-msgstr "Nezmyselné!"
+#: lib/layouts/apa.layout:251 lib/layouts/apa6.layout:351
+#: lib/layouts/stdinsets.inc:473 src/insets/InsetCaption.cpp:398
+msgid "standard"
+msgstr "štandard"
 
 #: lib/layouts/apa.layout:249 lib/layouts/scrclass.inc:277
 #: lib/layouts/scrclass.inc:300 lib/layouts/stdinsets.inc:474
@@ -6887,8 +6888,8 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:3
-msgid "article (APA6)"
-msgstr "článok (APA6)"
+msgid "American Psychological Association (APA), v. 6"
+msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa6.layout:111
 msgid "FiveAuthors"
@@ -7086,7 +7087,7 @@ msgstr "Špecifikácie módu"
 #: lib/layouts/beamer.layout:396
 msgid "Specify in which mode (article, presentation etc.) this header appears"
 msgstr ""
-"Špecifikuj v akom móde (article, presentation atď.) sa táto hlavička zobrazí"
+"Špecifikuj v akom móde (článok, prezentácia atď.) sa táto hlavička zobrazí"
 
 #: lib/layouts/beamer.layout:134 lib/layouts/memoir.layout:56
 #: lib/layouts/tufte-handout.layout:41 lib/layouts/scrclass.inc:115
@@ -7136,35 +7137,24 @@ msgstr "Podpodsekcia ako sa zobrazí v zozname/priebežných hlavičkách"
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
+#: lib/layouts/beamer.layout:244
+msgid "Frame"
+msgstr "Rám"
+
 #: lib/layouts/beamer.layout:271 lib/layouts/beamer.layout:313
 #: lib/layouts/beamer.layout:351 lib/layouts/beamer.layout:390
 #: lib/layouts/beamer.layout:419
 msgid "Frames"
 msgstr "Rámy"
 
-#: lib/layouts/beamer.layout:309 lib/layouts/beamer.layout:395
-msgid "Frame Options"
-msgstr "Voľby Rám"
-
-#: lib/layouts/beamer.layout:310 lib/layouts/beamer.layout:396
-msgid "Frame options (see beamer manual)"
-msgstr "Rám voľby (viď beamer manuál)"
-
-#: lib/layouts/beamer.layout:244
-msgid "Frame"
-msgstr "Rám"
-
-#: lib/layouts/beamer.layout:450
-msgid "BeginPlainFrame"
-msgstr "ZačiatokProstéhoRámu"
-
-#: lib/layouts/beamer.layout:364
-msgid "Frame (no head/foot/sidebars)"
-msgstr "Rám (žiadna hlavička/päta/bok)"
-
-#: lib/layouts/beamer.layout:485
-msgid "AgainFrame"
-msgstr "ZaseRám"
+#: lib/layouts/beamer.layout:828 lib/layouts/beamer.layout:1165
+#: lib/layouts/beamer.layout:1327 lib/layouts/beamer.layout:1344
+#: lib/layouts/beamer.layout:1361 lib/layouts/beamer.layout:1378
+#: lib/layouts/beamer.layout:1395 lib/layouts/beamer.layout:1412
+#: lib/layouts/beamer.layout:1429 lib/layouts/beamer.layout:1446
+#: lib/layouts/beamer.layout:1469
+msgid "Action"
+msgstr "Akcia"
 
 #: lib/layouts/beamer.layout:493
 msgid "Overlay specifications for this frame"
@@ -7178,21 +7168,54 @@ msgstr "Štandardné špecifikácie prekrytia"
 msgid "Default overlay specifications within this frame"
 msgstr "Štandardné špecifikácie prekrytia tohto rámca"
 
+#: lib/layouts/beamer.layout:309 lib/layouts/beamer.layout:395
+msgid "Frame Options"
+msgstr "Voľby Rám"
+
 #: lib/layouts/beamer.layout:505 lib/layouts/beamer.layout:603
 msgid "Options"
 msgstr "Možnosti"
 
+#: lib/layouts/beamer.layout:310 lib/layouts/beamer.layout:396
+msgid "Frame options (see beamer manual)"
+msgstr "Rám voľby (viď beamer manuál)"
+
+#: lib/layouts/beamer.layout:448
+msgid "Frame Title"
+msgstr "Titul Rámu"
+
+#: lib/layouts/beamer.layout:836
+msgid "Enter the block title here"
+msgstr "Vlož sem titul bloku"
+
+#: lib/layouts/beamer.layout:461
+msgid "PlainFrame"
+msgstr "ProstýRám"
+
+#: lib/layouts/beamer.layout:463
+msgid "Frame (plain)"
+msgstr "Rám (prostý)"
+
+#: lib/layouts/beamer.layout:472
+msgid "FragileFrame"
+msgstr "KrehkýRám"
+
+#: lib/layouts/beamer.layout:474
+msgid "Frame (fragile)"
+msgstr "Rám (krehký)"
+
+#: lib/layouts/beamer.layout:485
+msgid "AgainFrame"
+msgstr "ZaseRám"
+
+#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:36
+#: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:171
+msgid "Slide"
+msgstr "Fólia"
+
 #: lib/layouts/beamer.layout:519
 msgid "Repeat frame with label"
 msgstr "Opakovať rám s návestím"
-
-#: lib/layouts/beamer.layout:531
-msgid "EndFrame"
-msgstr "KoniecRámu"
-
-#: lib/layouts/beamer.layout:359
-msgid "________________________________"
-msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:557
 msgid "FrameTitle"
@@ -7365,15 +7388,6 @@ msgstr "Bloky"
 msgid "Block:"
 msgstr "Blok:"
 
-#: lib/layouts/beamer.layout:828 lib/layouts/beamer.layout:1165
-#: lib/layouts/beamer.layout:1327 lib/layouts/beamer.layout:1344
-#: lib/layouts/beamer.layout:1361 lib/layouts/beamer.layout:1378
-#: lib/layouts/beamer.layout:1395 lib/layouts/beamer.layout:1412
-#: lib/layouts/beamer.layout:1429 lib/layouts/beamer.layout:1446
-#: lib/layouts/beamer.layout:1469
-msgid "Action"
-msgstr "Akcia"
-
 #: lib/layouts/beamer.layout:829
 msgid "Action Specification|S"
 msgstr "Špecifikácie akcie"
@@ -7381,10 +7395,6 @@ msgstr "Špecifikácie akcie"
 #: lib/layouts/beamer.layout:835
 msgid "Block Title"
 msgstr "Titul Bloku"
-
-#: lib/layouts/beamer.layout:836
-msgid "Enter the block title here"
-msgstr "Vlož sem titul bloku"
 
 #: lib/layouts/beamer.layout:848
 msgid "ExampleBlock"
@@ -7657,6 +7667,27 @@ msgstr "Obrázok"
 msgid "List of Figures"
 msgstr "Zoznam obrázkov"
 
+#: lib/layouts/beamer.layout:1618 lib/layouts/beamer.layout:1660
+#: lib/layouts/beamer.layout:1695
+msgid "Deprecated Styles"
+msgstr "Odmietané Štýly"
+
+#: lib/layouts/beamer.layout:450
+msgid "BeginPlainFrame"
+msgstr "ZačiatokProstéhoRámu"
+
+#: lib/layouts/beamer.layout:364
+msgid "Frame (no head/foot/sidebars)"
+msgstr "Rám (žiadna hlavička/päta/bok)"
+
+#: lib/layouts/beamer.layout:531
+msgid "EndFrame"
+msgstr "KoniecRámu"
+
+#: lib/layouts/beamer.layout:359
+msgid "________________________________"
+msgstr "________________________________"
+
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
 msgstr "Kniha (Štandardná Trieda)"
@@ -7874,6 +7905,23 @@ msgstr "Listy"
 msgid "DinBrief"
 msgstr "DinBrief"
 
+#: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
+#: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
+#: lib/layouts/scrlettr.layout:40
+msgid "Letter"
+msgstr "Text listu"
+
+#: lib/layouts/dinbrief.layout:46
+msgid "Addresses"
+msgstr "Adresy"
+
+#: lib/layouts/dinbrief.layout:48 lib/layouts/g-brief2.layout:732
+#: lib/layouts/g-brief2.layout:755 lib/layouts/g-brief2.layout:777
+#: lib/layouts/lettre.layout:140 lib/layouts/stdletter.inc:26
+#: lib/layouts/stdletter.inc:38
+msgid "Postal Data"
+msgstr "Doručovacie údaje"
+
 #: lib/layouts/dinbrief.layout:47 lib/layouts/frletter.layout:16
 #: lib/layouts/heb-letter.layout:15 lib/layouts/lettre.layout:55
 #: lib/layouts/lettre.layout:481 lib/layouts/stdletter.inc:35
@@ -7961,6 +8009,11 @@ msgstr "Referent:"
 #: lib/layouts/stdletter.inc:71
 msgid "Signature"
 msgstr "Podpis"
+
+#: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
+#: lib/layouts/lettre.layout:650
+msgid "Closings"
+msgstr "Záver"
 
 #: lib/layouts/dinbrief.layout:114 lib/layouts/g-brief.layout:57
 #: lib/layouts/g-brief2.layout:901 lib/layouts/lettre.layout:571
@@ -8180,12 +8233,6 @@ msgstr "Predmet"
 #: lib/layouts/dinbrief.layout:340
 msgid "Anrede"
 msgstr "Oslovenie"
-
-#: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
-#: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
-#: lib/layouts/scrlettr.layout:40
-msgid "Letter"
-msgstr "Text listu"
 
 #: lib/layouts/dinbrief.layout:350
 msgid "Brieftext"
@@ -8888,7 +8935,7 @@ msgstr "Vertikálna medzera"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
-msgstr "Article (Štandardná trieda s ďalšími veľkosťami písma)"
+msgstr "Článok (Štandardná trieda s ďalšími veľkosťami písma)"
 
 #: lib/layouts/extbook.layout:3
 msgid "Book (Standard Class with Extra Font Sizes)"
@@ -9893,11 +9940,6 @@ msgstr "Tel:"
 msgid "NoTel"
 msgstr "Bez Telefónu"
 
-#: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
-#: lib/layouts/lettre.layout:650
-msgid "Closings"
-msgstr "Záver"
-
 #: lib/layouts/lettre.layout:525
 msgid "EndOfMessage."
 msgstr "KoniecSprávy."
@@ -10089,6 +10131,18 @@ msgstr "Epigraf"
 #: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
 msgid "Maintext"
 msgstr "Hlavný text"
+
+#: lib/layouts/memoir.layout:185
+msgid "Epigraph Source|S"
+msgstr "Epigraf Zdroj"
+
+#: lib/layouts/memoir.layout:186
+msgid "Source"
+msgstr "Zdroj"
+
+#: lib/layouts/memoir.layout:187
+msgid "The source/author of this epigraph"
+msgstr "Zdroj/autor tohto nápisu"
 
 #: lib/layouts/memoir.layout:133
 msgid "Poemtitle"
@@ -10353,11 +10407,6 @@ msgstr "Inštitúcia"
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
 msgstr "Powerdot"
-
-#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:36
-#: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:171
-msgid "Slide"
-msgstr "Fólia"
 
 #: lib/layouts/powerdot.layout:132
 msgid "    "
@@ -11189,7 +11238,7 @@ msgstr "Tufte Handout"
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
-msgstr "Handouts"
+msgstr "Letáky"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -11519,8 +11568,8 @@ msgid "Planotable"
 msgstr "Plano-tabuľka"
 
 #: lib/layouts/aguplus.inc:207
-msgid "Table Caption"
-msgstr "Popis tabuľky"
+msgid "table"
+msgstr "Tabuľka"
 
 #: lib/layouts/amsdefs.inc:39
 msgid "Short title which appears in the running headers"
@@ -11698,17 +11747,21 @@ msgstr "DolnýTitulVzadu"
 msgid "Extratitle"
 msgstr "Extra titulok"
 
-#: lib/layouts/scrclass.inc:254
-msgid "Captionabove"
-msgstr "Popis hore"
+#: lib/layouts/scrclass.inc:266
+msgid "Above"
+msgstr "Nad"
 
-#: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
-msgid "Captions"
-msgstr "Popisy"
+#: lib/layouts/scrclass.inc:267
+msgid "above"
+msgstr "nad"
 
-#: lib/layouts/scrclass.inc:274
-msgid "Captionbelow"
-msgstr "Popis dole"
+#: lib/layouts/scrclass.inc:285
+msgid "Below"
+msgstr "Pod"
+
+#: lib/layouts/scrclass.inc:286
+msgid "below"
+msgstr "pod"
 
 #: lib/layouts/scrclass.inc:294
 msgid "Dictum"
@@ -12169,6 +12222,26 @@ msgstr "Popis nastavenie:"
 msgid "Bicaption"
 msgstr "Dvojjazykový popis"
 
+#: lib/layouts/bicaption.module:39
+msgid "bilingual"
+msgstr "dvojjazyčne"
+
+#: lib/layouts/bicaption.module:51
+msgid "Main Language Caption Short Title"
+msgstr "Hlavný Jazyk Popis Krátky Titul"
+
+#: lib/layouts/bicaption.module:44
+msgid "A short title (for list of figures/tables) in the document language"
+msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v jazyku dokumentu"
+
+#: lib/layouts/bicaption.module:48
+msgid "Main Language Caption Text|S"
+msgstr "Hlavný Jazyk Popis Text"
+
+#: lib/layouts/bicaption.module:49
+msgid "The caption text in the document language"
+msgstr "Text popisu v jazyku dokumentu"
+
 #: lib/layouts/bicaption.module:42
 msgid "Second Language Caption Short Title"
 msgstr "Druhý Jazyk Popis Krátky Titul"
@@ -12176,26 +12249,6 @@ msgstr "Druhý Jazyk Popis Krátky Titul"
 #: lib/layouts/bicaption.module:43
 msgid "A short title (for list of figures/tables) in the second language"
 msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v druhom jazyku"
-
-#: lib/layouts/bicaption.module:47
-msgid "Second Language Caption Text|S"
-msgstr "Druhý Jazyk Popis Text"
-
-#: lib/layouts/bicaption.module:48
-msgid "The caption text in the second language"
-msgstr "Text popisu v druhom jazyku"
-
-#: lib/layouts/bicaption.module:51
-msgid "Main Language Caption Short Title"
-msgstr "Hlavný Jazyk Popis Krátky Titul"
-
-#: lib/layouts/bicaption.module:52
-msgid "A short title (for list of figures/tables) in the main language"
-msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v hlavnom jazyku"
-
-#: lib/layouts/bicaption.module:42
-msgid "Multilingual caption:"
-msgstr "Viac-jazykový popis:"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -12722,6 +12775,10 @@ msgstr "--Koniec Viac-Stĺpcového Prostredia--"
 #: lib/layouts/natbib.module:2
 msgid "Natbib"
 msgstr "Natbib"
+
+#: lib/layouts/natbibapa.module:2
+msgid "Natbibapa"
+msgstr "Natbibapa"
 
 #: lib/layouts/natbibapa.module:9
 msgid ""
@@ -15688,8 +15745,12 @@ msgstr "Špecifické manuály|Š"
 msgid "About LyX|X"
 msgstr "O programe LyX|X"
 
-#: lib/ui/stdmenus.inc:591
-msgid "Braille|B"
+#: lib/ui/stdmenus.inc:592
+msgid "Beamer Presentations|B"
+msgstr "Beamer Prezentácie"
+
+#: lib/ui/stdmenus.inc:593
+msgid "Braille|a"
 msgstr "Braille|B"
 
 #: lib/ui/stdmenus.inc:592
@@ -16785,6 +16846,14 @@ msgstr "preškrtnúť (s 'X')"
 #: lib/ui/stdtoolbars.inc:427
 msgid "cancelto"
 msgstr "preškrtnúť až po"
+
+#: lib/ui/stdtoolbars.inc:438
+msgid "stackrel"
+msgstr "stackrel"
+
+#: lib/ui/stdtoolbars.inc:439
+msgid "stackrelthree"
+msgstr "stackrelthree"
 
 #: lib/ui/stdtoolbars.inc:431
 msgid "leftarrow"
@@ -23646,6 +23715,22 @@ msgstr ""
 "symboly \\ce alebo \\cf"
 
 #: src/frontends/qt4/GuiDocument.cpp:160
+msgid "Use stackrel package automatically"
+msgstr "Automaticky používať balík stackrel"
+
+#: src/frontends/qt4/GuiDocument.cpp:161
+msgid "Use stackrel package"
+msgstr "Použiť balík stackrel"
+
+#: src/frontends/qt4/GuiDocument.cpp:162
+msgid ""
+"The LaTeX package stackrel is only used if the command \\stackrel with "
+"subscript is inserted into formulas"
+msgstr ""
+"LaTeX balík stackrel sa použije len v prípade, keď sa vo formulách nájde aj "
+"príkaz \\stackrel s dolným indexom"
+
+#: src/frontends/qt4/GuiDocument.cpp:160
 msgid "Use stmaryrd package automatically"
 msgstr "Automaticky používať balík stmaryrd"
 
@@ -25918,6 +26003,11 @@ msgstr "Žiadna citácia nablízku!"
 msgid "No citations selected!"
 msgstr "Žiadna citácia nie je vybraná!"
 
+#: src/frontends/qt4/Menus.cpp:1633
+#, c-format
+msgid "Caption (%1$s)"
+msgstr "Popis (%1$s)"
+
 #: src/frontends/qt4/Menus.cpp:2124
 msgid "No Action Defined!"
 msgstr "Žiadna akcia nebola definovaná!"
@@ -27489,6 +27579,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Fig. ---"
+#~ msgstr "Obr. ---"
+
+#~ msgid "CenteredCaption"
+#~ msgstr "CentrovanýPopis"
+
+#~ msgid "Senseless!"
+#~ msgstr "Nezmyselné!"
+
+#~ msgid "Table Caption"
+#~ msgstr "Popis tabuľky"
+
+#~ msgid "Captionabove"
+#~ msgstr "Popis hore"
+
+#~ msgid "Captionbelow"
+#~ msgstr "Popis dole"
+
+#~ msgid "Multilingual caption:"
+#~ msgstr "Viac-jazykový popis:"
+
+#~ msgid "article (APA6)"
+#~ msgstr "článok (APA6)"
 
 #~ msgid "Block:  "
 #~ msgstr "Blok:"
@@ -29320,9 +29434,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "figure"
 #~ msgstr "Obrázok"
-
-#~ msgid "table"
-#~ msgstr "Tabuľka"
 
 #~ msgid "algorithm"
 #~ msgstr "Algoritmus"
