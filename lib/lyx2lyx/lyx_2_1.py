@@ -2832,7 +2832,20 @@ def revert_overprint(document):
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
         esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}")
         endseq = endseq + len(esubst) - len(document.body[j : j])
-        document.body[j : j] = esubst
+        if document.body[j] == "\\end_deeper":
+            document.body[j : j] = ["\\end_deeper", ""] + esubst
+        else:
+            document.body[j : j] = esubst
+        r = i
+        while r < j:
+            if document.body[r] == "\\begin_deeper":
+                s = find_end_of(document.body, r, "\\begin_deeper", "\\end_deeper")
+                if s != -1:
+                    document.body[r] = ""
+                    document.body[s] = ""
+                    r = s
+                    continue
+            r = r + 1
         argbeg = find_token(document.body, "\\begin_inset Argument 1", i, j)
         if argbeg != -1:
             argend = find_end_of_inset(document.body, argbeg)
