@@ -1615,7 +1615,7 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 		return;
 	if (caps.size() == 1) {
 		docstring dummy;
-		docstring type = split(*caps.begin(), dummy, ':');
+		docstring const type = split(*caps.begin(), dummy, ':');
 		add(MenuItem(MenuItem::Command, qt_("Caption"),
 			 FuncRequest(LFUN_CAPTION_INSERT, translateIfPossible(type))));
 		return;
@@ -1628,16 +1628,17 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring dummy;
-		docstring type = split(*cit, dummy, ':');
-		docstring item = bformat(_("Caption (%1$s)"), translateIfPossible(type));
+		docstring const type = split(*cit, dummy, ':');
+		docstring const trtype = translateIfPossible(type);
+		docstring const cmitem = bformat(_("Caption (%1$s)"), trtype);
 			if (switchcap)
-				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(item),
+				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cmitem),
 					     FuncRequest(LFUN_INSET_MODIFY,
 							 from_ascii("changetype ")
 							 + type), QString(), true));
 			else
 				captions.addWithStatusCheck(MenuItem(MenuItem::Command,
-								     toqstr(item),
+								     toqstr(trtype),
 								     FuncRequest(LFUN_CAPTION_INSERT,
 								     type), QString(), true));
 	}
