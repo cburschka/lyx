@@ -100,15 +100,15 @@ Var TimeDiff
 
 Function GetFileTimeS
 	
-   Exch $0  ;; File / hi
-   Push $1  ;; lo
+   Exch $0  # File / hi
+   Push $1  # lo
  
    ClearErrors
    GetFileTime "$0" $0 $1
    IfErrors err
    System::Call '*(i r1, i r0) i .r0'
    System::Call '*$0(l .r0)'
-   System::Int64Op $0 / 10000000  ;; Conversion From '100 ns' to '1 sec' unit
+   System::Int64Op $0 / 10000000  # Conversion From '100 ns' to '1 sec' unit
    Goto end
  
    err:
@@ -135,9 +135,9 @@ FunctionEnd
 !macroend
 
 Function FileTimeDiff 
-   Exch $0  ;; FileA
+   Exch $0  # FileA
    Exch 
-   Exch $1  ;; FileB
+   Exch $1  # FileB
  
    ${GetFileTimeS} $0 "$0"
    IfErrors err
