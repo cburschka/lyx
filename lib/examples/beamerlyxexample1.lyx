@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 454
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass beamer
@@ -181,6 +181,7 @@
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
@@ -4860,14 +4861,7 @@ fragile
 \end_inset
 
 .
- This is not yet supported by LyX, so the frame is created using TeX code.
- Note that the 
-\backslash
-begin{frame}[fragile] needs to be preceeded by an 
-\emph on
-EndFrame
-\emph default
- environment.
+ LyX has the FragileFrame layout for this.
 \end_layout
 
 \end_inset
@@ -4875,42 +4869,12 @@ EndFrame
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
+\begin_layout FragileFrame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{frame}[fragile]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-frametitle{
-\end_layout
-
-\end_inset
-
 Just a frame with a program code listing
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -4918,10 +4882,11 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout FragileFrame
 This is some program code:
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset listings
 lstparams "extendedchars=true,language=Python,numbers=left,stepnumber=3,tabsize=4"
@@ -4978,22 +4943,7 @@ pass
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frame}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Section*
 Summary
 \end_layout
