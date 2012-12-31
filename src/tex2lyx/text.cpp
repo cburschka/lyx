@@ -2786,7 +2786,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
-			begin_inset(os, "Caption\n");
+			begin_inset(os, "Caption Standard\n");
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
 			// FIXME InsetArgument is now properly implemented in InsetLayout
@@ -2838,7 +2838,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// we must make sure that the caption gets a \begin_layout
 					os << "\n\\begin_layout Plain Layout";
 					p.skip_spaces();
-					begin_inset(os, "Caption\n");
+					begin_inset(os, "Caption Standard\n");
 					Context newcontext(true, context.textclass,
 					                   0, 0, context.font);
 					newcontext.check_layout(os);
