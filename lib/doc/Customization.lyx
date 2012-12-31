@@ -14493,17 +14493,18 @@ status collapsed
 \end_inset
 
 ] The color for the inset's background.
- The valid color names are defined in 
-\begin_inset Flex Code
-status collapsed
+ See chapter
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-src/ColorCode.h
-\end_layout
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Names-of-colors"
 
 \end_inset
 
-.
+ for a list of the available color names.
 \end_layout
 
 \begin_layout Description
@@ -21104,6 +21105,368 @@ Including external material provides a lot of power, and you have to be
  a knowledgeable security professional or the LyX development team if you
  have any questions about whether a given template is safe or not.
  And do this before you use it in an uncontrolled environment.
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Names of available colors to be used in layouts
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Names-of-colors"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The colors listed here are the standard colors and the those that you can
+ adjust in the LyX preferences.
+\end_layout
+
+\begin_layout Description
+none
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ No particular color -- clear or default
+\end_layout
+
+\begin_layout Description
+black
+\end_layout
+
+\begin_layout Description
+white
+\end_layout
+
+\begin_layout Description
+red
+\end_layout
+
+\begin_layout Description
+green
+\end_layout
+
+\begin_layout Description
+blue
+\end_layout
+
+\begin_layout Description
+cyan
+\end_layout
+
+\begin_layout Description
+magenta
+\end_layout
+
+\begin_layout Description
+yellow
+\end_layout
+
+\begin_layout Description
+cursor Cursor color
+\end_layout
+
+\begin_layout Description
+background Background color
+\end_layout
+
+\begin_layout Description
+foreground Foreground color
+\end_layout
+
+\begin_layout Description
+selection Background color of selected text
+\end_layout
+
+\begin_layout Description
+selectiontext Foreground color of selected text
+\end_layout
+
+\begin_layout Description
+latex Text color in LaTeX mode 
+\end_layout
+
+\begin_layout Description
+preview The color used for previews
+\end_layout
+
+\begin_layout Description
+inlinecompletion Inline completion color 
+\end_layout
+
+\begin_layout Description
+nonunique_inlinecompletion Inline completion color for the non-unique part
+\end_layout
+
+\begin_layout Description
+notelabel Label color for notes
+\end_layout
+
+\begin_layout Description
+notebg Background color of notes
+\end_layout
+
+\begin_layout Description
+commentlabel Label color for comments
+\end_layout
+
+\begin_layout Description
+commentbg Background color of comments
+\end_layout
+
+\begin_layout Description
+greyedoutlabel Label color for greyedout insets
+\end_layout
+
+\begin_layout Description
+greyedouttext Color for greyedout inset text
+\end_layout
+
+\begin_layout Description
+greyedoutbg Background color of greyedout inset
+\end_layout
+
+\begin_layout Description
+shadedbg Background color of shaded box
+\end_layout
+
+\begin_layout Description
+listingsbg Background color of listings inset
+\end_layout
+
+\begin_layout Description
+branchlabel Label color for branches
+\end_layout
+
+\begin_layout Description
+footlabel Label color for footnotes
+\end_layout
+
+\begin_layout Description
+indexlabel Label color for index insets 
+\end_layout
+
+\begin_layout Description
+marginlabel Label color for margin notes 
+\end_layout
+
+\begin_layout Description
+phantomtext Text color for phantom insets 
+\end_layout
+
+\begin_layout Description
+urllabel Label color for URL insets
+\end_layout
+
+\begin_layout Description
+urltext Color for URL inset text
+\end_layout
+
+\begin_layout Description
+depthbar Color for the depth bars in the margin
+\end_layout
+
+\begin_layout Description
+language Color for marking foreign language words
+\end_layout
+
+\begin_layout Description
+command Text color for command insets
+\end_layout
+
+\begin_layout Description
+commandbg Background color for command insets 
+\end_layout
+
+\begin_layout Description
+commandframe Frame color for command insets
+\end_layout
+
+\begin_layout Description
+special Special chars text color
+\end_layout
+
+\begin_layout Description
+graphicsbg Graphics inset background color 
+\end_layout
+
+\begin_layout Description
+math Math inset text color 
+\end_layout
+
+\begin_layout Description
+mathbg Math inset background color
+\end_layout
+
+\begin_layout Description
+mathmacrobg Macro math inset background color
+\end_layout
+
+\begin_layout Description
+mathmacrohoverbg Macro math inset background color hovered
+\end_layout
+
+\begin_layout Description
+mathmacrolabel Macro math label color
+\end_layout
+
+\begin_layout Description
+mathmacroframe Macro math frame color
+\end_layout
+
+\begin_layout Description
+mathmacroblend Macro math blended color
+\end_layout
+
+\begin_layout Description
+mathmacrooldarg Macro template color for old parameters 
+\end_layout
+
+\begin_layout Description
+mathmacronewarg Macro template color for new parameters
+\end_layout
+
+\begin_layout Description
+mathframe Math inset frame color under focus 
+\end_layout
+
+\begin_layout Description
+mathcorners Math inset frame color not under focus
+\end_layout
+
+\begin_layout Description
+mathline Math line color
+\end_layout
+
+\begin_layout Description
+collapsable Collapsable insets text 
+\end_layout
+
+\begin_layout Description
+collapsableframe Collapsable insets frame
+\end_layout
+
+\begin_layout Description
+insetbg Inset marker background color
+\end_layout
+
+\begin_layout Description
+insetframe Inset marker frame color
+\end_layout
+
+\begin_layout Description
+error Error box text color
+\end_layout
+
+\begin_layout Description
+eolmarker End of line marker color
+\end_layout
+
+\begin_layout Description
+added_space Added space colour
+\end_layout
+
+\begin_layout Description
+appendix Appendix marker color
+\end_layout
+
+\begin_layout Description
+changebar Changebar color
+\end_layout
+
+\begin_layout Description
+deletedtext Deleted text color
+\end_layout
+
+\begin_layout Description
+addedtext Added text color
+\end_layout
+
+\begin_layout Description
+changedtextauthor1 Changed text color author 1
+\end_layout
+
+\begin_layout Description
+changedtextauthor2 Changed text color author 2
+\end_layout
+
+\begin_layout Description
+changedtextauthor3 Changed text color author 3
+\end_layout
+
+\begin_layout Description
+changedtextauthor4 Changed text color author 4
+\end_layout
+
+\begin_layout Description
+changedtextauthor5 Changed text color author 5
+\end_layout
+
+\begin_layout Description
+deletedtextmodifier Deleted text modifying color
+\end_layout
+
+\begin_layout Description
+tabularline Table line color
+\end_layout
+
+\begin_layout Description
+tabularonoffline Table line color 
+\end_layout
+
+\begin_layout Description
+bottomarea Bottom area color
+\end_layout
+
+\begin_layout Description
+newpage New page color 
+\end_layout
+
+\begin_layout Description
+pagebreak Page break color
+\end_layout
+
+\begin_layout Description
+buttonframe Color used for button frame
+\end_layout
+
+\begin_layout Description
+buttonbg Color used for bottom background
+\end_layout
+
+\begin_layout Description
+buttonhoverbg Color used for buttom under focus 
+\end_layout
+
+\begin_layout Description
+paragraphmarker Color used for the pilcrow sign to mark the end of a paragraph
+ 
+\end_layout
+
+\begin_layout Description
+previewframe Preview frame color
+\end_layout
+
+\begin_layout Description
+inherit Color is inherited 
+\end_layout
+
+\begin_layout Description
+regexpframe Color for regexp frame
+\end_layout
+
+\begin_layout Description
+ignore For ignoring updates of a color
 \end_layout
 
 \end_body
