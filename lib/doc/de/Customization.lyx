@@ -1207,7 +1207,7 @@ nstellungen
 Formate
 \begin_inset CommandInset label
 LatexCommand label
-name "Formate"
+name "sec:Formate"
 
 \end_inset
 
@@ -1312,12 +1312,12 @@ Dokumentformat
  angekreuzt ist, weiß LyX, dass das Format für den Dokumentexport geeignet
  ist.
  Wenn dann auch noch ein geeigneter Konverter existiert (siehe Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "Konverter"
 
 \end_inset
@@ -1589,7 +1589,7 @@ Kopierer können angepasst werden.
 \family sans
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1608,7 +1608,7 @@ Datei.lyx
 \family typewriter
 Datei.html.Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1952,7 +1952,7 @@ Dateiformate
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Formate"
+reference "sec:Formate"
 
 \end_inset
 
@@ -7642,30 +7642,19 @@ string
 \family default
  angegeben wird.
  Dies wird typischerweise benutzt, wenn das Layout das Modul direkt benutzt
-\lang english
-, rather than using the 
+ statt den Tag 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 DefaultModule
 \end_layout
 
 \end_inset
 
- tag to indicate that it ought to be used
-\lang ngerman
-.
+ zu benutzen.
  Es könnte auch in einem Modul benutzt werden, das eine andere Implementation
  derselben Funktion liefert.
-\begin_inset Newline newline
-\end_inset
-
-
-\lang english
-This will typically be used if the layout includes the module directl
 \end_layout
 
 \begin_layout Description
@@ -13452,17 +13441,18 @@ status collapsed
 \end_inset
 
 ] ist die Hintergrundfarbe der Einfügung.
- Die gültigen Farbnamen sind in 
-\begin_inset Flex Code
-status collapsed
+ Siehe Kapitel
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-src/ColorCode.h
-\end_layout
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Namen-von-Farben"
 
 \end_inset
 
- definiert.
+ für eine Liste von verfügbaren Farbnamen.
 \end_layout
 
 \begin_layout Description
@@ -16498,12 +16488,6 @@ reference "sub:Allgemeine-Parameter-für"
 \begin_layout Subsection
 
 \lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Paragraph-Style-XHTML"
-
-\end_inset
-
 Paragraph styles
 \end_layout
 
@@ -18709,82 +18693,46 @@ name "cha:Externes-Material-einfügen"
 
 \end_layout
 
-\begin_layout Section
-Hintergrund
-\end_layout
-
 \begin_layout Standard
-Einer der am häufigsten geäußerten Wünsche der LyX-Benutzer ist die Möglichkeit
- einer Schnittstelle zwischen LyX und XFig, Dia oder ähnlichen Anwendungsprogram
-men, die darauf spezialisiert sind, spezielle Diagramme, Abbildungen oder
- ähnliches zum Einbinden in Dokumente zu erstellen.
- Bislang war es lediglich möglich, statische, festgelegte Abbildungen über
- das normale Grafik-Inset einzubinden, jedoch hat dieser Ansatz einige Einschrän
-kungen:
-\end_layout
 
-\begin_layout Itemize
-Wenn Sie die Abbildung ändern wollen, müssen Sie extra von Hand das entsprechend
-e Programm starten.
-\end_layout
-
-\begin_layout Itemize
-LyX merkt nicht, dass Sie die Abbildung geändert haben, und die Darstellung
- am Bildschirm wird schnell veraltet; dies wird noch durch die fehlende
- Möglichkeit, die Anzeige zu aktualisieren, erschwert.
-\end_layout
-
-\begin_layout Itemize
-Das Grafik-Inset kann nicht mit unterschiedlichen Export-Formaten wie DocBook,
- HTML oder ASCII umgehen.
-\end_layout
-
-\begin_layout Standard
-Die Einfügung 
-\family sans
-Externes
-\begin_inset space \space{}
-\end_inset
-
-Material
-\family default
- ist der Versuch, diese Probleme zu lösen.
-\begin_inset Foot
-status collapsed
+\lang english
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-Auch wenn das alte Grafik-Inset einige Mängel hat, so ist es dennoch sehr
- wertvoll, denn es bietet eine Anzeige der Grafik sowie die Möglichkeit
- zu geometrischen Transformationen über eine komfortable Benutzerschnittstelle.
- 
+
+\lang english
+WARNUNG: This portion of the documentation has not been updated for some
+ time.
+ We certainly hope that it is still accurate, but there are no guarantees.
 \end_layout
 
 \end_inset
 
- Dies wird erreicht, indem eine abstrahierte Methode der Interaktion zwischen
- LyX und einer externen Anwendung definiert wird.
- Anstatt also eine lange Liste von Einfügungen für alle möglichen Arten
- von Material anzubieten, haben wir auf die Darstellung in LyX verzichtet
- und dafür die Möglichkeit geschaffen, einen sehr weiten Bereich von Anwendungen
- abzudecken.
+
 \end_layout
 
 \begin_layout Standard
-Das Ergebnis ist eben genau diese Einfügung 
-\family sans
-Externes
-\begin_inset space \space{}
-\end_inset
 
-Material
-\family default
-.
- Eine solche Einfügung erscheint im LyX-Dokument lediglich als einfache
- Schaltfläche, aber lassen Sie sich dadurch nicht täuschen.
- Wenn Sie darauf klicken, erscheint ein Dialog, in dem Sie genau festlegen
- können, welche Art von Material Sie einbinden wollen.
- Und in den folgenden Abschnitten werden Sie lernen, wie Sie damit all die
- oben aufgezeigten Probleme umgehen können und einiges mehr.
+\lang english
+The use of material from sources external to LyX is covered in detail in
+ the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+ This part of the manual covers what needs to happen behind the scenes for
+ new sorts of material to be included.
 \end_layout
 
 \begin_layout Section
@@ -18970,251 +18918,24 @@ Dieses Format wird durch die verwendete Dokumentenklasse festgelegt.
 \end_layout
 
 \begin_layout Section
-Der Dialog 
-\family sans
-Externes Material
+
+\lang english
+The external template configuration file
 \end_layout
 
 \begin_layout Standard
-Eine Externe Einfügung wird vom Menü 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
 
-\family sans
-Datei
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Externes
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-Material
-\family default
-\SpecialChar \ldots{}
- aus aufgerufen.
- Es wird dann der Dialog 
-\family sans
-Externes
-\begin_inset space \space{}
-\end_inset
-
-Material
-\family default
- geöffnet.
- In diesem Dialog können Sie genau festlegen, welche Art von Material Sie
- einbinden wollen, und auch wie das geschehen soll.
- Darüberhinaus können Sie über diesen Dialog die externen Bearbeitungsprogramme
- und Betrachter starten.
-\end_layout
-
-\begin_layout Standard
-Auf der Karteikarte 
-\family sans
-Datei
-\family default
- befindet sich zunächst ein Fenster 
-\family sans
-Datei:
-\family default
-, in das Sie einen Dateinamen direkt oder über 
-\family sans
-Durchsuchen
-\family default
-\SpecialChar \ldots{}
- eingeben können.
- Da die tatsächlich eingebundene Datei bei Bedarf automatisch erstellt wird,
- besteht kein Grund, hierfür auch ein Dialogfeld anzulegen.
- Darunter ist ein Schalter 
-\family sans
-Datei
-\begin_inset space \space{}
-\end_inset
-
-bearbeiten\SpecialChar \ldots{}
-
-\family default
-, mit dem ein Bearbeitungsprogramm für die eingegebene Datei aufgerufen
- werden kann.
-\end_layout
-
-\begin_layout Standard
-Dann kommt eine Liste mit Vorlagen.
- Im Textfenster darunter finden Sie einige hoffentlich hilfreiche Hinweise
- zur Verwendung der gewählten Vorlage: Meist eine kurze Beschreibung, was
- die Vorlage macht und welche Parameter möglich sind.
-\end_layout
-
-\begin_layout Standard
-Unten links im Dialogfenster können Sie noch 
-\family sans
-Entwurf
-\family default
- de/aktivieren.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie auf der Karteikarte 
-\family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Ansicht in
-\begin_inset space \space{}
-\end_inset
-
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\begin_inset space \space{}
-\end_inset
-
-anzeigen
-\family default
- aktiviert haben, wird die externe Datei angezeigt, wenn es möglich ist.
- Ist 
-\family sans
-in
-\begin_inset space \space{}
-\end_inset
-
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\begin_inset space \space{}
-\end_inset
-
-anzeigen
-\family default
- deaktiviert, erscheint nur ein grau hinterlegtes Kästchen mit Vorlagentyp
- und Dateinamen.
-\end_layout
-
-\begin_layout Standard
-Dann gibt es noch die Karteikarten 
-\family sans
-Drehen
-\family default
-, 
-\family sans
-Größe
-\family default
-, 
-\family sans
-Zuschneiden
-\family default
- und 
-\family sans
-Optionen
-\family default
-, die Sie bereits aus 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Grafik\SpecialChar \ldots{}
-
-\family default
- kennen.
- Die letzten beiden sind abhängig vom Vorlagentyp aktiviert.
-\end_layout
-
-\begin_layout Standard
-Ganz unten befinden sich schließlich die gewohnten Knöpfe 
-\family sans
-OK,
-\family default
- 
-\family sans
-Übernehmen
-\family default
- und 
-\family sans
-Abbrech
-\family default
-en
-\family sans
-/Schließen
-\family default
-.
-\end_layout
-
-\begin_layout Section
-Beispiele
-\end_layout
-
-\begin_layout Standard
-In Diesem Abschnitt sollten wir einige Beispiele zeigen, wie diese Einfügungen
- von externem Material verwendet werden können.
- Dies sollte etwa folgendes umfassen:
-\end_layout
-
-\begin_layout Itemize
-Externe Rasterbilder
-\end_layout
-
-\begin_layout Itemize
-Externe XFig-Abbildungen
-\end_layout
-
-\begin_layout Itemize
-Schachdiagramme
-\end_layout
-
-\begin_layout Itemize
-Datum
-\end_layout
-
-\begin_layout Section
-Die Konfigurationsdatei
-\end_layout
-
-\begin_layout Standard
-Es ist recht einfach, eigene neue Vorlagen für externe Einfügungen zu erstellen.
- Allerdings sollten Sie sich im klaren sein, dass Sie, wenn Sie dabei zu
- unbesorgt vorgehen, sehr schnell ein Sicherheitsloch erzeugen können.
- Wenn Sie also eigene Vorlagen erstellen wollen, lesen Sie bitte 
+\lang english
+It is relatively easy to add custom external template definitions to LyX.
+ However, be aware that doing this in a careless manner most probably 
 \emph on
-unbedingt
+will
 \emph default
- den Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ introduce an easily exploitable security hole.
+ So before you do this, please read the discussion about security in section
+ 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Sicherheitshinweise"
 
 \end_inset
@@ -19223,37 +18944,1288 @@ reference "sec:Sicherheitshinweise"
 \end_layout
 
 \begin_layout Standard
-Trotzdem sollten Sie unbedingt selbst erstellte Vorlagen an das LyX-Team
- senden.
+
+\lang english
+Having said that, we encourage you to submit any interesting templates that
+ you create.
+ 
 \end_layout
 
 \begin_layout Standard
-Die Vorlagendefinitionen befinden sich in der Datei 
-\family typewriter
-Ly
-\begin_inset ERT
+
+\lang english
+The external templates are defined in the 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-{}
+\lang english
+LyXDir/lib/external_templates
 \end_layout
 
 \end_inset
 
-XDir/external_tem\SpecialChar \-
-plates
-\family default
-.
- Sie können sich eine Kopie davon in Ihr privates Benutzerverzeichnis 
-\family typewriter
-UserDir
-\family default
- kopieren und editieren.
- Zu einem späteren Zeitpunkt werden Sie in diesem Abschnitt hier auch eine
- genaue Beschreibung der Syntax dieser Datei und der vorhandenen Einträge
- finden\SpecialChar \ldots{}
+ file.
+ You can place your own version in 
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+
+\lang english
+UserDir/external_templates
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A typical template looks like this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Template XFig
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+GuiName "XFig: $$AbsOrRelPathParent$$Basename"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+HelpText
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+An XFig figure.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+HelpTextEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+InputFormat fig
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FileFilter "*.fig"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+AutomaticProduction true
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Transform Rotate
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Transform Resize
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Format LaTeX
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+TransformCommand Rotate RotationLatexCommand
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+TransformCommand Resize ResizeLatexCommand
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "$$RotateFront$$ResizeFront
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+         
+\backslash
+
+\backslash
+input{$$AbsOrRelPathMaster$$Basename.pstex_t}
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+         $$ResizeBack$$RotateBack"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat pstex
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.pstex_t"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Requirement "graphicx"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile latex "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile dvi "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Format PDFLaTeX
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+TransformCommand Rotate RotationLatexCommand
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+TransformCommand Resize ResizeLatexCommand
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "$$RotateFront$$ResizeFront
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+         
+\backslash
+
+\backslash
+input{$$AbsOrRelPathMaster$$Basename.pdftex_t}
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+         $$ResizeBack$$RotateBack"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat pdftex
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.pdftex_t"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Requirement "graphicx"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile latex "$$AbsPath$$Basename.pdf"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Format Ascii
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "$$Contents(
+\backslash
+"$$AbsPath$$Basename.asc
+\backslash
+")"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat asciixfig
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.asc"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Format DocBook
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "<graphic fileref=
+\backslash
+"$$AbsOrRelPathMaster$$Basename.eps
+\backslash
+">
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+         </graphic>"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat eps
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile docbook "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "[XFig: $$FName]"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+TemplateEnd
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+As you can see, the template is enclosed in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Template
+\end_layout
+
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TemplateEnd
+\end_layout
+
+\end_inset
+
+.
+ It contains a header specifying some general settings and, for each supported
+ primary document file format, a section 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\end_layout
+
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+FormatEnd
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+The template header
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AutomaticProduction
+\begin_inset space ~
+\end_inset
+
+true|false
+\end_layout
+
+\end_inset
+
+ Whether the file represented by the template must be generated by LyX.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+FileFilter
+\begin_inset space ~
+\end_inset
+
+<pattern>
+\end_layout
+
+\end_inset
+
+ A glob pattern that is used in the file dialog to filter out the desired
+ files.
+ If there is more than one possible file extension (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+tgif has 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.obj
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.tgo
+\end_layout
+
+\end_inset
+
+), use something like 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+"*.{obj,tgo}"
+\end_layout
+
+\end_inset
+
+.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+GuiName
+\begin_inset space ~
+\end_inset
+
+<guiname>
+\end_layout
+
+\end_inset
+
+ The text that is displayed on the button.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HelpText
+\begin_inset space ~
+\end_inset
+
+<text>
+\begin_inset space ~
+\end_inset
+
+HelpTextEnd
+\end_layout
+
+\end_inset
+
+ The help text that is used in the External dialog.
+ Provide enough information to explain to the user just what the template
+ can provide him with.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+InputFormat
+\begin_inset space ~
+\end_inset
+
+<format>
+\end_layout
+
+\end_inset
+
+ The file format of the original file.
+ This must be the name of a format that is known to LyX (see section
+\begin_inset space ~
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formate"
+
+\end_inset
+
+
+\lang english
+).
+ Use 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ if the template can handle original files of more than one format.
+ LyX will attempt to interrogate the file itself in order to deduce its
+ format in this case.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Template
+\begin_inset space ~
+\end_inset
+
+<id>
+\end_layout
+
+\end_inset
+
+ A unique name for the template.
+ It must not contain substitution macros (see below).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Transform
+\begin_inset space ~
+\end_inset
+
+Rotate|Resize|Clip|Extra
+\end_layout
+
+\end_inset
+
+ This command specifies which transformations are supported by this template.
+ It may occur zero or more times.
+ This command enables the corresponding tabs in the external dialog.
+ Each 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Transform
+\end_layout
+
+\end_inset
+
+ command must have either a corresponding 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformCommand
+\end_layout
+
+\end_inset
+
+ or a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\end_layout
+
+\end_inset
+
+ command in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\end_layout
+
+\end_inset
+
+ section.
+ Otherwise the transformation will not be supported by that format.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+The Format section
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\begin_inset space ~
+\end_inset
+
+LaTeX|PDFLaTeX|PlainText|DocBook
+\end_layout
+
+\end_inset
+
+ The primary document file format that this format definition is for.
+ Not every template has a sensible representation in all document file formats.
+ Please define nevertheless a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\end_layout
+
+\end_inset
+
+ section for all templates.
+ Use a dummy text when no representation is available.
+ Then you can at least see a reference to the external material in the exported
+ document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Option
+\begin_inset space ~
+\end_inset
+
+<name>
+\begin_inset space ~
+\end_inset
+
+<value>
+\end_layout
+
+\end_inset
+
+ This command defines an additional macro 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$<name>
+\end_layout
+
+\end_inset
+
+ for substitution in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Product
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<value>
+\end_layout
+
+\end_inset
+
+ itself may contain substitution macros.
+ The advantage over using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<value>
+\end_layout
+
+\end_inset
+
+ directly in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Product
+\end_layout
+
+\end_inset
+
+ is that the substituted value of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$<name>
+\end_layout
+
+\end_inset
+
+ is sanitized so that it is a valid optional argument in the document format.
+ This command may occur zero or more times.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Product
+\begin_inset space ~
+\end_inset
+
+<text>
+\end_layout
+
+\end_inset
+
+ The text that is inserted in the exported document.
+ This is actually the most important command and can be quite complex.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Preamble
+\begin_inset space ~
+\end_inset
+
+<name>
+\end_layout
+
+\end_inset
+
+ This command specifies a preamble snippet that will be included in the
+ LaTeX preamble.
+ It has to be defined using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PreambleDef
+\end_layout
+
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PreambleDefEnd
+\end_layout
+
+\end_inset
+
+.
+ This command may occur zero or more times.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ReferencedFile
+\begin_inset space ~
+\end_inset
+
+<format>
+\begin_inset space ~
+\end_inset
+
+<filename>
+\end_layout
+
+\end_inset
+
+ This command denotes files that are created by the conversion process and
+ are needed for a particular export format.
+ If the filename is relative, it is interpreted relative to the master document.
+ This command may be given zero or more times.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Requirement
+\begin_inset space ~
+\end_inset
+
+<package>
+\end_layout
+
+\end_inset
+
+ The name of a required LaTeX package.
+ The package is included via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+usepackage{}
+\end_layout
+
+\end_inset
+
+ in the LaTeX preamble.
+ This command may occur zero or more times.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformCommand
+\begin_inset space ~
+\end_inset
+
+Rotate
+\begin_inset space ~
+\end_inset
+
+RotationLatexCommand
+\end_layout
+
+\end_inset
+
+ This command specifies that the built in LaTeX command should be used for
+ rotation.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformCommand
+\begin_inset space ~
+\end_inset
+
+Resize
+\begin_inset space ~
+\end_inset
+
+ResizeLatexCommand
+\end_layout
+
+\end_inset
+
+ This command specifies that the built in LaTeX command should be used for
+ resizing.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\begin_inset space ~
+\end_inset
+
+Rotate
+\begin_inset space ~
+\end_inset
+
+RotationLatexOption
+\end_layout
+
+\end_inset
+
+ This command specifies that rotation is done via an optional argument.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\begin_inset space ~
+\end_inset
+
+Resize
+\begin_inset space ~
+\end_inset
+
+ResizeLatexOption
+\end_layout
+
+\end_inset
+
+ This command specifies that resizing is done via an optional argument.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\begin_inset space ~
+\end_inset
+
+Clip
+\begin_inset space ~
+\end_inset
+
+ClipLatexOption
+\end_layout
+
+\end_inset
+
+ This command specifies that clipping is done via an optional argument.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\begin_inset space ~
+\end_inset
+
+Extra
+\begin_inset space ~
+\end_inset
+
+ExtraLatexOption
+\end_layout
+
+\end_inset
+
+ This command specifies that an extra optional argument is used.
+ This command may occur once or not at all.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+UpdateFormat
+\begin_inset space ~
+\end_inset
+
+<format>
+\end_layout
+
+\end_inset
+
+ The file format of the converted file.
+ This must be the name of a format that is known to LyX (see the 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\bar under
+\lang english
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File Format
+\end_layout
+
+\end_inset
+
+ dialog).
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+UpdateResult
+\begin_inset space ~
+\end_inset
+
+<filename>
+\end_layout
+
+\end_inset
+
+ The file name of the converted file.
+ The file name must be absolute.
+ This command must occur exactly once.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Preamble definitions
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The external template configuration file may contain additional preamble
+ definitions enclosed by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PreambleDef
+\end_layout
+
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PreambleDefEnd
+\end_layout
+
+\end_inset
+
+.
+ They can be used by the templates in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\end_layout
+
+\end_inset
+
+ section.
 \end_layout
 
 \begin_layout Section
@@ -19267,53 +20239,644 @@ Wenn über die externe Einfügung ein externes Programm gestartet wird, geschieh
  Aufruf ausgewertet werden.
  Die Ausführung erfolgt dabei immer in demjenigen Verzeichnis, das auch
  das LyX-Dokument enthält.
- Eine derartige Ersetzung findet ebenfalls statt, wenn die Vorschau aktiviert
- wird.
- Hier finden Sie eine Liste dieser Makros:
-\end_layout
-
-\begin_layout Description
-$$FName Der Name der im Dialog angegeben Datei.
-\end_layout
-
-\begin_layout Description
-$$Basename Der Dateiname ohne die Endung
-\end_layout
-
-\begin_layout Description
-$$Tempname Ein Name (inklusive vollem Pfad) einer temporären Datei; diese
- wird automatisch gelöscht, wenn das Dokument geschlossen oder die Einfügung
- gelöscht wird.
-\end_layout
-
-\begin_layout Description
-$$Contents(
-\begin_inset Quotes gld
-\end_inset
-
-Datei.ext
-\begin_inset Quotes grd
-\end_inset
-
-) Dieses Makro wird zum Inhalt der Datei mit dem Namen 
-\family typewriter
-Datei.ext
-\family default
- expandiert.
-\end_layout
-
-\begin_layout Description
-$$Sysdir Dies wird durch den Namen des Systemverzeichnisses ersetzt.
- Es wird normalerweise verwendet, um diverse Hilfsskripte anzusprechen,
- die Teil von LyX sind.
 \end_layout
 
 \begin_layout Standard
-Darüberhinaus werden sämtliche Umgebungsvariablen der Form 
-\family typewriter
-${PATH}
-\family default
- expandiert.
+
+\lang english
+Also, whenever external material is to be displayed, the name will be produced
+ by the substitution mechanism, and most other commands in the template
+ definition support substitution as well.
+\end_layout
+
+\begin_layout Standard
+Hier finden Sie eine Liste dieser Makros:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsOrRelPathMaster
+\end_layout
+
+\end_inset
+
+ The file path, absolute or relative to the master LyX document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsOrRelPathParent
+\end_layout
+
+\end_inset
+
+ The file path, absolute or relative to the LyX document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsPath
+\end_layout
+
+\end_inset
+
+ The absolute file path.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Basename
+\end_layout
+
+\end_inset
+
+ The filename without path and without the extension.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Contents(
+\begin_inset Quotes eld
+\end_inset
+
+filename.ext
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ This macro will expand to the contents of the file with the name 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+filename.ext
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Extension
+\end_layout
+
+\end_inset
+
+ The file extension (including the dot).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$FName
+\end_layout
+
+\end_inset
+
+ The filename of the file specified in the external material dialog.
+ This is either an absolute name, or it is relative to the LyX document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$FPath
+\end_layout
+
+\end_inset
+
+ The path part of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$FName
+\end_layout
+
+\end_inset
+
+ (absolute name or relative to the LyX document).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$RelPathMaster
+\end_layout
+
+\end_inset
+
+ The file path, relative to the master LyX document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$RelPathParent
+\end_layout
+
+\end_inset
+
+ The file path, relative to the LyX document.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Sysdir
+\end_layout
+
+\end_inset
+
+ This macro will expand to the absolute path of the system directory.
+ This is typically used to point to the various helper scripts that are
+ bundled with LyX.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Tempname
+\end_layout
+
+\end_inset
+
+ A name and full path to a temporary file which will be automatically deleted
+ whenever the containing document is closed, or the external material insertion
+ deleted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All path macros contain a trailing directory separator, so you can construct
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the absolute filename with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsPath$$Basename$$Extension
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The macros above are substituted in all commands unless otherwise noted.
+ The command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Product
+\end_layout
+
+\end_inset
+
+ supports additionally the following substitutions if they are enabled by
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Transform
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformCommand
+\end_layout
+
+\end_inset
+
+ commands:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$ResizeFront
+\end_layout
+
+\end_inset
+
+ The front part of the resize command.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$ResizeBack
+\end_layout
+
+\end_inset
+
+ The back part of the resize command.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$RotateFront
+\end_layout
+
+\end_inset
+
+ The front part of the rotation command.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$RotateBack
+\end_layout
+
+\end_inset
+
+ The back part of the rotation command.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The value string of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Option
+\end_layout
+
+\end_inset
+
+ command supports additionally the following substitutions if they are enabled
+ by the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Transform
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+TransformOption
+\end_layout
+
+\end_inset
+
+ commands:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Clip
+\end_layout
+
+\end_inset
+
+ The clip option.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Extra
+\end_layout
+
+\end_inset
+
+ The extra option.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Resize
+\end_layout
+
+\end_inset
+
+ The resize option.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$Rotate
+\end_layout
+
+\end_inset
+
+ The rotation option.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You may ask why there are so many path macros.
+ There are mainly two reasons:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Relative and absolute file names should remain relative or absolute, respectivel
+y.
+ Users may have reasons to prefer either form.
+ Relative names are useful for portable documents that should work on different
+ machines, for example.
+ Absolute names may be required by some programs.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+LaTeX treats relative file names differently than LyX and other programs
+ in nested included files.
+ For LyX, a relative file name is always relative to the document that contains
+ the file name.
+ For LaTeX, it is always relative to the master document.
+ These two definitions are identical if you have only one document, but
+ differ if you have a master document that includes part documents.
+ That means that relative filenames must be transformed when presented to
+ LaTeX.
+ Fortunately LyX does this automatically for you if you choose the right
+ macros.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+So which path macro should be used in new template definitions? The rule
+ is not difficult:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsPath
+\end_layout
+
+\end_inset
+
+ if an absolute path is required.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsOrRelPathMaster
+\end_layout
+
+\end_inset
+
+ if the substituted string is some kind of LaTeX input.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Else use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$AbsOrRelPathParent
+\end_layout
+
+\end_inset
+
+ in order to preserve the user's choice.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are special cases where this rule does not work and e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+relative names are needed, but normally it will work just fine.
+ One example for such a case is the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+\end_layout
+
+\end_inset
+
+ in the XFig template above: We can't use the absolute name because the
+ copier for 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.pstex_t
+\end_layout
+
+\end_inset
+
+ files needs the relative name in order to rewrite the file content.
 \end_layout
 
 \begin_layout Section
@@ -19328,152 +20891,637 @@ name "sec:Sicherheitshinweise"
 \end_layout
 
 \begin_layout Standard
-Der Mechanismus der Einfügung externen Materials bietet eine Schnittstelle
- zu einer Vielzahl von externen Programmen und startet diese automatisch.
- Darum ist es notwendig, auf die dadurch bedingten Sicherheitsprobleme einzugehe
-n.
- Insbesondere besteht durch die Möglichkeit, eigene Dateinamen und/oder
- Parameter anzugeben, scheinbar Gefahr, dass jemand bösartige Dokumente
- erstellt, die willkürliche Befehle ausführen, sobald ein Benutzer sie betrachte
-t oder ausdruckt.
- Dies ist etwas, das wir unter allen Umständen vermeiden wollen.
+
+\lang english
+The external material feature interfaces with a lot of external programs
+ and does so automatically, so we have to consider the security implications
+ of this.
+ In particular, since you have the option of including your own filenames
+ and/or parameter strings and those are expanded into a command, it seems
+ that it would be possible to create a malicious document which executes
+ arbitrary commands when a user views or prints the document.
+ This is something we definitely want to avoid.
 \end_layout
 
 \begin_layout Standard
-Da jedoch die nutzbaren Programme ausschließlich in der Vorlagenkonfigurationsda
-tei festgelegt werden können, bestehen keine Sicherheitsbedenken, solange
- LyX selbst korrekt und nur mit sicheren Vorlagen konfiguriert ist.
- Der Grund dafür ist, dass die externen Programme nicht mit dem Systembefehl
- 
-\family typewriter
-system()
-\family default
- aufgerufen werden, sondern mit 
-\family typewriter
-execvp()
-\family default
-.
- Dadurch ist es nicht möglich, über Dateinamen oder zusätzliche Parameter
- willkürliche Befehle durch die Shell ausführen zu lassen.
-\end_layout
 
-\begin_layout Standard
-Bedingt durch diese Sicherheit, sind Sie allerdings etwas in der Auswahl
- der Befehlszeichenketten eingeschränkt, die Sie in der Vorlagedatei verwenden
- können.
- Insbesondere sind Ausgabeumleitungen und Pipes nicht möglich, und das muss
- auch so bleiben, wenn LyX weiterhin sicher bleiben soll.
- Wenn Sie derartige Fähigkeiten der Shell nutzen wollen, müssen Sie ein
- Skript schreiben und dieses dann aufrufen.
-\end_layout
-
-\begin_layout Standard
-Im Verzeichnis 
-\family typewriter
-Ly
-\begin_inset ERT
+\lang english
+However, since the external program commands are specified in the template
+ configuration file only, there are no security issues if LyX is properly
+ configured with safe templates only.
+ This is so because the external programs are invoked with the 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-{}
+\lang english
+execvp
 \end_layout
 
 \end_inset
 
-XDir/scripts
-\family default
- finden Sie das Skript 
-\family typewriter
-general_command_wrap\SpecialChar \-
-per.py
-\family default
-, das auf sicherem Weg die Verwendung der Ein/Ausgabeumleitung erlaubt.
- Es ist auch ein gutes Beispiel, wenn Sie selbst eigene, sichere Skripte
- erstellen wollen.
- Ein sehr viel komplexeres Beispiel, das auch 
-\family typewriter
-fork
-\family default
- und Konsorten verwendet, finden Sie mit 
-\family typewriter
-pic2ascii.py
-\family default
- im selben Verzeichnis.
+-system call rather than the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+system
+\end_layout
+
+\end_inset
+
+ system-call, so it's not possible to execute arbitrary commands from the
+ filename or parameter section via the shell.
 \end_layout
 
 \begin_layout Standard
-Es ist zwar durchaus möglich, eine Vorlage zu erstellen, die eine direkte
- Interaktion mit der Shell erlaubt.
- Dies würde jedoch einem böswilligen Benutzer erlauben, durch die clevere
- Wahl von Dateinamen und/oder Parametern willkürliche Befehle auszuführen.
- Deswegen raten wir generell dazu, ausschließlich sichere Skripte zu verwenden,
- die mit dem 
-\family typewriter
-execvp()
-\family default
--Mechanismus arbeiten.
+
+\lang english
+This also implies that you are restricted in what command strings you can
+ use in the external material templates.
+ In particular, pipes and redirection are not readily available.
+ This has to be so if LyX should remain safe.
+ If you want to use some of the shell features, you should write a safe
+ script to do this in a controlled manner, and then invoke the script from
+ the command string.
+ 
 \end_layout
 
 \begin_layout Standard
-Selbstverständlich mag es verlockend sein, in einer sicheren Umgebung zu
- den einfacheren Shellscripts zurückzukehren.
- Aber seien Sie sich bewusst, dass Sie dadurch ein potentielles Sicherheitsloch
- schaffen.
- Und obwohl wir jeden ermuntern, selbst erstellte Vorlagen im Sinne der
- Open Source an uns zu schicke,n sollte klar sein, dass ein derartiges,
- unsicheres Skript niemals fester Bestandteil der LyX-Distribution werden
- kann.
+
+\lang english
+It is possible to design a template that interacts directly with the shell,
+ but since this would allow a malicious user to execute arbitrary commands
+ by writing clever filenames and/or parameters, we generally recommend that
+ you only use safe scripts that work with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+execvp
+\end_layout
+
+\end_inset
+
+ system call in a controlled manner.
+ Of course, for use in a controlled environment, it can be tempting to just
+ fall back to use ordinary shell scripts.
+ If you do so, be aware that you 
+\emph on
+will
+\emph default
+ provide an easily exploitable security hole in your system.
+ Of course it stands to reason that such unsafe templates will never be
+ included in the standard LyX distribution, although we do encourage people
+ to submit new templates in the open source tradition.
+ But LyX as shipped from the official distribution channels will never have
+ unsafe templates.
 \end_layout
 
 \begin_layout Standard
-Die Einfügung externes Material gibt eine große Macht, und man muss sicherheitsb
-ewusst damit umgehen.
- Ein einziger kleiner Fehler in einem vermeintlich harmlosen Skript kann
- die Türe zu gewaltigen Sicherheitsproblemen öffnen.
- Im Zweifelsfall wenden Sie sich an einen angesehenen Sicherheitsexperten
- oder fragen Sie das LyX-Team, wenn Sie sich nicht sicher sind, ob eine
- von Ihnen erstellte Vorlage als sicher angesehen werden kann oder nicht.
- Und tun Sie das auf jeden Fall, bevor Sie die Vorlage in einem nicht genau
- kontrollierten Umfeld verwenden.
+
+\lang english
+Including external material provides a lot of power, and you have to be
+ careful not to introduce security hazards with this power.
+ A subtle error in a single line in an innocent looking script can open
+ the door to huge security problems.
+ So if you do not fully understand the issues, we recommend that you consult
+ a knowledgeable security professional or the LyX development team if you
+ have any questions about whether a given template is safe or not.
+ And do this before you use it in an uncontrolled environment.
 \end_layout
 
-\begin_layout Section
-Die Zukunft der externen Einfügung
+\begin_layout Chapter
+\start_of_appendix
+Namen von verfügbaren Farben für die Verwendung in Layout-Dateien
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Namen-von-Farben"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Die gegenwärtige Implementation der Einfügung ist ein stabiler und mächtiger
- Mechanismus, der einen Zugang zu den Interna von LyX bietet.
- Doch wie bei fast allem in LyX gilt: Es befindet sich stetiger Entwicklung.
- Falls sich jemand an die Weiterentwicklung macht, sind hier ein paar Hinweise,
- welche Wege dabei gegangen werden sollten:
+Die hier aufgelisteten Farben sind die Standardfarben und die, die man in
+ den LyX-Voreinstellungen festlegen kann.
 \end_layout
 
-\begin_layout Itemize
-Ermöglichen der eingebetteten Vorschau anstelle des einfachen Knopfes.
+\begin_layout Description
+
+\lang english
+none
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ No particular color -- clear or default
 \end_layout
 
-\begin_layout Itemize
-Eingebettete Bearbeitung, zum Beispiel über OpenParts oder ein ähnliches
- Protokoll.
+\begin_layout Description
+
+\lang english
+black
 \end_layout
 
-\begin_layout Itemize
-Erweiterung der dynamischen Information und dadurch die Möglichkeit, optionale
- Eingabefelder für die Umwandlungsprogramme in allen Exportformaten zu haben,
- ebenso für die Parameter für jedes dieser Formate.
- Derzeit kann nur eine einziger Parameterkombination angegeben werden, die
- global für diese eine Vorlage gilt.
- Dies würde es ermöglichen, auf die etwas willkürliche Festlegung eines
- primären Formates für das einzubindende Material zu verzichten.
+\begin_layout Description
+
+\lang english
+white
 \end_layout
 
-\begin_layout Itemize
-Erweiterung der Definitionsbasis um intelligentere Konfigurationsoptionen
- als die einfache Parameterzeile zu ermöglichen.
- Mit einer passenden Skriptsprache wäre es möglich, eine sehr benutzerfreundlich
-e Version der Einfügungsdialoge zu erstellen.
+\begin_layout Description
+
+\lang english
+red
+\end_layout
+
+\begin_layout Description
+
+\lang english
+green
+\end_layout
+
+\begin_layout Description
+
+\lang english
+blue
+\end_layout
+
+\begin_layout Description
+
+\lang english
+cyan
+\end_layout
+
+\begin_layout Description
+
+\lang english
+magenta
+\end_layout
+
+\begin_layout Description
+
+\lang english
+yellow
+\end_layout
+
+\begin_layout Description
+
+\lang english
+cursor Cursor color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+background Background color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+foreground Foreground color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+selection Background color of selected text
+\end_layout
+
+\begin_layout Description
+
+\lang english
+selectiontext Foreground color of selected text
+\end_layout
+
+\begin_layout Description
+
+\lang english
+latex Text color in LaTeX mode 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+preview The color used for previews
+\end_layout
+
+\begin_layout Description
+
+\lang english
+inlinecompletion Inline completion color 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+nonunique_inlinecompletion Inline completion color for the non-unique part
+\end_layout
+
+\begin_layout Description
+
+\lang english
+notelabel Label color for notes
+\end_layout
+
+\begin_layout Description
+
+\lang english
+notebg Background color of notes
+\end_layout
+
+\begin_layout Description
+
+\lang english
+commentlabel Label color for comments
+\end_layout
+
+\begin_layout Description
+
+\lang english
+commentbg Background color of comments
+\end_layout
+
+\begin_layout Description
+
+\lang english
+greyedoutlabel Label color for greyedout insets
+\end_layout
+
+\begin_layout Description
+
+\lang english
+greyedouttext Color for greyedout inset text
+\end_layout
+
+\begin_layout Description
+
+\lang english
+greyedoutbg Background color of greyedout inset
+\end_layout
+
+\begin_layout Description
+
+\lang english
+shadedbg Background color of shaded box
+\end_layout
+
+\begin_layout Description
+
+\lang english
+listingsbg Background color of listings inset
+\end_layout
+
+\begin_layout Description
+
+\lang english
+branchlabel Label color for branches
+\end_layout
+
+\begin_layout Description
+
+\lang english
+footlabel Label color for footnotes
+\end_layout
+
+\begin_layout Description
+
+\lang english
+indexlabel Label color for index insets 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+marginlabel Label color for margin notes 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+phantomtext Text color for phantom insets 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+urllabel Label color for URL insets
+\end_layout
+
+\begin_layout Description
+
+\lang english
+urltext Color for URL inset text
+\end_layout
+
+\begin_layout Description
+
+\lang english
+depthbar Color for the depth bars in the margin
+\end_layout
+
+\begin_layout Description
+
+\lang english
+language Color for marking foreign language words
+\end_layout
+
+\begin_layout Description
+
+\lang english
+command Text color for command insets
+\end_layout
+
+\begin_layout Description
+
+\lang english
+commandbg Background color for command insets 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+commandframe Frame color for command insets
+\end_layout
+
+\begin_layout Description
+
+\lang english
+special Special chars text color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+graphicsbg Graphics inset background color 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+math Math inset text color 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathbg Math inset background color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacrobg Macro math inset background color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacrohoverbg Macro math inset background color hovered
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacrolabel Macro math label color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacroframe Macro math frame color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacroblend Macro math blended color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacrooldarg Macro template color for old parameters 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathmacronewarg Macro template color for new parameters
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathframe Math inset frame color under focus 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathcorners Math inset frame color not under focus
+\end_layout
+
+\begin_layout Description
+
+\lang english
+mathline Math line color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+collapsable Collapsable insets text 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+collapsableframe Collapsable insets frame
+\end_layout
+
+\begin_layout Description
+
+\lang english
+insetbg Inset marker background color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+insetframe Inset marker frame color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+error Error box text color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+eolmarker End of line marker color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+added_space Added space colour
+\end_layout
+
+\begin_layout Description
+
+\lang english
+appendix Appendix marker color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changebar Changebar color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+deletedtext Deleted text color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+addedtext Added text color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changedtextauthor1 Changed text color author 1
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changedtextauthor2 Changed text color author 2
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changedtextauthor3 Changed text color author 3
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changedtextauthor4 Changed text color author 4
+\end_layout
+
+\begin_layout Description
+
+\lang english
+changedtextauthor5 Changed text color author 5
+\end_layout
+
+\begin_layout Description
+
+\lang english
+deletedtextmodifier Deleted text modifying color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+tabularline Table line color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+tabularonoffline Table line color 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+bottomarea Bottom area color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+newpage New page color 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+pagebreak Page break color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+buttonframe Color used for button frame
+\end_layout
+
+\begin_layout Description
+
+\lang english
+buttonbg Color used for bottom background
+\end_layout
+
+\begin_layout Description
+
+\lang english
+buttonhoverbg Color used for buttom under focus 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+paragraphmarker Color used for the pilcrow sign to mark the end of a paragraph
+ 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+previewframe Preview frame color
+\end_layout
+
+\begin_layout Description
+
+\lang english
+inherit Color is inherited 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+regexpframe Color for regexp frame
+\end_layout
+
+\begin_layout Description
+
+\lang english
+ignore For ignoring updates of a color
 \end_layout
 
 \end_body
