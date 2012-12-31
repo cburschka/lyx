@@ -1418,12 +1418,12 @@ contributers = [
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
      contributer(u"Julien Rioux",
-                 "jrioux () physics ! utoronto ! ca",
+                 "jrioux () lyx ! org",
                  "GPL",
                  "Re: #6361: configure.py ignores packages required by user-defined modules",
                  "m=125986505101722",
                  "3 December 2009",
-                 u"Bug fixes, lilypond support"),
+                 u"Bug fixes, lilypond and revtex support, citation modules."),
 
      contributer(u"Bernhard Roider",
                  "bernhard.roider () sonnenkinder ! org",
