@@ -291,7 +291,6 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 if m:
                     if not layouttranslations:
                         writeString(out, src, base, lineno, m.group(1))
-                continue
                 m = CaptionCheck.search(string)
                 if m:
                     if not layouttranslations:
