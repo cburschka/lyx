@@ -88,7 +88,7 @@ bool LaTeXFont::providesOSF(bool ot1, bool complete, bool nomath)
 		return altFont(usedfont).providesOSF(ot1, complete, nomath);
 	else if (!osffont_.empty())
 		return altFont(osffont_).available(ot1, nomath);
-	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	else if (!available(ot1, nomath))
 		return false;
 
 	return (!osfoption_.empty() || !osfscoption_.empty());
@@ -103,7 +103,7 @@ bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 		return false;
 	else if (usedfont != name_)
 		return altFont(usedfont).providesSC(ot1, complete, nomath);
-	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	else if (!available(ot1, nomath))
 		return false;
 
 	return (!scoption_.empty() || !osfscoption_.empty());
@@ -118,9 +118,8 @@ bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 		return false;
 	else if (usedfont != name_)
 		return altFont(usedfont).providesScale(ot1, complete, nomath);
-	else if (!package_.empty() && !LaTeXFeatures::isAvailable(to_ascii(package_)))
+	else if (!available(ot1, nomath))
 		return false;
-
 	return (!scaleoption_.empty());
 }
 
