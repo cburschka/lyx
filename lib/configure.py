@@ -1174,8 +1174,11 @@ def checkLatexConfig(check_config, bool_docbook):
     #
     # we have chklayouts.tex, then process it
     ret = 1
-    latex_out = cmdOutput(LATEX + ' wrap_chkconfig.ltx')
-    for line in latex_out.splitlines():
+    latex_out = os.popen(LATEX + ' wrap_chkconfig.ltx')
+    while True:
+        line = latex_out.readline()
+        if not line:
+            break;
         if re.match('^\+', line):
             logger.info(line.strip())
             # return None if the command succeeds
