@@ -236,7 +236,7 @@ Style Acknowledgments
 	  Shape               Smallcaps
 	  Size                Larger
 	EndFont
-    TopSep                0.7
+	TopSep                0.7
 End
 
 
@@ -244,7 +244,7 @@ End
 
 Style Ruled_Table
 	CopyStyle             Standard
-    Category              Specials
+	Category              Specials
 	LatexName             ruledtabular
 	LatexType             environment
 End
@@ -252,7 +252,7 @@ End
 
 Style Turn_Page
 	CopyStyle             Standard
-    Category              Specials
+	Category              Specials
 	LatexName             turnpage
 	LatexType             environment
 End
@@ -260,7 +260,7 @@ End
 
 Style Wide_Text
 	CopyStyle             Standard
-    Category              Specials
+	Category              Specials
 	LatexName             widetext
 	LatexType             environment
 End
