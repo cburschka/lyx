@@ -23,6 +23,7 @@ End
 
 
 Style My_Address
+	Category              "Postal Data"
 	Margin                Right_Address_Box
 	LatexType             Command
 	LatexName             address
@@ -34,6 +35,7 @@ End
 
 
 Style Send_To_Address
+	Category              "Postal Data"
 	Margin                Static
 	LatexType             Command
 	LatexName             letter
@@ -71,7 +73,7 @@ End
 
 
 Style Signature
-	Category              Letter
+	Category              Closings
 	Margin                Static
 	LatexType             Command
 	LatexName             signature

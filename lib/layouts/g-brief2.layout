@@ -36,6 +36,30 @@ Style Standard
   AlignPossible		Block, Left, Right, Center
 END
 
+# This is just to make the order of styles
+Style Address
+End
+Style PostalComment
+End
+Style Name
+End
+Style Reference
+End
+Style MyRef
+End
+Style YourRef
+End
+Style YourMail
+End
+Style Date
+End
+Style Opening
+End
+Style Letter
+End
+Style Closing
+End
+
 # Brieftext style definition
 Style Letter
   Margin  		Static
@@ -77,6 +101,7 @@ End
 
 # Name und Spruch in der Fusszeile
 Style NameRowA
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileA
@@ -97,6 +122,7 @@ Style NameRowA
 End
 
 Style NameRowB
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileB
@@ -116,6 +142,7 @@ Style NameRowB
 End
 
 Style NameRowC
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileC
@@ -135,6 +162,7 @@ Style NameRowC
 End
 
 Style NameRowD
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileD
@@ -154,6 +182,7 @@ Style NameRowD
 End
 
 Style NameRowE
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileE
@@ -173,6 +202,7 @@ Style NameRowE
 End
 
 Style NameRowF
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileF
@@ -192,6 +222,7 @@ Style NameRowF
 End
 
 Style NameRowG
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		NameZeileG
@@ -212,6 +243,7 @@ End
 
 
 Style AddressRowA
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileA
@@ -232,6 +264,7 @@ Style AddressRowA
 End
 
 Style AddressRowB
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileB
@@ -251,6 +284,7 @@ Style AddressRowB
 End
 
 Style AddressRowC
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileC
@@ -270,6 +304,7 @@ Style AddressRowC
 End
 
 Style AddressRowD
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileD
@@ -289,6 +324,7 @@ Style AddressRowD
 End
 
 Style AddressRowE
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileE
@@ -308,6 +344,7 @@ Style AddressRowE
 End
 
 Style AddressRowF
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		AdressZeileF
@@ -327,6 +364,7 @@ Style AddressRowF
 End
 
 Style TelephoneRowA
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileA
@@ -347,6 +385,7 @@ Style TelephoneRowA
 End
 
 Style TelephoneRowB
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileB
@@ -366,6 +405,7 @@ Style TelephoneRowB
 End
 
 Style TelephoneRowC
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileC
@@ -385,6 +425,7 @@ Style TelephoneRowC
 End
 
 Style TelephoneRowD
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileD
@@ -404,6 +445,7 @@ Style TelephoneRowD
 End
 
 Style TelephoneRowE
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileE
@@ -423,6 +465,7 @@ Style TelephoneRowE
 End
 
 Style TelephoneRowF
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		TelefonZeileF
@@ -442,6 +485,7 @@ Style TelephoneRowF
 End
 
 Style InternetRowA
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileA
@@ -462,6 +506,7 @@ Style InternetRowA
 End
 
 Style InternetRowB
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileB
@@ -481,6 +526,7 @@ Style InternetRowB
 End
 
 Style InternetRowC
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileC
@@ -500,6 +546,7 @@ Style InternetRowC
 End
 
 Style InternetRowD
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileD
@@ -519,6 +566,7 @@ Style InternetRowD
 End
 
 Style InternetRowE
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileE
@@ -538,6 +586,7 @@ Style InternetRowE
 End
 
 Style InternetRowF
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		InternetZeileF
@@ -557,6 +606,7 @@ Style InternetRowF
 End
 
 Style BankRowA
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileA
@@ -577,6 +627,7 @@ Style BankRowA
 End
 
 Style BankRowB
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileB
@@ -596,6 +647,7 @@ Style BankRowB
 End
 
 Style BankRowC
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileC
@@ -615,6 +667,7 @@ Style BankRowC
 End
 
 Style BankRowD
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileD
@@ -634,6 +687,7 @@ Style BankRowD
 End
 
 Style BankRowE
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileE
@@ -653,6 +707,7 @@ Style BankRowE
 End
 
 Style BankRowF
+  Category              Bottom
   Margin		Static
   LatexType		Command
   LatexName		BankZeileF
@@ -674,6 +729,7 @@ End
 
 # RetourAdresse
 Style ReturnAddress
+  Category              "Postal Data"
   Margin		Static
   LatexType		Command
   LatexName		RetourAdresse
@@ -695,6 +751,8 @@ End
 
 # Postvermerk
 Style PostalComment
+  CopyStyle             PostalComment
+  Category              "Postal Data"
   Margin		Static
   LatexType		Command
   LatexName		Postvermerk
@@ -715,6 +773,8 @@ End
 
 # Adresse
 Style Address
+  CopyStyle             Address
+  Category              "Postal Data"
   Margin		Static
   LatexType		Command
   LatexName		Adresse
@@ -843,7 +903,6 @@ End
 
 # Opening style definition
 Style Opening
-  Category              Letter
   Margin  		Static
   LatexType 		Command
   LatexName 		Anrede
@@ -866,7 +925,7 @@ End
 
 # Gruss style definition
 Style Closing
-  Category              Letter
+  Category              Closings
   Margin  		Static
   LatexType 		Command
   LatexName 		LyxGruss
@@ -893,7 +952,7 @@ End
 
 # Unterschrift des Absenders
 Style Signature
-  Category              Letter
+  Category              Closings
   Margin		Static
   LatexType		Command
   LatexName		Unterschrift
@@ -914,6 +973,7 @@ End
 
 # Anlagen style definition
 Style Encl.
+  Category              Closings
   Margin  		Static
   LatexType 		Command
   LatexName 		Anlagen
@@ -935,6 +995,7 @@ End
 
 # Verteiler style definition
 Style cc
+  Category              Closings
   Margin  		Static
   LatexType 		Command
   LatexName 		Verteiler
