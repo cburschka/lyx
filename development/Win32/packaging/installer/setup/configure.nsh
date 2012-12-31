@@ -195,6 +195,7 @@ Section -ConfigureScript
   SetOutPath "$INSTDIR\Resources"
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
+  # $ConfigureReturn is "0" if successful, otherwise "1"
   Pop $ConfigureReturn # Return value
 
   # ask to update MiKTeX

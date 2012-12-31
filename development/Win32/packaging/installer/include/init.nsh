@@ -63,7 +63,10 @@ SectionEnd
  SectionEnd
 !endif
 
-SectionGroup "Dictionaries" SecDictionaries
+# Expand the list of dictionaries by default as this was requested by several
+# users. For the thesaurus this is was not requested because this section
+# is by default empty.
+SectionGroup /e "Dictionaries" SecDictionaries
 
 Section /o "Afrikaans" SecDAfrikaans
  StrCpy $DictCodes "af_ZA,$DictCodes"
@@ -368,7 +371,7 @@ Section /o "Slovenšcina" SecDSlovenian
 SectionEnd
 
 Section /o "Slovenský" SecDSlovakian
- StrCpy $DictCodes "sk_SK$ThesCodes"
+ StrCpy $DictCodes "sk_SK,$DictCodes"
  AddSize 4090
 SectionEnd
 
@@ -379,7 +382,7 @@ SectionEnd
 
 Section /o "Svenska" SecDSwedish
  StrCpy $DictCodes "sv_SE,$DictCodes"
- AddSize 2030
+ AddSize 2028
 SectionEnd
 
 # enable this for LyX 2.1!
@@ -421,112 +424,112 @@ SectionGroupEnd
 SectionGroup "Thesaurus" SecThesaurus
 
 Section /o "Bulgarian" SecTBulgarian
- StrCpy $ThesCodes "bg_BG$ThesCodes"
+ StrCpy $ThesCodes "bg_BG,$ThesCodes"
  AddSize 3020
 SectionEnd
 
 Section /o "Català" SecTCatalan
- StrCpy $ThesCodes "ca_ES$ThesCodes"
+ StrCpy $ThesCodes "ca_ES,$ThesCodes"
  AddSize 731
 SectionEnd
 
 Section /o "Ceština" SecTCzech
- StrCpy $ThesCodes "cs_CZ$ThesCodes"
+ StrCpy $ThesCodes "cs_CZ,$ThesCodes"
  AddSize 635
 SectionEnd
 
 Section /o "Dansk" SecTDanish
- StrCpy $ThesCodes "da_DK$ThesCodes"
+ StrCpy $ThesCodes "da_DK,$ThesCodes"
  AddSize 2360
 SectionEnd
 
 Section /o "Deutsch (D/A)" SecTGermanDA
- StrCpy $ThesCodes "de_DE$ThesCodes"
+ StrCpy $ThesCodes "de_DE,$ThesCodes"
  AddSize 14600
 SectionEnd
 
 Section /o "Deutsch (CH)" SecTGermanCH
- StrCpy $ThesCodes "de_CH$ThesCodes"
+ StrCpy $ThesCodes "de_CH,$ThesCodes"
  AddSize 14600
 SectionEnd
 
 Section /o "English (GB)" SecTEnglishGB
- StrCpy $ThesCodes "en_GB$ThesCodes"
+ StrCpy $ThesCodes "en_GB,$ThesCodes"
  AddSize 20600
 SectionEnd
 
 Section /o "English (US/AU)" SecTEnglishUSAU
- StrCpy $ThesCodes "en_US$ThesCodes"
+ StrCpy $ThesCodes "en_US,$ThesCodes"
  AddSize 20600
 SectionEnd
 
 Section /o "Español" SecTSpanish
- StrCpy $ThesCodes "es_ES$ThesCodes"
+ StrCpy $ThesCodes "es_ES,$ThesCodes"
  AddSize 2860
 SectionEnd
 
 Section /o "Français" SecTFrench
- StrCpy $ThesCodes "fr_FR$ThesCodes"
+ StrCpy $ThesCodes "fr_FR,$ThesCodes"
  AddSize 5060
 SectionEnd
 
 Section /o "Gaeilge" SecTGaelic
- StrCpy $ThesCodes "ga_IR$ThesCodes"
+ StrCpy $ThesCodes "ga_IR,$ThesCodes"
  AddSize 30600
 SectionEnd
 
 Section /o "Greek" SecTGreek
- StrCpy $ThesCodes "el_GR$ThesCodes"
+ StrCpy $ThesCodes "el_GR,$ThesCodes"
  AddSize 903
 SectionEnd
 
 Section /o "Italiano" SecTItalian
- StrCpy $ThesCodes "it_IT$ThesCodes"
+ StrCpy $ThesCodes "it_IT,$ThesCodes"
  AddSize 2640
 SectionEnd
 
 Section /o "Magyar" SecTHungarian
- StrCpy $ThesCodes "hu_HU$ThesCodes"
+ StrCpy $ThesCodes "hu_HU,$ThesCodes"
  AddSize 632
 SectionEnd
 
 Section /o "Norsk" SecTNorwegian
- StrCpy $ThesCodes "no_NO$ThesCodes"
+ StrCpy $ThesCodes "no_NO,$ThesCodes"
  AddSize 2470
 SectionEnd
 
 Section /o "Polski" SecTPolish
- StrCpy $ThesCodes "pl_PL$ThesCodes"
+ StrCpy $ThesCodes "pl_PL,$ThesCodes"
  AddSize 5580
 SectionEnd
 
 Section /o "Português" SecTPortuguese
- StrCpy $ThesCodes "pt_PT$ThesCodes"
+ StrCpy $ThesCodes "pt_PT,$ThesCodes"
  AddSize 855
 SectionEnd
 
 Section /o "Româna" SecTRomanian
- StrCpy $ThesCodes "ro_RO$ThesCodes"
+ StrCpy $ThesCodes "ro_RO,$ThesCodes"
  AddSize 3640
 SectionEnd
 
 Section /o "Russian" SecTRussian
- StrCpy $ThesCodes "ru_RU$ThesCodes"
+ StrCpy $ThesCodes "ru_RU,$ThesCodes"
  AddSize 2080
 SectionEnd
 
 Section /o "Slovenšcina" SecTSlovenian
- StrCpy $ThesCodes "sl_SI$ThesCodes"
+ StrCpy $ThesCodes "sl_SI,$ThesCodes"
  AddSize 1037
 SectionEnd
 
 Section /o "Slovenský" SecTSlovakian
- StrCpy $ThesCodes "sk_SK$ThesCodes"
+ StrCpy $ThesCodes "sk_SK,$ThesCodes"
  AddSize 907
 SectionEnd
 
 Section /o "Svenska" SecTSwedish
- StrCpy $ThesCodes "sv_SE$ThesCodes"
+ StrCpy $ThesCodes "sv_SE,$ThesCodes"
  AddSize 720
 SectionEnd
 

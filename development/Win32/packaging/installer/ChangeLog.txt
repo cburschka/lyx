@@ -1,4 +1,18 @@
 ﻿Changelog for LyX-205-5:
+Bugfixes:
+- fix bug that installer stopped working if LyX was installed
+  the first time on a computer
+- fix failing installation of Slovakian spellcheck dictionary
+- prevent case that the installer could run an infinite loop if the
+  installation of dictionaries was interrupted
+- added missing files to the installer source zip-file so that it can now really be
+  used to compile the installer
+- updated to Qt 4.8.4 (Fixes a problem that with some screen font zooms, lines and dots disappeared.)
+
+New features:
+- give feedback about the state of the package installation
+  (Especially if LyX is installed the first time, the package installation can take several minutes.
+   Now the installer prints in the progress window the name of the package that is currently installed.)
 - the installer supports now the usage of TeXLive as LaTeX distribution.
   (TeXLive must be manually installed before LyX.) 
 - updated spell-checker dictionaries for Scottish and Swedish

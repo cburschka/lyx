@@ -46,7 +46,9 @@ These typically need to be modified for each LyX release
 # MiKTeX
 # Sizes in KB
 
-!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
+# it seems that some companies block ftp access by default, therefore http access is preferred here
+!define MiKTeXRepo "http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
+#!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
 !define JabRefVersion "2.8.1"
 !define MiKTeXDeliveredVersion "2.9"

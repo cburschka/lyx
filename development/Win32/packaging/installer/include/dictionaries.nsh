@@ -77,7 +77,7 @@ Function DownloadHunspellDictionaries
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 8
+   ${For} $4 1 8 # we know about 8 mirrors
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
@@ -155,24 +155,29 @@ FunctionEnd
 Function InstallHunspellDictionaries
  # installs the selected hunspell dictionaries except of already existing ones
 
- # download the dictionaries
  ${Do}
   # take the first code
   StrCpy $Search ","
   StrCpy $String $DictCodes
   Call StrPoint
+  # we always have a "," for each code, so in case in case something
+  # went wrong, empty the code list to exit the loop
+  ${if} $Pointer == "-1"
+   StrCpy $DictCodes ""
+  ${endif}
   ${if} $Pointer != "-1"
    StrCpy $DictCode $DictCodes $Pointer
    # remove the taken code from the list
    IntOp $Pointer $Pointer + 1
    StrCpy $DictCodes $DictCodes "" $Pointer
-  ${endif}
-  # don't dowload existing ones thus check if $DictCode is in $FoundDict
-  StrCpy $String $FoundDict
-  StrCpy $Search $DictCode
-  Call StrPoint # function from LyXUtils.nsh
-  ${if} $Pointer == "-1"
-   Call DownloadHunspellDictionaries
+   # don't dowload existing ones thus check if $DictCode is in $FoundDict
+   StrCpy $String $FoundDict
+   StrCpy $Search $DictCode
+   Call StrPoint # function from LyXUtils.nsh
+   ${if} $Pointer == "-1"
+    # download the dictionaries
+    Call DownloadHunspellDictionaries
+   ${endif}
   ${endif}
  ${LoopUntil} $DictCodes == ""
  
@@ -183,17 +188,29 @@ FunctionEnd
 Function InstallThesaurusDictionaries
  # installs the selected thesaurus dictionaries except of already existing ones
 
- # download the dictionaries
  ${Do}
-  # all codes have 5 characters
-  StrCpy $ThesCode $ThesCodes 5 # take the first code
-  StrCpy $ThesCodes $ThesCodes "" 5 # remove the taken code from the list
-  # don't dowload existing ones thus check if $ThesCode is in $FoundThes
-  StrCpy $String $FoundThes
-  StrCpy $Search $ThesCode
-  Call StrPoint # function from LyXUtils.nsh
+  # take the first code
+  StrCpy $Search ","
+  StrCpy $String $ThesCodes
+  Call StrPoint
+  # we always have a "," for each code, so in case in case something
+  # went wrong, empty the code list to exit the loop
   ${if} $Pointer == "-1"
-   Call DownloadThesaurusDictionaries
+   StrCpy $ThesCodes ""
+  ${endif}
+  ${if} $Pointer != "-1"
+   StrCpy $ThesCode $ThesCodes $Pointer
+   # remove the taken code from the list
+   IntOp $Pointer $Pointer + 1
+   StrCpy $ThesCodes $ThesCodes "" $Pointer
+   # don't dowload existing ones thus check if $ThesCode is in $FoundThes
+   StrCpy $String $FoundThes
+   StrCpy $Search $ThesCode
+   Call StrPoint # function from LyXUtils.nsh
+   ${if} $Pointer == "-1"
+    # download the dictionaries
+    Call DownloadThesaurusDictionaries
+   ${endif}
   ${endif}
  ${LoopUntil} $ThesCodes == ""
  

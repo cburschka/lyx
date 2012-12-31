@@ -84,6 +84,12 @@ Function LaTeXActions
     
   ${if} $PathLaTeX != ""
    StrCpy $LaTeXInstalled "MiKTeX"
+   # on some installations the path ends with a "\" on some not
+   # therefore assure that we remove it if it exists
+   StrCpy $0 $PathLaTeX "" -1
+   ${if} $0 == "\"
+    StrCpy $PathLaTeX "$PathLaTeX" -1 # delete "\"
+   ${endif}
   ${endif}
   
   # test if TeXLive is installed
@@ -108,7 +114,7 @@ Function LaTeXActions
     ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
    ${endif}
    ${if} $String != ""
-    StrCpy $String $String -27 # remove 'tlpkg\installer\uninst.bat"'
+    StrCpy $String $String -28 # remove '\tlpkg\installer\uninst.bat"'
     StrCpy $String $String "" 1 # remove the leading quote
    ${endif}
    StrCpy $PathLaTeX "$String\bin\win32"
@@ -148,22 +154,11 @@ FunctionEnd
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
    ExecWait ${MiKTeXInstall}
    # test if MiKTeX is installed
-   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
-   StrCpy $Search "miktex"
-   Call LaTeXCheck # function from LyXUtils.nsh
+   Call LaTeXActions
    ${if} $PathLaTeX != ""
-    StrCpy $MiKTeXUser "HKLM"
-   ${else}
-    StrCpy $MiKTeXUser "HKCU"
-    ReadRegStr $String HKCU "Environment" "Path"
-    StrCpy $Search "miktex"
-    Call LaTeXCheck # function from LyXUtils.nsh
-   ${endif}
-   ${if} $PathLaTeX != ""
-    # set package repository (MiKTeX's primary package repository)
+    # special entry that it was installed together with LyX
+    # so that we can later uninstall it together with LyX
     ${if} $MiKTeXUser == "HKCU"
-     # special entry that it was installed together with LyX
-     # so that we can later uninstall it together with LyX
      WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
     ${else}
      WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
@@ -303,7 +298,6 @@ Function UpdateMiKTeX
 
   MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
   UpdateNow:
-  StrCpy $0 $PathLaTeX -4 # remove "\bin"
   # the update wizard is started by the miktex-update.exe
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
