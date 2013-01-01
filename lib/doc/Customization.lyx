@@ -7557,7 +7557,7 @@ to
 \end_layout
 
 \begin_layout Standard
-The module declaration should then be followed by lines like the following
+The module declaration should then be followed by lines like the following:
 \begin_inset Foot
 status collapsed
 
@@ -7569,7 +7569,7 @@ Preferably in English if the module should be published with LyX.
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -7723,20 +7723,36 @@ int
 
 \end_inset
 
-] The format of the layout file.
+] The format number of the layout file.
 \end_layout
 
 \begin_layout Standard
-This tag was introduced with LyX 1.4.0.
- Layout files from LyX 1.3.x and earlier don't have an explicit file format
- and are considered to be of format 1.
- The format for the present version of LyX is format 21.
+This tag was introduced with LyX
+\begin_inset space ~
+\end_inset
+
+1.4.0.
+ Layout files from older LyX versions do not have an explicit file format
+ and are considered to have 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Format
+\begin_inset space ~
+\end_inset
+
+1
+\end_layout
+
+\end_inset
+
+.
+ The format for the present version of LyX is format 35.
  But each version of LyX is capable of reading earlier versions' layout
  files, just as they are capable of reading files produced by earlier versions
  of LyX.
  There is, however, no provision for converting to earlier formats.
- So LyX 1.6.x will not read layout files in format 21 but only files in format
- 11 or earlier.
 \end_layout
 
 \begin_layout Subsection
@@ -7790,7 +7806,7 @@ status collapsed
 
 \end_inset
 
- block when this document class is output to XHTML.
+ block when the document is output to XHTML.
  Typically, this would be used to output CSS style information, but it can
  be used for anything that can appear in 
 \begin_inset Flex Code
@@ -8117,13 +8133,13 @@ DefaultModule
 status collapsed
 
 \begin_layout Plain Layout
-string]
+<module>
 \end_layout
 
 \end_inset
 
- Specifies a module to be included by default with this document class.
- The module should be specified by filename without the 
+] Specifies a module to be included by default with this document class.
+ The module is specified as filename without the 
 \begin_inset Flex Code
 status collapsed
 
@@ -8154,7 +8170,7 @@ DefaultStyle
 status collapsed
 
 \begin_layout Plain Layout
-string
+<style>
 \end_layout
 
 \end_inset
@@ -8189,13 +8205,13 @@ ExcludesModule
 status collapsed
 
 \begin_layout Plain Layout
-string
+<module>
 \end_layout
 
 \end_inset
 
-] This tag indicates that the module in question—which should be specified
- by filename without the 
+] This tag indicates that the module (which is specified by filename without
+ the 
 \begin_inset Flex Code
 status collapsed
 
@@ -8205,7 +8221,7 @@ status collapsed
 
 \end_inset
 
- extension—cannot be used with this document class.
+ extension) cannot be used with this document class.
  This might be used in a journal-specific layout file to prevent, say, the
  use of the 
 \begin_inset Flex Code
@@ -8223,7 +8239,11 @@ theorems-sec
 not
 \emph default
  be used in a module.
- Modules have their own way of excluding other modules (see 
+ Modules have their own way of excluding other modules (see section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Layout-modules"
@@ -8369,14 +8389,34 @@ HTMLTOCSection
 status collapsed
 
 \begin_layout Plain Layout
-string
+<style>
 \end_layout
 
 \end_inset
 
-] The layout to use for the table of contents, bibliography, and so forth,
+] The style to use for the table of contents, bibliography, and so forth,
  when the document is output to HTML.
- For articles, this should normally be Section; for books, Chapter.
+ For articles, this should normally be 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Section
+\end_layout
+
+\end_inset
+
+; for books 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Chapter
+\end_layout
+
+\end_inset
+
+.
  If it is not given, then LyX will attempt to figure out which layout to
  use.
 \end_layout
@@ -8396,13 +8436,13 @@ IfCounter
 status collapsed
 
 \begin_layout Plain Layout
-string
+<counter>
 \end_layout
 
 \end_inset
 
 ] Modifies the properties of the given counter.
- If the counter does not exist, the section is ignored.
+ If the counter does not exist, the statement is ignored.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -8454,13 +8494,13 @@ IfStyle
 status collapsed
 
 \begin_layout Plain Layout
-string
+<style>
 \end_layout
 
 \end_inset
 
 ] Modifies the properties of the given paragraph style.
- If the style does not exist, the section is ignored.
+ If the style does not exist, the statement is ignored.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -8492,8 +8532,18 @@ Input
 
 \end_inset
 
- As its name implies, this command allows you to include another layout
- definition file within yours to avoid duplicating commands.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<filename>
+\end_layout
+
+\end_inset
+
+] This allows you to include another layout definition file within yours
+ to avoid duplicating commands.
  Common examples are the standard layout files, for example, 
 \begin_inset Flex Code
 status collapsed
@@ -8517,7 +8567,17 @@ InsetLayout
 
 \end_inset
 
- This section (re-)defines the layout of an inset.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<type>
+\end_layout
+
+\end_inset
+
+] This section (re-)defines the layout of an inset.
  It can be applied to an existing inset or to a new, user-defined inset,
  e.g., a new character style.
  Must end with 
@@ -8623,13 +8683,12 @@ NoCounter
 status collapsed
 
 \begin_layout Plain Layout
-string
+<counter>
 \end_layout
 
 \end_inset
 
-] This command deletes an existing counter, usually one defined in an included
- file.
+] Deletes an existing counter, usually one defined in an included file.
 \end_layout
 
 \begin_layout Description
@@ -8642,7 +8701,17 @@ NoFloat
 
 \end_inset
 
- This command deletes an existing float.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<float>
+\end_layout
+
+\end_inset
+
+] Deletes an existing float.
  This is particularly useful when you want to suppress a float that has
  been defined in an input file.
 \end_layout
@@ -8657,9 +8726,17 @@ NoStyle
 
 \end_inset
 
- This command deletes an existing style.
- This is particularly useful when you want to suppress a style that has
- be defined in an input file.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+] Deletes an existing style.
 \end_layout
 
 \begin_layout Description
@@ -8672,8 +8749,18 @@ OutputFormat
 
 \end_inset
 
- A string indicating the file format (as defined in the Preferences dialog)
- produced by this class.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<format>
+\end_layout
+
+\end_inset
+
+] The file format (as defined in the LyX preferences) produced by this document
+ class.
  It is mainly useful when 
 \begin_inset Flex Code
 status collapsed
@@ -8684,9 +8771,54 @@ OutputType
 
 \end_inset
 
- is `literate' and one wants to define a new type of literate document.
- This string is reset to `docbook', `latex', or `literate' when the correspondin
-g 
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+literate
+\end_layout
+
+\end_inset
+
+ and one wants to define a new type of literate document.
+ The format is reset to 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+docbook
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+latex
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ when the corresponding 
 \begin_inset Flex Code
 status collapsed
 
@@ -8709,9 +8841,41 @@ OutputType
 
 \end_inset
 
- A string indicating what sort of output documents using this class will
- produce.
- At present, the options are: `docbook', `latex', and `literate'.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+lat
+\emph default
+ex
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+docbook
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+literate
+\end_layout
+
+\end_inset
+
+] Specifies what sort of output documents using this class will produce.
 \end_layout
 
 \begin_layout Description
@@ -8891,7 +9055,15 @@ string
 \end_inset
 
 .
- A feature is in general the name of a package (
+ A feature is in general the name of a package (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -8901,7 +9073,7 @@ amsmath
 
 \end_inset
 
-, 
+ or 
 \begin_inset Flex Code
 status collapsed
 
@@ -8911,8 +9083,15 @@ makeidx
 
 \end_inset
 
-, \SpecialChar \ldots{}
-) or a macro (
+) or a macro (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -8922,7 +9101,7 @@ url
 
 \end_inset
 
-, 
+ or 
 \begin_inset Flex Code
 status collapsed
 
@@ -8932,9 +9111,9 @@ boldsymbol
 
 \end_inset
 
-,\SpecialChar \ldots{}
-); the complete list of supported features is unfortunately not documented
- outside the LyX source code—but see 
+).
+ The complete list of supported features is unfortunately not documented
+ outside the LyX source code —but see 
 \begin_inset Flex Code
 status collapsed
 
@@ -8944,14 +9123,25 @@ LaTeXFeatures.cpp
 
 \end_inset
 
- if you're interested.
+ if you are interested.
  
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 Help\SpecialChar \menuseparator
-LaTeX Configuration
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X Configuration
 \end_layout
 
 \end_inset
@@ -9040,7 +9230,7 @@ string
 .
  Multiple features must be separated by commas.
  Note that you can only request supported features.
- (Again, see 
+ (See 
 \begin_inset Flex Code
 status collapsed
 
@@ -16376,7 +16566,11 @@ Font
 or
 \family default
 \emph default
- LabelFont
+ LabelFont 
+\emph on
+or
+\emph default
+ DefaultFont
 \end_layout
 
 \begin_layout LyX-Code
@@ -21109,6 +21303,930 @@ Including external material provides a lot of power, and you have to be
 
 \begin_layout Chapter
 \start_of_appendix
+List of supported LyX functions to be used in layouts
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="8">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+accents
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+esint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ifthen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mathrsfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+subscript
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+units
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amsbsy
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+booktabs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fancybox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+jurabib
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mhchem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pxfonts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+textcomp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+url
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amscd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+calc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+feyn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+latexsym
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multirow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+textgreek
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+varioref
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amsmath
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CJK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fixltx2e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+listings
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rotating
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tfrupee
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+verbatim
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amssymb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+color
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+float
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+longtable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nomencl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rotfloat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tipa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wasysym
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amstext
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+covington
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+framed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lyxskak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pdfcolmk
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+setspace
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tipx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wrapfig
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amsthm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+csquotes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+graphicx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+makeidx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pdfpages
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+slashed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xargs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+array
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dvipost
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hhline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+marvosym
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pifont
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+soul
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+txfonts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xcolor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ascii
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+endnotes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hyperref
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mathdesign
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pmboxdraw
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+splitidx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ulem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bbding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+enumitem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ifsym
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mathdots
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+polyglossia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+subfig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+undertilde
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yhmath
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+accents amsbsy amscd amsmath amssymb amstext amsthm array ascii bbding bm
+ booktabs calc CJK color covington csquotes dvipost endnotes enumitem esint
+ fancybox feyn fixltx2e float framed graphicx hhline hyperref ifsym ifthen
+ jurabib latexsym listings longtable lyxskak makeidx marvosym mathdesign
+ mathdots mathrsfs mhchem multirow natbib nomencl pdfcolmk pdfpages pifont
+ pmboxdraw polyglossia prettyref pxfonts refstyle rotating rotfloat setspace
+ slashed soul splitidx subfig subscript textcomp textgreek tfrupee tipa
+ tipx tone txfonts ulem undertilde units url varioref verbatim wasysym wrapfig
+ xargs xcolor xy yhmath 
+\end_layout
+
+\begin_layout Chapter
 Names of available colors to be used in layouts
 \begin_inset CommandInset label
 LatexCommand label

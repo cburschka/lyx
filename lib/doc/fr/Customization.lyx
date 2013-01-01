@@ -79,7 +79,7 @@ End
 \pdf_keywords "LyX, documentation, customization"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
-\pdf_bookmarksopen false
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
@@ -7165,7 +7165,7 @@ vers
 
 \begin_layout Standard
 La déclaration du module devra être suivi par des lignes descriptives comme
- celles-ci
+ celles-ci:
 \begin_inset Foot
 status collapsed
 
@@ -7177,7 +7177,7 @@ En anglais de préférence si le module doit être diffusé par LyX.
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -7355,17 +7355,38 @@ int
 \end_layout
 
 \begin_layout Standard
-Ce balisage a été introduit dans LyX 1.4.0 (les fichiers de format des versions
- antérieures n'avaient pas de numéro de format explicite et sont affectés
- du numéro 1).
- Le numéro de format du présent fichier est le numéro 21.
+Ce balisage a été introduit dans LyX
+\begin_inset space ~
+\end_inset
+
+1.4.0 Les fichiers de format des versions antérieures n'avaient pas de numéro
+ de format explicite et sont affectés du 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Format
+\begin_inset space ~
+\end_inset
+
+1
+\end_layout
+
+\end_inset
+
+
+\lang french
+.
+ Le numéro de format du présent fichier est le numéro 35.
  mais chaque version de LyX peut lire les fichiers de format d'une version
  plus ancienne, comme elle peut lire les documents crées avec une version
  plus ancienne.
  Il n'y a cependant aucun moyen de revernir aux numéros d'identification
  antérieurs.
- ainsi LyX 1.6 ne lira pas les fichiers de format identifiés par 21 mais
- lira les fichiers numérotés 11 ou moins.
 \end_layout
 
 \begin_layout Subsection
@@ -7820,7 +7841,7 @@ DefaultModule
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<module>
 \end_layout
 
 \end_inset
@@ -7865,7 +7886,7 @@ DefaultStyle
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<style>
 \end_layout
 
 \end_inset
@@ -7909,13 +7930,13 @@ ExcludesModule
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<module>
 \end_layout
 
 \end_inset
 
-] indique que le module spécifié — donné par son nom de fichier sans le
- suffixe 
+] indique que le module spécifié (donné par son nom de fichier sans le suffixe
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -7927,7 +7948,7 @@ status collapsed
 
 \end_inset
 
- — ne peut pas être utilisé avec cette classe de document.
+) ne peut pas être utilisé avec cette classe de document.
  Ceci peut être utilisé par exemple dans un format pour une revue pour éviter
  e.g.
  l'utilisation du module 
@@ -8126,7 +8147,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-HTMLTOCSection 
+HTMLTOCSection
 \end_layout
 
 \end_inset
@@ -8138,15 +8159,46 @@ HTMLTOCSection
 status collapsed
 
 \begin_layout Plain Layout
-string
+<style>
 \end_layout
 
 \end_inset
 
 ] définit le style utilisé pour la table des matières, la bibliographie,
  et similaires, lorsque le document est exporté en HTML.
- Pour les articles, ceci devrait normalement valoir Section; pour les livres,
- Chapter.
+ Pour les articles, ceci devrait normalement valoir 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Section
+\end_layout
+
+\end_inset
+
+
+\lang french
+; pour les livres 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Chapter
+\end_layout
+
+\end_inset
+
+
+\lang french
+.
  Sans précisions, LyX essaiera de deviner quel style utiliser.
 \end_layout
 
@@ -8171,7 +8223,7 @@ IfCounter
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<compteur>
 \end_layout
 
 \end_inset
@@ -8237,7 +8289,7 @@ IfStyle
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<style>
 \end_layout
 
 \end_inset
@@ -8268,8 +8320,6 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
@@ -8281,10 +8331,18 @@ Input
 
 \end_inset
 
- 
-\lang french
-permet d'inclure un autre fichier de définition de format pour éviter de
- réécrire des commandes.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<nom de fichier>
+\end_layout
+
+\end_inset
+
+] permet d'inclure un autre fichier de définition de format pour éviter
+ de réécrire des commandes.
  C'est souvent le cas des fichiers de format standard, comme 
 \begin_inset Flex Code
 status collapsed
@@ -8317,7 +8375,22 @@ InsetLayout
 \lang french
  
 \family default
-cette section (re)définit le format d'un insert.
+\lang english
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<type>
+\end_layout
+
+\end_inset
+
+
+\lang french
+] cette section (re)définit le format d'un insert.
  Elle peut être appliquée à un insert existant pour obtenir un nouvel insert
  défini par l'utilisateur, e.g.
  un nouveau style de caractères.
@@ -8446,7 +8519,7 @@ NoCounter
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<compteur>
 \end_layout
 
 \end_inset
@@ -8470,7 +8543,17 @@ NoFloat
 
 
 \lang french
- efface un flottant existant.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<flottant>
+\end_layout
+
+\end_inset
+
+] efface un flottant existant.
  C'est très utile quand vous voulez supprimer un flottant qui a été défini
  dans un fichier inclus.
 \end_layout
@@ -8491,9 +8574,17 @@ NoStyle
 
 
 \lang french
- efface un style existant.
- C'est très utile quand vous voulez supprimer un style qui a été défini
- dans un fichier inclus.
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+] efface un style existant.
 \end_layout
 
 \begin_layout Description
@@ -8520,45 +8611,63 @@ OutputFormat
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+<format>
 \end_layout
 
 \end_inset
 
-] indique quelle sorte de format de fichier (tel que défini dans la fenêtre
- Préférences) est produit par cette classe.
+] indique quelle sorte de format de fichier (tel que défini dans les préférences
+ de LyX) est produit par cette classe.
  Elle est surtout utile quand 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 OutputType
 \end_layout
 
 \end_inset
 
  est 
-\begin_inset Quotes fld
-\end_inset
+\lang english
 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 literate
-\begin_inset Quotes frd
+\end_layout
+
 \end_inset
 
+
+\lang french
  et que l'on veut définir un nouvelle sorte de document literate.
  La chaîne est redéfinie comme 
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 docbook
-\begin_inset Quotes frd
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Quotes fld
-\end_inset
 
-latex
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -8566,7 +8675,23 @@ latex
 \begin_inset Quotes fld
 \end_inset
 
-literate
+
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latex
+\end_layout
+
+\end_inset
+
+
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -8575,6 +8700,8 @@ literate
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 OutputType
 \end_layout
 
@@ -8602,42 +8729,49 @@ OutputType
 \lang french
  
 \family default
+\lang english
 [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-chaîne
+
+\emph on
+\lang english
+lat
+\emph default
+ex
 \end_layout
 
 \end_inset
 
-] indique quelle sorte de document résultant sera obtenu par cette classe.
- Actuellement, les options sont: 
-\begin_inset Quotes fld
-\end_inset
+, 
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+
+\lang english
 docbook
-\begin_inset Quotes frd
+\end_layout
+
 \end_inset
 
 , 
-\begin_inset Quotes fld
-\end_inset
+\begin_inset Flex Code
+status collapsed
 
-latex
-\begin_inset Quotes frd
-\end_inset
+\begin_layout Plain Layout
 
-, et 
-\begin_inset Quotes fld
-\end_inset
-
+\lang english
 literate
-\begin_inset Quotes frd
+\end_layout
+
 \end_inset
 
-.
+
+\lang french
+] indique quelle sorte de document résultant sera obtenu par cette classe.
 \end_layout
 
 \begin_layout Description
@@ -8926,7 +9060,22 @@ Configuration
 \begin_inset space ~
 \end_inset
 
-LaTeX
+LaTe
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family roman
+X
 \end_layout
 
 \end_inset
@@ -9034,8 +9183,8 @@ chaîne
 
 .
  Plusieurs fonctionnalités doivent être séparées par des virgules.
- Noter que l'on ne peut requérir que des fonctionnalités reconnues (de nouveau,
- voir 
+ Noter que l'on ne peut requérir que des fonctionnalités reconnues (voir
+ 
 \lang english
 
 \begin_inset Flex Code
@@ -14975,7 +15124,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-<Type>
+<type>
 \end_layout
 
 \end_inset
@@ -17569,7 +17718,11 @@ Font
 ou
 \family default
 \emph default
- LabelFont
+ LabelFont 
+\emph on
+ou
+\emph default
+ DefaultFont
 \end_layout
 
 \begin_layout LyX-Code
