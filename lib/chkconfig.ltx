@@ -267,13 +267,6 @@
 \fi
 
 
-%%% Document classes
-% The list of layout files has been put in this file here by the
-% configure script.
-\input{chklayouts}
-\input{chkmodules}
-
-
 %%% Packages
 \TestPackage{accents}
 \TestPackage{algorithm}
@@ -368,6 +361,7 @@
 \TestPackage{cancel}
 \TestPackage{colortbl}
 \TestPackage{diagbox}
+\TestPackage{etoolbox}
 \TestPackage{eurosym}
 \TestPackage{fp}
 \TestPackage{marginnote}
@@ -449,6 +443,11 @@
 %\TestPackage{mathabx}
 %\TestPackage{mathdesign}% But see above!
 
+%%% Document classes
+% The list of layout files has been put in this file here by the
+% configure script.
+\input{chklayouts}
+\input{chkmodules}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% END ACTUAL CONFIGURATION INSPECTION CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
