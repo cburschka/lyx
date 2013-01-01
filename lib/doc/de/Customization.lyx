@@ -6250,7 +6250,7 @@ DeclareLyXModule[endnotes.sty]{Endnotes}
 \end_layout
 
 \begin_layout Standard
-Das benötigte Argument in geschweiften Klammern ist der name des Modules,
+Das benötigte Argument in geschweiften Klammern ist der Name des Moduls,
  wie es in 
 \begin_inset Flex MenuItem
 status collapsed
@@ -6266,86 +6266,68 @@ Module
  erscheinen soll.
  Das Argument in eckigen Klammern ist optional: Es deklariert alle LaTeX-Pakete,
  die das Modul benötigt.
- Man beachte, dass nur Pakete, die LyX bekannt sind, aufgelistet werden
- sollten.
-\lang english
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-The list of such packages is documented only in the source code.
-\end_layout
-
-\end_inset
-
- LyX will not check for arbitrary packages.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-Hä?
-\end_layout
-
-\end_inset
-
- It is also possible to use the form 
+ Es ist außerdem möglich die Form 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-from->to
+von->zu
 \end_layout
 
 \end_inset
 
- as an optional argument, which declares that the module can only be used
- when there exists a conversion chain between the formats `
+ als optionales Argument zu verwenden, das angibt, dass das Modul nur verwendet
+ werden kann, wenn es eine Konvertierungsmöglichkeit zwischen den Formaten
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-from
+von
 \end_layout
 
 \end_inset
 
-' and `
+
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-to
+zu
 \end_layout
 
 \end_inset
 
-'.
+
+\begin_inset Quotes grd
+\end_inset
+
+ gibt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The module declaration should then be followed by lines like the following:
+Die Modul-Deklaration sollte gefolgt werden von Zeilen zur Beschreibung
+ wie den folgenden:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Preferably in English if the module should be published with LyX.
- This description will appear in the list of messages to be translated and
- will be thus translated with the next interface update.
+Vorzugsweise in Englisch wenn das Modul als Teil von LyX veröffentlicht
+ werden soll.
+ Diese Beschreibung wird dann in LyXs Liste der zu übersetzenden Zeichenketten
+ erscheinen und übersetzt werden.
 \end_layout
 
 \end_inset
@@ -6386,11 +6368,7 @@ theendnotes in TeX code where you
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The description is used in 
-\lang ngerman
-
+Die Beschreibung wird in 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -6402,72 +6380,71 @@ Module
 
 \end_inset
 
-
-\lang english
- to provide the user with information about what the module does.
- The 
+ verwendet um dem Nutzer zu beschreiben was das Modul macht.
+ Die Zeile mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires
 \end_layout
 
 \end_inset
 
- line is used to identify other modules with which this one must be used;
- the 
+ wird verwendet, um andere Module anzugeben, die dieses Modul verwenden
+ muss; die Zeile mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Excludes
 \end_layout
 
 \end_inset
 
- line is used to identify modules with which this one may not be used.
- Both are optional, and, as shown, multiple modules should be separated
- with the pipe symbol: |.
- Note that the required modules are treated disjunctively: 
+ wird verwendet, um Module anzugeben, die mit diesem Modul nicht verwendet
+ werden dürfen.
+ Beide Zeilen sind optional und, wie gezeigt, müssen mehrere Module mit
+ einem 
+\begin_inset Quotes gld
+\end_inset
+
+|
+\begin_inset Quotes grd
+\end_inset
+
+ getrennt werden.
+ Beachten Sie dass die benötigten Module disjunktiv behandelt werden: 
 \emph on
-at least one
+mindestens eins
 \emph default
- of the required modules must be used.
- Similarly, 
+ der benötigten Module muss verwendet werden.
+ Dementsprechend darf 
 \emph on
-no
+keines
 \emph default
- excluded module may be used.
- Note that modules are identified here by their 
+ der ausgeschlossenen Modul verwendet werden.
+ Beachten Sie auch, dass Module durch ihren 
 \emph on
-filenames
+Dateinamen
 \emph default
- without the 
+ ohne die Dateiendung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .module
 \end_layout
 
 \end_inset
 
- extension.
-
-\lang ngerman
+ angegeben werden.
  Daher ist 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-EinModule
+EinModul
 \end_layout
 
 \end_inset
@@ -10128,8 +10105,8 @@ Sensitive
 
 \end_inset
 
- ist ein Spezialfall für die Bildunterschriftsmarken für Abbildungen und
- Tabellen-Gleitobjekte.
+ ist ein Spezialfall für Beschriftungsmarken für Abbildungen und Tabellen-Gleito
+bjekte.
  
 \begin_inset Flex Code
 status collapsed
@@ -10143,6 +10120,31 @@ Sensitive
  bedeutet, dass der gedruckte Text von der Art des Gleitobjekts abhängt:
  Er ist fest einprogrammiert als 'GleitobjektTyp N', wobei N der Wert des
  Zählers des Gleitobjekttyps ist.
+ Für den Fall, dass die Beschriftungsmarke außerhalb eines Gleitobjekts
+ eingefügt wird, sollte 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ auf 
+\begin_inset Quotes gld
+\end_inset
+
+Senseless!
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt werden.
 \end_layout
 
 \begin_layout Description
@@ -10430,8 +10432,18 @@ LatexType
 
 \end_inset
 
- mag irreführend sein, denn dessen Regeln gelten auch für SGML-Klassen.
- Siehe die SGML Klassendateien für spezielle Beispiele.
+ mag irreführend sein, denn dessen Regeln gelten auch für DocBook-Klassen.
+ Siehe die DocBook Klassendateien (Dateinames 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+db_*.inc
+\end_layout
+
+\end_inset
+
+ ) für spezielle Beispiele.
 \end_layout
 
 \end_inset
@@ -10667,8 +10679,8 @@ Environment
 
 \end_inset
 
- aber fügt zusätzlich das notwendige Argument zum Begin-Befehl der Bibliography-
-Umgebung ein:
+ aber fügt zusätzlich das notwendige Argument (die längste Marke) zum Begin-Befe
+hl der Bibliografie-Umgebung ein:
 \begin_inset Newline newline
 \end_inset
 
@@ -10684,7 +10696,17 @@ begin{thebibliography}{99}
 
 \end_inset
 
- Es ist daher nur für die Bibliography-Umgebung nützlich.
+ Es ist daher nur für die Bibliografie-Umgebung nützlich.
+ Die voreingestellte längste Marke 
+\begin_inset Quotes gld
+\end_inset
+
+99
+\begin_inset Quotes grd
+\end_inset
+
+ kann vom Nutzer in den Absatzeinstellungen eines Bibliografie-Eintrags
+ geändert werden.
 \end_layout
 
 \begin_layout Standard

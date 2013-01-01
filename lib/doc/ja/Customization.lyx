@@ -6707,18 +6707,7 @@ status collapsed
 
 \end_inset
 
-内に表示されます。角括弧内の引数は非必須です。これは、モジュールが依存するLaTeXパッケージをすべて宣言します。角括弧の中には、LyXにとって既知のパッケージ
-だけしか、列挙することはできないことに注意してください。
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-既知のパッケージのリストは、ソースコード中でしか、ドキュメント化されていません。
-\end_layout
-
-\end_inset
-
-LyXは、任意のパッケージをチェックすることはしません。また、非必須引数として、
+内に表示されます。角括弧内の引数は非必須です。これは、モジュールが依存するLaTeXパッケージをすべて宣言します。また、非必須引数として、
 \begin_inset Flex Code
 status collapsed
 
@@ -6891,11 +6880,7 @@ status collapsed
 
 \end_inset
 
-拡張子を除いた
-\emph on
-ファイル名
-\emph default
-で認識されることに注意してください。つまり
+拡張子を除いたファイル名で認識されることに注意してください。つまり
 \begin_inset Flex Code
 status collapsed
 
@@ -10161,6 +10146,36 @@ Sensitive
 
 は、（ハードコードされた）ラベル文字列がフロートの種類に依存することを示します。これは、フロートに関連付けられたカウンタの値がNであるものとすると、「Float
 Type N」にハードコードされています。
+\lang english
+For the case that a caption is inserted outside of a float 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelString
+\end_layout
+
+\end_inset
+
+ should be set to e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Senseless!
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -10384,12 +10399,12 @@ List_Environment, Bib_Environment
 
 \end_inset
 
-] レイアウトがどのようにLaTeXに変換されるべきかを示します
+] レイアウトがどのようにLaTeXに変換されるべきかを示します。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これらのルールはSGMLクラスにも適用されるので、
+これらのルールはDocBookクラスにも適用されるので、
 \begin_inset Flex Code
 status collapsed
 
@@ -10399,12 +10414,28 @@ LatexType
 
 \end_inset
 
-の名称は、少しミスリーディングかもしれません。特定の例については、SGMLクラスファイルを見てください。
+の名称は、少しミスリーディングかもしれません。特定の例については、DocBook
+\lang english
+(filenames 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+db_*.inc
 \end_layout
 
 \end_inset
 
-。
+ )
+\lang japanese
+クラスファイルを見てください。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10602,8 +10633,8 @@ Environment
 
 \end_inset
 
- but adds additionally the necessary mandatory argument to the begin statement
- of the bibliography environment:
+ but adds additionally the necessary mandatory argument (the longest label)
+ to the begin statement of the bibliography environment:
 \begin_inset Newline newline
 \end_inset
 
@@ -10622,6 +10653,16 @@ begin{thebibliography}{99}
 \end_inset
 
  It is therefore only useful for bibliography environments.
+ The default longest label 
+\begin_inset Quotes eld
+\end_inset
+
+99
+\begin_inset Quotes erd
+\end_inset
+
+ can be changed by the user in the paragraph settings of a bibliography
+ item.
 \end_layout
 
 \begin_layout Standard
