@@ -193,7 +193,13 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0.x 
+Version 2.
+\change_deleted -712698321 1357054389
+0
+\change_inserted -712698321 1357054389
+1
+\change_unchanged
+.x 
 \end_layout
 
 \begin_layout Standard
@@ -934,7 +940,14 @@ configure.py
 \end_layout
 
 \begin_layout Subsection
-Other files needing a line or two...
+Other files needing a line or two
+\change_deleted -712698321 1357054454
+...
+\change_inserted -712698321 1357054454
+\SpecialChar \ldots{}
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -992,6 +1005,28 @@ languages
 \end_inset
 
  this file contains a list of all the languages currently supported by LyX.
+\change_inserted -712698321 1357054565
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1357054669
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1357054669
+latexfonts
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ contains information about the supported fonts.
 \change_inserted -195340706 1334775793
 
 \end_layout
@@ -1024,6 +1059,29 @@ reference "sub:I18n"
 \end_inset
 
 ).
+\change_inserted -712698321 1357054494
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1357054554
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1357054508
+unicodesymbols
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ this file contains information about unicode-encoded glyphs and the way
+ they are supported by LyX via LaTeX.
 \change_unchanged
 
 \end_layout
