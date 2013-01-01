@@ -56,9 +56,12 @@ def removeFiles(filenames):
             pass
 
 
-def cmdOutput(cmd):
+def cmdOutput(cmd, async = False):
     '''utility function: run a command and get its output as a string
         cmd: command to run
+        async: if False, return whole output as a string, otherwise
+               return the stdout handle from which the output can be
+               read (the caller is then responsible for closing it)
     '''
     if os.name == 'nt':
         b = False
@@ -68,6 +71,8 @@ def cmdOutput(cmd):
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
                             stdout=subprocess.PIPE, universal_newlines=True)
     pipe.stdin.close()
+    if async:
+        return pipe.stdout
     output = pipe.stdout.read()
     pipe.stdout.close()
     return output.strip()
@@ -1197,14 +1202,15 @@ def checkLatexConfig(check_config, bool_docbook):
     cl.close()
     #
     # we have chklayouts.tex, then process it
-    ret = 1
-    latex_out = cmdOutput(LATEX + ' wrap_chkconfig.ltx')
-    for line in latex_out.splitlines():
+    latex_out = cmdOutput(LATEX + ' wrap_chkconfig.ltx', True)
+    while True:
+        line = latex_out.readline()
+        if not line:
+            break;
         if re.match('^\+', line):
             logger.info(line.strip())
-            # return None if the command succeeds
-            if line == "+Inspection done.":
-                ret = None
+    # if the command succeeds, None will be returned
+    ret = latex_out.close()
     #
     # remove the copied file
     if rmcopy:

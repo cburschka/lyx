@@ -105,6 +105,9 @@ What's new
 
 - Fix a few selection bugs in tabular (bugs 4981, 7988).
 
+- Show the output of configure.py while the LaTeX packages are being checked
+  rather than all at once at the end of the check (bug 8477).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
