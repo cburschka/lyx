@@ -90,18 +90,23 @@ def main(argv):
                           os.path.join(outputdir, base + ".lyx2.lyx"), uselyx2lyx)
                 if lyxfile2 is None:
                     errors.append(f)
-                elif not filecmp.cmp(lyxfile1, lyxfile2, False):
+                else:
                     t1 = time.ctime(os.path.getmtime(lyxfile1))
                     t2 = time.ctime(os.path.getmtime(lyxfile2))
                     f1 = open(lyxfile1, 'r')
                     f2 = open(lyxfile2, 'r')
                     lines1 = f1.readlines()
                     lines2 = f2.readlines()
-                    diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
                     f1.close()
                     f2.close()
-                    sys.stdout.writelines(diff)
-                    errors.append(f)
+		    # ignore the first 2 lines
+		    # e.g. '#LyX file created ...'
+		    #      '\lyxformat ...'
+		    if lines1[2:] != lines2[2:]:
+			sys.stdout.writelines("lines1 != lines2")
+			diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
+			sys.stdout.writelines(diff)
+			errors.append(f)
 
     if len(errors) > 0:
         error('Converting the following files failed: %s' % ', '.join(errors))
