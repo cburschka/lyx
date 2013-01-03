@@ -413,9 +413,10 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			if (runparams.lastid != -1)
 				os.texrow().start(runparams.lastid,
 						  runparams.lastpos);
-			os << "\\begin{" << from_utf8(il.latexname()) << "}\n";
+			os << "\\begin{" << from_utf8(il.latexname()) << "}";
 			if (!il.latexparam().empty())
 				os << from_utf8(il.latexparam());
+			os << "\n";
 		}
 	}
 	OutputParams rp = runparams;
