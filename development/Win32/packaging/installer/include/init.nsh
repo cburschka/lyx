@@ -610,8 +610,16 @@ Function .onInit
    ${if} $MultiUser.Privileges == "Admin"
    ${orif} $MultiUser.Privileges == "Power"
     ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$5" "DisplayVersion"
+    # also check for an emergency release
+    ${if} $0 == ""
+     ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$51" "DisplayVersion"
+    ${endif}
    ${else}
     ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$5" "DisplayVersion"
+    # also check for an emergency release
+    ${if} $0 == ""
+     ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}${APP_VERSION_MAJOR}${APP_VERSION_MINOR}$51" "DisplayVersion"
+    ${endif}
    ${endif}
    ${if} $0 != ""
     StrCpy $R5 $0 # store the read version number
