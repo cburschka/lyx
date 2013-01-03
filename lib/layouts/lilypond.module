@@ -32,4 +32,17 @@ InsetLayout "Flex:LilyPond"
 	ParbreakIsNewline     true
 	ForceLTR              true
 	Spellcheck            false
+	Argument 1
+	  LabelString         "Options"
+	  MenuString          "LilyPond Options"
+	  Tooltip             "A comma-separated option list (see the LilyPond documentation for available options)."
+	  Decoration          Conglomerate
+	  Font
+	    Color             black
+	    Family            typewriter
+	  EndFont
+	  LabelFont
+	    Color             black
+	  EndFont
+	EndArgument
 End
