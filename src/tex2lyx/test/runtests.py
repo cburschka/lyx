@@ -43,7 +43,12 @@ def main(argv):
     else:
         error(usage(argv[0]))
 
-    lyx = os.path.join(os.path.dirname(tex2lyx), "lyx")
+    suffixre = re.search(r'\d+\.\d+$', tex2lyx)
+    if suffixre:
+	suffix = suffixre.group()
+    else:
+	suffix = ""
+    lyx = os.path.join(os.path.dirname(tex2lyx), "lyx" + suffix)
     inputdir = os.path.dirname(argv[0])
     if len(argv) >= 4+skipcount:
         outputdir = sys.argv[3+skipcount]
@@ -103,7 +108,6 @@ def main(argv):
 		    # e.g. '#LyX file created ...'
 		    #      '\lyxformat ...'
 		    if lines1[2:] != lines2[2:]:
-			sys.stdout.writelines("lines1 != lines2")
 			diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
 			sys.stdout.writelines(diff)
 			errors.append(f)
