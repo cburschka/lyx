@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 455
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass beamer
@@ -39,6 +39,7 @@
 \use_package mathdots 1
 \use_package mathtools 1
 \use_package mhchem 1
+\use_package stackrel 0
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine basic
@@ -165,7 +166,7 @@ Beamer
 
 \end_inset
 
- class, you can produce presentation slides which
+ class, you can produce presentation slides, which
 \end_layout
 
 \begin_deeper
@@ -246,10 +247,15 @@ Beamer
 
 \end_inset
 
-, especially how they can be used with LyX
+
 \end_layout
 
 \begin_layout Itemize
+especially how they can be used with LyX
+\end_layout
+
+\end_deeper
+\begin_layout Frame
 For more general and comprehensive information on 
 \begin_inset Flex Structure
 status collapsed
@@ -270,7 +276,6 @@ key "beamer-ug"
 
 \end_layout
 
-\end_deeper
 \begin_layout Section
 Segments of a presentation
 \end_layout
@@ -294,15 +299,15 @@ A presentation usually consists of
 
 \begin_deeper
 \begin_layout Itemize
-A title page
+a title page
 \end_layout
 
 \begin_layout Itemize
-Slides that might be grouped to sections/parts
+slides that might be grouped to sections/parts
 \end_layout
 
 \begin_layout Itemize
-An appendix with additional information, such as a bibliography
+an appendix with additional information, such as a bibliography
 \end_layout
 
 \end_deeper
@@ -485,10 +490,10 @@ Date\SpecialChar \slash{}
 
 \end_inset
 
- These are used in the side bar\SpecialChar \slash{}
-heading (given the theme provides a sidebar\SpecialChar \slash{}
-headin
-g)
+ These are used in the sidebar\SpecialChar \slash{}
+heading (given the theme actually provides
+ a sidebar\SpecialChar \slash{}
+heading)
 \end_layout
 
 \begin_layout Itemize
@@ -714,7 +719,15 @@ Frames can be repeated fully or only in terms of selected sub-slides, multiple
 \end_layout
 
 \begin_layout Frame
-You just need to give the respective frame a label via the frame options
+You just need to give the respective frame a label name via the frame option
+ 
+\begin_inset Quotes eld
+\end_inset
+
+label
+\begin_inset Quotes erd
+\end_inset
+
  (as done here).
 \end_layout
 
@@ -736,7 +749,7 @@ AgainFrame
 \end_inset
 
  layout later in the presentation.
- Just enter the label in the 
+ Just enter the label name in the 
 \begin_inset Flex Structure
 status collapsed
 
@@ -770,7 +783,7 @@ overlays
 \end_layout
 
 \begin_deeper
-\begin_layout Only
+\begin_layout Proof
 \begin_inset Argument 1
 status open
 
@@ -781,9 +794,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Only
 \begin_inset Flex Alert
 status collapsed
 
@@ -911,7 +921,7 @@ Separator
 
 \end_inset
 
- and automatically restart a new frame is by means of 
+ and automatically start a new frame is by means of 
 \begin_inset Flex Alert
 status collapsed
 
@@ -1222,7 +1232,7 @@ reserve material.
  The appendix is part of the presentation, but not shown in the table of
  contents\SpecialChar \slash{}
 sidebar\SpecialChar \slash{}
-heading
+header
 \end_layout
 
 \begin_layout Itemize
@@ -1751,19 +1761,27 @@ status open
 
 \end_inset
 
-Ich weiss nicht, was ich will
+
+\lang ngerman
+Ich weiß nicht, was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiss
+
+\lang ngerman
+ich will nicht, was ich weiß
 \end_layout
 
 \begin_layout Quote
+
+\lang ngerman
 im Sommer ist mir kalt
 \end_layout
 
 \begin_layout Quote
-im Winter ist mir heiss.
+
+\lang ngerman
+im Winter ist mir heiß.
 \end_layout
 
 \end_deeper
@@ -1823,19 +1841,27 @@ only@2
 
 \end_inset
 
-Ich weiss nicht, was ich will
+
+\lang ngerman
+Ich weiß nicht, was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiss
+
+\lang ngerman
+ich will nicht, was ich weiß
 \end_layout
 
 \begin_layout Quote
+
+\lang ngerman
 im Sommer ist mir kalt
 \end_layout
 
 \begin_layout Quote
-im Winter ist mir heiss.
+
+\lang ngerman
+im Winter ist mir heiß.
 \end_layout
 
 \end_deeper
@@ -1935,19 +1961,27 @@ status open
 
 \end_inset
 
-Ich weiss nicht, was ich will
+
+\lang ngerman
+Ich weiß nicht, was ich will
 \end_layout
 
 \begin_layout Quote
-ich will nicht, was ich weiss
+
+\lang ngerman
+ich will nicht, was ich weiß
 \end_layout
 
 \begin_layout Quote
+
+\lang ngerman
 im Sommer ist mir kalt
 \end_layout
 
 \begin_layout Quote
-im Winter ist mir heiss.
+
+\lang ngerman
+im Winter ist mir heiß.
 \end_layout
 
 \end_deeper
@@ -2150,7 +2184,7 @@ which causes each overlay-aware paragraph \SpecialChar \ldots{}
 
 \begin_layout Itemize
 \SpecialChar \ldots{}
- on a sub-slide \SpecialChar \ldots{}
+ on a subsequent sub-slide \SpecialChar \ldots{}
 
 \end_layout
 
@@ -2169,7 +2203,7 @@ A block
 
 \begin_layout Block
 \SpecialChar \ldots{}
- piece-wise
+ one after the other
 \end_layout
 
 \end_deeper
@@ -2578,7 +2612,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-2-
+3-
 \end_layout
 
 \end_inset
@@ -2627,7 +2661,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-2-
+4-
 \end_layout
 
 \end_inset
@@ -2660,7 +2694,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-2-
+5-
 \end_layout
 
 \end_inset
@@ -2693,7 +2727,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-2-
+6-
 \end_layout
 
 \end_inset
@@ -2936,7 +2970,7 @@ Diverse
 \begin_inset Quotes eld
 \end_inset
 
-Blocks
+blocks
 \begin_inset Quotes erd
 \end_inset
 
@@ -3654,7 +3688,8 @@ You can use for instance different graphics for the presentation and the
 \end_layout
 
 \begin_layout Itemize
-and so on.
+and so on \SpecialChar \ldots{}
+
 \end_layout
 
 \end_deeper
@@ -3755,7 +3790,7 @@ ArticleMode
 
 \end_inset
 
- in an inset that will only be output in article mode.
+ in an inset that will only be output in article mode
 \end_layout
 
 \end_inset
@@ -3777,7 +3812,7 @@ PresentationMode
 
 \end_inset
 
- in an inset that will only be output in presentation mode.
+ in an inset that will only be output in presentation mode
 \end_layout
 
 \end_inset
@@ -3852,7 +3887,8 @@ References
 \end_layout
 
 \begin_layout Itemize
-and much more of this sort
+And much more of this sort \SpecialChar \ldots{}
+
 \end_layout
 
 \end_deeper
@@ -4003,8 +4039,15 @@ LaTeX Preamble
 \end_layout
 
 \begin_layout Itemize
-In addition to this standard set, you can get more themes from CTAN and
- the Internet
+In addition to this standard set, you can get more themes from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org"
+
+\end_inset
+
+ and other places at the Internet
 \end_layout
 
 \begin_layout Itemize
