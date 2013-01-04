@@ -348,7 +348,14 @@ bool lyxBinaryPath(FileName & lyx_binary, string const & search_dir, string cons
 FileName findLyxBinary(FileName const & abs_binary)
 {
     string ext;
-    if (!abs_binary.extension().empty()) {
+    string checkname = abs_binary.toFilesystemEncoding();
+    int check_len = checkname.length();
+    int prgsuffixlen = string(PROGRAM_SUFFIX).length();
+    if ((prgsuffixlen > 0) && (check_len > prgsuffixlen) &&
+       (checkname.substr(check_len-prgsuffixlen) == string(PROGRAM_SUFFIX))) {
+	ext = "";
+    }
+    else if (!abs_binary.extension().empty()) {
         ext = "." + abs_binary.extension();
     }
     
