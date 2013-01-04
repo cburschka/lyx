@@ -90,13 +90,13 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-01-03 12:06-0500\n"
-"PO-Revision-Date: 2012-12-23 11:21+0100\n"
+"PO-Revision-Date: 2013-01-04 13:49+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -6787,34 +6787,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Autoren"
+msgstr "Fünf Autoren"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Autoren"
+msgstr "Sechs Autoren"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
 msgstr "Kopfzeile links"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
 msgstr "Kopfzeile links:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Zugehörigkeit"
+msgstr "Fünf Zugehörigkeiten"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Zugehörigkeit"
+msgstr "Sechs Zugehörigkeiten"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6841,14 +6835,12 @@ msgid "Note:"
 msgstr "Notiz:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "Autor"
+msgstr "Autorenhinweise"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
-msgstr "Autorfußnotentext:"
+msgstr "Autorenhinweise:"
 
 #: lib/layouts/apa6.layout:305 lib/layouts/egs.layout:335
 msgid "Journal"
@@ -6856,9 +6848,8 @@ msgstr "Zeitschrift"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "Nur Vorspann"
+msgstr "Vorspann"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -11165,6 +11156,10 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages."
 msgstr ""
+"Dieses Modul bietet Unterstützung für die Verwendung von Natbib zusammen mit "
+"Apacite. Der Bibliographiestil muss dabei nicht 'apacite' sein, auch "
+"'apacitex' oder jeder andere Stil, der mit Natbib und Apacite kompatibel "
+"ist, funktioniert."
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
