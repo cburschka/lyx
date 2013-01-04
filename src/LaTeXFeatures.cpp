@@ -716,6 +716,21 @@ char const * simplefeatures[] = {
 	"tfrupee"
 };
 
+char const * bibliofeatures[] = {
+	// Known bibliography packages (will be loaded before natbib)
+	"achicago",
+	"apacite",
+	"apalike",
+	"astron",
+	"authordate1-4",
+	"chicago",
+	"harvard",
+	"mslapa",
+	"named"
+};
+
+int const nb_bibliofeatures = sizeof(bibliofeatures) / sizeof(char const *);
+
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 
 }
@@ -894,6 +909,17 @@ string const LaTeXFeatures::getPackages() const
 	    params_.use_package("esint") != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
 
+	// Known bibliography packages (simple \usepackage{package})
+	for (int i = 0; i < nb_bibliofeatures; ++i) {
+		if (mustProvide(bibliofeatures[i]))
+			packages << "\\usepackage{"
+				 << bibliofeatures[i] << "}\n";
+	}
+
+	// Compatibility between achicago and natbib
+	if (mustProvide("achicago") && mustProvide("natbib"))
+		packages << "\\let\\achicagobib\\thebibliography\n";
+
 	// natbib.sty
 	// Some classes load natbib themselves, but still allow (or even require)
 	// plain numeric citations (ReVTeX is such a case, see bug 5182).
@@ -905,6 +931,13 @@ string const LaTeXFeatures::getPackages() const
 		else
 			packages << "authoryear";
 		packages << "]{natbib}\n";
+	}
+
+	// Compatibility between achicago and natbib
+	if (mustProvide("achicago") && mustProvide("natbib")) {
+		packages << "\\let\\thebibliography\\achicagobib\n";
+		packages << "\\let\\SCcite\\astroncite\n";
+		packages << "\\let\\UnexpandableProtect\\protect\n";
 	}
 
 	// jurabib -- we need version 0.6 at least.

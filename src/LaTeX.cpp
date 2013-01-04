@@ -184,7 +184,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	bool had_depfile = depfile.exists();
 	bool run_bibtex = false;
-	FileName const aux_file(changeExtension(file.absFileName(), "aux"));
+	FileName const aux_file(changeExtension(file.absFileName(), ".aux"));
 
 	if (had_depfile) {
 		LYXERR(Debug::DEPEND, "Dependency file exists");
@@ -692,6 +692,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				LYXERR(Debug::LATEX, "Force rerun.");
 			} else if (contains(token, "Citation")
 				   && contains(token, "on page")
+				   && contains(token, "undefined")) {
+				retval |= UNDEF_CIT;
+			} else if (contains(token, "Citation")
+				   && contains(token, "on input line")
 				   && contains(token, "undefined")) {
 				retval |= UNDEF_CIT;
 			}
