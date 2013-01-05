@@ -2,7 +2,7 @@
 # (http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg167716.html)
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg any > lyx-log.txt 2>&1
+TestBegin test.lyx > lyx-log.txt 2>&1
 KK: \Axtabular-insert 1 1\[Return]\[Left]
 KK: \Axinset-modify tabular align-decimal\[Return]
 KK: \Axfootnote-insert\[Return]
