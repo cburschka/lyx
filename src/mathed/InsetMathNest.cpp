@@ -1441,6 +1441,10 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(false);
 		break;
 
+	case LFUN_CAPTION_INSERT:
+		flag.setEnabled(false);
+		break;
+	
 	case LFUN_SPACE_INSERT: {
 		docstring const & name = cmd.argument();
 		if (name == "visible")

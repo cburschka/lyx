@@ -255,7 +255,7 @@ enum FuncCode
 	LFUN_MARGINALNOTE_INSERT,       // Lgb 20000626
 	LFUN_FLOAT_INSERT,              // Lgb 20000627
 	LFUN_FLOAT_WIDE_INSERT,         // Lgb 20010531
-	LFUN_CAPTION_INSERT,            // Lgb 20000718; inactive as of 20060905
+	LFUN_CAPTION_INSERT,            // Lgb 20000718
 	LFUN_BUFFER_SWITCH,
 	// 190
 	LFUN_BUFFER_CHKTEX,             // Asger 971030
@@ -422,7 +422,7 @@ enum FuncCode
 	// 325
 	LFUN_INSET_BEGIN_SELECT,        // JMarc, 20090316
 	LFUN_INSET_END_SELECT,          // JMarc, 20090316
-	LFUN_INSET_SELECT_ALL,			// vfr, 20090822
+	LFUN_INSET_SELECT_ALL,          // vfr, 20090822
 	LFUN_BUFFER_ZOOM_IN,            // vfr, 20090330
 	LFUN_BUFFER_ZOOM_OUT,           // vfr, 20090330
 	// 330

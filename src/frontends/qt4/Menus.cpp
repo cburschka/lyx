@@ -1572,6 +1572,9 @@ void MenuDefinition::expandArguments(BufferView const * bv, bool switcharg)
 	if (!bv)
 		return;
 
+	if (!bv->cursor().inTexted())
+		return;
+
 	Inset const * inset = &bv->cursor().inset();
 	Layout::LaTeXArgMap args = bv->cursor().paragraph().layout().args();
 	if (inset && args.empty())
