@@ -258,9 +258,13 @@ PO_BUILD_DIR = os.environ.get('PO_BUILD_DIR')
 if not PO_BUILD_DIR is None:
   print "PO_BUILD_DIR = " + PO_BUILD_DIR + "\n"
 
+lyx = os.environ.get('LYX')
+if lyx is None:
+    lyx = "lyx"
+
 lyx_exe = os.environ.get('LYX_EXE')
 if lyx_exe is None:
-    lyx_exe = "lyx"
+    lyx_exe = lyx
 
 xvkbd_exe = os.environ.get('XVKBD_EXE')
 if xvkbd_exe is None:
@@ -326,12 +330,12 @@ while not failed:
         print "Ignoring comment line: " + c
     elif c[0:9] == 'TestBegin':
         print "\n"
-        lyx_pid=os.popen("pidof lyx").read()
+        lyx_pid=os.popen("pidof " + lyx).read()
         if lyx_pid != "":
             print "Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n"
-            intr_system("killall lyx", True)
+            intr_system("killall " + lyx, True)
             time.sleep(0.5)
-            intr_system("killall -KILL lyx", True)
+            intr_system("killall -KILL " + lyx, True)
         time.sleep(0.2)
         print "Starting LyX . . ."
         if lyx_userdir is None:
@@ -339,7 +343,7 @@ while not failed:
         else:
             intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         while True:
-            lyx_pid=os.popen("pidof lyx").read().rstrip()
+            lyx_pid=os.popen("pidof " + lyx).read().rstrip()
             if lyx_pid != "":
                 lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
                 if lyx_window_name != "":

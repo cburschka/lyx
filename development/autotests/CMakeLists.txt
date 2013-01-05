@@ -37,6 +37,7 @@ if(Q_WS_X11)
         -DPO_BUILD_DIR=${TOP_BINARY_DIR}/po
         -DKEYTEST_INFILE=${_tf}
         -DBINDIR=$<TARGET_FILE_DIR:${_lyx}>
+	-DLYX=${_lyx}
 	-DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -DKEYTEST_OUTFILE=${_t}-out.txt
         -DPACKAGE=${PACKAGE}

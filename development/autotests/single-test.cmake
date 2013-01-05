@@ -15,6 +15,7 @@
 #       -DKEYTEST_INFILE=xxxx \
 #       -DKEYTEST_OUTFILE=xxx \
 #       -DBINDIR=xxx \
+#       -DLYX=xxx \
 #       -DWORKDIR=xxx \
 #       -DLOCALE_DIR=xxx \
 #       -DPO_BUILD_DIR=xxx \
@@ -23,7 +24,7 @@
 
 set(KEYTEST "${AUTOTEST_ROOT}/keytest.py")
 
-execute_process(COMMAND pidof lyx OUTPUT_VARIABLE LYX_PID RESULT_VARIABLE pidstat OUTPUT_VARIABLE pidres)
+execute_process(COMMAND pidof ${LYX} OUTPUT_VARIABLE LYX_PID RESULT_VARIABLE pidstat OUTPUT_VARIABLE pidres)
 message(STATUS "pidres = ${pidres}")
 if (NOT pidstat)
   # lyx already running, remove trailing '\n' from pid
@@ -44,7 +45,7 @@ else()
   set(LYX_WINDOW_NAME "")
 endif()
 
-set(LYX_EXE "${BINDIR}/lyx")
+set(LYX_EXE "${BINDIR}/${LYX}")
 set(XVKBD_EXE "${BINDIR}/xvkbd")
 
 # Environments needed by keytest.py
@@ -55,6 +56,7 @@ set(ENV{LYX_USERDIR} ${WORKDIR})
 set(ENV{LYX_PID} ${pidres})
 set(ENV{LYX_WINDOW_NAME} ${LYX_WINDOW_NAME})
 set(ENV{LYX_EXE} ${LYX_EXE})
+set(ENV{LYX} ${LYX})
 set(ENV{XVKBD_EXE} ${XVKBD_EXE})
 set(ENV{KEYTEST_INFILE} "${AUTOTEST_ROOT}/${KEYTEST_INFILE}")
 set(ENV{KEYTEST_OUTFILE} "${WORKDIR}/${KEYTEST_OUTFILE}")
