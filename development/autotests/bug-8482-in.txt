@@ -1,0 +1,10 @@
+# assertion on menu access from empty math inset (regression on trunk) (#8482)
+#
+# After running this test on Ubuntu 12.04, the menu stays open (FIXME) but it
+# is cleared after the next test starts.
+
+Lang en_US.utf8
+TestBegin test.lyx > lyx-log.txt 2>&1
+KK: \Cm
+KK: \Ai
+TestEnd
