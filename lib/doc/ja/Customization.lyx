@@ -5848,7 +5848,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 21
+Format 35
 \begin_inset Newline newline
 \end_inset
 
@@ -6142,8 +6142,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-レイアウトファイルの書式は、LyXのリリース毎に変更されますので、古いレイアウトファイルは変換されなくてはなりません。この過程は、LyX第1.4版から自動化されま
-した。LyXが古い書式のレイアウトファイルを読み込むと、LyXは、自動的に変換ツール
+レイアウトファイルの書式は、LyXのリリース毎に変更されますので、古いレイアウトファイルは変換されなくてはなりません。LyXが古い書式のレイアウトファイルを読み
+込むと、LyXは、自動的に変換ツール
 \begin_inset Flex Code
 status collapsed
 
@@ -6157,26 +6157,74 @@ LyXDir/scripts/layout2layout.py
 回行なわくて済むように、レイアウトファイルを恒久的に変換しておきたいと思うかもしれません。これを行うには、以下のように変換子を手動で呼び出してください。
 \end_layout
 
-\begin_layout LyX-Code
-mv myclass.layout myclass.old
-\end_layout
+\begin_layout Enumerate
 
-\begin_layout LyX-Code
-python LyXDir/scripts/layout2layout.py myclass.old myclassnew.layout
-\end_layout
-
-\begin_layout Standard
-もちろん、
+\lang english
+rename the file 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
+myclass.layout
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+myclass.old
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Call the command
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 LyXDir
 \end_layout
 
 \end_inset
 
-は、お使いのLyXシステムディレクトリ名に置き換えてください。
+ is the name of your LyX system directory.
 \end_layout
 
 \begin_layout Standard
@@ -6198,6 +6246,9 @@ name "sec:テキストクラス"
 、ゆっくりと進めるようにして、ちょっと進むごとに保存やテストを行い、心休まる音楽を聴き、好きな大人の飲み物を一二杯口にしながら行うのがいいでしょう。特に行き詰ま
 ってしまったときにはそうです。実際にはそんなに難しいことではないのですが、特に一度に多くのことをやろうとすると、選択肢が多くありすぎて圧倒されてしまうのです。さ
 て、もう一杯大人向け飲料をどうぞ。適量ね。
+\lang english
+It becomes easier if you use existing layouts of LyX as examples/reference
+ or if you modify an existing layout to your needs.
 \end_layout
 
 \begin_layout Standard

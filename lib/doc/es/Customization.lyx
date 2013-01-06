@@ -6195,7 +6195,11 @@ para cambiar la tipografía de los encabezados de capítulo a sans-serif.
 Tu nuevo paquete puede proporcionar además comandos o entornos no presentes
  en la clase base.
  En este caso, los añadirás al archivo `layout'.
- Véase 
+ Véase sección
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Estructura-del-archivo-layout"
@@ -6245,7 +6249,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 21
+Format 35
 \begin_inset Newline newline
 \end_inset
 
@@ -6269,7 +6273,11 @@ EndPreamble
 \begin_layout Standard
 Un módulo más complejo podría modificar el comportamiento de alguna estructura
  ya existente o definir algunas nuevas.
- De nuevo te remitimos a 
+ De nuevo te remitimos a sección
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Estructura-del-archivo-layout"
@@ -6525,8 +6533,8 @@ Actualización de antiguos archivos de formato
 \begin_layout Standard
 El formato de los archivos de formato cambia con cada nueva versión de LyX,
  de modo que los antiguos archivos de formato deben ser convertidos.
- Desde LyX 1.4.0 este proceso ha sido automatizado: si LyX lee un archivo
- de formato con formato antiguo lanzará la herramienta de conversión 
+ Si LyX lee un archivo de formato con formato antiguo lanzará la herramienta
+ de conversión 
 \begin_inset Flex Code
 status collapsed
 
@@ -6542,26 +6550,76 @@ layout2layout.py
  que LyX tenga que hacerlo cada vez, ejecuta el convertidor a mano:
 \end_layout
 
-\begin_layout LyX-Code
-mv myclass.layout myclass.old
-\end_layout
+\begin_layout Enumerate
 
-\begin_layout LyX-Code
-python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
-\end_layout
-
-\begin_layout Standard
-Debes reemplazar 
+\lang english
+rename the file 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
+myclass.layout
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+myclass.old
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Call the command
+\lang spanish
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 LyXDir
 \end_layout
 
 \end_inset
 
- con el nombre de tu directorio LyX en el sistema.
+ is
+\lang spanish
+ el nombre de tu directorio LyX en el sistema.
 \end_layout
 
 \begin_layout Standard
@@ -6584,12 +6642,13 @@ name "sec:Estructura-del-archivo-layout"
 Ha llegado por fin el momento de ponerte manos a la obra y crear o editar
  tu propio archivo de formato; las siguientes secciones describen aquello
  a lo que te vas a enfrentar.
- Nuestro consejo es ir despacito, probando y guardando a menudo, escuchando
- música relajante y disfrutando de un par de tus copas favoritas; más si
- estás muy atascado.
+ Nuestro consejo es ir despacito, probando y guardando a menudo.
  En realidad no es para tanto, pero la multitud de opciones puede llegar
  a abrumarte si intentas hacer muchas cosas a la vez.
- Ve a por otra copa, por si acaso.
+ 
+\lang english
+It becomes easier if you use existing layouts of LyX as examples/reference
+ or if you modify an existing layout to your needs.
 \end_layout
 
 \begin_layout Standard
@@ -7456,7 +7515,11 @@ CiteFormat
 \end_inset
 
  Define formatos a usar en la presentación de información bibliográfica.
- Véase la sección 
+ Véase la sección
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Descripción-formato-cita"

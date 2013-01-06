@@ -6197,7 +6197,7 @@ DeclareLyXModule{mon paquetage}
 \begin_layout LyX-Code
 
 \lang english
-Format 21
+Format 35
 \begin_inset Newline newline
 \end_inset
 
@@ -6516,8 +6516,8 @@ Mise à jour des anciens fichiers de format
 La syntaxe des fichiers de format change à chaque publication d'une nouvelle
  version de LyX, et les anciens fichiers de format doivent donc être convertis
  dans la nouvelle syntaxe.
- cette procédure a été rendue automatique depuis LyX 1.4: si LyX lit un fichier
- de format écrit avec une syntaxe ancienne, il appelle le script 
+ Si LyX lit un fichier de format écrit avec une syntaxe ancienne, il appelle
+ le script 
 \begin_inset Flex Code
 status collapsed
 
@@ -6535,32 +6535,76 @@ layout2layout.py
  Pour ce faire, vous pouvez appeler le convertisseur manuellement:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Enumerate
 
 \lang english
-mv ma_classe.layout ma_classe.old
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-python RépLyx/scripts/layout2layout.py ma_classe.old ma_classe.layout
-\end_layout
-
-\begin_layout Standard
-Vous devez remplacer 
+rename the file 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-RépLyx
+myclass.layout
 \end_layout
 
 \end_inset
 
- par le nom de votre répertoire LyX au niveau système, naturellement.
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+myclass.old
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Call the command
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXDir
+\end_layout
+
+\end_inset
+
+ is
+\lang french
+ le nom de votre répertoire LyX au niveau système.
 \end_layout
 
 \begin_layout Standard
@@ -6584,12 +6628,14 @@ name "sec:Syntaxe-des"
 Les sections suivantes vous expliquent à quoi vous vous attaquez quand vous
  décidez de mettre les mains dans le cambouis, et de créer ou d'éditer votre
  propre fichier de format.
- Notre conseil est d'aller doucement, d'enregistrer souvent pour faire des
- essais, d'écouter de la musique relaxante, et de siroter tranquillement
- un ou deux verres de votre boisson favorite, voire plus si vous êtes coincés.
+ Notre conseil est d'aller doucement et d'enregistrer souvent pour faire
+ des essais.
  Ce n'est pas si dur que ça, mais il y a une multitude d'options et vous
  pouvez vous laisser submerger si vous essayez d'en faire trop d'un coup.
- Allez donc prendre un verre, juste pour la route.
+ 
+\lang english
+It becomes easier if you use existing layouts of LyX as examples/reference
+ or if you modify an existing layout to your needs.
 \end_layout
 
 \begin_layout Standard
@@ -7537,7 +7583,7 @@ CiteFormat
  
 \family default
 ajoute une information au préambule du document.
- Voir
+ Voir section
 \begin_inset space ~
 \end_inset
 
@@ -7548,7 +7594,8 @@ reference "sub:Description citation"
 
 \end_inset
 
-Doit être fermé par 
+.
+ Doit être fermé par 
 \begin_inset Quotes fld
 \end_inset
 

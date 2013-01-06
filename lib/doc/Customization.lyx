@@ -6577,7 +6577,11 @@ to change the font for chapter headings to sans-serif.
 Your new package may also provide commands or environments not present in
  the base class.
  In this case, you will want to add these to the layout file.
- See 
+ See section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:TextClass"
@@ -6627,7 +6631,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 21
+Format 35
 \begin_inset Newline newline
 \end_inset
 
@@ -6651,7 +6655,11 @@ EndPreamble
 \begin_layout Standard
 A more complex module might modify the behavior of some existing constructs
  or define some new ones.
- Again, see 
+ Again, see section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:TextClass"
@@ -6856,7 +6864,6 @@ notepad
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -6941,8 +6948,8 @@ Upgrading old layout files
 \begin_layout Standard
 The format of layout files changes with each LyX release, so old layout
  files need to be converted to the new format.
- This process has been automated since LyX 1.4: If LyX reads a layout file
- in an older format, it automatically calls the script 
+ If LyX reads a layout file in an older format, it automatically calls the
+ script 
 \begin_inset Flex Code
 status collapsed
 
@@ -6959,16 +6966,50 @@ layout2layout.py
  To do this, you can call the converter manually:
 \end_layout
 
-\begin_layout LyX-Code
-mv myclass.layout myclass.old
+\begin_layout Enumerate
+rename the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+myclass.layout
 \end_layout
 
-\begin_layout LyX-Code
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+myclass.old
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Call the command
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
 \end_layout
 
-\begin_layout Standard
-You need to replace 
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where 
 \begin_inset Flex Code
 status collapsed
 
@@ -6978,7 +7019,7 @@ LyXDir
 
 \end_inset
 
- with the name of your LyX system directory, of course.
+ is the name of your LyX system directory.
 \end_layout
 
 \begin_layout Standard
@@ -6997,14 +7038,12 @@ The layout file format
 \end_layout
 
 \begin_layout Standard
-When it's finally time to get your hands dirty and create or edit your own
- layout file, the following sections describe what you're up against.
- Our advice is to go slowly, save and test often, listen to soothing music,
- and enjoy one or two of your favorite adult beverages; more if you are
- getting particularly stuck.
- It's really not that hard, except that the multitude of options can become
- overwhelming if you try to do too much in one sitting.
- Go have another adult beverage, just for good measure.
+The following sections describe how layout files are structured and written.
+ Our advice is to go slowly, save and test often.
+ It is really not that hard, except that the multitude of options can become
+ overwhelming, especially if you try to check out too many at once.
+ It becomes easier if you use existing layouts of LyX as examples/reference
+ or if you modify an existing layout to your needs.
 \end_layout
 
 \begin_layout Standard
@@ -7040,9 +7079,8 @@ StYlE
 \end_inset
 
  are really the same tag.
- The possible values are printed in brackets after the feature's name.
- The default value if a feature isn't specified inside a text class-description
- is typeset 
+ The possible arguments are printed in brackets after the tag's name.
+ The default argument is typeset 
 \begin_inset Flex Code
 status collapsed
 
