@@ -34,7 +34,7 @@ std::string const formatted_time(time_t t, std::string const & fmt);
  * time zone and daylight saving time are the same as when \p t was created
  * by ctime().
  */
-time_t from_ctime(std::string t);
+time_t from_gmtime(std::string t);
 
 } // namespace support
 } // namespace lyx

@@ -400,7 +400,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	}
 
 	docstring chgTime;
-	chgTime += ctime(&change.changetime);
+	chgTime += asctime(gmtime(&change.changetime));
 	// remove trailing '\n'
 	chgTime.erase(chgTime.end() - 1);
 
