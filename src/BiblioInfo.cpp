@@ -438,7 +438,11 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					ret += trans;
 				} else {
 					docstring const val = getValueForKey(key, xref);
+					if (richtext)
+						ret += from_ascii("<span class=\"bib-" + key + "\">");
 					ret += val;
+					if (richtext)
+						ret += from_ascii("</span>");
 				}
 			} else {
 				// beginning of key
