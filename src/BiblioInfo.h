@@ -7,6 +7,7 @@
  * \author Angus Leeming
  * \author Herbert Voß
  * \author Richard Heck
+ * \author Julien Rioux
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -51,7 +52,7 @@ public:
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(bool jurabib_style = false) const;
+	docstring const getAbbreviatedAuthor(bool jurabib_style = false, std::string lang = "en") const;
 	///
 	docstring const getYear() const;
 	///
@@ -110,7 +111,7 @@ private:
 	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key,
 		docstring const & before, docstring const & after, docstring const & dialog,
-		BibTeXInfo const * const xref = 0) const;
+		BibTeXInfo const * const xref = 0, std::string lang = "en") const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -165,14 +166,14 @@ public:
 	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(docstring const & key) const;
+	docstring const getAbbreviatedAuthor(docstring const & key, std::string lang = "en") const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
 	/// Note that this will get the year from the crossref if it's
 	/// not present in the record itself.
 	docstring const getYear(docstring const & key,
-			bool use_modifier = false) const;
+			bool use_modifier = false, std::string lang = "en") const;
 	///
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
