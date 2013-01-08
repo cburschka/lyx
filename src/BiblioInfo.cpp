@@ -496,7 +496,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				} else {
 					docstring const val =
 						getValueForKey(key, before, after, dialog, xref, lang);
+					ret += from_ascii("{!<span class=\"bib-" + key + "\">!}");
 					ret += val;
+					ret += from_ascii("{!</span>!}");
 				}
 			} else {
 				// beginning of key
