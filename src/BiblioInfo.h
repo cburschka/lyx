@@ -119,17 +119,20 @@ private:
 	///   {%key%[[format]]}, which prints format if key is non-empty
 	/// the latter may optionally contain an `else' clause as well:
 	///   {%key%[[if format]][[else format]]}
-	/// material intended only for rich text (HTML) output should be
-	/// wrapped in "{!" and "!}". it will be removed if richtext is
-	/// false.
+	/// Material intended only for rich text (HTML) output should be
+	/// wrapped in "{!" and "!}". These markers are to be postprocessed
+	/// by processRichtext(); this step is left as a separate routine since
+	/// expandFormat() is recursive while postprocessing should be done
+	/// only once on the final string (just like convertLaTeXCommands).
 	/// a simple macro facility is also available. keys that look like
 	/// "%!key%" are substituted with their definition.
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(std::string const & fmt,
 		BibTeXInfo const * const xref, int & counter,
-		Buffer const & buf, bool richtext, docstring before = docstring(),
-		docstring after = docstring(), docstring dialog = docstring(), bool next = false) const;
+		Buffer const & buf, docstring before = docstring(),
+		docstring after = docstring(), docstring dialog = docstring(),
+		bool next = false) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry

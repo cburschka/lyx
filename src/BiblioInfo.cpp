@@ -196,6 +196,49 @@ docstring convertLaTeXCommands(docstring const & str)
 	return ret;
 }
 
+
+// Escape '<' and '>' and remove richtext markers (e.g. {!this is richtext!}) from a string.
+docstring processRichtext(docstring const & str, bool richtext)
+{
+	docstring val = str;
+	docstring ret;
+
+	bool scanning_rich = false;
+	while (!val.empty()) {
+		char_type const ch = val[0];
+		if (ch == '{' && val.size() > 1 && val[1] == '!') {
+			// beginning of rich text
+			scanning_rich = true;
+			val = val.substr(2);
+			continue;
+		}
+		if (scanning_rich && ch == '!' && val.size() > 1 && val[1] == '}') {
+			// end of rich text
+			scanning_rich = false;
+			val = val.substr(2);
+			continue;
+		}
+		if (richtext) {
+			if (scanning_rich)
+				ret += ch;
+			else {
+				// we need to escape '<' and '>'
+				if (ch == '<')
+					ret += "&lt;";
+				else if (ch == '>')
+					ret += "&gt;";
+				else
+					ret += ch;
+			}
+		} else if (!scanning_rich /* && !richtext */)
+			ret += ch;
+		// else the character is discarded, which will happen only if
+		// richtext == false and we are scanning rich text
+		val = val.substr(1);
+	}
+	return ret;
+}
+
 } // anon namespace
 
 
@@ -407,7 +450,7 @@ string parseOptions(string const & format, string & optkey,
 
 docstring BibTeXInfo::expandFormat(string const & format,
 		BibTeXInfo const * const xref, int & counter, Buffer const & buf,
-		bool richtext, docstring before, docstring after, docstring dialog, bool next) const
+		docstring before, docstring after, docstring dialog, bool next) const
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int max_passes = 5000;
@@ -484,10 +527,10 @@ docstring BibTeXInfo::expandFormat(string const & format,
 						ret += from_utf8(ifpart); // without expansion
 					else if (!val.empty())
 						ret += expandFormat(ifpart, xref, counter, buf,
-							richtext, before, after, dialog, next);
+							before, after, dialog, next);
 					else if (!elsepart.empty())
 						ret += expandFormat(elsepart, xref, counter, buf,
-							richtext, before, after, dialog, next);
+							before, after, dialog, next);
 					// fmt will have been shortened for us already
 					continue;
 				}
@@ -495,6 +538,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					// beginning of rich text
 					scanning_rich = true;
 					fmt = fmt.substr(2);
+					ret += from_ascii("{!");
 					continue;
 				}
 			}
@@ -507,26 +551,13 @@ docstring BibTeXInfo::expandFormat(string const & format,
 			// end of rich text
 			scanning_rich = false;
 			fmt = fmt.substr(2);
+			ret += from_ascii("!}");
 			continue;
 		}
 		else if (scanning_key)
 			key += char(thischar);
-		else if (richtext) {
-			if (scanning_rich)
-				ret += thischar;
-			else {
-				// we need to escape '<' and '>'
-				if (thischar == '<')
-					ret += "&lt;";
-				else if (thischar == '>')
-					ret += "&gt;";
-				else
-					ret += thischar;
-			}
-		}	else if (!scanning_rich /* && !richtext */)
+		else
 			ret += thischar;
-		// else the character is discarded, which will happen only if
-		// richtext == false and we are scanning rich text
 		fmt = fmt.substr(1);
 	} // for loop
 	if (scanning_key) {
@@ -557,7 +588,8 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 	DocumentClass const & dc = buf.params().documentClass();
 	string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
 	int counter = 0;
-	info_ = expandFormat(format, xref, counter, buf, richtext);
+	info_ = expandFormat(format, xref, counter, buf,
+		docstring(), docstring(), docstring(), false);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);
@@ -580,11 +612,13 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	*/
 
 	int counter = 0;
-	loclabel = expandFormat(format, xref, counter, buf, richtext,
+	loclabel = expandFormat(format, xref, counter, buf,
 		before, after, dialog, next);
 
-	if (!loclabel.empty())
+	if (!loclabel.empty() && !next) {
+		loclabel = processRichtext(loclabel, richtext);
 		loclabel = convertLaTeXCommands(loclabel);
+	}
 	return loclabel;
 }
 
