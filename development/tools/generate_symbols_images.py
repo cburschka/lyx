@@ -75,7 +75,30 @@ def getreplacements(filename):
             found = True
 
 
-def createimage(name, path, template, lyxexe, tempdir, replacements):
+def gettoolbaritems(filename):
+    items = []
+    uifile = open(filename, 'rt')
+    regexp = re.compile(r'.*Item "([^"\[]+)(\[\[[^\]]+\]\])?"\s*"math-insert\s+([^"]+)"')
+    for line in uifile.readlines():
+        m = regexp.match(line)
+        if m:
+            if '\\' + m.group(1) == m.group(3):
+                items.append(m.group(1))
+    return items
+
+
+def getmakefileentries(filename):
+    items = []
+    makefile = open(filename, 'rt')
+    regexp = re.compile(r'.*images/math/(.+)\.png')
+    for line in makefile.readlines():
+        m = regexp.match(line)
+        if m:
+            items.append(m.group(1))
+    return items
+
+
+def createimage(name, path, template, lyxexe, tempdir, replacements, toolbaritems, makefileentries):
     """ Create the image file for symbol name in path. """
 
     if name in replacements.keys():
@@ -91,10 +114,20 @@ def createimage(name, path, template, lyxexe, tempdir, replacements):
                 return
         filename = name
     pngname = os.path.join(path, filename + '.png')
+    if name in toolbaritems:
+        if filename in makefileentries:
+            suffix = ' (found in toolbar and makefile)'
+        else:
+            suffix = ' (found in only in toolbar)'
+    else:
+        if filename in makefileentries:
+            suffix = ' (found only in makefile)'
+        else:
+            suffix = ' (not found)'
     if os.path.exists(pngname):
-        print 'Skipping ' + name
+        print 'Skipping ' + name + suffix
         return
-    print 'Generating ' + name
+    print 'Generating ' + name + suffix
     lyxname = os.path.join(tempdir, filename)
     lyxfile = open(lyxname + '.lyx', 'wt')
     lyxfile.write(template.replace('$a$', '$\\' + name + '$'))
@@ -140,13 +173,17 @@ def main(argv):
         symbols = getlist(argv[1], base)
         cppfile = os.path.join(os.path.dirname(base), '../../src/frontends/qt4/GuiApplication.cpp')
         replacements = getreplacements(cppfile)
+        uifile = os.path.join(os.path.dirname(base), '../../lib/ui/stdtoolbars.inc')
+        toolbaritems = gettoolbaritems(uifile)
+        makefile = os.path.join(os.path.dirname(base), '../../lib/Makefile.am')
+        makefileentries = getmakefileentries(makefile)
         lyxtemplate = base + '.lyx'
         templatefile = open(base + '.lyx', 'rt')
         template = templatefile.read()
         templatefile.close()
         tempdir = tempfile.mkdtemp()
         for i in symbols:
-            createimage(i, argv[2], template, argv[1], tempdir, replacements)
+            createimage(i, argv[2], template, argv[1], tempdir, replacements, toolbaritems, makefileentries)
         shutil.rmtree(tempdir)
     else:
         error(usage(argv[0]))
