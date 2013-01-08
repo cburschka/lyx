@@ -147,6 +147,8 @@ private:
 	docstring entry_type_;
 	/// a cache for getInfo()
 	mutable docstring info_;
+	/// a cache for getInfo(richtext = true)
+	mutable docstring info_richtext_;
 	///
 	docstring cite_number_;
 	///
