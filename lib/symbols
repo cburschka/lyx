@@ -4,6 +4,12 @@
 #
 # The syntax of lib/symbols is very ad hoc.
 # There are several possible formats of a line, which are quite different.
+# If you put any symbol with a requirement inside an iffont clause, you
+# must put an alternative definition with the same requirement in the
+# corresponding else clause. Otherwise the LaTeX output would depend on the
+# availability of the font. This usually no problem in GUI mode, since all
+# fonts are shipped with LyX, but in command line mode no font is available
+# at all.
 # New symbols for font packages may be created using
 # development/tools/generate_symbols_list.py (but may require manual fixes
 # as well).
@@ -1124,6 +1130,8 @@ iffont cmsy
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}
 \def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow}
 \def\models{\vert\kern-7mu\lyxeq}
+else
+\def\implies{=>}                                                  amsmath
 endif
 iffont cmm
 \def\hookrightarrow{\lhook\kern-12mu\rightarrow}
