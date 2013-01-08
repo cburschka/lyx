@@ -524,8 +524,10 @@ docstring BibTeXInfo::expandFormat(string const & format,
 docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 	Buffer const & buf, bool richtext) const
 {
-	if (!info_.empty())
+	if (!richtext && !info_.empty())
 		return info_;
+	if (richtext && !info_richtext_.empty())
+		return info_richtext_;
 
 	if (!is_bibtex_) {
 		BibTeXInfo::const_iterator it = find(from_ascii("ref"));
@@ -536,10 +538,15 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 	DocumentClass const & dc = buf.params().documentClass();
 	string const & format = dc.getCiteFormat(to_utf8(entry_type_));
 	int counter = 0;
-	info_ = expandFormat(format, xref, counter, buf, richtext);
+	info_ = expandFormat(format, xref, counter, buf, false);
+	info_richtext_ = expandFormat(format, xref, counter, buf, true);
 
 	if (!info_.empty())
 		info_ = convertLaTeXCommands(info_);
+	if (!info_richtext_.empty())
+		info_richtext_ = convertLaTeXCommands(info_richtext_);
+	if (richtext)
+		return info_richtext_;
 	return info_;
 }
 
