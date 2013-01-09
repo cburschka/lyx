@@ -38,19 +38,23 @@ def getlist(lyxexe, lyxfile):
     cmd = "%s %s -dbg mathed -x lyx-quit" % (lyxexe, lyxfile)
     proc = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
     (stdout, stderr) = proc.communicate()
-    regexp = re.compile(r'.*: read symbol \'(\S+)\s+inset:\s+(\S+)')
+    regexp = re.compile(r'.*: read symbol \'(\S+)\s+inset:\s+(\S+)\s+draw:\s+(\S*)\s+extra:\s+(\S+)')
     # These insets are more complex than simply symbols, so the images need to
     # be created manually
     skipinsets = ['big', 'font', 'lyxblacktext', 'matrix', 'mbox', 'oldfont', \
                   'ref', 'split', 'space', 'style']
-    symbols = []
+    mathsymbols = []
+    textsymbols = []
     for line in stderr.split('\n'):
         m = regexp.match(line)
         if m:
             inset = m.group(2)
             if not inset in skipinsets:
-                symbols.append(m.group(1))
-    return symbols
+                if m.group(4) == 'textmode':
+                    textsymbols.append(m.group(1))
+                else:
+                    mathsymbols.append(m.group(1))
+    return (mathsymbols, textsymbols)
 
 
 def getreplacements(filename):
@@ -98,7 +102,7 @@ def getmakefileentries(filename):
     return items
 
 
-def createimage(name, path, template, lyxexe, tempdir, replacements, toolbaritems, makefileentries):
+def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolbaritems, makefileentries):
     """ Create the image file for symbol name in path. """
 
     if name in replacements.keys():
@@ -130,7 +134,10 @@ def createimage(name, path, template, lyxexe, tempdir, replacements, toolbaritem
     print 'Generating ' + name + suffix
     lyxname = os.path.join(tempdir, filename)
     lyxfile = open(lyxname + '.lyx', 'wt')
-    lyxfile.write(template.replace('$a$', '$\\' + name + '$'))
+    if math:
+        lyxfile.write(template.replace('$a$', '$\\' + name + '$'))
+    else:
+        lyxfile.write(template.replace('$a$', '$\\text{\\' + name + '}$'))
     lyxfile.close()
     cmd = "%s %s.lyx -e dvi" % (lyxexe, lyxname)
     proc = subprocess.Popen(cmd, shell=True)
@@ -170,7 +177,7 @@ def main(argv):
 
     if len(argv) == 3:
         (base, ext) = os.path.splitext(argv[0])
-        symbols = getlist(argv[1], base)
+        (mathsymbols, textsymbols) = getlist(argv[1], base)
         cppfile = os.path.join(os.path.dirname(base), '../../src/frontends/qt4/GuiApplication.cpp')
         replacements = getreplacements(cppfile)
         uifile = os.path.join(os.path.dirname(base), '../../lib/ui/stdtoolbars.inc')
@@ -182,8 +189,10 @@ def main(argv):
         template = templatefile.read()
         templatefile.close()
         tempdir = tempfile.mkdtemp()
-        for i in symbols:
-            createimage(i, argv[2], template, argv[1], tempdir, replacements, toolbaritems, makefileentries)
+        for i in mathsymbols:
+            createimage(i, argv[2], template, argv[1], tempdir, True, replacements, toolbaritems, makefileentries)
+        for i in textsymbols:
+            createimage(i, argv[2], template, argv[1], tempdir, False, replacements, toolbaritems, makefileentries)
         shutil.rmtree(tempdir)
     else:
         error(usage(argv[0]))

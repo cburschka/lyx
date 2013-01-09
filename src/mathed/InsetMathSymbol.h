@@ -38,6 +38,8 @@ public:
 	int kerning(BufferView const *) const { return kerning_; }
 
 	///
+	mode_type currentMode() const;
+	///
 	bool isRelOp() const;
 	///
 	bool isOrdAlpha() const;

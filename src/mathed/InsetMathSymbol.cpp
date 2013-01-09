@@ -23,6 +23,8 @@
 #include "support/docstream.h"
 #include "support/textutils.h"
 
+#include <boost/scoped_ptr.hpp>
+
 
 namespace lyx {
 
@@ -108,6 +110,12 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 
 	FontSetChanger dummy(pi.base, font);
 	pi.draw(x, y - h_, sym_->draw);
+}
+
+
+InsetMath::mode_type InsetMathSymbol::currentMode() const
+{
+	return sym_->extra == "textmode" ? TEXT_MODE : MATH_MODE;
 }
 
 
@@ -235,7 +243,9 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 
 void InsetMathSymbol::write(WriteStream & os) const
 {
-	MathEnsurer ensurer(os);
+	boost::scoped_ptr<MathEnsurer> ensurer;
+	if (currentMode() != TEXT_MODE)
+		ensurer.reset(new MathEnsurer(os));
 	os << '\\' << name();
 
 	// $,#, etc. In theory the restriction based on catcodes, but then
