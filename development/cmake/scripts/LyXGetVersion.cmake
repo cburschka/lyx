@@ -58,7 +58,7 @@ else()
   )
 
   if(copy_err)
-    message(FATAL_ERROR "${CMAKE_COMMAND} -E ${copy_command} not working")
+    message(FATAL_ERROR "${CMAKE_COMMAND} -E copy_if_different not working")
   endif()
 
   EXECUTE_PROCESS(
