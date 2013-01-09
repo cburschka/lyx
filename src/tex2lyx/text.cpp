@@ -3204,9 +3204,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string localtime = p.getArg('{', '}');
 			preamble.registerAuthor(name);
 			Author const & author = preamble.getAuthor(name);
-			// from_gmtime() will fail if LyX decides to output the
+			// from_asctime_utc() will fail if LyX decides to output the
 			// time in the text language.
-			time_t ptime = from_gmtime(localtime);
+			time_t ptime = from_asctime_utc(localtime);
 			if (ptime == static_cast<time_t>(-1)) {
 				cerr << "Warning: Could not parse time `" << localtime
 				     << "´ for change tracking, using current time instead.\n";

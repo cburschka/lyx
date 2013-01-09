@@ -40,7 +40,7 @@ string const formatted_time(time_t t, string const & fmt)
 }
 
 
-time_t from_gmtime(string t)
+time_t from_asctime_utc(string t)
 {
 	// Example for the format: "Sun Nov  6 10:39:39 2011\n"
 	// Generously remove trailing '\n' (and other whitespace if needed)
