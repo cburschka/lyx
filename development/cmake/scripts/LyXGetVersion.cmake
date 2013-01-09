@@ -46,9 +46,24 @@ if(LYX_GITVERSION)
   endif()
 endif()
 
-configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.tmp)
-EXECUTE_PROCESS(
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different ${TOP_BINARY_DIR}/lyx_date.tmp ${TOP_BINARY_DIR}/lyx_date.h
-  COMMAND ${CMAKE_COMMAND} -E remove ${TOP_BINARY_DIR}/lyx_date.tmp
-)
+if(NOT EXISTS ${TOP_BINARY_DIR}/lyx_date.h)
+  configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.h)
+else()
+  configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.tmp)
+  message(STATUS "Created ${TOP_BINARY_DIR}/lyx_date.tmp")
+
+  EXECUTE_PROCESS(
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${TOP_BINARY_DIR}/lyx_date.tmp ${TOP_BINARY_DIR}/lyx_date.h
+    ERROR_VARIABLE copy_err
+  )
+
+  if(copy_err)
+    message(FATAL_ERROR "${CMAKE_COMMAND} -E ${copy_command} not working")
+  endif()
+
+  EXECUTE_PROCESS(
+    COMMAND ${CMAKE_COMMAND} -E remove ${TOP_BINARY_DIR}/lyx_date.tmp
+  )
+endif()
+
 
