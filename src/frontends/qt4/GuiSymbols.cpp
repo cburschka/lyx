@@ -280,6 +280,8 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	int size = font.pointSize() + 3;
 	font.setPointSize(size);
 	symbolsLW->setFont(font);
+	QFontMetrics fm(font);
+	symbolsLW->setGridSize(QSize(fm.maxWidth() + 2, fm.height() + 2));
 	symbolsLW->setModel(model_);
 }
 
