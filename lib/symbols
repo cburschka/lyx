@@ -4,12 +4,20 @@
 #
 # The syntax of lib/symbols is very ad hoc.
 # There are several possible formats of a line, which are quite different.
+#
+# Note for \def: The definition is not used in LaTeX output, but for screen
+# display. Therefore you may use a definition that is only approximately
+# correct if no accurate representation is possible (e.g. \HF vs. \approx).
+# Note that the first argument of \def must not uses braces, and the second
+# must use braces.
+#
 # If you put any symbol with a requirement inside an iffont clause, you
 # must put an alternative definition with the same requirement in the
 # corresponding else clause. Otherwise the LaTeX output would depend on the
 # availability of the font. This usually no problem in GUI mode, since all
 # fonts are shipped with LyX, but in command line mode no font is available
 # at all.
+#
 # New symbols for font packages may be created using
 # development/tools/generate_symbols_list.py (but may require manual fixes
 # as well).
@@ -431,7 +439,7 @@ mho                msb         102   0 mathord  &mho;
 square             msa         164   0 mathord  &square;
 Box                msa         164   0 mathord  &square;
 lozenge            msa         167   0 mathord  &loz;
-Diamond            msa         167   0 mathord  xdiam;
+Diamond            msa         167   0 mathord  &diam;
 vartriangleright   msa          66   0 mathrel  &rtri;
 vartriangleleft    msa          67   0 mathrel  &ltri;
 trianglerighteq    msa          68   0 mathrel  &rtrie;
@@ -663,17 +671,17 @@ phone              wasy          7   0 textmode &phone;  wasysym # works in text
 recorder           wasy          6   0 textmode &telrec; wasysym # works in text mode only (produces \Sigma in math mode)
 clock              wasy          28  0 textmode &clock;  wasysym # works in text mode only (produces \o in math mode)
 lightning          wasy          18  0 x        &#x2607;
-# FIXME Display is wrong: qt does not display characters at the \t position (0x09)
+# FIXME Display is wrong (bug 8493): qt does not display characters at the \t position (0x09)
 pointer            wasy          9   0 textmode x        wasysym # works in text mode only (produces \Psi in math mode)
 RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym # works in text mode only (produces \jmath in math mode)
 LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym # works in text mode only (produces \imath in math mode)
 UParrow            wasy          75  0 textmode &#x25B2; wasysym # works in text mode only (produces K in math mode)
 DOWNarrow          wasy          76  0 textmode &#x25BC; wasysym # works in text mode only (produces L in math mode)
 AC                 wasy          58  0 textmode x        wasysym # works in text mode only
-# \def\HF{\leavevmode \lower0.9pt\hbox to 0pt{\kern0.5pt\wasyfamily\char58\hss}\raise0.9pt\hbox{\kern0.5pt\wasyfamily\char58\kern0.5pt}} wasysym
+\def\HF{\approx}                                         wasysym
 VHF                wasy          64  0 x        x
 Square             wasy          50  0 x        &square;
-#CheckedBox         wasy          50\hss}\hbox{\wasyfamily\char8  0 x
+\def\CheckedBox{\Square\kern-0.8em\checked}              wasysym
 XBox               wasy          52  0 x        &timesb;
 hexagon            wasy          55  0 x        &#x2b21;
 pentagon           wasy          68  0 x        &#x2b20;
@@ -708,8 +716,8 @@ Leftcircle         wasy          73  0 x        x
 LEFTCIRCLE         wasy          71  0 x        &#x25D6;
 Rightcircle        wasy          74  0 x        x
 RIGHTCIRCLE        wasy          72  0 x        &#x25D7;
-#LEFTcircle {\hbox to 0pt{\wasyfamily\char71\hss}\hbox{\wasyfamily\char35}}
-#RIGHTcircle{\hbox to 0pt{\wasyfamily\char72\hss}\hbox{\wasyfamily\char35}}
+\def\LEFTcircle{\LEFTCIRCLE\kern-1em\Circle}             wasysym
+\def\RIGHTcircle{\RIGHTCIRCLE\kern-1em\Circle}           wasysym
 
 # Defined by amsmath.sty
 
@@ -736,7 +744,7 @@ fullmoon           wasy          35  0 x        &circ;
 newmoon            wasy          32  0 x        &#x25CF;
 leftmoon           wasy          36  0 x        &#x263E;
 rightmoon          wasy          37  0 x        &#x263D;
-astrosun           cmsy         175  0 mathbin  &#x2609;  wasysym
+astrosun           cmsy         175  0 mathbin  &#x2609; wasysym
 mercury            wasy          39  0 x        &#x263F;
 venus              wasy          25  0 x        &#x2640;
 earth              wasy          38  0 x        &#x2641;
@@ -772,7 +780,7 @@ APLup              wasy          0   0 x        x
 APLdown            wasy          70  0 x        x
 APLinput           wasy          125 0 x        x
 APLcomment         wasy          127 0 x        x
-#APLinv     {{\hbox to 0pt{$\div$\hss}\APLbox}}
+\def\APLinv{\div\kern-17mu\APLbox}                       wasysym
 APLuparrowbox      wasy         110  0 x        &#x2350;
 APLdownarrowbox    wasy         111  0 x        &#x2357;
 APLleftarrowbox    wasy         112  0 x        &#x2347;
@@ -783,9 +791,11 @@ Bowtie             wasy          49  0 x        &#x22C8;
 leftturn           wasy          34  0 x        &#x27F2;
 rightturn          wasy          33  0 x        &#x27F3;
 # diagrams
-#photon             wasy          58\char58\char58\char58}}
-#gluon              wasy          81\char80\char80\char80%
-#char80\char80\char80\char82}}
+\def\photon{\AC\kern-3mu\AC\kern-3mu\AC\kern-3mu\AC}     wasysym
+lyxgluonelement    wasy          80  0 x        x        notexisting
+lyxgluonbelement   wasy          81  0 x        x        notexisting
+lyxgluoneelement   wasy          82  0 x        x        notexisting
+\def\gluon{\lyxgluonbelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluoneelement} wasysym
 # special characters
 cent               wasy         103   0 x        &#00A2;
 permil             wasy         104   0 x        &#x2030;
@@ -795,18 +805,18 @@ Thorn              wasy         106   0 textmode &#x00DE; wasysym # works in tex
 openo              wasy         108   0 textmode &#x0254; wasysym # works in text mode only (produces l in math mode)
 inve               wasy          85   0 textmode &#x0259; wasysym # works in text mode only (produces U in math mode)
 
-#mho               wasy          48    0  mathord &mho; # already in amsfonts
-#Join              wasy          49    0  mathrel x
-#Box               wasy          50    0  mathord x
-#Diamond           wasy          51    0  mathord x
+#mho               wasy          48    0  mathord &mho;    wasysym # already in amsfonts
+#Join              wasy          49    0  mathrel x        wasysym # already in amsfonts
+#Box               wasy          50    0  mathord &square; wasysym # already in amsfonts
+#Diamond           wasy          51    0  mathord &diam;   wasysym # already in amsfonts
 leadsto            wasy          59    0  mathrel &rarrc;
-#sqsubset          wasy          60    0  mathrel &sqsub; # already in amsfonts
-#sqsupset          wasy          61    0  mathrel &sqsup; # already in amsfonts
-#lhd               wasy           1    0  mathbin x
-#unlhd             wasy           2    0  mathbin x
+#sqsubset          wasy          60    0  mathrel &sqsub;  wasysym # already in amsfonts
+#sqsupset          wasy          61    0  mathrel &sqsup;  wasysym # already in amsfonts
+#lhd               wasy           1    0  mathbin &ltri;   wasysym # already in amsfonts
+#unlhd             wasy           2    0  mathbin &ltrie;  wasysym # already in amsfonts
 LHD                wasy          16    0  mathbin &#x2C50;
-#rhd               wasy           3    0  mathbin x
-#unrhd             wasy           4    0  mathbin x
+#rhd               wasy           3    0  mathbin &rtri;   wasysym # already in amsfonts
+#unrhd             wasy           4    0  mathbin &rtrie;  wasysym # already in amsfonts
 RHD                wasy          17    0  mathbin &#x25B6;
 apprle             wasy          62    0  mathrel &lsim;
 apprge             wasy          63    0  mathrel &gsim;
@@ -854,7 +864,7 @@ boxbslash          stmry  28   0 mathbin    x  stmaryrd
 boxcircle          stmry  29   0 mathbin    x  stmaryrd
 boxbox             stmry  30   0 mathbin    x  stmaryrd
 boxempty           stmry  31   0 mathbin    x  stmaryrd
-#lightning          stmry  32   0 mathord   x  stmaryrd # already in wasy
+#lightning          stmry  32   0 mathord    x  stmaryrd # already in wasy
 merge              stmry  33   0 mathbin    x  stmaryrd
 vartimes           stmry  34   0 mathbin    x  stmaryrd
 fatsemi            stmry  35   0 mathbin    x  stmaryrd
@@ -896,8 +906,8 @@ subsetpluseq       stmry  70   0 mathrel    x  stmaryrd
 supsetpluseq       stmry  71   0 mathrel    x  stmaryrd
 Lbag               stmry  72   0 mathopen   x  stmaryrd
 Rbag               stmry  73   0 mathclose  x  stmaryrd
-llbracket          stmry  74   0 mathopen  x  stmaryrd
-rrbracket          stmry  75   0 mathclose x  stmaryrd
+llbracket          stmry  74   0 mathopen   x  stmaryrd
+rrbracket          stmry  75   0 mathclose  x  stmaryrd
 llparenthesis      stmry  76   0 mathopen   x  stmaryrd
 rrparenthesis      stmry  77   0 mathclose  x  stmaryrd
 binampersand       stmry  78   0 mathopen   x  stmaryrd
@@ -918,38 +928,38 @@ Mapsfromchar       stmry  92   0 mathrel    x  stmaryrd
 leftrightarrowtriangle stmry 93 0 mathrel   x  stmaryrd
 leftarrowtriangle  stmry  94   0 mathrel    x  stmaryrd
 rightarrowtriangle stmry  95   0 mathrel    x  stmaryrd
-#bigtriangledown    stmry  96   0 mathop    x  stmaryrd #already in cmsy
-#bigtriangleup      stmry  97   0 mathop    x  stmaryrd #already in cmsy
-bigcurlyvee        stmry  98   0 mathop    x  stmaryrd
-bigcurlywedge      stmry  99   0 mathop    x  stmaryrd
-bigsqcap           stmry 100   0 mathop    x  stmaryrd
-bigbox             stmry 101   0 mathop    x  stmaryrd
-bigparallel        stmry 102   0 mathop    x  stmaryrd
-biginterleave      stmry 103   0 mathop    x  stmaryrd
-#hugetriangledown   stmry 104   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugetriangleup     stmry 105   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugecurlyvee       stmry 106   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugecurlywedge     stmry 107   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugesqcap          stmry 108   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugebox            stmry 109   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugeparallel       stmry 110   0 mathop    x  stmaryrd # only in the font, not the .sty
-#hugeinterleave     stmry 111   0 mathop    x  stmaryrd # only in the font, not the .sty
-bignplus           stmry 112   0 mathop    x  stmaryrd # caution: named hugenplus in the font
-#largellbracket     stmry 113   0 mathopen  x  stmaryrd # only in the font, not the .sty
-#Largellbracket     stmry 114   0 mathopen  x  stmaryrd # only in the font, not the .sty
-#LARGEllbracket     stmry 115   0 mathopen  x  stmaryrd # only in the font, not the .sty
-#hugellbracket      stmry 116   0 mathopen  x  stmaryrd # only in the font, not the .sty
-#Largellbrackettop  stmry 117   0 mathopen  x  stmaryrd # only in the font, not the .sty
-#Largellbracketbot  stmry 118   0 mathopen  x  stmaryrd # only in the font, not the .sty caution: named Hugellbrackettop in the font
-#llbracketex        stmry 119   0 mathopen  x  stmaryrd # only in the font, not the .sty caution: named Hugellbracketbot in the font
-#hugenplus          stmry 120   0 mathop    x  stmaryrd # only in the font, not the .sty caution: named Hugenplus in the font
-#largerrbracket     stmry 121   0 mathclose x  stmaryrd # only in the font, not the .sty
-#Largerrbracket     stmry 122   0 mathclose x  stmaryrd # only in the font, not the .sty
-#LARGErrbracket     stmry 123   0 mathclose x  stmaryrd # only in the font, not the .sty
-#hugerrbracket      stmry 124   0 mathclose x  stmaryrd # only in the font, not the .sty
-#Largerrbrackettop  stmry 125   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbrackettop in the font
-#Largerrbracketbot  stmry 126   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
-#rrbracketex        stmry 127   0 mathclose x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
+#bigtriangledown    stmry  96   0 mathop     x  stmaryrd #already in cmsy
+#bigtriangleup      stmry  97   0 mathop     x  stmaryrd #already in cmsy
+bigcurlyvee        stmry  98   0 mathop     x  stmaryrd
+bigcurlywedge      stmry  99   0 mathop     x  stmaryrd
+bigsqcap           stmry 100   0 mathop     x  stmaryrd
+bigbox             stmry 101   0 mathop     x  stmaryrd
+bigparallel        stmry 102   0 mathop     x  stmaryrd
+biginterleave      stmry 103   0 mathop     x  stmaryrd
+#hugetriangledown   stmry 104   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugetriangleup     stmry 105   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugecurlyvee       stmry 106   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugecurlywedge     stmry 107   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugesqcap          stmry 108   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugebox            stmry 109   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugeparallel       stmry 110   0 mathop     x  stmaryrd # only in the font, not the .sty
+#hugeinterleave     stmry 111   0 mathop     x  stmaryrd # only in the font, not the .sty
+bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenplus in the font
+#largellbracket     stmry 113   0 mathopen   x  stmaryrd # only in the font, not the .sty
+#Largellbracket     stmry 114   0 mathopen   x  stmaryrd # only in the font, not the .sty
+#LARGEllbracket     stmry 115   0 mathopen   x  stmaryrd # only in the font, not the .sty
+#hugellbracket      stmry 116   0 mathopen   x  stmaryrd # only in the font, not the .sty
+#Largellbrackettop  stmry 117   0 mathopen   x  stmaryrd # only in the font, not the .sty
+#Largellbracketbot  stmry 118   0 mathopen   x  stmaryrd # only in the font, not the .sty caution: named Hugellbrackettop in the font
+#llbracketex        stmry 119   0 mathopen   x  stmaryrd # only in the font, not the .sty caution: named Hugellbracketbot in the font
+#hugenplus          stmry 120   0 mathop     x  stmaryrd # only in the font, not the .sty caution: named Hugenplus in the font
+#largerrbracket     stmry 121   0 mathclose  x  stmaryrd # only in the font, not the .sty
+#Largerrbracket     stmry 122   0 mathclose  x  stmaryrd # only in the font, not the .sty
+#LARGErrbracket     stmry 123   0 mathclose  x  stmaryrd # only in the font, not the .sty
+#hugerrbracket      stmry 124   0 mathclose  x  stmaryrd # only in the font, not the .sty
+#Largerrbrackettop  stmry 125   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbrackettop in the font
+#Largerrbracketbot  stmry 126   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
+#rrbracketex        stmry 127   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
 
 \def\varcopyright{c\kern-14mu\varbigcirc}                   stmaryrd
 \def\longarrownot{\kern5.5mu\arrownot\kern-5.5mu}           stmaryrd
@@ -981,39 +991,39 @@ tbond              cmsy        180 186 mathord  x
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
-int                esint        001    0  mathop  &int;  esint
-intop              esint        001    0  mathop  &int;  esint
+int                esint        001    0  mathop  &int;         esint
+intop              esint        001    0  mathop  &int;         esint
 iint               esint        003    0  mathop  &Int;         esint|amsmath
-iintop             esint        003    0  mathop  &Int;      esint
+iintop             esint        003    0  mathop  &Int;         esint
 iiint              esint        005    0  mathop  &tint;        esint|amsmath
 
-iiintop            esint        005    0  mathop  &tint;      esint
+iiintop            esint        005    0  mathop  &tint;        esint
 iiiint             esint        007    0  mathop  &qint;        esint|amsmath
 
-iiiintop           esint        007    0  mathop  &qint;      esint
+iiiintop           esint        007    0  mathop  &qint;        esint
 oint               esint        011    0  mathop  &conint;      esint
 
 ointop             esint        011    0  mathop  &conint;      esint
 oiint              esint        013    0  mathop  &Conint;      esint
 oiintop            esint        013    0  mathop  &Conint;      esint
-sqint              esint        015    0  mathop  x      esint
-sqintop            esint        015    0  mathop  x      esint
-sqiint             esint        017    0  mathop  x      esint
-sqiintop           esint        017    0  mathop  x      esint
-dotsint            esint        019    0  mathop  &int;&ctdot;&int;      esint
-dotsintop          esint        019    0  mathop  &int;&ctdot;&int;      esint
-ointctrclockwise   esint        023    0  mathop  &awconint;      esint
-ointctrclockwiseop esint        023    0  mathop  &awconint;      esint
-ointclockwise      esint        025    0  mathop  &cwconint;      esint
-ointclockwiseop    esint        025    0  mathop  &cwconint;      esint
+sqint              esint        015    0  mathop  x             esint
+sqintop            esint        015    0  mathop  x             esint
+sqiint             esint        017    0  mathop  x             esint
+sqiintop           esint        017    0  mathop  x             esint
+dotsint            esint        019    0  mathop  &int;&ctdot;&int; esint
+dotsintop          esint        019    0  mathop  &int;&ctdot;&int; esint
+ointctrclockwise   esint        023    0  mathop  &awconint;    esint
+ointctrclockwiseop esint        023    0  mathop  &awconint;    esint
+ointclockwise      esint        025    0  mathop  &cwconint;    esint
+ointclockwiseop    esint        025    0  mathop  &cwconint;    esint
 else
-int                cmex          82  242  mathop  &int;  esint
-intop              cmex          82  242  mathop  &int;  esint
+int                cmex          82  242  mathop  &int;         esint
+intop              cmex          82  242  mathop  &int;         esint
 iint               wasy         115    0  mathop  &Int;         esint|amsmath
-iintop             wasy         115    0  mathop  &Int      esint
+iintop             wasy         115    0  mathop  &Int          esint
 iiint              wasy         116    0  mathop  &tint;        esint|amsmath
 
-iiintop            wasy         116    0  mathop  &tint;      esint
+iiintop            wasy         116    0  mathop  &tint;        esint
 \def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint|amsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
@@ -1033,22 +1043,22 @@ oiintop            wasy         118    0  mathop  &Conint;      esint
 \def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
 endif
 
-varointclockwise   esint        027    0  mathop  &cwconint;      esint
-varointclockwiseop esint        027    0  mathop  &cwconint;      esint
-varointctrclockwise esint       029    0  mathop  &awconint;      esint
-varointctrclockwiseop esint     029    0  mathop  &awconint;      esint
+varointclockwise   esint        027    0  mathop  &cwconint;    esint
+varointclockwiseop esint        027    0  mathop  &cwconint;    esint
+varointctrclockwise esint       029    0  mathop  &awconint;    esint
+varointctrclockwiseop esint     029    0  mathop  &awconint;    esint
 fint               esint        031    0  mathop  &#x2a0f;      esint
 fintop             esint        031    0  mathop  &#x2a0f;      esint
 varoiint           esint        033    0  mathop  &Conint;      esint
 varoiintop         esint        033    0  mathop  &Conint;      esint
-landupint          esint        035    0  mathop  x      esint
-landupintop        esint        035    0  mathop  x      esint
-landdownint        esint        037    0  mathop  x      esint
-landdownintop      esint        037    0  mathop  x      esint
+landupint          esint        035    0  mathop  x             esint
+landupintop        esint        035    0  mathop  x             esint
+landdownint        esint        037    0  mathop  x             esint
+landdownintop      esint        037    0  mathop  x             esint
 
 
 # From the amsmath package:
-\def\idotsint{\int\kern-3mu\cdots\kern-3mu\int}               amsmath
+\def\idotsint{\int\kern-3mu\cdots\kern-3mu\int}                 amsmath
 
 
 log                lyxblacktext  0   0 func     x
@@ -1125,12 +1135,14 @@ iffont cmsy
 \def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
 \def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
 \def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
-\def\implies{\Longrightarrow}                                     amsmath
+\def\implies{\Longrightarrow}                                   amsmath
+\def\impliedby{\Longleftarrow}                                  amsmath
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}
 \def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow}
 \def\models{\vert\kern-7mu\lyxeq}
 else
-\def\implies{=>}                                                  amsmath
+\def\implies{=>}                                                amsmath
+\def\impliedby{<=}                                              amsmath
 endif
 iffont cmm
 \def\hookrightarrow{\lhook\kern-12mu\rightarrow}
@@ -1138,12 +1150,17 @@ iffont cmm
 \def\bowtie{\triangleright\kern-6mu\triangleleft}
 endif
 iffont msa
-\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}
-\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}
-\def\dasharrow{\dashrightarrow}
+\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}                amssymb
+\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}                  amssymb
+else
+\def\dashrightarrow{- - \rightarrow}                            amssymb
+\def\dashleftarrow{\leftarrow{} - -}                            amssymb
 endif
+\def\dasharrow{\dashrightarrow}                                 amssymb
 iffont msb
-\def\Join{\ltimes\kern-18.5mu\rtimes}
+\def\Join{\ltimes\kern-18.5mu\rtimes}                           amssymb
+else
+\def\Join{|x|}                                                  amssymb
 endif
 # Fixme: latin-1 chars in text file
 \def\AA{\AA}{Å}
