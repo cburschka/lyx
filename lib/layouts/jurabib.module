@@ -58,18 +58,21 @@ CiteFormat authoryear
 	!sep ;
 	!close )
 
-	!cite %!shortauthor%%!textbefore2%%!textafter2%%!nextcite%
-	!citetitle %!shortauthor%%!textbefore2%%!shorttitle%%!textafter2%%!nextcitetitle%
-	!citet %!textbefore%%!shortauthor% %!open%%!year%%!textafter%%!close%%!nextcitet%
-	!citep %!open%%!citealp%%!close%
-	!citealt %!textbefore%%!shortauthor% %!year%%!textafter%%!nextcitealt%
-	!citealp %!textbefore%%!shortauthor%, %!year%%!textafter%%!nextcitealp%
-	!citeauthor %!textbefore%%!shortauthor%%!textafter%%!nextauthor%
-	!citeyear %!textbefore%%!year%%!textafter%%!nextyear%
-	!citeyearpar %!textbefore%%!open%%!year%%!close%%!textafter%%!nextyearpar%
+	!startlink {!<a href='#LyXCite-%key%'>!}
+	!endlink {!</a>!}
 
-	!nextcite {%next%[[%!sep% %!shortauthor%%!textafter2%%!nextcite%]]}
-	!nextcitetitle {%next%[[%!sep% %!shortauthor%%!shorttitle%%!textafter2%%!nextcitetitle%]]}
+	!cite %!startlink%%!shortauthor%%!endlink%%!textbefore2%%!textafter2%%!nextcite%
+	!citetitle %!startlink%%!shortauthor%%!endlink%%!textbefore2%%!shorttitle%%!textafter2%%!nextcitetitle%
+	!citet %!textbefore%%!startlink%%!shortauthor%%!endlink% %!open%%!year%%!textafter%%!close%%!nextcitet%
+	!citep %!open%%!citealp%%!close%
+	!citealt %!textbefore%%!startlink%%!shortauthor% %!year%%!endlink%%!textafter%%!nextcitealt%
+	!citealp %!textbefore%%!startlink%%!shortauthor%, %!year%%!endlink%%!textafter%%!nextcitealp%
+	!citeauthor %!textbefore%%!startlink%%!shortauthor%%!endlink%%!textafter%%!nextauthor%
+	!citeyear %!textbefore%%!startlink%%!year%%!endlink%%!textafter%%!nextyear%
+	!citeyearpar %!textbefore%%!open%%!startlink%%!year%%!endlink%%!close%%!textafter%%!nextyearpar%
+
+	!nextcite {%next%[[%!sep% %!startlink%%!shortauthor%%!endlink%%!textafter2%%!nextcite%]]}
+	!nextcitetitle {%next%[[%!sep% %!startlink%%!shortauthor%%!endlink%%!shorttitle%%!textafter2%%!nextcitetitle%]]}
 	!nextcitet {%next%[[%!sep% %!citet%]]}
 	!nextcitealt {%next%[[%!sep% %!citealt%]]}
 	!nextcitealp {%next%[[%!sep% %!citealp%]]}

@@ -27,7 +27,10 @@ CiteFormat default
 	!sep ,
 	!close ]
 
-	!cite {%label%[[%label%]][[#%key%]]}%!nextcite%
+	!startlink {!<a href='#LyXCite-%key%'>!}
+	!endlink {!</a>!}
+
+	!cite %!startlink%{%label%[[%label%]][[#%key%]]}%!endlink%%!nextcite%
 
 	!nextcite {%next%[[%!sep% %!cite%]]}
 	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}

@@ -49,9 +49,12 @@ CiteFormat default
 	!sep ,
 	!close ]
 
-	!nextauthor {%next%[[%!sep% %!abbrvauthor%%!nextauthor%]]}
+	!startlink {!<a href='#LyXCite-%key%'>!}
+	!endlink {!</a>!}
+
+	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
-	!nextyear {%next%[[%!sep% %!year%%!nextyear%]]}
+	!nextyear {%next%[[%!sep% %!startlink%%!year%%!endlink%%!nextyear%]]}
 
 	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
 	!textbefore {%textbefore%[[%textbefore% ]]}
@@ -61,14 +64,14 @@ CiteFormat default
 	# cite styles
 	citet %!citet%%!textafter%%!close%
 	citealt %!citealt%%!textafter%
-	citeyearpar %!open%%!textbefore%%!year%%!nextyear%%!textafter%%!close%
+	citeyearpar %!open%%!textbefore%%!startlink%%!year%%!endlink%%!nextyear%%!textafter%%!close%
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
 End
 
 CiteFormat authoryear
-	!citet %!abbrvauthor% %!open%%!textbefore%%!year%%!nextcitet%
-	!citealt %!abbrvauthor% %!textbefore%%!year%%!nextcitealt%
-	!citealp %!abbrvauthor%, %!year%%!nextcitealp%
+	!citet %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nextcitet%
+	!citealt %!startlink%%!abbrvauthor% %!textbefore%%!year%%!endlink%%!nextcitealt%
+	!citealp %!startlink%%!abbrvauthor%, %!year%%!endlink%%!nextcitealp%
 
 	!nextcitet {%next%[[%!close%%!sep% %!citet%]]}
 	!nextcitealt {%next%[[%!sep% %!citealt%]]}
@@ -77,24 +80,24 @@ CiteFormat authoryear
 	cite %!citet%%!textafter%%!close%
 	citep %!open%%!textbefore%%!citealp%%!textafter%%!close%
 	citealp %!textbefore%%!citealp%%!textafter%
-	citeauthor %!abbrvauthor%%!nextauthor%%!textafter%
-	citeyear %!year%%!nextyear%%!textafter%
+	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%%!textafter%
+	citeyear %!startlink%%!year%%!endlink%%!nextyear%%!textafter%
 End
 
 CiteFormat numerical
-	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[#%key%]]}%!nextcitet%
-	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[#%key%]]}%!nextcitealt%
+	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitet%
+	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitealt%
 
-	!hashkey {%dialog%[[#ID]][[#%key%%!nexthashkey%]]}
+	!hashkey {%dialog%[[#ID]][[%!startlink%#%key%%!endlink%%!nexthashkey%]]}
 
 	!nextcitet {%next%[[%!close%%!sep% %!citet%]]}
 	!nextcitealt {%next%[[%!sep% %!citealt%]]}
 	!nexthashid {%next%[[%!sep% #ID%!nexthashid%]]}
-	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}
+	!nexthashkey {%next%[[%!sep% %!startlink%#%key%%!endlink%%!nexthashkey%]]}
 
 	cite %!open%%!textbefore%%!hashkey%%!textafter%%!close%
 	citep %!open%%!textbefore%%!hashkey%%!textafter%%!close%
 	citealp %!textbefore%%!hashkey%%!textafter%
-	citeauthor %!abbrvauthor%%!nextauthor%
-	citeyear %!year%%!nextyear%
+	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%
+	citeyear %!startlink%%!year%%!endlink%%!nextyear%
 End
