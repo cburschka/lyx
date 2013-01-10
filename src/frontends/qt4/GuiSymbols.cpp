@@ -275,11 +275,12 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	setFocusProxy(symbolsLW);
 
 	symbolsLW->setViewMode(QListView::IconMode);
-	symbolsLW->setUniformItemSizes(true);
 	// increase the display size of the symbols a bit
 	QFont font= symbolsLW->font();
 	int size = font.pointSize() + 3;
 	font.setPointSize(size);
+	QFontMetrics fm(font);
+	symbolsLW->setGridSize(QSize(fm.maxWidth() + 2, fm.height() + 2));
 	symbolsLW->setFont(font);
 	symbolsLW->setModel(model_);
 }
