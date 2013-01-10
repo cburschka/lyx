@@ -228,7 +228,7 @@ inline docstring wrapCitation(docstring const & key,
 		return content;
 	// we have to do the escaping here, because we will ultimately
 	// write this as a raw string, so as not to escape the tags.
-	return "<a href='#" + key + "'>" +
+	return "<a href='#LyXCite-" + key + "'>" +
 			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
 }
 

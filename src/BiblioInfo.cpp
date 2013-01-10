@@ -454,10 +454,10 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					ret += trans;
 				} else {
 					docstring const val = getValueForKey(key, xref);
-					if (richtext)
+					if (richtext && !scanning_rich)
 						ret += from_ascii("<span class=\"bib-" + key + "\">");
 					ret += val;
-					if (richtext)
+					if (richtext && !scanning_rich)
 						ret += from_ascii("</span>");
 				}
 			} else {
