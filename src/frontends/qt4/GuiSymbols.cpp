@@ -275,7 +275,6 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	setFocusProxy(symbolsLW);
 
 	symbolsLW->setViewMode(QListView::IconMode);
-	symbolsLW->setUniformItemSizes(true);
 	// increase the display size of the symbols a bit
 	QFont font= symbolsLW->font();
 	int size = font.pointSize() + 3;
