@@ -54,7 +54,8 @@ Format 1
 \bind "C-q"                    "self-insert \""
 #bind "C-r"                    "------"
 \bind "C-s"                    "dialog-show findreplace"
-\bind "M-~S-percent"		"dialog-show findreplace"
+\bind "C-S-s"                  "dialog-show findreplaceadv"
+\bind "M-~S-percent"           "dialog-show findreplaceadv"
 
 # should be "chars-transpose" (swaps two chars)
 #bind "C-t"                    "------"
