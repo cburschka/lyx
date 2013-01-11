@@ -2447,7 +2447,7 @@ void LyXAction::init()
                matches all note insets, while "Note:Note" only matches LyX
                yellow note insets.
  * \li Sample: Remove all index insets: \n
-	           inset-forall Index delete-char-forward \n
+	           inset-forall Index char-delete-forward \n
                Close all Notes (also works for a particular branch, for example): \n
 	           inset-forall Note inset-toggle close \n
                Transform all yellow notes to comments \n
