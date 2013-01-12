@@ -45,7 +45,16 @@ ParamInfo InsetCitation::param_info_;
 
 InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
-{}
+{
+	buffer().removeBiblioTempFiles();
+}
+
+
+InsetCitation::~InsetCitation()
+{
+	if (isBufferLoaded())
+		buffer().removeBiblioTempFiles();
+}
 
 
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
@@ -104,8 +113,10 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 
 void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	if (cmd.action() == LFUN_INSET_MODIFY)
+	if (cmd.action() == LFUN_INSET_MODIFY) {
+		buffer().removeBiblioTempFiles();
 		cache.recalculate = true;
+	}
 	InsetCommand::doDispatch(cur, cmd);
 }
 
