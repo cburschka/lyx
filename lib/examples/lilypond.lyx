@@ -41,6 +41,7 @@ lilypond
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue,urlcolor=blue,pdfstartview=XYZ"
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -84,6 +85,10 @@ LilyPond-book and LyX
 
 \begin_layout Author
 The LyX Team
+\end_layout
+
+\begin_layout Date
+Version 2.0.x
 \end_layout
 
 \begin_layout Abstract
@@ -221,6 +226,11 @@ status open
 
 \begin_layout Plain Layout
 
+[staffsize=28]
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
 relative c'' {
@@ -253,6 +263,10 @@ begin{lilypond}
 \end_layout
 
 \begin_layout LyX-Code
+[staffsize=28]
+\end_layout
+
+\begin_layout LyX-Code
 
 \backslash
 relative c'' {
@@ -273,8 +287,27 @@ end{lilypond}
 \end_layout
 
 \begin_layout Standard
-This code is not, in fact, processed by LaTeX, but is preprocessed by LilyPond-b
-ook, which creates the graphics files and includes them in the LaTeX document
+What appear first inside square brackets are options to pass to LilyPond-book.
+ Here, we set the dimension of the staff to 28
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ Other options can be added by separating them by a comma, for example:
+ 
+\family typewriter
+[staffsize=28,verbatim]
+\family default
+.
+ A list of music fragment options is available in the LilyPond documentation.
+ This whole block can be omitted when the default settings are desired.
+\end_layout
+
+\begin_layout Standard
+What follows after the options block is the textual representation in LilyPond
+ syntax of a musical fragment.
+ This code is not, in fact, processed by LaTeX, but is preprocessed by LilyPond-
+book, which creates the graphics files and includes them in the LaTeX document
  by replacing the above with a 
 \family typewriter
 
@@ -304,7 +337,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+[staffsize=12] 
 \backslash
 markup { 
 \backslash
