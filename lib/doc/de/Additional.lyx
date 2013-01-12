@@ -40,17 +40,6 @@
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
-% Prüfung auf benötigte LaTeXPakete
-\usepackage{ifthen}
-
-% für textumflossenen Bilder/Tabellen
-% Prüfung auf picinpar
-\newboolean{picinpar}
-\IfFileExists{picinpar.sty}
- {\usepackage{picinpar}
-  \setboolean{picinpar}{true}}
- {\setboolean{picinpar}{false}}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -98,7 +87,7 @@ End
 \spacing single
 \use_hyperref true
 \pdf_title "Handbuchergänzungen"
-\pdf_author "LyX Team, deutsche Übersetzung: Hartmut Haase"
+\pdf_author "LyX Team, deutsche Übersetzung: Hartmut Haase und Uwe Stöhr"
 \pdf_subject "LyX-Dokumentation, Benutzerhandbuch, Ergänzungen"
 \pdf_keywords "LyX, Dokumentation"
 \pdf_bookmarks true
@@ -106,12 +95,12 @@ End
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
@@ -123,6 +112,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -19022,7 +19012,11 @@ prüfen
 chktex
 \family default
  installiert ist.
- Sie können es von CTAN beziehen, 
+ Sie können es von CTAN beziehen,
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
@@ -19302,8 +19296,7 @@ Werkzeuge
 \SpecialChar \menuseparator
 
 \family sans
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
@@ -19471,7 +19464,11 @@ Geschütztes
 
 Leerzeichen
 \family default
- oder 
+ oder
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 Strg+Leertaste
 \family default

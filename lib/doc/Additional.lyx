@@ -98,7 +98,7 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
@@ -110,6 +110,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -8826,9 +8827,15 @@ Final Caveat
 
 \begin_layout Standard
 Your mileage may vary.
- I've now had papers published by both ApJ and AJ that have had 98% of the
- effort done in LyX; the last 2% was the LaTeX post-processing and a few
- cleanups.
+ I've now had papers published by both ApJ and AJ that have had 98
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the effort done in LyX; the last 2
+\begin_inset space \thinspace{}
+\end_inset
+
+% was the LaTeX post-processing and a few cleanups.
  I have had no trouble with the submission process, and I'm sure the journals
  were never aware that there might be a difference.
  So, go forth and publish!
@@ -10978,11 +10985,7 @@ LaTeX
 \begin_inset Quotes eld
 \end_inset
 
-
-\family typewriter
 %
-\family default
-
 \begin_inset Quotes erd
 \end_inset
 
@@ -19077,7 +19080,11 @@ Edit
 \end_layout
 
 \begin_layout Standard
-RCS command that is run: 
+RCS command that is run:
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 ci -q -u -i -t-"<initial description>" <file-name>
 \end_layout
@@ -19178,7 +19185,11 @@ Show History
 
 \begin_layout Standard
 This shows the complete history of the RCS document.
- The output of 
+ The output of
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 rlog <file-name>
 \family default
@@ -20706,8 +20717,9 @@ C:
 new project 
 \family default
 in Windows Explorer, right click it, and select 
-\family typewriter
-TortoiseSVN > Repo-browser
+\family sans
+TortoiseSVN\SpecialChar \menuseparator
+Repo-browser
 \family default
 .
  If necessary, adjust the URL for the repository, then click OK.
@@ -20716,9 +20728,8 @@ TortoiseSVN > Repo-browser
 \begin_layout Enumerate
 Right click the level of the repository under which you want to place the
  new project folder (typically the top level) and click 
-\family typewriter
-Create folder\SpecialChar \ldots{}
-
+\family sans
+Create folder
 \family default
  Supply a name for the project folder and click OK.
  Add a message for the log file if desired, then click OK again.
@@ -20758,24 +20769,13 @@ new project.
 \begin_layout Enumerate
 Create or open your document in LyX and click 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-egister.
+Register.
  
 \family default
 Add a log message and click OK to commit the document to version control.
@@ -20784,15 +20784,8 @@ Add a log message and click OK to commit the document to version control.
 \begin_layout Standard
 From this point onward, you should have full functionality in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -20992,8 +20985,15 @@ It will usually take a lot of time to get exact command right and it depends
 
 \end_deeper
 \begin_layout Enumerate
-Checkout the SVN archive, e.g.
- 
+Checkout the SVN archive, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -21846,16 +21846,36 @@ build-script
  that you can place in a directory on your path:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 #!/bin/sh
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\family sans
 #
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\family sans
 notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -21867,7 +21887,11 @@ Flags
 \begin_inset Quotes erd
 \end_inset
 
- which is to be set to 
+ which is to be set to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -22171,7 +22195,11 @@ build-script $$i
 \begin_inset Quotes erd
 \end_inset
 
-, with Flags set to 
+, with Flags set to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -22226,8 +22254,24 @@ Edit Sources
  to:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22680,6 +22724,13 @@ You can have more than 3
 \end_inset
 
 columns if you want to, but that might not be very pleasant for the eye.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

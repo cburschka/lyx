@@ -99,7 +99,7 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
@@ -111,6 +111,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Índice
 \shortcut idx
 \color #008000
@@ -19198,7 +19199,11 @@ LaTeX
 \family sans
 ChkTeX
 \family default
- (normalmente se ubica en 
+ (normalmente se ubica en
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 /usr/local/share/chktexrc
 \family default
@@ -20734,7 +20739,11 @@ Después se te pide interactivamente una descripción inicial del documento.
 \end_layout
 
 \begin_layout Standard
-El comando CVS que es ejecutado: 
+El comando CVS que es ejecutado:
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 cvs -q add -m
 \begin_inset Quotes erd
@@ -21063,7 +21072,11 @@ Mostrar historial
 
 \begin_layout Standard
 Muestra el historial completo del documento CVS.
- La salida de 
+ La salida de
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 cvs log 
 \begin_inset Quotes eld
@@ -21383,7 +21396,11 @@ Mostrar historial
 
 \begin_layout Standard
 Muestra el historial completo del documento SVN.
- La salida de 
+ La salida de
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 svn log 
 \begin_inset Quotes eld
@@ -22329,7 +22346,10 @@ Descarga el archivo SVN, p.
 \end_inset
 
 ej.
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -23068,7 +23088,11 @@ He de apuntar que también puedes usar la estructura
 \begin_layout Standard
 Para ver un ejemplo de esta construcción y la salida con la referencia cruzada
  generada, puedes ver la programación literaria en python contenida en el
- archivo 
+ archivo
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 \emph on
 LIBDIR
@@ -23260,7 +23284,11 @@ La primera parte, que se especifica en el campo
 \family sans
 Convertidor
 \family default
-, debería contener 
+, debería contener
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes fld
 \end_inset
 
@@ -23310,15 +23338,7 @@ build-script
 \end_layout
 
 \begin_layout LyX-Code
-notangle
-\begin_inset Formula $ $
-\end_inset
-
-
-\begin_inset Formula $ $
-\end_inset
-
--Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
 \end_layout
 
 \begin_layout Standard
@@ -23452,11 +23472,7 @@ build-script
 \begin_inset Newline newline
 \end_inset
 
-if [
-\begin_inset Formula $ $
-\end_inset
-
--z "${NOWEB_SOURCE}" ]
+if [ -z "${NOWEB_SOURCE}" ]
 \begin_inset Newline newline
 \end_inset
 
@@ -23797,20 +23813,9 @@ ddd
 \family default
  se puede definir accediendo al diálogo 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-referencias\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-elpers
+Editar\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Helpers
 \family default
  cambiando la entrada 
 \family sans
@@ -23832,8 +23837,24 @@ Edit Sources
 :
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23883,7 +23904,11 @@ Tubería
 
 LyXServer
 \family default
- una ruta como 
+ una ruta como
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes fld
 \end_inset
 

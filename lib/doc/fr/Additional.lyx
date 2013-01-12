@@ -99,7 +99,7 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
@@ -111,6 +111,7 @@ End
 \paperorientation portrait
 \suppress_date false
 \use_refstyle 1
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -19052,7 +19053,11 @@ Comment l'utiliser
 \end_layout
 
 \begin_layout Standard
-Si le programme est installé, l'employer est un jeu d'enfant : faites 
+Si le programme est installé, l'employer est un jeu d'enfant : faites
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 Outils\SpecialChar \menuseparator
 Correction
@@ -20522,7 +20527,11 @@ Modifiable
 \end_layout
 
 \begin_layout Standard
-En arrière-plan, la commande RCS qui a été lancée est 
+En arrière-plan, la commande RCS qui a été lancée est
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 ci -q -u -i -t-\SpecialChar \-
 "<description_\SpecialChar \-
@@ -22164,7 +22173,11 @@ mixed revision, modified, switched working copy
 
 \lang english
 file revision information.
- The result comes from parsing the output of 
+ The result comes from parsing the output of
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -22481,8 +22494,9 @@ C:
 new project 
 \family default
 in Windows Explorer, right click it, and select 
-\family typewriter
-TortoiseSVN > Repo-browser
+\family sans
+TortoiseSVN\SpecialChar \menuseparator
+Repo-browser
 \family default
 .
  If necessary, adjust the URL for the repository, then click OK.
@@ -22493,11 +22507,10 @@ TortoiseSVN > Repo-browser
 \lang english
 Right click the level of the repository under which you want to place the
  new project folder (typically the top level) and click 
-\family typewriter
-Create folder\SpecialChar \ldots{}
-
+\family sans
+Create folder 
 \family default
- Supply a name for the project folder and click OK.
+Supply a name for the project folder and click OK.
  Add a message for the log file if desired, then click OK again.
  The new project folder should appear in the repository.
  Finally, click OK again to exit the repository browser.
@@ -22512,8 +22525,7 @@ C:
 \backslash
 new project
 \family default
-, this time selecting SVN Checkout\SpecialChar \ldots{}
- Select the URL of the project folder
+, this time selecting SVN Checkout Select the URL of the project folder
  you just created in the repository, and set the checkout directory to 
 \family typewriter
 C:
@@ -22775,8 +22787,15 @@ Subversion
 
 \end_inset
 
-, section [tunnels], setup ssh command, e.g.
- 
+, section [tunnels], setup ssh command, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -22811,8 +22830,15 @@ It will usually take a lot of time to get exact command right and it depends
 \begin_layout Enumerate
 
 \lang english
-Checkout the SVN archive, e.g.
- 
+Checkout the SVN archive, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -24209,8 +24235,24 @@ ddd
  sur :
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
