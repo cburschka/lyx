@@ -1951,6 +1951,7 @@ dist_layouts_DATA =\
 	layouts/scrlttr2.layout \
 	layouts/scrreprt.layout \
 	layouts/seminar.layout \
+	layouts/shapepar.module \
 	layouts/siamltex.layout \
 	layouts/sigplanconf.layout \
 	layouts/simplecv.layout \

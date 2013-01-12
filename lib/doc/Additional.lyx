@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 447
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass scrbook
@@ -33,12 +33,8 @@
  \cleardoublepage
  \pagenumbering{arabic}}
 
-% used for multi-column text
-\usepackage{multicol}
-
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
-\usepackage{enumitem}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -47,6 +43,7 @@ logicalmkup
 theorems-ams
 theorems-ams-extended
 multicol
+shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -108,6 +105,8 @@ End
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -131,12 +130,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 819523532 "Kayvan Sylvan" 
 \end_header
 
 \begin_body
@@ -17840,7 +17838,11 @@ TeX
 \family typewriter
 chktex
 \family default
- from CTAN, 
+ from CTAN,
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
@@ -20699,8 +20701,9 @@ C:
 new project 
 \family default
 in Windows Explorer, right click it, and select 
-\family typewriter
-TortoiseSVN > Repo-browser
+\family sans
+TortoiseSVN\SpecialChar \menuseparator
+Repo-browser
 \family default
 .
  If necessary, adjust the URL for the repository, then click OK.
@@ -20709,9 +20712,8 @@ TortoiseSVN > Repo-browser
 \begin_layout Enumerate
 Right click the level of the repository under which you want to place the
  new project folder (typically the top level) and click 
-\family typewriter
-Create folder\SpecialChar \ldots{}
-
+\family sans
+Create folder
 \family default
  Supply a name for the project folder and click OK.
  Add a message for the log file if desired, then click OK again.
@@ -20751,24 +20753,13 @@ new project.
 \begin_layout Enumerate
 Create or open your document in LyX and click 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-egister.
+Register.
  
 \family default
 Add a log message and click OK to commit the document to version control.
@@ -20777,15 +20768,8 @@ Add a log message and click OK to commit the document to version control.
 \begin_layout Standard
 From this point onward, you should have full functionality in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -20831,7 +20815,7 @@ svn --version
 Choose an ssh client for Windows.
  There are several possibilities, we will use the one from Putty tools
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex URL
@@ -20985,8 +20969,15 @@ It will usually take a lot of time to get exact command right and it depends
 
 \end_deeper
 \begin_layout Enumerate
-Checkout the SVN archive, e.g.
- 
+Checkout the SVN archive, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -21450,78 +21441,21 @@ Typing code in
 
 \begin_layout Standard
 LyX enables you to write code with a layout named 
-\change_inserted 819523532 1353904450
-
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 819523532 1353904450
 Chunk
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted 819523532 1353904406
-
-\noun on
-Scrap
-\change_unchanged
-
-\noun default
 .
-\change_deleted 819523532 1353904396
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The equivalent Noweb term is 
-\begin_inset Quotes eld
-\end_inset
-
-Chunk
-\begin_inset Quotes erd
-\end_inset
-
-.
- For historical reasons, I got used to the term 
-\begin_inset Quotes eld
-\end_inset
-
-scrap
-\begin_inset Quotes erd
-\end_inset
-
- introduced by other literate tool named Nuweb, which I used for many years
- before rendering myself to Noweb.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- Noweb delimits 
-\change_deleted 819523532 1353904459
-scraps
-\change_inserted 819523532 1353904461
-chunks
-\change_unchanged
- like this:
+ Noweb delimits chunks like this:
 \end_layout
 
 \begin_layout LyX-Code
-<<My 
-\change_deleted 819523532 1353904469
-scrap
-\change_inserted 819523532 1353904470
-code
-\change_unchanged
->>=
+<<My code>>=
 \end_layout
 
 \begin_layout LyX-Code
@@ -21555,12 +21489,16 @@ e.
 
 LyX should be prevented from making any special interpretation of what has
  been written.
- This is handled by a special layout named 
-\change_deleted 819523532 1353904493
-Scrap
-\change_inserted 819523532 1353904494
+ This is also handled by 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
 Chunk
-\change_unchanged
+\end_layout
+
+\end_inset
+
 , that works like a normal paragraph but has a free spacing capability.
 \end_layout
 
@@ -21573,52 +21511,23 @@ As a special note, you can also use the
 \begin_inset Quotes erd
 \end_inset
 
- construct of Noweb in your 
-\change_deleted 819523532 1353904503
-scraps
-\change_inserted 819523532 1353904504
-chunks
-\change_unchanged
- to add items to Noweb's identifier cross-reference:
+ construct of Noweb in your chunks to add items to Noweb's identifier cross-refe
+rence:
 \end_layout
 
 \begin_layout LyX-Code
-<<My 
-\change_deleted 819523532 1353904516
-scrap
-\change_inserted 819523532 1353904517
-chunk
-\change_unchanged
->>=
-\change_inserted 819523532 1353904523
-
+<<My chunk>>=
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 819523532 1353904528
-  
-\change_unchanged
 def some_function(args):
-\change_inserted 819523532 1353904543
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 819523532 1353904543
- 
-\change_unchanged
    "This is the doc string for this function."
-\change_inserted 819523532 1353904550
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 819523532 1353904550
- 
-\change_unchanged
    print "My args: ", args
 \end_layout
 
@@ -21690,11 +21599,15 @@ literate
 Note that the only difference so far is in the name of the file, no special
  processing is required by LyX.
  Given that you formatted the code using the 
-\change_deleted 819523532 1353904586
-Scrap
-\change_inserted 819523532 1353904587
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
 Chunk
-\change_unchanged
+\end_layout
+
+\end_inset
+
  layout that, by itself, takes care of the business.
 \end_layout
 
@@ -21799,7 +21712,11 @@ Converter
 \begin_inset Quotes erd
 \end_inset
 
- setting, should be set to 
+ setting, should be set to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -21812,7 +21729,10 @@ build-script $$i
 \end_inset
 
 .
- This basically means that LyX will call 
+\begin_inset Newline newline
+\end_inset
+
+This basically means that LyX will call 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21837,16 +21757,43 @@ build-script
  that you can place in a directory on your path:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 #!/bin/sh
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\family sans
 #
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\family sans
 notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -21858,7 +21805,11 @@ Flags
 \begin_inset Quotes erd
 \end_inset
 
- which is to be set to 
+ which is to be set to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -21871,7 +21822,10 @@ parselog=$$s/scripts/listerrors
 \end_inset
 
 .
- This will run any errors that are generated by the 
+\begin_inset Newline newline
+\end_inset
+
+This will run any errors that are generated by the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21900,13 +21854,7 @@ Noweb->Program
  conversion may produce several files, and so most of these would then be
  deleted when LyX was closed.
  This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script 
-\change_deleted 819523532 1353904613
-scrap
-\change_inserted 819523532 1353904614
-chunk
-\change_unchanged
- can place the generated files in that location.
+ the build-script chunk can place the generated files in that location.
 \end_layout
 
 \begin_layout Paragraph
@@ -21922,21 +21870,9 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
- 
-\change_deleted 819523532 1353904625
-scrap
-\change_inserted 819523532 1353904625
-chunk
-\change_unchanged
-.
+ chunk.
  Generally, the instructions for building your program should be embedded
- in a 
-\change_deleted 819523532 1353904630
-scrap
-\change_inserted 819523532 1353904630
-chunk
-\change_unchanged
- of its own.
+ in a chunk of its own.
  The noweb-specific 
 \begin_inset Quotes eld
 \end_inset
@@ -21945,13 +21881,7 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
- above uses the notangle command to look for this 
-\change_deleted 819523532 1353904632
-scrap
-\change_inserted 819523532 1353904632
-chunk
-\change_unchanged
- (called 
+ above uses the notangle command to look for this chunk (called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21971,20 +21901,32 @@ sh
 \end_layout
 
 \begin_layout Standard
-Typically, such a 
-\change_deleted 819523532 1353904634
-scrap
-\change_inserted 819523532 1353904634
-chunk
-\change_unchanged
- would look something like this:
+Typically, such a chunk would look something like this:
 \end_layout
 
 \begin_layout LyX-Code
-<<build-script>>=#!/bin/shif [ -z "${NOWEB_SOURCE}" ]then  NOWEB_SOURCE=myfile.nw
-fi[...
- code to extract files ...
- use NOWEB_OUTPUT_DIR here ...][...
+<<build-script>>=
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/shif [ -z "${NOWEB_SOURCE}" ] then
+\end_layout
+
+\begin_layout LyX-Code
+NOWEB_SOURCE=myfile.nwfi[...
+\end_layout
+
+\begin_layout LyX-Code
+code to extract files
+\end_layout
+
+\begin_layout LyX-Code
+...
+ use NOWEB_OUTPUT_DIR here ...]
+\end_layout
+
+\begin_layout LyX-Code
+[...
  code to compile files ...]@
 \end_layout
 
@@ -22157,7 +22099,11 @@ build-script $$i
 \begin_inset Quotes erd
 \end_inset
 
-, with Flags set to 
+, with Flags set to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -22212,8 +22158,24 @@ Edit Sources
  to:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22291,14 +22253,8 @@ LaTeX
 LyX-Code
 \family default
 , and 
-\change_deleted 819523532 1353904643
-
 \family sans
-Scrap
-\change_inserted 819523532 1353904651
 Chunk
-\change_unchanged
-
 \family default
 .
  The last one is a short cut to the 
@@ -22364,13 +22320,7 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout 
-\change_deleted 819523532 1353904661
-Scrap
-\change_inserted 819523532 1353904668
-Chunk
-\change_unchanged
-"
+  Icon "layout Chunk"
 \end_layout
 
 \begin_layout LyX-Code
@@ -22420,19 +22370,9 @@ Preferences
 \family default
 .
  One of the things that bothers people is the LaTeX font color.
- The default color is red, since the 
-\change_deleted 819523532 1353904675
-scrap
-\change_inserted 819523532 1353904675
-chunk
-\change_unchanged
-s uses LaTeX font, and there is a lot of 
-\change_deleted 819523532 1353904682
-scrap
-\change_inserted 819523532 1353904682
-chunk
-\change_unchanged
-s in literate documents, you may get tired of seeing everything in red.
+ The default color is red, since the chunks uses LaTeX font, and there is
+ a lot of chunks in literate documents, you may get tired of seeing everything
+ in red.
  You can change it by going to the tabs 
 \family sans
 Look&Feel
@@ -22456,8 +22396,24 @@ LyX and knitr/Sweave
 \end_layout
 
 \begin_layout Standard
-Support for knitr and Sweave is documented in the knitr.lyx example file
- and in the Sweave manual (in the Help > Specific Manuals submenu).
+Support for 
+\family sans
+knitr
+\family default
+ and 
+\family sans
+Sweave
+\family default
+ is documented in the 
+\emph on
+knitr.lyx
+\emph default
+ example file and in the Sweave manual (menu 
+\family sans
+Help\SpecialChar \menuseparator
+Specific Manuals
+\family default
+).
 \end_layout
 
 \begin_layout Chapter
@@ -22523,16 +22479,6 @@ Modules
 \series bold
 multicol
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! multicol
-\end_layout
-
-\end_inset
-
  installed.
 \end_layout
 
@@ -22779,16 +22725,6 @@ For more features of multiple columns, have a look at the documentation
 \series bold
 multicol
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! multicol
-\end_layout
-
-\end_inset
-
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -23570,246 +23506,471 @@ Non-standard Paragraph Shapes
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newdimen
-\backslash
-varunit 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-varunit}{4.5in}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-parshape 19 0.45
-\backslash
-varunit 0.332
-\backslash
-varunit
+LaTeX as well as any other text processor uses by default rectangular paragraphs.
+ For special cases like for example posters, invitation cards or poems you
+ can modify the paragraph shape to one of your choice.
+ This can be done by using the LaTeX-package 
+\series bold
+shapepar
+\series default
+ which is loaded by using in the document settings the module 
+\family sans
+Custom paragraph shapes
+\family default
+.
 \end_layout
 
-\begin_layout Plain Layout
-
-0.40
-\backslash
-varunit 0.300
-\backslash
-varunit
+\begin_layout Subsection
+Predefined shapes
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
-0.35
-\backslash
-varunit 0.293
-\backslash
-varunit
+\series bold
+shapepar
+\series default
+ provides the following shapes:
 \end_layout
 
-\begin_layout Plain Layout
-
-0.30
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.25
-\backslash
-varunit 0.317
-\backslash
-varunit
-\end_layout
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="3">
+<features rotate="0" booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="middle" width="16col%">
+<column alignment="center" valignment="middle" width="40col%">
+<column alignment="center" valignment="middle" width="35col%">
+<row endhead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-0.20
-\backslash
-varunit 0.342
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.15
-\backslash
-varunit 0.373
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.10
-\backslash
-varunit 0.410
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.05
-\backslash
-varunit 0.453
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.00
-\backslash
-varunit 0.500
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.05
-\backslash
-varunit 0.453
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.10
-\backslash
-varunit 0.410
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.15
-\backslash
-varunit 0.373
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.20
-\backslash
-varunit 0.342
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.25
-\backslash
-varunit 0.317
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.30
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.35
-\backslash
-varunit 0.293
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.40
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.45
-\backslash
-varunit 0.332
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
+Name
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-There are times when the tyranny of rectangular paragraphs must be overthrown.
- In such situations, a call to the delightful plain TeX command 
-\family typewriter
+\begin_layout Plain Layout
+Description
+\end_layout
 
-\backslash
-parshape
-\family default
- is called for.
- As you can see, completely arbitrary shapes can be laid out with a suitable
- set of line length definitions.
- While this parshape may look a bit silly and useless, one could conceive
- of situations such as finely tuned dropped capitals, word wrapping around
- non-rectangular graphics, etc.
- which will benefit from such handcrafting.
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Annotation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CDlabel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Circle with circular hole (in the size of a CD/DVD)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cannot be scaled, take care there is not too much text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Circle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Circle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fragile, calculation might fail
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diamond
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rhomboid (symbolizing a 
+\begin_inset Quotes eld
+\end_inset
+
+diamond
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heart
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heart-like shape
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hexagon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hexagon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nut
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nut for bolt (hexagon with circular hole)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Square
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Square
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Star
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Five-point star
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Candle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Burning candle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Drop down/up
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normal/reversed rain drop
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fragile, calculation might fail
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TeX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The TeX logo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Triangle up/down/
+\begin_inset Newline newline
+\end_inset
+
+left/right
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Triangles in different orientations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To use a shape for your paragraph, simply select it in LyX's pull-down box
+ for environments in the toolbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example paragraph in the shape of a nut:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
 \end_layout
 
 \begin_layout Standard
@@ -23820,49 +23981,495 @@ parshape
 \end_layout
 
 \begin_layout Standard
-The syntax is 
-\family typewriter
-
-\backslash
-parshape numlines #1indent #1length #2indent #2length \SpecialChar \ldots{}
- #nindent #nlength
-\family default
-, where 
-\family typewriter
-numlines
-\family default
- is the number of lines of text which define the paragraph.
- If there turn out to be fewer lines, the shape is truncated; if there are
- more, the excess lines have the same dimensions as the last line of the
- definition.
- The 
-\family typewriter
-#nindent
-\family default
- and 
-\family typewriter
-#nlength
-\family default
- entries specify the indentation of the line from the left margin, and the
- length of the line as measured from that point.
- The shape applies only to the current paragraph; everything is reset to
- normal for the next paragraph.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-end{sloppypar}
+\series bold
+Note
+\series default
+: shapepar paragraphs cannot run over a page break.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+shapepar
+\series default
+ takes care that the shape will always be preserved, no matter how much
+ text is in the paragraph.
+ Therefore the paragraph size changes with the amount of contained text.
+ This can lead to paragraph sizes exceeding the page margins.
+ To demonstrate the size scaling, here is the same example paragraph but
+ with twice as much text:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An exception is the shape 
+\family sans
+CDlabel
+\family default
+.
+ It cannot be scaled because it must fit the size of a CD/DVD.
+ Therefore the amount of text that fits into the shape is limited.
+\begin_inset Newline newline
+\end_inset
+
+The 
+\family sans
+drop
+\family default
+ shapes and the 
+\family sans
+circle
+\family default
+ shape are fragile, meaning that the calculation of their size can fail,
+ depending on the amount of text.
+ You will then get the LaTeX error 
+\begin_inset Quotes eld
+\end_inset
+
+Arithmetic overflow
+\begin_inset Quotes erd
+\end_inset
+
+.
+ In this case one can try to remove or add some text; if nothing works one
+ has to use another shape.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For shapes with tips you will maybe see that LaTeX's hyphenation routine
+ fails for text in the tips.
+ Therefore it is often necessary to add hyphenation points 
+\family sans
+(
+\begin_inset Info
+type  "shortcut"
+arg   "specialchar-insert hyphenation"
+\end_inset
+
+
+\family default
+) to the corresponding text parts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Shapepar paragraphs are always placed on the page that their left border
+ touches the left page margin.
+ You can therefore not use the paragraph dialog to align such paragraphs.
+ A solution is to put the paragraph into a minipage or parbox and align
+ the box.
+ The problem is hereby to find the right width for the box.
+ Because if it is too wide and you center the box, the paragraph is not
+ centered too because it sticks at the left side of the box.
+ So you might have to play a bit with the width until it fits.
+ Here are two triangular paragraphs, the first one is not aligned, the second
+ one is centered:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Triangle up
+
+\lang latin
+Lo\SpecialChar \-
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "42col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Triangle up
+
+\lang latin
+Lo\SpecialChar \-
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Custom shapes
+\end_layout
+
+\begin_layout Standard
+You can define any shape you want.
+ Doing this manually is a lot of work because every coordinate must be specified.
+ But there is a way to let the computer calculate the coordinates:
+\end_layout
+
+\begin_layout Enumerate
+Install the program 
+\begin_inset CommandInset href
+LatexCommand href
+name "Jpgfdraw"
+target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In 
+\family sans
+Jpgfdraw
+\family default
+ go to the menu 
+\family sans
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X/LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Set Normal Size
+\family default
+ and select the font size you are using in your document.
+ For example this document uses the size 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Enumerate
+Draw a shape.
+\end_layout
+
+\begin_layout Enumerate
+Use the menu 
+\family sans
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X/LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX\SpecialChar \menuseparator
+Shapepar
+\family default
+ to export the shape to coordinates.
+ In the appearing dialog use either the outline of your shape for the coordinate
+s or the path itself.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For more information see 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The coordinates are written into a TeX-file.
+ To use it for your LyX document
+\end_layout
+
+\begin_layout Enumerate
+Place the cursor before the first character of your paragraph (or into a
+ new empty one).
+\end_layout
+
+\begin_layout Enumerate
+Open in LyX the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Child
+\begin_inset space ~
+\end_inset
+
+Document
+\family default
+, select the file and use 
+\family sans
+Input
+\family default
+ as 
+\family sans
+Include Type.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: The changed shape only applies to the current paragraph; everything is
+ reset to normal for the next paragraph.
+ Therefore the shape definition file must be input into every paragraph
+ with the desired shape.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "SpecialParagraphShape.tex"
+
+\end_inset
+
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A tip:
+\series default
+ to draw complexer shapes in 
+\family sans
+Jpgfdraw
+\family default
+ you can draw the shape in a program of your choice and import the resulting
+ image to 
+\family sans
+Jpgfdraw
+\family default
+.
+ Then you only need to draw a line or spline along the outline of the image.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The module 
+\family sans
+Custom paragraph shapes
+\family default
+ also provides the two commands 
+\family sans
+shapepar
+\family default
+ and 
+\family sans
+Shapepar
+\family default
+ which can be used to define custom shapes coordinate by coordinate.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+These commands are internally used for all shapes described here.
+\end_layout
+
+\end_inset
+
+ For information how these styles are used and about further customization
+ possibilities, have a look at the documentation of the package 
+\series bold
+shapepar
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shapepar"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Bibliography
@@ -23881,12 +24488,20 @@ target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! multicol
 \end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "shapepar"
+
+\end_inset
+
+Documentation of the LaTeX-package 
+\begin_inset CommandInset href
+LatexCommand href
+name "shapepar"
+target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 
 \end_inset
 

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 431
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass scrbook
@@ -32,25 +32,11 @@
  \cleardoublepage
  \pagenumbering{arabic}}
 
-% used for multi-column text
-\usepackage{multicol}
-
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
-% Prüfung auf benötigte LaTeXPakete
-\usepackage{ifthen}
-
-% für textumflossenen Bilder/Tabellen
-% Prüfung auf picinpar
-\newboolean{picinpar}
-\IfFileExists{picinpar.sty}
- {\usepackage{picinpar}
-  \setboolean{picinpar}{true}}
- {\setboolean{picinpar}{false}}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -59,6 +45,7 @@ logicalmkup
 theorems-ams
 theorems-ams-extended
 multicol
+shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -83,13 +70,13 @@ End
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -120,6 +107,8 @@ End
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type numerical
@@ -9530,7 +9519,7 @@ Dokumentformat
 
 \begin_layout Subsubsection
 Dinge, die funktionieren, jedoch zusätzlicher Hinweise bedürfen
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -19030,7 +19019,11 @@ prüfen
 chktex
 \family default
  installiert ist.
- Sie können es von CTAN beziehen, 
+ Sie können es von CTAN beziehen,
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
@@ -19310,8 +19303,7 @@ Werkzeuge
 \SpecialChar \menuseparator
 
 \family sans
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
@@ -22714,8 +22706,9 @@ C:
 new project 
 \family default
 in Windows Explorer, right click it, and select 
-\family typewriter
-TortoiseSVN > Repo-browser
+\family sans
+TortoiseSVN\SpecialChar \menuseparator
+Repo-browser
 \family default
 .
  If necessary, adjust the URL for the repository, then click OK.
@@ -22726,9 +22719,8 @@ TortoiseSVN > Repo-browser
 \lang english
 Right click the level of the repository under which you want to place the
  new project folder (typically the top level) and click 
-\family typewriter
-Create folder\SpecialChar \ldots{}
-
+\family sans
+Create folder
 \family default
  Supply a name for the project folder and click OK.
  Add a message for the log file if desired, then click OK again.
@@ -22772,24 +22764,13 @@ new project.
 \lang english
 Create or open your document in LyX and click 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-egister.
+Register.
  
 \family default
 Add a log message and click OK to commit the document to version control.
@@ -22800,15 +22781,8 @@ Add a log message and click OK to commit the document to version control.
 \lang english
 From this point onward, you should have full functionality in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -23044,8 +23018,15 @@ It will usually take a lot of time to get exact command right and it depends
 \begin_layout Enumerate
 
 \lang english
-Checkout the SVN archive, e.g.
- 
+Checkout the SVN archive, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -23507,91 +23488,42 @@ Erstellen von Dokumentation und Quellcode
 \end_layout
 
 \begin_layout Paragraph
-Auswählen der Dokumentklasse
+
+\lang english
+Using the noweb module
 \end_layout
 
 \begin_layout Standard
-Wenn Sie LyX und NoWeb erfolgreich installiert haben, stehen Ihnen bei der
- Auswahl der Dokumentklasse drei weitere Klassen zur Auswahl:
-\end_layout
 
-\begin_layout Itemize
-
-\family sans
-Article (Noweb)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Book (Noweb)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Report (Noweb)
-\end_layout
-
-\begin_layout Standard
-Sie müssen eine davon verwenden, wenn Sie einen Text mit Literarischer Programmi
-erung erstellen wollen.
-\end_layout
-
-\begin_layout Standard
-Generell ist Literarische Programmierung nicht auf diese drei Klassen beschränkt
-, es können jederzeit weitere Klassen auf der Basis von bestehenden Stildateien
- wie etwa 
-\family sans
-letter
-\family default
- erstellt werden oder bestehende Klassen wie etwa 
-\family sans
-article
-\begin_inset space ~
+\lang english
+If you have installed Noweb and LyX successfully, whenever you open a new
+ document, after you have chosen its document class, use the Document->Settings
+ menu to add the 
+\begin_inset Quotes eld
 \end_inset
 
-(AMS)
-\family default
- ent\SpecialChar \-
-spre\SpecialChar \-
-chend angepasst werden.
- Die Beschränkung auf drei Klassen ist eine Folge des Wunsches, die Auswahlliste
- nicht übermäßig lang werden zu lassen.
- Falls Sie irgendwelche besonderen Wünsche haben, wenden Sie sich an 
-\noun on
-Kay\SpecialChar \-
-van
-\noun default
- 
-\noun on
-Sylvan
-\noun default
- (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-kayvan@sylvan.com
-\end_layout
-
+noweb
+\begin_inset Quotes erd
 \end_inset
 
-) und er wird versuchen, einen entsprechenden Eintrag zu bewirken oder Ihnen
- dabei helfen, das selber zu machen.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Es ist ziemlich einfach, Sie müssen lediglich eine vierzeilige Datei anlegen
- und die automatische LyX-Konfiguration starten.
-\end_layout
-
+ module.
+ If Noweb is correctly installed, when you click on the 
+\begin_inset Quotes eld
 \end_inset
 
- Gleiches gilt für den Fall, dass Sie ein anderes Programm als NoWeb verwenden
- wollen, auch dann müssen Sie eigene neue Dokumentklassen erstellen.
+Modules
+\begin_inset Quotes erd
+\end_inset
+
+ link, you will see the 
+\begin_inset Quotes eld
+\end_inset
+
+noweb
+\begin_inset Quotes erd
+\end_inset
+
+ module in the available list and you can add it to your document.
 \end_layout
 
 \begin_layout Paragraph
@@ -23600,42 +23532,25 @@ Die Eingabe von Programmcode
 
 \begin_layout Standard
 In LyX verwenden Sie zur Eingabe von Programmcode den Umgebungstyp 
-\family sans
-Scrap.
-\begin_inset Foot
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-Der entsprechende Terminus in NoWeb ist 
-\begin_inset Quotes gld
-\end_inset
-
 Chunk
-\begin_inset Quotes grd
-\end_inset
-
-.
- Die Bezeichnung 
-\begin_inset Quotes gld
-\end_inset
-
-Scrap
-\begin_inset Quotes grd
-\end_inset
-
- wurde aus einem anderen Programm, Nuweb, übernommen, das vor NoWeb lange
- Jahre verwendet wurde.
 \end_layout
 
 \end_inset
 
 
+\family sans
+.
+
 \family default
- NoWeb schließt derartige Eingaben so ein:
+ NoWeb schließt Chunks so ein:
 \end_layout
 
 \begin_layout LyX-Code
-<<Mein scrap>>=
+<<Mein Code>>=
 \end_layout
 
 \begin_layout LyX-Code
@@ -23670,82 +23585,22 @@ Das Problem dabei ist, dass alles, was zwischen
  steht, wörtlich genommen werden muss, das heißt LyX muss daran gehindert
  werden, die Eingabe in seiner Weise zu interpretieren und zu verändern.
  Aus diesem Grund gibt es den Umgebungstyp 
-\family sans
-Scrap
-\family default
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Chunk
+\end_layout
+
+\end_inset
+
 .
  Er verhält sich wie eine normale Absatzumgebung, bietet aber zusätzlich
  die Möglichkeit, Leerzeichen beliebig zu verwenden.
 \end_layout
 
 \begin_layout Standard
-Der Nachteil davon ist, dass aufeinanderfolgende Code-Absätze durch eine
- Leerzeile voneinander getrennt werden, sowohl im Quelltext wie auch in
- der gedruckten Dokumentation.
- Dies können Sie umgehen, indem Sie die einzelnen Zeilen mit 
-\family sans
-Strg+Ein\SpecialChar \-
-ga\SpecialChar \-
-be
-\family default
- anstelle von 
-\family sans
-Eingabe
-\family default
- abschließen.
- Das obige Beispiel sähe also so aus:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-In der gedruckten Version dieses Textes sehen Sie keinen Unterschied.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LyX-Code
-<<Mein scrap>>=
-\begin_inset Newline newline
-\end_inset
-
-  Code
-\begin_inset Newline newline
-\end_inset
-
-  Mehr Code
-\begin_inset Newline newline
-\end_inset
-
-  Noch mehr Code
-\begin_inset Newline newline
-\end_inset
-
-  @
-\end_layout
-
-\begin_layout Standard
-Bis auf die Unannehmlichkeit, 
-\family sans
-Strg+Eingabe
-\family default
- verwenden zu müssen, funktioniert dieses Format einwandfrei.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Es steht aber auf der Wunschliste des Autors, dies zu verbessern.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Als besonderer Hinweis: Sie können auch NoWebs 
+Hinweis: Sie können auch NoWebs 
 \begin_inset Quotes gld
 \end_inset
 
@@ -23754,29 +23609,35 @@ Als besonderer Hinweis: Sie können auch NoWebs
 \end_inset
 
 -Konstrukt in Ihren 
-\family sans
-Scrap
-\family default
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Chunk
+\end_layout
+
+\end_inset
+
 -Absätzen benutzen, um Einträge zu NoWebs Querverweisen hinzuzufügen:
 \end_layout
 
 \begin_layout LyX-Code
-<<Mein scrap>>=
-\begin_inset Newline newline
-\end_inset
+<<Mein Chunk>>=
+\end_layout
 
-  def eine_funktion(args):
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+def eine_funktion(args):
+\end_layout
 
-    "Dies ist die Beschreibung der Funktion."
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+   "Dies ist die Beschreibung der Funktion."
+\end_layout
 
-    print "My args: ", args
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+   print "My args: ", args
+\end_layout
 
+\begin_layout LyX-Code
 @ %def eine_funktion
 \end_layout
 
@@ -23789,8 +23650,7 @@ listerrors.lyx
  (
 \family sans
 Datei\SpecialChar \menuseparator
-Öffnen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Öffnen\SpecialChar \menuseparator
 Beispiele
 \family default
 ).
@@ -23858,9 +23718,15 @@ sion
 Der einzige Unterschied ist bislang der Dateiname, es ist also keinerlei
  Sonderbehandlung seitens LyX notwendig.
  Der Umgebungstyp 
-\family sans
-Scrap
-\family default
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Chunk
+\end_layout
+
+\end_inset
+
 , den Sie zum Formatieren des Programmcodes verwendet haben, sorgt für die
  korrekte Behandlung.
 \end_layout
@@ -24015,70 +23881,101 @@ build-script
 , die Sie in einem Verzeichnis in Ihrem Pfad einfügen können:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 #!/bin/sh
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\family sans
 #
 \end_layout
 
-\begin_layout LyX-Code
-notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+\begin_layout Standard
+
+\family sans
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-Der zweite Teil sind die 
-\family sans
-Extra
-\begin_inset space ~
+\begin_inset VSpace defskip
 \end_inset
 
-flags
-\family default
- für den Konverter, die auf 
-\family typewriter
-originaldir,parselog
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
- 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+The next part of the converter setting is the 
+\begin_inset Quotes gld
 \end_inset
 
-=listerrors
+Flags
+\begin_inset Quotes grd
+\end_inset
+
+ which is to be set to
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+parselog=$$s/scripts/listerrors
 \family default
- gesetzt werden müssen.
- Damit werden alle von 
-\family sans
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+This will run any errors that are generated by the 
+\begin_inset Quotes gld
+\end_inset
+
 build-script
-\family default
- erzeugten Fehler mit dem 
-\family typewriter
+\begin_inset Quotes grd
+\end_inset
+
+ process through the 
+\begin_inset Quotes gld
+\end_inset
+
 listerrors
-\family default
--Programm bearbeitet.
+\begin_inset Quotes grd
+\end_inset
+
+ program.
 \end_layout
 
 \begin_layout Standard
-Der Konverter sucht zuerst im Verzeichnis 
+
+\lang english
+The build will normally take place in LyX's temporary directory, so the
+ files produced by the conversion will be in that directory.
+ LyX will copy out what it regards as the `main' file, but the 
 \family typewriter
-~/.lyx/scripts
+Noweb->Program
 \family default
-, dann in 
-\family typewriter
-LyXDir/scripts
-\family default
- und dann im Pfad des 
-\family typewriter
-listerrors
-\family default
--Programms.
+ conversion may produce several files, and so most of these would then be
+ deleted when LyX was closed.
+ This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
+ the build-script chunk can place the generated files in that location.
 \end_layout
 
 \begin_layout Paragraph
@@ -24086,21 +23983,13 @@ Build-Befehle im Dokument
 \end_layout
 
 \begin_layout Standard
-Das letzte Stück für die Integration von LyX und NoWeb ist das 
-\family sans
-Scrap
-\family default
- 
+Das letzte Stück für die Integration von LyX und NoWeb ist das Chunk 
 \family typewriter
 build-script
 \family default
 .
- Im allgemeinen sollten die Befehle zum Erzeugen Ihres Programms in ein
- eigenes 
-\family sans
-Scrap
-\family default
- eingebettet sein.
+ Im allgemeinen sollten die Befehle zum Erzeugen Ihres Programms in einen
+ eigenen Chunk eingebettet sein.
  Das obige NoWeb-spezifische 
 \family typewriter
 build-script
@@ -24109,11 +23998,7 @@ build-script
 \family typewriter
 notangle
 \family default
--Befehl, um nach diesem 
-\family sans
-Scrap
-\family default
-, ge\SpecialChar \-
+-Befehl, um nach diesem Chunk, ge\SpecialChar \-
 nannt 
 \family typewriter
 build-script
@@ -24122,53 +24007,33 @@ build-script
 \end_layout
 
 \begin_layout Standard
-Solch ein 
-\family sans
-Scrap
-\family default
- sieht typischerweise so aus:
+Solch ein Chunk sieht typischerweise so aus:
 \end_layout
 
 \begin_layout LyX-Code
 <<build-script>>=
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-#!/bin/sh
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+#!/bin/shif [ -z "${NOWEB_SOURCE}" ] then
+\end_layout
 
+\begin_layout LyX-Code
+NOWEB_SOURCE=myfile.nwfi[...
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+code to extract files
+\end_layout
 
-if [ -z "${NOWEB_SOURCE}" ]
-\begin_inset Newline newline
-\end_inset
+\begin_layout LyX-Code
+...
+ use NOWEB_OUTPUT_DIR here ...]
+\end_layout
 
-then
-\begin_inset Newline newline
-\end_inset
-
-  NOWEB_SOURCE=meinedatei.nw
-\begin_inset Newline newline
-\end_inset
-
-fi
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout LyX-Code
 [...
- Code zum Extrahieren von Dateien ]
-\begin_inset Newline newline
-\end_inset
-
-[...
- Code zum Extrahieren von Dateien ]
-\begin_inset Newline newline
-\end_inset
-
-@
+ code to compile files ...]@
 \end_layout
 
 \begin_layout Standard
@@ -24211,165 +24076,171 @@ g von LyX für Literarische Programmierung, denn sie wurden in Python, C
 \end_layout
 
 \begin_layout Subsubsection
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Konfiguration
+LyX-Konfiguration
 \end_layout
 
 \begin_layout Standard
-Alle Einstellungen für die Literarische Programmierung werden in 
+
+\lang english
+All the Literate Programming support is configured by the 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Ein\SpecialChar \-
-stel\SpecialChar \-
-lun\SpecialChar \-
-gen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Konverter
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
- gemacht.
+ panel in the 
+\begin_inset Quotes eld
+\end_inset
+
+File Handling
+\begin_inset Quotes erd
+\end_inset
+
+ tab.
+ The important parts are:
 \end_layout
 
 \begin_layout Description
-das
+
+\lang english
+the
 \begin_inset space ~
 \end_inset
 
-literarische
+
+\begin_inset Quotes eld
+\end_inset
+
+NoWeb
+\begin_inset Quotes erd
+\end_inset
+
+
 \begin_inset space ~
 \end_inset
 
-Format wird auf der Karteikarte 
+format Set up via the File Formats tab, this is where the Noweb-specific
+ pieces are set up.
+ The 
 \family sans
-Formate
+GUI Name
 \family default
- festgelegt.
- Hier werden die Noweb-spezifischen Dinge definiert.
- Der 
-\family sans
-Name im
-\family default
- 
-\family sans
-GUI
-\family default
- wird auf 
+ is set to 
 \family typewriter
 NoWeb
 \family default
- gesetzt, die 
-\family sans
-Datei
-\begin_inset space ~
-\end_inset
-
-Endung
-\family default
- auf 
+, the file extension is set to 
 \family typewriter
 .nw
 \family default
 .
- Damit wird LyX gesagt, im ersten Schritt der Konvertierung eine 
+ This tells LyX to create a file with a 
 \family typewriter
 .nw
 \family default
--Datei zu erzeugen.
+ extension in the first step of the conversion process.
 \end_layout
 
 \begin_layout Description
-das
+
+\lang english
+the
 \begin_inset space ~
 \end_inset
 
-Programmformat ist ein leeres Format, das nur dazu dient, das Ende der Konvertie
-rung zu sein (womit Sie dafür einen Konverter einstellen können).
+
+\family sans
+Program
+\family default
+
+\begin_inset space ~
+\end_inset
+
+format This is an empty format whose sole purpose is to be the endpoint
+ of a conversion (which then allows us to set up a converter for it).
 \end_layout
 
 \begin_layout Description
+
+\family sans
+\lang english
 NoWeb
-\begin_inset Formula $\rightarrow$
+\family default
+->
+\family sans
+LaTeX
+\family default
+ This converter performs the 
+\begin_inset Quotes eld
 \end_inset
 
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
+weaving
+\begin_inset Quotes erd
 \end_inset
 
-
-\family default
-X Dieser Konverter 
-\emph on
-webt
-\emph default
- das literarische Dokument.
- Für Noweb wird der 
-\family sans
-Befehl
-\family default
- auf 
-\begin_inset Newline newline
+ of the literate document.
+ For Noweb, it is set to 
+\begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
 noweave -delay -index $$i > $$o
 \family default
- gesetzt.
+
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
+
+\family sans
+\lang english
 NoWeb
-\begin_inset Formula $\rightarrow$
+\family default
+->
+\family sans
+Program
+\family default
+ This performs the 
+\begin_inset Quotes eld
 \end_inset
 
-Program Dies ist der Schritt zum 
-\emph on
-Verknoten
-\emph default
+tangling step
+\begin_inset Quotes erd
+\end_inset
+
 .
- Wie oben erwähnt werden hier der 
-\family sans
-Befehl
-\family default
- auf 
-\begin_inset Newline newline
+ As stated above, the Converter is set to 
+\begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
 build-script $$i
 \family default
- und 
-\family sans
-Extra
-\begin_inset space ~
+ $$r
+\begin_inset Quotes erd
 \end_inset
 
-flags
-\family default
- auf 
+, with Flags set to
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
 \family typewriter
-originaldir,parselog=listerrors
+parselog=$$s/scripts/listerrors
 \family default
- gesetzt.
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -24462,8 +24333,24 @@ Edit Sources
  folgenden Wert geben:
 \end_layout
 
-\begin_layout Quote
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24492,25 +24379,52 @@ ddd
 
 \begin_layout Standard
 Um diese Fähigkeit benutzen zu können, müssen Sie allerdings den LyX-Server
- aktiviert haben.
- Dazu benötigen Sie den Eintrag
-\end_layout
+ aktiviert haben (ist standardmäßig deaktiviert).
+ 
+\lang english
+You can enable it in 
+\family sans
+Preferences
+\family default
+ (tabs 
+\family sans
+Inputs
+\family default
+, 
+\family sans
+Paths
+\family default
+) by entering in the 
+\family sans
+LyXserver pipe
+\family default
+ a path like
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Quote
+
+\begin_inset Quotes eld
+\end_inset
+
 
 \family typewriter
+/home/<your-home-directory>/.lyx/lyxpipe
+\family default
 
-\backslash
-serverpipe "/home/<your home directory>/.lyxpipe"
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-in Ihrer Datei 
-\family typewriter
-preferences
-\family default
-.
- Weitere Informationen zum LyX-Server finden Sie in der LyX-Dokumentation.
+
+\lang english
+Read the LyX server documentation in the 
+\emph on
+Customization Manual
+\emph default
+ for further information.
 \end_layout
 
 \begin_layout Subsubsection
@@ -24559,7 +24473,7 @@ X-Code
 \family default
 , und 
 \family sans
-Scrap
+Chunk
 \family default
 .
  Der sechste ist für den Menüpunkt 
@@ -24631,7 +24545,7 @@ add layout LyX-Code
 \begin_layout LyX-Code
 
 \backslash
-add layout Scrap
+add layout Chunk
 \end_layout
 
 \begin_layout LyX-Code
@@ -24687,9 +24601,7 @@ Farben anpassen
 \end_layout
 
 \begin_layout Standard
-Viele der von LyX zur Darstellung verwendeten Farben können den eigenen
- Wünschen angepasst werden.
- Das wird mit 
+Viele der von LyX zur Darstellung verwendeten Farben können im Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -24697,39 +24609,64 @@ Aussehen\SpecialChar \menuseparator
 Far\SpecialChar \-
 ben
 \family default
- gemacht.
+ den eigenen Wünschen angepasst werden.
+ 
+\lang english
+One of the things that bothers people is the LaTeX font color.
+ The default color is red, since the chunks uses LaTeX font, and there is
+ a lot of chunks in literate documents, you may get tired of seeing everything
+ in red.
+ You can change it by going to the tabs 
+\family sans
+Look&Feel
+\family default
+, 
+\family sans
+Colors.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The next thing is the visible presence of the newline character in the screen.
+ You can choose the color of this particular character and make it blend
+ in the background.
+ I recommend you choosing a color that is close to the background but not
+ equal, that way you still can see it is there, but it is not bothering
+ you anymore.
+\end_layout
+
+\begin_layout Subsection
+LyX und knitr/Sweave
+\end_layout
+
+\begin_layout Standard
+Die Unterstützung für 
+\family sans
+knitr
+\family default
+ und 
+\family sans
+Sweave
+\family default
+ ist in der Beispieldatei 
+\emph on
+knitr.lyx
+\emph default
+ und im 
+\emph on
+Sweave
+\emph default
+ Handbuch (Menü 
+\family sans
+Hilfe\SpecialChar \menuseparator
+Spezielle Handbücher
+\family default
+) dokumentiert.
 \end_layout
 
 \begin_layout Chapter
 Spezielle Features
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Spezielle-Features"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X ! Spezielle Features
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24787,16 +24724,6 @@ Module
 \series bold
 multicol
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! multicol
-\end_layout
-
-\end_inset
-
  installiert sein.
 \end_layout
 
@@ -25049,18 +24976,6 @@ ts
 \series bold
 multicol
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LaTeX-Pakete ! multicol
-\end_layout
-
-\end_inset
-
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -25166,7 +25081,8 @@ On the evening of the crime, he returned from the club exactly at ten.
 
 \begin_layout Standard
 Man kann auch einen Abschnittstitel als Vorwort verwenden indem man den
- Abschnitts-Befehl als TeX-Code nach dem ersten TeX-Code eingibt.
+ Ab\SpecialChar \-
+schnitts-Befehl als TeX-Code nach dem ersten TeX-Code eingibt.
  Zum Beispiel erstellt der Befehl
 \end_layout
 
@@ -25853,281 +25769,954 @@ auf Voreinstellung zurücksetzen
 
 \begin_layout Section
 Ungewöhnliche Absatzformen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Ungewöhnliche Absatzformen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-newdimen
-\backslash
-varunit 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-varunit}{5.5in}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \noindent
+LaTeX verwendet, wie alle anderen Textprogramme, standardmäßig rechteckige
+ Absätze.
+ Für spezielle Fälle wie zum Beispiel Poster, Einladungskarten oder Gedichte
+ kann man die Abssatzform beliebig verändern.
+ Dies kann mit dem LaTeX-Paket 
+\series bold
+shapepar
+\series default
+ gemacht werden, das geladen wird, indem in den Dokumenteinstellungen das
+ Modul 
+\family sans
+Benutzerdefinierte Absatzformen
+\family default
+ verwendet.
+\end_layout
+
+\begin_layout Subsection
+Vordefinierte Formen
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+shapepar
+\series default
+ bietet die folgenden Formen an:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="3">
+<features rotate="0" booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="middle" width="16col%">
+<column alignment="center" valignment="middle" width="40col%">
+<column alignment="center" valignment="middle" width="35col%">
+<row endhead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anmerkung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CDBeschriftung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kreis mit rundem Loch (in der Größe einer CD/DVD)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kann nicht skaliert werden, daher Textmenge beachten
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kreis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kreis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fragil, Berechnung kann fehlschlagen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diamant
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rhomboid (symbolisiert einen 
+\begin_inset Quotes gld
+\end_inset
+
+Diamanten
+\begin_inset Quotes grd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Herz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Herzform
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sechseck
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sechseck
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mutter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Schraubenmutter (Sechseck mit rundem Loch)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quadrat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quadrat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fünfzackiger Stern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kerze
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Brennende Kerze
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tropfen unten/oben
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normaler/umgekehrter Regentropfen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fragil, Berechnung kann fehlschlagen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TeX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das TeX-Logo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dreieck oben/unten/
+\begin_inset Newline newline
+\end_inset
+
+links/rechts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dreiecke in verschiedenen Ausrichtungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um eine Form für einen Absatz zu verwenden, wählt man sie einfach in LyXs
+ Auswahlbox für Umgebungen in der Werkzeugleiste aus.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier ist ein Beispielabsatz in der Form einer Mutter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung
+\series default
+: shapepar-Absätze können nicht über Seitenumbrüche hinweg laufen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+shapepar
+\series default
+ stellt sicher, dass die Form immer gewahrt bleibt, egal wie viel Text der
+ Absatz hat.
+ Daher ändert sich die Größe des Absatzes mit der Textmenge.
+ Dies kann dazu führen, dass der Absatz über die Seitenränder ragt.
+ Zur Demonstration der Skalierung ist hier derselbe Beispielabsatz mit doppelt
+ so viel Text:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Nut
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Form 
+\family sans
+CDBeschriftung
+\family default
+ ist eine Ausnahme.
+ Sie kann nicht skaliert werden, da sie auf eine CD/DVD passen muss.
+ Daher ist die Textmenge, die in diese Form passt, limitiert.
+\begin_inset Newline newline
+\end_inset
+
+Die 
+\family sans
+Tropfen
+\family default
+ Formen und die Form 
+\family sans
+Kreis
+\family default
+ sind fragil, was bedeutet, dass die Berechnung ihrer Größe, je nach Textmenge
+ im Absatz, fehlschlagen kann.
+ Man bekommt dann den LaTeX-Fehler 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+Arithmetic overflow
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In diesem Fall kann man versuchen etwas Text zu entfernen oder hinzuzufügen;
+ wenn nichts hilft, muss man eine andere Form verwenden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei Formen mit Spitzen werden Sie vielleicht feststellen, dass LaTeXs Silbentren
+nungsmechanismus für Text in den Spitzen versagt.
+ Es ist daher oft notwendig, Trennmöglichkeiten 
+\family sans
+(Strg+
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\family default
+) in den entsprechenden Text einzufügen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Shapepar-Absätze werden immer so auf die Seite platziert, dass ihre linke
+ Kante den linken Seitenrand berührt.
+ Man kann daher nicht den Absatzdialog verwenden, um solche Absätze auszurichten.
+ Eine Lösung ist den Absatz in eine Minipage oder Parbox zu setzen und dann
+ die Box auszurichten.
+ Das Problem dabei ist die richtige Breite für die Box zu finden.
+ Denn ist sie zu breit und man zentriert die Box, ist der Absatz nicht ebenfalls
+ zentriert, da er an der linken Seite der Box haftet.
+ Daher muss man eventuell etwas mit der Breite spielen bis es passt.
+ Hier sind zwei dreieckige Absätze, der erste ist nicht ausgerichtet, der
+ zweite ist zentriert:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Triangle up
+
+\lang latin
+Lo\SpecialChar \-
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "42col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Triangle up
+
+\lang latin
+Lo\SpecialChar \-
+rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Benutzerdefinierte Formen
+\end_layout
+
+\begin_layout Standard
+Man kann jede beliebige Form definieren.
+ Dies manuell zu tun ist jedoch sehr aufwändig, da jede Koordinate angegeben
+ werden muss.
+ Aber es gibt einen Weg den Computer die Koordinaten berechnen zu lassen:
+\end_layout
+
+\begin_layout Enumerate
+Man installiert das Programm 
+\begin_inset CommandInset href
+LatexCommand href
+name "Jpgfdraw"
+target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In 
+\family sans
+Jpgfdraw
+\family default
+ geht man in das Menü 
+\family sans
+Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-parshape 19 0.45
-\backslash
-varunit 0.332
-\backslash
-varunit
+{}
 \end_layout
+
+\end_inset
+
+X/LaTeX\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Set Normal Size
+\family default
+ und wählt die Schriftgröße aus, die man auch in seinem LyX-Dokument verwendet.
+ Zum Beispiel verwendet dieses Dokument die Größe 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+\end_layout
+
+\begin_layout Enumerate
+Man zeichnet eine Form.
+\end_layout
+
+\begin_layout Enumerate
+Über das Menü 
+\family sans
+Te
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
-0.40
-\backslash
-varunit 0.300
-\backslash
-varunit
+{}
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-0.35
-\backslash
-varunit 0.293
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.30
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
+X/LaTeX\SpecialChar \menuseparator
+Shapepar
+\family default
+ exportiert man die Form in Koordinaten.
+ Im erscheinenden Dialog wählt man entweder die Außenlinie (outline) der
+ Form für die Koordinaten oder die Linie selbst (path).
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
+Für weitere Informationen, siehe 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 
-0.25
-\backslash
-varunit 0.317
-\backslash
-varunit
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
-
-0.20
-\backslash
-varunit 0.342
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.15
-\backslash
-varunit 0.373
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.10
-\backslash
-varunit 0.410
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.05
-\backslash
-varunit 0.453
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.00
-\backslash
-varunit 0.500
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.05
-\backslash
-varunit 0.453
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.10
-\backslash
-varunit 0.410
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.15
-\backslash
-varunit 0.373
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.20
-\backslash
-varunit 0.342
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.25
-\backslash
-varunit 0.317
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.30
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.35
-\backslash
-varunit 0.293
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.40
-\backslash
-varunit 0.300
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
-
-0.45
-\backslash
-varunit 0.332
-\backslash
-varunit
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
 \end_inset
 
-Es gibt Zeiten, da muss die Tyrannei der rechteckigen Absätze gebrochen
- werden.
- In solchen Situationen bietet sich der reizende LaTeX-Befehl 
-\family typewriter
 
-\backslash
-parshape
-\family default
- an.
- Wie Sie sehen, können Sie beliebige Formen mit einem geeigneten Satz von
- Zeilenlängendefinitionen herstellen.
- Während dieses Beispiel ein wenig töricht und nutzlos aussehen mag, könnte
- man sich Situationen vorstellen, die aus einem solchen Handwerkzeug Nutzen
- ziehen, wie zum Beispiel besondere Formen abgesetzter Großbuchstaben, Text
- um Bilder, die nicht rechteckig sind, herumfließen zu lassen, usw.
 \end_layout
 
 \begin_layout Standard
-Die Syntax ist 
-\family typewriter
+Die Koordinaten werden in eine TeX-Datei geschrieben.
+ Um sie für ein LyX-Dokument zu verwenden
+\end_layout
 
-\backslash
-parshape numlines #1indent #1length #2indent #2length \SpecialChar \ldots{}
+\begin_layout Enumerate
+setzt man den Cursor vor das erste Zeichen des Absatzes (oder in einen neuen,
+ leeren Absatz)
+\end_layout
 
+\begin_layout Enumerate
+Man öffnet in LyX das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
+Unterdokument
 \family default
- 
-\family typewriter
+, wählt die Datei aus und verwendet 
+\family sans
+Input
+\family default
+ als 
+\family sans
+Art der Einbindung
+\end_layout
 
-\begin_inset Newline linebreak
+\begin_layout Standard
+\begin_inset VSpace defskip
 \end_inset
 
-#nindent #nlength
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung
+\series default
+: Die geänderte Form betrifft nur den aktuellen Absatz; für den nächsten
+ Absatz wird wieder alles zurückgesetzt.
+ Deswegen muss die Definitionsdatei der Form in jeden Absatz mit der gewünschten
+ Form importiert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "../SpecialParagraphShape.tex"
+
+\end_inset
+
+
+\lang latin
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ein Tipp:
+\series default
+ Um komplexere Formen in 
+\family sans
+Jpgfdraw
 \family default
-, wobei hier 
-\family typewriter
-numlines
+ zu zeichnen, kann man die Form in einem Programm seiner Wahl erstellen
+ und das resultierende Bild in 
+\family sans
+Jpgfdraw
 \family default
- die Zahl der Textzeilen ist, die den Absatz definieren.
- Wenn dabei weniger Zeilen herauskommen, wird der Umriss verkürzt, werden
- es mehr, so erhalten die restlichen Zeilen dieselben Dimensionen wie die
- letzte definierte.
- Die Einträge 
-\family typewriter
-#nindent
+ importieren.
+ Man braucht dann nur noch eine Linie oder einen Spline entlang der Außenlinie
+ der Form zu zeichnen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Modul 
+\family sans
+Benutzerdefinierte Absatzformen
+\family default
+ bietet die beiden Befehle 
+\family sans
+shapepar
 \family default
  und 
-\family typewriter
-#nlength
+\family sans
+Shapepar
 \family default
- legen die Einrückung und die Zeilenlänge ab dieser Einrückung fest.
- Das Aussehen wird nur auf den momentanen Absatz angewendet, für den folgenden
- wird alles auf normal zurückgesetzt.
+ an, die dazu verwendet werden können, eigene Formen Kordinate für Koordinate
+ zu definieren.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Diese Befehle werden intern für alle hier beschriebenen Formen verwendet.
+\end_layout
+
+\end_inset
+
+ Für Informationen wie diese Stile benutzt werden und über weitere Anpassungsmög
+lichkeiten, siehe die Dokumentation des Pakets 
+\series bold
+shapepar
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shapepar"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Bibliography
@@ -26146,12 +26735,20 @@ target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! multicol
 \end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "shapepar"
+
+\end_inset
+
+Dokumentation des LaTeX-Pakets 
+\begin_inset CommandInset href
+LatexCommand href
+name "shapepar"
+target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 
 \end_inset
 

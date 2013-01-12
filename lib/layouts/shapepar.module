@@ -1,0 +1,135 @@
+#\DeclareLyXModule[shapepar.sty]{Custom paragraph shapes}
+#DescriptionBegin
+#Provides several paragraph shapes as well as commands to define custom 
+#shapes. For a description see LyX's Additional
+#features manual, section "Non-standard Paragraph Shapes". 
+#DescriptionEnd
+#Author: Uwe Stöhr <uwestoehr@web.de>
+
+Format 43
+
+AddToPreamble
+ % used for custom paragraph shapes
+ \usepackage{shapepar}
+ \IfFileExists{candleshape.def}{%
+  \input{candleshape.def}}{}
+ \IfFileExists{dropshape.def}{%
+  \input{dropshape.def}}{}
+ \IfFileExists{TeXshape.def}{%
+  \input{TeXshape.def}}{}
+ \IfFileExists{triangleshapes.def}{%
+  \input{triangleshapes.def}}{}
+
+EndPreamble
+
+# first the standard shapes
+
+Style "CD label"
+	LatexType	command
+	LatexName	CDlabel
+	Category	ShapedParagraphs
+	NextNoIndent	1
+	Margin		Static
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	LabelType	No_Label
+End
+
+Style "Circle"
+	CopyStyle	"CD label"
+	LatexName	circlepar
+End
+
+Style "Diamond"
+	CopyStyle	"CD label"
+	LatexName	diamondpar
+End
+
+Style "Heart"
+	CopyStyle	"CD label"
+	LatexName	heartpar
+End
+
+Style "Hexagon"
+	CopyStyle	"CD label"
+	LatexName	hexagonpar
+End
+
+Style "Nut"
+	CopyStyle	"CD label"
+	LatexName	nutpar
+End
+
+Style "Square"
+	CopyStyle	"CD label"
+	LatexName	squarepar
+End
+
+Style "Star"
+	CopyStyle	"CD label"
+	LatexName	starpar
+End
+
+# now the shapes defined in the .def files
+
+Style "Candle"
+	CopyStyle	"CD label"
+	LatexName	shapepar{\candle}
+End
+
+Style "Drop down"
+	CopyStyle	"CD label"
+	LatexName	droppar
+End
+
+Style "Drop up"
+	CopyStyle	"CD label"
+	LatexName	dropuppar
+End
+
+Style "TeX"
+	CopyStyle	"CD label"
+	LatexName	shapepar{\TeXshape}
+End
+
+Style "Triangle up"
+	CopyStyle	"CD label"
+	LatexName	triangleuppar
+End
+
+Style "Triangle down"
+	CopyStyle	"CD label"
+	LatexName	triangledownpar
+End
+
+Style "Triangle left"
+	CopyStyle	"CD label"
+	LatexName	triangleleftpar
+End
+
+Style "Triangle right"
+	CopyStyle	"CD label"
+	LatexName	trianglerightpar
+End
+
+# finally the low-level commands
+Style "shapepar"
+	CopyStyle	"CD label"
+	LatexName	shapepar
+	Argument 1
+	  Mandatory	0
+	  LabelString	"Scale"
+	  Tooltip	"For scaling the <Shape specification> to positions on the page"
+	EndArgument
+	Argument 2
+	  Mandatory	1
+	  LabelString	"Shape specification"
+	  Tooltip	"Specification of the shape"
+	EndArgument
+End
+
+Style "Shapepar"
+	CopyStyle	"shapepar"
+	LatexName	Shapepar
+End

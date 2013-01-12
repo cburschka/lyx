@@ -16,6 +16,7 @@ dist_doc_DATA = \
 	LFUNs.lyx \
 	Math.lyx \
 	Shortcuts.lyx \
+	SpecialParagraphShape.tex \
 	Tutorial.lyx \
 	UserGuide.lyx
 
