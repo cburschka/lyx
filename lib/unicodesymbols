@@ -36,6 +36,7 @@
 # Known flags:
 # - combining       This is a combining char that will get combined with a base char
 # - force           Always output replacement command
+# - force=enc1,enc2... Always output replacement command in the specified encodings.
 # - mathalpha       This character is considered as a math variable in mathmode
 # - notermination=text Do not terminate this textcommand (by {} or space).
 #                      This is set by default if textcommand ends with }.
@@ -1725,7 +1726,7 @@
 # use the following macro for the character ADRESSED TO THE SUBJECT
 0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" ""
 0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
-0x2103 "\\textcelsius"            "textcomp" "" # DEGREE CELSIUS
+0x2103 "\\textcelsius"            "textcomp" "force=utf8x" "" "" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
 # use the following macro for the character CARE OF
 0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""

@@ -100,6 +100,12 @@ public:
 	/// A list of all characters usable in this encoding
 	std::vector<char_type> symbolsList() const;
 private:
+	/**
+	 * Do we have to output this character as LaTeX command in any case?
+	 * This is true if the "force" flag is set.
+	 * We need this if the inputencoding does not support a certain glyph.
+	 */
+	bool isForced(char_type c) const;
 	///
 	std::string name_;
 	///
@@ -118,6 +124,8 @@ private:
 	/// Set of UCS4 characters that we can encode (for singlebyte
 	/// encodings only)
 	mutable CharSet encodable_;
+	/// Set of UCS4 characters that we can't encode
+	CharSet const * forced_;
 	/// All code points below this are encodable. This helps us to avoid
 	/// lokup of ASCII characters in encodable_ and gives about 1 sec
 	/// speedup on export of the Userguide.
@@ -207,12 +215,6 @@ public:
 	 * \p c is a known character matching the preamble entry.
 	 */
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
-	/**
-	 * Do we have to output this character as LaTeX command in any case?
-	 * This is true if the "force" flag is set.
-	 * We need this if the inputencoding does not support a certain glyph.
-	 */
-	static bool isForced(char_type c);
 	/**
 	 * Do we have to display in italics this character when in mathmode?
 	 * This is true if the "mathalpha" flag is set. We use this for

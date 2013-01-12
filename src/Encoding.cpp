@@ -143,7 +143,7 @@ char_type arabic_table[172][4] = {
 	{0, 0, 0, 0}, // 0x067b
 	{0, 0, 0, 0}, // 0x067c
 	{0, 0, 0, 0}, // 0x067d
-	{0xfb56, 0xfb57, 0xfb58, 0xfb59}, // 0x067e = peh 
+	{0xfb56, 0xfb57, 0xfb58, 0xfb59}, // 0x067e = peh
 	{0, 0, 0, 0}, // 0x067f
 	{0, 0, 0, 0}, // 0x0680
 	{0, 0, 0, 0}, // 0x0681
@@ -151,7 +151,7 @@ char_type arabic_table[172][4] = {
 	{0, 0, 0, 0}, // 0x0683
 	{0, 0, 0, 0}, // 0x0684
 	{0, 0, 0, 0}, // 0x0685
-	{0xfb7a, 0xfb7b, 0xfb7c, 0xfb7d}, // 0x0686 = tcheh 
+	{0xfb7a, 0xfb7b, 0xfb7c, 0xfb7d}, // 0x0686 = tcheh
 	{0, 0, 0, 0}, // 0x0687
 	{0, 0, 0, 0}, // 0x0688
 	{0, 0, 0, 0}, // 0x0689
@@ -186,13 +186,13 @@ char_type arabic_table[172][4] = {
 	{0, 0, 0, 0}, // 0x06a6
 	{0, 0, 0, 0}, // 0x06a7
 	{0, 0, 0, 0}, // 0x06a8
-	{0xfb8e, 0xfb8f, 0xfb90, 0xfb91}, // 0x06a9 = farsi kaf 
+	{0xfb8e, 0xfb8f, 0xfb90, 0xfb91}, // 0x06a9 = farsi kaf
 	{0, 0, 0, 0}, // 0x06aa
 	{0, 0, 0, 0}, // 0x06ab
 	{0, 0, 0, 0}, // 0x06ac
 	{0, 0, 0, 0}, // 0x06ad
 	{0, 0, 0, 0}, // 0x06ae
-	{0xfb92, 0xfb93, 0xfb94, 0xfb95}, // 0x06af = gaf 
+	{0xfb92, 0xfb93, 0xfb94, 0xfb95}, // 0x06af = gaf
 	{0, 0, 0, 0}, // 0x06b0
 	{0, 0, 0, 0}, // 0x06b1
 	{0, 0, 0, 0}, // 0x06b2
@@ -221,7 +221,7 @@ char_type arabic_table[172][4] = {
 	{0, 0, 0, 0}, // 0x06c9
 	{0, 0, 0, 0}, // 0x06ca
 	{0, 0, 0, 0}, // 0x06cb
-	{0xfbfc, 0xfbfd, 0xfbfe, 0xfbff} // 0x06cc = farsi yeh	
+	{0xfbfc, 0xfbfd, 0xfbfe, 0xfbff} // 0x06cc = farsi yeh
 };
 
 
@@ -242,6 +242,8 @@ enum CharInfoFlags {
 	CharInfoTextNoTermination = 16,
 	///
 	CharInfoMathNoTermination = 32,
+	///
+	CharInfoForceSelected = 64,
 };
 
 /// Information about a single UCS4 character
@@ -265,6 +267,8 @@ struct CharInfo {
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
 	bool force() const { return flags & CharInfoForce ? true : false; }
+	/// Force the LaTeX command for some encodings?
+	bool forceselected() const { return flags & CharInfoForceSelected ? true : false; }
 	/// TIPA shortcut
 	string tipashortcut;
 	/// \c textcommand needs no termination (such as {} or space).
@@ -280,7 +284,9 @@ typedef map<char_type, CharInfo> CharInfoMap;
 CharInfoMap unicodesymbols;
 
 typedef std::set<char_type> CharSet;
+typedef std::map<string, CharSet> CharSetMap;
 CharSet forced;
+CharSetMap forcedselected;
 
 typedef std::set<char_type> MathAlphaSet;
 MathAlphaSet mathalpha;
@@ -307,7 +313,7 @@ const char * EncodingException::what() const throw()
 Encoding::Encoding(string const & n, string const & l, string const & g,
 		   string const & i, bool f, bool u, Encoding::Package p)
 	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f),
-	  unsafe_(u), package_(p)
+	  unsafe_(u), forced_(&forcedselected[n]), package_(p)
 {
 	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
@@ -318,6 +324,7 @@ Encoding::Encoding(string const & n, string const & l, string const & g,
 		start_encodable_ = max_ucs4;
 		complete_ = true;
 	} else {
+		start_encodable_ = 0;
 		complete_ = false;
 	}
 }
@@ -341,8 +348,12 @@ void Encoding::init() const
 				continue;
 			char_type const uc = ucs4[0];
 			CharInfoMap::const_iterator const it = unicodesymbols.find(uc);
-			if (it == unicodesymbols.end() || !it->second.force())
+			if (it == unicodesymbols.end())
 				encodable_.insert(uc);
+			else if (!it->second.force()) {
+				if (forced_->empty() || forced_->find(uc) == forced_->end())
+					encodable_.insert(uc);
+			}
 		}
 	} else {
 		// We do not know how many code points this encoding has, and
@@ -353,8 +364,12 @@ void Encoding::init() const
 			vector<char> const eightbit = ucs4_to_eightbit(&c, 1, iconvName_);
 			if (!eightbit.empty()) {
 				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-				if (it == unicodesymbols.end() || !it->second.force())
+				if (it == unicodesymbols.end())
 					encodable_.insert(c);
+				else if (!it->second.force()) {
+					if (forced_->empty() || forced_->find(c) == forced_->end())
+						encodable_.insert(c);
+				}
 			}
 		}
 	}
@@ -369,6 +384,14 @@ void Encoding::init() const
 }
 
 
+bool Encoding::isForced(char_type c) const
+{
+	if (!forced.empty() && forced.find(c) != forced.end())
+		return true;
+	return !forced_->empty() && forced_->find(c) != forced_->end();
+}
+
+
 bool Encoding::encodable(char_type c) const
 {
 	// assure the used encoding is properly initialized
@@ -376,7 +399,7 @@ bool Encoding::encodable(char_type c) const
 
 	if (iconvName_ == "UTF-8" && package_ == none)
 		return true;
-	if (c < start_encodable_ && !encodings.isForced(c))
+	if (c < start_encodable_ && !isForced(c))
 		return true;
 	if (encodable_.find(c) != encodable_.end())
 		return true;
@@ -812,12 +835,6 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 }
 
 
-bool Encodings::isForced(char_type c)
-{
-	return (!forced.empty() && forced.find(c) != forced.end());
-}
-
-
 bool Encodings::isMathAlpha(char_type c)
 {
 	return mathalpha.count(c);
@@ -912,6 +929,12 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			} else if (flag == "force") {
 				info.flags |= CharInfoForce;
 				forced.insert(symbol);
+			} else if (prefixIs(flag, "force=")) {
+				vector<string> encodings =
+					getVectorFromString(flag.substr(6));
+				for (size_t i = 0; i < encodings.size(); ++i)
+					forcedselected[encodings[i]].insert(symbol);
+				info.flags |= CharInfoForceSelected;
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
 			} else if (flag == "notermination=text") {
@@ -974,7 +997,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			<< " '" << info.textfeature() << ' ' << info.textnotermination()
 			<< ' ' << to_utf8(info.mathcommand) << "' '" << info.mathpreamble
 			<< "' " << info.mathfeature() << ' ' << info.mathnotermination()
-			<< ' ' << info.combining() << ' ' << info.force());
+			<< ' ' << info.combining() << ' ' << info.force()
+			<< ' ' << info.forceselected());
 
 		// we assume that at least one command is nonempty when using unicodesymbols
 		if (!info.textcommand.empty() || !info.mathcommand.empty())
