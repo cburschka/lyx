@@ -8,26 +8,27 @@
 Format 43
 
 Style "Caption setup"
-	LatexType		command
-	LatexName		captionsetup
-	Category		FrontMatter
+	LatexType	command
+	LatexName	captionsetup
+	Category	FrontMatter
 	Argument 1
-		LabelString   "Caption Setup Options|S"
-		Tooltip       "Options for the caption setup command (see bicaption manual)"
+	 LabelString   "Caption Setup Options"
+	 Tooltip       "Options for the caption setup"
 	EndArgument
-	Margin			Dynamic
-	LabelSep		xx
-	ParSkip			0.0
-	ItemSep			0.2
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.3
-	Align			Block
-	AlignPossible		Block
-	LabelType		Static
-	LabelString		"Caption setup:"
+	PassThru	1
+	Margin		Dynamic
+	LabelSep	xx
+	ParSkip		0.0
+	ItemSep		0.2
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.3
+	Align		Block
+	AlignPossible	Block
+	LabelType	Static
+	LabelString	"Caption setup:"
 	LabelFont
-		Color		Green
+	  Color		Green
 	EndFont
 	BabelPreamble
 	\usepackage{bicaption} % for multilingual captions
@@ -36,28 +37,28 @@ End
 
 
 InsetLayout Caption:Bicaption
-	LabelString          bilingual
-	LaTeXType            command
-	LatexName            bicaption
+	LabelString	bilingual
+	LaTeXType	command
+	LatexName	bicaption
 	Argument 1
-		LabelString   "Main Language Caption Short Title"
-		Tooltip       "A short title (for list of figures/tables) in the document language"
+	  LabelString	"Main Language Short Title"
+	  Tooltip	"Short title for the main(document) language"
 	EndArgument
 	Argument 2
-		Mandatory     1
-		LabelString   "Main Language Caption Text|S"
-		Tooltip       "The caption text in the document language"
+	 Mandatory	1
+	  LabelString	"Main Language Text"
+	  Tooltip	"Text in the main(document) language"
 	EndArgument
 	Argument 3
-		LabelString   "Second Language Caption Short Title"
-		Tooltip       "A short title (for list of figures/tables) in the second language"
+	  LabelString	"Second Language Short Title"
+	  Tooltip	"Short title for the second language"
 	EndArgument
 	HTMLStyle
-		div.float-caption {
-			text-align: center;
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-		}
+	  div.float-caption {
+	   text-align: center;
+	   border: 2px solid black;
+	   padding: 1ex;
+	   margin: 1ex;
+	  }
 	EndHTMLStyle
 End

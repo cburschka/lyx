@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 458
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -180,7 +180,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note
 \series default
 : If no optional argument is used for 
@@ -208,7 +207,7 @@ lang=ngerman
 \end_layout
 
 \begin_layout Standard
-in TeX-Code in a 
+in a 
 \family sans
 Caption setup
 \family default
@@ -299,18 +298,7 @@ bi-second
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 lang=ngerman
-\end_layout
-
-\end_inset
-
-
 \begin_inset Note Note
 status collapsed
 
@@ -513,7 +501,7 @@ status open
 \series bold
 Note
 \series default
-: This setup doesn't have an effect in this file as described in section
+: This setup does not have an effect in this file as described in section
 \begin_inset space ~
 \end_inset
 
@@ -539,18 +527,7 @@ bi-both
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-labelfont=bf,labelsep=newline
-\end_layout
-
-\end_inset
-
-
+labelfont=bf, labelsep=newline
 \begin_inset Note Note
 status collapsed
 
@@ -574,18 +551,7 @@ bi-first
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-labelfont=bf,labelsep=newline
-\end_layout
-
-\end_inset
-
-
+labelfont=bf, labelsep=newline
 \begin_inset Note Note
 status collapsed
 
@@ -608,18 +574,7 @@ bi-second
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-labelfont=bf,textfont={sf,it},labelsep=newline
-\end_layout
-
-\end_inset
-
-
+labelfont=bf, textfont={sf,it}, labelsep=newline
 \begin_inset Note Note
 status collapsed
 
@@ -825,7 +780,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note
 \series default
 : If you are using this feature, the 
