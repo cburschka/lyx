@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-03 12:06-0500\n"
-"PO-Revision-Date: 2013-01-04 13:49+0100\n"
+"POT-Creation-Date: 2013-01-12 16:52+0100\n"
+"PO-Revision-Date: 2013-01-12 16:53+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2247,7 +2247,7 @@ msgid "Feedback window"
 msgstr "Feedback-Fenster"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
+#: src/insets/InsetListings.cpp:352 src/insets/InsetListings.cpp:354
 msgid "Listing"
 msgstr "Listing"
 
@@ -11154,7 +11154,7 @@ msgstr ""
 msgid ""
 "This module adds support for using natbib together with apacite (the "
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
-"any bibliography that works with both the natbib and apacite packages."
+"any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
 "Dieses Modul bietet Unterstützung für die Verwendung von Natbib zusammen mit "
 "Apacite. Der Bibliographiestil muss dabei nicht 'apacite' sein, auch "
@@ -17124,30 +17124,16 @@ msgstr "LyX-Archiv (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1973
-#, c-format
-msgid "%1$s and %2$s"
-msgstr "%1$s und %2$s"
-
-#: src/BiblioInfo.cpp:251
-#, c-format
-msgid "%1$s et al."
-msgstr "%1$s et al."
-
-#: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
+#: src/BiblioInfo.cpp:417 src/BiblioInfo.cpp:458 src/BiblioInfo.cpp:469
+#: src/BiblioInfo.cpp:519 src/BiblioInfo.cpp:523
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
-msgid "No year"
-msgstr "Kein Jahr"
-
-#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
+#: src/BiblioInfo.cpp:748 src/BiblioInfo.cpp:809
 msgid "Add to bibliography only."
 msgstr "Nur zum Literaturverzeichnis hinzufügen"
 
-#: src/BiblioInfo.cpp:789
+#: src/BiblioInfo.cpp:805
 msgid "before"
 msgstr "davor"
 
@@ -21388,6 +21374,11 @@ msgstr "&Ablehnen"
 msgid "Unable to set document class."
 msgstr "Kann Dokumentklasse nicht einstellen."
 
+#: src/frontends/qt4/GuiDocument.cpp:1973
+#, c-format
+msgid "%1$s and %2$s"
+msgstr "%1$s und %2$s"
+
 #: src/frontends/qt4/GuiDocument.cpp:1980
 #, c-format
 msgid "%1$s, %2$s"
@@ -23462,15 +23453,15 @@ msgstr "Undef.: "
 msgid "Sub-%1$s"
 msgstr "Unter-%1$s"
 
-#: src/insets/InsetCitation.cpp:121
+#: src/insets/InsetCitation.cpp:133
 msgid "No bibliography defined!"
 msgstr "Kein Literaturverzeichnis definiert!"
 
-#: src/insets/InsetCitation.cpp:125
+#: src/insets/InsetCitation.cpp:137
 msgid "No citations selected!"
 msgstr "Keine Literaturverweise ausgewählt!"
 
-#: src/insets/InsetCitation.cpp:296
+#: src/insets/InsetCitation.cpp:309
 msgid "not cited"
 msgstr "nicht zitiert"
 
@@ -23808,11 +23799,11 @@ msgstr ""
 "Einstweilen habe ich das Zeichen '!' durch eine Warnung ersetzt, Sie\n"
 "müssen allerdings etwas unternehmen!"
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:260
 msgid "Uncodable characters in listings inset"
 msgstr "Unkodierbare Zeichen in Programmlisting"
 
-#: src/insets/InsetListings.cpp:260
+#: src/insets/InsetListings.cpp:261
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -24730,6 +24721,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "%1$s et al."
+#~ msgstr "%1$s et al."
+
+#~ msgid "No year"
+#~ msgstr "Kein Jahr"
 
 #~ msgid "Space:"
 #~ msgstr "Leerraum:"
