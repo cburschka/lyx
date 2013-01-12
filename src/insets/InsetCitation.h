@@ -31,6 +31,8 @@ class InsetCitation : public InsetCommand
 public:
 	///
 	InsetCitation(Buffer * buf, InsetCommandParams const &);
+	///
+	~InsetCitation();
 
 	/// \name Public functions inherited from Inset class
 	//@{
