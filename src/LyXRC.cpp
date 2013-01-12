@@ -2785,7 +2785,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				    || sysfmt == sysend               // format not found
 					 || sysfmt->second.count(cmd) == 0 // this command not found
 				   )
-					os << "\\viewer_alternatives " << fmt << " " << cmd << "\n";
+					os << "\\viewer_alternatives " << fmt << " \"" << cmd << "\"\n";
 			}
 		}
 		if (tag != RC_LAST)
@@ -2810,7 +2810,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				    || sysfmt == sysend               // format not found
 				    || sysfmt->second.count(cmd) == 0 // this command not found
 				   )
-					os << "\\editor_alternatives " << fmt << " " << cmd << "\n";
+					os << "\\editor_alternatives " << fmt << " \"" << cmd << "\"\n";
 			}
 		}
 		if (tag != RC_LAST)
