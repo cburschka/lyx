@@ -9,59 +9,59 @@
 Format 43
 
 AddToPreamble
-	\usepackage{rsphrase}	% load chemical risk and safety statements
+	\usepackage{rsphrase}
 EndPreamble
 
 InsetLayout "Flex:R-S number"
-	LyxType			custom
-	LatexType		command
-	LatexName		rsnumber
-	LabelString		"R-S number"
+	LyxType		custom
+	LatexType	command
+	LatexName	rsnumber
+	LabelString	"R-S number"
 	Font
-	  Color			foreground
-	  Size			Small
-	  Family		Roman
-	  Shape			Up
-	  Series		Medium
-	  Misc			No_Emph
-	  Misc			No_Noun
-	  Misc			No_Bar
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
 	EndFont
 	LabelFont
-	  Color			green
-	  Size			Small
+	  Color		green
+	  Size		Small
 	EndFont
 End
 
 InsetLayout "Flex:R-S phrase"
-	CopyStyle 		"Flex:R-S number"
-	LatexName		rsphrase
-	LabelString		"R-S phrase"
+	CopyStyle 	"Flex:R-S number"
+	LatexName	rsphrase
+	LabelString	"R-S phrase"
 End
 
 Style "Safety phrase"
-	LatexType		command
-	LatexName		rsphrase
-	Category		MainText
-	NextNoIndent		1
+	LatexType	command
+	LatexName	rsphrase
+	Category	MainText
+	NextNoIndent	1
 	Argument 1
-		LabelString   "Safety Phrase Option|S"
-		Tooltip       "Optional argument to the rsphrase command"
+	  LabelString	"Phrase Text"
+	  Tooltip	"Argument for statements that requires to specify additional information"
 	EndArgument
-	KeepEmpty		1
-	Margin			Dynamic
-	LabelSep		xx
-	ParSkip			0.0
-	ItemSep			0.2
-	TopSep			0.7
-	BottomSep		0.7
-	ParSep			0.3
-	Align			Block
-	AlignPossible		Block
-	LabelType		Static
-	LabelString		"S phrase:"
+	KeepEmpty	1
+	Margin		Dynamic
+	LabelSep	xx
+	ParSkip		0.0
+	ItemSep		0.2
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.3
+	Align		Block
+	AlignPossible	Block
+	LabelType	Static
+	LabelString	"S phrase:"
 	LabelFont
-		Color		Green
+	  Color		Green
 	EndFont
 End
 
