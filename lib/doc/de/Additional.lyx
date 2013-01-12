@@ -19471,7 +19471,11 @@ Geschütztes
 
 Leerzeichen
 \family default
- oder 
+ oder
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 Strg+Leertaste
 \family default
@@ -24015,25 +24019,38 @@ Solch ein Chunk sieht typischerweise so aus:
 \end_layout
 
 \begin_layout LyX-Code
-#!/bin/shif [ -z "${NOWEB_SOURCE}" ] then
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+if [ -z "${NOWEB_SOURCE}" ]
+\begin_inset Newline newline
+\end_inset
+
+then
 \end_layout
 
 \begin_layout LyX-Code
-NOWEB_SOURCE=myfile.nwfi[...
-\end_layout
+NOWEB_SOURCE=myfile.nw
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
-code to extract files
-\end_layout
+fi
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
-...
- use NOWEB_OUTPUT_DIR here ...]
-\end_layout
-
-\begin_layout LyX-Code
 [...
- code to compile files ...]@
+ code to extract files ...
+ use NOWEB_OUTPUT_DIR here ...]
+\begin_inset Newline newline
+\end_inset
+
+[...
+ code to compile files ...]
+\begin_inset Newline newline
+\end_inset
+
+@
 \end_layout
 
 \begin_layout Standard
