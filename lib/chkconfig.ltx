@@ -233,13 +233,6 @@
 \fi
 
 
-%%% Document classes
-% The list of layout files has been put in this file here by the
-% configure script.
-\input{chklayouts}
-\input{chkmodules}
-
-
 %%% Packages
 \TestPackage{accents}
 \TestPackage{algorithm}
@@ -326,11 +319,15 @@
 \TestPackage{braket}
 \TestPackage{cancel}
 \TestPackage{colortbl}
+\TestPackage{diagbox}
+\TestPackage{etoolbox}
 \TestPackage{eurosym}
+\TestPackage{fp}
 \TestPackage{marginnote}
 \TestPackage{picinpar}
+\TestPackage{pict2e}
 \TestPackage{sidecap}
-\TestPackage{was}
+\TestPackage{upgreek}
 
 % psnfss is in fact the name of a set of style files, among which
 % times.sty. If times.sty is here, we will assume that everything is fine.
@@ -375,6 +372,12 @@
 \TestPackage{textgreek}
 \TestPackage{txfonts}
 \TestPackage{wasysym}
+
+%%% Document classes
+% The list of layout files has been put in this file here by the
+% configure script.
+\input{chklayouts}
+\input{chkmodules}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% END ACTUAL CONFIGURATION INSPECTION CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
