@@ -12,8 +12,8 @@ Style "Caption setup"
 	LatexName	captionsetup
 	Category	FrontMatter
 	Argument 1
-	 LabelString   "Caption Setup Options"
-	 Tooltip       "Options for the caption setup"
+	 LabelString	"Language"
+	 Tooltip	"Language that should be affected, can be 'bi-first', 'bi-second' or 'bi-both'"
 	EndArgument
 	PassThru	1
 	Margin		Dynamic
