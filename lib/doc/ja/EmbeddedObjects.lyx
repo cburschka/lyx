@@ -1,4 +1,4 @@
-#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -197,6 +197,7 @@ initials
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -223,8 +224,8 @@ initials
 \use_geometry true
 \use_amsmath 2
 \use_esint 0
-\use_mathdots 1
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -5579,7 +5580,7 @@ reference "sec:長尺表"
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -6010,7 +6011,7 @@ status collapsed
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -6416,7 +6417,7 @@ reference "cha:LyXで使用できる単位"
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -6747,7 +6748,7 @@ LTcapwidth}{5cm}
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -7200,7 +7201,7 @@ reference "tab:別キャプション"
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -9303,7 +9304,7 @@ parfillskip}{0pt}
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 

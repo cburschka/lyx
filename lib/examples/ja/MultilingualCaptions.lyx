@@ -1,4 +1,4 @@
-#LyX 2.1.0dev created this file. For more info see http://www.lyx.org/
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 413
 \begin_document
 \begin_header
@@ -37,6 +37,7 @@ bicaption
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -60,8 +61,8 @@ bicaption
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
-\use_mathdots 1
 \use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -770,7 +771,7 @@ key "bicaption"
 <features booktabs="true" islongtable="true" headBottomDL="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
-<row endfirsthead="false" caption="true">
+<row caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
