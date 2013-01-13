@@ -2,20 +2,20 @@
 # Copyright (C) 2011 LyX Developers
 # basate sur le version initial in italiano
 # g.sora <g.sora@tiscali.it>, 2011.
-# Giovanni Sora, 2011, 2012.
+# Giovanni Sora, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: ia\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-01-03 12:06-0500\n"
-"PO-Revision-Date: 2012-06-28 13:29+0200\n"
+"PO-Revision-Date: 2013-01-10 09:41+0100\n"
 "Last-Translator: Giovanni Sora <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua LyX Team <g.sora@tiscali.it>\n"
 "Language: ia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -6397,14 +6397,12 @@ msgid "Phone:"
 msgstr "Telephono:"
 
 #: lib/layouts/achemso.layout:136
-#, fuzzy
 msgid "Abbreviations"
-msgstr "Relationes AMS"
+msgstr "Abbreviationes"
 
 #: lib/layouts/achemso.layout:142
-#, fuzzy
 msgid "Abbreviations:"
-msgstr "Variation:"
+msgstr "Abbreviationes:"
 
 #: lib/layouts/achemso.layout:151 lib/layouts/apa6.layout:264
 #: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
@@ -6441,22 +6439,20 @@ msgid "List of Graphs"
 msgstr "Lista de graphicos"
 
 #: lib/layouts/achemso.layout:240
-#, fuzzy
 msgid "SupplementalInfo"
-msgstr "Supplemento"
+msgstr "Information supplementari"
 
 #: lib/layouts/achemso.layout:243
 msgid "Supporting Information Available"
-msgstr ""
+msgstr "Supportante information disponibile"
 
 #: lib/layouts/achemso.layout:246
-#, fuzzy
 msgid "TOC entry"
-msgstr "Autor indice general"
+msgstr "Entrata de indice general"
 
 #: lib/layouts/achemso.layout:250
 msgid "Graphical TOC Entry"
-msgstr ""
+msgstr "Entrata de Indice general graphic"
 
 #: lib/layouts/achemso.layout:254
 msgid "Bibnote"
@@ -6671,34 +6667,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Autores"
+msgstr "Cinque Autores"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Autores"
+msgstr "Sex Autores"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
 msgstr "Capite sinistre"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
 msgstr "Capite sinistre:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Affiliation"
+msgstr "Cinque Affiliationes"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Affiliation"
+msgstr "Sex Affiliationes"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6725,12 +6715,10 @@ msgid "Note:"
 msgstr "Nota:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "Autor"
+msgstr "Nota de Autor"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
 msgstr "Apostilla de autor:"
 
@@ -6740,9 +6728,8 @@ msgstr "Jornal"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "Solmente preambulo"
+msgstr "Preambulo"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -8926,11 +8913,11 @@ msgstr "Titulo LaTeX currente"
 
 #: lib/layouts/llncs.layout:172 lib/layouts/svcommon.inc:371
 msgid "TOC Title"
-msgstr "Titulo Indice general"
+msgstr "Titulo de Indice general"
 
 #: lib/layouts/llncs.layout:176 lib/layouts/svcommon.inc:382
 msgid "TOC title:"
-msgstr "Titulo Indice general:"
+msgstr "Titulo de  Indice general:"
 
 #: lib/layouts/llncs.layout:200
 msgid "Author Running"
@@ -8942,11 +8929,11 @@ msgstr "Autor currente:"
 
 #: lib/layouts/llncs.layout:208 lib/layouts/svcommon.inc:389
 msgid "TOC Author"
-msgstr "Autor indice general"
+msgstr "Autor de indice general"
 
 #: lib/layouts/llncs.layout:212
 msgid "TOC Author:"
-msgstr "Autor indice general:"
+msgstr "Autor de indice general:"
 
 #: lib/layouts/llncs.layout:300
 msgid "Case #."
@@ -9029,69 +9016,60 @@ msgid "Legend"
 msgstr "Legenda"
 
 #: lib/layouts/moderncv.layout:34
-#, fuzzy
 msgid "CVStyle"
-msgstr "Stilo"
+msgstr "Stilo de CV"
 
 #: lib/layouts/moderncv.layout:43
-#, fuzzy
 msgid "CV style:"
-msgstr "St&ilo de citation:"
+msgstr "Stilo de CV:"
 
 #: lib/layouts/moderncv.layout:50
-#, fuzzy
 msgid "CVColor"
-msgstr "Color"
+msgstr "Color de CV"
 
 #: lib/layouts/moderncv.layout:53
 msgid "CV color scheme:"
-msgstr ""
+msgstr "Schema de color de CV:"
 
 #: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
 msgstr "Nomine"
 
 #: lib/layouts/moderncv.layout:69
-#, fuzzy
 msgid "FamilyName"
-msgstr "&Familia:"
+msgstr "Nomine de familia:"
 
 #: lib/layouts/moderncv.layout:73
-#, fuzzy
 msgid "Family Name:"
-msgstr "&Familia:"
+msgstr "Nomine de Familia:"
 
 #: lib/layouts/moderncv.layout:106
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 #: lib/layouts/moderncv.layout:109
-#, fuzzy
 msgid "Mobile:"
-msgstr "&File:"
+msgstr "Mobile:"
 
 #: lib/layouts/moderncv.layout:133
-#, fuzzy
 msgid "Homepage:"
-msgstr "Pagina domo"
+msgstr "Pagina domo:"
 
 #: lib/layouts/moderncv.layout:136
-#, fuzzy
 msgid "ExtraInfo"
-msgstr "Extra"
+msgstr "Information Extra"
 
 #: lib/layouts/moderncv.layout:139
-#, fuzzy
 msgid "Extra Info:"
-msgstr "Optiones E&xtra:"
+msgstr "Information Extra:"
 
 #: lib/layouts/moderncv.layout:142
 msgid "Photo"
-msgstr ""
+msgstr "Photo"
 
 #: lib/layouts/moderncv.layout:145
 msgid "Photo:"
-msgstr ""
+msgstr "Photo:"
 
 #: lib/layouts/moderncv.layout:195
 msgid "Entry"
@@ -9110,13 +9088,12 @@ msgid "List Item:"
 msgstr "Lista punctate:"
 
 #: lib/layouts/moderncv.layout:226
-#, fuzzy
 msgid "ItemWithComment"
-msgstr "Commento"
+msgstr "Elemento con commento"
 
 #: lib/layouts/moderncv.layout:230
 msgid "Item with comment:"
-msgstr ""
+msgstr "Elemento con commento:"
 
 #: lib/layouts/moderncv.layout:241
 msgid "DoubleItem"
@@ -9127,14 +9104,12 @@ msgid "Double Item:"
 msgstr "Elemento duple:"
 
 #: lib/layouts/moderncv.layout:248
-#, fuzzy
 msgid "DoubleListItem"
-msgstr "Elemento duple"
+msgstr "Elemento de lista duple"
 
 #: lib/layouts/moderncv.layout:252
-#, fuzzy
 msgid "Double List Item:"
-msgstr "Elemento duple:"
+msgstr "Elemento de lista duple:"
 
 #: lib/layouts/moderncv.layout:255
 msgid "Space"
@@ -9161,33 +9136,28 @@ msgid "Close Section"
 msgstr "Claude section"
 
 #: lib/layouts/moderncv.layout:289
-#, fuzzy
 msgid "MakeCVtitle"
-msgstr "Titulo poema"
+msgstr "Titulo CV"
 
 #: lib/layouts/moderncv.layout:292
-#, fuzzy
 msgid "Make CV title"
-msgstr "Titulo Indice general:"
+msgstr "Titulo CV"
 
 #: lib/layouts/moderncv.layout:296
-#, fuzzy
 msgid "MakeLetterTitle"
-msgstr "Litteras mathematic"
+msgstr "Titulo de littera"
 
 #: lib/layouts/moderncv.layout:299
 msgid "Make letter title"
-msgstr ""
+msgstr "Face titulo de littera"
 
 #: lib/layouts/moderncv.layout:303
-#, fuzzy
 msgid "MakeLetterClosing"
-msgstr "Litteras mathematic"
+msgstr "Clausura de littera"
 
 #: lib/layouts/moderncv.layout:306
-#, fuzzy
 msgid "Close Letter"
-msgstr "Littera"
+msgstr "Claude littera"
 
 #: lib/layouts/moderncv.layout:333 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
@@ -9198,17 +9168,14 @@ msgid "--- Separate Environment ---"
 msgstr "--- Separator de Ambiente ---"
 
 #: lib/layouts/moderncv.layout:351
-#, fuzzy
 msgid "Recipient"
-msgstr "Recepta"
+msgstr "Destinatario"
 
 #: lib/layouts/moderncv.layout:395
-#, fuzzy
 msgid "Enclosing"
 msgstr "Clausura"
 
 #: lib/layouts/moderncv.layout:402
-#, fuzzy
 msgid "Enclosing:"
 msgstr "Clausura:"
 
@@ -11065,6 +11032,10 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages."
 msgstr ""
+"Iste modulo adde supporto per usar natlib insimul con apacite (le stilo de "
+"bibliographia non necessita esser apacite -- il poterea esser apacite, "
+"apacitex o omne bibliographia que functiona sia con pacchettos de natbib "
+"que con pacchettos de apacite)."
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -11986,9 +11957,8 @@ msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japonese (non-CJK) (SJIS)"
 
 #: lib/encodings:186
-#, fuzzy
 msgid "Japanese (non-CJK) (utf8)"
-msgstr "Japonese (non-CJK) (JIS)"
+msgstr "Japonese (non-CJK) (utf8)"
 
 #: lib/encodings:193
 msgid "Thai (TIS 620-0)"
