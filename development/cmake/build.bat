@@ -5,7 +5,6 @@ echo -
 echo Usage build.bat devel/install/deploy STUDIO(optional)
 echo     devel   - Builds Visual Studio project files for development on LyX
 echo     install - Builds Visual Studio project files with all enabled for installation
-echo     deploy  - Builds Makefiles and installs LyX
 echo     STUDIO  - Used Visual Studio version, default is "Visual Studio 10"
 echo               use "Visual Studio 9 2008" for Visual Studio 9
 echo
@@ -86,9 +85,9 @@ if "%1%" == "devel" (
 if "%1%" == "install" (
 	REM Build solution to develop LyX
 	REM set -DLYX_MERGE_REBUILD and -DLYX_MERGE_FILES to 1 for a version released with an installer
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=0 -DLYX_MERGE_FILES=0 -DLYX_INSTALL=1 %DEPENDENCIES_DOWNLOAD% 
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=0 -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
-	msbuild INSTALL.vcxproj /p:Configuration=Release 
+	msbuild INSTALL.vcxproj /p:Configuration=Release
 )
 
 REM go back to the dir where the script was called from
