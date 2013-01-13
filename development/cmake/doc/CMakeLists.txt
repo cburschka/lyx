@@ -8,7 +8,10 @@
 project(doc)
 
 SET(_docs)
-file(GLOB_RECURSE _rel_lyx_docs RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.lyx" "${TOP_SRC_DIR}/lib/doc/*.txt")
+file(GLOB_RECURSE _rel_lyx_docs RELATIVE "${TOP_SRC_DIR}/lib/doc"
+			"${TOP_SRC_DIR}/lib/doc/*.lyx"
+			"${TOP_SRC_DIR}/lib/doc/*.txt"
+			"${TOP_SRC_DIR}/lib/doc/*.tex")
 list(REMOVE_ITEM _rel_lyx_docs LFUNs.lyx)
 
 foreach(_rel_doc ${_rel_lyx_docs})
