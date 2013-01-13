@@ -1468,14 +1468,7 @@ target "http://www.ctan.org/"
 \bar no
 \noun off
 \color none
-と第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Special-features"
-
-\end_inset
-
-節をご覧ください。
+と第。
 \end_layout
 
 \begin_layout Standard
@@ -2509,32 +2502,7 @@ usepackage{indentfirst}
 \bar no
 \noun off
 \color none
-この文書のプリアンブルを見てみると、どのような高度な設定ができるか、おおまかな理解が得られるでしょう。また第
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Special-features"
-
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-章には、他の例や、LaTeXの各種の「汚い技」があります。
+この文書のプリアンブルを見てみると、どのような高度な設定ができるか、おおまかな理解が得られるでしょう。
 \end_layout
 
 \begin_layout Section
@@ -14885,7 +14853,7 @@ clock
 にタイムマーカーを加えることができます。詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:slideNote"
+reference "sec:スライド注釈"
 
 \end_inset
 
@@ -15821,7 +15789,7 @@ clock
 」を追加指定する必要があります（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:slidesetup-1"
+reference "sec:slidesetup"
 
 \end_inset
 
