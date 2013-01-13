@@ -328,6 +328,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			if (reset) {
 				latexargs_.clear();
 				itemargs_.clear();
+				postcommandargs_.clear();
 			}
 			break;
 

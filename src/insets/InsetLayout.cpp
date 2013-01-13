@@ -336,8 +336,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_RESETARGS:
 			bool reset;
 			lex >> reset;
-			if (reset)
+			if (reset) {
 				latexargs_.clear();
+				postcommandargs_.clear();
+			}
 			break;
 		case IL_ARGUMENT:
 			readArgument(lex);
