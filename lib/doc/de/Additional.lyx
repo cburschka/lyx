@@ -34,9 +34,6 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
-
-% Damit der Index den Namen "Stichwortverzeichnis" erhält
-\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -99,7 +96,7 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -24996,33 +24993,17 @@ Vorwort
 \end_layout
 
 \begin_layout Standard
-Um ein Vorwort für mehrere Spalten hinzuzufügen, fügt man den Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-}[
-\end_layout
-
-\begin_layout Standard
-als TeX-Code nach der Anzahl der Spalten im Stil
+Um ein Vorwort für mehrere Spalten hinzuzufügen, fügt man den optionalen
+ Parameter 
+\family sans
+Vorwort
+\family default
+ nach der Anzahl der Spalten im Stil
 \family sans
  Beginn Mehrfachspalten
 \family default
  ein.
- Nach dem Befehl folgt der Text des Vorworts.
- Am Ende des Stils verwendet man den Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-]{
-\end_layout
-
-\begin_layout Standard
-als TeX-Code.
+ Dahinein schreibt man das Vorwort.
  Ein Beispiel mit einem Vorwort:
 \end_layout
 
@@ -25035,24 +25016,12 @@ als TeX-Code.
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
 Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldots{}
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset
@@ -25087,7 +25056,7 @@ On the evening of the crime, he returned from the club exactly at ten.
 \begin_layout Standard
 Man kann auch einen Abschnittstitel als Vorwort verwenden indem man den
  Ab\SpecialChar \-
-schnitts-Befehl als TeX-Code nach dem ersten TeX-Code eingibt.
+schnitts-Befehl als TeX-Code eingibt.
  Zum Beispiel erstellt der Befehl
 \end_layout
 
@@ -25106,17 +25075,10 @@ einen Unterabschnitt.
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -25141,12 +25103,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset
@@ -25192,51 +25148,56 @@ Wenn am Beginn der Mehrfachspalten weniger vertikaler Leerraum am unteren
 
 Textzeilen benötigt werden, wird ein Seitenumbruch vor den Mehrfachspalten
  eingefügt.
- Je nach Anzahl der Zeilen des Vorworts möchte man diesen Wert eventuell
+ Je nach Anzahl der Zeilen des Vorworts möchte man diesen Leerraum eventuell
  ändern.
- Er wird durch den Befehl
-\end_layout
+ Dies wird erreicht, indem man den optionalen Parameter 
+\family sans
+Leerraum vor Seitenumbruch
+\family default
+ nach dem Vorwort einfügt.
+ Darin gibt man den Leerraum an, z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-][Anzahl
-\backslash
-baselineskip
-\end_layout
-
-\begin_layout Standard
-geändert, der als TeX-Code hinter der Vorwort-Definition, aber vor dem finalen
+B.
  
-\series bold
-]{
-\series default
- Befehl eingefügt wird.
- 
-\emph on
-Anzahl
-\emph default
- ist hierbei die Anzahl der Textzeilen.
+\begin_inset Quotes gld
+\end_inset
+
+5cm
+\begin_inset Quotes grd
+\end_inset
+
+.
  In diesem Beispiel ist der Leerraum auf 7
 \begin_inset space ~
 \end_inset
 
-Textzeilen eingestellt:
+Textzeilen eingestellt, indem 
+\begin_inset Quotes gld
+\end_inset
+
+7
+\backslash
+baselineskip
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet wurde (wobei der Befehl 
+\series bold
+
+\backslash
+baselineskip
+\series default
+ als TeX-Code eingegeben werden muss):
 \end_layout
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -25269,12 +25230,22 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+7
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-][7
+
 \backslash
 baselineskip
 \end_layout
@@ -25282,12 +25253,6 @@ baselineskip
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset
@@ -25298,9 +25263,8 @@ status collapsed
 \begin_layout Standard
 
 \size small
-On the evening of the crime, he returned from th
 \lang english
-e club exactly at ten.
+On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
  floor, generally used as his sitting-room.
@@ -25781,7 +25745,7 @@ Ungewöhnliche Absatzformen
 LaTeX verwendet, wie alle anderen Textprogramme, standardmäßig rechteckige
  Absätze.
  Für spezielle Fälle wie zum Beispiel Poster, Einladungskarten oder Gedichte
- kann man die Abssatzform beliebig verändern.
+ kann man die Absatzform beliebig verändern.
  Dies kann mit dem LaTeX-Paket 
 \series bold
 shapepar
@@ -26698,7 +26662,7 @@ shapepar
 \family sans
 Shapepar
 \family default
- an, die dazu verwendet werden können, eigene Formen Kordinate für Koordinate
+ an, die dazu verwendet werden können, eigene Formen Koordinate für Koordinate
  zu definieren.
 \begin_inset Foot
 status collapsed

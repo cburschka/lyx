@@ -97,7 +97,7 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -22753,33 +22753,16 @@ Preface
 \end_layout
 
 \begin_layout Standard
-To add a preface text for multiple columns, add the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-}[
-\end_layout
-
-\begin_layout Standard
-as TeX Code behind the number of columns in the
+To add a preface text for multiple columns, add the optional parameter 
+\family sans
+Preface
+\family default
+ behind the number of columns in the
 \family sans
  Begin Multiple Columns
 \family default
  style.
- Behind the command follows the preface text.
- At the end of the style use the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-]{
-\end_layout
-
-\begin_layout Standard
-as TeX Code.
+ Write in there your preface.
  An example with some preface text:
 \end_layout
 
@@ -22792,24 +22775,12 @@ as TeX Code.
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
 And the story continues and continues and continues and continues\SpecialChar \ldots{}
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset
@@ -22842,7 +22813,7 @@ On the evening of the crime, he returned from the club exactly at ten.
 
 \begin_layout Standard
 You can also use a section heading as the preface if you use a section command
- as TeX Code behind the first TeX Code.
+ as TeX Code.
  For example the command
 \end_layout
 
@@ -22861,17 +22832,10 @@ creates a subsection.
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -22896,12 +22860,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset
@@ -22939,56 +22897,65 @@ A minute examination of the circumstances served only to make the case more
 \end_layout
 
 \begin_layout Standard
-If there is less vertical space left on the page at the beginning of the
- multiple columns than needed for 6
+If there is less vertical space than 6
 \begin_inset space ~
 \end_inset
 
-text lines, a page break will be inserted before the multiple columns.
+text lines is left on the page at the beginning of the multiple columns,
+ a page break will be inserted before the multiple columns.
  Depending on the number of lines of the preface text, you might want to
- change this value.
- It is determined by inserting the command
-\end_layout
+ change this space.
+ This is done by inserting the optional parameter 
+\family sans
+Space before page break
+\family default
+ behind the preface.
+ There insert the amount of space like e.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
+g.
+\begin_inset space \space{}
+\end_inset
 
-\series bold
-][number
-\backslash
-baselineskip
-\end_layout
 
-\begin_layout Standard
-as TeX Code behind the preface definition but before the final 
-\series bold
-]{
-\series default
- command.
- 
-\emph on
-number
-\emph default
- is hereby the number of text lines.
+\begin_inset Quotes eld
+\end_inset
+
+5cm
+\begin_inset Quotes erd
+\end_inset
+
+.
  In this example the space is set to 7
 \begin_inset space ~
 \end_inset
 
-text lines:
+text lines by using 
+\begin_inset Quotes eld
+\end_inset
+
+7
+\backslash
+baselineskip
+\begin_inset Quotes erd
+\end_inset
+
+ (where the command 
+\series bold
+
+\backslash
+baselineskip
+\series default
+ needs to be inserted as TeX code):
 \end_layout
 
 \begin_layout Begin Multiple Columns
 2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument post:1
+status open
 
 \begin_layout Plain Layout
-
-}[
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -23021,12 +22988,22 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:2
+status open
+
+\begin_layout Plain Layout
+7
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-][7
+
 \backslash
 baselineskip
 \end_layout
@@ -23034,12 +23011,6 @@ baselineskip
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]{
 \end_layout
 
 \end_inset

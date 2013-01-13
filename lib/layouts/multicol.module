@@ -2,11 +2,18 @@
 #DescriptionBegin
 #Adds 2 styles to begin and end text in multiple columns.
 #The begin style contains the number of columns, the end style must be kept empty.
-#See the Additional manual for a detailed description of multiple columns.
+#See the Additional manual, section "Multiple Text Columns", for a detailed
+#description of multiple columns.
 #DescriptionEnd
 #Author: Uwe Stöhr
 
 Format 43
+
+AddToPreamble
+ % used for multiple text columns
+ \usepackage{multicol}
+
+EndPreamble
 
 Style "Begin Multiple Columns"
   Category		MainText
@@ -16,8 +23,14 @@ Style "Begin Multiple Columns"
   LabelSep		xx
   LatexName	        begin{multicols}
   LabelString		"---Begin Multiple Columns---"
-  #OptionalArgs		2
-  #RequiredArgs		1
+  Argument post:1
+    LabelString		"Preface"
+    Tooltip		"An optional preface"
+  EndArgument
+  Argument post:2
+    LabelString		"Space before page break"
+    Tooltip		"Free space that needs to be on the page to start the multiple columns on this page"
+  EndArgument
   KeepEmpty		1
   ParSkip		0
   TopSep		0
@@ -29,14 +42,12 @@ Style "Begin Multiple Columns"
   LabelFont
     Color		Green
   EndFont
-  Preamble
-    \usepackage{multicol}
-  EndPreamble
 End
 
 Style "End Multiple Columns"
   CopyStyle		"Begin Multiple Columns"
   LatexName	        end{multicols}
   LabelString		"---End Multiple Columns---"
+  ResetArgs		1
 End
 
