@@ -77,6 +77,7 @@ Style Conference
 	Align		Left
 	Argument 1
 	  Mandatory	1
+	  AutoInsert	1
 	  LabelString	"Name"
 	  Tooltip	"Name of the conference"
 	EndArgument
@@ -175,7 +176,7 @@ End
 
 
 Style Keywords
-	CopyStyle	CopyrightYear
+	CopyStyle	Terms
 	LatexName	keywords
 	LabelString	"Keywords:"
 End
