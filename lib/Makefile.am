@@ -1063,6 +1063,7 @@ dist_imagesmath_DATA = \
 	images/math/rceil.png \
 	images/math/Re.png \
 	images/math/recorder.png \
+	images/math/restriction.png \
 	images/math/rfloor.png \
 	images/math/rhd.png \
 	images/math/rhd2.png \
