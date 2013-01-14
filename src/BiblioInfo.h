@@ -51,8 +51,11 @@ public:
 	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
-	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(bool jurabib_style = false, std::string lang = "en") const;
+	/// \return the short form of an authorlist, used for sorting
+	docstring const getAbbreviatedAuthor(bool jurabib_style = false) const;
+	/// \return the short form of an authorlist, translated to the
+	/// buffer language.
+	docstring const getAbbreviatedAuthor(Buffer const & buf, bool jurabib_style = false) const;
 	///
 	docstring const getYear() const;
 	///
@@ -109,9 +112,9 @@ private:
 	/// like operator[], except, if the field is empty, it will attempt
 	/// to get the data from xref BibTeXInfo object, which would normally
 	/// be the one referenced in the crossref field.
-	docstring getValueForKey(std::string const & key,
+	docstring getValueForKey(std::string const & key, Buffer const & buf,
 		docstring const & before, docstring const & after, docstring const & dialog,
-		BibTeXInfo const * const xref = 0, std::string lang = "en") const;
+		BibTeXInfo const * const xref = 0) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -171,14 +174,23 @@ public:
 	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
 	/// \return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(docstring const & key, std::string lang = "en") const;
+	docstring const getAbbreviatedAuthor(docstring const & key, Buffer const & buf) const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
 	/// Note that this will get the year from the crossref if it's
 	/// not present in the record itself.
 	docstring const getYear(docstring const & key,
-			bool use_modifier = false, std::string lang = "en") const;
+			bool use_modifier = false) const;
+	/// \return the year from the bibtex data record for \param key
+	/// if \param use_modifier is true, then we will also append any
+	/// modifier for this entry (e.g., 1998b).
+	/// Note that this will get the year from the crossref if it's
+	/// not present in the record itself.
+	/// If no year is found, \return "No year" translated to the buffer
+	/// language.
+	docstring const getYear(docstring const & key, Buffer const & buf,
+			bool use_modifier = false) const;
 	///
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.

@@ -254,7 +254,7 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style, string lang) const
+docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 {
 	if (!is_bibtex_) {
 		docstring const opt = label();
@@ -293,15 +293,30 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style, string lang
 		return shortauthor;
 	}
 
-	if (authors.size() == 2)
-		return bformat(translateIfPossible(from_ascii("%1$s and %2$s"), lang),
+	if (authors.size() == 2 && authors[1] != "others")
+		return bformat(from_ascii("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
 
-	if (authors.size() > 2)
-		return bformat(translateIfPossible(from_ascii("%1$s et al."), lang),
+	if (authors.size() >= 2)
+		return bformat(from_ascii("%1$s et al."),
 			familyName(authors[0]));
 
 	return familyName(authors[0]);
+}
+
+
+docstring const BibTeXInfo::getAbbreviatedAuthor(Buffer const & buf, bool jurabib_style) const
+{
+	docstring const author = getAbbreviatedAuthor(jurabib_style);
+	if (!is_bibtex_)
+		return author;
+	vector<docstring> const authors = getVectorFromString(author, from_ascii(" and "));
+	if (authors.size() == 2)
+		return bformat(buf.B_("%1$s and %2$s"), authors[0], authors[1]);
+	docstring::size_type const idx = author.rfind(from_ascii(" et al."));
+	if (idx != docstring::npos)
+		return bformat(buf.B_("%1$s et al."), author.substr(0, idx));
+	return author;
 }
 
 
@@ -456,7 +471,6 @@ docstring BibTeXInfo::expandFormat(string const & format,
 	static int max_passes = 5000;
 	docstring ret; // return value
 	string key;
-	string lang = buf.params().language->code();
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
@@ -480,8 +494,6 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				// so we replace the key with its value, which may be empty
 				if (key[0] == '!') {
 					// macro
-					// FIXME: instead of passing the buf, just past the macros
-					// FIXME: and the language code
 					string const val =
 						buf.params().documentClass().getCiteMacro(engine_type, key);
 					fmt = val + fmt.substr(1);
@@ -491,11 +503,11 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					string const val =
 						buf.params().documentClass().getCiteMacro(engine_type, key);
 					docstring const trans =
-						translateIfPossible(from_utf8(val), lang);
+						translateIfPossible(from_utf8(val), buf.params().language->code());
 					ret += trans;
 				} else {
 					docstring const val =
-						getValueForKey(key, before, after, dialog, xref, lang);
+						getValueForKey(key, buf, before, after, dialog, xref);
 					if (!scanning_rich)
 						ret += from_ascii("{!<span class=\"bib-" + key + "\">!}");
 					ret += val;
@@ -526,7 +538,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 						return _("ERROR!");
 					fmt = newfmt;
 					docstring const val =
-						getValueForKey(optkey, before, after, dialog, xref, lang);
+						getValueForKey(optkey, buf, before, after, dialog, xref);
 					if (optkey == "next" && next)
 						ret += from_utf8(ifpart); // without expansion
 					else if (!val.empty())
@@ -649,9 +661,9 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 }
 
 
-docstring BibTeXInfo::getValueForKey(string const & key,
+docstring BibTeXInfo::getValueForKey(string const & key, Buffer const & buf,
 	docstring const & before, docstring const & after, docstring const & dialog,
-	BibTeXInfo const * const xref, string lang) const
+	BibTeXInfo const * const xref) const
 {
 	docstring ret = operator[](key);
 	if (ret.empty() && xref)
@@ -670,12 +682,12 @@ docstring BibTeXInfo::getValueForKey(string const & key,
 		return label_;
 	else if (key == "abbrvauthor")
 		// Special key to provide abbreviated author names.
-		return getAbbreviatedAuthor(false, lang);
+		return getAbbreviatedAuthor(buf, false);
 	else if (key == "shortauthor")
 		// When shortauthor is not defined, jurabib automatically
 		// provides jurabib-style abbreviated author names. We do
 		// this as well.
-		return getAbbreviatedAuthor(true, lang);
+		return getAbbreviatedAuthor(buf, true);
 	else if (key == "shorttitle") {
 		// When shorttitle is not defined, jurabib uses for `article'
 		// and `periodical' entries the form `journal volume [year]'
@@ -750,13 +762,13 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, string lang) const
+docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, Buffer const & buf) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAbbreviatedAuthor(false, lang);
+	return data.getAbbreviatedAuthor(buf, false);
 }
 
 
@@ -770,7 +782,7 @@ docstring const BiblioInfo::getCiteNumber(docstring const & key) const
 }
 
 
-docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier, string lang) const
+docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -782,16 +794,25 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier, st
 		docstring const xref = data.getXRef();
 		if (xref.empty())
 			// no luck
-			return translateIfPossible(from_ascii("No year"), lang);
+			return docstring();
 		BiblioInfo::const_iterator const xrefit = find(xref);
 		if (xrefit == end())
 			// no luck again
-			return translateIfPossible(from_ascii("No year"), lang);
+			return docstring();
 		BibTeXInfo const & xref_data = xrefit->second;
 		year = xref_data.getYear();
 	}
 	if (use_modifier && data.modifier() != 0)
 		year += data.modifier();
+	return year;
+}
+
+
+docstring const BiblioInfo::getYear(docstring const & key, Buffer const & buf, bool use_modifier) const
+{
+	docstring const year = getYear(key, use_modifier);
+	if (year.empty())
+		return buf.B_("No year");
 	return year;
 }
 
