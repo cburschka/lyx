@@ -23,7 +23,6 @@
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
@@ -939,10 +938,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	CiteEngineType const engine_type = buffer().params().citeEngineType();
 	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
 
-	docstring reflabel = from_ascii("References");
-	Language const * l = buffer().params().language;
-	if (l)
-		reflabel = translateIfPossible(reflabel, l->code());
+	docstring const reflabel = buffer().B_("References");
 
 	xs << html::StartTag("h2", "class='bibtex'")
 		<< reflabel
