@@ -52,6 +52,8 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
+	int plaintext(odocstream &, OutputParams const &) const;
+	///
 	void collectBibKeys(InsetIterator const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
