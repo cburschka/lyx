@@ -27,6 +27,9 @@ Handling of LaTeX distributions
 Function LaTeXActions
  # checks if MiKTeX or TeXLive is installed
 
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
   # test if MiKTeX is installed
   # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"

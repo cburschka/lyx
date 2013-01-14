@@ -14,7 +14,7 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_REVISION 5
 !define APP_VERSION_EMERGENCY "1" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "." # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 2 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -37,10 +37,9 @@ These typically need to be modified for each LyX release
 # File locations
 # !!! you need to adjust them to the folders in your Windows system !!!
 
-!define FILES_LYX "C:\LyX\lyx-20-install"
-!define FILES_DEPS "C:\LyX\lyx-20-build\msvc2010-deps\deps20"
-!define FILES_BUNDLE "C:\LyX\depsbundle"
-!define FILES_QT "C:\Qt\qt-everywhere-opensource-src-4.8.3"
+!define FILES_LYX "C:\LyX\LyXPackage\LyX"
+!define FILES_DEPS "C:\LyX\LyX2.0x\lyx-windows-deps-msvc2008"
+!define FILES_QT "C:\LyX\LyXPackage\LyX"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
