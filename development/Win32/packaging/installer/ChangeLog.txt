@@ -1,4 +1,17 @@
-﻿Changelog for LyX-205-5:
+﻿Changelog for LyX-2051-2:
+Bugfix:
+- fix bug that an installed MiKTeX was not found on Windows 7 and 8 with 64 bit
+
+New feature:
+- adapt the source package to make it easier to comple the installer;
+  added a Readme file describing how to compile
+
+
+Changelog for LyX-2051-1:
+Nothing changed except of LyX.
+
+
+Changelog for LyX-205-5:
 Bugfixes:
 - fix bug that installer stopped working if LyX was installed
   the first time on a computer
@@ -52,7 +65,7 @@ Changelog for LyX-205-2:
 - fixed detection for already installed Ghostscript and GSview on 64bit Windows
 - fixed detection for jEdit, Vim, WinEdt and TeXnicCenter as LaTeX source file editor
 - fixed detection of Gimp and Photoshop as image manipulating program
-- updated spell-checker dictionaries for German and Belorussion
+- updated spell-checker dictionaries for German and Belorussian
   (To benefit from them you must uninstall an already installed LyX 2.0.x and
    then use this installer.)
 - updated thesaurus for German
