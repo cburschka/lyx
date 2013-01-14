@@ -962,10 +962,10 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		if (numbers)
 			citekey = entry.citeNumber();
 		else {
-			docstring const auth = entry.getAbbreviatedAuthor(l->code());
+			docstring const auth = entry.getAbbreviatedAuthor(buffer());
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
-			docstring const year = bibinfo.getYear(*vit, true, l->code());
+			docstring const year = bibinfo.getYear(*vit, buffer(), true);
 			if (!auth.empty() && !year.empty())
 				citekey = auth + ' ' + year;
 		}

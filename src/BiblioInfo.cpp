@@ -212,7 +212,7 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor(string lang) const
+docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
 	if (!is_bibtex_) {
 		docstring const opt = label();
@@ -243,15 +243,30 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(string lang) const
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
 
-	if (authors.size() == 2)
-		return bformat(translateIfPossible(from_ascii("%1$s and %2$s"), lang),
+	if (authors.size() == 2 && authors[1] != "others")
+		return bformat(from_ascii("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
 
-	if (authors.size() > 2)
-		return bformat(translateIfPossible(from_ascii("%1$s et al."), lang),
+	if (authors.size() >= 2)
+		return bformat(from_ascii("%1$s et al."),
 			familyName(authors[0]));
 
 	return familyName(authors[0]);
+}
+
+
+docstring const BibTeXInfo::getAbbreviatedAuthor(Buffer const & buf) const
+{
+	docstring const author = getAbbreviatedAuthor();
+	if (!is_bibtex_)
+		return author;
+	vector<docstring> const authors = getVectorFromString(author, from_ascii(" and "));
+	if (authors.size() == 2)
+		return bformat(buf.B_("%1$s and %2$s"), authors[0], authors[1]);
+	docstring::size_type const idx = author.rfind(from_ascii(" et al."));
+	if (idx != docstring::npos)
+		return bformat(buf.B_("%1$s et al."), author.substr(0, idx));
+	return author;
 }
 
 
@@ -635,13 +650,13 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, string lang) const
+docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, Buffer const & buf) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAbbreviatedAuthor(lang);
+	return data.getAbbreviatedAuthor(buf);
 }
 
 
@@ -655,7 +670,7 @@ docstring const BiblioInfo::getCiteNumber(docstring const & key) const
 }
 
 
-docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier, string lang) const
+docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -667,16 +682,25 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier, st
 		docstring const xref = data.getXRef();
 		if (xref.empty())
 			// no luck
-			return translateIfPossible(from_ascii("No year"), lang);
+			return docstring();
 		BiblioInfo::const_iterator const xrefit = find(xref);
 		if (xrefit == end())
 			// no luck again
-			return translateIfPossible(from_ascii("No year"), lang);
+			return docstring();
 		BibTeXInfo const & xref_data = xrefit->second;
 		year = xref_data.getYear();
 	}
 	if (use_modifier && data.modifier() != 0)
 		year += data.modifier();
+	return year;
+}
+
+
+docstring const BiblioInfo::getYear(docstring const & key, Buffer const & buf, bool use_modifier) const
+{
+	docstring const year = getYear(key, use_modifier);
+	if (year.empty())
+		return buf.B_("No year");
 	return year;
 }
 
@@ -726,9 +750,8 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 	if (empty())
 		return vector<docstring>();
 
-	string const lang = buf.params().language->code();
-	docstring const author = getAbbreviatedAuthor(key, lang);
-	docstring const year   = getYear(key, true, lang);
+	docstring const author = getAbbreviatedAuthor(key, buf);
+	docstring const year   = getYear(key, buf, true);
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 
@@ -786,9 +809,8 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 	if (empty())
 		return vector<docstring>();
 
-	string const lang = buf.params().language->code();
-	docstring const author = getAbbreviatedAuthor(key, lang);
-	docstring const year   = getYear(key, true, lang);
+	docstring const author = getAbbreviatedAuthor(key, buf);
+	docstring const year   = getYear(key, buf, true);
 	if (author.empty() || year.empty())
 		return vector<docstring>();
 

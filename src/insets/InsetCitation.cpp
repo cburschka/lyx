@@ -21,7 +21,6 @@
 #include "DispatchResult.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
-#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
@@ -271,7 +270,6 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	// CITE:	author/<before field>
 
 	CiteEngine const engine = buffer().params().citeEngine();
-	Language const * lang = buffer().params().language;
 	// We don't currently use the full or forceUCase fields.
 	string cite_type = asValidLatexCommand(getCmdName(), engine);
 	if (cite_type[0] == 'C')
@@ -334,8 +332,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	vector<docstring>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
-		docstring const author = biblist.getAbbreviatedAuthor(*it, lang->code());
-		docstring const year = biblist.getYear(*it, for_xhtml, lang->code());
+		docstring const author = biblist.getAbbreviatedAuthor(*it, buffer());
+		docstring const year = biblist.getYear(*it, buffer(), for_xhtml);
 		docstring const citenum = for_xhtml ? biblist.getCiteNumber(*it) : *it;
 
 		if (author.empty() || year.empty())
