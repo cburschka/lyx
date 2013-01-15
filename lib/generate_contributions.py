@@ -1289,6 +1289,14 @@ contributers = [
                  "",
                  u"Mathematica backend for mathed"),
 
+     contributer(u"Benjamin Piwowarski",
+                 "benjamin ! piwowarski () lip6 ! fr",
+                 "GPL",
+                 "GPL statement",
+                 "m=133958334631163",
+                 "13 June 2012",
+                 u"AppleScript, integration with bibliography managers"),
+
      contributer(u"Neoklis Polyzotis",
                  "alkis () soe ! ucsc ! edu",
                  "GPL",
