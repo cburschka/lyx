@@ -16,7 +16,6 @@
 #include "InsetCommand.h"
 
 #include "Citation.h"
-#include "support/strfwd.h"
 
 namespace lyx {
 
