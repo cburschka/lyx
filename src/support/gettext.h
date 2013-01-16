@@ -37,6 +37,10 @@ namespace lyx {
  * Remember to mention each of these files in "po/POFILES.in"
  *
  * The main() needs a locale_init() and a gettext_init() in the beginning.
+ *
+ * The various *_() methods accept only ASCII input, so they must not be used
+ * if the input may come from user supplied  files.
+ * translateIfPossible() should be used in that case.
  */
 
 /*
