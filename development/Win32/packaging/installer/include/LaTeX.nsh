@@ -28,7 +28,7 @@ Function LaTeXActions
  # checks if MiKTeX or TeXLive is installed
 
   ${if} ${RunningX64}
-   SetRegView 64
+   SetRegView 64 # the PATH is in the 64bit registry section
   ${endif}
   # test if MiKTeX is installed
   # reads the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
@@ -36,16 +36,44 @@ Function LaTeXActions
   StrCpy $Search "miktex"
   Call LaTeXCheck # sets the path to the latex.exe to $PathLaTeX # Function from LyXUtils.nsh
   
+  # check for 32bit MiKTeX
   ${if} $PathLaTeX != ""
+   ${if} ${RunningX64}
+    SetRegView 32
+   ${endif}
    # check if MiKTeX 2.8 or newer is installed
    StrCpy $0 0
-   loopA:
+   loop32:
     EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
-    StrCmp $1 "" doneA
+    StrCmp $1 "" done32
     StrCpy $String $1
     IntOp $0 $0 + 1
-    Goto loopA
-   doneA:
+    Goto loop32
+   done32:
+   ${if} $String == "2.8"
+    StrCpy $MiKTeXVersion "2.8"
+    StrCpy $LaTeXName "MiKTeX 2.8"
+   ${endif}
+   ${if} $String == "2.9"
+    StrCpy $MiKTeXVersion "2.9"
+    StrCpy $LaTeXName "MiKTeX 2.9"
+   ${endif}
+  ${endif}
+  
+  # check for 64bit MiKTeX
+  ${if} $PathLaTeX == ""
+   ${if} ${RunningX64}
+    SetRegView 64
+   ${endif}
+   # check if MiKTeX 2.8 or newer is installed
+   StrCpy $0 0
+   loop64:
+    EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
+    StrCmp $1 "" done64
+    StrCpy $String $1
+    IntOp $0 $0 + 1
+    Goto loop64
+   done64:
    ${if} $String == "2.8"
     StrCpy $MiKTeXVersion "2.8"
     StrCpy $LaTeXName "MiKTeX 2.8"
@@ -59,6 +87,9 @@ Function LaTeXActions
   ${if} $PathLaTeX != ""
    StrCpy $MiKTeXUser "HKLM" # needed later to configure MiKTeX
   ${else} # check if MiKTeX is installed only for the current user
+   ${if} ${RunningX64}
+    SetRegView 64 # the PATH is in the 64bit registry section
+   ${endif}
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck # function from LyXUtils.nsh
@@ -98,6 +129,9 @@ Function LaTeXActions
   # test if TeXLive is installed
   # TeXLive can be installed so that it appears in the PATH variable and/or only as current user.
   # The safest method is to first check for the PATH because this is independent of the TeXLive version.
+  ${if} ${RunningX64}
+   SetRegView 64 # the PATH is in the 64bit registry section
+  ${endif}
   ${if} $PathLaTeX == ""
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
    StrCpy $Search "TeXLive"
@@ -111,6 +145,9 @@ Function LaTeXActions
    Call LaTeXCheck # function from LyXUtils.nsh
   ${endif}
   # check if it was installed to the system
+  ${if} ${RunningX64}
+   SetRegView 32 # TeXLive is a 32bit application
+  ${endif}
   ${if} $PathLaTeX == ""
    ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
    ${if} $String == ""
@@ -158,6 +195,9 @@ FunctionEnd
    ExecWait ${MiKTeXInstall}
    # test if MiKTeX is installed
    Call LaTeXActions
+   ${if} ${RunningX64}
+    SetRegView 32 # we install the 32bit version of MiKTeX
+   ${endif}
    ${if} $PathLaTeX != ""
     # special entry that it was installed together with LyX
     # so that we can later uninstall it together with LyX
@@ -208,6 +248,9 @@ Function ConfigureMiKTeX
   
   # only install a Perl interpreter if it is not already installed
   # this is only possible if MikTeX _and_ LyX is installed with the same privileges
+  ${if} ${RunningX64}
+   SetRegView 32 # FIXME: recheck this if the 64bit version of MiKTeX is out of beta state 
+  ${endif}
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX $MiKTeXVersion" "DisplayVersion"
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
@@ -244,29 +287,29 @@ Function ConfigureMiKTeX
   
  ${endif} # end if $PathLaTeX != ""
   
-  # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
+  # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first) and
+  # if there is not package repository (MiKTeX's primary package repository) then set it
+  # FIXME: support 64bit MiKTeX if it is out of beta state
   ${if} $MiKTeXUser == "HKCU" # if only for current user
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
+   ReadRegStr $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
+   ${if} $1 == ""
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" 
+    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
+   ${endif}
   ${else}
    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
+   ReadRegStr $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
+   ${if} $1 == ""
+    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
+    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
+   ${endif}
    # we need to state that missing packages should be installed for all users too
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoAdmin" "t"
-  ${endif}
-  # set package repository (MiKTeX's primary package repository)
-  ${if} $MiKTeXUser == "HKCU" # if only for current user
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" 
-   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-  ${else}
-   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-   WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
   ${endif}
   
   # update MiKTeX's package file list
   ExecWait '$PathLaTeX\mpm.exe --update-fndb'
-  # the following feature is planned to be used for a possible Live version
-  # copy LaTeX-packages needed by LyX
-  # SetOutPath "$INSTDIR"
-  # File /r "${LaTeXPackagesDir}"
   
 FunctionEnd
 

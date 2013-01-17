@@ -1,8 +1,11 @@
-﻿Changelog for LyX-2051-2:
-Bugfix:
-- fix bug that an installed MiKTeX was not found on Windows 7 and 8 with 64 bit
+﻿Changelog for LyX-2051-3:
+- fix bug that MiKTeX was not correctly configures on somme 64bit versions of Windows 7
+- don't overwrite the MiKTeX package repository from where missing packages will be installed
+- updated to JabRef 2.9.2
 
-New feature:
+
+Changelog for LyX-2051-2:
+- fix bug that an installed MiKTeX was not found on Windows 7 and 8 with 64 bit
 - adapt the source package to make it easier to comple the installer;
   added a Readme file describing how to compile
 
