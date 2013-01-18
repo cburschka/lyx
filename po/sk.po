@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2012-12-31 16:59+0100\n"
-"PO-Revision-Date: 2012-12-01 12:12+0100\n"
+"POT-Creation-Date: 2013-01-16 12:09+0100\n"
+"PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -266,7 +266,7 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
-msgstr "Presuň označenú databázu v listine dole"
+msgstr "Presunúť označenú databázu v listine dole"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:121
 msgid "Do&wn"
@@ -274,7 +274,7 @@ msgstr "Na&dol"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
 msgid "Move the selected database upwards in the list"
-msgstr "Presuň označenú databázu v listine hore"
+msgstr "Presunúť označenú databázu v listine hore"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:127
 #: src/frontends/qt4/ui/ModulesUi.ui:114
@@ -472,7 +472,7 @@ msgstr "&Sufix súboru"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
-msgstr "Ukáž ne-definované vetvy použité v tomto dokumente."
+msgstr "Ukázať ne-definované vetvy použité v tomto dokumente."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
@@ -513,7 +513,7 @@ msgstr "&Odstrániť"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 msgid "Change the name of the selected branch"
-msgstr "Premenuj označenú vetvu"
+msgstr "Premenovať označenú vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:146
 msgid "Re&name..."
@@ -521,19 +521,19 @@ msgstr "Premenu&j..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
-msgstr "Pridaj označené vetvy do zoznamu."
+msgstr "Pridať označené vetvy do zoznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 msgid "&Add Selected"
-msgstr "Pr&idaj Označené"
+msgstr "Pr&idať Označené"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Pridaj všetky neznáme vetvy do zoznamu."
+msgstr "Pridať všetky neznáme vetvy do zoznamu."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr "Prid&aj Všetko"
+msgstr "Pridať Vš&etko"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
 #: src/frontends/qt4/ui/CitationUi.ui:220
@@ -924,7 +924,7 @@ msgstr "&Regulárny výraz"
 
 #: src/frontends/qt4/ui/CitationUi.ui:456
 msgid "Case se&nsitive"
-msgstr "Rozlišovať veľkosť pí&smen"
+msgstr "R&ozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:463
 msgid "Entry types:"
@@ -988,7 +988,7 @@ msgstr "Tieňované rámky:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
 msgid "Compare Revisions"
-msgstr "Porovnaj revízie"
+msgstr "Porovnať revízie"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:30
 msgid "&Revisions back"
@@ -1285,15 +1285,15 @@ msgstr "TabWidget"
 msgid "Sear&ch"
 msgstr "&Hľadanie"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:26 src/frontends/qt4/ui/LogUi.ui:28
-#: src/frontends/qt4/ui/SearchUi.ui:28
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:26
+#: src/frontends/qt4/ui/LogUi.ui:28 src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
-msgstr "&Nájsť:"
+msgstr "Ná&jsť:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:46
 #: src/frontends/qt4/ui/SearchUi.ui:66
 msgid "Replace &with:"
-msgstr "N&ahradiť čím:"
+msgstr "Nahrad&iť čím:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:72
 msgid "Perform a case-sensitive search"
@@ -1301,7 +1301,7 @@ msgstr "Dbať aj na veľkosť písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:75
 msgid "Case &sensitive"
-msgstr "Rozlišovať veľkosť pís&men"
+msgstr "R&ozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:91
 msgid "Find next occurrence [Enter]"
@@ -1335,36 +1335,36 @@ msgstr "Nah&radiť"
 msgid "Shift+Enter search backwards directly"
 msgstr "Shift+Enter hľadať naspäť priamo"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:136
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:139
 #: src/frontends/qt4/ui/SearchUi.ui:196
 msgid "Search &backwards"
-msgstr "Hľa&dať naspäť"
+msgstr "Hľ&adať naspäť"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:152
 msgid "Replace all occurences at once"
 msgstr "Nahradiť každý výskyt naraz"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:155
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:158
 #: src/frontends/qt4/ui/SearchUi.ui:189
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
-msgstr "Nahradiť &všetko"
+msgstr "Nahradiť vš&etko"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:166
 msgid "S&ettings"
-msgstr "Na&stavenia"
+msgstr "Nas&tavenia"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:178
 msgid "The scope to which the search horizon is restricted"
 msgstr "Rozsah v ktorom sa má hľadať"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:184
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:187
 msgid "Sco&pe"
-msgstr "Rozsa&h"
+msgstr "Rozsah"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:196
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:199
 msgid "Current &document"
-msgstr "Aktuálny &dokument"
+msgstr "&Aktuálny dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:215
 msgid ""
@@ -1374,9 +1374,9 @@ msgstr ""
 "Aktuálny dokument a všetky súvisiace dokumenty patriace k tomu istému "
 "hlavnému dokumentu"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:221
 msgid "&Master document"
-msgstr "Hla&vný dokument"
+msgstr "H&lavný dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
 msgid "All open documents"
@@ -1398,9 +1398,9 @@ msgstr ""
 "Keď nezaškrtnuté, hľadanie je ohraničené len na výskyty v označenom texte a "
 "v štýle odstavca"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:260
 msgid "Ignore &format"
-msgstr "Ignoruj &formát"
+msgstr "&Ignorovať formát"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 msgid ""
@@ -1408,9 +1408,9 @@ msgid ""
 "first letter"
 msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:273
 msgid "&Preserve first case on replace"
-msgstr "&Zachovať veľkosť prvých písiem"
+msgstr "Zachovať v&eľkosť prvých písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:280
 msgid "&Expand macros"
@@ -1439,7 +1439,7 @@ msgstr "&Vrch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
-msgstr "&Ignoruj pravidlá LaTeX-u"
+msgstr "&Ignorovať pravidlá LaTeX-u"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
@@ -1553,7 +1553,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:194
 msgid "&Math:"
-msgstr "Matematika:"
+msgstr "&Matematika:"
 
 #: src/frontends/qt4/ui/FontUi.ui:204
 msgid "Select the math typeface"
@@ -1633,7 +1633,7 @@ msgstr "Vyberte, keď chcete prehodiť poradie zmeny mierky a rotácie"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
-msgstr "&Točiť po zmene mierky"
+msgstr "&Otočiť po zmene mierky"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:222
 msgid "Or&igin:"
@@ -2346,7 +2346,7 @@ msgstr "&Aktualizovať"
 
 #: src/frontends/qt4/ui/LogUi.ui:110
 msgid "Copy to Clip&board"
-msgstr "&Kopíruj do schránky"
+msgstr "&Kopírovať do schránky"
 
 #: src/frontends/qt4/ui/LogUi.ui:130
 msgid "&Go!"
@@ -3143,7 +3143,7 @@ msgstr "Šírka kurzoru (pi&xel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:77
 msgid "Scroll &below end of document"
-msgstr "Roluj až pod &koniec dokumentu"
+msgstr "Rolovať až pod &koniec dokumentu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:84
 msgid "Sort &environments alphabetically"
@@ -3228,7 +3228,7 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "S&hort Name:"
-msgstr "Krátke Meno:"
+msgstr "K&rátke Meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:96
 msgid "E&xtensions:"
@@ -3305,7 +3305,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:123
 msgid "Do not swap Apple and Control keys"
-msgstr "Neprehadzuj klávesy Apple a Control"
+msgstr "Neprehadzovať klávesy Apple a Control"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:136
 msgid "Mouse"
@@ -3482,7 +3482,8 @@ msgstr "Voľby rozmerov papiera pre &DVI prehliadač:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Nepovinný indikátor veľkosti (-paper) pre niektoré DVI prehliadače"
+msgstr ""
+"Nepovinný indikátor veľkosti papiera (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
 msgid "BibTeX command and options"
@@ -3775,11 +3776,11 @@ msgstr "&Párne strany:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:256
 msgid "Paper t&ype:"
-msgstr "T&yp stránky:"
+msgstr "T&yp papiera:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:266
 msgid "Paper si&ze:"
-msgstr "Roz&mery stránky:"
+msgstr "&Veľkosť papiera:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
@@ -3804,7 +3805,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
 msgid "Adapt &output to printer"
-msgstr "Prispôsobiť &výstup na tlačiareň"
+msgstr "Prispôso&biť výstup na tlačiareň"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
@@ -3914,7 +3915,7 @@ msgstr "Obsluha &kontroly pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Accept words such as \"diskdrive\""
-msgstr "Akceptuj slová na spôsob \"kávamlynček\""
+msgstr "Akceptovať slová na spôsob \"kávamlynček\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:67
 msgid "Accept compound &words"
@@ -3926,7 +3927,7 @@ msgstr "Podčiarkni nesprávne písané slová."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr "Kontroluj pravopis &nepretržite"
+msgstr "Kontrolovať pravopis &nepretržite"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 msgid "The characters inserted here are ignored by the spellchecker."
@@ -3978,22 +3979,22 @@ msgstr "Umožniť &bublinové nápovede na hlavnej pracovnej ploche"
 msgid "Session"
 msgstr "Sedenie"
 
-#: src/frontends/qt4/ui/PrefUi.ui:118
+#: src/frontends/qt4/ui/PrefUi.ui:119
 msgid "Restore window layouts and &geometries"
-msgstr "Reštauruj formáty okien a ich &geometrie"
+msgstr "Reštaurovať formáty okien a ich &geometrie"
 
-#: src/frontends/qt4/ui/PrefUi.ui:125
+#: src/frontends/qt4/ui/PrefUi.ui:126
 msgid "Restore to the cursor position when the file was last closed"
 msgstr ""
-"Reštauruj pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
+"Reštaurovať pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
 
-#: src/frontends/qt4/ui/PrefUi.ui:128
+#: src/frontends/qt4/ui/PrefUi.ui:129
 msgid "Restore cursor &positions"
-msgstr "Reštauruj &pozíciu kurzoru"
+msgstr "Reštaurovať &pozíciu kurzoru"
 
-#: src/frontends/qt4/ui/PrefUi.ui:135
+#: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "&Load opened files from last session"
-msgstr "&Nahraj súbory otvorené v predošlom sedení"
+msgstr "&Nahrať súbory otvorené v predošlom sedení"
 
 #: src/frontends/qt4/ui/PrefUi.ui:142
 msgid "&Clear all session information"
@@ -4076,7 +4077,7 @@ msgstr "Nastavenia pre nomenklatúru"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr "Definuj odsadenie/dĺžku návestia pre zoznam nomenklatúry."
+msgstr "Definovať odsadenie/dĺžku návestia pre zoznam nomenklatúry."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
@@ -4222,7 +4223,7 @@ msgstr "Ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 msgid "Display no debug messages"
-msgstr "Neukazuj žiadne ladiace hlásenia"
+msgstr "Neukazovať žiadne ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 msgid "&None"
@@ -4230,7 +4231,7 @@ msgstr "Žia&dne"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr "Ukazuj vpravo označené ladiace hlásenia"
+msgstr "Ukazovať vpravo označené ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 msgid "S&elected"
@@ -4238,7 +4239,7 @@ msgstr "V&ybrané"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
 msgid "Display all debug messages"
-msgstr "Ukazuj všetky ladiace hlásenia"
+msgstr "Ukazovať všetky ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
@@ -4270,7 +4271,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:102
 msgid "Case-sensiti&ve"
-msgstr "Rozlišovať veľkosť pís&men"
+msgstr "R&ozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
@@ -4342,7 +4343,7 @@ msgstr "Aktualizovať prehľad značiek"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
-msgstr "Rozlišovať veľkosť pís&men"
+msgstr "R&ozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4350,7 +4351,7 @@ msgstr "Hľadať len &celé slová"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Spracuj konvertovaný súbor týmto príkazom ($$FName = meno súboru)"
+msgstr "Spracovať konvertovaný súbor týmto príkazom ($$FName = meno súboru)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -4370,7 +4371,7 @@ msgstr "Vložte funkciu LyX-u alebo sekvenciu príkazov"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
-msgstr "Zmazať posledný záznam zo sekvencie skratky"
+msgstr "Zmazať posledný záznam z sekvencie skratky"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
 msgid "&Delete Key"
@@ -4504,9 +4505,9 @@ msgstr "Nastavenie riadku"
 msgid "Merge cells of different rows"
 msgstr "Zlúčiť bunky rozličných riadkov"
 
-#: src/frontends/qt4/ui/TabularUi.ui:322
+#: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr "Viac&riadková"
+msgstr "Viac&riadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:334
 msgid "&Vertical Offset:"
@@ -4641,9 +4642,11 @@ msgstr "&Nastaviť"
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Zrušiť všetky okraje súčasne vybraných buniek"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1135
+#: src/frontends/qt4/ui/TabularUi.ui:1137
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr "Použiť formálny (booktabs) štýl okraja (bez vertikálnych okrajov)"
+msgstr ""
+"Použiť formálny (tiež známy ako booktabs) štýl okraja (bez vertikálnych "
+"okrajov)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1138
 msgid "Fo&rmal"
@@ -4741,9 +4744,9 @@ msgstr "Prvá hlavička:"
 msgid "This row is the header of the first page"
 msgstr "Tento riadok je riadkom na prvej stránke"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1426
+#: src/frontends/qt4/ui/TabularUi.ui:1428
 msgid "Don't output the first header"
-msgstr "Negeneruj prvú hlavičku"
+msgstr "Negenerovať prvú hlavičku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1429 src/frontends/qt4/ui/TabularUi.ui:1501
 msgid "is empty"
@@ -4765,9 +4768,9 @@ msgstr "Posledná päta:"
 msgid "This row is the footer of the last page"
 msgstr "Tento riadok je pätou na poslednej stránke"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1498
+#: src/frontends/qt4/ui/TabularUi.ui:1500
 msgid "Don't output the last footer"
-msgstr "Negeneruj poslednú pätu"
+msgstr "Negenerovať poslednú pätu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1508
 msgid "Caption:"
@@ -4923,7 +4926,7 @@ msgstr "&Výber:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:92
 msgid "Replace the entry with the selection"
-msgstr "Zameň záznam s výberom"
+msgstr "Zameniť záznam s výberom"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
@@ -4947,7 +4950,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:90
 msgid "Update navigation tree"
-msgstr "Aktualizuj navigačný strom"
+msgstr "Aktualizovať navigačný strom"
 
 #: src/frontends/qt4/ui/TocUi.ui:93 src/frontends/qt4/ui/TocUi.ui:125
 #: src/frontends/qt4/ui/TocUi.ui:144 src/frontends/qt4/ui/TocUi.ui:163
@@ -4965,23 +4968,23 @@ msgstr "Zväčšiť hĺbku zanorenia označeného člena"
 
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
-msgstr "Presuň označený prvok nadol"
+msgstr "Presunúť označený prvok nadol"
 
 #: src/frontends/qt4/ui/TocUi.ui:179
 msgid "Move selected item up by one"
-msgstr "Presuň označený prvok nahor"
+msgstr "Presunúť označený prvok nahor"
 
 #: src/frontends/qt4/ui/TocUi.ui:225
 msgid "Sort"
-msgstr "Trieď"
+msgstr "Triediť"
 
 #: src/frontends/qt4/ui/TocUi.ui:246
 msgid "Try to keep persistent view of the uncollapsed nodes"
-msgstr "Pokús udržať štruktúru rozbalenia položiek"
+msgstr "Pokus o udržanie štruktúry rozbalených položiek"
 
 #: src/frontends/qt4/ui/TocUi.ui:249
 msgid "Keep"
-msgstr "Drž"
+msgstr "Držať"
 
 #: src/frontends/qt4/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
@@ -4989,7 +4992,7 @@ msgstr "Nastaviť hĺbku navigačného stromu"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:13
 msgid "LyX: Enter text"
-msgstr "LyX: Vlož text"
+msgstr "LyX: Vložiť text"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
@@ -5023,9 +5026,9 @@ msgstr "Veľká medzera(BigSkip)"
 msgid "VFill"
 msgstr "Výplň (VFILL)"
 
-#: src/frontends/qt4/ui/ViewSourceUi.ui:33
+#: src/frontends/qt4/ui/ViewSourceUi.ui:32
 msgid "F&ormat:"
-msgstr "F&ormát:"
+msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:46
 msgid "Select the output format"
@@ -5049,7 +5052,7 @@ msgstr "Len Telo"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:79
 msgid "&Master's perspective"
-msgstr "Perspektíva hlavného dokumentu"
+msgstr "Perspektíva &hlavného dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:82
 msgid "Show the source as the master document gets it"
@@ -5799,9 +5802,9 @@ msgstr "Skratka Autora"
 msgid "A short version of the author name"
 msgstr "Skrátená verzia mena autora"
 
-#: lib/layouts/IEEEtran.layout:138
+#: lib/layouts/IEEEtran.layout:139
 msgid "Special Paper Notice"
-msgstr "Špeciálna Poznámka"
+msgstr "Special Paper Poznámka"
 
 #: lib/layouts/IEEEtran.layout:149
 msgid "After Title Text"
@@ -6667,7 +6670,7 @@ msgstr "Poďakovania"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr "American Geophysical Union (AGU, SGML článok)"
+msgstr "American Geophysical Union (AGU, SGML Článok)"
 
 #: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
 msgid "Articles (DocBook)"
@@ -6969,11 +6972,11 @@ msgstr "*"
 
 #: lib/layouts/arab-article.layout:3
 msgid "Arabic Article"
-msgstr "Arabský článok"
+msgstr "Arabský Článok"
 
 #: lib/layouts/article-beamer.layout:3
 msgid "Beamer Article (Standard Class)"
-msgstr "Beamer článok (Štandardná Trieda)"
+msgstr "Beamer Článok (Štandardná Trieda)"
 
 #: lib/layouts/article-beamer.layout:29 lib/layouts/beamer.layout:408
 #: lib/layouts/scrarticle-beamer.layout:29
@@ -7087,7 +7090,7 @@ msgstr "Špecifikácie módu"
 #: lib/layouts/beamer.layout:396
 msgid "Specify in which mode (article, presentation etc.) this header appears"
 msgstr ""
-"Špecifikuj v akom móde (článok, prezentácia atď.) sa táto hlavička zobrazí"
+"Špecifikovať v akom móde (článok, prezentácia atď.) sa táto hlavička zobrazí"
 
 #: lib/layouts/beamer.layout:134 lib/layouts/memoir.layout:56
 #: lib/layouts/tufte-handout.layout:41 lib/layouts/scrclass.inc:115
@@ -7184,9 +7187,9 @@ msgstr "Rám voľby (viď beamer manuál)"
 msgid "Frame Title"
 msgstr "Titul Rámu"
 
-#: lib/layouts/beamer.layout:836
+#: lib/layouts/beamer.layout:449 lib/layouts/beamer.layout:843
 msgid "Enter the block title here"
-msgstr "Vlož sem titul bloku"
+msgstr "Vložte sem titul bloku"
 
 #: lib/layouts/beamer.layout:461
 msgid "PlainFrame"
@@ -7221,17 +7224,18 @@ msgstr "Opakovať rám s návestím"
 msgid "FrameTitle"
 msgstr "RámTitul"
 
-#: lib/layouts/beamer.layout:576 lib/layouts/beamer.layout:770
-#: lib/layouts/beamer.layout:798 lib/layouts/beamer.layout:830
-#: lib/layouts/beamer.layout:1083 lib/layouts/beamer.layout:1106
-#: lib/layouts/beamer.layout:1132 lib/layouts/beamer.layout:1167
-#: lib/layouts/beamer.layout:1307 lib/layouts/beamer.layout:1329
-#: lib/layouts/beamer.layout:1346 lib/layouts/beamer.layout:1363
-#: lib/layouts/beamer.layout:1380 lib/layouts/beamer.layout:1397
-#: lib/layouts/beamer.layout:1414 lib/layouts/beamer.layout:1431
-#: lib/layouts/beamer.layout:1448 lib/layouts/beamer.layout:1471
+#: lib/layouts/beamer.layout:546 lib/layouts/beamer.layout:574
+#: lib/layouts/beamer.layout:776 lib/layouts/beamer.layout:804
+#: lib/layouts/beamer.layout:837 lib/layouts/beamer.layout:1091
+#: lib/layouts/beamer.layout:1114 lib/layouts/beamer.layout:1140
+#: lib/layouts/beamer.layout:1175 lib/layouts/beamer.layout:1315
+#: lib/layouts/beamer.layout:1338 lib/layouts/beamer.layout:1355
+#: lib/layouts/beamer.layout:1372 lib/layouts/beamer.layout:1389
+#: lib/layouts/beamer.layout:1406 lib/layouts/beamer.layout:1424
+#: lib/layouts/beamer.layout:1442 lib/layouts/beamer.layout:1460
+#: lib/layouts/beamer.layout:1478 lib/layouts/beamer.layout:1501
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr "Špecifikuj voľby prekrytia (viď beamer manuál)"
+msgstr "Špecifikovať voľby prekrytia (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:582
 msgid "Short Frame Title|S"
@@ -7612,9 +7616,9 @@ msgstr "Alternatíva"
 msgid "Default Text"
 msgstr "Štandardný Text"
 
-#: lib/layouts/beamer.layout:1454
+#: lib/layouts/beamer.layout:1484
 msgid "Enter the default text here"
-msgstr "Vlož sem štandardný text"
+msgstr "Vložte sem štandardný text"
 
 #: lib/layouts/beamer.layout:1461
 msgid "Beamer Note"
@@ -7624,9 +7628,9 @@ msgstr "Beamer Poznámka"
 msgid "Note Options"
 msgstr "Voľby Poznámky"
 
-#: lib/layouts/beamer.layout:1477
+#: lib/layouts/beamer.layout:1507
 msgid "Specifiy note options (see beamer manual)"
-msgstr "Špecifikuj voľby poznámky (viď beamer manuál)"
+msgstr "Špecifikovať voľby poznámky (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:1173
 msgid "ArticleMode"
@@ -7872,11 +7876,11 @@ msgstr "Springer cl2emult"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
-msgstr "Čínsky článok (CTeX)"
+msgstr "Čínsky Článok (CTeX)"
 
 #: lib/layouts/ctex-book.layout:3
 msgid "Chinese Book (CTeX)"
-msgstr "Čínska kniha (CTeX)"
+msgstr "Čínska Kniha (CTeX)"
 
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
@@ -7937,11 +7941,11 @@ msgstr "Adresa prijímateľa"
 msgid "Address:"
 msgstr "Adresa:"
 
-#: lib/layouts/dinbrief.layout:61 lib/layouts/frletter.layout:12
-#: lib/layouts/heb-letter.layout:10 lib/layouts/lettre.layout:33
-#: lib/layouts/lettre.layout:137 lib/layouts/stdletter.inc:24
+#: lib/layouts/dinbrief.layout:68 lib/layouts/frletter.layout:13
+#: lib/layouts/heb-letter.layout:11 lib/layouts/lettre.layout:34
+#: lib/layouts/lettre.layout:138 lib/layouts/stdletter.inc:25
 msgid "My Address"
-msgstr "Adresa odosialteľa"
+msgstr "Adresa odosielateľa"
 
 #: lib/layouts/dinbrief.layout:63 lib/layouts/scrlttr2.layout:179
 msgid "Sender Address:"
@@ -8266,7 +8270,7 @@ msgstr "Kópia"
 
 #: lib/layouts/docbook-book.layout:3
 msgid "DocBook Book (SGML)"
-msgstr "DocBook-kniha (SGML)"
+msgstr "DocBook-Kniha (SGML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
@@ -8275,15 +8279,15 @@ msgstr "Knihy (DocBook)"
 
 #: lib/layouts/docbook-chapter.layout:3
 msgid "DocBook Chapter (SGML)"
-msgstr "DocBook kapitola (SGML)"
+msgstr "DocBook Kapitola (SGML)"
 
 #: lib/layouts/docbook-section.layout:3
 msgid "DocBook Section (SGML)"
-msgstr "DocBook sekcia (SGML)"
+msgstr "DocBook Sekcia (SGML)"
 
 #: lib/layouts/docbook.layout:3
 msgid "DocBook Article (SGML)"
-msgstr "DocBook článok (SGML)"
+msgstr "DocBook Článok (SGML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
@@ -8448,21 +8452,21 @@ msgstr "Číslo_Manuskriptu:"
 msgid "FirstAuthor"
 msgstr "Prvý autor"
 
-#: lib/layouts/egs.layout:394
+#: lib/layouts/egs.layout:410
 msgid "1st_author_surname:"
-msgstr "1. Autor Priezvisko:"
+msgstr "1. autor priezvisko:"
 
-#: lib/layouts/egs.layout:403 lib/layouts/ijmpc.layout:166
-#: lib/layouts/ijmpc.layout:170 lib/layouts/ijmpd.layout:156
-#: lib/layouts/ijmpd.layout:160 lib/layouts/agu_stdtitle.inc:198
+#: lib/layouts/egs.layout:419 lib/layouts/ijmpc.layout:172
+#: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:162
+#: lib/layouts/ijmpd.layout:166 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111
 msgid "Received"
-msgstr "Prijaté"
+msgstr "Obdržané"
 
-#: lib/layouts/egs.layout:416 lib/layouts/agu_stdtitle.inc:201
+#: lib/layouts/egs.layout:432 lib/layouts/agu_stdtitle.inc:202
 #: lib/layouts/aguplus.inc:115
 msgid "Received:"
-msgstr "Prijaté:"
+msgstr "Obdržané:"
 
 #: lib/layouts/egs.layout:425 lib/layouts/agu_stdtitle.inc:214
 #: lib/layouts/aguplus.inc:127
@@ -8615,9 +8619,9 @@ msgstr "Koniec vstupnej časti"
 msgid "Titlenotemark"
 msgstr "Titulznačkapoznámky"
 
-#: lib/layouts/elsarticle.layout:104
+#: lib/layouts/elsarticle.layout:107
 msgid "Titlenote mark"
-msgstr "Titul značka poznámky"
+msgstr "Značka titul poznámky"
 
 #: lib/layouts/elsarticle.layout:122
 msgid "Title footnote"
@@ -8643,13 +8647,13 @@ msgstr "Návestie Autora"
 msgid "Label you will reference in the address"
 msgstr "Návestie na ktoré sa v adrese chcete vzťahovať"
 
-#: lib/layouts/elsarticle.layout:162
+#: lib/layouts/elsarticle.layout:171
 msgid "Authormark"
-msgstr "Autorská značka"
+msgstr "Značka autora"
 
-#: lib/layouts/elsarticle.layout:166
+#: lib/layouts/elsarticle.layout:175
 msgid "Author mark"
-msgstr "Autorská značka"
+msgstr "Značka autora"
 
 #: lib/layouts/elsarticle.layout:184
 msgid "Author footnote"
@@ -8817,9 +8821,9 @@ msgstr "Prídavná vertikálna medzera"
 msgid "Summary of the item, can also be the time"
 msgstr "Sumár objektu, môže byť aj čas"
 
-#: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:91
+#: lib/layouts/europecv.layout:170 lib/layouts/moderncv.layout:267
 msgid "Item:"
-msgstr "položka:"
+msgstr "Položka:"
 
 #: lib/layouts/europecv.layout:66
 msgid "BulletedItem"
@@ -8873,9 +8877,9 @@ msgstr "Pomenovanie jazyka"
 msgid "Listening"
 msgstr "Počúvanie"
 
-#: lib/layouts/europecv.layout:251
+#: lib/layouts/europecv.layout:252
 msgid "Level how good you think you can listen"
-msgstr "Úroveň čo si myslíte ako dobre dokážete počúvať"
+msgstr "Úroveň čo si myslíte ako dobre dokážete dávať pozor"
 
 #: lib/layouts/europecv.layout:255
 msgid "Reading"
@@ -8885,13 +8889,13 @@ msgstr "Čítanie"
 msgid "Level how good you think you can read"
 msgstr "Úroveň čo si myslíte ako dobre dokážete čítať"
 
-#: lib/layouts/europecv.layout:260
-msgid "Interaction"
-msgstr "interakcia"
-
 #: lib/layouts/europecv.layout:261
+msgid "Interaction"
+msgstr "Interakcia"
+
+#: lib/layouts/europecv.layout:262
 msgid "Level how good you think you can conversate"
-msgstr "Úroveň čo si myslíte ako dobre sa rozprávate"
+msgstr "Úroveň čo si myslíte ako dobre sa rozhovárate"
 
 #: lib/layouts/europecv.layout:265
 msgid "Production"
@@ -8939,11 +8943,11 @@ msgstr "Článok (Štandardná trieda s ďalšími veľkosťami písma)"
 
 #: lib/layouts/extbook.layout:3
 msgid "Book (Standard Class with Extra Font Sizes)"
-msgstr "Book (Štandardná trieda s ďalšími veľkosťami písma)"
+msgstr "Kniha (Štandardná trieda s ďalšími veľkosťami písma)"
 
 #: lib/layouts/extletter.layout:3
 msgid "Letter (Standard Class with Extra Font Sizes)"
-msgstr "Letter (Štandardná trieda s ďalšími veľkosťami písma)"
+msgstr "List (Štandardná trieda s ďalšími veľkosťami písma)"
 
 #: lib/layouts/extreport.layout:3
 msgid "Report (Standard Class with Extra Font Sizes)"
@@ -9476,7 +9480,7 @@ msgstr "Banka Riadok F:"
 
 #: lib/layouts/heb-article.layout:3
 msgid "Hebrew Article"
-msgstr "Hebrejský článok"
+msgstr "Hebrejský Článok"
 
 #: lib/layouts/heb-article.layout:68
 msgid "Claim #."
@@ -9713,9 +9717,9 @@ msgstr "Tematicky"
 msgid "Comment"
 msgstr "Komentár"
 
-#: lib/layouts/iopart.layout:101
+#: lib/layouts/iopart.layout:106
 msgid "Paper"
-msgstr "Stránka"
+msgstr "Papier"
 
 #: lib/layouts/iopart.layout:107
 msgid "Prelim"
@@ -9781,7 +9785,7 @@ msgstr "POĎAKOVANIA"
 
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (jarticle)"
-msgstr "Japonský článok (jarticle)"
+msgstr "Japonský Článok (jarticle)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -9821,7 +9825,7 @@ msgstr "Online citácia"
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (jbook)"
-msgstr "Japonská kniha (jbook)"
+msgstr "Japonská Kniha (jbook)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
@@ -9829,15 +9833,15 @@ msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (jreport)"
-msgstr "Japonský referát (jreport)"
+msgstr "Japonský Referát (jreport)"
 
 #: lib/layouts/jsarticle.layout:3
 msgid "Japanese Article (jsarticle)"
-msgstr "Japonský článok (jsarticle)"
+msgstr "Japonský Článok (jsarticle)"
 
 #: lib/layouts/jsbook.layout:3
 msgid "Japanese Book (jsbook)"
-msgstr "Japonská kniha (jsbook)"
+msgstr "Japonská Kniha (jsbook)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS)"
@@ -9874,11 +9878,11 @@ msgstr "Autor v Hlavičke:"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
-msgstr "Latex8 článok (zastaralý)"
+msgstr "Latex8 Článok (zastaralý)"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
-msgstr "Letter (Štandardná trieda)"
+msgstr "List (Štandardná trieda)"
 
 #: lib/layouts/lettre.layout:3
 msgid "French Letter (lettre)"
@@ -10382,11 +10386,11 @@ msgstr "Príloha:"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
-msgstr "Poľský článok (MW balík)"
+msgstr "Poľský Článok (MW balík)"
 
 #: lib/layouts/mwbk.layout:3
 msgid "Polish Book (MW Bundle)"
-msgstr "Poľská kniha (MW balík)"
+msgstr "Poľská Kniha (MW balík)"
 
 #: lib/layouts/mwrep.layout:3
 msgid "Polish Report (MW Bundle)"
@@ -10612,15 +10616,15 @@ msgstr "PACS-číslo:"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
-msgstr "KOMA-Script článok"
+msgstr "KOMA-Script Článok"
 
 #: lib/layouts/scrarticle-beamer.layout:3
 msgid "Beamer Article (KOMA-Script)"
-msgstr "Beamer článok (KOMA-Script)"
+msgstr "Beamer Článok (KOMA-Script)"
 
 #: lib/layouts/scrbook.layout:3
 msgid "KOMA-Script Book"
-msgstr "KOMA-Script kniha"
+msgstr "KOMA-Script Kniha"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
@@ -11161,11 +11165,11 @@ msgstr "Springer SV Jour/PTRF"
 
 #: lib/layouts/tarticle.layout:3
 msgid "Japanese Article (Vertical Writing)"
-msgstr "Japonský článok (vertikálne písanie)"
+msgstr "Japonský Článok (vertikálne písanie)"
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Vertical Writing)"
-msgstr "Japonská kniha (vertikálne písanie)"
+msgstr "Japonská Kniha (vertikálne písanie)"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
@@ -11173,7 +11177,7 @@ msgstr "Japonský referát (vertikálne písanie)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
-msgstr "Tufte kniha"
+msgstr "Tufte Kniha"
 
 #: lib/layouts/tufte-book.layout:81 lib/layouts/scrclass.inc:125
 #: lib/layouts/stdsections.inc:61
@@ -11537,11 +11541,11 @@ msgstr "CCC Kód:"
 
 #: lib/layouts/aguplus.inc:148
 msgid "PaperId"
-msgstr "Id článku"
+msgstr "Paper-Id"
 
 #: lib/layouts/aguplus.inc:152
 msgid "Paper Id:"
-msgstr "Id článku:"
+msgstr "Paper Id:"
 
 #: lib/layouts/aguplus.inc:156
 msgid "AuthorAddr"
@@ -12206,13 +12210,12 @@ msgstr ""
 msgid "Caption setup"
 msgstr "Popis nastavenie"
 
-#: lib/layouts/bicaption.module:15
-msgid "Caption Setup Options|S"
-msgstr "Voľby pre nastavenie popisu"
-
 #: lib/layouts/bicaption.module:16
-msgid "Options for the caption setup command (see bicaption manual)"
-msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
+msgid ""
+"Language that should be affected, can be 'bi-first', 'bi-second' or 'bi-both'"
+msgstr ""
+"Jazyk ktorý by mal byť ovplyvnený, môže byť 'bi-first', 'bi-second' alebo "
+"'bi-both' "
 
 #: lib/layouts/bicaption.module:25
 msgid "Caption setup:"
@@ -12226,29 +12229,29 @@ msgstr "Dvojjazykový popis"
 msgid "bilingual"
 msgstr "dvojjazyčne"
 
-#: lib/layouts/bicaption.module:51
-msgid "Main Language Caption Short Title"
-msgstr "Hlavný Jazyk Popis Krátky Titul"
-
 #: lib/layouts/bicaption.module:44
-msgid "A short title (for list of figures/tables) in the document language"
-msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v jazyku dokumentu"
+msgid "Main Language Short Title"
+msgstr "Hlavný Jazyk Krátky Titul"
 
-#: lib/layouts/bicaption.module:48
-msgid "Main Language Caption Text|S"
-msgstr "Hlavný Jazyk Popis Text"
+#: lib/layouts/bicaption.module:45
+msgid "Short title for the main(document) language"
+msgstr "Krátky titul v hlavnom jazyku dokumentu"
 
 #: lib/layouts/bicaption.module:49
-msgid "The caption text in the document language"
-msgstr "Text popisu v jazyku dokumentu"
+msgid "Main Language Text"
+msgstr "Hlavný Jazyk: Text"
 
-#: lib/layouts/bicaption.module:42
-msgid "Second Language Caption Short Title"
-msgstr "Druhý Jazyk Popis Krátky Titul"
+#: lib/layouts/bicaption.module:50
+msgid "Text in the main(document) language"
+msgstr "Text v hlavnom jazyku dokumentu"
 
-#: lib/layouts/bicaption.module:43
-msgid "A short title (for list of figures/tables) in the second language"
-msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v druhom jazyku"
+#: lib/layouts/bicaption.module:53
+msgid "Second Language Short Title"
+msgstr "Druhý Jazyk Krátky Titul"
+
+#: lib/layouts/bicaption.module:54
+msgid "Short title for the second language"
+msgstr "Krátky titul pre druhý jazyk"
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -12615,6 +12618,18 @@ msgstr ""
 msgid "LilyPond"
 msgstr "LilyPond"
 
+#: lib/layouts/lilypond.module:37
+msgid "LilyPond Options"
+msgstr "LilyPond Voľby"
+
+#: lib/layouts/lilypond.module:38
+msgid ""
+"A comma-separated option list (see the LilyPond documentation for available "
+"options)."
+msgstr ""
+"Čiarkami oddelená listina volieb (pozri dokumentáciu LilyPond-u pre dostupné "
+"voľby)."
+
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
 msgstr "Lingvistika"
@@ -12746,15 +12761,17 @@ msgstr ""
 msgid "Multiple Columns"
 msgstr "Viac Stĺpcové"
 
-#: lib/layouts/multicol.module:7
+#: lib/layouts/multicol.module:8
 msgid ""
 "Adds 2 styles to begin and end text in multiple columns. The begin style "
 "contains the number of columns, the end style must be kept empty. See the "
-"Additional manual for a detailed description of multiple columns."
+"Additional manual, section Multiple Text Columns, for a detailed description "
+"of multiple columns."
 msgstr ""
 "Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. Začiatočný "
-"štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri špecifické "
-"manuály pre detailné vysvetlenie viac-stĺpcového prostredia."
+"štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri Prídavný "
+"manuál, sekcia Viac Stĺpcový Text, pre detailné vysvetlenie viac-stĺpcového "
+"prostredia."
 
 #: lib/layouts/multicol.module:11
 msgid "Begin Multiple Columns"
@@ -12763,6 +12780,22 @@ msgstr "Začiatok viac-stĺpcového prostredia"
 #: lib/layouts/multicol.module:18
 msgid "---Begin Multiple Columns---"
 msgstr "--Počiatok Viac-Stĺpcového Prostredia--"
+
+#: lib/layouts/multicol.module:28
+msgid "An optional preface"
+msgstr "Nepovinný predslov"
+
+#: lib/layouts/multicol.module:31
+msgid "Space before page break"
+msgstr "Odstup pred zalomením strany"
+
+#: lib/layouts/multicol.module:32
+msgid ""
+"Free space that needs to be on the page to start the multiple columns on "
+"this page"
+msgstr ""
+"Voľný priestor nutný na strane aby sa viac stĺpcové prostredie na tejto "
+"strane mohlo začať"
 
 #: lib/layouts/multicol.module:37
 msgid "End Multiple Columns"
@@ -12784,11 +12817,11 @@ msgstr "Natbibapa"
 msgid ""
 "This module adds support for using natbib together with apacite (the "
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
-"any bibliography that works with both the natbib and apacite packages."
+"any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
 "Tento modul pridáva podporu na používanie natbib spolu s apacite (štýl "
 "bibliografie nemusí byť apacite--môže byť apacite, apacitex,, alebo "
-"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkamy)."
+"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkamy.)"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -12825,16 +12858,118 @@ msgid "Safety phrase"
 msgstr "Poistný zvrat"
 
 #: lib/layouts/rsphrase.module:48
-msgid "Safety Phrase Option|S"
-msgstr "Voľba Poistný Zvrat"
+msgid "Phrase Text"
+msgstr "Zvrat: Text"
 
 #: lib/layouts/rsphrase.module:49
-msgid "Optional argument to the rsphrase command"
-msgstr "Nepovinný argument pre príkaz rsphrase"
+msgid "Argument for statements that requires to specify additional information"
+msgstr "Argument pre príkazy ktoré vyžadujú špecifikáciu prídavnej informácie"
 
 #: lib/layouts/rsphrase.module:59
 msgid "S phrase:"
 msgstr "P zvrat:"
+
+#: lib/layouts/shapepar.module:2
+msgid "Custom paragraph shapes"
+msgstr "Vlastné tvary odstavca"
+
+#: lib/layouts/shapepar.module:7
+msgid ""
+"Provides several paragraph shapes as well as commands to define custom "
+"shapes. For a description see LyX's Additional features manual, section Non-"
+"standard Paragraph Shapes."
+msgstr ""
+"Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie vlastných "
+"tvarov. Pre vysvetlenie pozri LyXov manuál Prídavné vlastnosti, sekcia Nie "
+"štandardné Tvary Odstavca."
+
+#: lib/layouts/shapepar.module:27
+msgid "CD label"
+msgstr "CD návestie"
+
+#: lib/layouts/shapepar.module:30
+msgid "ShapedParagraphs"
+msgstr "TvarovanéOdstavce"
+
+#: lib/layouts/shapepar.module:39 lib/ui/stdtoolbars.inc:798
+msgid "Circle"
+msgstr "Kruh"
+
+#: lib/layouts/shapepar.module:44
+msgid "Diamond"
+msgstr "Diamant"
+
+#: lib/layouts/shapepar.module:49
+msgid "Heart"
+msgstr "Srdce"
+
+#: lib/layouts/shapepar.module:54
+msgid "Hexagon"
+msgstr "Šesťhran"
+
+#: lib/layouts/shapepar.module:59
+msgid "Nut"
+msgstr "Matica"
+
+#: lib/layouts/shapepar.module:64 lib/ui/stdtoolbars.inc:749
+msgid "Square"
+msgstr "Kocka"
+
+#: lib/layouts/shapepar.module:69
+msgid "Star"
+msgstr "Hviezda"
+
+#: lib/layouts/shapepar.module:76
+msgid "Candle"
+msgstr "Sviečka"
+
+#: lib/layouts/shapepar.module:81
+msgid "Drop down"
+msgstr "Kvapka nadol"
+
+#: lib/layouts/shapepar.module:86
+msgid "Drop up"
+msgstr "Kvapka nahor"
+
+#: src/mathed/MathMacroTemplate.cpp:538
+msgid "TeX"
+msgstr "TeX"
+
+#: lib/layouts/shapepar.module:96
+msgid "Triangle up"
+msgstr "Trojuholník nahor"
+
+#: lib/layouts/shapepar.module:101
+msgid "Triangle down"
+msgstr "Trojuholník nadol"
+
+#: lib/layouts/shapepar.module:106
+msgid "Triangle left"
+msgstr "Trojuholník doľava"
+
+#: lib/layouts/shapepar.module:111
+msgid "Triangle right"
+msgstr "Trojuholník doprava"
+
+#: lib/layouts/shapepar.module:117
+msgid "shapepar"
+msgstr "parametertvaru"
+
+#: lib/layouts/shapepar.module:123
+msgid "For scaling the <Shape specification> to positions on the page"
+msgstr "Na úpravu <Špecifikácia Tvaru> pozícií na strane"
+
+#: lib/layouts/shapepar.module:127
+msgid "Shape specification"
+msgstr "Špecifikácia tvaru"
+
+#: lib/layouts/shapepar.module:128
+msgid "Specification of the shape"
+msgstr "Špecifikácia tvaru"
+
+#: lib/layouts/shapepar.module:132
+msgid "Shapepar"
+msgstr "ParameterTvaru"
 
 #: lib/layouts/sweave.module:6
 msgid ""
@@ -13989,10 +14124,6 @@ msgstr "Japonsky (non-CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japonsky (non-CJK) (SJIS)"
 
-#: lib/encodings:186
-msgid "Japanese (non-CJK) (utf8)"
-msgstr "Japonsky (non-CJK) (utf8)"
-
 #: lib/encodings:191
 msgid "Thai (TIS 620-0)"
 msgstr "Thajsky (TIS 620-0)"
@@ -14077,13 +14208,13 @@ msgstr "Eqnarray prostredie"
 msgid "AMS Environment|A"
 msgstr "AMS prostredie"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:222
 msgid "Number Whole Formula|N"
-msgstr "Očísluj Celý Vzorec"
+msgstr "Očísliť Celý Vzorec"
 
-#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:223
 msgid "Number This Line|u"
-msgstr "Očísluj Tento Riadok"
+msgstr "Očísliť Tento Riadok"
 
 #: lib/ui/stdcontext.inc:58
 msgid "Equation Label|L"
@@ -14091,7 +14222,7 @@ msgstr "Návestie Rovnice|N"
 
 #: lib/ui/stdcontext.inc:59
 msgid "Copy as Reference|R"
-msgstr "Kopíruj ako referenciu|r"
+msgstr "Kopírovať ako referenciu|r"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:232
 msgid "Split Cell|C"
@@ -14205,9 +14336,9 @@ msgstr "Nastavenia...|a"
 msgid "Go Back|G"
 msgstr "Choď späť"
 
-#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:450
+#: lib/ui/stdcontext.inc:108 lib/ui/stdcontext.inc:471
 msgid "Copy as Reference|C"
-msgstr "Kopíruj ako referenciu"
+msgstr "Kopírovať ako referenciu"
 
 #: lib/ui/stdcontext.inc:130
 msgid "Edit Database(s) Externally...|x"
@@ -14429,9 +14560,9 @@ msgstr "Doslovne (vyznačené medzery)"
 msgid "Listing|L"
 msgstr "Výpis"
 
-#: lib/ui/stdcontext.inc:266 lib/ui/stdcontext.inc:521
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:542
 msgid "Edit Included File...|E"
-msgstr "Edituj zahrnutý súbor...|E"
+msgstr "Editovať zahrnutý súbor...|E"
 
 #: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:412
 msgid "New Page|N"
@@ -14509,9 +14640,9 @@ msgstr "Presunúť sekciu nadol|D"
 msgid "Move Section Up|U"
 msgstr "Presunúť sekciu nahor|N"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:360
+#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:358
 msgid "Insert Regular Expression"
-msgstr "Vlož Regulárny Výraz"
+msgstr "Vložiť Regulárny Výraz"
 
 #: lib/ui/stdcontext.inc:311 lib/ui/stdcontext.inc:575
 msgid "Accept Change|c"
@@ -14561,37 +14692,37 @@ msgstr "Hocijaké Číslo"
 msgid "User Defined|U"
 msgstr "Užívateľom Definované"
 
-#: lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:246
+#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:247
 msgid "Append Argument"
-msgstr "Pridaj Argument"
+msgstr "Pridať Argument"
 
-#: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:247
+#: lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:248
 msgid "Remove Last Argument"
-msgstr "Zmaž Posledný Argument"
+msgstr "Zmazať Posledný Argument"
 
-#: lib/ui/stdcontext.inc:343
+#: lib/ui/stdcontext.inc:361
 msgid "Make First Non-Optional Into Optional Argument"
-msgstr "Zmeň prvý povinný argument na nepovinný"
+msgstr "Zmeniť prvý povinný argument na nepovinný"
 
-#: lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:362
 msgid "Make Last Optional Into Non-Optional Argument"
-msgstr "Zmeň posledný nepovinný argument na povinný"
+msgstr "Zmeniť posledný nepovinný argument na povinný"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:251
+#: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:252
 msgid "Insert Optional Argument"
-msgstr "Vlož nepovinný argument"
+msgstr "Vložiť nepovinný argument"
 
-#: lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:252
+#: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:253
 msgid "Remove Optional Argument"
-msgstr "Zmaž nepovinný argument"
+msgstr "Zmazať nepovinný argument"
 
-#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:254
+#: lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:255
 msgid "Append Argument Eating From the Right"
-msgstr "Pridaj Argument Sprava"
+msgstr "Pridať Argument Sprava"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:255
+#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:256
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridaj Nepovinný Argument Sprava"
+msgstr "Pridať Nepovinný Argument Sprava"
 
 #: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:256
 msgid "Remove Last Argument Spitting Out to the Right"
@@ -14665,9 +14796,9 @@ msgstr "Pridať Riadok"
 msgid "Delete Row|D"
 msgstr "Zmazať riadok"
 
-#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:211
+#: lib/ui/stdcontext.inc:418 lib/ui/stdmenus.inc:212
 msgid "Copy Row|o"
-msgstr "Kopíruj riadok"
+msgstr "Kopírovať riadok"
 
 #: lib/ui/stdcontext.inc:403
 msgid "Append Column|p"
@@ -14677,9 +14808,9 @@ msgstr "Pridať Stĺpec"
 msgid "Delete Column|e"
 msgstr "Zmazať stĺpec"
 
-#: lib/ui/stdcontext.inc:405
+#: lib/ui/stdcontext.inc:423
 msgid "Copy Column|y"
-msgstr "Kopíruj Stĺpec"
+msgstr "Kopírovať Stĺpec"
 
 #: lib/ui/stdcontext.inc:408
 msgid "Settings...|g"
@@ -14725,33 +14856,33 @@ msgstr "Verzia LyXu"
 msgid "Document Info|D"
 msgstr "Info Dokumentu"
 
-#: lib/ui/stdcontext.inc:432
+#: lib/ui/stdcontext.inc:450
 msgid "Copy Text|o"
-msgstr "Kopíruj Text"
+msgstr "Kopírovať Text"
 
-#: lib/ui/stdcontext.inc:442 lib/ui/stdcontext.inc:464
+#: lib/ui/stdcontext.inc:459 lib/ui/stdcontext.inc:482
 msgid "Activate Branch|A"
-msgstr "Aktivuj vetvu|A"
+msgstr "Aktivovať vetvu|A"
 
-#: lib/ui/stdcontext.inc:443 lib/ui/stdcontext.inc:465
+#: lib/ui/stdcontext.inc:460 lib/ui/stdcontext.inc:483
 msgid "Deactivate Branch|e"
-msgstr "Dezaktivuj vetvu|e"
+msgstr "Dezaktivovať vetvu|e"
 
-#: lib/ui/stdcontext.inc:444
+#: lib/ui/stdcontext.inc:461
 msgid "Activate Branch in Master|M"
-msgstr "Aktivuj vetvu v hlavnom dokumente|H"
+msgstr "Aktivovať vetvu v hlavnom dokumente|H"
 
-#: lib/ui/stdcontext.inc:445
+#: lib/ui/stdcontext.inc:462
 msgid "Deactivate Branch in Master|v"
-msgstr "Dezaktivuj vetvu v hlavnom dokumente|v"
+msgstr "Dezaktivovať vetvu v hlavnom dokumente|v"
 
-#: lib/ui/stdcontext.inc:446
+#: lib/ui/stdcontext.inc:463
 msgid "Add Unknown Branch|w"
-msgstr "Pridaj Neznámu vetvu"
+msgstr "Pridať Neznámu Vetvu"
 
-#: lib/ui/stdcontext.inc:451
+#: lib/ui/stdcontext.inc:472
 msgid "Insert Reference at Cursor Position|I"
-msgstr "Vlož Referenciu na Pozícii Kurzoru"
+msgstr "Vložiť Referenciu na Pozícii Kurzoru"
 
 #: lib/ui/stdcontext.inc:545
 msgid "All Indexes|A"
@@ -14899,7 +15030,7 @@ msgstr "Prevziať na Úpravu"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Update Local Directory From Repository|d"
-msgstr "Aktualizuj Lokálny Adresár Z Repozitáru"
+msgstr "Aktualizovať Lokálny Adresár Z Repozitáru"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Revert to Repository Version|v"
@@ -14907,11 +15038,11 @@ msgstr "Vrátiť na Verziu Repozitára"
 
 #: lib/ui/stdmenus.inc:79
 msgid "Undo Last Check In|U"
-msgstr "Zrušiť Posledné Uložené Zmeny"
+msgstr "Zrušiť Naposledy Uložené Zmeny"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Compare with Older Revision...|C"
-msgstr "Porovnaj zo Staršou Revíziou..."
+msgstr "Porovnať so Staršou Revíziou..."
 
 #: lib/ui/stdmenus.inc:81
 msgid "Show History...|H"
@@ -14919,11 +15050,11 @@ msgstr "Zobraziť históriu...|h"
 
 #: lib/ui/stdmenus.inc:82
 msgid "Use Locking Property|L"
-msgstr "Použ blokovanie súborov"
+msgstr "Použiť blokovanie súborov"
 
 #: lib/ui/stdmenus.inc:90
 msgid "Export As...|s"
-msgstr "Exportuj Ako..."
+msgstr "Exportovať Ako..."
 
 #: lib/ui/stdmenus.inc:92
 msgid "More Formats & Options...|O"
@@ -15141,9 +15272,9 @@ msgstr "Pridať riadok"
 msgid "Add Column|u"
 msgstr "Pridať stĺpec"
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:217
 msgid "Copy Column|p"
-msgstr "Kopíruj stĺpec"
+msgstr "Kopírovať stĺpec"
 
 #: lib/ui/stdmenus.inc:223
 msgid "Change Limits Type|L"
@@ -15177,13 +15308,13 @@ msgstr "Zmazať riadok nad"
 msgid "Delete Line Below|e"
 msgstr "Zmazať riadok pod"
 
-#: lib/ui/stdmenus.inc:249
-msgid "Make First Non-Optional into Optional Argument"
-msgstr "Zmeň prvý povinný argument na nepovinný"
-
 #: lib/ui/stdmenus.inc:250
+msgid "Make First Non-Optional into Optional Argument"
+msgstr "Zmeniť prvý povinný argument na nepovinný"
+
+#: lib/ui/stdmenus.inc:251
 msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Zmeň posledný nepovinný argument na povinný"
+msgstr "Zmeniť posledný nepovinný argument na povinný"
 
 #: lib/ui/stdmenus.inc:260
 msgid "Default|t"
@@ -15565,9 +15696,9 @@ msgstr "Dokument potomka..."
 msgid "Comment|C"
 msgstr "Komentár"
 
-#: lib/ui/stdmenus.inc:486
+#: lib/ui/stdmenus.inc:485
 msgid "Insert New Branch...|I"
-msgstr "Vlož Novú Vetvu..."
+msgstr "Vložiť Novú Vetvu..."
 
 #: lib/ui/stdmenus.inc:504
 msgid "Change Tracking|C"
@@ -15589,37 +15720,37 @@ msgstr "Začni Prílohy Tu|P"
 msgid "View Master Document|M"
 msgstr "Zobraziť Hlavný Dokument"
 
-#: lib/ui/stdmenus.inc:329
+#: lib/ui/stdmenus.inc:511
 msgid "Update Master Document|a"
-msgstr "Aktualizuj Hlavný Dokument"
+msgstr "Aktualizovať Hlavný Dokument"
 
 #: lib/ui/stdmenus.inc:511
 msgid "Compressed|m"
 msgstr "Komprimované|m"
 
-#: lib/ui/stdmenus.inc:516
+#: lib/ui/stdmenus.inc:518
 msgid "Track Changes|T"
-msgstr "Sleduj zmeny"
+msgstr "Sledovať Zmeny"
 
-#: lib/ui/stdmenus.inc:518
+#: lib/ui/stdmenus.inc:519
 msgid "Merge Changes...|M"
-msgstr "Zmeny Zlúčiť..."
-
-#: lib/ui/stdmenus.inc:518
-msgid "Accept Change|A"
-msgstr "Akceptovať zmenu"
+msgstr "Zlúčiť Zmeny..."
 
 #: lib/ui/stdmenus.inc:520
-msgid "Accept All Changes|c"
-msgstr "Akceptuj všetky zmeny"
-
-#: lib/ui/stdmenus.inc:521
-msgid "Reject All Changes|e"
-msgstr "Odhoď všetky zmeny"
+msgid "Accept Change|A"
+msgstr "Akceptovať Zmenu"
 
 #: lib/ui/stdmenus.inc:522
+msgid "Accept All Changes|c"
+msgstr "Akceptovať Všetky Zmeny"
+
+#: lib/ui/stdmenus.inc:523
+msgid "Reject All Changes|e"
+msgstr "Odhodiť Všetky Zmeny"
+
+#: lib/ui/stdmenus.inc:524
 msgid "Show Changes in Output|S"
-msgstr "Zobraz zmeny vo výstupe"
+msgstr "Zobraziť Zmeny vo Výstupe"
 
 #: lib/ui/stdmenus.inc:529
 msgid "Bookmarks|B"
@@ -15773,9 +15904,9 @@ msgstr "Lingvistika|L"
 msgid "Multilingual Captions|C"
 msgstr "Viac-jazykové popisy|J"
 
-#: lib/ui/stdmenus.inc:597
+#: lib/ui/stdmenus.inc:599
 msgid "Risk and Safety Statements|R"
-msgstr "Rizikové a Poistné Uzávierky|R"
+msgstr "Rizikové a Poistné Príkazy|R"
 
 #: lib/configure.py:534
 msgid "Sweave|S"
@@ -15959,7 +16090,7 @@ msgstr "Vložiť rámik"
 
 #: lib/ui/stdtoolbars.inc:132
 msgid "Insert hyperlink"
-msgstr "Vlož hyperlinku"
+msgstr "Vložiť hyperlinku"
 
 #: lib/ui/stdtoolbars.inc:133
 msgid "Insert TeX code"
@@ -16143,27 +16274,27 @@ msgstr "Mat. makrá"
 
 #: lib/ui/stdtoolbars.inc:199
 msgid "Remove last argument"
-msgstr "Zmaž Posledný Argument"
+msgstr "Zmazať Posledný Argument"
 
 #: lib/ui/stdtoolbars.inc:200
 msgid "Append argument"
-msgstr "Pridaj argument"
+msgstr "Pridať argument"
 
 #: lib/ui/stdtoolbars.inc:202
 msgid "Make first non-optional into optional argument"
-msgstr "Zmeň prvý povinný argument na nepovinný"
+msgstr "Zmeniť prvý povinný argument na nepovinný"
 
 #: lib/ui/stdtoolbars.inc:203
 msgid "Make last optional into non-optional argument"
-msgstr "Zmeň posledný nepovinný argument na povinný"
+msgstr "Zmeniť posledný nepovinný argument na povinný"
 
 #: lib/ui/stdtoolbars.inc:205
 msgid "Remove optional argument"
-msgstr "Zmaž nepovinný argument"
+msgstr "Zmazať nepovinný argument"
 
 #: lib/ui/stdtoolbars.inc:206
 msgid "Insert optional argument"
-msgstr "Vlož nepovinný argument"
+msgstr "Vložiť nepovinný argument"
 
 #: lib/ui/stdtoolbars.inc:208
 msgid "Remove last argument spitting out to the right"
@@ -16171,11 +16302,11 @@ msgstr "Odstráň posledný argument sprava"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Append argument eating from the right"
-msgstr "Pridaj argument sprava"
+msgstr "Pridať argument sprava"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Append optional argument eating from the right"
-msgstr "Pridaj nepovinný argument sprava"
+msgstr "Pridať nepovinný argument sprava"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Phonetic Symbols"
@@ -16217,13 +16348,13 @@ msgstr "Príkazový riadok"
 msgid "Review[[Toolbar]]"
 msgstr "Recenzovať"
 
-#: lib/ui/stdtoolbars.inc:218
+#: lib/ui/stdtoolbars.inc:228
 msgid "Track changes"
-msgstr "Sleduj zmeny"
+msgstr "Sledovať zmeny"
 
-#: lib/ui/stdtoolbars.inc:219
+#: lib/ui/stdtoolbars.inc:229
 msgid "Show changes in output"
-msgstr "Zobraz zmeny vo výstupe"
+msgstr "Zobraziť zmeny vo výstupe"
 
 #: lib/ui/stdtoolbars.inc:221
 msgid "Next change"
@@ -16239,15 +16370,15 @@ msgstr "Odmietnuť zmeny vo výbere"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Merge changes"
-msgstr "Zmeny zlúčiť"
+msgstr "Zlúčiť zmeny"
 
-#: lib/ui/stdtoolbars.inc:226
+#: lib/ui/stdtoolbars.inc:236
 msgid "Accept all changes"
-msgstr "Akceptuj všetky zmeny"
+msgstr "Akceptať všetky zmeny"
 
-#: lib/ui/stdtoolbars.inc:227
+#: lib/ui/stdtoolbars.inc:237
 msgid "Reject all changes"
-msgstr "Odhoď všetky zmeny"
+msgstr "Odhodiť všetky zmeny"
 
 #: lib/ui/stdtoolbars.inc:130 lib/ui/stdtoolbars.inc:229
 msgid "Insert note"
@@ -16277,25 +16408,25 @@ msgstr "Zaregistrovať súbor"
 msgid "Check-out for edit"
 msgstr "Včítať verziu úpravy"
 
-#: lib/ui/stdtoolbars.inc:260
+#: lib/ui/stdtoolbars.inc:270
 msgid "Check-in changes"
-msgstr "Odoslaj zmeny do repozitáru"
+msgstr "Odoslať zmeny do repozitáru"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "View revision log"
 msgstr "Prezrieť protokol revízií"
 
-#: lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:272
 msgid "Revert changes"
-msgstr "Odhoď zmeny"
+msgstr "Odhodiť zmeny"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:273
 msgid "Compare with older revision"
-msgstr "Porovnaj zo staršou revíziou"
+msgstr "Porovnať so staršou revíziou"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:274
 msgid "Compare with last revision"
-msgstr "Porovnaj s poslednou revíziou"
+msgstr "Porovnať s poslednou revíziou"
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "Insert Version Info"
@@ -16307,7 +16438,7 @@ msgstr "Použiť blokovanie súborov z SVN"
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "Update local directory from repository"
-msgstr "Aktualizuj lokálny adresár z repozitáru"
+msgstr "Aktualizovať lokálny adresár z repozitáru"
 
 #: lib/ui/stdtoolbars.inc:272
 msgid "Math Panels"
@@ -16351,37 +16482,41 @@ msgstr "Rôzne"
 msgid "Arrows"
 msgstr "Šípky"
 
-#: lib/ui/stdtoolbars.inc:283
-msgid "AMS arrows"
-msgstr "AMS šípky"
+#: lib/ui/stdtoolbars.inc:293 lib/ui/stdtoolbars.inc:880
+msgid "Arrows (extended)"
+msgstr "Šípky (rozšírenie)"
 
 #: lib/ui/stdtoolbars.inc:284 lib/ui/stdtoolbars.inc:464
 msgid "Operators"
 msgstr "Operátory"
 
+#: lib/ui/stdtoolbars.inc:295 lib/ui/stdtoolbars.inc:1142
+msgid "Operators (extended)"
+msgstr "Operátory (rozšírenie)"
+
 #: lib/ui/stdtoolbars.inc:285 lib/ui/stdtoolbars.inc:498
 msgid "Relations"
 msgstr "Relácie"
 
-#: lib/ui/stdtoolbars.inc:286
-msgid "AMS relations"
-msgstr "AMS relácie"
+#: lib/ui/stdtoolbars.inc:297 lib/ui/stdtoolbars.inc:956
+msgid "Relations (extended)"
+msgstr "Relácie (rozšírenie)"
 
-#: lib/ui/stdtoolbars.inc:287
-msgid "AMS negative relations"
-msgstr "AMS záporné relácie"
+#: lib/ui/stdtoolbars.inc:298
+msgid "Negative relations (extended)"
+msgstr "Záporné relácie (rozšírenie)"
 
 #: lib/ui/stdtoolbars.inc:288 lib/ui/stdtoolbars.inc:388
 msgid "Dots"
 msgstr "Bodky"
 
-#: lib/ui/stdtoolbars.inc:289
-msgid "AMS operators"
-msgstr "AMS operátory"
+#: lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:1215
+msgid "Delimiters (fixed size)"
+msgstr "Oddeľovače (pevná veľkosť)"
 
-#: lib/ui/stdtoolbars.inc:290
-msgid "AMS miscellaneous"
-msgstr "AMS rôzne"
+#: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:733
+msgid "Miscellaneous (extended)"
+msgstr "Rôzne (rozšírenie)"
 
 #: lib/ui/stdtoolbars.inc:294
 msgid "arccos"
@@ -16783,6 +16918,10 @@ msgstr "ddddot"
 msgid "breve"
 msgstr "breve"
 
+#: lib/ui/stdtoolbars.inc:430
+msgid "mathring"
+msgstr "mathring"
+
 #: lib/ui/stdtoolbars.inc:412
 msgid "overline"
 msgstr "overline"
@@ -16903,37 +17042,37 @@ msgstr "Updownarrow"
 msgid "Leftrightarrow"
 msgstr "Leftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:468
 msgid "Longleftrightarrow"
-msgstr "Longleftrightarrow"
+msgstr "Dlhádoľavadopravašípka"
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:469
 msgid "Longleftarrow"
-msgstr "Longleftarrow"
+msgstr "Dlhášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:445
+#: lib/ui/stdtoolbars.inc:470
 msgid "Longrightarrow"
-msgstr "Longrightarrow"
+msgstr "Dlhášípkadoprava"
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:471
 msgid "longleftrightarrow"
-msgstr "longleftrightarrow"
+msgstr "dlhádoľavadopravašípka"
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:472
 msgid "longleftarrow"
-msgstr "longleftarrow"
+msgstr "dlhášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:473
 msgid "longrightarrow"
-msgstr "longrightarrow"
+msgstr "dlhášípkadoprava"
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:474
 msgid "leftharpoondown"
-msgstr "leftharpoondown"
+msgstr "doľavaharpúnanadol"
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:475
 msgid "rightharpoondown"
-msgstr "rightharpoondown"
+msgstr "dopravaharpúnanadol"
 
 #: lib/ui/stdtoolbars.inc:451
 msgid "mapsto"
@@ -16951,21 +17090,21 @@ msgstr "nwarrow"
 msgid "nearrow"
 msgstr "nearrow"
 
-#: lib/ui/stdtoolbars.inc:455
+#: lib/ui/stdtoolbars.inc:480
 msgid "leftharpoonup"
-msgstr "leftharpoonup"
+msgstr "doľavaharpúnanahor"
 
-#: lib/ui/stdtoolbars.inc:456
+#: lib/ui/stdtoolbars.inc:481
 msgid "rightharpoonup"
-msgstr "rightharpoonup"
+msgstr "dopravaharpúnanahor"
 
-#: lib/ui/stdtoolbars.inc:457
+#: lib/ui/stdtoolbars.inc:482
 msgid "hookleftarrow"
-msgstr "hookleftarrow"
+msgstr "doľavašípkasháčikom"
 
-#: lib/ui/stdtoolbars.inc:458
+#: lib/ui/stdtoolbars.inc:483
 msgid "hookrightarrow"
-msgstr "hookrightarrow"
+msgstr "dopravašípkasháčikom"
 
 #: lib/ui/stdtoolbars.inc:459
 msgid "swarrow"
@@ -16975,9 +17114,9 @@ msgstr "swarrow"
 msgid "searrow"
 msgstr "searrow"
 
-#: lib/ui/stdtoolbars.inc:461 lib/ui/stdtoolbars.inc:736
+#: lib/ui/stdtoolbars.inc:486 lib/ui/stdtoolbars.inc:910
 msgid "rightleftharpoons"
-msgstr "rightleftharpoons"
+msgstr "dopravadoľavaharpúny"
 
 #: lib/ui/stdtoolbars.inc:465
 msgid "pm"
@@ -17063,6 +17202,10 @@ msgstr "odot"
 msgid "star"
 msgstr "star"
 
+#: lib/ui/stdtoolbars.inc:513
+msgid "ast"
+msgstr "ast"
+
 #: lib/ui/stdtoolbars.inc:486
 msgid "vee"
 msgstr "vee"
@@ -17102,6 +17245,10 @@ msgstr "wr"
 #: lib/ui/stdtoolbars.inc:495
 msgid "ddagger"
 msgstr "ddagger"
+
+#: lib/ui/stdtoolbars.inc:524
+msgid "smallint"
+msgstr "smallint"
 
 #: lib/ui/stdtoolbars.inc:499
 msgid "leq"
@@ -17242,6 +17389,26 @@ msgstr "dashv"
 #: lib/ui/stdtoolbars.inc:533
 msgid "bowtie"
 msgstr "bowtie"
+
+#: lib/ui/stdtoolbars.inc:567
+msgid "iff"
+msgstr "iff"
+
+#: lib/ui/stdtoolbars.inc:568
+msgid "not"
+msgstr "not"
+
+#: lib/ui/stdtoolbars.inc:569
+msgid "land"
+msgstr "land"
+
+#: lib/ui/stdtoolbars.inc:570
+msgid "lor"
+msgstr "lor"
+
+#: lib/ui/stdtoolbars.inc:571
+msgid "lnot"
+msgstr "lnot"
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "alpha"
@@ -17403,6 +17570,50 @@ msgstr "Psi"
 msgid "Omega"
 msgstr "Omega"
 
+#: lib/ui/stdtoolbars.inc:615
+msgid "varGamma"
+msgstr "varGamma"
+
+#: lib/ui/stdtoolbars.inc:616
+msgid "varDelta"
+msgstr "varDelta"
+
+#: lib/ui/stdtoolbars.inc:617
+msgid "varTheta"
+msgstr "varTheta"
+
+#: lib/ui/stdtoolbars.inc:618
+msgid "varLambda"
+msgstr "varLambda"
+
+#: lib/ui/stdtoolbars.inc:619
+msgid "varXi"
+msgstr "varXi"
+
+#: lib/ui/stdtoolbars.inc:620
+msgid "varPi"
+msgstr "varPi"
+
+#: lib/ui/stdtoolbars.inc:621
+msgid "varSigma"
+msgstr "varSigma"
+
+#: lib/ui/stdtoolbars.inc:622
+msgid "varUpsilon"
+msgstr "varUpsilon"
+
+#: lib/ui/stdtoolbars.inc:623
+msgid "varPhi"
+msgstr "varPhi"
+
+#: lib/ui/stdtoolbars.inc:624
+msgid "varPsi"
+msgstr "varPsi"
+
+#: lib/ui/stdtoolbars.inc:625
+msgid "varOmega"
+msgstr "varOmega"
+
 #: lib/ui/stdtoolbars.inc:580
 msgid "nabla"
 msgstr "nabla"
@@ -17499,6 +17710,14 @@ msgstr "sharp"
 msgid "surd"
 msgstr "surd"
 
+#: lib/ui/stdtoolbars.inc:653
+msgid "lhook"
+msgstr "lhook"
+
+#: lib/ui/stdtoolbars.inc:654
+msgid "rhook"
+msgstr "rhook"
+
 #: lib/ui/stdtoolbars.inc:604
 msgid "triangle"
 msgstr "triangle"
@@ -17534,6 +17753,22 @@ msgstr "mathcircumflex"
 #: lib/ui/stdtoolbars.inc:612
 msgid "_"
 msgstr "_"
+
+#: lib/ui/stdtoolbars.inc:664
+msgid "textdegree"
+msgstr "textdegree"
+
+#: lib/ui/stdtoolbars.inc:665
+msgid "mathdollar"
+msgstr "mathdollar"
+
+#: lib/ui/stdtoolbars.inc:666
+msgid "mathparagraph"
+msgstr "mathparagraph"
+
+#: lib/ui/stdtoolbars.inc:667
+msgid "mathsection"
+msgstr "mathsection"
 
 #: lib/ui/stdtoolbars.inc:613
 msgid "mathrm T"
@@ -17623,6 +17858,10 @@ msgstr "dotsint"
 msgid "dotsintop"
 msgstr "dotsintop"
 
+#: lib/ui/stdtoolbars.inc:692
+msgid "idotsint"
+msgstr "idotsint"
+
 #: lib/ui/stdtoolbars.inc:637
 msgid "oint"
 msgstr "oint"
@@ -17695,6 +17934,38 @@ msgstr "landdownint"
 msgid "landdownintop"
 msgstr "landdownintop"
 
+#: lib/ui/stdtoolbars.inc:711
+msgid "varint"
+msgstr "varint"
+
+#: lib/ui/stdtoolbars.inc:712
+msgid "varoint"
+msgstr "varoint"
+
+#: lib/ui/stdtoolbars.inc:713
+msgid "varoiint"
+msgstr "varoiint"
+
+#: lib/ui/stdtoolbars.inc:714
+msgid "varoiintop"
+msgstr "varoiintop"
+
+#: lib/ui/stdtoolbars.inc:715
+msgid "varointclockwise"
+msgstr "varointclockwise"
+
+#: lib/ui/stdtoolbars.inc:716
+msgid "varointclockwiseop"
+msgstr "varointclockwiseop"
+
+#: lib/ui/stdtoolbars.inc:717
+msgid "varointctrclockwise"
+msgstr "varointctrclockwise"
+
+#: lib/ui/stdtoolbars.inc:718
+msgid "varointctrclockwiseop"
+msgstr "varointctrclockwiseop"
+
 #: lib/ui/stdtoolbars.inc:655
 msgid "sum"
 msgstr "sum"
@@ -17743,10 +18014,6 @@ msgstr "bigvee"
 msgid "bigwedge"
 msgstr "bigwedge"
 
-#: lib/ui/stdtoolbars.inc:669
-msgid "AMS Miscellaneous"
-msgstr "AMS Rôzne"
-
 #: lib/ui/stdtoolbars.inc:670
 msgid "digamma"
 msgstr "digamma"
@@ -17791,25 +18058,45 @@ msgstr "hslash"
 msgid "vartriangle"
 msgstr "vartriangle"
 
-#: lib/ui/stdtoolbars.inc:682
+#: lib/ui/stdtoolbars.inc:746
 msgid "triangledown"
-msgstr "triangledown"
+msgstr "trojuholníknadol"
 
-#: lib/ui/stdtoolbars.inc:683
+#: lib/ui/stdtoolbars.inc:747
 msgid "square"
-msgstr "square"
+msgstr "kocka"
+
+#: lib/ui/stdtoolbars.inc:750
+msgid "CheckedBox"
+msgstr "CheckedBox"
+
+#: lib/ui/stdtoolbars.inc:751 lib/ui/stdtoolbars.inc:825
+msgid "XBox"
+msgstr "XBox"
 
 #: lib/ui/stdtoolbars.inc:684
 msgid "lozenge"
 msgstr "lozenge"
 
-#: lib/ui/stdtoolbars.inc:685
+#: lib/ui/stdtoolbars.inc:753
+msgid "wasylozenge"
+msgstr "wasylozenge"
+
+#: lib/ui/stdtoolbars.inc:754
+msgid "circledR"
+msgstr "okrúhlenéR"
+
+#: lib/ui/stdtoolbars.inc:755
 msgid "circledS"
-msgstr "circledS"
+msgstr "okrúhlenéS"
 
 #: lib/ui/stdtoolbars.inc:687
 msgid "measuredangle"
 msgstr "measuredangle"
+
+#: lib/ui/stdtoolbars.inc:757
+msgid "varangle"
+msgstr "varangle"
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "nexists"
@@ -17839,21 +18126,17 @@ msgstr "backprime"
 msgid "varnothing"
 msgstr "varnothing"
 
-#: lib/ui/stdtoolbars.inc:695
-msgid "Diamond"
-msgstr "Diamond"
-
-#: lib/ui/stdtoolbars.inc:696
+#: lib/ui/stdtoolbars.inc:766
 msgid "blacktriangle"
-msgstr "blacktriangle"
+msgstr "čiernytrojuholník"
 
-#: lib/ui/stdtoolbars.inc:697
+#: lib/ui/stdtoolbars.inc:767
 msgid "blacktriangledown"
-msgstr "blacktriangledown"
+msgstr "čiernytrojuholníknadol"
 
-#: lib/ui/stdtoolbars.inc:698
+#: lib/ui/stdtoolbars.inc:768
 msgid "blacksquare"
-msgstr "blacksquare"
+msgstr "čiernakocka"
 
 #: lib/ui/stdtoolbars.inc:699
 msgid "blacklozenge"
@@ -17883,81 +18166,429 @@ msgstr "diagup"
 msgid "diagdown"
 msgstr "diagdown"
 
-#: lib/ui/stdtoolbars.inc:708
-msgid "AMS Arrows"
-msgstr "AMS Šípky"
+#: lib/ui/stdtoolbars.inc:776
+msgid "lightning"
+msgstr "lightning"
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:777
+msgid "varcopyright"
+msgstr "varcopyright"
+
+#: lib/ui/stdtoolbars.inc:778
+msgid "Bowtie"
+msgstr "Bowtie"
+
+#: lib/ui/stdtoolbars.inc:779
+msgid "diameter"
+msgstr "diameter"
+
+#: lib/ui/stdtoolbars.inc:780
+msgid "invdiameter"
+msgstr "invdiameter"
+
+#: lib/ui/stdtoolbars.inc:781
+msgid "bell"
+msgstr "bell"
+
+#: lib/ui/stdtoolbars.inc:782
+msgid "hexagon"
+msgstr "šesťhran"
+
+#: lib/ui/stdtoolbars.inc:783
+msgid "varhexagon"
+msgstr "varhexagon"
+
+#: lib/ui/stdtoolbars.inc:784
+msgid "pentagon"
+msgstr "päťhran"
+
+#: lib/ui/stdtoolbars.inc:785
+msgid "octagon"
+msgstr "octagon"
+
+#: lib/ui/stdtoolbars.inc:793
+msgid "smiley"
+msgstr "smiley"
+
+#: lib/ui/stdtoolbars.inc:794
+msgid "blacksmiley"
+msgstr "blacksmiley"
+
+#: lib/ui/stdtoolbars.inc:795
+msgid "frownie"
+msgstr "frownie"
+
+#: lib/ui/stdtoolbars.inc:796
+msgid "sun"
+msgstr "sun"
+
+#: lib/ui/stdtoolbars.inc:797
+msgid "leadsto"
+msgstr "leadsto"
+
+#: lib/ui/stdtoolbars.inc:799
+msgid "Leftcircle"
+msgstr "Ľavýkruh"
+
+#: lib/ui/stdtoolbars.inc:800
+msgid "Rightcircle"
+msgstr "Pravýkruh"
+
+#: lib/ui/stdtoolbars.inc:801
+msgid "CIRCLE"
+msgstr "KRUH"
+
+#: lib/ui/stdtoolbars.inc:802
+msgid "LEFTCIRCLE"
+msgstr "ĽAVÝKRUH"
+
+#: lib/ui/stdtoolbars.inc:803
+msgid "RIGHTCIRCLE"
+msgstr "PRAVÝKRUH"
+
+#: lib/ui/stdtoolbars.inc:804
+msgid "LEFTcircle"
+msgstr "ĽAVÝkruh"
+
+#: lib/ui/stdtoolbars.inc:805
+msgid "RIGHTcircle"
+msgstr "PRAVÝkruh"
+
+#: lib/ui/stdtoolbars.inc:806
+msgid "leftturn"
+msgstr "leftturn"
+
+#: lib/ui/stdtoolbars.inc:807
+msgid "rightturn"
+msgstr "rightturn"
+
+#: lib/ui/stdtoolbars.inc:808
+msgid "AC"
+msgstr "AC"
+
+#: lib/ui/stdtoolbars.inc:809
+msgid "HF"
+msgstr "HF"
+
+#: lib/ui/stdtoolbars.inc:810
+msgid "VHF"
+msgstr "VHF"
+
+#: lib/ui/stdtoolbars.inc:811
+msgid "photon"
+msgstr "photon"
+
+#: lib/ui/stdtoolbars.inc:812
+msgid "gluon"
+msgstr "gluon"
+
+#: lib/ui/stdtoolbars.inc:813
+msgid "permil"
+msgstr "permil"
+
+#: lib/ui/stdtoolbars.inc:815
+msgid "cent"
+msgstr "cent"
+
+#: lib/ui/stdtoolbars.inc:816
+msgid "yen"
+msgstr "yen"
+
+#: lib/ui/stdtoolbars.inc:819
+msgid "hexstar"
+msgstr "hexstar"
+
+#: lib/ui/stdtoolbars.inc:820
+msgid "varhexstar"
+msgstr "varhexstar"
+
+#: lib/ui/stdtoolbars.inc:821
+msgid "davidsstar"
+msgstr "davidsstar"
+
+#: lib/ui/stdtoolbars.inc:822
+msgid "maltese"
+msgstr "maltese"
+
+#: lib/ui/stdtoolbars.inc:823
+msgid "kreuz"
+msgstr "kreuz"
+
+#: lib/ui/stdtoolbars.inc:824
+msgid "ataribox"
+msgstr "ataribox"
+
+#: lib/ui/stdtoolbars.inc:826
+msgid "checked"
+msgstr "checked"
+
+#: lib/ui/stdtoolbars.inc:827
+msgid "checkmark"
+msgstr "checkmark"
+
+#: lib/ui/stdtoolbars.inc:828
+msgid "eighthnote"
+msgstr "eighthnote"
+
+#: lib/ui/stdtoolbars.inc:829
+msgid "quarternote"
+msgstr "quarternote"
+
+#: lib/ui/stdtoolbars.inc:830
+msgid "halfnote"
+msgstr "halfnote"
+
+#: lib/ui/stdtoolbars.inc:831
+msgid "fullnote"
+msgstr "fullnote"
+
+#: lib/ui/stdtoolbars.inc:832
+msgid "twonotes"
+msgstr "twonotes"
+
+#: lib/ui/stdtoolbars.inc:833
+msgid "female"
+msgstr "žena"
+
+#: lib/ui/stdtoolbars.inc:834
+msgid "male"
+msgstr "muž"
+
+#: lib/ui/stdtoolbars.inc:835
+msgid "vernal"
+msgstr "vernal"
+
+#: lib/ui/stdtoolbars.inc:836
+msgid "ascnode"
+msgstr "ascnode"
+
+#: lib/ui/stdtoolbars.inc:837
+msgid "descnode"
+msgstr "descnode"
+
+#: lib/ui/stdtoolbars.inc:838
+msgid "fullmoon"
+msgstr "plnýmesiac"
+
+#: lib/ui/stdtoolbars.inc:839
+msgid "newmoon"
+msgstr "novýmesiac"
+
+#: lib/ui/stdtoolbars.inc:840
+msgid "leftmoon"
+msgstr "ľavýmesiac"
+
+#: lib/ui/stdtoolbars.inc:841
+msgid "rightmoon"
+msgstr "pravýmesiac"
+
+#: lib/ui/stdtoolbars.inc:842
+msgid "astrosun"
+msgstr "astrosun"
+
+#: lib/ui/stdtoolbars.inc:843
+msgid "mercury"
+msgstr "merkur"
+
+#: lib/ui/stdtoolbars.inc:844
+msgid "venus"
+msgstr "venuša"
+
+#: lib/ui/stdtoolbars.inc:845
+msgid "earth"
+msgstr "zem"
+
+#: lib/ui/stdtoolbars.inc:846
+msgid "mars"
+msgstr "mars"
+
+#: lib/ui/stdtoolbars.inc:847
+msgid "jupiter"
+msgstr "jupiter"
+
+#: lib/ui/stdtoolbars.inc:848
+msgid "saturn"
+msgstr "saturn"
+
+#: lib/ui/stdtoolbars.inc:849
+msgid "uranus"
+msgstr "uranus"
+
+#: lib/ui/stdtoolbars.inc:850
+msgid "neptune"
+msgstr "neptun"
+
+#: lib/ui/stdtoolbars.inc:851
+msgid "pluto"
+msgstr "pluto"
+
+#: lib/ui/stdtoolbars.inc:852
+msgid "aries"
+msgstr "baran"
+
+#: lib/ui/stdtoolbars.inc:853
+msgid "taurus"
+msgstr "býk"
+
+#: lib/ui/stdtoolbars.inc:854
+msgid "gemini"
+msgstr "dvojčatá"
+
+#: lib/ui/stdtoolbars.inc:855
+msgid "cancer"
+msgstr "rak"
+
+#: lib/ui/stdtoolbars.inc:856
+msgid "leo"
+msgstr "lev"
+
+#: lib/ui/stdtoolbars.inc:857
+msgid "virgo"
+msgstr "panna"
+
+#: lib/ui/stdtoolbars.inc:858
+msgid "libra"
+msgstr "váha"
+
+#: lib/ui/stdtoolbars.inc:859
+msgid "scorpio"
+msgstr "škorpión"
+
+#: lib/ui/stdtoolbars.inc:860
+msgid "sagittarius"
+msgstr "strelec"
+
+#: lib/ui/stdtoolbars.inc:861
+msgid "capricornus"
+msgstr "kozorožec"
+
+#: lib/ui/stdtoolbars.inc:862
+msgid "aquarius"
+msgstr "vodnár"
+
+#: lib/ui/stdtoolbars.inc:863
+msgid "pisces"
+msgstr "ryby"
+
+#: lib/ui/stdtoolbars.inc:866
+msgid "APLbox"
+msgstr "APLbox"
+
+#: lib/ui/stdtoolbars.inc:867
+msgid "APLcomment"
+msgstr "APLkomentár"
+
+#: lib/ui/stdtoolbars.inc:868
+msgid "APLdown"
+msgstr "APLnadol"
+
+#: lib/ui/stdtoolbars.inc:869
+msgid "APLdownarrowbox"
+msgstr "APLnadolšípkablok"
+
+#: lib/ui/stdtoolbars.inc:870
+msgid "APLinput"
+msgstr "APLinput"
+
+#: lib/ui/stdtoolbars.inc:871
+msgid "APLinv"
+msgstr "APLinv"
+
+#: lib/ui/stdtoolbars.inc:872
+msgid "APLleftarrowbox"
+msgstr "APLdoľavašípkablok"
+
+#: lib/ui/stdtoolbars.inc:873
+msgid "APLlog"
+msgstr "APLlog"
+
+#: lib/ui/stdtoolbars.inc:874
+msgid "APLrightarrowbox"
+msgstr "APLdopravašípkablok"
+
+#: lib/ui/stdtoolbars.inc:875
+msgid "APLstar"
+msgstr "APLhviezda"
+
+#: lib/ui/stdtoolbars.inc:876
+msgid "APLup"
+msgstr "APLnahor"
+
+#: lib/ui/stdtoolbars.inc:877
+msgid "APLuparrowbox"
+msgstr "APLnahoršípkablok"
+
+#: lib/ui/stdtoolbars.inc:882
 msgid "dashleftarrow"
-msgstr "dashleftarrow"
+msgstr "čiarkovanášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:710
+#: lib/ui/stdtoolbars.inc:883
 msgid "dashrightarrow"
-msgstr "dashrightarrow"
+msgstr "čiarkovanášípkadoprava"
 
-#: lib/ui/stdtoolbars.inc:711
+#: lib/ui/stdtoolbars.inc:884
 msgid "leftleftarrows"
-msgstr "leftleftarrows"
+msgstr "doľavadoľavašípky"
 
-#: lib/ui/stdtoolbars.inc:712
+#: lib/ui/stdtoolbars.inc:885
 msgid "leftrightarrows"
-msgstr "leftrightarrows"
+msgstr "doľavadopravašípky"
 
-#: lib/ui/stdtoolbars.inc:713
+#: lib/ui/stdtoolbars.inc:886
 msgid "rightrightarrows"
-msgstr "rightrightarrows"
+msgstr "dopravadopravašípky"
 
-#: lib/ui/stdtoolbars.inc:714
+#: lib/ui/stdtoolbars.inc:887
 msgid "rightleftarrows"
-msgstr "rightleftarrows"
+msgstr "dopravadoľavašípky"
 
-#: lib/ui/stdtoolbars.inc:715
+#: lib/ui/stdtoolbars.inc:888
 msgid "Lleftarrow"
-msgstr "Lleftarrow"
+msgstr "Ldoľavašípka"
 
-#: lib/ui/stdtoolbars.inc:716
+#: lib/ui/stdtoolbars.inc:889
 msgid "Rrightarrow"
-msgstr "Rrightarrow"
+msgstr "Rdopravašípka"
 
-#: lib/ui/stdtoolbars.inc:717
+#: lib/ui/stdtoolbars.inc:890
 msgid "twoheadleftarrow"
-msgstr "twoheadleftarrow"
+msgstr "dvehlavydoľavašípka"
 
-#: lib/ui/stdtoolbars.inc:718
+#: lib/ui/stdtoolbars.inc:891
 msgid "twoheadrightarrow"
-msgstr "twoheadrightarrow"
+msgstr "dvehlavydopravašípka"
 
-#: lib/ui/stdtoolbars.inc:719
+#: lib/ui/stdtoolbars.inc:892
 msgid "leftarrowtail"
-msgstr "leftarrowtail"
+msgstr "doľavašípkaskoncom"
 
-#: lib/ui/stdtoolbars.inc:720
+#: lib/ui/stdtoolbars.inc:893
 msgid "rightarrowtail"
-msgstr "rightarrowtail"
+msgstr "dopravašípkaskoncom"
 
-#: lib/ui/stdtoolbars.inc:721
+#: lib/ui/stdtoolbars.inc:894
 msgid "looparrowleft"
-msgstr "looparrowleft"
+msgstr "točenášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:722
+#: lib/ui/stdtoolbars.inc:895
 msgid "looparrowright"
-msgstr "looparrowright"
+msgstr "točenášípkadoprava"
 
-#: lib/ui/stdtoolbars.inc:723
+#: lib/ui/stdtoolbars.inc:896
 msgid "curvearrowleft"
-msgstr "curvearrowleft"
+msgstr "krivášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:724
+#: lib/ui/stdtoolbars.inc:897
 msgid "curvearrowright"
-msgstr "curvearrowright"
+msgstr "krivášípkadoprava"
 
-#: lib/ui/stdtoolbars.inc:725
+#: lib/ui/stdtoolbars.inc:898
 msgid "circlearrowleft"
-msgstr "circlearrowleft"
+msgstr "kruhovášípkadoľava"
 
-#: lib/ui/stdtoolbars.inc:726
+#: lib/ui/stdtoolbars.inc:899
 msgid "circlearrowright"
-msgstr "circlearrowright"
+msgstr "kruhovášípkadoprava"
 
 #: lib/ui/stdtoolbars.inc:727
 msgid "Lsh"
@@ -17967,33 +18598,33 @@ msgstr "Lsh"
 msgid "Rsh"
 msgstr "Rsh"
 
-#: lib/ui/stdtoolbars.inc:729
+#: lib/ui/stdtoolbars.inc:902
 msgid "upuparrows"
-msgstr "upuparrows"
+msgstr "nahornahoršípky"
 
-#: lib/ui/stdtoolbars.inc:730
+#: lib/ui/stdtoolbars.inc:903
 msgid "downdownarrows"
-msgstr "downdownarrows"
+msgstr "nadolnadolšípky"
 
-#: lib/ui/stdtoolbars.inc:731
+#: lib/ui/stdtoolbars.inc:904
 msgid "upharpoonleft"
-msgstr "upharpoonleft"
+msgstr "nahorharpúnavľavo"
 
-#: lib/ui/stdtoolbars.inc:732
+#: lib/ui/stdtoolbars.inc:905
 msgid "upharpoonright"
-msgstr "upharpoonright"
+msgstr "nahorharpúnavpravo"
 
-#: lib/ui/stdtoolbars.inc:733
+#: lib/ui/stdtoolbars.inc:907
 msgid "downharpoonleft"
-msgstr "downharpoonleft"
+msgstr "nadolharpúnavľavo"
 
-#: lib/ui/stdtoolbars.inc:734
+#: lib/ui/stdtoolbars.inc:908
 msgid "downharpoonright"
-msgstr "downharpoonright"
+msgstr "nadolharpúnavpravo"
 
-#: lib/ui/stdtoolbars.inc:735
+#: lib/ui/stdtoolbars.inc:909
 msgid "leftrightharpoons"
-msgstr "leftrightharpoons"
+msgstr "doľavadopravaharpúny"
 
 #: lib/ui/stdtoolbars.inc:737
 msgid "rightsquigarrow"
@@ -18031,9 +18662,93 @@ msgstr "nLeftrightarrow"
 msgid "multimap"
 msgstr "multimap"
 
-#: lib/ui/stdtoolbars.inc:748
-msgid "AMS Relations"
-msgstr "AMS Relácie"
+#: lib/ui/stdtoolbars.inc:920
+msgid "shortleftarrow"
+msgstr "shortleftarrow"
+
+#: lib/ui/stdtoolbars.inc:921
+msgid "shortrightarrow"
+msgstr "shortrightarrow"
+
+#: lib/ui/stdtoolbars.inc:922
+msgid "shortuparrow"
+msgstr "shortuparrow"
+
+#: lib/ui/stdtoolbars.inc:923
+msgid "shortdownarrow"
+msgstr "shortdownarrow"
+
+#: lib/ui/stdtoolbars.inc:924
+msgid "leftrightarroweq"
+msgstr "leftrightarroweq"
+
+#: lib/ui/stdtoolbars.inc:925
+msgid "curlyveedownarrow"
+msgstr "curlyveedownarrow"
+
+#: lib/ui/stdtoolbars.inc:926
+msgid "curlyveeuparrow"
+msgstr "curlyveeuparrow"
+
+#: lib/ui/stdtoolbars.inc:927
+msgid "nnwarrow"
+msgstr "nnwarrow"
+
+#: lib/ui/stdtoolbars.inc:928
+msgid "nnearrow"
+msgstr "nnearrow"
+
+#: lib/ui/stdtoolbars.inc:929
+msgid "sswarrow"
+msgstr "sswarrow"
+
+#: lib/ui/stdtoolbars.inc:930
+msgid "ssearrow"
+msgstr "ssearrow"
+
+#: lib/ui/stdtoolbars.inc:931
+msgid "curlywedgeuparrow"
+msgstr "curlywedgeuparrow"
+
+#: lib/ui/stdtoolbars.inc:932
+msgid "curlywedgedownarrow"
+msgstr "curlywedgedownarrow"
+
+#: lib/ui/stdtoolbars.inc:933
+msgid "leftrightarrowtriangle"
+msgstr "leftrightarrowtriangle"
+
+#: lib/ui/stdtoolbars.inc:934
+msgid "leftarrowtriangle"
+msgstr "leftarrowtriangle"
+
+#: lib/ui/stdtoolbars.inc:935
+msgid "rightarrowtriangle"
+msgstr "rightarrowtriangle"
+
+#: lib/ui/stdtoolbars.inc:936
+msgid "Mapsto"
+msgstr "Mapsto"
+
+#: lib/ui/stdtoolbars.inc:937
+msgid "mapsfrom"
+msgstr "mapsfrom"
+
+#: lib/ui/stdtoolbars.inc:938
+msgid "Mapsfrom"
+msgstr "Mapsfrom"
+
+#: lib/ui/stdtoolbars.inc:939
+msgid "Longmapsto"
+msgstr "Longmapsto"
+
+#: lib/ui/stdtoolbars.inc:940
+msgid "longmapsfrom"
+msgstr "longmapsfrom"
+
+#: lib/ui/stdtoolbars.inc:941
+msgid "Longmapsfrom"
+msgstr "Longmapsfrom"
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "leqq"
@@ -18059,6 +18774,10 @@ msgstr "eqslantless"
 msgid "eqslantgtr"
 msgstr "eqslantgtr"
 
+#: lib/ui/stdtoolbars.inc:963
+msgid "eqsim"
+msgstr "eqsim"
+
 #: lib/ui/stdtoolbars.inc:755
 msgid "lesssim"
 msgstr "lesssim"
@@ -18066,6 +18785,14 @@ msgstr "lesssim"
 #: lib/ui/stdtoolbars.inc:756
 msgid "gtrsim"
 msgstr "gtrsim"
+
+#: lib/ui/stdtoolbars.inc:966
+msgid "apprge"
+msgstr "apprge"
+
+#: lib/ui/stdtoolbars.inc:967
+msgid "apprle"
+msgstr "apprle"
 
 #: lib/ui/stdtoolbars.inc:757
 msgid "lessapprox"
@@ -18283,6 +19010,10 @@ msgstr "because"
 msgid "therefore"
 msgstr "therefore"
 
+#: lib/ui/stdtoolbars.inc:1031
+msgid "wasytherefore"
+msgstr "wasytherefore"
+
 #: lib/ui/stdtoolbars.inc:811
 msgid "backepsilon"
 msgstr "backepsilon"
@@ -18299,9 +19030,189 @@ msgstr "between"
 msgid "pitchfork"
 msgstr "pitchfork"
 
-#: lib/ui/stdtoolbars.inc:817
-msgid "AMS Negative Relations"
-msgstr "AMS Záporné Relácie"
+#: lib/ui/stdtoolbars.inc:1036
+msgid "trianglelefteqslant"
+msgstr "trianglelefteqslant"
+
+#: lib/ui/stdtoolbars.inc:1037
+msgid "trianglerighteqslant"
+msgstr "trianglerighteqslant"
+
+#: lib/ui/stdtoolbars.inc:1038
+msgid "inplus"
+msgstr "inplus"
+
+#: lib/ui/stdtoolbars.inc:1039
+msgid "niplus"
+msgstr "niplus"
+
+#: lib/ui/stdtoolbars.inc:1040
+msgid "subsetplus"
+msgstr "subsetplus"
+
+#: lib/ui/stdtoolbars.inc:1041
+msgid "supsetplus"
+msgstr "supsetplus"
+
+#: lib/ui/stdtoolbars.inc:1042
+msgid "subsetpluseq"
+msgstr "subsetpluseq"
+
+#: lib/ui/stdtoolbars.inc:1043
+msgid "supsetpluseq"
+msgstr "supsetpluseq"
+
+#: lib/ui/stdtoolbars.inc:1044
+msgid "minuso"
+msgstr "minuso"
+
+#: lib/ui/stdtoolbars.inc:1045
+msgid "baro"
+msgstr "baro"
+
+#: lib/ui/stdtoolbars.inc:1046
+msgid "sslash"
+msgstr "sslash"
+
+#: lib/ui/stdtoolbars.inc:1047
+msgid "bbslash"
+msgstr "bbslash"
+
+#: lib/ui/stdtoolbars.inc:1048
+msgid "moo"
+msgstr "moo"
+
+#: lib/ui/stdtoolbars.inc:1049
+msgid "merge"
+msgstr "merge"
+
+#: lib/ui/stdtoolbars.inc:1050
+msgid "invneg"
+msgstr "invneg"
+
+#: lib/ui/stdtoolbars.inc:1051
+msgid "lbag"
+msgstr "lbag"
+
+#: lib/ui/stdtoolbars.inc:1052
+msgid "rbag"
+msgstr "rbag"
+
+#: lib/ui/stdtoolbars.inc:1053
+msgid "interleave"
+msgstr "interleave"
+
+#: lib/ui/stdtoolbars.inc:1054
+msgid "leftslice"
+msgstr "leftslice"
+
+#: lib/ui/stdtoolbars.inc:1055
+msgid "rightslice"
+msgstr "rightslice"
+
+#: lib/ui/stdtoolbars.inc:1056
+msgid "oblong"
+msgstr "oblong"
+
+#: lib/ui/stdtoolbars.inc:1057
+msgid "talloblong"
+msgstr "talloblong"
+
+#: lib/ui/stdtoolbars.inc:1058
+msgid "fatsemi"
+msgstr "fatsemi"
+
+#: lib/ui/stdtoolbars.inc:1059
+msgid "fatslash"
+msgstr "fatslash"
+
+#: lib/ui/stdtoolbars.inc:1060
+msgid "fatbslash"
+msgstr "fatbslash"
+
+#: lib/ui/stdtoolbars.inc:1061
+msgid "ldotp"
+msgstr "ldotp"
+
+#: lib/ui/stdtoolbars.inc:1062
+msgid "cdotp"
+msgstr "cdotp"
+
+#: lib/ui/stdtoolbars.inc:1063
+msgid "colon"
+msgstr "dvojbodka"
+
+#: lib/ui/stdtoolbars.inc:1064
+msgid "dblcolon"
+msgstr "dvojnádvojbodka"
+
+#: lib/ui/stdtoolbars.inc:1065
+msgid "vcentcolon"
+msgstr "vcentcolon"
+
+#: lib/ui/stdtoolbars.inc:1066
+msgid "colonapprox"
+msgstr "colonapprox"
+
+#: lib/ui/stdtoolbars.inc:1067
+msgid "Colonapprox"
+msgstr "Colonapprox"
+
+#: lib/ui/stdtoolbars.inc:1068
+msgid "coloneq"
+msgstr "coloneq"
+
+#: lib/ui/stdtoolbars.inc:1069
+msgid "Coloneq"
+msgstr "Coloneq"
+
+#: lib/ui/stdtoolbars.inc:1070
+msgid "coloneqq"
+msgstr "coloneqq"
+
+#: lib/ui/stdtoolbars.inc:1071
+msgid "Coloneqq"
+msgstr "Coloneqq"
+
+#: lib/ui/stdtoolbars.inc:1072
+msgid "colonsim"
+msgstr "colonsim"
+
+#: lib/ui/stdtoolbars.inc:1073
+msgid "Colonsim"
+msgstr "Colonsim"
+
+#: lib/ui/stdtoolbars.inc:1074
+msgid "eqcolon"
+msgstr "eqcolon"
+
+#: lib/ui/stdtoolbars.inc:1075
+msgid "Eqcolon"
+msgstr "Eqcolon"
+
+#: lib/ui/stdtoolbars.inc:1076
+msgid "eqqcolon"
+msgstr "eqqcolon"
+
+#: lib/ui/stdtoolbars.inc:1077
+msgid "Eqqcolon"
+msgstr "Eqqcolon"
+
+#: lib/ui/stdtoolbars.inc:1078
+msgid "wasypropto"
+msgstr "wasypropto"
+
+#: lib/ui/stdtoolbars.inc:1079
+msgid "logof"
+msgstr "logof"
+
+#: lib/ui/stdtoolbars.inc:1080
+msgid "Join"
+msgstr "Join"
+
+#: lib/ui/stdtoolbars.inc:1083
+msgid "Negative Relations (extended)"
+msgstr "Záporné Relácie (rozšírenie)"
 
 #: lib/ui/stdtoolbars.inc:818
 msgid "nless"
@@ -18391,6 +19302,14 @@ msgstr "npreceq"
 msgid "nsucceq"
 msgstr "nsucceq"
 
+#: lib/ui/stdtoolbars.inc:1106
+msgid "precneqq"
+msgstr "precneqq"
+
+#: lib/ui/stdtoolbars.inc:1107
+msgid "succneqq"
+msgstr "succneqq"
+
 #: lib/ui/stdtoolbars.inc:840
 msgid "precnsim"
 msgstr "precnsim"
@@ -18427,6 +19346,10 @@ msgstr "supsetneqq"
 msgid "nsubseteq"
 msgstr "nsubseteq"
 
+#: lib/ui/stdtoolbars.inc:1117
+msgid "nsubseteqq"
+msgstr "nsubseteqq"
+
 #: lib/ui/stdtoolbars.inc:849
 msgid "nsupseteq"
 msgstr "nsupseteq"
@@ -18446,6 +19369,10 @@ msgstr "nvDash"
 #: lib/ui/stdtoolbars.inc:853
 msgid "nVDash"
 msgstr "nVDash"
+
+#: lib/ui/stdtoolbars.inc:1123
+msgid "nVdash"
+msgstr "nVdash"
 
 #: lib/ui/stdtoolbars.inc:854
 msgid "varsubsetneq"
@@ -18503,9 +19430,13 @@ msgstr "nparallel"
 msgid "nshortparallel"
 msgstr "nshortparallel"
 
-#: lib/ui/stdtoolbars.inc:870
-msgid "AMS Operators"
-msgstr "AMS Operátory"
+#: lib/ui/stdtoolbars.inc:1138
+msgid "ntrianglelefteqslant"
+msgstr "ntrianglelefteqslant"
+
+#: lib/ui/stdtoolbars.inc:1139
+msgid "ntrianglerighteqslant"
+msgstr "ntrianglerighteqslant"
 
 #: lib/ui/stdtoolbars.inc:871
 msgid "dotplus"
@@ -18550,6 +19481,34 @@ msgstr "boxdot"
 #: lib/ui/stdtoolbars.inc:881
 msgid "boxplus"
 msgstr "boxplus"
+
+#: lib/ui/stdtoolbars.inc:1156
+msgid "boxast"
+msgstr "boxast"
+
+#: lib/ui/stdtoolbars.inc:1157
+msgid "boxbar"
+msgstr "boxbar"
+
+#: lib/ui/stdtoolbars.inc:1158
+msgid "boxslash"
+msgstr "boxslash"
+
+#: lib/ui/stdtoolbars.inc:1159
+msgid "boxbslash"
+msgstr "boxbslash"
+
+#: lib/ui/stdtoolbars.inc:1160
+msgid "boxcircle"
+msgstr "boxcircle"
+
+#: lib/ui/stdtoolbars.inc:1161
+msgid "boxbox"
+msgstr "boxbox"
+
+#: lib/ui/stdtoolbars.inc:1162
+msgid "boxempty"
+msgstr "boxempty"
 
 #: lib/ui/stdtoolbars.inc:882
 msgid "divideontimes"
@@ -18598,6 +19557,226 @@ msgstr "centerdot"
 #: lib/ui/stdtoolbars.inc:893
 msgid "intercal"
 msgstr "intercal"
+
+#: lib/ui/stdtoolbars.inc:1175
+msgid "implies"
+msgstr "implies"
+
+#: lib/ui/stdtoolbars.inc:1176
+msgid "impliedby"
+msgstr "impliedby"
+
+#: lib/ui/stdtoolbars.inc:1177
+msgid "bigcurlyvee"
+msgstr "bigcurlyvee"
+
+#: lib/ui/stdtoolbars.inc:1178
+msgid "bigcurlywedge"
+msgstr "bigcurlywedge"
+
+#: lib/ui/stdtoolbars.inc:1179
+msgid "bigsqcap"
+msgstr "bigsqcap"
+
+#: lib/ui/stdtoolbars.inc:1180
+msgid "bigbox"
+msgstr "bigbox"
+
+#: lib/ui/stdtoolbars.inc:1181
+msgid "bigparallel"
+msgstr "bigparallel"
+
+#: lib/ui/stdtoolbars.inc:1182
+msgid "biginterleave"
+msgstr "biginterleave"
+
+#: lib/ui/stdtoolbars.inc:1183
+msgid "bignplus"
+msgstr "bignplus"
+
+#: lib/ui/stdtoolbars.inc:1184
+msgid "nplus"
+msgstr "nplus"
+
+#: lib/ui/stdtoolbars.inc:1185
+msgid "Yup"
+msgstr "Yup"
+
+#: lib/ui/stdtoolbars.inc:1186
+msgid "Ydown"
+msgstr "Ydown"
+
+#: lib/ui/stdtoolbars.inc:1187
+msgid "Yleft"
+msgstr "Yleft"
+
+#: lib/ui/stdtoolbars.inc:1188
+msgid "Yright"
+msgstr "Yright"
+
+#: lib/ui/stdtoolbars.inc:1189
+msgid "obar"
+msgstr "obar"
+
+#: lib/ui/stdtoolbars.inc:1190
+msgid "obslash"
+msgstr "obslash"
+
+#: lib/ui/stdtoolbars.inc:1191
+msgid "ocircle"
+msgstr "ocircle"
+
+#: lib/ui/stdtoolbars.inc:1192
+msgid "olessthan"
+msgstr "olessthan"
+
+#: lib/ui/stdtoolbars.inc:1193
+msgid "ogreaterthan"
+msgstr "ogreaterthan"
+
+#: lib/ui/stdtoolbars.inc:1194
+msgid "ovee"
+msgstr "ovee"
+
+#: lib/ui/stdtoolbars.inc:1195
+msgid "owedge"
+msgstr "owedge"
+
+#: lib/ui/stdtoolbars.inc:1196
+msgid "varcurlyvee"
+msgstr "varcurlyvee"
+
+#: lib/ui/stdtoolbars.inc:1197
+msgid "varcurlywedge"
+msgstr "varcurlywedge"
+
+#: lib/ui/stdtoolbars.inc:1198
+msgid "vartimes"
+msgstr "vartimes"
+
+#: lib/ui/stdtoolbars.inc:1199
+msgid "varotimes"
+msgstr "varotimes"
+
+#: lib/ui/stdtoolbars.inc:1200
+msgid "varoast"
+msgstr "varoast"
+
+#: lib/ui/stdtoolbars.inc:1201
+msgid "varobar"
+msgstr "varobar"
+
+#: lib/ui/stdtoolbars.inc:1202
+msgid "varodot"
+msgstr "varodot"
+
+#: lib/ui/stdtoolbars.inc:1203
+msgid "varoslash"
+msgstr "varoslash"
+
+#: lib/ui/stdtoolbars.inc:1204
+msgid "varobslash"
+msgstr "varobslash"
+
+#: lib/ui/stdtoolbars.inc:1205
+msgid "varocircle"
+msgstr "varocircle"
+
+#: lib/ui/stdtoolbars.inc:1206
+msgid "varoplus"
+msgstr "varoplus"
+
+#: lib/ui/stdtoolbars.inc:1207
+msgid "varominus"
+msgstr "varominus"
+
+#: lib/ui/stdtoolbars.inc:1208
+msgid "varovee"
+msgstr "varovee"
+
+#: lib/ui/stdtoolbars.inc:1209
+msgid "varowedge"
+msgstr "varowedge"
+
+#: lib/ui/stdtoolbars.inc:1210
+msgid "varolessthan"
+msgstr "varolessthan"
+
+#: lib/ui/stdtoolbars.inc:1211
+msgid "varogreaterthan"
+msgstr "varogreaterthan"
+
+#: lib/ui/stdtoolbars.inc:1212
+msgid "varbigcirc"
+msgstr "varbigcirc"
+
+#: lib/ui/stdtoolbars.inc:1217
+msgid "brokenvert"
+msgstr "brokenvert"
+
+#: lib/ui/stdtoolbars.inc:1220
+msgid "lfloor"
+msgstr "lfloor"
+
+#: lib/ui/stdtoolbars.inc:1221
+msgid "rfloor"
+msgstr "rfloor"
+
+#: lib/ui/stdtoolbars.inc:1222
+msgid "lceil"
+msgstr "lceil"
+
+#: lib/ui/stdtoolbars.inc:1223
+msgid "rceil"
+msgstr "rceil"
+
+#: lib/ui/stdtoolbars.inc:1228
+msgid "llbracket"
+msgstr "llbracket"
+
+#: lib/ui/stdtoolbars.inc:1229
+msgid "rrbracket"
+msgstr "rrbracket"
+
+#: lib/ui/stdtoolbars.inc:1230
+msgid "llfloor"
+msgstr "llfloor"
+
+#: lib/ui/stdtoolbars.inc:1231
+msgid "rrfloor"
+msgstr "rrfloor"
+
+#: lib/ui/stdtoolbars.inc:1232
+msgid "llceil"
+msgstr "llceil"
+
+#: lib/ui/stdtoolbars.inc:1233
+msgid "rrceil"
+msgstr "rrceil"
+
+#: lib/ui/stdtoolbars.inc:1234
+msgid "Lbag"
+msgstr "Lbag"
+
+#: lib/ui/stdtoolbars.inc:1235
+msgid "Rbag"
+msgstr "Rbag"
+
+#: lib/ui/stdtoolbars.inc:1236
+msgid "llparenthesis"
+msgstr "llparenthesis"
+
+#: lib/ui/stdtoolbars.inc:1237
+msgid "rrparenthesis"
+msgstr "rrparenthesis"
+
+#: lib/ui/stdtoolbars.inc:1238
+msgid "binampersand"
+msgstr "binampersand"
+
+#: lib/ui/stdtoolbars.inc:1239
+msgid "bindnasrepma"
+msgstr "bindnasrepma"
 
 #: lib/ui/stdtoolbars.inc:907
 msgid "Voiceless bilabial plosive"
@@ -19595,9 +20774,9 @@ msgstr "R/S kód"
 msgid "LilyPond music"
 msgstr "LilyPond nóty"
 
-#: lib/configure.py:538
+#: lib/configure.py:547
 msgid "LilyPond book (LaTeX)"
-msgstr "LilyPond book (LaTeX)"
+msgstr "LilyPond Kniha (LaTeX)"
 
 #: lib/configure.py:539
 msgid "LaTeX (plain)"
@@ -19949,10 +21128,10 @@ msgstr "chýba \\begin_header"
 msgid "\\begin_document is missing"
 msgstr "chýba \\begin_document"
 
-#: src/Buffer.cpp:873 src/Buffer.cpp:879 src/BufferView.cpp:1452
-#: src/BufferView.cpp:1458
+#: src/Buffer.cpp:895 src/Buffer.cpp:901 src/BufferView.cpp:1451
+#: src/BufferView.cpp:1457
 msgid "Changes not shown in LaTeX output"
-msgstr "Zmeny nezobrazené v LaTeX-ovom výstupu"
+msgstr "Zmeny nezobrazené v LaTeX-ovom výstupe"
 
 #: src/Buffer.cpp:874 src/BufferView.cpp:1453
 msgid ""
@@ -21884,13 +23063,13 @@ msgstr ""
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Štandardný formát použitý s LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3161
+#: src/LyXRC.cpp:3153
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
-"Minimalizuj dialógové okná spoločne s hlavným oknom LyX-u. (Vzťahuje sa len "
-"na dialógy zobrazené po tejto zmene.)"
+"Minimalizovať dialógové okná spoločne s hlavným oknom LyX-u. (Vzťahuje sa "
+"len na dialógy zobrazené po tejto zmene.)"
 
 #: src/LyXRC.cpp:3165
 msgid "Select how LyX will display any graphics."
@@ -22850,9 +24029,9 @@ msgstr "Opäť načítať uložený dokument?"
 msgid "&Reload"
 msgstr "Opäť &načítať"
 
-#: src/buffer_funcs.cpp:76
+#: src/buffer_funcs.cpp:77
 msgid "&Keep Changes"
-msgstr "&Drž Zmeny"
+msgstr "&Držať Zmeny"
 
 #: src/buffer_funcs.cpp:86
 #, c-format
@@ -23390,21 +24569,21 @@ msgstr ""
 "Vetva s menom \"%1$s\" už existuje.\n"
 "Chcete zlúčiť vetvu \"%2$s\" s ňou?"
 
-#: src/frontends/qt4/GuiBranches.cpp:216
+#: src/frontends/qt4/GuiBranches.cpp:219
 msgid "&Merge"
-msgstr "Zlúčiť"
+msgstr "Z&lúčiť"
 
 #: src/frontends/qt4/GuiBranches.cpp:224 src/frontends/qt4/GuiIndices.cpp:221
 msgid "Renaming failed"
 msgstr "Premenovanie zlyhalo"
 
-#: src/frontends/qt4/GuiBranches.cpp:225
+#: src/frontends/qt4/GuiBranches.cpp:228
 msgid "The branch could not be renamed."
-msgstr "Túto vetvu nebolo možné premenovať."
+msgstr "Vetvu nebolo možné premenovať."
 
 #: src/frontends/qt4/GuiChanges.cpp:40
 msgid "Merge Changes"
-msgstr "Zmeny Zlúčiť"
+msgstr "Zlúčiť Zmeny"
 
 #: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
@@ -23549,11 +24728,11 @@ msgstr "Nasledujúci príkaz"
 
 #: src/frontends/qt4/GuiCompare.cpp:43
 msgid "Compare LyX files"
-msgstr "Porovnaj LyX- súbory"
+msgstr "Porovnať LyX- súbory"
 
 #: src/frontends/qt4/GuiCompare.cpp:154
 msgid "Select document"
-msgstr "Vyberte dokument"
+msgstr "Vybrať dokument"
 
 #: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1902
 #: src/frontends/qt4/GuiView.cpp:1959 src/frontends/qt4/GuiView.cpp:2224
@@ -23588,7 +24767,7 @@ msgstr "rozdiely"
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:35
 msgid "Compare different revisions"
-msgstr "Porovnaj rozličné revízie"
+msgstr "Porovnať rozličné revízie"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
@@ -23634,9 +24813,9 @@ msgstr ""
 "Balík amsmath bude použitý len v prípade, že vo formulách sú vložené aj "
 "symboly z mat. lišty nástrojov AMS"
 
-#: src/frontends/qt4/GuiDocument.cpp:182
+#: src/frontends/qt4/GuiDocument.cpp:140
 msgid "&Use amssymb package automatically"
-msgstr "Automaticky používať balík amssymb"
+msgstr "Automaticky po&užívať balík amssymb"
 
 #: src/frontends/qt4/GuiDocument.cpp:183
 msgid "Use amssymb package"
@@ -23666,13 +24845,13 @@ msgstr ""
 "LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
 "špeciálne integrálne symboly"
 
-#: src/frontends/qt4/GuiDocument.cpp:186
+#: src/frontends/qt4/GuiDocument.cpp:148
 msgid "Use math&dots package automatically"
-msgstr "Automaticky používať mat. balík dots"
+msgstr "Automaticky používať balík math&dots"
 
-#: src/frontends/qt4/GuiDocument.cpp:187
+#: src/frontends/qt4/GuiDocument.cpp:149
 msgid "Use mathdo&ts package"
-msgstr "Použiť mat. balík mathdots"
+msgstr "Použiť mat. balík mathdo&ts"
 
 #: src/frontends/qt4/GuiDocument.cpp:188
 msgid ""
@@ -23698,13 +24877,13 @@ msgstr ""
 "LaTeX balík mathtools sa použije len v prípade, keď sa vo formulách nájdu aj "
 "niektoré matematické relácie"
 
-#: src/frontends/qt4/GuiDocument.cpp:198
+#: src/frontends/qt4/GuiDocument.cpp:156
 msgid "Use mhchem &package automatically"
-msgstr "Automaticky používať balík mhchem"
+msgstr "Automaticky &používať balík mhchem"
 
-#: src/frontends/qt4/GuiDocument.cpp:195
+#: src/frontends/qt4/GuiDocument.cpp:157
 msgid "Use mh&chem package"
-msgstr "Použiť balík mhchem"
+msgstr "Použiť balík mh&chem"
 
 #: src/frontends/qt4/GuiDocument.cpp:196
 msgid ""
@@ -23746,13 +24925,13 @@ msgstr ""
 "Balík stmaryrd bude použitý len v prípade, že vo formulách sú vložené aj "
 "symboly z fontu St Mary's Road pre teoretickú počítačovú vedu"
 
-#: src/frontends/qt4/GuiDocument.cpp:202
+#: src/frontends/qt4/GuiDocument.cpp:168
 msgid "Use u&ndertilde package automatically"
-msgstr "Automaticky používať balík undertilde"
+msgstr "Automaticky používať balík u&ndertilde"
 
-#: src/frontends/qt4/GuiDocument.cpp:203
+#: src/frontends/qt4/GuiDocument.cpp:169
 msgid "Use undertilde pac&kage"
-msgstr "Použiť balík undertilde"
+msgstr "Použiť balí&k undertilde"
 
 #: src/frontends/qt4/GuiDocument.cpp:200
 msgid ""
@@ -24176,9 +25355,10 @@ msgstr "Vyberte hlavný dokument"
 msgid "LyX Files (*.lyx)"
 msgstr "LyX súbory (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2009 src/frontends/qt4/GuiDocument.cpp:3330
+#: src/frontends/qt4/GuiDocument.cpp:2168
+#: src/frontends/qt4/GuiDocument.cpp:3481
 msgid "Unapplied changes"
-msgstr "Nepoužité zmeny"
+msgstr "Neuplatnené zmeny"
 
 #: src/frontends/qt4/GuiDocument.cpp:2010 src/frontends/qt4/GuiDocument.cpp:3331
 msgid ""
@@ -24188,9 +25368,10 @@ msgstr ""
 "Niektoré zmeny v dialógovom okne sú zatiaľ neuplatnené.\n"
 "Po tejto akcii sa stratia, ak ich teraz neuplatníte."
 
-#: src/frontends/qt4/GuiDocument.cpp:2012 src/frontends/qt4/GuiDocument.cpp:3333
+#: src/frontends/qt4/GuiDocument.cpp:2171
+#: src/frontends/qt4/GuiDocument.cpp:3484
 msgid "&Dismiss"
-msgstr "Zamietnuť"
+msgstr "&Zamietnuť"
 
 #: src/frontends/qt4/GuiDocument.cpp:2024 src/frontends/qt4/GuiDocument.cpp:3341
 msgid "Unable to set document class."
@@ -24247,9 +25428,9 @@ msgstr "Upozornenie: Niektoré vyžadované balíky sú nedostupné!"
 msgid "[No options predefined]"
 msgstr "[Niet preddefinovaných volieb]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3202
+#: src/frontends/qt4/GuiDocument.cpp:3353
 msgid "C&ustomize Hyperref Options"
-msgstr "Prispôsobiť Voľby pre Hyperref"
+msgstr "Prispôsobiť Voľby pre &Hyperref"
 
 #: src/frontends/qt4/GuiDocument.cpp:3204
 msgid "&Use Hyperref Support"
@@ -24718,10 +25899,10 @@ msgstr "Klávesnica/Myš"
 msgid "Input Completion"
 msgstr "Doplňovanie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:760 src/frontends/qt4/GuiPrefs.cpp:785
-#: src/frontends/qt4/GuiPrefs.cpp:873 src/frontends/qt4/GuiPrefs.cpp:900
+#: src/frontends/qt4/GuiPrefs.cpp:761 src/frontends/qt4/GuiPrefs.cpp:786
+#: src/frontends/qt4/GuiPrefs.cpp:874 src/frontends/qt4/GuiPrefs.cpp:901
 msgid "Co&mmand:"
-msgstr "Príkaz:"
+msgstr "Prí&kaz:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:930
 msgid "Screen Fonts"
@@ -25615,10 +26796,10 @@ msgstr ""
 msgid "Chosen File Already Open"
 msgstr "Vybraný Súbor je Už Otvorený"
 
-#: src/frontends/qt4/GuiView.cpp:2296 src/frontends/qt4/GuiView.cpp:2311
-#: src/frontends/qt4/GuiView.cpp:2386 src/frontends/qt4/GuiView.cpp:2434
+#: src/frontends/qt4/GuiView.cpp:2264 src/frontends/qt4/GuiView.cpp:2279
+#: src/frontends/qt4/GuiView.cpp:2354 src/frontends/qt4/GuiView.cpp:2402
 msgid "&Rename"
-msgstr "Premenuj"
+msgstr "&Premenuj"
 
 #: src/frontends/qt4/GuiView.cpp:2338
 msgid "Choose a filename to export the document as"
@@ -25639,11 +26820,11 @@ msgstr ""
 msgid "Rename and save?"
 msgstr "Premenovať a uložiť ?"
 
-#: src/frontends/qt4/GuiView.cpp:2434
+#: src/frontends/qt4/GuiView.cpp:2402
 msgid "&Retry"
-msgstr "Zopakuj"
+msgstr "Z&opakuj"
 
-#: src/frontends/qt4/GuiView.cpp:2497
+#: src/frontends/qt4/GuiView.cpp:2447
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -25662,15 +26843,15 @@ msgstr ""
 "menu: Zobraziť->Skryté->...\n"
 "\n"
 "Na zbavenie sa tejto otázky, nastavte preferenciu v:\n"
-"  Nástroje Preferencie...->Vzhľad->Užívateľské Rozhranie\n"
+"  Nástroje Preferencie...->Vz&hľad->Užívateľské Rozhranie\n"
 
 #: src/frontends/qt4/GuiView.cpp:2506
 msgid "Close or hide document?"
 msgstr "Zavrieť alebo skryť dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2507
+#: src/frontends/qt4/GuiView.cpp:2457
 msgid "&Hide"
-msgstr "Skryť"
+msgstr "&Skryť"
 
 #: src/frontends/qt4/GuiView.cpp:2540
 msgid "Close document"
@@ -25710,9 +26891,9 @@ msgstr ""
 msgid "Save changed document?"
 msgstr "Uložiť zmenený dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/GuiView.cpp:2659
 msgid "&Discard"
-msgstr "Zahodiť"
+msgstr "Zah&odiť"
 
 #: src/frontends/qt4/GuiView.cpp:2744
 #, c-format
@@ -26199,9 +27380,9 @@ msgstr ""
 msgid "Open Databases?"
 msgstr "Otvoriť Databázy?"
 
-#: src/insets/InsetBibtex.cpp:153
+#: src/insets/InsetBibtex.cpp:152
 msgid "&Proceed"
-msgstr "Pokračovať"
+msgstr "&Pokračovať"
 
 #: src/insets/InsetBibtex.cpp:171
 msgid "BibTeX Generated Bibliography"
@@ -27295,10 +28476,6 @@ msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
 msgid "optional"
 msgstr "nepovinné"
 
-#: src/mathed/MathMacroTemplate.cpp:538
-msgid "TeX"
-msgstr "TeX"
-
 #: src/mathed/MathMacroTemplate.cpp:1258
 msgid "math macro"
 msgstr "mat. makro"
@@ -27579,6 +28756,51 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Japanese (non-CJK) (utf8)"
+#~ msgstr "Japonsky (non-CJK) (utf8)"
+
+#~ msgid "AMS arrows"
+#~ msgstr "AMS šípky"
+
+#~ msgid "AMS relations"
+#~ msgstr "AMS relácie"
+
+#~ msgid "AMS operators"
+#~ msgstr "AMS operátory"
+
+#~ msgid "AMS miscellaneous"
+#~ msgstr "AMS rôzne"
+
+#~ msgid "AMS Miscellaneous"
+#~ msgstr "AMS Rôzne"
+
+#~ msgid "AMS Arrows"
+#~ msgstr "AMS Šípky"
+
+#~ msgid "AMS Relations"
+#~ msgstr "AMS Relácie"
+
+#~ msgid "AMS Operators"
+#~ msgstr "AMS Operátory"
+
+#~ msgid "Caption Setup Options|S"
+#~ msgstr "Voľby pre nastavenie popisu"
+
+#~ msgid "Options for the caption setup command (see bicaption manual)"
+#~ msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
+
+#~ msgid "A short title (for list of figures/tables) in the document language"
+#~ msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v jazyku dokumentu"
+
+#~ msgid "A short title (for list of figures/tables) in the second language"
+#~ msgstr "Krátky titul (pre zoznam obrázkov/tabuliek) v druhom jazyku"
+
+#~ msgid "Safety Phrase Option|S"
+#~ msgstr "Voľba Poistný Zvrat"
+
+#~ msgid "Optional argument to the rsphrase command"
+#~ msgstr "Nepovinný argument pre príkaz rsphrase"
 
 #~ msgid "Fig. ---"
 #~ msgstr "Obr. ---"
@@ -28315,39 +29537,6 @@ msgstr "Neznámy používateľ"
 #~ "ASCII výstupe. Napr.\"groff -t -Tlatin2 $$FName\", kde $$FName je názov "
 #~ "vstupného súboru. Ak je špecifikované \"\", použije sa interná funkcia."
 
-#~ msgid "varGamma"
-#~ msgstr "varGamma"
-
-#~ msgid "varDelta"
-#~ msgstr "varDelta"
-
-#~ msgid "varTheta"
-#~ msgstr "varTheta"
-
-#~ msgid "varLambda"
-#~ msgstr "varLambda"
-
-#~ msgid "varXi"
-#~ msgstr "varXi"
-
-#~ msgid "varPi"
-#~ msgstr "varPi"
-
-#~ msgid "varSigma"
-#~ msgstr "varSigma"
-
-#~ msgid "varUpsilon"
-#~ msgstr "varUpsilon"
-
-#~ msgid "varPhi"
-#~ msgstr "varPhi"
-
-#~ msgid "varPsi"
-#~ msgstr "varPsi"
-
-#~ msgid "varOmega"
-#~ msgstr "varOmega"
-
 #~ msgid "Affilation:"
 #~ msgstr "Pričlenenie:"
 
@@ -28356,9 +29545,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "DockWidget"
 #~ msgstr "DockWidget"
-
-#~ msgid "comment"
-#~ msgstr "komentár"
 
 #~ msgid "greyedout"
 #~ msgstr "zosivelé"
@@ -28627,9 +29813,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Keywordsr"
 #~ msgstr "Heslá"
 
-#~ msgid "Current &paragraph"
-#~ msgstr "Aktuálny odstavec"
-
 #~ msgid "A&vailable indices:"
 #~ msgstr "Dostupné indexy:"
 
@@ -28885,9 +30068,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Case #:"
 #~ msgstr "Prípad #:"
-
-#~ msgid "Footernote"
-#~ msgstr "Poznámka pri päte"
 
 #~ msgid "Inter-word Space|w"
 #~ msgstr "Medzislovná medzera"
