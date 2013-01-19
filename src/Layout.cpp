@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "Layout.h"
-#include "Encoding.h"
 #include "FontInfo.h"
 #include "Language.h"
 #include "Lexer.h"

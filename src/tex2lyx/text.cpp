@@ -1465,10 +1465,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// you set buggy_encoding to false for JIS.
 		bool const buggy_encoding = encoding == "JIS";
 		if (!buggy_encoding)
-			p.setEncoding(encoding);
+			p.setEncoding(encoding, Encoding::CJK);
 		else {
 			// FIXME: This will read garbage, since the data is not encoded in utf8.
-			p.setEncoding("utf8");
+			p.setEncoding("UTF-8");
 		}
 		// LyX only supports the same mapping for all CJK
 		// environments, so we might need to output everything as ERT
@@ -3706,7 +3706,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "inputencoding") {
 			// nothing to write here
 			string const enc = subst(p.verbatim_item(), "\n", " ");
-			p.setEncoding(enc);
+			p.setEncoding(enc, Encoding::inputenc);
 		}
 
 		else if ((where = is_known(t.cs(), known_special_chars))) {
@@ -4505,7 +4505,7 @@ string guessLanguage(Parser & p, string const & lang)
 		if (t.cat() == catEscape) {
 			if (t.cs() == "inputencoding") {
 				string const enc = subst(p.verbatim_item(), "\n", " ");
-				p.setEncoding(enc);
+				p.setEncoding(enc, Encoding::inputenc);
 				continue;
 			}
 			if (t.cs() != "begin")
@@ -4535,9 +4535,9 @@ string guessLanguage(Parser & p, string const & lang)
 		char const * const * const where =
 			is_known(encoding, supported_CJK_encodings);
 		if (where)
-			p.setEncoding(encoding);
+			p.setEncoding(encoding, Encoding::CJK);
 		else
-			p.setEncoding("utf8");
+			p.setEncoding("UTF-8");
 		string const text = p.verbatimEnvironment("CJK");
 		p.setEncoding(encoding_old);
 		p.skip_spaces();

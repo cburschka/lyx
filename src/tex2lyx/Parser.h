@@ -135,10 +135,13 @@ public:
 	///
 	~Parser();
 
-	/// change the latex encoding of the input stream
+	/// change the iconv encoding of the input stream
+	/// according to the latex encoding and package
+	void setEncoding(std::string const & encoding, int const & package);
+	/// change the iconv encoding of the input stream
 	void setEncoding(std::string const & encoding);
-	/// get the current latex encoding of the input stream
-	std::string getEncoding() const { return encoding_latex_; }
+	/// get the current iconv encoding of the input stream
+	std::string getEncoding() const { return encoding_iconv_; }
 
 	///
 	int lineno() const { return lineno_; }
@@ -271,8 +274,8 @@ private:
 	idocstringstream * iss_;
 	///
 	idocstream & is_;
-	/// latex name of the current encoding
-	std::string encoding_latex_;
+	/// iconv name of the current encoding
+	std::string encoding_iconv_;
 };
 
 

@@ -195,7 +195,7 @@ extern bool skipChildren();
 
 /*!
  *  Reads tex input from \a infilename and writes lyx output to \a outfilename.
- *  The (latex) encoding can be provided as \a encoding.
+ *  The iconv name of the encoding can be provided as \a encoding.
  *  Uses some common settings for the preamble, so this should only
  *  be used more than once for included documents.
  *  Caution: Overwrites the existing preamble settings if the new document

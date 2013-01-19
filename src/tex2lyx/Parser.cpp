@@ -158,7 +158,7 @@ void debugToken(std::ostream & os, Token const & t, unsigned int flags)
 
 
 Parser::Parser(idocstream & is)
-	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_latex_("utf8")
+	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_iconv_("UTF-8")
 {
 }
 
@@ -166,7 +166,7 @@ Parser::Parser(idocstream & is)
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0),
 	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_),
-	  encoding_latex_("utf8")
+	  encoding_iconv_("UTF-8")
 {
 }
 
@@ -177,20 +177,26 @@ Parser::~Parser()
 }
 
 
-void Parser::setEncoding(std::string const & e)
+void Parser::setEncoding(std::string const & e, int const & p)
 {
 	// We may (and need to) use unsafe encodings here: Since the text is
 	// converted to unicode while reading from is_, we never see text in
 	// the original encoding of the parser, but operate on utf8 strings
 	// instead. Therefore, we cannot misparse high bytes as {, } or \\.
-	Encoding const * enc = encodings.fromLaTeXName(e, true);
+	Encoding const * const enc = encodings.fromLaTeXName(e, p, true);
 	if (!enc) {
 		cerr << "Unknown encoding " << e << ". Ignoring." << std::endl;
 		return;
 	}
-	//cerr << "setting encoding to " << enc->iconvName() << std::endl;
-	is_ << lyx::setEncoding(enc->iconvName());
-	encoding_latex_ = e;
+	setEncoding(enc->iconvName());
+}
+
+
+void Parser::setEncoding(std::string const & e)
+{
+	//cerr << "setting encoding to " << e << std::endl;
+	is_ << lyx::setEncoding(e);
+	encoding_iconv_ = e;
 }
 
 

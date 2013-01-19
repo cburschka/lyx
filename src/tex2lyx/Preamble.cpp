@@ -16,6 +16,7 @@
 #include "Preamble.h"
 #include "tex2lyx.h"
 
+#include "Encoding.h"
 #include "LayoutFile.h"
 #include "Layout.h"
 #include "Lexer.h"
@@ -651,7 +652,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_use_non_tex_fonts = "true";
 		registerAutomaticallyLoadedPackage("fontspec");
 		if (h_inputencoding == "auto")
-			p.setEncoding("utf8");
+			p.setEncoding("UTF-8");
 	}
 
 	// roman fonts
@@ -756,7 +757,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		xetex = true;
 		registerAutomaticallyLoadedPackage("xunicode");
 		if (h_inputencoding == "auto")
-			p.setEncoding("utf8");
+			p.setEncoding("UTF-8");
 	}
 
 	else if (name == "CJK") {
@@ -769,7 +770,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "CJKutf8") {
 		h_inputencoding = "UTF8";
-		p.setEncoding(h_inputencoding);
+		p.setEncoding("UTF-8");
 		registerAutomaticallyLoadedPackage("CJKutf8");
 	}
 
@@ -793,7 +794,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (opts.find(",") == string::npos && one_language == true)
 			h_inputencoding = opts;
 		if (!options.empty())
-			p.setEncoding(options.back());
+			p.setEncoding(options.back(), Encoding::inputenc);
 		options.clear();
 	}
 
@@ -1421,7 +1422,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "inputencoding") {
 			string const encoding = p.getArg('{','}');
 			h_inputencoding = encoding;
-			p.setEncoding(encoding);
+			p.setEncoding(encoding, Encoding::inputenc);
 		}
 
 		else if (t.cs() == "newenvironment") {

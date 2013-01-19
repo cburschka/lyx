@@ -44,11 +44,13 @@ class Encoding {
 public:
 	/// Which LaTeX package handles this encoding?
 	enum Package {
-		none,
-		inputenc,
-		CJK,
-		japanese
+		none = 1,
+		inputenc = 2,
+		CJK = 4,
+		japanese = 8
 	};
+	/// Represent any of the above packages
+	static int const any = -1;
 	///
 	Encoding() {}
 	///
@@ -172,9 +174,12 @@ public:
 	/// Get encoding from LyX name \p name
 	Encoding const *
 	fromLyXName(std::string const & name, bool allowUnsafe = false) const;
-	/// Get encoding from LaTeX name \p name
-	Encoding const *
-	fromLaTeXName(std::string const & name, bool allowUnsafe = false) const;
+	/// Get encoding from LaTeX name \p name and package \p package
+	Encoding const * fromLaTeXName(std::string const & name,
+		int const & package = Encoding::any, bool allowUnsafe = false) const;
+	/// Get encoding from iconv name \p name and package \p package
+	Encoding const * fromIconvName(std::string const & name,
+		int const & package = Encoding::any, bool allowUnsafe = false) const;
 
 	///
 	const_iterator begin() const { return encodinglist.begin(); }

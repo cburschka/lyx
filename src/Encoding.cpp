@@ -37,6 +37,8 @@ using namespace lyx::support;
 
 namespace lyx {
 
+int const Encoding::any;
+
 Encodings encodings;
 
 Encodings::MathCommandSet Encodings::mathcmd;
@@ -852,7 +854,7 @@ Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 
 
 Encoding const *
-Encodings::fromLaTeXName(string const & n, bool allowUnsafe) const
+Encodings::fromLaTeXName(string const & n, int const & p, bool allowUnsafe) const
 {
 	string name = n;
 	// FIXME: if we have to test for too many of these synonyms,
@@ -867,11 +869,21 @@ Encodings::fromLaTeXName(string const & n, bool allowUnsafe) const
 	// most at the top of lib/encodings.
 	EncodingList::const_iterator const end = encodinglist.end();
 	for (EncodingList::const_iterator it = encodinglist.begin(); it != end; ++it)
-		if (it->second.latexName() == name) {
-			if (!allowUnsafe && it->second.unsafe())
-				return 0;
+		if ((it->second.latexName() == name) && (it->second.package() & p)
+				&& (!it->second.unsafe() || allowUnsafe))
 			return &it->second;
-		}
+	return 0;
+}
+
+
+Encoding const *
+Encodings::fromIconvName(string const & n, int const & p, bool allowUnsafe) const
+{
+	EncodingList::const_iterator const end = encodinglist.end();
+	for (EncodingList::const_iterator it = encodinglist.begin(); it != end; ++it)
+		if ((it->second.iconvName() == n) && (it->second.package() & p)
+				&& (!it->second.unsafe() || allowUnsafe))
+			return &it->second;
 	return 0;
 }
 

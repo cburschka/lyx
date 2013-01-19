@@ -833,14 +833,17 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 {
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
-	// For child documents use the encoding of the master, else latin1,
-	// since latin1 does not cause an iconv error if the actual encoding
-	// is different (bug 7509).
+	// For child documents use the encoding of the master, else ISO8859-1,
+	// (formerly known by its latex name latin1), since ISO8859-1 does not
+	// cause an iconv error if the actual encoding is different (bug 7509).
 	if (encoding.empty()) {
 		if (preamble.inputencoding() == "auto")
-			encoding = "latin1";
-		else
-			encoding = preamble.inputencoding();
+			encoding = "ISO8859-1";
+		else {
+			Encoding const * const enc = encodings.fromLaTeXName(
+				preamble.inputencoding(), Encoding::any, true);
+			encoding = enc->iconvName();
+		}
 	}
 
 	Parser p(is);
@@ -1077,8 +1080,13 @@ int main(int argc, char * argv[])
 		return EXIT_FAILURE;
 	}
 	encodings.read(enc_path, symbols_path);
-	if (!default_encoding.empty() && !encodings.fromLaTeXName(default_encoding))
-		error_message("Unknown LaTeX encoding `" + default_encoding + "'");
+	if (!default_encoding.empty()) {
+		Encoding const * const enc = encodings.fromLaTeXName(
+			default_encoding, Encoding::any, true);
+		if (!enc)
+			error_message("Unknown LaTeX encoding `" + default_encoding + "'");
+		default_encoding = enc->iconvName();
+	}
 
 	// Load the layouts
 	LayoutFileList::get().read();

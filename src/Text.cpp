@@ -30,7 +30,6 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
-#include "Encoding.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "factory.h"
