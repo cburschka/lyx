@@ -727,11 +727,19 @@ void Preamble::handle_package(Parser &p, string const & name,
 			handle_opt(options, known_languages, h_language);
 			// translate the babel name to a LyX name
 			h_language = babel2lyx(h_language);
-			// for Japanese we assume EUC-JP as encoding
-			// but we cannot determine the exact encoding and thus output also a note
 			if (h_language == "japanese") {
-				h_inputencoding = "euc";
-				p.setEncoding("EUC-JP");
+				// For Japanese, the encoding isn't indicated in the source
+				// file, and there's really not much we can do. We could
+				// 1) offer a list of possible encodings to choose from, or
+				// 2) determine the encoding of the file by inspecting it.
+				// For the time being, we leave the encoding alone so that
+				// we don't get iconv errors when making a wrong guess, and
+				// we will output a note at the top of the document
+				// explaining what to do.
+				Encoding const * const enc = encodings.fromIconvName(
+					p.getEncoding(), Encoding::japanese, true);
+				if (enc)
+					h_inputencoding = enc->name();
 				is_nonCJKJapanese = true;
 				// in this case babel can be removed from the preamble
 				registerAutomaticallyLoadedPackage("babel");

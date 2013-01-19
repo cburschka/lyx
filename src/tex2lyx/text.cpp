@@ -2218,10 +2218,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		   << "Important information:\n"
 		   << "\\end_layout\n\n"
 		   << "\\begin_layout Plain Layout\n"
-		   << "This document is in Japanese (non-CJK).\n"
-		   << " It was therefore impossible for tex2lyx to determine the correct encoding."
-		   << " The encoding EUC-JP was assumed. If this is incorrect, please set the correct"
-		   << " encoding in the document settings.\n"
+		   << "The original LaTeX source for this document is in Japanese (pLaTeX).\n"
+		   << " It was therefore impossible for tex2lyx to determine the correct encoding.\n"
+		   << " The iconv encoding " << p.getEncoding() << " was used.\n"
+		   << " If this is incorrect, you must run the tex2lyx program on the command line\n"
+		   << " and specify the encoding using the -e command-line switch.\n"
+		   << " In addition, you might want to double check that the desired output encoding\n"
+		   << " is correctly selected in Document > Settings > Language.\n"
 		   << "\\end_layout\n";
 		end_inset(os);
 		is_nonCJKJapanese = false;
