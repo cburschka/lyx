@@ -30,13 +30,18 @@ Style Initial
 	LabelType	static
 	LabelString	Initial
 	Argument 1
-	  LabelString	"Initial Option"
-	  Tooltip	"Optional argument for initial (see lettrine manual)"
+	  LabelString	"Options"
+	  Tooltip	"Option(s) for the initial"
 	EndArgument
 	Argument 2
 	  Mandatory	1
 	  LabelString	"Initial"
-	  Tooltip	"Initial letter"
+	  Tooltip	"Initial letter(s)"
+	EndArgument
+	Argument 3
+	  Mandatory	1
+	  LabelString	"Rest of Initial"
+	  Tooltip	"Rest of initial word or text"
 	EndArgument
 	LabelSep	x
 	ParIndent	MMM
