@@ -41,7 +41,7 @@ NoStyle Abstract
 
 Style Chapter
   LabelString		"\thechapter"
-	TocLevel 0
+  TocLevel		0
 End
 
 Style Bibliography
@@ -107,7 +107,7 @@ Style Subsubsection
   Font
     Size		Small
   EndFont
-	TocLevel 3
+  TocLevel		3
 End
 
 # Inghead style definition

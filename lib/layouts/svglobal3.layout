@@ -55,31 +55,31 @@ NoStyle Keywords
 
 
 InsetLayout Flex:Keywords
-	CopyStyle		Flex:Email
-	LatexName		keywords
-	LabelString		"Keywords"
+	CopyStyle	Flex:Email
+	LatexName	keywords
+	LabelString	"Keywords"
 	LabelFont
-	  Color			green
-	  Size			Small
+	  Color		green
+	  Size		Small
 	EndFont
 End
 
 InsetLayout Flex:PACS
-	CopyStyle		Flex:Keywords
-	LatexName		PACS
-	LabelString		"PACS"
+	CopyStyle	Flex:Keywords
+	LatexName	PACS
+	LabelString	"PACS"
 End
 
 InsetLayout Flex:Subclass
-	CopyStyle		Flex:Keywords
-	LatexName		subclass
-	LabelString		"Mathematics Subject Classification"
+	CopyStyle	Flex:Keywords
+	LatexName	subclass
+	LabelString	"Mathematics Subject Classification"
 End
 
 InsetLayout Flex:CRSC
-	CopyStyle		Flex:PACS
-	LatexName		CRclass
-	LabelString		"CR Subject Classification"
+	CopyStyle	Flex:PACS
+	LatexName	CRclass
+	LabelString	"CR Subject Classification"
 End
 
 # this label has no dot at the end

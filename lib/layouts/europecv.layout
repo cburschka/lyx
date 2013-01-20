@@ -7,22 +7,22 @@
 
 # General textclass parameters
 Format 43
-	Columns			1
-	Sides			1
-	SecNumDepth		-1
-	TocDepth		-1
+	Columns		1
+	Sides		1
+	SecNumDepth	-1
+	TocDepth	-1
 
 
 # Standard style definition
 Style Standard
-	Category                MainText
-	Margin			Static
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	ParSkip			0.4
-	Align			Block
-	LabelType		No_Label
+	Category	MainText
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	LabelType	No_Label
 End
 
 Input stdcounters.inc

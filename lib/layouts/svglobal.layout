@@ -63,30 +63,30 @@ NoStyle Keywords
 
 
 ClassOptions
-	Other         global
+	Other		global
 End
 
 
 
 Style Headnote
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             headnote
-	NextNoIndent          1
-	LeftMargin            "HeadNote (optional):xxx"
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Left
-	LabelType             Static
-	LabelString           "Headnote (optional):"
+	Margin		Static
+	LatexType	Command
+	InTitle		1
+	LatexName	headnote
+	NextNoIndent	1
+	LeftMargin	"HeadNote (optional):xxx"
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Left
+	LabelType	Static
+	LabelString	"Headnote (optional):"
 	LabelFont
-	  Series              Bold
-	  Shape               Italic
-	  Color               Red
+	  Series	Bold
+	  Shape		Italic
+	  Color		Red
 	EndFont
 End
 
@@ -112,58 +112,58 @@ End
 
 
 InsetLayout Flex:Keywords
-	CopyStyle		Flex:Email
-	LatexName		keywords
-	LabelString		"Keywords"
+	CopyStyle	Flex:Email
+	LatexName	keywords
+	LabelString	"Keywords"
 	LabelFont
-	  Color			green
-	  Size			Small
+	  Color		green
+	  Size		Small
 	EndFont
 End
 
 
 
 Style Dedication
-	CopyStyle		Headnote
-	LatexName		dedication
-	LeftMargin		Dedication:xxx
-	LabelString		"Dedication:"
+	CopyStyle	Headnote
+	LatexName	dedication
+	LeftMargin	Dedication:xxx
+	LabelString	"Dedication:"
 End
 
 
 Style Mail
-	CopyStyle             Headnote
-	LatexName             mail
-	LeftMargin            "Corr Author:xx."
-	LabelString           "Corr Author:"
+	CopyStyle	Headnote
+	LatexName	mail
+	LeftMargin	"Corr Author:xx."
+	LabelString	"Corr Author:"
 End
 
 
 Style Offprints
-	CopyStyle             Headnote
-	LatexName             offprints
-	LeftMargin            "Offprints:xx."
-	LabelString           "Offprints:"
+	CopyStyle	Headnote
+	LatexName	offprints
+	LeftMargin	"Offprints:xx."
+	LabelString	"Offprints:"
 End
 
 
 Style Abstract
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             abstract
-	Newline               1
-	NextNoIndent          0
-	ParIndent             MM
-	LabelSep              xx
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Top_Environment
-	LabelString           "Abstract."
+	Margin		First_Dynamic
+	LatexType	Command
+	LatexName	abstract
+	Newline		1
+	NextNoIndent	0
+	ParIndent	MM
+	LabelSep	xx
+	ItemSep		0
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0
+	Align		Block
+	AlignPossible	Block, Left
+	LabelType	Top_Environment
+	LabelString	"Abstract."
 	LabelFont
-	  Series              Bold
+	  Series	Bold
 	EndFont
 End

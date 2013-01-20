@@ -7,8 +7,8 @@
 Format 43
 Input scrclass.inc
 
-SecNumDepth             3
-TocDepth                3
+SecNumDepth		3
+TocDepth		3
 
 NoStyle Chapter
 NoCounter chapter
@@ -20,20 +20,20 @@ NoStyle Dictum
 
 
 Style Part
-	Align                 Left
-	TopSep                2
-	BottomSep             1.5
+	Align		Left
+	TopSep		2
+	BottomSep	1.5
 	Font
-	  Size                Larger
+	  Size		Larger
 	EndFont
-	TocLevel 0
+	TocLevel	0
 End
 
 Style Part*
-	Align                 Left
-	TopSep                2
-	BottomSep             1.5
+	Align		Left
+	TopSep		2
+	BottomSep	1.5
 	Font
-	  Size                Larger
+	  Size		Larger
 	EndFont
 End
