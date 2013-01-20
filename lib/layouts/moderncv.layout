@@ -104,6 +104,7 @@ Style Address
 	TopSep		0
 	Argument 1
 	  Mandatory	1
+	  AutoInsert	1
 	  LabelString	"Street"
 	EndArgument
 End
@@ -257,6 +258,7 @@ Style Item
 	LatexName	cvitem
 	Argument 1
 	  Mandatory	1
+	  AutoInsert	1
 	  LabelString	"Summary"
 	  Tooltip	"Summary"
 	EndArgument
@@ -337,6 +339,7 @@ Style DoubleListItem
 	ResetArgs	1
 	Argument 1
 	  Mandatory	1
+	  AutoInsert	1
 	  LabelString	"First Item"
 	  Tooltip	"First Item"
 	EndArgument
@@ -442,6 +445,7 @@ Style Recipient
 	Category	Letter
 	Argument 1
 	  Mandatory	1
+	  AutoInsert	1
 	  LabelString	"Company name"
 	  Tooltip	"Company name"
 	  #Font
