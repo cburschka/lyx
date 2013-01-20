@@ -165,6 +165,7 @@ Style Page_headings
   Align		Center
   Argument 1
     Mandatory	1
+    AutoInsert	1
     LabelString	"Left Side"
     Tooltip	"Left side of the header line"
   EndArgument
@@ -286,6 +287,7 @@ Style Biography
   EndArgument
   Argument 2
     Mandatory	1
+    AutoInsert	1
     LabelString	"Name"
     Tooltip	"Name of the author"
   EndArgument
@@ -302,6 +304,7 @@ Style Biography_without_photo
   ResetArgs	1
   Argument 1
     Mandatory	1
+    AutoInsert	1
     LabelString	"Name"
     Tooltip	"Name of the author"
   EndArgument
