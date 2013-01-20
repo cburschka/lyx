@@ -805,7 +805,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				Encoding const * const enc = encodings.fromIconvName(
 					p.getEncoding(), Encoding::japanese, false);
 				if (enc)
-					h_inputencoding = enc->latexName();
+					h_inputencoding = enc->name();
 				is_nonCJKJapanese = true;
 				// in this case babel can be removed from the preamble
 				registerAutomaticallyLoadedPackage("babel");
@@ -844,7 +844,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "CJKutf8") {
-		h_inputencoding = "UTF8";
+		h_inputencoding = "utf8-cjk";
 		p.setEncoding("UTF-8");
 		registerAutomaticallyLoadedPackage("CJKutf8");
 	}
@@ -863,14 +863,22 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// h_inputencoding is only set when there is not more than one
 		// inputenc option because otherwise h_inputencoding must be
 		// set to "auto" (the default encoding of the document language)
-		// Therefore check for the "," character.
+		// Therefore check that exactly one option is passed to inputenc.
 		// It is also only set when there is not more than one babel
 		// language option.
-		if (opts.find(",") == string::npos && one_language == true)
-			h_inputencoding = opts;
-		if (!options.empty())
-			p.setEncoding(options.back(), Encoding::inputenc);
-		options.clear();
+		if (!options.empty()) {
+			string const encoding = options.back();
+			Encoding const * const enc = encodings.fromLaTeXName(
+				encoding, Encoding::inputenc, true);
+			if (!enc)
+				cerr << "Unknown encoding " << encoding << ". Ignoring." << std::endl;
+			else {
+				if (!enc->unsafe() && options.size() == 1 && one_language == true)
+					h_inputencoding = enc->name();
+				p.setEncoding(enc->iconvName());
+			}
+			options.clear();
+		}
 	}
 
 	else if (name == "srcltx") {
@@ -1624,8 +1632,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "inputencoding") {
 			string const encoding = p.getArg('{','}');
-			h_inputencoding = encoding;
-			p.setEncoding(encoding, Encoding::inputenc);
+			Encoding const * const enc = encodings.fromLaTeXName(
+				encoding, Encoding::inputenc, true);
+			if (!enc)
+				cerr << "Unknown encoding " << encoding << ". Ignoring." << std::endl;
+			else {
+				if (!enc->unsafe())
+					h_inputencoding = enc->name();
+				p.setEncoding(enc->iconvName());
+			}
 		}
 
 		else if (t.cs() == "newenvironment") {

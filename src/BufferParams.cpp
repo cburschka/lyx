@@ -2786,7 +2786,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			// do not load inputenc if japanese is used
 			if (features.isRequired("japanese"))
 				break;
-			os << "\\usepackage[" << from_ascii(inputenc)
+			os << "\\usepackage[" << from_ascii(encoding().latexName())
 			   << "]{inputenc}\n";
 			break;
 		case Encoding::CJK:
@@ -2913,10 +2913,10 @@ Encoding const & BufferParams::encoding() const
 	// This check will not work with XeTeX/LuaTeX and tex fonts.
 	// Thus we have to reset the encoding in Buffer::makeLaTeXFile.
 	if (useNonTeXFonts)
-		return *(encodings.fromLaTeXName("utf8-plain"));
+		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
 		return *language->encoding();
-	Encoding const * const enc = encodings.fromLaTeXName(inputenc);
+	Encoding const * const enc = encodings.fromLyXName(inputenc);
 	if (enc)
 		return *enc;
 	LYXERR0("Unknown inputenc value `" << inputenc

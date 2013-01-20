@@ -840,8 +840,8 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 		if (preamble.inputencoding() == "auto")
 			encoding = "ISO8859-1";
 		else {
-			Encoding const * const enc = encodings.fromLaTeXName(
-				preamble.inputencoding(), Encoding::any, true);
+			Encoding const * const enc = encodings.fromLyXName(
+				preamble.inputencoding(), true);
 			encoding = enc->iconvName();
 		}
 	}
