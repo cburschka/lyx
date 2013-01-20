@@ -24103,8 +24103,8 @@ arg   "specialchar-insert hyphenation"
 \end_layout
 
 \begin_layout Standard
-Shapepar paragraphs are always placed on the page that their left border
- touches the left page margin.
+Shapepar paragraphs are either always centered or placed on the page so
+ that their left border touches the left page margin.
  You can therefore not use the paragraph dialog to align such paragraphs.
  A solution is to put the paragraph into a minipage or parbox and align
  the box.
@@ -24112,8 +24112,8 @@ Shapepar paragraphs are always placed on the page that their left border
  Because if it is too wide and you center the box, the paragraph is not
  centered too because it sticks at the left side of the box.
  So you might have to play a bit with the width until it fits.
- Here are two triangular paragraphs, the first one is not aligned, the second
- one is centered:
+ Here are two heart-shaped paragraphs, the first one is not aligned, the
+ second one is right-aligned:
 \end_layout
 
 \begin_layout Standard
@@ -24123,7 +24123,8 @@ Shapepar paragraphs are always placed on the page that their left border
 
 \end_layout
 
-\begin_layout Triangle up
+\begin_layout Heart
+\noindent
 
 \lang latin
 Lo\SpecialChar \-
@@ -24143,7 +24144,8 @@ rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
+\align right
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -24157,7 +24159,8 @@ height "1in"
 height_special "totalheight"
 status open
 
-\begin_layout Triangle up
+\begin_layout Heart
+\noindent
 
 \lang latin
 Lo\SpecialChar \-

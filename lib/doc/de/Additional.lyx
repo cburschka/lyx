@@ -26358,8 +26358,8 @@ nungsmechanismus für Text in den Spitzen versagt.
 \end_layout
 
 \begin_layout Standard
-Shapepar-Absätze werden immer so auf die Seite platziert, dass ihre linke
- Kante den linken Seitenrand berührt.
+Shapepar-Absätze werden immer entweder zentriert oder so auf die Seite platziert
+, dass ihre linke Kante den linken Seitenrand berührt.
  Man kann daher nicht den Absatzdialog verwenden, um solche Absätze auszurichten.
  Eine Lösung ist den Absatz in eine Minipage oder Parbox zu setzen und dann
  die Box auszurichten.
@@ -26367,8 +26367,8 @@ Shapepar-Absätze werden immer so auf die Seite platziert, dass ihre linke
  Denn ist sie zu breit und man zentriert die Box, ist der Absatz nicht ebenfalls
  zentriert, da er an der linken Seite der Box haftet.
  Daher muss man eventuell etwas mit der Breite spielen bis es passt.
- Hier sind zwei dreieckige Absätze, der erste ist nicht ausgerichtet, der
- zweite ist zentriert:
+ Hier sind zwei herzförmige Absätze, der erste ist nicht ausgerichtet, der
+ zweite ist rechts ausgerichtet:
 \end_layout
 
 \begin_layout Standard
@@ -26378,7 +26378,8 @@ Shapepar-Absätze werden immer so auf die Seite platziert, dass ihre linke
 
 \end_layout
 
-\begin_layout Triangle up
+\begin_layout Heart
+\noindent
 
 \lang latin
 Lo\SpecialChar \-
@@ -26398,7 +26399,8 @@ rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
+\align right
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -26412,7 +26414,8 @@ height "1in"
 height_special "totalheight"
 status open
 
-\begin_layout Triangle up
+\begin_layout Heart
+\noindent
 
 \lang latin
 Lo\SpecialChar \-
