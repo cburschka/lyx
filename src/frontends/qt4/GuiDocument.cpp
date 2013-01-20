@@ -1287,7 +1287,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 			docstring const output_type = (tc.outputType() == lyx::DOCBOOK) ? _("DocBook") : _("LaTeX");
 			tooltip += '\n' + toqstr(wrap(bformat(_("Class not found by LyX. "
 							   "Please check if you have the matching %1$s class "
-							   "and all requires packages (%2$s) installed."),
+							   "and all required packages (%2$s) installed."),
 							 output_type, from_utf8(tc.prerequisites(", ")))));
 		}
 		latexModule->classCO->addItemSort(toqstr(tc.name()),
