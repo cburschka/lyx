@@ -25,7 +25,7 @@ execute_process(
   COMMAND ${lyx} -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
   RESULT_VARIABLE _err)
 string(COMPARE NOTEQUAL  ${_err} 0 _erg)
-if(erg)
+if(_erg)
   message(STATUS "Exporting ${f}.lyx to ${format}")
   message(FATAL_ERROR "Export failed")
 endif()
