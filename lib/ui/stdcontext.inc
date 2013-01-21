@@ -425,7 +425,7 @@ Menuset
 		Item "Move Column Right|v" "inset-modify tabular move-column-right"
 		Item "Move Column Left" "inset-modify tabular move-column-left"
 		Separator
-		Item "Settings...|g" "inset-settings tabular"
+		Item "Settings...|s" "inset-settings tabular"
 	End
 
 #
