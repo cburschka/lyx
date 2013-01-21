@@ -940,15 +940,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_NEWLINE_INSERT: {
 		InsetNewlineParams inp;
 		docstring arg = cmd.argument();
-		// this avoids a double undo
-		// FIXME: should not be needed, ideally
-		if (!cur.selection())
-			cur.recordUndo();
-		cap::replaceSelection(cur);
 		if (arg == "linebreak")
 			inp.kind = InsetNewlineParams::LINEBREAK;
 		else
 			inp.kind = InsetNewlineParams::NEWLINE;
+		cap::replaceSelection(cur);
+		cur.recordUndo();
 		cur.insert(new InsetNewline(inp));
 		cur.posForward();
 		moveCursor(cur, false);
@@ -1447,14 +1444,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_QUOTE_INSERT: {
-		// this avoids a double undo
-		// FIXME: should not be needed, ideally
-		if (!cur.selection())
-			cur.recordUndo();
 		cap::replaceSelection(cur);
+		cur.recordUndo();
 
 		Paragraph const & par = cur.paragraph();
 		pos_type pos = cur.pos();
+		// Ignore deleted text before cursor
+		while (pos > 0 && par.isDeleted(pos - 1))
+			--pos;
 
 		BufferParams const & bufparams = bv->buffer().params();
 		bool const hebrew = 
