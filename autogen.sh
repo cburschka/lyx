@@ -38,11 +38,11 @@ test "$autoversion" != "" && {
 
 
 case $autoversion in
-    *' '2.59[cd]|*' '2.60[ab]|*' '2.6[0-9])
+    *' '2.59d|*' '2.60[ab]|*' '2.6[0-9])
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.59c-2.69."
+	echo "LyX only supports autoconf 2.59d-2.69."
 	exit 1
 	;;
 esac
