@@ -82,6 +82,9 @@ What's new
 - Fix problem using lyxpak.py when outside the LyX tree: Variable was
   undefined.
 
+- When using the knitr module, use new "encoding" parameter of knitr if 
+  available (bug 8504).
+
 - Respect InsetLayout's PassThru setting for XHTML export.
 
 - Fix layout conversion bug involving quoted Flex inset names that do not
