@@ -1110,7 +1110,7 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
-void parse_listings(Parser & p, ostream & os, Context & parent_context)
+void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_line)
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
@@ -1118,14 +1118,26 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context)
 		string arg = p.verbatimOption();
 		os << "lstparams " << '"' << arg << '"' << '\n';
 		if (arg.find("\\color") != string::npos)
-	                preamble.registerAutomaticallyLoadedPackage("color");
+			preamble.registerAutomaticallyLoadedPackage("color");
 	}
-	os << "inline false\n"
-	   << "status collapsed\n";
+	if (p.hasOpt()) {
+		string arg = p.verbatimOption();
+		os << "lstparams " << '"' << arg << '"' << '\n';
+	}
+	if (in_line)
+		os << "inline true\n";
+	else
+		os << "inline false\n";
+	os << "status collapsed\n";
 	Context context(true, parent_context.textclass);
 	context.layout = &parent_context.textclass.plainLayout();
-	context.check_layout(os);
-	string const s = p.verbatimEnvironment("lstlisting");
+	string s;
+	if (in_line) {
+		s = p.plainCommand('!', '!', "lstinline");
+		context.new_paragraph(os);
+		context.check_layout(os);
+	} else
+		s = p.plainEnvironment("lstlisting");
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash\n";
@@ -1374,13 +1386,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 
 	else if (name == "lstlisting") {
 		eat_whitespace(p, os, parent_context, false);
-		// FIXME handle listings with parameters
-		if (p.hasOpt())
-			parse_unknown_environment(p, name, os, FLAG_END,
-			                          outer, parent_context);
-		else
-			parse_listings(p, os, parent_context);
-		p.skip_spaces();
+		parse_listings(p, os, parent_context, false);
 	}
 
 	else if (!parent_context.new_layout_allowed)
@@ -2756,6 +2762,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "status collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 			end_inset(os);
+		}
+
+		else if (t.cs() == "lstinline") {
+			p.skip_spaces();
+			parse_listings(p, os, context, true);
 		}
 
 		else if (t.cs() == "ensuremath") {
