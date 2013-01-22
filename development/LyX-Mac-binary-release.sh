@@ -603,7 +603,12 @@ build_lyx() {
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
 			--enable-build-type=rel && \
-		make -j2 && make install${strip}
+		NCPU=$(sysctl -n hw.ncpu)
+		NCPU=$((NCPU / 2))
+		if [ $NCPU -gt 1 ]; then
+			NUMJOBS=-j${NCPU}
+		fi
+		make ${NUMJOBS} && make install${strip}
 		for file in ${LYX_FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
 				mv "${LYX_BUNDLE_PATH}/${file}"\
