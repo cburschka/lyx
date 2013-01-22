@@ -1859,6 +1859,33 @@ def convert_EuropeCV(document):
         return
 
 
+def revert_Initials(document):
+  " Reverts InsetArgument of Initial to TeX-code "
+  i = 0
+  while True:
+    if i != -1:
+      i = find_token(document.body, "\\begin_layout Initial", i)
+    if i != -1:
+      # first arg (optional) and second arg (first mandatory) are supported in LyX 2.0.x
+      revert_Argument_to_TeX_brace(document, i, 3, 3, False)
+      i = i + 1
+    if i == -1:
+      return
+
+
+def convert_Initials(document):
+  " Converts ERT of Initial to InsetArgument "
+  i = 0
+  while True:
+    if i != -1:
+      i = find_token(document.body, "\\begin_layout Initial", i)
+    if i != -1:
+      convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
+      i = i + 1
+    if i == -1:
+      return
+
+
 def revert_literate(document):
     " Revert Literate document to old format "
     if del_token(document.header, "noweb", 0):
@@ -3408,7 +3435,7 @@ convert = [
            [444, []],
            [445, []],
            [446, [convert_latexargs]],
-           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP, convert_SIGPLAN, convert_SIGGRAPH, convert_EuropeCV]],
+           [447, [convert_IEEEtran, convert_AASTeX, convert_AGUTeX, convert_IJMP, convert_SIGPLAN, convert_SIGGRAPH, convert_EuropeCV, convert_Initials]],
            [448, [convert_literate]],
            [449, []],
            [450, []],
@@ -3436,7 +3463,7 @@ revert =  [
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],
-           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV]],
+           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
