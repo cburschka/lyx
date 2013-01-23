@@ -585,7 +585,7 @@ void TeXOnePar(Buffer const & buf,
 			os << '\n';
 		if (!style.parbreak_is_newline) {
 			os << '\n';
-		} else if (nextpar) {
+		} else if (nextpar && !style.isEnvironment()) {
 			Layout const nextstyle = text.inset().forcePlainLayout()
 				? bparams.documentClass().plainLayout()
 				: nextpar->layout();
