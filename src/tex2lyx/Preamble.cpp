@@ -737,7 +737,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				// we will output a note at the top of the document
 				// explaining what to do.
 				Encoding const * const enc = encodings.fromIconvName(
-					p.getEncoding(), Encoding::japanese, true);
+					p.getEncoding(), Encoding::japanese, false);
 				if (enc)
 					h_inputencoding = enc->name();
 				is_nonCJKJapanese = true;
