@@ -195,7 +195,7 @@
 0x0132 "IJ"                       "" "mathalpha,notermination=both" "IJ" "" # LATIN CAPITAL LIGATURE IJ
 0x0133 "ij"                       "" "mathalpha,notermination=both" "ij" "" # LATIN SMALL LIGATURE IJ
 0x0134 "\\^{J}"                   "" "mathalpha" "\\hat{J}" # LATIN CAPITAL LETTER J WITH CIRCUMFLEX
-0x0135 "\\^{\\j}"                 "" "mathalpha" "\\hat{\\jmath}" # LATIN SMALL LETTER J WITH CIRCUMFLEX
+0x0135 "\\^{\\j}"                 "" "mathalpha,force=utf8" "\\hat{\\jmath}" "" # LATIN SMALL LETTER J WITH CIRCUMFLEX
 0x0136 "\\c{K}"                   "" "mathalpha" "\\cedilla{K}" "accents,cedilla" # LATIN CAPITAL LETTER K WITH CEDILLA
 0x0137 "\\c{k}"                   "" "mathalpha" "\\cedilla{k}" "accents,cedilla" # LATIN SMALL LETTER K WITH CEDILLA
 #0x0138 ""                         "" "" "" "" # LATIN SMALL LETTER KRA
@@ -385,7 +385,7 @@
 #0x01ed ""                         "" "" # LATIN SMALL LETTER O WITH OGONEK AND MACRON
 #0x01ee ""                         "" "" # LATIN CAPITAL LETTER EZH WITH CARON
 #0x01ef ""                         "" "" # LATIN SMALL LETTER EZH WITH CARON
-0x01f0 "\\v{\\j}"                 "" "mathalpha" "\\check{\\jmath}" # LATIN SMALL LETTER J WITH CARON
+0x01f0 "\\v{\\j}"                 "" "mathalpha,force=utf8" "\\check{\\jmath}" "" # LATIN SMALL LETTER J WITH CARON
 #0x01f1 ""                         "" "" # LATIN CAPITAL LETTER DZ
 #0x01f2 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z
 #0x01f3 ""                         "" "" # LATIN SMALL LETTER DZ
@@ -455,7 +455,7 @@
 #0x0234 ""                         "" "" # LATIN SMALL LETTER L WITH CURL
 0x0235 "\\textctn"                "tipa" "force" # LATIN SMALL LETTER N WITH CURL
 0x0236 "\\textctt"                "tipa" "force" # LATIN SMALL LETTER T WITH CURL
-0x0237 "\\j"                      "" "mathalpha" "\\jmath" # LATIN SMALL LETTER DOTLESS J
+0x0237 "\\j"                      "" "mathalpha,force=utf8" "\\jmath" "" # LATIN SMALL LETTER DOTLESS J
 0x0238 "\\textdblig"              "tipx" "force" # LATIN SMALL LETTER DB DIGRAPH
 0x0239 "\\textqplig"              "tipx" "force" # LATIN SMALL LETTER QP DIGRAPH
 #0x023a ""                         "" "" "" "" # LATIN CAPITAL LETTER A WITH STROKE
@@ -1765,7 +1765,7 @@
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
-0x212b "\\AA"                     "" "" # ANGSTROM SIGN
+0x212b "\\AA"                     "" "force=utf8" "" "" # ANGSTROM SIGN
 0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL
