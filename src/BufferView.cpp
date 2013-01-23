@@ -1809,7 +1809,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.forwardInset();
 		cur.beginUndoGroup();
 		while(cur && iterations < max_iter) {
-			Inset * ins = cur.nextInset();
+			Inset * const ins = cur.nextInset();
 			if (!ins)
 				break;
 			docstring insname = ins->layoutName();
@@ -1825,7 +1825,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					break;
 				insname = insname.substr(0, i);
 			}
-			cur.forwardInset();
+			// if we did not delete the inset, skip it
+			if (!cur.nextInset() || cur.nextInset() == ins)
+				cur.forwardInset();
 		}
 		cur.endUndoGroup();
 		cur = savecur;
