@@ -59,6 +59,6 @@ These typically need to be modified for each LyX release
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.9.2-setup.exe"
  !define SIZE_JABREF 14100
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4521.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.4757.exe"
 !endif
 
