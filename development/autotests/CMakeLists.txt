@@ -47,6 +47,21 @@ if(Q_WS_X11)
   endif()
 endif()
 
+macro(getdefaultoutputformat filepath varname)
+  file(STRINGS "${filepath}" lines)
+  set(${varname} "pdf") # try at least this one
+  foreach(_l ${lines})
+    if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
+      set(found ${CMAKE_MATCH_1})
+      if(found STREQUAL "default")
+	set(found "pdf" "pdf2" "pdf5")
+      endif()
+      set(${varname} ${found})
+      break()
+    endif()
+  endforeach()
+endmacro()
+
 file(GLOB lyx_files RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.lyx")
 foreach(f ${lyx_files})
   # Strip extension
@@ -59,14 +74,17 @@ foreach(f ${lyx_files})
 	    -Dextension=16.lyx
 	    -Dfile=${f}
 	    -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-  add_test(NAME autotests/export/${f}_xhtml
-    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-    COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
-            -Dlyx=$<TARGET_FILE:${_lyx}>
-	    -Dformat=xhtml
-	    -Dextension=xhtml
-	    -Dfile=${f}
-	    -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+  getdefaultoutputformat("${TOP_SRC_DIR}/lib/doc/${f}.lyx" formatlist)
+  foreach(format "xhtml" ${formatlist})
+    add_test(NAME autotests/export/${f}_${format}
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+      COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${TOP_SRC_DIR}/lib/doc
+	      -Dlyx=$<TARGET_FILE:${_lyx}>
+	      -Dformat=${format}
+	      -Dextension=${format}
+	      -Dfile=${f}
+	      -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+  endforeach()
 endforeach()
 
 
