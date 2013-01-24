@@ -47,6 +47,9 @@
 # KD: n
 #   Changes the delay among typed charactes to n milliseconds.
 #
+# Sleep f
+#   Single delay of f seconds.
+#
 #
 # This example instructs LyX to type "Hello World", then exports it as
 # LaTeX, and verifies that the typed characters are indeed present in the

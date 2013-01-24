@@ -354,7 +354,7 @@ while not failed:
         print 'lyx_pid: ' + lyx_pid + '\n'
         print 'lyx_win: ' + lyx_window_name + '\n'
     elif c[0:5] == 'Sleep':
-        print "Sleeping for " + c[6:] + "\n"
+        print "Sleeping for " + c[6:] + " seconds\n"
         time.sleep(float(c[6:]))
     elif c[0:4] == 'Exec':
         cmd = c[5:].rstrip()
