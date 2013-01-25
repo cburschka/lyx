@@ -37,8 +37,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-int const Encoding::any;
-
 Encodings encodings;
 
 Encodings::MathCommandSet Encodings::mathcmd;
