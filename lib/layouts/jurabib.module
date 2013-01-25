@@ -70,6 +70,7 @@ CiteFormat authoryear
 	!citeauthor %!textbefore%%!startlink%%!shortauthor%%!endlink%%!textafter%%!nextauthor%
 	!citeyear %!textbefore%%!startlink%%!year%%!endlink%%!textafter%%!nextyear%
 	!citeyearpar %!textbefore%%!open%%!startlink%%!year%%!endlink%%!close%%!textafter%%!nextyearpar%
+	!fullcite {%textbefore%[[%textbefore% in: ]]}%bibentry%{%textafter%[[ %textafter%]]}%!nextfullcite%
 
 	!nextcite {%next%[[%!sep% %!startlink%%!shortauthor%%!endlink%%!textafter2%%!nextcite%]]}
 	!nextcitetitle {%next%[[%!sep% %!startlink%%!shortauthor%%!endlink%%!shorttitle%%!textafter2%%!nextcitetitle%]]}
@@ -79,6 +80,7 @@ CiteFormat authoryear
 	!nextauthor {%next%[[%!sep% %!citeauthor%]]}
 	!nextyear {%next%[[%!sep% %!citeyear%]]}
 	!nextyearpar {%next%[[%!sep% %!citeyearpar%]]}
+	!nextfullcite {%next%[[%!sep% %bibentry%{%textafter%[[ %textafter%]]}%!nextfullcite%]]}
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
 
 	!shortauthor {%shortauthor%[[%shortauthor%]][[??]]}
@@ -99,6 +101,6 @@ CiteFormat authoryear
 	citeauthor %!citeauthor%
 	citeyear %!citeyear%
 	citeyearpar %!citeyearpar%
-	fullcite {%dialog%[[%_bibentry%]][[%key%%!nextkey% (%_fullcite%)]]}
+	fullcite {%dialog%[[%_bibentry%]][[{%label%[[%!fullcite%]][[%key%%!nextkey% (%_fullcite%)]]}]]}
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
 End

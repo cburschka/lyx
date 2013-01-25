@@ -689,6 +689,14 @@ docstring BibTeXInfo::getValueForKey(string const & key, Buffer const & buf,
 				+ " [" + operator[]("year") + "]";
 		else
 			return operator[]("title");
+	} else if (key == "bibentry") {
+		// Special key to provide the full bibliography entry: see getInfo()
+		CiteEngineType const engine_type = buf.params().citeEngineType();
+		DocumentClass const & dc = buf.params().documentClass();
+		string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
+		int counter = 0;
+		return expandFormat(format, xref, counter, buf,
+			docstring(), docstring(), docstring(), false);
 	} else if (key == "textbefore")
 		return before;
 	else if (key == "textafter")
