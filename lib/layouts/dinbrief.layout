@@ -6,6 +6,7 @@
 # Modified by: Carsten Kaemmerer <kammerer@ips.cs.tu-bs.de>
 # Modified by: Guenter Milde <g.milde@users.berlios.de>
 #    Dummy Style DinBrief for common layout features (removed at eof)
+#    Dummy Style Addresses for common address features (removed at eof)
 #    Generic style names (there are german translations for most names)
 #    Additional Styles and twiddeled layout
 #    Many "ObsoletedBy" to ease conversion from g-brief, scrletter,
@@ -43,11 +44,16 @@ Style DinBrief
 	EndFont
 End
 
+Style Addresses
+	CopyStyle	DinBrief
+	Category        "Postal Data"
+End
+
 # Open a new letter
 # in dinbrief, this is an environment spanning the whole letter
 # (see scrlettr2 for an alternative lyx-implementation)
 Style Send_To_Address
-	CopyStyle	DinBrief
+	CopyStyle	Addresses
 	LabelString	"Address:"
 	KeepEmpty	1
 	BottomSep	0.1
@@ -61,7 +67,7 @@ End
 
 # backaddress in letter head
 Style My_Address
-	CopyStyle	DinBrief
+	CopyStyle	Addresses
 	LabelString	"Sender Address:"
 	LatexName	address
 	KeepEmpty	1
@@ -71,7 +77,7 @@ End
 
 # backaddress in address window
 Style "Return address"
-	CopyStyle	DinBrief
+	CopyStyle	Addresses
 	LabelString	"Backaddress:"
 	LatexName	backaddress
 	TextFont
@@ -81,14 +87,14 @@ End
 
 # Printed above the address (e.g., Air Mail, Registered Mail)
 Style "Postal comment"
-	CopyStyle	DinBrief
+	CopyStyle	Addresses
 	LabelString	"Postal Remark:"
 	LatexName	postremark
 End
 
 # Printed right next to Receiver (e.g., Urgent, Confidential)
 Style Handling
-	CopyStyle	DinBrief
+	CopyStyle	Addresses
 	LabelString	"Handling:"
 	LatexName	handling
 End
@@ -113,6 +119,7 @@ End
 
 Style Signature
 	CopyStyle	DinBrief
+	Category        Closings
 	LabelString	"Signature:"
 	LatexName	signature
 End
@@ -192,6 +199,7 @@ End
 
 Style Closing
 	CopyStyle	Opening
+	Category        Closings
 	LabelString	"Closing:"
 	LatexName	closing
 	Argument 1
@@ -203,6 +211,7 @@ End
 
 Style encl
 	CopyStyle	Opening
+	Category        Closings
 	LabelString	"encl:"
 	LatexName	encl
 	TopSep		0.4
@@ -385,6 +394,7 @@ Style Verteiler
 	ObsoletedBy	cc
 End
 
-# Remove auxiliary style
+# Remove auxiliary styles
 NoStyle			DinBrief
+NoStyle			Addresses
 
