@@ -22,39 +22,6 @@ namespace lyx {
 
 namespace {
 
-CatCode theCatcode[256];
-
-void catInit()
-{
-	static bool init_done = false;
-	if (init_done)
-		return;
-	init_done = true;
-
-	fill(theCatcode, theCatcode + 256, catOther);
-	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
-	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
-
-	theCatcode[int('\\')] = catEscape;
-	theCatcode[int('{')]  = catBegin;
-	theCatcode[int('}')]  = catEnd;
-	theCatcode[int('$')]  = catMath;
-	theCatcode[int('&')]  = catAlign;
-	theCatcode[int('\n')] = catNewline;
-	theCatcode[int('#')]  = catParameter;
-	theCatcode[int('^')]  = catSuper;
-	theCatcode[int('_')]  = catSub;
-	theCatcode[0x7f]      = catIgnore;
-	theCatcode[int(' ')]  = catSpace;
-	theCatcode[int('\t')] = catSpace;
-	theCatcode[int('\r')] = catNewline;
-	theCatcode[int('~')]  = catActive;
-	theCatcode[int('%')]  = catComment;
-
-	// This is wrong!
-	theCatcode[int('@')]  = catLetter;
-}
-
 /*!
  * Translate a line ending to '\n'.
  * \p c must have catcode catNewline, and it must be the last character read
@@ -79,15 +46,7 @@ char_type getNewline(idocstream & is, char_type c)
 	return c;
 }
 
-CatCode catcode(char_type c)
-{
-	if (c < 256)
-		return theCatcode[(unsigned char)c];
-	return catOther;
 }
-
-}
-
 
 //
 // Token
@@ -158,7 +117,8 @@ void debugToken(std::ostream & os, Token const & t, unsigned int flags)
 
 
 Parser::Parser(idocstream & is)
-	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_iconv_("UTF-8")
+	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_iconv_("UTF-8"),
+	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES)
 {
 }
 
@@ -166,7 +126,8 @@ Parser::Parser(idocstream & is)
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0),
 	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_),
-	  encoding_iconv_("UTF-8")
+	  encoding_iconv_("UTF-8"),
+	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES)
 {
 }
 
@@ -189,6 +150,57 @@ void Parser::setEncoding(std::string const & e, int const & p)
 		return;
 	}
 	setEncoding(enc->iconvName());
+}
+
+
+void Parser::catInit()
+{
+	if (curr_cat_ == theCatcodesType_)
+		return;
+	curr_cat_ = theCatcodesType_;
+
+	fill(theCatcode_, theCatcode_ + 256, catOther);
+	fill(theCatcode_ + 'a', theCatcode_ + 'z' + 1, catLetter);
+	fill(theCatcode_ + 'A', theCatcode_ + 'Z' + 1, catLetter);
+	// This is wrong!
+	theCatcode_[int('@')]  = catLetter;
+
+	if (theCatcodesType_ == NORMAL_CATCODES) {
+		theCatcode_[int('\\')] = catEscape;
+		theCatcode_[int('{')]  = catBegin;
+		theCatcode_[int('}')]  = catEnd;
+		theCatcode_[int('$')]  = catMath;
+		theCatcode_[int('&')]  = catAlign;
+		theCatcode_[int('\n')] = catNewline;
+		theCatcode_[int('#')]  = catParameter;
+		theCatcode_[int('^')]  = catSuper;
+		theCatcode_[int('_')]  = catSub;
+		theCatcode_[0x7f]      = catIgnore;
+		theCatcode_[int(' ')]  = catSpace;
+		theCatcode_[int('\t')] = catSpace;
+		theCatcode_[int('\r')] = catNewline;
+		theCatcode_[int('~')]  = catActive;
+		theCatcode_[int('%')]  = catComment;
+	}
+}
+
+CatCode Parser::catcode(char_type c) const
+{
+	if (c < 256)
+		return theCatcode_[(unsigned char)c];
+	return catOther;
+}
+
+
+void Parser::setCatcode(char c, CatCode cat)
+{
+	theCatcode_[(unsigned char)c] = cat;
+}
+
+
+void Parser::setCatcodes(cat_type t)
+{
+	theCatcodesType_ = t;
 }
 
 
@@ -472,7 +484,7 @@ string Parser::getFullParentheseArg()
 }
 
 
-string const Parser::verbatimEnvironment(string const & name)
+string const Parser::ertEnvironment(string const & name)
 {
 	if (!good())
 		return string();
@@ -485,7 +497,7 @@ string const Parser::verbatimEnvironment(string const & name)
 		} else if (t.asInput() == "\\begin") {
 			string const env = getArg('{', '}');
 			os << "\\begin{" << env << '}'
-			   << verbatimEnvironment(env)
+			   << ertEnvironment(env)
 			   << "\\end{" << env << '}';
 		} else if (t.asInput() == "\\end") {
 			string const end = getArg('{', '}');
@@ -542,6 +554,34 @@ string const Parser::plainCommand(char left, char right, string const & name)
 	}
 	cerr << "unexpected end of input" << endl;
 	return os.str();
+}
+
+
+string const Parser::verbatimStuff(string const & end_string)
+{
+	if (!good())
+		return string();
+
+	ostringstream oss;
+	size_t match_index = 0;
+	setCatcodes(VERBATIM_CATCODES);
+	for (Token t = get_token(); good(); t = get_token()) {
+		// FIXME t.asInput() might be longer than we need ?
+		if (t.asInput() == end_string.substr(match_index,
+						     t.asInput().length())) {
+			match_index += t.asInput().length();
+			if (match_index >= end_string.length())
+				break;
+		} else if (match_index) {
+			oss << end_string.substr(0, match_index) << t.asInput();
+			match_index = 0;
+		} else
+			oss << t.asInput();
+	}
+	setCatcodes(NORMAL_CATCODES);
+	if (!good())
+		cerr << "unexpected end of input" << endl;
+	return oss.str();
 }
 
 
@@ -684,18 +724,6 @@ string Parser::verbatim_item()
 void Parser::reset()
 {
 	pos_ = 0;
-}
-
-
-void Parser::setCatCode(char c, CatCode cat)
-{
-	theCatcode[(unsigned char)c] = cat;
-}
-
-
-CatCode Parser::getCatCode(char c) const
-{
-	return theCatcode[(unsigned char)c];
 }
 
 

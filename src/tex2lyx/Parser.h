@@ -46,6 +46,12 @@ enum CatCode {
 	catInvalid     // 15   <delete>
 };
 
+enum cat_type {
+	NORMAL_CATCODES,
+	VERBATIM_CATCODES,
+	UNDECIDED_CATCODES
+};
+
 
 enum {
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
@@ -135,6 +141,13 @@ public:
 	///
 	~Parser();
 
+	///
+	CatCode catcode(char_type c) const;
+	///
+	void setCatcode(char c, CatCode cat);
+	/// set parser to normal or verbatim mode
+	void setCatcodes(cat_type t);
+
 	/// change the iconv encoding of the input stream
 	/// according to the latex encoding and package
 	void setEncoding(std::string const & encoding, int const & package);
@@ -202,11 +215,11 @@ public:
 	/*!
 	 * \returns the contents of the environment \p name.
 	 * <tt>\begin{name}</tt> must be parsed already, <tt>\end{name}</tt>
-	 * is parsed but not returned.
+	 * is parsed but not returned. This parses nested environments properly.
 	 */
-	std::string const verbatimEnvironment(std::string const & name);
+	std::string const ertEnvironment(std::string const & name);
 	/*
-	 * The same as verbatimEnvironment(std::string const & name) but
+	 * The same as ertEnvironment(std::string const & name) but
 	 * \begin and \end commands inside the name environment are not parsed.
 	 * This function is designed to parse verbatim environments.
 	 */
@@ -218,6 +231,14 @@ public:
 	 * This function is designed to parse verbatim commands.
 	 */
 	std::string const plainCommand(char left, char right, std::string const & name);
+	/*
+	 * Basically the same as plainEnvironment() but the parsing is
+	 * stopped at string \p end_string. Contrary to the other
+	 * methods, this uses proper catcode setting. This function is
+	 * designed to parse verbatim environments and command. The
+	 * intention is to eventually replace all of its siblings.
+	 */
+	std::string const verbatimStuff(std::string const & end_string);
 	/*!
 	 * Returns the character of the current token and increments
 	 * the token position.
@@ -225,7 +246,7 @@ public:
 	char getChar();
 	///
 	void error(std::string const & msg);
-	/// Parses one token from \p is 
+	/// Parses one token from \p is
 	void tokenize_one();
 	///
 	void push_back(Token const & t);
@@ -256,12 +277,10 @@ public:
 	std::string verbatimOption();
 	/// resets the parser to initial state
 	void reset();
-	///
-	void setCatCode(char c, CatCode cat);
-	///
-	CatCode getCatCode(char c) const;
 
 private:
+	/// Setup catcode table
+	void catInit();
 	///
 	int lineno_;
 	///
@@ -276,6 +295,12 @@ private:
 	idocstream & is_;
 	/// iconv name of the current encoding
 	std::string encoding_iconv_;
+	///
+	CatCode theCatcode_[256];
+	//
+	cat_type theCatcodesType_;
+	//
+	cat_type curr_cat_;
 };
 
 

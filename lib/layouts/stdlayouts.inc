@@ -79,6 +79,7 @@ Style Verbatim
 	ParbreakIsNewline	1
 	FreeSpacing		1
 	PassThru		1
+	KeepEmpty		1
 	NewLine			0
 	ParSkip			0.4
 	TopSep			0.7

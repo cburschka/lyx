@@ -924,7 +924,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// If yes, we need to output ERT.
 		p.pushPosition();
 		if (inner_flags & FLAG_END)
-			p.verbatimEnvironment(inner_type);
+			p.ertEnvironment(inner_type);
 		else
 			p.verbatim_item();
 		p.skip_spaces(true);
@@ -1435,27 +1435,36 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (name == "verbatim") {
-		os << "\n\\end_layout\n\n\\begin_layout Verbatim\n";
-		string const s = p.plainEnvironment("verbatim");
+		// FIXME: this should go in the generic code that
+		// handles environments defined in layout file that
+		// have "PassThru 1". However, the code there is
+		// already too complicated for my taste.
+		parent_context.new_paragraph(os);
+		Context context(true, parent_context.textclass,
+				   &parent_context.textclass[from_ascii("Verbatim")]);
+		context.check_layout(os);
+		string s = p.verbatimStuff("\\end{verbatim}");
+		// ignore one newline at beginning or end of string
+		if (prefixIs(s, "\n"))
+			s.erase(0,1);
+		if (suffixIs(s, "\n"))
+			s.erase(s.length(),1);
+
 		string::const_iterator it2 = s.begin();
 		for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-			if (*it == '\\')
-				os << "\\backslash ";
-			else if (*it == '\n') {
-				it2 = it + 1;
-				// avoid adding an empty paragraph at the end
-				// FIXME: if there are 2 consecutive spaces at the end ignore it
-				// because LyX will re-add a \n
-				// This hack must be removed once bug 8049 is fixed!
-				if ((it + 1 != et) && (it + 2 != et || *it2 != '\n'))
-					os << "\n\\end_layout\n\\begin_layout Verbatim\n";
-			} else
+			context.check_layout(os);
+			if (*it == '\\') {
+				os << "\n\\backslash\n";
+				context.need_end_layout = true;
+			} else if (*it == '\n') {
+				context.new_paragraph(os);
+			} else {
 				os << *it;
+				context.need_end_layout = true;
+			}
 		}
-		os << "\n\\end_layout\n\n";
+		context.new_paragraph(os);
 		p.skip_spaces();
-		// reset to Standard layout
-		os << "\n\\begin_layout Standard\n";
 	}
 
 	else if (name == "CJK") {
@@ -1758,7 +1767,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_arguments("\\begin{" + name + "}", arguments, p, os,
 				outer, parent_context);
 		if (contents == verbatim)
-			handle_ert(os, p.verbatimEnvironment(name),
+			handle_ert(os, p.ertEnvironment(name),
 				   parent_context);
 		else
 			parse_text_snippet(p, os, FLAG_END, outer,
@@ -3819,15 +3828,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "verb") {
 			context.check_layout(os);
-			char const delimiter = p.next_token().character();
-			// \verb is special: The usual escaping rules do not
-			// apply, e.g. "\verb+\+" is valid and denotes a single
-			// backslash (bug #4468). Therefore we do not allow
-			// escaping in getArg().
-			string const arg = p.getArg(delimiter, delimiter, false);
-			ostringstream oss;
-			oss << "\\verb" << delimiter << arg << delimiter;
-			handle_ert(os, oss.str(), context);
+			// set catcodes to verbatim early, just in case.
+			p.setCatcodes(VERBATIM_CATCODES);
+			string delim = p.get_token().asInput();
+			string const arg = p.verbatimStuff(delim);
+			handle_ert(os, "\\verb" + delim + arg + delim, context);
 		}
 
 		// Problem: \= creates a tabstop inside the tabbing environment
@@ -4574,7 +4579,7 @@ string guessLanguage(Parser & p, string const & lang)
 			p.setEncoding(encoding, Encoding::CJK);
 		else
 			p.setEncoding("UTF-8");
-		string const text = p.verbatimEnvironment("CJK");
+		string const text = p.ertEnvironment("CJK");
 		p.setEncoding(encoding_old);
 		p.skip_spaces();
 		if (!where) {

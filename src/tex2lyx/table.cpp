@@ -786,7 +786,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			// treat the nested environment as a block, don't
 			// parse &, \\ etc, because they don't belong to our
 			// table if they appear.
-			os << p.verbatimEnvironment(name);
+			os << p.ertEnvironment(name);
 			os << "\\end{" << name << '}';
 			active_environments.pop_back();
 		}
@@ -1227,7 +1227,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 							angle = p.getArg('{', '}');
 						}
 						active_environments.push_back(env);
-						p.verbatimEnvironment(env);
+						p.ertEnvironment(env);
 						active_environments.pop_back();
 						p.skip_spaces();
 						if (!p.good() && support::isStrInt(angle))

@@ -1299,12 +1299,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		else if (t.cs() == "makeatletter") {
 			// LyX takes care of this
-			p.setCatCode('@', catLetter);
+			p.setCatcode('@', catLetter);
 		}
 
 		else if (t.cs() == "makeatother") {
 			// LyX takes care of this
-			p.setCatCode('@', catOther);
+			p.setCatcode('@', catOther);
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
