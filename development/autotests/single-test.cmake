@@ -47,6 +47,7 @@ endif()
 
 set(LYX_EXE "${BINDIR}/${LYX}")
 set(XVKBD_EXE "${BINDIR}/xvkbd")
+set(ENV{XVKBD_HACKED} "1")
 
 # Environments needed by keytest.py
 set(ENV{PACKAGE} ${PACKAGE})
