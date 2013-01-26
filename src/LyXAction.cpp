@@ -2373,6 +2373,7 @@ void LyXAction::init()
                In case that <INSET> is "tabular" various math-environment features
                are handled as well, e.g. add-vline-left/right for the Grid/Array environment.\n
                <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
+                       move-column-right|move-column-left|move-row-down|move-row-up|
                        toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
                        align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|
                        valign-top|valign-bottom|valign-middle|longtabular-align-left|
