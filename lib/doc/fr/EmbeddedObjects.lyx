@@ -239,9 +239,6 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\bullet 1 1 34 -1
-\bullet 2 2 35 -1
-\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -38760,9 +38757,19 @@ key "lettrine"
 petites capitales
 \shape default
 .
- Pour indiquer à LaTeX où ce mot se termine, ajoutez une accolade fermante
- '}' en code TeX juste après.
- A la fin du style on doit placer une accolade ouvrante '{' en code TeX.
+ Pour indiquer à LaTeX où ce mot se termine, ajoutez 
+\begin_inset Quotes fld
+\end_inset
+
+
+\series bold
+}{
+\series default
+
+\begin_inset Quotes frd
+\end_inset
+
+ en code TeX juste après.
 \end_layout
 
 \begin_layout Standard
@@ -38839,7 +38846,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -38853,19 +38860,6 @@ was in the spring of the year 1894 that all London was interested, and the
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang french
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -38905,7 +38899,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -38919,19 +38913,6 @@ was in the spring of the year 1894 that all London was interested, and the
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang french
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -38940,7 +38921,11 @@ Initiale descendante sur 3
 \begin_inset space ~
 \end_inset
 
-lignes en magenta en police mathématique 
+lignes en magenta en police mathématique
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
@@ -39134,23 +39119,6 @@ status open
 
 \lang english
 t was in the spring
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- of the year 1894 that all London was interested, and the fashionable world
- dismayed, by the murder of the Honourable Ronald Adair under most unusual
- and inexplicable circumstances.
- The public has already learned those particulars of the crime which came
- out in the police investigation, but a good deal was suppressed upon that
- occasion, since the case for the prosecution was so overwhelmingly strong
- that it was not necessary to bring forward all the facts.
 \lang french
 
 \begin_inset ERT
@@ -39158,12 +39126,20 @@ status collapsed
 
 \begin_layout Plain Layout
 
-{
+}{
 \end_layout
 
 \end_inset
 
-
+ 
+\lang english
+of the year 1894 that all London was interested, and the fashionable world
+ dismayed, by the murder of the Honourable Ronald Adair under most unusual
+ and inexplicable circumstances.
+ The public has already learned those particulars of the crime which came
+ out in the police investigation, but a good deal was suppressed upon that
+ occasion, since the case for the prosecution was so overwhelmingly strong
+ that it was not necessary to bring forward all the facts.
 \end_layout
 
 \end_deeper

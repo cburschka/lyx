@@ -243,9 +243,6 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\bullet 1 1 34 -1
-\bullet 2 2 35 -1
-\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -37274,17 +37271,19 @@ key "lettrine"
 versalitas
 \noun default
 .
- Para indicar a LaTeX donde finaliza esta primera palabra, añade una llave
- de cierre '
+ Para indicar a LaTeX donde finaliza esta primera palabra, añade 
+\begin_inset Quotes fld
+\end_inset
+
+
 \series bold
-}
+}{
 \series default
-' en código TeX detrás de ella.
- Al final del estilo debe haber una llave de apertura '
-\series bold
-{
-\series default
-' en código TeX.
+
+\begin_inset Quotes frd
+\end_inset
+
+ en código TeX detrás de ella.
 \end_layout
 
 \begin_layout Standard
@@ -37351,7 +37350,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37366,17 +37365,6 @@ was in the spring of the year 1894 that all London was interested, and the
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
 \lang spanish
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
 
 \begin_inset Newpage newpage
 \end_inset
@@ -37417,7 +37405,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37431,24 +37419,15 @@ was in the spring of the year 1894 that all London was interested, and the
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang spanish
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Magenta, capital colgada sobre tres líneas en tipografía matemática 
+Magenta, capital colgada sobre tres líneas en tipografía matemática
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
@@ -37635,7 +37614,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37649,19 +37628,6 @@ of the year 1894 that all London was interested, and the fashionable world
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang spanish
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper

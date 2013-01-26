@@ -236,9 +236,6 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\bullet 1 0 9 -1
-\bullet 2 2 35 -1
-\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -37810,24 +37807,19 @@ key "lettrine"
 Kapitälchen
 \shape default
  gedruckt wird.
- Um LaTeX zu sagen, wo dieses Wort endet, fügt man an dieser Stelle eine
- schließende geschweifte Klammer '
-\series bold
-}
-\series default
-' als TeX-Code ein.
- Am Ende des Stils muss eine öffnende geschweifte Klammer '
-\series bold
-{
-\series default
-' als TeX-Code stehen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
+ Um LaTeX zu sagen, wo dieses Wort endet, fügt man an dieser Stelle 
+\begin_inset Quotes gld
 \end_inset
 
 
+\series bold
+}{
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ als TeX-Code ein.
 \end_layout
 
 \begin_layout Standard
@@ -37893,7 +37885,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37907,19 +37899,6 @@ was in the spring of the year 1894 that all London was interested, and the
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang ngerman
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -37959,7 +37938,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37973,19 +37952,6 @@ was in the spring of the year 1894 that all London was interested, and the
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\lang ngerman
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -38006,9 +37972,9 @@ Zeilen in der Mathe-Schrift
 \begin_inset Quotes gld
 \end_inset
 
-t 
+
 \lang english
-was in the spring
+t was in the spring
 \lang ngerman
 
 \begin_inset Quotes erd
@@ -38189,7 +38155,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -38203,20 +38169,6 @@ of the year 1894 that all London was interested, and the fashionable world
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\family sans
-\lang ngerman
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper

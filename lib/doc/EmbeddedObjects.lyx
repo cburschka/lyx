@@ -235,9 +235,6 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\bullet 1 1 34 -1
-\bullet 2 2 35 -1
-\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -37770,16 +37767,19 @@ key "lettrine"
 small caps
 \shape default
 .
- To tell LaTeX where this word is finished, add a closing brace '
+ To tell LaTeX where this word is finished, add 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
-}
+}{
 \series default
-' as TeX-Code behind it.
- At the end of the style there must be an opening brace '
-\series bold
-{
-\series default
-' as TeX-Code.
+
+\begin_inset Quotes erd
+\end_inset
+
+ as TeX-Code behind it.
 \end_layout
 
 \begin_layout Standard
@@ -37844,7 +37844,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37856,17 +37856,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newpage newpage
 \end_inset
 
@@ -37906,7 +37895,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -37918,17 +37907,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -38120,7 +38098,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}
+}{
 \end_layout
 
 \end_inset
@@ -38132,17 +38110,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
