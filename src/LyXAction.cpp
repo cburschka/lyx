@@ -2372,22 +2372,22 @@ void LyXAction::init()
  * \li Params: Generally see #LFUN_INSET_INSERT for further details.\n
                In case that <INSET> is "tabular" various math-environment features
                are handled as well, e.g. add-vline-left/right for the Grid/Array environment.\n
-               <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
-                       move-column-right|move-column-left|move-row-down|move-row-up|
-                       toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
-                       align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|
-                       valign-top|valign-bottom|valign-middle|longtabular-align-left|
-                       longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|
-                       m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
-                       set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|
-                       set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
-                       set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
-                       unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
-                       set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
-                       set-special-column|set-special-multicolumn|set-special-multirow|
-                       set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
-                       set-interline-space|set-border-lines|tabular-valign-top|
-                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width \n
+               <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|\n
+                       copy-column|move-column-right|move-column-left|move-row-down|move-row-up|\n
+                       toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|\n
+                       align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|\n
+                       valign-top|valign-bottom|valign-middle|longtabular-align-left|\n
+                       longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|\n
+                       m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|\n
+                       set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|\n
+                       set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|\n
+                       set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|\n
+                       unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|\n
+                       set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|\n
+                       set-special-column|set-special-multicolumn|set-special-multirow|\n
+                       set-booktabs|unset-booktabs|set-top-space|set-bottom-space|\n
+                       set-interline-space|set-border-lines|tabular-valign-top|\n
+                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width
                <ARG>: additional argument for some commands, use debug mode to explore its values.
  * \li Sample: inset-modify note Note Comment \n
 	       inset-modify changetype Ovalbox
