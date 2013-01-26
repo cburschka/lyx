@@ -323,7 +323,14 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 void InsetSpecialChar::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	switch (kind_) {
+	case LIGATURE_BREAK:
+		// Do not output ZERO WIDTH NON JOINER here
+		// Spell checker would choke on it.
+		return;
+	default:
+		plaintext(os, OutputParams(0));
+	}
 }
 
 
