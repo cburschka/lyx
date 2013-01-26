@@ -6,149 +6,158 @@
 
 # General textclass parameters
 Format 35
-	Columns			1
-	Sides			1
-	SecNumDepth		-1
-	TocDepth		-1
+	Columns		1
+	Sides		1
+	SecNumDepth	-1
+	TocDepth	-1
 
 
 # Standard style definition
 Style Standard
-	Margin			Static
-	LatexType		Paragraph
-	LatexName		dummy
-	ParIndent		MM
-	ParSkip			0.4
-	Align			Block
-	LabelType		No_Label
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	LabelType	No_Label
 End
 
 Input stdcounters.inc
 Input stdinsets.inc
 
 Style Section
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvsection
-	NeedProtect		1
-	NextNoIndent		1
-	OptionalArgs		1
-	ParSkip			0.4
-	TopSep			1.3
-	BottomSep		0.7
-	ParSep			0.7
-	Align			Block
-	LabelSep		xxx
-	LabelType		No_Label
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvsection
+	Category	MainText
+	NeedProtect	1
+	NextNoIndent	1
+	OptionalArgs	1
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	LabelSep	xxx
+	LabelType	No_Label
 	Font
-	  Family		Sans
-	  Series		Bold
+	  Family	Sans
+	  Series	Bold
 	EndFont
-		TocLevel 1
+	TocLevel	1
 End
 
 Style Item
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvitem
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Item:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvitem
+	Category	MainText
+	OptionalArgs	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Item:"
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style BulletedItem
-	CopyStyle		Item
-	LatexName		ecvitem*
-	LabelString		"Bulleted Item:"
+	CopyStyle	Item
+	LatexName	ecvitem*
+	LabelString	"Bulleted Item:"
 End
 
 Style Begin
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		begin{europecv}
-	KeepEmpty		1
-	BottomSep		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Begin of CV"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	begin{europecv}
+	Category	FrontMatter
+	KeepEmpty	1
+	TopSep		1
+	BottomSep	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Begin of CV"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
 	EndFont
 End
 
 Style PersonalInfo
-	CopyStyle		Begin
-	LatexName		ecvpersonalinfo{}
-	BottomSep		0
-	LabelString		"Personal Info"
+	CopyStyle	Begin
+	LatexName	ecvpersonalinfo{}
+	TopSep		0
+	BottomSep	0
+	LabelString	"Personal Info"
 End
 
 Style MotherTongue
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		ecvmothertongue
-	OptionalArgs		1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"Mother Tongue:"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvmothertongue
+	Category	MainText
+	OptionalArgs	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Mother Tongue:"
+	Font
+	  Series	Bold
+	EndFont
 	LabelFont
-	  Series		Bold
-	  Color			Blue
+	  Series	Bold
+	  Color		Blue
 	EndFont
 End
 
 Style LangHeader
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguageheader
-	OptionalArgs		0
-	LabelString		"Language Header:"
+	CopyStyle	MotherTongue
+	LatexName	ecvlanguageheader
+	OptionalArgs	0
+	LabelString	"Language Header:"
 End
 
 Style Language
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguage
-	LabelString		"Language:"
+	CopyStyle	MotherTongue
+	LatexName	ecvlanguage
+	LabelString	"Language:"
 End
 
 Style LastLanguage
-	CopyStyle		MotherTongue
-	LatexName		ecvlastlanguage
-	LabelString		"Last Language:"
+	CopyStyle	Language
+	LatexName	ecvlastlanguage
+	LabelString	"Last Language:"
 End
 
 Style LangFooter
-	CopyStyle		MotherTongue
-	LatexName		ecvlanguagefooter
-	OptionalArgs		0
-	LabelString		"Language Footer:"
+	CopyStyle	LangHeader
+	LatexName	ecvlanguagefooter
+	LabelString	"Language Footer:"
 End
 
 Style End
-	Margin			Dynamic
-	LatexType		Command
-	LatexName		end{europecv}
-	KeepEmpty		1
-	TopSep			1
-	ParSkip			0.4
-	Align			Block
-	LabelSep		xx
-	LabelType		Static
-	LabelString		"End of CV"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	end{europecv}
+	Category	BackMatter
+	KeepEmpty	1
+	TopSep		1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"End of CV"
 	LabelFont
-	  Series		Bold
-	  Color			Green
+	  Series	Bold
+	  Color		Green
 	EndFont
 End
 
