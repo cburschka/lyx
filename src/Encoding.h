@@ -50,7 +50,7 @@ public:
 		japanese = 8
 	};
 	/// Represent any of the above packages
-	static int const any = -1;
+	static int const any;
 	///
 	Encoding() {}
 	///
