@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-27 13:09+0100\n"
-"PO-Revision-Date: 2013-01-27 13:50+0100\n"
+"POT-Creation-Date: 2013-01-27 16:35+0100\n"
+"PO-Revision-Date: 2013-01-27 16:37+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -5482,15 +5482,15 @@ msgstr "Kein Fax"
 
 #: lib/layouts/lettre.layout:46 lib/layouts/lettre.layout:399
 #: lib/layouts/aapaper.layout:90 lib/layouts/iopart.layout:165
-#: lib/layouts/aa.layout:412 lib/layouts/europecv.layout:71
-#: lib/layouts/llncs.layout:239 lib/layouts/aastex.layout:107
-#: lib/layouts/aastex.layout:362 lib/layouts/ectaart.layout:73
-#: lib/layouts/achemso.layout:95 lib/layouts/elsarticle.layout:253
-#: lib/layouts/jasatex.layout:141 lib/layouts/moderncv.layout:130
-#: lib/layouts/latex8.layout:65 lib/layouts/aapaper.inc:46
-#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
-#: lib/layouts/amsdefs.inc:148 lib/layouts/svcommon.inc:676
-#: lib/layouts/svcommon.inc:681
+#: lib/layouts/aa.layout:412 lib/layouts/aa.layout:416
+#: lib/layouts/europecv.layout:71 lib/layouts/llncs.layout:239
+#: lib/layouts/aastex.layout:107 lib/layouts/aastex.layout:362
+#: lib/layouts/ectaart.layout:73 lib/layouts/achemso.layout:95
+#: lib/layouts/elsarticle.layout:253 lib/layouts/jasatex.layout:141
+#: lib/layouts/moderncv.layout:130 lib/layouts/latex8.layout:65
+#: lib/layouts/aapaper.inc:46 lib/layouts/db_stdcharstyles.inc:71
+#: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/amsdefs.inc:148
+#: lib/layouts/svcommon.inc:676 lib/layouts/svcommon.inc:681
 msgid "Email"
 msgstr "E-Mail"
 
@@ -7870,12 +7870,12 @@ msgstr "Schriftverkehr an:"
 msgid "institutemark"
 msgstr "Institutsfußnotenmarke"
 
-#: lib/layouts/aa.layout:305
-msgid "institute mark"
-msgstr "Institutsfußnotenmarke"
+#: lib/layouts/aa.layout:305 lib/layouts/beamer.layout:981
+msgid "Institute Mark"
+msgstr "Institutsmarke"
 
 #: lib/layouts/aa.layout:369
-msgid "Key words."
+msgid "Key Words."
 msgstr "Schlagwörter."
 
 #: lib/layouts/aa.layout:391 lib/layouts/llncs.layout:220
@@ -7886,10 +7886,6 @@ msgstr "Institut"
 
 #: lib/layouts/aa.layout:401 lib/layouts/scrlttr2.layout:203
 msgid "E-Mail"
-msgstr "E-Mail"
-
-#: lib/layouts/aa.layout:416 src/insets/InsetHyperlink.cpp:274
-msgid "email"
 msgstr "E-Mail"
 
 #: lib/layouts/chess.layout:3
@@ -9069,17 +9065,16 @@ msgstr "Lecture Notes in Comp. Science (LNCS)"
 msgid "Running LaTeX Title"
 msgstr "LaTeX-Kolumnentitel"
 
-#: lib/layouts/llncs.layout:166 lib/layouts/kluwer.layout:228
-#: lib/layouts/svcommon.inc:404
-msgid "Running title:"
-msgstr "Kolumnentitel:"
+#: lib/layouts/llncs.layout:166 lib/layouts/ectaart.layout:29
+msgid "Running Title:"
+msgstr "Titel in Kopfzeile:"
 
 #: lib/layouts/llncs.layout:175 lib/layouts/svcommon.inc:376
 msgid "TOC Title"
 msgstr "Inhaltsverz. Titel"
 
-#: lib/layouts/llncs.layout:179 lib/layouts/svcommon.inc:387
-msgid "TOC title:"
+#: lib/layouts/llncs.layout:179
+msgid "TOC Title:"
 msgstr "Inhaltsverz. Titel:"
 
 #: lib/layouts/llncs.layout:204
@@ -9362,10 +9357,6 @@ msgstr "Econometrica"
 msgid "RunTitle"
 msgstr "Kopfzeile: Titel"
 
-#: lib/layouts/ectaart.layout:29
-msgid "Running Title:"
-msgstr "Titel in Kopfzeile:"
-
 #: lib/layouts/ectaart.layout:36
 msgid "RunAuthor"
 msgstr "Kopfzeile: Autor"
@@ -9472,6 +9463,10 @@ msgstr "Adresse für Sonderdrucke:"
 #: lib/layouts/kluwer.layout:220
 msgid "RunningTitle"
 msgstr "Kolumnentitel"
+
+#: lib/layouts/kluwer.layout:228 lib/layouts/svcommon.inc:404
+msgid "Running title:"
+msgstr "Kolumnentitel:"
 
 #: lib/layouts/kluwer.layout:242
 msgid "RunningAuthor"
@@ -10954,10 +10949,6 @@ msgstr "Kurzform des Instituts, die in der Seitenleiste/Kopfzeile erscheint"
 msgid "InstituteMark"
 msgstr "Institutsfußnotenmarke"
 
-#: lib/layouts/beamer.layout:981
-msgid "Institute Mark"
-msgstr "Institutsmarke"
-
 #: lib/layouts/beamer.layout:1011
 msgid "Short Date|S"
 msgstr "Kurzdatum|z"
@@ -11237,7 +11228,7 @@ msgid "CVStyle"
 msgstr "CVStil"
 
 #: lib/layouts/moderncv.layout:45
-msgid "CV style:"
+msgid "CV Style:"
 msgstr "CV-Stil:"
 
 #: lib/layouts/moderncv.layout:52
@@ -11245,7 +11236,7 @@ msgid "CVColor"
 msgstr "CV-Farbe"
 
 #: lib/layouts/moderncv.layout:55
-msgid "CV color scheme:"
+msgid "CV Color Scheme:"
 msgstr "CV-Farbschema:"
 
 #: lib/layouts/moderncv.layout:58 lib/layouts/db_stdtitle.inc:94
@@ -11327,7 +11318,7 @@ msgid "ItemWithComment"
 msgstr "Eintrag mit Kommentar"
 
 #: lib/layouts/moderncv.layout:279
-msgid "Item with comment:"
+msgid "Item with Comment:"
 msgstr "Kommentar-Eintrag:"
 
 #: lib/layouts/moderncv.layout:289 lib/layouts/moderncv.layout:290
@@ -11350,15 +11341,27 @@ msgstr "DoppelterEintrag"
 msgid "Double Item:"
 msgstr "Doppelter Eintrag:"
 
-#: lib/layouts/moderncv.layout:320 lib/layouts/moderncv.layout:321
+#: lib/layouts/moderncv.layout:320
+msgid "Left Summary"
+msgstr "Zusammenfassung links"
+
+#: lib/layouts/moderncv.layout:321
 msgid "Left summary"
 msgstr "Zusammenfassung links"
 
-#: lib/layouts/moderncv.layout:325 lib/layouts/moderncv.layout:326
+#: lib/layouts/moderncv.layout:325
+msgid "Left Text"
+msgstr "Text links"
+
+#: lib/layouts/moderncv.layout:326
 msgid "Left text"
 msgstr "Text links"
 
-#: lib/layouts/moderncv.layout:330 lib/layouts/moderncv.layout:331
+#: lib/layouts/moderncv.layout:330
+msgid "Right Summary"
+msgstr "Zusammenfassung rechts"
+
+#: lib/layouts/moderncv.layout:331
 msgid "Right summary"
 msgstr "Zusammenfassung rechts"
 
@@ -11370,8 +11373,12 @@ msgstr "Doppelter Leisteneintrag"
 msgid "Double List Item:"
 msgstr "Doppelter Listeneintrag:"
 
-#: lib/layouts/moderncv.layout:343 lib/layouts/moderncv.layout:344
+#: lib/layouts/moderncv.layout:343
 msgid "First Item"
+msgstr "Erster Listeneintrag"
+
+#: lib/layouts/moderncv.layout:344
+msgid "First item"
 msgstr "Erster Listeneintrag"
 
 #: lib/layouts/moderncv.layout:352
@@ -11399,7 +11406,7 @@ msgid "MakeCVtitle"
 msgstr "CV-Titel ausgeben"
 
 #: lib/layouts/moderncv.layout:381
-msgid "Make CV title"
+msgid "Make CV Title"
 msgstr "CV-Titel ausgeben"
 
 #: lib/layouts/moderncv.layout:385
@@ -11407,7 +11414,7 @@ msgid "MakeLetterTitle"
 msgstr "Brieftitel ausgeben"
 
 #: lib/layouts/moderncv.layout:388
-msgid "Make letter title"
+msgid "Make Letter Title"
 msgstr "Brieftitel ausgeben"
 
 #: lib/layouts/moderncv.layout:392
@@ -11430,7 +11437,11 @@ msgstr "--- Umgebung trennen ---"
 msgid "Recipient"
 msgstr "Empfänger"
 
-#: lib/layouts/moderncv.layout:449 lib/layouts/moderncv.layout:450
+#: lib/layouts/moderncv.layout:449
+msgid "Company Name"
+msgstr "Firmenname"
+
+#: lib/layouts/moderncv.layout:450
 msgid "Company name"
 msgstr "Firmenname"
 
@@ -11438,8 +11449,8 @@ msgstr "Firmenname"
 msgid "Enclosing"
 msgstr "Anlagen"
 
-#: lib/layouts/moderncv.layout:498 lib/layouts/svcommon.inc:520
-msgid "Alternative name"
+#: lib/layouts/moderncv.layout:498 lib/layouts/svcommon.inc:519
+msgid "Alternative Name"
 msgstr "Alternativer Name"
 
 #: lib/layouts/moderncv.layout:499
@@ -12322,6 +12333,10 @@ msgstr "Unterspitzkolumne"
 msgid "Author data:"
 msgstr "Autorangaben:"
 
+#: lib/layouts/svcommon.inc:387
+msgid "TOC title:"
+msgstr "Inhaltsverz. Titel:"
+
 #: lib/layouts/svcommon.inc:397
 msgid "TOC author:"
 msgstr "Inhaltsverz. Autor:"
@@ -12354,8 +12369,8 @@ msgstr "Abstract*"
 msgid "Abstract* (not printed)"
 msgstr "Abstract* (nicht gedruckt)"
 
-#: lib/layouts/svcommon.inc:519
-msgid "Alternative Name"
+#: lib/layouts/svcommon.inc:520
+msgid "Alternative name"
 msgstr "Alternativer Name"
 
 #: lib/layouts/svcommon.inc:598
@@ -13150,7 +13165,7 @@ msgid "An optional preface"
 msgstr "Optionaler Vorspann (einspaltiger Text unmittelbar vor Spaltenbeginn)"
 
 #: lib/layouts/multicol.module:31
-msgid "Space before page break"
+msgid "Space before Page Break"
 msgstr "Abstand vor dem Seitenumbruch"
 
 #: lib/layouts/multicol.module:32
@@ -28215,6 +28230,10 @@ msgstr ""
 msgid "www"
 msgstr "www"
 
+#: src/insets/InsetHyperlink.cpp:274
+msgid "email"
+msgstr "E-Mail"
+
 #: src/insets/InsetHyperlink.cpp:276
 msgid "file"
 msgstr "Datei"
@@ -29359,6 +29378,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "institute mark"
+#~ msgstr "Institutsfußnotenmarke"
+
+#~ msgid "Make letter title"
+#~ msgstr "Brieftitel ausgeben"
+
 #~ msgid "Initial Option"
 #~ msgstr "Initial-Optionen"
 
@@ -29690,9 +29715,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "branch"
 #~ msgstr "Zweig"
-
-#~ msgid "TOC Title:"
-#~ msgstr "Inhaltsverz. Titel:"
 
 #~ msgid "\\thesol"
 #~ msgstr "\\thesol"
