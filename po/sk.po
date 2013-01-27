@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-19 14:30+0100\n"
+"POT-Creation-Date: 2013-01-27 17:08+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3272,7 +3272,7 @@ msgstr "Vaše meno"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:60
 msgid "Your E-mail address"
-msgstr "Vaša e-mailová adresa"
+msgstr "Vaša E-mailová adresa"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:19
 msgid "Keyboard"
@@ -6169,12 +6169,12 @@ msgstr "Poďakovania."
 msgid "institutemark"
 msgstr "znak inštitútu"
 
-#: lib/layouts/aa.layout:303
-msgid "institute mark"
-msgstr "znak inštitútu"
+#: lib/layouts/beamer.layout:1013
+msgid "Institute Mark"
+msgstr "Znak Inštitútu"
 
-#: lib/layouts/aa.layout:367
-msgid "Key words."
+#: lib/layouts/aa.layout:369
+msgid "Key Words."
 msgstr "Heslá."
 
 #: lib/layouts/aa.layout:389 lib/layouts/beamer.layout:813
@@ -6198,10 +6198,6 @@ msgstr "E-mail"
 #: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
 #: lib/layouts/svcommon.inc:670
 msgid "Email"
-msgstr "E-mail"
-
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:261
-msgid "email"
 msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
@@ -7454,10 +7450,6 @@ msgstr "Skratka inštitútu ktorá sa zjaví na boku/hlavičke"
 msgid "InstituteMark"
 msgstr "ZnakInštitútu"
 
-#: lib/layouts/beamer.layout:1013
-msgid "Institute Mark"
-msgstr "Znak Inštitútu"
-
 #: lib/layouts/beamer.layout:977
 msgid "Short Date|S"
 msgstr "Krátky Dátum"
@@ -8699,8 +8691,8 @@ msgstr "Návestie autora na ktorého sa vzťahujete"
 msgid "Internet"
 msgstr "Internet"
 
-#: lib/layouts/elsarticle.layout:258
-msgid "if content is 'url', email becomes an Internet address"
+#: lib/layouts/elsarticle.layout:259
+msgid "If content is 'url', email becomes an Internet address"
 msgstr "Keď obsah je 'url', e-mail sa zmení na internetovú adresu"
 
 #: lib/layouts/entcs.layout:3
@@ -8725,29 +8717,29 @@ msgstr "Životopisy"
 msgid "Name:"
 msgstr "Meno:"
 
-#: lib/layouts/europecv.layout:46
+#: lib/layouts/europecv.layout:47
 msgid "FooterName"
-msgstr "Meno v päte"
+msgstr "Meno v spodnom riadku"
 
-#: lib/layouts/europecv.layout:49
+#: lib/layouts/europecv.layout:50
 msgid "Footer name:"
-msgstr "Meno v päte:"
+msgstr "Meno v spodnom riadku:"
 
-#: lib/layouts/europecv.layout:52
+#: lib/layouts/europecv.layout:53
 msgid "Nationality"
-msgstr "Národnosť"
+msgstr "Štátna príslušnosť"
 
-#: lib/layouts/europecv.layout:55
+#: lib/layouts/europecv.layout:56
 msgid "Nationality:"
-msgstr "Národnosť:"
+msgstr "Štátna príslušnosť:"
 
-#: lib/layouts/europecv.layout:58
+#: lib/layouts/europecv.layout:59
 msgid "Birthday"
-msgstr "Deň narodenia"
+msgstr "Dátum narodenia"
 
-#: lib/layouts/europecv.layout:61
+#: lib/layouts/europecv.layout:62
 msgid "Date of birth:"
-msgstr "Deň narodenia:"
+msgstr "Dátum narodenia:"
 
 #: lib/layouts/europecv.layout:81 lib/layouts/moderncv.layout:110
 msgid "Mobile"
@@ -8805,13 +8797,14 @@ msgstr "Stránka"
 msgid "The title as it appears in the header"
 msgstr "Titul ako sa zobrazí v hlavičke"
 
-#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:82
+#: lib/layouts/europecv.layout:152 lib/layouts/moderncv.layout:255
 msgid "Item"
-msgstr "položka"
+msgstr "Položka"
 
-#: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:112
+#: lib/layouts/europecv.layout:158 lib/layouts/europecv.layout:217
+#: src/insets/Inset.cpp:115 src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
-msgstr "Vertikálna medzera"
+msgstr "Vertikálna Medzera"
 
 #: lib/layouts/europecv.layout:158 lib/layouts/europecv.layout:216
 msgid "Additional vertical space"
@@ -8841,29 +8834,29 @@ msgstr "Začiatok"
 msgid "Begin of CV"
 msgstr "Začiatok životopisu"
 
-#: lib/layouts/europecv.layout:201
+#: lib/layouts/europecv.layout:203
 msgid "PersonalInfo"
-msgstr "OsobnáInformácia"
+msgstr "OsobnéÚdaje"
 
-#: lib/layouts/europecv.layout:206
+#: lib/layouts/europecv.layout:208
 msgid "Personal Info"
-msgstr "Osobná Informácia"
+msgstr "Osobné Údaje"
 
-#: lib/layouts/europecv.layout:209
+#: lib/layouts/europecv.layout:211
 msgid "MotherTongue"
-msgstr "MaterskýJazyk"
+msgstr "MaterinskýJazyk"
 
-#: lib/layouts/europecv.layout:222
+#: lib/layouts/europecv.layout:224
 msgid "Mother Tongue:"
-msgstr "Materský Jazyk:"
+msgstr "Materinský Jazyk:"
 
-#: lib/layouts/europecv.layout:232
+#: lib/layouts/europecv.layout:234
 msgid "LangHeader"
-msgstr "HlavičkaJazyka"
+msgstr "ČeloJazyka"
 
-#: lib/layouts/europecv.layout:236
+#: lib/layouts/europecv.layout:238
 msgid "Language Header:"
-msgstr "Hlavička Jazyka:"
+msgstr "Čelo Jazyka:"
 
 #: lib/layouts/europecv.layout:122 lib/layouts/moderncv.layout:119
 msgid "Language:"
@@ -8913,13 +8906,13 @@ msgstr "PoslednýJazyk"
 msgid "Last Language:"
 msgstr "Posledný Jazyk:"
 
-#: lib/layouts/europecv.layout:131
+#: lib/layouts/europecv.layout:278
 msgid "LangFooter"
-msgstr "JazykPäta"
+msgstr "PätaJazyka"
 
-#: lib/layouts/europecv.layout:135
+#: lib/layouts/europecv.layout:281
 msgid "Language Footer:"
-msgstr "Jazyk päty:"
+msgstr "Päta Jazyka:"
 
 #: lib/layouts/europecv.layout:138
 msgid "End"
@@ -9977,9 +9970,9 @@ msgstr "LaTeX- Stĺpcový Titul"
 msgid "TOC Title"
 msgstr "Obsah Titul"
 
-#: lib/layouts/llncs.layout:176 lib/layouts/svcommon.inc:382
-msgid "TOC title:"
-msgstr "Obsah titul:"
+#: lib/layouts/llncs.layout:179
+msgid "TOC Title:"
+msgstr "Obsah Titul:"
 
 #: lib/layouts/llncs.layout:200
 msgid "Author Running"
@@ -10176,17 +10169,17 @@ msgstr "Modern CV"
 msgid "CVStyle"
 msgstr "CVŠtýl"
 
-#: lib/layouts/moderncv.layout:44
-msgid "CV style:"
-msgstr "CV štýl:"
+#: lib/layouts/moderncv.layout:45
+msgid "CV Style:"
+msgstr "CV Štýl:"
 
 #: lib/layouts/moderncv.layout:51
 msgid "CVColor"
 msgstr "CVFarba"
 
-#: lib/layouts/moderncv.layout:54
-msgid "CV color scheme:"
-msgstr "CV farebné schéma:"
+#: lib/layouts/moderncv.layout:55
+msgid "CV Color Scheme:"
+msgstr "CV Farebné Schéma:"
 
 #: lib/layouts/moderncv.layout:57 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
@@ -10260,9 +10253,9 @@ msgstr "Záznam:"
 msgid "ItemWithComment"
 msgstr "Prvok:Komentár"
 
-#: lib/layouts/moderncv.layout:275
-msgid "Item with comment:"
-msgstr "Prvok s komentárom:"
+#: lib/layouts/moderncv.layout:279
+msgid "Item with Comment:"
+msgstr "Prvok s Komentárom:"
 
 #: lib/layouts/moderncv.layout:285 lib/layouts/moderncv.layout:286
 msgid "Text"
@@ -10284,13 +10277,25 @@ msgstr "Dvojitá položka"
 msgid "Double Item:"
 msgstr "Dvojitá položka:"
 
+#: lib/layouts/moderncv.layout:320
+msgid "Left Summary"
+msgstr "Ľavý Súhrn"
+
 #: lib/layouts/moderncv.layout:316 lib/layouts/moderncv.layout:317
 msgid "Left summary"
 msgstr "Ľavý súhrn"
 
+#: lib/layouts/moderncv.layout:325
+msgid "Left Text"
+msgstr "Ľavý Text"
+
 #: lib/layouts/moderncv.layout:321 lib/layouts/moderncv.layout:322
 msgid "Left text"
 msgstr "Ľavý text"
+
+#: lib/layouts/moderncv.layout:330
+msgid "Right Summary"
+msgstr "Pravý Súhrn"
 
 #: lib/layouts/moderncv.layout:326 lib/layouts/moderncv.layout:327
 msgid "Right summary"
@@ -10304,8 +10309,12 @@ msgstr "ZáznamDvojitáListina"
 msgid "Double List Item:"
 msgstr "Záznam pre dvojitú listinu:"
 
-#: lib/layouts/moderncv.layout:338 lib/layouts/moderncv.layout:339
+#: lib/layouts/moderncv.layout:343
 msgid "First Item"
+msgstr "Prvý Záznam"
+
+#: lib/layouts/moderncv.layout:344
+msgid "First item"
 msgstr "Prvý záznam"
 
 #: lib/layouts/moderncv.layout:122
@@ -10332,17 +10341,17 @@ msgstr "Zavri Sekciu"
 msgid "MakeCVtitle"
 msgstr "VydaťCVTitul"
 
-#: lib/layouts/moderncv.layout:376
-msgid "Make CV title"
-msgstr "Vydať CV titul"
+#: lib/layouts/moderncv.layout:381
+msgid "Make CV Title"
+msgstr "Vydať CV Titul"
 
 #: lib/layouts/moderncv.layout:380
 msgid "MakeLetterTitle"
 msgstr "VydaťTitulListu"
 
-#: lib/layouts/moderncv.layout:383
-msgid "Make letter title"
-msgstr "Vydať titul listu"
+#: lib/layouts/moderncv.layout:388
+msgid "Make Letter Title"
+msgstr "Vydať Titul Listu"
 
 #: lib/layouts/moderncv.layout:387
 msgid "MakeLetterClosing"
@@ -10364,6 +10373,10 @@ msgstr "-- Oddeliť Prostredie --"
 msgid "Recipient"
 msgstr "Príjemca"
 
+#: lib/layouts/moderncv.layout:449
+msgid "Company Name"
+msgstr "Meno Firmy"
+
 #: lib/layouts/moderncv.layout:442 lib/layouts/moderncv.layout:443
 msgid "Company name"
 msgstr "Meno firmy"
@@ -10372,9 +10385,9 @@ msgstr "Meno firmy"
 msgid "Enclosing"
 msgstr "Príloha"
 
-#: lib/layouts/moderncv.layout:491 lib/layouts/svcommon.inc:519
-msgid "Alternative name"
-msgstr "Alternatívne meno"
+#: lib/layouts/moderncv.layout:498 lib/layouts/svcommon.inc:519
+msgid "Alternative Name"
+msgstr "Alternatívne Meno"
 
 #: lib/layouts/moderncv.layout:492
 msgid "Alternative instead of 'Enclosure'"
@@ -11246,7 +11259,7 @@ msgstr "Letáky"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr "E-mail:"
+msgstr "e-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -11937,6 +11950,10 @@ msgstr "Pod-nadpisy do záhlavia"
 msgid "Author data:"
 msgstr "Autor dáta:"
 
+#: lib/layouts/svcommon.inc:387
+msgid "TOC title:"
+msgstr "Obsah titul:"
+
 #: lib/layouts/svcommon.inc:392
 msgid "TOC author:"
 msgstr "Obsah autor:"
@@ -11969,8 +11986,8 @@ msgstr "Súhrn*"
 msgid "Abstract* (not printed)"
 msgstr "Súhrn* (nebude tlačený)"
 
-#: lib/layouts/svcommon.inc:518
-msgid "Alternative Name"
+#: lib/layouts/svcommon.inc:520
+msgid "Alternative name"
 msgstr "Alternatívne meno"
 
 #: lib/layouts/svcommon.inc:597
@@ -12520,17 +12537,21 @@ msgstr ""
 msgid "Initial"
 msgstr "Iniciálka"
 
-#: lib/layouts/initials.module:33
-msgid "Initial Option"
-msgstr "Voľba Iniciálka"
-
 #: lib/layouts/initials.module:34
-msgid "Optional argument for initial (see lettrine manual)"
-msgstr "Nepovinný argument pre iniciálku (viď lettrine manuál)"
+msgid "Option(s) for the initial"
+msgstr "Voľba/y pre iniciálku"
 
 #: lib/layouts/initials.module:39
-msgid "Initial letter"
-msgstr "Iniciálna litera"
+msgid "Initial letter(s)"
+msgstr "Iniciálne litery"
+
+#: lib/layouts/initials.module:43
+msgid "Rest of Initial"
+msgstr "Zvyšok Iniciálky"
+
+#: lib/layouts/initials.module:44
+msgid "Rest of initial word or text"
+msgstr "Zvyšok iniciálneho slova alebo textu"
 
 #: lib/layouts/jurabib.module:2
 msgid "Jurabib"
@@ -12786,8 +12807,8 @@ msgid "An optional preface"
 msgstr "Nepovinný predslov"
 
 #: lib/layouts/multicol.module:31
-msgid "Space before page break"
-msgstr "Odstup pred zalomením strany"
+msgid "Space Before Page Break"
+msgstr "Odstup Pred Zalomením Strany"
 
 #: lib/layouts/multicol.module:32
 msgid ""
@@ -14792,29 +14813,41 @@ msgstr "Dole"
 msgid "Append Row|A"
 msgstr "Pridať Riadok"
 
-#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:210
+#: lib/ui/stdcontext.inc:417 lib/ui/stdmenus.inc:211
 msgid "Delete Row|D"
-msgstr "Zmazať riadok"
+msgstr "Zmazať Riadok"
 
 #: lib/ui/stdcontext.inc:418 lib/ui/stdmenus.inc:212
 msgid "Copy Row|o"
-msgstr "Kopírovať riadok"
+msgstr "Kopírovať Riadok"
+
+#: lib/ui/stdcontext.inc:419
+msgid "Move Row Up"
+msgstr "Presunúť Riadok Nahor"
+
+#: lib/ui/stdcontext.inc:420
+msgid "Move Row Down"
+msgstr "Presunúť Riadok Nadol"
 
 #: lib/ui/stdcontext.inc:403
 msgid "Append Column|p"
 msgstr "Pridať Stĺpec"
 
-#: lib/ui/stdcontext.inc:404 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:423 lib/ui/stdmenus.inc:216
 msgid "Delete Column|e"
-msgstr "Zmazať stĺpec"
+msgstr "Zmazať Stĺpec"
 
 #: lib/ui/stdcontext.inc:423
 msgid "Copy Column|y"
 msgstr "Kopírovať Stĺpec"
 
-#: lib/ui/stdcontext.inc:408
-msgid "Settings...|g"
-msgstr "Nastavenia...|a"
+#: lib/ui/stdcontext.inc:425
+msgid "Move Column Right|v"
+msgstr "Presunúť Stĺpec Doprava"
+
+#: lib/ui/stdcontext.inc:426
+msgid "Move Column Left"
+msgstr "Presunúť Stĺpec Doľava"
 
 #: lib/ui/stdcontext.inc:416 lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -16127,6 +16160,22 @@ msgstr "Zmazať riadok"
 #: lib/ui/stdtoolbars.inc:146 lib/ui/stdtoolbars.inc:193
 msgid "Delete column"
 msgstr "Zmazať stĺpec"
+
+#: lib/ui/stdtoolbars.inc:147
+msgid "Move row up"
+msgstr "Presunúť riadok nahor"
+
+#: lib/ui/stdtoolbars.inc:148
+msgid "Move column left"
+msgstr "Presunúť stĺpec doľava"
+
+#: lib/ui/stdtoolbars.inc:149
+msgid "Move row down"
+msgstr "Presunúť riadok nadol"
+
+#: lib/ui/stdtoolbars.inc:150
+msgid "Move column right"
+msgstr "Presunúť stĺpec doprava"
 
 #: lib/ui/stdtoolbars.inc:148
 msgid "Set top line"
@@ -22821,7 +22870,9 @@ msgid ""
 "                  where fmt is the export format of choice. Look in\n"
 "                  Tools->Preferences->File Handling->File Formats->Short "
 "Name\n"
-"                  to get an idea which parameters should be passed.\n"
+"                  to see which parameter (which differs from the format "
+"name\n"
+"                  in the File->Export menu) should be passed.\n"
 "                  Note that the order of -e and -x switches matters.\n"
 "\t-E [--export-to] fmt filename\n"
 "                  where fmt is the export format of choice (see --export),\n"
@@ -22861,8 +22912,9 @@ msgstr ""
 "                  kde fmt je vybraný exportný formát. Pozrite si\n"
 "                  Nástroje->Preferencie...->Obsluha súborov->Formáty Súborov-"
 ">Skratka\n"
-"                  aby ste dostali predstavu o tom, ktoré parametre sú "
-"vhodné.\n"
+"                  aby ste videli, ktoré parametre sú vhodné."
+"\\n\n"
+"                 (Líšia sa od mena formátu v menu Súbor->Exprotovať).\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
 "\t-E [--export-to] fmt názov\n"
 "                  kde fmt je vybraný exportný formát (pozrite --expot),\n"
@@ -25203,14 +25255,14 @@ msgstr "LaTeX balík %1$s sa vždy použije"
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [Trieda '%2$s']"
 
-#: src/frontends/qt4/GuiDocument.cpp:1279
+#: src/frontends/qt4/GuiDocument.cpp:1288
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
-"all requires packages (%2$s) installed."
+"all required packages (%2$s) installed."
 msgstr ""
-"LyX triedu nenašiel. Overte si, či máte príslušnú triedu %1$s a potrebné "
-"balíky (%2$s) inštalované."
+"LyX triedu nenašiel. Overte si, či máte príslušnú triedu %1$s a všetky "
+"potrebné balíky (%2$s) inštalované."
 
 #: src/frontends/qt4/GuiDocument.cpp:1386
 #: src/frontends/qt4/GuiDocument.cpp:1487
@@ -27640,6 +27692,10 @@ msgstr ""
 msgid "www"
 msgstr "www"
 
+#: src/insets/InsetHyperlink.cpp:274
+msgid "email"
+msgstr "e-mail"
+
 #: src/insets/InsetHyperlink.cpp:263
 msgid "file"
 msgstr "súbor"
@@ -28201,6 +28257,18 @@ msgstr "Chránená horizontálna medzera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
+#: src/insets/InsetTabular.cpp:4487
+msgid "Selections not supported."
+msgstr "Výbery nie sú podporované."
+
+#: src/insets/InsetTabular.cpp:4509
+msgid "Multi-column in current or destination column."
+msgstr "Viacstĺpcové v aktuálnon alebo cieľovom stĺpci."
+
+#: src/insets/InsetTabular.cpp:4521
+msgid "Multi-row in current or destination row."
+msgstr "Viacriadkové v aktuálnon alebo cieľovom riadku."
+
 #: src/insets/InsetTabular.cpp:4761
 msgid "Selection size should match clipboard content."
 msgstr "Veľkosť výberu by mala zodpovedať obsahu klipovej dosky."
@@ -28757,6 +28825,24 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "institute mark"
+#~ msgstr "znak inštitútu"
+
+#~ msgid "Make letter title"
+#~ msgstr "Vydať titul listu"
+
+#~ msgid "Settings...|s"
+#~ msgstr "Nastavenia...|a"
+
+#~ msgid "Initial Option"
+#~ msgstr "Voľba Iniciálka"
+
+#~ msgid "Optional argument for initial (see lettrine manual)"
+#~ msgstr "Nepovinný argument pre iniciálku (viď lettrine manuál)"
+
+#~ msgid "Settings...|g"
+#~ msgstr "Nastavenia...|a"
+
 #~ msgid "Japanese (non-CJK) (utf8)"
 #~ msgstr "Japonsky (non-CJK) (utf8)"
 
@@ -29129,9 +29215,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Definujte štýl znakov pre iniciálky. Tip: pokúste sa použiť matematiku a "
 #~ "jej umelecké štýly ako Fractur alebo Calligraphic."
-
-#~ msgid "TOC Title:"
-#~ msgstr "Obsah Titul:"
 
 #~ msgid "\\thesol"
 #~ msgstr "\\thesol"
@@ -31066,9 +31149,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Caption"
 #~ msgstr "Názov"
-
-#~ msgid "A caption for the List of Listings"
-#~ msgstr "Titulok pre podobrázok"
 
 #~ msgid "&Label"
 #~ msgstr "&Označenie:"
