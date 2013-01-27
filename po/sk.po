@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-16 13:40+0100\n"
+"POT-Creation-Date: 2013-01-27 13:36+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6356,38 +6356,10 @@ msgstr "Prídavné Príslušenstvo"
 msgid "Fax"
 msgstr "Fax"
 
-#: lib/layouts/achemso.layout:126 lib/layouts/lettre.layout:355
-#: lib/layouts/moderncv.layout:121
-msgid "Fax:"
-msgstr "Fax:"
-
 #: lib/layouts/achemso.layout:129 lib/layouts/dinbrief.layout:295
 #: lib/layouts/g-brief.layout:117 lib/layouts/moderncv.layout:112
 msgid "Phone"
 msgstr "Telefón"
-
-#: lib/layouts/achemso.layout:132 lib/layouts/g-brief.layout:120
-#: lib/layouts/moderncv.layout:115
-msgid "Phone:"
-msgstr "Telefón:"
-
-#: lib/layouts/achemso.layout:136
-msgid "Abbreviations"
-msgstr "Skratky"
-
-#: lib/layouts/achemso.layout:142
-msgid "Abbreviations:"
-msgstr "Skratky:"
-
-#: lib/layouts/achemso.layout:151 lib/layouts/apa6.layout:264
-#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
-#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
-#: lib/layouts/jasatex.layout:201 lib/layouts/kluwer.layout:289
-#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "Heslá:"
 
 #: lib/layouts/achemso.layout:157 lib/layouts/achemso.layout:168
 msgid "Scheme"
@@ -6412,22 +6384,6 @@ msgstr "Grafika"
 #: lib/layouts/achemso.layout:206
 msgid "List of Graphs"
 msgstr "Zoznam grafík"
-
-#: lib/layouts/achemso.layout:240
-msgid "SupplementalInfo"
-msgstr "PodpornáInformácia"
-
-#: lib/layouts/achemso.layout:243
-msgid "Supporting Information Available"
-msgstr "Dostupné podporné informácie"
-
-#: lib/layouts/achemso.layout:246
-msgid "TOC entry"
-msgstr "Záznam v obsahu"
-
-#: lib/layouts/achemso.layout:250
-msgid "Graphical TOC Entry"
-msgstr "Grafický záznam v obsahu"
 
 #: lib/layouts/achemso.layout:254
 msgid "Bibnote"
@@ -6688,6 +6644,16 @@ msgstr "Poznámka"
 #: lib/layouts/powerdot.layout:206
 msgid "Note:"
 msgstr "Poznámka:"
+
+#: lib/layouts/achemso.layout:151 lib/layouts/apa6.layout:264
+#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
+#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
+#: lib/layouts/jasatex.layout:201 lib/layouts/kluwer.layout:289
+#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
+#: lib/layouts/agu_stdtitle.inc:123
+msgid "Keywords:"
+msgstr "Heslá:"
 
 #: lib/layouts/apa6.layout:272
 msgid "AuthorNote"
@@ -7897,9 +7863,9 @@ msgstr "Korešpondujúci autor text:"
 msgid "Key words:"
 msgstr "Heslá:"
 
-#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:211
+#: lib/layouts/europecv.layout:51 lib/layouts/moderncv.layout:82
 msgid "Item"
-msgstr "položka"
+msgstr "Položka"
 
 #: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:215
 msgid "Item:"
@@ -7921,29 +7887,29 @@ msgstr "Začiatok"
 msgid "Begin of CV"
 msgstr "Začiatok životopisu"
 
-#: lib/layouts/europecv.layout:89
-msgid "PersonalInfo"
-msgstr "OsobnáInformácia"
-
 #: lib/layouts/europecv.layout:93
+msgid "PersonalInfo"
+msgstr "OsobnéÚdaje"
+
+#: lib/layouts/europecv.layout:98
 msgid "Personal Info"
-msgstr "Osobná Informácia"
+msgstr "Osobné Údaje"
 
-#: lib/layouts/europecv.layout:96
+#: lib/layouts/europecv.layout:101
 msgid "MotherTongue"
-msgstr "MaterskýJazyk"
+msgstr "MaterinskýJazyk"
 
-#: lib/layouts/europecv.layout:105
+#: lib/layouts/europecv.layout:111
 msgid "Mother Tongue:"
-msgstr "Materský Jazyk:"
+msgstr "Materinský Jazyk:"
 
-#: lib/layouts/europecv.layout:112
+#: lib/layouts/europecv.layout:121
 msgid "LangHeader"
-msgstr "HlavičkaJazyka"
+msgstr "ČeloJazyka"
 
-#: lib/layouts/europecv.layout:116
+#: lib/layouts/europecv.layout:125
 msgid "Language Header:"
-msgstr "Hlavička Jazyka:"
+msgstr "Čelo Jazyka:"
 
 #: lib/layouts/europecv.layout:122
 msgid "Language:"
@@ -7957,13 +7923,13 @@ msgstr "PoslednýJazyk"
 msgid "Last Language:"
 msgstr "Posledný Jazyk:"
 
-#: lib/layouts/europecv.layout:131
+#: lib/layouts/europecv.layout:140
 msgid "LangFooter"
-msgstr "JazykPäta"
+msgstr "PätaJazyka"
 
-#: lib/layouts/europecv.layout:135
+#: lib/layouts/europecv.layout:143
 msgid "Language Footer:"
-msgstr "Jazyk päty:"
+msgstr "Päta Jazyka:"
 
 #: lib/layouts/europecv.layout:138
 msgid "End"
@@ -8173,6 +8139,11 @@ msgstr "Vaše číslo:"
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
 msgstr "Váš list:"
+
+#: lib/layouts/achemso.layout:132 lib/layouts/g-brief.layout:120
+#: lib/layouts/moderncv.layout:115
+msgid "Phone:"
+msgstr "Telefón:"
 
 #: lib/layouts/g-brief.layout:124
 msgid "Telefax"
@@ -8857,6 +8828,11 @@ msgstr "Tel:"
 msgid "NoTel"
 msgstr "Bez Telefónu"
 
+#: lib/layouts/achemso.layout:126 lib/layouts/lettre.layout:355
+#: lib/layouts/moderncv.layout:121
+msgid "Fax:"
+msgstr "Fax:"
+
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
 msgid "Closings"
@@ -8991,61 +8967,9 @@ msgstr "TitulBásne*"
 msgid "Legend"
 msgstr "Legenda"
 
-#: lib/layouts/moderncv.layout:34
-msgid "CVStyle"
-msgstr "CVŠtýl"
-
-#: lib/layouts/moderncv.layout:43
-msgid "CV style:"
-msgstr "CV štýl:"
-
-#: lib/layouts/moderncv.layout:50
-msgid "CVColor"
-msgstr "CVFarba"
-
-#: lib/layouts/moderncv.layout:53
-msgid "CV color scheme:"
-msgstr "CV farebné schéma:"
-
-#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
-msgid "FirstName"
-msgstr "KrstnéMeno"
-
-#: lib/layouts/moderncv.layout:69
-msgid "FamilyName"
-msgstr "Priezvisko"
-
-#: lib/layouts/moderncv.layout:73
-msgid "Family Name:"
-msgstr "Priezvisko:"
-
-#: lib/layouts/moderncv.layout:106
-msgid "Mobile"
-msgstr "Mobil"
-
-#: lib/layouts/moderncv.layout:109
-msgid "Mobile:"
-msgstr "Mobil:"
-
-#: lib/layouts/moderncv.layout:133
-msgid "Homepage:"
-msgstr "Domáca stránka:"
-
-#: lib/layouts/moderncv.layout:136
-msgid "ExtraInfo"
-msgstr "ExtraInfo"
-
-#: lib/layouts/moderncv.layout:139
-msgid "Extra Info:"
-msgstr "Prídavná informácia:"
-
-#: lib/layouts/moderncv.layout:142
-msgid "Photo"
-msgstr "Fotka"
-
-#: lib/layouts/moderncv.layout:145
-msgid "Photo:"
-msgstr "Fotografia:"
+#: lib/layouts/moderncv.layout:35
+msgid "Sectioning"
+msgstr "Členenie"
 
 #: lib/layouts/moderncv.layout:195
 msgid "Entry"
@@ -9063,14 +8987,6 @@ msgstr "ZáznamVListine"
 msgid "List Item:"
 msgstr "Záznam v listine:"
 
-#: lib/layouts/moderncv.layout:226
-msgid "ItemWithComment"
-msgstr "Prvok:Komentár"
-
-#: lib/layouts/moderncv.layout:230
-msgid "Item with comment:"
-msgstr "Prvok s komentárom:"
-
 #: lib/layouts/moderncv.layout:241
 msgid "DoubleItem"
 msgstr "Dvojitá položka"
@@ -9079,21 +8995,21 @@ msgstr "Dvojitá položka"
 msgid "Double Item:"
 msgstr "Dvojitá položka:"
 
-#: lib/layouts/moderncv.layout:248
-msgid "DoubleListItem"
-msgstr "ZáznamDvojitáListina"
-
-#: lib/layouts/moderncv.layout:252
-msgid "Double List Item:"
-msgstr "Záznam pre dvojitú listinu:"
-
 #: lib/layouts/moderncv.layout:255
 msgid "Space"
 msgstr "Medzera"
 
+#: lib/layouts/moderncv.layout:113
+msgid "Space:"
+msgstr "Medzera:"
+
 #: lib/layouts/moderncv.layout:263
 msgid "Computer"
 msgstr "Počítač"
+
+#: lib/layouts/moderncv.layout:125
+msgid "Computer:"
+msgstr "Počítač:"
 
 #: lib/layouts/moderncv.layout:267
 msgid "EmptySection"
@@ -9111,30 +9027,6 @@ msgstr "ZavriSekciu"
 msgid "Close Section"
 msgstr "Zavri Sekciu"
 
-#: lib/layouts/moderncv.layout:289
-msgid "MakeCVtitle"
-msgstr "VydaťCVTitul"
-
-#: lib/layouts/moderncv.layout:292
-msgid "Make CV title"
-msgstr "Vydať CV titul"
-
-#: lib/layouts/moderncv.layout:296
-msgid "MakeLetterTitle"
-msgstr "VydaťTitulListu"
-
-#: lib/layouts/moderncv.layout:299
-msgid "Make letter title"
-msgstr "Vydať titul listu"
-
-#: lib/layouts/moderncv.layout:303
-msgid "MakeLetterClosing"
-msgstr "VydaťZáverListu"
-
-#: lib/layouts/moderncv.layout:306
-msgid "Close Letter"
-msgstr "Záver listu"
-
 #: lib/layouts/moderncv.layout:333 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
 msgstr "--Oddeľovač--"
@@ -9142,18 +9034,6 @@ msgstr "--Oddeľovač--"
 #: lib/layouts/moderncv.layout:341 lib/layouts/stdlayouts.inc:83
 msgid "--- Separate Environment ---"
 msgstr "-- Oddeliť Prostredie --"
-
-#: lib/layouts/moderncv.layout:351
-msgid "Recipient"
-msgstr "Príjemca"
-
-#: lib/layouts/moderncv.layout:395
-msgid "Enclosing"
-msgstr "Príloha"
-
-#: lib/layouts/moderncv.layout:402
-msgid "Enclosing:"
-msgstr "Príloha:"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -10128,6 +10008,10 @@ msgstr "Revízia"
 #: lib/layouts/db_stdtitle.inc:78
 msgid "RevisionRemark"
 msgstr "RevíznaPripomienka"
+
+#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
+msgid "FirstName"
+msgstr "KrstnéMeno"
 
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
 #: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
@@ -11443,7 +11327,7 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
 "od AMS. Implicitne sú vety číslované postupne bez ohľadu na štruktúru "
-"dokumentu.To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' "
+"dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' "
 "modulu."
 
 #: lib/languages:61 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
@@ -12596,11 +12480,11 @@ msgstr "Pridať Riadok"
 
 #: lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:206
 msgid "Delete Row|D"
-msgstr "Zmazať riadok"
+msgstr "Zmazať Riadok"
 
 #: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:207
 msgid "Copy Row|o"
-msgstr "Kopírovať riadok"
+msgstr "Kopírovať Riadok"
 
 #: lib/ui/stdcontext.inc:402
 msgid "Append Column|p"
@@ -12608,7 +12492,7 @@ msgstr "Pridať Stĺpec"
 
 #: lib/ui/stdcontext.inc:403 lib/ui/stdmenus.inc:211
 msgid "Delete Column|e"
-msgstr "Zmazať stĺpec"
+msgstr "Zmazať Stĺpec"
 
 #: lib/ui/stdcontext.inc:404
 msgid "Copy Column|y"
@@ -16963,10 +16847,24 @@ msgstr "LyX Archív (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
+#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1973
+#, c-format
+msgid "%1$s and %2$s"
+msgstr "%1$s a %2$s"
+
+#: src/BiblioInfo.cpp:268
+#, c-format
+msgid "%1$s et al."
+msgstr "%1$s et al."
+
 #: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
 #: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
 msgid "ERROR!"
 msgstr "CHYBA!"
+
+#: src/BiblioInfo.cpp:703
+msgid "No year"
+msgstr "Bez roku"
 
 #: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
 msgid "Add to bibliography only."
@@ -21098,11 +20996,6 @@ msgstr "&Zamietnuť"
 msgid "Unable to set document class."
 msgstr "Nedá sa uložiť štandardné rozloženie triedy dokumentov."
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1973
-#, c-format
-msgid "%1$s and %2$s"
-msgstr "%1$s a %2$s"
-
 #: src/frontends/qt4/GuiDocument.cpp:1980
 #, c-format
 msgid "%1$s, %2$s"
@@ -23008,7 +22901,7 @@ msgstr "Horizontálna medzera"
 
 #: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
-msgstr "Vertikálna medzera"
+msgstr "Vertikálna Medzera"
 
 #: src/insets/Inset.cpp:115
 msgid "Info"
@@ -24420,14 +24313,104 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "CVStyle"
+#~ msgstr "CVŠtýl"
+
+#~ msgid "CV style:"
+#~ msgstr "CV štýl:"
+
+#~ msgid "CVColor"
+#~ msgstr "CVFarba"
+
+#~ msgid "CV color scheme:"
+#~ msgstr "CV farebné schéma:"
+
+#~ msgid "FamilyName"
+#~ msgstr "Priezvisko"
+
+#~ msgid "Family Name:"
+#~ msgstr "Priezvisko:"
+
+#~ msgid "Mobile"
+#~ msgstr "Mobil"
+
+#~ msgid "Mobile:"
+#~ msgstr "Mobil:"
+
+#~ msgid "Homepage:"
+#~ msgstr "Domáca stránka:"
+
+#~ msgid "ExtraInfo"
+#~ msgstr "ExtraInfo"
+
+#~ msgid "Extra Info:"
+#~ msgstr "Prídavná informácia:"
+
+#~ msgid "Photo"
+#~ msgstr "Fotka"
+
+#~ msgid "Photo:"
+#~ msgstr "Fotografia:"
+
+#~ msgid "ItemWithComment"
+#~ msgstr "Prvok:Komentár"
+
+#~ msgid "Item with comment:"
+#~ msgstr "Prvok s komentárom:"
+
+#~ msgid "DoubleListItem"
+#~ msgstr "ZáznamDvojitáListina"
+
+#~ msgid "Double List Item:"
+#~ msgstr "Záznam pre dvojitú listinu:"
+
+#~ msgid "MakeCVtitle"
+#~ msgstr "VydaťCVTitul"
+
+#~ msgid "Make CV title"
+#~ msgstr "Vydať CV titul"
+
+#~ msgid "MakeLetterTitle"
+#~ msgstr "VydaťTitulListu"
+
+#~ msgid "Make letter title"
+#~ msgstr "Vydať titul listu"
+
+#~ msgid "MakeLetterClosing"
+#~ msgstr "VydaťZáverListu"
+
+#~ msgid "Close Letter"
+#~ msgstr "Záver listu"
+
+#~ msgid "Recipient"
+#~ msgstr "Príjemca"
+
+#~ msgid "Enclosing"
+#~ msgstr "Príloha"
+
+#~ msgid "Enclosing:"
+#~ msgstr "Príloha:"
+
+#~ msgid "Abbreviations"
+#~ msgstr "Skratky"
+
+#~ msgid "Abbreviations:"
+#~ msgstr "Skratky:"
+
+#~ msgid "SupplementalInfo"
+#~ msgstr "PodpornáInformácia"
+
+#~ msgid "Supporting Information Available"
+#~ msgstr "Dostupné podporné informácie"
+
+#~ msgid "TOC entry"
+#~ msgstr "Záznam v obsahu"
+
+#~ msgid "Graphical TOC Entry"
+#~ msgstr "Grafický záznam v obsahu"
+
 #~ msgid "Japanese (non-CJK) (utf8)"
 #~ msgstr "Japonsky (non-CJK) (utf8)"
-
-#~ msgid "%1$s et al."
-#~ msgstr "%1$s et al."
-
-#~ msgid "No year"
-#~ msgstr "Bez roku"
 
 #~ msgid "Build Info"
 #~ msgstr "Produkčná informácia"
@@ -26863,12 +26846,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Optional argument to the cvitem command"
 #~ msgstr "Nepovinný argument pre príkaz cvitem"
-
-#~ msgid "Space:"
-#~ msgstr "Medzera:"
-
-#~ msgid "Computer:"
-#~ msgstr "Počítač:"
 
 #~ msgid "Error exporting to format: %1$s"
 #~ msgstr "Chyba pri exporte na formát: %1$s"
