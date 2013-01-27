@@ -15,6 +15,12 @@ if [ "$1" != "" ]; then
     KEYTEST_INFILE="$1";
 fi
 
+BASE=$( echo $KEYTEST_INFILE | sed 's/-in\.\(txt\|sh\)$//')
+if [ -e $BASE.lyx.emergency ]; then
+	echo "removing $BASE.lyx.emergency"
+	rm $BASE.lyx.emergency
+fi
+
 export MAX_DROP=0
 if [ "$(pidof lyx)" != "" ]; then
     export LYX_PID=$(pidof lyx)

@@ -67,13 +67,17 @@ set(ENV{KEYTEST_OUTFILE} "${WORKDIR}/${KEYTEST_OUTFILE}")
 set(ENV{PO_BUILD_DIR} "${PO_BUILD_DIR}")
 set(ENV{MAX_DROP} 0)
 set(ENV{MAX_LOOPS} 1)
+string(REGEX REPLACE "-in\\.(txt|sh)$" "" _jj ${KEYTEST_INFILE})
+if(EXISTS "${WORKDIR}/../${_jj}.lyx.emergency")
+  execute_process(
+  COMMAND ${CMAKE_COMMAND} -E remove -f "${WORKDIR}/../${_jj}.lyx.emergency" )
+endif()
 file(GLOB _testfiles RELATIVE "${WORKDIR}" "test*.*" "#test*.*")
 if(_testfiles)
   # remove some leftover files from previous test
   execute_process(
   COMMAND ${CMAKE_COMMAND} -E remove -f ${_testfiles} )
 endif()
-string(REGEX REPLACE "-in\\.(txt|sh)$" "" _jj ${KEYTEST_INFILE})
 if(EXISTS "${AUTOTEST_ROOT}/${_jj}.lyx")
   configure_file("${AUTOTEST_ROOT}/${_jj}.lyx" "${WORKDIR}/../${_jj}.lyx" COPYONLY)
 endif()
