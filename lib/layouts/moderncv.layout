@@ -42,7 +42,7 @@ Style CVStyle
 	ParSkip		0.4
 	LabelSep	xx
 	LabelType	Static
-	LabelString	"CV style:"
+	LabelString	"CV Style:"
 	LabelFont
 	  Series	Bold
 	  Color		Blue
@@ -52,7 +52,7 @@ End
 Style CVColor
 	CopyStyle	CVStyle
 	LatexName	moderncvcolor
-	LabelString	"CV color scheme:"
+	LabelString	"CV Color Scheme:"
 End
 
 Style FirstName
@@ -276,7 +276,7 @@ End
 Style ItemWithComment
 	CopyStyle	Item
 	LatexName	cvitemwithcomment
-	LabelString	"Item with comment:"
+	LabelString	"Item with Comment:"
 	KeepEmpty	1
 	ResetArgs	1
 	Argument 1
@@ -317,17 +317,17 @@ Style DoubleItem
 	KeepEmpty	1
 	Argument 1
 	  Mandatory	1
-	  LabelString	"Left summary"
+	  LabelString	"Left Summary"
 	  Tooltip	"Left summary"
 	EndArgument
 	Argument 2
 	  Mandatory	1
-	  LabelString	"Left text"
+	  LabelString	"Left Text"
 	  Tooltip	"Left text"
 	EndArgument
 	Argument 3
 	  Mandatory	1
-	  LabelString	"Right summary"
+	  LabelString	"Right Summary"
 	  Tooltip	"Right summary"
 	EndArgument
 End
@@ -341,7 +341,7 @@ Style DoubleListItem
 	  Mandatory	1
 	  AutoInsert	1
 	  LabelString	"First Item"
-	  Tooltip	"First Item"
+	  Tooltip	"First item"
 	EndArgument
 End
 
@@ -378,14 +378,14 @@ End
 Style MakeCVtitle
 	CopyStyle	EmptySection
 	LatexName	makecvtitle{}
-	LabelString	"Make CV title"
+	LabelString	"Make CV Title"
 	Category	Title
 End
 
 Style MakeLetterTitle
 	CopyStyle	EmptySection
 	LatexName	makelettertitle{}
-	LabelString	"Make letter title"
+	LabelString	"Make Letter Title"
 	Category	Letter
 End
 
@@ -446,7 +446,7 @@ Style Recipient
 	Argument 1
 	  Mandatory	1
 	  AutoInsert	1
-	  LabelString	"Company name"
+	  LabelString	"Company Name"
 	  Tooltip	"Company name"
 	  #Font
 	  #  Series	Bold
@@ -495,7 +495,7 @@ Style Enclosing
 	CopyStyle	Opening
 	LatexName	enclosure
 	Argument 1
-	  LabelString	"Alternative name"
+	  LabelString	"Alternative Name"
 	  Tooltip	"Alternative instead of 'Enclosure'"
 	EndArgument
 	LabelSep	xx

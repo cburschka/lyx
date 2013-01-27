@@ -163,7 +163,7 @@ Style Running_LaTeX_Title
 	ParSep                0.7
 	Align                 Left
 	LabelType             Static
-	LabelString           "Running title:"
+	LabelString           "Running Title:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -175,8 +175,8 @@ End
 Style TOC_Title
 	CopyStyle             Running_LaTeX_Title
 	LatexName             toctitle
-	LeftMargin            "TOC title:xxx"
-	LabelString           "TOC title:"
+	LeftMargin            "TOC Title:xxx"
+	LabelString           "TOC Title:"
 End
 
 
