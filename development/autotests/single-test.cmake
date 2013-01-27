@@ -73,6 +73,10 @@ if(_testfiles)
   execute_process(
   COMMAND ${CMAKE_COMMAND} -E remove -f ${_testfiles} )
 endif()
+string(REGEX REPLACE "-in\\.(txt|sh)$" "" _jj ${KEYTEST_INFILE})
+if(EXISTS "${AUTOTEST_ROOT}/${_jj}.lyx")
+  configure_file("${AUTOTEST_ROOT}/${_jj}.lyx" "${WORKDIR}/../${_jj}.lyx" COPYONLY)
+endif()
 execute_process(
   COMMAND python ${KEYTEST}
   RESULT_VARIABLE KEYTEST_RES)
