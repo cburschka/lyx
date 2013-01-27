@@ -1,0 +1,9 @@
+# see http://www.lyx.org/trac/ticket/7673#comment:15
+#
+Lang en_US.utf8
+TestBegin ../bug-7673.lyx > lyx-log.txt 2>&1
+KK: \Ax
+# 'outline-in' was needed to reproduce the crash on some commits when bisecting
+KK: command-sequence repeat 3 char-forward; outline-in; down; down\[Return]
+TestEnd
+Assert ! pcregrep -M 'SIGSEGV' lyx-log.txt
