@@ -17,6 +17,7 @@ Provides url		1
 
 # Standard style definition
 Style Standard
+	Category	MainText
 	Margin		Static
 	LatexType	Paragraph
 	LatexName	dummy
@@ -31,6 +32,7 @@ Input stdcounters.inc
 Input stdinsets.inc
 
 Style Section
+	Category	Sectioning
 	Margin		Dynamic
 	LatexType	Command
 	LatexName	section
@@ -148,6 +150,7 @@ Style CloseSection
 End
 
 Style Bibliography
+	Category	BackMatter
 	Margin		First_Dynamic
 	LatexType	Bib_Environment
 	LatexName	thebibliography
