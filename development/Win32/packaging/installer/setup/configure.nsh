@@ -193,20 +193,29 @@ Var ConfigureReturn
 Section -ConfigureScript
 
   SetOutPath "$INSTDIR\Resources"
+  
+  # ask to update MiKTeX
+  ${if} $LaTeXInstalled == "MiKTeX"
+   Call UpdateMiKTeX # function from latex.nsh
+   # install all necessary packages at once
+   DetailPrint $(TEXT_CONFIGURE_LYX)
+   ${if} $MultiUser.Privileges != "Admin"
+   ${andif} $MultiUser.Privileges != "Power"
+    # call the non-admin version
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+   ${else}
+    ${if} $MiKTeXUser != "HKCU" # call the admin version
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+    ${else}
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+    ${endif}
+   ${endif}
+  ${endif}
+  
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
   # $ConfigureReturn is "0" if successful, otherwise "1"
   Pop $ConfigureReturn # Return value
-
-  # ask to update MiKTeX
-  ${if} $LaTeXInstalled == "MiKTeX"
-   Call UpdateMiKTeX # function from latex.nsh
-   # especially for new installations a second run is necessary to install all missing package
-   # the reason for this is unknown, most probably it is a timeout problem, because with a fast
-   # Internet connection one run is sometimes sufficient
-   # a new installed MiKTeX needs some time until it is ready to install packages
-   nsExec::ExecToLog '"$INSTDIR\Python\python.exe" "$INSTDIR\Resources\configure.py"'
-  ${endif}
 
 SectionEnd
 
