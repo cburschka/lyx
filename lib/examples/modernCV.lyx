@@ -177,6 +177,41 @@ Teststreet 17
 \end_inset
 
 03333 Nicecity -- Switzerland
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Only when you use the 
+\emph on
+classic
+\emph default
+ theme, you can add a line break with: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Mobile
@@ -468,6 +503,24 @@ Maintainer of Open Source projects
 \end_inset
 
 Maintainer of the xxx documentation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you use the 
+\emph on
+banking
+\emph default
+ theme, no linebreaks are allowed in entries.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Entry
