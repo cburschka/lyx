@@ -9,7 +9,7 @@
 
 % required
 \moderncvtheme[blue]{classic}
-% possible themes are "classic" and "casual"
+% possible themes are 'classic', 'casual', 'oldstyle' and 'banking'
 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 
 % required
@@ -22,8 +22,9 @@
 
 % optional
 % \address{street and number}{postcode city}
-% '\\' adds a line break
-\address{Teststreet 17}{03333 Nicecity\protect\\[0.1em] Switzerland\protect\\[0.2em]}
+% only with the classic theme you can add a line break with
+% \protect\\
+\address{Teststreet 17}{03333 Nicecity Switzerland}
 
 % optional
 \phone{+43(0)999 9999}
@@ -422,6 +423,24 @@ status collapsed
 \end_inset
 
 Maintainer of the xxx documentation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you use the 
+\emph on
+banking
+\emph default
+ theme, no linebreaks are allowed in entries.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Entry
