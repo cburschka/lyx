@@ -275,12 +275,15 @@
 #                   de 2.0.4 (500 fuzzy + 300 nouveaux, effet des tooltips
 #                   des palettes math et des palettes phonetiques)
 #                   revue des commentaires
+# ------------------------------------------------------------------
+# 28 janvier 2013 : synchro avec fr.po pour 2.0.x
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-01-20 15:59+0100\n"
-"PO-Revision-Date: 2013-01-27 15:05+0100\n"
+"PO-Revision-Date: 2013-01-28 11:38+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -12078,7 +12081,7 @@ msgstr "FaireTitreLettre"
 
 #: lib/layouts/moderncv.layout:385
 msgid "Make letter title"
-msgstr "Fair le titre de la lettre"
+msgstr "Faire le titre de la lettre"
 
 #: lib/layouts/moderncv.layout:389
 msgid "MakeLetterClosing"
@@ -12109,7 +12112,7 @@ msgstr "Nom de la société"
 
 #: lib/layouts/moderncv.layout:489
 msgid "Enclosing"
-msgstr "Pièces jointes"
+msgstr "PiècesJointes"
 
 #: lib/layouts/moderncv.layout:494
 #: lib/layouts/svcommon.inc:520
@@ -14628,7 +14631,7 @@ msgstr "Natbibapa"
 
 #: lib/layouts/natbibapa.module:9
 msgid "This module adds support for using natbib together with apacite (the bibliography style need not be apacite--it could be apacite, apacitex, or any bibliography that works with both the natbib and apacite packages.)"
-msgstr "Ce module ajoute les fonctionnalités nécessaires à l'usage de natbib avec apacite (le syle bibliographique n'est pas forcément apacite -- ce peut être apacite, apacitex ou une bibliographie quelconque compatible avec les paquetages natbib et apacite)"
+msgstr "Ce module ajoute les fonctionnalités nécessaires à l'usage de natbib avec apacite (le style bibliographique n'est pas forcément apacite -- ce peut être apacite, apacitex ou une bibliographie quelconque compatible avec les paquetages natbib et apacite)"
 
 #: lib/layouts/natbib.module:2
 msgid "Natbib"
@@ -22461,6 +22464,10 @@ msgstr ""
 "Vous pouvez aussi activer l'option « Option->Test Legality »,\n"
 "et rappelez-vous que vous pouvez cliquer sur les boutons du\n"
 "milieu et de droite pour ajouter de nouvelles pièces sur l'échiquier.\n"
+"Pour que ceci fonctionne, vous devez\n"
+"mettre le fichier relié lyxskak.sty là où TeX\n"
+"peut le trouver, et vous devez installer le\n"
+"paquetage skak depuis CTAN.\n"
 
 #: lib/external_templates:252
 #: lib/external_templates:258
