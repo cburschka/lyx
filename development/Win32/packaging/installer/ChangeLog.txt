@@ -1,4 +1,10 @@
-﻿Changelog for LyX-2051-3:
+﻿Changelog for LyX-2051-4:
+- If LyX is installed together with MiKTeX (bundle installer) the installation of
+  LaTeX-packages required by LyX takes now much less time and you get a visual feedback
+  about the installation process. 
+
+
+Changelog for LyX-2051-3:
 - fix bug that MiKTeX was not correctly configured on some 64bit versions of Windows
 - don't overwrite the MiKTeX package repository from where missing packages will be installed
 - updated to JabRef 2.9.2
