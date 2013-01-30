@@ -16,7 +16,7 @@ and dialog items, console messages) into their native language.
 1) WHERE DO I START?
 
 The file you need to edit is an xx.po file where xx stands for your language's
-two letter code. For a list of languages codes look at:
+two letter code. For a list of language codes look at:
 
   http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#Language-Codes
 
@@ -27,15 +27,15 @@ the compilation.
 
 There are basically two source trees you can start to work with - trunk
 (development version) and branch (stable version). Unless the development
-version is shortly before release it is better idea to start your translating
+version is shortly before release it is better to start your translating
 work on the stable version. If you have no idea how to get those trees you
 can follow http://www.lyx.org/HowToUseGIT page.
 
 
 2) HOW DO I EDIT PO FILES?
 
-PO files can be edited with every text editor available for your system (e.g. 
-VIM, NotePad etc.). Yet another option is to use a specialized editor for .po 
+PO files can be edited with any text editor available for your system (e.g. 
+Vim, NotePad etc.). Yet another option is to use a specialized editor for .po 
 files. You can e.g. use the editors "poEdit" or "jEdit", Linux users can 
 additionally use e.g. "kbabel". Using these editors usually makes things easier 
 as they have many tools to assist the translator.
@@ -47,8 +47,8 @@ If you are using a simple text editor you should translate the strings that
 appear in the msgid line and write the translation into the msgstr line. Note
 that a "#, fuzzy" line is just a hint for translation from compiler - in order
 to get the translation of the current item working you have to delete this
-line. It is recommended that you would take a look at another .po file - that
-way you can get an idea of what to do. If you are using a specialized po editor
+line. It is recommended that you take a look at another .po file - that way you
+can get an idea of what to do. If you are using a specialized po editor
 then you will see in it the untranslated strings and a place to write your
 translation for them.
 
@@ -63,7 +63,7 @@ invent your own working shortcuts for dialog and menu entries and resolve
 possible conflicts of the same shortcut chars in one menu... 
 
 Note also that there are already used global shortcuts (such as p k x c m s a)
-and you should avoid to use these characters for first-level menu shortcuts.
+and you should avoid using these characters for first-level menu shortcuts.
 
 '$' and '%' are usually used as handlers for formatting or variables to be 
 inserted into the strings. Character sequences like %1$s or %1$d MUST also 
@@ -71,10 +71,10 @@ appear in your translations! Please take them exactly as they are or you may
 experience crashes when running LyX.
 
 [[Context]] is used to distinguish otherwise identical strings, which could
-have different translation dependent on the Context. [[Context]] appears only
+have different translations depending on the Context. [[Context]] appears only
 in msgid string and should not be repeated in the translated version.
 
-{} refer to counters and must not be translated. Example would be:
+{} refer to counters and must not be translated. An example would be:
 msgid "Algorithm \\arabic{theorem}"
 msgstr "Algoritmus \\arabic{theorem}"
 
@@ -82,8 +82,8 @@ msgstr "Algoritmus \\arabic{theorem}"
 5) WHAT IS pocheck.pl AND HOW DO I USE IT?
 
 This is a small script located in the "po" directory of the source that helps 
-you find common errors in your translation. In order to use this script you have 
-to have the script language Perl installed.
+you find common errors in your translation. In order to use this script you
+need the script language Perl installed.
 Run ./pocheck.pl -h to see all possible switches.
 
 
@@ -104,8 +104,8 @@ e.g., Czech, the code is "cs_CZ".
 The most comfortable way to see your updated translation while editing, is
 running (in linux):
 1. "make xx.gmo" in the po directory to compile updated xx.po translation
-2. "make install" in root lyx tree to copy xx.gmo into the appropriate location
-   (or do it by hand...) 
+2. "make install" in root lyx tree to copy xx.gmo to the appropriate location
+   (or do it by hand...)
 
 For advanced users - if you want to remerge your files against current source
 files run make update-po. 
@@ -128,18 +128,19 @@ new strings appear, no other function.
 
 9) REFERENCES
 
-For some basic idea on how the translation works, you can look at 
+For a basic idea of how the translation works, you can look at
 
   http://en.wikipedia.org/wiki/Gettext
 
-For detailed reference (including full list of country and language codes),
-have a look at 
+For detailed reference (including a full list of country and language codes),
+have a look at
 
   http://www.gnu.org/software/gettext/manual/gettext.html
 
 
-Consider subscribing to the documentation list at lyx-docs@lists.lyx.org (rather
-silent one) or developer's mailing list lyx-devel@lists.lyx.org (high volume).
+Consider subscribing to the documentation list, lyx-docs@lists.lyx.org (rather
+silent), or the developer's mailing list, lyx-devel@lists.lyx.org (high
+volume).
 
 
 
@@ -149,25 +150,26 @@ PART II - Translation of Math environments and Floats in the final output
 As of 2.0 LyX allows automatic translation in tex/dvi/ps/pdf output for math
 environment strings (and some floats) which are not automatically translated via
 babel package to the localized form.  For example the environment "Exercise"
-becomes "Aufgabe" in the output of the documents with language set to german.
+becomes "Aufgabe" in the output of the documents with language set to German.
 
 These translations are taken from the previously translated .po file before the
 final major LyX release (e.g. 2.0.0) and are fixed for all next minor releases
 (e.g. 2.0.x) in order to have fixed output of LyX documents.
 
-The current translation for your language can be found in lib/layouttranslations
-file. Easy way to check many of the translation is to simply load 
-lib/examples/localization_test.lyx in LyX and read its instructions.
+The current translation for your language can be found in the file
+lib/layouttranslations. An easy way to check many of the translations is to
+simply load lib/examples/localization_test.lyx in LyX and read its
+instructions.
 
 The problematic strings can be then fixed in the .po file. For inspiration the
 typical places in .po files, where to fix the translation, can be seen on the
-following commit: http://www.lyx.org/trac/changeset/38169 .
+following commit: http://www.lyx.org/trac/changeset/38169.
 
-If you need to manually regenerate layouttranslations file from .po files run
-`make ../lib/layouttranslations' in po directory. Python polib library is
-needed for building the output file.
+If you need to manually regenerate the layouttranslations file from .po files
+run `make ../lib/layouttranslations' in the po directory. The Python polib
+library is needed for building the output file.
 
-Q: Running make ../lib/layouttranslations return with just saying
+Q: Running make ../lib/layouttranslations returns with just saying
    ../lib/layouttranslations is up to date.
 A: To force regerenation, use something like (XX is your language)
    make -W XX.po ../lib/layouttranslations
