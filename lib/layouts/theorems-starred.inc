@@ -21,7 +21,7 @@
 Format 43
 
 Style Theorem*
-	Category              Theorem
+	Category              Reasoning
 	LatexType             Environment
 	Margin                First_Dynamic
 	LatexName             thm*

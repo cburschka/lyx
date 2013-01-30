@@ -25,7 +25,7 @@ Counter caseiv
 End
 
 Style Case
-  Category              Theorem
+  Category              Reasoning
   CopyStyle             Enumerate
   LatexName             casenv
   LabelType             Enumerate

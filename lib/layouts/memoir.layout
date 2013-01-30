@@ -173,7 +173,7 @@ Style Chapterprecis
 End
 
 Style Epigraph
-	Category              Maintext
+	Category              MainText
 	Margin                Right_Address_Box
 	LatexType             Command
 	LatexName             epigraph
@@ -244,7 +244,7 @@ Input lyxmacros.inc
 Input stdlayouts.inc
 
 Style Legend
-	Category            Maintext
+	Category            MainText
 	LatexType           Command
 	LatexName           legend
 	NeedProtect         1

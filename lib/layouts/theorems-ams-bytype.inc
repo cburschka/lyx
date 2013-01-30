@@ -48,7 +48,7 @@ Counter claim
 End
 
 Style Theorem
-	Category              Theorem
+	Category              Reasoning
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm

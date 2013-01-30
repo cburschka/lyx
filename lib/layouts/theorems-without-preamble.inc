@@ -32,7 +32,7 @@ Format 43
 Counter		theorem
 End
 Style Theorem
-	Category	Theorem
+	Category	Reasoning
 	Margin		First_Dynamic
 	LatexType	Environment
 	LatexName	theorem

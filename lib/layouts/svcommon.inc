@@ -634,7 +634,7 @@ Style Svgraybox
 End
 
 Style Proof
-	Category	Theorem
+	Category	Reasoning
 	LatexType	Environment
 	LatexName	proof
 	Margin		First_Dynamic

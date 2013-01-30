@@ -11,7 +11,7 @@
 Format 43
 
 Style Proof
-	Category              Theorem
+	Category              Reasoning
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             proof

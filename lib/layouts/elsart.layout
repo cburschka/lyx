@@ -242,7 +242,7 @@ Style Abstract
 End
 
 
-# Theorem environments have been copied over from the theorem modules. They
+# Reasoning environments have been copied over from the theorem modules. They
 # could not be input as they do some stuff which is incompatible with the
 # Elsevier stlye: redefine the theorem* environments in the preamble.
 
@@ -270,7 +270,7 @@ End
 
 
 Style Theorem
-	Category              Theorem
+	Category              Reasoning
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
@@ -300,7 +300,7 @@ End
 
 # Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
 Style Proof
-	Category              Theorem
+	Category              Reasoning
 	Margin                First_Dynamic
 	LatexType             Environment
 	# elsart defines the unusual environment pf for proofs.
