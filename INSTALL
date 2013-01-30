@@ -18,7 +18,7 @@ These four steps will compile, test and install LyX:
 	   (for example, "--with-qt4-dir=/usr/share/qt4/") if the
 	   environment variable QTDIR is not set and pkg-config is not
 	   available.
-	   
+
 	   See Note below if ./configure script is not present.
 
 	2) make
@@ -48,10 +48,10 @@ You will also probably need GNU m4 (perhaps installed as gm4).
 Requirements
 ------------
 
-First of all, you will also need a recent C++ compiler, where recent
-means that the compilers are close to C++ standard conforming (gcc 4.x).
+First of all, you will need a recent C++ compiler, where recent means
+that the compilers are close to C++ standard conforming (gcc 4.x).
 
-LyX makes great use of C++ Standard Template Library (STL).
+LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
 library to be able to compile this version of LyX. 
 
@@ -112,7 +112,7 @@ flags:
     debug                            X           X           X       X
     gprof                                                            X
 
-    The default are as follows in terms of version number
+    The defaults are as follows in terms of version number
     release: stable release (1.x.y)
     prerelease: version number contains alpha, beta, rc or pre.
     development: version number contains dev.
@@ -150,7 +150,7 @@ There are also flags to control the internationalization support in
 LyX:
 
   o --disable-nls suppresses all internationalization support,
-    yielding a somewhat smaller code.
+    yielding somewhat smaller code.
 
   o --with-included-gettext forces the use of the included GNU gettext
     library, although you might have another one installed.
@@ -160,7 +160,7 @@ LyX:
     care.
 
   o You can also set the environment variable LINGUAS to a list of
-    language in case you do not want to install all the translation
+    languages in case you do not want to install all the translation
     files. For example, if you are only interested in German and
     Finnish, you can type (with sh or bash)
         export LINGUAS='de fi'
@@ -188,7 +188,7 @@ Moreover, the following generic configure flags may be useful:
     surprises.
 
 Note that the --with-extra-* commands are not really robust when it
-comes to use of relative paths.  If you really want to use a relative path
+comes to using relative paths.  If you really want to use a relative path
 here, you can prepend it with "`pwd`/".
 
 If you do not like the default compile flags used (-g -O2 on gcc), you can
@@ -197,20 +197,20 @@ set CXXFLAGS variable to other values as follows:
   o CXXFLAGS='-O2' (sh, bash)
   o setenv CXXFLAGS '-O2' (csh, tcsh)
 
-Similarly, if you want to force the use of some specific compiler, you can
+Similarly, if you want to force the use of a specific compiler, you can
 give a value to the CXX variable.
 
 If you encounter problems, please read the section 'Problems' at the end of
 this file.
 
-The following options allow to tweak more precisely the generated code:
+The following options allow you to tweak the generated code more precisely:
 
   o --enable-gprof instruments the code for use with the gprof
-    profiler. The result are only meaningful in conjunction with
+    profiler. The results are only meaningful in conjunction with
     --enable-build-type=release.
 
   o --enable-optimization=VALUE enables you to set optimization to a
-    higher level as the default (-O), for example --enable-optimization=-O3.
+    higher level than the default (-O), for example --enable-optimization=-O3.
 
   o --disable-optimization - you can use this to disable compiler
     optimization of LyX. The compile may be much quicker with some
@@ -276,7 +276,7 @@ that can be used to display lyx-documents in filemanagers.
 If configure fails for some strange reason
 ------------------------------------------
 
-Even when configure fails, it creates a Makefile.  You always can check
+Even when configure fails, it creates a Makefile.  You can always check
 the contents of this file, modify it and run 'make'.
 
 Compiling For Multiple Architectures
@@ -300,8 +300,8 @@ Problems
 --------
 
 This section provides several hints that have been submitted by LyX
-team member or users to help compiling on some particular
-architectures. If you find that some of this hints are wrong, please
+team members or users to help compiling on some particular
+architectures. If you find that some of these hints are wrong, please
 notify us.
 
   o On SUN Sparc Solaris, you need gnumake. The LyX makefiles do not
@@ -338,7 +338,7 @@ notify us.
     to either ~/.fonts.conf (for a per-user change) or /etc/fonts/local.conf
     (for a global system change). The stanza should be added between the
     <fontconfig> and </fontconfig> tags. If neither ~/.fonts.conf nor
-    /etc/fonts/local.conf exist, you can create them with the following
+    /etc/fonts/local.conf exists, you can create them with the following
     content:
 
       <?xml version="1.0"?>
