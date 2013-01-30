@@ -156,7 +156,7 @@ Build options
     -- LYX_EXTERNAL_BOOST       = OFF    : Use external boost
     -- LYX_PROGRAM_SUFFIX       = ON     : Append version suffix to binaries
     -- LYX_DEBUG_GLIBC          = OFF    : Enable libstdc++ debug mode
-    -- LYX_DEBUG_GLIBC_PEDANTIC = OFF    : Enable libstdc++pedantic debug mode
+    -- LYX_DEBUG_GLIBC_PEDANTIC = OFF    : Enable libstdc++ pedantic debug mode
     -- LYX_STDLIB_DEBUG         = OFF    : Use debug stdlib
     -- LYX_CONCEPT_CHECKS       = OFF    : Enable concept-checks
 
