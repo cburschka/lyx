@@ -25,8 +25,7 @@ Building LyX with CMake
     Windows specific
 
         On Windows install the supplementary modules:
-        * Visual Studio 2008: ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc2008.zip
-        * Visual Studio 2010: ftp://ftp.devel.lyx.org/pub/contrib/windows/bin
+        * Visual Studio 2010: ftp://ftp.lyx.org/pub/lyx/devel/win_deps/lyx20-deps-msvc2010.zip
                 or use the option LYX_DEPENDENCIES_DOWNLOAD, then you have to add
                 these paths to your PATH variable:
                   <build-dir>\msvc2010-deps\deps20\bin
