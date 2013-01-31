@@ -572,7 +572,7 @@ def encodings_l10n(input_files, output, base):
     output = open(output, 'w')
     # assuming only one encodings file
     #                 Encoding utf8      utf8    "Unicode (utf8)" UTF-8    variable inputenc
-    reg = re.compile('Encoding [\w-]+\s+[\w-]+\s+"([\w \-\(\)]+)"\s+[\w-]+\s+(fixed|variable)\s+\w+.*')
+    reg = re.compile('Encoding [\w-]+\s+[\w-]+\s+"([\w \-\(\)]+)"\s+[\w-]+\s+(fixed|variable|variableunsafe)\s+\w+.*')
     input = open(input_files[0])
     for lineno, line in enumerate(input.readlines()):
         if not line.startswith('Encoding'):
