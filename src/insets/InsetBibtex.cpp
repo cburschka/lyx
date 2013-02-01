@@ -933,8 +933,6 @@ int InsetBibtex::plaintext(odocstream & os, OutputParams const &) const
 	BiblioInfo bibinfo = buffer().masterBibInfo();
 	bibinfo.makeCitationLabels(buffer());
 	vector<docstring> const & cites = bibinfo.citedEntries();
-	CiteEngineType const engine_type = buffer().params().citeEngineType();
-	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
 
 	docstring refoutput;
 	docstring const reflabel = buffer().B_("References");
@@ -949,23 +947,7 @@ int InsetBibtex::plaintext(odocstream & os, OutputParams const &) const
 		if (biit == bibinfo.end())
 			continue;
 		BibTeXInfo const & entry = biit->second;
-		docstring citekey;
-		if (numbers)
-			citekey = entry.citeNumber();
-		else {
-			docstring const auth = entry.getAbbreviatedAuthor(buffer(), false);
-			// we do it this way so as to access the xref, if necessary
-			// note that this also gives us the modifier
-			docstring const year = bibinfo.getYear(*vit, buffer(), true);
-			if (!auth.empty() && !year.empty())
-				citekey = auth + ' ' + year;
-		}
-		if (citekey.empty()) {
-			citekey = entry.label();
-			if (citekey.empty())
-				citekey = entry.key();
-		}
-		refoutput += "[" + citekey + "] ";
+		refoutput += "[" + entry.label() + "] ";
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
@@ -983,8 +965,6 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	vector<docstring> const & cites = bibinfo.citedEntries();
-	CiteEngineType const engine_type = buffer().params().citeEngineType();
-	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
 
 	docstring const reflabel = buffer().B_("References");
 
@@ -1007,24 +987,8 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		string const attr =
 			"id='LyXCite-" + to_utf8(html::cleanAttr(entry.key())) + "'";
 		xs << html::CompTag("a", attr);
-		docstring citekey;
-		if (numbers)
-			citekey = entry.citeNumber();
-		else {
-			docstring const auth = entry.getAbbreviatedAuthor(buffer(), false);
-			// we do it this way so as to access the xref, if necessary
-			// note that this also gives us the modifier
-			docstring const year = bibinfo.getYear(*vit, buffer(), true);
-			if (!auth.empty() && !year.empty())
-				citekey = auth + ' ' + year;
-		}
-		if (citekey.empty()) {
-			citekey = entry.label();
-			if (citekey.empty())
-				citekey = entry.key();
-		}
 		xs << html::StartTag("span", "class='bibtexlabel'")
-			<< citekey
+			<< entry.label()
 			<< html::EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every

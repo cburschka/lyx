@@ -1004,6 +1004,28 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			last = biit;
 		}
 	}
+	// Set the labels
+	it = cited_entries_.begin();
+	for (; it != en; ++it) {
+		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(*it);
+		// this shouldn't happen, but...
+		if (biit == bimap_.end())
+			// ...fail gracefully, anyway.
+			continue;
+		BibTeXInfo & entry = biit->second;
+		if (numbers) {
+			entry.label(entry.citeNumber());
+		} else {
+			docstring const auth = entry.getAbbreviatedAuthor(buf, false);
+			// we do it this way so as to access the xref, if necessary
+			// note that this also gives us the modifier
+			docstring const year = getYear(*it, buf, true);
+			if (!auth.empty() && !year.empty())
+				entry.label(auth + ' ' + year);
+			else
+				entry.label(entry.key());
+		}
+	}
 }
 
 
