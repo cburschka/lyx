@@ -290,7 +290,7 @@
           <item row="0" column="0" >
            <widget class="QGroupBox" name="bookmarksGB" >
             <property name="title" >
-             <string>G&amp;enerate Bookmarks</string>
+             <string>G&amp;enerate Bookmarks (ToC)</string>
             </property>
             <property name="flat" >
              <bool>true</bool>
@@ -318,7 +318,7 @@
              <item row="1" column="0" >
               <widget class="QCheckBox" name="bookmarksopenGB" >
                <property name="text" >
-                <string>&amp;Open bookmarks</string>
+                <string>&amp;Open bookmark tree</string>
                </property>
               </widget>
              </item>
