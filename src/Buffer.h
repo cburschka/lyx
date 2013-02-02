@@ -486,6 +486,8 @@ public:
 	/// add a single piece of bibliography info to our cache
 	void addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const;
 	///
+	void makeCitationLabels() const;
+	///
 	bool citeLabelsValid() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;

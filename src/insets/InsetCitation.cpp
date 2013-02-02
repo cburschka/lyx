@@ -344,8 +344,13 @@ void InsetCitation::addToToc(DocIterator const & cpit) const
 
 int InsetCitation::plaintext(odocstream & os, OutputParams const &) const
 {
-	os << cache.generated_label;
-	return cache.generated_label.size();
+	string const & cmd = getCmdName();
+	if (cmd == "nocite")
+		return 0;
+
+	docstring const label = generateLabel(false);
+	os << label;
+	return label.size();
 }
 
 

@@ -41,6 +41,7 @@ void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	// make sure we are ready to export
 	buf.updateBuffer();
 	buf.updateMacroInstances(OutputUpdate);
+	buf.makeCitationLabels();
 
 	writePlaintextFile(buf, ofs, runparams);
 }

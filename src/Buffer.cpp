@@ -2121,6 +2121,13 @@ void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const
 }
 
 
+void Buffer::makeCitationLabels() const
+{
+	Buffer const * const master = masterBuffer();
+	return d->bibinfo_.makeCitationLabels(*master);
+}
+
+
 bool Buffer::citeLabelsValid() const
 {
 	return masterBuffer()->d->cite_labels_valid_;
