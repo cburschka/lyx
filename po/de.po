@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-27 16:35+0100\n"
-"PO-Revision-Date: 2013-01-27 16:37+0100\n"
+"POT-Creation-Date: 2013-02-02 09:10+0100\n"
+"PO-Revision-Date: 2013-02-02 09:14+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -4108,16 +4108,16 @@ msgid "&Bookmarks"
 msgstr "&Lesezeichen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-msgid "G&enerate Bookmarks"
-msgstr "L&esezeichen erzeugen"
+msgid "G&enerate Bookmarks (ToC)"
+msgstr "L&esezeichen erzeugen (Inhaltsverz.)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
 msgstr "&Nummerierte Lesezeichen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
-msgid "&Open bookmarks"
-msgstr "Lesezeichen ö&ffnen"
+msgid "&Open bookmark tree"
+msgstr "Lesezeichen-Strukturbaum ö&ffnen"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -4187,11 +4187,10 @@ msgstr "Sp&ool-Drucker:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
 msgid ""
-"Setting causes printer command to print to file and then use this actually "
-"to print."
+"Command transmitted to the system to actually print the postscript file."
 msgstr ""
-"Diese Einstellung sorgt dafür, dass der Druckbefehl in eine Datei druckt, "
-"welche dann für den eigentlichen Druck verwendet wird."
+"Der Befehl, der dem Betriebssystem übermittelt wird, um die von LyX erzeugte "
+"Postscript-Datei zu drucken."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
 msgid "Spool co&mmand:"
@@ -5605,12 +5604,18 @@ msgstr "Ende der Nachricht"
 msgid "EndOfFile"
 msgstr "Ende des Dokuments"
 
-#: lib/layouts/lettre.layout:140 lib/layouts/lettre.layout:159
-#: lib/layouts/lettre.layout:189 lib/layouts/lettre.layout:215
-#: lib/layouts/lettre.layout:238 lib/layouts/lettre.layout:258
-#: lib/layouts/lettre.layout:288 lib/layouts/lettre.layout:318
-#: lib/layouts/lettre.layout:344 lib/layouts/lettre.layout:374
-#: lib/layouts/lettre.layout:400
+#: lib/layouts/lettre.layout:140 lib/layouts/dinbrief.layout:49
+#: lib/layouts/g-brief2.layout:732 lib/layouts/g-brief2.layout:755
+#: lib/layouts/g-brief2.layout:777 lib/layouts/stdletter.inc:26
+#: lib/layouts/stdletter.inc:38
+msgid "Postal Data"
+msgstr "Postdaten"
+
+#: lib/layouts/lettre.layout:159 lib/layouts/lettre.layout:189
+#: lib/layouts/lettre.layout:215 lib/layouts/lettre.layout:238
+#: lib/layouts/lettre.layout:258 lib/layouts/lettre.layout:288
+#: lib/layouts/lettre.layout:318 lib/layouts/lettre.layout:344
+#: lib/layouts/lettre.layout:374 lib/layouts/lettre.layout:400
 msgid "Headings"
 msgstr "Briefkopf"
 
@@ -5844,7 +5849,8 @@ msgstr "Int. Journal of Modern Physics C"
 #: lib/layouts/foils.layout:32 lib/layouts/elsarticle.layout:34
 #: lib/layouts/jasatex.layout:37 lib/layouts/acmsiggraph.layout:36
 #: lib/layouts/ltugboat.layout:32 lib/layouts/scrlettr.layout:9
-#: lib/layouts/memoir.layout:33 lib/layouts/beamer.layout:64
+#: lib/layouts/memoir.layout:33 lib/layouts/memoir.layout:176
+#: lib/layouts/memoir.layout:247 lib/layouts/beamer.layout:64
 #: lib/layouts/beamer.layout:1073 lib/layouts/beamer.layout:1098
 #: lib/layouts/beamer.layout:1123 lib/layouts/beamer.layout:1237
 #: lib/layouts/beamer.layout:1260 lib/layouts/beamer.layout:1294
@@ -6099,45 +6105,48 @@ msgstr ""
 "Geben Sie die höchste Nummer in Ihrer Aufzählung an, bspw. '(iv)' bei 4 "
 "römisch nummerierten Einträgen."
 
-#: lib/layouts/ijmpc.layout:328 lib/layouts/ijmpc.layout:345
-#: lib/layouts/ijmpd.layout:331 lib/layouts/ijmpd.layout:351
-#: lib/layouts/siamltex.layout:68 lib/layouts/siamltex.layout:118
-#: lib/layouts/elsart.layout:272 lib/layouts/elsart.layout:273
-#: lib/layouts/elsart.layout:303 lib/layouts/AEA.layout:106
-#: lib/layouts/llncs.layout:294 lib/layouts/llncs.layout:425
-#: lib/layouts/foils.layout:220 lib/layouts/foils.layout:221
-#: lib/layouts/heb-article.layout:19 lib/layouts/heb-article.layout:20
-#: lib/layouts/heb-article.layout:98 lib/layouts/beamer.layout:1225
-#: lib/layouts/IEEEtran.layout:319 lib/layouts/theorems-bytype.inc:26
-#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:61
-#: lib/layouts/theorems-bytype.inc:64 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-ams-bytype.inc:50
-#: lib/layouts/theorems-ams-bytype.inc:51
-#: lib/layouts/theorems-ams-bytype.inc:85
-#: lib/layouts/theorems-ams-bytype.inc:88
-#: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-case.inc:28 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-ams.inc:62
-#: lib/layouts/theorems-without-preamble.inc:34
-#: lib/layouts/theorems-without-preamble.inc:35
-#: lib/layouts/theorems-without-preamble.inc:65
-#: lib/layouts/theorems-without-preamble.inc:68 lib/layouts/svcommon.inc:637
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems-starred.inc:57
-#: lib/layouts/theorems-starred.inc:60 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:59
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-chap-bytype.module:54
-#: lib/layouts/theorems-named.module:13 lib/layouts/theorems-chap.module:19
-#: lib/layouts/theorems-sec.module:18
-#: lib/layouts/theorems-sec-bytype.module:54
-msgid "Theorem"
-msgstr "Theorem"
+#: lib/layouts/ijmpc.layout:328 lib/layouts/ijmpd.layout:331
+#: lib/layouts/siamltex.layout:118 lib/layouts/elsart.layout:273
+#: lib/layouts/elsart.layout:303 lib/layouts/llncs.layout:294
+#: lib/layouts/foils.layout:221 lib/layouts/heb-article.layout:20
+#: lib/layouts/heb-article.layout:98 lib/layouts/beamer.layout:1152
+#: lib/layouts/IEEEtran.layout:319 lib/layouts/theorems-bytype.inc:27
+#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-ams-bytype.inc:51
+#: lib/layouts/theorems-case.inc:28 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-without-preamble.inc:35 lib/layouts/svcommon.inc:637
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems-named.module:13
+msgid "Reasoning"
+msgstr "Argumentation"
 
 #: lib/layouts/ijmpc.layout:334 lib/layouts/ijmpd.layout:337
 #: lib/layouts/heb-article.layout:113
 msgid "Proof:"
 msgstr "Beweis:"
+
+#: lib/layouts/ijmpc.layout:345 lib/layouts/ijmpd.layout:351
+#: lib/layouts/siamltex.layout:68 lib/layouts/elsart.layout:272
+#: lib/layouts/AEA.layout:106 lib/layouts/llncs.layout:425
+#: lib/layouts/foils.layout:220 lib/layouts/heb-article.layout:19
+#: lib/layouts/beamer.layout:1225 lib/layouts/theorems-bytype.inc:26
+#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-bytype.inc:64
+#: lib/layouts/theorems-ams-bytype.inc:50
+#: lib/layouts/theorems-ams-bytype.inc:85
+#: lib/layouts/theorems-ams-bytype.inc:88
+#: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-ams.inc:62
+#: lib/layouts/theorems-without-preamble.inc:34
+#: lib/layouts/theorems-without-preamble.inc:65
+#: lib/layouts/theorems-without-preamble.inc:68
+#: lib/layouts/theorems-starred.inc:57 lib/layouts/theorems-starred.inc:60
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:59
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-chap.module:19 lib/layouts/theorems-sec.module:18
+#: lib/layouts/theorems-sec-bytype.module:54
+msgid "Theorem"
+msgstr "Theorem"
 
 #: lib/layouts/ijmpc.layout:347 lib/layouts/ijmpd.layout:353
 #: lib/layouts/theorems-bytype.inc:47 lib/layouts/theorems-ams-bytype.inc:71
@@ -6784,16 +6793,16 @@ msgstr "AMS-Sachgebietsklassifikationen:"
 #: lib/layouts/apa6.layout:401 lib/layouts/europecv.layout:127
 #: lib/layouts/powerdot.layout:227 lib/layouts/apa.layout:301
 #: lib/layouts/spie.layout:21 lib/layouts/amsbook.layout:55
-#: lib/layouts/llncs.layout:48 lib/layouts/tufte-handout.layout:24
-#: lib/layouts/aastex.layout:70 lib/layouts/aastex.layout:180
-#: lib/layouts/kluwer.layout:62 lib/layouts/ltugboat.layout:47
-#: lib/layouts/memoir.layout:86 lib/layouts/beamer.layout:232
-#: lib/layouts/tufte-book.layout:89 lib/layouts/moderncv.layout:175
-#: lib/layouts/latex8.layout:47 lib/layouts/revtex4-1.layout:46
-#: lib/layouts/scrclass.inc:70 lib/layouts/agu_stdsections.inc:32
-#: lib/layouts/stdsections.inc:71 lib/layouts/svcommon.inc:195
-#: lib/layouts/numrevtex.inc:6 lib/layouts/aguplus.inc:29
-#: lib/layouts/db_stdsections.inc:30 src/frontends/qt4/GuiDocument.cpp:129
+#: lib/layouts/llncs.layout:48 lib/layouts/aastex.layout:70
+#: lib/layouts/aastex.layout:180 lib/layouts/kluwer.layout:62
+#: lib/layouts/ltugboat.layout:47 lib/layouts/memoir.layout:86
+#: lib/layouts/beamer.layout:232 lib/layouts/tufte-book.layout:89
+#: lib/layouts/moderncv.layout:175 lib/layouts/latex8.layout:47
+#: lib/layouts/revtex4-1.layout:46 lib/layouts/scrclass.inc:70
+#: lib/layouts/agu_stdsections.inc:32 lib/layouts/stdsections.inc:71
+#: lib/layouts/svcommon.inc:195 lib/layouts/numrevtex.inc:6
+#: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:30
+#: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Section"
 msgstr "Abschnitt"
 
@@ -7696,16 +7705,17 @@ msgstr "European Geophysical Society (EGS)"
 
 #: lib/layouts/egs.layout:33 lib/layouts/egs.layout:56
 #: lib/layouts/simplecv.layout:32 lib/layouts/europecv.layout:128
-#: lib/layouts/powerdot.layout:229 lib/layouts/ltugboat.layout:48
-#: lib/layouts/ltugboat.layout:69 lib/layouts/memoir.layout:193
-#: lib/layouts/beamer.layout:195 lib/layouts/beamer.layout:233
-#: lib/layouts/beamer.layout:290 lib/layouts/beamer.layout:347
-#: lib/layouts/tufte-book.layout:65 lib/layouts/tufte-book.layout:90
-#: lib/layouts/moderncv.layout:176 lib/layouts/scrclass.inc:155
-#: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:44
-#: lib/layouts/stdsections.inc:72 lib/layouts/svcommon.inc:117
-#: lib/layouts/svcommon.inc:158 lib/layouts/svcommon.inc:171
-#: lib/layouts/svcommon.inc:183 lib/layouts/svcommon.inc:415
+#: lib/layouts/powerdot.layout:229 lib/layouts/tufte-handout.layout:24
+#: lib/layouts/ltugboat.layout:48 lib/layouts/ltugboat.layout:69
+#: lib/layouts/memoir.layout:193 lib/layouts/beamer.layout:195
+#: lib/layouts/beamer.layout:233 lib/layouts/beamer.layout:290
+#: lib/layouts/beamer.layout:347 lib/layouts/tufte-book.layout:65
+#: lib/layouts/tufte-book.layout:90 lib/layouts/moderncv.layout:176
+#: lib/layouts/scrclass.inc:155 lib/layouts/stdsections.inc:13
+#: lib/layouts/stdsections.inc:44 lib/layouts/stdsections.inc:72
+#: lib/layouts/svcommon.inc:117 lib/layouts/svcommon.inc:158
+#: lib/layouts/svcommon.inc:171 lib/layouts/svcommon.inc:183
+#: lib/layouts/svcommon.inc:415
 msgid "Sectioning"
 msgstr "Gliederung"
 
@@ -8848,12 +8858,6 @@ msgstr "DinBrief"
 #: lib/layouts/dinbrief.layout:47
 msgid "Addresses"
 msgstr "Adressen"
-
-#: lib/layouts/dinbrief.layout:49 lib/layouts/g-brief2.layout:732
-#: lib/layouts/g-brief2.layout:755 lib/layouts/g-brief2.layout:777
-#: lib/layouts/stdletter.inc:26 lib/layouts/stdletter.inc:38
-msgid "Postal Data"
-msgstr "Postdaten"
 
 #: lib/layouts/dinbrief.layout:79
 msgid "Return address"
@@ -10474,10 +10478,6 @@ msgstr "Kapitelsynopse"
 msgid "Epigraph"
 msgstr "Epigraph"
 
-#: lib/layouts/memoir.layout:176 lib/layouts/memoir.layout:247
-msgid "Maintext"
-msgstr "Haupttext"
-
 #: lib/layouts/memoir.layout:185
 msgid "Epigraph Source|S"
 msgstr "Epigraph-Quelle"
@@ -10960,10 +10960,6 @@ msgstr "Kurzform des Datums, die in der Seitenleiste/Kopfzeile erscheint"
 #: lib/layouts/beamer.layout:1020
 msgid "TitleGraphic"
 msgstr "Titelgrafik"
-
-#: lib/layouts/beamer.layout:1152 lib/layouts/theorems-std.module:2
-msgid "Theorems"
-msgstr "Theoreme"
 
 #: lib/layouts/beamer.layout:1174 lib/layouts/beamer.layout:1337
 #: lib/layouts/beamer.layout:1354 lib/layouts/beamer.layout:1371
@@ -12875,6 +12871,10 @@ msgstr "Rest der Initiale"
 msgid "Rest of initial word or text"
 msgstr "Rest des Initialworts oder -texts"
 
+#: lib/layouts/theorems-std.module:2
+msgid "Theorems"
+msgstr "Theoreme"
+
 #: lib/layouts/theorems-std.module:7
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
@@ -13165,7 +13165,7 @@ msgid "An optional preface"
 msgstr "Optionaler Vorspann (einspaltiger Text unmittelbar vor Spaltenbeginn)"
 
 #: lib/layouts/multicol.module:31
-msgid "Space before Page Break"
+msgid "Space Before Page Break"
 msgstr "Abstand vor dem Seitenumbruch"
 
 #: lib/layouts/multicol.module:32
@@ -29377,6 +29377,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid ""
+#~ "Setting causes printer command to print to file and then use this "
+#~ "actually to print."
+#~ msgstr ""
+#~ "Diese Einstellung sorgt dafür, dass der Druckbefehl in eine Datei druckt, "
+#~ "welche dann für den eigentlichen Druck verwendet wird."
+
+#~ msgid "Maintext"
+#~ msgstr "Haupttext"
 
 #~ msgid "institute mark"
 #~ msgstr "Institutsfußnotenmarke"
