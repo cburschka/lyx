@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-27 17:08+0100\n"
+"POT-Creation-Date: 2013-02-02 09:36+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2747,16 +2747,16 @@ msgid "&Bookmarks"
 msgstr "&Záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-msgid "G&enerate Bookmarks"
-msgstr "Vytvoriť zá&ložky"
+msgid "G&enerate Bookmarks (ToC)"
+msgstr "Vytvoriť zá&ložky (ToC)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
 msgstr "Očí&slované záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
-msgid "&Open bookmarks"
-msgstr "Otvorené zálož&ky"
+msgid "&Open bookmark tree"
+msgstr "Otvoriť rozvetvené zálož&ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -3722,9 +3722,8 @@ msgstr "Spool t&lačiarne:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
 msgid ""
-"Setting causes printer command to print to file and then use this actually "
-"to print."
-msgstr "Spôsobí tlač do súboru ktorý potom použte ku skutočnej tlači."
+"Command transmitted to the system to actually print the postscript file."
+msgstr "Príkaz odovzdaný do systému, aby tlačil do postscript-súboru."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
 msgid "Spool co&mmand:"
@@ -5970,6 +5969,20 @@ msgstr "Životopis bez fotky"
 msgid "BiographyNoPhoto"
 msgstr "ŽivotopisBezFotky"
 
+#: lib/layouts/IEEEtran.layout:319 lib/layouts/beamer.layout:1152
+#: lib/layouts/elsart.layout:273 lib/layouts/elsart.layout:303
+#: lib/layouts/foils.layout:221 lib/layouts/heb-article.layout:20
+#: lib/layouts/heb-article.layout:98 lib/layouts/ijmpc.layout:328
+#: lib/layouts/ijmpd.layout:331 lib/layouts/llncs.layout:294
+#: lib/layouts/siamltex.layout:118 lib/layouts/svcommon.inc:637
+#: lib/layouts/theorems-ams-bytype.inc:51 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-case.inc:28
+#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-without-preamble.inc:35 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems-named.module:13
+msgid "Reasoning"
+msgstr "Dôvodnenie"
+
 #: lib/layouts/IEEEtran.layout:321 lib/layouts/siamltex.layout:162
 #: lib/layouts/theorems-proof.inc:20
 msgid "Alternative Proof String"
@@ -7477,10 +7490,6 @@ msgstr "Citát (krátky)"
 #: lib/layouts/powerdot.layout:346 lib/layouts/stdlayouts.inc:52
 msgid "Verse"
 msgstr "Verš"
-
-#: lib/layouts/beamer.layout:984 lib/layouts/theorems-std.module:2
-msgid "Theorems"
-msgstr "Teorémy"
 
 #: lib/layouts/beamer.layout:994 lib/layouts/foils.layout:309
 #: lib/layouts/theorems-starred.inc:66
@@ -10124,10 +10133,6 @@ msgstr "KapitolaSúhrn"
 #: lib/layouts/memoir.layout:120
 msgid "Epigraph"
 msgstr "Epigraf"
-
-#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
-msgid "Maintext"
-msgstr "Hlavný text"
 
 #: lib/layouts/memoir.layout:185
 msgid "Epigraph Source|S"
@@ -13407,6 +13412,10 @@ msgstr ""
 "Definuje len neočíslované prostredie pre vety a dôkazy, použitím rozšírenie "
 "AMS."
 
+#: lib/layouts/beamer.layout:984 lib/layouts/theorems-std.module:2
+msgid "Theorems"
+msgstr "Teorémy"
+
 #: lib/layouts/theorems-std.module:7
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
@@ -14104,6 +14113,14 @@ msgstr "Cyrilika (pt 154)"
 #: lib/encodings:124
 msgid "Cyrillic (pt 254)"
 msgstr "Cyrilika (pt 254)"
+
+#: lib/encodings:139
+msgid "Chinese (traditional) (Big5)"
+msgstr "Čínsky (tradičná) (Big5)"
+
+#: lib/encodings:149
+msgid "Japanese (CJK) (SJIS)"
+msgstr "Japonsky (CJK) (SJIS)"
 
 #: lib/encodings:149
 msgid "Chinese (simplified) (EUC-CN)"
@@ -28824,6 +28841,14 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Setting causes printer command to print to file and then use this "
+#~ "actually to print."
+#~ msgstr "Spôsobí tlač do súboru ktorý potom použte ku skutočnej tlači."
+
+#~ msgid "Maintext"
+#~ msgstr "Hlavný text"
 
 #~ msgid "institute mark"
 #~ msgstr "znak inštitútu"
