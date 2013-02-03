@@ -79,17 +79,17 @@ public:
 
 	/// Unlock and commit changes. Returns log.
 	std::string checkIn();
-	/// Does the current VC supports this operation?
+	/// Does the current VC support this operation?
 	bool checkInEnabled() const;
 
 	/// Lock/update and prepare to edit document. Returns log.
 	std::string checkOut();
-	/// Does the current VC supports this operation?
+	/// Does the current VC support this operation?
 	bool checkOutEnabled() const;
 
 	/// Synchronize the whole archive with repository
 	std::string repoUpdate();
-	/// Does the current VC supports this operation?
+	/// Does the current VC support this operation?
 	bool repoUpdateEnabled() const;
 
 	/**
@@ -105,7 +105,7 @@ public:
 
 	/// Undo last check-in.
 	void undoLast();
-	/// Does the current VC supports this operation?
+	/// Does the current VC support this operation?
 	bool undoLastEnabled() const;
 	/**
 	 * Prepare revision rev of the file into newly created temporary file
@@ -119,7 +119,7 @@ public:
 	 * for retrieving normal revisions (rev>0) or backtracking (rev<0).
 	 */
 	bool prepareFileRevision(std::string const & rev, std::string & f);
-	/// Does the current VC supports this operation?
+	/// Does the current VC support this operation?
 	bool prepareFileRevisionEnabled();
 
 	/**

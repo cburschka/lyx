@@ -144,7 +144,7 @@ Additional LyX Features
 \end_layout
 
 \begin_layout Subtitle
-Version 2.0.x
+Version 2.1.x
 \end_layout
 
 \begin_layout Author
@@ -18966,7 +18966,7 @@ man rcsintro
 Before you begin to use the version control features in LyX, you should
  be familiar with RCS/CVS/SVN usage.
  The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
- package—no guarantees are made for older versions.
+ package — no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
  you can check them in the Messages pane if unsure.
  Regular users of version control will appreciate VC toolbar, which can
@@ -19099,7 +19099,6 @@ When you are finished editing a file, you check in your changes.
  This is stored in the history log.
  The version number is bumped, your changes are applied to the master RCS
  file, the document is unlocked and set to Read-Only mode.
- 
 \end_layout
 
 \begin_layout Standard
@@ -19120,7 +19119,6 @@ By doing this you lock the document so that only you can edit it.
  You will usually continue editing for a while and when you are finished
  you check in your changes.
  The status line is changed to reflect that you have locked the file.
- 
 \end_layout
 
 \begin_layout Standard
@@ -19157,7 +19155,6 @@ Undo Last Checkin
 This makes as if the last check in never happened.
  No changes are made to the document loaded into LyX, but the last version
  is removed from the master RCS file.
- 
 \end_layout
 
 \begin_layout Standard
@@ -19197,7 +19194,7 @@ LyX supports RCS version number, author name, date and time of last commit.
 rlog -r <file-name>
 \family default
 .
- For other details see 
+ See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:VCS-Revision-Information"
@@ -19244,7 +19241,7 @@ If you start from scratch with CVS you have to create your repository and
 If your documents are under revision control and others are using the same
  repository problems arise when different changes to the same document at
  the same location happen.
- Standard CVS repositories doesn't operate with a file locking mechanism.
+ Standard CVS repositories don't operate with a file locking mechanism.
  This may be surprising, but conflicts only occur if people disagree on
  the proper content of the same part of a document.
  So, if co-workers are used to communicate regularly, these conflicts occur
@@ -19717,6 +19714,27 @@ cvs log "<file-name>"
  is shown in a browser.
 \end_layout
 
+\begin_layout Subsubsection
+Revision info
+\end_layout
+
+\begin_layout Standard
+LyX supports CVS version number, author name, date and time of last commit.
+ All those are extracted from 
+\family typewriter
+cvs log -r <file-name>
+\family default
+.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Revision-Information"
+
+\end_inset
+
+ for details.
+\end_layout
+
 \begin_layout Subsection
 SVN commands in LyX
 \end_layout
@@ -19772,7 +19790,6 @@ R
 egister
 \family default
  item is not visible.
- 
 \end_layout
 
 \begin_layout Standard
@@ -19783,7 +19800,6 @@ This command registers in SVN your document ONLY in case you have already
 \family default
  file exists).
  This means you have to checkout the archive by yourself.
- 
 \end_layout
 
 \begin_layout Standard
@@ -19812,7 +19828,6 @@ Read
 man svn
 \family default
  to understand the switches.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -19897,7 +19912,6 @@ Revert To Repository Version
 This will discard all changes made to the document since the last check
  in.
  You get a warning before changes are discarded.
- 
 \end_layout
 
 \begin_layout Standard

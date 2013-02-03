@@ -188,7 +188,7 @@ string LyXVC::checkIn()
 		if (response.empty())
 			response = empty;
 		//shell collisions
-		response = subst(response, from_utf8("\""), from_utf8("\\\""));
+		response = subst(response, from_ascii("\""), from_ascii("\\\""));
 		log = vcs->checkIn(to_utf8(response));
 
 		// Reserve empty string for cancel button
