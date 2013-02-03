@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 444
+\lyxformat 459
 \begin_document
 \begin_header
 \textclass article
@@ -45,6 +45,8 @@
 \use_package mathdots 0
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -81,7 +83,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2012-09-29
+LFUNs documentation automatically generated 2013-02-03
 \end_layout
 
 \begin_layout Standard
@@ -466,7 +468,11 @@ Action Inserts an argument (short title) inset.
 \end_layout
 
 \begin_layout Description
-Syntax argument-insert
+Syntax argument-insert <argument nr>
+\end_layout
+
+\begin_layout Description
+Params <argument nr>: see layout declarations
 \end_layout
 
 \begin_layout Description
@@ -4806,7 +4812,7 @@ Sample Remove all index insets:
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Index delete-char-forward
+	           inset-forall Index char-delete-forward
 \begin_inset Newline newline
 \end_inset
 
@@ -4937,12 +4943,17 @@ Action Set language from the current cursor position.
 \end_layout
 
 \begin_layout Description
-Syntax language <LANG>
+Syntax language <LANG> [set]
 \end_layout
 
 \begin_layout Description
 Params <LANG>: Requested language.
  Look in lib/languages for the list.
+ "language reset" or "language" (without param) reset to the document language.
+ set: If used, the language will be set to the specified language.
+ Otherwise, the language will be toggled (i.e., if the current language is
+ LANG, switch to the document language or the default language, if LANG
+ is the document language).
 \end_layout
 
 \begin_layout Description
@@ -6284,21 +6295,24 @@ LFUN_BUFFER_FORALL
 \end_layout
 
 \begin_layout Description
-Action Applies a command to all visible, hidden, or both types of buffers
- in the active window.
+Action Applies a command to all non-hidden buffers.
 \end_layout
 
 \begin_layout Description
-Syntax buffer-forall [<BUFFER-TYPE>] <LFUN-COMMAND>
+Notion a buffer is `hidden' if it is internally open in LyX, but not visible
+ in any window.
 \end_layout
 
 \begin_layout Description
-Params <BUFFER-TYPE>: <visible|hidden|both default:> default: visible <LFUN-COMM
-AND>: The command that is to be applied to the buffers.
+Syntax buffer-forall <LFUN-COMMAND>
 \end_layout
 
 \begin_layout Description
-Sample Close all Notes in all visible documents:
+Params <LFUN-COMMAND>: The command to be applied to the buffers.
+\end_layout
+
+\begin_layout Description
+Sample Close all Notes in buffers:
 \begin_inset Newline newline
 \end_inset
 
@@ -6306,15 +6320,15 @@ Sample Close all Notes in all visible documents:
 \begin_inset Newline newline
 \end_inset
 
-Toggle change tracking on all documents:
+Toggle change tracking on buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall both changes-track
+	           buffer-forall changes-track
 \begin_inset Newline newline
 \end_inset
 
-Toggle read-only for all visible documents:
+Toggle read-only for buffers:
 \begin_inset Newline newline
 \end_inset
 
@@ -6322,15 +6336,15 @@ Toggle read-only for all visible documents:
 \begin_inset Newline newline
 \end_inset
 
-Show statistics for each document:
+Show statistics for individual buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall both statistics
+	           buffer-forall statistics
 \begin_inset Newline newline
 \end_inset
 
-Activate the branch named "Solutions" in all visible documents:
+Activate the branch named "Solutions" in buffers:
 \begin_inset Newline newline
 \end_inset
 
@@ -6338,7 +6352,7 @@ Activate the branch named "Solutions" in all visible documents:
 \begin_inset Newline newline
 \end_inset
 
-Export all visible documents to PDF (pdflatex):
+Export buffers to PDF (pdflatex):
 \begin_inset Newline newline
 \end_inset
 
@@ -7048,6 +7062,55 @@ Origin rgh, 27 May 2008
 \end_layout
 
 \begin_layout Subsection*
+LFUN_BRANCH_MASTER_ACTIVATE
+\end_layout
+
+\begin_layout Description
+Action Activate the branch in the master buffer.
+\end_layout
+
+\begin_layout Description
+Syntax branch-master-activate <BRANCH>
+\end_layout
+
+\begin_layout Description
+Params <BRANCH>: The branch to activate
+\end_layout
+
+\begin_layout Description
+Sample lyx -x "branch-activate answers" -e pdf2 finalexam.lyx
+\begin_inset Newline newline
+\end_inset
+
+could be used to export a pdf with the answers branch included without one's
+ having to open LyX and activate the branch manually.
+\end_layout
+
+\begin_layout Description
+Origin spitz, 30 Sep 2012
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCH_MASTER_DEACTIVATE
+\end_layout
+
+\begin_layout Description
+Action De-activate the branch in the master buffer.
+\end_layout
+
+\begin_layout Description
+Syntax branch-master-deactivate <BRANCH>
+\end_layout
+
+\begin_layout Description
+Params <BRANCH>: The branch to deactivate
+\end_layout
+
+\begin_layout Description
+Origin spitz, 30 Sep 2012
+\end_layout
+
+\begin_layout Subsection*
 LFUN_BRANCHES_RENAME
 \end_layout
 
@@ -7115,7 +7178,8 @@ LFUN_LABEL_INSERT_AS_REF
 \end_layout
 
 \begin_layout Description
-Action Inserts the label as a cross-reference at the position of the cursor.
+Action Inserts the label (in ToC pane) as a cross-reference at the position
+ of the cursor.
 \end_layout
 
 \begin_layout Description
@@ -7185,6 +7249,22 @@ Syntax inset-copy-as
 
 \begin_layout Description
 Origin vfr, 18 Apr 2010
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ENVIRONMENT_SPLIT
+\end_layout
+
+\begin_layout Description
+Action Splits the current environment with a Separator.
+\end_layout
+
+\begin_layout Description
+Syntax environment-split
+\end_layout
+
+\begin_layout Description
+Origin spitz, 23 Dec 2012
 \end_layout
 
 \end_body
