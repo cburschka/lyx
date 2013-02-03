@@ -44,13 +44,18 @@ LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-x=no"
 LyXConfigureOptions="${LyXConfigureOptions} --disable-stdlib-debug"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
-Qt4ConfigureOptions="${Qt4ConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
+Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 
 # stupid special case...
 case "${Qt4Version}:${Qt4API}" in
 4.6*:-carbon)
+	;;
+5.0*)
+	Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
+	Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-javascript-jit -no-pkg-config"
+	Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	;;
 *)
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} ${Qt4API}"
@@ -124,6 +129,12 @@ usage() {
 	fi
 	exit 0
 }
+
+NCPU=$(sysctl -n hw.ncpu)
+NCPU=$((NCPU / 2))
+if [ $NCPU -gt 1 ]; then
+	MAKEJOBS=-j${NCPU}
+fi
 
 while [ $# -gt 0 ]; do
 	case "${1}" in
@@ -226,7 +237,6 @@ done
 if [ "${configure_qt4_frameworks}" != "yes" ]; then
 	QtInstallDir=${QTDIR:-"/opt/qt4"}
 fi
-QtFrameworkVersion="4"
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
@@ -277,7 +287,16 @@ LyxAppPrefix="${LyxAppDir}.app"
 # ---------------------------------
 
 # don't change order here...
-QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
+case "${Qt4Version}" in
+5*)
+	QtLibraries="QtSvg QtXml QtPrintSupport QtWidgets QtGui QtNetwork QtConcurrent QtCore"
+	QtFrameworkVersion="5"
+	;;
+*)
+	QtLibraries="QtSvg QtXml QtGui QtNetwork QtCore"
+	QtFrameworkVersion="4"
+	;;
+esac
 
 DMGNAME="${LyxBase}"
 DMGSIZE="550m"
@@ -332,7 +351,7 @@ if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! \( -d "
 		echo configure options:
 		echo ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
 		echo yes | "${Qt4SourceDir}"/configure ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-		make && make install
+		make ${MAKEJOBS} && make install
 	)
 	cd "${QtInstallDir}" && (
 		mkdir -p include
@@ -603,12 +622,7 @@ build_lyx() {
 			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
 			--enable-build-type=rel && \
-		NCPU=$(sysctl -n hw.ncpu)
-		NCPU=$((NCPU / 2))
-		if [ $NCPU -gt 1 ]; then
-			NUMJOBS=-j${NCPU}
-		fi
-		make ${NUMJOBS} && make install${strip}
+		make ${MAKEJOBS} && make install${strip}
 		for file in ${LYX_FILE_LIST} ; do
 			if [ -f "${LYX_BUNDLE_PATH}/${file}" ]; then
 				mv "${LYX_BUNDLE_PATH}/${file}"\

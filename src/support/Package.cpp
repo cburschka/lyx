@@ -381,6 +381,9 @@ FileName const get_document_dir(FileName const & home_dir)
 	(void)home_dir; // Silence warning about unused variable.
 	os::GetFolderPath win32_folder_path;
 	return FileName(win32_folder_path(os::GetFolderPath::PERSONAL));
+#elif defined (USE_MACOSX_PACKAGING) && (QT_VERSION >= 0x050000)
+	(void)home_dir; // Silence warning about unused variable.
+	return FileName(fromqstr(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)));
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 	return FileName(fromqstr(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)));
@@ -646,6 +649,10 @@ FileName const get_default_user_support_dir(FileName const & home_dir)
 
 	os::GetFolderPath win32_folder_path;
 	return FileName(addPath(win32_folder_path(os::GetFolderPath::APPDATA), PACKAGE));
+
+#elif defined (USE_MACOSX_PACKAGING) && (QT_VERSION >= 0x050000)
+	(void)home_dir; // Silence warning about unused variable.
+	return FileName(addPath(fromqstr(QStandardPaths::writableLocation(QStandardPaths::DataLocation)), PACKAGE));
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.

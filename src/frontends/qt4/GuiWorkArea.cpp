@@ -55,7 +55,9 @@
 #include "frontends/WorkAreaManager.h"
 
 #include <QContextMenuEvent>
+#if (QT_VERSION < 0x050000)
 #include <QInputContext>
+#endif
 #include <QDrag>
 #include <QHelpEvent>
 #ifdef Q_WS_MACX
@@ -674,7 +676,9 @@ void GuiWorkArea::scrollTo(int value)
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
+#ifdef Q_WS_X11
 	QApplication::syncX();
+#endif
 }
 
 
@@ -794,7 +798,9 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
+#if (QT_VERSION < 0x050000)
 	inputContext()->reset();
+#endif
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
 		q_button_state(e->button()));

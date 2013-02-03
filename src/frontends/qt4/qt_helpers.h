@@ -18,6 +18,7 @@
 #include "qt_i18n.h"
 
 #include <QString>
+#include <QHeaderView>
 
 class QComboBox;
 class QLineEdit;
@@ -65,6 +66,13 @@ void doubleToWidget(QLineEdit * input, std::string const & value,
 
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);
+
+/// Qt5 changed setSectionMode to setSectionResizeMode
+/// These wrappers work for Qt4 and Qt5
+void setSectionResizeMode(QHeaderView * view,
+    int logicalIndex, QHeaderView::ResizeMode mode);
+void setSectionResizeMode(QHeaderView * view,
+	QHeaderView::ResizeMode mode);
 
 } // namespace frontend
 

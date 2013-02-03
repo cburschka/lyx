@@ -746,7 +746,11 @@ docstring FileName::fileContents(string const & encoding) const
 	if (encoding.empty() || encoding == "UTF-8")
 		s = QString::fromUtf8(contents.data());
 	else if (encoding == "ascii")
+#if (QT_VERSION < 0x050000)
 		s = QString::fromAscii(contents.data());
+#else
+		s = QString::fromLatin1(contents.data());
+#endif
 	else if (encoding == "local8bit")
 		s = QString::fromLocal8Bit(contents.data());
 	else if (encoding == "latin1")

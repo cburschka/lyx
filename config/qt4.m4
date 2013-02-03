@@ -39,6 +39,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		qt4_cv_libname=
 		for libname in '-lQtCore -lQtGui' \
 		               '-lQtCore4 -lQtGui4' \
+		               '-framework QtCore -framework QtConcurrent -framework QtWidgets -framework QtGui'\
 		               '-framework QtCore -framework QtGui'
 		do
 			QT4_TRY_LINK($libname)
@@ -197,7 +198,7 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 	QT4_CORE_LDFLAGS=
 	if test -n "$qt4_cv_includes"; then
 		QT4_INCLUDES="-I$qt4_cv_includes"
-		for i in Qt QtCore QtGui; do
+		for i in Qt QtCore QtGui QtWidgets QtConcurrent; do
 			QT4_INCLUDES="$QT4_INCLUDES -I$qt4_cv_includes/$i"
 		done
 		QT4_CORE_INCLUDES="-I$qt4_cv_includes -I$qt4_cv_includes/QtCore"

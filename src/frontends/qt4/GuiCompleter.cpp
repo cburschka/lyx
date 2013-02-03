@@ -90,9 +90,10 @@ public:
 	~GuiCompletionModel() { delete list_; }
 	///
 	void setList(CompletionList const * l) {
+		beginResetModel();
 		delete list_;
 		list_ = l;
-		reset();
+		endResetModel();
 	}
 	///
 	bool sorted() const
@@ -444,8 +445,8 @@ void GuiCompleter::asyncUpdatePopup()
 	// has a bad memory about it and we have to tell him again and again.
 	QTreeView * listView = static_cast<QTreeView *>(popup());
 	listView->header()->setStretchLastSection(false);
-	listView->header()->setResizeMode(0, QHeaderView::Stretch);
-	listView->header()->setResizeMode(1, QHeaderView::Fixed);
+	setSectionResizeMode(listView->header(), 0, QHeaderView::Stretch);
+	setSectionResizeMode(listView->header(), 1, QHeaderView::Fixed);
 	listView->header()->resizeSection(1, 22);
 	
 	// show/update popup

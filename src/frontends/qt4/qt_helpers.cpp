@@ -196,6 +196,23 @@ void setValid(QWidget * widget, bool valid)
 	}
 }
 
+/// wrapper to hide the change of method name to setSectionResizeMode
+void setSectionResizeMode(QHeaderView * view,
+    int logicalIndex, QHeaderView::ResizeMode mode) {
+#if (QT_VERSION >= 0x050000)
+	view->setSectionResizeMode(logicalIndex, mode);
+#else
+	view->setResizeMode(logicalIndex, mode);
+#endif
+}
+
+void setSectionResizeMode(QHeaderView * view, QHeaderView::ResizeMode mode) {
+#if (QT_VERSION >= 0x050000)
+	view->setSectionResizeMode(mode);
+#else
+	view->setResizeMode(mode);
+#endif
+}
 } // namespace frontend
 
 QString const qt_(char const * str, const char *)

@@ -49,7 +49,7 @@ LyXFileDialog::LyXFileDialog(QString const & title,
 				 // FIXME replace that with guiApp->currentView()
 	: QFileDialog(qApp->focusWidget(), title, path)
 {
-	setFilters(filters);
+	setNameFilters(filters);
 	setWindowTitle(title);
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();

@@ -248,8 +248,9 @@ public:
 
 	void setSymbols(QList<char_type> const & symbols)
 	{
+		QAbstractItemModel::beginResetModel();
 		symbols_ = symbols;
-		QAbstractItemModel::reset();
+		QAbstractItemModel::endResetModel();
 	}
 
 private:

@@ -60,7 +60,7 @@ PanelStack::PanelStack(QWidget * parent)
 	list_->setRootIsDecorated(false);
 	list_->setColumnCount(1);
 	list_->header()->hide();
-	list_->header()->setResizeMode(QHeaderView::ResizeToContents);
+	setSectionResizeMode(list_->header(), QHeaderView::ResizeToContents);
 	list_->header()->setStretchLastSection(false);
 	list_->setMinimumSize(list_->viewport()->size());
 

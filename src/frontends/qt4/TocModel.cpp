@@ -44,7 +44,11 @@ public:
 	///
 	void reset()
 	{
+#if (QT_VERSION < 0x050000)
 		QStandardItemModel::reset();
+#else
+		QStandardItemModel::endResetModel();
+#endif
 	}
 	///
 	void beginResetModel()

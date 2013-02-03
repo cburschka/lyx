@@ -93,7 +93,6 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QList>
-#include <QMacPasteboardMime>
 #include <QMenuBar>
 #include <QMimeData>
 #include <QObject>
@@ -126,6 +125,10 @@
 #endif
 #include <objidl.h>
 #endif // Q_WS_WIN
+
+#ifdef Q_WS_MACX
+#include <QMacPasteboardMime>
+#endif // Q_WS_MACX
 
 #include "support/bind.h"
 #include <boost/crc.hpp>

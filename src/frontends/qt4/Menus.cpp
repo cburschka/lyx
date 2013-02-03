@@ -1875,7 +1875,7 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 		QAction::MenuRole role;
 	};
 
-	MacMenuEntry entries[] = {
+	static MacMenuEntry entries[] = {
 		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
