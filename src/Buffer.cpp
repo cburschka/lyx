@@ -2253,8 +2253,11 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 	switch (func.action()) {
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
-		if (lyxvc().inUse())
-			lyxvc().toggleReadOnly();
+		if (lyxvc().inUse()) {
+			string log = lyxvc().toggleReadOnly();
+			if (!log.empty())
+				dr.setMessage(log);
+		}
 		else
 			setReadonly(!isReadonly());
 		break;

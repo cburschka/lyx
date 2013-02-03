@@ -259,25 +259,24 @@ void LyXVC::undoLast()
 }
 
 
-void LyXVC::toggleReadOnly()
+string LyXVC::toggleReadOnly()
 {
 	if (!vcs)
-		return;
+		return string();
 	if (!vcs->toggleReadOnlyEnabled())
-		return;
+		return string();
 
 	switch (vcs->status()) {
 	case VCS::UNLOCKED:
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to locked");
-		checkOut();
-		break;
+		return checkOut();
 	case VCS::LOCKED:
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to unlocked");
-		checkIn();
-		break;
+		return checkIn();
 	case VCS::NOLOCKING:
 		break;
 	}
+	return string();
 }
 
 

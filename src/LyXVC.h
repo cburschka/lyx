@@ -135,7 +135,7 @@ public:
 	 * keep things in synchro once we would allow user to toggle
 	 * read-only flags.
 	 */
-	void toggleReadOnly();
+	std::string toggleReadOnly();
 
 	/// Is the document under administration by VCS?
 	bool inUse() const;
