@@ -516,18 +516,23 @@ string convert_command_inset_arg(string s)
 }
 
 
-void handle_backslash(ostream & os, string const & s)
+void output_ert(ostream & os, string const & s, Context & context)
 {
+	context.check_layout(os);
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash\n";
-		else
+		else if (*it == '\n') {
+			context.new_paragraph(os);
+			context.check_layout(os);
+		} else
 			os << *it;
 	}
+	context.check_end_layout(os);
 }
 
 
-void handle_ert(ostream & os, string const & s, Context & context)
+void output_ert_inset(ostream & os, string const & s, Context & context)
 {
 	// We must have a valid layout before outputting the ERT inset.
 	context.check_layout(os);
@@ -537,36 +542,7 @@ void handle_ert(ostream & os, string const & s, Context & context)
 		newcontext.layout = &context.textclass.plainLayout();
 	begin_inset(os, "ERT");
 	os << "\nstatus collapsed\n";
-	newcontext.check_layout(os);
-	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-		if (*it == '\\')
-			os << "\n\\backslash\n";
-		else if (*it == '\n') {
-			newcontext.new_paragraph(os);
-			newcontext.check_layout(os);
-		} else
-			os << *it;
-	}
-	newcontext.check_end_layout(os);
-	end_inset(os);
-}
-
-
-void handle_comment(ostream & os, string const & s, Context & context)
-{
-	// TODO: Handle this better
-	Context newcontext(true, context.textclass);
-	InsetLayout const & layout = context.textclass.insetLayout(from_ascii("ERT"));
-	if (layout.forcePlainLayout())
-		newcontext.layout = &context.textclass.plainLayout();
-	begin_inset(os, "ERT");
-	os << "\nstatus collapsed\n";
-	newcontext.check_layout(os);
-	handle_backslash(os, s);
-	// make sure that our comment is the last thing on the line
-	newcontext.new_paragraph(os);
-	newcontext.check_layout(os);
-	newcontext.check_end_layout(os);
+	output_ert(os, s, newcontext);
 	end_inset(os);
 }
 
@@ -754,7 +730,7 @@ void parse_arguments(string const & command,
 		case required:
 		case req_group:
 			// This argument contains regular LaTeX
-			handle_ert(os, ert + '{', context);
+			output_ert_inset(os, ert + '{', context);
 			eat_whitespace(p, os, context, false);
 			if (template_arguments[i] == required)
 				parse_text(p, os, FLAG_ITEM, outer, context);
@@ -789,7 +765,7 @@ void parse_arguments(string const & command,
 			break;
 		}
 	}
-	handle_ert(os, ert, context);
+	output_ert_inset(os, ert, context);
 }
 
 
@@ -977,14 +953,14 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 		if (inner_type == "shaded")
 			ss << "\\begin{shaded}";
-		handle_ert(os, ss.str(), parent_context);
+		output_ert_inset(os, ss.str(), parent_context);
 		if (!inner_type.empty()) {
 			parse_text(p, os, inner_flags, outer, parent_context);
 			if (inner_flags & FLAG_END)
-				handle_ert(os, "\\end{" + inner_type + '}',
+				output_ert_inset(os, "\\end{" + inner_type + '}',
 				           parent_context);
 			else
-				handle_ert(os, "}", parent_context);
+				output_ert_inset(os, "}", parent_context);
 		}
 		if (!outer_type.empty()) {
 			// If we already read the inner box we have to pop
@@ -1000,13 +976,13 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			}
 			parse_text(p, os, outer_flags, outer, parent_context);
 			if (outer_flags & FLAG_END)
-				handle_ert(os, "\\end{" + outer_type + '}',
+				output_ert_inset(os, "\\end{" + outer_type + '}',
 				           parent_context);
 			else if (inner_type.empty() && outer_type == "framebox")
 				// in this case it is already closed later
 				;
 			else
-				handle_ert(os, "}", parent_context);
+				output_ert_inset(os, "}", parent_context);
 		}
 	} else {
 		// LyX does not like empty positions, so we have
@@ -1089,13 +1065,13 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// LyX puts a % after the end of the minipage
 		if (p.next_token().cat() == catNewline && p.next_token().cs().size() > 1) {
 			// new paragraph
-			//handle_comment(os, "%dummy", parent_context);
+			//output_ert_inset(os, "%dummy", parent_context);
 			p.get_token();
 			p.skip_spaces();
 			parent_context.new_paragraph(os);
 		}
 		else if (p.next_token().cat() == catSpace || p.next_token().cat() == catNewline) {
-			//handle_comment(os, "%dummy", parent_context);
+			//output_ert_inset(os, "%dummy", parent_context);
 			p.get_token();
 			p.skip_spaces();
 			// We add a protected space if something real follows
@@ -1198,24 +1174,14 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 	context.layout = &parent_context.textclass.plainLayout();
 	string s;
 	if (in_line) {
-		s = p.plainCommand('!', '!', "lstinline");
-		context.new_paragraph(os);
-		context.check_layout(os);
+		// set catcodes to verbatim early, just in case.
+		p.setCatcodes(VERBATIM_CATCODES);
+		string delim = p.get_token().asInput();
+		s = p.verbatimStuff(delim);
+//		context.new_paragraph(os);
 	} else
-		s = p.plainEnvironment("lstlisting");
-	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-		if (*it == '\\')
-			os << "\n\\backslash\n";
-		else if (*it == '\n') {
-			// avoid adding an empty paragraph at the end
-			if (it + 1 != et) {
-				context.new_paragraph(os);
-				context.check_layout(os);
-			}
-		} else
-			os << *it;
-	}
-	context.check_end_layout(os);
+		s = p.verbatimEnvironment("lstlisting");
+	output_ert(os, s, context);
 	end_inset(os);
 }
 
@@ -1239,9 +1205,9 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 	bool const new_layout_allowed = parent_context.new_layout_allowed;
 	if (specialfont)
 		parent_context.new_layout_allowed = false;
-	handle_ert(os, "\\begin{" + name + "}", parent_context);
+	output_ert_inset(os, "\\begin{" + name + "}", parent_context);
 	parse_text_snippet(p, os, flags, outer, parent_context);
-	handle_ert(os, "\\end{" + name + "}", parent_context);
+	output_ert_inset(os, "\\end{" + name + "}", parent_context);
 	if (specialfont)
 		parent_context.new_layout_allowed = new_layout_allowed;
 }
@@ -1437,33 +1403,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	else if (name == "verbatim") {
 		// FIXME: this should go in the generic code that
 		// handles environments defined in layout file that
-		// have "PassThru 1". However, the code there is
+		// have "PassThru 1". However, the code over there is
 		// already too complicated for my taste.
 		parent_context.new_paragraph(os);
 		Context context(true, parent_context.textclass,
-				   &parent_context.textclass[from_ascii("Verbatim")]);
-		context.check_layout(os);
-		string s = p.verbatimStuff("\\end{verbatim}");
-		// ignore one newline at beginning or end of string
-		if (prefixIs(s, "\n"))
-			s.erase(0,1);
-		if (suffixIs(s, "\n"))
-			s.erase(s.length(),1);
-
-		string::const_iterator it2 = s.begin();
-		for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-			context.check_layout(os);
-			if (*it == '\\') {
-				os << "\n\\backslash\n";
-				context.need_end_layout = true;
-			} else if (*it == '\n') {
-				context.new_paragraph(os);
-			} else {
-				os << *it;
-				context.need_end_layout = true;
-			}
-		}
-		context.new_paragraph(os);
+				&parent_context.textclass[from_ascii("Verbatim")]);
+		string s = p.verbatimEnvironment("verbatim");
+		output_ert(os, s, context);
 		p.skip_spaces();
 	}
 
@@ -1498,7 +1444,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		bool knownMapping = mapping == preamble.fontCJK();
 		if (buggy_encoding || !knownMapping || !where) {
 			parent_context.check_layout(os);
-			handle_ert(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
+			output_ert_inset(os, "\\begin{" + name + "}{" + encoding + "}{" + mapping + "}",
 				       parent_context);
 			// we must parse the content as verbatim because e.g. JIS can contain
 			// normally invalid characters
@@ -1508,13 +1454,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			string const s = p.plainEnvironment("CJK");
 			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 				if (*it == '\\')
-					handle_ert(os, "\\", parent_context);
+					output_ert_inset(os, "\\", parent_context);
 				else if (*it == '$')
-					handle_ert(os, "$", parent_context);
+					output_ert_inset(os, "$", parent_context);
 				else
 					os << *it;
 			}
-			handle_ert(os, "\\end{" + name + "}",
+			output_ert_inset(os, "\\end{" + name + "}",
 				       parent_context);
 		} else {
 			string const lang =
@@ -1767,12 +1713,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_arguments("\\begin{" + name + "}", arguments, p, os,
 				outer, parent_context);
 		if (contents == verbatim)
-			handle_ert(os, p.ertEnvironment(name),
+			output_ert_inset(os, p.ertEnvironment(name),
 				   parent_context);
 		else
 			parse_text_snippet(p, os, FLAG_END, outer,
 					   parent_context);
-		handle_ert(os, "\\end{" + name + "}", parent_context);
+		output_ert_inset(os, "\\end{" + name + "}", parent_context);
 		if (specialfont)
 			parent_context.new_layout_allowed = new_layout_allowed;
 	}
@@ -1792,7 +1738,7 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 	LASSERT(t.cat() == catComment, return);
 	if (!t.cs().empty()) {
 		context.check_layout(os);
-		handle_comment(os, '%' + t.cs(), context);
+		output_ert_inset(os, '%' + t.cs(), context);
 		if (p.next_token().cat() == catNewline) {
 			// A newline after a comment line starts a new
 			// paragraph
@@ -1802,7 +1748,7 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 					// done (we might get called recursively)
 					context.new_paragraph(os);
 			} else
-				handle_ert(os, "\n", context);
+				output_ert_inset(os, "\n", context);
 			eat_whitespace(p, os, context, true);
 		}
 	} else {
@@ -2182,7 +2128,7 @@ void parse_macro(Parser & p, ostream & os, Context & context)
 		os << "\n\\def" << ert;
 		end_inset(os);
 	} else
-		handle_ert(os, command + ert, context);
+		output_ert_inset(os, command + ert, context);
 }
 
 
@@ -2372,7 +2318,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else
 				cerr << "Warning: Inserting missing ']' in '"
 				     << s << "'." << endl;
-			handle_ert(os, s, context);
+			output_ert_inset(os, s, context);
 		}
 
 		else if (t.cat() == catLetter) {
@@ -2389,7 +2335,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				for (int i = 1; i < *l && p.next_token().isAlnumASCII(); ++i)
 					phrase += p.get_token().cs();
 				if (is_known(phrase, known_coded_phrases)) {
-					handle_ert(os, phrase, context);
+					output_ert_inset(os, phrase, context);
 					handled = true;
 					break;
 				} else {
@@ -2413,7 +2359,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (context.new_layout_allowed)
 				context.new_paragraph(os);
 			else
-				handle_ert(os, "\\par ", context);
+				output_ert_inset(os, "\\par ", context);
 			eat_whitespace(p, os, context, true);
 		}
 
@@ -2442,7 +2388,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			     p.next_token().character() == '-'))
 				; // ignore it in {}`` or -{}-
 			else
-				handle_ert(os, "{}", context);
+				output_ert_inset(os, "{}", context);
 			} else if (next.cat() == catEscape &&
 			           is_known(next.cs(), known_quotes) &&
 			           end.cat() == catEnd) {
@@ -2466,17 +2412,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					p.get_token();
 				} else {
 					p.putback();
-					handle_ert(os, "{", context);
+					output_ert_inset(os, "{", context);
 					parse_text_snippet(p, os,
 							FLAG_BRACE_LAST,
 							outer, context);
-					handle_ert(os, "}", context);
+					output_ert_inset(os, "}", context);
 				}
 			} else if (! context.new_layout_allowed) {
-				handle_ert(os, "{", context);
+				output_ert_inset(os, "{", context);
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 						   outer, context);
-				handle_ert(os, "}", context);
+				output_ert_inset(os, "}", context);
 			} else if (is_known(next.cs(), known_sizes)) {
 				// next will change the size, so we must
 				// reset it here
@@ -2524,10 +2470,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   << "\n\\shape "
 					   << context.font.shape << "\n";
 			} else {
-				handle_ert(os, "{", context);
+				output_ert_inset(os, "{", context);
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 						   outer, context);
-				handle_ert(os, "}", context);
+				output_ert_inset(os, "}", context);
 				}
 			}
 		}
@@ -2537,7 +2483,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				return;
 			}
 			cerr << "stray '}' in text\n";
-			handle_ert(os, "}", context);
+			output_ert_inset(os, "}", context);
 		}
 
 		else if (t.cat() == catComment)
@@ -2603,9 +2549,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// FIXME: Do this in check_layout()!
 				context.has_item = false;
 				if (optarg)
-					handle_ert(os, "\\item", context);
+					output_ert_inset(os, "\\item", context);
 				else
-					handle_ert(os, "\\item ", context);
+					output_ert_inset(os, "\\item ", context);
 			}
 			if (optarg) {
 				if (context.layout->labeltype != LABEL_MANUAL) {
@@ -2625,7 +2571,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// would misinterpret the space as
 					// item delimiter (bug 7663)
 					if (contains(s, ' ')) {
-						handle_ert(os, s, context);
+						output_ert_inset(os, s, context);
 					} else {
 						Parser p2(s + ']');
 						os << parse_text_snippet(p2,
@@ -2648,7 +2594,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string key = convert_command_inset_arg(p.verbatim_item());
 			if (contains(label, '\\') || contains(key, '\\')) {
 				// LyX can't handle LaTeX commands in labels or keys
-				handle_ert(os, t.asInput() + '[' + label +
+				output_ert_inset(os, t.asInput() + '[' + label +
 				               "]{" + p.verbatim_item() + '}',
 				           context);
 			} else {
@@ -2732,7 +2678,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			// FIXME: This is a hack to prevent paragraph
 			// deletion if it is empty. Handle this better!
-			handle_comment(os,
+			output_ert_inset(os,
 				"%dummy comment inserted by tex2lyx to "
 				"ensure that this paragraph is not empty",
 				context);
@@ -2768,7 +2714,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					for (; it != en; ++it)
 						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
-					handle_ert(os,
+					output_ert_inset(os,
 						"\\date{" + p.verbatim_item() + '}',
 						context);
 			}
@@ -2886,10 +2832,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// output it as ERT
 				if (p.hasOpt()) {
 					string opt_arg = convert_command_inset_arg(p.getArg('[', ']'));
-					handle_ert(os, t.asInput() + '[' + opt_arg +
+					output_ert_inset(os, t.asInput() + '[' + opt_arg +
 				               "]{" + p.verbatim_item() + '}', context);
 				} else
-					handle_ert(os, t.asInput() + "{" + p.verbatim_item() + '}', context);
+					output_ert_inset(os, t.asInput() + "{" + p.verbatim_item() + '}', context);
 			}
 		}
 
@@ -3087,7 +3033,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (s == "\xb1" || s == "\xb3" || s == "\xb2" || s == "\xb5")
 				os << s;
 			else
-				handle_ert(os, "\\ensuremath{" + s + "}",
+				output_ert_inset(os, "\\ensuremath{" + s + "}",
 					   context);
 		}
 
@@ -3096,7 +3042,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// swallow this
 				skip_spaces_braces(p);
 			} else
-				handle_ert(os, t.asInput(), context);
+				output_ert_inset(os, t.asInput(), context);
 		}
 
 		else if (t.cs() == "tableofcontents" || t.cs() == "lstlistoflistings") {
@@ -3132,7 +3078,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				end_inset(os);
 				p.get_token(); // swallow second arg
 			} else
-				handle_ert(os, "\\listof{" + name + "}", context);
+				output_ert_inset(os, "\\listof{" + name + "}", context);
 		}
 
 		else if ((where = is_known(t.cs(), known_text_font_families)))
@@ -3181,7 +3127,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					preamble.registerAutomaticallyLoadedPackage("color");
 			} else
 				// for custom defined colors
-				handle_ert(os, t.asInput() + "{" + color + "}", context);
+				output_ert_inset(os, t.asInput() + "{" + color + "}", context);
 		}
 
 		else if (t.cs() == "underbar" || t.cs() == "uline") {
@@ -3378,7 +3324,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						preamble.registerAutomaticallyLoadedPackage("varioref");
 				} else {
 					// LyX does not yet support optional arguments of ref commands
-					handle_ert(os, t.asInput() + '[' + opt + "]{" +
+					output_ert_inset(os, t.asInput() + '[' + opt + "]{" +
 				               p.verbatim_item() + "}", context);
 				}
 			}
@@ -3739,7 +3685,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						                  context, "\\lang",
 						                  context.font.language, lang);
 				} else
-					handle_ert(os, t.asInput() + langopts, context);
+					output_ert_inset(os, t.asInput() + langopts, context);
 			} else {
 				lang = preamble.polyglossia2lyx(t.cs().substr(4, string::npos));
 				parse_text_attributes(p, os, FLAG_ITEM, outer,
@@ -3819,10 +3765,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << '"';
 					skip_braces(p);
 				} else {
-					handle_ert(os, "\\char`", context);
+					output_ert_inset(os, "\\char`", context);
 				}
 			} else {
-				handle_ert(os, "\\char", context);
+				output_ert_inset(os, "\\char", context);
 			}
 		}
 
@@ -3832,14 +3778,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.setCatcodes(VERBATIM_CATCODES);
 			string delim = p.get_token().asInput();
 			string const arg = p.verbatimStuff(delim);
-			handle_ert(os, "\\verb" + delim + arg + delim, context);
+			output_ert_inset(os, "\\verb" + delim + arg + delim, context);
 		}
 
 		// Problem: \= creates a tabstop inside the tabbing environment
 		// and else an accent. In the latter case we really would want
 		// \={o} instead of \= o.
 		else if (t.cs() == "=" && (flags & FLAG_TABBING))
-			handle_ert(os, t.asInput(), context);
+			output_ert_inset(os, t.asInput(), context);
 
 		// accents (see Table 6 in Comprehensive LaTeX Symbol List)
 		else if (t.cs().size() == 1
@@ -3865,19 +3811,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
 				// we did not find a non-ert version
-				handle_ert(os, command, context);
+				output_ert_inset(os, command, context);
 		}
 
 		else if (t.cs() == "\\") {
 			context.check_layout(os);
 			if (p.hasOpt())
-				handle_ert(os, "\\\\" + p.getOpt(), context);
+				output_ert_inset(os, "\\\\" + p.getOpt(), context);
 			else if (p.next_token().asInput() == "*") {
 				p.get_token();
 				// getOpt() eats the following space if there
 				// is no optional argument, but that is OK
 				// here since it has no effect in the output.
-				handle_ert(os, "\\\\*" + p.getOpt(), context);
+				output_ert_inset(os, "\\\\*" + p.getOpt(), context);
 			}
 			else {
 				begin_inset(os, "Newline newline");
@@ -4037,7 +3983,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			p.popPosition();
 			if (output) {
-				handle_ert(os,
+				output_ert_inset(os,
 					"\\bibliographystyle{" + bibliographystyle + '}',
 					context);
 			}
@@ -4100,9 +4046,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				arg += p.getFullParentheseArg();
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
-				handle_ert(os, arg + '{', context);
+				output_ert_inset(os, arg + '{', context);
 				parse_text(p, os, FLAG_ITEM, outer, context);
-				handle_ert(os, "}", context);
+				output_ert_inset(os, "}", context);
 			} else {
 				string special = p.getFullOpt();
 				special += p.getOpt();
@@ -4112,9 +4058,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					                context, t.cs(), special);
 				else {
 					eat_whitespace(p, os, context, false);
-					handle_ert(os, "\\framebox{", context);
+					output_ert_inset(os, "\\framebox{", context);
 					parse_text(p, os, FLAG_ITEM, outer, context);
-					handle_ert(os, "}", context);
+					output_ert_inset(os, "}", context);
 				}
 			}
 		}
@@ -4128,9 +4074,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				arg += p.getFullParentheseArg();
 				arg += p.getFullOpt();
 				eat_whitespace(p, os, context, false);
-				handle_ert(os, arg + '{', context);
+				output_ert_inset(os, arg + '{', context);
 				parse_text(p, os, FLAG_ITEM, outer, context);
-				handle_ert(os, "}", context);
+				output_ert_inset(os, "}", context);
 			} else
 				//the syntax is: \makebox[width][position]{content}
 				parse_box(p, os, 0, FLAG_ITEM, outer, context,
@@ -4209,7 +4155,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			    t.cs() == "providecommand" ||
 			    t.cs() == "providecommandx" ||
 			    name[name.length()-1] == '*')
-				handle_ert(os, ert, context);
+				output_ert_inset(os, ert, context);
 			else {
 				context.check_layout(os);
 				begin_inset(os, "FormulaMacro");
@@ -4246,7 +4192,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			CommandMap::iterator it = known_commands.find(command);
 			if (it != known_commands.end())
 				known_commands[t.asInput()] = it->second;
-			handle_ert(os, ert, context);
+			output_ert_inset(os, ert, context);
 		}
 
 		else if (t.cs() == "hspace" || t.cs() == "vspace") {
@@ -4345,13 +4291,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name += '*';
 				if (valid) {
 					if (value == 1.0)
-						handle_ert(os, name + '{' + unit + '}', context);
+						output_ert_inset(os, name + '{' + unit + '}', context);
 					else if (value == -1.0)
-						handle_ert(os, name + "{-" + unit + '}', context);
+						output_ert_inset(os, name + "{-" + unit + '}', context);
 					else
-						handle_ert(os, name + '{' + valstring + unit + '}', context);
+						output_ert_inset(os, name + '{' + valstring + unit + '}', context);
 				} else
-					handle_ert(os, name + '{' + length + '}', context);
+					output_ert_inset(os, name + '{' + length + '}', context);
 			}
 		}
 
@@ -4505,7 +4451,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				z = p.verbatim_item();
 			}
 			cerr << "found ERT: " << s << endl;
-			handle_ert(os, s + ' ', context);
+			output_ert_inset(os, s + ' ', context);
 			*/
 			else {
 				string name = t.asInput();
@@ -4515,7 +4461,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name += '*';
 				}
 				if (!parse_command(name, p, os, outer, context))
-					handle_ert(os, name, context);
+					output_ert_inset(os, name, context);
 			}
 		}
 

@@ -239,6 +239,14 @@ public:
 	 * intention is to eventually replace all of its siblings.
 	 */
 	std::string const verbatimStuff(std::string const & end_string);
+	/*
+	 * \returns the contents of the environment \p name.
+	 * <tt>\begin{name}</tt> must be parsed already,
+	 * <tt>\end{name}</tt> is parsed but not returned. The string
+	 * is parsed with proper verbatim catcodes and one newline is
+	 * removed from head and tail of the string if applicable.
+	 */
+	std::string const verbatimEnvironment(std::string const & end_string);
 	/*!
 	 * Returns the character of the current token and increments
 	 * the token position.

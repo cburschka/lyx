@@ -12,11 +12,13 @@
 
 #include "Encoding.h"
 #include "Parser.h"
+#include "support/lstrings.h"
 #include "support/textutils.h"
 
 #include <iostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -582,6 +584,18 @@ string const Parser::verbatimStuff(string const & end_string)
 	if (!good())
 		cerr << "unexpected end of input" << endl;
 	return oss.str();
+}
+
+
+string const Parser::verbatimEnvironment(string const & name)
+{
+	string s = verbatimStuff("\\end{" + name + "}");
+	// ignore one newline at beginning or end of string
+	if (prefixIs(s, "\n"))
+		s.erase(0,1);
+	if (suffixIs(s, "\n"))
+		s.erase(s.length() - 1,1);
+	return s;
 }
 
 
