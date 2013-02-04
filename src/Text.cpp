@@ -1948,7 +1948,7 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	// For captions, we just take the caption type
 	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
 	if (caption_inset) {
-		string const & ftype = static_cast<InsetCaption *>(caption_inset)->type();
+		string const & ftype = static_cast<InsetCaption *>(caption_inset)->floattype();
 		FloatList const & fl = cur.buffer()->params().documentClass().floats();
 		if (fl.typeExist(ftype)) {
 			Floating const & flt = fl.getType(ftype);
