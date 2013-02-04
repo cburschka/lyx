@@ -14,7 +14,9 @@
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 \AtBeginDocument{\providecommand\subref[1]{\ref{sub:#1}}}
 \AtBeginDocument{\providecommand\parref[1]{\ref{par:#1}}}
-\AtBeginDocument{\providecommand\Staref[1]{\ref{Sta:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
+\AtBeginDocument{\providecommand\algref[1]{\ref{alg:#1}}}
 \AtBeginDocument{\providecommand\fnref[1]{\ref{fn:#1}}}
 \AtBeginDocument{\providecommand\enuref[1]{\ref{enu:#1}}}
 \AtBeginDocument{\providecommand\eqref[1]{\ref{eq:#1}}}
@@ -22,6 +24,10 @@
 \AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
 \AtBeginDocument{\providecommand\corref[1]{\ref{cor:#1}}}
 \AtBeginDocument{\providecommand\propref[1]{\ref{prop:#1}}}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}[chapter]
+\providecommand{\algorithmname}{Algorithm}
+\floatname{algorithm}{\protect\algorithmname}
 \RS@ifundefined{subref}
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
   {}
@@ -123,25 +129,25 @@ Ref to \subref{Subsubsection}.
 \parref{subparagraph}
 
 \begin{figure}
-\protect\caption{\label{Sta:figure}figure}
+\protect\caption{figure\label{fig:figure}}
 \end{figure}
 
 
-\Staref{figure}
+\figref{figure}
 
 \begin{table}
-\protect\caption{\label{Sta:table}table}
+\protect\caption{table\label{tab:table}}
 \end{table}
 
 
-\Staref{table}
+\tabref{table}
 
 \begin{algorithm}
-\protect\caption{algorithm\label{Sta:algorithm}}
+\protect\caption{algorithm\label{alg:algorithm}}
 \end{algorithm}
 
 
-\Staref{algorithm}
+\algref{algorithm}
 
 \footnote{foot\label{fn:foot}%
 }
