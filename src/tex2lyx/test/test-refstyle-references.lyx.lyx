@@ -1,0 +1,868 @@
+#LyX file created by tex2lyx 2.1.0dev
+\lyxformat 459
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+
+\usepackage{refstyle}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\AtBeginDocument{\providecommand{\partref}[1]{\ref{part:#1}}}
+\AtBeginDocument{\providecommand{\chapref}[1]{\ref{chap:#1}}}
+\AtBeginDocument{\providecommand{\secref}[1]{\ref{sec:#1}}}
+\AtBeginDocument{\providecommand{\subref}[1]{\ref{sub:#1}}}
+\AtBeginDocument{\providecommand{\parref}[1]{\ref{par:#1}}}
+\AtBeginDocument{\providecommand{\Staref}[1]{\ref{Sta:#1}}}
+\AtBeginDocument{\providecommand{\fnref}[1]{\ref{fn:#1}}}
+\AtBeginDocument{\providecommand{\enuref}[1]{\ref{enu:#1}}}
+\AtBeginDocument{\providecommand{\eqref}[1]{\ref{eq:#1}}}
+\AtBeginDocument{\providecommand{\lemref}[1]{\ref{lem:#1}}}
+\AtBeginDocument{\providecommand{\thmref}[1]{\ref{thm:#1}}}
+\AtBeginDocument{\providecommand{\corref}[1]{\ref{cor:#1}}}
+\AtBeginDocument{\providecommand{\propref}[1]{\ref{prop:#1}}}
+\RS@ifundefined{subref}
+  {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
+  {}
+\RS@ifundefined{thmref}
+  {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
+  {}
+\RS@ifundefined{lemref}
+  {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
+  {}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{}\theoremstyle{plain}
+\newtheorem{lem}[thm]{}\theoremstyle{plain}
+\newtheorem{cor}[thm]{}\theoremstyle{plain}
+\newtheorem{prop}[thm]{}\theoremstyle{plain}
+\newtheorem{conjecture}[thm]{}\theoremstyle{plain}
+\newtheorem{fact}[thm]{}\theoremstyle{definition}
+\newtheorem{defn}[thm]{}\theoremstyle{definition}
+\newtheorem{example}[thm]{}\theoremstyle{definition}
+\newtheorem{problem}[thm]{}\theoremstyle{definition}
+\newtheorem{xca}[thm]{}\theoremstyle{remark}
+\newtheorem{rem}[thm]{}\theoremstyle{remark}
+\newtheorem{claim}[thm]{}\ifx\proof\undefined
+\newenvironment{proof}[1][\protect\proofname]{\par
+\normalfont\topsep6\p@\@plus6\p@\relax
+\trivlist
+\itemindent\parindent
+\item[\hskip\labelsep\scshape #1]\ignorespaces
+}{%
+\endtrivlist\@endpefalse
+}
+\providecommand{\proofname}{Proof}
+\fi
+
+
+
+\usepackage{babel}
+\providecommand{\claimname}{Claim}
+\providecommand{\conjecturename}{Conjecture}
+\providecommand{\corollaryname}{Corollary}
+\providecommand{\definitionname}{Definition}
+\providecommand{\examplename}{Example}
+\providecommand{\exercisename}{Exercise}
+\providecommand{\factname}{Fact}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\problemname}{Problem}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
+
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding latin9
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part
+part
+\begin_inset CommandInset label
+LatexCommand label
+name "part:part"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "part:part"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:chapter"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "chap:chapter"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Section"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Section"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:subsection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ref to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:subsection"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Subsubsection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ref to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:Subsubsection"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:paragraph"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "par:paragraph"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+subparagraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:subparagraph"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "par:subparagraph"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Sta:figure"
+
+\end_inset
+
+figure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "Sta:figure"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Sta:table"
+
+\end_inset
+
+table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "Sta:table"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Standard
+algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "Sta:algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "Sta:algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+foot
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:foot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fn:foot"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Marginal
+status collapsed
+
+
+\begin_layout Standard
+margin
+\begin_inset CommandInset label
+LatexCommand label
+name "margin"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "margin"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+item
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:item"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "enu:item"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+A=B\label{eq:A=00003DB}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:A=00003DB"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Lemma
+lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:lemma"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "lem:lemma"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "thm:theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:corollary"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "cor:corollary"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:proposition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "prop:proposition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Conjecture
+conjecture
+\begin_inset CommandInset label
+LatexCommand label
+name "conjecture"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Conjecture
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conjecture"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+definition
+\begin_inset CommandInset label
+LatexCommand label
+name "definition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "definition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+example
+\begin_inset CommandInset label
+LatexCommand label
+name "example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+problem
+\begin_inset CommandInset label
+LatexCommand label
+name "problem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Problem
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "problem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "exercise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exercise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+remark
+\begin_inset CommandInset label
+LatexCommand label
+name "remark"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "remark"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+claim
+\begin_inset CommandInset label
+LatexCommand label
+name "claim"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "claim"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+proof
+\begin_inset CommandInset label
+LatexCommand label
+name "proof"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "proof"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
