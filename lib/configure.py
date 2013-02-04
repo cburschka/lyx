@@ -198,6 +198,8 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         if "PATHEXT" in os.environ:
             extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         for ac_dir in path:
+            if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
+                continue
             for ext in extlist:
                 if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
                     logger.info(msg + ' yes')
@@ -252,6 +254,8 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
             extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         found_alt = False
         for ac_dir in path:
+            if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
+                continue
             for ext in extlist:
                 if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
                     logger.info(msg + ' yes')
