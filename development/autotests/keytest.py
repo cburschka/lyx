@@ -384,7 +384,6 @@ while not failed:
         sendKeystring(ResetCommand, lyx_pid)
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
-        print "Executing " + cmd
         result = intr_system(cmd)
         failed = failed or (result != 0)
         print "result=" + str(result) + ", failed=" + str(failed)
