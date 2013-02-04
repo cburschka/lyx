@@ -39,6 +39,8 @@ public:
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
+	std::string refstyle() const { return h_use_refstyle; }
+	///
 	bool fontCJKSet() const { return h_font_cjk_set; }
 	///
 	std::string fontCJK() const { return h_font_cjk; }

@@ -32,6 +32,7 @@ TEST_FILES = \
 	test/test-insets.tex \
 	test/test.ltx \
 	test/test-modules.tex \
+	test/test-refstyle-references.tex \
 	test/test-structure.tex \
 	test/XeTeX-polyglossia.tex \
 	test/xfigtest.fig \
