@@ -625,14 +625,6 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 {
 	docstring loclabel;
 
-	/*
-	if (!is_bibtex_) {
-		BibTeXInfo::const_iterator it = find(from_ascii("ref"));
-		label_ = it->second;
-		return label_;
-	}
-	*/
-
 	int counter = 0;
 	loclabel = expandFormat(format, xref, counter, buf,
 		before, after, dialog, next);
