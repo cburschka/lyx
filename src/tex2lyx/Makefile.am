@@ -52,7 +52,7 @@ TEST_RESULTS = \
 	test/test-modules.lyx.lyx \
 	test/test-refstyle-references.lyx.lyx \
 	test/test-structure.lyx.lyx \
-	test/verbatim..lyx.lyx \
+	test/verbatim.lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
 
 TESTS = test/runtests.py
