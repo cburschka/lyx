@@ -13,7 +13,7 @@ project(test)
 set(_tex_tests test.ltx test-structure.tex test-insets.tex
                test-modules.tex box-color-size-space-align.tex
                CJK.tex CJKutf8.tex XeTeX-polyglossia.tex
-	       test-refstyle-references.tex)
+	       test-refstyle-references.tex verbatim.tex)
 
 foreach(_fl ${_tex_tests})
   set(fl ${_fl})

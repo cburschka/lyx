@@ -34,6 +34,7 @@ TEST_FILES = \
 	test/test-modules.tex \
 	test/test-refstyle-references.tex \
 	test/test-structure.tex \
+	test/verbatim.tex \
 	test/XeTeX-polyglossia.tex \
 	test/xfigtest.fig \
 	test/xfigtest.pstex \
@@ -49,7 +50,9 @@ TEST_RESULTS = \
 	test/test-insets.lyx.lyx \
 	test/test.lyx.lyx \
 	test/test-modules.lyx.lyx \
+	test/test-refstyle-references.lyx.lyx \
 	test/test-structure.lyx.lyx \
+	test/verbatim..lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
 
 TESTS = test/runtests.py
