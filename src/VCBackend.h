@@ -39,8 +39,10 @@ public:
 
 	/// register a file for version control
 	virtual void registrer(std::string const & msg) = 0;
-	/// check in the current revision, returns log
-	virtual std::string checkIn(std::string const & msg) = 0;
+	/// check in the current revision.
+        /// \p log is non-empty on success and may be empty on failure.
+	virtual LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log) = 0;
 	/// can this operation be processed in the current VCS?
 	virtual bool checkInEnabled() = 0;
 	/// should a log message provided for next checkin?
@@ -140,7 +142,8 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual std::string checkIn(std::string const & msg);
+	virtual LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log);
 
 	virtual bool checkInEnabled();
 
@@ -214,7 +217,8 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual std::string checkIn(std::string const & msg);
+	virtual LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log);
 
 	virtual bool checkInEnabled();
 
@@ -343,7 +347,8 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual std::string checkIn(std::string const & msg);
+	virtual LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log);
 
 	virtual bool checkInEnabled();
 
@@ -392,7 +397,7 @@ protected:
 	/// is the loaded file locked?
 	bool isLocked() const;
 	/// acquire/release write lock for the current file
-	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
+	bool fileLock(bool lock, support::FileName const & tmpf, std::string & status);
 
 private:
 	/// is the loaded file under locking policy?

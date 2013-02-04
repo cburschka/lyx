@@ -233,12 +233,15 @@ void RCS::registrer(string const & msg)
 }
 
 
-string RCS::checkIn(string const & msg)
+LyXVC::CommandResult RCS::checkIn(string const & msg, string & log)
 {
 	int ret = doVCCommand("ci -q -u -m\"" + msg + "\" "
 		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
-	return ret ? string() : "RCS: Proceeded";
+	if (ret)
+		return LyXVC::ErrorCommand;
+	log = "RCS: Proceeded";
+	return LyXVC::Success;
 }
 
 
@@ -757,22 +760,27 @@ string CVS::scanLogFile(FileName const & f, string & status)
 	ifs.close();
 	return string();
 }
-	
-	
-string CVS::checkIn(string const & msg)
+
+
+LyXVC::CommandResult CVS::checkIn(string const & msg, string & log)
 {
 	CvsStatus status = getStatus();
 	switch (status) {
 	case UpToDate:
 		if (vcstatus != NOLOCKING)
-			unedit();
-		return "CVS: Proceeded";
+			if (unedit())
+				return LyXVC::ErrorCommand;
+		log = "CVS: Proceeded";
+		return LyXVC::Success;
 	case LocallyModified:
 	case LocallyAdded: {
 		int rc = doVCCommand("cvs -q commit -m \"" + msg + "\" "
 			+ getTarget(File),
 		    FileName(owner_->filePath()));
-		return rc ? string() : "CVS: Proceeded";
+		if (rc)
+			return LyXVC::ErrorCommand;
+		log = "CVS: Proceeded";
+		return LyXVC::Success;
 	}
 	case NeedsMerge:
 	case NeedsCheckout:
@@ -787,7 +795,7 @@ string CVS::checkIn(string const & msg)
 				toString(status)));
 		break;
 	}
-	return string();
+	return LyXVC::ErrorBefore;
 }
 
 
@@ -1158,31 +1166,41 @@ void SVN::registrer(string const & /*msg*/)
 }
 
 
-string SVN::checkIn(string const & msg)
+LyXVC::CommandResult SVN::checkIn(string const & msg, string & log)
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return N_("Error: Could not generate logfile.");
+		log = N_("Error: Could not generate logfile.");
+		return LyXVC::ErrorBefore;
 	}
 
-	doVCCommand("svn commit -m \"" + msg + "\" "
-		    + quoteName(onlyFileName(owner_->absFileName()))
-		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
-		    FileName(owner_->filePath()));
+	ostringstream os;
+	os << "svn commit -m \"" << msg << '"';
+	os << ' ' << quoteName(onlyFileName(owner_->absFileName()));
+	os << " > " << quoteName(tmpf.toFilesystemEncoding());
+	LyXVC::CommandResult ret =
+		doVCCommand(os.str(), FileName(owner_->filePath())) ?
+			LyXVC::ErrorCommand : LyXVC::Success;
 
-	string log;
 	string res = scanLogFile(tmpf, log);
-	if (!res.empty())
+	if (!res.empty()) {
 		frontend::Alert::error(_("Revision control error."),
 				_("Error when committing to repository.\n"
 				"You have to manually resolve the problem.\n"
 				"LyX will reopen the document after you press OK."));
+		ret = LyXVC::ErrorCommand;
+	}
 	else
-		fileLock(false, tmpf, log);
+		if (!fileLock(false, tmpf, log))
+			ret = LyXVC::ErrorCommand;
 
 	tmpf.erase();
-	return log.empty() ? string() : "SVN: " + log;
+	if (!log.empty())
+		log.insert(0, "SVN: ");
+	if (ret == LyXVC::Success && log.empty())
+		log = "SVN: Proceeded";
+	return ret;
 }
 
 
@@ -1247,10 +1265,10 @@ string SVN::scanLogFile(FileName const & f, string & status)
 }
 
 
-void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
+bool SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 {
 	if (!locked_mode_ || (isLocked() == lock))
-		return;
+		return true;
 
 	string const arg = lock ? "lock " : "unlock ";
 	doVCCommand("svn "+ arg + quoteName(onlyFileName(owner_->absFileName()))
@@ -1266,16 +1284,20 @@ void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 	}
 	ifs.close();
 
-	if (!isLocked() && lock)
+	if (isLocked() == lock)
+		return true;
+
+	if (lock)
 		frontend::Alert::error(_("Revision control error."),
 			_("Error while acquiring write lock.\n"
 			"Another user is most probably editing\n"
 			"the current document now!\n"
 			"Also check the access to the repository."));
-	if (isLocked() && !lock)
+	else
 		frontend::Alert::error(_("Revision control error."),
 			_("Error while releasing write lock.\n"
 			"Check the access to the repository."));
+	return false;
 }
 
 

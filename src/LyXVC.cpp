@@ -173,14 +173,13 @@ bool LyXVC::registrer()
 }
 
 
-string LyXVC::checkIn()
+LyXVC::CommandResult LyXVC::checkIn(string & log)
 {
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
 	if (!vcs)
-		return string();
+		return ErrorBefore;
 	docstring empty(_("(no log message)"));
 	docstring response;
-	string log;
 	bool ok = true;
 	if (vcs->isCheckInWithConfirmation())
 		ok = Alert::askForText(response, _("LyX VC: Log Message"));
@@ -189,15 +188,11 @@ string LyXVC::checkIn()
 			response = empty;
 		//shell collisions
 		response = subst(response, from_ascii("\""), from_ascii("\\\""));
-		log = vcs->checkIn(to_utf8(response));
-
-		// Reserve empty string for cancel button
-		if (log.empty())
-			log = to_utf8(empty);
+		return vcs->checkIn(to_utf8(response), log);
 	} else {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
+		return Cancelled;
 	}
-	return log;
 }
 
 
@@ -270,9 +265,13 @@ string LyXVC::toggleReadOnly()
 	case VCS::UNLOCKED:
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to locked");
 		return checkOut();
-	case VCS::LOCKED:
+	case VCS::LOCKED: {
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to unlocked");
-		return checkIn();
+		string log;
+		if (checkIn(log) != Success)
+			return string();
+		return log;
+	}
 	case VCS::NOLOCKING:
 		break;
 	}

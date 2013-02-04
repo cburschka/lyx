@@ -2255,7 +2255,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	// trying to overwrite ourselves, which is fine.)
 	if (theBufferList().exists(fname) && fname != oldname
 		  && theBufferList().getBuffer(fname) != &b) {
-		docstring const text = 
+		docstring const text =
 			bformat(_("The file\n%1$s\nis already open in your current session.\n"
 		            "Please close it before attempting to overwrite it.\n"
 		            "Do you want to choose a new filename?"),
@@ -2366,7 +2366,8 @@ bool GuiView::exportBufferAs(Buffer & b)
 }
 
 
-bool GuiView::saveBuffer(Buffer & b) {
+bool GuiView::saveBuffer(Buffer & b)
+{
 	return saveBuffer(b, FileName());
 }
 
@@ -2377,7 +2378,7 @@ bool GuiView::saveBuffer(Buffer & b, FileName const & fn)
 		return true;
 
 	if (fn.empty() && b.isUnnamed())
-			return renameBuffer(b, docstring());
+		return renameBuffer(b, docstring());
 
 	bool success;
 	if (fn.empty())
@@ -2812,8 +2813,14 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
-			dr.setMessage(buffer->lyxvc().checkIn());
-			if (!dr.message().empty())
+			string log;
+			LyXVC::CommandResult ret = buffer->lyxvc().checkIn(log);
+			dr.setMessage(log);
+			// Only skip reloading if the checkin was cancelled or
+			// an error occured before the real checkin VCS command
+			// was executed, since the VCS might have changed the
+			// file even if it could not checkin successfully.
+			if (ret == LyXVC::ErrorCommand || ret == LyXVC::Success)
 				reloadBuffer(*buffer);
 		}
 		break;

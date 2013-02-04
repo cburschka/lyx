@@ -39,6 +39,13 @@ class Buffer;
 */
 class LyXVC {
 public:
+	/// Return status of a command
+	enum CommandResult {
+		Cancelled,    ///< command was cancelled
+		ErrorBefore,  ///< error before executing command
+		ErrorCommand, ///< error while executing command
+		Success       ///< command was executed successfully
+	};
 	///
 	LyXVC();
 	///
@@ -77,8 +84,9 @@ public:
 	// by the next multiple messages on the top of the processed dispatch
 	// machinery.
 
-	/// Unlock and commit changes. Returns log.
-	std::string checkIn();
+	/// Unlock and commit changes.
+	/// \p log is non-empty on success and may be empty on failure.
+	CommandResult checkIn(std::string & log);
 	/// Does the current VC support this operation?
 	bool checkInEnabled() const;
 
