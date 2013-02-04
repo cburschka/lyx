@@ -799,7 +799,7 @@ void InsetBibtex::parseBibTeXFiles() const
 				docstring key;
 
 				if (!readTypeOrKey(key, ifs, from_ascii(","), from_ascii("}"), keepCase)) {
-					lyxerr << "BibTeX Parser: Unable to read key for entry type:" << 
+					lyxerr << "BibTeX Parser: Unable to read key for entry type:" <<
 							entryType << "." << std::endl;
 					continue;
 				}
@@ -880,7 +880,7 @@ FileName InsetBibtex::getBibTeXPath(docstring const & filename, Buffer const & b
 		file = FileName(makeAbsPath(texfile, buf.filePath()));
 	return file;
 }
- 
+
 
 bool InsetBibtex::addDatabase(docstring const & db)
 {
@@ -1004,7 +1004,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << html::StartTag("div", "class='bibtexentry'");
 		// FIXME XHTML
 		// The same name/id problem we have elsewhere.
-		string const attr = 
+		string const attr =
 			"id='LyXCite-" + to_utf8(html::cleanAttr(entry.key())) + "'";
 		xs << html::CompTag("a", attr);
 		docstring citekey;
