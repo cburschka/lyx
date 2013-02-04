@@ -2,6 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
 \usepackage{refstyle}
+\usepackage{float}
 \usepackage{amsthm}
 
 \makeatletter
@@ -134,6 +135,13 @@ Ref to \subref{Subsubsection}.
 
 
 \Staref{table}
+
+\begin{algorithm}
+\protect\caption{algorithm\label{Sta:algorithm}}
+\end{algorithm}
+
+
+\Staref{algorithm}
 
 \footnote{foot\label{fn:foot}%
 }
