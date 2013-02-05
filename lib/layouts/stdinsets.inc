@@ -387,6 +387,7 @@ InsetLayout "Flex:URL"
 	PassThru              true
 	FreeSpacing           true
 	ForceLTR              true
+	ResetsFont            false
 	Font
 	  Family              Typewriter
 	  Color               urltext
