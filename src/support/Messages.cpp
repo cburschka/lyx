@@ -130,42 +130,11 @@ bool Messages::available(string const & c)
 
 }
 
+namespace {
 
-docstring const Messages::get(string const & m) const
+// Trivial wrapper around gettext()
+docstring const getText(string const & m)
 {
-	if (m.empty())
-		return docstring();
-
-	// Look for the translated string in the cache.
-	TranslationCache::iterator it = cache_.find(m);
-	if (it != cache_.end())
-		return it->second;
-
-	// The string was not found, use gettext to generate it
-	static string oldLC_ALL;
-	static string oldLANGUAGE;
-	if (!lang_.empty()) {
-		oldLC_ALL = getEnv("LC_ALL");
-		// This GNU extension overrides any language locale
-		// wrt gettext.
-		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
-		oldLANGUAGE = getEnv("LANGUAGE");
-		if (!setEnv("LANGUAGE", lang_))
-			LYXERR(Debug::LOCALE, "\t... failed!");
-		// However, setting LANGUAGE does nothing when the
-		// locale is "C". Therefore we set the locale to
-		// something that is believed to exist on most
-		// systems. The idea is that one should be able to
-		// load German documents even without having de_DE
-		// installed.
-		LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
-		if (!setEnv("LC_ALL", "en_US"))
-			LYXERR(Debug::LOCALE, "\t... failed!");
-#ifdef HAVE_LC_MESSAGES
-		setlocale(LC_MESSAGES, "");
-#endif
-	}
-
 	// FIXME: gettext sometimes "forgets" the ucs4_codeset we set
 	// in init(), which leads to severe message corruption (#7371)
 	// We set it again here unconditionally. A real fix must be found!
@@ -188,23 +157,50 @@ docstring const Messages::get(string const & m) const
 
 	cleanTranslation(trans);
 
-	// Reset environment variables as they were.
+	return trans;
+}
+
+}
+
+
+docstring const Messages::get(string const & m) const
+{
+	if (m.empty())
+		return docstring();
+
+	// Look for the translated string in the cache.
+	TranslationCache::iterator it = cache_.find(m);
+	if (it != cache_.end())
+		return it->second;
+
+	// The string was not found, use gettext to generate it
+	docstring trans;
 	if (!lang_.empty()) {
-		// Reset everything as it was.
-		LYXERR(Debug::LOCALE, "restoring LANGUAGE from " 
-		       << getEnv("LANGUAGE")
-		       << " to " << oldLANGUAGE);
-		if (!setEnv("LANGUAGE", oldLANGUAGE))
-			LYXERR(Debug::LOCALE, "\t... failed!");
-		LYXERR(Debug::LOCALE, "restoring LC_ALL from " << getEnv("LC_ALL")
-			<< " to " << oldLC_ALL);
-		if (!setEnv("LC_ALL", oldLC_ALL))
-			LYXERR(Debug::LOCALE, "\t... failed!");
+		// This GNU extension overrides any language locale
+		// wrt gettext.
+		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
+		EnvChanger language_chg("LANGUAGE", lang_);
+		// However, setting LANGUAGE does nothing when the
+		// locale is "C". Therefore we set the locale to
+		// something that is believed to exist on most
+		// systems. The idea is that one should be able to
+		// load German documents even without having de_DE
+		// installed.
+		LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
+		EnvChanger lc_all_chg("LC_ALL", "en_US");
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, "");
 #endif
-	}
+		trans = getText(m);
+	} else
+		trans = getText(m);
+		
 
+#ifdef HAVE_LC_MESSAGES
+	setlocale(LC_MESSAGES, "");
+#endif
+
+	// store translation in cache
 	pair<TranslationCache::iterator, bool> result =
 		cache_.insert(make_pair(m, trans));
 
