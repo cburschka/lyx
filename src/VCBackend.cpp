@@ -269,7 +269,7 @@ bool RCS::isCheckInWithConfirmation()
 		FileName(owner_->filePath()));
 
 	docstring diff = tmpf.fileContents("UTF-8");
-	tmpf.erase();
+	tmpf.removeFile();
 
 	if (diff.empty())
 		return false;
@@ -845,7 +845,7 @@ string CVS::checkOut()
 		rc = 0;
 	}
 	
-	tmpf.erase();
+	tmpf.removeFile();
 	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
 
@@ -1195,7 +1195,7 @@ LyXVC::CommandResult SVN::checkIn(string const & msg, string & log)
 		if (!fileLock(false, tmpf, log))
 			ret = LyXVC::ErrorCommand;
 
-	tmpf.erase();
+	tmpf.removeFile();
 	if (!log.empty())
 		log.insert(0, "SVN: ");
 	if (ret == LyXVC::Success && log.empty())
@@ -1228,7 +1228,7 @@ bool SVN::isCheckInWithConfirmation()
 		FileName(owner_->filePath()));
 
 	docstring diff = tmpf.fileContents("UTF-8");
-	tmpf.erase();
+	tmpf.removeFile();
 
 	if (diff.empty())
 		return false;
@@ -1324,7 +1324,7 @@ string SVN::checkOut()
 
 	fileLock(true, tmpf, log);
 
-	tmpf.erase();
+	tmpf.removeFile();
 	return log.empty() ? string() : "SVN: " + log;
 }
 
@@ -1367,7 +1367,7 @@ string SVN::repoUpdate()
 			hideDialogs("file", 0);
 		}
 		if (ret == 1 ) {
-			tmpf.erase();
+			tmpf.removeFile();
 			return string();
 		}
 	}
@@ -1383,7 +1383,7 @@ string SVN::repoUpdate()
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
 
 	LYXERR(Debug::LYXVC, res);
-	tmpf.erase();
+	tmpf.removeFile();
 	return to_utf8(res);
 }
 
@@ -1424,7 +1424,7 @@ string SVN::lockingToggle()
 	if (ret)
 		return string();
 
-	tmpf.erase();
+	tmpf.removeFile();
 	frontend::Alert::warning(_("SVN File Locking"),
 		(locking ? _("Locking property unset.") : _("Locking property set.")) + "\n"
 		+ _("Do not forget to commit the locking property into the repository."),
@@ -1561,7 +1561,7 @@ bool SVN::getFileRevisionInfo()
 	}
 
 	ifs.close();
-	tmpf.erase();
+	tmpf.removeFile();
 	return !rev.empty();
 }
 
@@ -1585,7 +1585,7 @@ bool SVN::getTreeRevisionInfo()
 	string line;
 	getline(ifs, line);
 	ifs.close();
-	tmpf.erase();
+	tmpf.removeFile();
 
 	rev_tree_cache_ = line;
 	return !line.empty();
