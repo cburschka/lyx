@@ -74,6 +74,8 @@ Menuset
 		OptItem "Register...|R" "vc-register"
 		OptItem "Check In Changes...|I" "vc-check-in"
 		OptItem "Check Out for Edit|O" "vc-check-out"
+		OptItem "Copy|p" "vc-copy"
+		OptItem "Rename|R" "vc-rename"
 		OptItem "Update Local Directory From Repository|d" "vc-repo-update"
 		OptItem "Revert to Repository Version|v" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"

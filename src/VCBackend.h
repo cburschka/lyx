@@ -16,6 +16,7 @@
 #include "support/FileName.h"
 
 #include <string>
+#include <vector>
 
 #include "LyXVC.h"
 
@@ -31,7 +32,10 @@ public:
 	enum VCStatus {
 		UNLOCKED,
 		LOCKED,
-		NOLOCKING
+		NOLOCKING,
+		/// This file is not in version control, but it could be aded
+		/// (because the path is under version control)
+		UNVERSIONED,
 	};
 
 	VCS(Buffer * b) : owner_(b) {}
@@ -39,6 +43,12 @@ public:
 
 	/// register a file for version control
 	virtual void registrer(std::string const & msg) = 0;
+	/// can this operation be processed in the current VCS?
+	virtual bool renameEnabled() = 0;
+	/// rename a file. Return non-empty log on success, empty log on failure.
+	virtual std::string rename(support::FileName const &, std::string const &) = 0;
+	/// copy a file. Return non-empty log on success, empty log on failure.
+	virtual std::string copy(support::FileName const &, std::string const &) = 0;
 	/// check in the current revision.
         /// \p log is non-empty on success and may be empty on failure.
 	virtual LyXVC::CommandResult
@@ -142,6 +152,12 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
+	virtual bool renameEnabled();
+
+	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual std::string copy(support::FileName const &, std::string const &);
+
 	virtual LyXVC::CommandResult
 	checkIn(std::string const & msg, std::string & log);
 
@@ -216,6 +232,12 @@ public:
 	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
+
+	virtual bool renameEnabled();
+
+	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual std::string copy(support::FileName const &, std::string const &);
 
 	virtual LyXVC::CommandResult
 	checkIn(std::string const & msg, std::string & log);
@@ -347,6 +369,12 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
+	virtual bool renameEnabled();
+
+	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual std::string copy(support::FileName const &, std::string const &);
+
 	virtual LyXVC::CommandResult
 	checkIn(std::string const & msg, std::string & log);
 
@@ -398,6 +426,9 @@ protected:
 	bool isLocked() const;
 	/// acquire/release write lock for the current file
 	bool fileLock(bool lock, support::FileName const & tmpf, std::string & status);
+	/// Check in files \p f with log \p msg
+	LyXVC::CommandResult checkIn(std::vector<support::FileName> const & f,
+	                             std::string const & msg, std::string & log);
 
 private:
 	/// is the loaded file under locking policy?

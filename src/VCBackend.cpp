@@ -233,6 +233,35 @@ void RCS::registrer(string const & msg)
 }
 
 
+bool RCS::renameEnabled()
+{
+	return false;
+}
+
+
+string RCS::rename(support::FileName const & /*newFile*/, string const & /*msg*/)
+{
+	// not implemented, since a left-over file.lyx,v would be confusing.
+	return string();
+}
+
+
+string RCS::copy(support::FileName const & newFile, string const & msg)
+{
+	// RCS has no real copy command, so we create a poor mans version
+	support::FileName const oldFile(owner_->absFileName());
+	if (!oldFile.copyTo(newFile))
+		return string();
+	FileName path(oldFile.onlyPath());
+	string relFile(to_utf8(newFile.relPath(path.absFileName())));
+	string cmd = "ci -q -u -i -t-\"";
+	cmd += msg;
+	cmd += "\" ";
+	cmd += quoteName(relFile);
+	return doVCCommand(cmd, path) ? string() : "RCS: Proceeded";
+}
+
+
 LyXVC::CommandResult RCS::checkIn(string const & msg, string & log)
 {
 	int ret = doVCCommand("ci -q -u -m\"" + msg + "\" "
@@ -369,7 +398,7 @@ bool RCS::toggleReadOnlyEnabled()
 	// This got broken somewhere along lfuns dispatch reorganization.
 	// reloadBuffer would be needed after this, but thats problematic
 	// since we are inside Buffer::dispatch.
-	// return true;
+	// return return status() != UNVERSIONED;
 	return false;
 }
 
@@ -518,6 +547,7 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
+	vcstatus = UNVERSIONED;
 	while (getline(ifs, line)) {
 		LYXERR(Debug::LYXVC, "\t  line: " << line);
 		if (contains(line, tmpf)) {
@@ -708,6 +738,39 @@ void CVS::registrer(string const & msg)
 	doVCCommand("cvs -q add -m \"" + msg + "\" "
 		+ getTarget(File),
 		FileName(owner_->filePath()));
+}
+
+
+bool CVS::renameEnabled()
+{
+	return true;
+}
+
+
+string CVS::rename(support::FileName const & newFile, string const & msg)
+{
+	// CVS has no real rename command, so we create a poor mans version
+	support::FileName const oldFile(owner_->absFileName());
+	string ret = copy(newFile, msg);
+	if (ret.empty())
+		return ret;
+	string cmd = "cvs -q remove -m \"" + msg + "\" " +
+		quoteName(oldFile.onlyFileName());
+	FileName path(oldFile.onlyPath());
+	return doVCCommand(cmd, path) ? string() : ret;
+}
+
+
+string CVS::copy(support::FileName const & newFile, string const & msg)
+{
+	// CVS has no real copy command, so we create a poor mans version
+	support::FileName const oldFile(owner_->absFileName());
+	if (!oldFile.copyTo(newFile))
+		return string();
+	FileName path(oldFile.onlyPath());
+	string relFile(to_utf8(newFile.relPath(path.absFileName())));
+	string cmd("cvs -q add -m \"" + msg + "\" " + quoteName(relFile));
+	return doVCCommand(cmd, path) ? string() : "CVS: Proceeded";
 }
 
 
@@ -1097,14 +1160,18 @@ FileName const SVN::findFile(FileName const & file)
 
 void SVN::scanMaster()
 {
-	// vcstatus code is somewhat superflous, until we want
-	// to implement read-only toggle for svn.
-	vcstatus = NOLOCKING;
-	if (checkLockMode()) {
-		if (isLocked()) {
-			vcstatus = LOCKED;
-		} else {
-			vcstatus = UNLOCKED;
+	// vcstatus code other than UNVERSIONED is somewhat superflous,
+	// until we want to implement read-only toggle for svn.
+	FileName f = findFile(owner_->fileName());
+	if (f.empty()) {
+		vcstatus = UNVERSIONED;
+	} else {
+		vcstatus = NOLOCKING;
+		if (checkLockMode()) {
+			if (isLocked())
+				vcstatus = LOCKED;
+			else
+				vcstatus = UNLOCKED;
 		}
 	}
 }
@@ -1166,7 +1233,75 @@ void SVN::registrer(string const & /*msg*/)
 }
 
 
+bool SVN::renameEnabled()
+{
+	return true;
+}
+
+
+string SVN::rename(support::FileName const & newFile, string const & msg)
+{
+	// svn move does not require a log message, since it does not commit.
+	// In LyX we commit immediately afterwards, otherwise it could be
+	// confusing to the user to have two uncommitted files.
+	FileName path(owner_->filePath());
+	string relFile(to_utf8(newFile.relPath(path.absFileName())));
+	string cmd("svn move -q " + quoteName(onlyFileName(owner_->absFileName())) +
+	           ' ' + quoteName(relFile));
+	if (doVCCommand(cmd, path)) {
+		cmd = "svn revert -q " +
+			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
+			quoteName(relFile);
+		doVCCommand(cmd, path);
+		if (newFile.exists())
+			newFile.removeFile();
+		return string();
+	}
+	vector<support::FileName> f;
+	f.push_back(owner_->fileName());
+	f.push_back(newFile);
+	string log;
+	if (checkIn(f, msg, log) != LyXVC::Success) {
+		cmd = "svn revert -q " +
+			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
+			quoteName(relFile);
+		doVCCommand(cmd, path);
+		if (newFile.exists())
+			newFile.removeFile();
+		return string();
+	}
+	return log;
+}
+
+
+string SVN::copy(support::FileName const & newFile, string const & msg)
+{
+	// svn copy does not require a log message, since it does not commit.
+	// In LyX we commit immediately afterwards, otherwise it could be
+	// confusing to the user to have an uncommitted file.
+	FileName path(owner_->filePath());
+	string relFile(to_utf8(newFile.relPath(path.absFileName())));
+	string cmd("svn copy -q " + quoteName(onlyFileName(owner_->absFileName())) +
+	           ' ' + quoteName(relFile));
+	if (doVCCommand(cmd, path))
+		return string();
+	vector<support::FileName> f(1, newFile);
+	string log;
+	if (checkIn(f, msg, log) == LyXVC::Success)
+		return log;
+	return string();
+}
+
+
 LyXVC::CommandResult SVN::checkIn(string const & msg, string & log)
+{
+	vector<support::FileName> f(1, owner_->fileName());
+	return checkIn(f, msg, log);
+}
+
+
+LyXVC::CommandResult
+SVN::checkIn(vector<support::FileName> const & f, string const & msg, string & log)
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()){
@@ -1177,7 +1312,8 @@ LyXVC::CommandResult SVN::checkIn(string const & msg, string & log)
 
 	ostringstream os;
 	os << "svn commit -m \"" << msg << '"';
-	os << ' ' << quoteName(onlyFileName(owner_->absFileName()));
+	for (size_t i = 0; i < f.size(); ++i)
+		os << ' ' << quoteName(f[i].onlyFileName());
 	os << " > " << quoteName(tmpf.toFilesystemEncoding());
 	LyXVC::CommandResult ret =
 		doVCCommand(os.str(), FileName(owner_->filePath())) ?

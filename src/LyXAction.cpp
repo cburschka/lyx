@@ -2147,6 +2147,34 @@ void LyXAction::init()
  */
 		{ LFUN_VC_REGISTER, "vc-register", ReadOnly, System },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_VC_RENAME
+ * \li Action: Renames the document to another name.
+ * \li Notion: Renaming with revision history is only supported by SVN.
+               For CVS it is simulated by adding the document under a new
+               name and deleting the old one. For RCS it is not supported.
+               Disabled if uncommitted changes exist.
+ * \li Syntax: vc-rename <FILENAME> 
+ * \li Params: <FILENAME>: New name of the document.\n
+ *             A file dialog is opened if no filename is given.
+ * \li Origin: gb, 05 Feb 2013
+ * \endvar
+ */
+		{ LFUN_VC_RENAME, "vc-rename", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_COPY
+ * \li Action: Copies the document to another name.
+ * \li Notion: Copying with revision history is only supported by SVN.
+               For RCS and CVS it is simulated by adding the document
+               under a new name.
+               Disabled if uncommitted changes exist.
+ * \li Syntax: vc-copy <FILENAME> 
+ * \li Params: <FILENAME>: New name of the document.\n
+ *             A file dialog is opened if no filename is given.
+ * \li Origin: gb, 05 Feb 2013
+ * \endvar
+ */
+		{ LFUN_VC_COPY, "vc-copy", ReadOnly, System },
+/*!
  * \var lyx::FuncCode lyx::LFUN_VC_CHECK_IN
  * \li Action: Checks-in/commits the changes of the registered file to the repository.
  * \li Notion: In RCS case this also unlocks the file.

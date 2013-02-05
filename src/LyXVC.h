@@ -84,11 +84,22 @@ public:
 	// by the next multiple messages on the top of the processed dispatch
 	// machinery.
 
+	///
+	std::string rename(support::FileName const &);
+	/// Does the current VC support this operation?
+	bool renameEnabled() const;
+	///
+	std::string copy(support::FileName const &);
+	/// Does the current VC support this operation?
+	bool copyEnabled() const;
+
 	/// Unlock and commit changes.
 	/// \p log is non-empty on success and may be empty on failure.
 	CommandResult checkIn(std::string & log);
 	/// Does the current VC support this operation?
 	bool checkInEnabled() const;
+	/// Should a log message be provided for next checkin?
+	bool isCheckInWithConfirmation() const;
 
 	/// Lock/update and prepare to edit document. Returns log.
 	std::string checkOut();
@@ -146,6 +157,7 @@ public:
 	std::string toggleReadOnly();
 
 	/// Is the document under administration by VCS?
+	/// returns false for unregistered documents in a path managed by VCS
 	bool inUse() const;
 
 	/// Returns the RCS + version number for messages

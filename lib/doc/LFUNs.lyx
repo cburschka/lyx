@@ -83,7 +83,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2013-02-03
+LFUNs documentation automatically generated 2013-02-05
 \end_layout
 
 \begin_layout Standard
@@ -4140,6 +4140,68 @@ Syntax vc-register
 
 \begin_layout Description
 Origin Lgb, 1 Jul 1997
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_RENAME
+\end_layout
+
+\begin_layout Description
+Action Renames the document to another name.
+\end_layout
+
+\begin_layout Description
+Notion Renaming with revision history is only supported by SVN.
+ For CVS it is simulated by adding the document under a new name and deleting
+ the old one.
+ For RCS it is not supported.
+ Disabled if uncommitted changes exist.
+\end_layout
+
+\begin_layout Description
+Syntax vc-rename <FILENAME>
+\end_layout
+
+\begin_layout Description
+Params <FILENAME>: New name of the document.
+\begin_inset Newline newline
+\end_inset
+
+A file dialog is opened if no filename is given.
+\end_layout
+
+\begin_layout Description
+Origin gb, 05 Feb 2013
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_COPY
+\end_layout
+
+\begin_layout Description
+Action Copies the document to another name.
+\end_layout
+
+\begin_layout Description
+Notion Copying with revision history is only supported by SVN.
+ For RCS and CVS it is simulated by adding the document under a new name.
+ Disabled if uncommitted changes exist.
+\end_layout
+
+\begin_layout Description
+Syntax vc-copy <FILENAME>
+\end_layout
+
+\begin_layout Description
+Params <FILENAME>: New name of the document.
+\begin_inset Newline newline
+\end_inset
+
+A file dialog is opened if no filename is given.
+\end_layout
+
+\begin_layout Description
+Origin gb, 05 Feb 2013
 \end_layout
 
 \begin_layout Subsection*

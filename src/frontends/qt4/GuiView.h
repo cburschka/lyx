@@ -355,6 +355,8 @@ private:
 	///
 	bool exportBufferAs(Buffer & b);
 
+	///
+	enum RenameKind { LV_WRITE_AS, LV_VC_RENAME, LV_VC_COPY };
 	/// Save a buffer as a new file. 
 	/**
 	Write a buffer to a new file name and rename the buffer
@@ -369,8 +371,14 @@ private:
     If 'newname' is non-empty and has an absolute path, that is used.
     Otherwise the base directory of the buffer is used as the base
     for any relative path in 'newname'.
-	*/
-	bool renameBuffer(Buffer & b, docstring const & newname);
+
+	 \p kind controls what is done besides the pure renaming:
+         * LV_WRITE_AS  => The buffer is written without version control actions.
+         * LV_VC_RENAME => The file is renamed in version control.
+         * LV_VC_COPY   => The file is copied in version control.
+	 */
+	bool renameBuffer(Buffer & b, docstring const & newname,
+	                  RenameKind kind = LV_WRITE_AS);
 	///
 	bool saveBuffer(Buffer & b);
 	/// save and rename buffer to fn. If fn is empty, the buffer

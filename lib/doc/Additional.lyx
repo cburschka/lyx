@@ -19148,6 +19148,109 @@ co -f -u<version> <file-name>
 \begin_layout Subsubsection
 
 \family sans
+Copy
+\end_layout
+
+\begin_layout Standard
+This will create a copy of the current document.
+ Since RCS does not support copy operations natively, the version history
+ is not preserved, and the copy is added as a new file.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the copy operation.
+ After that the copy is created, both locally and in the repository.
+ If the parent directories of the copied and original document differ, all
+ relative paths of included files of the copy are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the copy is loaded instead of the original document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RCS
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Copy 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ci -q -u 
+\family typewriter
+-i 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
 Undo Last Checkin
 \end_layout
 
@@ -19552,6 +19655,237 @@ cvs -q unedit "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
+
+\family sans
+Copy
+\end_layout
+
+\begin_layout Standard
+This will create a copy of the current document.
+ Since CVS does not support copy operations natively, the version history
+ is not preserved, and the copy is added as a new file.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the copy operation.
+ After that the copy is created, both locally and in the repository.
+ If the parent directories of the copied and original document differ, all
+ relative paths of included files of the copy are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the copy is loaded instead of the original document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+CVS
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Copy 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Rename
+\end_layout
+
+\begin_layout Standard
+This will rename the current document.
+ Since CVS does not support rename operations natively, the version history
+ is not preserved, the renamed document is added as a new file, and the
+ original document is deleted.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the rename operation.
+ After that the document is renamed, both locally and in the repository.
+ If the parent directories of the new and old file names differ, all relative
+ paths of included files are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the document is reloaded using the new name.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+CVS
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Rename 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q remove 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Update of the local directory checkout from repository
 \end_layout
 
@@ -19923,6 +20257,168 @@ svn revert -q
 
 <file-name>
 \begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Copy
+\end_layout
+
+\begin_layout Standard
+This will create a copy of the current document including the version history.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the copy operation.
+ After that the copy is created, both locally and in the repository.
+ If the parent directories of the copied and original document differ, all
+ relative paths of included files of the copy are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the copy is loaded instead of the original document.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn copy -q 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Rename
+\end_layout
+
+\begin_layout Standard
+This will rename the current document including the version history.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the rename operation.
+ After that the document is renamed, both locally and in the repository.
+ If the parent directories of the new and old file names differ, all relative
+ paths of included files are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the document is reloaded using the new name.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn move -q 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
 \end_inset
 
 

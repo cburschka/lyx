@@ -173,6 +173,44 @@ bool LyXVC::registrer()
 }
 
 
+string LyXVC::rename(FileName const & fn)
+{
+	LYXERR(Debug::LYXVC, "LyXVC: rename");
+	if (!vcs || fileInVC(fn))
+		return string();
+	docstring response;
+	bool ok = Alert::askForText(response, _("LyX VC: Log message"),
+			_("(no log message)"));
+	if (!ok) {
+		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
+		return string();
+	}
+	if (response.empty())
+		response = _("(no log message)");
+	string ret = vcs->rename(fn, to_utf8(response));
+	return ret;
+}
+
+
+string LyXVC::copy(FileName const & fn)
+{
+	LYXERR(Debug::LYXVC, "LyXVC: copy");
+	if (!vcs || fileInVC(fn))
+		return string();
+	docstring response;
+	bool ok = Alert::askForText(response, _("LyX VC: Log message"),
+			_("(no log message)"));
+	if (!ok) {
+		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
+		return string();
+	}
+	if (response.empty())
+		response = _("(no log message)");
+	string ret = vcs->copy(fn, to_utf8(response));
+	return ret;
+}
+
+
 LyXVC::CommandResult LyXVC::checkIn(string & log)
 {
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
@@ -273,6 +311,7 @@ string LyXVC::toggleReadOnly()
 		return log;
 	}
 	case VCS::NOLOCKING:
+	case VCS::UNVERSIONED:
 		break;
 	}
 	return string();
@@ -282,7 +321,7 @@ string LyXVC::toggleReadOnly()
 bool LyXVC::inUse() const
 {
 	if (vcs)
-		return true;
+		return vcs->status() != VCS::UNVERSIONED;
 	return false;
 }
 
@@ -328,6 +367,20 @@ string LyXVC::revisionInfo(RevisionInfo const info) const
 }
 
 
+bool LyXVC::renameEnabled() const
+{
+	if (!inUse())
+		return false;
+	return vcs->renameEnabled();
+}
+
+
+bool LyXVC::copyEnabled() const
+{
+	return inUse();
+}
+
+
 bool LyXVC::checkOutEnabled() const
 {
 	return vcs && vcs->checkOutEnabled();
@@ -337,6 +390,12 @@ bool LyXVC::checkOutEnabled() const
 bool LyXVC::checkInEnabled() const
 {
 	return vcs && vcs->checkInEnabled();
+}
+
+
+bool LyXVC::isCheckInWithConfirmation() const
+{
+	return vcs && vcs->isCheckInWithConfirmation();
 }
 
 

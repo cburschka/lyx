@@ -1804,6 +1804,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_VC_REGISTER:
 		enable = doc_buffer && !doc_buffer->lyxvc().inUse();
 		break;
+	case LFUN_VC_RENAME:
+		enable = doc_buffer && doc_buffer->lyxvc().renameEnabled();
+		break;
+	case LFUN_VC_COPY:
+		enable = doc_buffer && doc_buffer->lyxvc().copyEnabled();
+		break;
 	case LFUN_VC_CHECK_IN:
 		enable = doc_buffer && doc_buffer->lyxvc().checkInEnabled();
 		break;
@@ -2209,7 +2215,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 }
 
 
-bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
+bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kind)
 {
 	FileName fname = b.fileName();
 	FileName const oldname = fname;
@@ -2263,26 +2269,73 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		int const ret = Alert::prompt(_("Chosen File Already Open"),
 			text, 0, 1, _("&Rename"), _("&Cancel"));
 		switch (ret) {
-		case 0: return renameBuffer(b, docstring());
+		case 0: return renameBuffer(b, docstring(), kind);
 		case 1: return false;
 		}
 		//return false;
 	}
-	
-	if (FileName(fname).exists()) {
+
+	bool const existsLocal = fname.exists();
+	bool const existsInVC = LyXVC::fileInVC(fname);
+	if (existsLocal || existsInVC) {
 		docstring const file = makeDisplayPath(fname.absFileName(), 30);
-		docstring const text = bformat(_("The document %1$s already "
-					   "exists.\n\nDo you want to "
-					   "overwrite that document?"),
-					 file);
-		int const ret = Alert::prompt(_("Overwrite document?"),
-			text, 0, 2, _("&Overwrite"), _("&Rename"), _("&Cancel"));
-		switch (ret) {
-		case 0: break;
-		case 1: return renameBuffer(b, docstring());
-		case 2: return false;
+		if (kind != LV_WRITE_AS && existsInVC) {
+			// renaming to a name that is already in VC
+			// would not work
+			docstring text = bformat(_("The document %1$s "
+					"is already registered.\n\n"
+					"Do you want to choose a new name?"),
+				file);
+			docstring const title = (kind == LV_VC_RENAME) ?
+				_("Rename document?") : _("Copy document?");
+			docstring const button = (kind == LV_VC_RENAME) ?
+				_("&Rename") : _("&Copy");
+			int const ret = Alert::prompt(title, text, 0, 1,
+				button, _("&Cancel"));
+			switch (ret) {
+			case 0: return renameBuffer(b, docstring(), kind);
+			case 1: return false;
+			}
+		}
+
+		if (existsLocal) {
+			docstring text = bformat(_("The document %1$s "
+					"already exists.\n\n"
+					"Do you want to overwrite that document?"),
+				file);
+			int const ret = Alert::prompt(_("Overwrite document?"),
+					text, 0, 2, _("&Overwrite"),
+					_("&Rename"), _("&Cancel"));
+			switch (ret) {
+			case 0: break;
+			case 1: return renameBuffer(b, docstring(), kind);
+			case 2: return false;
+			}
 		}
 	}
+
+	switch (kind) {
+	case LV_VC_RENAME: {
+		string msg = b.lyxvc().rename(fname);
+		if (msg.empty())
+			return false;
+		message(from_utf8(msg));
+		break;
+	}
+	case LV_VC_COPY: {
+		string msg = b.lyxvc().copy(fname);
+		if (msg.empty())
+			return false;
+		message(from_utf8(msg));
+		break;
+	}
+	case LV_WRITE_AS:
+		break;
+	}
+	// LyXVC created the file already in case of LV_VC_RENAME or
+	// LV_VC_COPY, but call saveBuffer() nevertheless to get
+	// relative paths of included stuff right if we moved e.g. from
+	// /a/b.lyx to /a/c/b.lyx.
 
 	bool const saved = saveBuffer(b, fname);
 	if (saved)
@@ -2412,7 +2465,7 @@ bool GuiView::saveBuffer(Buffer & b, FileName const & fn)
 		return false;
 	}
 
-	return saveBuffer(b);
+	return saveBuffer(b, fn);
 }
 
 
@@ -2808,6 +2861,36 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			}
 		}
 		break;
+
+	case LFUN_VC_RENAME:
+	case LFUN_VC_COPY: {
+		if (!buffer || !ensureBufferClean(buffer))
+			break;
+		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
+			if (buffer->lyxvc().isCheckInWithConfirmation()) {
+				// Some changes are not yet committed.
+				// We test here and not in getStatus(), since
+				// this test is expensive.
+				string log;
+				LyXVC::CommandResult ret =
+					buffer->lyxvc().checkIn(log);
+				dr.setMessage(log);
+				if (ret == LyXVC::ErrorCommand ||
+				    ret == LyXVC::Success)
+					reloadBuffer(*buffer);
+				if (buffer->lyxvc().isCheckInWithConfirmation()) {
+					frontend::Alert::error(
+						_("Revision control error."),
+						_("Document could not be checked in."));
+					break;
+				}
+			}
+			RenameKind const kind = (cmd.action() == LFUN_VC_RENAME) ?
+				LV_VC_RENAME : LV_VC_COPY;
+			renameBuffer(*buffer, cmd.argument(), kind);
+		}
+		break;
+	}
 
 	case LFUN_VC_CHECK_IN:
 		if (!buffer || !ensureBufferClean(buffer))
@@ -3606,6 +3689,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_VC_REGISTER:
+		case LFUN_VC_RENAME:
+		case LFUN_VC_COPY:
 		case LFUN_VC_CHECK_IN:
 		case LFUN_VC_CHECK_OUT:
 		case LFUN_VC_REPO_UPDATE:
