@@ -143,7 +143,7 @@ bool LyXVC::registrer()
 		if (svn_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with SVN");
-			vcs.reset(new SVN(cvs_entries, owner_));
+			vcs.reset(new SVN(svn_entries, owner_));
 
 		} else if (cvs_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
