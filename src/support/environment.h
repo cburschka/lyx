@@ -18,8 +18,11 @@
 namespace lyx {
 namespace support {
 
+/// @returns true if the environment variable @c name exists.
+bool hasEnv(std::string const & name);
+
 /// @returns the contents of the environment variable @c name encoded in utf8.
-std::string const getEnv(std::string const & envname);
+std::string const getEnv(std::string const & name);
 
 /** @returns the contents of the environment variable @c name,
  *  split into path elements using the OS-dependent separator token
@@ -53,6 +56,42 @@ void setEnvPath(std::string const & name, std::vector<std::string> const & env);
  *     "C:\foo\bar;C:\windows" on Windows.
  */
 void prependEnvPath(std::string const & name, std::string const & prefix);
+
+/** Remove the variable @c name from the environment.
+ *  @returns true if the variable was unset successfully.
+ */
+bool unsetEnv(std::string const & name);
+
+
+/** Utility class to change temporarily an environment variable. The
+ * variable is reset to its original state when the dummy EnvChanger
+ * variable is deleted.
+ */
+class EnvChanger {
+public:
+	///
+	EnvChanger(std::string const & name, std::string const & value)
+	: name_(name), set_(hasEnv(name)), value_(getEnv(name))
+	{
+			setEnv(name, value);
+	}
+	///
+	~EnvChanger()
+	{
+		if (set_)
+			setEnv(name_, value_);
+		else
+			unsetEnv(name_);
+	}
+
+private:
+	/// the name of the variable
+	std::string name_;
+	/// was the variable set?
+	bool set_;
+	///
+	std::string value_;
+};
 
 } // namespace support
 } // namespace lyx

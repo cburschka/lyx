@@ -28,10 +28,17 @@ using namespace std;
 namespace lyx {
 namespace support {
 
-string const getEnv(string const & envname)
+
+bool hasEnv(string const & name)
+{
+	return getenv(name.c_str());
+}
+
+
+string const getEnv(string const & name)
 {
 	// f.ex. what about error checking?
-	char const * const ch = getenv(envname.c_str());
+	char const * const ch = getenv(name.c_str());
 	return ch ? to_utf8(from_local8bit(ch)) : string();
 }
 
@@ -116,6 +123,21 @@ void prependEnvPath(string const & name, string const & prefix)
 
 	setEnvPath(name, env_var);
 }
+
+
+bool unsetEnv(string const & name)
+{
+#if defined(HAVE_UNSETENV)
+	// FIXME: does it leak?
+	return unsetenv(name.c_str()) == 0;
+#elif defined(HAVE_PUTENV)
+	// This is OK with MSVC and MinGW at least.
+	return putenv((name + "=").c_str()) == 0;
+#else
+#error No environment-unsetting function has been defined.
+#endif
+}
+
 
 } // namespace support
 } // namespace lyx

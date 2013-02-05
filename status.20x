@@ -35,6 +35,7 @@ What's new
 * TEX2LYX IMPROVEMENTS
 
 - support for listings with options (bug #8066).
+
 - add new option -m to select needed modules (bug #8393).
 
 
@@ -131,6 +132,8 @@ What's new
 
 - File format viewer & editor combo boxes are correctly initialized (bug 8237).
 
+-  Do not create an empty environment variable LC_ALL when launching
+   external processes (bug 8537).
 
 * DOCUMENTATION AND LOCALIZATION
 
