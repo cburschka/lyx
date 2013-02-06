@@ -122,10 +122,6 @@ status collapsed
 % this should be recognized as empty date:
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -971,35 +967,51 @@ verbatim:
 \end_layout
 
 \begin_layout Verbatim
-
-\end_layout
-\begin_layout Verbatim
 verbat  im % $ 02/19/12
 \end_layout
+
 \begin_layout Verbatim
 hjkh
 \end_layout
+
 \begin_layout Verbatim
-jkh \backslash  blah
+jkh 
+\backslash
+ blah
 \end_layout
+
 \begin_layout Verbatim
-\backslash begin{centering}
+
+\backslash
+begin{centering}
 \end_layout
+
 \begin_layout Verbatim
 
 \end_layout
+
 \begin_layout Verbatim
 
 \end_layout
+
 \begin_layout Verbatim
-zzz \backslash section{
-\end_layout
-\begin_layout Verbatim
-\backslash end{raggedleft}
+zzz 
+\backslash
+section{
 \end_layout
 
+\begin_layout Verbatim
+
+\backslash
+end{raggedleft}
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
 
 \begin_layout Standard
+
 
 \begin_inset ERT
 status collapsed
@@ -1014,7 +1026,8 @@ verb~
 
 \end_inset
 
- 
+
+
 \begin_inset ERT
 status collapsed
 
@@ -1028,7 +1041,8 @@ item[ABC] first item+
 
 \end_inset
 
- 
+
+
 \begin_inset ERT
 status collapsed
 
@@ -1089,10 +1103,6 @@ status collapsed
 
 \begin_layout Plain Layout
 %dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
