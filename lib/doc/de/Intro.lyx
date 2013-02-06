@@ -2400,22 +2400,21 @@ Wie alle anderen Bereiche von LyX kann auch das Dokumentationsteam Hilfe
 \end_layout
 
 \begin_layout Enumerate
-Besorgen Sie sich die neueste Version der LyX-Quellen.
- Packen Sie das Archiv aus.
-\begin_inset Foot
+Besorgen Sie sich die neueste Version der LyX-Quellen von
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-Sie können sich die aktuellste Version auch aus dem LyX-SVN-Archiv besorgen.
+http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \end_layout
 
 \end_inset
 
- Im Hauptverzeichnis finden Sie das Unterverzeichnis 
-\family typewriter
-lib/doc
-\family default
-.
+ 
 \end_layout
 
 \begin_layout Enumerate
