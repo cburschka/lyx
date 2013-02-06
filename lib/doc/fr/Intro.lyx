@@ -1580,7 +1580,7 @@ Le tableau
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Unités"
+reference "tab:Unités"
 
 \end_inset
 
@@ -1589,7 +1589,6 @@ reference "cap:Unités"
 
 \begin_layout Standard
 \begin_inset Float table
-placement t
 wide false
 sideways false
 status open
@@ -1600,7 +1599,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Unités"
+name "tab:Unités"
 
 \end_inset
 
@@ -1623,9 +1622,9 @@ Unités
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1700,7 +1699,15 @@ in
 \begin_inset Text
 
 \begin_layout Plain Layout
-inch/pouce
+inch/pouce (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2.54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
