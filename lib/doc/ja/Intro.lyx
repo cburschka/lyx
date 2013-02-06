@@ -2783,7 +2783,7 @@ Next
 この文書で用いられる単位の理解のために、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:画像用単位"
+reference "tab:画像用単位"
 
 \end_inset
 
@@ -2792,7 +2792,6 @@ reference "cap:画像用単位"
 
 \begin_layout Standard
 \begin_inset Float table
-placement t
 wide false
 sideways false
 status open
@@ -2803,7 +2802,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:画像用単位"
+name "tab:画像用単位"
 
 \end_inset
 
@@ -2826,8 +2825,8 @@ name "cap:画像用単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -2903,7 +2902,15 @@ in
 \begin_inset Text
 
 \begin_layout Plain Layout
-インチ
+インチ (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2.54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset

@@ -113,8 +113,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list: 
+If you have comments on or corrections to this documentation, please send
+ them to the LyX Documentation mailing list: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -150,10 +150,10 @@ What is LyX?
 \begin_layout Standard
 LyX is a document preparation system.
  It excels at letting you create complex technical and scientific articles
- with mathematics, cross-references, bibliographies, indices, etc.
+ with mathematics, cross-references, bibliographies, indexes, etc.
  It is very good for working with documents of any length in which the usual
  processing abilities are required: automatic sectioning and pagination,
- spell checking, and so forth.
+ spell checking and so forth.
  It can also be used to write a letter to your mom, though granted, there
  are probably simpler programs available for that.
  It is definitely not the best tool for creating banners, flyers, or advertiseme
@@ -291,9 +291,9 @@ Introduction
 
 .
  Of course, if you later decide that this section belongs someplace else
- in the document, or if you insert a new section before it, you need to
- change the numbering for this and all following sections, as well as any
- entry in the table of contents.
+ in the document or if you insert a new section before it, you need to change
+ the numbering for this and all following sections, as well as any entry
+ in the table of contents.
 \end_layout
 
 \begin_layout Standard
@@ -360,8 +360,7 @@ Here's another example.
  that label should be, how many blank lines to put between each item, and
  so on.
  Under LyX, you have only two concerns: what kind of list is this, and what
- do I want to put in it.
- That's it.
+ do I want to put in it? That is it.
 \end_layout
 
 \begin_layout Standard
@@ -488,7 +487,7 @@ Space
 Tab stops, along with a ruler showing you the position of things on the
  page, are useless in LyX.
  The program worries about where things go on the page, not you.
- Extra whitespace is similar; LyX adds them where necessary, depending on
+ Extra whitespace is similar; LyX adds it where necessary, depending on
  context.
  Not being able to type two blank lines in a row will be annoying at first,
  but it makes more sense once you're thinking in WYSIWYM terms.
@@ -612,18 +611,10 @@ status collapsed
 
 \begin_layout Plain Layout
 The source for the info in this section is 
-\begin_inset Quotes eld
-\end_inset
-
-
 \emph on
 A Guide to LaTeX2e
 \emph default
-,
-\begin_inset Quotes erd
-\end_inset
-
- by Helmut Kopka and Patrick Daly, which has an entry in the bibliography
+, by Helmut Kopka and Patrick Daly, which has an entry in the bibliography
  of the 
 \emph on
 User's Guide
@@ -647,7 +638,7 @@ tricks
 \end_inset
 
  of the printing trade were modeled by Knuth as computer algorithms and
- incorporated into TeX, thus its excellent printed appearance.
+ incorporated into TeX, hence its excellent printed appearance.
  What comes directly out of TeX is the portable document format 
 \emph on
 pdf
@@ -739,23 +730,22 @@ LaTeX: Macro package built upon TeX\SpecialChar \@.
 \end_layout
 
 \begin_layout Description
-classes: Descriptions of a type of document, using LaTeX\SpecialChar \@.
+classes: Descriptions of types of document used with LaTeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Description
-styles: Alters the default behavior of LaTeX in some way.
+styles: Descriptions of the default behavior of particular elements of LaTeX.
 \end_layout
 
 \begin_layout Description
-LyX: Visual, WYSIWYM word-processor that uses LaTeX to do its typesetting.
+LyX: Visual, WYSIWYM document processor that uses LaTeX to do its typesetting.
 \end_layout
 
 \begin_layout Standard
-This section attempts to account for the difference between LyX and other
- word processors.
+This section attempts to explain the difference between LyX and a word processor.
  Simply put, LaTeX is the difference.
- By using LaTeX as its backend, LyX helps you think more about
+ By using LaTeX as its backend, LyX helps you to think more about
 \emph on
  what
 \emph default
@@ -785,8 +775,8 @@ To make it easier to answer your questions and describe all of the features
 \end_layout
 
 \begin_layout Standard
-The developing of LyX will hopefully never stop, so that some of the documentati
-on may be incomplete or a bit out of date, though we try to keep up.
+Hopefully, the development of LyX will never stop; so some of the documentation
+ may be incomplete or a bit out of date, though we try to keep up-to-date.
  Like the rest of LyX, the manuals are the work of a group of volunteers
  who have 
 \begin_inset Quotes eld
@@ -796,7 +786,11 @@ Real Jobs
 \begin_inset Quotes erd
 \end_inset
 
-, families, dishes to clean, kitty litter to dispose of, et cetera.
+, families, dishes to clean, 
+\emph on
+et cetera
+\emph default
+.
  If you want to help out, be sure to read Section
 \begin_inset space ~
 \end_inset
@@ -814,7 +808,7 @@ reference "sec:Contrib"
 \begin_layout Standard
 Also, please do us a favor – if anything in these manuals confuses you,
  is unclear, or wrong, don't hesitate to let us know! You can reach the
- current document maintainers by mailing to 
+ current document maintainers by emailing 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -841,7 +835,7 @@ The Format of the Manuals
 \end_layout
 
 \begin_layout Standard
-Some may have printed out the manuals.
+Some of you may have printed out the manuals.
  Others may be reading them within LyX.
  There are some differences between the LyX-file and the printed version.
  In LyX, the title is simply at the top of the document, not formatted on
@@ -867,8 +861,8 @@ Navigate
 \begin_layout Standard
 In the printed manuals, all cross-references appear as the actual numbers
  for a chapter, section, subsection, and so on.
- Online, however, all cross-references appear as a light-grey box like the
- following: 
+ In the LyX-file, however, all cross-references appear as a light-grey box
+ like the following: 
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
 	scale 75
@@ -878,8 +872,8 @@ In the printed manuals, all cross-references appear as the actual numbers
 .
  If you click on that box with the left mouse button, a dialog box will
  appear containing a list of all the cross-references in the document.
- You can go to the referred section by right-clicking on the box or by clicking
- the button 
+ You can go to the referenced section by right-clicking on the box or by
+ clicking the button 
 \family sans
 Go
 \begin_inset space ~
@@ -893,7 +887,7 @@ Label
 \family default
  in the opened dialog.
  Going back to where you came from is just as easy.
- Clicking on 
+ Click on 
 \family sans
 Go
 \begin_inset space ~
@@ -906,7 +900,7 @@ Back
 
 \begin_layout Standard
 Now that we've cleared up some of the differences between the printed and
- online versions of this file, we can start looking at the format of this
+ LyX-file versions of this file, we can start looking at the format of this
  document.
  You'll occasionally notice things in different fonts:
 \end_layout
@@ -963,7 +957,7 @@ When we do need to reference keys, we'll use the following prefixing convention:
 
 
 \family sans
-Ctrl-
+Ctrl+
 \family default
 
 \begin_inset Quotes erd
@@ -982,7 +976,7 @@ Control
 
 
 \family sans
-Shift-
+Shift+
 \family default
 
 \begin_inset Quotes erd
@@ -1001,7 +995,7 @@ Shift
 
 
 \family sans
-Alt-
+Alt+
 \family default
 
 \begin_inset Quotes erd
@@ -1302,7 +1296,7 @@ To understand the units described in this documentation, Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Units-for-image"
+reference "tab:Units"
 
 \end_inset
 
@@ -1311,7 +1305,6 @@ reference "cap:Units-for-image"
 
 \begin_layout Standard
 \begin_inset Float table
-placement t
 wide false
 sideways false
 status open
@@ -1322,7 +1315,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Units-for-image"
+name "tab:Units"
 
 \end_inset
 
@@ -1345,11 +1338,11 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1422,7 +1415,15 @@ in
 \begin_inset Text
 
 \begin_layout Plain Layout
-inch
+inch (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2.54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
@@ -1860,7 +1861,7 @@ LyX for LaTeX users.
 \begin_inset Quotes erd
 \end_inset
 
- (Skimming the rest of the document wouldn't hurt, either.)
+ (Skimming through the rest of the document wouldn't hurt, either.)
 \end_layout
 
 \begin_layout Description
@@ -1874,7 +1875,7 @@ Guide The primary documentation.
 most
 \emph default
  of the basic operation and available features of LyX here.
- The main manual assumes that you've read the 
+ The main manual assumes that you have read the 
 \emph on
 Tutorial
 \emph default
@@ -1892,7 +1893,7 @@ User's Guide
 \emph default
 .
  Documents in detail how to use tables, graphics, floats, notes, program
- listings, and boxes.
+ listings and boxes.
  It also includes many tricks of the LaTeX masters.
 \end_layout
 
@@ -1902,7 +1903,7 @@ Math Extension of the
 User's Guide
 \emph default
 .
- Documents in detail how to typeset any kind of formulas.
+ Documents in detail how to typeset any kind of formula.
 \end_layout
 
 \begin_layout Description
@@ -1915,21 +1916,21 @@ Features Extension of the
 User's Guide
 \emph default
 .
- Documents how to use raw LaTeX commands, additional layouts, and special-purpos
-e editing features.
+ Documents how to use raw LaTeX commands, additional layouts and special-purpose
+ editing features.
 \end_layout
 
 \begin_layout Description
 Customization A description of advanced LyX features, including how to customize
  the overall behavior of LyX\SpecialChar \@.
  This includes such things as keybindings, internati
-onalization, and configuration files.
+onalization and configuration files.
  It also includes information about layout files, which are needed to get
  LyX to support LaTeX classes or packages.
 \end_layout
 
 \begin_layout Description
-Shortcuts Tables with the currently defined LyX shortcuts.
+Shortcuts Tables of the currently defined LyX shortcuts.
 \end_layout
 
 \begin_layout Description
@@ -1937,8 +1938,8 @@ LaTeX
 \begin_inset space ~
 \end_inset
 
-Configuration LyX investigates your system upon installation.
- This file contains info on what LyX learned about your installation.
+Configuration A report produced by LyX about your system.
+ This file contains information on what LyX learned about your installation.
  Check it to see if you're missing something you might like to have.
 \end_layout
 
@@ -2080,7 +2081,7 @@ A useful bug report will at a minimum include the version of LyX you are
  Accurate, detailed descriptions are preferred - the more time developers
  have to spend to pinpoint the source of a bug, the less time they have
  for other improvements.
- Mention the system and system version you are running LyX with.
+ Mention the system and system version on which you are running LyX.
  Give the versions of the libraries you have installed on your system, and,
  if relevant, the versions of external programs that LyX uses.
  If it's a compilation or configuration problem, include the file 
