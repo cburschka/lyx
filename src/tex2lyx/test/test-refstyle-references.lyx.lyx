@@ -17,7 +17,9 @@
 \AtBeginDocument{\providecommand{\secref}[1]{\ref{sec:#1}}}
 \AtBeginDocument{\providecommand{\subref}[1]{\ref{sub:#1}}}
 \AtBeginDocument{\providecommand{\parref}[1]{\ref{par:#1}}}
-\AtBeginDocument{\providecommand{\Staref}[1]{\ref{Sta:#1}}}
+\AtBeginDocument{\providecommand{\figref}[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand{\tabref}[1]{\ref{tab:#1}}}
+\AtBeginDocument{\providecommand{\algref}[1]{\ref{alg:#1}}}
 \AtBeginDocument{\providecommand{\fnref}[1]{\ref{fn:#1}}}
 \AtBeginDocument{\providecommand{\enuref}[1]{\ref{enu:#1}}}
 \AtBeginDocument{\providecommand{\eqref}[1]{\ref{eq:#1}}}
@@ -25,6 +27,10 @@
 \AtBeginDocument{\providecommand{\thmref}[1]{\ref{thm:#1}}}
 \AtBeginDocument{\providecommand{\corref}[1]{\ref{cor:#1}}}
 \AtBeginDocument{\providecommand{\propref}[1]{\ref{prop:#1}}}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}[chapter]
+\providecommand{\algorithmname}{Algorithm}
+\floatname{algorithm}{\protect\algorithmname}
 \RS@ifundefined{subref}
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
   {}
@@ -326,14 +332,14 @@ protect
 \begin_inset Caption Standard
 
 \begin_layout Standard
-
+figure
 \begin_inset CommandInset label
 LatexCommand label
-name "Sta:figure"
+name "fig:figure"
 
 \end_inset
 
-figure
+
 \end_layout
 
 \end_inset
@@ -350,7 +356,7 @@ figure
 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "Sta:figure"
+reference "fig:figure"
 
 \end_inset
 
@@ -382,14 +388,14 @@ protect
 \begin_inset Caption Standard
 
 \begin_layout Standard
-
+table
 \begin_inset CommandInset label
 LatexCommand label
-name "Sta:table"
+name "tab:table"
 
 \end_inset
 
-table
+
 \end_layout
 
 \end_inset
@@ -406,7 +412,7 @@ table
 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "Sta:table"
+reference "tab:table"
 
 \end_inset
 
@@ -441,7 +447,7 @@ protect
 algorithm
 \begin_inset CommandInset label
 LatexCommand label
-name "Sta:algorithm"
+name "alg:algorithm"
 
 \end_inset
 
@@ -462,7 +468,7 @@ name "Sta:algorithm"
 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "Sta:algorithm"
+reference "alg:algorithm"
 
 \end_inset
 
