@@ -47,6 +47,8 @@ public:
 	virtual bool renameEnabled() = 0;
 	/// rename a file. Return non-empty log on success, empty log on failure.
 	virtual std::string rename(support::FileName const &, std::string const &) = 0;
+	/// can this operation be processed in the current VCS?
+	virtual bool copyEnabled() = 0;
 	/// copy a file. Return non-empty log on success, empty log on failure.
 	virtual std::string copy(support::FileName const &, std::string const &) = 0;
 	/// check in the current revision.
@@ -148,6 +150,7 @@ public:
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
 
+	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
@@ -155,6 +158,8 @@ public:
 	virtual bool renameEnabled();
 
 	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual bool copyEnabled();
 
 	virtual std::string copy(support::FileName const &, std::string const &);
 
@@ -229,6 +234,7 @@ public:
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
 
+	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
@@ -236,6 +242,8 @@ public:
 	virtual bool renameEnabled();
 
 	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual bool copyEnabled();
 
 	virtual std::string copy(support::FileName const &, std::string const &);
 
@@ -365,6 +373,7 @@ public:
 	/// return the revision file for the given file, if found
 	static support::FileName const findFile(support::FileName const & file);
 
+	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
@@ -372,6 +381,8 @@ public:
 	virtual bool renameEnabled();
 
 	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual bool copyEnabled();
 
 	virtual std::string copy(support::FileName const &, std::string const &);
 
@@ -452,6 +463,85 @@ private:
 	bool getTreeRevisionInfo();
 	/// cache for tree revision number, "?" if already unsuccessful
 	std::string rev_tree_cache_;
+};
+
+
+/**
+ * Very basic git support:
+ * Remote repos are completely ignored, only the local tree is considered.
+ * How push and pull could be integrated with the LyX VCS interface needs
+ * to be discussed.
+ */
+class GIT : public VCS {
+public:
+	///
+	explicit
+	GIT(support::FileName const & m, Buffer * b);
+
+	/// return the revision file for the given file, if found
+	static support::FileName const findFile(support::FileName const & file);
+
+	/// get file from repo, the caller must ensure that it does not exist locally
+	static bool retrieve(support::FileName const & file);
+
+	virtual void registrer(std::string const & msg);
+
+	virtual bool renameEnabled();
+
+	virtual std::string rename(support::FileName const &, std::string const &);
+
+	virtual bool copyEnabled();
+
+	virtual std::string copy(support::FileName const &, std::string const &);
+
+	virtual LyXVC::CommandResult
+	checkIn(std::string const & msg, std::string & log);
+
+	virtual bool checkInEnabled();
+
+	virtual bool isCheckInWithConfirmation();
+
+	virtual std::string checkOut();
+
+	virtual bool checkOutEnabled();
+
+	virtual std::string repoUpdate();
+
+	virtual bool repoUpdateEnabled();
+
+	virtual std::string lockingToggle();
+
+	virtual bool lockingToggleEnabled();
+
+	virtual bool revert();
+
+	virtual bool isRevertWithConfirmation();
+
+	virtual void undoLast();
+
+	virtual bool undoLastEnabled();
+
+	virtual void getLog(support::FileName const &);
+
+	virtual std::string const versionString() const {
+		return "GIT: ?";
+	}
+
+	virtual bool toggleReadOnlyEnabled();
+
+	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
+
+	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
+
+	virtual bool prepareFileRevisionEnabled();
+
+protected:
+	virtual void scanMaster();
+	/// Check for messages in svn output. Returns error.
+	std::string scanLogFile(support::FileName const & f, std::string & status);
+	/// Check in files \p f with log \p msg
+	LyXVC::CommandResult checkIn(std::vector<support::FileName> const & f,
+	                             std::string const & msg, std::string & log);
 };
 
 } // namespace lyx

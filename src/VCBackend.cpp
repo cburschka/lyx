@@ -246,6 +246,12 @@ string RCS::rename(support::FileName const & /*newFile*/, string const & /*msg*/
 }
 
 
+bool RCS::copyEnabled()
+{
+	return true;
+}
+
+
 string RCS::copy(support::FileName const & newFile, string const & msg)
 {
 	// RCS has no real copy command, so we create a poor mans version
@@ -761,6 +767,12 @@ string CVS::rename(support::FileName const & newFile, string const & msg)
 }
 
 
+bool CVS::copyEnabled()
+{
+	return true;
+}
+
+
 string CVS::copy(support::FileName const & newFile, string const & msg)
 {
 	// CVS has no real copy command, so we create a poor mans version
@@ -1153,6 +1165,7 @@ FileName const SVN::findFile(FileName const & file)
 	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname)
 						+ " > " + quoteName(tmpf.toFilesystemEncoding()),
 						file.onlyPath());
+	tmpf.removeFile();
 	LYXERR(Debug::LYXVC, "SVN control: " << (found ? "enabled" : "disabled"));
 	return found ? file : FileName();
 }
@@ -1271,6 +1284,12 @@ string SVN::rename(support::FileName const & newFile, string const & msg)
 		return string();
 	}
 	return log;
+}
+
+
+bool SVN::copyEnabled()
+{
+	return true;
 }
 
 
@@ -1616,13 +1635,13 @@ bool SVN::undoLastEnabled()
 string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 {
 	if (info == LyXVC::Tree) {
-			if (rev_tree_cache_.empty())
-				if (!getTreeRevisionInfo())
-					rev_tree_cache_ = "?";
-			if (rev_tree_cache_ == "?")
-				return string();
+		if (rev_tree_cache_.empty())
+			if (!getTreeRevisionInfo())
+				rev_tree_cache_ = "?";
+		if (rev_tree_cache_ == "?")
+			return string();
 
-			return rev_tree_cache_;
+		return rev_tree_cache_;
 	}
 
 	// fill the rest of the attributes for a single file
@@ -1781,6 +1800,345 @@ bool SVN::prepareFileRevisionEnabled()
 
 
 bool SVN::toggleReadOnlyEnabled()
+{
+	return false;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// GIT
+//
+/////////////////////////////////////////////////////////////////////
+
+GIT::GIT(FileName const & m, Buffer * b) : VCS(b)
+{
+	master_ = m;
+	scanMaster();
+}
+
+
+FileName const GIT::findFile(FileName const & file)
+{
+	// First we check the existence of repository meta data.
+	if (!VCS::checkparentdirs(file, ".git")) {
+		LYXERR(Debug::LYXVC, "Cannot find GIT meta data for " << file);
+		return FileName();
+	}
+
+	// Now we check the status of the file.
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return FileName();
+	}
+
+	// --porcelain selects a format that is supposed to be stable across
+	// git versions
+	string const fname = onlyFileName(file.absFileName());
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under git control for `"
+			<< fname << '\'');
+	bool found = 0 == doVCCommandCall("git status --porcelain " +
+				quoteName(fname) + " > " +
+				quoteName(tmpf.toFilesystemEncoding()),
+			file.onlyPath());
+	if (found)
+	{
+		// The output contains a line starting with "??" for unknown
+		// files, no line for known unmodified files and a line
+		// starting with "M" or something else for modified/deleted
+		// etc. files.
+		ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+		string test;
+		if ((ifs >> test))
+			found = (test != "??");
+		// else is no error
+	}
+	tmpf.removeFile();
+	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
+	return found ? file : FileName();
+}
+
+
+void GIT::scanMaster()
+{
+	// vcstatus code other than UNVERSIONED is somewhat superflous,
+	// until we want to implement read-only toggle for git.
+	FileName f = findFile(owner_->fileName());
+	if (f.empty())
+		vcstatus = UNVERSIONED;
+	else
+		vcstatus = NOLOCKING;
+}
+
+
+bool GIT::retrieve(FileName const & file)
+{
+	LYXERR(Debug::LYXVC, "LyXVC::GIT: retrieve.\n\t" << file);
+	// The caller ensures that file does not exist, so no need to check that.
+	return doVCCommandCall("git checkout -q " + quoteName(file.onlyFileName()),
+	                       file.onlyPath()) == 0;
+}
+
+
+void GIT::registrer(string const & /*msg*/)
+{
+	doVCCommand("git add " + quoteName(onlyFileName(owner_->absFileName())),
+		    FileName(owner_->filePath()));
+}
+
+
+bool GIT::renameEnabled()
+{
+	return true;
+}
+
+
+string GIT::rename(support::FileName const & newFile, string const & msg)
+{
+	// git mv does not require a log message, since it does not commit.
+	// In LyX we commit immediately afterwards, otherwise it could be
+	// confusing to the user to have two uncommitted files.
+	FileName path(owner_->filePath());
+	string relFile(to_utf8(newFile.relPath(path.absFileName())));
+	string cmd("git mv " + quoteName(onlyFileName(owner_->absFileName())) +
+	           ' ' + quoteName(relFile));
+	if (doVCCommand(cmd, path)) {
+		cmd = "git checkout -q " +
+			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
+			quoteName(relFile);
+		doVCCommand(cmd, path);
+		if (newFile.exists())
+			newFile.removeFile();
+		return string();
+	}
+	vector<support::FileName> f;
+	f.push_back(owner_->fileName());
+	f.push_back(newFile);
+	string log;
+	if (checkIn(f, msg, log) != LyXVC::Success) {
+		cmd = "git checkout -q " +
+			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
+			quoteName(relFile);
+		doVCCommand(cmd, path);
+		if (newFile.exists())
+			newFile.removeFile();
+		return string();
+	}
+	return log;
+}
+
+
+bool GIT::copyEnabled()
+{
+	return false;
+}
+
+
+string GIT::copy(support::FileName const & /*newFile*/, string const & /*msg*/)
+{
+	// git does not support copy with history preservation
+	return string();
+}
+
+
+LyXVC::CommandResult GIT::checkIn(string const & msg, string & log)
+{
+	vector<support::FileName> f(1, owner_->fileName());
+	return checkIn(f, msg, log);
+}
+
+
+LyXVC::CommandResult
+GIT::checkIn(vector<support::FileName> const & f, string const & msg, string & log)
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()){
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		log = N_("Error: Could not generate logfile.");
+		return LyXVC::ErrorBefore;
+	}
+
+	ostringstream os;
+	os << "git commit -m \"" << msg << '"';
+	for (size_t i = 0; i < f.size(); ++i)
+		os << ' ' << quoteName(f[i].onlyFileName());
+	os << " > " << quoteName(tmpf.toFilesystemEncoding());
+	LyXVC::CommandResult ret =
+		doVCCommand(os.str(), FileName(owner_->filePath())) ?
+			LyXVC::ErrorCommand : LyXVC::Success;
+
+	string res = scanLogFile(tmpf, log);
+	if (!res.empty()) {
+		frontend::Alert::error(_("Revision control error."),
+				_("Error when committing to repository.\n"
+				"You have to manually resolve the problem.\n"
+				"LyX will reopen the document after you press OK."));
+		ret = LyXVC::ErrorCommand;
+	}
+
+	tmpf.removeFile();
+	if (!log.empty())
+		log.insert(0, "GIT: ");
+	if (ret == LyXVC::Success && log.empty())
+		log = "GIT: Proceeded";
+	return ret;
+}
+
+
+bool GIT::checkInEnabled()
+{
+	return true;
+}
+
+
+bool GIT::isCheckInWithConfirmation()
+{
+	// FIXME one day common getDiff and perhaps OpMode for all backends
+
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return true;
+	}
+
+	doVCCommandCall("git diff " + quoteName(owner_->absFileName())
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+
+	docstring diff = tmpf.fileContents("UTF-8");
+	tmpf.removeFile();
+
+	if (diff.empty())
+		return false;
+
+	return true;
+}
+
+
+// FIXME Correctly return code should be checked instead of this.
+// This would need another solution than just plain startscript.
+// Hint from Andre': QProcess::readAllStandardError()...
+string GIT::scanLogFile(FileName const & f, string & status)
+{
+	ifstream ifs(f.toFilesystemEncoding().c_str());
+	string line;
+
+	while (ifs) {
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line << "\n");
+		if (!line.empty()) 
+			status += line + "; ";
+		if (prefixIs(line, "C ") || prefixIs(line, "CU ")
+					 || contains(line, "Commit failed")) {
+			ifs.close();
+			return line;
+		}
+	}
+	ifs.close();
+	return string();
+}
+
+
+string GIT::checkOut()
+{
+	return string();
+}
+
+
+bool GIT::checkOutEnabled()
+{
+	return false;
+}
+
+
+string GIT::repoUpdate()
+{
+	return string();
+}
+
+
+bool GIT::repoUpdateEnabled()
+{
+	return false;
+}
+
+
+string GIT::lockingToggle()
+{
+	return string();
+}
+
+
+bool GIT::lockingToggleEnabled()
+{
+	return false;
+}
+
+
+bool GIT::revert()
+{
+	// Reverts to the version in GIT repository and
+	// gets the updated version from the repository.
+	string const fil = quoteName(onlyFileName(owner_->absFileName()));
+
+	if (doVCCommand("git checkout -q " + fil,
+		    FileName(owner_->filePath())))
+		return false;
+	owner_->markClean();
+	return true;
+}
+
+
+bool GIT::isRevertWithConfirmation()
+{
+	//FIXME owner && diff
+	return true;
+}
+
+
+void GIT::undoLast()
+{
+	// merge the current with the previous version
+	// in a reverse patch kind of way, so that the
+	// result is to revert the last changes.
+	lyxerr << "Sorry, not implemented." << endl;
+}
+
+
+bool GIT::undoLastEnabled()
+{
+	return false;
+}
+
+
+string GIT::revisionInfo(LyXVC::RevisionInfo const /*info*/)
+{
+	return string();
+}
+
+
+void GIT::getLog(FileName const & tmpf)
+{
+	doVCCommand("git log " + quoteName(onlyFileName(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+}
+
+
+bool GIT::prepareFileRevision(string const & /*revis*/, string & /*f*/)
+{
+	return false;
+}
+
+
+bool GIT::prepareFileRevisionEnabled()
+{
+	return false;
+}
+
+
+bool GIT::toggleReadOnlyEnabled()
 {
 	return false;
 }

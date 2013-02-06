@@ -53,6 +53,8 @@ bool LyXVC::fileInVC(FileName const & fn)
 		return true;
 	if (!SVN::findFile(fn).empty())
 		return true;
+	if (!GIT::findFile(fn).empty())
+		return true;
 	return false;
 }
 
@@ -75,6 +77,11 @@ bool LyXVC::file_found_hook(FileName const & fn)
 		vcs.reset(new SVN(found_file, owner_));
 		return true;
 	}
+	// Check if file is under GIT
+	if (!(found_file = GIT::findFile(fn)).empty()) {
+		vcs.reset(new GIT(found_file, owner_));
+		return true;
+	}
 
 	// file is not under any VCS.
 	vcs.reset(0);
@@ -90,7 +97,8 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	bool foundRCS = !RCS::findFile(fn).empty();
 	bool foundCVS = foundRCS ? false : !CVS::findFile(fn).empty();
 	bool foundSVN = (foundRCS || foundCVS) ? false : !SVN::findFile(fn).empty();
-	if (foundRCS || foundCVS || foundSVN) {
+	bool foundGIT = (foundRCS || foundCVS || foundSVN) ? false : !GIT::findFile(fn).empty();
+	if (foundRCS || foundCVS || foundSVN || foundGIT) {
 		docstring const file = makeDisplayPath(fn.absFileName(), 20);
 		docstring const text =
 			bformat(_("Do you want to retrieve the document"
@@ -108,8 +116,10 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 				return RCS::retrieve(fn);
 			else if (foundCVS)
 				return CVS::retrieve(fn);
-			else
+			else if (foundSVN)
 				return SVN::retrieve(fn);
+			else
+				return GIT::retrieve(fn);
 		}
 	}
 	return false;
@@ -139,8 +149,14 @@ bool LyXVC::registrer()
 		//check in the root directory of the document
 		FileName const cvs_entries(onlyPath(filename.absFileName()) + "/CVS/Entries");
 		FileName const svn_entries(onlyPath(filename.absFileName()) + "/.svn/entries");
+		FileName const git_index(onlyPath(filename.absFileName()) + "/.git/index");
 
-		if (svn_entries.isReadableFile()) {
+		if (git_index.isReadableFile()) {
+			LYXERR(Debug::LYXVC, "LyXVC: registering "
+				<< to_utf8(filename.displayName()) << " with GIT");
+			vcs.reset(new GIT(git_index, owner_));
+
+		} else if (svn_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with SVN");
 			vcs.reset(new SVN(svn_entries, owner_));
@@ -377,7 +393,9 @@ bool LyXVC::renameEnabled() const
 
 bool LyXVC::copyEnabled() const
 {
-	return inUse();
+	if (!inUse())
+		return false;
+	return vcs->copyEnabled();
 }
 
 
