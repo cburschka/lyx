@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Path.h
+ * \file PathChanger.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef PATH_H
-#define PATH_H
+#ifndef PATHCHANGER_H
+#define PATHCHANGER_H
 
 #include "support/FileName.h"
 
@@ -19,7 +19,7 @@ namespace lyx {
 namespace support {
 
 /**
- * Path - utility closs for stackable working directories
+ * Path - utility class for stackable working directories
  *
  * You can use a local variable of this type to temporarily
  * change to a directory as the cwd, for example :
@@ -77,4 +77,4 @@ int getPrivateFrameworkPathName(char * buf, unsigned len, char const * framework
 #endif
 
 
-#endif // PATH_H
+#endif // PATHCHANGER_H

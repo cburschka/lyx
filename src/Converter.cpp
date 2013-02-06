@@ -32,7 +32,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 #include "support/Systemcall.h"
 
 using namespace std;

@@ -25,7 +25,7 @@
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/FileName.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 
 #include <aspell.h>
 

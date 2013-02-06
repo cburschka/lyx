@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "support/Path.h"
+#include "support/PathChanger.h"
 
 // undef PathChanger macro when building PathChanger
 #undef PathChanger

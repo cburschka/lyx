@@ -40,7 +40,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 #include "support/textutils.h"
 
 #include <limits>

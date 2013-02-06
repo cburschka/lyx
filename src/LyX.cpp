@@ -60,7 +60,7 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 #include "support/Systemcall.h"
 
 #include "support/bind.h"

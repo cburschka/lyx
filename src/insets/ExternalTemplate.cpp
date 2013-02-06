@@ -19,7 +19,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 #include "support/Translator.h"
 
 #include <ostream>

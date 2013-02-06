@@ -24,7 +24,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/Path.h"
+#include "support/PathChanger.h"
 #include "support/Systemcall.h"
 #include "support/regex.h"
 

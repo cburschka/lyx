@@ -78,8 +78,8 @@ liblyxsupport_a_SOURCES = \
 	numpunct_lyx_char_type.h \
 	os.cpp \
 	os.h \
-	Path.cpp \
-	Path.h \
+	PathChanger.cpp \
+	PathChanger.h \
 	Package.cpp \
 	Package.h \
 	ProgressInterface.h \
