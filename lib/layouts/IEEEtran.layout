@@ -33,7 +33,7 @@ EndFont
 
 
 Style Standard
-  Category      MainText
+  Category	MainText
   Margin	Static
   LatexType	Paragraph
   LatexName	dummy
@@ -222,6 +222,23 @@ Style Keywords
   CopyStyle	Abstract
   LatexName	IEEEkeywords
   LabelString	"Index Terms---"
+End
+
+
+InsetLayout Flex:Paragraph_Start
+  LyxType	custom
+  LatexType	command
+  LaTeXName	IEEEPARstart
+  LabelString	"Paragraph Start"
+  Argument 1
+    Mandatory	1
+    AutoInsert	1
+    LabelString	"First Char"
+    Tooltip	"First character of first word"
+  EndArgument
+  Font
+    Size	Small
+  EndFont
 End
 
 

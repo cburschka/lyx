@@ -1578,6 +1578,7 @@ def revert_IEEEtran(document):
   '''
   if document.textclass == "IEEEtran":
     i = 0
+    i2 = 0
     j = 0
     k = 0
     while True:
@@ -1586,6 +1587,11 @@ def revert_IEEEtran(document):
       if i != -1:
         revert_Argument_to_TeX_brace(document, i, 1, 1, False)
         i = i + 1
+      if i2 != -1:
+        i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
+      if i2 != -1:
+        revert_Argument_to_TeX_brace(document, i2, 1, 1, False)
+        i2 = i2 + 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Biography without photo", j)
       if j != -1:
@@ -1601,7 +1607,25 @@ def revert_IEEEtran(document):
         # start with the second argument, therefore 2
         revert_Argument_to_TeX_brace(document, k, 2, 2, True)
         k = k + 1
-      if i == -1 and j == -1 and k == -1:
+      if i == -1 and i2 == -1 and j == -1 and k == -1:
+        return
+
+
+def revert_IEEEtran_2(document):
+  '''
+  Reverts Flex Paragraph Start to TeX-code
+  '''
+  if document.textclass == "IEEEtran":
+    begin = 0
+    while True:
+      if begin != -1:
+        begin = find_token(document.body, "\\begin_inset Flex Paragraph Start", begin)
+      if begin != -1:
+        end1 = find_end_of_inset(document.body, begin)
+        document.body[end1 - 2 : end1 + 1] = put_cmd_in_ert("}")
+        document.body[begin : begin + 4] = put_cmd_in_ert("\\IEEEPARstart{")
+        begin = begin + 5
+      if begin == -1:
         return
 
 
@@ -3537,7 +3561,7 @@ revert =  [
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],
-           [446, [revert_IEEEtran, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV]],
+           [446, [revert_IEEEtran, revert_IEEEtran_2, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],

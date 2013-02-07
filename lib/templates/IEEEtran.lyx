@@ -96,7 +96,7 @@ status open
 \begin_layout Plain Layout
 This is a template LyX file for articles to be submitted to journals of
  the Institute of Electrical and Electronics Engineers (IEEE).
- For general infos see 
+ For general info see 
 \begin_inset Flex URL
 status open
 
@@ -120,9 +120,11 @@ http://wiki.lyx.org/Examples/IEEE
 status open
 
 \begin_layout Plain Layout
-You find the IEEEtran document class documentation here: 
+It is important that you use the correct document class options for your
+ document..
+ These are explained in the IEEEtran document: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -334,20 +336,6 @@ et al.
 \end_inset
 
 : Your Title
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-left side
-\series bold
-}{
-\series default
-right side
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Publication ID
@@ -398,6 +386,25 @@ Introduction
 \end_layout
 
 \begin_layout Standard
+\begin_inset Flex Paragraph Start
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+
+ere
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
@@ -408,42 +415,7 @@ The
 \backslash
 IEEEPARstart
 \series default
- command is needed in the first paragraph fo the document.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-IEEEPARstart{
-\end_layout
-
-\end_inset
-
-H
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-ere
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+ command is needed in the first paragraph of the document.
 \end_layout
 
 \end_inset
