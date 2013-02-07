@@ -1898,6 +1898,7 @@ dist_layouts_DATA =\
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
 	layouts/IEEEtran.layout \
+	layouts/IEEEtran-CompSoc.layout \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/initials.module \
@@ -2072,6 +2073,7 @@ dist_templates_DATA = \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
 	templates/IEEEtran.lyx \
+	templates/IEEEtran-CompSoc.lyx \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \
