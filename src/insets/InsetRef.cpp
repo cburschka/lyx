@@ -315,12 +315,13 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
-			if (!prefix.empty()) {
+			if (prefix == "cha")
+				features.addPreambleSnippet("\\let\\charef=\\chapref");
+			else if (!prefix.empty()) {
 				string lcmd = "\\AtBeginDocument{\\providecommand" + 
 						fcmd + "[1]{\\ref{" + to_utf8(prefix) + ":#1}}}";
 				features.addPreambleSnippet(lcmd);
-			} else if (prefix == "cha")
-				features.addPreambleSnippet("\\let\\charef=\\chapref");
+			}
 		} else {
 			features.require("prettyref");
 			// prettyref uses "cha" for chapters, so we provide a kind of
