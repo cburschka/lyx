@@ -18915,7 +18915,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-LyX supports some of the most basic RCS/CVS/SVN commands.
+LyX supports some of the most basic RCS/CVS/SVN/GIT commands.
  If you need something a bit more sophisticated you will have to do that
  manually in a terminal.
 \end_layout
@@ -18964,7 +18964,7 @@ man rcsintro
 
 \begin_layout Standard
 Before you begin to use the version control features in LyX, you should
- be familiar with RCS/CVS/SVN usage.
+ be familiar with RCS/CVS/SVN/GIT usage.
  The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package — no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
@@ -21560,6 +21560,287 @@ svn propset svn:eol-style native FILE_NAME
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+GIT commands in LyX
+\end_layout
+
+\begin_layout Standard
+A minimal subset of GIT commands is now supported by LyX.
+ You can find the commands in the 
+\family sans
+File\SpecialChar \menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+ submenu.
+ Please note that if you use password protected access to repository via
+ ssh, you will be asked in terminal window.
+ LyX was tested against GIT 1.7.
+\end_layout
+
+\begin_layout Standard
+One big difference of GIT and the other supported version control systems
+ is the distributed nature of GIT: With traditional version control systems
+ there is one central server which hosts the repository.
+ Users commit their changes to the server, and get updates made by other
+ users from it.
+ With GIT, users commit to a local repository.
+ The local repository can be synchronized with one or more remote repositories
+ using the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+ GIT commands.
+ LyX does not interact in any way with remote GIT repositories.
+ It works exclusively with the local repository in a very similar way as
+ with a central CVS or SVN repository.
+ If you use remote GIT repositories you need to do the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+ operations with your favourite GIT client.
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Register
+\end_layout
+
+\begin_layout Standard
+If your document is not under revision control, this is the only item shown
+ in the menu.
+ And if it is under revision control, the 
+\family sans
+\bar under
+R
+\bar default
+egister
+\family default
+ item is not visible.
+\end_layout
+
+\begin_layout Standard
+This command registers in GIT your document ONLY in case you have already
+ the documents directory under GIT control (in particular 
+\family typewriter
+.git/index
+\family default
+ file exists).
+ This means you have to checkout the archive by yourself.
+\end_layout
+
+\begin_layout Standard
+Then you are asked interactively to supply an initial description of the
+ document.
+ Don't forget that registered file is not yet commited.
+\end_layout
+
+\begin_layout Standard
+GIT command that is run: 
+\family typewriter
+git add 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Read 
+\family typewriter
+man git
+\family default
+ to understand the switches.
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Check In Changes
+\end_layout
+
+\begin_layout Standard
+When you are finished editing a file, you commit your changes.
+ When you do this, you are asked for a description of the changes.
+ After that changes are commited.
+\end_layout
+
+\begin_layout Standard
+GIT command: 
+\family typewriter
+git commit -q -m"<description>" <file-name>
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Revert To Repository Version
+\end_layout
+
+\begin_layout Standard
+This will discard all changes made to the document since the last check
+ in.
+ You get a warning before changes are discarded.
+\end_layout
+
+\begin_layout Standard
+GIT command: 
+\family typewriter
+git checkout -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Rename
+\end_layout
+
+\begin_layout Standard
+This will rename the current document including the version history.
+ It requires a clean document without any changes since the last checkin.
+ You are asked for a file name and a description of the rename operation.
+ After that the document is renamed, both locally and in the repository.
+ If the parent directories of the new and old file names differ, all relative
+ paths of included files are adjusted (like in 
+\family sans
+File\SpecialChar \menuseparator
+Save As
+\family default
+\SpecialChar \ldots{}
+).
+ Finally, the document is reloaded using the new name.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+GIT
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git mv 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Show History
+\end_layout
+
+\begin_layout Standard
+This shows the complete history of the GIT document.
+ The output of 
+\family typewriter
+git log 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ is shown in a browser.
 \end_layout
 
 \begin_layout Subsection
