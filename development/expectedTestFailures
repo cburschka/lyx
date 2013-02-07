@@ -1,0 +1,28 @@
+This file documents which tests are expected to fail. It can be used to quickly
+tell if a regression has occurred. This is also useful when first running tests
+to get an idea of whether some tests are failing because of missing
+dependencies.
+
+If the bug corresponding to a test has been fixed, please make sure that the
+test returns successful before removing that bug from the list (otherwise this
+might be a poorly written test or the bug might not be fully fixed, either of
+which needs to be addressed).
+
+It is possible that one person reports a failure and another reports success,
+perhaps due to different platforms. This should be reported in the "Notes"
+column.
+
+Expected failures:
+
+Test                                                 Notes
+
+autotests/bug-7673                                   #7673
+autotests/bug-8540                                   #8540
+autotests/export/MergedManuals_pdf                   #8517
+autotests/export/MergedManuals_pdf2                  #8517
+autotests/export/MergedManuals_pdf5                  #8517
+autotests/export/Math_pdf                            #8517
+autotests/export/Math_pdf2                           #8517
+autotests/export/Math_pdf5                           #8517
+tex2lyx/roundtrip/test-insets.tex
+tex2lyx2lyx/roundtrip/test-insets.tex
