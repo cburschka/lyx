@@ -2112,9 +2112,96 @@ bool GIT::undoLastEnabled()
 }
 
 
-string GIT::revisionInfo(LyXVC::RevisionInfo const /*info*/)
+string GIT::revisionInfo(LyXVC::RevisionInfo const info)
 {
+	if (info == LyXVC::Tree) {
+		if (rev_tree_cache_.empty())
+			if (!getTreeRevisionInfo())
+				rev_tree_cache_ = "?";
+		if (rev_tree_cache_ == "?")
+			return string();
+
+		return rev_tree_cache_;
+	}
+
+	// fill the rest of the attributes for a single file
+	if (rev_file_cache_.empty())
+		if (!getFileRevisionInfo())
+			rev_file_cache_ = "?";
+
+	switch (info) {
+		case LyXVC::File:
+			if (rev_file_cache_ == "?")
+				return string();
+			return rev_file_cache_;
+		case LyXVC::Author:
+			return rev_author_cache_;
+		case LyXVC::Date:
+			return rev_date_cache_;
+		case LyXVC::Time:
+			return rev_time_cache_;
+		default: ;
+
+	}
+
 	return string();
+}
+
+
+bool GIT::getFileRevisionInfo()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return false;
+	}
+
+	doVCCommand("git log -n 1 --pretty=format:%H%n%an%n%ai " + quoteName(onlyFileName(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+
+	if (tmpf.empty())
+		return false;
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+
+	if (ifs)
+		getline(ifs, rev_file_cache_);
+	if (ifs)
+		getline(ifs, rev_author_cache_);
+	if (ifs) {
+		string line;
+		getline(ifs, line);
+		rev_time_cache_ = split(line, rev_date_cache_, ' ');
+	}
+
+	ifs.close();
+	tmpf.removeFile();
+	return !rev_file_cache_.empty();
+}
+
+
+bool GIT::getTreeRevisionInfo()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return false;
+	}
+
+	doVCCommand("git log -n 1 --pretty=format:%H . > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+
+	if (tmpf.empty())
+		return false;
+
+	// only first line in case something bad happens.
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	getline(ifs, rev_tree_cache_);
+	ifs.close();
+	tmpf.removeFile();
+
+	return !rev_tree_cache_.empty();
 }
 
 

@@ -542,6 +542,27 @@ protected:
 	/// Check in files \p f with log \p msg
 	LyXVC::CommandResult checkIn(std::vector<support::FileName> const & f,
 	                             std::string const & msg, std::string & log);
+
+private:
+	/**
+	 * Real code for obtaining file revision info. Fills all file-related caches
+	 * and returns true if successfull.
+	 * "?" is stored in rev_file_cache_ as a signal if request for obtaining info
+	 * was already unsuccessful.
+	 */
+	bool getFileRevisionInfo();
+	/// cache for file revision number, "?" if already unsuccessful, isNumber==true
+	std::string rev_file_cache_;
+	/// cache for author of last commit
+	std::string rev_author_cache_;
+	/// cache for date of last commit
+	std::string rev_date_cache_;
+	/// cache for time of last commit
+	std::string rev_time_cache_;
+	/// fills rev_tree_cache_, returns true if successfull.
+	bool getTreeRevisionInfo();
+	/// cache for tree revision number, "?" if already unsuccessful
+	std::string rev_tree_cache_;
 };
 
 } // namespace lyx
