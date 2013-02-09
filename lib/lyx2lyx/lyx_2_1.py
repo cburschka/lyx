@@ -3494,6 +3494,40 @@ def revert_newframes(document):
         i = j
 
 
+def revert_IEEEtran_3(document):
+  '''
+  Reverts Flex Insets to TeX-code
+  '''
+  if document.textclass == "IEEEtran":
+    h = 0
+    i = 0
+    j = 0
+    while True:
+      if h != -1:
+        h = find_token(document.body, "\\begin_inset Flex Author Mark", h)
+      if h != -1:
+        endh = find_end_of_inset(document.body, h)
+        document.body[endh - 2 : endh + 1] = put_cmd_in_ert("}")
+        document.body[h : h + 4] = put_cmd_in_ert("\\IEEEauthorrefmark{")
+        h = h + 5
+      if i != -1:
+        i = find_token(document.body, "\\begin_inset Flex Author Name", i)
+      if i != -1:
+        endi = find_end_of_inset(document.body, i)
+        document.body[endi - 2 : endi + 1] = put_cmd_in_ert("}")
+        document.body[i : i + 4] = put_cmd_in_ert("\\IEEEauthorblockN{")
+        i = i + 5
+      if j != -1:
+        j = find_token(document.body, "\\begin_inset Flex Author Affiliation", j)
+      if j != -1:
+        endj = find_end_of_inset(document.body, j)
+        document.body[endj - 2 : endj + 1] = put_cmd_in_ert("}")
+        document.body[j : j + 4] = put_cmd_in_ert("\\IEEEauthorblockA{")
+        j = j + 5
+      if i == -1 and j == -1 and h == -1:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -3545,10 +3579,12 @@ convert = [
            [456, [convert_epigraph]],
            [457, [convert_use_stackrel]],
            [458, [convert_captioninsets, convert_captionlayouts]],
-           [459, []]
+           [459, []],
+           [460, []]
           ]
 
 revert =  [
+           [459, [revert_IEEEtran_3]],
            [458, [revert_fragileframe, revert_newframes]],
            [457, [revert_captioninsets, revert_captionlayouts]],
            [456, [revert_use_stackrel]],

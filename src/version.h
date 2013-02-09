@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 459 // spitz: new beamer frame layouts
-#define LYX_FORMAT_TEX2LYX 459 // spitz: new beamer frame layouts
+#define LYX_FORMAT_LYX 460 // uwestoehr: new IEEE layouts
+#define LYX_FORMAT_TEX2LYX 460 // uwestoehr: new IEEE layouts
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

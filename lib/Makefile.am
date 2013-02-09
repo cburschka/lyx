@@ -2074,6 +2074,7 @@ dist_templates_DATA = \
 	templates/hollywood.lyx \
 	templates/IEEEtran.lyx \
 	templates/IEEEtran-CompSoc.lyx \
+	templates/IEEEtran-Conference.lyx \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \

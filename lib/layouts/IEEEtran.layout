@@ -86,6 +86,7 @@ End
 InsetLayout Flex:IEEE_membership
   LyxType	custom
   LatexType	command
+  ForcePlain	1
   LatexName	IEEEmembership
   LabelString	"IEEE membership"
   Font
@@ -133,6 +134,60 @@ Style Author
   Font
     Size	Large
   EndFont
+End
+
+
+InsetLayout Flex:Author_Name
+  LyxType	custom
+  LatexType	command
+  Decoration	Classic
+  ForcePlain	1
+  LaTeXName	IEEEauthorblockN
+  LabelString	"Author name"
+  Font
+    Size	Large
+  EndFont
+  LabelFont
+    Color	blue
+    Size	Small
+  EndFont
+End
+
+
+InsetLayout Flex:Author_Affiliation
+  CopyStyle	Flex:Author_Name
+  LaTeXName	IEEEauthorblockA
+  LabelString	"Author affiliation"
+  Font
+    Size	Normal
+  EndFont
+  LabelFont
+    Color	blue
+    Size	Small
+  EndFont
+End
+
+
+InsetLayout Flex:Author_Mark
+	LyxType		custom
+	LatexType	command
+	ForcePlain	1
+	LatexName	IEEEauthorrefmark
+	LabelString	"Author mark"
+	Font
+	  Color		foreground
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
+	EndFont
+	LabelFont
+	  Color		latex
+	  Size		Small
+	EndFont
 End
 
 
@@ -258,6 +313,16 @@ Style Appendices
     Color	Green
   EndFont
 End
+
+
+Style Peer_Review_Title
+  CopyStyle	Appendices
+  LatexName	IEEEpeerreviewmaketitle
+  Category	FrontMatter
+  TopSep	1
+  LabelString	"PeerReviewTitle"
+End
+
 
 Style Appendix
   CopyStyle	Appendices
