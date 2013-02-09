@@ -2072,7 +2072,7 @@ dist_templates_DATA = \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
-	templates/IEEEtran.lyx \
+	templates/IEEEtran-Journal.lyx \
 	templates/IEEEtran-CompSoc.lyx \
 	templates/IEEEtran-Conference.lyx \
 	templates/IJMPC.lyx \

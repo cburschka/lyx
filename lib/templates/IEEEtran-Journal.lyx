@@ -11,6 +11,7 @@
 \usepackage[caption=false,font=footnotesize]{subfig}
 \fi
 \end_preamble
+\options journal
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -127,7 +128,7 @@ status open
 \begin_layout Plain Layout
 It is important that you use the correct document class options for your
  document..
- These are explained in the IEEEtran document: 
+ These are explained in the IEEEtran documentation: 
 \begin_inset Flex URL
 status open
 
@@ -365,7 +366,7 @@ copyright
 \begin_inset space ~
 \end_inset
 
-2007 IEEE
+2012 IEEE
 \begin_inset Note Note
 status open
 
@@ -384,6 +385,33 @@ This is the abstract text.
 
 \begin_layout Keywords
 simplicity, beauty, elegance
+\end_layout
+
+\begin_layout Peer Review Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Don't add text here!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+required if you use the document class option 
+\family sans
+peerreview
+\family default
+, must otherwise not be used
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

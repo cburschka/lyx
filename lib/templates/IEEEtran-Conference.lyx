@@ -99,7 +99,7 @@ This is a template LyX file for conference articles of conferences organized
  by the Institute of Electrical and Electronics Engineers (IEEE).
  For IEEE journal articles, see the template file 
 \emph on
-IEEEtran.lyx
+IEEEtran-Journal.lyx
 \emph default
 .
  For general info see 
@@ -114,6 +114,32 @@ http://wiki.lyx.org/Examples/IEEE
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It is important that you use the correct document class options for your
+ document..
+ These are explained in the IEEEtran documentation: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirror.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -544,7 +570,11 @@ Don't add text here!
 status open
 
 \begin_layout Plain Layout
-optional, only useful for peer review papers
+required if you use the document class option 
+\family sans
+peerreview
+\family default
+, must otherwise not be used
 \end_layout
 
 \end_inset
