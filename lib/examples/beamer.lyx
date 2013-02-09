@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 460
 \begin_document
 \begin_header
 \textclass beamer
@@ -530,8 +530,7 @@ Title
 status open
 
 \begin_layout Plain Layout
-Slides\SpecialChar \slash{}
-Frames
+Slides/Frames
 \end_layout
 
 \end_inset
@@ -1436,8 +1435,7 @@ We give examples for these types in what follows, but begin with some general
 status open
 
 \begin_layout Plain Layout
-General overlay\SpecialChar \slash{}
-action possibilities
+General overlay/action possibilities
 \end_layout
 
 \end_inset
@@ -1634,11 +1632,14 @@ Note to the LaTeX aficionados
 
 \begin_layout AlertBlock
 The mentioned overlay/action settings conform to those command/environment
- options embraced by 
+ options embraced by
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset space \space{}
+\end_inset
+
 <\SpecialChar \ldots{}
 >
 \end_layout
