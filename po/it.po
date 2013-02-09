@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-02-09 15:47+0100\n"
-"PO-Revision-Date: 2013-02-09 20:16+0100\n"
+"POT-Creation-Date: 2013-02-09 20:30+0100\n"
+"PO-Revision-Date: 2013-02-09 20:32+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"X-Poedit-Basepath: /usr/local/src/lyx/lyx-devel\n"
+"X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -5294,6 +5294,7 @@ msgstr "Astronomy & Astrophysics"
 #: lib/layouts/heb-article.layout:4
 #: lib/layouts/IEEEtran-CompSoc.layout:4
 #: lib/layouts/IEEEtran.layout:4
+#: lib/layouts/IEEEtran-TransMag.layout:4
 #: lib/layouts/ijmpc.layout:4
 #: lib/layouts/ijmpd.layout:4
 #: lib/layouts/iopart.layout:4
@@ -5872,8 +5873,9 @@ msgstr "Data"
 #: lib/layouts/elsart.layout:233
 #: lib/layouts/entcs.layout:86
 #: lib/layouts/foils.layout:149
-#: lib/layouts/IEEEtran-CompSoc.layout:43
+#: lib/layouts/IEEEtran-CompSoc.layout:49
 #: lib/layouts/IEEEtran.layout:254
+#: lib/layouts/IEEEtran-TransMag.layout:27
 #: lib/layouts/ijmpc.layout:207
 #: lib/layouts/ijmpd.layout:214
 #: lib/layouts/iopart.layout:175
@@ -6061,12 +6063,14 @@ msgstr "Bibliografia"
 #: lib/layouts/europecv.layout:35
 #: lib/layouts/europecv.layout:188
 #: lib/layouts/IEEEtran-CompSoc.layout:21
-#: lib/layouts/IEEEtran-CompSoc.layout:58
+#: lib/layouts/IEEEtran-CompSoc.layout:64
 #: lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:120
 #: lib/layouts/IEEEtran.layout:218
 #: lib/layouts/IEEEtran.layout:258
 #: lib/layouts/IEEEtran.layout:321
+#: lib/layouts/IEEEtran-TransMag.layout:22
+#: lib/layouts/IEEEtran-TransMag.layout:42
 #: lib/layouts/ijmpc.layout:68
 #: lib/layouts/ijmpc.layout:93
 #: lib/layouts/ijmpc.layout:111
@@ -6219,8 +6223,9 @@ msgstr "Nota istituto"
 #: lib/layouts/apa6.layout:250
 #: lib/layouts/elsarticle.layout:286
 #: lib/layouts/elsart.layout:64
-#: lib/layouts/IEEEtran-CompSoc.layout:49
+#: lib/layouts/IEEEtran-CompSoc.layout:55
 #: lib/layouts/IEEEtran.layout:276
+#: lib/layouts/IEEEtran-TransMag.layout:33
 #: lib/layouts/ijmpc.layout:220
 #: lib/layouts/ijmpc.layout:224
 #: lib/layouts/ijmpd.layout:227
@@ -8167,9 +8172,8 @@ msgid "Frame Title"
 msgstr "Titolo diapositiva"
 
 #: lib/layouts/beamer.layout:449
-#: lib/layouts/beamer.layout:843
-msgid "Enter the block title here"
-msgstr "Inserire qui il titolo del blocco"
+msgid "Enter the frame title here"
+msgstr "Inserire qui il titolo della diapositiva"
 
 #: lib/layouts/beamer.layout:461
 msgid "PlainFrame"
@@ -8400,6 +8404,10 @@ msgstr "Specifica di azione|S"
 #: lib/layouts/beamer.layout:842
 msgid "Block Title"
 msgstr "Titolo blocco"
+
+#: lib/layouts/beamer.layout:843
+msgid "Enter the block title here"
+msgstr "Inserire qui il titolo del blocco"
 
 #: lib/layouts/beamer.layout:854
 msgid "ExampleBlock"
@@ -10890,22 +10898,25 @@ msgid "IEEE Transactions Computer Society"
 msgstr "IEEE Transactions Computer Society"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:19
+#: lib/layouts/IEEEtran-TransMag.layout:20
 msgid "Standard in Title"
 msgstr "Standard in titolo"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:26
+#: lib/layouts/IEEEtran-CompSoc.layout:32
 msgid "Author Footnote"
 msgstr "Nota autore"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:32
+#: lib/layouts/IEEEtran-CompSoc.layout:38
 msgid "Author foot"
 msgstr "Nota autore"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:55
+#: lib/layouts/IEEEtran-CompSoc.layout:61
+#: lib/layouts/IEEEtran-TransMag.layout:39
 msgid "Nontitle Abstract Index Text"
 msgstr "Nontitle Abstract Index Text"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:60
+#: lib/layouts/IEEEtran-CompSoc.layout:66
+#: lib/layouts/IEEEtran-TransMag.layout:44
 msgid "NontitleAbstractIndexText"
 msgstr "NontitleAbstractIndexText"
 
@@ -11057,6 +11068,10 @@ msgstr "Nome prova"
 #: lib/layouts/siamltex.layout:163
 msgid "An alternative proof string"
 msgstr "Nome opzionale della prova"
+
+#: lib/layouts/IEEEtran-TransMag.layout:3
+msgid "IEEE Transactions on Magnetics"
+msgstr "IEEE Transactions on Magnetics"
 
 #: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
@@ -23413,26 +23428,26 @@ msgstr ""
 "Riuscita apertura della copia di backup, ma il file originale %1$s è in sola lettura.\n"
 "Assicuratevi di salvare il documento con un nome diverso."
 
-#: src/Buffer.cpp:4437
+#: src/Buffer.cpp:4426
 #: src/insets/InsetCaption.cpp:381
 msgid "Senseless!!! "
 msgstr "Non ha senso!!! "
 
-#: src/Buffer.cpp:4642
+#: src/Buffer.cpp:4645
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Il documento %1$s è stato riaperto."
 
-#: src/Buffer.cpp:4646
+#: src/Buffer.cpp:4649
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Non riesco a riaprire il documento %1$s."
 
-#: src/Buffer.cpp:4713
+#: src/Buffer.cpp:4716
 msgid "Included File Invalid"
 msgstr "File incluso non valido"
 
-#: src/Buffer.cpp:4714
+#: src/Buffer.cpp:4717
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -24221,7 +24236,7 @@ msgid "Undefined flex inset"
 msgstr "Inserto flessibile non definito"
 
 #: src/Encoding.cpp:455
-#: src/Paragraph.cpp:2620
+#: src/Paragraph.cpp:2619
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182
 #: src/insets/InsetListings.cpp:190
@@ -24231,7 +24246,7 @@ msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
 #: src/Encoding.cpp:456
-#: src/Paragraph.cpp:2621
+#: src/Paragraph.cpp:2620
 #: src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191
 #: src/mathed/InsetMathString.cpp:163
@@ -25230,11 +25245,11 @@ msgstr "&Ripristina"
 msgid "Senseless with this layout!"
 msgstr "Non ha senso con questo layout!"
 
-#: src/Paragraph.cpp:2117
+#: src/Paragraph.cpp:2116
 msgid "Alignment not permitted"
 msgstr "Allineamento non consentito"
 
-#: src/Paragraph.cpp:2118
+#: src/Paragraph.cpp:2117
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -25242,11 +25257,11 @@ msgstr ""
 "Il nuovo layout non permette l'allineamento usato in precedenza.\n"
 "Uso quello predefinito."
 
-#: src/Paragraph.cpp:3211
+#: src/Paragraph.cpp:3210
 msgid "Memory problem"
 msgstr "Problema di memoria"
 
-#: src/Paragraph.cpp:3211
+#: src/Paragraph.cpp:3210
 msgid "Paragraph not properly initialized"
 msgstr "Paragrafo non correttamente inizializzato"
 
