@@ -5,16 +5,11 @@
 \textclass IEEEtran-CompSoc
 \begin_preamble
 % for subfigures/subtables
-\ifCLASSOPTIONcompsoc
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 %\usepackage[nocompress]{cite} %optional
-\else
-\usepackage[caption=false,font=footnotesize]{subfig}
-%\usepackage{cite} %optional
-\fi
 \end_preamble
 \options journal
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default

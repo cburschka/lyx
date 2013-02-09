@@ -5,11 +5,7 @@
 \textclass IEEEtran
 \begin_preamble
 % for subfigures/subtables
-\ifCLASSOPTIONcompsoc
-\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-\else
 \usepackage[caption=false,font=footnotesize]{subfig}
-\fi
 \end_preamble
 \options conference
 \use_default_options false
