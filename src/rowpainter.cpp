@@ -586,20 +586,14 @@ void RowPainter::paintFirst()
 		}
 	}
 
-	bool const is_seq = text_.isFirstInSequence(pit_);
+	bool const is_first =
+		text_.isFirstInSequence(pit_) || !layout.isParagraphGroup();
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
-	if (layout.labeltype >= LABEL_STATIC
-		&& (layout.labeltype != LABEL_STATIC
-			|| layout.latextype != LATEX_ENVIRONMENT
-			|| is_seq)) {
+	if (layout.labelIsInline()
+			&& (layout.labeltype != LABEL_STATIC || is_first)) {
 		paintLabel();
-	} else if (is_seq
-		&& (layout.labeltype == LABEL_TOP_ENVIRONMENT
-			|| layout.labeltype == LABEL_BIBLIO
-			|| layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
-		// the labels at the top of an environment.
-		// More or less for bibliography
+	} else if (is_first && layout.labelIsAbove()) {
 		paintTopLevelLabel();
 	}
 }
@@ -683,7 +677,7 @@ void RowPainter::paintTopLevelLabel()
 		+ (layout.labelbottomsep * defaultRowHeight()));
 
 	double x = x_;
-	if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
+	if (layout.labeltype == LABEL_CENTERED) {
 		if (is_rtl)
 			x = leftMargin();
 		x += (width_ - text_metrics_.rightMargin(pm_) - leftMargin()) / 2;

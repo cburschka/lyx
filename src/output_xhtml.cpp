@@ -930,6 +930,7 @@ void makeCommand(Buffer const & buf,
 
 	// Label around sectioning number:
 	// FIXME Probably need to account for LABEL_MANUAL
+	// FIXME Probably also need now to account for labels ABOVE and CENTERED.
 	if (style.labeltype != LABEL_NO_LABEL) {
 		openLabelTag(xs, style);
 		xs << pbegin->params().labelString();

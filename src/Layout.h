@@ -180,6 +180,24 @@ public:
 			|| latextype == LATEX_ITEM_ENVIRONMENT
 			|| latextype == LATEX_LIST_ENVIRONMENT;
 	}
+	/// Is this the kind of layout in which adjacent paragraphs
+	/// are handled as one group?
+	bool isParagraphGroup() const {
+	return latextype == LATEX_ENVIRONMENT
+		|| latextype == LATEX_BIB_ENVIRONMENT;
+	}
+	///
+	bool labelIsInline() const {
+		return labeltype == LABEL_STATIC
+			|| labeltype == LABEL_SENSITIVE
+		  || labeltype == LABEL_ENUMERATE
+			|| labeltype == LABEL_ITEMIZE;
+	}
+	bool labelIsAbove() const {
+		return labeltype == LABEL_ABOVE
+			|| labeltype == LABEL_CENTERED
+		  || labeltype == LABEL_BIBLIO;
+	}
 
 	///
 	bool operator==(Layout const &) const;

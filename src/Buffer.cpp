@@ -4443,8 +4443,8 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 		par.params().labelString(docstring());
 		break;
 
-	case LABEL_TOP_ENVIRONMENT:
-	case LABEL_CENTERED_TOP_ENVIRONMENT:
+	case LABEL_ABOVE:
+	case LABEL_CENTERED:
 	case LABEL_STATIC: {
 		docstring const & lcounter = layout.counter;
 		if (!lcounter.empty()) {

@@ -113,11 +113,9 @@ enum LabelType {
 	///
 	LABEL_BIBLIO,
 	///
-	LABEL_TOP_ENVIRONMENT,
+	LABEL_ABOVE,
 	///
-	LABEL_CENTERED_TOP_ENVIRONMENT,
-
-	// the flushright labels following now must start with LABEL_STATIC
+	LABEL_CENTERED,
 	///
 	LABEL_STATIC,
 	///

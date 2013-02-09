@@ -684,8 +684,8 @@ void Layout::readLabelType(Lexer & lex)
 	enum {
 		LA_NO_LABEL = 1,
 		LA_MANUAL,
-		LA_TOP_ENVIRONMENT,
-		LA_CENTERED_TOP_ENVIRONMENT,
+		LA_ABOVE,
+		LA_CENTERED,
 		LA_STATIC,
 		LA_SENSITIVE,
 		LA_ENUMERATE,
@@ -695,15 +695,15 @@ void Layout::readLabelType(Lexer & lex)
 
 
 	LexerKeyword labelTypeTags[] = {
-		{ "bibliography",             LA_BIBLIO },
-		{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
-		{ "enumerate",                LA_ENUMERATE },
-		{ "itemize",                  LA_ITEMIZE },
-		{ "manual",                   LA_MANUAL },
-		{ "no_label",                 LA_NO_LABEL },
-		{ "sensitive",                LA_SENSITIVE },
-		{ "static",                   LA_STATIC },
-		{ "top_environment",          LA_TOP_ENVIRONMENT }
+	  { "above",        LA_ABOVE },
+		{ "bibliography", LA_BIBLIO },
+		{ "centered",     LA_CENTERED },
+		{ "enumerate",    LA_ENUMERATE },
+		{ "itemize",      LA_ITEMIZE },
+		{ "manual",       LA_MANUAL },
+		{ "no_label",     LA_NO_LABEL },
+		{ "sensitive",    LA_SENSITIVE },
+		{ "static",       LA_STATIC }
 	};
 
 	PushPopHelper pph(lex, labelTypeTags);
@@ -721,11 +721,11 @@ void Layout::readLabelType(Lexer & lex)
 	case LA_MANUAL:
 		labeltype = LABEL_MANUAL;
 		break;
-	case LA_TOP_ENVIRONMENT:
-		labeltype = LABEL_TOP_ENVIRONMENT;
+	case LA_ABOVE:
+		labeltype = LABEL_ABOVE;
 		break;
-	case LA_CENTERED_TOP_ENVIRONMENT:
-		labeltype = LABEL_CENTERED_TOP_ENVIRONMENT;
+	case LA_CENTERED:
+		labeltype = LABEL_CENTERED;
 		break;
 	case LA_STATIC:
 		labeltype = LABEL_STATIC;
@@ -1035,8 +1035,8 @@ string const & Layout::htmlitemattr() const
 string const & Layout::htmllabeltag() const 
 { 
 	if (htmllabeltag_.empty()) {
-		if (labeltype != LABEL_TOP_ENVIRONMENT &&
-		    labeltype != LABEL_CENTERED_TOP_ENVIRONMENT)
+		if (labeltype != LABEL_ABOVE &&
+		    labeltype != LABEL_CENTERED)
 			htmllabeltag_ = "span";
 		else
 			htmllabeltag_ = "div";
@@ -1161,7 +1161,7 @@ void Layout::makeDefaultCSS() const
 	// label font
 	if (labelfont != font)
 		labelCSS = labelfont.asCSS() + from_ascii("\n");
-	if (labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
+	if (labeltype == LABEL_CENTERED)
 		labelCSS += from_ascii("text-align: center;\n");
 	
 	if (!labelCSS.empty())

@@ -1112,10 +1112,8 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		}
 
 		// special code for the top label
-		if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
-		     || layout.labeltype == LABEL_BIBLIO
-		     || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-		    && text_->isFirstInSequence(pit)
+		if (layout.labelIsAbove()
+		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
 		    && !par.labelString().empty())
 		{
 			labeladdon = int(
@@ -1981,10 +1979,7 @@ int TextMetrics::leftMargin(int max_width,
 			       && layout.latextype == LATEX_ENVIRONMENT
 			       && !text_->isFirstInSequence(pit))) {
 			l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
-		} else if (layout.labeltype != LABEL_TOP_ENVIRONMENT
-			   && layout.labeltype != LABEL_BIBLIO
-			   && layout.labeltype !=
-			   LABEL_CENTERED_TOP_ENVIRONMENT) {
+		} else if (!layout.labelIsAbove()) {
 			l_margin += labelfont_metrics.signedWidth(layout.labelindent);
 			l_margin += labelfont_metrics.width(layout.labelsep);
 			l_margin += labelfont_metrics.width(par.labelString());
@@ -2026,8 +2021,8 @@ int TextMetrics::leftMargin(int max_width,
 	// set the correct parindent
 	if (pos == 0
 	    && (layout.labeltype == LABEL_NO_LABEL
-	       || layout.labeltype == LABEL_TOP_ENVIRONMENT
-	       || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
+	       || layout.labeltype == LABEL_ABOVE
+	       || layout.labeltype == LABEL_CENTERED
 	       || (layout.labeltype == LABEL_STATIC
 	           && layout.latextype == LATEX_ENVIRONMENT
 	           && !text_->isFirstInSequence(pit)))
