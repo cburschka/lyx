@@ -22,6 +22,9 @@
 #	OsfScOption        <option for combined osf and true smallcaps support>
 #	ScaleOption        <option for font scaling>
 #	Provides           <features provided by the font packages (comma-separated)>
+#	Preamble
+#	  <some arbitrary LaTeX code to be issued in the preamble>
+#	EndPreamble
 # EndFont
 #
 #
@@ -53,8 +56,8 @@
 #   The value "none" tells LyX not to load any font in OT1 encoding.
 #   OT1Fonts need to be defined separately using AltFont ... EndFont tags.
 # * The CompleteFont is loaded if the current font is selected as rm and
-#   both sf and tt are set to "default" (this allows f. ex. to load "bera"
-#   as opposed to "beraserif").
+#   both sf and tt are set to "default" (this allows for instance to load
+#   "bera" as opposed to "beraserif").
 #   CompleteFonts need to be defined separately using AltFont ... EndFont
 #   tags.
 # * OsfFont is a font that is loaded additionally in and that provides
@@ -65,8 +68,11 @@
 #   default and provide an option for lining figures. Pass this option
 #   to OsfOption.
 # * ScaleOption supports the placeholder $$val for the scale value.
+# * The Preamble code is output immediately after the respective font
+#   loading command.
 #
 ##########################################################################
+
 
 #
 # ROMAN FONTS

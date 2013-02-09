@@ -275,6 +275,9 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 	if (osf && providesOSF(ot1, complete, nomath) && !osffont_.empty())
 		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
 
+	if (!preamble_.empty())
+		os << preamble_;
+
 	return os.str();
 }
 
@@ -295,6 +298,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_OT1_FONT,
 		LF_PACKAGE,
 		LF_PACKAGEOPTION,
+		LF_PREAMBLE,
 		LF_PROVIDES,
 		LF_REQUIRES,
 		LF_SCALEOPTION,
@@ -317,6 +321,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "ot1font",              LF_OT1_FONT },
 		{ "package",              LF_PACKAGE },
 		{ "packageoption",        LF_PACKAGEOPTION },
+		{ "preamble",             LF_PREAMBLE },
 		{ "provides",             LF_PROVIDES },
 		{ "requires",             LF_REQUIRES },
 		{ "scaleoption",          LF_SCALEOPTION },
@@ -385,6 +390,9 @@ bool LaTeXFont::readFont(Lexer & lex)
 			break;
 		case LF_PACKAGEOPTION:
 			lex >> packageoption_;
+			break;
+		case LF_PREAMBLE:
+			preamble_ = lex.getLongString("EndPreamble");
 			break;
 		case LF_PROVIDES: {
 			lex.eatLine();

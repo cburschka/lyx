@@ -127,6 +127,8 @@ private:
 	///
 	docstring requires_;
 	///
+	std::string preamble_;
+	///
 	bool osfdefault_;
 	///
 	bool switchdefault_;
