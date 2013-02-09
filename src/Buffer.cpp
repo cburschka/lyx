@@ -4364,17 +4364,6 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	}
 
 	switch(layout.labeltype) {
-	case LABEL_COUNTER:
-		if (layout.toclevel <= bp.secnumdepth
-		      && (layout.latextype != LATEX_ENVIRONMENT
-			  || it.text()->isFirstInSequence(it.pit()))) {
-			if (counters.hasCounter(layout.counter))
-				counters.step(layout.counter, utype);
-			par.params().labelString(par.expandLabel(layout, bp));
-		} else
-			par.params().labelString(docstring());
-		break;
-
 	case LABEL_ITEMIZE: {
 		// At some point of time we should do something more
 		// clever here, like:
@@ -4454,13 +4443,27 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 		par.params().labelString(docstring());
 		break;
 
-	case LABEL_MANUAL:
 	case LABEL_TOP_ENVIRONMENT:
 	case LABEL_CENTERED_TOP_ENVIRONMENT:
-	case LABEL_STATIC:
+	case LABEL_STATIC: {
+		docstring const & lcounter = layout.counter;
+		if (!lcounter.empty()) {
+			if (layout.toclevel <= bp.secnumdepth
+						&& (layout.latextype != LATEX_ENVIRONMENT
+					|| it.text()->isFirstInSequence(it.pit()))) {
+				if (counters.hasCounter(lcounter))
+					counters.step(lcounter, utype);
+				par.params().labelString(par.expandLabel(layout, bp));
+			} else
+				par.params().labelString(docstring());
+		} else
+			par.params().labelString(par.expandLabel(layout, bp));
+		break;
+	}
+
+	case LABEL_MANUAL:
 	case LABEL_BIBLIO:
 		par.params().labelString(par.expandLabel(layout, bp));
-		break;
 	}
 }
 

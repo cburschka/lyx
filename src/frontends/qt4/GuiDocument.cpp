@@ -2448,7 +2448,7 @@ void GuiDocument::updateNumbering()
 	DocumentClass::const_iterator len = tclass.end();
 	for (; lit != len; ++lit) {
 		int const toclevel = lit->toclevel;
-		if (toclevel != Layout::NOT_IN_TOC && lit->labeltype == LABEL_COUNTER) {
+		if (toclevel != Layout::NOT_IN_TOC && !lit->counter.empty()) {
 			item = new QTreeWidgetItem(numberingModule->tocTW);
 			item->setText(0, toqstr(translateIfPossible(lit->name())));
 			item->setText(1, (toclevel <= depth) ? yes : no);

@@ -123,8 +123,6 @@ enum LabelType {
 	///
 	LABEL_SENSITIVE,
 	///
-	LABEL_COUNTER,
-	///
 	LABEL_ENUMERATE,
 	///
 	LABEL_ITEMIZE

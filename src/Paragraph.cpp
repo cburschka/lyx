@@ -2084,8 +2084,7 @@ docstring Paragraph::expandParagraphLabel(Layout const & layout,
 	bool const in_appendix = process_appendix && d->params_.appendix();
 	docstring fmt = translateIfPossible(layout.labelstring(in_appendix), lang);
 
-	if (fmt.empty() && layout.labeltype == LABEL_COUNTER
-	    && !layout.counter.empty())
+	if (fmt.empty() && !layout.counter.empty())
 		return tclass.counters().theCounter(layout.counter, lang);
 
 	// handle 'inherited level parts' in 'fmt',

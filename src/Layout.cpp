@@ -688,7 +688,6 @@ void Layout::readLabelType(Lexer & lex)
 		LA_CENTERED_TOP_ENVIRONMENT,
 		LA_STATIC,
 		LA_SENSITIVE,
-		LA_COUNTER,
 		LA_ENUMERATE,
 		LA_ITEMIZE,
 		LA_BIBLIO
@@ -698,7 +697,6 @@ void Layout::readLabelType(Lexer & lex)
 	LexerKeyword labelTypeTags[] = {
 		{ "bibliography",             LA_BIBLIO },
 		{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
-		{ "counter",                  LA_COUNTER },
 		{ "enumerate",                LA_ENUMERATE },
 		{ "itemize",                  LA_ITEMIZE },
 		{ "manual",                   LA_MANUAL },
@@ -734,9 +732,6 @@ void Layout::readLabelType(Lexer & lex)
 		break;
 	case LA_SENSITIVE:
 		labeltype = LABEL_SENSITIVE;
-		break;
-	case LA_COUNTER:
-		labeltype = LABEL_COUNTER;
 		break;
 	case LA_ENUMERATE:
 		labeltype = LABEL_ENUMERATE;

@@ -1097,7 +1097,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			/*
 			Paragraph & par = pars_[cur.pit()];
 			if (inset->lyxCode() == LABEL_CODE
-				&& par.layout().labeltype == LABEL_COUNTER) {
+				&& !par.layout().counter.empty() {
 				// Go to the end of the paragraph
 				// Warning: Because of Change-Tracking, the last
 				// position is 'size()' and not 'size()-1':
