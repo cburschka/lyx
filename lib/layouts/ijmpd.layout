@@ -17,7 +17,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 
-Format 43
+Format 44
 
 Sides		1
 Columns		1
@@ -437,7 +437,7 @@ Style Appendix
   Margin	First_Dynamic
   Align	Block
   NextNoIndent	1
-  LabelType	Counter
+  LabelType	Static
   LabelCounter	appendix
   LabelString	"Appendix \Alph{appendix}."
   LabelSep	M

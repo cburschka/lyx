@@ -6,7 +6,7 @@
 #   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 43
+Format 44
 
 #
 # GLOBAL SETTINGS
@@ -242,7 +242,7 @@ Style Section
   BottomSep        0.25
   ParSep           0.7
   Align            Left
-  LabelType        Counter
+  LabelType        Static
   LabelCounter     section
   LabelString      "Section \arabic{section}"
   RefPrefix        sec
@@ -299,7 +299,7 @@ Style Subsection
   BottomSep        0.25
   ParSep           0.5
   Align            Left
-  LabelType        Counter
+  LabelType        Static
   LabelCounter     subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
   RefPrefix        sub
@@ -356,7 +356,7 @@ Style Subsubsection
   BottomSep        0.25
   ParSep           0.5
   Align            Left
-  LabelType        Counter
+  LabelType        Static
   LabelCounter     subsubsection
   LabelString      "Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
   RefPrefix        sub

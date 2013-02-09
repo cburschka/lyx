@@ -14,7 +14,7 @@
 # Modified by: Juergen Spitzmueller <spitz@lyx.org>
 #    use English strings, localization is done by gettext!
 
-Format 43
+Format 44
 
 Input letter.layout
 
@@ -183,7 +183,7 @@ End
 
 Style Opening
 	CopyStyle	DinBrief
-	LabelType	Top_Environment
+	LabelType	Above
 	LeftMargin	""
 	LabelString	"Opening:"
 	LatexName	opening

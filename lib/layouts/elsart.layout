@@ -23,7 +23,7 @@
 #       numbered sections, as does the class file.
 
 
-Format 43
+Format 44
 Columns                 1
 Sides                   2
 PageStyle               headings
@@ -229,7 +229,7 @@ Style Abstract
 	BottomSep             0.7
 	ParSep                0
 	Align                 Block
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "Abstract"
 	LabelBottomSep        0.5
 	Font
@@ -284,7 +284,7 @@ Style Theorem
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          theorem
 	LabelString           "Theorem \arabic{theorem}"
 	Font
@@ -440,7 +440,7 @@ Style Acknowledgement
 	Margin                Static
 	LatexType             environment
 	LatexName             ack
-	Labeltype             Top_Environment
+	LabelType             Above
 	LabelBottomsep        1
 	LabelString           "Acknowledgements"
 	parsep                0.3

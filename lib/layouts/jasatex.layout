@@ -4,7 +4,7 @@
 # JASATeX textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 43
+Format 44
 
 Columns			1
 Sides			1
@@ -179,7 +179,7 @@ Style Abstract
 	ParSep		0
 	Align		Block
 	AlignPossible	Left, Right, Center, Block
-	LabelType	Centered_Top_Environment
+	LabelType	Centered
 	LabelString	"Abstract"
 	LabelBottomSep	0.5
 	Font
@@ -231,7 +231,7 @@ Style Acknowledgments
 	CopyStyle	Abstract
 	LatexName	acknowledgments
 	Category	BackMatter
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Acknowledgments"
 	Font
 	  Size		Normal

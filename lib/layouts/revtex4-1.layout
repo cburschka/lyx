@@ -12,7 +12,7 @@
 #   - We provide natbib-internal according to LyX bug #5182.
 #   - The command \lovname is missing from the class file.
 
-Format 43
+Format 44
 
 Input stdclass.inc
 Input numrevtex.inc
@@ -228,7 +228,7 @@ Style Acknowledgments
 	Category              BackMatter
 	LatexType             Environment
 	LatexName             acknowledgments
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "acknowledgments"
 	LabelBottomSep        0.5
 	LabelFont

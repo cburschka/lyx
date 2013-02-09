@@ -4,7 +4,7 @@
 # Letter textclass definition file.
 # Author : Thomas Hartkens <thomas@hartkens.de>
 
-Format 43
+Format 44
 Input stdinsets.inc
 Input stdfloats.inc
 Input stdcounters.inc
@@ -23,7 +23,7 @@ Style Letter
 	KeepEmpty             1
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
-	LabelType             Top_Environment
+	LabelType             Above
 	LabelString           "Letter:"
 	LabelFont
 	  Series              Bold

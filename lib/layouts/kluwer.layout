@@ -15,7 +15,7 @@
 # 2003-03-03  Updated for lyx 1.3.0.
 
 
-Format 43
+Format 44
 Columns                 1
 Sides                   2
 SecNumDepth             4
@@ -313,7 +313,7 @@ Style Acknowledgements
 	BottomSep             1
 	ParSep                0
 	Align                 Block
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "Acknowledgements"
 	LabelBottomSep        0.5
 	LabelFont
@@ -335,7 +335,7 @@ Style Appendix
 	ParSep                1
 #  Align                 Block
 #  AlignPossible         Block, Left, Right, Center
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "Appendix"
 	Font
 	  Series              Bold

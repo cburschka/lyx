@@ -8,7 +8,7 @@
 # a document, like abstract, bibliography and such.
 
 
-Format 43
+Format 44
 Style Abstract
 	Margin                Static
 	LatexType             Environment
@@ -23,7 +23,7 @@ Style Abstract
 	BottomSep             0.7
 	ParSep                0
 	Align                 Block
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "Abstract"
 	LabelBottomSep        0.5
 	Font

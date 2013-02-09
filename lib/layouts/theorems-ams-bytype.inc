@@ -21,7 +21,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 43
+Format 44
 Counter theorem
 End
 Counter corollary
@@ -66,7 +66,7 @@ Style Theorem
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Left
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          theorem
 	LabelString           "Theorem \thetheorem."
 	Font

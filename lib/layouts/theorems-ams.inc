@@ -19,7 +19,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 43
+Format 44
 
 Style Theorem
 	Category              Reasoning
@@ -40,7 +40,7 @@ Style Theorem
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Left
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          theorem
 	LabelString           "Theorem \thetheorem."
 	Font

@@ -15,7 +15,7 @@
 # and reconfigure LyX (after running texhash, of course).
 
 
-Format 43
+Format 44
 Columns                 2
 Sides                   2
 SecNumDepth             3
@@ -208,7 +208,7 @@ Style Abstract
 	ParIndent             ""
 	TopSep                1.4
 	BottomSep             0.7
-	LabelType             Top_Environment
+	LabelType             Above
 	Font
 	  Size                Normal
 	EndFont

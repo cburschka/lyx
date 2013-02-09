@@ -4,7 +4,7 @@
 
 # For theater plays
 
-Format 43
+Format 44
 Columns                 1
 Sides                   1
 SecNumDepth             2
@@ -65,7 +65,7 @@ Style ACT
 	TopSep                1.0
 #  KeepEmpty            1
 	Align                 Center
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          act
 	LabelSep              M
 	LabelString           "ACT \arabic{act}"
@@ -81,7 +81,7 @@ Style SCENE
 	TopSep                1.0
 #  KeepEmpty            1
 	Align                 Center
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          scene
 	LabelSep              M
 	LabelString           "SCENE \arabic{scene}"

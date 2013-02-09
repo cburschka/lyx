@@ -5,7 +5,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Last modified: 20-May-06 by Uwe Stöhr
 
-Format 43
+Format 44
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -131,7 +131,7 @@ Style Slide
   BottomSep     0.7
   ParSep        0.7
   Align         Center
-  LabelType     Counter
+  LabelType     Static
   LabelCounter  subsection
   LabelString   "    "
   Argument 1
@@ -229,7 +229,7 @@ Style Section
   Category      Sectioning
   TocLevel      1
   LatexName     lyxend\section
-  LabelType     Counter
+  LabelType     Static
   LabelCounter  section
   LabelString   "\arabic{section}"
   Font

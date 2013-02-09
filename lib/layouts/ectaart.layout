@@ -3,7 +3,7 @@
 #  \DeclareCategory{Articles}
 # Author : Koji Yokota <yok...@res.otaru-uc.ac.jp>
 
-Format 43
+Format 44
 Input article.layout
 
 TitleLatexType		Environment
@@ -135,7 +135,7 @@ Style Thanks_Text
 	LatexType	Command
 	LatexName	lyxthankstext
 	NeedProtect	1
-	LabelType	Counter
+	LabelType	Static
 	LabelCounter	Thanks
 	LabelString	"Thanks \theThanks:"
         Preamble

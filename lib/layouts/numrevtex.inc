@@ -2,9 +2,9 @@
 # This include files contains label definitions for a article-like numbering.
 
 
-Format 43
+Format 44
 Style Section
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          section
 	LabelString           "\Roman{section}."
 	LabelStringAppendix   "Appendix \Alph{section}:"
@@ -13,7 +13,7 @@ End
 
 
 Style Subsection
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          subsection
 	LabelString           "\Alph{subsection}."
 	LabelStringAppendix   "\arabic{subsection}."
@@ -22,7 +22,7 @@ End
 
 
 Style Subsubsection
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          subsubsection
 	LabelString           "\arabic{subsubsection}."
 	LabelStringAppendix   "\alph{subsubsection}."
@@ -31,7 +31,7 @@ End
 
 
 Style Paragraph
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          paragraph
 	LabelString           "\alph{paragraph}."
 	LabelStringAppendix   "\alph{paragraph}."

@@ -4,7 +4,7 @@
 # Based on LyX article class; modified to support ENTCS class
 # Reuben Thomas (rrt@sc3d.org)   27/5-2/6/01
 
-Format 43
+Format 44
 Input article.layout
 
 # only font size 11pt is really available
@@ -86,7 +86,7 @@ End
 Style Abstract
 	LatexType             Command
 	LatexName             setabstract
-	LabelType             Top_Environment
+	LabelType             Above
 	ParIndent             ""
 	LeftMargin            ""
 	RightMargin           ""

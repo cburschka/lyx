@@ -5,7 +5,7 @@
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
 
-Format 43
+Format 44
 Style Subtitle
 	Margin                Static
 	LatexType             Command
@@ -87,7 +87,7 @@ Style Acknowledgement
 	BottomSep             0
 	ParSep                0
 	Align                 Block
-	LabelType             Top_Environment
+	LabelType             Above
 	LabelString           "Acknowledgements"
 	LabelSep              M
 	Font

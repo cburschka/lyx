@@ -7,13 +7,13 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 43
+Format 44
 
 Style Part
 	Category              Sectioning
 	Margin                Dynamic
 	LabelString           "Part \thepart"
-	LabelType             Counter
+	LabelType             Static
 	TocLevel              0
 	LabelCounter          part
 	LatexType             Command
@@ -44,7 +44,7 @@ Style Chapter
 	Category              Sectioning
 	LabelString           "Chapter \thechapter"
 	LabelStringAppendix   "Appendix \thechapter"
-	LabelType             Counter
+	LabelType             Above
 	LabelCounter          chapter
 	TocLevel              0
 	LatexType             Command
@@ -71,7 +71,7 @@ End
 Style Section
 	Category              Sectioning
 	Margin                Dynamic
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          section
 	TocLevel              1
 	LatexType             Command

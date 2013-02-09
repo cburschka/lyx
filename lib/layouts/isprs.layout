@@ -9,7 +9,7 @@
 # Heavily modifed and enhanced by serveral developers.
 
 # Input general definitions
-Format 43
+Format 44
 Input stdclass.inc
 Sides			2
 Columns			2
@@ -35,7 +35,7 @@ Style Abstract
   ParSep		0
   LabelSep              x
   Align                 Block
-  LabelType             Top_Environment
+  LabelType             Above
   LabelString           "ABSTRACT:"
   InTitle               1
 
@@ -63,7 +63,7 @@ Style Keywords
   LabelSep		x
   Align                 Left
   AlignPossible         Block, Left
-  LabelType             Top_Environment
+  LabelType             Above
   LabelString           "KEY WORDS:"
   InTitle               1
 
@@ -216,7 +216,7 @@ Style Acknowledgements
   ParIndent		""
   LabelSep		X
   TopSep		0.7
-  LabelType             Top_Environment
+  LabelType             Above
   LabelString           "ACKNOWLEDGEMENTS"
 
   Preamble

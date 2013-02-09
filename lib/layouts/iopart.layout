@@ -4,7 +4,7 @@
 # IOP article textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 43
+Format 44
 
 Columns			1
 Sides			1
@@ -188,7 +188,7 @@ Style Abstract
 	ParSep		0
 	Align		Block
 	AlignPossible	Block, Left, Center, Right
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Abstract"
 	LabelBottomSep	0.5
 	Font

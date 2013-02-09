@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 43
+Format 44
 Input stdtitle.inc
 
 
@@ -54,7 +54,7 @@ Style RevisionHistory
 	ParSep                0
 	Align                 Block
 	KeepEmpty             1
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "Revision History"
 	LabelBottomSep        0.5
 End

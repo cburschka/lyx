@@ -6,7 +6,7 @@
 #          Thomas Hartkens <thomas@hartkens.de>
 
 # Input general definitions
-Format 43
+Format 44
 Input stdfloats.inc
 Input stdcounters.inc
 Input stdinsets.inc
@@ -70,7 +70,7 @@ Style Letter
   KeepEmpty		1
   Align 		Block
   AlignPossible 	Block, Left, Right, Center
-  LabelType 		Top_Environment
+  LabelType 		Above
   LabelString		"Letter:"
   LabelFont
     Series		Bold

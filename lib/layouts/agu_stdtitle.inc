@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 43
+Format 44
 Input stdtitle.inc
 
 
@@ -15,7 +15,7 @@ Style Header
 	LatexType             Command
 	LatexName             header
 	LabelSep              xx
-	LabelType             Centered_Top_Environment
+	LabelType             Centered
 	LabelString           "-- Header --"
 	CommandDepth          2
 	KeepEmpty             1

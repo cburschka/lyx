@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 43
+Format 44
 PageStyle		Plain
 
 
@@ -117,7 +117,7 @@ Style PartBacktext
 	Category	Sectioning
 	Margin		First_Dynamic
 	LabelString	"Part \thepart"
-	LabelType	Counter
+	LabelType	Static
 	TocLevel	0
 	LabelCounter	part
 	Labelsep	xx

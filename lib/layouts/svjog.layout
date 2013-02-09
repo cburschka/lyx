@@ -24,7 +24,7 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 43
+Format 44
 Input svcommon.inc
 
 NoStyle Front_Matter
@@ -165,7 +165,7 @@ Style Abstract
 	ParSep		0
 	Align		Block
 	AlignPossible	Block, Left
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Abstract."
 	LabelFont
 	  Series	Bold

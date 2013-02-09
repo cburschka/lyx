@@ -4,7 +4,7 @@
 # textclass definition file for achemso 3.7c
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 43
+Format 44
 
 Columns			1
 Sides			1
@@ -234,7 +234,7 @@ Style Acknowledgement
 	Category	BackMatter
 	InTitle		0
 	BottomSep	0.7
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Acknowledgement"
 	Font
 	  Size		Normal

@@ -14,7 +14,7 @@
 # ACM style files can be obtained at
 # http://www.acm.org/sigs/pubs/proceed/template.html
 
-Format 43
+Format 44
 
 Columns			1
 Sides			1
@@ -197,7 +197,7 @@ Style Abstract
 	ParSep		0
 	Align		Block
 	AlignPossible	Block
-	LabelType	Centered_Top_Environment
+	LabelType	Centered
 	LabelString	"Abstract"
 	LabelBottomSep	0.5
 	Font
@@ -216,7 +216,7 @@ Style Acknowledgments
 	LatexName	acks
 	Category	BackMatter
 	LabelBottomsep	0
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Acknowledgments"
 End
 

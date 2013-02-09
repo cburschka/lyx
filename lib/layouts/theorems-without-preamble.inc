@@ -26,7 +26,7 @@
 # - Note
 
 
-Format 43
+Format 44
 
 
 Counter		theorem
@@ -50,7 +50,7 @@ Style Theorem
 	ParSep		0.3
 	Align		Block
 	AlignPossible	Left
-	LabelType	Counter
+	LabelType	Static
 	LabelCounter	theorem
 	LabelString	"Theorem \thetheorem."
 	Font
@@ -241,7 +241,7 @@ Style Prob
 	LatexType	Environment
 	LatexName	prob
 	Margin		First_Dynamic
-	LabelType	Counter
+	LabelType	Static
 	LabelCounter	prob
 	LabelString	"\theprob."
 	RefPrefix	pro

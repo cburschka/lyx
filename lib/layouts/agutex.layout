@@ -4,7 +4,7 @@
 # elsarticle textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 43
+Format 44
 
 Columns			1
 Sides			1
@@ -172,7 +172,7 @@ Style Notation
 	TopSep		0.7
 	BottomSep	0.4
 	Align		Block
-	LabelType	Top_Environment
+	LabelType	Above
 	LabelString	"Notation"
 	LabelFont
 	  Series	Bold

@@ -6,7 +6,7 @@
 # Author : Herbert Voss <voss@perce.de> 2001/08/13
 
 
-Format 43
+Format 44
 Columns                 2
 Sides                   2
 #SecNumDepth                            # no counting
@@ -187,7 +187,7 @@ Style Abstract
 	BottomSep             1.5
 	ParSep                0
 	Align                 Block
-	LabelType             Top_Environment
+	LabelType             Above
 	LabelString           "Abstract"
 	LabelBottomSep    0.5
 	TextFont

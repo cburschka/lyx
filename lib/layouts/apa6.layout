@@ -3,7 +3,7 @@
 #  \DeclareCategory{Articles}
 # Author: Jacob Bishop <bishop.jacob@gmail.com> based on the apa 
 # layout written by Randy Gobbel.
-Format 43
+Format 44
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -513,7 +513,7 @@ Style Seriate
 	ParSep                0.0
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter
+	LabelType             Static
 	LabelCounter          enumii
 	LabelString           "(\alph{enumii})"
 	LabelStringAppendix   "(\alph{enumii})"
