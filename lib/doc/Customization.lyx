@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 460
+\lyxformat 461
 \begin_document
 \begin_header
 \textclass scrbook
@@ -18532,6 +18532,51 @@ protect
 not
 \emph default
  whether the command should itself be protected.) Default is false.
+\change_inserted 1414654397 1360681873
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1414654397 1360681892
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360681880
+NoInsetLayout
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360681883
+<layout>
+\end_layout
+
+\end_inset
+
+] Deletes an existing 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360681892
+InsetLayout
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

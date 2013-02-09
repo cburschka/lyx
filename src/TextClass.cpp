@@ -182,6 +182,7 @@ enum TextClassTags {
 	TC_IFSTYLE,
 	TC_DEFAULTSTYLE,
 	TC_INSETLAYOUT,
+	TC_NOINSETLAYOUT,
 	TC_NOSTYLE,
 	TC_COLUMNS,
 	TC_SIDES,
@@ -250,6 +251,7 @@ LexerKeyword textClassTags[] = {
 	{ "leftmargin",        TC_LEFTMARGIN },
 	{ "nocounter",         TC_NOCOUNTER },
 	{ "nofloat",           TC_NOFLOAT },
+	{ "noinsetlayout",     TC_NOINSETLAYOUT },
 	{ "nostyle",           TC_NOSTYLE },
 	{ "outputformat",      TC_OUTPUTFORMAT },
 	{ "outputtype",        TC_OUTPUTTYPE },
@@ -522,6 +524,16 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				if (!deleteLayout(style))
 					lyxerr << "Cannot delete style `"
 					       << to_utf8(style) << '\'' << endl;
+			}
+			break;
+
+		case TC_NOINSETLAYOUT:
+			if (lexrc.next()) {
+				docstring const style = from_utf8(subst(lexrc.getString(),
+								 '_', ' '));
+				if (!deleteInsetLayout(style))
+					LYXERR0("Style `" << style << "' cannot be removed\n"
+						"because it was not found!");
 			}
 			break;
 
@@ -1312,6 +1324,12 @@ bool TextClass::deleteLayout(docstring const & name)
 	bool const ret = (it != end);
 	layoutlist_.erase(it, end);
 	return ret;
+}
+
+
+bool TextClass::deleteInsetLayout(docstring const & name)
+{
+	return insetlayoutlist_.erase(name);
 }
 
 

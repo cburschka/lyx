@@ -151,6 +151,9 @@ import os, re, string, sys
 # Remove COUNTER label style; rename as STATIC
 # Rename TOP_ENVIRONMENT to ABOVE and CENTERED_TOP_ENVIRONMENT to CENTERED
 
+# Incremented to format 45, 12 February 2013 by rgh
+# New Tag "NoInsetLayout"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -375,6 +378,11 @@ def convert(lines):
                 i += 1
             continue
         
+        if format == 44:
+            # nothing to do.
+            i += 1
+            continue
+
         if format == 43:
           match = re_LabelTypeIsCounter.match(lines[i])
           if match:
