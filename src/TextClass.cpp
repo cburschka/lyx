@@ -1252,12 +1252,8 @@ bool TextClass::hasInsetLayout(docstring const & n) const
 {
 	if (n.empty())
 		return false;
-	InsetLayouts::const_iterator it = insetlayoutlist_.begin();
-	InsetLayouts::const_iterator en = insetlayoutlist_.end();
-	for (; it != en; ++it)
-		if (n == it->first)
-			return true;
-	return false;
+	InsetLayouts::const_iterator it = insetlayoutlist_.find(n);
+	return it != insetlayoutlist_.end();
 }
 
 
