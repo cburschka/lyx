@@ -147,6 +147,10 @@ import os, re, string, sys
 # Incremented to format 43, 30 December 2012 by spitz
 # Extended InsetCaption format
 
+# Incremented to format 44, 9 February 2013 by rgh
+# Remove COUNTER label style; rename as STATIC
+# Rename TOP_ENVIRONMENT to ABOVE and CENTERED_TOP_ENVIRONMENT to CENTERED
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -154,7 +158,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 43
+currentFormat = 44
 
 
 def usage(prog_name):
@@ -259,6 +263,12 @@ def convert(lines):
     # Arguments
     re_OptArgs = re.compile(r'^(\s*)OptionalArgs(\s+)(\d+)\D*$', re.IGNORECASE)
     re_ReqArgs = re.compile(r'^(\s*)RequiredArgs(\s+)(\d+)\D*$', re.IGNORECASE)
+    
+    # various changes associated with changing how chapters are handled
+    re_LabelTypeIsCounter = re.compile(r'^(\s*)LabelType(\s*)Counter\s*$', re.IGNORECASE)
+    re_TopEnvironment = re.compile(r'^(\s*)LabelType(\s+)Top_Environment\s*$', re.IGNORECASE)
+    re_CenteredEnvironment = re.compile(r'^(\s*)LabelType(\s+)Centered_Top_Environment\s*$', re.IGNORECASE)
+    re_ChapterStyle = re.compile(r'^\s*Style\s+Chapter\s*$', re.IGNORECASE)
 
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -308,6 +318,7 @@ def convert(lines):
     flexstyles = []
     opts = 0
     reqs = 0
+    inchapter = False
 
     while i < len(lines):
         # Skip comments and empty lines
@@ -363,6 +374,34 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
+        
+        if format == 43:
+          match = re_LabelTypeIsCounter.match(lines[i])
+          if match:
+            if inchapter:
+             lines[i] = match.group(1) + "LabelType" + match.group(2) + "Above"              
+            else:
+              lines[i] = match.group(1) + "LabelType" + match.group(2) + "Static"
+
+          match = re_TopEnvironment.match(lines[i])
+          if match:
+            lines[i] = match.group(1) + "LabelType" + match.group(2) + "Above"
+
+          match = re_CenteredEnvironment.match(lines[i])
+          if match:
+            lines[i] = match.group(1) + "LabelType" + match.group(2) + "Centered"
+
+          if inchapter:
+            match = re_Style.match(lines[i])
+            if match:
+              inchapter = False
+          else:
+            match = re_ChapterStyle.match(lines[i])
+            if match:
+              inchapter = True
+
+          i += 1
+          continue
 
         if format == 42:
           if lines[i] == "InsetLayout Caption":
