@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 460
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12293,9 +12293,74 @@ string=""
 \end_inset
 
 ] The name of the counter for automatic numbering.
+
+\change_inserted 1414654397 1360434581
+ In order to have the counter appear with your label, you will need to reference
+ it in the LabelString.
+ This will work with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434565
+LabelType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+s 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434569
+Static
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434574
+Above
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434578
+Centered
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, at least.
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_deleted 1414654397 1360434393
 This 
 \emph on
 must
@@ -12325,6 +12390,8 @@ Counter
 \begin_inset Newline newline
 \end_inset
 
+
+\change_unchanged
 This 
 \emph on
 may
@@ -12477,7 +12544,7 @@ string=""
 status collapsed
 
 \begin_layout Plain Layout
-Labelsep
+LabelSep
 \end_layout
 
 \end_inset
@@ -12517,26 +12584,12 @@ string=""
 
 \end_inset
 
-] The string used for a label with a 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Static
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelType
-\end_layout
-
-\end_inset
-
+] The string used for
+\change_inserted 1414654397 1360434358
+ the label
+\change_deleted 1414654397 1360434353
+ a label with a 
+\change_unchanged
 .
  When 
 \begin_inset Flex Code
@@ -12653,11 +12706,23 @@ status collapsed
 \emph on
 No_Label
 \emph default
-, Manual, Static, Top_Environment,
+, Manual, Static, 
+\change_inserted 1414654397 1360434611
+Above, 
+\change_deleted 1414654397 1360434612
+Top_Environment,
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
-Centered_Top_Environment, Counter, Sensitive, Enumerate,
+Centered
+\change_inserted 1414654397 1360434627
+, 
+\change_deleted 1414654397 1360434623
+_Top_Environment, Counter, 
+\change_unchanged
+Sensitive, Enumerate,
 \begin_inset Newline newline
 \end_inset
 
@@ -12706,7 +12771,66 @@ LabelString
 \end_inset
 
 .
+
+\change_deleted 1414654397 1360434660
  Note that this really is `static'.
+
+\change_inserted 1414654397 1360434794
+ This will be displayed 
+\begin_inset Quotes eld
+\end_inset
+
+inline
+\begin_inset Quotes erd
+\end_inset
+
+, at the beginning of the paragraph.
+ If the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434743
+LatexType
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434747
+Environment
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, then it will be displayed only in the first paragraph in any sequence
+ of paragraphs with the same 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1360434794
+Style
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -12714,7 +12838,13 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted 1414654397 1360434641
 Top_Environment
+\change_inserted 1414654397 1360434643
+Above
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12732,7 +12862,11 @@ and
 status collapsed
 
 \begin_layout Plain Layout
-Centered_Top_Environment
+Centered
+\change_deleted 1414654397 1360434649
+_Top_Environment
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12748,8 +12882,12 @@ Static
 \end_inset
 
 .
- The label will be printed above the paragraph, but only at the top of an
- environment or the top of a chain of paragraphs with this style.
+ The label will be printed above the paragraph
+\change_inserted 1414654397 1360434839
+ either at the beginning of the line or centered
+\change_deleted 1414654397 1360434813
+, but only at the top of an environment or the top of a chain of paragraphs
+ with this style.
  This might be used with the 
 \begin_inset Flex MenuItem
 status collapsed
@@ -12760,7 +12898,9 @@ Abstract
 
 \end_inset
 
- style, for example.
+ style, for example
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description
@@ -12806,7 +12946,11 @@ Sensitive
  means the (hardcoded) label string depends on the kind of float: It is
  hardcoded to be `FloatType N', where N is the value of the counter associated
  with the float.
- For the case that a caption is inserted outside of a float 
+ For the case that a caption is inserted outside of a float
+\change_inserted 1414654397 1360434861
+ the
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -12816,7 +12960,11 @@ LabelString
 
 \end_inset
 
- should be set to e.
+ 
+\change_inserted 1414654397 1360434866
+will appear as 
+\change_deleted 1414654397 1360434868
+should be set to e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12824,6 +12972,8 @@ g
 \begin_inset space \space{}
 \end_inset
 
+
+\change_unchanged
 
 \begin_inset Quotes eld
 \end_inset
@@ -12836,6 +12986,8 @@ Senseless!
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1414654397 1360434875
 \begin_inset Flex Code
 status collapsed
 
@@ -12933,7 +13085,11 @@ Bibliography
 
 \end_inset
 
- is used internally by LyX and should be used only with 
+ 
+\change_deleted 1414654397 1360434898
+is used internally by LyX and 
+\change_unchanged
+should be used only with 
 \begin_inset Flex Code
 status collapsed
 
