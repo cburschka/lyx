@@ -605,48 +605,21 @@ void RowPainter::paintLabel()
 	if (str.empty())
 		return;
 
-	BufferParams const & bparams = pi_.base.bv->buffer().params();
 	bool const is_rtl = text_.isRTL(par_);
 	Layout const & layout = par_.layout();
-	ParagraphParameters const & pparams = par_.params();
 	FontInfo const font = labelFont();
 	FontMetrics const & fm = theFontMetrics(font);
-
 	double x = x_;
 
-	// this is special code for the chapter layout. This is
-	// printed in an extra row and has a pagebreak at
-	// the top.
-	if (layout.counter == "chapter") {
-		double spacing_val = 1.0;
-		if (!pparams.spacing().isDefault()) {
-			spacing_val = pparams.spacing().getValue();
-		} else {
-			spacing_val = bparams.spacing().getValue();
-		}
-
-		int const labeladdon = int(fm.maxHeight() * layout.spacing.getValue() * spacing_val);
-
-		int const maxdesc = int(fm.maxDescent() * layout.spacing.getValue() * spacing_val)
-			+ int(layout.parsep) * defaultRowHeight();
-
-		if (is_rtl) {
-			x = width_ - leftMargin() -
-				fm.width(str);
-		}
-
-		pi_.pain.text(int(x), yo_ - maxdesc - labeladdon, str, font);
+	if (is_rtl) {
+		x = width_ - leftMargin()
+			+ fm.width(layout.labelsep);
 	} else {
-		if (is_rtl) {
-			x = width_ - leftMargin()
-				+ fm.width(layout.labelsep);
-		} else {
-			x = x_ - fm.width(layout.labelsep)
-				- fm.width(str);
-		}
-
-		pi_.pain.text(int(x), yo_, str, font);
+		x = x_ - fm.width(layout.labelsep)
+			- fm.width(str);
 	}
+
+	pi_.pain.text(int(x), yo_, str, font);
 }
 
 

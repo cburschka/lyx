@@ -1102,15 +1102,6 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		if (par.params().startOfAppendix())
 			maxasc += int(3 * dh);
 
-		// This is special code for the chapter, since the label of this
-		// layout is printed in an extra row
-		if (layout.counter == "chapter"
-		    && !par.params().labelString().empty()) {
-			labeladdon = int(labelfont_metrics.maxHeight()
-				     * layout.spacing.getValue()
-				     * text_->spacing(par));
-		}
-
 		// special code for the top label
 		if (layout.labelIsAbove()
 		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
