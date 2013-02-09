@@ -1,0 +1,46 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass[IEEEtran]{IEEE Transactions on Magnetics}
+#  \DeclareCategory{Articles}
+# Author: Uwe Stöhr (uwestoehr@web.de)
+#
+# IEEtran Magnetics textclass definition file.
+
+
+Format 43
+
+Input IEEEtran.layout
+
+NoStyle Special_Paper_Notice
+
+ClassOptions
+  Other		transmag
+end
+
+
+Style Standard_in_Title
+  CopyStyle	Standard
+  Category	FrontMatter
+  InTitle	1
+End
+
+
+Style Abstract
+  InTitle	1
+  TopSep	0.1
+End
+
+
+Style Keywords
+  InTitle	1
+  BottomSep	0.1
+End
+
+
+Style Nontitle_Abstract_Index_Text
+  CopyStyle	Appendices
+  LatexName	IEEEdisplaynontitleabstractindextext
+  Category	FrontMatter
+  TopSep	1
+  LabelString	"NontitleAbstractIndexText"
+End
+

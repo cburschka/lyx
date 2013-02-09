@@ -1899,6 +1899,7 @@ dist_layouts_DATA =\
 	layouts/hollywood.layout \
 	layouts/IEEEtran.layout \
 	layouts/IEEEtran-CompSoc.layout \
+	layouts/IEEEtran-TransMag.layout \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/initials.module \
@@ -2072,9 +2073,10 @@ dist_templates_DATA = \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
-	templates/IEEEtran-Journal.lyx \
 	templates/IEEEtran-CompSoc.lyx \
 	templates/IEEEtran-Conference.lyx \
+	templates/IEEEtran-Journal.lyx \
+	templates/IEEEtran-TransMag.lyx \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \
