@@ -163,6 +163,11 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 	else if (!package_.empty()
 		&& LaTeXFeatures::isAvailable(to_ascii(package_)))
 			return name_;
+	else if (!preamble_.empty() && package_.empty()
+		 && requires_.empty() && !switchdefault_
+		 && altfonts_.empty()) {
+			return name_;
+	}
 	else if (!altfonts_.empty()) {
 		for (size_t i = 0; i < altfonts_.size(); ++i) {
 			LaTeXFont altf = altFont(altfonts_[i]);
