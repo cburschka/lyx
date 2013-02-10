@@ -10,6 +10,7 @@
 
 #include <config.h>
 #include <support/debug.h>
+#include <limits>
 
 #include "GuiCompareHistory.h"
 
@@ -51,11 +52,22 @@ bool GuiCompareHistory::initialiseParams(std::string const &)
 	int rev=0;
 
 	string tmp;
-	// RCS case
-	if (!isStrInt(revstring))
-		revstring = rsplit(revstring, tmp , '.' );
-	if (isStrInt(revstring))
-		rev = convert<int>(revstring);
+	bool enableBetween = true;
+	// GIT case, hash is long
+	if (revstring.length() > 20) {
+		enableBetween = false;
+		rev = numeric_limits<int>::max();
+	} else {
+		// RCS case
+		if (!isStrInt(revstring))
+			revstring = rsplit(revstring, tmp , '.' );
+		// both SVN & RCS cases
+		if (isStrInt(revstring))
+			rev = convert<int>(revstring);
+	}
+
+	// later we can provide comparison between two hashes
+	betweenrevRB->setEnabled(enableBetween);
 
 	okPB->setEnabled(rev);
 	rev1SB->setMaximum(rev);

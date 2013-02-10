@@ -2213,15 +2213,54 @@ void GIT::getLog(FileName const & tmpf)
 }
 
 
-bool GIT::prepareFileRevision(string const & /*revis*/, string & /*f*/)
+//at this moment we don't accept revision SHA, but just number of revision steps back
+//GUI and infrastucture needs to be changed first
+bool GIT::prepareFileRevision(string const & revis, string & f)
 {
-	return false;
+	// anything positive means we got hash, not "0" or minus revision
+	int rev = 1;
+
+	// hash is rarely number and should be long
+	if (isStrInt(revis) && revis.length()<20)
+		rev = convert<int>(revis);
+
+	// revision and filename
+	string pointer;
+
+	// go back for "minus" revisions
+	if (rev <= 0)
+		pointer = "HEAD~" + convert<string>(-rev);
+	// normal hash
+	else
+		pointer = revis;
+
+	pointer += ":";
+
+	if (rev <= 0)
+		if (!getFileRevisionInfo())
+			return false;
+
+	FileName tmpf = FileName::tempName("lyxvcrev_" + revis + "_");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return false;
+	}
+
+	doVCCommand("git show " + pointer + "./"
+	              + quoteName(onlyFileName(owner_->absFileName()))
+		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+	if (tmpf.isFileEmpty())
+		return false;
+
+	f = tmpf.absFileName();
+	return true;
 }
 
 
 bool GIT::prepareFileRevisionEnabled()
 {
-	return false;
+	return true;
 }
 
 
