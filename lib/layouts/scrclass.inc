@@ -59,6 +59,9 @@ End
 
 
 Style Chapter
+	LabelType             Static
+	LabelSep              xxx
+	Margin                Dynamic
 	Font
 	  Family              Sans
 	  Size                Largest
