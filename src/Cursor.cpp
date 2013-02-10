@@ -1525,8 +1525,6 @@ void Cursor::insert(MathData const & ar)
 
 bool Cursor::backspace()
 {
-	autocorrect() = false;
-
 	if (selection()) {
 		cap::eraseSelection(*this);
 		return true;
@@ -1577,7 +1575,6 @@ bool Cursor::backspace()
 
 bool Cursor::erase()
 {
-	autocorrect() = false;
 	if (inMacroMode())
 		return true;
 
@@ -1632,7 +1629,6 @@ bool Cursor::up()
 	if (disp_.dispatched())
 		return true;
 	setCursor(save);
-	autocorrect() = false;
 	return false;
 }
 
@@ -1646,7 +1642,6 @@ bool Cursor::down()
 	if (disp_.dispatched())
 		return true;
 	setCursor(save);
-	autocorrect() = false;
 	return false;
 }
 

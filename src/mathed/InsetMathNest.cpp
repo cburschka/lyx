@@ -706,6 +706,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			act == LFUN_UP_SELECT;
 		cur.selHandle(select);
 
+		// handle autocorrect:
+		cur.autocorrect() = false;
+		cur.message(_("Autocorrect Off ('!' to enter)"));
+
 		// go up/down
 		bool up = act == LFUN_UP || act == LFUN_UP_SELECT;
 		bool successful = cur.upDownInMath(up);
