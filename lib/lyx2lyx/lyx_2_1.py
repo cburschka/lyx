@@ -3528,6 +3528,50 @@ def revert_IEEEtran_3(document):
         return
 
 
+def revert_kurier_fonts(document):
+  " Revert kurier font definition to LaTeX "
+  
+  i = find_token(document.header, "\\font_math", 0)
+  if i != -1:
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+      val = get_value(document.header, "\\font_math", i)
+      if val == "kurier-math":
+        add_to_preamble(document, "\\let\\Myrmdefault\\rmdefault\n" \
+          "\\usepackage[math]{kurier}\n" \
+          "\\renewcommand{\\rmdefault}{\\Myrmdefault}")
+        document.header[i] = "\\font_math auto"
+  
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    k = find_token(document.header, "\\font_sans kurierl", 0)
+    if k != -1:
+      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurierl}\n" \
+        "\\renewcommand{\\bfdefault}{b}")
+      document.header[k] = "\\font_sans default"
+    
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    l = find_token(document.header, "\\font_sans kurier-condensed", 0)
+    if l != -1:
+      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurier}\n" \
+        "\\edef\\sfdefault{\\sfdefault c}\n" \
+        "\\renewcommand{\\bfdefault}{b}")
+      document.header[l] = "\\font_sans default"
+  
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    m = find_token(document.header, "\\font_sans kurier-light-condensed", 0)
+    if m != -1:
+      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurierl}\n" \
+        "\\edef\\sfdefault{\\sfdefault c}\n" \
+        "\\renewcommand{\\bfdefault}{b}")
+      document.header[m] = "\\font_sans default"
+  
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    j = find_token(document.header, "\\font_sans kurier", 0)
+    if j != -1:
+      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurier}\n" \
+        "\\renewcommand{\\bfdefault}{b}")
+      document.header[j] = "\\font_sans default"
+
+
 ##
 # Conversion hub
 #
@@ -3580,10 +3624,12 @@ convert = [
            [457, [convert_use_stackrel]],
            [458, [convert_captioninsets, convert_captionlayouts]],
            [459, []],
-           [460, []]
+           [460, []],
+           [461, []]
           ]
 
 revert =  [
+           [460, [revert_kurier_fonts]],
            [459, [revert_IEEEtran_3]],
            [458, [revert_fragileframe, revert_newframes]],
            [457, [revert_captioninsets, revert_captionlayouts]],

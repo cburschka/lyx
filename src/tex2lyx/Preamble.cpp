@@ -128,7 +128,10 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "mathptmx", "newcent", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
-"helvet", "lmss", 0};
+"helvet", "kurier", "kurierl", "lmss", 0};
+
+const char * const known_kurier_fonts[] = { "kurier", "kurierl", "kurier-condensed",
+"kurier-light-condensed", 0};
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
@@ -1332,21 +1335,35 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
 			string const body = p.verbatim_item();
+			// store the in_lyx_preamble setting
+			bool const was_in_lyx_preamble = in_lyx_preamble;
 			// font settings
 			if (name == "\\rmdefault")
-				if (is_known(body, known_roman_fonts))
+				if (is_known(body, known_roman_fonts)) {
 					h_font_roman = body;
+					in_lyx_preamble = true;
+				}
 			if (name == "\\sfdefault")
-				if (is_known(body, known_sans_fonts))
+				if (is_known(body, known_sans_fonts)) {
 					h_font_sans = body;
+					in_lyx_preamble = true;
+				}
 			if (name == "\\ttdefault")
-				if (is_known(body, known_typewriter_fonts))
+				if (is_known(body, known_typewriter_fonts)) {
 					h_font_typewriter = body;
+					in_lyx_preamble = true;
+				}
 			if (name == "\\familydefault") {
 				string family = body;
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
+				in_lyx_preamble = true;
 			}
+
+			if (name == "\\bfdefault")
+				// LyX re-adds this if a kurier font is used
+				if (is_known(h_font_sans, known_kurier_fonts) && body == "b")
+					in_lyx_preamble = true;
 
 			// remove the lyxdot definition that is re-added by LyX
 			// if necessary
@@ -1371,6 +1388,23 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				    << opts << "{" << body << "}";
 */
 			}
+			// restore the in_lyx_preamble setting
+			in_lyx_preamble = was_in_lyx_preamble;
+		}
+
+		else if (t.cs() == "edef"){
+			// we only support this for kurier fonts
+			string const command = p.next_token().asInput();
+			p.get_token();
+			if (command == "\\sfdefault") {
+				p.getArg('{', '}');
+				if (h_font_sans == "kurier")
+					h_font_sans = "kurier-condensed";
+				if (h_font_sans == "kurierl")
+					h_font_sans = "kurier-light-condensed";
+			}
+			else
+				h_preamble << "\\edef" << command << "{" << p.getArg('{', '}') << "}\n";
 		}
 
 		else if (t.cs() == "documentclass") {
