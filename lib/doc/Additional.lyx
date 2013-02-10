@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 460
 \begin_document
 \begin_header
 \textclass scrbook
@@ -21950,6 +21950,9 @@ This feature is supported for SVN and RCS though due to the more complicated
  in dialog, numbers always point to the last number in RCS revision number,
  i.e.
  '35' in '1.2.35'.
+ We don't currently support GIT addressing of revisions, one can just compare
+ edited document with its revision X steps backs, where X is addressed as
+ HEAD~X.
 \end_layout
 
 \begin_layout Section
