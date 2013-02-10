@@ -802,11 +802,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// Therefore check for the "," character.
 		// It is also only set when there is not more than one babel
 		// language option.
-		if (opts.find(",") == string::npos && one_language == true)
-			h_inputencoding = opts;
-		if (!options.empty())
-			p.setEncoding(options.back(), Encoding::inputenc);
-		options.clear();
+		if (!opts.empty()) {
+			if (opts.find(",") == string::npos && one_language == true) {
+				h_inputencoding = opts;
+				// FIXME: if this line is used, tex2lyx swallows the next character
+				// in the file behind "{inputenc}"
+				//p.setEncoding(opts);
+			} else {
+				h_preamble << "\\usepackage[" << opts << "}{" << name << "}\n";
+				// FIXME: enabling this introduces bug #8525
+				//p.setEncoding(options.back(), Encoding::inputenc);
+			}
+			options.clear();
+		} else
+			h_preamble << "\\usepackage{" << name << "}\n";		
 	}
 
 	else if (name == "srcltx") {
