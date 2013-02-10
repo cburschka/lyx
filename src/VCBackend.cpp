@@ -2236,10 +2236,6 @@ bool GIT::prepareFileRevision(string const & revis, string & f)
 
 	pointer += ":";
 
-	if (rev <= 0)
-		if (!getFileRevisionInfo())
-			return false;
-
 	FileName tmpf = FileName::tempName("lyxvcrev_" + revis + "_");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
