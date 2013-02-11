@@ -128,8 +128,8 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "lmodern", "mathdesign", "mathpazo", "mathptmx", "newcent", "tgbonum",
 "tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", 0};
 
-const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
-"helvet", "kurier", "kurierl", "lmss", "tgadventor", "tgheros", 0};
+const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
+"cmbr", "cmss", "helvet", "kurier", "kurierl", "lmss", "tgadventor", "tgheros", 0};
 
 const char * const known_kurier_fonts[] = { "kurier", "kurierl", "kurier-condensed",
 "kurier-light-condensed", 0};
@@ -711,6 +711,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 				options.clear();
 		}
 	}
+
+	if (name == "biolinum-type1")
+		h_font_sans = "biolinum";
 
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
