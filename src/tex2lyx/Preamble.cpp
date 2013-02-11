@@ -124,9 +124,9 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
-"ccfonts", "chancery", "charter", "cmr", "fourier", "garamondx", "libertine-type1",
-"lmodern", "mathdesign", "mathpazo", "mathptmx", "newcent", "tgbonum",
-"tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", 0};
+"ccfonts", "chancery", "charter", "cmr", "fourier", "garamondx", "libertine",
+"libertine-type1", "lmodern", "mathdesign", "mathpazo", "mathptmx", "newcent",
+"tgbonum", "tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
 "cmbr", "cmss", "helvet", "kurier", "kurierl", "lmss", "tgadventor", "tgheros", 0};
@@ -675,6 +675,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "garamondx") {
 		h_font_roman = "garamondx";
 		if (opts == "osfI")
+			h_font_osf = "true";
+	}
+
+	if (name == "libertine") {
+		h_font_roman = "libertine-legacy";
+		if (opts == "osf")
 			h_font_osf = "true";
 	}
 
