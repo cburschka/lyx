@@ -124,7 +124,7 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
-"ccfonts", "chancery", "charter", "cmr", "fourier", "lmodern",
+"ccfonts", "chancery", "charter", "cmr", "fourier", "garamondx", "lmodern",
 "mathdesign", "mathpazo", "mathptmx", "newcent", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
@@ -669,8 +669,13 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_sc = "true";
 	}
 
+	if (name == "garamondx") {
+		h_font_roman = "garamondx";
+		if (opts == "osfI")
+			h_font_osf = "true";
+	}
+
 	if (name == "mathdesign") {
-		// when font uses real small capitals
 		if (opts.find("charter") != string::npos)
 			h_font_roman = "md-charter";
 		if (opts.find("garamond") != string::npos)
