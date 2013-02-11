@@ -124,8 +124,8 @@ const char * const known_old_language_packages[] = {"french", "frenchle",
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
-"ccfonts", "chancery", "charter", "cmr", "fourier", "lmodern", "mathpazo",
-"mathptmx", "newcent", "utopia", 0};
+"ccfonts", "chancery", "charter", "cmr", "fourier", "lmodern",
+"mathdesign", "mathpazo", "mathptmx", "newcent", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
 "helvet", "kurier", "kurierl", "lmss", 0};
@@ -667,6 +667,20 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// when font uses real small capitals
 		if (opts == "expert")
 			h_font_sc = "true";
+	}
+
+	if (name == "mathdesign") {
+		// when font uses real small capitals
+		if (opts.find("charter") != string::npos)
+			h_font_roman = "md-charter";
+		if (opts.find("garamond") != string::npos)
+			h_font_roman = "md-garamond";
+		if (opts.find("utopia") != string::npos)
+			h_font_roman = "md-utopia";
+		if (opts.find("expert") != string::npos) {
+			h_font_sc = "true";
+			h_font_osf = "true";
+		}
 	}
 
 	else if (name == "mathpazo")
