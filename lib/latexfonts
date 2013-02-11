@@ -443,42 +443,42 @@ Font helvet
 EndFont
 
 Font kurier
-	GuiName		"Kurier"
-	Family		sf
-	SwitchDefault	1
+	GuiName         "Kurier"
+	Family          sf
+	SwitchDefault   1
 	Preamble
-		\renewcommand{\bfdefault}{b}
+	\renewcommand{\bfdefault}{b}
 	EndPreamble
 EndFont
 
 Font kurierl
-	GuiName		"Kurier (light)"
-	Family		sf
-	SwitchDefault	1
+	GuiName         "Kurier (Light)"
+	Family          sf
+	SwitchDefault 1
 	Preamble
-		\renewcommand{\bfdefault}{b}
+	\renewcommand{\bfdefault}{b}
 	EndPreamble
 EndFont
 
 Font kurier-condensed
-	GuiName		"Kurier (condensed)"
-	Family		sf
-	Requires	kurier
+	GuiName         "Kurier (Condensed)"
+	Family          sf
+	Requires        kurier
 	Preamble
-		\renewcommand{\sfdefault}{kurier}
-		\edef\sfdefault{\sfdefault c}
-		\renewcommand{\bfdefault}{b}
+	\renewcommand{\sfdefault}{kurier}
+	\edef\sfdefault{\sfdefault c}
+	\renewcommand{\bfdefault}{b}
 	EndPreamble
 EndFont
 
 Font kurier-light-condensed
-	GuiName		"Kurier (light condensed)"
-	Family		sf
-	Requires	kurier
+	GuiName         "Kurier (Light Condensed)"
+	Family          sf
+	Requires        kurier
 	Preamble
-		\renewcommand{\sfdefault}{kurierl}
-		\edef\sfdefault{\sfdefault c}
-		\renewcommand{\bfdefault}{b}
+	\renewcommand{\sfdefault}{kurierl}
+	\edef\sfdefault{\sfdefault c}
+	\renewcommand{\bfdefault}{b}
 	EndPreamble
 EndFont
 
@@ -588,13 +588,13 @@ Font garamondx-ntxm
 EndFont
 
 Font kurier-math
-	GuiName		"Kurier (math)"
-	Family		math
-	Requires	kurier
+	GuiName         "Kurier (Math)"
+	Family          math
+	Requires        kurier
 	Preamble
-		\let\Myrmdefault\rmdefault
-		\usepackage[math]{kurier}
-		\renewcommand{\rmdefault}{\Myrmdefault}
+	\let\Myrmdefault\rmdefault
+	\usepackage[math]{kurier}
+	\renewcommand{\rmdefault}{\Myrmdefault}
 	EndPreamble
 EndFont
 
