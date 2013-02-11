@@ -138,6 +138,8 @@ const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
 "newcent", "tgcursor", "txtt", 0};
 
+const char * const known_math_fonts[] = { "eulervm", 0};
+
 const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 "a1paper", "b1paper", "c1paper", "a2paper", "b2paper", "c2paper", "a3paper",
 "b3paper", "c3paper", "a4paper", "b4paper", "c4paper", "a5paper", "b5paper",
@@ -732,13 +734,17 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "eco")
 		h_font_osf = "true";
 
+	// math fonts
+	if (is_known(name, known_math_fonts))
+		h_font_math = name;
+
 	if (name == "refstyle")
 		h_use_refstyle = "1";
 
 	// after the detection and handling of special cases, we can remove the
 	// fonts, otherwise they would appear in the preamble, see bug #7856
 	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
-		||	is_known(name, known_typewriter_fonts))
+		||	is_known(name, known_typewriter_fonts) || is_known(name, known_math_fonts))
 		;
 
 	else if (name == "amsmath" || name == "amssymb" ||
