@@ -136,7 +136,7 @@ const char * const known_kurier_fonts[] = { "kurier", "kurierl", "kurier-condens
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
-"newcent", "tgcursor", 0};
+"newcent", "tgcursor", "txtt", 0};
 
 const char * const known_paper_sizes[] = { "a0paper", "b0paper", "c0paper",
 "a1paper", "b1paper", "c1paper", "a2paper", "b2paper", "c2paper", "a3paper",
