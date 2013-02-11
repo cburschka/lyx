@@ -66,8 +66,6 @@ Format LaTeX feature                        LyX feature
 439    MinionPro.sty                        \font_roman, \font_osf
 440    MinionPro.sty,                       \font_math
 443    unicode-math.sty                     InsetMath*
-444    libertine.sty,                       \font_osf, \font_sans
-       libertine-legacy.sty
 445    URW Classico LaTeX font              \font_sans uop
        \renewcommand{\sffamily}{uop}
 446    Optional and required arguments      InsetArgument
