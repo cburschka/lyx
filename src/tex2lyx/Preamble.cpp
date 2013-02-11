@@ -1341,34 +1341,42 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (name == "\\rmdefault")
 				if (is_known(body, known_roman_fonts)) {
 					h_font_roman = body;
+					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\sfdefault")
 				if (is_known(body, known_sans_fonts)) {
 					h_font_sans = body;
+					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\ttdefault")
 				if (is_known(body, known_typewriter_fonts)) {
 					h_font_typewriter = body;
+					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\familydefault") {
 				string family = body;
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
+				p.skip_spaces();
 				in_lyx_preamble = true;
 			}
 
 			if (name == "\\bfdefault")
 				// LyX re-adds this if a kurier font is used
-				if (is_known(h_font_sans, known_kurier_fonts) && body == "b")
+				if (is_known(h_font_sans, known_kurier_fonts) && body == "b") {
+					p.skip_spaces();
 					in_lyx_preamble = true;
+				}
 
 			// remove the lyxdot definition that is re-added by LyX
 			// if necessary
-			if (name == "\\lyxdot")
+			if (name == "\\lyxdot") {
+				p.skip_spaces();
 				in_lyx_preamble = true;
+			}
 
 			// Add the command to the known commands
 			add_known_command(name, opt1, !opt2.empty(), from_utf8(body));
@@ -1402,6 +1410,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_font_sans = "kurier-condensed";
 				if (h_font_sans == "kurierl")
 					h_font_sans = "kurier-light-condensed";
+				p.skip_spaces();
 			}
 			else
 				h_preamble << "\\edef" << command << "{" << p.getArg('{', '}') << "}\n";
@@ -1459,6 +1468,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// FIXME This does not work for classes that have a
 			//       different name in LyX than in LaTeX
 			h_textclass = p.getArg('{', '}');
+			p.skip_spaces();
 		}
 
 		else if (t.cs() == "usepackage") {
