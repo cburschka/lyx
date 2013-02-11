@@ -70,6 +70,10 @@ public:
 	bool providesOSF(bool ot1, bool complete, bool nomath);
 	/// Does this font provide optional true SmallCaps?
 	bool providesSC(bool ot1, bool complete, bool nomath);
+	/** does this font provide OSF and Small Caps only via 
+	 * a single, undifferentiated expert option?
+	 */
+	bool hasMonolithicExpertSet(bool ot1, bool complete, bool nomath);
 	/// Does this font provide scaling?
 	bool providesScale(bool ot1, bool complete, bool nomath);
 	/// Return the LaTeX Code

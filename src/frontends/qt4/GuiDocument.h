@@ -98,6 +98,8 @@ private Q_SLOTS:
 	void romanChanged(int);
 	void sansChanged(int);
 	void ttChanged(int);
+	void fontOsfToggled(bool state);
+	void fontScToggled(bool state);
 	void setIndent(int);
 	void enableIndent(bool);
 	void setSkip(int);
@@ -231,6 +233,10 @@ private:
 	bool providesOSF(QString const & font) const;
 	/// does this font provide true Small Caps?
 	bool providesSC(QString const & font) const;
+	/** does this font provide OSF and Small Caps only via 
+	 * a single, undifferentiated expert option?
+	 */
+	bool hasMonolithicExpertSet(QString const & font) const;
 	/// does this font provide size adjustment?
 	bool providesScale(QString const & font) const;
 	/// does this font provide an alternative without math?

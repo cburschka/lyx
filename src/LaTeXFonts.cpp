@@ -110,6 +110,19 @@ bool LaTeXFont::providesSC(bool ot1, bool complete, bool nomath)
 }
 
 
+bool LaTeXFont::hasMonolithicExpertSet(bool ot1, bool complete, bool nomath)
+{
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+
+	if (usedfont.empty())
+		return false;
+	else if (usedfont != name_)
+		return altFont(usedfont).hasMonolithicExpertSet(ot1, complete, nomath);
+	return (!osfoption_.empty() && !scoption_.empty() && osfoption_ == scoption_)
+		|| (osfoption_.empty() && scoption_.empty() && !osfscoption_.empty());
+}
+
+
 bool LaTeXFont::providesScale(bool ot1, bool complete, bool nomath)
 {
 	docstring const usedfont = getUsedFont(ot1, complete, nomath);

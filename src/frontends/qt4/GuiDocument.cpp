@@ -850,8 +850,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontScCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->fontScCB, SIGNAL(toggled(bool)),
+		this, SLOT(fontScToggled(bool)));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)),
+		this, SLOT(fontOsfToggled(bool)));
 
 	fontModule->fontencLE->setValidator(new NoNewLineValidator(
 		fontModule->fontencLE));
@@ -1809,6 +1813,28 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 void GuiDocument::mathFontChanged(int)
 {
 	updateFontOptions();
+}
+
+
+void GuiDocument::fontOsfToggled(bool state)
+{
+	if (fontModule->osFontsCB->isChecked())
+		return;
+	QString font = fontModule->fontsRomanCO->itemData(
+			fontModule->fontsRomanCO->currentIndex()).toString();
+	if (hasMonolithicExpertSet(font))
+		fontModule->fontScCB->setChecked(state);
+}
+
+
+void GuiDocument::fontScToggled(bool state)
+{
+	if (fontModule->osFontsCB->isChecked())
+		return;
+	QString font = fontModule->fontsRomanCO->itemData(
+			fontModule->fontsRomanCO->currentIndex()).toString();
+	if (hasMonolithicExpertSet(font))
+		fontModule->fontOsfCB->setChecked(state);
 }
 
 
@@ -3760,6 +3786,17 @@ bool GuiDocument::providesNoMath(QString const & font) const
 	return theLaTeXFonts().getLaTeXFont(
 				qstring_to_ucs4(font)).providesNoMath(ot1(),
 								      completeFontset());
+}
+
+
+bool GuiDocument::hasMonolithicExpertSet(QString const & font) const
+{
+	if (fontModule->osFontsCB->isChecked())
+		return false;
+	return theLaTeXFonts().getLaTeXFont(
+				qstring_to_ucs4(font)).hasMonolithicExpertSet(ot1(),
+									      completeFontset(),
+									      noMathFont());
 }
 
 
