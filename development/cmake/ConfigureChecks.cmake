@@ -39,7 +39,8 @@ check_include_files(utime.h HAVE_UTIME_H)
 check_include_files(string.h HAVE_STRING_H)
 check_include_files(argz.h HAVE_ARGZ_H)
 
-
+set(_function_file ${TOP_BINARY_DIR}/configFunctions.h.cmake)
+set(Function_Defines)
 foreach(_f alloca __argz_count __argz_next __argz_stringify
 	chmod close _close dcgettext fcntl fork __fsetlocking
 	getcwd getegid getgid getpid _getpid gettext getuid lstat mempcpy mkdir _mkdir
@@ -47,6 +48,7 @@ foreach(_f alloca __argz_count __argz_next __argz_stringify
 	setenv setlocale strcasecmp stpcpy strdup strerror strtoul tsearch unsetenv wcslen)
   string(TOUPPER ${_f} _UF)
   check_function_exists(${_f} HAVE_${_UF})
+  set(Function_Defines "${Function_Defines}#cmakedefine HAVE_${_UF} 1\n")
 endforeach()
 
 check_symbol_exists(alloca "malloc.h" HAVE_SYMBOL_ALLOCA)
