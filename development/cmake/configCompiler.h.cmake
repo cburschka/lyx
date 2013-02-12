@@ -30,7 +30,7 @@
 #cmakedefine HAVE_IOS 1
 #cmakedefine HAVE_LOCALE 1
 
-${Function_Defines}
+#include "configCompiler.h"
 
 #cmakedefine HAVE_STD_COUNT 1
 #cmakedefine HAVE_ASPRINTF 1
