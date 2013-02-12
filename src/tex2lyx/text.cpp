@@ -1698,7 +1698,14 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		begin_inset(os, "Flex ");
 		os << to_utf8(newinsetlayout->name()) << '\n'
 		   << "status collapsed\n";
-		parse_text_in_inset(p, os, FLAG_END, false, parent_context, newinsetlayout);
+		if (newinsetlayout->isPassThru()) {
+			string const arg = p.verbatimEnvironment(name);
+			Context context(true, parent_context.textclass, 
+					&parent_context.textclass.plainLayout(),
+					parent_context.layout);
+			output_ert(os, arg, parent_context);
+		} else
+			parse_text_in_inset(p, os, FLAG_END, false, parent_context, newinsetlayout);
 		end_inset(os);
 	}
 
@@ -4476,7 +4483,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			begin_inset(os, "Flex ");
 			os << to_utf8(newinsetlayout->name()) << '\n'
 			   << "status collapsed\n";
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
+			if (newinsetlayout->isPassThru()) {
+				// set catcodes to verbatim early, just in case.
+				p.setCatcodes(VERBATIM_CATCODES);
+				string delim = p.get_token().asInput();
+				if (delim != "{")
+					cerr << "Warning: bad delimiter for command " << t.asInput() << endl;
+				string const arg = p.verbatimStuff("}");
+				Context newcontext(true, context.textclass);
+				if (newinsetlayout->forcePlainLayout())
+					newcontext.layout = &context.textclass.plainLayout();
+				output_ert(os, arg, newcontext);
+			} else
+				
+				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
 		}
 
