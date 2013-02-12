@@ -445,41 +445,29 @@ EndFont
 Font kurier
 	GuiName         "Kurier"
 	Family          sf
+	Requires        kurier
 	SwitchDefault   1
-	Preamble
-	\renewcommand{\bfdefault}{b}
-	EndPreamble
 EndFont
 
 Font kurierl
 	GuiName         "Kurier (Light)"
 	Family          sf
-	SwitchDefault 1
-	Preamble
-	\renewcommand{\bfdefault}{b}
-	EndPreamble
+	Requires        kurier
+	SwitchDefault   1
 EndFont
 
-Font kurier-condensed
+Font kurierc
 	GuiName         "Kurier (Condensed)"
 	Family          sf
 	Requires        kurier
-	Preamble
-	\renewcommand{\sfdefault}{kurier}
-	\edef\sfdefault{\sfdefault c}
-	\renewcommand{\bfdefault}{b}
-	EndPreamble
+	SwitchDefault   1
 EndFont
 
-Font kurier-light-condensed
+Font kurierlc
 	GuiName         "Kurier (Light Condensed)"
 	Family          sf
 	Requires        kurier
-	Preamble
-	\renewcommand{\sfdefault}{kurierl}
-	\edef\sfdefault{\sfdefault c}
-	\renewcommand{\bfdefault}{b}
-	EndPreamble
+	SwitchDefault   1
 EndFont
 
 Font lmss

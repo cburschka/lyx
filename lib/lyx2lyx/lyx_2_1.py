@@ -3542,34 +3542,13 @@ def revert_kurier_fonts(document):
         document.header[i] = "\\font_math auto"
   
   if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
-    k = find_token(document.header, "\\font_sans kurierl", 0)
+    kurier_fonts = ["kurier", "kurierc", "kurierl", "kurierlc"]
+    k = find_token(document.header, "\\font_sans kurier", 0)
     if k != -1:
-      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurierl}\n" \
-        "\\renewcommand{\\bfdefault}{b}")
-      document.header[k] = "\\font_sans default"
-    
-  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
-    l = find_token(document.header, "\\font_sans kurier-condensed", 0)
-    if l != -1:
-      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurier}\n" \
-        "\\edef\\sfdefault{\\sfdefault c}\n" \
-        "\\renewcommand{\\bfdefault}{b}")
-      document.header[l] = "\\font_sans default"
-  
-  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
-    m = find_token(document.header, "\\font_sans kurier-light-condensed", 0)
-    if m != -1:
-      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurierl}\n" \
-        "\\edef\\sfdefault{\\sfdefault c}\n" \
-        "\\renewcommand{\\bfdefault}{b}")
-      document.header[m] = "\\font_sans default"
-  
-  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
-    j = find_token(document.header, "\\font_sans kurier", 0)
-    if j != -1:
-      add_to_preamble(document, "\\renewcommand{\\sfdefault}{kurier}\n" \
-        "\\renewcommand{\\bfdefault}{b}")
-      document.header[j] = "\\font_sans default"
+      sf = get_value(document.header, "\\font_sans", k)
+      if sf in kurier_fonts:
+        add_to_preamble(document, "\\renewcommand{\\sfdefault}{%s}" % sf)
+        document.header[k] = "\\font_sans default"
 
 
 ##
