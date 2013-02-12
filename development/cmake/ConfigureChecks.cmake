@@ -17,29 +17,26 @@ include(TestBigEndian)
 
 test_big_endian(WORDS_BIGENDIAN)
 
-check_include_file_cxx(aspell.h HAVE_ASPELL_H)
-check_include_file_cxx(aspell/aspell.h HAVE_ASPELL_ASPELL_H)
 #check_include_file_cxx(istream HAVE_ISTREAM)
 #check_include_file_cxx(ostream HAVE_OSTREAM)
-#check_include_file_cxx(ios HAVE_IOS)
 #check_include_file_cxx(sstream HAVE_SSTREAM)
+#check_include_file_cxx(ios HAVE_IOS)
 #check_include_file_cxx(locale HAVE_LOCALE)
 
-check_include_files(limits.h HAVE_LIMITS_H)
-check_include_files(locale.h HAVE_LOCALE_H)
-check_include_files(stdlib.h HAVE_STDLIB_H)
-check_include_files(sys/stat.h HAVE_SYS_STAT_H)
-check_include_files(sys/time.h HAVE_SYS_TIME_H)
-check_include_files(sys/types.h HAVE_SYS_TYPES_H)
-check_include_files(sys/utime.h HAVE_SYS_UTIME_H)
-check_include_files(sys/socket.h HAVE_SYS_SOCKET_H)
-check_include_files(unistd.h HAVE_UNISTD_H)
-check_include_files(inttypes.h HAVE_INTTYPES_H)
-check_include_files(utime.h HAVE_UTIME_H)
-check_include_files(string.h HAVE_STRING_H)
-check_include_files(argz.h HAVE_ARGZ_H)
+# defines will be written to configIncludes.h
+set(Include_Defines)
+foreach(_h_file aspell.h aspell/aspell.h limits.h locale.h
+	stdlib.h sys/stat.h sys/time.h sys/types.h sys/utime.h
+	sys/socket.h unistd.h inttypes.h utime.h string.h argz.h)
+	string(REGEX REPLACE "[/\\.]" "_" _hf ${_h_file})
+	string(TOUPPER ${_hf} _HF)
+	check_include_files(${_h_file} HAVE_${_HF})
+	set(Include_Defines "${Include_Defines}#cmakedefine HAVE_${_HF} 1\n")
+endforeach()
+configure_file(${LYX_CMAKE_DIR}/configIncludes.cmake ${TOP_BINARY_DIR}/configIncludes.h.cmake)
+configure_file(${TOP_BINARY_DIR}/configIncludes.h.cmake ${TOP_BINARY_DIR}/configIncludes.h)
 
-set(_function_file ${TOP_BINARY_DIR}/configFunctions.h.cmake)
+# defines will be written to configFunctions.h
 set(Function_Defines)
 foreach(_f alloca __argz_count __argz_next __argz_stringify
 	chmod close _close dcgettext fcntl fork __fsetlocking
@@ -50,6 +47,8 @@ foreach(_f alloca __argz_count __argz_next __argz_stringify
   check_function_exists(${_f} HAVE_${_UF})
   set(Function_Defines "${Function_Defines}#cmakedefine HAVE_${_UF} 1\n")
 endforeach()
+configure_file(${LYX_CMAKE_DIR}/configFunctions.cmake ${TOP_BINARY_DIR}/configFunctions.h.cmake)
+configure_file(${TOP_BINARY_DIR}/configFunctions.h.cmake ${TOP_BINARY_DIR}/configFunctions.h)
 
 check_symbol_exists(alloca "malloc.h" HAVE_SYMBOL_ALLOCA)
 check_symbol_exists(asprintf "stdio.h" HAVE_ASPRINTF)

@@ -696,8 +696,6 @@ if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
 	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.msvc ${TOP_BINARY_DIR}/configCompiler.h)
 else()
 	include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
-	configure_file(${LYX_CMAKE_DIR}/configFunctions.cmake ${TOP_BINARY_DIR}/configFunctions.h.cmake)
-	configure_file(${TOP_BINARY_DIR}/configFunctions.h.cmake ${TOP_BINARY_DIR}/configFunctions.h)
 	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
 endif()
 

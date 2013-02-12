@@ -13,22 +13,12 @@
 #define _CONFIG_COMPILER_H
 
 
-#cmakedefine HAVE_LIMITS_H 1
-#cmakedefine HAVE_LOCALE_H 1
-#cmakedefine HAVE_STDLIB_H 1
-#cmakedefine HAVE_SYS_STAT_H 1
-#cmakedefine HAVE_SYS_TIME_H 1
-#cmakedefine HAVE_SYS_TYPES_H 1
-#cmakedefine HAVE_SYS_UTIME_H 1
-#cmakedefine HAVE_SYS_SOCKET_H 1
-#cmakedefine HAVE_UNISTD_H 1
-#cmakedefine HAVE_INTTYPES_H 1
-#cmakedefine HAVE_UTIME_H 1
-#cmakedefine HAVE_STRING_H 1
 #cmakedefine HAVE_ISTREAM 1
 #cmakedefine HAVE_OSTREAM 1
 #cmakedefine HAVE_IOS 1
 #cmakedefine HAVE_LOCALE 1
+
+#include "configIncludes.h"
 
 #include "configFunctions.h"
 
