@@ -679,7 +679,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "libertine") {
-		h_font_roman = "libertine-legacy";
+		h_font_roman = "libertine";
 		// this automatically invokes biolinum
 		h_font_sans = "biolinum";
 		if (opts == "osf")
@@ -688,8 +688,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "libertine-type1") {
 		h_font_roman = "libertine";
-		// this automatically invokes biolinum
-		h_font_sans = "biolinum";
+		// NOTE: contrary to libertine.sty, libertine-type1
+		// does not automatically invoke biolinum
 		if (opts == "lining")
 			h_font_osf = "false";
 		else
