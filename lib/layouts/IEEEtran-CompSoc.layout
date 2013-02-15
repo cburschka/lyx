@@ -23,10 +23,9 @@ Style Standard_in_Title
 End
 
 
-# enable this if bug #8545 is fixed
-#NoStyle Author_Name
-#NoStyle Flex:Author_Affiliation
-#NoStyle Flex:Author_Mark
+NoInsetLayout Flex:Author_Name
+NoInsetLayout Flex:Author_Affiliation
+NoInsetLayout Flex:Author_Mark
 
 
 InsetLayout Flex:Author_Footnote
