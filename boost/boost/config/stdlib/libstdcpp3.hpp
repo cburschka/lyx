@@ -39,7 +39,9 @@
       //
 #     define BOOST_HAS_THREADS
 #  else
-#     define BOOST_DISABLE_THREADS
+#    ifndef BOOST_DISABLE_THREADS
+#      define BOOST_DISABLE_THREADS
+#    endif
 #  endif
 #elif defined(__GLIBCPP__) \
         && !defined(_GLIBCPP_HAVE_GTHR_DEFAULT) \
