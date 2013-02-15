@@ -258,8 +258,6 @@ public:
 	char getChar();
 	///
 	void error(std::string const & msg);
-	///
-	void push_back(Token const & t);
 	/// The previous token.
 	Token const prev_token() const;
 	/// The current token.
@@ -288,11 +286,13 @@ private:
 	/// Parses one token from \p is
 	void tokenize_one();
 	///
+	void push_back(Token const & t);
+	///
 	int lineno_;
 	///
 	std::vector<Token> tokens_;
 	///
-	unsigned pos_;
+	size_t pos_;
 	///
 	std::vector<unsigned> positions_;
 	///
