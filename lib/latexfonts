@@ -154,10 +154,18 @@ EndFont
 Font libertine
 	GuiName          "Libertine"
 	Family           rm
+	OsfOption        osf
+	Package          libertine-type1
+	AltFonts         libertine-2012,libertine-legacy
+	Requires         libertineMono-type1
+EndFont
+
+AltFont libertine-2012
+	GuiName          "Libertine"
+	Family           rm
 	OsfOption        lining
 	OsfDefault       1
 	Package          libertine-type1
-	AltFonts         libertine-legacy
 EndFont
 
 AltFont libertine-legacy
@@ -416,6 +424,16 @@ EndFont
 Font biolinum
 	GuiName          "Biolinum"
 	Family           sf
+	OsfOption        osf
+	ScaleOption      scaled=$$val
+	Package          biolinum-type1
+	Requires         libertineMono-type1
+	AltFonts         biolinum-2012
+EndFont
+
+AltFont biolinum-2012
+	GuiName          "Biolinum"
+	Family           sf
 	OsfOption        lining
 	OsfDefault       1
 	Package          biolinum-type1
@@ -529,6 +547,13 @@ Font courier
 	Requires         psnfss
 EndFont
 
+Font libertine-mono
+	GuiName          "Libertine Mono"
+	Family           tt
+	ScaleOption      scaled=$$val
+	Package          libertineMono-type1
+EndFont
+
 Font lmtt
 	GuiName          "Latin Modern Typewriter"
 	Family           tt
@@ -580,9 +605,11 @@ Font kurier-math
 	Family          math
 	Requires        kurier
 	Preamble
-	\let\Myrmdefault\rmdefault
+	% store roman font
+	\let\origrmdefault\rmdefault
 	\usepackage[math]{kurier}
-	\renewcommand{\rmdefault}{\Myrmdefault}
+	% reset stored roman font
+	\renewcommand{\rmdefault}{\origrmdefault}
 	EndPreamble
 EndFont
 

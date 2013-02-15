@@ -959,6 +959,7 @@ def revert_libertine(document):
             preamble = "\\usepackage"
             if osf:
                 document.header[j] = "\\font_osf false"
+                preamble += "[osf]"
             else:
                 preamble += "[lining]"
             preamble += "{libertine-type1}"
@@ -3551,6 +3552,47 @@ def revert_kurier_fonts(document):
         document.header[k] = "\\font_sans default"
 
 
+def revert_new_libertines(document):
+    " Revert new libertine font definition to LaTeX "
+  
+    if find_token(document.header, "\\use_non_tex_fonts true", 0) != -1:
+        return
+
+    i = find_token(document.header, "\\font_typewriter libertine-mono", 0)
+    if i != -1:
+        preamble = "\\usepackage"
+        sc = find_token(document.header, "\\font_tt_scale", 0)
+        if sc != -1:
+            scval = get_value(document.header, "\\font_tt_scale", sc)
+            if scval != "100":
+                preamble += "[scale=%f]" % (float(scval) / 100)
+                document.header[sc] = "\\font_tt_scale 100"
+        preamble += "{libertineMono-type1}"
+        add_to_preamble(document, [preamble])
+        document.header[i] = "\\font_typewriter default"
+   
+    k = find_token(document.header, "\\font_sans biolinum", 0)
+    if k != -1:
+        preamble = "\\usepackage"
+        options = ""
+        j = find_token(document.header, "\\font_osf true", 0)
+        if j != -1:
+            options += "osf"
+        else:
+            options += "lining"
+        sc = find_token(document.header, "\\font_sf_scale", 0)
+        if sc != -1:
+            scval = get_value(document.header, "\\font_sf_scale", sc)
+            if scval != "100":
+                options += ",scale=%f" % (float(scval) / 100)
+                document.header[sc] = "\\font_sf_scale 100"
+        if options != "":
+            preamble += "[" + options +"]"
+        preamble += "{biolinum-type1}"
+        add_to_preamble(document, [preamble])
+        document.header[k] = "\\font_sans default"
+
+
 ##
 # Conversion hub
 #
@@ -3604,10 +3646,12 @@ convert = [
            [458, [convert_captioninsets, convert_captionlayouts]],
            [459, []],
            [460, []],
-           [461, []]
+           [461, []],
+           [462, []]
           ]
 
 revert =  [
+           [461, [revert_new_libertines]],
            [460, [revert_kurier_fonts]],
            [459, [revert_IEEEtran_3]],
            [458, [revert_fragileframe, revert_newframes]],

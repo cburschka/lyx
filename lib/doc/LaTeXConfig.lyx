@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 450
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -35,6 +35,8 @@
 \use_package mathdots 0
 \use_package mathtools 0
 \use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -57,7 +59,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -319,7 +321,7 @@ arg   "biolinum-type1"
 \begin_layout Description
 CTAN: 
 \family typewriter
-fonts/biolinum-type1/
+fonts/libertine/
 \end_layout
 
 \begin_layout Description
@@ -342,7 +344,8 @@ Libertine
 Biolinum
 \emph default
  supports Old Style Figures, which will be automatically activated if those
- figures are available and requested for the roman font.
+ figures are available and requested for the roman font, and in newer versions
+ also scaling.
  An older version of the font is provided by the package 
 \family sans
 libertine-legacy
@@ -755,7 +758,7 @@ arg   "libertine-type1"
 \begin_layout Description
 CTAN: 
 \family typewriter
-fonts/libertine-type1/
+fonts/libertine/
 \end_layout
 
 \begin_layout Description
@@ -779,6 +782,39 @@ arg   "libertine"
 \end_inset
 
 ), is also supported and used as a fallback.
+\end_layout
+
+\begin_layout Subsection
+Libertine Mono
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "libertineMono-type1"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/libertine/
+\end_layout
+
+\begin_layout Description
+Notes: The 
+\family sans
+libertineMono-type1
+\family default
+ package provides support for the 
+\emph on
+Libertine Mono
+\emph default
+ typewriter font.
+ This font is shipped with libertine font package as of February 2013.
 \end_layout
 
 \begin_layout Subsection

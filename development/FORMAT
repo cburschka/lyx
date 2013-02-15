@@ -11,6 +11,18 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-02-15 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 462: Support for recent libertine LaTeX fonts
+	  a.) Support Libertine Mono:
+	  \usepackage[scaled=$val]{libertineMono-type1} 
+	   => \font_typewriter libertine-mono
+	  b.) Support Biolinum scaling:
+	  \usepackage[scaled=$val]{biolinum-type1}
+	   => \font_sans biolinum
+
+FORMAT 461 (uwestoehr): UNDOCUMENTED!
+
+FORMAT 460 (uwestoehr): UNDOCUMENTED!
 
 2012-12-31 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 459: Introduce new beamer frames:
