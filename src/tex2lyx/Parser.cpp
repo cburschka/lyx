@@ -12,6 +12,7 @@
 
 #include "Encoding.h"
 #include "Parser.h"
+#include "support/foreach.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -29,7 +30,7 @@ namespace {
  * \p c must have catcode catNewline, and it must be the last character read
  * from \p is.
  */
-char_type getNewline(idocstream & is, char_type c)
+char_type getNewline(iparserdocstream & is, char_type c)
 {
 	// we have to handle 3 different line endings:
 	// - UNIX (\n)
@@ -140,6 +141,20 @@ Parser::~Parser()
 }
 
 
+void Parser::deparse()
+{
+	for(size_type i = pos_ ; i < tokens_.size() ; ++i) {
+		docstring const s = from_utf8(tokens_[i].asInput());
+		//cerr << "deparsing [" << to_utf8(s) << "]" <<endl;
+		foreach(char_type c, s)
+			is_.putback(c);
+	}
+	tokens_.erase(tokens_.begin() + pos_, tokens_.end());
+	// make sure that next token is read
+	tokenize_one();
+}
+
+
 void Parser::setEncoding(std::string const & e, int const & p)
 {
 	// We may (and need to) use unsafe encodings here: Since the text is
@@ -197,19 +212,21 @@ CatCode Parser::catcode(char_type c) const
 void Parser::setCatcode(char c, CatCode cat)
 {
 	theCatcode_[(unsigned char)c] = cat;
+	deparse();
 }
 
 
 void Parser::setCatcodes(cat_type t)
 {
 	theCatcodesType_ = t;
+	deparse();
 }
 
 
 void Parser::setEncoding(std::string const & e)
 {
 	//cerr << "setting encoding to " << e << std::endl;
-	is_ << lyx::setEncoding(e);
+	is_.docstream() << lyx::setEncoding(e);
 	encoding_iconv_ = e;
 }
 
@@ -262,7 +279,9 @@ Token const Parser::next_next_token()
 Token const Parser::get_token()
 {
 	static const Token dummy;
-	//cerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << '\n';
+	// if (good()) 
+	// 	cerr << "looking at token " << tokens_[pos_] 
+	// 	     << " pos: " << pos_ << '\n';
 	return good() ? tokens_[pos_++] : dummy;
 }
 

@@ -117,6 +117,35 @@ std::ostream & operator<<(std::ostream & os, Token const & t);
 extern void debugToken(std::ostream & os, Token const & t, unsigned int flags);
 #endif
 
+// A docstream version that supports putback even when not buffered
+class iparserdocstream
+{
+public:
+	iparserdocstream(idocstream & is) : is_(is) {};
+
+	operator bool() const { return is_; };
+
+	idocstream & docstream() { return is_; };
+
+	void putback(char_type c) { s_ += c; };
+
+	iparserdocstream & get(char_type &c)
+	{
+		if (s_.empty())
+			is_.get(c);
+		else {
+			c = s_[0];
+			s_.erase(0,1);
+		}
+		return *this;
+	};
+private:
+	///
+	idocstream & is_;
+	///
+	docstring s_;
+};
+
 
 /*!
  * Actual parser class
@@ -140,6 +169,11 @@ public:
 	Parser(std::string const & s);
 	///
 	~Parser();
+
+	/** forget already parsed next tokens and put the
+	 * corresponding characters into the input stream for
+	 * re-reading. Useful when changing catcodes. */
+	void deparse();
 
 	///
 	CatCode catcode(char_type c) const;
@@ -298,7 +332,7 @@ private:
 	///
 	idocstringstream * iss_;
 	///
-	idocstream & is_;
+	iparserdocstream is_;
 	/// iconv name of the current encoding
 	std::string encoding_iconv_;
 	///
