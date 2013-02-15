@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 461
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -968,7 +968,11 @@ verbatim:
 \end_layout
 
 \begin_layout Verbatim
-verbat  im % $ 02/19/12
+v
+\end_layout
+
+\begin_layout Verbatim
+erbat  im % $ 02/19/12
 \end_layout
 
 \begin_layout Verbatim
@@ -1013,7 +1017,6 @@ end{raggedleft}
 
 \begin_layout Standard
 
-
 \begin_inset ERT
 status collapsed
 
@@ -1027,8 +1030,7 @@ verb~
 
 \end_inset
 
-
-
+ 
 \begin_inset ERT
 status collapsed
 
@@ -1042,8 +1044,7 @@ item[ABC] first item+
 
 \end_inset
 
-
-
+ 
 \begin_inset ERT
 status collapsed
 
