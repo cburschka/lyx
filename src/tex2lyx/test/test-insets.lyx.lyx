@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 459
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -94,10 +94,6 @@ status collapsed
 
 \begin_layout Plain Layout
 %stupid stuff
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -583,10 +579,6 @@ status collapsed
 bibliography since LaTeX throws an error.
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -599,10 +591,6 @@ status collapsed
 bibliographystyle{unsrt}
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -613,10 +601,6 @@ status collapsed
 % 
 \backslash
 bibliography{xampl}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -1035,7 +1019,11 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-# Example listing float
+#
+\end_layout
+
+\begin_layout Plain Layout
+ Example listing float
 \end_layout
 
 \begin_layout Plain Layout
@@ -1119,7 +1107,11 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-def func(param):
+d
+\end_layout
+
+\begin_layout Plain Layout
+ef func(param):
 \end_layout
 
 \begin_layout Plain Layout
@@ -1167,7 +1159,11 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-hello
+h
+\end_layout
+
+\begin_layout Plain Layout
+ello
 \end_layout
 
 \end_inset
@@ -4278,10 +4274,6 @@ status collapsed
 % some comment
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -5428,10 +5420,6 @@ macros{x}
 macrot{x}
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -6052,10 +6040,6 @@ status collapsed
 
 \begin_layout Plain Layout
 % and another
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
