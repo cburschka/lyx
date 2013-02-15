@@ -20,9 +20,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  \usepackage[scaled=$val]{biolinum-type1}
 	   => \font_sans biolinum
 
-FORMAT 461 (uwestoehr): UNDOCUMENTED!
-
-FORMAT 460 (uwestoehr): UNDOCUMENTED!
+2013-02-11 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 461: support for kurier fonts
+	  new supported sansserif fonts "kurier", "kurierl", "kurierc"
+	  and "kurierlc" and the math font "kurier-math"
+	  
+2013-02-09 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 460: support for IEEE conference articles
+	  No changes in the file format
+	  This format change was added for the lyx2lyx conversion
 
 2012-12-31 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 459: Introduce new beamer frames:
