@@ -175,13 +175,6 @@ public:
 	 * re-reading. Useful when changing catcodes. */
 	void deparse();
 
-	///
-	CatCode catcode(char_type c) const;
-	///
-	void setCatcode(char c, CatCode cat);
-	/// set parser to normal or verbatim mode
-	void setCatcodes(cat_type t);
-
 	/// change the iconv encoding of the input stream
 	/// according to the latex encoding and package
 	void setEncoding(std::string const & encoding, int const & package);
@@ -189,6 +182,13 @@ public:
 	void setEncoding(std::string const & encoding);
 	/// get the current iconv encoding of the input stream
 	std::string getEncoding() const { return encoding_iconv_; }
+
+	///
+	CatCode catcode(char_type c) const;
+	///
+	void setCatcode(char c, CatCode cat);
+	/// set parser to normal or verbatim mode
+	void setCatcodes(cat_type t);
 
 	///
 	int lineno() const { return lineno_; }
