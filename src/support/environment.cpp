@@ -132,7 +132,7 @@ bool unsetEnv(string const & name)
 	return unsetenv(name.c_str()) == 0;
 #elif defined(HAVE_PUTENV)
 	// This is OK with MSVC and MinGW at least.
-	putenv((name + "=").c_str()) == 0;
+	return putenv((name + "=").c_str()) == 0;
 #else
 #error No environment-unsetting function has been defined.
 #endif
