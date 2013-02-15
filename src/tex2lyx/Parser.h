@@ -247,6 +247,10 @@ public:
 	 * removed from head and tail of the string if applicable.
 	 */
 	std::string const verbatimEnvironment(std::string const & end_string);
+	///
+	std::string verbatim_item();
+	///
+	std::string verbatimOption();
 	/*!
 	 * Returns the character of the current token and increments
 	 * the token position.
@@ -254,8 +258,6 @@ public:
 	char getChar();
 	///
 	void error(std::string const & msg);
-	/// Parses one token from \p is
-	void tokenize_one();
 	///
 	void push_back(Token const & t);
 	/// The previous token.
@@ -276,19 +278,15 @@ public:
 	/// puts back spaces (and comments if \p skip_comments is true)
 	void unskip_spaces(bool skip_comments = false);
 	///
-	void lex(std::string const & s);
-	///
 	bool good();
-	///
-	std::string verbatim_item();
-	///
-	std::string verbatimOption();
 	/// resets the parser to initial state
 	void reset();
 
 private:
 	/// Setup catcode table
 	void catInit();
+	/// Parses one token from \p is
+	void tokenize_one();
 	///
 	int lineno_;
 	///

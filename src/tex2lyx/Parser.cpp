@@ -599,6 +599,45 @@ string const Parser::verbatimEnvironment(string const & name)
 }
 
 
+string Parser::verbatimOption()
+{
+	string res;
+	if (next_token().character() == '[') {
+		Token t = get_token();
+		for (t = get_token(); t.character() != ']' && good(); t = get_token()) {
+			if (t.cat() == catBegin) {
+				putback();
+				res += '{' + verbatim_item() + '}';
+			} else
+				res += t.cs();
+		}
+	}
+	return res;
+}
+
+
+string Parser::verbatim_item()
+{
+	if (!good())
+		error("stream bad");
+	skip_spaces();
+	if (next_token().cat() == catBegin) {
+		Token t = get_token(); // skip brace
+		string res;
+		for (Token t = get_token(); t.cat() != catEnd && good(); t = get_token()) {
+			if (t.cat() == catBegin) {
+				putback();
+				res += '{' + verbatim_item() + '}';
+			}
+			else
+				res += t.asInput();
+		}
+		return res;
+	}
+	return get_token().asInput();
+}
+
+
 void Parser::tokenize_one()
 {
 	catInit();
@@ -693,45 +732,6 @@ void Parser::error(string const & msg)
 	cerr << "Line ~" << lineno_ << ":  parse error: " << msg << endl;
 	dump();
 	//exit(1);
-}
-
-
-string Parser::verbatimOption()
-{
-	string res;
-	if (next_token().character() == '[') {
-		Token t = get_token();
-		for (t = get_token(); t.character() != ']' && good(); t = get_token()) {
-			if (t.cat() == catBegin) {
-				putback();
-				res += '{' + verbatim_item() + '}';
-			} else
-				res += t.cs();
-		}
-	}
-	return res;
-}
-
-
-string Parser::verbatim_item()
-{
-	if (!good())
-		error("stream bad");
-	skip_spaces();
-	if (next_token().cat() == catBegin) {
-		Token t = get_token(); // skip brace
-		string res;
-		for (Token t = get_token(); t.cat() != catEnd && good(); t = get_token()) {
-			if (t.cat() == catBegin) {
-				putback();
-				res += '{' + verbatim_item() + '}';
-			}
-			else
-				res += t.asInput();
-		}
-		return res;
-	}
-	return get_token().asInput();
 }
 
 
