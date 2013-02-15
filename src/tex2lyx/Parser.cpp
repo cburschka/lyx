@@ -115,6 +115,34 @@ void debugToken(std::ostream & os, Token const & t, unsigned int flags)
 
 
 //
+// Wrapper
+//
+
+void iparserdocstream::putback(char_type c)
+{
+	s_ += c;
+}
+
+
+void iparserdocstream::put_almost_back(docstring s)
+{
+	s_ = s + s_;
+}
+
+
+iparserdocstream & iparserdocstream::get(char_type &c)
+{
+	if (s_.empty())
+		is_.get(c);
+	else {
+		c = s_[0];
+		s_.erase(0,1);
+	}
+	return *this;
+}
+
+
+//
 // Parser
 //
 
@@ -143,12 +171,11 @@ Parser::~Parser()
 
 void Parser::deparse()
 {
+	string s;
 	for(size_type i = pos_ ; i < tokens_.size() ; ++i) {
-		docstring const s = from_utf8(tokens_[i].asInput());
-		//cerr << "deparsing [" << to_utf8(s) << "]" <<endl;
-		foreach(char_type c, s)
-			is_.putback(c);
+		s += tokens_[i].asInput();
 	}
+	is_.put_almost_back(from_utf8(s));
 	tokens_.erase(tokens_.begin() + pos_, tokens_.end());
 	// make sure that next token is read
 	tokenize_one();

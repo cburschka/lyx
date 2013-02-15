@@ -127,22 +127,19 @@ public:
 
 	idocstream & docstream() { return is_; };
 
-	void putback(char_type c) { s_ += c; };
+	// add to the list of characters to read before actually reading
+	// the stream
+	void putback(char_type c);
 
-	iparserdocstream & get(char_type &c)
-	{
-		if (s_.empty())
-			is_.get(c);
-		else {
-			c = s_[0];
-			s_.erase(0,1);
-		}
-		return *this;
-	};
+	// add before the list of characters to read before actually reading
+	// the stream
+	void put_almost_back(docstring s);
+
+	iparserdocstream & get(char_type &c);
 private:
 	///
 	idocstream & is_;
-	///
+	/// characters to read before actually reading the stream
 	docstring s_;
 };
 
