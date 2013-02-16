@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass moderncv
@@ -141,6 +141,22 @@ required, possible colors are 'blue' (default), 'orange', 'green', 'red',
 
 \end_layout
 
+\begin_layout PDF Page Mode
+UseOutlines
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, controls how the PDF will be shown; use either 'UseNone' (only
+ the document), 'UseThumbs' (show thumbnails), 'UseOutlines' (show bookmarks)
+ or 'FullScreen' (open in fullscreen mode).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout FirstName
 Paul
 \end_layout
@@ -151,6 +167,16 @@ Testman
 
 \begin_layout Title
 Curriculum Vitae
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -171,42 +197,41 @@ The following personal entries are optional.
 status open
 
 \begin_layout Plain Layout
-Teststreet 17
+Teststreet
+\begin_inset space ~
+\end_inset
+
+17
 \end_layout
 
 \end_inset
 
-03333 Nicecity -- Switzerland
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+03333
+\begin_inset space ~
+\end_inset
+
+Nicecity
+\end_layout
+
+\end_inset
+
+Switzerland
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Only when you use the 
+the optional lines are only important for the styles 
 \emph on
 classic
 \emph default
- theme, you can add a line break with: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-protect
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-
+ and 
+\emph on
+oldstyle
 \end_layout
 
 \end_inset
@@ -960,15 +985,41 @@ subsection item
 \end_layout
 
 \begin_layout Section
-Section with your own content
+Section with a column
 \end_layout
 
-\begin_layout CloseSection
+\begin_layout Columns
+\begin_inset Flex Column
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-This ends the section formatting.
+the optional width is a number in the range 0 - 1 and specifies the fraction
+ of the line length; if no width is given all available width is used for
+ the column
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+header 1
 \end_layout
 
 \end_inset
@@ -976,10 +1027,95 @@ This ends the section formatting.
 
 \end_layout
 
+\begin_layout Itemize
+Everything can be the content
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+even a table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ paragraph alignments are not allowed, so e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+centering the table is not possible
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Column
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+header 2
+\end_layout
+
+\end_inset
+
+the second column
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Section with your own content
+\end_layout
+
 \begin_layout Standard
 Your content here, inside an unformatted environment.
- You can use here e.g.
- mathematics 
+ You can use here e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+mathematics 
 \begin_inset Formula 
 \[
 E=mc^{2}
@@ -992,10 +1128,20 @@ put some table or figure, etc.
 
 \begin_layout EmptySection
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Creates a section without a section heading.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Keep entries with green labels empty!
 \end_layout
 
 \end_inset
@@ -1014,10 +1160,6 @@ Now
 \end_inset
 
 Back to moderncv layout, without making a new section
-\end_layout
-
-\begin_layout CloseSection
-
 \end_layout
 
 \begin_layout Standard
@@ -1208,6 +1350,16 @@ generates the letter title; must be behind the letter closing and the enclosing
 \end_inset
 
 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Keep entries with green labels empty!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1268,6 +1420,15 @@ e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}
 \end_layout
 
 \begin_layout MakeLetterClosing
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Keep entries with green labels empty!
+\end_layout
+
+\end_inset
+
 
 \end_layout
 

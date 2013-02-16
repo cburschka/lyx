@@ -1423,19 +1423,24 @@ def revert_latexargs(document):
         i = realparbeg + 1 + len(subst)
 
 
-def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
+def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt):
     '''
     Reverts an InsetArgument to TeX-code
     usage:
-    revert_Argument_to_TeX_brace(document, LineOfBeginLayout, StartArgument, EndArgument, isEnvironment)
-    LineOfBeginLayout is the line  of the \begin_layout statement
+    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
+    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
     StartArgument is the number of the first argument that needs to be converted
     EndArgument is the number of the last argument that needs to be converted or the last defined one
-    isEnvironment must be true, if the layout id for a LaTeX environment
+    isEnvironment must be true, if the layout is for a LaTeX environment
+    isOpt must be true, if the argument is an optional one
     '''
     lineArg = 0
+    wasOpt = False
     while lineArg != -1 and n < nmax + 1:
       lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
+      if lineArg > endline and endline != 0:
+        return wasOpt
       if lineArg != -1:
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
         # we have to assure that no other inset is in the Argument
@@ -1449,12 +1454,20 @@ def revert_Argument_to_TeX_brace(document, line, n, nmax, environment):
           k = beginInset + 1
           l = endInset + 1
         if environment == False:
-          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
-          del(document.body[lineArg : beginPlain + 1])
+          if opt == False:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
+            del(document.body[lineArg : beginPlain + 1])
+            wasOpt = False
+          else:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
+            wasOpt = True
         else:
           document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
           document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
+          wasOpt = False
         n = n + 1
+    return wasOpt
 
 
 def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
@@ -1586,17 +1599,17 @@ def revert_IEEEtran(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Page headings", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i = i + 1
       if i2 != -1:
         i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
       if i2 != -1:
-        revert_Argument_to_TeX_brace(document, i2, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i2, 0, 1, 1, False, False)
         i2 = i2 + 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Biography without photo", j)
       if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 1, 1, True)
+        revert_Argument_to_TeX_brace(document, j, 0, 1, 1, True, False)
         j = j + 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Biography", k)
@@ -1606,7 +1619,7 @@ def revert_IEEEtran(document):
           continue
       if k != -1:
         # start with the second argument, therefore 2
-        revert_Argument_to_TeX_brace(document, k, 2, 2, True)
+        revert_Argument_to_TeX_brace(document, k, 0, 2, 2, True, False)
         k = k + 1
       if i == -1 and i2 == -1 and j == -1 and k == -1:
         return
@@ -1676,7 +1689,7 @@ def revert_AASTeX(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Altaffilation", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i = i + 1
       if i == -1:
         return
@@ -1704,7 +1717,7 @@ def revert_AGUTeX(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Author affiliation", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i = i + 1
       if i == -1:
         return
@@ -1732,7 +1745,7 @@ def revert_IJMP(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout MarkBoth", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i = i + 1
       if i == -1:
         return
@@ -1761,12 +1774,12 @@ def revert_SIGPLAN(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Conference", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i = i + 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Author", j)
       if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 1, 2, False)
+        revert_Argument_to_TeX_brace(document, j, 0, 1, 2, False, False)
         j = j + 1
       if i == -1 and j == -1:
         return
@@ -1800,7 +1813,7 @@ def revert_SIGGRAPH(document):
       if i != -1:
         i = find_token(document.body, "\\begin_inset Flex CRcat", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 3, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 3, False, False)
         i = i + 1
       if i == -1:
         return
@@ -1831,22 +1844,22 @@ def revert_EuropeCV(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Item", i)
       if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 2, 2, False)
+        revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False)
         i = i + 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout BulletedItem", j)
       if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 2, 2, False)
+        revert_Argument_to_TeX_brace(document, j, 0, 2, 2, False, False)
         j = j + 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Language", k)
       if k != -1:
-        revert_Argument_to_TeX_brace(document, k, 2, 6, False)
+        revert_Argument_to_TeX_brace(document, k, 0, 2, 6, False, False)
         k = k + 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout LastLanguage", m)
       if m != -1:
-        revert_Argument_to_TeX_brace(document, m, 2, 6, False)
+        revert_Argument_to_TeX_brace(document, m, 0, 2, 6, False, False)
         m = m + 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
@@ -1887,40 +1900,79 @@ def convert_EuropeCV(document):
 def revert_ModernCV(document):
   " Reverts InsetArguments of modernCV to TeX-code "
   if document.textclass == "moderncv":
-    i = 0
     j = 0
     k = 0
     m = 0
     o = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout DoubleItem", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 1, 3, False)
-        i = i + 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Entry", j)
       if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 1, 5, False)
+        revert_Argument_to_TeX_brace(document, j, 0, 1, 5, False, False)
         j = j + 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Item", k)
       if k != -1:
-        revert_Argument_to_TeX_brace(document, k, 1, 1, False)
+        revert_Argument_to_TeX_brace(document, k, 0, 1, 1, False, False)
         k = k + 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout ItemWithComment", m)
       if m != -1:
-        revert_Argument_to_TeX_brace(document, m, 1, 2, False)
+        revert_Argument_to_TeX_brace(document, m, 0, 1, 2, False, False)
         document.body[m] = document.body[m].replace("\\begin_layout ItemWithComment", "\\begin_layout Language")
         m = m + 1
       if o != -1:
         o = find_token(document.body, "\\begin_layout DoubleItem", o)
       if o != -1:
-        revert_Argument_to_TeX_brace(document, o, 1, 3, False)
+        revert_Argument_to_TeX_brace(document, o, 0, 1, 3, False, False)
         document.body[o] = document.body[o].replace("\\begin_layout DoubleItem", "\\begin_layout Computer")
         o = o + 1
-      if i == -1 and j == -1 and k == -1 and m == -1 and o == -1:
+      if j == -1 and k == -1 and m == -1 and o == -1:
+        return
+
+
+def revert_ModernCV_2(document):
+  " Reverts the Flex:Column inset of modernCV to TeX-code "
+  if document.textclass == "moderncv":
+    flex = 0
+    flexEnd = -1
+    while True:
+      if flex != -1:
+        flex = find_token(document.body, "\\begin_inset Flex Column", flex)
+      if flex != -1:
+        flexEnd = find_end_of_inset(document.body, flex)
+        wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True)
+        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False)
+        flexEnd = find_end_of_inset(document.body, flex)
+        if wasOpt == True:
+          document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn")
+        else:
+          document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn{")
+        document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("}")
+        flex = flex + 1
+      if flex == -1:
+        return flexEnd
+
+
+def revert_ModernCV_3(document):
+  " Reverts the Column style of modernCV to TeX-code "
+  if document.textclass == "moderncv":
+    # revert the layouts
+    revert_ModernCV(document)
+    p = 0
+    # get the position of the end of the last column inset
+    LastFlexEnd = revert_ModernCV_2(document)
+    while True:
+      if p != -1:
+        p = find_token(document.body, "\\begin_layout Columns", p)
+      if p != -1:
+        pEnd = find_end_of_layout(document.body, p)
+        document.body[p] = document.body[p].replace("\\begin_layout Columns", "\\begin_layout Standard")
+        if LastFlexEnd != -1:
+          document.body[p + 1 : p + 1] = put_cmd_in_ert("\\begin{cvcolumns}")
+          document.body[LastFlexEnd + 24 : LastFlexEnd + 24] = put_cmd_in_ert("\\end{cvcolumns}")
+        p = p + 1
+      if p == -1:
         return
 
 
@@ -1966,7 +2018,7 @@ def revert_Initials(document):
       i = find_token(document.body, "\\begin_layout Initial", i)
     if i != -1:
       # first arg (optional) and second arg (first mandatory) are supported in LyX 2.0.x
-      revert_Argument_to_TeX_brace(document, i, 3, 3, False)
+      revert_Argument_to_TeX_brace(document, i, 0, 3, 3, False, False)
       i = i + 1
     if i == -1:
       return
@@ -3666,7 +3718,7 @@ revert =  [
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],
-           [446, [revert_IEEEtran, revert_IEEEtran_2, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV]],
+           [446, [revert_IEEEtran, revert_IEEEtran_2, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV_3]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],
