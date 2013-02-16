@@ -204,6 +204,13 @@ void GuiTabular::checkEnabled()
 	hAlignCO->setEnabled(!(multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty())
 		&& specialAlignmentED->text().isEmpty());
+	// decimal alignment is only possible for non-multicol and non-multirow cells
+	if ((multicolumnCB->isChecked() || multirowCB->isChecked())
+		&& hAlignCO->findData(toqstr("decimal")))
+		hAlignCO->removeItem(hAlignCO->findData(toqstr("decimal")));
+	else if (!multicolumnCB->isChecked() && !multirowCB->isChecked()
+		&& hAlignCO->findData(toqstr("decimal")) == -1)
+		hAlignCO->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
 	bool const dalign = 
 		hAlignCO->itemData(hAlignCO->currentIndex()).toString() == QString("decimal");
 	decimalPointED->setEnabled(dalign);
@@ -215,9 +222,12 @@ void GuiTabular::checkEnabled()
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
 
-	vAlignCO->setEnabled(!multirowCB->isChecked()
+	bool const enable_valign =
+		!multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty()
-		&& specialAlignmentED->text().isEmpty());
+		&& specialAlignmentED->text().isEmpty();
+	vAlignCO->setEnabled(enable_valign);
+	vAlignLA->setEnabled(enable_valign);
 
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
 	topspaceED->setEnabled(topspaceCO->currentIndex() == 2);
@@ -283,10 +293,14 @@ void GuiTabular::checkEnabled()
 	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION)
 		&& longtabular);
 
-	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
-	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
-	multirowOffsetED->setEnabled(multirowCB->isChecked());
-	multirowOffsetUnitLC->setEnabled(multirowCB->isChecked());
+	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN)
+		&& !dalign && !multirowCB->isChecked());
+	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW)
+		&& !dalign && !multicolumnCB->isChecked());
+	bool const enable_mr = multirowCB->isChecked();
+	multirowOffsetLA->setEnabled(enable_mr);
+	multirowOffsetED->setEnabled(enable_mr);
+	multirowOffsetUnitLC->setEnabled(enable_mr);
 
 	changed();
 }
@@ -790,7 +804,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	hAlignCO->addItem(qt_("Right"), toqstr("right"));
 	if (!multicol && !pwidth.zero())
 		hAlignCO->addItem(qt_("Justified"), toqstr("justified"));
-	if (!multicol)
+	if (!multicol && !multirow)
 		hAlignCO->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
 
 	string align;
@@ -812,7 +826,7 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		}
 		case LYX_ALIGN_DECIMAL:
 		{
-			if (!multicol)
+			if (!multicol && !multirow)
 				align = "decimal";
 			break;
 		}

@@ -123,6 +123,9 @@ What's new
 
 - Fix a few selection bugs in tabular (bugs 4981, 7988).
 
+- Fix several issues when using multicolumns/multirows and decimal alignment in
+  table cells (bug 8285).
+
 - Show the output of configure.py while the LaTeX packages are being checked
   rather than all at once at the end of the check (bug 8477).
 
@@ -132,8 +135,8 @@ What's new
 
 - File format viewer & editor combo boxes are correctly initialized (bug 8237).
 
--  Do not create an empty environment variable LC_ALL when launching
-   external processes (bug 8537).
+- Do not create an empty environment variable LC_ALL when launching
+  external processes (bug 8537).
 
 * DOCUMENTATION AND LOCALIZATION
 
