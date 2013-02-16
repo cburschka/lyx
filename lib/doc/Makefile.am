@@ -6,6 +6,7 @@ docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
 	Additional.lyx \
 	Customization.lyx \
+	Development.lyx \
 	DummyTextDocument.txt \
 	DummyDocument1.lyx \
 	DummyDocument2.lyx \

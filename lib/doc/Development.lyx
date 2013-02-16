@@ -1,0 +1,756 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 462
+\begin_document
+\begin_header
+\textclass scrbook
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX's Development manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's development documentation"
+\pdf_keywords "LyX, Documentation, Development"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Developing LyX
+\end_layout
+
+\begin_layout Subtitle
+Version 2.1.x
+\end_layout
+
+\begin_layout Author
+by the LyX Team
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+If you have comments or error corrections, please send them to the LyX Documenta
+tion mailing list, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+<lyx-docs@lists.lyx.org>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+This manual documents some aspects of LyX development.
+ It is currently rather incomplete, but will hopefully be extended in the
+ future.
+ Meanwhile, additional information can be found in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development
+\end_layout
+
+\end_inset
+
+ subfolder of the LyX source code distribution.
+ This document is not translated, since the development language of LyX
+ is english.
+ If you want to use LyX you don't need to read this manual.
+ However, if you want to learn more about how LyX is developed, or even
+ want to participate in LyX development, you may find some interesting informati
+on.
+\end_layout
+
+\begin_layout Chapter
+File formats
+\end_layout
+
+\begin_layout Standard
+LyX uses several custom file formats for configuration files and documents.
+ This chapter contains some background concerning these file formats.
+ Several file formats are also described in detail in the regular user documenta
+tion.
+\end_layout
+
+\begin_layout Section
+File Format Numbers
+\end_layout
+
+\begin_layout Section
+When is an update of the .lyx file format number needed?
+\end_layout
+
+\begin_layout Standard
+When you ware working on a new feature you may ask yourself whether it needs
+ an update of the .lyx file format number.
+ Whether an update is needed or not is not always obvious.
+ Below you can find a list of reasons for file format updates with explanations:
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+setting Whenever you introduce a new setting that is stored in the document
+ header, a file format update is needed.
+ This is also true if you add a new valid value to an existing setting,
+ e.g.
+ a new language that is stored in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+language
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Removed
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+setting If a certain setting becomes obsolete and gets removed, a file format
+ update is needed.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+inset Of course a new inset requires a file format update.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+style in any layout file or module shipped with LyX, or new shipped layout
+ file or module.
+ These requirements are currently under discussion and might change in the
+ future.
+\end_layout
+
+\begin_layout Description
+Automatically
+\begin_inset space ~
+\end_inset
+
+loaded
+\begin_inset space ~
+\end_inset
+
+math
+\begin_inset space ~
+\end_inset
+
+package Any new math package that is automatically loaded needs a file format
+ update.
+ The reason for this is that there is no true ERT inset for math formulas:
+ Each command is parsed, and if a user happens to defne a local command
+ with the same name as a command that triggers an automatic load of a package,
+ he needs to be able to switch off the automatic loading of that package.
+ This switch is stored by the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+use_package
+\end_layout
+
+\end_inset
+
+ header setting.
+\end_layout
+
+\begin_layout Standard
+If you are still unsure, please ask on the development list.
+\end_layout
+
+\begin_layout Section
+How to update the file format number of .lyx files
+\end_layout
+
+\begin_layout Standard
+Once you came to the conclusion that a file format update is needed you
+ should use the following procedure to perform the update:
+\end_layout
+
+\begin_layout Enumerate
+Implement and test the new feature, including the reading and writing of
+ .lyx files.
+ Note that any file produced at this stage does not use a valid format,
+ so do not use this version of LyX for working on any important documents.
+\end_layout
+
+\begin_layout Enumerate
+Describe the new format in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/FORMAT
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Update the LyX file format number in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/version.h
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Add an entry to both format lists (for conversion and reversion) in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lib/lyx2lyx_lyx2lyx_2_1.py
+\end_layout
+
+\end_inset
+
+.
+ Add a conversion routine if needed (e.g.
+ a new header setting always needs a conversion that adds the new setting,
+ a new document language does not need one).
+ Add a reversion routine if needed.
+ While the conversion routine is required to produce a document that is
+ equivalent to the old version, the requirements of the reversion are not
+ that strict.
+ If possible, try to produce a proper reversion, using ERT if needed, but
+ for some features this might be too complicated.
+ In this case, the minimum requirement of the reversion routine is that
+ it produces a valid document which can be read by an older LyX.
+ If absolutely needed, even data loss is allowed for the reversion.
+\end_layout
+
+\begin_layout Enumerate
+Since tex2lyx has several implicit file format dependencies caused by sharing
+ code with LyX, updating the file format of .lyx files produced by tex2lyx
+ at the same time as updating the main .lyx file format is strongly recommended.
+ Therefore, a compiler warning will be issued if the LyX and tex2lyx .lyx
+ file format numbers differ.
+ In many cases the tex2lyx update requires only the first and last item
+ of the list below:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Update the tex2lyx file format number in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/version.h
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If the lyx2lyx conversion from the old to the new format is empty, or if
+ tex2lyx does not yet output the changed feature, you do not need any further
+ tex2lyx changes.
+ Otherwise, search for the changed feature in tex2lyx, and adjust the output
+ according to the lyx2lyx changes.
+\end_layout
+
+\begin_layout Enumerate
+Update the tex2lyx test references as described in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Updating-test-references"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If you did not implement full tex2lyx support of the new feature, add a
+ line to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/TODO.txt
+\end_layout
+
+\end_inset
+
+ describing the missing bits.
+ Note that it is perfectly fine if you do not add full tex2lyx support for
+ a new feature: The updating recommendation above is only issued for the
+ syntax of the produced .lyx file.
+ It is no problem if some features supported by LyX are still output as
+ ERT by tex2lyx, since the problems in the past that resulted in the update
+ recommendation were related to mixed version syntax, not ERT.
+\end_layout
+
+\begin_layout Chapter
+Tests
+\end_layout
+
+\begin_layout Standard
+Automated tests are an important tool to detect bugs and regressions in
+ software development.
+ Some projects like gcc even require each bug fix to be accompanied by a
+ test case for the automatic test suite, that would detect this bug.
+ Testing interactive features automatically is of course very hard, but
+ core functionality like document import and export can be tested quite
+ easily, and some tests of this kind exist.
+\end_layout
+
+\begin_layout Section
+LyX tests
+\end_layout
+
+\begin_layout Standard
+Some tests are located in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests
+\end_layout
+
+\end_inset
+
+ subfolder of the LyX source code distribution.
+\end_layout
+
+\begin_layout Subsection
+Running the tests
+\end_layout
+
+\begin_layout Standard
+The LyX tests can be run by the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make test
+\end_layout
+
+\end_inset
+
+ (cmake) in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+autotests
+\end_layout
+
+\end_inset
+
+ subfolder of the build directory.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME: Is this possible with autotools?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+tex2lyx tests
+\end_layout
+
+\begin_layout Standard
+The tex2lyx tests are located in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test
+\end_layout
+
+\end_inset
+
+ subfolder of the LyX source code distribution.
+ The actual testing is performed by the simple python script 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test/runtests.py
+\end_layout
+
+\end_inset
+
+.
+ Each test consists of two files: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<test name>.tex
+\end_layout
+
+\end_inset
+
+ contains the LaTeX code that should be tested.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<test name>.lyx.lyx
+\end_layout
+
+\end_inset
+
+ contains the expected output of tex2lyx.
+ When a test is run, the actual produced output is compared with the stored
+ reference output.
+ The test passes if both are identical.
+ The test machinery is also able to generate a file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<test name>.lyx.tex
+\end_layout
+
+\end_inset
+
+ by exporting the produced .lyx file with LyX again.
+ This may be useful for roundtrip comparisons.
+\end_layout
+
+\begin_layout Subsection
+Running the tests
+\end_layout
+
+\begin_layout Standard
+The tex2lyx tests can be run by the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make test
+\end_layout
+
+\end_inset
+
+ (cmake) or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make check
+\end_layout
+
+\end_inset
+
+ (autotools) in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx
+\end_layout
+
+\end_inset
+
+ subfolder of the build directory.
+ If a test fails, the differences between the expected and actual results
+ are output in unified diff format.
+\end_layout
+
+\begin_layout Subsection
+Updating test references
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Updating-test-references"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In some cases a changed tex2lyx output is not a test failure, but wanted,
+ e.g.
+ if a tex2lyx bug was fixed, or a new feature was added.
+ In these cases the stored references need to be updated.
+ To do so, call 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make updatetests
+\end_layout
+
+\end_inset
+
+ (autotools) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME: Add cmake command
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx
+\end_layout
+
+\end_inset
+
+ subfolder of the build directory.
+ For convenience, this command does also produce re-exported roundtrip .lyx.tex
+ files.
+ Please examine the changed output carefully before committing the changed
+ files to the repository: Since the test machinery does not do a roundtrip
+ test .tex 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ .lyx 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ .tex, and does not compare the produced dvi or pdf output, it assumes that
+ the stored .lyx reference produces correct output if processed by LyX.
+ There is only one chance to detect wrong output: before committing a new
+ reference.
+ Once it is committed, it is quite difficult to verify whether it is correct.
+\end_layout
+
+\begin_layout Subsection
+Adding a new test
+\end_layout
+
+\begin_layout Standard
+In many cases tests for new features may be added to one of the existing
+ test files, but sometimes this is not possible or not wanted.
+ Then a new test file needs to be added:
+\end_layout
+
+\begin_layout Enumerate
+Create the new file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test/<test name>.tex
+\end_layout
+
+\end_inset
+
+ and run tex2lyx in roundtrip mode to produce the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test/<test name>.lyx.lyx
+\end_layout
+
+\end_inset
+
+.
+ This file will be the new reference.
+\end_layout
+
+\begin_layout Enumerate
+Once you confirmed that the tex2lyx output is correct, add the new files
+ to the corresponding lists in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test/runtests.py
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/Makefile.am
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test/CMakeLists.txt
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Commit the changes to the repository, or send a patch to the development
+ list and ask for committing if you do not have commit rights.
+\end_layout
+
+\end_body
+\end_document
