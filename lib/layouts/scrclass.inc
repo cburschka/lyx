@@ -62,6 +62,7 @@ Style Chapter
 	LabelType             Static
 	LabelSep              xxx
 	Margin                Dynamic
+	Align                 Left
 	Font
 	  Family              Sans
 	  Size                Largest
@@ -71,6 +72,7 @@ End
 
 
 Style Section
+	Align                 Left
 	Font
 	  Family              Sans
 	EndFont
@@ -79,6 +81,7 @@ End
 
 
 Style Subsection
+	Align                 Left
 	Font
 	  Family              Sans
 	EndFont
@@ -87,6 +90,7 @@ End
 
 
 Style Subsubsection
+	Align                 Left
 	Font
 	  Family              Sans
 	EndFont
@@ -95,6 +99,7 @@ End
 
 
 Style Paragraph
+	Align                 Left
 	Font
 	  Family              Sans
 	EndFont
@@ -103,6 +108,7 @@ End
 
 
 Style Subparagraph
+	Align                 Left
 	LeftMargin            ""
 	Font
 	  Family              Sans
