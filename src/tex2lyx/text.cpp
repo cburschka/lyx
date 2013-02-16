@@ -2162,9 +2162,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	Layout const * newlayout = 0;
 	InsetLayout const * newinsetlayout = 0;
 	char const * const * where = 0;
-	// Store the latest bibliographystyle and nocite{*} option
-	// (needed for bibtex inset)
+	// Store the latest bibliographystyle, addcontentslineContent and
+	// nocite{*} option (needed for bibtex inset)
 	string btprint;
+	string contentslineContent;
 	string bibliographystyle = "default";
 	bool const use_natbib = isProvided("natbib");
 	bool const use_jurabib = isProvided("jurabib");
@@ -3963,8 +3964,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibliographystyle") {
 			// store new bibliographystyle
 			bibliographystyle = p.verbatim_item();
-			// If any other command than \bibliography and
-			// \nocite{*} follows, we need to output the style
+			// If any other command than \bibliography, \addcontentsline
+			// and \nocite{*} follows, we need to output the style
 			// (because it might be used by that command).
 			// Otherwise, it will automatically be output by LyX.
 			p.pushPosition();
@@ -3979,6 +3980,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						continue;
 				} else if (t2.cs() == "bibliography")
 					output = false;
+				else if (t2.cs() == "addcontentsline") {
+					// get the 3 arguments of \addcontentsline
+					p.getArg('{', '}');
+					p.getArg('{', '}');
+					contentslineContent = p.getArg('{', '}');
+					// if the last argument is not \refname we must output
+					if (contentslineContent == "\\refname")
+						output = false;
+				}
 				break;
 			}
 			p.popPosition();
@@ -3989,8 +3999,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
+		else if (t.cs() == "addcontentsline") {
+			context.check_layout(os);
+			// get the 3 arguments of \addcontentsline
+			string const one = p.getArg('{', '}');
+			string const two = p.getArg('{', '}');
+			string const three = p.getArg('{', '}');
+			// only if it is a \refname, we support if for the bibtex inset
+			if (contentslineContent != "\\refname") {
+				output_ert_inset(os,
+					"\\addcontentsline{" + one + "}{" + two + "}{"+ three + '}',
+					context);
+			}
+		}
+
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
+			string BibOpts;
 			begin_command_inset(os, "bibtex", "bibtex");
 			if (!btprint.empty()) {
 				os << "btprint " << '"' << "btPrintAll" << '"' << "\n";
@@ -3999,9 +4024,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				btprint.clear();
 			}
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
+			// Do we have addcontentsline?
+			if (contentslineContent == "\\refname") {
+				BibOpts = "bibtotoc";
+				// clear string because next BibTeX inset can be without addcontentsline
+				contentslineContent.clear();
+			}
 			// Do we have a bibliographystyle set?
-			if (!bibliographystyle.empty())
-				os << "options " << '"' << bibliographystyle << '"' << "\n";
+			if (!bibliographystyle.empty()) {
+				if (BibOpts.empty())
+					BibOpts = bibliographystyle;
+				else
+					BibOpts = BibOpts + ',' + bibliographystyle;
+			}
+			os << "options " << '"' << BibOpts << '"' << "\n";
 			end_inset(os);
 		}
 

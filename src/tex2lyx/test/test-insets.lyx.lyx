@@ -1019,11 +1019,7 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-#
-\end_layout
-
-\begin_layout Plain Layout
- Example listing float
+# Example listing float
 \end_layout
 
 \begin_layout Plain Layout
@@ -1107,11 +1103,7 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-d
-\end_layout
-
-\begin_layout Plain Layout
-ef func(param):
+def func(param):
 \end_layout
 
 \begin_layout Plain Layout
@@ -1159,11 +1151,7 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
-h
-\end_layout
-
-\begin_layout Plain Layout
-ello
+hello
 \end_layout
 
 \end_inset
@@ -6111,6 +6099,82 @@ $
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+addcontentsline{toc}{section}{test}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+  
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "IEEEexample"
+options "bibtotoc,test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "IEEEexample"
+options "test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+bibliographystyle{test}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+addcontentsline{toc}{section}{test}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "IEEEexample"
+options "test"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
