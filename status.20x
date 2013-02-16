@@ -142,15 +142,18 @@ What's new
 - Do not create an empty environment variable LC_ALL when launching
   external processes (bug 8537).
 
+
 * DOCUMENTATION AND LOCALIZATION
 
 - Make the thesis template compilable again.
 
 - Fix compilation of modernCV example file for all themes.
 
+- Update the Xy-pic manual to avoid any LaTeX and LyX warning when processing
+  the file.
+
 
 * LYXHTML
-
 
 
 * TEX2LYX
