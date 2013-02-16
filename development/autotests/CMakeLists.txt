@@ -68,7 +68,7 @@ foreach(libsubfolder doc)
   foreach(f ${lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
-    add_test(NAME export/autotests/${libsubfolder}/${f}_lyx16
+    add_test(NAME export/${libsubfolder}/${f}_lyx16
       WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
       COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
           -Dlyx=$<TARGET_FILE:${_lyx}>
@@ -78,7 +78,7 @@ foreach(libsubfolder doc)
           -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
     getdefaultoutputformat("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format "xhtml" ${formatlist})
-      add_test(NAME export/autotests/${libsubfolder}/${f}_${format}
+      add_test(NAME export/${libsubfolder}/${f}_${format}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
