@@ -2105,10 +2105,10 @@ void parse_macro(Parser & p, ostream & os, Context & context)
 
 			// followed by number?
 			if (p.next_token().cat() == catOther) {
-				char c = p.getChar();
-				paramtext += c;
+				string s = p.get_token().asInput();
+				paramtext += s;
 				// number = current arity + 1?
-				if (c == arity + '0' + 1)
+				if (s.size() == 1 && s[0] == arity + '0' + 1)
 					++arity;
 				else
 					simple = false;

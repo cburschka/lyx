@@ -413,14 +413,6 @@ bool Parser::good()
 }
 
 
-char Parser::getChar()
-{
-	if (!good())
-		error("The input stream is not well...");
-	return get_token().character();
-}
-
-
 bool Parser::hasOpt()
 {
 	// An optional argument can occur in any of the following forms:

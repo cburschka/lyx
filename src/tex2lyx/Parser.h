@@ -282,11 +282,6 @@ public:
 	std::string verbatim_item();
 	///
 	std::string verbatimOption();
-	/*!
-	 * Returns the character of the current token and increments
-	 * the token position.
-	 */
-	char getChar();
 	///
 	void error(std::string const & msg);
 	/// The previous token.
