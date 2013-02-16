@@ -1,7 +1,7 @@
 #!/bin/bash
 
 failed=0
-for libsubdir in doc; do
+for libsubdir in doc examples; do
     for format in xhtml lyx16x; do
         for f in $LYX_ROOT/lib/$libsubdir/*lyx; do
             if $LYX_EXE -e $format $f >> lyx-log.txt 2>&1; then
