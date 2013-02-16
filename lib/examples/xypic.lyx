@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -54,13 +54,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -82,19 +82,28 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
+\notefontcolor #0000ff
 \index Index
 \shortcut idx
 \color #008000
@@ -230,8 +239,6 @@ xypic
 \begin_inset Graphics
 	filename xyfigure.png
 	width 75col%
-	BoundingBox 0bp 0bp 580bp 440bp
-	clip
 
 \end_inset
 
@@ -1240,7 +1247,7 @@ ar@{^(->}[r].
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -1562,7 +1569,7 @@ Following the @-character by either a 2, 3, _ or a ^, we can produce arrows
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -2860,7 +2867,14 @@ Xy
 
 \end_inset
 
--manual, for instance, 
+-manual, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xypic manual"
+
+\end_inset
+
+, for instance, 
 \family typewriter
 
 \backslash
@@ -2884,7 +2898,11 @@ Xy
 
 \end_inset
 
--matrix with row spacing of 1 pica.
+-matrix with row spacing of 1
+\begin_inset space ~
+\end_inset
+
+pica.
  Similarly, 
 \family typewriter
 
@@ -2902,26 +2920,125 @@ xymatrix@C=
 }
 \family default
  allows to modify the space between columns.
- Unfortunately, these commands do currently not work inside LyX, as the
- @-character is interpreted by LyX as ending the 
-\begin_inset ERT
-status collapsed
+ Unfortunately, one cannot type 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+xymatrix@R=1pc
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ into a formula to get the desired matrix because the @-character is interpreted
+ by LyX as ending the 
+\family typewriter
+
+\backslash
+xymatrix
+\family default
+ command.
+ But there are two other ways of getting the desired matrix:
+\end_layout
+
+\begin_layout Itemize
+One types e.g.
+\begin_inset space \space{}
+\end_inset
+
+
+\family typewriter
+
+\backslash
+xymatrix@R=1pc
+\family default
+ as normal document text, then either highlight it and press 
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
+\end_inset
+
+ to get a formula, or copy it into an existing formula.
+ You can now continue as normal.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Plain Layout
 
+\series bold
+Note:
+\series default
+ This method only works for single spacing settings, so using
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
 
 \backslash
-Xy
+xymatrix@M=1pt
+\family default
+ is possible while 
+\family typewriter
+
+\backslash
+xymatrix@M=1pt@C=1dd
+\family default
+ is not.
+ The method also don't work if you use '!' to get a fixed grid with a defined
+ dimension, e.g.
+\begin_inset space \space{}
+\end_inset
+
+
+\family typewriter
+
+\backslash
+xymatrix@!R=3pt
+\family default
+ fails while
+\family typewriter
+ 
+\backslash
+xymatrix@!R
+\family default
+ works.
 \end_layout
 
 \end_inset
 
--matrix-macro.
- 
+
+\begin_inset Newline newline
+\end_inset
+
+For the following matrix, the command 
+\family typewriter
+
+\backslash
+xymatrix@C=9pc
+\family default
+ was used:
+\begin_inset Formula 
+\[
+\xymatrix@C=9pc{A\ar[r]\ar[d] & B\\
+C\ar@{}[ur]|{\text{{horizontal stretch}}}
+}
+\]
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Knowing that 
+\begin_layout Itemize
 \begin_inset ERT
 status collapsed
 
@@ -2938,7 +3055,11 @@ Xy
 \begin_inset space ~
 \end_inset
 
- stores the values for row-spacing and column-spacing in the variables 
+ stores the values for row-spacing and column-spacing in the variables
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 
 \backslash
@@ -2950,25 +3071,23 @@ xymatrixrowsep@
 \backslash
 xymatrixrowsep@
 \family default
-, add the following macro to the preamble (
+.
+ So one can add the following macro to the preamble (
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
 Preamble
 \family default
 ):
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
+\begin_deeper
 \begin_layout LyX-Code
 
 \backslash
 newcommand{
 \backslash
-xyR}[1]{% 
+xyR}[1]{%
 \end_layout
 
 \begin_layout LyX-Code
@@ -2977,10 +3096,6 @@ xyR}[1]{%
 xydef@
 \backslash
 xymatrixrowsep@{#1}}
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \begin_layout Standard
@@ -3005,7 +3120,7 @@ xymatrixcolsep@
 .
  Now, a figure can be scaled by entering 
 \backslash
-xyR{...} into the 
+xyR{ into the formula before the 
 \begin_inset ERT
 status collapsed
 
@@ -3040,9 +3155,51 @@ xyC
  Don't forget the backslashes and remember, that the closing brace is automatica
 lly supplied by LyX.
  Inside the braces enter the dimensions.
- The default is 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ these commands affect all following 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrices.
+ Therefore don't forget to reset the values to default after the usage of
+ 
 \family typewriter
-2pt
+
+\backslash
+xyR
+\family default
+ etc..
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The default is 
+\family typewriter
+2pc
 \family default
 .
  Here you see a diagram which is squashed vertically and stretched horizontally
@@ -3050,17 +3207,14 @@ lly supplied by LyX.
 \family typewriter
 
 \backslash
-xyR{9pc}
+xyR{.5pc}
 \backslash
-xyC{.5pc}
+xyC{9pc}
 \family default
 :
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-\xyC{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
+\xyR{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
 C\ar@{}[ur]|{\text{{horizontal stretch}}}
 }
 \]
@@ -3068,8 +3222,23 @@ C\ar@{}[ur]|{\text{{horizontal stretch}}}
 \end_inset
 
 
+\begin_inset Formula $\xyR{2pc}\xyC{2pc}$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+reset to default
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Label positioning
 \end_layout
@@ -3312,20 +3481,7 @@ horizontal stretch
 \begin_layout Subsection
 Further 
 \family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
 Xy
-\end_layout
-
-\end_inset
-
-
 \family default
 -tricks
 \end_layout
@@ -3429,40 +3585,18 @@ ERT
 Instant preview
 \family default
  insets.
- A good and rather systematic introduction to 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Xy
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
-\family default
--matrix is 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Ouvaton"
-
-\end_inset
-
-.
- Even if you share with me the disadvantage of not being fluent in Esperanto,
- you will be able to understand most of it.
- 
 \end_layout
 
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "1"
 key "xypic manual"
 
 \end_inset
@@ -3486,22 +3620,7 @@ Xy
 -pic User's Guide
 \emph default
 .
- Version 3.7, Feb.
- 16, 1999.
- Available as part of the 
-\family typewriter
-xypic
-\family default
- LaTeX package.
- 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2"
-key "instant-preview"
-
+\begin_inset Newline newline
 \end_inset
 
 
@@ -3510,7 +3629,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.tug.org/tex-archive/help/Catalogue/entries/preview-latex.html
+http://mirrors.ctan.org/macros/generic/diagrams/xypic/xy/doc/xyguide.pdf
 \end_layout
 
 \end_inset
@@ -3521,18 +3640,77 @@ http://www.tug.org/tex-archive/help/Catalogue/entries/preview-latex.html
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "3"
+key "xypic reference"
+
+\end_inset
+
+Kristoffer H.
+ Rose and Ross Moore: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\emph on
+-pic Reference Manual
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/generic/diagrams/xypic/xy/doc/xyrefer.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "xypic"
 
 \end_inset
 
+Homepage of the package 
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\emph on
+-pic
+\emph default
+: 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.tug.org/tex-archive/help/Catalogue/entries/xypic.html
+http://www.ctan.org/pkg/xypic
 \end_layout
 
 \end_inset
@@ -3543,12 +3721,39 @@ http://www.tug.org/tex-archive/help/Catalogue/entries/xypic.html
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "4"
+key "instant-preview"
+
+\end_inset
+
+Homepage of preview-latex:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.gnu.org/software/auctex/preview-latex.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "AUCTeX"
 
 \end_inset
 
 
+Homepage of 
+\lang english
+AUCTeX: 
 \begin_inset Flex URL
 status collapsed
 
@@ -3565,7 +3770,6 @@ http://www.gnu.org/software/auctex/
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "5"
 key "Lauda"
 
 \end_inset
@@ -3592,56 +3796,16 @@ Xy
 tutorial with an archive of examples
 \emph default
 .
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 http://www.math.columbia.edu/~lauda/xy/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "6"
-key "Ouvaton"
-
-\end_inset
-
-Filipp Ouvaton: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Xy
-\end_layout
-
-\end_inset
-
-
-\emph on
--pic
-\emph default
-: 
-\emph on
-Enkonduko pri Xymatrix
-\emph default
-.
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://filip.ouvaton.org/xypic/xymatrix/index.html
 \end_layout
 
 \end_inset
