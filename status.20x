@@ -116,6 +116,9 @@ What's new
   
 - When selecting text and then using the menu Insert -> Preview, immediately
   display the preview (bug 8075).
+
+- If 2 columns are chosen for the document they are now also displayed RTL
+  if the document language is a RTL language (bug 6389).
   
 - Allow arguments in PassThru environments (bug 7646).
 
