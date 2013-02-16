@@ -4,6 +4,15 @@
 \begin_header
 \textclass scrartcl
 \begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the file prints
+% out as advertised. If you mess with this preamble,
+% parts of this document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
 \usepackage[all]{xy}
 
 % define new commands used in sec. 5.1
@@ -24,6 +33,16 @@
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX}}
+
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
 \end_preamble
 \options BCOR7.5mm
 \use_default_options false
@@ -32,7 +51,7 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman ae
+\font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
@@ -474,7 +493,10 @@ instant-preview
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Formula $a+b=c$
 \end_inset
 
@@ -867,12 +889,12 @@ ar[d]
 ar[r] & Z }
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula \xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
- &  X \times_{Z} Y \ar[d] \ar[r]  &  X \ar[d]\\
- &  Y \ar[r]  &  Z 
+\begin_layout LyX-Code
+\begin_inset Formula $\xymatrix{U\ar[ddr]\ar[drr]\ar[dr]\\
+ & X\times_{Z}Y\ar[d]\ar[r] & X\ar[d]\\
+ & Y\ar[r] & Z
 }
-
+$
 \end_inset
 
 
@@ -1032,11 +1054,11 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
- &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
- &  Y \ar[r]^{g}  &  Z 
+\begin_inset Formula $\xymatrix{U\ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
+ & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
+ & Y\ar[r]^{g} & Z
 }
-
+$
 \end_inset
 
 
@@ -1061,7 +1083,10 @@ Xy
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 (.3)
 \family default
@@ -1100,7 +1125,10 @@ Xy
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 
 \backslash
@@ -1206,17 +1234,14 @@ $
 
 \backslash
 ar@{^(->}[r].
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -1243,11 +1268,11 @@ Source code in LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -1271,11 +1296,11 @@ ar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{-->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{-->}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -1299,11 +1324,11 @@ ar@{-->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{..>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{..>}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -1327,11 +1352,11 @@ ar@{..>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{~>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{~>}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -1355,8 +1380,8 @@ ar@{~>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{->>}[r] & \ }
+$
 \end_inset
 
 
@@ -1383,8 +1408,8 @@ ar@{->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{-->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r] & \ }
+$
 \end_inset
 
 
@@ -1411,8 +1436,8 @@ ar@{-->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{>->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r] & \ }
+$
 \end_inset
 
 
@@ -1439,8 +1464,8 @@ ar@{>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{_{(}->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r] & \ }
+$
 \end_inset
 
 
@@ -1467,8 +1492,8 @@ ar@{_(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{^{(}->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r] & \ }
+$
 \end_inset
 
 
@@ -1495,8 +1520,8 @@ ar@{^(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{|-|}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r] & \ }
+$
 \end_inset
 
 
@@ -1527,33 +1552,30 @@ ar@{|-|}
 
 \begin_layout Standard
 \noindent
-Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
+Following the @-character by either a 2, 3, _ or a ^, we can produce arrows
  with double, triple shaft or arrows showing only the lower or upper half
  of their tips and ends.
- Arrows need not have tips nor ends, as the last example shows :
-\begin_inset Newline newline
-\end_inset
-
-
+ Arrows need not have tips nor ends, as the last example shows:
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features islongtable="true" longtabularalignment="center">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Result
+Result 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1564,20 +1586,20 @@ Source code for LyX
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@2[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@2[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1592,20 +1614,20 @@ ar@2
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@3[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@3[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1620,20 +1642,20 @@ ar@3
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@_{->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@_{->}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1648,20 +1670,20 @@ ar@_{->}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@^{->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@^{->}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1676,20 +1698,20 @@ ar@^{->}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@^{>>->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1697,27 +1719,29 @@ ar@^{->}
 \family typewriter
 
 \backslash
-ar@^{>>->>}
+ar@^{>\SpecialChar \textcompwordmark{}
+>->\SpecialChar \textcompwordmark{}
+>}
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1732,20 +1756,20 @@ ar@{^<-_>}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@2{--}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@2{--}[r] & \ }
+$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1880,19 +1904,10 @@ ar@<1ex>[l]}
 \begin_layout Standard
 \noindent
 produces
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \begin_inset Formula 
 \[
 \xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 \]
- 
 
 \end_inset
 
@@ -1967,7 +1982,10 @@ xypic
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 
 \backslash
@@ -1983,7 +2001,10 @@ ar@/_1pc/
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 
 \backslash
@@ -2500,7 +2521,10 @@ Braces that are entered without the backslash
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 {x
 \backslash
@@ -3204,7 +3228,10 @@ A more general trick uses invisible arrows to place any object almost anywhere
 \end_inset
 
 g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \family typewriter
 (0.6)
 \family default
