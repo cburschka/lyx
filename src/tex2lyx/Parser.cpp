@@ -118,6 +118,17 @@ void debugToken(std::ostream & os, Token const & t, unsigned int flags)
 // Wrapper
 //
 
+bool iparserdocstream::setEncoding(std::string const & e)
+{
+	is_ << lyx::setEncoding(e);
+	if (s_.empty())
+		return true;
+	cerr << "Setting encoding " << e << " too late. The encoding of `"
+	     << to_utf8(s_) << "´ is wrong." << std::endl;
+	return false;
+}
+
+
 void iparserdocstream::putback(char_type c)
 {
 	s_ += c;
@@ -182,7 +193,7 @@ void Parser::deparse()
 }
 
 
-void Parser::setEncoding(std::string const & e, int const & p)
+bool Parser::setEncoding(std::string const & e, int const & p)
 {
 	// We may (and need to) use unsafe encodings here: Since the text is
 	// converted to unicode while reading from is_, we never see text in
@@ -191,9 +202,9 @@ void Parser::setEncoding(std::string const & e, int const & p)
 	Encoding const * const enc = encodings.fromLaTeXName(e, p, true);
 	if (!enc) {
 		cerr << "Unknown encoding " << e << ". Ignoring." << std::endl;
-		return;
+		return false;
 	}
-	setEncoding(enc->iconvName());
+	return setEncoding(enc->iconvName());
 }
 
 
@@ -250,11 +261,11 @@ void Parser::setCatcodes(cat_type t)
 }
 
 
-void Parser::setEncoding(std::string const & e)
+bool Parser::setEncoding(std::string const & e)
 {
 	//cerr << "setting encoding to " << e << std::endl;
-	is_.docstream() << lyx::setEncoding(e);
 	encoding_iconv_ = e;
+	return is_.setEncoding(e);
 }
 
 
@@ -284,7 +295,11 @@ Token const Parser::curr_token() const
 Token const Parser::next_token()
 {
 	static const Token dummy;
-	return good() ? tokens_[pos_] : dummy;
+	if (!good())
+		return dummy;
+	if (pos_ >= tokens_.size())
+		tokenize_one();
+	return pos_ < tokens_.size() ? tokens_[pos_] : dummy;
 }
 
 
@@ -292,11 +307,14 @@ Token const Parser::next_token()
 Token const Parser::next_next_token()
 {
 	static const Token dummy;
-	// If good() has not been called after the last get_token() we need
-	// to tokenize two more tokens.
-	if (pos_ + 1 >= tokens_.size()) {
+	if (!good())
+		return dummy;
+	// If tokenize_one() has not been called after the last get_token() we
+	// need to tokenize two more tokens.
+	if (pos_ >= tokens_.size()) {
 		tokenize_one();
-		tokenize_one();
+		if (pos_ + 1 >= tokens_.size())
+			tokenize_one();
 	}
 	return pos_ + 1 < tokens_.size() ? tokens_[pos_ + 1] : dummy;
 }
@@ -306,10 +324,16 @@ Token const Parser::next_next_token()
 Token const Parser::get_token()
 {
 	static const Token dummy;
-	// if (good()) 
-	// 	cerr << "looking at token " << tokens_[pos_] 
-	// 	     << " pos: " << pos_ << '\n';
-	return good() ? tokens_[pos_++] : dummy;
+	if (!good())
+		return dummy;
+	if (pos_ >= tokens_.size()) {
+		tokenize_one();
+		if (pos_ >= tokens_.size())
+			return dummy;
+	}
+	// cerr << "looking at token " << tokens_[pos_] 
+	//      << " pos: " << pos_ << '\n';
+	return tokens_[pos_++];
 }
 
 
@@ -408,8 +432,9 @@ bool Parser::good()
 {
 	if (pos_ < tokens_.size())
 		return true;
-	tokenize_one();
-	return pos_ < tokens_.size();
+	if (!is_.good())
+		return false;
+	return is_.peek() != idocstream::traits_type::eof();
 }
 
 

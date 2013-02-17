@@ -117,15 +117,19 @@ std::ostream & operator<<(std::ostream & os, Token const & t);
 extern void debugToken(std::ostream & os, Token const & t, unsigned int flags);
 #endif
 
-// A docstream version that supports putback even when not buffered
+/// A docstream version that supports putback even when not buffered
 class iparserdocstream
 {
 public:
+	typedef idocstream::int_type int_type;
+
 	iparserdocstream(idocstream & is) : is_(is) {};
 
-	operator bool() const { return is_; };
+	/// Like std::istream::operator bool()
+	operator bool() const { return s_.empty() ? is_ : true; }
 
-	idocstream & docstream() { return is_; };
+	/// change the encoding of the input stream to \p e (iconv name)
+	bool setEncoding(std::string const & e);
 
 	// add to the list of characters to read before actually reading
 	// the stream
@@ -135,7 +139,14 @@ public:
 	// the stream
 	void put_almost_back(docstring s);
 
+	/// Like std::istream::get()
 	iparserdocstream & get(char_type &c);
+
+	/// Like std::istream::good()
+	bool good() const { return s_.empty() ? is_.good() : true; }
+
+	/// Like std::istream::peek()
+	int_type peek() const { return s_.empty() ? is_.peek() : s_[0]; }
 private:
 	///
 	idocstream & is_;
@@ -172,11 +183,11 @@ public:
 	 * re-reading. Useful when changing catcodes. */
 	void deparse();
 
-	/// change the iconv encoding of the input stream
-	/// according to the latex encoding and package
-	void setEncoding(std::string const & encoding, int const & package);
-	/// change the iconv encoding of the input stream
-	void setEncoding(std::string const & encoding);
+	/// change the encoding of the input stream according to \p encoding
+	/// (latex name) and package \p package
+	bool setEncoding(std::string const & encoding, int const & package);
+	/// change the encoding of the input stream to \p encoding (iconv name)
+	bool setEncoding(std::string const & encoding);
 	/// get the current iconv encoding of the input stream
 	std::string getEncoding() const { return encoding_iconv_; }
 
@@ -288,9 +299,12 @@ public:
 	Token const prev_token() const;
 	/// The current token.
 	Token const curr_token() const;
-	/// The next token.
+	/// The next token. Caution: If this is called, an encoding change is
+	/// only possible again after get_token() has been called.
 	Token const next_token();
-	/// The next but one token.
+	/// The next but one token. Caution: If this is called, an encoding
+	/// change is only possible again after get_token() has been called
+	/// twice.
 	Token const next_next_token();
 	/// Make the next token current and return that.
 	Token const get_token();
@@ -301,7 +315,9 @@ public:
 	bool skip_spaces(bool skip_comments = false);
 	/// puts back spaces (and comments if \p skip_comments is true)
 	void unskip_spaces(bool skip_comments = false);
-	///
+	/// Is any further input pending()? This is not like
+	/// std::istream::good(), which returns true if all available input
+	/// was read, and the next attempt to read would return EOF.
 	bool good();
 	/// resets the parser to initial state
 	void reset();
