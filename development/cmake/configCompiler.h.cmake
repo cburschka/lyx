@@ -46,6 +46,7 @@
 #cmakedefine HAVE__MKDIR 1
 #cmakedefine HAVE_PUTENV 1
 #cmakedefine HAVE_SETENV 1
+#cmakedefine HAVE_UNSETENV 1
 #cmakedefine HAVE_STRERROR 1
 #cmakedefine HAVE_STD_COUNT 1
 #cmakedefine HAVE_ASPRINTF 1

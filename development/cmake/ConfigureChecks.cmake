@@ -76,6 +76,7 @@ check_function_exists(tsearch HAVE_TSEARCH)
 check_function_exists(getegid HAVE_GETEGID)
 check_function_exists(getgid HAVE_GETGID)
 check_function_exists(getuid HAVE_GETUID)
+check_function_exists(unsetenv HAVE_UNSETENV)
 check_function_exists(wcslen HAVE_WCSLEN)
 check_function_exists(mkfifo HAVE_MKFIFO)
 
