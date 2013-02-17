@@ -131,8 +131,8 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
 "cmbr", "cmss", "helvet", "kurier", "kurierl", "lmss", "tgadventor", "tgheros", 0};
 
-const char * const known_kurier_fonts[] = { "kurier", "kurierl", "kurier-condensed",
-"kurier-light-condensed", 0};
+const char * const known_kurier_fonts[] = { "kurier", "kurierl",
+"kurier-condensed", "kurier-light-condensed", 0};
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
@@ -164,8 +164,8 @@ const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
 const char * const known_basic_colors[] = {"blue", "black", "cyan", "green",
 "magenta", "red", "white", "yellow", 0};
 
-const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff", "#00ff00",
-"#ff00ff", "#ff0000", "#ffffff", "#ffff00", 0};
+const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
+"#00ff00", "#ff00ff", "#ff0000", "#ffffff", "#ffff00", 0};
 
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
@@ -179,11 +179,11 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color", "float",
-"fontspec", "graphicx", "hhline", "ifthen", "longtable", "makeidx", "multirow",
-"nomencl", "pdfpages", "rotating", "rotfloat", "splitidx", "setspace",
-"subscript", "textcomp", "ulem", "url", "varioref", "verbatim", "wrapfig",
-"xunicode", 0};
+"amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
+"float", "fontspec", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
+"multirow", "nomencl", "pdfpages", "rotating", "rotfloat", "splitidx",
+"setspace", "subscript", "textcomp", "tipa", "tipx", "ulem", "url", "varioref",
+"verbatim", "wrapfig", "xunicode", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep

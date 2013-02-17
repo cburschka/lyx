@@ -3208,6 +3208,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
+		else if (t.cs() == "textipa") {
+			context.check_layout(os);
+			begin_inset(os, "IPA\n");
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context,
+			                    "IPA");
+			end_inset(os);
+			preamble.registerAutomaticallyLoadedPackage("tipa");
+			preamble.registerAutomaticallyLoadedPackage("tipx");
+		}
+
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
 			     t.cs() == "vphantom") {
 			context.check_layout(os);
