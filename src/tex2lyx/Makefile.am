@@ -32,7 +32,7 @@ TEST_FILES = \
 	test/test-insets.tex \
 	test/test.ltx \
 	test/test-modules.tex \
-	test/test-refstyle-references.tex \
+	test/test-refstyle-theorems.tex \
 	test/test-structure.tex \
 	test/verbatim.tex \
 	test/XeTeX-polyglossia.tex \
@@ -50,7 +50,7 @@ TEST_RESULTS = \
 	test/test-insets.lyx.lyx \
 	test/test.lyx.lyx \
 	test/test-modules.lyx.lyx \
-	test/test-refstyle-references.lyx.lyx \
+	test/test-refstyle-theorems.lyx.lyx \
 	test/test-structure.lyx.lyx \
 	test/verbatim.lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
