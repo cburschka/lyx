@@ -21,7 +21,9 @@
 \usepackage{prettyref}
 \usepackage{splitidx}
 \makeindex
-
+\newindex[Index]{idx}
+\newindex[new]{new}
+\newindex{test}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{xargs}
@@ -611,9 +613,29 @@ with \textbackslash{}addcontentsline and \textbackslash{}nocite\{{*}\}:
 \bibliography{xampl}
 
 
-normal index:
+undefined index:
 
 \printindex{}
+
+index "idx":
+
+\printindex[idx]{}
+
+index "new":
+
+\printindex[new]{}
+
+subindex "new":
+
+\printsubindex[idx]{}
+
+index of all indices:
+
+\printindex*{}
+
+subindex of all indices:
+
+\printsubindex*{}
 
 normal nomenclature:
 

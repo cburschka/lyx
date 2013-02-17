@@ -66,6 +66,14 @@
 \shortcut idx
 \color #008000
 \end_index
+\index new
+\shortcut new
+\color #008000
+\end_index
+\index test
+\shortcut test
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -6257,7 +6265,7 @@ options "bibtotoc,test"
 \end_layout
 
 \begin_layout Standard
-normal index:
+undefined index:
 \end_layout
 
 \begin_layout Standard
@@ -6265,6 +6273,79 @@ normal index:
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+index "idx":
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+index "new":
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "new"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subindex "new":
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset index_print
+LatexCommand printsubindex
+type "idx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+index of all indices:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset index_print
+LatexCommand printindex*
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+subindex of all indices:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset index_print
+LatexCommand printsubindex*
 
 \end_inset
 

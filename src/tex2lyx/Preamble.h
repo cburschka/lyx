@@ -138,7 +138,7 @@ private:
 	std::string h_html_be_strict;
 	std::string h_html_css_as_file;
 	std::string h_html_math_output;
-	std::string h_index;
+	std::string h_index[99];
 	std::string h_index_command;
 	std::string h_inputencoding;
 	std::string h_justification;
@@ -178,7 +178,7 @@ private:
 	std::string h_pdf_quoted_options;
 	std::string h_quotes_language;
 	std::string h_secnumdepth;
-	std::string h_shortcut;
+	std::string h_shortcut[99];
 	std::string h_spacing;
 	std::string h_suppress_date;
 	std::string h_textclass;

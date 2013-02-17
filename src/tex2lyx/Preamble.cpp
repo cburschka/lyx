@@ -185,6 +185,9 @@ const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "setspace", "subscript", "textcomp", "tipa", "tipx", "ulem", "url", "varioref",
 "verbatim", "wrapfig", "xunicode", 0};
 
+// used for the handling of \newindex
+int index_number = 0;
+
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
 const char package_beg_sep = '\001';
@@ -469,7 +472,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false),
 	h_html_be_strict          = "false";
 	h_html_css_as_file        = "0";
 	h_html_math_output        = "0";
-	h_index                   = "Index";
+	h_index[0]                = "Index";
 	h_index_command           = "default";
 	h_inputencoding           = "auto";
 	h_justification           = "true";
@@ -508,7 +511,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false),
 	//h_pdf_quoted_options;
 	h_quotes_language         = "english";
 	h_secnumdepth             = "3";
-	h_shortcut                = "idx";
+	h_shortcut[0]             = "idx";
 	h_spacing                 = "single";
 	h_suppress_date           = "false";
 	h_textclass               = "article";
@@ -1141,10 +1144,19 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 		os << "\\backgroundcolor " << h_backgroundcolor << '\n';
 	if (!h_boxbgcolor.empty())
 		os << "\\boxbgcolor " << h_boxbgcolor << '\n';
-	os << "\\index " << h_index << '\n'
-	   << "\\shortcut " << h_shortcut << '\n'
-	   << "\\color " << h_color << '\n'
-	   << "\\end_index\n";
+	if (index_number != 0)
+		for (int i = 0; i < index_number; i++) {
+			os << "\\index " << h_index[i] << '\n'
+			   << "\\shortcut " << h_shortcut[i] << '\n'
+			   << "\\color " << h_color << '\n'
+			   << "\\end_index\n";
+		}
+	else {
+		os << "\\index " << h_index[0] << '\n'
+		   << "\\shortcut " << h_shortcut[0] << '\n'
+		   << "\\color " << h_color << '\n'
+		   << "\\end_index\n";
+	}
 	os << h_margins
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
@@ -1367,6 +1379,23 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "makeatother") {
 			// LyX takes care of this
 			p.setCatcode('@', catOther);
+		}
+
+		else if (t.cs() == "makeindex") {
+			// LyX will re-add this if a print index command is found
+			p.skip_spaces();
+		}
+
+		else if (t.cs() == "newindex") {
+			string const indexname = p.getArg('[', ']');
+			string const shortcut = p.verbatim_item();
+			if (!indexname.empty())
+				h_index[index_number] = indexname;
+			else
+				h_index[index_number] = shortcut;
+			h_shortcut[index_number] = shortcut;
+			index_number += 1;
+			p.skip_spaces();
 		}
 
 		else if (t.cs() == "RS@ifundefined") {

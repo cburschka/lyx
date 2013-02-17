@@ -3526,10 +3526,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "printindex") {
+		else if (t.cs() == "printindex" || t.cs() == "printsubindex") {
 			context.check_layout(os);
-			begin_command_inset(os, "index_print", "printindex");
-			os << "type \"idx\"\n";
+			string commandname = t.cs();
+			bool star = false;
+			if (p.next_token().asInput() == "*") {
+				commandname += "*";
+				star = true;
+				p.get_token();
+			}
+			begin_command_inset(os, "index_print", commandname);
+			string const indexname = p.getArg('[', ']');
+			if (!star) {
+				if (indexname.empty())
+					os << "type \"idx\"\n";
+				else
+					os << "type \"" << indexname << "\"\n";
+			}
 			end_inset(os);
 			skip_spaces_braces(p);
 			preamble.registerAutomaticallyLoadedPackage("makeidx");
