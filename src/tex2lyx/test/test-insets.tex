@@ -541,6 +541,7 @@ or by a page break \pagebreak
 or by a defined page break \pagebreak % again with a comment
 	[4]
 
+
 \section{Special characters\index{Special characters}}
 
 Then one has those macros with a long name for a short meaning, like
@@ -570,6 +571,7 @@ builtin \textasciicircum % with a comment
 A sub\textsubscript{sc\emph{ript}} and super\textsuperscript{script
 with $a^2+b^2=c^2$ math}.
 
+
 \section{Mathematics\index{Mathematics}}
 
 Let $f:\left[  a,b\right]  \rightarrow%
@@ -579,25 +581,47 @@ Let $f:\left[  a,b\right]  \rightarrow%
 %EndExpansion
 $.
 
-\addcontentsline{toc}{section}{test}
+
+\section{Lists/Indices}
+
+single \textbackslash{}addcontentsline: \addcontentsline{toc}{section}{test}
+
+with \textbackslash{}addcontentsline and \textbackslash{}phantomsection:
 
 \bibliographystyle{test}
-\addcontentsline{toc}{section}{\refname}
-\bibliography{IEEEexample}
+\phantomsection\addcontentsline{toc}{section}{\refname}\bibliography{xampl}
+
+
+normal:
 
 \bibliographystyle{test}
-\bibliography{IEEEexample}
+\bibliography{xampl}
+
+
+with wrong \textbackslash{}addcontentsline:
+
+\bibliographystyle{test} \addcontentsline{toc}{section}{test} \bibliographystyle{test}
+\bibliography{xampl}
+
+
+with \textbackslash{}addcontentsline and \textbackslash{}nocite\{{*}\}:
 
 \bibliographystyle{test}
-\addcontentsline{toc}{section}{test}
-\bibliography{IEEEexample}
+\addcontentsline{toc}{section}{\refname}\nocite{*}
+\bibliography{xampl}
+
+
+normal index:
 
 \printindex{}
 
+normal nomenclature:
+
 \printnomenclature hello
 
-\settowidth{\nomlabelwidth}{URL2}
-\printnomenclature{}
+manually set width: \settowidth{\nomlabelwidth}{URL2} \printnomenclature{}
+
+nomenclature with set width:
 
 \printnomenclature[0.02\linewidth]{}
 

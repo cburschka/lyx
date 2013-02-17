@@ -6135,8 +6135,14 @@ $
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Section
+Lists/Indices
+\end_layout
 
+\begin_layout Standard
+single 
+\backslash
+addcontentsline: 
 \begin_inset ERT
 status collapsed
 
@@ -6152,10 +6158,18 @@ addcontentsline{toc}{section}{test}
 \end_layout
 
 \begin_layout Standard
-  
+with 
+\backslash
+addcontentsline and 
+\backslash
+phantomsection:
+\end_layout
+
+\begin_layout Standard
+ 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "IEEEexample"
+bibfiles "xampl"
 options "bibtotoc,test"
 
 \end_inset
@@ -6164,15 +6178,25 @@ options "bibtotoc,test"
 \end_layout
 
 \begin_layout Standard
+normal:
+\end_layout
+
+\begin_layout Standard
  
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "IEEEexample"
+bibfiles "xampl"
 options "test"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+with wrong 
+\backslash
+addcontentsline:
 \end_layout
 
 \begin_layout Standard
@@ -6200,15 +6224,40 @@ addcontentsline{toc}{section}{test}
 
 \end_inset
 
- 
+  
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "IEEEexample"
+bibfiles "xampl"
 options "test"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+with 
+\backslash
+addcontentsline and 
+\backslash
+nocite{*}:
+\end_layout
+
+\begin_layout Standard
+  
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "xampl"
+options "bibtotoc,test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+normal index:
 \end_layout
 
 \begin_layout Standard
@@ -6223,6 +6272,10 @@ type "idx"
 \end_layout
 
 \begin_layout Standard
+normal nomenclature:
+\end_layout
+
+\begin_layout Standard
 
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
@@ -6234,7 +6287,7 @@ hello
 \end_layout
 
 \begin_layout Standard
-
+manually set width: 
 \begin_inset ERT
 status collapsed
 
@@ -6256,6 +6309,10 @@ set_width "none"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+nomenclature with set width:
 \end_layout
 
 \begin_layout Standard

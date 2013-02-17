@@ -3990,6 +3990,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						continue;
 				} else if (t2.cs() == "bibliography")
 					output = false;
+				else if (t2.cs() == "phantomsection") {
+					output = false;
+					continue;
+				}
 				else if (t2.cs() == "addcontentsline") {
 					// get the 3 arguments of \addcontentsline
 					p.getArg('{', '}');
@@ -4007,6 +4011,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					"\\bibliographystyle{" + bibliographystyle + '}',
 					context);
 			}
+		}
+
+		else if (t.cs() == "phantomsection") {
+			// we only support this if it occurs between
+			// \bibliographystyle and \bibliography
+			if (bibliographystyle.empty())
+				output_ert_inset(os, "\\phantomsection", context);
 		}
 
 		else if (t.cs() == "addcontentsline") {
@@ -4046,6 +4057,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					BibOpts = bibliographystyle;
 				else
 					BibOpts = BibOpts + ',' + bibliographystyle;
+				// clear it because each bibtex entry has its style
+				// and we need an empty string to handle \phantomsection
+				bibliographystyle.clear();
 			}
 			os << "options " << '"' << BibOpts << '"' << "\n";
 			end_inset(os);
