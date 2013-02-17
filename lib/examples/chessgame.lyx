@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass chess
@@ -16,15 +16,15 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -33,15 +33,23 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -78,9 +86,9 @@ status open
 \series bold
 Note:
 \series default
- You must not use the view PDF button to preview this file! For viewing
- and exporting this as PDF use in the menus the method PDF (ps2pdf) or PDF
- (dvipdfm).
+ This document does not compile with pdflatex.
+ For viewing and exporting this as PDF, use in the PDF (ps2pdf) or PDF (dvipdfm).
+ The latter is set as default output format.
 \end_layout
 
 \end_inset

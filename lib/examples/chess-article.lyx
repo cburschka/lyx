@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass chess
@@ -20,15 +20,15 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -37,15 +37,23 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -118,9 +126,9 @@ status open
 \series bold
 Note:
 \series default
- You must not use the view PDF button to preview this file! For viewing
- and exporting this as PDF use in the menus the method PDF (ps2pdf) or PDF
- (dvipdfm).
+ This document does not compile with pdflatex.
+ For viewing and exporting this as PDF, use in the PDF (ps2pdf) or PDF (dvipdfm).
+ The latter is set as default output format.
 \end_layout
 
 \begin_layout Plain Layout
@@ -229,7 +237,6 @@ height "1pt"
 \end_layout
 
 \begin_layout Mainline
-
 1.
  e4 c5 2.
  Nc3 d6 3.
@@ -250,17 +257,14 @@ height "1pt"
 \end_layout
 
 \begin_layout HighLight
-
 d4,f4
 \end_layout
 
 \begin_layout Arrow
-
 d2->d4
 \end_layout
 
 \begin_layout KnightMove
-
 g1->e2
 \end_layout
 
@@ -289,13 +293,11 @@ So far, so good.
 \end_layout
 
 \begin_layout Mainline
-
 5...
  Be7?! 
 \end_layout
 
 \begin_layout Variation
-
 5...
  Nge7 [ 
 \backslash
@@ -304,7 +306,6 @@ equal{} was better.
 \end_layout
 
 \begin_layout Mainline
-
 6.
  d4 cxd4 7.
  Nxd4 a6
@@ -320,7 +321,6 @@ With 7...
 \end_layout
 
 \begin_layout Mainline
-
 8.
  Nxc6 bxc6 9.
  O-O Bb7 10.
@@ -334,7 +334,6 @@ With 7...
 \end_layout
 
 \begin_layout Arrow
-
 a1->d1
 \end_layout
 
@@ -350,7 +349,6 @@ White continues to develop pieces and also sets a trap for Black.
 \end_layout
 
 \begin_layout Mainline
-
 12...
  O-O? [ This move loses instantly.
  ]
@@ -361,7 +359,6 @@ The following was better, even though white retains the upper hand.
 \end_layout
 
 \begin_layout Variation
-
 12...
  e5 13.
  Be3 Qc7 14.
@@ -371,7 +368,6 @@ wbetter ]
 \end_layout
 
 \begin_layout Mainline
-
 13.
  e5!
 \end_layout
@@ -382,7 +378,6 @@ Black's knight and bishop form a bumbling pair here.
 \end_layout
 
 \begin_layout Mainline
-
 13...
  Nd5!? 14.
  Bxd5 cxd5 15.
