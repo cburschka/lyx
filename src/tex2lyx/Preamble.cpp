@@ -761,9 +761,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_math = "minion-ntxm";
 	}
 
-	if (name == "refstyle")
-		h_use_refstyle = "1";
-
 	// after the detection and handling of special cases, we can remove the
 	// fonts, otherwise they would appear in the preamble, see bug #7856
 	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
@@ -900,6 +897,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
+		if (name == "refstyle")
+			h_use_refstyle = "1";
 		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
