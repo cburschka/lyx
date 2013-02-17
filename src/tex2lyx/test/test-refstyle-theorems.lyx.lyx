@@ -1,44 +1,20 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 461
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass book
 \begin_preamble
-\usepackage{refstyle}
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
-\AtBeginDocument{\providecommand{\partref}[1]{\ref{part:#1}}}
-\AtBeginDocument{\providecommand{\chapref}[1]{\ref{chap:#1}}}
-\AtBeginDocument{\providecommand{\secref}[1]{\ref{sec:#1}}}
-\AtBeginDocument{\providecommand{\subref}[1]{\ref{sub:#1}}}
-\AtBeginDocument{\providecommand{\parref}[1]{\ref{par:#1}}}
-\AtBeginDocument{\providecommand{\figref}[1]{\ref{fig:#1}}}
-\AtBeginDocument{\providecommand{\tabref}[1]{\ref{tab:#1}}}
-\AtBeginDocument{\providecommand{\algref}[1]{\ref{alg:#1}}}
-\AtBeginDocument{\providecommand{\fnref}[1]{\ref{fn:#1}}}
-\AtBeginDocument{\providecommand{\enuref}[1]{\ref{enu:#1}}}
-\AtBeginDocument{\providecommand{\eqref}[1]{\ref{eq:#1}}}
-\AtBeginDocument{\providecommand{\lemref}[1]{\ref{lem:#1}}}
-\AtBeginDocument{\providecommand{\thmref}[1]{\ref{thm:#1}}}
-\AtBeginDocument{\providecommand{\corref}[1]{\ref{cor:#1}}}
-\AtBeginDocument{\providecommand{\propref}[1]{\ref{prop:#1}}}
 \floatstyle{ruled}
 \newfloat{algorithm}{tbp}{loa}[chapter]
 \providecommand{\algorithmname}{Algorithm}
 \floatname{algorithm}{\protect\algorithmname}
-\RS@ifundefined{subref}
-  {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
-  {}
-\RS@ifundefined{thmref}
-  {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
-  {}
-\RS@ifundefined{lemref}
-  {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
-  {}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.

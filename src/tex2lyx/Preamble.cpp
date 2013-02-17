@@ -1370,6 +1370,66 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			p.setCatcode('@', catOther);
 		}
 
+		else if (t.cs() == "RS@ifundefined") {
+			string const name = p.verbatim_item();
+			string const body1 = p.verbatim_item();
+			string const body2 = p.verbatim_item();
+			// store the in_lyx_preamble setting
+			bool const was_in_lyx_preamble = in_lyx_preamble;
+			if (name == "subref"
+				|| name == "thmref"
+				|| name == "lemref") {
+				p.skip_spaces();
+				preamble.registerAutomaticallyLoadedPackage("refstyle");
+				in_lyx_preamble = true;
+			}
+			// only non-lyxspecific stuff
+			if (!in_lyx_preamble) {
+				ostringstream ss;
+				ss << '\\' << t.cs();
+				ss << '{' << name << '}'
+				   << '{' << body1 << '}'
+				   << '{' << body2 << '}';
+				h_preamble << ss.str();
+			}
+			// restore the in_lyx_preamble setting
+			in_lyx_preamble = was_in_lyx_preamble;
+		}
+		
+		else if (t.cs() == "AtBeginDocument") {
+			string const name = p.verbatim_item();
+			// store the in_lyx_preamble setting
+			bool const was_in_lyx_preamble = in_lyx_preamble;
+			if (name == "\\providecommand\\partref[1]{\\ref{part:#1}}"
+				|| name == "\\providecommand\\chapref[1]{\\ref{chap:#1}}"
+				|| name == "\\providecommand\\secref[1]{\\ref{sec:#1}}"
+				|| name == "\\providecommand\\subref[1]{\\ref{sub:#1}}"
+				|| name == "\\providecommand\\parref[1]{\\ref{par:#1}}"
+				|| name == "\\providecommand\\figref[1]{\\ref{fig:#1}}"
+				|| name == "\\providecommand\\tabref[1]{\\ref{tab:#1}}"
+				|| name == "\\providecommand\\algref[1]{\\ref{alg:#1}}"
+				|| name == "\\providecommand\\fnref[1]{\\ref{fn:#1}}"
+				|| name == "\\providecommand\\enuref[1]{\\ref{enu:#1}}"
+				|| name == "\\providecommand\\eqref[1]{\\ref{eq:#1}}"
+				|| name == "\\providecommand\\lemref[1]{\\ref{lem:#1}}"
+				|| name == "\\providecommand\\thmref[1]{\\ref{thm:#1}}"
+				|| name == "\\providecommand\\corref[1]{\\ref{cor:#1}}"
+				|| name == "\\providecommand\\propref[1]{\\ref{prop:#1}}") {
+				p.skip_spaces();
+				preamble.registerAutomaticallyLoadedPackage("refstyle");
+				in_lyx_preamble = true;
+			}
+			// only non-lyxspecific stuff
+			if (!in_lyx_preamble) {
+				ostringstream ss;
+				ss << '\\' << t.cs();
+				ss << '{' << name << '}';
+				h_preamble << ss.str();
+			}
+			// restore the in_lyx_preamble setting
+			in_lyx_preamble = was_in_lyx_preamble;
+		}
+
 		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
 		      || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
 		      || t.cs() == "providecommand" || t.cs() == "providecommandx"
@@ -1414,7 +1474,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				p.skip_spaces();
 				in_lyx_preamble = true;
 			}
-
 			if (name == "\\bfdefault")
 				// LyX re-adds this if a kurier font is used
 				if (is_known(h_font_sans, known_kurier_fonts) && body == "b") {
