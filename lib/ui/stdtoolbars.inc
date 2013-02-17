@@ -183,6 +183,7 @@ ToolbarSet
 		Item "Insert sum" "math-insert \sum"
 		Item "Insert integral" "math-insert \int"
 		Item "Insert product" "math-insert \prod"
+		Item "Insert side scripts" "math-insert \sideset"
 		Separator
 		Item "Insert ( )" "math-delim ( )"
 		Item "Insert [ ]" "math-delim [ ]"

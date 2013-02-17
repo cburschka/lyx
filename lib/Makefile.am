@@ -1109,6 +1109,7 @@ dist_imagesmath_DATA = \
 	images/math/shortparallel.png \
 	images/math/shortrightarrow.png \
 	images/math/shortuparrow.png \
+	images/math/sideset.png \
 	images/math/sigma.png \
 	images/math/sigma2.png \
 	images/math/sim.png \

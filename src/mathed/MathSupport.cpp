@@ -13,7 +13,8 @@
 
 #include "MathSupport.h"
 
-#include "InsetMath.h"
+#include "InsetMathFont.h"
+#include "InsetMathSymbol.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
@@ -733,6 +734,27 @@ void augmentFont(FontInfo & font, docstring const & name)
 		font.setShape(info->shape_);
 	if (info->color_ != Color_none)
 		font.setColor(info->color_);
+}
+
+
+bool isAlphaSymbol(MathAtom const & at)
+{
+	if (at->asCharInset() ||
+	    (at->asSymbolInset() &&
+	     at->asSymbolInset()->isOrdAlpha()))
+		return true;
+
+	if (at->asFontInset()) {
+		MathData const & ar = at->asFontInset()->cell(0);
+		for (size_t i = 0; i < ar.size(); ++i) {
+			if (!(ar[i]->asCharInset() ||
+			      (ar[i]->asSymbolInset() &&
+			       ar[i]->asSymbolInset()->isOrdAlpha())))
+				return false;
+		}
+		return true;
+	}
+	return false;
 }
 
 

@@ -32,6 +32,7 @@
 #include "InsetMathPhantom.h"
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"
+#include "InsetMathSideset.h"
 #include "InsetMathSize.h"
 #include "InsetMathSpace.h"
 #include "InsetMathSpecialChar.h"
@@ -535,6 +536,8 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::mathrlap));
 	if (s == "ensuremath")
 		return MathAtom(new InsetMathEnsureMath(buf));
+	if (s == "sideset")
+		return MathAtom(new InsetMathSideset(buf));
 	if (isSpecialChar(s))
 		return MathAtom(new InsetMathSpecialChar(s));
 	if (s == " ")

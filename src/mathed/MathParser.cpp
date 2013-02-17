@@ -56,6 +56,7 @@ following hack as starting point to write some macros:
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"
 #include "InsetMathScript.h"
+#include "InsetMathSideset.h"
 #include "InsetMathSpace.h"
 #include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
@@ -1440,6 +1441,28 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				}
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+		}
+
+		else if (t.cs() == "sideset") {
+			// Here allowed formats are \sideset{_{bl}^{tl}}{_{br}^{tr}}{operator}
+			cell->push_back(MathAtom(new InsetMathSideset(buf)));
+			for (int i = 0; i < 2; ++i) {
+				MathData ar;
+				parse(ar, FLAG_ITEM, mode);
+				if (!ar.empty()) {
+					InsetMathScript * script = (ar.size() == 1) ?
+						ar[0].nucleus()->asScriptInset() : 0;
+					if (!script) {
+						error("found invalid sideset argument");
+						break;
+					}
+					if (script->hasDown())
+						cell->back().nucleus()->cell(2 * i + 1) = script->down();
+					if (script->hasUp())
+						cell->back().nucleus()->cell(2 * i + 2) = script->up();
+				}
+			}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "stackrel") {

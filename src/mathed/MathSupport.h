@@ -56,6 +56,8 @@ bool isMathFont(docstring const & name);
 
 bool isTextFont(docstring const & name);
 
+bool isAlphaSymbol(MathAtom const & at);
+
 // converts single cell to string
 docstring asString(MathData const & ar);
 // converts single inset to string

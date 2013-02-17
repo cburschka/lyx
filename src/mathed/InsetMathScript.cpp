@@ -16,7 +16,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetMathBrace.h"
-#include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "InsetMathSymbol.h"
 #include "LaTeXFeatures.h"
@@ -28,7 +27,6 @@
 
 #include "support/lassert.h"
 
-#include <ostream>
 
 using namespace std;
 
@@ -146,31 +144,6 @@ MathData & InsetMathScript::nuc()
 {
 	return cell(0);
 }
-
-
-namespace {
-
-bool isAlphaSymbol(MathAtom const & at)
-{
-	if (at->asCharInset() ||
-			(at->asSymbolInset() &&
-			 at->asSymbolInset()->isOrdAlpha()))
-		return true;
-
-	if (at->asFontInset()) {
-		MathData const & ar = at->asFontInset()->cell(0);
-		for (size_t i = 0; i < ar.size(); ++i) {
-			if (!(ar[i]->asCharInset() ||
-					(ar[i]->asSymbolInset() &&
-					 ar[i]->asSymbolInset()->isOrdAlpha())))
-				return false;
-		}
-		return true;
-	}
-	return false;
-}
-
-} // namespace anon
 
 
 int InsetMathScript::dy01(BufferView const & bv, int asc, int des, int what) const
