@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-27 13:36+0100\n"
+"POT-Creation-Date: 2013-02-17 11:33+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3346,7 +3346,7 @@ msgstr "Vaše meno"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:60
 msgid "Your E-mail address"
-msgstr "Vaša e-mailová adresa"
+msgstr "Vaša E-mailová adresa"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:19
 msgid "Keyboard"
@@ -6174,7 +6174,7 @@ msgstr "E-mail"
 
 #: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:298
 msgid "email"
-msgstr "E-mail"
+msgstr "e-mail"
 
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:139 src/frontends/qt4/GuiThesaurus.cpp:46
@@ -9580,7 +9580,7 @@ msgstr "OkrajnýObrázok"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr "E-mail:"
+msgstr "e-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -13541,6 +13541,16 @@ msgstr "Braille: Manuál"
 #: lib/ui/stdmenus.inc:586
 msgid "Feynman-diagram Manual|F"
 msgstr "Feynman-diagram: Manuál|F"
+
+#: lib/ui/stdmenus.inc:587
+#, fuzzy
+msgid "Knitr Manual|K"
+msgstr "Knitr|K"
+
+#: lib/ui/stdmenus.inc:588
+#, fuzzy
+msgid "LilyPond Manual|P"
+msgstr "LilyPond príručka"
 
 #: lib/ui/stdmenus.inc:587
 msgid "Linguistics Manual|L"
@@ -25912,9 +25922,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Braille|B"
 #~ msgstr "Braille|B"
 
-#~ msgid "Knitr|K"
-#~ msgstr "Knitr|K"
-
 #~ msgid "LilyPond|P"
 #~ msgstr "LilyPond|P"
 
@@ -26849,9 +26856,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Error exporting to format: %1$s"
 #~ msgstr "Chyba pri exporte na formát: %1$s"
-
-#~ msgid "LilyPond Manual|M"
-#~ msgstr "LilyPond príručka"
 
 #~ msgid "Multilingual Captions Manual|C"
 #~ msgstr "Viac-jazykové Popisy: Manuál"
