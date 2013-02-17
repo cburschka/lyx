@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-02-04 08:01+0100\n"
+"POT-Creation-Date: 2013-02-17 16:32+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -5693,6 +5693,53 @@ msgstr "Popis: "
 msgid "Proof"
 msgstr "Dôkaz"
 
+#: lib/layouts/IEEEtran-CompSoc.layout:3
+msgid "IEEE Transactions Computer Society"
+msgstr "IEEE Transactions Computer Society"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:19
+msgid "Standard in Title"
+msgstr "Štandard v Titule"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:26
+msgid "Author Footnote"
+msgstr "Autor Poznámky pod Čiarou"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:31
+msgid "Author foot"
+msgstr "Autor poznámky pod čiarou"
+
+#: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
+#: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
+#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:276
+#: lib/layouts/ijmpc.layout:213 lib/layouts/ijmpc.layout:217
+#: lib/layouts/ijmpd.layout:220 lib/layouts/iopart.layout:199
+#: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:185
+#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
+#: lib/layouts/revtex4-1.layout:163 lib/layouts/revtex4.layout:261
+#: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal.layout:113
+#: lib/layouts/svglobal.layout:116 lib/layouts/svglobal3.layout:56
+#: lib/layouts/svglobal3.layout:59 lib/layouts/svjog.layout:117
+#: lib/layouts/svjog.layout:120 lib/layouts/svprobth.layout:147
+#: lib/layouts/svprobth.layout:150 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:456
+#: lib/layouts/svcommon.inc:471
+msgid "Keywords"
+msgstr "Heslá"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:54
+msgid "Nontitle Abstract Index Text"
+msgstr "Beztitulný Súhrn Index Text"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:59
+msgid "NontitleAbstractIndexText"
+msgstr "BeztitulnýSúhrnIndexText"
+
+#: lib/layouts/IEEEtran-TransMag.layout:3
+msgid "IEEE Transactions on Magnetics"
+msgstr "IEEE Transactions on Magnetics"
+
 #: lib/layouts/IEEEtran.layout:3
 msgid "IEEE Transactions"
 msgstr "IEEE Transactions"
@@ -5801,6 +5848,30 @@ msgstr "Skratka Autora"
 msgid "A short version of the author name"
 msgstr "Skrátená verzia mena autora"
 
+#: lib/layouts/IEEEtran.layout:140
+msgid "Author Name"
+msgstr "Meno Autora"
+
+#: lib/layouts/IEEEtran.layout:146
+msgid "Author name"
+msgstr "Meno autora"
+
+#: lib/layouts/IEEEtran.layout:157
+msgid "Author Affiliation"
+msgstr "Príslušenstvo Autora"
+
+#: lib/layouts/agutex.layout:112
+msgid "Author affiliation"
+msgstr "Príslušenstvo autora"
+
+#: lib/layouts/IEEEtran.layout:171
+msgid "Author Mark"
+msgstr "Značka Autora"
+
+#: lib/layouts/elsarticle.layout:175
+msgid "Author mark"
+msgstr "Značka autora"
+
 #: lib/layouts/IEEEtran.layout:139
 msgid "Special Paper Notice"
 msgstr "Special Paper Poznámka"
@@ -5834,28 +5905,21 @@ msgstr "Publikačná ID"
 msgid "Abstract---"
 msgstr "Súhrn---"
 
-#: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
-#: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:276
-#: lib/layouts/ijmpc.layout:213 lib/layouts/ijmpc.layout:217
-#: lib/layouts/ijmpd.layout:220 lib/layouts/iopart.layout:199
-#: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:185
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
-#: lib/layouts/revtex4-1.layout:163 lib/layouts/revtex4.layout:261
-#: lib/layouts/siamltex.layout:303 lib/layouts/sigplanconf.layout:146
-#: lib/layouts/spie.layout:41 lib/layouts/svglobal.layout:113
-#: lib/layouts/svglobal.layout:116 lib/layouts/svglobal3.layout:56
-#: lib/layouts/svglobal3.layout:59 lib/layouts/svjog.layout:117
-#: lib/layouts/svjog.layout:120 lib/layouts/svprobth.layout:147
-#: lib/layouts/svprobth.layout:150 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:456
-#: lib/layouts/svcommon.inc:471
-msgid "Keywords"
-msgstr "Heslá"
-
 #: lib/layouts/IEEEtran.layout:222
 msgid "Index Terms---"
 msgstr "Index Pojmov---"
+
+#: lib/layouts/IEEEtran.layout:228 lib/layouts/IEEEtran.layout:232
+msgid "Paragraph Start"
+msgstr "Začiatok odstavca"
+
+#: lib/layouts/IEEEtran.layout:236
+msgid "First Char"
+msgstr "Prvé Písmeno"
+
+#: lib/layouts/IEEEtran.layout:237
+msgid "First character of first word"
+msgstr "Prvé písmeno prvého slova"
 
 #: lib/layouts/IEEEtran.layout:217 lib/layouts/IEEEtran.layout:227
 msgid "Appendices"
@@ -5879,6 +5943,14 @@ msgstr "Prílohy"
 #: lib/layouts/svcommon.inc:577
 msgid "BackMatter"
 msgstr "ZáverečnáČasť"
+
+#: lib/layouts/IEEEtran.layout:318
+msgid "Peer Review Title"
+msgstr "Titul Prehliadky Partnera"
+
+#: lib/layouts/IEEEtran.layout:323
+msgid "PeerReviewTitle"
+msgstr "TitulPrehliadkyPartnera"
 
 #: lib/layouts/IEEEtran.layout:234 lib/layouts/IEEEtran.layout:237
 #: lib/layouts/aastex.layout:122 lib/layouts/aastex.layout:453
@@ -6701,10 +6773,6 @@ msgstr "Autori"
 msgid "Affiliation Mark"
 msgstr "Značka Príslušenstva"
 
-#: lib/layouts/agutex.layout:112
-msgid "Author affiliation"
-msgstr "Príslušenstvo autora"
-
 #: lib/layouts/agutex.layout:124
 msgid "Consecutive number for the author affiliations"
 msgstr "Následné číslo pre autorove príslušenstva"
@@ -7196,9 +7264,9 @@ msgstr "Rám voľby (viď beamer manuál)"
 msgid "Frame Title"
 msgstr "Titul Rámu"
 
-#: lib/layouts/beamer.layout:449 lib/layouts/beamer.layout:843
-msgid "Enter the block title here"
-msgstr "Vložte sem titul bloku"
+#: lib/layouts/beamer.layout:449
+msgid "Enter the frame title here"
+msgstr "Vložte sem titul rámu"
 
 #: lib/layouts/beamer.layout:461
 msgid "PlainFrame"
@@ -7408,6 +7476,10 @@ msgstr "Špecifikácie akcie"
 #: lib/layouts/beamer.layout:835
 msgid "Block Title"
 msgstr "Titul Bloku"
+
+#: lib/layouts/beamer.layout:449 lib/layouts/beamer.layout:843
+msgid "Enter the block title here"
+msgstr "Vložte sem titul bloku"
 
 #: lib/layouts/beamer.layout:848
 msgid "ExampleBlock"
@@ -8650,10 +8722,6 @@ msgstr "Návestie na ktoré sa v adrese chcete vzťahovať"
 
 #: lib/layouts/elsarticle.layout:171
 msgid "Authormark"
-msgstr "Značka autora"
-
-#: lib/layouts/elsarticle.layout:175
-msgid "Author mark"
 msgstr "Značka autora"
 
 #: lib/layouts/elsarticle.layout:184
@@ -10186,6 +10254,14 @@ msgstr "CVFarba"
 msgid "CV Color Scheme:"
 msgstr "CV Farebné Schéma:"
 
+#: lib/layouts/moderncv.layout:58
+msgid "PDF Page Mode"
+msgstr "Režim pre PDF Stránky"
+
+#: lib/layouts/moderncv.layout:61
+msgid "PDF Page Mode:"
+msgstr "Režim pre PDF Stránky:"
+
 #: lib/layouts/moderncv.layout:57 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
 msgstr "KrstnéMeno"
@@ -10197,6 +10273,18 @@ msgstr "Priezvisko"
 #: lib/layouts/moderncv.layout:74
 msgid "Family Name:"
 msgstr "Priezvisko:"
+
+#: lib/layouts/moderncv.layout:114
+msgid "Line 1"
+msgstr "Riadok 1"
+
+#: lib/layouts/moderncv.layout:115 lib/layouts/moderncv.layout:121
+msgid "Optional address line"
+msgstr "Nepovinný riadok adresy"
+
+#: lib/layouts/moderncv.layout:120
+msgid "Line 2"
+msgstr "Riadok 2"
 
 #: lib/layouts/moderncv.layout:113
 msgid "Mobile:"
@@ -10229,6 +10317,34 @@ msgstr "Hrúbka"
 #: lib/layouts/moderncv.layout:156
 msgid "Thickness of the surrounding frame"
 msgstr "Hrúbka obklopujúceho rámu"
+
+#: lib/layouts/moderncv.layout:128
+msgid "EmptySection"
+msgstr "PrázdnaSekcia"
+
+#: lib/layouts/moderncv.layout:137
+msgid "Empty Section"
+msgstr "Prázdna Sekcia"
+
+#: lib/layouts/moderncv.layout:144
+msgid "CloseSection"
+msgstr "ZavriSekciu"
+
+#: lib/layouts/moderncv.layout:250
+msgid "Columns:"
+msgstr "Stĺpce:"
+
+#: lib/layouts/moderncv.layout:265
+msgid "Optional width"
+msgstr "Nepovinná šírka"
+
+#: lib/layouts/agu_stdtitle.inc:13
+msgid "Header"
+msgstr "Hlavička"
+
+#: lib/layouts/moderncv.layout:271
+msgid "Header content"
+msgstr "Obsah hlavičky"
 
 #: lib/layouts/moderncv.layout:66
 msgid "Entry"
@@ -10325,22 +10441,6 @@ msgstr "Prvý záznam"
 #: lib/layouts/moderncv.layout:122
 msgid "Computer"
 msgstr "Počítač"
-
-#: lib/layouts/moderncv.layout:128
-msgid "EmptySection"
-msgstr "PrázdnaSekcia"
-
-#: lib/layouts/moderncv.layout:137
-msgid "Empty Section"
-msgstr "Prázdna Sekcia"
-
-#: lib/layouts/moderncv.layout:144
-msgid "CloseSection"
-msgstr "ZavriSekciu"
-
-#: lib/layouts/moderncv.layout:147
-msgid "Close Section"
-msgstr "Zavri Sekciu"
 
 #: lib/layouts/moderncv.layout:373
 msgid "MakeCVtitle"
@@ -11326,10 +11426,6 @@ msgstr "Mesiac vydania"
 #: lib/layouts/agu_stdsections.inc:86
 msgid "Subsubparagraph"
 msgstr "Podpododstavec"
-
-#: lib/layouts/agu_stdtitle.inc:13
-msgid "Header"
-msgstr "Hlavička"
 
 #: lib/layouts/agu_stdtitle.inc:19
 msgid "-- Header --"
@@ -13905,7 +14001,23 @@ msgstr "Computer Modern Sans"
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: src/frontends/qt4/GuiDocument.cpp:144
+#: lib/latexfonts:446
+msgid "Kurier"
+msgstr "Kurier"
+
+#: lib/latexfonts:455
+msgid "Kurier (Light)"
+msgstr "Kurier (Svetlý)"
+
+#: lib/latexfonts:464
+msgid "Kurier (Condensed)"
+msgstr "Kurier (Zhustený)"
+
+#: lib/latexfonts:475
+msgid "Kurier (Light Condensed)"
+msgstr "Kurier (Svetlý Zhustený)"
+
+#: lib/latexfonts:486
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
@@ -13937,6 +14049,10 @@ msgstr "Computer Modern Typewriter"
 msgid "Courier"
 msgstr "Courier"
 
+#: lib/latexfonts:551
+msgid "Libertine Mono"
+msgstr "Libertine Mono"
+
 #: src/frontends/qt4/GuiDocument.cpp:158
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
@@ -13961,6 +14077,10 @@ msgstr "Euler VM"
 #: lib/latexfonts:537
 msgid "URW Garamond (New TX)"
 msgstr "URW Garamond (New TX)"
+
+#: lib/latexfonts:591
+msgid "Kurier (Math)"
+msgstr "Kurier (Mat.)"
 
 #: lib/latexfonts:507
 msgid "Libertine (New TX)"
@@ -15077,6 +15197,14 @@ msgstr "Uložiť Zmeny..."
 #: lib/ui/stdmenus.inc:76
 msgid "Check Out for Edit|O"
 msgstr "Prevziať na Úpravu"
+
+#: lib/ui/stdmenus.inc:77
+msgid "Copy|p"
+msgstr "Kopírovať|K"
+
+#: lib/ui/stdmenus.inc:78
+msgid "Rename|R"
+msgstr "Premenovať|P"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Update Local Directory From Repository|d"
@@ -16305,6 +16433,10 @@ msgstr "Vložiť integrál"
 #: lib/ui/stdtoolbars.inc:181
 msgid "Insert product"
 msgstr "Vložiť produkt"
+
+#: lib/ui/stdtoolbars.inc:186
+msgid "Insert side scripts"
+msgstr "Vložiť bočné ohraničenie"
 
 #: lib/ui/stdtoolbars.inc:183
 msgid "Insert ( )"
@@ -23584,6 +23716,10 @@ msgstr "LyX VC: Počiatočný opis"
 msgid "(no initial description)"
 msgstr "(bez počiatočného opisu)"
 
+#: src/LyXVC.cpp:198 src/LyXVC.cpp:217
+msgid "LyX VC: Log message"
+msgstr "LyX VC: Protokolové hlásenie"
+
 #: src/LyXVC.cpp:165
 msgid "(no log message)"
 msgstr "(bez protokolového hlásenia)"
@@ -26870,6 +27006,26 @@ msgstr "Vybraný Súbor je Už Otvorený"
 msgid "&Rename"
 msgstr "&Premenuj"
 
+#: src/frontends/qt4/GuiView.cpp:2285
+#, c-format
+msgid ""
+"The document %1$s is already registered.\n"
+"\n"
+"Do you want to choose a new name?"
+msgstr "Dokument %1$s už existuje. Chcete vybrať nové meno?"
+
+#: src/frontends/qt4/GuiView.cpp:2290
+msgid "Rename document?"
+msgstr "Premenovať dokument?"
+
+#: src/frontends/qt4/GuiView.cpp:2290
+msgid "Copy document?"
+msgstr "Kopírovať dokument?"
+
+#: src/frontends/qt4/GuiView.cpp:2292
+msgid "&Copy"
+msgstr "&Kopírovať"
+
 #: src/frontends/qt4/GuiView.cpp:2338
 msgid "Choose a filename to export the document as"
 msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť ako"
@@ -26988,6 +27144,10 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2782
 msgid "Reload externally changed document?"
 msgstr "Znovu načítať externe zmenený dokument?"
+
+#: src/frontends/qt4/GuiView.cpp:2884
+msgid "Document could not be checked in."
+msgstr "Dokument sa nedal odoslať."
 
 #: src/frontends/qt4/GuiView.cpp:2835
 msgid "Error when setting the locking property."
@@ -28520,6 +28680,10 @@ msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
 
+#: src/mathed/InsetMathNest.cpp:1689 src/mathed/InsetMathNest.cpp:1834
+msgid "Autocorrect Off ('!' to enter)"
+msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
+
 #: src/mathed/InsetMathNest.cpp:1015
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($...$)"
@@ -28531,10 +28695,6 @@ msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 #: src/mathed/InsetMathNest.cpp:1040
 msgid "Regular expression editor mode"
 msgstr "Modus pre editáciu regulárnych výrazov"
-
-#: src/mathed/InsetMathNest.cpp:1689 src/mathed/InsetMathNest.cpp:1834
-msgid "Autocorrect Off ('!' to enter)"
-msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
 #: src/mathed/InsetMathNest.cpp:1694 src/mathed/InsetMathNest.cpp:1836
 msgid "Autocorrect On (<space> to exit)"
@@ -28841,6 +29001,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Close Section"
+#~ msgstr "Zavri Sekciu"
 
 #~ msgid ""
 #~ "Setting causes printer command to print to file and then use this "
@@ -29335,9 +29498,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Cut|C"
 #~ msgstr "Vystrihnúť|y"
 
-#~ msgid "Copy|o"
-#~ msgstr "Kopíruj|K"
-
 #~ msgid "Paste|a"
 #~ msgstr "Vlepiť|e"
 
@@ -29364,9 +29524,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Selection as Paragraphs|P"
 #~ msgstr "Výber ako odstavce"
-
-#~ msgid "Line Top|T"
-#~ msgstr "Čiara hore"
 
 #~ msgid "Line Bottom|B"
 #~ msgstr "Čiara dole"
@@ -30908,9 +31065,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Enspace|E"
 #~ msgstr "&Nahradiť"
-
-#~ msgid "Document could not be read"
-#~ msgstr "Dokument nie je možné uložiť!"
 
 #~ msgid "InsetCommandParams error: "
 #~ msgstr "Nasledujúci príkaz"
