@@ -35,7 +35,8 @@
 # Therefore it may depend on the whole document contents which feature is chosen.
 # Known flags:
 # - combining       This is a combining char that will get combined with a base char
-# - force           Always output replacement command
+# - force              Always output replacement command except for encodings
+#                      with iconv name "UTF-8"
 # - force=enc1;enc2... Always output replacement command in the specified encodings.
 # - mathalpha       This character is considered as a math variable in mathmode
 # - notermination=text Do not terminate this textcommand (by {} or space).
