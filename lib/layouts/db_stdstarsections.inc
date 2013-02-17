@@ -64,7 +64,7 @@ Style Subsubsection*
 	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
-	OptionalArgs          0
+	ResetArgs             1
 	LatexParam	      renderas="sect3"
 End
 
