@@ -60,7 +60,8 @@ def main(argv):
         files = [sys.argv[4+skipcount]]
     else:
         files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
-             'test-modules.tex', 'box-color-size-space-align.tex', \
+             'test-modules.tex', 'test-refstyle-theorems.tex', \
+             'box-color-size-space-align.tex', 'verbatim.tex', \
              'CJK.tex', 'CJKutf8.tex', 'XeTeX-polyglossia.tex']
 
     errors = []
