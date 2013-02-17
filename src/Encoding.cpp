@@ -943,7 +943,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				forced.insert(symbol);
 			} else if (prefixIs(flag, "force=")) {
 				vector<string> encodings =
-					getVectorFromString(flag.substr(6));
+					getVectorFromString(flag.substr(6), ";");
 				for (size_t i = 0; i < encodings.size(); ++i)
 					forcedselected[encodings[i]].insert(symbol);
 				info.flags |= CharInfoForceSelected;

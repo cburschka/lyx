@@ -36,7 +36,7 @@
 # Known flags:
 # - combining       This is a combining char that will get combined with a base char
 # - force           Always output replacement command
-# - force=enc1,enc2... Always output replacement command in the specified encodings.
+# - force=enc1;enc2... Always output replacement command in the specified encodings.
 # - mathalpha       This character is considered as a math variable in mathmode
 # - notermination=text Do not terminate this textcommand (by {} or space).
 #                      This is set by default if textcommand ends with }.
