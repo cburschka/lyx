@@ -181,7 +181,7 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
 "float", "fontspec", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
-"multirow", "nomencl", "pdfpages", "rotating", "rotfloat", "splitidx",
+"multirow", "nomencl", "pdfpages", "refstyle", "rotating", "rotfloat", "splitidx",
 "setspace", "subscript", "textcomp", "tipa", "tipx", "ulem", "url", "varioref",
 "verbatim", "wrapfig", "xunicode", 0};
 
