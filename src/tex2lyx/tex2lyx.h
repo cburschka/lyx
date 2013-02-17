@@ -45,6 +45,8 @@ public:
 
 /// Translate babel language name to LyX language name
 extern std::string babel2lyx(std::string const & language);
+/// Translate LyX language name to babel language name
+extern std::string lyx2babel(std::string const & language);
 /// Translate polyglossia language name to LyX language name
 extern std::string polyglossia2lyx(std::string const & language);
 /// Translate basic color name or RGB color in LaTeX syntax to LyX color code

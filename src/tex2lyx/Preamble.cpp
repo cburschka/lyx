@@ -442,8 +442,8 @@ string remove_braces(string const & value)
 } // anonymous namespace
 
 
-Preamble::Preamble() : one_language(true), title_layout_found(false),
-	h_font_cjk_set(false)
+Preamble::Preamble() : one_language(true), explicit_babel(false),
+	title_layout_found(false), h_font_cjk_set(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -819,9 +819,10 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_preamble << "\\usepackage[" << opts << "]{babel}\n";
 			}
 			delete_opt(options, known_languages);
-		}
-		else
+		} else {
 			h_preamble << "\\usepackage{babel}\n";
+			explicit_babel = true;
+		}
 	}
 
 	else if (name == "polyglossia") {
@@ -1884,6 +1885,21 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		p.pushPosition();
 		h_language = guessLanguage(p, default_language);
 		p.popPosition();
+		if (explicit_babel && h_language != default_language) {
+			// We set the document language to a CJK language,
+			// but babel is explicitly called in the user preamble
+			// without options. LyX will not add the default
+			// language to the document options if it is either
+			// english, or no text is set as default language.
+			// Therefore we need to add a language option explicitly.
+			// FIXME: It would be better to remove all babel calls
+			//        from the user preamble, but this is difficult
+			//        without re-introducing bug 7861.
+			if (h_options.empty())
+				h_options = lyx2babel(default_language);
+			else
+				h_options += ',' + lyx2babel(default_language);
+		}
 	}
 }
 
@@ -1893,6 +1909,15 @@ string babel2lyx(string const & language)
 	char const * const * where = is_known(language, known_languages);
 	if (where)
 		return known_coded_languages[where - known_languages];
+	return language;
+}
+
+
+string lyx2babel(string const & language)
+{
+	char const * const * where = is_known(language, known_coded_languages);
+	if (where)
+		return known_languages[where - known_coded_languages];
 	return language;
 }
 

@@ -105,6 +105,8 @@ private:
 	bool one_language;
 	/// the main non-CJK language
 	std::string default_language;
+	/// Was babel called explicitly?
+	bool explicit_babel;
 
 	/// was at least one title layout found?
 	bool title_layout_found;
