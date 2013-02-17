@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 438
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -20,6 +20,7 @@ linguistics
 \font_roman lmodern
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -51,6 +52,8 @@ linguistics
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -103,7 +106,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-14/09/2008
+24/08/2012
 \end_layout
 
 \begin_layout Abstract
@@ -1104,7 +1107,7 @@ a.ti.kap
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Example Tableau
