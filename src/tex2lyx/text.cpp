@@ -285,6 +285,17 @@ char const * const known_phrases[] = {"LyX", "TeX", "LaTeXe", "LaTeX", 0};
 char const * const known_coded_phrases[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", 0};
 int const known_phrase_lengths[] = {3, 5, 7, 0};
 
+/// known TIPA combining diacritical marks
+char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",
+"textsubtilde", "textseagull", "textsubbridge", "textinvsubbridge",
+"textsubsquare", "textsubrhalfring", "textsublhalfring", "textsubplus",
+"textovercross", "textsubarch", "textsuperimposetilde", "textraising",
+"textlowering", "textadvancing", "textretracting", "textdoublegrave",
+"texthighrise", "textlowrise", "textrisefall", "textsyllabic", 0};
+
+/// tones that need special handling
+char const * const known_tones[] = {"15", "51", "45", "12", "454", 0};
+
 // string to store the float type to be able to determine the type of subfloats
 string float_type = "";
 
@@ -3238,25 +3249,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		// the TIPA Combining diacritical marks
-		else if (t.cs() == "textsubwedge" || t.cs() == "textsubumlaut"
-			|| t.cs() == "textsubtilde" || t.cs() == "textseagull"
-			|| t.cs() == "textsubbridge" || t.cs() == "textinvsubbridge"
-			|| t.cs() == "textsubsquare" || t.cs() == "textsubrhalfring"
-			|| t.cs() == "textsublhalfring" || t.cs() == "textsubplus"
-			|| t.cs() == "textovercross" || t.cs() == "textsubarch"
-			|| t.cs() == "textsuperimposetilde" || t.cs() == "textraising"
-			|| t.cs() == "textlowering" || t.cs() == "textadvancing"
-			|| t.cs() == "textretracting" || t.cs() == "textdoublegrave"
-			|| t.cs() == "texthighrise" || t.cs() == "textlowrise"
-			|| t.cs() == "textrisefall" || t.cs() == "textsyllabic") {
+		else if (is_known(t.cs(), known_tipa_marks)) {
 			context.check_layout(os);
 			// try to see whether the string is in unicodesymbols
 			bool termination;
 			docstring rem;
 			string content = trimSpaceAndEol(p.verbatim_item());
-			string command = t.asInput() + "{"
-				+ trimSpaceAndEol(content)
-				+ "}";
+			string command = t.asInput() + "{" + content + "}";
 			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
 				Encodings::TEXT_CMD | Encodings::MATH_CMD,
@@ -3267,6 +3266,38 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << ", result is " << to_utf8(s)
 					     << "+" << to_utf8(rem) << endl;
 				os << content << to_utf8(s);
+				// tipa is already registered because of the surrounding IPA environment
+				// or \textipa but it does not harm to register it again if necessary
+				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
+					preamble.registerAutomaticallyLoadedPackage(*it);
+			} else
+				// we did not find a non-ert version
+				output_ert_inset(os, command, context);
+		}
+
+		else if (t.cs() == "tone" ) {
+			context.check_layout(os);
+			// try to see whether the string is in unicodesymbols
+			string content = trimSpaceAndEol(p.verbatim_item());
+			string command = t.asInput() + "{" + content + "}";
+			// some tones can be detected by unicodesymbols, some need special code
+			if (is_known(content, known_tones)) {
+				os << "\\IPAChar " << command << "\n";
+				continue;
+			}
+			bool termination;
+			docstring rem;
+			set<string> req;
+			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
+				Encodings::TEXT_CMD | Encodings::MATH_CMD,
+				termination, rem, &req);
+			if (!s.empty()) {
+				if (!rem.empty())
+					cerr << "When parsing " << command
+					     << ", result is " << to_utf8(s)
+						 << "+" << to_utf8(rem) << endl;
+				os << to_utf8(s);
+				// thiw will register the package "tone"
 				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
 					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
