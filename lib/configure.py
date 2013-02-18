@@ -659,7 +659,8 @@ def checkConverterEntries():
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [r'''\converter literate   latex      "%%"	""
-\converter literate   pdflatex      "%%"	""'''])
+\converter literate   pdflatex      "%%"	""
+\converter literate   luatex        "%%"	""'''])
     #
     checkProg('a Sweave -> LaTeX converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e $$r'],
         rc_entry = [r'''\converter sweave   latex      "%%"	""
