@@ -805,7 +805,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 				Encoding const * const enc = encodings.fromIconvName(
 					p.getEncoding(), Encoding::japanese, false);
 				if (enc)
-					h_inputencoding = enc->name();
+					h_inputencoding = enc->latexName();
 				is_nonCJKJapanese = true;
 				// in this case babel can be removed from the preamble
 				registerAutomaticallyLoadedPackage("babel");
