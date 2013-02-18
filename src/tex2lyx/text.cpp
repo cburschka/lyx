@@ -3305,6 +3305,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				output_ert_inset(os, command, context);
 		}
 
+		else if (t.cs() == "textvertline" ) {
+			// this TIPA character does not occur in
+			// unicodesymbols because it is in the ASCII range
+			context.check_layout(os);
+			os << "|";
+			skip_braces(p);
+		}
+
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
 			     t.cs() == "vphantom") {
 			context.check_layout(os);
@@ -4586,7 +4594,72 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			bool termination;
 			docstring rem;
 			set<string> req;
-			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()),
+			string name = t.asInput();
+			// handle some TIPA special characters
+			if (name == "\\textglobfall") {
+				name = "End";
+				skip_braces(p);
+			}
+			if (name == "\\textdoublevertline") {
+				name = "\\textbardbl";
+				skip_braces(p);
+			}
+			if (name == "\\!" ) {
+				if (p.next_token().asInput() == "b") {
+					p.get_token();	// eat 'b'
+					name = "\\texthtb";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "d") {
+					p.get_token();
+					name = "\\texthtd";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "g") {
+					p.get_token();
+					name = "\\texthtg";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "G") {
+					p.get_token();
+					name = "\\texthtscg";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "j") {
+					p.get_token();
+					name = "\\texthtbardotlessj";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "o") {
+					p.get_token();
+					name = "\\textbullseye";
+					skip_braces(p);
+				}
+			}
+			if (name == "\\*" ) {
+				if (p.next_token().asInput() == "k") {
+					p.get_token();
+					name = "\\textturnk";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "r") {
+					p.get_token();	// eat 'b'
+					name = "\\textturnr";
+					skip_braces(p);
+				}				
+				if (p.next_token().asInput() == "t") {
+					p.get_token();
+					name = "\\textturnt";
+					skip_braces(p);
+				}
+				if (p.next_token().asInput() == "w") {
+					p.get_token();
+					name = "\\textturnw";
+					skip_braces(p);
+				}				
+			}
+			// now get the character from unicodesymbols
+			docstring s = encodings.fromLaTeXCommand(from_utf8(name),
 					Encodings::TEXT_CMD, termination, rem, &req);
 			if (!s.empty()) {
 				if (!rem.empty())

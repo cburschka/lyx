@@ -237,6 +237,11 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			preamble.registerAutomaticallyLoadedPackage("varioref");
 		}
 
+		else if (t.cs() == "textipa") {
+			os << t.asInput();
+			preamble.registerAutomaticallyLoadedPackage("tipa");
+		}
+
 		else
 			os << t.asInput();
 
