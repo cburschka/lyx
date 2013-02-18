@@ -1381,6 +1381,61 @@ k ðɪs]
 \end_inset
 
 .
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that, if you want to insert diacritics, the diacritics are inserted
+ 
+\emph on
+after
+\emph default
+ the base character.
+ That is to say, for 
+\begin_inset IPA
+
+\begin_layout Standard
+[d̥]
+\end_layout
+
+\end_inset
+
+ you need to insert 
+\family typewriter
+<d>
+\family default
+ and then the 
+\family typewriter
+<voiceless>
+\family default
+ subring diacritic from the toolbar immediately after the 
+\family typewriter
+<d>
+\family default
+.
+ If you need a diacritic alone, you can achieve this by inserting a blank
+ and then the diacritic, as in 
+\begin_inset IPA
+
+\begin_layout Standard
+ ̼
+\end_layout
+
+\end_inset
+
+ (
+\family typewriter
+=
+\begin_inset space ~
+\end_inset
+
+<space>+<Lingolabial from the IPA toolbar>
+\family default
+).
+\end_layout
+
+\end_inset
+
  Given that
 \emph on
  preview-latex

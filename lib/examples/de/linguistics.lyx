@@ -1431,6 +1431,57 @@ aktivieren.
 \end_inset
 
 .
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wenn Sie ein diakritisches Zeichen einfügen möchten, müssen Sie das Diakritikum
+ 
+\emph on
+nach
+\emph default
+ dem Basiszeichen einfügen.
+ Das heißt, für 
+\begin_inset IPA
+
+\begin_layout Standard
+[d̥]
+\end_layout
+
+\end_inset
+
+ geben Sie zuerst 
+\family typewriter
+<d>
+\family default
+ ein und dann direkt danach das Diakritikum 
+\family typewriter
+<Stimmlos>
+\family default
+ von der Symbolleiste.
+ Wenn Sie nur ein Diakritikum eingeben möchten, können Sie das direkt nach
+ einem Leerzeichen tun, so wie hier: 
+\begin_inset IPA
+
+\begin_layout Standard
+ ̼
+\end_layout
+
+\end_inset
+
+ (
+\family typewriter
+=
+\begin_inset space ~
+\end_inset
+
+<Leerzeichen>+<Lingolabial>
+\family default
+).
+\end_layout
+
+\end_inset
+
  Wenn
 \emph on
  preview-latex
