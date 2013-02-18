@@ -291,7 +291,8 @@ char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",
 "textsubsquare", "textsubrhalfring", "textsublhalfring", "textsubplus",
 "textovercross", "textsubarch", "textsuperimposetilde", "textraising",
 "textlowering", "textadvancing", "textretracting", "textdoublegrave",
-"texthighrise", "textlowrise", "textrisefall", "textsyllabic", 0};
+"texthighrise", "textlowrise", "textrisefall", "textsyllabic",
+"textsubring", 0};
 
 /// tones that need special handling
 char const * const known_tones[] = {"15", "51", "45", "12", "454", 0};
