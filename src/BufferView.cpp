@@ -1911,7 +1911,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			opt1 = token(argument, '|', 1);
 		}
 
-		// if our cursor is direclty in front of or behind a citation inset,
+		// if our cursor is directly in front of or behind a citation inset,
 		// we will instead add the new key to it.
 		Inset * inset = cur.nextInset();
 		if (!inset || inset->lyxCode() != CITE_CODE)
