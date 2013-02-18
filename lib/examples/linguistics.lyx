@@ -106,7 +106,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-24/08/2012
+18/02/2013
 \end_layout
 
 \begin_layout Abstract
@@ -1346,9 +1346,19 @@ Special characters\SpecialChar \menuseparator
 Phonetic symbols.
  
 \family default
-This gives you an input box, where you can insert the symbols, and a toolbar
- opens, which provides the basic set of phonetic symbols (sorted by the
- IPA categories).
+This gives you an input box (
+\begin_inset Quotes eld
+\end_inset
+
+inset
+\begin_inset Quotes erd
+\end_inset
+
+ in LyX speak), where you can insert the symbols.
+ Note that this box can be used both for the insertion of small snippets
+ (inline) and multiple paragraphs of phonetic notation.
+ While the cursor is inside the box, a toolbar opens, which provides the
+ basic set of phonetic symbols (sorted by the IPA categories).
  Each of the toolbar's panels can be torn off the bar by clicking on the
  dashed line on its top.
  This way, you can insert most symbols quite comfortably: 
@@ -1404,7 +1414,7 @@ tipa
 \uwave off
 \noun off
 \color none
-[@n Iɡ"zA:mpl]
+[@n Ig"zA:mpl]
 \end_layout
 
 \end_inset
@@ -1415,7 +1425,7 @@ tipa
 \emph default
  shortcut notation: 
 \family typewriter
-[@n Iɡ"zA:mpl
+[@n Ig"zA:mpl
 \family default
 ]).
  Furthermore, you can insert symbols via 
@@ -1448,8 +1458,8 @@ tipa
  are taken from the base document font, the IPA glyphs from the IPA font).
  Within the IPA input box, on the other hand, the IPA font is used for all
  characters.
- So unless you only need to insert single IPA characters, this method is
- highly recommended.
+ So unless you only need to insert single IPA characters, using the IPA
+ input box is highly recommended.
 \end_layout
 
 \begin_layout Section

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 438
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -20,6 +20,7 @@ linguistics
 \font_roman lmodern
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -51,6 +52,8 @@ linguistics
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -103,7 +106,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-01.03.2009
+18.02.2013
 \end_layout
 
 \begin_layout Abstract
@@ -1145,7 +1148,7 @@ a.ti.kap
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Beispiel-Tableau
@@ -1410,9 +1413,11 @@ Sonderzeichen\SpecialChar \menuseparator
 Phonetische Symbole 
 \family default
 aktivieren.
- Es wird ein kleiner umrahmter Eingabebereich eingefügt und eine Symbolleiste
- aktiviert, die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert)
- bereitstellt.
+ Es wird ein kleiner umrahmter Eingabebereich eingefügt, in den Sie einzelne
+ Zeichen, Wörter und Wortfolgen sowie auch mehrere Absätze mit phonetischer
+ Notation eingeben können.
+ Wenn Sie in dem Eingabebereich sind, wird eine Symbolleiste aktiviert,
+ die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert) bereitstellt.
  Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte
  Linie abgetrennt werden.
  Dadurch kann phonetische Notation recht komfortabel eingegeben werden:
@@ -1428,13 +1433,9 @@ aktivieren.
 .
  Wenn
 \emph on
- preview-lat
+ preview-latex
 \emph default
-e
-\emph on
-x
-\emph default
- installiert ist und Sie weiterhin in
+ installiert ist und Sie außerdem in
 \family sans
  Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
@@ -1449,8 +1450,8 @@ Sofortige Vorschau
 \begin_inset Quotes grd
 \end_inset
 
- aktiviert haben, zeigt LyX eine schöne WYSIWYG-Vorschau der Notation an,
- sobald der Cursor den IPA-Bereich verlässt.
+ aktiviert haben, zeigt LyX eine WYSIWYG-Vorschau der Notation an, sobald
+ der Cursor den IPA-Bereich verlässt.
  Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe
  der Kurznotation eingeben können, die im 
 \emph on
@@ -1505,8 +1506,8 @@ ng (die lateinischen Buchstaben werden aus der Grundschrift, die speziellen
  passen nicht notwendigerweise zusammen).
  Innerhalb der IPA-Eingabeumgebung wird dagegen für alle Zeichen dieselbe
  Schrift verwendet.
- Deshalb sollten Sie, wenn Sie nicht wirklich nur Einzelzeichen eingeben,
- unbedingt dieses Vorgehen wählen.
+ Deshalb sollten Sie, wenn Sie nicht nur Einzelzeichen eingeben, unbedingt
+ den IPA-Eingabebereich verwenden.
 \end_layout
 
 \begin_layout Section
