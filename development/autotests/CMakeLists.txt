@@ -64,7 +64,7 @@ endmacro()
 
 foreach(libsubfolder doc examples)
   set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/lib/${libsubfolder}")
-  file(GLOB lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
+  file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
   foreach(f ${lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
