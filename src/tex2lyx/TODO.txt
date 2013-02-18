@@ -51,9 +51,11 @@ Format LaTeX feature                        LyX feature
 407    vertical offset for multirows        InsetTabular
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    automatic undertilde loading         \use_package undertilde
-438    \tone{51}, \tone{15}, \tone{45},     InsetTIPA
-       \tone{12}, \tone{454}, \toptiebar,
-       \bottomtiebar
+438    \tone{51} etc.,                      InsetTIPA
+       \=*{a}, \*r and \*w, \!o
+       and \!b and \!d and \!g and \!G,
+       \textvertline, \t*{ },
+       \textdoublevertline, \textglobfall
 439    MinionPro.sty                        \font_roman, \font_osf
 440    MinionPro.sty,                       \font_math
 443    unicode-math.sty                     InsetMath*

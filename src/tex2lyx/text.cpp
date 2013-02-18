@@ -1417,7 +1417,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "IPA\n");
-		//os << "status open\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
@@ -3227,6 +3226,52 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("tipa");
 			preamble.registerAutomaticallyLoadedPackage("tipx");
+		}
+
+		else if (t.cs() == "texttoptiebar" || t.cs() == "textbottomtiebar") {
+			context.check_layout(os);
+			begin_inset(os, "IPADeco " + t.cs().substr(4) + "\n");
+			os << "status open\n";
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			end_inset(os);
+			p.skip_spaces();
+		}
+
+		// the TIPA Combining diacritical marks
+		else if (t.cs() == "textsubwedge" || t.cs() == "textsubumlaut"
+			|| t.cs() == "textsubtilde" || t.cs() == "textseagull"
+			|| t.cs() == "textsubbridge" || t.cs() == "textinvsubbridge"
+			|| t.cs() == "textsubsquare" || t.cs() == "textsubrhalfring"
+			|| t.cs() == "textsublhalfring" || t.cs() == "textsubplus"
+			|| t.cs() == "textovercross" || t.cs() == "textsubarch"
+			|| t.cs() == "textsuperimposetilde" || t.cs() == "textraising"
+			|| t.cs() == "textlowering" || t.cs() == "textadvancing"
+			|| t.cs() == "textretracting" || t.cs() == "textdoublegrave"
+			|| t.cs() == "texthighrise" || t.cs() == "textlowrise"
+			|| t.cs() == "textrisefall" || t.cs() == "textsyllabic") {
+			context.check_layout(os);
+			// try to see whether the string is in unicodesymbols
+			bool termination;
+			docstring rem;
+			string content = trimSpaceAndEol(p.verbatim_item());
+			string command = t.asInput() + "{"
+				+ trimSpaceAndEol(content)
+				+ "}";
+			set<string> req;
+			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
+				Encodings::TEXT_CMD | Encodings::MATH_CMD,
+				termination, rem, &req);
+			if (!s.empty()) {
+				if (!rem.empty())
+					cerr << "When parsing " << command
+					     << ", result is " << to_utf8(s)
+					     << "+" << to_utf8(rem) << endl;
+				os << content << to_utf8(s);
+				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
+					preamble.registerAutomaticallyLoadedPackage(*it);
+			} else
+				// we did not find a non-ert version
+				output_ert_inset(os, command, context);
 		}
 
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
