@@ -2189,7 +2189,7 @@ bool GIT::getTreeRevisionInfo()
 		return false;
 	}
 
-	doVCCommand("git log -n 1 --pretty=format:%H . > " + quoteName(tmpf.toFilesystemEncoding()),
+	doVCCommand("git describe --abrev --dirty --long > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
 	if (tmpf.empty())
