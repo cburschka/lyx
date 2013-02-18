@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 460
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass scrbook
@@ -21841,6 +21841,33 @@ git log
 
 \family default
  is shown in a browser.
+\end_layout
+
+\begin_layout Subsubsection
+Version Info
+\end_layout
+
+\begin_layout Standard
+LyX supports GIT hash number of the last commit to the file, author name,
+ date and time of last commit.
+ All those are extracted from 
+\family typewriter
+git log -n 1 --pretty=format:%H%n%an%n%ai
+\family default
+.
+ Tree version information is obtained via 
+\family typewriter
+git describe --abbrev --dirty --long
+\family default
+.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Revision-Information"
+
+\end_inset
+
+ for other details.
 \end_layout
 
 \begin_layout Subsection
