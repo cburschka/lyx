@@ -284,10 +284,10 @@ public:
 	IndicesList & indiceslist();
 	IndicesList const & indiceslist() const;
 	/**
-	 * The input encoding for LaTeX. This can be one of
+	 * The LyX name of the input encoding for LaTeX. This can be one of
 	 * - \c auto: find out the input encoding from the used languages
 	 * - \c default: ditto
-	 * - any encoding supported by the inputenc package
+	 * - any encoding defined in the file lib/encodings
 	 * The encoding of the LyX file is always utf8 and has nothing to
 	 * do with this setting.
 	 * The difference between \c auto and \c default is that \c auto also

@@ -2586,7 +2586,7 @@ void GuiDocument::applyView()
 			for (; it != end; ++it) {
 				if (qt_(it->guiName()) == enc_gui &&
 				    !it->unsafe()) {
-					bp_.inputenc = it->latexName();
+					bp_.inputenc = it->name();
 					found = true;
 					break;
 				}
@@ -2993,7 +2993,7 @@ void GuiDocument::paramsToDialog()
 			Encodings::const_iterator it = encodings.begin();
 			Encodings::const_iterator const end = encodings.end();
 			for (; it != end; ++it) {
-				if (it->latexName() == bp_.inputenc &&
+				if (it->name() == bp_.inputenc &&
 				    !it->unsafe()) {
 					enc_gui = it->guiName();
 					break;

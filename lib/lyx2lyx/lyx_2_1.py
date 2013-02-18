@@ -3546,6 +3546,90 @@ def revert_newframes(document):
         document.body[i : i + 1] = subst
         i = j
 
+# known encodings that do not change their names (same LyX and LaTeX names)
+known_enc_tuple = ("auto", "default", "ansinew", "applemac", "armscii8", "ascii",
+    "cp437", "cp437de", "cp850", "cp852", "cp855", "cp858", "cp862", "cp865", "cp866",
+    "cp1250", "cp1251", "cp1252", "cp1255", "cp1256", "cp1257", "koi8-r", "koi8-u",
+    "pt154", "pt254", "tis620-0", "utf8", "utf8x", "utf8-plain")
+
+def convert_encodings(document):
+    "Use the LyX names of the encodings instead of the LaTeX names."
+    LaTeX2LyX_enc_dict = {
+        "8859-6":     "iso8859-6",
+        "8859-8":     "iso8859-8",
+        "Bg5":        "big5",
+        "euc":        "euc-jp-platex",
+        "EUC-JP":     "euc-jp",
+        "EUC-TW":     "euc-tw",
+        "GB":         "euc-cn",
+        "GBK":        "gbk",
+        "iso88595":   "iso8859-5",
+        "iso-8859-7": "iso8859-7",
+        "JIS":        "jis",
+        "jis":        "jis-platex",
+        "KS":         "euc-kr",
+        "l7xenc":     "iso8859-13",
+        "latin1":     "iso8859-1",
+        "latin2":     "iso8859-2",
+        "latin3":     "iso8859-3",
+        "latin4":     "iso8859-4",
+        "latin5":     "iso8859-9",
+        "latin9":     "iso8859-15",
+        "latin10":    "iso8859-16",
+        "SJIS":       "shift-jis",
+        "sjis":       "shift-jis-platex",
+        "UTF8":       "utf8-cjk"
+    }
+    i = find_token(document.header, "\\inputencoding" , 0)
+    if i == -1:
+        return
+    val = get_value(document.header, "\\inputencoding", i)
+    if val in LaTeX2LyX_enc_dict.keys():
+        document.header[i] = "\\inputencoding %s" % LaTeX2LyX_enc_dict[val]
+    elif val not in known_enc_tuple:
+        document.warning("Ignoring unknown input encoding: `%s'" % val)
+
+
+def revert_encodings(document):
+    """Revert to using the LaTeX names of the encodings instead of the LyX names.
+    Also revert utf8-platex to sjis, the language default when using Japanese.
+    """
+    LyX2LaTeX_enc_dict = {
+        "big5":             "Bg5",
+        "euc-cn":           "GB",
+        "euc-kr":           "KS",
+        "euc-jp":           "EUC-JP",
+        "euc-jp-platex":    "euc",
+        "euc-tw":           "EUC-TW",
+        "gbk":              "GBK",
+        "iso8859-1":        "latin1",
+        "iso8859-2":        "latin2",
+        "iso8859-3":        "latin3",
+        "iso8859-4":        "latin4",
+        "iso8859-5":        "iso88595",
+        "iso8859-6":        "8859-6",
+        "iso8859-7":        "iso-8859-7",
+        "iso8859-8":        "8859-8",
+        "iso8859-9":        "latin5",
+        "iso8859-13":       "l7xenc",
+        "iso8859-15":       "latin9",
+        "iso8859-16":       "latin10",
+        "jis":              "JIS",
+        "jis-platex":       "jis",
+        "shift-jis":        "SJIS",
+        "shift-jis-platex": "sjis",
+        "utf8-cjk":         "UTF8",
+        "utf8-platex":      "sjis"
+    }
+    i = find_token(document.header, "\\inputencoding" , 0)
+    if i == -1:
+        return
+    val = get_value(document.header, "\\inputencoding", i)
+    if val in LyX2LaTeX_enc_dict.keys():
+        document.header[i] = "\\inputencoding %s" % LyX2LaTeX_enc_dict[val]
+    elif val not in known_enc_tuple:
+        document.warning("Ignoring unknown input encoding: `%s'" % val)
+
 
 def revert_IEEEtran_3(document):
   '''
@@ -3699,10 +3783,12 @@ convert = [
            [459, []],
            [460, []],
            [461, []],
-           [462, []]
+           [462, []],
+           [463, [convert_encodings]],
           ]
 
 revert =  [
+           [462, [revert_encodings]],
            [461, [revert_new_libertines]],
            [460, [revert_kurier_fonts]],
            [459, [revert_IEEEtran_3]],

@@ -3,7 +3,7 @@
 
 # Note that you can only add singlebyte encodings to this file.
 # LyX does not support the output of multibyte encodings (e.g. utf16).
-# It does support singlebyte encodings with variable with (e.g. utf8).
+# It does support singlebyte encodings with variable width (e.g. utf8).
 # These are marked with the "variable" keyword.
 # Fixed width encodings are marked with the "fixed" keyword.
 # The code points of TeX control characters like {, } and \ can occur in the
@@ -11,7 +11,20 @@
 # set as document encodings and are marked with the "variableunsafe" keyword.
 # They are only needed for proper tex2lyx import.
 
-# Syntax: Encoding <LyX name> <LaTeX name> <GUI name> <iconv name> fixed|variable|variableunsafe <package> End
+# Most encodings require loading a latex package such as "inputenc" or "CJK".
+# There is no "japanese" latex package, rather this keyword indicates to LyX
+# to switch the buffer format and use platex instead of standard (pdf)latex.
+# In this case, TeX control characters in high bytes is not a problem.
+# The invocation is platex -kanji=<LaTeX name>
+
+# Syntax: Encoding <LyX name> <LaTeX name> <GUI name> <iconv name> <width> <package> End
+
+# LyX name:    Name used by the file format and in lib/languages. Must be unique!
+# LaTeX name:  Used in the latex export or passed to platex as command-line switch.
+# GUI name:    Displayed in document settings.
+# iconv name:  Used by iconv.
+# width:       One of fixed, variable, or variableunsafe (see above).
+# package:     One of none, inputenc, CJK, or japanese (see above).
 
 # encodings used by inputenc.sty
 
@@ -116,7 +129,7 @@ End
 Encoding cp1257 cp1257 "Baltic (CP 1257)" CP1257 fixed inputenc
 End
 
-Encoding koi8 koi8-r "Cyrillic (KOI8-R)" KOI8-R fixed inputenc
+Encoding koi8-r koi8-r "Cyrillic (KOI8-R)" KOI8-R fixed inputenc
 End
 
 Encoding koi8-u koi8-u "Cyrillic (KOI8-U)" KOI8-U fixed inputenc
@@ -184,12 +197,13 @@ End
 
 # Traditional Japanese TeX programs require the japanese package.
 # that is incompatible with CJK and inputenc.
-Encoding euc-jp-plain euc "Japanese (non-CJK) (EUC-JP)" EUC-JP variable japanese
+Encoding euc-jp-platex euc "Japanese (pLaTeX) (EUC-JP)" EUC-JP variable japanese
 End
-Encoding jis-plain jis "Japanese (non-CJK) (JIS)" ISO-2022-JP variable japanese
+Encoding jis-platex jis "Japanese (pLaTeX) (JIS)" ISO-2022-JP variable japanese
 End
-# FIXME: Should use variableunsafe (would be a file format change)
-Encoding shift-jis-plain sjis "Japanese (non-CJK) (SJIS)" CP932 variable japanese
+Encoding shift-jis-platex sjis "Japanese (pLaTeX) (SJIS)" CP932 variable japanese
+End
+Encoding utf8-platex utf8 "Japanese (pLaTeX) (UTF8)" UTF-8 variable japanese
 End
 
 # This one needs hardcoded support, since the inputenc package does not know
@@ -207,4 +221,3 @@ End
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)
 Encoding ascii ascii "ASCII" ascii fixed none
 End
-

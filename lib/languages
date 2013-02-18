@@ -576,7 +576,7 @@ End
 Language japanese
 	GuiName          "Japanese"
 	BabelName        japanese
-	Encoding         jis-plain
+	Encoding         jis-platex
 	LangCode         ja_JP
 	AsBabelOptions   true
 	Requires         japanese
@@ -773,7 +773,7 @@ Language russian
 	BabelName        russian
 	PolyglossiaName  russian
 	QuoteStyle       french
-	Encoding         koi8
+	Encoding         koi8-r
 	LangCode         ru_RU
 End
 

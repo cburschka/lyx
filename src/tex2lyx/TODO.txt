@@ -87,10 +87,10 @@ Format LaTeX feature                        LyX feature
        \usepackage[scale|scaled=$val]{biolinum-type1}
                                             \font_sans
                                             \font_sf_scale
+463
 
 
 General
 
 * Use the language information provided by Language.cpp and the languages file (for babel/lyx/polyglossia name, quote style etc.)
   instead of hardcoding this information in Preamble.cpp.
-

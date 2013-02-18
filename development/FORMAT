@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-02-18 Julien Rioux <jrioux@lyx.org>
+	* Format incremented to 463:
+	  - Use the LyX name of encodings instead of the LaTeX names.
+	    The LyX name must be unique, while the name used by LaTeX
+	    not necessarily, e.g. different packages might implement
+	    support for the same encoding.
+	  - Add utf8-platex encoding.
+
 2013-02-15 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 462: Support for recent libertine LaTeX fonts
 	  a.) Support Libertine Mono:

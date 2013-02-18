@@ -377,7 +377,6 @@ int max_encoded_bytes(std::string const & encoding)
 	// The CJK encodings use (different) multibyte representation as well.
 	// All other encodings encode one UCS4 code point in one byte
 	// (and can therefore only encode a subset of UCS4)
-	// Note that BIG5 and SJIS do not work with LaTeX (see lib/encodings).
 	// Furthermore, all encodings that use shifting (like SJIS) do not work with
 	// iconv_codecvt_facet.
 	if (encoding == "UTF-8" ||
