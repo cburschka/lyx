@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 445
+\lyxformat 462
 \begin_document
 \begin_header
 \textclass article
@@ -50,6 +50,8 @@ sweave
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -759,7 +761,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Quantiles of the first four variables in the 
@@ -913,7 +915,7 @@ pairs(iris, col = iris$Species)
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Scatter plot matrix of the 
@@ -977,7 +979,7 @@ boxplot(Sepal.Length~Species,data=iris,horizontal=TRUE,xlab='Sepal.Length')
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Boxplots of sepal length grouped by species.
@@ -1501,43 +1503,24 @@ How to use Sweave with beamer?
 \end_layout
 
 \begin_layout Standard
-You will end up with LaTeX errors if you use Sweave in beamer slides in
- LyX; the reason is the beamer frame that contains verbatim R code and output
- must have the 
+You will end up with LaTeX errors if you use Sweave in normal beamer slides
+ in LyX; the reason is the beamer frame that contains verbatim R code.
+ The solution is to use a 
+\emph on
+FragileFrame
+\emph default
+ instead of a normal 
+\emph on
+Frame
+\emph default
+, or to pass the option 
 \family typewriter
 fragile
 \family default
- option.
- However, currently there is no straightforward way to do this.
- One way is to write raw TeX code, and the other is to use the 
-\family sans
-beamer-fragile.module
-\family default
- discussed in 
-\begin_inset CommandInset href
-LatexCommand href
-name "#7273"
-target "http://www.lyx.org/trac/ticket/7273"
-
-\end_inset
-
- (put this file under the 
-\family sans
-layouts
-\family default
- directory of LyX user directory and reconfigure LyX).
- After including this module in your document, you should be able to use
- 
+ to the frame title via 
 \family sans
 Insert\SpecialChar \menuseparator
-Custom Insets\SpecialChar \menuseparator
-FragileFrame
-\family default
-, which is essentially 
-\family typewriter
-
-\backslash
-begin{frame}[fragile]
+Frame Options
 \family default
 .
 \end_layout
