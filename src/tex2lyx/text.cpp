@@ -294,7 +294,7 @@ char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",
 "texthighrise", "textlowrise", "textrisefall", "textsyllabic",
 "textsubring", 0};
 
-/// tones that need special handling
+/// TIPA tones that need special handling
 char const * const known_tones[] = {"15", "51", "45", "12", "454", 0};
 
 // string to store the float type to be able to determine the type of subfloats
@@ -3278,7 +3278,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "tone" ) {
 			context.check_layout(os);
-			// try to see whether the string is in unicodesymbols
+			// register the tone package
+			preamble.registerAutomaticallyLoadedPackage("tone");
 			string content = trimSpaceAndEol(p.verbatim_item());
 			string command = t.asInput() + "{" + content + "}";
 			// some tones can be detected by unicodesymbols, some need special code
@@ -3286,6 +3287,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "\\IPAChar " << command << "\n";
 				continue;
 			}
+			// try to see whether the string is in unicodesymbols
 			bool termination;
 			docstring rem;
 			set<string> req;
@@ -3298,9 +3300,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << ", result is " << to_utf8(s)
 						 << "+" << to_utf8(rem) << endl;
 				os << to_utf8(s);
-				// thiw will register the package "tone"
-				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
-					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
 				// we did not find a non-ert version
 				output_ert_inset(os, command, context);
