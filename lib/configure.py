@@ -409,6 +409,7 @@ def checkLatex(dtl_tools):
         if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
             # We have the Japanese pLaTeX2e
             addToRC(r'\converter platex     dvi        "%s -kanji=$$E $$i"	"latex=platex"' % PLATEX)
+            addToRC(r'\converter platex     dvi4       "%s $$i"                 "latex=platex"' % PLATEX)
         else:
             PLATEX = ''
             removeFiles(['chklatex.ltx', 'chklatex.log'])
@@ -589,7 +590,8 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
-\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"	""'''])
+\Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"	""
+\Format dvi4       dvi     "DVI (pLaTeX)"          V  "%%"	""	"document,vector,menu=export"	""'''])
     if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"	""')
