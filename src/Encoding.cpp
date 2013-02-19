@@ -896,6 +896,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 {
 	// We must read the symbolsfile first, because the Encoding
 	// constructor depends on it.
+	CharSetMap forcednotselected;
 	Lexer symbolslex;
 	symbolslex.setFile(symbolsfile);
 	bool getNextToken = true;
@@ -946,6 +947,12 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 					getVectorFromString(flag.substr(6), ";");
 				for (size_t i = 0; i < encodings.size(); ++i)
 					forcedselected[encodings[i]].insert(symbol);
+				info.flags |= CharInfoForceSelected;
+			} else if (prefixIs(flag, "force!=")) {
+				vector<string> encodings =
+					getVectorFromString(flag.substr(7), ";");
+				for (size_t i = 0; i < encodings.size(); ++i)
+					forcednotselected[encodings[i]].insert(symbol);
 				info.flags |= CharInfoForceSelected;
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
@@ -1094,6 +1101,15 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			break;
 		}
 	}
+
+	// Move all information from forcednotselected to forcedselected
+	for (CharSetMap::const_iterator it1 = forcednotselected.begin(); it1 != forcednotselected.end(); ++it1) {
+		for (CharSetMap::iterator it2 = forcedselected.begin(); it2 != forcedselected.end(); ++it2) {
+			if (it2->first != it1->first)
+				it2->second.insert(it1->second.begin(), it1->second.end());
+		}
+	}
+
 }
 
 
