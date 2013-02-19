@@ -240,7 +240,7 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, bool process_events)
 {
-	lyxerr << "\nRunning: " << what << endl;
+	LYXERR(Debug::INFO,"Running: " << what);
 
 	string infile;
 	string outfile;
