@@ -574,7 +574,7 @@ End
 # not globally via class options
 # http://www.lyx.org/trac/ticket/4597#c4
 # Since japanese does not load fontenc, we set
-# Internalencoding to true.
+# InternalEncoding to true.
 Language japanese
 	GuiName          "Japanese"
 	BabelName        japanese
