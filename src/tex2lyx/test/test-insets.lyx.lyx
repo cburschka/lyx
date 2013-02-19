@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 462
+\lyxformat 463
 \begin_document
 \begin_header
 \textclass article
@@ -13,7 +13,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package none
-\inputencoding latin9
+\inputencoding iso8859-15
 \fontencoding T1
 \font_roman default
 \font_sans default
@@ -867,6 +867,20 @@ http://www.lyx.org
 LatexCommand nomenclature
 symbol "URL2"
 description "uniform resource locator"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An URL with strange characters: 
+\begin_inset Flex Flex:URL
+status collapsed
+
+\begin_layout Plain Layout
+http://www.lyx.org/percent%dollar$
+\end_layout
 
 \end_inset
 
