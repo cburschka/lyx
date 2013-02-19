@@ -891,12 +891,23 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Both eps and pdf are set to true so that both latex and pdflatex work.
+ In practice, you would probably just choose one.
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<iris-pairs,fig=TRUE,width=4.5,height=4.5>>=
+<<iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -955,7 +966,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F>>=
+<<iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T>>=
 \end_layout
 
 \begin_layout Plain Layout
