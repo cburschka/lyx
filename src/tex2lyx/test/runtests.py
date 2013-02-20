@@ -59,10 +59,16 @@ def main(argv):
     if len(argv) >= 5+skipcount:
         files = [sys.argv[4+skipcount]]
     else:
-        files = ['test.ltx', 'test-structure.tex', 'test-insets.tex', \
-             'test-modules.tex', 'test-refstyle-theorems.tex', \
-             'box-color-size-space-align.tex', 'verbatim.tex', \
-             'CJK.tex', 'CJKutf8.tex', 'XeTeX-polyglossia.tex']
+        files = ['test.ltx', \
+                 'box-color-size-space-align.tex', \
+                 'CJK.tex', \
+                 'CJKutf8.tex', \
+                 'test-insets.tex', \
+                 'test-modules.tex', \
+                 'test-refstyle-theorems.tex', \
+                 'test-structure.tex', \
+                 'verbatim.tex', \
+                 'XeTeX-polyglossia.tex']
 
     errors = []
     overwrite = (outputdir == inputdir)

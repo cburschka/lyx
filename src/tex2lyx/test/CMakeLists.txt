@@ -10,10 +10,16 @@ project(test)
 #
 #list(REMOVE_ITEM _tex_tests DummyDocument.tex)
 
-set(_tex_tests test.ltx test-structure.tex test-insets.tex
-               test-modules.tex box-color-size-space-align.tex
-               CJK.tex CJKutf8.tex XeTeX-polyglossia.tex
-	       test-refstyle-references.tex verbatim.tex)
+set(_tex_tests test.ltx
+               box-color-size-space-align.tex
+               CJK.tex
+               CJKutf8.tex
+               test-insets.tex
+               test-modules.tex
+               test-refstyle-theorems.tex
+               test-structure.tex
+               verbatim.tex
+               XeTeX-polyglossia.tex)
 
 foreach(_fl ${_tex_tests})
   set(fl ${_fl})
