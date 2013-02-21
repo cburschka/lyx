@@ -1480,6 +1480,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 					output_ert_inset(os, "\\", parent_context);
 				else if (*it == '$')
 					output_ert_inset(os, "$", parent_context);
+				else if (*it == '\n' && it + 1 != et && s.begin() + 1 != it)
+					os << "\n ";
 				else
 					os << *it;
 			}
