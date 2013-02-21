@@ -3257,8 +3257,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		// the TIPA Combining diacritical marks
-		else if (is_known(t.cs(), known_tipa_marks)) {
+		else if (is_known(t.cs(), known_tipa_marks) || t.cs() == "textvertline") {
+			preamble.registerAutomaticallyLoadedPackage("tipa");
+			preamble.registerAutomaticallyLoadedPackage("tipx");
 			context.check_layout(os);
+			if (t.cs() == "textvertline") {
+				os << "|";
+				skip_braces(p);
+				continue;
+			}
 			// try to see whether the string is in unicodesymbols
 			bool termination;
 			docstring rem;
@@ -3274,10 +3281,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << ", result is " << to_utf8(s)
 					     << "+" << to_utf8(rem) << endl;
 				os << content << to_utf8(s);
-				// tipa is already registered because of the surrounding IPA environment
-				// or \textipa but it does not harm to register it again if necessary
-				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
-					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
 				// we did not find a non-ert version
 				output_ert_inset(os, command, context);
@@ -3310,14 +3313,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else
 				// we did not find a non-ert version
 				output_ert_inset(os, command, context);
-		}
-
-		else if (t.cs() == "textvertline" ) {
-			// this TIPA character does not occur in
-			// unicodesymbols because it is in the ASCII range
-			context.check_layout(os);
-			os << "|";
-			skip_braces(p);
 		}
 
 		else if (t.cs() == "phantom" || t.cs() == "hphantom" ||
