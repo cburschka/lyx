@@ -62,7 +62,7 @@ macro(getdefaultoutputformat filepath varname)
   endforeach()
 endmacro()
 
-foreach(libsubfolder doc examples)
+foreach(libsubfolder doc examples templates)
   set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/lib/${libsubfolder}")
   file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
   list(SORT lyx_files)
