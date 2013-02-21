@@ -535,30 +535,90 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 
 	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
 
+	string const tex_format = flavor2format(runparams.flavor);
+
+	switch (type(params())) {
+	case VERB:
+	case VERBAST: {
+		incfile = latex_path(incfile);
+		// FIXME UNICODE
+		os << '\\' << from_ascii(params().getCmdName()) << '{'
+		   << from_utf8(incfile) << '}';
+		break;
+	}
+	case INPUT: {
+		runparams.exportdata->addExternalFile(tex_format, writefile,
+						      exportfile);
+
+		// \input wants file with extension (default is .tex)
+		if (!isLyXFileName(included_file.absFileName())) {
+			incfile = latex_path(incfile);
+			// FIXME UNICODE
+			os << '\\' << from_ascii(params().getCmdName())
+			   << '{' << from_utf8(incfile) << '}';
+		} else {
+			incfile = changeExtension(incfile, ".tex");
+			incfile = latex_path(incfile);
+			// FIXME UNICODE
+			os << '\\' << from_ascii(params().getCmdName())
+			   << '{' << from_utf8(incfile) <<  '}';
+		}
+		break;
+	}
+	case LISTINGS: {
+		runparams.exportdata->addExternalFile(tex_format, writefile,
+						      exportfile);
+		os << '\\' << from_ascii(params().getCmdName());
+		string const opt = to_utf8(params()["lstparams"]);
+		// opt is set in QInclude dialog and should have passed validation.
+		InsetListingsParams params(opt);
+		if (!params.params().empty())
+			os << "[" << from_utf8(params.params()) << "]";
+		os << '{'  << from_utf8(incfile) << '}';
+		break;
+	}
+	case INCLUDE: {
+		runparams.exportdata->addExternalFile(tex_format, writefile,
+						      exportfile);
+
+		// \include don't want extension and demands that the
+		// file really have .tex
+		incfile = changeExtension(incfile, string());
+		incfile = latex_path(incfile);
+		// FIXME UNICODE
+		os << '\\' << from_ascii(params().getCmdName()) << '{'
+		   << from_utf8(incfile) << '}';
+		break;
+	}
+	case NONE:
+		break;
+	}
+
+	if (runparams.inComment || runparams.dryrun)
+		// Don't try to load or copy the file if we're
+		// in a comment or doing a dryrun
+		return;
+
 	if (!runparams.nice)
-		incfile = mangled;
+			incfile = mangled;
 	else if (!isValidLaTeXFileName(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
 			_("The following filename will cause troubles "
-			  "when running the exported file through LaTeX: ") +
+				"when running the exported file through LaTeX: ") +
 			from_utf8(incfile));
 	}
 	else if (!isValidDVIFileName(incfile)) {
 		frontend::Alert::warning(_("Problematic filename for DVI"),
 			_("The following filename can cause troubles "
-			  "when running the exported file through LaTeX "
-			  "and opening the resulting DVI: ") +
+				"when running the exported file through LaTeX "
+				"and opening the resulting DVI: ") +
 			from_utf8(incfile), true);
 	}
 	LYXERR(Debug::LATEX, "incfile:" << incfile);
 	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
 	LYXERR(Debug::LATEX, "writefile:" << writefile);
 
-	string const tex_format = flavor2format(runparams.flavor);
-	if (runparams.inComment || runparams.dryrun) {
-		//Don't try to load or copy the file if we're
-		//in a comment or doing a dryrun
-	} else if (isInputOrInclude(params()) &&
+	if (isInputOrInclude(params()) &&
 		 isLyXFileName(included_file.absFileName())) {
 		// if it's a LyX file and we're inputting or including,
 		// try to load it so we can write the associated latex
@@ -676,68 +736,11 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				// FIXME UNICODE
 				LYXERR(Debug::LATEX,
 					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
-								  "into the temporary directory."),
-						   from_utf8(included_file.absFileName()))));
+									"into the temporary directory."),
+							 from_utf8(included_file.absFileName()))));
 				return;
 			}
 		}
-	}
-
-	switch (type(params())) {
-	case VERB:
-	case VERBAST: {
-		incfile = latex_path(incfile);
-		// FIXME UNICODE
-		os << '\\' << from_ascii(params().getCmdName()) << '{'
-		   << from_utf8(incfile) << '}';
-		break;
-	} 
-	case INPUT: {
-		runparams.exportdata->addExternalFile(tex_format, writefile,
-						      exportfile);
-
-		// \input wants file with extension (default is .tex)
-		if (!isLyXFileName(included_file.absFileName())) {
-			incfile = latex_path(incfile);
-			// FIXME UNICODE
-			os << '\\' << from_ascii(params().getCmdName())
-			   << '{' << from_utf8(incfile) << '}';
-		} else {
-			incfile = changeExtension(incfile, ".tex");
-			incfile = latex_path(incfile);
-			// FIXME UNICODE
-			os << '\\' << from_ascii(params().getCmdName())
-			   << '{' << from_utf8(incfile) <<  '}';
-		}
-		break;
-	} 
-	case LISTINGS: {
-		runparams.exportdata->addExternalFile(tex_format, writefile,
-						      exportfile);
-		os << '\\' << from_ascii(params().getCmdName());
-		string const opt = to_utf8(params()["lstparams"]);
-		// opt is set in QInclude dialog and should have passed validation.
-		InsetListingsParams params(opt);
-		if (!params.params().empty())
-			os << "[" << from_utf8(params.params()) << "]";
-		os << '{'  << from_utf8(incfile) << '}';
-		break;
-	} 
-	case INCLUDE: {
-		runparams.exportdata->addExternalFile(tex_format, writefile,
-						      exportfile);
-
-		// \include don't want extension and demands that the
-		// file really have .tex
-		incfile = changeExtension(incfile, string());
-		incfile = latex_path(incfile);
-		// FIXME UNICODE
-		os << '\\' << from_ascii(params().getCmdName()) << '{'
-		   << from_utf8(incfile) << '}';
-		break;
-	}
-	case NONE:
-		break;
 	}
 }
 
