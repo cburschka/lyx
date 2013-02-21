@@ -60,7 +60,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 44; // rgh: change LabelType declarations
+int const LAYOUT_FORMAT = 45; // rgh: New Tag "NoInsetLayout"
 
 namespace {
 

@@ -19,7 +19,7 @@
 # - Claim
 # - Case (by inclusion)
 
-Format 44
+Format 45
 
 Style Theorem
 	Category              Reasoning

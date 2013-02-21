@@ -5,7 +5,7 @@
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 
 
-Format 44
+Format 45
 Style Subtitle
 	Margin                Static
 	LatexType             Command

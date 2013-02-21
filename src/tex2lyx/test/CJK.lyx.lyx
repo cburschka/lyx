@@ -120,7 +120,22 @@ begin{CJK}{EUC-JP}{hei}
 
 \end_inset
 
- Japanese 
+ Japanese
+ (this CJK environment will be put in ERT because LyX supports only one CJK
+ font mapping per document, this environment uses the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+texttt{hei} mapping,
+ and the first mapping is empty.
 \begin_inset ERT
 status collapsed
 
@@ -245,7 +260,7 @@ begin{CJK}{JIS}{}
 \end_inset
 
 
-JIS-code 
+ JIS-code 
 \begin_inset ERT
 status collapsed
 

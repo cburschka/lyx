@@ -7,7 +7,7 @@
 # ``standard'' layouts, like article and friends.
 
 
-Format 44
+Format 45
 Columns                 1
 Sides                   1
 SecNumDepth             2

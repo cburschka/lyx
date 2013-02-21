@@ -161,7 +161,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 44
+currentFormat = 45
 
 
 def usage(prog_name):
@@ -377,7 +377,7 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
-        
+
         if format == 44:
             # nothing to do.
             i += 1
