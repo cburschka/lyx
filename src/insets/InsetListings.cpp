@@ -290,6 +290,9 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	out << html::StartTag(tag, attr);
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
+	// We don't want to convert dashes here. That's the only conversion we
+	// do for XHTML, so this is safe.
+	newrp.pass_thru = true;
 	docstring def = InsetText::insetAsXHTML(out, newrp, InsetText::JustText);
 	out << html::EndTag(tag);
 
