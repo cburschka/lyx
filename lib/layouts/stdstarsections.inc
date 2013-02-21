@@ -9,7 +9,7 @@
 # modifying the style of the regular sectioning layouts.
 
 
-Format 44
+Format 45
 Style Part*
 	CopyStyle	Part
 	Category	Unnumbered
