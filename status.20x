@@ -107,6 +107,9 @@ What's new
 - Properly output alias for formatted chapter references, so prettyref
   documents work when converted tor refstyle.
 
+- Do not convert --- and -- to entities when outputting listings to 
+  XHTML (bug 8561).
+
 
 * USER INTERFACE
 
