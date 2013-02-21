@@ -142,6 +142,8 @@ What's new
 - Do not create an empty environment variable LC_ALL when launching
   external processes (bug 8537).
 
+- Do not try to process included files when viewing source (bug 8557).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
