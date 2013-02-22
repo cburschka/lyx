@@ -25,6 +25,18 @@
 \usepackage{fancybox}
 \PassOptionsToPackage{normalem}{ulem}
 \usepackage{ulem}
+\usepackage{ifsym}
+\usepackage{ascii}
+\usepackage{textgreek}
+\usepackage{textcyr}
+\usepackage{subscript}
+\usepackage{tfrupee}
+\usepackage{bbding}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{pifont}
+\usepackage{tipa}
+\usepackage{tipx}
 
 \setlength{\parskip}{3mm}
 \setlength{\parindent}{0sp}
@@ -425,6 +437,35 @@ medskip 2:\vspace{\medskipamount}
 smallskip 1:\smallskip
 
 smallskip 2:\vspace{\smallskipamount}
+
+
+\section{Characters}
+
+from package "ascii" and "ifsym": 
+\textregistered{\ascii\ETB}\textifsymbol[ifgeo]{48}\textifsymbol[ifgeo]{96}
+{\ascii\LF}
+\ascii\LF{}
+
+from textcomp: 
+\textnumero\texttrademark
+
+from textgreek and textcyr:
+\textgreek{>a}\textcyr{\char226}
+
+from subscript:
+\textsubscript{4}
+
+from tfrupee
+\rupee
+
+from marvosym and wasysym:
+\CheckedBox \HandCuffLeft
+
+from bbding and pifont:
+\FiveStarOpen \ding{190}
+
+from tipa and tipx:
+\textctt \textdblig
 
 
 \end{document}

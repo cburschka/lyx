@@ -2413,15 +2413,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			Token const next = p.next_token();
 			Token const end = p.next_next_token();
 			if (next.cat() == catEnd) {
-			// {}
-			Token const prev = p.prev_token();
-			p.get_token();
-			if (p.next_token().character() == '`' ||
-			    (prev.character() == '-' &&
-			     p.next_token().character() == '-'))
-				; // ignore it in {}`` or -{}-
-			else
-				output_ert_inset(os, "{}", context);
+				// {}
+				Token const prev = p.prev_token();
+				p.get_token();
+				if (p.next_token().character() == '`' ||
+					(prev.character() == '-' &&
+					p.next_token().character() == '-'))
+					; // ignore it in {}`` or -{}-
+				else
+					output_ert_inset(os, "{}", context);
 			} else if (next.cat() == catEscape &&
 			           is_known(next.cs(), known_quotes) &&
 			           end.cat() == catEnd) {
@@ -2431,6 +2431,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// braces here for better readability.
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 				                   outer, context);
+			} else if (p.next_token().asInput() == "\\ascii") {
+				// handle the \ascii characters
+				// (the case without braces is handled later)
+				// the code is "{\ascii\xxx}"
+				p.get_token(); // eat \ascii
+				string name2 = p.get_token().asInput();
+				p.get_token(); // eat the final '}'
+				string const name = "{\\ascii" + name2 + "}";
+				bool termination;
+				docstring rem;
+				set<string> req;
+				// get the character from unicodesymbols
+				docstring s = encodings.fromLaTeXCommand(from_utf8(name),
+					Encodings::TEXT_CMD, termination, rem, &req);
+				if (!s.empty()) {
+					context.check_layout(os);
+					os << to_utf8(s);
+				} else
+					// we did not find a non-ert version
+					output_ert_inset(os, name, context);
+				continue;
 			} else {
 			context.check_layout(os);
 			// special handling of font attribute changes
@@ -4612,6 +4633,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			docstring rem;
 			set<string> req;
 			string name = t.asInput();
+			// handle the dingbats and Cyrillic
+			if (name == "\\ding" || name == "\\textcyr")
+				name = name + '{' + p.getArg('{', '}') + '}';
+			// handle the ifsym characters
+			if (name == "\\textifsymbol") {
+				string const optif = p.getFullOpt();
+				string const argif = p.getArg('{', '}');
+				name = name + optif + '{' + argif + '}';
+			}
+			// handle the \ascii characters
+			// the case of \ascii within braces, as LyX outputs it, is already
+			// handled for t.cat() == catBegin
+			if (name == "\\ascii") {
+				// the code is "\asci\xxx"
+				name = "{" + name + p.get_token().asInput() + "}";
+				skip_braces(p);
+			}
 			// handle some TIPA special characters
 			if (name == "\\textglobfall") {
 				name = "End";
@@ -4704,14 +4742,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			output_ert_inset(os, s + ' ', context);
 			*/
 			else {
-				string name = t.asInput();
+				string name2 = t.asInput();
 				if (p.next_token().asInput() == "*") {
 					// Starred commands like \vspace*{}
 					p.get_token();	// Eat '*'
-					name += '*';
+					name2 += '*';
 				}
-				if (!parse_command(name, p, os, outer, context))
-					output_ert_inset(os, name, context);
+				if (!parse_command(name2, p, os, outer, context))
+					output_ert_inset(os, name2, context);
 			}
 		}
 
