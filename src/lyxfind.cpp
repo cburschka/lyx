@@ -154,7 +154,9 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 	if (!searchAllowed(searchstr))
 		return false;
 
-	DocIterator cur = bv->cursor();
+	DocIterator cur = forward 
+		? bv->cursor().selectionEnd() 
+		: bv->cursor().selectionBegin();
 
 	MatchString const match(searchstr, case_sens, whole);
 
