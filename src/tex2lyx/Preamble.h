@@ -39,7 +39,7 @@ public:
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
-	std::string refstyle() const { return h_use_refstyle; }
+	bool refstyle() const { return h_use_refstyle; }
 	///
 	bool fontCJKSet() const { return h_font_cjk_set; }
 	///
@@ -192,7 +192,7 @@ private:
 	std::map<std::string, std::string> h_use_packages;
 	std::string h_use_default_options;
 	std::string h_use_hyperref;
-	std::string h_use_refstyle;
+	bool h_use_refstyle;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

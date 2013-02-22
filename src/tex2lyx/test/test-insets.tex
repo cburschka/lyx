@@ -18,7 +18,6 @@
 \providecommand{\makenomenclature}{\makeglossary}
 \makenomenclature
 \usepackage{varioref}
-\usepackage{prettyref}
 \usepackage{splitidx}
 \makeindex
 \newindex[Index]{idx}
@@ -54,6 +53,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
+% Load refstyle before prettyref so that prettyref wins.
+% The real refstyle tests are in test-refstyle-theorems.tex.
+\usepackage{refstyle}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\usepackage{prettyref}
+
 \def\mycommand{\textquestiondown}
 
 \begin{document}
@@ -82,6 +87,8 @@ reference~\pageref{lab:test}, but also equation
 reference~\eqref{lab:test} (from amsmath package), or varioref's
 equivalents~\vref{lab:test} and~\vpageref{lab:test}, without
 forgetting pretty references like~\prettyref{lab:test}.
+The command \secref{lab:test} will be parsed in ERT, since LyX
+does not support refstyle and prettyref natively at the same time.
 
 \section{Cites\index{Cites}}
 

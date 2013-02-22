@@ -5,6 +5,11 @@
 \textclass article
 \begin_preamble
 
+% Load refstyle before prettyref so that prettyref wins.
+% The real refstyle tests are in test-refstyle-theorems.tex.
+\usepackage{refstyle}
+
+
 \def\mycommand{\textquestiondown}
 
 
@@ -245,7 +250,49 @@ reference "lab:test"
 
 \end_inset
 
-.
+. The command 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+secref
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+lab:test
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ will be parsed in ERT, since 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+LyX
+\end_layout
+
+\end_inset
+
+ does not support refstyle and prettyref natively at the same time.
 \end_layout
 
 \begin_layout Section

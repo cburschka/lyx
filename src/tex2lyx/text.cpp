@@ -3407,40 +3407,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_spaces_braces(p);
 		}
 
-		else if ((where = is_known(t.cs(), known_ref_commands))) {
-			// \eqref can also occur if refstyle is used
-			if (t.cs() == "eqref" && preamble.refstyle() == "1") {
-				context.check_layout(os);
-				begin_command_inset(os, "ref", "formatted");
-				os << "reference \"eq:"
-				   << convert_command_inset_arg(p.verbatim_item())
-				   << "\"\n";
-				end_inset(os);
-				preamble.registerAutomaticallyLoadedPackage("refstyle");
-			} else {
-				string const opt = p.getOpt();
-				if (opt.empty()) {
-					context.check_layout(os);
-					begin_command_inset(os, "ref",
-						known_coded_ref_commands[where - known_ref_commands]);
-					os << "reference \""
-					   << convert_command_inset_arg(p.verbatim_item())
-					   << "\"\n";
-					end_inset(os);
-					if (t.cs() == "vref" || t.cs() == "vpageref")
-						preamble.registerAutomaticallyLoadedPackage("varioref");
-				} else {
-					// LyX does not yet support optional arguments of ref commands
-					output_ert_inset(os, t.asInput() + '[' + opt + "]{" +
-				               p.verbatim_item() + "}", context);
-				}
-			}
-		}
-
-		else if ((where = is_known(t.cs(), known_refstyle_commands))) {
+		// handle refstyle first to catch \eqref which can also occur
+		// without refstyle. Only recognize these commands if
+		// refstyle.sty was found in the preamble (otherwise \eqref
+		// and user defined ref commands could be misdetected).
+		else if ((where = is_known(t.cs(), known_refstyle_commands)) &&
+		         preamble.refstyle()) {
 			context.check_layout(os);
-			// \eqref can also occur if refstyle is not used
-			// this case is already handled in the previous else if
 			begin_command_inset(os, "ref", "formatted");
 			os << "reference \"";
 			os << known_refstyle_prefixes[where - known_refstyle_commands]
@@ -3449,6 +3422,30 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << "\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("refstyle");
+		}
+
+		// if refstyle is used, we must not convert \prettyref to a
+		// formatted reference, since that would result in a refstyle command.
+		else if ((where = is_known(t.cs(), known_ref_commands)) &&
+		         (t.cs() != "prettyref" || !preamble.refstyle())) {
+			string const opt = p.getOpt();
+			if (opt.empty()) {
+				context.check_layout(os);
+				begin_command_inset(os, "ref",
+					known_coded_ref_commands[where - known_ref_commands]);
+				os << "reference \""
+				   << convert_command_inset_arg(p.verbatim_item())
+				   << "\"\n";
+				end_inset(os);
+				if (t.cs() == "vref" || t.cs() == "vpageref")
+					preamble.registerAutomaticallyLoadedPackage("varioref");
+				else if (t.cs() == "prettyref")
+					preamble.registerAutomaticallyLoadedPackage("prettyref");
+			} else {
+				// LyX does not yet support optional arguments of ref commands
+				output_ert_inset(os, t.asInput() + '[' + opt + "]{" +
+			               p.verbatim_item() + '}', context);
+			}
 		}
 
 		else if (use_natbib &&

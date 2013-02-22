@@ -181,9 +181,9 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
 "float", "fontspec", "graphicx", "hhline", "ifthen", "longtable", "makeidx",
-"multirow", "nomencl", "pdfpages", "refstyle", "rotating", "rotfloat", "splitidx",
-"setspace", "subscript", "textcomp", "tipa", "tipx", "tone", "ulem", "url",
-"varioref", "verbatim", "wrapfig", "xunicode", 0};
+"multirow", "nomencl", "pdfpages", "prettyref", "refstyle", "rotating",
+"rotfloat", "splitidx", "setspace", "subscript", "textcomp", "tipa", "tipx",
+"tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xunicode", 0};
 
 // used for the handling of \newindex
 int index_number = 0;
@@ -522,7 +522,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "false";
-	h_use_refstyle            = "0";
+	h_use_refstyle            = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
 	h_use_packages["esint"]      = "1";
@@ -897,9 +897,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_language_package = "\\usepackage{" + name + "}";
 	}
 
-	else if (name == "prettyref")
-		; // ignore this FIXME: Use the package separator mechanism instead
-
 	else if (name == "lyxskak") {
 		// ignore this and its options
 		const char * const o[] = {"ps", "mover", 0};
@@ -910,7 +907,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		if (name == "splitidx")
 			h_use_indices = "true";
 		if (name == "refstyle")
-			h_use_refstyle = "1";
+			h_use_refstyle = true;
+		else if (name == "prettyref")
+			h_use_refstyle = false;
 		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name
 			           << package_mid_sep << "\\usepackage{"
@@ -1417,7 +1416,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				|| name == "thmref"
 				|| name == "lemref") {
 				p.skip_spaces();
-				preamble.registerAutomaticallyLoadedPackage("refstyle");
 				in_lyx_preamble = true;
 			}
 			// only non-lyxspecific stuff
@@ -1453,7 +1451,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				|| name == "\\providecommand\\corref[1]{\\ref{cor:#1}}"
 				|| name == "\\providecommand\\propref[1]{\\ref{prop:#1}}") {
 				p.skip_spaces();
-				preamble.registerAutomaticallyLoadedPackage("refstyle");
 				in_lyx_preamble = true;
 			}
 			// only non-lyxspecific stuff
