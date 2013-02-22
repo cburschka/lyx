@@ -135,9 +135,9 @@ public:
 	// the stream
 	void putback(char_type c);
 
-	// add before the list of characters to read before actually reading
+	// add to the list of characters to read before actually reading
 	// the stream
-	void put_almost_back(docstring s);
+	void putback(docstring s);
 
 	/// Like std::istream::get()
 	iparserdocstream & get(char_type &c);
@@ -206,6 +206,8 @@ public:
 	void pushPosition();
 	/// restore previous position
 	void popPosition();
+	/// forget last saved position
+	void dropPosition();
 	/// dump contents to screen
 	void dump() const;
 

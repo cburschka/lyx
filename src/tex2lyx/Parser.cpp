@@ -131,11 +131,11 @@ bool iparserdocstream::setEncoding(std::string const & e)
 
 void iparserdocstream::putback(char_type c)
 {
-	s_ += c;
+	s_ = c + s_;
 }
 
 
-void iparserdocstream::put_almost_back(docstring s)
+void iparserdocstream::putback(docstring s)
 {
 	s_ = s + s_;
 }
@@ -146,6 +146,7 @@ iparserdocstream & iparserdocstream::get(char_type &c)
 	if (s_.empty())
 		is_.get(c);
 	else {
+		//cerr << "unparsed: " << to_utf8(s_) <<endl;
 		c = s_[0];
 		s_.erase(0,1);
 	}
@@ -186,7 +187,7 @@ void Parser::deparse()
 	for(size_type i = pos_ ; i < tokens_.size() ; ++i) {
 		s += tokens_[i].asInput();
 	}
-	is_.put_almost_back(from_utf8(s));
+	is_.putback(from_utf8(s));
 	tokens_.erase(tokens_.begin() + pos_, tokens_.end());
 	// make sure that next token is read
 	tokenize_one();
@@ -424,6 +425,13 @@ void Parser::pushPosition()
 void Parser::popPosition()
 {
 	pos_ = positions_.back();
+	positions_.pop_back();
+	deparse();
+}
+
+
+void Parser::dropPosition()
+{
 	positions_.pop_back();
 }
 
