@@ -1635,6 +1635,6 @@ dist_ui_DATA = \
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
-	for i in $(scriptdir)/*.py ; do \
+	for i in $(scriptsdir)/*.py ; do \
 		$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/$$i; \
 	done
