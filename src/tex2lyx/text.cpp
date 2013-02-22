@@ -1983,77 +1983,45 @@ void copy_file(FileName const & src, string dstname)
 
 
 /// Parse a NoWeb Chunk section. The initial "<<" is already parsed.
-void parse_noweb(Parser & p, ostream & os, Context & context)
+bool parse_noweb(Parser & p, ostream & os, Context & context)
 {
-	// assemble the rest of the keyword
-	string name("<<");
-	bool chunk = false;
-	while (p.good()) {
-		Token const & t = p.get_token();
-		if (t.asInput() == ">" && p.next_token().asInput() == ">") {
-			name += ">>";
-			p.get_token();
-			chunk = (p.good() && p.next_token().asInput() == "=");
-			if (chunk)
-				name += p.get_token().asInput();
-			break;
-		}
-		name += t.asInput();
-	}
-
-	if (!chunk || !context.new_layout_allowed ||
+	// check whether a chunk is possible here.
+	if (!context.new_layout_allowed ||
 	    !context.textclass.hasLayout(from_ascii("Chunk"))) {
-		cerr << "Warning: Could not interpret '" << name
-		     << "'. Ignoring it." << endl;
-		return;
+		return false;
 	}
 
-	// We use new_paragraph instead of check_end_layout because the stuff
-	// following the noweb chunk needs to start with a \begin_layout.
-	// This may create a new paragraph even if there was none in the
-	// noweb file, but the alternative is an invalid LyX file. Since
-	// noweb code chunks are implemented with a layout style in LyX they
-	// always must be in an own paragraph.
+	p.pushPosition();
+
+	// read the parameters
+	Parser::Arg stuff = p.verbatimStuff(">>=", false);
+	if (!stuff.first) {
+		p.popPosition();
+		return false;
+	}
+	string chunk = "<<" + stuff.second + ">>="
+		+ p.verbatimStuff("\n").second + '\n';
+
+	stuff = p.verbatimStuff("\n@");
+	if (!stuff.first) {
+		p.popPosition();
+		return false;
+	}
+	chunk += stuff.second + "\n@";
+	string post_chunk = p.verbatimStuff("\n").second + '\n';
+	if (post_chunk[0] != ' ' && post_chunk[0] != '\n') {
+		p.popPosition();
+		return false;
+	}
+	chunk += post_chunk;
+
 	context.new_paragraph(os);
 	Context newcontext(true, context.textclass,
 		&context.textclass[from_ascii("Chunk")]);
-	newcontext.check_layout(os);
-	os << name;
-	while (p.good()) {
-		Token const & t = p.get_token();
-		// We abuse the parser a bit, because this is no TeX syntax
-		// at all.
-		if (t.cat() == catEscape)
-			os << subst(t.asInput(), "\\", "\n\\backslash\n");
-		else {
-			ostringstream oss;
-			Context tmp(false, context.textclass,
-			            &context.textclass[from_ascii("Chunk")]);
-			tmp.need_end_layout = true;
-			tmp.check_layout(oss);
-			os << subst(t.asInput(), "\n", oss.str());
-		}
-		// The chunk is ended by an @ at the beginning of a line.
-		// After the @ the line may contain a comment and/or
-		// whitespace, but nothing else.
-		if (t.asInput() == "@" && p.prev_token().cat() == catNewline &&
-		    (p.next_token().cat() == catSpace ||
-		     p.next_token().cat() == catNewline ||
-		     p.next_token().cat() == catComment)) {
-			while (p.good() && p.next_token().cat() == catSpace)
-				os << p.get_token().asInput();
-			if (p.next_token().cat() == catComment)
-				// The comment includes a final '\n'
-				os << p.get_token().asInput();
-			else {
-				if (p.next_token().cat() == catNewline)
-					p.get_token();
-				os << '\n';
-			}
-			break;
-		}
-	}
-	newcontext.check_end_layout(os);
+	output_ert(os, chunk, newcontext);
+
+	p.dropPosition();
+	return true;
 }
 
 
@@ -2325,18 +2293,26 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.asInput() == "<"
-			 && p.next_token().asInput() == "<" && noweb_mode) {
-			p.get_token();
-			parse_noweb(p, os, context);
-		}
+			 && p.next_token().asInput() == "<") {
+			bool has_noweb = false;
+			if (noweb_mode) {
+				p.pushPosition();
+				p.get_token();
+				has_noweb = parse_noweb(p, os, context);
+				if (!has_noweb)
+					p.popPosition();
+			}
 
-		else if (t.asInput() == "<" && p.next_token().asInput() == "<") {
-			context.check_layout(os);
-			begin_inset(os, "Quotes ");
-			os << "ard";
-			end_inset(os);
-			p.get_token();
-			skip_braces(p);
+			if (!has_noweb) {
+				context.check_layout(os);
+				begin_inset(os, "Quotes ");
+				//FIXME: this is a right danish quote;
+				// why not a left french quote?
+				os << "ard";
+				end_inset(os);
+				p.get_token();
+				skip_braces(p);
+			}
 		}
 
 		else if (t.cat() == catSpace || (t.cat() == catNewline && ! p.isParagraph()))
@@ -3921,9 +3897,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// set catcodes to verbatim early, just in case.
 			p.setCatcodes(VERBATIM_CATCODES);
 			string delim = p.get_token().asInput();
-			//FIXME: handle error condition
-			string const arg = p.verbatimStuff(delim).second;
-			output_ert_inset(os, "\\verb" + delim + arg + delim, context);
+			Parser::Arg arg = p.verbatimStuff(delim);
+			if (arg.first)
+				output_ert_inset(os, "\\verb" + delim 
+						 + arg.second + delim, context);
+			else
+				cerr << "invalid \\verb command. Skipping" << endl;
 		}
 
 		// Problem: \= creates a tabstop inside the tabbing environment
