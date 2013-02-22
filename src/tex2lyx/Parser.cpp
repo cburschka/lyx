@@ -631,11 +631,12 @@ string const Parser::plainCommand(char left, char right, string const & name)
 }
 
 
-string const Parser::verbatimStuff(string const & end_string)
+Parser::Arg Parser::verbatimStuff(string const & end_string, bool const allow_linebreak)
 {
 	if (!good())
-		return string();
+		return Arg(false, string());
 
+	pushPosition();
 	ostringstream oss;
 	size_t match_index = 0;
 	setCatcodes(VERBATIM_CATCODES);
@@ -646,22 +647,38 @@ string const Parser::verbatimStuff(string const & end_string)
 			match_index += t.asInput().length();
 			if (match_index >= end_string.length())
 				break;
-		} else if (match_index) {
-			oss << end_string.substr(0, match_index) << t.asInput();
-			match_index = 0;
-		} else
-			oss << t.asInput();
+		} else {
+			if (!allow_linebreak && t.asInput() == "\n") {
+				cerr << "unexpected end of input" << endl;
+				popPosition();
+				setCatcodes(NORMAL_CATCODES);
+				return Arg(false, string());
+			}
+			if (match_index) {
+				oss << end_string.substr(0, match_index) 
+				    << t.asInput();
+				match_index = 0;
+			} else
+				oss << t.asInput();
+		}
+	}
+
+	if (!good()) {
+		cerr << "unexpected end of input" << endl;
+		popPosition();
+		setCatcodes(NORMAL_CATCODES);
+		return Arg(false, string());
 	}
 	setCatcodes(NORMAL_CATCODES);
-	if (!good())
-		cerr << "unexpected end of input" << endl;
-	return oss.str();
+	dropPosition();
+	return Arg(true, oss.str());
 }
 
 
 string const Parser::verbatimEnvironment(string const & name)
 {
-	string s = verbatimStuff("\\end{" + name + "}");
+	//FIXME: do something if endstring is not found
+	string s = verbatimStuff("\\end{" + name + "}").second;
 	// ignore one newline at beginning or end of string
 	if (prefixIs(s, "\n"))
 		s.erase(0,1);

@@ -280,9 +280,13 @@ public:
 	 * stopped at string \p end_string. Contrary to the other
 	 * methods, this uses proper catcode setting. This function is
 	 * designed to parse verbatim environments and command. The
-	 * intention is to eventually replace all of its siblings.
+	 * intention is to eventually replace all of its siblings. the
+	 * member \p first of the result tells whether the arg was
+	 * found and the member \p second is the value. If \p
+	 * allow_linebreak is false, then the parsing is limited to one line
 	 */
-	std::string const verbatimStuff(std::string const & end_string);
+	Arg verbatimStuff(std::string const & end_string, 
+			  bool allow_linebreak = true);
 	/*
 	 * \returns the contents of the environment \p name.
 	 * <tt>\begin{name}</tt> must be parsed already,

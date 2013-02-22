@@ -1189,7 +1189,8 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 		// set catcodes to verbatim early, just in case.
 		p.setCatcodes(VERBATIM_CATCODES);
 		string delim = p.get_token().asInput();
-		s = p.verbatimStuff(delim);
+		//FIXME: handler error condition
+		s = p.verbatimStuff(delim).second;
 //		context.new_paragraph(os);
 	} else
 		s = p.verbatimEnvironment("lstlisting");
@@ -3920,7 +3921,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// set catcodes to verbatim early, just in case.
 			p.setCatcodes(VERBATIM_CATCODES);
 			string delim = p.get_token().asInput();
-			string const arg = p.verbatimStuff(delim);
+			//FIXME: handle error condition
+			string const arg = p.verbatimStuff(delim).second;
 			output_ert_inset(os, "\\verb" + delim + arg + delim, context);
 		}
 
@@ -4506,7 +4508,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string delim = p.get_token().asInput();
 				if (delim != "{")
 					cerr << "Warning: bad delimiter for command " << t.asInput() << endl;
-				string const arg = p.verbatimStuff("}");
+				//FIXME: handle error condition
+				string const arg = p.verbatimStuff("}").second;
 				Context newcontext(true, context.textclass);
 				if (newinsetlayout->forcePlainLayout())
 					newcontext.layout = &context.textclass.plainLayout();
