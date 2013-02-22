@@ -8,6 +8,7 @@
 % Load refstyle before prettyref so that prettyref wins.
 % The real refstyle tests are in test-refstyle-theorems.tex.
 \usepackage{refstyle}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 
 
 \def\mycommand{\textquestiondown}

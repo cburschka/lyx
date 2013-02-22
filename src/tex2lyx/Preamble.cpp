@@ -1410,16 +1410,11 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const name = p.verbatim_item();
 			string const body1 = p.verbatim_item();
 			string const body2 = p.verbatim_item();
-			// store the in_lyx_preamble setting
-			bool const was_in_lyx_preamble = in_lyx_preamble;
-			if (name == "subref"
-				|| name == "thmref"
-				|| name == "lemref") {
-				p.skip_spaces();
-				in_lyx_preamble = true;
-			}
 			// only non-lyxspecific stuff
-			if (!in_lyx_preamble) {
+			if (in_lyx_preamble &&
+			    (name == "subref" || name == "thmref" || name == "lemref"))
+				p.skip_spaces();
+			else {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				ss << '{' << name << '}'
@@ -1427,15 +1422,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				   << '{' << body2 << '}';
 				h_preamble << ss.str();
 			}
-			// restore the in_lyx_preamble setting
-			in_lyx_preamble = was_in_lyx_preamble;
 		}
 		
 		else if (t.cs() == "AtBeginDocument") {
 			string const name = p.verbatim_item();
-			// store the in_lyx_preamble setting
-			bool const was_in_lyx_preamble = in_lyx_preamble;
-			if (name == "\\providecommand\\partref[1]{\\ref{part:#1}}"
+			// only non-lyxspecific stuff
+			if (in_lyx_preamble &&
+			    (name == "\\providecommand\\partref[1]{\\ref{part:#1}}"
 				|| name == "\\providecommand\\chapref[1]{\\ref{chap:#1}}"
 				|| name == "\\providecommand\\secref[1]{\\ref{sec:#1}}"
 				|| name == "\\providecommand\\subref[1]{\\ref{sub:#1}}"
@@ -1449,19 +1442,14 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				|| name == "\\providecommand\\lemref[1]{\\ref{lem:#1}}"
 				|| name == "\\providecommand\\thmref[1]{\\ref{thm:#1}}"
 				|| name == "\\providecommand\\corref[1]{\\ref{cor:#1}}"
-				|| name == "\\providecommand\\propref[1]{\\ref{prop:#1}}") {
+				|| name == "\\providecommand\\propref[1]{\\ref{prop:#1}}"))
 				p.skip_spaces();
-				in_lyx_preamble = true;
-			}
-			// only non-lyxspecific stuff
-			if (!in_lyx_preamble) {
+			else {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				ss << '{' << name << '}';
 				h_preamble << ss.str();
 			}
-			// restore the in_lyx_preamble setting
-			in_lyx_preamble = was_in_lyx_preamble;
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
