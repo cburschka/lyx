@@ -2451,7 +2451,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else
 					// we did not find a non-ert version
 					output_ert_inset(os, name, context);
-				continue;
 			} else {
 			context.check_layout(os);
 			// special handling of font attribute changes
