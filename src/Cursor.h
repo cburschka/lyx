@@ -153,7 +153,7 @@ public:
 	CursorSlice selEnd() const;
 	/// access start of selection
 	DocIterator selectionBegin() const;
-	/// access start of selection
+	/// access end of selection
 	DocIterator selectionEnd() const;
 	/**
 	 * Update the selection status and save permanent
