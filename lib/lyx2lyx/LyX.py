@@ -330,6 +330,8 @@ class LyX_base:
         self.initial_version = self.read_version()
 
         # Second pass over header and preamble, now we know the file encoding
+        # Do not forget the textclass (Debian bug #700828)
+        self.textclass = self.textclass.decode(self.encoding)
         for i in range(len(self.header)):
             self.header[i] = self.header[i].decode(self.encoding)
         for i in range(len(self.preamble)):
