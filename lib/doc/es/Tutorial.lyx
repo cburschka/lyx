@@ -114,8 +114,6 @@ status collapsed
 \noindent
 Si tienes comentarios o correcciones de errores envíalos, por favor, a la
  lista de correo de Documentación de LyX: 
-\family typewriter
-
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -430,9 +428,9 @@ ejemplo_con_lyx.lyx
 \begin_layout Standard
 Los archivos de ejemplo se pueden encontrar en el directorio 
 \family typewriter
-examples/
+examples
 \family default
-, que puedes conseguir seleccionando 
+, que puedes (sólo con Linux) conseguir seleccionando 
 \family sans
 Archivo\SpecialChar \menuseparator
 Abrir
@@ -561,7 +559,7 @@ al formato que quieras.
 
 \begin_layout Standard
 ¡Enhorabuena! Has escrito e impreso tu primer documento LyX.
- Todo lo demás son detalles que se tratan en los demás manuales.
+ Todo lo demás son detalles.
 \end_layout
 
 \begin_layout Subsection
@@ -719,12 +717,8 @@ caracteres Puedes
 \emph on
 resaltar
 \emph default
- texto (lo que normalmente significa poner los caracteres en cursiva), ponerlo
- en 
-\series bold
-negrita
-\series default
-, o en
+ texto (lo que normalmente significa poner los caracteres en cursiva) o
+ en
 \noun on
  Versalitas
 \noun default
@@ -744,8 +738,12 @@ del
 \begin_inset space ~
 \end_inset
 
-texto
+texto\SpecialChar \menuseparator
+
+\lang english
+Customized
 \family default
+\lang spanish
  (botón 
 \begin_inset Info
 type  "icon"
@@ -1443,8 +1441,8 @@ status collapsed
 
 \begin_layout Plain Layout
 LyX no te dejará seleccionar el primer bolo a menos que selecciones el párrafo
- anterior a la lista, que probablemente no es lo que quieres hacer.
- De forma similar, no puedes seleccionar el número en el título de una sección.
+ anterior a la lista (o el número en el título de una sección), que probablement
+e no es lo que quieres hacer.
  Esto es intencionado, porque la marca o el número dependen de la configuración
  del documento o de la posición del texto, respectivamente.
 \end_layout
@@ -2215,7 +2213,7 @@ Objetos insertados
 
 \end_inset
 
- Una vez que lo hagas puedes hacer referencia a esta sección desde otras
+ Una vez que lo hagas puedes hacer referencia a esta elemento desde otras
  partes del documento mediante referencias cruzadas.
  Puedes referirte al número de sección o bien a la página donde aparece.
  Como sucede con las secciones o las notas a pie de página, el propio LyX
@@ -2359,7 +2357,13 @@ Espacio
 
 protegido
 \family default
- entre la palabra 
+ (atajo 
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives space-insert protected ; math-space"
+\end_inset
+
+) entre la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2408,19 +2412,10 @@ LyX coloca las referencias dentro de un recuadro en el lugar donde estaba
 Formato
 \family default
 ).
- Utiliza 
-\family sans
-Ver
-\begin_inset space ~
-\end_inset
-
-\SpecialChar \menuseparator
-
-\begin_inset space ~
-\end_inset
-
-DVI
-\family default
+ 
+\lang english
+Preview your document
+\lang spanish
 , y verás cómo en la última página hacemos referencia a la 
 \begin_inset Quotes fld
 \end_inset
@@ -2491,7 +2486,7 @@ s cruzadas; ahora podrás comprobarlo.
 \end_inset
 
 2.
- Actualiza la vista DVI, y —voilà!— la referencia ha cambiado a la sección
+ Actualiza la previsión, y —voilà!— la referencia ha cambiado a la sección
 \begin_inset space ~
 \end_inset
 
@@ -2911,7 +2906,23 @@ Aplicar
 .
  (Puedes tener múltiples citas en el mismo sitio transfiriendo un número
  de claves de esta forma).
- Ahora observa la salida DVI, y verás que la cita aparece entre corchetes
+\lang english
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+If one uses label names for references that are easy to remember it is easier
+ to find the entry in the list of references.
+\end_layout
+
+\end_inset
+
+
+\lang spanish
+ Ahora observa la previsión, y verás que la cita aparece entre corchetes
  en el documento, referenciando a la bibliografía al final del documento.
  El campo 
 \family sans
@@ -2921,11 +2932,7 @@ Texto
 
 después
 \family default
- 
-\family sans
-e
-\family default
-n la ventana de 
+ en la ventana de 
 \family sans
 Cita
 \family default
@@ -3027,10 +3034,10 @@ general
 
 \begin_layout Standard
 Esto puede no parecer muy útil.
- Sin embargo, si observas el archivo DVI, verás que se ha generado un índice
+ Sin embargo, si observas la previsión, verás que se ha generado un índice
  con todas las secciones y subsecciones de tu documento.
  Una vez más, si reordenas las secciones o añades alguna, estos cambios
- se verán reflejados en el archivo DVI cuando lo actualices.
+ se verán reflejados en la previsión cuando lo actualices.
 \end_layout
 
 \begin_layout Standard
@@ -3160,10 +3167,24 @@ línea
 \family default
 .
  LyX abrirá un pequeño recuadro azul, con un rectángulo magenta a su alrededor.
- Ahora introduce de nuevo 
-\family typewriter
-E=mc^2
-\family default
+ 
+\lang english
+Now either
+\lang spanish
+ introduce aquí de nuevo ecuación o 
+\lang english
+highlight
+\lang spanish
+ E=mc^2 
+\lang english
+and click the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
+\end_inset
+
 .
  La expresión se escribe en azul, y el recuadro azul desaparece tan pronto
  como el punto de inserción deja de estar vacío.
@@ -3511,14 +3532,18 @@ matemáticas
  Muchas de estas operaciones se pueden hacer con el teclado o con los menús
  
 \family sans
-Editar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 Ecuación
 \family default
  o 
 \family sans
-Insertar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Ecuación
 \family default
+ 
+\lang english
+(the latter only appears when you are in Math mode)
+\lang spanish
 .
  Sin embargo, nos vamos a concentrar en el uso de las 
 \family sans
@@ -3692,7 +3717,7 @@ No hay nada que no puedas hacer\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Subsection
-Raíces cuadradas, tildes y delimitadores
+Raíces, decoraciones y delimitadores
 \end_layout
 
 \begin_layout Standard
@@ -3834,12 +3859,6 @@ Fracciones
 
 \begin_layout Standard
 Para crear una fracción pica el botón 
-\begin_inset Info
-type  "icon"
-arg   "math-insert \\frac"
-\end_inset
-
- o 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"

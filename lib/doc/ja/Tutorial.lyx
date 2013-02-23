@@ -128,7 +128,7 @@ type "mailto:"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -333,7 +333,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-この入門篇では、あなたが完全に動いている状態のLyX、LaTeX頒布版、それにDVIビューア及びPDFビューアを持っているものと仮定します。すべての主要なLin
+この入門篇では、あなたが完全に動いている状態のLyX、LaTeX頒布版、それにPDFビューア及びPDFビューアを持っているものと仮定します。すべての主要なLin
 ux頒布版やBSD頒布版ではそうなっているはずですし、Windowsでも、LyXインストーラによってちゃんとセットアップされているでしょう。
 \end_layout
 
@@ -374,7 +374,7 @@ example
 \family sans
 名前をつけて保存
 \family default
-を選択して、自分のディレクトリに複製を作って下さい。そしてこのファイルの一部を直すごとに、これらの変更がDVI出力にどのような影響を与えるか、確認して下さい。
+を選択して、自分のディレクトリに複製を作って下さい。そしてこのファイルの一部を直すごとに、これらの変更がPDF出力にどのような影響を与えるか、確認して下さい。
 \end_layout
 
 \begin_layout Standard
@@ -485,7 +485,7 @@ arg   "buffer-update"
 \end_layout
 
 \begin_layout Standard
-おめでとうございます！最初のLyX文書を書くことができました。後は、すべて詳細にすぎません。残りの説明書で説明します。
+おめでとうございます！最初のLyX文書を書くことができました。後は、すべて詳細にすぎません。
 \end_layout
 
 \begin_layout Subsection
@@ -631,30 +631,45 @@ status collapsed
 
 \begin_layout Description
 文字書式 
+\lang english
+You can 
+\emph on
+emphasize
+\emph default
+ text (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
+\end_inset
+
+, which will by default print characters in italics), set it in 
+\noun on
+Noun Style
+\noun default
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
+\end_inset
+
+, usually small caps, used for people's names), or use your own formatting
+ by using the 
 \family sans
-編集\SpecialChar \menuseparator
-文字様式\SpecialChar \menuseparator
-任意設定
+Edit\SpecialChar \menuseparator
+Text
+\begin_inset space ~
+\end_inset
+
+Style\SpecialChar \menuseparator
+Customized
 \family default
-ダイアログボックス内にある切替ボタン（あるいはツールバーボタン
+ dialog (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-）を使えば、テキストを
-\emph on
-強調
-\emph default
-（普通はイタリック体）したり、
-\series bold
-ボールド体
-\series default
-にしたり、
-\noun on
-名詞体
-\noun default
-（普通はスモールキャップ体で表わされ、人名などに使います）にしたり、自製の書式を使用したりすることができます。
+).
 \end_layout
 
 \begin_layout Description
@@ -1149,33 +1164,19 @@ arg   "layout Enumerate"
 \family sans
 箇条書き（一覧）
 \family default
-の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう
-\lang english
-(
-\family sans
-\lang japanese
-
+の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう(
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
 \end_inset
 
-
-\family default
-\lang english
- and 
-\lang japanese
-
+または
 \begin_inset Info
 type  "icon"
 arg   "layout List"
 \end_inset
 
-
-\lang english
-)
-\lang japanese
-。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
+)。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
 \family sans
 Return
 \family default
@@ -1798,7 +1799,7 @@ arg   "label-insert"
 \end_layout
 
 \begin_layout Standard
-ここまででは、まだ何も成し遂げていません — ラベルは印刷文書には表れないので、DVI出力は以前とまったく変わりません。しかしながら、いまやラベルをつけたので、
+ここまででは、まだ何も成し遂げていません — ラベルは印刷文書には表れないので、PDF出力は以前とまったく変わりません。しかしながら、いまやラベルをつけたので、
 相互参照でラベルを参照することができます。次はそれをやってみましょう。
 \end_layout
 
@@ -1860,7 +1861,7 @@ type  "shortcut"
 arg   "paste"
 \end_inset
 
-）を使って、現在のカーソル位置にコピーすることができます。印刷した文書では、この参照マーカーはページ番号や節番号に置き換えられます。文書をDVIとして表示してみ
+）を使って、現在のカーソル位置にコピーすることができます。印刷した文書では、この参照マーカーはページ番号や節番号に置き換えられます。文書をPDFとして表示してみ
 ると、最後の頁で「第2節」と「1ページ」（あるいは第2節の見出しがある頁）を参照していることが分かるでしょう。
 \end_layout
 
@@ -1881,7 +1882,7 @@ arg   "paste"
 \end_layout
 
 \begin_layout Standard
-以前、相互参照の番号付けはLyXが管理すると書きましたが、それをこれから確認してみましょう。第2節の前に新しい節を加えてください。DVI表示を更新すると
+以前、相互参照の番号付けはLyXが管理すると書きましたが、それをこれから確認してみましょう。第2節の前に新しい節を加えてください。PDF表示を更新すると
  — ほら！ — 節への相互参照が「3」に変わっています！次に「この文書について」の節を小節に変更してみると、相互参照は第3節の代わりに第2.1小節を参照するよう
 になります。もちろんページ参照は、ラベルの前にまるまる1ページ分の文章を追加しない限り変化しません。
 \end_layout
@@ -2113,7 +2114,28 @@ arg   "dialog-show-new-inset citation"
 \family default
 ダイアログボックスが現れます。ダイアログの右パネルには、すべての文献項目が表示され、参照したい文献を選ぶことができるようになっているはずです。「lyxtutor
 ial」を選択して（今のところ、文献で選べるのはこれだけです）、中央の「追加」ボタンを押して挿入します（このやり方で複数のキーを移動すれば、複数の文献を一箇所に
-参照することができます）。このファイルをDVIで表示してください。文献の引用が、角括弧で本文に挿入され、文末の参考文献を参照していることが確認できるでしょう。
+参照することができます）。
+\lang english
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+If one uses label names for references that are easy to remember it is easier
+ to find the entry in the list of references.
+\end_layout
+
+\end_inset
+
+Click the 
+\family sans
+OK
+\family default
+ button.
+\lang japanese
+このファイルをPDFで表示してください。文献の引用が、角括弧で本文に挿入され、文末の参考文献を参照していることが確認できるでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -2181,8 +2203,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-これだけだとそれほど役に立つようには見えないのですが、DVIファイルを見てみると、目次が生成されているのが確認できるでしょう。ここでも、節の順番を変えたり追加し
-たりすると、DVIファイルを更新したときに、それらの変更がDVIファイルに自動的に反映されるのです。
+これだけだとそれほど役に立つようには見えないのですが、PDFファイルを見てみると、目次が生成されているのが確認できるでしょう。ここでも、節の順番を変えたり追加し
+たりすると、PDFファイルを更新したときに、それらの変更がPDFファイルに自動的に反映されるのです。
 \end_layout
 
 \begin_layout Standard
@@ -2259,20 +2281,28 @@ eXを使ったことのない人でも
 \end_layout
 
 \begin_layout Standard
-代わりに、正しく組版されるような数式を作りましょう。数式を作るには、ツールバーボタン
+代わりに、正しく組版されるような数式を作りましょう。
+\lang english
+Highlight the equation and click the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
+ or use the menu
+\lang japanese
 を押すか、
 \family sans
 挿入\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
 行内数式
 \family default
-メニューを選んでください。LyXが小さな青い四角を画面に表示して、空の数式が挿入されたことを示します。そこにもう一度E=mc^2と入力してください。数式は青色で
-表示され、数式が書かれると青い四角は消えます。
+メニューを選んでください。
+\lang english
+If nothing is highlighted LyX inserts a little blue square, which is an
+ empty math formula.
+\lang japanese
+そこにもう一度E=mc^2と入力してください。数式は青色で表示され、数式が書かれると青い四角は消えます。
 \family sans
 Esc
 \family default
@@ -2564,16 +2594,6 @@ arg   "dialog-show mathdelimiter"
 の分数ボタン
 \begin_inset Info
 type  "icon"
-arg   "math-insert \\frac"
-\end_inset
-
- 
-\lang english
-or
-\lang japanese
- 
-\begin_inset Info
-type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
@@ -2741,16 +2761,16 @@ arg   "inset-modify tabular delete-column"
 \end_layout
 
 \begin_layout Subsection
-別行建てモード
+別行立てモード
 \end_layout
 
 \begin_layout Standard
 ここまではテキストと同じ行に数式を入れる方法について説明して来ました。行内表示と呼ばれるものです。これは短い、簡単な数式の場合はいいのですが、長い数式を書く場合
-やテキストから独立させたい場合には別行建てモードで書く必要があります。また数式にラベルや式番号（
+やテキストから独立させたい場合には別行立てモードで書く必要があります。また数式にラベルや式番号（
 \emph on
 ユーザーの手引き
 \emph default
-を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も、別行建てモードにする必要があります。
+を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も、別行立てモードにする必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -2760,7 +2780,7 @@ arg   "inset-modify tabular delete-column"
 \family default
 の
 \family sans
-別行建て
+別行立て
 \family default
 ボタン
 \begin_inset Info
@@ -2771,13 +2791,13 @@ arg   "math-display"
 を押して下さい。こうすると、数式が中央揃えになり、上下に空白行が加えられます。何か数式を入力してファイルをコンパイルし、どのように表示されるかご覧になって下さい
 。
 \family sans
-別行建て
+別行立て
 \family default
-ボタンは実は切替スイッチになっています。入力した数式のいくつかを、別行建てモードにしたり、戻したりしてみてください。
+ボタンは実は切替スイッチになっています。入力した数式のいくつかを、別行立てモードにしたり、戻したりしてみてください。
 \end_layout
 
 \begin_layout Standard
-別行建てモードはいくつかの点で行内数式モードと異なっています：
+別行立てモードはいくつかの点で行内数式モードと異なっています：
 \end_layout
 
 \begin_layout Itemize
@@ -2792,7 +2812,7 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Itemize
-別行建てモードではlimitや和記号（積分記号は違います）につく上付き文字や下付き文字が記号の隣ではなく上下に付く
+別行立てモードではlimitや和記号（積分記号は違います）につく上付き文字や下付き文字が記号の隣ではなく上下に付く
 \end_layout
 
 \begin_layout Itemize
@@ -2800,32 +2820,32 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Standard
-このようにいくつかの違いはありますが、別行建て表示と行内表示は非常に似たものです。
+このようにいくつかの違いはありますが、別行立て表示と行内表示は非常に似たものです。
 \end_layout
 
 \begin_layout Standard
-最後に一つ、別行建て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
+最後に一つ、別行立て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
 を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。すると使用中の文書の段落設定によって、字下げされたり
 空白があいたりすることになるので、望ましいものとはならないでしょう。
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：
 \family typewriter
 example_raw.lyx
 \family default
-の数式を別行建てモードにしてどのように組版されるか見て下さい。
+の数式を別行立てモードにしてどのように組版されるか見て下さい。
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\series bold
 練習問題
-\emph default
+\series default
 ：本節で習った色々なツールを使って次のような数式を書いて下さい
 \begin_inset Foot
 status collapsed
@@ -2946,18 +2966,12 @@ arg   "tabular-insert"
 表設定
 \family default
 ダイアログボックスが現れるので、そこで表の詳しい編集ができます。
-\lang english
-By pressing 
-\lang japanese
-
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-
-\lang english
- the table toolbar will appear permanently.
+を押すと、表ツールバーが固定的に表示されるようになります。
 \end_layout
 
 \begin_layout Itemize
