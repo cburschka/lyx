@@ -110,6 +110,8 @@ What's new
 - Do not convert --- and -- to entities when outputting listings to 
   XHTML (bug 8561).
 
+- Fix lyx2lyx bug with non-ASCII layout file names (Debian bug 700828).
+
 
 * USER INTERFACE
 
