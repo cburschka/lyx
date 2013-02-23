@@ -690,7 +690,10 @@ Eigennamen
 \end_inset
 
 , die im Ausdruck mit hoch bzw.
- tief gestellten Großbuchstaben erscheinen: TeX, LaTeX und LyX
+\begin_inset space \space{}
+\end_inset
+
+tief gestellten Großbuchstaben erscheinen: TeX, LaTeX und LyX
 \end_layout
 
 \begin_layout Plain Layout
@@ -761,12 +764,24 @@ Tabellen-Werkzeugleiste
  verwenden.
  Beim Vertauschen von Zeilen und Spalten mit Hilfe dieses Menüs wird immer
  die Spalte bzw.
- Zeile, in der der Cursor steht, mit der rechts daneben stehenden Spalte
+\begin_inset space \space{}
+\end_inset
+
+Zeile, in der der Cursor steht, mit der rechts daneben stehenden Spalte
  bzw.
- darunter liegenden Zeile vertauscht.
+\begin_inset space \space{}
+\end_inset
+
+darunter liegenden Zeile vertauscht.
  Befindet sich der Cursor in der letzten Spalte bzw.
- Zeile, wird mit der links daneben stehenden Spalte bzw.
- darüber liegenden Zeile vertauscht.
+\begin_inset space \space{}
+\end_inset
+
+Zeile, wird mit der links daneben stehenden Spalte bzw.
+\begin_inset space \space{}
+\end_inset
+
+darüber liegenden Zeile vertauscht.
 \end_layout
 
 \begin_layout Standard
@@ -2632,7 +2647,10 @@ uproot
 leftroot{Abstand}
 \series default
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -2645,7 +2663,10 @@ Abstand ist die Anzahl der Big Points (Einheit bp;
 \end_inset
 
 ), um die der Index nach links bzw.
- nach oben verschoben werden soll.
+\begin_inset space \space{}
+\end_inset
+
+nach oben verschoben werden soll.
  Die Befehle werden in den Index geschrieben.
  So ergibt der Befehl
 \begin_inset Newline newline
@@ -5809,45 +5830,6 @@ Man beachte, dass verzierte Matrizen die vertikale Ausrichtung ignorieren.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung:
-\series default
- LaTeX limitiert die Anzahl der Matrizenspalten auf 10.
- Wenn man mehr als 10
-\begin_inset space ~
-\end_inset
-
-Spalten benötigt, muss folgende Zeile in die Dokument-Präambel eingefügt
- werden:
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-setcounter{MaxMatrixCols}{Anzahl}
-\end_layout
-
-\begin_layout Plain Layout
-wobei 
-\emph on
-Anzahl
-\emph default
- die Anzahl der Spalten zwischen 11 und 99 ist.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -8136,13 +8118,6 @@ reference "sub:Zeilenabstand"
  erklärt.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Pfeile
 \begin_inset Index idx
@@ -9138,13 +9113,6 @@ F(a)
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -10432,251 +10400,6 @@ B.
 \begin_layout Standard
 Im mathematischen Textmodus können Umlaute und andere akzentuierten Zeichen
  direkt eingegeben werden.
-\end_layout
-
-\begin_layout Subsection
-Akzente für Operatoren
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Akzente ! für Operatoren
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Zum Akzentuieren von Operatoren gibt es die Befehle 
-\series bold
-
-\backslash
-overset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! O ! 
-\backslash
-overset
-\end_layout
-
-\end_inset
-
- und 
-\series bold
-
-\backslash
-underset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! U ! 
-\backslash
-underset
-\end_layout
-
-\end_inset
-
-, mit denen man Zeichen über bzw.
- unter einen Operator setzen kann.
- Mit dem Befehl 
-\series bold
-
-\backslash
-sideset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! S ! 
-\backslash
-sideset
-\end_layout
-
-\end_inset
-
- können Zeichen vor und nach einen Operator gesetzt werden.
- Das Befehlsschema lautet:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset{Zeichen
-\series default
- 
-\series bold
-davor}{Zeichen
-\series default
- 
-\series bold
-dahinter}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
- muss immer vor dem zu akzentuierenden Operator stehen.
- Es kann auch mit mehreren Zeichen und sogar mit anderen Operatoren und
- Symbolen akzentuiert werden.
- Will man mit 
-\series bold
-
-\backslash
-sideset
-\series default
- z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- nur Zeichen hinter einen Operator setzen, schreibt man nichts zwischen
- die ersten geschweiften Klammern, lässt die Klammern aber nicht weg.
-\end_layout
-
-\begin_layout Standard
-Z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- ergibt der Befehl 
-\series bold
-
-\backslash
-sideset{
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-{
-\series default
-'
-\series bold
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
-\end_inset
-
-
-\series default
-^
-\series bold
-n
-\series default
- :
-\begin_inset Formula 
-\[
-\sideset{}{'}\sum_{k=1}^{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Befehl 
-\series bold
-
-\backslash
-overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
-\end_inset
-
-
-\backslash
-maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Formula $\uparrow$
-\end_inset
-
-
-\series bold
-a
-\series default
- ergibt:
-\begin_inset Formula 
-\[
-\overset{a}{\maltese}
-\]
-
-\end_inset
-
-Wie man am letzten Beispiel sieht, kann man mit 
-\series bold
-
-\backslash
-overset
-\series default
- bzw.
- 
-\series bold
-
-\backslash
-underset
-\series default
- außer Operatoren auch Symbole und Zeichen akzentuieren; mit 
-\series bold
-
-\backslash
-sideset
-\series default
- ist dies nicht möglich.
 \end_layout
 
 \begin_layout Subsection
@@ -14460,13 +14183,6 @@ Zeichen}
  verwendet.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Absatzboxen
 \begin_inset CommandInset label
@@ -16167,7 +15883,10 @@ Operatoren ! Grenzen
 
 \begin_layout Standard
 Grenzen werden durch Hoch- bzw.
- Tiefstellen erzeugt:
+\begin_inset space \space{}
+\end_inset
+
+Tiefstellen erzeugt:
 \end_layout
 
 \begin_layout Standard
@@ -16273,7 +15992,10 @@ Bei einer Formel in einer Textzeile werden die Grenzen rechts neben den
  Operator gesetzt.
  In einer abgesetzten Formel werden, außer bei Integralen, die Grenzen über
  bzw.
- unter den Operator gesetzt.
+\begin_inset space \space{}
+\end_inset
+
+unter den Operator gesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -16692,6 +16414,272 @@ reference "sub:Selbstdefinierte-Operatoren"
 \end_inset
 
  ist beschrieben, wie man eine Grenze für mehrere Operatoren verwenden kann.
+\end_layout
+
+\begin_layout Subsection
+Dekoration für Operatoren
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Operatoren ! Dekoration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zum Dekorieren von Operatoren gibt es die Befehle 
+\series bold
+
+\backslash
+overset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! O ! 
+\backslash
+overset
+\end_layout
+
+\end_inset
+
+ und 
+\series bold
+
+\backslash
+underset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! U ! 
+\backslash
+underset
+\end_layout
+
+\end_inset
+
+, mit denen man Zeichen über bzw.
+\begin_inset space \space{}
+\end_inset
+
+unter einen Operator setzen kann.
+ Mit dem Befehl 
+\series bold
+
+\backslash
+sideset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! S ! 
+\backslash
+sideset
+\end_layout
+
+\end_inset
+
+ können Zeichen vor und nach einen großen Operator gesetzt werden.
+ Das Befehlsschema lautet:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset{Zeichen
+\series default
+ 
+\series bold
+davor}{Zeichen
+\series default
+ 
+\series bold
+dahinter}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset
+\series default
+ muss immer vor dem Operator stehen.
+ Es kann auch mit mehreren Zeichen und sogar mit anderen Operatoren und
+ Symbolen dekoriert werden.
+ Will man mit 
+\series bold
+
+\backslash
+sideset
+\series default
+ z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nur Zeichen hinter einen großen Operator setzen, schreibt man nichts zwischen
+ die ersten geschweiften Klammern, lässt die Klammern aber nicht weg.
+\end_layout
+
+\begin_layout Standard
+Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ ergibt der Befehl 
+\series bold
+
+\backslash
+sideset{
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\series default
+'
+\series bold
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+sum_k=1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\series default
+^
+\series bold
+n
+\series default
+ :
+\begin_inset Formula 
+\[
+\sideset{}{'}\sum_{k=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung: 
+\backslash
+sideset
+\series default
+ kann nur für die Dekoration von großen Operatoren verwendet werden, binäre
+ Operatoren sind nicht erlaubt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit 
+\series bold
+
+\backslash
+overset
+\series default
+ bzw.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+
+\backslash
+underset
+\series default
+ kann man auch Symbole und Zeichen dekorieren.
+ Beispielsweise ergibt der Befehl 
+\series bold
+
+\backslash
+overset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\backslash
+maltese
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series bold
+a
+\series default
+ :
+\begin_inset Formula 
+\[
+\overset{a}{\maltese}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -18009,7 +17997,10 @@ mathbin
 mathop{Anzeige}
 \series default
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -18109,6 +18100,13 @@ leer
 
 \series bold
 _i,j=1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -21182,13 +21180,6 @@ theta
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -24716,7 +24707,10 @@ Die Zeichen
 lhd
 \series default
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -24733,7 +24727,10 @@ rhd
 triangleleft
 \series default
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -26044,13 +26041,6 @@ In einer abgesetzten Formel steht der Grenzwert wie gewohnt darunter:
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Modulo-Funktionen
 \begin_inset Index idx
@@ -26387,7 +26377,10 @@ Der Leerraum von 0
 \end_inset
 
 mm dient nur zur Trennung,da sonst im Ausdruck ¡ bzw.
- ¿ erscheinen würde.
+\begin_inset space \space{}
+\end_inset
+
+¿ erscheinen würde.
 \end_layout
 
 \end_inset
@@ -28247,7 +28240,7 @@ fe
 \end_inset
 
  bzw.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29164,7 +29157,7 @@ e
 \end_inset
 
  bzw.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29580,7 +29573,10 @@ shoveleft
 \end_inset
 
  kann eine zentrierte Zeile rechts bzw.
- links ausgerichtet werden.
+\begin_inset space \space{}
+\end_inset
+
+links ausgerichtet werden.
  Die Befehle werden folgendermaßen verwendet:
 \end_layout
 
@@ -29592,7 +29588,10 @@ shoveleft
 shoveright{Zeileninhalt}
 \series default
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -29866,7 +29865,10 @@ gathered
 \end_inset
 
  bzw.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 
 \backslash
@@ -32856,13 +32858,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Zum Erstellen der Beziehungen gibt es folgende Befehle:
 \end_layout
 
@@ -32913,16 +32908,28 @@ Alle Pfeile sind wie folgt beschriftbar:
 
 \begin_layout Itemize
 Wird bei horizontalen Pfeilen zwischen dem ersten und zweiten < bzw.
- > Text eingegeben, erscheint er über dem Pfeil.
+\begin_inset space \space{}
+\end_inset
+
+> Text eingegeben, erscheint er über dem Pfeil.
  Wird der Text zwischen dem zweiten und dritten < bzw.
- > eingegeben, erscheint er unter dem Pfeil.
+\begin_inset space \space{}
+\end_inset
+
+> eingegeben, erscheint er unter dem Pfeil.
 \end_layout
 
 \begin_layout Itemize
 Wird bei vertikalen Pfeilen Text zwischen erstem und zweitem A bzw.
- V eingegeben, erscheint er links neben dem Pfeil.
+\begin_inset space \space{}
+\end_inset
+
+V eingegeben, erscheint er links neben dem Pfeil.
  Bei Eingabe zwischen zweitem und drittem A bzw.
- V erscheint er rechts daneben.
+\begin_inset space \space{}
+\end_inset
+
+V erscheint er rechts daneben.
  Enthält der Text ein A oder V, müssen diese Buchstaben in eine TeX-Klammer
  gesetzt werden.
 \end_layout
@@ -33169,6 +33176,13 @@ Spezielle
 Handbücher
 \family default
  zu finden ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -34866,20 +34880,13 @@ Maxima
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-Tipps
+Verschiedenes
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tipps
+Verschiedenes
 \end_layout
 
 \end_inset
@@ -35173,13 +35180,6 @@ braket
  installiert ist:
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -37556,11 +37556,8 @@ F
 Einfügen\SpecialChar \menuseparator
 Sonderzeichen\SpecialChar \menuseparator
 Symbole\SpecialChar \menuseparator
-Buchstabenähnliche
-\begin_inset space ~
-\end_inset
-
-Symbole
+Buchsta\SpecialChar \-
+benähnliche Symbole
 \family default
  eingefügt werden: 
 \begin_inset Formula $\mathscr{F}$

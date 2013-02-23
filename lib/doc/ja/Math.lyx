@@ -5634,39 +5634,6 @@ vmatrix
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-LaTeXは、装飾のついた行列の列を10列までに制限しています。10列よりも多い列が必要な場合には、文書プリアンブルに
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-setcounter{MaxMatrixCols}{数}
-\end_layout
-
-\begin_layout Plain Layout
-という行を書き加えなくてはなりません。ここで
-\emph on
-数
-\emph default
-は列数を表し、11から99の値でなくてはなりません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -10206,225 +10173,6 @@ ddot
 
 \begin_layout Standard
 ウムラウトと他のアクセント付き文字は、数式中テキストに直接入れることができます。
-\end_layout
-
-\begin_layout Subsection
-演算子に付けるアクセント
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-あくせんと@アクセント ! えんざんしにつける@演算子に付ける
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-overset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! O ! 
-\backslash
-overset
-\end_layout
-
-\end_inset
-
-コマンドや
-\series bold
-
-\backslash
-underset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! U ! 
-\backslash
-underset
-\end_layout
-
-\end_inset
-
-コマンドを使うと、それぞれ演算子の上や下に、文字をアクセントとして付けることができます。また、
-\series bold
-
-\backslash
-sideset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! S ! 
-\backslash
-sideset
-\end_layout
-
-\end_inset
-
-コマンドを使うと、文字を演算子の前や後ろに付けることができます。コマンド書式は、
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset{前置文字}{後置文字}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
-は、かならずアクセントを付ける演算子の前に置かなくてはなりません。複数の文字や他の演算子、記号もアクセントとして使用することができます。たとえば、
-\series bold
-
-\backslash
-sideset
-\series default
-を使って演算子の後だけに文字を配置したい場合には、最初の括弧の中には何も書かないようにしますが、括弧を省略することはできません。
-\end_layout
-
-\begin_layout Standard
-たとえば、
-\series bold
-
-\backslash
-sideset{
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-{
-\series default
-'
-\series bold
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-^
-\series bold
-n
-\series default
-というコマンドを入力すると、
-\begin_inset Formula 
-\[
-\sideset{}{'}\sum_{k=1}^{n}
-\]
-
-\end_inset
-
-のようになります。
-\end_layout
-
-\begin_layout Standard
-また、
-\series bold
-
-\backslash
-overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\backslash
-maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Formula $\uparrow$
-\end_inset
-
-
-\series bold
-a
-\series default
-というコマンドならば、
-\begin_inset Formula 
-\[
-\overset{a}{\maltese}
-\]
-
-\end_inset
-
-のようになります。最後の例からわかるように、
-\series bold
-
-\backslash
-overset
-\series default
-や
-\series bold
-
-\backslash
-underset
-\series default
-では、記号や文字にアクセントをつけることもできます。一方、
-\series bold
-
-\backslash
-sideset
-\series default
-では、このようなことはできません。
 \end_layout
 
 \begin_layout Subsection
@@ -16180,8 +15928,240 @@ reference "sub:自己定義演算子"
 節に述べられています。
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+Decoration for Operators
+\lang japanese
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+えんざんし@演算子 ! 
+\lang english
+Decoration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage newpage
+
+\series bold
+
+\backslash
+overset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! O ! 
+\backslash
+overset
+\end_layout
+
+\end_inset
+
+コマンドや
+\series bold
+
+\backslash
+underset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! U ! 
+\backslash
+underset
+\end_layout
+
+\end_inset
+
+コマンドを使うと、それぞれ演算子の上や下に、文字をアクセントとして付けることができます。また、
+\series bold
+
+\backslash
+sideset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! S ! 
+\backslash
+sideset
+\end_layout
+
+\end_inset
+
+コマンドを使うと、文字を演算子の前や後ろに付けることができます。コマンド書式は、
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset{前置文字}{後置文字}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset
+\series default
+は、かならずアクセントを付ける演算子の前に置かなくてはなりません。複数の文字や他の演算子、記号もアクセントとして使用することができます。たとえば、
+\series bold
+
+\backslash
+sideset
+\series default
+を使って演算子の後だけに文字を配置したい場合には、最初の括弧の中には何も書かないようにしますが、括弧を省略することはできません。
+\end_layout
+
+\begin_layout Standard
+たとえば、
+\series bold
+
+\backslash
+sideset{
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\series default
+'
+\series bold
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+sum_k=1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+^
+\series bold
+n
+\series default
+というコマンドを入力すると、
+\begin_inset Formula 
+\[
+\sideset{}{'}\sum_{k=1}^{n}
+\]
+
+\end_inset
+
+のようになります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note: 
+\backslash
+sideset
+\series default
+ can only be used to decorate big operators, binary operators are not allowed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+のようになります。最後の例からわかるように、
+\series bold
+
+\backslash
+overset
+\series default
+や
+\series bold
+
+\backslash
+underset
+\series default
+では、記号や文字にアクセントをつけることもできます。一方。 また、
+\series bold
+
+\backslash
+overset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+maltese
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series bold
+a
+\series default
+というコマンドならば、
+\begin_inset Formula 
+\[
+\overset{a}{\maltese}
+\]
+
 \end_inset
 
 
@@ -33973,20 +33953,19 @@ Maxima
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-さまざまな秘訣
+
+\lang english
+Miscellaneous
+\lang japanese
+
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-ひけつ@秘訣
+
+\lang english
+Miscellaneous
 \end_layout
 
 \end_inset
