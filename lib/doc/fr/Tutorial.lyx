@@ -137,8 +137,6 @@ status collapsed
 \begin_layout Plain Layout
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
  de la documentation de LyX, 
-\family typewriter
-
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -146,8 +144,6 @@ type "mailto:"
 
 \end_inset
 
-
-\family default
 .
 \begin_inset Newline newline
 \end_inset
@@ -189,8 +185,6 @@ Chrétien
 .
  Merci d'envoyer vos commentaires et corrections sur la traduction à la
  liste de diffusion de LyX en français 
-\family typewriter
-
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
@@ -198,8 +192,6 @@ type "mailto:"
 
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -599,18 +591,21 @@ Vous trouverez ces fichiers dans le répertoire
 examples
 \family default
 , du dossier d'installation de LyX.
- Ouvrez le document brut, et utilisez 
+ Ouvrez le document 
+\family typewriter
+exemple_brut.lyx
+\family default
+, et utilisez 
 \family sans
 Fichier\SpecialChar \menuseparator
 Enregistrer
 \begin_inset space ~
 \end_inset
 
-Sous\SpecialChar \ldots{}
-
+Sous
 \family default
  pour le copier dans votre propre répertoire, pour pouvoir travailler dessus.
- Jetez donc un œil sur la sortie DVI au fur et à mesure que vous effectuez
+ Jetez donc un œil sur la sortie PDF au fur et à mesure que vous effectuez
  les corrections, pour vous rendre compte de leur effet sur le rendu final.
 \end_layout
 
@@ -739,11 +734,8 @@ vers le format que vous voulez
 
 \begin_layout Standard
 Magnifique ! Vous venez d'écrire votre premier document LyX.
- Tout le reste est du détail, traité dans 
+ Tout le reste est du détail
 \shape slanted
-\emph on
-les autres manuels
-\emph default
 \SpecialChar \@.
 
 \end_layout
@@ -910,11 +902,7 @@ Caractères Vous pouvez mettre du texte
 \emph on
 en évidence
 \emph default
- (ce qui le met généralement en italique), le mettre en 
-\series bold
-caractères gras
-\series default
-, ou bien en 
+ (ce qui le met généralement en italique) ou bien en 
 \noun on
 Style Nom propre
 \noun default
@@ -930,8 +918,12 @@ de
 \begin_inset space ~
 \end_inset
 
-texte
+texte\SpecialChar \menuseparator
+
+\lang english
+Customized
 \family default
+\lang french
  (bouton 
 \begin_inset Info
 type  "icon"
@@ -1768,14 +1760,12 @@ Vous avez obtenu une magnifique liste.
 status collapsed
 
 \begin_layout Plain Layout
-Vous ne pourrez pas sélectionner la première puce, sauf si vous sélectionnez
- aussi le paragraphe 
+Vous ne pourrez pas sélectionner la première puce (ou le numéro d'un en-tête
+ de section), sauf si vous sélectionnez aussi le paragraphe 
 \emph on
 précédant
 \emph default
  la liste, ce qui n'est probablement pas ce que vous voulez.
- De la même manière, vous ne pouvez pas sélectionner le numéro d'un en-tête
- de section.
  C'est voulu parce que la puce ou le numéro dépendent des paramètres du
  document et de la position dans le texte.
 \end_layout
@@ -2462,19 +2452,14 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : il est intéressant de noter ici que les environnements ont parfois
- un rendu PDF ou DVI assez différent du rendu à l'affichage, particulièrement
- lorsque LyX et le document sont configurés pour travailler en Français.
+ un rendu PDF assez différent du rendu à l'affichage, particulièrement lorsque
+ LyX et le document sont configurés pour travailler en Français.
  (ex : adresse de l'expéditeur affichée à droite mais comme il se doit imprimée
  à gauche ...)
 \end_layout
 
 \begin_layout Plain Layout
 Ne pas hésiter à faire 
-\family sans
-Visualiser\SpecialChar \menuseparator
-DVI
-\family default
- ou 
 \family sans
 Visualiser\SpecialChar \menuseparator
 PDF
@@ -2686,7 +2671,7 @@ Objets insérés
 \end_inset
 
  de votre document.
- Ainsi fait, vous pouvez faire référence à cette section dans d'autres parties
+ Ainsi fait, vous pouvez faire référence à cette élément dans d'autres parties
  de votre document, avec les références croisées.
  Vous pouvez faire référence au numéro de la section, ou à la page où la
  section apparaît.
@@ -2742,7 +2727,7 @@ En tout état de cause, vous auriez pu placer l'étiquette n'importe où dans
 \end_layout
 
 \begin_layout Standard
-Pour l'instant, vous n'avez encore rien fait – le fichier DVI n'aura pas
+Pour l'instant, vous n'avez encore rien fait – le fichier PDF n'aura pas
  changé, car les étiquettes n'apparaissent pas à l'impression.
  Maintenant que vous avez une étiquette, vous pouvez vous y référer avec
  les références croisées.
@@ -2867,7 +2852,13 @@ Espace
 
 Insécable
 \family default
- entre le mot 
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives space-insert protected ; math-space"
+\end_inset
+
+) entre le mot 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2914,7 +2905,7 @@ Référence
 croisée).
 
 \family default
- Visualisez votre document en DVI pour constater que sur la dernière page,
+ Visualisez votre document en PDF pour constater que sur la dernière page,
  il est fait référence à la 
 \begin_inset Quotes fld
 \end_inset
@@ -3009,17 +3000,9 @@ Jour
 \end_inset
 
 \SpecialChar \menuseparator
-DVI
-\family default
- (ou 
-\family sans
-PostScript
-\family default
- ou 
-\family sans
 PDF
 \family default
-).
+.
 \end_layout
 
 \end_inset
@@ -3378,8 +3361,7 @@ name "sec:bibliographies"
 \end_layout
 
 \begin_layout Standard
-Les bibliographies sont très similaires aux références croisées, au moins
- dans les sciences exactes.
+Les bibliographies sont très similaires aux références croisées.
  La bibliographie, à la fin d'un document, contient la liste des ouvrages
  auxquels il est fait référence dans le corps du document.
  Comme pour les titres de sections, LyX et LaTeX vous facilitent le travail
@@ -3463,7 +3445,7 @@ arg   "dialog-show-new-inset citation"
 Citation
 \family default
 .
- La moitié droite de cette fenêtre (le champ 
+ La moitié gauche de cette fenêtre (le champ 
 \family sans
 Citations
 \begin_inset space ~
@@ -3488,9 +3470,35 @@ Ajouter
 \family default
  pour l'insérer.
  (Vous pouvez mettre des citations multiples au même endroit en transférant
- ainsi plusieurs clés.) Visualisez maintenant votre fichier en DVI, et vous
- pourrez constater que la citation apparaît entre crochets à l'impression,
- en référence à la bibliographie en fin de document.
+ ainsi plusieurs clés.)
+\lang english
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+If one uses label names for references that are easy to remember it is easier
+ to find the entry in the list of references.
+\end_layout
+
+\end_inset
+
+
+\lang french
+ 
+\lang english
+Click the 
+\family sans
+OK
+\family default
+ button.
+
+\lang french
+ Visualisez maintenant votre fichier en PDF, et vous pourrez constater que
+ la citation apparaît entre crochets à l'impression, en référence à la bibliogra
+phie en fin de document.
 \end_layout
 
 \begin_layout Standard
@@ -3619,11 +3627,11 @@ Matières
 
 \begin_layout Standard
 Ça peut paraître un peu léger.
- Cependant, en jetant un œil sur le rendu DVI, vous constaterez que la table
+ Cependant, en jetant un œil sur le rendu PDF, vous constaterez que la table
  des matières a bel et bien été générée, avec pour contenu les en-têtes
  des différentes sections et sous-sections de votre document.
  Encore une fois, en cas de réorganisation, ajout ou suppression de sections,
- ces changements seront automatiquement répercutés dans le rendu DVI dès
+ ces changements seront automatiquement répercutés dans le rendu PDF dès
  que vous le mettez à jour.
  
 \end_layout
@@ -3805,11 +3813,25 @@ ligne
 \family default
 .
  LyX ouvrira un petit carré bleu, qui est une formule vide.
- Il ne vous reste donc plus qu'à saisir 
-\family typewriter
-E=mc^2
-\family default
- une nouvelle fois.
+ 
+\lang english
+Now either insert
+\lang french
+ l'équation une nouvelle fois ou 
+\lang english
+highlight
+\lang french
+ E=mc^2 et 
+\lang english
+click the toolbar button
+\lang french
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
+\end_inset
+
+.
  L'expression apparaît en bleu, et le carré bleu disparaît dès que la formule
  n'est plus vide.
  Tapez 
@@ -4174,14 +4196,18 @@ Math
  Plusieurs de ces opérations peuvent être exécutées depuis le clavier ou
  les menus 
 \family sans
-Édition\SpecialChar \menuseparator
+Insertion\SpecialChar \menuseparator
 Math
 \family default
  et 
 \family sans
-Insertion\SpecialChar \menuseparator
+Édition\SpecialChar \menuseparator
 Math
 \family default
+ 
+\lang english
+(the latter only appears when you are in Math mode)
+\lang french
 .
  Nous allons cependant nous intéresser à l'utilisation de la 
 \family sans
@@ -4287,7 +4313,7 @@ Barre d'outils Math
 \end_layout
 
 \begin_layout Subsection
-Racines carrées, accents, et délimiteurs
+Racines, décorations, et délimiteurs
 \end_layout
 
 \begin_layout Standard
@@ -4427,12 +4453,6 @@ Pour créer une fraction, cliquez sur le bouton
 Fraction
 \family default
  
-\begin_inset Info
-type  "icon"
-arg   "math-insert \\frac"
-\end_inset
-
- ou 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
@@ -5922,8 +5942,8 @@ Paramètres
  et de destinataire.
  Il est important de noter que ce choix n'a pour l'instant aucun effet visuel
  dans la fenêtre de LyX.
- C'est dans la sortie DVI, PDF ou à l'impression que vous pourrez constater
- l'effet recherché.
+ C'est dans la sortie PDF ou à l'impression que vous pourrez constater l'effet
+ recherché.
 \end_layout
 
 \begin_layout Standard
