@@ -5755,48 +5755,6 @@ Notez que les matrices décorées ignorent l'alignement vertical.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- LaTeX limits the number of matrix columns with decorations to 10.
- If you need more than 10
-\begin_inset space ~
-\end_inset
-
-columns, you have to add this line to the document preamble:
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-
-\backslash
-setcounter{MaxMatrixCols}{number}
-\end_layout
-
-\begin_layout Plain Layout
-
-\lang english
-where 
-\emph on
-number
-\emph default
- is the number of columns between 11 and 99.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -8021,6 +7979,19 @@ status collapsed
 Commandes ! J ! 
 \backslash
 jot
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -8054,13 +8025,6 @@ reference "sub:Séparation-des-lignes"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -10401,232 +10365,6 @@ En texte mathématique, les trémas et autres caractères accentués peuvent
 \end_layout
 
 \begin_layout Subsection
-Accents pour les opérateurs
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Accents ! pour les opérateurs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Avec les commandes 
-\series bold
-
-\backslash
-overset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! O ! 
-\backslash
-overset
-\end_layout
-
-\end_inset
-
- et 
-\series bold
-
-\backslash
-underset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! U ! 
-\backslash
-underset
-\end_layout
-
-\end_inset
-
- on peut placer des caractères respectivement au dessus ou en dessous d'un
- opérateur, pour l'accentuer.
- Avec la commande 
-\series bold
-
-\backslash
-sideset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! S ! 
-\backslash
-sideset
-\end_layout
-
-\end_inset
-
-, on peut placer des caractères avant ou après un opérateur.
- La syntaxe de la commande est:
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-sideset{caractère avant}{caractère après}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
- doit toujours se trouver avant l'opérateur qui est accentué.
-  Vous pouvez utiliser pour l'accentuation plusieurs caractères et même
- d'autres opérateurs ou des symboles.
- Pour placer avec 
-\series bold
-
-\backslash
-sideset,
-\series default
- par exemple seulement des caractères derrière un opérateur, ne mettez rien
- entre les deux premières accolades, mais ne les omettez pas.
-\end_layout
-
-\begin_layout Standard
-Par exemple la commande 
-\series bold
-
-\backslash
-sideset{
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-{
-\series default
-'
-\series bold
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-^
-\series bold
-n
-\series default
- donne:
-\begin_inset Formula 
-\[
-\sideset{}{'}\sum_{k=1}^{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La commande 
-\series bold
-
-\backslash
-overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\backslash
-maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Formula $\uparrow$
-\end_inset
-
-
-\series bold
-a
-\series default
- donne:
-\begin_inset Formula 
-\[
-\overset{a}{\maltese}
-\]
-
-\end_inset
-
-Comme on peut le voir dans le dernier exemple, avec 
-\series bold
-
-\backslash
-overset
-\series default
- et 
-\series bold
-
-\backslash
-underset
-\series default
- on peut aussi accentuer des symboles et des caractères; avec 
-\series bold
-
-\backslash
-sideset
-\series default
- ce n'est pas possible.
-\end_layout
-
-\begin_layout Subsection
 Accents pour plusieurs caractères
 \begin_inset Index idx
 status collapsed
@@ -12561,13 +12299,6 @@ mathsurround
 pt.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Boîtes et cadres
 \begin_inset Index idx
@@ -12825,13 +12556,6 @@ framebox
 fbox
 \series default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16099,6 +15823,13 @@ dotsint
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Limites des opérateurs
 \begin_inset CommandInset label
@@ -16689,6 +16420,249 @@ reference "sub:Opérateurs-personnalisés"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Décoration pour les opérateurs
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Opérateurs ! Décoration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Avec les commandes 
+\series bold
+
+\backslash
+overset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! O ! 
+\backslash
+overset
+\end_layout
+
+\end_inset
+
+ et 
+\series bold
+
+\backslash
+underset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! U ! 
+\backslash
+underset
+\end_layout
+
+\end_inset
+
+ on peut placer des caractères respectivement au dessus ou en dessous d'un
+ opérateur.
+ Avec la commande 
+\series bold
+
+\backslash
+sideset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! S ! 
+\backslash
+sideset
+\end_layout
+
+\end_inset
+
+, on peut placer des caractères avant ou après un grand opérateur.
+ La syntaxe de la commande est:
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+sideset{caractère avant}{caractère après}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset
+\series default
+ doit toujours se trouver avant l'opérateur.
+  Vous pouvez utiliser pour l'accentuation plusieurs caractères et même
+ d'autres opérateurs ou des symboles.
+ Pour placer par exemple seulement des caractères derrière un grand opérateur,
+ ne mettez rien entre les deux premières accolades, mais ne les omettez
+ pas.
+\end_layout
+
+\begin_layout Standard
+Par exemple la commande 
+\series bold
+
+\backslash
+sideset{
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\series default
+'
+\series bold
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+sum_k=1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+^
+\series bold
+n
+\series default
+ donne:
+\begin_inset Formula 
+\[
+\sideset{}{'}\sum_{k=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note: 
+\backslash
+sideset
+\series default
+ 
+\lang english
+can only be used to decorate
+\lang french
+ grands opérateurs, opérateurs binaires 
+\lang english
+are not allowed
+\lang french
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Avec 
+\series bold
+
+\backslash
+overset
+\series default
+ et 
+\series bold
+
+\backslash
+underset
+\series default
+ on peut aussi décorer des symboles et des caractères.
+ Pour exemple la commande 
+\series bold
+
+\backslash
+overset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+maltese
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series bold
+a
+\series default
+ donne:
+\begin_inset Formula 
+\[
+\overset{a}{\maltese}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -18109,6 +18083,13 @@ spce
 
 \series bold
 _i,j=1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -19720,13 +19701,6 @@ On peut insérer toutes les lettres grecques avec le bouton
  quand même en lettres droites.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Lettres minuscules
 \begin_inset Index idx
@@ -20640,6 +20614,13 @@ reference "sub:minuscules-grecques-droites"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -28453,6 +28434,19 @@ status collapsed
 Commandes ! J ! 
 \backslash
 jot
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -28742,6 +28736,13 @@ A & = & B\\
 C & \ne & A
 \end{eqnarray*}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -29391,8 +29392,15 @@ Puisque l'espacement des colonnes peut être choisi séparément pour chaque
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
-Environnement falign
+Environnement flalign
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Environnement-Flalign"
@@ -35097,20 +35105,13 @@ Maxima
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-Astuces
+Points divers
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Astuces
+Points divers
 \end_layout
 
 \end_inset

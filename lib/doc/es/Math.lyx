@@ -5814,44 +5814,6 @@ Hay que tener en cuenta que las matrices decoradas ignoran el alineamiento
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- LaTeX limita el número de columnas de matrices con decoraciones a 10.
- Si necesitas más de 10
-\begin_inset space ~
-\end_inset
-
-columnas, debes añadir la siguiente línea en el preámbulo del documento:
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-setcounter{MaxMatrixCols}{número}
-\end_layout
-
-\begin_layout Plain Layout
-donde 
-\emph on
-número
-\emph default
- es el número de columnas entre 11 y 99.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -10523,253 +10485,6 @@ En texto matemático, la diéresis y otros acentos pueden insertarse directament
 \end_layout
 
 \begin_layout Subsection
-Acentos para operadores
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Acentos ! en operadores
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Con los comandos 
-\series bold
-
-\backslash
-overset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! O ! 
-\backslash
-overset
-\end_layout
-
-\end_inset
-
- y 
-\series bold
-
-\backslash
-underset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! U ! 
-\backslash
-underset
-\end_layout
-
-\end_inset
-
- se pueden colocar caracteres sobre o bajo un operador, respectivamente.
- Con el comando 
-\series bold
-
-\backslash
-sideset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! S ! 
-\backslash
-sideset
-\end_layout
-
-\end_inset
-
- se pueden poner caracteres delante y detrás de un operador.
- El esquema del comando es:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset{carácter
-\series default
- 
-\series bold
-anterior}{carácter posterior}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
- siempre debe estar delante del operador que debe acentuarse.
- Se puede acentuar con varios caracteres e incluso con otros operadores
- y símbolos.
- Para colocar con
-\series bold
- 
-\backslash
-sideset
-\series default
- caracteres sólo detrás del operador, por ejemplo, no se escribe nada en
- el primer par de llaves, pero sin quitarlas.
- 
-\end_layout
-
-\begin_layout Standard
-Por ejemplo, el comando 
-\series bold
-
-\backslash
-sideset{
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-{
-\series default
-'
-\series bold
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-^
-\series bold
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-n
-\series default
- genera:
-\begin_inset Formula 
-\[
-\sideset{}{'}\sum_{k=1}^{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El comando 
-\series bold
-
-\backslash
-overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\backslash
-maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Formula $\uparrow$
-\end_inset
-
-
-\series bold
-a
-\series default
- genera:
-\begin_inset Formula 
-\[
-\overset{a}{\maltese}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Como se ve en el último ejemplo, con 
-\series bold
-
-\backslash
-overset
-\series default
- y 
-\series bold
-
-\backslash
-underset
-\series default
- también se pueden acentuar símbolos y caracteres; con 
-\series bold
-
-\backslash
-sideset
-\series default
- esto no es posible.
-\end_layout
-
-\begin_layout Subsection
 Acentos para varios caracteres
 \begin_inset Index idx
 status collapsed
@@ -12949,15 +12664,6 @@ fbox
 \begin_layout Standard
 \noindent
 \align center
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features tabularvalignment="middle">
@@ -13399,7 +13105,7 @@ name "sub:Marcos-sin-bordes"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Marcos ! sin borde
@@ -13728,7 +13434,7 @@ name "sub:Marcos-coloreados"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Marcos ! coloreados
@@ -14777,6 +14483,19 @@ status collapsed
 Comandos ! L ! 
 \backslash
 linewidth
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -15962,13 +15681,6 @@ correcto:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Para integrales múltiples hay los siguientes comandos:
 \begin_inset VSpace medskip
 \end_inset
@@ -16778,8 +16490,266 @@ reference "sub:Operadores-de-usuario"
 .
 \end_layout
 
+\begin_layout Subsection
+Decoración para operadores
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Operadores ! Decoración
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage newpage
+Con los comandos 
+\series bold
+
+\backslash
+overset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! O ! 
+\backslash
+overset
+\end_layout
+
+\end_inset
+
+ y 
+\series bold
+
+\backslash
+underset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! U ! 
+\backslash
+underset
+\end_layout
+
+\end_inset
+
+ se pueden colocar caracteres sobre o bajo un operador, respectivamente.
+ Con el comando 
+\series bold
+
+\backslash
+sideset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! S ! 
+\backslash
+sideset
+\end_layout
+
+\end_inset
+
+ se pueden poner caracteres delante y detrás de un operador grandes.
+ El esquema del comando es:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset{carácter
+\series default
+ 
+\series bold
+anterior}{carácter posterior}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset
+\series default
+ siempre debe estar delante del operador.
+ Se puede decorar con varios caracteres e incluso con otros operadores y
+ símbolos.
+ Para colocar con
+\series bold
+ 
+\backslash
+sideset
+\series default
+ caracteres sólo detrás del operador grandes, por ejemplo, no se escribe
+ nada en el primer par de llaves, pero sin quitarlas.
+ 
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, el comando 
+\series bold
+
+\backslash
+sideset{
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\series default
+'
+\series bold
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+sum_k=1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+^
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+n
+\series default
+ genera:
+\begin_inset Formula 
+\[
+\sideset{}{'}\sum_{k=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota: 
+\backslash
+sideset
+\series default
+ 
+\lang english
+can only be used
+\lang spanish
+ para decorar operador grandes, operadores binarios 
+\lang english
+are not allowed
+\lang spanish
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con 
+\series bold
+
+\backslash
+overset
+\series default
+ y 
+\series bold
+
+\backslash
+underset
+\series default
+ también se pueden decorar símbolos y caracteres.
+ Por ejemplo el comando 
+\series bold
+
+\backslash
+overset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+maltese
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series bold
+a
+\series default
+ genera:
+\begin_inset Formula 
+\[
+\overset{a}{\maltese}
+\]
+
 \end_inset
 
 
@@ -18186,6 +18156,13 @@ spce
 _i,j=1
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Tipografías
 \begin_inset Index idx
@@ -19224,7 +19201,7 @@ name "sub:Tamaños-de-tipografías"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tipografías ! tamaño
@@ -21282,15 +21259,6 @@ theta
 
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Símbolos
 \begin_inset ERT
@@ -22232,6 +22200,15 @@ bot
 
 
 \begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -26124,6 +26101,15 @@ A
 El primer método es preferible si la función se va a usar varias veces.
 \end_layout
 
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Límites
 \begin_inset Index idx
@@ -28377,7 +28363,7 @@ status collapsed
 El símbolo grado ° puede no obstante insertarse directamente si el preámbulo
  LaTeX contiene la línea:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Más sobre este asunto en 
@@ -28411,6 +28397,15 @@ else
 textdegree
 \backslash
 fi}
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -30380,6 +30375,15 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{el integrando es simétrico para \ensuremath{\phi=\pi}, por tanto}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -33847,6 +33851,15 @@ primer
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Veamos unos ejemplos:
 \end_layout
 
@@ -35328,15 +35341,6 @@ Maxima
 
 \series bold
 command-alternatives break-paragraph;math-extern maxima
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

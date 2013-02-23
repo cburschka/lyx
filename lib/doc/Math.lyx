@@ -5827,44 +5827,6 @@ Note that decorated matrices ignore the vertical alignment.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- LaTeX limits the number of matrix columns with decorations to 10.
- If you need more than 10
-\begin_inset space ~
-\end_inset
-
-columns, you have to add this line to the document preamble:
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-setcounter{MaxMatrixCols}{number}
-\end_layout
-
-\begin_layout Plain Layout
-where 
-\emph on
-number
-\emph default
- is the number of columns between 11 and 99.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -10438,240 +10400,6 @@ In mathematical text, umlauts and other accented characters can directly
 \end_layout
 
 \begin_layout Subsection
-Accents for Operators
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Accents ! for operators
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-With the commands 
-\series bold
-
-\backslash
-overset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! O ! 
-\backslash
-overset
-\end_layout
-
-\end_inset
-
- and 
-\series bold
-
-\backslash
-underset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! U ! 
-\backslash
-underset
-\end_layout
-
-\end_inset
-
- characters can be placed above or below an operator, respectively, to accent
- it.
- With the command 
-\series bold
-
-\backslash
-sideset
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! S ! 
-\backslash
-sideset
-\end_layout
-
-\end_inset
-
- characters can be set before and behind an operator.
- The command scheme is:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset{character
-\series default
- 
-\series bold
-before}{character
-\series default
- 
-\series bold
-behind}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
- must always be before the operator that should be accented.
- You can accent with several characters and even with other operators and
- symbols.
- To place with 
-\series bold
-
-\backslash
-sideset
-\series default
- for example only characters behind an operator, write nothing between the
- first braces but don't omit the braces.
-\end_layout
-
-\begin_layout Standard
-For example the command 
-\series bold
-
-\backslash
-sideset{
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-{
-\series default
-'
-\series bold
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\backslash
-sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-^
-\series bold
-n
-\series default
- produces:
-\begin_inset Formula 
-\[
-\sideset{}{'}\sum_{k=1}^{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The command 
-\series bold
-
-\backslash
-overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\backslash
-maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Formula $\uparrow$
-\end_inset
-
-
-\series bold
-a
-\series default
- produces:
-\begin_inset Formula 
-\[
-\overset{a}{\maltese}
-\]
-
-\end_inset
-
-As seen in the last example, with 
-\series bold
-
-\backslash
-overset
-\series default
- and 
-\series bold
-
-\backslash
-underset
-\series default
- symbols and characters can also be accented; with 
-\series bold
-
-\backslash
-sideset
-\series default
- this is not possible.
-\end_layout
-
-\begin_layout Subsection
 Accents for several Characters
 \begin_inset Index idx
 status collapsed
@@ -11177,6 +10905,13 @@ A=B
 \underset{***}{A=B}
 \]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -12859,6 +12594,13 @@ framebox
 fbox
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15515,6 +15257,19 @@ status collapsed
 Commands ! P ! 
 \backslash
 prod
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16130,6 +15885,13 @@ dotsint
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Operator Limits
 \begin_inset CommandInset label
@@ -16688,8 +16450,242 @@ reference "sub:Self-defined-Operators"
 .
 \end_layout
 
+\begin_layout Subsection
+Decoration for Operators
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Operators ! Decoration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage newpage
+With the commands 
+\series bold
+
+\backslash
+overset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! O ! 
+\backslash
+overset
+\end_layout
+
+\end_inset
+
+ and 
+\series bold
+
+\backslash
+underset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! U ! 
+\backslash
+underset
+\end_layout
+
+\end_inset
+
+ characters can be placed above or below an operator, respectively.
+ With the command 
+\series bold
+
+\backslash
+sideset
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! S ! 
+\backslash
+sideset
+\end_layout
+
+\end_inset
+
+ characters can be set before and behind a big operator.
+ The command scheme is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset{character
+\series default
+ 
+\series bold
+before}{character
+\series default
+ 
+\series bold
+behind}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+sideset
+\series default
+ must always be before the operator.
+ You can decorate with several characters and even with other operators
+ and symbols.
+ To place for example only characters behind a big operator, write nothing
+ between the first braces but don't omit the braces.
+\end_layout
+
+\begin_layout Standard
+For example the command 
+\series bold
+
+\backslash
+sideset{
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\series default
+'
+\series bold
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+sum_k=1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+^
+\series bold
+n
+\series default
+ produces:
+\begin_inset Formula 
+\[
+\sideset{}{'}\sum_{k=1}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note: 
+\backslash
+sideset
+\series default
+ can only be used to decorate big operators, binary operators are not allowed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+overset
+\series default
+ and 
+\series bold
+
+\backslash
+underset
+\series default
+ can also be used to decorate symbols and characters.
+ For example, the command 
+\series bold
+
+\backslash
+overset
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+maltese
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series bold
+a
+\series default
+ produces:
+\begin_inset Formula 
+\[
+\overset{a}{\maltese}
+\]
+
 \end_inset
 
 
@@ -21199,13 +21195,6 @@ theta
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -27972,13 +27961,6 @@ textdegree
 fi}
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Formula Styles
 \begin_inset CommandInset label
@@ -29948,13 +29930,6 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Formula Numbering
 \begin_inset Index idx
@@ -31720,6 +31695,13 @@ target "run:Formula-numbering.lyx"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Chemical Symbols and Equations
 \begin_inset CommandInset label
@@ -32384,7 +32366,27 @@ Note:
 \backslash
 ce
 \series default
- box will lead to LaTeX errors.
+ box will lead to LaTeX errors due to a LyX bug.
+\color inherit
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #8566"
+target "http://www.lyx.org/trac/ticket/8566"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\color none
  In this case TeX code has to be used like for 
 \series bold
 
@@ -33039,6 +33041,13 @@ Specific
 Manuals
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -34781,7 +34790,7 @@ LyX Functions
 \end_inset
 
 g.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 bind the 
@@ -34802,20 +34811,13 @@ Maxima
 command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-Tips
+Miscellaneous
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tips
+Miscellaneous
 \end_layout
 
 \end_inset
@@ -35358,6 +35360,19 @@ status collapsed
 Commands ! G ! 
 \backslash
 genfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35616,13 +35631,6 @@ newcommand{
 fracS}[3][]{
 \backslash
 genfrac{}{}{#1}{}{#2}{#3}}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -36141,6 +36149,13 @@ status collapsed
 fi 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -37066,13 +37081,6 @@ status collapsed
 fi 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
