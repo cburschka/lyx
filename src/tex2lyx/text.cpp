@@ -2425,6 +2425,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!s.empty()) {
 					context.check_layout(os);
 					os << to_utf8(s);
+					if (!rem.empty())
+						output_ert_inset(os,
+							to_utf8(rem), context);
 				} else
 					// we did not find a non-ert version
 					output_ert_inset(os, name, context);
@@ -3255,34 +3258,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 		}
 
-		// the TIPA Combining diacritical marks
-		else if (is_known(t.cs(), known_tipa_marks) || t.cs() == "textvertline") {
-			preamble.registerAutomaticallyLoadedPackage("tipa");
-			preamble.registerAutomaticallyLoadedPackage("tipx");
-			context.check_layout(os);
-			if (t.cs() == "textvertline") {
-				os << "|";
-				skip_braces(p);
-				continue;
-			}
-			// try to see whether the string is in unicodesymbols
-			bool termination;
-			docstring rem;
-			string content = trimSpaceAndEol(p.verbatim_item());
-			string command = t.asInput() + "{" + content + "}";
-			set<string> req;
-			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
-				Encodings::TEXT_CMD | Encodings::MATH_CMD,
-				termination, rem, &req);
-			if (!s.empty()) {
-				if (!rem.empty())
-					cerr << "When parsing " << command
-					     << ", result is " << to_utf8(s)
-					     << "+" << to_utf8(rem) << endl;
-				os << content << to_utf8(s);
-			} else
-				// we did not find a non-ert version
-				output_ert_inset(os, command, context);
+		else if (t.cs() == "textvertline") {
+			// FIXME: This is not correct, \textvertline is higher than |
+			os << "|";
+			skip_braces(p);
+			continue;
 		}
 
 		else if (t.cs() == "tone" ) {
@@ -3304,11 +3284,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				Encodings::TEXT_CMD | Encodings::MATH_CMD,
 				termination, rem, &req);
 			if (!s.empty()) {
-				if (!rem.empty())
-					cerr << "When parsing " << command
-					     << ", result is " << to_utf8(s)
-						 << "+" << to_utf8(rem) << endl;
 				os << to_utf8(s);
+				if (!rem.empty())
+					output_ert_inset(os, to_utf8(rem), context);
 			} else
 				// we did not find a non-ert version
 				output_ert_inset(os, command, context);
@@ -3907,33 +3885,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// \={o} instead of \= o.
 		else if (t.cs() == "=" && (flags & FLAG_TABBING))
 			output_ert_inset(os, t.asInput(), context);
-
-		// accents (see Table 6 in Comprehensive LaTeX Symbol List)
-		else if (t.cs().size() == 1
-			 && contains("\"'.=^`bcdHkrtuv~", t.cs())) {
-			context.check_layout(os);
-			// try to see whether the string is in unicodesymbols
-			bool termination;
-			docstring rem;
-			string command = t.asInput() + "{"
-				+ trimSpaceAndEol(p.verbatim_item())
-				+ "}";
-			set<string> req;
-			docstring s = encodings.fromLaTeXCommand(from_utf8(command),
-				Encodings::TEXT_CMD | Encodings::MATH_CMD,
-				termination, rem, &req);
-			if (!s.empty()) {
-				if (!rem.empty())
-					cerr << "When parsing " << command
-					     << ", result is " << to_utf8(s)
-					     << "+" << to_utf8(rem) << endl;
-				os << to_utf8(s);
-				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
-					preamble.registerAutomaticallyLoadedPackage(*it);
-			} else
-				// we did not find a non-ert version
-				output_ert_inset(os, command, context);
-		}
 
 		else if (t.cs() == "\\") {
 			context.check_layout(os);
@@ -4607,15 +4558,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// try to see whether the string is in unicodesymbols
 			// Only use text mode commands, since we are in text mode here,
 			// and math commands may be invalid (bug 6797)
-			bool termination;
-			docstring rem;
-			set<string> req;
 			string name = t.asInput();
 			// handle the dingbats and Cyrillic
 			if (name == "\\ding" || name == "\\textcyr")
 				name = name + '{' + p.getArg('{', '}') + '}';
 			// handle the ifsym characters
-			if (name == "\\textifsymbol") {
+			else if (name == "\\textifsymbol") {
 				string const optif = p.getFullOpt();
 				string const argif = p.getArg('{', '}');
 				name = name + optif + '{' + argif + '}';
@@ -4623,84 +4571,99 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// handle the \ascii characters
 			// the case of \ascii within braces, as LyX outputs it, is already
 			// handled for t.cat() == catBegin
-			if (name == "\\ascii") {
+			else if (name == "\\ascii") {
 				// the code is "\asci\xxx"
 				name = "{" + name + p.get_token().asInput() + "}";
 				skip_braces(p);
 			}
 			// handle some TIPA special characters
-			if (name == "\\textglobfall") {
-				name = "End";
-				skip_braces(p);
+			else if (preamble.isPackageUsed("tipa")) {
+				if (name == "\\textglobfall") {
+					name = "End";
+					skip_braces(p);
+				} else if (name == "\\s") {
+					// fromLaTeXCommand() does not yet
+					// recognize tipa short cuts
+					name = "\\textsyllabic";
+				} else if (name == "\\=" &&
+				           p.next_token().asInput() == "*") {
+					// fromLaTeXCommand() does not yet
+					// recognize tipa short cuts
+					p.get_token();
+					name = "\\b";
+				} else if (name == "\\textdoublevertline") {
+					// FIXME: This is not correct,
+					// \textvertline is higher than \textbardbl
+					name = "\\textbardbl";
+					skip_braces(p);
+				} else if (name == "\\!" ) {
+					if (p.next_token().asInput() == "b") {
+						p.get_token();	// eat 'b'
+						name = "\\texthtb";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "d") {
+						p.get_token();
+						name = "\\texthtd";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "g") {
+						p.get_token();
+						name = "\\texthtg";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "G") {
+						p.get_token();
+						name = "\\texthtscg";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "j") {
+						p.get_token();
+						name = "\\texthtbardotlessj";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "o") {
+						p.get_token();
+						name = "\\textbullseye";
+						skip_braces(p);
+					}
+				} else if (name == "\\*" ) {
+					if (p.next_token().asInput() == "k") {
+						p.get_token();
+						name = "\\textturnk";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "r") {
+						p.get_token();	// eat 'b'
+						name = "\\textturnr";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "t") {
+						p.get_token();
+						name = "\\textturnt";
+						skip_braces(p);
+					} else if (p.next_token().asInput() == "w") {
+						p.get_token();
+						name = "\\textturnw";
+						skip_braces(p);
+					}
+				}
 			}
-			if (name == "\\textdoublevertline") {
-				name = "\\textbardbl";
-				skip_braces(p);
-			}
-			if (name == "\\!" ) {
-				if (p.next_token().asInput() == "b") {
-					p.get_token();	// eat 'b'
-					name = "\\texthtb";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "d") {
-					p.get_token();
-					name = "\\texthtd";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "g") {
-					p.get_token();
-					name = "\\texthtg";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "G") {
-					p.get_token();
-					name = "\\texthtscg";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "j") {
-					p.get_token();
-					name = "\\texthtbardotlessj";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "o") {
-					p.get_token();
-					name = "\\textbullseye";
-					skip_braces(p);
-				}
-			}
-			if (name == "\\*" ) {
-				if (p.next_token().asInput() == "k") {
-					p.get_token();
-					name = "\\textturnk";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "r") {
-					p.get_token();	// eat 'b'
-					name = "\\textturnr";
-					skip_braces(p);
-				}				
-				if (p.next_token().asInput() == "t") {
-					p.get_token();
-					name = "\\textturnt";
-					skip_braces(p);
-				}
-				if (p.next_token().asInput() == "w") {
-					p.get_token();
-					name = "\\textturnw";
-					skip_braces(p);
-				}				
+			if ((name.size() == 2 &&
+			     contains("\"'.=^`bcdHkrtuv~", name[1]) &&
+			     p.next_token().asInput() != "*") ||
+			    is_known(name.substr(1), known_tipa_marks)) {
+				// name is a command that corresponds to a
+				// combining character in unicodesymbols.
+				// Append the argument, fromLaTeXCommand()
+				// will either convert it to a single
+				// character or a combining sequence.
+				name += '{' + p.verbatim_item() + '}';
 			}
 			// now get the character from unicodesymbols
+			bool termination;
+			docstring rem;
+			set<string> req;
 			docstring s = encodings.fromLaTeXCommand(from_utf8(name),
 					Encodings::TEXT_CMD, termination, rem, &req);
 			if (!s.empty()) {
-				if (!rem.empty())
-					cerr << "When parsing " << t.cs()
-					     << ", result is " << to_utf8(s)
-					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
 				os << to_utf8(s);
+				if (!rem.empty())
+					output_ert_inset(os, to_utf8(rem), context);
 				if (termination)
 					skip_spaces_braces(p);
 				for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
@@ -4720,14 +4683,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			output_ert_inset(os, s + ' ', context);
 			*/
 			else {
-				string name2 = t.asInput();
-				if (p.next_token().asInput() == "*") {
+				if (t.asInput() == name &&
+				    p.next_token().asInput() == "*") {
 					// Starred commands like \vspace*{}
 					p.get_token();	// Eat '*'
-					name2 += '*';
+					name += '*';
 				}
-				if (!parse_command(name2, p, os, outer, context))
-					output_ert_inset(os, name2, context);
+				if (!parse_command(name, p, os, outer, context))
+					output_ert_inset(os, name, context);
 			}
 		}
 

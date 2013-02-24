@@ -559,14 +559,28 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 	bool const mathmode = cmdtype & MATH_CMD;
 	bool const textmode = cmdtype & TEXT_CMD;
 	docstring symbols;
-	size_t i = 0;
 	size_t const cmdend = cmd.size();
+	size_t prefix = 0;
 	CharInfoMap::const_iterator const uniend = unicodesymbols.end();
-	for (size_t j = 0; j < cmdend; ++j) {
+	for (size_t i = 0, j = 0; j < cmdend; ++j) {
 		// Also get the char after a backslash
-		if (j + 1 < cmdend && cmd[j] == '\\')
+		if (j + 1 < cmdend && cmd[j] == '\\') {
 			++j;
+			prefix = 1;
+			// Detect things like \=*{e} as well
+			if (j + 3 < cmdend && cmd[j+1] == '*' &&
+			    cmd[j+2] == '{') {
+				++j;
+				prefix = 2;
+			}
+		}
+		// position of the last character before a possible macro
+		// argument
+		size_t m = j;
 		// If a macro argument follows, get it, too
+		// Do it here only for single character commands. Other
+		// combining commands need this too, but they are handled in
+		// the loop below for performance reasons.
 		if (j + 1 < cmdend && cmd[j + 1] == '{') {
 			size_t k = j + 1;
 			int count = 1;
@@ -579,12 +593,19 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			}
 			if (k != docstring::npos)
 				j = k;
+		} else if (m + 1 < cmdend && isAlphaASCII(cmd[m])) {
+			while (m + 2 < cmdend && isAlphaASCII(cmd[m+1]))
+				m++;
 		}
 		// Start with this substring and try augmenting it when it is
 		// the prefix of some command in the unicodesymbols file
-		docstring const subcmd = cmd.substr(i, j - i + 1);
+		docstring subcmd = cmd.substr(i, j - i + 1);
 
 		CharInfoMap::const_iterator it = unicodesymbols.begin();
+		// First part of subcmd which might be a combining character
+		docstring combcmd = (m == j) ? docstring() : cmd.substr(i, m - i + 1);
+		// The combining character of combcmd if it exists
+		CharInfoMap::const_iterator combining = uniend;
 		size_t unicmd_size = 0;
 		char_type c = 0;
 		for (; it != uniend; ++it) {
@@ -592,6 +613,9 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 							: docstring();
 			docstring const text = textmode ? it->second.textcommand
 							: docstring();
+			if (!combcmd.empty() && it->second.combining() &&
+			    (math == combcmd || text == combcmd))
+				combining = it;
 			size_t cur_size = max(math.size(), text.size());
 			// The current math or text unicode command cannot
 			// match, or we already matched a longer one
@@ -618,6 +642,26 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 
 			// If this is an exact match, we found a (longer)
 			// matching entry in the unicodesymbols file.
+			if (math != tmp && text != tmp)
+				continue;
+			// If we found a combining command, we need to append
+			// the macro argument if this has not been done above.
+			if (tmp == combcmd && combining != uniend &&
+			    k < cmdend && cmd[k] == '{') {
+				size_t l = k;
+				int count = 1;
+				while (l < cmdend && count && l != docstring::npos) {
+					l = cmd.find_first_of(from_ascii("{}"), l + 1);
+					if (cmd[l] == '{')
+						++count;
+					else
+						--count;
+				}
+				if (l != docstring::npos) {
+					j = l;
+					subcmd = cmd.substr(i, j - i + 1);
+				}
+			}
 			// If the entry doesn't start with '\', we take note
 			// of the match and continue (this is not a ultimate
 			// acceptance, as some other entry may match a longer
@@ -627,12 +671,13 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			// (nonletter) char macro, or nothing else follows,
 			// or what follows is a nonletter char, or the last
 			// character is a }.
-			if ((math == tmp || text == tmp)
-			    && (tmp[0] != '\\'
-				   || (tmp.size() == 2 && !isAlphaASCII(tmp[1]))
+			else if (tmp[0] != '\\'
+				   || (tmp.size() == prefix + 1 &&
+				       !isAlphaASCII(tmp[1]) &&
+				       (prefix == 1 || !isAlphaASCII(tmp[2])))
 				   || k == cmdend 
 				   || !isAlphaASCII(cmd[k])
-				   || tmp[tmp.size() - 1] == '}')
+				   || tmp[tmp.size() - 1] == '}'
 				 ) {
 				c = it->first;
 				j = k - 1;
@@ -654,7 +699,39 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 		}
 		if (unicmd_size)
 			symbols += c;
-		else if (j + 1 == cmdend) {
+		else if (combining != uniend &&
+		         prefixIs(subcmd, combcmd + '{')) {
+			// We know that subcmd starts with combcmd and
+			// contains an argument in braces.
+			docstring const arg = subcmd.substr(
+				combcmd.length() + 1,
+				subcmd.length() - combcmd.length() - 2);
+			// If arg is a single character we can construct a
+			// combining sequence.
+			char_type a;
+			bool argcomb = false;
+			if (arg.size() == 1 && isAlnumASCII(arg[0]))
+				a = arg[0];
+			else {
+				// Use the version of fromLaTeXCommand() that
+				// parses only one command, since we cannot
+				// use more than one character.
+				bool dummy = false;
+				set<string> r;
+				a = fromLaTeXCommand(arg, cmdtype, argcomb,
+				                     dummy, &r);
+				if (a && req && !argcomb)
+					req->insert(r.begin(), r.end());
+			}
+			if (a && !argcomb) {
+				// In unicode the combining character comes
+				// after its base
+				symbols += a;
+				symbols += combining->first;
+				unicmd_size = 2;
+			}
+		}
+		if (j + 1 == cmdend && !unicmd_size) {
 			// No luck. Return what remains
 			rem = cmd.substr(i);
 			if (needsTermination && !rem.empty()) {
