@@ -2430,6 +2430,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					if (!rem.empty())
 						output_ert_inset(os,
 							to_utf8(rem), context);
+					for (set<string>::const_iterator it = req.begin();
+					     it != req.end(); ++it)
+						preamble.registerAutomaticallyLoadedPackage(*it);
 				} else
 					// we did not find a non-ert version
 					output_ert_inset(os, name, context);
@@ -3279,6 +3282,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << to_utf8(s);
 				if (!rem.empty())
 					output_ert_inset(os, to_utf8(rem), context);
+				for (set<string>::const_iterator it = req.begin();
+				     it != req.end(); ++it)
+					preamble.registerAutomaticallyLoadedPackage(*it);
 			} else
 				// we did not find a non-ert version
 				output_ert_inset(os, command, context);
