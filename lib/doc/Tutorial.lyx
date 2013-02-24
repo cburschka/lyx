@@ -3637,9 +3637,11 @@ Delimiter
  dialog.
  However, those parentheses will be the same size as regular text, which
  will look bad if you have a big fraction or matrix inside the parentheses.
- So it is better in this case to use one of the three delimiter buttons
- that insert them directly, for example, as a pair of parentheses 
-\begin_inset Formula $\left(\,\right)$
+ So it is better to use one of the three delimiter buttons that insert them
+ directly, for example 
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
 \end_inset
 
 .

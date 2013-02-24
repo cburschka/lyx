@@ -428,7 +428,7 @@ ejemplo_con_lyx.lyx
 \begin_layout Standard
 Los archivos de ejemplo se pueden encontrar en el directorio 
 \family typewriter
-examples
+examples/es
 \family default
 , que puedes (sólo con Linux) conseguir seleccionando 
 \family sans
@@ -3815,8 +3815,10 @@ Delimitadores
  Sin embargo, estos paréntesis tendrán el mismo tamaño que el texto normal,
  lo cual quedará bastante mal si encierran una fracción o una matriz grande.
  En estos casos es mejor usar uno de los tres botones para insertar directamente
- los delimitadores, por ejemplo un par de 
-\begin_inset Formula $\left(\right)$
+ los delimitadores, por ejemplo 
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
 \end_inset
 
 .

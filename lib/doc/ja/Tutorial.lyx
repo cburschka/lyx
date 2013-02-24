@@ -317,7 +317,7 @@ LyXをはじめよう
 も読み込んでおきたいと思われるかもしれません（これをあなたがすでにLyXの中で読んでいるのでなければ）。このようにしておけば、自分でファイルを書いてるときも、こ
 れらの説明書を読むことができます
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これらを見れば、LyXの多くの機能をどのように使うか、良い例を見つけることもできるでしょう。
@@ -363,7 +363,7 @@ example_lyxified.lyx
 \begin_layout Standard
 用例ファイルは、LyXがインストールされたフォルダの
 \family typewriter
-example
+examples/ja
 \family default
 ディレクトリに入っています。あなたが作業する文書を作るために、元となる文書を開き、
 \family sans
@@ -2563,7 +2563,13 @@ arg   "dialog-show mathdelimiter"
 区切り記号
 \family default
 ダイアログを使わずに数式モードで直接括弧を入力することもできます。しかしながら、このようにして入力した括弧は、普通の文字と同じ大きさなので、括弧の中に大きな分数
-や行列が入っていると醜悪な出力になります。そういう場合は、（）の対などを直接挿入する三つの区切り記号ボタンのうちのいずれを使った方がいいでしょう。
+や行列が入っていると醜悪な出力になります。そういう場合は、（）の対などを直接挿入する三つの区切り記号ボタンのうちのいずれを使った方がいいでしょう
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Standard
