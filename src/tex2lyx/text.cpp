@@ -3806,16 +3806,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (t.cs() == "-") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\-\n";
-		}
-
 		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#"
 			    || t.cs() == "$" || t.cs() == "{" || t.cs() == "}"
-			    || t.cs() == "%") {
+			    || t.cs() == "%" || t.cs() == "-") {
 			context.check_layout(os);
-			os << t.cs();
+			if (t.cs() == "-")
+				os << "\\SpecialChar \\-\n";
+			else
+				os << t.cs();
 		}
 
 		else if (t.cs() == "char") {
