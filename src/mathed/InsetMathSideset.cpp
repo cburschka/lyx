@@ -39,13 +39,16 @@ namespace {
 
 namespace lyx {
 
-InsetMathSideset::InsetMathSideset(Buffer * buf)
-	: InsetMathNest(buf, 5)
+InsetMathSideset::InsetMathSideset(Buffer * buf, bool scriptl, bool scriptr)
+	: InsetMathNest(buf, 3 + scriptl + scriptr), scriptl_(scriptl),
+	  scriptr_(scriptr)
 {}
 
 
-InsetMathSideset::InsetMathSideset(Buffer * buf, MathAtom const & at)
-	: InsetMathNest(buf, 5)
+InsetMathSideset::InsetMathSideset(Buffer * buf, bool scriptl, bool scriptr,
+                                   MathAtom const & at)
+	: InsetMathNest(buf, 3 + scriptl + scriptr), scriptl_(scriptl),
+	  scriptr_(scriptr)
 {
 	nuc().push_back(at);
 }
@@ -76,7 +79,13 @@ bool InsetMathSideset::idxLast(Cursor & cur) const
 int InsetMathSideset::dybt(BufferView const & bv, int asc, int des, bool top) const
 {
 	bool isCharBox = nuc().empty() ? false : isAlphaSymbol(nuc().back());
-	int dasc = max(bl().dimension(bv).ascent(), br().dimension(bv).ascent());
+	int dasc = 0;
+	if (scriptl_ && scriptr_)
+		dasc = max(bl().dimension(bv).ascent(), br().dimension(bv).ascent());
+	else if (scriptl_)
+		dasc = bl().dimension(bv).ascent();
+	else if (scriptr_)
+		dasc = br().dimension(bv).ascent();
 	int slevel = nuc().slevel();
 	int ascdrop = dasc - slevel;
 	int desdrop = isCharBox ? 0 : des + nuc().sshift();
@@ -84,8 +93,20 @@ int InsetMathSideset::dybt(BufferView const & bv, int asc, int des, bool top) co
 	des = max(desdrop, ascdrop);
 	des = max(mindes, des);
 	int minasc = nuc().minasc();
-	ascdrop = isCharBox ? 0 : asc - min(tl().mindes(), tr().mindes());
-	int udes = max(bl().dimension(bv).descent(), tr().dimension(bv).descent());
+	ascdrop = 0;
+	if (!isCharBox && (scriptl_ || scriptr_)) {
+		if (scriptl_ && scriptr_)
+			ascdrop = asc - min(tl().mindes(), tr().mindes());
+		else if (scriptl_)
+			ascdrop = asc - tl().mindes();
+		else if (scriptr_)
+			ascdrop = asc - tr().mindes();
+	}
+	int udes = 0;
+	if (scriptl_)
+		udes = bl().dimension(bv).descent();
+	if (scriptr_)
+		udes = max(udes, br().dimension(bv).descent());
 	asc = udes + nuc().sshift();
 	asc = max(ascdrop, asc);
 	asc = max(minasc, asc);
@@ -106,7 +127,13 @@ int InsetMathSideset::dybt(BufferView const & bv, int asc, int des, bool top) co
 int InsetMathSideset::dyb(BufferView const & bv) const
 {
 	int nd = ndes(bv);
-	int des = max(bl().dimension(bv).ascent(), br().dimension(bv).ascent());
+	int des = 0;
+	if (scriptl_ && scriptr_)
+		des = max(bl().dimension(bv).ascent(), br().dimension(bv).ascent());
+	else if (scriptl_)
+		des = bl().dimension(bv).ascent();
+	else if (scriptr_)
+		des = br().dimension(bv).ascent();
 	int na = nasc(bv);
 	des = dybt(bv, na, nd, false);
 	return des;
@@ -116,7 +143,13 @@ int InsetMathSideset::dyb(BufferView const & bv) const
 int InsetMathSideset::dyt(BufferView const & bv) const
 {
 	int na = nasc(bv);
-	int asc = max(tl().dimension(bv).descent(), tr().dimension(bv).descent());
+	int asc = 0;
+	if (scriptl_ && scriptr_)
+		asc = max(tl().dimension(bv).descent(), tr().dimension(bv).descent());
+	else if (scriptl_)
+		asc = tl().dimension(bv).descent();
+	else if (scriptr_)
+		asc = tr().dimension(bv).descent();
 	int nd = ndes(bv);
 	asc = dybt(bv, na, nd, true);
 	return asc;
@@ -170,11 +203,23 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 	Dimension dimbr;
 	Dimension dimtr;
 	nuc().metrics(mi, dimn);
+	if (!scriptl_) {
+		bl().metrics(mi, dimbl);
+		dimtl = dimbl;
+	}
+	if (!scriptr_) {
+		br().metrics(mi, dimbr);
+		dimtr = dimbr;
+	}
 	ScriptChanger dummy(mi.base);
-	bl().metrics(mi, dimbl);
-	tl().metrics(mi, dimtl);
-	br().metrics(mi, dimbr);
-	tr().metrics(mi, dimtr);
+	if (scriptl_) {
+		bl().metrics(mi, dimbl);
+		tl().metrics(mi, dimtl);
+	}
+	if (scriptr_) {
+		br().metrics(mi, dimbr);
+		tr().metrics(mi, dimtr);
+	}
 
 	BufferView & bv = *mi.base.bv;
 	// FIXME: data copying... not very efficient.
@@ -196,11 +241,19 @@ void InsetMathSideset::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView & bv = *pi.base.bv;
 	nuc().draw(pi, x + dxn(bv), y);
+	if (!scriptl_)
+		bl().draw(pi, x          , y);
+	if (!scriptr_)
+		br().draw(pi, x + dxr(bv), y);
 	ScriptChanger dummy(pi.base);
-	bl().draw(pi, x          , y + dyb(bv));
-	tl().draw(pi, x          , y - dyt(bv));
-	br().draw(pi, x + dxr(bv), y + dyb(bv));
-	tr().draw(pi, x + dxr(bv), y - dyt(bv));
+	if (scriptl_) {
+		bl().draw(pi, x          , y + dyb(bv));
+		tl().draw(pi, x          , y - dyt(bv));
+	}
+	if (scriptr_) {
+		br().draw(pi, x + dxr(bv), y + dyb(bv));
+		tr().draw(pi, x + dxr(bv), y - dyt(bv));
+	}
 	drawMarkers(pi, x, y);
 }
 
@@ -227,14 +280,32 @@ void InsetMathSideset::drawT(TextPainter & pain, int x, int y) const
 
 
 
-bool InsetMathSideset::idxForward(Cursor &) const
+bool InsetMathSideset::idxForward(Cursor & cur) const
 {
+	if (!scriptl_ && cur.idx() == 1) {
+		// left => nucleus
+		cur.idx() = 0;
+		return true;
+	} else if (!scriptr_ && cur.idx() == 0) {
+		// nucleus => right
+		cur.idx() = 2 + scriptl_;
+		return true;
+	}
 	return false;
 }
 
 
-bool InsetMathSideset::idxBackward(Cursor &) const
+bool InsetMathSideset::idxBackward(Cursor & cur) const
 {
+	if (!scriptr_ && cur.idx() == (scriptl_ ? 3 : 2)) {
+		// right => nucleus
+		cur.idx() = 0;
+		return true;
+	} else if (!scriptl_ && cur.idx() == 0) {
+		// nucleus => left
+		cur.idx() = 1;
+		return true;
+	}
 	return false;
 }
 
@@ -245,11 +316,12 @@ bool InsetMathSideset::idxUpDown(Cursor & cur, bool up) const
 	if (cur.idx() == 0) {
 		// go up/down only if in the last position
 		// or in the first position
-		if (cur.pos() == cur.lastpos() || cur.pos() == 0) {
+		if ((scriptr_ && cur.pos() == cur.lastpos()) ||
+		    (scriptl_ && cur.pos() == 0)) {
 			if (cur.pos() == 0)
 				cur.idx() = up ? 2 : 1;
 			else
-				cur.idx() = up ? 4 : 3;
+				cur.idx() = (up ? 3 : 2) + scriptl_;
 			cur.pos() = 0;
 			return true;
 		}
@@ -257,7 +329,8 @@ bool InsetMathSideset::idxUpDown(Cursor & cur, bool up) const
 	}
 
 	// Are we 'up'?
-	if (cur.idx() == 2 || cur.idx() == 4) {
+	if ((scriptl_ && cur.idx() == 2) ||
+	    (scriptr_ && cur.idx() == (scriptl_ ? 4 : 3))) {
 		// can't go further up
 		if (up)
 			return false;
@@ -271,7 +344,8 @@ bool InsetMathSideset::idxUpDown(Cursor & cur, bool up) const
 	}
 
 	// Are we 'down'?
-	if (cur.idx() == 1 || cur.idx() == 3) {
+	if ((scriptl_ && cur.idx() == 1) ||
+	    (scriptr_ && cur.idx() == (scriptl_ ? 3 : 2))) {
 		// can't go further down
 		if (!up)
 			return false;
@@ -293,15 +367,24 @@ void InsetMathSideset::write(WriteStream & os) const
 	MathEnsurer ensurer(os);
 
 	os << "\\sideset";
-	for (int i = 0; i < 2; ++i) {
-		os << '{';
-		if (!cell(2*i+1).empty())
-			os << "_{" << cell(2*i+1) << '}';
-		if (!cell(2*i+2).empty())
-			os << "^{" << cell(2*i+2) << '}';
-		os << '}';
-	}
-	os << '{' << nuc() << '}';
+	os << '{';
+	if (scriptl_) {
+		if (!bl().empty())
+			os << "_{" << bl() << '}';
+		if (!tl().empty())
+			os << "^{" << tl() << '}';
+	} else
+		os << bl();
+	os << "}{";
+	if (scriptr_) {
+		if (!br().empty())
+			os << "_{" << br() << '}';
+		if (!tr().empty())
+			os << "^{" << tr() << '}';
+	} else
+		os << br();
+	os << '}';
+	os << nuc();
 
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
@@ -314,7 +397,7 @@ void InsetMathSideset::normalize(NormalStream & os) const
 
 	if (!bl().empty())
 		os << bl() << ' ';
-	if (!tl().empty())
+	if (scriptl_ && !tl().empty())
 		os << tl() << ' ';
 
 	if (!nuc().empty())
@@ -324,7 +407,7 @@ void InsetMathSideset::normalize(NormalStream & os) const
 
 	if (!br().empty())
 		os << br() << ' ';
-	if (!tr().empty())
+	if (scriptr_ && !tr().empty())
 		os << tr() << ' ';
 	os << ']';
 }
@@ -332,41 +415,52 @@ void InsetMathSideset::normalize(NormalStream & os) const
 
 void InsetMathSideset::mathmlize(MathStream & os) const
 {
-	os << MTag("mmultiscripts");
-
-	if (nuc().empty())
-		os << "<mrow />";
-	else
-		os << MTag("mrow") << nuc() << ETag("mrow");
-
-	if (br().empty())
-		os << "<none />";
-	else
-		os << MTag("mrow") << br() << ETag("mrow");
-	if (tr().empty())
-		os << "<none />";
-	else
-		os << MTag("mrow") << tr() << ETag("mrow");
-
-	if (bl().empty())
-		os << "<none />";
-	else
+	// FIXME This is only accurate if both scriptl_ and scriptr_ are true
+	if (!scriptl_)
 		os << MTag("mrow") << bl() << ETag("mrow");
-	if (tl().empty())
-		os << "<none />";
-	else
-		os << MTag("mrow") << tl() << ETag("mrow");
+	if (scriptl_ || scriptr_) {
+		os << MTag("mmultiscripts");
 
-	os << ETag("mmultiscripts");
+		if (nuc().empty())
+			os << "<mrow />";
+		else
+			os << MTag("mrow") << nuc() << ETag("mrow");
+
+		if (br().empty() || !scriptr_)
+			os << "<none />";
+		else
+			os << MTag("mrow") << br() << ETag("mrow");
+		if (tr().empty() || !scriptr_)
+			os << "<none />";
+		else
+			os << MTag("mrow") << tr() << ETag("mrow");
+
+		if (bl().empty() || !scriptl_)
+			os << "<none />";
+		else
+			os << MTag("mrow") << bl() << ETag("mrow");
+		if (tl().empty() || !scriptl_)
+			os << "<none />";
+		else
+			os << MTag("mrow") << tl() << ETag("mrow");
+
+		os << ETag("mmultiscripts");
+	}
+	if (!scriptr_)
+		os << MTag("mrow") << br() << ETag("mrow");
 }
 
 
 void InsetMathSideset::htmlize(HtmlStream & os) const
 {
-	bool const havebl = !bl().empty();
-	bool const havetl = !tl().empty();
-	bool const havebr = !br().empty();
-	bool const havetr = !tr().empty();
+	// FIXME This is only accurate if both scriptl_ and scriptr_ are true
+	bool const havebl = scriptl_ && !bl().empty();
+	bool const havetl = scriptl_ && !tl().empty();
+	bool const havebr = scriptr_ && !br().empty();
+	bool const havetr = scriptr_ && !tr().empty();
+
+	if (!scriptl_ && !bl().empty())
+		os << bl();
 
 	if (havebl && havetl)
 		os << MTag("span", "class='scripts'")
@@ -390,6 +484,9 @@ void InsetMathSideset::htmlize(HtmlStream & os) const
 		os << MTag("sub", "class='math'") << br() << ETag("sub");
 	else if (havetr)
 		os << MTag("sup", "class='math'") << tr() << ETag("sup");
+
+	if (!scriptr_ && !br().empty())
+		os << br();
 }
 
 

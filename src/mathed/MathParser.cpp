@@ -1445,23 +1445,29 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "sideset") {
 			// Here allowed formats are \sideset{_{bl}^{tl}}{_{br}^{tr}}{operator}
-			cell->push_back(MathAtom(new InsetMathSideset(buf)));
+			MathData ar[2];
+			InsetMathScript * script[2] = {0, 0};
 			for (int i = 0; i < 2; ++i) {
-				MathData ar;
-				parse(ar, FLAG_ITEM, mode);
-				if (!ar.empty()) {
-					InsetMathScript * script = (ar.size() == 1) ?
-						ar[0].nucleus()->asScriptInset() : 0;
-					if (!script) {
-						error("found invalid sideset argument");
-						break;
-					}
-					if (script->hasDown())
-						cell->back().nucleus()->cell(2 * i + 1) = script->down();
-					if (script->hasUp())
-						cell->back().nucleus()->cell(2 * i + 2) = script->up();
-				}
+				parse(ar[i], FLAG_ITEM, mode);
+				if (ar[i].size() == 1)
+					script[i] = ar[i][0].nucleus()->asScriptInset();
 			}
+			bool const hasscript[2] = {script[0] ? true : false, script[1] ? true : false};
+			cell->push_back(MathAtom(new InsetMathSideset(buf, hasscript[0], hasscript[1])));
+			if (hasscript[0]) {
+				if (script[0]->hasDown())
+					cell->back().nucleus()->cell(1) = script[0]->down();
+				if (script[0]->hasUp())
+					cell->back().nucleus()->cell(2) = script[0]->up();
+			} else
+				cell->back().nucleus()->cell(1) = ar[0];
+			if (hasscript[1]) {
+				if (script[1]->hasDown())
+					cell->back().nucleus()->cell(2 + hasscript[0]) = script[1]->down();
+				if (script[1]->hasUp())
+					cell->back().nucleus()->cell(3 + hasscript[0]) = script[1]->up();
+			} else
+				cell->back().nucleus()->cell(2 + hasscript[0]) = ar[1];
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 

@@ -25,9 +25,10 @@ namespace lyx {
 class InsetMathSideset : public InsetMathNest {
 public:
 	///
-	InsetMathSideset(Buffer * buf);
+	InsetMathSideset(Buffer * buf, bool scriptl, bool scriptr);
 	/// create inset with given nucleus
-	InsetMathSideset(Buffer * buf, MathAtom const & at);
+	InsetMathSideset(Buffer * buf, bool scriptl, bool scriptr,
+	                 MathAtom const & at);
 	///
 	mode_type currentMode() const { return MATH_MODE; }
 	///
@@ -63,22 +64,22 @@ public:
 	MathData const & nuc() const { return cell(0); };
 	/// returns nucleus
 	MathData & nuc()             { return cell(0); };
-	/// bottom left index
+	/// bottom left index or single left cell
 	MathData const & bl() const  { return cell(1); }
-	/// bottom left index
+	/// bottom left index or single left cell
 	MathData & bl()              { return cell(1); }
-	/// top left index
-	MathData const & tl() const  { return cell(2); }
-	/// top left index
-	MathData & tl()              { return cell(2); }
-	/// bottom right index
-	MathData const & br() const  { return cell(3); }
-	/// bottom right index
-	MathData & br()              { return cell(3); }
-	/// top right index
-	MathData const & tr() const  { return cell(4); }
-	/// top right index
-	MathData & tr()              { return cell(4); }
+	/// top left index or single left cell
+	MathData const & tl() const  { return cell(1 + scriptl_); }
+	/// top left index or single left cell
+	MathData & tl()              { return cell(1 + scriptl_); }
+	/// bottom right index or single right cell
+	MathData const & br() const  { return cell(2 + scriptl_); }
+	/// bottom right index or single right cell
+	MathData & br()              { return cell(2 + scriptl_); }
+	/// top right index or single right cell
+	MathData const & tr() const  { return cell(2 + scriptl_ + scriptr_); }
+	/// top right index or single right cell
+	MathData & tr()              { return cell(2 + scriptl_ + scriptr_); }
 	/// say that we have scripts
 	void infoize(odocstream & os) const;
 	///
@@ -105,6 +106,10 @@ private:
 	int ndes(BufferView const &) const;
 	/// returns subscript and superscript kerning of nucleus if any
 	int nker(BufferView const * bv) const;
+	/// Whether there are two left scripts or one single cell
+	bool scriptl_; 
+	/// Whether there are two right scripts or one single cell
+	bool scriptr_; 
 };
 
 
