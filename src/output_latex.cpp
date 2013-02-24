@@ -351,22 +351,24 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 				string const name = prefix + convert<string>(i);
 				if ((*lait).first == name) {
 					Layout::latexarg arg = (*lait).second;
+					docstring preset = arg.presetarg;
+					if (!arg.defaultarg.empty()) {
+						if (!preset.empty())
+							preset += ",";
+						preset += arg.defaultarg;
+					}
 					if (arg.mandatory) {
 						docstring ldelim = arg.ldelim.empty() ?
 								from_ascii("{") : arg.ldelim;
 						docstring rdelim = arg.rdelim.empty() ?
 								from_ascii("}") : arg.rdelim;
-						os << ldelim << arg.presetarg << rdelim;
-					} else if (!arg.presetarg.empty()) {
-						docstring ldelim = arg.mandatory ?
-								from_ascii("{") : from_ascii("[");
-						docstring rdelim = arg.mandatory ?
-								from_ascii("}") : from_ascii("]");
-						if (!arg.ldelim.empty())
-							ldelim = arg.ldelim;
-						if (!arg.rdelim.empty())
-							rdelim = arg.rdelim;
-						os << ldelim << arg.presetarg << rdelim;
+						os << ldelim << preset << rdelim;
+					} else if (!preset.empty()) {
+						docstring ldelim = arg.ldelim.empty() ?
+								from_ascii("[") : arg.ldelim;
+						docstring rdelim = arg.rdelim.empty() ?
+								from_ascii("]") : arg.rdelim;
+						os << ldelim << preset << rdelim;
 					} else if (find(required.begin(), required.end(),
 						   (*lait).first) != required.end()) {
 						docstring ldelim = arg.ldelim.empty() ?

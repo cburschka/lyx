@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 461
+\lyxformat 463
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11024,7 +11024,44 @@ status collapsed
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1355144578
+\change_inserted -712698321 1361701444
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1361701356
+DefaultArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1361701356
+[string]
+\end_layout
+
+\end_inset
+
+ defines an argument that is inserted if and only if no user-specified arguments
+ were given, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ if no argument inset has been inserted (note that also an empty argument
+ inset omits the DefaultArg).
+ Multiple arguments need to be separated by comma.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1361701337
 \begin_inset Flex Code
 status collapsed
 
@@ -11053,8 +11090,6 @@ status collapsed
  defines an argument that is inserted in any case (alone or in addition
  to user-specified arguments).
  Multiple arguments need to be separated by comma.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
