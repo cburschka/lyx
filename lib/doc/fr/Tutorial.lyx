@@ -588,7 +588,7 @@ exemple_lyxifie.lyx
 \begin_layout Standard
 Vous trouverez ces fichiers dans le répertoire 
 \family typewriter
-examples
+examples/fr
 \family default
 , du dossier d'installation de LyX.
  Ouvrez le document 
@@ -4413,7 +4413,13 @@ Délimiteurs
  ce qui sera peu agréable à voir si vous avez une grande fraction ou une
  matrice entre les parenthèses.
  Dans ce cas, il vaut mieux utiliser un des trois boutons qui insèrent directeme
-nt par exemple, une paire de parenthèses.
+nt par exemple 
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
+\end_inset
+
+.
  
 \end_layout
 

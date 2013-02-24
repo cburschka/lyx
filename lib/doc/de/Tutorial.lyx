@@ -497,7 +497,7 @@ beispiel_gelyxt.lyx
 \begin_layout Standard
 Die Beispieldateien finden Sie im Verzeichnis 
 \family typewriter
-[resources/]examples/de
+[Resources/]examples/de
 \family default
  des LyX-In\SpecialChar \-
 stal\SpecialChar \-
@@ -810,11 +810,8 @@ Bearbeiten
 
 \family sans
 Textstil\SpecialChar \menuseparator
-
-\lang english
-Customized
+Benutzerdefiniert
 \family default
-\lang ngerman
  (
 \begin_inset Info
 type  "icon"
@@ -830,30 +827,28 @@ Werkzeugleisten Die Schalterleisten unterhalb der Menüleiste bezeichnet
  Diese Schalter erlauben es Ihnen, oft verwendete Funktionen wie zum Beispiel
  
 \family sans
-\lang english
-Insert
+Mathe
 \begin_inset space ~
 \end_inset
 
-math
+einfügen
 \family default
 , 
 \family sans
-Insert
+Grafik
 \begin_inset space ~
 \end_inset
 
-graphics
+einfügen
 \family default
  und 
 \family sans
-Insert
+Tabelle
 \begin_inset space ~
 \end_inset
 
-table
+einfügen
 \family default
-\lang ngerman
  einfach anzuklicken.
  Wenn Sie den Mauszeiger eine kurze Zeit unbewegt über einem solchen Schalter
  positionieren, erscheint ein kleines hellgelbes Feld, das seine Funktion
@@ -895,7 +890,7 @@ Eingabe
 \family sans
 Tab
 \family default
- setzt den Cursor nicht auf den nächsten Tabulatorstop – ja, es 
+ setzt den Cursor nicht auf den nächsten Tabulatorstopp – ja, es 
 \emph on
 gibt
 \emph default
@@ -1703,27 +1698,25 @@ Sie haben nun also eine wunderschöne Stichpunktliste.
  Sie sollten sich die endgültige Form einmal in der Vorschau ansehen.
  Aber was, wenn Sie nachträglich entscheiden, dass Sie die Liste doch lieber
  als nummerierte Aufzählung hätten? Kein Problem, markieren Sie einfach
- die gesamte Liste
+ die gesamte Liste,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-LyX wird es Ihnen nicht ermöglichen, den Stern (oder Zahlen von nummerierten
- Abschnittsüberschriften
-\lang english
-)
-\lang ngerman
- vor dem ersten Listenelement mit auszuwählen, wenn Sie nicht den vorangehenden
+Sie können nicht den Stern (oder Zahlen von nummerierten Abschnittsüberschriften
+) vor dem ersten Listenelement mit auswählen, wenn Sie nicht den vorangehenden
  Absatz mit auswählen, was Sie vermutlich nicht wollen.
- 
-\lang english
-This is on purpose because the bullet or number depends on the document
- settings or text position, respectively.
+ Das ist gewollt, da das Zeichen oder die Nummer von den Dokumenteinstellungen
+ bzw.
+\begin_inset space \space{}
+\end_inset
+
+der Textposition abhängt.
 \end_layout
 
 \end_inset
 
-, und wählen Sie aus dem Umgebungsmenü den Typ 
+ und wählen Sie aus dem Umgebungsmenü den Typ 
 \family sans
 Aufzählung
 \family default
@@ -1772,7 +1765,7 @@ Eingabe
 \family sans
 Beschreibung
 \family default
-) oder durch einen Tabulatorstop
+) oder durch einen Tabulatorstopp
 \begin_inset Foot
 status collapsed
 
@@ -1963,14 +1956,6 @@ Tutorium
 \family sans
 book
 \family default
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-(KOMA-script)
-\family default
  erstellt.
  Die Dokumentklassen sind ein weiterer wichtiger Bestandteil des WYSIWYM-Prinzip
 s.
@@ -1992,17 +1977,11 @@ Dies ist normalerweise die Standardeinstellung von LyX, Sie können das aber
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
-
+ mit dem Knopf 
 \family sans
-\SpecialChar \menuseparator
 Als Dokument-Standards speichern
 \family default
-) in Ihrer Datei 
-\family typewriter
-~/.lyx/preferences
-\family default
- festlegen.
+) festlegen.
 \end_layout
 
 \end_inset
@@ -2015,7 +1994,6 @@ Als Dokument-Standards speichern
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 
 \family sans
@@ -2056,14 +2034,14 @@ von Haus aus
 \begin_inset Quotes grd
 \end_inset
 
- bereits den Satz (und die zusätzlichen Textumgebungen) von Artikeln für
- die American Mathematics Society (Dokumentklasse 
+ bereits den Satz (und die zusätzlichen Textumgebungen) von zum Beispiel
+ Artikeln für die American Mathematics Society (Dokumentklasse 
 \family sans
 article (AMS)
 \family default
 ) oder den Springer-Verlag (zum Beispiel 
 \family sans
-article (A&A)
+article (Springer)
 \family default
 ).
 \end_layout
@@ -2201,7 +2179,7 @@ wie report, zusätzlich Titelseiten usw.
 \begin_inset Text
 
 \begin_layout Plain Layout
-slides
+presentation
 \end_layout
 
 \end_inset
@@ -2210,7 +2188,7 @@ slides
 \begin_inset Text
 
 \begin_layout Plain Layout
-Overhead-Folien (schließt auch FoilTeX ein)
+Overhead-Folien
 \end_layout
 
 \end_inset
@@ -2230,7 +2208,7 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-viele Extras für Adressen, Unterschrift\SpecialChar \ldots{}
+Briefe, viele Extras für Adressen, Unterschrift\SpecialChar \ldots{}
 
 \end_layout
 
@@ -2695,52 +2673,37 @@ Seite
 OK
 \family default
 .
- 
-\lang english
-Then select 
-\begin_inset Quotes eld
+ Es wird eine Querverweismarke namens 
+\begin_inset Quotes gld
 \end_inset
 
-sec:About-This-Document
-\begin_inset Quotes erd
+Querverweis+Text: sec:Was-das-Tutorium
+\begin_inset Quotes grd
 \end_inset
 
- (it may be selected by default), and a reference marker will appear containing
- 
-\begin_inset Quotes eld
-\end_inset
-
-Ref+Text: sec:About-This-Document
-\begin_inset Quotes erd
-\end_inset
-
- (To be really correct, you should put a 
+ eingefügt.
+ (Um einen Zeilenumbruch zu verhindern, sollten Sie ein 
 \family sans
-Protected
+Geschütztes
 \begin_inset space ~
 \end_inset
 
-Space 
+Leerzeichen 
 \family default
-\lang ngerman
 (Tastenkürzel 
 \family sans
 Strg+Leertaste
 \family default
-)
-\lang english
- in between the word 
-\begin_inset Quotes eld
+) zwischen das Wort 
+\begin_inset Quotes gld
 \end_inset
 
-Section
-\begin_inset Quotes erd
+Abschnitt
+\begin_inset Quotes grd
 \end_inset
 
- and the reference.)
-\lang ngerman
- Alternativ dazu können Sie mit der rechten Maustaste auf eine Marke klicken
- und im erscheinenden Kontextmenü 
+ und den Querverweis einfügen.) Alternativ dazu können Sie mit der rechten
+ Maustaste auf eine Marke klicken und im erscheinenden Kontextmenü 
 \family sans
 Als Querverweis kopieren
 \family default
@@ -2975,21 +2938,11 @@ Kopieren
  Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
  anklicken.
  Umgekehrt können Sie eine Fußnote in gewöhnlichen Text umwandeln, indem
- Sie den Cursor vor den Fußnotentext stellen und die 
-\begin_inset Graphics
-	filename ../../images/math/leftarrow.png
-
+ Sie den Cursor vor den Fußnotentext stellen und die Rücktaste (
+\begin_inset Formula $\leftarrow$
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
--Taste drücken.
+) drücken.
 \end_layout
 
 \begin_layout Standard
@@ -3421,7 +3374,7 @@ arg   "math-mode"
 \end_inset
 
 .
- Die Formel wird nun in blauer Farbe angezeigtund jetzt ansehnlich gesetzt
+ Die Formel wird nun in blauer Farbe angezeigt und jetzt ansehnlich gesetzt
  - mit Abstand zwischen den Buchstaben und dem Gleichheitszeichen und einer
  hochgestellten 
 \begin_inset Quotes gld
@@ -3940,7 +3893,7 @@ Eine Variable (
 
 ) zum Beispiel mit einem Pfeil zu versehen, wird genauso gemacht.
  Wenn der Cursor in einem mathematischen Ausdruck steht, klicken Sie auf
- den Schalknopf 
+ den Knopf 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
@@ -4009,13 +3962,16 @@ Einfügen
 Inhalt
 \emph default
  an, beispielsweise, wenn sie einen Bruch umschließen.
+ Es ist daher besser einen der drei Knöpfe zu verwenden, die diese Begrenzer
+ direkt einfügen, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
  
-\lang english
-So it is better in this case to use one of the three delimiter buttons that
- insert them directly, for example, as a pair of parentheses
-\lang ngerman
- 
-\begin_inset Formula $\left(\,\right)$
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
 \end_inset
 
 .
@@ -4395,7 +4351,7 @@ eingefügte
 \emph default
  oder 
 \emph on
-inline-Formeln
+Inline-Formeln
 \emph default
 .
  Dies ist ausreichend für kurze und einfache Ausdrücke; wenn Sie jedoch
@@ -5199,8 +5155,8 @@ Datenbanken
 \family sans
 Stil
 \family default
- können BibTeX-Stildagteien geladen werden, die festlegen wie das Literaturverze
-ichnis formatiert wird.
+ können BibTeX-Stildateien geladen werden, die festlegen wie das Literaturverzei
+chnis formatiert wird.
 \end_layout
 
 \begin_layout Standard
