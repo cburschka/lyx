@@ -263,7 +263,7 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 
 void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
-	LASSERT(this == cur.text(), /**/);
+	LASSERT(this == cur.text(), return);
 	// Set the current_font
 	// Determine basis font
 	FontInfo layoutfont;
