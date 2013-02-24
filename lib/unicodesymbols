@@ -648,6 +648,7 @@
 0x02ec "\\textsubwedge{ }"        "tipa" "force" # MODIFIER LETTER VOICING
 #0x02ed ""                         "" "" # MODIFIER LETTER UNASPIRATED
 #0x02ee ""                         "" "" # MODIFIER LETTER DOUBLE APOSTROPHE
+#0x02ef ""                         "" "" "" "" # MODIFIER LETTER LOW DOWN ARROWHEAD
 0x02f0 "\\textsubcircum{ }"       "tipa" "force" # MODIFIER LETTER LOW UP ARROWHEAD
 #0x02f1 ""                         "" "" # MODIFIER LETTER LOW LEFT ARROWHEAD
 #0x02f2 ""                         "" "" # MODIFIER LETTER LOW RIGHT ARROWHEAD
@@ -655,12 +656,15 @@
 #0x02f4 ""                         "" "" # MODIFIER LETTER MIDDLE GRAVE ACCENT
 #0x02f5 ""                         "" "" # MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
 #0x02f6 ""                         "" "" # MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT
-0x02f7 "\\textsubtilde"           "tipa" "force" # MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
+0x02f7 "\\textsubtilde{ }"        "tipa" "force" "" "" # MODIFIER LETTER LOW TILDE
 #0x02f8 ""                         "" "" # MODIFIER LETTER RAISED COLON
 0x02f9 "\\textopencorner"         "tipa" "force" # MODIFIER LETTER BEGIN HIGH TONE
 0x02fa "\\textcorner"             "tipa" "force" # MODIFIER LETTER END HIGH TONE
 #0x02fb ""                         "" "" # MODIFIER LETTER BEGIN LOW TONE
 #0x02fc ""                         "" "" # MODIFIER LETTER END LOW TONE
+#0x02fd ""                         "" "" "" "" # MODIFIER LETTER SHELF
+#0x02fe ""                         "" "" "" "" # MODIFIER LETTER OPEN SHELF
+#0x02ff ""                         "" "" "" "" # MODIFIER LETTER LOW LEFT ARROW
 #
 # Combining diacritical marks
 #
