@@ -233,12 +233,14 @@ char const * const known_coded_font_shapes[] = { "italic", "slanted",
 "smallcaps", "up", 0};
 
 /// Known special characters which need skip_spaces_braces() afterwards
-char const * const known_special_chars[] = {"ldots", "lyxarrow",
-"textcompwordmark", "slash", 0};
+char const * const known_special_chars[] = {"ldots",
+"lyxarrow", "textcompwordmark",
+"slash", "textasciitilde", "textasciicircum", "textbackslash", 0};
 
 /// the same as known_special_chars with .lyx names
-char const * const known_coded_special_chars[] = {"ldots{}", "menuseparator",
-"textcompwordmark{}", "slash{}", 0};
+char const * const known_coded_special_chars[] = {"\\SpecialChar \\ldots{}\n",
+"\\SpecialChar \\menuseparator\n", "\\SpecialChar \\textcompwordmark{}\n",
+"\\SpecialChar \\slash{}\n", "~", "^", "\n\\backslash\n", 0};
 
 /*!
  * Graphics file extensions known by the dvips driver of the graphics package.
@@ -2526,26 +2528,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// control sequences
 		//
 
-		else if (t.cs() == "(") {
+		else if (t.cs() == "(" || t.cs() == "[") {
+			bool const simple = t.cs() == "(";
 			context.check_layout(os);
 			begin_inset(os, "Formula");
-			os << " \\(";
-			parse_math(p, os, FLAG_SIMPLE2, MATH_MODE);
-			os << "\\)";
+			os << " \\" << t.cs();
+			parse_math(p, os, simple ? FLAG_SIMPLE2 : FLAG_EQUATION, MATH_MODE);
+			os << '\\' << (simple ? ')' : ']');
 			end_inset(os);
-		}
-
-		else if (t.cs() == "[") {
-			context.check_layout(os);
-			begin_inset(os, "Formula");
-			os << " \\[";
-			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
-			os << "\\]";
-			end_inset(os);
-			// Prevent the conversion of a line break to a space
-			// (bug 7668). This does not change the output, but
-			// looks ugly in LyX.
-			eat_whitespace(p, os, context, false);
+			if (!simple) {
+				// Prevent the conversion of a line break to a
+				// space (bug 7668). This does not change the
+				// output, but looks ugly in LyX.
+				eat_whitespace(p, os, context, false);
+			}
 		}
 
 		else if (t.cs() == "begin")
@@ -3087,16 +3083,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage("listings");
 		}
 
-		else if (t.cs() == "listoffigures") {
+		else if (t.cs() == "listoffigures" || t.cs() == "listoftables") {
 			context.check_layout(os);
-			begin_inset(os, "FloatList figure\n");
-			end_inset(os);
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "listoftables") {
-			context.check_layout(os);
-			begin_inset(os, "FloatList table\n");
+			if (t.cs() == "listoffigures")
+				begin_inset(os, "FloatList figure\n");
+			else
+				begin_inset(os, "FloatList table\n");
 			end_inset(os);
 			skip_spaces_braces(p);
 		}
@@ -3797,16 +3789,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if ((where = is_known(t.cs(), known_special_chars))) {
 			context.check_layout(os);
-			os << "\\SpecialChar \\"
-			   << known_coded_special_chars[where - known_special_chars]
-			   << '\n';
+			os << known_coded_special_chars[where - known_special_chars];
 			skip_spaces_braces(p);
 		}
 
-		else if (t.cs() == "nobreakdash" && p.next_token().asInput() == "-") {
+		else if ((t.cs() == "nobreakdash" && p.next_token().asInput() == "-") ||
+		         (t.cs() == "@" && p.next_token().asInput() == ".")) {
 			context.check_layout(os);
-			os << "\\SpecialChar \\nobreakdash-\n";
-			p.get_token();
+			os << "\\SpecialChar \\" << t.cs()
+			   << p.get_token().asInput() << '\n';
 		}
 
 		else if (t.cs() == "textquotedbl") {
@@ -3815,33 +3806,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (t.cs() == "@" && p.next_token().asInput() == ".") {
-			context.check_layout(os);
-			os << "\\SpecialChar \\@.\n";
-			p.get_token();
-		}
-
 		else if (t.cs() == "-") {
 			context.check_layout(os);
 			os << "\\SpecialChar \\-\n";
-		}
-
-		else if (t.cs() == "textasciitilde") {
-			context.check_layout(os);
-			os << '~';
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "textasciicircum") {
-			context.check_layout(os);
-			os << '^';
-			skip_spaces_braces(p);
-		}
-
-		else if (t.cs() == "textbackslash") {
-			context.check_layout(os);
-			os << "\n\\backslash\n";
-			skip_spaces_braces(p);
 		}
 
 		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#"
