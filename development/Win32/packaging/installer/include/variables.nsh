@@ -25,6 +25,7 @@ Var FoundThes
 Var GhostscriptPath
 Var GnumericPath
 Var ImageEditorPath
+Var Is64bit
 !if ${SETUPTYPE} == BUNDLE
  Var InstallJabRef
 !endif

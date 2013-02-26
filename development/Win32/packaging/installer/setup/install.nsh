@@ -14,6 +14,16 @@ Var PythonCompileReturn
 
 Section -ProgramFiles SecProgramFiles
 
+ !if ${SETUPTYPE} != BUNDLE
+  # abort the installation if no LaTeX was found but should be used
+  ${if} $PathLaTeX == ""
+  ${andif} $State == "0"
+   SetOutPath $TEMP # to be able to delete the $INSTDIR
+   RMDir /r $INSTDIR
+   Abort
+  ${endif}
+ !endif # end if != BUNDLE
+
   # Install and register the core LyX files
   
   # The macros are defined in filelists.nsh

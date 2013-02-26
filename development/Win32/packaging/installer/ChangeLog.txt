@@ -1,4 +1,14 @@
-﻿Changelog for LyX-2051-4:
+﻿Changelog for LyX-2051-5:
+- Fix broken importing of TeX files to LyX
+- If a 64bit version of MiKTeX is installed, it now be recognized by LyX
+- Fix broken installation of the Perl interpreter (Perl is only necessary to use
+  several global indexes in a LyX document.)
+- Fix bug that installation of LyX was not aborted if no LaTeX-distribution was found
+  but LaTeX should be used (does not affect the bundle installer)
+- updated to GhostScript 9.07
+
+
+Changelog for LyX-2051-4:
 - If LyX is installed together with MiKTeX (bundle installer) the installation of
   LaTeX-packages required by LyX takes now much less time and you get a visual feedback
   about the installation process. 

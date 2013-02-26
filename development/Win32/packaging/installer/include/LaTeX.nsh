@@ -27,6 +27,8 @@ Handling of LaTeX distributions
 Function LaTeXActions
  # checks if MiKTeX or TeXLive is installed
 
+  StrCpy $Is64bit "false"
+  
   ${if} ${RunningX64}
    SetRegView 64 # the PATH is in the 64bit registry section
   ${endif}
@@ -36,8 +38,16 @@ Function LaTeXActions
   StrCpy $Search "miktex"
   Call LaTeXCheck # sets the path to the latex.exe to $PathLaTeX # Function from LyXUtils.nsh
   
+  StrCpy $String $PathLaTeX
+  StrCpy $Search "x64" # search if it is 64bit MiKTeX
+  Call StrPoint # Function from LyXUtils.nsh
+  ${if} $Pointer != "-1" # if something was found
+   StrCpy $Is64bit "true"
+  ${endif}
+  
   # check for 32bit MiKTeX
   ${if} $PathLaTeX != ""
+  ${andif} $Is64bit != "true"
    ${if} ${RunningX64}
     SetRegView 32
    ${endif}
@@ -61,7 +71,7 @@ Function LaTeXActions
   ${endif}
   
   # check for 64bit MiKTeX
-  ${if} $PathLaTeX == ""
+  ${if} $LaTeXName == ""
    ${if} ${RunningX64}
     SetRegView 64
    ${endif}
@@ -115,8 +125,14 @@ Function LaTeXActions
     StrCpy $LaTeXName "MiKTeX 2.9"
    ${endif}
   ${endif}
-    
+  
   ${if} $PathLaTeX != ""
+   StrCpy $String $PathLaTeX
+   StrCpy $Search "x64" # search if it is 64bit MiKTeX
+   Call StrPoint # Function from LyXUtils.nsh
+   ${if} $Pointer != "-1" # if something was found
+    StrCpy $Is64bit "true"
+   ${endif}
    StrCpy $LaTeXInstalled "MiKTeX"
    # on some installations the path ends with a "\" on some not
    # therefore assure that we remove it if it exists
@@ -231,7 +247,11 @@ Function ConfigureMiKTeX
  ${if} $PathLaTeX != ""
   ${if} $MultiUser.Privileges == "Admin"
   ${orif} $MultiUser.Privileges == "Power"
-   StrCpy $PathLaTeXLocal "$PathLaTeX" -11 # delete "\miktex\bin"
+   ${if} $Is64bit == "true"
+    StrCpy $PathLaTeXLocal "$PathLaTeX" -15 # delete "\miktex\bin\x64"
+   ${else}
+    StrCpy $PathLaTeXLocal "$PathLaTeX" -11 # delete "\miktex\bin"
+   ${endif}
   ${else}
    StrCpy $PathLaTeXLocal "$APPDATA\MiKTeX\$MiKTeXVersion"
   ${endif}
@@ -260,14 +280,35 @@ Function ConfigureMiKTeX
     ${endif}
    ${else}
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
-     SetOutPath "$PathLaTeXLocal"
+     ${if} $Is64bit == "true"
+      StrCpy $3 "$PathLaTeX" -15 # delete "\miktex\bin\x64"
+     ${else}
+      StrCpy $3 "$PathLaTeX" -11 # delete "\miktex\bin"
+     ${endif}
+     SetOutPath "$3"
      File /r ${FILES_MIKTEX}
+     # move the files to the correct location for 64bit
+     ${if} $Is64bit == "true"
+      CopyFiles /SILENT /FILESONLY "$3\miktex\bin\*.*" "$PathLaTeX"
+      Delete "$3\miktex\bin\*.*"
+      CreateDirectory "$3\miktex\bin\lib"
+      CopyFiles /SILENT "$3\miktex\lib\*.*" "$3\miktex\bin\lib"
+      RMDir /r "$3\miktex\lib"
+     ${endif}
     ${endif}
    ${endif}
   ${else}
    ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
     SetOutPath "$PathLaTeXLocal"
     File /r ${FILES_MIKTEX}
+    # move the files to the correct location for 64bit
+    ${if} $Is64bit == "true"
+     CopyFiles /SILENT /FILESONLY "$PathLaTeXLocal\miktex\bin\*.*" "$PathLaTeX"
+     Delete "$PathLaTeXLocal\miktex\bin\*.*"
+     CreateDirectory "$PathLaTeXLocal\miktex\bin\lib"
+     CopyFiles /SILENT "$PathLaTeXLocal\miktex\lib\*.*" "$PathLaTeXLocal\miktex\bin\lib"
+     RMDir /r "$PathLaTeXLocal\miktex\lib"
+    ${endif}
    ${endif}
   ${endif}
   
@@ -289,7 +330,12 @@ Function ConfigureMiKTeX
   
   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first) and
   # if there is not package repository (MiKTeX's primary package repository) then set it
-  # FIXME: support 64bit MiKTeX if it is out of beta state
+  ${if} ${RunningX64}
+  ${andif} $Is64bit == "true"
+   SetRegView 64
+  ${else}
+   SetRegView 32
+  ${endif}
   ${if} $MiKTeXUser == "HKCU" # if only for current user
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
    ReadRegStr $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
@@ -310,6 +356,9 @@ Function ConfigureMiKTeX
   
   # update MiKTeX's package file list
   ExecWait '$PathLaTeX\mpm.exe --update-fndb'
+  
+  # we must return to 32bit because LyX is a 32bit application
+  SetRegView 32
   
 FunctionEnd
 
