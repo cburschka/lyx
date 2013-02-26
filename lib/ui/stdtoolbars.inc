@@ -184,9 +184,9 @@ ToolbarSet
 		Item "Insert integral" "math-insert \int"
 		Item "Insert product" "math-insert \prod"
 		Item "Insert left/right side scripts" "math-insert \sideset"
-		Item "Insert right side scripts" "math-insert \sideset1"
-		Item "Insert left side scripts" "math-insert \sideset2"
-		Item "Insert side scripts" "math-insert \sideset3"
+		Item "Insert right side scripts" "math-insert \sidesetr"
+		Item "Insert left side scripts" "math-insert \sidesetl"
+		Item "Insert side scripts" "math-insert \sidesetn"
 		Separator
 		Item "Insert ( )" "math-delim ( )"
 		Item "Insert [ ]" "math-delim [ ]"

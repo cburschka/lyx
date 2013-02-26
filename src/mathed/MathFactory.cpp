@@ -539,11 +539,11 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	if (s == "sideset")
 		return MathAtom(new InsetMathSideset(buf, true, true));
 	// The following 3 string values are only for math toolbar use, no LaTeX names
-	if (s == "sideset1")
+	if (s == "sidesetr")
 		return MathAtom(new InsetMathSideset(buf, false, true));
-	if (s == "sideset2")
+	if (s == "sidesetl")
 		return MathAtom(new InsetMathSideset(buf, true, false));
-	if (s == "sideset3")
+	if (s == "sidesetn")
 		return MathAtom(new InsetMathSideset(buf, false, false));
 	if (isSpecialChar(s))
 		return MathAtom(new InsetMathSpecialChar(s));
