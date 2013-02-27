@@ -525,6 +525,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_refstyle            = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
+	h_use_packages["cancel"]     = "0";
 	h_use_packages["esint"]      = "1";
 	h_use_packages["mhchem"]     = "0";
 	h_use_packages["mathdots"]   = "0";
@@ -770,7 +771,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		||	is_known(name, known_typewriter_fonts) || is_known(name, known_math_fonts))
 		;
 
-	else if (name == "amsmath" || name == "amssymb" ||
+	else if (name == "amsmath" || name == "amssymb" || name == "cancel" ||
 	         name == "esint" || name == "mhchem" || name == "mathdots" ||
 	         name == "mathtools" || name == "stackrel" ||
 		 name == "stmaryrd" || name == "undertilde")
