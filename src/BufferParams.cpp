@@ -450,6 +450,7 @@ vector<string> const & BufferParams::auto_packages()
 		// adding a package here implies a file format change!
 		packages.push_back("amsmath");
 		packages.push_back("amssymb");
+		packages.push_back("cancel");
 		packages.push_back("esint");
 		packages.push_back("mathdots");
 		packages.push_back("mathtools");

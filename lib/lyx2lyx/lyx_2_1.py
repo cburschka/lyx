@@ -370,36 +370,29 @@ def revert_use_packages(document):
         j = j + 1
 
 
-def convert_use_mathtools(document):
-    "insert use_package mathtools"
+def convert_use_package(document, pkg):
     i = find_token(document.header, "\\use_package", 0)
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package.")
         return;
-    j = find_token(document.preamble, "\\usepackage{mathtools}", 0)
+    j = find_token(document.preamble, "\\usepackage{" + pkg + "}", 0)
     if j == -1:
-        document.header.insert(i + 1, "\\use_package mathtools 0")
+        document.header.insert(i + 1, "\\use_package " + pkg + " 0")
     else:
-        document.header.insert(i + 1, "\\use_package mathtools 2")
+        document.header.insert(i + 1, "\\use_package " + pkg + " 2")
         del document.preamble[j]
 
 
-def revert_use_mathtools(document):
-    "remove use_package mathtools"
-    regexp = re.compile(r'(\\use_package\s+mathtools)')
+def revert_use_package(document, pkg, commands):
+    regexp = re.compile(r'(\\use_package\s+%s)' % pkg)
     i = find_re(document.header, regexp, 0)
     value = "1" # default is auto
     if i != -1:
         value = get_value(document.header, "\\use_package" , i).split()[1]
         del document.header[i]
     if value == "2": # on
-        add_to_preamble(document, ["\\usepackage{mathtools}"])
+        add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
     elif value == "1": # auto
-        commands = ["mathclap", "mathllap", "mathrlap", \
-                    "lgathered", "rgathered", "vcentcolon", "dblcolon", \
-                    "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
-                    "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
-                    "Colonapprox", "colonsim", "Colonsim"]
         i = 0
         while True:
             i = find_token(document.body, '\\begin_inset Formula', i)
@@ -413,37 +406,36 @@ def revert_use_mathtools(document):
             code = "\n".join(document.body[i:j])
             for c in commands:
                 if code.find("\\%s" % c) != -1:
-                    add_to_preamble(document, ["\\usepackage{mathtools}"])
+                    add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
                     return
             i = j
 
 
+def convert_use_mathtools(document):
+    "insert use_package mathtools"
+    convert_use_package(document, "mathtools")
+
+
+def revert_use_mathtools(document):
+    "remove use_package mathtools"
+    commands = ["mathclap", "mathllap", "mathrlap", \
+                "lgathered", "rgathered", "vcentcolon", "dblcolon", \
+                "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
+                "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
+                "Colonapprox", "colonsim", "Colonsim"]
+    revert_use_package(document, "mathtools", commands)
+
+
 def convert_use_stmaryrd(document):
     "insert use_package stmaryrd"
-    i = find_token(document.header, "\\use_package", 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Can't find \\use_package.")
-        return;
-    j = find_token(document.preamble, "\\usepackage{stmaryrd}", 0)
-    if j == -1:
-        document.header.insert(i + 1, "\\use_package stmaryrd 0")
-    else:
-        document.header.insert(i + 1, "\\use_package stmaryrd 2")
-        del document.preamble[j]
+    convert_use_package(document, "stmaryrd")
 
 
 def revert_use_stmaryrd(document):
     "remove use_package stmaryrd"
-    regexp = re.compile(r'(\\use_package\s+stmaryrd)')
-    i = find_re(document.header, regexp, 0)
-    value = "1" # default is auto
-    if i != -1:
-        value = get_value(document.header, "\\use_package" , i).split()[1]
-        del document.header[i]
-    if value == "2": # on
-        add_to_preamble(document, ["\\usepackage{stmaryrd}"])
-    elif value == "1": # auto
-        commands = ["shortleftarrow", "shortrightarrow", "shortuparrow", \
+    # commands provided by stmaryrd.sty but LyX uses other packages:
+    # boxdot lightning, bigtriangledown, bigtriangleup
+    commands = ["shortleftarrow", "shortrightarrow", "shortuparrow", \
                     "shortdownarrow", "Yup", "Ydown", "Yleft", "Yright", \
                     "varcurlyvee", "varcurlywedge", "minuso", "baro", \
                     "sslash", "bbslash", "moo", "varotimes", "varoast", \
@@ -474,68 +466,19 @@ def revert_use_stmaryrd(document):
                     "varcopyright", "longarrownot", "Longarrownot", \
                     "Mapsto", "mapsfrom", "Mapsfrom" "Longmapsto", \
                     "longmapsfrom", "Longmapsfrom"]
-        # commands provided by stmaryrd.sty but LyX uses other packages:
-        # boxdot lightning, bigtriangledown, bigtriangleup
+    revert_use_package(document, "stmaryrd", commands)
 
-        i = 0
-        while True:
-            i = find_token(document.body, '\\begin_inset Formula', i)
-            if i == -1:
-                return
-            j = find_end_of_inset(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
-                i += 1
-                continue
-            code = "\n".join(document.body[i:j])
-            for c in commands:
-                if code.find("\\%s" % c) != -1:
-                    add_to_preamble(document, ["\\usepackage{stmaryrd}"])
-                    return
-            i = j
 
 
 def convert_use_stackrel(document):
     "insert use_package stackrel"
-    i = find_token(document.header, "\\use_package", 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Can't find \\use_package.")
-        return;
-    j = find_token(document.preamble, "\\usepackage{stackrel}", 0)
-    if j == -1:
-        document.header.insert(i + 1, "\\use_package stackrel 0")
-    else:
-        document.header.insert(i + 1, "\\use_package stackrel 2")
-        del document.preamble[j]
+    convert_use_package(document, "stackrel")
 
 
 def revert_use_stackrel(document):
     "remove use_package stackrel"
-    regexp = re.compile(r'(\\use_package\s+stackrel)')
-    i = find_re(document.header, regexp, 0)
-    value = "1" # default is auto
-    if i != -1:
-        value = get_value(document.header, "\\use_package" , i).split()[1]
-        del document.header[i]
-    if value == "2": # on
-        add_to_preamble(document, ["\\usepackage{stackrel}"])
-    elif value == "1": # auto
-        regcmd = re.compile(r'.*\\stackrel\s*\[')
-        i = 0
-        while True:
-            i = find_token(document.body, '\\begin_inset Formula', i)
-            if i == -1:
-                return
-            j = find_end_of_inset(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
-                i += 1
-                continue
-            code = "\n".join(document.body[i:j])
-            if regcmd.match(code):
-                add_to_preamble(document, ["\\usepackage{stackrel}"])
-                return
-            i = j
+    commands = ["stackrel"]
+    revert_use_package(document, "stackrel", commands)
 
 
 def convert_cite_engine_type(document):
@@ -569,25 +512,11 @@ def revert_cite_engine_type(document):
     document.header[i] = "\\cite_engine natbib_" + engine_type
 
 
+# this is the same, as revert_use_cancel()
 def revert_cancel(document):
     "add cancel to the preamble if necessary"
     commands = ["cancelto", "cancel", "bcancel", "xcancel"]
-    i = 0
-    while True:
-        i = find_token(document.body, '\\begin_inset Formula', i)
-        if i == -1:
-            return
-        j = find_end_of_inset(document.body, i)
-        if j == -1:
-            document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
-            i += 1
-            continue
-        code = "\n".join(document.body[i:j])
-        for c in commands:
-            if code.find("\\%s" % c) != -1:
-                add_to_preamble(document, ["\\usepackage{cancel}"])
-                return
-        i = j
+    revert_use_package(document, "cancel", commands)
 
 
 def revert_verbatim(document):
@@ -885,6 +814,17 @@ def revert_use_amssymb(document):
         del document.header[j]
     if value1 != value2 and value2 == "2": # on
         add_to_preamble(document, ["\\usepackage{amssymb}"])
+
+
+def convert_use_cancel(document):
+    "insert use_package cancel"
+    convert_use_package(document, "cancel")
+
+
+def revert_use_cancel(document):
+    "remove use_package cancel"
+    commands = ["cancel", "bcancel", "xcancel", "cancelto"]
+    revert_use_package(document, "cancel", commands)
 
 
 def revert_ancientgreek(document):
@@ -3785,9 +3725,11 @@ convert = [
            [461, []],
            [462, []],
            [463, [convert_encodings]],
+           [464, [convert_use_cancel]],
           ]
 
 revert =  [
+           [463, [revert_use_cancel]],
            [462, [revert_encodings]],
            [461, [revert_new_libertines]],
            [460, [revert_kurier_fonts]],

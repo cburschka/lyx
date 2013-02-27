@@ -698,7 +698,7 @@ char const * simplefeatures[] = {
 	"mathrsfs",
 	"mathabx",
 	"mathtools",
-	"cancel",
+	// "cancel",
 	"ascii",
 	"url",
 	"covington",
@@ -833,6 +833,9 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("fixltx2e"))
 		packages << "\\usepackage{fixltx2e}\n";
 
+        if (mustProvide("cancel") &&
+            params_.use_package("cancel") != BufferParams::package_off)
+                packages << "\\usepackage{cancel}\n";
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
 	// wasysym redefines some integrals (e.g. iint) from amsmath. That
