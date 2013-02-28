@@ -728,6 +728,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 				// after its base
 				symbols += a;
 				symbols += combining->first;
+				i = j + 1;
 				unicmd_size = 2;
 			}
 		}
