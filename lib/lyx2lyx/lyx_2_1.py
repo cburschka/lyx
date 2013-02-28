@@ -383,7 +383,10 @@ def convert_use_package(document, pkg):
         del document.preamble[j]
 
 
-def revert_use_package(document, pkg, commands):
+def revert_use_package(document, pkg, commands, oldauto):
+    # oldauto defines how the version we are reverting to behaves:
+    # if it is true, the old version uses the package automatically.
+    # if it is false, the old version never uses the package.
     regexp = re.compile(r'(\\use_package\s+%s)' % pkg)
     i = find_re(document.header, regexp, 0)
     value = "1" # default is auto
@@ -392,7 +395,7 @@ def revert_use_package(document, pkg, commands):
         del document.header[i]
     if value == "2": # on
         add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
-    elif value == "1": # auto
+    elif value == "1" and not oldauto: # auto
         i = 0
         while True:
             i = find_token(document.body, '\\begin_inset Formula', i)
@@ -423,7 +426,7 @@ def revert_use_mathtools(document):
                 "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
                 "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
                 "Colonapprox", "colonsim", "Colonsim"]
-    revert_use_package(document, "mathtools", commands)
+    revert_use_package(document, "mathtools", commands, False)
 
 
 def convert_use_stmaryrd(document):
@@ -466,7 +469,7 @@ def revert_use_stmaryrd(document):
                     "varcopyright", "longarrownot", "Longarrownot", \
                     "Mapsto", "mapsfrom", "Mapsfrom" "Longmapsto", \
                     "longmapsfrom", "Longmapsfrom"]
-    revert_use_package(document, "stmaryrd", commands)
+    revert_use_package(document, "stmaryrd", commands, False)
 
 
 
@@ -478,7 +481,7 @@ def convert_use_stackrel(document):
 def revert_use_stackrel(document):
     "remove use_package stackrel"
     commands = ["stackrel"]
-    revert_use_package(document, "stackrel", commands)
+    revert_use_package(document, "stackrel", commands, False)
 
 
 def convert_cite_engine_type(document):
@@ -512,11 +515,11 @@ def revert_cite_engine_type(document):
     document.header[i] = "\\cite_engine natbib_" + engine_type
 
 
-# this is the same, as revert_use_cancel()
+# this is the same, as revert_use_cancel() except for the default
 def revert_cancel(document):
     "add cancel to the preamble if necessary"
     commands = ["cancelto", "cancel", "bcancel", "xcancel"]
-    revert_use_package(document, "cancel", commands)
+    revert_use_package(document, "cancel", commands, False)
 
 
 def revert_verbatim(document):
@@ -824,7 +827,7 @@ def convert_use_cancel(document):
 def revert_use_cancel(document):
     "remove use_package cancel"
     commands = ["cancel", "bcancel", "xcancel", "cancelto"]
-    revert_use_package(document, "cancel", commands)
+    revert_use_package(document, "cancel", commands, True)
 
 
 def revert_ancientgreek(document):
