@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-02-17 16:32+0100\n"
+"POT-Creation-Date: 2013-03-01 16:15+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -10256,11 +10256,11 @@ msgstr "CV Farebné Schéma:"
 
 #: lib/layouts/moderncv.layout:58
 msgid "PDF Page Mode"
-msgstr "Režim pre PDF Stránky"
+msgstr "Režim pre PDF Zobrazovanie"
 
 #: lib/layouts/moderncv.layout:61
 msgid "PDF Page Mode:"
-msgstr "Režim pre PDF Stránky:"
+msgstr "Režim pre PDF Zobrazovanie:"
 
 #: lib/layouts/moderncv.layout:57 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
@@ -14270,17 +14270,21 @@ msgstr "Čínsky (tradičná) (EUC-TW)"
 msgid "Japanese (CJK) (EUC-JP)"
 msgstr "Japonsky (non-CJK) (EUC-JP)"
 
-#: lib/encodings:180
-msgid "Japanese (non-CJK) (EUC-JP)"
-msgstr "Japonsky (non-CJK) (EUC-JP)"
+#: lib/encodings:200
+msgid "Japanese (pLaTeX) (EUC-JP)"
+msgstr "Japonsky (pLaTeX) (EUC-JP)"
 
-#: lib/encodings:182
-msgid "Japanese (non-CJK) (JIS)"
-msgstr "Japonsky (non-CJK) (JIS)"
+#: lib/encodings:202
+msgid "Japanese (pLaTeX) (JIS)"
+msgstr "Japonsky (pLaTeX) (JIS)"
 
-#: lib/encodings:184
-msgid "Japanese (non-CJK) (SJIS)"
-msgstr "Japonsky (non-CJK) (SJIS)"
+#: lib/encodings:204
+msgid "Japanese (pLaTeX) (SJIS)"
+msgstr "Japonsky (pLaTeX) (SJIS)"
+
+#: lib/encodings:206
+msgid "Japanese (pLaTeX) (UTF8)"
+msgstr "Japonsky (pLaTeX) (EUC-JP)"
 
 #: lib/encodings:191
 msgid "Thai (TIS 620-0)"
@@ -16435,8 +16439,20 @@ msgid "Insert product"
 msgstr "Vložiť produkt"
 
 #: lib/ui/stdtoolbars.inc:186
+msgid "Insert left/right side scripts"
+msgstr "Vložiť bočné formuly"
+
+#: lib/ui/stdtoolbars.inc:187
+msgid "Insert right side scripts"
+msgstr "Pridať formuly na pravej strane"
+
+#: lib/ui/stdtoolbars.inc:188
+msgid "Insert left side scripts"
+msgstr "Pridať formuly na ľavej strane"
+
+#: lib/ui/stdtoolbars.inc:189
 msgid "Insert side scripts"
-msgstr "Vložiť bočné ohraničenie"
+msgstr "Vložiť bočné formuly"
 
 #: lib/ui/stdtoolbars.inc:183
 msgid "Insert ( )"
@@ -21824,6 +21840,86 @@ msgstr ""
 "  %1$s\n"
 "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
 
+#: src/frontends/qt4/GuiDocument.cpp:180
+msgid ""
+"The LaTeX package amsmath is only used if AMS formula types or symbols from "
+"the AMS math toolbars are inserted into formulas"
+msgstr ""
+"Balík amsmath bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z mat. lišty nástrojov AMS"
+
+#: src/frontends/qt4/GuiDocument.cpp:184
+msgid ""
+"The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
+"are inserted into formulas"
+msgstr ""
+"Balík amssymb bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z mat. lišty nástrojov AMS"
+
+#: src/frontends/qt4/GuiDocument.cpp:146
+msgid ""
+"The LaTeX package cancel is only used if \\cancel commands are used in "
+"formulas"
+msgstr ""
+"LaTeX balík cancel sa použije len v prípade, keď sa vo formulách nájdu aj "
+"\\cancel symboly"
+
+#: src/frontends/qt4/GuiDocument.cpp:184
+msgid ""
+"The LaTeX package esint is only used if special integral symbols are "
+"inserted into formulas"
+msgstr ""
+"LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
+"špeciálne integrálne symboly"
+
+#: src/frontends/qt4/GuiDocument.cpp:188
+msgid ""
+"The LaTeX package mathdots is only used if the command \\iddots is inserted "
+"into formulas"
+msgstr ""
+"LaTeX balík mathdots sa použije len v prípade, keď sa vo formulách nájde aj "
+"symbol \\iddots"
+
+#: src/frontends/qt4/GuiDocument.cpp:192
+msgid ""
+"The LaTeX package mathtools is only used if some mathematical relations are "
+"inserted into formulas"
+msgstr ""
+"LaTeX balík mathtools sa použije len v prípade, keď sa vo formulách nájdu aj "
+"niektoré matematické relácie"
+
+#: src/frontends/qt4/GuiDocument.cpp:196
+msgid ""
+"The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
+"inserted into formulas"
+msgstr ""
+"LaTeX balík mhchem použiť len v prípade, keď sa vo formulách nájdu aj "
+"symboly \\ce alebo \\cf"
+
+#: src/frontends/qt4/GuiDocument.cpp:162
+msgid ""
+"The LaTeX package stackrel is only used if the command \\stackrel with "
+"subscript is inserted into formulas"
+msgstr ""
+"LaTeX balík stackrel sa použije len v prípade, keď sa vo formulách nájde aj "
+"príkaz \\stackrel s dolným indexom"
+
+#: src/frontends/qt4/GuiDocument.cpp:162
+msgid ""
+"The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
+"symbol font for theoretical computer science are inserted into formulas"
+msgstr ""
+"Balík stmaryrd bude použitý len v prípade, že vo formulách sú vložené aj "
+"symboly z fontu St Mary's Road pre teoretickú počítačovú vedu"
+
+#: src/frontends/qt4/GuiDocument.cpp:200
+msgid ""
+"The LaTeX package undertilde is only used if you use the math frame "
+"decoration 'utilde'"
+msgstr ""
+"LaTeX balík undertilde použiť len v prípade, keď sa vo formulách nájdu aj "
+"dekorácie 'utilde'"
+
 #: src/BufferParams.cpp:599
 #, c-format
 msgid ""
@@ -25002,150 +25098,6 @@ msgstr "(Žiadne)"
 msgid "Variable"
 msgstr "Variabilná"
 
-#: src/frontends/qt4/GuiDocument.cpp:178
-msgid "&Use amsmath package automatically"
-msgstr "&Automaticky používať balík amsmath"
-
-#: src/frontends/qt4/GuiDocument.cpp:179
-msgid "Use ams&math package"
-msgstr "Použiť balík ams&math"
-
-#: src/frontends/qt4/GuiDocument.cpp:180
-msgid ""
-"The LaTeX package amsmath is only used if AMS formula types or symbols from "
-"the AMS math toolbars are inserted into formulas"
-msgstr ""
-"Balík amsmath bude použitý len v prípade, že vo formulách sú vložené aj "
-"symboly z mat. lišty nástrojov AMS"
-
-#: src/frontends/qt4/GuiDocument.cpp:140
-msgid "&Use amssymb package automatically"
-msgstr "Automaticky po&užívať balík amssymb"
-
-#: src/frontends/qt4/GuiDocument.cpp:183
-msgid "Use amssymb package"
-msgstr "Použiť balík amssymb"
-
-#: src/frontends/qt4/GuiDocument.cpp:184
-msgid ""
-"The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
-"are inserted into formulas"
-msgstr ""
-"Balík amssymb bude použitý len v prípade, že vo formulách sú vložené aj "
-"symboly z mat. lišty nástrojov AMS"
-
-#: src/frontends/qt4/GuiDocument.cpp:186
-msgid "Use esint package &automatically"
-msgstr "Automaticky používať balík &esint"
-
-#: src/frontends/qt4/GuiDocument.cpp:187
-msgid "Use &esint package"
-msgstr "Použiť balík e&sint"
-
-#: src/frontends/qt4/GuiDocument.cpp:184
-msgid ""
-"The LaTeX package esint is only used if special integral symbols are "
-"inserted into formulas"
-msgstr ""
-"LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
-"špeciálne integrálne symboly"
-
-#: src/frontends/qt4/GuiDocument.cpp:148
-msgid "Use math&dots package automatically"
-msgstr "Automaticky používať balík math&dots"
-
-#: src/frontends/qt4/GuiDocument.cpp:149
-msgid "Use mathdo&ts package"
-msgstr "Použiť mat. balík mathdo&ts"
-
-#: src/frontends/qt4/GuiDocument.cpp:188
-msgid ""
-"The LaTeX package mathdots is only used if the command \\iddots is inserted "
-"into formulas"
-msgstr ""
-"LaTeX balík mathdots sa použije len v prípade, keď sa vo formulách nájde aj "
-"symbol \\iddots"
-
-#: src/frontends/qt4/GuiDocument.cpp:190
-msgid "Use mathtools package automatically"
-msgstr "Automaticky používať mat. balík mathtools"
-
-#: src/frontends/qt4/GuiDocument.cpp:191
-msgid "Use mathtools package"
-msgstr "Použiť mat. balík mathtools"
-
-#: src/frontends/qt4/GuiDocument.cpp:192
-msgid ""
-"The LaTeX package mathtools is only used if some mathematical relations are "
-"inserted into formulas"
-msgstr ""
-"LaTeX balík mathtools sa použije len v prípade, keď sa vo formulách nájdu aj "
-"niektoré matematické relácie"
-
-#: src/frontends/qt4/GuiDocument.cpp:156
-msgid "Use mhchem &package automatically"
-msgstr "Automaticky &používať balík mhchem"
-
-#: src/frontends/qt4/GuiDocument.cpp:157
-msgid "Use mh&chem package"
-msgstr "Použiť balík mh&chem"
-
-#: src/frontends/qt4/GuiDocument.cpp:196
-msgid ""
-"The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
-"inserted into formulas"
-msgstr ""
-"LaTeX balík mhchem použiť len v prípade, keď sa vo formulách nájdu aj "
-"symboly \\ce alebo \\cf"
-
-#: src/frontends/qt4/GuiDocument.cpp:160
-msgid "Use stackrel package automatically"
-msgstr "Automaticky používať balík stackrel"
-
-#: src/frontends/qt4/GuiDocument.cpp:161
-msgid "Use stackrel package"
-msgstr "Použiť balík stackrel"
-
-#: src/frontends/qt4/GuiDocument.cpp:162
-msgid ""
-"The LaTeX package stackrel is only used if the command \\stackrel with "
-"subscript is inserted into formulas"
-msgstr ""
-"LaTeX balík stackrel sa použije len v prípade, keď sa vo formulách nájde aj "
-"príkaz \\stackrel s dolným indexom"
-
-#: src/frontends/qt4/GuiDocument.cpp:160
-msgid "Use stmaryrd package automatically"
-msgstr "Automaticky používať balík stmaryrd"
-
-#: src/frontends/qt4/GuiDocument.cpp:161
-msgid "Use stmaryrd package"
-msgstr "Použiť balík stmaryrd"
-
-#: src/frontends/qt4/GuiDocument.cpp:162
-msgid ""
-"The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
-"symbol font for theoretical computer science are inserted into formulas"
-msgstr ""
-"Balík stmaryrd bude použitý len v prípade, že vo formulách sú vložené aj "
-"symboly z fontu St Mary's Road pre teoretickú počítačovú vedu"
-
-#: src/frontends/qt4/GuiDocument.cpp:168
-msgid "Use u&ndertilde package automatically"
-msgstr "Automaticky používať balík u&ndertilde"
-
-#: src/frontends/qt4/GuiDocument.cpp:169
-msgid "Use undertilde pac&kage"
-msgstr "Použiť balí&k undertilde"
-
-#: src/frontends/qt4/GuiDocument.cpp:200
-msgid ""
-"The LaTeX package undertilde is only used if you use the math frame "
-"decoration 'utilde'"
-msgstr ""
-"LaTeX balík undertilde použiť len v prípade, keď sa vo formulách nájdu aj "
-"dekorácie 'utilde'"
-
 #: src/frontends/qt4/GuiDocument.cpp:277
 msgid "Module not found!"
 msgstr "Modul nenájdený!"
@@ -25393,6 +25345,22 @@ msgstr "Autor-rok"
 msgid "Numerical"
 msgstr "Číselný"
 
+#: src/frontends/qt4/GuiDocument.cpp:1154
+msgid "Package"
+msgstr "Balík"
+
+#: src/frontends/qt4/GuiDocument.cpp:1154
+msgid "Load automatically"
+msgstr "Použiť automaticky"
+
+#: src/frontends/qt4/GuiDocument.cpp:1155
+msgid "Load always"
+msgstr "Vždy použiť"
+
+#: src/frontends/qt4/GuiDocument.cpp:1155
+msgid "Do not load"
+msgstr "Nepoužívať"
+
 #: src/frontends/qt4/GuiDocument.cpp:1218
 msgid "The AMS LaTeX packages are always used"
 msgstr "AMS a LeTeX-ové balíky každopádne použiť"
@@ -25401,6 +25369,15 @@ msgstr "AMS a LeTeX-ové balíky každopádne použiť"
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "LaTeX balík %1$s sa vždy použije"
+
+#: src/frontends/qt4/GuiDocument.cpp:1176
+msgid "The AMS LaTeX packages are never used"
+msgstr "AMS a LeTeX-ové balíky sa nikdy nepoužívajú"
+
+#: src/frontends/qt4/GuiDocument.cpp:1179
+#, c-format
+msgid "The LaTeX package %1$s is never used"
+msgstr "LaTeX balík %1$s sa nikdy nepoužije"
 
 #: src/frontends/qt4/GuiDocument.cpp:1276
 #: src/frontends/qt4/GuiDocument.cpp:2107
@@ -29001,6 +28978,81 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Use amsmath package automatically"
+#~ msgstr "&Automaticky používať balík amsmath"
+
+#~ msgid "Use ams&math package"
+#~ msgstr "Použiť balík ams&math"
+
+#~ msgid "&Use amssymb package automatically"
+#~ msgstr "Automaticky po&užívať balík amssymb"
+
+#~ msgid "Use amssymb package"
+#~ msgstr "Použiť balík amssymb"
+
+#~ msgid "Use cancel package automatically"
+#~ msgstr "Automaticky používať balík cancel"
+
+#~ msgid "Use cancel package"
+#~ msgstr "Použiť balík cancel"
+
+#~ msgid "Use esint package &automatically"
+#~ msgstr "Automaticky používať balík &esint"
+
+#~ msgid "Use &esint package"
+#~ msgstr "Použiť balík e&sint"
+
+#~ msgid "Use math&dots package automatically"
+#~ msgstr "Automaticky používať balík math&dots"
+
+#~ msgid "Use mathdo&ts package"
+#~ msgstr "Použiť mat. balík mathdo&ts"
+
+#~ msgid "Use mathtools package automatically"
+#~ msgstr "Automaticky používať mat. balík mathtools"
+
+#~ msgid "Use mathtools package"
+#~ msgstr "Použiť mat. balík mathtools"
+
+#~ msgid "Use mhchem &package automatically"
+#~ msgstr "Automaticky &používať balík mhchem"
+
+#~ msgid "Use mh&chem package"
+#~ msgstr "Použiť balík mh&chem"
+
+#~ msgid "Use stackrel package automatically"
+#~ msgstr "Automaticky používať balík stackrel"
+
+#~ msgid "Use stackrel package"
+#~ msgstr "Použiť balík stackrel"
+
+#~ msgid "Use stmaryrd package automatically"
+#~ msgstr "Automaticky používať balík stmaryrd"
+
+#~ msgid "Use stmaryrd package"
+#~ msgstr "Použiť balík stmaryrd"
+
+#~ msgid "Use u&ndertilde package automatically"
+#~ msgstr "Automaticky používať balík u&ndertilde"
+
+#~ msgid "Use undertilde pac&kage"
+#~ msgstr "Použiť balí&k undertilde"
+
+#~ msgid "DVI (pLaTeX)"
+#~ msgstr "DVI (pLaTeX)"
+
+#~ msgid "DVI (pLaTeX)|V"
+#~ msgstr "DVI (pLaTeX)|V"
+
+#~ msgid "Japanese (non-CJK) (EUC-JP)"
+#~ msgstr "Japonsky (non-CJK) (EUC-JP)"
+
+#~ msgid "Japanese (non-CJK) (JIS)"
+#~ msgstr "Japonsky (non-CJK) (JIS)"
+
+#~ msgid "Japanese (non-CJK) (SJIS)"
+#~ msgstr "Japonsky (non-CJK) (SJIS)"
 
 #~ msgid "Close Section"
 #~ msgstr "Zavri Sekciu"
