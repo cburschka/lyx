@@ -361,7 +361,7 @@ public:
 	/// Set whether to load a package such as amsmath or esint.
 	void use_package(std::string const & p, Package u);
 	/// All packages that can be switched on or off
-	static std::vector<std::string> const & auto_packages();
+	static std::map<std::string, std::string> const & auto_packages();
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Split the index?

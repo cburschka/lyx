@@ -443,21 +443,31 @@ void BufferParams::use_package(std::string const & p, BufferParams::Package u)
 }
 
 
-vector<string> const & BufferParams::auto_packages()
+map<string, string> const & BufferParams::auto_packages()
 {
-	static vector<string> packages;
+	static map<string, string> packages;
 	if (packages.empty()) {
 		// adding a package here implies a file format change!
-		packages.push_back("amsmath");
-		packages.push_back("amssymb");
-		packages.push_back("cancel");
-		packages.push_back("esint");
-		packages.push_back("mathdots");
-		packages.push_back("mathtools");
-		packages.push_back("mhchem");
-		packages.push_back("stackrel");
-		packages.push_back("stmaryrd");
-		packages.push_back("undertilde");
+		packages["amsmath"] =
+			N_("The LaTeX package amsmath is only used if AMS formula types or symbols from the AMS math toolbars are inserted into formulas");
+		packages["amssymb"] =
+			N_("The LaTeX package amssymb is only used if symbols from the AMS math toolbars are inserted into formulas");
+		packages["cancel"] =
+			N_("The LaTeX package cancel is only used if \\cancel commands are used in formulas");
+		packages["esint"] =
+			N_("The LaTeX package esint is only used if special integral symbols are inserted into formulas");
+		packages["mathdots"] =
+			N_("The LaTeX package mathdots is only used if the command \\iddots is inserted into formulas");
+		packages["mathtools"] =
+			N_("The LaTeX package mathtools is only used if some mathematical relations are inserted into formulas");
+		packages["mhchem"] =
+			N_("The LaTeX package mhchem is only used if either the command \\ce or \\cf is inserted into formulas");
+		packages["stackrel"] =
+			N_("The LaTeX package stackrel is only used if the command \\stackrel with subscript is inserted into formulas");
+		packages["stmaryrd"] =
+			N_("The LaTeX package stmaryrd is only used if symbols from the St Mary's Road symbol font for theoretical computer science are inserted into formulas");
+		packages["undertilde"] =
+			N_("The LaTeX package undertilde is only used if you use the math frame decoration 'utilde'");
 	}
 	return packages;
 }
@@ -1026,10 +1036,11 @@ void BufferParams::writeFile(ostream & os) const
 
 	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\use_geometry " << convert<string>(use_geometry);
-	vector<string> const & packages = auto_packages();
-	for (size_t i = 0; i < packages.size(); ++i)
-		os << "\n\\use_package " << packages[i] << ' '
-		   << use_package(packages[i]);
+	map<string, string> const & packages = auto_packages();
+	for (map<string, string>::const_iterator it = packages.begin();
+	     it != packages.end(); ++it)
+		os << "\n\\use_package " << it->first << ' '
+		   << use_package(it->first);
 
 	os << "\n\\cite_engine ";
 

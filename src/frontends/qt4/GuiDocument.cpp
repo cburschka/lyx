@@ -130,52 +130,6 @@ char const * backref_opts_gui[] =
 };
 
 
-char const * packages_gui[][4] =
-{
-	{"amsmath",
-	 N_("&Use amsmath package automatically"),
-	 N_("Use ams&math package"),
-	 N_("The LaTeX package amsmath is only used if AMS formula types or symbols from the AMS math toolbars are inserted into formulas")},
-	{"amssymb",
-	 N_("&Use amssymb package automatically"),
-	 N_("Use amssymb package"),
-	 N_("The LaTeX package amssymb is only used if symbols from the AMS math toolbars are inserted into formulas")},
-	{"cancel",
-	 N_("Use cancel package automatically"),
-	 N_("Use cancel package"),
-	 N_("The LaTeX package cancel is only used if \\cancel commands are used in formulas")},
-	{"esint",
-	 N_("Use esint package &automatically"),
-	 N_("Use &esint package"),
-	 N_("The LaTeX package esint is only used if special integral symbols are inserted into formulas")},
-	{"mathdots",
-	 N_("Use math&dots package automatically"),
-	 N_("Use mathdo&ts package"),
-	 N_("The LaTeX package mathdots is only used if the command \\iddots is inserted into formulas")},
-	{"mathtools",
-	 N_("Use mathtools package automatically"),
-	 N_("Use mathtools package"),
-	 N_("The LaTeX package mathtools is only used if some mathematical relations are inserted into formulas")},
-	{"mhchem",
-	 N_("Use mhchem &package automatically"),
-	 N_("Use mh&chem package"),
-	 N_("The LaTeX package mhchem is only used if either the command \\ce or \\cf is inserted into formulas")},
-	{"stackrel",
-	 N_("Use stackrel package automatically"),
-	 N_("Use stackrel package"),
-	 N_("The LaTeX package stackrel is only used if the command \\stackrel with subscript is inserted into formulas")},
-	{"stmaryrd",
-	 N_("Use stmaryrd package automatically"),
-	 N_("Use stmaryrd package"),
-	 N_("The LaTeX package stmaryrd is only used if symbols from the St Mary's Road symbol font for theoretical computer science are inserted into formulas")},
-	{"undertilde",
-	 N_("Use u&ndertilde package automatically"),
-	 N_("Use undertilde pac&kage"),
-	 N_("The LaTeX package undertilde is only used if you use the math frame decoration 'utilde'")},
-	{"", "", "", ""}
-};
-
-
 vector<string> engine_types_;
 vector<pair<string, QString> > pagestyles;
 
@@ -1195,49 +1149,59 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// maths
-	// FIXME This UI has problems:
-	//       1) It is not generic, packages_gui needs to be changed for each new package
-	//       2) Two checkboxes have 4 states, but one is invalid (both pressed)
-	//       3) The auto cb is not disabled if the use cb is checked
 	mathsModule = new UiWidget<Ui::MathsUi>;
-	vector<string> const & packages = BufferParams::auto_packages();
-        for (size_t i = 0; i < packages.size(); ++i) {
-		// Use the order of BufferParams::auto_packages() for easier
-		// access in applyView() and paramsToDialog()
-		int n = 0;
-		for (n = 0; packages_gui[n][0][0]; n++)
-			if (packages_gui[n][0] == packages[i])
-				break;
-		// If this fires somebody changed
-		// BufferParams::auto_packages() without adjusting packages_gui
-		LASSERT(packages_gui[n][0][0], /**/);
-		QString autoText = qt_(packages_gui[n][1]);
-		QString alwaysText = qt_(packages_gui[n][2]);
-		QString autoTooltip = qt_(packages_gui[n][3]);
+	QStringList headers;
+	headers << qt_("Package") << qt_("Load automatically")
+		<< qt_("Load always") << qt_("Do not load");
+	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
+	mathsModule->packagesTW->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+	map<string, string> const & packages = BufferParams::auto_packages();
+	mathsModule->packagesTW->setRowCount(packages.size());
+	int i = 0;
+	for (map<string, string>::const_iterator it = packages.begin();
+	     it != packages.end(); ++it) {
+		docstring const package = from_ascii(it->first);
+		QString autoTooltip = qt_(it->second);
 		QString alwaysTooltip;
-		if (packages[i] == "amsmath")
+		if (package == "amsmath")
 			alwaysTooltip =
 				qt_("The AMS LaTeX packages are always used");
 		else
 			alwaysTooltip = toqstr(bformat(
 				_("The LaTeX package %1$s is always used"),
-				from_ascii(packages[i])));
-		QCheckBox * autoCB = new QCheckBox(autoText, mathsModule);
-		QCheckBox * alwaysCB = new QCheckBox(alwaysText, mathsModule);
-		mathsModule->gridLayout->addWidget(autoCB, 2 * i, 0);
-		mathsModule->gridLayout->addWidget(alwaysCB, 2 * i + 1, 0);
-		autoCB->setToolTip(autoTooltip);
-		alwaysCB->setToolTip(alwaysTooltip);
-		connect(autoCB, SIGNAL(toggled(bool)),
-		        alwaysCB, SLOT(setDisabled(bool)));
-		connect(autoCB, SIGNAL(clicked()),
+				package));
+		QString neverTooltip;
+		if (package == "amsmath")
+			neverTooltip =
+				qt_("The AMS LaTeX packages are never used");
+		else
+			neverTooltip = toqstr(bformat(
+				_("The LaTeX package %1$s is never used"),
+				package));
+		QRadioButton * autoRB = new QRadioButton(mathsModule);
+		QRadioButton * alwaysRB = new QRadioButton(mathsModule);
+		QRadioButton * neverRB = new QRadioButton(mathsModule);
+		QButtonGroup * packageGroup = new QButtonGroup(mathsModule);
+		packageGroup->addButton(autoRB);
+		packageGroup->addButton(alwaysRB);
+		packageGroup->addButton(neverRB);
+		autoRB->setToolTip(autoTooltip);
+		alwaysRB->setToolTip(alwaysTooltip);
+		neverRB->setToolTip(neverTooltip);
+		QTableWidgetItem * pack = new QTableWidgetItem(toqstr(package));
+		mathsModule->packagesTW->setItem(i, 0, pack);
+		mathsModule->packagesTW->setCellWidget(i, 1, autoRB);
+		mathsModule->packagesTW->setCellWidget(i, 2, alwaysRB);
+		mathsModule->packagesTW->setCellWidget(i, 3, neverRB);
+
+		connect(autoRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
-		connect(alwaysCB, SIGNAL(clicked()),
+		connect(alwaysRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
+		connect(neverRB, SIGNAL(clicked()),
+		        this, SLOT(change_adaptor()));
+		++i;
 	}
-	QSpacerItem * spacer = new QSpacerItem(20, 20, QSizePolicy::Minimum,
-	                                       QSizePolicy::Expanding);
-	mathsModule->gridLayout->addItem(spacer, 2 * packages.size(), 0);
 
 
 	// latex class
@@ -2653,20 +2617,26 @@ void GuiDocument::applyView()
 	modulesToParams(bp_);
 
 	// Math
-	vector<string> const & packages = BufferParams::auto_packages();
-        for (size_t n = 0; n < packages.size(); ++n) {
-		QCheckBox * autoCB = static_cast<QCheckBox *>(
-			mathsModule->gridLayout->itemAtPosition(2 * n, 0)->widget());
-		if (autoCB->isChecked())
-			bp_.use_package(packages[n], BufferParams::package_auto);
-		else {
-			QCheckBox * alwaysCB = static_cast<QCheckBox *>(
-				mathsModule->gridLayout->itemAtPosition(2 * n + 1, 0)->widget());
-			if (alwaysCB->isChecked())
-				bp_.use_package(packages[n], BufferParams::package_on);
-			else
-				bp_.use_package(packages[n], BufferParams::package_off);
+	map<string, string> const & packages = BufferParams::auto_packages();
+	for (map<string, string>::const_iterator it = packages.begin();
+	     it != packages.end(); ++it) {
+		QTableWidgetItem * item = mathsModule->packagesTW->findItems(toqstr(it->first), Qt::MatchExactly)[0];
+		if (!item)
+			continue;
+		int row = mathsModule->packagesTW->row(item);
+		QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1);
+		if (rb->isChecked()) {
+			bp_.use_package(it->first, BufferParams::package_auto);
+			continue;
 		}
+		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2);
+		if (rb->isChecked()) {
+			bp_.use_package(it->first, BufferParams::package_on);
+			continue;
+		}
+		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3);
+		if (rb->isChecked())
+			bp_.use_package(it->first, BufferParams::package_off);
 	}
 
 	// Page Layout
@@ -3078,14 +3048,30 @@ void GuiDocument::paramsToDialog()
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
 
-	vector<string> const & packages = BufferParams::auto_packages();
-        for (size_t n = 0; n < packages.size(); ++n) {
-		QCheckBox * alwaysCB = static_cast<QCheckBox *>(
-			mathsModule->gridLayout->itemAtPosition(2 * n + 1, 0)->widget());
-		alwaysCB->setChecked(bp_.use_package(packages[n]) == BufferParams::package_on);
-		QCheckBox * autoCB = static_cast<QCheckBox *>(
-			mathsModule->gridLayout->itemAtPosition(2 * n, 0)->widget());
-		autoCB->setChecked(bp_.use_package(packages[n]) == BufferParams::package_auto);
+	map<string, string> const & packages = BufferParams::auto_packages();
+	for (map<string, string>::const_iterator it = packages.begin();
+	     it != packages.end(); ++it) {
+		QTableWidgetItem * item = mathsModule->packagesTW->findItems(toqstr(it->first), Qt::MatchExactly)[0];
+		if (!item)
+			continue;
+		int row = mathsModule->packagesTW->row(item);
+		switch (bp_.use_package(it->first)) {
+			case BufferParams::package_off: {
+				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3);
+				rb->setChecked(true);
+				break;
+			}
+			case BufferParams::package_on: {
+				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2);
+				rb->setChecked(true);
+				break;
+			}
+			case BufferParams::package_auto: {
+				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1);
+				rb->setChecked(true);
+				break;
+			}
+		}
 	}
 
 	switch (bp_.spacing().getSpace()) {
