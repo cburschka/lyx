@@ -70,11 +70,11 @@ End
 Style Algorithm
 	CopyStyle             Theorem
 	DependsOn	           Theorem
-	LatexName             algorithm
+	LatexName             lyxalgorithm
 	LabelString           "Algorithm \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{algorithm}[thm]{\protect\algorithmname}
+	  \newtheorem{lyxalgorithm}[thm]{\protect\algorithmname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
@@ -87,11 +87,11 @@ End
 
 Style Algorithm*
 	CopyStyle             Theorem*
-	LatexName             algorithm*
+	LatexName             lyxalgorithm*
 	LabelString           "Algorithm."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{algorithm*}{\protect\algorithmname}
+	  \newtheorem*{lyxalgorithm*}{\protect\algorithmname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
