@@ -81,8 +81,7 @@
         <item>
          <widget class="QComboBox" name="iconSetCO">
           <property name="toolTip">
-           <string>The icon set to use. Warning: normal size of icons may be
-wrong until you save the preferences and restart LyX.</string>
+           <string>The icon set to use. Warning: normal size of icons may be wrong until you save the preferences and restart LyX.</string>
           </property>
          </widget>
         </item>
@@ -145,34 +144,38 @@ wrong until you save the preferences and restart LyX.</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QLabel" name="lastfilesLA">
-        <property name="text">
-         <string>&amp;Maximum last files:</string>
-        </property>
-        <property name="buddy">
-         <cstring>lastfilesSB</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3" colspan="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>48</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="2">
-       <widget class="QSpinBox" name="lastfilesSB">
-        <property name="maximum">
-         <number>9</number>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="lastfilesLA">
+          <property name="text">
+           <string>&amp;Maximum last files:</string>
+          </property>
+          <property name="buddy">
+           <cstring>lastfilesSB</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="lastfilesSB">
+          <property name="maximum">
+           <number>9</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>48</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
