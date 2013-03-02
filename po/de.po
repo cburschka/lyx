@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-02 10:18+0100\n"
-"PO-Revision-Date: 2013-03-02 10:21+0100\n"
+"POT-Creation-Date: 2013-03-02 14:10+0100\n"
+"PO-Revision-Date: 2013-03-02 14:11+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -105,78 +105,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:13
-msgid "Edit shortcut"
-msgstr "Tastenkürzel bearbeiten"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:52
-#: src/frontends/qt4/ui/InsetParamsUi.ui:118
-#: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/WrapUi.ui:150
-#: src/frontends/qt4/ui/TabularCreateUi.ui:65
-#: src/frontends/qt4/ui/NoteUi.ui:38 src/frontends/qt4/ui/ParagraphUi.ui:240
-#: src/frontends/qt4/ui/PhantomUi.ui:38
-#: src/frontends/qt4/ui/PrintindexUi.ui:38
-#: src/frontends/qt4/ui/SymbolsUi.ui:49 src/frontends/qt4/ui/ExternalUi.ui:588
-#: src/frontends/qt4/ui/CompareHistoryUi.ui:183
-#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/IncludeUi.ui:237
-#: src/frontends/qt4/ui/GraphicsUi.ui:721
-#: src/frontends/qt4/ui/ListingsUi.ui:539
-#: src/frontends/qt4/ui/DocumentUi.ui:67
-#: src/frontends/qt4/ui/ToggleWarningUi.ui:90
-#: src/frontends/qt4/ui/CharacterUi.ui:357
-#: src/frontends/qt4/ui/BibtexUi.ui:200 src/frontends/qt4/ui/RefUi.ui:317
-#: src/frontends/qt4/ui/CitationUi.ui:197 src/frontends/qt4/ui/SendtoUi.ui:72
-#: src/frontends/qt4/ui/CompareUi.ui:153
-msgid "&OK"
-msgstr "&OK"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/frontends/qt4/ui/BibtexAddUi.ui:127
-#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
-#: src/frontends/qt4/ui/SendtoUi.ui:92 src/buffer_funcs.cpp:113
-#: src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1605
-#: src/frontends/qt4/GuiCompare.cpp:192
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:77
-msgid "Enter LyX function or command sequence"
-msgstr "LyX-Funktion oder Kommandosequenz eingeben"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:87
-msgid "Remove last key from the shortcut sequence"
-msgstr "Letzten Eintrag der Kürzelsequenz entfernen"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:90
-msgid "&Delete Key"
-msgstr "&Lösche Kürzel"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:97
-msgid "Clear current shortcut"
-msgstr "Aktuelles Tastenkürzel entfernen"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:100
-#: src/frontends/qt4/ui/TabularUi.ui:1121
-msgid "C&lear"
-msgstr "Ent&fernen"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:107
-msgid "&Shortcut:"
-msgstr "&Tastenkürzel:"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:117
-msgid "&Function:"
-msgstr "&Funktion:"
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:130
-msgid ""
-"Type shortcut after clicking on this field. You can reset the content with "
-"the 'Clear' button"
-msgstr ""
-"Geben Sie ein Tastenkürzel ein, nachdem Sie in dieses Feld geklickt haben. "
-"Sie können den Inhalt mit dem Kopf 'Entfernen' zurücksetzen."
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:253
 msgid "Editing"
@@ -450,6 +378,26 @@ msgstr "Ein neues Exemplar dieses Objekts ins Dokument einfügen"
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
 msgstr "Neue Einfügung"
+
+#: src/frontends/qt4/ui/InsetParamsUi.ui:118
+#: src/frontends/qt4/ui/MathMatrixUi.ui:307 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/NoteUi.ui:38 src/frontends/qt4/ui/ParagraphUi.ui:240
+#: src/frontends/qt4/ui/PhantomUi.ui:38
+#: src/frontends/qt4/ui/PrintindexUi.ui:38
+#: src/frontends/qt4/ui/SymbolsUi.ui:49 src/frontends/qt4/ui/ExternalUi.ui:588
+#: src/frontends/qt4/ui/CompareHistoryUi.ui:183
+#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/IncludeUi.ui:237
+#: src/frontends/qt4/ui/GraphicsUi.ui:721
+#: src/frontends/qt4/ui/ListingsUi.ui:539
+#: src/frontends/qt4/ui/DocumentUi.ui:67
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:90
+#: src/frontends/qt4/ui/CharacterUi.ui:357
+#: src/frontends/qt4/ui/BibtexUi.ui:200 src/frontends/qt4/ui/RefUi.ui:317
+#: src/frontends/qt4/ui/CitationUi.ui:197 src/frontends/qt4/ui/SendtoUi.ui:72
+#: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/ShortcutUi.ui:52
+msgid "&OK"
+msgstr "&OK"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/ui/ParagraphUi.ui:250
@@ -1264,7 +1212,7 @@ msgstr "Zeilen&abstand"
 #: src/frontends/qt4/GuiDocument.cpp:3559 src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2290 src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:2290 src/frontends/qt4/GuiPrefs.cpp:2522
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:203
 msgid "Default"
@@ -1744,8 +1692,8 @@ msgid "Add the word to your personal dictionary"
 msgstr "Das Wort zum persönlichen Wörterbuch hinzufügen"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:216
-#: src/frontends/qt4/ui/ModulesUi.ui:100
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
+#: src/frontends/qt4/ui/ModulesUi.ui:100
 msgid "A&dd"
 msgstr "&Hinzufügen"
 
@@ -1795,40 +1743,48 @@ msgstr "Nicht definierte Zweige, die in diesem Dokument verwendet werden."
 msgid "&Undefined Branches:"
 msgstr "&Undefinierte Zweige:"
 
-#: src/frontends/qt4/ui/PhantomUi.ui:60
-msgid "Horizontal and vertical space of the phantom content"
-msgstr "Waagerechter und senkrechter Leerraum des Phantom-Inhalts"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:81
+msgid "C&onverter:"
+msgstr "&Konverter:"
 
-#: src/frontends/qt4/ui/PhantomUi.ui:63
-msgid "&Phantom"
-msgstr "&Phantom"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:91
+msgid "E&xtra flag:"
+msgstr "&Zusatz-Flag:"
 
-#: src/frontends/qt4/ui/PhantomUi.ui:70
-msgid "Horizontal space of the phantom content"
-msgstr "Horizontaler Leerraum des Phantominhalts"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:121
+msgid "&From format:"
+msgstr "&Von Format:"
 
-#: src/frontends/qt4/ui/PhantomUi.ui:73
-msgid "&Horizontal Phantom"
-msgstr "&Horizontales Phantom"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:153
+msgid "&To format:"
+msgstr "&In Format:"
 
-#: src/frontends/qt4/ui/PhantomUi.ui:80
-msgid "Vertical space of the phantom content"
-msgstr "Vertikaler Leerraum des Phantominhalts"
-
-#: src/frontends/qt4/ui/PhantomUi.ui:83
-msgid "&Vertical Phantom"
-msgstr "&Vertikales Phantom"
-
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 msgid "&Modify"
 msgstr "&Ändern"
 
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
-#: src/frontends/qt4/GuiPrefs.cpp:2963 src/frontends/qt4/GuiPrefs.cpp:3027
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
+#: src/frontends/qt4/GuiPrefs.cpp:2987 src/frontends/qt4/GuiPrefs.cpp:3051
 msgid "Remo&ve"
 msgstr "&Entfernen"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:239
+msgid "Converter Defi&nitions"
+msgstr "Konverter-&Definitionen"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:252
+msgid "Converter File Cache"
+msgstr "Konverterdatei-Zwischenspeicher"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:272
+msgid "&Enabled"
+msgstr "&Aktiv"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
+msgid "Maximum A&ge (in days):"
+msgstr "&Maximales Alter (in Tagen):"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 msgid "&New"
@@ -2021,6 +1977,11 @@ msgstr "&Festlegen"
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr "Lösche alle Rahmenlinien der aktuellen (ausgewählten) Zelle(n)"
 
+#: src/frontends/qt4/ui/TabularUi.ui:1121
+#: src/frontends/qt4/ui/ShortcutUi.ui:100
+msgid "C&lear"
+msgstr "Ent&fernen"
+
 #: src/frontends/qt4/ui/TabularUi.ui:1131
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 msgid "Style"
@@ -2177,6 +2138,30 @@ msgstr "Horizontale Ausrichtung der langen Tabelle"
 msgid "Longtable alignment"
 msgstr "Ausrichtung der langen Tabelle"
 
+#: src/frontends/qt4/ui/PhantomUi.ui:60
+msgid "Horizontal and vertical space of the phantom content"
+msgstr "Waagerechter und senkrechter Leerraum des Phantom-Inhalts"
+
+#: src/frontends/qt4/ui/PhantomUi.ui:63
+msgid "&Phantom"
+msgstr "&Phantom"
+
+#: src/frontends/qt4/ui/PhantomUi.ui:70
+msgid "Horizontal space of the phantom content"
+msgstr "Horizontaler Leerraum des Phantominhalts"
+
+#: src/frontends/qt4/ui/PhantomUi.ui:73
+msgid "&Horizontal Phantom"
+msgstr "&Horizontales Phantom"
+
+#: src/frontends/qt4/ui/PhantomUi.ui:80
+msgid "Vertical space of the phantom content"
+msgstr "Vertikaler Leerraum des Phantominhalts"
+
+#: src/frontends/qt4/ui/PhantomUi.ui:83
+msgid "&Vertical Phantom"
+msgstr "&Vertikales Phantom"
+
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
 msgstr "Dokumentenspezifische Format-Spezifikationen"
@@ -2217,6 +2202,15 @@ msgstr "Name der BibTeX-Datenbank eingeben"
 #: src/CutAndPaste.cpp:349
 msgid "&Add"
 msgstr "&Hinzufügen"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:127
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
+#: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
+#: src/buffer_funcs.cpp:113 src/frontends/qt4/ButtonController.cpp:239
+#: src/frontends/qt4/GuiApplication.cpp:1605
+#: src/frontends/qt4/GuiCompare.cpp:192
+msgid "Cancel"
+msgstr "Abbrechen"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
@@ -2634,30 +2628,34 @@ msgid "Insert the spacing even after a line break"
 msgstr "Den Abstand auch nach einem Zeilenumbruch einfügen"
 
 #: src/frontends/qt4/ui/PrefUi.ui:26
+msgid "General Look && Feel"
+msgstr "Aussehen und Handhabung allgemein"
+
+#: src/frontends/qt4/ui/PrefUi.ui:37
 msgid "&User interface file:"
 msgstr "&UI-Datei:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:39 src/frontends/qt4/ui/CompareUi.ui:83
+#: src/frontends/qt4/ui/PrefUi.ui:50 src/frontends/qt4/ui/CompareUi.ui:83
 msgid "Bro&wse..."
 msgstr "Du&rchsuchen..."
 
-#: src/frontends/qt4/ui/PrefUi.ui:59
+#: src/frontends/qt4/ui/PrefUi.ui:74
 msgid "&Icon Set:"
 msgstr "&Symboldesign:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:69
+#: src/frontends/qt4/ui/PrefUi.ui:84
 msgid ""
-"The icon set to use. Warning: normal size of icons may be\n"
-"wrong until you save the preferences and restart LyX."
+"The icon set to use. Warning: normal size of icons may be wrong until you "
+"save the preferences and restart LyX."
 msgstr ""
 "Das zu verwendende Symboldesign. Um die richtige Symbolgröße\n"
 "angezeigt zu bekommen, müssen Sie LyX ggf. neu starten."
 
-#: src/frontends/qt4/ui/PrefUi.ui:76
-msgid "Automatic help"
-msgstr "Automatische Hilfe"
+#: src/frontends/qt4/ui/PrefUi.ui:109
+msgid "Context help"
+msgstr "Kontexthilfe"
 
-#: src/frontends/qt4/ui/PrefUi.ui:94
+#: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -2665,100 +2663,17 @@ msgstr ""
 "Zeigt hilfreiche Kommentare zu Einfügungen im Hauptarbeitsbereich des "
 "bearbeiteten Dokuments"
 
-#: src/frontends/qt4/ui/PrefUi.ui:97
+#: src/frontends/qt4/ui/PrefUi.ui:130
 msgid "&Enable tool tips in main work area"
 msgstr "&Tooltips im Hauptarbeitsbereich aktivieren"
 
-#: src/frontends/qt4/ui/PrefUi.ui:107
-msgid "Session"
-msgstr "Sitzung"
+#: src/frontends/qt4/ui/PrefUi.ui:140
+msgid "Menus"
+msgstr "Menüs"
 
-#: src/frontends/qt4/ui/PrefUi.ui:119
-msgid "Restore window layouts and &geometries"
-msgstr "Aussehen und Größe von &Fenstern wiederherstellen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:126
-msgid "Restore to the cursor position when the file was last closed"
-msgstr "Positioniere den Cursor beim Öffnen der Datei dort, wo er zuletzt war"
-
-#: src/frontends/qt4/ui/PrefUi.ui:129
-msgid "Restore cursor &positions"
-msgstr "&Cursor-Positionen wiederherstellen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:136
-msgid "&Load opened files from last session"
-msgstr "Ge&öffnete Dateien der letzten Sitzung laden"
-
-#: src/frontends/qt4/ui/PrefUi.ui:143
-msgid "&Clear all session information"
-msgstr "&Lösche alle Sitzungsinformationen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:166
-msgid "Documents"
-msgstr "Dokumente"
-
-#: src/frontends/qt4/ui/PrefUi.ui:175
-msgid "Backup original documents when saving"
-msgstr "Sichere &Originaldokumente beim Speichern"
-
-#: src/frontends/qt4/ui/PrefUi.ui:182
-msgid "&Backup documents, every"
-msgstr "Sicherun&g der Dokumente alle"
-
-#: src/frontends/qt4/ui/PrefUi.ui:199
-msgid "minutes"
-msgstr "Minuten"
-
-#: src/frontends/qt4/ui/PrefUi.ui:219
-msgid "&Save documents compressed by default"
-msgstr "Dokumente &komprimiert speichern"
-
-#: src/frontends/qt4/ui/PrefUi.ui:226
+#: src/frontends/qt4/ui/PrefUi.ui:151
 msgid "&Maximum last files:"
 msgstr "&Maximale Anzahl letzter Dateien:"
-
-#: src/frontends/qt4/ui/PrefUi.ui:256
-msgid "&Open documents in tabs"
-msgstr "Dokument in &Registerkarten öffnen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:263
-msgid ""
-"Whether to open documents in an already running instance of LyX.\n"
-"(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr ""
-"Öffne Dokumente in einer bereits laufenden LyX-Instanz.\n"
-"(Um dieses Feature nutzen zu können, müssen Sie einen\n"
-"Pfad zur LyX-Server-Weiterleitung definieren und LyX neu starten.)"
-
-#: src/frontends/qt4/ui/PrefUi.ui:266
-msgid "S&ingle instance"
-msgstr "Ein&zelinstanz"
-
-#: src/frontends/qt4/ui/PrefUi.ui:273
-msgid "Whether to place close button on each tab or only one in the top left."
-msgstr ""
-"Zeige den \"Schließen\"-Knopf nicht auf jedem Unterfenster an, sondern "
-"rechts in der Unterfenster-Leiste."
-
-#: src/frontends/qt4/ui/PrefUi.ui:276
-msgid "&Single close-tab button"
-msgstr "&Globaler Knopf zum Schließen von Registerkarten"
-
-#: src/frontends/qt4/ui/PrefUi.ui:283
-msgid "Closing last view:"
-msgstr "Beim Schließen der letzten &Ansicht:"
-
-#: src/frontends/qt4/ui/PrefUi.ui:294
-msgid "Closes document"
-msgstr "Dokument schließen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:299
-msgid "Hides document"
-msgstr "Dokument verbergen"
-
-#: src/frontends/qt4/ui/PrefUi.ui:304
-msgid "Ask the user"
-msgstr "Nachfragen"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -3225,37 +3140,96 @@ msgstr "Den Namen des ausgewählten Zweigs ändern."
 msgid "Re&name..."
 msgstr "&Umbenennen..."
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:81
-msgid "C&onverter:"
-msgstr "&Konverter:"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
+msgid "Session handling"
+msgstr "Sitzungshandhabung"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:91
-msgid "E&xtra flag:"
-msgstr "&Zusatz-Flag:"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
+msgid "Restore window layouts and &geometries"
+msgstr "Aussehen und Größe von &Fenstern wiederherstellen"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:121
-msgid "&From format:"
-msgstr "&Von Format:"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
+msgid "Restore to the cursor position when the file was last closed"
+msgstr "Positioniere den Cursor beim Öffnen der Datei dort, wo er zuletzt war"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:153
-msgid "&To format:"
-msgstr "&In Format:"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
+msgid "Restore cursor &positions"
+msgstr "&Cursor-Positionen wiederherstellen"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:239
-msgid "Converter Defi&nitions"
-msgstr "Konverter-&Definitionen"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
+msgid "&Load opened files from last session"
+msgstr "Ge&öffnete Dateien der letzten Sitzung laden"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:252
-msgid "Converter File Cache"
-msgstr "Konverterdatei-Zwischenspeicher"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
+msgid "&Clear all session information"
+msgstr "&Lösche alle Sitzungsinformationen"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:272
-msgid "&Enabled"
-msgstr "&Aktiv"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
+msgid "Backup && saving"
+msgstr "Sichern und Speichern"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-msgid "Maximum A&ge (in days):"
-msgstr "&Maximales Alter (in Tagen):"
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
+msgid "Backup &original documents when saving"
+msgstr "Sichere &Originaldokumente beim Speichern"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
+msgid "&Backup documents, every"
+msgstr "Sicherun&g der Dokumente alle"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
+msgid "&minutes"
+msgstr "&Minuten"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
+msgid "&Save documents compressed by default"
+msgstr "Dokumente &komprimiert speichern"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+msgid "Windows && work area"
+msgstr "Fenster und Arbeitsbereich"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+msgid "Open documents in &tabs"
+msgstr "Dokumente in &Registerkarten öffnen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+msgid ""
+"Whether to open documents in an already running instance of LyX. Set the "
+"LyXServer pipe path and restart LyX to enable this feature."
+msgstr ""
+"Öffne Dokumente in einer bereits laufenden LyX-Instanz.\n"
+"(Um dieses Feature nutzen zu können, müssen Sie einen\n"
+"Pfad zur LyX-Server-Weiterleitung definieren und LyX neu starten.)"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+msgid "Use s&ingle instance"
+msgstr "Ein&zelinstanz verwenden"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr ""
+"Zeige den \"Schließen\"-Knopf nicht auf jedem Unterfenster an, sondern "
+"rechts in der Unterfenster-Leiste."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+msgid "Displa&y single close-tab button"
+msgstr "&Globalen Knopf zum Schließen von Registerkarten anzeigen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+msgid "Closing last &view:"
+msgstr "Beim Schließen der letzten &Ansicht:"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+msgid "Closes document"
+msgstr "Dokument schließen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+msgid "Hides document"
+msgstr "Dokument verbergen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+msgid "Ask the user"
+msgstr "Nachfragen"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
 msgid "Compare Revisions"
@@ -5325,6 +5299,42 @@ msgstr "Behalten"
 #: src/frontends/qt4/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
 msgstr "Passe die Tiefe des Navigationsbaums an"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:13
+msgid "Edit shortcut"
+msgstr "Tastenkürzel bearbeiten"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:77
+msgid "Enter LyX function or command sequence"
+msgstr "LyX-Funktion oder Kommandosequenz eingeben"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:87
+msgid "Remove last key from the shortcut sequence"
+msgstr "Letzten Eintrag der Kürzelsequenz entfernen"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:90
+msgid "&Delete Key"
+msgstr "&Lösche Kürzel"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:97
+msgid "Clear current shortcut"
+msgstr "Aktuelles Tastenkürzel entfernen"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:107
+msgid "&Shortcut:"
+msgstr "&Tastenkürzel:"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:117
+msgid "&Function:"
+msgstr "&Funktion:"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:130
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
+msgstr ""
+"Geben Sie ein Tastenkürzel ein, nachdem Sie in dieses Feld geklickt haben. "
+"Sie können den Inhalt mit dem Kopf 'Entfernen' zurücksetzen."
 
 #: lib/layouts/docbook-section.layout:3
 msgid "DocBook Section (SGML)"
@@ -25096,7 +25106,7 @@ msgid "About %1"
 msgstr "Über %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:554
-#: src/frontends/qt4/GuiPrefs.cpp:3232
+#: src/frontends/qt4/GuiPrefs.cpp:3256
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -26618,7 +26628,7 @@ msgstr "Benutzerdateien|#B#b"
 
 #: src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Look & Feel"
-msgstr "Aussehen & Handhabung"
+msgstr "Aussehen und Handhabung"
 
 #: src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Language Settings"
@@ -26744,72 +26754,76 @@ msgstr ""
 msgid "Printer"
 msgstr "Drucker"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2506 src/frontends/qt4/GuiPrefs.cpp:3275
+#: src/frontends/qt4/GuiPrefs.cpp:2506 src/frontends/qt4/GuiPrefs.cpp:3300
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2549
+#: src/frontends/qt4/GuiPrefs.cpp:2523
 msgid "Classic"
 msgstr "Klassisch"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2550
+#: src/frontends/qt4/GuiPrefs.cpp:2524
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2645
+#: src/frontends/qt4/GuiPrefs.cpp:2566
+msgid "Document Handling"
+msgstr "Dokument-Handhabung"
+
+#: src/frontends/qt4/GuiPrefs.cpp:2669
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2733
+#: src/frontends/qt4/GuiPrefs.cpp:2757
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2738
+#: src/frontends/qt4/GuiPrefs.cpp:2762
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2739
+#: src/frontends/qt4/GuiPrefs.cpp:2763
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2818
+#: src/frontends/qt4/GuiPrefs.cpp:2842
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2822
+#: src/frontends/qt4/GuiPrefs.cpp:2846
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2826
+#: src/frontends/qt4/GuiPrefs.cpp:2850
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2830
+#: src/frontends/qt4/GuiPrefs.cpp:2854
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2834
+#: src/frontends/qt4/GuiPrefs.cpp:2858
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2961 src/frontends/qt4/GuiPrefs.cpp:3007
+#: src/frontends/qt4/GuiPrefs.cpp:2985 src/frontends/qt4/GuiPrefs.cpp:3031
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3118 src/frontends/qt4/GuiPrefs.cpp:3125
-#: src/frontends/qt4/GuiPrefs.cpp:3145 src/frontends/qt4/GuiPrefs.cpp:3164
+#: src/frontends/qt4/GuiPrefs.cpp:3142 src/frontends/qt4/GuiPrefs.cpp:3149
+#: src/frontends/qt4/GuiPrefs.cpp:3169 src/frontends/qt4/GuiPrefs.cpp:3188
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3119
+#: src/frontends/qt4/GuiPrefs.cpp:3143
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3126
+#: src/frontends/qt4/GuiPrefs.cpp:3150
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3146
+#: src/frontends/qt4/GuiPrefs.cpp:3170
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -26819,35 +26833,35 @@ msgstr ""
 "Tastenkürzel `%1$s' ist bereits mit %2$s belegt\n"
 " Sie müssen die Belegung erst entfernen bevor Sie eine neue setzen können."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3165
+#: src/frontends/qt4/GuiPrefs.cpp:3189
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3196
+#: src/frontends/qt4/GuiPrefs.cpp:3220
 msgid "Identity"
 msgstr "Identität"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3405
+#: src/frontends/qt4/GuiPrefs.cpp:3430
 msgid "Choose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3406
+#: src/frontends/qt4/GuiPrefs.cpp:3431
 msgid "LyX bind files (*.bind)"
 msgstr "LyX-Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3412
+#: src/frontends/qt4/GuiPrefs.cpp:3437
 msgid "Choose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3413
+#: src/frontends/qt4/GuiPrefs.cpp:3438
 msgid "LyX UI files (*.ui)"
 msgstr "LyX-UI-Dateien (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3419
+#: src/frontends/qt4/GuiPrefs.cpp:3444
 msgid "Choose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3420
+#: src/frontends/qt4/GuiPrefs.cpp:3445
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
@@ -29568,6 +29582,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Ma&ximum last files:"
+#~ msgstr "Ma&ximale Anzahl letzter Dateien:"
+
+#~ msgid "Automatic help"
+#~ msgstr "Automatische Hilfe"
+
+#~ msgid "Session"
+#~ msgstr "Sitzung"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumente"
 
 #~ msgid "&Use amsmath package automatically"
 #~ msgstr "&AMS-Mathe-Paket automatisch verwenden"
