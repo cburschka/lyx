@@ -37,6 +37,38 @@
      <column/>
     </widget>
    </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="allPakcagesLA">
+       <property name="text">
+        <string>All packages:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="allPackagesAutoPB">
+       <property name="text">
+        <string>Load a&amp;utomatically</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="allPackagesAlwaysPB">
+       <property name="text">
+        <string>Load alwa&amp;ys</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="allPackagesNotPB">
+       <property name="text">
+        <string>Do &amp;not load</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <includes>

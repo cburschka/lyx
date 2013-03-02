@@ -1202,6 +1202,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		        this, SLOT(change_adaptor()));
 		++i;
 	}
+	connect(mathsModule->allPackagesAutoPB, SIGNAL(clicked()),
+		this, SLOT(allPackagesAuto()));
+	connect(mathsModule->allPackagesAlwaysPB, SIGNAL(clicked()),
+		this, SLOT(allPackagesAlways()));
+	connect(mathsModule->allPackagesNotPB, SIGNAL(clicked()),
+		this, SLOT(allPackagesNot()));
 
 
 	// latex class
@@ -3851,6 +3857,33 @@ void GuiDocument::executeBranchRenaming() const
 	for (; it != changedBranches_.end() ; ++it) {
 		docstring const arg = '"' + it->first + '"' + " " + '"' + it->second + '"';
 		dispatch(FuncRequest(LFUN_BRANCHES_RENAME, arg));
+	}
+}
+
+
+void GuiDocument::allPackagesAuto()
+{
+	allPackages(1);
+}
+
+
+void GuiDocument::allPackagesAlways()
+{
+	allPackages(2);
+}
+
+
+void GuiDocument::allPackagesNot()
+{
+	allPackages(3);
+}
+
+
+void GuiDocument::allPackages(int col)
+{
+	for (int row = 0; row < mathsModule->packagesTW->rowCount(); ++row) {
+		QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, col);
+		rb->setChecked(true);
 	}
 }
 

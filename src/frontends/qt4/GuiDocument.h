@@ -126,6 +126,9 @@ private Q_SLOTS:
 	void osFontsChanged(bool);
 	void mathFontChanged(int);
 	void branchesRename(docstring const &, docstring const &);
+	void allPackagesAuto();
+	void allPackagesAlways();
+	void allPackagesNot();
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();
@@ -262,6 +265,8 @@ private:
 	bool completeFontset() const;
 	///
 	bool noMathFont() const;
+	///
+	void allPackages(int);
 	///
 	BufferParams bp_;
 	/// List of names of available modules
