@@ -33,6 +33,7 @@
 #include "ui_PrefCompletionUi.h"
 #include "ui_PrefColorsUi.h"
 #include "ui_PrefDisplayUi.h"
+#include "ui_PrefDocHandlingUi.h"
 #include "ui_PrefEditUi.h"
 #include "ui_PrefPathsUi.h"
 #include "ui_PrefShortcutsUi.h"
@@ -420,8 +421,22 @@ public:
 
 public Q_SLOTS:
 	void selectUi();
+};
+
+
+class PrefDocHandling : public PrefModule, public Ui::PrefDocHandlingUi
+{
+	Q_OBJECT
+public:
+	PrefDocHandling(GuiPreferences * form);
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+public Q_SLOTS:
 	void on_clearSessionPB_clicked();
 };
+
 
 
 class PrefEdit : public PrefModule, public Ui::PrefEditUi

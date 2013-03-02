@@ -319,6 +319,7 @@ UIFILES = \
 	PrefColorsUi.ui \
 	PrefCompletionUi.ui \
 	PrefConvertersUi.ui \
+	PrefDocHandlingUi.ui \
 	PrefOutputUi.ui \
 	PrefDisplayUi.ui \
 	PrefEditUi.ui \

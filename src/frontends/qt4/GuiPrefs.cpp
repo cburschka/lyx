@@ -2507,37 +2507,11 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 {
 	setupUi(this);
 
-	connect(autoSaveCB, SIGNAL(toggled(bool)),
-		autoSaveSB, SLOT(setEnabled(bool)));
-	connect(autoSaveCB, SIGNAL(toggled(bool)),
-		TextLabel1, SLOT(setEnabled(bool)));
-	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(singleInstanceCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(singleCloseTabButtonCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
 	connect(uiFilePB, SIGNAL(clicked()),
 		this, SLOT(selectUi()));
 	connect(uiFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(iconSetCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
-	connect(closeLastViewCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
-	connect(restoreCursorCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(loadSessionCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(allowGeometrySessionCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(autoSaveSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed()));
-	connect(autoSaveCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(backupCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(saveCompressedCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
@@ -2557,14 +2531,79 @@ void PrefUserInterface::apply(LyXRC & rc) const
 		iconSetCO->currentIndex()).toString());
 
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
+	rc.num_lastfiles = lastfilesSB->value();
+	rc.use_tooltip = tooltipCB->isChecked();
+}
+
+
+void PrefUserInterface::update(LyXRC const & rc)
+{
+	int iconset = iconSetCO->findData(toqstr(rc.icon_set));
+	if (iconset < 0)
+		iconset = 0;
+	iconSetCO->setCurrentIndex(iconset);
+	uiFileED->setText(toqstr(external_path(rc.ui_file)));
+	lastfilesSB->setValue(rc.num_lastfiles);
+	tooltipCB->setChecked(rc.use_tooltip);
+}
+
+
+void PrefUserInterface::selectUi()
+{
+	QString file = form_->browseUI(internalPath(uiFileED->text()));
+	if (!file.isEmpty())
+		uiFileED->setText(file);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// PrefDocumentHandling
+//
+/////////////////////////////////////////////////////////////////////
+
+PrefDocHandling::PrefDocHandling(GuiPreferences * form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Document Handling"), form)
+{
+	setupUi(this);
+
+	connect(autoSaveCB, SIGNAL(toggled(bool)),
+		autoSaveSB, SLOT(setEnabled(bool)));
+	connect(autoSaveCB, SIGNAL(toggled(bool)),
+		TextLabel1, SLOT(setEnabled(bool)));
+	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(singleInstanceCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(singleCloseTabButtonCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(closeLastViewCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
+	connect(restoreCursorCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(loadSessionCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(allowGeometrySessionCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(autoSaveSB, SIGNAL(valueChanged(int)),
+		this, SIGNAL(changed()));
+	connect(autoSaveCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(backupCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(saveCompressedCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+}
+
+
+void PrefDocHandling::apply(LyXRC & rc) const
+{
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
 	rc.autosave = autoSaveCB->isChecked() ?  autoSaveSB->value() * 60 : 0;
 	rc.make_backup = backupCB->isChecked();
 	rc.save_compressed = saveCompressedCB->isChecked();
-	rc.num_lastfiles = lastfilesSB->value();
-	rc.use_tooltip = tooltipCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
 	rc.single_instance = singleInstanceCB->isChecked();
 	rc.single_close_tab_button = singleCloseTabButtonCB->isChecked();
@@ -2585,13 +2624,8 @@ void PrefUserInterface::apply(LyXRC & rc) const
 }
 
 
-void PrefUserInterface::update(LyXRC const & rc)
+void PrefDocHandling::update(LyXRC const & rc)
 {
-	int iconset = iconSetCO->findData(toqstr(rc.icon_set));
-	if (iconset < 0)
-		iconset = 0;
-	iconSetCO->setCurrentIndex(iconset);
-	uiFileED->setText(toqstr(external_path(rc.ui_file)));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
 	allowGeometrySessionCB->setChecked(rc.allow_geometry_session);
@@ -2605,8 +2639,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveSB->setEnabled(autosave);
 	backupCB->setChecked(rc.make_backup);
 	saveCompressedCB->setChecked(rc.save_compressed);
-	lastfilesSB->setValue(rc.num_lastfiles);
-	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
 	singleInstanceCB->setChecked(rc.single_instance && !rc.lyxpipes.empty());
 	singleInstanceCB->setEnabled(!rc.lyxpipes.empty());
@@ -2620,15 +2652,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 }
 
 
-void PrefUserInterface::selectUi()
-{
-	QString file = form_->browseUI(internalPath(uiFileED->text()));
-	if (!file.isEmpty())
-		uiFileED->setText(file);
-}
-
-
-void PrefUserInterface::on_clearSessionPB_clicked()
+void PrefDocHandling::on_clearSessionPB_clicked()
 {
 	guiApp->clearSession();
 }
@@ -3241,6 +3265,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
 	addModule(new PrefUserInterface(this));
+	addModule(new PrefDocHandling(this));
 	addModule(new PrefEdit(this));
 	addModule(new PrefShortcuts(this));
 	PrefScreenFonts * screenfonts = new PrefScreenFonts(this);
