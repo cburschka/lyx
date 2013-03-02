@@ -168,7 +168,7 @@
       <item row="1" column="0">
        <widget class="QCheckBox" name="singleInstanceCB">
         <property name="toolTip">
-         <string>Whether to open documents in an already running instance of LyX. Set the LyXServer pipe path and restart LyX to enable this feature.</string>
+         <string>Whether to open documents in an already running instance of LyX.&#x0a;(Set the LyXServer pipe path and restart LyX to enable this feature)</string>
         </property>
         <property name="text">
          <string>Use s&amp;ingle instance</string>
