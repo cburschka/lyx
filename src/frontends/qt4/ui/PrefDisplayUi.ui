@@ -1,37 +1,43 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>PrefDisplayUi</class>
- <widget class="QWidget" name="PrefDisplayUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefDisplayUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>362</width>
+    <height>164</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QCheckBox" name="displayGraphicsCB" >
-     <property name="text" >
+   <item row="0" column="0" colspan="2">
+    <widget class="QCheckBox" name="displayGraphicsCB">
+     <property name="text">
       <string>Display &amp;Graphics</string>
      </property>
     </widget>
    </item>
-   <item rowspan="4" row="0" column="4" >
+   <item row="0" column="4" rowspan="4">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>57</width>
        <height>20</height>
@@ -39,94 +45,92 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="instantPreviewLA" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QLabel" name="instantPreviewLA">
+     <property name="text">
       <string>Instant &amp;Preview:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>instantPreviewCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QComboBox" name="instantPreviewCO" >
+   <item row="1" column="1">
+    <widget class="QComboBox" name="instantPreviewCO">
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Off</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>No math</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>On</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="1" column="2" >
-    <widget class="QLabel" name="previewSizeLA" >
-     <property name="text" >
+   <item row="1" column="2">
+    <widget class="QLabel" name="previewSizeLA">
+     <property name="text">
       <string>Preview Si&amp;ze:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>instantPreviewCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="1" column="3" >
-    <widget class="QDoubleSpinBox" name="previewSizeSB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+   <item row="1" column="3">
+    <widget class="QDoubleSpinBox" name="previewSizeSB">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Factor for the preview size</string>
      </property>
-     <property name="decimals" >
+     <property name="decimals">
       <number>1</number>
      </property>
-     <property name="maximum" >
+     <property name="minimum">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="maximum">
       <double>10.000000000000000</double>
      </property>
-     <property name="minimum" >
+     <property name="singleStep">
       <double>0.100000000000000</double>
      </property>
-     <property name="singleStep" >
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value" >
+     <property name="value">
       <double>1.000000000000000</double>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QCheckBox" name="paragraphMarkerCB" >
-     <property name="toolTip" >
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="paragraphMarkerCB">
+     <property name="toolTip">
       <string>Mark end of paragraphs on screen with a pilcrow character.</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Mark end of paragraphs</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" >
+   <item row="3" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -140,7 +144,7 @@
   <tabstop>instantPreviewCO</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
