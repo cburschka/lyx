@@ -118,14 +118,9 @@ void debugToken(std::ostream & os, Token const & t, unsigned int flags)
 // Wrapper
 //
 
-bool iparserdocstream::setEncoding(std::string const & e)
+void iparserdocstream::setEncoding(std::string const & e)
 {
 	is_ << lyx::setEncoding(e);
-	if (s_.empty())
-		return true;
-	cerr << "Setting encoding " << e << " too late. The encoding of `"
-	     << to_utf8(s_) << "´ is wrong." << std::endl;
-	return false;
 }
 
 
@@ -266,7 +261,8 @@ bool Parser::setEncoding(std::string const & e)
 {
 	//cerr << "setting encoding to " << e << std::endl;
 	encoding_iconv_ = e;
-	return is_.setEncoding(e);
+	is_.setEncoding(e);
+	return true;
 }
 
 

@@ -129,7 +129,7 @@ public:
 	operator bool() const { return s_.empty() ? is_ : true; }
 
 	/// change the encoding of the input stream to \p e (iconv name)
-	bool setEncoding(std::string const & e);
+	void setEncoding(std::string const & e);
 
 	// add to the list of characters to read before actually reading
 	// the stream
