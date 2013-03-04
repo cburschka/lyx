@@ -47,16 +47,17 @@ if(Q_WS_X11)
   endif()
 endif()
 
-macro(getdefaultoutputformat filepath varname)
+macro(getoutputformats filepath varname)
   file(STRINGS "${filepath}" lines)
   set(${varname} "pdf") # try at least this one
   foreach(_l ${lines})
     if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
-      set(found ${CMAKE_MATCH_1})
-      if(found STREQUAL "default")
-	set(found "pdf" "pdf2" "pdf5")
-      elseif(found STREQUAL "xhtml")
-	set(found "") # we test xhtml regardless of default format
+      if(CMAKE_MATCH_1 STREQUAL "default")
+        set(found "xhtml" "pdf" "pdf2" "pdf5")
+      elseif(CMAKE_MATCH_1 STREQUAL "xhtml")
+        set(found "xhtml")
+      else()
+        set(found "xhtml" ${CMAKE_MATCH_1})
       endif()
       set(${varname} ${found})
       break()
@@ -90,8 +91,8 @@ foreach(libsubfolder doc examples templates)
           -Dextension=16.lyx
           -Dfile=${f}
           -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-    getdefaultoutputformat("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
-    foreach(format "xhtml" ${formatlist})
+    getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
+    foreach(format ${formatlist})
       add_test(NAME export/${libsubfolder}/${f}_${format}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
