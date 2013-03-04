@@ -534,14 +534,13 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (!runparams.nice)
-			incfile = mangled;
+		incfile = mangled;
 	else if (!isValidLaTeXFileName(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
 			_("The following filename will cause troubles "
 				"when running the exported file through LaTeX: ") +
 			from_utf8(incfile));
-	}
-	else if (!isValidDVIFileName(incfile)) {
+	} else if (!isValidDVIFileName(incfile)) {
 		frontend::Alert::warning(_("Problematic filename for DVI"),
 			_("The following filename can cause troubles "
 				"when running the exported file through LaTeX "
