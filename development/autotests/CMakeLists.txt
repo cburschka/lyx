@@ -55,6 +55,8 @@ macro(getdefaultoutputformat filepath varname)
       set(found ${CMAKE_MATCH_1})
       if(found STREQUAL "default")
 	set(found "pdf" "pdf2" "pdf5")
+      elseif(found STREQUAL "xhtml")
+	set(found "") # we test xhtml regardless of default format
       endif()
       set(${varname} ${found})
       break()
