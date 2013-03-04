@@ -80,31 +80,27 @@ foreach(libsubfolder doc examples templates)
     endif()
   endforeach()
   foreach(f ${nolang_lyx_files} ${lang_lyx_files})
-    if(f MATCHES "MergedManuals")
-      # we do not test (for now) the uncompilable file MergedManuals.lyx
-    else()
-      # Strip extension
-      string(REGEX REPLACE "\\.lyx$" "" f ${f})
-      add_test(NAME export/${libsubfolder}/${f}_lyx16
+    # Strip extension
+    string(REGEX REPLACE "\\.lyx$" "" f ${f})
+    add_test(NAME export/${libsubfolder}/${f}_lyx16
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+      COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+          -Dlyx=$<TARGET_FILE:${_lyx}>
+          -Dformat=lyx16x
+          -Dextension=16.lyx
+          -Dfile=${f}
+          -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+    getdefaultoutputformat("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
+    foreach(format "xhtml" ${formatlist})
+      add_test(NAME export/${libsubfolder}/${f}_${format}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
-            -Dformat=lyx16x
-            -Dextension=16.lyx
+            -Dformat=${format}
+            -Dextension=${format}
             -Dfile=${f}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-      getdefaultoutputformat("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
-      foreach(format "xhtml" ${formatlist})
-        add_test(NAME export/${libsubfolder}/${f}_${format}
-          WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-          COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
-              -Dlyx=$<TARGET_FILE:${_lyx}>
-              -Dformat=${format}
-              -Dextension=${format}
-              -Dfile=${f}
-              -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-      endforeach()
-    endif()
+    endforeach()
   endforeach()
 endforeach()
 
