@@ -527,7 +527,27 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			mangledFileName();
 	}
 
+	if (!runparams.nice)
+		incfile = mangled;
+	else if (!isValidLaTeXFileName(incfile)) {
+		frontend::Alert::warning(_("Invalid filename"),
+			_("The following filename will cause troubles "
+				"when running the exported file through LaTeX: ") +
+			from_utf8(incfile));
+	} else if (!isValidDVIFileName(incfile)) {
+		frontend::Alert::warning(_("Problematic filename for DVI"),
+			_("The following filename can cause troubles "
+				"when running the exported file through LaTeX "
+				"and opening the resulting DVI: ") +
+			from_utf8(incfile), true);
+	}
+
 	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
+
+	LYXERR(Debug::LATEX, "incfile:" << incfile);
+	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
+	LYXERR(Debug::LATEX, "writefile:" << writefile);
+
 	string const tex_format = flavor2format(runparams.flavor);
 
 	switch (type(params())) {
@@ -589,25 +609,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// Don't try to load or copy the file if we're
 		// in a comment or doing a dryrun
 		return;
-
-	if (!runparams.nice)
-		incfile = mangled;
-	else if (!isValidLaTeXFileName(incfile)) {
-		frontend::Alert::warning(_("Invalid filename"),
-			_("The following filename will cause troubles "
-			  "when running the exported file through LaTeX: ") +
-			from_utf8(incfile));
-	}
-	else if (!isValidDVIFileName(incfile)) {
-		frontend::Alert::warning(_("Problematic filename for DVI"),
-			_("The following filename can cause troubles "
-			  "when running the exported file through LaTeX "
-			  "and opening the resulting DVI: ") +
-			from_utf8(incfile), true);
-	}
-	LYXERR(Debug::LATEX, "incfile:" << incfile);
-	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
-	LYXERR(Debug::LATEX, "writefile:" << writefile);
 
 	if (isInputOrInclude(params()) &&
 		 isLyXFileName(included_file.absFileName())) {
