@@ -37,8 +37,8 @@
 
 #include "frontends/alert.h"
 
-#include <ostream>
 #include <algorithm>
+#include <ostream>
 
 using namespace std;
 using namespace lyx::support;

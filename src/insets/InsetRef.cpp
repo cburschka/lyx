@@ -172,7 +172,8 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 }
 
 
-int InsetRef::plaintext(odocstream & os, OutputParams const &) const
+int InsetRef::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	docstring const str = getParam("reference");
 	os << '[' << str << ']';
@@ -246,7 +247,9 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 void InsetRef::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 

@@ -161,7 +161,8 @@ void InsetNewline::latex(otexstream & os, OutputParams const & rp) const
 }
 
 
-int InsetNewline::plaintext(odocstream & os, OutputParams const &) const
+int InsetNewline::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;

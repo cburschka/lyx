@@ -42,7 +42,8 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///
-	int plaintext(odocstream &, OutputParams const & runparams) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///

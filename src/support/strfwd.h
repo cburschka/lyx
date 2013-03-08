@@ -44,9 +44,11 @@ typedef basic_string<char, char_traits<char>, allocator<char> > string;
 
 template<class Char, class Traits> class basic_istream;
 template<class Char, class Traits> class basic_ostream;
+template<class Char, class Traits, class Allocator> class basic_ostringstream;
 
 typedef basic_istream<char, char_traits<char> > istream;
 typedef basic_ostream<char, char_traits<char> > ostream;
+typedef basic_ostringstream<char, char_traits<char>, allocator<char> > ostringstream;
 
 } // namepace std
 
@@ -62,6 +64,9 @@ typedef std::basic_istream<char_type, std::char_traits<char_type> > idocstream;
 
 /// Base class for UCS4 output streams
 typedef std::basic_ostream<char_type, std::char_traits<char_type> > odocstream;
+
+/// UCS4 output stringstream
+typedef std::basic_ostringstream<char_type, std::char_traits<char_type>, std::allocator<char_type> > odocstringstream;
 
 #if ! defined(USE_WCHAR_T)
 extern odocstream & operator<<(odocstream &, char);

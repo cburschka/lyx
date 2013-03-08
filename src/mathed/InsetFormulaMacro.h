@@ -46,7 +46,7 @@ public:
 	///
 	int latex(otexstream & os, OutputParams const &) const;
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 

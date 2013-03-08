@@ -809,7 +809,8 @@ void InsetGraphics::latex(otexstream & os,
 }
 
 
-int InsetGraphics::plaintext(odocstream & os, OutputParams const &) const
+int InsetGraphics::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.

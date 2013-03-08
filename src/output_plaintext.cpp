@@ -75,9 +75,9 @@ static pair<int, docstring> addDepth(int depth, int ldepth)
 
 void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & par,
-		    odocstream & os,
+		    odocstream & ods,
 		    OutputParams const & runparams,
-		    bool & ref_printed)
+		    bool & ref_printed, size_t max_length)
 {
 	int ltype = 0;
 	depth_type ltype_depth = 0;
@@ -121,6 +121,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	string::size_type currlinelen = 0;
 
+	odocstringstream os;
 	os << docstring(depth * 2, ' ');
 	currlinelen += depth * 2;
 
@@ -184,6 +185,9 @@ void writePlaintextParagraph(Buffer const & buf,
 		if (par.isDeleted(i))
 			continue;
 
+		if (os.str().size() > max_length)
+			break;
+
 		char_type c = par.getUChar(buf.params(), i);
 
 		if (par.isInset(i) || c == ' ') {
@@ -202,7 +206,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		if (par.isInset(i)) {
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
-			int len = par.getInset(i)->plaintext(os, rp);
+			int len = par.getInset(i)->plaintext(os, rp, max_length);
 			if (len >= Inset::PLAINTEXT_NEWLINE)
 				currlinelen = len - Inset::PLAINTEXT_NEWLINE;
 			else
@@ -238,6 +242,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		}
 		os << word;
 	}
+	ods << os.str();
 }
 
 

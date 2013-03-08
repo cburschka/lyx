@@ -29,11 +29,11 @@ InsetMarginal::InsetMarginal(Buffer * buf)
 {}
 
 
-int InsetMarginal::plaintext(odocstream & os,
-			     OutputParams const & runparams) const
+int InsetMarginal::plaintext(odocstringstream & os,
+			     OutputParams const & runparams, size_t max_length) const
 {
 	os << '[' << buffer().B_("margin") << ":\n";
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line

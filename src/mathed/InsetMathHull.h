@@ -126,7 +126,8 @@ public:
 	///
 	bool readQuiet(Lexer & lex);
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream &, OutputParams const &, 
+	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///

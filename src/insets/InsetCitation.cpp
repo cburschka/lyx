@@ -342,7 +342,8 @@ void InsetCitation::addToToc(DocIterator const & cpit) const
 }
 
 
-int InsetCitation::plaintext(odocstream & os, OutputParams const &) const
+int InsetCitation::plaintext(odocstringstream & os,
+       OutputParams const &, size_t) const
 {
 	string const & cmd = getCmdName();
 	if (cmd == "nocite")
@@ -396,7 +397,9 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 void InsetCitation::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 

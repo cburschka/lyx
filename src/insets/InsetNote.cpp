@@ -253,8 +253,8 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 }
 
 
-int InsetNote::plaintext(odocstream & os,
-			 OutputParams const & runparams_in) const
+int InsetNote::plaintext(odocstringstream & os,
+			 OutputParams const & runparams_in, size_t max_length) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -266,7 +266,7 @@ int InsetNote::plaintext(odocstream & os,
 		runparams.exportdata.reset(new ExportData);
 	}
 	os << '[' << buffer().B_("note") << ":\n";
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line

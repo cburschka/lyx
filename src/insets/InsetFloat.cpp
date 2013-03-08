@@ -389,11 +389,11 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 }
 
 
-int InsetFloat::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetFloat::plaintext(odocstringstream & os, OutputParams const & runparams, size_t max_length) const
 {
 	os << '[' << buffer().B_("float") << ' '
 		<< floatName(params_.type) << ":\n";
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line

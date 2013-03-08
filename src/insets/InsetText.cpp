@@ -507,7 +507,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetText::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetText::plaintext(odocstringstream & os,
+        OutputParams const & runparams, size_t max_length) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
@@ -521,12 +522,14 @@ int InsetText::plaintext(odocstream & os, OutputParams const & runparams) const
 				os << '\n';
 		}
 		odocstringstream oss;
-		writePlaintextParagraph(buffer(), *it, oss, runparams, ref_printed);
+		writePlaintextParagraph(buffer(), *it, oss, runparams, ref_printed, max_length);
 		docstring const str = oss.str();
 		os << str;
 		// FIXME: len is not computed fully correctly; in principle,
 		// we have to count the characters after the last '\n'
 		len = str.size();
+		if (os.str().size() >= max_length)
+			break;
 	}
 
 	return len;
@@ -961,6 +964,7 @@ docstring InsetText::toolTipText(docstring prefix,
 {
 	size_t const max_length = numlines * len;
 	OutputParams rp(&buffer().params().encoding());
+	rp.for_tooltip = true;
 	odocstringstream oss;
 	oss << prefix;
 
@@ -973,9 +977,9 @@ docstring InsetText::toolTipText(docstring prefix,
 	for (; it != end; ++it) {
 		if (it != beg)
 			oss << '\n';
-		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed);
+		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, max_length);
 		str = oss.str();
-		if (str.length() > max_length)
+		if (str.length() >= max_length)
 			break;
 	}
 	return support::wrapParas(str, 4, len, numlines);

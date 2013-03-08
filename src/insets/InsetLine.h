@@ -49,7 +49,8 @@ private:
 	void metrics(MetricsInfo &, Dimension &) const;
 	void draw(PainterInfo & pi, int x, int y) const;
 	void latex(otexstream &, OutputParams const &) const;
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	Inset * clone() const { return new InsetLine(*this); }

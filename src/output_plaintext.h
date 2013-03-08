@@ -13,6 +13,9 @@
 #define OUTPUT_PLAINTEXT_H
 
 #include "support/strfwd.h"
+#include "support/types.h"
+
+#include <climits>
 
 
 namespace lyx {
@@ -36,7 +39,8 @@ void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & paragraphs,
 		    odocstream & ofs,
 		    OutputParams const &,
-		    bool & ref_printed);
+		    bool & ref_printed,
+		    size_t max_length = INT_MAX);
 
 } // namespace lyx
 

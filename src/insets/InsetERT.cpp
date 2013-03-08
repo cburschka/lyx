@@ -53,7 +53,8 @@ void InsetERT::write(ostream & os) const
 }
 
 
-int InsetERT::plaintext(odocstream & os, OutputParams const & rp) const
+int InsetERT::plaintext(odocstringstream & os,
+        OutputParams const & rp, size_t max_length) const
 {
 	if (!rp.inIndexEntry)
 		// do not output TeX code
@@ -62,7 +63,7 @@ int InsetERT::plaintext(odocstream & os, OutputParams const & rp) const
 	ParagraphList::const_iterator par = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 
-	while (par != end) {
+	while (par != end && os.str().size() <= max_length) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			char_type const c = par->getChar(i);

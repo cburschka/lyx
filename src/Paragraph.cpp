@@ -1046,7 +1046,9 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	LASSERT(inset, /**/);
 
 	if (style.pass_thru) {
-		inset->plaintext(os.os(), runparams);
+		odocstringstream ods;
+		inset->plaintext(ods, runparams);
+		os << ods.str();
 		return;
 	}
 

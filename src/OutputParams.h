@@ -261,6 +261,9 @@ public:
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc;
 	
+	/// Are we generating this material for inclusion in a tooltip?
+	bool for_tooltip;
+
 	/// Include all children notwithstanding the use of \includeonly
 	bool includeall;
 

@@ -128,7 +128,8 @@ public:
 	) const;
 
 	///
-	void writePlaintextTocList(std::string const & type, odocstream & os) const;
+	void writePlaintextTocList(std::string const & type,
+	        odocstringstream & os, size_t max_length) const;
 
 private:
 	///

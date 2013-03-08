@@ -110,10 +110,11 @@ void InsetTOC::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetTOC::plaintext(odocstream & os, OutputParams const &) const
+int InsetTOC::plaintext(odocstringstream & os,
+        OutputParams const &, size_t max_length) const
 {
 	os << screenLabel() << "\n\n";
-	buffer().tocBackend().writePlaintextTocList(cmd2type(getCmdName()), os);
+	buffer().tocBackend().writePlaintextTocList(cmd2type(getCmdName()), os, max_length);
 	return PLAINTEXT_NEWLINE;
 }
 

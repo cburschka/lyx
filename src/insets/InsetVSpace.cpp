@@ -207,7 +207,8 @@ void InsetVSpace::latex(otexstream & os, OutputParams const &) const
 }
 
 
-int InsetVSpace::plaintext(odocstream & os, OutputParams const &) const
+int InsetVSpace::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	os << "\n\n";
 	return PLAINTEXT_NEWLINE;

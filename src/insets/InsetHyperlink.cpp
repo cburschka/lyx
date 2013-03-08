@@ -209,7 +209,8 @@ void InsetHyperlink::latex(otexstream & os,
 }
 
 
-int InsetHyperlink::plaintext(odocstream & os, OutputParams const &) const
+int InsetHyperlink::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	odocstringstream oss;
 
@@ -250,7 +251,9 @@ docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 void InsetHyperlink::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0), INT_MAX);
+	os << ods.str();
 }
 
 

@@ -80,9 +80,6 @@ public:
 /// UCS4 input stringstream
 typedef std::basic_istringstream<char_type> idocstringstream;
 
-/// UCS4 output stringstream
-typedef std::basic_ostringstream<char_type> odocstringstream;
-
 /// UCS4 output manipulator
 typedef odocstream & (*odocstream_manip)(odocstream &);
 

@@ -132,7 +132,8 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// For now, this does nothing. Someone who knows about this

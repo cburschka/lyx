@@ -231,14 +231,18 @@ Toc::iterator Toc::item(int depth, docstring const & str)
 }
 
 
-void TocBackend::writePlaintextTocList(string const & type, odocstream & os) const
+void TocBackend::writePlaintextTocList(string const & type,
+        odocstringstream & os, size_t max_length) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {
 		TocIterator ccit = cit->second.begin();
 		TocIterator end = cit->second.end();
-		for (; ccit != end; ++ccit)
+		for (; ccit != end; ++ccit) {
 			os << ccit->asString() << from_utf8("\n");
+			if (os.str().size() > max_length)
+				break;
+		}
 	}
 }
 

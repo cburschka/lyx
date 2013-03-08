@@ -298,7 +298,8 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetQuotes::plaintext(odocstream & os, OutputParams const &) const
+int InsetQuotes::plaintext(odocstringstream & os, 
+        OutputParams const &, size_t) const
 {
 	docstring const str = displayString();
 	os << str;

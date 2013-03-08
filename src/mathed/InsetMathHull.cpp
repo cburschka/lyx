@@ -1895,7 +1895,8 @@ bool InsetMathHull::readQuiet(Lexer & lex)
 }
 
 
-int InsetMathHull::plaintext(odocstream & os, OutputParams const & op) const
+int InsetMathHull::plaintext(odocstringstream & os,
+        OutputParams const & op, size_t max_length) const
 {
 	// disables ASCII-art for export of equations. See #2275.
 	if (0 && display()) {
@@ -1923,7 +1924,7 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const & op) const
 				wi << (c == 0 ? "" : "\t") << cell(index(r, c));
 			// if it's for the TOC, we write just the first line
 			// and do not include the newline.
-			if (op.for_toc)
+			if (op.for_toc || op.for_tooltip || oss.str().size() >= max_length)
 				break;
 			wi << "\n";
 		}
@@ -2239,7 +2240,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 
 void InsetMathHull::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 

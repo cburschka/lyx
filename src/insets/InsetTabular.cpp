@@ -64,10 +64,10 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#include <sstream>
+#include <cstring>
 #include <iostream>
 #include <limits>
-#include <cstring>
+#include <sstream>
 
 using namespace std;
 using namespace lyx::support;
@@ -3086,7 +3086,7 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 }
 
 
-bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
+bool Tabular::plaintextTopHLine(odocstringstream & os, row_type row,
 				   vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -3134,7 +3134,7 @@ bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
 }
 
 
-bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
+bool Tabular::plaintextBottomHLine(odocstringstream & os, row_type row,
 				      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -3181,14 +3181,14 @@ bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
 }
 
 
-void Tabular::plaintextPrintCell(odocstream & os,
+void Tabular::plaintextPrintCell(odocstringstream & os,
 			       OutputParams const & runparams,
 			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
-			       bool onlydata) const
+			       bool onlydata, size_t max_length) const
 {
 	odocstringstream sstr;
-	cellInset(cell)->plaintext(sstr, runparams);
+	cellInset(cell)->plaintext(sstr, runparams, max_length);
 
 	if (onlydata) {
 		os << sstr.str();
@@ -3231,9 +3231,9 @@ void Tabular::plaintextPrintCell(odocstream & os,
 }
 
 
-void Tabular::plaintext(odocstream & os,
+void Tabular::plaintext(odocstringstream & os,
 			   OutputParams const & runparams, int const depth,
-			   bool onlydata, char_type delim) const
+			   bool onlydata, char_type delim, size_t max_length) const
 {
 	// first calculate the width of the single columns
 	vector<unsigned int> clen(ncols());
@@ -3247,7 +3247,7 @@ void Tabular::plaintext(odocstream & os,
 				if (isMultiColumn(cell))
 					continue;
 				odocstringstream sstr;
-				cellInset(cell)->plaintext(sstr, runparams);
+				cellInset(cell)->plaintext(sstr, runparams, max_length);
 				if (clen[c] < sstr.str().length())
 					clen[c] = sstr.str().length();
 			}
@@ -3259,7 +3259,7 @@ void Tabular::plaintext(odocstream & os,
 				if (cell_info[r][c].multicolumn != CELL_BEGIN_OF_MULTICOLUMN)
 					continue;
 				odocstringstream sstr;
-				cellInset(cell)->plaintext(sstr, runparams);
+				cellInset(cell)->plaintext(sstr, runparams, max_length);
 				int len = int(sstr.str().length());
 				idx_type const n = columnSpan(cell);
 				for (col_type k = c; len > 0 && k < c + n - 1; ++k)
@@ -3280,8 +3280,10 @@ void Tabular::plaintext(odocstream & os,
 				// we don't use operator<< for single UCS4 character.
 				// see explanation in docstream.h
 				os.put(delim);
-			plaintextPrintCell(os, runparams, cell, r, c, clen, onlydata);
+			plaintextPrintCell(os, runparams, cell, r, c, clen, onlydata, max_length);
 			++cell;
+			if (os.str().size() > max_length)
+				break;
 		}
 		os << endl;
 		if (!onlydata) {
@@ -3289,6 +3291,8 @@ void Tabular::plaintext(odocstream & os,
 			if (plaintextBottomHLine(os, r, clen))
 				os << docstring(depth * 2, ' ');
 		}
+		if (os.str().size() > max_length)
+			break;
 	}
 }
 
@@ -4954,11 +4958,12 @@ void InsetTabular::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetTabular::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetTabular::plaintext(odocstringstream & os,
+        OutputParams const & runparams, size_t max_length) const
 {
 	os << '\n'; // output table on a new line
 	int const dp = runparams.linelen > 0 ? runparams.depth : 0;
-	tabular.plaintext(os, runparams, dp, false, 0);
+	tabular.plaintext(os, runparams, dp, false, 0, max_length);
 	return PLAINTEXT_NEWLINE;
 }
 
@@ -5999,7 +6004,7 @@ bool InsetTabular::copySelection(Cursor & cur)
 
 	odocstringstream os;
 	OutputParams const runparams(0);
-	paste_tabular->plaintext(os, runparams, 0, true, '\t');
+	paste_tabular->plaintext(os, runparams, 0, true, '\t', INT_MAX);
 	// Needed for the "Edit->Paste recent" menu and the system clipboard.
 	cap::copySelection(cur, os.str());
 

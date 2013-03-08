@@ -55,7 +55,8 @@ public:
 	///
 	void read(Lexer & lex);
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream &, OutputParams const &,
+	              int max_length) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///

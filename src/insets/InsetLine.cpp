@@ -185,7 +185,8 @@ void InsetLine::latex(otexstream & os, OutputParams const &) const
 }
 
 
-int InsetLine::plaintext(odocstream & os, OutputParams const &) const
+int InsetLine::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	os << "\n-------------------------------------------\n";
 	return PLAINTEXT_NEWLINE;

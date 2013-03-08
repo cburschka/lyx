@@ -313,11 +313,11 @@ docstring InsetScript::toolTip(BufferView const &, int, int) const
 {
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
-	InsetText::plaintext(ods, rp);
+	InsetText::plaintext(ods, rp, 200);
 	docstring content_tip = ods.str();
 	// shorten it if necessary
-	if (content_tip.size() > 200)
-		content_tip = content_tip.substr(0, 200) + "...";
+	if (content_tip.size() >= 200)
+		content_tip = content_tip.substr(0, 197) + "...";
 	docstring res = scripttranslator_loc().find(params_.type);
 	if (!content_tip.empty())
 		res += from_ascii(": ") + content_tip;
@@ -325,10 +325,11 @@ docstring InsetScript::toolTip(BufferView const &, int, int) const
 }
 
 
-int InsetScript::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetScript::plaintext(odocstringstream & os,
+        OutputParams const & runparams, size_t max_length) const
 {
 	odocstringstream oss;
-	InsetText::plaintext(oss, runparams);
+	InsetText::plaintext(oss, runparams, max_length);
 	docstring const text = oss.str();
 	switch (params_.type) {
 	case InsetScriptParams::Subscript:
@@ -352,7 +353,7 @@ int InsetScript::plaintext(odocstream & os, OutputParams const & runparams) cons
 		os << '[' << buffer().B_("superscript") << ':';
 		break;
 	}
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 	os << ']';
 
 	return PLAINTEXT_NEWLINE;

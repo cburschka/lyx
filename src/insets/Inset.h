@@ -24,6 +24,8 @@
 #include "support/strfwd.h"
 #include "support/types.h"
 
+#include <climits>
+
 
 namespace lyx {
 
@@ -314,7 +316,8 @@ public:
 	/// plain text output in ucs4 encoding
 	/// return the number of characters; in case of multiple lines of
 	/// output, add PLAINTEXT_NEWLINE to the number of chars in the last line
-	virtual int plaintext(odocstream &, OutputParams const &) const = 0;
+	virtual int plaintext(odocstringstream &, OutputParams const &,
+	                      size_t max_length = INT_MAX) const = 0;
 	/// docbook output
 	virtual int docbook(odocstream & os, OutputParams const &) const;
 	/// XHTML output

@@ -235,7 +235,8 @@ void InsetNewpage::latex(otexstream & os, OutputParams const &) const
 }
 
 
-int InsetNewpage::plaintext(odocstream & os, OutputParams const &) const
+int InsetNewpage::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;

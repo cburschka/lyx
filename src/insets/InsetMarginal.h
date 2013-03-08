@@ -31,7 +31,8 @@ public:
 	///
 	docstring layoutName() const { return from_ascii("Marginal"); }
 	///
-	int plaintext(odocstream &, OutputParams const & runparams) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;
 	///

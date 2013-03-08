@@ -126,7 +126,8 @@ void InsetCommand::latex(otexstream & os, OutputParams const & runparams_in) con
 }
 
 
-int InsetCommand::plaintext(odocstream & os, OutputParams const &) const
+int InsetCommand::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	docstring const str = "[" + buffer().B_("LaTeX Command: ")
 		+ from_utf8(getCmdName()) + "]";

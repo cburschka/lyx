@@ -254,7 +254,8 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-int InsetLabel::plaintext(odocstream & os, OutputParams const &) const
+int InsetLabel::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	docstring const str = getParam("name");
 	os << '<' << str << '>';

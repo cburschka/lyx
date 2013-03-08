@@ -71,7 +71,8 @@ private:
 	///
 	void latex(otexstream & os, OutputParams const &) const;
 	///
-	int plaintext(odocstream & os, OutputParams const & runparams) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
 	/// 

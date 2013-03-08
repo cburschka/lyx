@@ -1252,8 +1252,8 @@ docstring MathMacroTemplate::xhtml(XHTMLStream &, OutputParams const &) const
 	return docstring();
 }
 
-int MathMacroTemplate::plaintext(odocstream & os,
-				 OutputParams const &) const
+int MathMacroTemplate::plaintext(odocstringstream & os,
+				 OutputParams const &, size_t) const
 {
 	static docstring const str = '[' + buffer().B_("math macro") + ']';
 

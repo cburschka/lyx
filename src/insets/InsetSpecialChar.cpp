@@ -239,7 +239,8 @@ void InsetSpecialChar::latex(otexstream & os,
 }
 
 
-int InsetSpecialChar::plaintext(odocstream & os, OutputParams const &) const
+int InsetSpecialChar::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -329,8 +330,11 @@ void InsetSpecialChar::toString(odocstream & os) const
 		// Spell checker would choke on it.
 		return;
 	default:
-		plaintext(os, OutputParams(0));
+		break;
 	}
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 

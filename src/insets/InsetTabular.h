@@ -30,6 +30,7 @@
 
 #include "support/shared_ptr.h"
 
+#include <climits>
 #include <iosfwd>
 #include <vector>
 
@@ -500,9 +501,9 @@ public:
 	///
 	docstring xhtml(XHTMLStream & os, OutputParams const &) const;
 	///
-	void plaintext(odocstream &,
+	void plaintext(odocstringstream &,
 		       OutputParams const & runparams, int const depth,
-		       bool onlydata, char_type delim) const;
+		       bool onlydata, char_type delim, size_t max_length = INT_MAX) const;
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
@@ -783,17 +784,17 @@ public:
 	///
 	// helper functions for plain text
 	///
-	bool plaintextTopHLine(odocstream &, row_type row,
+	bool plaintextTopHLine(odocstringstream &, row_type row,
 			       std::vector<unsigned int> const &) const;
 	///
-	bool plaintextBottomHLine(odocstream &, row_type row,
+	bool plaintextBottomHLine(odocstringstream &, row_type row,
 				  std::vector<unsigned int> const &) const;
 	///
-	void plaintextPrintCell(odocstream &,
+	void plaintextPrintCell(odocstringstream &,
 				OutputParams const &,
 				idx_type cell, row_type row, col_type column,
 				std::vector<unsigned int> const &,
-				bool onlydata) const;
+				bool onlydata, size_t max_length) const;
 	/// auxiliary function for docbook
 	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
 	///
@@ -857,7 +858,8 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///

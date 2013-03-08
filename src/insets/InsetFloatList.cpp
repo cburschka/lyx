@@ -160,11 +160,12 @@ void InsetFloatList::latex(otexstream & os, OutputParams const &) const
 }
 
 
-int InsetFloatList::plaintext(odocstream & os, OutputParams const &) const
+int InsetFloatList::plaintext(odocstringstream & os,
+        OutputParams const &, size_t max_length) const
 {
 	os << screenLabel() << "\n\n";
 
-	buffer().tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
+	buffer().tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os, max_length);
 
 	return PLAINTEXT_NEWLINE;
 }

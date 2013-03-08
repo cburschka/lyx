@@ -810,9 +810,11 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 }
 
 
-int InsetInclude::plaintext(odocstream & os, OutputParams const & op) const
+int InsetInclude::plaintext(odocstringstream & os,
+        OutputParams const & op, size_t) const
 {
-	if (isVerbatim(params()) || isListings(params())) {
+	// don't write the file just because we're making a tooltip or toc entry!!
+	if (op.for_tooltip || op.for_toc || isVerbatim(params()) || isListings(params())) {
 		os << '[' << screenLabel() << '\n';
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
 		os << includedFileName(buffer(), params()).fileContents("UTF-8");

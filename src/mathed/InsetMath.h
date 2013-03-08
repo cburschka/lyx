@@ -200,7 +200,7 @@ public:
 	virtual void octave(OctaveStream &) const;
 
 	/// plain text output in ucs4 encoding
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;

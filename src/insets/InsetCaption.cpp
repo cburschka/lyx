@@ -279,11 +279,11 @@ void InsetCaption::latex(otexstream & os,
 }
 
 
-int InsetCaption::plaintext(odocstream & os,
-			    OutputParams const & runparams) const
+int InsetCaption::plaintext(odocstringstream & os,
+			    OutputParams const & runparams, size_t max_length) const
 {
 	os << '[' << full_label_ << "\n";
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 	os << "\n]";
 
 	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
@@ -350,7 +350,9 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << full_label_ << ' ';
-	return InsetText::plaintext(os, runparams);
+	odocstringstream ods;
+	return InsetText::plaintext(ods, runparams);
+	os << ods.str();
 }
 
 

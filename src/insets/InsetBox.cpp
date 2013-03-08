@@ -440,7 +440,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetBox::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetBox::plaintext(odocstringstream & os,
+       OutputParams const & runparams, size_t max_length) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);
 
@@ -466,7 +467,7 @@ int InsetBox::plaintext(odocstream & os, OutputParams const & runparams) const
 			break;
 	}
 
-	InsetText::plaintext(os, runparams);
+	InsetText::plaintext(os, runparams, max_length);
 
 	int len = 0;
 	switch (btype) {

@@ -691,8 +691,8 @@ void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetExternal::plaintext(odocstream & os,
-			     OutputParams const & runparams) const
+int InsetExternal::plaintext(odocstringstream & os,
+			     OutputParams const & runparams, size_t) const
 {
 	os << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), os,

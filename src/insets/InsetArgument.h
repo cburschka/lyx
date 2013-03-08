@@ -49,7 +49,7 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const { }
 	///
-	int plaintext(odocstream &, OutputParams const &) const { return 0; }
+	int plaintext(odocstringstream &, OutputParams const &, int) const { return 0; }
 	///
 	int docbook(odocstream &, OutputParams const &) const { return 0; }
 	///

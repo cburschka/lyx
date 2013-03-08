@@ -262,13 +262,13 @@ void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetBranch::plaintext(odocstream & os,
-			   OutputParams const & runparams) const
+int InsetBranch::plaintext(odocstringstream & os,
+			   OutputParams const & runparams, size_t max_length) const
 {
 	if (!isBranchSelected())
 		return 0;
 
-	int len = InsetText::plaintext(os, runparams);
+	int len = InsetText::plaintext(os, runparams, max_length);
 	return len;
 }
 

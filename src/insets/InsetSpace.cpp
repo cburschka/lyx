@@ -621,7 +621,8 @@ void InsetSpace::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetSpace::plaintext(odocstream & os, OutputParams const &) const
+int InsetSpace::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::HFILL:
@@ -813,7 +814,9 @@ void InsetSpace::validate(LaTeXFeatures & features) const
 
 void InsetSpace::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 

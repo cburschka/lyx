@@ -928,12 +928,14 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetBibtex::plaintext(odocstream & os, OutputParams const &) const
+int InsetBibtex::plaintext(odocstringstream & os,
+       OutputParams const &, size_t max_length) const
 {
 	BiblioInfo bibinfo = buffer().masterBibInfo();
 	bibinfo.makeCitationLabels(buffer());
 	vector<docstring> const & cites = bibinfo.citedEntries();
 
+	size_t start_size = os.str().size();
 	docstring refoutput;
 	docstring const reflabel = buffer().B_("References");
 
@@ -943,6 +945,8 @@ int InsetBibtex::plaintext(odocstream & os, OutputParams const &) const
 	vector<docstring>::const_iterator vit = cites.begin();
 	vector<docstring>::const_iterator const ven = cites.end();
 	for (; vit != ven; ++vit) {
+		if (start_size + refoutput.size() >= max_length)
+			break;
 		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
 		if (biit == bibinfo.end())
 			continue;

@@ -320,8 +320,8 @@ void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetPhantom::plaintext(odocstream & os,
-			    OutputParams const & runparams) const
+int InsetPhantom::plaintext(odocstringstream & os,
+			    OutputParams const & runparams, size_t max_length) const
 {
 	if (params_.type == InsetPhantomParams::Phantom)
 		os << '[' << buffer().B_("phantom") << ":";
@@ -329,7 +329,7 @@ int InsetPhantom::plaintext(odocstream & os,
 		os << '[' << buffer().B_("hphantom") << ":";
 	else if (params_.type == InsetPhantomParams::VPhantom)
 		os << '[' << buffer().B_("vphantom") << ":";
-	InsetCollapsable::plaintext(os, runparams);
+	InsetCollapsable::plaintext(os, runparams, max_length);
 	os << "]";
 
 	return PLAINTEXT_NEWLINE;

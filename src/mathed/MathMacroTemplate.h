@@ -56,7 +56,7 @@ public:
 	/// Nothing happens. This is simply to suppress the default output.
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	int plaintext(odocstream &, OutputParams const &) const;
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const;
 	///
 	bool inheritFont() const { return false; }
 

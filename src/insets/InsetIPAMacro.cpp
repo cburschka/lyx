@@ -281,11 +281,11 @@ void InsetIPADeco::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetIPADeco::plaintext(odocstream & os,
-			    OutputParams const & runparams) const
+int InsetIPADeco::plaintext(odocstringstream & os,
+			    OutputParams const & runparams, size_t max_length) const
 {
 	odocstringstream ods;
-	int h = (int)(InsetCollapsable::plaintext(ods, runparams) / 2);
+	int h = (int)(InsetCollapsable::plaintext(ods, runparams, max_length) / 2);
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());
@@ -512,7 +512,7 @@ void InsetIPAChar::latex(otexstream & os,
 }
 
 
-int InsetIPAChar::plaintext(odocstream & os, OutputParams const &) const
+int InsetIPAChar::plaintext(odocstringstream & os, OutputParams const &, size_t) const
 {
 	switch (kind_) {
 	case TONE_FALLING:
@@ -588,7 +588,9 @@ docstring InsetIPAChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 void InsetIPAChar::toString(odocstream & os) const
 {
-	plaintext(os, OutputParams(0));
+	odocstringstream ods;
+	plaintext(ods, OutputParams(0));
+	os << ods.str();
 }
 
 
