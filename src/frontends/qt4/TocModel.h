@@ -125,8 +125,6 @@ public:
 	///
 	void init(Buffer const & buffer);
 	///
-	void updateBackend() const;
-	///
 	void updateItem(QString const & type, DocIterator const & dit);
 	///
 	void sort(QString const & type, bool sort_it);

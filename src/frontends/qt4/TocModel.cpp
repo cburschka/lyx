@@ -330,13 +330,6 @@ TocItem const TocModels::currentItem(QString const & type,
 }
  
 
-void TocModels::updateBackend() const
-{
-	bv_->buffer().masterBuffer()->tocBackend().update();
-	bv_->buffer().structureChanged();
-}
-
-
 void TocModels::updateItem(QString const & type, DocIterator const & dit)
 {
 	models_[type]->updateItem(dit);
