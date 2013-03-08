@@ -1061,6 +1061,8 @@ void GuiView::updateStatusBar()
 
 void GuiView::showMessage()
 {
+	if (busy_)
+		return;
 	QString msg = toqstr(theGuiApp()->viewStatusMessage());
 	if (msg.isEmpty()) {
 		BufferView const * bv = currentBufferView();
