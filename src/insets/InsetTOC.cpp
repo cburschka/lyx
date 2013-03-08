@@ -159,6 +159,11 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	Toc::const_iterator const en = toc.end();
 	int lastdepth = 0;
 	for (; it != en; ++it) {
+		// do not output entries that are not actually included in the output,
+		// e.g., stuff in non-active branches or notes or whatever.
+		if (!it->isOutput())
+			continue;
+
 		// First, we need to manage increases and decreases of depth
 		int const depth = it->depth();
 		
