@@ -330,7 +330,7 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 }
 
 
-void InsetCitation::addToToc(DocIterator const & cpit) const
+void InsetCitation::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	// NOTE
 	// XHTML output uses the TOC to collect the citations
@@ -338,7 +338,7 @@ void InsetCitation::addToToc(DocIterator const & cpit) const
 	// will need to change how the citations are collected.
 	docstring const tocitem = getParam("key");
 	Toc & toc = buffer().tocBackend().toc("citation");
-	toc.push_back(TocItem(cpit, 0, tocitem));
+	toc.push_back(TocItem(cpit, 0, tocitem, output_active));
 }
 
 

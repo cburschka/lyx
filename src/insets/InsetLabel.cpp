@@ -169,15 +169,15 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 }
 
 
-void InsetLabel::addToToc(DocIterator const & cpit) const
+void InsetLabel::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	docstring const & label = getParam("name");
 	Toc & toc = buffer().tocBackend().toc("label");
 	if (buffer().insetLabel(label) != this) {
-		toc.push_back(TocItem(cpit, 0, screen_label_));
+		toc.push_back(TocItem(cpit, 0, screen_label_, output_active));
 		return;
 	}
-	toc.push_back(TocItem(cpit, 0, screen_label_));
+	toc.push_back(TocItem(cpit, 0, screen_label_, output_active));
 	Buffer::References const & refs = buffer().references(label);
 	Buffer::References::const_iterator it = refs.begin();
 	Buffer::References::const_iterator end = refs.end();
@@ -185,10 +185,12 @@ void InsetLabel::addToToc(DocIterator const & cpit) const
 		DocIterator const ref_pit(it->second);
 		if (it->first->lyxCode() == MATH_REF_CODE)
 			toc.push_back(TocItem(ref_pit, 1,
-				it->first->asInsetMath()->asRefInset()->screenLabel()));
+				it->first->asInsetMath()->asRefInset()->screenLabel(),
+				output_active));
 		else
 			toc.push_back(TocItem(ref_pit, 1,
-				static_cast<InsetRef *>(it->first)->screenLabel()));
+				static_cast<InsetRef *>(it->first)->screenLabel(),
+			  output_active));
 	}
 }
 

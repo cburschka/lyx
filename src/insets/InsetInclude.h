@@ -102,7 +102,7 @@ public:
 	///
 	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///

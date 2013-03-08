@@ -1047,13 +1047,13 @@ void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 }
 
 
-void InsetGraphics::addToToc(DocIterator const & cpit) const
+void InsetGraphics::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	TocBackend & backend = buffer().tocBackend();
 
 	//FIXME UNICODE
 	docstring const str = from_utf8(params_.filename.onlyFileName());
-	backend.toc("graphics").push_back(TocItem(cpit, 0, str));
+	backend.toc("graphics").push_back(TocItem(cpit, 0, str, output_active));
 }
 
 

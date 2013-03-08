@@ -41,7 +41,7 @@ private:
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

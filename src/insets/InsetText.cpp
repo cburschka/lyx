@@ -811,7 +811,7 @@ void InsetText::forToc(docstring & os, size_t maxlen) const
 }
 
 
-void InsetText::addToToc(DocIterator const & cdit) const
+void InsetText::addToToc(DocIterator const & cdit, bool output_active) const
 {
 	DocIterator dit = cdit;
 	dit.push_back(CursorSlice(const_cast<InsetText &>(*this)));
@@ -819,6 +819,9 @@ void InsetText::addToToc(DocIterator const & cdit) const
 
 	BufferParams const & bufparams = buffer_->params();
 	int const min_toclevel = bufparams.documentClass().min_toclevel();
+	// we really should have done this before we got here, but it
+	// can't hurt too much to do it again
+	bool const doing_output = output_active && producesOutput();
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
@@ -835,7 +838,7 @@ void InsetText::addToToc(DocIterator const & cdit) const
 			Inset & inset = *it->inset;
 			dit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
-			inset.addToToc(dit);
+			inset.addToToc(dit, doing_output);
 			if (inset.lyxCode() == ARG_CODE)
 				arginset = inset.asInsetText();
 		}
@@ -853,11 +856,11 @@ void InsetText::addToToc(DocIterator const & cdit) const
 				par.forToc(tocstring, TOC_ENTRY_LENGTH);
 			dit.pos() = 0;
 			toc.push_back(TocItem(dit, toclevel - min_toclevel,
-				tocstring, tocstring));
+				tocstring, output_active, tocstring));
 		}
 		
 		// And now the list of changes.
-		par.addChangesToToc(dit, buffer());
+		par.addChangesToToc(dit, buffer(), doing_output);
 	}
 }
 

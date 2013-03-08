@@ -459,7 +459,8 @@ void Changes::checkAuthors(AuthorList const & authorList)
 }
 
 
-void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
+void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
+        bool output_active) const
 {
 	if (table_.empty())
 		return;
@@ -481,8 +482,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 			break;
 		case Change::INSERTED:
 			// 0x270d is the hand writting symbol in the Dingbats unicode group.
-			str.push_back(0x270d);
-			break;
+			str.push_back(0x270d); break;
 		}
 		dit.pos() = it->range.start;
 		Paragraph const & par = dit.paragraph();
@@ -493,8 +493,8 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 		docstring const & author = author_list.get(it->change.author).name();
 		Toc::iterator it = change_list.item(0, author);
 		if (it == change_list.end()) {
-			change_list.push_back(TocItem(dit, 0, author));
-			change_list.push_back(TocItem(dit, 1, str,
+			change_list.push_back(TocItem(dit, 0, author, output_active));
+			change_list.push_back(TocItem(dit, 1, str, output_active,
 				support::wrapParas(str, 4)));
 			continue;
 		}
@@ -502,7 +502,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 			if (it->depth() == 0 && it->str() != author)
 				break;
 		}
-		change_list.insert(it, TocItem(dit, 1, str,
+		change_list.insert(it, TocItem(dit, 1, str, output_active,
 			support::wrapParas(str, 4)));
 	}
 }

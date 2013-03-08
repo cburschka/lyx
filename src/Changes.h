@@ -115,7 +115,8 @@ public:
 	void checkAuthors(AuthorList const & authorList);
 
 	///
-	void addToToc(DocIterator const & cdit, Buffer const & buffer) const;
+	void addToToc(DocIterator const & cdit, Buffer const & buffer,
+	        bool output_active) const;
 
 private:
 	class Range {

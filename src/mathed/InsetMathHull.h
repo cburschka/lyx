@@ -42,7 +42,7 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

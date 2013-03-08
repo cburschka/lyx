@@ -296,7 +296,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 }
 
 
-void InsetRef::addToToc(DocIterator const & cpit) const
+void InsetRef::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	docstring const & label = getParam("reference");
 	if (buffer().insetLabel(label))
@@ -306,7 +306,7 @@ void InsetRef::addToToc(DocIterator const & cpit) const
 	// It seems that this reference does not point to any valid label.
 	screen_label_ = _("BROKEN: ") + screen_label_;
 	Toc & toc = buffer().tocBackend().toc("label");
-	toc.push_back(TocItem(cpit, 0, screen_label_));
+	toc.push_back(TocItem(cpit, 0, screen_label_, output_active));
 }
 
 

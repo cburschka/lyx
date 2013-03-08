@@ -68,7 +68,7 @@ public:
 	///
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	bool forceLTR() const { return true; }
 	//@}

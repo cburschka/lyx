@@ -67,7 +67,7 @@ public:
 	///
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	std::string contextMenuName() const;
 	//@}

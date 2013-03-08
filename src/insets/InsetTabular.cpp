@@ -3892,13 +3892,13 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetTabular::addToToc(DocIterator const & cpit) const
+void InsetTabular::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	DocIterator dit = cpit;
 	dit.forwardPos();
 	size_t const end = dit.nargs();
 	for ( ; dit.idx() < end; dit.top().forwardIdx())
-		cell(dit.idx())->addToToc(dit);
+		cell(dit.idx())->addToToc(dit, output_active);
 }
 
 

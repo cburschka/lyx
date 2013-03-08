@@ -97,7 +97,7 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(DocIterator const & cpit) const
+void InsetCaption::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	if (floattype_.empty())
 		return;
@@ -108,10 +108,10 @@ void InsetCaption::addToToc(DocIterator const & cpit) const
 	Toc & toc = buffer().tocBackend().toc(floattype_);
 	docstring str = full_label_;
 	text().forToc(str, TOC_ENTRY_LENGTH);
-	toc.push_back(TocItem(pit, 0, str));
+	toc.push_back(TocItem(pit, 0, str, output_active));
 
 	// Proceed with the rest of the inset.
-	InsetText::addToToc(cpit);
+	InsetText::addToToc(cpit, output_active);
 }
 
 

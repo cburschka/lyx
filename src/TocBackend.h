@@ -43,6 +43,7 @@ public:
 	TocItem(DocIterator const & dit,
 		int depth,
 		docstring const & s,
+	  bool output_active,
 		docstring const & t = docstring()
 		);
 	///
@@ -59,6 +60,8 @@ public:
 	docstring const asString() const;
 	///
 	DocIterator const & dit() const;
+	///
+	bool isOutput() const { return output_; }
 
 	/// the action corresponding to the goTo above
 	FuncRequest action() const;
@@ -66,15 +69,14 @@ public:
 protected:
 	/// Current position of item.
 	DocIterator dit_;
-
 	/// nesting depth
 	int depth_;
-
 	/// Full item string
 	docstring str_;
-
 	/// The tooltip string
 	docstring tooltip_;
+	/// Is this item in a note, inactive branch, etc?
+	bool output_;
 };
 
 
@@ -109,7 +111,7 @@ public:
 	///
 	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
-	void update();
+	void update(bool output_active);
 	/// \return true if the item was updated.
 	bool updateItem(DocIterator const & pit);
 

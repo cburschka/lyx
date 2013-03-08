@@ -154,7 +154,8 @@ public:
 	void setId(int id);
 
 	///
-	void addChangesToToc(DocIterator const & cdit, Buffer const & buf) const;
+	void addChangesToToc(DocIterator const & cdit, Buffer const & buf,
+	        bool output_active) const;
 	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///

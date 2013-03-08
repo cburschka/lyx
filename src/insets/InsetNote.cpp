@@ -195,18 +195,20 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::addToToc(DocIterator const & cpit) const
+void InsetNote::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
-
+	
 	Toc & toc = buffer().tocBackend().toc("note");
 	InsetLayout const & il = getLayout();
 	docstring str = translateIfPossible(il.labelstring()) + from_ascii(": ");
 	text().forToc(str, TOC_ENTRY_LENGTH);
-	toc.push_back(TocItem(pit, 0, str, toolTipText(docstring(), 3, 60)));
+	toc.push_back(TocItem(pit, 0, str, output_active, toolTipText(docstring(), 3, 60)));
+
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit);
+	bool doing_output = output_active && producesOutput();
+	InsetCollapsable::addToToc(cpit, doing_output);
 }
 
 

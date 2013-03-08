@@ -45,7 +45,8 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
-	docstring const & t) : dit_(dit), depth_(d), str_(s), tooltip_(t)
+	bool output_active, docstring const & t) :
+  dit_(dit), depth_(d), str_(s), tooltip_(t), output_(output_active)
 {
 }
 
@@ -166,12 +167,12 @@ bool TocBackend::updateItem(DocIterator const & dit)
 }
 
 
-void TocBackend::update()
+void TocBackend::update(bool output_active)
 {
 	tocs_.clear();
 	if (!buffer_->isInternal()) {
 		DocIterator dit;
-		buffer_->inset().addToToc(dit);
+		buffer_->inset().addToToc(dit, output_active);
 	}
 }
 

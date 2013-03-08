@@ -82,7 +82,7 @@ private:
 	///
 	std::string contextMenuName() const;
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	///
 	InsetBranchParams const & params() const { return params_; }
 	///

@@ -80,7 +80,7 @@ private:
 	///
 	void setCustomLabel(docstring const & label);
 	///
-	void addToToc(DocIterator const &) const;
+	void addToToc(DocIterator const & di, bool output_active) const;
 	/// 
 	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
 	/// Captions don't accept alignment, spacing, etc.
