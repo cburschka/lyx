@@ -694,6 +694,10 @@ void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 int InsetExternal::plaintext(odocstringstream & os,
 			     OutputParams const & runparams, size_t) const
 {
+	// this is too slow for constant use
+	if (runparams.for_tooltip)
+		return 0;
+
 	os << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), os,
 				*(runparams.exportdata), false,

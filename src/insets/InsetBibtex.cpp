@@ -929,16 +929,21 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 
 
 int InsetBibtex::plaintext(odocstringstream & os,
-       OutputParams const &, size_t max_length) const
+       OutputParams const & op, size_t max_length) const
 {
+	docstring const reflabel = buffer().B_("References");
+
+	if (op.for_tooltip || op.for_toc) {
+		os << reflabel;
+		return reflabel.size();
+	}
+
 	BiblioInfo bibinfo = buffer().masterBibInfo();
 	bibinfo.makeCitationLabels(buffer());
 	vector<docstring> const & cites = bibinfo.citedEntries();
 
 	size_t start_size = os.str().size();
 	docstring refoutput;
-	docstring const reflabel = buffer().B_("References");
-
 	refoutput += reflabel + "\n\n";
 
 	// Now we loop over the entries

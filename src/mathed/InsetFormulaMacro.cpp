@@ -84,7 +84,7 @@ void InsetFormulaMacro::latex(otexstream & os,
 }
 
 
-int InsetFormulaMacro::plaintext(odocstringstream & os, OutputParams const & runparams, int max_length) const
+int InsetFormulaMacro::plaintext(odocstringstream & os, OutputParams const & runparams, size_t) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, true, WriteStream::wsDefault, runparams.encoding);
