@@ -400,7 +400,8 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 		putback();
 		return make_pair(false, string());
 	} else {
-		for (t = get_token(); good(); t = get_token()) {
+		while (good()) {
+			t = get_token();
 			// Ignore comments
 			if (t.cat() == catComment) {
 				if (!t.cs().empty())
