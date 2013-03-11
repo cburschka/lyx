@@ -69,6 +69,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fixed occasional crash when exporting a document while View>Source is
+  open and being updated (bug). 
+
 - Load the babel package also if the document is English-only (bug 8423).
 
 - Fix call of nonsense font packages in some localizations.
@@ -90,8 +93,6 @@ What's new
 
 - When using the knitr module, use new "encoding" parameter of knitr if 
   available (bug 8504).
-
-- Respect InsetLayout's PassThru setting for XHTML export.
 
 - Fix layout conversion bug involving quoted Flex inset names that do not
   contain spaces.
@@ -187,6 +188,8 @@ What's new
 
 - Clean ids for citations before outputting them. Characters like ":" are
   not allowed in HTML identifiers, apparently (bug 8606).
+
+- Respect InsetLayout's PassThru setting for XHTML export.
 
 
 * TEX2LYX
