@@ -25,6 +25,7 @@
 #include "Converter.h"
 #include "Counters.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "DocIterator.h"
 #include "Encoding.h"
@@ -520,11 +521,21 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 		return;
 
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
+
+	// The clone needs its own DocumentClass, since running updateBuffer() will
+	// modify it, and we would otherwise be sharing it with the original Buffer.
+	buffer_clone->params().makeDocumentClass();
+	ErrorList el;
+	cap::switchBetweenClasses(
+			params().documentClassPtr(), buffer_clone->params().documentClassPtr(),
+			static_cast<InsetText &>(buffer_clone->inset()), el);
+
 	bufmap[this] = buffer_clone;
 	clones->insert(buffer_clone);
 	buffer_clone->d->clone_list_ = clones;
 	buffer_clone->d->macro_lock = true;
 	buffer_clone->d->children_positions.clear();
+
 	// FIXME (Abdel 09/01/2010): this is too complicated. The whole children_positions and
 	// math macro caches need to be rethought and simplified.
 	// I am not sure wether we should handle Buffer cloning here or in BufferList.
@@ -558,8 +569,18 @@ Buffer * Buffer::cloneBufferOnly() const {
 	cloned_buffers.push_back(new CloneList);
 	CloneList * clones = cloned_buffers.back();
 	Buffer * buffer_clone = new Buffer(fileName().absFileName(), false, this);
+
+	// The clone needs its own DocumentClass, since running updateBuffer() will
+	// modify it, and we would otherwise be sharing it with the original Buffer.
+	buffer_clone->params().makeDocumentClass();
+	ErrorList el;
+	cap::switchBetweenClasses(
+			params().documentClassPtr(), buffer_clone->params().documentClassPtr(),
+			static_cast<InsetText &>(buffer_clone->inset()), el);
+
 	clones->insert(buffer_clone);
 	buffer_clone->d->clone_list_ = clones;
+
 	// we won't be cloning the children
 	buffer_clone->d->children_positions.clear();
 	return buffer_clone;
