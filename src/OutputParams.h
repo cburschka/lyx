@@ -264,6 +264,9 @@ public:
 	/// Are we generating this material for inclusion in a tooltip?
 	bool for_tooltip;
 
+	/// Are we generating this material for use by advanced search?
+	bool for_search;
+
 	/// Include all children notwithstanding the use of \includeonly
 	bool includeall;
 

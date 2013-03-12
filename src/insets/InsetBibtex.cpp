@@ -933,9 +933,12 @@ int InsetBibtex::plaintext(odocstringstream & os,
 {
 	docstring const reflabel = buffer().B_("References");
 
-	if (op.for_tooltip || op.for_toc) {
-		os << reflabel;
-		return reflabel.size();
+	// We could output more information here, e.g., what databases are included
+	// and information about options. But I don't necessarily see any reason to
+	// do this right now.
+	if (op.for_tooltip || op.for_toc || op.for_search) {
+		os << '[' << reflabel << ']' << '\n';
+		return PLAINTEXT_NEWLINE;
 	}
 
 	BiblioInfo bibinfo = buffer().masterBibInfo();

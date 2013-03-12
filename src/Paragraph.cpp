@@ -3132,7 +3132,8 @@ void Paragraph::forToc(docstring & os, size_t maxlen) const
 }
 
 
-docstring Paragraph::stringify(pos_type beg, pos_type end, int options, OutputParams & runparams) const
+docstring Paragraph::stringify(pos_type beg, pos_type end, int options,
+        OutputParams const & runparams) const
 {
 	odocstringstream os;
 

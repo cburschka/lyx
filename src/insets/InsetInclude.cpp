@@ -813,8 +813,9 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 int InsetInclude::plaintext(odocstringstream & os,
         OutputParams const & op, size_t) const
 {
-	// just write the filename if we're making a tooltip or toc entry
-	if (op.for_tooltip || op.for_toc) {
+	// just write the filename if we're making a tooltip or toc entry,
+	// or are generating this for advanced search
+	if (op.for_tooltip || op.for_toc || op.for_search) {
 		os << '[' << screenLabel() << '\n'
 		   << getParam("filename") << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line

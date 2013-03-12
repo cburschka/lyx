@@ -183,18 +183,19 @@ public:
 
 	/// Extract only the explicitly visible text (without any formatting),
 	/// descending into insets
-	docstring stringify(pos_type beg, pos_type end, int options, OutputParams & runparams) const;
+	docstring stringify(pos_type beg, pos_type end, int options,
+		OutputParams const & runparams) const;
 
 	///
 	void write(std::ostream &, BufferParams const &,
-		   depth_type & depth) const;
+		depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
 	/// \param force means: output even if layout.inpreamble is true.
 	void latex(BufferParams const &, Font const & outerfont, otexstream &,
-		   OutputParams const &, int start_pos = 0, int end_pos = -1,
-		   bool force = false) const;
+		OutputParams const &, int start_pos = 0, int end_pos = -1,
+		bool force = false) const;
 
 	/// Can we drop the standard paragraph wrapper?
 	bool emptyTag() const;
