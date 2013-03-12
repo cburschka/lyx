@@ -3142,13 +3142,16 @@ docstring Paragraph::stringify(pos_type beg, pos_type end, int options,
 		&& !d->params_.labelString().empty())
 		os << d->params_.labelString() << ' ';
 
+	OutputParams op = runparams;
+	op.for_search = true;
+
 	for (pos_type i = beg; i < end; ++i) {
 		char_type const c = d->text_[i];
 		if (isPrintable(c) || c == '\t'
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			getInset(i)->plaintext(os, runparams);
+			getInset(i)->plaintext(os, op);
 		}
 	}
 
