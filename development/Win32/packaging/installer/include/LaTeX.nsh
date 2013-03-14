@@ -261,6 +261,10 @@ Function ConfigureMiKTeX
    # dvipost
    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
    File "${FILES_DVIPOST_PKG}\dvipost.sty"
+   # Belarusian support
+   SetOutPath "$PathLaTeXLocal\tex\generic\babel"
+   File "${FILES_DVIPOST_PKG}\belarusian.ldf"
+   File "${FILES_DVIPOST_PKG}\belarusian.sty"
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
