@@ -16578,19 +16578,12 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note: 
+Nota: 
 \backslash
 sideset
 \series default
- 
-\lang english
-can only be used to decorate
-\lang french
- grands opérateurs, opérateurs binaires 
-\lang english
-are not allowed
-\lang french
-.
+ ne peut être utilisé que pour les grands opérateurs, il ne convient pas
+ pour les opérateurs binaires.
 \end_layout
 
 \end_inset
@@ -32540,16 +32533,15 @@ status open
 
 \series bold
 \color none
-\lang english
-Note:
+Nota:
 \series default
- It is not possible in LyX to use the character ^ to get an up-arrow as
- described in the 
+ il n'est pas possible avec LyX d'utiliser le caractère ^ pour obtenir une
+ flèche vers le haut, comme il est expliqué dans le manuel de 
 \series bold
 mhchem
 \series default
- manual.
- One instead uses a negative thin space followed by the command 
+ On doit utiliser à la place une espace fine négative suivie de la commande
+ 
 \series bold
 
 \backslash
@@ -36235,42 +36227,39 @@ cancelto
 \end_layout
 
 \begin_layout Standard
+Pour modifier la taille de la valeur d' 
+\begin_inset Quotes fld
+\end_inset
 
-\lang english
-To change the size of 
+indice
+\begin_inset Quotes frd
+\end_inset
+
+ de 
 \series bold
 
 \backslash
 cancelto
 \series default
-'s 
-\begin_inset Quotes fld
-\end_inset
-
-subscript
-\begin_inset Quotes frd
-\end_inset
-
- value one can load the package 
+ , il est possible de charger le paquetage 
 \series bold
 cancel
 \series default
- with either the option 
+ soit avec l'option 
 \series bold
 samesize
 \series default
- which leads to the same size as for the canceled value or with the option
- 
+ qui laissera la valeur barrée avec la même taille, soit avec l'option 
 \series bold
 Smaller
 \series default
- which makes is it a bit smaller than the size one gets without using a
- package option.
- In this document 
+ qui la met dans une taille un peu plus petite que la taille obtenue sans
+ aucune option.
+ Dans ce document, 
 \series bold
 cancel
 \series default
- was loaded with this line:
+ a été chargé avec cette ligne:
 \end_layout
 
 \begin_layout Standard
@@ -36282,9 +36271,8 @@ usepackage[samesize]{cancel}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the cancellation bar one adds this command as TeX code:
+Pour mettre la barre en couleur, il faut ajouter cette commande en mode
+ TeX:
 \end_layout
 
 \begin_layout Standard
@@ -36300,12 +36288,13 @@ color{red}}
 \end_layout
 
 \begin_layout Standard
-
+où 
 \series bold
 \lang english
 red
 \series default
- can be replaced by a color of your choice.
+\lang french
+ peut être remplacé par ma couleur de votre choix.
 \end_layout
 
 \begin_layout Standard
@@ -36374,13 +36363,10 @@ reset the color
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For further customizations, see the documentation of the package 
+Pour d'autres personnalisations, voir le manuel du paquetage 
 \series bold
 cancel
 \series default
-\lang french
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
