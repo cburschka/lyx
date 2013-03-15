@@ -351,8 +351,9 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 {
 	os << full_label_ << ' ';
 	odocstringstream ods;
-	return InsetText::plaintext(ods, runparams);
+	int const retval = InsetText::plaintext(ods, runparams);
 	os << ods.str();
+	return retval;
 }
 
 
