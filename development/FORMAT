@@ -11,9 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-03-16 Jürgen Spitzmüller <spitz@lyx.org>
+	  * Format incremented to 465: Convert old beamer frames to new ones.
+	    The layouts BeginFrame, BeginPlainFrame and EndFrame are now not
+	    valied anymore (use "Frame", "PlainFrame" instead, and nesting).
+
 2013-02-27 Kornel Benko <kornel@lyx.org>
-        * Format incremented to 464:
-	  - Added "cancel" to the GUI handled list of LaTeX packages
+	  * Format incremented to 464:
+	   - Added "cancel" to the GUI handled list of LaTeX packages
 
 2013-02-18 Julien Rioux <jrioux@lyx.org>
 	* Format incremented to 463:

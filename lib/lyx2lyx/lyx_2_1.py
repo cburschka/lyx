@@ -3672,6 +3672,150 @@ def revert_new_libertines(document):
         document.header[k] = "\\font_sans default"
 
 
+def convert_lyxframes(document):
+    " Converts old beamer frames to new style "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    framebeg = ["BeginFrame", "BeginPlainFrame"]
+    frameend = ["EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame", "Section", "Section*", "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
+    for lay in framebeg:
+        i = 0
+        while True:
+            i = find_token_exact(document.body, "\\begin_layout " + lay, i)
+            if i == -1:
+                break
+            parent = get_containing_layout(document.body, i)
+            if parent == False or parent[1] != i:
+                document.warning("Wrong parent layout!")
+                i += 1
+                continue
+            frametype = parent[0]
+            j = parent[2]
+            parbeg = parent[3]
+            if i != -1:
+                # Step I: Convert ERT arguments
+                # FIXME: This currently only works if the arguments are in one single ERT
+                if document.body[parbeg] == "\\begin_inset ERT":
+                    ertcont = parbeg + 5
+                    if document.body[ertcont].startswith("[<"):
+                        # This is a default overlay specification
+                        # strip off the [<
+                        document.body[ertcont] = document.body[ertcont][2:]
+                        if document.body[ertcont].endswith(">]"):
+                            # strip off the >]
+                            document.body[ertcont] = document.body[ertcont][:-2]
+                        elif document.body[ertcont].endswith("]"):
+                            # divide the args
+                            tok = document.body[ertcont].find('>][')
+                            if tok != -1:
+                                subst = [document.body[ertcont][:tok],
+                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                         'status collapsed', '', '\\begin_layout Plain Layout',
+                                         document.body[ertcont][tok + 3:-1]]
+                                document.body[ertcont : ertcont + 1] = subst
+                        # Convert to ArgInset
+                        document.body[parbeg] = "\\begin_inset Argument 2"
+                    elif document.body[ertcont].startswith("<"):
+                        # This is an overlay specification
+                        # strip off the <
+                        document.body[ertcont] = document.body[ertcont][1:]
+                        if document.body[ertcont].endswith(">"):
+                            # strip off the >
+                            document.body[ertcont] = document.body[ertcont][:-1]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 1"
+                        elif document.body[ertcont].endswith(">]"):
+                            # divide the args
+                            tok = document.body[ertcont].find('>[<')
+                            if tok != -1:
+                               document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
+                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                               'status collapsed', '', '\\begin_layout Plain Layout',
+                                                               document.body[ertcont][tok + 3:-2]]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 1"
+                        elif document.body[ertcont].endswith("]"):
+                            # divide the args
+                            tok = document.body[ertcont].find('>[<')
+                            if tok != -1:
+                               # divide the args
+                               tokk = document.body[ertcont].find('>][')
+                               if tokk != -1:
+                                   document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
+                                                                   '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                   'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                   document.body[ertcont][tok + 3:tokk],
+                                                                   '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                                   'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                   document.body[ertcont][tokk + 3:-1]]
+                            else:
+                                tokk = document.body[ertcont].find('>[')
+                                if tokk != -1:
+                                    document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tokk],
+                                                                    '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                                    'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                    document.body[ertcont][tokk + 2:-1]]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 1"
+                    elif document.body[ertcont].startswith("["):
+                        # This is an ERT option
+                        # strip off the [
+                        document.body[ertcont] = document.body[ertcont][1:]
+                        if document.body[ertcont].endswith("]"):
+                            # strip off the ]
+                            document.body[ertcont] = document.body[ertcont][:-1]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 3"
+                # End of argument conversion
+                # Step II: Now rename the layout
+                if lay == "BeginFrame":
+                    document.body[i] = "\\begin_layout Frame"
+                else:
+                    document.body[i] = "\\begin_layout PlainFrame"
+                # Step III: find real frame end
+                jj = j
+                while True:
+                    fend = find_token(document.body, "\\begin_layout", jj)
+                    if fend == -1:
+                        document.warning("Malformed LyX document: No real frame end!")
+                        return
+                    val = get_value(document.body, "\\begin_layout", fend)
+                    if val not in frameend:
+                        jj = fend + 1
+                        continue
+                    old = document.body[fend]
+                    if val == frametype:
+                        document.body[fend : fend] = ['\\end_deeper', '', '\\begin_layout Separator', '', '\\end_layout']
+                    else:
+                        document.body[fend : fend] = ['\\end_deeper']
+                    document.body[j + 1 : j + 1] = ['', '\\begin_deeper']
+                    break
+            i = j
+
+
+def remove_endframes(document):
+    " Remove deprecated beamer endframes "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+   
+    i = 0
+    while True:
+        i = find_token_exact(document.body, "\\begin_layout EndFrame", i)
+        if i == -1:
+            break
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Missing \\end_layout to EndFrame")
+            i = i + 1
+            continue
+        del document.body[i : j + 1]
+
+
 ##
 # Conversion hub
 #
@@ -3729,9 +3873,11 @@ convert = [
            [462, []],
            [463, [convert_encodings]],
            [464, [convert_use_cancel]],
+           [465, [convert_lyxframes, remove_endframes]]
           ]
 
 revert =  [
+           [464, []],
            [463, [revert_use_cancel]],
            [462, [revert_encodings]],
            [461, [revert_new_libertines]],
