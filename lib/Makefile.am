@@ -79,6 +79,8 @@ dist_daexamples_DATA = \
 
 deexamplesdir = $(pkgdatadir)/examples/de
 dist_deexamples_DATA = \
+	examples/de/beamer.lyx \
+	examples/de/beamer-article.lyx \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
 	examples/de/Braille.lyx \
