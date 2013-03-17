@@ -3680,7 +3680,8 @@ def convert_lyxframes(document):
         return
    
     framebeg = ["BeginFrame", "BeginPlainFrame"]
-    frameend = ["EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame", "Section", "Section*", "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
+    frameend = ["EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame", "Section", "Section*",
+                "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
     for lay in framebeg:
         i = 0
         while True:
@@ -3698,7 +3699,12 @@ def convert_lyxframes(document):
             if i != -1:
                 # Step I: Convert ERT arguments
                 # FIXME: This currently only works if the arguments are in one single ERT
+                ertend = i
                 if document.body[parbeg] == "\\begin_inset ERT":
+                    ertend = find_end_of_inset(document.body, parbeg)
+                    if ertend == -1:
+                        document.warning("Malformed LyX document: missing ERT \\end_inset")
+                        continue
                     ertcont = parbeg + 5
                     if document.body[ertcont].startswith("[<"):
                         # This is a default overlay specification
@@ -3716,6 +3722,7 @@ def convert_lyxframes(document):
                                          'status collapsed', '', '\\begin_layout Plain Layout',
                                          document.body[ertcont][tok + 3:-1]]
                                 document.body[ertcont : ertcont + 1] = subst
+                                ertend += 11
                         # Convert to ArgInset
                         document.body[parbeg] = "\\begin_inset Argument 2"
                     elif document.body[ertcont].startswith("<"):
@@ -3737,6 +3744,7 @@ def convert_lyxframes(document):
                                                                document.body[ertcont][tok + 3:-2]]
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 1"
+                            ertend += 11
                         elif document.body[ertcont].endswith("]"):
                             # divide the args
                             tok = document.body[ertcont].find('>[<')
@@ -3751,6 +3759,7 @@ def convert_lyxframes(document):
                                                                    '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
                                                                    'status collapsed', '', '\\begin_layout Plain Layout',
                                                                    document.body[ertcont][tokk + 3:-1]]
+                                   ertend += 22
                             else:
                                 tokk = document.body[ertcont].find('>[')
                                 if tokk != -1:
@@ -3758,6 +3767,7 @@ def convert_lyxframes(document):
                                                                     '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
                                                                     'status collapsed', '', '\\begin_layout Plain Layout',
                                                                     document.body[ertcont][tokk + 2:-1]]
+                                    ertend += 11
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 1"
                     elif document.body[ertcont].startswith("["):
@@ -3770,12 +3780,17 @@ def convert_lyxframes(document):
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 3"
                 # End of argument conversion
-                # Step II: Now rename the layout
+                # Step II: Now rename the layout and convert the title to an argument
+                j = find_end_of_layout(document.body, i)
+                document.body[j : j + 1] = ['\\end_layout', '', '\\end_inset', '', '\\end_layout']
                 if lay == "BeginFrame":
                     document.body[i] = "\\begin_layout Frame"
                 else:
                     document.body[i] = "\\begin_layout PlainFrame"
+                document.body[ertend + 1 : ertend + 1] = ['\\begin_inset Argument 4',
+                                                'status open', '', '\\begin_layout Plain Layout']
                 # Step III: find real frame end
+                j = j + 8
                 jj = j
                 while True:
                     fend = find_token(document.body, "\\begin_layout", jj)
