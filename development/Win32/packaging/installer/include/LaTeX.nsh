@@ -261,17 +261,20 @@ Function ConfigureMiKTeX
    # dvipost
    SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
    File "${FILES_DVIPOST_PKG}\dvipost.sty"
-   # Belarusian support
-   SetOutPath "$PathLaTeXLocal\tex\generic\babel"
-   File "${FILES_DVIPOST_PKG}\belarusian.ldf"
-   File "${FILES_DVIPOST_PKG}\belarusian.sty"
-   # Hungarian support
-   SetOutPath "$PathLaTeXLocal\tex\generic\babel"
-   File "${FILES_DVIPOST_PKG}\magyar.ldf"
    # files in Resources\tex
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
   ${endif}
+  # Belarusian support
+  ${ifnot} ${FileExists} "$PathLaTeXLocal\tex\generic\babel\belarusian.ldf"
+   SetOutPath "$PathLaTeXLocal\tex\generic\babel"
+   File "${FILES_DVIPOST_PKG}\belarusian.ldf"
+   File "${FILES_DVIPOST_PKG}\belarusian.sty"
+  ${endif}
+  # Hungarian support
+  # this is a replacement therefore do this in every case
+  SetOutPath "$PathLaTeXLocal\tex\generic\babel"
+  File "${FILES_DVIPOST_PKG}\magyar.ldf"
   
   # only install a Perl interpreter if it is not already installed
   # this is only possible if MikTeX _and_ LyX is installed with the same privileges
