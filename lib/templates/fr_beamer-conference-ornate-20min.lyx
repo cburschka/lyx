@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 452
+\lyxformat 465
 \begin_document
 \begin_header
 \textclass beamer
@@ -38,10 +38,13 @@
 \use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -566,10 +569,20 @@ beamerdefaultoverlayspecification{<+->}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Sommaire
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -631,6 +644,7 @@ si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Motivation
 \end_layout
@@ -649,11 +663,21 @@ Problème central
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent.
  Utilisez des lettres capitales (en Anglais).
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout FrameSubtitle
 Les sous-titres sont facultatifs.
 \begin_inset Note Note
@@ -693,10 +717,25 @@ Utilisez des phrases très courtes et de courtes expressions.
 Ces recouvrements sont créés à l'aide du style «Pause».
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Argument item:2
 status open
@@ -737,10 +776,25 @@ status open
 Ceci est affiché en second.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 Pour faire un recouvrement exact d'un transparent à l'autre (transparents
  dynamiques), utiliez le style overprint; attention à gérer le mode handout
@@ -755,23 +809,16 @@ Pour faire un recouvrement exact d'un transparent à l'autre (transparents
 \end_layout
 
 \begin_layout Overprint
-
-\end_layout
-
-\begin_layout Overprint
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onslide<1| handout:1>
+1| handout:1
 \end_layout
 
 \end_inset
 
-Un texte sur la premier transparent, 
+Un texte sur la premier transparent,
 \begin_inset Newline newline
 \end_inset
 
@@ -779,14 +826,11 @@ Un texte sur la premier transparent,
 \end_layout
 
 \begin_layout Overprint
-\begin_inset ERT
-status collapsed
+\begin_inset Argument item:1
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onslide<2| handout:0>
+2| handout:0
 \end_layout
 
 \end_inset
@@ -794,10 +838,25 @@ onslide<2| handout:0>
 Remplacé sur le second transparent
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
 status open
@@ -860,14 +919,25 @@ Some Example Block Title
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Travaux antérieurs
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Example
 \begin_inset Argument 1
 status open
@@ -898,6 +968,7 @@ status open
 Sur le second transparent
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Nos résultats/contribution
 \end_layout
@@ -906,10 +977,20 @@ Nos résultats/contribution
 Principaux résultats
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 Sur le premier transparent
 \end_layout
@@ -922,10 +1003,25 @@ Sur le premier transparent
 Sur le second transparent
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Faites des titres qui informent 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout ColumnsTopAligned
 
 \end_layout
@@ -970,6 +1066,7 @@ Nouvelle ligne
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Idées de base pour la preuve/l'implantation
 \end_layout
@@ -978,16 +1075,36 @@ Idées de base pour la preuve/l'implantation
 Résumé
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Résumé
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Le
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 premier message principal
+\end_layout
+
+\end_inset
+
+
 \color none
  de l'exposé en une ligne ou    deux.
 \end_layout
@@ -996,8 +1113,18 @@ premier message principal
 Le
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 deuxième message principal
+\end_layout
+
+\end_inset
+
+
 \color none
  de l'exposé en une ligne ou deux.
 \end_layout
@@ -1006,8 +1133,18 @@ deuxième message principal
 Peut-être un
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 troisième message
+\end_layout
+
+\end_inset
+
+
 \color none
 , mais pas plus.
 \end_layout
@@ -1026,16 +1163,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip0pt plus.5fill
-\end_layout
-
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -1047,7 +1175,7 @@ Perspectives
 
 \begin_deeper
 \begin_layout Itemize
-      Problème non résolu
+Problème non résolu
 \end_layout
 
 \begin_layout Itemize
@@ -1055,10 +1183,7 @@ Autre problème non résolu
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section*
 \start_of_appendix
 \begin_inset Note Note
@@ -1077,20 +1202,30 @@ Appendix
 Lectures complémentaires
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-[allowframebreaks]
+allowframebreaks
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Lectures complémentaires
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1200,7 +1335,7 @@ status collapsed
 
 
 \backslash
-newblock{}
+newblock
 \end_layout
 
 \end_inset
@@ -1231,9 +1366,6 @@ Journal de ceci et cela
  2(1):50--100, 2000.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

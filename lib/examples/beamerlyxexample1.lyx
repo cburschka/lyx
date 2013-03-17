@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 465
 \begin_document
 \begin_header
 \textclass beamer
@@ -177,6 +177,7 @@
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -248,10 +249,20 @@ ICSI
 January 30th, 2004
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Outline
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -272,13 +283,10 @@ status collapsed
 
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -341,10 +349,20 @@ Introduction
 What are Tournaments?
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Tournaments Consist of Jousts Between Knights
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Columns
 
 \end_layout
@@ -579,10 +597,25 @@ In every joust one knight wins.
 
 \end_deeper
 \end_deeper
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Tournaments are Complete Directed Graphs
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Columns
 
 \end_layout
@@ -828,20 +861,35 @@ any two different vertices.
 
 \end_deeper
 \end_deeper
-\begin_layout BeginFrame
-\begin_inset ERT
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
-
-[<+>]
++
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Tournaments Arise Naturally in Different Situations
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout ExampleBlock
 \begin_inset Argument 2
 status collapsed
@@ -933,14 +981,25 @@ It chooses from any two words the one more likely to be in
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 What Does ``Finding Paths'' Mean?
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 ``Finding Paths'' is Ambiguous
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
 status open
@@ -2098,6 +2157,7 @@ approximately their distance.
 
 \end_deeper
 \end_deeper
+\end_deeper
 \begin_layout Section
 Review
 \end_layout
@@ -2125,7 +2185,11 @@ pgfdeclareimage[height=2cm,mask=computer-mask,interpolate=true]{computer}{beamer
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Classes L and NL are Defined via
 \begin_inset Newline newline
 \end_inset
@@ -2133,6 +2197,12 @@ The Classes L and NL are Defined via
 Logspace Turing Machines
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -2296,10 +2366,25 @@ end{pgfpicture}
 
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Logspace Turing Machines Are Quite Powerful
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
 status collapsed
@@ -2358,20 +2443,45 @@ satisfiability with two literals per clause.
 \end_layout
 
 \end_deeper
-\begin_layout BeginFrame
-\begin_inset ERT
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<1>[label=hierarchy]
+1
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+label=hierarchy
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Complexity Class Hierarchy
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -2755,7 +2865,16 @@ end{pgfpicture}
 
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Circuit Complexity Classes AC
 \begin_inset Formula $^{0}$
 \end_inset
@@ -2775,6 +2894,12 @@ The Circuit Complexity Classes AC
 Limit the Circuit Depth
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -2985,6 +3110,7 @@ bounded fan-in
 
 \end_deeper
 \end_deeper
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status collapsed
@@ -3002,7 +3128,11 @@ hierarchy
 Standard Complexity Results on Finding Paths
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 All Variants of Finding Paths in Directed Graphs
 \begin_inset Newline newline
 \end_inset
@@ -3010,6 +3140,12 @@ All Variants of Finding Paths in Directed Graphs
 Are Equally Difficult
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Fact
 \begin_inset Formula $\Lang{reach}$
 \end_inset
@@ -3068,6 +3204,7 @@ the approximation problem in logspace iff
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status collapsed
@@ -3081,7 +3218,11 @@ status collapsed
 hierarchy
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Finding Paths in Forests and Directed Paths is Easy,
 \begin_inset Newline newline
 \end_inset
@@ -3089,6 +3230,12 @@ Finding Paths in Forests and Directed Paths is Easy,
 But Not Trivial
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Fact
 \begin_inset Formula $\Lang{reach}_{\operatorname{forest}}$
 \end_inset
@@ -3123,6 +3270,7 @@ But Not Trivial
 -complete.
 \end_layout
 
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status collapsed
@@ -3144,10 +3292,20 @@ Finding Paths in Tournaments
 Complexity of: Does a Path Exist?
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Definition of the Tournament Reachability Problem
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Definition
 Let
 \color none
@@ -3197,10 +3355,25 @@ there exists a path from
 \end_layout
 
 \end_deeper
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Tournament Reachability Problem is Very Easy
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 \begin_inset Formula $\Lang{reach}_{\operatorname{tourn}}\in\Class{AC}^{0}$
 \end_inset
@@ -3254,6 +3427,7 @@ easier
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status open
@@ -3271,7 +3445,11 @@ hierarchy
 Complexity of: Construct a Shortest Path
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Finding a Shortest Path Is as Difficult as
 \begin_inset Newline newline
 \end_inset
@@ -3279,6 +3457,12 @@ Finding a Shortest Path Is as Difficult as
 the Distance Problem
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Definition
 Let
 \color none
@@ -3332,10 +3516,25 @@ the distance of
 \end_layout
 
 \end_deeper
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Tournament Distance Problem is Hard
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
 \end_inset
@@ -3396,7 +3595,16 @@ in logarithmic space, iff
 .
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Proof That 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
 \end_inset
@@ -3404,6 +3612,12 @@ Proof That
  is NL-complete
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
@@ -4693,6 +4907,7 @@ end{pgfpicture}
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status open
@@ -4710,10 +4925,20 @@ hierarchy
 Complexity of: Approximating the Shortest Path
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Approximators Compute Paths that Are Nearly As Short As a Shortest Path
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Definition
 An
 \color none
@@ -4772,7 +4997,16 @@ a path from
 \end_layout
 
 \end_deeper
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 There Exists a Logspace Approximation Scheme for
 \begin_inset Newline newline
 \end_inset
@@ -4780,6 +5014,12 @@ There Exists a Logspace Approximation Scheme for
 the Tournament Shortest Path Problem
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 There exists an approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
@@ -4830,6 +5070,7 @@ beamergotobutton{More Details}}
 
 \end_layout
 
+\end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
 status collapsed
@@ -4841,10 +5082,6 @@ status collapsed
 \end_inset
 
 hierarchy
-\end_layout
-
-\begin_layout EndFrame
-
 \end_layout
 
 \begin_layout Standard
@@ -4952,10 +5189,20 @@ Summary
 Summary
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Summary
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
 status collapsed
@@ -5109,14 +5356,25 @@ beamergotobutton{More Details}}
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection*
 For Further Reading
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 For Further Reading
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -5299,10 +5557,7 @@ newblock
  In press.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \start_of_appendix
 \begin_inset ERT
@@ -5328,20 +5583,30 @@ Appendix
 Graphs With Bounded Independence Number
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-[label=independence]
+label=independence
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Definition of Independence Number of a Graph
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Definition
 The
 \color none
@@ -5371,7 +5636,16 @@ Tournaments have independence number 1.
  
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Results for Tournaments also Apply to
 \begin_inset Newline newline
 \end_inset
@@ -5379,6 +5653,12 @@ The Results for Tournaments also Apply to
 Graphs With Bounded Independence Number
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 For each
 \begin_inset space ~
@@ -5490,21 +5770,36 @@ in graphs with independence number at most
 .
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Finding Paths in Undirected Graphs
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-<1-2>[label=undirected]
+1-2
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+label=undirected
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Complexity of Finding Paths in Undirected Graphs
 \begin_inset Newline newline
 \end_inset
@@ -5512,6 +5807,12 @@ The Complexity of Finding Paths in Undirected Graphs
 Is Party Unknown.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Fact
 \begin_inset Formula $\Lang{reach}_{\operatorname{undirected}}$
 \end_inset
@@ -5634,24 +5935,35 @@ the approximation problem in logspace iff ?.
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 The Approximation Scheme is Optimal
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-[label=optimality]
+label=optimality
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 The Approximation Scheme is Optimal
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 Suppose there exists an approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
@@ -5735,9 +6047,6 @@ qedhere
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

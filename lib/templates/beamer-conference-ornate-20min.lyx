@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 452
+\lyxformat 465
 \begin_document
 \begin_header
 \textclass beamer
@@ -38,10 +38,13 @@
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -524,10 +527,20 @@ beamerdefaultoverlayspecification{<+->}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Outline
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -586,6 +599,7 @@ If you omit details that are vital to the proof/implementation, just say
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Motivation
 \end_layout
@@ -604,11 +618,21 @@ Basic Problem
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
  Use Uppercase Letters.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout FrameSubtitle
 Frame subtitles are optional.
  Use upper- or lowercase letters.
@@ -650,11 +674,26 @@ Use very short sentences or short phrases.
 These overlays are created using the Pause style.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Argument item:2
 status open
@@ -694,10 +733,25 @@ status open
 This is shown second.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
 status open
@@ -760,15 +814,26 @@ Some Example Block Title
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Previous Work
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Example
 \begin_inset Argument 1
 status open
@@ -800,6 +865,7 @@ status open
 On second slide.
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Our Results/Contribution
 \end_layout
@@ -808,11 +874,21 @@ Our Results/Contribution
 Main Results
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 On first slide.
 \end_layout
@@ -825,11 +901,26 @@ On first slide.
 On second slide.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Make Titles Informative.
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout ColumnsTopAligned
 
 \end_layout
@@ -874,6 +965,7 @@ New line
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Basic Ideas for Proofs/Implementations
 \end_layout
@@ -882,16 +974,36 @@ Basic Ideas for Proofs/Implementations
 Summary
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Summary
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 The
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 first main message
+\end_layout
+
+\end_inset
+
+
 \color none
  of your talk in one or two lines.
 \end_layout
@@ -900,8 +1012,18 @@ first main message
 The
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 second main message
+\end_layout
+
+\end_inset
+
+
 \color none
  of your talk in one or two lines.
 \end_layout
@@ -910,8 +1032,18 @@ second main message
 Perhaps a
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 third message
+\end_layout
+
+\end_inset
+
+
 \color none
 , but not more than that.
 \end_layout
@@ -927,19 +1059,7 @@ An outlook is always optional.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip0pt plus.5fill
-\end_layout
-
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -959,10 +1079,7 @@ Even more stuff.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section*
 \start_of_appendix
 \begin_inset Note Note
@@ -981,23 +1098,33 @@ Appendix
 For Further Reading
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-[allowframebreaks]
+allowframebreaks
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 For Further Reading
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1135,9 +1262,6 @@ Journal on This and That
  2(1):50--100, 2000.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document

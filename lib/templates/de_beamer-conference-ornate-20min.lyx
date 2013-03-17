@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 452
+\lyxformat 465
 \begin_document
 \begin_header
 \textclass beamer
@@ -38,10 +38,13 @@
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type numerical
@@ -223,7 +226,7 @@ Institutsfußnotenmarke
 status open
 
 \begin_layout Plain Layout
-Author, Another
+Autor, Anders
 \begin_inset Note Note
 status collapsed
 
@@ -528,10 +531,20 @@ beamerdefaultoverlayspecification{<+->}
 
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gliederung
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -594,6 +607,7 @@ Falls Sie Details weglassen, die eigentlich wichtig für einen Beweis/Umsetzung
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Motivation
 \end_layout
@@ -602,14 +616,20 @@ Motivation
 Das behandelte Problem
 \end_layout
 
-\begin_layout BeginFrame
-Überschriften sollten informativ sein
-\begin_inset Newline newline
-\end_inset
+\begin_layout Frame
+\begin_inset Argument 4
+status open
 
-Korrekte Groß-/Kleinschreibung beachten
+\begin_layout Plain Layout
+Überschriften sollten informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout FrameSubtitle
 Untertitel sind optional
 \begin_inset Note Note
@@ -659,10 +679,25 @@ Pause
  erzeugt.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Überschriften müssen informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Argument item:2
 status open
@@ -702,10 +737,25 @@ status open
 Dies wird als Zweites gezeigt.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Überschriften müssen informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
 status open
@@ -768,14 +818,25 @@ Ein Beispielblocktitel
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Frühere Arbeiten
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Überschriften müssen informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Example
 \begin_inset Argument 1
 status open
@@ -806,6 +867,7 @@ status open
 Auf dem zweiten Overlay.
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Unsere Resultate/Beitrag
 \end_layout
@@ -814,10 +876,20 @@ Unsere Resultate/Beitrag
 Hauptresultate
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Überschriften müssen informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Theorem
 Auf dem ersten Overlay.
 \end_layout
@@ -830,10 +902,25 @@ Auf dem ersten Overlay.
 Auf dem zweiten Overlay.
 \end_layout
 
-\begin_layout BeginFrame
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Überschriften müssen informativ sein
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout ColumnsTopAligned
 
 \end_layout
@@ -878,6 +965,7 @@ Neue Zeile.
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsection
 Ideen für Beweise/Umsetzung
 \end_layout
@@ -886,10 +974,20 @@ Ideen für Beweise/Umsetzung
 Zusammenfassung
 \end_layout
 
-\begin_layout BeginFrame
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Zusammenfassung
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -907,8 +1005,18 @@ Die Zusammenfassung sollte sehr kurz sein.
 Die
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 erste Hauptbotschaft
+\end_layout
+
+\end_inset
+
+
 \color none
  des Vortrags in ein bis zwei Zeilen.
 \end_layout
@@ -917,8 +1025,18 @@ erste Hauptbotschaft
 Die
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 zweite Hauptbotschaft
+\end_layout
+
+\end_inset
+
+
 \color none
  des Vortrags in ein bis zwei Zeilen.
 \end_layout
@@ -927,8 +1045,18 @@ zweite Hauptbotschaft
 Eventuell noch eine
 \color none
  
-\color red
+\color inherit
+
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
 dritte Botschaft
+\end_layout
+
+\end_inset
+
+
 \color none
 , aber das reicht dann auch.
 \end_layout
@@ -947,16 +1075,7 @@ Der folgende Ausblick ist optional.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip0pt plus.5fill
-\end_layout
-
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -976,10 +1095,7 @@ Noch etwas, das wir noch nicht lösen konnten.
 \end_layout
 
 \end_deeper
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \begin_layout Section*
 \start_of_appendix
 \begin_inset Note Note
@@ -998,20 +1114,30 @@ Anhang
 Weiterführende Literatur
 \end_layout
 
-\begin_layout BeginFrame
-\begin_inset ERT
+\begin_layout Frame
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-[allowframebreaks]
+allowframebreaks
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Weiterführende Literatur
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1152,9 +1278,6 @@ Journal on This and That
  2(1):50--100, 2000.
 \end_layout
 
-\begin_layout EndFrame
-
-\end_layout
-
+\end_deeper
 \end_body
 \end_document
