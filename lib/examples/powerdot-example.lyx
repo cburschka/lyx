@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 465
 \begin_document
 \begin_header
 \textclass powerdot
@@ -19,13 +19,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -36,15 +36,24 @@
 \use_hyperref false
 \papersize letterpaper
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation landscape
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -54,7 +63,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -77,16 +86,28 @@ status open
 \series bold
 Note:
 \series default
- You must not use the view PDF button to preview this file! For viewing
- and exporting this as PDF use in the menus the method PDF
+ Powerdot does not work with PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) or PDF
+(pdflatex).
+ The view PDF button uses PDF
 \begin_inset space ~
 \end_inset
 
-(dvipdfm).
+(ps2pdf), but you can also use the method or PDF
+\begin_inset space ~
+\end_inset
+
+(dvipdfm) via the menus or the 
+\begin_inset Quotes eld
+\end_inset
+
+View other formats
+\begin_inset Quotes erd
+\end_inset
+
+ button.
  For more informations, please read the 
 \series bold
 powerdot
@@ -236,11 +257,12 @@ This is the first section
 \end_layout
 
 \begin_layout Slide
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-toc=This slide has...
+toc=This slide has\SpecialChar \ldots{}
+
 \end_layout
 
 \end_inset
@@ -271,7 +293,7 @@ Insert
 \SpecialChar \menuseparator
 
 \family typewriter
-Short title
+Slide Option
 \family default
  in order to specify slide options.
 \end_layout
@@ -438,7 +460,7 @@ pause
 \end_layout
 
 \begin_layout EmptySlide
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -518,7 +540,7 @@ allows displaying those multicolor dots into the slide background.
 \end_layout
 
 \begin_layout Slide
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -574,7 +596,7 @@ method=direct
 \end_layout
 
 \begin_layout Slide
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
