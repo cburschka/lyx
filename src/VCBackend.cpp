@@ -276,7 +276,7 @@ LyXVC::CommandResult RCS::checkIn(string const & msg, string & log)
 	if (ret)
 		return LyXVC::ErrorCommand;
 	log = "RCS: Proceeded";
-	return LyXVC::Success;
+	return LyXVC::VCSuccess;
 }
 
 
@@ -846,7 +846,7 @@ LyXVC::CommandResult CVS::checkIn(string const & msg, string & log)
 			if (unedit())
 				return LyXVC::ErrorCommand;
 		log = "CVS: Proceeded";
-		return LyXVC::Success;
+		return LyXVC::VCSuccess;
 	case LocallyModified:
 	case LocallyAdded: {
 		int rc = doVCCommand("cvs -q commit -m \"" + msg + "\" "
@@ -855,7 +855,7 @@ LyXVC::CommandResult CVS::checkIn(string const & msg, string & log)
 		if (rc)
 			return LyXVC::ErrorCommand;
 		log = "CVS: Proceeded";
-		return LyXVC::Success;
+		return LyXVC::VCSuccess;
 	}
 	case NeedsMerge:
 	case NeedsCheckout:
@@ -1274,7 +1274,7 @@ string SVN::rename(support::FileName const & newFile, string const & msg)
 	f.push_back(owner_->fileName());
 	f.push_back(newFile);
 	string log;
-	if (checkIn(f, msg, log) != LyXVC::Success) {
+	if (checkIn(f, msg, log) != LyXVC::VCSuccess) {
 		cmd = "svn revert -q " +
 			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
 			quoteName(relFile);
@@ -1306,7 +1306,7 @@ string SVN::copy(support::FileName const & newFile, string const & msg)
 		return string();
 	vector<support::FileName> f(1, newFile);
 	string log;
-	if (checkIn(f, msg, log) == LyXVC::Success)
+	if (checkIn(f, msg, log) == LyXVC::VCSuccess)
 		return log;
 	return string();
 }
@@ -1336,7 +1336,7 @@ SVN::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 	os << " > " << quoteName(tmpf.toFilesystemEncoding());
 	LyXVC::CommandResult ret =
 		doVCCommand(os.str(), FileName(owner_->filePath())) ?
-			LyXVC::ErrorCommand : LyXVC::Success;
+			LyXVC::ErrorCommand : LyXVC::VCSuccess;
 
 	string res = scanLogFile(tmpf, log);
 	if (!res.empty()) {
@@ -1353,7 +1353,7 @@ SVN::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 	tmpf.removeFile();
 	if (!log.empty())
 		log.insert(0, "SVN: ");
-	if (ret == LyXVC::Success && log.empty())
+	if (ret == LyXVC::VCSuccess && log.empty())
 		log = "SVN: Proceeded";
 	return ret;
 }
@@ -1916,7 +1916,7 @@ string GIT::rename(support::FileName const & newFile, string const & msg)
 	f.push_back(owner_->fileName());
 	f.push_back(newFile);
 	string log;
-	if (checkIn(f, msg, log) != LyXVC::Success) {
+	if (checkIn(f, msg, log) != LyXVC::VCSuccess) {
 		cmd = "git checkout -q " +
 			quoteName(onlyFileName(owner_->absFileName())) + ' ' +
 			quoteName(relFile);
@@ -1966,7 +1966,7 @@ GIT::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 	os << " > " << quoteName(tmpf.toFilesystemEncoding());
 	LyXVC::CommandResult ret =
 		doVCCommand(os.str(), FileName(owner_->filePath())) ?
-			LyXVC::ErrorCommand : LyXVC::Success;
+			LyXVC::ErrorCommand : LyXVC::VCSuccess;
 
 	string res = scanLogFile(tmpf, log);
 	if (!res.empty()) {
@@ -1980,7 +1980,7 @@ GIT::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 	tmpf.removeFile();
 	if (!log.empty())
 		log.insert(0, "GIT: ");
-	if (ret == LyXVC::Success && log.empty())
+	if (ret == LyXVC::VCSuccess && log.empty())
 		log = "GIT: Proceeded";
 	return ret;
 }

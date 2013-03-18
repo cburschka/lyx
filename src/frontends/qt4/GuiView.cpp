@@ -2876,7 +2876,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 					buffer->lyxvc().checkIn(log);
 				dr.setMessage(log);
 				if (ret == LyXVC::ErrorCommand ||
-				    ret == LyXVC::Success)
+				    ret == LyXVC::VCSuccess)
 					reloadBuffer(*buffer);
 				if (buffer->lyxvc().isCheckInWithConfirmation()) {
 					frontend::Alert::error(
@@ -2903,7 +2903,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			// an error occured before the real checkin VCS command
 			// was executed, since the VCS might have changed the
 			// file even if it could not checkin successfully.
-			if (ret == LyXVC::ErrorCommand || ret == LyXVC::Success)
+			if (ret == LyXVC::ErrorCommand || ret == LyXVC::VCSuccess)
 				reloadBuffer(*buffer);
 		}
 		break;

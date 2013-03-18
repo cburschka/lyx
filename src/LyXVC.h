@@ -44,7 +44,7 @@ public:
 		Cancelled,    ///< command was cancelled
 		ErrorBefore,  ///< error before executing command
 		ErrorCommand, ///< error while executing command
-		Success       ///< command was executed successfully
+		VCSuccess     ///< command was executed successfully
 	};
 	///
 	LyXVC();

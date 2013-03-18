@@ -322,7 +322,7 @@ string LyXVC::toggleReadOnly()
 	case VCS::LOCKED: {
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to unlocked");
 		string log;
-		if (checkIn(log) != Success)
+		if (checkIn(log) != VCSuccess)
 			return string();
 		return log;
 	}
