@@ -226,10 +226,15 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			display_string = _("elsewhere");
 		else if (cmd == "eqref")
 			display_string = '(' + value + ')';
-		else if (cmd == "formatted"
-		         // we don't really have the ability to handle these 
-		         // properly in XHTML output
-		         || cmd == "nameref")
+		else if (cmd == "formatted")
+			display_string = il->prettyCounter();
+		else if (cmd == "nameref")
+			// FIXME We don't really have the ability to handle these
+			// properly in XHTML output yet (bug #8599).
+			// It might not be that hard to do. We have the InsetLabel,
+			// and we can presumably find its paragraph using the TOC.
+			// We could then output the contents of the paragraph using
+			// something?
 			display_string = il->prettyCounter();
 	} else 
 			display_string = ref;
