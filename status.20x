@@ -116,6 +116,10 @@ What's new
 
 - Reset counters properly when outputting included XHTML files (bug 8598).
 
+- Translate "elsewhere" to the Buffer language when outputting XHTML.
+  This is not quite right, but it is better than translating it to the
+  UI language (partial fix for #8587).
+
 
 * USER INTERFACE
 

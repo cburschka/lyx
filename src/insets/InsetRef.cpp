@@ -217,8 +217,10 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			// normally, would be "ref on page #", but we have no pages
 			display_string = value;
 		else if (cmd == "pageref" || cmd == "vpageref")
-			// normally would be "on page #", but we have no pages
-			display_string = _("elsewhere");
+			// normally would be "on page #", but we have no pages.
+			// FIXME this is wrong, as it should be the current language,
+			// but it is better than _(), which is what we had before.
+			display_string = buffer().B_("elsewhere");
 		else if (cmd == "eqref")
 			display_string = '(' + value + ')';
 		else if (cmd == "formatted"
