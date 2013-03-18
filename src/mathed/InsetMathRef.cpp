@@ -184,7 +184,7 @@ void InsetMathRef::updateBuffer(ParIterator const & it, UpdateType /*utype*/)
 		return;
 	}
 	// register this inset into the buffer reference cache.
-	buffer().references(getTarget()).push_back(make_pair(this, it));
+	buffer().addReference(getTarget(), this, it);
 }
 
 

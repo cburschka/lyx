@@ -222,14 +222,21 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			// normally, would be "ref on page #", but we have no pages
 			display_string = value;
 		else if (cmd == "pageref" || cmd == "vpageref")
-			// normally would be "on page #", but we have no pages
-			display_string = _("elsewhere");
+			// normally would be "on page #", but we have no pages.
+			// FIXME this is wrong, as it should be the current language,
+			// but it is better than _(), which is what we had before.
+			display_string = buffer().B_("elsewhere");
 		else if (cmd == "eqref")
 			display_string = '(' + value + ')';
-		else if (cmd == "formatted"
-		         // we don't really have the ability to handle these 
-		         // properly in XHTML output
-		         || cmd == "nameref")
+		else if (cmd == "formatted")
+			display_string = il->prettyCounter();
+		else if (cmd == "nameref")
+			// FIXME We don't really have the ability to handle these
+			// properly in XHTML output yet (bug #8599).
+			// It might not be that hard to do. We have the InsetLabel,
+			// and we can presumably find its paragraph using the TOC.
+			// We could then output the contents of the paragraph using
+			// something?
 			display_string = il->prettyCounter();
 	} else 
 			display_string = ref;
@@ -265,7 +272,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 {
 	docstring const & ref = getParam("reference");
 	// register this inset into the buffer reference cache.
-	buffer().references(ref).push_back(make_pair(this, it));
+	buffer().addReference(ref, this, it);
 
 	docstring label;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {

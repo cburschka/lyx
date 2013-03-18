@@ -660,10 +660,15 @@ public:
 
 	///
 	typedef std::vector<std::pair<Inset *, ParIterator> > References;
-	References & references(docstring const & label);
+	///
 	References const & references(docstring const & label) const;
+	///
+	void addReference(docstring const & label, Inset * inset, ParIterator it);
+	///
 	void clearReferenceCache() const;
+	///
 	void setInsetLabel(docstring const & label, InsetLabel const * il);
+	///
 	InsetLabel const * insetLabel(docstring const & label) const;
 
 	/// return a list of all used branches (also in children)
@@ -713,6 +718,8 @@ private:
 	/// mark the buffer as busy exporting something, or not
 	void setExportStatus(bool e) const;
 
+	///
+	References & getReferenceCache(docstring const & label);
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(support::FileName const & fname);
 	///
