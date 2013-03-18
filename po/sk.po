@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-02 18:33+0100\n"
+"POT-Creation-Date: 2013-03-18 15:43+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2960,7 +2960,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
-msgstr "Automatické &menu"
+msgstr "Automatická p&onuka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
 msgid "Autoco&rrection"
@@ -2986,7 +2986,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid "Automatic &popup"
-msgstr "Automatické m&enu"
+msgstr "Automatická ponu&ka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:105
 msgid ""
@@ -3108,22 +3108,22 @@ msgstr "Zobraziť &grafiku"
 msgid "Instant &Preview:"
 msgstr "&Okamžitý náhľad:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:76
-#: src/frontends/qt4/GuiDocument.cpp:171
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:76
+#: src/frontends/qt4/GuiDocument.cpp:129
 msgid "Off"
-msgstr "Vypnuté"
+msgstr "Vypnutý"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
 msgstr "Bez matematiky"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:76
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:72 src/Font.cpp:76
 msgid "On"
-msgstr "Zapnuté"
+msgstr "Zapnutý"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:74
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:80
 msgid "Preview Si&ze:"
-msgstr "&Rozmer náhľadu:"
+msgstr "Mie&rka náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
@@ -3168,7 +3168,7 @@ msgstr "Zálohovanie && ukladanie"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
-msgstr "Zálohovať originálne dokumenty pri uložení"
+msgstr "Zálohovať pôvodné dokumenty pri uložení"
 
 #: src/frontends/qt4/ui/PrefUi.ui:181
 msgid "&Backup documents, every"
@@ -7083,11 +7083,6 @@ msgstr "Arabský Článok"
 msgid "Beamer Article (Standard Class)"
 msgstr "Beamer Článok (Štandardná Trieda)"
 
-#: lib/layouts/article-beamer.layout:29 lib/layouts/beamer.layout:408
-#: lib/layouts/scrarticle-beamer.layout:29
-msgid "BeginFrame"
-msgstr "ZačiatokRámu"
-
 #: lib/layouts/article.layout:3
 msgid "Article (Standard Class)"
 msgstr "Článok (Štandardná Trieda)"
@@ -7771,27 +7766,6 @@ msgstr "Obrázok"
 #: src/insets/InsetFloatList.cpp:198
 msgid "List of Figures"
 msgstr "Zoznam obrázkov"
-
-#: lib/layouts/beamer.layout:1618 lib/layouts/beamer.layout:1660
-#: lib/layouts/beamer.layout:1695
-msgid "Deprecated Styles"
-msgstr "Odmietané Štýly"
-
-#: lib/layouts/beamer.layout:450
-msgid "BeginPlainFrame"
-msgstr "ZačiatokProstéhoRámu"
-
-#: lib/layouts/beamer.layout:364
-msgid "Frame (no head/foot/sidebars)"
-msgstr "Rám (žiadna hlavička/päta/bok)"
-
-#: lib/layouts/beamer.layout:531
-msgid "EndFrame"
-msgstr "KoniecRámu"
-
-#: lib/layouts/beamer.layout:359
-msgid "________________________________"
-msgstr "________________________________"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -10558,6 +10532,15 @@ msgstr "Inštitúcia"
 msgid "Powerdot"
 msgstr "Powerdot"
 
+#: lib/layouts/powerdot.layout:43 lib/layouts/powerdot.layout:67
+#: lib/layouts/powerdot.layout:89
+msgid "TitleSlide"
+msgstr "TitulnáFólia"
+
+#: lib/layouts/slides.layout:3
+msgid "Slides"
+msgstr "Fólie"
+
 #: lib/layouts/powerdot.layout:132
 msgid "    "
 msgstr "    "
@@ -10594,17 +10577,98 @@ msgstr "Prázdna fólia:"
 msgid "\\arabic{section}"
 msgstr "\\arabic{section}"
 
+#: lib/layouts/powerdot.layout:245
+msgid "Section Option"
+msgstr "Voľby pre Sekciu"
+
+#: lib/layouts/powerdot.layout:246
+msgid "Optional arguments to the section command (see powerdot manual)"
+msgstr "Nepovinné argumenty pre príkaz sekcia (viď powerdot manuál)"
+
+#: lib/layouts/powerdot.layout:254 lib/layouts/powerdot.layout:302
+msgid "Lists"
+msgstr "Listiny"
+
+#: lib/layouts/powerdot.layout:269 lib/layouts/powerdot.layout:292
+msgid "Itemize Type"
+msgstr "Typ Položky"
+
+#: lib/layouts/powerdot.layout:270 lib/layouts/powerdot.layout:293
+msgid "Itemize type spezification (see powerdot manual)"
+msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
+
+#: lib/layouts/enumitem.module:57
+msgid "Itemize Options"
+msgstr "Parametre pre položky"
+
+#: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
+#: lib/layouts/enumitem.module:72
+msgid "Optional arguments for this list (see enumitem manual)"
+msgstr "Nepovinné argumenty pre túto listinu (viď enumitem manuál)"
+
 #: lib/layouts/powerdot.layout:253
 msgid "ItemizeType1"
 msgstr "VýpisPoložiekTyp1"
+
+#: lib/layouts/powerdot.layout:319 lib/layouts/powerdot.layout:342
+msgid "Enumerate Type"
+msgstr "Typ číslovania"
+
+#: lib/layouts/powerdot.layout:320 lib/layouts/powerdot.layout:343
+msgid "Enumerate type spezification (see powerdot manual)"
+msgstr "Špecifikácia pre typ číslovania (viď powerdot manuál)"
+
+#: lib/layouts/enumitem.module:64
+msgid "Enumerate Options"
+msgstr "Parametre pre číslovanie"
 
 #: lib/layouts/powerdot.layout:283
 msgid "EnumerateType1"
 msgstr "ČíslovanieTyp1"
 
+#: lib/layouts/powerdot.layout:435
+msgid "Twocolumn"
+msgstr "DvaStĺpce"
+
+#: lib/layouts/powerdot.layout:450
+msgid "Twocolumn options (see powerdot manual)"
+msgstr "Voľby pre Dvastĺpce (viď powerdot manuál)"
+
+#: lib/layouts/powerdot.layout:453
+msgid "Left Column"
+msgstr "ľavý Stĺpec"
+
+#: lib/layouts/powerdot.layout:454
+msgid "Enter the text of the left column here (right column in main paragraph)"
+msgstr "Vložte sem text pre ľavý stĺpec (pravý stĺpec v hlavnom odstavci)"
+
 #: lib/layouts/powerdot.layout:401 lib/layouts/stdfloats.inc:46
 msgid "List of Algorithms"
 msgstr "Zoznam algoritmov"
+
+#: lib/layouts/powerdot.layout:567
+msgid "Onslide"
+msgstr "Zobrazené na fólii (onslide)"
+
+#: lib/layouts/powerdot.layout:573
+msgid "On Slides"
+msgstr "Na fóliach"
+
+#: lib/layouts/powerdot.layout:574
+msgid "Overlay Specification|S"
+msgstr "Špecifikácie prekrytia"
+
+#: lib/layouts/powerdot.layout:575
+msgid "Specify the overlay settings (see powerdot manual)"
+msgstr "Špecifikovať voľby prekrytia (viď powerdot manuál)"
+
+#: lib/layouts/powerdot.layout:581
+msgid "Onslide+"
+msgstr "Ukázať na fólii (onslide+)"
+
+#: lib/layouts/powerdot.layout:587
+msgid "Onslide*"
+msgstr "Len na fólii (onslide*)"
 
 #: lib/layouts/recipebook.layout:3
 msgid "Recipe Book"
@@ -11080,10 +11144,6 @@ msgstr "Inderscience časopisy (9.5 x 6.5)"
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete Version)"
 msgstr "Inderscience časopisy (zastaralá verzia)"
-
-#: lib/layouts/slides.layout:3
-msgid "Slides"
-msgstr "Fólie"
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
@@ -12541,19 +12601,6 @@ msgstr ""
 "Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
 "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
 "vysvetlenie."
-
-#: lib/layouts/enumitem.module:57
-msgid "Itemize Options"
-msgstr "Parametre pre položky"
-
-#: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
-#: lib/layouts/enumitem.module:72
-msgid "Optional arguments for this list (see enumitem manual)"
-msgstr "Nepovinné argumenty pre túto listinu (viď enumitem manuál)"
-
-#: lib/layouts/enumitem.module:64
-msgid "Enumerate Options"
-msgstr "Parametre pre číslovanie"
 
 #: lib/layouts/enumitem.module:71
 msgid "Description Options"
@@ -28313,9 +28360,9 @@ msgstr "hfantóm"
 msgid "vphantom"
 msgstr "vfantóm"
 
-#: src/insets/InsetRef.cpp:219
+#: src/insets/InsetRef.cpp:226
 msgid "elsewhere"
-msgstr "niekde inde"
+msgstr "inde"
 
 #: src/insets/InsetRef.cpp:298
 msgid "BROKEN: "
@@ -29011,6 +29058,24 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "BeginFrame"
+#~ msgstr "ZačiatokRámu"
+
+#~ msgid "Deprecated Styles"
+#~ msgstr "Odmietané Štýly"
+
+#~ msgid "BeginPlainFrame"
+#~ msgstr "ZačiatokProstéhoRámu"
+
+#~ msgid "Frame (no head/foot/sidebars)"
+#~ msgstr "Rám (žiadna hlavička/päta/bok)"
+
+#~ msgid "EndFrame"
+#~ msgstr "KoniecRámu"
+
+#~ msgid "________________________________"
+#~ msgstr "________________________________"
+
 #~ msgid "Automatic help"
 #~ msgstr "Automatická nápoveda"
 
@@ -29195,9 +29260,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Block:  "
 #~ msgstr "Blok:"
-
-#~ msgid "Overlay Specification|S"
-#~ msgstr "Špecifikácie prekrytia"
 
 #~ msgid "Mini template for this List"
 #~ msgstr "Mini šablóna tejto listiny"
@@ -31352,9 +31414,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Part "
 #~ msgstr "Časť"
-
-#~ msgid "columns "
-#~ msgstr "Stĺpce"
 
 #~ msgid "overprint "
 #~ msgstr "Predtlač"
