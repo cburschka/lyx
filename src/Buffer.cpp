@@ -1900,7 +1900,9 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		if (output_body_tag)
 			os << "<body>\n";
 		XHTMLStream xs(os);
-		params().documentClass().counters().reset();
+		if (output != IncludedFile)
+			// if we're an included file, the counters are in the master.
+			params().documentClass().counters().reset();
 		xhtmlParagraphs(text(), *this, xs, runparams);
 		if (output_body_tag)
 			os << "</body>\n";
