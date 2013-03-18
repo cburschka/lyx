@@ -2436,12 +2436,7 @@ bool GuiView::saveBuffer(Buffer & b, FileName const & fn)
 	if (fn.empty() && b.isUnnamed())
 		return renameBuffer(b, docstring());
 
-	bool success;
-	if (fn.empty())
-		success = b.save();
-	else
-		success = b.saveAs(fn);
-	
+	bool const success = (fn.empty() ? b.save() : b.saveAs(fn));
 	if (success) {
 		theSession().lastFiles().add(b.fileName());
 		return true;
