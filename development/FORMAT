@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-03-17 Jürgen Spitzmüller <spitz@lyx.org>
+	  * Format incremented to 466: Powerdot updates.
+	    - Support for item arguments ([...], <...>)
+	    - Support for list option
+	    - Support for Pause layout (like in beamer)
+	    - Support for twocolumn layout
+	    - Support for \onslide, \onslide* and \onslide+ via fle inset.
+
 2013-03-16 Jürgen Spitzmüller <spitz@lyx.org>
 	  * Format incremented to 465: Convert old beamer frames to new ones.
 	    The layouts BeginFrame, BeginPlainFrame and EndFrame are now not

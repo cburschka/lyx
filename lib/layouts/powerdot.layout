@@ -3,7 +3,7 @@
 #  \DeclareCategory{Presentations}
 # PowerDot textclass definition file.
 # Created: 29-Aug-05 by Mael Hilléreau
-# Last modified: 20-May-06 by Uwe Stöhr
+# Modified: 20-May-06 by Uwe Stöhr, 18-Mar-2013 Jürgen Spitzmüller
 
 Format 45
 
@@ -40,7 +40,7 @@ End
 # Title style definition
 ###
 Style Title
-  Category      FrontMatter
+  Category      TitleSlide
   Margin        Static
   LatexType     Command
   InTitle       1
@@ -64,7 +64,7 @@ End
 # Author style definition
 ###
 Style Author
-  Category              FrontMatter
+  Category      TitleSlide
   Margin        Static
   LatexType     Command
   InTitle       1
@@ -86,6 +86,7 @@ End
 # Date style definition
 ###
 Style Date
+  Category      TitleSlide
   Margin        Dynamic
   LatexType     Command
   InTitle       1
@@ -121,6 +122,7 @@ End
 # Slide styles definition
 ###
 Style Slide
+  Category      Slides
   TocLevel      3
   Margin        Static
   LatexType     Command
@@ -146,6 +148,7 @@ Style Slide
 End
 
 Style EndSlide
+  Category          Slides
   KeepEmpty         1
   LatexType         Command
   LatexName         lyxend
@@ -199,6 +202,7 @@ End
 # Note style definition
 ###
 Style Note
+  Category      Slides
   Margin        Static
   LatexType     Command
   LatexName     lyxend\lyxnote
@@ -237,13 +241,17 @@ Style Section
     Color       Blue
   EndFont
   LabelStringAppendix "\Alph{section}"
+  Argument 1
+    LabelString   "Section Option"
+    Tooltip       "Optional arguments to the section command (see powerdot manual)"
+  EndArgument
 End
 
 ###
 # Itemize styles definition
 ###
 Style Itemize
-  Category      List
+  Category      Lists
   Margin        Static
   LatexType     Item_Environment
   LatexName     itemize
@@ -257,18 +265,41 @@ Style Itemize
   Align         Block
   AlignPossible Block, Left
   LabelType     Itemize
+  Argument 1
+    LabelString   "Itemize Type"
+    Tooltip       "Itemize type spezification (see powerdot manual)"
+  EndArgument
+  Argument 2
+    LabelString   "Itemize Options"
+    Tooltip       "Optional arguments for this list (see enumitem manual)"
+  EndArgument
+  Argument item:1
+    LabelString   "Custom Item|s"
+    Tooltip       "A customized item string"
+  EndArgument
+  Argument item:2
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+  EndArgument
 End
 
 Style ItemizeType1
   CopyStyle     Itemize
-  LatexParam    [type=1]
+  Argument 1
+    LabelString   "Itemize Type"
+    Tooltip       "Itemize type spezification (see powerdot manual)"
+    DefaultArg    "type=1"
+  EndArgument
 End
 
 ###
 # Enumerate styles definition
 ###
 Style Enumerate
-  Category      List
+  Category      Lists
   Margin        Static
   LatexType     Item_Environment
   LatexName     enumerate
@@ -284,11 +315,34 @@ Style Enumerate
   AlignPossible Block, Left
   LabelType     Enumerate
   RefPrefix     enu
+  Argument 1
+    LabelString   "Enumerate Type"
+    Tooltip       "Enumerate type spezification (see powerdot manual)"
+  EndArgument
+  Argument 2
+    LabelString   "Enumerate Options"
+    Tooltip       "Optional arguments for this list (see enumitem manual)"
+  EndArgument
+  Argument item:1
+    LabelString   "Custom Item|s"
+    Tooltip       "A customized item string"
+  EndArgument
+  Argument item:2
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+  EndArgument
 End
 
 Style EnumerateType1
-  CopyStyle     Enumerate
-  LatexParam    [type=1]
+  CopyStyle       Enumerate
+  Argument 1
+    LabelString   "Enumerate Type"
+    Tooltip       "Enumerate type spezification (see powerdot manual)"
+    DefaultArg    "type=1"
+  EndArgument
 End
 
 ###
@@ -317,6 +371,7 @@ End
 # Quotation style definition
 ###
 Style Quotation
+  Category      MainText
   Margin        Static
   LatexType     Environment
   LatexName     quotation
@@ -337,6 +392,7 @@ End
 # Quote style definition
 ###
 Style Quote
+  Category      MainText
   Margin        Static
   LatexType     Environment
   LatexName     quote
@@ -357,6 +413,7 @@ End
 Style Verse
 # LaTeX type is first dynamic because of LaTeX implementation.
 # In LyX this does not make sense.
+  Category      MainText
   LatexType     Environment
   LatexName     verse
   Margin        First_Dynamic
@@ -370,6 +427,65 @@ Style Verse
   Align         Block
   AlignPossible Block, Left
   LabelType     No_Label
+End
+
+###
+# Twocolumn style definition
+###
+Style Twocolumn
+  Category      MainText
+  LatexType     command
+  LatexName     twocolumn
+  Margin        First_Dynamic
+  NextNoIndent  1
+  ParSkip       0.4
+  TopSep        0.7
+  BottomSep     0.7
+  ParSep        0.5
+  Align         Block
+  AlignPossible Block, Left, Right, Center
+  LabelType     No_Label
+  Argument 1
+    LabelString   "Column Options"
+    Tooltip       "Twocolumn options (see powerdot manual)"
+  EndArgument
+  Argument 2
+    LabelString   "Left Column"
+    Tooltip       "Enter the text of the left column here (right column in main paragraph)"
+    Mandatory     1
+    AutoInsert    1
+  EndArgument
+End
+
+###
+# Overlay style definitions
+###
+Style Pause
+  Category         Overlays
+  KeepEmpty        1
+  LatexType        Command
+  LatexName        pause
+  Margin           First_Dynamic
+  Argument 1
+    LabelString    "Pause number"
+    Tooltip        "Number of slide where the context below the pause gets visible"
+  EndArgument
+  NextNoIndent     1
+  ParSkip          0
+  TopSep           0
+  BottomSep        0.25
+  ParSep           0
+  Align            Center
+  LabelType        Static
+  LabelBottomSep   0
+  LeftMargin       MMMMM
+  LabelString      "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+  LabelFont
+    Family         typewriter
+    Series         Medium
+    Size           Normal
+    Color          latex
+  EndFont
 End
 
 ###
@@ -442,4 +558,34 @@ Counter table
 End
 
 Counter algorithm
+End
+
+###
+# Charstyle definitions
+###
+
+InsetLayout Flex:onslide
+  LyXType          charstyle
+  LabelString      "Visible"
+  LatexType        command
+  LatexName        onslide
+  Argument 1
+    LabelString    "On Slides"
+    MenuString     "Overlay Specification|S"
+    Tooltip        "Specify the overlay settings (see powerdot manual)"
+    Mandatory      1
+    DefaultArg     "1-"
+  EndArgument
+End
+
+InsetLayout Flex:onslide+
+  CopyStyle        Flex:onslide
+  LatexName        onslide+
+  LabelString      "Uncover"
+End
+
+InsetLayout Flex:onslide*
+  CopyStyle        Flex:onslide
+  LatexName        onslide*
+  LabelString      "Only"
 End

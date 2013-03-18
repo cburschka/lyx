@@ -89,6 +89,14 @@ Format LaTeX feature                        LyX feature
                                             \font_sf_scale
 463
 465
+466   Powerdot updates:                     
+      \pause[]                              layout Pause
+      \onslide{}{}                          InsetFlex, InsetArgument
+      \onslide*{}{}                         InsetFlex, InsetArgument
+      \onslide+{}{}                         InsetFlex, InsetArgument
+      \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
+      \item[]<>                             InsetArgument
+      \begin{enumerate|itemize|...}[]       InsetArgument
 
 General
 

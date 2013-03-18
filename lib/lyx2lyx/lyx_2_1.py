@@ -3831,6 +3831,204 @@ def remove_endframes(document):
         del document.body[i : j + 1]
 
 
+def revert_powerdot_flexes(document):
+    " Reverts powerdot flex insets "
+    
+    if document.textclass != "powerdot":
+        return
+
+    flexes = {"onslide" : "\\onslide",
+              "onslide*" : "\\onslide*",
+              "onslide+" : "\\onslide+"}
+    rx = re.compile(r'^\\begin_inset Flex (.+)$')
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex", i)
+        if i == -1:
+            return
+        m = rx.match(document.body[i])
+        if m:
+            flextype = m.group(1)
+            z = find_end_of_inset(document.body, i)
+            if z == -1:
+                document.warning("Can't find end of Flex " + flextype + " inset.")
+                i += 1
+                continue
+            if flextype in flexes:
+                pre = put_cmd_in_ert(flexes[flextype])
+                arg = find_token(document.body, "\\begin_inset Argument 1", i, z)
+                if arg != -1:
+                    argend = find_end_of_inset(document.body, arg)
+                    if argend == -1:
+                        document.warning("Can't find end of Argument!")
+                        i += 1
+                        continue
+                    # Find containing paragraph layout
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    argcontent = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    z = z - len(document.body[arg : argend + 1])
+                    # Remove arg inset
+                    del document.body[arg : argend + 1]
+                    pre += put_cmd_in_ert("{") + argcontent + put_cmd_in_ert("}")
+                pre += put_cmd_in_ert("{")
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                # Adjust range end
+                z = z - len(document.body[i : beginPlain + 1])
+                z += len(pre)
+                document.body[i : beginPlain + 1] = pre
+                post = put_cmd_in_ert("}")
+                document.body[z - 2 : z + 1] = post     
+        i += 1
+
+
+def revert_powerdot_pause(document):
+    " Reverts powerdot pause layout to ERT "
+    
+    if document.textclass != "powerdot":
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Pause", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of Pause layout")
+            i = i + 1
+            continue
+        endlay = j
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\pause")
+        for p in range(i, j):
+            if p >= endlay:
+                break
+            arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+            if arg != -1:
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                endInset = find_end_of_inset(document.body, p)
+                content = document.body[beginPlain + 1 : endPlain]
+                # Adjust range end
+                endlay = endlay - len(document.body[p : endInset + 1])
+                # Remove arg inset
+                del document.body[p : endInset + 1]
+                subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                    
+        document.body[i : i + 1] = subst
+        i = endlay
+
+
+def revert_powerdot_itemargs(document):
+    " Reverts powerdot item arguments to ERT "
+    
+    if document.textclass != "powerdot":
+        return
+
+    i = 0
+    list_layouts = ["Itemize", "ItemizeType1", "Enumerate", "EnumerateType1"]
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed lyx document: Can't find parent paragraph layout")
+            i = i + 1
+            continue
+        parbeg = parent[1]
+        parend = parent[2]
+        realparbeg = parent[3]
+        layoutname = parent[0]
+        realparend = parend
+        for p in range(parbeg, parend):
+            if p >= realparend:
+                i = realparend
+                break
+            if layoutname in list_layouts:
+                m = rx.match(document.body[p])
+                if m:
+                    argnr = m.group(1)
+                    if argnr == "item:1":
+                        j = find_end_of_inset(document.body, i)
+                        # Find containing paragraph layout
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        del document.body[i:j+1]
+                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                        document.body[realparbeg : realparbeg] = subst
+                    elif argnr == "item:2":
+                        j = find_end_of_inset(document.body, i)
+                        # Find containing paragraph layout
+                        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+                        endPlain = find_end_of_layout(document.body, beginPlain)
+                        content = document.body[beginPlain + 1 : endPlain]
+                        del document.body[i:j+1]
+                        subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                        document.body[realparbeg : realparbeg] = subst
+        
+        i = realparend
+
+
+def revert_powerdot_columns(document):
+    " Reverts powerdot twocolumn to TeX-code "
+    if document.textclass != "powerdot":
+        return
+
+    rx = re.compile(r'^\\begin_inset Argument (\S+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Twocolumn", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Can't find end of Twocolumn layout")
+            i = i + 1
+            continue
+        endlay = j
+        document.body[j : j] = put_cmd_in_ert("}") + document.body[j : j]
+        endlay += len(put_cmd_in_ert("}"))
+        subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\twocolumn")
+        for p in range(i, j):
+            if p >= endlay:
+                break
+            m = rx.match(document.body[p])
+            if m:
+                argnr = m.group(1)
+                if argnr == "1":
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, p)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    endlay = endlay - len(document.body[p : endInset + 1])
+                    # Remove arg inset
+                    del document.body[p : endInset + 1]
+                    subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                elif argnr == "2":
+                    beginPlain = find_token(document.body, "\\begin_layout Plain Layout", p)
+                    endPlain = find_end_of_layout(document.body, beginPlain)
+                    endInset = find_end_of_inset(document.body, p)
+                    content = document.body[beginPlain + 1 : endPlain]
+                    # Adjust range end
+                    endlay = endlay - len(document.body[p : endInset + 1])
+                    # Remove arg inset
+                    del document.body[p : endInset + 1]
+                    subst += put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
+                    
+        subst += put_cmd_in_ert("{")
+        document.body[i : i + 1] = subst
+        i = endlay
+
+
 ##
 # Conversion hub
 #
@@ -3888,10 +4086,12 @@ convert = [
            [462, []],
            [463, [convert_encodings]],
            [464, [convert_use_cancel]],
-           [465, [convert_lyxframes, remove_endframes]]
+           [465, [convert_lyxframes, remove_endframes]],
+           [466, []]
           ]
 
 revert =  [
+           [465, [revert_powerdot_flexes, revert_powerdot_pause, revert_powerdot_itemargs, revert_powerdot_columns]],
            [464, []],
            [463, [revert_use_cancel]],
            [462, [revert_encodings]],
