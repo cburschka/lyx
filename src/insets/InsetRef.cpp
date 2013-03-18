@@ -220,7 +220,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			// normally would be "on page #", but we have no pages
 			display_string = _("elsewhere");
 		else if (cmd == "eqref")
-			display_string = bformat(from_ascii("equation (%1$s)"), value);
+			display_string = '(' + value + ')';
 		else if (cmd == "formatted"
 		         // we don't really have the ability to handle these 
 		         // properly in XHTML output
