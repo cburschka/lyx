@@ -270,7 +270,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 {
 	docstring const & ref = getParam("reference");
 	// register this inset into the buffer reference cache.
-	buffer().references(ref).push_back(make_pair(this, it));
+	buffer().addReference(ref, this, it);
 
 	docstring label;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {

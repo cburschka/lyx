@@ -3269,10 +3269,10 @@ void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 }
 
 
-Buffer::References & Buffer::references(docstring const & label)
+Buffer::References & Buffer::getReferenceCache(docstring const & label)
 {
 	if (d->parent())
-		return const_cast<Buffer *>(masterBuffer())->references(label);
+		return const_cast<Buffer *>(masterBuffer())->getReferenceCache(label);
 
 	RefCache::iterator it = d->ref_cache_.find(label);
 	if (it != d->ref_cache_.end())
@@ -3288,7 +3288,14 @@ Buffer::References & Buffer::references(docstring const & label)
 
 Buffer::References const & Buffer::references(docstring const & label) const
 {
-	return const_cast<Buffer *>(this)->references(label);
+	return const_cast<Buffer *>(this)->getReferenceCache(label);
+}
+
+
+void Buffer::addReference(docstring const & label, Inset * inset, ParIterator it)
+{
+	References & refs = getReferenceCache(label);
+	refs.push_back(make_pair(inset, it));
 }
 
 

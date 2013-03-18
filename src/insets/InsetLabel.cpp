@@ -109,9 +109,9 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 void InsetLabel::updateReferences(docstring const & old_label,
 		docstring const & new_label)
 {
-	Buffer::References & refs = buffer().references(old_label);
-	Buffer::References::iterator it = refs.begin();
-	Buffer::References::iterator end = refs.end();
+	Buffer::References const & refs = buffer().references(old_label);
+	Buffer::References::const_iterator it = refs.begin();
+	Buffer::References::const_iterator end = refs.end();
 	for (; it != end; ++it) {
 		buffer().undo().recordUndo(CursorData(it->second));
 		if (it->first->lyxCode() == MATH_REF_CODE) {
