@@ -706,7 +706,8 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	for (; par != pend; ++par) {
 		Layout const & lay = par->layout();
 		if (!lay.counter.empty())
-			buf.params().documentClass().counters().step(lay.counter, OutputUpdate);
+			buf.masterBuffer()->params().
+			    documentClass().counters().step(lay.counter, OutputUpdate);
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
@@ -800,7 +801,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 		// FIXME There may be a bug here about user defined enumeration
 		// types. If so, then we'll need to take the counter and add "i",
 		// "ii", etc, as with enum.
-		Counters & cnts = buf.params().documentClass().counters();
+		Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
 		docstring const & cntr = style.counter;
 		if (!style.counter.empty() 
 		    && (par == pbegin || !isNormalEnv(style)) 
@@ -924,7 +925,8 @@ void makeCommand(Buffer const & buf,
 {
 	Layout const & style = pbegin->layout();
 	if (!style.counter.empty())
-		buf.params().documentClass().counters().step(style.counter, OutputUpdate);
+		buf.masterBuffer()->params().
+		    documentClass().counters().step(style.counter, OutputUpdate);
 
 	openTag(xs, style, pbegin->params());
 
