@@ -2861,7 +2861,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		if (isDeleted(i))
 			continue;
 
-		Font font = getFont(buf.params(), i, outerfont);
+		Font font = getFont(buf.masterBuffer()->params(), i, outerfont);
 
 		// emphasis
 		if (font_old.emph() != font.fontInfo().emph()) {
@@ -2895,7 +2895,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				retval += inset->xhtml(xs, np);
 			}
 		} else {
-			char_type c = getUChar(buf.params(), i);
+			char_type c = getUChar(buf.masterBuffer()->params(), i);
 
 			if (style.pass_thru || runparams.pass_thru)
 				xs << c;
