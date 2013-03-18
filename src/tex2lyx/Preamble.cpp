@@ -129,7 +129,8 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "tgbonum", "tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
-"cmbr", "cmss", "helvet", "kurier", "kurierl", "lmss", "tgadventor", "tgheros", 0};
+"cmbr", "cmss", "helvet", "iwona", "iwonal", "kurier", "kurierl", "lmss",
+"tgadventor", "tgheros", 0};
 
 const char * const known_kurier_fonts[] = { "kurier", "kurierl",
 "kurier-condensed", "kurier-light-condensed", 0};

@@ -3630,6 +3630,28 @@ def revert_kurier_fonts(document):
         add_to_preamble(document, "\\renewcommand{\\sfdefault}{%s}" % sf)
         document.header[k] = "\\font_sans default"
 
+def revert_iwona_fonts(document):
+  " Revert iwona font definition to LaTeX "
+  
+  i = find_token(document.header, "\\font_math", 0)
+  if i != -1:
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+      val = get_value(document.header, "\\font_math", i)
+      if val == "iwona-math":
+        add_to_preamble(document, "\\let\\Myrmdefault\\rmdefault\n" \
+          "\\usepackage[math]{iwona}\n" \
+          "\\renewcommand{\\rmdefault}{\\Myrmdefault}")
+        document.header[i] = "\\font_math auto"
+  
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    iwona_fonts = ["iwona", "iwonac", "iwonal", "iwonalc"]
+    k = find_token(document.header, "\\font_sans iwona", 0)
+    if k != -1:
+      sf = get_value(document.header, "\\font_sans", k)
+      if sf in iwona_fonts:
+        add_to_preamble(document, "\\renewcommand{\\sfdefault}{%s}" % sf)
+        document.header[k] = "\\font_sans default"
+
 
 def revert_new_libertines(document):
     " Revert new libertine font definition to LaTeX "
@@ -4087,10 +4109,12 @@ convert = [
            [463, [convert_encodings]],
            [464, [convert_use_cancel]],
            [465, [convert_lyxframes, remove_endframes]],
-           [466, []]
+           [466, []],
+           [467, []]
           ]
 
 revert =  [
+           [466, [revert_iwona_fonts]],
            [465, [revert_powerdot_flexes, revert_powerdot_pause, revert_powerdot_itemargs, revert_powerdot_columns]],
            [464, []],
            [463, [revert_use_cancel]],

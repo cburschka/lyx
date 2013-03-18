@@ -460,6 +460,34 @@ Font helvet
 	Requires         psnfss
 EndFont
 
+Font iwona
+	GuiName         "Iwona"
+	Family          sf
+	Requires        iwona
+	SwitchDefault   1
+EndFont
+
+Font iwonal
+	GuiName         "Iwona (Light)"
+	Family          sf
+	Requires        iwona
+	SwitchDefault   1
+EndFont
+
+Font iwonac
+	GuiName         "Iwona (Condensed)"
+	Family          sf
+	Requires        iwona
+	SwitchDefault   1
+EndFont
+
+Font iwonalc
+	GuiName         "Iwona (Light Condensed)"
+	Family          sf
+	Requires        iwona
+	SwitchDefault   1
+EndFont
+
 Font kurier
 	GuiName         "Kurier"
 	Family          sf
@@ -598,6 +626,19 @@ Font garamondx-ntxm
 	Package          newtxmath
 	PackageOption    garamondx
 	Provides         amssymb,amsfonts
+EndFont
+
+Font iwona-math
+	GuiName         "Iwona (Math)"
+	Family          math
+	Requires        iwona
+	Preamble
+	% store roman font
+	\let\origrmdefault\rmdefault
+	\usepackage[math]{iwona}
+	% reset stored roman font
+	\renewcommand{\rmdefault}{\origrmdefault}
+	EndPreamble
 EndFont
 
 Font kurier-math
