@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 465
+\lyxformat 466
 \begin_document
 \begin_header
 \textclass powerdot
@@ -299,33 +299,176 @@ Slide Option
 \end_layout
 
 \begin_layout Slide
-Using 
-\family typewriter
-
-\backslash
-pause
+Using pause
 \end_layout
 
 \begin_layout Standard
-Let's make a pause! 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
+Let's make a pause!
 \end_layout
 
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
 \begin_layout Standard
 \SpecialChar \ldots{}
  and then continue.
+\end_layout
+
+\begin_layout Slide
+Uncovering text
+\end_layout
+
+\begin_layout Standard
+Use Edit\SpecialChar \menuseparator
+Text Style to access the 
+\begin_inset Quotes eld
+\end_inset
+
+visible
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+only
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+uncover
+\begin_inset Quotes erd
+\end_inset
+
+ insets which correspond to powerdot's various 
+\family typewriter
+
+\backslash
+onslide
+\family default
+ commands:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+visible
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\family typewriter
+
+\backslash
+onslide
+\family default
+): This 
+\begin_inset Flex onslide
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+makes hidden text
+\end_layout
+
+\end_inset
+
+ visible.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+only
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\family typewriter
+
+\backslash
+onslide*
+\family default
+): This 
+\begin_inset Flex onslide*
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+shows previously invisible text
+\end_layout
+
+\end_inset
+
+ (note the difference to the above!) 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+uncover
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\family typewriter
+
+\backslash
+onslide+
+\family default
+): This 
+\begin_inset Flex onslide+
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+uncovers
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+deactivated
+\begin_inset Quotes erd
+\end_inset
+
+ text.
 \end_layout
 
 \begin_layout Section
@@ -340,72 +483,42 @@ enumerate
 
 \begin_layout Standard
 Let's enumerate things:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
 \end_layout
 
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
 \begin_layout EnumerateType1
 The first thing;
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
 \end_layout
 
-\end_inset
-
+\begin_deeper
+\begin_layout Pause
 
 \end_layout
 
+\end_deeper
 \begin_layout EnumerateType1
 The second thing;
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
 \end_layout
 
-\end_inset
-
+\begin_deeper
+\begin_layout Pause
 
 \end_layout
 
+\end_deeper
 \begin_layout EnumerateType1
 The third thing;
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
 \end_layout
 
-\end_inset
-
+\begin_deeper
+\begin_layout Pause
 
 \end_layout
 
+\end_deeper
 \begin_layout EnumerateType1
 The final thing!
 \end_layout
@@ -418,45 +531,86 @@ itemize
 
 \begin_layout Standard
 We may also make some items and nest them:
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\begin_layout ItemizeType1
+\begin_inset Argument item:2
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pause
+2
 \end_layout
 
 \end_inset
 
-
+The first;
 \end_layout
 
 \begin_layout ItemizeType1
-<2> The first;
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+3
 \end_layout
 
-\begin_layout ItemizeType1
-<3> The second;
+\end_inset
+
+The second;
 \end_layout
 
 \begin_deeper
 \begin_layout ItemizeType1
-<4> One,
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+One,
 \end_layout
 
 \begin_layout ItemizeType1
-<5> Two,
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+
+Two,
 \end_layout
 
 \begin_layout ItemizeType1
-<6> Three,
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+
+Three,
 \end_layout
 
 \end_deeper
 \begin_layout ItemizeType1
-<7> The last one.
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+
+The last one.
 \end_layout
 
 \begin_layout EmptySlide
@@ -485,19 +639,7 @@ This slide is empty\SpecialChar \ldots{}
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
-\end_layout
-
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
@@ -510,19 +652,7 @@ EmptySlide
  style for its title (see cyan color into LyX window).
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-pause
-\end_layout
-
-\end_inset
-
+\begin_layout Pause
 
 \end_layout
 
@@ -537,6 +667,23 @@ randomdots
 \end_inset
 
 allows displaying those multicolor dots into the slide background.
+\end_layout
+
+\begin_layout Slide
+Two columns
+\end_layout
+
+\begin_layout Twocolumn
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+This is the left column
+\end_layout
+
+\end_inset
+
+This is the right column.
 \end_layout
 
 \begin_layout Slide
@@ -644,20 +791,12 @@ n");
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_layout Pause
 
-\begin_layout Plain Layout
-
-
-\backslash
-pause
 \end_layout
 
-\end_inset
-
- Unlike the previous one, this slide must use 
+\begin_layout Standard
+Unlike the previous one, this slide must use 
 \family typewriter
 method=file
 \family default
