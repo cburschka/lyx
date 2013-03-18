@@ -76,30 +76,54 @@
 
 \begin_body
 
-\begin_layout Title
-A LyX sample
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Note:
+\size larger
+Notes
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Output Format:
 \series default
- Powerdot does not work with PDF
+ Powerdot heavily draws on 
+\begin_inset Quotes eld
+\end_inset
+
+postscript code
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Thus, it does 
+\series bold
+not work with PDF
 \begin_inset space ~
 \end_inset
 
-(pdflatex).
- The view PDF button uses PDF
-\begin_inset space ~
+(pdflatex)
+\series default
+.
+ The 
+\begin_inset Quotes eld
 \end_inset
 
-(ps2pdf), but you can also use the method or PDF
-\begin_inset space ~
+View
+\begin_inset Quotes erd
 \end_inset
 
-(dvipdfm) via the menus or the 
+ button uses 
+\emph on
+ps2pdf
+\emph default
+ to generate a PDF, which is the recommended method.
+ Via the menus or the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -107,58 +131,85 @@ View other formats
 \begin_inset Quotes erd
 \end_inset
 
- button.
- For more informations, please read the 
-\series bold
-powerdot
-\series default
- manual.
+ button, you can use other output formats.
+ However, the only sensible alternative is 
+\emph on
+Postscript
+\emph default
+ itself.
+ 
+\emph on
+PDF
+\begin_inset space ~
+\end_inset
+
+(dvipdfm)
+\emph default
+ compiles, but most likely does not produce correct output.
+ The same applies to 
+\emph on
+DVI
+\emph default
+.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Enumerate
 
 \series bold
-Note:
+Options:
 \series default
- Depending on your LaTeX-system you might have to add the option 
-\begin_inset Quotes fld
+ Depending on your LaTeX system you might have to add the option 
+\begin_inset Quotes eld
 \end_inset
 
 dvips
-\begin_inset Quotes frd
+\begin_inset Quotes erd
 \end_inset
 
- to the document class options to get proper DVI output.
+ to the document class options (
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+\SpecialChar \ldots{}
+Document Class\SpecialChar \menuseparator
+Class Options\SpecialChar \menuseparator
+Custom
+\family default
+) to get proper output.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Enumerate
 
 \series bold
-Note:
+Compatibility:
 \series default
  
-\series bold
-powerdot
-\series default
+\emph on
+Powerdot
+\emph default
  version <= 1.4g is incompatible with 
-\series bold
+\emph on
 enumitem
-\series default
+\emph default
  version 3.5.
  If you get 
-\family typewriter
+\emph on
 enumitem
-\family default
+\emph default
  errors, make sure to download 
-\series bold
+\emph on
 powerdot
-\series default
- version 1.4h (2011/09/15) from CTAN.
+\emph default
+ version 1.4h (2011/09/15) or a later version from CTAN.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Title
+A LyX sample
 \end_layout
 
 \begin_layout Author
@@ -325,11 +376,27 @@ Text Style to access the
 \begin_inset Quotes eld
 \end_inset
 
+Onslide
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
 visible
 \begin_inset Quotes erd
 \end_inset
 
-, 
+), 
+\begin_inset Quotes eld
+\end_inset
+
+Onslide*
+\begin_inset Quotes erd
+\end_inset
+
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -337,7 +404,15 @@ only
 \begin_inset Quotes erd
 \end_inset
 
- and 
+) and 
+\begin_inset Quotes eld
+\end_inset
+
+Onslide+
+\begin_inset Quotes erd
+\end_inset
+
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -345,7 +420,7 @@ uncover
 \begin_inset Quotes erd
 \end_inset
 
- insets which correspond to powerdot's various 
+) insets which correspond to powerdot's various 
 \family typewriter
 
 \backslash
@@ -358,18 +433,20 @@ onslide
 \begin_inset Quotes eld
 \end_inset
 
-visible
+Onslide
 \begin_inset Quotes erd
 \end_inset
 
  (
-\family typewriter
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-onslide
-\family default
+visible
+\begin_inset Quotes erd
+\end_inset
+
 ): This 
-\begin_inset Flex onslide
+\begin_inset Flex Onslide
 status open
 
 \begin_layout Plain Layout
@@ -395,18 +472,20 @@ makes hidden text
 \begin_inset Quotes eld
 \end_inset
 
-only
+Onslide*
 \begin_inset Quotes erd
 \end_inset
 
  (
-\family typewriter
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-onslide*
-\family default
+only
+\begin_inset Quotes erd
+\end_inset
+
 ): This 
-\begin_inset Flex onslide*
+\begin_inset Flex Onslide*
 status open
 
 \begin_layout Plain Layout
@@ -431,18 +510,20 @@ shows previously invisible text
 \begin_inset Quotes eld
 \end_inset
 
-uncover
+Onslide+
 \begin_inset Quotes erd
 \end_inset
 
  (
-\family typewriter
+\begin_inset Quotes eld
+\end_inset
 
-\backslash
-onslide+
-\family default
+uncover
+\begin_inset Quotes erd
+\end_inset
+
 ): This 
-\begin_inset Flex onslide+
+\begin_inset Flex Onslide+
 status open
 
 \begin_layout Plain Layout

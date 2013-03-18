@@ -564,7 +564,7 @@ End
 # Charstyle definitions
 ###
 
-InsetLayout Flex:onslide
+InsetLayout Flex:Onslide
   LyXType          charstyle
   LabelString      "Visible"
   LatexType        command
@@ -578,14 +578,14 @@ InsetLayout Flex:onslide
   EndArgument
 End
 
-InsetLayout Flex:onslide+
-  CopyStyle        Flex:onslide
+InsetLayout Flex:Onslide+
+  CopyStyle        Flex:Onslide
   LatexName        onslide+
   LabelString      "Uncover"
 End
 
-InsetLayout Flex:onslide*
-  CopyStyle        Flex:onslide
+InsetLayout Flex:Onslide*
+  CopyStyle        Flex:Onslide
   LatexName        onslide*
   LabelString      "Only"
 End

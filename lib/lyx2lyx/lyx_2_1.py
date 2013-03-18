@@ -3837,9 +3837,9 @@ def revert_powerdot_flexes(document):
     if document.textclass != "powerdot":
         return
 
-    flexes = {"onslide" : "\\onslide",
-              "onslide*" : "\\onslide*",
-              "onslide+" : "\\onslide+"}
+    flexes = {"Onslide" : "\\onslide",
+              "Onslide*" : "\\onslide*",
+              "Onslide+" : "\\onslide+"}
     rx = re.compile(r'^\\begin_inset Flex (.+)$')
 
     i = 0
