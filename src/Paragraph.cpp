@@ -2890,6 +2890,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		if (inset) {
 			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
+				np.local_font = &font;
 				if (!inset->getLayout().htmlisblock())
 					np.html_in_par = true;
 				retval += inset->xhtml(xs, np);
