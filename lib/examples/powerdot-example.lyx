@@ -84,7 +84,7 @@ status open
 
 \series bold
 \size larger
-Notes
+General Notes
 \end_layout
 
 \begin_layout Enumerate
@@ -92,7 +92,11 @@ Notes
 \series bold
 Output Format:
 \series default
- Powerdot heavily draws on 
+ 
+\emph on
+Powerdot
+\emph default
+ heavily draws on 
 \begin_inset Quotes eld
 \end_inset
 
@@ -122,7 +126,16 @@ View
 \emph on
 ps2pdf
 \emph default
- to generate a PDF, which is the recommended method.
+ to generate a PDF, which is the recommended method (for your own documents,
+ you can set this via 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default Output Format
+\family default
+).
  Via the menus or the 
 \begin_inset Quotes eld
 \end_inset
@@ -169,13 +182,43 @@ dvips
  to the document class options (
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-\SpecialChar \ldots{}
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
 Document Class\SpecialChar \menuseparator
 Class Options\SpecialChar \menuseparator
 Custom
 \family default
 ) to get proper output.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Appearance:
+\series default
+ You can customize the look of the presentation with the class options 
+\emph on
+style=<style>
+\emph default
+ (via 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Document Class\SpecialChar \menuseparator
+Class Options\SpecialChar \menuseparator
+Custom
+\family default
+); the 
+\emph on
+powerdot
+\emph default
+ manual describes the styles at disposal.
+ Please also refer to the 
+\emph on
+powerdot
+\emph default
+ manual for further class options.
 \end_layout
 
 \begin_layout Enumerate
@@ -209,7 +252,7 @@ powerdot
 \end_layout
 
 \begin_layout Title
-A LyX sample
+Powerdot Presentations: A LyX Sample
 \end_layout
 
 \begin_layout Author
@@ -240,6 +283,16 @@ and
 \end_inset
 
  Christopher Ellison
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Extensions and comments for LyX 2.1 by Jürgen Spitzmüller.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
@@ -267,8 +320,8 @@ We use a
 \family typewriter
 Slide
 \family default
- style (magenta color, see above this text into LyX window) for the title
- of each slide of a section or document.
+ style (magenta color, see above this text in the LyX window) for the title
+ of each slide and to start a new slide.
 \end_layout
 
 \begin_layout WideSlide
@@ -282,8 +335,38 @@ name "toc"
 
 \end_inset
 
-But we may also use wide slides (green color, see above this text into LyX
- window).
+But we may also produce wide slides via the 
+\family typewriter
+WideSlide
+\family default
+ style (green color, see above this text in the LyX window).
+\end_layout
+
+\begin_layout Slide
+The TOC
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you need TOC options (see 
+\emph on
+powerdot
+\emph default
+ manual), you have to insert 
+\family typewriter
+
+\backslash
+tableofcontents[<options>]
+\family default
+ in TeX mode.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -309,7 +392,7 @@ This is the first section
 
 \begin_layout Slide
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 toc=This slide has\SpecialChar \ldots{}
@@ -322,22 +405,36 @@ This slide has a very very long title
 \end_layout
 
 \begin_layout Standard
-This slide's title is different in the TOC, see slide 
+This slide's title is different in the TOC, since we use the slide option
+ 
+\emph on
+toc=<shorttitle>
+\emph default
+; see slide 
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "toc"
 
 \end_inset
 
- or at the left of all slides in this section.
-\end_layout
+ or the navigation bar at the left side of all slides in this section.
+ Note that you can use 
+\emph on
+toc=
+\emph default
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Note
-Important note!
+e., pass an empty value) to hide a title completely from the TOC.
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Don't forget to use 
+Slide options can be specified via 
 \family typewriter
 Insert
 \family default
@@ -346,15 +443,88 @@ Insert
 \family typewriter
 Slide Option
 \family default
- in order to specify slide options.
+.
+\end_layout
+
+\begin_layout Note
+Important note!
+\end_layout
+
+\begin_layout Standard
+With the style 
+\family typewriter
+Note
+\family default
+ you can add notes to yourself.
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The class option 
+\emph on
+display=<displaytype>
+\emph default
+ (via 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Document Class\SpecialChar \menuseparator
+Class Options\SpecialChar \menuseparator
+Custom
+\family default
+) determines whether notes are visible in the output.
+ By default, they are not (
+\emph on
+display=slides
+\emph default
+).
+ We use the option 
+\emph on
+display=slidesnotes
+\emph default
+ in this presentation to display both the slides and the notes.
+ You can also display the notes only (
+\emph on
+display=notes
+\emph default
+).
+ See the 
+\emph on
+powerdot
+\emph default
+ manual for details.
 \end_layout
 
 \begin_layout Slide
-Using pause
+Pausing
 \end_layout
 
 \begin_layout Standard
 Let's make a pause!
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use the paragraph style 
+\family typewriter
+Pause
+\family default
+ or 
+\family typewriter
+
+\backslash
+pause
+\family default
+ in TeX mode!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Pause
@@ -373,75 +543,87 @@ Uncovering text
 \begin_layout Standard
 Use Edit\SpecialChar \menuseparator
 Text Style to access the 
-\begin_inset Quotes eld
-\end_inset
-
+\family typewriter
 Onslide
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  (
 \begin_inset Quotes eld
 \end_inset
 
-visible
+Visible
 \begin_inset Quotes erd
 \end_inset
 
 ), 
-\begin_inset Quotes eld
-\end_inset
-
+\family typewriter
 Onslide*
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  (
 \begin_inset Quotes eld
 \end_inset
 
-only
+Only
 \begin_inset Quotes erd
 \end_inset
 
 ) and 
-\begin_inset Quotes eld
-\end_inset
-
+\family typewriter
 Onslide+
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  (
 \begin_inset Quotes eld
 \end_inset
 
-uncover
+Uncover
 \begin_inset Quotes erd
 \end_inset
 
-) insets which correspond to powerdot's various 
+) insets, which correspond to 
+\emph on
+powerdot's
+\emph default
+ various 
 \family typewriter
 
 \backslash
 onslide
 \family default
  commands:
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Enumerate
+\begin_layout Plain Layout
+The 
 \begin_inset Quotes eld
 \end_inset
 
-Onslide
+On Slides
 \begin_inset Quotes erd
 \end_inset
 
+ sub-inset is accessible via 
+\family sans
+Insert\SpecialChar \menuseparator
+Overlay Specifications
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+Onslide
+\family default
  (
 \begin_inset Quotes eld
 \end_inset
 
-visible
+Visible
 \begin_inset Quotes erd
 \end_inset
 
@@ -459,28 +641,24 @@ status open
 
 \end_inset
 
-makes hidden text
+makes invisible text
 \end_layout
 
 \end_inset
 
  visible.
- 
 \end_layout
 
 \begin_layout Enumerate
+
+\family typewriter
+Onslide
+\family default
+* (
 \begin_inset Quotes eld
 \end_inset
 
-Onslide*
-\begin_inset Quotes erd
-\end_inset
-
- (
-\begin_inset Quotes eld
-\end_inset
-
-only
+Only
 \begin_inset Quotes erd
 \end_inset
 
@@ -498,27 +676,25 @@ status open
 
 \end_inset
 
-shows previously invisible text
+shows previously completely hidden text
 \end_layout
 
 \end_inset
 
- (note the difference to the above!) 
+ (note how, contrary to the above, the space is here only occupied after
+ un-hiding!) 
 \end_layout
 
 \begin_layout Enumerate
+
+\family typewriter
+Onslide
+\family default
++ (
 \begin_inset Quotes eld
 \end_inset
 
-Onslide+
-\begin_inset Quotes erd
-\end_inset
-
- (
-\begin_inset Quotes eld
-\end_inset
-
-uncover
+Uncover
 \begin_inset Quotes erd
 \end_inset
 
@@ -559,7 +735,36 @@ Second section
 \begin_layout Slide
 Using 
 \family typewriter
-enumerate
+Enumerate
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+List options can be inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Enumerate Options
+\family default
+ or 
+\family sans
+Insert\SpecialChar \menuseparator
+Itemize Options
+\family default
+, respectively.
+ A list item can be customized by means of 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Item
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -605,9 +810,161 @@ The final thing!
 \end_layout
 
 \begin_layout Slide
+List types
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Here you can see the difference between the styles 
+\family typewriter
+Enumerate
+\family default
+ and 
+\family typewriter
+EnumerateType1
+\family default
+.
+ 
+\family typewriter
+EnumerateType1
+\family default
+ (used on the previous slides) shows forthcoming items in 
+\begin_inset Quotes eld
+\end_inset
+
+inactive
+\begin_inset Quotes erd
+\end_inset
+
+ mode, while 
+\family typewriter
+Enumerate
+\family default
+ (used here) hides them completely (the same applies to 
+\family typewriter
+Itemize
+\family default
+ and 
+\family typewriter
+ItemizeType1
+\family default
+).
+\end_layout
+
+\end_inset
+
+Let's enumerate things again (
+\family typewriter
+Enumerate
+\family default
+ instead of 
+\family typewriter
+EnumerateType1
+\family default
+):
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Enumerate
+The first thing;
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The second thing;
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The third thing;
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The final thing!
+\end_layout
+
+\begin_layout Slide
 Using 
 \family typewriter
-itemize
+Itemize
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The overlay argument of a list item (
+\family typewriter
+
+\backslash
+item<arg>
+\family default
+ in LaTeX output, 
+\begin_inset Quotes eld
+\end_inset
+
+On Slide
+\begin_inset Quotes erd
+\end_inset
+
+ in LyX) is inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Overlay Specification.
+ Note how these, as opposed to 
+\family typewriter
+Pause
+\family sans
+, can be used to highlight only one item on each sub-slide (but try 
+\begin_inset Quotes eld
+\end_inset
+
+2-
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+3-
+\begin_inset Quotes erd
+\end_inset
+
+ etc.
+ the get the same effect as with 
+\family typewriter
+Pause
+\family sans
+).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -716,7 +1073,20 @@ The empty slide!
 
 \begin_layout Standard
 \align center
-This slide is empty\SpecialChar \ldots{}
+This slide is empty (or rather 
+\begin_inset Quotes eld
+\end_inset
+
+plain
+\begin_inset Quotes erd
+\end_inset
+
+, for that matter, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ it has no title, navigation bar etc.) \SpecialChar \ldots{}
  
 \end_layout
 
@@ -726,11 +1096,11 @@ This slide is empty\SpecialChar \ldots{}
 
 \begin_layout Standard
 \align center
-It uses 
+It uses the 
 \family typewriter
 EmptySlide
 \family default
- style for its title (see cyan color into LyX window).
+ style for its title (cyan color in the LyX window).
 \end_layout
 
 \begin_layout Pause
@@ -754,6 +1124,40 @@ allows displaying those multicolor dots into the slide background.
 Two columns
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use the 
+\family typewriter
+Twocolumn
+\family default
+ style to enter two columns.
+ The inset for the left column is automatically inserted or can be inserted
+ via 
+\family sans
+Insert\SpecialChar \menuseparator
+Left Column
+\family default
+.
+ Column options (see 
+\emph on
+powerdot
+\emph default
+ manual) can be inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Column Options
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Twocolumn
 \begin_inset Argument 2
 status open
@@ -769,7 +1173,7 @@ This is the right column.
 
 \begin_layout Slide
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 method=direct
@@ -820,12 +1224,30 @@ Note that this slide uses the
 \family typewriter
 method=direct
 \family default
- option (see its short title options box above into LyX window).
+ option.
+ This is necessary if you use 
+\begin_inset Quotes eld
+\end_inset
+
+verbatim
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+ content (such as listings).
+ Note, though, that this option does not allow for overlays.
 \end_layout
 
 \begin_layout Slide
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 method=file
@@ -834,6 +1256,35 @@ method=file
 \end_inset
 
 Verbatim material with overlays
+\end_layout
+
+\begin_layout Standard
+Verbatim content 
+\emph on
+and
+\emph default
+ overlays are possible with the option 
+\family typewriter
+method=file
+\family default
+.
+ Note that this method is slower than 
+\family typewriter
+method=direct
+\family default
+, thus the latter is recommended if you have verbatim content and do not
+ use overlays.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -872,28 +1323,16 @@ n");
 
 \end_layout
 
-\begin_layout Pause
-
-\end_layout
-
-\begin_layout Standard
-Unlike the previous one, this slide must use 
-\family typewriter
-method=file
-\family default
- as it employs two overlays.
-\end_layout
-
 \begin_layout Slide
 The end.
 \end_layout
 
 \begin_layout Standard
-Don't forget to put an 
+At the end of the document, you have to put an 
 \family typewriter
 EndSlide
 \family default
- style at the end of the document (see the black symbol below into LyX window).
+ style (see the black symbol below into LyX window).
 \end_layout
 
 \begin_layout Standard
