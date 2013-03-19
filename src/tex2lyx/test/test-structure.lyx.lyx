@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 464
+\lyxformat 467
 \begin_document
 \begin_header
 \textclass article
@@ -19,7 +19,6 @@
 }
 \edef\SF@gobble@opt{\noexpand\protect
   \expandafter\noexpand\csname SF@gobble@opt \endcsname}
-
   \def\SF@gobble@twobracket[#1]#2{}
 
 \newenvironment{foo}{==[}{]==}
