@@ -600,6 +600,10 @@ Language kazakh
 	GuiName         "Kazakh"
 	Encoding        pt154
 	LangCode        kk_KZ
+	PostBabelPreamble
+	\input{t2aenc.def}
+	\AtBeginDocument{\fontencoding{T2A}\selectfont}
+	EndPostBabelPreamble
 End
 
 Language korean
