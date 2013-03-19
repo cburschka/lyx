@@ -127,7 +127,7 @@ GuiTabular::GuiTabular(QWidget * parent)
 		this, SLOT(checkEnabled()));
 	connect(captionStatusCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
-	connect(specialAlignmentED, SIGNAL(editingFinished()),
+	connect(specialAlignmentED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 	connect(columnWidthED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
