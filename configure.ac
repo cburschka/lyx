@@ -3,7 +3,7 @@ dnl Process with autoconf to generate configure script   -*- sh -*-
 AC_INIT(LyX,2.1.0dev,[lyx-devel@lists.lyx.org],[lyx])
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2011-04-29"])
-AC_PREREQ(2.52)
+AC_PREREQ(2.60)
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
 
@@ -133,7 +133,7 @@ dnl problems with the AC_REQUIRE contained in QT4_DO_IT_ALL.
 for frontend in $FRONTENDS ; do
   case "$frontend" in
     qt4)
-	  QT4_DO_IT_ALL
+	  QT4_DO_IT_ALL([4.5.0])
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt4\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt4"
 	  RPM_FRONTEND="qt4"

@@ -547,9 +547,6 @@ AM_CONDITIONAL(INSTALL_MACOSX, $lyx_install_macosx)
 AM_CONDITIONAL(INSTALL_WINDOWS, $lyx_install_windows)
 AM_CONDITIONAL(INSTALL_CYGWIN, $lyx_install_cygwin)
 AM_CONDITIONAL(INSTALL_POSIX, $lyx_install_posix)
-dnl Next two lines are only for autoconf <= 2.59
-datadir='${datarootdir}'
-AC_SUBST(datarootdir)
 AC_SUBST(pkgdatadir)
 AC_SUBST(program_suffix)
 ])
