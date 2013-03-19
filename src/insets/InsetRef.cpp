@@ -16,6 +16,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "InsetLabel.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "OutputParams.h"
@@ -201,7 +202,7 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	docstring const & ref = getParam("reference");
 	InsetLabel const * il = buffer().insetLabel(ref);
@@ -218,9 +219,8 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 			display_string = value;
 		else if (cmd == "pageref" || cmd == "vpageref")
 			// normally would be "on page #", but we have no pages.
-			// FIXME this is wrong, as it should be the current language,
-			// but it is better than _(), which is what we had before.
-			display_string = buffer().B_("elsewhere");
+			display_string = translateIfPossible(from_ascii("elsewhere"),
+			        op.local_font->language()->lang());
 		else if (cmd == "eqref")
 			display_string = '(' + value + ')';
 		else if (cmd == "formatted"
