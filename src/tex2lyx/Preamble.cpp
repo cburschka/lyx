@@ -129,8 +129,8 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "tgbonum", "tgchorus", "tgpagella", "tgschola", "tgtermes", "utopia", 0};
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
-"cmbr", "cmss", "helvet", "iwona", "iwonal", "kurier", "kurierl", "lmss",
-"tgadventor", "tgheros", 0};
+"cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc", "kurier",
+"kurierc", "kurierl", "kurierlc", "lmss", "tgadventor", "tgheros", 0};
 
 const char * const known_kurier_fonts[] = { "kurier", "kurierl",
 "kurier-condensed", "kurier-light-condensed", 0};
@@ -1498,12 +1498,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				p.skip_spaces();
 				in_lyx_preamble = true;
 			}
-			if (name == "\\bfdefault")
-				// LyX re-adds this if a kurier font is used
-				if (is_known(h_font_sans, known_kurier_fonts) && body == "b") {
-					p.skip_spaces();
-					in_lyx_preamble = true;
-				}
 
 			// remove the lyxdot definition that is re-added by LyX
 			// if necessary
@@ -1532,22 +1526,6 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			// restore the in_lyx_preamble setting
 			in_lyx_preamble = was_in_lyx_preamble;
-		}
-
-		else if (t.cs() == "edef"){
-			// we only support this for kurier fonts
-			string const command = p.next_token().asInput();
-			p.get_token();
-			if (command == "\\sfdefault") {
-				p.getArg('{', '}');
-				if (h_font_sans == "kurier")
-					h_font_sans = "kurier-condensed";
-				if (h_font_sans == "kurierl")
-					h_font_sans = "kurier-light-condensed";
-				p.skip_spaces();
-			}
-			else
-				h_preamble << "\\edef" << command << "{" << p.getArg('{', '}') << "}\n";
 		}
 
 		else if (t.cs() == "documentclass") {
