@@ -6,11 +6,11 @@ Quick compilation guide
 
 These four steps will compile, test and install LyX:
 
-	0) Linux users beware: You need qt4 and qt4-devel packages 
+	0) Linux users beware: You need qt4 and qt4-devel packages
 	   of the same version to compile LyX.
 
 	   In general, it is also recommended to have pkg-config
-	   installed (the name might vary depending on your 
+	   installed (the name might vary depending on your
 	   distribution).
 
 	1) ./configure configures LyX according to your system. You
@@ -53,7 +53,7 @@ that the compilers are close to C++ standard conforming (gcc 4.x).
 
 LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
-library to be able to compile this version of LyX. 
+library to be able to compile this version of LyX.
 
 For full LyX usability we suggest to use at least Qt 4.8 which has been
 widely tested. For compilation you need to compile against at least
@@ -110,12 +110,15 @@ flags:
     concept-checks                   X           X
     warnings                         X           X
     debug                            X           X           X       X
-    gprof                                                            X
 
     The defaults are as follows in terms of version number
     release: stable release (1.x.y)
     prerelease: version number contains alpha, beta, rc or pre.
     development: version number contains dev.
+
+    The `profiling' build type uses the -fno-omit-frame-pointer option with gcc
+
+    The `gprof' build type compiles and links with -pg option with gcc.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
@@ -154,10 +157,6 @@ LyX:
 
   o --with-included-gettext forces the use of the included GNU gettext
     library, although you might have another one installed.
-
-  o --with-catgets allows to use the catget() functions which can
-    exist on your system.  This can cause problems, though. Use with
-    care.
 
   o You can also set the environment variable LINGUAS to a list of
     languages in case you do not want to install all the translation
@@ -203,50 +202,37 @@ give a value to the CXX variable.
 If you encounter problems, please read the section 'Problems' at the end of
 this file.
 
-The following options allow you to tweak the generated code more precisely:
-
-  o --enable-gprof instruments the code for use with the gprof
-    profiler. The results are only meaningful in conjunction with
-    --enable-build-type=release.
+The following options allow you to tweak the generated code more precisely (see the description of --enable-build-type for the default values):
 
   o --enable-optimization=VALUE enables you to set optimization to a
-    higher level than the default (-O), for example --enable-optimization=-O3.
+    higher level than the default, for example --enable-optimization=-O3.
 
   o --disable-optimization - you can use this to disable compiler
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly.
 
   o --enable-debug will add debug information to your binary. This
-    requires a lot more disk space, but is a must if you want to try to
-    debug problems in LyX. The default is to have debug information
-    for development versions and prereleases only.
+    requires a lot more disk space, but is a must if you want to try
+    to debug problems in LyX. There is no run-time penalty.
 
   o --enable-warnings that make the compiler output more warnings during
-    the compilation of LyX.  Opposite is --disable-warnings.  By default,
-    this flag is on for development versions only.
+    the compilation of LyX.  Opposite is --disable-warnings.
 
   o --enable-assertions that make the compiler generate run-time
     code which checks that some variables have sane values. Opposite
-    is --disable-assertions.  By default, this flag is on for
-    development versions only.
+    is --disable-assertions.
 
   o --enable-stdlib-debug adds some debug code in the standard
     library; this slows down the code, but has been helpful in the
-    past to find bugs. By default, this flag is on for development
-    versions only.
+    past to find bugs.
 
   o --enable-concept-checks adds some compile-time checks. There is no
-    run-time penalty. By default, this flag is on for development
-    versions only.
+    run-time penalty.
 
   o --without-latex-config that disables the automatic detection of your
     latex configuration.  This detection is automatically disabled if
     latex cannot be found.  If you find that you have to use this
     flag, please report it as a bug.
-
-  o --with-frontend=FRONTEND that allows to specify which frontend you
-    want to use. The default value is qt4, which is the only available
-    frontend for now.
 
   o --enable-monolithic-build[=boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
     that enables monolithic build of the given parts of the source

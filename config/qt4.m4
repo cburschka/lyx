@@ -135,15 +135,27 @@ AC_DEFUN([QT4_DO_IT_ALL],
 		QT4_DO_MANUAL_CONFIG
 	fi
 
+	if test -z "$QT4_LIB"; then
+	  AC_MSG_ERROR([cannot find qt4 library.])
+	fi
+
 	dnl Check qt version
-	AS_VERSION_COMPARE($QT4_VERSION, $1, 
+	AS_VERSION_COMPARE($QT4_VERSION, $1,
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QT4_VERSION has been found.])
 	])
 
 	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
+	if test -z "$MOC4"; then
+  	  AC_MSG_ERROR([cannot find moc binary.])
+	fi
 	AC_PATH_PROGS(UIC4, [uic-qt4 uic],[],$qt4_cv_bin:$PATH)
+	if test -z "$UIC4"; then
+	  AC_MSG_ERROR([cannot find uic binary.])
+	fi
 	AC_PATH_PROGS(RCC4, [rcc-qt4 rcc],[],$qt4_cv_bin:$PATH)
-	AC_CHECK_PROG(bc_found,[bc],[yes],[no],$PATH)
+	if test -z "$RCC4"; then
+	  AC_MSG_ERROR([cannot find rcc binary.])
+	fi
 ])
 
 AC_DEFUN([QT4_DO_PKG_CONFIG],

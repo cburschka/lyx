@@ -182,11 +182,6 @@ AC_ARG_ENABLE(concept-checks,
 	  [enable_concept_checks=no])]
 )
 
-AC_ARG_ENABLE(gprof,
-  AC_HELP_STRING([--enable-gprof],[enable profiling using gprof]),,
-  [AS_CASE([$build_type], [gprof], [enable_gprof=yes], [enable_gprof=no])]
-)
-
 ### set up optimization
 AC_ARG_ENABLE(optimization,
     AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
@@ -231,16 +226,20 @@ if test x$GXX = xyes; then
   if test "$ac_test_CXXFLAGS" = set; then
     CXXFLAGS="$ac_save_CXXFLAGS"
   else
-      CFLAGS="$lyx_opt"
-      CXXFLAGS="$lyx_opt"
+    CFLAGS="$lyx_opt"
+    CXXFLAGS="$lyx_opt"
     if test x$enable_debug = xyes ; then
-        CFLAGS="-g $CFLAGS"
-	CXXFLAGS="-g $CXXFLAGS"
+      CFLAGS="-g $CFLAGS"
+      CXXFLAGS="-g $CXXFLAGS"
     fi
-    if test x$enable_gprof = xyes ; then
-        CFLAGS="-pg $CFLAGS"
-        CXXFLAGS="-pg $CXXFLAGS"
-        LDFLAGS="-pg $LDFLAGS"
+    if test $build_type = gprof ; then
+      CFLAGS="-pg $CFLAGS"
+      CXXFLAGS="-pg $CXXFLAGS"
+      LDFLAGS="-pg $LDFLAGS"
+    fi
+    if test $build_type = profiling ; then
+      CFLAGS="$CFLAGS -fno-omit-frame-pointer"
+      CXXFLAGS="$CXXFLAGS -fno-omit-frame-pointer"
     fi
   fi
   if test "$ac_env_CPPFLAGS_set" != set; then
@@ -449,25 +448,6 @@ rm -f conftest*])
   AC_DEFINE_UNQUOTED($ac_tr_safe, $lyx_path_header_path, [dummy])])
 ])
 ### end of LYX_PATH_HEADER
-
-### Check which frontends we want to use.
-###
-AC_DEFUN([LYX_USE_FRONTENDS],
-[AC_MSG_CHECKING([what frontend should be used for the GUI])
-AC_ARG_WITH(frontend,
-  [AC_HELP_STRING([--with-frontend=THIS], [use THIS frontend as main GUI:
-			    Possible values: qt4])],
-  [FRONTENDS="$withval"],[FRONTENDS="qt4"])
-if test "x$FRONTENDS" = x ; then
-  AC_MSG_RESULT(none)
-  AC_MSG_ERROR("Please select a frontend using --with-frontend")
-fi
-AC_MSG_RESULT($FRONTENDS)
-AC_SUBST(FRONTENDS)
-AC_SUBST(FRONTENDS_SUBDIRS)
-AC_SUBST(FRONTENDS_PROGS)
-])
-
 
 ## Check what kind of packaging should be used at install time.
 ## The default is autodetected.

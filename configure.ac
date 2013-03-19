@@ -64,9 +64,6 @@ AM_PATH_PYTHON(2.4.0,, :)
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
 
-### check which frontend we want to use
-LYX_USE_FRONTENDS
-
 ### Check for a C++ compiler
 LYX_PROG_CXX
 
@@ -126,39 +123,14 @@ AC_CHECK_HEADERS(magic.h,
    is correctly installed on your system.
    Falling back to builtin file format detection.])])
 
-
-### check which frontend we want to use
-
+### setup the qt4 frontend.
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT4_DO_IT_ALL.
-for frontend in $FRONTENDS ; do
-  case "$frontend" in
-    qt4)
-	  QT4_DO_IT_ALL([4.5.0])
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt4\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt4"
-	  RPM_FRONTEND="qt4"
-	  FRONTEND_INFO="${FRONTEND_INFO}\
+QT4_DO_IT_ALL([4.5.0])
+AC_SUBST([FRONTENDS_SUBDIRS], [qt4])
+FRONTEND_INFO="${FRONTEND_INFO}\
   Qt 4 Frontend:\n\
       Qt 4 version:\t\t${QT4_VERSION}\n"
-dnl qt 4 build will fail without moc, uic, or bc
-	  if test -z "$MOC4"; then
-	    AC_MSG_ERROR([cannot find moc binary.])
-	  fi
-	  if test -z "$UIC4"; then
-	    AC_MSG_ERROR([cannot find uic binary.!])
-	  fi
-	  if test -z "$QT4_LIB"; then
-	    AC_MSG_ERROR([cannot find qt4 library.])
-	  fi
-	  if test "$bc_found" = "no"; then
-	    AC_MSG_ERROR([cannot find bc program.])
-	  fi
-      ;;
-    *)
-	  AC_MSG_ERROR([unknown frontend '$frontend'.]);;
-  esac
-done
 
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$default_prefix
@@ -244,7 +216,6 @@ ${FRONTEND_INFO}\
   LyX files dir:                ${real_pkgdatadir}\n"
 
 AC_SUBST(VERSION_INFO)
-AC_SUBST(RPM_FRONTEND)
 AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_CFLAGS)
