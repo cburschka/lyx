@@ -19,7 +19,7 @@ AC_ARG_ENABLE(build-type,
     prof*)  build_type=profiling;;
     gprof*) build_type=gprof;;
     rel*) build_type=release;;
-    *) AC_ERROR([Bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
+    *) AC_MSG_ERROR([bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
    esac],
   [case AC_PACKAGE_VERSION in
     *svn*|*dev*) build_type=development;;
@@ -34,7 +34,7 @@ case $build_type in
 		 LYX_DATE="not released yet" ;;
     prerelease) lyx_prerelease=yes ;;
 esac
-    
+
 AC_SUBST(lyx_devel_version)
 ])
 
@@ -61,15 +61,6 @@ AC_MSG_RESULT([$withval])
 ])
 
 
-dnl Usage: LYX_ERROR(message)  Displays the warning "message" and sets the
-dnl flag lyx_error to yes.
-AC_DEFUN([LYX_ERROR],[
-lyx_error_txt="$lyx_error_txt
-** $1
-"
-lyx_error=yes])
-
-
 dnl Usage: LYX_WARNING(message)  Displays the warning "message" and sets the
 dnl flag lyx_warning to yes.
 AC_DEFUN([LYX_WARNING],[
@@ -82,36 +73,20 @@ lyx_warning=yes])
 dnl Usage: LYX_LIB_ERROR(file,library)  Displays an error message indication
 dnl  that 'file' cannot be found because 'lib' may be uncorrectly installed.
 AC_DEFUN([LYX_LIB_ERROR],[
-LYX_ERROR([Cannot find $1. Please check that the $2 library
+AC_MSG_ERROR([cannot find $1. Please check that the $2 library
    is correctly installed on your system.])])
 
 
-dnl Usage: LYX_CHECK_ERRORS  Displays a warning message if a LYX_ERROR
+dnl Usage: LYX_CHECK_WARNINGS  Displays a warning message if a LYX_WARNING
 dnl   has occured previously.
-AC_DEFUN([LYX_CHECK_ERRORS],[
+AC_DEFUN([LYX_CHECK_WARNINGS],[
 if test x$lyx_warning = xyes; then
 cat <<EOF
 === The following minor problems have been detected by configure.
 === Please check the messages below before running 'make'.
 === (see the section 'Problems' in the INSTALL file)
 $lyx_warning_txt
-EOF
-fi
-if test x$lyx_error = xyes; then
-cat <<EOF
-**** The following problems have been detected by configure.
-**** Please check the messages below before running 'make'.
-**** (see the section 'Problems' in the INSTALL file)
-$lyx_error_txt
-$lyx_warning_txt
-EOF
-exit 1
-else
 
-cat <<EOF
-Configuration of LyX was successful.
-Type 'make' to compile the program,
-and then 'make install' to install it.
 EOF
 fi])
 
@@ -354,7 +329,7 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 		else
 			BOOST_MT=""
 			if test x$lyx_boost_plain != xyes ; then
-				LYX_ERROR([No suitable boost library found (do not use --without-included-boost)])
+				AC_MSG_ERROR([cannot find suitable boost library (do not use --without-included-boost)])
 			fi
 		fi
 		AC_SUBST(BOOST_MT)
@@ -384,7 +359,7 @@ AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
 		fi
 		AC_LANG_POP(C++)
 		if test x$lyx_mythes != xyes -o x$ac_cv_header_mythes_h != xyes; then
-			LYX_ERROR([No suitable MyThes library found (do not use --without-included-mythes)])
+			AC_MSG_ERROR([cannot find suitable MyThes library (do not use --without-included-mythes)])
 		fi
 		AC_DEFINE(USE_EXTERNAL_MYTHES, 1, [Define as 1 to use an external MyThes library])
 		AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$lyx_cv_mythes_h_location,[Location of mythes.hxx])
@@ -485,7 +460,7 @@ AC_ARG_WITH(frontend,
   [FRONTENDS="$withval"],[FRONTENDS="qt4"])
 if test "x$FRONTENDS" = x ; then
   AC_MSG_RESULT(none)
-  AC_ERROR("Please select a frontend using --with-frontend")
+  AC_MSG_ERROR("Please select a frontend using --with-frontend")
 fi
 AC_MSG_RESULT($FRONTENDS)
 AC_SUBST(FRONTENDS)
@@ -541,7 +516,7 @@ case $lyx_use_packaging in
 		*apple-darwin*) lyx_install_macosx=true ;;
 	   esac
 	   lyx_install_posix=true ;;
-    *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
+    *) AC_MSG_ERROR([unknown packaging type $lyx_use_packaging.]) ;;
 esac
 AM_CONDITIONAL(INSTALL_MACOSX, $lyx_install_macosx)
 AM_CONDITIONAL(INSTALL_WINDOWS, $lyx_install_windows)

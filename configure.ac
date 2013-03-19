@@ -105,7 +105,7 @@ AC_CHECK_SIZEOF(wchar_t)
 ### We need iconv for unicode support (Qt4 frontend requires it too)
 AM_ICONV
 if test "$am_cv_func_iconv" = no; then
-  LYX_ERROR([Cannot find required library iconv])
+  AC_MSG_ERROR([cannot find required library iconv.])
 else
   LIBS="$LIBS $LIBICONV"
 fi
@@ -118,10 +118,10 @@ AC_CHECK_HEADERS(zlib.h,
 ### check for file magic support (currently optional)
 AC_CHECK_HEADERS(magic.h,
  [AC_CHECK_LIB(magic, magic_open, [LIBS="$LIBS -lmagic"],
-  LYX_WARNING([Cannot find limagic. Please check that the libmagic library
+  LYX_WARNING([cannot find libmagic. Please check that the libmagic library
    is correctly installed on your system.
    Falling back to builtin file format detection.]))],
- [LYX_WARNING([Cannot find magic.h. Please check that the libmagic library
+ [LYX_WARNING([cannot find magic.h. Please check that the libmagic library
    is correctly installed on your system.
    Falling back to builtin file format detection.])])
 
@@ -142,20 +142,20 @@ for frontend in $FRONTENDS ; do
       Qt 4 version:\t\t${QT4_VERSION}\n"
 dnl qt 4 build will fail without moc, uic, or bc
 	  if test -z "$MOC4"; then
-	    LYX_ERROR([moc 4 binary not found !])
+	    AC_MSG_ERROR([cannot find moc binary.])
 	  fi
 	  if test -z "$UIC4"; then
-	    LYX_ERROR([uic 4 binary not found !])
+	    AC_MSG_ERROR([cannot find uic binary.!])
 	  fi
 	  if test -z "$QT4_LIB"; then
-	    LYX_ERROR([qt 4 library not found !])
+	    AC_MSG_ERROR([cannot find qt4 library.])
 	  fi
 	  if test "$bc_found" = "no"; then
-	    LYX_ERROR([bc binary not found !])
+	    AC_MSG_ERROR([cannot find bc program.])
 	  fi
       ;;
     *)
-	  LYX_ERROR(Unknown frontend '$frontend');;
+	  AC_MSG_ERROR([unknown frontend '$frontend'.]);;
   esac
 done
 
@@ -163,7 +163,7 @@ done
 test "x$prefix" = xNONE && prefix=$default_prefix
 test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
 if echo $prefix |grep ' ' >/dev/null 2>/dev/null ; then
-  LYX_WARNING([The installation prefix \"${prefix}\" contains a space, which
+  LYX_WARNING([the installation prefix \"${prefix}\" contains a space, which
    causes problems with the Makefiles. The installation will be done in
    directory \"`pwd`/installprefix\" instead. Please move its contents to
    the right place after installation.])
@@ -395,5 +395,11 @@ echo
 printf "$VERSION_INFO"
 echo
 
-# Display a final warning if there has been a LYX_ERROR
-LYX_CHECK_ERRORS
+# Display a final warning if there has been a LYX_WARNING
+LYX_CHECK_WARNINGS
+
+cat <<EOF
+Configuration of LyX was successful.
+Type 'make' to compile the program,
+and then 'make install' to install it.
+EOF

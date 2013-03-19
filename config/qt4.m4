@@ -52,9 +52,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 
 	if test -z "$qt4_cv_libname"; then
 		AC_MSG_RESULT([failed])
-		if test "$FATAL" = 1 ; then
-			AC_MSG_ERROR([Cannot compile a simple Qt 4 executable. Check you have the right \$QT4DIR !])
-		fi
+		AC_MSG_ERROR([cannot compile a simple Qt 4 executable. Check you have the right \$QT4DIR.])
 	else
 		AC_MSG_RESULT([$qt4_cv_libname])
 	fi
@@ -91,10 +89,6 @@ AC_DEFUN([QT4_DO_IT_ALL],
 [
 	dnl this variable is precious
 	AC_ARG_VAR(QT4DIR, [the place where the Qt 4 files are, e.g. /usr/lib/qt4])
-
-	dnl Please leave this alone. I use this file in
-	dnl oprofile.
-	FATAL=0
 
 	AC_ARG_WITH(qt4-dir, [AC_HELP_STRING([--with-qt4-dir], [where the root of Qt 4 is installed])],
 		[ qt4_cv_dir=`eval echo "$withval"/` ])
@@ -143,7 +137,7 @@ AC_DEFUN([QT4_DO_IT_ALL],
 
 	dnl Check qt version
 	AS_VERSION_COMPARE($QT4_VERSION, $1, 
-	[LYX_ERROR([LyX requires version $1 of Qt. Only version $QT4_VERSION has been found.])
+	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QT4_VERSION has been found.])
 	])
 
 	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
@@ -193,7 +187,7 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 	case $have_x in
 	    yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
 	         CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
-	     no) LYX_ERROR([Cannot find X window libraries and/or headers.]);;
+	     no) AC_MSG_ERROR([cannot find X window libraries and/or headers.]);;
 	disable) ;;
 	esac
 
