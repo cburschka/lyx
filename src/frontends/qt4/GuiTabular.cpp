@@ -204,6 +204,7 @@ void GuiTabular::checkEnabled()
 	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
 	columnWidthED->setEnabled(specialAlignmentED->text().isEmpty());
+	columnWidthUnitLC->setEnabled(specialAlignmentED->text().isEmpty());
 	// if the column has a width, multirows are always left-aligned
 	// therefore disable hAlignCB in this case
 	hAlignCO->setEnabled(!(multirowCB->isChecked()
