@@ -1,6 +1,7 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
 AC_INIT(LyX,2.1.0dev,[lyx-devel@lists.lyx.org],[lyx])
+AC_PRESERVE_HELP_ORDER
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2011-04-29"])
 AC_PREREQ(2.60)
@@ -185,15 +186,10 @@ AC_LANG_POP(C)
 AC_HEADER_MAJOR
 AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h locale.h utime.h sys/utime.h)
 
-# some standard structures
-AC_HEADER_STAT
-AC_HEADER_TIME
-
 # some standard types
 AC_CHECK_TYPE(mode_t,[AC_DEFINE(HAVE_MODE_T, 1, [Define this to 1 if your compiler supports the mode_t type.])])
 AC_TYPE_OFF_T
 AC_TYPE_PID_T
-AC_TYPE_SIGNAL
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
 
