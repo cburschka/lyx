@@ -501,8 +501,10 @@ GuiView::GuiView(int id)
 
 	if (lyxrc.allow_geometry_session) {
 		// Now take care of session management.
-		if (restoreLayout())
+		if (restoreLayout()) {
+			initToolbars();
 			return;
+		}
 	}
 
 	// no session handling, default to a sane size.
