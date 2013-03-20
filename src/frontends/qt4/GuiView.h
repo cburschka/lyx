@@ -337,7 +337,7 @@ private:
 	/// Saves the settings of toolbars and all dialogs
 	void saveUISettings() const;
 	///
-	bool restoreLayout();
+	bool restoreLayout(bool force_inittoolbars = false);
 	///
 	GuiToolbar * toolbar(std::string const & name);
 	///
