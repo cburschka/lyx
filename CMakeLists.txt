@@ -463,7 +463,7 @@ if(NOT MSVC)
 endif()
 
 
-find_package(Qt4 REQUIRED)
+find_package(Qt4 "4.5.0" REQUIRED)
 find_package(Magic)
 if(Magic_FOUND)
 	set(HAVE_MAGIC_H 1)
