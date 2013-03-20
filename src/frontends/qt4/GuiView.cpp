@@ -501,10 +501,8 @@ GuiView::GuiView(int id)
 
 	if (lyxrc.allow_geometry_session) {
 		// Now take care of session management.
-		if (restoreLayout()) {
-			initToolbars();
+		if (restoreLayout(true))
 			return;
-		}
 	}
 
 	// no session handling, default to a sane size.
@@ -625,7 +623,7 @@ void GuiView::saveUISettings() const
 }
 
 
-bool GuiView::restoreLayout()
+bool GuiView::restoreLayout(bool force_inittoolbars)
 {
 	QSettings settings;
 	settings.beginGroup("views");
@@ -674,7 +672,8 @@ bool GuiView::restoreLayout()
 	if ((dialog = findOrBuild("findreplaceadv", true)))
 		dialog->prepareView();
 
-	if (!restoreState(settings.value("layout").toByteArray(), 0))
+	if (!restoreState(settings.value("layout").toByteArray(), 0)
+	    || force_inittoolbars)
 		initToolbars();
 	updateDialogs();
 	return true;
