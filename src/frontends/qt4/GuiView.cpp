@@ -495,7 +495,7 @@ GuiView::GuiView(int id)
 
 	if (lyxrc.allow_geometry_session) {
 		// Now take care of session management.
-		if (restoreLayout(true))
+		if (restoreLayout())
 			return;
 	}
 
@@ -616,7 +616,7 @@ void GuiView::saveUISettings() const
 }
 
 
-bool GuiView::restoreLayout(bool force_inittoolbars)
+bool GuiView::restoreLayout()
 {
 	QSettings settings;
 	settings.beginGroup("views");
@@ -665,8 +665,7 @@ bool GuiView::restoreLayout(bool force_inittoolbars)
 	if ((dialog = findOrBuild("findreplaceadv", true)))
 		dialog->prepareView();
 
-	if (!restoreState(settings.value("layout").toByteArray(), 0)
-	    || force_inittoolbars)
+	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();
 	updateDialogs();
 	return true;
