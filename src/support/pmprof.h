@@ -1,0 +1,88 @@
+// -*- C++ -*-
+/* \file pmprof.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef PMPROF_H
+#define PMPROF_H
+
+#include <sys/time.h>
+#include <iostream>
+
+/** How to use this trivial profiler:
+ *
+ * * at the beginning of the interesting block, just add:
+ *   PROFILE_THIS_BLOCK(some_identifier);
+ *
+ * * when the program ends, statistics will be sent to standard error, like:
+ *
+ *   ##### some_identifier: 6.48475usec, count=25405
+ *
+ * The code measured by the profiler corresponds to the lifetime of a
+ * local variable declared by the PROFILE_THIS_BLOCK macro.
+ */
+
+/* Helper class for gathering data. Instantiate this as a static
+ * variable, so that its destructor will be executed when the program
+ * ends.
+ */
+class PMProfStat {
+public:
+	PMProfStat(char const * name)
+	  : name_(name), sec_(0), usec_(0), count_(0) {};
+
+	~PMProfStat() {
+		if (count_>0)
+		  std::cerr << "##### " << name_ << ": "
+			    << 1.0 * (sec_ * 1000000 + usec_)/ count_
+			    << "usec, count=" << count_ << std::endl;
+	}
+
+	void add(const long long s, const long long u) {
+		sec_ += s;
+		usec_ += u;
+		count_++;
+	}
+
+private:
+	char const * name_;
+	long long sec_, usec_;
+	unsigned long long count_;
+};
+
+
+/* Helper class which gathers data at the end of the scope. One
+ * instance of this one should be created at each execution of the
+ * block. At the end of the block, it sends statistics to the static
+ * PMProfStat object.
+ */
+class PMProfInstance {
+public:
+	PMProfInstance(PMProfStat * stat) : stat_(stat)
+	{
+		gettimeofday(&before_, 0);
+	}
+
+	~PMProfInstance() {
+		gettimeofday(&after_, 0);
+		stat_->add(after_.tv_sec - before_.tv_sec,
+			   after_.tv_usec - before_.tv_usec);
+	}
+
+private:
+	timeval before_, after_;
+	PMProfStat * stat_;
+};
+
+
+#define PROFILE_THIS_BLOCK(a) \
+	static PMProfStat PMPS_##a(#a);\
+	PMProfInstance PMPI_##a(&PMPS_##a)
+
+
+#endif

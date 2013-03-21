@@ -83,6 +83,7 @@ liblyxsupport_a_SOURCES = \
 	Package.cpp \
 	Package.h \
 	ProgressInterface.h \
+	pmprof.h \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
 	regex.h \
