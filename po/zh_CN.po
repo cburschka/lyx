@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-03 12:06-0500\n"
+"POT-Creation-Date: 2013-03-21 10:22-0400\n"
 "PO-Revision-Date: 2011-06-02 23:49-0600\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -203,16 +203,16 @@ msgstr "此章文献引用包含..."
 msgid "&Content:"
 msgstr "内容(&C):"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:212
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:216
 msgid "all cited references"
 msgstr "所有引用的文献"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:210
+#: src/insets/InsetBibtex.cpp:214
 msgid "all uncited references"
 msgstr "使用未引用的文献"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:208
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:212
 msgid "all references"
 msgstr "所有文献"
 
@@ -307,21 +307,21 @@ msgstr "框内文本水平对齐"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/GuiTabular.cpp:802
 msgid "Left"
 msgstr "左"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
 #: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:789
+#: src/frontends/qt4/GuiTabular.cpp:803
 msgid "Center"
 msgstr "居中"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:790
+#: src/frontends/qt4/GuiTabular.cpp:804
 msgid "Right"
 msgstr "右"
 
@@ -342,7 +342,7 @@ msgstr "上"
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
 #: src/frontends/qt4/ui/TabularUi.ui:215 src/frontends/qt4/ui/TabularUi.ui:376
-#: src/frontends/qt4/GuiTabular.cpp:212
+#: src/frontends/qt4/GuiTabular.cpp:219
 msgid "Middle"
 msgstr "中间"
 
@@ -489,8 +489,8 @@ msgid "Remove the selected branch"
 msgstr "删除选中分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3875
-#: src/Buffer.cpp:3888
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3893
+#: src/Buffer.cpp:3906
 msgid "&Remove"
 msgstr "删除(&R)"
 
@@ -528,7 +528,7 @@ msgstr "添加所有（&L）"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1147
-#: src/Buffer.cpp:2399 src/Buffer.cpp:3850 src/Buffer.cpp:3913
+#: src/Buffer.cpp:2417 src/Buffer.cpp:3868 src/Buffer.cpp:3931
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -538,7 +538,7 @@ msgstr "添加所有（&L）"
 #: src/frontends/qt4/GuiView.cpp:2335 src/frontends/qt4/GuiView.cpp:2550
 #: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
 #: src/frontends/qt4/GuiView.cpp:2684 src/frontends/qt4/GuiView.cpp:3299
-#: src/insets/InsetBibtex.cpp:148
+#: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -579,7 +579,7 @@ msgstr "大小(&z)"
 #: src/frontends/qt4/GuiDocument.cpp:1719
 #: src/frontends/qt4/GuiDocument.cpp:1794
 #: src/frontends/qt4/GuiDocument.cpp:2158
-#: src/frontends/qt4/GuiDocument.cpp:3234 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3236 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2533
@@ -708,8 +708,8 @@ msgstr "字体系列"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
-#: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
-#: lib/layouts/moderncv.layout:259 src/frontends/qt4/GuiDocument.cpp:1313
+#: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:128
+#: lib/layouts/moderncv.layout:118 src/frontends/qt4/GuiDocument.cpp:1313
 #: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:853
 msgid "Language"
 msgstr "语言"
@@ -783,7 +783,7 @@ msgstr "立即改变字体"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177
+#: src/frontends/qt4/GuiDocument.cpp:3179
 msgid "&Apply"
 msgstr "应用(&A)"
 
@@ -1899,8 +1899,8 @@ msgstr "输入"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1141
-#: src/insets/InsetInclude.cpp:1147
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1144
+#: src/insets/InsetInclude.cpp:1150
 msgid "Program Listing"
 msgstr "程序列表"
 
@@ -2156,7 +2156,7 @@ msgid "Feedback window"
 msgstr "回馈窗口"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
+#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
 msgid "Listing"
 msgstr "列表"
 
@@ -3199,7 +3199,7 @@ msgstr "编辑"
 msgid "Cursor &follows scrollbar"
 msgstr "光标跟踪滚动条(&f)"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3147
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3143
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3494,7 +3494,7 @@ msgstr "标记外国语言(&f)"
 msgid "Right-to-left language support"
 msgstr "从右至左语言支持"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3428
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3424
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "启用右到左支持（中文用户一般不要选）"
@@ -3644,7 +3644,7 @@ msgstr "当文档类改变时重置类设置(&e)"
 msgid "Output &line length:"
 msgstr "输出行长度(&l):"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3094
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3090
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3701,7 +3701,7 @@ msgstr "&roff命令"
 msgid "&PATH prefix:"
 msgstr "路径前缀(&P):"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3338
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3334
 #, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
@@ -3715,7 +3715,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "TEX&INPUTS前缀:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3497
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3493
 #, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
@@ -4570,11 +4570,12 @@ msgid "Horizontal alignment in column"
 msgstr "列内垂直对齐"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:792
+#: src/frontends/qt4/GuiTabular.cpp:806
 msgid "Justified"
 msgstr "两端对齐"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:794
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:213
+#: src/frontends/qt4/GuiTabular.cpp:808
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "分隔符"
@@ -5183,7 +5184,7 @@ msgstr "短标题"
 #: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
 #: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
 #: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
-#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:80
+#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
 #: lib/layouts/acmsiggraph.layout:68 lib/layouts/acmsiggraph.layout:114
 #: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:58
 #: lib/layouts/agutex.layout:75 lib/layouts/agutex.layout:116
@@ -5202,20 +5203,19 @@ msgstr "短标题"
 #: lib/layouts/elsarticle.layout:102 lib/layouts/elsarticle.layout:121
 #: lib/layouts/elsarticle.layout:199 lib/layouts/elsarticle.layout:227
 #: lib/layouts/elsarticle.layout:256 lib/layouts/entcs.layout:74
-#: lib/layouts/ijmpc.layout:54 lib/layouts/ijmpc.layout:73
-#: lib/layouts/ijmpc.layout:91 lib/layouts/ijmpc.layout:109
-#: lib/layouts/ijmpc.layout:144 lib/layouts/ijmpc.layout:192
-#: lib/layouts/ijmpd.layout:59 lib/layouts/ijmpd.layout:78
-#: lib/layouts/ijmpd.layout:96 lib/layouts/ijmpd.layout:114
-#: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:199
-#: lib/layouts/ijmpd.layout:211 lib/layouts/iopart.layout:60
-#: lib/layouts/iopart.layout:130 lib/layouts/iopart.layout:149
-#: lib/layouts/iopart.layout:174 lib/layouts/iopart.layout:203
-#: lib/layouts/jasatex.layout:62 lib/layouts/jasatex.layout:84
-#: lib/layouts/jasatex.layout:104 lib/layouts/jasatex.layout:142
-#: lib/layouts/jasatex.layout:162 lib/layouts/jasatex.layout:191
-#: lib/layouts/moderncv.layout:38 lib/layouts/moderncv.layout:59
-#: lib/layouts/moderncv.layout:79 lib/layouts/revtex4.layout:112
+#: lib/layouts/europecv.layout:78 lib/layouts/ijmpc.layout:54
+#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpc.layout:91
+#: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpc.layout:144
+#: lib/layouts/ijmpc.layout:192 lib/layouts/ijmpd.layout:59
+#: lib/layouts/ijmpd.layout:78 lib/layouts/ijmpd.layout:96
+#: lib/layouts/ijmpd.layout:114 lib/layouts/ijmpd.layout:134
+#: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:211
+#: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
+#: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
+#: lib/layouts/iopart.layout:203 lib/layouts/jasatex.layout:62
+#: lib/layouts/jasatex.layout:84 lib/layouts/jasatex.layout:104
+#: lib/layouts/jasatex.layout:142 lib/layouts/jasatex.layout:162
+#: lib/layouts/jasatex.layout:191 lib/layouts/revtex4.layout:112
 #: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
 #: lib/layouts/siamltex.layout:280 lib/layouts/siamltex.layout:300
 #: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
@@ -5277,7 +5277,8 @@ msgstr "SubVariation"
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
 #: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
-#: lib/layouts/aastex.layout:252 lib/layouts/acmsiggraph.layout:110
+#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
+#: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
 #: lib/layouts/acmsiggraph.layout:126 lib/layouts/agutex.layout:130
 #: lib/layouts/apa.layout:70 lib/layouts/apa6.layout:226
 #: lib/layouts/cl2emult.layout:81 lib/layouts/cl2emult.layout:92
@@ -5308,7 +5309,6 @@ msgstr "摘要"
 
 #: lib/layouts/AEA.layout:98 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
-#: lib/layouts/achemso.layout:223 lib/layouts/achemso.layout:230
 #: lib/layouts/egs.layout:530 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:146 lib/layouts/aapaper.inc:80
 #: lib/layouts/svcommon.inc:535
@@ -5706,6 +5706,8 @@ msgstr "标题"
 #: lib/layouts/beamer.layout:950 lib/layouts/beamer.layout:969
 #: lib/layouts/beamer.layout:988 lib/layouts/beamer.layout:1108
 #: lib/layouts/beamer.layout:1132 lib/layouts/beamer.layout:1170
+#: lib/layouts/europecv.layout:33 lib/layouts/europecv.layout:55
+#: lib/layouts/europecv.layout:105 lib/layouts/moderncv.layout:20
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:37
 #: lib/layouts/tufte-book.layout:195 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
@@ -5757,7 +5759,7 @@ msgstr "证明"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:340
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:343
 msgid "Standard"
 msgstr "标准"
 
@@ -5777,8 +5779,7 @@ msgstr "标准"
 #: lib/layouts/iopart.layout:56 lib/layouts/isprs.layout:93
 #: lib/layouts/jasatex.layout:58 lib/layouts/kluwer.layout:111
 #: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
-#: lib/layouts/ltugboat.layout:136 lib/layouts/moderncv.layout:76
-#: lib/layouts/moderncv.layout:293 lib/layouts/paper.layout:110
+#: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:124 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:188
@@ -5860,17 +5861,17 @@ msgstr "摘要---"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
-#: lib/layouts/achemso.layout:148 lib/layouts/apa6.layout:248
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:252
-#: lib/layouts/ijmpc.layout:201 lib/layouts/ijmpc.layout:205
-#: lib/layouts/ijmpd.layout:208 lib/layouts/iopart.layout:199
-#: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:187
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
-#: lib/layouts/revtex4.layout:258 lib/layouts/siamltex.layout:304
-#: lib/layouts/sigplanconf.layout:147 lib/layouts/spie.layout:41
-#: lib/layouts/svglobal3.layout:56 lib/layouts/svglobal3.layout:59
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svcommon.inc:456 lib/layouts/svcommon.inc:471
+#: lib/layouts/apa6.layout:248 lib/layouts/elsart.layout:62
+#: lib/layouts/elsarticle.layout:252 lib/layouts/ijmpc.layout:201
+#: lib/layouts/ijmpc.layout:205 lib/layouts/ijmpd.layout:208
+#: lib/layouts/iopart.layout:199 lib/layouts/isprs.layout:52
+#: lib/layouts/jasatex.layout:187 lib/layouts/kluwer.layout:282
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:258
+#: lib/layouts/siamltex.layout:304 lib/layouts/sigplanconf.layout:147
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:56
+#: lib/layouts/svglobal3.layout:59 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:456
+#: lib/layouts/svcommon.inc:471
 msgid "Keywords"
 msgstr "关键字"
 
@@ -5885,18 +5886,18 @@ msgstr "附录"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:246
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:209
 #: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
-#: lib/layouts/achemso.layout:226 lib/layouts/acmsiggraph.layout:155
-#: lib/layouts/agutex.layout:151 lib/layouts/agutex.layout:161
-#: lib/layouts/agutex.layout:181 lib/layouts/agutex.layout:204
-#: lib/layouts/beamer.layout:926 lib/layouts/elsarticle.layout:277
+#: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
+#: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
+#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:926
+#: lib/layouts/elsarticle.layout:277 lib/layouts/europecv.layout:150
 #: lib/layouts/ijmpc.layout:412 lib/layouts/ijmpc.layout:436
 #: lib/layouts/ijmpd.layout:436 lib/layouts/ijmpd.layout:460
 #: lib/layouts/iopart.layout:243 lib/layouts/iopart.layout:265
 #: lib/layouts/iopart.layout:288 lib/layouts/jasatex.layout:225
-#: lib/layouts/jasatex.layout:264 lib/layouts/revtex4.layout:228
-#: lib/layouts/siamltex.layout:319 lib/layouts/sigplanconf.layout:185
-#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:536
-#: lib/layouts/svcommon.inc:570
+#: lib/layouts/jasatex.layout:264 lib/layouts/moderncv.layout:153
+#: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:319
+#: lib/layouts/sigplanconf.layout:185 lib/layouts/stdstruct.inc:57
+#: lib/layouts/svcommon.inc:536 lib/layouts/svcommon.inc:570
 msgid "BackMatter"
 msgstr "底页信息"
 
@@ -5910,42 +5911,42 @@ msgstr "附录"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
-#: lib/layouts/aapaper.layout:220 lib/layouts/agutex.layout:200
-#: lib/layouts/beamer.layout:925 lib/layouts/book.layout:21
-#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:103
-#: lib/layouts/egs.layout:555 lib/layouts/elsarticle.layout:273
-#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:432
-#: lib/layouts/ijmpd.layout:456 lib/layouts/jasatex.layout:260
-#: lib/layouts/latex8.layout:125 lib/layouts/llncs.layout:263
-#: lib/layouts/memoir.layout:163 lib/layouts/memoir.layout:165
-#: lib/layouts/moderncv.layout:310 lib/layouts/mwbk.layout:22
-#: lib/layouts/mwbk.layout:24 lib/layouts/mwrep.layout:13
-#: lib/layouts/mwrep.layout:15 lib/layouts/powerdot.layout:287
-#: lib/layouts/recipebook.layout:46 lib/layouts/recipebook.layout:48
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:318 lib/layouts/simplecv.layout:145
-#: lib/layouts/tufte-book.layout:241 lib/layouts/tufte-book.layout:243
-#: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
-#: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:246
-#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:566
-#: src/frontends/qt4/GuiDocument.cpp:1316
+#: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
+#: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:925
+#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
+#: lib/layouts/cl2emult.layout:103 lib/layouts/egs.layout:555
+#: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
+#: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
+#: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
+#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:152
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
+#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
+#: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
+#: lib/layouts/recipebook.layout:48 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
+#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:318
+#: lib/layouts/simplecv.layout:145 lib/layouts/tufte-book.layout:241
+#: lib/layouts/tufte-book.layout:243 lib/layouts/aguplus.inc:172
+#: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:196
+#: lib/layouts/scrclass.inc:246 lib/layouts/stdstruct.inc:53
+#: lib/layouts/svcommon.inc:566 src/frontends/qt4/GuiDocument.cpp:1316
 msgid "Bibliography"
 msgstr "参考书目"
 
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:485 lib/layouts/aastex.layout:498
-#: lib/layouts/agutex.layout:215 lib/layouts/beamer.layout:939
-#: lib/layouts/cl2emult.layout:117 lib/layouts/egs.layout:569
-#: lib/layouts/elsarticle.layout:288 lib/layouts/ijmpc.layout:447
-#: lib/layouts/ijmpd.layout:471 lib/layouts/iopart.layout:276
-#: lib/layouts/iopart.layout:291 lib/layouts/jasatex.layout:275
-#: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
-#: lib/layouts/llncs.layout:277 lib/layouts/moderncv.layout:324
-#: lib/layouts/siamltex.layout:333 lib/layouts/amsdefs.inc:210
-#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:581
-#: src/output_plaintext.cpp:145
+#: lib/layouts/achemso.layout:252 lib/layouts/agutex.layout:215
+#: lib/layouts/beamer.layout:939 lib/layouts/cl2emult.layout:117
+#: lib/layouts/egs.layout:569 lib/layouts/elsarticle.layout:288
+#: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:471
+#: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
+#: lib/layouts/jasatex.layout:275 lib/layouts/kluwer.layout:342
+#: lib/layouts/kluwer.layout:354 lib/layouts/llncs.layout:277
+#: lib/layouts/moderncv.layout:167 lib/layouts/siamltex.layout:333
+#: lib/layouts/amsdefs.inc:210 lib/layouts/stdstruct.inc:68
+#: lib/layouts/svcommon.inc:581 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "引用"
 
@@ -5984,7 +5985,7 @@ msgstr "证明."
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
-#: lib/layouts/moderncv.layout:162 lib/layouts/paper.layout:58
+#: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
 #: lib/layouts/simplecv.layout:29 lib/layouts/spie.layout:20
@@ -6011,7 +6012,7 @@ msgstr "节"
 #: lib/layouts/isprs.layout:159 lib/layouts/kluwer.layout:69
 #: lib/layouts/latex8.layout:55 lib/layouts/llncs.layout:55
 #: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:76
-#: lib/layouts/moderncv.layout:182 lib/layouts/paper.layout:67
+#: lib/layouts/moderncv.layout:55 lib/layouts/paper.layout:67
 #: lib/layouts/revtex.layout:50 lib/layouts/revtex4.layout:73
 #: lib/layouts/siamltex.layout:369 lib/layouts/simplecv.layout:51
 #: lib/layouts/tufte-book.layout:109 lib/layouts/agu_stdsections.inc:43
@@ -6074,7 +6075,6 @@ msgstr "描述列表"
 #: lib/layouts/beamer.layout:87 lib/layouts/egs.layout:132
 #: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpc.layout:280
 #: lib/layouts/ijmpd.layout:263 lib/layouts/ijmpd.layout:283
-#: lib/layouts/moderncv.layout:221 lib/layouts/moderncv.layout:251
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:37
 #: lib/layouts/stdlists.inc:14 lib/layouts/stdlists.inc:35
 #: lib/layouts/stdlists.inc:58 lib/layouts/stdlists.inc:87
@@ -6098,11 +6098,10 @@ msgstr "副标题"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:125 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/moderncv.layout:97 lib/layouts/revtex.layout:120
-#: lib/layouts/revtex4.layout:180 lib/layouts/scrlettr.layout:139
-#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:279
-#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:118
-#: lib/layouts/lyxmacros.inc:44
+#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:180
+#: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
+#: lib/layouts/siamltex.layout:279 lib/layouts/aapaper.inc:29
+#: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
 msgid "Address"
 msgstr "地址"
 
@@ -6123,16 +6122,15 @@ msgstr "邮件"
 #: lib/layouts/frletter.layout:21 lib/layouts/g-brief.layout:189
 #: lib/layouts/g-brief2.layout:800 lib/layouts/jasatex.layout:139
 #: lib/layouts/kluwer.layout:149 lib/layouts/lettre.layout:51
-#: lib/layouts/lettre.layout:213 lib/layouts/moderncv.layout:370
-#: lib/layouts/powerdot.layout:85 lib/layouts/revtex.layout:110
-#: lib/layouts/revtex4.layout:140 lib/layouts/scrlettr.layout:160
-#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:229
-#: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:185 lib/layouts/stdtitle.inc:97
-#: lib/layouts/svcommon.inc:364 lib/ui/stdmenus.inc:374
-#: lib/external_templates:343 lib/external_templates:344
-#: lib/external_templates:348
+#: lib/layouts/lettre.layout:213 lib/layouts/powerdot.layout:85
+#: lib/layouts/revtex.layout:110 lib/layouts/revtex4.layout:140
+#: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
+#: lib/layouts/siamltex.layout:229 lib/layouts/tufte-book.layout:42
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:185
+#: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:364
+#: lib/ui/stdmenus.inc:374 lib/external_templates:343
+#: lib/external_templates:344 lib/external_templates:348
 msgid "Date"
 msgstr "日期"
 
@@ -6172,14 +6170,14 @@ msgstr "E-Mail"
 
 #: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
-#: lib/layouts/achemso.layout:90 lib/layouts/ectaart.layout:69
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
 #: lib/layouts/elsarticle.layout:213 lib/layouts/iopart.layout:160
 #: lib/layouts/jasatex.layout:133 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/moderncv.layout:124
-#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
-#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
-#: lib/layouts/svcommon.inc:665 lib/layouts/svcommon.inc:670
+#: lib/layouts/llncs.layout:234 lib/layouts/aapaper.inc:46
+#: lib/layouts/amsdefs.inc:145 lib/layouts/db_stdcharstyles.inc:71
+#: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
+#: lib/layouts/svcommon.inc:670
 msgid "Email"
 msgstr "Email"
 
@@ -6206,7 +6204,7 @@ msgid "Paragraph"
 msgstr "段落"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
-#: lib/layouts/achemso.layout:99 lib/layouts/apa.layout:150
+#: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
 #: lib/layouts/apa6.layout:147 lib/layouts/jasatex.layout:100
 #: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:149
 #: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
@@ -6357,115 +6355,67 @@ msgstr "Obj:"
 msgid "Dataset:"
 msgstr "Dataset:"
 
-#: lib/layouts/achemso.layout:108
+#: lib/layouts/achemso.layout:100
 #, fuzzy
 msgid "Alt Affiliation"
 msgstr "AltAffiliation"
 
-#: lib/layouts/achemso.layout:114
+#: lib/layouts/achemso.layout:105
 #, fuzzy
 msgid "Also Affiliation"
 msgstr "AltAffiliation"
 
-#: lib/layouts/achemso.layout:120 lib/layouts/lettre.layout:41
-#: lib/layouts/lettre.layout:342 lib/layouts/moderncv.layout:118
-#: lib/layouts/scrlttr2.layout:191 lib/configure.py:669
+#: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
+#: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
+#: lib/configure.py:669
 msgid "Fax"
 msgstr "传真"
 
-#: lib/layouts/achemso.layout:126 lib/layouts/lettre.layout:355
-#: lib/layouts/moderncv.layout:121
-msgid "Fax:"
-msgstr "传真："
-
-#: lib/layouts/achemso.layout:129 lib/layouts/dinbrief.layout:295
-#: lib/layouts/g-brief.layout:117 lib/layouts/moderncv.layout:112
+#: lib/layouts/achemso.layout:115 lib/layouts/dinbrief.layout:295
+#: lib/layouts/g-brief.layout:117
 msgid "Phone"
 msgstr "电话"
 
-#: lib/layouts/achemso.layout:132 lib/layouts/g-brief.layout:120
-#: lib/layouts/moderncv.layout:115
-msgid "Phone:"
-msgstr "电话："
-
-#: lib/layouts/achemso.layout:136
-#, fuzzy
-msgid "Abbreviations"
-msgstr "AMS关系运算符"
-
-#: lib/layouts/achemso.layout:142
-#, fuzzy
-msgid "Abbreviations:"
-msgstr "Variation:"
-
-#: lib/layouts/achemso.layout:151 lib/layouts/apa6.layout:264
-#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
-#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
-#: lib/layouts/jasatex.layout:201 lib/layouts/kluwer.layout:289
-#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "关键字："
-
-#: lib/layouts/achemso.layout:157 lib/layouts/achemso.layout:168
+#: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
 msgid "Scheme"
 msgstr "方案"
 
-#: lib/layouts/achemso.layout:162
+#: lib/layouts/achemso.layout:127
 msgid "List of Schemes"
 msgstr "方案列表"
 
-#: lib/layouts/achemso.layout:179 lib/layouts/achemso.layout:190
+#: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
 msgid "Chart"
 msgstr "图表"
 
-#: lib/layouts/achemso.layout:184
+#: lib/layouts/achemso.layout:149
 msgid "List of Charts"
 msgstr "图表列表"
 
-#: lib/layouts/achemso.layout:201 lib/layouts/achemso.layout:212
+#: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
 msgid "Graph"
 msgstr "图形"
 
-#: lib/layouts/achemso.layout:206
+#: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
 msgstr "图形列表"
 
-#: lib/layouts/achemso.layout:240
-#, fuzzy
-msgid "SupplementalInfo"
-msgstr "Supplementary"
-
-#: lib/layouts/achemso.layout:243
-msgid "Supporting Information Available"
-msgstr ""
-
-#: lib/layouts/achemso.layout:246
-#, fuzzy
-msgid "TOC entry"
-msgstr "TOC Author"
-
-#: lib/layouts/achemso.layout:250
-msgid "Graphical TOC Entry"
-msgstr ""
-
-#: lib/layouts/achemso.layout:254
+#: lib/layouts/achemso.layout:215
 #, fuzzy
 msgid "Bibnote"
 msgstr "记事"
 
-#: lib/layouts/achemso.layout:258
+#: lib/layouts/achemso.layout:219
 #, fuzzy
 msgid "bibnote"
 msgstr "记事"
 
-#: lib/layouts/achemso.layout:277
+#: lib/layouts/achemso.layout:261
 #, fuzzy
 msgid "Chemistry"
 msgstr "infty"
 
-#: lib/layouts/achemso.layout:280
+#: lib/layouts/achemso.layout:264
 msgid "chemistry"
 msgstr ""
 
@@ -6730,6 +6680,15 @@ msgstr "备忘"
 #: lib/layouts/powerdot.layout:206
 msgid "Note:"
 msgstr "备注：   "
+
+#: lib/layouts/apa6.layout:264 lib/layouts/ectaart.layout:120
+#: lib/layouts/elsarticle.layout:265 lib/layouts/ijmpd.layout:212
+#: lib/layouts/iopart.layout:210 lib/layouts/jasatex.layout:201
+#: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
+#: lib/layouts/revtex4.layout:263 lib/layouts/sigplanconf.layout:150
+#: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
+msgid "Keywords:"
+msgstr "关键字："
 
 #: lib/layouts/apa6.layout:272
 #, fuzzy
@@ -6999,8 +6958,7 @@ msgid "Quotation"
 msgstr "引用（Quotation）"
 
 #: lib/layouts/beamer.layout:968 lib/layouts/egs.layout:116
-#: lib/layouts/moderncv.layout:149 lib/layouts/powerdot.layout:328
-#: lib/layouts/stdlayouts.inc:33
+#: lib/layouts/powerdot.layout:328 lib/layouts/stdlayouts.inc:33
 msgid "Quote"
 msgstr "引用（Quote）"
 
@@ -7314,10 +7272,10 @@ msgstr "Send To Address"
 
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
-#: lib/layouts/g-brief2.layout:726 lib/layouts/moderncv.layout:101
-#: lib/layouts/revtex.layout:132 lib/layouts/revtex4.layout:183
-#: lib/layouts/scrlettr.layout:142 lib/layouts/scrlttr2.layout:62
-#: lib/layouts/siamltex.layout:291 lib/layouts/amsdefs.inc:130
+#: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
+#: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:142
+#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:291
+#: lib/layouts/amsdefs.inc:130
 msgid "Address:"
 msgstr "地址："
 
@@ -7471,8 +7429,8 @@ msgstr "主题："
 #: lib/layouts/dinbrief.layout:175 lib/layouts/frletter.layout:36
 #: lib/layouts/g-brief.layout:205 lib/layouts/g-brief2.layout:843
 #: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:541
-#: lib/layouts/moderncv.layout:382 lib/layouts/scrlettr.layout:60
-#: lib/layouts/scrlttr2.layout:94 lib/layouts/stdletter.inc:49
+#: lib/layouts/scrlettr.layout:60 lib/layouts/scrlttr2.layout:94
+#: lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Opening"
 
@@ -7485,8 +7443,8 @@ msgstr "Opening:"
 #: lib/layouts/dinbrief.layout:191 lib/layouts/frletter.layout:44
 #: lib/layouts/g-brief.layout:231 lib/layouts/g-brief2.layout:865
 #: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:555
-#: lib/layouts/moderncv.layout:390 lib/layouts/scrlettr.layout:70
-#: lib/layouts/scrlttr2.layout:114 lib/layouts/stdletter.inc:92
+#: lib/layouts/scrlettr.layout:70 lib/layouts/scrlttr2.layout:114
+#: lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "正在关闭"
 
@@ -7616,8 +7574,7 @@ msgstr "Anrede"
 
 #: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
 #: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
-#: lib/layouts/moderncv.layout:300 lib/layouts/moderncv.layout:307
-#: lib/layouts/moderncv.layout:355 lib/layouts/scrlettr.layout:40
+#: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr "书信"
 
@@ -7842,7 +7799,7 @@ msgid "Author Email"
 msgstr "作者电子邮件"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/lettre.layout:404
-#: lib/layouts/llncs.layout:238 lib/layouts/moderncv.layout:127
+#: lib/layouts/llncs.layout:238
 msgid "Email:"
 msgstr "电子邮件地址："
 
@@ -7988,80 +7945,80 @@ msgstr "Correspondence to:"
 msgid "Key words:"
 msgstr "关键词:"
 
-#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:211
+#: lib/layouts/europecv.layout:51 lib/layouts/moderncv.layout:84
 msgid "Item"
 msgstr "项目"
 
-#: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:215
+#: lib/layouts/europecv.layout:61 lib/layouts/moderncv.layout:93
 msgid "Item:"
 msgstr "项目:"
 
-#: lib/layouts/europecv.layout:66
+#: lib/layouts/europecv.layout:68
 msgid "BulletedItem"
 msgstr "列表项目"
 
-#: lib/layouts/europecv.layout:69
+#: lib/layouts/europecv.layout:71
 msgid "Bulleted Item:"
 msgstr "列表项目:"
 
-#: lib/layouts/europecv.layout:72
+#: lib/layouts/europecv.layout:74
 msgid "Begin"
 msgstr "开始"
 
-#: lib/layouts/europecv.layout:82
+#: lib/layouts/europecv.layout:86
 msgid "Begin of CV"
 msgstr "Begin of CV"
 
-#: lib/layouts/europecv.layout:89
+#: lib/layouts/europecv.layout:93
 msgid "PersonalInfo"
 msgstr "个人信息"
 
-#: lib/layouts/europecv.layout:93
+#: lib/layouts/europecv.layout:98
 msgid "Personal Info"
 msgstr "个人信息"
 
-#: lib/layouts/europecv.layout:96
+#: lib/layouts/europecv.layout:101
 msgid "MotherTongue"
 msgstr "MotherTongue"
 
-#: lib/layouts/europecv.layout:105
+#: lib/layouts/europecv.layout:111
 msgid "Mother Tongue:"
 msgstr "Mother Tongue:"
 
-#: lib/layouts/europecv.layout:112
+#: lib/layouts/europecv.layout:121
 msgid "LangHeader"
 msgstr "LangHeader"
 
-#: lib/layouts/europecv.layout:116
+#: lib/layouts/europecv.layout:125
 msgid "Language Header:"
 msgstr "Language Header:"
 
-#: lib/layouts/europecv.layout:122
+#: lib/layouts/europecv.layout:131 lib/layouts/moderncv.layout:121
 msgid "Language:"
 msgstr "语言："
 
-#: lib/layouts/europecv.layout:125
+#: lib/layouts/europecv.layout:134
 msgid "LastLanguage"
 msgstr "LastLanguage"
 
-#: lib/layouts/europecv.layout:128
+#: lib/layouts/europecv.layout:137
 msgid "Last Language:"
 msgstr "Last Language:"
 
-#: lib/layouts/europecv.layout:131
+#: lib/layouts/europecv.layout:140
 msgid "LangFooter"
 msgstr "LangFooter"
 
-#: lib/layouts/europecv.layout:135
+#: lib/layouts/europecv.layout:143
 #, fuzzy
 msgid "Language Footer:"
 msgstr "LangFooter"
 
-#: lib/layouts/europecv.layout:138
+#: lib/layouts/europecv.layout:146
 msgid "End"
 msgstr "结束"
 
-#: lib/layouts/europecv.layout:148
+#: lib/layouts/europecv.layout:157
 msgid "End of CV"
 msgstr "End of CV"
 
@@ -8265,6 +8222,10 @@ msgstr "YourRef:"
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
 msgstr "YourMail:"
+
+#: lib/layouts/g-brief.layout:120
+msgid "Phone:"
+msgstr "电话："
 
 #: lib/layouts/g-brief.layout:124
 msgid "Telefax"
@@ -8860,7 +8821,7 @@ msgstr "致谢"
 msgid "Alternative Affiliation"
 msgstr "其他语言(&t):"
 
-#: lib/layouts/jasatex.layout:124 lib/layouts/moderncv.layout:130
+#: lib/layouts/jasatex.layout:124
 #, fuzzy
 msgid "Homepage"
 msgstr "新起页"
@@ -8976,6 +8937,10 @@ msgstr "Telex:"
 #, fuzzy
 msgid "NoTel"
 msgstr "无"
+
+#: lib/layouts/lettre.layout:355
+msgid "Fax:"
+msgstr "传真："
 
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
@@ -9114,189 +9079,74 @@ msgstr "Poemtitle*"
 msgid "Legend"
 msgstr "图标"
 
-#: lib/layouts/moderncv.layout:34
+#: lib/layouts/moderncv.layout:35
 #, fuzzy
-msgid "CVStyle"
-msgstr "样式"
+msgid "Sectioning"
+msgstr "节"
 
-#: lib/layouts/moderncv.layout:43
-#, fuzzy
-msgid "CV style:"
-msgstr "引用样式(&y)"
-
-#: lib/layouts/moderncv.layout:50
-#, fuzzy
-msgid "CVColor"
-msgstr "颜色"
-
-#: lib/layouts/moderncv.layout:53
-msgid "CV color scheme:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
-msgid "FirstName"
-msgstr "FirstName"
-
-#: lib/layouts/moderncv.layout:69
-#, fuzzy
-msgid "FamilyName"
-msgstr "字体族(&F)"
-
-#: lib/layouts/moderncv.layout:73
-#, fuzzy
-msgid "Family Name:"
-msgstr "字体族(&F)"
-
-#: lib/layouts/moderncv.layout:106
-msgid "Mobile"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:109
-#, fuzzy
-msgid "Mobile:"
-msgstr "文件(&F):"
-
-#: lib/layouts/moderncv.layout:133
-#, fuzzy
-msgid "Homepage:"
-msgstr "新起页"
-
-#: lib/layouts/moderncv.layout:136
-#, fuzzy
-msgid "ExtraInfo"
-msgstr "更多"
-
-#: lib/layouts/moderncv.layout:139
-#, fuzzy
-msgid "Extra Info:"
-msgstr "其它选项(&x):"
-
-#: lib/layouts/moderncv.layout:142
-msgid "Photo"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:145
-msgid "Photo:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:195
+#: lib/layouts/moderncv.layout:68
 msgid "Entry"
 msgstr "项"
 
-#: lib/layouts/moderncv.layout:204
+#: lib/layouts/moderncv.layout:77
 msgid "Entry:"
 msgstr "项:"
 
-#: lib/layouts/moderncv.layout:218
+#: lib/layouts/moderncv.layout:100
 msgid "ListItem"
 msgstr "列表项"
 
-#: lib/layouts/moderncv.layout:223
+#: lib/layouts/moderncv.layout:103
 msgid "List Item:"
 msgstr "列表项:"
 
-#: lib/layouts/moderncv.layout:226
-#, fuzzy
-msgid "ItemWithComment"
-msgstr "注释"
-
-#: lib/layouts/moderncv.layout:230
-msgid "Item with comment:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:241
+#: lib/layouts/moderncv.layout:106
 msgid "DoubleItem"
 msgstr "DoubleItem"
 
-#: lib/layouts/moderncv.layout:245
+#: lib/layouts/moderncv.layout:109
 msgid "Double Item:"
 msgstr "Double Item:"
 
-#: lib/layouts/moderncv.layout:248
-#, fuzzy
-msgid "DoubleListItem"
-msgstr "DoubleItem"
-
-#: lib/layouts/moderncv.layout:252
-#, fuzzy
-msgid "Double List Item:"
-msgstr "Double Item:"
-
-#: lib/layouts/moderncv.layout:255
+#: lib/layouts/moderncv.layout:112
 msgid "Space"
 msgstr "空格"
 
-#: lib/layouts/moderncv.layout:263
+#: lib/layouts/moderncv.layout:115
+msgid "Space:"
+msgstr "空格:"
+
+#: lib/layouts/moderncv.layout:124
 msgid "Computer"
 msgstr "计算机"
 
-#: lib/layouts/moderncv.layout:267
+#: lib/layouts/moderncv.layout:127
+msgid "Computer:"
+msgstr "计算机:"
+
+#: lib/layouts/moderncv.layout:130
 msgid "EmptySection"
 msgstr "EmptySection"
 
-#: lib/layouts/moderncv.layout:276
+#: lib/layouts/moderncv.layout:139
 msgid "Empty Section"
 msgstr "Empty Section"
 
-#: lib/layouts/moderncv.layout:283
+#: lib/layouts/moderncv.layout:146
 msgid "CloseSection"
 msgstr "CloseSection"
 
-#: lib/layouts/moderncv.layout:286
+#: lib/layouts/moderncv.layout:149
 msgid "Close Section"
 msgstr "Close Section"
 
-#: lib/layouts/moderncv.layout:289
-#, fuzzy
-msgid "MakeCVtitle"
-msgstr "Poemtitle"
-
-#: lib/layouts/moderncv.layout:292
-#, fuzzy
-msgid "Make CV title"
-msgstr "TOC title:"
-
-#: lib/layouts/moderncv.layout:296
-#, fuzzy
-msgid "MakeLetterTitle"
-msgstr "MathLetters"
-
-#: lib/layouts/moderncv.layout:299
-msgid "Make letter title"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:303
-#, fuzzy
-msgid "MakeLetterClosing"
-msgstr "MathLetters"
-
-#: lib/layouts/moderncv.layout:306
-#, fuzzy
-msgid "Close Letter"
-msgstr "书信"
-
-#: lib/layouts/moderncv.layout:333 lib/layouts/stdlayouts.inc:74
+#: lib/layouts/moderncv.layout:176 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
 msgstr "--分隔线--"
 
-#: lib/layouts/moderncv.layout:341 lib/layouts/stdlayouts.inc:83
+#: lib/layouts/moderncv.layout:184 lib/layouts/stdlayouts.inc:83
 msgid "--- Separate Environment ---"
 msgstr "---分割环境---"
-
-#: lib/layouts/moderncv.layout:351
-#, fuzzy
-msgid "Recipient"
-msgstr "已接收"
-
-#: lib/layouts/moderncv.layout:395
-#, fuzzy
-msgid "Enclosing"
-msgstr "正在关闭"
-
-#: lib/layouts/moderncv.layout:402
-#, fuzzy
-msgid "Enclosing:"
-msgstr "结束语:"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -10327,6 +10177,10 @@ msgstr "版本"
 msgid "RevisionRemark"
 msgstr "修改附注"
 
+#: lib/layouts/db_stdtitle.inc:94
+msgid "FirstName"
+msgstr "FirstName"
+
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
 #: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
 msgid "Scrap"
@@ -10529,11 +10383,11 @@ msgstr "程序列表"
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:363
+#: lib/layouts/stdinsets.inc:364
 msgid "opt"
 msgstr "选项"
 
-#: lib/layouts/stdinsets.inc:444
+#: lib/layouts/stdinsets.inc:445
 msgid "Preview"
 msgstr "预览"
 
@@ -11223,7 +11077,7 @@ msgstr ""
 msgid ""
 "This module adds support for using natbib together with apacite (the "
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
-"any bibliography that works with both the natbib and apacite packages."
+"any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
 
 #: lib/layouts/noweb.module:2
@@ -11665,256 +11519,256 @@ msgstr "巴斯克语"
 msgid "Belarusian"
 msgstr "白俄罗斯语"
 
-#: lib/languages:187
+#: lib/languages:188
 msgid "Portuguese (Brazil)"
 msgstr "葡萄牙语（巴西）"
 
-#: lib/languages:195
+#: lib/languages:196
 msgid "Breton"
 msgstr "布里多尼语"
 
-#: lib/languages:203
+#: lib/languages:204
 msgid "English (UK)"
 msgstr "英语（英国）"
 
-#: lib/languages:212
+#: lib/languages:213
 msgid "Bulgarian"
 msgstr "保加利亚语"
 
-#: lib/languages:221
+#: lib/languages:222
 msgid "English (Canada)"
 msgstr "英语（加拿大）"
 
-#: lib/languages:231
+#: lib/languages:232
 msgid "French (Canada)"
 msgstr "法语（加拿大）"
 
-#: lib/languages:240
+#: lib/languages:241
 msgid "Catalan"
 msgstr "加泰罗尼亚语"
 
-#: lib/languages:250
+#: lib/languages:251
 msgid "Chinese (simplified)"
 msgstr "简体中文"
 
-#: lib/languages:257
+#: lib/languages:258
 msgid "Chinese (traditional)"
 msgstr "中文 (繁体)"
 
-#: lib/languages:270
+#: lib/languages:271
 msgid "Croatian"
 msgstr "克罗地亚"
 
-#: lib/languages:278
+#: lib/languages:279
 msgid "Czech"
 msgstr "捷克语"
 
-#: lib/languages:286
+#: lib/languages:287
 msgid "Danish"
 msgstr "丹麦语"
 
-#: lib/languages:301
+#: lib/languages:302
 msgid "Dutch"
 msgstr "荷兰语"
 
-#: lib/languages:310
+#: lib/languages:311
 msgid "English"
 msgstr "英语"
 
-#: lib/languages:320
+#: lib/languages:321
 msgid "Esperanto"
 msgstr "世界语"
 
-#: lib/languages:328
+#: lib/languages:329
 msgid "Estonian"
 msgstr "爱沙尼亚语"
 
-#: lib/languages:341
+#: lib/languages:342
 msgid "Farsi"
 msgstr "波斯"
 
-#: lib/languages:354
+#: lib/languages:355
 msgid "Finnish"
 msgstr "芬兰语"
 
-#: lib/languages:363
+#: lib/languages:364
 msgid "French"
 msgstr "法语"
 
-#: lib/languages:377
+#: lib/languages:378
 msgid "Galician"
 msgstr "Galician"
 
-#: lib/languages:389
+#: lib/languages:390
 msgid "German (old spelling)"
 msgstr "德语（旧拼写）"
 
-#: lib/languages:399
+#: lib/languages:400
 msgid "German"
 msgstr "德语"
 
-#: lib/languages:410
+#: lib/languages:411
 msgid "German (Switzerland)"
 msgstr ""
 
-#: lib/languages:419 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
+#: lib/languages:420 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
 msgstr "希腊文"
 
-#: lib/languages:428
+#: lib/languages:429
 msgid "Greek (polytonic)"
 msgstr ""
 
-#: lib/languages:438 src/frontends/qt4/GuiSymbols.cpp:64
+#: lib/languages:439 src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
 msgstr "希伯来文"
 
-#: lib/languages:466
+#: lib/languages:467
 msgid "Icelandic"
 msgstr "冰岛语"
 
-#: lib/languages:476
+#: lib/languages:477
 #, fuzzy
 msgid "Interlingua"
 msgstr "插入积分"
 
-#: lib/languages:484
+#: lib/languages:485
 msgid "Irish"
 msgstr "爱尔兰语"
 
-#: lib/languages:492
+#: lib/languages:493
 msgid "Italian"
 msgstr "意大利语"
 
-#: lib/languages:503
+#: lib/languages:504
 msgid "Japanese"
 msgstr "日文"
 
-#: lib/languages:512
+#: lib/languages:513
 msgid "Japanese (CJK)"
 msgstr "日语（CJK）"
 
-#: lib/languages:518
+#: lib/languages:519
 msgid "Kazakh"
 msgstr "哈萨克语"
 
-#: lib/languages:525
+#: lib/languages:526
 msgid "Korean"
 msgstr "韩文"
 
-#: lib/languages:547
+#: lib/languages:548
 msgid "Latin"
 msgstr "拉丁语"
 
-#: lib/languages:557
+#: lib/languages:558
 msgid "Latvian"
 msgstr "拉脱维亚语"
 
-#: lib/languages:568
+#: lib/languages:569
 msgid "Lithuanian"
 msgstr "立陶宛语"
 
-#: lib/languages:577
+#: lib/languages:578
 msgid "Lower Sorbian"
 msgstr "索布语"
 
-#: lib/languages:585
+#: lib/languages:586
 msgid "Hungarian"
 msgstr "匈牙利语"
 
-#: lib/languages:602
+#: lib/languages:603
 msgid "Mongolian"
 msgstr ""
 
-#: lib/languages:610
+#: lib/languages:611
 msgid "Norwegian (Bokmaal)"
 msgstr ""
 
-#: lib/languages:618
+#: lib/languages:619
 msgid "Norwegian (Nynorsk)"
 msgstr ""
 
-#: lib/languages:643
+#: lib/languages:644
 msgid "Polish"
 msgstr "波兰语"
 
-#: lib/languages:651
+#: lib/languages:652
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: lib/languages:659
+#: lib/languages:660
 msgid "Romanian"
 msgstr "罗马尼亚语"
 
-#: lib/languages:667
+#: lib/languages:668
 msgid "Russian"
 msgstr "俄语"
 
-#: lib/languages:675
+#: lib/languages:676
 msgid "North Sami"
 msgstr ""
 
-#: lib/languages:690
+#: lib/languages:691
 msgid "Scottish"
 msgstr "Scottish"
 
-#: lib/languages:698
+#: lib/languages:699
 msgid "Serbian"
 msgstr "塞尔维亚语"
 
-#: lib/languages:706
+#: lib/languages:708
 #, fuzzy
 msgid "Serbian (Latin)"
 msgstr "塞尔维亚语"
 
-#: lib/languages:715
+#: lib/languages:717
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: lib/languages:723
+#: lib/languages:725
 msgid "Slovene"
 msgstr "Slovene"
 
-#: lib/languages:731
+#: lib/languages:733
 msgid "Spanish"
 msgstr "西班牙语"
 
-#: lib/languages:743
+#: lib/languages:745
 #, fuzzy
 msgid "Spanish (Mexico)"
 msgstr "西班牙语"
 
-#: lib/languages:754
+#: lib/languages:756
 msgid "Swedish"
 msgstr "瑞典语"
 
-#: lib/languages:783 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:785 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "泰文"
 
-#: lib/languages:794
+#: lib/languages:796
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: lib/languages:807
+#: lib/languages:809
 msgid "Turkmen"
 msgstr ""
 
-#: lib/languages:816
+#: lib/languages:818
 msgid "Ukrainian"
 msgstr "乌克兰语"
 
-#: lib/languages:824
+#: lib/languages:826
 msgid "Upper Sorbian"
 msgstr "Upper Sorbian"
 
-#: lib/languages:842
+#: lib/languages:844
 #, fuzzy
 msgid "Vietnamese"
 msgstr "文件名"
 
-#: lib/languages:851
+#: lib/languages:853
 msgid "Welsh"
 msgstr "威尔士语"
 
@@ -12109,20 +11963,15 @@ msgstr "日语 (non-CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "日语 (non-CJK) (SJIS)"
 
-#: lib/encodings:186
-#, fuzzy
-msgid "Japanese (non-CJK) (utf8)"
-msgstr "日语 (non-CJK) (JIS)"
-
-#: lib/encodings:193
+#: lib/encodings:191
 msgid "Thai (TIS 620-0)"
 msgstr ""
 
-#: lib/encodings:198
+#: lib/encodings:196
 msgid "Unicode (XeTeX) (utf8)"
 msgstr ""
 
-#: lib/encodings:202
+#: lib/encodings:200
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -12597,17 +12446,17 @@ msgid "Justified Line Break|J"
 msgstr "两端对齐换行(L)|L"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1228 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1225 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "剪切"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1233 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1230 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "复制"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1181 src/mathed/InsetMathGrid.cpp:1327
+#: src/Text3.cpp:1178 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "粘贴"
@@ -13938,19 +13787,29 @@ msgid "Feynman-diagram Manual|F"
 msgstr "Feynman图表手册|F"
 
 #: lib/ui/stdmenus.inc:587
-msgid "Linguistics Manual|L"
+#, fuzzy
+msgid "Knitr Manual|K"
 msgstr "语言学手册(L)|L"
 
 #: lib/ui/stdmenus.inc:588
+#, fuzzy
+msgid "LilyPond Manual|P"
+msgstr "LilyPond音乐"
+
+#: lib/ui/stdmenus.inc:589
+msgid "Linguistics Manual|L"
+msgstr "语言学手册(L)|L"
+
+#: lib/ui/stdmenus.inc:590
 msgid "Multicolumn Manual|M"
 msgstr "分栏功能手册(M)|M"
 
-#: lib/ui/stdmenus.inc:589
+#: lib/ui/stdmenus.inc:591
 #, fuzzy
 msgid "Sweave Manual|S"
 msgstr "Sweave|S"
 
-#: lib/ui/stdmenus.inc:590
+#: lib/ui/stdmenus.inc:592
 msgid "XY-pic Manual|X"
 msgstr "XY-pic手册|X"
 
@@ -17249,31 +17108,31 @@ msgstr ""
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1973
+#: src/BiblioInfo.cpp:265 src/frontends/qt4/GuiDocument.cpp:1973
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/BiblioInfo.cpp:251
+#: src/BiblioInfo.cpp:268
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s 等."
 
-#: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
+#: src/BiblioInfo.cpp:432 src/BiblioInfo.cpp:473 src/BiblioInfo.cpp:484
+#: src/BiblioInfo.cpp:534 src/BiblioInfo.cpp:538
 msgid "ERROR!"
 msgstr "错误！"
 
-#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
+#: src/BiblioInfo.cpp:703
 msgid "No year"
 msgstr "未知年份"
 
-#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
+#: src/BiblioInfo.cpp:771 src/BiblioInfo.cpp:831
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "添加文献引用到目录(&T)"
 
-#: src/BiblioInfo.cpp:789
+#: src/BiblioInfo.cpp:827
 msgid "before"
 msgstr "之前"
 
@@ -17442,7 +17301,7 @@ msgstr ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 
-#: src/Buffer.cpp:1134 src/Buffer.cpp:3860 src/Buffer.cpp:3922
+#: src/Buffer.cpp:1134 src/Buffer.cpp:3878 src/Buffer.cpp:3940
 #, fuzzy
 msgid "File is read-only"
 msgstr "文档只读"
@@ -17464,7 +17323,7 @@ msgstr "文件 %1$s 已被其它程序修改，您要覆盖它吗？"
 msgid "Overwrite modified file?"
 msgstr "覆盖文件吗？"
 
-#: src/Buffer.cpp:1147 src/Buffer.cpp:2399 src/Exporter.cpp:50
+#: src/Buffer.cpp:1147 src/Buffer.cpp:2417 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
 #: src/frontends/qt4/GuiView.cpp:2287
 msgid "&Overwrite"
@@ -17588,37 +17447,37 @@ msgstr "chktex执行出错"
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:2101
+#: src/Buffer.cpp:2119
 #, fuzzy, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "无导出格式 %1$s 的信息."
 
-#: src/Buffer.cpp:2165 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2183 src/frontends/qt4/GuiView.cpp:3130
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "无导出格式 %1$s 的信息."
 
-#: src/Buffer.cpp:2248
+#: src/Buffer.cpp:2266
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2313
+#: src/Buffer.cpp:2331
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "未知工具条 \"%1$s\""
 
-#: src/Buffer.cpp:2320
+#: src/Buffer.cpp:2338
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "未知工具条 \"%1$s\""
 
-#: src/Buffer.cpp:2330
+#: src/Buffer.cpp:2348
 #, fuzzy
 msgid "Error exporting to DVI."
 msgstr "产生pixmap出错"
 
-#: src/Buffer.cpp:2395 src/Exporter.cpp:45
+#: src/Buffer.cpp:2413 src/Exporter.cpp:45
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17628,87 +17487,87 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/Buffer.cpp:2398 src/Exporter.cpp:48
+#: src/Buffer.cpp:2416 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
-#: src/Buffer.cpp:2415
+#: src/Buffer.cpp:2433
 msgid "Error running external commands."
 msgstr "运行外部程序时出错"
 
-#: src/Buffer.cpp:3222
+#: src/Buffer.cpp:3240
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "预览段落 %1$d 的源代码"
 
-#: src/Buffer.cpp:3226
+#: src/Buffer.cpp:3244
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3297
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:3281
+#: src/Buffer.cpp:3299
 #, fuzzy
 msgid "Preview preamble"
 msgstr "预览就绪"
 
-#: src/Buffer.cpp:3283
+#: src/Buffer.cpp:3301
 #, fuzzy
 msgid "Preview body"
 msgstr "预览就绪"
 
-#: src/Buffer.cpp:3298
+#: src/Buffer.cpp:3316
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3410
+#: src/Buffer.cpp:3428
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自动保存 %1$s"
 
-#: src/Buffer.cpp:3464
+#: src/Buffer.cpp:3482
 msgid "Autosave failed!"
 msgstr "自动保存失败!"
 
-#: src/Buffer.cpp:3525
+#: src/Buffer.cpp:3543
 msgid "Autosaving current document..."
 msgstr "自动保存当前文档..."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3633
 msgid "Couldn't export file"
 msgstr "无法导出文件"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3634
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "无导出格式 %1$s 的信息."
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3690
 msgid "File name error"
 msgstr "文件名出错"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3691
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文档路径不能有空格"
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3775
 msgid "Document export cancelled."
 msgstr "取消导出文档"
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3785
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文档 %1$s 导出为 `%2$s'"
 
-#: src/Buffer.cpp:3773
+#: src/Buffer.cpp:3791
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文档导出为 %1$s"
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3864
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17719,61 +17578,61 @@ msgstr ""
 "\n"
 "使用此紧急版本吧?"
 
-#: src/Buffer.cpp:3849
+#: src/Buffer.cpp:3867
 msgid "Load emergency save?"
 msgstr "读入紧急保存的版本吗"
 
-#: src/Buffer.cpp:3850
+#: src/Buffer.cpp:3868
 msgid "&Recover"
 msgstr "恢复(&R)"
 
-#: src/Buffer.cpp:3850
+#: src/Buffer.cpp:3868
 msgid "&Load Original"
 msgstr "读取原版本(&L)"
 
-#: src/Buffer.cpp:3861
+#: src/Buffer.cpp:3879
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3867
+#: src/Buffer.cpp:3885
 msgid "Document was successfully recovered."
 msgstr "文档已被成功修复。"
 
-#: src/Buffer.cpp:3869
+#: src/Buffer.cpp:3887
 msgid "Document was NOT successfully recovered."
 msgstr "文档未被成功修复。"
 
-#: src/Buffer.cpp:3870
+#: src/Buffer.cpp:3888
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "现在删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:3874 src/Buffer.cpp:3886
+#: src/Buffer.cpp:3892 src/Buffer.cpp:3904
 msgid "Delete emergency file?"
 msgstr "删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:3875 src/Buffer.cpp:3888
+#: src/Buffer.cpp:3893 src/Buffer.cpp:3906
 msgid "&Keep"
 msgstr "固定"
 
-#: src/Buffer.cpp:3879
+#: src/Buffer.cpp:3897
 msgid "Emergency file deleted"
 msgstr "紧急保存的文件已删除。"
 
-#: src/Buffer.cpp:3880
+#: src/Buffer.cpp:3898
 msgid "Do not forget to save your file now!"
 msgstr "别忘了现在就保存你分文件。"
 
-#: src/Buffer.cpp:3887
+#: src/Buffer.cpp:3905
 msgid "Remove emergency file now?"
 msgstr "现在删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:3910
+#: src/Buffer.cpp:3928
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17784,45 +17643,45 @@ msgstr ""
 "\n"
 "读取备份版本?"
 
-#: src/Buffer.cpp:3912
+#: src/Buffer.cpp:3930
 msgid "Load backup?"
 msgstr "读取备份版本?"
 
-#: src/Buffer.cpp:3913
+#: src/Buffer.cpp:3931
 msgid "&Load backup"
 msgstr "读取备份(&L)"
 
-#: src/Buffer.cpp:3913
+#: src/Buffer.cpp:3931
 msgid "Load &original"
 msgstr "读取原版本(&o)"
 
-#: src/Buffer.cpp:3923
+#: src/Buffer.cpp:3941
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4265 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4283 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "无意义!!!"
 
-#: src/Buffer.cpp:4465
+#: src/Buffer.cpp:4483
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文档 %1$s 已打开"
 
-#: src/Buffer.cpp:4468
+#: src/Buffer.cpp:4486
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "无法读取文档"
 
-#: src/Buffer.cpp:4535
+#: src/Buffer.cpp:4553
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "包含文件(d)...|d"
 
-#: src/Buffer.cpp:4536
+#: src/Buffer.cpp:4554
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17908,7 +17767,7 @@ msgstr "文档只读"
 msgid "This portion of the document is deleted."
 msgstr "此段文档已被删除"
 
-#: src/BufferView.cpp:1043 src/BufferView.cpp:1930
+#: src/BufferView.cpp:1043 src/BufferView.cpp:1932
 #: src/frontends/qt4/GuiView.cpp:3186 src/frontends/qt4/GuiView.cpp:3261
 #, fuzzy
 msgid "Absolute filename expected."
@@ -17927,7 +17786,7 @@ msgstr "无进一步撤销信息"
 msgid "No further redo information"
 msgstr "无进一步重做信息"
 
-#: src/BufferView.cpp:1537 src/lyxfind.cpp:375 src/lyxfind.cpp:393
+#: src/BufferView.cpp:1537 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "未找到搜索词"
 
@@ -17986,57 +17845,57 @@ msgstr "一个字符"
 msgid "Statistics"
 msgstr "统计"
 
-#: src/BufferView.cpp:1807
+#: src/BufferView.cpp:1809
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1809
+#: src/BufferView.cpp:1811
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1817
+#: src/BufferView.cpp:1819
 #, fuzzy
 msgid "Branch name"
 msgstr "分支"
 
-#: src/BufferView.cpp:1824 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1826 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:1956
+#: src/BufferView.cpp:1958
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/BufferView.cpp:2305
+#: src/BufferView.cpp:2307
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2306
+#: src/BufferView.cpp:2308
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2685
+#: src/BufferView.cpp:2689
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2700
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:2698
+#: src/BufferView.cpp:2702
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
 
-#: src/BufferView.cpp:2963
+#: src/BufferView.cpp:2967
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -18047,11 +17906,11 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/BufferView.cpp:2965
+#: src/BufferView.cpp:2969
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/BufferView.cpp:2972
+#: src/BufferView.cpp:2976
 #, c-format
 msgid ""
 "%1$s\n"
@@ -18060,15 +17919,15 @@ msgstr ""
 "无法读取\n"
 " %1$s"
 
-#: src/BufferView.cpp:2973 src/output.cpp:39
+#: src/BufferView.cpp:2977 src/output.cpp:39
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/BufferView.cpp:2980
+#: src/BufferView.cpp:2984
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/BufferView.cpp:2981
+#: src/BufferView.cpp:2985
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18123,8 +17982,8 @@ msgstr "ChkTeX 警告编号 # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX 警告编号 #"
 
-#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:178
-#: src/insets/InsetBibtex.cpp:203
+#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:182
+#: src/insets/InsetBibtex.cpp:207
 msgid "none"
 msgstr "无"
 
@@ -18611,19 +18470,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "不能从 %1$s 复制到 %2$s."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "衬线字体"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "非衬线字体"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "等宽字体"
@@ -19074,58 +18933,58 @@ msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 msgid "Missing filename for --import"
 msgstr "--import 参数缺失文件名"
 
-#: src/LyXRC.cpp:3086
+#: src/LyXRC.cpp:3082
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 "是否将连接在一起的词语（象 \"diskdrive\" 和 \"disk drive\"）处理为正确的词语?"
 
-#: src/LyXRC.cpp:3090
+#: src/LyXRC.cpp:3086
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "设置另一种语言。默认使用文档的语言设置。"
 
-#: src/LyXRC.cpp:3098
+#: src/LyXRC.cpp:3094
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr "如果你不希望当前选择被自动替换为你输入的内容，请取消选择。"
 
-#: src/LyXRC.cpp:3102
+#: src/LyXRC.cpp:3098
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr "如果你不想文档类选项在更换类的时候被重置，请取消选择。"
 
-#: src/LyXRC.cpp:3106
+#: src/LyXRC.cpp:3102
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
+
+#: src/LyXRC.cpp:3109
+msgid ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
+msgstr ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
 
 #: src/LyXRC.cpp:3113
 msgid ""
-"The path for storing backup files. If it is an empty string, LyX will store "
-"the backup file in the same directory as the original file."
+"Define the options of bibtex (cf. man bibtex) or select an alternative "
+"compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
-"The path for storing backup files. If it is an empty string, LyX will store "
-"the backup file in the same directory as the original file."
+"Define the options of bibtex (cf. man bibtex) or select an alternative "
+"compiler (e.g. mlbibtex or bibulus)."
 
 #: src/LyXRC.cpp:3117
-msgid ""
-"Define the options of bibtex (cf. man bibtex) or select an alternative "
-"compiler (e.g. mlbibtex or bibulus)."
-msgstr ""
-"Define the options of bibtex (cf. man bibtex) or select an alternative "
-"compiler (e.g. mlbibtex or bibulus)."
-
-#: src/LyXRC.cpp:3121
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3125
+#: src/LyXRC.cpp:3121
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -19133,11 +18992,11 @@ msgstr ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 
-#: src/LyXRC.cpp:3129
+#: src/LyXRC.cpp:3125
 msgid "Select to check whether the lastfiles still exist."
 msgstr "选中此项检查是否新近打开文件仍然存在."
 
-#: src/LyXRC.cpp:3133
+#: src/LyXRC.cpp:3129
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -19145,7 +19004,7 @@ msgstr ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3139
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -19153,7 +19012,7 @@ msgstr ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3147
 #, fuzzy
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -19163,21 +19022,21 @@ msgstr ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3151
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 
-#: src/LyXRC.cpp:3159
+#: src/LyXRC.cpp:3155
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:3163
+#: src/LyXRC.cpp:3159
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:3168
+#: src/LyXRC.cpp:3164
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -19186,7 +19045,7 @@ msgstr ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3172
+#: src/LyXRC.cpp:3168
 #, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -19195,19 +19054,19 @@ msgstr ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 
-#: src/LyXRC.cpp:3176
+#: src/LyXRC.cpp:3172
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:3180
+#: src/LyXRC.cpp:3176
 msgid "New documents will be assigned this language."
 msgstr "新文档将使用此语言."
 
-#: src/LyXRC.cpp:3184
+#: src/LyXRC.cpp:3180
 msgid "Specify the default paper size."
 msgstr "指定缺省纸张大小."
 
-#: src/LyXRC.cpp:3188
+#: src/LyXRC.cpp:3184
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -19215,11 +19074,11 @@ msgstr ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 
-#: src/LyXRC.cpp:3192
+#: src/LyXRC.cpp:3188
 msgid "Select how LyX will display any graphics."
 msgstr "选择LyX以何种方式显示图像"
 
-#: src/LyXRC.cpp:3196
+#: src/LyXRC.cpp:3192
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -19227,11 +19086,11 @@ msgstr ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 
-#: src/LyXRC.cpp:3200
+#: src/LyXRC.cpp:3196
 msgid "Specify additional chars that can be part of a word."
 msgstr "指定额外的可组词的字符"
 
-#: src/LyXRC.cpp:3204
+#: src/LyXRC.cpp:3200
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
@@ -19240,7 +19099,7 @@ msgstr ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 
-#: src/LyXRC.cpp:3208
+#: src/LyXRC.cpp:3204
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -19248,11 +19107,11 @@ msgstr ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 
-#: src/LyXRC.cpp:3212
+#: src/LyXRC.cpp:3208
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3215
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -19262,93 +19121,93 @@ msgstr ""
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3223
+#: src/LyXRC.cpp:3219
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3223
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:3236
+#: src/LyXRC.cpp:3232
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
+
+#: src/LyXRC.cpp:3236
+msgid ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
+msgstr ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
 
 #: src/LyXRC.cpp:3240
 msgid ""
-"Select if a language switching command is needed at the beginning of the "
-"document."
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
-"Select if a language switching command is needed at the beginning of the "
-"document."
+"Select if a language switching command is needed at the end of the document."
 
 #: src/LyXRC.cpp:3244
 msgid ""
-"Select if a language switching command is needed at the end of the document."
+"The LaTeX command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
 msgstr ""
-"Select if a language switching command is needed at the end of the document."
+"The LaTeX command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
 
 #: src/LyXRC.cpp:3248
-msgid ""
-"The LaTeX command for changing from the language of the document to another "
-"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
-"name of the second language."
-msgstr ""
-"The LaTeX command for changing from the language of the document to another "
-"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
-"name of the second language."
-
-#: src/LyXRC.cpp:3252
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "The LaTeX command for changing back to the language of the document."
 
-#: src/LyXRC.cpp:3256
+#: src/LyXRC.cpp:3252
 msgid "The LaTeX command for local changing of the language."
 msgstr "The LaTeX command for local changing of the language."
 
-#: src/LyXRC.cpp:3260
+#: src/LyXRC.cpp:3256
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
+
+#: src/LyXRC.cpp:3260
+msgid ""
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
+msgstr ""
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3264
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
 msgstr ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
 
 #: src/LyXRC.cpp:3268
-msgid ""
-"De-select if you don't want babel to be used when the language of the "
-"document is the default language."
-msgstr ""
-"De-select if you don't want babel to be used when the language of the "
-"document is the default language."
-
-#: src/LyXRC.cpp:3272
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "不选中如果您不希望LyX跳至保存的位置"
 
-#: src/LyXRC.cpp:3276
+#: src/LyXRC.cpp:3272
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr "不选中如果您不希望LyX读入上次打开的文件"
 
-#: src/LyXRC.cpp:3280
+#: src/LyXRC.cpp:3276
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "不选中如果您不希望LyX创建备份文件"
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3280
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -19356,81 +19215,81 @@ msgstr ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 
-#: src/LyXRC.cpp:3288
+#: src/LyXRC.cpp:3284
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:3293
+#: src/LyXRC.cpp:3289
 #, fuzzy
 msgid "The completion popup delay."
 msgstr "嵌入(&I)"
 
-#: src/LyXRC.cpp:3297
+#: src/LyXRC.cpp:3293
 msgid "Select to display the completion popup in math mode."
 msgstr "在数学模式中使用自动完成。"
 
-#: src/LyXRC.cpp:3301
+#: src/LyXRC.cpp:3297
 msgid "Select to display the completion popup in text mode."
 msgstr "在文本模式中使用自动完成。"
 
-#: src/LyXRC.cpp:3305
+#: src/LyXRC.cpp:3301
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:3309
+#: src/LyXRC.cpp:3305
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:3313
+#: src/LyXRC.cpp:3309
 #, fuzzy
 msgid "The inline completion delay."
 msgstr "嵌入(&I)"
 
-#: src/LyXRC.cpp:3317
+#: src/LyXRC.cpp:3313
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3321
+#: src/LyXRC.cpp:3317
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3325
+#: src/LyXRC.cpp:3321
 msgid "Use \"...\" to shorten long completions."
 msgstr "使用 \"...\"  缩短过长的自动完成项。"
 
-#: src/LyXRC.cpp:3329
+#: src/LyXRC.cpp:3325
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:3333
+#: src/LyXRC.cpp:3329
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 
-#: src/LyXRC.cpp:3344
+#: src/LyXRC.cpp:3340
 msgid "Shows a typeset preview of things such as math"
 msgstr "显示typeset后预览"
 
-#: src/LyXRC.cpp:3348
+#: src/LyXRC.cpp:3344
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "预览公式的标签为 \"(#)\" 而非真实编号"
 
-#: src/LyXRC.cpp:3352
+#: src/LyXRC.cpp:3348
 msgid "Scale the preview size to suit."
 msgstr "Scale the preview size to suit."
 
-#: src/LyXRC.cpp:3356
+#: src/LyXRC.cpp:3352
 msgid "The option for specifying whether the copies should be collated."
 msgstr "The option for specifying whether the copies should be collated."
 
-#: src/LyXRC.cpp:3360
+#: src/LyXRC.cpp:3356
 msgid "The option for specifying the number of copies to print."
 msgstr "The option for specifying the number of copies to print."
 
-#: src/LyXRC.cpp:3364
+#: src/LyXRC.cpp:3360
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -19438,11 +19297,11 @@ msgstr ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 
-#: src/LyXRC.cpp:3368
+#: src/LyXRC.cpp:3364
 msgid "The option to print only even pages."
 msgstr "仅打印偶数页的参数"
 
-#: src/LyXRC.cpp:3372
+#: src/LyXRC.cpp:3368
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -19450,61 +19309,61 @@ msgstr ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 
-#: src/LyXRC.cpp:3376
+#: src/LyXRC.cpp:3372
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "打印机输出文件的后缀。通常为 \".ps\"."
 
-#: src/LyXRC.cpp:3380
+#: src/LyXRC.cpp:3376
 msgid "The option to print out in landscape."
 msgstr "横向打印的参数"
 
-#: src/LyXRC.cpp:3384
+#: src/LyXRC.cpp:3380
 msgid "The option to print only odd pages."
 msgstr "仅打印奇数页的参数"
 
-#: src/LyXRC.cpp:3388
+#: src/LyXRC.cpp:3384
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/LyXRC.cpp:3392
+#: src/LyXRC.cpp:3388
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/LyXRC.cpp:3396
+#: src/LyXRC.cpp:3392
 msgid "The option to specify paper type."
 msgstr "指定纸张大小的参数."
 
-#: src/LyXRC.cpp:3400
+#: src/LyXRC.cpp:3396
 msgid "The option to reverse the order of the pages printed."
 msgstr "反向打印的参数"
 
+#: src/LyXRC.cpp:3400
+msgid ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
+msgstr ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
+
 #: src/LyXRC.cpp:3404
 msgid ""
-"When set, this printer option automatically prints to a file and then calls "
-"a separate print spooling program on that file with the given name and "
-"arguments."
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
 msgstr ""
-"When set, this printer option automatically prints to a file and then calls "
-"a separate print spooling program on that file with the given name and "
-"arguments."
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
 
 #: src/LyXRC.cpp:3408
-msgid ""
-"If you specify a printer name in the print dialog, the following argument is "
-"prepended along with the printer name after the spool command."
-msgstr ""
-"If you specify a printer name in the print dialog, the following argument is "
-"prepended along with the printer name after the spool command."
-
-#: src/LyXRC.cpp:3412
 msgid "Option to pass to the print program to print to a file."
 msgstr "Option to pass to the print program to print to a file."
 
-#: src/LyXRC.cpp:3416
+#: src/LyXRC.cpp:3412
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Option to pass to the print program to print on a specific printer."
 
-#: src/LyXRC.cpp:3420
+#: src/LyXRC.cpp:3416
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -19512,16 +19371,16 @@ msgstr ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 
-#: src/LyXRC.cpp:3424
+#: src/LyXRC.cpp:3420
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "您使用的打印程序，例如\"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3432
+#: src/LyXRC.cpp:3428
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:3436
+#: src/LyXRC.cpp:3432
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -19529,11 +19388,11 @@ msgstr ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3438
 msgid "The screen fonts used to display the text while editing."
 msgstr "用来显示编辑文本的屏幕字体"
 
-#: src/LyXRC.cpp:3451
+#: src/LyXRC.cpp:3447
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -19543,11 +19402,11 @@ msgstr ""
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 
-#: src/LyXRC.cpp:3455
+#: src/LyXRC.cpp:3451
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "The font sizes used for calculating the scaling of the screen fonts."
 
-#: src/LyXRC.cpp:3460
+#: src/LyXRC.cpp:3456
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -19556,12 +19415,12 @@ msgstr ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 
-#: src/LyXRC.cpp:3464
+#: src/LyXRC.cpp:3460
 #, fuzzy
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "允许保存和读入窗口位置"
 
-#: src/LyXRC.cpp:3468
+#: src/LyXRC.cpp:3464
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -19569,11 +19428,11 @@ msgstr ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 
-#: src/LyXRC.cpp:3475
+#: src/LyXRC.cpp:3471
 msgid "De-select if you don't want the startup banner."
 msgstr "不选中如果您不想显示起始标题页"
 
-#: src/LyXRC.cpp:3479
+#: src/LyXRC.cpp:3475
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -19581,11 +19440,11 @@ msgstr ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 
-#: src/LyXRC.cpp:3483
+#: src/LyXRC.cpp:3479
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:3487
+#: src/LyXRC.cpp:3483
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -19593,7 +19452,7 @@ msgstr ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 
-#: src/LyXRC.cpp:3504
+#: src/LyXRC.cpp:3500
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -19601,22 +19460,22 @@ msgstr ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 
-#: src/LyXRC.cpp:3514
+#: src/LyXRC.cpp:3510
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
 
-#: src/LyXRC.cpp:3518
+#: src/LyXRC.cpp:3514
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:3522
+#: src/LyXRC.cpp:3518
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:3526
+#: src/LyXRC.cpp:3522
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -19694,11 +19553,11 @@ msgstr ""
 "新布局文件不允许之前的对齐设置。\n"
 "还原为默认设置。"
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Memory problem"
 msgstr "内存故障"
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -19817,23 +19676,23 @@ msgstr "使用正则表达式(&x)"
 msgid "Regexp editor mode"
 msgstr "Math editor mode"
 
-#: src/Text3.cpp:1293
+#: src/Text3.cpp:1290
 msgid "Layout "
 msgstr "显示布局 "
 
-#: src/Text3.cpp:1294
+#: src/Text3.cpp:1291
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1764 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1388
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/Text3.cpp:1920 src/Text3.cpp:1932
+#: src/Text3.cpp:1917 src/Text3.cpp:1929
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:2139 src/Text3.cpp:2150
+#: src/Text3.cpp:2136 src/Text3.cpp:2147
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -20602,7 +20461,7 @@ msgstr "文件名"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2123
-#: src/frontends/qt4/GuiDocument.cpp:3120
+#: src/frontends/qt4/GuiDocument.cpp:3122
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20611,7 +20470,7 @@ msgstr "是"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2122
-#: src/frontends/qt4/GuiDocument.cpp:3119
+#: src/frontends/qt4/GuiDocument.cpp:3121
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20815,7 +20674,7 @@ msgstr "LyX 文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1852
 #: src/frontends/qt4/GuiDocument.cpp:1927
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Error"
 msgstr "错误"
 
@@ -21195,14 +21054,14 @@ msgstr "在右边输入程序列表参数. 输入 ? 显示所有参数."
 
 #: src/frontends/qt4/GuiDocument.cpp:1305
 #: src/frontends/qt4/GuiDocument.cpp:1326
-#: src/frontends/qt4/GuiDocument.cpp:2875
+#: src/frontends/qt4/GuiDocument.cpp:2877
 msgid "Document Class"
 msgstr "文档类"
 
 #: src/frontends/qt4/GuiDocument.cpp:1306
-#: src/frontends/qt4/GuiDocument.cpp:2873
-#: src/frontends/qt4/GuiDocument.cpp:2874
-#: src/frontends/qt4/GuiDocument.cpp:2877 src/frontends/qt4/qt_helpers.cpp:553
+#: src/frontends/qt4/GuiDocument.cpp:2875
+#: src/frontends/qt4/GuiDocument.cpp:2876
+#: src/frontends/qt4/GuiDocument.cpp:2879 src/frontends/qt4/qt_helpers.cpp:553
 msgid "Child Documents"
 msgstr "子文档"
 
@@ -21266,9 +21125,9 @@ msgstr "默认"
 #: src/frontends/qt4/GuiDocument.cpp:1734
 #: src/frontends/qt4/GuiDocument.cpp:1740
 #: src/frontends/qt4/GuiDocument.cpp:1746
-#: src/frontends/qt4/GuiDocument.cpp:2908
-#: src/frontends/qt4/GuiDocument.cpp:2916
-#: src/frontends/qt4/GuiDocument.cpp:2924
+#: src/frontends/qt4/GuiDocument.cpp:2910
+#: src/frontends/qt4/GuiDocument.cpp:2918
+#: src/frontends/qt4/GuiDocument.cpp:2926
 msgid " (not installed)"
 msgstr " (没有安装)"
 
@@ -21315,13 +21174,13 @@ msgid "LyX Files (*.lyx)"
 msgstr "LyX文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1912
-#: src/frontends/qt4/GuiDocument.cpp:3174
+#: src/frontends/qt4/GuiDocument.cpp:3176
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "跟踪变化"
 
 #: src/frontends/qt4/GuiDocument.cpp:1913
-#: src/frontends/qt4/GuiDocument.cpp:3175
+#: src/frontends/qt4/GuiDocument.cpp:3177
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -21330,12 +21189,12 @@ msgstr ""
 "该操作后你会丢失未应用的修改。"
 
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177
+#: src/frontends/qt4/GuiDocument.cpp:3179
 msgid "&Dismiss"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1927
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "无法保存文档缺省设置"
@@ -21383,37 +21242,37 @@ msgstr "去除模块: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "警告：某些必需的软件包不存在！"
 
-#: src/frontends/qt4/GuiDocument.cpp:2850
+#: src/frontends/qt4/GuiDocument.cpp:2852
 msgid "[No options predefined]"
 msgstr "[没有预定义选项]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3046
+#: src/frontends/qt4/GuiDocument.cpp:3048
 msgid "C&ustomize Hyperref Options"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3048
+#: src/frontends/qt4/GuiDocument.cpp:3050
 #, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "使用 hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:3197
+#: src/frontends/qt4/GuiDocument.cpp:3199
 msgid "Can't set layout!"
 msgstr "无法设置布局文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:3198
+#: src/frontends/qt4/GuiDocument.cpp:3200
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "无法为ID %1$s设置布局文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:3291
+#: src/frontends/qt4/GuiDocument.cpp:3293
 msgid "Not Found"
 msgstr "未找到"
 
-#: src/frontends/qt4/GuiDocument.cpp:3345
+#: src/frontends/qt4/GuiDocument.cpp:3347
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3346
+#: src/frontends/qt4/GuiDocument.cpp:3348
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -21421,12 +21280,12 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3350
+#: src/frontends/qt4/GuiDocument.cpp:3352
 #, fuzzy
 msgid "Could not load master"
 msgstr "无法改变文档类"
 
-#: src/frontends/qt4/GuiDocument.cpp:3351
+#: src/frontends/qt4/GuiDocument.cpp:3353
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -22677,8 +22536,8 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x 文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/Validator.cpp:200
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
-#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:535
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
+#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "无效文件名"
 
@@ -23261,20 +23120,20 @@ msgstr "分支列表"
 msgid "List of Changes"
 msgstr "更改列表"
 
-#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
-#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:536
+#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:295
+#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:534
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
 msgstr "以下文件名可能导致导出LaTeX时错误"
 
-#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:296
-#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:541
+#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:300
+#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:538
 msgid "Problematic filename for DVI"
 msgstr ""
 
-#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:297
-#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:542
+#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:301
+#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:539
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -23324,50 +23183,50 @@ msgid ""
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:144
+#: src/insets/InsetBibtex.cpp:148
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:147
+#: src/insets/InsetBibtex.cpp:151
 #, fuzzy
 msgid "Open Databases?"
 msgstr "数据库(&s)"
 
-#: src/insets/InsetBibtex.cpp:148
+#: src/insets/InsetBibtex.cpp:152
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:166
+#: src/insets/InsetBibtex.cpp:170
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX Generated Bibliography"
 
-#: src/insets/InsetBibtex.cpp:173
+#: src/insets/InsetBibtex.cpp:177
 #, fuzzy
 msgid "Databases:"
 msgstr "数据库(&s)"
 
-#: src/insets/InsetBibtex.cpp:198
+#: src/insets/InsetBibtex.cpp:202
 #, fuzzy
 msgid "Style File:"
 msgstr "关闭"
 
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:209
 #, fuzzy
 msgid "Lists:"
 msgstr "列表"
 
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:220
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:318 src/insets/InsetBibtex.cpp:364
+#: src/insets/InsetBibtex.cpp:322 src/insets/InsetBibtex.cpp:368
 msgid "Export Warning!"
 msgstr "导出警告!"
 
-#: src/insets/InsetBibtex.cpp:319
+#: src/insets/InsetBibtex.cpp:323
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -23375,7 +23234,7 @@ msgstr ""
 "您BibTeX数据库文件名中有空格.\n"
 "BibTeX将不能找到此文件."
 
-#: src/insets/InsetBibtex.cpp:365
+#: src/insets/InsetBibtex.cpp:369
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23468,17 +23327,17 @@ msgstr "Undef: "
 msgid "Sub-%1$s"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:121
+#: src/insets/InsetCitation.cpp:132
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "文献关键字"
 
-#: src/insets/InsetCitation.cpp:125
+#: src/insets/InsetCitation.cpp:136
 #, fuzzy
 msgid "No citations selected!"
 msgstr "No font change defined."
 
-#: src/insets/InsetCitation.cpp:296
+#: src/insets/InsetCitation.cpp:307
 #, fuzzy
 msgid "not cited"
 msgstr "被保护"
@@ -23569,7 +23428,7 @@ msgstr "LyX 无法生成 %1$s 的列表"
 msgid "footnote"
 msgstr "脚注"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:730
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23625,18 +23484,18 @@ msgstr "Verbatim Input*"
 msgid "Include (excluded)"
 msgstr "插入文件"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:838
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:775
+#: src/insets/InsetInclude.cpp:841
 msgid "Recursive input"
 msgstr "迭代输入"
 
-#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:839
+#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:776
+#: src/insets/InsetInclude.cpp:842
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "试图包含文件 %1$s 本身! 忽略包含."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:620
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -23646,12 +23505,12 @@ msgstr ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:624
 #, fuzzy
 msgid "Missing included file"
 msgstr "插入文件"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:630
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23662,11 +23521,11 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:636
 msgid "Different textclasses"
 msgstr "不同文档类"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:651
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23677,28 +23536,28 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:655
 #, fuzzy
 msgid "Module not found"
 msgstr "文件没有找到"
 
-#: src/insets/InsetInclude.cpp:624 src/insets/InsetInclude.cpp:648
+#: src/insets/InsetInclude.cpp:682 src/insets/InsetInclude.cpp:706
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:633 src/insets/InsetInclude.cpp:656
+#: src/insets/InsetInclude.cpp:691 src/insets/InsetInclude.cpp:714
 #, fuzzy
 msgid "Export failure"
 msgstr "备份失败"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:763
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:764
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24031,67 +23890,62 @@ msgstr "水平占位"
 msgid "vphantom"
 msgstr "垂直占位"
 
-#: src/insets/InsetRef.cpp:221
-#, fuzzy
-msgid "elsewhere"
-msgstr "重置"
-
-#: src/insets/InsetRef.cpp:300
+#: src/insets/InsetRef.cpp:302
 msgid "BROKEN: "
 msgstr "无效内容："
 
-#: src/insets/InsetRef.cpp:340 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
 msgstr "引用: "
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
 msgstr "公式"
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
 msgstr "公式引用: "
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
 msgstr "页码"
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
 msgstr "页: "
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
 msgstr "Textual Page Number"
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
 msgstr "TextPage: "
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
 msgstr "Standard+Textual Page"
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
 msgstr "Ref+Text: "
 
-#: src/insets/InsetRef.cpp:345
+#: src/insets/InsetRef.cpp:348
 #, fuzzy
 msgid "Formatted"
 msgstr "输出格式"
 
-#: src/insets/InsetRef.cpp:345
+#: src/insets/InsetRef.cpp:348
 #, fuzzy
 msgid "Format: "
 msgstr "格式(&t)"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:349
 #, fuzzy
 msgid "Reference to Name"
 msgstr "引用"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:349
 #, fuzzy
 msgid "NameRef:"
 msgstr "名称："
@@ -24301,30 +24155,30 @@ msgstr "搜索出错"
 msgid "Search string is empty"
 msgstr "搜索文本为空"
 
-#: src/lyxfind.cpp:378
+#: src/lyxfind.cpp:380
 msgid "String found."
 msgstr "文本未找到"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:382
 msgid "String has been replaced."
 msgstr "词语已被更新。"
 
-#: src/lyxfind.cpp:383
+#: src/lyxfind.cpp:385
 #, fuzzy, c-format
 msgid "%1$d strings have been replaced."
 msgstr "词语已被更新。"
 
-#: src/lyxfind.cpp:1430
+#: src/lyxfind.cpp:1432
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "无效LaTeX长度"
 
-#: src/lyxfind.cpp:1435
+#: src/lyxfind.cpp:1437
 #, fuzzy
 msgid "Match not found!"
 msgstr "未找到搜索词"
 
-#: src/lyxfind.cpp:1439
+#: src/lyxfind.cpp:1441
 #, fuzzy
 msgid "Match found!"
 msgstr "文件没有找到"
@@ -24732,11 +24586,109 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知用户"
 
-#~ msgid "Space:"
-#~ msgstr "空格:"
+#, fuzzy
+#~ msgid "Abbreviations"
+#~ msgstr "AMS关系运算符"
 
-#~ msgid "Computer:"
-#~ msgstr "计算机:"
+#, fuzzy
+#~ msgid "Abbreviations:"
+#~ msgstr "Variation:"
+
+#, fuzzy
+#~ msgid "SupplementalInfo"
+#~ msgstr "Supplementary"
+
+#, fuzzy
+#~ msgid "TOC entry"
+#~ msgstr "TOC Author"
+
+#, fuzzy
+#~ msgid "CVStyle"
+#~ msgstr "样式"
+
+#, fuzzy
+#~ msgid "CV style:"
+#~ msgstr "引用样式(&y)"
+
+#, fuzzy
+#~ msgid "CVColor"
+#~ msgstr "颜色"
+
+#, fuzzy
+#~ msgid "FamilyName"
+#~ msgstr "字体族(&F)"
+
+#, fuzzy
+#~ msgid "Family Name:"
+#~ msgstr "字体族(&F)"
+
+#, fuzzy
+#~ msgid "Mobile:"
+#~ msgstr "文件(&F):"
+
+#, fuzzy
+#~ msgid "Homepage:"
+#~ msgstr "新起页"
+
+#, fuzzy
+#~ msgid "ExtraInfo"
+#~ msgstr "更多"
+
+#, fuzzy
+#~ msgid "Extra Info:"
+#~ msgstr "其它选项(&x):"
+
+#, fuzzy
+#~ msgid "ItemWithComment"
+#~ msgstr "注释"
+
+#, fuzzy
+#~ msgid "DoubleListItem"
+#~ msgstr "DoubleItem"
+
+#, fuzzy
+#~ msgid "Double List Item:"
+#~ msgstr "Double Item:"
+
+#, fuzzy
+#~ msgid "MakeCVtitle"
+#~ msgstr "Poemtitle"
+
+#, fuzzy
+#~ msgid "Make CV title"
+#~ msgstr "TOC title:"
+
+#, fuzzy
+#~ msgid "MakeLetterTitle"
+#~ msgstr "MathLetters"
+
+#, fuzzy
+#~ msgid "MakeLetterClosing"
+#~ msgstr "MathLetters"
+
+#, fuzzy
+#~ msgid "Close Letter"
+#~ msgstr "书信"
+
+#, fuzzy
+#~ msgid "Recipient"
+#~ msgstr "已接收"
+
+#, fuzzy
+#~ msgid "Enclosing"
+#~ msgstr "正在关闭"
+
+#, fuzzy
+#~ msgid "Enclosing:"
+#~ msgstr "结束语:"
+
+#, fuzzy
+#~ msgid "Japanese (non-CJK) (utf8)"
+#~ msgstr "日语 (non-CJK) (JIS)"
+
+#, fuzzy
+#~ msgid "elsewhere"
+#~ msgstr "重置"
 
 #~ msgid "&Output Format:"
 #~ msgstr "输出格式"

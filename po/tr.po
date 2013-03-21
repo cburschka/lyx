@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-01-03 12:06-0500\n"
+"POT-Creation-Date: 2013-03-21 10:22-0400\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -205,16 +205,16 @@ msgstr "Bu kaynakça bölümünün içeriği..."
 msgid "&Content:"
 msgstr "İçin&dekiler:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:212
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:216
 msgid "all cited references"
 msgstr "tüm alıntılanmış referanslar"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:210
+#: src/insets/InsetBibtex.cpp:214
 msgid "all uncited references"
 msgstr "tüm alıntılanmamış referanslar"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:208
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:212
 msgid "all references"
 msgstr "tüm referanslar"
 
@@ -309,21 +309,21 @@ msgstr "İçeriğin kutudaki yatay hizalaması"
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
 #: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiParagraph.cpp:109
-#: src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/GuiTabular.cpp:802
 msgid "Left"
 msgstr "Sola dayalı"
 
 #: src/frontends/qt4/ui/BoxUi.ui:68 src/frontends/qt4/ui/TabularUi.ui:74
 #: src/frontends/qt4/ui/TabularUi.ui:1394 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:72 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:789
+#: src/frontends/qt4/GuiTabular.cpp:803
 msgid "Center"
 msgstr "Ortalı"
 
 #: src/frontends/qt4/ui/BoxUi.ui:73 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:79 src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiParagraph.cpp:110
-#: src/frontends/qt4/GuiTabular.cpp:790
+#: src/frontends/qt4/GuiTabular.cpp:804
 msgid "Right"
 msgstr "Sağ"
 
@@ -344,7 +344,7 @@ msgstr "Üst"
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/ui/BoxUi.ui:128
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
 #: src/frontends/qt4/ui/TabularUi.ui:215 src/frontends/qt4/ui/TabularUi.ui:376
-#: src/frontends/qt4/GuiTabular.cpp:212
+#: src/frontends/qt4/GuiTabular.cpp:219
 msgid "Middle"
 msgstr "Orta"
 
@@ -493,8 +493,8 @@ msgid "Remove the selected branch"
 msgstr "Seçili dalı sil"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3875
-#: src/Buffer.cpp:3888
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3893
+#: src/Buffer.cpp:3906
 msgid "&Remove"
 msgstr "&Sil"
 
@@ -533,7 +533,7 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1147
-#: src/Buffer.cpp:2399 src/Buffer.cpp:3850 src/Buffer.cpp:3913
+#: src/Buffer.cpp:2417 src/Buffer.cpp:3868 src/Buffer.cpp:3931
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -543,7 +543,7 @@ msgstr ""
 #: src/frontends/qt4/GuiView.cpp:2335 src/frontends/qt4/GuiView.cpp:2550
 #: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
 #: src/frontends/qt4/GuiView.cpp:2684 src/frontends/qt4/GuiView.cpp:3299
-#: src/insets/InsetBibtex.cpp:148
+#: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -585,7 +585,7 @@ msgstr "&Boyut:"
 #: src/frontends/qt4/GuiDocument.cpp:1719
 #: src/frontends/qt4/GuiDocument.cpp:1794
 #: src/frontends/qt4/GuiDocument.cpp:2158
-#: src/frontends/qt4/GuiDocument.cpp:3234 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:3236 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2533
@@ -716,8 +716,8 @@ msgstr "Font serileri"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
-#: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:119
-#: lib/layouts/moderncv.layout:259 src/frontends/qt4/GuiDocument.cpp:1313
+#: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:128
+#: lib/layouts/moderncv.layout:118 src/frontends/qt4/GuiDocument.cpp:1313
 #: src/frontends/qt4/GuiPrefs.cpp:2232 src/frontends/qt4/Menus.cpp:853
 msgid "Language"
 msgstr "Dil"
@@ -791,7 +791,7 @@ msgstr "Değişiklikleri hemen uygula"
 #: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177
+#: src/frontends/qt4/GuiDocument.cpp:3179
 msgid "&Apply"
 msgstr "&Uygula"
 
@@ -1931,8 +1931,8 @@ msgstr "Giriş"
 msgid "Verbatim"
 msgstr "Olduğu gibi"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1141
-#: src/insets/InsetInclude.cpp:1147
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1144
+#: src/insets/InsetInclude.cpp:1150
 msgid "Program Listing"
 msgstr "Program Listeleme"
 
@@ -2197,7 +2197,7 @@ msgid "Feedback window"
 msgstr "Geribesleme penceresi"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
+#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
 msgid "Listing"
 msgstr "Liste"
 
@@ -3279,7 +3279,7 @@ msgstr "Düzenleme"
 msgid "Cursor &follows scrollbar"
 msgstr "İmleç kaydırma çubuğunu &izler"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3147
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3143
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3584,7 +3584,7 @@ msgstr "&Yabancı dilleri işaretle"
 msgid "Right-to-left language support"
 msgstr "Sağdan sola dil desteği"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3428
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:215 src/LyXRC.cpp:3424
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "Sağdan-sola dil desteğini açmak için seçin (ör. İbranice, Arapça)."
@@ -3735,7 +3735,7 @@ msgstr ""
 msgid "Output &line length:"
 msgstr "Çıktı satır &boyu:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3094
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3090
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3793,7 +3793,7 @@ msgstr "&roff komutu:"
 msgid "&PATH prefix:"
 msgstr "&PATH öneki:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3338
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3334
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3805,7 +3805,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "&PATH öneki:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3497
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3493
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -4684,11 +4684,12 @@ msgid "Horizontal alignment in column"
 msgstr "Sütunda yatay hizalama"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
-#: src/frontends/qt4/GuiTabular.cpp:792
+#: src/frontends/qt4/GuiTabular.cpp:806
 msgid "Justified"
 msgstr "Yaslanmış"
 
-#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:794
+#: src/frontends/qt4/ui/TabularUi.ui:84 src/frontends/qt4/GuiTabular.cpp:213
+#: src/frontends/qt4/GuiTabular.cpp:808
 #, fuzzy
 msgid "At Decimal Separator"
 msgstr "Ayraç"
@@ -5309,7 +5310,7 @@ msgstr "KısaBaşlık"
 #: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
 #: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
 #: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
-#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:80
+#: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
 #: lib/layouts/acmsiggraph.layout:68 lib/layouts/acmsiggraph.layout:114
 #: lib/layouts/acmsiggraph.layout:141 lib/layouts/agutex.layout:58
 #: lib/layouts/agutex.layout:75 lib/layouts/agutex.layout:116
@@ -5328,20 +5329,19 @@ msgstr "KısaBaşlık"
 #: lib/layouts/elsarticle.layout:102 lib/layouts/elsarticle.layout:121
 #: lib/layouts/elsarticle.layout:199 lib/layouts/elsarticle.layout:227
 #: lib/layouts/elsarticle.layout:256 lib/layouts/entcs.layout:74
-#: lib/layouts/ijmpc.layout:54 lib/layouts/ijmpc.layout:73
-#: lib/layouts/ijmpc.layout:91 lib/layouts/ijmpc.layout:109
-#: lib/layouts/ijmpc.layout:144 lib/layouts/ijmpc.layout:192
-#: lib/layouts/ijmpd.layout:59 lib/layouts/ijmpd.layout:78
-#: lib/layouts/ijmpd.layout:96 lib/layouts/ijmpd.layout:114
-#: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:199
-#: lib/layouts/ijmpd.layout:211 lib/layouts/iopart.layout:60
-#: lib/layouts/iopart.layout:130 lib/layouts/iopart.layout:149
-#: lib/layouts/iopart.layout:174 lib/layouts/iopart.layout:203
-#: lib/layouts/jasatex.layout:62 lib/layouts/jasatex.layout:84
-#: lib/layouts/jasatex.layout:104 lib/layouts/jasatex.layout:142
-#: lib/layouts/jasatex.layout:162 lib/layouts/jasatex.layout:191
-#: lib/layouts/moderncv.layout:38 lib/layouts/moderncv.layout:59
-#: lib/layouts/moderncv.layout:79 lib/layouts/revtex4.layout:112
+#: lib/layouts/europecv.layout:78 lib/layouts/ijmpc.layout:54
+#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpc.layout:91
+#: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpc.layout:144
+#: lib/layouts/ijmpc.layout:192 lib/layouts/ijmpd.layout:59
+#: lib/layouts/ijmpd.layout:78 lib/layouts/ijmpd.layout:96
+#: lib/layouts/ijmpd.layout:114 lib/layouts/ijmpd.layout:134
+#: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:211
+#: lib/layouts/iopart.layout:60 lib/layouts/iopart.layout:130
+#: lib/layouts/iopart.layout:149 lib/layouts/iopart.layout:174
+#: lib/layouts/iopart.layout:203 lib/layouts/jasatex.layout:62
+#: lib/layouts/jasatex.layout:84 lib/layouts/jasatex.layout:104
+#: lib/layouts/jasatex.layout:142 lib/layouts/jasatex.layout:162
+#: lib/layouts/jasatex.layout:191 lib/layouts/revtex4.layout:112
 #: lib/layouts/revtex4.layout:150 lib/layouts/revtex4.layout:247
 #: lib/layouts/siamltex.layout:280 lib/layouts/siamltex.layout:300
 #: lib/layouts/sigplanconf.layout:71 lib/layouts/sigplanconf.layout:124
@@ -5403,7 +5403,8 @@ msgstr "AltDeğişim"
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
 #: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
-#: lib/layouts/aastex.layout:252 lib/layouts/acmsiggraph.layout:110
+#: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
+#: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
 #: lib/layouts/acmsiggraph.layout:126 lib/layouts/agutex.layout:130
 #: lib/layouts/apa.layout:70 lib/layouts/apa6.layout:226
 #: lib/layouts/cl2emult.layout:81 lib/layouts/cl2emult.layout:92
@@ -5434,7 +5435,6 @@ msgstr "Özet"
 
 #: lib/layouts/AEA.layout:98 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
-#: lib/layouts/achemso.layout:223 lib/layouts/achemso.layout:230
 #: lib/layouts/egs.layout:530 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:146 lib/layouts/aapaper.inc:80
 #: lib/layouts/svcommon.inc:535
@@ -5833,6 +5833,8 @@ msgstr "Başlık"
 #: lib/layouts/beamer.layout:950 lib/layouts/beamer.layout:969
 #: lib/layouts/beamer.layout:988 lib/layouts/beamer.layout:1108
 #: lib/layouts/beamer.layout:1132 lib/layouts/beamer.layout:1170
+#: lib/layouts/europecv.layout:33 lib/layouts/europecv.layout:55
+#: lib/layouts/europecv.layout:105 lib/layouts/moderncv.layout:20
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:37
 #: lib/layouts/tufte-book.layout:195 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
@@ -5885,7 +5887,7 @@ msgstr "İspat"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:340
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:343
 msgid "Standard"
 msgstr "Standart"
 
@@ -5905,8 +5907,7 @@ msgstr "Standart"
 #: lib/layouts/iopart.layout:56 lib/layouts/isprs.layout:93
 #: lib/layouts/jasatex.layout:58 lib/layouts/kluwer.layout:111
 #: lib/layouts/latex8.layout:38 lib/layouts/llncs.layout:106
-#: lib/layouts/ltugboat.layout:136 lib/layouts/moderncv.layout:76
-#: lib/layouts/moderncv.layout:293 lib/layouts/paper.layout:110
+#: lib/layouts/ltugboat.layout:136 lib/layouts/paper.layout:110
 #: lib/layouts/powerdot.layout:41 lib/layouts/revtex.layout:94
 #: lib/layouts/revtex4.layout:124 lib/layouts/scrlettr.layout:188
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:188
@@ -5989,17 +5990,17 @@ msgstr "Özet---"
 
 #: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
-#: lib/layouts/achemso.layout:148 lib/layouts/apa6.layout:248
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:252
-#: lib/layouts/ijmpc.layout:201 lib/layouts/ijmpc.layout:205
-#: lib/layouts/ijmpd.layout:208 lib/layouts/iopart.layout:199
-#: lib/layouts/isprs.layout:52 lib/layouts/jasatex.layout:187
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:172
-#: lib/layouts/revtex4.layout:258 lib/layouts/siamltex.layout:304
-#: lib/layouts/sigplanconf.layout:147 lib/layouts/spie.layout:41
-#: lib/layouts/svglobal3.layout:56 lib/layouts/svglobal3.layout:59
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:161
-#: lib/layouts/svcommon.inc:456 lib/layouts/svcommon.inc:471
+#: lib/layouts/apa6.layout:248 lib/layouts/elsart.layout:62
+#: lib/layouts/elsarticle.layout:252 lib/layouts/ijmpc.layout:201
+#: lib/layouts/ijmpc.layout:205 lib/layouts/ijmpd.layout:208
+#: lib/layouts/iopart.layout:199 lib/layouts/isprs.layout:52
+#: lib/layouts/jasatex.layout:187 lib/layouts/kluwer.layout:282
+#: lib/layouts/paper.layout:172 lib/layouts/revtex4.layout:258
+#: lib/layouts/siamltex.layout:304 lib/layouts/sigplanconf.layout:147
+#: lib/layouts/spie.layout:41 lib/layouts/svglobal3.layout:56
+#: lib/layouts/svglobal3.layout:59 lib/layouts/agu_stdtitle.inc:120
+#: lib/layouts/amsdefs.inc:161 lib/layouts/svcommon.inc:456
+#: lib/layouts/svcommon.inc:471
 msgid "Keywords"
 msgstr "Anahtar Kelimeler"
 
@@ -6014,18 +6015,18 @@ msgstr "Ekler"
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:246
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:209
 #: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
-#: lib/layouts/achemso.layout:226 lib/layouts/acmsiggraph.layout:155
-#: lib/layouts/agutex.layout:151 lib/layouts/agutex.layout:161
-#: lib/layouts/agutex.layout:181 lib/layouts/agutex.layout:204
-#: lib/layouts/beamer.layout:926 lib/layouts/elsarticle.layout:277
+#: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
+#: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
+#: lib/layouts/agutex.layout:204 lib/layouts/beamer.layout:926
+#: lib/layouts/elsarticle.layout:277 lib/layouts/europecv.layout:150
 #: lib/layouts/ijmpc.layout:412 lib/layouts/ijmpc.layout:436
 #: lib/layouts/ijmpd.layout:436 lib/layouts/ijmpd.layout:460
 #: lib/layouts/iopart.layout:243 lib/layouts/iopart.layout:265
 #: lib/layouts/iopart.layout:288 lib/layouts/jasatex.layout:225
-#: lib/layouts/jasatex.layout:264 lib/layouts/revtex4.layout:228
-#: lib/layouts/siamltex.layout:319 lib/layouts/sigplanconf.layout:185
-#: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:536
-#: lib/layouts/svcommon.inc:570
+#: lib/layouts/jasatex.layout:264 lib/layouts/moderncv.layout:153
+#: lib/layouts/revtex4.layout:228 lib/layouts/siamltex.layout:319
+#: lib/layouts/sigplanconf.layout:185 lib/layouts/stdstruct.inc:57
+#: lib/layouts/svcommon.inc:536 lib/layouts/svcommon.inc:570
 msgid "BackMatter"
 msgstr "Artçı"
 
@@ -6039,42 +6040,42 @@ msgstr "Ek"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
 #: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
-#: lib/layouts/aapaper.layout:220 lib/layouts/agutex.layout:200
-#: lib/layouts/beamer.layout:925 lib/layouts/book.layout:21
-#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:103
-#: lib/layouts/egs.layout:555 lib/layouts/elsarticle.layout:273
-#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:432
-#: lib/layouts/ijmpd.layout:456 lib/layouts/jasatex.layout:260
-#: lib/layouts/latex8.layout:125 lib/layouts/llncs.layout:263
-#: lib/layouts/memoir.layout:163 lib/layouts/memoir.layout:165
-#: lib/layouts/moderncv.layout:310 lib/layouts/mwbk.layout:22
-#: lib/layouts/mwbk.layout:24 lib/layouts/mwrep.layout:13
-#: lib/layouts/mwrep.layout:15 lib/layouts/powerdot.layout:287
-#: lib/layouts/recipebook.layout:46 lib/layouts/recipebook.layout:48
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:22 lib/layouts/scrbook.layout:24
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:318 lib/layouts/simplecv.layout:145
-#: lib/layouts/tufte-book.layout:241 lib/layouts/tufte-book.layout:243
-#: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
-#: lib/layouts/amsdefs.inc:196 lib/layouts/scrclass.inc:246
-#: lib/layouts/stdstruct.inc:53 lib/layouts/svcommon.inc:566
-#: src/frontends/qt4/GuiDocument.cpp:1316
+#: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
+#: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:925
+#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
+#: lib/layouts/cl2emult.layout:103 lib/layouts/egs.layout:555
+#: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
+#: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
+#: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
+#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:152
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
+#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
+#: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
+#: lib/layouts/recipebook.layout:48 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
+#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:318
+#: lib/layouts/simplecv.layout:145 lib/layouts/tufte-book.layout:241
+#: lib/layouts/tufte-book.layout:243 lib/layouts/aguplus.inc:172
+#: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:196
+#: lib/layouts/scrclass.inc:246 lib/layouts/stdstruct.inc:53
+#: lib/layouts/svcommon.inc:566 src/frontends/qt4/GuiDocument.cpp:1316
 msgid "Bibliography"
 msgstr "Kaynakça"
 
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/aastex.layout:125
 #: lib/layouts/aastex.layout:485 lib/layouts/aastex.layout:498
-#: lib/layouts/agutex.layout:215 lib/layouts/beamer.layout:939
-#: lib/layouts/cl2emult.layout:117 lib/layouts/egs.layout:569
-#: lib/layouts/elsarticle.layout:288 lib/layouts/ijmpc.layout:447
-#: lib/layouts/ijmpd.layout:471 lib/layouts/iopart.layout:276
-#: lib/layouts/iopart.layout:291 lib/layouts/jasatex.layout:275
-#: lib/layouts/kluwer.layout:342 lib/layouts/kluwer.layout:354
-#: lib/layouts/llncs.layout:277 lib/layouts/moderncv.layout:324
-#: lib/layouts/siamltex.layout:333 lib/layouts/amsdefs.inc:210
-#: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:581
-#: src/output_plaintext.cpp:145
+#: lib/layouts/achemso.layout:252 lib/layouts/agutex.layout:215
+#: lib/layouts/beamer.layout:939 lib/layouts/cl2emult.layout:117
+#: lib/layouts/egs.layout:569 lib/layouts/elsarticle.layout:288
+#: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:471
+#: lib/layouts/iopart.layout:276 lib/layouts/iopart.layout:291
+#: lib/layouts/jasatex.layout:275 lib/layouts/kluwer.layout:342
+#: lib/layouts/kluwer.layout:354 lib/layouts/llncs.layout:277
+#: lib/layouts/moderncv.layout:167 lib/layouts/siamltex.layout:333
+#: lib/layouts/amsdefs.inc:210 lib/layouts/stdstruct.inc:68
+#: lib/layouts/svcommon.inc:581 src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Referanslar"
 
@@ -6113,7 +6114,7 @@ msgstr "İspat."
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
-#: lib/layouts/moderncv.layout:162 lib/layouts/paper.layout:58
+#: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
 #: lib/layouts/simplecv.layout:29 lib/layouts/spie.layout:20
@@ -6140,7 +6141,7 @@ msgstr "Bölüm"
 #: lib/layouts/isprs.layout:159 lib/layouts/kluwer.layout:69
 #: lib/layouts/latex8.layout:55 lib/layouts/llncs.layout:55
 #: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:76
-#: lib/layouts/moderncv.layout:182 lib/layouts/paper.layout:67
+#: lib/layouts/moderncv.layout:55 lib/layouts/paper.layout:67
 #: lib/layouts/revtex.layout:50 lib/layouts/revtex4.layout:73
 #: lib/layouts/siamltex.layout:369 lib/layouts/simplecv.layout:51
 #: lib/layouts/tufte-book.layout:109 lib/layouts/agu_stdsections.inc:43
@@ -6203,7 +6204,6 @@ msgstr "Açıklama"
 #: lib/layouts/beamer.layout:87 lib/layouts/egs.layout:132
 #: lib/layouts/ijmpc.layout:260 lib/layouts/ijmpc.layout:280
 #: lib/layouts/ijmpd.layout:263 lib/layouts/ijmpd.layout:283
-#: lib/layouts/moderncv.layout:221 lib/layouts/moderncv.layout:251
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:37
 #: lib/layouts/stdlists.inc:14 lib/layouts/stdlists.inc:35
 #: lib/layouts/stdlists.inc:58 lib/layouts/stdlists.inc:87
@@ -6227,11 +6227,10 @@ msgstr "Alt başlık"
 #: lib/layouts/g-brief.layout:180 lib/layouts/g-brief2.layout:715
 #: lib/layouts/ijmpc.layout:125 lib/layouts/iopart.layout:145
 #: lib/layouts/isprs.layout:111 lib/layouts/kluwer.layout:182
-#: lib/layouts/moderncv.layout:97 lib/layouts/revtex.layout:120
-#: lib/layouts/revtex4.layout:180 lib/layouts/scrlettr.layout:139
-#: lib/layouts/scrlttr2.layout:47 lib/layouts/siamltex.layout:279
-#: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:118
-#: lib/layouts/lyxmacros.inc:44
+#: lib/layouts/revtex.layout:120 lib/layouts/revtex4.layout:180
+#: lib/layouts/scrlettr.layout:139 lib/layouts/scrlttr2.layout:47
+#: lib/layouts/siamltex.layout:279 lib/layouts/aapaper.inc:29
+#: lib/layouts/amsdefs.inc:118 lib/layouts/lyxmacros.inc:44
 msgid "Address"
 msgstr "Adres"
 
@@ -6252,16 +6251,15 @@ msgstr "Mektup"
 #: lib/layouts/frletter.layout:21 lib/layouts/g-brief.layout:189
 #: lib/layouts/g-brief2.layout:800 lib/layouts/jasatex.layout:139
 #: lib/layouts/kluwer.layout:149 lib/layouts/lettre.layout:51
-#: lib/layouts/lettre.layout:213 lib/layouts/moderncv.layout:370
-#: lib/layouts/powerdot.layout:85 lib/layouts/revtex.layout:110
-#: lib/layouts/revtex4.layout:140 lib/layouts/scrlettr.layout:160
-#: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:229
-#: lib/layouts/tufte-book.layout:42 lib/layouts/agu_stdtitle.inc:238
-#: lib/layouts/amsdefs.inc:67 lib/layouts/db_stdtitle.inc:35
-#: lib/layouts/scrclass.inc:185 lib/layouts/stdtitle.inc:97
-#: lib/layouts/svcommon.inc:364 lib/ui/stdmenus.inc:374
-#: lib/external_templates:343 lib/external_templates:344
-#: lib/external_templates:348
+#: lib/layouts/lettre.layout:213 lib/layouts/powerdot.layout:85
+#: lib/layouts/revtex.layout:110 lib/layouts/revtex4.layout:140
+#: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
+#: lib/layouts/siamltex.layout:229 lib/layouts/tufte-book.layout:42
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:185
+#: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:364
+#: lib/ui/stdmenus.inc:374 lib/external_templates:343
+#: lib/external_templates:344 lib/external_templates:348
 msgid "Date"
 msgstr "Tarih"
 
@@ -6301,14 +6299,14 @@ msgstr "E-Posta"
 
 #: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
-#: lib/layouts/achemso.layout:90 lib/layouts/ectaart.layout:69
+#: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
 #: lib/layouts/elsarticle.layout:213 lib/layouts/iopart.layout:160
 #: lib/layouts/jasatex.layout:133 lib/layouts/latex8.layout:64
 #: lib/layouts/lettre.layout:45 lib/layouts/lettre.layout:398
-#: lib/layouts/llncs.layout:234 lib/layouts/moderncv.layout:124
-#: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:145
-#: lib/layouts/db_stdcharstyles.inc:71 lib/layouts/db_stdcharstyles.inc:73
-#: lib/layouts/svcommon.inc:665 lib/layouts/svcommon.inc:670
+#: lib/layouts/llncs.layout:234 lib/layouts/aapaper.inc:46
+#: lib/layouts/amsdefs.inc:145 lib/layouts/db_stdcharstyles.inc:71
+#: lib/layouts/db_stdcharstyles.inc:73 lib/layouts/svcommon.inc:665
+#: lib/layouts/svcommon.inc:670
 msgid "Email"
 msgstr "Eposta"
 
@@ -6335,7 +6333,7 @@ msgid "Paragraph"
 msgstr "Paragraf"
 
 #: lib/layouts/aastex.layout:101 lib/layouts/aastex.layout:272
-#: lib/layouts/achemso.layout:99 lib/layouts/apa.layout:150
+#: lib/layouts/achemso.layout:94 lib/layouts/apa.layout:150
 #: lib/layouts/apa6.layout:147 lib/layouts/jasatex.layout:100
 #: lib/layouts/latex8.layout:88 lib/layouts/revtex4.layout:149
 #: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
@@ -6482,114 +6480,65 @@ msgstr "Nesne:"
 msgid "Dataset:"
 msgstr "Verikümesi:"
 
-#: lib/layouts/achemso.layout:108
+#: lib/layouts/achemso.layout:100
 #, fuzzy
 msgid "Alt Affiliation"
 msgstr "Altİlişki"
 
-#: lib/layouts/achemso.layout:114
+#: lib/layouts/achemso.layout:105
 #, fuzzy
 msgid "Also Affiliation"
 msgstr "Altİlişki"
 
-#: lib/layouts/achemso.layout:120 lib/layouts/lettre.layout:41
-#: lib/layouts/lettre.layout:342 lib/layouts/moderncv.layout:118
-#: lib/layouts/scrlttr2.layout:191 lib/configure.py:669
+#: lib/layouts/achemso.layout:110 lib/layouts/lettre.layout:41
+#: lib/layouts/lettre.layout:342 lib/layouts/scrlttr2.layout:191
+#: lib/configure.py:669
 msgid "Fax"
 msgstr "Faks"
 
-#: lib/layouts/achemso.layout:126 lib/layouts/lettre.layout:355
-#: lib/layouts/moderncv.layout:121
-#, fuzzy
-msgid "Fax:"
-msgstr "Faks"
-
-#: lib/layouts/achemso.layout:129 lib/layouts/dinbrief.layout:295
-#: lib/layouts/g-brief.layout:117 lib/layouts/moderncv.layout:112
+#: lib/layouts/achemso.layout:115 lib/layouts/dinbrief.layout:295
+#: lib/layouts/g-brief.layout:117
 msgid "Phone"
 msgstr "Telefon"
 
-#: lib/layouts/achemso.layout:132 lib/layouts/g-brief.layout:120
-#: lib/layouts/moderncv.layout:115
-msgid "Phone:"
-msgstr "Telefon:"
-
-#: lib/layouts/achemso.layout:136
-#, fuzzy
-msgid "Abbreviations"
-msgstr "AMS İlişkileri"
-
-#: lib/layouts/achemso.layout:142
-#, fuzzy
-msgid "Abbreviations:"
-msgstr "Değişim:"
-
-#: lib/layouts/achemso.layout:151 lib/layouts/apa6.layout:264
-#: lib/layouts/ectaart.layout:120 lib/layouts/elsarticle.layout:265
-#: lib/layouts/ijmpd.layout:212 lib/layouts/iopart.layout:210
-#: lib/layouts/jasatex.layout:201 lib/layouts/kluwer.layout:289
-#: lib/layouts/paper.layout:175 lib/layouts/revtex4.layout:263
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/spie.layout:48
-#: lib/layouts/agu_stdtitle.inc:123
-msgid "Keywords:"
-msgstr "Anahtar kelimeler:"
-
-#: lib/layouts/achemso.layout:157 lib/layouts/achemso.layout:168
+#: lib/layouts/achemso.layout:122 lib/layouts/achemso.layout:133
 msgid "Scheme"
 msgstr "Plan"
 
-#: lib/layouts/achemso.layout:162
+#: lib/layouts/achemso.layout:127
 msgid "List of Schemes"
 msgstr "Plan Listesi"
 
-#: lib/layouts/achemso.layout:179 lib/layouts/achemso.layout:190
+#: lib/layouts/achemso.layout:144 lib/layouts/achemso.layout:155
 msgid "Chart"
 msgstr ""
 
-#: lib/layouts/achemso.layout:184
+#: lib/layouts/achemso.layout:149
 msgid "List of Charts"
 msgstr ""
 
-#: lib/layouts/achemso.layout:201 lib/layouts/achemso.layout:212
+#: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:177
 msgid "Graph"
 msgstr ""
 
-#: lib/layouts/achemso.layout:206
+#: lib/layouts/achemso.layout:171
 msgid "List of Graphs"
 msgstr ""
 
-#: lib/layouts/achemso.layout:240
-#, fuzzy
-msgid "SupplementalInfo"
-msgstr "Ek"
-
-#: lib/layouts/achemso.layout:243
-msgid "Supporting Information Available"
-msgstr ""
-
-#: lib/layouts/achemso.layout:246
-#, fuzzy
-msgid "TOC entry"
-msgstr "İçindekiler Yazarı"
-
-#: lib/layouts/achemso.layout:250
-msgid "Graphical TOC Entry"
-msgstr ""
-
-#: lib/layouts/achemso.layout:254
+#: lib/layouts/achemso.layout:215
 #, fuzzy
 msgid "Bibnote"
 msgstr "not"
 
-#: lib/layouts/achemso.layout:258
+#: lib/layouts/achemso.layout:219
 msgid "bibnote"
 msgstr ""
 
-#: lib/layouts/achemso.layout:277
+#: lib/layouts/achemso.layout:261
 msgid "Chemistry"
 msgstr ""
 
-#: lib/layouts/achemso.layout:280
+#: lib/layouts/achemso.layout:264
 msgid "chemistry"
 msgstr ""
 
@@ -6849,6 +6798,15 @@ msgstr "Not"
 #: lib/layouts/powerdot.layout:206
 msgid "Note:"
 msgstr "Not:"
+
+#: lib/layouts/apa6.layout:264 lib/layouts/ectaart.layout:120
+#: lib/layouts/elsarticle.layout:265 lib/layouts/ijmpd.layout:212
+#: lib/layouts/iopart.layout:210 lib/layouts/jasatex.layout:201
+#: lib/layouts/kluwer.layout:289 lib/layouts/paper.layout:175
+#: lib/layouts/revtex4.layout:263 lib/layouts/sigplanconf.layout:150
+#: lib/layouts/spie.layout:48 lib/layouts/agu_stdtitle.inc:123
+msgid "Keywords:"
+msgstr "Anahtar kelimeler:"
 
 #: lib/layouts/apa6.layout:272
 #, fuzzy
@@ -7116,8 +7074,7 @@ msgid "Quotation"
 msgstr "Blok alıntı"
 
 #: lib/layouts/beamer.layout:968 lib/layouts/egs.layout:116
-#: lib/layouts/moderncv.layout:149 lib/layouts/powerdot.layout:328
-#: lib/layouts/stdlayouts.inc:33
+#: lib/layouts/powerdot.layout:328 lib/layouts/stdlayouts.inc:33
 msgid "Quote"
 msgstr "Alıntı"
 
@@ -7431,10 +7388,10 @@ msgstr "Adrese Gönder"
 
 #: lib/layouts/dinbrief.layout:49 lib/layouts/ectaart.layout:66
 #: lib/layouts/elsart.layout:139 lib/layouts/g-brief.layout:185
-#: lib/layouts/g-brief2.layout:726 lib/layouts/moderncv.layout:101
-#: lib/layouts/revtex.layout:132 lib/layouts/revtex4.layout:183
-#: lib/layouts/scrlettr.layout:142 lib/layouts/scrlttr2.layout:62
-#: lib/layouts/siamltex.layout:291 lib/layouts/amsdefs.inc:130
+#: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:132
+#: lib/layouts/revtex4.layout:183 lib/layouts/scrlettr.layout:142
+#: lib/layouts/scrlttr2.layout:62 lib/layouts/siamltex.layout:291
+#: lib/layouts/amsdefs.inc:130
 msgid "Address:"
 msgstr "Adres:"
 
@@ -7583,8 +7540,8 @@ msgstr "Konu:"
 #: lib/layouts/dinbrief.layout:175 lib/layouts/frletter.layout:36
 #: lib/layouts/g-brief.layout:205 lib/layouts/g-brief2.layout:843
 #: lib/layouts/lettre.layout:63 lib/layouts/lettre.layout:541
-#: lib/layouts/moderncv.layout:382 lib/layouts/scrlettr.layout:60
-#: lib/layouts/scrlttr2.layout:94 lib/layouts/stdletter.inc:49
+#: lib/layouts/scrlettr.layout:60 lib/layouts/scrlttr2.layout:94
+#: lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Açılış"
 
@@ -7597,8 +7554,8 @@ msgstr "Açılış:"
 #: lib/layouts/dinbrief.layout:191 lib/layouts/frletter.layout:44
 #: lib/layouts/g-brief.layout:231 lib/layouts/g-brief2.layout:865
 #: lib/layouts/lettre.layout:65 lib/layouts/lettre.layout:555
-#: lib/layouts/moderncv.layout:390 lib/layouts/scrlettr.layout:70
-#: lib/layouts/scrlttr2.layout:114 lib/layouts/stdletter.inc:92
+#: lib/layouts/scrlettr.layout:70 lib/layouts/scrlttr2.layout:114
+#: lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "Kapanış"
 
@@ -7728,8 +7685,7 @@ msgstr "Anrede"
 
 #: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief.layout:17
 #: lib/layouts/g-brief2.layout:38 lib/layouts/iopart.layout:119
-#: lib/layouts/moderncv.layout:300 lib/layouts/moderncv.layout:307
-#: lib/layouts/moderncv.layout:355 lib/layouts/scrlettr.layout:40
+#: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr ""
 
@@ -7956,7 +7912,7 @@ msgid "Author Email"
 msgstr "Yazarın Epostası"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/lettre.layout:404
-#: lib/layouts/llncs.layout:238 lib/layouts/moderncv.layout:127
+#: lib/layouts/llncs.layout:238
 msgid "Email:"
 msgstr "Eposta:"
 
@@ -8090,80 +8046,80 @@ msgstr ""
 msgid "Key words:"
 msgstr "Anahtar kelimeler:"
 
-#: lib/layouts/europecv.layout:50 lib/layouts/moderncv.layout:211
+#: lib/layouts/europecv.layout:51 lib/layouts/moderncv.layout:84
 msgid "Item"
 msgstr "Öğe"
 
-#: lib/layouts/europecv.layout:59 lib/layouts/moderncv.layout:215
+#: lib/layouts/europecv.layout:61 lib/layouts/moderncv.layout:93
 msgid "Item:"
 msgstr "Öğe:"
 
-#: lib/layouts/europecv.layout:66
+#: lib/layouts/europecv.layout:68
 msgid "BulletedItem"
 msgstr "Maddeimi"
 
-#: lib/layouts/europecv.layout:69
+#: lib/layouts/europecv.layout:71
 msgid "Bulleted Item:"
 msgstr "Madde imi:"
 
-#: lib/layouts/europecv.layout:72
+#: lib/layouts/europecv.layout:74
 msgid "Begin"
 msgstr "Başla"
 
-#: lib/layouts/europecv.layout:82
+#: lib/layouts/europecv.layout:86
 msgid "Begin of CV"
 msgstr "CV Başlangıcı"
 
-#: lib/layouts/europecv.layout:89
+#: lib/layouts/europecv.layout:93
 msgid "PersonalInfo"
 msgstr "KişiselBilgi"
 
-#: lib/layouts/europecv.layout:93
+#: lib/layouts/europecv.layout:98
 msgid "Personal Info"
 msgstr "Kişisel Bilgi"
 
-#: lib/layouts/europecv.layout:96
+#: lib/layouts/europecv.layout:101
 msgid "MotherTongue"
 msgstr "AnaDil"
 
-#: lib/layouts/europecv.layout:105
+#: lib/layouts/europecv.layout:111
 msgid "Mother Tongue:"
 msgstr "Ana Dil:"
 
-#: lib/layouts/europecv.layout:112
+#: lib/layouts/europecv.layout:121
 msgid "LangHeader"
 msgstr "DilBaşlığı"
 
-#: lib/layouts/europecv.layout:116
+#: lib/layouts/europecv.layout:125
 msgid "Language Header:"
 msgstr "Dil Başlığı:"
 
-#: lib/layouts/europecv.layout:122
+#: lib/layouts/europecv.layout:131 lib/layouts/moderncv.layout:121
 msgid "Language:"
 msgstr "Dil:"
 
-#: lib/layouts/europecv.layout:125
+#: lib/layouts/europecv.layout:134
 msgid "LastLanguage"
 msgstr "SonDil"
 
-#: lib/layouts/europecv.layout:128
+#: lib/layouts/europecv.layout:137
 msgid "Last Language:"
 msgstr "Son Dil:"
 
-#: lib/layouts/europecv.layout:131
+#: lib/layouts/europecv.layout:140
 msgid "LangFooter"
 msgstr "DilAltlığı"
 
-#: lib/layouts/europecv.layout:135
+#: lib/layouts/europecv.layout:143
 #, fuzzy
 msgid "Language Footer:"
 msgstr "DilAltlığı"
 
-#: lib/layouts/europecv.layout:138
+#: lib/layouts/europecv.layout:146
 msgid "End"
 msgstr "Son"
 
-#: lib/layouts/europecv.layout:148
+#: lib/layouts/europecv.layout:157
 msgid "End of CV"
 msgstr "CV'nin sonu"
 
@@ -8367,6 +8323,10 @@ msgstr "Referansınız:"
 #: lib/layouts/g-brief.layout:113 lib/layouts/g-brief2.layout:789
 msgid "YourMail:"
 msgstr "Mailiniz:"
+
+#: lib/layouts/g-brief.layout:120
+msgid "Phone:"
+msgstr "Telefon:"
 
 #: lib/layouts/g-brief.layout:124
 msgid "Telefax"
@@ -8957,7 +8917,7 @@ msgstr "TEŞEKKÜRLER"
 msgid "Alternative Affiliation"
 msgstr "Alternatif ilişki:"
 
-#: lib/layouts/jasatex.layout:124 lib/layouts/moderncv.layout:130
+#: lib/layouts/jasatex.layout:124
 #, fuzzy
 msgid "Homepage"
 msgstr "yeni sayfa"
@@ -9073,6 +9033,11 @@ msgstr "Teleks:"
 #, fuzzy
 msgid "NoTel"
 msgstr "Yok"
+
+#: lib/layouts/lettre.layout:355
+#, fuzzy
+msgid "Fax:"
+msgstr "Faks"
 
 #: lib/layouts/lettre.layout:516 lib/layouts/lettre.layout:607
 #: lib/layouts/lettre.layout:650
@@ -9211,188 +9176,74 @@ msgstr "Şiir başlığı*"
 msgid "Legend"
 msgstr "Açıklamalar"
 
-#: lib/layouts/moderncv.layout:34
+#: lib/layouts/moderncv.layout:35
 #, fuzzy
-msgid "CVStyle"
-msgstr "Stil"
+msgid "Sectioning"
+msgstr "Bölüm"
 
-#: lib/layouts/moderncv.layout:43
-#, fuzzy
-msgid "CV style:"
-msgstr "Font boyu"
-
-#: lib/layouts/moderncv.layout:50
-#, fuzzy
-msgid "CVColor"
-msgstr "Renkli"
-
-#: lib/layouts/moderncv.layout:53
-msgid "CV color scheme:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:56 lib/layouts/db_stdtitle.inc:94
-msgid "FirstName"
-msgstr "Ad"
-
-#: lib/layouts/moderncv.layout:69
-#, fuzzy
-msgid "FamilyName"
-msgstr "&Aile:"
-
-#: lib/layouts/moderncv.layout:73
-#, fuzzy
-msgid "Family Name:"
-msgstr "&Aile:"
-
-#: lib/layouts/moderncv.layout:106
-msgid "Mobile"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:109
-#, fuzzy
-msgid "Mobile:"
-msgstr "&Dosya:"
-
-#: lib/layouts/moderncv.layout:133
-#, fuzzy
-msgid "Homepage:"
-msgstr "yeni sayfa"
-
-#: lib/layouts/moderncv.layout:136
-#, fuzzy
-msgid "ExtraInfo"
-msgstr "Ekstra"
-
-#: lib/layouts/moderncv.layout:139
-#, fuzzy
-msgid "Extra Info:"
-msgstr "&Ekstra bayrak:"
-
-#: lib/layouts/moderncv.layout:142
-msgid "Photo"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:145
-msgid "Photo:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:195
+#: lib/layouts/moderncv.layout:68
 msgid "Entry"
 msgstr "Giriş"
 
-#: lib/layouts/moderncv.layout:204
+#: lib/layouts/moderncv.layout:77
 msgid "Entry:"
 msgstr "Girdi:"
 
-#: lib/layouts/moderncv.layout:218
+#: lib/layouts/moderncv.layout:100
 msgid "ListItem"
 msgstr "ListeÖğesi"
 
-#: lib/layouts/moderncv.layout:223
+#: lib/layouts/moderncv.layout:103
 msgid "List Item:"
 msgstr "Liste Öğesi:"
 
-#: lib/layouts/moderncv.layout:226
-#, fuzzy
-msgid "ItemWithComment"
-msgstr "Not:Yorum"
-
-#: lib/layouts/moderncv.layout:230
-msgid "Item with comment:"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:241
+#: lib/layouts/moderncv.layout:106
 msgid "DoubleItem"
 msgstr "ÇiftÖğe"
 
-#: lib/layouts/moderncv.layout:245
+#: lib/layouts/moderncv.layout:109
 msgid "Double Item:"
 msgstr "Çift Öğe:"
 
-#: lib/layouts/moderncv.layout:248
-#, fuzzy
-msgid "DoubleListItem"
-msgstr "ÇiftÖğe"
-
-#: lib/layouts/moderncv.layout:252
-#, fuzzy
-msgid "Double List Item:"
-msgstr "Çift Öğe:"
-
-#: lib/layouts/moderncv.layout:255
+#: lib/layouts/moderncv.layout:112
 msgid "Space"
 msgstr "Boşluk"
 
-#: lib/layouts/moderncv.layout:263
+#: lib/layouts/moderncv.layout:115
+msgid "Space:"
+msgstr "Boşluk:"
+
+#: lib/layouts/moderncv.layout:124
 msgid "Computer"
 msgstr "Bilgisayar"
 
-#: lib/layouts/moderncv.layout:267
+#: lib/layouts/moderncv.layout:127
+msgid "Computer:"
+msgstr "Bilgisayar:"
+
+#: lib/layouts/moderncv.layout:130
 msgid "EmptySection"
 msgstr "BoşBölüm"
 
-#: lib/layouts/moderncv.layout:276
+#: lib/layouts/moderncv.layout:139
 msgid "Empty Section"
 msgstr "Boş Bölüm"
 
-#: lib/layouts/moderncv.layout:283
+#: lib/layouts/moderncv.layout:146
 msgid "CloseSection"
 msgstr "BölümüKapat"
 
-#: lib/layouts/moderncv.layout:286
+#: lib/layouts/moderncv.layout:149
 msgid "Close Section"
 msgstr "Bölümü Kapat"
 
-#: lib/layouts/moderncv.layout:289
-#, fuzzy
-msgid "MakeCVtitle"
-msgstr "Şiir başlığı"
-
-#: lib/layouts/moderncv.layout:292
-#, fuzzy
-msgid "Make CV title"
-msgstr "İçindekiler başlığı:"
-
-#: lib/layouts/moderncv.layout:296
-#, fuzzy
-msgid "MakeLetterTitle"
-msgstr "MathLetters"
-
-#: lib/layouts/moderncv.layout:299
-msgid "Make letter title"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:303
-#, fuzzy
-msgid "MakeLetterClosing"
-msgstr "MathLetters"
-
-#: lib/layouts/moderncv.layout:306
-#, fuzzy
-msgid "Close Letter"
-msgstr "Sekmeyi kapat"
-
-#: lib/layouts/moderncv.layout:333 lib/layouts/stdlayouts.inc:74
+#: lib/layouts/moderncv.layout:176 lib/layouts/stdlayouts.inc:74
 msgid "--Separator--"
 msgstr "--Ayraç--"
 
-#: lib/layouts/moderncv.layout:341 lib/layouts/stdlayouts.inc:83
+#: lib/layouts/moderncv.layout:184 lib/layouts/stdlayouts.inc:83
 msgid "--- Separate Environment ---"
 msgstr "--- Ortam Ayracı ---"
-
-#: lib/layouts/moderncv.layout:351
-msgid "Recipient"
-msgstr ""
-
-#: lib/layouts/moderncv.layout:395
-#, fuzzy
-msgid "Enclosing"
-msgstr "Kapanış"
-
-#: lib/layouts/moderncv.layout:402
-#, fuzzy
-msgid "Enclosing:"
-msgstr "Kapanış:"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
@@ -10402,6 +10253,10 @@ msgstr "Revizyon"
 msgid "RevisionRemark"
 msgstr "RevizyonAçıklaması"
 
+#: lib/layouts/db_stdtitle.inc:94
+msgid "FirstName"
+msgstr "Ad"
+
 #: lib/layouts/literate-scrap.inc:12 lib/layouts/knitr.module:35
 #: lib/layouts/noweb.module:11 lib/layouts/sweave.module:45
 msgid "Scrap"
@@ -10607,11 +10462,11 @@ msgstr "Liste"
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:363
+#: lib/layouts/stdinsets.inc:364
 msgid "opt"
 msgstr "opt"
 
-#: lib/layouts/stdinsets.inc:444
+#: lib/layouts/stdinsets.inc:445
 msgid "Preview"
 msgstr "Önizleme"
 
@@ -11312,7 +11167,7 @@ msgstr ""
 msgid ""
 "This module adds support for using natbib together with apacite (the "
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
-"any bibliography that works with both the natbib and apacite packages."
+"any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
 
 #: lib/layouts/noweb.module:2
@@ -11768,252 +11623,252 @@ msgstr "Baskça"
 msgid "Belarusian"
 msgstr "Belarusça"
 
-#: lib/languages:187
+#: lib/languages:188
 msgid "Portuguese (Brazil)"
 msgstr "Portekizce (Brezilya)"
 
-#: lib/languages:195
+#: lib/languages:196
 msgid "Breton"
 msgstr "Bretonca"
 
-#: lib/languages:203
+#: lib/languages:204
 msgid "English (UK)"
 msgstr "İngilizce (UK)"
 
-#: lib/languages:212
+#: lib/languages:213
 msgid "Bulgarian"
 msgstr "Bulgarca"
 
-#: lib/languages:221
+#: lib/languages:222
 msgid "English (Canada)"
 msgstr "İngilizce (Kanada)"
 
-#: lib/languages:231
+#: lib/languages:232
 msgid "French (Canada)"
 msgstr "Fransızca (Kanada)"
 
-#: lib/languages:240
+#: lib/languages:241
 msgid "Catalan"
 msgstr "Katalanca"
 
-#: lib/languages:250
+#: lib/languages:251
 msgid "Chinese (simplified)"
 msgstr "Çince (basitleştirilmiş)"
 
-#: lib/languages:257
+#: lib/languages:258
 msgid "Chinese (traditional)"
 msgstr "Çince (geleneksel)"
 
-#: lib/languages:270
+#: lib/languages:271
 msgid "Croatian"
 msgstr "Hırvatça"
 
-#: lib/languages:278
+#: lib/languages:279
 msgid "Czech"
 msgstr "Çekçe"
 
-#: lib/languages:286
+#: lib/languages:287
 msgid "Danish"
 msgstr "Danca"
 
-#: lib/languages:301
+#: lib/languages:302
 msgid "Dutch"
 msgstr "Hollandaca"
 
-#: lib/languages:310
+#: lib/languages:311
 msgid "English"
 msgstr "İngilizce"
 
-#: lib/languages:320
+#: lib/languages:321
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:328
+#: lib/languages:329
 msgid "Estonian"
 msgstr "Estonca"
 
-#: lib/languages:341
+#: lib/languages:342
 msgid "Farsi"
 msgstr "Farsça"
 
-#: lib/languages:354
+#: lib/languages:355
 msgid "Finnish"
 msgstr "Fince"
 
-#: lib/languages:363
+#: lib/languages:364
 msgid "French"
 msgstr "Fransızca"
 
-#: lib/languages:377
+#: lib/languages:378
 msgid "Galician"
 msgstr "Galiçyaca"
 
-#: lib/languages:389
+#: lib/languages:390
 msgid "German (old spelling)"
 msgstr "Almanca (eski heceleme)"
 
-#: lib/languages:399
+#: lib/languages:400
 msgid "German"
 msgstr "Almanca"
 
-#: lib/languages:410
+#: lib/languages:411
 msgid "German (Switzerland)"
 msgstr "Almanca (İsviçre)"
 
-#: lib/languages:419 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
+#: lib/languages:420 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
 msgstr "Yunanca"
 
-#: lib/languages:428
+#: lib/languages:429
 msgid "Greek (polytonic)"
 msgstr "Yunanca (politonik)"
 
-#: lib/languages:438 src/frontends/qt4/GuiSymbols.cpp:64
+#: lib/languages:439 src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
 msgstr "İbranice"
 
-#: lib/languages:466
+#: lib/languages:467
 msgid "Icelandic"
 msgstr "İzlandaca"
 
-#: lib/languages:476
+#: lib/languages:477
 msgid "Interlingua"
 msgstr "cTümlev ekle"
 
-#: lib/languages:484
+#: lib/languages:485
 msgid "Irish"
 msgstr "İrlandaca"
 
-#: lib/languages:492
+#: lib/languages:493
 msgid "Italian"
 msgstr "İtalyanca"
 
-#: lib/languages:503
+#: lib/languages:504
 msgid "Japanese"
 msgstr "Japonca"
 
-#: lib/languages:512
+#: lib/languages:513
 msgid "Japanese (CJK)"
 msgstr "Japonca (CJK)"
 
-#: lib/languages:518
+#: lib/languages:519
 msgid "Kazakh"
 msgstr "Kazakça"
 
-#: lib/languages:525
+#: lib/languages:526
 msgid "Korean"
 msgstr "Korece"
 
-#: lib/languages:547
+#: lib/languages:548
 msgid "Latin"
 msgstr "Latince"
 
-#: lib/languages:557
+#: lib/languages:558
 msgid "Latvian"
 msgstr "Letonca"
 
-#: lib/languages:568
+#: lib/languages:569
 msgid "Lithuanian"
 msgstr "Litvanca"
 
-#: lib/languages:577
+#: lib/languages:578
 msgid "Lower Sorbian"
 msgstr "Lower Sorbian"
 
-#: lib/languages:585
+#: lib/languages:586
 msgid "Hungarian"
 msgstr "Macarca"
 
-#: lib/languages:602
+#: lib/languages:603
 msgid "Mongolian"
 msgstr "Moğolca"
 
-#: lib/languages:610
+#: lib/languages:611
 msgid "Norwegian (Bokmaal)"
 msgstr ""
 
-#: lib/languages:618
+#: lib/languages:619
 msgid "Norwegian (Nynorsk)"
 msgstr ""
 
-#: lib/languages:643
+#: lib/languages:644
 msgid "Polish"
 msgstr "Lehçe"
 
-#: lib/languages:651
+#: lib/languages:652
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: lib/languages:659
+#: lib/languages:660
 msgid "Romanian"
 msgstr "Rumence"
 
-#: lib/languages:667
+#: lib/languages:668
 msgid "Russian"
 msgstr "Rusça"
 
-#: lib/languages:675
+#: lib/languages:676
 msgid "North Sami"
 msgstr "North Sami"
 
-#: lib/languages:690
+#: lib/languages:691
 msgid "Scottish"
 msgstr "İskoçca"
 
-#: lib/languages:698
+#: lib/languages:699
 msgid "Serbian"
 msgstr "Sırpça"
 
-#: lib/languages:706
+#: lib/languages:708
 msgid "Serbian (Latin)"
 msgstr "Sırpça (Latin)"
 
-#: lib/languages:715
+#: lib/languages:717
 msgid "Slovak"
 msgstr "Slovakça"
 
-#: lib/languages:723
+#: lib/languages:725
 msgid "Slovene"
 msgstr "Slovence"
 
-#: lib/languages:731
+#: lib/languages:733
 msgid "Spanish"
 msgstr "İspanyolca"
 
-#: lib/languages:743
+#: lib/languages:745
 msgid "Spanish (Mexico)"
 msgstr "İspanyolca (Meksika)"
 
-#: lib/languages:754
+#: lib/languages:756
 msgid "Swedish"
 msgstr "İsveççe"
 
-#: lib/languages:783 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:785 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Tayca"
 
-#: lib/languages:794
+#: lib/languages:796
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: lib/languages:807
+#: lib/languages:809
 msgid "Turkmen"
 msgstr ""
 
-#: lib/languages:816
+#: lib/languages:818
 msgid "Ukrainian"
 msgstr "Ukraynaca"
 
-#: lib/languages:824
+#: lib/languages:826
 msgid "Upper Sorbian"
 msgstr "Upper Sorbian"
 
-#: lib/languages:842
+#: lib/languages:844
 msgid "Vietnamese"
 msgstr "Vietnamca"
 
-#: lib/languages:851
+#: lib/languages:853
 msgid "Welsh"
 msgstr "Galce"
 
@@ -12198,20 +12053,15 @@ msgstr "Japanese (non-CJK) (JIS)"
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Japanese (non-CJK) (SJIS)"
 
-#: lib/encodings:186
-#, fuzzy
-msgid "Japanese (non-CJK) (utf8)"
-msgstr "Japanese (non-CJK) (JIS)"
-
-#: lib/encodings:193
+#: lib/encodings:191
 msgid "Thai (TIS 620-0)"
 msgstr "Tayca (TIS 620-0)"
 
-#: lib/encodings:198
+#: lib/encodings:196
 msgid "Unicode (XeTeX) (utf8)"
 msgstr "Unikod (XeTeX) (utf8)"
 
-#: lib/encodings:202
+#: lib/encodings:200
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -12697,17 +12547,17 @@ msgid "Justified Line Break|J"
 msgstr "Satır Kesmesini Yasla|e"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:102 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1228 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1225 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Kes"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:103 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1233 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1230 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopyala"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1181 src/mathed/InsetMathGrid.cpp:1327
+#: src/Text3.cpp:1178 src/mathed/InsetMathGrid.cpp:1327
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Yapıştır"
@@ -14046,19 +13896,29 @@ msgid "Feynman-diagram Manual|F"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:587
-msgid "Linguistics Manual|L"
+#, fuzzy
+msgid "Knitr Manual|K"
 msgstr "Dilbilimsel Klavuz|D"
 
 #: lib/ui/stdmenus.inc:588
+#, fuzzy
+msgid "LilyPond Manual|P"
+msgstr "LilyPond müzik"
+
+#: lib/ui/stdmenus.inc:589
+msgid "Linguistics Manual|L"
+msgstr "Dilbilimsel Klavuz|D"
+
+#: lib/ui/stdmenus.inc:590
 msgid "Multicolumn Manual|M"
 msgstr "Çoklusütun Klavuzu|Ç"
 
-#: lib/ui/stdmenus.inc:589
+#: lib/ui/stdmenus.inc:591
 #, fuzzy
 msgid "Sweave Manual|S"
 msgstr "Sweave|S"
 
-#: lib/ui/stdmenus.inc:590
+#: lib/ui/stdmenus.inc:592
 msgid "XY-pic Manual|X"
 msgstr "XY-pic Klavuzu|X"
 
@@ -17366,30 +17226,30 @@ msgstr ""
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:247 src/frontends/qt4/GuiDocument.cpp:1973
+#: src/BiblioInfo.cpp:265 src/frontends/qt4/GuiDocument.cpp:1973
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s ve %2$s"
 
-#: src/BiblioInfo.cpp:251
+#: src/BiblioInfo.cpp:268
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/BiblioInfo.cpp:416 src/BiblioInfo.cpp:453 src/BiblioInfo.cpp:464
-#: src/BiblioInfo.cpp:514 src/BiblioInfo.cpp:518
+#: src/BiblioInfo.cpp:432 src/BiblioInfo.cpp:473 src/BiblioInfo.cpp:484
+#: src/BiblioInfo.cpp:534 src/BiblioInfo.cpp:538
 msgid "ERROR!"
 msgstr ""
 
-#: src/BiblioInfo.cpp:657 src/BiblioInfo.cpp:660
+#: src/BiblioInfo.cpp:703
 msgid "No year"
 msgstr "Yıl yok"
 
-#: src/BiblioInfo.cpp:733 src/BiblioInfo.cpp:793
+#: src/BiblioInfo.cpp:771 src/BiblioInfo.cpp:831
 msgid "Add to bibliography only."
 msgstr "Sadece kaynakçaya ekle."
 
-#: src/BiblioInfo.cpp:789
+#: src/BiblioInfo.cpp:827
 msgid "before"
 msgstr "önce"
 
@@ -17547,7 +17407,7 @@ msgstr ""
 "%1$s farklı bir LyX sürümü fakat lyx2lyx çevrim betiği dönüşümü başarısız "
 "oldu."
 
-#: src/Buffer.cpp:1134 src/Buffer.cpp:3860 src/Buffer.cpp:3922
+#: src/Buffer.cpp:1134 src/Buffer.cpp:3878 src/Buffer.cpp:3940
 #, fuzzy
 msgid "File is read-only"
 msgstr "Belge yalnızca okunabilir"
@@ -17568,7 +17428,7 @@ msgstr "%1$s belgesi dışarıdan değiştirilmiş. Üzerine yazma istiyor musun
 msgid "Overwrite modified file?"
 msgstr "Değiştirilmiş dosyanın üzerine yaz?"
 
-#: src/Buffer.cpp:1147 src/Buffer.cpp:2399 src/Exporter.cpp:50
+#: src/Buffer.cpp:1147 src/Buffer.cpp:2417 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
 #: src/frontends/qt4/GuiView.cpp:2287
 msgid "&Overwrite"
@@ -17691,37 +17551,37 @@ msgstr "chktex hatası"
 msgid "Could not run chktex successfully."
 msgstr "chktex başarıyla çalıştırılamadı."
 
-#: src/Buffer.cpp:2101
+#: src/Buffer.cpp:2119
 #, fuzzy, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "%1$s biçiminde dışa aktarım için bilgi mevcut değil."
 
-#: src/Buffer.cpp:2165 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2183 src/frontends/qt4/GuiView.cpp:3130
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "%1$s biçiminde dışa aktarım için bilgi mevcut değil."
 
-#: src/Buffer.cpp:2248
+#: src/Buffer.cpp:2266
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2313
+#: src/Buffer.cpp:2331
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Bilinmeyen araç çubuğu \"%1$s\""
 
-#: src/Buffer.cpp:2320
+#: src/Buffer.cpp:2338
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Bilinmeyen araç çubuğu \"%1$s\""
 
-#: src/Buffer.cpp:2330
+#: src/Buffer.cpp:2348
 #, fuzzy
 msgid "Error exporting to DVI."
 msgstr "Pixmap oluşturulurken hata"
 
-#: src/Buffer.cpp:2395 src/Exporter.cpp:45
+#: src/Buffer.cpp:2413 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17732,88 +17592,88 @@ msgstr ""
 "\n"
 "O dosyanın üzerine yazmak istiyor musunuz?"
 
-#: src/Buffer.cpp:2398 src/Exporter.cpp:48
+#: src/Buffer.cpp:2416 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Dosyanın üzerine yaz?"
 
-#: src/Buffer.cpp:2415
+#: src/Buffer.cpp:2433
 #, fuzzy
 msgid "Error running external commands."
 msgstr "Dahili yerleşim bilgisi okuma hatası"
 
-#: src/Buffer.cpp:3222
+#: src/Buffer.cpp:3240
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "%1$d paragrafının kaynak kodunu önizle"
 
-#: src/Buffer.cpp:3226
+#: src/Buffer.cpp:3244
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "%1$s ve %2$s paragrafları arasının kaynak kodunu önizle"
 
-#: src/Buffer.cpp:3279
+#: src/Buffer.cpp:3297
 msgid "Preview source code"
 msgstr "Kaynak kodu önizle"
 
-#: src/Buffer.cpp:3281
+#: src/Buffer.cpp:3299
 #, fuzzy
 msgid "Preview preamble"
 msgstr "Önizleme hazır"
 
-#: src/Buffer.cpp:3283
+#: src/Buffer.cpp:3301
 #, fuzzy
 msgid "Preview body"
 msgstr "Önizleme hazır"
 
-#: src/Buffer.cpp:3298
+#: src/Buffer.cpp:3316
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3410
+#: src/Buffer.cpp:3428
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s otomatik kaydediliyor"
 
-#: src/Buffer.cpp:3464
+#: src/Buffer.cpp:3482
 msgid "Autosave failed!"
 msgstr "Otokayıt başarısız!"
 
-#: src/Buffer.cpp:3525
+#: src/Buffer.cpp:3543
 msgid "Autosaving current document..."
 msgstr "Belge otomatik kaydediliyor..."
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3633
 msgid "Couldn't export file"
 msgstr "Dosya dışarı aktarılamadı"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3634
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$s biçiminde dışa aktarım için bilgi mevcut değil."
 
-#: src/Buffer.cpp:3672
+#: src/Buffer.cpp:3690
 msgid "File name error"
 msgstr "Dosya adı hatası"
 
-#: src/Buffer.cpp:3673
+#: src/Buffer.cpp:3691
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Belge dosya yolu boşluk içeremez."
 
-#: src/Buffer.cpp:3757
+#: src/Buffer.cpp:3775
 msgid "Document export cancelled."
 msgstr "Belge dışarı aktarımı iptal edildi."
 
-#: src/Buffer.cpp:3767
+#: src/Buffer.cpp:3785
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "%1$s belgesi '%2$s' olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:3773
+#: src/Buffer.cpp:3791
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Belge %1$s olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:3846
+#: src/Buffer.cpp:3864
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17824,64 +17684,64 @@ msgstr ""
 "\n"
 "Acil durum kaydından kurtarılsın mı?"
 
-#: src/Buffer.cpp:3849
+#: src/Buffer.cpp:3867
 msgid "Load emergency save?"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:3850
+#: src/Buffer.cpp:3868
 msgid "&Recover"
 msgstr "&Kurtar"
 
-#: src/Buffer.cpp:3850
+#: src/Buffer.cpp:3868
 msgid "&Load Original"
 msgstr "&Aslını Yükle"
 
-#: src/Buffer.cpp:3861
+#: src/Buffer.cpp:3879
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:3867
+#: src/Buffer.cpp:3885
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3869
+#: src/Buffer.cpp:3887
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:3870
+#: src/Buffer.cpp:3888
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:3874 src/Buffer.cpp:3886
+#: src/Buffer.cpp:3892 src/Buffer.cpp:3904
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Harici dosya seçin"
 
-#: src/Buffer.cpp:3875 src/Buffer.cpp:3888
+#: src/Buffer.cpp:3893 src/Buffer.cpp:3906
 #, fuzzy
 msgid "&Keep"
 msgstr "Koru"
 
-#: src/Buffer.cpp:3879
+#: src/Buffer.cpp:3897
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:3880
+#: src/Buffer.cpp:3898
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:3887
+#: src/Buffer.cpp:3905
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:3910
+#: src/Buffer.cpp:3928
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17892,45 +17752,45 @@ msgstr ""
 "\n"
 "Belge yerine yedek açılsın mı?"
 
-#: src/Buffer.cpp:3912
+#: src/Buffer.cpp:3930
 msgid "Load backup?"
 msgstr "Yedeği yükle?"
 
-#: src/Buffer.cpp:3913
+#: src/Buffer.cpp:3931
 msgid "&Load backup"
 msgstr "&Yedeği yükle"
 
-#: src/Buffer.cpp:3913
+#: src/Buffer.cpp:3931
 msgid "Load &original"
 msgstr "&Aslını yükle"
 
-#: src/Buffer.cpp:3923
+#: src/Buffer.cpp:3941
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4265 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4283 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Saçma!!! "
 
-#: src/Buffer.cpp:4465
+#: src/Buffer.cpp:4483
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Belge %1$s açıldı."
 
-#: src/Buffer.cpp:4468
+#: src/Buffer.cpp:4486
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "%1$s belgesi okunamadı"
 
-#: src/Buffer.cpp:4535
+#: src/Buffer.cpp:4553
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Dosya Dahil Et...|y"
 
-#: src/Buffer.cpp:4536
+#: src/Buffer.cpp:4554
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18018,7 +17878,7 @@ msgstr "Belge yalnızca okunabilir"
 msgid "This portion of the document is deleted."
 msgstr "Belgenin bu kısmı silindi."
 
-#: src/BufferView.cpp:1043 src/BufferView.cpp:1930
+#: src/BufferView.cpp:1043 src/BufferView.cpp:1932
 #: src/frontends/qt4/GuiView.cpp:3186 src/frontends/qt4/GuiView.cpp:3261
 msgid "Absolute filename expected."
 msgstr "Tam dosya adı beklenir."
@@ -18036,7 +17896,7 @@ msgstr "Başka geri alma bilgisi yok"
 msgid "No further redo information"
 msgstr "Başka ileri alma bilgisi yok"
 
-#: src/BufferView.cpp:1537 src/lyxfind.cpp:375 src/lyxfind.cpp:393
+#: src/BufferView.cpp:1537 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "Dizge bulunamadı!"
 
@@ -18095,57 +17955,57 @@ msgstr "Tek karakter (boşluklar hariç)"
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/BufferView.cpp:1807
+#: src/BufferView.cpp:1809
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1809
+#: src/BufferView.cpp:1811
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1817
+#: src/BufferView.cpp:1819
 #, fuzzy
 msgid "Branch name"
 msgstr "Dallar"
 
-#: src/BufferView.cpp:1824 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1826 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:1956
+#: src/BufferView.cpp:1958
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/BufferView.cpp:2305
+#: src/BufferView.cpp:2307
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2306
+#: src/BufferView.cpp:2308
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2685
+#: src/BufferView.cpp:2689
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2700
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.cpp:2698
+#: src/BufferView.cpp:2702
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
 
-#: src/BufferView.cpp:2963
+#: src/BufferView.cpp:2967
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -18156,11 +18016,11 @@ msgstr ""
 "şu sebeplerden\n"
 "okunamadı: %2$s"
 
-#: src/BufferView.cpp:2965
+#: src/BufferView.cpp:2969
 msgid "Could not read file"
 msgstr "Dosya okunamıyor"
 
-#: src/BufferView.cpp:2972
+#: src/BufferView.cpp:2976
 #, c-format
 msgid ""
 "%1$s\n"
@@ -18169,15 +18029,15 @@ msgstr ""
 "%1$s\n"
 " okunabilir değil."
 
-#: src/BufferView.cpp:2973 src/output.cpp:39
+#: src/BufferView.cpp:2977 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Dosya açılamıyor"
 
-#: src/BufferView.cpp:2980
+#: src/BufferView.cpp:2984
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8 kodlanmayan dosya okunuyor"
 
-#: src/BufferView.cpp:2981
+#: src/BufferView.cpp:2985
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -18233,8 +18093,8 @@ msgstr "ChkTeX uyarı id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX uyarı id # "
 
-#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:178
-#: src/insets/InsetBibtex.cpp:203
+#: src/Color.cpp:201 src/insets/InsetBibtex.cpp:182
+#: src/insets/InsetBibtex.cpp:207
 msgid "none"
 msgstr "yok"
 
@@ -18713,19 +18573,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s i %2$s e kopyalarken hata."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3234
+#: src/frontends/qt4/GuiDocument.cpp:3236
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Daktilo"
@@ -19175,13 +19035,13 @@ msgstr "--import seçeneği için biçim [latex, ps, ...] eksik"
 msgid "Missing filename for --import"
 msgstr "--import seçeneği için dosya adı eksik"
 
-#: src/LyXRC.cpp:3086
+#: src/LyXRC.cpp:3082
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:3090
+#: src/LyXRC.cpp:3086
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -19189,25 +19049,25 @@ msgstr ""
 "Alternatif bir dil seçin. Öntanımlı olan bu belgenin dili olarak "
 "kullanılıyor."
 
-#: src/LyXRC.cpp:3098
+#: src/LyXRC.cpp:3094
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:3102
+#: src/LyXRC.cpp:3098
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 
-#: src/LyXRC.cpp:3106
+#: src/LyXRC.cpp:3102
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Otomatik kayıtlar arasındaki süre (saniye cinsinden). 0 otokayıtı kapatır."
 
-#: src/LyXRC.cpp:3113
+#: src/LyXRC.cpp:3109
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -19215,7 +19075,7 @@ msgstr ""
 "Yedek dosyalarının saklanacağı dizin. Eğer dizgi boşsa, LyX yedek "
 "dosyalarını orijinal dosyanın bulunduğu dizinde saklayacak."
 
-#: src/LyXRC.cpp:3117
+#: src/LyXRC.cpp:3113
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -19223,21 +19083,21 @@ msgstr ""
 "bibtex seçeneklerini (cf. man bibtex) tanımlayın ya da alternatif derleyici "
 "(ör. mlbibtex veya bibulus) seçin."
 
-#: src/LyXRC.cpp:3121
+#: src/LyXRC.cpp:3117
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3125
+#: src/LyXRC.cpp:3121
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:3129
+#: src/LyXRC.cpp:3125
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:3133
+#: src/LyXRC.cpp:3129
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -19245,7 +19105,7 @@ msgstr ""
 "chktex in nasıl çalıştırılacağını tanımlayın. Ör. \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -n22 -n25 -n30 -n38\" ChkTeX belgesine bakın."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3139
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -19253,7 +19113,7 @@ msgstr ""
 "LyX normalde kaydırma çubuğunu oynatsanız da imlecin pozisyonunu "
 "güncellemez. İmlecin sürekli ekranda görünmesini istiyorsanız aktif yapın."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3147
 #, fuzzy
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -19263,15 +19123,15 @@ msgstr ""
 "LyX normalde kaydırma çubuğunu oynatsanız da imlecin pozisyonunu "
 "güncellemez. İmlecin sürekli ekranda görünmesini istiyorsanız aktif yapın."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3151
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 
-#: src/LyXRC.cpp:3159
+#: src/LyXRC.cpp:3155
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Kelime seviyesinde imlec hareketi için Mac OSX tarzını kullan"
 
-#: src/LyXRC.cpp:3163
+#: src/LyXRC.cpp:3159
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -19279,7 +19139,7 @@ msgstr ""
 "İmleç makro adının içerisinde olduğunda Matematik Makrosunun etrafında küçük "
 "bir kutu göster."
 
-#: src/LyXRC.cpp:3168
+#: src/LyXRC.cpp:3164
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -19288,7 +19148,7 @@ msgstr ""
 "Normal strftime biçimlerini kabul eder; detaylar için man strftime'a bakın. "
 "Ör.\"%A, %e, %B %Y\"."
 
-#: src/LyXRC.cpp:3172
+#: src/LyXRC.cpp:3168
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -19296,19 +19156,19 @@ msgstr ""
 "Komut tanım dosyası. Tam yolu belirtebilirsiniz veya LyX genel ve yerel "
 "komutlar/ dizinine bakacaktır."
 
-#: src/LyXRC.cpp:3176
+#: src/LyXRC.cpp:3172
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:3180
+#: src/LyXRC.cpp:3176
 msgid "New documents will be assigned this language."
 msgstr "Yeni belgeler bu dile atanacak."
 
-#: src/LyXRC.cpp:3184
+#: src/LyXRC.cpp:3180
 msgid "Specify the default paper size."
 msgstr "Öntanımlı kağıt boyunu belirleyin."
 
-#: src/LyXRC.cpp:3188
+#: src/LyXRC.cpp:3184
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -19316,28 +19176,28 @@ msgstr ""
 "Ana pencere simge durumuna küçüldüğünde diyalogları da simge durumuna "
 "küçült. (Değişiklik yapıldıktan sonraki diyalogları etkiler.)"
 
-#: src/LyXRC.cpp:3192
+#: src/LyXRC.cpp:3188
 msgid "Select how LyX will display any graphics."
 msgstr "LyX'in grafikleri nasıl göstereceğini seçin."
 
-#: src/LyXRC.cpp:3196
+#: src/LyXRC.cpp:3192
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 "Belgeleriniz için öntanımlı yol. Değer girilmezse LyX açıldığı dizini seçer."
 
-#: src/LyXRC.cpp:3200
+#: src/LyXRC.cpp:3196
 msgid "Specify additional chars that can be part of a word."
 msgstr "Bir kelimenin parçası olabilecek ek karakterleri belirt."
 
-#: src/LyXRC.cpp:3204
+#: src/LyXRC.cpp:3200
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:3208
+#: src/LyXRC.cpp:3204
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -19345,11 +19205,11 @@ msgstr ""
 "LaTeX2e fontenc paketinin kullandığı font kodlaması. İngilizce dışındaki "
 "dillerde T1 şiddetle tavsiye edilir."
 
-#: src/LyXRC.cpp:3212
+#: src/LyXRC.cpp:3208
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:3219
+#: src/LyXRC.cpp:3215
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -19359,11 +19219,11 @@ msgstr ""
 "derleyici seçin Ör., xindy/make-rules kullanıyorsanız, komut şu şekilde "
 "olmalı \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3223
+#: src/LyXRC.cpp:3219
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3227
+#: src/LyXRC.cpp:3223
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -19371,24 +19231,24 @@ msgstr ""
 "Terminoloji için kullanılan makeindex seçeneklerini tanımlayın. İndeks "
 "işleme seçeneklerinden farklılık gösterebilir."
 
-#: src/LyXRC.cpp:3236
+#: src/LyXRC.cpp:3232
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:3240
+#: src/LyXRC.cpp:3236
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Belgenin başında dil değişim komutu gerekirse seçin."
 
-#: src/LyXRC.cpp:3244
+#: src/LyXRC.cpp:3240
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Belgenin sonunda dil değişim komutu gerekirse seçin."
 
-#: src/LyXRC.cpp:3248
+#: src/LyXRC.cpp:3244
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -19397,21 +19257,21 @@ msgstr ""
 "Belgenin dilinden başka bir dile geçmek için kullanılan LaTeX komutu. Ör. "
 "\\selectlanguage{$$lang} $$lang ikinci dilin adı."
 
-#: src/LyXRC.cpp:3252
+#: src/LyXRC.cpp:3248
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Belgenin diline geri dönmek için kullanılan LaTeX komutu."
 
-#: src/LyXRC.cpp:3256
+#: src/LyXRC.cpp:3252
 msgid "The LaTeX command for local changing of the language."
 msgstr "Dili yerel değiştirmek için LaTeX komutu."
 
-#: src/LyXRC.cpp:3260
+#: src/LyXRC.cpp:3256
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:3264
+#: src/LyXRC.cpp:3260
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -19419,26 +19279,26 @@ msgstr ""
 "Dil paketini yüklemek için LaTeX komutu. Ör. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3268
+#: src/LyXRC.cpp:3264
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:3272
+#: src/LyXRC.cpp:3268
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "LyX'in kayıtlı pozisyona gitmesini istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:3276
+#: src/LyXRC.cpp:3272
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Son LyX oturumundaki dosyaların yüklenmesini istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:3280
+#: src/LyXRC.cpp:3276
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "LyX'in yedek dosya oluşturmasını istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:3284
+#: src/LyXRC.cpp:3280
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -19446,28 +19306,28 @@ msgstr ""
 "Belgenin dilinin dışındaki yabancı dillere ait kelimelerin ışıklandırmasını "
 "kontrol etmek için seçin."
 
-#: src/LyXRC.cpp:3288
+#: src/LyXRC.cpp:3284
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Farenin kaydırma çubuğunun dönüş hızı."
 
-#: src/LyXRC.cpp:3293
+#: src/LyXRC.cpp:3289
 msgid "The completion popup delay."
 msgstr "Tamamlama açılır pencere gecikmesi"
 
-#: src/LyXRC.cpp:3297
+#: src/LyXRC.cpp:3293
 msgid "Select to display the completion popup in math mode."
 msgstr "Matematik modunda tamamlama açılır penceresini göster."
 
-#: src/LyXRC.cpp:3301
+#: src/LyXRC.cpp:3297
 msgid "Select to display the completion popup in text mode."
 msgstr "Metin modunda tamamlama açılır penceresini göster."
 
-#: src/LyXRC.cpp:3305
+#: src/LyXRC.cpp:3301
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr "Özgün olmayan tamamlamadan sonra gecikmesiz açılır pencere göster."
 
-#: src/LyXRC.cpp:3309
+#: src/LyXRC.cpp:3305
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -19475,52 +19335,52 @@ msgstr ""
 "Tamamlamanın varolduğunu belirtmek için imlecin üzerinde küçük bir üçgen "
 "göster."
 
-#: src/LyXRC.cpp:3313
+#: src/LyXRC.cpp:3309
 msgid "The inline completion delay."
 msgstr "Satıriçi tamamlama gecikmesi"
 
-#: src/LyXRC.cpp:3317
+#: src/LyXRC.cpp:3313
 msgid "Select to display the inline completion in math mode."
 msgstr "Satıriçi tamamlamayı matematik modunda göstermek için seç."
 
-#: src/LyXRC.cpp:3321
+#: src/LyXRC.cpp:3317
 msgid "Select to display the inline completion in text mode."
 msgstr "Satıriçi tamamlamayı metin modunda göstermek için seç."
 
-#: src/LyXRC.cpp:3325
+#: src/LyXRC.cpp:3321
 msgid "Use \"...\" to shorten long completions."
 msgstr "Uzun tamamlamaları kısaltmak için \"...\" kullan."
 
-#: src/LyXRC.cpp:3329
+#: src/LyXRC.cpp:3325
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:3333
+#: src/LyXRC.cpp:3329
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:3344
+#: src/LyXRC.cpp:3340
 msgid "Shows a typeset preview of things such as math"
 msgstr "Matematik gibi şeylerin dizgi önizlemesini gösterir"
 
-#: src/LyXRC.cpp:3348
+#: src/LyXRC.cpp:3344
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Önizlenen denklemler numara yerine \"(#)\" etiketli olacak"
 
-#: src/LyXRC.cpp:3352
+#: src/LyXRC.cpp:3348
 msgid "Scale the preview size to suit."
 msgstr "Uyması için önizleme boyutunu ölçekle."
 
-#: src/LyXRC.cpp:3356
+#: src/LyXRC.cpp:3352
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:3360
+#: src/LyXRC.cpp:3356
 msgid "The option for specifying the number of copies to print."
 msgstr "Kaç kopya yazdırılacağını belirleme seçeneği."
 
-#: src/LyXRC.cpp:3364
+#: src/LyXRC.cpp:3360
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -19528,81 +19388,81 @@ msgstr ""
 "Yazdırmada kullanılan öntanımlı yazıcı. Birşey seçilmezse PRINTER ortam "
 "değişkeni kullanılacak."
 
-#: src/LyXRC.cpp:3368
+#: src/LyXRC.cpp:3364
 msgid "The option to print only even pages."
 msgstr "Yalnızca çift sayfaları yazdırma seçeneği."
 
-#: src/LyXRC.cpp:3372
+#: src/LyXRC.cpp:3368
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:3376
+#: src/LyXRC.cpp:3372
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Yazıcı programı çıktı dosyası uzantısı. Genellikle \".ps\"."
 
-#: src/LyXRC.cpp:3380
+#: src/LyXRC.cpp:3376
 msgid "The option to print out in landscape."
 msgstr "Yatay yazdırma seçeneği."
 
-#: src/LyXRC.cpp:3384
+#: src/LyXRC.cpp:3380
 msgid "The option to print only odd pages."
 msgstr "Yalnızca tek sayfaları yazdırma seçeneği."
 
-#: src/LyXRC.cpp:3388
+#: src/LyXRC.cpp:3384
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Basılacak sayfaları virgülle ayrılmış listeyle belirleme seçeneği."
 
-#: src/LyXRC.cpp:3392
+#: src/LyXRC.cpp:3388
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Yazdırılacak kağıdığın boyutlarını belirtme seçeneği."
 
-#: src/LyXRC.cpp:3396
+#: src/LyXRC.cpp:3392
 msgid "The option to specify paper type."
 msgstr "Kağıt tipini belirtme seçeneği."
 
-#: src/LyXRC.cpp:3400
+#: src/LyXRC.cpp:3396
 msgid "The option to reverse the order of the pages printed."
 msgstr "Sayfaları ters sırada basma seçeneği."
 
-#: src/LyXRC.cpp:3404
+#: src/LyXRC.cpp:3400
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:3408
+#: src/LyXRC.cpp:3404
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:3412
+#: src/LyXRC.cpp:3408
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/LyXRC.cpp:3416
+#: src/LyXRC.cpp:3412
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:3420
+#: src/LyXRC.cpp:3416
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:3424
+#: src/LyXRC.cpp:3420
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Beğendiğiniz yazdırma programı, ör. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3432
+#: src/LyXRC.cpp:3428
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:3436
+#: src/LyXRC.cpp:3432
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -19610,22 +19470,22 @@ msgstr ""
 "Ekranınızın DPI'yı(inç başına düşen nokta) LyX tarafından otomatik olarak "
 "algılandı. Ters giderse, ayarları buradan değiştirin."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3438
 msgid "The screen fonts used to display the text while editing."
 msgstr "Düzenleme sırasında metni göstermek için kullanılacak ekran fontları."
 
-#: src/LyXRC.cpp:3451
+#: src/LyXRC.cpp:3447
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:3455
+#: src/LyXRC.cpp:3451
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Ekran fontlarını ölçekleme işleminde kullanılan font büyüklükleri."
 
-#: src/LyXRC.cpp:3460
+#: src/LyXRC.cpp:3456
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -19634,13 +19494,13 @@ msgstr ""
 "Ekran fontları için yakınlaştırma yüzdesi. %100'e ayarlamak kağıtta nasıl "
 "görünüyorsa aynı boyutta gösterir."
 
-#: src/LyXRC.cpp:3464
+#: src/LyXRC.cpp:3460
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Oturum yöneticisinin pencere geometrisini kaydetmesine ve geri yüklemesine "
 "izin ver"
 
-#: src/LyXRC.cpp:3468
+#: src/LyXRC.cpp:3464
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -19648,28 +19508,28 @@ msgstr ""
 "lyxserver'ı başlatır. Borular \".in\" ve \".out\" ek uzantılarını alırlar. "
 "Sadece gelişmiş kullanıcılar içindir."
 
-#: src/LyXRC.cpp:3475
+#: src/LyXRC.cpp:3471
 msgid "De-select if you don't want the startup banner."
 msgstr "Bannerı başlatmak istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:3479
+#: src/LyXRC.cpp:3475
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX geçici dizinlerini bu yola yerleştirecek. LyX'den çıkarken silinecekler."
 
-#: src/LyXRC.cpp:3483
+#: src/LyXRC.cpp:3479
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:3487
+#: src/LyXRC.cpp:3483
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:3504
+#: src/LyXRC.cpp:3500
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -19677,22 +19537,22 @@ msgstr ""
 "UI (kullanıcı arabirim) dosyası. Tam yolu belirtebilirsiniz ya da LyX genel "
 "ve yerel ui/ dizinlerini arar."
 
-#: src/LyXRC.cpp:3514
+#: src/LyXRC.cpp:3510
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
 
-#: src/LyXRC.cpp:3518
+#: src/LyXRC.cpp:3514
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Çalışma alanındaki araç ipuçlarının görünümünü otomatik yap"
 
-#: src/LyXRC.cpp:3522
+#: src/LyXRC.cpp:3518
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr "Mac ve Windows'da performansı artıran pixmap önbelleğini aç."
 
-#: src/LyXRC.cpp:3526
+#: src/LyXRC.cpp:3522
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "DVI görüntüleyiciye kağıt komutunu belirtin (boş bırakın ya da \"-paper\" "
@@ -19772,11 +19632,11 @@ msgstr ""
 "Yeni yerleşim daha önce kullanılan yerleşime izin vermiyor.\n"
 "Öntanımlıya geçiliyor."
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Memory problem"
 msgstr "Bellek problemi"
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf düzgün başlatılamadı"
 
@@ -19895,23 +19755,23 @@ msgstr "Geçersiz düzenli ifade!"
 msgid "Regexp editor mode"
 msgstr "Matematik düzenleyici modu"
 
-#: src/Text3.cpp:1293
+#: src/Text3.cpp:1290
 msgid "Layout "
 msgstr "Yerleşim "
 
-#: src/Text3.cpp:1294
+#: src/Text3.cpp:1291
 msgid " not known"
 msgstr " bilinmiyor"
 
-#: src/Text3.cpp:1764 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1388
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
-#: src/Text3.cpp:1920 src/Text3.cpp:1932
+#: src/Text3.cpp:1917 src/Text3.cpp:1929
 msgid "Character set"
 msgstr "Karakter seti"
 
-#: src/Text3.cpp:2139 src/Text3.cpp:2150
+#: src/Text3.cpp:2136 src/Text3.cpp:2147
 msgid "Paragraph layout set"
 msgstr "Paragraf yerleşim seçimi"
 
@@ -20696,7 +20556,7 @@ msgstr "Dosya adı"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2123
-#: src/frontends/qt4/GuiDocument.cpp:3120
+#: src/frontends/qt4/GuiDocument.cpp:3122
 #: src/frontends/qt4/GuiProgressView.cpp:123
 #: src/frontends/qt4/GuiProgressView.cpp:137
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20705,7 +20565,7 @@ msgstr "Evet"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2122
-#: src/frontends/qt4/GuiDocument.cpp:3119
+#: src/frontends/qt4/GuiDocument.cpp:3121
 #: src/frontends/qt4/GuiProgressView.cpp:89
 #: src/frontends/qt4/GuiProgressView.cpp:122
 #: src/frontends/qt4/GuiProgressView.cpp:158
@@ -20906,7 +20766,7 @@ msgstr "LyX Belgeleri (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:1852
 #: src/frontends/qt4/GuiDocument.cpp:1927
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Error"
 msgstr "Hata"
 
@@ -21286,14 +21146,14 @@ msgstr "Liste parametrelerini buraya girin. Parametre listesi için ? kullanın.
 
 #: src/frontends/qt4/GuiDocument.cpp:1305
 #: src/frontends/qt4/GuiDocument.cpp:1326
-#: src/frontends/qt4/GuiDocument.cpp:2875
+#: src/frontends/qt4/GuiDocument.cpp:2877
 msgid "Document Class"
 msgstr "Belge Sınıfı"
 
 #: src/frontends/qt4/GuiDocument.cpp:1306
-#: src/frontends/qt4/GuiDocument.cpp:2873
-#: src/frontends/qt4/GuiDocument.cpp:2874
-#: src/frontends/qt4/GuiDocument.cpp:2877 src/frontends/qt4/qt_helpers.cpp:553
+#: src/frontends/qt4/GuiDocument.cpp:2875
+#: src/frontends/qt4/GuiDocument.cpp:2876
+#: src/frontends/qt4/GuiDocument.cpp:2879 src/frontends/qt4/qt_helpers.cpp:553
 msgid "Child Documents"
 msgstr "Alt Belgeler"
 
@@ -21360,9 +21220,9 @@ msgstr "Öntanımlı"
 #: src/frontends/qt4/GuiDocument.cpp:1734
 #: src/frontends/qt4/GuiDocument.cpp:1740
 #: src/frontends/qt4/GuiDocument.cpp:1746
-#: src/frontends/qt4/GuiDocument.cpp:2908
-#: src/frontends/qt4/GuiDocument.cpp:2916
-#: src/frontends/qt4/GuiDocument.cpp:2924
+#: src/frontends/qt4/GuiDocument.cpp:2910
+#: src/frontends/qt4/GuiDocument.cpp:2918
+#: src/frontends/qt4/GuiDocument.cpp:2926
 msgid " (not installed)"
 msgstr " (yüklü değil)"
 
@@ -21408,12 +21268,12 @@ msgid "LyX Files (*.lyx)"
 msgstr "LyX Dosyaları (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1912
-#: src/frontends/qt4/GuiDocument.cpp:3174
+#: src/frontends/qt4/GuiDocument.cpp:3176
 msgid "Unapplied changes"
 msgstr "Uygulanmamış değişiklikler"
 
 #: src/frontends/qt4/GuiDocument.cpp:1913
-#: src/frontends/qt4/GuiDocument.cpp:3175
+#: src/frontends/qt4/GuiDocument.cpp:3177
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -21422,12 +21282,12 @@ msgstr ""
 "Şimdi uygularsanız, bu eylemden sonra kaybolabilirler."
 
 #: src/frontends/qt4/GuiDocument.cpp:1915
-#: src/frontends/qt4/GuiDocument.cpp:3177
+#: src/frontends/qt4/GuiDocument.cpp:3179
 msgid "&Dismiss"
 msgstr "&Kaybol"
 
 #: src/frontends/qt4/GuiDocument.cpp:1927
-#: src/frontends/qt4/GuiDocument.cpp:3185
+#: src/frontends/qt4/GuiDocument.cpp:3187
 msgid "Unable to set document class."
 msgstr "Belge sınıfı seçilemedi"
 
@@ -21473,37 +21333,37 @@ msgstr "Kabul edilmeyen modüller: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "UYARI: Gerekli bazı paketler mevcut değil!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2850
+#: src/frontends/qt4/GuiDocument.cpp:2852
 msgid "[No options predefined]"
 msgstr "[Tanımlanmış seçenek yok]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3046
+#: src/frontends/qt4/GuiDocument.cpp:3048
 msgid "C&ustomize Hyperref Options"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3048
+#: src/frontends/qt4/GuiDocument.cpp:3050
 #, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "&hyperref desteğini kullan"
 
-#: src/frontends/qt4/GuiDocument.cpp:3197
+#: src/frontends/qt4/GuiDocument.cpp:3199
 msgid "Can't set layout!"
 msgstr "Yerleşim ayarlanamadı!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3198
+#: src/frontends/qt4/GuiDocument.cpp:3200
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Şu ID için yerleşim ayarlanamadı: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3291
+#: src/frontends/qt4/GuiDocument.cpp:3293
 msgid "Not Found"
 msgstr "Bulunamadı"
 
-#: src/frontends/qt4/GuiDocument.cpp:3345
+#: src/frontends/qt4/GuiDocument.cpp:3347
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3346
+#: src/frontends/qt4/GuiDocument.cpp:3348
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -21511,11 +21371,11 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3350
+#: src/frontends/qt4/GuiDocument.cpp:3352
 msgid "Could not load master"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3351
+#: src/frontends/qt4/GuiDocument.cpp:3353
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -22736,8 +22596,8 @@ msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x Belgeleri (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/Validator.cpp:200
-#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:290
-#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:535
+#: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
+#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Geçersiz dosya adı"
 
@@ -23318,21 +23178,21 @@ msgstr "Dal Listesi"
 msgid "List of Changes"
 msgstr "Değişiklikler Listesi"
 
-#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:291
-#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:536
+#: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:295
+#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:534
 #, fuzzy
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
 msgstr "LaTeXle dışa aktarılan dosya, bu dosya adıyla sorun çıkarabilir: "
 
-#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:296
-#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:541
+#: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:300
+#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:538
 msgid "Problematic filename for DVI"
 msgstr ""
 
-#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:297
-#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:542
+#: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:301
+#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:539
 #, fuzzy
 msgid ""
 "The following filename can cause troubles when running the exported file "
@@ -23388,7 +23248,7 @@ msgstr ""
 "%1$s anahtarı zaten var.\n"
 "%2$s olarak değiştirilecek."
 
-#: src/insets/InsetBibtex.cpp:144
+#: src/insets/InsetBibtex.cpp:148
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
@@ -23397,39 +23257,39 @@ msgstr ""
 "BibTex eklemesi %1$s veritabanlarını içeriyor.\n"
 "İlerlerseniz, hepsi açılacak."
 
-#: src/insets/InsetBibtex.cpp:147
+#: src/insets/InsetBibtex.cpp:151
 msgid "Open Databases?"
 msgstr "Açık Veritabanları?"
 
-#: src/insets/InsetBibtex.cpp:148
+#: src/insets/InsetBibtex.cpp:152
 msgid "&Proceed"
 msgstr "&İlerle"
 
-#: src/insets/InsetBibtex.cpp:166
+#: src/insets/InsetBibtex.cpp:170
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX'in Oluşturduğu Kaynakça"
 
-#: src/insets/InsetBibtex.cpp:173
+#: src/insets/InsetBibtex.cpp:177
 msgid "Databases:"
 msgstr "Veritabanları:"
 
-#: src/insets/InsetBibtex.cpp:198
+#: src/insets/InsetBibtex.cpp:202
 msgid "Style File:"
 msgstr "Stil Dosyası:"
 
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:209
 msgid "Lists:"
 msgstr "Listeler:"
 
-#: src/insets/InsetBibtex.cpp:216
+#: src/insets/InsetBibtex.cpp:220
 msgid "included in TOC"
 msgstr "İçindekilere dahil edildi"
 
-#: src/insets/InsetBibtex.cpp:318 src/insets/InsetBibtex.cpp:364
+#: src/insets/InsetBibtex.cpp:322 src/insets/InsetBibtex.cpp:368
 msgid "Export Warning!"
 msgstr "Dışarı Aktarım Uyarısı!"
 
-#: src/insets/InsetBibtex.cpp:319
+#: src/insets/InsetBibtex.cpp:323
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -23437,7 +23297,7 @@ msgstr ""
 "BibTeX veritabanınızı gösteren yollarda boşluk bulunuyor.\n"
 "BibTeX bunları bulamayacak."
 
-#: src/insets/InsetBibtex.cpp:365
+#: src/insets/InsetBibtex.cpp:369
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -23522,15 +23382,15 @@ msgstr "Tanımsız: "
 msgid "Sub-%1$s"
 msgstr "Alt-%1$s"
 
-#: src/insets/InsetCitation.cpp:121
+#: src/insets/InsetCitation.cpp:132
 msgid "No bibliography defined!"
 msgstr "Tanımlı kaynakça yok!"
 
-#: src/insets/InsetCitation.cpp:125
+#: src/insets/InsetCitation.cpp:136
 msgid "No citations selected!"
 msgstr "Seçili alıntı yok!"
 
-#: src/insets/InsetCitation.cpp:296
+#: src/insets/InsetCitation.cpp:307
 msgid "not cited"
 msgstr "alıntılanmamış"
 
@@ -23615,7 +23475,7 @@ msgstr ""
 msgid "footnote"
 msgstr "dipnot"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:730
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23671,18 +23531,18 @@ msgstr "Olduğu Gibi Girdi*"
 msgid "Include (excluded)"
 msgstr "Dosya ekle"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:838
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:775
+#: src/insets/InsetInclude.cpp:841
 msgid "Recursive input"
 msgstr "Özyinelemeli girdi"
 
-#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:839
+#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:776
+#: src/insets/InsetInclude.cpp:842
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "%1$s i kendine dahil etmeye çalışıldı! İşlem yoksayıldı."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:620
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -23692,12 +23552,12 @@ msgstr ""
 "Yedek dosyası %1$s oluşturulamıyor.\n"
 "Dizinin mevcut ya da yazılabilir olduğu kontrol edin."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:624
 #, fuzzy
 msgid "Missing included file"
 msgstr "Dosya ekle"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:630
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23708,11 +23568,11 @@ msgstr ""
 "`%2$s' metin sınıfında\n"
 "oysa ana dosya `%3$s' metin sınıfında."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:636
 msgid "Different textclasses"
 msgstr "Farkı metinsınıfları"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:651
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23723,27 +23583,27 @@ msgstr ""
 "`%2$s' modülünü kullanıyor\n"
 "oysa ana dosya kullanmıyor."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:655
 msgid "Module not found"
 msgstr "Modül bulunamadı"
 
-#: src/insets/InsetInclude.cpp:624 src/insets/InsetInclude.cpp:648
+#: src/insets/InsetInclude.cpp:682 src/insets/InsetInclude.cpp:706
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:633 src/insets/InsetInclude.cpp:656
+#: src/insets/InsetInclude.cpp:691 src/insets/InsetInclude.cpp:714
 #, fuzzy
 msgid "Export failure"
 msgstr "Yedekleme başarısız"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:763
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:764
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -24081,67 +23941,62 @@ msgstr "Düz metin"
 msgid "vphantom"
 msgstr "Düz metin"
 
-#: src/insets/InsetRef.cpp:221
-#, fuzzy
-msgid "elsewhere"
-msgstr "Deseret"
-
-#: src/insets/InsetRef.cpp:300
+#: src/insets/InsetRef.cpp:302
 msgid "BROKEN: "
 msgstr "KIRIK: "
 
-#: src/insets/InsetRef.cpp:340 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
 msgstr "Denklem"
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
 msgstr "EqRef: "
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
 msgstr "Sayfa Numarası"
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
 msgstr "Sayfa: "
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
 msgstr "Metne Ait Sayfa Numarası"
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
 msgstr "MetinSayfası: "
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
 msgstr "Ref+Text: "
 
-#: src/insets/InsetRef.cpp:345
+#: src/insets/InsetRef.cpp:348
 #, fuzzy
 msgid "Formatted"
 msgstr "Biçimleme"
 
-#: src/insets/InsetRef.cpp:345
+#: src/insets/InsetRef.cpp:348
 #, fuzzy
 msgid "Format: "
 msgstr "&Biçim:"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:349
 #, fuzzy
 msgid "Reference to Name"
 msgstr "Referans"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:349
 #, fuzzy
 msgid "NameRef:"
 msgstr "Ad:"
@@ -24351,30 +24206,30 @@ msgstr "Arama hatası"
 msgid "Search string is empty"
 msgstr "Aranacak metin boş"
 
-#: src/lyxfind.cpp:378
+#: src/lyxfind.cpp:380
 #, fuzzy
 msgid "String found."
 msgstr "Dizge bulunamadı!"
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:382
 msgid "String has been replaced."
 msgstr "Dizge değiştirildi."
 
-#: src/lyxfind.cpp:383
+#: src/lyxfind.cpp:385
 #, fuzzy, c-format
 msgid "%1$d strings have been replaced."
 msgstr " dizge değiştirildi."
 
-#: src/lyxfind.cpp:1430
+#: src/lyxfind.cpp:1432
 msgid "Invalid regular expression!"
 msgstr "Geçersiz düzenli ifade!"
 
-#: src/lyxfind.cpp:1435
+#: src/lyxfind.cpp:1437
 #, fuzzy
 msgid "Match not found!"
 msgstr "Dizge bulunamadı!"
 
-#: src/lyxfind.cpp:1439
+#: src/lyxfind.cpp:1441
 #, fuzzy
 msgid "Match found!"
 msgstr "Modül bulunamadı!"
@@ -24778,11 +24633,105 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Bilinmeyen kullanıcı"
 
-#~ msgid "Space:"
-#~ msgstr "Boşluk:"
+#, fuzzy
+#~ msgid "Abbreviations"
+#~ msgstr "AMS İlişkileri"
 
-#~ msgid "Computer:"
-#~ msgstr "Bilgisayar:"
+#, fuzzy
+#~ msgid "Abbreviations:"
+#~ msgstr "Değişim:"
+
+#, fuzzy
+#~ msgid "SupplementalInfo"
+#~ msgstr "Ek"
+
+#, fuzzy
+#~ msgid "TOC entry"
+#~ msgstr "İçindekiler Yazarı"
+
+#, fuzzy
+#~ msgid "CVStyle"
+#~ msgstr "Stil"
+
+#, fuzzy
+#~ msgid "CV style:"
+#~ msgstr "Font boyu"
+
+#, fuzzy
+#~ msgid "CVColor"
+#~ msgstr "Renkli"
+
+#, fuzzy
+#~ msgid "FamilyName"
+#~ msgstr "&Aile:"
+
+#, fuzzy
+#~ msgid "Family Name:"
+#~ msgstr "&Aile:"
+
+#, fuzzy
+#~ msgid "Mobile:"
+#~ msgstr "&Dosya:"
+
+#, fuzzy
+#~ msgid "Homepage:"
+#~ msgstr "yeni sayfa"
+
+#, fuzzy
+#~ msgid "ExtraInfo"
+#~ msgstr "Ekstra"
+
+#, fuzzy
+#~ msgid "Extra Info:"
+#~ msgstr "&Ekstra bayrak:"
+
+#, fuzzy
+#~ msgid "ItemWithComment"
+#~ msgstr "Not:Yorum"
+
+#, fuzzy
+#~ msgid "DoubleListItem"
+#~ msgstr "ÇiftÖğe"
+
+#, fuzzy
+#~ msgid "Double List Item:"
+#~ msgstr "Çift Öğe:"
+
+#, fuzzy
+#~ msgid "MakeCVtitle"
+#~ msgstr "Şiir başlığı"
+
+#, fuzzy
+#~ msgid "Make CV title"
+#~ msgstr "İçindekiler başlığı:"
+
+#, fuzzy
+#~ msgid "MakeLetterTitle"
+#~ msgstr "MathLetters"
+
+#, fuzzy
+#~ msgid "MakeLetterClosing"
+#~ msgstr "MathLetters"
+
+#, fuzzy
+#~ msgid "Close Letter"
+#~ msgstr "Sekmeyi kapat"
+
+#, fuzzy
+#~ msgid "Enclosing"
+#~ msgstr "Kapanış"
+
+#, fuzzy
+#~ msgid "Enclosing:"
+#~ msgstr "Kapanış:"
+
+#, fuzzy
+#~ msgid "Japanese (non-CJK) (utf8)"
+#~ msgstr "Japanese (non-CJK) (JIS)"
+
+#, fuzzy
+#~ msgid "elsewhere"
+#~ msgstr "Deseret"
 
 #, fuzzy
 #~ msgid "&Output Format:"

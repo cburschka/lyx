@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-02-17 11:18+0100\n"
+"POT-Creation-Date: 2013-03-21 10:22-0400\n"
 "PO-Revision-Date: 2013-02-17 11:21+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -1993,8 +1993,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1141
-#: src/insets/InsetInclude.cpp:1147
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1144
+#: src/insets/InsetInclude.cpp:1150
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -2247,7 +2247,7 @@ msgid "Feedback window"
 msgstr "Feedback-Fenster"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:351 src/insets/InsetListings.cpp:353
+#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
 msgid "Listing"
 msgstr "Listing"
 
@@ -5899,7 +5899,7 @@ msgstr "Beweis"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:341
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:343
 msgid "Standard"
 msgstr "Standard"
 
@@ -11527,252 +11527,252 @@ msgstr "Baskisch"
 msgid "Belarusian"
 msgstr "Weißrussisch"
 
-#: lib/languages:187
+#: lib/languages:188
 msgid "Portuguese (Brazil)"
 msgstr "Portugiesisch (Brasilien)"
 
-#: lib/languages:195
+#: lib/languages:196
 msgid "Breton"
 msgstr "Bretonisch"
 
-#: lib/languages:203
+#: lib/languages:204
 msgid "English (UK)"
 msgstr "Englisch (Großbritannien)"
 
-#: lib/languages:212
+#: lib/languages:213
 msgid "Bulgarian"
 msgstr "Bulgarisch"
 
-#: lib/languages:221
+#: lib/languages:222
 msgid "English (Canada)"
 msgstr "Englisch (Kanada)"
 
-#: lib/languages:231
+#: lib/languages:232
 msgid "French (Canada)"
 msgstr "Französisch (Kanada)"
 
-#: lib/languages:240
+#: lib/languages:241
 msgid "Catalan"
 msgstr "Katalanisch"
 
-#: lib/languages:250
+#: lib/languages:251
 msgid "Chinese (simplified)"
 msgstr "Chinesisch (vereinfacht)"
 
-#: lib/languages:257
+#: lib/languages:258
 msgid "Chinese (traditional)"
 msgstr "Chinesisch (traditionell)"
 
-#: lib/languages:270
+#: lib/languages:271
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: lib/languages:278
+#: lib/languages:279
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: lib/languages:286
+#: lib/languages:287
 msgid "Danish"
 msgstr "Dänisch"
 
-#: lib/languages:301
+#: lib/languages:302
 msgid "Dutch"
 msgstr "Holländisch"
 
-#: lib/languages:310
+#: lib/languages:311
 msgid "English"
 msgstr "Englisch"
 
-#: lib/languages:320
+#: lib/languages:321
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:328
+#: lib/languages:329
 msgid "Estonian"
 msgstr "Estnisch"
 
-#: lib/languages:341
+#: lib/languages:342
 msgid "Farsi"
 msgstr "Persisch"
 
-#: lib/languages:354
+#: lib/languages:355
 msgid "Finnish"
 msgstr "Finnisch"
 
-#: lib/languages:363
+#: lib/languages:364
 msgid "French"
 msgstr "Französisch"
 
-#: lib/languages:377
+#: lib/languages:378
 msgid "Galician"
 msgstr "Galizisch"
 
-#: lib/languages:389
+#: lib/languages:390
 msgid "German (old spelling)"
 msgstr "Deutsch (alte Rechtschreibung)"
 
-#: lib/languages:399
+#: lib/languages:400
 msgid "German"
 msgstr "Deutsch"
 
-#: lib/languages:410
+#: lib/languages:411
 msgid "German (Switzerland)"
 msgstr "Deutsch (Schweiz)"
 
-#: lib/languages:419 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
+#: lib/languages:420 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
 msgstr "Griechisch"
 
-#: lib/languages:428
+#: lib/languages:429
 msgid "Greek (polytonic)"
 msgstr "Griechisch (polytonisch)"
 
-#: lib/languages:438 src/frontends/qt4/GuiSymbols.cpp:64
+#: lib/languages:439 src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
 msgstr "Hebräisch"
 
-#: lib/languages:466
+#: lib/languages:467
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: lib/languages:476
+#: lib/languages:477
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:484
+#: lib/languages:485
 msgid "Irish"
 msgstr "Irisch"
 
-#: lib/languages:492
+#: lib/languages:493
 msgid "Italian"
 msgstr "Italienisch"
 
-#: lib/languages:503
+#: lib/languages:504
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: lib/languages:512
+#: lib/languages:513
 msgid "Japanese (CJK)"
 msgstr "Japanisch (CJK)"
 
-#: lib/languages:518
+#: lib/languages:519
 msgid "Kazakh"
 msgstr "Kasachisch"
 
-#: lib/languages:525
+#: lib/languages:526
 msgid "Korean"
 msgstr "Koreanisch"
 
-#: lib/languages:547
+#: lib/languages:548
 msgid "Latin"
 msgstr "Latein"
 
-#: lib/languages:557
+#: lib/languages:558
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: lib/languages:568
+#: lib/languages:569
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: lib/languages:577
+#: lib/languages:578
 msgid "Lower Sorbian"
 msgstr "Niedersorbisch"
 
-#: lib/languages:585
+#: lib/languages:586
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: lib/languages:602
+#: lib/languages:603
 msgid "Mongolian"
 msgstr "Mongolisch"
 
-#: lib/languages:610
+#: lib/languages:611
 msgid "Norwegian (Bokmaal)"
 msgstr "Norwegisch (Bokmål)"
 
-#: lib/languages:618
+#: lib/languages:619
 msgid "Norwegian (Nynorsk)"
 msgstr "Norwegisch (Nynorsk)"
 
-#: lib/languages:643
+#: lib/languages:644
 msgid "Polish"
 msgstr "Polnisch"
 
-#: lib/languages:651
+#: lib/languages:652
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: lib/languages:659
+#: lib/languages:660
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: lib/languages:667
+#: lib/languages:668
 msgid "Russian"
 msgstr "Russisch"
 
-#: lib/languages:675
+#: lib/languages:676
 msgid "North Sami"
 msgstr "Nordsamisch"
 
-#: lib/languages:690
+#: lib/languages:691
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: lib/languages:698
+#: lib/languages:699
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: lib/languages:706
+#: lib/languages:708
 msgid "Serbian (Latin)"
 msgstr "Serbisch (latein. Schrift)"
 
-#: lib/languages:715
+#: lib/languages:717
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: lib/languages:723
+#: lib/languages:725
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: lib/languages:731
+#: lib/languages:733
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: lib/languages:743
+#: lib/languages:745
 msgid "Spanish (Mexico)"
 msgstr "Spanisch (Mexiko)"
 
-#: lib/languages:754
+#: lib/languages:756
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: lib/languages:783 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:785 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: lib/languages:794
+#: lib/languages:796
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: lib/languages:807
+#: lib/languages:809
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: lib/languages:816
+#: lib/languages:818
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: lib/languages:824
+#: lib/languages:826
 msgid "Upper Sorbian"
 msgstr "Obersorbisch"
 
-#: lib/languages:842
+#: lib/languages:844
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: lib/languages:851
+#: lib/languages:853
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -17718,7 +17718,7 @@ msgstr "Nichts mehr rückgängig zu machen"
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1537 src/lyxfind.cpp:375 src/lyxfind.cpp:393
+#: src/BufferView.cpp:1537 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
@@ -19573,11 +19573,11 @@ msgstr ""
 "Die zuvor verwendete Ausrichtung ist mit dem neuen Format nicht möglich.\n"
 "Es wird die Standardeinstellung verwendet."
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Memory problem"
 msgstr "Speicherproblem"
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Paragraph not properly initialized"
 msgstr "Absatz nicht richtig initialisiert"
 
@@ -22571,7 +22571,7 @@ msgstr "LyX-1.6.x-Dokumente (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
-#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:535
+#: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
@@ -23143,7 +23143,7 @@ msgid "List of Changes"
 msgstr "Änderungen"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:295
-#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:536
+#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:534
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -23152,12 +23152,12 @@ msgstr ""
 "exportierten Datei ausgeführt wird: "
 
 #: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:300
-#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:541
+#: src/insets/InsetGraphics.cpp:604 src/insets/InsetInclude.cpp:538
 msgid "Problematic filename for DVI"
 msgstr "Problematischer Dateiname für DVI"
 
 #: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:301
-#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:542
+#: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:539
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -23438,7 +23438,7 @@ msgstr "LyX kann keine Liste mit %1$s erzeugen"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:672
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:730
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -23496,20 +23496,20 @@ msgstr "Unformatiert*"
 msgid "Include (excluded)"
 msgstr "Include (ausgeschlossen)"
 
-#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:772
-#: src/insets/InsetInclude.cpp:838
+#: src/insets/InsetInclude.cpp:501 src/insets/InsetInclude.cpp:775
+#: src/insets/InsetInclude.cpp:841
 msgid "Recursive input"
 msgstr "Rekursive Eingabe"
 
-#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:773
-#: src/insets/InsetInclude.cpp:839
+#: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:776
+#: src/insets/InsetInclude.cpp:842
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
 "Einbettung wird ignoriert."
 
-#: src/insets/InsetInclude.cpp:562
+#: src/insets/InsetInclude.cpp:620
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -23519,11 +23519,11 @@ msgstr ""
 "Die eingebettete Datei '%1$s' kann nicht geladen werden.\n"
 "Bitte prüfen Sie, ob diese Datei existiert."
 
-#: src/insets/InsetInclude.cpp:566
+#: src/insets/InsetInclude.cpp:624
 msgid "Missing included file"
 msgstr "Fehlende eingebettete Datei"
 
-#: src/insets/InsetInclude.cpp:572
+#: src/insets/InsetInclude.cpp:630
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23534,11 +23534,11 @@ msgstr ""
 "hat die Textklasse `%2$s',\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/InsetInclude.cpp:578
+#: src/insets/InsetInclude.cpp:636
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
-#: src/insets/InsetInclude.cpp:593
+#: src/insets/InsetInclude.cpp:651
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -23549,11 +23549,11 @@ msgstr ""
 "benutzt Modul `%2$s',\n"
 "das nicht in der Hauptdatei benutzt wird."
 
-#: src/insets/InsetInclude.cpp:597
+#: src/insets/InsetInclude.cpp:655
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
 
-#: src/insets/InsetInclude.cpp:624 src/insets/InsetInclude.cpp:648
+#: src/insets/InsetInclude.cpp:682 src/insets/InsetInclude.cpp:706
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -23564,15 +23564,15 @@ msgstr ""
 "wurde nicht korrekt exportiert.\n"
 "Vorsicht, die LaTeX-Ausgabe ist vermutlich lückenhaft!"
 
-#: src/insets/InsetInclude.cpp:633 src/insets/InsetInclude.cpp:656
+#: src/insets/InsetInclude.cpp:691 src/insets/InsetInclude.cpp:714
 msgid "Export failure"
 msgstr "Exportfehler"
 
-#: src/insets/InsetInclude.cpp:760
+#: src/insets/InsetInclude.cpp:763
 msgid "Unsupported Inclusion"
 msgstr "Einbettung nicht unterstützt"
 
-#: src/insets/InsetInclude.cpp:761
+#: src/insets/InsetInclude.cpp:764
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -23912,63 +23912,59 @@ msgstr "hphantom"
 msgid "vphantom"
 msgstr "vphantom"
 
-#: src/insets/InsetRef.cpp:221
-msgid "elsewhere"
-msgstr "woanders"
-
-#: src/insets/InsetRef.cpp:300
+#: src/insets/InsetRef.cpp:302
 msgid "BROKEN: "
 msgstr "NICHT VORHANDEN: "
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
 msgstr "Querverweis: "
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
 msgstr "Gleichung"
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
 msgstr "(Querverweis): "
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
 msgstr "Querverweis+Text: "
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:348
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:348
 msgid "Format: "
 msgstr "Format: "
 
-#: src/insets/InsetRef.cpp:347
+#: src/insets/InsetRef.cpp:349
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:347
+#: src/insets/InsetRef.cpp:349
 msgid "NameRef:"
 msgstr "NameRef:"
 
@@ -24176,28 +24172,28 @@ msgstr "Fehler beim Suchen"
 msgid "Search string is empty"
 msgstr "Die Such-Zeichenkette ist leer"
 
-#: src/lyxfind.cpp:378
+#: src/lyxfind.cpp:380
 msgid "String found."
 msgstr "Zeichenkette gefunden."
 
-#: src/lyxfind.cpp:380
+#: src/lyxfind.cpp:382
 msgid "String has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:383
+#: src/lyxfind.cpp:385
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1430
+#: src/lyxfind.cpp:1432
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1435
+#: src/lyxfind.cpp:1437
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1439
+#: src/lyxfind.cpp:1441
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -24611,6 +24607,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "elsewhere"
+#~ msgstr "woanders"
 
 #~ msgid "Abbreviations"
 #~ msgstr "Abkürzungen"

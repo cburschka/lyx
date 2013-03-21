@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-08 00:56-0800\n"
+"POT-Creation-Date: 2013-03-21 10:22-0400\n"
 "PO-Revision-Date: 2013-03-08 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -5739,7 +5739,7 @@ msgstr "Dùkaz"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svcommon.inc:26
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:341
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:343
 msgid "Standard"
 msgstr "Standardní"
 
@@ -10867,8 +10867,9 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
-"Tento modul umo¾òuje spoleèné pou¾ití natbib a apacite (styl bibliografie nemusí být pouze"
-"apacite, lze pou¾ít libovolný styl který funguje s obìma balíèky natbib a apacite.)"
+"Tento modul umo¾òuje spoleèné pou¾ití natbib a apacite (styl bibliografie "
+"nemusí být pouzeapacite, lze pou¾ít libovolný styl který funguje s obìma "
+"balíèky natbib a apacite.)"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -11356,252 +11357,252 @@ msgstr "Baskiètina"
 msgid "Belarusian"
 msgstr "Bìloru¹tina"
 
-#: lib/languages:187
+#: lib/languages:188
 msgid "Portuguese (Brazil)"
 msgstr "Portugal¹tina (Brazilská)"
 
-#: lib/languages:195
+#: lib/languages:196
 msgid "Breton"
 msgstr "Breton¹tina"
 
-#: lib/languages:203
+#: lib/languages:204
 msgid "English (UK)"
 msgstr "Angliètina (UK)"
 
-#: lib/languages:212
+#: lib/languages:213
 msgid "Bulgarian"
 msgstr "Bulhar¹tina"
 
-#: lib/languages:221
+#: lib/languages:222
 msgid "English (Canada)"
 msgstr "Angliètina (Kanada)"
 
-#: lib/languages:231
+#: lib/languages:232
 msgid "French (Canada)"
 msgstr "Kanadská Francouz¹tina"
 
-#: lib/languages:240
+#: lib/languages:241
 msgid "Catalan"
 msgstr "Katalán¹tina"
 
-#: lib/languages:250
+#: lib/languages:251
 msgid "Chinese (simplified)"
 msgstr "Èín¹tina (zjednodu¹ená)"
 
-#: lib/languages:257
+#: lib/languages:258
 msgid "Chinese (traditional)"
 msgstr "Èín¹tina (tradièní)"
 
-#: lib/languages:270
+#: lib/languages:271
 msgid "Croatian"
 msgstr "Chorvat¹tina"
 
-#: lib/languages:278
+#: lib/languages:279
 msgid "Czech"
 msgstr "Èe¹tina"
 
-#: lib/languages:286
+#: lib/languages:287
 msgid "Danish"
 msgstr "Dán¹tina"
 
-#: lib/languages:301
+#: lib/languages:302
 msgid "Dutch"
 msgstr "Holand¹tina"
 
-#: lib/languages:310
+#: lib/languages:311
 msgid "English"
 msgstr "Angliètina"
 
-#: lib/languages:320
+#: lib/languages:321
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:328
+#: lib/languages:329
 msgid "Estonian"
 msgstr "Eston¹tina"
 
-#: lib/languages:341
+#: lib/languages:342
 msgid "Farsi"
 msgstr "Per¹tina"
 
-#: lib/languages:354
+#: lib/languages:355
 msgid "Finnish"
 msgstr "Fin¹tina"
 
-#: lib/languages:363
+#: lib/languages:364
 msgid "French"
 msgstr "Francouz¹tina"
 
-#: lib/languages:377
+#: lib/languages:378
 msgid "Galician"
 msgstr "Gal¹tina"
 
-#: lib/languages:389
+#: lib/languages:390
 msgid "German (old spelling)"
 msgstr "Nìmèina (starý pravopis)"
 
-#: lib/languages:399
+#: lib/languages:400
 msgid "German"
 msgstr "Nìmèina"
 
-#: lib/languages:410
+#: lib/languages:411
 msgid "German (Switzerland)"
 msgstr "Nìmèina (©výcarsko)"
 
-#: lib/languages:419 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
+#: lib/languages:420 lib/ui/stdtoolbars.inc:281 lib/ui/stdtoolbars.inc:529
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
 msgstr "Øeètina"
 
-#: lib/languages:428
+#: lib/languages:429
 msgid "Greek (polytonic)"
 msgstr "Øeètina (polytonic)"
 
-#: lib/languages:438 src/frontends/qt4/GuiSymbols.cpp:64
+#: lib/languages:439 src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
 msgstr "Hebrej¹tina"
 
-#: lib/languages:466
+#: lib/languages:467
 msgid "Icelandic"
 msgstr "Island¹tina"
 
-#: lib/languages:476
+#: lib/languages:477
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:484
+#: lib/languages:485
 msgid "Irish"
 msgstr "Ir¹tina"
 
-#: lib/languages:492
+#: lib/languages:493
 msgid "Italian"
 msgstr "Ital¹tina"
 
-#: lib/languages:503
+#: lib/languages:504
 msgid "Japanese"
 msgstr "Japon¹tina"
 
-#: lib/languages:512
+#: lib/languages:513
 msgid "Japanese (CJK)"
 msgstr "Japon¹tina (CJK)"
 
-#: lib/languages:518
+#: lib/languages:519
 msgid "Kazakh"
 msgstr "Kazach¹tina"
 
-#: lib/languages:525
+#: lib/languages:526
 msgid "Korean"
 msgstr "Korej¹tina"
 
-#: lib/languages:547
+#: lib/languages:548
 msgid "Latin"
 msgstr "Latina"
 
-#: lib/languages:557
+#: lib/languages:558
 msgid "Latvian"
 msgstr "Loty¹tina"
 
-#: lib/languages:568
+#: lib/languages:569
 msgid "Lithuanian"
 msgstr "Litev¹tina"
 
-#: lib/languages:577
+#: lib/languages:578
 msgid "Lower Sorbian"
 msgstr "Dolnolu¾ická srb¹tina"
 
-#: lib/languages:585
+#: lib/languages:586
 msgid "Hungarian"
 msgstr "Maïar¹tina"
 
-#: lib/languages:602
+#: lib/languages:603
 msgid "Mongolian"
 msgstr "Mongol¹tina"
 
-#: lib/languages:610
+#: lib/languages:611
 msgid "Norwegian (Bokmaal)"
 msgstr "Nor¹tina (Bokmaal)"
 
-#: lib/languages:618
+#: lib/languages:619
 msgid "Norwegian (Nynorsk)"
 msgstr "Nor¹tina (Nynorsk)"
 
-#: lib/languages:643
+#: lib/languages:644
 msgid "Polish"
 msgstr "Pol¹tina"
 
-#: lib/languages:651
+#: lib/languages:652
 msgid "Portuguese"
 msgstr "Portugal¹tina"
 
-#: lib/languages:659
+#: lib/languages:660
 msgid "Romanian"
 msgstr "Rumun¹tina"
 
-#: lib/languages:667
+#: lib/languages:668
 msgid "Russian"
 msgstr "Ru¹tina"
 
-#: lib/languages:675
+#: lib/languages:676
 msgid "North Sami"
 msgstr "Severní sám¹tina"
 
-#: lib/languages:690
+#: lib/languages:691
 msgid "Scottish"
 msgstr "Skot¹tina"
 
-#: lib/languages:698
+#: lib/languages:699
 msgid "Serbian"
 msgstr "Srb¹tina"
 
-#: lib/languages:706
+#: lib/languages:708
 msgid "Serbian (Latin)"
 msgstr "Srb¹tina (latinka)"
 
-#: lib/languages:715
+#: lib/languages:717
 msgid "Slovak"
 msgstr "Sloven¹tina"
 
-#: lib/languages:723
+#: lib/languages:725
 msgid "Slovene"
 msgstr "Slovin¹tina"
 
-#: lib/languages:731
+#: lib/languages:733
 msgid "Spanish"
 msgstr "©panìl¹tina"
 
-#: lib/languages:743
+#: lib/languages:745
 msgid "Spanish (Mexico)"
 msgstr "©panìl¹tina (Mexiko)"
 
-#: lib/languages:754
+#: lib/languages:756
 msgid "Swedish"
 msgstr "©véd¹tina"
 
-#: lib/languages:783 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:785 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Thaj¹tina"
 
-#: lib/languages:794
+#: lib/languages:796
 msgid "Turkish"
 msgstr "Tureètina"
 
-#: lib/languages:807
+#: lib/languages:809
 msgid "Turkmen"
 msgstr "Turkmen¹tina"
 
-#: lib/languages:816
+#: lib/languages:818
 msgid "Ukrainian"
 msgstr "Ukrajin¹tina"
 
-#: lib/languages:824
+#: lib/languages:826
 msgid "Upper Sorbian"
 msgstr "Hornolu¾ická srb¹tina"
 
-#: lib/languages:842
+#: lib/languages:844
 msgid "Vietnamese"
 msgstr "Vietnam¹tina"
 
-#: lib/languages:851
+#: lib/languages:853
 msgid "Welsh"
 msgstr "Wel¹tina"
 
@@ -19305,11 +19306,11 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Memory problem"
 msgstr "Interní chyba"
 
-#: src/Paragraph.cpp:3109
+#: src/Paragraph.cpp:3110
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec není správnì inicializován"
 
@@ -23605,63 +23606,59 @@ msgstr "hphantom"
 msgid "vphantom"
 msgstr "vphantom"
 
-#: src/insets/InsetRef.cpp:221
-msgid "elsewhere"
-msgstr "jinde"
-
-#: src/insets/InsetRef.cpp:300
+#: src/insets/InsetRef.cpp:302
 msgid "BROKEN: "
 msgstr "NEPLATNÝ: "
 
-#: src/insets/InsetRef.cpp:341 src/mathed/InsetMathRef.cpp:225
+#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
 msgstr "Rovnice"
 
-#: src/insets/InsetRef.cpp:342 src/mathed/InsetMathRef.cpp:226
+#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
 msgstr "RovRef: "
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
 msgstr "Èíslo stránky"
 
-#: src/insets/InsetRef.cpp:343 src/mathed/InsetMathRef.cpp:227
+#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
 msgstr "Stránka: "
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
 msgstr "Odkaz pomocí èísla stránky"
 
-#: src/insets/InsetRef.cpp:344 src/mathed/InsetMathRef.cpp:228
+#: src/insets/InsetRef.cpp:346 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
 msgstr "Strana Textu: "
 
-#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
 msgstr "Standard+Èíslo strany"
 
-#: src/insets/InsetRef.cpp:345 src/mathed/InsetMathRef.cpp:229
+#: src/insets/InsetRef.cpp:347 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
 msgstr "Ref+Text: "
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:348
 msgid "Formatted"
 msgstr "Formátovaný"
 
-#: src/insets/InsetRef.cpp:346
+#: src/insets/InsetRef.cpp:348
 msgid "Format: "
 msgstr "Formát:"
 
-#: src/insets/InsetRef.cpp:347
+#: src/insets/InsetRef.cpp:349
 msgid "Reference to Name"
 msgstr "Odkaz na jméno"
 
-#: src/insets/InsetRef.cpp:347
+#: src/insets/InsetRef.cpp:349
 msgid "NameRef:"
 msgstr "NameRef:"
 
@@ -24300,6 +24297,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "elsewhere"
+#~ msgstr "jinde"
 
 #~ msgid "Abbreviations"
 #~ msgstr "Abbreviations"
