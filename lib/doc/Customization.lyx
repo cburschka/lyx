@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 463
+\lyxformat 467
 \begin_document
 \begin_header
 \textclass scrbook
@@ -101,6 +101,7 @@ End
 \use_geometry false
 \use_package amsmath 0
 \use_package amssymb 0
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -2592,8 +2593,13 @@ You do not have to define converters for all formats between which you want
  choose the shortest possible chain.
  You can, though, still define multiple conversion methods between file
  formats.
- For example, the standard LyX configuration provides three ways to convert
- LaTeX to PDF: Directly, using 
+ For example, the standard LyX configuration provides 
+\change_inserted -195340706 1363813100
+five
+\change_deleted -195340706 1363813102
+three
+\change_unchanged
+ ways to convert LaTeX to PDF: Directly, using 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2613,7 +2619,11 @@ ps2pdf
 
 \end_inset
 
-; or via DVI, using 
+; 
+\change_deleted -195340706 1363813149
+or 
+\change_unchanged
+via DVI, using 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2623,6 +2633,10 @@ dvipdfm
 
 \end_inset
 
+
+\change_inserted -195340706 1363813143
+; or directly using XeTeX or LuaTeX
+\change_unchanged
 .
  To define such alternate chains, you must define multiple target `file
  formats', as described in section 
@@ -2653,12 +2667,46 @@ pdf2
 
 \end_inset
 
+
+\change_inserted -195340706 1363813075
+, 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1363813079
+pdf3
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1363813082
+pdf4
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 , and 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-pdf3
+pdf
+\change_inserted -195340706 1363813086
+5
+\change_deleted -195340706 1363813086
+3
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -23545,6 +23593,25 @@ File Format
 
  dialog).
  This command must occur exactly once.
+
+\change_inserted -195340706 1363813305
+ If the resulting file format is PDF, you need to specify the format 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1363813269
+pdf6
+\end_layout
+
+\end_inset
+
+.
+ This is the PDF format used for including graphics.
+ The other defined PDF formats are for document export.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

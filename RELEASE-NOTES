@@ -51,6 +51,13 @@ The following pref variables are obsoleted in 2.1:
 To set the default language and paper size for new documents, use the
 "Save As Document Defaults" button in Document > Settings.
 
+The format pdf aka "PDF (ps2pdf)" was split in two formats: pdf aka
+"PDF (ps2pdf)" and pdf6 aka "PDF (graphics)". pdf6 is used for PDF files
+included as graphics. Custom external templates and converters might need
+to be adjusted. The format split was needed since otherwise an odt->pdf
+converter which is intended for included graphics only did interfere with
+document export via ps2pdf.
+
 The support for ArmTeX (a special typesetting engine for Armenian) was removed.
 Writing text in Armenian is now possible in a native way using XeTeX.
 

@@ -271,7 +271,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		add(orig_from, "eps", converted_eps);
 	} else if (to_format == "pdftex") {
 		FileName const converted_pdf(changeExtension(converted_file.absFileName(), "pdf"));
-		add(orig_from, "pdf", converted_pdf);
+		add(orig_from, "pdf6", converted_pdf);
 	}
 
 	// Is the file in the cache already?
@@ -396,6 +396,20 @@ bool ConverterCache::inCache(FileName const & orig_from,
 		LYXERR(Debug::FILES, "not in cache.");
 		return false;
 	}
+
+	// Special handling of pstex and pdftex formats: These are only
+	// considered to be in the cache if the corresponding graphics
+	// fiels are there as well. Otherwise copy() of the graphics below
+	// would fail.
+	// FIXME: Should not hardcode this (see bug 3819 for details)
+	if (to_format == "pstex") {
+		if (!inCache(orig_from, "eps"))
+			return false;
+	} else if (to_format == "pdftex") {
+		if (!inCache(orig_from, "pdf6"))
+			return false;
+	}
+
 	time_t const timestamp = orig_from.lastModified();
 	if (item->timestamp == timestamp) {
 		LYXERR(Debug::FILES, "identical timestamp.");
@@ -436,7 +450,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 			return false;
 	} else if (to_format == "pdftex") {
 		FileName const dest_pdf(changeExtension(dest.absFileName(), "pdf"));
-		if (!copy(orig_from, "pdf", dest_pdf))
+		if (!copy(orig_from, "pdf6", dest_pdf))
 			return false;
 	}
 

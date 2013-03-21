@@ -336,7 +336,8 @@ string guessFormatFromContents(FileName const & fn)
 			format = "jpg";
 
 		else if (contains(str, "%PDF"))
-			format = "pdf";
+			// autodetect pdf format for graphics inclusion
+			format = "pdf6";
 
 		else if (contains(str, "PNG"))
 			format = "png";
@@ -681,7 +682,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 
 	// LinkBack files look like PDF, but have the .linkback extension
 	string const ext = getExtension(filename.absFileName());
-	if (format_name == "pdf" && ext == "linkback") {
+	if (format_name == "pdf6" && ext == "linkback") {
 #ifdef USE_MACOSX_PACKAGING
 		return editLinkBackFile(filename.absFileName().c_str());
 #else

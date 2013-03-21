@@ -110,7 +110,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 		Format const * const f = formats.getFormat(format);
 		// Convert vector graphics to pdf
 		if (f && f->vectorFormat())
-			return "pdf";
+			return "pdf6";
 		// pdflatex can use jpeg, png and pdf directly
 		if (format == "jpg")
 			return format;

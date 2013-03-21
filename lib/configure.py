@@ -579,13 +579,15 @@ def checkFormatEntries(dtl_tools):
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
+    # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
     checkViewer('a PDF previewer', ['pdfview', 'kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
-        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	"application/pdf"
+        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"	""
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"	""
-\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""'''])
+\Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""
+\Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
@@ -730,9 +732,10 @@ def checkConverterEntries():
     #
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
-    #
+    # Only define a converter to pdf6, otherwise the odt format could be
+    # used as an intermediate step for export to pdf, which is not wanted.
     checkProg('an OpenDocument -> PDF converter', ['unoconv -f pdf --stdout $$i > $$o'],
-        rc_entry = [ r'\converter odt        pdf        "%%"	""' ])
+        rc_entry = [ r'\converter odt        pdf6       "%%"	""' ])
     # According to http://www.tug.org/applications/tex4ht/mn-commands.html
     # the command mk4ht oolatex $$i has to be used as default,
     # but as this would require to have Perl installed, in MiKTeX oolatex is
@@ -749,7 +752,7 @@ def checkConverterEntries():
     #
     checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
-    #
+    # Do not define a converter to pdf6, ps is a pure export format 
     checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
     #
@@ -770,9 +773,9 @@ def checkConverterEntries():
     #
     checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
         rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
-    #
+    # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
-        rc_entry = [ r'\converter pdf         eps        "%%"	""' ])
+        rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
     #
     checkProg('a Beamer info extractor', ['makebeamerinfo -p $$i'],
         rc_entry = [ r'\converter pdf2         beamer.info        "%%"	""' ])
@@ -804,7 +807,7 @@ def checkConverterEntries():
         rc_entry = [
             r'''\converter tgif       eps        "tgif -print -color -eps -stdout $$i > $$o"	""
 \converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
-\converter tgif       pdf        "tgif -print -color -pdf -stdout $$i > $$o"	""''',
+\converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""''',
             ''])
     #
     checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
@@ -812,17 +815,17 @@ def checkConverterEntries():
     #
     checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
-    #
+    # Only define a converter to pdf6 for graphics
     checkProg('an EPS -> PDF converter', ['epstopdf'],
-        rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
+        rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""', ''])
     #
     checkProg('an EPS -> PNG converter', ['convert $$i $$o'],
         rc_entry = [ r'\converter eps        png        "%%"	""', ''])
     #
-    # no agr -> pdf converter, since the pdf library used by gracebat is not
+    # no agr -> pdf6 converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
     # Fortunately, this is not a big problem, because we will use epstopdf to
-    # convert from agr to pdf via eps without loss of quality.
+    # convert from agr to pdf6 via eps without loss of quality.
     checkProg('a Grace -> Image converter', ['gracebat'],
         rc_entry = [
             r'''\converter agr        eps        "gracebat -hardcopy -printfile $$o -hdevice EPS $$i 2>/dev/null"	""
@@ -848,9 +851,9 @@ def checkConverterEntries():
     # odg->png and odg->pdf converters, since the bb would be too large as well.
     checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
-    #
+    # Only define a converter to pdf6 for graphics
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
-        rc_entry = [ r'\converter svg        pdf        "%%"	""'])
+        rc_entry = [ r'\converter svg        pdf6       "%%"	""'])
     #
     checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
         rc_entry = [ r'\converter svg        eps        "%%"	""'])
@@ -876,13 +879,13 @@ def checkConverterEntries():
             if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
                 addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps -dsafe --ps $$i"	""
 \converter lilypond   png        "lilypond -dbackend=eps -dsafe --png $$i"	""''')
-                addToRC(r'\converter lilypond   pdf        "lilypond -dbackend=eps -dsafe --pdf $$i"	""')
+                addToRC(r'\converter lilypond   pdf6       "lilypond -dbackend=eps -dsafe --pdf $$i"	""')
                 logger.info('+  found LilyPond version %s.' % version_number)
             elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
                 addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps --safe $$i"	""
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
                 if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
-                    addToRC(r'\converter lilypond   pdf        "lilypond -b eps --pdf --safe $$i"	""')
+                    addToRC(r'\converter lilypond   pdf6       "lilypond -b eps --pdf --safe $$i"	""')
                 logger.info('+  found LilyPond version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond, but version %s is too old.' % version_number)
@@ -1387,7 +1390,7 @@ if __name__ == '__main__':
     lyx_check_config = True
     lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 10
+    lyxrc_fileformat = 11
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

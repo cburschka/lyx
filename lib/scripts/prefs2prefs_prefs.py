@@ -50,6 +50,9 @@
 #  Add close_buffer_with_last_view in preferences.
 #  No conversion necessary.
 
+# Incremented to format 11, by gb
+#   Split pdf format into pdf and pdf6
+
 import re
 
 ###########################################################
@@ -236,6 +239,45 @@ def add_mime_types(line):
 		converted = converted + '       ""'
 	return (True, converted)
 
+def split_pdf_format(line):
+	# strictly speaking, a new format would not require to bump the
+	# version number, but the old pdf format was hardcoded at several
+	# places in the C++ code, so an update seemed like a good idea.
+	if line.lower().startswith("\\format"):
+		entries = get_format(line)
+		if entries[1] == 'pdf':
+			if len(entries) < 6:
+				viewer = ''
+			else:
+				viewer = entries[5]
+			converted = line.replace('application/pdf', '') + '''
+\Format pdf6       pdf    "PDF (graphics)"        "" "''' + viewer + '"	""	"vector"	"application/pdf"'
+			return (True, converted)
+	elif line.lower().startswith("\\viewer_alternatives") or \
+	     line.lower().startswith("\\editor_alternatives"):
+		entries = get_format(line)
+		if entries[1] == 'pdf':
+			converted = line + "\n" + entries[0] + ' pdf6 "' + entries[2] + '"'
+			return (True, converted)
+	elif line.lower().startswith("\\converter"):
+		entries = get_format(line)
+		# The only converter from pdf that is touched is pdf->eps:
+		# All other converters are likely meant for further processing on export.
+		# The only converter to pdf that stays untouched is dvi->pdf:
+		# All other converters are likely meant for graphics.
+		if (entries[1] == 'pdf' and entries[2] == 'eps') or \
+		   (entries[1] != 'ps'  and entries[2] == 'pdf'):
+			if entries[1] == 'pdf':
+				converted = entries[0] + ' pdf6 ' + entries[2]
+			else:
+				converted = entries[0] + ' ' + entries[1] + ' pdf6'
+			i = 3
+			while i < len(entries):
+				converted = converted + ' "' + entries[i] + '"'
+				i = i + 1
+			return (True, converted)
+	return no_match
+
 def remove_default_language(line):
 	if not line.lower().startswith("\\default_language"):
 		return no_match
@@ -262,5 +304,6 @@ conversions = [
 	[ 7, [add_mime_types]],
 	[ 8, []],
 	[ 9, [ remove_default_language ]],
-	[ 10, []]
+	[ 10, []],
+	[ 11, [split_pdf_format]]
 ]

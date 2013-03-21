@@ -284,7 +284,7 @@ Template LilyPond
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
 		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
-		UpdateFormat pdf
+		UpdateFormat pdf6
 		UpdateResult "$$AbsPath$$Basename.pdf"
 		Requirement "graphicx"
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
@@ -313,7 +313,7 @@ Template PDFPages
 		Read the documentation of the pdfpages package
 		for further options and details.
 	HelpTextEnd
-	InputFormat pdf
+	InputFormat pdf6
 	FileFilter "*.pdf"
 	AutomaticProduction true
 	Transform Rotate
@@ -326,7 +326,7 @@ Template PDFPages
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize]"
 		Product "\\includepdf$$Arg{$$AbsOrRelPathMaster$$Basename}"
-		UpdateFormat pdf
+		UpdateFormat pdf6
 		UpdateResult "$$AbsPath$$Basename.pdf"
 		Requirement "pdfpages"
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
@@ -407,7 +407,7 @@ Template Dia
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
 		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
-		UpdateFormat pdf
+		UpdateFormat pdf6
 		UpdateResult "$$AbsPath$$Basename.pdf"
 		Requirement "graphicx"
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
