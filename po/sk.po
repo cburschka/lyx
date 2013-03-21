@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-21 10:22-0400\n"
+"POT-Creation-Date: 2013-03-20 16:49+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -76,7 +76,7 @@ msgstr "Štýl citovania"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Use BibTeX's default numerical styles"
-msgstr "Použite štandardné BibTeX numerické štýly"
+msgstr "Použiť štandardné BibTeX numerické štýly"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:31
 msgid "&Default (numerical)"
@@ -87,7 +87,7 @@ msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
 msgstr ""
-"Použite štýl natbib pre prírodné a umelecké odbory. Zadajte prídavné "
+"Použiť štýl natbib pre prírodné a umelecké odbory. Zadajte prídavné "
 "parametre v možnostiach pre triedu dokumentu."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
@@ -100,7 +100,7 @@ msgstr "Natbib š&týl:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "Použite štýl jurabib pre právne a humanitné odbory"
+msgstr "Použiť štýl jurabib pre právne a humanitné odbory"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
@@ -545,7 +545,7 @@ msgstr "&Zrušiť"
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
 msgid "Undefined branches used in this document."
-msgstr "Nedefinované vetvy použite v aktuálnom dokumente."
+msgstr "Nedefinované vetvy použité v aktuálnom dokumente."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 msgid "&Undefined Branches:"
@@ -1569,19 +1569,19 @@ msgstr "Vložte font na použitie pre CJK skript"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Použite reálne kapitálky v prípade, že sú fontom poskytované"
+msgstr "Použiť reálne kapitálky v prípade, že sú fontom poskytované"
 
 #: src/frontends/qt4/ui/FontUi.ui:213
 msgid "Use true S&mall Caps"
-msgstr "Použite pravé Malé &kapitálky"
+msgstr "Použiť pravé Malé &kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:220
 msgid "Use old style instead of lining figures"
-msgstr "Použite číslice minuskové, nie verzálové"
+msgstr "Použiť číslice minuskové, nie verzálové"
 
 #: src/frontends/qt4/ui/FontUi.ui:223
 msgid "Use &Old Style Figures"
-msgstr "Použite &minuskové číslice (old style figures)"
+msgstr "Použiť &minuskové číslice (old style figures)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -2722,7 +2722,7 @@ msgstr "Výstup pre &matematiku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:153
 msgid "Format to use for math output."
-msgstr "Formát na použite pre výstup matematiky."
+msgstr "Formát na použitie pre výstup matematiky."
 
 #: src/frontends/qt4/ui/OutputUi.ui:157
 msgid "MathML"
@@ -3030,7 +3030,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
-msgstr "Automatické &menu"
+msgstr "Automatická p&onuka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
 msgid "Autoco&rrection"
@@ -3056,7 +3056,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid "Automatic &popup"
-msgstr "Automatické m&enu"
+msgstr "Automatická ponu&ka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:105
 msgid ""
@@ -3173,7 +3173,7 @@ msgstr "&Okamžitý náhľad:"
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:76
 #: src/frontends/qt4/GuiDocument.cpp:170
 msgid "Off"
-msgstr "Vypnuté"
+msgstr "Vypnutý"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
@@ -3181,11 +3181,11 @@ msgstr "Bez matematiky"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:76
 msgid "On"
-msgstr "Zapnuté"
+msgstr "Zapnutý"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 msgid "Preview Si&ze:"
-msgstr "&Rozmer náhľadu:"
+msgstr "Mie&rka náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
@@ -3728,7 +3728,7 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
 "adresármi.\n"
-"Použite formát vhodný pre daný operačný systém."
+"Použiť formát vhodný pre daný operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 msgid "TEX&INPUTS prefix:"
@@ -3742,7 +3742,7 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
 "ostatnými adresármi.\n"
-"'.' reprezentuje aktuálny adresár dokumentu. Použite formát vhodný pre daný "
+"'.' reprezentuje aktuálny adresár dokumentu. Použiť formát vhodný pre daný "
 "operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
@@ -11247,7 +11247,7 @@ msgid ""
 "chapter environment."
 msgstr ""
 "Číslovanie mat. viet a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
-"začiatku každej kapitoly). Použite tento modul len s takou triedou "
+"začiatku každej kapitoly). Použiť tento modul len s takou triedou "
 "dokumentov, ktorá podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-named.module:3
@@ -13536,14 +13536,12 @@ msgid "Feynman-diagram Manual|F"
 msgstr "Feynman-diagram: Manuál|F"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Knitr Manual|K"
-msgstr "Knitr|K"
+msgstr "Knitr Manuál|K"
 
 #: lib/ui/stdmenus.inc:588
-#, fuzzy
 msgid "LilyPond Manual|P"
-msgstr "LilyPond príručka"
+msgstr "LilyPond Manuál"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Linguistics Manual|L"
@@ -24313,7 +24311,7 @@ msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
 #~ msgid "elsewhere"
-#~ msgstr "niekde inde"
+#~ msgstr "inde"
 
 #~ msgid "CVStyle"
 #~ msgstr "CVŠtýl"
@@ -26621,7 +26619,7 @@ msgstr "Neznámy používateľ"
 #~ "symboly z mat. lišty nástrojov AMS"
 
 #~ msgid "&Use amssymb package automatically"
-#~ msgstr "Automaticky používať balík amssymb"
+#~ msgstr "Automaticky po&užívať balík amssymb"
 
 #~ msgid "Use amssymb package"
 #~ msgstr "Použiť balík amssymb"
@@ -26654,10 +26652,10 @@ msgstr "Neznámy používateľ"
 #~ "symboly z fontu St Mary's Road pre teoretickú počítačovú vedu"
 
 #~ msgid "Use u&ndertilde package automatically"
-#~ msgstr "Automaticky používať balík undertilde"
+#~ msgstr "Automaticky používať balík u&ndertilde"
 
 #~ msgid "Use undertilde pac&kage"
-#~ msgstr "Použiť balík undertilde"
+#~ msgstr "Použiť balí&k undertilde"
 
 #~ msgid ""
 #~ "The LaTeX package undertilde is only used if you use the math frame "
