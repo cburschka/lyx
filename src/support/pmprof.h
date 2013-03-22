@@ -17,7 +17,9 @@
 /** How to use this trivial profiler:
  *
  * * at the beginning of the interesting block, just add:
- *   PROFILE_THIS_BLOCK(some_identifier);
+ *   PROFILE_THIS_BLOCK(some_identifier)
+ *
+ *   A trailing semicolon can be added at your discretion.
  *
  * * when the program ends, statistics will be sent to standard error, like:
  *
@@ -25,7 +27,71 @@
  *
  * The code measured by the profiler corresponds to the lifetime of a
  * local variable declared by the PROFILE_THIS_BLOCK macro.
+ *
+ * Some examples of profiling scope: In the snippets below, c1, c2...
+ * designate code chunks, and the identifiers of profiling blocks are
+ * chosen to reflect what they count.
+ *
+ * {
+ *   c1
+ *   PROFILE_THIS_BLOCK(c2)
+ *   c2
+ * }
+ *
+ *
+ * {
+ *   PROFILE_THIS_BLOCK(c1_c2)
+ *   c1
+ *   PROFILE_THIS_BLOCK(c2)
+ *   c2
+ * }
+ *
+ *
+ * {
+ *   {
+ *     PROFILE_THIS_BLOCK(c1)
+ *     c1
+ *   }
+ *   PROFILE_THIS_BLOCK(c2)
+ *   c2
+ * }
+ *
+ *
+ * {
+ *   PROFILE_THIS_BLOCK(c1_c2_c3)
+ *   c1
+ *   {
+ *     PROFILE_THIS_BLOCK(c2)
+ *     c2
+ *   }
+ *   c3
+ * }
+ *
+ * Influence of identifier names: they are mainly used for display
+ * purpose, but the same name should not be used twice in the same
+ * scope.
+ *
+ * {
+ *   PROFILE_THIS_BLOCK(foo)
+ *   c1
+ *   PROFILE_THIS_BLOCK(foo) // error: identifier clash
+ *   c2
+ * }
+ *
+ * In the example below, c1+c2 and c2 are counted separately, but in
+ * the output, both are confusingly labelled `foo'.
+ *
+ * {
+ *   PROFILE_THIS_BLOCK(foo)
+ *   c1
+ *   {
+ *     PROFILE_THIS_BLOCK(foo) // error: identifier clash
+ *     c2
+ *   }
+ * }
+
  */
+
 
 /* Helper class for gathering data. Instantiate this as a static
  * variable, so that its destructor will be executed when the program
@@ -82,7 +148,7 @@ private:
 
 #define PROFILE_THIS_BLOCK(a) \
 	static PMProfStat PMPS_##a(#a);\
-	PMProfInstance PMPI_##a(&PMPS_##a)
+	PMProfInstance PMPI_##a(&PMPS_##a);
 
 
 #endif
