@@ -88,8 +88,6 @@ Format LaTeX feature                        LyX feature
        \usepackage[scale|scaled=$val]{biolinum-type1}
                                             \font_sans
                                             \font_sf_scale
-463
-465
 466   Powerdot updates:                     
       \pause[]                              layout Pause
       \onslide{}{}                          InsetFlex, InsetArgument
@@ -99,6 +97,7 @@ Format LaTeX feature                        LyX feature
       \item[]<>                             InsetArgument
       \begin{enumerate|itemize|...}[]       InsetArgument
 467   support for iwona math font (the other iwona fonts are already supported)
+
 
 General
 

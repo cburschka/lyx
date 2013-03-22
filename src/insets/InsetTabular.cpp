@@ -3480,6 +3480,13 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 }
 
 
+bool InsetTabular::allowsCaptionVariation(std::string const & newtype) const
+{
+	return tabular.is_long_tabular &&
+		(newtype == "Standard" || newtype == "LongTableNoNumber");
+}
+
+
 void InsetTabular::write(ostream & os) const
 {
 	os << "Tabular" << endl;

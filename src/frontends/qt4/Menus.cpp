@@ -1634,16 +1634,18 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 		docstring const type = split(*cit, dummy, ':');
 		docstring const trtype = translateIfPossible(type);
 		docstring const cmitem = bformat(_("Caption (%1$s)"), trtype);
-			if (switchcap)
-				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cmitem),
-					     FuncRequest(LFUN_INSET_MODIFY,
-							 from_ascii("changetype ")
-							 + type), QString(), true));
-			else
-				captions.addWithStatusCheck(MenuItem(MenuItem::Command,
-								     toqstr(trtype),
-								     FuncRequest(LFUN_CAPTION_INSERT,
-								     type), QString(), true));
+		// make menu item optional, otherwise we would also see
+		// forbidden caption types
+		if (switchcap)
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cmitem),
+				     FuncRequest(LFUN_INSET_MODIFY,
+						 from_ascii("changetype ")
+						 + type), QString(), true));
+		else
+			captions.addWithStatusCheck(MenuItem(MenuItem::Command,
+							     toqstr(trtype),
+							     FuncRequest(LFUN_CAPTION_INSERT,
+							     type), QString(), true));
 	}
 	if (!captions.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Caption"));
@@ -1796,7 +1798,7 @@ struct Menus::Impl {
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats, Branches,
-	    Indices, Arguments, SwitchArguments, Captions, Switchcaptions
+	    Indices, Arguments, SwitchArguments, Captions, SwitchCaptions
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;

@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 467
+\lyxformat 469
 \begin_document
 \begin_header
 \textclass article
@@ -1369,7 +1369,7 @@ clearpage}
 \begin_layout Standard
 
 \begin_inset Tabular 
-<lyxtabular version="3" rows="64" columns="2">
+<lyxtabular version="3" rows="66" columns="2">
 <features rotate="0" islongtable="true">
 <column alignment="none" valignment="top" special="@{*}r">
 <column alignment="none" valignment="top" special="|p{1in}@{*}">
@@ -1550,8 +1550,43 @@ Second
 \end_inset
 </cell>
 </row>
+<row endfoot="true" caption="true">
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Caption LongTableNoNumber
+
+\begin_layout Standard
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Standard
+An optional table foot caption (used in the list of tables)
+\end_layout
+
+\end_inset
+
+standard foot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
 <row endfoot="true">
-<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+<cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1560,12 +1595,43 @@ This goes at the
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 bottom.
 \end_layout
+
+\end_inset
+</cell>
+</row>
+<row endlastfoot="true" caption="true">
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Caption LongTableNoNumber
+
+\begin_layout Standard
+
+\begin_inset Argument 1
+status collapsed
+
+\end_inset
+
+(last foot)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>

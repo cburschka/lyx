@@ -2527,13 +2527,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 	case LFUN_CAPTION_INSERT: {
 		code = CAPTION_CODE;
-		bool varia = true;
-		if (cur.depth() > 0) {
-			if (&cur[cur.depth() - 1].inset()
-			    && !cur[cur.depth() - 1].inset().allowsCaptionVariation())
-				varia = false;
-		}
 		string arg = cmd.getArg(0);
+		bool varia = arg != "LongTableNoNumber";
+		if (cur.depth() > 0) {
+			if (&cur[cur.depth() - 1].inset())
+				varia = cur[cur.depth() - 1].inset().allowsCaptionVariation(arg);
+		}
 		// not allowed in description items,
 		// and in specific insets
 		enable = !inDescriptionItem(cur)

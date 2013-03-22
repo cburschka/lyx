@@ -2792,10 +2792,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "caption") {
+			bool starred = false;
+			if (p.next_token().asInput() == "*") {
+				p.get_token();
+				starred = true;
+			}
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
-			begin_inset(os, "Caption Standard\n");
+			if (starred)
+				begin_inset(os, "Caption LongTableNoNumber\n");
+			else
+				begin_inset(os, "Caption Standard\n");
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
 			// FIXME InsetArgument is now properly implemented in InsetLayout

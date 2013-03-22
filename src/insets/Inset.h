@@ -351,7 +351,7 @@ public:
 	/// can we click at the specified position ?
 	virtual bool clickable(int, int) const { return false; }
 	/// Move one cell backwards
-	virtual bool allowsCaptionVariation() const { return false; }
+	virtual bool allowsCaptionVariation(std::string const &) const { return false; }
 
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }

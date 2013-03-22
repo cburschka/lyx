@@ -470,6 +470,12 @@ void InsetFloat::setNewLabel()
 }
 
 
+bool InsetFloat::allowsCaptionVariation(std::string const & newtype) const
+{
+	return !params_.subfloat && newtype != "LongTableNoNumber";
+}
+
+
 docstring InsetFloat::getCaption(OutputParams const & runparams) const
 {
 	if (paragraphs().empty())

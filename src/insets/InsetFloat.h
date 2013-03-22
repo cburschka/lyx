@@ -68,7 +68,7 @@ public:
 	///
 	InsetFloatParams const & params() const { return params_; }
 	///
-	bool allowsCaptionVariation() const { return !params_.subfloat; }
+	bool allowsCaptionVariation(std::string const &) const;
 private:
 	///
 	docstring layoutName() const;

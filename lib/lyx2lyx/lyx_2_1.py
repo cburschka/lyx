@@ -3161,7 +3161,6 @@ def convert_captioninsets(document):
           return
       document.body[i] = "\\begin_inset Caption Standard"
       i = i + 1
-        
 
 
 def revert_captioninsets(document):
@@ -3178,7 +3177,7 @@ def revert_captioninsets(document):
 
 def convert_captionlayouts(document):
     " Convert caption layouts to caption insets. "
-    
+
     caption_dict = {
         "Captionabove":  "Above",
         "Captionbelow":  "Below",
@@ -3187,7 +3186,7 @@ def convert_captionlayouts(document):
         "CenteredCaption" : "Centered",
         "Bicaption" : "Bicaption",
         }
-    
+
     i = 0
     while True:
         i = find_token(document.body, "\\begin_layout", i)
@@ -4080,6 +4079,20 @@ def revert_mbox_fbox(document):
         i = i + 1
 
 
+def revert_starred_caption(document):
+    " Reverts unnumbered longtable caption insets "
+    
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Caption LongTableNoNumber", i)
+      if i == -1:
+          return
+      # This is not equivalent, but since the caption inset is a full blown
+      # text inset a true conversion to ERT is too difficult.
+      document.body[i] = "\\begin_inset Caption Standard"
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -4140,10 +4153,12 @@ convert = [
            [465, [convert_lyxframes, remove_endframes]],
            [466, []],
            [467, []],
-           [468, []]
+           [468, []],
+           [469, []]
           ]
 
 revert =  [
+           [468, [revert_starred_caption]],
            [467, [revert_mbox_fbox]],
            [466, [revert_iwona_fonts]],
            [465, [revert_powerdot_flexes, revert_powerdot_pause, revert_powerdot_itemargs, revert_powerdot_columns]],

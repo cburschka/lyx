@@ -854,6 +854,8 @@ public:
 	    insets that may contain several paragraphs */
 	bool inheritFont() const { return false; }
 	///
+	bool allowsCaptionVariation(std::string const &) const;
+	///
 	DisplayType display() const;
 	///
 	void latex(otexstream &, OutputParams const &) const;
