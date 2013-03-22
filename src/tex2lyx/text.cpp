@@ -1009,7 +1009,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		begin_inset(os, "Box ");
 		if (outer_type == "framed")
 			os << "Framed\n";
-		else if (outer_type == "framebox")
+		else if (outer_type == "framebox" || outer_type == "fbox")
 			os << "Boxed\n";
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
@@ -1020,18 +1020,27 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			preamble.registerAutomaticallyLoadedPackage("color");
 		} else if (outer_type == "doublebox")
 			os << "Doublebox\n";
-		else if (outer_type.empty())
+		else if (outer_type.empty() || outer_type == "mbox")
 			os << "Frameless\n";
 		else
 			os << outer_type << '\n';
 		os << "position \"" << position << "\"\n";
 		os << "hor_pos \"" << hor_pos << "\"\n";
-		os << "has_inner_box " << !inner_type.empty() << "\n";
+		if (outer_type == "mbox")
+			os << "has_inner_box 1\n";
+		else
+			os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
 		os << "use_parbox " << (inner_type == "parbox" || shadedparbox)
 		   << '\n';
-		os << "use_makebox " << (inner_type == "makebox") << '\n';
-		os << "width \"" << width_value << width_unit << "\"\n";
+		if (outer_type == "mbox")
+			os << "use_makebox 1\n";
+		else
+			os << "use_makebox " << (inner_type == "makebox") << '\n';
+		if (outer_type == "fbox" || outer_type == "mbox")
+			os << "width \"-999col%\"\n";
+		else
+			os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"" << width_special << "\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
@@ -1131,7 +1140,8 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces(true);
 		}
 	}
-	if (outer_type == "shaded") {
+	if (outer_type == "shaded" || outer_type == "fbox"
+		|| outer_type == "mbox") {
 		// These boxes never have an inner box
 		;
 	} else if (p.next_token().asInput() == "\\parbox") {
@@ -4127,7 +4137,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				          "", "", t.cs());
 		}
 
-		else if (t.cs() == "ovalbox" || t.cs() == "Ovalbox" ||
+		else if (t.cs() == "fbox" || t.cs() == "mbox" ||
+			     t.cs() == "ovalbox" || t.cs() == "Ovalbox" ||
 		         t.cs() == "shadowbox" || t.cs() == "doublebox")
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
@@ -4142,18 +4153,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_text(p, os, FLAG_ITEM, outer, context);
 				output_ert_inset(os, "}", context);
 			} else {
+				//the syntax is: \framebox[width][position]{content}
 				string special = p.getFullOpt();
 				special += p.getOpt();
-				// LyX does not yet support \framebox without any option
-				if (!special.empty())
-					parse_outer_box(p, os, FLAG_ITEM, outer,
-					                context, t.cs(), special);
-				else {
-					eat_whitespace(p, os, context, false);
-					output_ert_inset(os, "\\framebox{", context);
-					parse_text(p, os, FLAG_ITEM, outer, context);
-					output_ert_inset(os, "}", context);
-				}
+				parse_outer_box(p, os, FLAG_ITEM, outer,
+					            context, t.cs(), special);
 			}
 		}
 

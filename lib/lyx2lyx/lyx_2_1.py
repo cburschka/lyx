@@ -4051,6 +4051,35 @@ def revert_powerdot_columns(document):
         i = endlay
 
 
+def revert_mbox_fbox(document):
+    'Convert revert mbox/fbox boxes to TeX-code'
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Box", i)
+        if i == -1:
+            return
+        j = find_token(document.body, "width", i)
+        if j != i + 7:
+            document.warning("Malformed LyX document: Can't find box width")
+            return
+        width = get_value(document.body, "width", j)
+        k = find_end_of_inset(document.body, j)
+        if k == -1:
+            document.warning("Malformed LyX document: Can't find end of box inset")
+            i += 1
+            continue
+        BeginLayout = find_token(document.body, "\\begin_layout Plain Layout", j)
+        EndLayout = find_token(document.body, "\\end_layout", BeginLayout)
+        # replace if width is "-999col%"
+        if (width == '"-999col%"'):
+            document.body[EndLayout:k + 1] = put_cmd_in_ert("}")
+            if document.body[i] == "\\begin_inset Box Frameless":
+                document.body[i:BeginLayout + 1] = put_cmd_in_ert("\\mbox{")
+            if document.body[i] == "\\begin_inset Box Boxed":
+                document.body[i:BeginLayout + 1] = put_cmd_in_ert("\\fbox{")
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -4110,10 +4139,12 @@ convert = [
            [464, [convert_use_cancel]],
            [465, [convert_lyxframes, remove_endframes]],
            [466, []],
-           [467, []]
+           [467, []],
+           [468, []]
           ]
 
 revert =  [
+           [467, [revert_mbox_fbox]],
            [466, [revert_iwona_fonts]],
            [465, [revert_powerdot_flexes, revert_powerdot_pause, revert_powerdot_itemargs, revert_powerdot_columns]],
            [464, []],

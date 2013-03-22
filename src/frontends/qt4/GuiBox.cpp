@@ -103,7 +103,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	widthED->setValidator(unsignedLengthValidator(widthED));
 
 	// initialize the length validator
-	addCheckedWidget(widthED, widthLA);
+	addCheckedWidget(widthED, widthCB);
 	addCheckedWidget(heightED, heightCB);
 
 	initDialog();
@@ -125,15 +125,25 @@ void GuiBox::on_innerBoxCO_activated(int /* index */)
 	if (heightCB->isChecked() && !ibox)
 		heightCB->setChecked(false);
 	heightCB->setEnabled(ibox);
+	// the width can only be selected for makebox or framebox
+	widthCB->setEnabled(itype == "makebox" 
+	                    || (outer == "Boxed" && itype == "none"));
+	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_enabled =
 		ibox || outer == "Frameless" || outer == "Boxed";
-	widthED->setEnabled(width_enabled);
-	widthUnitsLC->setEnabled(width_enabled);
-	// halign is only allowed for Boxed without inner box or for makebox
-	halignCO->setEnabled((!ibox && outer == "Boxed")
-		|| (itype == "makebox"));
+	// enable if width_enabled, except if checkbaox is active but unset
+	widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+	widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+	if (!widthCB->isChecked() && widthCB->isEnabled()) {
+		widthED->setEnabled(false);
+		widthUnitsLC->setEnabled(false);
+	}
+	// halign is only allowed without inner box and if a width is used and if
+	// pagebreak is not used
+	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+	                     && ((!ibox && outer == "Boxed") || itype == "makebox"));
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && outer == "Boxed");
 	setSpecial(ibox);
@@ -164,16 +174,29 @@ void GuiBox::on_typeCO_activated(int index)
 		heightCB->setEnabled(ibox);
 		setSpecial(ibox);
 	}
+	// the width can only be selected for makebox or framebox
+	widthCB->setEnabled(itype == "makebox" 
+	                    || (type == "Boxed" && itype == "none"));
+	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_enabled = 
 		itype != "none" || frameless || type == "Boxed";
-	widthED->setEnabled(width_enabled);
-	widthUnitsLC->setEnabled(width_enabled);
-	// halign is only allowed for Boxed without inner box or for makebox
-	halignCO->setEnabled((type == "Boxed" && itype == "none") || (itype == "makebox"));
+	// enable if width_enabled, except if checkbaox is active but unset
+	widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+	widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+	if (!widthCB->isChecked() && widthCB->isEnabled()) {
+		widthED->setEnabled(false);
+		widthUnitsLC->setEnabled(false);
+	}
+	// halign is only allowed without inner box and if a width is used and if
+	// pagebreak is not used
+	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+	                     && ((itype == "none" && type == "Boxed") || itype == "makebox"));
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
+	if (type != "Boxed")
+		pagebreakCB->setChecked(false);
 	changed();
 }
 
@@ -185,6 +208,17 @@ void GuiBox::initDialog()
 	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightED->setText("1");
 	heightUnitsLC->setCurrentItem("totalheight");
+}
+
+
+void GuiBox::on_widthCB_stateChanged(int state)
+{
+	if (widthCB->isEnabled()) {
+		widthED->setEnabled(widthCB->isChecked());
+		widthUnitsLC->setEnabled(widthCB->isChecked());
+		halignCO->setEnabled(widthCB->isChecked());
+	}
+	changed();
 }
 
 
@@ -202,6 +236,9 @@ void GuiBox::on_pagebreakCB_stateChanged()
 {
 	bool pbreak = (pagebreakCB->checkState() == Qt::Checked);
 	innerBoxCO->setEnabled(!pbreak);
+	widthCB->setEnabled(!pbreak);
+	if (pbreak)
+		widthCB->setChecked(!pbreak);
 	widthED->setEnabled(!pbreak);
 	widthUnitsLC->setEnabled(!pbreak);
 	if (!pbreak) {
@@ -256,25 +293,33 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	ialignCO->setEnabled(ibox);
 	setSpecial(ibox);
 
-	// halign and pagebreak are only allowed for Boxed without inner box
-	halignCO->setEnabled((!ibox && type == "Boxed") || (params.use_makebox));
+	// halign is only allowed without inner box and if a width is used and if
+	// pagebreak is not used
+	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+	                     && ((!ibox && type == "Boxed") || params.use_makebox));
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && type == "Boxed");
 
-	// except for frameless and boxed, the width cannot be specified if
-	// there is no inner box
-	bool const width_enabled = (ibox || frameless || type == "Boxed");
-	widthED->setEnabled(width_enabled);
-	widthUnitsLC->setEnabled(width_enabled);
-
 	Length::UNIT const default_unit = Length::defaultUnit();
 
-	lengthToWidgets(widthED, widthUnitsLC,
-		(params.width).asString(), default_unit);
+	// the width can only be selected for makebox or framebox
+	widthCB->setEnabled(inner_type == "makebox" 
+	                    || (type == "Boxed" && !ibox && !pagebreakCB->isChecked()));
+	// "-999col%" is the code for no width
+	if ((params.width).asString() == "-999col%")
+		widthCB->setCheckState(Qt::Unchecked);
+	else {
+		if (widthCB->isEnabled())
+			widthCB->setChecked(true);
+		lengthToWidgets(widthED, widthUnitsLC,
+			(params.width).asString(), default_unit);
+		QString const special = toqstr(params.special);
+		if (!special.isEmpty() && special != "none")
+			widthUnitsLC->setCurrentItem(special);
+	}
 
-	QString const special = toqstr(params.special);
-	if (!special.isEmpty() && special != "none")
-		widthUnitsLC->setCurrentItem(special);
+	widthED->setEnabled(widthCB->isChecked());
+	widthUnitsLC->setEnabled(widthCB->isChecked());
 
 	lengthToWidgets(heightED, heightUnitsLC,
 		(params.height).asString(), default_unit);
@@ -321,13 +366,22 @@ docstring GuiBox::dialogToParams() const
 	QString unit =
 		widthUnitsLC->itemData(widthUnitsLC->currentIndex()).toString();
 	QString value = widthED->text();
-	if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
-		params.special = fromqstr(unit);
-		// Note: the unit is simply ignored in this case
-		params.width = Length(value.toDouble(), Length::IN);
+
+	if (widthCB->isChecked()) {
+	 if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
+		 params.special = fromqstr(unit);
+		 // Note: the unit is simply ignored in this case
+		 params.width = Length(value.toDouble(), Length::IN);
+	 } else {
+		 params.special = "none";
+		 params.width = Length(widgetsToLength(widthED, widthUnitsLC));
+	 }
 	} else {
-		params.special = "none";
-		params.width = Length(widgetsToLength(widthED, widthUnitsLC));
+		if (widthCB->isEnabled()) {
+			// use the code "-999col%" for the case that no width was selected
+			params.special = "none";
+			params.width = Length("-999col%");
+		}
 	}
 
 	// the height parameter is omitted if the value

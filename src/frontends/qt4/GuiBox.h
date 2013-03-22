@@ -31,6 +31,7 @@ private Q_SLOTS:
 	void on_innerBoxCO_activated(int);
 	void on_typeCO_activated(int);
 	void initDialog();
+	void on_widthCB_stateChanged(int state);
 	void on_heightCB_stateChanged(int state);
 	void on_pagebreakCB_stateChanged();
 

@@ -162,7 +162,7 @@ void InsetBox::setButtonLabel()
 
 bool InsetBox::hasFixedWidth() const
 {
-	return params_.inner_box || params_.special != "width";
+	return from_ascii(params_.width.asLatexString()) != "-9.99\\columnwidth";
 }
 
 
@@ -316,20 +316,24 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\begin{framed}%\n";
 		break;
 	case Boxed:
-		os << "\\framebox";
-		if (!params_.inner_box) {
-			// Special widths, see usrguide §3.5
-			// FIXME UNICODE
-			if (params_.special != "none") {
-				os << "[" << params_.width.value()
-				   << '\\' << from_utf8(params_.special)
-				   << ']';
-			} else
-				os << '[' << from_ascii(width_string)
-				   << ']';
-			if (params_.hor_pos != 'c')
-				os << "[" << params_.hor_pos << "]";
-		}
+		// "-999col%" is the code for no width
+		if (from_ascii(width_string) != "-9.99\\columnwidth") {
+			os << "\\framebox";
+			if (!params_.inner_box) {
+				// Special widths, see usrguide §3.5
+				// FIXME UNICODE
+				if (params_.special != "none") {
+					os << "[" << params_.width.value()
+					   << '\\' << from_utf8(params_.special)
+					   << ']';
+				} else
+					os << '[' << from_ascii(width_string)
+					   << ']';
+				if (params_.hor_pos != 'c')
+					os << "[" << params_.hor_pos << "]";
+			}
+		} else
+			os << "\\fbox";
 		os << "{";
 		break;
 	case ovalbox:
@@ -354,18 +358,22 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (params_.use_parbox)
 			os << "\\parbox";
 		else if (params_.use_makebox) {
-			os << "\\makebox";
-			// FIXME UNICODE
-			// output the width and horizontal position
-			if (params_.special != "none") {
-				os << "[" << params_.width.value()
-				   << '\\' << from_utf8(params_.special)
-				   << ']';
+			// "-999col%" is the code for no width
+			if (from_ascii(width_string) != "-9.99\\columnwidth") {
+				os << "\\makebox";
+				// FIXME UNICODE
+				// output the width and horizontal position
+				if (params_.special != "none") {
+					os << "[" << params_.width.value()
+					   << '\\' << from_utf8(params_.special)
+					   << ']';
+				} else
+					os << '[' << from_ascii(width_string)
+					   << ']';
+				if (params_.hor_pos != 'c')
+					os << "[" << params_.hor_pos << "]";
 			} else
-				os << '[' << from_ascii(width_string)
-				   << ']';
-			if (params_.hor_pos != 'c')
-				os << "[" << params_.hor_pos << "]";
+				os << "\\mbox";
 			os << "{";
 		}
 		else

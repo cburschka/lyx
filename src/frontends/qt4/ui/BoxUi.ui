@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>BoxUi</class>
  <widget class="QWidget" name="BoxUi">
@@ -234,15 +235,18 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="widthLA">
+    <widget class="QCheckBox" name="widthCB">
      <property name="toolTip">
       <string/>
      </property>
      <property name="text">
       <string>&amp;Width:</string>
      </property>
-     <property name="buddy">
-      <cstring>widthED</cstring>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
