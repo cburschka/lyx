@@ -86,6 +86,8 @@ private:
 	void validate(LaTeXFeatures & features) const;
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	InsetCode lyxCode() const { return GRAPHICS_CODE; }
+	///
+	docstring layoutName() const { return from_ascii("Graphics"); }
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
 	///
