@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 467
+\lyxformat 468
 \begin_document
 \begin_header
 \textclass article
@@ -135,23 +135,22 @@ Frameless Boxes
 
 \begin_layout Standard
 blabla 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width "-999col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
-\begin_layout Plain Layout
 
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
+\begin_layout Standard
 mbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
 \end_layout
 
 \end_inset
@@ -657,23 +656,22 @@ blabla
 
 \begin_layout Standard
 blabla 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "-999col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
-\begin_layout Plain Layout
 
-\backslash
-fbox{
-\end_layout
-
-\end_inset
-
+\begin_layout Standard
 fbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
 \end_layout
 
 \end_inset
@@ -683,27 +681,26 @@ status collapsed
 
 \begin_layout Standard
 blabla 
-\begin_inset ERT
-status collapsed
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "-999col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
-\begin_layout Plain Layout
 
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
+\begin_layout Standard
 fr
 \color blue
 ame
 \color inherit
 box 1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
 \end_layout
 
 \end_inset
@@ -763,19 +760,7 @@ framebox 3
 
 \begin_layout Standard
 This is an example text. 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
+\begin_inset Box Boxed
 position "c"
 hor_pos "c"
 has_inner_box 1
@@ -807,16 +792,6 @@ over the
 \begin_layout Plain Layout
 \align center
 box height. 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
 \end_layout
 
 \end_inset

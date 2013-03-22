@@ -935,7 +935,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		width_unit = "in";
 		width_special = "width";
 	} else if (latex_width.empty() && outer_type == "framebox") {
-		use_ert = true;
+		outer_type == "fbox";
+		width_value = "-999";
+		width_unit = "col%";
+		width_special = "none";
 	}
 	if (use_ert) {
 		ostringstream ss;
@@ -992,9 +995,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			if (outer_flags & FLAG_END)
 				output_ert_inset(os, "\\end{" + outer_type + '}',
 				           parent_context);
-			else if (inner_type.empty() && outer_type == "framebox")
-				// in this case it is already closed later
-				;
 			else
 				output_ert_inset(os, "}", parent_context);
 		}
