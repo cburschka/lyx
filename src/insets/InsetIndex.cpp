@@ -22,6 +22,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "IndicesList.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_latex.h"
@@ -698,7 +699,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
-	string const tocattr = "class='tochead " + tocclass + "'";
+	string const tocattr = "class='index tochead " + tocclass + "'";
 
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
@@ -706,9 +707,10 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	xs << html::StartTag("div", "class='index'");
+	xs << html::StartTag("div", tocattr);
 	xs << html::StartTag(lay.htmltag(), lay.htmlattr()) 
-		 << _("Index") 
+		 << translateIfPossible(from_ascii("Index"),
+	                          op.local_font->language()->lang())
 		 << html::EndTag(lay.htmltag());
 	xs << html::StartTag("ul", "class='main'");
 	Font const dummy;

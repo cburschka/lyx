@@ -171,7 +171,7 @@ int InsetFloatList::plaintext(odocstringstream & os,
 }
 
 
-docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
+docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	FloatList const & floats = buffer().params().documentClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
@@ -193,17 +193,20 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 		string const type = cit->second.floattype();
 		if (type == "table") {
 			toctype = "table";
-			toclabel = _("List of Tables");
+			toclabel = translateIfPossible(from_ascii("List of Tables"),
+			                               op.local_font->language()->lang());
 		} else if (type == "figure") {
 			toctype = "figure";
-			toclabel = _("List of Figures");
+			toclabel = translateIfPossible(from_ascii("List of Figures"),
+			                               op.local_font->language()->lang());
 		} else {
 			LYXERR0("Unknown Builtin Float!");
 			return docstring();
 		}
 	} else {
 		toctype = to_utf8(getParam("type"));
-		toclabel = buffer().B_(cit->second.listName());
+		toclabel = translateIfPossible(from_utf8(cit->second.listName()),
+		                               op.local_font->language()->lang());
 	}
 
 	// FIXME Do we need to check if it exists? If so, we need a new
