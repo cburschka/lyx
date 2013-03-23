@@ -211,7 +211,7 @@ void GuiBox::initDialog()
 }
 
 
-void GuiBox::on_widthCB_stateChanged(int state)
+void GuiBox::on_widthCB_stateChanged(int)
 {
 	if (widthCB->isEnabled()) {
 		widthED->setEnabled(widthCB->isChecked());
