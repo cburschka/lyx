@@ -11,12 +11,16 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
-2013-08-22 Uwe Stöhr <uwestoehr@web.de>
+2013-03-23 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 469
+	  support for \caption* in longtables (fix bug 3209)
+
+2013-03-22 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 468: support for \mbox and \fbox
 	  New checkbox in the box dialog to avoid using an explicit
 	  width.
 
-2013-08-19 Uwe Stöhr <uwestoehr@web.de>
+2013-03-19 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 467: support for iwona fonts
 	  new supported sansserif fonts "iwona", "iwonal", "iwonac"
 	  and "iwonalc" and the math font "iwona-math"
