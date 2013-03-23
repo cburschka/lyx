@@ -277,6 +277,7 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
 			out << html::StartTag("div", "class='float-caption'") 
+			    << XHTMLStream::ESCAPE_NONE
 			    << caption << html::EndTag("div");
 	}
 
