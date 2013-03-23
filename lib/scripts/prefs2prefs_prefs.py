@@ -239,6 +239,8 @@ def add_mime_types(line):
 		converted = converted + '       ""'
 	return (True, converted)
 
+re_converter = re.compile(r'^\\converter\s+', re.IGNORECASE)
+
 def split_pdf_format(line):
 	# strictly speaking, a new format would not require to bump the
 	# version number, but the old pdf format was hardcoded at several
@@ -259,7 +261,7 @@ def split_pdf_format(line):
 		if entries[1] == 'pdf':
 			converted = line + "\n" + entries[0] + ' pdf6 "' + entries[2] + '"'
 			return (True, converted)
-	elif line.lower().startswith("\\converter"):
+	elif re_converter.match(line):
 		entries = get_format(line)
 		# The only converter from pdf that is touched is pdf->eps:
 		# All other converters are likely meant for further processing on export.
