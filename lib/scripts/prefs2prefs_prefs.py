@@ -77,7 +77,7 @@ def get_format(line):
 			return entries
 		elif not line[i].isspace():
 			beg = i
-			while not line[i].isspace():
+			while i < len(line) and not line[i].isspace():
 				i = i + 1
 			end = i
 			entries.append(line[beg:end])
@@ -265,8 +265,9 @@ def split_pdf_format(line):
 		# All other converters are likely meant for further processing on export.
 		# The only converter to pdf that stays untouched is dvi->pdf:
 		# All other converters are likely meant for graphics.
-		if (entries[1] == 'pdf' and entries[2] == 'eps') or \
-		   (entries[1] != 'ps'  and entries[2] == 'pdf'):
+		if len(entries) > 2 and \
+		   ((entries[1] == 'pdf' and entries[2] == 'eps') or \
+		   (entries[1] != 'ps'  and entries[2] == 'pdf')):
 			if entries[1] == 'pdf':
 				converted = entries[0] + ' pdf6 ' + entries[2]
 			else:
