@@ -80,8 +80,6 @@ public:
 	typedef std::vector<Converter> ConverterList;
 	///
 	typedef ConverterList::const_iterator const_iterator;
-	///
-	typedef std::vector<std::string> FormatList;
 
 	///
 	Converter const & get(int i) const { return converterlist_[i]; }
