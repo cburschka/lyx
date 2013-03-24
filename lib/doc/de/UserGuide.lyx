@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass scrbook
@@ -73,13 +73,13 @@ enumitem
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -104,24 +104,15 @@ enumitem
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 0
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 0
-\use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type numerical
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch Frage
@@ -3050,7 +3041,7 @@ Jede Dokumentklasse hat Standardwerte, diese Tabelle beschreibt sie:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4396,7 +4387,11 @@ listung
 status collapsed
 
 \begin_layout Plain Layout
-Auflistung@Auf\SpecialChar \textcompwordmark{}
+Auf
+\family sans
+\SpecialChar \textcompwordmark{}
+
+\family default
 listung
 \end_layout
 
@@ -5014,7 +5009,7 @@ Titel ! Kurztitel
 \end_inset
 
  mit optionalen Argumenten definieren
-\begin_inset Argument 1
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -5589,7 +5584,8 @@ listung
 status collapsed
 
 \begin_layout Plain Layout
-Liste ! Auflistung
+Liste ! Auf\SpecialChar \textcompwordmark{}
+listung
 \end_layout
 
 \end_inset
@@ -6671,7 +6667,7 @@ Als Beispiel eine Liste mit benutzerdefinierter Nummerierung:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -6701,7 +6697,7 @@ Stufe 1
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -6733,7 +6729,7 @@ Level 2
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -6761,7 +6757,7 @@ Stufe 3
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -6884,7 +6880,7 @@ Aufzählungen können nach Unterbrechungen fortgesetzt werden:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -7001,7 +6997,7 @@ Aufzählung startet bei gegebenem Wert:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -7071,7 +7067,7 @@ nolistsep
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -7141,7 +7137,7 @@ cm, so dass sich die Nummer im Seitenrand befindet:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -7225,15 +7221,6 @@ verwendet wird:
 \end_layout
 
 \begin_layout Description
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 
 \lang english
 Ionizing
@@ -7243,10 +7230,8 @@ Ionizing
 radiation:
 \lang ngerman
  
-\lang english
-
-\begin_inset Argument 1
-status collapsed
+\begin_inset Argument
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7266,6 +7251,8 @@ itshape, style=nextline
 
 \end_inset
 
+
+\lang english
 Ionizing radiation consists of particles or electromagnetic waves that are
  energetic enough to detach electrons from atoms or molecules, therefore
  ionizing them.
@@ -8791,7 +8778,7 @@ Gleitobjekte
 \end_inset
 
  usw.
-\begin_inset Argument 1
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -8882,7 +8869,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8961,7 +8948,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9048,7 +9035,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9865,7 +9852,7 @@ Auflistung
 \family default
 -Umgebungen
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Schachtelungs!-beispiele
@@ -9874,7 +9861,7 @@ Schachtelungs!-beispiele
 \end_inset
 
 
-\begin_inset Argument 1
+\begin_inset Argument
 status collapsed
 
 \begin_layout Plain Layout
@@ -10274,7 +10261,7 @@ Hier kommt eine Tabelle:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -11038,7 +11025,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -11059,7 +11046,7 @@ Breite der verschiedenen horizontalen Lerräume.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -16203,7 +16190,7 @@ Minuszeichen
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -17559,7 +17546,7 @@ Hier ist ein Beispiel, das den Unterschied verdeutlicht:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -18751,7 +18738,7 @@ Tabelle
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -19008,7 +18995,7 @@ ngs-, Breiten-, und Linieneinstellungen nur die Mehrfachspaltenzelle betrifft.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -19341,7 +19328,7 @@ Kopfzeile
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -21545,7 +21532,7 @@ Um mehrzeilige Einträge in Tabellenzellen zu erstellen, muss man eine feste
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -21926,7 +21913,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22076,7 +22063,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22116,7 +22103,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22154,7 +22141,7 @@ Schnabeltier
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22227,7 +22214,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22248,7 +22235,7 @@ Ein Tabellen-Gleitobjekt.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23664,7 +23651,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -23695,7 +23682,7 @@ Akzente
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24990,7 +24977,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -25021,7 +25008,7 @@ mathematische ! Schriftstile
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -30688,7 +30675,7 @@ wechselt temporär auf den Stil mit benutzerdefinierten Kopf/Fußzeilen
 \end_layout
 
 \begin_layout Left Header
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30724,7 +30711,7 @@ definiert die Kopfzeile wie unten beschrieben
 \end_layout
 
 \begin_layout Center Header
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30737,7 +30724,7 @@ status open
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30762,7 +30749,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30787,7 +30774,7 @@ thepage
 \end_layout
 
 \begin_layout Center Footer
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30812,7 +30799,7 @@ Magischer Code:
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument 1
+\begin_inset Argument
 status open
 
 \begin_layout Plain Layout
@@ -30987,7 +30974,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="30line%">
 <column alignment="center" valignment="top" width="30line%">
 <column alignment="right" valignment="top" width="30line%">
@@ -31148,7 +31135,7 @@ Fußzeile rechts
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -37325,7 +37312,7 @@ Eingebettete Objekte
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -37372,7 +37359,7 @@ Auswahlbox für die Umgebungen
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -38074,7 +38061,7 @@ Die Extra-Werkzeugleiste enthält wie oben gezeigt von links nach rechts
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -38892,7 +38879,7 @@ Die Ansicht / Aktualisieren-Werkzeugleiste enthält wie oben gezeigt von
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -43841,7 +43828,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -43869,7 +43856,7 @@ Maßeinheiten
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
