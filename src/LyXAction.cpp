@@ -1045,6 +1045,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SPELLING_REMOVE, "spelling-remove", ReadOnly, Edit },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_CONTINUOUSLY
+ * \li Action: Toggle continuous spell checking.
+ * \li Syntax: spelling-continuously
+ * \li Origin: vfr, 24 March 2013
+ * \endvar
+ */
+		{ LFUN_SPELLING_CONTINUOUSLY, "spelling-continuously", ReadOnly, Edit },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.

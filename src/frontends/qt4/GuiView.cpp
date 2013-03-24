@@ -1855,6 +1855,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = documentBufferView() && documentBufferView()->cursor().inTexted();
 		break;
 
+	case LFUN_SPELLING_CONTINUOUSLY:
+		flag.setOnOff(lyxrc.spellcheck_continuously);
+		break;
+
 	default:
 		return false;
 	}
@@ -3758,6 +3762,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			one.startscript(Systemcall::DontWait, command);
 			break;
 		}
+
+		case LFUN_SPELLING_CONTINUOUSLY:
+			lyxrc.spellcheck_continuously = !lyxrc.spellcheck_continuously;
+			dr.screenUpdate(Update::Force | Update::FitCursor);
+			break;
+
 		default:
 			// The LFUN must be for one of BufferView, Buffer or Cursor;
 			// let's try that:
