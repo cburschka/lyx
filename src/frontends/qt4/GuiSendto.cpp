@@ -72,6 +72,7 @@ void GuiSendTo::changed_adaptor()
 void GuiSendTo::updateContents()
 {
 	all_formats_ = buffer().params().exportableFormats(false);
+	sort(all_formats_.begin(), all_formats_.end(), Format::formatSorter);
 	
 	// Save the current selection if any
 	Format const * current_format = 0;

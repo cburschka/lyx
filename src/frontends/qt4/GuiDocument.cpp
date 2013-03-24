@@ -2480,6 +2480,7 @@ void GuiDocument::updateDefaultFormat()
 				QVariant(QString("default")));
 	typedef vector<Format const *> Formats;
 	Formats formats = param_copy.exportableFormats(true);
+	sort(formats.begin(), formats.end(), Format::formatSorter);
 	Formats::const_iterator cit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; cit != end; ++cit)

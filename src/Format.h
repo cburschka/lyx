@@ -96,6 +96,9 @@ public:
 	bool inExportMenu() const { return flags_ & export_menu; }
 	///
 	bool zippedNative() const { return flags_ & zipped_native; }
+	///
+	static bool formatSorter(Format const * lhs, Format const * rhs);
+
 private:
 	/// Internal name. Needs to be unique.
 	std::string name_;

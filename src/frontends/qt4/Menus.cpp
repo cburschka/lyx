@@ -1061,6 +1061,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 		LASSERT(false, /* */);
 		return;
 	}
+	sort(formats.begin(), formats.end(), Format::formatSorter);
 
 	bool const view_update = (kind == MenuItem::ViewFormats
 			|| kind == MenuItem::UpdateFormats);

@@ -115,6 +115,10 @@ private:
 
 } //namespace anon
 
+bool Format::formatSorter(Format const * lhs, Format const * rhs)
+{
+	return _(lhs->prettyname()) < _(rhs->prettyname());
+}
 
 bool operator<(Format const & a, Format const & b)
 {
