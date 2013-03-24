@@ -4286,7 +4286,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
-	cbuf.tocBackend().update(true);
+	cbuf.tocBackend().update(utype == OutputUpdate);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
 }

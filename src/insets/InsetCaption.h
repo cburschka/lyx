@@ -79,7 +79,8 @@ private:
 	docstring xhtml(XHTMLStream & os, OutputParams const & runparams) const;
 	///
 	void setCustomLabel(docstring const & label);
-	///
+	/// \param output_active : is the toc being generated for use by the
+	/// output routines?
 	void addToToc(DocIterator const & di, bool output_active) const;
 	/// 
 	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
