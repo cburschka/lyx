@@ -74,6 +74,7 @@ ToolbarSet
 		Item "Print document" "dialog-show print"
 		Separator
 		Item "Check spelling" "dialog-show spellchecker"
+		Item "Spellcheck continuously" "spelling-continuously"
 		Separator
 		Item "Undo" "undo"
 		Item "Redo" "redo"
