@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 467
+\lyxformat 469
 \begin_document
 \begin_header
 \textclass scrbook
@@ -21468,6 +21468,25 @@ status collapsed
 \end_inset
 
  block, so only the CSS itself need be included.
+
+\change_inserted 1414654397 1364133464
+ Must end with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1364133462
+EndHTMLStyle
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
