@@ -11,7 +11,11 @@
 #ifndef PMPROF_H
 #define PMPROF_H
 
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <sys/time.h>
+#endif
 #include <iostream>
 
 /** How to use this trivial profiler:
@@ -92,11 +96,29 @@
 
  */
 
+#ifdef _WIN32
+
+/* This function does not really returns the "time of day",
+ * but it will suffice to evaluate elapsed times.
+ */
+int gettimeofday(struct timeval * tv, struct timezone * /*tz*/)
+{
+	LARGE_INTEGER frequency, t;
+	QueryPerformanceFrequency(&frequency);
+	QueryPerformanceCounter(&t);
+
+	tv->tv_sec = long(t.QuadPart / frequency.QuadPart);
+	tv->tv_usec = long((1000000.0 * (t.QuadPart % frequency.QuadPart)) / frequency.QuadPart);
+	return 0;
+}
+
+#endif // _WIN32
 
 /* Helper class for gathering data. Instantiate this as a static
  * variable, so that its destructor will be executed when the program
  * ends.
  */
+
 class PMProfStat {
 public:
 	PMProfStat(char const * name)
