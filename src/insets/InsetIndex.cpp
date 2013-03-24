@@ -699,7 +699,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
-	string const tocattr = "class='index tochead " + tocclass + "'";
+	string const tocattr = "class='index " + tocclass + "'";
 
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
