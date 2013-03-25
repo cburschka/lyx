@@ -440,6 +440,7 @@ dist_images_DATA = \
 	images/reload.png \
 	images/script-insert_subscript.png \
 	images/script-insert_superscript.png \
+	images/spelling-continuously.png \
 	images/view-split_horizontal.png \
 	images/view-split_vertical.png \
 	images/standard.png \
@@ -1593,6 +1594,7 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/paste.png \
 	images/oxygen/redo.png \
 	images/oxygen/reload.png \
+	images/oxygen/spelling-continuously.png \
 	images/oxygen/view-split_horizontal.png \
 	images/oxygen/view-split_vertical.png \
 	images/oxygen/tabular-insert.png \
