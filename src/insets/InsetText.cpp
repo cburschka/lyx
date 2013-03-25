@@ -847,7 +847,7 @@ void InsetText::addToToc(DocIterator const & cdit, bool output_active) const
 		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			docstring tocstring;
-			int const length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
+			int const length = doing_output ? INT_MAX : TOC_ENTRY_LENGTH;
 			if (arginset) {
 				tocstring = par.labelString();
 				if (!tocstring.empty())
@@ -857,7 +857,7 @@ void InsetText::addToToc(DocIterator const & cdit, bool output_active) const
 				par.forToc(tocstring, length);
 			dit.pos() = 0;
 			toc.push_back(TocItem(dit, toclevel - min_toclevel,
-				tocstring, output_active, tocstring));
+				tocstring, doing_output, tocstring));
 		}
 		
 		// And now the list of changes.
