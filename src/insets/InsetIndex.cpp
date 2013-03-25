@@ -689,12 +689,19 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	if (toc.empty())
 		return docstring();
 
-	// Collection the index entries in a form we can use them.
+	// Collect the index entries in a form we can use them.
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
 	vector<IndexEntry> entries;
 	for (; it != en; ++it)
-		entries.push_back(IndexEntry(it->str(), it->dit()));
+		if (it->isOutput())
+			entries.push_back(IndexEntry(it->str(), it->dit()));
+
+	if (entries.empty())
+		// not very likely that all the index entries are in notes or
+		// whatever, but....
+		return docstring();
+
 	stable_sort(entries.begin(), entries.end());
 
 	Layout const & lay = bp.documentClass().htmlTOCLayout();
