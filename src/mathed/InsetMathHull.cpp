@@ -2121,7 +2121,7 @@ void InsetMathHull::mathAsLatex(WriteStream & os) const
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
 	BufferParams::MathOutput const mathtype = 
-		buffer().params().html_math_output;
+		buffer().masterBuffer()->params().html_math_output;
 
 	bool success = false;
 
