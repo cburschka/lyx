@@ -17,6 +17,7 @@
 
 namespace lyx {
 
+class Toc;
 
 /// Used to insert table of contents and similar lists
 /// at present, supports only \tableofcontents and \listoflistings.
@@ -61,6 +62,10 @@ public:
 	//@}
 
 private:
+	///
+	void makeTOCWithDepth(XHTMLStream xs, Toc toc, const OutputParams & op) const;
+	///
+	void makeTOCNoDepth(XHTMLStream xs, Toc toc, const OutputParams & op) const;
 	/// \name Private functions inherited from Inset class
 	//@{
 	///

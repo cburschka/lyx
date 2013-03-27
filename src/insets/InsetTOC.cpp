@@ -30,6 +30,7 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 
 #include <ostream>
 
@@ -127,34 +128,9 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
+void InsetTOC::makeTOCWithDepth(XHTMLStream xs, 
+		Toc toc, OutputParams const & op) const
 {
-	if (getCmdName() != "tableofcontents")
-		return docstring();
-
-	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
-	string const & tocclass = lay.defaultCSSClass();
-	string const tocattr = "class='tochead " + tocclass + "'";
-	
-	// we'll use our own stream, because we are going to defer everything.
-	// that's how we deal with the fact that we're probably inside a standard
-	// paragraph, and we don't want to be.
-	odocstringstream ods;
-	XHTMLStream xs(ods);
-
-	Toc const & toc = buffer().tocBackend().toc(cmd2type(getCmdName()));
-	if (toc.empty())
-		return docstring();
-
-	xs << html::StartTag("div", "class='toc'");
-
-	// Title of TOC
-	docstring title = screenLabel();
-	xs << html::StartTag("div", tocattr)
-		 << title
-		 << html::EndTag("div");
-
-	// Output of TOC
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
 	int lastdepth = 0;
@@ -165,6 +141,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			continue;
 
 		// First, we need to manage increases and decreases of depth
+		// If there's no depth to deal with, we artifically set it to 1.
 		int const depth = it->depth();
 		
 		// Ignore stuff above the tocdepth
@@ -229,6 +206,92 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	}
 	for (int i = lastdepth; i > 0; --i) 
 		xs << html::EndTag("div") << html::CR();
+}
+
+
+void InsetTOC::makeTOCNoDepth(XHTMLStream xs, 
+		Toc toc, const OutputParams & op) const
+{
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	for (; it != en; ++it) {
+		// do not output entries that are not actually included in the output,
+		// e.g., stuff in non-active branches or notes or whatever.
+		if (!it->isOutput())
+			continue;
+
+		xs << html::StartTag("div", "class='lyxtop-1'") << html::CR();
+
+		Paragraph const & par = it->dit().innerParagraph();
+		string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
+		xs << html::StartTag("a", attr);
+
+		// First the label, if there is one
+		docstring const & label = par.params().labelString();
+		if (!label.empty())
+			xs << label << " ";
+		// Now the content of the TOC entry, taken from the paragraph itself
+		OutputParams ours = op;
+		ours.for_toc = true;
+		Font const dummy;
+		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
+
+		xs << html::EndTag("a") << " ";
+
+		// Now a link to that paragraph
+		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
+		xs << html::StartTag("a", parattr);
+		// FIXME XHTML
+		// There ought to be a simple way to customize this.
+		// Maybe if we had an InsetLayout for TOC...
+		xs << XHTMLStream::ESCAPE_NONE << "&gt;";
+		xs << html::EndTag("a");
+		xs << html::EndTag("div");
+	}
+}
+
+
+docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
+{
+	string const & command = getCmdName();
+	if (command != "tableofcontents" && command != "lstlistoflistings") {
+		LYXERR0("TOC type " << command << " not yet implemented.");
+		LASSERT(false, /* */);
+		return docstring();
+	}
+
+	// with lists of listings, at least, there is no depth
+	// to worry about. so the code can be simpler.
+	bool const use_depth = (command == "tableofcontents");
+
+	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
+	string const & tocclass = lay.defaultCSSClass();
+	string const tocattr = "class='tochead " + tocclass + "'";
+
+	// we'll use our own stream, because we are going to defer everything.
+	// that's how we deal with the fact that we're probably inside a standard
+	// paragraph, and we don't want to be.
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+
+	Toc const & toc = buffer().tocBackend().toc(cmd2type(command));
+	if (toc.empty())
+		return docstring();
+
+	xs << html::StartTag("div", "class='toc'");
+
+	// Title of TOC
+	docstring title = screenLabel();
+	xs << html::StartTag("div", tocattr)
+		 << title
+		 << html::EndTag("div");
+
+	// Output of TOC
+	if (use_depth)
+		makeTOCWithDepth(xs, toc, op);
+	else
+		makeTOCNoDepth(xs, toc, op);
+
 	xs << html::EndTag("div") << html::CR();
 	return ods.str();
 }
