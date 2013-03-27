@@ -245,9 +245,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		return docstring();
 	}
 
-	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
-	string const & tocclass = lay.defaultCSSClass();
-	string const tocattr = "class='tochead " + tocclass + "'";
+	Toc const & toc = buffer().tocBackend().toc(cmd2type(command));
+	if (toc.empty())
+		return docstring();
 
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
@@ -255,14 +255,13 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	Toc const & toc = buffer().tocBackend().toc(cmd2type(command));
-	if (toc.empty())
-		return docstring();
-
 	xs << html::StartTag("div", "class='toc'");
 
 	// Title of TOC
 	docstring title = screenLabel();
+	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
+	string const & tocclass = lay.defaultCSSClass();
+	string const tocattr = "class='tochead " + tocclass + "'";
 	xs << html::StartTag("div", tocattr)
 		 << title
 		 << html::EndTag("div");
