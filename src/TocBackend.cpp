@@ -105,7 +105,7 @@ Toc const & TocBackend::toc(string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
-	LASSERT(it != tocs_.end(), /**/);
+	LASSERT(it != tocs_.end(), { static Toc dummy; return dummy; });
 
 	return it->second;
 }
