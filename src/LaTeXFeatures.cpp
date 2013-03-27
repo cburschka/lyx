@@ -316,6 +316,25 @@ static docstring const rtloutputdblcol_def = from_ascii(
 
 /////////////////////////////////////////////////////////////////////
 //
+// LyXHTML strings
+//
+/////////////////////////////////////////////////////////////////////
+
+static docstring const lyxnoun_style = from_ascii(
+	"dfn.lyxnoun {\n"
+  "  font-variant: small-caps;\n"
+  "}\n");
+
+
+// this is how it normally renders, but it might not always do so.
+static docstring const lyxstrikeout_style = from_ascii(
+	"del.strikeout {\n"
+  "  text-decoration: line-through;\n"
+  "}\n");
+
+
+/////////////////////////////////////////////////////////////////////
+//
 // LaTeXFeatures
 //
 /////////////////////////////////////////////////////////////////////
@@ -1299,6 +1318,13 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const
 {
 	DocumentClass const & tclass = params_.documentClass();
 	odocstringstream tcpreamble;
+
+	if (mustProvide("noun"))
+		tcpreamble << lyxnoun_style;
+	// this isn't exact, but it won't hurt that much if it
+	// wasn't for this.
+	if (mustProvide("ulem"))
+		tcpreamble << lyxstrikeout_style;
 
 	tcpreamble << tclass.htmlstyles();
 

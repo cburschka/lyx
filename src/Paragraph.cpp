@@ -2831,6 +2831,19 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 }
 
 
+void doFontSwitch(XHTMLStream & xs, bool startrange,
+	bool & flag, FontState curstate, std::string tag, std::string attr = "")
+{
+	if (curstate == FONT_ON) {
+		xs << html::StartTag(tag, attr);
+		flag = true;
+	} else if (flag && !startrange) {
+		xs << html::EndTag(tag);
+		flag = false;
+	}
+}
+
+
 docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				    XHTMLStream & xs,
 				    OutputParams const & runparams,
@@ -2841,6 +2854,11 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	bool emph_flag = false;
 	bool bold_flag = false;
+	bool noun_flag = false;
+	bool ubar_flag = false;
+	bool dbar_flag = false;
+	bool sout_flag = false;
+	bool wave_flag = false;
 
 	Layout const & style = *d->layout_;
 
@@ -2862,24 +2880,49 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			continue;
 
 		Font font = getFont(buf.masterBuffer()->params(), i, outerfont);
+		bool const at_start = (i == initial);
 
 		// emphasis
-		if (font_old.emph() != font.fontInfo().emph()) {
-			if (font.fontInfo().emph() == FONT_ON) {
-				xs << html::StartTag("em");
-				emph_flag = true;
-			} else if (emph_flag && i != initial) {
-				xs << html::EndTag("em");
-				emph_flag = false;
-			}
-		}
+		FontState curstate = font.fontInfo().emph();
+		if (font_old.emph() != curstate)
+			doFontSwitch(xs, at_start, emph_flag, curstate, "em");
+
+		// noun
+		curstate = font.fontInfo().noun();
+		if (font_old.noun() != curstate)
+			doFontSwitch(xs, at_start, noun_flag, curstate, "dfn", "class='lyxnoun'");
+
+		// underbar
+		curstate = font.fontInfo().underbar();
+		if (font_old.underbar() != curstate)
+			doFontSwitch(xs, at_start, ubar_flag, curstate, "u");
+	
+		// strikeout
+		curstate = font.fontInfo().strikeout();
+		if (font_old.strikeout() != curstate)
+			doFontSwitch(xs, at_start, sout_flag, curstate, "del", "class='strikeout'");
+
+		// HTML does not really have an equivalent of the next two, so we will just
+		// output a single underscore with a class, and people can style it if they
+		// wish to do so
+
+		// double underbar
+		curstate = font.fontInfo().uuline();
+		if (font_old.uuline() != curstate)
+			doFontSwitch(xs, at_start, dbar_flag, curstate, "u", "class='dline'");
+
+		// wavy line
+		curstate = font.fontInfo().uwave();
+		if (font_old.uwave() != curstate)
+			doFontSwitch(xs, at_start, wave_flag, curstate, "u", "class='wavyline'");
+
 		// bold
 		if (font_old.series() != font.fontInfo().series()) {
 			if (font.fontInfo().series() == BOLD_SERIES) {
-				xs << html::StartTag("strong");
+				xs << html::StartTag("b");
 				bold_flag = true;
 			} else if (bold_flag && i != initial) {
-				xs << html::EndTag("strong");
+				xs << html::EndTag("b");
 				bold_flag = false;
 			}
 		}
