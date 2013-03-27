@@ -234,7 +234,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	}
 	
 	string const tocclass = lay ? " " + lay->defaultCSSClass(): "";
-	string const tocattr = "class='tochead + toc-" + toctype + " " + tocclass + "'";
+	string const tocattr = "class='tochead toc-" + toctype + tocclass + "'";
 	
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
@@ -242,7 +242,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	xs << html::StartTag("div", "class='toc'");
+	xs << html::StartTag("div", "class='toc toc-floats'");
 	xs << html::StartTag("div", tocattr) 
 		 << toclabel 
 		 << html::EndTag("div");
@@ -251,15 +251,11 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	Toc::const_iterator const en = toc.end();
 	for (; it != en; ++it) {
 		Paragraph const & par = it->dit().innerParagraph();
-		string const attr = "class='lyxtoc-" + toctype + "'";
-		Font const dummy;
+		string const attr = "class='lyxtoc-floats lyxtoc-" + toctype + "'";
 		xs << html::StartTag("div", attr);
-		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-		xs << it->str() << " "
-		   << html::StartTag("a", parattr)
-		   // FIXME XHTML 
-		   // There ought to be a simple way to customize this.
-		   << XHTMLStream::ESCAPE_NONE << "&gt;"
+		string const parattr = "href='#" + par.magicLabel() + "' class='lyxtoc-floats'";
+		xs << html::StartTag("a", parattr)
+		   << it->str()
 		   << html::EndTag("a");
 		xs << html::EndTag("div");
 	}
@@ -271,6 +267,13 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 void InsetFloatList::validate(LaTeXFeatures & features) const
 {
 	features.useFloat(to_ascii(getParam("type")));
+	features.useInsetLayout(getLayout());
+}
+
+
+docstring InsetFloatList::layoutName() const
+{ 
+	return "FloatList:" + getParam("type");
 }
 
 

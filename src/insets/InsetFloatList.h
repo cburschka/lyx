@@ -69,6 +69,8 @@ private:
 	//@{
 	///
 	Inset * clone() const { return new InsetFloatList(*this); }
+	///
+	docstring layoutName() const;
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class

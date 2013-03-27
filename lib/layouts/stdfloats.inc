@@ -48,3 +48,19 @@ Float
 	UsesFloatPkg          true
 	RefPrefix             alg
 End
+
+
+InsetLayout FloatList
+  HTMLStyle
+    a.lyxtoc-floats { 
+      text-decoration: none; 
+      color: black;
+    }
+    a.lyxtoc-floats:visited { color: black; }
+    div.lyxtoc-floats { 
+      margin: 0em 0em 0.1em 1em;
+      font-size: large;
+      font-weight: normal;
+    }
+  EndHTMLStyle
+End
