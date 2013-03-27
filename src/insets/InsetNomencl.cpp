@@ -30,6 +30,7 @@
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "sgml.h"
+#include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
 
@@ -127,6 +128,13 @@ int InsetNomencl::docbookGlossary(odocstream & os) const
 void InsetNomencl::validate(LaTeXFeatures & features) const
 {
 	features.require("nomencl");
+}
+
+
+void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active) const
+{
+	docstring const str = getParam("symbol");
+	buffer().tocBackend().toc("nomencl").push_back(TocItem(cpit, 0, str, output_active));
 }
 
 

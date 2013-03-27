@@ -582,6 +582,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("List of Index Entries");
 	if (type == "marginalnote")
 		return qt_("List of Marginal notes");
+	if (type == "nomencl")
+		return qt_("Nomenclature Entries");
 	if (type == "note")
 		return qt_("List of Notes");
 	if (type == "citation")

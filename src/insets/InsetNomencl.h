@@ -40,6 +40,8 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
+	void addToToc(DocIterator const & di, bool output_active) const;
+	///
 	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///
 	int docbook(odocstream &, OutputParams const &) const;
