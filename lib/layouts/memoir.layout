@@ -187,6 +187,14 @@ Style Epigraph
 		Tooltip       "The source/author of this epigraph"
 		Mandatory     1
 	EndArgument
+	HTMLStyle
+		div.epigraph {
+			float: right;
+			width: 33%;
+			font-size: small;
+			margin: 0.5em 0em 0.5em 1em;
+		}
+	EndHTMLStyle
 End
 
 Style Poemtitle
