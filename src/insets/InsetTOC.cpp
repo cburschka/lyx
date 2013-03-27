@@ -144,16 +144,7 @@ void InsetTOC::makeTOCEntry(XHTMLStream & xs,
 	Font const dummy;
 	par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
 
-	xs << html::EndTag("a") << " ";
-
-	// Now a link to the paragraph
-	string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-	xs << html::StartTag("a", parattr);
-	// FIXME XHTML 
-	// There ought to be a simple way to customize this.
-	// Maybe if we had an InsetLayout for TOC...
-	xs << XHTMLStream::ESCAPE_NONE << "&gt;";
-	xs << html::EndTag("a");		
+	xs << html::EndTag("a") << html::CR();
 }
 
 

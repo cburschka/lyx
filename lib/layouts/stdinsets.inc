@@ -213,12 +213,6 @@ InsetLayout TOC
       color: black;
     }
     a.tocentry:visited { color: black; }
-    a.tocarrow {
-      font-weight: bold;
-      text-decoration: none;
-      color: #909090;
-    }
-    a.tocarrow:visited { color: #C0C0C0; }
   EndHTMLStyle
 End
 
