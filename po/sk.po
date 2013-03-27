@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-18 15:43+0100\n"
+"POT-Creation-Date: 2013-03-27 19:15+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -12079,6 +12079,18 @@ msgstr "Heslo"
 msgid "Argument"
 msgstr "Argument"
 
+#: lib/layouts/stdinsets.inc:494
+msgid "LongTableNoNumber"
+msgstr "DlháTabuľkaNečíslovaná"
+
+#: lib/layouts/stdinsets.inc:498
+msgid "Long Table Caption (unnumbered)"
+msgstr "Popis Dlhej Tabuľky (neočíslovanej)"
+
+#: lib/layouts/stdinsets.inc:499
+msgid "The caption as it appears in the list of tables"
+msgstr "Popis ako sa zobrazí v zozname tabuliek"
+
 #: lib/layouts/stdinsets.inc:464
 msgid "Preview"
 msgstr "Náhľad"
@@ -14076,6 +14088,22 @@ msgstr "Computer Modern Sans"
 msgid "Helvetica"
 msgstr "Helvetica"
 
+#: lib/latexfonts:464
+msgid "Iwona"
+msgstr "Iwona"
+
+#: lib/latexfonts:471
+msgid "Iwona (Light)"
+msgstr "Iwona (Svetlý)"
+
+#: lib/latexfonts:478
+msgid "Iwona (Condensed)"
+msgstr "Iwona (Zhustený)"
+
+#: lib/latexfonts:485
+msgid "Iwona (Light Condensed)"
+msgstr "Iwona (Svetlý Zhustený)"
+
 #: lib/latexfonts:446
 msgid "Kurier"
 msgstr "Kurier"
@@ -14152,6 +14180,10 @@ msgstr "Euler VM"
 #: lib/latexfonts:537
 msgid "URW Garamond (New TX)"
 msgstr "URW Garamond (New TX)"
+
+#: lib/latexfonts:632
+msgid "Iwona (Math)"
+msgstr "Iwona (Mat.)"
 
 #: lib/latexfonts:591
 msgid "Kurier (Math)"
@@ -16192,6 +16224,10 @@ msgstr "Tlač dokument"
 #: lib/ui/stdtoolbars.inc:76
 msgid "Check spelling"
 msgstr "Kontrola pravopisu"
+
+#: lib/ui/stdtoolbars.inc:77
+msgid "Spellcheck continuously"
+msgstr "Kontrolovať pravopis nepretržite"
 
 #: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1347
 msgid "Undo"
@@ -21194,6 +21230,10 @@ msgstr "PDF (LuaTeX)"
 #: lib/configure.py:577
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
+
+#: lib/configure.py:590
+msgid "PDF (graphics)"
+msgstr "PDF (grafika)"
 
 #: lib/configure.py:580
 msgid "DVI"
@@ -28360,10 +28400,6 @@ msgstr "hfantóm"
 msgid "vphantom"
 msgstr "vfantóm"
 
-#: src/insets/InsetRef.cpp:226
-msgid "elsewhere"
-msgstr "inde"
-
 #: src/insets/InsetRef.cpp:298
 msgid "BROKEN: "
 msgstr "NEPLATNÝ: "
@@ -29057,6 +29093,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "elsewhere"
+#~ msgstr "inde"
 
 #~ msgid "BeginFrame"
 #~ msgstr "ZačiatokRámu"
