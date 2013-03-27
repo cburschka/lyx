@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-21 10:22-0400\n"
+"POT-Creation-Date: 2013-03-27 16:08-0400\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -2197,7 +2197,7 @@ msgid "Feedback window"
 msgstr "Geribesleme penceresi"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
+#: src/insets/InsetListings.cpp:355 src/insets/InsetListings.cpp:357
 msgid "Listing"
 msgstr "Liste"
 
@@ -6047,8 +6047,8 @@ msgstr "Ek"
 #: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
 #: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
 #: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
-#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
-#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:152
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:171
+#: lib/layouts/memoir.layout:173 lib/layouts/moderncv.layout:152
 #: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
 #: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
@@ -6113,7 +6113,7 @@ msgstr "İspat."
 #: lib/layouts/europecv.layout:29 lib/layouts/isprs.layout:147
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
+#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:142
 #: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
@@ -6628,7 +6628,7 @@ msgstr "Özel-bölüm"
 
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:176
 #: lib/layouts/beamer.layout:220 lib/layouts/beamer.layout:264
-#: lib/layouts/memoir.layout:153 lib/layouts/stdstarsections.inc:15
+#: lib/layouts/memoir.layout:161 lib/layouts/stdstarsections.inc:15
 #: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
 #: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
 #: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
@@ -9159,20 +9159,20 @@ msgstr ""
 msgid "Epigraph"
 msgstr "Kitabe"
 
-#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
+#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:185
 #, fuzzy
 msgid "Maintext"
 msgstr "Düz metin"
 
-#: lib/layouts/memoir.layout:133
+#: lib/layouts/memoir.layout:141
 msgid "Poemtitle"
 msgstr "Şiir başlığı"
 
-#: lib/layouts/memoir.layout:151
+#: lib/layouts/memoir.layout:159
 msgid "Poemtitle*"
 msgstr "Şiir başlığı*"
 
-#: lib/layouts/memoir.layout:176
+#: lib/layouts/memoir.layout:184
 msgid "Legend"
 msgstr "Açıklamalar"
 
@@ -19745,7 +19745,7 @@ msgstr "Matematik düzenleyici modu"
 msgid "No valid math formula"
 msgstr "Geçersiz matematik formülü"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1030
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Geçersiz düzenli ifade!"
@@ -24315,24 +24315,24 @@ msgstr "'%1$s' da sütun sayıları değiştirilemiyor"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "'%1$s' e yatay ızgara çizgileri eklenemiyor"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1016
 msgid "create new math text environment ($...$)"
 msgstr "yeni matematik metin ortamı olutşur ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "entered math text mode (textrm)"
 msgstr "matematik metin moduna girildi (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1041
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Düzenli &İfade"
 
-#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
+#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
+#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

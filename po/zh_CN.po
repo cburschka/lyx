@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-21 10:22-0400\n"
+"POT-Creation-Date: 2013-03-27 16:08-0400\n"
 "PO-Revision-Date: 2011-06-02 23:49-0600\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -2156,7 +2156,7 @@ msgid "Feedback window"
 msgstr "回馈窗口"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
+#: src/insets/InsetListings.cpp:355 src/insets/InsetListings.cpp:357
 msgid "Listing"
 msgstr "列表"
 
@@ -5918,8 +5918,8 @@ msgstr "附录"
 #: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
 #: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
 #: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
-#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
-#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:152
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:171
+#: lib/layouts/memoir.layout:173 lib/layouts/moderncv.layout:152
 #: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
 #: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
@@ -5984,7 +5984,7 @@ msgstr "证明."
 #: lib/layouts/europecv.layout:29 lib/layouts/isprs.layout:147
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
+#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:142
 #: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
@@ -6510,7 +6510,7 @@ msgstr "Special-section"
 
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:176
 #: lib/layouts/beamer.layout:220 lib/layouts/beamer.layout:264
-#: lib/layouts/memoir.layout:153 lib/layouts/stdstarsections.inc:15
+#: lib/layouts/memoir.layout:161 lib/layouts/stdstarsections.inc:15
 #: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
 #: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
 #: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
@@ -9062,20 +9062,20 @@ msgstr "Chapterprecis"
 msgid "Epigraph"
 msgstr "Epigraph"
 
-#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
+#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:185
 #, fuzzy
 msgid "Maintext"
 msgstr "纯文本"
 
-#: lib/layouts/memoir.layout:133
+#: lib/layouts/memoir.layout:141
 msgid "Poemtitle"
 msgstr "Poemtitle"
 
-#: lib/layouts/memoir.layout:151
+#: lib/layouts/memoir.layout:159
 msgid "Poemtitle*"
 msgstr "Poemtitle*"
 
-#: lib/layouts/memoir.layout:176
+#: lib/layouts/memoir.layout:184
 msgid "Legend"
 msgstr "图标"
 
@@ -19666,7 +19666,7 @@ msgstr "Math editor mode"
 msgid "No valid math formula"
 msgstr "非法数学公式"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1030
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "使用正则表达式(&x)"
@@ -24264,24 +24264,24 @@ msgstr "无法改变列数至 '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "无法向 '%1$s'添加水平网格线"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1016
 msgid "create new math text environment ($...$)"
 msgstr "创建新数学文本环境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "entered math text mode (textrm)"
 msgstr "进入数学文本模式 (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1041
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "使用正则表达式(&x)"
 
-#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
+#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
+#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

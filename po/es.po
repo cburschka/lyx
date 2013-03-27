@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-21 10:22-0400\n"
+"POT-Creation-Date: 2013-03-27 16:08-0400\n"
 "PO-Revision-Date: 2012-10-16 19:33+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
@@ -2149,7 +2149,7 @@ msgid "Feedback window"
 msgstr "Ventana de retroalimentación"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:332
-#: src/insets/InsetListings.cpp:354 src/insets/InsetListings.cpp:356
+#: src/insets/InsetListings.cpp:355 src/insets/InsetListings.cpp:357
 msgid "Listing"
 msgstr "Listado"
 
@@ -5939,8 +5939,8 @@ msgstr "Apéndice"
 #: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
 #: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
 #: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
-#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:163
-#: lib/layouts/memoir.layout:165 lib/layouts/moderncv.layout:152
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:171
+#: lib/layouts/memoir.layout:173 lib/layouts/moderncv.layout:152
 #: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
 #: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
@@ -6003,7 +6003,7 @@ msgstr "Demostración."
 #: lib/layouts/europecv.layout:29 lib/layouts/isprs.layout:147
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:134
+#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:142
 #: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
@@ -6508,7 +6508,7 @@ msgstr "SecciónEspecial*"
 
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:176
 #: lib/layouts/beamer.layout:220 lib/layouts/beamer.layout:264
-#: lib/layouts/memoir.layout:153 lib/layouts/stdstarsections.inc:15
+#: lib/layouts/memoir.layout:161 lib/layouts/stdstarsections.inc:15
 #: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
 #: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
 #: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
@@ -8983,19 +8983,19 @@ msgstr "ResumenCapítulo"
 msgid "Epigraph"
 msgstr "Epígrafe"
 
-#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:177
+#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:185
 msgid "Maintext"
 msgstr "TextoPrincipal"
 
-#: lib/layouts/memoir.layout:133
+#: lib/layouts/memoir.layout:141
 msgid "Poemtitle"
 msgstr "TítuloPoema"
 
-#: lib/layouts/memoir.layout:151
+#: lib/layouts/memoir.layout:159
 msgid "Poemtitle*"
 msgstr "TítuloPoema*"
 
-#: lib/layouts/memoir.layout:176
+#: lib/layouts/memoir.layout:184
 msgid "Legend"
 msgstr "Leyenda"
 
@@ -19540,7 +19540,7 @@ msgstr "Modo del editor de ecuaciones"
 msgid "No valid math formula"
 msgstr "Fórmula matemática no válida"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1029
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1030
 msgid "Already in regular expression mode"
 msgstr "Ya en modo expresión regular"
 
@@ -24094,23 +24094,23 @@ msgstr "No se puede cambiar el número de columnas en '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "No se pueden añadir líneas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:1015
+#: src/mathed/InsetMathNest.cpp:1016
 msgid "create new math text environment ($...$)"
 msgstr "crear un nuevo entorno de texto de ecuaciones ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1018
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "entered math text mode (textrm)"
 msgstr "introducido modo texto de ecuaciones (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1040
+#: src/mathed/InsetMathNest.cpp:1041
 msgid "Regular expression editor mode"
 msgstr "Modo editor de expresión regular"
 
-#: src/mathed/InsetMathNest.cpp:1665 src/mathed/InsetMathNest.cpp:1810
+#: src/mathed/InsetMathNest.cpp:1666 src/mathed/InsetMathNest.cpp:1811
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorrección No ('!' para entrar)"
 
-#: src/mathed/InsetMathNest.cpp:1670 src/mathed/InsetMathNest.cpp:1812
+#: src/mathed/InsetMathNest.cpp:1671 src/mathed/InsetMathNest.cpp:1813
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorrección Sí (<espacio> para salir)"
 
