@@ -129,6 +129,12 @@ void InsetMathExFunc::mathmlize(MathStream & os) const
 }
 
 
+void InsetMathExFunc::htmlize(HtmlStream & os) const
+{
+	os << name_ << cell(0);
+}
+
+
 void InsetMathExFunc::octave(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
