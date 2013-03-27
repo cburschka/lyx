@@ -242,10 +242,12 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
+	InsetLayout const & il = getLayout();
+	string const & tag = il.htmltag();
 	xs << html::StartTag("div", "class='toc toc-floats'");
-	xs << html::StartTag("div", tocattr) 
+	xs << html::StartTag(tag, tocattr)
 		 << toclabel 
-		 << html::EndTag("div");
+		 << html::EndTag(tag);
 	
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();

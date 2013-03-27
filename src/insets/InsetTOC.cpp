@@ -249,13 +249,15 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	xs << html::StartTag("div", "class='toc'");
 
 	// Title of TOC
+	InsetLayout const & il = getLayout();
+	string const & tag = il.htmltag();
 	docstring title = screenLabel();
 	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='tochead " + tocclass + "'";
-	xs << html::StartTag("div", tocattr)
+	xs << html::StartTag(tag, tocattr)
 		 << title
-		 << html::EndTag("div");
+		 << html::EndTag(tag);
 
 	// with lists of listings, at least, there is no depth
 	// to worry about. so the code can be simpler.

@@ -181,6 +181,7 @@ InsetLayout IPADeco
 End
 
 InsetLayout TOC
+  HTMLTag h2
   HTMLStyle
     div.toc {
       margin: 2em 0em;
@@ -188,7 +189,7 @@ InsetLayout TOC
       border-width: 2px 0px;
       padding: 1em 0em;
     }
-    div.tochead { font-size: x-large; font-weight: bold; }
+    h2.tochead { font-size: x-large; font-weight: bold; }
     div.lyxtoc-0 {
       margin: 2em 0em 0em 0em;
       font-size: xx-large;
@@ -231,6 +232,7 @@ InsetLayout TOC:Listings
 	LangPreamble
 		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
 	EndLangPreamble
+  HTMLTag h2
   HTMLStyle
     div.lyxtoc-flat {
       margin: 0em 0em 0em 1em;

@@ -51,6 +51,7 @@ End
 
 
 InsetLayout FloatList
+  HTMLTag h2
   HTMLStyle
     a.lyxtoc-floats { 
       text-decoration: none; 
