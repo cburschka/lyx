@@ -49,7 +49,7 @@ CiteFormat default
 	!sep ,
 	!close ]
 
-	!startlink {!<a href='#LyXCite-%key%'>!}
+	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
 	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}

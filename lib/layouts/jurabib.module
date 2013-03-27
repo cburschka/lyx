@@ -58,7 +58,7 @@ CiteFormat authoryear
 	!sep ;
 	!close )
 
-	!startlink {!<a href='#LyXCite-%key%'>!}
+	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
 	!cite %!startlink%%!shortauthor%%!endlink%%!textbefore2%%!textafter2%%!nextcite%

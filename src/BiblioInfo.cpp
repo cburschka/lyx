@@ -20,6 +20,7 @@
 #include "Encoding.h"
 #include "InsetIterator.h"
 #include "Language.h"
+#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -653,56 +654,67 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 }
 
 
-docstring BibTeXInfo::getValueForKey(string const & key, Buffer const & buf,
+docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	docstring const & before, docstring const & after, docstring const & dialog,
 	BibTeXInfo const * const xref) const
 {
+	string key = oldkey;
+	bool cleanit = false;
+	if (prefixIs(oldkey, "clean:")) {
+		key = oldkey.substr(6);
+		cleanit = true;
+	}
+		
 	docstring ret = operator[](key);
 	if (ret.empty() && xref)
 		ret = (*xref)[key];
-	if (!ret.empty())
-		return ret;
-	// some special keys
-	// FIXME: dialog, textbefore and textafter have nothing to do with this
-	if (key == "dialog")
-		return dialog;
-	else if (key == "entrytype")
-		return entry_type_;
-	else if (key == "key")
-		return bib_key_;
-	else if (key == "label")
-		return label_;
-	else if (key == "abbrvauthor")
-		// Special key to provide abbreviated author names.
-		return getAbbreviatedAuthor(buf, false);
-	else if (key == "shortauthor")
-		// When shortauthor is not defined, jurabib automatically
-		// provides jurabib-style abbreviated author names. We do
-		// this as well.
-		return getAbbreviatedAuthor(buf, true);
-	else if (key == "shorttitle") {
-		// When shorttitle is not defined, jurabib uses for `article'
-		// and `periodical' entries the form `journal volume [year]'
-		// and for other types of entries it uses the `title' field.
-		if (entry_type_ == "article" || entry_type_ == "periodical")
-			return operator[]("journal") + " " + operator[]("volume")
-				+ " [" + operator[]("year") + "]";
-		else
-			return operator[]("title");
-	} else if (key == "bibentry") {
-		// Special key to provide the full bibliography entry: see getInfo()
-		CiteEngineType const engine_type = buf.params().citeEngineType();
-		DocumentClass const & dc = buf.params().documentClass();
-		string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
-		int counter = 0;
-		return expandFormat(format, xref, counter, buf,
-			docstring(), docstring(), docstring(), false);
-	} else if (key == "textbefore")
-		return before;
-	else if (key == "textafter")
-		return after;
-	else if (key == "year")
-		return getYear();
+	if (ret.empty()) {
+		// some special keys
+		// FIXME: dialog, textbefore and textafter have nothing to do with this
+		if (key == "dialog")
+			ret = dialog;
+		else if (key == "entrytype")
+			ret = entry_type_;
+		else if (key == "key")
+			ret = bib_key_;
+		else if (key == "label")
+			ret = label_;
+		else if (key == "abbrvauthor")
+			// Special key to provide abbreviated author names.
+			ret = getAbbreviatedAuthor(buf, false);
+		else if (key == "shortauthor")
+			// When shortauthor is not defined, jurabib automatically
+			// provides jurabib-style abbreviated author names. We do
+			// this as well.
+			ret = getAbbreviatedAuthor(buf, true);
+		else if (key == "shorttitle") {
+			// When shorttitle is not defined, jurabib uses for `article'
+			// and `periodical' entries the form `journal volume [year]'
+			// and for other types of entries it uses the `title' field.
+			if (entry_type_ == "article" || entry_type_ == "periodical")
+				ret = operator[]("journal") + " " + operator[]("volume")
+					+ " [" + operator[]("year") + "]";
+			else
+				ret = operator[]("title");
+		} else if (key == "bibentry") {
+			// Special key to provide the full bibliography entry: see getInfo()
+			CiteEngineType const engine_type = buf.params().citeEngineType();
+			DocumentClass const & dc = buf.params().documentClass();
+			string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
+			int counter = 0;
+			ret = expandFormat(format, xref, counter, buf,
+				docstring(), docstring(), docstring(), false);
+		} else if (key == "textbefore")
+			ret = before;
+		else if (key == "textafter")
+			ret = after;
+		else if (key == "year")
+			ret = getYear();
+	}
+	LYXERR0(ret);
+	if (cleanit)
+		return html::cleanAttr(ret);
+	
 	return ret;
 }
 
