@@ -201,14 +201,14 @@ InsetLayout TOC
       font-weight: bold;
     }
     div.lyxtoc-2 {
-      margin: 0em 0em 0em 1em;
+      margin: 0em 0.1em 0em 1em;
       font-size: large;
       font-weight: normal;
     }
-    div.lyxtoc-3 { margin: 0em 0em 0em 0.5em; font-size: medium; }
-    div.lyxtoc-4 { margin: 0em 0em 0em 0.5em; }
-    div.lyxtoc-5 { margin: 0em 0em 0em 0.5em; }
-    div.lyxtoc-6 { margin: 0em 0em 0em 0.5em; }
+    div.lyxtoc-3 { margin: 0em 0.1em 0em 0.5em; font-size: medium; }
+    div.lyxtoc-4 { margin: 0em 0.1em 0em 0.5em; }
+    div.lyxtoc-5 { margin: 0em 0.1em 0em 0.5em; }
+    div.lyxtoc-6 { margin: 0em 0.1em 0em 0.5em; }
     a.tocentry {
       text-decoration: none;
       color: black;
@@ -569,9 +569,15 @@ InsetLayout Script:superscript
 	HTMLTag         sup
 End
 
+
 InsetLayout Script:subscript
 	CopyStyle       Script
 	Requires        subscript
 	LaTeXName       textsubscript
 	HTMLTag         sub
+End
+
+
+InsetLayout PrintNomencl
+  HTMLTag h2
 End

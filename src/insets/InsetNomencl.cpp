@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Length.h"
 #include "LyX.h"
@@ -172,6 +173,96 @@ docstring InsetPrintNomencl::screenLabel() const
 }
 
 
+struct NomenclEntry {
+	NomenclEntry() {}
+	NomenclEntry(docstring s, docstring d, Paragraph const * p)
+	  : symbol(s), desc(d), par(p)
+	{}
+
+	docstring symbol;
+	docstring desc;
+	Paragraph const * par;
+};
+
+
+typedef map<docstring, NomenclEntry > EntryMap;
+
+
+docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
+{
+	Toc const & toc = buffer().tocBackend().toc("nomencl");
+
+	EntryMap entries;
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	for (; it != en; ++it) {
+		DocIterator dit = it->dit();
+		Paragraph const & par = dit.innerParagraph();
+		Inset const * inset = par.getInset(dit.top().pos());
+		if (!inset)
+			return docstring();
+		InsetCommand const * ic = inset->asInsetCommand();
+		if (!ic)
+			return docstring();
+		
+		// FIXME We need a link to the paragraph here, so we
+		// need some kind of struct.
+		docstring const symbol = ic->getParam("symbol");
+		docstring const desc = ic->getParam("description");
+		docstring const prefix = ic->getParam("prefix");
+		docstring const sortas = prefix.empty() ? symbol : prefix;
+		
+		entries[sortas] = NomenclEntry(symbol, desc, &par);
+	}
+	
+	if (entries.empty())
+		return docstring();
+	
+	// we'll use our own stream, because we are going to defer everything.
+	// that's how we deal with the fact that we're probably inside a standard
+	// paragraph, and we don't want to be.
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+	
+	InsetLayout const & il = getLayout();
+	string const & tag = il.htmltag();
+	docstring toclabel = translateIfPossible(from_ascii("Nomenclature"),
+		op.local_font->language()->lang());
+
+	xs << html::StartTag("div", "class='nomencl'")
+	   << html::StartTag(tag, "class='nomencl'")
+		 << toclabel 
+		 << html::EndTag(tag)
+	   << html::CR()
+	   << html::StartTag("dl")
+	   << html::CR();
+	
+	EntryMap::const_iterator eit = entries.begin();
+	EntryMap::const_iterator const een = entries.end();
+	for (; eit != een; ++eit) {
+		NomenclEntry const & ne = eit->second;
+		string const parid = ne.par->magicLabel();
+		xs << html::StartTag("dt")
+		   << html::StartTag("a", "href='#" + parid + "' class='nomencl'")
+		   << ne.symbol
+		   << html::EndTag("a")
+		   << html::EndTag("dt")
+		   << html::CR()
+		   << html::StartTag("dd")
+		   << ne.desc
+		   << html::EndTag("dd")
+		   << html::CR();
+	}
+
+	xs << html::EndTag("dl")
+	   << html::CR()
+	   << html::EndTag("div")
+	   << html::CR();
+
+	return ods.str();
+}
+
+
 void InsetPrintNomencl::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
@@ -210,12 +301,6 @@ bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);
 	}
-}
-
-
-docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const &) const
-{
-	return docstring();
 }
 
 

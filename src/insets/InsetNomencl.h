@@ -89,7 +89,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	/// Does nothing at the moment.
+	/// 
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const;
@@ -123,6 +123,8 @@ private:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	docstring layoutName() const { return from_ascii("PrintNomencl"); }
 	//@}
 
 	/// \name Private functions inherited from InsetCommand class
