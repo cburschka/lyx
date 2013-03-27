@@ -245,10 +245,6 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		return docstring();
 	}
 
-	// with lists of listings, at least, there is no depth
-	// to worry about. so the code can be simpler.
-	bool const use_depth = (command == "tableofcontents");
-
 	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='tochead " + tocclass + "'";
@@ -270,6 +266,10 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	xs << html::StartTag("div", tocattr)
 		 << title
 		 << html::EndTag("div");
+
+	// with lists of listings, at least, there is no depth
+	// to worry about. so the code can be simpler.
+	bool const use_depth = (command == "tableofcontents");
 
 	// Output of TOC
 	if (use_depth)
