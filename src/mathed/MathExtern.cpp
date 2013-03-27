@@ -537,6 +537,9 @@ void extractDelims(MathData & ar)
 // assume 'extractDelims' ran before
 void extractFunctions(MathData & ar, ExternalMath kind)
 {
+	// FIXME From what I can see, this is quite broken right now, for reasons
+	// I will note below. (RGH)
+
 	// we need at least two items...
 	if (ar.size() < 2)
 		return;
@@ -551,9 +554,26 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 		docstring name;
 		// is it a function?
 		// it certainly is if it is well known...
+
+		// FIXME This will never give us anything. When we get here, *it will
+		// never point at a string, but only at a character. I.e., if we are
+		// working on "sin(x)", then we are seeing:
+		// [char s mathalpha][char i mathalpha][char n mathalpha][delim ( ) [char x mathalpha]]
+		// and of course we will not find the function name "sin" in there, but
+		// rather "n(x)".
+		//
+		// It appears that we original ran extractStrings() before we ran
+		// extractFunctions(), but Andre changed this at f200be55, I think
+		// because this messed up what he was trying to do with "dx" in the
+		// context of integrals.
+		//
+		// This could be fixed by looking at a charSequence instead of just at
+		// the various characters, one by one. But I am not sure I understand
+		// exactly what we are trying to do here. And it involves a lot of
+		// guessing.
 		if (!extractFunctionName(*it, name)) {
 			// is this a user defined function?
-			// it it probably not, if it doesn't have a name.
+			// probably not, if it doesn't have a name.
 			if (!extractString(*it, name))
 				continue;
 			// it is not if it has no argument
@@ -564,7 +584,7 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 			InsetMathDelim const * del = (*jt)->asDelimInset();
 			if (!del || del->cell(0).size() != 1)
 				continue;
-			// fall trough into main branch
+			// fall through into main branch
 		}
 
 		// do we have an exponent like in
