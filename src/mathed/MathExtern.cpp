@@ -957,8 +957,8 @@ void extractStructure(MathData & ar, ExternalMath kind)
 		extractSums(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
-	extractFunctions(ar, kind);
 	if (kind != MATHML && kind != HTML) {
+		extractFunctions(ar, kind);
 		extractDets(ar);
 		extractDiff(ar);
 		extractExps(ar);
