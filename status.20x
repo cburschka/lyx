@@ -129,6 +129,9 @@ What's new
 
 - Fix problem with HTML output of simple formulas like "y[i]" (bug 8609).
 
+- Clean ids for citations before outputting them. Characters like ":" are
+  not allowed in HTML identifiers, apparently (bug 8606).
+
 
 * USER INTERFACE
 

@@ -956,7 +956,8 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << html::StartTag("div", "class='bibtexentry'");
 		// FIXME XHTML
 		// The same name/id problem we have elsewhere.
-		string const attr = "id='LyXCite-" + to_utf8(entry.key()) + "'";
+		string const attr = "id='LyXCite-" + 
+				to_utf8(html::cleanAttr(entry.key())) + "'";
 		xs << html::CompTag("a", attr);
 		docstring citekey;
 		if (numbers)
