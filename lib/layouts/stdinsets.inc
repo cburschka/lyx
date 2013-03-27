@@ -195,6 +195,13 @@ InsetLayout TOC:Listings
 	LangPreamble
 		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
 	EndLangPreamble
+  HTMLStyle
+    div.lyxtoc-flat {
+      margin: 0em 0em 0em 1em;
+      font-size: large;
+      font-weight: normal;
+    }
+  EndHTMLStyle
 End
 
 InsetLayout Include:Listings

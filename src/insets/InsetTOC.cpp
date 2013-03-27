@@ -226,7 +226,7 @@ void InsetTOC::makeTOCNoDepth(XHTMLStream xs,
 		if (!it->isOutput())
 			continue;
 
-		xs << html::StartTag("div", "class='lyxtop-1'") << html::CR();
+		xs << html::StartTag("div", "class='lyxtoc-flat'") << html::CR();
 
 		Paragraph const & par = it->dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
