@@ -180,6 +180,48 @@ InsetLayout IPADeco
 	ForcePlain            true
 End
 
+InsetLayout TOC
+  HTMLStyle
+    div.toc {
+      margin: 2em 0em;
+      border-style: solid;
+      border-width: 2px 0px;
+      padding: 1em 0em;
+    }
+    div.tochead { font-size: x-large; font-weight: bold; }
+    div.lyxtoc-0 {
+      margin: 2em 0em 0em 0em;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    div.lyxtoc-1 {
+      margin: 1em 0em 0em 0em;
+      font-size: x-large;
+      font-weight: bold;
+    }
+    div.lyxtoc-2 {
+      margin: 0em 0em 0em 1em;
+      font-size: large;
+      font-weight: normal;
+    }
+    div.lyxtoc-3 { margin: 0em 0em 0em 0.5em; font-size: medium; }
+    div.lyxtoc-4 { margin: 0em 0em 0em 0.5em; }
+    div.lyxtoc-5 { margin: 0em 0em 0em 0.5em; }
+    div.lyxtoc-6 { margin: 0em 0em 0em 0.5em; }
+    a.tocentry {
+      text-decoration: none;
+      color: black;
+    }
+    a.tocentry:visited { color: black; }
+    a.tocarrow {
+      font-weight: bold;
+      text-decoration: none;
+      color: #909090;
+    }
+    a.tocarrow:visited { color: #C0C0C0; }
+  EndHTMLStyle
+End
+
 InsetLayout TOC:Listings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.
