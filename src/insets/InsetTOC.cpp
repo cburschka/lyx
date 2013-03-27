@@ -98,7 +98,7 @@ docstring InsetTOC::layoutName() const
 {
 	if (getCmdName() == "lstlistoflistings")
 		return from_ascii("TOC:Listings");
-	return docstring();
+	return from_ascii("TOC");
 }
 
 
