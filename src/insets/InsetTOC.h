@@ -17,6 +17,7 @@
 
 namespace lyx {
 
+class Paragraph;
 class Toc;
 
 /// Used to insert table of contents and similar lists
@@ -66,6 +67,9 @@ private:
 	void makeTOCWithDepth(XHTMLStream xs, Toc toc, const OutputParams & op) const;
 	///
 	void makeTOCNoDepth(XHTMLStream xs, Toc toc, const OutputParams & op) const;
+	///
+	void makeTOCEntry(XHTMLStream & xs, Paragraph const & par, OutputParams const & op) const;
+	
 	/// \name Private functions inherited from Inset class
 	//@{
 	///

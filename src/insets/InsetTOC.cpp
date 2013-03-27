@@ -128,6 +128,35 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+void InsetTOC::makeTOCEntry(XHTMLStream & xs, 
+		Paragraph const & par, OutputParams const & op) const
+{
+	string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
+	xs << html::StartTag("a", attr);
+
+	// First the label, if there is one
+	docstring const & label = par.params().labelString();
+	if (!label.empty())
+		xs << label << " ";
+	// Now the content of the TOC entry, taken from the paragraph itself
+	OutputParams ours = op;
+	ours.for_toc = true;
+	Font const dummy;
+	par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
+
+	xs << html::EndTag("a") << " ";
+
+	// Now a link to the paragraph
+	string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
+	xs << html::StartTag("a", parattr);
+	// FIXME XHTML 
+	// There ought to be a simple way to customize this.
+	// Maybe if we had an InsetLayout for TOC...
+	xs << XHTMLStream::ESCAPE_NONE << "&gt;";
+	xs << html::EndTag("a");		
+}
+
+
 void InsetTOC::makeTOCWithDepth(XHTMLStream xs, 
 		Toc toc, OutputParams const & op) const
 {
@@ -179,30 +208,7 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream xs,
 		
 		// Now output TOC info for this entry
 		Paragraph const & par = it->dit().innerParagraph();
-
-		string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
-		xs << html::StartTag("a", attr);
-
-		// First the label, if there is one
-		docstring const & label = par.params().labelString();
-		if (!label.empty())
-			xs << label << " ";
-		// Now the content of the TOC entry, taken from the paragraph itself
-		OutputParams ours = op;
-		ours.for_toc = true;
-		Font const dummy;
-		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
-
-		xs << html::EndTag("a") << " ";
-
-		// Now a link to that paragraph
-		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-		xs << html::StartTag("a", parattr);
-		// FIXME XHTML 
-		// There ought to be a simple way to customize this.
-		// Maybe if we had an InsetLayout for TOC...
-		xs << XHTMLStream::ESCAPE_NONE << "&gt;";
-		xs << html::EndTag("a");		
+		makeTOCEntry(xs, par, op);
 	}
 	for (int i = lastdepth; i > 0; --i) 
 		xs << html::EndTag("div") << html::CR();
@@ -223,29 +229,8 @@ void InsetTOC::makeTOCNoDepth(XHTMLStream xs,
 		xs << html::StartTag("div", "class='lyxtop-1'") << html::CR();
 
 		Paragraph const & par = it->dit().innerParagraph();
-		string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
-		xs << html::StartTag("a", attr);
-
-		// First the label, if there is one
-		docstring const & label = par.params().labelString();
-		if (!label.empty())
-			xs << label << " ";
-		// Now the content of the TOC entry, taken from the paragraph itself
-		OutputParams ours = op;
-		ours.for_toc = true;
-		Font const dummy;
-		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
-
-		xs << html::EndTag("a") << " ";
-
-		// Now a link to that paragraph
-		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-		xs << html::StartTag("a", parattr);
-		// FIXME XHTML
-		// There ought to be a simple way to customize this.
-		// Maybe if we had an InsetLayout for TOC...
-		xs << XHTMLStream::ESCAPE_NONE << "&gt;";
-		xs << html::EndTag("a");
+		makeTOCEntry(xs, par, op);
+		
 		xs << html::EndTag("div");
 	}
 }
