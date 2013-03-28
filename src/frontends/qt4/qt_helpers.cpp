@@ -571,29 +571,29 @@ QString guiName(string const & type, BufferParams const & bp)
 	if (type == "child")
 		return qt_("Child Documents");
 	if (type == "graphics")
-		return qt_("List of Graphics");
+		return qt_("Graphics");
 	if (type == "equation")
-		return qt_("List of Equations");
+		return qt_("Equations");
 	if (type == "footnote")
-		return qt_("List of Footnotes");
+		return qt_("Footnotes");
 	if (type == "listing")
-		return qt_("List of Listings");
+		return qt_("Listings");
 	if (type == "index")
-		return qt_("List of Index Entries");
+		return qt_("Index Entries");
 	if (type == "marginalnote")
-		return qt_("List of Marginal notes");
+		return qt_("Marginal notes");
 	if (type == "nomencl")
 		return qt_("Nomenclature Entries");
 	if (type == "note")
-		return qt_("List of Notes");
+		return qt_("Notes");
 	if (type == "citation")
-		return qt_("List of Citations");
+		return qt_("Citations");
 	if (type == "label")
 		return qt_("Labels and References");
 	if (type == "branch")
-		return qt_("List of Branches");
+		return qt_("Branches");
 	if (type == "change")
-		return qt_("List of Changes");
+		return qt_("Changes");
 
 	FloatList const & floats = bp.documentClass().floats();
 	if (floats.typeExist(type))
