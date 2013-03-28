@@ -129,10 +129,10 @@ bool unsetEnv(string const & name)
 {
 #if defined(HAVE_UNSETENV)
 	// FIXME: does it leak?
-	return unsetenv(name.c_str()) == 0;
+	return ::unsetenv(name.c_str()) == 0;
 #elif defined(HAVE_PUTENV)
 	// This is OK with MSVC and MinGW at least.
-	return putenv((name + "=").c_str()) == 0;
+	return ::putenv(const_cast<char*>((name + "=").c_str())) == 0;
 #else
 #error No environment-unsetting function has been defined.
 #endif
