@@ -1119,11 +1119,15 @@ int parse_export_to(string const & type, string const & output_file, string & ba
 }
 
 
-int parse_export(string const & type, string const &, string & batch)
+int parse_export(string const & type, string const & file, string & batch)
 {
 	if (type.empty()) {
 		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
 					 "--export switch")) << endl;
+		exit(1);
+	}
+	if (file.empty()) {
+		lyxerr << to_utf8(_("Missing filename after format")) << endl;
 		exit(1);
 	}
 	batch = "buffer-export " + type;
