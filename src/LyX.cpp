@@ -502,6 +502,10 @@ bool LyX::loadFiles()
 		}
 		else {
 			pimpl_->buffer_list_.release(buf);
+			docstring const error_message =
+				bformat(_("LyX failed to load the following file: %1$s"),
+				from_utf8(fname.absFileName()));
+			lyxerr << to_utf8(error_message) << endl;
 			success = false;
 		}
 	}
