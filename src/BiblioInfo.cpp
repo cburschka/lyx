@@ -711,7 +711,6 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		else if (key == "year")
 			ret = getYear();
 	}
-	LYXERR0(ret);
 	if (cleanit)
 		return html::cleanAttr(ret);
 	
