@@ -1143,7 +1143,6 @@ int parse_import(string const & type, string const & file, string & batch)
 		lyxerr << to_utf8(_("Missing filename for --import")) << endl;
 		exit(1);
 	}
-
 	batch = "buffer-import " + type + ' ' + file;
 	return 2;
 }
