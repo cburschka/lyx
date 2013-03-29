@@ -1154,7 +1154,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
 	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
-	mathsModule->packagesTW->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);	
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
 	int i = 0;
