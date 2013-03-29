@@ -69,8 +69,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fixed occasional crash when exporting a document while View>Source is
-  open and being updated (bug). 
+- Fixed occasional crash when exporting a document while View->Source is
+  open and being updated (bug 8425). 
 
 - Load the babel package also if the document is English-only (bug 8423).
 
