@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-27 16:08-0400\n"
+"POT-Creation-Date: 2013-03-29 10:38+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -305,7 +305,7 @@ msgstr "Zarovnanie"
 
 #: src/frontends/qt4/ui/BoxUi.ui:59 src/frontends/qt4/ui/BoxUi.ui:174
 msgid "Horizontal alignment of the content inside the box"
-msgstr "Horizontálne zarovnanie obsahu vnútri rámku"
+msgstr "Horizontálne zarovnanie obsahu vnútri rámiku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:63 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:69 src/frontends/qt4/ui/TabularUi.ui:1387
@@ -334,7 +334,7 @@ msgstr "Roztiahnuť"
 
 #: src/frontends/qt4/ui/BoxUi.ui:92 src/frontends/qt4/ui/BoxUi.ui:164
 msgid "Vertical alignment of the content inside the box"
-msgstr "Vertikálne zarovnanie obsahu v rámku"
+msgstr "Vertikálne zarovnanie obsahu v rámiku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
@@ -357,7 +357,8 @@ msgstr "Dole"
 
 #: src/frontends/qt4/ui/BoxUi.ui:119 src/frontends/qt4/ui/BoxUi.ui:141
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr "Vertikálne zarovnanie obsahu v rámku (vzťahujúce sa na základnú linku)"
+msgstr ""
+"Vertikálne zarovnanie obsahu v rámiku (vzťahujúce sa na základnú linku)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:144
 msgid "&Box:"
@@ -430,7 +431,7 @@ msgstr "Minipage"
 
 #: src/frontends/qt4/ui/BoxUi.ui:291
 msgid "Supported box types"
-msgstr "Podporované typy rámkov"
+msgstr "Podporované typy rámikov"
 
 #: src/frontends/qt4/ui/BranchUi.ui:19
 msgid "&Available branches:"
@@ -981,7 +982,7 @@ msgstr "Strana:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:237
 msgid "Shaded boxes:"
-msgstr "Tieňované rámky:"
+msgstr "Tieňované rámiky:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:22
 msgid "Compare Revisions"
@@ -1115,7 +1116,7 @@ msgstr "Opis:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr "Otvor dialog pre LaTeX-protokol"
+msgstr "Otvor dialóg pre LaTeX-protokol"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
@@ -1254,12 +1255,12 @@ msgstr "Orezať"
 #: src/frontends/qt4/ui/ExternalUi.ui:474
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
-msgstr "Orezať podľa hodnôt ohraničujúceho rámku"
+msgstr "Orezať podľa hodnôt ohraničujúceho rámiku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "&Orezať k ohraničujúcemu rámku"
+msgstr "&Orezať k ohraničujúcemu rámiku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -1509,7 +1510,7 @@ msgstr ""
 msgid "LaTe&X font encoding:"
 msgstr ""
 "Kódovanie\n"
-"písma laTe&X:"
+"písma LaTe&X:"
 
 #: src/frontends/qt4/ui/FontUi.ui:89 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
@@ -2122,7 +2123,7 @@ msgstr "&Posun:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
-msgstr "Veľkosť vertikálneho pusunu riadku."
+msgstr "Veľkosť vertikálneho posunu riadku."
 
 #: src/frontends/qt4/ui/LineUi.ui:71
 msgid "Value of the line width."
@@ -2422,7 +2423,7 @@ msgstr "Výstup Hlavného dokumentu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr "Zahrnúť len označené poddokumenty do výstupu"
+msgstr "Zahrnúť len označené pod-dokumenty do výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
@@ -2442,7 +2443,7 @@ msgstr "U&držovať číslovanie a referencie"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr "Zahrň každý poddokument do výstupu"
+msgstr "Zahrň každý pod-dokument do výstupu"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 msgid "&Include all children"
@@ -3199,6 +3200,71 @@ msgstr "Označiť konce odstavcov na obrazovke znakom Alinea."
 msgid "&Mark end of paragraphs"
 msgstr "O&značiť konce odstavcov"
 
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
+msgid "Session handling"
+msgstr "Riadenie sedenia"
+
+#: src/frontends/qt4/ui/PrefUi.ui:118
+msgid "Restore window layouts and &geometries"
+msgstr "Reštaurovať formáty okien a ich &geometrie"
+
+#: src/frontends/qt4/ui/PrefUi.ui:125
+msgid "Restore to the cursor position when the file was last closed"
+msgstr ""
+"Reštaurovať pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
+
+#: src/frontends/qt4/ui/PrefUi.ui:128
+msgid "Restore cursor &positions"
+msgstr "Reštaurovať &pozíciu kurzoru"
+
+#: src/frontends/qt4/ui/PrefUi.ui:135
+msgid "&Load opened files from last session"
+msgstr "&Nahrať súbory otvorené v predošlom sedení"
+
+#: src/frontends/qt4/ui/PrefUi.ui:142
+msgid "&Clear all session information"
+msgstr "&Zmazať všetky informácie týkajúce sa sedenia"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
+msgid "Backup && saving"
+msgstr "Zálohovanie && ukladanie"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
+msgid "Backup &original documents when saving"
+msgstr "Zálohovať pôvodné dokumenty pri uložení"
+
+#: src/frontends/qt4/ui/PrefUi.ui:181
+msgid "&Backup documents, every"
+msgstr "Zá&lohovať dokumenty, každých"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
+msgid "&minutes"
+msgstr "minút"
+
+#: src/frontends/qt4/ui/PrefUi.ui:218
+msgid "&Save documents compressed by default"
+msgstr "Štandardne &ukladať dokumenty komprimované"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+msgid "Windows && work area"
+msgstr "#Okien && pracovná plocha"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+msgid "Open documents in &tabs"
+msgstr "&Otvoriť dokumenty v paneloch"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
+msgid "Use s&ingle instance"
+msgstr "Jednoduchá &inštancia"
+
+#: src/frontends/qt4/ui/PrefUi.ui:272
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr "Dať tlačidlo \"Zavrieť\" na každý panel, alebo len jediné vľavo hore."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
+msgid "Displa&y single close-tab button"
+msgstr "&Zobraziť jediné tlačidlo na zavretie panelov"
+
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
 msgstr "Editácia"
@@ -3298,7 +3364,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:69
 msgid "Sho&w in export menu"
-msgstr "Zobraziť v &exportovom menu"
+msgstr "Zobraziť v menu &export"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:76
 msgid "Vector &graphics format"
@@ -3423,7 +3489,7 @@ msgstr "&Jazyk užívateľského rozhrania:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:29
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
-msgstr "Výberte jazyk pre užívateľské rozhranie (menu, dialogy, a pod.)"
+msgstr "Vyberte jazyk pre užívateľské rozhranie (menu, dialógy, a pod.)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 #: src/frontends/qt4/GuiDocument.cpp:1016
@@ -3618,7 +3684,7 @@ msgstr "Príkaz a voľby pre register (makeindex, xindi)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:267
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr "Specifický register-príkaz a voľby pre pLaTeX (Japonsky)"
+msgstr "Špecifický register-príkaz a voľby pre pLaTeX (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:289
 msgid "&Nomenclature command:"
@@ -4050,6 +4116,10 @@ msgid "Al&ternative language:"
 msgstr "&Alternatívny jazyk:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
+msgid "General Look && Feel"
+msgstr "Všeobecný Vzhľad a Pocit"
+
+#: src/frontends/qt4/ui/PrefUi.ui:25
 msgid "&User interface file:"
 msgstr "Súbor s &užívateľským rozhraním:"
 
@@ -4057,17 +4127,9 @@ msgstr "Súbor s &užívateľským rozhraním:"
 msgid "&Icon Set:"
 msgstr "Sada &ikon:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:68
-msgid ""
-"The icon set to use. Warning: normal size of icons may be\n"
-"wrong until you save the preferences and restart LyX."
-msgstr ""
-"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
-"nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
-
-#: src/frontends/qt4/ui/PrefUi.ui:75
-msgid "Automatic help"
-msgstr "Automatická nápoveda"
+#: src/frontends/qt4/ui/PrefUi.ui:109
+msgid "Context help"
+msgstr "Kontextovo závislá pomoc"
 
 #: src/frontends/qt4/ui/PrefUi.ui:93
 msgid ""
@@ -4079,79 +4141,13 @@ msgstr "Zobrazuje komentáre s nápoveďou pre vložky v editovanom dokumente"
 msgid "&Enable tool tips in main work area"
 msgstr "Umožniť &bublinové nápovede na hlavnej pracovnej ploche"
 
-#: src/frontends/qt4/ui/PrefUi.ui:106
-msgid "Session"
-msgstr "Sedenie"
-
-#: src/frontends/qt4/ui/PrefUi.ui:118
-msgid "Restore window layouts and &geometries"
-msgstr "Reštaurovať formáty okien a ich &geometrie"
-
-#: src/frontends/qt4/ui/PrefUi.ui:125
-msgid "Restore to the cursor position when the file was last closed"
-msgstr ""
-"Reštaurovať pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
-
-#: src/frontends/qt4/ui/PrefUi.ui:128
-msgid "Restore cursor &positions"
-msgstr "Reštaurovať &pozíciu kurzoru"
-
-#: src/frontends/qt4/ui/PrefUi.ui:135
-msgid "&Load opened files from last session"
-msgstr "&Nahrať súbory otvorené v predošlom sedení"
-
-#: src/frontends/qt4/ui/PrefUi.ui:142
-msgid "&Clear all session information"
-msgstr "&Zmazať všetky informácie týkajúce sa sedenia"
-
-#: src/frontends/qt4/ui/PrefUi.ui:165
-msgid "Documents"
-msgstr "Dokumenty"
-
-#: src/frontends/qt4/ui/PrefUi.ui:174
-msgid "Backup original documents when saving"
-msgstr "Zálohovať originálne dokumenty pri uložení"
-
-#: src/frontends/qt4/ui/PrefUi.ui:181
-msgid "&Backup documents, every"
-msgstr "Zá&lohovať dokumenty, každých"
-
-#: src/frontends/qt4/ui/PrefUi.ui:198
-msgid "minutes"
-msgstr "minút"
-
-#: src/frontends/qt4/ui/PrefUi.ui:218
-msgid "&Save documents compressed by default"
-msgstr "Štandardne &ukladať dokumenty komprimované"
+#: src/frontends/qt4/ui/PrefUi.ui:140
+msgid "Menus"
+msgstr "Ponuky"
 
 #: src/frontends/qt4/ui/PrefUi.ui:225
 msgid "&Maximum last files:"
 msgstr "&Maximum posledných súborov:"
-
-#: src/frontends/qt4/ui/PrefUi.ui:255
-msgid "&Open documents in tabs"
-msgstr "&Otvoriť dokumenty v paneloch"
-
-#: src/frontends/qt4/ui/PrefUi.ui:262
-msgid ""
-"Whether to open documents in an already running instance of LyX.\n"
-"(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr ""
-"Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
-"(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
-"vlastnosť)"
-
-#: src/frontends/qt4/ui/PrefUi.ui:265
-msgid "S&ingle instance"
-msgstr "Jednoduchá &inštancia"
-
-#: src/frontends/qt4/ui/PrefUi.ui:272
-msgid "Whether to place close button on each tab or only one in the top left."
-msgstr "Dať tlačidlo \"Zavrieť\" na každý panel, alebo len jediné vľavo hore."
-
-#: src/frontends/qt4/ui/PrefUi.ui:275
-msgid "&Single close-tab button"
-msgstr "&Jediné tlačidlo na zavretie panelov"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2550
 #: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
@@ -4273,7 +4269,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
-msgstr "&Podregister"
+msgstr "&Pod-register"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
 msgid "A&vailable indexes:"
@@ -4391,7 +4387,7 @@ msgstr "Zo&skupiť"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:308
 msgid "&Go to Label"
-msgstr "Pre&jď na značku"
+msgstr "Pre&jsť na značku"
 
 #: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Cross-reference as it appears in output"
@@ -4584,7 +4580,7 @@ msgstr "&Horizontálne zarovnanie:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:57
 msgid "Horizontal alignment in column"
-msgstr "Horizontálne zarovnanie v stĺpcy"
+msgstr "Horizontálne zarovnanie v stĺpci"
 
 #: src/frontends/qt4/ui/TabularUi.ui:64 src/frontends/qt4/GuiParagraph.cpp:108
 #: src/frontends/qt4/GuiTabular.cpp:806
@@ -4962,7 +4958,7 @@ msgstr "Počet riadkov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:251
 msgid "Format text into two columns"
-msgstr "Zformátovať text na dva stĺpce"
+msgstr "Formátovať text na dva stĺpce"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:254
 msgid "Two-&column document"
@@ -6817,7 +6813,7 @@ msgstr "Stĺpce (hore zarovnané)"
 
 #: lib/layouts/beamer.layout:560
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Pauza"
 
 #: lib/layouts/beamer.layout:561 lib/layouts/beamer.layout:587
 #: lib/layouts/beamer.layout:614 lib/layouts/beamer.layout:640
@@ -7008,7 +7004,7 @@ msgstr "Výstrah"
 #: lib/layouts/svcommon.inc:68 lib/layouts/svcommon.inc:95
 #: lib/layouts/svcommon.inc:102
 msgid "Structure"
-msgstr "Struktúra"
+msgstr "Štruktúra"
 
 #: lib/layouts/beamer.layout:1219
 msgid "ArticleMode"
@@ -9952,11 +9948,11 @@ msgstr "Adresár"
 
 #: lib/layouts/db_stdcharstyles.inc:85 lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
-msgstr "Tastatúra"
+msgstr "KonbináciaKlávesov"
 
 #: lib/layouts/db_stdcharstyles.inc:99 lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
-msgstr "Cap"
+msgstr "VeľkéKlávesy"
 
 #: lib/layouts/db_stdcharstyles.inc:113 lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
@@ -10296,7 +10292,7 @@ msgstr "Petit"
 
 #: lib/layouts/svcommon.inc:607
 msgid "Svgraybox"
-msgstr "Svgraybox"
+msgstr "Sv šedý rámec"
 
 #: lib/layouts/theorems-ams-bytype.inc:166 lib/layouts/theorems-bytype.inc:142
 #: lib/layouts/theorems-without-preamble.inc:163
@@ -10902,7 +10898,7 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Umožnuje použiť štatistický jazyk S/R ako nástroj pre \"literate programming"
+"Umožňuje použiť štatistický jazyk S/R ako nástroj pre \"literate programming"
 "\" cez funkciu z balíka Sweave(). Pre viac informácie pozri príkladný súbor "
 "sweave.lyx."
 
@@ -11539,7 +11535,7 @@ msgstr "Mongolsky"
 
 #: lib/languages:611
 msgid "Norwegian (Bokmaal)"
-msgstr "Norsky (Bolmål)"
+msgstr "Nórsky (Bolmål)"
 
 #: lib/languages:619
 msgid "Norwegian (Nynorsk)"
@@ -12557,7 +12553,7 @@ msgstr "Všetky Registre"
 
 #: lib/ui/stdcontext.inc:547
 msgid "Subindex|b"
-msgstr "Podregister"
+msgstr "Pod-register"
 
 #: lib/ui/stdcontext.inc:575 lib/ui/stdmenus.inc:514
 msgid "Reject Change|R"
@@ -12805,7 +12801,7 @@ msgstr "Nastavenia vetvy..."
 
 #: lib/ui/stdmenus.inc:141
 msgid "Box Settings...|x"
-msgstr "Nastavenia rámku..."
+msgstr "Nastavenia rámiku..."
 
 #: lib/ui/stdmenus.inc:142
 msgid "Index Entry Settings...|y"
@@ -13985,7 +13981,7 @@ msgstr "Zlúčiť zmeny"
 
 #: lib/ui/stdtoolbars.inc:226
 msgid "Accept all changes"
-msgstr "Akceptať všetky zmeny"
+msgstr "Akceptovať všetky zmeny"
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "Reject all changes"
@@ -16898,9 +16894,9 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný disk?)"
 
-#: src/Buffer.cpp:467
+#: src/Buffer.cpp:469
 msgid "LyX attempted to close a document that had unsaved changes!\n"
-msgstr "LyX sa pokúsil zavrieť document s neuloženými zmenami!\n"
+msgstr "LyX sa pokúsil zavrieť dokument s neuloženými zmenami!\n"
 
 #: src/Buffer.cpp:469
 msgid "Attempting to close changed document!"
@@ -17037,10 +17033,10 @@ msgstr "%1$s je z novšej verzie LyX-u, a skript lyx2lyx zlyhal pri konverzii."
 msgid "File is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/Buffer.cpp:1135
+#: src/Buffer.cpp:1157
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
-msgstr "Súbor %1$s je neuložiteĺný lebo je označený ako len na čítanie."
+msgstr "Súbor %1$s je neuložiteľný lebo je označený ako len na čítanie."
 
 #: src/Buffer.cpp:1144
 #, c-format
@@ -17107,9 +17103,9 @@ msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz...\n"
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 
-#: src/Buffer.cpp:1369
+#: src/Buffer.cpp:1391
 msgid "Iconv software exception Detected"
-msgstr "Iconv detekoval softvérovú výnimku"
+msgstr "Iconv detegoval softvérovú výnimku"
 
 #: src/Buffer.cpp:1369
 #, c-format
@@ -17147,7 +17143,7 @@ msgstr "Konverzia zlyhala"
 msgid "Uncodable character in file path"
 msgstr "Nekódovateľný znak v ceste"
 
-#: src/Buffer.cpp:1516
+#: src/Buffer.cpp:1538
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17165,8 +17161,8 @@ msgstr ""
 "obsahuje glyfy neznáme v kódovaní\n"
 "aktuálneho dokumentu (menovite %2$s).\n"
 "Na úplný výsledok zaistite aby TEXINPUTS obsahovala cestu ku adresáru "
-"dokumentu alebo použte relatívne cesty (čiže cesty začínajúce s './' alebo s "
-"'../') v preambule alebo v ERT. \n"
+"dokumentu alebo použite relatívne cesty (čiže cesty začínajúce s './' alebo "
+"s '../') v preambule alebo v ERT. \n"
 "\n"
 "V prípade problémov vyberte vhodné kódovanie dokumentu\n"
 "(ako napr. utf8) alebo zmeňte meno cesty."
@@ -17945,7 +17941,7 @@ msgstr "návestie mat. makra"
 
 #: src/Color.cpp:254
 msgid "math macro frame"
-msgstr "matematické-macro (rám)"
+msgstr "matematické-makro (rám)"
 
 #: src/Color.cpp:255
 msgid "math macro blended out"
@@ -19000,7 +18996,7 @@ msgstr "Zdržanie pre vyťahovacie menu na doplňovanie."
 #: src/LyXRC.cpp:3293
 msgid "Select to display the completion popup in math mode."
 msgstr ""
-"Vybrať, aby sa vnútri mat. vzorkov vyťahovacie menu doplňovania zobrazilo."
+"Vybrať, aby sa vnútri mat. vzorcov vyťahovacie menu doplňovania zobrazilo."
 
 #: src/LyXRC.cpp:3297
 msgid "Select to display the completion popup in text mode."
@@ -20256,7 +20252,7 @@ msgstr "Celková Výška"
 
 #: src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
-msgstr "Šírka (obsahu rámku)"
+msgstr "Šírka (obsahu rámiku)"
 
 #: src/frontends/qt4/GuiBox.cpp:315 src/frontends/qt4/GuiBox.cpp:390
 #: src/insets/InsetBox.cpp:137
@@ -21624,6 +21620,10 @@ msgstr "Klasické"
 msgid "Oxygen"
 msgstr "Oxygen"
 
+#: src/frontends/qt4/GuiPrefs.cpp:2550
+msgid "Document Handling"
+msgstr "Ovládanie Dokumentov"
+
 #: src/frontends/qt4/GuiPrefs.cpp:2613
 msgid "Control"
 msgstr "Kontrola"
@@ -21782,7 +21782,7 @@ msgstr "Hľadať a nahradiť"
 
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
-msgstr "Exportovať alebo Poslať Document"
+msgstr "Exportovať alebo Poslať Dokument"
 
 #: src/frontends/qt4/GuiShowFile.cpp:30
 msgid "Show File"
@@ -21952,7 +21952,7 @@ msgstr "Uzavreté alfa-numerické znaky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
 msgid "Box Drawing"
-msgstr "Výkres Rámku"
+msgstr "Výkres Rámiku"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
 msgid "Block Elements"
@@ -22661,7 +22661,7 @@ msgstr "Pridať do osobného slovníka"
 
 #: src/frontends/qt4/Menus.cpp:803
 msgid "Ignore all|I"
-msgstr "Ignorovať všetko"
+msgstr "Ignorovať všade"
 
 #: src/frontends/qt4/Menus.cpp:811
 msgid "Remove from personal dictionary|r"
@@ -23509,7 +23509,7 @@ msgstr "Očakávam číslo s nepovinným * pred ním"
 
 #: src/insets/InsetListingsParams.cpp:402
 msgid "auto, last or a number"
-msgstr "auto, last alebo číslo"
+msgstr "auto, posledné alebo číslo"
 
 #: src/insets/InsetListingsParams.cpp:412
 msgid ""
@@ -24309,6 +24309,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "The icon set to use. Warning: normal size of icons may be\n"
+#~ "wrong until you save the preferences and restart LyX."
+#~ msgstr ""
+#~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
+#~ "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
+
+#~ msgid "Automatic help"
+#~ msgstr "Automatická nápoveda"
+
+#~ msgid "Session"
+#~ msgstr "Sedenie"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenty"
+
+#~ msgid ""
+#~ "Whether to open documents in an already running instance of LyX.\n"
+#~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
+#~ msgstr ""
+#~ "Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
+#~ "(Nastavit cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
+#~ "vlastnosť)"
 
 #~ msgid "elsewhere"
 #~ msgstr "inde"
