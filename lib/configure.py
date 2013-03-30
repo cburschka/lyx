@@ -652,7 +652,10 @@ def checkConverterEntries():
     in_place = os.path.join(srcdir, '..', 'src', 'tex2lyx', 'tex2lyx')
     in_place = os.path.abspath(in_place)
 
-    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_place, 'tex2lyx' + version_suffix, 'tex2lyx'],
+    in_binary_dir = os.path.join(lyx_binary_dir, 'tex2lyx')
+    in_binary_dir = os.path.abspath(in_binary_dir)
+
+    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_place, in_place + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""'''], not_found = 'tex2lyx')
     if path == '':
@@ -1394,6 +1397,7 @@ if __name__ == '__main__':
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''
+    lyx_binary_dir = ''
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:
@@ -1404,6 +1408,7 @@ Options:
     --without-kpsewhich      do not update TeX files information via kpsewhich
     --without-latex-config   do not run LaTeX to determine configuration
     --with-version-suffix=suffix suffix of binary installed files
+    --binary-dir=directory   directory of binary installed files
 '''
             sys.exit(0)
         elif op == '--without-kpsewhich':
@@ -1414,6 +1419,8 @@ Options:
             lyx_keep_temps = True
         elif op[0:22] == '--with-version-suffix=':  # never mind if op is not long enough
             version_suffix = op[22:]
+        elif op[0:13] == '--binary-dir=':
+            lyx_binary_dir = op[13:]
         else:
             print "Unknown option", op
             sys.exit(1)
