@@ -89,8 +89,6 @@ public:
 	std::string const & latexname() const { return latexname_; }
 	///
 	std::string const & itemcommand() const { return itemcommand_; }
-	///
-	void setLatexName(std::string const & n) { latexname_ = n; }
 	/// The arguments of this layout
 	struct latexarg {
 		docstring labelstring;

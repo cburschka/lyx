@@ -999,11 +999,14 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 void Layout::write(ostream & os) const
 {
 	os << "Style " << to_utf8(name_) << '\n';
-	if (!category_.empty())
-		os << "\tCategory " << to_utf8(category_) << '\n';
+	if (!category_.empty() && obsoleted_by_.empty())
+		os << "\tCategory \"" << to_utf8(category_) << "\"\n";
 	// Can't deduce Copystyle here :-(
-	if (!obsoleted_by_.empty())
-		os << "\tObsoletedby " << to_utf8(obsoleted_by_) << '\n';
+	if (!obsoleted_by_.empty()) {
+		os << "\tObsoletedBy \"" << to_utf8(obsoleted_by_)
+		   << "\"\nEnd\n";
+		return;
+	}
 	if (!depends_on_.empty())
 		os << "\tDependsOn " << to_utf8(depends_on_) << '\n';
 	switch (margintype) {
@@ -1067,10 +1070,10 @@ void Layout::write(ostream & os) const
 	os << "\tNextNoIndent " << nextnoindent << "\n"
 	      "\tCommandDepth " << commanddepth << '\n';
 	if (!latexname_.empty())
-		os << "\tLatexName " << latexname_ << '\n';
+		os << "\tLatexName \"" << latexname_ << "\"\n";
 	if (!latexparam_.empty())
-		os << "\tLatexParam " << subst(latexparam_, "\"", "&quot;")
-		   << '\n';
+		os << "\tLatexParam \"" << subst(latexparam_, "\"", "&quot;")
+		   << "\"\n";
 	if (!leftdelim_.empty())
 		os << "\tLeftDelim "
 		   << to_utf8(subst(leftdelim_, from_ascii("\n"), from_ascii("<br/>")))
@@ -1080,24 +1083,27 @@ void Layout::write(ostream & os) const
 		   << to_utf8(subst(rightdelim_, from_ascii("\n"), from_ascii("<br/>")))
 		   << '\n';
 	if (!innertag_.empty())
-		os << "\tInnerTag " << innertag_ << '\n';
+		os << "\tInnerTag \"" << innertag_ << "\"\n";
 	if (!labeltag_.empty())
-		os << "\tLabelTag " << labeltag_ << '\n';
+		os << "\tLabelTag \"" << labeltag_ << "\"\n";
 	if (!itemtag_.empty())
-		os << "\tItemTag " << itemtag_ << '\n';
+		os << "\tItemTag \"" << itemtag_ << "\"\n";
 	if (!itemcommand_.empty())
 		os << "\tItemCommand " << itemcommand_ << '\n';
 	if (!preamble_.empty())
-		os << "\tPreamble\n"
-		   << to_utf8(rtrim(preamble_, "\n"))
+		os << "\tPreamble\n\t"
+		   << to_utf8(subst(rtrim(preamble_, "\n"),
+		                          from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndPreamble\n";
 	if (!langpreamble_.empty())
-		os << "\tLangPreamble\n"
-		   << to_utf8(rtrim(langpreamble_, "\n"))
+		os << "\tLangPreamble\n\t"
+		   << to_utf8(subst(rtrim(langpreamble_, "\n"),
+		                          from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndLangPreamble\n";
 	if (!babelpreamble_.empty())
-		os << "\tBabelPreamble\n"
-		   << to_utf8(rtrim(babelpreamble_, "\n"))
+		os << "\tBabelPreamble\n\t"
+		   << to_utf8(subst(rtrim(babelpreamble_, "\n"),
+		                          from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndBabelPreamble\n";
 	switch (labeltype) {
 	case LABEL_ABOVE:
@@ -1143,9 +1149,9 @@ void Layout::write(ostream & os) const
 		break;
 	}
 	if (!leftmargin.empty())
-		os << "\tLeftMargin " << to_utf8(leftmargin) << '\n';
+		os << "\tLeftMargin \"" << to_utf8(leftmargin) << "\"\n";
 	if (!rightmargin.empty())
-		os << "\tRightMargin " << to_utf8(rightmargin) << '\n';
+		os << "\tRightMargin \"" << to_utf8(rightmargin) << "\"\n";
 	if (!labelindent.empty())
 		os << "\tLabelIndent " << to_utf8(labelindent) << '\n';
 	if (!parindent.empty())
