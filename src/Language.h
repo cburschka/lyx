@@ -40,6 +40,8 @@ public:
 	std::string const & polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
 	std::string const & polyglossiaOpts() const { return polyglossia_opts_; }
+	/// Is this language only supported by polyglossia?
+	bool isPolyglossiaExclusive() const;
 	/// quotation marks style
 	std::string const & quoteStyle() const { return quote_style_; }
 	/// requirement (package, function)

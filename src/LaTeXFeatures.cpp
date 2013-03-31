@@ -617,7 +617,7 @@ bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
 	     ++cit) {
-		if ((*cit)->babel().empty() && !(*cit)->polyglossia().empty() && (*cit)->requires().empty())
+		if ((*cit)->isPolyglossiaExclusive())
 			return true;
 	}
 	return false;

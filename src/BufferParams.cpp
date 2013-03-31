@@ -2209,8 +2209,11 @@ vector<string> BufferParams::backends() const
 		v.push_back("xetex");
 	} else if (buffmt == "xetex") {
 		v.push_back("xetex");
-		v.push_back("luatex");
-		v.push_back("dviluatex");
+		// FIXME: need to test all languages (bug 8205)
+		if (!language || !language->isPolyglossiaExclusive()) {
+			v.push_back("luatex");
+			v.push_back("dviluatex");
+		}
 	} else
 		v.push_back(buffmt);
 

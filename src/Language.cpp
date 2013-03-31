@@ -38,6 +38,12 @@ Language const * latex_language = 0;
 Language const * reset_language = 0;
 
 
+bool Language::isPolyglossiaExclusive() const
+{
+	return babel().empty() && !polyglossia().empty() && requires().empty();
+}
+
+
 docstring const Language::translateLayout(string const & m) const
 {
 	if (m.empty())
