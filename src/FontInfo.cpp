@@ -22,6 +22,9 @@
 #include "support/docstring.h"
 #include "support/lstrings.h"
 
+#include <ostream>
+#include <sstream>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -633,6 +636,59 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 		}
 	}
 	return f;
+}
+
+
+void lyxWrite(ostream & os, FontInfo const & f, string const & start, int level)
+{
+	string indent;
+	for (int i = 0; i < level; ++i)
+		indent += '\t';
+	ostringstream oss;
+	if (f.family() != INHERIT_FAMILY)
+		oss << indent << "\tFamily " << LyXFamilyNames[f.family()]
+		    << '\n';
+	if (f.series() != INHERIT_SERIES)
+		oss << indent << "\tSeries " << LyXSeriesNames[f.series()]
+		    << '\n';
+	if (f.shape() != INHERIT_SHAPE)
+		oss << indent << "\tShape " << LyXShapeNames[f.shape()]
+		    << '\n';
+	if (f.size() != FONT_SIZE_INHERIT)
+		oss << indent << "\tSize " << LyXSizeNames[f.size()]
+		    << '\n';
+	if (f.underbar() == FONT_ON)
+		oss << indent << "\tMisc Underbar\n";
+	else if (f.underbar() == FONT_OFF)
+		oss << indent << "\tMisc No_Bar\n";
+	if (f.strikeout() == FONT_ON)
+		oss << indent << "\tMisc Strikeout\n";
+	else if (f.strikeout() == FONT_OFF)
+		oss << indent << "\tMisc No_Strikeout\n";
+	if (f.uuline() == FONT_ON)
+		oss << indent << "\tMisc Uuline\n";
+	else if (f.uuline() == FONT_OFF)
+		oss << indent << "\tMisc No_Uuline\n";
+	if (f.uwave() == FONT_ON)
+		oss << indent << "\tMisc Uwave\n";
+	else if (f.uwave() == FONT_OFF)
+		oss << indent << "\tMisc No_Uwave\n";
+	if (f.emph() == FONT_ON)
+		oss << indent << "\tMisc Emph\n";
+	else if (f.emph() == FONT_OFF)
+		oss << indent << "\tMisc No_Emph\n";
+	if (f.noun() == FONT_ON)
+		oss << indent << "\tMisc Noun\n";
+	else if (f.noun() == FONT_OFF)
+		oss << indent << "\tMisc No_Noun\n";
+	if (f.color() != Color_inherit && f.color() != Color_none)
+		oss << indent << "\tColor " << lcolor.getLyXName(f.color())
+		    << '\n';
+	if (!oss.str().empty()) {
+		os << indent << start << '\n'
+		   << oss.str()
+		   << indent << "EndFont\n";
+	}
 }
 
 

@@ -479,7 +479,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_LABELSTRING:
-			// FIXME: this means LT_ENDLABELSTRING may only
+			// FIXME: this means LT_LABELSTRING_APPENDIX may only
 			// occur after LT_LABELSTRING
 			lex >> labelstring_;
 			labelstring_ = trim(labelstring_);
@@ -882,6 +882,7 @@ void Layout::readSpacing(Lexer & lex)
 void Layout::readArgument(Lexer & lex)
 {
 	latexarg arg;
+	// writeArgument() makes use of these default values
 	arg.mandatory = false;
 	arg.autoinsert = false;
 	bool error = false;
@@ -955,6 +956,335 @@ void Layout::readArgument(Lexer & lex)
 		postcommandargs_[id] = arg;
 	else
 		latexargs_[id] = arg;
+}
+
+
+void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg)
+{
+	os << "\tArgument " << id << '\n';
+	if (!arg.labelstring.empty())
+		os << "\t\tLabelString \"" << to_utf8(arg.labelstring) << "\"\n";
+	if (!arg.menustring.empty())
+		os << "\t\tMenuString \"" << to_utf8(arg.menustring) << "\"\n";
+	if (arg.mandatory)
+		os << "\t\tMandatory " << arg.mandatory << '\n';
+	if (arg.autoinsert)
+		os << "\t\tAutoinsert " << arg.autoinsert << '\n';
+	if (!arg.ldelim.empty())
+		os << "\t\tLeftDelim \""
+		   << to_utf8(subst(arg.ldelim, from_ascii("\n"), from_ascii("<br/>")))
+		   << "\"\n";
+	if (!arg.rdelim.empty())
+		os << "\t\tRightDelim \""
+		   << to_utf8(subst(arg.rdelim, from_ascii("\n"), from_ascii("<br/>")))
+		   << "\"\n";
+	if (!arg.defaultarg.empty())
+		os << "\t\tDefaultArg \"" << to_utf8(arg.defaultarg) << "\"\n";
+	if (!arg.presetarg.empty())
+		os << "\t\tPresetArg \"" << to_utf8(arg.presetarg) << "\"\n";
+	if (!arg.tooltip.empty())
+		os << "\t\tToolTip \"" << to_utf8(arg.tooltip) << "\"\n";
+	if (!arg.requires.empty())
+		os << "\t\tRequires \"" << arg.requires << "\"\n";
+	if (!arg.decoration.empty())
+		os << "\t\tDecoration \"" << arg.decoration << "\"\n";
+	if (arg.font != inherit_font)
+		lyxWrite(os, arg.font, "Font", 2);
+	if (arg.labelfont != inherit_font)
+		lyxWrite(os, arg.labelfont, "LabelFont", 2);
+	os << "\tEndArgument\n";
+}
+
+
+void Layout::write(ostream & os) const
+{
+	os << "Style " << to_utf8(name_) << '\n';
+	if (!category_.empty())
+		os << "\tCategory " << to_utf8(category_) << '\n';
+	// Can't deduce Copystyle here :-(
+	if (!obsoleted_by_.empty())
+		os << "\tObsoletedby " << to_utf8(obsoleted_by_) << '\n';
+	if (!depends_on_.empty())
+		os << "\tDependsOn " << to_utf8(depends_on_) << '\n';
+	switch (margintype) {
+		case MARGIN_DYNAMIC:
+			os << "\tMargin Dynamic\n";
+			break;
+		case MARGIN_FIRST_DYNAMIC:
+			os << "\tMargin First_Dynamic\n";
+			break;
+		case MARGIN_MANUAL:
+			os << "\tMargin Manual\n";
+			break;
+		case MARGIN_RIGHT_ADDRESS_BOX:
+			os << "\tMargin Right_Address_Box\n";
+			break;
+		case MARGIN_STATIC:
+			os << "\tMargin Static\n";
+			break;
+	}
+	switch (latextype) {
+		case LATEX_BIB_ENVIRONMENT:
+			os << "\tLatexType Bib_Environment\n";
+			break;
+		case LATEX_COMMAND:
+			os << "\tLatexType Command\n";
+			break;
+		case LATEX_ENVIRONMENT:
+			os << "\tLatexType Environment\n";
+			break;
+		case LATEX_ITEM_ENVIRONMENT:
+			os << "\tLatexType Item_Environment\n";
+			break;
+		case LATEX_LIST_ENVIRONMENT:
+			os << "\tLatexType List_Environment\n";
+			break;
+		case LATEX_PARAGRAPH:
+			os << "\tLatexType Paragraph\n";
+			break;
+	}
+	os << "\tInTitle " << intitle << "\n"
+	      "\tInPreamble " << inpreamble << "\n"
+	      "\tTocLevel " << toclevel << '\n';
+	// ResetArgs does not make sense here
+	for (LaTeXArgMap::const_iterator it = latexargs_.begin();
+	     it != latexargs_.end(); ++it)
+		writeArgument(os, it->first, it->second);
+	for (LaTeXArgMap::const_iterator it = itemargs_.begin();
+	     it != itemargs_.end(); ++it)
+		writeArgument(os, it->first, it->second);
+	for (LaTeXArgMap::const_iterator it = postcommandargs_.begin();
+	     it != postcommandargs_.end(); ++it)
+		writeArgument(os, it->first, it->second);
+	os << "\tNeedProtect " << needprotect << "\n"
+	      "\tKeepEmpty " << keepempty << '\n';
+	if (labelfont == font)
+		lyxWrite(os, font, "Font", 1);
+	else {
+		lyxWrite(os, font, "TextFont", 1);
+		lyxWrite(os, labelfont, "LabelFont", 1);
+	}
+	os << "\tNextNoIndent " << nextnoindent << "\n"
+	      "\tCommandDepth " << commanddepth << '\n';
+	if (!latexname_.empty())
+		os << "\tLatexName " << latexname_ << '\n';
+	if (!latexparam_.empty())
+		os << "\tLatexParam " << subst(latexparam_, "\"", "&quot;")
+		   << '\n';
+	if (!leftdelim_.empty())
+		os << "\tLeftDelim "
+		   << to_utf8(subst(leftdelim_, from_ascii("\n"), from_ascii("<br/>")))
+		   << '\n';
+	if (!rightdelim_.empty())
+		os << "\tRightDelim "
+		   << to_utf8(subst(rightdelim_, from_ascii("\n"), from_ascii("<br/>")))
+		   << '\n';
+	if (!innertag_.empty())
+		os << "\tInnerTag " << innertag_ << '\n';
+	if (!labeltag_.empty())
+		os << "\tLabelTag " << labeltag_ << '\n';
+	if (!itemtag_.empty())
+		os << "\tItemTag " << itemtag_ << '\n';
+	if (!itemcommand_.empty())
+		os << "\tItemCommand " << itemcommand_ << '\n';
+	if (!preamble_.empty())
+		os << "\tPreamble\n"
+		   << to_utf8(rtrim(preamble_, "\n"))
+		   << "\n\tEndPreamble\n";
+	if (!langpreamble_.empty())
+		os << "\tLangPreamble\n"
+		   << to_utf8(rtrim(langpreamble_, "\n"))
+		   << "\n\tEndLangPreamble\n";
+	if (!babelpreamble_.empty())
+		os << "\tBabelPreamble\n"
+		   << to_utf8(rtrim(babelpreamble_, "\n"))
+		   << "\n\tEndBabelPreamble\n";
+	switch (labeltype) {
+	case LABEL_ABOVE:
+		os << "\tLabelType Above\n";
+		break;
+	case LABEL_BIBLIO:
+		os << "\tLabelType Bibliography\n";
+		break;
+	case LABEL_CENTERED:
+		os << "\tLabelType Centered\n";
+		break;
+	case LABEL_ENUMERATE:
+		os << "\tLabelType Enumerate\n";
+		break;
+	case LABEL_ITEMIZE:
+		os << "\tLabelType Itemize\n";
+		break;
+	case LABEL_MANUAL:
+		os << "\tLabelType Manual\n";
+		break;
+	case LABEL_NO_LABEL:
+		os << "\tLabelType No_Label\n";
+		break;
+	case LABEL_SENSITIVE:
+		os << "\tLabelType Sensitive\n";
+		break;
+	case LABEL_STATIC:
+		os << "\tLabelType Static\n";
+		break;
+	}
+	switch (endlabeltype) {
+	case END_LABEL_BOX:
+		os << "\tEndLabelType Box\n";
+		break;
+	case END_LABEL_FILLED_BOX:
+		os << "\tEndLabelType Filled_Box\n";
+		break;
+	case END_LABEL_NO_LABEL:
+		os << "\tEndLabelType No_Label\n";
+		break;
+	case END_LABEL_STATIC:
+		os << "\tEndLabelType Static\n";
+		break;
+	}
+	if (!leftmargin.empty())
+		os << "\tLeftMargin " << to_utf8(leftmargin) << '\n';
+	if (!rightmargin.empty())
+		os << "\tRightMargin " << to_utf8(rightmargin) << '\n';
+	if (!labelindent.empty())
+		os << "\tLabelIndent " << to_utf8(labelindent) << '\n';
+	if (!parindent.empty())
+		os << "\tParIndent " << to_utf8(parindent) << '\n';
+	os << "\tParSkip " << parskip << "\n"
+	      "\tItemSep " << itemsep << "\n"
+	      "\tTopSep " << topsep << "\n"
+	      "\tBottomSep " << bottomsep << "\n"
+	      "\tLabelBottomSep " << labelbottomsep << '\n';
+	if (!labelsep.empty())
+		os << "\tLabelSep " << to_utf8(subst(labelsep, ' ', 'x'))
+		   << '\n';
+	os << "\tParSep " << parsep << "\n"
+	      "\tNewLine " << newline_allowed << '\n';
+	switch (align) {
+	case LYX_ALIGN_BLOCK:
+		os << "\tAlign Block\n";
+		break;
+	case LYX_ALIGN_CENTER:
+		os << "\tAlign Center\n";
+		break;
+	case LYX_ALIGN_LAYOUT:
+		os << "\tAlign Layout\n";
+		break;
+	case LYX_ALIGN_LEFT:
+		os << "\tAlign Left\n";
+		break;
+	case LYX_ALIGN_RIGHT:
+		os << "\tAlign Right\n";
+		break;
+	case LYX_ALIGN_DECIMAL:
+	case LYX_ALIGN_SPECIAL:
+	case LYX_ALIGN_NONE:
+		break;
+	}
+	if (alignpossible & (LYX_ALIGN_BLOCK | LYX_ALIGN_CENTER |
+	                     LYX_ALIGN_LAYOUT | LYX_ALIGN_LEFT | LYX_ALIGN_RIGHT)) {
+		bool first = true;
+		os << "\tAlignPossible";
+		if (alignpossible & LYX_ALIGN_BLOCK) {
+			if (!first)
+				os << ',';
+			os << " Block";
+			first = false;
+		}
+		if (alignpossible & LYX_ALIGN_CENTER) {
+			if (!first)
+				os << ',';
+			os << " Center";
+			first = false;
+		}
+		if (alignpossible & LYX_ALIGN_LAYOUT) {
+			if (!first)
+				os << ',';
+			os << " Layout";
+			first = false;
+		}
+		if (alignpossible & LYX_ALIGN_LEFT) {
+			if (!first)
+				os << ',';
+			os << " Left";
+			first = false;
+		}
+		if (alignpossible & LYX_ALIGN_RIGHT) {
+			if (!first)
+				os << ',';
+			os << " Right";
+			first = false;
+		}
+		os << '\n';
+	}
+	// LabelString must come before LabelStringAppendix
+	if (!labelstring_.empty())
+		os << "\tLabelString \"" << to_utf8(labelstring_) << "\"\n";
+	if (!endlabelstring_.empty())
+		os << "\tEndLabelString \"" << to_utf8(endlabelstring_) << "\"\n";
+	if (!labelstring_appendix_.empty() && labelstring_appendix_ != labelstring_)
+		os << "\tLabelStringAppendix \""
+		   << to_utf8(labelstring_appendix_) << "\"\n";
+	if (!counter.empty())
+		os << "\tLabelCounter \"" << to_utf8(counter) << "\"\n";
+	os << "\tFreeSpacing " << free_spacing << '\n';
+	os << "\tPassThru " << pass_thru << '\n';
+	os << "\tParbreakIsNewline " << parbreak_is_newline << '\n';
+	switch (spacing.getSpace()) {
+	case Spacing::Double:
+		os << "\tSpacing Double\n";
+		break;
+	case Spacing::Onehalf:
+		os << "\tSpacing Onehalf\n";
+		break;
+	case Spacing::Other:
+		os << "\tSpacing Other " << spacing.getValueAsString() << '\n';
+		break;
+	case Spacing::Single:
+		os << "\tSpacing Single\n";
+		break;
+	case Spacing::Default:
+		break;
+	}
+	if (!requires_.empty()) {
+		os << "\tRequires ";
+		for (set<string>::const_iterator it = requires_.begin();
+		     it != requires_.end(); ++it) {
+			if (it != requires_.begin())
+				os << ',';
+			os << *it;
+		}
+		os << '\n';
+	}
+	if (refprefix.empty())
+		os << "\tRefPrefix OFF\n";
+	else
+		os << "\tRefPrefix " << to_utf8(refprefix) << '\n';
+	if (!htmltag_.empty())
+		os << "\tHTMLTag " << htmltag_ << '\n';
+	if (!htmlattr_.empty())
+		os << "\tHTMLAttr " << htmlattr_ << '\n';
+	if (!htmlitemtag_.empty())
+		os << "\tHTMLItem " << htmlitemtag_ << '\n';
+	if (!htmlitemattr_.empty())
+		os << "\tHTMLItemAttr " << htmlitemattr_ << '\n';
+	if (!htmllabeltag_.empty())
+		os << "\tHTMLLabel " << htmllabeltag_ << '\n';
+	if (!htmllabelattr_.empty())
+		os << "\tHTMLLabelAttr " << htmllabelattr_ << '\n';
+	os << "\tHTMLLabelFirst " << htmllabelfirst_ << '\n';
+	if (!htmlstyle_.empty())
+		os << "\tHTMLStyle\n"
+		   << to_utf8(rtrim(htmlstyle_, "\n"))
+		   << "\n\tEndHTMLStyle\n";
+	os << "\tHTMLForceCSS " << htmlforcecss_ << '\n';
+	if (!htmlpreamble_.empty())
+		os << "\tHTMLPreamble\n"
+		   << to_utf8(rtrim(htmlpreamble_, "\n"))
+		   << "\n\tEndPreamble\n";
+	os << "\tHTMLTitle " << htmltitle_ << "\n"
+	      "\tSpellcheck " << spellcheck << "\n"
+	      "End\n";
 }
 
 
@@ -1149,7 +1479,7 @@ void Layout::makeDefaultCSS() const
 		htmldefaultstyle_ += from_ascii("text-align: " + where + ";\n");
 	}
 #endif
-	
+
 	// wrap up what we have, if anything
 	if (!htmldefaultstyle_.empty())
 		htmldefaultstyle_ = 

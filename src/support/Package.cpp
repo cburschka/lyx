@@ -125,7 +125,7 @@ Package::Package(string const & command_line_arg0,
 		system_support_dir_ =
 			get_system_support_dir(abs_binary,
 					       command_line_system_support_dir);
-    }
+	}
 
 	// Find the LyX executable
 	lyx_binary_ = findLyxBinary(abs_binary);

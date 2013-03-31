@@ -75,6 +75,8 @@ public:
 	void readSpacing(Lexer &);
 	///
 	void readArgument(Lexer &);
+	/// Write a layout definition in utf8 encoding
+	void write(std::ostream &) const;
 	///
 	docstring const & name() const { return name_; }
 	///
