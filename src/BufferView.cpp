@@ -1545,7 +1545,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (lyxfind(this, req))
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		else
-			message(_("String not found!"));
+			message(_("String not found."));
 		d->search_request_cache_ = req;
 		break;
 	}

@@ -379,7 +379,7 @@ bool lyxreplace(BufferView * bv,
 		Buffer const & buf = bv->buffer();
 		if (!update) {
 			// emit message signal.
-			buf.message(_("String not found!"));
+			buf.message(_("String not found."));
 		} else {
 			if (replace_count == 0) {
 				buf.message(_("String found."));
@@ -397,7 +397,7 @@ bool lyxreplace(BufferView * bv,
 		if (findOne(bv, search, casesensitive, matchword, forward))
 			update = true;
 		else
-			bv->message(_("String not found!"));
+			bv->message(_("String not found."));
 	}
 	return update;
 }
