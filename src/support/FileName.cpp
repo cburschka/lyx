@@ -437,6 +437,11 @@ FileNameList FileName::dirList(string const & ext) const
 
 static string createTempFile(QString const & mask)
 {
+	// FIXME: This is not safe. QTemporaryFile creates a file in open(),
+	//        but the file is deleted when qt_tmp goes out of scope.
+	//        Therefore the next call to createTempFile() may create the
+	//        same file again. To make this safe the QTemporaryFile object
+	//        needs to be kept for the whole life time of the temp file name.
 	QTemporaryFile qt_tmp(mask);
 	if (qt_tmp.open()) {
 		string const temp_file = fromqstr(qt_tmp.fileName());

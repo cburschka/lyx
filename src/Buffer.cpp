@@ -988,22 +988,24 @@ bool Buffer::readString(string const & s)
 	FileName const fn = FileName::tempName("Buffer_readString");
 
 	int file_format;
-	ReadStatus const ret_plf = parseLyXFormat(lex, fn, file_format);
-	if (ret_plf != ReadSuccess)
-		return ret_plf;
+	bool success = parseLyXFormat(lex, fn, file_format) == ReadSuccess;
 
-	if (file_format != LYX_FORMAT) {
+	if (success && file_format != LYX_FORMAT) {
 		// We need to call lyx2lyx, so write the input to a file
 		ofstream os(fn.toFilesystemEncoding().c_str());
 		os << s;
 		os.close();
 		// lyxvc in readFile
-		return readFile(fn) == ReadSuccess;
+		if (readFile(fn) != ReadSuccess)
+			success = false;
 	}
 
-	if (readDocument(lex))
-		return false;
-	return true;
+	if (success)
+		if (readDocument(lex))
+			success = false;
+	if (fn.exists())
+		fn.removeFile();
+	return success;
 }
 
 
