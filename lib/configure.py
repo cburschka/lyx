@@ -682,7 +682,7 @@ def checkConverterEntries():
     checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'], 
         rc_entry = [ r'\converter knitr      r      "%%"    ""' ])
     #
-    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i',
+    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i -s > $$o',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
         rc_entry = [ r'\converter html       latex      "%%"	""' ])
     #
