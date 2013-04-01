@@ -841,7 +841,16 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 	close_wildcards = 0;
 
 	size_t lead_size = 0;
-	if (!opt.ignoreformat) {
+	if (opt.ignoreformat) {
+                if (!use_regexp) {
+                        // if par_as_string_nolead were emty, 
+                        // the following call to findAux will always *find* the string
+                        // in the checked data, and thus always using the slow
+                        // examining of the current text part.
+                        par_as_string_nolead = par_as_string;
+                }
+        }
+        else {
 		lead_size = identifyLeading(par_as_string);
 		lead_as_string = par_as_string.substr(0, lead_size);
 		par_as_string_nolead = par_as_string.substr(lead_size, par_as_string.size() - lead_size);
