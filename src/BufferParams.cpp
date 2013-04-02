@@ -1763,10 +1763,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
 	lyxpreamble += from_ascii(features.getColorOptions());
 
-	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel before them.
+	// If we use hyperref, jurabib, japanese, varioref or vietnamese,
+	// we have to call babel before
 	if (use_babel
 	    && (features.isRequired("jurabib")
 		|| features.isRequired("hyperref")
+		|| features.isRequired("varioref")
 		|| features.isRequired("vietnamese")
 		|| features.isRequired("japanese"))) {
 			// FIXME UNICODE
@@ -1925,9 +1927,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			+ atlyxpreamble + "\\makeatother\n\n";
 
 	// We try to load babel late, in case it interferes with other packages.
-	// Jurabib and Hyperref have to be called after babel, though.
+	// Jurabib, hyperref and varioref have to be called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")
+		&& !features.isRequired("varioref")
 	    && !features.isRequired("vietnamese")
 	    && !features.isRequired("japanese")) {
 		// FIXME UNICODE
