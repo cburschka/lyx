@@ -214,6 +214,8 @@ What's new
 - Fixed problem when searching with regular expressions and ignore
   format off (bug 8382).
 
+- Cursor moved at proper end of selection before starting Find Advanced operation (fixing issue #8543 for advanced search)
+
 
 * BUILD/INSTALLATION
 
