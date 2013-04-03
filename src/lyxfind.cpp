@@ -1445,6 +1445,14 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 	try {
 		MatchStringAdv matchAdv(bv->buffer(), opt);
+		int length = bv->cursor().selectionEnd().pos() - bv->cursor().selectionBegin().pos();
+		if (length > 0) {
+			LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with length: " << length << " and direction: " << !opt.forward);
+			if (opt.forward)
+				bv->putSelectionAt(bv->cursor().selectionBegin(), length, false);
+			else
+				bv->putSelectionAt(bv->cursor().selectionBegin(), length, true);
+		}
 		findAdvReplace(bv, opt, matchAdv);
 		cur = bv->cursor();
 		if (opt.forward)
