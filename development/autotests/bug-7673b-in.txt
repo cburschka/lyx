@@ -1,0 +1,7 @@
+# based on the steps to reproduce #7673 in the original report
+#
+Lang en_US.utf8
+TestBegin > lyx-log.txt 2>&1
+KK: \Ax
+KK: command-sequence buffer-new; layout Itemize; self-insert a; paragraph-break; depth-increment; self-insert b; up; char-delete-backward; down\[Return]
+TestEnd
