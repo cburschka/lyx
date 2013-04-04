@@ -1,0 +1,7 @@
+# .lyx file is from http://www.lyx.org/trac/ticket/8370#comment:8
+#
+Lang en_US.utf8
+TestBegin ../bug-8370.lyx > lyx-log.txt 2>&1
+KK: \Ax
+KK: command-sequence change-next; change-reject; change-next\[Return]
+TestEnd
