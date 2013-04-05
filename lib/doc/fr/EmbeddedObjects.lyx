@@ -40287,6 +40287,24 @@ filename "DocumentBidon2.lyx"
 
 \end_layout
 
+\begin_layout Standard
+Voici un sous-document
+\emph on
+input
+\emph default
+ comme LaTeX source:
+\end_layout
+
+\begin_layout Quote
+\begin_inset CommandInset include
+LatexCommand input
+filename "DocumentTexteBidon.txt"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 Verbatim Avec cette méthodes tous les fichiers textes peuvent être inclus.
  Si c'est un fichier LyX ou LaTeX, le contenu sera affiché dans la sortie
