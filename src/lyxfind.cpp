@@ -447,13 +447,14 @@ bool findChange(BufferView * bv, bool next)
 	bv->cursor().setCursor(cur);
 	bv->cursor().resetAnchor();
 
+	CursorSlice & tip = cur.top();
+
 	if (!next)
 		// take a step into the change
-		cur.backwardPos();
+		tip.backwardPos();
 
-	Change orig_change = cur.paragraph().lookupChange(cur.pos());
+	Change orig_change = tip.paragraph().lookupChange(tip.pos());
 
-	CursorSlice & tip = cur.top();
 	if (next) {
 		for (; !tip.at_end(); tip.forwardPos()) {
 			Change change = tip.paragraph().lookupChange(tip.pos());
