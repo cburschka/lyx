@@ -1844,15 +1844,20 @@ FileName const GIT::findFile(FileName const & file)
 			file.onlyPath());
 	if (found)
 	{
+		// The output is empty for file names NOT in repo.
 		// The output contains a line starting with "??" for unknown
 		// files, no line for known unmodified files and a line
 		// starting with "M" or something else for modified/deleted
 		// etc. files.
-		ifstream ifs(tmpf.toFilesystemEncoding().c_str());
-		string test;
-		if ((ifs >> test))
-			found = (test != "??");
-		// else is no error
+		if (tmpf.isFileEmpty())
+			found = false;
+		else {
+			ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+			string test;
+			if ((ifs >> test))
+				found = (test != "??");
+			// else is no error
+		}
 	}
 	tmpf.removeFile();
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
