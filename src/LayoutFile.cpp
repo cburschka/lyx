@@ -220,6 +220,8 @@ string layoutpost =
 
 LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 {
+	// FIXME This could be simplified a bit to call TextClass::read(string, ReadType).
+	
 	FileName const tempLayout = FileName::tempName("basic_layout");
 	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
 	// This writes a very basic class, but it also attempts to include 
@@ -249,7 +251,8 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 		     << layoutpost;
 		ofs2.close();
 		if (!tc->load(tempLayout.absFileName())) {
-			// This can only happen if the hardcoded file above is wrong.
+			// This can only happen if the hardcoded file above is wrong
+			// or there is some weird filesystem error.
 			LASSERT(false, /* */);
 		}
 	}
