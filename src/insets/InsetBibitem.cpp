@@ -177,8 +177,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setParam("label", p["label"]);
 		if (p["key"] != old_key) {
 			updateCommand(p["key"]);
-			cur.bv().buffer().changeRefsIfUnique(old_key,
-				params()["key"], CITE_CODE);
+			cur.bv().buffer().changeRefsIfUnique(old_key, params()["key"]);
 			cur.forceBufferUpdate();
 			buffer().invalidateBibinfoCache();
 		}

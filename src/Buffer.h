@@ -591,8 +591,7 @@ public:
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.
-	void changeRefsIfUnique(docstring const & from, docstring const & to,
-		InsetCode code);
+	void changeRefsIfUnique(docstring const & from, docstring const & to);
 
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble

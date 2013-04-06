@@ -3359,12 +3359,9 @@ void Buffer::clearReferenceCache() const
 }
 
 
-void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
-	InsetCode code)
+void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 {
 	//FIXME: This does not work for child documents yet.
-	LASSERT(code == CITE_CODE, /**/);
-
 	reloadBibInfoCache();
 
 	// Check if the label 'from' appears more than once
@@ -3382,14 +3379,12 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 	string const paramName = "key";
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == code) {
-			InsetCommand * inset = it->asInsetCommand();
-			if (!inset)
-				continue;
-			docstring const oldValue = inset->getParam(paramName);
-			if (oldValue == from)
-				inset->setParam(paramName, to);
-		}
+		if (it->lyxCode() != CITE_CODE) 
+			continue;
+		InsetCommand * inset = it->asInsetCommand();
+		docstring const oldValue = inset->getParam(paramName);
+		if (oldValue == from)
+			inset->setParam(paramName, to);
 	}
 }
 
