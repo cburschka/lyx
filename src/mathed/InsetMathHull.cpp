@@ -1240,7 +1240,8 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
 
 void InsetMathHull::write(WriteStream & os) const
 {
-	ModeSpecifier specifier(os, MATH_MODE);
+	ModeSpecifier specifier(os,
+		type_ == hullRegexp ? TEXT_MODE : MATH_MODE);
 	header_write(os);
 	InsetMathGrid::write(os);
 	footer_write(os);
