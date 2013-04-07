@@ -100,7 +100,7 @@ SectionEnd
 
 Section /o "Brezhoneg" SecDBreton 
  StrCpy $DictCodes "br_FR,$DictCodes"
- AddSize 11000
+ AddSize 5510
 SectionEnd
 
 Section /o "Bulgarian" SecDBulgarian
@@ -286,7 +286,7 @@ SectionEnd
 
 Section /o "Korean" SecDKorean
  StrCpy $DictCodes "ko_KR,$DictCodes"
- AddSize 15200
+ AddSize 16540
 SectionEnd
 
 Section /o "Latina" SecDLatin
@@ -304,6 +304,12 @@ Section /o "Latviešu" SecDLatvian
  AddSize 2140
 SectionEnd
 
+# enable this for LyX 2.1!
+#Section /o "Marathi" SecDMarathi
+# StrCpy $DictCodes "mr_IN,$DictCodes"
+# AddSize 5290
+#SectionEnd
+
 Section /o "Nederlands" SecDDutch
  StrCpy $DictCodes "nl_NL,$DictCodes"
  AddSize 1820
@@ -311,12 +317,12 @@ SectionEnd
 
 Section /o "Norsk (Bokmål)" SecDNorwegianNB
  StrCpy $DictCodes "nb_NO,$DictCodes"
- AddSize 4890
+ AddSize 5000
 SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
- AddSize 2890
+ AddSize 2970
 SectionEnd
 
 # enable this for LyX 2.1!
@@ -337,7 +343,7 @@ SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
- AddSize 1460
+ AddSize 1520
 SectionEnd
 
 Section /o "Româna" SecDRomanian
@@ -493,9 +499,9 @@ Section /o "Magyar" SecTHungarian
  AddSize 632
 SectionEnd
 
-Section /o "Norsk" SecTNorwegian
- StrCpy $ThesCodes "no_NO,$ThesCodes"
- AddSize 2470
+Section /o "Norsk (Bokmål)" SecTNorwegianNB
+ StrCpy $ThesCodes "nb_NO,$ThesCodes"
+ AddSize 2540
 SectionEnd
 
 Section /o "Polski" SecTPolish
@@ -505,7 +511,7 @@ SectionEnd
 
 Section /o "Português" SecTPortuguese
  StrCpy $ThesCodes "pt_PT,$ThesCodes"
- AddSize 855
+ AddSize 860
 SectionEnd
 
 Section /o "Româna" SecTRomanian
@@ -1232,12 +1238,12 @@ Function .onInit
    SectionSetFlags ${SecTHungarian} $0
    SectionSetSize ${SecTHungarian} 0
   ${endif}
-  StrCpy $Search "no_NO"
+  StrCpy $Search "nb_NO"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecTNorwegian} $0
-   SectionSetSize ${SecTNorwegian} 0
+   SectionSetFlags ${SecTNorwegianNB} $0
+   SectionSetSize ${SecTNorwegianNB} 0
   ${endif}
   StrCpy $Search "pl_PL"
   Call StrPoint
