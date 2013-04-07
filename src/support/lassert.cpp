@@ -11,7 +11,12 @@
 
 #include <config.h>
 
+#include "support/convert.h"
 #include "support/debug.h"
+#include "support/docstring.h"
+#include "support/ExceptionMessage.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <boost/assert.hpp>
 
@@ -28,13 +33,57 @@
 
 namespace lyx {
 
-void doAssert(char const * expr,  char const * file, long line)
-{
-    // TODO Should we try to print the call stack before exiting?
+using namespace std;
+using namespace support;
 
+// TODO Should we try to print the call stack in the course of these?
+
+void doAssert(char const * expr, char const * file, long line)
+{
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
 	BOOST_ASSERT(false);
+}
+
+
+docstring formatHelper(docstring const & msg,
+	char const * expr, char const * file, long line)
+{
+	static const docstring d = 
+		from_ascii(N_("Assertion %1$s violated in\nfile: %2$s, line: %3$s"));
+	
+	return bformat(d, from_ascii(expr), from_ascii(file), 
+		convert<docstring>(line)) + '\n' + msg;
+}
+
+
+void doWarnIf(char const * expr, docstring const & msg, char const * file, long line)
+{
+	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	// comment this out if not needed
+	BOOST_ASSERT(false);
+	throw ExceptionMessage(WarningException, _("Warning!"), 
+		formatHelper(msg, expr, file, line));
+}
+
+
+void doBufErr(char const * expr, docstring const & msg, char const * file, long line)
+{
+	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	// comment this out if not needed
+	BOOST_ASSERT(false);
+	throw ExceptionMessage(BufferException, _("Buffer Error!"),
+		formatHelper(msg, expr, file, line));
+}
+
+
+void doAppErr(char const * expr, docstring const & msg, char const * file, long line)
+{
+	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	// comment this out if not needed
+	BOOST_ASSERT(false);
+	throw ExceptionMessage(ErrorException, _("Fatal Exception!"),
+		formatHelper(msg, expr, file, line));
 }
 
 
