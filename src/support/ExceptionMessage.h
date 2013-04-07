@@ -22,6 +22,22 @@
 namespace lyx {
 namespace support {
 
+/// LyX support three types of custom exceptions. In order of
+/// increasing seriousness, these are:
+///
+/// WarningException
+///   Intended for unexpected situations that we do not expect
+///   to compromise further operation. It has the effect of 
+///   aborting whatever operation in in process.
+///
+/// BufferException
+///   Intended for situations that indicate some problem with a
+///   Buffer or its related data structures. The Buffer will be
+///   closed, in emergency style.
+///
+/// ErrorException
+///   Intended for situations that indicate a global problem 
+///   with the program. It will lead to an emergency shutdown.
 
 enum ExceptionType {
 	ErrorException,
