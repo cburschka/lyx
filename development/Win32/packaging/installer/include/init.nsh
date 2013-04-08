@@ -381,9 +381,14 @@ Section /o "Slovenský" SecDSlovakian
  AddSize 3310
 SectionEnd
 
-Section /o "Srpski" SecDSerbian
+Section /o "Srpski (Cirilica)" SecDSerbianC
  StrCpy $DictCodes "sr_RS,$DictCodes"
- AddSize 3460
+ AddSize 3560
+SectionEnd
+
+Section /o "Srpski (Latinica)" SecDSerbianL
+ StrCpy $DictCodes "sr_RS-Latin,$DictCodes"
+ AddSize 2000
 SectionEnd
 
 Section /o "Svenska" SecDSwedish
@@ -1081,8 +1086,15 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecDSerbian} $0
-   SectionSetSize ${SecDSerbian} 0
+   SectionSetFlags ${SecDSerbianC} $0
+   SectionSetSize ${SecDSerbianC} 0
+  ${endif}
+  StrCpy $Search "sr_RS-Latin"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDSerbianL} $0
+   SectionSetSize ${SecDSerbianL} 0
   ${endif}
   StrCpy $Search "sv_SE"
   Call StrPoint
