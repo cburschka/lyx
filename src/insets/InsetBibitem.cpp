@@ -217,7 +217,7 @@ docstring InsetBibitem::screenLabel() const
 
 
 int InsetBibitem::plaintext(odocstringstream & os,
-        OutputParams const &, int) const
+        OutputParams const &, size_t) const
 {
 	odocstringstream oss;
 	oss << '[' << bibLabel() << "] ";
