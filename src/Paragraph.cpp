@@ -1045,7 +1045,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	Inset * inset = owner_->getInset(i);
 	LASSERT(inset, /**/);
 
-	if (style.pass_thru && inset->lyxCode() != ARG_CODE) {
+	if (style.pass_thru) {
 		odocstringstream ods;
 		inset->plaintext(ods, runparams);
 		os << ods.str();
