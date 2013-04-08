@@ -1545,7 +1545,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
 {
 	LASSERT(text_ == cur.text(), /**/);
-	pit_type pit = getPitNearY(y);
+	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return);
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
