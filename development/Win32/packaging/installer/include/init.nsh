@@ -276,7 +276,7 @@ SectionEnd
 
 Section /o "Italiano" SecDItalian
  StrCpy $DictCodes "it_IT,$DictCodes"
- AddSize 1300
+ AddSize 1340
 SectionEnd
 
 Section /o "Kazakh" SecDKazakh
@@ -291,7 +291,7 @@ SectionEnd
 
 Section /o "Latina" SecDLatin
  StrCpy $DictCodes "la_LA,$DictCodes"
- AddSize 1250
+ AddSize 2040
 SectionEnd
 
 Section /o "Lietuviu" SecDLithuanian
@@ -343,12 +343,12 @@ SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
- AddSize 1520
+ AddSize 1530
 SectionEnd
 
 Section /o "Româna" SecDRomanian
  StrCpy $DictCodes "ro_RO,$DictCodes"
- AddSize 1930
+ AddSize 2200
 SectionEnd
 
 Section /o "Russian" SecDRussian
@@ -378,7 +378,7 @@ SectionEnd
 
 Section /o "Slovenský" SecDSlovakian
  StrCpy $DictCodes "sk_SK,$DictCodes"
- AddSize 4090
+ AddSize 3310
 SectionEnd
 
 Section /o "Srpski" SecDSerbian
@@ -491,7 +491,7 @@ SectionEnd
 
 Section /o "Italiano" SecTItalian
  StrCpy $ThesCodes "it_IT,$ThesCodes"
- AddSize 2640
+ AddSize 2520
 SectionEnd
 
 Section /o "Magyar" SecTHungarian
@@ -516,7 +516,7 @@ SectionEnd
 
 Section /o "Româna" SecTRomanian
  StrCpy $ThesCodes "ro_RO,$ThesCodes"
- AddSize 3640
+ AddSize 3650
 SectionEnd
 
 Section /o "Russian" SecTRussian
@@ -531,7 +531,7 @@ SectionEnd
 
 Section /o "Slovenský" SecTSlovakian
  StrCpy $ThesCodes "sk_SK,$ThesCodes"
- AddSize 907
+ AddSize 930
 SectionEnd
 
 Section /o "Svenska" SecTSwedish
