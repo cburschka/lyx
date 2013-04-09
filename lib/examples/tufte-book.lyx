@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 469
 \begin_document
 \begin_header
 \textclass tufte-book
@@ -12,15 +12,15 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -38,15 +38,24 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type numerical
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \index Index
@@ -87,6 +96,17 @@ fpl
  If you are using MiKTeX, you will automatically be asked to install this
  package when previewing your file, if you are using TeXLive, use TeXLive's
  package manager.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note 2
+\series default
+: If you wish to compile to PDF with plain LaTeX (instead of pdfTeX), there
+ is currently a bug in the Tufte class that causes errors.
+ You can add the class option 'nols' to get rid of the errors, but this
+ also removes letterspacing, an important part of the Tufte design.
 \end_layout
 
 \end_inset
@@ -348,7 +368,7 @@ Imagine your favorite figure inside this box instead of this boring text.
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 An ordinary figure float.
@@ -414,7 +434,7 @@ Imagine your favorite photograph of a squirrel inside this box instead of
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 A margin figure.
@@ -542,7 +562,7 @@ Imagine your favorite photograph of a squirrel inside this box instead of
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 A full-width figure.
@@ -889,7 +909,7 @@ I had a graph of the square root function here.
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -943,7 +963,7 @@ Here I rotated the square root function and then drew a disk on the figure
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -1254,7 +1274,7 @@ Here I used RLPlot to draw the square root function and the quadratic function.
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 The functions 
@@ -1363,7 +1383,7 @@ This was the rotated set of 2 functions.
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 The cup with a quadratic hole drilled down its length
