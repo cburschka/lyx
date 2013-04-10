@@ -3247,7 +3247,7 @@ msgstr "Štandardne &ukladať dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
-msgstr "#Okien && pracovná plocha"
+msgstr "Okná && pracovná plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
 msgid "Open documents in &tabs"
@@ -12084,11 +12084,11 @@ msgstr "Zosivelé"
 
 #: lib/ui/stdcontext.inc:182
 msgid "Open All Notes|A"
-msgstr "Otvor všetky poznámky|p"
+msgstr "Otvoriť všetky poznámky|p"
 
 #: lib/ui/stdcontext.inc:183
 msgid "Close All Notes|l"
-msgstr "Zavri všetky poznámky|o"
+msgstr "Zavrieť všetky poznámky|o"
 
 #: lib/ui/stdcontext.inc:191 lib/ui/stdmenus.inc:485
 msgid "Phantom|P"
@@ -13073,11 +13073,11 @@ msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
 #: lib/ui/stdmenus.inc:314
 msgid "Open All Insets|O"
-msgstr "Otvor všetky vložky"
+msgstr "Otvoriť všetky vložky"
 
 #: lib/ui/stdmenus.inc:315
 msgid "Close All Insets|C"
-msgstr "Zavri všetky vložky"
+msgstr "Zavrieť všetky vložky"
 
 #: lib/ui/stdmenus.inc:317
 msgid "Unfold Math Macro|n"
@@ -13621,7 +13621,7 @@ msgstr "Vložiť tabuľku"
 
 #: lib/ui/stdtoolbars.inc:95
 msgid "Toggle outline"
-msgstr "Prepnúť prehľad"
+msgstr "Prepnúť osnovu"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
@@ -17333,9 +17333,9 @@ msgstr ""
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3887
+#: src/Buffer.cpp:3909
 msgid "Document was NOT successfully recovered."
-msgstr "Dokument nebol úspešne obnovený."
+msgstr "Dokument NEBOL úspešne obnovený."
 
 #: src/Buffer.cpp:3888
 #, c-format
@@ -22188,7 +22188,7 @@ msgstr "Nedostupný tezaurus pre tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Prehľad"
+msgstr "Osnova"
 
 #: src/frontends/qt4/GuiToolbar.cpp:377 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
@@ -22761,7 +22761,7 @@ msgstr "Žiadna citácia nablízku!"
 
 #: src/frontends/qt4/Menus.cpp:2093
 msgid "No Action Defined!"
-msgstr "Žiadna akcia nebola definovaná!"
+msgstr "Nijaká akcia nebola definovaná!"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -23272,7 +23272,7 @@ msgid ""
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-"Upozornenie: Možné, že LaTeXov export nie je úplný."
+"Upozornenie: LaTeXov export asi nie je úplný."
 
 #: src/insets/InsetInclude.cpp:691 src/insets/InsetInclude.cpp:714
 msgid "Export failure"
@@ -23897,7 +23897,7 @@ msgstr "Neplatný regulárny výraz!"
 
 #: src/lyxfind.cpp:1437
 msgid "Match not found!"
-msgstr "Vhodný výraz nebol nájdený!"
+msgstr "Vhodný výraz nenájdený!"
 
 #: src/lyxfind.cpp:1441
 msgid "Match found!"
@@ -24056,7 +24056,7 @@ msgstr "sk"
 
 #: src/support/Package.cpp:444
 msgid "LyX binary not found"
-msgstr "Spustiteľný súbor LyX nebol nájdený"
+msgstr "Spustiteľný súbor LyX nenájdený"
 
 #: src/support/Package.cpp:445
 #, c-format
