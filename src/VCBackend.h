@@ -33,9 +33,6 @@ public:
 		UNLOCKED,
 		LOCKED,
 		NOLOCKING,
-		/// This file is not in version control, but it could be aded
-		/// (because the path is under version control)
-		UNVERSIONED,
 	};
 
 	VCS(Buffer * b) : owner_(b) {}

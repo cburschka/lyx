@@ -68,7 +68,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path, bool reportError
 bool VCS::makeRCSRevision(string const &version, string &revis) const
 {
 	string rev = revis;
-	
+
 	if (isStrInt(rev)) {
 		int back = convert<int>(rev);
 		// if positive use as the last number in the whole revision string
@@ -124,6 +124,8 @@ bool VCS::checkparentdirs(FileName const & file, std::string const & pathname)
 
 RCS::RCS(FileName const & m, Buffer * b) : VCS(b)
 {
+	// Here we know that the buffer file is either already in RCS or
+	// about to be registered
 	master_ = m;
 	scanMaster();
 }
@@ -404,7 +406,7 @@ bool RCS::toggleReadOnlyEnabled()
 	// This got broken somewhere along lfuns dispatch reorganization.
 	// reloadBuffer would be needed after this, but thats problematic
 	// since we are inside Buffer::dispatch.
-	// return return status() != UNVERSIONED;
+	// return true;
 	return false;
 }
 
@@ -513,6 +515,8 @@ bool RCS::prepareFileRevisionEnabled()
 
 CVS::CVS(FileName const & m, Buffer * b) : VCS(b)
 {
+	// Here we know that the buffer file is either already in CVS or
+	// about to be registered
 	master_ = m;
 	have_rev_info_ = false;
 	scanMaster();
@@ -553,7 +557,6 @@ void CVS::scanMaster()
 	LYXERR(Debug::LYXVC, "\tlooking for `" << tmpf << '\'');
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
-	vcstatus = UNVERSIONED;
 	while (getline(ifs, line)) {
 		LYXERR(Debug::LYXVC, "\t  line: " << line);
 		if (contains(line, tmpf)) {
@@ -1139,6 +1142,8 @@ bool CVS::prepareFileRevisionEnabled()
 
 SVN::SVN(FileName const & m, Buffer * b) : VCS(b)
 {
+	// Here we know that the buffer file is either already in SVN or
+	// about to be registered
 	master_ = m;
 	locked_mode_ = 0;
 	scanMaster();
@@ -1173,19 +1178,14 @@ FileName const SVN::findFile(FileName const & file)
 
 void SVN::scanMaster()
 {
-	// vcstatus code other than UNVERSIONED is somewhat superflous,
+	// vcstatus code is somewhat superflous,
 	// until we want to implement read-only toggle for svn.
-	FileName f = findFile(owner_->fileName());
-	if (f.empty()) {
-		vcstatus = UNVERSIONED;
-	} else {
-		vcstatus = NOLOCKING;
-		if (checkLockMode()) {
-			if (isLocked())
-				vcstatus = LOCKED;
-			else
-				vcstatus = UNLOCKED;
-		}
+	vcstatus = NOLOCKING;
+	if (checkLockMode()) {
+		if (isLocked())
+			vcstatus = LOCKED;
+		else
+			vcstatus = UNLOCKED;
 	}
 }
 
@@ -1813,6 +1813,8 @@ bool SVN::toggleReadOnlyEnabled()
 
 GIT::GIT(FileName const & m, Buffer * b) : VCS(b)
 {
+	// Here we know that the buffer file is either already in GIT or
+	// about to be registered
 	master_ = m;
 	scanMaster();
 }
@@ -1867,13 +1869,9 @@ FileName const GIT::findFile(FileName const & file)
 
 void GIT::scanMaster()
 {
-	// vcstatus code other than UNVERSIONED is somewhat superflous,
+	// vcstatus code is somewhat superflous,
 	// until we want to implement read-only toggle for git.
-	FileName f = findFile(owner_->fileName());
-	if (f.empty())
-		vcstatus = UNVERSIONED;
-	else
-		vcstatus = NOLOCKING;
+	vcstatus = NOLOCKING;
 }
 
 

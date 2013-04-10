@@ -327,7 +327,6 @@ string LyXVC::toggleReadOnly()
 		return log;
 	}
 	case VCS::NOLOCKING:
-	case VCS::UNVERSIONED:
 		break;
 	}
 	return string();
@@ -337,7 +336,7 @@ string LyXVC::toggleReadOnly()
 bool LyXVC::inUse() const
 {
 	if (vcs)
-		return vcs->status() != VCS::UNVERSIONED;
+		return true;
 	return false;
 }
 
