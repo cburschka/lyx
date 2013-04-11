@@ -759,7 +759,7 @@ def checkConverterEntries():
     checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
     # Do not define a converter to pdf6, ps is a pure export format 
-    checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
+    checkProg('a PS to PDF converter', ['ps2pdf $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
     #
     checkProg('a PS to TXT converter', ['pstotext $$i > $$o'],
