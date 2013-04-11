@@ -961,7 +961,8 @@ def checkDocBook():
     path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook), db2x scripts or xsltproc', ['sgmltools', 'db2dvi', 'xsltproc'],
         rc_entry = [
             r'''\converter docbook    dvi        "sgmltools -b dvi $$i"	""
-\converter docbook    html       "sgmltools -b html $$i"	""''',
+\converter docbook    html       "sgmltools -b html $$i"	""
+\converter docbook    ps         "sgmltools -b ps $$i"	""''',
             r'''\converter docbook    dvi        "db2dvi $$i"	""
 \converter docbook    html       "db2html $$i"	""''',
             r'''\converter docbook    dvi        ""	""
