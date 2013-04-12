@@ -253,12 +253,11 @@ string guessFormatFromContents(FileName const & fn)
 	string str;
 	string format;
 	bool firstLine = true;
+	bool backslash = false;
+	int dollars = 0;
 	while ((count++ < max_count) && format.empty()) {
-		if (ifs.eof()) {
-			LYXERR(Debug::GRAPHICS, "filetools(getFormatFromContents)\n"
-				<< "\tFile type not recognised before EOF!");
+		if (ifs.eof())
 			break;
-		}
 
 		getline(ifs, str);
 		string const stamp = str.substr(0, 2);
@@ -363,9 +362,32 @@ string guessFormatFromContents(FileName const & fn)
 
 		else if (contains(str, "BITPIX"))
 			format = "fits";
+
+		else if (contains(str, "\\documentclass") ||
+		         contains(str, "\\chapter") ||
+		         contains(str, "\\section") ||
+		         contains(str, "\\begin") ||
+		         contains(str, "\\end") ||
+		         contains(str, "$$") ||
+		         contains(str, "\\[") ||
+		         contains(str, "\\]"))
+			format = "latex";
+		else {
+			if (contains(str, '\\'))
+				backslash = true;
+			dollars += count_char(str, '$');
+		}
 	}
 
-	if (!format.empty()) {
+	if (format.empty() && backslash && dollars > 1)
+		// inline equation
+		format = "latex";
+
+	if (format.empty()) {
+		if (ifs.eof())
+			LYXERR(Debug::GRAPHICS, "filetools(getFormatFromContents)\n"
+			       "\tFile type not recognised before EOF!");
+	} else {
 		LYXERR(Debug::GRAPHICS, "Recognised Fileformat: " << format);
 		return format;
 	}

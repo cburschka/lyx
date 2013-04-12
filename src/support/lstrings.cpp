@@ -882,6 +882,18 @@ docstring const subst(docstring const & a,
 }
 
 
+int count_char(string const & str, char chr)
+{
+	int count = 0;
+	string::const_iterator lit = str.begin();
+	string::const_iterator end = str.end();
+	for (; lit != end; ++lit)
+		if ((*lit) == chr)
+			count++;
+	return count;
+}
+
+
 /// Count all occurences of char \a chr inside \a str
 int count_char(docstring const & str, docstring::value_type chr)
 {

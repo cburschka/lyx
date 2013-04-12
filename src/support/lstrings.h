@@ -189,6 +189,9 @@ docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr);
 
 /// Count all occurences of char \a chr inside \a str
+int count_char(std::string const & str, char chr);
+
+/// Count all occurences of char \a chr inside \a str
 int count_char(docstring const & str, docstring::value_type chr);
 
 /** Trims characters off the end and beginning of a string.
