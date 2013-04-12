@@ -1255,11 +1255,6 @@ bool Buffer::save() const
 
 bool Buffer::writeFile(FileName const & fname) const
 {
-	// FIXME Do we need to do these here? I don't think writing
-	// the LyX file depends upon it. (RGH)
-	// updateBuffer();
-	// updateMacroInstances();
-
 	if (d->read_only && fname == d->filename)
 		return false;
 
