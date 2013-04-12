@@ -296,9 +296,9 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		return FileName();
 	// data from ourself or some other LyX instance
 	QByteArray const ar = cache_.data(mime);
-	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.data()
+	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.constData()
 	       << "length = " << ar.count());
-	
+
 	QFile f(toqstr(filename.absFileName()));
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
 		LYXERR(Debug::ACTION, "Error opening file "
@@ -341,10 +341,10 @@ docstring const GuiClipboard::getAsText() const
 }
 
 
-void GuiClipboard::put(string const & lyx, docstring const & text)
+void GuiClipboard::put(string const & lyx, docstring const & html, docstring const & text)
 {
 	LYXERR(Debug::ACTION, "GuiClipboard::put(`" << lyx << "' `"
-			      << to_utf8(text) << "')");
+			      << to_utf8(html) << "' `" << to_utf8(text) << "')");
 	// We don't convert the encoding of lyx since the encoding of the
 	// clipboard contents is specified in the data itself
 	QMimeData * data = new QMimeData;
@@ -363,6 +363,8 @@ void GuiClipboard::put(string const & lyx, docstring const & text)
 	// clipboard.
 	QString const qtext = toqstr(text);
 	data->setText(qtext);
+	QString const qhtml = toqstr(html);
+	data->setHtml(qhtml);
 	qApp->clipboard()->setMimeData(data, QClipboard::Clipboard);
 }
 
@@ -470,7 +472,7 @@ void GuiClipboard::on_dataChanged()
 	LYXERR(Debug::ACTION, "Qt Clipboard changed. We found the following mime types:");
 	for (int i = 0; i < l.count(); i++)
 		LYXERR(Debug::ACTION, l.value(i));
-	
+
 	text_clipboard_empty_ = qApp->clipboard()->
 		text(QClipboard::Clipboard).isEmpty();
 

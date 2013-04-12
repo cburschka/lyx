@@ -70,7 +70,7 @@ public:
 	std::string const getAsLyX() const;
 	FileName getAsGraphics(Cursor const & cur, GraphicsType type) const;
 	docstring const getAsText() const;
-	void put(std::string const & lyx, docstring const & text);
+	void put(std::string const & lyx, docstring const & html, docstring const & text);
 	bool hasLyXContents() const;
 	bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const;
 	bool hasTextContents() const;

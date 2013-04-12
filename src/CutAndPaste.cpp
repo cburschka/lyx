@@ -23,6 +23,7 @@
 #include "BufferView.h"
 #include "Changes.h"
 #include "Cursor.h"
+#include "Encoding.h"
 #include "ErrorList.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
@@ -474,11 +475,14 @@ void putClipboard(ParagraphList const & paragraphs,
 	buffer->paragraphs() = paragraphs;
 	buffer->inset().setBuffer(*buffer);
 	buffer->params().setDocumentClass(docclass);
-	ostringstream lyx;
-	if (buffer->write(lyx))
-		theClipboard().put(lyx.str(), plaintext);
-	else
-		theClipboard().put(string(), plaintext);
+	string lyx;
+	ostringstream oslyx;
+	if (buffer->write(oslyx))
+		lyx = oslyx.str();
+	odocstringstream oshtml;
+	OutputParams runparams(encodings.fromLyXName("utf8"));
+	buffer->writeLyXHTMLSource(oshtml, runparams, Buffer::FullSource);
+	theClipboard().put(lyx, oshtml.str(), plaintext);
 	// Save that memory
 	buffer->paragraphs().clear();
 }

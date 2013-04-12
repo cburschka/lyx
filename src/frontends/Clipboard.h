@@ -55,7 +55,7 @@ public:
 	virtual docstring const getAsText() const = 0;
 	/// Get the contents of the window system clipboard as graphics file.
 	virtual FileName getAsGraphics(Cursor const & cur, GraphicsType type) const = 0;
-	
+
 	/**
 	 * Fill the system clipboard. The format of \p lyx is as written in
 	 * .lyx files, the format of \p text is plain text.
@@ -65,7 +65,7 @@ public:
 	 * This should be called when the user requests to cut or copy to
 	 * the clipboard.
 	 */
-	virtual void put(std::string const & lyx, docstring const & text) = 0;
+	virtual void put(std::string const & lyx, docstring const & html, docstring const & text) = 0;
 
 	/// Does the clipboard contain LyX contents?
 	virtual bool hasLyXContents() const = 0;
