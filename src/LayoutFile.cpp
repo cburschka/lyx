@@ -273,62 +273,62 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	string fullName = addName(path, textclass + ".layout");
 	
 	FileName const layout_file(fullName);
-	if (layout_file.exists()) {
-		LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
-		// Read .layout file and get description, real latex classname etc
-		//
-		// This is a C++ version of function processLayoutFile in configure.py,
-		// which uses the following regex
-		//     \Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
-		ifstream ifs(layout_file.toFilesystemEncoding().c_str());
-		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
-			"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
-		static regex const catreg("^#\\s*\\\\DeclareCategory\\{(.*)\\}");
-		string line;
-		string class_name;
-		string class_prereq;
-		string category;
-		bool have_declaration = false;
-		while (getline(ifs, line)) {
-			// look for the \DeclareXXXClass line
-			smatch sub;
-			if (regex_match(line, sub, reg)) {
-				// returns: whole string, classtype (not used here), class name, description
-				LASSERT(sub.size() == 4, /**/);
-				// now, create a TextClass with description containing path information
-				class_name = (sub.str(2) == "" ? textclass : sub.str(2));
-				class_prereq = class_name + ".cls";
-				have_declaration = true;
-			}
-			else if (regex_match(line, sub, catreg)) {
-				category = sub.str(1);
-			}
-			if (have_declaration && !category.empty())
-				break;
+	if (!layout_file.exists())
+		return string();
+
+	LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
+	// Read .layout file and get description, real latex classname etc
+	//
+	// This is a C++ version of function processLayoutFile in configure.py,
+	// which uses the following regex
+	//     \Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
+	ifstream ifs(layout_file.toFilesystemEncoding().c_str());
+	static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
+		"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
+	static regex const catreg("^#\\s*\\\\DeclareCategory\\{(.*)\\}");
+	string line;
+	string class_name;
+	string class_prereq;
+	string category;
+	bool have_declaration = false;
+	while (getline(ifs, line)) {
+		// look for the \DeclareXXXClass line
+		smatch sub;
+		if (regex_match(line, sub, reg)) {
+			// returns: whole string, classtype (not used here), class name, description
+			LASSERT(sub.size() == 4, /**/);
+			// now, create a TextClass with description containing path information
+			class_name = (sub.str(2) == "" ? textclass : sub.str(2));
+			class_prereq = class_name + ".cls";
+			have_declaration = true;
 		}
-		if (have_declaration) {
-			LayoutFile * tmpl = 
-				new LayoutFile(textclass, class_name, textclass, class_prereq, category, true);
-			//FIXME: The prerequisites are available from the layout file and
-			//       can be extracted from the above regex, but for now this
-			//       field is simply set to class_name + ".cls"
-			// This textclass is added on request so it will definitely be
-			// used. Load it now because other load() calls may fail if they
-			// are called in a context without buffer path information.
-			tmpl->load(path);
-			// There will be only one textclass with this name, even if different
-			// layout files are loaded from different directories.
-			if (haveClass(textclass)) {
-				LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
-				delete classmap_[textclass];
-			}
-			classmap_[textclass] = tmpl;
-			return textclass;
+		else if (regex_match(line, sub, catreg)) {
+			category = sub.str(1);
 		}
+		if (have_declaration && !category.empty())
+			break;
 	}
-	// If .layout is not in local directory, or an invalid layout
-	// is found, return null
-	return string();
+
+	if (!have_declaration)
+		return string();
+
+	LayoutFile * tmpl =
+		new LayoutFile(textclass, class_name, textclass, class_prereq, category, true);
+	//FIXME: The prerequisites are available from the layout file and
+	//       can be extracted from the above regex, but for now this
+	//       field is simply set to class_name + ".cls"
+	// This textclass is added on request so it will definitely be
+	// used. Load it now because other load() calls may fail if they
+	// are called in a context without buffer path information.
+	tmpl->load(path);
+	// There will be only one textclass with this name, even if different
+	// layout files are loaded from different directories.
+	if (haveClass(textclass)) {
+		LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
+		delete classmap_[textclass];
+	}
+	classmap_[textclass] = tmpl;
+	return textclass;
 }
 
 
