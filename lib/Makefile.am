@@ -2043,6 +2043,7 @@ dist_scripts_DATA += \
 	scripts/fig2pdftex.py \
 	scripts/fig2pstex.py \
 	scripts/fig_copy.py \
+	scripts/html2latexwrapper.py \
 	scripts/include_bib.py \
 	scripts/layout2layout.py \
 	scripts/legacy_lyxpreview2ppm.py \

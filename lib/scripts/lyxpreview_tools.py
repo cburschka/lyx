@@ -116,14 +116,21 @@ def find_exe_or_terminate(candidates):
     return exe
 
 
-def run_command_popen(cmd):
+def run_command_popen(cmd, stderr2stdout):
     if os.name == 'nt':
         unix = False
     else:
         unix = True
-    pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
-        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
-    cmd_stdout = pipe.communicate()[0]
+    if stderr2stdout:
+        pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+        cmd_stdout = pipe.communicate()[0]
+    else:
+        pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
+            stdout=subprocess.PIPE, universal_newlines=True)
+        (cmd_stdout, cmd_stderr) = pipe.communicate()
+        if cmd_stderr:
+            sys.stderr.write(cmd_stderr)
     cmd_status = pipe.returncode
 
     global debug
@@ -182,12 +189,12 @@ def run_command_win32(cmd):
     return 0, data
 
 
-def run_command(cmd):
+def run_command(cmd, stderr2stdout = True):
     progress("Running %s" % cmd)
     if use_win32_modules:
         return run_command_win32(cmd)
     else:
-        return run_command_popen(cmd)
+        return run_command_popen(cmd, stderr2stdout)
 
 
 def get_version_info():

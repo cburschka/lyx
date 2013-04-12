@@ -679,12 +679,15 @@ def checkConverterEntries():
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
-    checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'], 
+    checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'],
         rc_entry = [ r'\converter knitr      r      "%%"    ""' ])
     #
-    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex -s $$i > $$o',
+    checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
-        rc_entry = [ r'\converter html       latex      "%%"	""' ])
+        rc_entry = [ r'\converter html       latex      "%%"	""', \
+                     r'\converter html       latex      "python -tt $$s/scripts/html2latexwrapper.py %% $$i $$o"	""', \
+                     r'\converter html       latex      "%%"	""', \
+                     r'\converter html       latex      "%%"	""', '' ])
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
@@ -801,14 +804,13 @@ def checkConverterEntries():
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #
     checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
-        rc_entry = [ r'\converter tiff       eps        "%%"	""', ''])
+        rc_entry = [ r'\converter tiff       eps        "%%"	""'])
     #
     checkProg('a TGIF -> EPS/PPM converter', ['tgif'],
         rc_entry = [
             r'''\converter tgif       eps        "tgif -print -color -eps -stdout $$i > $$o"	""
 \converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
-\converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""''',
-            ''])
+\converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""'''])
     #
     checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
         rc_entry = [ r'\converter wmf        eps        "%%"	""'])
@@ -817,10 +819,10 @@ def checkConverterEntries():
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
     # Only define a converter to pdf6 for graphics
     checkProg('an EPS -> PDF converter', ['epstopdf'],
-        rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""', ''])
+        rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
     checkProg('an EPS -> PNG converter', ['convert $$i $$o'],
-        rc_entry = [ r'\converter eps        png        "%%"	""', ''])
+        rc_entry = [ r'\converter eps        png        "%%"	""'])
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
@@ -831,14 +833,12 @@ def checkConverterEntries():
             r'''\converter agr        eps        "gracebat -hardcopy -printfile $$o -hdevice EPS $$i 2>/dev/null"	""
 \converter agr        png        "gracebat -hardcopy -printfile $$o -hdevice PNG $$i 2>/dev/null"	""
 \converter agr        jpg        "gracebat -hardcopy -printfile $$o -hdevice JPEG $$i 2>/dev/null"	""
-\converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""''',
-            ''])
+\converter agr        ppm        "gracebat -hardcopy -printfile $$o -hdevice PNM $$i 2>/dev/null"	""'''])
     #
     checkProg('a Dot -> Image converter', ['dot'],
         rc_entry = [
             r'''\converter dot        eps        "dot -Teps $$i -o $$o"	""
-\converter dot        png        "dot -Tpng $$i -o $$o"	""''',
-            ''])
+\converter dot        png        "dot -Tpng $$i -o $$o"	""'''])
     #
     checkProg('a Dia -> PNG converter', ['dia -e $$o -t png $$i'],
         rc_entry = [ r'\converter dia        png        "%%"	""'])
@@ -866,8 +866,7 @@ def checkConverterEntries():
     checkProg('a spreadsheet -> latex converter', ['ssconvert'],
        rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
 \converter oocalc latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
-\converter excel  latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""''',
-''])
+\converter excel  latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""'''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
@@ -918,7 +917,7 @@ def checkConverterEntries():
             logger.info('+  found LilyPond-book, but could not extract version number.')
     #
     checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
-        rc_entry = [ r'\converter noteedit   lilypond   "%%"	""', ''])
+        rc_entry = [ r'\converter noteedit   lilypond   "%%"	""' ])
     #
     # Currently, lyxpak outputs a gzip compressed tar archive on *nix
     # and a zip archive on Windows.
