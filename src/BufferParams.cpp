@@ -598,8 +598,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
-		if (tcp.empty() && !filepath.empty())
+		if (!filepath.empty())
 			tcp = bcl.addLocalLayout(classname, filepath.absFileName());
+		// that returns non-empty if a "local" layout file is found.
 		if (!tcp.empty())
 			setBaseClass(tcp);
 		else
