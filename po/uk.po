@@ -2,13 +2,13 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-03-27 16:08-0400\n"
-"PO-Revision-Date: 2012-10-10 19:33+0300\n"
+"PO-Revision-Date: 2013-04-12 11:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -6629,34 +6629,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Автори"
+msgstr "Автори 5"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Автори"
+msgstr "Автори 6"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
 msgstr "Ліва шапка"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
 msgstr "Ліва шапка:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Місце роботи"
+msgstr "Місце роботи 5"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Місце роботи"
+msgstr "Місце роботи 6"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6692,14 +6686,12 @@ msgid "Keywords:"
 msgstr "Ключові слова:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "Автор"
+msgstr "ПриміткаАвтора"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
-msgstr "Примітка про автора:"
+msgstr "Примітка щодо автора:"
 
 #: lib/layouts/apa6.layout:305 lib/layouts/egs.layout:335
 msgid "Journal"
@@ -6707,9 +6699,8 @@ msgstr "Журнал"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "Лише преамбула"
+msgstr "Вступ"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -9003,9 +8994,8 @@ msgid "Legend"
 msgstr "Легенда"
 
 #: lib/layouts/moderncv.layout:35
-#, fuzzy
 msgid "Sectioning"
-msgstr "Розділ"
+msgstr "Розділи"
 
 #: lib/layouts/moderncv.layout:68
 msgid "Entry"
@@ -10931,6 +10921,10 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
+"За допомогою цього модуля реалізовано підтримку використання natbib разом з "
+"apacite (стилем бібліографії не обов’язково має бути apacite — ним може бути "
+"apacite, apacitex або будь-який стиль бібліографії, який можна "
+"використовувати разом з пакунками natbib і apacite)."
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -13583,14 +13577,12 @@ msgid "Feynman-diagram Manual|F"
 msgstr "Підручник з діаграм Фейнмана|Ф"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Knitr Manual|K"
-msgstr "Лінгвістичні підручники|Л"
+msgstr "Підручник з Knitr|K"
 
 #: lib/ui/stdmenus.inc:588
-#, fuzzy
 msgid "LilyPond Manual|P"
-msgstr "Музика LilyPond"
+msgstr "Підручник з LilyPond|P"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Linguistics Manual|L"
@@ -13898,7 +13890,7 @@ msgstr "Математика"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Set display mode"
-msgstr "Перемкнутися між виокремлюваним режимом і режимом в рядку"
+msgstr "Перемкнутися між виокремлюваним режимом і режимом у рядку"
 
 #: lib/ui/stdtoolbars.inc:174 src/insets/InsetScript.cpp:63
 msgid "Subscript"
@@ -21889,9 +21881,7 @@ msgstr "Помилка -> Не вдалося завантажити файл!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
-"Перевірку правопису у позначеному фрагменті тексту завершено. Помилок не "
-"знайдено."
+msgstr "Перевірку правопису виконано, не знайдено жодних помилок."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
