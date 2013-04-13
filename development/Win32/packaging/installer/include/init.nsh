@@ -228,6 +228,11 @@ Section "Français" SecDFrench
  AddSize 1200
 SectionEnd
 
+Section "Français (Canada)" SecDFrenchCanada
+ StrCpy $DictCodes "fr_CA,$DictCodes"
+ AddSize 1390
+SectionEnd
+
 Section /o "Gaeilge" SecDGaelic
  StrCpy $DictCodes "ga_IR,$DictCodes"
  AddSize 1090
@@ -869,6 +874,13 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDFarsi} $0
    SectionSetSize ${SecDFarsi} 0
+  ${endif}
+  StrCpy $Search "fr_CA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDFrenchCanada} $0
+   SectionSetSize ${SecDFrenchCanada} 0
   ${endif}
   StrCpy $Search "fr_FR"
   Call StrPoint
