@@ -228,7 +228,7 @@ Section "Français" SecDFrench
  AddSize 1200
 SectionEnd
 
-Section "Français (Canada)" SecDFrenchCanada
+Section /o "Français (Canada)" SecDFrenchCanada
  StrCpy $DictCodes "fr_CA,$DictCodes"
  AddSize 1390
 SectionEnd
