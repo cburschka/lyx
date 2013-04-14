@@ -303,7 +303,10 @@ int ForkedCall::generateChild()
 	if (command_.empty())
 		return 1;
 
-	string const line = cmd_prefix_ + command_;
+	// Make sure that a V2 python is run, if available.
+	string const line = cmd_prefix_ +
+		(prefixIs(command_, "python -tt")
+		 ? os::python() + command_.substr(10) : command_);
 
 #if !defined (_WIN32)
 	// POSIX
