@@ -576,7 +576,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		replaceSelection(cur);
 		docstring topaste;
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			topaste = theClipboard().getAsText();
+			topaste = theClipboard().getAsText(Clipboard::PlainTextType);
 		else {
 			size_t n = 0;
 			idocstringstream is(cmd.argument());
@@ -1460,6 +1460,13 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DISSOLVE:
 		flag.setEnabled(!asHullInset());
 		break;
+
+	case LFUN_PASTE: {
+		docstring const & name = cmd.argument();
+		if (name == "html" || name == "latex")
+			flag.setEnabled(false);
+		break;
+	}
 
 	default:
 		ret = false;

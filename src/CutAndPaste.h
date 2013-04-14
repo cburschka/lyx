@@ -87,8 +87,9 @@ void pasteSelection(Cursor & cur, ErrorList &);
 /// Replace the current selection with the clipboard contents as text
 /// (internal or external: which is newer).
 /// Does handle undo. Does only work in text, not mathed.
-void pasteClipboardText(Cursor & cur, ErrorList & errorList,
-	bool asParagraphs = true);
+/// \p asParagraphs is only considered if plain text is pasted.
+void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
+	Clipboard::TextType preferedType = Clipboard::LyXOrPlainTextType);
 /// Replace the current selection with the clipboard contents as graphic.
 /// Does handle undo. Does only work in text, not mathed.
 void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,

@@ -156,6 +156,8 @@ Menuset
 	Menu "edit_paste"
 		Item "Plain Text|T" "clipboard-paste"
 		Item "Plain Text, Join Lines|J" "clipboard-paste paragraph"
+		Item "HTML Text|H" "paste html"
+		Item "LaTeX Text|L" "paste latex"
 		Separator
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"

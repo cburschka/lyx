@@ -1248,11 +1248,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				     && !theClipboard().hasTextContents())
 				pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"));
 			else
-				pasteClipboardText(cur, bv->buffer().errorList("Paste"));
+				pasteClipboardText(cur, bv->buffer().errorList("Paste"), true);
 		} else if (isStrUnsignedInt(arg)) {
 			// we have a numerical argument
 			pasteFromStack(cur, bv->buffer().errorList("Paste"),
 				       convert<unsigned int>(arg));
+		} else if (arg == "html" || arg == "latex") {
+			Clipboard::TextType type = (arg == "html") ?
+				Clipboard::HtmlTextType : Clipboard::LaTeXTextType;
+			pasteClipboardText(cur, bv->buffer().errorList("Paste"), true, type);
 		} else {
 			Clipboard::GraphicsType type = Clipboard::AnyGraphicsType;
 			if (arg == "pdf")
@@ -1267,7 +1271,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				type = Clipboard::EmfGraphicsType;
 			else if (arg == "wmf")
 				type = Clipboard::WmfGraphicsType;
-
 			else
 				LASSERT(false, /**/);
 
@@ -2769,6 +2772,20 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// it's a number and therefore means the internal stack
 			unsigned int n = convert<unsigned int>(arg);
 			enable = cap::numberOfSelections() > n;
+			break;
+		}
+
+		// explicit text type?
+		if (arg == "html") {
+			// Do not enable for PlainTextType, since some tidying in the
+			// frontend is needed for HTML, which is too unsafe for plain text.
+			enable = theClipboard().hasTextContents(Clipboard::HtmlTextType);
+			break;
+		} else if (arg == "latex") {
+			// LaTeX is usually not available on the clipboard with
+			// the correct MIME type, but in plain text.
+			enable = theClipboard().hasTextContents(Clipboard::PlainTextType) ||
+			         theClipboard().hasTextContents(Clipboard::LaTeXTextType);
 			break;
 		}
 

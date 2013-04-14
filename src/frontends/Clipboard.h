@@ -42,6 +42,15 @@ public:
 		AnyGraphicsType
 	};
 
+	enum TextType {
+		AnyTextType,
+		LyXOrPlainTextType,
+		PlainTextType,
+		HtmlTextType,
+		LaTeXTextType,
+		LyXTextType,
+	};
+
 	/**
 	 * Get the system clipboard contents. The format is as written in
 	 * .lyx files (may even be an older version than ours if it comes
@@ -51,8 +60,8 @@ public:
 	 * clipboard.
 	 */
 	virtual std::string const getAsLyX() const = 0;
-	/// Get the contents of the window system clipboard in plain text format.
-	virtual docstring const getAsText() const = 0;
+	/// Get the contents of the window system clipboard in any text format except LyxTextType.
+	virtual docstring const getAsText(TextType type) const = 0;
 	/// Get the contents of the window system clipboard as graphics file.
 	virtual FileName getAsGraphics(Cursor const & cur, GraphicsType type) const = 0;
 
@@ -67,10 +76,8 @@ public:
 	 */
 	virtual void put(std::string const & lyx, docstring const & html, docstring const & text) = 0;
 
-	/// Does the clipboard contain LyX contents?
-	virtual bool hasLyXContents() const = 0;
 	/// Does the clipboard contain text contents?
-	virtual bool hasTextContents() const = 0;
+	virtual bool hasTextContents(TextType type = AnyTextType) const = 0;
 	/// Does the clipboard contain graphics contents of a certain type?
 	virtual bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const = 0;
 	/// state of clipboard.

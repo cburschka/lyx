@@ -222,6 +222,10 @@ public:
 	/// emergency or autosave files, one should use \c loadLyXFile.
 	/// /sa loadLyXFile
 	ReadStatus loadThisLyXFile(support::FileName const & fn);
+	/// import a new document from a string
+	bool importString(std::string const &, docstring const &, ErrorList &);
+	/// import a new file
+	bool importFile(std::string const &, support::FileName const &, ErrorList &);
 	/// read a new document from a string
 	bool readString(std::string const &);
 	/// Reloads the LyX file

@@ -102,6 +102,7 @@
 #include "support/Package.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
+#include "support/TempFile.h"
 #include "support/textutils.h"
 #include "support/types.h"
 
@@ -978,6 +979,49 @@ bool Buffer::readDocument(Lexer & lex)
 }
 
 
+bool Buffer::importString(string const & format, docstring const & contents, ErrorList & errorList)
+{
+	Format const * fmt = formats.getFormat(format);
+	if (!fmt)
+		return false;
+	// It is important to use the correct extension here, since some
+	// converters create a wrong output file otherwise (e.g. html2latex)
+	TempFile const tempfile("Buffer_importStringXXXXXX." + fmt->extension());
+	FileName const name(tempfile.name());
+	ofdocstream os(name.toFilesystemEncoding().c_str());
+	bool const success = (os << contents);
+	os.close();
+
+	bool converted = false;
+	if (success) {
+		params().compressed = false;
+
+		// remove dummy empty par
+		paragraphs().clear();
+
+		converted = importFile(format, name, errorList);
+	}
+
+	if (name.exists())
+		name.removeFile();
+	return converted;
+}
+
+
+bool Buffer::importFile(string const & format, FileName const & name, ErrorList & errorList)
+{
+	if (!theConverters().isReachable(format, "lyx"))
+		return false;
+
+	TempFile const tempfile("Buffer_importFileXXXXXX.lyx");
+	FileName const lyx(tempfile.name());
+	if (theConverters().convert(0, name, lyx, name, format, "lyx", errorList))
+		return readFile(lyx) == ReadSuccess;
+
+	return false;
+}
+
+
 bool Buffer::readString(string const & s)
 {
 	params().compressed = false;
@@ -1125,7 +1169,7 @@ Buffer::ReadStatus Buffer::parseLyXFormat(Lexer & lex,
 Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 	FileName & tmpfile, int from_format)
 {
-	tmpfile = FileName::tempName("Buffer_convertLyXFormat");
+	tmpfile = FileName::tempName("Buffer_convertLyXFormatXXXXXX.lyx");
 	if(tmpfile.empty()) {
 		Alert::error(_("Conversion failed"),
 			bformat(_("%1$s is from a different"
@@ -2765,11 +2809,12 @@ string Buffer::absFileName() const
 
 string Buffer::filePath() const
 {
-	int last = d->filename.onlyPath().absFileName().length() - 1;
+	string const abs = d->filename.onlyPath().absFileName();
+	if (abs.empty())
+		return abs;
+	int last = abs.length() - 1;
 
-	return d->filename.onlyPath().absFileName()[last] == '/'
-		? d->filename.onlyPath().absFileName()
-		: d->filename.onlyPath().absFileName() + "/";
+	return abs[last] == '/' ? abs : abs + '/';
 }
 
 

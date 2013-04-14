@@ -44,6 +44,7 @@
 #include <QMimeData>
 #include <QString>
 #include <QStringList>
+#include <QTextDocument>
 
 #include <boost/crc.hpp>
 
@@ -98,6 +99,8 @@ QByteArray CacheMimeData::data(QString const & mimeType) const
 
 
 QString const lyxMimeType(){ return "application/x-lyx"; }
+QString const texMimeType(){ return "text/x-tex"; }
+QString const latexMimeType(){ return "application/x-latex"; }
 QString const pdfMimeType(){ return "application/pdf"; }
 QString const emfMimeType(){ return "image/x-emf"; }
 QString const wmfMimeType(){ return "image/x-wmf"; }
@@ -328,12 +331,80 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 }
 
 
-docstring const GuiClipboard::getAsText() const
+namespace {
+/**
+ * Tidy up a HTML chunk coming from the clipboard.
+ * This is needed since different applications put different kinds of HTML
+ * on the clipboard:
+ * - With or without the <?xml> tag
+ * - With or without the <!DOCTYPE> tag
+ * - With or without the <html> tag
+ * - With or without the <body> tag
+ * - With or without the <p> tag
+ * Since we are going to write a HTML file for external converters we need
+ * to ensure that it is a well formed HTML file, including all the mentioned tags.
+ */
+QString tidyHtml(QString input)
+{
+	// Misuse QTextDocument to cleanup the HTML.
+	// As a side effect, all visual markup like <tt> is converted to CSS,
+	// which is ignored by gnuhtml2latex.
+	// While this may be seen as a bug by some people it is actually a
+	// good thing, since we do import structure, but ignore all visual
+	// clutter.
+	QTextDocument converter;
+	converter.setHtml(input);
+	return converter.toHtml("utf-8");
+}
+}
+
+
+docstring const GuiClipboard::getAsText(TextType type) const
 {
 	// text data from other applications
-	QString const str = qApp->clipboard()->text(QClipboard::Clipboard)
+	if ((type == AnyTextType || type == LyXOrPlainTextType) && hasTextContents(LyXTextType))
+		type = LyXTextType;
+	if (type == AnyTextType && hasTextContents(LaTeXTextType))
+		type = LaTeXTextType;
+	if (type == AnyTextType && hasTextContents(HtmlTextType))
+		type = HtmlTextType;
+	QString str;
+	switch (type) {
+	case LyXTextType:
+		// must not convert to docstring, since file can contain
+		// mixed encodings (use getAsLyX() instead)
+		break;
+	case AnyTextType:
+	case LyXOrPlainTextType:
+	case PlainTextType:
+		str = qApp->clipboard()->text(QClipboard::Clipboard)
 				.normalized(QString::NormalizationForm_C);
-	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(): `" << str << "'");
+		break;
+	case LaTeXTextType: {
+		QMimeData const * source =
+			qApp->clipboard()->mimeData(QClipboard::Clipboard);
+		if (source) {
+			// First try LaTeX, then TeX (we do not distinguish
+			// for clipboard purposes)
+			if (source->hasFormat(latexMimeType())) {
+				str = source->data(latexMimeType());
+				str = str.normalized(QString::NormalizationForm_C);
+			} else if (source->hasFormat(texMimeType())) {
+				str = source->data(texMimeType());
+				str = str.normalized(QString::NormalizationForm_C);
+			}
+		}
+		break;
+	}
+	case HtmlTextType: {
+		QString subtype = "html";
+		str = qApp->clipboard()->text(subtype, QClipboard::Clipboard)
+				.normalized(QString::NormalizationForm_C);
+		str = tidyHtml(str);
+		break;
+	}
+	}
+	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(" << type << "): `" << str << "'");
 	if (str.isNull())
 		return docstring();
 
@@ -369,15 +440,27 @@ void GuiClipboard::put(string const & lyx, docstring const & html, docstring con
 }
 
 
-bool GuiClipboard::hasLyXContents() const
+bool GuiClipboard::hasTextContents(Clipboard::TextType type) const
 {
-	return cache_.hasFormat(lyxMimeType());
-}
-
-
-bool GuiClipboard::hasTextContents() const
-{
-	return cache_.hasText();
+	switch (type) {
+	case AnyTextType:
+		return cache_.hasFormat(lyxMimeType()) || cache_.hasText() ||
+		       cache_.hasHtml() || cache_.hasFormat(latexMimeType()) ||
+		       cache_.hasFormat(texMimeType());
+	case LyXOrPlainTextType:
+		return cache_.hasFormat(lyxMimeType()) || cache_.hasText();
+	case LyXTextType:
+		return cache_.hasFormat(lyxMimeType());
+	case PlainTextType:
+		return cache_.hasText();       
+	case HtmlTextType:
+		return cache_.hasHtml();
+	case LaTeXTextType:
+		return cache_.hasFormat(latexMimeType()) ||
+		       cache_.hasFormat(texMimeType());
+	}
+	// shut up compiler
+	return false;
 }
 
 
@@ -425,7 +508,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 
 bool GuiClipboard::isInternal() const
 {
-	if (!hasLyXContents())
+	if (!hasTextContents(LyXTextType))
 		return false;
 
 	// ownsClipboard() is also true for stuff coming from dialogs, e.g.
@@ -473,10 +556,10 @@ void GuiClipboard::on_dataChanged()
 	for (int i = 0; i < l.count(); i++)
 		LYXERR(Debug::ACTION, l.value(i));
 
-	text_clipboard_empty_ = qApp->clipboard()->
+	plaintext_clipboard_empty_ = qApp->clipboard()->
 		text(QClipboard::Clipboard).isEmpty();
 
-	has_lyx_contents_ = hasLyXContents();
+	has_text_contents_ = hasTextContents();
 	has_graphics_contents_ = hasGraphicsContents();
 }
 
@@ -487,9 +570,9 @@ bool GuiClipboard::empty() const
 	// clipboard. The plaintext version is empty if the LyX version
 	// contains only one inset, and the LyX version is empty if the
 	// clipboard does not come from LyX.
-	if (!text_clipboard_empty_)
+	if (!plaintext_clipboard_empty_)
 		return false;
-	return !has_lyx_contents_ && !has_graphics_contents_;
+	return !has_text_contents_ && !has_graphics_contents_;
 }
 
 } // namespace frontend

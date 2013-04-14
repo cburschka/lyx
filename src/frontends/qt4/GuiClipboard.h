@@ -69,11 +69,10 @@ public:
 	//@{
 	std::string const getAsLyX() const;
 	FileName getAsGraphics(Cursor const & cur, GraphicsType type) const;
-	docstring const getAsText() const;
+	docstring const getAsText(TextType type) const;
 	void put(std::string const & lyx, docstring const & html, docstring const & text);
-	bool hasLyXContents() const;
 	bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const;
-	bool hasTextContents() const;
+	bool hasTextContents(TextType typetype = AnyTextType) const;
 	bool isInternal() const;
 	bool hasInternal() const;
 	bool empty() const;
@@ -86,8 +85,8 @@ private Q_SLOTS:
 	void on_dataChanged();
 
 private:
-	bool text_clipboard_empty_;
-	bool has_lyx_contents_;
+	bool plaintext_clipboard_empty_;
+	bool has_text_contents_;
 	bool has_graphics_contents_;
 	/// the cached mime data used to describe the information
 	/// that can be stored in the clipboard

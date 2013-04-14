@@ -1010,16 +1010,21 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 }
 
 
-void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
+void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
+                        Clipboard::TextType type)
 {
 	// Use internal clipboard if it is the most recent one
+	// This overrides asParagraphs and type on purpose!
 	if (theClipboard().isInternal()) {
 		pasteFromStack(cur, errorList, 0);
 		return;
 	}
 
 	// First try LyX format
-	if (theClipboard().hasLyXContents()) {
+	if ((type == Clipboard::LyXTextType ||
+	     type == Clipboard::LyXOrPlainTextType ||
+	     type == Clipboard::AnyTextType) &&
+	    theClipboard().hasTextContents(Clipboard::LyXTextType)) {
 		string lyx = theClipboard().getAsLyX();
 		if (!lyx.empty()) {
 			// For some strange reason gcc 3.2 and 3.3 do not accept
@@ -1035,8 +1040,42 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 		}
 	}
 
+	// Then try TeX and HTML
+	Clipboard::TextType types[2] = {Clipboard::HtmlTextType, Clipboard::LaTeXTextType};
+	string names[2] = {"html", "latex"};
+	for (int i = 0; i < 2; ++i) {
+		if (type != types[i] && type != Clipboard::AnyTextType)
+			continue;
+		bool available = theClipboard().hasTextContents(types[i]);
+
+		// If a specific type was explicitly requested, try to
+		// interpret plain text: The user told us that the clipboard
+		// contents is in the desired format
+		if (!available && type == types[i]) {
+			types[i] = Clipboard::PlainTextType;
+			available = theClipboard().hasTextContents(types[i]);
+		}
+
+		if (available) {
+			docstring text = theClipboard().getAsText(types[i]);
+			available = !text.empty();
+			if (available) {
+				// For some strange reason gcc 3.2 and 3.3 do not accept
+				// Buffer buffer(string(), false);
+				Buffer buffer("", false);
+				buffer.setUnnamed(true);
+				if (buffer.importString(names[i], text, errorList)) {
+					cur.recordUndo();
+					pasteParagraphList(cur, buffer.paragraphs(),
+						buffer.params().documentClassPtr(), errorList);
+					return;
+				}
+			}
+		}
+	}
+
 	// Then try plain text
-	docstring const text = theClipboard().getAsText();
+	docstring const text = theClipboard().getAsText(Clipboard::PlainTextType);
 	if (text.empty())
 		return;
 	cur.recordUndo();
@@ -1065,7 +1104,7 @@ void pasteSimpleText(Cursor & cur, bool asParagraphs)
 		asParagraphs = false;
 	} else {
 		// Then try plain text
-		text = theClipboard().getAsText();
+		text = theClipboard().getAsText(Clipboard::PlainTextType);
 	}
 
 	if (text.empty())

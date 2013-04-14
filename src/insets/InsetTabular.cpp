@@ -4329,7 +4329,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		docstring const clip = (act == LFUN_CLIPBOARD_PASTE) ?
-			theClipboard().getAsText() :
+			theClipboard().getAsText(Clipboard::PlainTextType) :
 			theSelection().get();
 		if (clip.empty())
 			break;
