@@ -442,6 +442,7 @@ static string createTempFile(QString const & mask)
 	//        Therefore the next call to createTempFile() may create the
 	//        same file again. To make this safe the QTemporaryFile object
 	//        needs to be kept for the whole life time of the temp file name.
+	//        This can be achieved by using the TempFile class.
 	QTemporaryFile qt_tmp(mask);
 	if (qt_tmp.open()) {
 		string const temp_file = fromqstr(qt_tmp.fileName());
