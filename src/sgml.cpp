@@ -181,7 +181,12 @@ void sgml::openTag(odocstream & os, string const & name, string const & attribut
 	string param = subst(attribute, "<", "\"");
 	param = subst(param, ">", "\"");
 
-	if (!name.empty() && name != "!-- --") {
+	// Note: we ignore the name if it empty or if it is a comment "<!-- -->" or
+	// if the name is *dummy*.
+	// We ignore dummy because dummy is not a valid docbook element and it is
+	// the internal name given to single paragraphs in the latex output.
+	// This allow us to simplify the code a lot and is a reasonable compromise.
+	if (!name.empty() && name != "!-- --" && name != "dummy") {
 		os << '<' << from_ascii(name);
 		if (!param.empty())
 			os << ' ' << from_ascii(param);
@@ -192,7 +197,7 @@ void sgml::openTag(odocstream & os, string const & name, string const & attribut
 
 void sgml::closeTag(odocstream & os, string const & name)
 {
-	if (!name.empty() && name != "!-- --")
+	if (!name.empty() && name != "!-- --" && name != "dummy")
 		os << "</" << from_ascii(name) << '>';
 }
 
