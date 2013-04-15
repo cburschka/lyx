@@ -19,6 +19,7 @@
 #include "LyXRC.h"
 
 #include "support/docstream.h"
+#include "support/lassert.h"
 
 #include <sstream>
 #include <iomanip>
@@ -67,7 +68,8 @@ void Length::swap(Length & rhs)
 string const Length::asString() const
 {
 	ostringstream os;
-	os << val_ << unit_name[unit_]; // setw?
+	if (unit_ != UNIT_NONE)
+		os << val_ << unit_name[unit_]; // setw?
 	return os.str();
 }
 
@@ -75,7 +77,8 @@ string const Length::asString() const
 docstring const Length::asDocstring() const
 {
 	odocstringstream os;
-	os << val_ << unit_name[unit_]; // setw?
+	if (unit_ != UNIT_NONE)
+		os << val_ << unit_name[unit_]; // setw?
 	return os.str();
 }
 
@@ -102,6 +105,9 @@ string const Length::asLatexString() const
 	case PPH:
 		os << val_ / 100.0 << "\\paperheight";
 		break;
+	case UNIT_NONE:
+		// One should not try to ouput latex code for an empty length
+		LASSERT(false, break);
 	default:
 		os << val_ << unit_name[unit_];
 	  break;
@@ -363,6 +369,9 @@ GlueLength::GlueLength(string const & data)
 
 string const GlueLength::asString() const
 {
+	if (len_.empty())
+		return string();
+
 	ostringstream buffer;
 
 	buffer << len_.value();

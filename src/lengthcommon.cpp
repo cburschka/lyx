@@ -236,8 +236,11 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 	// forward approach leads to very long, tedious code that would be
 	// much harder to understand and maintain. (AS)
 
-	if (data.empty())
+	if (data.empty()) {
+		if (result)
+			*result = GlueLength();
 		return true;
+	}
 	string buffer = ltrim(data);
 
 	// To make isValidGlueLength recognize negative values as
@@ -306,8 +309,11 @@ bool isValidLength(string const & data, Length * result)
 	// The parser may seem overkill for lengths without
 	// glue, but since we already have it, using it is
 	// easier than writing something from scratch.
-	if (data.empty())
+	if (data.empty()) {
+		if (result)
+			*result = Length();
 		return true;
+	}
 
 	string   buffer = data;
 	int      pattern_index = 0;
