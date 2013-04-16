@@ -1496,6 +1496,17 @@ cua
 短絡キー
 \family default
 で変更することができます。
+\lang english
+(You can list or change any key bindings as explained in 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:短絡キーの編集"
+
+\end_inset
+
+。)
 \end_layout
 
 \begin_layout Standard
@@ -1577,7 +1588,11 @@ reference "sec:箇条書き"
 \begin_inset Newline newline
 \end_inset
 
-LyXでは、タブキーは、入力補完で候補を受諾するときにのみ使用されます。
+LyXでは、タブキーは、入力補完で候補を受諾するときにのみ使用されます
+\lang english
+or to move the cursor in tables or math matrices.
+\lang japanese
+。
 \end_layout
 
 \begin_layout Labeling
@@ -1788,27 +1803,6 @@ Alt+P Shift+A
 A
 \family default
 を押すという意味です。
-\end_layout
-
-\begin_layout Standard
-キー割り当ての一覧や変更は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:短絡キーの編集"
-
-\end_inset
-
-節に説明があるように、
-\family sans
-ツール\SpecialChar \menuseparator
-設定
-\family default
-メニュー内の
-\family sans
-編集\SpecialChar \menuseparator
-短絡キー
-\family default
-で行うことができます。
 \end_layout
 
 \begin_layout Chapter

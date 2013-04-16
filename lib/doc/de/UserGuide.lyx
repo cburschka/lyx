@@ -716,7 +716,7 @@ von
 
 Vorlage
 \family default
- erfragt den Namen einer Vorlage, die verwendet werden soll.
+ listet alle verfügbaren Vorlagen auf.
  Mit der Auswahl einer Vorlagedatei werden automatisch verschiedene Layout-Einst
 ellungen aktiviert, die Sie sonst von Hand verändern müssten.
  Derartige Vorlagen können für alle möglichen Textklassen verwendet werden,
@@ -1997,6 +1997,19 @@ Bearbeiten\SpecialChar \menuseparator
 Tastenkürzel
 \family default
  geändert werden kann.
+ (Man kann dort auch alle Tastenkürzel auflisten oder ändern, wie es in
+ Abschnitt
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tastenkürzel-bearbeiten"
+
+\end_inset
+
+ beschrieben ist.)
 \end_layout
 
 \begin_layout Standard
@@ -2090,7 +2103,7 @@ Tutorium
 \end_inset
 
 In LyX wird die Tabulatortaste nur verwendet, um Vorschläge der Eingabevervollst
-ändigung zu übernehmen.
+ändigung zu übernehmen oder um den Cursor in Tabellen oder Matrizen zu bewegen.
 \end_layout
 
 \begin_layout Labeling
@@ -2444,30 +2457,6 @@ Dokumentklasse
  fest und erleichtert die Erschaffung des gewünschten Dokumentes.
  Wenn Sie keine Dokumentklasse wählen, nimmt LyX die Standardklasse.
  Dann aber müssen Sie eventuell die Dokumentklasse ändern.
-\end_layout
-
-\begin_layout Standard
-Lesen Sie jetzt, welche Dokumentklassen Sie in LyX wählen können und wie
- man einige Eigenschaften feineinstellt.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wir werden im folgenden die englischen Namen beibehalten, wie Sie sie in
- den Menüs u.
-\begin_inset space \space{}
-\end_inset
-
-ä.
-\begin_inset space \space{}
-\end_inset
-
-finden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection

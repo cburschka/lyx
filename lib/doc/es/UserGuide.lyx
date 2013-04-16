@@ -679,8 +679,7 @@ desde
 
 plantilla
 \family default
- pide no sólo un nombre para el nuevo archivo, también te pide una plantilla
- para usar como punto de partida.
+ te pide una plantilla para usar como punto de partida.
  Al seleccionar una plantilla se establecerán automáticamente ciertas caracterís
 ticas de formato para el documento, características que de otra forma necesitarí
 as cambiar manualmente.
@@ -743,7 +742,7 @@ de
 
 versiones
 \family default
- son útiles si varias personas trabajan en el mismo documento al mismo tiempo
+ son útiles si varias personas trabajan en el mismo documento al mismo tiempo.
 \begin_inset Foot
 status collapsed
 
@@ -757,7 +756,6 @@ Características adicionales
 
 \end_inset
 
-.
  
 \family sans
 Revertir
@@ -1854,6 +1852,19 @@ Edición\SpecialChar \menuseparator
 Atajos de teclado
 \family default
 .
+ (Puedes también ver ahí las combinaciones de teclas o cambiarlas, como
+ se explica en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Edición-de-los-atajos"
+
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
@@ -1939,7 +1950,12 @@ Tutorial
 \begin_inset Newline newline
 \end_inset
 
-En LyX, la tecla Tabulador solo se usa para aceptar propuestas de autocompletar.
+En LyX, la tecla Tabulador solo se usa para aceptar propuestas de autocompletar
+ o 
+\lang english
+to move the cursor in tables or math matrices.
+\lang spanish
+.
 \end_layout
 
 \begin_layout Labeling
@@ -2187,40 +2203,6 @@ Alt+P
  seguido de A mayúscula.
 \end_layout
 
-\begin_layout Standard
-Puedes ver las combinaciones de teclas o cambiarlas en las preferencias
- de LyX, menú
-\family sans
- Herramientas\SpecialChar \menuseparator
-Preferencias,
-\family default
- apartado 
-\family sans
-Edición\SpecialChar \menuseparator
-Atajos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-teclado
-\family default
-, como se explica en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Edición-de-los-atajos"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Chapter
 Fundamentos de LyX
 \begin_inset Index idx
@@ -2272,11 +2254,6 @@ clase de documento
  propiedades, haciendo más fácil crear el tipo de documento que deseas.
  Si no eliges una clase de documento, LyX lo hace por ti, así que el cambio
  de clase del documento es de tu incumbencia.
-\end_layout
-
-\begin_layout Standard
-Sigue leyendo para conocer las clases de documento que puedes escoger y
- cómo ajustar sus propiedades.
 \end_layout
 
 \begin_layout Subsection

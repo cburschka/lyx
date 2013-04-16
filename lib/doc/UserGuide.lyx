@@ -149,8 +149,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list: 
+If you have comments on or error corrections to this documentation, please
+ send them to the LyX Documentation mailing list: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -209,7 +209,8 @@ What is LyX?
 
 \begin_layout Standard
 LyX is a document preparation system.
- It is a tool for producing beautiful manuscripts, publishable books, business
+ It is a tool for producing beautiful manu\SpecialChar \-
+scripts, publishable books, business
  letters and proposals, and even poetry.
  It is unlike most other 
 \begin_inset Quotes eld
@@ -246,59 +247,35 @@ mm space below
 \end_inset
 
 .
- LyX takes care of the typesetting for you, so you deal only with concepts,
+ LyX takes care of the typesetting for you; so you deal only with concepts,
  not with mechanics.
 \end_layout
 
 \begin_layout Standard
 This philosophy is explained in greater detail in the 
 \emph on
-
-\begin_inset Quotes eld
-\end_inset
-
 Introduction
-\begin_inset Quotes erd
-\end_inset
-
-
 \emph default
-.
+manual.
  If you haven't read it yet, you need to.
  Yes, we mean now.
 \end_layout
 
 \begin_layout Standard
 The 
-\begin_inset Quotes eld
-\end_inset
-
-
 \emph on
 Introduction
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- describes several things in addition to LyX's philosophy: most importantly,
- the format of all of the manuals.
+ manual describes several things in addition to LyX's philosophy: most important
+ly, the format of all of the manuals.
  If you don't read it, you will have a bear of a time navigating this manual.
  You might also be better served looking in one of the other manuals instead
  of this one.
- 
-\begin_inset Quotes eld
-\end_inset
-
-
+ The 
 \emph on
 Introduction
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- describes that, too.
+ manual describes that, too.
 \end_layout
 
 \begin_layout Section
@@ -322,8 +299,8 @@ Note that there is no horizontal scrollbar.
  only a vertical scrollbar.
  There are three cases where you might want a horizontal scrollbar.
  The first case is large images.
- To avoid that they are displayed larger than your screen, use in the image
- settings the option 
+ To avoid them being displayed larger than your screen, left click on the
+ image and use the option 
 \family sans
 Scale on Screen
 \family default
@@ -440,9 +417,9 @@ name "sec:LaTeX-Setup"
 
 \begin_layout Standard
 You can edit documents in LyX without having LaTeX installed, but you will
- not to able to create PDFs or print your documents unless you do have it
+ not be able to create PDFs or print your documents unless you do have it
  installed.
- However, some LyX documents use DocBook as the `backend' that can produce
+ However, some LyX documents use DocBook as the “backend” that can produce
  PDFs and the like, and every LyX document can always be output as plain
  text or as XHTML.
 \end_layout
@@ -588,13 +565,9 @@ New
 \end_inset
 
 from
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 Template
 \end_layout
 
@@ -703,17 +676,12 @@ New
 \end_inset
 
 from
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 Template
 \family default
- command not only prompts you for a name for the new file, but also prompts
- you for a template to use.
+ command lists the available templates.
  Selecting a template will automatically set certain layout features for
  the document, features you would otherwise need to change manually.
  They can be of use for certain classes, especially those for writing letters
@@ -794,24 +762,19 @@ Version
 
 Control
 \family default
- are useful if more people work on the same document at the same time
+ are useful if more people work on the same document at the same time.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 If you plan to do this, you should check out the Version Control feature
  in LyX also.
- Read 
-\emph on
-Additional Features
-\emph default
-\SpecialChar \@.
+ Read Additional Features\SpecialChar \@.
 
 \end_layout
 
 \end_inset
 
-.
  
 \family sans
 Revert
@@ -1001,18 +964,18 @@ Plain
 \begin_inset space ~
 \end_inset
 
-Text, Join
+Text,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
 \begin_inset space ~
 \end_inset
 
 Lines
 \family default
  will insert the text in the clipboard so that the whole text is inserted
- as 
-\emph on
-one
-\emph default
- paragraph.
+ as one paragraph.
  A new paragraph is started when there is a blank line in the file.
  Without 
 \family sans
@@ -1315,7 +1278,7 @@ steps to minimize memory overhead.
 \end_layout
 
 \begin_layout Standard
-Note that if you revert back all changes to arrive to the document as it
+Note that if you revert back all changes to arrive at the document as it
  was last saved, the 
 \begin_inset Quotes eld
 \end_inset
@@ -1329,7 +1292,7 @@ changed
 \begin_inset space \thinspace{}
 \end_inset
 
-step undo limit, above.
+step undo limit mentioned above.
 \end_layout
 
 \begin_layout Standard
@@ -1455,7 +1418,7 @@ Navigate
 \end_layout
 
 \begin_layout Itemize
-The `Outline', which is accessed either by the menu 
+The “Outline”, which is accessed either by the menu 
 \family sans
 Document\SpecialChar \menuseparator
 Outline
@@ -1560,7 +1523,7 @@ Right-clicking on elements in the Outline opens in many cases a context
 \end_layout
 
 \begin_layout Standard
-The `Filter' field at the top allows you to restrict which entries appear
+The “Filter” field at the top allows you to restrict which entries appear
  in the Outline.
  For example, if you are displaying the list of Labels and References and
  wish to see only references to subsections, you can enter the text 
@@ -1589,27 +1552,19 @@ Sort
 Keep
 \family default
  option keeps it in the current view state.
- Keeping means that when you have e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the subsections of section
+ Keeping means that when you have, for example, the subsections of sections
 \begin_inset space ~
 \end_inset
 
-2 and 4 shown and click on section
+2 and 4 displayed and click on section
 \begin_inset space ~
 \end_inset
 
-3, the subsections of section
+3, the subsections of sections
 \begin_inset space ~
 \end_inset
 
-2 and 4 will still be shown.
+2 and 4 will still be displayed.
  Without the 
 \family sans
 Keep
@@ -1738,7 +1693,7 @@ Shift-Tab
 \end_layout
 
 \begin_layout Section
-Input / Word Completion
+Input/Word Completion
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Input-Completion"
@@ -1798,7 +1753,7 @@ LyX provides completion of words by scanning all documents that are currently
 \end_layout
 
 \begin_layout Standard
-The input completion can be activated in the LyX preferences (menu 
+Input completion can be activated in the LyX preferences (menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences
@@ -1821,7 +1776,7 @@ inline
 
 completion
 \family default
- the proposed completion is shown directly behind the cursor.
+ the proposed completion is shown directly after the cursor.
  With the option 
 \family sans
 Automatic
@@ -1846,7 +1801,7 @@ indicator
 \end_layout
 
 \begin_layout Standard
-LyX shows a small triangle behind the cursor as an indicator that there
+LyX displays a small triangle after the cursor as an indicator that there
  are completions available.
  Press the 
 \family sans
@@ -1855,7 +1810,7 @@ Tab
  key to accept a proposed completion.
  If several completions are possible, a popup is opened showing them.
  You can select a completion in the popup using the mouse or the arrow keys,
- and accept the chosen completion be pressing 
+ and accept the chosen completion by pressing 
 \family sans
 Return
 \family default
@@ -1869,8 +1824,8 @@ ing options for text.
 \family sans
 Autocorrection
 \family default
- enables that characters can be composed.
- If you for example want to insert the character 
+ enables characters to be composed.
+ If, for example, you want to insert the character 
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
@@ -1887,15 +1842,15 @@ Autocorrection
 \end_inset
 
  to a formula to get it.
- So this is a quick alternative to the insertion of commands or the usage
+ So this is a quick alternative to the insertion of commands or the use
  of the math toolbar.
  A list with supported character combinations can be found in the file 
 \family typewriter
 autocorrect
 \family default
- that is somewhere in LyX's installation folder.
+ that is in LyX's installation folder.
  Math autocorrection can at any time be turned on by pressing the exclamation
- mark key '!'.
+ mark key “!”.
  Pressing 
 \family sans
 Space
@@ -2001,6 +1956,18 @@ Editing\SpecialChar \menuseparator
 Shortcuts
 \family default
 .
+ (You can list or change any key bindings as explained in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Editing-Shortcuts"
+
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
@@ -2094,7 +2061,12 @@ Tutorial
 \begin_inset Newline newline
 \end_inset
 
-In LyX the Tab key is only used to accept propositions of the input completion.
+In LyX the 
+\family sans
+Tab
+\family default
+ key is only used to accept proposed input completions or to move the cursor
+ in tables or math matrices.
 \end_layout
 
 \begin_layout Labeling
@@ -2401,31 +2373,6 @@ A
 .
 \end_layout
 
-\begin_layout Standard
-You can list or change the key bindings in the menu 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences
-\family default
- under 
-\family sans
-Edit\SpecialChar \menuseparator
-Shortcuts
-\family default
- as explained in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Editing-Shortcuts"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Chapter
 LyX Basics
 \begin_inset Index idx
@@ -2477,11 +2424,6 @@ document class
  making it easier to create the type of document you want.
  If you don't choose a document class, LyX picks one for you by default.
  So it is up to you to change the class of your document.
-\end_layout
-
-\begin_layout Standard
-Read on for info about the document classes you can choose from LyX, and
- how to adjust their properties.
 \end_layout
 
 \begin_layout Subsection
@@ -2874,7 +2816,7 @@ Document ! Settings
 \begin_layout Standard
 Some modules require LaTeX packages or file format converters that are not
  always installed by default.
- LyX will warn you if you do not have a needed package or converter, and
+ LyX will warn you if you do not have a required package or converter, and
  it will tell you what exactly you are missing.
  You can still use the module while editing your file, but you will not
  be able to export to PDF or print your document, since LyX will not be
@@ -2908,12 +2850,12 @@ Installing new LaTeX files
 \emph on
 Customization
 \emph default
- manual for more information on installing needed packages.
+ manual for more information on installing required packages.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3589,7 +3531,11 @@ Class
 \begin_layout Standard
 The drop box 
 \family sans
-Headings style
+Headings
+\begin_inset space ~
+\end_inset
+
+style
 \family default
  in the 
 \family sans
@@ -3621,7 +3567,7 @@ Default
 \labelwidthstring 00.00.0000
 
 \family sans
-Empty
+empty
 \family default
  No page numbers or headings.
 \end_layout
@@ -3630,7 +3576,7 @@ Empty
 \labelwidthstring 00.00.0000
 
 \family sans
-Plain
+plain
 \family default
  Page numbers only.
 \end_layout
@@ -3639,7 +3585,7 @@ Plain
 \labelwidthstring 00.00.0000
 
 \family sans
-Headings
+headings
 \family default
  Page numbers and either the current chapter or section title and number.
  Whether LyX uses the current chapter or the current section depends on
@@ -3650,7 +3596,7 @@ Headings
 \labelwidthstring 00.00.0000
 
 \family sans
-Fancy
+fancy
 \family default
  This allows you to define fully customizable headers and footers if you
  have the LaTeX-package 
@@ -3887,8 +3833,8 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-If you use a KOMA-Script document class, you can use the default settings.
- Because KOMA-Script calculates then the print space automatically by taking
+If you use a KOMA-Script document class, you can use the default settings
+ because KOMA-Script calculates the print space automatically by taking
  the paper format and the font size into account.
 \end_layout
 
@@ -3969,12 +3915,13 @@ not
  Only a paragraph following another paragraph gets indented.
  Note that the indentation behavior is different when you use another document
  language than English.
- LaTeX takes care that the indentation follows the rules of the used language.
+ LaTeX takes care that the indentation follows the rules of the language
+ used.
 \end_layout
 
 \begin_layout Standard
 The space between paragraphs, like the line spacing, the space between headings
- and text — in fact, all of the spacings for just about everything are pre-coded
+ and text — in fact, all the spacing for just about everything —is pre-coded
  into LyX.
  As we said, you don't worry about how much space to add between what.
  LyX takes care of that.
@@ -3993,11 +3940,11 @@ LaTeX does this when LyX goes to produce a printable file.
 \end_inset
 
  However, pre-coded doesn't mean you can't change them.
- LyX gives you the ability to globally change 
+ LyX gives you the ability globally to change 
 \emph on
 all
 \emph default
- of these pre-coded spacings.
+ these pre-coded spacings.
  We will explain more later.
 \end_layout
 
