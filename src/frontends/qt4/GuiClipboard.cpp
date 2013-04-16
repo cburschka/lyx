@@ -149,31 +149,31 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		types.push_back(Clipboard::PngGraphicsType);
 	if (hasGraphicsContents(Clipboard::JpegGraphicsType))
 		types.push_back(Clipboard::JpegGraphicsType);
-	
+
 	LASSERT(!types.empty(), /**/);
-	
+
 	// select prefered type if AnyGraphicsType was passed
 	if (type == Clipboard::AnyGraphicsType)
 		type = types.front();
-	
+
 	// which extension?
 	map<Clipboard::GraphicsType, string> extensions;
 	map<Clipboard::GraphicsType, docstring> typeNames;
-	
+
 	extensions[Clipboard::EmfGraphicsType] = "emf";
 	extensions[Clipboard::WmfGraphicsType] = "wmf";
 	extensions[Clipboard::LinkBackGraphicsType] = "linkback";
 	extensions[Clipboard::PdfGraphicsType] = "pdf";
 	extensions[Clipboard::PngGraphicsType] = "png";
 	extensions[Clipboard::JpegGraphicsType] = "jpeg";
-	
+
 	typeNames[Clipboard::EmfGraphicsType] = _("Enhanced Metafile");
 	typeNames[Clipboard::WmfGraphicsType] = _("Windows Metafile");
 	typeNames[Clipboard::LinkBackGraphicsType] = _("LinkBack PDF");
 	typeNames[Clipboard::PdfGraphicsType] = _("PDF");
 	typeNames[Clipboard::PngGraphicsType] = _("PNG");
 	typeNames[Clipboard::JpegGraphicsType] = _("JPEG");
-	
+
 	// find unused filename with primary extension
 	string document_path = cur.buffer()->fileName().onlyPath().absFileName();
 	unsigned newfile_number = 0;
@@ -185,7 +185,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 			+ convert<string>(newfile_number) + "."
 			+ extensions[type]));
 	} while (filename.isReadableFile());
-	
+
 	while (true) {
 		// create file type filter, putting the prefered on to the front
 		QStringList filter;
@@ -198,23 +198,23 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 				filter.append(toqstr(s));
 		}
 		filter = fileFilters(filter.join(";;"));
-		
+
 		// show save dialog for the graphic
 		FileDialog dlg(qt_("Choose a filename to save the pasted graphic as"));
 		FileDialog::Result result =
 		dlg.save(toqstr(filename.onlyPath().absFileName()), filter,
 			 toqstr(filename.onlyFileName()));
-		
+
 		if (result.first == FileDialog::Later)
 			return FileName();
-		
+
 		string newFilename = fromqstr(result.second);
 		if (newFilename.empty()) {
 			cur.bv().message(_("Canceled."));
 			return FileName();
 		}
 		filename.set(newFilename);
-		
+
 		// check the extension (the user could have changed it)
 		if (!suffixIs(ascii_lowercase(filename.absFileName()),
 			      "." + extensions[type])) {
@@ -227,7 +227,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 					break;
 				}
 			}
-			
+
 			// invalid extension found, or none at all. In the latter
 			// case set the default extensions.
 			if (i == types.size()
@@ -235,7 +235,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 				filename.changeExtension("." + extensions[type]);
 			}
 		}
-		
+
 		// check whether the file exists and warn the user
 		if (!filename.exists())
 			break;
@@ -246,10 +246,10 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		if (ret == 0)
 			// overwrite, hence break the dialog loop
 			break;
-		
+
 		// not overwrite, hence show the dialog again (i.e. loop)
 	}
-	
+
 	return filename;
 }
 
