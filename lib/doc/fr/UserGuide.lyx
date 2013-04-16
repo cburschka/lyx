@@ -857,8 +857,7 @@ avec
 
 modèle
 \family default
- ne vous demande pas seulement le nom du nouveau fichier, mais aussi un
- modèle à utiliser.
+ vous demande un modèle à utiliser.
  Choisir un modèle fixera automatiquement certaines options de mise en forme
  du document, options que vous auriez dû autrement modifier à la main.
  Elles peuvent servir pour certaines classes, spécialement celles utilisées
@@ -2161,6 +2160,21 @@ cua
 \family sans
  Saisie\SpecialChar \menuseparator
 Raccourcis.
+ (
+\family default
+Vous là pouvez aussi voir la liste des raccourcis et les modifier comme
+ c'est expliqué dans la section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Éditer-les-raccourcis"
+
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
@@ -2260,7 +2274,11 @@ d'apprentissage
 \emph default
 .
  Avec LyX, la touche de tabulation n'est utilisée que pour accepter les
- suggestions de la complétion de saisie;
+ suggestions de la complétion de saisie ou 
+\lang english
+to move the cursor in tables or math matrices
+\lang french
+;
 \end_layout
 
 \begin_layout Labeling
@@ -2604,10 +2622,6 @@ reference "sub:Éditer-les-raccourcis"
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Chapter
 Les bases de LyX
 \begin_inset Index idx
@@ -2664,11 +2678,6 @@ classe de document
  Si vous ne choisissez pas de classe de document, LyX en prendra une impliciteme
 nt.
  Il vous incombe donc de décider de la classe de votre document.
-\end_layout
-
-\begin_layout Standard
-Lisez la suite pour vous renseigner sur les classes de document que vous
- pouvez choisir dans LyX, et comment ajuster certaines de leurs propriétés.
 \end_layout
 
 \begin_layout Subsection
@@ -33569,8 +33578,8 @@ http://extensions.services.openoffice.org
 *.oxt
 \emph default
 ) qui contiennent d'autres fichiers comme les dictionnaires orthographiques.
- Ces archives sont en fait au format zip, vous pouvez donc les décompresser
- comme une archive zip ordinaire.
+ Ces archives sont des fichier zip, vous pouvez donc les décompresser comme
+ une archive zip ordinaire.
  
 \end_layout
 
@@ -46151,7 +46160,7 @@ OS.
 \end_layout
 
 \begin_layout Standard
-Il y a aussi des fichiers .bind qui ont été créés pour des classes de documents
+Il y a aussi des fichier .bind qui ont été créés pour des classes de documents
  particulières comme par exemple 
 \family typewriter
 broadway.bind
