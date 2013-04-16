@@ -61,6 +61,10 @@ What's new
 - Fix bug where searching for next change may leave an empty paragraph
   where cursor was (bug 3199).
 
+- Fix activation of branches from command line (bug 8627).
+
+- Handle correctly undo when a branch is (de)activated.
+
 * DOCUMENTATION AND LOCALIZATION
 
 

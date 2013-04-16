@@ -2119,49 +2119,57 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	switch (cmd.action()) {
 
-		case LFUN_BUFFER_TOGGLE_READ_ONLY:
-			flag.setOnOff(isReadonly());
-			break;
+	case LFUN_BUFFER_TOGGLE_READ_ONLY:
+		flag.setOnOff(isReadonly());
+		break;
 
 		// FIXME: There is need for a command-line import.
 		//case LFUN_BUFFER_IMPORT:
 
-		case LFUN_BUFFER_AUTO_SAVE:
-			break;
+	case LFUN_BUFFER_AUTO_SAVE:
+		break;
 
-		case LFUN_BUFFER_EXPORT_CUSTOM:
-			// FIXME: Nothing to check here?
-			break;
+	case LFUN_BUFFER_EXPORT_CUSTOM:
+		// FIXME: Nothing to check here?
+		break;
 
-		case LFUN_BUFFER_EXPORT: {
-			docstring const arg = cmd.argument();
-			enable = arg == "custom" || params().isExportable(to_utf8(arg));
-			if (!enable)
-				flag.message(bformat(
-					_("Don't know how to export to format: %1$s"), arg));
-			break;
-		}
+	case LFUN_BUFFER_EXPORT: {
+		docstring const arg = cmd.argument();
+		enable = arg == "custom" || params().isExportable(to_utf8(arg));
+		if (!enable)
+			flag.message(bformat(
+				_("Don't know how to export to format: %1$s"), arg));
+		break;
+	}
 
-		case LFUN_BUFFER_CHKTEX:
-			enable = params().isLatex() && !lyxrc.chktex_command.empty();
-			break;
+	case LFUN_BUFFER_CHKTEX:
+		enable = params().isLatex() && !lyxrc.chktex_command.empty();
+		break;
 
-		case LFUN_BUILD_PROGRAM:
-			enable = params().isExportable("program");
-			break;
+	case LFUN_BUILD_PROGRAM:
+		enable = params().isExportable("program");
+		break;
 
-		case LFUN_BRANCH_ADD:
-		case LFUN_BRANCHES_RENAME:
-		case LFUN_BUFFER_PRINT:
-			// if no Buffer is present, then of course we won't be called!
-			break;
+	case LFUN_BRANCH_ACTIVATE:
+	case LFUN_BRANCH_DEACTIVATE: {
+		BranchList const & branchList = params().branchlist();
+		docstring const branchName = cmd.argument();
+		flag.setEnabled(!branchName.empty() && branchList.find(branchName));
+		break;
+	}
 
-		case LFUN_BUFFER_LANGUAGE:
-			enable = !isReadonly();
-			break;
+	case LFUN_BRANCH_ADD:
+	case LFUN_BRANCHES_RENAME:
+	case LFUN_BUFFER_PRINT:
+		// if no Buffer is present, then of course we won't be called!
+		break;
 
-		default:
-			return false;
+	case LFUN_BUFFER_LANGUAGE:
+		enable = !isReadonly();
+		break;
+
+	default:
+		return false;
 	}
 	flag.setEnabled(enable);
 	return true;
@@ -2265,6 +2273,35 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		autoSave();
 		resetAutosaveTimers();
 		break;
+
+	case LFUN_BRANCH_ACTIVATE:
+	case LFUN_BRANCH_DEACTIVATE: {
+		BranchList & branch_list = params().branchlist();
+		docstring const branch_name = func.argument();
+		// the case without a branch name is handled elsewhere
+		if (branch_name.empty()) {
+			dispatched = false;
+			break;
+		}
+		Branch * branch = branch_list.find(branch_name);
+		if (!branch) {
+			LYXERR0("Branch " << branch_name << " does not exist.");
+			dr.setError(true);
+			docstring const msg =
+				bformat(_("Branch \"%1$s\" does not exist."), branch_name);
+			dr.setMessage(msg);
+			break;
+		}
+		bool activate = func.action() == LFUN_BRANCH_ACTIVATE;
+		if (branch->isSelected() != activate) {
+			undo().recordUndoFullDocument(DocIterator());
+			branch->setSelected(activate);
+			dr.setError(false);
+			dr.screenUpdate(Update::Force);
+			dr.forceBufferUpdate();
+		}
+		break;
+	}
 
 	case LFUN_BRANCH_ADD: {
 		docstring branch_name = func.argument();
