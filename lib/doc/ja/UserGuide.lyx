@@ -3224,6 +3224,18 @@ status collapsed
 \end_inset
 
 。
+\lang english
+You can set it for a single paragraph in the 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ dialog but this should be used very exceptionally because vertical spacing
+ is normally defined in the environment's style.
 \end_layout
 
 \begin_layout Section
@@ -3508,26 +3520,25 @@ LyXはタイトルページ用のコマンドへのインターフェイスを
 \family sans
 日付
 \family default
-環境がない場合には、LaTeXは自動的に今日の日付を入れます。日付をまったく入れたくないときには、お使いの文書のプリアンブル（
+環境がない場合には、LaTeXは自動的に今日の日付を入れます。
+\lang english
+If you don't want a date, use the option 
 \family sans
-文書\SpecialChar \menuseparator
-設定
+Suppress default date on front page
 \family default
-メニュー）に
-\begin_inset Newline newline
+ in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
 \end_inset
 
-
-\series bold
-
-\backslash
-date{}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-という一行を加えてください。
+class
+\family default
+.
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -4213,6 +4224,12 @@ arg   "break-paragraph inverse"
 
 \family default
 を使って改行します。
+\lang english
+If you do this at the top level of a list, it returns you to the 
+\family sans
+Standard
+\family default
+ environment.
 \end_layout
 
 \begin_layout Standard
