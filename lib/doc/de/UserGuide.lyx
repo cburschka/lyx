@@ -3903,7 +3903,6 @@ Doku\SpecialChar \-
 ment\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
 , um das Dialogfenster 
 \family sans
 Textformat
@@ -4014,11 +4013,18 @@ Zeilenabstände ändern
 \end_layout
 
 \begin_layout Standard
-Ihren Zeilenabstand können Sie im Dialogfenster 
+Den Zeilenabstand können Sie für das gesamte Dokument im Menü 
 \family sans
-Absatz-Einstellungen
+Doku\SpecialChar \-
+ment\SpecialChar \menuseparator
+Einstellungen
 \family default
-, das Sie über 
+ unter 
+\family sans
+Textformat 
+\family default
+einstellen.
+ Für einzelne Absätze kann er im Dialog 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Absatz
@@ -4027,15 +4033,8 @@ Absatz
 \family sans
 Einstellungen
 \family default
- oder 
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
- erreichen, einstellen.
+ eingestellt werden; jedoch sollte dies nur in Ausnahmefällen geschehen,
+ da der Zeilenabstand normalerweise im Absatzstil definiert ist.
 \end_layout
 
 \begin_layout Section
@@ -4592,7 +4591,7 @@ Autor!-Umgebung
 \end_layout
 
 \begin_layout Itemize
-Wenn Sie wollen, dass das Datum Ihrem Geschmack entspricht, wenn Sie ein
+Wenn Sie wollen, dass das Datum ein bestimmtes Format hat, wenn Sie ein
  festes Datum wollen oder wenn Sie einen Text anstelle des Datums wollen,
  benutzen Sie die 
 \family sans
@@ -4611,6 +4610,17 @@ Datum-Umgebung
 .
  Der Gebrauch dieser Umgebung ist optional.
  Wenn Sie sie nicht benutzen, wird LaTeX automatisch das Druckdatum einfügen.
+ Wenn Sie kein Datum haben wollen, verwenden Sie die Option 
+\family sans
+Datum af der Titelseite nicht anzeigen
+\family default
+ im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -5540,7 +5550,12 @@ Standard
 \family sans
 Alt+Eingabe
 \family default
- benutzen, um einen neuen Listeneintrag zu beginnen.
+ benutzen.
+ Macht man das in der höchsten Ebene einer Liste, erhält man eine 
+\family sans
+Standard
+\family default
+ Umgebung.
 \end_layout
 
 \begin_layout Standard
@@ -12350,7 +12365,11 @@ Schriften ! Bitmap-
 \begin_inset space \thinspace{}
 \end_inset
 
-36 Pixel.
+34
+\begin_inset space ~
+\end_inset
+
+Pixel.
  Vergrößerungen sehen deshalb nicht besonders gut aus.
  Der Vorteil von Bitmap-Schriften ist, dass keine aufwendigen Berechnungen
  durchgeführt werden müssen.

@@ -3970,13 +3970,17 @@ Paragraph ! Separation
 \end_layout
 
 \begin_layout Standard
-To separate paragraphs, select 
+Select 
 \family sans
-Indent
+Indentation
 \family default
  or 
 \family sans
-Skip
+Vertical
+\begin_inset space ~
+\end_inset
+
+space
 \family default
  in the submenu 
 \family sans
@@ -4001,7 +4005,7 @@ Document ! Settings
 
 \end_inset
 
- to indent paragraphs or add extra space between paragraphs, respectively.
+ to indent paragraphs or to add extra space between paragraphs, respectively.
 \end_layout
 
 \begin_layout Subsection
@@ -4077,7 +4081,8 @@ Document ! Settings
 
 \family default
 \noun default
- dialog you can set the line spacing in the submenu 
+ dialog you can set the line spacing for the whole document in the submenu
+ 
 \family sans
 Text
 \begin_inset space ~
@@ -4109,7 +4114,17 @@ LaTeX-packages ! setspace
 
 \end_inset
 
+ You can set it for a single paragraph in the 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
 
+Settings
+\family default
+ dialog but this should be used very exceptionally because vertical spacing
+ is normally defined in the environment's style.
 \end_layout
 
 \begin_layout Section
@@ -4210,8 +4225,8 @@ nest
  the different environments inside one another, allowing one environment
  to inherit some of the properties of another.
  The different paragraph environments totally replace the need for messy
- tab stops, on the fly margin adjustment, and other hold-overs from the
- days of typewriters.
+ tab stops, on the fly margin adjustment, and other hangovers from the days
+ of typewriters.
  There are several paragraph environments that are specific to a particular
  document type.
  We will only be covering the most common ones here.
@@ -4238,7 +4253,7 @@ entire
 \end_layout
 
 \begin_layout Standard
-Note that hitting 
+Note that entering 
 \family sans
 Return
 \family default
@@ -4305,7 +4320,7 @@ List
 \end_layout
 
 \begin_layout Standard
-LyX keeps the old paragraph environment when you hit 
+LyX keeps the old paragraph environment when you enter 
 \family sans
 Return
 \family default
@@ -4444,26 +4459,21 @@ Date
  environment.
  Note that using this environment is optional.
  If you don't provide any, LaTeX will automatically insert today's date.
- If you don't want any date, add the line
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-date{}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-to the preamble of your document (menu 
+ If you don't want a date, use the option 
+\family sans
+Suppress default date on front page
+\family default
+ in the menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+class
 \family default
-)
+.
 \end_layout
 
 \begin_layout Standard
@@ -4575,7 +4585,7 @@ LyX labels each heading with a series of numbers, separated by periods.
 Headings all subdivide your document into different pieces of text.
  For example, suppose you're writing a book.
  You group the book into chapters.
- LyX does similar grouping:
+ LyX does a similar grouping:
 \end_layout
 
 \begin_layout Itemize
@@ -4686,7 +4696,7 @@ So, if you use the
 Subsubsection
 \family default
  environment to label a new sub-subsection, LyX labels it with its number,
- along with the number of the subsection, section, and, if applicable, chapter
+ along with the number of the subsection, section and, if applicable, chapter
  that it's in.
  For example: the fifth section of the second chapter of this book has the
  label 
@@ -4755,7 +4765,7 @@ You can also alter which sectioning levels get numbered and which ones appear
  in the Table of Contents.
  Now, this doesn't remove any of the levels; that's preset in the document
  class.
- Certain classes start with 
+ Just as certain classes start with 
 \family sans
 Chapter
 \family default
@@ -4966,7 +4976,7 @@ not
 Standard
 \family default
  when you start a new paragraph.
- So, you can type in that poem and merrily hit 
+ So, you can type in that poem and merrily enter 
 \family sans
 Return
 \family default
@@ -5071,7 +5081,7 @@ Quotation
 \family default
  environment.
  If I keep writing, you will see the indentation.
- If your country uses a writing style that shows off new paragraphs by indenting
+ If your country uses a writing style that indicates new paragraphs by indenting
  the first line, then 
 \family sans
 Quotation
@@ -5276,7 +5286,7 @@ not
 Standard
 \family default
  but keeps the current environment and creates a new list item.
- The nesting depth is hereby kept.
+ The nesting depth is thereby kept.
  If you want to keep the paragraph environment but reset the current nesting
  depth, you can use 
 \begin_inset Info
@@ -5284,7 +5294,12 @@ type  "shortcut"
 arg   "break-paragraph inverse"
 \end_inset
 
- to break paragraphs.
+.
+ If you do this at the top level of a list, it returns you to the 
+\family sans
+Standard
+\family default
+ environment.
 \end_layout
 
 \begin_layout Standard
@@ -5304,7 +5319,6 @@ reference "sec:Nesting"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Subsubsection

@@ -4000,7 +4000,11 @@ Documentos ! Configuración
 
 , 
 \family default
-puedes definir el espacio entre líneas en el submenú 
+puedes definir el espacio entre líneas 
+\lang english
+for the whole document
+\lang spanish
+ en el submenú 
 \family sans
 Diseño
 \begin_inset space ~
@@ -4036,7 +4040,25 @@ LaTeX, paquetes ! setspace
 
 \end_inset
 
+ 
+\lang english
+You can set it for a single paragraph in the 
+\family sans
+\lang spanish
+Editar\SpecialChar \menuseparator
+Configuración
+\begin_inset space ~
+\end_inset
 
+del
+\begin_inset space ~
+\end_inset
+
+párrafo
+\family default
+\lang english
+ dialog but this should be used very exceptionally because vertical spacing
+ is normally defined in the environment's style.
 \end_layout
 
 \begin_layout Section
@@ -4351,26 +4373,28 @@ Fecha.
 \family default
  Observa que el uso de este entorno es opcional.
  Si no lo empleas, LaTeX insertará automáticamente la fecha actual.
- Si no deseas ninguna fecha, añade la línea
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-date{}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-al preámbulo de tu documento (menú 
+ Si no deseas ninguna fecha, 
+\lang english
+use the option 
+\family sans
+Suppress default date on front page
+\family default
+ in the
+\lang spanish
+ menú 
 \family sans
 Documento\SpecialChar \menuseparator
-Configuración
+Configuración\SpecialChar \menuseparator
+
+\lang english
+Document
+\begin_inset space ~
+\end_inset
+
+class
 \family default
-)
+\lang spanish
+.
 \end_layout
 
 \begin_layout Standard
@@ -5143,6 +5167,13 @@ Normal
 Alt+Entrar
 \family default
 .
+ 
+\lang english
+If you do this at the top level of a list, it returns you to the 
+\family sans
+Standard
+\family default
+ environment.
 \end_layout
 
 \begin_layout Standard

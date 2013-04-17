@@ -4326,7 +4326,11 @@ Document ! Paramètres
 
 
 \family default
-vous pouvez changer l'espacement entre les lignes dans la rubrique 
+vous pouvez changer 
+\lang english
+for the whole document
+\lang french
+ l'espacement entre les lignes dans la rubrique 
 \family sans
 Format
 \begin_inset space ~
@@ -4366,7 +4370,25 @@ Paquetages LaTeX ! setspace
 
 \end_inset
 
+ 
+\lang english
+You can set it for a single paragraph in the 
+\family sans
+\lang french
+Édition\SpecialChar \menuseparator
+Paramètres
+\begin_inset space ~
+\end_inset
 
+de
+\begin_inset space ~
+\end_inset
+
+Paragraphe
+\family default
+\lang english
+ dialog but this should be used very exceptionally because vertical spacing
+ is normally defined in the environment's style.
 \end_layout
 
 \begin_layout Section
@@ -4695,42 +4717,27 @@ Date
 \end_layout
 
 \begin_layout Itemize
-si vous ne voulez pas de date du tout, ajoutez la ligne
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-date{}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-au préambule de votre document (menu 
+si vous ne voulez pas de date du tout, 
+\lang english
+use the option 
 \family sans
+Suppress default date on front page
+\family default
+ in the menu 
+\family sans
+\lang french
 Document\SpecialChar \menuseparator
 Paramètres\SpecialChar \menuseparator
-Préambule
+
+\lang english
+Document
 \begin_inset space ~
 \end_inset
 
-La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-TeX
+class
 \family default
-)
+\lang french
+.
 \end_layout
 
 \begin_layout Standard
@@ -5557,7 +5564,14 @@ type  "shortcut"
 arg   "break-paragraph inverse"
 \end_inset
 
- pour séparer les paragraphes.
+.
+ 
+\lang english
+If you do this at the top level of a list, it returns you to the 
+\family sans
+Standard
+\family default
+ environment.
 \end_layout
 
 \begin_layout Standard
@@ -12401,8 +12415,16 @@ status collapsed
  C'est le même problème que celui qui apparaît quand vous voulez agrandir
  une image à l'aide d'un programme de retouche.
  Pour contourner ce problème les polices sont fournies en plusieurs tailles
- fixées, typiquement de 8 pixels de haut jusqu'à 34 pixels ou plus, avec
- des valeurs intermédiaires pour les tailles les plus utilisées.
+ fixées, typiquement de 8
+\begin_inset space ~
+\end_inset
+
+pixels de haut jusqu'à 34
+\begin_inset space ~
+\end_inset
+
+pixels ou plus, avec des valeurs intermédiaires pour les tailles les plus
+ utilisées.
  L'avantages des polices matricielles est qu'il n'y a pas de calculs compliqués
  pour afficher chaque glyphe, ce qui fait qu'elles sont plus rapides à afficher
  que les police vectorielles.
