@@ -935,9 +935,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		width_unit = "in";
 		width_special = "width";
 	} else if (latex_width.empty() && outer_type == "framebox") {
-		outer_type == "fbox";
-		width_value = "-999";
-		width_unit = "col%";
+		width_value.clear();
+		width_unit.clear();
 		width_special = "none";
 	}
 	if (use_ert) {
@@ -1038,7 +1037,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		else
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
 		if (outer_type == "fbox" || outer_type == "mbox")
-			os << "width \"-999col%\"\n";
+			os << "width \"\"\n";
 		else
 			os << "width \"" << width_value << width_unit << "\"\n";
 		os << "special \"" << width_special << "\"\n";

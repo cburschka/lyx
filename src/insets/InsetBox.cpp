@@ -162,7 +162,7 @@ void InsetBox::setButtonLabel()
 
 bool InsetBox::hasFixedWidth() const
 {
-	return from_ascii(params_.width.asLatexString()) != "-9.99\\columnwidth";
+	return !params_.width.empty();
 }
 
 
@@ -273,6 +273,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 
 	string width_string = params_.width.asLatexString();
 	bool stdwidth = false;
+	// FIXME: do not test explicitely values of width_string
 	if (params_.inner_box &&
 			(width_string.find("1.0\\columnwidth") != string::npos
 			|| width_string.find("1.0\\textwidth") != string::npos)) {
@@ -316,8 +317,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\begin{framed}%\n";
 		break;
 	case Boxed:
-		// "-999col%" is the code for no width
-		if (from_ascii(width_string) != "-9.99\\columnwidth") {
+		if (width_string.empty()) {
 			os << "\\framebox";
 			if (!params_.inner_box) {
 				// Special widths, see usrguide sec. 3.5
@@ -358,8 +358,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (params_.use_parbox)
 			os << "\\parbox";
 		else if (params_.use_makebox) {
-			// "-999col%" is the code for no width
-			if (from_ascii(width_string) != "-9.99\\columnwidth") {
+			if (!width_string.empty()) {
 				os << "\\makebox";
 				// FIXME UNICODE
 				// output the width and horizontal position

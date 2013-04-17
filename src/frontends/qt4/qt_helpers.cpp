@@ -118,12 +118,18 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 
 
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-                     Length const & len, Length::UNIT /*defaultUnit*/)
+	Length const & len, Length::UNIT /*defaultUnit*/)
 {
-	combo->setCurrentItem(len.unit());
-	QLocale loc;
-	loc.setNumberOptions(QLocale::OmitGroupSeparator);
-	input->setText(loc.toString(Length(len).value()));
+	if (len.empty()) {
+		// no length (UNIT_NONE)
+		combo->setCurrentItem(Length::defaultUnit());
+		input->setText("");
+	} else {
+		combo->setCurrentItem(len.unit());
+		QLocale loc;
+		loc.setNumberOptions(QLocale::OmitGroupSeparator);
+		input->setText(loc.toString(Length(len).value()));
+	}
 }
 
 
@@ -156,7 +162,7 @@ double widgetToDouble(QLineEdit const * input)
 	QString const text = input->text();
 	if (text.isEmpty())
 		return 0.0;
-	
+
 	return text.trimmed().toDouble();
 }
 
@@ -166,7 +172,7 @@ string widgetToDoubleStr(QLineEdit const * input)
 	QString const text = input->text();
 	if (text.isEmpty())
 		return string();
-	
+
 	return convert<string>(text.trimmed().toDouble());
 }
 

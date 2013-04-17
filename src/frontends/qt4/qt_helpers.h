@@ -31,7 +31,7 @@ namespace lyx {
 namespace support { class FileName; }
 
 class BufferParams;
-
+ 
 namespace frontend {
 
 class LengthCombo;
@@ -41,13 +41,17 @@ std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
 /// method to get a Length from widgets (QComboBox)
 Length widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 
-//FIXME It would be nice if defaultUnit were a default argument
 /// method to set widgets from a Length
+//FIXME Remove default_unit argument for the first form. FIXME Change
+// all the code to remove default_unit argument when equal to the
+// default.
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-Length const & len, Length::UNIT default_unit);
+		     Length const & len, 
+		     Length::UNIT default_unit = Length::defaultUnit());
 /// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-std::string const & len, Length::UNIT default_unit);
+		     std::string const & len, 
+		     Length::UNIT default_unit = Length::defaultUnit());
 /// method to set widgets from a docstring
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 docstring const & len, Length::UNIT default_unit);

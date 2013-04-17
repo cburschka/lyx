@@ -126,7 +126,7 @@ void GuiBox::on_innerBoxCO_activated(int /* index */)
 		heightCB->setChecked(false);
 	heightCB->setEnabled(ibox);
 	// the width can only be selected for makebox or framebox
-	widthCB->setEnabled(itype == "makebox" 
+	widthCB->setEnabled(itype == "makebox"
 	                    || (outer == "Boxed" && itype == "none"));
 	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
 	// except for frameless and boxed, the width cannot be specified if
@@ -175,12 +175,12 @@ void GuiBox::on_typeCO_activated(int index)
 		setSpecial(ibox);
 	}
 	// the width can only be selected for makebox or framebox
-	widthCB->setEnabled(itype == "makebox" 
+	widthCB->setEnabled(itype == "makebox"
 	                    || (type == "Boxed" && itype == "none"));
 	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
-	bool const width_enabled = 
+	bool const width_enabled =
 		itype != "none" || frameless || type == "Boxed";
 	// enable if width_enabled, except if checkbaox is active but unset
 	widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
@@ -305,16 +305,18 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	Length::UNIT const default_unit = Length::defaultUnit();
 
 	// the width can only be selected for makebox or framebox
-	widthCB->setEnabled(inner_type == "makebox" 
-	                    || (type == "Boxed" && !ibox && !pagebreakCB->isChecked()));
-	// "-999col%" is the code for no width
-	if ((params.width).asString() == "-999col%")
-		widthCB->setCheckState(Qt::Unchecked);
-	else {
+	widthCB->setEnabled(inner_type == "makebox"
+	                    || (type == "Boxed"
+				&& !ibox && !pagebreakCB->isChecked()));
+	if (params.width.empty()) {
+		widthCB->setChecked(false);
+		lengthToWidgets(widthED, widthUnitsLC,
+			params.width, default_unit);
+	} else {
 		if (widthCB->isEnabled())
 			widthCB->setChecked(true);
 		lengthToWidgets(widthED, widthUnitsLC,
-			(params.width).asString(), default_unit);
+			params.width, default_unit);
 		QString const special = toqstr(params.special);
 		if (!special.isEmpty() && special != "none")
 			widthUnitsLC->setCurrentItem(special);
@@ -325,7 +327,7 @@ void GuiBox::paramsToDialog(Inset const * inset)
 
 	lengthToWidgets(heightED, heightUnitsLC,
 		(params.height).asString(), default_unit);
-	
+
 	QString const height_special = toqstr(params.height_special);
 	if (!height_special.isEmpty() && height_special != "none")
 		heightUnitsLC->setCurrentItem(height_special);
@@ -369,21 +371,18 @@ docstring GuiBox::dialogToParams() const
 		widthUnitsLC->itemData(widthUnitsLC->currentIndex()).toString();
 	QString value = widthED->text();
 
-	if (widthCB->isChecked()) {
-	 if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
-		 params.special = fromqstr(unit);
-		 // Note: the unit is simply ignored in this case
-		 params.width = Length(value.toDouble(), Length::IN);
-	 } else {
-		 params.special = "none";
-		 params.width = Length(widgetsToLength(widthED, widthUnitsLC));
-	 }
-	} else {
-		if (widthCB->isEnabled()) {
-			// use the code "-999col%" for the case that no width was selected
+	if (widthED->isEnabled()) {
+		if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
+			params.special = fromqstr(unit);
+			// Note: the unit is simply ignored in this case
+			params.width = Length(value.toDouble(), Length::IN);
+		} else {
 			params.special = "none";
-			params.width = Length("-999col%");
+			params.width = Length(widgetsToLength(widthED, widthUnitsLC));
 		}
+	} else {
+		params.special = "none";
+		params.width = Length();
 	}
 
 	// the height parameter is omitted if the value

@@ -4094,8 +4094,8 @@ def revert_mbox_fbox(document):
             continue
         BeginLayout = find_token(document.body, "\\begin_layout Plain Layout", j)
         EndLayout = find_token(document.body, "\\end_layout", BeginLayout)
-        # replace if width is "-999col%"
-        if (width == '"-999col%"'):
+        # replace if width is ""
+        if (width == '""'):
             document.body[EndLayout:k + 1] = put_cmd_in_ert("}")
             if document.body[i] == "\\begin_inset Box Frameless":
                 document.body[i:BeginLayout + 1] = put_cmd_in_ert("\\mbox{")

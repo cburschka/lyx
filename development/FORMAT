@@ -29,7 +29,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2013-03-22 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 468: support for \mbox and \fbox
 	  New checkbox in the box dialog to avoid using an explicit
-	  width.
+	  width. An empty/missing length can be specified as "".
 
 2013-03-19 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 467: support for iwona fonts

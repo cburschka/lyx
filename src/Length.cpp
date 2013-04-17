@@ -19,7 +19,6 @@
 #include "LyXRC.h"
 
 #include "support/docstream.h"
-#include "support/lassert.h"
 
 #include <sstream>
 #include <iomanip>
@@ -106,8 +105,7 @@ string const Length::asLatexString() const
 		os << val_ / 100.0 << "\\paperheight";
 		break;
 	case UNIT_NONE:
-		// One should not try to ouput latex code for an empty length
-		LASSERT(false, break);
+		break;
 	default:
 		os << val_ << unit_name[unit_];
 	  break;
