@@ -350,19 +350,29 @@ void GuiRef::redoRefs()
 	QStringList refsStrings;
 	QStringList refsCategories;
 	vector<docstring>::const_iterator iter;
+	bool noprefix = false;
 	for (iter = refs_.begin(); iter != refs_.end(); ++iter) {
 		QString const lab = toqstr(*iter);
 		refsStrings.append(lab);
-		if (groupCB->isChecked() && lab.contains(":")) {
-			QString const pref = lab.split(':')[0];
-			if (!pref.isEmpty() && !refsCategories.contains(pref))
-				  refsCategories.append(pref);
+		if (groupCB->isChecked()) {
+			if (lab.contains(":")) {
+				QString const pref = lab.split(':')[0];
+				if (!refsCategories.contains(pref)) {
+					if (!pref.isEmpty())
+						refsCategories.append(pref);
+					else
+						noprefix = true;
+				}
+			}
+			else
+				noprefix = true;
 		}
 	}
 	// sort categories case-intensively
 	qSort(refsCategories.begin(), refsCategories.end(),
 	      caseInsensitiveLessThan /*defined above*/);
-	refsCategories.insert(0, qt_("<No prefix>"));
+	if (noprefix)
+		refsCategories.insert(0, qt_("<No prefix>"));
 
 	if (sortCB->isEnabled() && sortCB->isChecked()) {
 		if(caseSensitiveCB->isEnabled() && caseSensitiveCB->isChecked())
