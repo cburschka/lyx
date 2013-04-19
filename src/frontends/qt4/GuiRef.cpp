@@ -392,11 +392,11 @@ void GuiRef::redoRefs()
 				QString const ref = refsStrings.at(i);
 				if ((ref.startsWith(cat + QString(":")))
 				    || (cat == qt_("<No prefix>")
-				        && !ref.contains(":"))) {
-					QTreeWidgetItem * child =
-						new QTreeWidgetItem(item);
-					child->setText(0, ref);
-					item->addChild(child);
+				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {
+						QTreeWidgetItem * child =
+							new QTreeWidgetItem(item);
+						child->setText(0, ref);
+						item->addChild(child);
 				}
 			}
 			refsCats.append(item);
