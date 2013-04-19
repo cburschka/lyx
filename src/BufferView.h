@@ -336,7 +336,7 @@ private:
 	/// when it is allowed to scroll below the document.
 	int minVisiblePart();
 
-	/// Search recursively for the the innermost inset that covers (x, y) position.
+	/// Search recursively for the innermost inset that covers (x, y) position.
 	/// \retval 0 if no inset is found.
 	Inset const * getCoveringInset(
 		Text const & text, //< The Text where we start searching.

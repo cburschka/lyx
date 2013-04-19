@@ -269,7 +269,7 @@ private:
 	SnakeResult retrieveMiddleSnake(int k, int D, Direction direction,
 		DocPair & middle_snake);
 	
-	/// Find the the furthest reaching D-path (number of horizontal
+	/// Find the furthest reaching D-path (number of horizontal
 	/// and vertical steps; differences between the old and new
 	/// document) in the k-diagonal (vertical minus horizontal steps).
 	void furthestDpathKdiagonal(int D, int k,

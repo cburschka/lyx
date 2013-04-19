@@ -125,7 +125,7 @@ is_in_inset(lines, i, inset):
 
 get_containing_inset(lines, i):
   Finds out what kind of inset line i is within. Returns a 
-  list containing what follows \begin_inset on the the line 
+  list containing what follows \begin_inset on the line 
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   So get_containing_inset(document.body, i) might return:
@@ -426,7 +426,7 @@ def is_in_inset(lines, i, inset):
 def get_containing_inset(lines, i):
   ''' 
   Finds out what kind of inset line i is within. Returns a 
-  list containing (i) what follows \begin_inset on the the line 
+  list containing (i) what follows \begin_inset on the line 
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''
@@ -450,7 +450,7 @@ def get_containing_inset(lines, i):
 def get_containing_layout(lines, i):
   ''' 
   Finds out what kind of layout line i is within. Returns a 
-  list containing (i) what follows \begin_layout on the the line 
+  list containing (i) what follows \begin_layout on the line 
   on which the layout begins, plus the starting and ending line
   and the start of the apargraph (after all params).
   Returns False on any kind of error.

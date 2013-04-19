@@ -394,7 +394,7 @@ public:
 	/// Returns the buffer's filename. It is always an absolute path.
 	std::string absFileName() const;
 
-	/// Returns the the path where the buffer lives.
+	/// Returns the path where the buffer lives.
 	/// It is always an absolute path.
 	std::string filePath() const;
 
