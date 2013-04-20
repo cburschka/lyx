@@ -462,6 +462,7 @@ void GuiRef::updateRefs()
 	sortCB->setEnabled(!refs_.empty());
 	caseSensitiveCB->setEnabled(sortCB->isEnabled() && sortCB->isChecked());
 	refsTW->setEnabled(!refs_.empty());
+	groupCB->setEnabled(!refs_.empty());
 	// refsTW should only be the focus proxy when it is enabled
 	setFocusProxy(refs_.empty() ? 0 : refsTW);
 	gotoPB->setEnabled(!refs_.empty());
