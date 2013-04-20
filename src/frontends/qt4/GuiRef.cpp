@@ -162,6 +162,11 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 	if (isBufferReadonly())
 		return;
 
+	if (sel->childCount()) {
+		sel->setExpanded(false);
+		return;
+	}
+
 /*	int const cur_item = refsTW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;*/
