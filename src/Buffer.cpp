@@ -1043,8 +1043,7 @@ bool Buffer::readString(string const & s)
 		if (readFile(fn) != ReadSuccess)
 			success = false;
 	}
-
-	if (success)
+	else if (success)
 		if (readDocument(lex))
 			success = false;
 	if (fn.exists())
