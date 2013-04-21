@@ -149,7 +149,7 @@ Introducción
 \begin_layout Standard
 Este archivo ha sido diseñado para todos aquellos que nunca han oído hablar
  de LaTeX, o no lo conocen muy bien.
- No tengas miedo, no tendrás que aprender LaTeX para poder usar LyX.
+ No hay que preocuparse, no hay que aprender LaTeX para poder usar LyX.
  Ese es, al fin y al cabo, el punto fuerte de LyX: proporcionar un interfaz
  casi WYSIWIG (
 \emph on
@@ -235,7 +235,7 @@ Este
 \emph on
 Tutorial
 \emph default
- se compone de ejemplos y ejercicios.
+ contiene ejemplos y ejercicios.
  Para obtener el máximo provecho de este documento, deberías leerlo todo,
  tecleando todos los pequeños detalles que te vayamos explicando (por simples
  que sean) e intentando hacer todos los ejercicios para comprobar que lo
@@ -335,7 +335,7 @@ Tutorial
 Como hay mucha información que no te vamos a dar aquí, lo primero que tienes
  que hacer es encontrar los otros archivos de ayuda.
  Afortunadamente, esto es muy simple.
- Arranca LyX.
+ Inicia LyX.
  Elige la 
 \emph on
 Guía del usuario
@@ -476,7 +476,7 @@ examples/
 Tutorial
 \emph default
 , o cuando estés confuso a la hora de hacer algo complicado con LyX, echa
- un ojeada a estos archivos.
+ un vistazo a estos archivos.
 \end_layout
 
 \begin_layout Subsection
@@ -739,11 +739,8 @@ del
 \end_inset
 
 texto\SpecialChar \menuseparator
-
-\lang english
-Customized
+Personalizado
 \family default
-\lang spanish
  (botón 
 \begin_inset Info
 type  "icon"
@@ -2288,15 +2285,15 @@ Sitúa el cursor en algún lugar de la sección 2 de tu documento.
 \end_layout
 
 \begin_layout LyX-Code
-Si quieres saber más acerca de este documento, ve a mirar
+Si quieres saber más acerca de este documento, mira
 \begin_inset Newline newline
 \end_inset
 
-la sección , que se puede encontrar en la página .
+la sección, que se puede encontrar en la página .
 \end_layout
 
 \begin_layout Standard
-Ahora —con el cursor tras la palabra 
+Ahora, con el cursor tras la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2304,7 +2301,7 @@ sección
 \begin_inset Quotes frd
 \end_inset
 
-— elige 
+, elige 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia cruzada
@@ -2358,11 +2355,9 @@ Espacio
 protegido
 \family default
  (atajo 
-\begin_inset Info
-type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
-\end_inset
-
+\family sans
+Ctrl+Espacio
+\family default
 ) entre la palabra 
 \begin_inset Quotes fld
 \end_inset
@@ -2412,11 +2407,8 @@ LyX coloca las referencias dentro de un recuadro en el lugar donde estaba
 Formato
 \family default
 ).
- 
-\lang english
-Preview your document
-\lang spanish
-, y verás cómo en la última página hacemos referencia a la 
+ En el documento de salida, LaTeX habrá hecho su trabajo y verás cómo aparece
+ la referencia a la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2428,20 +2420,27 @@ sección
 \begin_inset Quotes frd
 \end_inset
 
- y la 
+ 
 \begin_inset Quotes fld
 \end_inset
 
-página
+en la página
 \begin_inset space ~
 \end_inset
 
-1
+
+\emph on
+n
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
- (o cualquiera que sea la página en donde aparezca el título de la sección
- 2).
+ (donde 
+\emph on
+n
+\emph default
+ es el número de la página en la que aparezca el título de la sección 2).
 \end_layout
 
 \begin_layout Standard
@@ -2486,7 +2485,7 @@ s cruzadas; ahora podrás comprobarlo.
 \end_inset
 
 2.
- Actualiza la previsión, y —voilà!— la referencia ha cambiado a la sección
+ Actualiza la vista previa, y —voilà!— la referencia ha cambiado a la sección
 \begin_inset space ~
 \end_inset
 
@@ -2629,7 +2628,7 @@ pie
 \end_layout
 
 \begin_layout LyX-Code
-LyX es un procesador de texto de composición.
+LyX es un procesador de composición tipográfica de textos.
 \end_layout
 
 \begin_layout Standard
@@ -2759,7 +2758,7 @@ pie
 \end_layout
 
 \begin_layout Itemize
-las notas se sitúan en el margen de la página, en vez de bajo el texto.
+las notas se sitúan en el margen de la página, en vez de bajo el texto
 \end_layout
 
 \begin_layout Itemize
@@ -2815,7 +2814,7 @@ Bibliografía.
 \begin_inset Quotes fld
 \end_inset
 
-El Tutorial de Lyx, por el equipo documentación de LyX
+El Tutorial de Lyx, por el equipo de documentación de LyX
 \begin_inset Quotes frd
 \end_inset
 
@@ -2906,24 +2905,18 @@ Aplicar
 .
  (Puedes tener múltiples citas en el mismo sitio transfiriendo un número
  de claves de esta forma).
-\lang english
-
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-If one uses label names for references that are easy to remember it is easier
- to find the entry in the list of references.
+Si usas para las referencias nombres fáciles de recordar, será más fácil
+ encontrar la entrada en la lista de las mismas.
 \end_layout
 
 \end_inset
 
-
-\lang spanish
- Ahora observa la previsión, y verás que la cita aparece entre corchetes
- en el documento, referenciando a la bibliografía al final del documento.
+ Ahora, en la vista previa del documento verás que la cita aparece entre
+ corchetes en el documento, enlazando a la bibliografía al final del documento.
  El campo 
 \family sans
 Texto
@@ -3033,11 +3026,11 @@ general
 \end_layout
 
 \begin_layout Standard
-Esto puede no parecer muy útil.
- Sin embargo, si observas la previsión, verás que se ha generado un índice
+Esto puede parecer no muy útil.
+ Sin embargo, si observas la vista previa, verás que se ha generado un índice
  con todas las secciones y subsecciones de tu documento.
  Una vez más, si reordenas las secciones o añades alguna, estos cambios
- se verán reflejados en la previsión cuando lo actualices.
+ se verán reflejados en la vista previa cuando la actualices.
 \end_layout
 
 \begin_layout Standard
@@ -3126,7 +3119,7 @@ Escribe en cualquier parte de tu documento:
 \end_layout
 
 \begin_layout LyX-Code
-Me gusta lo que dijo Einstein, E=mc^2, porque es tan simple.
+Me gusta lo que dijo Einstein, E=mc^2, porque es tan sencillo\SpecialChar \ldots{}
  
 \end_layout
 
@@ -3142,20 +3135,20 @@ Ahora la ecuación no tiene muy buen aspecto en LyX ni en la salida; no hay
 \end_inset
 
  como un verdadero exponente.
- Esta composición tan mala se debe a que no le hemos dicho a LyX que estamos
+ Esta composición tan simple se debe a que no le hemos dicho a LyX que estamos
  escribiendo una expresión matemática, así que la compone como texto normal.
 \end_layout
 
 \begin_layout Standard
-Las expresiones matemáticas se escriben en modo matemático o de ecuaciones.
- Para entrar en dicho modo, sólo tienes que pinchar el botón de la barra
+Veamos cómo poner dicha expresión para que se muestre correctamente impresa
+ en modo matemático: selecciona la ecuación y pulsa el botón de la barra
  de herramientas 
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
- o usar el menú 
+ o usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Ecuación\SpecialChar \menuseparator
@@ -3166,41 +3159,22 @@ En
 línea
 \family default
 .
- LyX abrirá un pequeño recuadro azul, con un rectángulo magenta a su alrededor.
- 
-\lang english
-Now either
-\lang spanish
- introduce aquí de nuevo ecuación o 
-\lang english
-highlight
-\lang spanish
- E=mc^2 
-\lang english
-and click the toolbar button
-\lang spanish
- 
-\begin_inset Info
-type  "icon"
-arg   "math-mode"
-\end_inset
-
-.
- La expresión se escribe en azul, y el recuadro azul desaparece tan pronto
- como el punto de inserción deja de estar vacío.
- Ahora pulsa 
+ Si no hay nada seleccionado, LyX inserta un pequeño recuadro azul que correspon
+de a una ecuación vacía, en un marco en color magenta.
+ En cuanto se escribe algo dentro del recuadro azul, este desaparece y la
+ expresión en modo matemático se muestra en color azul.
+ Pulsa 
 \family sans
 Esc
 \family default
- para dejar el modo matemático.
- El rectángulo magenta desaparece, dejando el cursor a la derecha de la
- expresión y ahora si escribes algo será texto normal.
+ para salir de la ecuación.
+ El marco magenta desaparece, dejando el cursor a la derecha de la expresión.
+ Ahora, lo que escribas será texto normal.
 \end_layout
 
 \begin_layout Standard
-Ejecuta LaTeX y mira la salida.
- Observa que la expresión se ha impreso bien, con espacios entre las letras
- y el signo igual, y el 
+En el documento de salida podrás observar que la expresión se imprime adecuadame
+nte, con espacios entre las letras y el signo igual, y el 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3208,8 +3182,8 @@ Ejecuta LaTeX y mira la salida.
 \begin_inset Quotes frd
 \end_inset
 
- como superíndice.
- Se asume que en modo matemático las letras son variables, y por tanto vienen
+ como exponente.
+ Se asume que en modo matemático las letras son variables, y por tanto aparecen
  en cursiva.
  Los números son sólo números y no van en cursiva.
 \end_layout
@@ -3540,11 +3514,7 @@ Ecuación
 Editar\SpecialChar \menuseparator
 Ecuación
 \family default
- 
-\lang english
-(the latter only appears when you are in Math mode)
-\lang spanish
-.
+ (este último solo se muestra si el cursor está en una ecuación).
  Sin embargo, nos vamos a concentrar en el uso de las 
 \family sans
 Barras
@@ -3698,22 +3668,6 @@ matemáticas
  flechas varias, relaciones, operadores, sumas e integrales.
  Observa que los subíndices y los superíndices te permiten poner límites
  inferiores y superiores en sumas e integrales.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Quotes fld
-\end_inset
-
-No hay nada que no puedas hacer\SpecialChar \ldots{}
- Todo lo que necesitas es 
-\begin_inset Formula $\heartsuit$
-\end_inset
-
-.
-\begin_inset Quotes frd
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -4059,7 +4013,11 @@ sin
 \family sans
 Retroceso
 \family default
- se borrará toda la palabra.
+ se borrará
+\begin_inset Formula $ $
+\end_inset
+
+ toda la palabra.
  Ahora escribe 
 \begin_inset Quotes fld
 \end_inset
@@ -4477,7 +4435,7 @@ Etiquetar y numerar expresiones.
 \end_layout
 
 \begin_layout Itemize
-Escribir ecuaciones con varias líneas
+Escribir ecuaciones con varias líneas.
 \end_layout
 
 \begin_layout Itemize
