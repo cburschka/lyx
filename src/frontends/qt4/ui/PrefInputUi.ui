@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>PrefInputUi</class>
  <widget class="QWidget" name="PrefInputUi">
@@ -41,7 +42,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>&amp;First:</string>
+         <string>&amp;Primary:</string>
         </property>
         <property name="buddy">
          <cstring>firstKeymapED</cstring>
@@ -87,7 +88,7 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>S&amp;econd:</string>
+         <string>S&amp;econdary:</string>
         </property>
         <property name="buddy">
          <cstring>secondKeymapED</cstring>
@@ -114,15 +115,15 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0" colspan="3" >
-       <widget class="QCheckBox" name="dontswapCB" >
+      <item row="3" column="0" colspan="3">
+       <widget class="QCheckBox" name="dontswapCB">
         <property name="toolTip">
          <string>Mac OS X specific setting for use with emacs bindings. Takes effect next time LyX is launched.</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Do not swap Apple and Control keys</string>
         </property>
-        <property name="checked" >
+        <property name="checked">
          <bool>false</bool>
         </property>
        </widget>
@@ -201,13 +202,13 @@
      <property name="title">
       <string>Scroll wheel zoom</string>
      </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <widget class="QWidget" name="">
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
