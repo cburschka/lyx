@@ -98,23 +98,34 @@ bool checkPastePossible(int index)
 }
 
 
-pair<PitPosPair, pit_type>
-pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
+struct PasteReturnValue {
+	PasteReturnValue(pit_type r_par, pos_type r_pos, bool r_nu) :
+	  par(r_par), pos(r_pos), needupdate(r_nu)
+	{}
+
+	pit_type par;
+	pos_type pos;
+	bool needupdate;
+};
+
+PasteReturnValue
+pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		     DocumentClassConstPtr oldDocClass, ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
+	bool need_update = false;
 	InsetText * target_inset = cur.inset().asInsetText();
 	if (!target_inset) {
 		InsetTabular * it = cur.inset().asInsetTabular();
 		target_inset = it? it->cell(cur.idx())->asInsetText() : 0;
 	}
-	LASSERT(target_inset, return make_pair(PitPosPair(pit, pos), pit));
+	LASSERT(target_inset, return PasteReturnValue(pit, pos, need_update));
 	ParagraphList & pars = target_inset->paragraphs();
 
 	if (parlist.empty())
-		return make_pair(PitPosPair(pit, pos), pit);
+		return PasteReturnValue(pit, pos, need_update);
 
 	BOOST_ASSERT (pos <= pars[pit].size());
 
@@ -244,7 +255,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 				docstring const oldname = lab->getParam("name");
 				lab->updateLabel(oldname);
 				// We need to update the buffer reference cache.
-				cur.forceBufferUpdate();
+				need_update = true;
 				docstring const newname = lab->getParam("name");
 				if (oldname == newname)
 					continue;
@@ -275,7 +286,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 			docstring const oldname = lab.getParam("name");
 			lab.updateLabel(oldname);
 			// We need to update the buffer reference cache.
-			cur.forceBufferUpdate();
+			need_update = true;
 			docstring const newname = lab.getParam("name");
 			if (oldname == newname)
 				break;
@@ -302,7 +313,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 			InsetInclude & inc = static_cast<InsetInclude &>(*it);
 			inc.updateCommand();
 			// We need to update the list of included files.
-			cur.forceBufferUpdate();
+			need_update = true;
 			break;
 		}
 
@@ -312,7 +323,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
 			// We need to update the buffer reference cache.
-			cur.forceBufferUpdate();
+			need_update = true;
 			docstring const newkey = bib.getParam("key");
 			if (oldkey == newkey)
 				break;
@@ -351,7 +362,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 				break;
 			lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
 			// We need to update the list of branches.
-			cur.forceBufferUpdate();
+			need_update = true;
 			break;
 		}
 
@@ -412,7 +423,7 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 		}
 	}
 
-	return make_pair(PitPosPair(pit, pos), last_paste + 1);
+	return PasteReturnValue(pit, pos, need_update);
 }
 
 
@@ -463,26 +474,47 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 void putClipboard(ParagraphList const & paragraphs, 
 	DocumentClassConstPtr docclass, docstring const & plaintext)
 {
-	// For some strange reason gcc 3.2 and 3.3 do not accept
-	// Buffer buffer(string(), false);
 	// This used to need to be static to avoid a memory leak. It no longer needs
 	// to be so, but the alternative is to construct a new one of these (with a
 	// new temporary directory, etc) every time, and then to destroy it. So maybe
 	// it's worth just keeping this one around.
 	static Buffer * buffer = theBufferList().newInternalBuffer(
 		FileName::tempName("clipboard.internal").absFileName());
+
+	// These two things only really need doing the first time.
 	buffer->setUnnamed(true);
-	buffer->paragraphs() = paragraphs;
 	buffer->inset().setBuffer(*buffer);
+
+	// This needs doing every time.
 	buffer->params().setDocumentClass(docclass);
+
+	// we will use pasteSelectionHelper to copy the paragraphs into the
+	// temporary Buffer, since it does a lot of things to fix them up.
+	DocIterator dit = doc_iterator_begin(buffer, &buffer->inset());
+	ErrorList el;
+	pasteSelectionHelper(dit, paragraphs, docclass, el);
+
+	// The Buffer is being used to export. This is necessary so that the
+	// updateMacros call will record the needed information.
+	MarkAsExporting mex(buffer);
+
+	buffer->updateBuffer(Buffer::UpdateMaster, OutputUpdate);
+	buffer->updateMacros();
+	buffer->updateMacroInstances(OutputUpdate);
+
+	// LyX's own format
 	string lyx;
 	ostringstream oslyx;
 	if (buffer->write(oslyx))
 		lyx = oslyx.str();
+
+	// XHTML format
 	odocstringstream oshtml;
 	OutputParams runparams(encodings.fromLyXName("utf8"));
 	buffer->writeLyXHTMLSource(oshtml, runparams, Buffer::FullSource);
+
 	theClipboard().put(lyx, oshtml.str(), plaintext);
+
 	// Save that memory
 	buffer->paragraphs().clear();
 }
@@ -983,14 +1015,12 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 		Text * text = cur.text();
 		LASSERT(text, /**/);
 
-		pit_type endpit;
-		PitPosPair ppp;
-
-		boost::tie(ppp, endpit) =
+		PasteReturnValue prv =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
-		cur.forceBufferUpdate();
+		if (prv.needupdate)
+			cur.forceBufferUpdate();
 		cur.clearSelection();
-		text->setCursor(cur, ppp.first, ppp.second);
+		text->setCursor(cur, prv.par, prv.pos);
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid

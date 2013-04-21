@@ -3726,24 +3726,6 @@ bool Buffer::autoSave() const
 }
 
 
-// helper class, to guarantee this gets reset properly
-class Buffer::MarkAsExporting {
-public:
-	MarkAsExporting(Buffer const * buf) : buf_(buf)
-	{
-		LASSERT(buf_, /* */);
-		buf_->setExportStatus(true);
-	}
-	~MarkAsExporting()
-	{
-		buf_->setExportStatus(false);
-	}
-private:
-	Buffer const * const buf_;
-};
-
-
-
 void Buffer::setExportStatus(bool e) const
 {
 	d->doing_export = e;

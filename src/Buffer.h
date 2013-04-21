@@ -94,6 +94,9 @@ typedef std::set<Buffer *> CloneList;
  * minimal, probably not.
  * \author Lars Gullik Bjønnes
  */
+
+class MarkAsExporting;
+
 class Buffer {
 public:
 	/// What type of log will \c getLogName() return?
@@ -717,7 +720,6 @@ public:
 	int charCount(bool with_blanks) const;
 
 private:
-	class MarkAsExporting;
 	friend class MarkAsExporting;
 	/// mark the buffer as busy exporting something, or not
 	void setExportStatus(bool e) const;
@@ -750,6 +752,25 @@ private:
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
 	Impl * const d;
+};
+
+
+/// Helper class, to guarantee that the export status
+/// gets reset properly. To use, simply create a local variable:
+///    MarkAsExporting mex(bufptr);
+/// and leave the rest to us.
+class MarkAsExporting {
+public:
+	MarkAsExporting(Buffer const * buf) : buf_(buf)
+	{
+		buf_->setExportStatus(true);
+	}
+	~MarkAsExporting()
+	{
+		buf_->setExportStatus(false);
+	}
+private:
+	Buffer const * const buf_;
 };
 
 
