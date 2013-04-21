@@ -5780,7 +5780,7 @@ Größe
 \family default
  für jede Ebene festlegen.
  In LyX werden (zur Zeit) nur die oben erwähnten vier Standardzeichen verwendet.
- Alle Anpassungen erscheinen im gedruckten Dokument.
+ Alle Anpassungen erscheinen nur im gedruckten Dokument.
 \end_layout
 
 \begin_layout Standard
@@ -5979,15 +5979,19 @@ Auch in der
 Aufzählung
 \family default
 -Umgebung können Sie diese Marken Ihren Wünschen durch entsprechende Befehle
- im LaTeX-Vorspann anpassen (siehe 
-\family sans
-Hilfe\SpecialChar \menuseparator
-Handbuchergänzun\SpecialChar \-
-gen
-\family default
-).
- Wie bereits erwähnt, erscheinen die Anpassungen nur im gedruckten Dokument,
- nicht im LyX-Fenster.
+ im LaTeX-Vorspann anpassen, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Benutzerdefinierte-Listen"
+
+\end_inset
+
+.
+ Solche Anpassungen erscheinen nur im gedruckten Dokument, nicht im LyX-Fenster.
 \end_layout
 
 \begin_layout Standard
@@ -6000,9 +6004,13 @@ Aufzählung
 \emph on
 wirklich
 \emph default
- Abschnitt 
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -6064,8 +6072,7 @@ LyX setzt die Marke fett und fügt zusätzlichen Leerraum zwischen der Marke
 
 \begin_layout Standard
 Wenn Sie mehr als ein Wort als Marke wollen oder benötigen, benutzen Sie
- ein normales oder geschütztes Leerzeichen.
- (Entweder mit 
+ ein normales oder geschütztes Leerzeichen (
 \family sans
 Strg+Alt+Leertaste
 \family default
@@ -6078,23 +6085,20 @@ taste
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Normales
-\begin_inset space \space{}
-\end_inset
-
-/
-\begin_inset space \space{}
-\end_inset
-
 Geschütztes
 \begin_inset space \space{}
 \end_inset
 
 Leerzeichen
 \family default
-.) Lesen Sie auch Abschnitt 
+).
+ Lesen Sie auch Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Variabler-horiz-Abstand"
 
 \end_inset
@@ -6152,9 +6156,13 @@ Schachteln: Sie können natürlich
 Beschreibung
 \family default
 -Umgebungen ineinander oder mit anderen Typen schachteln.
- Lesen Sie Abschnitt 
+ Lesen Sie Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -6483,6 +6491,13 @@ Zentriert
 
 \begin_layout Subsection
 Benutzerdefinierte Listen
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Benutzerdefinierte-Listen"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -7613,7 +7628,7 @@ Strg+Eingabe
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Zeilenumbruch
+Normaler Zeilenumbruch
 \family default
 
 \begin_inset Index idx
@@ -7644,7 +7659,7 @@ Wissenschaftliche Texte
 
 \begin_layout Standard
 Die meisten wissenschaftlichen Texte beginnen mit einer kurzen Zusammenfassung
- und enden mit einem Literaturverzeichnis.
+ (oft als Abstract bezeichnet) und enden mit einem Literaturverzeichnis.
  LyX hat dafür Absatzumgebungen.
 \end_layout
 
@@ -7677,15 +7692,7 @@ article
 \family sans
 report
 \family default
--Dokumentklassen benutzen (und 
-\family sans
-amsart
-\family default
-, was nur ein Spezialfall von 
-\family sans
-article
-\family default
- ist).
+-Dokumentklassen benutzen.
 \end_layout
 
 \begin_layout Standard
@@ -7764,15 +7771,7 @@ Zusammenfassung
 
 \begin_layout Standard
 Wir würden Ihnen gern ein Beispiel zeigen, aber das geht nicht, weil dieses
- Dokument die 
-\family sans
-book
-\begin_inset space ~
-\end_inset
-
-(KOMA-Script
-\family default
-)-Klasse benutzt.
+ Dokument eine Buch-Klasse benutzt.
  Wenn Sie noch nie von einer Zusammenfassung gehört haben, können Sie diese
  Umgebung ruhig ignorieren.
 \end_layout
@@ -8343,13 +8342,70 @@ drei
 \end_layout
 
 \begin_layout Standard
-Wie erstellt man eine Liste in einer anderen?
+Umgebungen schachteln ist einfach: Verwenden Sie das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Listentiefe
+\begin_inset space ~
+\end_inset
+
+erhöhen 
+\family default
+oder 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Listentiefe
+\begin_inset space ~
+\end_inset
+
+verringern
+\family default
+ um die Schachtelungstiefe zu verändern.
+ (In der Statusleiste ist die Schachtelungsebene angegeben.) Statt des Menüs
+ können Sie auch die Werkzeugleistenknöpfe 
+\begin_inset Info
+type  "icon"
+arg   "depth-increment"
+\end_inset
+
+ und 
+\begin_inset Info
+type  "icon"
+arg   "depth-decrement"
+\end_inset
+
+ oder die Tastenkürzel 
+\family sans
+Tab
+\family default
+ und 
+\family sans
+Umschalt+Tab
+\family default
+ oder 
+\family sans
+Alt+Umschalt+Rechts
+\family default
+ und 
+\family sans
+Alt+Umschalt+Links
+\family default
+ verwenden.
+ Die Änderung betrifft nur die aktuelle Auswahl, falls Sie eine haben (erlaubt
+ es die Schachtelungstiefe von mehreren Absätzen auf einmal zu ändern),
+ oder den aktuellen Absatz.
 \end_layout
 
 \begin_layout Standard
-Inzwischen sollte die Antwort klar sein: man schachtelt eine Liste in die
- andere.
- Aber Schachteln ist nicht auf Listen beschränkt.
+Beachten Sie, dass LyX die Schachtelungstiefe nur ändert, wenn das möglich
+ ist, ansonsten passiert nichts.
+ Beachten Sie außerdem, dass wenn Sie die Schachtelungstiefe eines Absatzes
+ ändern, die Tiefe der darin geschachtelten Objekte ebenfalls entsprechend
+ angepasst wird.
+\end_layout
+
+\begin_layout Standard
+Schachteln ist nicht auf Listen beschränkt.
  In LyX kann man fast alles ineinander schachteln, wie Sie bald feststellen
  werden.
  Das ist die wirkliche Stärke des Schachtelns von Absatzumgebungen.
