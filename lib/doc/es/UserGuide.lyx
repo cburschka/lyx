@@ -1950,12 +1950,9 @@ Tutorial
 \begin_inset Newline newline
 \end_inset
 
-En LyX, la tecla Tabulador solo se usa para aceptar propuestas de autocompletar
- o 
-\lang english
-to move the cursor in tables or math matrices.
-\lang spanish
-.
+En LyX, la tecla Tabulador solo se usa para aceptar propuestas de autocompletar,
+ desplazar el cursor en cuadros o matrices, o cambiar el nivel de profundidad
+ en listas.
 \end_layout
 
 \begin_layout Labeling
@@ -4000,11 +3997,8 @@ Documentos ! Configuración
 
 , 
 \family default
-puedes definir el espacio entre líneas 
-\lang english
-for the whole document
-\lang spanish
- en el submenú 
+puedes definir el espacio entre líneas para todo el documento en el submenú
+ 
 \family sans
 Diseño
 \begin_inset space ~
@@ -4040,11 +4034,9 @@ LaTeX, paquetes ! setspace
 
 \end_inset
 
+ Para un párrafo determinado, ese espacio se puede definir en el diálogo
  
-\lang english
-You can set it for a single paragraph in the 
 \family sans
-\lang spanish
 Editar\SpecialChar \menuseparator
 Configuración
 \begin_inset space ~
@@ -4056,9 +4048,8 @@ del
 
 párrafo
 \family default
-\lang english
- dialog but this should be used very exceptionally because vertical spacing
- is normally defined in the environment's style.
+, pero debería usarse de manera excepcional porque el espacio vertical se
+ define normalmente en el estilo del entorno.
 \end_layout
 
 \begin_layout Section
@@ -4248,11 +4239,8 @@ Entrar
 Normal
 \family default
 .
- 
-\lang english
-Also the nesting depth is preserved
-\lang spanish
- (más sobre anidación en la sección
+ Además se mantiene la profundidad de anidación.
+ (Más detalles sobre anidación en la sección
 \begin_inset space ~
 \end_inset
 
@@ -4365,7 +4353,7 @@ Autor
 \end_layout
 
 \begin_layout Itemize
-Si quieres cierta apariencia para la fecha, quieres una fecha fija, o sustituir
+Si quieres cierta apariencia para la fecha, una fecha fija, o sustituir
  la fecha por algún texto, usa el entorno 
 \family sans
 Fecha.
@@ -4373,27 +4361,16 @@ Fecha.
 \family default
  Observa que el uso de este entorno es opcional.
  Si no lo empleas, LaTeX insertará automáticamente la fecha actual.
- Si no deseas ninguna fecha, 
-\lang english
-use the option 
+ Si no quieres poner fecha, usa la opción 
 \family sans
-Suppress default date on front page
+Suprimir fecha por omisión en primera página
 \family default
- in the
-\lang spanish
- menú 
+ en el menú 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
-
-\lang english
-Document
-\begin_inset space ~
-\end_inset
-
-class
+Clase del documento
 \family default
-\lang spanish
 .
 \end_layout
 
@@ -5125,7 +5102,7 @@ Enumeración*
 \family sans
 Enumeración
 \family default
-, LyX etiqueta los ítems de la lista con marcas y números, respectivamente.
+, LyX etiqueta los ítems de la lista con marcas o números, respectivamente.
  En los entornos 
 \family sans
 Descripción
@@ -5159,25 +5136,24 @@ no
 \family sans
 Normal
 \family default
-, se mantiene el entorno actual y se genera un nuevo ítem.
- La profundidad de anidación se mantiene.
- Para crear un nuevo ítem pero con un nivel menor de profundidad de anidación
- debes pulsar 
+, se mantiene el entorno actual y se genera un nuevo ítem en el mismo nivel
+ de profundidad de anidación.
+ Para crear un nuevo ítem en un nivel menor de profundidad de anidación
+ hay que teclear 
 \family sans
 Alt+Entrar
 \family default
 .
+ Si se teclea esto en un primer nivel de una lista se vuelve al entorno
  
-\lang english
-If you do this at the top level of a list, it returns you to the 
 \family sans
-Standard
+Normal
 \family default
- environment.
+.
 \end_layout
 
 \begin_layout Standard
-Puedes anidar listas de cualquier tipo dentro de otra.
+Puedes anidar listas de cualquier tipo dentro de otra lista.
  De hecho, LyX cambia las marcas en algunos ítems, dependiendo de cómo están
  anidados.
  Si piensas usar cualquiera de los entornos de lista, te sugerimos que leas
@@ -5342,7 +5318,7 @@ La marca para el primer nivel de
 \family sans
 Enumeración*
 \family default
- es un topo.
+ es un punto grueso, o topo.
 \end_layout
 
 \begin_deeper
@@ -28941,9 +28917,7 @@ emph
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the characters |
+Para introducir en entradas de la nomenclatura caracteres como |
 \begin_inset space \space{}
 \end_inset
 
@@ -28955,7 +28929,7 @@ If the characters |
 \begin_inset space \space{}
 \end_inset
 
-, @ and
+, @ 
 \begin_inset space \space{}
 \end_inset
 
@@ -28963,9 +28937,8 @@ If the characters |
 \begin_inset space \space{}
 \end_inset
 
-should appear in nomenclature entries they need to be escaped by adding
- a quote character in front of them.
- To avoid that the 
+, es necesario que vayan precedidos por comillas como secuencia de escape.
+ Para evitar que el carácter 
 \begin_inset space \space{}
 \end_inset
 
@@ -28973,12 +28946,12 @@ should appear in nomenclature entries they need to be escaped by adding
 \begin_inset space \space{}
 \end_inset
 
-character influences the following characters the sequence is ended by an
- empty pair of braces: ""{}
+ perturbe los caracteres siguientes, la secuencia se finaliza con un par
+ de llaves: ""{}
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\"{}"
-description "The quote sign is output by writing ' \"\"{}\"\"{} '"
+description "El carácter comillas se obtiene escribiendo ' \"\"{}\"\"{} '"
 
 \end_inset
 
@@ -32245,11 +32218,8 @@ type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- inicia la revisión o a partir de la posición del cursor o a la 
-\lang english
-beginning of the currently selected text
-\lang spanish
-.
+ inicia la revisión a partir de la posición del cursor o al comienzo del
+ texto seleccionado.
  Se muestra una ventana en la que aparece un cuadro con cualquier palabra
  incorrecta o desconocida, que puedes reemplazar en el cuadro siguiente.
  Siempre que se encuentra una palabra incorrecta el texto se desplaza hasta
