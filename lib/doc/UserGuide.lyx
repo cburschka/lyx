@@ -9810,7 +9810,7 @@ Spacing
 \begin_layout Standard
 What is a space? While you might be used to pressing the space key anytime
  you want to separate two words in ordinary word processors, LyX offers
- you more spaces: Spaces of different width and spaces which can or cannot
+ you more spaces: spaces of different widths and spaces which can or cannot
  be broken at the end of a line.
  The following sections will show you some examples where those spaces are
  useful.
@@ -9889,13 +9889,9 @@ reference "sec:Bibliography"
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
 Protected
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 Space
 \family default
  (shortcut 
@@ -9972,16 +9968,12 @@ Spaces ! Inter-word
 \end_layout
 
 \begin_layout Standard
-Some languages (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-English) have the typographical convention to add extra space after an end-of-se
-ntence punctuation mark, and LyX honors those conventions (see section
+With the introduction of typewriters, it became conventional in some countries
+ to type two spaces after a period to mimic the wider spaces used by typesetters
+ at the ends of sentences.
+ There is no need to do this as LyX automatically takes care about this.
+ However, you do not want an end of sentence space after an abbreviation
+ followed by a period; see section
 \begin_inset space ~
 \end_inset
 
@@ -9992,9 +9984,18 @@ reference "sub:Abbreviations"
 
 \end_inset
 
-).
- Sometimes, you want a normal space nevertheless.
- In this case, insert an inter-word space (shortcut 
+ for examples.
+ To insert a normal space, select 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Interword
+\begin_inset space ~
+\end_inset
+
+Space
+\family default
+ (shortcut 
 \begin_inset Info
 type  "shortcut"
 arg   "space-insert normal"
@@ -10043,7 +10044,7 @@ protected
 
 ).
  The typographical conventions in a lot of languages propose the use of
- thin spaces in cases where normal spaces would be too wide, for instance
+ thin spaces in cases where normal spaces would be too wide, for instance,
  inside abbreviations:
 \end_layout
 
@@ -10074,7 +10075,7 @@ kg (thin space)
 \end_layout
 
 \begin_layout Standard
-You can insert thin spaces also with the menu 
+You can insert thin spaces with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
@@ -10098,7 +10099,7 @@ More Spaces
 \end_layout
 
 \begin_layout Standard
-You can furthermore insert the following space types:
+You can also insert the following space types:
 \end_layout
 
 \begin_layout Description
@@ -10122,7 +10123,7 @@ space A line with a
 \begin_inset Formula $\gets$
 \end_inset
 
- Negative thin space between the arrows.
+ negative thin space between the arrows.
 \end_layout
 
 \begin_layout Description
@@ -10134,7 +10135,7 @@ Enspace
 \begin_inset space \thinspace{}
 \end_inset
 
-em) A line with a 
+em) A line with an 
 \begin_inset Formula $\to$
 \end_inset
 
@@ -10146,7 +10147,7 @@ em) A line with a
 \begin_inset Formula $\gets$
 \end_inset
 
- Enspace
+ enspace
 \begin_inset space ~
 \end_inset
 
@@ -10265,7 +10266,7 @@ reference "tab:Width-of-the"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10614,7 +10615,7 @@ Fill
 
 Pattern
 \family default
- in the space dialog: The following patterns are available:
+s in the space dialog: The following patterns are available:
 \end_layout
 
 \begin_layout Standard
@@ -10691,7 +10692,7 @@ Down brace:
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -10739,15 +10740,7 @@ Spacing ! Phantom
 
 \begin_layout Standard
 Sometimes you want to insert space with exactly the length of a phrase.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-you want to create the following multiple choice question:
+ For example, you want to create the following multiple choice question:
 \end_layout
 
 \begin_layout Standard
@@ -10804,7 +10797,8 @@ jumps
 \end_layout
 
 \begin_layout Standard
-So that the choices appear exactly after the phrase 
+\noindent
+so that the choices appear exactly after the phrase 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10926,7 +10920,12 @@ DefSkip
  is the skip adjusted in the dialog 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
+Settings\SpecialChar \menuseparator
+Text
+\begin_inset space ~
+\end_inset
+
+Layout
 \family default
 
 \begin_inset Index idx
@@ -10966,7 +10965,10 @@ Spacing ! Fills
 \end_inset
 
  is a variable space, set so that the space is maximal within one page.
- An example: You have only two short paragraphs on one page with a vfill
+ An example: you have only two short paragraphs on one page with a 
+\family sans
+Vfill
+\family default
  between them.
  Then the first paragraph is placed at the top of the page and the second
  one at the bottom, because the space between them is then maximal.
@@ -11036,7 +11038,7 @@ reference "chap:Units-available-in"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -11213,8 +11215,8 @@ Floats
 \end_layout
 
 \begin_layout Standard
-We recommend not to use forced page breaks until the text is finished and
- until you have checked in the preview to see if you 
+We recommend you not to use forced page breaks until the text is finished
+ and you have checked in the preview to see if you 
 \emph on
 really
 \emph default
@@ -11297,7 +11299,7 @@ Page breaks ! Clear
 Rather than forced page breaks where the content behind the break is placed
  directly on the next page, you can also clear pages while breaking them.
  That means that the current paragraph is terminated and everything, including
- unprocessed floats, from the earlier part of the document are placed behind
+ unprocessed floats, from the earlier part of the document are placed after
  it, if necessary by adding pages.
 \end_layout
 
@@ -11353,8 +11355,8 @@ name "sub:Forced-Line-Breaks"
 \end_layout
 
 \begin_layout Standard
-Similar to page breaks there are two types of line breaks: One that simply
- breaks the line.
+Similar to page breaks there are two types of line breaks: one simply breaks
+ the line.
  You can force this line break within a paragraph by selecting 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -11390,6 +11392,12 @@ Line
 
 Break
 \family default
+ or with 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert linebreak"
+\end_inset
+
  breaks the line and stretches it so that it fills out the whole space between
  the page margins.
  This is useful to avoid 
@@ -11406,16 +11414,8 @@ fringes
 \begin_layout Standard
 You shouldn't use forced line breaks to correct LaTeX's line breaking, as
  LaTeX is very good at line breaking.
- There are, however, a number of situations where it is necessary to actively
- set a line break, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-in a poem or for an address (see sections
+ There are, however, a number of situations where it is necessaryactively
+ to set a line break, for example, in a poem or for an address (see sections
 \begin_inset space ~
 \end_inset
 
@@ -11514,15 +11514,8 @@ Characters and Symbols
 
 \begin_layout Standard
 You can directly enter all characters that are available on your keyboard.
- You can also use special keyboard maps to be able to enter e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-characters needed for French with an English keyboard.
+ You can also use special keyboard maps to be able to enter, for example,
+ characters needed for French with an English keyboard.
  See section
 \begin_inset space \thinspace{}
 \end_inset
@@ -11554,7 +11547,7 @@ Symbols
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -11615,7 +11608,7 @@ Fonts ! Vector-
 
 \end_inset
 
- are fonts, built from outlines of the single glyphs (e.
+ are built from outlines of the single glyphs (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -11627,7 +11620,7 @@ g.
  curve is filled out with pixels according to the size and glyph.
  This means that vector fonts will look pretty good in all sizes.
  Only at very small sizes where each pixel has to be very carefully computed
- to provide a good image, it might be hard to provide a good rendering.
+ to provide a good image might it be hard to provide a good rendering.
 \begin_inset Newline newline
 \end_inset
 
@@ -11672,18 +11665,25 @@ Fonts ! Bitmap-
 
 \end_inset
 
- on the other hand, are defined by bitmap graphics from the start, so they
+ on the other hand, are defined by bitmap graphics from the start; so they
  will look good at all the sizes they are meant for.
  However, they don't scale well, because in order to scale a glyph, each
  pixel is enlarged into several pixels.
- It is the same effect that happens if you try to enlarge a picture in a
- picture manipulation program.
- In order to relieve this effect, bitmap fonts are typically provided in
- several fixed sizes typically from around 8 pixels high up to 34 pixels
- or so high in steps according to what is believed to be useful.
+ It is the same effect that happens if you try to enlarge a picture in an
+ image manipulation program.
+ In order to mitigate this effect, bitmap fonts are typically provided in
+ several fixed sizes typically from around 8
+\begin_inset space ~
+\end_inset
+
+pixels high up to 34
+\begin_inset space ~
+\end_inset
+
+pixels or so high in steps according to what is believed to be useful.
  The advantage of bitmap fonts is that no complicated computations are necessary
- to display each glyph, so bitmap fonts are thus faster displayed than scalable
- fonts.
+ to display each glyph; so bitmap fonts display therefore more quickly than
+ scalable fonts.
  The disadvantage is that sizes that don't exist as fixed versions have
  to be scaled by doubling pixels, and thus look bad.
 \begin_inset Newline newline
@@ -11709,8 +11709,7 @@ The result of all this is that bitmap fonts are best for the size they are
 \end_layout
 
 \begin_layout Standard
-To test which fonts are used in a PDF-document, you can have a look into
- its document properties.
+To see which fonts are used in a PDF-document, look at its document properties.
 \end_layout
 
 \begin_layout Standard
@@ -11743,19 +11742,19 @@ name "sub:LaTeX-font-support"
 \end_layout
 
 \begin_layout Standard
-Traditionally, LaTeX uses its own fonts.
+Traditionally, LaTeX used its own fonts.
  That is to say, you cannot directly access the fonts installed on your
  operating system, but you have to use specific fonts provided by your LaTeX
  distribution.
  The reason is that LaTeX needs some extra information about the fonts,
  which have to be provided by additional files and packages.
- The downside of this is that your font choice is somewhat limited, compared
- to usual word processors.
+ The downside of this is that your font choice is somewhat limited compared
+ to a word processor.
  On the other hand this comes with the advantage that the provided fonts
  are generally of very good quality, and that LaTeX files are very portable
  across different machines.
- Also, the range of fonts supported by traditional LaTeX was increased a
- lot meanwhile so that you can find packages for many free and commercial
+ Also, the range of fonts supported by traditional LaTeX has increased a
+ lot in the meantime; so you can find packages for many free and commercial
  fonts.
  In LyX, only a subset of these are directly selectable via the user interface
  (see section
@@ -11770,24 +11769,24 @@ reference "sub:Document-Font"
 \end_inset
 
  for details).
- However, all others are available if you enter the respective LaTeX code
+ However, all the others are available if you enter the relevant LaTeX code
  in the document preamble (please refer to the documentation of your desired
  font).
 \end_layout
 
 \begin_layout Standard
-Recent developments brought some new LaTeX engines that are also able to
- directly access fonts that are installed for your operating system, namely
- XeTeX and LuaTeX.
+Recent developments brought some new LaTeX engines that are also able directly
+ to access fonts that are installed for your operating system, namely XeTeX
+ and LuaTeX.
  Both engines are supported by LyX.
- By using them, you can use theoretically any OpenType or TrueType font
+ By using them, you can theoretically use any OpenType or TrueType font
  that is installed on your system.
  The next section describes how to use these fonts.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -11805,7 +11804,7 @@ es; so you might have to experiment.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -11886,9 +11885,9 @@ serif
 \family typewriter
 typewriter
 \family default
- (monospaced) — you can specify the base font size and scaling factors for
- (some) sans serif and typewriter fonts if this is necessary to fit with
- the roman font.
+ (monospaced) — and you can specify the base font size and scaling factors
+ for (some) sans serif and typewriter fonts if this is necessary to fit
+ with the roman font.
 \end_layout
 
 \begin_layout Standard
@@ -12046,8 +12045,8 @@ cm
 \family typewriter
 ec
 \family default
- are bitmap fonts, they often looks pixelated in PDF output, especially
- when you read the PDF in a zoomed size.
+ are bitmap fonts, they often look pixelated in PDF output, especially when
+ you read the PDF in a zoomed size.
 \begin_inset Foot
 status collapsed
 
@@ -12067,7 +12066,7 @@ Reader
 \end_inset
 
  To get rid of pixelated fonts, you have to use a vector font.
- Depending on how your document should look like, you can either:
+ Depending on how your document should look, you can either:
 \end_layout
 
 \begin_layout Itemize
@@ -12288,7 +12287,7 @@ cm
 \family typewriter
 ec
 \family default
-, you can of course select one of the other provided vector fonts, e.
+, you can of course select one of the other vector fonts provided, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12485,7 +12484,11 @@ reference "sub:Fine-Tuning-with-the"
 \begin_layout Standard
 The 
 \family sans
-Default Family
+Default
+\begin_inset space ~
+\end_inset
+
+Family
 \family default
  selection lets you specify whether the base font of your document should
  be roman, sans
@@ -12507,7 +12510,7 @@ Default
 \family sans
 roman
 \family default
-, but some classes (such as presentation classes) also use other defaults.
+, but some classes (such as presentation classes) use other defaults.
 \end_layout
 
 \begin_layout Standard
@@ -12584,11 +12587,11 @@ Use Old Style Figures
 \begin_inset space \thinspace{}
 \end_inset
 
--
+--
 \begin_inset space \thinspace{}
 \end_inset
 
-9) with ascenders and descenders, which makes them fit nicely with lower
+9) with ascenders and descenders, which makes them fit nicely with lowercase
  letters.
  
 \family sans
@@ -12639,15 +12642,12 @@ CJK
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -12843,7 +12843,7 @@ Do not overuse character styles!
 It's also a warning in addition to an example.
  One's writing should parallel ordinary conversation.
  Since we don't all constantly scream at each other, we should also avoid
- the common tendency to overuse character style.
+ the common tendency to overuse character styles.
  
 \end_layout
 
@@ -12861,9 +12861,16 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \family default
-.
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -12892,7 +12899,7 @@ Text Style
 \end_layout
 
 \begin_layout Standard
-There are always occasions when you will need to do some fine-tuning, so
+There are always occasions when you will need to do some fine-tuning; so
  LyX gives you a way to create a custom character style.
  For example, an academic journal or a corporation may have a style sheet
  requiring a sans-serif font be used in certain situations.
@@ -12906,7 +12913,7 @@ Before we document how to use custom character style, we want to issue a
 \begin_inset Newline newline
 \end_inset
 
-Documents that overuse different fonts and sizes are not well readable and
+Documents that overuse different fonts and sizes are not easy to read and
  tend to look as if someone has knocked huge holes in them.
 \end_layout
 
@@ -12928,7 +12935,7 @@ arg   "dialog-show character"
 \end_inset
 
 .
- There are several boxes on this dialog, each corresponding to a different
+ There are several boxes in this dialog, each corresponding to a different
  font property that you can choose.
  You can choose an option for one of these properties, or select 
 \family sans
@@ -12945,7 +12952,7 @@ Reset
 \family default
  will reset the property to whatever is the default.
  You can use this to reset attributes across a bunch of different paragraph
- environments in a snap.
+ environments all at once.
 \end_layout
 
 \begin_layout Standard
@@ -13164,6 +13171,110 @@ This is the Small caps font shape
 \end_layout
 
 \end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Color
+\family default
+ Alters the text color.
+ Note that not all DVI-viewers are able to display colors.
+ Besides 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+color
+\family default
+, which means that the document default color set in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Color
+\family default
+ for 
+\family sans
+Main
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+ is used, you can choose between 
+\family sans
+Black
+\family default
+, 
+\family sans
+White
+\family default
+, 
+\family sans
+Red
+\family default
+, 
+\family sans
+Green
+\family default
+, 
+\family sans
+Blue
+\family default
+, 
+\family sans
+Cyan
+\family default
+, 
+\family sans
+Magenta
+\family default
+ and 
+\family sans
+Yellow
+\family default
+ text.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Color ! Text
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Language
+\family default
+ This is used to mark regions of text as having a different language from
+ the language of the document.
+ Text marked in this way will be underlined in blue to indicate the change
+ (only within LyX).
+\begin_inset Newline newline
+\end_inset
+
+If you have for example, an extract of German text in a non-German document,
+ LaTeX respects the German hyphenation rules automatically.
+ When using the spell checking (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Spellchecking"
+
+\end_inset
+
+) the German-marked text will be checked according to the German dictionary.
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -13716,116 +13827,25 @@ Caps
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Color
-\family default
- You can adjust the color of the text with this control.
- Notice that not all DVI-viewers are able to display colors.
- Besides 
-\family sans
-No
-\begin_inset space ~
-\end_inset
-
-color
-\family default
-, which is the default 
-\begin_inset Quotes eld
-\end_inset
-
-color
-\begin_inset Quotes erd
-\end_inset
-
- and means normally black, you can choose between 
-\family sans
-Black
-\family default
-, 
-\family sans
-White
-\family default
-, 
-\family sans
-Red
-\family default
-, 
-\family sans
-Green
-\family default
-, 
-\family sans
-Blue
-\family default
-, 
-\family sans
-Cyan
-\family default
-, 
-\family sans
-Magenta
-\family default
- and 
-\family sans
-Yellow
-\family default
- text.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Color ! Text
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Language
-\family default
- This is used to mark regions of text as having a different language from
- the language of the document.
- Text marked in this way will be underlined in blue to indicate the change
- (only within LyX).
-\begin_inset Newline newline
-\end_inset
-
-If you have for example a longer German Text in your document, LaTeX respects
- the German hyphenation rules automatically.
- When using the spell checking (see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Spellchecking"
-
-\end_inset
-
-) the German-marked text will be checked according to the German dictionary.
-\end_layout
-
 \begin_layout Standard
 So you have a huge number of combinations to choose from.
- Once you've chosen a new character style via the 
+ Once you have chosen a new character style via the 
 \family sans
 Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \family default
- dialog, the settings are saved.
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) dialog, the settings are saved.
  You can activate them by using the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -14018,7 +14038,7 @@ roman
 \family sans
 Sans serif
 \family default
- is not recommended to use a base type.
+ is not recommended for use as a base type.
  This font type is therefore often only used for headings and short texts.
  We use it in this document to highlight menu names.
 \end_layout
@@ -14032,10 +14052,17 @@ Toggling
 \end_inset
 
  refers to applying or removing font properties.
- When a property is marked for toggling in the Text Style dialog, applying
- the style to text that already has the property will cause the property
- to be removed.
- If you for example apply a style with properties A, B and C to text that
+ When a property is marked for toggling in the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog, applying the style to text that already has the property will cause
+ the property to be removed.
+ If you, for example, apply a style with properties A, B and C to text that
  currently has font properties B, C, F and G, and if B is set to toggle
  and C is set not to toggle, the text ends up with properties A, C, F and
  G.
@@ -14084,15 +14111,7 @@ Reset
 \end_inset
 
  is never toggled.
- If you e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-set 
+ If you, for example, set 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25144,34 +25163,6 @@ largest
 \end_layout
 
 \begin_layout Section
-Theorem Modules
-\end_layout
-
-\begin_layout Standard
-As of LyX 1.6, support for theorem-like environments has been moved out of
- the document classes and into layout modules.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Layout Modules
-\end_layout
-
-\end_inset
-
- As a result, theorem-like environments can now easily be used with classes
- other than the AMS classes.
- See section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Modules"
-
-\end_inset
-
- for more on layout modules.
-\end_layout
-
-\begin_layout Section
 AMS-LaTeX
 \begin_inset Index idx
 status collapsed
@@ -32958,11 +32949,11 @@ International support
 
 \begin_layout Standard
 This section describes how to use LyX with any language you want.
- For some non-western languages there are special Wiki-pages that explain
- how to set up LyX to use them: 
+ For some languages there are special Wiki-pages that explain how to set
+ up LyX to use them: 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Arabic,Armenian,Farsi,Hebrew"
+key "Arabic,Armenian,Farsi,Hebrew,Latvian,Lithuanian,Mongolian,Vietnamese"
 
 \end_inset
 
@@ -33022,23 +33013,12 @@ Document ! Language
 The 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
+Settings\SpecialChar \menuseparator
+Language
 \family default
  dialog lets you set 
 \family roman
-the language and character encoding for your language.
- 
-\end_layout
-
-\begin_layout Standard
-Choose your language in the 
-\family sans
-Language
-\family default
- section of this dialog.
- The default is 
-\family sans
-English
+the language, the quote style and character encoding
 \family default
 .
 \end_layout
@@ -33051,7 +33031,11 @@ Encoding
  you can choose the character encoding map you want to use for LaTeX export.
  The option 
 \family sans
-Language Default
+Language
+\begin_inset space ~
+\end_inset
+
+Default
 \family default
  is the preferred choice and works well in most cases.
  For details about the different encoding options see section
@@ -33061,7 +33045,7 @@ Language Default
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:The-Document-Settings"
+reference "sec:Language-encodings"
 
 \end_inset
 
@@ -33086,14 +33070,16 @@ If you have for example a U.
 
 S.-style keyboard and want to write in a language other than English, you
  can use an alternate keymap.
- For example, if you have a U.
-\begin_inset space \thinspace{}
-\end_inset
-
-S.-style keyboard but want to write in Italian, you can configure LyX to
+ For example, if you want to write in Italian, you can configure LyX to
  use an Italian keymap.
- The preferences dialog allows you to choose up to two keyboard mappings,
- see section
+ The 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Editing\SpecialChar \menuseparator
+Keyboard/Mouse
+\family default
+ dialog allows you to choose up to two keyboard mappings, see section
 \begin_inset space ~
 \end_inset
 
@@ -33112,8 +33098,11 @@ reference "sub:Keyboard-Map"
 \begin_layout Standard
 Finally, you may just want to change a few key mappings or create an entirely
  different keymap (for Vulcan, for instance).
- You may, for example, normally write in Italian on a U.S.
- keyboard but want to include an occasional quotation in German.
+ You may, for example, normally write in Italian on a U.
+\begin_inset space \thinspace{}
+\end_inset
+
+S.-style keyboard but want to include an occasional quotation in German.
  In such a case, you can write your own keyboard mapping or modify an existing
  one to support the characters you want.
  This and many other customizations are explained in the 
@@ -33121,4680 +33110,6 @@ Finally, you may just want to change a few key mappings or create an entirely
 Customization
 \emph default
  manual.
-\end_layout
-
-\begin_layout Subsection
-Character Tables
-\end_layout
-
-\begin_layout Standard
-Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:The-latin1-character"
-
-\end_inset
-
- shows the 
-\family typewriter
-Latin1
-\family default
- character set.
- You should be able to enter the characters in the first eight columns directly
- from the keyboard.
-\end_layout
-
-\begin_layout Standard
-There are a few things you need to know about this table.
- Here are some of the details you will need to bear in mind when using character
-s from the 
-\family typewriter
-Latin1
-\family default
- character set:
-\end_layout
-
-\begin_layout Itemize
-Even if you have selected 
-\family sans
-latin1
-\family default
- in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog, users who have only the 
-\family typewriter
-T1
-\family default
--fonts for LaTeX [or who have the 
-\family typewriter
-T1
-\family default
--fonts but aren't using them] will still miss a few characters: D0, F0,
- DE, FE, AB, and BB – the uppercase and lowercase eth and thorn, and the
- french quotes will not show up.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:The-latin1-character"
-
-\end_inset
-
-The 
-\family typewriter
-latin1
-\family default
- character set
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="17" columns="17">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-00
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-40
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-60
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-70
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-80
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-90
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-A0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-B0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-C0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-D0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-E0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-F0
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-00
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-@
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-P
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-'
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-p
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-°
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-À
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ð
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-à
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ð
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-01
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-!
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Q
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-q
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¡
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-±
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Á
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ñ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-á
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ñ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-02
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset Quotes eld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-B
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-R
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-r
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¢
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-²
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Â
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ò
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-â
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ò
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-03
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-#
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-S
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-s
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-£
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-³
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ã
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ó
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ã
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ó
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-04
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-$
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-D
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-T
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-t
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¤
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-´
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ä
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ô
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ä
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ô
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-05
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-E
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-U
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-u
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¥
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-µ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Å
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Õ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-å
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-õ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-06
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-&
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-F
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-v
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¦
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¶
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Æ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ö
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-æ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ö
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-07
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-`
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-G
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-W
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-w
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-§
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-·
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ç
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-×
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ç
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-÷
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-08
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-(
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-H
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-X
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-h
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¨
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¸
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-È
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ø
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-è
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ø
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-I
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Y
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-i
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-y
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-©
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¹
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-É
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ù
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-é
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ù
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-J
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Z
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-j
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-z
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ª
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-º
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ê
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ú
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ê
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ú
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0B
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-;
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-K
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-[
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-k
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-{
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-«
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-»
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ë
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Û
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ë
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-û
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-,
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-<
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-L
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-
-\backslash
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-l
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-|
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¬
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¼
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ì
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ü
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ì
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ü
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0D
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-=
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-M
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-]
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-m
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-}
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-½
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Í
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ý
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-í
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ý
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0E
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
->
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-N
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-^
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-n
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-~
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-®
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¾
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Î
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Þ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-î
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-þ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size tiny
-\emph off
-\bar no
-\noun off
-\color none
-0F
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-/
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-?
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-O
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-_
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-o
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¯
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-¿
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-Ï
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ß
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ï
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\emph off
-\bar no
-\noun off
-\color none
-ÿ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The following is a full list of all of the accented characters LyX can display
- directly.
- It includes not only the accented characters from the previous table, but
- also the characters from 
-\family typewriter
-ISO8859–2
-\family default
- through 
-\family typewriter
-4
-\family default
-.
- 
-\end_layout
-
-\begin_layout Itemize
-From 
-\family typewriter
-ISO8859–1
-\family default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
-\begin_inset space \hfill{}
-\end_inset
-
-diaeresis
-\end_layout
-
-\begin_layout Standard
-^ Â Ê Î Ô Û â ê î ô û
-\begin_inset space \hfill{}
-\end_inset
-
-circumflex
-\end_layout
-
-\begin_layout Standard
-` À È Ì Ò Ù à è ì ò ù
-\begin_inset space \hfill{}
-\end_inset
-
-grave
-\end_layout
-
-\begin_layout Standard
-´ Á É Í Ó Ú Ý á é í ó ú ý
-\begin_inset space \hfill{}
-\end_inset
-
-acute
-\end_layout
-
-\begin_layout Standard
-~ Ã Ñ Õ ã ñ õ
-\begin_inset space \hfill{}
-\end_inset
-
-tilde
-\end_layout
-
-\begin_layout Standard
-¸Çç
-\begin_inset space \hfill{}
-\end_inset
-
-cedilla
-\end_layout
-
-\begin_layout Standard
-¯
-\begin_inset space \hfill{}
-\end_inset
-
-macron
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-From 
-\family typewriter
-ISO8859–2
-\family default
- through 
-\family typewriter
-4
-\family default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-ĤĴĥĵĈĜŜĉĝŝ
-\begin_inset space \hfill{}
-\end_inset
-
-circumflex
-\end_layout
-
-\begin_layout Standard
-ŚŹśźŔĹĆŃŕĺćń
-\begin_inset space \hfill{}
-\end_inset
-
-acute
-\end_layout
-
-\begin_layout Standard
-Ĩı̃Ũũ
-\begin_inset space \hfill{}
-\end_inset
-
-tilde
-\end_layout
-
-\begin_layout Standard
-ŞşŢţŖĻĢŗļģŅĶņķ
-\begin_inset space \hfill{}
-\end_inset
-
-cedilla
-\end_layout
-
-\begin_layout Standard
-ĒēĀĪŌŪāı̄ōū
-\begin_inset space \hfill{}
-\end_inset
-
-macron
-\end_layout
-
-\begin_layout Standard
-ŐŰőű
-\begin_inset space \hfill{}
-\end_inset
-
-Hungarian umlaut
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-All the characters above are actively supported by TeX fonts.
- In addition TeX allows diacritical marks on almost all characters.
- Also make sure you're using the 
-\family typewriter
-T1
-\family default
- font-encoding.
 \end_layout
 
 \begin_layout Chapter
