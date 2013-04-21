@@ -13220,7 +13220,7 @@ Nota
 \series default
 : Para
 \series bold
-
+ 
 \backslash
 raisebox
 \series default
@@ -16560,7 +16560,7 @@ sideset
 
 \end_inset
 
- se pueden poner caracteres delante y detrás de un operador grandes.
+ se pueden poner caracteres delante y detrás de un operador grande.
  El esquema del comando es:
 \end_layout
 
@@ -16592,7 +16592,7 @@ sideset
 \backslash
 sideset
 \series default
- caracteres sólo detrás del operador grandes, por ejemplo, no se escribe
+ caracteres sólo detrás del operador grande, por ejemplo, no se escribe
  nada en el primer par de llaves, pero sin quitarlas.
  
 \end_layout
@@ -16672,15 +16672,8 @@ Nota:
 \backslash
 sideset
 \series default
- 
-\lang english
-can only be used
-\lang spanish
- para decorar operador grandes, operadores binarios 
-\lang english
-are not allowed
-\lang spanish
-.
+ sólo se puede usar para decorar operadores grandes, no permite operadores
+ binarios.
 \end_layout
 
 \end_inset
@@ -32972,25 +32965,22 @@ hyphen$Cl}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
-\lang english
-Note:
+Nota:
 \series default
- It is not possible in LyX to use the character ^ to get an up-arrow as
- described in the 
+ En LyX no es posible usar el carácter ^ para obtener una flecha hacia arriba,
+ como se describe en el manual de 
 \series bold
 mhchem
 \series default
- manual.
- One instead uses a negative thin space followed by the command 
+.
+ Como alternativa, inserta un espacio delgado negativo seguido por el comando
+ 
 \series bold
 
 \backslash
