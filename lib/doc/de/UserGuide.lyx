@@ -2408,7 +2408,7 @@ Bearbeiten\SpecialChar \menuseparator
 Tastenkürzel
 \family default
  alle Tastenkürzel auflisten oder ändern, wie es in Abschnitt
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
@@ -2893,6 +2893,16 @@ Dokument
 \family sans
 Einstellungen
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  laden.
  Wenn Sie auf einen Namen klicken, erscheint im unteren Feld eine Erklärung.
 \end_layout
@@ -3903,6 +3913,16 @@ Doku\SpecialChar \-
 ment\SpecialChar \menuseparator
 Einstellungen
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
 , um das Dialogfenster 
 \family sans
 Textformat
@@ -4019,6 +4039,16 @@ Doku\SpecialChar \-
 ment\SpecialChar \menuseparator
 Einstellungen
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  unter 
 \family sans
 Textformat 
@@ -4971,14 +5001,19 @@ Unterparagraph
 \begin_layout Standard
 Öffnen Sie das Dialogfenster 
 \family sans
-Dokument-Einstellungen
-\family default
- (
-\family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-).
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  Unter 
 \family sans
 Nummerierung
@@ -5565,9 +5600,13 @@ Sie können Listen jeden Typs ineinander schachteln.
 \emph on
 unbedingt
 \emph default
- den gesamten Abschnitt 
+ den gesamten Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -5653,9 +5692,13 @@ Es gibt vier verschiedene Symbole, um maximal vierfach schachteln zu können.
 \end_layout
 
 \begin_layout Itemize
-Abschnitt 
+Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -5732,6 +5775,16 @@ Auflistung
 \family sans
 Dokument-Einstellungen
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  unter 
 \family sans
 Auflistungszeichen
@@ -5787,9 +5840,12 @@ Größe
 Beachten Sie, wie der Abstand zwischen den Elementen mit ansteigender Schachtelu
 ng abnimmt.
  Wir werden Schachtelungen und alle Tricks für verschiedene Stufen in Abschnitt
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -7968,16 +8024,20 @@ Außerhalb von Gleitobjekten kann man die
 Legende
 \family default
 -Umgebung nicht benutzen.
- Siehe auch die Abschnitte 
+ Siehe auch die Abschnitte
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Abbildungen"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Tabellen"
 
 \end_inset
@@ -8272,9 +8332,12 @@ Einleitung
 
 \begin_layout Standard
 Während der vorangegangenen Abschnitte haben wir Ihnen empfohlen, Abschnitt
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Umgebungen-schachteln"
 
 \end_inset
@@ -8873,16 +8936,20 @@ Bilder
 Anmerkung
 \series default
 : Bilder und Tabellen in Gleitobjekten sind davon nicht betroffen.
- Lesen Sie weiter unten oder in den Abschnitten 
+ Lesen Sie weiter unten oder in den Abschnitten
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Abbildungen"
 
 \end_inset
 
  oder 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Tabellen"
 
 \end_inset
@@ -9482,13 +9549,6 @@ Der beste Weg zu erklären, was Sie mit schachteln erreichen können, sind
  Wir haben mehrere mit geschachtelten Umgebungen.
  Darin erklären wir, wie wir sie erzeugt haben, so dass Sie sie reproduzieren
  können.
-\begin_inset CommandInset label
-LatexCommand label
-name "Sloppypar"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -9498,22 +9558,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Schachtelungs!-beispiele
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
 \end_layout
 
 \end_inset
@@ -9768,18 +9812,6 @@ Standard
 
 \begin_layout Standard
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
 Das war es! Übrigens hätten wir auch die 
 \family sans
 Beschreibung
@@ -10786,20 +10818,20 @@ name "sub:Normales-Leerzeichen"
 
 \begin_layout Standard
 Einige Sprachen fügen nach einem Punkt einen etwas größeren Abstand ein,
- und LyX befolgt diese Konvention (siehe Abschnitt
+ und LyX befolgt diese Konvention; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Abkürzungen-und-Satzendepunkt"
 
 \end_inset
 
-).
- Manchmal wollen Sie aber trotzdem einen normalen Abstand setzen.
- Das erreichen Sie mit 
+ für Beispiele.
+ Nach Punkten in Abkürzungen folgt jedoch meist ein normaler Abstand.
+ Diesen können Sie mit 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
@@ -10813,11 +10845,11 @@ Normales
 \family sans
 Leerzeichen
 \family default
- oder 
+ (Tastenkürzel 
 \family sans
 Strg+Alt+Leertaste
 \family default
-.
+) einfügen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -11711,7 +11743,7 @@ Leerraum ! vertikaler
 
 \begin_layout Standard
 Zusätzlichen senkrechten Leerraum über oder unter einem Absatz fügt man
- mit 
+ mit dem Dialog 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
@@ -11721,29 +11753,58 @@ Vertikaler
 
 Abstand
 \family default
-, womit das Menü 
+ hinzu.
+ Dort kann man aus den folgenden Größen wählen:
+\end_layout
+
+\begin_layout Standard
+
 \family sans
-Einstellungen
-\begin_inset space \space{}
-\end_inset
-
-für
-\begin_inset space \space{}
-\end_inset
-
-vertikalen
-\begin_inset space \space{}
-\end_inset
-
-Abstand
+SmallSkip
 \family default
- geöffnet wird, hinzu.
- Dort kann man unter 
+, 
 \family sans
-Abstand
+MedSkip
 \family default
- verschiedene Abstandsformen auswählen.
- Der 
+ und 
+\family sans
+BigSkip
+\family default
+ sind LaTeX-Größen, die von der Schriftgröße des Dokuments abhängen.
+ 
+\family sans
+DefSkip
+\family default
+ ist der Abstand, der im Dialog 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Textformat
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+ für die Absatztrennung eingestellt ist.
+ Wenn Sie Absätze per Einrückung voneinander trennen, ist 
+\family sans
+DefSkip
+\family default
+ gleich 
+\family sans
+MedSkip
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Der 
 \family sans
 Abstand
 \family default
@@ -12116,7 +12177,11 @@ Rechtsbündiger
 
 Zeilenumbruch
 \family default
- eingefügt wird, bricht die Zeile um und dehnt sie dabei so, dass sie den
+ oder mit 
+\family sans
+Strg+Umschalt+Enter 
+\family default
+eingefügt wird, bricht die Zeile um und dehnt sie dabei so, dass sie den
  kompletten Raum zwischen den Seitenrändern einnimmt.
  Dies ist nützlich um 
 \begin_inset Quotes gld
@@ -13104,12 +13169,12 @@ Serifenlos
 Schreibmaschine
 \family default
  werden in Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sub:Textstil-Dialog"
 
 \end_inset
@@ -13445,11 +13510,9 @@ Kapitälchen
 
 \begin_layout Itemize
 Sie klicken auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/font-noun.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
 \end_inset
 
 , oder Sie drücken 
@@ -13503,11 +13566,9 @@ ren – es sind ebenfalls Umschalter:
 
 \begin_layout Itemize
 Sie klicken auf den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/font-emph.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
 \end_inset
 
 , oder Sie drücken 
@@ -13556,7 +13617,31 @@ sstil haben wir überall in diesem Dokument benutzt.
  Man sollte in etwa so schreiben, wie man sich unterhält.
  Da man sich ja nicht dauernd anschreit, sollte man vermeiden, Dinge zu
  oft hervorzuheben.
- 
+\end_layout
+
+\begin_layout Standard
+Man kann den Buchstabenstil auf die Voreinstellung zurücksetzen, indem man
+ entweder das Tastenkürzel 
+\family sans
+Alt+C
+\begin_inset space ~
+\end_inset
+
+Leerzeichen
+\family default
+ oder den Dialog 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert
+\family default
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) verwendet.
 \end_layout
 
 \begin_layout Subsection
@@ -13892,6 +13977,125 @@ Dies ist die Kapitälchenform
 \end_layout
 
 \end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Farbe 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Schriften ! Farbe
+\end_layout
+
+\end_inset
+
+
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Text
+\end_layout
+
+\end_inset
+
+ Hiermit können Sie eine Textfarbe auswählen.
+ Neben 
+\family sans
+Keine
+\begin_inset space ~
+\end_inset
+
+Farbe
+\family default
+, was bedeutet, dass die Farbe verwendet wird, die im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Farbe
+\family default
+ für den 
+\family sans
+Haupttext
+\family default
+ eingestellt ist, können Sie zwischen 
+\family sans
+Schwarz
+\family default
+, 
+\family sans
+Weiß
+\family default
+, 
+\family sans
+Rot
+\family default
+, 
+\family sans
+Grün
+\family default
+, 
+\family sans
+Blau
+\family default
+, 
+\family sans
+Cyan
+\family default
+, 
+\family sans
+Magenta
+\family default
+ und 
+\family sans
+Gelb
+\family default
+ wählen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Sprache 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Sprache (ändern)
+\end_layout
+
+\end_inset
+
+
+\family default
+Hiermit können Sie einem markierten Textteil eine andere Sprache zuordnen.
+ Dieser Text wird (nur in LyX) blau unterstrichen, um die Sprachänderung
+ zu anzuzeigen.
+\begin_inset Newline newline
+\end_inset
+
+Wenn Sie zum Beispiel längeren englischen Text in Ihrem Dokument haben,
+ berücksichtigt LaTeX für diesen Teil automatisch die englische Silbentrennung.
+ Wenn Sie die Rechtschreibprüfung benutzen (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rechtschreibprüfung"
+
+\end_inset
+
+), werden dann englisch markierten Wörter nach dem englischen Wörterbuch
+ geprüft.
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
@@ -14518,134 +14722,25 @@ möglicherweise
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Farbe 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schriften ! Farbe
-\end_layout
-
-\end_inset
-
-
-\family default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Farbe ! Text
-\end_layout
-
-\end_inset
-
- Hiermit können Sie eine Textfarbe auswählen.
- Neben 
-\family sans
-Keine
-\begin_inset space ~
-\end_inset
-
-Farbe
-\family default
-, die die voreingestellte 
-\begin_inset Quotes gld
-\end_inset
-
-Farbe
-\begin_inset Quotes grd
-\end_inset
-
- ist und schwarz bedeutet, können Sie zwischen 
-\family sans
-Schwarz
-\family default
-, 
-\family sans
-Weiß
-\family default
-, 
-\family sans
-Rot
-\family default
-, 
-\family sans
-Grün
-\family default
-, 
-\family sans
-Blau
-\family default
-, 
-\family sans
-Cyan
-\family default
-, 
-\family sans
-Magenta
-\family default
- und 
-\family sans
-Gelb
-\family default
- wählen.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Sprache
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Sprache (ändern)
-\end_layout
-
-\end_inset
-
-
-\family default
- Hiermit können Sie einem markierten Textteil eine andere Sprache zuordnen.
- Dieser Text wird (nur in LyX) blau unterstrichen, um die Sprachänderung
- zu anzuzeigen.
-\begin_inset Newline newline
-\end_inset
-
-Wenn Sie zum Beispiel längeren englischen Text in Ihrem Dokument haben,
- berücksichtigt LaTeX für diesen Teil automatisch die englische Silbentrennung.
- Wenn Sie die Rechtschreibprüfung benutzen (siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Rechtschreibprüfung"
-
-\end_inset
-
-), werden dann englisch markierten Wörter nach dem englischen Wörterbuch
- geprüft.
-\end_layout
-
 \begin_layout Standard
 \noindent
 Sie können aus einer großen Zahl von Kombinationsmöglichkeiten wählen.
 \end_layout
 
 \begin_layout Standard
-Nachdem Sie mit Hilfe des Menüs 
+Nachdem Sie mit Hilfe des Dialogs 
 \family sans
-Textstil
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert
 \family default
- einen neuen Buchstabenstil gewählt haben, 
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) einen neuen Buchstabenstil gewählt haben, 
 \shape italic
 \emph on
 können
@@ -16768,7 +16863,7 @@ Sie benutzen statt des Bindestrichs
 \end_inset
 
  als TeX-Code (siehe Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
@@ -16814,26 +16909,6 @@ Handbücher\SpecialChar \ldots{}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Enumerate
-Sie setzen den Abschnitt, in dem sich das zusammengesetzte Wort befindet,
- mit 
-\family typewriter
-sloppypar
-\family default
- (siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Sloppypar"
-
-\end_inset
-
-).
 \end_layout
 
 \begin_layout Enumerate
@@ -17188,6 +17263,16 @@ Sie können das Verhalten der
 \family sans
 Dokument-Einstellungen
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  unter 
 \family sans
 Sprache\SpecialChar \menuseparator
@@ -17213,7 +17298,8 @@ Anführungszeichen
  können Sie sechs verschiedene Anführungszeichen auswählen:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes eld
@@ -17225,7 +17311,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -17236,7 +17322,8 @@ doppelt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes sld
@@ -17248,7 +17335,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes sld
 \end_inset
 
@@ -17259,7 +17346,8 @@ doppelt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes gld
@@ -17271,7 +17359,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes gld
 \end_inset
 
@@ -17282,7 +17370,8 @@ doppelt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes pld
@@ -17294,7 +17383,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes pld
 \end_inset
 
@@ -17305,7 +17394,8 @@ doppelt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes fld
@@ -17317,7 +17407,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17328,7 +17418,8 @@ doppelt
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family sans
 \begin_inset Quotes ald
@@ -17340,7 +17431,7 @@ Text
 
 
 \family default
- benutzt folgende Anführungszeichen: 
+ benutzt die Anführungszeichen: 
 \begin_inset Quotes ald
 \end_inset
 
@@ -17355,20 +17446,13 @@ doppelt
 Wenn Sie die einfache Form des Anführungszeichens schreiben wollen, müssen
  Sie 
 \family sans
-Alt+Um\SpecialChar \-
-schalt+2
+Alt+
+\begin_inset Quotes grd
+\end_inset
+
+
 \family default
  benutzen.
- Wenn Sie aber ein 
-\emph on
-echtes
-\emph default
- Anführungszeichen haben wollen, drücken Sie 
-\family sans
-Strg+Umschalt+
-\family default
-2.
- Das erzeugt ein ".
 \end_layout
 
 \begin_layout Subsection
@@ -25471,10 +25555,10 @@ text
 \begin_layout Standard
 \begin_inset Formula 
 \[
-f(x)=\begin{array}{rl}
-x & \textrm{wenn ich es sage}\\
--x & \textrm{sonst}
-\end{array}
+f(x)=\begin{cases}
+x & \mbox{wenn ich es sage}\\
+-x & \mbox{sonst}
+\end{cases}
 \]
 
 \end_inset
@@ -25532,41 +25616,7 @@ displaystyle
  gesetzt.
  Außer einigen Operatoren, die ihre Größe an die jeweilige Situation anpassen,
  werden die Texte in der Größe gesetzt, die LaTeX für geeignet hält.
- Das kann mit 
-\family typewriter
-math-size
-\family default
- im Befehlspuffer geändert werden.
-\end_layout
-
-\begin_layout Standard
-Zum Beispiel kann man 
-\begin_inset Formula $\frac{1}{2}$
-\end_inset
-
- normal schreiben (
-\emph on
-textstyle
-\emph default
-), oder man kann es vergrößern, wobei auch die Zeilenabstände vergrößert
- werden, indem man 
-\emph on
-displaystyle
-\emph default
- benutzt.
- Dazu gibt man im Befehlspuffer 
-\begin_inset Quotes pld
-\end_inset
-
-
-\family typewriter
-math-size displaystyle
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- ein oder wählt über den Knopf 
+ Diese Größe kann mit dem Knopf 
 \family sans
 
 \begin_inset Info
@@ -25580,13 +25630,30 @@ arg   "math-insert \\style"
 \family sans
 Mathe-Werkzeugleiste
 \family default
- die entsprechende Größe aus, während der Cursor auf der Hauptlinie des
- Formel-Kästchens steht: 
+ geändert werden.
+ Es wird dann eine Box eingefügt, in die man das Mathe-Konstrukt eingibt.
+ Zum Beispiel kann man 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ normal schreiben (
+\family sans
+textstyle
+\family default
+), oder man kann es vergrößern, wobei auch die Zeilenabstände vergrößert
+ werden, indem man 
+\family sans
+displaystyle
+\family default
+ benutzt: 
 \begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 
 .
- Hier ist Text in den verschiedenen Größen: 
+ Hier ist Text in den verschiedenen Größen:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $displaystyle$
 \end_inset
 
@@ -25606,68 +25673,37 @@ Mathe-Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-Mit einer Änderung der Schriftgröße kann zum Beispiel Gleichung 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:Bruch"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "eq:Bruch"
-
-\end_inset
-
- so aussehen:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Formula 
-\[
-\frac{1}{\left(1+\left({\displaystyle \frac{1}{1+{\displaystyle \left(\frac{1}{1+x}\right)}}}\right)\right)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-All diese Schriftgrößen sind relativ, das heißt sie werden angepasst, wenn
- die gesamte Formel, Gleichung usw.
-\begin_inset space \space{}
-\end_inset
-
-und der umgebende Text in einer bestimmten Größe geschrieben werden.
+All diese Schriftgrößen sind relativ, das heißt sie werden relativ zu der
+ Größe angepasst, in die die gesamte Formel über das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil
+\family default
+ gesetzt wird.
  Auf ähnliche Weise wird alles angepasst, wenn die Basisschriftgröße eines
  Dokumentes geändert wird.
-\end_layout
-
-\begin_layout Standard
-
-\size huge
-Hier ist ein Absatz in der 
+ Als Beispiel eine Formel in der Größe 
 \begin_inset Quotes gld
 \end_inset
 
-größten
+Noch
+\begin_inset space ~
+\end_inset
+
+größer
 \begin_inset Quotes grd
 \end_inset
 
- Schrift, mit Symbolen: 
-\begin_inset Formula $\alpha$
-\end_inset
-
-
-\size default
-.
+:
 \end_layout
 
 \begin_layout Standard
-Dies gilt auch für Mathematikschriften in Titeln usw.
+
+\size largest
+\begin_inset Formula $\mathrm{e}=\sum_{n=0}^{\infty}\frac{1}{n!}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -25685,9 +25721,8 @@ AMS-TeX
 \end_layout
 
 \begin_layout Standard
-Die American Mathematical Society (AMS) stellt LaTeX-Pakete bereit, die
- oft benutzt werden.
- LyX unterstützt diese Pakete ein wenig.
+LyX unterstützt die LaTeX-Pakete der American Mathematical Society (AMS),
+ die oft benutzt werden.
 \end_layout
 
 \begin_layout Subsection
@@ -25716,6 +25751,16 @@ automatisch
 
 verwenden
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  oder 
 \family sans
 AMS-Mathe-Paket
@@ -25728,65 +25773,7 @@ verwenden
 \end_layout
 
 \begin_layout Subsection
-AMS-Symbole
-\end_layout
-
-\begin_layout Standard
-Die AMS-LaTeX-Pakete unterstützen einige mathematische Symbole, die man
- mit LaTeX (LyX) nicht direkt erreicht, die aber in mathematischen Veröffentlich
-ungen benutzt werden, zum Beispiel die altdeutsche Frakturschrift, die nach
- der Eingabe von 
-\family typewriter
-
-\backslash
-mathfrak
-\begin_inset space \space{}
-\end_inset
-
-{g}
-\family default
- ein Fraktur-
-\begin_inset Formula $\mathfrak{g}$
-\end_inset
-
- druckt, oder die 
-\emph on
-Wandtafel
-\emph default
--
-\emph on
-Fettschrift
-\emph default
-, zum Beispiel 
-\family typewriter
-
-\backslash
-mathbb
-\begin_inset space \space{}
-\end_inset
-
-{R}
-\family default
- 
-\begin_inset Formula $\mathbb{R}$
-\end_inset
-
- für reelle und komplexe Zahlen.
- Diese Symbole werden nicht alle WYSIWYM
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-WYSIWYM
-\end_layout
-
-\end_inset
-
- in LyX erscheinen.
-\end_layout
-
-\begin_layout Subsection
-AMS-Formeln
+AMS-Formeltypen
 \end_layout
 
 \begin_layout Standard
@@ -25816,14 +25803,11 @@ gather
 multline
 \family default
  auswählen.
- Eine ausführliche Dokumentation dieser Typen finden Sie unter 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ams.org
-\end_layout
+ Eine ausführliche Dokumentation dieser Typen finden Sie in 
+\begin_inset CommandInset href
+LatexCommand href
+name "AMS-Dokumentation"
+target "http://www.ams.org/publications/authors/tex/amslatex"
 
 \end_inset
 
@@ -27593,6 +27577,16 @@ Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
  die Option 
 \family sans
 Natbib
@@ -33697,60 +33691,30 @@ Internationale Unterstutzung@Unterstützung
 \begin_layout Standard
 Dieser Abschnitt beschreibt, wie Sie LyX mit jeder gewünschten Sprache benutzen
  können.
- Die voreingestellte LyX-Konfiguration arbeitet in der Sprache, die Sie
- für Ihre graphische Linux-Oberfläche festgelegt haben, der zugehörigen
- Tastatur, mit der Standard-Papiergröße und einer Rechtschreibprüfung Ihrer
- Sprache.
- Sie können von diesen Einstellungen ändern, was Sie wollen, und Sie können
- sich aussuchen, ob die Änderungen nur für die momentane Sitzung gelten
- sollen oder Ihre Standardkonfiguration werden soll.
+ Für einige Sprachen gibt es spezielle Wiki-Seiten, die erklären, wie man
+ sie verwendet: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arabic,Armenian,Farsi,Hebrew,Japanese,Latvian,Lithuanian,Mongolian,Vietnamese"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Wenn Ihre Tastatur an Ihre Sprache angepasst ist (zum Beispiel eine deutsche
- Tastatur, um in Deutsch zu schreiben), und wenn Sie Ihre graphische Oberfläche
- richtig eingerichtet haben, müssen Sie LyX nur Ihre Sprache mitteilen,
- die Zeichenkodierung und die gewünschte Papiergröße.
- In Abschnitt
-\begin_inset space \space{}
+Neben Sprachen unterstützt LyX auch phonetische Symbole, siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Sprachoptionen"
+LatexCommand ref
+reference "sub:Sonderzeichen"
 
 \end_inset
 
- finden Sie weitere Informationen.
-\end_layout
-
-\begin_layout Standard
-Vielleicht wollen Sie nur einige Tasten ändern oder eine völlig andere Tastaturt
-abelle benutzen (für Marsianisch vielleicht).
- Wenn Sie zum Beispiel im Normalfall italienisch auf einer U.S.-Tastatur schreiben
-, aber hin und wieder etwas Deutsches zitieren wollen, dann können Sie Ihre
- eigene Tastaturtabelle benutzen oder eine vorhandene modifizieren.
-\end_layout
-
-\begin_layout Standard
-Wie Sie LyX an Ihre eigene Sprache anpassen können, liegt 
-\emph on
-weit außerhalb
-\emph default
- dieses Handbuches.
- Sie können nicht nur die Tastaturtabelle ändern, Sie können auch die Menübeschr
-iftungen an Ihre Sprache anpassen.
- Wenn Sie mehr über all dies wissen wollen, lesen Sie bitte das Handbuch
- 
-\emph on
-Anpassung
-\emph default
-, das Sie unter 
-\family sans
-Hilfe
-\family default
- finden werden.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -33775,12 +33739,7 @@ name "sub:Sprachoptionen"
 \end_layout
 
 \begin_layout Standard
-Das Dialogfenster 
-\family sans
-Dokument-Einstellungen
-\family default
- hat Optionen für Sprache, Papiergröße und Zeichenkodierung.
- Um Ihre Sprache auszuwählen, klicken Sie im Dialogfenster 
+Im Dialog 
 \family sans
 Do\SpecialChar \-
 ku\SpecialChar \-
@@ -33789,158 +33748,34 @@ stel\SpecialChar \-
 lungen\SpecialChar \menuseparator
 Sprache
 \family default
- auf den Pfeil rechts neben dem 
-\family sans
-Sprache
-\family default
--Kästchen.
- Suchen Sie Ihre Sprache in der Liste und klicken Sie darauf.
- Der Sprachname wird ins Kästchen kopiert.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Für LaTeX bedeutet die Wahl einer anderen Sprache als der Standardeinstellung,
- die Babel-Unterstützung einzuschalten.
- Wenn bei Ihnen Babel nicht installiert ist, suchen Sie nach einer anderen
- LaTeX-Distribution.
-\end_layout
-
-\end_inset
-
-
+ können Sie die Sprache, den Stil der Anführungszeichen und die Zeichenkodierung
+ festlegen.
 \end_layout
 
 \begin_layout Standard
-Mit der Option 
+Unter 
 \family sans
 Kodierung
 \family default
- können Sie die Zeichenkodierung auswählen.
- Die Voreinstellung ist 
+ können Sie die Zeichenkodierung auswählen, die für die Ausgabe verwendet
+ werden soll.
+ Die Option 
 \family sans
-latin1
+Voreinstellung der gewählten Sprache
 \family default
-, die die Zeichen der westeuropäischen Sprachen enthält (Umlaute, akzentuierte
- Vokale und ähnliche).
- Die Möglichkeit 
-\family typewriter
-Latin2
-\family default
- ist für die osteuropäischen Sprachen.
- 
-\family typewriter
-Latin5
-\family default
- schließlich ist für die kyrillische Schrift.
- Klickt man auf den Pfeil und dann auf die gewünschte Kodierung, so erscheint
- sie im Kästchen.
- (In Abschnitt 
+ ist empfohlen und funktioniert für die meisten Fälle.
+ Für Details über die verschiedenen Kodierungsoptionen siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand vref
-reference "sub:Zeichentabellen"
+LatexCommand ref
+reference "sec:Sprache"
 
 \end_inset
 
- finden Sie mehr über Zeichenkodierung.)
-\end_layout
-
-\begin_layout Standard
-LyX unterstützt auch die Ausgabe von Unicode
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Unicode
-\end_layout
-
-\end_inset
-
--kodiertem Text.
- Dies ist insbesondere dann nützlich, wenn Sie viele Sonderzeichen oder
- nicht-alphabetische Schriften verwenden.
- Wenn Sie Unicode-Ausgabe erzeugen wollen (Voraussetzung dafür ist allerdings,
- dass Ihre LaTeX-Installation Unicode unterstützt), wählen Sie die Zeichenkodier
-ung 
-\family typewriter
-utf8
-\family default
 .
- Die anderen Unicode-Kodierungen im Menü werden für spezifische Zwecke bereitges
-tellt: 
-\family typewriter
-UTF
-\family default
- und 
-\family typewriter
-utf8x
-\family default
- für CJK-Sprachen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-CJK
-\end_layout
-
-\end_inset
-
- (chinesisch, japanisch, koreanisch), 
-\family typewriter
-utf8-plain
-\family default
- für die Verwendung von LyX mit XeTeX, einem TeX-System, das Unicode direkt
- (ohne Zuhilfenahme des Paketes 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Paket ! inputenc
-\end_layout
-
-\end_inset
-
-) verarbeitet.
-\end_layout
-
-\begin_layout Standard
-Klicken Sie im Dialogfenster 
-\family sans
-Dokument-Einstellungen\SpecialChar \menuseparator
-Seitenformat
-\family default
- auf das pull-down-Menü 
-\family sans
-Papier
-\bar under
-g
-\bar default
-röße,
-\family default
- um die Wahlmöglichkeiten für die Papiergröße zu sehen.
- Die Voreinstellung ist 
-\family sans
-Standard
-\family default
-.
- Klicken Sie auf die Größe Ihrer Wahl, und sie erscheint im Kästchen.
-\end_layout
-
-\begin_layout Standard
-Um Ihre Wahl wirksam zu machen, klicken Sie auf 
-\family sans
-OK
-\family default
- oder 
-\family sans
-Übernehmen
-\family default
-.
- Die Änderungen werden im Dokument gespeichert.
 \end_layout
 
 \begin_layout Subsection
@@ -33965,59 +33800,62 @@ name "sub:Tastaturtabellen"
 \end_layout
 
 \begin_layout Standard
-Über 
+Wenn Sie zum Beispiel eine U.
+\begin_inset space \thinspace{}
+\end_inset
+
+S.-Tastatur haben, aber nicht in Englisch schreiben wollen, können Sie eine
+ alternative Tastaturtabelle benutzen.
+ Z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ wollen Sie Italienisch schreiben.
+ Dann können Sie LyX mit einer italienischen Tastaturtabelle verwenden.
+ Der Dialog 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Aussehen & Handhabung\SpecialChar \menuseparator
-Tastatur
+Tastatur/Maus
 \family default
- können Sie den Knopf 
-\family sans
-Tastatur\SpecialChar \-
-tabelle verwenden
-\family default
- aktivieren, mit dem Sie die Sprache für Ihre Tastatur auswählen können.
- Sie können 
-\family sans
-Erste
-\family default
- und 
-\family sans
-Zweite
-\family default
- Tastatursprache festlegen.
-\end_layout
-
-\begin_layout Subsection
-Zeichentabellen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Zeichentabellen
-\end_layout
-
+ erlaubt es bis zu zwei Tastaturtabellen zu laden, siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Zeichentabellen"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Tastatur-/-Maus"
 
 \end_inset
 
-
+.
+ Sie können eine primäre und sekundäre Tastatursprache wählen und dann entscheid
+en, welche Sie verwenden.
 \end_layout
 
 \begin_layout Standard
-Unter 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
-Symbole
-\family default
- finden Sie in verschiedenen Tabellen alle Zeichen, die LyX direkt unterstützt.
+Vielleicht wollen Sie aber auch nur ein paar Tastenzuordnungen ändern oder
+ eine komplett neue Tastaturtabelle erstellen (für Vulkanisch zum Beispiel).
+ Sie Schreiben z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ normalerweise Italienisch auf einer U.
+\begin_inset space \thinspace{}
+\end_inset
+
+S.-Tastatur aber von Zeit zu Zeit auch deutsche Kurztexte.
+ Sie können in diesem Fall eine eigene Tastaturzuordnung erstellen oder
+ eine bestehende Tastaturtabelle ändern um spezielle Zeichen zu unterstützen..
+ Diese und andere Anpassungen sind im Handbuch 
+\emph on
+Anpassungen
+\emph default
+ erläutert.
 \end_layout
 
 \begin_layout Chapter
@@ -35670,6 +35508,13 @@ Mathe
 
 \begin_layout Subsection
 Sonderzeichen
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Sonderzeichen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -39268,6 +39113,16 @@ name "chap:Dokument-Einstellungen"
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -42401,6 +42256,13 @@ LyX-Funktion
 
 \begin_layout Subsection
 Tastatur / Maus
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Tastatur-/-Maus"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
