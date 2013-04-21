@@ -494,6 +494,11 @@ void putClipboard(ParagraphList const & paragraphs,
 	ErrorList el;
 	pasteSelectionHelper(dit, paragraphs, docclass, el);
 
+	// We don't want to produce images that are not used. Therefore,
+	// output formulas as MathML. Even if this is not understood by all
+	// applications, the number that can parse it should go up in the future.
+	buffer->params().html_math_output = BufferParams::MathML;
+
 	// The Buffer is being used to export. This is necessary so that the
 	// updateMacros call will record the needed information.
 	MarkAsExporting mex(buffer);
