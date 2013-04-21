@@ -1,10 +1,10 @@
 # Swedish translation of LyX / Svensk lokalisering för LyX
-# Copyright (C) 1997, 1998, 2010, 2011, 2012 LyX Team
+# Copyright (C) 1997, 1998, 2010-2013 LyX Team
 #
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011, 2012.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
 #
-# Information 2012-10-21:
+# Information 2013-04-21:
 #   Bad Qt shortcuts: 124
 #   Inconsistent translations: 6
 #   Bad menu shortcuts: 136
@@ -174,6 +174,7 @@
 #   save                 -> spara
 #   search               -> sök
 #   section              -> avsnitt
+#   sectioning           -> avsnittsindelning
 #   select (de-)         -> välj (välj bort)
 #   selection            -> urval
 #   scope                -> omfång?
@@ -207,19 +208,19 @@
 #   view(er)             -> visa(re)
 #   wrap               ? -> svep, varva? bryt? (automatisk) radbrytning? linda in? att svepa runt
 #
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010, 2011, 2012.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.5\n"
+"Project-Id-Version: LyX 2.0.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-27 16:08-0400\n"
-"PO-Revision-Date: 2012-10-21 21:12+0100\n"
+"POT-Creation-Date: 2013-04-21 12:21+0200\n"
+"PO-Revision-Date: 2013-04-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -227,7 +228,7 @@ msgstr "Version"
 
 #: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
-msgstr "Versionen hamnar här"
+msgstr "Version hamnar här"
 
 #: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
@@ -696,8 +697,8 @@ msgid "Remove the selected branch"
 msgstr "Ta bort vald gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3893
-#: src/Buffer.cpp:3906
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3915
+#: src/Buffer.cpp:3928
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -730,8 +731,8 @@ msgstr "Lägg till a&lla"
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1147
-#: src/Buffer.cpp:2417 src/Buffer.cpp:3868 src/Buffer.cpp:3931
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1169
+#: src/Buffer.cpp:2439 src/Buffer.cpp:3890 src/Buffer.cpp:3953
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -785,7 +786,7 @@ msgstr "&Storlek:"
 #: src/frontends/qt4/GuiDocument.cpp:3236 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2533
+#: src/frontends/qt4/GuiPrefs.cpp:2277 src/frontends/qt4/GuiPrefs.cpp:2506
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
 #: src/frontends/qt4/GuiViewSource.cpp:197
 msgid "Default"
@@ -1214,7 +1215,7 @@ msgstr "&Nytt dokument:"
 msgid "&Old Document:"
 msgstr "&Gammalt dokument:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:83 src/frontends/qt4/ui/PrefUi.ui:38
+#: src/frontends/qt4/ui/CompareUi.ui:83 src/frontends/qt4/ui/PrefUi.ui:49
 msgid "Bro&wse..."
 msgstr "&Bläddra..."
 
@@ -3338,7 +3339,7 @@ msgstr "&Modifiera"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2931 src/frontends/qt4/GuiPrefs.cpp:2995
+#: src/frontends/qt4/GuiPrefs.cpp:2955 src/frontends/qt4/GuiPrefs.cpp:3019
 msgid "Remo&ve"
 msgstr "Ta bort"
 
@@ -3394,6 +3395,72 @@ msgstr "Märk styckeavslut på skärmen med ett alineatecken."
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
 msgstr "&Märk styckeavslut"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
+msgid "Session handling"
+msgstr "Sessionshantering"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
+msgid "Restore window layouts and &geometries"
+msgstr "Återställ fönsterutformningar och &geometrier"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
+msgid "Restore to the cursor position when the file was last closed"
+msgstr "Återställ till markörpositionen när filen senast stängdes"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
+msgid "Restore cursor &positions"
+msgstr "Återställ markör&positioner"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
+msgid "&Load opened files from last session"
+msgstr "&Ladda öppnade filer från senaste session"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
+msgid "&Clear all session information"
+msgstr "Rensa all sessionsinformation"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
+msgid "Backup && saving"
+msgstr "Säkerhetskopiering && sparning"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
+msgid "Backup &original documents when saving"
+msgstr "Säkerhetskopiera &originaldokument vid sparning"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
+msgid "&Backup documents, every"
+msgstr "Säkerhetskopiera dokument, varje"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
+msgid "&minutes"
+msgstr "&minuter"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
+msgid "&Save documents compressed by default"
+msgstr "&Spara dokument komprimerade som standard"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+msgid "Windows && work area"
+msgstr "Fönster && arbetsområde"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+msgid "Open documents in &tabs"
+msgstr "Öppna dokumen&t i flikar"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
+msgid "Use s&ingle instance"
+msgstr "Använd enkel &instans"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:182
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr ""
+"Huruvida stängknapp ska placeras på varje flik eller endast en högst upp "
+"till vänster."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
+msgid "Displa&y single close-tab button"
+msgstr "Visa enkel &stängknapp för flikar"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
@@ -4246,26 +4313,22 @@ msgid "Al&ternative language:"
 msgstr "Al&ternativt språk:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
+msgid "General Look && Feel"
+msgstr "Allmänt utseende && känsla"
+
+#: src/frontends/qt4/ui/PrefUi.ui:36
 msgid "&User interface file:"
 msgstr "Användargränssnittsfil:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:58
+#: src/frontends/qt4/ui/PrefUi.ui:73
 msgid "&Icon Set:"
 msgstr "&Ikonuppsättning:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:68
-msgid ""
-"The icon set to use. Warning: normal size of icons may be\n"
-"wrong until you save the preferences and restart LyX."
-msgstr ""
-"Ikonuppsättningen att använda. Varning: normalstorleken på ikoner kan\n"
-"vara fel tills du har sparat inställningarna och startat om LyX."
+#: src/frontends/qt4/ui/PrefUi.ui:109
+msgid "Context help"
+msgstr "Sammanhangshjälp"
 
-#: src/frontends/qt4/ui/PrefUi.ui:75
-msgid "Automatic help"
-msgstr "Automatisk hjälp"
-
-#: src/frontends/qt4/ui/PrefUi.ui:93
+#: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
@@ -4273,84 +4336,17 @@ msgstr ""
 "Markera detta för att tillåta automatisk visning av hjälpfulla kommentarer "
 "för insättningar i huvudarbetsområdet av ett redigerat dokument"
 
-#: src/frontends/qt4/ui/PrefUi.ui:96
+#: src/frontends/qt4/ui/PrefUi.ui:130
 msgid "&Enable tool tips in main work area"
 msgstr "Aktiv&era vertygstips i huvudarbetsområdet"
 
-#: src/frontends/qt4/ui/PrefUi.ui:106
-msgid "Session"
-msgstr "Session"
+#: src/frontends/qt4/ui/PrefUi.ui:140
+msgid "Menus"
+msgstr "Menyer"
 
-#: src/frontends/qt4/ui/PrefUi.ui:118
-msgid "Restore window layouts and &geometries"
-msgstr "Återställ fönsterutformningar och &geometrier"
-
-#: src/frontends/qt4/ui/PrefUi.ui:125
-msgid "Restore to the cursor position when the file was last closed"
-msgstr "Återställ till markörpositionen när filen senast stängdes"
-
-#: src/frontends/qt4/ui/PrefUi.ui:128
-msgid "Restore cursor &positions"
-msgstr "Återställ markör&positioner"
-
-#: src/frontends/qt4/ui/PrefUi.ui:135
-msgid "&Load opened files from last session"
-msgstr "&Ladda öppnade filer från senaste session"
-
-#: src/frontends/qt4/ui/PrefUi.ui:142
-msgid "&Clear all session information"
-msgstr "Rensa all sessionsinformation"
-
-#: src/frontends/qt4/ui/PrefUi.ui:165
-msgid "Documents"
-msgstr "Dokument"
-
-#: src/frontends/qt4/ui/PrefUi.ui:174
-msgid "Backup original documents when saving"
-msgstr "Säkerhetskopiera originaldokument vid sparning"
-
-#: src/frontends/qt4/ui/PrefUi.ui:181
-msgid "&Backup documents, every"
-msgstr "Säkerhetskopiera dokument, varje"
-
-#: src/frontends/qt4/ui/PrefUi.ui:198
-msgid "minutes"
-msgstr "minuter"
-
-#: src/frontends/qt4/ui/PrefUi.ui:218
-msgid "&Save documents compressed by default"
-msgstr "&Spara dokument komprimerade som standard"
-
-#: src/frontends/qt4/ui/PrefUi.ui:225
+#: src/frontends/qt4/ui/PrefUi.ui:149
 msgid "&Maximum last files:"
 msgstr "&Max senaste filer:"
-
-#: src/frontends/qt4/ui/PrefUi.ui:255
-msgid "&Open documents in tabs"
-msgstr "Öppna d&okument i flikar"
-
-#: src/frontends/qt4/ui/PrefUi.ui:262
-msgid ""
-"Whether to open documents in an already running instance of LyX.\n"
-"(Set the LyXServer pipe path and restart LyX to enable this feature)"
-msgstr ""
-"Huruvida dokument ska öppnas i en redan körande instans av LyX.\n"
-"(Sätt sökväg för LyXServerns sluss och starta om LyX för att aktivera denna "
-"finess)"
-
-#: src/frontends/qt4/ui/PrefUi.ui:265
-msgid "S&ingle instance"
-msgstr "Enkel &instans"
-
-#: src/frontends/qt4/ui/PrefUi.ui:272
-msgid "Whether to place close button on each tab or only one in the top left."
-msgstr ""
-"Huruvida stängknapp ska placeras på varje flik eller endast en högst upp "
-"till vänster."
-
-#: src/frontends/qt4/ui/PrefUi.ui:275
-msgid "&Single close-tab button"
-msgstr "Enkel &stängknapp för flikar"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2550
 #: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
@@ -6793,34 +6789,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Författare"
+msgstr "FemFörfattare"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Författare"
+msgstr "SexFörfattare"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
-msgstr "Vänster huvud"
+msgstr "VänsterHuvud"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
 msgstr "Vänster huvud:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Tillhörighet"
+msgstr "FemTillhörigheter"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Tillhörighet"
+msgstr "SexTillhörigheter"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6856,14 +6846,12 @@ msgid "Keywords:"
 msgstr "Nyckelord:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "Författare"
+msgstr "FörfattareNot"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
-msgstr "Författare fotnot:"
+msgstr "Författare not:"
 
 #: lib/layouts/apa6.layout:305 lib/layouts/egs.layout:335
 msgid "Journal"
@@ -6871,9 +6859,8 @@ msgstr "Tidskrift"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "Endast ingress"
+msgstr "Ingress"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -9168,9 +9155,8 @@ msgid "Legend"
 msgstr "Legend"
 
 #: lib/layouts/moderncv.layout:35
-#, fuzzy
 msgid "Sectioning"
-msgstr "Avsnitt"
+msgstr "Avsnittsindelning"
 
 #: lib/layouts/moderncv.layout:68
 msgid "Entry"
@@ -11091,6 +11077,10 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
+"Denna modul lägger till stöd för användning av natbib tillsammans med "
+"apacite (bibliografistilen behöver inte vara apacite - det kan vara apacite, "
+"apacitex, eller vilken bibliografi som helst som fungerar med både natbib- "
+"och apacite-paketen.)"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -13739,14 +13729,12 @@ msgid "Feynman-diagram Manual|F"
 msgstr "Feynman-diagrammanual|F"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Knitr Manual|K"
-msgstr "Lingvistikmanual|L"
+msgstr "Knitr-manual|K"
 
 #: lib/ui/stdmenus.inc:588
-#, fuzzy
 msgid "LilyPond Manual|P"
-msgstr "LilyPond-musik"
+msgstr "LilyPond-manual|P"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Linguistics Manual|L"
@@ -17080,7 +17068,7 @@ msgstr "Lägg endast till bibliografin."
 msgid "before"
 msgstr "före"
 
-#: src/Buffer.cpp:137
+#: src/Buffer.cpp:139
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -17089,70 +17077,70 @@ msgstr ""
 "Kunde inte skriva ut dokumentet %1$s.\n"
 "Kontrollera att din skrivare är korrekt inställd."
 
-#: src/Buffer.cpp:140
+#: src/Buffer.cpp:142
 msgid "Print document failed"
 msgstr "Utskrift av dokument misslyckades"
 
-#: src/Buffer.cpp:354
+#: src/Buffer.cpp:356
 msgid "Disk Error: "
 msgstr "Diskfel: "
 
-#: src/Buffer.cpp:355
+#: src/Buffer.cpp:357
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyX kunde inte skapa den tillfälliga katalogen '%1$s' (Kanske inget utrymme?)"
 
-#: src/Buffer.cpp:467
+#: src/Buffer.cpp:469
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX försökte stänga ett dokument som hade osparade ändringar!\n"
 
-#: src/Buffer.cpp:469
+#: src/Buffer.cpp:471
 msgid "Attempting to close changed document!"
 msgstr "Försöker att stänga ändrat dokument!"
 
-#: src/Buffer.cpp:478
+#: src/Buffer.cpp:480
 msgid "Could not remove temporary directory"
 msgstr "Kunde inte ta bort tillfällig katalog"
 
-#: src/Buffer.cpp:479
+#: src/Buffer.cpp:481
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Kunde inte ta bort den tillfälliga katalogen %1$s"
 
-#: src/Buffer.cpp:831
+#: src/Buffer.cpp:853
 msgid "Unknown document class"
 msgstr "Okänd dokumentklass"
 
-#: src/Buffer.cpp:832
+#: src/Buffer.cpp:854
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Använder standarddokumentklass, eftersom klassen %1$s är okänd."
 
-#: src/Buffer.cpp:836 src/Text.cpp:487
+#: src/Buffer.cpp:858 src/Text.cpp:487
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Okänt tecken: %1$s %2$s\n"
 
-#: src/Buffer.cpp:840 src/Buffer.cpp:847 src/Buffer.cpp:870
+#: src/Buffer.cpp:862 src/Buffer.cpp:869 src/Buffer.cpp:892
 msgid "Document header error"
 msgstr "Dokumenthuvudfel"
 
-#: src/Buffer.cpp:846
+#: src/Buffer.cpp:868
 msgid "\\begin_header is missing"
 msgstr "\\begin_header saknas"
 
-#: src/Buffer.cpp:869
+#: src/Buffer.cpp:891
 msgid "\\begin_document is missing"
 msgstr "\\begin_document saknas"
 
-#: src/Buffer.cpp:882 src/Buffer.cpp:888 src/BufferView.cpp:1440
+#: src/Buffer.cpp:904 src/Buffer.cpp:910 src/BufferView.cpp:1440
 #: src/BufferView.cpp:1446
 msgid "Changes not shown in LaTeX output"
 msgstr "Ändringar som inte visas i LaTeX-utmatning"
 
-#: src/Buffer.cpp:883 src/BufferView.cpp:1441
+#: src/Buffer.cpp:905 src/BufferView.cpp:1441
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -17164,7 +17152,7 @@ msgstr ""
 "Vänligen installera dessa paket eller omdefiniera \\lyxadded och "
 "\\lyxdeleted i LaTeX-ingressen."
 
-#: src/Buffer.cpp:889 src/BufferView.cpp:1447
+#: src/Buffer.cpp:911 src/BufferView.cpp:1447
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17176,31 +17164,31 @@ msgstr ""
 "Vänligen installera båda paketen eller omdefiniera \\lyxadded och "
 "\\lyxdeleted i LaTeX-ingressen."
 
-#: src/Buffer.cpp:927 src/BufferParams.cpp:414
+#: src/Buffer.cpp:949 src/BufferParams.cpp:414
 #: src/frontends/qt4/GuiLog.cpp:233 src/insets/InsetIndex.cpp:446
 #: src/insets/InsetIndex.cpp:714
 msgid "Index"
 msgstr "Index"
 
-#: src/Buffer.cpp:1000 src/Buffer.cpp:1044
+#: src/Buffer.cpp:1022 src/Buffer.cpp:1066
 msgid "Document format failure"
 msgstr "Dokumentformatmisslyckande"
 
-#: src/Buffer.cpp:1001
+#: src/Buffer.cpp:1023
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s slutade oväntat, vilket betyder att den förmodligen är korrupt."
 
-#: src/Buffer.cpp:1045
+#: src/Buffer.cpp:1067
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s är inte ett läsbart LyX-dokument."
 
-#: src/Buffer.cpp:1070
+#: src/Buffer.cpp:1092
 msgid "Conversion failed"
 msgstr "Omvandling misslyckades"
 
-#: src/Buffer.cpp:1071
+#: src/Buffer.cpp:1093
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -17209,11 +17197,11 @@ msgstr ""
 "%1$s är från en annan version av LyX, men en tillfällig fil för att omvandla "
 "den kunde inte skapas."
 
-#: src/Buffer.cpp:1081
+#: src/Buffer.cpp:1103
 msgid "Conversion script not found"
 msgstr "Omvandlingsskript hittades inte"
 
-#: src/Buffer.cpp:1082
+#: src/Buffer.cpp:1104
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -17222,11 +17210,11 @@ msgstr ""
 "%1$s är från en annan version av LyX, men omvandlingsskriptet lyx2lyx kunde "
 "inte hittas."
 
-#: src/Buffer.cpp:1105 src/Buffer.cpp:1112
+#: src/Buffer.cpp:1127 src/Buffer.cpp:1134
 msgid "Conversion script failed"
 msgstr "Omvandlingsskript misslyckades"
 
-#: src/Buffer.cpp:1106
+#: src/Buffer.cpp:1128
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -17235,7 +17223,7 @@ msgstr ""
 "%1$s är från en äldre version av LyX och lyx2lyx-skriptet misslyckades med "
 "att omvandla den"
 
-#: src/Buffer.cpp:1113
+#: src/Buffer.cpp:1135
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -17244,16 +17232,16 @@ msgstr ""
 "%1$s är från en nyare version av LyX och lyx2lyx-skriptet misslyckades med "
 "att omvandla den."
 
-#: src/Buffer.cpp:1134 src/Buffer.cpp:3878 src/Buffer.cpp:3940
+#: src/Buffer.cpp:1156 src/Buffer.cpp:3900 src/Buffer.cpp:3962
 msgid "File is read-only"
 msgstr "Filen är skrivskyddad"
 
-#: src/Buffer.cpp:1135
+#: src/Buffer.cpp:1157
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr "Filen %1$s kan inte skrivas eftersom den är märkt som skrivskyddad."
 
-#: src/Buffer.cpp:1144
+#: src/Buffer.cpp:1166
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -17262,21 +17250,21 @@ msgstr ""
 "Dokument %1$s har blivit externt modifierad. Är du säker på att du vill "
 "skriva över denna fil?"
 
-#: src/Buffer.cpp:1146
+#: src/Buffer.cpp:1168
 msgid "Overwrite modified file?"
 msgstr "Skriv över modifierad fil?"
 
-#: src/Buffer.cpp:1147 src/Buffer.cpp:2417 src/Exporter.cpp:50
+#: src/Buffer.cpp:1169 src/Buffer.cpp:2439 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
 #: src/frontends/qt4/GuiView.cpp:2287
 msgid "&Overwrite"
 msgstr "Skriv över"
 
-#: src/Buffer.cpp:1176
+#: src/Buffer.cpp:1198
 msgid "Backup failure"
 msgstr "Säkerhetskopieringsmisslyckande"
 
-#: src/Buffer.cpp:1177
+#: src/Buffer.cpp:1199
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -17285,46 +17273,46 @@ msgstr ""
 "Kan inte skapa säkerhetskopierad fil %1$s.\n"
 "Vänligen kontrollera huruvida katalogen finns och är skrivbar."
 
-#: src/Buffer.cpp:1203
+#: src/Buffer.cpp:1225
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Sparar dokument %1$s..."
 
-#: src/Buffer.cpp:1218
+#: src/Buffer.cpp:1240
 msgid " could not write file!"
 msgstr " kunde inte skriva fil!"
 
-#: src/Buffer.cpp:1226
+#: src/Buffer.cpp:1248
 msgid " done."
 msgstr " färdig."
 
-#: src/Buffer.cpp:1241
+#: src/Buffer.cpp:1263
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Försöker att spara dokument %1$s\n"
 
-#: src/Buffer.cpp:1251 src/Buffer.cpp:1264 src/Buffer.cpp:1278
+#: src/Buffer.cpp:1273 src/Buffer.cpp:1286 src/Buffer.cpp:1300
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Sparad till %1$s.\n"
 
-#: src/Buffer.cpp:1254
+#: src/Buffer.cpp:1276
 msgid "Save failed! Trying again...\n"
 msgstr "Sparning misslyckades! Provar igen...\n"
 
-#: src/Buffer.cpp:1268
+#: src/Buffer.cpp:1290
 msgid "Save failed! Trying yet again...\n"
 msgstr "Sparning misslyckades! Provar än en gång...\n"
 
-#: src/Buffer.cpp:1282
+#: src/Buffer.cpp:1304
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Sparning misslyckades! Dokument förlorat."
 
-#: src/Buffer.cpp:1369
+#: src/Buffer.cpp:1391
 msgid "Iconv software exception Detected"
 msgstr "Iconv mjukvaruundantag upptäckt!"
 
-#: src/Buffer.cpp:1369
+#: src/Buffer.cpp:1391
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -17333,12 +17321,12 @@ msgstr ""
 "Vänligen verifiera att stödmjukvaran för din kodning (%1$s) är korrekt "
 "installerad"
 
-#: src/Buffer.cpp:1391
+#: src/Buffer.cpp:1413
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kunde inte hitta LaTeX-kommando för tecken '%1$s' (kodpunkt %2$s)"
 
-#: src/Buffer.cpp:1394
+#: src/Buffer.cpp:1416
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -17347,25 +17335,25 @@ msgstr ""
 "Några tecken i ditt dokument kanske inte kan visas i vald kodning.\n"
 "Att ändra dokumentkodningen till utf8 kan hjälpa."
 
-#: src/Buffer.cpp:1401
+#: src/Buffer.cpp:1423
 msgid "iconv conversion failed"
 msgstr "iconv omvandling misslyckades"
 
-#: src/Buffer.cpp:1406
+#: src/Buffer.cpp:1428
 msgid "conversion failed"
 msgstr "omvandling misslyckades"
 
-#: src/Buffer.cpp:1514
+#: src/Buffer.cpp:1536
 msgid "Uncodable character in file path"
 msgstr "Okodbart tecken i filsökväg"
 
-#: src/Buffer.cpp:1516
+#: src/Buffer.cpp:1538
 #, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely "
-"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
+"contains glyphs that are unknown in the current document encoding (namely %2"
+"$s). This may result in incomplete output, unless TEXINPUTS contains the "
 "document directory and you don't use explicitly relative paths (i.e., paths "
 "starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
@@ -17374,8 +17362,8 @@ msgid ""
 msgstr ""
 "Sökvägen för ditt dokument\n"
 "(%1$s)\n"
-"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen "
-"%2$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
+"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen %2"
+"$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
 "innehåller dokumentkatalogen och du inte använder uttryckliga relativa "
 "sökvägar (t.ex. sökvägar som börjar med './' eller '../') i ingressen eller "
 "i ERT.\n"
@@ -17383,48 +17371,48 @@ msgstr ""
 "Vid problem, välj en lämplig dokumentkodning\n"
 "(som utf8) eller ändra filens sökväg."
 
-#: src/Buffer.cpp:1828
+#: src/Buffer.cpp:1850
 msgid "Running chktex..."
 msgstr "Chktex körs..."
 
-#: src/Buffer.cpp:1842
+#: src/Buffer.cpp:1864
 msgid "chktex failure"
 msgstr "chktex-misslyckande"
 
-#: src/Buffer.cpp:1843
+#: src/Buffer.cpp:1865
 msgid "Could not run chktex successfully."
 msgstr "Kunde inte köra chktex framgångsrikt."
 
-#: src/Buffer.cpp:2119
+#: src/Buffer.cpp:2141
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Vet inte hur man exporterar till format: %1$s"
 
-#: src/Buffer.cpp:2183 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2205 src/frontends/qt4/GuiView.cpp:3130
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fel vid export till format: %1$s."
 
-#: src/Buffer.cpp:2266
+#: src/Buffer.cpp:2288
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Gren \"%1$s\" finns redan."
 
-#: src/Buffer.cpp:2331
+#: src/Buffer.cpp:2353
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kan inte tolka \"%1$s\""
 
-#: src/Buffer.cpp:2338
+#: src/Buffer.cpp:2360
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Okänt mål \"%1$s\""
 
-#: src/Buffer.cpp:2348
+#: src/Buffer.cpp:2370
 msgid "Error exporting to DVI."
 msgstr "Fel vid export till DVI."
 
-#: src/Buffer.cpp:2413 src/Exporter.cpp:45
+#: src/Buffer.cpp:2435 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17435,85 +17423,85 @@ msgstr ""
 "\n"
 "Vill du skriva över den filen?"
 
-#: src/Buffer.cpp:2416 src/Exporter.cpp:48
+#: src/Buffer.cpp:2438 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv över fil?"
 
-#: src/Buffer.cpp:2433
+#: src/Buffer.cpp:2455
 msgid "Error running external commands."
 msgstr "Fel vid körning av externa kommandon."
 
-#: src/Buffer.cpp:3240
+#: src/Buffer.cpp:3262
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Förhandsgranska källkod för stycke %1$d"
 
-#: src/Buffer.cpp:3244
+#: src/Buffer.cpp:3266
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Förhandsgranska källkod från stycke %1$s till %2$s"
 
-#: src/Buffer.cpp:3297
+#: src/Buffer.cpp:3319
 msgid "Preview source code"
 msgstr "Förhandsgranska källkod"
 
-#: src/Buffer.cpp:3299
+#: src/Buffer.cpp:3321
 msgid "Preview preamble"
 msgstr "Förhandsgranska ingress"
 
-#: src/Buffer.cpp:3301
+#: src/Buffer.cpp:3323
 msgid "Preview body"
 msgstr "Förhandsgranska kropp"
 
-#: src/Buffer.cpp:3316
+#: src/Buffer.cpp:3338
 msgid "Plain text does not have a preamble."
 msgstr "Vanlig text har inte en ingress."
 
-#: src/Buffer.cpp:3428
+#: src/Buffer.cpp:3450
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autosparar %1$s"
 
-#: src/Buffer.cpp:3482
+#: src/Buffer.cpp:3504
 msgid "Autosave failed!"
 msgstr "Autosparning misslyckades!"
 
-#: src/Buffer.cpp:3543
+#: src/Buffer.cpp:3565
 msgid "Autosaving current document..."
 msgstr "Autosparar aktuellt dokument..."
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3655
 msgid "Couldn't export file"
 msgstr "Kunde inte exportera fil"
 
-#: src/Buffer.cpp:3634
+#: src/Buffer.cpp:3656
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ingen information för att exportera formatet %1$s."
 
-#: src/Buffer.cpp:3690
+#: src/Buffer.cpp:3712
 msgid "File name error"
 msgstr "Filnamnsfel"
 
-#: src/Buffer.cpp:3691
+#: src/Buffer.cpp:3713
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanslag."
 
-#: src/Buffer.cpp:3775
+#: src/Buffer.cpp:3797
 msgid "Document export cancelled."
 msgstr "Dokumentexport avbruten."
 
-#: src/Buffer.cpp:3785
+#: src/Buffer.cpp:3807
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exporterat som %1$s till fil `%2$s'"
 
-#: src/Buffer.cpp:3791
+#: src/Buffer.cpp:3813
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exporterat som %1$s"
 
-#: src/Buffer.cpp:3864
+#: src/Buffer.cpp:3886
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17524,19 +17512,19 @@ msgstr ""
 "\n"
 "Återhämta nödsparning?"
 
-#: src/Buffer.cpp:3867
+#: src/Buffer.cpp:3889
 msgid "Load emergency save?"
 msgstr "Ladda nödsparning?"
 
-#: src/Buffer.cpp:3868
+#: src/Buffer.cpp:3890
 msgid "&Recover"
 msgstr "Åte&rhämta"
 
-#: src/Buffer.cpp:3868
+#: src/Buffer.cpp:3890
 msgid "&Load Original"
 msgstr "&Ladda original"
 
-#: src/Buffer.cpp:3879
+#: src/Buffer.cpp:3901
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17545,15 +17533,15 @@ msgstr ""
 "En nödfil laddades framgångsrikt, men originalfilen %1$s är märkt "
 "skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:3885
+#: src/Buffer.cpp:3907
 msgid "Document was successfully recovered."
 msgstr "Dokument återhämtades framgångsrikt."
 
-#: src/Buffer.cpp:3887
+#: src/Buffer.cpp:3909
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument återhämtades INTE framgångsrikt."
 
-#: src/Buffer.cpp:3888
+#: src/Buffer.cpp:3910
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17562,27 +17550,27 @@ msgstr ""
 "Ta bort nödfil nu?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3892 src/Buffer.cpp:3904
+#: src/Buffer.cpp:3914 src/Buffer.cpp:3926
 msgid "Delete emergency file?"
 msgstr "Radera nödfil?"
 
-#: src/Buffer.cpp:3893 src/Buffer.cpp:3906
+#: src/Buffer.cpp:3915 src/Buffer.cpp:3928
 msgid "&Keep"
 msgstr "Behåll"
 
-#: src/Buffer.cpp:3897
+#: src/Buffer.cpp:3919
 msgid "Emergency file deleted"
 msgstr "Nödfil raderad"
 
-#: src/Buffer.cpp:3898
+#: src/Buffer.cpp:3920
 msgid "Do not forget to save your file now!"
 msgstr "Glöm inte att spara din fil nu!"
 
-#: src/Buffer.cpp:3905
+#: src/Buffer.cpp:3927
 msgid "Remove emergency file now?"
 msgstr "Ta bort nödfil nu?"
 
-#: src/Buffer.cpp:3928
+#: src/Buffer.cpp:3950
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17593,19 +17581,19 @@ msgstr ""
 "\n"
 "Ladda säkerhetskopian i stället?"
 
-#: src/Buffer.cpp:3930
+#: src/Buffer.cpp:3952
 msgid "Load backup?"
 msgstr "Ladda säkerhetskopia?"
 
-#: src/Buffer.cpp:3931
+#: src/Buffer.cpp:3953
 msgid "&Load backup"
 msgstr "&Ladda säkerhetskopia"
 
-#: src/Buffer.cpp:3931
+#: src/Buffer.cpp:3953
 msgid "Load &original"
 msgstr "Ladda &original"
 
-#: src/Buffer.cpp:3941
+#: src/Buffer.cpp:3963
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17614,25 +17602,25 @@ msgstr ""
 "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
 "märkt skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4283 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4305 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Meningslöst!!! "
 
-#: src/Buffer.cpp:4483
+#: src/Buffer.cpp:4505
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s laddades om."
 
-#: src/Buffer.cpp:4486
+#: src/Buffer.cpp:4508
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunde inte ladda om dokument %1$s."
 
-#: src/Buffer.cpp:4553
+#: src/Buffer.cpp:4575
 msgid "Included File Invalid"
 msgstr "Inkluderad fil ogiltig"
 
-#: src/Buffer.cpp:4554
+#: src/Buffer.cpp:4576
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -18351,8 +18339,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
-"%1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
+"1$s."
 
 #: src/Converter.cpp:673
 msgid "LaTeX failed"
@@ -18401,11 +18389,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:697
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
-"%3$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
+"$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
-"%2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
+"2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:702
 msgid "Undefined flex inset"
@@ -20244,7 +20232,7 @@ msgid "About %1"
 msgstr "Om %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:489
-#: src/frontends/qt4/GuiPrefs.cpp:3200
+#: src/frontends/qt4/GuiPrefs.cpp:3224
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -21844,72 +21832,76 @@ msgstr ""
 msgid "Printer"
 msgstr "Skrivare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2490 src/frontends/qt4/GuiPrefs.cpp:3243
+#: src/frontends/qt4/GuiPrefs.cpp:2490 src/frontends/qt4/GuiPrefs.cpp:3268
 msgid "User Interface"
 msgstr "Användargränssnitt"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2534
+#: src/frontends/qt4/GuiPrefs.cpp:2507
 msgid "Classic"
 msgstr "Klassisk"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2535
+#: src/frontends/qt4/GuiPrefs.cpp:2508
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2613
+#: src/frontends/qt4/GuiPrefs.cpp:2550
+msgid "Document Handling"
+msgstr "Dokumenthantering"
+
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Control"
 msgstr "Kontroll"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2701
+#: src/frontends/qt4/GuiPrefs.cpp:2725
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2706
+#: src/frontends/qt4/GuiPrefs.cpp:2730
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2707
+#: src/frontends/qt4/GuiPrefs.cpp:2731
 msgid "Shortcut"
 msgstr "Genväg"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2786
+#: src/frontends/qt4/GuiPrefs.cpp:2810
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Markör, mus och redigeringsfunktioner"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2790
+#: src/frontends/qt4/GuiPrefs.cpp:2814
 msgid "Mathematical Symbols"
 msgstr "Matematiska symboler"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2794
+#: src/frontends/qt4/GuiPrefs.cpp:2818
 msgid "Document and Window"
 msgstr "Dokument och fönster"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2798
+#: src/frontends/qt4/GuiPrefs.cpp:2822
 msgid "Font, Layouts and Textclasses"
 msgstr "Typsnitt, utformningar och textklasser"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2802
+#: src/frontends/qt4/GuiPrefs.cpp:2826
 msgid "System and Miscellaneous"
 msgstr "System och diverse"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2929 src/frontends/qt4/GuiPrefs.cpp:2975
+#: src/frontends/qt4/GuiPrefs.cpp:2953 src/frontends/qt4/GuiPrefs.cpp:2999
 msgid "Res&tore"
 msgstr "Åters&täll"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3086 src/frontends/qt4/GuiPrefs.cpp:3093
-#: src/frontends/qt4/GuiPrefs.cpp:3113 src/frontends/qt4/GuiPrefs.cpp:3132
+#: src/frontends/qt4/GuiPrefs.cpp:3110 src/frontends/qt4/GuiPrefs.cpp:3117
+#: src/frontends/qt4/GuiPrefs.cpp:3137 src/frontends/qt4/GuiPrefs.cpp:3156
 msgid "Failed to create shortcut"
 msgstr "Misslyckades med att skapa genväg"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3087
+#: src/frontends/qt4/GuiPrefs.cpp:3111
 msgid "Unknown or invalid LyX function"
 msgstr "Okänd eller ogiltig LyX-funktion"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3094
+#: src/frontends/qt4/GuiPrefs.cpp:3118
 msgid "Invalid or empty key sequence"
 msgstr "Ogiltig eller tom tangentsekvens"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3114
+#: src/frontends/qt4/GuiPrefs.cpp:3138
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -21920,35 +21912,35 @@ msgstr ""
 "%2$s\n"
 "Du måste ta bort den bindingen innan du skapar en ny."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3133
+#: src/frontends/qt4/GuiPrefs.cpp:3157
 msgid "Can not insert shortcut to the list"
 msgstr "Kan inte infoga genväg till listan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3164
+#: src/frontends/qt4/GuiPrefs.cpp:3188
 msgid "Identity"
 msgstr "Identitet"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3373
+#: src/frontends/qt4/GuiPrefs.cpp:3398
 msgid "Choose bind file"
 msgstr "Välj bindfil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3374
+#: src/frontends/qt4/GuiPrefs.cpp:3399
 msgid "LyX bind files (*.bind)"
 msgstr "LyX bindfiler (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3380
+#: src/frontends/qt4/GuiPrefs.cpp:3405
 msgid "Choose UI file"
 msgstr "Välj UI-fil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3381
+#: src/frontends/qt4/GuiPrefs.cpp:3406
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI-filer (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3387
+#: src/frontends/qt4/GuiPrefs.cpp:3412
 msgid "Choose keyboard map"
 msgstr "Välj tangentbordskarta"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3388
+#: src/frontends/qt4/GuiPrefs.cpp:3413
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX tangentbordskartor (*.kmap)"
 
@@ -24124,15 +24116,15 @@ msgstr "Sträng har blivit ersatt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d strängar har blivit ersatta."
 
-#: src/lyxfind.cpp:1432
+#: src/lyxfind.cpp:1433
 msgid "Invalid regular expression!"
 msgstr "Ogiltigt reguljärt uttryck!"
 
-#: src/lyxfind.cpp:1437
+#: src/lyxfind.cpp:1438
 msgid "Match not found!"
 msgstr "Matchning hittades inte!"
 
-#: src/lyxfind.cpp:1441
+#: src/lyxfind.cpp:1442
 msgid "Match found!"
 msgstr "Matchning hittades!"
 
@@ -24540,6 +24532,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Okänd användare"
+
+#~ msgid ""
+#~ "The icon set to use. Warning: normal size of icons may be\n"
+#~ "wrong until you save the preferences and restart LyX."
+#~ msgstr ""
+#~ "Ikonuppsättningen att använda. Varning: normalstorleken på ikoner kan\n"
+#~ "vara fel tills du har sparat inställningarna och startat om LyX."
+
+#~ msgid "Automatic help"
+#~ msgstr "Automatisk hjälp"
+
+#~ msgid "Session"
+#~ msgstr "Session"
+
+#~ msgid "Documents"
+#~ msgstr "Dokument"
+
+#~ msgid ""
+#~ "Whether to open documents in an already running instance of LyX.\n"
+#~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
+#~ msgstr ""
+#~ "Huruvida dokument ska öppnas i en redan körande instans av LyX.\n"
+#~ "(Sätt sökväg för LyXServerns sluss och starta om LyX för att aktivera "
+#~ "denna finess)"
 
 #, fuzzy
 #~ msgid "Abbreviations"
