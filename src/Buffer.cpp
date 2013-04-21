@@ -1981,7 +1981,7 @@ int Buffer::runChktex()
 	if (res == -1) {
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
-	} else if (res > 0) {
+	} else {
 		ErrorList & errlist = d->errorLists["ChkTeX"];
 		errlist.clear();
 		bufferErrors(terr, errlist);
