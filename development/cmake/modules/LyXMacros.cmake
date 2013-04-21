@@ -25,6 +25,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+include (MacroAddFileDependencies)
+
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 macro(lyx_add_path _list _prefix)
@@ -51,7 +53,7 @@ macro(LYX_ADD_UI_FILES _sources _ui)
 		# ######
 		# Latest test showed on linux and windows show no bad consequeces,
 		# so we removed the call to LyXuic.cmake
-		qt4_wrap_ui(${_header} ${_tmp_FILE} OPTIONS -tr lyx::qt_)
+		qt_wrap_uifiles(${_header} ${_tmp_FILE} OPTIONS -tr lyx::qt_)
 		set(${_ui} ${${_ui}} ${_header})
 	endforeach (_current_FILE)
 endmacro(LYX_ADD_UI_FILES)

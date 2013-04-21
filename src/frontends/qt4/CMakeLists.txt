@@ -33,7 +33,7 @@ add_custom_command(
 		-P ${TOP_SCRIPT_PATH}/LyXCreateImagesResource.cmake
 	)
 
-qt4_add_resources(resource_files ${resource_name})
+qt_add_resources(resource_files ${resource_name})
 
 add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT4_FRONTEND)
 
@@ -54,7 +54,7 @@ else()
 endif()
 set_target_properties(frontend_qt4 PROPERTIES FOLDER "applications/LyX")
 
-
+qt_use_modules(frontend_qt4 Core Gui Widgets Concurrent)
 target_link_libraries(frontend_qt4
 	frontends
 	${QT_QTCORE_LIBRARY}
