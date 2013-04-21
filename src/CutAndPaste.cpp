@@ -478,12 +478,17 @@ void putClipboard(ParagraphList const & paragraphs,
 	// to be so, but the alternative is to construct a new one of these (with a
 	// new temporary directory, etc) every time, and then to destroy it. So maybe
 	// it's worth just keeping this one around.
-	static Buffer * buffer = theBufferList().newInternalBuffer(
+	Buffer * staticbuffer = theBufferList().newInternalBuffer(
 		FileName::tempName("clipboard.internal").absFileName());
 
 	// These two things only really need doing the first time.
-	buffer->setUnnamed(true);
-	buffer->inset().setBuffer(*buffer);
+	staticbuffer->setUnnamed(true);
+	staticbuffer->inset().setBuffer(*staticbuffer);
+
+	// Use a clone for the complicated stuff so that we do not need to clean
+	// up in order to avoid a crash.
+	Buffer * buffer = staticbuffer->cloneBufferOnly();
+	LASSERT(buffer, return);
 
 	// This needs doing every time.
 	buffer->params().setDocumentClass(docclass);
@@ -493,6 +498,11 @@ void putClipboard(ParagraphList const & paragraphs,
 	DocIterator dit = doc_iterator_begin(buffer, &buffer->inset());
 	ErrorList el;
 	pasteSelectionHelper(dit, paragraphs, docclass, el);
+
+	// We don't want to produce images that are not used. Therefore,
+	// output formulas as MathML. Even if this is not understood by all
+	// applications, the number that can parse it should go up in the future.
+	buffer->params().html_math_output = BufferParams::MathML;
 
 	// The Buffer is being used to export. This is necessary so that the
 	// updateMacros call will record the needed information.
@@ -516,7 +526,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	theClipboard().put(lyx, oshtml.str(), plaintext);
 
 	// Save that memory
-	buffer->paragraphs().clear();
+	delete buffer;
 }
 
 
