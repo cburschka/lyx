@@ -5758,7 +5758,11 @@ Ce sont les marqueurs implicites pour une
 ListePuces
 \family default
 .
- Vous pouvez personnaliser ces marqueurs dans la fenêtre 
+ Vous pouvez personnaliser comme ces marqueurs 
+\lang english
+are displayed in the output 
+\lang french
+dans la fenêtre 
 \family sans
 Document\SpecialChar \menuseparator
 Paramètres
@@ -5936,18 +5940,23 @@ au plus extérieur.
 \end_layout
 
 \begin_layout Standard
-Là encore, vous pouvez personnaliser le type de numérotation utilisé par
- l'environnement 
+Vous pouvez personnaliser le type de numérotation utilisé par l'environnement
+ 
 \family sans
 Énumération
 \family default
+, voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Listes-personnalisées"
+
+\end_inset
+
 .
- Il faut pour ce faire ajouter des commandes au préambule (voir le manuel
- d
-\emph on
-es Options avancées
-\emph default
-).
  Une telle personnalisation n'est visible que sur la version imprimée, pas
  sur l'écran de LyX.
 \end_layout
@@ -6061,7 +6070,7 @@ Insécable
  (Soit avec 
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
  soit avec 
@@ -6508,6 +6517,13 @@ horizontal
 
 \begin_layout Subsection
 Listes personnalisées
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Listes-personnalisées"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -8037,7 +8053,7 @@ Espace,
 ou utilisez 
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
  à la place,
@@ -8305,7 +8321,7 @@ Tab
 \family default
  et 
 \family sans
-Shift-Tab
+Shift+Tab
 \family default
  ou 
 \begin_inset Info

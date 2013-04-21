@@ -4392,14 +4392,18 @@ reference "sec:入れ子"
 箇条書き（記号）
 \family default
 のラベルです。
+\lang english
+You can customize how these labels are displayed in the output in the 
 \family sans
-文書\SpecialChar \menuseparator
-設定
+Document\SpecialChar \menuseparator
+Settings
 \family default
-ダイアログの
+ dialog in the submenu 
 \family sans
-ブリット
+Bullets
 \family default
+.
+\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -4419,7 +4423,9 @@ status collapsed
 
 \end_inset
 
-サブメニューで既定のラベルを変えることができます。
+
+\lang english
+ These customizations are not displayed in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -4574,15 +4580,23 @@ LyXが項目の数を数えてラベルを自動的につけ、必要ならば�
 
 \begin_layout Standard
 
+\lang english
+You can customize the type of numbering used in the 
 \family sans
-箇条書き（記号）
+Enumerate
 \family default
-環境の場合と同様に、
-\family sans
-箇条書き（連番）
-\family default
-環境でもラベルを変えることができます。ただしそのためには、LaTeXのプリアンブルにコマンドを追加する必要があります（取扱説明書『高度な機能篇』を参照）。またそ
-うやってラベルを変えた場合には、印刷するとちゃんとラベルが変わってますが、画面上では変わりません。
+ environment, see 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:箇条書きの微調整"
+
+\end_inset
+
+。
+\lang english
+Such customization only shows up in the printed version, not in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -4648,7 +4662,7 @@ Space
 を使用します（
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 と入力するか、
@@ -4934,6 +4948,13 @@ reference "sub:水平方向の空白"
 
 \begin_layout Subsection
 箇条書きの微調整
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:箇条書きの微調整"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -6195,7 +6216,7 @@ Space
 の代わりに
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 を使って下さい。
@@ -6382,7 +6403,7 @@ Tab
 \family default
 ・ないし
 \family sans
-Shift-Tab
+Shift+Tab
 \family default
 、あるいは
 \begin_inset Info

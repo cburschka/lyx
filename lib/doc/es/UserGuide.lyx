@@ -5381,7 +5381,11 @@ Estas son las marcas predeterminadas para una lista
 Enumeración*
 \family default
 .
- Puedes personalizar estas marcas en el submenú 
+ Puedes personalizar como estas marcas 
+\lang english
+are displayed in the output 
+\lang spanish
+en el submenú 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración
@@ -5401,6 +5405,9 @@ Documentos ! Configuración
 Marcas
 \family default
 .
+ 
+\lang english
+These customizations are not displayed in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -5583,16 +5590,22 @@ Vuelta al nivel más externo.
 \end_layout
 
 \begin_layout Standard
-Como antes, puedes personalizar el tipo de numeración en el entorno 
+Puedes personalizar el tipo de numeración en el entorno 
 \family sans
 Enumeración
 \family default
+, véase sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Listas-personalizadas"
+
+\end_inset
+
 .
- Esto implica añadir comandos en el preámbulo LaTeX (véase el manual 
-\emph on
-Características adicionales
-\emph default
-).
  Estos cambios sólo se aprecian en la versión impresa, no en LyX.
 \end_layout
 
@@ -6385,6 +6398,13 @@ Relleno horizontal
 
 \begin_layout Subsection
 Listas personalizadas
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Listas-personalizadas"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -7163,7 +7183,7 @@ Radiación
 
 ionizante: 
 \begin_inset Argument
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -7463,8 +7483,9 @@ salto-de-línea
 \family sans
 Ctrl+Entrar
 \family default
- o 
+ o el menú 
 \family sans
+Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
 Salto
 \begin_inset space ~
@@ -7475,10 +7496,6 @@ de
 \end_inset
 
 línea
-\family default
- en el menú 
-\family sans
-Insertar
 \family default
 ) para iniciar línea nueva en un entorno 
 \family sans
@@ -8100,8 +8117,9 @@ tres
 
 \begin_layout Standard
 Una lista se introduce en otra anidándola en ella.
- Anidar un entorno es sencillo: Selecciona 
+ Anidar un entorno es sencillo: Selecciona el menú 
 \family sans
+Editar\SpecialChar \menuseparator
 Aumentar
 \begin_inset space ~
 \end_inset
@@ -8110,15 +8128,12 @@ profundidad
 \family default
  o 
 \family sans
+Editar\SpecialChar \menuseparator
 Disminuir
 \begin_inset space ~
 \end_inset
 
 profundidad
-\family default
- en el menú 
-\family sans
-Editar
 \family default
  para cambiar la profundidad de anidación del párrafo actual (en la barra
  de estado se indica el nivel de profundidad).
