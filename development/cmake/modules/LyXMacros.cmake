@@ -51,9 +51,7 @@ macro(LYX_ADD_UI_FILES _sources _ui)
 		# ######
 		# Latest test showed on linux and windows show no bad consequeces,
 		# so we removed the call to LyXuic.cmake
-		add_custom_command(OUTPUT ${_header}
-	 COMMAND ${QT_UIC_EXECUTABLE} -tr lyx::qt_ ${_tmp_FILE} -o ${_header}
-			MAIN_DEPENDENCY ${_tmp_FILE})
+		qt4_wrap_ui(${_header} ${_tmp_FILE} OPTIONS -tr lyx::qt_)
 		set(${_ui} ${${_ui}} ${_header})
 	endforeach (_current_FILE)
 endmacro(LYX_ADD_UI_FILES)

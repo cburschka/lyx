@@ -758,17 +758,38 @@ if(QT4_QMAKE_FOUND)
   ENDMACRO (QT4_WRAP_CPP)
 
 
+
+
+macro (QT4_EXTRACT_OPTIONS _qt4_files _qt4_options)
+	set(${_qt4_files})
+	set(${_qt4_options})
+	set(_QT4_DOING_OPTIONS FALSE)
+	foreach (_currentArg ${ARGN})
+		if ("${_currentArg}" STREQUAL "OPTIONS")
+			set(_QT4_DOING_OPTIONS TRUE)
+		else ()
+			if (_QT4_DOING_OPTIONS)
+				list(APPEND ${_qt4_options} "${_currentArg}")
+			else()
+				list(APPEND ${_qt4_files} "${_currentArg}")
+			endif()
+		endif()
+	endforeach()
+endmacro()
+
   # QT4_WRAP_UI(outfiles inputfile ... )
 
   MACRO (QT4_WRAP_UI outfiles )
+    QT4_EXTRACT_OPTIONS(ui_files_list ui_options ${ARGN})
+    FOREACH (it ${ui_files_list})
 
-    FOREACH (it ${ARGN})
       GET_FILENAME_COMPONENT(outfile ${it} NAME_WE)
       GET_FILENAME_COMPONENT(infile ${it} ABSOLUTE)
+
       set(outfile ${CMAKE_CURRENT_BINARY_DIR}/ui_${outfile}.h)
       ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
         COMMAND ${QT_UIC_EXECUTABLE}
-        ARGS -o ${outfile} ${infile}
+        ARGS ${ui_options} -o ${outfile} ${infile}
         MAIN_DEPENDENCY ${infile})
       set(${outfiles} ${${outfiles}} ${outfile})
     ENDFOREACH (it)
