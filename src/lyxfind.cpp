@@ -412,20 +412,15 @@ bool findPreviousChange(BufferView * bv)
 
 bool findChange(BufferView * bv, bool next)
 {
-	if (bv->cursor().selection()) {
-		// set the cursor at the beginning or at the end of the selection
-		// before searching. Otherwise, the current change will be found.
-		if (next != (bv->cursor().top() > bv->cursor().normalAnchor()))
-			bv->cursor().setCursorToAnchor();
-	}
-
-	DocIterator cur = bv->cursor();
+	Cursor cur(*bv);
+	cur.setCursor(next ? bv->cursor().selectionEnd()
+		      : bv->cursor().selectionBegin());
 
 	// Are we within a change ? Then first search forward (backward),
 	// clear the selection and search the other way around (see the end
 	// of this function). This will avoid changes to be selected half.
 	bool search_both_sides = false;
-	DocIterator tmpcur = cur;
+	Cursor tmpcur = cur;
 	// Leave math first
 	while (tmpcur.inMathed())
 		tmpcur.pop_back();
@@ -444,8 +439,7 @@ bool findChange(BufferView * bv, bool next)
 	if (!findChange(cur, next))
 		return false;
 
-	bv->cursor().setCursor(cur);
-	bv->cursor().resetAnchor();
+	bv->mouseSetCursor(cur, false);
 
 	CursorSlice & tip = cur.top();
 
@@ -473,12 +467,11 @@ bool findChange(BufferView * bv, bool next)
 		}
 	}
 
-	// Now put cursor to end of selection:
-	bv->cursor().setCursor(cur);
-	bv->cursor().setSelection();
-
-	if (search_both_sides) {
-		bv->cursor().setSelection(false);
+	if (!search_both_sides) {
+		// Now set the selection.
+		bv->mouseSetCursor(cur, true);
+	} else {
+		bv->mouseSetCursor(cur, false);
 		findChange(bv, !next);
 	}
 
