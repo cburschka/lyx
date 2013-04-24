@@ -1632,11 +1632,13 @@ bool Text::backspace(Cursor & cur)
 		if (cur.pit() == 0)
 			return dissolveInset(cur);
 
-		Paragraph & prev_par = pars_[cur.pit() - 1];
+		Cursor prev_cur = cur;
+		--prev_cur.pit();
 
-		if (!prev_par.isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
-			prev_par.setChange(prev_par.size(), Change(Change::DELETED));
-			setCursorIntern(cur, cur.pit() - 1, prev_par.size());
+		if (!prev_cur.paragraph().isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
+			cur.recordUndo(ATOMIC_UNDO, prev_cur.pit(), prev_cur.pit());
+			prev_cur.paragraph().setChange(prev_cur.lastpos(), Change(Change::DELETED));
+			setCursorIntern(cur, prev_cur.pit(), prev_cur.lastpos());
 			return true;
 		}
 		// The cursor is at the beginning of a paragraph, so
