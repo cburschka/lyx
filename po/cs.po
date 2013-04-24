@@ -3195,9 +3195,8 @@ msgid "&Mark end of paragraphs"
 msgstr "Oznaèit &konec odstavcù"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
 msgid "Session handling"
-msgstr "Obsluha fontù"
+msgstr "Nastavení relace"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3220,23 +3219,20 @@ msgid "&Clear all session information"
 msgstr "Smazat ve¹kerá nastavení &rozvrhu oken"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
 msgid "Backup && saving"
-msgstr "Zálohování selhalo"
+msgstr "Zálohování a ukládání"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
-#, fuzzy
 msgid "Backup &original documents when saving"
-msgstr "Zálohovat pùvodní dokumenty pøi ukládání"
+msgstr "&Zálohovat pùvodní dokumenty pøi ukládání"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
 msgstr "Zá&lohovat dokumenty, ka¾dých"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
-#, fuzzy
 msgid "&minutes"
-msgstr "minut"
+msgstr "&minut"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid "&Save documents compressed by default"
@@ -3244,15 +3240,13 @@ msgstr "Standardnì &ukládat dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
-msgstr ""
+msgstr "Okna a pracovní plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
-#, fuzzy
 msgid "Open documents in &tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
-#, fuzzy
 msgid "Use s&ingle instance"
 msgstr "Jediná &instance"
 
@@ -3261,7 +3255,6 @@ msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Má se zavírací tlaèítko objevit na ka¾dém panelu zvlá¹»?"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
-#, fuzzy
 msgid "Displa&y single close-tab button"
 msgstr "&Jediné tlaèítko pro zavírání panelu"
 
@@ -4115,7 +4108,6 @@ msgid "Al&ternative language:"
 msgstr "&Alternativní jazyk:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
-#, fuzzy
 msgid "General Look && Feel"
 msgstr "Vzhled"
 
@@ -4128,9 +4120,8 @@ msgid "&Icon Set:"
 msgstr "&Sada ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:109
-#, fuzzy
 msgid "Context help"
-msgstr "Obsah"
+msgstr "Kontextová nápovìda"
 
 #: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
@@ -4143,9 +4134,8 @@ msgid "&Enable tool tips in main work area"
 msgstr "Zapnout &bublinovou nápovìdu na pracovní plo¹e"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Menus"
-msgstr "GuiMenu"
+msgstr "Menu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:149
 msgid "&Maximum last files:"
@@ -21610,9 +21600,8 @@ msgid "Oxygen"
 msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2550
-#, fuzzy
 msgid "Document Handling"
-msgstr "Dokument a okno"
+msgstr "Obsluha souborù"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Control"
