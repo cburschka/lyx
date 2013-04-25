@@ -791,7 +791,6 @@ endmacro()
         COMMAND ${QT_UIC_EXECUTABLE}
         ARGS ${ui_options} -o ${outfile} ${infile}
         MAIN_DEPENDENCY ${infile})
-      set(${outfiles} ${${outfiles}} ${outfile})
     ENDFOREACH (it)
 
   ENDMACRO (QT4_WRAP_UI)
