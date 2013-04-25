@@ -33,7 +33,7 @@ namespace lyx {
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), lyxtype_(STANDARD),
 	labelstring_(from_ascii("UNDEFINED")), contentaslabel_(false),
-	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(sane_font), 
+	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(inherit_font), 
 	labelfont_(sane_font), bgcolor_(Color_error), 
 	htmlforcecss_ (false), htmlisblock_(true),
 	multipar_(true), custompars_(true), forceplain_(false), 
