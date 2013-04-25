@@ -26,6 +26,7 @@
 #include "insets/Inset.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <QLabel>
@@ -117,14 +118,16 @@ BufferView const * Dialog::bufferview() const
 
 Buffer const & Dialog::buffer() const
 {
-	LASSERT(lyxview_->currentBufferView(), /**/);
+	LAPPERR(lyxview_->currentBufferView(),
+		_("Dialog has no associated Buffer!"));
 	return lyxview_->currentBufferView()->buffer();
 }
 
 
 Buffer const & Dialog::documentBuffer() const
 {
-	LASSERT(lyxview_->documentBufferView(), /**/);
+	LAPPERR(lyxview_->currentBufferView(),
+		_("Dialog has no associated Buffer!"));
 	return lyxview_->documentBufferView()->buffer();
 }
 

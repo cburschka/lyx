@@ -96,16 +96,13 @@ string const HSpace::asLatexCommand() const
 	switch (kind_) {
 	case DEFAULT:
 		return string();
-		break;
-	case LENGTH: {
+	case LENGTH:
 		return len_.asLatexString();
-		break;
-				 }
-	default: {
-		LASSERT(false, /**/);
-		return string();
-			 }
+	default:
+		LATTEST(false);
+		// fall through in release mode
 	}
+	return string();
 }
 
 
@@ -149,15 +146,13 @@ int HSpace::inPixels(BufferView const & bv) const
 	case DEFAULT:
 		// FIXME: replace by correct length
 		return bv.buffer().params().getIndentation().inPixels(bv);
-		//return 0;
-		break;
 	case LENGTH:
 		return len_.len().inPixels(bv.workWidth());
-		break;
 	default:
-		LASSERT(false, /**/);
-		return 0;
+		LATTEST(false);
+		// fall through in release mode
 	}
+	return 0;
 }
 
 

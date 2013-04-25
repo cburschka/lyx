@@ -131,7 +131,7 @@ FileName::FileName(string const & abs_filename)
 	: d(abs_filename.empty() ? new Private : new Private(abs_filename))
 {
 	//LYXERR(Debug::FILES, "FileName(" << abs_filename << ')');
-	LASSERT(empty() || isAbsolute(d->name), /**/);
+	LATTEST(empty() || isAbsolute(d->name));
 }
 
 
@@ -194,7 +194,7 @@ void FileName::set(string const & name)
 	d->fi.setFile(toqstr(name));
 	d->name = fromqstr(d->fi.absoluteFilePath());
 	//LYXERR(Debug::FILES, "FileName::set(" << name << ')');
-	LASSERT(empty() || isAbsolute(d->name), /**/);
+	LATTEST(empty() || isAbsolute(d->name));
 }
 
 
@@ -206,7 +206,7 @@ void FileName::set(FileName const & rhs, string const & suffix)
 		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
 	d->name = fromqstr(d->fi.absoluteFilePath());
 	//LYXERR(Debug::FILES, "FileName::set(" << d->name << ')');
-	LASSERT(empty() || isAbsolute(d->name), /**/);
+	LATTEST(empty() || isAbsolute(d->name));
 }
 
 

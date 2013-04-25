@@ -261,7 +261,7 @@ static void build_script(string const & from_file,
 		  string const & to_format,
 		  ostream & script)
 {
-	LASSERT(from_format != to_format, /**/);
+	LASSERT(from_format != to_format, return);
 	LYXERR(Debug::GRAPHICS, "build_script ... ");
 	typedef Graph::EdgePath EdgePath;
 

@@ -316,7 +316,7 @@ static string const findTargetFormat(string const & from)
 	FormatList const & formats = Cache::get().loadableFormats();
 
 	 // There must be a format to load from.
-	LASSERT(!formats.empty(), /**/);
+	LASSERT(!formats.empty(), return string());
 
 	// Use the standard converter if we don't know the format to load
 	// from.

@@ -182,7 +182,8 @@ TocIterator TocBackend::item(string const & type,
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
-	LASSERT(toclist_it != tocs_.end(), /**/);
+	// We will try to make the best of it in release mode
+	LASSERT(toclist_it != tocs_.end(), toclist_it = tocs_.begin());
 	return toclist_it->second.item(dit);
 }
 

@@ -138,7 +138,7 @@ docstring const getText(string const & m)
 	// FIXME: gettext sometimes "forgets" the ucs4_codeset we set
 	// in init(), which leads to severe message corruption (#7371)
 	// We set it again here unconditionally. A real fix must be found!
-	LASSERT(bind_textdomain_codeset(PACKAGE, ucs4_codeset), /**/);
+	LATTEST(bind_textdomain_codeset(PACKAGE, ucs4_codeset));
 
 	char const * m_c = m.c_str();
 	char const * trans_c = gettext(m_c);
@@ -204,7 +204,7 @@ docstring const Messages::get(string const & m) const
 	pair<TranslationCache::iterator, bool> result =
 		cache_.insert(make_pair(m, trans));
 
-	LASSERT(result.second, /**/);
+	LASSERT(result.second, return from_utf8(m));
 
 	return result.first->second;
 }

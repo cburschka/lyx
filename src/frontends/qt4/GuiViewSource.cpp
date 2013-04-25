@@ -279,7 +279,7 @@ QString GuiViewSource::title() const
 		case LITERATE:
 			return qt_("Literate Source");
 	}
-	LASSERT(false, /**/);
+	LATTEST(false);
 	return QString();
 }
 

@@ -622,7 +622,7 @@ void InsetExternal::fileChanged() const
 		return;
 
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
-	LASSERT(ptr, /**/);
+	LASSERT(ptr, return);
 
 	ptr->removePreview(*buffer);
 	add_preview_and_start_loading(*ptr, *this, *buffer);

@@ -593,8 +593,8 @@ void Paragraph::addChangesToToc(DocIterator const & cdit,
 
 bool Paragraph::isDeleted(pos_type start, pos_type end) const
 {
-	LASSERT(start >= 0 && start <= size(), /**/);
-	LASSERT(end > start && end <= size() + 1, /**/);
+	LASSERT(start >= 0 && start <= size(), return false);
+	LASSERT(end > start && end <= size() + 1, return false);
 
 	return d->changes_.isDeleted(start, end);
 }
@@ -602,8 +602,8 @@ bool Paragraph::isDeleted(pos_type start, pos_type end) const
 
 bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
-	LASSERT(start >= 0 && start <= size(), /**/);
-	LASSERT(end > start && end <= size() + 1, /**/);
+	LASSERT(start >= 0 && start <= size(), return false);
+	LASSERT(end > start && end <= size() + 1, return false);
 
 	return d->changes_.isChanged(start, end);
 }
@@ -648,7 +648,7 @@ void Paragraph::setChange(Change const & change)
 
 void Paragraph::setChange(pos_type pos, Change const & change)
 {
-	LASSERT(pos >= 0 && pos <= size(), /**/);
+	LASSERT(pos >= 0 && pos <= size(), return);
 	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
@@ -660,15 +660,16 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 
 Change const & Paragraph::lookupChange(pos_type pos) const
 {
-	LASSERT(pos >= 0 && pos <= size(), /**/);
+	LBUFERR(pos >= 0 && pos <= size(),
+		_("Invalid position given to lookupChange()"));
 	return d->changes_.lookup(pos);
 }
 
 
 void Paragraph::acceptChanges(pos_type start, pos_type end)
 {
-	LASSERT(start >= 0 && start <= size(), /**/);
-	LASSERT(end > start && end <= size() + 1, /**/);
+	LASSERT(start >= 0 && start <= size(), return);
+	LASSERT(end > start && end <= size() + 1, return);
 
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
@@ -702,8 +703,8 @@ void Paragraph::acceptChanges(pos_type start, pos_type end)
 
 void Paragraph::rejectChanges(pos_type start, pos_type end)
 {
-	LASSERT(start >= 0 && start <= size(), /**/);
-	LASSERT(end > start && end <= size() + 1, /**/);
+	LASSERT(start >= 0 && start <= size(), return);
+	LASSERT(end > start && end <= size() + 1, return);
 
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
@@ -738,7 +739,7 @@ void Paragraph::rejectChanges(pos_type start, pos_type end)
 void Paragraph::Private::insertChar(pos_type pos, char_type c,
 		Change const & change)
 {
-	LASSERT(pos >= 0 && pos <= int(text_.size()), /**/);
+	LASSERT(pos >= 0 && pos <= int(text_.size()), return);
 
 	// track change
 	changes_.insert(change, pos);
@@ -769,8 +770,8 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 bool Paragraph::insertInset(pos_type pos, Inset * inset,
 				   Change const & change)
 {
-	LASSERT(inset, /**/);
-	LASSERT(pos >= 0 && pos <= size(), /**/);
+	LASSERT(inset, return false);
+	LASSERT(pos >= 0 && pos <= size(), return false);
 
 	// Paragraph::insertInset() can be used in cut/copy/paste operation where
 	// d->inset_owner_ is not set yet.
@@ -778,7 +779,7 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 		return false;
 
 	d->insertChar(pos, META_INSET, change);
-	LASSERT(d->text_[pos] == META_INSET, /**/);
+	LASSERT(d->text_[pos] == META_INSET, return false);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
@@ -846,8 +847,8 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 
 int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
-	LASSERT(start >= 0 && start <= size(), /**/);
-	LASSERT(end >= start && end <= size() + 1, /**/);
+	LASSERT(start >= 0 && start <= size(), return 0);
+	LASSERT(end >= start && end <= size() + 1, return 0);
 
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
@@ -1043,7 +1044,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 				    unsigned int & column)
 {
 	Inset * inset = owner_->getInset(i);
-	LASSERT(inset, /**/);
+	LBUFERR(inset, _(""));
 
 	if (style.pass_thru) {
 		odocstringstream ods;
@@ -1805,7 +1806,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 {
 	if (pos > size()) {
 		LYXERR0("pos: " << pos << " size: " << size());
-		LASSERT(pos <= size(), /**/);
+		LBUFERR(false, _("Invalid position."));
 	}
 
 	FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
@@ -1830,7 +1831,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
-	LASSERT(pos <= size(), /**/);
+	LBUFERR(pos <= size(), _("Invalid position"));
 	pos_type start = 0;
 
 	FontList::const_iterator cit = d->fontlist_.begin();
@@ -1849,8 +1850,9 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	}
 
 	// This should not happen, but if so, we take no chances.
-	// LYXERR0("Paragraph::getEndPosOfFontSpan: This should not happen!");
-	return FontSpan(pos, pos);
+	LBUFERR(false, _("Invalid position."));
+	// Squash warning
+	return FontSpan();
 }
 
 
@@ -1881,7 +1883,7 @@ Font const & Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 				 Font const & outerfont) const
 {
-	LASSERT(pos >= 0, /**/);
+	LBUFERR(pos >= 0, _("Invalid position."));
 
 	Font font = getFontSettings(bparams, pos);
 
@@ -1974,7 +1976,7 @@ char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 
 void Paragraph::setFont(pos_type pos, Font const & font)
 {
-	LASSERT(pos <= size(), /**/);
+	LASSERT(pos <= size(), return);
 
 	// First, reduce font against layout/label font
 	// Update: The setCharFont() routine in text2.cpp already
@@ -3256,8 +3258,7 @@ void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 
 Inset const & Paragraph::inInset() const
 {
-	LASSERT(d->inset_owner_, throw ExceptionMessage(BufferException,
-		_("Memory problem"), _("Paragraph not properly initialized")));
+	LBUFERR(d->inset_owner_, _("Paragraph not properly initialized"));
 	return *d->inset_owner_;
 }
 

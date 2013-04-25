@@ -51,6 +51,7 @@
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <cstdlib>
@@ -128,7 +129,7 @@ static int numberOfHfills(Paragraph const & par, Row const & row)
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	: bv_(bv), text_(text)
 {
-	LASSERT(bv_, /**/);
+	LBUFERR(bv_, _("Text metrics error."));
 	max_width_ = bv_->workWidth();
 	dim_.wid = max_width_;
 	dim_.asc = 10;
@@ -158,7 +159,7 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 
 pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
-	LASSERT(!par_metrics_.empty(), /**/);
+	LBUFERR(!par_metrics_.empty(), _("Text metrics error."));
 	ParMetricsCache::const_reverse_iterator it = par_metrics_.rbegin();
 	return make_pair(it->first, &it->second);
 }
@@ -179,7 +180,7 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 
 bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
-	LASSERT(mi.base.textwidth > 0, /**/);
+	LBUFERR(mi.base.textwidth > 0, _("Text metrics error."));
 	max_width_ = mi.base.textwidth;
 	// backup old dimension.
 	Dimension const old_dim = dim_;
@@ -239,7 +240,7 @@ void TextMetrics::applyOuterFont(Font & font) const
 
 Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 {
-	LASSERT(pos >= 0, /**/);
+	LASSERT(pos >= 0, { static Font f; return f; });
 
 	ParagraphList const & pars = text_->paragraphs();
 	Paragraph const & par = pars[pit];
@@ -416,7 +417,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		// should be.
 		bv_->buffer().updateBuffer();
 		parPos = text_->macrocontextPosition();
-		LASSERT(!parPos.empty(), /**/);
+		LBUFERR(!parPos.empty(), _("Text metrics error."));
 		parPos.pit() = pit;
 	}
 
@@ -692,7 +693,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
-	LASSERT(last > 0, /**/);
+	LBUFERR(last > 0, _("Text metrics error."));
 
 	// -1 because a label ends with a space that is in the label
 	--last;
@@ -1268,7 +1269,8 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		left_side = true;
 	}
 
-	LASSERT(vc <= end, /**/);  // This shouldn't happen.
+	// This shouldn't happen. But we can reset and try to continue.
+	LASSERT(vc <= end, vc = end);
 
 	boundary = false;
 
@@ -1341,7 +1343,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	// upDownInText() while in selection mode.
 	ParagraphMetrics const & pm = parMetrics(pit);
 
-	LASSERT(row < int(pm.rows().size()), /**/);
+	LBUFERR(row < int(pm.rows().size()), _("Text metrics error."));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
 	return r.pos() + getColumnNearX(pit, r, x, bound);
@@ -1444,7 +1446,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	int yy = pm.position() - pm.ascent();
-	LASSERT(!pm.rows().empty(), /**/);
+	LBUFERR(!pm.rows().empty(), _("Text metrics error."));
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator rlast = pm.rows().end();
 	--rlast;
@@ -1544,7 +1546,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
 {
-	LASSERT(text_ == cur.text(), /**/);
+	LASSERT(text_ == cur.text(), return);
 	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return);
 
@@ -1555,7 +1557,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 		" pit: " << pit << " yy: " << yy);
 
 	int r = 0;
-	LASSERT(pm.rows().size(), /**/);
+	LBUFERR(pm.rows().size(), _("Text metrics error."));
 	for (; r < int(pm.rows().size()) - 1; ++r) {
 		Row const & row = pm.rows()[r];
 		if (int(yy + row.height()) > y)
@@ -1625,7 +1627,7 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 int TextMetrics::cursorX(CursorSlice const & sl,
 		bool boundary) const
 {
-	LASSERT(sl.text() == text_, /**/);
+	LASSERT(sl.text() == text_, return 0);
 	pit_type const pit = sl.pit();
 	Paragraph const & par = text_->paragraphs()[pit];
 	ParagraphMetrics const & pm = par_metrics_[pit];
@@ -1800,7 +1802,7 @@ int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 
 bool TextMetrics::cursorHome(Cursor & cur)
 {
-	LASSERT(text_ == cur.text(), /**/);
+	LASSERT(text_ == cur.text(), return false);
 	ParagraphMetrics const & pm = par_metrics_[cur.pit()];
 	Row const & row = pm.getRow(cur.pos(),cur.boundary());
 	return text_->setCursor(cur, cur.pit(), row.pos());
@@ -1809,7 +1811,7 @@ bool TextMetrics::cursorHome(Cursor & cur)
 
 bool TextMetrics::cursorEnd(Cursor & cur)
 {
-	LASSERT(text_ == cur.text(), /**/);
+	LASSERT(text_ == cur.text(), return false);
 	// if not on the last row of the par, put the cursor before
 	// the final space exept if I have a spanning inset or one string
 	// is so long that we force a break.
@@ -1831,7 +1833,7 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 
 void TextMetrics::deleteLineForward(Cursor & cur)
 {
-	LASSERT(text_ == cur.text(), /**/);
+	LASSERT(text_ == cur.text(), return);
 	if (cur.lastpos() == 0) {
 		// Paragraph is empty, so we just go forward
 		text_->cursorForward(cur);
@@ -1866,8 +1868,6 @@ bool TextMetrics::isFirstRow(pit_type pit, Row const & row) const
 
 int TextMetrics::leftMargin(int max_width, pit_type pit) const
 {
-	LASSERT(pit >= 0, /**/);
-	LASSERT(pit < int(text_->paragraphs().size()), /**/);
 	return leftMargin(max_width, pit, text_->paragraphs()[pit].size());
 }
 
@@ -1877,11 +1877,11 @@ int TextMetrics::leftMargin(int max_width,
 {
 	ParagraphList const & pars = text_->paragraphs();
 
-	LASSERT(pit >= 0, /**/);
-	LASSERT(pit < int(pars.size()), /**/);
+	LASSERT(pit >= 0, return 0);
+	LASSERT(pit < int(pars.size()), return 0);
 	Paragraph const & par = pars[pit];
-	LASSERT(pos >= 0, /**/);
-	LASSERT(pos <= par.size(), /**/);
+	LASSERT(pos >= 0, return 0);
+	LASSERT(pos <= par.size(), return 0);
 	Buffer const & buffer = bv_->buffer();
 	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
 	DocumentClass const & tclass = buffer.params().documentClass();

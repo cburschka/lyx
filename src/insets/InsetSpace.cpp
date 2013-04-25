@@ -862,7 +862,8 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 		params.math = true;
 	else {
 		params.math = false;
-		LASSERT(name == "space", /**/);
+		// we can try to read this even if the name is wrong
+		LATTEST(name == "space");
 	}
 
 	// There are cases, such as when we are called via getStatus() from

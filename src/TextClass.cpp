@@ -30,6 +30,7 @@
 
 #include "support/lassert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -1271,20 +1272,20 @@ bool TextClass::hasInsetLayout(docstring const & n) const
 
 Layout const & TextClass::operator[](docstring const & name) const
 {
-	LASSERT(!name.empty(), /**/);
+	LATTEST(!name.empty());
 
 	const_iterator it =
 		find_if(begin(), end(), LayoutNamesEqual(name));
 
 	if (it == end()) {
-		lyxerr << "We failed to find the layout '" << to_utf8(name)
-		       << "' in the layout list. You MUST investigate!"
-		       << endl;
+		LYXERR0("We failed to find the layout '" << name
+		       << "' in the layout list. You MUST investigate!");
 		for (const_iterator cit = begin(); cit != end(); ++cit)
 			lyxerr  << " " << to_utf8(cit->name()) << endl;
 
-		// we require the name to exist
-		LASSERT(false, /**/);
+		// We require the name to exist
+		static const Layout dummy;
+		LASSERT(false, return dummy);
 	}
 
 	return *it;
@@ -1293,7 +1294,8 @@ Layout const & TextClass::operator[](docstring const & name) const
 
 Layout & TextClass::operator[](docstring const & name)
 {
-	LASSERT(!name.empty(), /**/);
+	LATTEST(!name.empty());
+	// Safe to continue, given what we do below.
 
 	iterator it = find_if(begin(), end(), LayoutNamesEqual(name));
 
@@ -1304,7 +1306,10 @@ Layout & TextClass::operator[](docstring const & name)
 			LYXERR0(" " << to_utf8(cit->name()));
 
 		// we require the name to exist
-		LASSERT(false, /**/);
+		LATTEST(false);
+		// we are here only in release mode
+		layoutlist_.push_back(createBasicLayout(name, true));
+		it = find_if(begin(), end(), LayoutNamesEqual(name));
 	}
 
 	return *it;
@@ -1440,7 +1445,7 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 	if (!readStyle(lex, *defaultLayout)) {
 		// The only way this happens is because the hardcoded layout above
 		// is wrong.
-		LASSERT(false, /**/);
+		LATTEST(false);
 	};
 	return *defaultLayout;
 }

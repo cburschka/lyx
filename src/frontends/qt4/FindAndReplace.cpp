@@ -147,7 +147,7 @@ static vector<string> const & allManualsFiles()
 }
 
 
-/** Switch p_buf to point to next document buffer.
+/** Switch buf to point to next document buffer.
  **
  ** Return true if restarted from master-document buffer.
  **/
@@ -157,7 +157,7 @@ static bool nextDocumentBuffer(Buffer * & buf)
 	LYXERR(Debug::FIND, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
 		find(children.begin(), children.end(), buf);
-	LASSERT(it != children.end(), /**/);
+	LASSERT(it != children.end(), return false);
 	++it;
 	if (it == children.end()) {
 		buf = *children.begin();
@@ -178,7 +178,7 @@ static bool prevDocumentBuffer(Buffer * & buf)
 	LYXERR(Debug::FIND, "children.size()=" << children.size());
 	ListOfBuffers::const_iterator it =
 		find(children.begin(), children.end(), buf);
-	LASSERT(it != children.end(), /**/)
+	LASSERT(it != children.end(), return false)
 	if (it == children.begin()) {
 		it = children.end();
 		--it;
@@ -422,7 +422,7 @@ bool FindAndReplaceWidget::findAndReplace(
 	else if (AllManualsRB->isChecked())
 		scope = FindAndReplaceOptions::S_ALL_MANUALS;
 	else
-		LASSERT(false, /**/);
+		LATTEST(false);
 	LYXERR(Debug::FIND, "FindAndReplaceOptions: "
 	       << "find_buf_name=" << find_buf_name
 	       << ", casesensitiv=" << casesensitive

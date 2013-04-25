@@ -672,7 +672,7 @@ char_type KeySymbol::getUCSEncoded() const
 		return 0;
 
 	// UTF16 has a maximum of two characters.
-	LASSERT(text_.size() <= 2, /**/);
+	LASSERT(text_.size() <= 2, return 0);
 
 	if (lyxerr.debugging() && text_.size() > 1) {
 		// We don't know yet how well support the full ucs4 range.

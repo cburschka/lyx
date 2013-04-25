@@ -147,9 +147,10 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 			: "\\vspace{" + len_.asLatexString() + '}';
 
 	default:
-		LASSERT(false, /**/);
-		return string();
+		LATTEST(false);
+		// fall through in release mode
 	}
+	return string();
 }
 
 
@@ -230,9 +231,10 @@ int VSpace::inPixels(BufferView const & bv) const
 		return len_.len().inPixels(bv.workWidth());
 
 	default:
-		LASSERT(false, /**/);
-		return 0;
+		LATTEST(false);
+		// fall through in release mode
 	}
+	return 0;
 }
 
 

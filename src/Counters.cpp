@@ -261,7 +261,7 @@ void Counters::step(docstring const & ctr, UpdateType utype)
 
 	it->second.step();
 	if (utype == OutputUpdate) {
-		LASSERT(!counter_stack_.empty(), /* */);
+		LBUFERR(!counter_stack_.empty(), _("Empty counter stack!"));
 		counter_stack_.pop_back();
 		counter_stack_.push_back(ctr);
 	}
@@ -293,7 +293,7 @@ void Counters::reset()
 
 void Counters::reset(docstring const & match)
 {
-	LASSERT(!match.empty(), /**/);
+	LASSERT(!match.empty(), return);
 
 	CounterList::iterator it = counterList_.begin();
 	CounterList::iterator end = counterList_.end();
@@ -597,7 +597,7 @@ docstring Counters::prettyCounter(docstring const & name,
 
 docstring Counters::currentCounter() const
 { 
-	LASSERT(!counter_stack_.empty(), /* */);
+	LBUFERR(!counter_stack_.empty(), _("Empty counter stack!"));
 	return counter_stack_.back(); 
 }
 

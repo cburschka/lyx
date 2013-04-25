@@ -139,7 +139,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 // to touch all (math)inset's draw() methods. Right now, we'll store
 // absolute value, and make them here relative, only to make them
 // absolute again when actually drawing the cursor. What a mess.
-	LASSERT(&sl.inset() == this, /**/);
+	LASSERT(&sl.inset() == this, return);
 	MathData const & ar = sl.cell();
 	CoordCache const & coord_cache = bv.coordCache();
 	if (!coord_cache.getArrays().has(&ar)) {
@@ -192,7 +192,7 @@ void InsetMathNest::updateBuffer(ParIterator const & it, UpdateType utype)
 
 bool InsetMathNest::idxNext(Cursor & cur) const
 {
-	LASSERT(&cur.inset() == this, /**/);
+	LASSERT(&cur.inset() == this, return false);
 	if (cur.idx() == cur.lastidx())
 		return false;
 	++cur.idx();
@@ -209,7 +209,7 @@ bool InsetMathNest::idxForward(Cursor & cur) const
 
 bool InsetMathNest::idxPrev(Cursor & cur) const
 {
-	LASSERT(&cur.inset() == this, /**/);
+	LASSERT(&cur.inset() == this, return false);
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
@@ -226,7 +226,7 @@ bool InsetMathNest::idxBackward(Cursor & cur) const
 
 bool InsetMathNest::idxFirst(Cursor & cur) const
 {
-	LASSERT(&cur.inset() == this, /**/);
+	LASSERT(&cur.inset() == this, return false);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = 0;
@@ -237,7 +237,7 @@ bool InsetMathNest::idxFirst(Cursor & cur) const
 
 bool InsetMathNest::idxLast(Cursor & cur) const
 {
-	LASSERT(&cur.inset() == this, /**/);
+	LASSERT(&cur.inset() == this, return false);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = cur.lastidx();
@@ -1644,7 +1644,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				cur.backspace();
 				cur.niceInsert(MathAtom(new InsetMathComment(buf)));
 			} else if (c == '#') {
-				LASSERT(cur.activeMacro(), /**/);
+				LASSERT(cur.activeMacro(), return false);
 				cur.activeMacro()->setName(name + docstring(1, c));
 			} else {
 				cur.backspace();

@@ -280,7 +280,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	cap::replaceSelectionWithString(cur, replacestr);
 	if (forward) {
 		cur.pos() += replacestr.length();
-		LASSERT(cur.pos() <= cur.lastpos(), /* */);
+		LASSERT(cur.pos() <= cur.lastpos(),
+		        cur.pos() = cur.lastpos());
 	}
 	if (findnext)
 		findOne(bv, searchstr, case_sens, whole, forward, false);
@@ -1057,7 +1058,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	LYXERR(Debug::FIND, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 	       << cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
 	Buffer const & buf = *cur.buffer();
-	LASSERT(buf.params().isLatex(), /* */);
+	LBUFERR(buf.params().isLatex(), _("Buffer type mismatch."));
 
 	TexRow texrow;
 	odocstringstream ods;
@@ -1134,7 +1135,7 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		cur.forwardPos();
 	} while (cur && cur.depth() > d && match(cur) > 0);
 	cur = old_cur;
-	LASSERT(match(cur) > 0, /* */);
+	LASSERT(match(cur) > 0, return 0);
 	LYXERR(Debug::FIND, "Ok");
 
 	// Compute the match length
@@ -1278,7 +1279,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 				 DocIterator const & cur, int len)
 {
-	LASSERT(cur.pos() >= 0 && cur.pos() <= cur.lastpos(), /* */);
+	LASSERT(cur.pos() >= 0 && cur.pos() <= cur.lastpos(),
+	        return docstring());
 	if (!opt.ignoreformat)
 		return latexifyFromCursor(cur, len);
 	else
@@ -1363,7 +1365,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	       << ", sel_len: " << sel_len << endl);
 	if (sel_len == 0)
 		return;
-	LASSERT(sel_len > 0, /**/);
+	LASSERT(sel_len > 0, return);
 
 	if (!matchAdv(sel_beg, sel_len))
 		return;
@@ -1375,7 +1377,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	string lyx = oss.str();
 	Buffer repl_buffer("", false);
 	repl_buffer.setUnnamed(true);
-	LASSERT(repl_buffer.readString(lyx), /**/);
+	LASSERT(repl_buffer.readString(lyx), return);
 	if (opt.keep_case && sel_len >= 2) {
 		if (cur.inTexted()) {
 			if (firstUppercase(cur))

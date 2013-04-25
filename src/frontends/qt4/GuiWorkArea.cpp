@@ -1626,7 +1626,7 @@ GuiWorkArea * TabWorkArea::currentWorkArea()
 		return 0;
 
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(currentWidget());
-	LASSERT(wa, /**/);
+	LATTEST(wa);
 	return wa;
 }
 
@@ -1655,7 +1655,7 @@ void TabWorkArea::closeAll()
 {
 	while (count()) {
 		GuiWorkArea * wa = workArea(0);
-		LASSERT(wa, /**/);
+		LASSERT(wa, return);
 		removeTab(0);
 		delete wa;
 	}
@@ -1664,7 +1664,7 @@ void TabWorkArea::closeAll()
 
 bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 {
-	LASSERT(work_area, /**/);
+	LASSERT(work_area, return false);
 	int index = indexOf(work_area);
 	if (index == -1)
 		return false;
@@ -1757,7 +1757,7 @@ void TabWorkArea::closeCurrentBuffer()
 		wa = currentWorkArea();
 	else {
 		wa = workArea(clicked_tab_);
-		LASSERT(wa, /**/);
+		LASSERT(wa, return);
 	}
 	wa->view().closeWorkArea(wa);
 }
@@ -1770,7 +1770,7 @@ void TabWorkArea::hideCurrentTab()
 		wa = currentWorkArea();
 	else {
 		wa = workArea(clicked_tab_);
-		LASSERT(wa, /**/);
+		LASSERT(wa, return);
 	}
 	wa->view().hideWorkArea(wa);
 }
@@ -1784,7 +1784,7 @@ void TabWorkArea::closeTab(int index)
 		wa = currentWorkArea();
 	else {
 		wa = workArea(index);
-		LASSERT(wa, /**/);
+		LASSERT(wa, return);
 	}
 	wa->view().closeWorkArea(wa);
 }

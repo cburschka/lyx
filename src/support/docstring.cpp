@@ -40,7 +40,7 @@ docstring const from_ascii(char const * ascii)
 		char_type *d = &s[0];
 		while (--n >= 0) {
 			d[n] = ascii[n];
-			LASSERT(static_cast<unsigned char>(ascii[n]) < 0x80, /**/);
+			LATTEST(static_cast<unsigned char>(ascii[n]) < 0x80);
 		}
 	}
 	return s;
@@ -51,7 +51,7 @@ docstring const from_ascii(string const & ascii)
 {
 	int const len = ascii.length();
 	for (int i = 0; i < len; ++i)
-		LASSERT(static_cast<unsigned char>(ascii[i]) < 0x80, /**/);
+		LATTEST(static_cast<unsigned char>(ascii[i]) < 0x80);
 	return docstring(ascii.begin(), ascii.end());
 }
 
@@ -62,7 +62,7 @@ string const to_ascii(docstring const & ucs4)
 	string ascii;
 	ascii.resize(len);
 	for (int i = 0; i < len; ++i) {
-		LASSERT(ucs4[i] < 0x80, /**/);
+		LATTEST(ucs4[i] < 0x80);
 		ascii[i] = static_cast<char>(ucs4[i]);
 	}
 	return ascii;
@@ -183,7 +183,7 @@ bool operator==(lyx::docstring const & l, char const * r)
 	lyx::docstring::const_iterator it = l.begin();
 	lyx::docstring::const_iterator end = l.end();
 	for (; it != end; ++it, ++r) {
-		LASSERT(static_cast<unsigned char>(*r) < 0x80, /**/);
+		LASSERT(static_cast<unsigned char>(*r) < 0x80, return false);
 		if (!*r)
 			return false;
 		if (*it != static_cast<lyx::docstring::value_type>(*r))
@@ -197,7 +197,7 @@ lyx::docstring operator+(lyx::docstring const & l, char const * r)
 {
 	lyx::docstring s(l);
 	for (char const * c = r; *c; ++c) {
-		LASSERT(static_cast<unsigned char>(*c) < 0x80, /**/);
+		LASSERT(static_cast<unsigned char>(*c) < 0x80, return l);
 		s.push_back(*c);
 	}
 	return s;
@@ -208,7 +208,7 @@ lyx::docstring operator+(char const * l, lyx::docstring const & r)
 {
 	lyx::docstring s;
 	for (char const * c = l; *c; ++c) {
-		LASSERT(static_cast<unsigned char>(*c) < 0x80, /**/);
+		LASSERT(static_cast<unsigned char>(*c) < 0x80, return r);
 		s.push_back(*c);
 	}
 	s += r;
@@ -218,7 +218,7 @@ lyx::docstring operator+(char const * l, lyx::docstring const & r)
 
 lyx::docstring operator+(lyx::docstring const & l, char r)
 {
-	LASSERT(static_cast<unsigned char>(r) < 0x80, /**/);
+	LASSERT(static_cast<unsigned char>(r) < 0x80, return l);
 	docstring s = l;
 	s += docstring::value_type(r);
 	return s;
@@ -227,7 +227,7 @@ lyx::docstring operator+(lyx::docstring const & l, char r)
 
 lyx::docstring operator+(char l, lyx::docstring const & r)
 {
-	LASSERT(static_cast<unsigned char>(l) < 0x80, /**/);
+	LASSERT(static_cast<unsigned char>(l) < 0x80, return r);
 	return lyx::docstring::value_type(l) + r;
 }
 
@@ -235,7 +235,7 @@ lyx::docstring operator+(char l, lyx::docstring const & r)
 lyx::docstring & operator+=(lyx::docstring & l, char const * r)
 {
 	for (char const * c = r; *c; ++c) {
-		LASSERT(static_cast<unsigned char>(*c) < 0x80, /**/);
+		LASSERT(static_cast<unsigned char>(*c) < 0x80, return l);
 		l.push_back(*c);
 	}
 	return l;
@@ -244,7 +244,7 @@ lyx::docstring & operator+=(lyx::docstring & l, char const * r)
 
 lyx::docstring & operator+=(lyx::docstring & l, char r)
 {
-	LASSERT(static_cast<unsigned char>(r) < 0x80, /**/);
+	LASSERT(static_cast<unsigned char>(r) < 0x80, return l);
 	l.push_back(r);
 	return l;
 }

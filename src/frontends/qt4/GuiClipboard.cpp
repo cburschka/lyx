@@ -149,9 +149,9 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		types.push_back(Clipboard::PngGraphicsType);
 	if (hasGraphicsContents(Clipboard::JpegGraphicsType))
 		types.push_back(Clipboard::JpegGraphicsType);
-
-	LASSERT(!types.empty(), /**/);
-
+	
+	LASSERT(!types.empty(), return FileName());
+	
 	// select prefered type if AnyGraphicsType was passed
 	if (type == Clipboard::AnyGraphicsType)
 		type = types.front();
@@ -279,7 +279,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		else if (type == JpegGraphicsType)
 			image.save(toqstr(filename.absFileName()), "JPEG");
 		else
-			LASSERT(false, /**/);
+			LATTEST(false);
 		
 		return filename;
 	}
@@ -291,7 +291,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	case LinkBackGraphicsType: mime = pdfMimeType(); break;
 	case EmfGraphicsType: mime = emfMimeType(); break;
 	case WmfGraphicsType: mime = wmfMimeType(); break;
-	default: LASSERT(false, /**/);
+	default: LASSERT(false, return FileName());
 	}
 	
 	// get data
@@ -322,7 +322,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		ds << pdfLen; // big endian by default
 #else
 		// only non-Mac this should never happen
-		LASSERT(false, /**/);
+		LATTEST(false);
 #endif // Q_WS_MACX
 	}
 
@@ -499,7 +499,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	case EmfGraphicsType: mime = emfMimeType(); break;
 	case WmfGraphicsType: mime = wmfMimeType(); break;
 	case PdfGraphicsType: mime = pdfMimeType(); break;
-	default: LASSERT(false, /**/);
+	default: LASSERT(false, return false);
 	}
 	
 	return cache_.hasFormat(mime);

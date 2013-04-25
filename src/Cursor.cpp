@@ -36,9 +36,11 @@
 #include "TextMetrics.h"
 #include "TocBackend.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/ExceptionMessage.h"
+#include "support/gettext.h"
+#include "support/lassert.h"
 
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
@@ -340,6 +342,7 @@ bool Cursor::getStatus(FuncRequest const & cmd, FuncStatus & status) const
 	bool res = false;
 	for ( ; cur.depth(); cur.pop()) {
 		//lyxerr << "\nCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+		// LASSERT: Is it safe to continue here, or should we return?
 		LASSERT(cur.idx() <= cur.lastidx(), /**/);
 		LASSERT(cur.pit() <= cur.lastpit(), /**/);
 		LASSERT(cur.pos() <= cur.lastpos(), /**/);
@@ -397,6 +400,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	for (; depth(); pop(), boundary(false)) {
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this);
+		// LASSERT: Is it safe to continue here, or should we return?
 		LASSERT(pos() <= lastpos(), /**/);
 		LASSERT(idx() <= lastidx(), /**/);
 		LASSERT(pit() <= lastpit(), /**/);
@@ -456,14 +460,14 @@ DispatchResult const & Cursor::result() const
 
 BufferView & Cursor::bv() const
 {
-	LASSERT(bv_, /**/);
+	LBUFERR(bv_, _("Cursor has no BufferView!"));
 	return *bv_;
 }
 
 
 void Cursor::pop()
 {
-	LASSERT(depth() >= 1, /**/);
+	LBUFERR(depth() >= 1, _("Attempt to pop empty cursor!"));
 	pop_back();
 }
 
@@ -509,7 +513,7 @@ bool Cursor::popForward()
 
 int Cursor::currentMode()
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return Inset::UNDECIDED_MODE);
 	for (int i = depth() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
 		bool locked_mode = operator[](i).inset().lockedMode();
@@ -534,7 +538,6 @@ Row const & Cursor::textRow() const
 {
 	CursorSlice const & cs = innerTextSlice();
 	ParagraphMetrics const & pm = bv().parMetrics(cs.text(), cs.pit());
-	LASSERT(!pm.rows().empty(), /**/);
 	return pm.getRow(pos(), boundary());
 }
 
@@ -1136,7 +1139,14 @@ CursorSlice Cursor::normalAnchor() const
 {
 	if (!selection())
 		return top();
-	LASSERT(anchor_.depth() >= depth(), /**/);
+	if (anchor_.depth() >= depth()) {
+		// LASSERT: There have been several bugs around this code, that seem
+		// to involve failures to reset the anchor. We can at least not crash
+		// in release mode by resetting it ourselves.
+		LASSERT(false, /* */);
+		DocIterator & di = const_cast<DocIterator &>(anchor_);
+		di = *this;
+	}
 	CursorSlice normal = anchor_[depth() - 1];
 	if (depth() < anchor_.depth() && top() <= normal) {
 		// anchor is behind cursor -> move anchor behind the inset
@@ -1437,7 +1447,7 @@ void Cursor::insert(docstring const & str)
 void Cursor::insert(char_type c)
 {
 	//lyxerr << "Cursor::insert char '" << c << "'" << endl;
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return);
 	if (inMathed()) {
 		cap::selClearOrDel(*this);
 		insert(new InsetMathChar(c));
@@ -1458,7 +1468,7 @@ void Cursor::insert(MathAtom const & t)
 
 void Cursor::insert(Inset * inset0)
 {
-	LASSERT(inset0, /**/);
+	LASSERT(inset0, return);
 	if (inMathed())
 		insert(MathAtom(inset0->asInsetMath()));
 	else {
@@ -1962,7 +1972,7 @@ bool Cursor::atFirstOrLastRow(bool up)
 
 bool Cursor::upDownInText(bool up, bool & updateNeeded)
 {
-	LASSERT(text(), /**/);
+	LASSERT(text(), return false);
 
 	// where are we?
 	int xo = 0;

@@ -125,7 +125,7 @@ void InsetText::setMacrocontextPositionRecursive(DocIterator const & pos)
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
-	LASSERT(!pars.empty(), /**/);
+	LBUFERR(!pars.empty(), _("Buffer corrupt!"));
 
 	// This is a gross hack...
 	Layout const & old_layout = pars.begin()->layout();
@@ -874,9 +874,11 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	// find text inset in old cursor
 	Cursor insetCur = old;
 	int scriptSlice	= insetCur.find(this);
-	LASSERT(scriptSlice != -1, /**/);
+	// we can try to continue here. returning true means
+	// the cursor is "now" invalid. which it was.
+	LASSERT(scriptSlice != -1, return true);
 	insetCur.cutOff(scriptSlice);
-	LASSERT(&insetCur.inset() == this, /**/);
+	LASSERT(&insetCur.inset() == this, return true);
 	
 	// update the old paragraph's words
 	insetCur.paragraph().updateWords();
@@ -887,7 +889,7 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 bool InsetText::completionSupported(Cursor const & cur) const
 {
-	//LASSERT(&cur.bv().cursor().inset() != this, return false);
+	//LASSERT(&cur.bv().cursor().inset() == this, return false);
 	return text_.completionSupported(cur);
 }
 

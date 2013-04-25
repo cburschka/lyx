@@ -822,7 +822,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
-				LASSERT(bstyle == style, /* */);
+				LATTEST(bstyle == style);
 				if (lastlay != 0) {
 					closeItemTag(xs, *lastlay);
 					lastlay = 0;
@@ -964,7 +964,8 @@ void xhtmlParagraphs(Text const & text,
 	}
 	pit_type bpit = runparams.par_begin;
 	pit_type const epit = runparams.par_end;
-	LASSERT(bpit < epit, /* */);
+	LASSERT(bpit < epit,
+		{ xs << XHTMLStream::ESCAPE_NONE << "<!-- XHTML output error! -->\n"; return; });
 
 	OutputParams ourparams = runparams;
 	ParagraphList::const_iterator const pend =

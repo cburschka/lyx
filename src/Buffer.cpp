@@ -452,13 +452,17 @@ Buffer::~Buffer()
 		// if we're the master buffer, then we should get rid of the list
 		// of clones
 		if (!parent()) {
-			// if this is not empty, we have leaked something. worse, one of the
-			// children still has a reference to this list.
-			LASSERT(d->clone_list_->empty(), /* */);
+			// If this is not empty, we have leaked something. Worse, one of the
+			// children still has a reference to this list. But we will try to
+			// continue, rather than shut down.
+			LATTEST(d->clone_list_->empty());
 			list<CloneList *>::iterator it =
 				find(cloned_buffers.begin(), cloned_buffers.end(), d->clone_list_);
-			LASSERT(it != cloned_buffers.end(), /* */);
-			cloned_buffers.erase(it);
+			if (it == cloned_buffers.end()) {
+				// We will leak in this case, but it is safe to continue.
+				LATTEST(false);
+			} else
+				cloned_buffers.erase(it);
 			delete d->clone_list_;
 		}
 		// FIXME Do we really need to do this right before we delete d?
@@ -603,7 +607,7 @@ void Buffer::changed(bool update_metrics) const
 
 frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
-	LASSERT(d->wa_, /**/);
+	LBUFERR(d->wa_, _("Unable to find WorkArea for Buffer!"));
 	return *d->wa_;
 }
 
@@ -2600,8 +2604,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
-	LASSERT(from, /**/);
-	LASSERT(to, /**/);
+	LASSERT(from, return);
+	LASSERT(to, return);
 
 	for_each(par_iterator_begin(),
 		 par_iterator_end(),
@@ -2712,7 +2716,7 @@ bool Buffer::isClean() const
 
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
-	LASSERT(d->filename.exists(), /**/);
+	LASSERT(d->filename.exists(), return false);
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method
 		|| d->timestamp_ != d->filename.lastModified())
@@ -4252,6 +4256,8 @@ void Buffer::setBuffersForInsets() const
 
 void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
+	LBUFERR(!text().paragraphs().empty(), _("Buffer error"));
+
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
@@ -4291,8 +4297,6 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	updateMacros();
 
 	Buffer & cbuf = const_cast<Buffer &>(*this);
-
-	LASSERT(!text().paragraphs().empty(), /**/);
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
@@ -4365,7 +4369,7 @@ static depth_type getItemDepth(ParIterator const & it)
 static bool needEnumCounterReset(ParIterator const & it)
 {
 	Paragraph const & par = *it;
-	LASSERT(par.layout().labeltype == LABEL_ENUMERATE, /**/);
+	LASSERT(par.layout().labeltype == LABEL_ENUMERATE, return false);
 	depth_type const cur_depth = par.getDepth();
 	ParIterator prev_it = it;
 	while (prev_it.pit()) {
@@ -4518,6 +4522,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 
 void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 {
+	// LASSERT: Is it safe to continue here, or should we just return?
 	LASSERT(parit.pit() == 0, /**/);
 
 	// Set the position of the text in the buffer to be able

@@ -261,7 +261,7 @@ Messages & LyX::messages(string const & language)
 	pair<map<string, Messages>::iterator, bool> result =
 			pimpl_->messages_.insert(make_pair(language, Messages(language)));
 
-	LASSERT(result.second, /**/);
+	LATTEST(result.second);
 	return result.first->second;
 }
 
@@ -436,7 +436,7 @@ void LyX::prepareExit()
 
 void LyX::earlyExit(int status)
 {
-	LASSERT(pimpl_->application_.get(), /**/);
+	LATTEST(pimpl_->application_.get());
 	// LyX::pimpl_::application_ is not initialised at this
 	// point so it's safe to just exit after some cleanup.
 	prepareExit();
@@ -484,7 +484,7 @@ int LyX::init(int & argc, char * argv[])
 
 bool LyX::loadFiles()
 {
-	LASSERT(!use_gui, /**/);
+	LATTEST(!use_gui);
 	bool success = true;
 	vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
 	vector<string>::const_iterator end = pimpl_->files_to_load_.end();
@@ -520,7 +520,7 @@ bool LyX::loadFiles()
 
 void execBatchCommands()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	singleton_->execCommands();
 }
 
@@ -1268,35 +1268,35 @@ void LyX::easyParse(int & argc, char * argv[])
 
 FuncStatus getStatus(FuncRequest const & action)
 {
-	LASSERT(theApp(), /**/);
+	LAPPERR(theApp(), _("Appplication not initialized."));
 	return theApp()->getStatus(action);
 }
 
 
 void dispatch(FuncRequest const & action)
 {
-	LASSERT(theApp(), /**/);
+	LAPPERR(theApp(), _("Appplication not initialized."));
 	return theApp()->dispatch(action);
 }
 
 
 void dispatch(FuncRequest const & action, DispatchResult & dr)
 {
-	LASSERT(theApp(), /**/);
+	LAPPERR(theApp(), _("Appplication not initialized."));
 	return theApp()->dispatch(action, dr);
 }
 
 
 vector<string> & theFilesToLoad()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->files_to_load_;
 }
 
 
 BufferList & theBufferList()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->buffer_list_;
 }
 
@@ -1304,8 +1304,8 @@ BufferList & theBufferList()
 Server & theServer()
 {
 	// FIXME: this should not be use_gui dependent
-	LASSERT(use_gui, /**/);
-	LASSERT(singleton_, /**/);
+	LWARNIF(use_gui, _("LyX server can only be used with GUI."));
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return *singleton_->pimpl_->lyx_server_.get();
 }
 
@@ -1313,71 +1313,71 @@ Server & theServer()
 ServerSocket & theServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
-	LASSERT(use_gui, /**/);
-	LASSERT(singleton_, /**/);
+	LWARNIF(use_gui, _("LyX server can only be used with GUI."));
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return *singleton_->pimpl_->lyx_socket_.get();
 }
 
 
 KeyMap & theTopLevelKeymap()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->toplevel_keymap_;
 }
 
 
 Converters & theConverters()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return  singleton_->pimpl_->converters_;
 }
 
 
 Converters & theSystemConverters()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return  singleton_->pimpl_->system_converters_;
 }
 
 
 Movers & theMovers()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->movers_;
 }
 
 
 Mover const & getMover(string  const & fmt)
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->movers_(fmt);
 }
 
 
 void setMover(string const & fmt, string const & command)
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	singleton_->pimpl_->movers_.set(fmt, command);
 }
 
 
 Movers & theSystemMovers()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->system_movers_;
 }
 
 
 Messages const & getMessages(string const & language)
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->messages(language);
 }
 
 
 Messages const & getGuiMessages()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	// A cache to translate full language name to language code
 	static string last_language = "auto";
 	static string code;
@@ -1396,14 +1396,14 @@ Messages const & getGuiMessages()
 
 Session & theSession()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return *singleton_->pimpl_->session_.get();
 }
 
 
 LaTeXFonts & theLaTeXFonts()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	if (!singleton_->pimpl_->latexfonts_)
 		singleton_->pimpl_->latexfonts_ = new LaTeXFonts;
 	return *singleton_->pimpl_->latexfonts_;
@@ -1412,7 +1412,7 @@ LaTeXFonts & theLaTeXFonts()
 
 CmdDef & theTopLevelCmdDef()
 {
-	LASSERT(singleton_, /**/);
+	LAPPERR(singleton_, _("Appplication not initialized."));
 	return singleton_->pimpl_->toplevel_cmddef_;
 }
 

@@ -54,7 +54,7 @@ namespace {
  */
 inline char_type qchar_to_ucs4(QChar const & qchar)
 {
-	LASSERT(is_utf16(static_cast<char_type>(qchar.unicode())), /**/);
+	LASSERT(is_utf16(static_cast<char_type>(qchar.unicode())), return '?');
 	return static_cast<char_type>(qchar.unicode());
 }
 
@@ -67,7 +67,7 @@ inline char_type qchar_to_ucs4(QChar const & qchar)
  */
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
-	LASSERT(is_utf16(ucs4), /**/);
+	LASSERT(is_utf16(ucs4), return QChar('?'));
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 
@@ -409,14 +409,14 @@ bool isAscii(string const & str)
 
 char lowercase(char c)
 {
-	LASSERT(isASCII(c), /**/);
+	LASSERT(isASCII(c), return '?');
 	return char(tolower(c));
 }
 
 
 char uppercase(char c)
 {
-	LASSERT(isASCII(c), /**/);
+	LASSERT(isASCII(c), return '?');
 	return char(toupper(c));
 }
 
@@ -824,7 +824,7 @@ template<typename String> inline
 String const subst_string(String const & a,
 		String const & oldstr, String const & newstr)
 {
-	LASSERT(!oldstr.empty(), /**/);
+	LASSERT(!oldstr.empty(), return a);
 	String lstr = a;
 	size_t i = 0;
 	size_t const olen = oldstr.length();
@@ -840,7 +840,7 @@ String const subst_string(String const & a,
 docstring const subst_string(docstring const & a,
 		docstring const & oldstr, docstring const & newstr)
 {
-	LASSERT(!oldstr.empty(), /**/);
+	LASSERT(!oldstr.empty(), return a);
 	docstring lstr = a;
 	size_t i = 0;
 	size_t const olen = oldstr.length();
@@ -909,7 +909,7 @@ int count_char(docstring const & str, docstring::value_type chr)
 
 docstring const trim(docstring const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 
 	if (a.empty() || !*p)
 		return a;
@@ -928,7 +928,7 @@ docstring const trim(docstring const & a, char const * p)
 
 string const trim(string const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 
 	if (a.empty() || !*p)
 		return a;
@@ -946,7 +946,7 @@ string const trim(string const & a, char const * p)
 
 string const rtrim(string const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 
 	if (a.empty() || !*p)
 		return a;
@@ -963,7 +963,7 @@ string const rtrim(string const & a, char const * p)
 
 docstring const rtrim(docstring const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 
 	if (a.empty() || !*p)
 		return a;
@@ -980,7 +980,7 @@ docstring const rtrim(docstring const & a, char const * p)
 
 string const ltrim(string const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 	if (a.empty() || !*p)
 		return a;
 	size_t l = a.find_first_not_of(p);
@@ -992,7 +992,7 @@ string const ltrim(string const & a, char const * p)
 
 docstring const ltrim(docstring const & a, char const * p)
 {
-	LASSERT(p, /**/);
+	LASSERT(p, return a);
 	if (a.empty() || !*p)
 		return a;
 	size_t l = a.find_first_not_of(from_ascii(p));
@@ -1119,7 +1119,7 @@ docstring const escape(docstring const & lab)
 			// encode bigger values. Test for 2^24 because we
 			// can encode that with the 6 hex digits that are
 			// needed for 21 bits anyway.
-			LASSERT(c < (1 << 24), /**/);
+			LASSERT(c < (1 << 24), continue);
 			enc += '=';
 			enc += hexdigit[(c>>20) & 15];
 			enc += hexdigit[(c>>16) & 15];
@@ -1327,7 +1327,7 @@ int findToken(char const * const str[], string const & search_token)
 template<>
 docstring bformat(docstring const & fmt, int arg1)
 {
-	LASSERT(contains(fmt, from_ascii("%1$d")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$d")));
 	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
@@ -1336,7 +1336,7 @@ docstring bformat(docstring const & fmt, int arg1)
 template<>
 docstring bformat(docstring const & fmt, long arg1)
 {
-	LASSERT(contains(fmt, from_ascii("%1$d")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$d")));
 	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
@@ -1345,7 +1345,7 @@ docstring bformat(docstring const & fmt, long arg1)
 template<>
 docstring bformat(docstring const & fmt, unsigned int arg1)
 {
-	LASSERT(contains(fmt, from_ascii("%1$d")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$d")));
 	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
@@ -1354,7 +1354,7 @@ docstring bformat(docstring const & fmt, unsigned int arg1)
 template<>
 docstring bformat(docstring const & fmt, docstring arg1)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
 	docstring const str = subst(fmt, from_ascii("%1$s"), arg1);
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
@@ -1363,7 +1363,7 @@ docstring bformat(docstring const & fmt, docstring arg1)
 template<>
 docstring bformat(docstring const & fmt, char * arg1)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
 	docstring const str = subst(fmt, from_ascii("%1$s"), from_ascii(arg1));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
@@ -1372,8 +1372,8 @@ docstring bformat(docstring const & fmt, char * arg1)
 template<>
 docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$s")));
 	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
 	str = subst(str, from_ascii("%2$s"), arg2);
 	return subst(str, from_ascii("%%"), from_ascii("%"));
@@ -1383,8 +1383,8 @@ docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 template<>
 docstring bformat(docstring const & fmt, docstring arg1, int arg2)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$d")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$d")));
 	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
 	str = subst(str, from_ascii("%2$d"), convert<docstring>(arg2));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
@@ -1394,8 +1394,8 @@ docstring bformat(docstring const & fmt, docstring arg1, int arg2)
 template<>
 docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$s")));
 	docstring str = subst(fmt, from_ascii("%1$s"), from_ascii(arg1));
 	str = subst(fmt, from_ascii("%2$s"), arg2);
 	return subst(str, from_ascii("%%"), from_ascii("%"));
@@ -1405,8 +1405,8 @@ docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 template<>
 docstring bformat(docstring const & fmt, int arg1, int arg2)
 {
-	LASSERT(contains(fmt, from_ascii("%1$d")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$d")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$d")));
+	LATTEST(contains(fmt, from_ascii("%2$d")));
 	docstring str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
 	str = subst(str, from_ascii("%2$d"), convert<docstring>(arg2));
 	return subst(str, from_ascii("%%"), from_ascii("%"));
@@ -1416,9 +1416,9 @@ docstring bformat(docstring const & fmt, int arg1, int arg2)
 template<>
 docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%3$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$s")));
+	LATTEST(contains(fmt, from_ascii("%3$s")));
 	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
 	str = subst(str, from_ascii("%2$s"), arg2);
 	str = subst(str, from_ascii("%3$s"), arg3);
@@ -1430,10 +1430,10 @@ template<>
 docstring bformat(docstring const & fmt,
 	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
 {
-	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%2$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%3$s")), /**/);
-	LASSERT(contains(fmt, from_ascii("%4$s")), /**/);
+	LATTEST(contains(fmt, from_ascii("%1$s")));
+	LATTEST(contains(fmt, from_ascii("%2$s")));
+	LATTEST(contains(fmt, from_ascii("%3$s")));
+	LATTEST(contains(fmt, from_ascii("%4$s")));
 	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
 	str = subst(str, from_ascii("%2$s"), arg2);
 	str = subst(str, from_ascii("%3$s"), arg3);

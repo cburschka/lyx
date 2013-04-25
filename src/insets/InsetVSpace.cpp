@@ -92,7 +92,7 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetVSpace::read(Lexer & lex)
 {
-	LASSERT(lex.isOK(), /**/);
+	LASSERT(lex.isOK(), return);
 	string vsp;
 	lex >> vsp;
 	if (lex)

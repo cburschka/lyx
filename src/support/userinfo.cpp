@@ -46,7 +46,7 @@ docstring const user_name()
 	return from_local8bit(name);
 #else
 	struct passwd * pw = getpwuid(geteuid());
-	LASSERT(pw, /**/);
+	LASSERT(pw, return docstring());
 
 	const string gecos = pw->pw_gecos;
 	const size_t pos = gecos.find(",");

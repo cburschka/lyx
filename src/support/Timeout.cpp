@@ -139,7 +139,7 @@ Timeout & Timeout::setType(Type t)
 Timeout & Timeout::setTimeout(unsigned int msec)
 {
 	// Can't have a timeout of zero!
-	LASSERT(msec, /**/);
+	LASSERT(msec, msec = 1000);
 
 	timeout_ms = msec;
 	return *this;

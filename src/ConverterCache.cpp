@@ -431,7 +431,7 @@ FileName const & ConverterCache::cacheName(FileName const & orig_from,
 	LYXERR(Debug::FILES, orig_from << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
-	LASSERT(item, /**/);
+	LASSERT(item, { static const FileName fn; return fn; });
 	return item->cache_name;
 }
 
@@ -455,7 +455,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	}
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
-	LASSERT(item, /**/);
+	LASSERT(item, return false);
 	Mover const & mover = getMover(to_format);
 	return mover.copy(item->cache_name, dest,
 	                  onlyFileName(dest.absFileName()));

@@ -67,7 +67,7 @@ void init_package(string const & command_line_arg0,
 
 Package const & package()
 {
-	LASSERT(initialised_, /**/);
+	LAPPERR(initialised_, _("Package not initialized."));
 	return package_;
 }
 

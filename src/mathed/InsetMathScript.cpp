@@ -24,6 +24,7 @@
 #include "MathSupport.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 
 #include "support/lassert.h"
 
@@ -46,7 +47,7 @@ InsetMathScript::InsetMathScript(Buffer * buf, bool up)
 InsetMathScript::InsetMathScript(Buffer * buf, MathAtom const & at, bool up)
 	: InsetMathNest(buf, 2), cell_1_is_up_(up), limits_(0)
 {
-	LASSERT(nargs() >= 1, /**/);
+	LATTEST(nargs() >= 1);
 	cell(0).push_back(at);
 }
 
@@ -89,7 +90,7 @@ MathData const & InsetMathScript::down() const
 {
 	if (nargs() == 3)
 		return cell(2);
-	LASSERT(nargs() > 1, /**/);
+	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
 	return cell(1);
 }
 
@@ -98,21 +99,21 @@ MathData & InsetMathScript::down()
 {
 	if (nargs() == 3)
 		return cell(2);
-	LASSERT(nargs() > 1, /**/);
+	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
 	return cell(1);
 }
 
 
 MathData const & InsetMathScript::up() const
 {
-	LASSERT(nargs() > 1, /**/);
+	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
 	return cell(1);
 }
 
 
 MathData & InsetMathScript::up()
 {
-	LASSERT(nargs() > 1, /**/);
+	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
 	return cell(1);
 }
 
@@ -221,7 +222,7 @@ int InsetMathScript::dy1(BufferView const & bv) const
 
 int InsetMathScript::dx0(BufferView const & bv) const
 {
-	LASSERT(hasDown(), /**/);
+	LASSERT(hasDown(), return 0);
 	Dimension const dim = dimension(bv);
 	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2 : nwid(bv);
 }
@@ -229,7 +230,7 @@ int InsetMathScript::dx0(BufferView const & bv) const
 
 int InsetMathScript::dx1(BufferView const & bv) const
 {
-	LASSERT(hasUp(), /**/);
+	LASSERT(hasUp(), return 0);
 	Dimension const dim = dimension(bv);
 	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker(&bv);
 }
@@ -438,9 +439,7 @@ Inset::idx_type InsetMathScript::idxOfScript(bool up) const
 		return (cell_1_is_up_ == up) ? 1 : 0;
 	if (nargs() == 3)
 		return up ? 1 : 2;
-	LASSERT(false, /**/);
-	// Silence compiler
-	return 0;
+	LASSERT(false, return 0);
 }
 
 

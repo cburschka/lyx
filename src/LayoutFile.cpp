@@ -83,14 +83,16 @@ bool LayoutFileList::haveClass(string const & classname) const
 
 LayoutFile const & LayoutFileList::operator[](string const & classname) const
 {
-	LASSERT(haveClass(classname), /**/);
+	LATTEST(haveClass(classname));
+	// safe to continue, since we will make an empty LayoutFile
 	return *classmap_[classname];
 }
 
 
 LayoutFile & LayoutFileList::operator[](string const & classname)
 {
-	LASSERT(haveClass(classname), /**/);
+	LATTEST(haveClass(classname));
+	// safe to continue, since we will make an empty LayoutFile
 	return *classmap_[classname];
 }
 
@@ -184,7 +186,8 @@ std::vector<LayoutFileIndex> LayoutFileList::classList() const
 
 void LayoutFileList::reset(LayoutFileIndex const & classname)
 {
-	LASSERT(haveClass(classname), /**/);
+	LATTEST(haveClass(classname));
+	// safe to continue, since we will make an empty LayoutFile
 	LayoutFile * tc = classmap_[classname];
 	LayoutFile * tmpl = 
 		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
@@ -253,7 +256,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 		if (!tc->load(tempLayout.absFileName())) {
 			// This can only happen if the hardcoded file above is wrong
 			// or there is some weird filesystem error.
-			LASSERT(false, /* */);
+			LATTEST(false); // We will get an empty layout or something.
 		}
 	}
 
@@ -273,6 +276,7 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	string fullName = addName(path, textclass + ".layout");
 	
 	FileName const layout_file(fullName);
+
 	if (!layout_file.exists())
 		return string();
 
@@ -296,6 +300,7 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 		smatch sub;
 		if (regex_match(line, sub, reg)) {
 			// returns: whole string, classtype (not used here), class name, description
+			// LASSERT: Why would this fail?
 			LASSERT(sub.size() == 4, /**/);
 			// now, create a TextClass with description containing path information
 			class_name = (sub.str(2) == "" ? textclass : sub.str(2));

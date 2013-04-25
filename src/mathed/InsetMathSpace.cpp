@@ -280,8 +280,8 @@ void InsetMathSpace::write(WriteStream & os) const
 
 InsetSpaceParams InsetMathSpace::params() const
 {
-	LASSERT(space_info[space_].visible, /**/);
 	InsetSpaceParams isp(true);
+	LASSERT(space_info[space_].visible, return isp);
 	isp.kind = space_info[space_].kind;
 	isp.length = GlueLength(length_);
 	return isp;

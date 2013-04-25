@@ -1333,7 +1333,7 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 
 	// It is not a tabbed work area (i.e., the search work area), so it
 	// should be deleted by other means.
-	LASSERT(found_twa, /* */);
+	LASSERT(found_twa, return);
 
 	if (d.current_work_area_ == 0) {
 		if (d.splitter_->count() != 0) {
@@ -2388,7 +2388,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 
 	string s = fromqstr(filter);
 	size_t pos = s.find(" (*.");
-	LASSERT(pos != string::npos, /**/);
+	LATTEST(pos != string::npos);
 	string fmt_prettyname = s.substr(0, pos);
 	string fmt_name;
 	fname.set(fromqstr(result.second));
@@ -3215,7 +3215,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 {
 	BufferView * bv = currentBufferView();
-	LASSERT(bv, /**/);
+	LASSERT(bv, return);
 
 	// Let the current BufferView dispatch its own actions.
 	bv->dispatch(cmd, dr);

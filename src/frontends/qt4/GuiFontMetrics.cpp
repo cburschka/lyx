@@ -43,7 +43,7 @@ namespace {
  **/	
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
-	LASSERT(is_utf16(ucs4), /**/);
+	LATTEST(is_utf16(ucs4));
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 } // anon namespace

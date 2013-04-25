@@ -537,7 +537,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		pair<bool, int> const c = switchEncoding(os.os(), bparams,
 				runparams, *ascii);
-		LASSERT(c.first, /**/);
+		LATTEST(c.first);
 		count += c.second;
 		runparams.encoding = ascii;
 		open_encoding_ = false;

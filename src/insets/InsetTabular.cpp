@@ -1527,14 +1527,13 @@ void Tabular::read(Lexer & lex)
 
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ") && !prefixIs(line, "<Tabular ")) {
-		LASSERT(false, /**/);
-		return;
+		LASSERT(false, return);
 	}
 
 	int version;
 	if (!getTokenValue(line, "version", version))
 		return;
-	LASSERT(version >= 2, /**/);
+	LATTEST(version >= 2);
 
 	int rows_arg;
 	if (!getTokenValue(line, "rows", rows_arg))
@@ -1867,8 +1866,8 @@ Tabular::idx_type Tabular::cellBelow(idx_type cell) const
 
 Tabular::idx_type Tabular::cellIndex(row_type row, col_type column) const
 {
-	LASSERT(column != npos && column < ncols()
-		&& row != npos && row < nrows(), /**/);
+	LASSERT(column != npos && column < ncols(), column = 0);
+	LASSERT(row != npos && row < nrows(), row = 0);
 	return cell_info[row][column].cellno;
 }
 
@@ -2099,14 +2098,14 @@ void Tabular::setRowDescent(row_type row, int height)
 
 int Tabular::rowAscent(row_type row) const
 {
-	LASSERT(row < nrows(), /**/);
+	LASSERT(row < nrows(), row = 0);
 	return row_info[row].ascent;
 }
 
 
 int Tabular::rowDescent(row_type row) const
 {
-	LASSERT(row < nrows(), /**/);
+	LASSERT(row < nrows(), row = 0);
 	return row_info[row].descent;
 }
 
@@ -2123,16 +2122,16 @@ int Tabular::height() const
 
 bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 {
-	LASSERT(row < nrows(), /**/);
-	LASSERT(column < ncols(), /**/);
+	LASSERT(row < nrows(), return false);
+	LASSERT(column < ncols(), return false);
 	return cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN;
 }
 
 
 bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 {
-	LASSERT(row < nrows(), /**/);
-	LASSERT(column < ncols(), /**/);
+	LASSERT(row < nrows(), return false);
+	LASSERT(column < ncols(), return false);
 	return cell_info[row][column].multirow == CELL_PART_OF_MULTIROW;
 }
 
@@ -3556,10 +3555,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
 	//	mi.base.textwidth << "\n";
-	if (!mi.base.bv) {
-		LYXERR0("need bv");
-		LASSERT(false, /**/);
-	}
+	LBUFERR(mi.base.bv, _("Text metrics error."));
 
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
 		int maxasc = 0;
@@ -6102,7 +6098,8 @@ void InsetTabular::cutSelection(Cursor & cur)
 
 bool InsetTabular::isRightToLeft(Cursor & cur) const
 {
-	LASSERT(cur.depth() > 1, /**/);
+	// LASSERT: It might be better to abandon this Buffer.
+	LASSERT(cur.depth() > 1, return false);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
 	pos_type const parentpos = cur[cur.depth() - 2].pos();
 	return parentpar.getFontSettings(buffer().params(),

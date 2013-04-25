@@ -92,13 +92,15 @@ BufferList::const_iterator BufferList::end() const
 
 void BufferList::release(Buffer * buf)
 {
-	LASSERT(buf, /**/);
+	// We may leak here, but we probably do not need to
+	// shut down.
+	LASSERT(buf, return);
 	BufferStorage::iterator const it =
 		find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
 		Buffer * tmp = (*it);
-		LASSERT(tmp, /**/);
 		bstore.erase(it);
+		LASSERT(tmp, return);
 		delete tmp;
 	}
 }
@@ -192,13 +194,14 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 
 Buffer * BufferList::next(Buffer const * buf) const
 {
-	LASSERT(buf, /**/);
+	// Something is wrong, but we can probably survive it.
+	LASSERT(buf, return 0);
 
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = 
 			find(bstore.begin(), bstore.end(), buf);
-	LASSERT(it != bstore.end(), /**/);
+	LASSERT(it != bstore.end(), return 0);
 	++it;
 	Buffer * nextbuf = (it == bstore.end()) ? bstore.front() : *it;
 	return nextbuf;
@@ -207,13 +210,14 @@ Buffer * BufferList::next(Buffer const * buf) const
 
 Buffer * BufferList::previous(Buffer const * buf) const
 {
-	LASSERT(buf, /**/);
+	// Something is wrong, but we can probably survive it.
+	LASSERT(buf, return 0);
 
 	if (bstore.empty())
 		return 0;
 	BufferStorage::const_iterator it = 
 			find(bstore.begin(), bstore.end(), buf);
-	LASSERT(it != bstore.end(), /**/);
+	LASSERT(it != bstore.end(), return 0);
 
 	Buffer * previousbuf = (it == bstore.begin()) ? bstore.back() : *(it - 1);
 	return previousbuf;

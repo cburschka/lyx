@@ -876,7 +876,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 
 	if (tm.contains(bot_pit)) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-		LASSERT(!pm.rows().empty(), /**/);
+		LBUFERR(!pm.rows().empty(), _(""));
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
 		int offset = coordOffset(dit).y_;
@@ -2169,7 +2169,7 @@ void BufferView::clearLastInset(Inset * inset) const
 {
 	if (d->last_inset_ != inset) {
 		LYXERR0("Wrong last_inset!");
-		LASSERT(false, /**/);
+		LATTEST(false);
 	}
 	d->last_inset_ = 0;
 }
@@ -2401,7 +2401,7 @@ TextMetrics const & BufferView::textMetrics(Text const * t) const
 
 TextMetrics & BufferView::textMetrics(Text const * t)
 {
-	LASSERT(t, /**/);
+	LBUFERR(t, _(""));
 	TextMetricsCache::iterator tmc_it  = d->text_metrics_.find(t);
 	if (tmc_it == d->text_metrics_.end()) {
 		tmc_it = d->text_metrics_.insert(
@@ -2467,7 +2467,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 {
-	LASSERT(&cur.bv() == this, /**/);
+	LASSERT(&cur.bv() == this, return false);
 
 	if (!select)
 		// this event will clear selection so we save selection for
@@ -2708,7 +2708,7 @@ void BufferView::updateMetrics()
 
 void BufferView::insertLyXFile(FileName const & fname)
 {
-	LASSERT(d->cursor_.inTexted(), /**/);
+	LASSERT(d->cursor_.inTexted(), return);
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
@@ -2791,7 +2791,8 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	CursorSlice const & sl = dit[0];
 	TextMetrics const & tm = textMetrics(sl.text());
 	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
-	LASSERT(!pm.rows().empty(), /**/);
+
+	LBUFERR(!pm.rows().empty(), _(""));
 	y -= pm.rows()[0].ascent();
 #if 1
 	// FIXME: document this mess

@@ -663,7 +663,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 docstring InsetMathHull::label(row_type row) const
 {
-	LASSERT(row < nrows(), /**/);
+	LASSERT(row < nrows(), return docstring());
 	if (InsetLabel * il = label_[row])
 		return il->screenLabel();
 	return docstring();
@@ -1020,7 +1020,7 @@ void InsetMathHull::glueall(HullType type)
 
 void InsetMathHull::splitTo2Cols()
 {
-	LASSERT(ncols() == 1, /**/);
+	LASSERT(ncols() == 1, return);
 	InsetMathGrid::addCol(1);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 2 * row;
@@ -1033,7 +1033,7 @@ void InsetMathHull::splitTo2Cols()
 
 void InsetMathHull::splitTo3Cols()
 {
-	LASSERT(ncols() < 3, /**/);
+	LASSERT(ncols() < 3, return);
 	if (ncols() < 2)
 		splitTo2Cols();
 	InsetMathGrid::addCol(2);
@@ -1264,9 +1264,9 @@ void InsetMathHull::infoize(odocstream & os) const
 
 void InsetMathHull::check() const
 {
-	LASSERT(numbered_.size() == nrows(), /**/);
-	LASSERT(numbers_.size() == nrows(), /**/);
-	LASSERT(label_.size() == nrows(), /**/);
+	LATTEST(numbered_.size() == nrows());
+	LATTEST(numbers_.size() == nrows());
+	LATTEST(label_.size() == nrows());
 }
 
 

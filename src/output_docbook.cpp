@@ -320,11 +320,13 @@ void docbookParagraphs(Text const & text,
 		       odocstream & os,
 		       OutputParams const & runparams)
 {
+	LASSERT(runparams.par_begin <= runparams.par_end,
+		{ os << "<!-- Docbook Output Error -->\n"; return; });
+
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
-	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 	// if only part of the paragraphs will be outputed
 	if (runparams.par_begin !=  runparams.par_end) {
 		par = boost::next(paragraphs.begin(), runparams.par_begin);

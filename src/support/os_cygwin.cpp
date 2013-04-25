@@ -227,7 +227,7 @@ void init(int argc, char * argv[])
 
 string utf8_argv(int i)
 {
-	LASSERT(i < argc_, /**/);
+	LASSERT(i < argc_, return "");
 	return to_utf8(from_local8bit(argv_[i]));
 }
 

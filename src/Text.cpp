@@ -143,7 +143,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 	tmp.setInsetOwner(&par.inInset());
 	tmp.makeSameLayout(par);
 
-	LASSERT(pos <= par.size(), /**/);
+	LASSERT(pos <= par.size(), return);
 
 	if (pos < par.size()) {
 		// move everything behind the break position to the new paragraph
@@ -726,7 +726,7 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 
 void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
@@ -883,7 +883,7 @@ void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str,
 // same Paragraph one to the right and make a rebreak
 void Text::insertChar(Cursor & cur, char_type c)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	cur.recordUndo(INSERT_UNDO);
 
@@ -992,6 +992,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 					"beginning of a paragraph. Please read the Tutorial."));
 			return;
 		}
+		// LASSERT: Is it safe to continue here?
 		LASSERT(cur.pos() > 0, /**/);
 		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
 				&& !par.isDeleted(cur.pos() - 1)) {
@@ -1032,7 +1033,7 @@ void Text::charInserted(Cursor & cur)
 	    && !par.isWordSeparator(cur.pos() - 2)
 	    && par.isWordSeparator(cur.pos() - 1)) {
 		// get the word in front of cursor
-		LASSERT(this == cur.text(), /**/);
+		LBUFERR(this == cur.text(), _("Invalid cursor."));
 		cur.paragraph().updateWords();
 	}
 }
@@ -1043,7 +1044,7 @@ void Text::charInserted(Cursor & cur)
 
 bool Text::cursorForwardOneWord(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pos_type const lastpos = cur.lastpos();
 	pit_type pit = cur.pit();
@@ -1069,7 +1070,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 		else while (pos != lastpos && !par.isWordSeparator(pos))
 			     ++pos;
 	} else {
-		LASSERT(pos < lastpos, /**/); // see above
+		LASSERT(pos < lastpos, return false); // see above
 		if (!par.isWordSeparator(pos))
 			while (pos != lastpos && !par.isWordSeparator(pos))
 				++pos;
@@ -1090,7 +1091,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 
 bool Text::cursorBackwardOneWord(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
@@ -1131,7 +1132,7 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 
 bool Text::cursorVisLeftOneWord(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pos_type left_pos, right_pos;
 	bool left_is_letter, right_is_letter;
@@ -1168,7 +1169,7 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 
 bool Text::cursorVisRightOneWord(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pos_type left_pos, right_pos;
 	bool left_is_letter, right_is_letter;
@@ -1207,7 +1208,7 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 
 void Text::selectWord(Cursor & cur, word_location loc)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	CursorSlice from = cur.top();
 	CursorSlice to = cur.top();
 	getWord(from, to, loc);
@@ -1225,7 +1226,7 @@ void Text::selectWord(Cursor & cur, word_location loc)
 
 void Text::selectAll(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	if (cur.lastpos() == 0 && cur.lastpit() == 0)
 		return;
 	// If the cursor is at the beginning, make sure the cursor ends there
@@ -1246,7 +1247,7 @@ void Text::selectAll(Cursor & cur)
 // selection is currently set
 bool Text::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	if (cur.selection())
 		return false;
 	selectWord(cur, loc);
@@ -1256,7 +1257,7 @@ bool Text::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
 
 void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	if (!cur.selection()) {
 		bool const changed = cur.paragraph().isChanged(cur.pos());
@@ -1411,7 +1412,7 @@ void Text::rejectChanges()
 
 void Text::deleteWordForward(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	if (cur.lastpos() == 0)
 		cursorForward(cur);
 	else {
@@ -1427,7 +1428,7 @@ void Text::deleteWordForward(Cursor & cur)
 
 void Text::deleteWordBackward(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	if (cur.lastpos() == 0)
 		cursorBackward(cur);
 	else {
@@ -1444,7 +1445,7 @@ void Text::deleteWordBackward(Cursor & cur)
 // Kill to end of line.
 void Text::changeCase(Cursor & cur, TextCase action)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	CursorSlice from;
 	CursorSlice to;
 
@@ -1573,7 +1574,7 @@ bool Text::erase(Cursor & cur)
 
 bool Text::backspacePos0(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	if (cur.pit() == 0)
 		return false;
 
@@ -1626,7 +1627,7 @@ bool Text::backspacePos0(Cursor & cur)
 
 bool Text::backspace(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	bool needsUpdate = false;
 	if (cur.pos() == 0) {
 		if (cur.pit() == 0)
@@ -1828,7 +1829,7 @@ bool Text::read(Lexer & lex,
 // Returns the current font and depth as a message.
 docstring Text::currentState(Cursor const & cur) const
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	Buffer & buf = *cur.buffer();
 	Paragraph const & par = cur.paragraph();
 	odocstringstream os;
@@ -2014,7 +2015,7 @@ void Text::forToc(docstring & os, size_t maxlen, bool shorten) const
 
 void Text::charsTranspose(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pos_type pos = cur.pos();
 
@@ -2114,7 +2115,7 @@ CompletionList const * Text::createCompletionList(Cursor const & cur) const
 
 bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
 {	
-	LASSERT(cur.bv().cursor() == cur, /**/);
+	LBUFERR(cur.bv().cursor() == cur, _("Invalid cursor."));
 	cur.insert(s);
 	cur.bv().cursor() = cur;
 	if (!(cur.result().screenUpdate() & Update::Force))

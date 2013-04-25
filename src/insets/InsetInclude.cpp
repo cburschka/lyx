@@ -388,7 +388,8 @@ docstring InsetInclude::screenLabel() const
 			temp = listings_label_;
 			break;
 		case NONE:
-			LASSERT(false, /**/);
+			LASSERT(false, temp = buffer().B_("Unknown"));
+			break;
 	}
 
 	temp += ": ";
@@ -904,14 +905,13 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
+	LATTEST(&buffer() == &features.buffer());
+
 	string incfile = to_utf8(params()["filename"]);
-	string writefile;
-
-	LASSERT(&buffer() == &features.buffer(), /**/);
-
 	string const included_file =
 		includedFileName(buffer(), params()).absFileName();
 
+	string writefile;
 	if (isLyXFileName(included_file))
 		writefile = changeExtension(included_file, ".sgml");
 	else
@@ -966,7 +966,7 @@ void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LASSERT(mi.base.bv, /**/);
+	LBUFERR(mi.base.bv, _("Text metrics error."));
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
@@ -992,7 +992,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	LASSERT(pi.base.bv, /**/);
+	LBUFERR(pi.base.bv, _("Painter has no BufferView!"));
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {

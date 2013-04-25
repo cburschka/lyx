@@ -338,7 +338,7 @@ QString findPng(QString const & name)
 {
 	PngMap const * const begin = sorted_png_map;
 	PngMap const * const end = begin + nr_sorted_png_map;
-	LASSERT(sorted(begin, end), /**/);
+	LATTEST(sorted(begin, end));
 
 	PngMap const * const it = find_if(begin, end, CompareKey(name));
 
@@ -1274,7 +1274,7 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 		return;
 	BookmarksSection::Bookmark const & bm =
 		theSession().bookmarks().bookmark(idx);
-	LASSERT(!bm.filename.empty(), /**/);
+	LASSERT(!bm.filename.empty(), return);
 	string const file = bm.filename.absFileName();
 	// if the file is not opened, open it.
 	if (!theBufferList().exists(bm.filename)) {
@@ -2480,7 +2480,7 @@ void GuiApplication::commitData(QSessionManager & sm)
 
 void GuiApplication::unregisterView(GuiView * gv)
 {
-	LASSERT(d->views_[gv->id()] == gv, /**/);
+	LAPPERR(d->views_[gv->id()] == gv, _("Application error."));
 	d->views_.remove(gv->id());
 	if (current_view_ == gv)
 		current_view_ = 0;
@@ -2509,7 +2509,7 @@ bool GuiApplication::closeAllViews()
 
 GuiView & GuiApplication::view(int id) const
 {
-	LASSERT(d->views_.contains(id), /**/);
+	LAPPERR(d->views_.contains(id), _("Application error.") /**/);
 	return *d->views_.value(id);
 }
 
@@ -2824,7 +2824,7 @@ void hideDialogs(std::string const & name, Inset * inset)
 
 frontend::FontLoader & theFontLoader()
 {
-	LASSERT(frontend::guiApp, /**/);
+	LAPPERR(frontend::guiApp, _("No Gui Application."));
 	return frontend::guiApp->fontLoader();
 }
 
@@ -2837,7 +2837,7 @@ frontend::FontMetrics const & theFontMetrics(Font const & f)
 
 frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 {
-	LASSERT(frontend::guiApp, /**/);
+	LAPPERR(frontend::guiApp, _("No Gui Application."));
 	return frontend::guiApp->fontLoader().metrics(f);
 }
 
@@ -2850,14 +2850,14 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 
 frontend::Clipboard & theClipboard()
 {
-	LASSERT(frontend::guiApp, /**/);
+	LAPPERR(frontend::guiApp, _("No Gui Application."));
 	return frontend::guiApp->clipboard();
 }
 
 
 frontend::Selection & theSelection()
 {
-	LASSERT(frontend::guiApp, /**/);
+	LAPPERR(frontend::guiApp, _("No Gui Application."));
 	return frontend::guiApp->selection();
 }
 

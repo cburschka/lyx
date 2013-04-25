@@ -386,12 +386,6 @@ void Template::readTemplate(Lexer & lex)
 
 		case TO_END:
 			return;
-
-		default:
-			lex.printError("external::Template::readTemplate: "
-				       "Wrong tag: $$Token");
-			LASSERT(false, /**/);
-			break;
 		}
 	}
 }

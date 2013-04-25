@@ -27,6 +27,8 @@
 #include "insets/InsetTabular.h"
 
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
@@ -80,7 +82,7 @@ DocIterator DocIterator::clone(Buffer * buffer) const
 	DocIterator dit(buffer);
 	size_t const n = slices_.size();
 	for (size_t i = 0 ; i != n; ++i) {
-		LASSERT(inset, /**/);
+		LBUFERR(inset, _("Iterator slice not properly initialized!"));
 		dit.push_back(slices_[i]);
 		dit.top().inset_ = inset;
 		if (i + 1 != n)
@@ -143,7 +145,7 @@ Inset * DocIterator::prevInset() const
 
 Inset * DocIterator::realInset() const
 {
-	LASSERT(inTexted(), /**/);
+	LASSERT(inTexted(), return 0);
 	// if we are in a tabular, we need the cell
 	if (inset().lyxCode() == TABULAR_CODE) {
 		InsetTabular * tabular = inset().asInsetTabular();
@@ -172,23 +174,24 @@ MathAtom & DocIterator::nextAtom() const
 
 Text * DocIterator::text() const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return 0);
 	return top().text();
 }
 
 
 Paragraph & DocIterator::paragraph() const
 {
-	if (!inTexted())
+	if (!inTexted()) {
 		LYXERR0(*this);
-	LASSERT(inTexted(), /**/);
+		LBUFERR(false, _("DocIterator::paragraph() called outside Text."));
+	}
 	return top().paragraph();
 }
 
 
 Paragraph & DocIterator::innerParagraph() const
 {
-	LASSERT(!empty(), /**/);
+	LBUFERR(!empty(), _("Empty DocIterator."));
 	return innerTextSlice().paragraph();
 }
 
@@ -207,7 +210,7 @@ FontSpan DocIterator::locateWord(word_location const loc) const
 	
 CursorSlice const & DocIterator::innerTextSlice() const
 {
-	LASSERT(!empty(), /**/);
+	LBUFERR(!empty(), _(""));
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
@@ -216,9 +219,10 @@ CursorSlice const & DocIterator::innerTextSlice() const
 
 	// This case is in principe not possible. We _must_
 	// be inside a Text.
-	LASSERT(false, /**/);
-	static CursorSlice dummy;
-	return dummy;
+	LBUFERR(false, _(""));
+	// Squash warning
+	static const CursorSlice c;
+	return c;
 }
 
 
@@ -282,7 +286,7 @@ MathData & DocIterator::cell() const
 
 Text * DocIterator::innerText() const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return 0);
 	return innerTextSlice().text();
 }
 
@@ -464,7 +468,7 @@ void DocIterator::updateInsets(Inset * inset)
 	size_t const n = slices_.size();
 	slices_.resize(0);
 	for (size_t i = 0 ; i < n; ++i) {
-		LASSERT(inset, /**/);
+		LBUFERR(inset, _("Improperly initialized DocIterator."));
 		push_back(dit[i]);
 		top().inset_ = inset;
 		if (i + 1 != n)

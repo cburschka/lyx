@@ -88,7 +88,7 @@ int InsetMath::plaintext(odocstringstream &,
         OutputParams const &, size_t) const
 {
 	// all math plain text output shall take place in InsetMathHull
-	LASSERT(false, /**/);
+	LATTEST(false);
 	return 0;
 }
 

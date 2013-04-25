@@ -30,8 +30,9 @@
 
 #include "insets/Inset.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
+#include "support/gettext.h"
+#include "support/lassert.h"
 
 #include <algorithm>
 #include <deque>
@@ -340,7 +341,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		// main Text _is_ the whole document.
 		// record the relevant paragraphs
 		Text const * text = cell.text();
-		LASSERT(text, /**/);
+		LBUFERR(text, _("Uninitialized cell."));
 		ParagraphList const & plist = text->paragraphs();
 		ParagraphList::const_iterator first = plist.begin();
 		advance(first, first_pit);
@@ -361,8 +362,8 @@ void Undo::Private::recordUndo(UndoKind kind,
 			       CursorData const & cur,
 			       bool isFullBuffer)
 {
-	LASSERT(first_pit <= cell.lastpit(), /**/);
-	LASSERT(last_pit <= cell.lastpit(), /**/);
+	LASSERT(first_pit <= cell.lastpit(), return);
+	LASSERT(last_pit <= cell.lastpit(), return);
 
 	doRecordUndo(kind, cell, first_pit, last_pit, cur,
 		isFullBuffer, undostack_);
@@ -400,7 +401,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 	//LYXERR0("undo, performing: " << undo);
 	DocIterator dit = undo.cell.asDocIterator(&buffer_);
 	if (undo.isFullBuffer) {
-		LASSERT(undo.pars, /**/);
+		LBUFERR(undo.pars, _("Undo stack is corrupt!"));
 		// This is a full document
 		delete otherstack.top().bparams;
 		otherstack.top().bparams = new BufferParams(buffer_.params());
@@ -413,15 +414,15 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
 		//LYXERR0("undo.array: " << *undo.array);
-		LASSERT(undo.array, /**/);
+		LBUFERR(undo.array, _("Undo stack is corrupt!"));
 		dit.cell().swap(*undo.array);
 		delete undo.array;
 		undo.array = 0;
 	} else {
 		// Some finer machinery is needed here.
 		Text * text = dit.text();
-		LASSERT(text, /**/);
-		LASSERT(undo.pars, /**/);
+		LBUFERR(text, _("Invalid cursor."));
+		LBUFERR(undo.pars, _("Undo stack is corrupt!"));
 		ParagraphList & plist = text->paragraphs();
 
 		// remove new stuff between first and last
@@ -445,8 +446,10 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		delete undo.pars;
 		undo.pars = 0;
 	}
-	LASSERT(undo.pars == 0, /**/);
-	LASSERT(undo.array == 0, /**/);
+
+	// We'll clean up in release mode.
+	LASSERT(undo.pars == 0, undo.pars = 0);
+	LASSERT(undo.array == 0, undo.array = 0);
 
 	if (!undo.cur_before.empty())
 		cur = undo.cur_before;

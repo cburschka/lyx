@@ -26,10 +26,10 @@ namespace lyx {
 Point::Point(int x, int y)
 	: x_(x), y_(y)
 {
-	LASSERT(x > -1000000, /**/);
-	LASSERT(x <  1000000, /**/);
-	LASSERT(y > -1000000, /**/);
-	LASSERT(y <  1000000, /**/);
+	LASSERT(x > -1000000, x = -1000000);
+	LASSERT(x <  1000000, x =  1000000);
+	LASSERT(y > -1000000, y = -1000000);
+	LASSERT(y <  1000000, y =  1000000);
 }
 
 

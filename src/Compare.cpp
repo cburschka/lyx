@@ -602,7 +602,7 @@ Compare::Impl::SnakeResult Compare::Impl::retrieveMiddleSnake(
 	if (os[k].empty() && os_r[kk].empty()) {
 		// No, there is no snake at all, in which case
 		// the length of the shortest edit script is M+N.
-		LASSERT(2 * D - odd_offset_ == M_ + N_, /**/);
+		LATTEST(2 * D - odd_offset_ == M_ + N_);
 		return NoSnake;
 	} 
 	
@@ -822,7 +822,7 @@ void Compare::Impl::processSnake(DocRangePair const & rp)
 			pit_type const pit = it.o.pit() - rp.o.from.pit();
 			pos_type const pos = pit ? it.o.pos() : it.o.pos() - rp.o.from.pos();
 			inset = pars[pit].getInset(pos);
-			LASSERT(inset, /**/);
+			LASSERT(inset, continue);
 			diffInset(inset, it);
 		}
 	}

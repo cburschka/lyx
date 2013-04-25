@@ -40,7 +40,7 @@ InsetMathSpecialChar::InsetMathSpecialChar(docstring const & name)
 		else if (name == "textbackslash")
 			char_ = '\\';
 		else
-			LASSERT(false, /**/);
+			LASSERT(false, char_ = '?');
 	} else
 		char_ = name.at(0);
 }

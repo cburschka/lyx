@@ -3730,7 +3730,7 @@ bool LyXAction::funcHasFlag(FuncCode action,
 
 	if (ici == lyx_info_map.end()) {
 		LYXERR0("action: " << action << " is not known.");
-		LASSERT(false, /**/);
+		LASSERT(false, return false);
 	}
 
 	return ici->second.attrib & flag;

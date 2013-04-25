@@ -65,8 +65,8 @@ bool GuiIdListModel::setData (QModelIndex const & index,
 	}
 	// If we assert here, it's because we're trying to set an
 	// unrecognized role.
-	LASSERT(false, return false);
-	return false; // silence the warning
+	LATTEST(false);
+	return false;
 }
 
 

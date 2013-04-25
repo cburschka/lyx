@@ -1302,7 +1302,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring & special = colinfo_[cur.col()].special_;
 			if (!special.empty()) {
 				docstring::size_type i = special.rfind('|');
-				LASSERT(i != docstring::npos, /**/);
+				LASSERT(i != docstring::npos, break);
 				special.erase(i, 1);
 			}
 		}
@@ -1311,7 +1311,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring & special = colinfo_[cur.col()+1].special_;
 			if (!special.empty()) {
 				docstring::size_type i = special.find('|');
-				LASSERT(i != docstring::npos, /**/);
+				LASSERT(i != docstring::npos, break);
 				special.erase(i, 1);
 			}
 		}

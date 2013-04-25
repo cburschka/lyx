@@ -160,7 +160,7 @@ void init(int argc, char * argv[])
 	wchar_t ** envp = 0;
 	int newmode = 0;
 	__wgetmainargs(&argc_, &argv_, &envp, -1, &newmode);
-	LASSERT(argc == argc_, /**/);
+	LATTEST(argc == argc_);
 
 	// If Cygwin is detected, query the cygdrive prefix.
 	// The cygdrive prefix is needed for translating windows style paths
@@ -212,7 +212,7 @@ void init(int argc, char * argv[])
 
 string utf8_argv(int i)
 {
-	LASSERT(i < argc_, /**/);
+	LASSERT(i < argc_, return "");
 	return fromqstr(QString::fromWCharArray(argv_[i]));
 }
 
@@ -312,7 +312,7 @@ static QString const get_long_path(QString const & short_path)
 		long_path.resize(result);
 		result = GetLongPathNameW((wchar_t *) short_path.utf16(),
 					 &long_path[0], long_path.size());
-		LASSERT(result <= long_path.size(), /**/);
+		LATTEST(result <= long_path.size());
 	}
 
 	return (result == 0) ? short_path : QString::fromWCharArray(&long_path[0]);
@@ -339,7 +339,7 @@ static QString const get_short_path(QString const & long_path, file_access how)
 		short_path.resize(result);
 		result = GetShortPathNameW((wchar_t *) long_path.utf16(),
 					 &short_path[0], short_path.size());
-		LASSERT(result <= short_path.size(), /**/);
+		LATTEST(result <= short_path.size());
 	}
 
 	return (result == 0) ? long_path : QString::fromWCharArray(&short_path[0]);
@@ -514,7 +514,7 @@ string const GetFolderPath::operator()(folder_id _id) const
 		id = CSIDL_APPDATA;
 		break;
 	default:
-		LASSERT(false, /**/);
+		LASSERT(false, return string());
 	}
 	HRESULT const result = (folder_path_func_)(0, id, 0,
 						   SHGFP_TYPE_CURRENT,

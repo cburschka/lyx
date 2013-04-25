@@ -102,6 +102,7 @@ int AuthorList::record(Author const & a)
 
 void AuthorList::record(int id, Author const & a)
 {
+	// LASSERT: What should we do here?
 	LASSERT(unsigned(id) < authors_.size(), /**/);
 
 	authors_[id] = a;
@@ -117,6 +118,7 @@ void AuthorList::recordCurrentAuthor(Author const & a)
 
 Author const & AuthorList::get(int id) const
 {
+	// LASSERT: What should we do here?
 	LASSERT(id < (int)authors_.size() , /**/);
 	return authors_[id];
 }

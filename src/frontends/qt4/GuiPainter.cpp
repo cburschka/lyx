@@ -156,7 +156,7 @@ void GuiPainter::enterMonochromeMode(Color const & min, Color const & max)
 
 void GuiPainter::leaveMonochromeMode()
 {
-	LASSERT(!monochrome_min_.empty(), /**/);
+	LASSERT(!monochrome_min_.empty(), return);
 	monochrome_min_.pop();
 	monochrome_max_.pop();
 }

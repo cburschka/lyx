@@ -787,7 +787,8 @@ void GuiCompleter::setCurrentCompletion(QString const & s)
 			i = n;
 		else
 			i = l;
-		LASSERT(i <= n, /**/);
+		// we can try to recover
+		LASSERT(i <= n, i = 0);
 	}
 
 	// select the first if none was found

@@ -195,7 +195,7 @@ Buffer & Inset::buffer()
 		LYXERR0("Inset: " << this << " LyX Code: " << lyxCode()
 					<< " name: " << iname);
 		s << "LyX Code: " << lyxCode() << " name: " << iname;
-		LASSERT(false, /**/);
+		LATTEST(false);
 		throw ExceptionMessage(BufferException, 
 			from_ascii("Inset::buffer_ member not initialized!"), s.str());
 	}

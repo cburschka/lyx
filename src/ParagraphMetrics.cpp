@@ -42,6 +42,7 @@
 
 #include "support/lassert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -135,7 +136,7 @@ void ParagraphMetrics::setInsetDimension(Inset const * inset,
 
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
-	LASSERT(!rows().empty(), /**/);
+	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
 
 	// If boundary is set we should return the row on which
 	// the character before is inside.
@@ -154,7 +155,7 @@ Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 
 Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
 {
-	LASSERT(!rows().empty(), /**/);
+	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
 
 	// If boundary is set we should return the row on which
 	// the character before is inside.
@@ -173,7 +174,7 @@ Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
 
 size_t ParagraphMetrics::pos2row(pos_type pos) const
 {
-	LASSERT(!rows().empty(), /**/);
+	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
 
 	RowList::const_iterator rit = rows_.end();
 	RowList::const_iterator const begin = rows_.begin();
@@ -245,7 +246,7 @@ bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
 	if (!par_->isHfill(pos))
 		return false;
 
-	LASSERT(pos >= row.pos() && pos < row.endpos(), /**/);
+	LASSERT(pos >= row.pos() && pos < row.endpos(), return false);
 
 	// expand at the end of a row only if there is another hfill on the same row
 	if (pos == row.endpos() - 1) {

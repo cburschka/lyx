@@ -335,8 +335,7 @@ BufferParams::Impl::Impl()
 BufferParams::Impl *
 BufferParams::MemoryTraits::clone(BufferParams::Impl const * ptr)
 {
-	LASSERT(ptr, /**/);
-
+	LBUFERR(ptr, _("Attempting to clone non-existent BufferParams!"));
 	return new BufferParams::Impl(*ptr);
 }
 
@@ -423,7 +422,7 @@ BufferParams::BufferParams()
 
 docstring BufferParams::B_(string const & l10n) const
 {
-	LASSERT(language, /**/);
+	LASSERT(language, return from_utf8(l10n));
 	return getMessages(language->code()).get(l10n);
 }
 
@@ -511,28 +510,28 @@ IndicesList const & BufferParams::indiceslist() const
 
 Bullet & BufferParams::temp_bullet(lyx::size_type const index)
 {
-	LASSERT(index < 4, /**/);
+	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet const & BufferParams::temp_bullet(lyx::size_type const index) const
 {
-	LASSERT(index < 4, /**/);
+	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
 	return pimpl_->temp_bullets[index];
 }
 
 
 Bullet & BufferParams::user_defined_bullet(lyx::size_type const index)
 {
-	LASSERT(index < 4, /**/);
+	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
 	return pimpl_->user_defined_bullets[index];
 }
 
 
 Bullet const & BufferParams::user_defined_bullet(lyx::size_type const index) const
 {
-	LASSERT(index < 4, /**/);
+	LASSERT(index < 4, return pimpl_->temp_bullets[0]);
 	return pimpl_->user_defined_bullets[index];
 }
 

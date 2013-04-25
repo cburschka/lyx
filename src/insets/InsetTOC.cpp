@@ -232,8 +232,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	string const & command = getCmdName();
 	if (command != "tableofcontents" && command != "lstlistoflistings") {
 		LYXERR0("TOC type " << command << " not yet implemented.");
-		LASSERT(false, /* */);
-		return docstring();
+		LASSERT(false, return docstring());
 	}
 
 	Toc const & toc = buffer().tocBackend().toc(cmd2type(command));

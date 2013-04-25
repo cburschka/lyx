@@ -25,6 +25,8 @@
 #include "mathed/InsetMath.h"
 #include "mathed/MathMacro.h"
 
+#include "support/ExceptionMessage.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <ostream>
@@ -42,7 +44,7 @@ CursorSlice::CursorSlice()
 CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
-	LASSERT(inset_, /**/);
+	LBUFERR(inset_, _("Invalid initialization of CursorSlice!"));
 }
 
 
@@ -60,7 +62,7 @@ Paragraph & CursorSlice::paragraph() const
 
 pos_type CursorSlice::lastpos() const
 {
-	LASSERT(inset_, /**/);
+	LBUFERR(inset_, _("Cursor slice not properly initialized!"));
 	InsetMath const * math = inset_->asInsetMath();
 	bool paramless_macro = math && math->asMacro() && !math->asMacro()->nargs();
 	return math ? (paramless_macro ? 0 : cell().size()) 
@@ -78,6 +80,8 @@ pit_type CursorSlice::lastpit() const
 
 CursorSlice::row_type CursorSlice::row() const
 {
+	// LASSERT: This should only ever be called from an InsetMath.
+	// Should we crash in release mode, though, or try to continue?
 	LASSERT(asInsetMath(), /**/);
 	return asInsetMath()->row(idx_);
 }
@@ -85,6 +89,8 @@ CursorSlice::row_type CursorSlice::row() const
 
 CursorSlice::col_type CursorSlice::col() const
 {
+	// LASSERT: This should only ever be called from an InsetMath.
+	// Should we crash in release mode, though, or try to continue?
 	LASSERT(asInsetMath(), /**/);
 	return asInsetMath()->col(idx_);
 }
@@ -110,7 +116,7 @@ void CursorSlice::forwardPos()
 	// otherwise move on one cell
 	//lyxerr << "... next idx" << endl;
 
-	LASSERT(idx_ < nargs(), /**/);
+	LASSERT(idx_ < nargs(), return);
 
 	++idx_;
 	pit_ = 0;
@@ -120,7 +126,7 @@ void CursorSlice::forwardPos()
 
 void CursorSlice::forwardIdx()
 {
-	LASSERT(idx_ < nargs(), /**/);
+	LASSERT(idx_ < nargs(), return);
 
 	++idx_;
 	pit_ = 0;
@@ -148,7 +154,7 @@ void CursorSlice::backwardPos()
 		return;
 	}
 
-	LASSERT(false, /**/);
+	LATTEST(false);
 }
 
 
@@ -187,7 +193,8 @@ bool operator<(CursorSlice const & p, CursorSlice const & q)
 	if (p.inset_ != q.inset_) {
 		LYXERR0("can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q);
-		LASSERT(false, /**/);
+		// It should be safe to continue, just registering the error.
+		LASSERT(false, return false);
 	}
 	if (p.idx_ != q.idx_)
 		return p.idx_ < q.idx_;

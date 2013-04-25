@@ -40,6 +40,7 @@ PrinterParams::PrinterParams()
 
 void PrinterParams::testInvariant() const
 {
+#ifdef ENABLE_ASSERTIONS
 	switch (target) {
 	case PRINTER:
 		// We can't do this test, because no default printer
@@ -47,12 +48,13 @@ void PrinterParams::testInvariant() const
 		// LASSERT(!printer_name.empty(), /**/);
 		break;
 	case FILE:
-		LASSERT(!file_name.empty(), /**/);
+		LATTEST(!file_name.empty());
 		break;
 	default:
-		LASSERT(false, /**/);
+		LATTEST(false);
 		break;
 	}
+#endif
 }
 
 

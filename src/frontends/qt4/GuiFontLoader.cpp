@@ -22,6 +22,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 #include "support/Package.h"
@@ -90,14 +91,15 @@ size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
 static GuiFontInfo * fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE];
 
 
-/// Get font info (font + metrics) for the given LyX font.
+// Get font info (font + metrics) for the given LyX font.
 // if not cached, create it.
 GuiFontInfo & fontinfo(FontInfo const & f)
 {
-	LASSERT(f.family() < NUM_FAMILIES, /**/);
-	LASSERT(f.series() < NUM_SERIES, /**/);
-	LASSERT(f.realShape() < NUM_SHAPE, /**/);
-	LASSERT(f.size() < NUM_SIZE, /**/);
+	// LASSERT: Is there anything we might do here besides crash?
+	LBUFERR(f.family() < NUM_FAMILIES, _("Font lookup error."));
+	LBUFERR(f.series() < NUM_SERIES, _("Font lookup error."));
+	LBUFERR(f.realShape() < NUM_SHAPE, _("Font lookup error."));
+	LBUFERR(f.size() < NUM_SIZE, _("Font lookup error."));
 	// fi is a reference to the pointer type (GuiFontInfo *) in the
 	// fontinfo_ table.
 	GuiFontInfo * & fi =

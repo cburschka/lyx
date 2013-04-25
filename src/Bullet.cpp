@@ -348,25 +348,25 @@ docstring const Bullet::bulletEntry(int f, int c)
 void Bullet::testInvariant() const
 {
 #ifdef ENABLE_ASSERTIONS
-	LASSERT(font >= MIN, /**/);
-	LASSERT(font < FONTMAX, /**/);
-	LASSERT(character >= MIN, /**/);
-	LASSERT(character < CHARMAX, /**/);
-	LASSERT(size >= MIN, /**/);
-	LASSERT(size < SIZEMAX, /**/);
-	LASSERT(user_text >= -1, /**/);
-	LASSERT(user_text <= 1, /**/);
+	LATTEST(font >= MIN);
+	LATTEST(font < FONTMAX);
+	LATTEST(character >= MIN);
+	LATTEST(character < CHARMAX);
+	LATTEST(size >= MIN);
+	LATTEST(size < SIZEMAX);
+	LATTEST(user_text >= -1);
+	LATTEST(user_text <= 1);
 	// now some relational/operational tests
 	if (user_text == 1) {
-		LASSERT(font == -1 && (character == -1 && size == -1), /**/);
-		//        LASSERT(!text.empty(), /**/); // this isn't necessarily an error
+		LATTEST(font == -1 && (character == -1 && size == -1));
+		//        LATTEST(!text.empty()); // this isn't necessarily an error
 	}
 	//      else if (user_text == -1) {
-	//        LASSERT(!text.empty(), /**/); // this also isn't necessarily an error
+	//        LATTEST(!text.empty()); // this also isn't necessarily an error
 	//      }
 	//      else {
 	//        // user_text == 0
-	//        LASSERT(text.empty(), /**/); // not usually true
+	//        LATTEST(text.empty()); // not usually true
 	//      }
 #endif
 }

@@ -198,7 +198,7 @@ public:
 		: kind_(kind), label_(label), submenuname_(submenu),
 		  tooltip_(tooltip), optional_(optional)
 	{
-		LASSERT(kind == Submenu || kind == Help || kind == Info, /**/);
+		LATTEST(kind == Submenu || kind == Help || kind == Info);
 	}
 
 	MenuItem(Kind kind,
@@ -1058,7 +1058,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 		action = LFUN_BUFFER_EXPORT;
 		break;
 	default:
-		LASSERT(false, /* */);
+		LATTEST(false);
 		return;
 	}
 	sort(formats.begin(), formats.end(), Format::formatSorter);
@@ -1111,7 +1111,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 				continue;
 			break;
 		default:
-			LASSERT(false, /* */);
+			// we already asserted earlier in this case
+			// LATTEST(false);
 			continue;
 		}
 		if (!shortcut.empty())
@@ -2076,9 +2077,10 @@ MenuDefinition const & Menus::Impl::getMenu(QString const & name) const
 {
 	const_iterator cit = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
-	if (cit == menulist_.end())
+	if (cit == menulist_.end()) {
 		LYXERR0("No submenu named " << name);
-	LASSERT(cit != menulist_.end(), /**/);
+		LASSERT(false, { static const MenuDefinition m; return m; });
+	}
 	return (*cit);
 }
 
@@ -2087,9 +2089,10 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 {
 	iterator it = find_if(menulist_.begin(), menulist_.end(),
 		MenuNamesEqual(name));
-	if (it == menulist_.end())
+	if (it == menulist_.end()) {
 		LYXERR0("No submenu named " << name);
-	LASSERT(it != menulist_.end(), /**/);
+		LASSERT(false, { static MenuDefinition m; return m; });
+	}
 	return (*it);
 }
 

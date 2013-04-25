@@ -49,7 +49,6 @@ using namespace lyx::support;
 namespace lyx {
 
 /// Get information for \p code and command \p cmdName.
-/// Returns 0 if the combination is not known.  [FIXME: 0?]
 /// Don't call this without first making sure the command name is
 /// acceptable to the inset.
 static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
@@ -82,10 +81,11 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 	case TOC_CODE:
 		return InsetTOC::findInfo(cmdName);
 	default:
-		LASSERT(false, /**/);
+		LATTEST(false);
+		// fall through in release mode
 	}
-	static ParamInfo pi;
-	return pi; // to silence the warning
+	static const ParamInfo pi;
+	return pi;
 }
 
 
@@ -144,14 +144,16 @@ bool ParamInfo::operator==(ParamInfo const & rhs) const
 ParamInfo::ParamData const & 
 	ParamInfo::operator[](std::string const & name) const
 {
-	LASSERT(hasParam(name), /**/);
 	const_iterator it = begin();
 	const_iterator last = end();
 	for (; it != last; ++it) {
 		if (it->name() == name)
 			return *it;
 	}
-	return *it; // silence warning
+	LATTEST(false);
+	// we will try to continue in release mode
+	static const ParamData pd("asdfghjkl", LYX_INTERNAL);
+	return pd;
 }
 
 
@@ -214,9 +216,10 @@ string InsetCommandParams::getDefaultCmd(InsetCode code)
 		case TOC_CODE:
 			return InsetTOC::defaultCommand();
 		default:
-			LASSERT(false, /**/);
+			LATTEST(false);
+			// fall through in release mode
 	}
-	return string(); // silence the warning
+	return string();
 }
 
 
@@ -249,10 +252,11 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 			return InsetRef::isCompatibleCommand(s);
 		case TOC_CODE:
 			return InsetTOC::isCompatibleCommand(s);
-		default:
-			LASSERT(false, /**/);
+	default:
+		LATTEST(false);
+		// fall through in release mode
 	}
-	return false; // silence the warning
+	return false;
 }
 
 
@@ -338,9 +342,8 @@ void InsetCommandParams::write(ostream & os) const
 
 bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 {
-	if (!ci->isOptional()) {
-		LASSERT(false, /**/);
-	}
+	LASSERT(ci->isOptional(), return false);
+
 	++ci; // we want to start with the next one
 	ParamInfo::const_iterator end = info_.end();
 	for (; ci != end; ++ci) {
@@ -443,16 +446,14 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 	ParamInfo::const_iterator it = 
 		find_if(info_.begin(), info_.end(), 
 			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
-	if (it == info_.end()) {
-		LASSERT(false, return docstring());
-	}
+	LASSERT(it != info_.end(), return docstring());
 	return (*this)[it->name()];
 }
 
 
 docstring const & InsetCommandParams::operator[](string const & name) const
 {
-	static const docstring dummy; //so we don't return a ref to temporary
+	static const docstring dummy;
 	LASSERT(info_.hasParam(name), return dummy);
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
@@ -463,7 +464,8 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 
 docstring & InsetCommandParams::operator[](string const & name)
 {
-	LASSERT(info_.hasParam(name), /**/);
+	LATTEST(info_.hasParam(name));
+	// this will add the name in release mode
 	return params_[name];
 }
 

@@ -24,6 +24,7 @@
 #include "Text.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <sstream>
@@ -109,7 +110,7 @@ vector<docstring> const &  MacroData::defaults() const
 void MacroData::unlock() const
 {
 	--lockCount_;
-	LASSERT(lockCount_ >= 0, /**/);
+	LASSERT(lockCount_ >= 0, lockCount_ = 0);
 }
 
 
@@ -135,7 +136,7 @@ void MacroData::updateData() const
 	if (queried_)
 		return;
 
-	LASSERT(buffer_ != 0, /**/);
+	LBUFERR(buffer_, _("Corrupt macro data!"));
 	
 	// Try to fix position DocIterator. Should not do anything in theory.
 	pos_.fixIfBroken();

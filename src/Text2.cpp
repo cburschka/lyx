@@ -157,7 +157,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 		pos_type pos, Font const & font)
 {
 	Inset * const inset = pars_[pit].getInset(pos);
-	LASSERT(inset && inset->resetFontEdit(), /**/);
+	LASSERT(inset && inset->resetFontEdit(), return);
 
 	CursorSlice::idx_type endidx = inset->nargs();
 	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
@@ -176,7 +176,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 void Text::setLayout(pit_type start, pit_type end,
 		     docstring const & layout)
 {
-	LASSERT(start != end, /**/);
+	LASSERT(start != end, return);
 
 	Buffer const & buffer = owner_->buffer();
 	BufferParams const & bp = buffer.params();
@@ -194,7 +194,7 @@ void Text::setLayout(pit_type start, pit_type end,
 // set layout over selection and make a total rebreak of those paragraphs
 void Text::setLayout(Cursor & cur, docstring const & layout)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
@@ -218,7 +218,7 @@ static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 
 bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	// this happens when selecting several cells in tabular (bug 2630)
 	if (cur.selBegin().idx() != cur.selEnd().idx())
 		return false;
@@ -238,7 +238,7 @@ bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 
 void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	pit_type const beg = cur.selBegin().pit();
 	pit_type const end = cur.selEnd().pit() + 1;
 	cur.recordUndoSelection();
@@ -383,21 +383,21 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 
 bool Text::cursorTop(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	return setCursor(cur, 0, 0);
 }
 
 
 bool Text::cursorBottom(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
 }
 
 
 void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	// If the mask is completely neutral, tell user
 	if (font.fontInfo() == ignore_font && font.language() == ignore_language) {
 		// Could only happen with user style
@@ -429,7 +429,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 
 docstring Text::getStringToIndex(Cursor const & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	if (cur.selection())
 		return cur.selectionAsString(false);
@@ -482,7 +482,7 @@ void Text::setLabelWidthStringToSequence(Cursor const & cur,
 
 void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
-	LASSERT(cur.text(), /**/);
+	LBUFERR(cur.text(), _("Uninitalized cursor."));
 
 	//FIXME UNICODE
 	string const argument = to_utf8(arg);
@@ -508,12 +508,9 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 }
 
 
-//FIXME This is a little redundant now, but it's probably worth keeping,
-//especially if we're going to go away from using serialization internally
-//quite so much.
 void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p) 
 {
-	LASSERT(cur.text(), /**/);
+	LBUFERR(cur.text(), _("Uninitalized cursor."));
 
 	depth_type priordepth = -1;
 	Layout priorlayout;
@@ -539,8 +536,8 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 // this really should just insert the inset and not move the cursor.
 void Text::insertInset(Cursor & cur, Inset * inset)
 {
-	LASSERT(this == cur.text(), /**/);
-	LASSERT(inset, /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(inset, _("Uninitialized Text."));
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
 		Change(cur.buffer()->params().trackChanges
 		? Change::INSERTED : Change::UNCHANGED));
@@ -563,7 +560,7 @@ bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
 
 void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 {
-	LASSERT(par != int(paragraphs().size()), /**/);
+	LASSERT(par != int(paragraphs().size()), return);
 	cur.pit() = par;
 	cur.pos() = pos;
 
@@ -572,15 +569,15 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
-		lyxerr << "don't like -1" << endl;
-		LASSERT(false, /**/);
+		LYXERR0("Don't like -1!");
+		LATTEST(false);
 	}
 
 	if (pos > para.size()) {
-		lyxerr << "don't like 1, pos: " << pos
+		LYXERR0("Don't like 1, pos: " << pos
 		       << " size: " << para.size()
-		       << " par: " << par << endl;
-		LASSERT(false, /**/);
+		       << " par: " << par);
+		LATTEST(false);
 	}
 }
 
@@ -588,7 +585,7 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 void Text::setCursorIntern(Cursor & cur,
 			      pit_type par, pos_type pos, bool setfont, bool boundary)
 {
-	LASSERT(this == cur.text(), /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
 	if (setfont)
@@ -923,7 +920,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
-	LASSERT(first >= 0 && first <= last && last < (int) pars_.size(), /**/);
+	LASSERT(first >= 0 && first <= last && last < (int) pars_.size(), return);
 
 	for (pit_type pit = first; pit <= last; ++pit) {
 		Paragraph & par = pars_[pit];

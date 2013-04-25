@@ -370,9 +370,10 @@ string parseEmbeddedOption(string const & format, string & ifelsepart)
 		LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
 		return format;
 	}
-	LASSERT(rest.size() <= format.size(), /* */);
+	LASSERT(rest.size() <= format.size(),
+		{ ifelsepart = ""; return format; });
 	ifelsepart = format.substr(0, format.size() - rest.size());
-		return rest;
+	return rest;
 }
 
 

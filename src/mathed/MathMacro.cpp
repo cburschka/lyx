@@ -34,6 +34,7 @@
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/textutils.h"
 
@@ -215,7 +216,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		   && editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
-		LASSERT(macro_ != 0, /**/);
+		LBUFERR(macro_, _("Text metrics error."));
 		Dimension fontDim;
 		FontInfo labelFont = sane_font;
 		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
@@ -252,7 +253,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2;
 		metricsMarkers2(dim);
 	} else {
-		LASSERT(macro_ != 0, /**/);
+		LBUFERR(macro_, _("Text metrics error."));
 
 		// calculate metrics, hoping that all cells are seen
 		macro_->lock();
@@ -564,7 +565,7 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 
 void MathMacro::removeArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		LASSERT(size_t(pos) < cells_.size(), /**/);
+		LASSERT(size_t(pos) < cells_.size(), return);
 		cells_.erase(cells_.begin() + pos);
 		if (size_t(pos) < attachedArgsNum_)
 			--attachedArgsNum_;
@@ -579,7 +580,7 @@ void MathMacro::removeArgument(Inset::pos_type pos) {
 
 void MathMacro::insertArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		LASSERT(size_t(pos) <= cells_.size(), /**/);
+		LASSERT(size_t(pos) <= cells_.size(), return);
 		cells_.insert(cells_.begin() + pos, MathData());
 		if (size_t(pos) < attachedArgsNum_)
 			++attachedArgsNum_;
@@ -593,7 +594,7 @@ void MathMacro::insertArgument(Inset::pos_type pos) {
 
 void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 {
-	LASSERT(displayMode_ == DISPLAY_NORMAL, /**/);	
+	LASSERT(displayMode_ == DISPLAY_NORMAL, return);
 	args = cells_;
 
 	// strip off empty cells, but not more than arity-attachedArgsNum_
@@ -614,7 +615,7 @@ void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 
 void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
 {
-	LASSERT(displayMode_ == DISPLAY_NORMAL, /**/);
+	LASSERT(displayMode_ == DISPLAY_NORMAL, return);
 	cells_ = args;
 	attachedArgsNum_ = args.size();
 	cells_.resize(arity);
@@ -647,7 +648,9 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			// The macro name was changed
 			Cursor inset_cursor = old;
 			int macroSlice = inset_cursor.find(this);
-			LASSERT(macroSlice != -1, /**/);
+			// returning true means the cursor is "now" invalid,
+			// which it was.
+			LASSERT(macroSlice != -1, return true);
 			inset_cursor.cutOff(macroSlice);
 			inset_cursor.recordUndoInset();
 			inset_cursor.pop();
@@ -701,7 +704,8 @@ void MathMacro::write(WriteStream & os) const
 	}
 
 	// normal mode
-	LASSERT(macro_, /**/);
+	// we should be ok to continue even if this fails.
+	LATTEST(macro_);
 
 	// optional arguments make macros fragile
 	if (optionals_ > 0 && os.fragile())

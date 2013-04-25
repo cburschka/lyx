@@ -361,7 +361,7 @@ SpellChecker::Result AspellChecker::Private::check(
 	for (; result == WORD_OK;) {
 		string const word_str = toAspellWord(w1);
 		int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
-		LASSERT(word_ok != -1, /**/);
+		LASSERT(word_ok != -1, return UNKNOWN_WORD);
 		result = (word_ok) ? WORD_OK : UNKNOWN_WORD;
 		if (rest.empty())
 			break;
@@ -371,7 +371,7 @@ SpellChecker::Result AspellChecker::Private::check(
 		return result;
 	string const word_str = toAspellWord(word.word());
 	int const word_ok = aspell_speller_check(m, word_str.c_str(), -1);
-	LASSERT(word_ok != -1, /**/);
+	LASSERT(word_ok != -1, return UNKNOWN_WORD);
 	return (word_ok) ? WORD_OK : UNKNOWN_WORD;
 }
 
@@ -480,7 +480,7 @@ void AspellChecker::suggest(WordLangTuple const & wl,
 	string const word = d->toAspellWord(wl.word());
 	AspellWordList const * sugs =
 		aspell_speller_suggest(m, word.c_str(), -1);
-	LASSERT(sugs != 0, /**/);
+	LASSERT(sugs != 0, return);
 	AspellStringEnumeration * els = aspell_word_list_elements(sugs);
 	if (!els || aspell_word_list_empty(sugs))
 		return;

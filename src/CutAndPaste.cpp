@@ -551,9 +551,12 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 {
 	ParagraphList const & pars = text.paragraphs();
 
-	LASSERT(0 <= start && start <= pars[startpit].size(), /**/);
-	LASSERT(0 <= end && end <= pars[endpit].size(), /**/);
-	LASSERT(startpit != endpit || start <= end, /**/);
+	// In most of these cases, we can try to recover.
+	LASSERT(0 <= start, start = 0);
+	LASSERT(start <= pars[startpit].size(), start = pars[startpit].size());
+	LASSERT(0 <= end, end = 0);
+	LASSERT(end <= pars[endpit].size(), end = pars[endpit].size());
+	LASSERT(startpit != endpit || start <= end, return);
 
 	// Clone the paragraphs within the selection.
 	ParagraphList copy_pars(boost::next(pars.begin(), startpit),
@@ -682,7 +685,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 {
 	errorlist.clear();
 
-	LASSERT(!in.paragraphs().empty(), /**/);
+	LBUFERR(!in.paragraphs().empty(), _(""));
 	if (oldone == newone)
 		return;
 	
@@ -800,7 +803,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LASSERT(text, /**/);
+		LBUFERR(text, _("Invalid cursor!"));
 
 		saveSelection(cur);
 
@@ -909,7 +912,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LASSERT(text, /**/);
+		LBUFERR(text, _("Invalid cursor!"));
 		// ok we have a selection. This is always between cur.selBegin()
 		// and sel_end cursor
 
@@ -1023,7 +1026,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LASSERT(text, /**/);
+		LBUFERR(text, _("Invalid cursor!"));
 
 		PasteReturnValue prv =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
@@ -1034,7 +1037,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid
-	LASSERT(!cur.inMathed(), /**/);
+	LATTEST(!cur.inMathed());
 }
 
 
@@ -1162,7 +1165,7 @@ void pasteSimpleText(Cursor & cur, bool asParagraphs)
 void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 			    Clipboard::GraphicsType preferedType)
 {
-	LASSERT(theClipboard().hasGraphicsContents(preferedType), /**/);
+	LASSERT(theClipboard().hasGraphicsContents(preferedType), return);
 
 	// get picture from clipboard
 	FileName filename = theClipboard().getAsGraphics(cur, preferedType);

@@ -148,7 +148,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 #endif
 		cur.insert(new InsetMathHull(cur.buffer(), hullSimple));
 #ifdef ENABLE_ASSERTIONS
-		LASSERT(old_pos == cur.pos(), /**/);
+		LATTEST(old_pos == cur.pos());
 #endif
 		cur.nextInset()->edit(cur, true);
 		// don't do that also for LFUN_MATH_MODE
@@ -488,7 +488,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// at the end?
 	cur.noScreenUpdate();
 
-	LASSERT(cur.text() == this, /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 	CursorSlice const oldTopSlice = cur.top();
 	bool const oldBoundary = cur.boundary();
 	bool const oldSelection = cur.selection();
@@ -1236,7 +1236,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE: {
 		cur.message(_("Paste"));
-		LASSERT(cur.selBegin().idx() == cur.selEnd().idx(), /**/);
+		LASSERT(cur.selBegin().idx() == cur.selEnd().idx(), break);
 		cap::replaceSelection(cur);
 
 		// without argument?
@@ -1272,7 +1272,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else if (arg == "wmf")
 				type = Clipboard::WmfGraphicsType;
 			else
-				LASSERT(false, /**/);
+				// We used to assert, but couldn't the argument come from, say, the
+				// minibuffer and just be mistyped?
+				LYXERR0("Unrecognized graphics type: " << arg);
 
 			pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"), type);
 		}
@@ -1924,7 +1926,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		cur.insert(new InsetMathHull(cur.buffer(), hullSimple));
 		checkAndActivateInset(cur, true);
-		LASSERT(cur.inMathed(), /**/);
+		LASSERT(cur.inMathed(), break);
 		cur.dispatch(cmd);
 		break;
 	}
@@ -2375,7 +2377,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
-	LASSERT(cur.text() == this, /**/);
+	LBUFERR(this == cur.text(), _("Invalid cursor."));
 
 	FontInfo const & fontinfo = cur.real_current_font.fontInfo();
 	bool enable = true;

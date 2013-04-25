@@ -1041,6 +1041,9 @@ void latexParagraphs(Buffer const & buf,
 		     OutputParams const & runparams,
 		     string const & everypar)
 {
+	LASSERT(runparams.par_begin <= runparams.par_end,
+		{ os << "% LaTeX Output Error\n"; return; } );
+
 	BufferParams const & bparams = buf.params();
 
 	bool const maintext = text.isMainText();
@@ -1078,7 +1081,6 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	ParagraphList const & paragraphs = text.paragraphs();
-	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 
 	if (runparams.par_begin == runparams.par_end) {
 		// The full doc will be exported but it is easier to just rely on

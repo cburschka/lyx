@@ -318,7 +318,7 @@ QString LayoutItemDelegate::underlineFilter(QString const & s) const
 	layout_->filter();
 	for (int i = 0; i < f.length(); ++i) {
 		int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
-		LASSERT(p != -1, /**/);
+		LASSERT(p != -1, continue);
 		if (lastp == p - 1 && lastp != -1) {
 			// remove ")" and append "x)"
 			r = r.left(r.length() - 4) + s[p] + "</u>";
@@ -382,7 +382,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 		// We do not call our implementation of showPopup because that
 		// would reset the filter again. This is only needed if the user clicks
 		// on the QComboBox.
-		LASSERT(!inShowPopup_, /**/);
+		LATTEST(!inShowPopup_);
 		inShowPopup_ = true;
 		p->QComboBox::showPopup();
 		inShowPopup_ = false;
@@ -459,7 +459,7 @@ void LayoutBox::showPopup()
 
 	// call QComboBox::showPopup. But set the inShowPopup_ flag to switch on
 	// the hack in the item delegate to make space for the headers.
-	LASSERT(!d->inShowPopup_, /**/);
+	LATTEST(!d->inShowPopup_);
 	d->inShowPopup_ = true;
 	QComboBox::showPopup();
 	d->inShowPopup_ = false;

@@ -76,7 +76,7 @@ namespace {
 
 docstring const statusMessage(BufferView const * bv, string const & snippet)
 {
-	LASSERT(bv, /**/);
+	LASSERT(bv, return docstring());
 
 	Buffer const & buffer = bv->buffer();
 	graphics::PreviewLoader const * loader = buffer.loader();
@@ -113,7 +113,7 @@ RenderPreview::getPreviewImage(Buffer const & buffer) const
 
 void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LASSERT(mi.base.bv, /**/);
+	LBUFERR(mi.base.bv, _("Text metrics error."));
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(mi.base.bv->buffer());
@@ -139,7 +139,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	LASSERT(pi.base.bv, /**/);
+	LBUFERR(pi.base.bv, _("Painter has no BufferView!"));
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(pi.base.bv->buffer());

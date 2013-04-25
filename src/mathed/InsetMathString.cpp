@@ -91,10 +91,10 @@ void InsetMathString::octave(OctaveStream & os) const
 }
 
 
-void InsetMathString::mathmlize(MathStream & /*os*/) const
+void InsetMathString::mathmlize(MathStream &) const
 {
 	// useless, no doubt, but we should not be here
-	LASSERT(false, /* */);
+	LATTEST(false);
 }
 
 
