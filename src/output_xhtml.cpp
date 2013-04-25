@@ -655,7 +655,7 @@ inline void closeItemTag(XHTMLStream & xs, Layout const & lay)
 
 // end of convenience functions
 
-ParagraphList::const_iterator searchParagraphHtml(
+ParagraphList::const_iterator searchParagraph(
 	ParagraphList::const_iterator p,
 	ParagraphList::const_iterator const & pend)
 {
@@ -666,7 +666,7 @@ ParagraphList::const_iterator searchParagraphHtml(
 }
 
 
-ParagraphList::const_iterator searchEnvironmentHtml(
+ParagraphList::const_iterator searchEnvironment(
 		ParagraphList::const_iterator const pstart,
 		ParagraphList::const_iterator const & pend)
 {
@@ -775,7 +775,7 @@ bool isNormalEnv(Layout const & lay)
 }
 
 	
-ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
+ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      XHTMLStream & xs,
 					      OutputParams const & runparams,
 					      Text const & text,
@@ -888,13 +888,13 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
 			else {
-				send = searchEnvironmentHtml(par, pend);
-				par = makeEnvironmentHtml(buf, xs, runparams, text, par, send);
+				send = searchEnvironment(par, pend);
+				par = makeEnvironment(buf, xs, runparams, text, par, send);
 			}
 			break;
 		}
 		case LATEX_PARAGRAPH:
-			send = searchParagraphHtml(par, pend);
+			send = searchParagraph(par, pend);
 			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		// Shouldn't happen
@@ -1006,18 +1006,18 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			// FIXME Same fix here.
-			send = searchEnvironmentHtml(par, pend);
-			par = makeEnvironmentHtml(buf, xs, ourparams, text, par, send);
+			send = searchEnvironment(par, pend);
+			par = makeEnvironment(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
 			// FIXME Same fix here.
-			send = searchEnvironmentHtml(par, pend);
+			send = searchEnvironment(par, pend);
 			par = makeBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
-			send = searchParagraphHtml(par, pend);
+			send = searchParagraph(par, pend);
 			par = makeParagraphs(buf, xs, ourparams, text, par, send);
 			break;
 		}
