@@ -1850,9 +1850,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	}
 
 	// This should not happen, but if so, we take no chances.
-	LBUFERR(false, _("Invalid position."));
-	// Squash warning
-	return FontSpan();
+	LYXERR0("Paragraph::getEndPosOfFontSpan: This should not happen!");
+	return FontSpan(pos, pos);
 }
 
 
