@@ -1832,8 +1832,14 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
 	LBUFERR(pos <= size(), _("Invalid position"));
-	pos_type start = 0;
 
+	// Last position is a special case. I suspect that it would
+	// actually make sense to extend the last font span to cover
+	// the last character (JMarc)
+	if (pos == size())
+		return FontSpan(pos, pos);
+
+	pos_type start = 0;
 	FontList::const_iterator cit = d->fontlist_.begin();
 	FontList::const_iterator end = d->fontlist_.end();
 	for (; cit != end; ++cit) {
@@ -1850,8 +1856,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	}
 
 	// This should not happen, but if so, we take no chances.
-	LYXERR0("Paragraph::getEndPosOfFontSpan: This should not happen!");
-	return FontSpan(pos, pos);
+	LYXERR0("Paragraph::fontSpan: position not found in fontinfo table!");
+	LASSERT(false, return FontSpan(pos, pos));
 }
 
 
