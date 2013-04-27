@@ -74,7 +74,7 @@ void MathData::insert(size_type pos, MathAtom const & t)
 
 void MathData::insert(size_type pos, MathData const & ar)
 {
-	LBUFERR(pos < size(), _("Invalid MathData."));
+	LBUFERR(pos <= size(), _("Invalid MathData."));
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 
