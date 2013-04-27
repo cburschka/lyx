@@ -210,7 +210,7 @@ FontSpan DocIterator::locateWord(word_location const loc) const
 	
 CursorSlice const & DocIterator::innerTextSlice() const
 {
-	LBUFERR(!empty(), "");
+	LBUFERR(!empty(), from_ascii(""));
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
@@ -219,7 +219,7 @@ CursorSlice const & DocIterator::innerTextSlice() const
 
 	// This case is in principe not possible. We _must_
 	// be inside a Text.
-	LBUFERR(false, "");
+	LBUFERR(false, from_ascii(""));
 	// Squash warning
 	static const CursorSlice c;
 	return c;

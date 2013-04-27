@@ -876,7 +876,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 
 	if (tm.contains(bot_pit)) {
 		ParagraphMetrics const & pm = tm.parMetrics(bot_pit);
-		LBUFERR(!pm.rows().empty(), "");
+		LBUFERR(!pm.rows().empty(), from_ascii(""));
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
 		int offset = coordOffset(dit).y_;
@@ -2401,7 +2401,7 @@ TextMetrics const & BufferView::textMetrics(Text const * t) const
 
 TextMetrics & BufferView::textMetrics(Text const * t)
 {
-	LBUFERR(t, "");
+	LBUFERR(t, from_ascii(""));
 	TextMetricsCache::iterator tmc_it  = d->text_metrics_.find(t);
 	if (tmc_it == d->text_metrics_.end()) {
 		tmc_it = d->text_metrics_.insert(
@@ -2792,7 +2792,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	TextMetrics const & tm = textMetrics(sl.text());
 	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
 
-	LBUFERR(!pm.rows().empty(), "");
+	LBUFERR(!pm.rows().empty(), from_ascii(""));
 	y -= pm.rows()[0].ascent();
 #if 1
 	// FIXME: document this mess
