@@ -136,7 +136,7 @@ void ParagraphMetrics::setInsetDimension(Inset const * inset,
 
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
-	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
+	LBUFERR(!rows().empty());
 
 	// If boundary is set we should return the row on which
 	// the character before is inside.
@@ -155,7 +155,7 @@ Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 
 Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
 {
-	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
+	LBUFERR(!rows().empty());
 
 	// If boundary is set we should return the row on which
 	// the character before is inside.
@@ -174,7 +174,7 @@ Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
 
 size_t ParagraphMetrics::pos2row(pos_type pos) const
 {
-	LBUFERR(!rows().empty(), _("ParagraphMetrics has no rows!"));
+	LBUFERR(!rows().empty());
 
 	RowList::const_iterator rit = rows_.end();
 	RowList::const_iterator const begin = rows_.begin();

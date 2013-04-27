@@ -54,14 +54,14 @@ MathData::MathData(Buffer * buf, const_iterator from, const_iterator to)
 
 MathAtom & MathData::operator[](pos_type pos)
 {
-	LBUFERR(pos < size(), _("Invalid MathData."));
+	LBUFERR(pos < size());
 	return base_type::operator[](pos);
 }
 
 
 MathAtom const & MathData::operator[](pos_type pos) const
 {
-	LBUFERR(pos < size(), _("Invalid MathData."));
+	LBUFERR(pos < size());
 	return base_type::operator[](pos);
 }
 
@@ -74,7 +74,7 @@ void MathData::insert(size_type pos, MathAtom const & t)
 
 void MathData::insert(size_type pos, MathData const & ar)
 {
-	LBUFERR(pos <= size(), _("Invalid MathData."));
+	LBUFERR(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 

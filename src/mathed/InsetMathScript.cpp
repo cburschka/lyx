@@ -90,7 +90,7 @@ MathData const & InsetMathScript::down() const
 {
 	if (nargs() == 3)
 		return cell(2);
-	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
+	LBUFERR(nargs() > 1);
 	return cell(1);
 }
 
@@ -99,21 +99,21 @@ MathData & InsetMathScript::down()
 {
 	if (nargs() == 3)
 		return cell(2);
-	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
+	LBUFERR(nargs() > 1);
 	return cell(1);
 }
 
 
 MathData const & InsetMathScript::up() const
 {
-	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
+	LBUFERR(nargs() > 1);
 	return cell(1);
 }
 
 
 MathData & InsetMathScript::up()
 {
-	LBUFERR(nargs() > 1, _("Invalid number of math cells."));
+	LBUFERR(nargs() > 1);
 	return cell(1);
 }
 

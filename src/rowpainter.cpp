@@ -91,9 +91,8 @@ RowPainter::RowPainter(PainterInfo & pi,
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
 
-	LBUFERR(pit >= 0, _("Unable to initialize row painter!"));
-	LBUFERR(pit < int(text.paragraphs().size()),
-	        _("Unable to initialize row painter!"));
+	LBUFERR(pit >= 0);
+	LBUFERR(pit < int(text.paragraphs().size()));
 }
 
 

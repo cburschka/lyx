@@ -125,7 +125,7 @@ void InsetText::setMacrocontextPositionRecursive(DocIterator const & pos)
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
-	LBUFERR(!pars.empty(), _("Buffer corrupt!"));
+	LBUFERR(!pars.empty());
 
 	// This is a gross hack...
 	Layout const & old_layout = pars.begin()->layout();

@@ -2480,7 +2480,7 @@ void GuiApplication::commitData(QSessionManager & sm)
 
 void GuiApplication::unregisterView(GuiView * gv)
 {
-	LAPPERR(d->views_[gv->id()] == gv, _("Application error."));
+	LAPPERR(d->views_[gv->id()] == gv);
 	d->views_.remove(gv->id());
 	if (current_view_ == gv)
 		current_view_ = 0;
@@ -2509,7 +2509,7 @@ bool GuiApplication::closeAllViews()
 
 GuiView & GuiApplication::view(int id) const
 {
-	LAPPERR(d->views_.contains(id), _("Application error.") /**/);
+	LAPPERR(d->views_.contains(id));
 	return *d->views_.value(id);
 }
 
@@ -2824,7 +2824,7 @@ void hideDialogs(std::string const & name, Inset * inset)
 
 frontend::FontLoader & theFontLoader()
 {
-	LAPPERR(frontend::guiApp, _("No Gui Application."));
+	LAPPERR(frontend::guiApp);
 	return frontend::guiApp->fontLoader();
 }
 
@@ -2837,7 +2837,7 @@ frontend::FontMetrics const & theFontMetrics(Font const & f)
 
 frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 {
-	LAPPERR(frontend::guiApp, _("No Gui Application."));
+	LAPPERR(frontend::guiApp);
 	return frontend::guiApp->fontLoader().metrics(f);
 }
 
@@ -2850,14 +2850,14 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 
 frontend::Clipboard & theClipboard()
 {
-	LAPPERR(frontend::guiApp, _("No Gui Application."));
+	LAPPERR(frontend::guiApp);
 	return frontend::guiApp->clipboard();
 }
 
 
 frontend::Selection & theSelection()
 {
-	LAPPERR(frontend::guiApp, _("No Gui Application."));
+	LAPPERR(frontend::guiApp);
 	return frontend::guiApp->selection();
 }
 

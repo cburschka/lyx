@@ -96,10 +96,10 @@ static GuiFontInfo * fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE];
 GuiFontInfo & fontinfo(FontInfo const & f)
 {
 	// LASSERT: Is there anything we might do here besides crash?
-	LBUFERR(f.family() < NUM_FAMILIES, _("Font lookup error."));
-	LBUFERR(f.series() < NUM_SERIES, _("Font lookup error."));
-	LBUFERR(f.realShape() < NUM_SHAPE, _("Font lookup error."));
-	LBUFERR(f.size() < NUM_SIZE, _("Font lookup error."));
+	LBUFERR(f.family() < NUM_FAMILIES);
+	LBUFERR(f.series() < NUM_SERIES);
+	LBUFERR(f.realShape() < NUM_SHAPE);
+	LBUFERR(f.size() < NUM_SIZE);
 	// fi is a reference to the pointer type (GuiFontInfo *) in the
 	// fontinfo_ table.
 	GuiFontInfo * & fi =

@@ -194,7 +194,7 @@ void Text::setLayout(pit_type start, pit_type end,
 // set layout over selection and make a total rebreak of those paragraphs
 void Text::setLayout(Cursor & cur, docstring const & layout)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
@@ -218,7 +218,7 @@ static bool changeDepthAllowed(Text::DEPTH_CHANGE type,
 
 bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	// this happens when selecting several cells in tabular (bug 2630)
 	if (cur.selBegin().idx() != cur.selEnd().idx())
 		return false;
@@ -238,7 +238,7 @@ bool Text::changeDepthAllowed(Cursor & cur, DEPTH_CHANGE type) const
 
 void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	pit_type const beg = cur.selBegin().pit();
 	pit_type const end = cur.selEnd().pit() + 1;
 	cur.recordUndoSelection();
@@ -383,21 +383,21 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 
 bool Text::cursorTop(Cursor & cur)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	return setCursor(cur, 0, 0);
 }
 
 
 bool Text::cursorBottom(Cursor & cur)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
 }
 
 
 void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	// If the mask is completely neutral, tell user
 	if (font.fontInfo() == ignore_font && font.language() == ignore_language) {
 		// Could only happen with user style
@@ -429,7 +429,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 
 docstring Text::getStringToIndex(Cursor const & cur)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 
 	if (cur.selection())
 		return cur.selectionAsString(false);
@@ -482,7 +482,7 @@ void Text::setLabelWidthStringToSequence(Cursor const & cur,
 
 void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
-	LBUFERR(cur.text(), _("Uninitalized cursor."));
+	LBUFERR(cur.text());
 
 	//FIXME UNICODE
 	string const argument = to_utf8(arg);
@@ -510,7 +510,7 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 
 void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p) 
 {
-	LBUFERR(cur.text(), _("Uninitalized cursor."));
+	LBUFERR(cur.text());
 
 	depth_type priordepth = -1;
 	Layout priorlayout;
@@ -536,8 +536,8 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 // this really should just insert the inset and not move the cursor.
 void Text::insertInset(Cursor & cur, Inset * inset)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
-	LBUFERR(inset, _("Uninitialized Text."));
+	LBUFERR(this == cur.text());
+	LBUFERR(inset);
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
 		Change(cur.buffer()->params().trackChanges
 		? Change::INSERTED : Change::UNCHANGED));
@@ -585,7 +585,7 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 void Text::setCursorIntern(Cursor & cur,
 			      pit_type par, pos_type pos, bool setfont, bool boundary)
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
 	if (setfont)

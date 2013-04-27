@@ -660,8 +660,7 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 
 Change const & Paragraph::lookupChange(pos_type pos) const
 {
-	LBUFERR(pos >= 0 && pos <= size(),
-		_("Invalid position given to lookupChange()"));
+	LBUFERR(pos >= 0 && pos <= size());
 	return d->changes_.lookup(pos);
 }
 
@@ -1044,7 +1043,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 				    unsigned int & column)
 {
 	Inset * inset = owner_->getInset(i);
-	LBUFERR(inset, from_ascii(""));
+	LBUFERR(inset);
 
 	if (style.pass_thru) {
 		odocstringstream ods;
@@ -1806,7 +1805,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 {
 	if (pos > size()) {
 		LYXERR0("pos: " << pos << " size: " << size());
-		LBUFERR(false, _("Invalid position."));
+		LBUFERR(false);
 	}
 
 	FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
@@ -1831,7 +1830,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
-	LBUFERR(pos <= size(), _("Invalid position"));
+	LBUFERR(pos <= size());
 
 	// Last position is a special case. I suspect that it would
 	// actually make sense to extend the last font span to cover
@@ -1888,7 +1887,7 @@ Font const & Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 				 Font const & outerfont) const
 {
-	LBUFERR(pos >= 0, _("Invalid position."));
+	LBUFERR(pos >= 0);
 
 	Font font = getFontSettings(bparams, pos);
 
@@ -3263,7 +3262,7 @@ void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 
 Inset const & Paragraph::inInset() const
 {
-	LBUFERR(d->inset_owner_, _("Paragraph not properly initialized"));
+	LBUFERR(d->inset_owner_);
 	return *d->inset_owner_;
 }
 

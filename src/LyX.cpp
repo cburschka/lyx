@@ -520,7 +520,7 @@ bool LyX::loadFiles()
 
 void execBatchCommands()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	singleton_->execCommands();
 }
 
@@ -1268,35 +1268,35 @@ void LyX::easyParse(int & argc, char * argv[])
 
 FuncStatus getStatus(FuncRequest const & action)
 {
-	LAPPERR(theApp(), _("Appplication not initialized."));
+	LAPPERR(theApp());
 	return theApp()->getStatus(action);
 }
 
 
 void dispatch(FuncRequest const & action)
 {
-	LAPPERR(theApp(), _("Appplication not initialized."));
+	LAPPERR(theApp());
 	return theApp()->dispatch(action);
 }
 
 
 void dispatch(FuncRequest const & action, DispatchResult & dr)
 {
-	LAPPERR(theApp(), _("Appplication not initialized."));
+	LAPPERR(theApp());
 	return theApp()->dispatch(action, dr);
 }
 
 
 vector<string> & theFilesToLoad()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->files_to_load_;
 }
 
 
 BufferList & theBufferList()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->buffer_list_;
 }
 
@@ -1304,8 +1304,8 @@ BufferList & theBufferList()
 Server & theServer()
 {
 	// FIXME: this should not be use_gui dependent
-	LWARNIF(use_gui, _("LyX server can only be used with GUI."));
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LWARNIF(use_gui);
+	LAPPERR(singleton_);
 	return *singleton_->pimpl_->lyx_server_.get();
 }
 
@@ -1313,71 +1313,71 @@ Server & theServer()
 ServerSocket & theServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
-	LWARNIF(use_gui, _("LyX server can only be used with GUI."));
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LWARNIF(use_gui);
+	LAPPERR(singleton_);
 	return *singleton_->pimpl_->lyx_socket_.get();
 }
 
 
 KeyMap & theTopLevelKeymap()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->toplevel_keymap_;
 }
 
 
 Converters & theConverters()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return  singleton_->pimpl_->converters_;
 }
 
 
 Converters & theSystemConverters()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return  singleton_->pimpl_->system_converters_;
 }
 
 
 Movers & theMovers()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->movers_;
 }
 
 
 Mover const & getMover(string  const & fmt)
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->movers_(fmt);
 }
 
 
 void setMover(string const & fmt, string const & command)
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	singleton_->pimpl_->movers_.set(fmt, command);
 }
 
 
 Movers & theSystemMovers()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->system_movers_;
 }
 
 
 Messages const & getMessages(string const & language)
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->messages(language);
 }
 
 
 Messages const & getGuiMessages()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	// A cache to translate full language name to language code
 	static string last_language = "auto";
 	static string code;
@@ -1396,14 +1396,14 @@ Messages const & getGuiMessages()
 
 Session & theSession()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return *singleton_->pimpl_->session_.get();
 }
 
 
 LaTeXFonts & theLaTeXFonts()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	if (!singleton_->pimpl_->latexfonts_)
 		singleton_->pimpl_->latexfonts_ = new LaTeXFonts;
 	return *singleton_->pimpl_->latexfonts_;
@@ -1412,7 +1412,7 @@ LaTeXFonts & theLaTeXFonts()
 
 CmdDef & theTopLevelCmdDef()
 {
-	LAPPERR(singleton_, _("Appplication not initialized."));
+	LAPPERR(singleton_);
 	return singleton_->pimpl_->toplevel_cmddef_;
 }
 

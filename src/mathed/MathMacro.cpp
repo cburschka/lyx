@@ -216,7 +216,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		   && editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
-		LBUFERR(macro_, _("Text metrics error."));
+		LBUFERR(macro_);
 		Dimension fontDim;
 		FontInfo labelFont = sane_font;
 		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
@@ -253,7 +253,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2;
 		metricsMarkers2(dim);
 	} else {
-		LBUFERR(macro_, _("Text metrics error."));
+		LBUFERR(macro_);
 
 		// calculate metrics, hoping that all cells are seen
 		macro_->lock();

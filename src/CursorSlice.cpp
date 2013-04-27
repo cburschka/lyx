@@ -44,7 +44,7 @@ CursorSlice::CursorSlice()
 CursorSlice::CursorSlice(Inset & p)
 	: inset_(&p), idx_(0), pit_(0), pos_(0)
 {
-	LBUFERR(inset_, _("Invalid initialization of CursorSlice!"));
+	LBUFERR(inset_);
 }
 
 
@@ -62,7 +62,7 @@ Paragraph & CursorSlice::paragraph() const
 
 pos_type CursorSlice::lastpos() const
 {
-	LBUFERR(inset_, _("Cursor slice not properly initialized!"));
+	LBUFERR(inset_);
 	InsetMath const * math = inset_->asInsetMath();
 	bool paramless_macro = math && math->asMacro() && !math->asMacro()->nargs();
 	return math ? (paramless_macro ? 0 : cell().size()) 

@@ -136,7 +136,7 @@ void MacroData::updateData() const
 	if (queried_)
 		return;
 
-	LBUFERR(buffer_, _("Corrupt macro data!"));
+	LBUFERR(buffer_);
 	
 	// Try to fix position DocIterator. Should not do anything in theory.
 	pos_.fixIfBroken();

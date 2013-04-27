@@ -57,33 +57,39 @@ docstring formatHelper(docstring const & msg,
 }
 
 
-void doWarnIf(char const * expr, docstring const & msg, char const * file, long line)
+void doWarnIf(char const * expr, char const * file, long line)
 {
+	static const docstring d =
+	    from_ascii(N_("It should be safe to continue, but you may wish to save your work and restart LyX."));
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(WarningException, _("Warning!"), 
-		formatHelper(msg, expr, file, line));
+		formatHelper(d, expr, file, line));
 }
 
 
-void doBufErr(char const * expr, docstring const & msg, char const * file, long line)
+void doBufErr(char const * expr, char const * file, long line)
 {
+	static const docstring d =
+	    from_ascii(N_("There has been an error with this document. LyX will attempt to close it safely."));
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(BufferException, _("Buffer Error!"),
-		formatHelper(msg, expr, file, line));
+		formatHelper(d, expr, file, line));
 }
 
 
-void doAppErr(char const * expr, docstring const & msg, char const * file, long line)
+void doAppErr(char const * expr, char const * file, long line)
 {
+	static const docstring d =
+	    from_ascii(N_("LyX has encountered an application error and will now shut down."));
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(ErrorException, _("Fatal Exception!"),
-		formatHelper(msg, expr, file, line));
+		formatHelper(d, expr, file, line));
 }
 
 

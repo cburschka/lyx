@@ -82,7 +82,7 @@ DocIterator DocIterator::clone(Buffer * buffer) const
 	DocIterator dit(buffer);
 	size_t const n = slices_.size();
 	for (size_t i = 0 ; i != n; ++i) {
-		LBUFERR(inset, _("Iterator slice not properly initialized!"));
+		LBUFERR(inset);
 		dit.push_back(slices_[i]);
 		dit.top().inset_ = inset;
 		if (i + 1 != n)
@@ -183,7 +183,7 @@ Paragraph & DocIterator::paragraph() const
 {
 	if (!inTexted()) {
 		LYXERR0(*this);
-		LBUFERR(false, _("DocIterator::paragraph() called outside Text."));
+		LBUFERR(false);
 	}
 	return top().paragraph();
 }
@@ -191,7 +191,7 @@ Paragraph & DocIterator::paragraph() const
 
 Paragraph & DocIterator::innerParagraph() const
 {
-	LBUFERR(!empty(), _("Empty DocIterator."));
+	LBUFERR(!empty());
 	return innerTextSlice().paragraph();
 }
 
@@ -210,7 +210,7 @@ FontSpan DocIterator::locateWord(word_location const loc) const
 	
 CursorSlice const & DocIterator::innerTextSlice() const
 {
-	LBUFERR(!empty(), from_ascii(""));
+	LBUFERR(!empty());
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
@@ -219,7 +219,7 @@ CursorSlice const & DocIterator::innerTextSlice() const
 
 	// This case is in principe not possible. We _must_
 	// be inside a Text.
-	LBUFERR(false, from_ascii(""));
+	LBUFERR(false);
 	// Squash warning
 	static const CursorSlice c;
 	return c;
@@ -468,7 +468,7 @@ void DocIterator::updateInsets(Inset * inset)
 	size_t const n = slices_.size();
 	slices_.resize(0);
 	for (size_t i = 0 ; i < n; ++i) {
-		LBUFERR(inset, _("Improperly initialized DocIterator."));
+		LBUFERR(inset);
 		push_back(dit[i]);
 		top().inset_ = inset;
 		if (i + 1 != n)

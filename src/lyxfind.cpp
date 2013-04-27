@@ -1058,7 +1058,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	LYXERR(Debug::FIND, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 	       << cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
 	Buffer const & buf = *cur.buffer();
-	LBUFERR(buf.params().isLatex(), _("Buffer type mismatch."));
+	LBUFERR(buf.params().isLatex());
 
 	TexRow texrow;
 	odocstringstream ods;

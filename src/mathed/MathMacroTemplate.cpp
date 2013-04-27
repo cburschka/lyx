@@ -846,7 +846,7 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 		for (; sit != end; ++sit) {
 			InsetMathHull * inset_hull =
 				sit->nextInset()->asInsetMath()->asHullInset();
-			LBUFERR(inset_hull, _("Error loading macro previews."));
+			LBUFERR(inset_hull);
 			inset_hull->reloadPreview(*sit);
 		}
 		cur.screenUpdateFlags(Update::Force);

@@ -113,7 +113,7 @@ RenderPreview::getPreviewImage(Buffer const & buffer) const
 
 void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LBUFERR(mi.base.bv, _("Text metrics error."));
+	LBUFERR(mi.base.bv);
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(mi.base.bv->buffer());
@@ -139,7 +139,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	LBUFERR(pi.base.bv, _("Painter has no BufferView!"));
+	LBUFERR(pi.base.bv);
 
 	graphics::PreviewImage const * const pimage =
 		getPreviewImage(pi.base.bv->buffer());

@@ -41,19 +41,19 @@ LASSERT(expr, escape)
   mean resetting some variables to values known to be sane; it might mean
   taking some other corrective action. 
 
-LWARNIF(expr, msg)
+LWARNIF(expr)
   This macro should be used when a failure of expr indicates that the current
 	operation cannot safely be completed. In release mode, it will abort that
 	operation and print a warning message to the user.
 
-LBUFERR(expr, msg)
+LBUFERR(expr)
   This macro should be used when a failure of expr indicates a problem with a
 	Buffer or its related objects, e.g., a Cursor. In release mode, it throws a
 	BufferException, which will typically result in an emergency save of that
 	particular Buffer. The msg will be displayed to the user and so should be
 	internationalized.
 
-LAPPERR(expr, msg)
+LAPPERR(expr)
   This macro should be used if a failure of expr is incompatible with LyX
 	continuing to operate at all. In release mode, this issues an ErrorException,
   which typically results in an emergency shutdown. The msg will be displayed
@@ -63,9 +63,9 @@ LAPPERR(expr, msg)
 
 
 void doAssert(char const * expr, char const * file, long line);
-void doWarnIf(char const * expr, docstring const & msg, char const * file, long line);
-void doBufErr(char const * expr, docstring const & msg, char const * file, long line);
-void doAppErr(char const * expr, docstring const & msg, char const * file, long line);
+void doWarnIf(char const * expr, char const * file, long line);
+void doBufErr(char const * expr, char const * file, long line);
+void doAppErr(char const * expr, char const * file, long line);
 
 /// Print demangled callstack to stderr
 void printCallStack();
@@ -79,14 +79,14 @@ void printCallStack();
 #define LASSERT(expr, escape) \
 	if (expr) {} else { lyx::doAssert(#expr, __FILE__, __LINE__); escape; }
 
-#define LWARNIF(expr, msg) \
-	if (expr) {} else { lyx::doWarnIf(#expr, msg, __FILE__, __LINE__); }
+#define LWARNIF(expr) \
+	if (expr) {} else { lyx::doWarnIf(#expr, __FILE__, __LINE__); }
 
-#define LBUFERR(expr, msg) \
-	if (expr) {} else { lyx::doBufErr(#expr, msg, __FILE__, __LINE__); }
+#define LBUFERR(expr) \
+	if (expr) {} else { lyx::doBufErr(#expr, __FILE__, __LINE__); }
 
-#define LAPPERR(expr, msg) \
-	if (expr) {} else { lyx::doAppErr(#expr, msg, __FILE__, __LINE__); }
+#define LAPPERR(expr) \
+	if (expr) {} else { lyx::doAppErr(#expr, __FILE__, __LINE__); }
 
 #endif
 #endif // LASSERT

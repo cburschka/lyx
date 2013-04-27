@@ -341,7 +341,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		// main Text _is_ the whole document.
 		// record the relevant paragraphs
 		Text const * text = cell.text();
-		LBUFERR(text, _("Uninitialized cell."));
+		LBUFERR(text);
 		ParagraphList const & plist = text->paragraphs();
 		ParagraphList::const_iterator first = plist.begin();
 		advance(first, first_pit);
@@ -401,7 +401,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 	//LYXERR0("undo, performing: " << undo);
 	DocIterator dit = undo.cell.asDocIterator(&buffer_);
 	if (undo.isFullBuffer) {
-		LBUFERR(undo.pars, _("Undo stack is corrupt!"));
+		LBUFERR(undo.pars);
 		// This is a full document
 		delete otherstack.top().bparams;
 		otherstack.top().bparams = new BufferParams(buffer_.params());
@@ -414,15 +414,15 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
 		//LYXERR0("undo.array: " << *undo.array);
-		LBUFERR(undo.array, _("Undo stack is corrupt!"));
+		LBUFERR(undo.array);
 		dit.cell().swap(*undo.array);
 		delete undo.array;
 		undo.array = 0;
 	} else {
 		// Some finer machinery is needed here.
 		Text * text = dit.text();
-		LBUFERR(text, _("Invalid cursor."));
-		LBUFERR(undo.pars, _("Undo stack is corrupt!"));
+		LBUFERR(text);
+		LBUFERR(undo.pars);
 		ParagraphList & plist = text->paragraphs();
 
 		// remove new stuff between first and last

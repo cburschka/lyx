@@ -129,7 +129,7 @@ static int numberOfHfills(Paragraph const & par, Row const & row)
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	: bv_(bv), text_(text)
 {
-	LBUFERR(bv_, _("Text metrics error."));
+	LBUFERR(bv_);
 	max_width_ = bv_->workWidth();
 	dim_.wid = max_width_;
 	dim_.asc = 10;
@@ -159,7 +159,7 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 
 pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
-	LBUFERR(!par_metrics_.empty(), _("Text metrics error."));
+	LBUFERR(!par_metrics_.empty());
 	ParMetricsCache::const_reverse_iterator it = par_metrics_.rbegin();
 	return make_pair(it->first, &it->second);
 }
@@ -180,7 +180,7 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 
 bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
-	LBUFERR(mi.base.textwidth > 0, _("Text metrics error."));
+	LBUFERR(mi.base.textwidth > 0);
 	max_width_ = mi.base.textwidth;
 	// backup old dimension.
 	Dimension const old_dim = dim_;
@@ -417,7 +417,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		// should be.
 		bv_->buffer().updateBuffer();
 		parPos = text_->macrocontextPosition();
-		LBUFERR(!parPos.empty(), _("Text metrics error."));
+		LBUFERR(!parPos.empty());
 		parPos.pit() = pit;
 	}
 
@@ -693,7 +693,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
-	LBUFERR(last > 0, _("Text metrics error."));
+	LBUFERR(last > 0);
 
 	// -1 because a label ends with a space that is in the label
 	--last;
@@ -1343,7 +1343,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	// upDownInText() while in selection mode.
 	ParagraphMetrics const & pm = parMetrics(pit);
 
-	LBUFERR(row < int(pm.rows().size()), _("Text metrics error."));
+	LBUFERR(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
 	return r.pos() + getColumnNearX(pit, r, x, bound);
@@ -1446,7 +1446,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	int yy = pm.position() - pm.ascent();
-	LBUFERR(!pm.rows().empty(), _("Text metrics error."));
+	LBUFERR(!pm.rows().empty());
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator rlast = pm.rows().end();
 	--rlast;
@@ -1557,7 +1557,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 		" pit: " << pit << " yy: " << yy);
 
 	int r = 0;
-	LBUFERR(pm.rows().size(), _("Text metrics error."));
+	LBUFERR(pm.rows().size());
 	for (; r < int(pm.rows().size()) - 1; ++r) {
 		Row const & row = pm.rows()[r];
 		if (int(yy + row.height()) > y)

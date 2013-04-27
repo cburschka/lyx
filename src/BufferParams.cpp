@@ -335,7 +335,7 @@ BufferParams::Impl::Impl()
 BufferParams::Impl *
 BufferParams::MemoryTraits::clone(BufferParams::Impl const * ptr)
 {
-	LBUFERR(ptr, _("Attempting to clone non-existent BufferParams!"));
+	LBUFERR(ptr);
 	return new BufferParams::Impl(*ptr);
 }
 

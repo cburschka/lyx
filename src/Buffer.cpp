@@ -607,7 +607,7 @@ void Buffer::changed(bool update_metrics) const
 
 frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
-	LBUFERR(d->wa_, _("Unable to find WorkArea for Buffer!"));
+	LBUFERR(d->wa_);
 	return *d->wa_;
 }
 
@@ -4256,7 +4256,7 @@ void Buffer::setBuffersForInsets() const
 
 void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
-	LBUFERR(!text().paragraphs().empty(), _("Buffer error"));
+	LBUFERR(!text().paragraphs().empty());
 
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();

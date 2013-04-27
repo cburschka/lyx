@@ -685,7 +685,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 {
 	errorlist.clear();
 
-	LBUFERR(!in.paragraphs().empty(), from_ascii(""));
+	LBUFERR(!in.paragraphs().empty());
 	if (oldone == newone)
 		return;
 	
@@ -803,7 +803,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LBUFERR(text, _("Invalid cursor!"));
+		LBUFERR(text);
 
 		saveSelection(cur);
 
@@ -912,7 +912,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LBUFERR(text, _("Invalid cursor!"));
+		LBUFERR(text);
 		// ok we have a selection. This is always between cur.selBegin()
 		// and sel_end cursor
 
@@ -1026,7 +1026,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
-		LBUFERR(text, _("Invalid cursor!"));
+		LBUFERR(text);
 
 		PasteReturnValue prv =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);

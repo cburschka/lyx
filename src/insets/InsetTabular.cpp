@@ -3555,7 +3555,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
 	//	mi.base.textwidth << "\n";
-	LBUFERR(mi.base.bv, _("Text metrics error."));
+	LBUFERR(mi.base.bv);
 
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
 		int maxasc = 0;

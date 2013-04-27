@@ -488,7 +488,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// at the end?
 	cur.noScreenUpdate();
 
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 	CursorSlice const oldTopSlice = cur.top();
 	bool const oldBoundary = cur.boundary();
 	bool const oldSelection = cur.selection();
@@ -2377,7 +2377,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			FuncStatus & flag) const
 {
-	LBUFERR(this == cur.text(), _("Invalid cursor."));
+	LBUFERR(this == cur.text());
 
 	FontInfo const & fontinfo = cur.real_current_font.fontInfo();
 	bool enable = true;

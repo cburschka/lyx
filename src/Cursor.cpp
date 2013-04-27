@@ -460,14 +460,14 @@ DispatchResult const & Cursor::result() const
 
 BufferView & Cursor::bv() const
 {
-	LBUFERR(bv_, _("Cursor has no BufferView!"));
+	LBUFERR(bv_);
 	return *bv_;
 }
 
 
 void Cursor::pop()
 {
-	LBUFERR(depth() >= 1, _("Attempt to pop empty cursor!"));
+	LBUFERR(depth() >= 1);
 	pop_back();
 }
 

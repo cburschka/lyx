@@ -118,16 +118,14 @@ BufferView const * Dialog::bufferview() const
 
 Buffer const & Dialog::buffer() const
 {
-	LAPPERR(lyxview_->currentBufferView(),
-		_("Dialog has no associated Buffer!"));
+	LAPPERR(lyxview_->currentBufferView());
 	return lyxview_->currentBufferView()->buffer();
 }
 
 
 Buffer const & Dialog::documentBuffer() const
 {
-	LAPPERR(lyxview_->currentBufferView(),
-		_("Dialog has no associated Buffer!"));
+	LAPPERR(lyxview_->currentBufferView());
 	return lyxview_->documentBufferView()->buffer();
 }
 

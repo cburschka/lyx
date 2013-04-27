@@ -966,7 +966,7 @@ void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LBUFERR(mi.base.bv, _("Text metrics error."));
+	LBUFERR(mi.base.bv);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
@@ -992,7 +992,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	LBUFERR(pi.base.bv, _("Painter has no BufferView!"));
+	LBUFERR(pi.base.bv);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
