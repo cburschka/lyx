@@ -1139,14 +1139,12 @@ CursorSlice Cursor::normalAnchor() const
 {
 	if (!selection())
 		return top();
-	if (anchor_.depth() >= depth()) {
-		// LASSERT: There have been several bugs around this code, that seem
-		// to involve failures to reset the anchor. We can at least not crash
-		// in release mode by resetting it ourselves.
-		LASSERT(false, /* */);
-		DocIterator & di = const_cast<DocIterator &>(anchor_);
-		di = *this;
-	}
+	// LASSERT: There have been several bugs around this code, that seem
+	// to involve failures to reset the anchor. We can at least not crash
+	// in release mode by resetting it ourselves.
+	LASSERT(anchor_.depth() >= depth(), 
+		const_cast<DocIterator &>(anchor_) = *this);
+
 	CursorSlice normal = anchor_[depth() - 1];
 	if (depth() < anchor_.depth() && top() <= normal) {
 		// anchor is behind cursor -> move anchor behind the inset
