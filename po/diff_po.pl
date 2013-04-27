@@ -24,14 +24,22 @@
 # License along with this software; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-# Copyright (c) 1010-2011 Kornel Benko, kornel@lyx.org
+# Copyright (c) 2010-2013 Kornel Benko, kornel@lyx.org
 #
 # TODO:
 # 1.) Check for ".git" or ".svn" to decide about revisioning
 # 2.) Search for good correlations of deleted <==> inserted string
 #     using Text::Levenshtein or Algorithm::Diff
 
+BEGIN {
+    use File::Spec;
+    my $p = File::Spec->rel2abs( __FILE__ );
+    $p =~ s/[\/\\]?diff_po\.pl$//;
+    unshift(@INC, "$p");
+}
+
 use strict;
+use parsePoLine;
 use Term::ANSIColor qw(:constants);
 use File::Temp;
 
@@ -74,6 +82,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
 	print $tmpfile $l;
       }
       close(FI);
+      $tmpfile->seek( 0, SEEK_END );		# Flush()
       push(@args, $tmpfile->filename, $argf);
       print "===================================================================\n";
       &diff_po(@args);
@@ -239,74 +248,6 @@ sub printIfDiff($$$)
     $result |= 4;
     &printDiff($k, $k, $rM, $rnM);
   }
-}
-
-sub parse_po_file($$)
-{
-  my ($file, $rMessages) = @_;
-  if (open(FI, '<', $file)) {
-    $status = "normal";
-    $fuzzy = 0;
-    my $lineno = 0;
-    while (my $line = <FI>) {
-      $lineno++;
-      &parse_po_line($line, $lineno, $rMessages);
-    }
-    &parse_po_line("", $lineno + 1, $rMessages);
-    close(FI);
-  }
-}
-
-sub parse_po_line($$$)
-{
-  my ($line, $lineno, $rMessages) = @_;
-  chomp($line);
-
-  if ($status eq "normal") {
-    if ($line =~ /^#, fuzzy/) {
-      $fuzzy = 1;
-    }
-    elsif ($line =~ s/^msgid\s+//) {
-      $foundline = $lineno;
-      $status = "msgid";
-      $msgid = "";
-      &parse_po_line($line);
-    }
-  }
-  elsif ($status eq "msgid") {
-    if ($line =~ /^\s*"(.*)"\s*/) {
-      $msgid .= $1;
-    }
-    elsif ($line =~ s/^msgstr\s+//) {
-      $status = "msgstr";
-      $msgstr = "";
-      &parse_po_line($line);
-    }
-  }
-  elsif ($status eq "msgstr") {
-    if ($line =~ /^\s*"(.*)"\s*/) {
-      $msgstr .= $1;
-    }
-    else {
-      if ($msgid ne "") {
-	$rMessages->{$msgid}->{line} = $foundline;
-	$rMessages->{$msgid}->{fuzzy} = $fuzzy;
-	$rMessages->{$msgid}->{msgstr} = $msgstr;
-      }
-      $fuzzy = 0;
-      $status = "normal";
-    }
-  }
-  else {
-    die("invalid status");
-  }
-}
-
-sub getLineSortedKeys($)
-{
-  my ($rMessages) = @_;
-
-  return sort {$rMessages->{$a}->{line} <=> $rMessages->{$b}->{line};} keys %{$rMessages};
 }
 
 sub printExtraMessages($$)
