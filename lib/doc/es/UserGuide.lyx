@@ -14673,9 +14673,40 @@ Texto
 
 simple
 \family default
- o con la opción
+.
+ 
+\lang english
+However, this will not export any externally generated material such as
+ a BibTeX bibliography
+\lang spanish
+ (sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bases-datos-bibliográficos"
+
+\end_inset
+
+).
+ 
+\lang english
+If your document includes such material, use
+\lang spanish
+ 
 \family sans
- Texto
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+Más formatos y opciones
+\family default
+ y 
+\lang english
+then select 
+\family sans
+\lang spanish
+Texto
 \begin_inset space ~
 \end_inset
 
@@ -14683,17 +14714,14 @@ simple
 \begin_inset space ~
 \end_inset
 
-(ps2ascii) 
-\family default
-disponible en 
-\family sans
-Archivo\SpecialChar \menuseparator
-Exportar\SpecialChar \menuseparator
-Más formatos y opciones
+(ps2ascii)
 \family default
 .
- Esta última será exportada internamente primero a PostScript y luego convertida
- a ASCII.
+ Esta será exportada internamente primero a PostScript (
+\lang english
+generating thereby the external material
+\lang spanish
+) y luego convertida a ASCII.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15143,42 +15171,57 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) Este utiliza el programa 
-\family typewriter
-ps2pdf
-\family default
- que crea un PDF a partir de una versión PostScript del archivo.
- La versión PostScript es producida por el programa 
-\family typewriter
-dvips
-\family default
- que usa una versión DVI como paso intermedio.
- Así que este modo de exportación consta de tres conversiones.
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
-(dvipdfm) Este utiliza el programa 
-\family typewriter
-dvipdfm
-\family default
- que convierte el archivo a DVI en segundo plano y en un segundo paso a
- PDF.
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
 (pdflatex) Este utiliza el programa 
 \family typewriter
 pdftex
 \family default
  que convierte directamente el archivo a PDF.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) Usa el programa 
+\family typewriter
+LuaTeX
+\family default
+, que convierte el archivo directamente a PDF.
+ 
+\family typewriter
+LuaTeX
+\family default
+ es un motor aún más nuevo, derivado de 
+\family typewriter
+pdflatex
+\family default
+, que también proporciona soporte directo de Unicode y soporte para acceso
+ directo a tipografías (véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Soporte-de-tipografías-LaTeX"
+
+\end_inset
+
+).
+ LuaTeX todavía es un proyecto en desarrollo, pero podría llegar a ser el
+ próximo procesador estándar de TeX.
 \end_layout
 
 \begin_layout Description
@@ -15227,45 +15270,30 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+(dvipdfm) Este utiliza el programa 
+\family typewriter
+dvipdfm
+\family default
+ que convierte el archivo a DVI en segundo plano y en un segundo paso a
+ PDF.
 \end_layout
 
-\end_inset
-
-X) Usa el programa 
-\family typewriter
-LuaTeX
-\family default
-, que convierte el archivo directamente a PDF.
- 
-\family typewriter
-LuaTeX
-\family default
- es un motor aún más nuevo, derivado de 
-\family typewriter
-pdflatex
-\family default
-, que también proporciona soporte directo de Unicode y soporte para acceso
- directo a tipografías (véase la sección
+\begin_layout Description
+PDF
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Soporte-de-tipografías-LaTeX"
-
-\end_inset
-
-).
- LuaTeX todavía es un proyecto en desarrollo, pero podría llegar a ser el
- próximo procesador estándar de TeX.
+(ps2pdf) Este utiliza el programa 
+\family typewriter
+ps2pdf
+\family default
+ que crea un PDF a partir de una versión PostScript del archivo.
+ La versión PostScript es producida por el programa 
+\family typewriter
+dvips
+\family default
+ que usa una versión DVI como paso intermedio.
+ Así que este modo de exportación consta de tres conversiones.
 \end_layout
 
 \begin_layout Standard
@@ -15466,7 +15494,7 @@ reference "sec:Formatos-de-archivo"
 
 ), y que puede cambiarse para documentos concretos en la configuración del
  documento (véase la sec.
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -15480,7 +15508,7 @@ reference "sec:Salidas"
  Se pueden seleccionar otros formatos de salida en el menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Otros formatos
+Ver (Otros formatos)
 \family default
  o con el botón 
 \begin_inset Graphics
@@ -15550,7 +15578,13 @@ En vez de exportar un archivo y luego imprimirlo, puedes imprimirlo directamente
 Archivo\SpecialChar \menuseparator
 Imprimir
 \family default
- o clic en el botón 
+ (combinación de teclas 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
+\end_inset
+
+) o clic en el botón 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
@@ -15569,15 +15603,6 @@ ghostscript
 \family default
 .
  Debido a esta serie de pasos, este método no es el más rápido.
-\end_layout
-
-\begin_layout Standard
-Puedes elegir imprimir sólo las páginas pares o las impares; esto es útil
- para imprimir a dos caras: Puedes reinsertar las hojas en la impresora
- después de imprimir una cara para imprimir la otra.
- Algunas impresoras expulsan las hojas boca arriba y otras al revés.
- Al escoger un determinado orden de impresión, puedes tener todas las hojas
- ya ordenadas al salir de la impresora.
 \end_layout
 
 \begin_layout Standard
@@ -15649,6 +15674,26 @@ Archivo
  Nombre con el que se guardará la salida como archivo PostScript.
  Se guardará en el directorio de trabajo de LyX a menos que se especifique
  una ruta completa.
+\end_layout
+
+\begin_layout Standard
+Puedes elegir imprimir 
+\lang english
+to print only a range of pages
+\lang spanish
+, sólo las páginas pares o las impares 
+\lang english
+or to print the pages in reverse — the latter options are
+\lang spanish
+ útil para imprimir a dos caras 
+\lang english
+with a printer without a duplexer
+\lang spanish
+: Puedes reinsertar las hojas en la impresora después de imprimir una cara
+ para imprimir la otra.
+ Algunas impresoras expulsan las hojas boca arriba y otras al revés.
+ Al escoger un determinado orden de impresión, puedes tener todas las hojas
+ ya ordenadas al salir de la impresora.
 \end_layout
 
 \begin_layout Section

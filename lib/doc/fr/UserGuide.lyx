@@ -15179,13 +15179,57 @@ Texte
 \begin_inset space ~
 \end_inset
 
-brut 
+brut
 \family default
-ou 
+.
+ 
+\lang english
+However, this will not export any externally generated material such as
+ a BibTeX bibliography
+\lang french
+ (section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bases-de-Données-Biblio"
+
+\end_inset
+
+).
+ 
+\lang english
+If your document includes such material, use
+\lang french
+ 
 \family sans
 Fichier\SpecialChar \menuseparator
 Exporter\SpecialChar \menuseparator
-Texte
+
+\lang english
+More
+\begin_inset space ~
+\end_inset
+
+Formats
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Options
+\lang french
+ 
+\family default
+\lang english
+and then select
+\family sans
+\lang french
+ Texte
 \begin_inset space ~
 \end_inset
 
@@ -15193,14 +15237,13 @@ brut
 \begin_inset space ~
 \end_inset
 
-(ps2ascii) 
+(ps2ascii)
 \family default
-ce dernier faisant d'abord une conversion en PostScript avant d'utiliser
- 
-\series bold
-ps2ascii
-\series default
- pour le transformer en texte simple.
+.
+ Cette faisant d'abord une conversion en PostScript
+\lang english
+ (generating thereby the external material) and then do the conversion to
+ ASCII.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15645,82 +15688,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) utilise le programme 
-\family typewriter
-ps2pdf
-\family default
- qui créé un PDF à partir de la version PostScript de votre fichier.
- Cette dernière est produite par le programme 
-\family typewriter
-dvips
-\family default
- qui utilise une version DVI comme étape intermédiaire.
- Cette variante consiste donc en trois conversions;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
-(dvipdfm) utilise le programme 
-\family typewriter
-dvipdfm
-\family default
- qui convertit votre fichier en DVI avant de le convertir en PDF;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
 (pdflatex) utilise le programme 
 \family typewriter
 pdftex
 \family default
  qui convertit directement votre fichier en PDF;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) utilise le programme 
-\family typewriter
-XeTeX
-\family default
- qui convertit directement votre fichier en PDF.
- 
-\family typewriter
-XeTeX
-\family default
- est un moteur TeX qui fournit la fonctionnalité Unicode directement, ainsi
- que l'accès aux polices du système d'exploitation (voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeX-font-support"
-
-\end_inset
-
-).
- Il est particulièrement adapté à la typographie de différentes écritures;
 \end_layout
 
 \begin_layout Description
@@ -15777,6 +15749,77 @@ LuaTeX
 
  est en cours de développement, mais pourrait devenir le prochain moteur
  TeX standard.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) utilise le programme 
+\family typewriter
+XeTeX
+\family default
+ qui convertit directement votre fichier en PDF.
+ 
+\family typewriter
+XeTeX
+\family default
+ est un moteur TeX qui fournit la fonctionnalité Unicode directement, ainsi
+ que l'accès aux polices du système d'exploitation (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ Il est particulièrement adapté à la typographie de différentes écritures;
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(dvipdfm) utilise le programme 
+\family typewriter
+dvipdfm
+\family default
+ qui convertit votre fichier en DVI avant de le convertir en PDF;
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) utilise le programme 
+\family typewriter
+ps2pdf
+\family default
+ qui créé un PDF à partir de la version PostScript de votre fichier.
+ Cette dernière est produite par le programme 
+\family typewriter
+dvips
+\family default
+ qui utilise une version DVI comme étape intermédiaire.
+ Cette variante consiste donc en trois conversions;
 \end_layout
 
 \begin_layout Standard
@@ -16063,7 +16106,13 @@ Plutôt que d'exporter votre document et ensuite de l'imprimer, vous pouvez
 Fichier\SpecialChar \menuseparator
 Imprimer
 \family default
- ou cliquez sur le bouton 
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
+\end_inset
+
+) ou cliquez sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
@@ -16083,17 +16132,6 @@ Ghostscript
 .
  À cause de toutes ces étapes intermédiaires, cette méthode n'est pas la
  plus rapide.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez choisir de n'imprimer que les pages paires ou impaires, ce qui
- peut être utile pour pouvoir imprimer en recto-verso: Vous pouvez réinsérer
- les pages qui ont été imprimées d'un côté dans l'imprimante pour imprimer
- l'autre côté.
- Certaines imprimantes sortent les pages face imprimée vers le haut, d'autres
- vers le bas.
- En choisissant l'ordre d'impression des pages, vous pourrez prendre toute
- votre pile de feuilles, sans avoir à les remettre dans l'ordre.
 \end_layout
 
 \begin_layout Standard
@@ -16155,6 +16193,27 @@ Fichier
  pour l'imprimer plus tard.
  La sortie est un fichier PostScript qui sera enregistré dans le répertoire
  de travail de LyX, à moins que ne fournissiez le chemin complet.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez choisir 
+\lang english
+to print only a range of pages
+\lang french
+, de n'imprimer que les pages paires ou impaires 
+\lang english
+or to print the pages in reverse — the latter options
+\lang french
+ peut être utile pour pouvoir imprimer en recto-verso 
+\lang english
+with a printer without a duplexer
+\lang french
+: Vous pouvez réinsérer les pages qui ont été imprimées d'un côté dans l'imprima
+nte pour imprimer l'autre côté.
+ Certaines imprimantes sortent les pages face imprimée vers le haut, d'autres
+ vers le bas.
+ En choisissant l'ordre d'impression des pages, vous pourrez prendre toute
+ votre pile de feuilles, sans avoir à les remettre dans l'ordre.
 \end_layout
 
 \begin_layout Section
@@ -17306,6 +17365,18 @@ droit
 
 \family default
  dans tous les cas.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For single quotes you have to use the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert single"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -34640,11 +34711,8 @@ Si vous avez par exemple un clavier de style US et que vous voulez saisir
  une carte clavier appropriée.
  Par exemple, si vous voulez saisir de l'italien, vous pouvez configurer
  LyX avec une carte de configuration clavier italienne.
- La fenêtre de dialogue
-\lang english
- 
+ La fenêtre de dialogue 
 \family sans
-\lang french
 Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
 Saisie\SpecialChar \menuseparator

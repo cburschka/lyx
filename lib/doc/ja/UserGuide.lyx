@@ -11547,17 +11547,62 @@ status collapsed
 書き出し\SpecialChar \menuseparator
 平文
 \family default
-を用いるか、
+を用いるか。
+\lang english
+However, this will not export any externally generated material such as
+ a BibTeX bibliography (section
+\lang japanese
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文献データベース"
+
+\end_inset
+
+
+\lang english
+).
+ If your document includes such material, use 
 \family sans
+\lang japanese
 ファイル
 \family default
 \SpecialChar \menuseparator
-書き出し\SpecialChar \menuseparator
+書き出し
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+More
+\begin_inset space ~
+\end_inset
+
+Formats
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ and then select 
+\lang japanese
 平文
 \begin_inset space ~
 \end_inset
 
-(ps2ascii)を使用してください。後者は、内部的にまずPostScriptへ書き出し、それからASCIIに移行することになります。
+(ps2ascii).
+\lang english
+This will first internally export your document to PostScript (generating
+ thereby the external material) and then do the conversion to 
+\lang japanese
+ASCII。
 \end_layout
 
 \begin_layout Subsubsection
@@ -11836,42 +11881,6 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf)
-\family default
- これを選択すると、お使いのファイルのPostScript版からPDFを作るのに
-\family typewriter
-ps2pdf
-\family default
-プログラムが用いられます。このPostScript版は、途中段階として作られるDVI版を元に、
-\family typewriter
-dvips
-\family default
-プログラムが生成するものです。すなわち、この書き出しでは3回の変換を経ることになります。
-\end_layout
-
-\begin_layout Description
-
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(dvipdfm)
-\family default
- これを選択すると、お使いのファイルをバックグラウンドでDVIに変換したものを、
-\family typewriter
-dvipdfm
-\family default
-プログラムが2段階めでPDFに変換します。
-\end_layout
-
-\begin_layout Description
-
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
 (pdflatex)
 \family default
  これを選択すると、
@@ -11879,6 +11888,48 @@ PDF
 pdftex
 \family default
 プログラムによって、ファイルが直接PDFに変換されます。
+\end_layout
+
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X)
+\family default
+ これを選択すると、
+\family typewriter
+LuaTeX
+\family default
+プログラムによって、ファイルが直接PDFに変換されます。
+\family typewriter
+LuaTeX
+\family default
+は、
+\family typewriter
+pdflatex
+\family default
+から派生したさらに新しいエンジンであり、同様にUnicodeの直接サポートを提供し、フォントへの直接アクセスをサポートします（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeXフォントサポート"
+
+\end_inset
+
+節参照）。LuaTeXは、まだ進行中のプロジェクトですが、次世代標準TeXプロセッサに成長するやもしれません。
 \end_layout
 
 \begin_layout Description
@@ -11926,39 +11977,33 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
+(dvipdfm)
+\family default
+ これを選択すると、お使いのファイルをバックグラウンドでDVIに変換したものを、
+\family typewriter
+dvipdfm
+\family default
+プログラムが2段階めでPDFに変換します。
 \end_layout
 
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
 \end_inset
 
-X)
+(ps2pdf)
 \family default
- これを選択すると、
+ これを選択すると、お使いのファイルのPostScript版からPDFを作るのに
 \family typewriter
-LuaTeX
+ps2pdf
 \family default
-プログラムによって、ファイルが直接PDFに変換されます。
+プログラムが用いられます。このPostScript版は、途中段階として作られるDVI版を元に、
 \family typewriter
-LuaTeX
+dvips
 \family default
-は、
-\family typewriter
-pdflatex
-\family default
-から派生したさらに新しいエンジンであり、同様にUnicodeの直接サポートを提供し、フォントへの直接アクセスをサポートします（第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeXフォントサポート"
-
-\end_inset
-
-節参照）。LuaTeXは、まだ進行中のプロジェクトですが、次世代標準TeXプロセッサに成長するやもしれません。
+プログラムが生成するものです。すなわち、この書き出しでは3回の変換を経ることになります。
 \end_layout
 
 \begin_layout Standard
@@ -12187,7 +12232,17 @@ name "sub:ファイルを印刷"
 ファイル\SpecialChar \menuseparator
 印刷
 \family default
-メニューを選択するか、ツールバーボタン
+メニューを選択するか(
+\lang english
+shortcut 
+\lang japanese
+
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
+\end_inset
+
+)、ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
@@ -12205,12 +12260,6 @@ Ghostscript
 \end_layout
 
 \begin_layout Standard
-また、奇数頁あるいは偶数頁のみを印刷することを選ぶこともできます。これは両面印刷をするために使うことができます。片面をひととおり印刷したあとに、その紙を裏返して
-、もう一度プリンタに差し込めばいいのです。プリンタによっては、印字面を上に出力するものもあれば、印字面を下にするものもあります。印刷する順序を適切に選択すれば、
-出力された紙の束をソートしなおすことなしに、そのまま使うことができます。
-\end_layout
-
-\begin_layout Standard
 
 \family sans
 印刷先
@@ -12224,7 +12273,7 @@ Ghostscript
 \family sans
 プリンタ
 \family default
- これは印刷先のプリンタ名です
+ これは印刷先のプリンタ名です。
 \begin_inset Foot
 status collapsed
 
@@ -12249,7 +12298,7 @@ reference "sub:プリンタ"
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Labeling
@@ -12259,6 +12308,16 @@ reference "sub:プリンタ"
 ファイル
 \family default
  印刷先のファイル名です。出力はPostScriptファイルになります。完全パスを指定しないかぎり、LyXの作業ディレクトリに書き込まれます。
+\end_layout
+
+\begin_layout Standard
+また、奇数頁あるいは偶数頁のみを印刷することを選ぶこともできます。これは両面印刷をするために使うことができます。片面をひととおり印刷したあとに、その紙を裏返して
+、もう一度プリンタに差し込めばいいのです
+\lang english
+with a printer without a duplexer
+\lang japanese
+。プリンタによっては、印字面を上に出力するものもあれば、印字面を下にするものもあります。印刷する順序を適切に選択すれば、出力された紙の束をソートしなおすことなし
+に、そのまま使うことができます。
 \end_layout
 
 \begin_layout Section
@@ -13108,6 +13167,18 @@ this
 「"
 \family default
 」キーを押すと、どの文字を配置されることになるかを決定します。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For single quotes you have to use the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert single"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
