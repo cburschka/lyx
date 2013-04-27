@@ -34635,29 +34635,25 @@ name "sub:Cartes-de-clavier"
 \end_layout
 
 \begin_layout Standard
-
+Si vous avez par exemple un clavier de style US et que vous voulez saisir
+ un texte dans une langue différente de l'anglais, vous pouvez utiliser
+ une carte clavier appropriée.
+ Par exemple, si vous voulez saisir de l'italien, vous pouvez configurer
+ LyX avec une carte de configuration clavier italienne.
+ La fenêtre de dialogue
 \lang english
-If you have for example a U.
-\begin_inset space \thinspace{}
-\end_inset
-
-S.-style keyboard and want to write in a language other than English, you
- can use an alternate keymap.
- For example, if you want to write in Italian, you can configure LyX to
- use an Italian keymap.
- The 
+ 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
-Keyboard/Mouse
+\lang french
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
+Saisie\SpecialChar \menuseparator
+Clavier/Souris
 \family default
- dialog allows you to choose up to two keyboard mappings, see section
+ vous permet de choisir jusqu'à deux cartes de réaffectation, voir la section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -34665,30 +34661,24 @@ reference "sub:Clavier/Souris"
 
 \end_inset
 
-
-\lang english
 .
- You can choose primary and secondary keyboard languages and then select
- which one you want to use.
+ Vous pouvez sélectionner une carte primaire et une carte secondaire et
+ ensuite choisir laquelle mettre en service.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Finally, you may just want to change a few key mappings or create an entirely
- different keymap (for Vulcan, for instance).
- You may, for example, normally write in Italian on a U.
-\begin_inset space \thinspace{}
-\end_inset
-
-S.-style keyboard but want to include an occasional quotation in German.
- In such a case, you can write your own keyboard mapping or modify an existing
- one to support the characters you want.
- This and many other customizations are explained in the 
+D'autre part, vous pouvez juste souhaiter changer quelques correspondances
+ clavier ou bien définir une carte totalement différente (pour Vulcan, par
+ exemple).
+ Vous pouvez écrire d'habitude en italien sur un clavier US et vouloir inclure
+ une citation locale en allemand.
+ Dans ces situations, vous pouvez écrire votre propre carte de configuration
+ ou modifier une carte existante pour obtenir les caractères voulus.
+ Ceci et bien d'autre réglages sont expliqués dans le manuel de 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual.
+.
 \end_layout
 
 \begin_layout Chapter
