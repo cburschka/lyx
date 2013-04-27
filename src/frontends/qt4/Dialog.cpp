@@ -125,7 +125,7 @@ Buffer const & Dialog::buffer() const
 
 Buffer const & Dialog::documentBuffer() const
 {
-	LAPPERR(lyxview_->currentBufferView());
+	LAPPERR(lyxview_->documentBufferView());
 	return lyxview_->documentBufferView()->buffer();
 }
 

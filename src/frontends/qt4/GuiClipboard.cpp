@@ -149,9 +149,9 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 		types.push_back(Clipboard::PngGraphicsType);
 	if (hasGraphicsContents(Clipboard::JpegGraphicsType))
 		types.push_back(Clipboard::JpegGraphicsType);
-	
+
 	LASSERT(!types.empty(), return FileName());
-	
+
 	// select prefered type if AnyGraphicsType was passed
 	if (type == Clipboard::AnyGraphicsType)
 		type = types.front();
