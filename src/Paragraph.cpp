@@ -1044,7 +1044,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 				    unsigned int & column)
 {
 	Inset * inset = owner_->getInset(i);
-	LBUFERR(inset, _(""));
+	LBUFERR(inset, "");
 
 	if (style.pass_thru) {
 		odocstringstream ods;

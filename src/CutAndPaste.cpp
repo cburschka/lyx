@@ -685,7 +685,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 {
 	errorlist.clear();
 
-	LBUFERR(!in.paragraphs().empty(), _(""));
+	LBUFERR(!in.paragraphs().empty(), "");
 	if (oldone == newone)
 		return;
 	
