@@ -50,14 +50,12 @@ LBUFERR(expr)
   This macro should be used when a failure of expr indicates a problem with a
 	Buffer or its related objects, e.g., a Cursor. In release mode, it throws a
 	BufferException, which will typically result in an emergency save of that
-	particular Buffer. The msg will be displayed to the user and so should be
-	internationalized.
+	particular Buffer.
 
 LAPPERR(expr)
   This macro should be used if a failure of expr is incompatible with LyX
 	continuing to operate at all. In release mode, this issues an ErrorException,
-  which typically results in an emergency shutdown. The msg will be displayed
-  to the user and so should be internationalized.
+  which typically results in an emergency shutdown.
 	
 ******************************************************************************/
 
