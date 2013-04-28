@@ -40746,7 +40746,7 @@ Preferences
  Dialog
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:The-Preferences-dialog"
+name "chap:The-Preferences-dialogs"
 
 \end_inset
 
@@ -40809,26 +40809,46 @@ Customization ! of menus
 The appearance of the menus and toolbars can be changed by choosing a user
  interface (ui) file.
  A ui-file is a text file where the toolbars and menus are listed.
- The toolbar buttons and menu entries are specified in the files 
-\shape italic
-stdtoolbars.inc
-\shape default
- and 
-\shape italic
-stdmenus.inc
-\shape default
-, respectively.
- Both files are loaded by the 
+ The file 
 \emph on
 default.ui
 \emph default
- file.
- To create your own menu and toolbar layout, start with a copy of these
- files and edit the entries.
+ loads three files:
+\end_layout
+
+\begin_layout Description
+stdmenus.inc
+\shape italic
+ 
+\emph on
+specifies the menu entries for the standard menus
+\end_layout
+
+\begin_layout Description
+stdcontext.inc 
+\shape italic
+\emph on
+specifies
+\shape default
+\emph default
+ the menu entries in popup context menus
+\end_layout
+
+\begin_layout Description
+stdtoolbars.inc
+\shape italic
+ 
+\emph on
+specifies the toolbar buttons
 \end_layout
 
 \begin_layout Standard
-The syntax of the .inc-files is straightforward: The 
+To create your own menu and toolbar layout, start with a copy of these files
+ and edit the entries.
+\end_layout
+
+\begin_layout Standard
+The syntax of the .inc-files is straightforward: the 
 \family sans
 Menubar
 \family default
@@ -40915,10 +40935,21 @@ LyX-function
 \begin_inset VSpace smallskip*
 \end_inset
 
-All LyX-functions are listed in the menu 
+All the LyX-functions are listed in the menu 
 \family sans
 Help\SpecialChar \menuseparator
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \begin_inset space ~
 \end_inset
 
@@ -40935,7 +40966,7 @@ Functions
 \end_layout
 
 \begin_layout Standard
-An example: Assuming you use the menu 
+For example, assuming you use the menu 
 \family sans
 Navigate\SpecialChar \menuseparator
 Bookmarks
@@ -40982,15 +41013,23 @@ navigate_bookmarks
 \begin_inset Quotes erd
 \end_inset
 
- menu in the .inc-file to have the sixth bookmark.
-\end_layout
-
-\begin_layout Subsubsection
-Icon Set
+ menu in 
+\emph on
+stdmenus.inc
+\emph default
+ to have the sixth bookmark.
 \end_layout
 
 \begin_layout Standard
-Here you can change the appearance of LyX's toolbar buttons.
+
+\family sans
+Icon
+\begin_inset space ~
+\end_inset
+
+Set
+\family default
+ allows you to change the appearance of LyX's toolbar buttons.
  The currently available icon sets are compared in 
 \begin_inset CommandInset href
 LatexCommand href
@@ -41082,7 +41121,7 @@ Backup original documents when saving
 \family default
  creates a backup copy of the file in the state when it was opened or when
  it was saved the last time.
- It is stored in the same folder as your document or in the 
+ It is stored in the 
 \family sans
 Backup
 \begin_inset space ~
@@ -41090,14 +41129,26 @@ Backup
 
 directory
 \family default
-, see 
+ (see section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Paths"
 
 \end_inset
 
-.
+) or in the same folder as your document if no 
+\family sans
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
+\family default
+ is specified.
  The backup file has the file extension 
 \begin_inset Quotes eld
 \end_inset
@@ -41126,7 +41177,7 @@ Backup documents, every
 \family sans
 Save documents compressed by default
 \family default
- saves the files always in a compressed format.
+ always saves files in a compressed format.
 \end_layout
 
 \begin_layout Standard
@@ -41142,8 +41193,11 @@ Open
 \begin_inset space ~
 \end_inset
 
-Recent
+Recen
+\bar under
+t
 \family default
+\bar default
 .
 \end_layout
 
@@ -41152,8 +41206,7 @@ If the option
 \family sans
 Open documents in tabs
 \family default
- is not used, then every file will be opened in its own new instance of
- LyX.
+ is not checked, every file will be opened in its own new instance of LyX.
 \end_layout
 
 \begin_layout Standard
@@ -41189,11 +41242,11 @@ reference "sec:Paths"
 \end_layout
 
 \begin_layout Standard
-With the option 
+If the option 
 \family sans
 Single close-tab button
 \family default
- there will only be one button (
+ is checked, there will only be one close button (
 \family sans
 
 \begin_inset Graphics
@@ -41210,7 +41263,7 @@ Single close-tab button
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -41247,12 +41300,12 @@ name "sub:Screen-Fonts"
 \end_layout
 
 \begin_layout Standard
-These fonts are used to display your documents on the screen.
+These fonts are used to display your documents within LyX.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -41264,7 +41317,7 @@ Note:
 inside
 \emph default
  the LyX window.
- The fonts that appear on the output are independent from these fonts, and
+ The fonts that appear in the output are independent of these fonts, and
  set in the menu 
 \family sans
 Document\SpecialChar \menuseparator
@@ -41284,7 +41337,11 @@ By default, LyX uses
 \family typewriter
 Times
 \family default
- as roman (serif) font, 
+ as its 
+\family sans
+Roman
+\family default
+ (serif) font, 
 \family typewriter
 Arial
 \family default
@@ -41292,21 +41349,21 @@ Arial
 \family typewriter
 Helvetica
 \family default
- (depends on the system) as 
+ (depends on the system) as its 
 \family sans
-sans
+Sans
 \begin_inset space ~
 \end_inset
 
-serif
+Serif
 \family default
  font and 
 \family typewriter
 Courier
 \family default
- as 
+ as its 
 \family typewriter
-typewriter
+Typewriter
 \family default
  font.
 \end_layout
@@ -41325,7 +41382,7 @@ The
 Font Sizes
 \family default
  are calculated as letter height in units of points.
- 72
+ 72.27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -41367,7 +41424,7 @@ reference "sub:Document-Font"
 \begin_layout Standard
 With the option 
 \family sans
-Use Pixmap Cache to speed up font rendering
+Use pixmap cache to speed up font rendering
 \family default
  enabled, LyX needs to redraw the screen less often.
  This results in better performance, especially on slow systems.
@@ -41406,8 +41463,8 @@ Settings ! Color
 \end_layout
 
 \begin_layout Standard
-Here you can change all the colors used by LyX.
- Choose an item in the list and use the 
+Here you can change the screen colors used by LyX by choosing an item in
+ the list and selecting the 
 \family sans
 Alter
 \family default
@@ -41415,7 +41472,7 @@ Alter
 \end_layout
 
 \begin_layout Standard
-By using the option 
+By checking the option 
 \family sans
 Use system colors
 \family default
@@ -41450,7 +41507,7 @@ Settings ! Display
 \end_layout
 
 \begin_layout Standard
-Here you can specify if graphics inside LyX are displayed.
+Here you can specify if graphics are displayed inside LyX.
 \end_layout
 
 \begin_layout Standard
@@ -41474,7 +41531,7 @@ reference "sec:Previewing-snippets-of"
 \end_layout
 
 \begin_layout Standard
-The option 
+Checking the option 
 \family sans
 Mark
 \begin_inset space ~
@@ -41526,7 +41583,7 @@ Cursor follows scrollbar
 
 \begin_layout Standard
 You can adjust the width of the cursor.
- If you set the value to zero the thickness of the cursor scales relative
+ If you set the value to zero, the thickness of the cursor scales relative
  to the zoom value you choose for the screen fonts.
 \end_layout
 
@@ -41569,8 +41626,11 @@ Group environments by their category
 \end_layout
 
 \begin_layout Standard
-The math macro editing option determines the editing style, see the section
- 
+The 
+\family sans
+Edit math macros
+\family default
+ options determine the editing style for math macros, see the section 
 \emph on
 Math Macros
 \emph default
@@ -41587,11 +41647,11 @@ Fullscreen
 
 \begin_layout Standard
 Here you can specify what is hidden in the fullscreen mode.
- The option 
+ With the option 
 \family sans
 Limit text width
 \family default
- specifies the width of the text in fullscreen mode.
+ you can specify the width of the text in fullscreen mode.
  This way you can display the text smaller than the screen; the text then
  appears centered.
 \end_layout
@@ -41620,21 +41680,22 @@ Settings ! Shortcuts
 
 \end_layout
 
-\begin_layout Subsubsection
-Bind File
-\end_layout
-
 \begin_layout Standard
-Bindings are used to bind a LyX-function to a key.
- Several binding files are available:
+
+\family sans
+Bind File
+\family default
+ specifies the file to be used to bind a LyX-function to a key.
+ Several binding files are available, among them:
 \end_layout
 
 \begin_layout Description
-cua.bind typical set of PC keyboard shortcuts
+cua.bind a typical set of PC keyboard shortcuts
 \end_layout
 
 \begin_layout Description
-(x)emacs.bind set of bindings like they are used in the editor programs 
+(x)emacs.bind a set of bindings similar to those used in the editor programs
+ 
 \family sans
 Emacs
 \family default
@@ -41646,7 +41707,7 @@ XEmacs
 \end_layout
 
 \begin_layout Description
-mac.bind set of bindings for 
+mac.bind a set of bindings for 
 \family sans
 Mac
 \begin_inset space \thinspace{}
@@ -41658,12 +41719,13 @@ OS
 \end_layout
 
 \begin_layout Standard
-There are also bind-files designed for special document classes, like 
+There are also binding files designed for special document classes, like
+ 
 \shape italic
 broadway.bind
 \shape default
-, and bind files for special languages.
- The names of language bind-files begin with a language code, e.
+, and binding files for special languages.
+ The names of language binding files begin with a language code, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -41681,20 +41743,41 @@ pt
 
  for Portuguese.
  If you use LyX in a certain language, LyX will try to use the appropriate
- bind-file.
+ binding file.
 \end_layout
 
 \begin_layout Standard
-Some bind-files, like 
-\emph on
+Some binding files, like 
+\shape italic
 math.bind
-\emph default
-, have only a small scope.
+\shape default
+, only have a limited scope.
  When looking at the end of the file 
 \shape italic
 cua.bind
 \shape default
 , you can see that they are included to keep the overview in the bind-file.
+\end_layout
+
+\begin_layout Standard
+The field 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+ke
+\bar under
+y
+\bar default
+-bindings
+\begin_inset space ~
+\end_inset
+
+containing
+\family default
+ allows you to search for the shortcut provided for a particular function
+ in the selected key binding file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -41736,8 +41819,8 @@ paste
 \begin_inset Quotes erd
 \end_inset
 
- and you get the 4 different existing shortcuts for the 3 different functions
- that contain 
+ and you get the four different existing shortcuts for the three different
+ functions that contain 
 \begin_inset Quotes eld
 \end_inset
 
@@ -41748,9 +41831,9 @@ paste
  in their name.
  As you can see, one function can have more than one shortcut.
  All LyX-functions are also listed in the file 
-\emph on
+\family sans
 LyX Functions
-\emph default
+\family default
  that you will find in the 
 \family sans
 Help
@@ -41759,15 +41842,7 @@ Help
 \end_layout
 
 \begin_layout Standard
-To add e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the shortcut 
+For example, to add the shortcut 
 \family sans
 Alt+Q
 \family default
@@ -41782,22 +41857,25 @@ Modify
  button.
  A dialog pops up where you can add the shortcut by using it.
  So press Alt+Q to define the shortcut.
- Modifying an existing shortcut is done the same way.
- You can also bind multiple functions to one shortcut by modifying an existing
- binding and adding the different function names as a semicolon separated
- list.
- LyX will then use the first function that is enabled in the current document
- part.
- The binding for the function 
-\family sans
-command-alter
-\family default
- is an example of this.
 \end_layout
 
 \begin_layout Standard
-Alternatively you can also edit shortcuts by modifying bind-files with a
- text editor.
+Modifying an existing shortcut is done the same way.
+ You can also bind multiple functions to one shortcut by starting the LyX
+ Function definition with “command alternatives” and following it with the
+ different function names as a semicolon separated list.
+ LyX will then use the first function that is enabled in the current document
+ part.
+ 
+\end_layout
+
+\begin_layout Standard
+If you don't like a a particular shortcut, you can remove it.
+\end_layout
+
+\begin_layout Standard
+Alternatively you can also edit shortcuts by modifying binding files with
+ a text editor.
  The syntax of the entries is:
 \end_layout
 
@@ -41826,7 +41904,7 @@ LyX-function
 \end_layout
 
 \begin_layout Subsection
-Keyboard / Mouse
+Keyboard/Mouse
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Keyboard-Map"
@@ -41857,34 +41935,73 @@ Settings ! Keyboard Map
 \end_layout
 
 \begin_layout Standard
-Normally keyboard settings have to be done in a menu of your operating system.
- For the case that this is not possible, LyX provides keyboard maps.
- If you have e.
-\begin_inset space \thinspace{}
+Normally keyboard settings are made in a menu of your operating system.
+ For the case thatWhere this is not possible, LyX provides keyboard maps.
+ If, for example, you have a Czech keyboard but want to use it as if it
+ is a Romanian one, you can enable 
+\family sans
+Use
+\begin_inset space ~
 \end_inset
 
-g.
-\begin_inset space \space{}
+keyboard
+\begin_inset space ~
 \end_inset
 
-a Czech keyboard but want to write with it like with a Romanian one, you
- can use the keyboard map file named 
-\emph on
+map
+\family default
+ and select the keyboard map file named 
+\shape italic
 romanian.kmap
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+You can specify a 
+\family sans
+First
+\family default
+ and a 
+\family sans
+Second
+\family default
+ keyboard map and, if you use the 
+\emph on
+cua
 \emph default
+ bindings, you can select the first and second with 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-primary"
+\end_inset
+
+ and 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-secondary"
+\end_inset
+
+ respectively or toggle between them with 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-toggle"
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \series bold
 Note:
 \series default
- Keyboard maps are only provided as makeshift and don't work on all systems.
+ Keyboard maps can only provide a makeshift solution and don't work on all
+ systems.
 \end_layout
 
 \end_inset
@@ -41893,19 +42010,31 @@ Note:
 \end_layout
 
 \begin_layout Standard
-You can furthermore specify here the 
+You can also specify the mouse 
 \family sans
 Wheel scrolling speed
 \family default
 .
- The standard value is 1.0, higher values speed up the scrolling, lower ones
+ The standard value is 1.0; higher values speed up the scrolling, lower ones
  slow it down.
 \end_layout
 
 \begin_layout Standard
-In the section 
+If you 
 \family sans
-Scroll wheel zoom
+Enable
+\family default
+ 
+\family sans
+Scroll
+\begin_inset space ~
+\end_inset
+
+wheel
+\begin_inset space ~
+\end_inset
+
+zoom,
 \family default
  you can select a key for zooming.
  When this key is pressed and the mouse wheel is rotated, the text is zoomed.
@@ -41916,8 +42045,8 @@ Input Completion
 \end_layout
 
 \begin_layout Standard
-Input completion is described in sec.
-\begin_inset space \thinspace{}
+Input completion is described in section
+\begin_inset space ~
 \end_inset
 
 
@@ -41961,6 +42090,12 @@ Settings ! Paths
 
 \end_layout
 
+\begin_layout Standard
+The paths to the various resources used by LyX are normally determined during
+ the installation.
+ But there may be reasons why you might want to modify them.
+\end_layout
+
 \begin_layout Description
 Working
 \begin_inset space ~
@@ -41981,7 +42116,7 @@ Save
 \begin_inset space ~
 \end_inset
 
-as
+As
 \family default
  files.
 \end_layout
@@ -42027,7 +42162,7 @@ Open
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -42146,19 +42281,23 @@ programs
 JabRef
 \family default
  and click on the LyX-symbol.
- The entry will now be inserted as citation at the current cursor position
+ The entry will now be inserted as a citation at the current cursor position
  in your LyX file.
- 
+ Of course, 
 \family typewriter
 JabRef
 \family default
- and LyX need of course to be run the same time.
+ and LyX need to be running the same time.
 \begin_inset Newline newline
 \end_inset
 
 The pipe is also used for the 
 \family sans
-Single instance
+S
+\bar under
+i
+\bar default
+ngle instance
 \family default
  feature, see sec.
 \begin_inset space \thinspace{}
@@ -42206,8 +42345,8 @@ Thesaurus
 \end_inset
 
 dictionary Directory where the thesaurus dictionaries are located.
- You only need to specify it if the thesaurus does otherwise not work or
- if you want to use custom/alternative dictionaries.
+ You only need to specify it if the thesaurus does not work or if you want
+ to use custom/alternative dictionaries.
 \end_layout
 
 \begin_layout Description
@@ -42225,8 +42364,8 @@ Hunspell
 \family typewriter
 Hunspell
 \family default
- and spell checking does otherwise not work or if you want to use custom/alterna
-tive dictionaries.
+ and spell checking does not work or if you want to use custom/alternative
+ dictionaries.
  For LyX on Windows 
 \family typewriter
 Hunspell
@@ -42241,10 +42380,10 @@ PATH
 \end_inset
 
 prefix This field contains a list of paths to external programs.
- When LyX needs to use an external program, it looks in this list where
- to find it on the system.
+ When LyX needs to use an external program, it looks in this list to see
+ where to find it on the system.
  The path list is automatically set up on Windows and Mac systems when LyX
- is configured, so that you normally don't have to modify it.
+ is configured; so you normally don't have to modify it.
  On Unix
 \begin_inset space \thinspace{}
 \end_inset
@@ -42262,9 +42401,9 @@ TEXINPUTS
 \begin_inset space ~
 \end_inset
 
-prefix The TEXINPUTS environment variable allows to use external files which
- are included to a LyX document via commands in TeX code or in the document
- preamble.
+prefix The TEXINPUTS environment variable allows you to use external files
+ which are included in a LyX document via commands in TeX code or in the
+ document preamble.
  This prefix includes by default the document directory (represented by
  a single dot '.').
  The prefix can contain any list of paths separated by the default separator
@@ -42273,8 +42412,8 @@ prefix The TEXINPUTS environment variable allows to use external files which
  scanned for the input files.
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your LyX file.
- It is recommended to include always '.' as one of the paths, otherwise compilati
-on may fail for some documents.
+ It is recommended that you always include ‘.' as one of the paths; otherwise
+ compilation may fail for some documents.
 \end_layout
 
 \begin_layout Section
@@ -42282,8 +42421,16 @@ Identity
 \end_layout
 
 \begin_layout Standard
-Here you can insert your name and email address.
- The identity will be used when you have enabled change tracking as described
+Here you can insert your 
+\family sans
+Name
+\family default
+ and 
+\family sans
+E-mail
+\family default
+ address.
+ These will be used when you have enabled change tracking, as described
  in section
 \begin_inset space ~
 \end_inset
@@ -42338,12 +42485,12 @@ User
 \begin_inset space ~
 \end_inset
 
-Interface
+interface
 \begin_inset space ~
 \end_inset
 
-language Here you can select the language of LyX's menus.
- You find the actual translation status here: 
+language Here you can select the language for LyX's menus.
+ You can find its actual translation status here: 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.lyx.org/I18n"
@@ -42392,7 +42539,7 @@ LaTeX-packages ! babel
 
 \end_inset
 
-, it is the default language package in classic LaTeX.
+; it is the default language package in classic LaTeX.
  More recent typesetting engines such as XeTeX and LuaTeX come with the
  alternative language package 
 \series bold
@@ -42408,11 +42555,15 @@ LaTeX-packages ! polyglossia
 
 \end_inset
 
- that is more suited for the multi-script support of these engines.
+ that is more suited to the multi-script support of these engines.
  Furthermore, there are also specific language packages for languages not
- covered by babel.
- The available selections are described in sec.
-\begin_inset space \thinspace{}
+ covered by 
+\series bold
+babel
+\series default
+.
+ The available selections are described in section
+\begin_inset space ~
 \end_inset
 
 
@@ -42486,7 +42637,7 @@ Decimal
 \begin_inset space ~
 \end_inset
 
-Point Define the default decimal point for the use in tables (decimal point
+Point Define the default decimal point for use in tables (decimal point
  alignment).
 \end_layout
 
@@ -42584,7 +42735,7 @@ RTL
 \end_inset
 
 support Enables the use of languages, written from right to left (RTL),
- like Arabic, Hebrew, Farsi.
+ like Arabic, Hebrew or Farsi.
 \end_layout
 
 \begin_layout Description
@@ -42610,7 +42761,7 @@ The spellchecker settings are explained in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Spellchecking"
+reference "sub:Further-Settings"
 
 \end_inset
 
@@ -42782,7 +42933,11 @@ Default
 \begin_inset space ~
 \end_inset
 
-printer Here you can specify the name of your default printer.
+printer Here you can specify the name of your 
+\family sans
+Default printer
+\family default
+.
  The name will be used when the 
 \family sans
 Printer command
@@ -43209,10 +43364,19 @@ class
 \begin_inset space ~
 \end_inset
 
-changes Removes all manually set document class options in the 
+changes Removes all manually set 
+\family sans
+Class options
+\family default
+ in the 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
 \family default
  dialog when changing the document class.
 \end_layout
@@ -43260,7 +43424,7 @@ Converters
 Here you find the list of defined converter commands to convert material
  from one format to another.
  You can modify converters or create new ones.
- To modify a converter, select it, change the entry of the field 
+ To modify a converter, select it, change the entry of the 
 \family sans
 Converter
 \family default
@@ -43272,7 +43436,7 @@ Extra
 
 flag
 \family default
- and press the 
+ field and press the 
 \family sans
 Modify
 \family default
@@ -43302,8 +43466,11 @@ If the
 \family sans
 Converter File Cache
 \family default
- is enabled, conversions will be cached as long as specified in the field
- 
+ is 
+\family sans
+Enabled
+\family default
+, conversions will be cached as long as specified in the field 
 \family sans
 Maximum Age (in days
 \family default
@@ -43358,12 +43525,19 @@ Copiers
 
 \begin_layout Standard
 Here you find the list of defined file formats that LyX can handle.
- You can modify the viewer and editor program that should be used for certain
- formats.
+ You can modify the 
+\family sans
+Editor
+\family default
+ and 
+\family sans
+Viewer
+\family default
+ programs that should be used for certain formats.
 \end_layout
 
 \begin_layout Standard
-Furthermore, you can define the 
+You can also define the 
 \family sans
 Default output format
 \family default
@@ -44593,8 +44767,6 @@ target "http://www.ctan.org/pkg/hyperref"
 
 \end_inset
 
-
-\series default
 of the LaTeX-package 
 \series bold
 hyperref
@@ -44874,6 +45046,39 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Armenian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Cyrillic"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-page"
+target "http://wiki.lyx.org/Windows/Cyrillic"
+
+\end_inset
+
+ how to set up LyX for Cyrillic languages:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset

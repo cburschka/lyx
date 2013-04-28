@@ -41276,7 +41276,18 @@ Handbuchergänzungen
 \begin_layout Description
 XHTML-Ausgabe-Optionen Einstellungen für das Export-Format 
 \family sans
-LyXHTML
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XHTML
 \family default
 .
  
@@ -41401,25 +41412,34 @@ Das Erscheinungsbild der Menüs und Werkzeugleisten kann durch die Auswahl
  einer Benutzerinterface-Datei (UI) geändert werden.
  Eine UI-Datei ist eine Textdatei in der die Werkzeugleisten und Menüs aufgelist
 et sind.
- Die Werkzeugleistenknöpfe und Menüeinträge sind in den Dateien 
-\shape italic
-stdtoolbars.inc
-\shape default
- bzw.
-\begin_inset space \space{}
-\end_inset
-
-
-\shape italic
-stdmenus.inc
-\shape default
- definiert.
- Beide Dateien werden durch die Datei 
+ Die Datei 
 \emph on
 default.ui
 \emph default
- geladen.
- Um eigene Menü- und Werkzeugleisten-Gestaltungen zu erstellen, fängt man
+ lädt drei Dateien:
+\end_layout
+
+\begin_layout Description
+stdmenus.inc
+\shape italic
+ 
+\emph on
+legt die Menüeinträge für die Standard-Menüs fest
+\end_layout
+
+\begin_layout Description
+stdcontext.inc legt die Menüeinträge für die Popup/Kontext-Menüs fest
+\end_layout
+
+\begin_layout Description
+stdtoolbars.inc 
+\shape italic
+\emph on
+legt fest welche Werkzeugleistenknöpfe es gibt
+\end_layout
+
+\begin_layout Standard
+Um eigene Menü- und Werkzeugleisten-Gestaltungen zu erstellen, fängt man
  mit einer Kopie dieser Dateien an und editiert die Einträge.
 \end_layout
 
@@ -41514,7 +41534,18 @@ LyX-Funktion
 Alle LyX-Funktionen sind im Menü 
 \family sans
 Hilfe\SpecialChar \menuseparator
-LyX-Funktionen
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Funktionen
 \family default
  aufgelistet.
 \end_layout
@@ -41574,15 +41605,19 @@ navigate_bookmarks
 \begin_inset Quotes grd
 \end_inset
 
- in der .inc-Datei hinzufügen und haben dann das sechste Lesezeichen.
-\end_layout
-
-\begin_layout Subsubsection
-Symboldesign
+ in der Datei 
+\emph on
+stdmenus.inc
+\emph default
+ hinzufügen und haben dann das sechste Lesezeichen.
 \end_layout
 
 \begin_layout Standard
-Damit kann das Aussehen von LyXs Werkzeugleisten geändert werden.
+Mit
+\family sans
+ Symbldesign
+\family default
+ kann das Aussehen von LyXs Werkzeugleisten geändert werden.
  Die derzeit verfügbaren Symboldesigns sind in 
 \begin_inset CommandInset href
 LatexCommand href
@@ -41674,6 +41709,26 @@ Sichere Originaldokumente beim Speichern
 \family default
  erstellt eine Sicherungskopie der Datei im Zustand, in dem sie geöffnet
  oder das letzte mal gespeichert wurde.
+ Sie wird im 
+\family sans
+Sicherungsverzeichnis
+\family default
+ (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pfade"
+
+\end_inset
+
+) gespeichert oder im selben Ordner wie Ihr Dokument, wenn kein 
+\family sans
+Sicherungsverzeichnis
+\family default
+ vorgegeben ist.
  Sie wird im selben Ordner wie Ihr Dokument oder im 
 \family sans
 Sicherungsverzeichnis
@@ -41911,7 +41966,7 @@ Die
 Schriftgrößen
 \family default
  werden als Buchstabenhöhe in Einheiten von Punkten berechnet.
- 72
+ 72,27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -42212,9 +42267,13 @@ Tastenkürzel-Datei
 \end_layout
 
 \begin_layout Standard
-Tastaturkürzel-Dateien werden benutzt, um LyX-Funktionen mit einem Tastenkürzel
+
+\family sans
+Tastaturkürzel-Datei
+\family default
+ gibt an, welche Datei benutzt wird, um LyX-Funktionen mit einem Tastenkürzel
  zu verknüpfen.
- Es gibt mehrere Dateien:
+ Es gibt mehrere Dateien; darunter:
 \end_layout
 
 \begin_layout Description
@@ -42252,9 +42311,9 @@ pt
 
 \begin_layout Standard
 Einige Tastaturkürzel-Dateien wie 
-\family typewriter
+\shape italic
 math.bind
-\family default
+\shape default
  haben nur einen kleinen Anwendungsbereich.
  Schaut man ans Ende der Datei 
 \shape italic
@@ -42262,6 +42321,19 @@ cua.bind
 \shape default
 , sieht man, dass diese eingebunden sind um den Überblick in der bind-Datei
  zu erhalten.
+\end_layout
+
+\begin_layout Standard
+Im Feld 
+\family sans
+Zeige
+\begin_inset space ~
+\end_inset
+
+Tastenkürzel, die Folgendes enthalten 
+\family default
+kann man nach den Kürzeln für eine bestimmte Funktion in der gewählten Tastenkür
+zel-Datei suchen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -42341,28 +42413,31 @@ textstyle-apply
 .
  Es erscheint ein Dialogfenster, in dem Sie das Tastaturkürzel einfügen
  können, indem Sie es benutzen (Alt drücken, gedrückt halten, dann Q drücken).
- Ein vorhandenes Tastaturkürzel wird ebenso geändert.
 \end_layout
 
 \begin_layout Standard
-Sie auch mehrere Funktionen einem Tastaturkürzel zuordnen, indem Sie im
- 
-\family sans
-Funktion
-\family default
--Feld des Dialoges weitere Funktionen, durch Kommas getrennt, hinzufügen.
+Ein vorhandenes Tastaturkürzel wird ebenso geändert.
+ Sie auch mehrere Funktionen einem Tastaturkürzel zuordnen, indem Sie die
+ LyX-Funktion mit 
+\begin_inset Quotes gld
+\end_inset
+
+command alternatives
+\begin_inset Quotes grd
+\end_inset
+
+ beginnen und die verschiedenen Funktionen, durch Kommas getrennt, anfügen.
  LyX wird dann für das Tastaturkürzel die erste Funktion benutzen, die im
  gerade bearbeiteten Dokumentteil aktiv ist.
- 
-\family sans
-command-alternatives
-\family default
- ist ein Beispiel hierfür.
 \end_layout
 
 \begin_layout Standard
-Sie können natürlich auch die entsprechende Tastaturkürzel-Datei mit einem
- Editor bearbeiten.
+Falls Ihnen ein bestimmtes Tastenkürzel nicht gefällt, können Sie es löschen.
+\end_layout
+
+\begin_layout Standard
+Alternativ können Sie natürlich auch die entsprechende Tastaturkürzel-Datei
+ mit einem Editor bearbeiten.
  Die Syntax für ein Kürzel ist
 \end_layout
 
@@ -42432,11 +42507,53 @@ Normalerweise werden Tastatureinstellungen in einem Menü des Betriebssystems
 
 B.
  eine tschechische Tastatur haben, aber mit ihr wie mit einer rumänischen
- schreiben wollen, können Sie die Tastaturtabellen-Datei namens 
-\emph on
+ schreiben wollen, können Sie die Option 
+\family sans
+Tastaturtabelle
+\begin_inset space ~
+\end_inset
+
+verwenden
+\family default
+ aktivieren und die Tastaturtabellen-Datei namens 
+\shape italic
 romanian.kmap
+\shape default
+ auswählen.
+\end_layout
+
+\begin_layout Standard
+Sie können eine 
+\family sans
+Erste
+\family default
+ und eine 
+\family sans
+Zweite
+\family default
+ Tastaturtabelle definieren und, wenn Sie die 
+\emph on
+cua
 \emph default
- verwenden.
+ Tastaturkürzel verwenden, die erste mit 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-primary"
+\end_inset
+
+ und die zweite mit 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-secondary"
+\end_inset
+
+ auswählen oder mit 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-toggle"
+\end_inset
+
+ zwischen beiden hin- und herschalten.
 \end_layout
 
 \begin_layout Standard
@@ -42524,6 +42641,12 @@ Einstellungen ! Pfade
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Die Pfade zu den verschiedenen, von LyX verwendeten Ressourcen werden normalerwe
+ise während der Installation festgelegt.
+ Es kann aber Gründe geben diese zu ändern.
 \end_layout
 
 \begin_layout Description
@@ -43661,7 +43784,17 @@ Dokumentklasse
 \end_inset
 
 zurücksetzen entfernt beim Wechsel der Dokumentklasse alle von Hand gesetzten
- Dokumentklassen-Optionen.
+ 
+\family sans
+Klassenoptionen
+\family default
+ im Dialog 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -45201,6 +45334,39 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Armenian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Cyrillic"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-Seite"
+target "http://wiki.lyx.org/Windows/Cyrillic"
+
+\end_inset
+
+ wie man LyX fü kyrillische Sprachen konfiguriert:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset
