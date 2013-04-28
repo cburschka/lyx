@@ -49,8 +49,8 @@ void doAssert(char const * expr, char const * file, long line)
 docstring formatHelper(docstring const & msg,
 	char const * expr, char const * file, long line)
 {
-	static const docstring d = 
-		from_ascii(N_("Assertion %1$s violated in\nfile: %2$s, line: %3$s"));
+	docstring const d = _("Assertion %1$s violated in\nfile: %2$s, line: %3$s");
+	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	
 	return bformat(d, from_ascii(expr), from_ascii(file), 
 		convert<docstring>(line)) + '\n' + msg;
@@ -59,9 +59,7 @@ docstring formatHelper(docstring const & msg,
 
 void doWarnIf(char const * expr, char const * file, long line)
 {
-	static const docstring d =
-	    from_ascii(N_("It should be safe to continue, but you may wish to save your work and restart LyX."));
-	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	docstring const d = _("It should be safe to continue, but you\nmay wish to save your work and restart LyX.");
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(WarningException, _("Warning!"), 
@@ -71,9 +69,7 @@ void doWarnIf(char const * expr, char const * file, long line)
 
 void doBufErr(char const * expr, char const * file, long line)
 {
-	static const docstring d =
-	    from_ascii(N_("There has been an error with this document. LyX will attempt to close it safely."));
-	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	docstring const d = _("There has been an error with this document.\nLyX will attempt to close it safely.");
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(BufferException, _("Buffer Error!"),
@@ -83,9 +79,7 @@ void doBufErr(char const * expr, char const * file, long line)
 
 void doAppErr(char const * expr, char const * file, long line)
 {
-	static const docstring d =
-	    from_ascii(N_("LyX has encountered an application error and will now shut down."));
-	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
+	docstring const d = _("LyX has encountered an application error\nand will now shut down.");
 	// comment this out if not needed
 	BOOST_ASSERT(false);
 	throw ExceptionMessage(ErrorException, _("Fatal Exception!"),
