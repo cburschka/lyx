@@ -240,7 +240,7 @@ SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
- AddSize 1660
+ AddSize 1819
 SectionEnd
 
 Section /o "Galego" SecDGalician
@@ -271,7 +271,7 @@ SectionEnd
 
 Section /o "Interlingua" SecDInterlingua
  StrCpy $DictCodes "ia_IA,$DictCodes"
- AddSize 649
+ AddSize 556
 SectionEnd
 
 Section /o "Íslenska" SecDIcelandic
@@ -306,7 +306,7 @@ SectionEnd
 
 Section /o "Latviešu" SecDLatvian
  StrCpy $DictCodes "lv_LV,$DictCodes"
- AddSize 2140
+ AddSize 2243
 SectionEnd
 
 # enable this for LyX 2.1!
@@ -322,12 +322,12 @@ SectionEnd
 
 Section /o "Norsk (Bokmål)" SecDNorwegianNB
  StrCpy $DictCodes "nb_NO,$DictCodes"
- AddSize 5000
+ AddSize 3992
 SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
- AddSize 2970
+ AddSize 2982
 SectionEnd
 
 # enable this for LyX 2.1!
@@ -499,6 +499,11 @@ Section /o "Greek" SecTGreek
  AddSize 903
 SectionEnd
 
+Section /o "Íslenska" SecTIcelandic
+ StrCpy $ThesCodes "is_IS,$ThesCodes"
+ AddSize 63
+SectionEnd
+
 Section /o "Italiano" SecTItalian
  StrCpy $ThesCodes "it_IT,$ThesCodes"
  AddSize 2520
@@ -511,7 +516,7 @@ SectionEnd
 
 Section /o "Norsk (Bokmål)" SecTNorwegianNB
  StrCpy $ThesCodes "nb_NO,$ThesCodes"
- AddSize 2540
+ AddSize 2535
 SectionEnd
 
 Section /o "Polski" SecTPolish
@@ -547,6 +552,11 @@ SectionEnd
 Section /o "Svenska" SecTSwedish
  StrCpy $ThesCodes "sv_SE,$ThesCodes"
  AddSize 720
+SectionEnd
+
+Section /o "Ukrainian" SecTUkrainian
+ StrCpy $ThesCodes "uk_UA,$ThesCodes"
+ AddSize 1309
 SectionEnd
 
 SectionGroupEnd
@@ -1248,6 +1258,13 @@ Function .onInit
    SectionSetFlags ${SecTGreek} $0
    SectionSetSize ${SecTGreek} 0
   ${endif}
+  StrCpy $Search "is_IS"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTIcelandic} $0
+   SectionSetSize ${SecTIcelandic} 0
+  ${endif}
   StrCpy $Search "it_IT"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1317,7 +1334,14 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecTSwedish} $0
    SectionSetSize ${SecTSwedish} 0
-  ${endif}*/
+  ${endif}
+  StrCpy $Search "uk_UA"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTUkrainian} $0
+   SectionSetSize ${SecTUkrainian} 0
+  ${endif}
   
   ${IfNot} ${Silent}
     Banner::destroy
