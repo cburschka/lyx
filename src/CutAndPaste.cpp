@@ -504,26 +504,29 @@ void putClipboard(ParagraphList const & paragraphs,
 	// applications, the number that can parse it should go up in the future.
 	buffer->params().html_math_output = BufferParams::MathML;
 
-	// The Buffer is being used to export. This is necessary so that the
-	// updateMacros call will record the needed information.
-	MarkAsExporting mex(buffer);
+	// Make sure MarkAsExporting is deleted before buffer is
+	{
+		// The Buffer is being used to export. This is necessary so that the
+		// updateMacros call will record the needed information.
+		MarkAsExporting mex(buffer);
 
-	buffer->updateBuffer(Buffer::UpdateMaster, OutputUpdate);
-	buffer->updateMacros();
-	buffer->updateMacroInstances(OutputUpdate);
+		buffer->updateBuffer(Buffer::UpdateMaster, OutputUpdate);
+		buffer->updateMacros();
+		buffer->updateMacroInstances(OutputUpdate);
 
-	// LyX's own format
-	string lyx;
-	ostringstream oslyx;
-	if (buffer->write(oslyx))
-		lyx = oslyx.str();
+		// LyX's own format
+		string lyx;
+		ostringstream oslyx;
+		if (buffer->write(oslyx))
+			lyx = oslyx.str();
 
-	// XHTML format
-	odocstringstream oshtml;
-	OutputParams runparams(encodings.fromLyXName("utf8"));
-	buffer->writeLyXHTMLSource(oshtml, runparams, Buffer::FullSource);
+		// XHTML format
+		odocstringstream oshtml;
+		OutputParams runparams(encodings.fromLyXName("utf8"));
+		buffer->writeLyXHTMLSource(oshtml, runparams, Buffer::FullSource);
 
-	theClipboard().put(lyx, oshtml.str(), plaintext);
+		theClipboard().put(lyx, oshtml.str(), plaintext);
+	}
 
 	// Save that memory
 	delete buffer;
