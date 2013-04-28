@@ -13688,7 +13688,7 @@ status open
 \begin_layout Plain Layout
 これは、出力に薄灰色の文章として現れるコメントに書かれた文章
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これは、淡色表示注釈内に脚注を用いた例です。この文書では、この注釈型の色は青色に設定されています。
@@ -13709,7 +13709,11 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-この例から分かるように、淡色表示注釈の最初の行は少し字下げされるほか、淡色表示注釈には脚注を入れることができます。
+
+\lang english
+As you can see in the example, greyed out notes can have footnotes
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -13789,9 +13793,12 @@ status open
 \end_layout
 
 \begin_layout Standard
-脚注は、出力では、本文中の脚注ボックスが配置された場所に上付きの数字として表示されます。脚注の文章は、そのページの下端に配置されます。脚注番号はLyXが自動的に
-計算し、脚注がどの章にあるかにかかわらず、連番がつけられます。LyXは、まだ他の付番スキームをサポートしていませんが、特定のLaTeXコマンドを使用すれば他の付
-番スキームを使用することができます。この点に関しては、取扱説明書『埋込オブジェクト篇』に説明があります。
+脚注は、出力では、本文中の脚注ボックスが配置された場所に上付きの数字として表示されます。脚注の文章は、そのページの下端に配置されます。
+\lang english
+The footnote number is calculated by LyX according to the document class
+\lang japanese
+。LyXは、まだ他の付番スキームをサポートしていませんが、特定のLaTeXコマンドを使用すれば他の付番スキームを使用することができます。この点に関しては、取扱説
+明書『埋込オブジェクト篇』に説明があります。
 \end_layout
 
 \begin_layout Section
@@ -14217,12 +14224,61 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-新規のグループは、図ダイアログの
+
+\lang english
+A new group can be set by pressing the button 
 \family sans
-グループ名を初期化
+Open
+\begin_inset space ~
+\end_inset
+
+new
+\begin_inset space ~
+\end_inset
+
+group
 \family default
-フィールドに名称を入れることで、作ることができます。既存のグループに加えるには、コンテキスト・メニューから望むグループ名をクリックすれば、そのグループに加えるこ
-とができます。
+ in the
+\family sans
+ Graphics
+\family default
+ dialog in the 
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X options
+\family default
+ tab
+\lang japanese
+。既存のグループに加えるには、コンテキスト・メニューから望むグループ名をクリックすれば、そのグループに加えることができます。
 \end_layout
 
 \begin_layout Section
@@ -17520,7 +17576,13 @@ type  "icon"
 arg   "float-insert table"
 \end_inset
 
-を使うと挿入することができます。表フロートは、ラベルが異なることを除けば、図フロートと同じです。表
+を使うと挿入することができます。
+\lang english
+They have the same properties as figure floats except that the table in
+ the float is normally placed below the caption and not above like for figures
+ and that the label begins with 
+\lang japanese
+「tab:」。表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:表フロート"
@@ -17930,8 +17992,18 @@ type  "icon"
 arg   "math-mode on"
 \end_inset
 
-をクリックするだけでできます。すると、四隅を紫のマーカーで囲まれた青い箱が現れます。この青い箱が数式それ自身で、紫のマーカーは数式内の現在地の入れ子の深さを表し
-ます。また、
+(
+\lang english
+shortcut 
+\lang japanese
+
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
+\end_inset
+
+)をクリックするだけでできます。すると、四隅を紫のマーカーで囲まれた青い箱が現れます。この青い箱が数式それ自身で、紫のマーカーは数式内の現在地の入れ子の深さを表
+します。また、
 \family sans
 挿入
 \bar under
@@ -19682,16 +19754,31 @@ name "sec:数式番号と参照"
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
-数式全体を付番
+
+\lang english
+Number
+\begin_inset space ~
+\end_inset
+
+Whole
+\begin_inset space ~
+\end_inset
+
+Formula
 \family default
-メニューか短絡キー
+\lang japanese
+ーか短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-を使用してください。LyX中で数式番号は、括弧に囲まれた「#」で表されます。「#」が意味するのは、番号が出力が生成される時に自動的に計算されるということです。出
-力における数式番号の配置と形式は、文書クラスに依存します。この文書では、数式番号は、章番号とともに、ピリオドのあとに印字されます。
+を使用してください。
+\lang english
+The formula number appears in LyX within parentheses.
+ The number shown is temporary and may be different when the output is generated
+\lang japanese
+。出力における数式番号の配置と形式は、文書クラスに依存します。この文書では、数式番号は、章番号とともに、ピリオドのあとに印字されます。
 \begin_inset Formula 
 \begin{equation}
 1+1=2.
@@ -19713,9 +19800,20 @@ arg   "math-number-toggle"
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
-この行を付番
+
+\lang english
+Number
+\begin_inset space ~
+\end_inset
+
+This
+\begin_inset space ~
+\end_inset
+
+Line
 \family default
-メニューや短絡キー
+\lang japanese
+ーや短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-line-toggle"
@@ -19742,7 +19840,17 @@ arg   "math-number-toggle"
 挿入\SpecialChar \menuseparator
 ラベル
 \family default
-メニューを使うと、ラベルを入力するダイアログが開きますので、そこで挿入することができます。このとき、ラベルの冒頭部を表示のとおり「
+メニューを使うと(
+\lang english
+toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+)、ラベルを入力するダイアログが開きますので、そこで挿入することができます。このとき、ラベルの冒頭部を表示のとおり「
 \family sans
 eq:
 \family default
@@ -19761,8 +19869,18 @@ p」というラベルをつけています。
 挿入\SpecialChar \menuseparator
 相互参照
 \family default
-メニューを開くと、参照したいラベルを選択するダイアログが現れますので、これを使って参照することができます。参照は、以下のように、LyX中では灰色の相互参照ボック
-スとして表示され、出力では数式番号が出力されます。
+メニューを開くと(
+\lang english
+toolbar button 
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+)、参照したいラベルを選択するダイアログが現れますので、これを使って参照することができます。参照は、以下のように、LyX中では灰色の相互参照ボックスとして表示さ
+れ、出力では数式番号が出力されます。
 \end_layout
 
 \begin_layout Standard
@@ -20405,32 +20523,6 @@ displaystyle
 \end_layout
 
 \begin_layout Section
-定理モジュール
-\end_layout
-
-\begin_layout Standard
-LyX 1.6の時点において、定理型環境を有効にするには、文書クラスで指定するのではなく、レイアウトモジュール
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-れいあうともじゅーる@レイアウトモジュール
-\end_layout
-
-\end_inset
-
-で指定するように変更されています。その結果、定理型環境は、AMSクラス以外のクラスでも簡単に利用することができるようになりました。レイアウトモジュールに関しての
-詳細は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:モジュール"
-
-\end_inset
-
-節を参照してください。
-\end_layout
-
-\begin_layout Section
 AMS-LaTeX
 \begin_inset Index idx
 status collapsed
@@ -20536,7 +20628,14 @@ gather
 \family typewriter
 multline
 \family default
-を選択することができるようになっていますこれらの数式型の説明に関しては、AMSの取扱説明書をご参照ください。
+を選択することができるようになっていますこれらの数式型の説明に関しては、AMSの取扱説明書をご参照ください
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AMS"
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Chapter
@@ -23898,7 +23997,18 @@ LyXはバックグラウンドでLaTeXを使用しているので、LaTeXコマ�
 しかし心配は要りません。LyXではTeXコード枠の中で任意のLaTeXコマンドを使用することができるのです。TeXコード枠は、
 \family sans
 挿入\SpecialChar \menuseparator
-TeXコード
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+Xコード
 \family default
 メニューかツールバーボタン
 \begin_inset Info
@@ -25879,6 +25989,52 @@ aspell (library)
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+All spell-checker dictionaries supported by LyX can be downloaded from here
+\lang japanese
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+There are 2
+\begin_inset space ~
+\end_inset
+
+files for each language.
+ To install a dictionary, copy the 2
+\begin_inset space ~
+\end_inset
+
+files into LyX's installation subfolder 
+\family sans
+~
+\backslash
+Resources
+\backslash
+dicts
+\family default
+ and restart LyX.
+\end_layout
+
 \begin_layout Subsection
 さらに詳細な設定
 \end_layout
@@ -26041,7 +26197,11 @@ MyThes
 \emph on
 *.idx
 \emph default
-のインデックスファイルです。ファイル名は、特定の言語の言語コード(例えば、英語の場合はen_EN)を含むように標準化されています。例えば、英語ファイルは
+のインデックスファイルです。ファイル名は、特定の言語の言語コード(例えば、英語の場合は
+\family sans
+en_EN
+\family default
+)を含むように標準化されています。例えば、英語ファイルは
 \end_layout
 
 \begin_layout Itemize
@@ -26053,68 +26213,53 @@ th_en_EN-v2.dat
 \end_layout
 
 \begin_layout Standard
-と命名されています。LibreOffice
+
 \lang english
-or
+If you have LibreOffice or OpenOffice and its thesaurus installed on a Linux
+ system, these files should be already on your system.
+ On Windows you can choose in LyX's installer wich dictionaries should be
+ installed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All thesaurus dictionaries supported by LyX can be downloaded from here
 \lang japanese
-OpenOfficeをお持ちで類語辞典も導入されている場合には、これらのファイルはお使いのシステム上にあるはずです。もしなければ、サイト
+:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/browser/dictionaries/trunk/thes
+http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \end_layout
 
 \end_inset
 
-か
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org/en/search/node/thesaurus
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
-から辞書を入手することができます。
-\begin_inset Foot
-status collapsed
 
-\begin_layout Plain Layout
-OpenOffice
+\lang english
+To install a dictionary, copy the 2
 \begin_inset space ~
 \end_inset
 
-3.0現在では、
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org
-\end_layout
-
-\end_inset
-
-にあるファイルは、類語辞典のほかにスペルチェック用の辞書など他のファイルも含んだ、拡張アーカイブ(
-\emph on
-*.oxt
-\emph default
-)になっていることにご注意ください。
-\end_layout
-
-\end_inset
-
-使用したい全ての言語の*.idxファイルと*.datファイルを同一のディレクトリ(サブディレクトリは使用しないでください)に入れ、この辞書のパスを
+files into LyX's installation subfolder 
 \family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-パス
+~
+\backslash
+Resources
+\backslash
+thes
 \family default
-で指定してください。これで類語時点が使えるはずです。
+ and restart LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -26579,7 +26724,18 @@ arg   "note-insert"
 \family sans
 挿入\SpecialChar \menuseparator
 注釈\SpecialChar \menuseparator
-LyX注釈
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X注釈
 \end_layout
 
 \end_inset
@@ -29699,7 +29855,7 @@ status collapsed
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="22" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -30028,6 +30184,50 @@ arg   "dialog-show findreplace"
 \family sans
 編集\SpecialChar \menuseparator
 検索／置換
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\lang english
+Quick
+\lang japanese
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+編集\SpecialChar \menuseparator
+検索／置換
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\lang english
+Advanced
+\lang japanese
+)
 \end_layout
 
 \end_inset
@@ -30091,6 +30291,11 @@ arg   "font-emph"
 文字形式
 \family default
 ダイアログの機能）
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -30123,6 +30328,11 @@ arg   "font-noun"
 文字形式
 \family default
 ダイアログの機能）
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -30155,6 +30365,11 @@ arg   "textstyle-apply"
 文字形式
 \family default
 ダイアログの設定を使って文字を装飾
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -30873,7 +31088,22 @@ arg   "note-insert"
 \family sans
 挿入\SpecialChar \menuseparator
 注釈\SpecialChar \menuseparator
-LyX注釈
+Ly
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+X注釈
 \end_layout
 
 \end_inset
@@ -30933,7 +31163,9 @@ arg   "href-insert"
 
 \family sans
 挿入\SpecialChar \menuseparator
-URL
+
+\lang english
+Hyperlink
 \end_layout
 
 \end_inset
@@ -31070,7 +31302,10 @@ arg   "dialog-show character"
 
 \family sans
 編集\SpecialChar \menuseparator
-文字様式
+文字様式\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -31275,6 +31510,12 @@ arg   "master-buffer-view"
 \family sans
 表示\SpecialChar \menuseparator
 親文書を表示
+\begin_inset space ~
+\end_inset
+
+
+\lang english
+Document
 \end_layout
 
 \end_inset
@@ -31305,6 +31546,12 @@ arg   "master-buffer-update"
 \family sans
 表示\SpecialChar \menuseparator
 親文書を更新
+\begin_inset space ~
+\end_inset
+
+
+\lang english
+Document
 \end_layout
 
 \end_inset
@@ -35010,7 +35257,7 @@ reference "tab:単位"
 placement t
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -35816,7 +36063,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
+http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \end_layout
 
 \end_inset
@@ -35996,6 +36243,43 @@ http://www.xindy.org/documentation.html
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "AMS"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://www.ams.org/publications/authors/tex/amslatex"
+
+\end_inset
+
+ 
+\lang english
+of the AMS LaTeX-packages
+\lang japanese
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ams.org/publications/authors/tex/amslatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "caption"
 
 \end_inset
@@ -36018,7 +36302,7 @@ Latexぱっけーじ@LaTeXパッケージ ! caption
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
 
 \end_inset
 
@@ -36032,7 +36316,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
 \end_layout
 
 \end_inset
@@ -36112,7 +36396,7 @@ Latexぱっけーじ@LaTeXパッケージ ! fancyhdr
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -36126,7 +36410,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset
@@ -36159,7 +36443,7 @@ Latexぱっけーじ@LaTeXパッケージ ! hyperref
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+target "http://www.ctan.org/pkg/hyperref"
 
 \end_inset
 
@@ -36173,7 +36457,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
+http://www.ctan.org/pkg/hyperref
 \end_layout
 
 \end_inset
@@ -36206,7 +36490,7 @@ Latexぱっけーじ@LaTeXパッケージ ! nomencl
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
 
@@ -36220,7 +36504,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset

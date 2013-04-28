@@ -17880,12 +17880,7 @@ Dies ist eine Beispiel-Fußnote in einer Grauschrift-Notiz.
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Wie man am Beispiel sehen kann, ist die erste Zeile einer Grauschrift-Notiz
- etwas eingerückt und Grauschrift-Notizen können Fußnoten haben.
+Wie man am Beispiel sehen kann, können Grauschrift-Notizen Fußnoten haben.
 \end_layout
 
 \begin_layout Standard
@@ -17982,10 +17977,8 @@ Um eine Fußnote zu schließen, klickt man auf die Marke der Fußnoten-Box.
 Die Fußnote erscheint in der Ausgabe als tiefgestellte Nummer an der Position
  im Text, an der die Fußnoten-Box eingefügt wurde.
  Der Fußnotentext wird an das Ende der aktuellen Seite gesetzt.
- Die Fußnotennummer wird von LyX berechnet.
- Die Nummern sind fortlaufend, unabhängig vom Kapitel indem sich die Fußnote
- befindet.
- LyX unterstützt noch keine anderen Nummerierungsschemata, aber man kann
+ Die Fußnotennummer wird von LyX entsprechend der Dokumentklasse berechnet.
+ LyX unterstützt noch keine speziellen Nummerierungsschemata, aber man kann
  sie mit speziellen LaTeX-Befehlen erhalten.
  Diese sind im Handbuch 
 \emph on
@@ -18693,8 +18686,19 @@ en dieser Gruppe ändert.
 \end_layout
 
 \begin_layout Standard
-Eine Gruppe definieren Sie, indem im Grafik-Dialogfenster einer Abbildung
- auf der Karteikarte 
+Eine neue Gruppe definieren Sie, indem Sie den Knopf 
+\family sans
+Neue
+\begin_inset space ~
+\end_inset
+
+Gruppe
+\begin_inset space ~
+\end_inset
+
+eröffnen
+\family default
+ im Grafik-Dialogfenster in der Karteikarte 
 \family sans
 LaTe
 \begin_inset ERT
@@ -18728,19 +18732,11 @@ status collapsed
 
 X-Optionen
 \family default
- im Feld 
-\family sans
-Gruppenname
-\begin_inset space \space{}
-\end_inset
-
-initialisieren
-\family default
- einen Namen einfügen.
+ drücken.
  Wenn Sie dann im Grafik-Dialogfenster einer anderen Abbildung denselben
  Namen eintragen, gehört auch diese Abbildung zur Gruppe.
  Wenn es schon Gruppennamen gibt, können Sie diese im Kontextmenü (Rechtsklick
- auf die Abbildung) ankreuzen.
+ auf die Abbildung) auswählen.
 \end_layout
 
 \begin_layout Section
@@ -22243,8 +22239,17 @@ arg   "float-insert table"
 \end_inset
 
  eingefügt werden.
- Sie haben dieselben Eigenschaften wie Abbildungs-Gleitobjekte mit Ausnahme
- der anderen Bezeichnung.
+ Sie haben dieselben Eigenschaften wie Abbildungs-Gleitobjekte bis auf dass
+ die Tabelle darin normalerweise unter die Beschriftung statt wie bei Abbildunge
+n darüber gesetzt wird und dass die Marken mit 
+\begin_inset Quotes gld
+\end_inset
+
+tab:
+\begin_inset Quotes grd
+\end_inset
+
+ beginnen.
  Tabelle
 \begin_inset space ~
 \end_inset
@@ -22662,7 +22667,11 @@ type  "icon"
 arg   "math-mode on"
 \end_inset
 
-.
+ (Tastenkürzel 
+\family sans
+Strg+M
+\family default
+).
  Dies erzeugt ein kleines, blaues Rechteck mit violetten Markierungen an
  den Ecken.
  Das blaue Rechteck ist die Formel, die Markierungen geben an, wo in der
@@ -24715,107 +24724,67 @@ name "sec:Gleichungen-numerieren-markieren"
 \end_layout
 
 \begin_layout Standard
-Mit LyX ist es sehr einfach, Gleichungen zu nummerieren.
- Um eine Gleichung wie 
-\begin_inset Formula 
-\[
-1+2=3
-\]
-
+Um eine Gleichung zu nummerieren, setzt man den Cursor in eine Gleichung
+ und verwendet das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Ganze
+\begin_inset space ~
 \end_inset
 
-in eine nummerierte
+Formel
+\begin_inset space ~
+\end_inset
+
+nummerieren
+\family default
+ oder das Tastenkürzel 
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
+\end_inset
+
+.
+ Die Nummer der Gleichung erscheint in LyX in Klammern dahinter.
+ Die angezeigte Nummer ist nur temporär und kann in der Ausgabe anders aussehen.
+ Die Position und das Format der Nummer in der Ausgabe hängt von der Dokumentkla
+sse ab.
+ In diesem Dokument wird die Nummer zusammen mit der Kapitelnummer ausgegeben,
+ von der sie durch einen Punkt getrennt ist.:
 \begin_inset Formula 
 \begin{equation}
-1+2=3\label{eq:first-eqn}
+1+1=2
 \end{equation}
 
 \end_inset
 
-zu verwandeln, wählt man 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Marke
-\family default
-\SpecialChar \ldots{}
-, wenn der Cursor in der Gleichung steht.
- In das Fenster, das dann erscheint, müssen Sie eine Zeichenkette als Marke
- eingeben.
- Man muss die Marke nicht mit einer Zahl aufrufen, weil LaTeX sich um die
- Nummerierung kümmert.
- LaTeX wird die Marken durch geeignete Nummern ersetzen.
- Die Marken werden intern für Querverweise benutzt.
- Man kann die Nummerierung auch ohne spezielle Marke benutzen, indem man
- den Cursor in die Gleichung stellt und 
-\family sans
-Alt+M
-\begin_inset space ~
+Die Verwendung von 
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-N
-\family default
- eingibt: 
+ in einer nummerierten Gleichung schaltet die Nummerierung aus.
+ Man kann nur abgesetzte Formeln nummerieren.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-1+1=2.
-\end{equation}
-
-\end_inset
-
-Rechts von der Gleichung erscheint dann (#).
- 
+Mehrzeilige Formeln können Zeile für Zeile nummeriert werden: Das Menü 
 \family sans
-Alt+M
+Bearbeiten\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Diese
 \begin_inset space ~
 \end_inset
 
-N
+Zeile
+\begin_inset space ~
+\end_inset
+
+nummerieren
 \family default
- ist ein Umschalter.
- Tippt man es nochmal, verschwindet (#) wieder.
- Auf eine markierte Gleichung kann man mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Querverweis
-\family default
-\SpecialChar \ldots{}
- verweisen, aber nicht auf eine mit dem Nummerzeichen, zum Beispiel (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:first-eqn"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
-Bei nummerierten oder markierten mehrzeiligen Formeln wird standardmäßig
- jede Zeile für sich nummeriert.
- Wenn Sie eine Zeile mit einer Marke zum Nummerieren versehen, werden alle
- folgenden mit # markiert.
- Diese Marke kann geändert werden, damit man darauf verweisen kann wie bei
- (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:fourth-eqn"
-
-\end_inset
-
-).
-\begin_inset Formula 
-\begin{eqnarray}
-1 & = & 3-2\\
-2 & = & 4-2\\
-4 & \leq & 7.
-\end{eqnarray}
-
-\end_inset
-
-Die Nummerierung einer Zeile kann man mit 
+ oder das Tastenkürzel 
 \family sans
 Alt+M
 \begin_inset space ~
@@ -24823,44 +24792,103 @@ Alt+M
 
 Umschalt+N
 \family default
- ab- und wieder anschalten.
- Mit 
-\family sans
-Alt+M
-\begin_inset space ~
-\end_inset
-
-N
-\family default
- schaltet man die Nummerierung aller Zeilen der mehrzeiligen Formel an und
- aus.
- 
+ nummeriert nur die Zeile, in der sich der Cursor befindet:
 \begin_inset Formula 
 \begin{eqnarray}
-1 & = & 4-3\label{eq:fourth-eqn}\\
-2 & = & 7-5\\
-1 & = & e^{2\pi i}\nonumber \\
-16 & \equiv & 2\,(mod\,7)\label{eq:fifth-eqn}
+1 & = & 3-2\\
+2 & = & 4-2\nonumber \\
+4 & \leq & 7
 \end{eqnarray}
 
 \end_inset
 
-Beachten Sie, dass die erste Gleichung (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:fourth-eqn"
+Um alle Zeilen zu nummerieren, verwendet man das Tastenkürzel 
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Jede abgesetzte Formel kann mit ihrer Nummer durch eine Marke referenziert
+ werden.
+ Eine Marke wird mit dem Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Marke
+\family default
+ (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+) eingefügt, wenn sich der Cursor in der Gleichung befindet.
+ Es erscheint ein Dialog, in den man die Marke eingibt.
+ Es ist empfohlen, dass man das vorgeschlagene 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+eq:
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ als ersten Teil der Marke verwendet, da dies später hilft, schnell den
+ Typ der Marke zu finden, wenn man viele Marken im Dokument hat.
+ Wir haben im folgenden Beispiel die Marke 
+\begin_inset Quotes gld
+\end_inset
+
+eq:tanhExp
+\begin_inset Quotes grd
+\end_inset
+
+ in der zweiten Zeile eingegeben:
+\begin_inset Formula 
+\begin{eqnarray}
+\tanh(x) & = & \frac{\sinh(x)}{\cosh(x)}\nonumber \\
+ & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}
+\end{eqnarray}
 
 \end_inset
 
-) markiert ist, die zweite nur nummeriert, die dritte gar nicht und die
- letzte (
+Jede markierte Zeile wird automatisch nummeriert.
+ Daher wird die Marke hinter der Nummer angezeigt.
+ Mit dem Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Querverweis
+\family default
+ (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+) kann man auf eine markierte Gleichung verweisen.
+ Es öffnet sich ein Dialog in dem man eine Marke auswählen kann.
+ Der Querverweis erscheint in LyX als graue Querverweis-Box und in der Ausgabe
+ als Nummer:
+\end_layout
+
+\begin_layout Standard
+Dies ist ein Querverweis auf Gleichung (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:fifth-eqn"
+reference "eq:tanhExp"
 
 \end_inset
 
-) wieder markiert.
+).
 \end_layout
 
 \begin_layout Standard
@@ -24940,8 +24968,7 @@ Schriftstile
 \end_layout
 
 \begin_layout Standard
-Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
- 
+Sie können verschiedene Schriftstile benutzen, die Sie über den Knopf 
 \family sans
 
 \begin_inset Info
@@ -25634,22 +25661,22 @@ AMS verwenden
 \end_layout
 
 \begin_layout Standard
-Wenn Sie unter 
+Wenn Sie im Menü 
 \family sans
-Dokument-Einstellungen
+Dokument
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-Mathe-Optionen
+Einstellungen
 \family default
- 
+ unter 
 \family sans
-AMS-Mathe-Paket
-\begin_inset space ~
-\end_inset
-
-automatisch
+Mathe-Optionen 
+\family default
+die Option
+\family sans
+ AMS-Mathe-Paket
 \begin_inset space ~
 \end_inset
 
@@ -25665,15 +25692,7 @@ Dokument ! Einstellungen
 
 \end_inset
 
- oder 
-\family sans
-AMS-Mathe-Paket
-\begin_inset space ~
-\end_inset
-
-verwenden
-\family default
- aktivieren, werden diese Pakete in Ihrem Dokument verwendet.
+ aktivieren, werden diese Pakete explizit in Ihrem Dokument verwendet.
 \end_layout
 
 \begin_layout Subsection
@@ -25708,56 +25727,13 @@ multline
 \family default
  auswählen.
  Eine ausführliche Dokumentation dieser Typen finden Sie in 
-\begin_inset CommandInset href
-LatexCommand href
-name "AMS-Dokumentation"
-target "http://www.ams.org/publications/authors/tex/amslatex"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AMS"
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-esint
-\end_layout
-
-\begin_layout Standard
-Das 
-\family typewriter
-esint
-\family default
--Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern Schriften
- alternative Integral-Symbole, näheres finden Sie auf 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://dante.ctan.org/tex-archive/help/Catalogue/entries/esint.html
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Weitergehende Literatur
-\end_layout
-
-\begin_layout Standard
-Im 
-\emph on
-Mathe
-\emph default
--Handbuch gibt es eine sehr umfangreiche Beschreibung des Mathematik-Editors,
- die auch Hinweise für physikalische und chemische Formeln enthält.
- Außerdem gibt es Hinweise, wie man Formeln, die LyX nicht sehr sauber setzt,
- verfeinern kann.
- Für viele Befehle ist die LaTeX-Notation angegeben, denn wer viele Formeln
- zu schreiben hat, wird feststellen, dass man mit den LaTeX-Befehlen viel
- schneller eine Formel setzen kann.
 \end_layout
 
 \begin_layout Chapter
@@ -30203,15 +30179,13 @@ X-Code
 \family sans
 Strg+L
 \family default
- oder durch Klicken auf den 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 85
-	groupId Icon
-
+ oder durch Klicken auf den Knopf 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
--Knopf (Tastenkürzel 
+ (Tastenkürzel 
 \family sans
 Strg+L
 \family default
@@ -32669,6 +32643,44 @@ Einstellungen
  LyX wechselt dann automatisch die Wörterbuchdateien.
 \end_layout
 
+\begin_layout Standard
+Alle von LyX unterstützten Wörterbucher können von hier heruntergeladen
+ werden:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Es gibt 2
+\begin_inset space ~
+\end_inset
+
+Dateien für jede Sprache.
+ Um ein Wörterbuch zu installieren, kopiert man beide Dateien in LyXs Installati
+onsunterordner 
+\family sans
+~
+\backslash
+Resources
+\backslash
+dicts
+\family default
+ und startet LyX neu.
+\end_layout
+
 \begin_layout Subsection
 Weitere Einstellungen
 \end_layout
@@ -32888,7 +32900,11 @@ OpenOffice Thesauri bestehen aus zwei Dateien pro Sprache: Eine Datei mit
 \end_inset
 
 B.
- de_DE für Deutsch).
+ 
+\family sans
+de_DE
+\family default
+ für Deutsch).
  So heißen die Dateien für Deutsch:
 \end_layout
 
@@ -32901,80 +32917,44 @@ th_de_DE_v2.dat
 \end_layout
 
 \begin_layout Standard
-Wenn Sie LibreOffice oder OpenOffice verwenden uns dessen Thesaurus installiert
- haben sollten sich diese Dateien bereits auf Ihrem System befinden.
- Falls nicht, kann man die Wörterbücher auch von 
+Wenn Sie LibreOffice oder OpenOffice verwenden uns dessen Thesaurus auf
+ einem Linux-System installiert haben, sollten sich diese Dateien bereits
+ auf Ihrem System befinden.
+ Bei Windows kann man im LyX-Installer auswählen, welche Wörterbucher installier
+t werden sollen..
+\end_layout
+
+\begin_layout Standard
+Alle von LyX unterstützten Wörterbucher können von hier heruntergeladen
+ werden:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/browser/dictionaries/trunk/thes
+http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \end_layout
 
 \end_inset
 
- oder von der Seite 
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org/en/project/dict-de_DE_frami
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
- beziehen.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Beachten Sie, dass seit OpenOffice
-\begin_inset space ~
-\end_inset
-
-3.0 die Dateien auf 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org
-\end_layout
-
-\end_inset
-
- üblicherweise als Erweiterungs-Archiv-Datei (
-\emph on
-*.oxt
-\emph default
-) gepackt sind und sich darin Dateien wie Rechtschreibprüfungs-Wörterbücher
- neben den Thesaurus-Dateien befinden.
- Diese Archiv-Dateien sind einfache Zip-Dateien und lassen sich mit jedem
- Zip-Programm entpacken.
-\end_layout
-
-\end_inset
-
- Packen Sie die 
-\emph on
-*.idx
-\emph default
- und 
-\emph on
-*.dat
-\emph default
--Dateien aller Sprachen, die Sie verwenden wollen, in ein Verzeichnis (verwenden
- Sie keine Unterverzeichnisse) und geben Sie den Pfad zu diesem Verzeichnis
- im Menü 
+Um ein Wörterbuch zu installieren, kopiert man beide Dateien in LyXs Installatio
+nsunterordner 
 \family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Pfade
+~
+\backslash
+Resources
+\backslash
+thes
 \family default
- an.
- Nun sollte der Thesaurus benutzbar sein.
+ und startet LyX neu.
 \end_layout
 
 \begin_layout Subsection
@@ -33193,20 +33173,27 @@ Farbe ! Änderungsverfolgung
  Der Autor und das Datum der Änderung werden in LyXs Statusleiste angezeigt,
  wenn sich der Cursor in geändertem Text befindet.
  Die selbe Information erhalten Sie, wenn Sie den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/changes-merge.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "changes-merge"
 \end_inset
 
  benutzen.
 \end_layout
 
 \begin_layout Standard
-Wenn die Änderungsverfolgung aktiviert ist, erscheint oben eine weitere
- Werkzeug\SpecialChar \-
+Wenn die Änderungsverfolgung aktiviert ist, erscheint diese Werkzeug\SpecialChar \-
 leiste:
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Werkzeugleiste ! Änderungsverfolgung
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -33219,6 +33206,7 @@ leiste:
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/ChangesToolbar.png
+	scale 90
 
 \end_inset
 
@@ -33226,45 +33214,88 @@ leiste:
 \end_layout
 
 \begin_layout Standard
-Diese Werkzeugleiste enthält folgende Schaltknöpfe:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/changes-track.png
-	scale 85
-	groupId Icon
-
+\begin_inset VSpace defskip
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Diese Werkzeugleiste enthält folgende Knöpfe:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+\begin_inset Info
+type  "icon"
+arg   "changes-track"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderungen
 \begin_inset space \space{}
 \end_inset
 
 verfolgen
-\family default
- (
-\family sans
-Strg+Umschalt+E
-\family default
-)
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/changes-output.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "changes-output"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 In
 \begin_inset space \space{}
@@ -33281,28 +33312,60 @@ Ausgabe
 anzeigen
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/change-next.png
-	scale 85
-	groupId Icon
-
 \end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
- springt zur nächsten Änderung
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/change-accept.png
-	scale 85
-	groupId Icon
-
-\end_inset
-
+\begin_layout Plain Layout
 
 \family sans
- Dokument\SpecialChar \menuseparator
+\begin_inset Info
+type  "icon"
+arg   "change-next"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+springt zur nächsten Änderung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "change-accept"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderung
 \begin_inset space \space{}
@@ -33311,17 +33374,33 @@ anzeigen
 akzeptieren
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/change-reject.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "change-reject"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderung
 \begin_inset space \space{}
@@ -33330,17 +33409,33 @@ akzeptieren
 ablehnen
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/changes-merge.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "changes-merge"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Änderungen
 \begin_inset space \space{}
@@ -33349,17 +33444,33 @@ ablehnen
 zusammenfassen
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/all-changes-accept.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "all-changes-accept"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Alle
 \begin_inset space \space{}
@@ -33372,17 +33483,33 @@ Alle
 akzeptieren
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/all-changes-reject.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "all-changes-reject"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Änderungsverfolgung\SpecialChar \menuseparator
 Alle
 \begin_inset space \space{}
@@ -33395,17 +33522,33 @@ Alle
 ablehnen
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Notiz\SpecialChar \menuseparator
 Ly
 \begin_inset ERT
@@ -33421,17 +33564,33 @@ status collapsed
 X-Notiz
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Graphics
-	filename ../../images/note-next.png
-	scale 85
-	groupId Icon
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "note-next"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \family sans
- Navigieren\SpecialChar \menuseparator
+Navigieren\SpecialChar \menuseparator
 Nächste
 \begin_inset space \space{}
 \end_inset
@@ -33439,9 +33598,26 @@ Nächste
 Notiz
 \end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Leider werden (noch) nicht alle Änderungen angezeigt, insbesondere keine
- Formatänderungen wie zum Beispiel 
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es werden (noch) nicht alle Änderungen angezeigt, insbesondere keine Formatänder
+ungen wie zum Beispiel 
 \emph on
 normal
 \emph default
@@ -33458,8 +33634,8 @@ Standardabsatz
 Beschreibung
 \emph default
 .
- Das kann man umgehen, indem man den Text(teil) dupliziert, das Original
- löscht und die Kopie ändert.
+ Das kann man jedoch anzeigen lassen, indem man den Textteil dupliziert,
+ das Original löscht und die Kopie ändert.
 \end_layout
 
 \begin_layout Standard
@@ -33475,8 +33651,8 @@ n, und dann zur nächsten Änderung zu gehen.
 \end_layout
 
 \begin_layout Standard
-Die Werkzeugleiste hat auch zwei Schaltknöpfe, um Notizen zu behandeln,
- weil diese zur Beschreibung einer Änderung oft wichtig sind.
+Die Werkzeugleiste hat zwei Schaltknöpfe, um Notizen zu behandeln, weil
+ diese zur Beschreibung einer Änderung oft wichtig sind.
 \end_layout
 
 \begin_layout Standard
@@ -37171,7 +37347,7 @@ Auswahlbox für die Umgebungen
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="22" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -37508,6 +37684,50 @@ Suchen
 \end_inset
 
 Ersetzen
+\begin_inset space \thinspace{}
+\end_inset
+
+(einfach)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Suchen
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Ersetzen
+\begin_inset space \thinspace{}
+\end_inset
+
+(erweitert)
 \end_layout
 
 \end_inset
@@ -38377,7 +38597,18 @@ arg   "note-insert"
 \family sans
 Einfügen\SpecialChar \menuseparator
 Notiz\SpecialChar \menuseparator
-LyX-Notiz
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Notiz
 \end_layout
 
 \end_inset
@@ -38437,7 +38668,7 @@ arg   "href-insert"
 
 \family sans
 Einfügen\SpecialChar \menuseparator
-URL
+Hyperlink
 \end_layout
 
 \end_inset
@@ -38574,7 +38805,8 @@ arg   "dialog-show character"
 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
-Textstil
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert
 \end_layout
 
 \end_inset
@@ -44320,7 +44552,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
+http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \end_layout
 
 \end_inset
@@ -44504,6 +44736,39 @@ http://www.xindy.org/documentation.html
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "AMS"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://www.ams.org/publications/authors/tex/amslatex"
+
+\end_inset
+
+ der AMS LaTeX-Pakete:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ams.org/publications/authors/tex/amslatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "caption"
 
 \end_inset
@@ -44512,7 +44777,7 @@ key "caption"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-deu.pdf"
 
 \end_inset
 
@@ -44540,7 +44805,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+http://mirrors.ctan.org/macros/latex/contrib/caption/caption-deu.pdf
 \end_layout
 
 \end_inset
@@ -44606,7 +44871,7 @@ key "fancyhdr"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -44634,7 +44899,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset
@@ -44653,7 +44918,7 @@ key "hyperref"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+target "http://www.ctan.org/pkg/hyperref"
 
 \end_inset
 
@@ -44681,7 +44946,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
+http://www.ctan.org/pkg/hyperref
 \end_layout
 
 \end_inset
@@ -44700,7 +44965,7 @@ key "nomencl"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
 
@@ -44728,7 +44993,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset

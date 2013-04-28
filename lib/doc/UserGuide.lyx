@@ -16841,7 +16841,7 @@ key "latexguide"
 \end_layout
 
 \begin_layout Chapter
-Notes, Graphics, Tables, and Floats
+Notes, Graphics, Tables and Floats
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Floats-and-Notes"
@@ -16900,7 +16900,7 @@ Note This note type is for internal notes that will not appear in the output.
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is text in a note box that doesn't appear in the output.
@@ -16917,7 +16917,18 @@ Comment This note also doesn't appear in the output but it does appear as
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-LaTeX
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
 \begin_inset space ~
 \end_inset
 
@@ -16929,7 +16940,7 @@ LaTeX
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 This is text in a note box that only appears as a comment in LaTeX-files.
@@ -16965,10 +16976,10 @@ notes
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
-This is text
+This is the text
 \begin_inset Foot
 status collapsed
 
@@ -16992,8 +17003,7 @@ This is an example footnote within a greyed out note.
 \begin_inset Newline newline
 \end_inset
 
-As you can see in the example, the first line of greyed out notes is a bit
- indented and greyed out notes can have footnotes.
+As you can see in the example, greyed out notes can have footnotes.
 \end_layout
 
 \begin_layout Standard
@@ -17009,7 +17019,7 @@ Insert\SpecialChar \menuseparator
 Note
 \family default
 .
- Right-click on the appearing note box to select the note type.
+ Right-click on the note box that appears to select the note type.
 \end_layout
 
 \begin_layout Section
@@ -17054,7 +17064,7 @@ you will see
 \family default
 \series default
 \bar default
- the following box: 
+ a box like this: 
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
 	scale 80
@@ -17099,7 +17109,7 @@ label, the box will
 \series default
 \bar default
  be opened and you can enter the footnote text into it.
- Clicking on the box label again, will close 
+ Clicking on the box label again will close 
 \family roman
 \series medium
 \bar no
@@ -17150,11 +17160,9 @@ To close a footnote, click on the footnote box label.
 The footnote will appear in the output as a superscript number at the text
  position where the footnote box is placed.
  The footnote text is placed at the bottom of the current page.
- The footnote number is calculated by LyX.
- The numbers are consecutive, no matter in which chapter the footnote is
- in.
- LyX doesn't support other numbering schemes yet, but you can get other
- schemes using special LaTeX-commands.
+ The footnote number is calculated by LyX according to the document class.
+ LyX does not yet support a particular numbering scheme, but you can get
+ other schemes using special LaTeX-commands.
  T
 \family roman
 h
@@ -17247,9 +17255,10 @@ At the side of this sentence is an example marginal note.
 \series medium
 
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\align left
 This is a marginal note.
 \end_layout
 
@@ -17265,7 +17274,7 @@ Marginal notes appear at the right side in single-sided documents.
 \end_layout
 
 \begin_layout Standard
-For further information about marginal notes see section 
+For further information about marginal notes see the section 
 \emph on
 Margin
 \begin_inset space ~
@@ -17273,7 +17282,7 @@ Margin
 
 Notes
 \emph default
- of the 
+ in the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -17336,7 +17345,10 @@ Graphics
 This dialog has numerous mostly self-explanatory parameters.
  The 
 \family sans
-Graphics
+\bar under
+G
+\bar default
+raphics
 \family default
  tab allows you to choose your image file.
  The image can be transformed by setting a rotation angle and a scaling
@@ -17404,7 +17416,37 @@ Clipping
 \begin_layout Standard
 In the 
 \family sans
-LaTeX and LyX options
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X options
 \family default
  tab LaTeX experts can specify additional LaTeX options.
  In this tab you can also specify the appearance of the image inside LyX.
@@ -17454,7 +17496,6 @@ The graphics dialog can be called at any time by clicking on an image.
  Images will appear in the output exactly at the position where they are
  in the text.
  This is an example image within a separate, horizontally centered paragraph:
- 
 \end_layout
 
 \begin_layout Standard
@@ -17894,8 +17935,11 @@ In the case of PDF, the original image is additionally compressed.
 \end_layout
 
 \begin_layout Standard
-Normally one cannot convert a bitmap image into a scalable one, only vice
- versa.
+Normally one cannot convert a bitmap image into a scalable one, only 
+\emph on
+vice versa
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -17924,17 +17968,59 @@ Each image can define a new group of image settings or join an existing
 \end_layout
 
 \begin_layout Standard
-A new group can be set by entering a name in the 
+A new group can be set by pressing the button 
 \family sans
-Group
+Open
 \begin_inset space ~
 \end_inset
 
-Name
+new
+\begin_inset space ~
+\end_inset
+
+group
 \family default
- field in the Graphics dialog.
+ in the
+\family sans
+ Graphics
+\family default
+ dialog in the 
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X options
+\family default
+ tab.
  Joining an existing group can be done using the context menu of the image
- by checking the name of the desired group.
+ and checking the name of the desired group.
 \end_layout
 
 \begin_layout Section
@@ -18413,7 +18499,7 @@ D
 
 \begin_layout Standard
 Adept users can declare special LaTeX-arguments for the table.
- They are necessary for special table formatting, like for multirow cells,
+ They are necessary for special table formatting, such as the multirow cells,
  explained in the chapter 
 \emph on
 Tables
@@ -18437,7 +18523,7 @@ degrees counterclockwise.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -18520,7 +18606,7 @@ Longtable
 Header
 \family default
 : The current row and all rows above, that don't have any special options
- defined, are defined to be the header rows of all pages of the longtable;
+ defined, are defined to be the header rows of all pages of the longtable.
  except for the first page, if 
 \family sans
 First
@@ -18551,7 +18637,7 @@ header
 Footer
 \family default
 : The current row and all rows below, that don't have any special options
- defined, are defined to be the footer rows of all pages of the longtable;
+ defined, are defined to be the footer rows of all pages of the longtable,
  except for the last page, if 
 \family sans
 Last
@@ -21065,13 +21151,13 @@ This is a multi-line entry in a table.
 
 \begin_layout Standard
 Cutting and pasting between tables and table cells works reasonably well.
- You can cut and paste even more than one row.
+ You can even cut and paste more than one row.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Note, that you cannot paste into a multicell selection because it would
- not be clear what to do when pasting a single word in a selected 2×3.
+Note that you cannot paste into a multicell selection because it would not
+ be clear what to do when pasting a single word in a selected 2×3.
  
 \end_layout
 
@@ -21187,7 +21273,7 @@ Floats ! Captions
  A closed float box looks like this: 
 \begin_inset Graphics
 	filename clipart/floatQt4.png
-	scale 80
+	scale 55
 
 \end_inset
 
@@ -21195,8 +21281,8 @@ Floats ! Captions
 \end_layout
 
 \begin_layout Standard
-It is recommended to insert floats as a separate paragraph to avoid possible
- LaTeX-errors that can occur when the surrounding text is specially formatted.
+You should insert floats in a separate paragraph to avoid possible LaTeX-errors
+ that can occur when the surrounding text is specially formatted.
 \end_layout
 
 \begin_layout Subsection
@@ -21242,28 +21328,28 @@ Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
 Figure
 \family default
- or the toolbar button 
+ (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "float-insert figure"
 \end_inset
 
-.
+).
  The image was inserted by setting the cursor above the caption label and
  using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Graphics
 \family default
- or the toolbar button 
+ (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-.
+).
  The image in the float was horizontally centered by putting the cursor
- in front of or behind the image and using the menu 
+ to the left or right of the image and using the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Paragraph
@@ -21272,20 +21358,20 @@ Paragraph
 
 Settings
 \family default
- or the toolbar button 
+ (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-.
+).
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -21329,26 +21415,26 @@ This figure float also shows how to set a label and create a cross-reference
 Insert\SpecialChar \menuseparator
 Label
 \family default
- or the toolbar button 
+ (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
- and refer to it using the menu 
+) and refer to it using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross-Reference
 \family default
- or the toolbar button 
+ (toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-.
- It is important to use references to figure floats, rather than using vague
- references like 
+).
+ It is important to use cross-references to figure floats rather than using
+ vague references like 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21576,8 +21662,9 @@ arg   "float-insert table"
 \end_inset
 
 .
- They have the same properties as figure floats except for the different
- label.
+ They have the same properties as figure floats except that the table in
+ the float is normally placed below the caption and not above like for figures
+ and that the label begins with “tab:”.
  Table
 \begin_inset space ~
 \end_inset
@@ -21835,12 +21922,12 @@ LyX offers you further float types as well as rotated floats.
  It also allows you to change the float numbering scheme, to control the
  float placement and to change the formatting and placement of the float
  caption.
- All these features are explained in detail with many examples in chapter
+ All these features are explained in detail with many examples in the chapter
  
 \emph on
 Floats
 \emph default
- of the 
+ in the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -21873,8 +21960,8 @@ name "sec:Minipages"
 \end_layout
 
 \begin_layout Standard
-LaTeX provides a mechanism to produce essentially a page within a page,
- called minipage.
+LaTeX provides a mechanism essentially to produce a page within a page,
+ called a minipage.
  Within a minipage, all the usual rules of indentation, line wrapping, etc.
 \begin_inset space \space{}
 \end_inset
@@ -21907,7 +21994,7 @@ width "30col%"
 special "none"
 height "1pt"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -22111,7 +22198,13 @@ type  "icon"
 arg   "math-mode on"
 \end_inset
 
-.
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
+\end_inset
+
+).
  That will create a little blue rectangle, with purple markers around its
  corners.
  That blue rectangle is the formula itself; the purple markers indicate
@@ -22164,16 +22257,8 @@ You can only number and reference displayed formulas.
 \end_layout
 
 \begin_layout Standard
-LyX supports also many LaTeX math commands.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-typing 
+LyX also supports many LaTeX math commands.
+ For example, typing 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22441,7 +22526,7 @@ type  "icon"
 arg   "math-subscript"
 \end_inset
 
-), but the much easier way is to use a command.
+), but it is often much easier to use a command.
  To get 
 \begin_inset Formula $x^{2}$
 \end_inset
@@ -22500,7 +22585,7 @@ y
 \series default
 .
  If you use characters in the superscript, that could be accented with the
- hat 
+ circumflex 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22512,16 +22597,8 @@ y
 \family sans
 Space
 \family default
- to separate the hat and the character.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-if you want 
+ to separate the circumflex and the character.
+ For example, if you want 
 \begin_inset Formula $x^{a}$
 \end_inset
 
@@ -22582,13 +22659,13 @@ Math ! Fractions
 \end_layout
 
 \begin_layout Standard
-Create a fraction with either the command 
+Create a fraction either with the command 
 \series bold
 
 \backslash
 frac
 \series default
- or using the icon 
+ or by using the icon 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac"
@@ -22652,7 +22729,7 @@ Math
 
 Panel
 \family default
- button 
+ buttons 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
@@ -22689,7 +22766,7 @@ root
 \backslash
 sqrt
 \series default
- produces always a square root.
+ always produces a square root.
 \end_layout
 
 \begin_layout Subsection
@@ -22743,9 +22820,8 @@ limits
 \begin_inset Quotes erd
 \end_inset
 
- over and under the symbol in displayed formulas, and on the side in inline
- formulas.
- Such as 
+ over and under the symbol in displayed formulas, and to the side in inline
+ formulas, as in 
 \begin_inset Formula $\sum_{n=0}^{\infty}\frac{1}{n!}=e$
 \end_inset
 
@@ -22757,7 +22833,7 @@ limits
 
 \end_inset
 
-Integral signs, however, will place the limits on the side in both formula
+Integral signs, however, will place the limits to the side in both formula
  types.
 \end_layout
 
@@ -22765,13 +22841,7 @@ Integral signs, however, will place the limits on the side in both formula
 All operators with limits will be automatically re-sized when placed in
  display mode.
  The placement of the limits can be changed by placing the cursor directly
- behind the operator and hitting 
-\begin_inset Info
-type  "shortcut"
-arg   "math-limits"
-\end_inset
-
- or using the menu 
+ behind the operator and using the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
@@ -22785,11 +22855,17 @@ Limits
 
 Type
 \family default
+ or entering 
+\begin_inset Info
+type  "shortcut"
+arg   "math-limits"
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
-Certain other mathematical expressions have this 
+Certain other mathematical expressions also have this 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22797,7 +22873,7 @@ moving limits
 \begin_inset Quotes erd
 \end_inset
 
- feature as addition, such as
+ feature, such as
 \begin_inset Index idx
 status collapsed
 
@@ -22969,13 +23045,14 @@ a Ctrl+Space b
  appears in LyX as 
 \begin_inset Graphics
 	filename clipart/SpaceMarker.png
+	scale 60
 
 \end_inset
 
 .
  You can change the space to different sizes when you set the cursor behind
- the space marker and hit space again several times.
- With every space hit the size will be changed.
+ the space marker and enter space again several times.
+ With every space enter the size will be changed.
  Some markers for the space size appear red in LyX, because they are negative
  spaces.
  Here are two examples:
@@ -23007,7 +23084,7 @@ a Ctrl+Space b
 Space
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!\!\!\!\! b$
 \end_inset
 
 
@@ -23099,8 +23176,8 @@ Using the function macros will also produce correct spacing around the function:
 \end_layout
 
 \begin_layout Standard
-For some mathematical objects, like the limes, the macro changes where subscript
-s are placed, as described in section
+For some mathematical objects, like limits, the macro changes where subscripts
+ are placed, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -23132,19 +23209,11 @@ Math ! Accents
 In a formula you can insert accented characters in the same way as in text
  mode.
  This may depend on your keyboard, or the bindings file you use.
- You can also use LaTeX commands to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-enter 
+ You can also use LaTeX commands, for example, to enter 
 \begin_inset Formula $\hat{a}$
 \end_inset
 
- even if your keyboard doesn't have hat-accents enabled.
+ even if your keyboard doesn't have the circumflex enabled.
  Our example is entered by typing 
 \series bold
 
@@ -23912,7 +23981,7 @@ matched
 \family default
 , the selected bracket type will be used for the left and the right side.
  The selection will be shown below the button field.
- If you want one side to not have a bracket, use the blank button.
+ If you want one side not to have a bracket, use the blank button.
  It will appear in LyX with a dotted line, but nothing will be printed.
 \end_layout
 
@@ -24104,7 +24173,7 @@ has\, left\, alignment & center\, alignment & alignment
 \end_layout
 
 \begin_layout Standard
-You can add more rows to an existing matrix by hitting 
+You can add more rows to an existing matrix by entering 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -24182,7 +24251,7 @@ arg   "newline-insert newline"
 
  etc.) will be inserted automatically in the first column, the relation sign
  is in the second column, and the rest in the third column.
- A new row is created by every further hit of 
+ A new row is created by every further entry of 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -24278,11 +24347,15 @@ To number a formula, set the cursor in the formula and use the menu
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Toggle
+Number
 \begin_inset space ~
 \end_inset
 
-Numbering
+Whole
+\begin_inset space ~
+\end_inset
+
+Formula
 \family default
  or the shortcut 
 \begin_inset Info
@@ -24291,25 +24364,8 @@ arg   "math-number-toggle"
 \end_inset
 
 .
- The formula number appears in LyX as 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- within parentheses.
- The 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- denotes that the number will be calculated automatically when the output
- is generated.
+ The formula number appears in LyX within parentheses.
+ The number shown is temporary and may be different when the output is generated.
  The placement and format of the formula number in the output depends on
  the document class.
  In this document the number is printed together with the chapter number,
@@ -24336,15 +24392,11 @@ Multi-line formulas can be numbered line by line: Using the menu
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Toggle
+Number
 \begin_inset space ~
 \end_inset
 
-Numbering
-\begin_inset space ~
-\end_inset
-
-of
+This
 \begin_inset space ~
 \end_inset
 
@@ -24385,9 +24437,15 @@ Every displayed formula can be referenced by its number using a label.
 Insert\SpecialChar \menuseparator
 Label
 \family default
- when the cursor is in the formula.
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+) when the cursor is in the formula.
  This opens a dialog to enter the label.
- It is recommended to use the proposed 
+ It is recommended that you use the suggested 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24419,16 +24477,7 @@ eq:tanhExp
 \end_inset
 
 Every labeled line is automatically numbered.
- Therefore the label is shown in LyX at the place of the formula number
- placeholder 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
-.
+ Therefore the label is shown behind the formula number.
  You can reference a labeled formula using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -24438,7 +24487,13 @@ Cross
 
 Reference
 \family default
-.
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+).
  A dialog appears to choose a label you want to refer to.
  The reference appears in LyX as a gray cross-reference box and in the output
  as the formula number:
@@ -24917,15 +24972,7 @@ f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
 
 \begin_layout Standard
 The typefaces are nestable, which can cause confusion.
- You can e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-put a character in 
+ You can, for example, put a character in 
 \family sans
 Fraktur
 \family default
@@ -25046,7 +25093,7 @@ arg   "font-default"
 
 ).
  Math text appears in LyX in black instead of blue.
- You can use spaces and accents in math text like in normal text.
+ You can use spaces and accents in math text as in normal text.
  Here is an example:
 \begin_inset Formula 
 \[
@@ -25232,7 +25279,8 @@ Enabling AMS-Support
 \end_layout
 
 \begin_layout Standard
-Selecting the checkbox 
+You can make the facilities of the AMS-packages explicitly available in
+ the document by selecting the checkbox 
 \family sans
 Use
 \begin_inset space ~
@@ -25271,8 +25319,8 @@ Math
 
 Options
 \family default
- will include the AMS-packages in the document and make the facilities available.
- AMS is needed for many math-constructs, so when you get LaTeX-errors in
+.
+ AMS is needed for many math-constructs; so when you get LaTeX-errors in
  formulas, ensure that you have enabled AMS.
 \end_layout
 
@@ -25320,7 +25368,14 @@ gather
 multline
 \family default
 .
- We refer to the AMS-documentation for an explanation of these formula types.
+ We refer you to the AMS-documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AMS"
+
+\end_inset
+
+, for an explanation of these formula types.
 \end_layout
 
 \begin_layout Chapter
@@ -31853,6 +31908,46 @@ Settings
  LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
+\begin_layout Standard
+All spell-checker dictionaries supported by LyX can be downloaded from here:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+There are 2
+\begin_inset space ~
+\end_inset
+
+files for each language.
+ To install a dictionary, copy the 2
+\begin_inset space ~
+\end_inset
+
+files into LyX's installation subfolder 
+\family sans
+~
+\backslash
+Resources
+\backslash
+dicts
+\family default
+ and restart LyX.
+\end_layout
+
 \begin_layout Subsection
 Further Settings
 \end_layout
@@ -32067,8 +32162,15 @@ OpenOffice thesauri consist of two files per language: A file with the suffix
 \end_inset
 
 g.
- en_EN for English).
- For instance, the English files are named:
+\begin_inset space ~
+\end_inset
+
+
+\family sans
+en_US
+\family default
+ for US English).
+ For instance, the US English files are named:
 \end_layout
 
 \begin_layout Itemize
@@ -32080,79 +32182,45 @@ th_en_EN_v2.dat
 \end_layout
 
 \begin_layout Standard
-If you have LibreOffice or OpenOffice and its thesaurus installed, these
- files should be already on your system.
- If not, you can get dictionaries either from 
+If you have LibreOffice or OpenOffice and its thesaurus installed on a Linux
+ system, these files should be already on your system.
+ On Windows you can choose in LyX's installer wich dictionaries should be
+ installed.
+\end_layout
+
+\begin_layout Standard
+All thesaurus dictionaries supported by LyX can be downloaded from here:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/browser/dictionaries/trunk/thes
+http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \end_layout
 
 \end_inset
 
- or from the site 
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org/en/search/node/thesaurus
-\end_layout
-
+\begin_inset Newline newline
 \end_inset
 
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Note that, as of OpenOffice
+To install a dictionary, copy the 2
 \begin_inset space ~
 \end_inset
 
-3.0, the files on 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://extensions.services.openoffice.org
-\end_layout
-
-\end_inset
-
- are usually packed in extension archives (
-\emph on
-*.oxt
-\emph default
-) that contain other files such as spellchecker dictionaries besides the
- thesauri.
- These archives are simple zip files, so you can unpack them as you would
- unpack a zip archive.
-\end_layout
-
-\end_inset
-
- Put the 
-\emph on
-*.idx
-\emph default
- and 
-\emph on
-*.dat
-\emph default
- files of all languages you want to use into one directory (do not use subfolder
-s), and specify the path to this directory in 
+files into LyX's installation subfolder 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Paths
+~
+\backslash
+Resources
+\backslash
+thes
 \family default
-.
- Now the thesaurus should be ready to use.
+ and restart LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -32422,8 +32490,7 @@ Toolbar ! Review
 \end_layout
 
 \begin_layout Standard
-The review toolbar as shown above contains from left to right the following
- buttons:
+The review toolbar as shown above contains the following buttons:
 \end_layout
 
 \begin_layout Standard
@@ -32780,7 +32847,18 @@ arg   "note-insert"
 \family sans
 Insert\SpecialChar \menuseparator
 Note\SpecialChar \menuseparator
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \begin_inset space ~
 \end_inset
 
@@ -33388,7 +33466,7 @@ yX format of the special LyX
 \begin_inset Newline newline
 \end_inset
 
- Since LyX 1.5.0 CJK support is fully integrated into LyX.
+ Since LyX 1.5.0 CJK support as been fully integrated into LyX.
 \end_layout
 
 \begin_layout Description
@@ -33449,7 +33527,7 @@ LuaTeX
 \series bold
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -36639,7 +36717,7 @@ pull-down box for the environments
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="22" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -36976,6 +37054,50 @@ Find
 \end_inset
 
 Replace
+\begin_inset space \thinspace{}
+\end_inset
+
+(Quick)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Find
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+Replace
+\begin_inset space \thinspace{}
+\end_inset
+
+(Advanced)
 \end_layout
 
 \end_inset
@@ -37040,7 +37162,8 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \family default
  dialog
 \end_layout
@@ -37076,7 +37199,8 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \family default
  dialog
 \end_layout
@@ -37105,14 +37229,15 @@ arg   "textstyle-apply"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Formats text using the current settings in the 
+Format text using the current settings in the 
 \family sans
 Edit\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \family default
  dialog
 \end_layout
@@ -37873,7 +37998,18 @@ arg   "note-insert"
 \family sans
 Insert\SpecialChar \menuseparator
 Note\SpecialChar \menuseparator
-LyX
+L
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+yX
 \begin_inset space ~
 \end_inset
 
@@ -37937,7 +38073,7 @@ arg   "href-insert"
 
 \family sans
 Insert\SpecialChar \menuseparator
-URL
+Hyperlink
 \end_layout
 
 \end_inset
@@ -38086,7 +38222,8 @@ Text
 \begin_inset space ~
 \end_inset
 
-Style
+Style\SpecialChar \menuseparator
+Customized
 \end_layout
 
 \end_inset
@@ -38164,7 +38301,7 @@ Thesaurus
 \end_layout
 
 \begin_layout Subsection
-View / Update Toolbar
+View/Update Toolbar
 \begin_inset Index idx
 status collapsed
 
@@ -38194,8 +38331,8 @@ Toolbar ! View / Update
 \end_layout
 
 \begin_layout Standard
-The view / update toolbar as shown above contains from left to right the
- following buttons:
+The view/update toolbar as shown above contains from left to right the following
+ buttons:
 \end_layout
 
 \begin_layout Standard
@@ -38296,6 +38433,10 @@ arg   "master-buffer-view"
 \family sans
 View\SpecialChar \menuseparator
 Master
+\begin_inset space ~
+\end_inset
+
+Document
 \end_layout
 
 \end_inset
@@ -38330,6 +38471,10 @@ Update
 \end_inset
 
 Master
+\begin_inset space ~
+\end_inset
+
+Document
 \end_layout
 
 \end_inset
@@ -38475,7 +38620,7 @@ Embedded
 
 Objects
 \emph default
- manual, the math macro toolbar
+ manual and the math macro toolbar
 \begin_inset Index idx
 status collapsed
 
@@ -43292,14 +43437,18 @@ name "chap:Units-available-in"
 \end_layout
 
 \begin_layout Standard
-To understand the units described in this documentation, 
+Table
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Units"
 
 \end_inset
 
- explains all units available in LyX.
+ explains all the units available in LyX and used in this documentation.
 \end_layout
 
 \begin_layout Standard
@@ -43307,7 +43456,7 @@ reference "tab:Units"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -43962,6 +44111,7 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Credits"
@@ -43996,6 +44146,7 @@ http://www.lyx.org/Credits
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -44011,6 +44162,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -44027,6 +44179,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -44042,6 +44195,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
@@ -44059,6 +44213,7 @@ The TeXbook.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
@@ -44075,7 +44230,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
+http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \end_layout
 
 \end_inset
@@ -44084,6 +44239,7 @@ http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
@@ -44109,6 +44265,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX"
@@ -44146,6 +44303,7 @@ http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX-2"
@@ -44183,6 +44341,7 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
@@ -44220,6 +44379,7 @@ http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
@@ -44257,6 +44417,41 @@ http://www.xindy.org/documentation.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "AMS"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ams.org/publications/authors/tex/amslatex"
+
+\end_inset
+
+ of the AMS LaTeX-packages:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ams.org/publications/authors/tex/amslatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -44267,7 +44462,7 @@ key "caption"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
 
 \end_inset
 
@@ -44295,7 +44490,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
 \end_layout
 
 \end_inset
@@ -44304,6 +44499,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
@@ -44351,6 +44547,7 @@ http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
@@ -44361,7 +44558,7 @@ key "fancyhdr"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -44389,7 +44586,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset
@@ -44398,6 +44595,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -44405,13 +44603,17 @@ key "hyperref"
 \end_inset
 
 
+\series bold
+
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+target "http://www.ctan.org/pkg/hyperref"
 
 \end_inset
 
+
+\series default
  of the LaTeX-package 
 \series bold
 hyperref
@@ -44436,7 +44638,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
+http://www.ctan.org/pkg/hyperref
 \end_layout
 
 \end_inset
@@ -44445,6 +44647,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
@@ -44455,7 +44658,7 @@ key "nomencl"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
 
@@ -44483,7 +44686,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset
@@ -44492,6 +44695,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -44539,6 +44743,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
@@ -44586,6 +44791,7 @@ http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
@@ -44633,6 +44839,7 @@ http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
@@ -44666,6 +44873,7 @@ http://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
@@ -44699,6 +44907,7 @@ http://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
@@ -44732,6 +44941,7 @@ http://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
@@ -44765,6 +44975,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
@@ -44798,6 +45009,7 @@ http://wiki.lyx.org/Windows/Japanese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Latvian"
@@ -44831,6 +45043,7 @@ http://wiki.lyx.org/Windows/Latvian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lithuanian"
@@ -44864,6 +45077,7 @@ http://wiki.lyx.org/Windows/Lithuanian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mongolian"
@@ -44897,6 +45111,7 @@ http://wiki.lyx.org/Windows/Mongolian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
@@ -44930,6 +45145,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
