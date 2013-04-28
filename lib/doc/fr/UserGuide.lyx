@@ -42530,7 +42530,18 @@ export
 
 XHTML positionne les réglages pour le format d'exportation 
 \family sans
-LyXHTML
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XHTML
 \family default
 .
  
@@ -42671,28 +42682,55 @@ Personnalisation ! des menus
 
 \begin_layout Standard
 On peut changer l'apparence des menus et des barres d'outils en choisissant
- un autre fichier de description de l'interface utilisateur
+ un fichier de description de l'interface utilisateur
 \family typewriter
  
 \family default
 (ui).
  Un fichier ui est un fichier texte dans lequel les éléments des menus et
  des barres d'outils sont listés.
- Les boutons des barres d'outils et les éléments de menu sont décrits dans
- les fichiers 
-\emph on
-stdtoolbars.inc
-\emph default
- et 
-\emph on
-stdmenus.inc
-\emph default
- respectivement, ces derniers étant ensuite utilisés par le fichier 
+ 
+\lang english
+The file 
 \emph on
 default.ui
 \emph default
-.
- Pour créer une nouvelle disposition de menu ou de barre d'outils, partez
+ loads three files
+\lang french
+:
+\end_layout
+
+\begin_layout Description
+stdmenus.inc
+\shape italic
+ 
+\emph on
+\lang english
+specifies the menu entries for the standard menus
+\end_layout
+
+\begin_layout Description
+stdcontext.inc 
+\shape italic
+\emph on
+\lang english
+specifies
+\shape default
+\emph default
+ the menu entries in popup context menus
+\end_layout
+
+\begin_layout Description
+stdtoolbars.inc
+\shape italic
+ 
+\emph on
+\lang english
+specifies the toolbar buttons
+\end_layout
+
+\begin_layout Standard
+Pour créer une nouvelle disposition de menu ou de barre d'outils, partez
  d'une copie de ces fichiers et éditez les éléments que vous voulez modifier.
 \end_layout
 
@@ -42796,7 +42834,18 @@ Fonctions
 \begin_inset space ~
 \end_inset
 
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \family default
 .
 \end_layout
@@ -42832,19 +42881,27 @@ Item "Enregistrer Signet 6" "bookmark-save 6"
 \emph on
 navigate_bookmarks
 \emph default
- dans le fichier .inc, pour disposer d'un sixième signet.
-\end_layout
-
-\begin_layout Subsubsection
-Jeu d'icônes
+ dans le fichier 
+\emph on
+stdmenus.inc
+\emph default
+, pour disposer d'un sixième signet.
 \end_layout
 
 \begin_layout Standard
-Via cette rubrique, vous pouvez modifier l'apparence des boutons des barres
- d'outils.
- Les ensembles d'icônes actuellement disponibles sont comparés ici:
+Avec
+\family sans
+ 
 \lang english
+Icon
+\begin_inset space ~
+\end_inset
 
+Set
+\family default
+\lang french
+ vous pouvez modifier l'apparence des boutons des barres d'outils.
+ Les ensembles d'icônes actuellement disponibles sont comparés ici: 
 \begin_inset CommandInset href
 LatexCommand href
 name "this image"
@@ -42940,12 +42997,11 @@ Faire une sauvegarde des documents originaux lors de l'enregistrement
 \family default
 crée une copie de sauvegarde du fichier dans l'état où il était lorsqu'il
  a été ouvert ou enregistré la dernière fois.
- Cette copie est conservée dans le répertoire de votre document ou dans
- le 
+ Cette copie est conservée dans le 
 \family sans
 Répertoire de sauvegarde
 \family default
-, voir la section
+ voir la section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -42956,6 +43012,18 @@ reference "sec:Répertoires"
 
 \end_inset
 
+ ou dans le répertoire de votre document 
+\lang english
+if no
+\lang french
+ 
+\family sans
+Répertoire de sauvegarde
+\family default
+ 
+\lang english
+is specified
+\lang french
 .
  La copie de sauvegarde possède le suffixe 
 \begin_inset Quotes fld
@@ -43193,7 +43261,7 @@ Les
 Tailles de police
 \family default
  sont données comme des hauteurs de lettre en points.
- Une lettre de 72
+ Une lettre de 72.27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -43490,8 +43558,18 @@ Le fichier Bind
 \end_layout
 
 \begin_layout Standard
-Les liens (bind) sont utilisés pour effectuer la liaison entre une fonction
- de LyX et une combinaison de touches.
+
+\family sans
+\lang english
+Bind File
+\family default
+\lang french
+ 
+\lang english
+specifies the file that is
+\lang french
+ utilisé pour effectuer la liaison entre une fonction de LyX et une combinaison
+ de touches.
  Plusieurs fichiers de liaisons sont disponibles, tout prêts: 
 \end_layout
 
@@ -43524,9 +43602,9 @@ OS.
 \begin_layout Standard
 Il y a aussi des fichier .bind qui ont été créés pour des classes de documents
  particulières comme par exemple 
-\family typewriter
+\shape italic
 broadway.bind
-\family default
+\shape default
  et aussi pour des langues particulières.
  Le nom des fichiers 
 \family typewriter
@@ -43552,20 +43630,43 @@ Certains fichiers
 .bind
 \family default
  ont un champ relativement limité, comme 
-\family typewriter
+\shape italic
 math.bind
-\family default
+\shape default
 .
  Quand on regarde à la fin du fichier 
-\family typewriter
+\shape italic
 cua.bind
-\family default
+\shape default
 , on peut voir que ces derniers sont inclus pour conserver le contrôle dans
  le fichier 
 \family typewriter
 .bind
 \family default
  principal.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The field 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+ke
+\bar under
+y
+\bar default
+-bindings
+\begin_inset space ~
+\end_inset
+
+containing
+\family default
+ allows you to search for the shortcut provided for a particular function
+ in the selected key binding file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -43645,17 +43746,25 @@ Modifier
 Alt+Q
 \family default
  pour définir le raccourci.
- Modifier un raccourci existant se fait de la même manière.
+\end_layout
+
+\begin_layout Standard
+Modifier un raccourci existant se fait de la même manière.
  Vous pouvez aussi associer plusieurs fonctions au même raccourci en modifiant
- un raccourci existant et en ajoutant les différents noms de fonctions séparés
- par des point-virgules.
+ un raccourci existant et en 
+\lang english
+starting the LyX Function definition with “command alternatives” and following
+ it with the
+\lang french
+ différents noms de fonctions séparés par des point-virgules.
  LyX utilisera alors la première fonction de la liste qui est autorisée
  dans la partie courant du document.
- L'association pour la fonction
-\family sans
- command-alter
-\family default
- en est un exemple.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you don't like a a particular shortcut, you can remove it.
 \end_layout
 
 \begin_layout Standard
@@ -43768,16 +43877,72 @@ keyboard map
 \emph default
 ).
  Si par exemple, vous avez un clavier tchèque et que vous voulez l'utiliser
- comme un clavier roumain, vous pouvez utiliser le fichier de carte de clavier
- nommé
+ comme un clavier roumain, vous pouvez 
+\lang english
+enable 
+\family sans
+Use
+\begin_inset space ~
+\end_inset
+
+keyboard
+\begin_inset space ~
+\end_inset
+
+map
+\family default
+ and select
+\lang french
+ le fichier de carte de clavier nommé
 \family sans
  
 \family default
-\emph on
+\shape italic
 romanian.kmap
-\emph default
+\shape default
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can specify a 
+\family sans
+First
+\family default
+ and a 
+\family sans
+Second
+\family default
+ keyboard map and, if you use the 
+\emph on
+cua
+\emph default
+ bindings, you can select the first and second with
+\lang french
  
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-primary"
+\end_inset
+
+ et 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-secondary"
+\end_inset
+
+ 
+\lang english
+respectively or toggle between them with
+\lang french
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-toggle"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -43856,6 +44021,14 @@ Repertoires@Répertoires
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The paths to the various resources used by LyX are normally determined during
+ installation.
+ But there may be reasons why you might want to modify them.
 \end_layout
 
 \begin_layout Description
@@ -45350,12 +45523,25 @@ document
 \begin_inset space ~
 \end_inset
 
-change Retire toutes les options de classe de document mises manuellement
- dans la fenêtre de dialogue 
+change Retire toutes les 
+\family sans
+\lang english
+Class options
+\family default
+\lang french
+ mises manuellement dans la fenêtre de dialogue 
 \family sans
 Document\SpecialChar \menuseparator
-Paramètres
+Paramètres\SpecialChar \menuseparator
+
+\lang english
+Document
+\begin_inset space ~
+\end_inset
+
+Class
 \family default
+\lang french
  quand on change la classe de document.
  
 \end_layout
@@ -47019,6 +47205,39 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Armenian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Cyrillic"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "page Wiki"
+target "http://wiki.lyx.org/Windows/Cyrillic"
+
+\end_inset
+
+ comment configurer LyX pour langues cyrilliques:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset

@@ -33145,7 +33145,18 @@ DVIとPDFの遡及検索
 \begin_layout Description
 XHTML出力オプション 書き出し形式
 \family sans
-LyXHTML
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XHTML
 \family default
 用の設定。
 \family sans
@@ -33285,19 +33296,40 @@ status collapsed
 
 \begin_layout Standard
 メニューやツールバーの外観は、操作画面設定（UI）ファイルを選ぶことで、変更することができます。UIファイルは、ツールバーやメニューが列挙してあるテキストファイ
-ルです。ツールバーボタンとメニュー項目は、それぞれ
-\emph on
-stdtoolbars.inc
-\emph default
-と
-\emph on
-stdmenus.inc
-\emph default
-ファイルで指定してあります。これらのファイルは、
+ルです。
+\lang english
+The file 
 \emph on
 default.ui
 \emph default
-ファイルで読み込まれています。ご自身のメニュー及びツールバーレイアウトを作成するには、まずこれらのファイルをコピーして、中の項目を編集してください。
+ loads three files
+\lang japanese
+:
+\end_layout
+
+\begin_layout Description
+stdmenus.inc 
+\lang english
+specifies the menu entries for the standard menus
+\end_layout
+
+\begin_layout Description
+stdcontext.inc 
+\lang english
+specifies the menu entries in popup context menus
+\end_layout
+
+\begin_layout Description
+stdtoolbars.inc
+\shape italic
+ 
+\emph on
+\lang english
+specifies the toolbar buttons
+\end_layout
+
+\begin_layout Standard
+ご自身のメニュー及びツールバーレイアウトを作成するには、まずこれらのファイルをコピーして、中の項目を編集してください。
 \end_layout
 
 \begin_layout Standard
@@ -33384,7 +33416,18 @@ LyX関数
 \SpecialChar \menuseparator
 
 \family sans
-LyX関数
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X関数
 \family default
 に列挙してあります。
 \begin_inset VSpace medskip
@@ -33431,14 +33474,25 @@ bookmark-save 6
 \begin_inset VSpace smallskip*
 \end_inset
 
-を.incファイルの「navigate_bookmarks」（移動）メニュー部分に書き加えると、しおりが6つになります。
-\end_layout
-
-\begin_layout Subsubsection
-アイコンセット
+を
+\emph on
+stdmenus.inc
+\emph default
+ファイルの「navigate_bookmarks」（移動）メニュー部分に書き加えると、しおりが6つになります。
 \end_layout
 
 \begin_layout Standard
+
+\family sans
+\lang english
+Icon
+\begin_inset space ~
+\end_inset
+
+Set
+\family default
+ allows you to
+\lang japanese
 ここでは、LyXのツールバーの外観を変更することができます。現在使用できるアイコンセットは、
 \begin_inset CommandInset href
 LatexCommand href
@@ -33524,22 +33578,38 @@ status collapsed
 \family sans
 保存する際に元の文書をバックアップする
 \family default
-を有効にすると、ファイルが開かれた時の状態か、最後に保存された時の状態のバックアップコピーを作成します。これは、使用中の文書と同じフォルダか、
+を有効にすると、ファイルが開かれた時の状態か、最後に保存された時の状態のバックアップコピーを作成します。
+\lang english
+It is stored in the 
 \family sans
-バックアップディレクトリ
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
 \family default
-に作成されます(第
+ (see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:パス"
 
 \end_inset
 
-節参照)。バックアップファイルには、「
+)
+\lang english
+ or in the same folder as your document if no 
 \family sans
-.lyx~
+Backup
+\begin_inset space ~
+\end_inset
+
+directory
 \family default
-」という拡張子がつきます。
+ is specified
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -33730,7 +33800,7 @@ Courier
 \end_layout
 
 \begin_layout Standard
-フォント寸法は、ポイント単位で測られた文字高で表されます。72ポイントが1インチの大きさになります。付録
+フォント寸法は、ポイント単位で測られた文字高で表されます。72.27ポイントが1インチの大きさになります。付録
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:LyXで使用できる単位"
@@ -34010,7 +34080,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-キー設定は、関数をキーに結びつけます。以下のように、いくつかのキー設定が利用できます。
+
+\family sans
+\lang english
+Bind File
+\family default
+ specifies the binding file to be used to bind a LyX-function to a key.
+ Several binding files are available, among them
+\family sans
+\lang japanese
+:
 \end_layout
 
 \begin_layout Description
@@ -34043,27 +34122,50 @@ OS
 
 \begin_layout Standard
 また、
-\emph on
+\shape italic
 broadway.bind
-\emph default
+\shape default
 のように、特定の文書クラス用にデザインされたキー設定ファイルや、特定の言語用のキー設定ファイルもあります。言語用キー設定ファイルの名前は、例えばポルトガルならば
 「pt」のように、言語コードで始まります。LyXを特定の言語の下で使うと、LyXは適切なキー設定ファイルを使用しようとします。
 \end_layout
 
 \begin_layout Standard
 
-\emph on
+\shape italic
 math.bind
-\emph default
+\shape default
 のようないくつかのキー設定ファイルは、限られた範囲の定義しか含んでいません。
-\emph on
+\shape italic
 cua.bind
-\emph default
+\shape default
 ファイルの終わりを見れば、キー設定ファイルの見通しをよくするために、
 \emph on
 math.bind
 \emph default
 がインクルードされる形になっているのを確認できるはずです。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The field 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+ke
+\bar under
+y
+\bar default
+-bindings
+\begin_inset space ~
+\end_inset
+
+containing
+\family default
+ allows you to search for the shortcut provided for a particular function
+ in the selected key binding file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -34119,13 +34221,23 @@ Alt+Q
 \family sans
 修正
 \family default
-ボタンを押します。短絡キーを追加するためのダイアログが現れますので、Alt+Qを押して短絡キーを定義します。既存の短絡キーの修正も、これと同様に行います。既存の
-キー設定を修正して、セミコロンで区切られたリストとして他の関数を加えれば、一つの短絡キーに複数の関数を割り当てることができます。するとLyXは、現在の文書部分で
-有効な関数のうち最初のものを使用します。関数
-\family sans
-command-after
-\family default
-のキー設定は、これの例になっています。
+ボタンを押します。短絡キーを追加するためのダイアログが現れますので、Alt+Qを押して短絡キーを定義します。
+\end_layout
+
+\begin_layout Standard
+既存の短絡キーの修正も、これと同様に行います。
+\lang english
+You can also bind multiple functions to one shortcut by starting the LyX
+ Function definition with “command alternatives” and following it with the
+ different function names as a semicolon separated list
+\lang japanese
+。するとLyXは、現在の文書部分で有効な関数のうち最初のものを使用します。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you don't like a a particular shortcut, you can remove it.
 \end_layout
 
 \begin_layout Standard
@@ -34195,16 +34307,78 @@ status collapsed
 
 \begin_layout Standard
 通常、キーボードの設定は、お使いのオペレーティングシステムのメニューで行います。これができない場合のために、LyXではキーボード配置表を使用することができます。
-例えば、チェコ語キーボードを持っているけれども、ルーマニア語用のもののように動作させるには、
-\emph on
+例えば、チェコ語キーボードを持っているけれども、ルーマニア語用のもののように動作させるには
+\lang english
+enable 
+\family sans
+Use
+\begin_inset space ~
+\end_inset
+
+keyboard
+\begin_inset space ~
+\end_inset
+
+map
+\family default
+ and select
+\lang japanese
+、
+\shape italic
 romanian.kmap
-\emph default
+\shape default
 というファイル名のキーボード配置表を使うとよいでしょう。
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+You can specify a 
+\family sans
+First
+\family default
+ and a 
+\family sans
+Second
+\family default
+ keyboard map and, if you use the 
+\emph on
+cua
+\emph default
+ bindings, you can select the first and second with
+\lang japanese
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-primary"
+\end_inset
+
+ 
+\lang english
+and
+\lang japanese
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-secondary"
+\end_inset
+
+ 
+\lang english
+respectively or toggle between them with
+\lang japanese
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-toggle"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -34281,6 +34455,14 @@ status collapsed
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+The paths to the various resources used by LyX are normally determined during
+ installation.
+ But there may be reasons why you might want to modify them.
+\end_layout
+
 \begin_layout Description
 作業ディレクトリ これはLyXの作業ディレクトリです。ファイルを
 \family sans
@@ -34322,7 +34504,7 @@ status collapsed
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -35036,12 +35218,23 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-文書クラス変更時にクラスオプションをリセットする これを有効にすると、文書クラスを変更するときに、
+文書クラス変更時にクラスオプションをリセットする 
+\lang english
+Removes all manually set 
 \family sans
-文書\SpecialChar \menuseparator
-設定
+Class options
 \family default
-ダイアログで手動で設定した文書クラスオプションは、すべて削除されます。
+ in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+ dialog when changing the document class.
 \end_layout
 
 \begin_layout Section
@@ -36712,6 +36905,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Armenian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Cyrillic"
+
+\end_inset
+
+
+\lang english
+how to set up LyX for Cyrillic languages
+\lang japanese
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikiページ"
+target "http://wiki.lyx.org/Windows/Cyrillic"
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset

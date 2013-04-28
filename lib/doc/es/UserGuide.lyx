@@ -41086,7 +41086,18 @@ salida
 
 XHTML funciones para el formato de exportación 
 \family sans
-LyXHTML
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XHTML
 \family default
 .
  
@@ -41236,17 +41247,40 @@ ui
 ) elegido.
  Es un archivo de texto con una lista de los menús y de las barras de herramient
 as.
- Los botones de las barras de herramientas y las entradas de los menús se
- especifican en los archivos 
+ 
+\lang english
+The file 
 \emph on
+default.ui
+\emph default
+ loads three files
+\lang spanish
+:
+\end_layout
+
+\begin_layout Description
+stdmenus.inc 
+\lang english
+specifies the menu entries for the standard menus
+\end_layout
+
+\begin_layout Description
+stdcontext.inc 
+\lang english
+specifies the menu entries in popup context menus
+\end_layout
+
+\begin_layout Description
 stdtoolbars.inc
-\emph default
- y 
+\shape italic
+ 
 \emph on
-stdmenus.inc
-\emph default
-, respectivamente.
- Para crear tus propios formatos de menú y de barras de herramientas comienza
+\lang english
+specifies the toolbar buttons
+\end_layout
+
+\begin_layout Standard
+Para crear tus propios formatos de menú y de barras de herramientas comienza
  con una copia de estos archivos y edita las entradas.
  
 \end_layout
@@ -41334,7 +41368,18 @@ o
 Las funciones de LyX se listan en el menú 
 \family sans
 Ayuda\SpecialChar \menuseparator
-Funciones de LyX
+Funciones de Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \family default
 .
 \begin_inset VSpace medskip
@@ -41379,16 +41424,26 @@ navigate_bookmarks
 \emph on
  
 \emph default
-del archivo .inc.
-\end_layout
-
-\begin_layout Subsubsection
-Colección de iconos
+del archivo 
+\emph on
+stdmenus.inc
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
-Puedes cambiar el aspecto de los botones de las barras de herramientas de
- LyX.
+Con 
+\family sans
+\lang english
+Icon
+\begin_inset space ~
+\end_inset
+
+Set
+\family default
+\lang spanish
+ puedes cambiar el aspecto de los botones de las barras de herramientas
+ de LyX.
  Las colecciones de iconos disponibles actualmente se muestran en 
 \begin_inset CommandInset href
 LatexCommand href
@@ -41481,6 +41536,34 @@ Hacer copias de seguridad de los documentos originales al guardar
 \family default
 crea una copia de seguridad del archivo en el estado en que se abrió o se
  guardó la última vez.
+ Se guarda en la 
+\family sans
+Copias de seguridad
+\family default
+ (véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rutas"
+
+\end_inset
+
+) o en la misma carpeta del documento 
+\lang english
+if no
+\lang spanish
+ 
+\family sans
+Copias de seguridad
+\family default
+ 
+\lang english
+is specified
+\lang spanish
+.
  Se guarda en la misma carpeta del documento o en el directorio 
 \family sans
 Copias de seguridad
@@ -41700,7 +41783,7 @@ Zoom.
 
 \begin_layout Standard
 Los tamaños de las tipografías se expresan como altura del carácter en puntos.
- 72
+ 72.27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -42021,9 +42104,22 @@ Archivos de asociaciones de teclas
 \end_layout
 
 \begin_layout Standard
-Las combinaciones de teclas se usan para asociar una función de LyX a una
- o varias teclas.
- Hay varios archivos disponibles para asociaciones de teclas:
+
+\family sans
+\lang english
+Bind File
+\family default
+ specifies the file
+\lang spanish
+ se usa para asociar una función de LyX a una o varias teclas.
+ Hay varios archivos disponibles para asociaciones de teclas
+\family sans
+, 
+\family default
+\lang english
+among them
+\lang spanish
+:
 \end_layout
 
 \begin_layout Description
@@ -42049,9 +42145,9 @@ Mac
 \begin_layout Standard
 Además hay archivos de asociaciones de teclas para clases especiales de
  documentos, como 
-\emph on
+\shape italic
 broadway.bind
-\emph default
+\shape default
 , y para ciertos idiomas.
  El nombre de los archivos para idiomas comienza con el código del idioma.
  por ejemplo, «pt» para portugués.
@@ -42061,16 +42157,39 @@ broadway.bind
 
 \begin_layout Standard
 Algunos archivos de asociaciones de teclas como 
-\emph on
+\shape italic
 math.bind
-\emph default
+\shape default
 , son de pequeño alcance.
  Si miras al final del archivo 
-\emph on
+\shape italic
 cua.bind
-\emph default
+\shape default
  verás algunos de aquellos incluidos para mantener la información general
  en el archivo.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The field 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+ke
+\bar under
+y
+\bar default
+-bindings
+\begin_inset space ~
+\end_inset
+
+containing
+\family default
+ allows you to search for the shortcut provided for a particular function
+ in the selected key binding file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -42133,7 +42252,23 @@ Modificar
 .
  Surge un diálogo en el que puedes añadir el atajo pulsando las teclas correspon
 dientes, en este caso Alt+Q.
- De igual manera se modifica una combinación ya existente.
+\end_layout
+
+\begin_layout Standard
+De igual manera se modifica una combinación ya existente.
+ 
+\lang english
+You can also bind multiple functions to one shortcut by starting the LyX
+ Function definition with “command alternatives” and following it with the
+ different function names as a semicolon separated list.
+ LyX will then use the first function that is enabled in the current document
+ part.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you don't like a a particular shortcut, you can remove it.
 \end_layout
 
 \begin_layout Standard
@@ -42207,10 +42342,68 @@ Configuración ! Mapa de teclado
 Normalmente la configuración del teclado se hace en el sistema operativo.
  Para casos en los que no es posible, LyX suministra mapas de teclado.
  Si tienes, por ejemplo, un teclado checo pero quieres escribir en él como
- en un teclado rumano, puedes usar el mapa de teclado 
-\emph on
+ en un teclado rumano, puedes 
+\lang english
+enable 
+\family sans
+Use
+\begin_inset space ~
+\end_inset
+
+keyboard
+\begin_inset space ~
+\end_inset
+
+map
+\family default
+ and select
+\lang spanish
+ el mapa de teclado 
+\shape italic
 romanian.kmap
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can specify a 
+\family sans
+First
+\family default
+ and a 
+\family sans
+Second
+\family default
+ keyboard map and, if you use the 
+\emph on
+cua
 \emph default
+ bindings, you can select the first and second with
+\lang spanish
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-primary"
+\end_inset
+
+ y 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-secondary"
+\end_inset
+
+ 
+\lang english
+respectively or toggle between them with
+\lang spanish
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "keymap-toggle"
+\end_inset
+
 .
 \end_layout
 
@@ -42295,6 +42488,14 @@ Configuración ! Directorios
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The paths to the various resources used by LyX are normally determined during
+ installation.
+ But there may be reasons why you might want to modify them.
 \end_layout
 
 \begin_layout Description
@@ -43641,12 +43842,25 @@ documento
 \begin_inset space ~
 \end_inset
 
-cambie Si se cambia la clase de documento se eliminan todas las opciones
- de clase de documento establecidas manualmente en el diálogo 
+cambie Si se cambia la clase de documento se eliminan todas las 
+\family sans
+\lang english
+Class options
+\family default
+\lang spanish
+ establecidas manualmente en el diálogo 
 \family sans
 Documento\SpecialChar \menuseparator
-Configuración
+Configuración\SpecialChar \menuseparator
+
+\lang english
+Document
+\begin_inset space ~
+\end_inset
+
+Class
 \family default
+\lang spanish
 .
 \end_layout
 
@@ -45336,6 +45550,39 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Armenian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Cyrillic"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Página wiki"
+target "http://wiki.lyx.org/Windows/Cyrillic"
+
+\end_inset
+
+ cómo configurar LyX para idiomas cirílicos:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset
