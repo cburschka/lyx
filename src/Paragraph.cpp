@@ -1830,13 +1830,7 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
-	LBUFERR(pos <= size());
-
-	// Last position is a special case. I suspect that it would
-	// actually make sense to extend the last font span to cover
-	// the last character (JMarc)
-	if (pos == size())
-		return FontSpan(pos, pos);
+	LBUFERR(pos < size());
 
 	pos_type start = 0;
 	FontList::const_iterator cit = d->fontlist_.begin();

@@ -771,7 +771,7 @@ public:
 	FontIterator & operator++()
 	{
 		++pos_;
-		if (pos_ > endspan_ || pos_ == bodypos_) {
+		if (pos_ < par_.size() && (pos_ > endspan_ || pos_ == bodypos_)) {
 			font_ = tm_.displayFont(pit_, pos_);
 			endspan_ = par_.fontSpan(pos_).last;
 		}
