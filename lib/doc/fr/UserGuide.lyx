@@ -15179,13 +15179,57 @@ Texte
 \begin_inset space ~
 \end_inset
 
-brut 
+brut
 \family default
-ou 
+.
+ 
+\lang english
+However, this will not export any externally generated material such as
+ a BibTeX bibliography
+\lang french
+ (section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Bases-de-Données-Biblio"
+
+\end_inset
+
+).
+ 
+\lang english
+If your document includes such material, use
+\lang french
+ 
 \family sans
 Fichier\SpecialChar \menuseparator
 Exporter\SpecialChar \menuseparator
-Texte
+
+\lang english
+More
+\begin_inset space ~
+\end_inset
+
+Formats
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Options
+\lang french
+ 
+\family default
+\lang english
+and then select
+\family sans
+\lang french
+ Texte
 \begin_inset space ~
 \end_inset
 
@@ -15193,14 +15237,13 @@ brut
 \begin_inset space ~
 \end_inset
 
-(ps2ascii) 
+(ps2ascii)
 \family default
-ce dernier faisant d'abord une conversion en PostScript avant d'utiliser
- 
-\series bold
-ps2ascii
-\series default
- pour le transformer en texte simple.
+.
+ Cette faisant d'abord une conversion en PostScript
+\lang english
+ (generating thereby the external material) and then do the conversion to
+ ASCII.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15645,82 +15688,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(ps2pdf) utilise le programme 
-\family typewriter
-ps2pdf
-\family default
- qui créé un PDF à partir de la version PostScript de votre fichier.
- Cette dernière est produite par le programme 
-\family typewriter
-dvips
-\family default
- qui utilise une version DVI comme étape intermédiaire.
- Cette variante consiste donc en trois conversions;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
-(dvipdfm) utilise le programme 
-\family typewriter
-dvipdfm
-\family default
- qui convertit votre fichier en DVI avant de le convertir en PDF;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
 (pdflatex) utilise le programme 
 \family typewriter
 pdftex
 \family default
  qui convertit directement votre fichier en PDF;
-\end_layout
-
-\begin_layout Description
-PDF
-\begin_inset space ~
-\end_inset
-
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) utilise le programme 
-\family typewriter
-XeTeX
-\family default
- qui convertit directement votre fichier en PDF.
- 
-\family typewriter
-XeTeX
-\family default
- est un moteur TeX qui fournit la fonctionnalité Unicode directement, ainsi
- que l'accès aux polices du système d'exploitation (voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeX-font-support"
-
-\end_inset
-
-).
- Il est particulièrement adapté à la typographie de différentes écritures;
 \end_layout
 
 \begin_layout Description
@@ -15777,6 +15749,77 @@ LuaTeX
 
  est en cours de développement, mais pourrait devenir le prochain moteur
  TeX standard.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X) utilise le programme 
+\family typewriter
+XeTeX
+\family default
+ qui convertit directement votre fichier en PDF.
+ 
+\family typewriter
+XeTeX
+\family default
+ est un moteur TeX qui fournit la fonctionnalité Unicode directement, ainsi
+ que l'accès aux polices du système d'exploitation (voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-font-support"
+
+\end_inset
+
+).
+ Il est particulièrement adapté à la typographie de différentes écritures;
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(dvipdfm) utilise le programme 
+\family typewriter
+dvipdfm
+\family default
+ qui convertit votre fichier en DVI avant de le convertir en PDF;
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) utilise le programme 
+\family typewriter
+ps2pdf
+\family default
+ qui créé un PDF à partir de la version PostScript de votre fichier.
+ Cette dernière est produite par le programme 
+\family typewriter
+dvips
+\family default
+ qui utilise une version DVI comme étape intermédiaire.
+ Cette variante consiste donc en trois conversions;
 \end_layout
 
 \begin_layout Standard
@@ -16063,7 +16106,13 @@ Plutôt que d'exporter votre document et ensuite de l'imprimer, vous pouvez
 Fichier\SpecialChar \menuseparator
 Imprimer
 \family default
- ou cliquez sur le bouton 
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
+\end_inset
+
+) ou cliquez sur le bouton 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
@@ -16083,17 +16132,6 @@ Ghostscript
 .
  À cause de toutes ces étapes intermédiaires, cette méthode n'est pas la
  plus rapide.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez choisir de n'imprimer que les pages paires ou impaires, ce qui
- peut être utile pour pouvoir imprimer en recto-verso: Vous pouvez réinsérer
- les pages qui ont été imprimées d'un côté dans l'imprimante pour imprimer
- l'autre côté.
- Certaines imprimantes sortent les pages face imprimée vers le haut, d'autres
- vers le bas.
- En choisissant l'ordre d'impression des pages, vous pourrez prendre toute
- votre pile de feuilles, sans avoir à les remettre dans l'ordre.
 \end_layout
 
 \begin_layout Standard
@@ -16155,6 +16193,27 @@ Fichier
  pour l'imprimer plus tard.
  La sortie est un fichier PostScript qui sera enregistré dans le répertoire
  de travail de LyX, à moins que ne fournissiez le chemin complet.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez choisir 
+\lang english
+to print only a range of pages
+\lang french
+, de n'imprimer que les pages paires ou impaires 
+\lang english
+or to print the pages in reverse — the latter options
+\lang french
+ peut être utile pour pouvoir imprimer en recto-verso 
+\lang english
+with a printer without a duplexer
+\lang french
+: Vous pouvez réinsérer les pages qui ont été imprimées d'un côté dans l'imprima
+nte pour imprimer l'autre côté.
+ Certaines imprimantes sortent les pages face imprimée vers le haut, d'autres
+ vers le bas.
+ En choisissant l'ordre d'impression des pages, vous pourrez prendre toute
+ votre pile de feuilles, sans avoir à les remettre dans l'ordre.
 \end_layout
 
 \begin_layout Section
@@ -17308,6 +17367,18 @@ droit
  dans tous les cas.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+For single quotes you have to use the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert single"
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Ligatures
 \begin_inset Index idx
@@ -18068,8 +18139,12 @@ Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
 \begin_inset Newline newline
 \end_inset
 
-Comme vous pouvez le voir dans l'exemple, la première ligne des notes grisées
- est un peu décalée et ce type de notes peut avoir des notes de bas de page.
+
+\begin_inset Newline newline
+\end_inset
+
+Comme vous pouvez le voir dans l'exemple, ce type de notes peut avoir des
+ notes de bas de page.
 \end_layout
 
 \begin_layout Standard
@@ -18221,11 +18296,18 @@ Dans la sortie finale, la note de bas de page apparaîtra comme un numéro
  en exposant placé dans le texte à la position où la boîte de note a été
  insérée.
  Le texte de la note est placé en bas de la page courante.
- Le numéro de la note est calculé par LyX, les numéros sont consécutifs,
- sans tenir compte du chapitre dans lequel la note se trouve.
- Pour l'instant, LyX ne gère pas d'autre système de numérotation, mais vous
- pouvez utiliser d'autres méthodes en utilisant des commandes LaTeX spéciales
- comme celles décrites dans le manuel 
+ Le numéro de la note est calculé par LyX 
+\lang english
+according to the document class.
+
+\lang french
+ Pour l'instant, LyX ne gère pas d'un 
+\lang english
+particular
+\lang french
+ système de numérotation, mais vous pouvez utiliser d'autres méthodes en
+ utilisant des commandes LaTeX spéciales comme celles décrites dans le manuel
+ 
 \emph on
 Objets
 \begin_inset space ~
@@ -19029,14 +19111,64 @@ Chaque image peut définir un nouveau groupe de paramètres d'image ou rejoindre
 \end_layout
 
 \begin_layout Standard
-On crée un nouveau groupe en entrant un nom dans le champ 
+On crée un nouveau groupe 
+\lang english
+by pressing the button 
 \family sans
-le nom du groupe
+Open
+\begin_inset space ~
+\end_inset
+
+new
+\begin_inset space ~
+\end_inset
+
+group
 \family default
- dans la fenêtre de dialogue 
+ in the
+\lang french
+ dialogue
 \family sans
-Graphique
+ Graphique
 \family default
+ 
+\lang english
+in the 
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X options
+\family default
+ tab
+\lang french
 .
  On rattache une image à un groupe existant en utilisant le menu contextuel
  de l'image et en cochant le nom du groupe voulu
@@ -22682,8 +22814,20 @@ arg   "float-insert table"
 \end_inset
 
  de la barre d'outils.
- Ils ont les mêmes propriétés que les flottants de figures, à part une étiquette
- différente.
+ Ils ont les mêmes propriétés que les flottants de figures 
+\lang english
+that the table in the float is normally placed below the caption and not
+ above like for figures and that the label begins with
+\lang french
+ 
+\begin_inset Quotes fld
+\end_inset
+
+tab:
+\begin_inset Quotes frd
+\end_inset
+
+.
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -23124,11 +23268,19 @@ Math ! Les bases
 
 \begin_layout Standard
 Pour écrire une formule mathématique, vous pouvez simplement cliquer sur
- l'icône avec 
-\begin_inset Formula $\frac{a+b}{c}$
+ l'icône 
+\begin_inset Info
+type  "icon"
+arg   "math-mode on"
 \end_inset
 
- dessus.
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
+\end_inset
+
+).
  Un petit carré bleu s'ouvrira, avec les coins d'un rectangle violet autour.
  Ce carré bleu indique la position de la formule elle-même, et les coins
  violets indiquent à quel niveau d'emboîtement vous êtes dans la formule.
@@ -25232,25 +25384,12 @@ arg   "math-number-toggle"
 \end_inset
 
 .
- Le numéro de la formule apparaît dans LyX sous la forme d'un 
-\begin_inset Quotes fld
-\end_inset
+ Le numéro de la formule apparaît dans LyX sous la forme entre parenthèses.
+ 
+\lang english
+The number shown is temporary and may be different when the output is generated.
 
-#
-\begin_inset Quotes frd
-\end_inset
-
- entre parenthèses.
- Ce 
-\begin_inset Quotes fld
-\end_inset
-
-#
-\begin_inset Quotes frd
-\end_inset
-
- indique que le numéro sera calculé automatiquement quand la sortie finale
- sera générée.
+\lang french
  Le positionnement et le format du numéro de formule dépend de la classe
  du document.
  Dans ce document les numéros sont en principe imprimés avec le numéro du
@@ -25325,14 +25464,13 @@ On peut faire référence à chaque formule hors ligne du document par son
 Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
- ou en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-
+ (bouton 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
- avec le curseur dans la formule.
+) avec le curseur dans la formule.
  Une fenêtre de dialogue s'ouvre pour taper le nom de l'étiquette.
  Il est recommandé de garder le préfixe 
 \begin_inset Quotes fld
@@ -25367,15 +25505,11 @@ eq:tanhExp
 \end_inset
 
 Toutes les lignes avec une étiquette sont numérotées, ce qui fait que LyX
- affiche le nom de l'étiquette à la place du 
-\begin_inset Quotes fld
-\end_inset
-
-#
-\begin_inset Quotes frd
-\end_inset
-
- qui sert à indiquer la place du numéro.
+ affiche le nom de l'étiquette 
+\lang english
+behind the formula
+\lang french
+ numéro.
  Comme pour toutes les étiquettes, vous pouvez faire référence à votre formule
  en utilisant le menu 
 \family sans
@@ -25384,20 +25518,15 @@ Référence
 \begin_inset space ~
 \end_inset
 
-croisée, 
+croisée 
 \family default
-ou en utilisant le bouton
-\family sans
- 
-\family default
-
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-
+(bouton 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
-.
+).
  La fenêtre qui s'ouvre vous permet de choisir l'étiquette à laquelle vous
  voulez faire référence.
  La référence est matérialisée dans LyX par une boîte grise et dans la sortie
@@ -26298,39 +26427,6 @@ La différence ne saute pas aux yeux si vous utilisez l'aperçu.
 \end_layout
 
 \begin_layout Section
-Modules théorèmes
-\end_layout
-
-\begin_layout Standard
-À compter de LyX 1.6, le support d'environnements du genre théorème a été
- déplacé de la classe de document vers les modules de mise en forme
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Modules
-\end_layout
-
-\end_inset
-
-.
- Le résultat est que les environnements de type théorème peuvent facilement
- être utilisé avec d'autres classes que les classes AMS.
- Voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Modules"
-
-\end_inset
-
- pour plus d'information sur les modules de mise en forme.
-\end_layout
-
-\begin_layout Section
 LaTeX AMS
 \begin_inset Index idx
 status collapsed
@@ -26465,7 +26561,14 @@ gather
 multline
 \family default
 .
- Voyez la documentation d'AMS pour les différences entre ces types de formules.
+ Voyez la documentation d'AMS, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AMS"
+
+\end_inset
+
+, pour les différences entre ces types de formules.
 \end_layout
 
 \begin_layout Chapter
@@ -30825,7 +30928,18 @@ Code
 \begin_inset space ~
 \end_inset
 
-TeX
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \family default
  soit en cliquant sur le bouton 
 \begin_inset Info
@@ -33313,6 +33427,52 @@ Langue
  adéquats sont installés: LyX commute automatiquement vers le bon dictionnaire.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+All spell-checker dictionaries supported by LyX can be downloaded from here
+\lang french
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+There are 2
+\begin_inset space ~
+\end_inset
+
+files for each language.
+ To install a dictionary, copy the 2
+\begin_inset space ~
+\end_inset
+
+files into LyX's installation subfolder 
+\family sans
+~
+\backslash
+Resources
+\backslash
+dicts
+\family default
+ and restart LyX.
+\end_layout
+
 \begin_layout Subsection
 Autres paramètres
 \end_layout
@@ -33571,16 +33731,20 @@ est constituée de deux fichiers par langue: un fichier de suffixe
 \emph default
 .
  Le nom du fichier contient le code de la langue concernée (par exemple
- en_EN pour l'anglais).
- Par exemple, les fichiers de l'anglais sont ainsi nommés :
+ 
+\family sans
+fr_FR
+\family default
+ pour français).
+ Par exemple, les fichiers pour français sont ainsi nommés :
 \end_layout
 
 \begin_layout Itemize
-th_en_EN_v2.idx
+th_fr_FR_v2.idx
 \end_layout
 
 \begin_layout Itemize
-th_en_EN_v2.dat
+th_fr_FR_v2.dat
 \end_layout
 
 \begin_layout Standard
@@ -33663,6 +33827,59 @@ Répertoires
 \family default
 .
  Maintenant, le dictionnaire de synonymes devrait être prêt à l'usage.
+\end_layout
+
+\begin_layout Standard
+Si LibreOffice ou OpenOffice 
+\lang english
+and its thesaurus
+\lang french
+ est déjà installé 
+\lang english
+on a Linux system, these files should be already on your system.
+ On Windows you can choose in LyX's installer wich dictionaries should be
+ installed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All thesaurus dictionaries supported by LyX can be downloaded from here
+\lang french
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+To install a dictionary, copy the 2
+\begin_inset space ~
+\end_inset
+
+files into LyX's installation subfolder 
+\family sans
+~
+\backslash
+Resources
+\backslash
+thes
+\family default
+ and restart LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -34358,7 +34575,18 @@ Note
 \begin_inset space ~
 \end_inset
 
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \end_inset
@@ -34640,11 +34868,8 @@ Si vous avez par exemple un clavier de style US et que vous voulez saisir
  une carte clavier appropriée.
  Par exemple, si vous voulez saisir de l'italien, vous pouvez configurer
  LyX avec une carte de configuration clavier italienne.
- La fenêtre de dialogue
-\lang english
- 
+ La fenêtre de dialogue 
 \family sans
-\lang french
 Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
 Saisie\SpecialChar \menuseparator
@@ -38318,7 +38543,7 @@ menu déroulant pour les environnements de paragraphes
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="22" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -38661,6 +38886,58 @@ et
 \end_inset
 
 remplacer
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\lang english
+Quick
+\lang french
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Édition\SpecialChar \menuseparator
+Rechercher
+\begin_inset space ~
+\end_inset
+
+et
+\begin_inset space ~
+\end_inset
+
+remplacer
+\begin_inset space \thinspace{}
+\end_inset
+
+(
+\lang english
+Advanced
+\lang french
+)
 \end_layout
 
 \end_inset
@@ -38729,7 +39006,10 @@ de
 \begin_inset space ~
 \end_inset
 
-texte
+texte\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -38767,7 +39047,10 @@ de
 \begin_inset space ~
 \end_inset
 
-texte
+texte\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -38805,7 +39088,10 @@ de
 \begin_inset space ~
 \end_inset
 
-texte
+texte\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -39598,7 +39884,18 @@ Note
 \begin_inset space ~
 \end_inset
 
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \end_inset
@@ -39658,7 +39955,9 @@ Boîte
 
 \family sans
 Insertion\SpecialChar \menuseparator
-URL
+
+\lang english
+Hyperlink
 \end_layout
 
 \end_inset
@@ -39772,7 +40071,10 @@ de
 \begin_inset space ~
 \end_inset
 
-texte
+texte\SpecialChar \menuseparator
+
+\lang english
+Customized
 \end_layout
 
 \end_inset
@@ -45277,7 +45579,11 @@ Unités de longueur
 
 \begin_layout Standard
 Pour comprendre les unités de longueur utilisées dans cette documentation,
- le tableau 
+ le tableau
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Unités"
@@ -46063,7 +46369,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
+http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \end_layout
 
 \end_inset
@@ -46247,6 +46553,39 @@ http://www.xindy.org/documentation.html
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "AMS"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ams.org/publications/authors/tex/amslatex"
+
+\end_inset
+
+ des paquetages AMS:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ams.org/publications/authors/tex/amslatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "caption"
 
 \end_inset
@@ -46255,7 +46594,7 @@ key "caption"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
 
 \end_inset
 
@@ -46283,7 +46622,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
 \end_layout
 
 \end_inset
@@ -46349,7 +46688,7 @@ key "fancyhdr"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -46377,7 +46716,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset
@@ -46396,7 +46735,7 @@ key "hyperref"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+target "http://www.ctan.org/pkg/hyperref"
 
 \end_inset
 
@@ -46424,7 +46763,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
+http://www.ctan.org/pkg/hyperref
 \end_layout
 
 \end_inset
@@ -46443,7 +46782,7 @@ key "nomencl"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
 
@@ -46471,7 +46810,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset
