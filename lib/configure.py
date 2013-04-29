@@ -330,13 +330,13 @@ def addEditorAlternatives(rcs):
         if len(rcs) == 1:
             m = r.match(rcs[0])
             if m:
-                alt = r'\editor_alternatives ' + m.group(1) + " %%"
+                alt = r'\editor_alternatives ' + m.group(1) + ' "%%"'
         elif len(rcs) > 1:
             m = r.match(rcs[idxx])
             if m:
                 if idxx > 0:
                     alt += '\n'
-                alt += r'\editor_alternatives ' + m.group(1) + " %%"
+                alt += r'\editor_alternatives ' + m.group(1) + ' "%%"'
     return alt
 
 
