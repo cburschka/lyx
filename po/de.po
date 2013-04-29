@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-29 10:19+0100\n"
+"POT-Creation-Date: 2013-04-29 11:56-0400\n"
 "PO-Revision-Date: 2013-03-29 10:13+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -3023,7 +3023,7 @@ msgstr "Längste &Marke"
 msgid "Line &spacing"
 msgstr "Zeilen&abstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1822
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Einfach"
@@ -3032,7 +3032,7 @@ msgstr "Einfach"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1828
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Doppelt"
@@ -19607,61 +19607,61 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/Text.cpp:1788
+#: src/Text.cpp:1790
 msgid "[Change Tracking] "
 msgstr "[Änderungsverfolgung] "
 
-#: src/Text.cpp:1794
+#: src/Text.cpp:1796
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/Text.cpp:1798
+#: src/Text.cpp:1800
 msgid " at "
 msgstr " am "
 
-#: src/Text.cpp:1808
+#: src/Text.cpp:1810
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/Text.cpp:1813
+#: src/Text.cpp:1815
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/Text.cpp:1819
+#: src/Text.cpp:1821
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:1825 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1833
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1842
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1843
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1844
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1845
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1849
+#: src/Text.cpp:1851
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1853
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -24184,15 +24184,15 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1432
+#: src/lyxfind.cpp:1436
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1437
+#: src/lyxfind.cpp:1441
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1441
+#: src/lyxfind.cpp:1445
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 

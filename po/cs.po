@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-04-23 23:59-0700\n"
+"POT-Creation-Date: 2013-04-29 11:56-0400\n"
 "PO-Revision-Date: 2013-03-08 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -2110,8 +2110,8 @@ msgstr "Vybrat jazykový balíèek, který má LyX pou¾ívat"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Zadejte pøíkaz pro naètení jazykového balíèku (standardnì "
-"\\usepackage{babel})"
+"Zadejte pøíkaz pro naètení jazykového balíèku (standardnì \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2915,7 +2915,7 @@ msgstr "&Nejdel¹í znaèka"
 msgid "Line &spacing"
 msgstr "Øá&dkování"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1822
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Jedna"
@@ -2924,7 +2924,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1828
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dva"
@@ -10680,9 +10680,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Pou¾ít balíèek knitr pro dynamické generování reportù. Tento balíèek pro "
-"jazyk R musí být naistalován pro správnou funkci modulu: install."
-"packages('knitr'). R je potøebné alespoò ve verzi >= 2.14.1. Dal¹í informace "
-"viz http://yihui.name/knitr"
+"jazyk R musí být naistalován pro správnou funkci modulu: install.packages"
+"('knitr'). R je potøebné alespoò ve verzi >= 2.14.1. Dal¹í informace viz "
+"http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -18929,8 +18929,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3260
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "Pøíkaz LaTeX-u pro naètení jazykového balíèku. Napø. \"\\usepackage{babel}\","
 "\"\\usepackage{omega}\"."
@@ -19340,61 +19340,61 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1788
+#: src/Text.cpp:1790
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1794
+#: src/Text.cpp:1796
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1798
+#: src/Text.cpp:1800
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1808
+#: src/Text.cpp:1810
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1813
+#: src/Text.cpp:1815
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1819
+#: src/Text.cpp:1821
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1825 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1833
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1842
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1843
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1844
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1845
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1849
+#: src/Text.cpp:1851
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1853
 msgid ", Boundary: "
 msgstr ", Okraj: "
 

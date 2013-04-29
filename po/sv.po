@@ -213,14 +213,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-04-21 12:21+0200\n"
+"POT-Creation-Date: 2013-04-29 11:56-0400\n"
 "PO-Revision-Date: 2013-04-21 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -3113,7 +3113,7 @@ msgstr "Lä&ngsta etikett"
 msgid "Line &spacing"
 msgstr "Radavstånd"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1822
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Enkel"
@@ -3122,7 +3122,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1828
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dubbel"
@@ -17352,8 +17352,8 @@ msgstr "Okodbart tecken i filsökväg"
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
-"contains glyphs that are unknown in the current document encoding (namely %2"
-"$s). This may result in incomplete output, unless TEXINPUTS contains the "
+"contains glyphs that are unknown in the current document encoding (namely "
+"%2$s). This may result in incomplete output, unless TEXINPUTS contains the "
 "document directory and you don't use explicitly relative paths (i.e., paths "
 "starting with './' or '../') in the preamble or in ERT.\n"
 "\n"
@@ -17362,8 +17362,8 @@ msgid ""
 msgstr ""
 "Sökvägen för ditt dokument\n"
 "(%1$s)\n"
-"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen %2"
-"$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
+"innehåller glyfer som är okända i den aktuella dokumentkodningen (nämligen "
+"%2$s). Detta kan resultera i ofullständig utmatning, om inte TEXINPUTS "
 "innehåller dokumentkatalogen och du inte använder uttryckliga relativa "
 "sökvägar (t.ex. sökvägar som börjar med './' eller '../') i ingressen eller "
 "i ERT.\n"
@@ -18339,8 +18339,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen %"
-"1$s."
+"LaTeX kördes inte framgångsrikt. Dessutom kunde LyX inte hitta LaTeX-loggen "
+"%1$s."
 
 #: src/Converter.cpp:673
 msgid "LaTeX failed"
@@ -18389,11 +18389,11 @@ msgstr ""
 #: src/CutAndPaste.cpp:697
 #, c-format
 msgid ""
-"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `%3"
-"$s'."
+"Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
+"%3$s'."
 msgstr ""
-"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `%"
-"2$s' till `%3$s'."
+"Flex-insättning %1$s är odefinierad på grund av omvandling från utformning `"
+"%2$s' till `%3$s'."
 
 #: src/CutAndPaste.cpp:702
 msgid "Undefined flex inset"
@@ -19587,61 +19587,61 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte skriva två mellanslag i rad. Vänligen läs Nybörjarkursen."
 
-#: src/Text.cpp:1788
+#: src/Text.cpp:1790
 msgid "[Change Tracking] "
 msgstr "[Ändringsspårning] "
 
-#: src/Text.cpp:1794
+#: src/Text.cpp:1796
 msgid "Change: "
 msgstr "Ändring: "
 
-#: src/Text.cpp:1798
+#: src/Text.cpp:1800
 msgid " at "
 msgstr " vid "
 
-#: src/Text.cpp:1808
+#: src/Text.cpp:1810
 #, c-format
 msgid "Font: %1$s"
 msgstr "Typsnitt: %1$s"
 
-#: src/Text.cpp:1813
+#: src/Text.cpp:1815
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: %1$d"
 
-#: src/Text.cpp:1819
+#: src/Text.cpp:1821
 msgid ", Spacing: "
 msgstr ", Avstånd: "
 
-#: src/Text.cpp:1825 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "EnHalv"
 
-#: src/Text.cpp:1831
+#: src/Text.cpp:1833
 msgid "Other ("
 msgstr "Annan ("
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1842
 msgid ", Inset: "
 msgstr ", Insättning: "
 
-#: src/Text.cpp:1841
+#: src/Text.cpp:1843
 msgid ", Paragraph: "
 msgstr ", Stycke: "
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1844
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1845
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1849
+#: src/Text.cpp:1851
 msgid ", Char: 0x"
 msgstr ", Tecken: 0x"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1853
 msgid ", Boundary: "
 msgstr ", Gräns: "
 
@@ -24116,15 +24116,15 @@ msgstr "Sträng har blivit ersatt."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d strängar har blivit ersatta."
 
-#: src/lyxfind.cpp:1433
+#: src/lyxfind.cpp:1436
 msgid "Invalid regular expression!"
 msgstr "Ogiltigt reguljärt uttryck!"
 
-#: src/lyxfind.cpp:1438
+#: src/lyxfind.cpp:1441
 msgid "Match not found!"
 msgstr "Matchning hittades inte!"
 
-#: src/lyxfind.cpp:1442
+#: src/lyxfind.cpp:1445
 msgid "Match found!"
 msgstr "Matchning hittades!"
 
