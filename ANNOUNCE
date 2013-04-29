@@ -1,4 +1,4 @@
-Public release of LyX version 2.0.5
+Public release of LyX version 2.0.6
 ===================================
 
 We are pleased to announce the release of LyX 2.0.6. This is the sixth
@@ -34,7 +34,204 @@ What's new in LyX 2.0.6
 =======================
 
 
+** Updates:
+***********
 
-What's new
-==========
+* DOCUMENT INPUT/OUTPUT
 
+- New layout file for the document class APA6 (bug 8391).
+
+- Output BibTeX metadata in LyXHTML output (bug 8451).
+
+- Added CSS styling for Memoir's epigraphs (bug 8611).
+
+- Use master document's setting for all HTML math output (bug 8607).
+
+
+* TEX2LYX IMPROVEMENTS
+
+- support for listings with options (bug 8066).
+
+- add new option -m to select needed modules (bug 8393).
+
+
+* USER INTERFACE
+
+- Categorize paragraph styles of the linguistics module.
+
+- Show a symbol on collapsed branches indicating whether they are
+  active.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Updated German, French, Interlingua, Italian, Japanese, Spanish, Slovak,
+  Swedish and Ukrainian user interface localizations.
+
+- Updated the lilypond example file.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fixed occasional crash when exporting a document while View->Source is
+  open and being updated (bug 8425). 
+
+- Load the babel package also if the document is English-only (bug 8423).
+
+- Fix call of nonsense font packages in some localizations.
+
+- Documents with document language Belarusian are now compilable (bug 8593).
+
+- Documents with document language Serbian (using Cyrillic letters) are now
+  compilable (bug 8590).
+
+- Do not let child document's settings override master settings (bug 5941).
+
+- Correct output of text in changed font size and with decorations (bug 8424).
+
+- Layout file for JASATeX: solved problems with natbib and added missing
+  short title for the document title
+
+- Fix problem using lyxpak.py when outside the LyX tree: Variable was
+  undefined.
+
+- When using the knitr module, use new "encoding" parameter of knitr if 
+  available (bug 8504).
+
+- Fix layout conversion bug involving quoted Flex inset names that do not
+  contain spaces.
+
+- Fix crash while exporting document with images to xhtml from the command-line
+
+- In order to avoid NFSS problems with certain font packages, load the needed
+  font encodings when inserting Cyrillic and/or Greek characters (bug 8467).
+
+- Reordering citations in LyX is now rendered in the output (bug 6955).
+
+- Fix InsetLayout's LatexParam output: \begin{inset}[latexparam].
+
+- Fix TeX crash involving font changes in URLs.
+
+- Properly output alias for formatted chapter references, so prettyref
+  documents work when converted tor refstyle.
+
+- Fix lyx2lyx bug with non-ASCII layout file names (Debian bug 700828).
+
+- Made \lyxadded and \lyxdeleted robust (bug 8435).
+
+
+* USER INTERFACE
+
+- Fix crash when clicking on a completion in math mode (bug 8296).
+
+- Fix assertion when searching for next change (bug 8370).
+
+- Fix regression in which clicking in the main work area always resets
+  the selected format in View -> Source (bug 8411).
+  
+- When selecting text and then using the menu Insert -> Preview, immediately
+  display the preview (bug 8075).
+
+- If 2 columns are chosen for the document they are now also displayed RTL
+  if the document language is a RTL language (bug 6389).
+  
+- Allow arguments in PassThru environments (bug 7646).
+
+- Consider deleted text when inserting quote inset.
+
+- Fix a few selection bugs in tabular (bugs 4981, 7988).
+
+- Handle properly undo after deleting a paragraph break when change
+  tracking is enabled (bug 8633).
+
+- Fix `select whole inset' function in math editor.
+
+- Fix confusing behavior in search when changing directions (bug 8543)
+
+- Fix several issues when using multicolumns/multirows and decimal alignment in
+  table cells (bug 8285).
+
+- Show the output of configure.py while the LaTeX packages are being checked
+  rather than all at once at the end of the check (bug 8477).
+
+- Do not crop wide characters in Symbols dialog (bug 5707).
+
+- Make sure that inset-forall does not skip insets.
+
+- File format viewer & editor combo boxes are correctly initialized (bug 8237).
+
+- Do not create an empty environment variable LC_ALL when launching
+  external processes (bug 8537).
+
+- Do not try to process included files when viewing source (bug 8557).
+
+- Reorder Look & Feel section in Preferences in order to fit the dialog
+  into netbook screens (bug 7524).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Make the thesis template compilable again.
+
+- It is now possible to spell-check Serbian documents using Latin letters
+  (bug 8628).
+
+- Fix compilation of modernCV example file for all themes.
+
+- Update the Xy-pic manual to avoid any LaTeX and LyX warning when processing
+  the file (e.g. bug 7753).
+
+- The Hungarian Tutorial now has default output format pdf2.
+
+
+* LYXHTML
+
+- Reset counters properly when outputting included XHTML files (bug 8598).
+
+- Fix the output of LyXHTML bibliography with richtext (bug 8486).
+
+- Fix linking from citation to bibliography in LyXHTML output (bug 8490).
+
+- Use document language when exporting citations to LyXHTML (bug 7732).
+
+- Do not convert --- and -- to entities when outputting listings to 
+  XHTML (bug 8561).
+
+- Translate "elsewhere" when outputting XHTML (bug 8587).
+
+- Fix problem with XHTML output of captions with listings (bug 8604).
+
+- Fix problem with HTML output of simple formulas like "y[i]" (bug 8609).
+
+- Clean ids for citations before outputting them. Characters like ":" are
+  not allowed in HTML identifiers, apparently (bug 8606).
+
+- Respect InsetLayout's PassThru setting for XHTML export.
+
+
+* TEX2LYX
+
+- Correct import of the command \framebox (bug 8223).
+
+- Import \verb+\+ correctly (bug 4468).
+
+
+* ADVANCED FIND AND REPLACE
+
+- Fixed problem when searching with regular expressions and ignore
+  format off (bug 8382).
+
+- Cursor moved at proper end of selection before starting Find Advanced operation 
+  (fixing bug 8543 for advanced search).
+
+
+* BUILD/INSTALLATION
+
+- Fix building with system boost on FreeBSD.
+
+- Avoid annoying warnings with newer gcc versions.
+
+- Properly quote arguments in configuration (bug 8648).
