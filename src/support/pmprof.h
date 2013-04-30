@@ -8,16 +8,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef PMPROF_H
-#define PMPROF_H
-
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <sys/time.h>
-#endif
-#include <iostream>
-
 /** How to use this trivial profiler:
  *
  * * at the beginning of the interesting block, just add:
@@ -96,8 +86,24 @@
 
  */
 
-#ifdef _WIN32
+#ifndef PMPROF_H
+#define PMPROF_H
 
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <sys/time.h>
+#endif
+
+#include <iomanip>
+#include <iostream>
+
+
+#if defined(__GNUG__) && defined(_GLIBCXX_DEBUG)
+#error Profiling is not usable when run-time debugging is in effect
+#endif
+
+#ifdef _WIN32
 /* This function does not really returns the "time of day",
  * but it will suffice to evaluate elapsed times.
  */
@@ -125,10 +131,15 @@ public:
 	  : name_(name), sec_(0), usec_(0), count_(0) {};
 
 	~PMProfStat() {
-		if (count_>0)
-		  std::cerr << "##### " << name_ << ": "
-			    << 1.0 * (sec_ * 1000000 + usec_)/ count_
-			    << "usec, count=" << count_ << std::endl;
+		if (count_>0) {
+			double total = 0.001 * (sec_ * 1000000 + usec_);
+			std::cerr << std::fixed << std::setprecision(2) 
+				<< "#pmprof# " << name_ << ": "
+				<< total / count_
+				<< "msec, count=" << count_
+				<< ", total=" << total << "msec"
+				<< std::endl;
+		}
 	}
 
 	void add(const long long s, const long long u) {
