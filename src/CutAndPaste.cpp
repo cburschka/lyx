@@ -110,7 +110,8 @@ struct PasteReturnValue {
 
 PasteReturnValue
 pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
-		     DocumentClassConstPtr oldDocClass, ErrorList & errorlist)
+                     DocumentClassConstPtr oldDocClass, Buffer * tmpbuffer,
+                     ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();
 	pit_type pit = cur.pit();
@@ -352,15 +353,21 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			    || (is_child && (branchlist.find(name)
 			        || buffer.masterBuffer()->params().branchlist().find(name))))
 				break;
-			// FIXME: add an option to add the branch to the master's BranchList.
-			docstring text = bformat(
+			if (tmpbuffer) {
+				// This is for a temporary buffer, so simply create the branch.
+				// Must not use lyx::dispatch(), since tmpbuffer has no view.
+				DispatchResult dr;
+				tmpbuffer->dispatch(FuncRequest(LFUN_BRANCH_ADD, name), dr);
+			} else {
+				docstring text = bformat(
 					_("The pasted branch \"%1$s\" is undefined.\n"
 					  "Do you want to add it to the document's branch list?"),
 					name);
-			if (frontend::Alert::prompt(_("Unknown branch"),
+				if (frontend::Alert::prompt(_("Unknown branch"),
 					  text, 0, 1, _("&Add"), _("&Don't Add")) != 0)
-				break;
-			lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
+					break;
+				lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
+			}
 			// We need to update the list of branches.
 			need_update = true;
 			break;
@@ -497,7 +504,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// temporary Buffer, since it does a lot of things to fix them up.
 	DocIterator dit = doc_iterator_begin(buffer, &buffer->inset());
 	ErrorList el;
-	pasteSelectionHelper(dit, paragraphs, docclass, el);
+	pasteSelectionHelper(dit, paragraphs, docclass, buffer, el);
 
 	// We don't want to produce images that are not used. Therefore,
 	// output formulas as MathML. Even if this is not understood by all
@@ -1032,7 +1039,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 		LBUFERR(text);
 
 		PasteReturnValue prv =
-			pasteSelectionHelper(cur, parlist, docclass, errorList);
+			pasteSelectionHelper(cur, parlist, docclass, 0, errorList);
 		if (prv.needupdate)
 			cur.forceBufferUpdate();
 		cur.clearSelection();
