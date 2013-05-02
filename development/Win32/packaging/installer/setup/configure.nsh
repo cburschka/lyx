@@ -54,6 +54,8 @@ Section -InstallData
   # if we install over an existing version, remove the old uninstaller information
   ${if} $OldVersionNumber != ""
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
+   # also delete in the case of an emergency release
+   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"
   ${endif}
   
 SectionEnd

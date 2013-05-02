@@ -610,7 +610,16 @@ Function .onInit
    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
    Abort
   ${endif}
-
+  
+  # FIXME: check that LyX is not currently running
+  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "LyX.exe.Instance") i .r1 ?e'
+  #Pop $R0
+  #MessageBox MB_OK "$R0"
+  #${if} $R0 != "0"
+  # MessageBox MB_OK|MB_ICONSTOP "$(LyXRunning)" 
+  # Abort
+  #${endif}
+  
   !insertmacro MULTIUSER_INIT
   
   # check if this LyX version is already installed
@@ -653,6 +662,7 @@ Function .onInit
     # we don't stop here because we want the latest installed version
    ${endif} 
   ${next}
+  
   ${if} $OldVersionNumber > ${APP_SERIES_KEY}
    # store the version number and reformat it temporarily for the error message
    StrCpy $R0 $OldVersionNumber
