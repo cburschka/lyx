@@ -102,8 +102,8 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	if (!bindings.empty())
 		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
-	Action * act = new Action(&owner_, getIcon(item.func_, false),
-		text, item.func_, text, this);
+	Action * act = new Action(getIcon(item.func_, false),
+				  text, item.func_, text, this);
 	actions_.append(act);
 	return act;
 }

@@ -14,7 +14,6 @@
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "GuiView.h"
 #include "LyX.h"
 #include "qt_helpers.h"
 
@@ -25,10 +24,10 @@ namespace lyx {
 namespace frontend {
 
 
-Action::Action(GuiView * lyxView, QIcon const & icon,
+Action::Action(QIcon const & icon,
 	  QString const & text, FuncRequest const & func,
 	  QString const & tooltip, QObject * parent)
-	: QAction(parent), func_(func), lyxView_(lyxView)
+	: QAction(parent), func_(func)
 {
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);

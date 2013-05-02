@@ -187,7 +187,7 @@ bool bruteFind(Cursor & cursor,
 }
 */
 
-
+/*
 /// moves position closest to (x, y) in given box
 bool bruteFind3(Cursor & cur, int x, int y, bool up)
 {
@@ -249,7 +249,7 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	cur.setCursor(best_cursor);
 	return true;
 }
-
+*/
 } // namespace anon
 
 

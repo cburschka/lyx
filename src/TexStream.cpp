@@ -34,7 +34,7 @@ public:
 	int column() const { return column_; }
 
 protected:
-	int overflow(int);
+	int_type overflow(int_type);
 	int sync();
 
 private:
@@ -52,7 +52,7 @@ TexStreamBuffer::TexStreamBuffer(TexStreamBase *sb, TexRow * texrow)
 	setg(0, 0, 0);
 }
 
-int TexStreamBuffer::overflow(int c)
+TexStreamBuffer::int_type TexStreamBuffer::overflow(TexStreamBuffer::int_type c)
 {
 	if (c == '\n') {
 		++line_;

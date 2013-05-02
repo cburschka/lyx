@@ -1719,7 +1719,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 			subMenu->setEnabled(m->status().enabled());
 		} else {
 			// we have a MenuItem::Command
-			qMenu.addAction(new Action(view, QIcon(), label(*m),
+			qMenu.addAction(new Action(QIcon(), label(*m),
 				m->func(), m->tooltip(), &qMenu));
 		}
 	}
@@ -1806,7 +1806,7 @@ struct Menus::Impl {
 		BufferView const *) const;
 
 	/// Initialize specific MACOS X menubar
-	void macxMenuBarInit(GuiView * view, QMenuBar * qmb);
+	void macxMenuBarInit(QMenuBar * qmb);
 
 	/// Mac special menu.
 	/** This defines a menu whose entries list the FuncRequests
@@ -1856,7 +1856,7 @@ MenuDefinition Menus::Impl::mac_special_menu_;
   that this menubar will be used also when one of LyX' dialogs has
   focus. (JMarc)
 */
-void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
+void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 {
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
@@ -1909,13 +1909,13 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
 #if defined(QT_MAC_USE_COCOA) && (QT_MAC_USE_COCOA > 0)
 		if (first_call || entries[i].role != QAction::ApplicationSpecificRole) {
-			Action * action = new Action(view, QIcon(), cit->label(),
+			Action * action = new Action(QIcon(), cit->label(),
 				 cit->func(), QString(), qMenu);
 			action->setMenuRole(entries[i].role);
 			qMenu->addAction(action);
 		}
 #else
-		Action * action = new Action(view, QIcon(), cit->label(),
+		Action * action = new Action(QIcon(), cit->label(),
 			cit->func(), QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
@@ -2189,7 +2189,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		// create duplicate items in the application menu. It seems
 		// that Qt does not remove them when the QMenubar is cleared.
 		LYXERR(Debug::GUI, "Creating Mac OS X special menu bar");
-		d->macxMenuBarInit(view, qmb);
+		d->macxMenuBarInit(qmb);
 #endif
 	} else {
 		// Clear all menubar contents before filling it.
