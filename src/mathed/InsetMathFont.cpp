@@ -101,7 +101,7 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 				|| (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
 			features.require("amstext");
 		if (key_->name == "mathscr")
-			features.require("mathrsfs"); 
+			features.require("mathrsfs");
 		if (key_->name == "textipa")
 			features.require("tipa");
 		if (key_->name == "ce" || key_->name == "cf")
@@ -139,7 +139,7 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 	         || tag == "textbf")
 		variant = "bold";
 	else if (tag == "mathcal")
-		variant == "script";
+		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
 	         || tag == "emph" || tag == "textit")
 		variant = "italic";
@@ -149,7 +149,7 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 		variant = "monospace";
 	else if (tag == "textipa" || tag == "textsc" || tag == "noun")
 		variant = "noun";
-	
+
 	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
 	if (!variant.empty()) {
 		os << MTag("span", "class='" + variant + "'")
@@ -179,7 +179,7 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	         || tag == "textbf")
 		variant = "bold";
 	else if (tag == "mathcal")
-		variant == "script";
+		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
 	         || tag == "emph" || tag == "textit")
 		variant = "italic";
@@ -188,7 +188,7 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	else if (tag == "mathtt" || tag == "texttt")
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
-	
+
 	if (!variant.empty()) {
 		os << MTag("mstyle", "mathvariant='" + variant + "'")
 		   << cell(0)

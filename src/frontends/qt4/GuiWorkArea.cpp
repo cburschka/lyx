@@ -968,7 +968,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 		d->buffer_view_->scroll(up ? -step : step);
 		d->buffer_view_->updateMetrics();
 	} else {
-		d->buffer_view_->scrollDocView(value + up ? -step : step, false);
+		d->buffer_view_->scrollDocView(value + (up ? -step : step), false);
 	}
 
 	// In which paragraph do we have to set the cursor ?

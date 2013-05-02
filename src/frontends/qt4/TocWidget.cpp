@@ -262,6 +262,7 @@ void TocWidget::on_persistentCB_stateChanged(int state)
 }
 
 
+#if 0
 /* FIXME (Ugras 17/11/06):
 I have implemented a indexDepth function to get the model indices. In my
 opinion, somebody should derive a new qvariant class for tocModelItem
@@ -274,7 +275,7 @@ static int indexDepth(QModelIndex const & index, int depth = -1)
 	return index.parent() == QModelIndex()
 		? depth : indexDepth(index.parent(), depth);
 }
-
+#endif
 
 void TocWidget::on_depthSL_valueChanged(int depth)
 {

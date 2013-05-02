@@ -131,10 +131,12 @@ QString symbolFamily(FontFamily family)
 }
 
 
+#if 0
 bool isSymbolFamily(FontFamily family)
 {
 	return family >= SYMBOL_FAMILY && family <= ESINT_FAMILY;
 }
+#endif
 
 
 static bool isChosenFont(QFont & font, QString const & family)

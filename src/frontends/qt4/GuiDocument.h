@@ -183,8 +183,6 @@ private:
 	GuiIdListModel modules_av_model_;
 	/// selected modules
 	GuiIdListModel modules_sel_model_;
-	/// current buffer
-	BufferId current_id_;
 
 	/// return false if validate_listings_params returns error
 	bool isValid();

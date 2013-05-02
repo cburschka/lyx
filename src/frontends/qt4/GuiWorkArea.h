@@ -257,8 +257,6 @@ protected:
 private:
 	///
 	QPoint dragStartPos_;
-	///
-	int dragCurrentIndex_;
 
 Q_SIGNALS:
 	///

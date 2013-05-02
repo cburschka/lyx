@@ -69,7 +69,7 @@ namespace lyx {
 
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
-	: lang_(l), warned_(false)
+	: lang_(l)
 {
 	// strip off any encoding suffix, i.e., assume 8-bit po files
 	size_t i = lang_.find(".");

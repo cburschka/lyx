@@ -55,8 +55,8 @@ public:
 	 * \param filename the file in question. Must have an absolute path.
 	 * Encoding is always UTF-8.
 	 */
-	virtual void set(std::string const & filename);
-	virtual void set(FileName const & fn, std::string const & suffix);
+	void set(std::string const & filename);
+	void set(FileName const & fn, std::string const & suffix);
 	virtual void erase();
 	/// Is this filename empty?
 	bool empty() const;
@@ -253,7 +253,7 @@ public:
 	 *  \param buffer_path if \c filename has a relative path, generate
 	 *  the absolute path using this.
 	 */
-	virtual void set(std::string const & filename, std::string const & buffer_path);
+	void set(std::string const & filename, std::string const & buffer_path);
 	///
 	void erase();
 	///

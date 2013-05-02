@@ -385,7 +385,7 @@ public:
 	/// \return true if there is a Layout with latexname lay
 	bool hasLaTeXLayout(std::string const & lay) const;
 	/// A DocumentClass nevers count as loaded, since it is dynamic
-	virtual bool loaded() { return false; }
+	virtual bool loaded() const { return false; }
 	/// \return the layout object of an inset given by name. If the name
 	/// is not found as such, the part after the ':' is stripped off, and
 	/// searched again. In this way, an error fallback can be provided:
