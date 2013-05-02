@@ -655,7 +655,7 @@ inline void closeItemTag(XHTMLStream & xs, Layout const & lay)
 
 // end of convenience functions
 
-ParagraphList::const_iterator searchParagraph(
+ParagraphList::const_iterator findLastParagraph(
 	ParagraphList::const_iterator p,
 	ParagraphList::const_iterator const & pend)
 {
@@ -666,7 +666,7 @@ ParagraphList::const_iterator searchParagraph(
 }
 
 
-ParagraphList::const_iterator searchEnvironment(
+ParagraphList::const_iterator findEndOfEnvironment(
 		ParagraphList::const_iterator const pstart,
 		ParagraphList::const_iterator const & pend)
 {
@@ -888,13 +888,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
 			else {
-				send = searchEnvironment(par, pend);
+				send = findEndOfEnvironment(par, pend);
 				par = makeEnvironment(buf, xs, runparams, text, par, send);
 			}
 			break;
 		}
 		case LATEX_PARAGRAPH:
-			send = searchParagraph(par, pend);
+			send = findLastParagraph(par, pend);
 			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		// Shouldn't happen
@@ -1007,18 +1007,18 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			// FIXME Same fix here.
-			send = searchEnvironment(par, pend);
+			send = findEndOfEnvironment(par, pend);
 			par = makeEnvironment(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
 			// FIXME Same fix here.
-			send = searchEnvironment(par, pend);
+			send = findEndOfEnvironment(par, pend);
 			par = makeBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
-			send = searchParagraph(par, pend);
+			send = findLastParagraph(par, pend);
 			par = makeParagraphs(buf, xs, ourparams, text, par, send);
 			break;
 		}
