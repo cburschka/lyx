@@ -168,8 +168,6 @@ public:
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
-	/// char char code if possible
-	virtual void handleFont(docstring const &) {}
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?

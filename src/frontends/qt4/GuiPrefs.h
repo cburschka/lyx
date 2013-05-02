@@ -125,7 +125,6 @@ private:
 	/// A list of colors to be dispatched
 	std::vector<std::string> colors_;
 
-	bool redraw_gui_;
 	bool update_screen_font_;
 };
 

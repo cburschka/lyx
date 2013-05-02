@@ -216,6 +216,7 @@ void MathData::touch() const
 }
 
 
+#if 0
 namespace {
 
 bool isInside(DocIterator const & it, MathData const & ar,
@@ -230,7 +231,7 @@ bool isInside(DocIterator const & it, MathData const & ar,
 }
 
 }
-
+#endif
 
 
 void MathData::metrics(MetricsInfo & mi, Dimension & dim) const

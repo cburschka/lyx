@@ -160,7 +160,7 @@ void fillCombo(QComboBox * combo, QList<T> const & list)
 
 GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),
-	  toggleall_(false), reset_lang_(false)
+	  toggleall_(false)
 {
 	setupUi(this);
 

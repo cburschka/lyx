@@ -272,7 +272,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		tb->setToolTip(label);
 		tb->setStatusTip(label);
 		tb->setText(label);
-		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
+		InsertTableWidget * iv = new InsertTableWidget(tb);
 		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
 		connect(this, SIGNAL(updated()), iv, SLOT(updateParent()));

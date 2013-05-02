@@ -29,8 +29,8 @@
 namespace lyx {
 namespace frontend {
 
-InsertTableWidget::InsertTableWidget(GuiView & lyxView, QWidget * parent)
-	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12), lyxView_(lyxView)
+InsertTableWidget::InsertTableWidget(QWidget * parent)
+	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12)
 {
 	init();
 	setMouseTracking(true);

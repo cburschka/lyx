@@ -582,7 +582,7 @@ class TextCompletionList : public CompletionList
 public:
 	///
 	TextCompletionList(Cursor const & cur, WordList const * list)
-		: buffer_(cur.buffer()), pos_(0), list_(list)
+		: buffer_(cur.buffer()), list_(list)
 	{}
 	///
 	virtual ~TextCompletionList() {}
@@ -603,8 +603,6 @@ public:
 private:
 	///
 	Buffer const * buffer_;
-	///
-	size_t pos_;
 	///
 	WordList const * list_;
 };

@@ -94,6 +94,7 @@ bool Correction::correct(MathAtom & at, char_type c) const
 }
 
 
+#if 0
 idocstream & operator>>(idocstream & is, Correction & corr)
 {
 	corr.read(is);
@@ -106,7 +107,7 @@ odocstream & operator<<(odocstream & os, Correction & corr)
 	corr.write(os);
 	return os;
 }
-
+#endif
 
 
 

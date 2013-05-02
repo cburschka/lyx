@@ -24,7 +24,7 @@ class InsertTableWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	InsertTableWidget(GuiView &, QWidget *);
+	InsertTableWidget(QWidget *);
 
 Q_SIGNALS:
 	//! widget is visible
@@ -62,8 +62,6 @@ private:
 	int bottom_;
 	//! column of pointer
 	int right_;
-	//! the lyxview we need to dispatch the funcrequest
-	GuiView & lyxView_;
 	//! widget under mouse
 	bool underMouse_;
 };

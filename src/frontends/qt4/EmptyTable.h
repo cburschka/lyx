@@ -48,11 +48,6 @@ protected:
 	virtual void resetCellSize();
 
 private:
-	/// number of current columns
-	unsigned int cols;
-	/// number of current rows
-	unsigned int rows;
-
 };
 
 

@@ -95,9 +95,6 @@ private:
 	Font font_;
 	///
 	bool toggleall_;
-	/// If true the language should be reset.
-	/// If false the language of font_ is used.
-	bool reset_lang_;
 };
 
 } // namespace frontend

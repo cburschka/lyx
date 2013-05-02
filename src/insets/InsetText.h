@@ -225,8 +225,6 @@ private:
 	///
 	ColorCode frame_color_;
 	///
-	mutable pit_type old_pit;
-	///
 	mutable Text text_;
 };
 
