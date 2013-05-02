@@ -19,8 +19,6 @@
 
 #include "mathed/MathParser_flags.h"
 
-#include <vector>
-
 
 namespace lyx {
 

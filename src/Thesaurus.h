@@ -17,7 +17,6 @@
 #include "WordLangTuple.h"
 
 #include <map>
-#include <string>
 #include <vector>
 
 namespace lyx {

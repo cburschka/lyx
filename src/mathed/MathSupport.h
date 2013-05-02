@@ -15,7 +15,6 @@
 
 #include "MathParser_flags.h"
 #include "support/strfwd.h"
-#include <vector>
 
 namespace lyx {
 

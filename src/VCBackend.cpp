@@ -34,7 +34,6 @@ using namespace std;
 using namespace lyx::support;
 
 
-
 namespace lyx {
 
 

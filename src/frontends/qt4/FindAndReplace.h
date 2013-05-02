@@ -25,8 +25,6 @@
 #include "Text.h"
 #include "lyxfind.h"
 
-#include <QDialog>
-
 #include <string>
 
 namespace lyx {

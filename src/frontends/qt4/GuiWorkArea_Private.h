@@ -19,7 +19,6 @@
 #include "support/docstring.h"
 #include "support/Timeout.h"
 
-#include <QAbstractScrollArea>
 #include <QMouseEvent>
 #include <QImage>
 #include <QPixmap>

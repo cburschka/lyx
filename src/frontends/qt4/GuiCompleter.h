@@ -18,9 +18,7 @@
 #include "qt_helpers.h"
 #include "support/docstring.h"
 
-#include <QAbstractItemModel>
 #include <QCompleter>
-#include <QStringListModel>
 #include <QTimer>
 
 namespace lyx {

@@ -21,8 +21,6 @@
 #include <QTimer>
 #include <QWaitCondition>
 
-#include <string>
-
 
 namespace lyx {
 

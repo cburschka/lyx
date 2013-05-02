@@ -17,8 +17,6 @@
 
 #include "DockView.h"
 
-
-#include <QSplashScreen>
 #include <QTimer>
 
 #include <sstream>

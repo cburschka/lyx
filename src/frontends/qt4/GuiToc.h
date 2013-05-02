@@ -21,10 +21,6 @@
 
 #include "TocBackend.h"
 
-#include <QStandardItemModel>
-
-#include <vector>
-
 namespace lyx {
 namespace frontend {
 

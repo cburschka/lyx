@@ -15,8 +15,6 @@
 
 #include "InsetMathNest.h"
 
-#include <string>
-
 
 namespace lyx {
 

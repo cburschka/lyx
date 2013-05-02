@@ -14,8 +14,6 @@
 
 #include "InsetMath.h"
 
-#include <string>
-
 
 namespace lyx {
 

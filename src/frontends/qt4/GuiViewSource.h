@@ -22,7 +22,6 @@
 
 #include <QDockWidget>
 #include <QString>
-#include <QTextCharFormat>
 
 class QTextDocument;
 

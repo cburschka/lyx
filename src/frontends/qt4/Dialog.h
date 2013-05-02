@@ -18,7 +18,6 @@
 
 #include "support/strfwd.h"
 
-#include <QList>
 #include <QString>
 
 class QWidget;

@@ -22,10 +22,6 @@
 #include "Layout.h"
 #include "ParagraphParameters.h"
 
-#include <QDialog>
-#include <QShowEvent>
-#include <QGridLayout>
-
 #include <map>
 
 namespace lyx {

@@ -15,8 +15,6 @@
 
 #include <QMenu>
 
-#include <vector>
-
 class QString;
 class QMenuBar;
 

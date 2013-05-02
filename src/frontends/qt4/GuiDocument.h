@@ -13,8 +13,6 @@
 #ifndef GUIDOCUMENT_H
 #define GUIDOCUMENT_H
 
-#include <QDialog>
-
 #include "BufferParams.h"
 #include "BulletsModule.h"
 #include "GuiDialog.h"

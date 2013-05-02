@@ -20,7 +20,6 @@
 
 #include <boost/noncopyable.hpp>
 
-#include <set>
 #include <string>
 #include <vector>
 

@@ -16,7 +16,6 @@
 #include "support/types.h"
 
 #include <vector>
-#include <string>
 
 
 namespace lyx {

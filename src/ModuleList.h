@@ -12,7 +12,6 @@
 #ifndef MODULELIST_H
 #define MODULELIST_H
 
-#include <map>
 #include <string>
 #include <vector>
 
