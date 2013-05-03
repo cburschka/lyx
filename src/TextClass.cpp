@@ -1536,8 +1536,9 @@ Layout const & DocumentClass::getTOCLayout() const
 	Layout const * lay = NULL;
 	for (; lit != len; ++lit) {
 		int const level = lit->toclevel;
-		// we don't want Part
-		if (level == Layout::NOT_IN_TOC || level < 0 || level >= minlevel)
+		// we don't want Part or unnumbered sections
+		if (level == Layout::NOT_IN_TOC || level < 0 
+		    || level >= minlevel || lit->counter.empty())
 			continue;
 		lay = &*lit;
 		minlevel = level;
