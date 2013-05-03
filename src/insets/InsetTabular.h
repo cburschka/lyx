@@ -55,7 +55,7 @@ public:
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
-	Inset * clone() { return new InsetTableCell(*this); }
+	Inset * clone() const { return new InsetTableCell(*this); }
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;

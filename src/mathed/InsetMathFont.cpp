@@ -140,7 +140,7 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 	         || tag == "textbf")
 		variant = "bold";
 	else if (tag == "mathcal")
-		variant == "script";
+		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
 	         || tag == "emph" || tag == "textit")
 		variant = "italic";
@@ -180,7 +180,7 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	         || tag == "textbf")
 		variant = "bold";
 	else if (tag == "mathcal")
-		variant == "script";
+		variant = "script";
 	else if (tag == "mathit" || tag == "textsl"
 	         || tag == "emph" || tag == "textit")
 		variant = "italic";

@@ -31,6 +31,8 @@ class Lexer;
 
 class ParamInfo {
 public:
+	///
+	ParamInfo() {}
 	/// Types of parameters
 	enum ParamType {
 		LATEX_OPTIONAL,    /// normal optional argument
