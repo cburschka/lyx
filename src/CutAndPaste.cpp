@@ -1040,8 +1040,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 
 		PasteReturnValue prv =
 			pasteSelectionHelper(cur, parlist, docclass, 0, errorList);
-		if (prv.needupdate)
-			cur.forceBufferUpdate();
+		cur.forceBufferUpdate();
 		cur.clearSelection();
 		text->setCursor(cur, prv.par, prv.pos);
 	}
