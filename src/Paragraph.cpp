@@ -2879,7 +2879,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		if (isDeleted(i))
 			continue;
 
-		Font font = getFont(buf.masterBuffer()->params(), i, outerfont);
+		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
 		bool const at_start = (i == initial);
 
 		// emphasis
@@ -2921,7 +2921,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			if (font.fontInfo().series() == BOLD_SERIES) {
 				xs << html::StartTag("b");
 				bold_flag = true;
-			} else if (bold_flag && i != initial) {
+			} else if (bold_flag && !at_start) {
 				xs << html::EndTag("b");
 				bold_flag = false;
 			}
