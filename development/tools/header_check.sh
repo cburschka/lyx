@@ -28,6 +28,10 @@ LOG_FILE="$(basename $0).log"
 # For all headers:
 # PATTERN='^#include'
 
+# Exclude common headers with regex
+# (e.g. 'debug.h' will exclude 'support/debug.h')
+EXCLUDE='\(debug.h\|cstdio\)'
+
 function BUILD_FN ()
 {
 	# This is not a clean make.
@@ -48,10 +52,12 @@ do
 	grep "${PATTERN}" "${FILE_}" | \
 	while read INCLUDE
 	do
-		cp "${FILE_COPY}" "${FILE_}" \
-			|| { echo "ERROR: restore copy failed" >&2; exit 1; }
-		sed -i "s@${INCLUDE}@@" "${FILE_}"
-		( BUILD_FN ) &>/dev/null && echo "${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+		if echo "${INCLUDE}" | grep -q -v "${EXCLUDE}"; then
+			cp "${FILE_COPY}" "${FILE_}" \
+				|| { echo "ERROR: restore copy failed" >&2; exit 1; }
+			sed -i "s@${INCLUDE}@@" "${FILE_}"
+			( BUILD_FN ) &>/dev/null && echo "${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+		fi
 	done
 	cp "${FILE_COPY}" "${FILE_}"
 done
