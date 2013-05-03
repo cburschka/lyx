@@ -1335,6 +1335,49 @@ Cesta2
 pdflatex %1vlna
 \end_layout
 
+\begin_layout Subsubsection
+Rejstříky
+\end_layout
+
+\begin_layout Standard
+České řazení rejstříku pomocí standardního programu 
+\family typewriter
+makeindex
+\family default
+ nefunguje.
+ Lze však použít novější generátor 
+\family typewriter
+xindy
+\family default
+.
+ V globálních nastaveních (nebo nastaveních dokumentu) zvolte jako generátor
+ rejstříku 
+\family typewriter
+texindy
+\family default
+, v jeho možnostech zadejte '
+\family typewriter
+-C latin2 -L czech
+\family default
+' a kódování dokumentu nastavte na "Standardní pro daný jazyk".
+\end_layout
+
+\begin_layout Subsubsection
+Bibliografie
+\end_layout
+
+\begin_layout Standard
+Nápovědu pro problémy s automatickým řazením českých citací hledejte v sekci
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BibTeX"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Psaní, prohlížení a tisk
 \end_layout
@@ -5190,6 +5233,12 @@ LaTeXu
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:BibTeX"
+
+\end_inset
+
 BibTeX
 \end_layout
 
@@ -5231,7 +5280,7 @@ bibliography{}
 status collapsed
 
 \begin_layout Plain Layout
-Jako v obyčejném LaTeX, vícenásobné odkazy budou odděleny čárkami bez mezer.
+Jako v obyčejném LaTeXu, vícenásobné odkazy budou odděleny čárkami bez mezer.
 \end_layout
 
 \end_inset
@@ -5271,18 +5320,117 @@ reference "sec:bibliographies"
 
 ).
  LyX se postará o spuštění BibTeXu.
- Důvod, proč podpora pro BibTeX není úplná, je v tom, že LyX neumí generovat
- soubory 
+ Pro vytvoření samotných souborů 
 \family typewriter
-bib
+.bib
 \family default
-, a proto, že nelze zobrazit seznam všech citací v dialogu 
-\family sans
-Citace
-\family default
-.
+ musíte použít externí nástroje.
 \end_layout
 
+\begin_layout Subsubsection
+Řazení citací
+\end_layout
+
+\begin_layout Standard
+České řazení citací nefunguje pro standardní nastavení programu bibtex správně.
+ Možná řešení jsou:
+\end_layout
+
+\begin_layout Itemize
+bibtex8
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Cesta trnitá, poměrně podrobný návod lze najít v dokumentu 
+\begin_inset Quotes gld
+\end_inset
+
+Local Guide to BibTeX
+\begin_inset Quotes grd
+\end_inset
+
+, který koluje po internetu.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+biblatex
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Podpora zatím není v LyXu nativní, návod lze najít na wiki stránkách projektu
+ LyX.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+trik s direktivou 
+\family typewriter
+
+\backslash
+noopsort
+\family default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tex.ac.uk/cgi-bin/texfaq2html?label=bibprefixsort
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+BibTeX umožňuje vložit separátní klíč pro řazení:
+\end_layout
+
+\begin_layout LyX-Code
+@PREAMBLE{ {
+\backslash
+providecommand{
+\backslash
+noopsort}[1]{}} }
+\begin_inset Newline newline
+\end_inset
+
+...
+\begin_inset Newline newline
+\end_inset
+
+@ARTICLE{Rayleigh1,
+\begin_inset Newline newline
+\end_inset
+
+AUTHOR = "{
+\backslash
+noopsort{Rayleigh}}{Lord Rayleigh}",
+\begin_inset Newline newline
+\end_inset
+
+...
+\begin_inset Newline newline
+\end_inset
+
+}
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Různé
 \end_layout
