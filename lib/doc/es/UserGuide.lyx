@@ -26333,6 +26333,45 @@ reference "fig:Dos-imágenes"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on this page
+\begin_inset Quotes frd
+\end_inset
+
+; if the label is on a facing page in a two-sided document, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the facing page
+\begin_inset Quotes frd
+\end_inset
+
+; if it is on the previous page which is not a facing page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the previous page
+\begin_inset Quotes frd
+\end_inset
+
+; if it is on the next page which is not a facing page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the next page
+\begin_inset Quotes frd
+\end_inset
+
+.
+ The wording of the printed text also depends on the used document class.
 \end_layout
 
 \begin_layout Description
@@ -26368,6 +26407,32 @@ reference "fig:Dos-imágenes"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, this format behaves like 
+\family sans
+\series bold
+<reference>
+\family default
+\series default
+; otherwise it behaves like 
+\family sans
+\series bold
+on
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -26520,49 +26585,6 @@ reference "fig:Dos-imágenes"
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-<página>
-\family default
-
-\begin_inset space \thinspace{}
-\end_inset
-
- no imprime el número si la etiqueta está en la misma página, en la anterior
- o en la siguiente.
- En su lugar verás p.
-\begin_inset space \thinspace{}
-\end_inset
-
-ej.
-\begin_inset space ~
-\end_inset
-
-el texto «
-\family sans
-en esta página
-\family default
-».
- El estilo 
-\family sans
-<referencia>
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-página
-\begin_inset space ~
-\end_inset
-
-<página>
-\family default
- no imprimirá nada sobre la página si la etiqueta está en la misma página.
-\end_layout
-
-\begin_layout Standard
 El número y la página de la parte referida del documento es calculado automática
 mente por LaTeX al generar la salida.
  El estilo de las referencias se especifica en el apartado 
@@ -26648,8 +26670,19 @@ En cualquier momento puedes cambiar el texto de una etiqueta pulsando sobre
 \end_layout
 
 \begin_layout Standard
-Si una referencia cruzada no encuentra su etiqueta, en la salida verás dos
- signos de interrogación en vez de la referencia.
+Si una referencia cruzada no encuentra su etiqueta, verás en LyX 
+\begin_inset Quotes fld
+\end_inset
+
+
+\lang english
+BROKEN
+\begin_inset Quotes frd
+\end_inset
+
+ in the cross-reference label
+\lang spanish
+ y en la salida dos signos de interrogación en vez de la referencia.
 \end_layout
 
 \begin_layout Standard
@@ -27255,6 +27288,29 @@ key "lyxcredit"
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+To align all entries in the bibliography environment you can set a longest
+ label via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
+ All entries are then indented in the output by the width of the given label.
+\end_layout
+
 \begin_layout Subsection
 Bases de datos bibliográficos (BibTeX)
 \begin_inset Index idx
@@ -27385,8 +27441,8 @@ status collapsed
 eX
 \family default
 .
- Surge una ventana en la que puedes cargar una o más bases de datos y un
- archivo de estilo y después se inserta un recuadro gris.
+ Surge una ventana en la que puedes añadir una o más bases de datos y selecciona
+r un archivo de estilo y después se inserta un recuadro gris.
  La opción 
 \family sans
 Añadir bibliografía al IG
@@ -27455,12 +27511,22 @@ BibTeX
 \family default
 .
  Puedes elegir cual de sus variantes debería usar LyX como procesador: en
- la configuración de la
 \family sans
- Bibliografía
+ Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Bibliografía
 \family default
- del documento o en las preferencias de LyX 
+ o en 
 \family sans
+\lang english
+Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
 Salidas\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
@@ -27548,7 +27614,8 @@ Bibliografía por secciones
  en 
 \family sans
 Documento\SpecialChar \menuseparator
-Configuración
+Configuración\SpecialChar \menuseparator
+Bibliografía
 \family default
 , es posible tener múltiples bibliografías ordenadas en secciones.
  Esto y otras características se explica con detalle en la sección 

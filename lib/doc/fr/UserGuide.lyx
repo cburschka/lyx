@@ -26873,6 +26873,45 @@ reference "fig:Deux-images-déformées."
 \end_inset
 
 ;
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on this page
+\begin_inset Quotes frd
+\end_inset
+
+; if the label is on a facing page in a two-sided document, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the facing page
+\begin_inset Quotes frd
+\end_inset
+
+; if it is on the previous page which is not a facing page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the previous page
+\begin_inset Quotes frd
+\end_inset
+
+; if it is on the next page which is not a facing page, it prints 
+\begin_inset Quotes fld
+\end_inset
+
+on the next page
+\begin_inset Quotes frd
+\end_inset
+
+.
+ The wording of the printed text also depends on the used document class.
 \end_layout
 
 \begin_layout Description
@@ -26900,6 +26939,32 @@ reference "fig:Deux-images-déformées."
 \end_inset
 
 ;
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, this format behaves like 
+\family sans
+\series bold
+<reference>
+\family default
+\series default
+; otherwise it behaves like 
+\family sans
+\series bold
+on
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -27095,41 +27160,6 @@ reference "fig:Deux-images-déformées."
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-<page>
-\family default
- n'imprimera pas le numéro de la page si l'étiquette se trouve sur la page
- précédente, la même page ou la page suivante.
- Vous verrez par exemple un texte du genre 
-\family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-sur cette page
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- à la place.
- Le style 
-\family sans
-<référence>
-\begin_inset space ~
-\end_inset
-
-page
-\begin_inset space ~
-\end_inset
-
-<page>
-\family default
- n'imprimera rien concernant la page si l'étiquette est sur la même page.
-\end_layout
-
-\begin_layout Standard
 Le numéro affecté à une étiquette et le numéro de la page sur laquelle elle
  se trouve sont calculés automatiquement par LaTeX.
  Vous choisissez une des six variétés de références dans le champ Format
@@ -27208,7 +27238,19 @@ Vous pouvez modifier le nom d'une étiquette à tout moment en cliquant dessus.
 
 \begin_layout Standard
 Si une référence croisée fait référence à une étiquette qui n'existe pas,
- vous verrez deux points d'interrogation à l'impression.
+ vous verrez 
+\lang english
+in LyX 
+\begin_inset Quotes fld
+\end_inset
+
+BROKEN
+\begin_inset Quotes frd
+\end_inset
+
+ in the cross-reference label and
+\lang french
+ et deux points d'interrogation à l'impression.
 \end_layout
 
 \begin_layout Standard
@@ -27866,6 +27908,29 @@ key "lyxcredit"
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+To align all entries in the bibliography environment you can set a longest
+ label via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
+ All entries are then indented in the output by the width of the given label.
+\end_layout
+
 \begin_layout Subsection
 Les bases de données bibliographiques (BibTeX)
 \begin_inset Index idx
@@ -28009,8 +28074,8 @@ eX
 \family default
 .
  Une boîte grise sera insérée et une fenêtre de dialogue va s'ouvrir.
- Dans cette fenêtre vous pourrez charger une ou plusieurs bases de données
- et un fichier de style.
+ Dans cette fenêtre vous pourrez ajouter une ou plusieurs bases de données
+ et choisir un fichier de style.
  L'option 
 \family sans
 Ajouter la bibliographie à la TdM
@@ -28076,13 +28141,23 @@ Pour créer la bibliographie à partir de la base de donnée et des citations
  que vous avez insérées dans votre document, LyX utilise le programme BibTeX.
  Vous pouvez choisir quelle variante du programme doit être utilisée pour
  le traitement, Ce programme peut être contrôlé par un certain nombre d'options
- que vous pouvez ajouter soit dans les paramètres du document à la rubrique
- 
+ que vous pouvez ajouter dans 
 \family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
 Bibliographie
 \family default
-, soit dans la fenêtre de préférences de LyX, sous la rubrique 
+ ou dans 
 \family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
 Sorties
 \family default
 \SpecialChar \menuseparator
@@ -28199,10 +28274,7 @@ sections
  dans le menu 
 \family sans
 Document\SpecialChar \menuseparator
-Paramètres
-\family default
-, rubrique 
-\family sans
+Paramètres\SpecialChar \menuseparator
 Bibliographie
 \family default
 , il est possible d'avoir des bibliographies multiples et par section.
