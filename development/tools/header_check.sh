@@ -30,6 +30,10 @@ LOG_FILE="$(basename $0).log"
 
 # Exclude common headers with regex
 # (e.g. 'debug.h' will exclude 'support/debug.h')
+# LyX was compiled on exotic environments and these sometimes
+# require headers not needed on win/linux. So check the logs before
+# deleting "redundant" standard libraries or includes around various
+# ifdefs...
 EXCLUDE='\(debug.h\|cstdio\)'
 
 function BUILD_FN ()
