@@ -530,6 +530,8 @@ void putClipboard(ParagraphList const & paragraphs,
 		// XHTML format
 		odocstringstream oshtml;
 		OutputParams runparams(encodings.fromLyXName("utf8"));
+		// We do not need to produce images, etc.
+		runparams.dryrun = true;
 		buffer->writeLyXHTMLSource(oshtml, runparams, Buffer::FullSource);
 
 		theClipboard().put(lyx, oshtml.str(), plaintext);
