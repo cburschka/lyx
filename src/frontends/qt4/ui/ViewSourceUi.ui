@@ -1,107 +1,173 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ViewSourceUi</class>
- <widget class="QWidget" name="ViewSourceUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ViewSourceUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
-    <height>139</height>
+    <width>430</width>
+    <height>131</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item rowspan="5" row="0" column="0" >
-    <widget class="QTextEdit" name="viewSourceTV" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Ignored" hsizetype="MinimumExpanding" >
+  <layout class="QGridLayout" name="gridLayout" columnstretch="1,0">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QTextEdit" name="viewSourceTV">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Ignored">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="whatsThis" >
+     <property name="whatsThis">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QLabel" name="outputFormatLA" >
-     <property name="text" >
-      <string>F&amp;ormat:</string>
+   <item row="0" column="1">
+    <layout class="QFormLayout" name="formLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
-     <property name="buddy" >
-      <cstring>outputFormatCO</cstring>
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::ExpandingFieldsGrow</enum>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="2" >
-    <widget class="QComboBox" name="outputFormatCO" >
-     <property name="enabled" >
-      <bool>true</bool>
+     <property name="labelAlignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
-     <property name="toolTip" >
-      <string>Select the output format</string>
+     <property name="horizontalSpacing">
+      <number>-1</number>
      </property>
-     <property name="sizeAdjustPolicy" >
-      <enum>QComboBox::AdjustToContents</enum>
+     <property name="verticalSpacing">
+      <number>2</number>
      </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2" >
-    <widget class="QComboBox" name="contentsCO" >
-     <item>
-      <property name="text" >
-       <string>Current Paragraph</string>
-      </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinAndMaxSize</enum>
+       </property>
+       <property name="bottomMargin">
+        <number>3</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="outputFormatLA">
+         <property name="text">
+          <string>F&amp;ormat:</string>
+         </property>
+         <property name="buddy">
+          <cstring>outputFormatCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="outputFormatCO">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>Select the output format</string>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
-     <item>
-      <property name="text" >
-       <string>Complete Source</string>
-      </property>
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="masterPerspectiveCB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Show the source as the master document gets it</string>
+       </property>
+       <property name="text">
+        <string>&amp;Master's perspective</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text" >
-       <string>Preamble Only</string>
-      </property>
+     <item row="3" column="0">
+      <widget class="QCheckBox" name="autoUpdateCB">
+       <property name="text">
+        <string>Automatic update</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text" >
-       <string>Body Only</string>
-      </property>
+     <item row="4" column="0" colspan="2">
+      <widget class="QPushButton" name="updatePB">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>&amp;Update</string>
+       </property>
+      </widget>
      </item>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2" >
-    <widget class="QCheckBox" name="masterPerspectiveCB" >
-     <property name="text" >
-      <string>&amp;Master's perspective</string>
-     </property>
-     <property name="toolTip" >
-      <string>Show the source as the master document gets it</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QCheckBox" name="autoUpdateCB" >
-     <property name="text" >
-      <string>Automatic update</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2" >
-    <widget class="QPushButton" name="updatePB" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="text" >
-      <string>&amp;Update</string>
-     </property>
-    </widget>
+     <item row="1" column="0" colspan="2">
+      <widget class="QComboBox" name="contentsCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <item>
+        <property name="text">
+         <string>Current Paragraph</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Complete Source</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Preamble Only</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Body Only</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
@@ -111,7 +177,7 @@
   <tabstop>updatePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
