@@ -68,9 +68,11 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 void FindAndReplaceWidget::dockLocationChanged(Qt::DockWidgetArea area)
 {
        if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
-               dynamicLayout_->setDirection(QBoxLayout::TopToBottom);
+               dynamicLayoutBasic_->setDirection(QBoxLayout::TopToBottom);
+               dynamicLayoutAdvanced_->setDirection(QBoxLayout::TopToBottom);
        } else {
-               dynamicLayout_->setDirection(QBoxLayout::LeftToRight);
+               dynamicLayoutBasic_->setDirection(QBoxLayout::LeftToRight);
+               dynamicLayoutAdvanced_->setDirection(QBoxLayout::LeftToRight);
        }
 }
 
