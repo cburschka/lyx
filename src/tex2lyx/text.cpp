@@ -935,7 +935,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		width_unit = "in";
 		width_special = "width";
 	} else if (latex_width.empty() && outer_type == "framebox") {
-		outer_type = "fbox";
+		outer_type == "fbox";
 		width_value = "-999";
 		width_unit = "col%";
 		width_special = "none";
