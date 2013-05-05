@@ -32,6 +32,7 @@
 
 #include <boost/crc.hpp>
 
+#include <QBoxLayout>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
@@ -227,12 +228,24 @@ void ViewSourceWidget::updateDefaultFormat()
 }
 
 
+void ViewSourceWidget::dockLocationChanged(Qt::DockWidgetArea area)
+{
+	if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
+		layout_->setDirection(QBoxLayout::TopToBottom);
+	} else {
+		layout_->setDirection(QBoxLayout::LeftToRight);
+	}
+}
+
+
 GuiViewSource::GuiViewSource(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "view-source", qt_("LaTeX Source"), area, flags)
 {
 	widget_ = new ViewSourceWidget;
 	setWidget(widget_);
+	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
+		widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));
 }
 
 

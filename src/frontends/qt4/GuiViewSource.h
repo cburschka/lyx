@@ -49,6 +49,8 @@ public Q_SLOTS:
 	void updateDefaultFormat();
 	///
 	void contentsChanged();
+	///
+	void dockLocationChanged(Qt::DockWidgetArea area);
 
 private:
 	///
