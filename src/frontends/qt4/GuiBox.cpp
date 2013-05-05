@@ -205,6 +205,8 @@ void GuiBox::initDialog()
 {
 	setInnerType(true, toqstr("minipage"));
 	widthED->setText("100");
+	widthCB->setChecked(true);
+	widthCB->setEnabled(false);
 	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightED->setText("1");
 	heightUnitsLC->setCurrentItem("totalheight");
