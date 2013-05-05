@@ -39,6 +39,10 @@ public:
 	bool initialiseParams(std::string const & params);
 	void updateGUI();
 
+public Q_SLOTS:
+	///
+	void dockLocationChanged(Qt::DockWidgetArea area);
+
 private:
 	///
 	GuiView & view_;

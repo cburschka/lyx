@@ -65,6 +65,16 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 }
 
 
+void FindAndReplaceWidget::dockLocationChanged(Qt::DockWidgetArea area)
+{
+       if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
+               dynamicLayout_->setDirection(QBoxLayout::TopToBottom);
+       } else {
+               dynamicLayout_->setDirection(QBoxLayout::LeftToRight);
+       }
+}
+
+
 bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
 	if (event->type() != QEvent::KeyPress
@@ -555,6 +565,9 @@ FindAndReplace::FindAndReplace(GuiView & parent,
 	widget_ = new FindAndReplaceWidget(parent);
 	setWidget(widget_);
 	setFocusProxy(widget_);
+
+	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
+               widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));
 }
 
 
