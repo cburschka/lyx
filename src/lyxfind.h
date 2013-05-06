@@ -72,10 +72,6 @@ bool findNextChange(BufferView * bv);
 /// find the previous change in the buffer
 bool findPreviousChange(BufferView * bv);
 
-/// find the change in the buffer
-/// \param next true to find the next change, otherwise the previous
-bool findChange(BufferView * bv, bool next);
-
 class FindAndReplaceOptions {
 public:
 	typedef enum {

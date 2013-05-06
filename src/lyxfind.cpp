@@ -121,23 +121,6 @@ int findBackwards(DocIterator & cur, MatchString const & match,
 }
 
 
-bool findChange(DocIterator & cur, bool next)
-{
-	if (!next)
-		cur.backwardPos();
-	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
-		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos())) {
-			if (!next)
-				// if we search backwards, take a step forward
-				// to correctly set the anchor
-				cur.forwardPos();
-			return true;
-		}
-
-	return false;
-}
-
-
 bool searchAllowed(docstring const & str)
 {
 	if (str.empty()) {
@@ -404,15 +387,21 @@ bool lyxreplace(BufferView * bv,
 }
 
 
-bool findNextChange(BufferView * bv)
+namespace {
+bool findChange(DocIterator & cur, bool next)
 {
-	return findChange(bv, true);
-}
+	if (!next)
+		cur.backwardPos();
+	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
+		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos())) {
+			if (!next)
+				// if we search backwards, take a step forward
+				// to correctly set the anchor
+				cur.forwardPos();
+			return true;
+		}
 
-
-bool findPreviousChange(BufferView * bv)
-{
-	return findChange(bv, false);
+	return false;
 }
 
 
@@ -483,6 +472,20 @@ bool findChange(BufferView * bv, bool next)
 
 	return true;
 }
+}
+
+
+bool findNextChange(BufferView * bv)
+{
+	return findChange(bv, true);
+}
+
+
+bool findPreviousChange(BufferView * bv)
+{
+	return findChange(bv, false);
+}
+
 
 namespace {
 
