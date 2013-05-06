@@ -450,13 +450,13 @@ bool findChange(BufferView * bv, bool next)
 	Change orig_change = tip.paragraph().lookupChange(tip.pos());
 
 	if (next) {
-		for (; !tip.at_end(); tip.forwardPos()) {
+		for (; tip.pit() < tip.lastpit() || tip.pos() < tip.lastpos(); tip.forwardPos()) {
 			Change change = tip.paragraph().lookupChange(tip.pos());
 			if (!change.isSimilarTo(orig_change))
 				break;
 		}
 	} else {
-		for (; !tip.at_begin();) {
+		for (; tip.pit() > 0 || tip.pos() > 0;) {
 			tip.backwardPos();
 			Change change = tip.paragraph().lookupChange(tip.pos());
 			if (!change.isSimilarTo(orig_change)) {
