@@ -40,6 +40,10 @@ public:
 	///
 	void setBufferView(BufferView const * bv);
 
+protected:
+	///
+	void resizeEvent (QResizeEvent * event);
+
 public Q_SLOTS:
 	/// update content
 	void updateView();
@@ -49,8 +53,6 @@ public Q_SLOTS:
 	void updateDefaultFormat();
 	///
 	void contentsChanged();
-	///
-	void dockLocationChanged(Qt::DockWidgetArea area);
 
 private:
 	///

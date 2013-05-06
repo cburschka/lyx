@@ -228,13 +228,16 @@ void ViewSourceWidget::updateDefaultFormat()
 }
 
 
-void ViewSourceWidget::dockLocationChanged(Qt::DockWidgetArea area)
+void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 {
-	if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
+	QSize const & formSize = formLayout->sizeHint();
+	// minimize the size of the part that contains the buttons
+	if (width() * formSize.height() < height() * formSize.width()) {
 		layout_->setDirection(QBoxLayout::TopToBottom);
 	} else {
 		layout_->setDirection(QBoxLayout::LeftToRight);
 	}
+	QWidget::resizeEvent(event);
 }
 
 
@@ -244,8 +247,6 @@ GuiViewSource::GuiViewSource(GuiView & parent,
 {
 	widget_ = new ViewSourceWidget;
 	setWidget(widget_);
-	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
-		widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));
 }
 
 
