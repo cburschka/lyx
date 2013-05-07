@@ -31,6 +31,9 @@ class Text;
 
 namespace html {
 
+class FontTag;
+class EndFontTag;
+
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before being passed to the constructor.
 struct StartTag
@@ -44,15 +47,19 @@ struct StartTag
 	///
 	~StartTag() {}
 	/// <tag_ attr_>
-	virtual docstring asTag() const;
+	virtual docstring writeTag() const;
 	/// </tag_>
-	virtual docstring asEndTag() const;
+	virtual docstring writeEndTag() const;
 	///
-	bool operator==(StartTag const & rhs) const
+	virtual FontTag const * asFontTag() const { return 0; }
+	///
+	virtual bool operator==(StartTag const & rhs) const
 		{ return tag_ == rhs.tag_; }
 	///
-	bool operator!=(StartTag const & rhs) const
+	virtual bool operator!=(StartTag const & rhs) const
 		{ return !(*this == rhs); }
+	///
+	virtual bool operator==(FontTag const & rhs) const;
 	///
 	std::string tag_;
 	///
@@ -60,6 +67,46 @@ struct StartTag
 	/// whether to keep things like "<tag></tag>" or discard them
 	/// you would want this for td, e.g, but maybe not for a div
 	bool keepempty_;
+};
+
+
+///
+struct EndTag
+{
+	///
+	explicit EndTag(std::string tag) : tag_(tag) {}
+	/// </tag_>
+	virtual docstring writeEndTag() const;
+	///
+	bool operator==(StartTag const & rhs) const
+		{ return tag_ == rhs.tag_; }
+	///
+	bool operator!=(StartTag const & rhs) const
+		{ return !(*this == rhs); }
+	///
+	virtual EndFontTag const * asFontTag() const { return 0; }
+	///
+	std::string tag_;
+};
+
+
+/// Tags like <img />
+/// Attributes will be escaped automatically and so should NOT
+/// be escaped before being passed to the constructor.
+struct CompTag
+{
+	///
+	explicit CompTag(std::string const & tag)
+		: tag_(tag) {}
+	///
+	explicit CompTag(std::string const & tag, std::string const & attr)
+		: tag_(tag), attr_(attr) {}
+	/// <tag_ attr_ />
+	docstring writeTag() const;
+	///
+	std::string tag_;
+	///
+	std::string attr_;
 };
 
 
@@ -74,7 +121,7 @@ struct ParTag : public StartTag
 	///
 	~ParTag() {}
 	///
-	docstring asTag() const;
+	docstring writeTag() const;
 	/// the "magic par label" for this paragraph
 	std::string parid_;
 };
@@ -105,56 +152,23 @@ struct FontTag : public StartTag
 	///
 	explicit FontTag(FontTypes type);
 	///
-	docstring asTag() const;
+	FontTag const * asFontTag() const { return this; }
 	///
-	docstring asEndTag() const;
-	///
-	bool isFontTag() { return true; }
-	///
-	bool operator==(FontTag const & rhs)
-		{ return font_type_ == rhs.font_type_; }
-	/// Asserts.
-	bool operator==(StartTag const &);
+	bool operator==(StartTag const &) const;
 	///
 	FontTypes font_type_;
 };
 
 
 ///
-struct EndTag
+struct EndFontTag : public EndTag
 {
 	///
-	explicit EndTag(std::string tag) : tag_(tag) {}
-	/// </tag_>
-	docstring asEndTag() const;
+	explicit EndFontTag(FontTypes type);
 	///
-	bool operator==(StartTag const & rhs) const
-		{ return tag_ == rhs.tag_; }
+	EndFontTag const * asFontTag() const { return this; }
 	///
-	bool operator!=(StartTag const & rhs) const
-		{ return !(*this == rhs); }
-	///
-	std::string tag_;
-};
-
-
-/// Tags like <img />
-/// Attributes will be escaped automatically and so should NOT
-/// be escaped before being passed to the constructor.
-struct CompTag
-{
-	///
-	explicit CompTag(std::string const & tag)
-		: tag_(tag) {}
-	///
-	explicit CompTag(std::string const & tag, std::string const & attr)
-		: tag_(tag), attr_(attr) {}
-	/// <tag_ attr_ />
-	docstring asTag() const;
-	///
-	std::string tag_;
-	///
-	std::string attr_;
+	FontTypes font_type_;
 };
 
 
@@ -200,6 +214,8 @@ public:
 	XHTMLStream & operator<<(html::CompTag const &);
 	///
 	XHTMLStream & operator<<(html::ParTag const &);
+	///
+	XHTMLStream & operator<<(html::FontTag const &);
 	///
 	XHTMLStream & operator<<(html::CR const &);
 	///

@@ -148,15 +148,7 @@ docstring cleanAttr(docstring const & str)
 }
 
 
-bool isFontTag(string const & s)
-{
-	return s == "em" || s == "strong" || s == "i" || s == "b"
-	    || s == "dfn" || s == "kbd" || s == "var" || s == "samp"
-	    || s == "del" || s == "u";
-}
-
-
-docstring StartTag::asTag() const
+docstring StartTag::writeTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
@@ -166,34 +158,40 @@ docstring StartTag::asTag() const
 }
 
 
-docstring StartTag::asEndTag() const
+docstring StartTag::writeEndTag() const
 {
 	string output = "</" + tag_ + ">";
 	return from_utf8(output);
 }
 
 
-docstring EndTag::asEndTag() const
+bool StartTag::operator==(FontTag const & rhs) const
+{
+	return rhs == *this;
+}
+
+
+docstring EndTag::writeEndTag() const
 {
 	string output = "</" + tag_ + ">";
 	return from_utf8(output);
 }
 
 
-docstring ParTag::asTag() const
+docstring ParTag::writeTag() const
 {
-	docstring output = StartTag::asTag();
+	docstring output = StartTag::writeTag();
 
 	if (parid_.empty())
 		return output;
 
 	string const pattr = "id='" + parid_ + "'";
-	output += html::CompTag("a", pattr).asTag();
+	output += html::CompTag("a", pattr).writeTag();
 	return output;
 }
 
 
-docstring CompTag::asTag() const
+docstring CompTag::writeTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
@@ -201,6 +199,94 @@ docstring CompTag::asTag() const
 	output += " />";
 	return from_utf8(output);
 }
+
+
+
+namespace {
+
+string fontToTag(html::FontTypes type)
+ {
+	switch(type) {
+	case FT_EMPH:
+		return "em";
+	case FT_BOLD:
+		return "b";
+	case FT_NOUN:
+		return "dfn";
+	case FT_UBAR:
+	case FT_WAVE:
+	case FT_DBAR:
+		return "u";
+	case FT_SOUT:
+		return "del";
+	case FT_ITALIC:
+		return "i";
+	case FT_SLANTED:
+	case FT_SMALLCAPS:
+	case FT_ROMAN:
+	case FT_SANS:
+	case FT_TYPER:
+		return "span";
+	}
+	// kill warning
+	return "";
+}
+
+StartTag fontToStartTag(html::FontTypes type)
+ {
+	string tag = fontToTag(type);
+	switch(type) {
+	case FT_EMPH:
+		return html::StartTag(tag);
+	case FT_BOLD:
+		return html::StartTag(tag);
+	case FT_NOUN:
+		return html::StartTag(tag, "class='lyxnoun'");
+	case FT_UBAR:
+		return html::StartTag(tag);
+	case FT_DBAR:
+		return html::StartTag(tag, "class='dline'");
+	case FT_SOUT:
+		return html::StartTag(tag, "class='strikeout'");
+	case FT_WAVE:
+		return html::StartTag(tag, "class='wline'");
+	case FT_ITALIC:
+		return html::StartTag(tag);
+	case FT_SLANTED:
+		return html::StartTag(tag, "style='font-style:oblique;'");
+	case FT_SMALLCAPS:
+		return html::StartTag(tag, "style='font-variant:small-caps;'");
+	case FT_ROMAN:
+		return html::StartTag(tag, "style='font-family:serif;'");
+	case FT_SANS:
+		return html::StartTag(tag, "style='font-family:sans-serif;'");
+	case FT_TYPER:
+		return html::StartTag(tag, "style='font-family:monospace;'");
+	}
+	// kill warning
+	return StartTag("");
+}
+
+} // end anonymous namespace
+
+
+FontTag::FontTag(FontTypes type)
+  : StartTag(fontToStartTag(type)), font_type_(type)
+{}
+
+
+bool FontTag::operator==(StartTag const & tag) const
+{
+	FontTag const * const ftag = tag.asFontTag();
+	if (!ftag)
+		return false;
+	return (font_type_ == ftag->font_type_);
+}
+
+
+EndFontTag::EndFontTag(FontTypes type)
+	  : EndTag(fontToTag(type)), font_type_(type)
+{}
 
 } // namespace html
 
@@ -263,8 +349,8 @@ bool XHTMLStream::closeFontTags()
 
 	// first, we close any open font tags we can close
 	TagPtr curtag = tag_stack_.back();
-	while (html::isFontTag(curtag->tag_)) {
-		os_ << curtag->asEndTag();
+	while (curtag->asFontTag()) {
+		os_ << curtag->writeEndTag();
 		tag_stack_.pop_back();
 		// this shouldn't happen, since then the font tags
 		// weren't in any other tag.
@@ -327,7 +413,7 @@ void XHTMLStream::endParagraph()
 		if (*cur_tag == parsep_tag)
 			break;
 		writeError("Tag `" + cur_tag->tag_ + "' still open at end of paragraph. Closing.");
-		os_ << cur_tag->asEndTag();
+		os_ << cur_tag->writeEndTag();
 	}
 }
 
@@ -338,7 +424,7 @@ void XHTMLStream::clearTagDeque()
 		TagPtr const tag = pending_tags_.front();
 		if (*tag != parsep_tag)
 			// tabs?
-			os_ << tag->asTag();
+			os_ << tag->writeTag();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
@@ -423,8 +509,17 @@ XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag)
 	if (tag.tag_.empty())
 		return *this;
 	clearTagDeque();
-	os_ << tag.asTag();
+	os_ << tag.writeTag();
 	*this << html::CR();
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(html::FontTag const & tag)
+{
+	if (tag.tag_.empty())
+		return *this;
+	pending_tags_.push_back(makeTagPtr(tag));
 	return *this;
 }
 
@@ -536,7 +631,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	// is the tag we are closing the last one we opened?
 	if (etag == *tag_stack_.back()) {
 		// output it...
-		os_ << etag.asEndTag();
+		os_ << etag.writeEndTag();
 		// ...and forget about it
 		tag_stack_.pop_back();
 		return *this;
@@ -553,7 +648,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	// so the tag was opened, but other tags have been opened since
 	// and not yet closed.
 	// if it's a font tag, though...
-	if (html::isFontTag(etag.tag_)) {
+	if (etag.asFontTag()) {
 		// it won't be a problem if the other tags open since this one
 		// are also font tags.
 		TagDeque::const_reverse_iterator rit = tag_stack_.rbegin();
@@ -561,7 +656,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		for (; rit != ren; ++rit) {
 			if (etag == **rit)
 				break;
-			if (!html::isFontTag((*rit)->tag_)) {
+			if (!(*rit)->asFontTag()) {
 				// we'll just leave it and, presumably, have to close it later.
 				writeError("Unable to close font tag `" + etag.tag_ 
 				        + "' due to open non-font tag `" + (*rit)->tag_ + "'.");
@@ -578,13 +673,12 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		// ...remembering them in a stack.
 		TagDeque fontstack;
 		while (etag != *curtag) {
-			os_ << curtag->asEndTag();
+			os_ << curtag->writeEndTag();
 			fontstack.push_back(curtag);
 			tag_stack_.pop_back();
 			curtag = tag_stack_.back();
 		}
-		// now close our tag...
-		os_ << etag.asEndTag();
+    os_ << etag.writeEndTag();
 		tag_stack_.pop_back();
 
 		// ...and restore the other tags.
@@ -605,12 +699,12 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	while (etag != *curtag) {
 		writeError(curtag->tag_);
 		if (*curtag != parsep_tag)
-			os_ << curtag->asEndTag();
+			os_ << curtag->writeEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();
 	}
 	// curtag is now the one we actually want.
-	os_ << curtag->asEndTag();
+	os_ << curtag->writeEndTag();
 	tag_stack_.pop_back();
 	
 	return *this;

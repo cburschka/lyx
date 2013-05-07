@@ -2831,16 +2831,18 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 }
 
 
+namespace {
 void doFontSwitch(XHTMLStream & xs, bool startrange,
-	bool & flag, FontState curstate, std::string tag, std::string attr = "")
+	bool & flag, FontState curstate, html::FontTypes type)
 {
 	if (curstate == FONT_ON) {
-		xs << html::StartTag(tag, attr);
+		xs << html::FontTag(type);
 		flag = true;
 	} else if (flag && !startrange) {
-		xs << html::EndTag(tag);
+		xs << html::EndFontTag(type);
 		flag = false;
 	}
+}
 }
 
 
@@ -2879,47 +2881,39 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// emphasis
 		FontState curstate = font.fontInfo().emph();
 		if (font_old.emph() != curstate)
-			doFontSwitch(xs, at_start, emph_flag, curstate, "em");
+			doFontSwitch(xs, at_start, emph_flag, curstate, html::FT_EMPH);
 
 		// noun
 		curstate = font.fontInfo().noun();
 		if (font_old.noun() != curstate)
-			doFontSwitch(xs, at_start, noun_flag, curstate, "dfn", "class='lyxnoun'");
+			doFontSwitch(xs, at_start, noun_flag, curstate, html::FT_NOUN);
 
 		// underbar
 		curstate = font.fontInfo().underbar();
 		if (font_old.underbar() != curstate)
-			doFontSwitch(xs, at_start, ubar_flag, curstate, "u");
+			doFontSwitch(xs, at_start, ubar_flag, curstate, html::FT_UBAR);
 	
 		// strikeout
 		curstate = font.fontInfo().strikeout();
 		if (font_old.strikeout() != curstate)
-			doFontSwitch(xs, at_start, sout_flag, curstate, "del", "class='strikeout'");
-
-		// HTML does not really have an equivalent of the next two, so we will just
-		// output a single underscore with a class, and people can style it if they
-		// wish to do so
+			doFontSwitch(xs, at_start, sout_flag, curstate, html::FT_SOUT);
 
 		// double underbar
 		curstate = font.fontInfo().uuline();
 		if (font_old.uuline() != curstate)
-			doFontSwitch(xs, at_start, dbar_flag, curstate, "u", "class='dline'");
+			doFontSwitch(xs, at_start, dbar_flag, curstate, html::FT_DBAR);
 
 		// wavy line
 		curstate = font.fontInfo().uwave();
 		if (font_old.uwave() != curstate)
-			doFontSwitch(xs, at_start, wave_flag, curstate, "u", "class='wavyline'");
+			doFontSwitch(xs, at_start, wave_flag, curstate, html::FT_WAVE);
 
 		// bold
-		if (font_old.series() != font.fontInfo().series()) {
-			if (font.fontInfo().series() == BOLD_SERIES) {
-				xs << html::StartTag("b");
-				bold_flag = true;
-			} else if (bold_flag && !at_start) {
-				xs << html::EndTag("b");
-				bold_flag = false;
-			}
-		}
+		// a little hackish, but allows us to reuse what we have.
+		curstate = (font.fontInfo().series() == BOLD_SERIES ? FONT_ON : FONT_OFF);
+		if (font_old.series() != font.fontInfo().series())
+			doFontSwitch(xs, at_start, bold_flag, curstate, html::FT_BOLD);
+
 		// FIXME XHTML
 		// Other such tags? What about the other text ranges?
 
