@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-04-29 11:56-0400\n"
+"POT-Creation-Date: 2013-05-07 11:33-0400\n"
 "PO-Revision-Date: 2010-03-21 22:45+0200\n"
 "Last-Translator: Mohamed Magdy <theblackdragon_100@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -538,11 +538,11 @@ msgstr ""
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2121
-#: src/frontends/qt4/GuiView.cpp:2272 src/frontends/qt4/GuiView.cpp:2287
-#: src/frontends/qt4/GuiView.cpp:2335 src/frontends/qt4/GuiView.cpp:2550
-#: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
-#: src/frontends/qt4/GuiView.cpp:2684 src/frontends/qt4/GuiView.cpp:3299
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2123
+#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
+#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2552
+#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
+#: src/frontends/qt4/GuiView.cpp:2686 src/frontends/qt4/GuiView.cpp:3301
 #: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "&الغاء"
@@ -4225,8 +4225,8 @@ msgstr ""
 msgid "&Maximum last files:"
 msgstr "&أقصى قيمة لعدد آخر ملفات:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2550
-#: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2552
+#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
 msgid "&Save"
 msgstr "حفظ"
 
@@ -17108,8 +17108,8 @@ msgstr "الأمر date"
 msgid "Table (CSV)"
 msgstr "جدول (CSV)"
 
-#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1150
-#: src/frontends/qt4/GuiView.cpp:1151 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1152
+#: src/frontends/qt4/GuiView.cpp:1153 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "ليك"
 
@@ -17401,8 +17401,8 @@ msgid "Overwrite modified file?"
 msgstr "استبدال الملف المعدل؟"
 
 #: src/Buffer.cpp:1169 src/Buffer.cpp:2439 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2121
-#: src/frontends/qt4/GuiView.cpp:2287
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2123
+#: src/frontends/qt4/GuiView.cpp:2289
 msgid "&Overwrite"
 msgstr "استبدال"
 
@@ -17528,7 +17528,7 @@ msgstr "تعذر تشغيل chktex بنجاح."
 msgid "Don't know how to export to format: %1$s"
 msgstr "لا معلومات لتصدير الهيئة %1$s."
 
-#: src/Buffer.cpp:2205 src/frontends/qt4/GuiView.cpp:3130
+#: src/Buffer.cpp:2205 src/frontends/qt4/GuiView.cpp:3132
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "لا معلومات لتصدير الهيئة %1$s."
@@ -17848,7 +17848,7 @@ msgid "This portion of the document is deleted."
 msgstr "تم حذف هذا الجزء من المستند."
 
 #: src/BufferView.cpp:1043 src/BufferView.cpp:1932
-#: src/frontends/qt4/GuiView.cpp:3186 src/frontends/qt4/GuiView.cpp:3261
+#: src/frontends/qt4/GuiView.cpp:3188 src/frontends/qt4/GuiView.cpp:3263
 msgid "Absolute filename expected."
 msgstr "متوقع ادراج المسار الكامل لاسم الملف."
 
@@ -18661,7 +18661,7 @@ msgstr "رقم %1$s"
 msgid "Cannot view file"
 msgstr "فشل عرض ملف"
 
-#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2915
+#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2917
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "ملف غير موجود: %1$s"
@@ -19540,7 +19540,7 @@ msgstr "تنصيب البرنامج"
 msgid "(no log message)"
 msgstr "لاتوجد رسائل تنقيح"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2773
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2775
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: رسالة سجل الأحداث"
 
@@ -19558,7 +19558,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "عودة للمستند المحفوظ؟"
 
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3299
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3301
 msgid "&Revert"
 msgstr "عودة"
 
@@ -19790,7 +19790,7 @@ msgstr "خطأ في قراءة النموذج %1$s\n"
 #: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
 #: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
 #: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
-#: src/frontends/qt4/GuiView.cpp:2735
+#: src/frontends/qt4/GuiView.cpp:2737
 msgid "Revision control error."
 msgstr "خطأ مراجعة التحكم."
 
@@ -20034,7 +20034,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "اعادة تحميل المستند المحفوظ؟"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2684
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2686
 msgid "&Reload"
 msgstr "&اعادة تحميل"
 
@@ -20412,9 +20412,9 @@ msgstr "بابلوغرافيا BibTeX"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1881
 #: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1873
-#: src/frontends/qt4/GuiView.cpp:1930 src/frontends/qt4/GuiView.cpp:2071
-#: src/frontends/qt4/GuiView.cpp:2193 src/frontends/qt4/GuiView.cpp:2236
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1875
+#: src/frontends/qt4/GuiView.cpp:1932 src/frontends/qt4/GuiView.cpp:2073
+#: src/frontends/qt4/GuiView.cpp:2195 src/frontends/qt4/GuiView.cpp:2238
 msgid "Documents|#o#O"
 msgstr "مستندات|#o#O"
 
@@ -20674,10 +20674,10 @@ msgstr "ملفات %1$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "اختر اسم الملف لحفظ الصورة الملصقة كـ"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1949
-#: src/frontends/qt4/GuiView.cpp:2091 src/frontends/qt4/GuiView.cpp:2107
-#: src/frontends/qt4/GuiView.cpp:2124 src/frontends/qt4/GuiView.cpp:2210
-#: src/frontends/qt4/GuiView.cpp:3274
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1951
+#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2109
+#: src/frontends/qt4/GuiView.cpp:2126 src/frontends/qt4/GuiView.cpp:2212
+#: src/frontends/qt4/GuiView.cpp:3276
 msgid "Canceled."
 msgstr "الغي."
 
@@ -20708,9 +20708,9 @@ msgstr ""
 msgid "Select document"
 msgstr "حدد المستند الرئيسي"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1877
-#: src/frontends/qt4/GuiView.cpp:1934 src/frontends/qt4/GuiView.cpp:2199
-#: src/frontends/qt4/GuiView.cpp:2244
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1879
+#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:2201
+#: src/frontends/qt4/GuiView.cpp:2246
 msgid "LyX Documents (*.lyx)"
 msgstr "مستندات ليك (*.lyx)"
 
@@ -22520,76 +22520,76 @@ msgstr "خروج"
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1070
+#: src/frontends/qt4/GuiView.cpp:1072
 msgid "Welcome to LyX!"
 msgstr "أهلاً بك في ليك"
 
-#: src/frontends/qt4/GuiView.cpp:1541
+#: src/frontends/qt4/GuiView.cpp:1543
 #, fuzzy
 msgid "Automatic save done."
 msgstr "تحديث آلي"
 
-#: src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1544
 #, fuzzy
 msgid "Automatic save failed!"
 msgstr "فشل الحفظ الآلي!"
 
-#: src/frontends/qt4/GuiView.cpp:1588
+#: src/frontends/qt4/GuiView.cpp:1590
 msgid "Command not allowed without any document open"
 msgstr "هذا الامر غير متاح بدون مستند مفتوح"
 
-#: src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1692
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "شريط ادوات مجهول \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1872
+#: src/frontends/qt4/GuiView.cpp:1874
 msgid "Select template file"
 msgstr "حدد ملف القالب"
 
-#: src/frontends/qt4/GuiView.cpp:1874 src/frontends/qt4/GuiView.cpp:2237
+#: src/frontends/qt4/GuiView.cpp:1876 src/frontends/qt4/GuiView.cpp:2239
 msgid "Templates|#T#t"
 msgstr "قوالب|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1901
+#: src/frontends/qt4/GuiView.cpp:1903
 msgid "Document not loaded."
 msgstr "لم يحمل المستند."
 
-#: src/frontends/qt4/GuiView.cpp:1929
+#: src/frontends/qt4/GuiView.cpp:1931
 msgid "Select document to open"
 msgstr "حدد المستند لفتحه"
 
-#: src/frontends/qt4/GuiView.cpp:1931 src/frontends/qt4/GuiView.cpp:2072
-#: src/frontends/qt4/GuiView.cpp:2194
+#: src/frontends/qt4/GuiView.cpp:1933 src/frontends/qt4/GuiView.cpp:2074
+#: src/frontends/qt4/GuiView.cpp:2196
 msgid "Examples|#E#e"
 msgstr "أمثلة |#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1935
+#: src/frontends/qt4/GuiView.cpp:1937
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "ليك-1.6.Xمستندات ليك(*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1936
+#: src/frontends/qt4/GuiView.cpp:1938
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "ليك-1.6.Xمستندات ليك(*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1937
+#: src/frontends/qt4/GuiView.cpp:1939
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "ليك-1.6.Xمستندات ليك(*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1938
+#: src/frontends/qt4/GuiView.cpp:1940
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "ليك-1.6.Xمستندات ليك(*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1963 src/frontends/qt4/Validator.cpp:200
+#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "اسم ملف غير صالح"
 
-#: src/frontends/qt4/GuiView.cpp:1964
+#: src/frontends/qt4/GuiView.cpp:1966
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22600,40 +22600,40 @@ msgstr ""
 "%1$s\n"
 "غير موجود."
 
-#: src/frontends/qt4/GuiView.cpp:1980
+#: src/frontends/qt4/GuiView.cpp:1982
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "فتح المستند %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1985
+#: src/frontends/qt4/GuiView.cpp:1987
 #, c-format
 msgid "Document %1$s opened."
 msgstr "المستند %1$s تم فتحه."
 
-#: src/frontends/qt4/GuiView.cpp:1988
+#: src/frontends/qt4/GuiView.cpp:1990
 msgid "Version control detected."
 msgstr "تم رصد تحكم الاصدار."
 
-#: src/frontends/qt4/GuiView.cpp:1990
+#: src/frontends/qt4/GuiView.cpp:1992
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "لم يتم فتح المستند %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2019
+#: src/frontends/qt4/GuiView.cpp:2021
 msgid "Couldn't import file"
 msgstr "لم يتم استيراد ملف"
 
-#: src/frontends/qt4/GuiView.cpp:2020
+#: src/frontends/qt4/GuiView.cpp:2022
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "لا معلومات لاستيراد الهيئة  %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2067
+#: src/frontends/qt4/GuiView.cpp:2069
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "حدد الملف  %1$s  لاستيراده"
 
-#: src/frontends/qt4/GuiView.cpp:2118 src/frontends/qt4/GuiView.cpp:2282
+#: src/frontends/qt4/GuiView.cpp:2120 src/frontends/qt4/GuiView.cpp:2284
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22644,37 +22644,37 @@ msgstr ""
 "\n"
 "هل ترغب باستبدال هذا المستند؟"
 
-#: src/frontends/qt4/GuiView.cpp:2120 src/frontends/qt4/GuiView.cpp:2286
+#: src/frontends/qt4/GuiView.cpp:2122 src/frontends/qt4/GuiView.cpp:2288
 msgid "Overwrite document?"
 msgstr "استبدال المستند؟"
 
-#: src/frontends/qt4/GuiView.cpp:2129
+#: src/frontends/qt4/GuiView.cpp:2131
 #, c-format
 msgid "Importing %1$s..."
 msgstr "استيراد %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2132
+#: src/frontends/qt4/GuiView.cpp:2134
 msgid "imported."
 msgstr "تم استيراد."
 
-#: src/frontends/qt4/GuiView.cpp:2134
+#: src/frontends/qt4/GuiView.cpp:2136
 msgid "file not imported!"
 msgstr "تعذر استيراد الملف!"
 
-#: src/frontends/qt4/GuiView.cpp:2159
+#: src/frontends/qt4/GuiView.cpp:2161
 #, fuzzy
 msgid "newfile"
 msgstr "ملف مضمن"
 
-#: src/frontends/qt4/GuiView.cpp:2192
+#: src/frontends/qt4/GuiView.cpp:2194
 msgid "Select LyX document to insert"
 msgstr "حدد مستند ليك لادراجه"
 
-#: src/frontends/qt4/GuiView.cpp:2234
+#: src/frontends/qt4/GuiView.cpp:2236
 msgid "Choose a filename to save document as"
 msgstr "اختر اسم الملف لحفظ المستند كـ"
 
-#: src/frontends/qt4/GuiView.cpp:2267
+#: src/frontends/qt4/GuiView.cpp:2269
 #, c-format
 msgid ""
 "The file\n"
@@ -22684,16 +22684,16 @@ msgid ""
 "Do you want to choose a new filename?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2271
+#: src/frontends/qt4/GuiView.cpp:2273
 msgid "Chosen File Already Open"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2272 src/frontends/qt4/GuiView.cpp:2287
-#: src/frontends/qt4/GuiView.cpp:2335
+#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
+#: src/frontends/qt4/GuiView.cpp:2337
 msgid "&Rename"
 msgstr "&إعادة تسمية"
 
-#: src/frontends/qt4/GuiView.cpp:2331
+#: src/frontends/qt4/GuiView.cpp:2333
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22704,24 +22704,24 @@ msgstr ""
 "\n"
 "هل ترغب باعادة تسمية المستند ومن ثم المحاولة مجددا؟"
 
-#: src/frontends/qt4/GuiView.cpp:2334
+#: src/frontends/qt4/GuiView.cpp:2336
 msgid "Rename and save?"
 msgstr "إعادة تسمية وحفظ؟"
 
-#: src/frontends/qt4/GuiView.cpp:2335
+#: src/frontends/qt4/GuiView.cpp:2337
 msgid "&Retry"
 msgstr "&إعادة المحاولة"
 
-#: src/frontends/qt4/GuiView.cpp:2441
+#: src/frontends/qt4/GuiView.cpp:2443
 #, fuzzy
 msgid "Close document"
 msgstr "مستند جديد"
 
-#: src/frontends/qt4/GuiView.cpp:2442
+#: src/frontends/qt4/GuiView.cpp:2444
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2546 src/frontends/qt4/GuiView.cpp:2651
+#: src/frontends/qt4/GuiView.cpp:2548 src/frontends/qt4/GuiView.cpp:2653
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22732,11 +22732,11 @@ msgstr ""
 "\n"
 "هل ترغب بحفظ المستند أم تجاهل التغيير؟"
 
-#: src/frontends/qt4/GuiView.cpp:2549 src/frontends/qt4/GuiView.cpp:2654
+#: src/frontends/qt4/GuiView.cpp:2551 src/frontends/qt4/GuiView.cpp:2656
 msgid "Save new document?"
 msgstr "حفظ المستند الجديد؟"
 
-#: src/frontends/qt4/GuiView.cpp:2554
+#: src/frontends/qt4/GuiView.cpp:2556
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22747,15 +22747,15 @@ msgstr ""
 "\n"
 "هل ترغب بحفظ المستند أم تجاهل التغيير؟"
 
-#: src/frontends/qt4/GuiView.cpp:2556 src/frontends/qt4/GuiView.cpp:2648
+#: src/frontends/qt4/GuiView.cpp:2558 src/frontends/qt4/GuiView.cpp:2650
 msgid "Save changed document?"
 msgstr "حفظ المستند المغير؟"
 
-#: src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2559
 msgid "&Discard"
 msgstr "&تجاهل التغييرات"
 
-#: src/frontends/qt4/GuiView.cpp:2645
+#: src/frontends/qt4/GuiView.cpp:2647
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22766,7 +22766,7 @@ msgstr ""
 "\n"
 "هل تريد حفظ المستند؟"
 
-#: src/frontends/qt4/GuiView.cpp:2680
+#: src/frontends/qt4/GuiView.cpp:2682
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -22776,100 +22776,100 @@ msgstr ""
 "المستند %1$s تم تعديله خارجياً. هل انت متأكد من أنك تريد الكتابة على هذا "
 "الملف؟"
 
-#: src/frontends/qt4/GuiView.cpp:2683
+#: src/frontends/qt4/GuiView.cpp:2685
 msgid "Reload externally changed document?"
 msgstr "إعادة تحميل مستند تم تغييره بالخارج؟"
 
-#: src/frontends/qt4/GuiView.cpp:2736
+#: src/frontends/qt4/GuiView.cpp:2738
 msgid "Error when setting the locking property."
 msgstr "خطأ أثناء اعداد خاصية القفل."
 
-#: src/frontends/qt4/GuiView.cpp:2782
+#: src/frontends/qt4/GuiView.cpp:2784
 msgid "Directory is not accessible."
 msgstr "لايمكن فتح المجلد!"
 
-#: src/frontends/qt4/GuiView.cpp:2858
+#: src/frontends/qt4/GuiView.cpp:2860
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "فتح المستند الفرعي %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2922
+#: src/frontends/qt4/GuiView.cpp:2924
 #, fuzzy, c-format
 msgid "No buffer for file: %1$s."
 msgstr "لا معلومات لعرض %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2949
+#: src/frontends/qt4/GuiView.cpp:2951
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2950
+#: src/frontends/qt4/GuiView.cpp:2952
 #, fuzzy, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "لا معلومات لتصدير الهيئة %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2953
+#: src/frontends/qt4/GuiView.cpp:2955
 #, fuzzy, c-format
 msgid "Successful export to format: %1$s"
 msgstr "لا معلومات لتصدير الهيئة %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2954
+#: src/frontends/qt4/GuiView.cpp:2956
 #, fuzzy, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "لا معلومات لتصدير الهيئة %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3138 src/frontends/qt4/GuiView.cpp:3150
+#: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
 #, fuzzy
 msgid "Exporting ..."
 msgstr "استيراد %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3159
+#: src/frontends/qt4/GuiView.cpp:3161
 #, fuzzy
 msgid "Previewing ..."
 msgstr "تحميل العرض الأولي"
 
-#: src/frontends/qt4/GuiView.cpp:3193
+#: src/frontends/qt4/GuiView.cpp:3195
 msgid "Document not loaded"
 msgstr "لم يحمل المستند"
 
-#: src/frontends/qt4/GuiView.cpp:3267
+#: src/frontends/qt4/GuiView.cpp:3269
 msgid "Select file to insert"
 msgstr "حدد الملف لادراجه"
 
-#: src/frontends/qt4/GuiView.cpp:3271
+#: src/frontends/qt4/GuiView.cpp:3273
 msgid "All Files (*)"
 msgstr "كل الملفات (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3295
+#: src/frontends/qt4/GuiView.cpp:3297
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "ستفقد كل التغييرات. هل تريد العودة للمستند المحفوظ %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3298
+#: src/frontends/qt4/GuiView.cpp:3300
 msgid "Revert to saved document?"
 msgstr "عودة للمستند المحفوظ؟"
 
-#: src/frontends/qt4/GuiView.cpp:3324
+#: src/frontends/qt4/GuiView.cpp:3326
 msgid "Saving all documents..."
 msgstr "حفظ كل المستندات..."
 
-#: src/frontends/qt4/GuiView.cpp:3334
+#: src/frontends/qt4/GuiView.cpp:3336
 msgid "All documents saved."
 msgstr "حفظت كل المستندات."
 
-#: src/frontends/qt4/GuiView.cpp:3434
+#: src/frontends/qt4/GuiView.cpp:3436
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s أمر مجهول!"
 
-#: src/frontends/qt4/GuiView.cpp:3552
+#: src/frontends/qt4/GuiView.cpp:3554
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "تم حذف هذا الجزء من المستند."
 
-#: src/frontends/qt4/GuiView.cpp:3572
+#: src/frontends/qt4/GuiView.cpp:3574
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "لم يتم تصدير الملف"
