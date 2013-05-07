@@ -173,6 +173,13 @@ docstring StartTag::asEndTag() const
 }
 
 
+docstring EndTag::asEndTag() const
+{
+	string output = "</" + tag_ + ">";
+	return from_utf8(output);
+}
+
+
 docstring ParTag::asTag() const
 {
 	docstring output = StartTag::asTag();
@@ -183,13 +190,6 @@ docstring ParTag::asTag() const
 	string const pattr = "id='" + parid_ + "'";
 	output += html::CompTag("a", pattr).asTag();
 	return output;
-}
-
-
-docstring EndTag::asEndTag() const
-{
-	string output = "</" + tag_ + ">";
-	return from_utf8(output);
 }
 
 
@@ -246,7 +246,7 @@ void XHTMLStream::writeError(std::string const & s) const
 
 namespace {
 	// an illegal tag for internal use
-	static string const parsep_tag = "&LyX_parsep_tag&";
+	static html::StartTag const parsep_tag("&LyX_parsep_tag&");
 }
 
 
@@ -272,7 +272,7 @@ bool XHTMLStream::closeFontTags()
 		curtag = tag_stack_.back();
 	}
 	
-	if (curtag->tag_ == parsep_tag)
+	if (*curtag == parsep_tag)
 		return true;
 
 	// so we've hit a non-font tag.
@@ -281,8 +281,7 @@ bool XHTMLStream::closeFontTags()
 	TagDeque::const_reverse_iterator it = tag_stack_.rbegin();
 	TagDeque::const_reverse_iterator const en = tag_stack_.rend();
 	for (; it != en; ++it) {
-		string const tagname = (*it)->tag_;
-		if (tagname == parsep_tag)
+		if (**it == parsep_tag)
 			break;
 		writeError((*it)->tag_);
 	}
@@ -309,7 +308,7 @@ void XHTMLStream::endParagraph()
 			// of everything that hasn't been used.
 			TagPtr const cur_tag = pending_tags_.back();
 			pending_tags_.pop_back();
-			if (cur_tag->tag_ == parsep_tag)
+			if (*cur_tag == parsep_tag)
 				break;
 		}
 		return;
@@ -325,7 +324,7 @@ void XHTMLStream::endParagraph()
 	while (!tag_stack_.empty()) {
 		TagPtr const cur_tag = tag_stack_.back();
 		tag_stack_.pop_back();
-		if (cur_tag->tag_ == parsep_tag)
+		if (*cur_tag == parsep_tag)
 			break;
 		writeError("Tag `" + cur_tag->tag_ + "' still open at end of paragraph. Closing.");
 		os_ << cur_tag->asEndTag();
@@ -337,7 +336,7 @@ void XHTMLStream::clearTagDeque()
 {
 	while (!pending_tags_.empty()) {
 		TagPtr const tag = pending_tags_.front();
-		if (tag->tag_ != parsep_tag)
+		if (*tag != parsep_tag)
 			// tabs?
 			os_ << tag->asTag();
 		tag_stack_.push_back(tag);
@@ -438,23 +437,34 @@ XHTMLStream & XHTMLStream::operator<<(html::CR const &)
 }
 
 
-bool XHTMLStream::isTagOpen(string const & stag) const
+bool XHTMLStream::isTagOpen(html::StartTag const & stag) const
 {
 	TagDeque::const_iterator sit = tag_stack_.begin();
 	TagDeque::const_iterator const sen = tag_stack_.end();
 	for (; sit != sen; ++sit)
-		if ((*sit)->tag_ == stag)
+		if (**sit == stag)
 			return true;
 	return false;
 }
 
 
-bool XHTMLStream::isTagPending(string const & stag) const
+bool XHTMLStream::isTagOpen(html::EndTag const & etag) const
+{
+	TagDeque::const_iterator sit = tag_stack_.begin();
+	TagDeque::const_iterator const sen = tag_stack_.end();
+	for (; sit != sen; ++sit)
+		if (etag == **sit)
+			return true;
+	return false;
+}
+
+
+bool XHTMLStream::isTagPending(html::StartTag const & stag) const
 {
 	TagDeque::const_iterator sit = pending_tags_.begin();
 	TagDeque::const_iterator const sen = pending_tags_.end();
 	for (; sit != sen; ++sit)
-		if ((*sit)->tag_ == stag)
+		if (**sit == stag)
 			return true;
 	return false;
 }
@@ -473,7 +483,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	// if this tag is pending, we can simply discard it.
 	if (!pending_tags_.empty()) {
 
-		if (etag.tag_ == pending_tags_.back()->tag_) {
+		if (etag == *pending_tags_.back()) {
 			// we have <tag></tag>, so we discard it and remove it 
 			// from the pending_tags_.
 			pending_tags_.pop_back();
@@ -488,7 +498,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		TagDeque::iterator dit = pending_tags_.begin();
 		TagDeque::iterator const den = pending_tags_.end();
 		for (; dit != den; ++dit) {
-			if ((*dit)->tag_ == etag.tag_) {
+			if (etag == **dit) {
 				// it was pending, so we just erase it
 				writeError("Tried to close pending tag `" + etag.tag_ 
 				        + "' when other tags were pending. Last pending tag is `"
@@ -498,7 +508,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 			}
 		}
 		// so etag isn't itself pending. is it even open?
-		if (!isTagOpen(etag.tag_)) {
+		if (!isTagOpen(etag)) {
 			writeError("Tried to close `" + etag.tag_ 
 			         + "' when tag was not open. Tag discarded.");
 			return *this;
@@ -524,7 +534,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	}
 
 	// is the tag we are closing the last one we opened?
-	if (etag.tag_ == tag_stack_.back()->tag_) {
+	if (etag == *tag_stack_.back()) {
 		// output it...
 		os_ << etag.asEndTag();
 		// ...and forget about it
@@ -534,7 +544,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	
 	// we are trying to close a tag other than the one last opened. 
 	// let's first see if this particular tag is still open somehow.
-	if (!isTagOpen(etag.tag_)) {
+	if (!isTagOpen(etag)) {
 		writeError("Tried to close `" + etag.tag_ 
 		        + "' when tag was not open. Tag discarded.");
 		return *this;
@@ -549,7 +559,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		TagDeque::const_reverse_iterator rit = tag_stack_.rbegin();
 		TagDeque::const_reverse_iterator ren = tag_stack_.rend();
 		for (; rit != ren; ++rit) {
-			if ((*rit)->tag_ == etag.tag_)
+			if (etag == **rit)
 				break;
 			if (!html::isFontTag((*rit)->tag_)) {
 				// we'll just leave it and, presumably, have to close it later.
@@ -567,7 +577,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		TagPtr curtag = tag_stack_.back();
 		// ...remembering them in a stack.
 		TagDeque fontstack;
-		while (etag.tag_ != curtag->tag_) {
+		while (etag != *curtag) {
 			os_ << curtag->asEndTag();
 			fontstack.push_back(curtag);
 			tag_stack_.pop_back();
@@ -592,9 +602,9 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	writeError("Closing tag `" + etag.tag_ 
 	        + "' when other tags are open, namely:");
 	TagPtr curtag = tag_stack_.back();
-	while (etag.tag_ != curtag->tag_) {
+	while (etag != *curtag) {
 		writeError(curtag->tag_);
-		if (curtag->tag_ != parsep_tag)
+		if (*curtag != parsep_tag)
 			os_ << curtag->asEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();

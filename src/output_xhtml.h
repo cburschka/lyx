@@ -30,6 +30,7 @@ class Text;
 // came from MathStream and its cousins.
 
 namespace html {
+
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before being passed to the constructor.
 struct StartTag
@@ -47,6 +48,12 @@ struct StartTag
 	/// </tag_>
 	virtual docstring asEndTag() const;
 	///
+	bool operator==(StartTag const & rhs) const
+		{ return tag_ == rhs.tag_; }
+	///
+	bool operator!=(StartTag const & rhs) const
+		{ return !(*this == rhs); }
+	///
 	std::string tag_;
 	///
 	std::string attr_;
@@ -60,7 +67,7 @@ struct StartTag
 struct ParTag : public StartTag
 {
 	///
-	ParTag(std::string const & tag, std::string const & attr,
+	explicit ParTag(std::string const & tag, std::string const & attr,
 	       std::string const & parid)
 	  : StartTag(tag, attr), parid_(parid)
 	{}
@@ -73,12 +80,59 @@ struct ParTag : public StartTag
 };
 
 
+///
+enum FontTypes {
+	FT_EMPH,
+	FT_BOLD,
+	FT_NOUN,
+	FT_UBAR,
+	FT_DBAR,
+	FT_SOUT,
+	FT_WAVE,
+	FT_ITALIC,
+	FT_SLANTED,
+	FT_SMALLCAPS,
+	FT_ROMAN,
+	FT_SANS,
+	FT_TYPER
+	// SIZES?
+};
+
+
+///
+struct FontTag : public StartTag
+{
+	///
+	explicit FontTag(FontTypes type);
+	///
+	docstring asTag() const;
+	///
+	docstring asEndTag() const;
+	///
+	bool isFontTag() { return true; }
+	///
+	bool operator==(FontTag const & rhs)
+		{ return font_type_ == rhs.font_type_; }
+	/// Asserts.
+	bool operator==(StartTag const &);
+	///
+	FontTypes font_type_;
+};
+
+
+///
 struct EndTag
 {
 	///
 	explicit EndTag(std::string tag) : tag_(tag) {}
 	/// </tag_>
 	docstring asEndTag() const;
+	///
+	bool operator==(StartTag const & rhs) const
+		{ return tag_ == rhs.tag_; }
+	///
+	bool operator!=(StartTag const & rhs) const
+		{ return !(*this == rhs); }
 	///
 	std::string tag_;
 };
@@ -167,9 +221,11 @@ private:
 	///
 	void clearTagDeque();
 	///
-	bool isTagOpen(std::string const &) const;
+	bool isTagOpen(html::StartTag const &) const;
 	///
-	bool isTagPending(std::string const &) const;
+	bool isTagOpen(html::EndTag const &) const;
+	///
+	bool isTagPending(html::StartTag const &) const;
 	///
 	void writeError(std::string const &) const;
 	///
