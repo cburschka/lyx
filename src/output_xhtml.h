@@ -13,7 +13,9 @@
 #define OUTPUT_XHTML_H
 
 #include "LayoutEnums.h"
+
 #include "support/docstream.h"
+#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 
 #include <deque>
@@ -83,6 +85,7 @@ struct CompTag {
 	std::string attr_;
 };
 
+
 // trivial struct for output of newlines
 struct CR{};
 
@@ -151,14 +154,26 @@ private:
 	void writeError(std::string const &) const;
 	///
 	odocstream & os_;
-	///
-	typedef std::deque<html::StartTag> TagStack;
-	/// holds start tags until we know there is content in them.
-	TagStack pending_tags_;
-	/// remembers the history, so we can make sure we nest properly.
-	TagStack tag_stack_;
 	/// 
 	EscapeSettings escape_;
+	// What we would really like to do here is simply use a
+	// deque<StartTag>. But we want to store both StartTags and
+	// sub-classes thereof on this stack, which means we run into the 
+	// so-called polymorphic class problem with the STL. We therefore have
+	// to use a deque<StartTag *>, which leads to the question who will
+	// own these pointers and how they will be deleted, so we use shared
+	// pointers.
+	///
+	typedef shared_ptr<html::StartTag> TagPtr;
+	typedef std::deque<TagPtr> TagDeque;
+	///
+	template <typename T> 
+	shared_ptr<T> makeTagPtr(T const & tag) 
+		{ return shared_ptr<T>(new T(tag)); }
+	///
+	TagDeque pending_tags_;
+	///
+	TagDeque tag_stack_;
 };
 
 ///

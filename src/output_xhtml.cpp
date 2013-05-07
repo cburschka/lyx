@@ -36,12 +36,16 @@
 
 #include <vector>
 
+// Uncomment to activate debugging code.
+// #define XHTML_DEBUG
+
 using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
 
 namespace html {
+
 
 docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e)
 {
@@ -196,12 +200,12 @@ docstring CompTag::asTag() const
 ///
 ////////////////////////////////////////////////////////////////
 
-XHTMLStream::XHTMLStream(odocstream & os) 
-		: os_(os), escape_(ESCAPE_ALL)
+XHTMLStream::XHTMLStream(odocstream & os)
+  : os_(os), escape_(ESCAPE_ALL)
 {}
 
 
-#if 0
+#ifdef XHTML_DEBUG
 void XHTMLStream::dumpTagStack(string const & msg) const
 {
 	writeError(msg + ": Tag Stack");
@@ -246,31 +250,29 @@ bool XHTMLStream::closeFontTags()
 		return true;
 
 	// first, we close any open font tags we can close
-	html::StartTag curtag = tag_stack_.back();
-	while (html::isFontTag(curtag.tag_)) {
-		os_ << curtag.asEndTag();
+	TagPtr curtag = tag_stack_.back();
+	while (html::isFontTag(curtag->tag_)) {
+		os_ << curtag->asEndTag();
 		tag_stack_.pop_back();
-		if (tag_stack_.empty())
-			// this probably shouldn't happen, since then the
-			// font tags weren't in any other tag. but that
-			// problem will likely be caught elsewhere.
-			return true;
+		// this shouldn't happen, since then the font tags
+		// weren't in any other tag.
+		LBUFERR(!tag_stack_.empty());
 		curtag = tag_stack_.back();
 	}
 	
-	if (curtag.tag_ == parsep_tag)
+	if (curtag->tag_ == parsep_tag)
 		return true;
 
 	// so we've hit a non-font tag.
 	writeError("Tags still open in closeFontTags(). Probably not a problem,\n"
 	           "but you might want to check these tags:");
-	TagStack::const_reverse_iterator it = tag_stack_.rbegin();
-	TagStack::const_reverse_iterator const en = tag_stack_.rend();
+	TagDeque::const_reverse_iterator it = tag_stack_.rbegin();
+	TagDeque::const_reverse_iterator const en = tag_stack_.rend();
 	for (; it != en; ++it) {
-		string const tagname = it->tag_;
+		string const tagname = (*it)->tag_;
 		if (tagname == parsep_tag)
 			break;
-		writeError(it->tag_);
+		writeError((*it)->tag_);
 	}
 	return false;
 }
@@ -278,7 +280,7 @@ bool XHTMLStream::closeFontTags()
 
 void XHTMLStream::startParagraph(bool keep_empty)
 {
-	pending_tags_.push_back(html::StartTag(parsep_tag));
+	pending_tags_.push_back(makeTagPtr(html::StartTag(parsep_tag)));
 	if (keep_empty)
 		clearTagDeque();
 }
@@ -293,10 +295,9 @@ void XHTMLStream::endParagraph()
 			// clear all pending tags up to and including the parsep tag.
 			// note that we work from the back, because we want to get rid
 			// of everything that hasn't been used.
-			html::StartTag const cur_tag = pending_tags_.back();
-			string const & tag = cur_tag.tag_;
+			TagPtr const cur_tag = pending_tags_.back();
 			pending_tags_.pop_back();
-			if (tag == parsep_tag)
+			if (cur_tag->tag_ == parsep_tag)
 				break;
 		}
 		return;
@@ -310,13 +311,12 @@ void XHTMLStream::endParagraph()
 	// this case is also normal, if the parsep tag is the last one 
 	// on the stack. otherwise, it's an error.
 	while (!tag_stack_.empty()) {
-		html::StartTag const cur_tag = tag_stack_.back();
-		string const & tag = cur_tag.tag_;
+		TagPtr const cur_tag = tag_stack_.back();
 		tag_stack_.pop_back();
-		if (tag == parsep_tag)
+		if (cur_tag->tag_ == parsep_tag)
 			break;
-		writeError("Tag `" + tag + "' still open at end of paragraph. Closing.");
-		os_ << cur_tag.asEndTag();
+		writeError("Tag `" + cur_tag->tag_ + "' still open at end of paragraph. Closing.");
+		os_ << cur_tag->asEndTag();
 	}
 }
 
@@ -324,10 +324,10 @@ void XHTMLStream::endParagraph()
 void XHTMLStream::clearTagDeque()
 {
 	while (!pending_tags_.empty()) {
-		html::StartTag const & tag = pending_tags_.front();
-		if (tag.tag_ != parsep_tag)
+		TagPtr const tag = pending_tags_.front();
+		if (tag->tag_ != parsep_tag)
 			// tabs?
-			os_ << tag.asTag();
+			os_ << tag->asTag();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
@@ -391,7 +391,7 @@ XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag)
 {
 	if (tag.tag_.empty())
 		return *this;
-	pending_tags_.push_back(tag);
+	pending_tags_.push_back(makeTagPtr(tag));
 	if (tag.keepempty_)
 		clearTagDeque();
 	return *this;
@@ -403,7 +403,6 @@ XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag)
 	if (tag.tag_.empty())
 		return *this;
 	clearTagDeque();
-	// tabs?
 	os_ << tag.asTag();
 	*this << html::CR();
 	return *this;
@@ -420,10 +419,10 @@ XHTMLStream & XHTMLStream::operator<<(html::CR const &)
 
 bool XHTMLStream::isTagOpen(string const & stag) const
 {
-	TagStack::const_iterator sit = tag_stack_.begin();
-	TagStack::const_iterator const sen = tag_stack_.end();
+	TagDeque::const_iterator sit = tag_stack_.begin();
+	TagDeque::const_iterator const sen = tag_stack_.end();
 	for (; sit != sen; ++sit)
-		if (sit->tag_ == stag) 
+		if ((*sit)->tag_ == stag)
 			return true;
 	return false;
 }
@@ -431,10 +430,10 @@ bool XHTMLStream::isTagOpen(string const & stag) const
 
 bool XHTMLStream::isTagPending(string const & stag) const
 {
-	TagStack::const_iterator sit = pending_tags_.begin();
-	TagStack::const_iterator const sen = pending_tags_.end();
+	TagDeque::const_iterator sit = pending_tags_.begin();
+	TagDeque::const_iterator const sen = pending_tags_.end();
 	for (; sit != sen; ++sit)
-		if (sit->tag_ == stag)
+		if ((*sit)->tag_ == stag)
 			return true;
 	return false;
 }
@@ -450,34 +449,29 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	if (etag.tag_.empty())
 		return *this;
 
-	// make sure there are tags to be closed
-	if (tag_stack_.empty()) {
-		writeError("Tried to close `" + etag.tag_
-		         + "' when no tags were open!");
-		return *this;		
-	}
-
-	// first make sure we're not closing an empty tag
+	// if this tag is pending, we can simply discard it.
 	if (!pending_tags_.empty()) {
-		html::StartTag const & stag = pending_tags_.back();
-		if (etag.tag_ == stag.tag_)  {
+
+		if (etag.tag_ == pending_tags_.back()->tag_) {
 			// we have <tag></tag>, so we discard it and remove it 
 			// from the pending_tags_.
 			pending_tags_.pop_back();
 			return *this;
 		}
+
 		// there is a pending tag that isn't the one we are trying
 		// to close. 
+
 		// is this tag itself pending?
 		// non-const iterators because we may call erase().
-		TagStack::iterator dit = pending_tags_.begin();
-		TagStack::iterator const den = pending_tags_.end();
+		TagDeque::iterator dit = pending_tags_.begin();
+		TagDeque::iterator const den = pending_tags_.end();
 		for (; dit != den; ++dit) {
-			if (dit->tag_ == etag.tag_) {
+			if ((*dit)->tag_ == etag.tag_) {
 				// it was pending, so we just erase it
 				writeError("Tried to close pending tag `" + etag.tag_ 
 				        + "' when other tags were pending. Last pending tag is `"
-				        + pending_tags_.back().tag_ + "'. Tag discarded.");
+				        + pending_tags_.back()->tag_ + "'. Tag discarded.");
 				pending_tags_.erase(dit);
 				return *this;
 			}
@@ -494,15 +488,22 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		string estr = "Closing tag `" + etag.tag_ 
 		        + "' when other tags are pending. Discarded pending tags:\n";
 		for (dit = pending_tags_.begin(); dit != den; ++dit)
-			estr += dit->tag_ + "\n";
+			estr += (*dit)->tag_ + "\n";
 		writeError(estr);
 		// clear the pending tags...
 		pending_tags_.clear();
 		// ...and then just fall through.
 	}
 
+	// make sure there are tags to be closed
+	if (tag_stack_.empty()) {
+		writeError("Tried to close `" + etag.tag_
+		         + "' when no tags were open!");
+		return *this;		
+	}
+
 	// is the tag we are closing the last one we opened?
-	if (etag.tag_ == tag_stack_.back().tag_) {
+	if (etag.tag_ == tag_stack_.back()->tag_) {
 		// output it...
 		os_ << etag.asEndTag();
 		// ...and forget about it
@@ -524,15 +525,15 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	if (html::isFontTag(etag.tag_)) {
 		// it won't be a problem if the other tags open since this one
 		// are also font tags.
-		TagStack::const_reverse_iterator rit = tag_stack_.rbegin();
-		TagStack::const_reverse_iterator ren = tag_stack_.rend();
+		TagDeque::const_reverse_iterator rit = tag_stack_.rbegin();
+		TagDeque::const_reverse_iterator ren = tag_stack_.rend();
 		for (; rit != ren; ++rit) {
-			if (rit->tag_ == etag.tag_)
+			if ((*rit)->tag_ == etag.tag_)
 				break;
-			if (!html::isFontTag(rit->tag_)) {
+			if (!html::isFontTag((*rit)->tag_)) {
 				// we'll just leave it and, presumably, have to close it later.
 				writeError("Unable to close font tag `" + etag.tag_ 
-				        + "' due to open non-font tag `" + rit->tag_ + "'.");
+				        + "' due to open non-font tag `" + (*rit)->tag_ + "'.");
 				return *this;
 			}
 		}
@@ -542,11 +543,11 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		// and are being asked to closed em. we want:
 		//    <em>this is <strong>bold</strong></em><strong>
 		// first, we close the intervening tags...
-		html::StartTag curtag = tag_stack_.back();
+		TagPtr curtag = tag_stack_.back();
 		// ...remembering them in a stack.
-		TagStack fontstack;
-		while (curtag.tag_ != etag.tag_) {
-			os_ << curtag.asEndTag();
+		TagDeque fontstack;
+		while (etag.tag_ != curtag->tag_) {
+			os_ << curtag->asEndTag();
 			fontstack.push_back(curtag);
 			tag_stack_.pop_back();
 			curtag = tag_stack_.back();
@@ -569,16 +570,16 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	// at least guarantees proper nesting.
 	writeError("Closing tag `" + etag.tag_ 
 	        + "' when other tags are open, namely:");
-	html::StartTag curtag = tag_stack_.back();
-	while (curtag.tag_ != etag.tag_) {
-		writeError(curtag.tag_);
-		if (curtag.tag_ != parsep_tag)
-			os_ << curtag.asEndTag();
+	TagPtr curtag = tag_stack_.back();
+	while (etag.tag_ != curtag->tag_) {
+		writeError(curtag->tag_);
+		if (curtag->tag_ != parsep_tag)
+			os_ << curtag->asEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();
 	}
 	// curtag is now the one we actually want.
-	os_ << curtag.asEndTag();
+	os_ << curtag->asEndTag();
 	tag_stack_.pop_back();
 	
 	return *this;
