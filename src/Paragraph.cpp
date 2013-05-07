@@ -2864,12 +2864,6 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	xs.startParagraph(allowEmpty());
 
-	if (!runparams.for_toc && runparams.html_make_pars) {
-		// generate a magic label for this paragraph
-		string const attr = "id='" + magicLabel() + "'";
-		xs << html::CompTag("a", attr);
-	}
-
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 

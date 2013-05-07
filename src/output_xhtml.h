@@ -32,17 +32,20 @@ class Text;
 namespace html {
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before being passed to the constructor.
-struct StartTag {
+struct StartTag
+{
 	///
 	explicit StartTag(std::string const & tag) : tag_(tag), keepempty_(false) {}
 	///
 	explicit StartTag(std::string const & tag, std::string const & attr, 
 		bool keepempty = false) 
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
+	///
+	~StartTag() {}
 	/// <tag_ attr_>
-	docstring asTag() const;
+	virtual docstring asTag() const;
 	/// </tag_>
-	docstring asEndTag() const;
+	virtual docstring asEndTag() const;
 	///
 	std::string tag_;
 	///
@@ -53,7 +56,25 @@ struct StartTag {
 };
 
 
-struct EndTag {
+/// A special case of StartTag, used exclusively for tags that wrap paragraphs.
+struct ParTag : public StartTag
+{
+	///
+	ParTag(std::string const & tag, std::string const & attr,
+	       std::string const & parid)
+	  : StartTag(tag, attr), parid_(parid)
+	{}
+	///
+	~ParTag() {}
+	///
+	docstring asTag() const;
+	/// the "magic par label" for this paragraph
+	std::string parid_;
+};
+
+
+struct EndTag
+{
 	///
 	explicit EndTag(std::string tag) : tag_(tag) {}
 	/// </tag_>
@@ -63,14 +84,11 @@ struct EndTag {
 };
 
 
-// FIXME XHTML
-// We need to allow these to be deferrable, which means it should
-// inherit from StartTag. This is probably better, anyway, but we'll
-// need to re-work a bit of code....
 /// Tags like <img />
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before being passed to the constructor.
-struct CompTag {
+struct CompTag
+{
 	///
 	explicit CompTag(std::string const & tag)
 		: tag_(tag) {}
@@ -126,6 +144,8 @@ public:
 	XHTMLStream & operator<<(html::EndTag const &);
 	///
 	XHTMLStream & operator<<(html::CompTag const &);
+	///
+	XHTMLStream & operator<<(html::ParTag const &);
 	///
 	XHTMLStream & operator<<(html::CR const &);
 	///

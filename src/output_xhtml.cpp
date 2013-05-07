@@ -46,7 +46,6 @@ namespace lyx {
 
 namespace html {
 
-
 docstring escapeChar(char_type c, XHTMLStream::EscapeSettings e)
 {
 	docstring str;
@@ -171,6 +170,19 @@ docstring StartTag::asEndTag() const
 {
 	string output = "</" + tag_ + ">";
 	return from_utf8(output);
+}
+
+
+docstring ParTag::asTag() const
+{
+	docstring output = StartTag::asTag();
+
+	if (parid_.empty())
+		return output;
+
+	string const pattr = "id='" + parid_ + "'";
+	output += html::CompTag("a", pattr).asTag();
+	return output;
 }
 
 
@@ -398,6 +410,15 @@ XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag)
 }
 
 
+XHTMLStream & XHTMLStream::operator<<(html::ParTag const & tag)
+{
+	if (tag.tag_.empty())
+		return *this;
+	pending_tags_.push_back(makeTagPtr(tag));
+	return *this;
+}
+
+
 XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag) 
 {
 	if (tag.tag_.empty())
@@ -611,6 +632,28 @@ void openTag(XHTMLStream & xs, Layout const & lay,
 }
 
 
+inline void openParTag(XHTMLStream & xs, Layout const & lay,
+                       std::string parlabel)
+{
+	xs << html::ParTag(lay.htmltag(), lay.htmlattr(), parlabel);
+}
+
+
+void openParTag(XHTMLStream & xs, Layout const & lay,
+                ParagraphParameters const & params,
+                std::string parlabel)
+{
+	// FIXME Are there other things we should handle here?
+	string const align = alignmentToCSS(params.align());
+	if (align.empty()) {
+		openParTag(xs, lay, parlabel);
+		return;
+	}
+	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
+	xs << html::ParTag(lay.htmltag(), attrs, parlabel);
+}
+
+
 inline void closeTag(XHTMLStream & xs, Layout const & lay)
 {
 	xs << html::EndTag(lay.htmltag());
@@ -721,8 +764,12 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// multiple paragraphs.
 		bool const opened = runparams.html_make_pars &&
 			(par != pbegin || !runparams.html_in_par);
+		bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
+
 		if (opened)
-			openTag(xs, lay, par->params());
+			openParTag(xs, lay, par->params(),
+			           make_parid ? par->magicLabel() : "");
+
 		docstring const deferred = 
 			par->simpleLyXHTMLOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)));
 
@@ -789,7 +836,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	depth_type const origdepth = pbegin->params().depth();
 
 	// open tag for this environment
-	openTag(xs, bstyle);
+	openParTag(xs, bstyle, pbegin->magicLabel());
 	xs << html::CR();
 
 	// we will on occasion need to remember a layout from before.
@@ -930,7 +977,10 @@ void makeCommand(Buffer const & buf,
 		buf.masterBuffer()->params().
 		    documentClass().counters().step(style.counter, OutputUpdate);
 
-	openTag(xs, style, pbegin->params());
+	bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
+
+	openParTag(xs, style, pbegin->params(),
+	           make_parid ? pbegin->magicLabel() : "");
 
 	// Label around sectioning number:
 	// FIXME Probably need to account for LABEL_MANUAL
