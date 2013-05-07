@@ -175,9 +175,11 @@ R code chunks
 
 \begin_layout Standard
 Press 
-\family sans
-Ctrl+L
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
  and input R code chunks which will be compiled with the 
 \series bold
 knitr
@@ -346,7 +348,13 @@ Author A
 \begin_inset Newline newline
 \end_inset
 
-Press Ctrl+Enter to input
+Press 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+ to input
 \begin_inset Newline newline
 \end_inset
 
