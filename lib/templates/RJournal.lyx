@@ -117,7 +117,7 @@ render_sweave() # use Schunk, Sinput and Soutput environments defined by
 
 \begin_layout Plain Layout
 
-set_header(highlight = '') # no need to 
+set_header(highlight = '') # no need for 
 \backslash
 usepackage{Sweave}
 \end_layout
@@ -178,7 +178,7 @@ Press
 \family sans
 Ctrl+L
 \family default
- and input R code chunks which will be compiled by the 
+ and input R code chunks which will be compiled with the 
 \series bold
 knitr
 \series default
@@ -310,7 +310,7 @@ name "fig:sample-figure"
 status open
 
 \begin_layout Plain Layout
-When you insert BibTeX bibliography here, do not use any bib styles.
+When you insert a BibTeX bibliography here, do not use any bib styles.
  The R Journal has declared the style to be 
 \begin_inset Quotes eld
 \end_inset
