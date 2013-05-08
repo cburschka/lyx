@@ -30,6 +30,14 @@ AddToPreamble
 	\fancyhead[RO,LE]{\thepage}
 	\fancyfoot[L]{The R Journal Vol. X/Y, Month, Year}
 	\fancyfoot[R]{ISSN 2073-4859}
+
+	\AtBeginDocument{%
+	  \begin{article}
+	}
+
+	\AtEndDocument{%
+	  \end{article}
+	}
 EndPreamble
 
 InsetLayout "Flex:Abstract"

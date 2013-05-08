@@ -64,43 +64,6 @@ knitr
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-You have to put the body of your article inside the 
-\begin_inset Quotes eld
-\end_inset
-
-article
-\begin_inset Quotes erd
-\end_inset
-
- enviroment defined by RJournal.sty.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{article}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -400,42 +363,6 @@ status collapsed
 
 \begin_layout Plain Layout
 author.b@email
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{article}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Note 
-\backslash
-begin{article} in the beginning of this article; now we close the 
-\begin_inset Quotes eld
-\end_inset
-
-article
-\begin_inset Quotes erd
-\end_inset
-
- environment.
 \end_layout
 
 \end_inset
