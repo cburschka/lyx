@@ -25485,16 +25485,9 @@ enumerate
 \end_inset
 
 .
- The prefix depends on the document part where the label is inserted, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-if you insert a label into a section heading, the suggested prefix will
- be 
+ The prefix depends on the document part where the label is inserted; for
+ example, if you insert a label into a section heading, the suggested prefix
+ will be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25549,12 +25542,12 @@ enu:Second-item
 \end_layout
 
 \begin_layout Standard
-Alternatively to 
+As an alternative to 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross-Reference
 \family default
-, you can right-click on a label and use in the appearing context menu 
+, you can right-click on a label and in the popup menu select 
 \family sans
 Copy as Reference
 \family default
@@ -25675,7 +25668,7 @@ page
 \begin_inset space ~
 \end_inset
 
-<page>: prints the text "on page" and the page number: 
+<page>: prints the text “on page” and the page number: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "fig:Two-distorted-images"
@@ -25683,6 +25676,15 @@ reference "fig:Two-distorted-images"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+If the label is on the same page, it prints “on this page”; if the label
+ is on a facing page in a two-sided document, it prints “on the facing page”;
+ if it is on the previous page which is not a facing page, it prints “on
+ the previous page”; if it is on the next page which is not a facing page,
+ it prints “on the next page”.
+ The wording of the printed text also depends on the used document class.
 \end_layout
 
 \begin_layout Description
@@ -25698,7 +25700,7 @@ page
 \begin_inset space ~
 \end_inset
 
-<page>: prints the number, the text "on page", and the page number: 
+<page>: prints the number, the text “on page” and the page number: 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "fig:Two-distorted-images"
@@ -25706,6 +25708,30 @@ reference "fig:Two-distorted-images"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+If the label is on the same page, this format behaves like 
+\family sans
+\series bold
+<reference>
+\family default
+\series default
+; otherwise it behaves like 
+\family sans
+\series bold
+on
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -25719,7 +25745,7 @@ reference: prints a self defined cross-reference format.
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -25853,49 +25879,14 @@ reference "fig:Two-distorted-images"
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-<page>
-\family default
- will not print the page number if the label is on the previous, the same,
- or the next page.
- You will e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-see the text 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-on this page
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- instead.
- The style 
-\family sans
-<reference> on page <page>
-\family default
- will not print anything about the page if the label is on the same page.
-\end_layout
-
-\begin_layout Standard
 The number and current page of the referenced document part in the output
  is automatically calculated by LaTeX.
  The varieties are adjusted in the field 
 \family sans
 Format
 \family default
- of the cross-reference window, that appear when you click on the cross-referenc
-e.
+ of the cross-reference window, that appears when you click on the cross-referen
+ce.
 \end_layout
 
 \begin_layout Standard
@@ -25968,12 +25959,13 @@ You can change labels at any time.
 \end_layout
 
 \begin_layout Standard
-If a cross-reference refers to a non-existent label, you will see two question
- marks in the output instead of the reference.
+If a cross-reference refers to a non-existent label, you will see in LyX
+ “BROKEN” in the cross-reference label and two question marks in the output
+ instead of the reference.
 \end_layout
 
 \begin_layout Standard
-References are described in detail in sec.
+References are described in detail in the section
 \begin_inset space ~
 \end_inset
 
@@ -26127,15 +26119,7 @@ Table, figure, and algorithm lists are very much like the table of contents.
  You can insert them via the 
 \family sans
 Insert\SpecialChar \menuseparator
-List
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-TOC
+List/TOC
 \family default
  submenus.
  The list entries are the float captions and the float number.
@@ -26387,12 +26371,12 @@ Here
 \family default
 .
  This menu sets the document from the current cursor position to the end
- as the appendix region.
- The region is marked with a red borderline.
+ as the appendix part of the book.
+ This part is marked with a red borderline.
 \end_layout
 
 \begin_layout Standard
-Every chapter (or section) within the appendix region is treated as an appendix,
+Every chapter (or section) within the appendix part is treated as an appendix,
  numbered with a capital Latin letter.
  The appendix subsections are numbered with this letter followed by a dot
  and the subsection number.
@@ -26484,8 +26468,8 @@ reference "sub:Biblio_environment"
 \end_inset
 
 .
- If you want anything other than numerical citations that are used in this
- document, like author-year citations, then you must
+ If you want anything other than the numerical citations that are used in
+ this document, like author-year citations, then you must
 \emph on
  
 \emph default
@@ -26527,7 +26511,7 @@ latexcompanion
 \end_layout
 
 \begin_layout Standard
-You can refer to the key of a bibliography entry using the menu 
+You can cross-reference a bibliography entry using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Citation
@@ -26540,9 +26524,19 @@ arg   "dialog-show-new-inset citation"
 
 .
  A citation reference box is inserted and a citation window will appear
- in which you can select one or more keys in the available key list.
- The citation reference box will be labeled with the referenced key.
- When you click on the box, the citation window appears and you can change
+ containing the available citations.
+ Select one or more keys from the list and 
+\family sans
+Add
+\family default
+ them.
+ Then press 
+\family sans
+OK
+\family default
+.
+ The citation reference box will be labeled with the referenced key(s).
+ If you click on the box, the citation window will appear and you can change
  the reference.
 \end_layout
 
@@ -26590,6 +26584,27 @@ key "lyxcredit"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+To align all entries in the bibliography environment you can set a longest
+ label via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
+ All entries are then indented in the output by the width of the given label.
 \end_layout
 
 \begin_layout Subsection
@@ -26670,7 +26685,7 @@ key "BibTeX-2"
 
 \end_inset
 
- and in LaTeX books (
+ and in the LaTeX books (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
@@ -26682,7 +26697,7 @@ key "Mittelbach,Kopka,Lamport"
  special program to create and edit the entries in the database.
  A list of such programs is maintained on the LyX Wiki at 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -26722,7 +26737,11 @@ Bibliography
 \family default
 .
  A gray box will be inserted and a window appears.
- In this window you can load one or more databases and a style file.
+ In this window you can add one or more databases and select a 
+\family sans
+style
+\family default
+ file.
  The option 
 \family sans
 Add bibliography to TOC
@@ -26784,13 +26803,20 @@ Inserting a citation reference works as described in the previous section.
 
 \begin_layout Standard
 To generate the bibliography from a database, LyX uses the program BibTeX.
- You can choose which of its variants should be used by LyX as the processor
- either in the document settings under 
+ You can choose which of its variants should be used by LyX as the 
 \family sans
+Processor
+\family default
+ either in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Bibliography
 \family default
- or in LyX's preferences under 
+ or in 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Output\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
@@ -26810,13 +26836,13 @@ eX
 \end_layout
 
 \begin_layout Description
-biber provides full Unicode support, unlimited memory, does not work with
- other bibliography packages (like e.
+biber provides full Unicode support, unlimited memory, but does not work
+ with other bibliography packages (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 
@@ -26834,13 +26860,13 @@ biblatex
 \begin_layout Description
 bibtex the standard; does not allow special characters in bibliography entries
  that are not possible to encode in a 7-bit encoding, limited memory, works
- with all bibliography packages, except of 
+ with all bibliography packages, except 
 \series bold
 biblatex
 \end_layout
 
 \begin_layout Description
-bibtex8 allows all characters that are possible to encode in a 8-bit encoding,
+bibtex8 allows all characters that are possible to encode in an 8-bit encoding,
  larger memory than 
 \family sans
 bibtex
@@ -26851,8 +26877,8 @@ bibtex
 \begin_layout Standard
 BibTeX can be controlled with options that you can add below the specification
  of the variants.
- Before adding options, it is strongly recommended to read the manual of
- 
+ Before adding options, it is strongly recommended that you read the manual
+ of 
 \family sans
 BibTeX
 \family default
@@ -26874,7 +26900,8 @@ Sectioned bibliography
  in the 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
+Settings\SpecialChar \menuseparator
+Bibliography
 \family default
  dialog, it is possible to have multiple and sectioned bibliographies.
  This and other options are explained in detail in section 
@@ -27026,15 +27053,7 @@ arg   "index-insert"
 The index list is inserted in the document with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-List
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-TOC\SpecialChar \menuseparator
+List/TOC\SpecialChar \menuseparator
 Index
 \begin_inset space ~
 \end_inset
@@ -27204,16 +27223,8 @@ Index ! Page ranges
 Normally an index entry will appear with the page number of the indexed
  section.
  But sometimes you want to index more pages under the same entry.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-if we want to index the paragraph environments, we create an index entry
- in section
+ For example, if we want to index the paragraph environments, we create
+ an index entry in section
 \begin_inset space ~
 \end_inset
 
@@ -27769,16 +27780,8 @@ Dummy entries ! my entry|IndexDef
 
 \begin_layout Standard
 You can also change the layout for the whole index.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-we marked the index list box of this document as bold to get a bold font
- for all index entries.
+ For example, we marked the index list box of this document as bold to get
+ a bold font for all index entries.
  For more advanced tasks you have to set up a so-called 
 \emph on
 Index Style File
@@ -27823,7 +27826,7 @@ name "sub:Index-Program"
 \end_layout
 
 \begin_layout Standard
-If the index entry program 
+If the index generation program 
 \family sans
 xindy
 \family default
@@ -27831,7 +27834,7 @@ xindy
 \family sans
 makeindex
 \family default
-, that is part of every LaTeX distribution, is used.
+, the program that is part of every LaTeX distribution, is used.
 \begin_inset Foot
 status collapsed
 
@@ -27993,15 +27996,7 @@ Once the document changes have been applied, you can find the new index
  list in 
 \family sans
 Insert\SpecialChar \menuseparator
-List
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-TOC
+List/TOC
 \family default
  and the 
 \family sans
@@ -28014,7 +28009,7 @@ Insert
 
 \begin_layout Itemize
 If you want to change the attribution of a specific index entry, right-clicking
- on the entries' label will open a dialog where you can do that.
+ on the entry's label will open a dialog where you can do that.
 \end_layout
 
 \begin_layout Itemize
@@ -28023,19 +28018,14 @@ By right-clicking on an index, you can change its type.
 \begin_inset Quotes eld
 \end_inset
 
-Subindex
+Subindex.
 \begin_inset Quotes erd
 \end_inset
 
-.
  If you do that, the heading of that list will be decreased by one level.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., if you use a book class, where the standard index heading is defined
- as a chapter, subindexes will be defined as sections and can thus be nested
- to the non-subindexes.
+ For example, if you use a book class, where the standard index heading
+ is defined as a chapter, subindexes will be defined as sections and can
+ thus be nested to the non-subindexes.
 \end_layout
 
 \begin_layout Section
@@ -28168,7 +28158,7 @@ A nomenclature entry consists of two main entries.
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -41870,7 +41860,7 @@ Modifying an existing shortcut is done the same way.
 \end_layout
 
 \begin_layout Standard
-If you don't like a a particular shortcut, you can remove it.
+If you don't like a particular shortcut, you can remove it.
 \end_layout
 
 \begin_layout Standard

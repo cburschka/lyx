@@ -20859,6 +20859,17 @@ reference "fig:歪められた二つの像"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, it prints “on this page”; if the label
+ is on a facing page in a two-sided document, it prints “on the facing page”;
+ if it is on the previous page which is not a facing page, it prints “on
+ the previous page”; if it is on the next page which is not a facing page,
+ it prints “on the next page”.
+ The wording of the printed text also depends on the used document class.
 \end_layout
 
 \begin_layout Description
@@ -20882,6 +20893,32 @@ reference "fig:歪められた二つの像"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If the label is on the same page, this format behaves like 
+\family sans
+\series bold
+<reference>
+\family default
+\series default
+; otherwise it behaves like 
+\family sans
+\series bold
+on
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+<page>
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -21023,14 +21060,6 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Standard
-<参照ページ>形式は、ラベルが同じページか前後1ページのあいだにある場合には、ページ番号を印字せず、代わりに「
-\family sans
-on this page
-\family default
-（このページの）」のような文が印字されることに注意してください。
-\end_layout
-
-\begin_layout Standard
 文書中参照されている部分の出力における参照番号と参照ページ番号は、LaTeXが自動的に計算します。参照の種類は、相互参照枠をクリックすると出てくる相互参照ウィン
 ドウの
 \family sans
@@ -21088,7 +21117,11 @@ arg   "bookmark-goto 0"
 \end_layout
 
 \begin_layout Standard
-もし相互参照が存在しないラベルを参照していると、出力では、参照の代わりに二つのクエスチョンマークが印字されます。
+もし相互参照が存在しないラベルを参照していると、出力では、
+\lang english
+you will see in LyX “BROKEN” in the cross-reference label and
+\lang japanese
+参照の代わりに二つのクエスチョンマークが印字されます。
 \end_layout
 
 \begin_layout Standard
@@ -21599,6 +21632,29 @@ key "lyxcredit"
 \end_inset
 
 に列挙してあります。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To align all entries in the bibliography environment you can set a longest
+ label via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paragraph
+\begin_inset space ~
+\end_inset
+
+Settings
+\family default
+ (toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+).
+ All entries are then indented in the output by the width of the given label.
 \end_layout
 
 \begin_layout Subsection

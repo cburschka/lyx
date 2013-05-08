@@ -26073,6 +26073,47 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Wenn sich die Marke auf derselben Seite befindet, wird stattdessen 
+\begin_inset Quotes gld
+\end_inset
+
+auf dieser Seite
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt; wenn sich die Marke auf der gegenüberliegenden Seite in einem
+ doppelseitigen Dokument befindet, wird 
+\begin_inset Quotes gld
+\end_inset
+
+auf der gegenüberliegenden Seite
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt; befindet sie sich auf der vorigen Seite, die keine gegenüberliegende
+ ist, wird 
+\begin_inset Quotes gld
+\end_inset
+
+auf der vorherigen Seite
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt; wenn sie sich auf der nächsten, nicht gegenüberliegenden Seite
+ befindet, wird 
+\begin_inset Quotes gld
+\end_inset
+
+auf der nächsten Seite
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt.
+ Der Wortlaut des gedruckten Texts hängt zudem von der verwendeten Dokumentklass
+e ab.
 \end_layout
 
 \begin_layout Description
@@ -26104,6 +26145,31 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+Wenn sich die Marke auf derselben Seite befindet, verhält sich der Stil
+ wie 
+\family sans
+\series bold
+<Querverweis>
+\family default
+\series default
+, ansonsten wie 
+\family sans
+\series bold
+auf
+\begin_inset space ~
+\end_inset
+
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -26254,51 +26320,6 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-<Seite>
-\family default
- druckt nicht die Seitennummer, wenn sich die referenzierte Marke auf der
- vorherigen, der selben oder der nächsten Seite befindet.
- Stattdessen wird z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- der Text 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family sans
-auf dieser Seite
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- gedruckt.
- Der Stil 
-\family sans
-<Querverweis>
-\begin_inset space ~
-\end_inset
-
-auf
-\begin_inset space ~
-\end_inset
-
-Seite
-\begin_inset space ~
-\end_inset
-
-<Seite>
-\family default
- druckt nichts über die Seite, wenn die referenzierte Marke auf der gleichen
- Seite ist.
-\end_layout
-
-\begin_layout Standard
 Die Nummer und die aktuelle Seite des referenzierten Dokumentteils wird
  automatisch von LaTeX berechnet.
  Die Stile können im Feld 
@@ -26380,8 +26401,17 @@ Marken können jederzeit geändert werden.
 \end_layout
 
 \begin_layout Standard
-Wenn ein Querverweis eine nicht existierende Marke referenziert, erscheinen
- in der Ausgabe zwei Fragezeichen statt der Referenz.
+Wenn ein Querverweis eine nicht existierende Marke referenziert, erscheint
+ in LyX 
+\begin_inset Quotes gld
+\end_inset
+
+NICHT VORHANDEN
+\begin_inset Quotes grd
+\end_inset
+
+ in der Querverweismarke und in der Ausgabe zwei Fragezeichen statt der
+ Referenz.
 \end_layout
 
 \begin_layout Standard
@@ -27022,84 +27052,90 @@ n-Feld ist nicht nutzlos.
 Einfügen\SpecialChar \menuseparator
 Zitat
 \family default
- oder den Wrkzeugleistenknopf 
+ oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
  benutzen.
- Dann wählen Sie einen der Werte aus dem 
+ Es öffnet sich ein Fenster in dem Sie nun einen Schlüssel aus der Liste
+ der verfügbaren Verweise auswählen.
+ Drücken Sie 
 \family sans
-Schlüssel
+Hinzufügen
 \family default
--Feld.
- Ein Beispiel für ein Literaturverzeichnis finden Sie (wo sonst) am Ende
- dieses Dokumentes.
+ und anschließend 
+\family sans
+OK
+\family default
+.
+ Es wurde eine Literatur-Verweisbox eingefügt, die nach dem(n) referenzierten
+ Schlüssel(n) benannt ist.
+ Klickt man auf die Box, wird wieder das Literaturverweis-Fenster angezeigt,
+ so dass man den Verweis ändern kann.
+\end_layout
+
+\begin_layout Standard
+Literaturverweise erscheinen im der Ausgabe als Nummer des Literatureintrags
+ in eckigen Klammern.
+ Setzt man eine 
+\family sans
+Marke
+\family default
+ für einen Eintrag, erscheint die Marke statt der Nummer.
+ Hier sind zwei Beispiele, da erste ohne Marke, das zweite mit der Marke
  
 \begin_inset Quotes gld
 \end_inset
 
-Siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexguide"
-
+Credits
+\begin_inset Quotes grd
 \end_inset
 
- oder 
+:
+\end_layout
+
+\begin_layout Standard
+Siehe den 
+\family sans
+LaTeX Companion Second Edition
+\family default
+: 
 \begin_inset CommandInset citation
 LatexCommand cite
-after "Kapitel 3"
 key "latexcompanion"
 
 \end_inset
 
 
-\begin_inset Quotes grd
-\end_inset
-
- sind zwei Beispiele dafür, wie man Einträge davon zitiert.
- Im zweiten Beispiel haben wir das Feld 
-\family sans
-Text
-\begin_inset space \space{}
-\end_inset
-
-danach:
-\family default
- des 
-\family sans
-Zitat
-\family default
--Menüs benutzt, um den Text 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel 3
-\begin_inset Quotes grd
-\end_inset
-
- hinzuzufügen.
- Die Begriffe 
-\emph on
-latexguide
-\emph default
- und 
-\emph on
-latexcompanion
-\emph default
-, die Sie hier sehen, werden beim Drucken durch die entsprechenden Nummern
- des Literaturverzeichnisses ersetzt.
 \end_layout
 
 \begin_layout Standard
-Das erweiterte LaTeX-Paket BibTeX wird von LyX auch unterstützt.
- Im Dokument 
-\emph on
-Handbuchergänzungen
-\emph default
- können Sie nachlesen, wie man es benutzt.
+Die Mitglieder des LyX-Teams sind in den Credits aufgelistet: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lyxcredit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um alle Literatureinträge auzurichten, kann man im Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Absatz-Einstellungen
+\family default
+ (Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+) eine längste Marke angeben.
+ Es werden dann alle Einträge mit der Breite der angegebenen Marke eingerückt.
 \end_layout
 
 \begin_layout Subsection
@@ -27197,16 +27233,12 @@ http://wiki.lyx.org/BibTeX/Programs
 Um eine Datenbank zu benutzen, wählen Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
-List
-\family default
-e
-\begin_inset space \space{}
+Liste
+\begin_inset space \thinspace{}
 \end_inset
 
 /
-\family sans
-
-\begin_inset space \space{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -27243,20 +27275,8 @@ status collapsed
 X-Literaturverzeichnis
 \family default
 -Fenster geöffnet wird.
- Über 
-\family sans
-Hinzufügen
-\family default
- und 
-\family sans
-Löschen
-\family default
- können Sie Datenbanken hinzufügen und auch wieder löschen.
- Außerdem können Sie über 
-\family sans
-Stil
-\family default
- das Aussehen wählen.
+ Sie können dort Datenbanken hinzufügen und auch wieder löschen.
+ Außerdem können Sie eine Stildatei auswählen.
  Die Option 
 \family sans
 Literaturverzeichnis
@@ -27318,12 +27338,16 @@ Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
 LyX verwendet BibTeX, um ein Literaturverzeichnis aus einer Datenbank zu
  erstellen.
  Sie können festlegen, welche seiner Varianten von LyX als Prozessor verwendet
- wird; entweder in den Dokumenteinstellungen unter 
+ wird; entweder im Menü 
 \family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Literaturverzeichnis
 \family default
- oder in LyXs Einstellungen unter 
+ oder 
 \family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Ausgabe\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
@@ -27392,13 +27416,13 @@ key "BibTeX"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie bei 
+Wenn Sie im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-Literaturverzeichnis
+Literaturverzeichnis 
 \family default
- 
+die Option 
 \family sans
 Abschnittspezifisches
 \begin_inset space \space{}
@@ -32139,7 +32163,7 @@ Man gibt in das Editorfeld
 \family sans
 Suchen
 \family default
- ein unformatiertes Wort ein und und sucht danach mit dem Knopf 
+ ein unformatiertes Wort ein und sucht danach mit dem Knopf 
 \family sans
 Nächstes suchen
 \family default
@@ -44553,6 +44577,7 @@ em)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label "Credits"
 key "lyxcredit"
 
 \end_inset
