@@ -17,10 +17,6 @@
 #include "support/Messages.h"
 #include "support/Package.h"
 
-#ifdef HAVE_LOCALE_H
-#  include <locale.h>
-#endif
-
 using namespace std;
 
 namespace lyx {
@@ -28,19 +24,6 @@ namespace lyx {
 docstring const _(string const & str)
 {
 	return getGuiMessages().get(str);
-}
-
-
-void locale_init()
-{
-#ifdef ENABLE_NLS
-#  ifdef HAVE_LC_MESSAGES
-	setlocale(LC_MESSAGES, "");
-#  endif
-	setlocale(LC_CTYPE, "");
-	Messages::init();
-#endif
-	setlocale(LC_NUMERIC, "C");
 }
 
 

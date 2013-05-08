@@ -78,10 +78,6 @@ docstring const translateIfPossible(docstring const & name);
  * language if they come from a file in the personal directory. */
 docstring const translateIfPossible(docstring const & name, std::string const & language);
 
-///
-void locale_init();
-
-
 } // namespace lyx
 
 #endif

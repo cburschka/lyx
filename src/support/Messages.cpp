@@ -7,28 +7,99 @@
  * Full author contact details are available in file CREDITS.
  */
 
+/*
+  This is a limited parser for gettext's po files. Several features are
+  not handled for now:
+   * encoding is supposed to be UTF-8 (the charset parameter is not honored)
+   * context is not handled (implemented differently in LyX)
+   * plural forms not implemented (not used for now in LyX).
+   * The byte endianness of the machine on which the .mo file have been
+     built is expected to be the same as the one of the machine where this
+     code is run.
+
+  The data is loaded in a std::map object for simplicity.
+ */
+
+/*
+  Format of a MO file. Source: http://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
+
+             byte
+                  +------------------------------------------+
+               0  | magic number = 0x950412de                |
+                  |                                          |
+               4  | file format revision = 0                 |
+                  |                                          |
+               8  | number of strings                        |  == N
+                  |                                          |
+              12  | offset of table with original strings    |  == O
+                  |                                          |
+              16  | offset of table with translation strings |  == T
+                  |                                          |
+              20  | size of hashing table                    |  == S
+                  |                                          |
+              24  | offset of hashing table                  |  == H
+                  |                                          |
+                  .                                          .
+                  .    (possibly more entries later)         .
+                  .                                          .
+                  |                                          |
+               O  | length & offset 0th string  ----------------.
+           O + 8  | length & offset 1st string  ------------------.
+                   ...                                    ...   | |
+     O + ((N-1)*8)| length & offset (N-1)th string           |  | |
+                  |                                          |  | |
+               T  | length & offset 0th translation  ---------------.
+           T + 8  | length & offset 1st translation  -----------------.
+                   ...                                    ...   | | | |
+     T + ((N-1)*8)| length & offset (N-1)th translation      |  | | | |
+                  |                                          |  | | | |
+               H  | start hash table                         |  | | | |
+                   ...                                    ...   | | | |
+       H + S * 4  | end hash table                           |  | | | |
+                  |                                          |  | | | |
+                  | NUL terminated 0th string  <----------------' | | |
+                  |                                          |    | | |
+                  | NUL terminated 1st string  <------------------' | |
+                  |                                          |      | |
+                   ...                                    ...       | |
+                  |                                          |      | |
+                  | NUL terminated 0th translation  <---------------' |
+                  |                                          |        |
+                  | NUL terminated 1st translation  <-----------------'
+                  |                                          |
+                   ...                                    ...
+                  |                                          |
+                  +------------------------------------------+
+
+ */
+
 #include <config.h>
 
 #include "support/Messages.h"
 
 #include "support/debug.h"
 #include "support/docstring.h"
-#include "support/environment.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
 #include "support/unicode.h"
 
 #include "support/lassert.h"
 
-#include <cerrno>
+#include <boost/cstdint.hpp>
 
-#  define N_(str) (str)              // for marking strings to be translated
+#include <cerrno>
+#include <fstream>
+
+#ifdef HAVE_SYS_STAT_H
+# include <sys/stat.h>
+#endif
 
 using namespace std;
+using boost::uint32_t;
 
 namespace lyx {
 
-void cleanTranslation(docstring & trans) 
+void cleanTranslation(docstring & trans)
 {
 	/*
 	  Some english words have different translations, depending on
@@ -62,19 +133,12 @@ void cleanTranslation(docstring & trans)
 
 #ifdef ENABLE_NLS
 
-#  ifdef HAVE_LOCALE_H
-#    include <locale.h>
-#  endif
-
-#  if HAVE_GETTEXT
-#    include <libintl.h>      // use the header already in the system *EK*
-#  else
-#    include "intl/libintl.h"
-#  endif
-
 using namespace lyx::support;
 
 namespace lyx {
+
+std::string Messages::gui_lang_;
+
 
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
@@ -84,138 +148,166 @@ Messages::Messages(string const & l)
 	size_t i = lang_.find(".");
 	lang_ = lang_.substr(0, i);
 	LYXERR(Debug::LOCALE, "language(" << lang_ << ")");
+
+	readMoFile();
 }
 
 
-void Messages::init()
+namespace {
+
+string moFile(string const & c)
 {
-	errno = 0;
-	string const locale_dir = package().locale_dir().toFilesystemEncoding();
-	char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
-	int e = errno;
-	if (e) {
-		LYXERR(Debug::LOCALE, "Error code: " << errno << '\n'
-			<< "Directory : " << package().locale_dir().absFileName() << '\n'
-			<< "Rtn value : " << c);
-	}
-
-	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-		LYXERR(Debug::LOCALE, "Error code: " << errno << '\n'
-			<< "Codeset   : " << ucs4_codeset);
-	}
-
-	textdomain(PACKAGE);
+	static string const locale_dir
+		= package().locale_dir().toFilesystemEncoding();
+	return locale_dir + "/" + c
+		+ "/LC_MESSAGES/" PACKAGE ".mo";
 }
 
 
-string Messages::language() const
+// Find the code we have for a given language code. Return empty if not found.
+string realCode(string const & c)
 {
-	// get the language from the gmo file
-	string const test = N_("[[Replace with the code of your language]]");
-	string const trans = to_utf8(get(test));
-	if (trans == test) {
-		LYXERR0("Something is weird.");
-		return string();
-	} else
-		return trans;
+	// Qt tries to outsmart us and transforms en_US to C.
+	string code = (c == "C") ? "en" : c;
+	// this loops at most twice
+	while (true) {
+		if (FileName(moFile(code)).isReadableFile())
+			return code;
+		if (contains(code, '_'))
+			code = token(code, '_', 0);
+		else
+			break;
+	}
+	return string();
+}
 }
 
 
 bool Messages::available(string const & c)
 {
-	static string locale_dir = package().locale_dir().toFilesystemEncoding();
-	string code = c;
-	// this loops at most twice
-	while (true) {
-		string const filen = locale_dir + "/" + code 
-			+ "/LC_MESSAGES/" PACKAGE ".mo";
-		if (FileName(filen).isReadableFile())
-			return true;
-		if (contains(code, '_'))
-			code = token(code, '_', 0);
-		else return false;
-	}
-	return false;
-
+	return !realCode(c).empty();
 }
 
-namespace {
 
-// Trivial wrapper around gettext()
-docstring const getText(string const & m)
+string Messages::language() const
 {
-	// FIXME: gettext sometimes "forgets" the ucs4_codeset we set
-	// in init(), which leads to severe message corruption (#7371)
-	// We set it again here unconditionally. A real fix must be found!
-	LATTEST(bind_textdomain_codeset(PACKAGE, ucs4_codeset));
+	return realCode(lang_);
+}
 
-	char const * m_c = m.c_str();
-	char const * trans_c = gettext(m_c);
-	docstring trans;
-	if (!trans_c) {
-		LYXERR(Debug::LOCALE, "Undefined result from gettext for `" << m << "'.");
-		trans = from_ascii(m);
-	} else if (trans_c == m_c) {
-		//LYXERR(Debug::LOCALE, "Same as entered returned");
-		trans = from_ascii(m);
-	} else {
-		//LYXERR(Debug::LOCALE, "We got a translation");
-		// m is actually not a char const * but ucs4 data
-		trans = reinterpret_cast<char_type const *>(trans_c);
+
+struct MoHeader
+{
+	// magic number = 0x950412de
+	uint32_t magic;
+	// file format revision = 0
+	uint32_t rev;
+	// number of strings
+	uint32_t N;
+	// offset of table with original strings
+	uint32_t O;
+	// offset of table with translation strings
+	uint32_t T;
+	// there is a hashing table afterwrds, but we ignore it
+};
+
+
+struct StringTable
+{
+	// string length
+	uint32_t length;
+	// string offset
+	uint32_t offset;
+};
+
+
+bool Messages::readMoFile()
+{
+	// FIXME:remove
+	if (lang_.empty()) {
+		LYXERR0("No language given, nothing to load.");
+		return false;
 	}
 
-	cleanTranslation(trans);
+	string const code = realCode(lang_);
+	if (code.empty()) {
+		LYXERR0("Cannot find translation for language " << lang_);
+		return false;
+	}
 
-	return trans;
+	string const filen = moFile(code);
+
+	// get file size
+	struct stat buf;
+	if (stat(filen.c_str(), &buf)) {
+		LYXERR0("Cannot get information for file " << filen);
+		return false;
+	}
+
+	vector<char> moData(buf.st_size);
+
+	ifstream is(filen.c_str(), ios::in | ios::binary);
+	if (!is.read(&moData[0], buf.st_size)) {
+		LYXERR0("Cannot read file " << filen);
+		return false;
+	}
+
+	MoHeader const * header = reinterpret_cast<MoHeader const *>(&moData[0]);
+	if (header->magic != 0x950412de) {
+		LYXERR0("Wrong magic number for file " << filen
+			<< ".\nExpected 0x950412de, got " << std::hex << header->magic);
+		return false;
+	}
+
+	StringTable const * orig = reinterpret_cast<StringTable const *>(&moData[0] + header->O);
+	StringTable const * trans = reinterpret_cast<StringTable const *>(&moData[0] + header->T);
+	// First the header
+	string const info = string(&moData[0] + trans[0].offset, trans[0].length);
+	size_t pos = info.find("charset=");
+	if (pos != string::npos) {
+		pos += 8;
+		string charset;
+		size_t pos2 = info.find("\n", pos);
+		if (pos2 == string::npos)
+			charset = info.substr(pos);
+		else
+			charset = info.substr(pos, pos2 - pos);
+		charset = ascii_lowercase(trim(charset));
+		if (charset != "utf-8") {
+			LYXERR0("Wrong encoding " << charset << " for file " << filen);
+			return false;
+		}
+	} else {
+		LYXERR0("Cannot find encoding encoding for file " << filen);
+		return false;
+	}
+
+	for (size_t i = 1; i < header->N; ++i) {
+		// Note that in theory the strings may contain NUL characters.
+		// This may be the case with plural forms
+		string const ostr(&moData[0] + orig[i].offset, orig[i].length);
+		docstring tstr = from_utf8(string(&moData[0] + trans[i].offset,
+						  trans[i].length));
+		cleanTranslation(tstr);
+		trans_map_[ostr] = tstr;
+		//lyxerr << ostr << " ==> " << tstr << endl;
+	}
+
+	return true;
 }
-
-}
-
 
 docstring const Messages::get(string const & m) const
 {
 	if (m.empty())
 		return docstring();
 
-	// Look for the translated string in the cache.
-	TranslationCache::iterator it = cache_.find(m);
-	if (it != cache_.end())
+	TranslationMap::const_iterator it = trans_map_.find(m);
+	if (it != trans_map_.end())
 		return it->second;
-
-	// The string was not found, use gettext to generate it
-	docstring trans;
-	if (!lang_.empty()) {
-		// This GNU extension overrides any language locale
-		// wrt gettext.
-		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
-		EnvChanger language_chg("LANGUAGE", lang_);
-		// However, setting LANGUAGE does nothing when the
-		// locale is "C". Therefore we set the locale to
-		// something that is believed to exist on most
-		// systems. The idea is that one should be able to
-		// load German documents even without having de_DE
-		// installed.
-		LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
-		EnvChanger lc_all_chg("LC_ALL", "en_US");
-#ifdef HAVE_LC_MESSAGES
-		setlocale(LC_MESSAGES, "");
-#endif
-		trans = getText(m);
-	} else
-		trans = getText(m);
-		
-
-#ifdef HAVE_LC_MESSAGES
-	setlocale(LC_MESSAGES, "");
-#endif
-
-	// store translation in cache
-	pair<TranslationCache::iterator, bool> result =
-		cache_.insert(make_pair(m, trans));
-
-	LASSERT(result.second, return from_utf8(m));
-
-	return result.first->second;
+	else {
+		docstring res = from_utf8(m);
+		cleanTranslation(res);
+		return res;
+	}
 }
 
 } // namespace lyx

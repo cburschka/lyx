@@ -175,6 +175,22 @@ frontend::Application * createApplication(int & argc, char * argv[])
 	return guiApp;
 }
 
+
+void setLocale()
+{
+	QLocale theLocale;
+	if (lyxrc.gui_language == "auto") {
+		theLocale = QLocale::system();
+	} else {
+		Language const * l = languages.getLanguage(lyxrc.gui_language);
+		string const code = l ? l->code() : string();
+		theLocale = QLocale(toqstr(code));
+	}
+	Messages::guiLanguage(fromqstr(theLocale.name()));
+	QLocale::setDefault(theLocale);
+}
+
+
 namespace frontend {
 
 
@@ -2212,14 +2228,10 @@ void GuiApplication::exit(int status)
 
 void GuiApplication::setGuiLanguage()
 {
-	QString const default_language = toqstr(getGuiMessages().language());
-	LYXERR(Debug::LOCALE, "Trying to set default locale to: " << default_language);
-	QLocale const default_locale(default_language);
-	QLocale::setDefault(default_locale);
-
+	setLocale();
+	QLocale theLocale;
 	// install translation file for Qt built-in dialogs
-	QString const language_name = QString("qt_") + default_locale.name();
-
+	QString const language_name = QString("qt_") + theLocale.name();
 	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN).
 	// Short-named translator can be loaded from a long name, but not the
 	// opposite. Therefore, long name should be used without truncation.
@@ -2233,7 +2245,7 @@ void GuiApplication::setGuiLanguage()
 			<< language_name);
 	}
 
-	switch (default_locale.language()) {
+	switch (theLocale.language()) {
 	case QLocale::Arabic :
 	case QLocale::Hebrew :
 	case QLocale::Persian :

@@ -31,17 +31,20 @@ public:
 	/// Is an (at least partial) translation of language with code \p c available?
 	static bool available(std::string const & c);
 	///
-	static void init();
+	static void guiLanguage(std::string const & l) { gui_lang_ = l; }
+	///
+	static std::string const & guiLanguage() { return gui_lang_; }
 
 private:
+	/// Read the strings from the .mo file. Returns true on success.
+	bool readMoFile();
 	///
 	std::string lang_;
 	///
-	typedef std::map<std::string, docstring> TranslationCache;
-	/// Internal cache for gettext translated strings.
-	/// This is needed for performance reason within \c updateBuffer()
-	/// under Windows.
-	mutable TranslationCache cache_;
+	typedef std::map<std::string, docstring> TranslationMap;
+	TranslationMap trans_map_;
+	/// The language used by the Gui
+	static std::string gui_lang_;
 };
 
 /// Access to the unique Messages object for the passed \p language.

@@ -33,7 +33,6 @@
 #include "FuncStatus.h"
 #include "HunspellChecker.h"
 #include "KeyMap.h"
-#include "Language.h"
 #include "LaTeXFonts.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
@@ -188,7 +187,7 @@ struct LyX::Impl {
 	bool first_start;
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
-	
+
 	///
 	LaTeXFonts * latexfonts_;
 
@@ -272,7 +271,7 @@ int LyX::exec(int & argc, char * argv[])
 	try {
 		init_package(os::utf8_argv(0), string(), string());
 		// we do not get to this point when init_package throws an exception
-		locale_init();
+		setLocale();
 	} catch (ExceptionMessage const & message) {
 		LYXERR(Debug::LOCALE, message.title_ + ", " + message.details_);
 	}
@@ -294,7 +293,7 @@ int LyX::exec(int & argc, char * argv[])
 
 	// Reinit the messages machinery in case package() knows
 	// something interesting about the locale directory.
-	Messages::init();
+	setLocale();
 
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
@@ -337,7 +336,7 @@ int LyX::exec(int & argc, char * argv[])
 
 	// Reestablish our defaults, as Qt overwrites them
 	// after createApplication()
-	locale_init();
+	setLocale();//???
 
 	// Parse and remove all known arguments in the LyX singleton
 	// Give an error for all remaining ones.
@@ -793,6 +792,9 @@ bool LyX::init()
 	// This one is edited through the preferences dialog.
 	if (!readRcFile("preferences", true))
 		return false;
+
+	// The language may have been set to someting useful through prefs
+	setLocale();
 
 	if (!readEncodingsFile("encodings", "unicodesymbols"))
 		return false;
@@ -1379,19 +1381,7 @@ Messages const & getMessages(string const & language)
 Messages const & getGuiMessages()
 {
 	LAPPERR(singleton_);
-	// A cache to translate full language name to language code
-	static string last_language = "auto";
-	static string code;
-	if (lyxrc.gui_language != last_language) {
-		if (lyxrc.gui_language == "auto")
-			code.clear();
-		else {
-			Language const * l = languages.getLanguage(lyxrc.gui_language);
-			code = l ? l->code() : string();
-		}
-		last_language = lyxrc.gui_language;
-	}
-	return singleton_->messages(code);
+	return singleton_->messages(Messages::guiLanguage());
 }
 
 

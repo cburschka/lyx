@@ -259,6 +259,8 @@ std::vector<std::string> loadableImageFormats();
 frontend::Application * theApp();
 frontend::Application * createApplication(int & argc, char * argv[]);
 void hideDialogs(std::string const & name, Inset * inset);
+/// Set locale correctly using LyXRC::gui_language
+void setLocale();
 
 } // namespace lyx
 
