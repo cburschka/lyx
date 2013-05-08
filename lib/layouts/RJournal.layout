@@ -40,12 +40,26 @@ AddToPreamble
 	}
 EndPreamble
 
-InsetLayout "Flex:Abstract"
-	LabelString           "Abstract"
+Style Abstract
+	Margin                First_Dynamic
 	LatexType             Command
-	LaTexName             abstract
-	LyXType               Custom
+	InTitle               0
+	LatexName             abstract
+	LeftMargin            MMM
+	LabelIndent           MMM
+	RightMargin           MMM
+	ParIndent             MM
+	TopSep                0.7
+	BottomSep             0.7
+	Align                 Block
+	LabelType             Static
+	LabelString           "Abstract."
+	LabelSep              M
+	Font
+	  Size                Small
+	EndFont
 	LabelFont
+	  Shape               Smallcaps
 	  Color               latex
 	EndFont
 End
