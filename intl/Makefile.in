@@ -62,7 +62,7 @@ INSTALL_DATA = @INSTALL_DATA@
 mkinstalldirs = $(SHELL) @install_sh@ -d
 install_sh = $(SHELL) @install_sh@
 MKDIR_P = @MKDIR_P@
-mkdir_p = @mkdir_p@
+mkdir_p = @MKDIR_P@
 
 l = @INTL_LIBTOOL_SUFFIX_PREFIX@
 
