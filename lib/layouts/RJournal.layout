@@ -64,14 +64,17 @@ Style Abstract
 	EndFont
 End
 
-InsetLayout "Flex:Address"
-	LabelString           "Address"
+Style Address
+	Category	      FrontMatter
+	Margin                Static
 	LatexType             Command
-	LaTexName             address
-	LyXType               Custom
-	LabelFont
-	  Color               latex
-	EndFont
+	LatexName             address
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 InsetLayout "Flex:Email"
