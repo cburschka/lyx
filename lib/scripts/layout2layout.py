@@ -292,7 +292,7 @@ def convert(lines):
                         "subparagraph"  : "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}.\\arabic{paragraph}.\\arabic{subparagraph}"}
 
     # Value of TocLevel for sectioning styles
-    toclevels = {"part"          : 0,
+    toclevels = {"part"          : -1,
                  "chapter"       : 0,
                  "section"       : 1,
                  "subsection"    : 2,
