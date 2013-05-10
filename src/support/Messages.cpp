@@ -319,11 +319,6 @@ namespace lyx {
 
 Messages::Messages(string const & /* l */) {}
 
-void Messages::init()
-{
-}
-
-
 docstring const Messages::get(string const & m) const
 {
 	docstring trans = from_ascii(m);

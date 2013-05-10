@@ -771,7 +771,6 @@ private:
 		// [+-]? [0-9]* .? [0-9]* ([eE] [+-]? [0-9]+)?
 		string s;
 		s.reserve(64);
-		char c;
 		numpunct_facet p;
 		char const dot = p.decimal_point();
 		char const sep = p.thousands_sep();

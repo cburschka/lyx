@@ -2,8 +2,6 @@ include $(top_srcdir)/config/common.am
 
 ############################### Core  ##############################
 
-DISTCLEANFILES += libintl.h
-
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
@@ -15,8 +13,8 @@ SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
 EXTRA_DIST = pch.h
 
-OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) \
-		 $(ENCHANT_LIBS) $(HUNSPELL_LIBS) @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
+OTHERLIBS = $(BOOST_LIBS) $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
+            @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
@@ -678,7 +676,7 @@ check_PROGRAMS = \
 	check_layout
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS) -DNO_LAYOUT_CSS
-check_layout_LDADD = support/liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
+check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 # need to allow multiple definitions of _() (see dummy_functions.cpp)
 check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) -Wl,--allow-multiple-definition
 check_layout_SOURCES = \

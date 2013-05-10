@@ -58,8 +58,8 @@ for file in config/install-sh ; do
   chmod 755 ${srcdir}/${file}
 done
 
-# Check for installed python
 AM_PATH_PYTHON(2.4.0,, :)
+AC_PROG_RANLIB
 
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
@@ -143,16 +143,19 @@ if echo $prefix |grep ' ' >/dev/null 2>/dev/null ; then
   prefix=`pwd`/installprefix
 fi
 
-### Setup GNU gettext
-dnl GNU gettext is written in C
-AC_LANG_PUSH(C)
-dnl Dirty trick ahead: disable macro AC_GNU_SOURCE because it triggers a bug with autoconf 2.62.
-dnl this can be removed if gettext is been updated to avoid that.
-m4_undefine([AC_GNU_SOURCE])
-m4_defun([AC_GNU_SOURCE],[])
-AM_GNU_GETTEXT([no-libtool])
-AM_GNU_GETTEXT_VERSION([0.16.1])
-AC_LANG_POP(C)
+### Setup po directory
+AM_PO_SUBDIRS
+AC_MSG_CHECKING([whether NLS is requested])
+dnl Default is enabled NLS
+AC_ARG_ENABLE(nls,
+  [  --disable-nls           do not use Native Language Support],
+    USE_NLS=$enableval, USE_NLS=yes)
+AC_MSG_RESULT($USE_NLS)
+if test $USE_NLS = "yes" ; then
+  AC_DEFINE(ENABLE_NLS, 1,
+    [Define to 1 if translation of program messages to the user's native language
+   is requested.])dnl'
+fi
 
 # some standard header files
 AC_HEADER_MAJOR
@@ -164,10 +167,18 @@ AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
+// Taken from gettext
+AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
+   [AC_TRY_COMPILE([#include <stddef.h>
+      wchar_t foo = (wchar_t)'\0';], ,
+      [gt_cv_c_wchar_t=yes], [gt_cv_c_wchar_t=no])])
+if test $gt_cv_c_wchar_t = yes; then
+  AC_DEFINE([HAVE_WCHAR_T], [1], [Define if you have the 'wchar_t' type.])
+fi
 
 LYX_CHECK_DEF(PATH_MAX, limits.h, [int n = PATH_MAX;])
 
-AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo open _open pclose _pclose popen _popen readlink strerror unsetenv)
+AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo open _open pclose _pclose popen _popen readlink setenv strerror unsetenv)
 # Check the form of mkdir()
 AC_FUNC_MKDIR
 AC_FUNC_SELECT_ARGTYPES
@@ -334,7 +345,6 @@ AC_CONFIG_FILES([Makefile \
       development/cygwin/Makefile \
       development/cygwin/lyxrc.dist \
       development/lyx.spec \
-      intl/Makefile \
       lib/lyx.desktop-temp:lib/lyx.desktop.in
       lib/Makefile \
       lib/doc/Makefile \

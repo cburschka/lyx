@@ -14,7 +14,7 @@ man_MANS = tex2lyx.1
 
 bin_PROGRAMS = tex2lyx
 
-DEFAULT_INCLUDES = 
+DEFAULT_INCLUDES =
 
 AM_CPPFLAGS += -DTEX2LYX -DNO_LAYOUT_CSS $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
@@ -100,7 +100,7 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
-	$(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) \
+	$(LIBICONV) $(BOOST_LIBS) \
 	$(QT4_LIB) $(QT4_LDFLAGS) \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
 

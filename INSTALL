@@ -155,9 +155,6 @@ LyX:
   o --disable-nls suppresses all internationalization support,
     yielding somewhat smaller code.
 
-  o --with-included-gettext forces the use of the included GNU gettext
-    library, although you might have another one installed.
-
   o You can also set the environment variable LINGUAS to a list of
     languages in case you do not want to install all the translation
     files. For example, if you are only interested in German and
