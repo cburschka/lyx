@@ -14,7 +14,6 @@ Style Part
 	LatexName             part
 	InnerTag              "title"
 	CommandDepth          0
-	TocLevel 0
 End
 
 
@@ -23,7 +22,6 @@ Style Chapter
 	LatexName             chapter
 	InnerTag              "title"
 	CommandDepth          1
-	TocLevel 0
 End
 
 
@@ -32,7 +30,6 @@ Style Section
 	LatexName             sect1
 	InnerTag              "title"
 	CommandDepth          2
-	TocLevel 1
 End
 
 
@@ -41,7 +38,6 @@ Style Subsection
 	LatexName             sect2
 	InnerTag              "title"
 	CommandDepth          3
-	TocLevel 2
 End
 
 
@@ -50,7 +46,6 @@ Style Subsubsection
 	LatexName             sect3
 	InnerTag              "title"
 	CommandDepth          4
-	TocLevel 3
 End
 
 
@@ -59,7 +54,6 @@ Style Paragraph
 	LatexName             sect4
 	InnerTag              "title"
 	CommandDepth          5
-	TocLevel 4
 End
 
 
@@ -68,6 +62,5 @@ Style Subparagraph
 	LatexName             sect5
 	InnerTag              "title"
 	CommandDepth          6
-	TocLevel 5
 End
 

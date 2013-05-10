@@ -56,7 +56,6 @@ Style Part
 		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 	EndArgument
-	TocLevel 	     -1
 End
       	
 
@@ -71,7 +70,6 @@ Style Chapter
 		Tooltip       "The chapter as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 	     0
 End
 
 
@@ -93,7 +91,6 @@ Style Section
 		Tooltip       "The section as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 1
 End
 
 
@@ -107,7 +104,6 @@ Style Subsection
 		Tooltip       "The subsection as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 2
 End
 
 
@@ -121,7 +117,6 @@ Style Subsubsection
 		Tooltip       "The subsubsection as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 3
 End
 
 
@@ -135,7 +130,6 @@ Style Paragraph
 		Tooltip       "The paragraph as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 4
 End
 
 
@@ -149,7 +143,6 @@ Style Subparagraph
 		Tooltip       "The subparagraph as it appears in the running headers"
 		Requires      1
 	EndArgument
-	TocLevel 5
 End
 
 

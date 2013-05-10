@@ -14,7 +14,7 @@ Style Part
 	Margin                Dynamic
 	LabelString           "Part \thepart"
 	LabelType             Static
-	TocLevel              0
+	TocLevel              -1
 	LabelCounter          part
 	LatexType             Command
 	LatexName             part

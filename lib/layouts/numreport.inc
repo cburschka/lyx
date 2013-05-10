@@ -3,10 +3,6 @@
 
 Format 45
 
-Style Part
-	TocLevel              -1
-End
-
 Counter chapter
 	Within                ""
 	LabelString	      "\arabic{chapter}"
