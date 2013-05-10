@@ -221,11 +221,12 @@ string fontToTag(html::FontTypes type)
 		return "del";
 	case FT_ITALIC:
 		return "i";
+	case FT_UPRIGHT:
 	case FT_SLANTED:
 	case FT_SMALLCAPS:
 	case FT_ROMAN:
 	case FT_SANS:
-	case FT_TYPER:
+	case FT_TYPE:
 		return "span";
 	}
 	// kill warning
@@ -252,6 +253,8 @@ StartTag fontToStartTag(html::FontTypes type)
 		return html::StartTag(tag, "class='wline'");
 	case FT_ITALIC:
 		return html::StartTag(tag);
+	case FT_UPRIGHT:
+		return html::StartTag(tag, "style='font-style:normal;'");
 	case FT_SLANTED:
 		return html::StartTag(tag, "style='font-style:oblique;'");
 	case FT_SMALLCAPS:
@@ -260,7 +263,7 @@ StartTag fontToStartTag(html::FontTypes type)
 		return html::StartTag(tag, "style='font-family:serif;'");
 	case FT_SANS:
 		return html::StartTag(tag, "style='font-family:sans-serif;'");
-	case FT_TYPER:
+	case FT_TYPE:
 		return html::StartTag(tag, "style='font-family:monospace;'");
 	}
 	// kill warning

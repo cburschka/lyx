@@ -129,19 +129,24 @@ struct ParTag : public StartTag
 
 ///
 enum FontTypes {
+	// ranges
 	FT_EMPH,
-	FT_BOLD,
 	FT_NOUN,
 	FT_UBAR,
 	FT_DBAR,
-	FT_SOUT,
 	FT_WAVE,
+	FT_SOUT,
+	// bold
+	FT_BOLD,
+	// shapes
+	FT_UPRIGHT,
 	FT_ITALIC,
 	FT_SLANTED,
 	FT_SMALLCAPS,
+	// families
 	FT_ROMAN,
 	FT_SANS,
-	FT_TYPER
+	FT_TYPE
 	// SIZES?
 };
 

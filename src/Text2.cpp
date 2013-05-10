@@ -318,7 +318,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 			newfi.setSeries(INHERIT_SERIES);
 	
 		FontShape newshp = newfi.shape();
-		if (newshp !=	INHERIT_SHAPE && newshp != IGNORE_SHAPE &&
+		if (newshp != INHERIT_SHAPE && newshp != IGNORE_SHAPE &&
 				newshp == oldfi.shape())
 			newfi.setShape(INHERIT_SHAPE);
 

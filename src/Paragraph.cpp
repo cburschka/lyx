@@ -2832,14 +2832,15 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 
 namespace {
-void doFontSwitch(XHTMLStream & xs, bool startrange,
-	bool & flag, FontState curstate, html::FontTypes type)
+void doFontSwitch(vector<html::FontTag> & tagsToOpen,
+                  vector<html::EndFontTag> & tagsToClose,
+                  bool & flag, FontState curstate, html::FontTypes type)
 {
 	if (curstate == FONT_ON) {
-		xs << html::FontTag(type);
+		tagsToOpen.push_back(html::FontTag(type));
 		flag = true;
-	} else if (flag && !startrange) {
-		xs << html::EndFontTag(type);
+	} else if (flag) {
+		tagsToClose.push_back(html::EndFontTag(type));
 		flag = false;
 	}
 }
@@ -2854,6 +2855,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 {
 	docstring retval;
 
+	// track whether we have opened these tags
 	bool emph_flag = false;
 	bool bold_flag = false;
 	bool noun_flag = false;
@@ -2861,6 +2863,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	bool dbar_flag = false;
 	bool sout_flag = false;
 	bool wave_flag = false;
+	// shape tags
+	bool shap_flag = false;
 
 	Layout const & style = *d->layout_;
 
@@ -2869,6 +2873,11 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
+	FontShape curr_fs = INHERIT_SHAPE;
+
+	vector<html::FontTag> tagsToOpen;
+	vector<html::EndFontTag> tagsToClose;
+	
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		// let's not show deleted material in the output
@@ -2876,46 +2885,103 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			continue;
 
 		Font const font = getFont(buf.masterBuffer()->params(), i, outerfont);
-		bool const at_start = (i == initial);
 
 		// emphasis
 		FontState curstate = font.fontInfo().emph();
 		if (font_old.emph() != curstate)
-			doFontSwitch(xs, at_start, emph_flag, curstate, html::FT_EMPH);
+			doFontSwitch(tagsToOpen, tagsToClose, emph_flag, curstate, html::FT_EMPH);
 
 		// noun
 		curstate = font.fontInfo().noun();
 		if (font_old.noun() != curstate)
-			doFontSwitch(xs, at_start, noun_flag, curstate, html::FT_NOUN);
+			doFontSwitch(tagsToOpen, tagsToClose, noun_flag, curstate, html::FT_NOUN);
 
 		// underbar
 		curstate = font.fontInfo().underbar();
 		if (font_old.underbar() != curstate)
-			doFontSwitch(xs, at_start, ubar_flag, curstate, html::FT_UBAR);
+			doFontSwitch(tagsToOpen, tagsToClose, ubar_flag, curstate, html::FT_UBAR);
 	
 		// strikeout
 		curstate = font.fontInfo().strikeout();
 		if (font_old.strikeout() != curstate)
-			doFontSwitch(xs, at_start, sout_flag, curstate, html::FT_SOUT);
+			doFontSwitch(tagsToOpen, tagsToClose, sout_flag, curstate, html::FT_SOUT);
 
 		// double underbar
 		curstate = font.fontInfo().uuline();
 		if (font_old.uuline() != curstate)
-			doFontSwitch(xs, at_start, dbar_flag, curstate, html::FT_DBAR);
+			doFontSwitch(tagsToOpen, tagsToClose, dbar_flag, curstate, html::FT_DBAR);
 
 		// wavy line
 		curstate = font.fontInfo().uwave();
 		if (font_old.uwave() != curstate)
-			doFontSwitch(xs, at_start, wave_flag, curstate, html::FT_WAVE);
+			doFontSwitch(tagsToOpen, tagsToClose, wave_flag, curstate, html::FT_WAVE);
 
 		// bold
 		// a little hackish, but allows us to reuse what we have.
 		curstate = (font.fontInfo().series() == BOLD_SERIES ? FONT_ON : FONT_OFF);
 		if (font_old.series() != font.fontInfo().series())
-			doFontSwitch(xs, at_start, bold_flag, curstate, html::FT_BOLD);
+			doFontSwitch(tagsToOpen, tagsToClose, bold_flag, curstate, html::FT_BOLD);
+
+		curr_fs = font.fontInfo().shape();
+		FontShape old_fs = font_old.shape();
+		if (old_fs != curr_fs) {
+			if (shap_flag) {
+				switch (old_fs) {
+				case ITALIC_SHAPE:
+					tagsToClose.push_back(html::EndFontTag(html::FT_ITALIC));
+					break;
+				case SLANTED_SHAPE:
+					tagsToClose.push_back(html::EndFontTag(html::FT_SLANTED));
+					break;
+				case SMALLCAPS_SHAPE:
+					tagsToClose.push_back(html::EndFontTag(html::FT_SMALLCAPS));
+					break;
+				case UP_SHAPE:
+				case INHERIT_SHAPE:
+					break;
+				default:
+					// the other tags are for internal use
+					LATTEST(false);
+					break;
+				}
+				shap_flag = false;
+			}
+			switch (curr_fs) {
+			case ITALIC_SHAPE:
+				tagsToOpen.push_back(html::FontTag(html::FT_ITALIC));
+				break;
+			case SLANTED_SHAPE:
+				tagsToOpen.push_back(html::FontTag(html::FT_SLANTED));
+				break;
+			case SMALLCAPS_SHAPE:
+				tagsToOpen.push_back(html::FontTag(html::FT_SMALLCAPS));
+				break;
+			case UP_SHAPE:
+			case INHERIT_SHAPE:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
+			shap_flag = true;
+		}
 
 		// FIXME XHTML
 		// Other such tags? What about the other text ranges?
+
+		vector<html::EndFontTag>::const_iterator cit = tagsToClose.begin();
+		vector<html::EndFontTag>::const_iterator cen = tagsToClose.end();
+		for (; cit != cen; ++cit)
+			xs << *cit;
+
+		vector<html::FontTag>::const_iterator sit = tagsToOpen.begin();
+		vector<html::FontTag>::const_iterator sen = tagsToOpen.end();
+		for (; sit != sen; ++sit)
+			xs << *sit;
+
+		tagsToClose.clear();
+		tagsToOpen.clear();
 
 		Inset const * inset = getInset(i);
 		if (inset) {
