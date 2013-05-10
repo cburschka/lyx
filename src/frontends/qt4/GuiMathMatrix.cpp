@@ -125,7 +125,7 @@ void GuiMathMatrix::slotOK()
 		}
 		// only if a special alignment is set create a 1x1 AMS array in which
 		// a normal array will be created, otherwise create just a normal AMS array
-		if (sh.contains('l') > 0 || sh.contains('r') > 0) {
+		if (sh.contains('l') || sh.contains('r')) {
 			string const str_ams = fromqstr(
 				QString("%1 %2 %3").arg(int(1)).arg(int(1)).arg(deco_name));
 			dispatch(FuncRequest(LFUN_MATH_AMS_MATRIX, str_ams));
