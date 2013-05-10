@@ -1,4 +1,5 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PageLayoutUi</class>
  <widget class="QWidget" name="PageLayoutUi">
   <property name="geometry">
@@ -41,7 +42,7 @@
          </sizepolicy>
         </property>
         <property name="toolTip">
-         <string>Choose a particular paper size, or set your own with "Custom"</string>
+         <string>Choose a particular paper size, or set your own with &quot;Custom&quot;</string>
         </property>
         <property name="maxVisibleItems">
          <number>20</number>
@@ -167,7 +168,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="pagestyleL">
         <property name="text">
-         <string>Headings &amp;style:</string>
+         <string>Page &amp;style:</string>
         </property>
         <property name="buddy">
          <cstring>pagestyleCO</cstring>
