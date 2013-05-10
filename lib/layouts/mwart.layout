@@ -8,9 +8,9 @@
 Format 35
 Input stdclass.inc
 
-NoStyle Chapter
+NoStyle   Chapter
 NoCounter chapter
-NoStyle Chapter*
+NoStyle   Chapter*
 
 SecNumDepth             3
 TocDepth                3
@@ -28,7 +28,6 @@ Style Part
 	Font
 	  Size                Larger
 	EndFont
-	TocLevel 0
 End
 
 

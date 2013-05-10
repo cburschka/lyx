@@ -51,14 +51,12 @@ Input numreport.inc
 
 Style Part
 	OptionalArgs         1
-	TocLevel 	     -1
 End
       	
 
 
 Style Chapter
 	OptionalArgs         2
-	TocLevel 	     0
 End
 
 
@@ -69,31 +67,26 @@ End
 
 Style Section
 	OptionalArgs         2
-	TocLevel 1
 End
 
 
 Style Subsection
 	OptionalArgs         2
-	TocLevel 2
 End
 
 
 Style Subsubsection
 	OptionalArgs         2
-	TocLevel 3
 End
 
 
 Style Paragraph
 	OptionalArgs         2
-	TocLevel 4
 End
 
 
 Style Subparagraph
 	OptionalArgs         2
-	TocLevel 5
 End
 
 
