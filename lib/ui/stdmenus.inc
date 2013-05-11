@@ -154,21 +154,22 @@ Menuset
 	End
 
 	Menu "edit_paste"
+		OptItem "Paste from HTML|H" "paste html"
+		OptItem "Paste from LaTeX|L" "paste latex"
+		OptItem "Paste as LinkBack PDF" "paste linkback"
+		OptItem "Paste as PDF" "paste pdf"
+		OptItem "Paste as PNG" "paste png"
+		OptItem "Paste as JPEG" "paste jpeg"
+		OptItem "Paste as EMF" "paste emf"
+		Separator
 		Item "Plain Text|T" "clipboard-paste"
 		Item "Plain Text, Join Lines|J" "clipboard-paste paragraph"
-		Item "HTML Text|H" "paste html"
-		Item "LaTeX Text|L" "paste latex"
 		Separator
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
 		Separator
 		Item "Unformatted Text|U" "clipboard-paste-simple"
 		Item "Unformatted, Join Lines|o" "clipboard-paste-simple paragraph"
-		Separator
-		Item "Paste as LinkBack PDF" "paste linkback"
-		Item "Paste as PDF" "paste pdf"
-		Item "Paste as PNG" "paste png"
-		Item "Paste as JPEG" "paste jpeg"
 	End
 
 	Menu "edit_pasterecent"
