@@ -29972,6 +29972,24 @@ Mathe
  Handbuchs.
 \end_layout
 
+\begin_layout Standard
+Jeder Branchtyp kann einen speziellen Stil haben, der in Layout-Dateien
+ definiert werden kann.
+ Für diese fortgeschrittene Anwendung siehe das 
+\emph on
+Anpassung
+\emph default
+ Handbuch, Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Flexible Einfügungen und InsetLayout
+\begin_inset Quotes grd
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Section
 PDF-Eigenschaften
 \begin_inset Index idx
@@ -30029,28 +30047,6 @@ hyperref
  ein Leser, der die DVI- oder PDF-Ausgabe auf seinem PC liest, einen Querverweis
  anklicken kann und so zur entsprechenden Stelle gelangt, wie es auch im
  Internet passiert.
- Auf der Karteikarte 
-\family sans
-Hyperlinks
-\family default
- können Sie festlegen, wie die Querverweise aussehen sollen, und ob bibliografis
-che Rückverweise angelegt werden sollen.
-\end_layout
-
-\begin_layout Standard
-Auf der Karteikarte 
-\family sans
-Lesezeichen
-\family default
- können Sie festlegen, ob welche erzeugt und auch nummeriert werden sollen.
- Das erleichtert es Lesern, durch die PDF-Ausgabe des Dokuments zu navigieren.
- Mit 
-\family sans
-Ebene
-\family default
- legen Sie fest, welche Lesezeichen angezeigt werden sollen.
- 2 zum Beispiel zeigt die Lesezeichen aller Abschnitte und Unterabschnitte,
- während 1 nur Abschnitte berücksichtigt.
 \end_layout
 
 \begin_layout Standard
@@ -30079,10 +30075,7 @@ eintragen
 \family default
  angekreuzt, versucht LyX, diese Informationen aus dem Titel und dem Autor
  des Dokuments zu gewinnen.
-\end_layout
-
-\begin_layout Standard
-Die Option 
+ Die Option 
 \family sans
 Im
 \begin_inset space \space{}
@@ -30096,6 +30089,134 @@ Vollbildmodus
 \family default
  sorgt dafür, dass die PDF-Datei automatisch so geöffnet wird, was bei Präsentat
 ionen hilfreich ist.
+\end_layout
+
+\begin_layout Standard
+Auf der Karteikarte 
+\family sans
+Hyperlinks
+\family default
+ können Sie festlegen, wie die Querverweise aussehen sollen, und ob bibliografis
+che Rückverweise angelegt werden sollen.
+\end_layout
+
+\begin_layout Standard
+Mit die Option 
+\family sans
+Links am Zeilenende umbrechen
+\family default
+ können lange Links umgebrochen werden; 
+\family sans
+Keine
+\begin_inset space ~
+\end_inset
+
+Rahmen
+\begin_inset space ~
+\end_inset
+
+um
+\begin_inset space ~
+\end_inset
+
+Links
+\family default
+ und 
+\family sans
+Links
+\begin_inset space ~
+\end_inset
+
+einfärben
+\family default
+ schalten beide die Eingenschaft aus, dass standardmäßig Rahmen um Links
+ gezeichnet werden; 
+\family sans
+Links
+\begin_inset space ~
+\end_inset
+
+einfärben
+\family default
+ färbt die verschiedenen Links.
+ Die verschiedenen Farben sind:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color magenta
+magenta
+\color inherit
+ für Hyperlinks und URLs
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+rot
+\color inherit
+ für links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color green
+grün
+\color inherit
+ für Zitate
+\end_layout
+
+\begin_layout Standard
+die aber im Feld 
+\family sans
+Zusätzliche Optionen
+\family default
+ geändert werden können.
+ Dies wurde z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ in diesem Dokument mit den Optionen
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
+\end_layout
+
+\begin_layout Standard
+getan.
+\end_layout
+
+\begin_layout Standard
+Wenn die Option 
+\family sans
+Rückverweise
+\family default
+ ausgewählt ist, erscheinen die Hyperlinks im Literaturverzeichnis hinter
+ den Einträgen, je nach Einstellung, als Nummer des Abschnitts, der Folie
+ oder Seite in/auf der sie referenziert sind.
+\end_layout
+
+\begin_layout Standard
+In der Karteikarte 
+\family sans
+Lesezeichen
+\family default
+ können Sie festlegen, ob welche erzeugt und auch nummeriert werden sollen.
+ Das erleichtert es Lesern, durch die PDF-Ausgabe des Dokuments zu navigieren.
+ Mit 
+\family sans
+Ebene
+\family default
+ legen Sie fest, welche Lesezeichen angezeigt werden sollen.
+ 2 zum Beispiel zeigt die Lesezeichen aller Abschnitte und Unterabschnitte,
+ während 1 nur Abschnitte berücksichtigt.
 \end_layout
 
 \begin_layout Standard
@@ -30472,6 +30593,22 @@ LaTeX-Paket ! caption
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
+\SpecialChar \menuseparator
+
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX-Vorspann
+\family default
 ) mit dem Befehl
 \end_layout
 
@@ -30785,7 +30922,7 @@ Roman{page}
 \end_layout
 
 \begin_layout Section
-Benutzerdefinierte Kopf/Fußzeilen
+Benutzerdefinierte Kopf-/Fußzeilen
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Benutzerdefinierte-Kopf/Fußzeile"
@@ -30817,7 +30954,7 @@ Kopf/Fußzeile
 
 \begin_layout Standard
 Um eigene Kopf- und Fußzeilen für ein Dokument zu definieren, muss man den
- Stil 
+ Seitenstil 
 \family sans
 ausgefallen
 \family default
@@ -31110,6 +31247,37 @@ Seitenlayout mit benutzerdefinierter Kopf/Fußzeile.
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung
+\series default
+: Einige Dokumentklassen definieren ihre eigenen Kopf-/Fußzeilen wenn 
+\family sans
+Seiten-Stil
+\family default
+ auf 
+\begin_inset Quotes gld
+\end_inset
+
+Standard
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt ist.
+ Daher sollten Sie deren Stil ausprobieren bevor Sie eigenen Kopf-/Fußzeilen
+ definieren.
 \end_layout
 
 \end_inset
@@ -31708,6 +31876,26 @@ Vorschaugröße
 \end_layout
 
 \begin_layout Standard
+Wenn Sie alles außer Mathe vorschauen wollen, setzen Sie 
+\family sans
+Sofortige
+\begin_inset space \space{}
+\end_inset
+
+Vorschau
+\family default
+ auf 
+\family sans
+Kein
+\begin_inset space ~
+\end_inset
+
+Mathe
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen oder eine Einfügung
  verlassen.
 \end_layout
@@ -32024,6 +32212,13 @@ ansehen
  der Code der Auswahl angezeigt (wenn es mehr als ein Absatz ist).
  Um das gesamte Dokument als Quellcode anzusehen, verwendet man die entsprechend
 e Option im Quellcode-Fenster.
+ Verwendet man die Option 
+\family sans
+Automatische Aktualisierung
+\family default
+, werden die Änderungen, die man am Dokument vornimmt, sofort angezeigt;
+ aber beachten Sie, dass das LyX langsamer machen kann, wenn mehrere Dateien
+ geöffnet sind, da LyX alle geöffneten Dateien aktualisiert.
 \end_layout
 
 \begin_layout Section
@@ -32139,11 +32334,9 @@ ersetzen
 Umschalt
 \family default
 +F oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_findreplaceadv.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle findreplaceadv"
 \end_inset
 
  aktiviert.
@@ -32295,7 +32488,11 @@ Suchen
 \family default
  Feld eingegeben wurden, können mit Segmenten ersetzt werden, die im 
 \family sans
-Ersetzen durch
+Ersetzen
+\begin_inset space ~
+\end_inset
+
+durch
 \family default
 \noun on
  
@@ -32316,7 +32513,11 @@ Umschalt+Enter
 \family default
  während der Cursor sich im Feld 
 \family sans
-Ersetzen durch
+Ersetzen
+\begin_inset space ~
+\end_inset
+
+durch
 \family default
 \noun on
  

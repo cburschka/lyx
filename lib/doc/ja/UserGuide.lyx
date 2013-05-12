@@ -23910,6 +23910,34 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 』をご覧ください。
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Each type of branch is allowed to have its specific style defined in layout
+ files (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+any branch inset can be automatically wrapped by your own LaTeX commands.).
+ For this advanced usage, see the 
+\emph on
+Customization
+\emph default
+ manual, section 
+\begin_inset Quotes eld
+\end_inset
+
+Flex insets and InsetLayout
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Section
 PDF特性
 \begin_inset CommandInset label
@@ -23947,31 +23975,14 @@ Latexぱっけーじ@LaTeXパッケージ ! hyperref
 
 \end_inset
 
-を利用します。
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-hyperref
-\series default
-を使うと、DVI出力とPDF出力中で、すべての相互参照がリンクとして現れます。つまり、あなたの文書の読者は、目次や参照をクリックして、文書の参照されている部分へ
-と移動することができるのです。ダイアログタブにある
-\family sans
-ハイパーリンク
-\family default
-では、リンクの外観や書誌情報の逆参照リンクを生成するかどうかを指定することができます。逆参照は、書誌情報の各項目のうしろに、項目が引用された節やスライド、ページ
-を表示するものです。
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-しおり
-\family default
-ダイアログタブでは、読者が文書内を動き回るのに便利なように、文書の各節のPDFしおりを設定するかどうかを指定することができます。しおりが、文書の節見出しと同様に
-番号を振るかどうかを指定することもできます。開くしおりの階層では、PDFを開いたときにどの節階層まで表示するかを指定することができます。例えば、階層を2にしたと
-きには、すべての節と小節が表示され、階層を１にすると節のみが表示されます。
+を利用します
+\lang english
+which will link all cross-references in the DVI- and PDF-output.
+ This means that the reader of your document will be able to click on a
+ table of contents entry or on a reference to move to the cross-referenced
+ part of the document
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard
@@ -23985,14 +23996,140 @@ hyperref
 自動的にヘッダを補完
 \family default
 オプションを有効にすると、LyXはヘッダ情報を、文書のタイトルと著者の設定から自動的に抽出しようと試みます。
+\family sans
+全画面モードで読み込む
+\family default
+オプションは、PDFを全画面モードで開きますので、プレゼンテーションに便利です。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can specify in the dialog tab 
+\family sans
+Hyperlinks
+\family default
+ how the links will look and if links for bibliographical backreferences
+ are created.
+ The 
+\family sans
+Break
+\begin_inset space ~
+\end_inset
+
+links
+\begin_inset space ~
+\end_inset
+
+over
+\begin_inset space ~
+\end_inset
+
+lines
+\family default
+ option allows long links to be split; 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+frames
+\begin_inset space ~
+\end_inset
+
+around
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ and 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ both turn off the default behavior of enclosing all links in frames; 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ colors the different links.
+ The default colors are:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color magenta
+\lang english
+magenta
+\color inherit
+ for hyperlinks and URLs
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+\lang english
+red
+\color inherit
+ for links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color green
+\lang english
+green
+\color inherit
+ for citations
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+but you can change these in the field 
+\family sans
+Additional options
+\family default
+.
+ For example, in this document they were changed with the additional options:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the option 
+\family sans
+Backreferences
+\family default
+ is set, the hyperlinks will appear in the bibliography after the different
+ entries, showing, depending on the option selected, the number of the section,
+ slide or page where the entry is referenced.
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-全画面モードで読み込む
+しおり
 \family default
-オプションは、PDFを全画面モードで開きますので、プレゼンテーションに便利です。
+ダイアログタブでは、読者が文書内を動き回るのに便利なように、文書の各節のPDFしおりを設定するかどうかを指定することができます。しおりが、文書の節見出しと同様に
+番号を振るかどうかを指定することもできます。開くしおりの階層では、PDFを開いたときにどの節階層まで表示するかを指定することができます。例えば、階層を2にしたと
+きには、すべての節と小節が表示され、階層を１にすると節のみが表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -24244,7 +24381,33 @@ Latexぱっけーじ@LaTeXパッケージ ! caption
 文書\SpecialChar \menuseparator
 設定
 \family default
-メニュー）で
+メニュー\SpecialChar \menuseparator
+
+\family sans
+\lang english
+LaT
+\lang japanese
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\lang english
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+\lang japanese
+）で
 \end_layout
 
 \begin_layout Standard
@@ -24801,6 +24964,37 @@ name "fig:ページレイアウト"
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note
+\series default
+: some document classes implement their own customized page headers and
+ footers if 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+style
+\family default
+ is set to “Default”.
+ Check what these are before you specify your own customized page headers
+ and footers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 定義
 \end_layout
@@ -25252,6 +25446,29 @@ pnmcrop
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+If you would like to see everything but your math formulas typeset by LaTeX,
+ set 
+\family sans
+Instant
+\begin_inset space ~
+\end_inset
+
+Preview
+\family default
+ to 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+math
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 すると、LyXに文書を読み込んだり挿入枠を編集し終わったりすると、プレビューが生成されるようになります。すでに読み込まれた文書のプレビューは、
 \family sans
 自動プレビュー
@@ -25530,6 +25747,14 @@ LaTeXソースコード
 メニューを使用すると、ウィンドウが開いてLaTeXコードを見ることができるようになります。このウィンドウには、現在カーソルがある段落全体のソースを表示します。L
 yXのメインウィンドウで文書の一部を選択すれば、（1段落以上を選択しているときには）選択部分のみがソースコードとして表示されます。文書全体をソースとして閲覧した
 いときには、ソース閲覧ウィンドウにある、そのオプションを有効にしてください。
+\lang english
+If you check 
+\family sans
+Automatic update
+\family default
+, you can see the changes as you make them in LyX; but note that if you
+ have several documents open, this will slow things down as LyX updates
+ them all, not just the one which is open at the time.
 \end_layout
 
 \begin_layout Section
