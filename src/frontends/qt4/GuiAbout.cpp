@@ -23,8 +23,7 @@
 #include "support/Package.h"
 
 #include <QDate>
-#include <QtCore>
-#include <QtGui>
+#include <QTextStream>
 
 using namespace lyx::support;
 using lyx::support::package;
