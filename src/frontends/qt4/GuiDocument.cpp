@@ -1391,28 +1391,28 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// add the panels
-	docPS->addPanel(latexModule, qt_("Document Class"));
-	docPS->addPanel(masterChildModule, qt_("Child Documents"));
-	docPS->addPanel(modulesModule, qt_("Modules"));
-	docPS->addPanel(localLayout, qt_("Local Layout"));
-	docPS->addPanel(fontModule, qt_("Fonts"));
-	docPS->addPanel(textLayoutModule, qt_("Text Layout"));
-	docPS->addPanel(pageLayoutModule, qt_("Page Layout"));
-	docPS->addPanel(marginsModule, qt_("Page Margins"));
-	docPS->addPanel(langModule, qt_("Language"));
-	docPS->addPanel(colorModule, qt_("Colors"));
-	docPS->addPanel(numberingModule, qt_("Numbering & TOC"));
-	docPS->addPanel(biblioModule, qt_("Bibliography"));
-	docPS->addPanel(indicesModule, qt_("Indexes"));
-	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
-	docPS->addPanel(mathsModule, qt_("Math Options"));
-	docPS->addPanel(floatModule, qt_("Float Placement"));
-	docPS->addPanel(listingsModule, qt_("Listings[[inset]]"));
-	docPS->addPanel(bulletsModule, qt_("Bullets"));
-	docPS->addPanel(branchesModule, qt_("Branches"));
-	docPS->addPanel(outputModule, qt_("Output"));
-	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
-	docPS->setCurrentPanel(qt_("Document Class"));
+	docPS->addPanel(latexModule, N_("Document Class"));
+	docPS->addPanel(masterChildModule, N_("Child Documents"));
+	docPS->addPanel(modulesModule, N_("Modules"));
+	docPS->addPanel(localLayout, N_("Local Layout"));
+	docPS->addPanel(fontModule, N_("Fonts"));
+	docPS->addPanel(textLayoutModule, N_("Text Layout"));
+	docPS->addPanel(pageLayoutModule, N_("Page Layout"));
+	docPS->addPanel(marginsModule, N_("Page Margins"));
+	docPS->addPanel(langModule, N_("Language"));
+	docPS->addPanel(colorModule, N_("Colors"));
+	docPS->addPanel(numberingModule, N_("Numbering & TOC"));
+	docPS->addPanel(biblioModule, N_("Bibliography"));
+	docPS->addPanel(indicesModule, N_("Indexes"));
+	docPS->addPanel(pdfSupportModule, N_("PDF Properties"));
+	docPS->addPanel(mathsModule, N_("Math Options"));
+	docPS->addPanel(floatModule, N_("Float Placement"));
+	docPS->addPanel(listingsModule, N_("Listings[[inset]]"));
+	docPS->addPanel(bulletsModule, N_("Bullets"));
+	docPS->addPanel(branchesModule, N_("Branches"));
+	docPS->addPanel(outputModule, N_("Output"));
+	docPS->addPanel(preambleModule, N_("LaTeX Preamble"));
+	docPS->setCurrentPanel("Document Class");
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
@@ -3192,11 +3192,11 @@ void GuiDocument::paramsToDialog()
 	if (!bufferview() || !buffer().hasChildren()) {
 		masterChildModule->childrenTW->clear();
 		includeonlys_.clear();
-		docPS->showPanel(qt_("Child Documents"), false);
-		if (docPS->isCurrentPanel(qt_("Child Documents")))
-			docPS->setCurrentPanel(qt_("Document Class"));
+		docPS->showPanel("Child Documents", false);
+		if (docPS->isCurrentPanel("Child Documents"))
+			docPS->setCurrentPanel("Document Class");
 	} else {
-		docPS->showPanel(qt_("Child Documents"), true);
+		docPS->showPanel("Child Documents", true);
 		masterChildModule->setEnabled(true);
 		includeonlys_ = bp_.getIncludedChildren();
 		updateIncludeonlys();

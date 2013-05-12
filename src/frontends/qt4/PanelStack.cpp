@@ -105,13 +105,13 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 
 	if (parent.isEmpty()) {
 		item = new QTreeWidgetItem(list_);
-		item->setText(0, name);
+		item->setText(0, qt_(name));
 	}
 	else {
 		if (!panel_map_.contains(parent))
 			addCategory(parent);
 		item = new QTreeWidgetItem(panel_map_.value(parent));
-		item->setText(0, name);
+		item->setText(0, qt_(name));
 		depth = 2;
 		list_->setRootIsDecorated(true);
 	}

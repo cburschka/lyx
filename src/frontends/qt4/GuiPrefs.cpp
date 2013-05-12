@@ -249,11 +249,11 @@ QString browseRelToSub(QString const & filename, QString const & relpath,
 
 namespace frontend {
 
-string const catLookAndFeel = N_("Look & Feel");
-string const catEditing = N_("Editing");
-string const catLanguage = N_("Language Settings");
-string const catOutput = N_("Output");
-string const catFiles = N_("File Handling");
+QString const catLookAndFeel = N_("Look & Feel");
+QString const catEditing = N_("Editing");
+QString const catLanguage = N_("Language Settings");
+QString const catOutput = N_("Output");
+QString const catFiles = N_("File Handling");
 
 static void parseFontName(QString const & mangled0,
 	string & name, string & foundry)
@@ -387,7 +387,7 @@ QValidator::State StrftimeValidator::validate(QString & input, int & /*pos*/) co
 /////////////////////////////////////////////////////////////////////
 
 PrefOutput::PrefOutput(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("General"), form)
+	: PrefModule(catOutput, N_("General"), form)
 {
 	setupUi(this);
 
@@ -479,7 +479,7 @@ void PrefOutput::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefInput::PrefInput(GuiPreferences * form)
-	: PrefModule(qt_(catEditing), qt_("Keyboard/Mouse"), form)
+	: PrefModule(catEditing, N_("Keyboard/Mouse"), form)
 {
 	setupUi(this);
 
@@ -609,7 +609,7 @@ void PrefInput::on_scrollzoomEnableCB_toggled(bool enabled)
 /////////////////////////////////////////////////////////////////////
 
 PrefCompletion::PrefCompletion(GuiPreferences * form)
-	: PrefModule(qt_(catEditing), qt_("Input Completion"), form)
+	: PrefModule(catEditing, N_("Input Completion"), form)
 {
 	setupUi(this);
 
@@ -699,7 +699,7 @@ void PrefCompletion::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefLatex::PrefLatex(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("LaTeX"), form)
+	: PrefModule(catOutput, N_("LaTeX"), form)
 {
 	setupUi(this);
 
@@ -928,7 +928,7 @@ void PrefLatex::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Screen Fonts"), form)
+	: PrefModule(catLookAndFeel, N_("Screen Fonts"), form)
 {
 	setupUi(this);
 
@@ -1105,7 +1105,7 @@ struct ColorSorter
 } // namespace anon
 
 PrefColors::PrefColors(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Colors"), form)
+	: PrefModule(catLookAndFeel, N_("Colors"), form)
 {
 	setupUi(this);
 
@@ -1227,7 +1227,7 @@ void PrefColors::changeLyxObjectsSelection()
 /////////////////////////////////////////////////////////////////////
 
 PrefDisplay::PrefDisplay(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Display"), form)
+	: PrefModule(catLookAndFeel, N_("Display"), form)
 {
 	setupUi(this);
 	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
@@ -1301,7 +1301,7 @@ void PrefDisplay::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPaths::PrefPaths(GuiPreferences * form)
-	: PrefModule(QString(), qt_("Paths"), form)
+	: PrefModule(QString(), N_("Paths"), form)
 {
 	setupUi(this);
 
@@ -1464,7 +1464,7 @@ void PrefPaths::selectLyxPipe()
 /////////////////////////////////////////////////////////////////////
 
 PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
-	: PrefModule(qt_(catLanguage), qt_("Spellchecker"), form)
+	: PrefModule(catLanguage, N_("Spellchecker"), form)
 {
 	setupUi(this);
 
@@ -1555,7 +1555,7 @@ void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
 
 
 PrefConverters::PrefConverters(GuiPreferences * form)
-	: PrefModule(qt_(catFiles), qt_("Converters"), form)
+	: PrefModule(catFiles, N_("Converters"), form)
 {
 	setupUi(this);
 
@@ -1869,7 +1869,7 @@ private:
 /////////////////////////////////////////////////////////////////////
 
 PrefFileformats::PrefFileformats(GuiPreferences * form)
-	: PrefModule(qt_(catFiles), qt_("File Formats"), form)
+	: PrefModule(catFiles, N_("File Formats"), form)
 {
 	setupUi(this);
 
@@ -2237,7 +2237,7 @@ void PrefFileformats::on_formatRemovePB_clicked()
 /////////////////////////////////////////////////////////////////////
 
 PrefLanguage::PrefLanguage(GuiPreferences * form)
-	: PrefModule(qt_(catLanguage), qt_("Language"), form)
+	: PrefModule(catLanguage, N_("Language"), form)
 {
 	setupUi(this);
 
@@ -2387,7 +2387,7 @@ void PrefLanguage::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPrinter::PrefPrinter(GuiPreferences * form)
-	: PrefModule(qt_(catOutput), qt_("Printer"), form)
+	: PrefModule(catOutput, N_("Printer"), form)
 {
 	setupUi(this);
 
@@ -2503,7 +2503,7 @@ void PrefPrinter::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefUserInterface::PrefUserInterface(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("User Interface"), form)
+	: PrefModule(catLookAndFeel, N_("User Interface"), form)
 {
 	setupUi(this);
 
@@ -2563,7 +2563,7 @@ void PrefUserInterface::selectUi()
 /////////////////////////////////////////////////////////////////////
 
 PrefDocHandling::PrefDocHandling(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Document Handling"), form)
+	: PrefModule(catLookAndFeel, N_("Document Handling"), form)
 {
 	setupUi(this);
 
@@ -2666,7 +2666,7 @@ void PrefDocHandling::on_clearSessionPB_clicked()
 /////////////////////////////////////////////////////////////////////
 
 PrefEdit::PrefEdit(GuiPreferences * form)
-	: PrefModule(qt_(catEditing), qt_("Control"), form)
+	: PrefModule(catEditing, N_("Control"), form)
 {
 	setupUi(this);
 
@@ -2754,7 +2754,7 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form)
-	: PrefModule(qt_(catEditing), qt_("Shortcuts"), form)
+	: PrefModule(catEditing, N_("Shortcuts"), form)
 {
 	setupUi(this);
 
@@ -3217,7 +3217,7 @@ void PrefShortcuts::shortcutRemovePressed()
 /////////////////////////////////////////////////////////////////////
 
 PrefIdentity::PrefIdentity(GuiPreferences * form)
-	: PrefModule(QString(), qt_("Identity"), form)
+	: PrefModule(QString(), N_("Identity"), form)
 {
 	setupUi(this);
 
@@ -3297,7 +3297,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(converters);
 	addModule(formats);
 
-	prefsPS->setCurrentPanel(qt_("User Interface"));
+	prefsPS->setCurrentPanel("User Interface");
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)
 #if QT_VERSION >= 0x040200
