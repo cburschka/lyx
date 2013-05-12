@@ -53,8 +53,7 @@ include_directories(
 	${TOP_SRC_DIR}/src/support/mythes
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
-	${ZLIB_INCLUDE_DIR}
-	${LIBINTL_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR})
 
 
 if(NOT LYX_MERGE_FILES)

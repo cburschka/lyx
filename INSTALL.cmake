@@ -148,7 +148,6 @@ Build options
     -- LYX_MERGE_REBUILD        = OFF    : Rebuild generated files from merged files build
     -- LYX_QUIET                = OFF    : Don't generate verbose makefiles
     -- LYX_INSTALL_PREFIX       = OFF    : Install path for LyX
-    -- LYX_EXTERNAL_LIBINTL     = ON     : Use external libintl
 
     # GCC specific 
     -- LYX_PROFILE              = OFF    : Build profile version

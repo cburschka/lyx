@@ -92,7 +92,6 @@ LYX_OPTION(MERGE_FILES      "Merge source files into one compilation unit" OFF A
 LYX_OPTION(MERGE_REBUILD    "Rebuild generated files from merged files build" OFF ALL)
 LYX_OPTION(QUIET            "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(INSTALL_PREFIX   "Install path for LyX" OFF ALL)
-LYX_OPTION(EXTERNAL_LIBINTL "Use external libintl" ON ALL)
 LYX_OPTION(BUNDLE           "Build bundle  (experimental) " OFF ALL)
 
 # GCC specific
@@ -518,26 +517,6 @@ if(LYX_NLS)
 	add_subdirectory(po "${TOP_BINARY_DIR}/po")
 endif()
 
-if(LYX_NLS)
-	if(LYX_EXTERNAL_LIBINTL)
-		find_package(Libintl REQUIRED)
-		if(DEFINED LIBINTL_LIBRARIES)
-			# find getext when configuring
-			list(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBINTL_LIBRARIES})
-			# on mac use iconv also form ports
-			get_filename_component(ICONV_RELATIVE_TO_LIBINTL ${LIBINTL_LIBRARIES} PATH)
-		endif()
-	else()
-		add_subdirectory(intl "${TOP_BINARY_DIR}/intl")
-	endif()
-endif()
-
-if(LYX_EXTERNAL_LIBINTL)
-	set(intl_link ${LIBINTL_LIBRARIES})
-else()
-	set(intl_link intl)
-endif()
-
 find_package(ICONV REQUIRED)
 find_package(ZLIB REQUIRED)
 
@@ -778,9 +757,6 @@ if(LYX_NLS)
 	message(STATUS)
 	message(STATUS "Building Native Language Support (LYX_NLS is set), used libraries:")
 	message(STATUS)
-	message(STATUS "  * intl")
-	message(STATUS "     - header : ${LIBINTL_HEADER}")
-	message(STATUS "     - library: ${LIBINTL_LIBRARIES}")
 	message(STATUS "  * iconv")
 	message(STATUS "     - header : ${ICONV_HEADER}")
 	message(STATUS "     - library: ${ICONV_LIBRARY}")

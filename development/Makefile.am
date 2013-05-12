@@ -105,7 +105,6 @@ cmake/modules/FindEnchant.cmake \
 cmake/modules/FindGNUWIN32.cmake \
 cmake/modules/FindHunspell.cmake \
 cmake/modules/FindICONV.cmake \
-cmake/modules/FindLibintl.cmake \
 cmake/modules/FindLyXGettext.cmake \
 cmake/modules/FindMagic.cmake \
 cmake/modules/FindMyThesLIB.cmake \

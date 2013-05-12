@@ -13,7 +13,7 @@ macro(sources _program)
 	endforeach()
 	set(${_program}_SOURCES ${_tmplist})
 	add_executable(${_program} ${_tmplist})
-	target_link_libraries(${_program} support ${intl_link}
+	target_link_libraries(${_program} support
 		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
 		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 endmacro()
@@ -24,8 +24,7 @@ include_directories(
 	${TOP_SRC_DIR}/src/support/tests
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
-	${ZLIB_INCLUDE_DIR}
-	${LIBINTL_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR})
 
 
 set(check_PROGRAMS check_convert check_filetools check_lstrings)

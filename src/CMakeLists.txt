@@ -134,7 +134,6 @@ target_link_libraries(${_lyx}
 	frontend_qt4
 	graphics
 	support
-	${intl_link}
 	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
