@@ -227,6 +227,12 @@ QString const qt_(string const & str)
 }
 
 
+QString const qt_(QString const & qstr)
+{
+	return toqstr(_(fromqstr(qstr)));
+}
+
+
 void rescanTexStyles(string const & arg)
 {
 	// Run rescan in user lyx directory

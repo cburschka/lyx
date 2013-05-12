@@ -83,6 +83,8 @@ void setSectionResizeMode(QHeaderView * view,
  * Use this in qt4/ instead of _()
  */
 QString const qt_(std::string const & str);
+QString const qt_(QString const & qstr);
+
 
 ///
 support::FileName libFileSearch(QString const & dir, QString const & name,
