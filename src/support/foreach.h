@@ -51,7 +51,7 @@ struct ForeachContainerBase {};
 template <typename T>
 class ForeachContainer : public ForeachContainerBase {
 public:
-    inline ForeachContainer(const T& t): c(t), brk(0), i(c.begin()), e(c.end()){};
+    inline ForeachContainer(const T& t): c(t), brk(0), i(c.begin()), e(c.end()){}
     const T & c;
     mutable int brk;
     mutable typename T::const_iterator i, e;

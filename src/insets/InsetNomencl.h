@@ -54,7 +54,7 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "nomenclature"; };
+	static std::string defaultCommand() { return "nomenclature"; }
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "nomenclature"; }
@@ -108,7 +108,7 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "printnomenclature"; };
+	static std::string defaultCommand() { return "printnomenclature"; }
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printnomenclature"; }

@@ -128,7 +128,7 @@ int gettimeofday(struct timeval * tv, struct timezone * /*tz*/)
 class PMProfStat {
 public:
 	PMProfStat(char const * name)
-	  : name_(name), sec_(0), usec_(0), count_(0) {};
+	  : name_(name), sec_(0), usec_(0), count_(0) {}
 
 	~PMProfStat() {
 		if (count_>0) {

@@ -61,9 +61,9 @@ public:
 	void htmlize(HtmlStream &) const;
 
 	/// returns nucleus
-	MathData const & nuc() const { return cell(0); };
+	MathData const & nuc() const { return cell(0); }
 	/// returns nucleus
-	MathData & nuc()             { return cell(0); };
+	MathData & nuc()             { return cell(0); }
 	/// bottom left index or single left cell
 	MathData const & bl() const  { return cell(1); }
 	/// bottom left index or single left cell

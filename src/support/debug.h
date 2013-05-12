@@ -157,7 +157,7 @@ public:
 	bool enabled() const { return enabled_; }
 
 	/// Returns second stream
-	std::ostream & secondStream() { return *second_stream_; };
+	std::ostream & secondStream() { return *second_stream_; }
 	/// Sets second stream
 	void setSecondStream(std::ostream * os) 
 		{ second_enabled_ = (second_stream_ = os); }

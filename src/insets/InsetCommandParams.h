@@ -143,7 +143,7 @@ public:
 	///
 	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 	/// 
-	ParamInfo const & info() const { return info_; };
+	ParamInfo const & info() const { return info_; }
 	///
 	docstring prepareCommand(OutputParams const & runparams,
 	        docstring const & command, ParamInfo::ParamHandling handling) const;

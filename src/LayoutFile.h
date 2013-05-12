@@ -81,7 +81,7 @@ private:
 	/// LayoutFileList, which calls the private constructor.
 	friend class LayoutFileList;
 	/// can't create empty LayoutFile
-	LayoutFile() {};
+	LayoutFile() {}
 };
 
 

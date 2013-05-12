@@ -123,7 +123,7 @@ class iparserdocstream
 public:
 	typedef idocstream::int_type int_type;
 
-	iparserdocstream(idocstream & is) : is_(is) {};
+	iparserdocstream(idocstream & is) : is_(is) {}
 
 	/// Like std::istream::operator bool()
 	operator bool() const { return s_.empty() ? is_ : true; }

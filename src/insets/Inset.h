@@ -127,7 +127,7 @@ public:
 	  * Intented purpose is to sanitize internal state with regard to current
 	  * Buffer. 
 	  **/
-	virtual void initView() {};
+	virtual void initView() {}
 	/// \return true if this inset is labeled.
 	virtual bool isLabeled() const { return false; }
 

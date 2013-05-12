@@ -31,7 +31,7 @@ public:
 	//@{
 	docstring screenLabel() const;
 	static ParamInfo const & findInfo(std::string const &);
-	static std::string defaultCommand() { return "rule"; };
+	static std::string defaultCommand() { return "rule"; }
 	static bool isCompatibleCommand(std::string const & s)
 	{ return s == "rule"; }
 	//@}

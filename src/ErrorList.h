@@ -41,7 +41,7 @@ public:
 class ErrorList : private std::vector<ErrorItem>
 {
 public:
-	ErrorList() : std::vector<ErrorItem> () {};
+	ErrorList() : std::vector<ErrorItem> () {}
 
 	using std::vector<ErrorItem>::push_back;
 	using std::vector<ErrorItem>::end;

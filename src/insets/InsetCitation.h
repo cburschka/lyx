@@ -108,7 +108,7 @@ private:
 
 	///
 	struct Cache {
-		Cache() : recalculate(true) {};
+		Cache() : recalculate(true) {}
 		///
 		bool recalculate;
 		///

@@ -171,7 +171,7 @@ public:
 	/// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:
-	Inset * clone() const { return new InsetIPAChar(*this); };
+	Inset * clone() const { return new InsetIPAChar(*this); }
 
 	/// And which kind is this?
 	Kind kind_;
