@@ -517,14 +517,10 @@ void MenuDefinition::read(Lexer & lex)
 	lex.pushTable(menutags);
 	lex.setContext("MenuDefinition::read: ");
 
-	bool quit = false;
-	bool optional = false;
-
-	while (lex.isOK() && !quit) {
-		switch (lex.lex()) {
+	int md_type = 0;
+	while (lex.isOK() && md_type != md_endmenu) {
+		switch (md_type = lex.lex()) {
 		case md_optitem:
-			optional = true;
-			// fallback to md_item
 		case md_item: {
 			lex.next(true);
 			docstring const name = translateIfPossible(lex.getDocString());
@@ -534,8 +530,8 @@ void MenuDefinition::read(Lexer & lex)
 			FuncRequest::Origin origin = FuncRequest::MENU;
 			if (name_.startsWith("context-toc-"))
 				origin = FuncRequest::TOC;
+			bool const optional = (md_type == md_optitem);
 			add(MenuItem(MenuItem::Command, toqstr(name), func, QString(), optional, origin));
-			optional = false;
 			break;
 		}
 
@@ -656,21 +652,18 @@ void MenuDefinition::read(Lexer & lex)
 			break;
 
 		case md_optsubmenu:
-			optional = true;
-			// fallback to md_submenu
 		case md_submenu: {
 			lex.next(true);
 			docstring const mlabel = translateIfPossible(lex.getDocString());
 			lex.next(true);
 			docstring const mname = lex.getDocString();
+			bool const optional = (md_type == md_optsubmenu);
 			add(MenuItem(MenuItem::Submenu,
 				toqstr(mlabel), toqstr(mname), QString(), optional));
-			optional = false;
 			break;
 		}
 
 		case md_endmenu:
-			quit = true;
 			break;
 
 		default:
