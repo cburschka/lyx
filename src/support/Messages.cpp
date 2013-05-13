@@ -34,17 +34,26 @@ void cleanTranslation(docstring & trans)
 	  Some english words have different translations, depending on
 	  context. In these cases the original string is augmented by
 	  context information (e.g. "To:[[as in 'From page x to page
-	  y']]" and "To:[[as in 'From format x to format y']]". This
-	  means that we need to filter out everything in double square
-	  brackets at the end of the string, otherwise the user sees
-	  bogus messages. If we are unable to honour the request we
-	  just return what we got in.
+	  y']]" and "To:[[as in 'From format x to format y']]". Also, 
+	  when placeholders are used, the context can indicate what will
+	  be substituted for the placeholder (e.g. "%1$s[[date]], %1$s
+	  [[time]]). This means that we need to filter out everything 
+	  in double square brackets at the end of the string, otherwise
+	  the user sees bogus messages. If we are unable to honour the
+	  request we just return what we got in.
 	*/
-	size_t const pos1 = trans.find(from_ascii("[["));
-	if (pos1 != docstring::npos) {
-		size_t const pos2 = trans.find(from_ascii("]]"), pos1);
-		if (pos2 != docstring::npos) 
-			trans.erase(pos1, pos2 - pos1 + 2);
+	static docstring const ctx_start = from_ascii("[[");
+	static docstring const ctx_end = from_ascii("]]");
+	while (true) {
+		size_t const pos1 = trans.find(ctx_start);
+		if (pos1 != docstring::npos) {
+			size_t const pos2 = trans.find(ctx_end, pos1);
+			if (pos2 != docstring::npos) {
+				trans.erase(pos1, pos2 - pos1 + 2);
+				continue;
+			}
+		}
+		break;
 	}
 }
 

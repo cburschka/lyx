@@ -71,8 +71,9 @@ appear in your translations! Please take them exactly as they are or you may
 experience crashes when running LyX.
 
 [[Context]] is used to distinguish otherwise identical strings, which could
-have different translations depending on the Context. [[Context]] appears only
-in msgid string and should not be repeated in the translated version.
+have different translations depending on the Context. It can also be used to
+indicate what is substituted for a placeholder. [[Context]] appears only in
+msgid string and should not be repeated in the translated version.
 
 {} refer to counters and must not be translated. An example would be:
 msgid "Algorithm \\arabic{theorem}"
