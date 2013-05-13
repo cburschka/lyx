@@ -55,7 +55,7 @@ CiteFormat default
 	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	!textafter {%textafter%[[, %textafter%]]}
-	!year {%year%[[%year%]][[??]]}
+	!year {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 
 	# cite styles
 	citet %!citet%%!textafter%%!close%

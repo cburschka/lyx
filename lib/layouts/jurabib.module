@@ -89,7 +89,7 @@ CiteFormat authoryear
 	!textbefore2 {%textbefore%[[/%textbefore%]][[{%dialog%[[/<%_before%>]]}]]}
 	!textafter {%textafter%[[, %textafter%]]}
 	!textafter2 {%textafter%[[ %textafter%]]}
-	!year {%year%[[%year%]][[??]]}
+	!year {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 
 	# cite styles
 	cite %!cite%

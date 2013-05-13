@@ -665,7 +665,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		key = oldkey.substr(6);
 		cleanit = true;
 	}
-		
+
 	docstring ret = operator[](key);
 	if (ret.empty() && xref)
 		ret = (*xref)[key];
@@ -680,6 +680,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = bib_key_;
 		else if (key == "label")
 			ret = label_;
+		else if (key == "modifier" && modifier_ != 0)
+			ret = modifier_;
 		else if (key == "abbrvauthor")
 			// Special key to provide abbreviated author names.
 			ret = getAbbreviatedAuthor(buf, false);
@@ -714,7 +716,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	}
 	if (cleanit)
 		return html::cleanAttr(ret);
-	
+
 	return ret;
 }
 
