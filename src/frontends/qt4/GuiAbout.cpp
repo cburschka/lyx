@@ -138,7 +138,7 @@ static QString buildinfo()
 	QTextStream out(&res);
 	out << "LyX " << lyx_version
 		<< " (" << lyx_release_date << ")" << endl;
-	out << toqstr(bformat(_("Built on %1$s, %2$s"),
+	out << toqstr(bformat(_("Built on %1$s[[date]], %2$s[[time]]"),
 		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
 
 	out << lyx_version_info << endl;
