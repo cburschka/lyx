@@ -1478,7 +1478,7 @@ void Layout::makeDefaultCSS() const
 	}
 
 // tex2lyx does not see output_xhtml.cpp
-#ifndef TEX2LYX
+#ifndef NO_LAYOUT_CSS
 	// alignment
 	string where = alignmentToCSS(align);
 	if (!where.empty()) {

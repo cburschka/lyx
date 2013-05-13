@@ -20,4 +20,10 @@ namespace lyx {
 
 		return lyx_messages;
 	}
+	Messages const & getMessages(string const &)
+	{
+		static Messages lyx_messages;
+
+		return lyx_messages;
+	}
 }

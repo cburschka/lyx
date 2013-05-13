@@ -30,6 +30,7 @@ include_directories(BEFORE
 	${ZLIB_INCLUDE_DIR})
 
 add_definitions(-DTEX2LYX)
+add_definitions(-DNO_LAYOUT_CSS)
 
 if(WIN32)
 	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)

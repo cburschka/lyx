@@ -1,0 +1,13 @@
+#!/bin/sh
+
+retval=0
+for i in ${srcdir}/../lib/layouts/*.layout
+do
+	echo Testing $i...
+	dn=`dirname $i`
+	bn=`basename $i .layout`
+	if ! ./check_Layout ${dn}/${bn}; then
+		retval=1
+	fi
+done
+exit $retval
