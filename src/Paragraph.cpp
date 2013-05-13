@@ -2865,6 +2865,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	bool wave_flag = false;
 	// shape tags
 	bool shap_flag = false;
+	// family tags
+	bool faml_flag = false;
 
 	Layout const & style = *d->layout_;
 
@@ -2874,6 +2876,10 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
 	FontShape curr_fs = INHERIT_SHAPE;
+	FontFamily curr_fam = INHERIT_FAMILY;
+	
+	string const default_family = 
+		buf.masterBuffer()->params().fonts_default_family;		
 
 	vector<html::FontTag> tagsToOpen;
 	vector<html::EndFontTag> tagsToClose;
@@ -2949,12 +2955,15 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			switch (curr_fs) {
 			case ITALIC_SHAPE:
 				tagsToOpen.push_back(html::FontTag(html::FT_ITALIC));
+				shap_flag = true;
 				break;
 			case SLANTED_SHAPE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SLANTED));
+				shap_flag = true;
 				break;
 			case SMALLCAPS_SHAPE:
 				tagsToOpen.push_back(html::FontTag(html::FT_SMALLCAPS));
+				shap_flag = true;
 				break;
 			case UP_SHAPE:
 			case INHERIT_SHAPE:
@@ -2964,7 +2973,59 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				LATTEST(false);
 				break;
 			}
-			shap_flag = true;
+		}
+
+		curr_fam = font.fontInfo().family();
+		FontFamily old_fam = font_old.family();
+		if (old_fam != curr_fam) {
+			if (faml_flag) {
+				switch (old_fam) {
+				case ROMAN_FAMILY:
+					tagsToClose.push_back(html::EndFontTag(html::FT_ROMAN));
+					break;
+				case SANS_FAMILY:
+					tagsToClose.push_back(html::EndFontTag(html::FT_SANS));
+					break;
+				case TYPEWRITER_FAMILY:
+					tagsToClose.push_back(html::EndFontTag(html::FT_TYPE));
+					break;
+				case INHERIT_FAMILY:
+					break;
+				default:
+					// the other tags are for internal use
+					LATTEST(false);
+					break;
+				}
+				faml_flag = false;
+			}
+			switch (curr_fam) {
+			case ROMAN_FAMILY:
+				// we will treat a "default" font family as roman, since we have
+				// no other idea what to do.
+				if (default_family != "rmdefault" && default_family != "default") {
+					tagsToOpen.push_back(html::FontTag(html::FT_ROMAN));
+					faml_flag = true;
+				}
+				break;
+			case SANS_FAMILY:
+				if (default_family != "sfdefault") {
+					tagsToOpen.push_back(html::FontTag(html::FT_SANS));
+					faml_flag = true;
+				}
+				break;
+			case TYPEWRITER_FAMILY:
+				if (default_family != "ttdefault") {
+					tagsToOpen.push_back(html::FontTag(html::FT_TYPE));
+					faml_flag = true;
+				}
+				break;
+			case INHERIT_FAMILY:
+				break;
+			default:
+				// the other tags are for internal use
+				LATTEST(false);
+				break;
+			}
 		}
 
 		// FIXME XHTML

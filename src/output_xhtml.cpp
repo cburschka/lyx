@@ -600,7 +600,8 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 				// it was pending, so we just erase it
 				writeError("Tried to close pending tag `" + etag.tag_ 
 				        + "' when other tags were pending. Last pending tag is `"
-				        + pending_tags_.back()->tag_ + "'. Tag discarded.");
+				        + to_utf8(pending_tags_.back()->writeTag()) 
+				        + "'. Tag discarded.");
 				pending_tags_.erase(dit);
 				return *this;
 			}
@@ -617,7 +618,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		string estr = "Closing tag `" + etag.tag_ 
 		        + "' when other tags are pending. Discarded pending tags:\n";
 		for (dit = pending_tags_.begin(); dit != den; ++dit)
-			estr += (*dit)->tag_ + "\n";
+			estr += to_utf8(html::htmlize((*dit)->writeTag(), XHTMLStream::ESCAPE_ALL)) + "\n";
 		writeError(estr);
 		// clear the pending tags...
 		pending_tags_.clear();
