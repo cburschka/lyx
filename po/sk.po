@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-03-29 10:49+0100\n"
+"POT-Creation-Date: 2013-05-13 13:41+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2821,9 +2821,9 @@ msgstr "Na šírk&u"
 msgid "Page Layout"
 msgstr "Formát Stránky"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:170
-msgid "Headings &style:"
-msgstr "Štýl &hlavičky:"
+#: src/frontends/qt4/ui/PageLayoutUi.ui:171
+msgid "Page &style:"
+msgstr "Štýl &stránky:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
@@ -3391,18 +3391,18 @@ msgstr "Klávesnica"
 msgid "Use &keyboard map"
 msgstr "Použiť &mapu klávesov"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:44
-msgid "&First:"
-msgstr "&Prvá:"
+#: src/frontends/qt4/ui/PrefInputUi.ui:45
+msgid "&Primary:"
+msgstr "&Primárna:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:64
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 msgid "Br&owse..."
 msgstr "P&rechádzať..."
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:90
-msgid "S&econd:"
-msgstr "&Druhá:"
+#: src/frontends/qt4/ui/PrefInputUi.ui:91
+msgid "S&econdary:"
+msgstr "S&ekundárna:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:120
 msgid ""
@@ -6669,9 +6669,9 @@ msgstr "TOG článok DOI"
 msgid "Article DOI:"
 msgstr "DOI článku:"
 
-#: lib/layouts/acmsiggraph.layout:105
+#: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
-msgstr "TOG project URL"
+msgstr "TOG projekt URL"
 
 #: lib/layouts/acmsiggraph.layout:109
 msgid "Project URL:"
@@ -14677,13 +14677,13 @@ msgstr "Komentár"
 msgid "Greyed Out|G"
 msgstr "Zosivelé"
 
-#: lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:199
 msgid "Open All Notes|A"
-msgstr "Otvor všetky poznámky|p"
+msgstr "Otvoriť všetky poznámky|p"
 
-#: lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:200
 msgid "Close All Notes|l"
-msgstr "Zavri všetky poznámky|o"
+msgstr "Zavrieť všetky poznámky|o"
 
 #: lib/ui/stdcontext.inc:198 lib/ui/stdmenus.inc:488
 msgid "Phantom|P"
@@ -15397,69 +15397,77 @@ msgstr "Matematika|M"
 msgid "Rows & Columns|C"
 msgstr "Riadky & Stĺpce"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:134
 msgid "Increase List Depth|I"
-msgstr "Zväčšiť hĺbku listiny"
+msgstr "Zväčšiť hĺbku listiny|v"
 
-#: lib/ui/stdmenus.inc:133
+#: lib/ui/stdmenus.inc:135
 msgid "Decrease List Depth|D"
-msgstr "Zmenšiť hĺbku listiny"
+msgstr "Zmenšiť hĺbku listiny|m"
 
 #: lib/ui/stdmenus.inc:134
 msgid "Dissolve Inset"
 msgstr "Rozpustiť vložku"
 
-#: lib/ui/stdmenus.inc:135
-msgid "TeX Code Settings...|C"
-msgstr "Nastavenia TeX Kódu..."
-
 #: lib/ui/stdmenus.inc:137
-msgid "Float Settings...|a"
-msgstr "Nastavenia plávajúceho objektu..."
-
-#: lib/ui/stdmenus.inc:138
-msgid "Text Wrap Settings...|W"
-msgstr "Nastavenia obtekania textu..."
+msgid "TeX Code Settings...|C"
+msgstr "Nastavenia TeX kódu...|k"
 
 #: lib/ui/stdmenus.inc:139
-msgid "Note Settings...|N"
-msgstr "Nastavenia poznámky..."
+msgid "Float Settings...|a"
+msgstr "Nastavenia plávajúceho objektu...|p"
 
 #: lib/ui/stdmenus.inc:140
-msgid "Phantom Settings...|h"
-msgstr "Nastavenia pre Fantóm..."
+msgid "Text Wrap Settings...|W"
+msgstr "Nastavenia obtekania textu...|o"
 
 #: lib/ui/stdmenus.inc:141
+msgid "Note Settings...|N"
+msgstr "Nastavenia poznámky...|n"
+
+#: lib/ui/stdmenus.inc:142
+msgid "Phantom Settings...|h"
+msgstr "Nastavenia pre fantóm...|f"
+
+#: lib/ui/stdmenus.inc:143
 msgid "Branch Settings...|B"
-msgstr "Nastavenia vetvy..."
+msgstr "Nastavenia vetvy...|e"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Box Settings...|x"
-msgstr "Nastavenia rámiku..."
-
-#: lib/ui/stdmenus.inc:143
-msgid "Index Entry Settings...|y"
-msgstr "Nastavenia Registrových Hesiel..."
-
-#: lib/ui/stdmenus.inc:144
-msgid "Index Settings...|x"
-msgstr "Nastavenia Registra..."
+msgstr "Nastavenia rámiku...|r"
 
 #: lib/ui/stdmenus.inc:145
-msgid "Info Settings...|n"
-msgstr "Nastavenia pre Info..."
+msgid "Index Entry Settings...|y"
+msgstr "Nastavenia registrových hesiel...|h"
 
 #: lib/ui/stdmenus.inc:146
+msgid "Index Settings...|x"
+msgstr "Nastavenia registra...|g"
+
+#: lib/ui/stdmenus.inc:147
+msgid "Info Settings...|n"
+msgstr "Nastavenia pre Info...|I"
+
+#: lib/ui/stdmenus.inc:148
 msgid "Listings Settings...|g"
-msgstr "Nastavenia výpisu...|N"
+msgstr "Nastavenia výpisu...|s"
 
-#: lib/ui/stdmenus.inc:150
+#: lib/ui/stdmenus.inc:152
 msgid "Table Settings...|a"
-msgstr "Nastavenia tabuľky..."
+msgstr "Nastavenia tabuľky...|t"
 
-#: lib/ui/stdmenus.inc:151
+#: lib/ui/stdmenus.inc:153
 msgid "Split Environment|l"
-msgstr "Rozdeliť Prostredie"
+msgstr "Rozdeliť prostredie|d"
+
+#: lib/ui/stdmenus.inc:157
+msgid "Paste from HTML|H"
+msgstr "Vlepiť z HTML|H"
+
+#: lib/ui/stdmenus.inc:158
+msgid "Paste from LaTeX|L"
+msgstr "Vlepiť z LaTeX|L"
 
 #: lib/ui/stdmenus.inc:154
 msgid "Plain Text|T"
@@ -15500,6 +15508,10 @@ msgstr "Vlepiť ako PNG"
 #: lib/ui/stdmenus.inc:166
 msgid "Paste as JPEG"
 msgstr "Vlepiť ako JPEG"
+
+#: lib/ui/stdmenus.inc:163
+msgid "Paste as EMF"
+msgstr "Vlepiť ako EMF"
 
 #: lib/ui/stdmenus.inc:174
 msgid "Dissolve Text Style"
@@ -15717,13 +15729,13 @@ msgstr "Maple, Evalm (vyhodnotiť)"
 msgid "Maple, Evalf|v"
 msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
-#: lib/ui/stdmenus.inc:318
+#: lib/ui/stdmenus.inc:323
 msgid "Open All Insets|O"
-msgstr "Otvor všetky vložky"
+msgstr "Otvoriť všetky vložky"
 
-#: lib/ui/stdmenus.inc:319
+#: lib/ui/stdmenus.inc:324
 msgid "Close All Insets|C"
-msgstr "Zavri všetky vložky"
+msgstr "Zavrieť všetky vložky"
 
 #: lib/ui/stdmenus.inc:321
 msgid "Unfold Math Macro|n"
@@ -15733,17 +15745,17 @@ msgstr "Rozbaliť Matematické Makro"
 msgid "Fold Math Macro|d"
 msgstr "Zabaliť Matematické Makro"
 
-#: lib/ui/stdmenus.inc:324
+#: lib/ui/stdmenus.inc:329
 msgid "Outline Pane|u"
-msgstr "Políčko prehľad"
+msgstr "Osnova"
 
-#: lib/ui/stdmenus.inc:325
+#: lib/ui/stdmenus.inc:330
 msgid "Source Pane|S"
-msgstr "Políčko zdrojový text"
+msgstr "Zdrojový Text"
 
-#: lib/ui/stdmenus.inc:326
+#: lib/ui/stdmenus.inc:331
 msgid "Messages Pane|g"
-msgstr "Políčko hlásenia"
+msgstr "Ladiace Výpisy"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Toolbars|b"
@@ -16277,9 +16289,9 @@ msgstr "Vložiť grafiku"
 msgid "Insert table"
 msgstr "Vložiť tabuľku"
 
-#: lib/ui/stdtoolbars.inc:95
+#: lib/ui/stdtoolbars.inc:96
 msgid "Toggle outline"
-msgstr "Prepnúť prehľad"
+msgstr "Prepnúť osnovu"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
@@ -21865,9 +21877,9 @@ msgstr ""
 msgid "Document was successfully recovered."
 msgstr "Dokument bol úspešne obnovený."
 
-#: src/Buffer.cpp:3947
+#: src/Buffer.cpp:4093
 msgid "Document was NOT successfully recovered."
-msgstr "Dokument nebol úspešne obnovený."
+msgstr "Dokument NEBOL úspešne obnovený."
 
 #: src/Buffer.cpp:3948
 #, c-format
@@ -22165,9 +22177,9 @@ msgstr "Ďalej sa nedá zrušovať"
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
-#: src/BufferView.cpp:1549 src/lyxfind.cpp:378 src/lyxfind.cpp:396
-msgid "String not found!"
-msgstr "Reťazec nebol nájdený!"
+#: src/BufferView.cpp:1548 src/lyxfind.cpp:382 src/lyxfind.cpp:400
+msgid "String not found."
+msgstr "Reťazec nenájdený."
 
 #: src/BufferView.cpp:1592
 msgid "Mark off"
@@ -23095,6 +23107,15 @@ msgstr "Nedá sa zmazať pomocný adresár"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá voľba v príkazovom riadku `%1$s'. Končím."
 
+#: src/LyX.cpp:472
+msgid "Missing filename for this operation."
+msgstr "Chýbajúci názov súboru pre túto operáciu."
+
+#: src/LyX.cpp:511
+#, c-format
+msgid "LyX failed to load the following file: %1$s"
+msgstr "LyX zlyhal načítať nasledujúci súbor: %1$s"
+
 #: src/LyX.cpp:546
 msgid "No textclass is found"
 msgstr "Nenašiel sa žiadny súbor tried (textclass)"
@@ -23303,6 +23324,11 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
+#: src/LyX.cpp:1069 src/frontends/qt4/GuiAbout.cpp:141
+#, c-format
+msgid "Built on %1$s, %2$s"
+msgstr "Zostavený %1$s, %2$s"
+
 #: src/LyX.cpp:1097 src/support/Package.cpp:589
 msgid "No system directory"
 msgstr "Nemám systémový adresár"
@@ -23338,10 +23364,6 @@ msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export-to"
 #: src/LyX.cpp:1151
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export"
-
-#: src/LyX.cpp:1130
-msgid "Missing filename after format"
-msgstr "Chýba názov súboru za formátom"
 
 #: src/LyX.cpp:1164
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -23983,14 +24005,6 @@ msgid ""
 msgstr ""
 "Nová schéma nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
-
-#: src/Paragraph.cpp:3150
-msgid "Memory problem"
-msgstr "Problém s pamäťou"
-
-#: src/Paragraph.cpp:3150
-msgid "Paragraph not properly initialized"
-msgstr "Odstavec nesprávne inicializovaný"
 
 #: src/Text.cpp:415
 msgid "Unknown Inset"
@@ -24673,6 +24687,16 @@ msgstr "Adresár systému: "
 #: src/frontends/qt4/GuiAbout.cpp:125
 msgid "User directory: "
 msgstr "Adresár užívateľa: "
+
+#: src/frontends/qt4/GuiAbout.cpp:129
+#, c-format
+msgid "Qt Version (run-time): %1$s"
+msgstr "Qt verzia (čas pustenia): %1$s"
+
+#: src/frontends/qt4/GuiAbout.cpp:130
+#, c-format
+msgid "Qt Version (compile-time): %1$s"
+msgstr "Qt verzia (čas prekladu): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:143
 msgid "About LyX"
@@ -26873,7 +26897,7 @@ msgstr "Nedostupný tezaurus pre tento jazyk!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "Prehľad"
+msgstr "Osnova"
 
 #: src/frontends/qt4/GuiToolbar.cpp:376 src/frontends/qt4/Toolbars.cpp:376
 msgid "auto"
@@ -27522,9 +27546,9 @@ msgstr "Žiadna citácia nie je vybraná!"
 msgid "Caption (%1$s)"
 msgstr "Popis (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:2124
+#: src/frontends/qt4/Menus.cpp:2273
 msgid "No Action Defined!"
-msgstr "Žiadna akcia nebola definovaná!"
+msgstr "Nijaká akcia nebola definovaná!"
 
 #: src/frontends/qt4/PanelStack.cpp:75
 msgid "Search"
@@ -27994,6 +28018,10 @@ msgstr "Doslovný vstup*"
 msgid "Include (excluded)"
 msgstr "Zahrnúť (vylúčené)"
 
+#: src/insets/InsetInclude.cpp:391
+msgid "Unknown"
+msgstr "Neznáme"
+
 #: src/insets/InsetInclude.cpp:500 src/insets/InsetInclude.cpp:777
 #: src/insets/InsetInclude.cpp:838
 msgid "Recursive input"
@@ -28050,14 +28078,14 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:630 src/insets/InsetInclude.cpp:654
+#: src/insets/InsetInclude.cpp:690 src/insets/InsetInclude.cpp:714
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-"Upozornenie: Možné, že LaTeXov export nie je úplný."
+"Upozornenie: LaTeXov export asi nie je úplný."
 
 #: src/insets/InsetInclude.cpp:637 src/insets/InsetInclude.cpp:659
 msgid "Export failure"
@@ -28695,9 +28723,9 @@ msgstr "%1$d reťazcov bolo nahradených."
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulárny výraz!"
 
-#: src/lyxfind.cpp:1418
+#: src/lyxfind.cpp:1465
 msgid "Match not found!"
-msgstr "Vhodný výraz nebol nájdený!"
+msgstr "Vhodný výraz nenájdený!"
 
 #: src/lyxfind.cpp:1422
 msgid "Match found!"
@@ -28846,9 +28874,9 @@ msgstr "Referencie: "
 msgid "[[Replace with the code of your language]]"
 msgstr "sk"
 
-#: src/support/Package.cpp:470
+#: src/support/Package.cpp:487
 msgid "LyX binary not found"
-msgstr "Spustiteľný súbor LyX nebol nájdený"
+msgstr "Spustiteľný súbor LyX nenájdený"
 
 #: src/support/Package.cpp:471
 #, c-format
@@ -29074,6 +29102,51 @@ msgstr "Všetky ladiace hlásenia"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"
 
+#: src/support/lassert.cpp:53
+#, c-format
+msgid ""
+"Assertion %1$s violated in\n"
+"file: %2$s, line: %3$s"
+msgstr ""
+"Kontrolný výraz %1$s je narušený v\n"
+"súbore: %2$s, riadok: %3$s"
+
+#: src/support/lassert.cpp:62
+msgid ""
+"It should be safe to continue, but you\n"
+"may wish to save your work and restart LyX."
+msgstr ""
+"Pokračovať by malo byť bezpečné, ale mohli by ste\n"
+"chcieť vašu prácu uložiť a LyX reštartovať."
+
+#: src/support/lassert.cpp:67
+msgid "Warning!"
+msgstr "Varovanie!"
+
+#: src/support/lassert.cpp:72
+msgid ""
+"There has been an error with this document.\n"
+"LyX will attempt to close it safely."
+msgstr ""
+"Došlo k chybe s týmto dokumentom.\n"
+"LyX sa pokúsi ho spoľahlivo zavrieť."
+
+#: src/support/lassert.cpp:79
+msgid "Buffer Error!"
+msgstr "Chyba Zásobníka!"
+
+#: src/support/lassert.cpp:82
+msgid ""
+"LyX has encountered an application error\n"
+"and will now shut down."
+msgstr ""
+"LyX narazil na chybu v aplikácii\n"
+"a ukončí prevádzku."
+
+#: src/support/lassert.cpp:91
+msgid "Fatal Exception!"
+msgstr "Katastrofálna Výnimka!"
+
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
 msgstr "Systémový súbor nenájdený"
@@ -29101,6 +29174,54 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "HTML Text|H"
+#~ msgstr "HTML Text|H"
+
+#~ msgid "LaTeX Text|L"
+#~ msgstr "LaTeX Text|L"
+
+#~ msgid "Buffer error"
+#~ msgstr "Chyby pri vytváraní"
+
+#~ msgid "Attempting to clone non-existent BufferParams!"
+#~ msgstr "Pokúšam sa zavrieť zmenený dokument!"
+
+#~ msgid "Cursor slice not properly initialized!"
+#~ msgstr "Odstavec nesprávne inicializovaný"
+
+#~ msgid "Invalid cursor!"
+#~ msgstr "Neplatný regulárny výraz!"
+
+#~ msgid "Iterator slice not properly initialized!"
+#~ msgstr "Odstavec nesprávne inicializovaný"
+
+#~ msgid "Invalid position."
+#~ msgstr "Voľba Iniciálka"
+
+#~ msgid "Invalid position"
+#~ msgstr "Voľba Iniciálka"
+
+#~ msgid "Paragraph not properly initialized"
+#~ msgstr "Odstavec nesprávne inicializovaný"
+
+#~ msgid "Application error."
+#~ msgstr "Publikačný Rok"
+
+#~ msgid "No Gui Application."
+#~ msgstr "Bez príslušenstva"
+
+#~ msgid "Package not initialized."
+#~ msgstr "Balík nie je dostupný"
+
+#~ msgid "Memory problem"
+#~ msgstr "Problém s pamäťou"
+
+#~ msgid "&First:"
+#~ msgstr "&Prvá:"
+
+#~ msgid "Missing filename after format"
+#~ msgstr "Chýba názov súboru za formátom"
 
 #~ msgid "List of Graphics"
 #~ msgstr "Zoznam Grafík"
@@ -31652,3 +31773,27 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Insets|n"
 #~ msgstr "Vložiť|I"
+
+#~ msgid "S&econd:"
+#~ msgstr "&Druhá:"
+
+#~ msgid "String not found!"
+#~ msgstr "Reťazec nebol nájdený!"
+
+#~ msgid ""
+#~ "It should be safe to continue, but you may wish to save your work and "
+#~ "restart LyX."
+#~ msgstr ""
+#~ "Pokračovať by malo byť bezpečné, ale mohli by ste chcieť vašu prácu uložiť a "
+#~ "LyX reštartovať."
+
+#~ msgid ""
+#~ "There has been an error with this document. LyX will attempt to close it "
+#~ "safely."
+#~ msgstr "Došlo k chybe s týmto dokumentom. LyX sa pokúsi ho spoľahlivo zavrieť."
+
+#~ msgid "LyX has encountered an application error and will now shut down."
+#~ msgstr "LyX narazil na chybu v aplikácii a ukončí prevádzku."
+
+#~ msgid "Headings &style:"
+#~ msgstr "Štýl &hlavičky:"
