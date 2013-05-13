@@ -45,10 +45,10 @@ public:
 	/// and the values are the associated field values.
 	typedef std::map<docstring, docstring>::const_iterator const_iterator;
 	///
-	BibTeXInfo() : is_bibtex_(true) {}
+	BibTeXInfo() : is_bibtex_(true), modifier_(0) {}
 	/// argument sets isBibTeX_, so should be false only if it's coming
 	/// from a bibliography environment
-	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
+	BibTeXInfo(bool ib) : is_bibtex_(ib), modifier_(0) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist, used for sorting
