@@ -227,6 +227,18 @@ string fontToTag(html::FontTypes type)
 	case FT_ROMAN:
 	case FT_SANS:
 	case FT_TYPE:
+	case FT_SIZE_TINY:
+	case FT_SIZE_SCRIPT:
+	case FT_SIZE_FOOTNOTE:
+	case FT_SIZE_SMALL:
+	case FT_SIZE_NORMAL:
+	case FT_SIZE_LARGE:
+	case FT_SIZE_LARGER:
+	case FT_SIZE_LARGEST:
+	case FT_SIZE_HUGE:
+	case FT_SIZE_HUGER:
+	case FT_SIZE_INCREASE:
+	case FT_SIZE_DECREASE:
 		return "span";
 	}
 	// kill warning
@@ -265,6 +277,26 @@ StartTag fontToStartTag(html::FontTypes type)
 		return html::StartTag(tag, "style='font-family:sans-serif;'");
 	case FT_TYPE:
 		return html::StartTag(tag, "style='font-family:monospace;'");
+	case FT_SIZE_TINY:
+	case FT_SIZE_SCRIPT:
+	case FT_SIZE_FOOTNOTE:
+		return html::StartTag(tag, "style='font-size:x-small;'");
+	case FT_SIZE_SMALL:
+		return html::StartTag(tag, "style='font-size:small;'");
+	case FT_SIZE_NORMAL:
+		return html::StartTag(tag, "style='font-size:normal;'");
+	case FT_SIZE_LARGE:
+		return html::StartTag(tag, "style='font-size:large;'");
+	case FT_SIZE_LARGER:
+	case FT_SIZE_LARGEST:
+		return html::StartTag(tag, "style='font-size:x-large;'");
+	case FT_SIZE_HUGE:
+	case FT_SIZE_HUGER:
+		return html::StartTag(tag, "style='font-size:xx-large;'");
+	case FT_SIZE_INCREASE:
+		return html::StartTag(tag, "style='font-size:larger;'");
+	case FT_SIZE_DECREASE:
+		return html::StartTag(tag, "style='font-size:smaller;'");
 	}
 	// kill warning
 	return StartTag("");
