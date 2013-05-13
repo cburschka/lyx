@@ -1066,7 +1066,8 @@ int parse_version(string const &, string const &, string &)
 {
 	cout << "LyX " << lyx_version
 	       << " (" << lyx_release_date << ")" << endl;
-	cout << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+	cout << to_utf8(bformat(_("Built on %1$s, %2$s"),
+		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
 
 	cout << lyx_version_info << endl;
 	exit(0);

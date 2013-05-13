@@ -126,8 +126,8 @@ static QString version()
 	out << toqstr(makeDisplayPath(package().user_support().absFileName()));
 #ifdef DEVEL_VERSION
 	out << "\n";
-	out << "Qt Version (run-time): " << toqstr(qVersion()) << "\n";
-	out << "Qt Version (compile-time): " << QT_VERSION_STR << "\n";
+	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
+	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR))) << "\n";
 #endif
 	return res;
 }
@@ -138,7 +138,8 @@ static QString buildinfo()
 	QTextStream out(&res);
 	out << "LyX " << lyx_version
 		<< " (" << lyx_release_date << ")" << endl;
-	out << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+	out << toqstr(bformat(_("Built on %1$s, %2$s"),
+		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
 
 	out << lyx_version_info << endl;
 	return res;
