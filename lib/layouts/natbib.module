@@ -45,10 +45,6 @@ CiteFormat default
 	_addtobib Add to bibliography only.
 
 	# macros
-	!open [
-	!sep ,
-	!close ]
-
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
@@ -69,6 +65,10 @@ CiteFormat default
 End
 
 CiteFormat authoryear
+	!open (
+	!sep ;
+	!close )
+
 	!citet %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nextcitet%
 	!citealt %!startlink%%!abbrvauthor% %!textbefore%%!year%%!endlink%%!nextcitealt%
 	!citealp %!startlink%%!abbrvauthor%, %!year%%!endlink%%!nextcitealp%
@@ -85,6 +85,10 @@ CiteFormat authoryear
 End
 
 CiteFormat numerical
+	!open [
+	!sep ,
+	!close ]
+
 	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitet%
 	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitealt%
 
