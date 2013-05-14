@@ -14,7 +14,15 @@ endforeach()
 
 add_definitions(-DNO_LAYOUT_CSS)
 add_executable(check_Layout ${check_Layout_SOURCES})
-set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -Wl,--allow-multiple-definition")
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -Wl,--allow-multiple-definition")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /FORCE:MULTIPLE")
+else()
+  message(STATUS "Allow multiple definitions for cxx-compiler ${CMAKE_CXX_COMPILER_ID} not handled")
+endif()
+
 target_link_libraries(check_Layout support ${QT_QTMAIN_LIBRARY})
 add_dependencies(lyx_run_tests check_Layout)
 
