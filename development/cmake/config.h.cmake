@@ -57,6 +57,8 @@
 #cmakedefine LYX_USE_TR1 1
 #cmakedefine LYX_USE_TR1_REGEX 1
 
+#cmakedefine Z_PREFIX 1
+
 #cmakedefine ASPELL_FOUND 1
 #ifdef ASPELL_FOUND
 #define USE_ASPELL 1
