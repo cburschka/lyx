@@ -682,6 +682,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = label_;
 		else if (key == "modifier" && modifier_ != 0)
 			ret = modifier_;
+		else if (key == "numericallabel")
+			ret = cite_number_;
 		else if (key == "abbrvauthor")
 			// Special key to provide abbreviated author names.
 			ret = getAbbreviatedAuthor(buf, false);

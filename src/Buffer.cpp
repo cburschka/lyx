@@ -4313,8 +4313,10 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	DocumentClass const & textclass = master->params().documentClass();
 
 	// do this only if we are the top-level Buffer
-	if (master == this)
+	if (master == this) {
+		textclass.counters().reset(from_ascii("bibitem"));
 		reloadBibInfoCache();
+	}
 
 	// keep the buffers to be children in this set. If the call from the
 	// master comes back we can see which of them were actually seen (i.e.

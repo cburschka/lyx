@@ -204,6 +204,9 @@ void InsetBibitem::read(Lexer & lex)
 
 docstring InsetBibitem::bibLabel() const
 {
+	BufferParams const & bp = buffer().masterBuffer()->params();
+	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL)
+		return autolabel_;
 	docstring const & label = getParam("label");
 	return label.empty() ? autolabel_ : label;
 }
@@ -307,6 +310,17 @@ void InsetBibitem::collectBibKeys(InsetIterator const & it) const
 	BibTeXInfo keyvalmap(false);
 	keyvalmap.key(key);
 	keyvalmap.label(label);
+
+	BufferParams const & bp = buffer().masterBuffer()->params();
+	Counters & counters = bp.documentClass().counters();
+	docstring const bibitem = from_ascii("bibitem");
+	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL || getParam("label").empty()) {
+		if (counters.hasCounter(bibitem))
+			counters.step(bibitem, InternalUpdate);
+		string const & lang = it.paragraph().getParLanguage(bp)->code();
+		keyvalmap.setCiteNumber(counters.theCounter(bibitem, lang));
+	}
+
 	DocIterator doc_it(it);
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(
@@ -321,7 +335,7 @@ void InsetBibitem::updateBuffer(ParIterator const & it, UpdateType utype)
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & counters = bp.documentClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
-	if (getParam("label").empty()) {
+	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL || getParam("label").empty()) {
 		if (counters.hasCounter(bibitem))
 			counters.step(bibitem, utype);
 		string const & lang = it.paragraph().getParLanguage(bp)->code();

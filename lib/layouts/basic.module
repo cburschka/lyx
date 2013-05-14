@@ -30,7 +30,7 @@ CiteFormat default
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
-	!cite %!startlink%{%label%[[%label%]][[#%key%]]}%!endlink%%!nextcite%
+	!cite %!startlink%{%label%[[%label%]][[{%numericallabel%[[%numericallabel%]][[#%key%]]}]]}%!endlink%%!nextcite%
 
 	!nextcite {%next%[[%!sep% %!cite%]]}
 	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}

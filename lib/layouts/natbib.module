@@ -89,15 +89,15 @@ CiteFormat numerical
 	!sep ,
 	!close ]
 
-	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitet%
-	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%#%key%%!endlink%]]}%!nextcitealt%
+	!citet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
+	!citealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
 
-	!hashkey {%dialog%[[#ID]][[%!startlink%#%key%%!endlink%%!nexthashkey%]]}
+	!hashkey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
 	!nextcitet {%next%[[%!close%%!sep% %!citet%]]}
 	!nextcitealt {%next%[[%!sep% %!citealt%]]}
 	!nexthashid {%next%[[%!sep% #ID%!nexthashid%]]}
-	!nexthashkey {%next%[[%!sep% %!startlink%#%key%%!endlink%%!nexthashkey%]]}
+	!nexthashkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
 	cite %!open%%!textbefore%%!hashkey%%!textafter%%!close%
 	citep %!open%%!textbefore%%!hashkey%%!textafter%%!close%
