@@ -185,3 +185,4 @@ if(LYX_BUNDLE)
 			fixup_bundle(\"${installed_lyx}\" \"\" \"\") " COMPONENT RUNTIME)
 endif()
 
+add_subdirectory(tests)
