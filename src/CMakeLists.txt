@@ -6,7 +6,7 @@
 
 project(${_lyx})
 
-include_directories(${TOP_SRC_DIR}/src ${QT_INCLUDES})
+include_directories(${TOP_SRC_DIR}/src)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
