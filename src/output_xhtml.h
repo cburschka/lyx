@@ -31,8 +31,8 @@ class Text;
 
 namespace html {
 
-class FontTag;
-class EndFontTag;
+struct FontTag;
+struct EndFontTag;
 
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before being passed to the constructor.
