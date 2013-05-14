@@ -320,7 +320,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (from_ascii(width_string) != "-9.99\\columnwidth") {
 			os << "\\framebox";
 			if (!params_.inner_box) {
-				// Special widths, see usrguide §3.5
+				// Special widths, see usrguide sec. 3.5
 				// FIXME UNICODE
 				if (params_.special != "none") {
 					os << "[" << params_.width.value()
