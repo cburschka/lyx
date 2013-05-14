@@ -671,20 +671,20 @@ endif
 ############################## Tests ##################################
 
 EXTRA_DIST += \
-	tests/test_Layout
+	tests/test_layout
 
 
 TESTS = \
-	tests/test_Layout
+	tests/test_layout
 
 check_PROGRAMS = \
-	check_Layout
+	check_layout
 
-check_Layout_CPPFLAGS = $(AM_CPPFLAGS) -DNO_LAYOUT_CSS
-check_Layout_LDADD = support/liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
+check_layout_CPPFLAGS = $(AM_CPPFLAGS) -DNO_LAYOUT_CSS
+check_layout_LDADD = support/liblyxsupport.a $(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 # need to allow multiple definitions of _() (see dummy_functions.cpp)
-check_Layout_LDFLAGS = $(QT4_CORE_LDFLAGS) -Wl,--allow-multiple-definition
-check_Layout_SOURCES = \
+check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) -Wl,--allow-multiple-definition
+check_layout_SOURCES = \
 	insets/InsetLayout.cpp \
 	Color.cpp \
 	Counters.cpp \
@@ -697,7 +697,7 @@ check_Layout_SOURCES = \
 	ModuleList.cpp \
 	Spacing.cpp \
 	TextClass.cpp \
-	tests/check_Layout.cpp \
+	tests/check_layout.cpp \
 	support/tests/boost.cpp \
 	support/tests/dummy_functions.cpp
 
