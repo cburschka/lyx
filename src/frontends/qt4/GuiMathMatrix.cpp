@@ -18,6 +18,9 @@
 
 #include "FuncRequest.h"
 
+#include "support/gettext.h"
+#include "support/docstring.h"
+
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSpinBox>
@@ -26,6 +29,35 @@ using namespace std;
 
 namespace lyx {
 namespace frontend {
+
+static char const * const DecoChars[] = {
+	N_("None"),
+	N_("[x]"),
+	N_("(x)"),
+	N_("{x}"),
+	N_("|x|"),
+	N_("||x||"),
+	""
+};
+
+static char const * const DecoNames[] = {
+	N_("bmatrix"),
+	N_("pmatrix"),
+	N_("Bmatrix"),
+	N_("vmatrix"),
+	N_("Vmatrix"),
+	""
+};
+
+static char const * const VertAligns[] = {
+	N_("Top"),
+	N_("Middle"),
+	N_("Bottom"),
+	""
+};
+
+static char const v_align_c[] = "tcb";
+
 
 GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 	: GuiDialog(lv, "mathmatrix", qt_("Math Matrix"))
@@ -59,6 +91,11 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(decorationCO, SIGNAL(activated(int)),
 		this, SLOT(decorationChanged(int)));
+
+	for (int i = 0; *VertAligns[i]; ++i)
+		valignCO->addItem(qt_(VertAligns[i]));
+	for (int i = 0; *DecoChars[i]; ++i)
+		decorationCO->addItem(qt_(DecoChars[i]));
 
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 }
@@ -96,7 +133,6 @@ void GuiMathMatrix::slotOK()
 	// otherwise it is an AMS matrix
 	// decorated matrices cannot have a vertical alignment
 	
-	char v_align_c[] = "tcb";
 	char const c = v_align_c[valignCO->currentIndex()];
 	QString const sh = halignED->text();
 	string const str = fromqstr(
@@ -104,25 +140,7 @@ void GuiMathMatrix::slotOK()
 
 	if (decorationCO->currentIndex() != 0) {
 		int const deco = decorationCO->currentIndex();
-		QString deco_name;
-		// FIXME This is very dangerous way of coding.
-		// The order is defined in .ui file and anybody who will touch it
-		// will destroy the whole math decorations machinery.
-		// For better way look on MathDelimiter Size-combo solution and biggui[] array.
-		// Similarly for the v_align_c stuff -- at least we should push it into
-		// constructor and have it in one file...
-		switch (deco) {
-			case 1: deco_name = "bmatrix";
-				break;
-			case 2: deco_name = "pmatrix";
-				break;
-			case 3: deco_name = "Bmatrix";
-				break;
-			case 4: deco_name = "vmatrix";
-				break;
-			case 5: deco_name = "Vmatrix";
-				break;
-		}
+		QString deco_name = DecoNames[deco - 1];
 		// only if a special alignment is set create a 1x1 AMS array in which
 		// a normal array will be created, otherwise create just a normal AMS array
 		if (sh.contains('l') || sh.contains('r')) {

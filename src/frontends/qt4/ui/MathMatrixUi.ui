@@ -1,4 +1,5 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MathMatrixUi</class>
  <widget class="QDialog" name="MathMatrixUi">
   <property name="geometry">
@@ -162,21 +163,6 @@
         <property name="toolTip">
          <string>Vertical alignment</string>
         </property>
-        <item>
-         <property name="text">
-          <string>Top</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Middle</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bottom</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="0" column="0">
@@ -242,36 +228,6 @@
         <property name="toolTip">
          <string>decoration type / matrix border</string>
         </property>
-        <item>
-         <property name="text">
-          <string>None</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>[x]</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>(x)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>{x}</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>|x|</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>||x||</string>
-         </property>
-        </item>
        </widget>
       </item>
      </layout>
