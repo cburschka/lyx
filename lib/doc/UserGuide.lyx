@@ -31622,7 +31622,11 @@ Find
  LyX mini-editor a simple word, and search for occurrences of it by clicking
  on the 
 \family sans
-Find Next
+Find
+\begin_inset space ~
+\end_inset
+
+Next
 \family default
  button at the bottom of the dialog (or just press the 
 \begin_inset Info
@@ -31633,13 +31637,13 @@ arg   "break-paragraph"
  key).
  The entered word is found both in text mode and in math mode, and in emphasized
 , bold or normal face, and in both in section titles and in standard text.
- Pressing repeatedly 
+ Pressing 
 \begin_inset Info
 type  "shortcut"
 arg   "break-paragraph"
 \end_inset
 
- keeps searching forward while pressing 
+ repeatedly keeps searching forward while pressing 
 \family sans
 Shift+Return
 \family default
@@ -31649,7 +31653,11 @@ Shift+Return
 \begin_layout Standard
 The 
 \family sans
-Case sensitive
+Case
+\begin_inset space ~
+\end_inset
+
+sensitive
 \family default
  option allows matches to occur only with the same case as entered in the
  
@@ -31659,7 +31667,11 @@ Find
  editor.
  The 
 \family sans
-Whole words
+Whole
+\begin_inset space ~
+\end_inset
+
+words
 \family default
  option allows matches to occur only at word boundaries.
 \end_layout
@@ -31669,19 +31681,19 @@ Searching for mathematics
 \end_layout
 
 \begin_layout Standard
-Mathematical formulas may be searched for by typing them in the 
-\family sans
-Find
-\family default
- editor, such as 
+Mathematical formulas, such as 
 \begin_inset Formula $x^{2}$
 \end_inset
 
- or also something more complex like 
+ or something more complex like 
 \begin_inset Formula $\frac{x^{2}}{1+x^{2}}$
 \end_inset
 
-.
+, may be searched for by typing them in the 
+\family sans
+Find
+\family default
+ editor.
  When searching for a formula, it is found both when it is alone and when
  it occurs in sub-formulas and nested parts of sub-formulas.
  For example the mentioned segments would be found in something like 
@@ -31714,18 +31726,18 @@ Find
 \end_layout
 
 \begin_layout Itemize
-a plain word and searching for it would not find instances of the word occurring
- in emphasized or boldface.
+a normal word and searching for it would not find instances of the word
+ occurring in emphasized or boldface.
 \end_layout
 
 \begin_layout Itemize
 an emphasized or boldface word and searching for it would find the respective
- instances with same face only, and within the same text style only.
+ instances with the same face only, and within the same text style only.
 \end_layout
 
 \begin_layout Itemize
-a plain word in a section heading, and searching for it, finds occurrences
- of if only within section headings.
+a normal word in a section heading, and searching for it, would find occurrences
+ of it only within section headings.
  Also, if the text to search is given an emphasized or bold face, in addition
  to a section style, then it is found only when occurring with the same
  style.
@@ -31741,27 +31753,24 @@ Replace
 \end_layout
 
 \begin_layout Standard
-The document segments entered in the 
+The entries made in the 
 \family sans
 Find
 \family default
- editor can be replaced with the text segments entered in the 
+ editor can be replaced with entries made in the 
 \family sans
 Replace
+\begin_inset space ~
+\end_inset
+
+with
 \family default
-\noun on
- 
-\noun default
-editor.
+ editor.
  In order to find the next occurrence and replace it, click on the 
 \family sans
 Replace
 \family default
- button or alternatively
-\noun on
- 
-\noun default
-press 
+ button or alternatively press 
 \begin_inset Info
 type  "shortcut"
 arg   "break-paragraph"
@@ -31774,17 +31783,18 @@ Shift+Return
  while the cursor is in the 
 \family sans
 Replace
+\begin_inset space ~
+\end_inset
+
+with
 \family default
-\noun on
- 
-\noun default
-editor.
+ editor.
 \end_layout
 
 \begin_layout Standard
-You can replace with full-featured formatted LyX segments.
- Typical scenarios in which to use this capability may be (just to mention
- a few):
+You can replace with fully-featured formatted LyX entries.
+ Typical scenarios in which to use this capability might be (just to mention
+ two):
 \end_layout
 
 \begin_layout Itemize
@@ -31840,11 +31850,19 @@ performing a notation rework of mathematical symbols, for example replacing
 
  (you may want to enable the 
 \family sans
-Whole words
+Whole
+\begin_inset space ~
+\end_inset
+
+words
 \family default
  and 
 \family sans
-Case sensitive
+Case
+\begin_inset space ~
+\end_inset
+
+sensitive
 \family default
  options and disable the 
 \family sans
@@ -31904,13 +31922,13 @@ target "http://en.wikipedia.org/wiki/Regular_expression"
 
 \end_inset
 
- You can search for regular expression by inserting a regexp inset into
+ You can search for a regular expression by inserting a regexp inset into
  the 
 \family sans
 Find
 \family default
  editor.
- This is done via the menu 
+ This is done with the context menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Insert Regular Expression
@@ -31943,7 +31961,7 @@ when matching LaTeX code, no segments with unbalanced {} braces are allowed
 
 , while text entered outside regexp insets is matched exactly against the
  same text in the document.
- It is allowed to cut and paste regexp-mode insets as usual.
+ You can cut and paste regexp-mode insets.
  Examples of using such a feature may be:
 \end_layout
 
@@ -31983,9 +32001,9 @@ Settings
 
 
 \series default
- regular expression and adding for it an emphasized or bold face, finds
- all emphasized and bold face text, respectively.
- Also, inserting a 
+ regular expression and giving it an emphasized or bold face, finds all
+ emphasized or bold face text respectively.
+ Also, by inserting a 
 \begin_inset Formula $.*$
 \end_inset
 
@@ -32008,7 +32026,7 @@ Finally, references to (sub)expressions in regexp may be used as usual:
 \end_inset
 
 , etc..
- For example, try searching for the regexp
+ For example, try searching with the regexp
 \begin_inset Newline newline
 \end_inset
 
@@ -32032,17 +32050,12 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note:
 \series default
  Back references work both when occurring within the same regexp, and when
  occurring in multiple different regexps, where the numbering of back-referenced
  sub-expressions is absolute.
- I.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
+ That is,
 \begin_inset space ~
 \end_inset
 
@@ -32090,17 +32103,17 @@ LyX has a built-in spell checker.
  Tools\SpecialChar \menuseparator
 Spellchecker
 \family default
-, the key 
+, the 
 \family sans
 F7
 \family default
- or the toolbar button 
+ key or the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- starts the spell checking from either the current cursor position or the
+ start the spell checking from either the current cursor position or the
  beginning of the currently selected text.
  A sidebar will appear showing any incorrect (or unknown) word found, allowing
  you to edit and replace it in a second line.
@@ -32112,7 +32125,7 @@ n, if any could be found.
 \family sans
 Replacement
 \family default
- field, double-click directly invokes the replacement.
+ field, double-clicking directly invokes the replacement.
  Unknown but correctly typed words can be added to the personal dictionary.
 \end_layout
 
@@ -32127,8 +32140,21 @@ Settings
  You can specify the language of a word in the spellchecker dialog by choosing
  a different one at the top of the dialog.
  LyX can correctly spell check documents containing multiple languages.
- This works if you have marked the different languages appropriately and
- have the spell checker dictionaries installed.
+ This works if you have set the language of the text parts using the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) and have the spell checker dictionaries installed.
  LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
@@ -32177,13 +32203,15 @@ Further Settings
 \end_layout
 
 \begin_layout Standard
-In LyX's preferences dialog under 
+In the menu 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Language
 \begin_inset space ~
 \end_inset
 
-Setting\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Spellchecker
 \family default
  you can set the following things:
@@ -32262,7 +32290,7 @@ compound
 \begin_inset space ~
 \end_inset
 
-words Prevent the spell checker from complaining about compounded words
+words Prevents the spell checker from complaining about compounded words
  like 
 \begin_inset Quotes eld
 \end_inset
@@ -32279,10 +32307,10 @@ Spellcheck
 \begin_inset space ~
 \end_inset
 
-continuously Check the spelling of your document as you type it.
+continuously Checks the spelling of your document as you type it.
  Misspelled words get underlined with a dotted red line.
  By right-clicking on an underlined word, suggestions from the spellchecker
- appear in the context menu.
+ appear in a context menu.
  Choosing one of them will replace the misspelled word with the suggested
  word.
 \end_layout
@@ -32300,7 +32328,7 @@ and
 \begin_inset space ~
 \end_inset
 
-comments If enabled, the spelling of non-printed document contents is checked
+comments If enabled, the spelling of non-printed document content is checked
  as well.
 \end_layout
 
@@ -32467,7 +32495,7 @@ arg   "thesaurus-entry"
  selected.
  A dialog pops up showing you probably related words that you can use as
  a replacement.
- The proposals are grouped into categories.
+ The suggestions are grouped into categories.
  Note that, for some languages (such as English), the thesaurus does not
  only show equivalent words (synonyms), but also generic terms (such as
  
@@ -32536,11 +32564,7 @@ e.
 
 the form that is used in the dictionaries (for many languages: first person
  singular indicative active for nouns, infinitive for verbs).
- For example looking up the word forms 
-\emph on
-reports
-\emph default
- or 
+ For example, looking up the word form 
 \emph on
 reporting
 \emph default
@@ -32549,7 +32573,7 @@ reporting
 report
 \emph default
 .
- Your best bet is to highlight only the relevant parts of such word (e.
+ Your best bet is to highlight only the relevant part of such a word (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -32565,9 +32589,9 @@ report
 \emph on
 report
 \emph default
-s), then you get proposals without adjusting the query in the dialog, and
- also the replacement will probably be correct (as only the highlighted
- part will be replaced, thus the ending remains).
+s); then you will get suggestions without needing to adjust the query in
+ the dialog, and also the replacement will probably be correct (as only
+ the highlighted part will be replaced; thus the ending remains).
 \end_layout
 
 \begin_layout Section
@@ -32638,19 +32662,22 @@ canceled text
 \color inherit
  is a deletion.
  The color depends on the author that made the change.
- You can change the color in LyX's preferences dialog under 
+ You can change the color in 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Look
 \begin_inset space ~
 \end_inset
 
-and
+&
 \begin_inset space ~
 \end_inset
 
 feel
 \family default
-, 
+\SpecialChar \menuseparator
+
 \family sans
 Colors
 \family default
@@ -33141,6 +33168,27 @@ Note
 \end_layout
 
 \begin_layout Standard
+Not all changes are (yet) visualized, especially no format changes like
+ from 
+\emph on
+normal
+\emph default
+ to 
+\emph on
+bold
+\emph default
+ font or 
+\emph on
+Standard
+\emph default
+ to 
+\emph on
+Description
+\emph default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
 The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
  When you merge changes, a window pops up showing you information about
@@ -33157,7 +33205,7 @@ The toolbar has two buttons to handle notes because notes are often important
 \end_layout
 
 \begin_layout Standard
-To show the made changes in the output you need the LaTeX package 
+To show the changes made in the output you need the LaTeX package 
 \series bold
 dvipost
 \series default
@@ -33184,6 +33232,13 @@ key "TeXCatalogue"
 
 \begin_layout Section
 Comparison of Documents
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparison-of-Documents"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

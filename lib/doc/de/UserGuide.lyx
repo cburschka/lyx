@@ -32860,11 +32860,20 @@ Einstellungen
 \family default
  eingestellt ist.
  Die Sprache eines Wortes kann in der Rechtschreibprüfungs-Seitenleiste
- ausgewählt werden, indem man in der Dropdown-Box eine andere Sprache auswählt
+ ausgewählt werden, indem man in der Dropdown-Box eine andere Sprache auswählt.
  LyX kann auch Dokumente, die Text in mehreren Sprachen enthalten, korrekt
  prüfen.
- Dies funktioniert, wenn man die verschiedenen Sprachen entsprechend markiert
- und die Rechtschreibprüfungs-Wörterbücher installiert hat.
+ Dies funktioniert, wenn man die Sprache der Textstellen mit dem 
+\family sans
+Textstil
+\family default
+-Dialog (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) festlegt und die Rechtschreibprüfungs-Wörterbücher installiert hat.
  LyX wechselt dann automatisch die Wörterbuchdateien.
 \end_layout
 
@@ -32911,8 +32920,10 @@ Weitere Einstellungen
 \end_layout
 
 \begin_layout Standard
-In LyXs Einstellungen Dialog unter 
+Im Menü 
 \family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Spracheinstellungen\SpecialChar \menuseparator
 Rechtschreibprüfung
 \family default
@@ -33370,7 +33381,7 @@ durchgestrichener Text
 \color inherit
 eine Löschung.
  Die Farbe hängt vom Autor der Änderung ab.
- Die Farben können Sie in 
+ Die Farben können Sie im Menü 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -33859,8 +33870,6 @@ Standardabsatz
 Beschreibung
 \emph default
 .
- Das kann man jedoch anzeigen lassen, indem man den Textteil dupliziert,
- das Original löscht und die Kopie ändert.
 \end_layout
 
 \begin_layout Standard
@@ -33909,6 +33918,13 @@ key "TeX-Katalog"
 
 \begin_layout Section
 Vergleich von Dokumenten
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Vergleich-von-Dokumenten"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

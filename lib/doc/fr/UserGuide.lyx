@@ -28149,15 +28149,8 @@ Bibliographie
 \family default
  ou dans 
 \family sans
-\lang english
-Tools
-\lang french
-\SpecialChar \menuseparator
-
-\lang english
-Preferences
-\lang french
-\SpecialChar \menuseparator
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
 Sorties
 \family default
 \SpecialChar \menuseparator
@@ -33725,8 +33718,30 @@ Langue
 \family default
  en haut de la fenêtre latérale du correcteur.
  LyX peut effectuer la correction dans les documents multilingues, si vous
- avez marqué le texte avec la langue appropriée et si les dictionnaires
- adéquats sont installés: LyX commute automatiquement vers le bon dictionnaire.
+ 
+\lang english
+have set
+\lang french
+ le langue 
+\lang english
+of the text parts using the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog
+\lang french
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) et si les dictionnaires adéquats sont installés: LyX commute automatiquement
+ vers le bon dictionnaire.
 \end_layout
 
 \begin_layout Standard
@@ -33780,8 +33795,10 @@ Autres paramètres
 \end_layout
 
 \begin_layout Standard
-La rubrique 
+Le menu 
 \family sans
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
 Paramètres de langue\SpecialChar \menuseparator
 Correcteur
 \begin_inset space ~
@@ -34380,13 +34397,11 @@ du texte barré
 \color inherit
 est une suppression.
  La couleur dépend de l'auteur de la modification.
- Vous pouvez changer les couleurs dans les préférences de LyX dans la rubrique
- 
+ Vous pouvez changer les couleurs dans le menu 
 \family sans
-Apparence
-\family default
-, 
-\family sans
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
+Apparence\SpecialChar \menuseparator
 Couleurs
 \family default
 .
@@ -34943,6 +34958,29 @@ suivante
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Not all changes are (yet) visualized, especially no format changes like
+ from 
+\emph on
+normal
+\emph default
+ to 
+\emph on
+bold
+\emph default
+ font or 
+\emph on
+Standard
+\emph default
+ to 
+\emph on
+Description
+\emph default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
 La barre d'outils de suivi des modifications vous aide à accepter, rejeter
  ou fusionner les modifications.
  Sélectionnez la modification et cliquez sur le bouton voulu.
@@ -34990,6 +35028,13 @@ key "TeXCatalogue"
 
 \begin_layout Section
 Comparaison de documents
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparaison-de-documents"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

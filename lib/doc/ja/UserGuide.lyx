@@ -26228,8 +26228,29 @@ arg   "dialog-show spellchecker"
 \family default
 ダイアログで設定される文書言語によって決定されます。文書言語用の辞書を持っていない場合には、スペルチェックを実行しようとするとエラーメッセージが表示されます。ス
 ペルチェッカーダイアログの一番上の欄で、いずれかの言語を選ぶことで、単語の言語を指定することができます。LyXは複数の言語を含む文書でも正しくスペルチェックを行
-うことができます。これは、各言語の箇所を正しくマークしており、対応するスペルチェッカー辞書が導入済みでなくては、機能しません。それが為されていれば、LyXは、自
-動的に適当な辞書ファイルを切り替えて用います。
+うことができます。
+\lang english
+This works if you have set the language of the text parts using the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog
+\lang japanese
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) 
+\lang english
+and have the spell checker dictionaries installed
+\lang japanese
+。それが為されていれば、LyXは、自動的に適当な辞書ファイルを切り替えて用います。
 \end_layout
 
 \begin_layout Standard
@@ -26321,8 +26342,14 @@ dicts
 \end_layout
 
 \begin_layout Standard
-LyXの設定ダイアログの
+
+\lang english
+In the menu 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\lang japanese
+\SpecialChar \menuseparator
 言語設定\SpecialChar \menuseparator
 スペルチェッカー
 \family default
@@ -26668,11 +26695,29 @@ name "sec:変更追跡機能"
 取り消し文章
 \strikeout default
 \color inherit
-のように表示されるようになります。色は、変更した執筆者によって異なります。色は、LyX設定ダイアログの
+のように表示されるようになります。色は、変更した執筆者によって異なります。
+\lang english
+You can change the color in 
 \family sans
-操作性・色
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Look
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+feel
 \family default
-面で変更できます
+\SpecialChar \menuseparator
+
+\family sans
+Colors
+\family default
+\lang japanese
+。
 \begin_inset Index idx
 status collapsed
 
@@ -26682,7 +26727,7 @@ status collapsed
 
 \end_inset
 
-。執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
+執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "changes-merge"
@@ -27064,6 +27109,29 @@ arg   "note-next"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Not all changes are (yet) visualized, especially no format changes like
+ from 
+\emph on
+normal
+\emph default
+ to 
+\emph on
+bold
+\emph default
+ font or 
+\emph on
+Standard
+\emph default
+ to 
+\emph on
+Description
+\emph default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
 校閲ツールバーは、変更を承認・却下したり統合したりするのに便利です。変更点を選択して、希望するツールバーボタンを押してください。変更を統合する際には、ウィンドウ
 が現れて、現在のカーソル位置の次の変更に関する情報を表示しますので、特定の変更点をわざわざ選択する必要がありません。統合ウィンドウでは、変更を承認するか却下する
 かを決定して次の変更点へ移動することができますので、この方法を使って、文書中の全ての変更点を確認することができます。
@@ -27100,6 +27168,13 @@ key "TeXCatalogue"
 
 \begin_layout Section
 文書比較
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:文書比較"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
