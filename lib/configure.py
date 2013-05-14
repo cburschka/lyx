@@ -648,18 +648,20 @@ def checkConverterEntries():
     checkLuatex()
 
     # Look for tex2lyx in this order (see bugs #3308 and #6986):
-    #   1)  If we're running LyX in-place then tex2lyx will be found
-    #       in ../src/tex2lyx with respect to the srcdir.
-    #   2)  If LyX was configured with a version suffix then tex2lyx
+    #   1)  If we're building LyX with autotools then tex2lyx is found
+    #       in the subdirectory tex2lyx with respect to the binary dir.
+    #   2)  If we're building LyX with cmake then tex2lyx is found
+    #       in the binary dir.
+    #   3)  If LyX was configured with a version suffix then tex2lyx
     #       will also have this version suffix.
-    #   3)  Otherwise always use tex2lyx.
-    in_place = os.path.join(srcdir, '..', 'src', 'tex2lyx', 'tex2lyx')
-    in_place = os.path.abspath(in_place)
+    #   4)  Otherwise always use tex2lyx.
+    in_binary_subdir = os.path.join(lyx_binary_dir, 'tex2lyx', 'tex2lyx')
+    in_binary_subdir = os.path.abspath(in_binary_subdir)
 
     in_binary_dir = os.path.join(lyx_binary_dir, 'tex2lyx')
     in_binary_dir = os.path.abspath(in_binary_dir)
 
-    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_place, in_place + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
+    path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_binary_subdir, in_binary_subdir + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""'''], not_found = 'tex2lyx')
     if path == '':
