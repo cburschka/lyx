@@ -234,6 +234,10 @@ int InsetBibitem::plaintext(odocstringstream & os,
 // ale070405
 docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 {
+	BufferParams const & bp = buffer.masterBuffer()->params();
+	if (bp.citeEngineType() == ENGINE_TYPE_NUMERICAL)
+		return from_ascii("99");
+
 	int w = 0;
 
 	InsetBibitem const * bitem = 0;
