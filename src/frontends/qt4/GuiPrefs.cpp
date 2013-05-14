@@ -2524,6 +2524,11 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	iconSetCO->addItem(qt_("Default"), QString());
 	iconSetCO->addItem(qt_("Classic"), "classic");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
+
+#if (!defined Q_WS_X11 || QT_VERSION < 0x040600)
+	useSystemThemeIconsCB->hide();
+	themeIconsLA->hide();
+#endif
 }
 
 
@@ -2545,10 +2550,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	if (iconset < 0)
 		iconset = 0;
 	iconSetCO->setCurrentIndex(iconset);
-#if (QT_VERSION < 0x040600)
-	useSystemThemeIconsCB->hide();
-	themeIconsLA->hide();
-#endif
 	useSystemThemeIconsCB->setChecked(rc.use_system_theme_icons);
 	uiFileED->setText(toqstr(external_path(rc.ui_file)));
 	lastfilesSB->setValue(rc.num_lastfiles);
