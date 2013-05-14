@@ -20,7 +20,7 @@ l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot latexfonts_l10n.pot 
 	cat $^ | msguniq -o $(DOMAIN).po
 
 LYX_POT = LC_ALL=C ; export LC_ALL ; \
-  $(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir) 
+  $(PYTHON) $(srcdir)/lyx_pot.py -b $(top_srcdir)
 
 qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
 	$(LYX_POT) -o $@ -t qt4 $^
