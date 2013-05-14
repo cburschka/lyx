@@ -119,9 +119,9 @@ Package::Package(string const & command_line_arg0,
 	lyx_dir_ = FileName(lyx_dir_.realPath());
 
 	// Is LyX being run in-place from the build tree?
-	bool in_build_dir = inBuildDir(abs_binary, build_support_dir_, system_support_dir_);
+	in_build_dir_ = inBuildDir(abs_binary, build_support_dir_, system_support_dir_);
 
-	if (!in_build_dir) {
+	if (!in_build_dir_) {
 		system_support_dir_ =
 			get_system_support_dir(abs_binary,
 					       command_line_system_support_dir);
@@ -163,6 +163,18 @@ void Package::set_temp_dir(FileName const & temp_dir) const
 	else
 		temp_dir_ = temp_dir;
 }
+
+
+FileName Package::messages_file(string const & c) const
+{
+	if (in_build_dir_)
+		return FileName(top_srcdir().absFileName() + "/po/"
+				+ c + ".gmo");
+	else
+		return FileName(locale_dir_.absFileName() + "/" + c
+			+ "/LC_MESSAGES/" PACKAGE ".mo");
+}
+
 
 // The specification of home_dir_ is fixed for a given OS.
 // A typical example on Windows: "C:/Documents and Settings/USERNAME"

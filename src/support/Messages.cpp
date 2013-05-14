@@ -155,15 +155,6 @@ Messages::Messages(string const & l)
 
 namespace {
 
-string moFile(string const & c)
-{
-	static string const locale_dir
-		= package().locale_dir().toFilesystemEncoding();
-	return locale_dir + "/" + c
-		+ "/LC_MESSAGES/" PACKAGE ".mo";
-}
-
-
 // Find the code we have for a given language code. Return empty if not found.
 string realCode(string const & c)
 {
@@ -171,7 +162,7 @@ string realCode(string const & c)
 	string code = (c == "C") ? "en" : c;
 	// this loops at most twice
 	while (true) {
-		if (FileName(moFile(code)).isReadableFile())
+		if (package().messages_file(code).isReadableFile())
 			return code;
 		if (contains(code, '_'))
 			code = token(code, '_', 0);
@@ -234,7 +225,7 @@ bool Messages::readMoFile()
 		return false;
 	}
 
-	string const filen = moFile(code);
+	string const filen = package().messages_file(code).toSafeFilesystemEncoding();
 
 	// get file size
 	struct stat buf;

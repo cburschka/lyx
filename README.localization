@@ -90,11 +90,13 @@ Run ./pocheck.pl -h to see all possible switches.
 
 6) HOW CAN I TEST MY TRANSLATION?
 
-In order to test your translation you need to obtain the LyX sources (from the 
-SVN repository) and replace the existing .po with yours. Afterwards, you should 
-compile and install LyX (check the INSTALL file for your OS). If you don't 
-install LyX it won't work. In order to run LyX with your translation, use the 
-appropriate LANG variable:
+In order to test your translation you need to obtain the LyX sources
+(from the git repository) and replace the existing .po with yours.
+Afterwards, you should compile and optionally install LyX (check the
+INSTALL file for your OS). Note that, as of LyX 2.1, it is not
+necessary anymore to install anything. In order to run LyX with your
+translation, change the current language in Preferences dialog or use
+the appropriate LANG variable:
 
   On Linux: LANG=xx_CC lyx
   On Windows, you need to change the lyx.bat file and write: set LANG=xx_CC
@@ -102,11 +104,9 @@ appropriate LANG variable:
 xx stands for your language code. CC stands for your country code. So to get, 
 e.g., Czech, the code is "cs_CZ".
 
-The most comfortable way to see your updated translation while editing, is
-running (in linux):
-1. "make xx.gmo" in the po directory to compile updated xx.po translation
-2. "make install" in root lyx tree to copy xx.gmo to the appropriate location
-   (or do it by hand...)
+The most comfortable way to see your updated translation while
+editing, is running (in linux) "make xx.gmo" in the po directory to
+compile updated xx.po translation and then run LyX.
 
 For advanced users - if you want to remerge your files against current source
 files run make update-po. 

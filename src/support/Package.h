@@ -101,6 +101,12 @@ public:
 	 */
 	FileName const & locale_dir() const { return locale_dir_; }
 
+	/** The file name that should contain the message file (.mo)
+	 *  for language code \param c. Does not check whether the
+	 *  file exists. Handles running in place.
+	 */
+	FileName messages_file(std::string const & c) const;
+
 	/** The default document directory.
 	 *  Can be reset by LyXRC.
 	 */
@@ -147,6 +153,7 @@ private:
 	FileName system_temp_dir_;
 	std::string configure_command_;
 	bool explicit_user_support_dir_;
+	bool in_build_dir_;
 };
 
 } // namespace support
