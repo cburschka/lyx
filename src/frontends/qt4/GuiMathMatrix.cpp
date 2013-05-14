@@ -19,7 +19,6 @@
 #include "FuncRequest.h"
 
 #include "support/gettext.h"
-#include "support/docstring.h"
 
 #include <QLineEdit>
 #include <QPushButton>
