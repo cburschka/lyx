@@ -144,7 +144,6 @@ enumitem
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller" 
-\author 2090807402 "usti" 
 \end_header
 
 \begin_body
@@ -30430,7 +30429,7 @@ The normal text on the page goes here.
 <cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout 
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -30439,7 +30438,7 @@ The normal text on the page goes here.
 <cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout 
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -32114,17 +32113,17 @@ LyX has a built-in spell checker.
  Tools\SpecialChar \menuseparator
 Spellchecker
 \family default
-, the key 
+, the 
 \family sans
 F7
 \family default
- or the toolbar button 
+ key or the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
- starts the spell checking from either the current cursor position or the
+ start the spell checking from either the current cursor position or the
  beginning of the currently selected text.
  A sidebar will appear showing any incorrect (or unknown) word found, allowing
  you to edit and replace it in a second line.
@@ -32136,7 +32135,7 @@ n, if any could be found.
 \family sans
 Replacement
 \family default
- field, double-click directly invokes the replacement.
+ field, double-clicking directly invokes the replacement.
  Unknown but correctly typed words can be added to the personal dictionary.
 \end_layout
 
@@ -32151,8 +32150,21 @@ Settings
  You can specify the language of a word in the spellchecker dialog by choosing
  a different one at the top of the dialog.
  LyX can correctly spell check documents containing multiple languages.
- This works if you have marked the different languages appropriately and
- have the spell checker dictionaries installed.
+ This works if you have set the language of the text parts using the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) and have the spell checker dictionaries installed.
  LyX automatically switches to the appropriate dictionary file.
 \end_layout
 
@@ -32201,13 +32213,15 @@ Further Settings
 \end_layout
 
 \begin_layout Standard
-In LyX's preferences dialog under 
+In the menu 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Language
 \begin_inset space ~
 \end_inset
 
-Setting\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 Spellchecker
 \family default
  you can set the following things:
@@ -32286,7 +32300,7 @@ compound
 \begin_inset space ~
 \end_inset
 
-words Prevent the spell checker from complaining about compounded words
+words Prevents the spell checker from complaining about compounded words
  like 
 \begin_inset Quotes eld
 \end_inset
@@ -32303,10 +32317,10 @@ Spellcheck
 \begin_inset space ~
 \end_inset
 
-continuously Check the spelling of your document as you type it.
+continuously Checks the spelling of your document as you type it.
  Misspelled words get underlined with a dotted red line.
  By right-clicking on an underlined word, suggestions from the spellchecker
- appear in the context menu.
+ appear in a context menu.
  Choosing one of them will replace the misspelled word with the suggested
  word.
 \end_layout
@@ -32324,7 +32338,7 @@ and
 \begin_inset space ~
 \end_inset
 
-comments If enabled, the spelling of non-printed document contents is checked
+comments If enabled, the spelling of non-printed document content is checked
  as well.
 \end_layout
 
@@ -32491,7 +32505,7 @@ arg   "thesaurus-entry"
  selected.
  A dialog pops up showing you probably related words that you can use as
  a replacement.
- The proposals are grouped into categories.
+ The suggestions are grouped into categories.
  Note that, for some languages (such as English), the thesaurus does not
  only show equivalent words (synonyms), but also generic terms (such as
  
@@ -32560,15 +32574,7 @@ e.
 
 the form that is used in the dictionaries (for many languages: first person
  singular indicative active for nouns, infinitive for verbs).
- For example looking up the word form
-\change_deleted 2090807402 1338765333
-s 
-\emph on
-reports
-\emph default
- or
-\change_unchanged
- 
+ For example, looking up the word form 
 \emph on
 reporting
 \emph default
@@ -32577,22 +32583,7 @@ reporting
 report
 \emph default
 .
- 
-\change_inserted 2090807402 1338765282
-The thesuarus is able to resolve inflected forms (so if you enter 
-\emph on
-reports
-\emph default
-, it will resolve it to the form 
-\emph on
-report
-\emph default
- which is in the dictionary).
- However, this may not always work.
- So if you do not get any results for inflected forms, try the lemma form.
-
-\change_unchanged
- Your best bet is to highlight only the relevant parts of such word (e.
+ Your best bet is to highlight only the relevant part of such a word (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -32608,9 +32599,9 @@ report
 \emph on
 report
 \emph default
-s), then you get proposals without adjusting the query in the dialog, and
- also the replacement will probably be correct (as only the highlighted
- part will be replaced, thus the ending remains).
+s); then you will get suggestions without needing to adjust the query in
+ the dialog, and also the replacement will probably be correct (as only
+ the highlighted part will be replaced; thus the ending remains).
 \end_layout
 
 \begin_layout Section
@@ -32681,19 +32672,22 @@ canceled text
 \color inherit
  is a deletion.
  The color depends on the author that made the change.
- You can change the color in LyX's preferences dialog under 
+ You can change the color in 
 \family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Look
 \begin_inset space ~
 \end_inset
 
-and
+&
 \begin_inset space ~
 \end_inset
 
 feel
 \family default
-, 
+\SpecialChar \menuseparator
+
 \family sans
 Colors
 \family default
@@ -32757,8 +32751,7 @@ Toolbar ! Review
 \end_layout
 
 \begin_layout Standard
-The review toolbar as shown above contains from left to right the following
- buttons:
+The review toolbar as shown above contains the following buttons:
 \end_layout
 
 \begin_layout Standard
@@ -33115,7 +33108,18 @@ arg   "note-insert"
 \family sans
 Insert\SpecialChar \menuseparator
 Note\SpecialChar \menuseparator
-LyX
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \begin_inset space ~
 \end_inset
 
@@ -33174,6 +33178,27 @@ Note
 \end_layout
 
 \begin_layout Standard
+Not all changes are (yet) visualized, especially no format changes like
+ from 
+\emph on
+normal
+\emph default
+ to 
+\emph on
+bold
+\emph default
+ font or 
+\emph on
+Standard
+\emph default
+ to 
+\emph on
+Description
+\emph default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
 The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
  When you merge changes, a window pops up showing you information about
@@ -33190,7 +33215,7 @@ The toolbar has two buttons to handle notes because notes are often important
 \end_layout
 
 \begin_layout Standard
-To show the made changes in the output you need the LaTeX package 
+To show the changes made in the output you need the LaTeX package 
 \series bold
 dvipost
 \series default
@@ -33217,6 +33242,13 @@ key "TeXCatalogue"
 
 \begin_layout Section
 Comparison of Documents
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparison-of-Documents"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

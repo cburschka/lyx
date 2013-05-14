@@ -27518,15 +27518,8 @@ Bibliografía
 \family default
  o en 
 \family sans
-\lang english
-Tools
-\lang spanish
-\SpecialChar \menuseparator
-
-\lang english
-Preferences
-\lang spanish
-\SpecialChar \menuseparator
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
 Salidas\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
@@ -32653,8 +32646,29 @@ Configuración
  del corrector.
  LyX puede revisar correctamente documentos con varios idiomas alternando
  entre los diccionarios pertinentes.
- Esto funciona si los diferentes idiomas se han marcado adecuadamente y
- están instalados los diccionarios de los idiomas correspondientes.
+ Esto funciona si 
+\lang english
+you have set the 
+\lang spanish
+idioma
+\lang english
+ of the text parts using the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog
+\lang spanish
+ (
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+) y están instalados los diccionarios de los idiomas correspondientes.
 \end_layout
 
 \begin_layout Standard
@@ -32708,8 +32722,10 @@ Configuración adicional
 \end_layout
 
 \begin_layout Standard
-En las preferencias de LyX, 
+En el menú 
 \family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
 Configuración
 \begin_inset space ~
 \end_inset
@@ -33155,13 +33171,11 @@ texto tachado
 \color inherit
  es texto borrado.
  El color depende del autor que hizo el cambio.
- Puedes cambiar estos colores en el diálogo de las preferencias de LyX,
- en 
+ Puedes cambiar estos colores en el menú 
 \family sans
-Apariencia
-\family default
-, 
-\family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Apariencia\SpecialChar \menuseparator
 Colores
 \family default
 .
@@ -33700,6 +33714,29 @@ siguiente
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Not all changes are (yet) visualized, especially no format changes like
+ from 
+\emph on
+normal
+\emph default
+ to 
+\emph on
+bold
+\emph default
+ font or 
+\emph on
+Standard
+\emph default
+ to 
+\emph on
+Description
+\emph default
+ paragraph.
+\end_layout
+
+\begin_layout Standard
 La barra de revisión ayuda a aceptar, descartar o fusionar cambios, para
  ello selecciona el cambio y pulsa el botón adecuado.
  Cuando fusionas cambios aparece una ventana con información sobre el cambio,
@@ -33741,6 +33778,13 @@ key "TeXCatalogue"
 
 \begin_layout Section
 Comparación de documentos
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparación-de-documentos"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -33929,10 +33973,15 @@ S.
  de teclado alternativo configurando LyX para que use un teclado italiano.
  En el diálogo 
 \family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+
 \lang english
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
+Editing
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
 Keyboard/Mouse
 \family default
 \lang spanish
