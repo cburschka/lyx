@@ -28029,7 +28029,7 @@ Subindex.
 \end_layout
 
 \begin_layout Section
-Nomenclature / Glossary 
+Nomenclature/Glossary 
 \begin_inset Index idx
 status collapsed
 
@@ -28082,13 +28082,14 @@ name "sec:Nomenclature"
 \end_layout
 
 \begin_layout Standard
-Sometimes you need to compile a list of symbols that are mentioned in your
- document with a brief explanation of them – a so called nomenclature or
- glossary.
+Sometimes you need to provide a list of technical terms or symbols that
+ are mentioned in your document with a brief explanation of them – a so
+ called nomenclature or glossary.
 \end_layout
 
 \begin_layout Standard
-To be able to create nomenclatures, you need the LaTeX package 
+To be able to create nomenclatures or glossaries, you need the LaTeX package
+ 
 \series bold
 nomencl
 \series default
@@ -28152,8 +28153,16 @@ Nom
 
 \begin_layout Standard
 A nomenclature entry consists of two main entries.
- The first is the symbol that you want to refer to.
- The second is the description of the symbol.
+ The first is the term or 
+\family sans
+Symbol
+\family default
+ that you wish to define.
+ The second is the 
+\family sans
+Description
+\family default
+ of the term or symbol.
 \end_layout
 
 \begin_layout Standard
@@ -28375,7 +28384,7 @@ should appear in nomenclature entries they need to be escaped by adding
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "The quote sign is output by writing ' \"\"\"\" '"
+description "The quote sign is output by writing ‘ \"\"\"\" '"
 
 \end_inset
 
@@ -28399,7 +28408,8 @@ Nomenclature ! Sort order
 \begin_layout Standard
 The nomenclature entries are sorted alphabetically by the LaTeX-code of
  the symbol definition.
- This leads to undesired results when you for example have symbols in formulas.
+ This leads to undesired results when you, for example, have symbols in
+ formulas.
  Suppose you have nomenclature entries for the symbols 
 \emph on
 a
@@ -28537,7 +28547,7 @@ The
 nomencl
 \series default
  package offers some options to adjust the appearance of the nomenclature.
- Here are some of its options, for more have a look at its documentation:
+ Here are some of its options; for more have a look at its documentation:
 \end_layout
 
 \begin_layout Description
@@ -28754,15 +28764,7 @@ Nomenclature ! Printing
 To print the nomenclature, use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Lists
-\begin_inset space ~
-\end_inset
-
-/
-\begin_inset space ~
-\end_inset
-
-TOC\SpecialChar \menuseparator
+Lists/TOC\SpecialChar \menuseparator
 Nomenclature
 \family default
 .
@@ -28998,7 +29000,7 @@ Here is an example, where only the question text appears, the answer branch
 
 \begin_layout Standard
 \begin_inset Branch Question
-status collapsed
+status open
 
 \begin_layout Standard
 Question: Who was the first physics Nobel prize winner?
@@ -29116,8 +29118,7 @@ Exam-Question-Answer.pdf
 \end_inset
 
  if both branches were active.
- This helps you to easily export different versions of your document without
- much hassle.
+ This helps you to export different versions of your document easily.
 \end_layout
 
 \begin_layout Standard
@@ -29201,7 +29202,7 @@ answer}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -29272,7 +29273,7 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
-Now it is possible to use the commands 
+Now it is possible to use the 
 \series bold
 
 \backslash
@@ -29286,7 +29287,7 @@ question{\SpecialChar \ldots{}
 answer{\SpecialChar \ldots{}
 }
 \series default
- to obtain conditional output.
+ commands to obtain conditional output.
  Here is an example formula where only the 
 \series bold
 
@@ -29313,6 +29314,32 @@ Math
  manual.
 \end_layout
 
+\begin_layout Standard
+Each type of branch is allowed to have its specific style defined in layout
+ files (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+any branch inset can be automatically wrapped by your own LaTeX commands.).
+ For this advanced usage, see the 
+\emph on
+Customization
+\emph default
+ manual, section 
+\begin_inset Quotes eld
+\end_inset
+
+Flex insets and InsetLayout
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Section
 PDF Properties
 \begin_inset CommandInset label
@@ -29337,14 +29364,13 @@ PDF properties
 \begin_layout Standard
 The 
 \family sans
-Document Settings
-\family default
- dialog allows you in the 
-\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
 PDF Properties
 \family default
- to set up special options for the PDF output of your document.
- All options there are provided by the LaTeX-package 
+ dialog allows you to set up special options for the PDF output of your
+ document.
+ All these options are provided by the LaTeX-package 
 \series bold
 hyperref
 \series default
@@ -29358,27 +29384,164 @@ LaTeX-packages ! hyperref
 
 \end_inset
 
-.
+ which will link all cross-references in the DVI- and PDF-output.
+ This means that the reader of your document will be able to click on a
+ table of contents entry or on a reference to move to the cross-referenced
+ part of the document.
+ 
 \end_layout
 
 \begin_layout Standard
-Using 
-\series bold
-hyperref
-\series default
- will link all cross-references in the DVI- and PDF-output.
- This means that the reader of your document will be able to click on a
- table of contents entry or on a reference and he is shown the referenced
- document part.
- You can specify in the dialog tab 
+The header information in the dialog tab 
+\family sans
+General
+\family default
+ is saved together with the PDF as file properties.
+ Many programs are able to extract this information, for example, automatically
+ to recognize who the author is and what the PDF is about.
+ This is very useful to sort, classify or use PDFs for bibliography issues.
+ When the option 
+\family sans
+Automatically
+\begin_inset space ~
+\end_inset
+
+fill
+\begin_inset space ~
+\end_inset
+
+header
+\family default
+ is set, LyX tries to extract the header information from your document
+ title and author entries.
+ The option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+fullscreen
+\begin_inset space ~
+\end_inset
+
+mode
+\family default
+ will open the PDF in fullscreen mode, which is useful for presentations.
+\end_layout
+
+\begin_layout Standard
+You can specify in the dialog tab 
 \family sans
 Hyperlinks
 \family default
  how the links will look and if links for bibliographical backreferences
  are created.
- The backreferences will appear in the bibliography behind the different
- entries, showing the number of the section, slide, or page where the entry
- is referenced.
+ The 
+\family sans
+Break
+\begin_inset space ~
+\end_inset
+
+links
+\begin_inset space ~
+\end_inset
+
+over
+\begin_inset space ~
+\end_inset
+
+lines
+\family default
+ option allows long links to be split; 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+frames
+\begin_inset space ~
+\end_inset
+
+around
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ and 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ both turn off the default behavior of enclosing all links in frames; 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ colors the different links.
+ The default colors are:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color magenta
+magenta
+\color inherit
+ for hyperlinks and URLs
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+red
+\color inherit
+ for links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color green
+green
+\color inherit
+ for citations
+\end_layout
+
+\begin_layout Standard
+but you can change these in the field 
+\family sans
+Additional options
+\family default
+.
+ For example, in this document they were changed with the additional options:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
+\end_layout
+
+\begin_layout Standard
+If the option 
+\family sans
+Backreferences
+\family default
+ is set, the hyperlinks will appear in the bibliography after the different
+ entries, showing, depending on the option selected, the number of the section,
+ slide or page where the entry is referenced.
 \end_layout
 
 \begin_layout Standard
@@ -29386,12 +29549,20 @@ In the dialog tab
 \family sans
 Bookmarks
 \family default
- you can set if PDF-bookmarks should be created for every section of your
- document to make it easier for readers to navigate through the document.
+ you can specify if PDF-bookmarks should be created for every section of
+ your document to make it easier for readers to navigate through the document.
  You can decide if the bookmarks should be numbered like your document sections
  or not.
- With the open bookmarks level you can specify what sectioning level should
- be displayed in the bookmarks when opening the PDF.
+ With the 
+\family sans
+Open bookmarks
+\family default
+ 
+\family sans
+Level
+\family default
+ you can specify what sectioning level should be displayed in the bookmarks
+ when opening the PDF.
  For example level
 \begin_inset space ~
 \end_inset
@@ -29404,38 +29575,6 @@ Bookmarks
 \end_layout
 
 \begin_layout Standard
-The header information in the dialog tab 
-\family sans
-General
-\family default
- are saved together with the PDF as file properties.
- Many programs are able to extract this information to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-automatically recognize who the author is and what the PDF is about.
- This is very useful to sort, classify, or use PDFs for bibliography issues.
- When the option 
-\family sans
-Automatic fill header
-\family default
- is set, LyX tries to extract the header information from your document
- title and author settings.
-\end_layout
-
-\begin_layout Standard
-The option 
-\family sans
-Load in fullscreen mode
-\family default
- will open the PDF in fullscreen mode, which is useful for presentations.
-\end_layout
-
-\begin_layout Standard
 PDF properties are also used in this document.
  When you look in its document settings, you can see that some additional
  
@@ -29443,7 +29582,7 @@ PDF properties are also used in this document.
 hyperref
 \series default
  options are used.
- For an explanation of them we refer you to the hyperref manual 
+ For an explanation of all them we refer you to the hyperref manual 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -29491,9 +29630,8 @@ As LyX uses LaTeX in the background, it supports many LaTeX commands and
  LaTeX contains hundreds of packages that provide different commands.
  All the time packages are being updated and new ones added.
  This has the advantage that you can typeset nearly everything as there
- is for every problem a LaTeX-package.
- But LyX can of course not be up to date and support all packages and their
- commands.
+ is a LaTeX-package for every problem, though LyX cannot support all packages
+ and their commands.
 \end_layout
 
 \begin_layout Standard
@@ -29502,7 +29640,18 @@ But don't worry, you can use any LaTeX-command directly in LyX inside the
  A TeX Code box is created by the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-TeX
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \begin_inset space ~
 \end_inset
 
@@ -29615,7 +29764,7 @@ Note:
 \end_layout
 
 \begin_layout Subsection
-Short Introduction to the LaTeX Syntax
+A Short Introduction to the LaTeX Syntax
 \begin_inset Argument
 status collapsed
 
@@ -29659,16 +29808,8 @@ program
  your text.
  This has the advantage that the layout of the document can be changed at
  any time if you know the right commands.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-imagine you have to write a manual for a product and the deadline is the
- end of the day.
+ For example, imagine you have to write a manual for a product and the deadline
+ is the end of the day.
  Your boss has just complimented you for your good work but wants to have
  all caption labels bold.
  But you have over a hundred figure and table captions with non-bold labels
@@ -29680,7 +29821,7 @@ imagine you have to write a manual for a product and the deadline is the
 \begin_layout Standard
 Now LaTeX comes into play.
  As mentioned above, for every problem there exists a LaTeX-package.
- First you have to find out which and therefore look into the LaTeX package
+ First you have to find out which and therefore look in the LaTeX package
  database, 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -29711,6 +29852,26 @@ LaTeX-packages ! caption
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
 \family default
 ) with the command
 \end_layout
@@ -30050,7 +30211,15 @@ Header/Footer line
 
 \begin_layout Standard
 To define a custom page header and footer line for your document, you need
- to set the headings style to 
+ to set the 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+style
+\family default
+ to 
 \family sans
 Fancy
 \family default
@@ -30143,7 +30312,7 @@ for the different positions in the header/footer.
 \end_layout
 
 \begin_layout Standard
-Normally, headers and footers are set up in the beginning of the document.
+Normally, headers and footers are set up at the beginning of the document.
  But you can change them anywhere you want to.
  Figure
 \begin_inset space ~
@@ -30164,7 +30333,7 @@ reference "fig:Page-layout"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -30354,22 +30523,46 @@ Page layout with custom header and footer line.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+: some document classes implement their own customized page headers and
+ footers if 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+style
+\family default
+ is set to “Default”.
+ Check what these are before you specify your own customized page headers
+ and footers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Definition
 \end_layout
 
 \begin_layout Standard
-To define your header line, add all 3
-\begin_inset space ~
-\end_inset
-
-header styles.
- The things you add to the styles appear on uneven pages, the things in
- the optional arguments on even pages.
+To define your header line, add all three header styles.
+ The things you add to the styles appear on odd numbered pages, the things
+ in the optional arguments on even numbered pages.
  For single-sided documents, the optional arguments will not be used and
  can be omitted.
  If you leave a style or its argument empty, nothing appears in the output.
- Defining the footer line works similar.
+ Defining the footer line works similarly.
 \end_layout
 
 \begin_layout Standard
@@ -30498,7 +30691,7 @@ headrulewidth
 \backslash
 footrulewidth
 \series default
- in the following scheme:
+ in the following way:
 \end_layout
 
 \begin_layout Standard
@@ -30512,7 +30705,7 @@ headrulewidth}{thickness}
 \end_layout
 
 \begin_layout Standard
-Where thickness is a size in standard units like 
+where thickness is a size in standard units like 
 \family sans
 pt
 \family default
@@ -30565,7 +30758,28 @@ headheight
 \backslash
 footheight
 \series default
- in this scheme in your document preamble:
+ in this entry in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Lat
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+:
 \end_layout
 
 \begin_layout Standard
@@ -30579,10 +30793,10 @@ headheight}{height}
 \end_layout
 
 \begin_layout Standard
-Where height is a size in standard units.
+where height is a size in standard units.
  If you don't know which amount of space is needed for the height, define
- your header/footer and preview your document as PDF.
- Then open the LaTeX logfile via the menu 
+ your header/footer and preview your document as a PDF.
+ Then open the LaTeX logfile with the menu 
 \family sans
 Document\SpecialChar \menuseparator
 La
@@ -30598,7 +30812,7 @@ status collapsed
 
 TeX Log
 \family default
- and look via the button 
+ and use the button 
 \family sans
 Next
 \begin_inset space ~
@@ -30606,7 +30820,7 @@ Next
 
 Warning
 \family default
- if you find a warning of the package 
+ to see if you can find a warning about the package 
 \series bold
 fancyhdr
 \series default
@@ -30743,15 +30957,8 @@ pt
 
 \begin_layout Standard
 In principle you can use almost everything in headers/footers, except floats.
- For more special things like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-thumb-indexes, see the manual of the 
+ For more specialized features, for example, thumb-indexes, see the manual
+ of the 
 \series bold
 fancyhdr
 \series default
@@ -30938,6 +31145,27 @@ Size
 \end_layout
 
 \begin_layout Standard
+If you would like to see everything but your math formulas typeset by LaTeX,
+ set 
+\family sans
+Instant
+\begin_inset space ~
+\end_inset
+
+Preview
+\family default
+ to 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+math
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Previews are generated when you load a document into LyX and when you finish
  editing an inset.
 \end_layout
@@ -30961,7 +31189,7 @@ Display
 Graphics
 \family default
 .
- Reopening the documents will fix such problems.
+ Reopening the document will fix such problems.
 \end_layout
 
 \end_inset
@@ -31240,12 +31468,19 @@ View
 Source
 \family default
  and a window will be shown where you can see the LaTeX-source code.
- The window shows the source of the whole paragraph where the cursor is
- currently in.
+ The window shows the source of the whole paragraph in which the cursor
+ currently sits.
  You can also select document parts in LyX's main window, then only this
  selection (when it is more than one paragraph) is shown as source code.
  To view the whole document as source, enable the corresponding option in
  the source view window.
+ If you check 
+\family sans
+Automatic update
+\family default
+, you can see the changes as you make them in LyX; but note that if you
+ have several documents open, this will slow things down as LyX updates
+ them all, not just the one which is open at the time.
 \end_layout
 
 \begin_layout Section

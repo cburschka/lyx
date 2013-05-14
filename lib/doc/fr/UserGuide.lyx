@@ -30800,6 +30800,36 @@ Math
 s.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Each type of branch is allowed to have its specific style defined in layout
+ files (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+any branch inset can be automatically wrapped by your own LaTeX commands.).
+ For this advanced usage, see the 
+\emph on
+Customization
+\emph default
+ manual, section 
+\lang french
+
+\begin_inset Quotes fld
+\end_inset
+
+Flex insets and InsetLayout
+\begin_inset Quotes frd
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Section
 Propriétés du PDF
 \begin_inset CommandInset label
@@ -30845,28 +30875,165 @@ Paquetages LaTeX ! hyperref
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-En utilisant 
-\series bold
-hyperref
-\series default
-, toutes les références croisées seront transformées en liens dans les sorties
+ 
+\lang english
+which will link
+\lang french
+ toutes les références croisées seront transformées en liens dans les sorties
  DVI et PDF.
  Cela signifie que le lecteur de votre document pourra cliquer sur un élément
  de la table de matières ou sur une référence pour voir la partie du document
  référencée.
- Dans l'onglet 
+\end_layout
+
+\begin_layout Standard
+Les informations d'en-tête que vous pouvez entrer dans l'onglet 
+\family sans
+Général
+\family default
+ sont enregistrées dans le fichier PDF comme propriétés du fichier.
+ De nombreux programmes sont capables d'extraire ces informations pour par
+ exemple reconnaître automatiquement qui est l'auteur ou quel est le sujet
+ d'un PDF donné.
+ C'est très utilisé pour trier, classer ou utiliser les PDF pour des recherches
+ bibliographiques.
+ Quand l'option 
+\family sans
+Compléter automatiquement l'en-tête
+\family default
+ est activée, LyX essaie d'extraire les informations de l'en-tête à partir
+ du titre de votre document et des données sur l'auteur.
+ L'option 
+\family sans
+Charger en mode plein écran
+\family default
+ ouvrira le PDF en mode plein écran, ce qui est particulièrement utile pour
+ les présentations.
+\end_layout
+
+\begin_layout Standard
+Dans l'onglet 
 \family sans
 hyperlien
 \family default
  vous pouvez préciser l'aspect que devront avoir les liens et si des renvois
  bibliographiques doivent être créés.
- Ces renvois apparaîtront dans la bibliographie à la fin des différentes
- entrées, indiquant le numéro de la section, de la diapositive ou de la
- page du document où cette entrée est citée.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Break
+\begin_inset space ~
+\end_inset
+
+links
+\begin_inset space ~
+\end_inset
+
+over
+\begin_inset space ~
+\end_inset
+
+lines
+\family default
+ option allows long links to be split; 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+frames
+\begin_inset space ~
+\end_inset
+
+around
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ and 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ both turn off the default behavior of enclosing all links in frames; 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ colors the different links.
+ The default colors are:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color magenta
+\lang english
+magenta
+\color inherit
+ for hyperlinks and URLs
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+\lang english
+red
+\color inherit
+ for links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color green
+\lang english
+green
+\color inherit
+ for citations
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+but you can change these in the field 
+\family sans
+Additional options
+\family default
+.
+ For example, in this document they were changed with the additional options:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the option 
+\family sans
+Backreferences
+\family default
+ is set, the hyperlinks will appear in the bibliography after the different
+ entries
+\lang french
+, indiquant le numéro de la section, de la diapositive ou de la page du
+ document où cette entrée est citée.
 \end_layout
 
 \begin_layout Standard
@@ -30894,35 +31061,6 @@ Ouverture des signets
 
 1 n'affichera que les sections.
  
-\end_layout
-
-\begin_layout Standard
-Les informations d'en-tête que vous pouvez entrer dans l'onglet 
-\family sans
-Général
-\family default
- sont enregistrées dans le fichier PDF comme propriétés du fichier.
- De nombreux programmes sont capables d'extraire ces informations pour par
- exemple reconnaître automatiquement qui est l'auteur ou quel est le sujet
- d'un PDF donné.
- C'est très utilisé pour trier, classer ou utiliser les PDF pour des recherches
- bibliographiques.
- Quand l'option 
-\family sans
-Compléter automatiquement l'en-tête
-\family default
- est activée, LyX essaie d'extraire les informations de l'en-tête à partir
- du titre de votre document et des données sur l'auteur.
- 
-\end_layout
-
-\begin_layout Standard
-L'option 
-\family sans
-Charger en mode plein écran
-\family default
- ouvrira le PDF en mode plein écran, ce qui est particulièrement utile pour
- les présentations.
 \end_layout
 
 \begin_layout Standard
@@ -31211,6 +31349,32 @@ Paquetages LaTeX ! caption
 Document\SpecialChar \menuseparator
 Paramètres
 \family default
+\SpecialChar \menuseparator
+
+\family sans
+\lang english
+LaT
+\lang french
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\lang english
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+\lang french
 ) avec la commande
 \end_layout
 
@@ -31586,7 +31750,11 @@ Personnalisation en-têtes/pieds de page
 \end_inset
 
 .
- Ce module propose les 6 styles suivants:
+ Ce module propose les 6
+\begin_inset space ~
+\end_inset
+
+styles suivants:
 \end_layout
 
 \begin_layout Description
@@ -31847,6 +32015,37 @@ Mise en page avec en-tête et pied de page
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note
+\series default
+: some document classes implement their own customized page headers and
+ footers if 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+style
+\family default
+ is set to “Default”.
+ Check what these are before you specify your own customized page headers
+ and footers.
 \end_layout
 
 \end_inset
@@ -32446,10 +32645,9 @@ Préférences
 \family sans
 Apparence\SpecialChar \menuseparator
 Affichage écran.
-\end_layout
 
-\begin_layout Standard
-Activez ensuit 
+\family default
+ Activez ensuit 
 \family sans
 Aperçu
 \begin_inset space ~
@@ -32479,6 +32677,29 @@ de
 l'aperçu
 \family default
  est le facteur multiplicatif pour la taille.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you would like to see everything but your math formulas typeset by LaTeX,
+ set 
+\family sans
+Instant
+\begin_inset space ~
+\end_inset
+
+Preview
+\family default
+ to 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+math
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -32808,6 +33029,15 @@ source
 complet
 \family default
 .
+ 
+\lang english
+If you check 
+\family sans
+Automatic update
+\family default
+, you can see the changes as you make them in LyX; but note that if you
+ have several documents open, this will slow things down as LyX updates
+ them all, not just the one which is open at the time.
 \end_layout
 
 \begin_layout Section

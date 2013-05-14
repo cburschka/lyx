@@ -29917,6 +29917,36 @@ Ecuaciones
 .
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Each type of branch is allowed to have its specific style defined in layout
+ files (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+any branch inset can be automatically wrapped by your own LaTeX commands.).
+ For this advanced usage, see the 
+\emph on
+Customization
+\emph default
+ manual, section 
+\lang spanish
+
+\begin_inset Quotes fld
+\end_inset
+
+Flex insets and InsetLayout
+\begin_inset Quotes frd
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Section
 Propiedades PDF
 \begin_inset CommandInset label
@@ -29963,49 +29993,14 @@ LaTeX, paquetes ! hyperref
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-Utilizando 
-\series bold
-hyperref
-\series default
- se enlazan todas las referencias cruzadas en las salidas DVI y PDF.
+ 
+\lang english
+which will link 
+\lang spanish
+todas las referencias cruzadas en las salidas DVI y PDF.
  Esto significa que el lector puede desplazarse por las partes del documento
  referenciadas haciendo clic sobre una entrada del índice general o una
  referencia.
- En la pestaña 
-\family sans
-Hiperenlaces
-\family default
- del diálogo puedes especificar el aspecto de los enlaces y si se crean
- enlaces para las referencias bibliográficas.
- Estas aparecerán en la bibliografía detrás de las diferentes entradas,
- mostrando el número de la sección, transparencia o página donde la entrada
- está referenciada.
-\end_layout
-
-\begin_layout Standard
-En la pestaña 
-\family sans
-Marcadores
-\family default
- puedes determinar si se crean marcadores para cada sección del documento
- para facilitar al lector la navegación por el mismo.
- Puedes decidir si los marcadores se numeran o no como las secciones del
- documento.
- Con el nivel de marcadores abiertos puedes determinar qué niveles de sección
- deben mostrarse al abrir el PDF.
- Por ejemplo, un nivel
-\begin_inset space ~
-\end_inset
-
-2 mostrará las secciones y subsecciones, un nivel
-\begin_inset space ~
-\end_inset
-
-1 mostrará sólo las secciones.
 \end_layout
 
 \begin_layout Standard
@@ -30029,14 +30024,158 @@ Llenar automáticamente la información de cabecera
 \family default
 , LyX intenta extraer la información de cabecera a partir de la configuración
  del título y del autor del documento.
-\end_layout
-
-\begin_layout Standard
-La opción 
+ La opción 
 \family sans
 Modo pantalla completa
 \family default
  abre el PDF en pantalla completa, útil para presentaciones.
+\end_layout
+
+\begin_layout Standard
+En la pestaña 
+\family sans
+Hiperenlaces
+\family default
+ del diálogo puedes especificar el aspecto de los enlaces y si se crean
+ enlaces para las referencias bibliográficas.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Break
+\begin_inset space ~
+\end_inset
+
+links
+\begin_inset space ~
+\end_inset
+
+over
+\begin_inset space ~
+\end_inset
+
+lines
+\family default
+ option allows long links to be split; 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+frames
+\begin_inset space ~
+\end_inset
+
+around
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ and 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ both turn off the default behavior of enclosing all links in frames; 
+\family sans
+Color
+\begin_inset space ~
+\end_inset
+
+links
+\family default
+ colors the different links.
+ The default colors are:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color magenta
+\lang english
+magenta
+\color inherit
+ for hyperlinks and URLs
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+\lang english
+red
+\color inherit
+ for links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color green
+\lang english
+green
+\color inherit
+ for citations
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+but you can change these in the field 
+\family sans
+Additional options
+\family default
+.
+ For example, in this document they were changed with the additional options:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the option 
+\family sans
+Backreferences
+\family default
+ is set, the hyperlinks will appear in the bibliography after the different
+ entries
+\lang spanish
+, mostrando el número de la sección, transparencia o página donde la entrada
+ está referenciada.
+\end_layout
+
+\begin_layout Standard
+En la pestaña 
+\family sans
+Marcadores
+\family default
+ puedes determinar si se crean marcadores para cada sección del documento
+ para facilitar al lector la navegación por el mismo.
+ Puedes decidir si los marcadores se numeran o no como las secciones del
+ documento.
+ Con el nivel de marcadores abiertos puedes determinar qué niveles de sección
+ deben mostrarse al abrir el PDF.
+ Por ejemplo, un nivel
+\begin_inset space ~
+\end_inset
+
+2 mostrará las secciones y subsecciones, un nivel
+\begin_inset space ~
+\end_inset
+
+1 mostrará sólo las secciones.
 \end_layout
 
 \begin_layout Standard
@@ -30318,6 +30457,32 @@ LaTeX, paquetes ! caption
 Documento\SpecialChar \menuseparator
 Configuración
 \family default
+\SpecialChar \menuseparator
+
+\family sans
+\lang english
+LaT
+\lang spanish
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\lang english
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+\lang spanish
 ) con el comando
 \end_layout
 
@@ -30685,7 +30850,11 @@ Configuración\SpecialChar \menuseparator
 Módulos
 \family default
 .
- Este módulo ofrece 6 estilos:
+ Este módulo ofrece 6
+\begin_inset space ~
+\end_inset
+
+Sestilos:
 \end_layout
 
 \begin_layout Description
@@ -30974,6 +31143,45 @@ Diseño de página con encabezado y pie personalizados
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note
+\series default
+: some document classes implement their own customized page headers and
+ footers if 
+\family sans
+Page
+\begin_inset space ~
+\end_inset
+
+style
+\family default
+ is set to 
+\begin_inset Quotes fld
+\end_inset
+
+Default
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Check what these are before you specify your own customized page headers
+ and footers.
 \end_layout
 
 \end_inset
@@ -31514,6 +31722,29 @@ Tamaño de la vista
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+If you would like to see everything but your math formulas typeset by LaTeX,
+ set 
+\family sans
+Instant
+\begin_inset space ~
+\end_inset
+
+Preview
+\family default
+ to 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+math
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Las vistas se generan cuando cargas un documento en Lyx y cuando terminas
  de editar el objeto insertado.
 \end_layout
@@ -31808,6 +32039,15 @@ e al párrafo en el que se encuentre el cursor.
  También puedes seleccionar varios párrafos para ver su código.
  Para ver el código de todo el documento, marca la opción correspondiente
  en la ventana de código.
+ 
+\lang english
+If you check 
+\family sans
+Automatic update
+\family default
+, you can see the changes as you make them in LyX; but note that if you
+ have several documents open, this will slow things down as LyX updates
+ them all, not just the one which is open at the time.
 \end_layout
 
 \begin_layout Section
