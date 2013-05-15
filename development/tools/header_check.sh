@@ -36,7 +36,7 @@ LOG_FILE="$(basename $0).log"
 # require headers not needed on win/linux. So check the logs before
 # deleting "redundant" standard libraries, Qt headers or includes around
 # various ifdefs...
-EXCLUDE='\(debug.h\|cstdio\|config\)'
+EXCLUDE='\(debug.h\|cstdio\|config.h\)'
 
 NCORES=$(grep "CPU" /proc/cpuinfo | wc -l)
 
@@ -45,15 +45,18 @@ function BUILD_FN ()
 	PREFIX=''
 
 	# This is not a clean make.
-	IFS='' ERROR_OUTPUT=$(make -j${NCORES} 2>&1)
+	make -j${NCORES} 2>&1 > /dev/null
 	ERROR_CODE=$?
 
-	# Without the grep, ERROR_OUTPUT might contain messages such as:
-	# 2885 translated messages, 2169 fuzzy translations, 1356 untranslated messages.
-	ERROR_OUTPUT=$(echo "${ERROR_OUTPUT}" | grep -i "error: ")
 
 	# The sed regex is more strict than it needs to be.
 	if (( ERROR_CODE != 0 )); then
+		# Use just one core, so we don't mix outputs
+		IFS='' ERROR_OUTPUT=$(make 2>&1)
+		# Without the grep, ERROR_OUTPUT might contain messages such as:
+		# 2885 translated messages, 2169 fuzzy translations, 1356 untranslated messages.
+		ERROR_OUTPUT=$(echo "${ERROR_OUTPUT}" | grep -i "error: ")
+	
 		cppORh=$(echo "${ERROR_OUTPUT}" | head -n 1 | \
 			sed 's/.*\.\(cpp\|h\):[0-9]\+:[0-9]\+: error: .*/\1/')
 		if [ "${cppORh}" = "cpp" ]; then
