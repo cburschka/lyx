@@ -20,10 +20,12 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 elseif(MSVC)
   set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /FORCE:MULTIPLE")
 else()
-  message(STATUS "Allow multiple definitions for cxx-compiler ${CMAKE_CXX_COMPILER_ID} not handled")
-endif()
+	  message(STATUS "Allow multiple definitions for cxx-compiler ${CMAKE_CXX_COMPILER_ID} not handled")
+	endif()
 
-target_link_libraries(check_layout support ${QT_QTMAIN_LIBRARY} ${intl_link})
+	target_link_libraries(check_layout support ${intl_link}
+			${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY}
+		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 add_dependencies(lyx_run_tests check_layout)
 set_target_properties(check_layout PROPERTIES FOLDER "tests/src")
 
