@@ -1,4 +1,9 @@
-﻿Changelog for LyX-206-1:
+﻿Changelog for LyX-206-2:
+- fix bug that View/Export a file as HTML did not work.
+
+
+Changelog for LyX-206-1:
+- installs LyX 2.0.6
 - support for Vietnamese, Thai, Serbian Cyrillic and Mongolian will now
   automatically be installed to MiKTeX
 - language support files for Belarusian and Hungarian are now included
@@ -11,10 +16,11 @@
   Slovakian and Swedish
   (To benefit from them you must uninstall an already installed LyX 2.0.x and
    then use this installer.)
-- updated thesaurus for Italian, Norwegian (Bokmal), Portuguese, Romanian,
+- updated thesaurus for Italian, Norwegian(Bokmal), Portuguese, Romanian,
   Slovakian and Slovenian
   (need to reinstall LyX to benefit from this)
 - updated to Python 2.7.4
+
 
 Changelog for LyX-2051-5:
 - Fix broken importing of TeX files to LyX
