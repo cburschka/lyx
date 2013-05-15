@@ -26,9 +26,9 @@ set -u
 LOG_FILE="$(basename $0).log"
 
 # For only standard headers:
-  PATTERN='^#include <'
+# PATTERN='^#include <'
 # For all headers:
-# PATTERN='^#include'
+  PATTERN='^#include'
 
 # Exclude common headers with regex
 # (e.g. 'debug.h' will exclude 'support/debug.h')
@@ -45,7 +45,7 @@ function BUILD_FN ()
 	PREFIX=''
 
 	# This is not a clean make.
-	make -j${NCORES} 2>&1 > /dev/null
+	make -j${NCORES} 2>/dev/null 1>/dev/null
 	ERROR_CODE=$?
 
 
@@ -78,7 +78,7 @@ make -j${NCORES} 2>&1 >/dev/null || exit
 echo "BUILD_FN exited without error after removing the following include statements invididually:" > "${LOG_FILE}" \
 || { echo "ERROR: could not create log file, ${LOG_FILE}"; exit 1; }
 
-find -regex ".*\(cpp\|h\)$" | \
+find -regex ".*\(cpp\|h\)$" |  grep -vE "frontends/qt4/ui_|frontends/qt4/moc_" | sort |
 while read FILE_
 do
 	FILE_COPY=$( tempfile )
@@ -99,7 +99,9 @@ do
 			if [ "${BUILD_FN_RET}" = 0 ]; then
 				echo "${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
 			elif [ -n "${PREFIX}" ]; then
-				echo "${PREFIX}${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+				if [ ${FILE_:(-2):2} == .h ]; then
+					echo "${PREFIX}${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+				fi
 			fi
 		fi
 	done
