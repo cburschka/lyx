@@ -4093,6 +4093,40 @@ def revert_starred_caption(document):
       i = i + 1
 
 
+def revert_forced_local_layout(document):
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_forced_local_layout", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_forced_local_layout", "\\end_forced_local_layout")
+        if j == -1:
+            # this should not happen
+            break
+        regexp = re.compile(r'\s*forcelocal', re.IGNORECASE)
+        k = find_re(document.header, regexp, i, j)
+        while k != -1:
+            del document.header[k]
+            j = j - 1
+            k = find_re(document.header, regexp, i, j)
+        k = find_token(document.header, "\\begin_local_layout", 0)
+        if k == -1:
+            document.header[i] = "\\begin_local_layout"
+            document.header[j] = "\\end_local_layout"
+        else:
+            l = find_end_of(document.header, k, "\\begin_local_layout", "\\end_local_layout")
+            if j == -1:
+                # this should not happen
+                break
+            lines = document.header[i+1 : j]
+            if k > i:
+                document.header[k+1 : k+1] = lines
+                document.header[i   : j  ] = []
+            else:
+                document.header[i   : j  ] = []
+                document.header[k+1 : k+1] = lines
+
+
 ##
 # Conversion hub
 #
@@ -4154,10 +4188,12 @@ convert = [
            [466, []],
            [467, []],
            [468, []],
-           [469, []]
+           [469, []],
+           [470, []] 
           ]
 
 revert =  [
+           [469, [revert_forced_local_layout]],
            [468, [revert_starred_caption]],
            [467, [revert_mbox_fbox]],
            [466, [revert_iwona_fonts]],

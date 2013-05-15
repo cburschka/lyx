@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-05-15 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 470
+	  forced local layouts for future layout backward compatibility:
+	  \begin_forced_local_layout, \end_forced_local_layout
+
 2013-03-23 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 469
 	  support for \caption* in longtables (fix bug 3209)

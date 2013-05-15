@@ -162,6 +162,10 @@ public:
 	void clearLayoutModules() { layout_modules_.clear(); }
 	/// Clear the removed module list
 	void clearRemovedModules() { removed_modules_.clear(); }
+	/// Get the local layouts
+	std::string getLocalLayout(bool) const;
+	/// Set the local layouts
+	void setLocalLayout(std::string const &, bool);
 
 	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;
@@ -304,8 +308,6 @@ public:
 	Encoding const & encoding() const;
 	///
 	std::string preamble;
-	///
-	std::string local_layout;
 	///
 	std::string options;
 	/// use the class options defined in the layout?
@@ -483,7 +485,7 @@ private:
 	///
 	void readPreamble(Lexer &);
 	///
-	void readLocalLayout(Lexer &);
+	void readLocalLayout(Lexer &, bool);
 	///
 	void readLanguage(Lexer &);
 	///
@@ -513,6 +515,10 @@ private:
 	/// this is for modules that are required by the document class but that
 	/// the user has chosen not to use
 	std::list<std::string> removed_modules_;
+	/// The local layouts without the forced ones
+	std::string local_layout_;
+	/// Forced local layouts only for reading (use getLocalLayout() instead)
+	std::string forced_local_layout_;
 
 	/// the list of included children (for includeonly)
 	std::list<std::string> included_children_;

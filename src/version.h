@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 469 // gb: \caption*{}
-#define LYX_FORMAT_TEX2LYX 469 // gb: \caption*{}
+#define LYX_FORMAT_LYX 470 // gb: new tag begin_forced_local_layout/end_forced_local_layout
+#define LYX_FORMAT_TEX2LYX 470 // gb: new tag begin_forced_local_layout/end_forced_local_layout
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

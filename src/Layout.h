@@ -310,9 +310,23 @@ public:
 
 	/// Is this spellchecked?
 	bool spellcheck;
+	/**
+	 * Should this layout definition always be written to the document preamble?
+	 * Possible values are:
+	 *   0: Do not enforce local layout
+	 * >=1: Enforce local layout with version forcelocal
+	 *  -1: Enforce local layout with infinite version
+	 * On reading, the forced local layout is only used if its version
+	 * number is greater than the version number of the same layout in the
+	 * document class. Otherwise, it is ignored.
+	 */
+	int forcelocal;
 
 
 private:
+	/// Reads a layout definition from file
+	/// \return true on success.
+	bool readIgnoreForcelocal(Lexer &, TextClass const &);
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
 	///

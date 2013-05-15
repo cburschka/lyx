@@ -627,7 +627,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
-		readLocalLayout(lex);
+		readLocalLayout(lex, false);
+	} else if (token == "\\begin_forced_local_layout") {
+		readLocalLayout(lex, true);
 	} else if (token == "\\begin_modules") {
 		readModules(lex);
 	} else if (token == "\\begin_removed_modules") {
@@ -990,12 +992,21 @@ void BufferParams::writeFile(ostream & os) const
 	   << convert<string>(maintain_unincluded_children) << '\n';
 
 	// local layout information
+	string const local_layout = getLocalLayout(false);
 	if (!local_layout.empty()) {
 		// remove '\n' from the end
 		string const tmplocal = rtrim(local_layout, "\n");
 		os << "\\begin_local_layout\n"
 		   << tmplocal
 		   << "\n\\end_local_layout\n";
+	}
+	string const forced_local_layout = getLocalLayout(true);
+	if (!forced_local_layout.empty()) {
+		// remove '\n' from the end
+		string const tmplocal = rtrim(forced_local_layout, "\n");
+		os << "\\begin_forced_local_layout\n"
+		   << tmplocal
+		   << "\n\\end_forced_local_layout\n";
 	}
 
 	// then the text parameters
@@ -2102,13 +2113,15 @@ void BufferParams::makeDocumentClass()
 
 	doc_class_ = getDocumentClass(*baseClass(), mods);
 
-	if (!local_layout.empty()) {
-		TextClass::ReturnValues success =
-			doc_class_->read(local_layout, TextClass::MODULE);
-		if (success != TextClass::OK && success != TextClass::OK_OLDFORMAT) {
-			docstring const msg = _("Error reading internal layout information");
-			frontend::Alert::warning(_("Read Error"), msg);
-		}
+	TextClass::ReturnValues success = TextClass::OK;
+	if (!forced_local_layout_.empty())
+		success = doc_class_->read(forced_local_layout_, TextClass::MODULE);
+	if (!local_layout_.empty() &&
+	    (success == TextClass::OK || success == TextClass::OK_OLDFORMAT))
+		success = doc_class_->read(local_layout_, TextClass::MODULE);
+	if (success != TextClass::OK && success != TextClass::OK_OLDFORMAT) {
+		docstring const msg = _("Error reading internal layout information");
+		frontend::Alert::warning(_("Read Error"), msg);
 	}
 }
 
@@ -2122,6 +2135,24 @@ bool BufferParams::layoutModuleCanBeAdded(string const & modName) const
 bool BufferParams::citationModuleCanBeAdded(string const & modName) const
 {
 	return cite_engine_.moduleCanBeAdded(modName, baseClass());
+}
+
+
+std::string BufferParams::getLocalLayout(bool forced) const
+{
+	if (forced)
+		return doc_class_->forcedLayouts();
+	else
+		return local_layout_;
+}
+
+
+void BufferParams::setLocalLayout(string const & layout, bool forced)
+{
+	if (forced)
+		forced_local_layout_ = layout;
+	else
+		local_layout_ = layout;
 }
 
 
@@ -2342,13 +2373,19 @@ void BufferParams::readPreamble(Lexer & lex)
 }
 
 
-void BufferParams::readLocalLayout(Lexer & lex)
+void BufferParams::readLocalLayout(Lexer & lex, bool forced)
 {
-	if (lex.getString() != "\\begin_local_layout")
+	string const expected = forced ? "\\begin_forced_local_layout" :
+	                                 "\\begin_local_layout";
+	if (lex.getString() != expected)
 		lyxerr << "Error (BufferParams::readLocalLayout):"
 			"consistency check failed." << endl;
 
-	local_layout = lex.getLongString("\\end_local_layout");
+	if (forced)
+		forced_local_layout_ =
+			lex.getLongString("\\end_forced_local_layout");
+	else
+		local_layout_ = lex.getLongString("\\end_local_layout");
 }
 
 

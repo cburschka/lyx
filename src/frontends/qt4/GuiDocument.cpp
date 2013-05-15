@@ -517,7 +517,7 @@ LocalLayout::LocalLayout() : current_id_(0), validated_(false)
 
 void LocalLayout::update(BufferParams const & params, BufferId id)
 {
-	QString layout = toqstr(params.local_layout);
+	QString layout = toqstr(params.getLocalLayout(false));
 	// Nothing to do if the params and preamble are unchanged.
 	if (id == current_id_
 		&& layout == locallayoutTE->document()->toPlainText())
@@ -533,7 +533,7 @@ void LocalLayout::update(BufferParams const & params, BufferId id)
 void LocalLayout::apply(BufferParams & params)
 {
 	string const layout = fromqstr(locallayoutTE->document()->toPlainText());
-	params.local_layout = layout;
+	params.setLocalLayout(layout, false);
 }
 
 

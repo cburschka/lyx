@@ -399,6 +399,8 @@ public:
 	/// add a new layout \c name if it does not exist in layoutlist_
 	/// \return whether we had to add one.
 	bool addLayoutIfNeeded(docstring const & name) const;
+	/// Forced layouts in layout file syntax
+	std::string forcedLayouts() const;
 
 	///////////////////////////////////////////////////////////////////
 	// accessors

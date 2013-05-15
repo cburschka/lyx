@@ -154,6 +154,9 @@ import os, re, string, sys
 # Incremented to format 45, 12 February 2013 by rgh
 # New Tag "NoInsetLayout"
 
+# Incremented to format 46, 15 May 2013 by gb
+# New Tag "ForceLocal"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -161,7 +164,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 45
+currentFormat = 46
 
 
 def usage(prog_name):
@@ -355,7 +358,7 @@ def convert(lines):
                     # nothing to do
                     return format
                 else:
-                    error('Cannot convert file format %s' % format)
+                    error('Cannot convert file format %s to %s' % (format, currentFormat))
             else:
                 lines.insert(i, "Format 2")
                 only_comment = 0
@@ -378,7 +381,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 44:
+        if format == 44 or format == 45:
             # nothing to do.
             i += 1
             continue

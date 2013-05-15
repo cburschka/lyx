@@ -104,6 +104,7 @@ enum LayoutTags {
 	LT_REFPREFIX,
 	LT_RESETARGS,
 	LT_RIGHTDELIM,
+	LT_FORCELOCAL,
 	LT_INTITLE // keep this last!
 };
 
@@ -145,11 +146,32 @@ Layout::Layout()
 	htmlforcecss_ = false;
 	htmltitle_ = false;
 	spellcheck = true;
+	forcelocal = 0;
 	itemcommand_ = "item";
 }
 
 
 bool Layout::read(Lexer & lex, TextClass const & tclass)
+{
+	// If this is an empty layout, or if no force local version is set,
+	// we know that we will not discard the stuff to read
+	if (forcelocal == 0)
+		return readIgnoreForcelocal(lex, tclass);
+	Layout tmp(*this);
+	tmp.forcelocal = 0;
+	bool const ret = tmp.readIgnoreForcelocal(lex, tclass);
+	// Keep the stuff if
+	// - the read version is higher
+	// - both versions are infinity (arbitrary decision)
+	// - the file did not contain any local version (needed for not
+	//   skipping user defined local layouts)
+	if (tmp.forcelocal <= 0 || tmp.forcelocal > forcelocal)
+		*this = tmp;
+	return ret;
+}
+
+
+bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	LexerKeyword layoutTags[] = {
@@ -166,6 +188,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
 		{ "font",           LT_FONT },
+		{ "forcelocal",     LT_FORCELOCAL },
 		{ "freespacing",    LT_FREE_SPACING },
 		{ "htmlattr",       LT_HTMLATTR },
 		{ "htmlforcecss",   LT_HTMLFORCECSS },
@@ -581,6 +604,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_SPELLCHECK:
 			lex >> spellcheck;
+			break;
+
+		case LT_FORCELOCAL:
+			lex >> forcelocal;
 			break;
 		}
 	}
@@ -1093,17 +1120,17 @@ void Layout::write(ostream & os) const
 	if (!preamble_.empty())
 		os << "\tPreamble\n\t"
 		   << to_utf8(subst(rtrim(preamble_, "\n"),
-		                          from_ascii("\n"), from_ascii("\n\t")))
+		                    from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndPreamble\n";
 	if (!langpreamble_.empty())
 		os << "\tLangPreamble\n\t"
 		   << to_utf8(subst(rtrim(langpreamble_, "\n"),
-		                          from_ascii("\n"), from_ascii("\n\t")))
+		                    from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndLangPreamble\n";
 	if (!babelpreamble_.empty())
 		os << "\tBabelPreamble\n\t"
 		   << to_utf8(subst(rtrim(babelpreamble_, "\n"),
-		                          from_ascii("\n"), from_ascii("\n\t")))
+		                    from_ascii("\n"), from_ascii("\n\t")))
 		   << "\n\tEndBabelPreamble\n";
 	switch (labeltype) {
 	case LABEL_ABOVE:
@@ -1290,6 +1317,7 @@ void Layout::write(ostream & os) const
 		   << "\n\tEndPreamble\n";
 	os << "\tHTMLTitle " << htmltitle_ << "\n"
 	      "\tSpellcheck " << spellcheck << "\n"
+	      "\tForceLocal " << forcelocal << "\n"
 	      "End\n";
 }
 

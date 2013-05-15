@@ -61,7 +61,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 45; // rgh: New Tag "NoInsetLayout"
+int const LAYOUT_FORMAT = 46; // gb: New Tag "ForceLocal"
 
 namespace {
 
@@ -1373,6 +1373,24 @@ bool DocumentClass::addLayoutIfNeeded(docstring const & n) const
 
 	layoutlist_.push_back(createBasicLayout(n, true));
 	return true;
+}
+
+
+string DocumentClass::forcedLayouts() const
+{
+	ostringstream os;
+	bool first = true;
+	const_iterator const e = end();
+	for (const_iterator i = begin(); i != e; ++i) {
+		if (i->forcelocal > 0) {
+			if (first) {
+				os << "Format " << LAYOUT_FORMAT << '\n';
+				first = false;
+			}
+			i->write(os);
+		}
+	}
+	return os.str();
 }
 
 

@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 470
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11901,6 +11901,77 @@ LabelFont
 \end_inset
 
 .
+\change_inserted -195340706 1364753581
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1364753581
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1364753581
+ForceLocal n
+\end_layout
+
+\end_inset
+
+ Used for backporting new styles to stable LyX versions.
+ The first stable version that supports this tag is LyX 2.1.0.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1364753581
+n
+\end_layout
+
+\end_inset
+
+ is a number which may either be 0 (this is the default if the tag is not
+ given), -1 or any value greater than zero.
+ If the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1364753581
+ForceLocal
+\end_layout
+
+\end_inset
+
+ flag of a style is greater than zero, it will always be written to the
+ document header.
+ If a .lyx file is read, the style definitions from the document header are
+ added to the document class.
+ Therefore even older versions can handle the style.
+ The argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1364753581
+ForceLocal
+\end_layout
+
+\end_inset
+
+ is a version number: If such a style is read, and the version number is
+ less than the version number of the already existing style in the document
+ class, the new style is ignored.
+ If the version number is higher, the new style replaces the existing style.
+ A value of -1 means an infinite version number, i.e.
+ it is always used.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
