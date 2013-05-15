@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Typical usage: cd src; ../development/tools/header_check.sh
+
 # file header_check.sh
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -32,9 +34,9 @@ LOG_FILE="$(basename $0).log"
 # (e.g. 'debug.h' will exclude 'support/debug.h')
 # LyX was compiled on exotic environments and these sometimes
 # require headers not needed on win/linux. So check the logs before
-# deleting "redundant" standard libraries or includes around various
-# ifdefs...
-EXCLUDE='\(debug.h\|cstdio\)'
+# deleting "redundant" standard libraries, Qt headers or includes around
+# various ifdefs...
+EXCLUDE='\(debug.h\|cstdio\|config\)'
 
 NCORES=$(grep "CPU" /proc/cpuinfo | wc -l)
 
@@ -43,12 +45,12 @@ function BUILD_FN ()
 	PREFIX=''
 
 	# This is not a clean make.
-	IFS='' ERROR_OUTPUT=$(make -j${NCORES} 2>&1 >/dev/null)
+	IFS='' ERROR_OUTPUT=$(make -j${NCORES} 2>&1)
 	ERROR_CODE=$?
 
 	# Without the grep, ERROR_OUTPUT might contain messages such as:
 	# 2885 translated messages, 2169 fuzzy translations, 1356 untranslated messages.
-	ERROR_OUTPUT=$(echo "${ERROR_OUTPUT}" | grep -i "error")
+	ERROR_OUTPUT=$(echo "${ERROR_OUTPUT}" | grep -i "error: ")
 
 	# The sed regex is more strict than it needs to be.
 	if (( ERROR_CODE != 0 )); then
@@ -60,13 +62,17 @@ function BUILD_FN ()
 			echo -e "Warning: the error was not parsed correctly."\
 				"\nThe following string was expected to be"\
 				"'.cpp' or '.h': \n ${cppORh}" >&2
+			echo ERROR_OUTPUT: "${ERROR_OUTPUT}"
+			echo cppORh: "${cppORh}"
 		fi
 	fi
 	return "${ERROR_CODE}"
 }
 
-echo "BUILD_FN exited without error after removing
-the following include statements invididually:" > "${LOG_FILE}" \
+echo Making the tree first...
+make -j${NCORES} 2>&1 >/dev/null || exit
+
+echo "BUILD_FN exited without error after removing the following include statements invididually:" > "${LOG_FILE}" \
 || { echo "ERROR: could not create log file, ${LOG_FILE}"; exit 1; }
 
 find -regex ".*\(cpp\|h\)$" | \
@@ -75,10 +81,11 @@ do
 	FILE_COPY=$( tempfile )
 	cp "${FILE_}" "${FILE_COPY}" \
 		|| { echo "ERROR: bu copy failed" >&2; exit 1; }
-	echo "processing ${FILE_}..."
+	echo -n "processing ${FILE_}..."
 	grep "${PATTERN}" "${FILE_}" | \
 	while read INCLUDE
 	do
+		echo -n ${INCLUDE},
 		if echo "${INCLUDE}" | grep -q -v "${EXCLUDE}"; then
 			cp "${FILE_COPY}" "${FILE_}" \
 				|| { echo "ERROR: restore copy failed" >&2; exit 1; }
@@ -93,5 +100,6 @@ do
 			fi
 		fi
 	done
+	echo 
 	cp "${FILE_COPY}" "${FILE_}"
 done
