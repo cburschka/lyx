@@ -37,6 +37,9 @@ foreach(_src ${check_PROGRAMS})
 	sources(${_src} ${_src}.cpp dummy_functions.cpp boost.cpp)
 	string(REPLACE "check_" "" _srcx ${_src})
 	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
+	if (MSVC AND EXISTS "${src_data_file}.MSVC")
+		set(src_data_file "${src_data_file}.MSVC")
+	endif()
 	set(created_data_file "${CMAKE_CURRENT_BINARY_DIR}/regfiles/${_src}_data")
         add_test(NAME support/${_srcx}
           COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:${_src}>
