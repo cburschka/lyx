@@ -36,10 +36,33 @@ LOG_FILE="$(basename $0).log"
 # ifdefs...
 EXCLUDE='\(debug.h\|cstdio\)'
 
+NCORES=$(grep "CPU" /proc/cpuinfo | wc -l)
+
 function BUILD_FN ()
 {
+	PREFIX=''
+
 	# This is not a clean make.
-	make -j$(grep "CPU" /proc/cpuinfo | wc -l)
+	IFS='' ERROR_OUTPUT=$(make -j${NCORES} 2>&1 >/dev/null)
+	ERROR_CODE=$?
+
+	# Without the grep, ERROR_OUTPUT might contain messages such as:
+	# 2885 translated messages, 2169 fuzzy translations, 1356 untranslated messages.
+	ERROR_OUTPUT=$(echo "${ERROR_OUTPUT}" | grep -i "error")
+
+	# The sed regex is more strict than it needs to be.
+	if (( ERROR_CODE != 0 )); then
+		cppORh=$(echo "${ERROR_OUTPUT}" | head -n 1 | \
+			sed 's/.*\.\(cpp\|h\):[0-9]\+:[0-9]\+: error: .*/\1/')
+		if [ "${cppORh}" = "cpp" ]; then
+			PREFIX='suspicious: '
+		elif [ "${cppORh}" != "h" ]; then
+			echo -e "Warning: the error was not parsed correctly."\
+				"\nThe following string was expected to be"\
+				"'.cpp' or '.h': \n ${cppORh}" >&2
+		fi
+	fi
+	return "${ERROR_CODE}"
 }
 
 echo "BUILD_FN exited without error after removing
@@ -60,7 +83,14 @@ do
 			cp "${FILE_COPY}" "${FILE_}" \
 				|| { echo "ERROR: restore copy failed" >&2; exit 1; }
 			sed -i "s@${INCLUDE}@@" "${FILE_}"
-			( BUILD_FN ) &>/dev/null && echo "${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+
+			BUILD_FN
+			BUILD_FN_RET=$?
+			if [ "${BUILD_FN_RET}" = 0 ]; then
+				echo "${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+			elif [ -n "${PREFIX}" ]; then
+				echo "${PREFIX}${FILE_}::${INCLUDE}" >> "${LOG_FILE}"
+			fi
 		fi
 	done
 	cp "${FILE_COPY}" "${FILE_}"
