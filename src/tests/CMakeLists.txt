@@ -23,9 +23,9 @@ else()
 	  message(STATUS "Allow multiple definitions for cxx-compiler ${CMAKE_CXX_COMPILER_ID} not handled")
 	endif()
 
-	target_link_libraries(check_layout support ${intl_link}
-			${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
-		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
+target_link_libraries(check_layout support ${intl_link}
+  ${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
+  ${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 add_dependencies(lyx_run_tests check_layout)
 set_target_properties(check_layout PROPERTIES FOLDER "tests/src")
 
