@@ -14,8 +14,6 @@
 
 #include "Buffer.h"
 
-#include "support/FileName.h"
-
 #include <QObject>
 #include <QThread>
 #include <QTimer>

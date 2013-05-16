@@ -16,8 +16,6 @@
 
 #include "Dimension.h"
 
-#include "support/types.h"
-
 #include <map>
 
 namespace lyx {

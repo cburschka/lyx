@@ -15,8 +15,6 @@
 #include "OutputEnums.h"
 #include "OutputParams.h"
 
-#include "insets/InsetCode.h"
-
 #include "support/strfwd.h"
 #include "support/types.h"
 

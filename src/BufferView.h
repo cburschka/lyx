@@ -18,7 +18,6 @@
 #include "DocumentClassPtr.h"
 #include "update_flags.h"
 
-#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 

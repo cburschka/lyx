@@ -19,8 +19,6 @@
 #include "FontEnums.h"
 #include "SpellChecker.h"
 
-#include "insets/InsetCode.h"
-
 #include "support/strfwd.h"
 #include "support/types.h"
 

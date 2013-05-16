@@ -18,7 +18,6 @@
 #ifndef LYXRC_H
 #define LYXRC_H
 
-#include "paper.h"
 #include "Length.h"
 
 #include "support/strfwd.h"

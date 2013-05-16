@@ -18,7 +18,6 @@
 #include "FontInfo.h"
 
 #include "support/strfwd.h"
-#include "support/types.h"
 
 #include <string>
 

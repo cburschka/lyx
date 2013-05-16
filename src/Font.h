@@ -15,7 +15,6 @@
 #ifndef FONT_H
 #define FONT_H
 
-#include "ColorCode.h"
 #include "FontInfo.h"
 
 #include "support/strfwd.h"
