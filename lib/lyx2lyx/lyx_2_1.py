@@ -515,6 +515,31 @@ def revert_cite_engine_type(document):
     document.header[i] = "\\cite_engine natbib_" + engine_type
 
 
+def convert_cite_engine_type_default(document):
+    "Convert \\cite_engine_type to default for the basic citation engine."
+    i = find_token(document.header, "\\cite_engine basic", 0)
+    if i == -1:
+        return
+    i = find_token(document.header, "\\cite_engine_type" , 0)
+    if i == -1:
+        return
+    document.header[i] = "\\cite_engine_type default"
+
+
+def revert_cite_engine_type_default(document):
+    """Revert \\cite_engine_type default.
+
+    Revert to numerical for the basic cite engine, otherwise to authoryear."""
+    engine_type = "authoryear"
+    i = find_token(document.header, "\\cite_engine_type default" , 0)
+    if i == -1:
+        return
+    j = find_token(document.header, "\\cite_engine basic", 0)
+    if j != -1:
+        engine_type = "numerical"
+    document.header[i] = "\\cite_engine_type " + engine_type
+
+
 # this is the same, as revert_use_cancel() except for the default
 def revert_cancel(document):
     "add cancel to the preamble if necessary"
@@ -4189,10 +4214,12 @@ convert = [
            [467, []],
            [468, []],
            [469, []],
-           [470, []] 
+           [470, []],
+           [471, [convert_cite_engine_type_default]],
           ]
 
 revert =  [
+           [470, [revert_cite_engine_type_default]],
            [469, [revert_forced_local_layout]],
            [468, [revert_starred_caption]],
            [467, [revert_mbox_fbox]],

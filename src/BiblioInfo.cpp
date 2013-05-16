@@ -985,7 +985,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 {
 	collectCitedEntries(buf);
 	CiteEngineType const engine_type = buf.params().citeEngineType();
-	bool const numbers = (engine_type == ENGINE_TYPE_NUMERICAL);
+	bool const numbers = (engine_type & ENGINE_TYPE_NUMERICAL);
 
 	int keynumber = 0;
 	char modifier = 0;

@@ -267,6 +267,7 @@ CiteEngineTypeTranslator const init_citeenginetypetranslator()
 {
 	CiteEngineTypeTranslator translator("authoryear", ENGINE_TYPE_AUTHORYEAR);
 	translator.addPair("numerical", ENGINE_TYPE_NUMERICAL);
+	translator.addPair("default", ENGINE_TYPE_DEFAULT);
 	return translator;
 }
 
@@ -360,7 +361,7 @@ BufferParams::BufferParams()
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
 	cite_engine_.push_back("basic");
-	cite_engine_type_ = ENGINE_TYPE_NUMERICAL;
+	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;

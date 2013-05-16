@@ -962,6 +962,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 		cite_styles_[ENGINE_TYPE_AUTHORYEAR].clear();
 	if (type & ENGINE_TYPE_NUMERICAL)
 		cite_styles_[ENGINE_TYPE_NUMERICAL].clear();
+	if (type & ENGINE_TYPE_DEFAULT)
+		cite_styles_[ENGINE_TYPE_DEFAULT].clear();
 	string def;
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -1001,6 +1003,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 			cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
 		if (type & ENGINE_TYPE_NUMERICAL)
 			cite_styles_[ENGINE_TYPE_NUMERICAL].push_back(cs);
+		if (type & ENGINE_TYPE_DEFAULT)
+			cite_styles_[ENGINE_TYPE_DEFAULT].push_back(cs);
 	}
 	return getout;
 }
@@ -1008,8 +1012,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 
 int TextClass::readCiteEngineType(Lexer & lexrc) const
 {
-	int const ENGINE_TYPE_DEFAULT =
-		ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL;
+	LATTEST(ENGINE_TYPE_DEFAULT ==
+		(ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL));
 	if (!lexrc.next()) {
 		lexrc.printError("No cite engine type given for token: `$$Token'.");
 		return ENGINE_TYPE_DEFAULT;
@@ -1050,11 +1054,15 @@ bool TextClass::readCiteFormat(Lexer & lexrc)
 				cite_macros_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
 			if (type & ENGINE_TYPE_NUMERICAL)
 				cite_macros_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+			if (type & ENGINE_TYPE_DEFAULT)
+				cite_macros_[ENGINE_TYPE_DEFAULT][etype] = definition;
 		} else {
 			if (type & ENGINE_TYPE_AUTHORYEAR)
 				cite_formats_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
 			if (type & ENGINE_TYPE_NUMERICAL)
 				cite_formats_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+			if (type & ENGINE_TYPE_DEFAULT)
+				cite_formats_[ENGINE_TYPE_DEFAULT][etype] = definition;
 		}
 	}
 	return true;

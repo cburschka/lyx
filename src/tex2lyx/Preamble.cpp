@@ -451,7 +451,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_biblio_style            = "plain";
 	h_bibtex_command          = "default";
 	h_cite_engine             = "basic";
-	h_cite_engine_type        = "numerical";
+	h_cite_engine_type        = "default";
 	h_color                   = "#008000";
 	h_defskip                 = "medskip";
 	//h_float_placement;

@@ -22,6 +22,7 @@ class Buffer;
 enum CiteEngineType {
 	ENGINE_TYPE_AUTHORYEAR = 1,
 	ENGINE_TYPE_NUMERICAL = 2,
+	ENGINE_TYPE_DEFAULT = 3,
 };
 
 

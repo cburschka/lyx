@@ -2251,6 +2251,7 @@ void GuiDocument::updateEngineType(string const & items, CiteEngineType const & 
 			biblioModule->citeStyleCO->setCurrentIndex(0);
 			break;
 		case ENGINE_TYPE_NUMERICAL:
+		case ENGINE_TYPE_DEFAULT:
 			biblioModule->citeStyleCO->setCurrentIndex(1);
 			break;
 	}
@@ -2514,9 +2515,11 @@ void GuiDocument::applyView()
 		bp_.setCiteEngine("natbib");
 	else if (biblioModule->citeJurabibRB->isChecked())
 		bp_.setCiteEngine("jurabib");
-	else
+	if (biblioModule->citeDefaultRB->isChecked()) {
 		bp_.setCiteEngine("basic");
-
+		bp_.setCiteEngineType(ENGINE_TYPE_DEFAULT);
+	}
+	else
 	if (biblioModule->citeStyleCO->currentIndex())
 		bp_.setCiteEngineType(ENGINE_TYPE_NUMERICAL);
 	else
@@ -2923,7 +2926,7 @@ void GuiDocument::paramsToDialog()
 		cite_engine == "natbib");
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		bp_.citeEngineType() == ENGINE_TYPE_NUMERICAL);
+		bp_.citeEngineType() & ENGINE_TYPE_NUMERICAL);
 
 	updateEngineType(documentClass().opt_enginetype(),
 		bp_.citeEngineType());
