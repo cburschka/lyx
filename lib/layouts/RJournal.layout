@@ -1,0 +1,63 @@
+#  \DeclareLaTeXClass[report,RJournal.sty,booktabs.sty,natbib.sty]{report (R Journal)}
+
+Format 35
+
+Input stdclass.inc
+
+Provides natbib-internal 1
+
+ClassOptions
+	Other		  a4paper
+End
+
+DefaultModule   knitr
+
+AddToPreamble
+	\usepackage{RJournal}
+	\usepackage[round]{natbib}
+	\bibliographystyle{abbrvnat}
+	\usepackage{booktabs}
+
+	% use Schunk, Sinput and Soutput environments defined by RJournal
+	<<include=FALSE>>=
+	render_sweave()
+	set_header(highlight = '')
+	knit_hooks$set(document = hook_rjournal)
+	@
+
+	\fancyhf{}
+	\fancyhead[LO,RE]{\textsc{Contributed Article}}
+	\fancyhead[RO,LE]{\thepage}
+	\fancyfoot[L]{The R Journal Vol. X/Y, Month, Year}
+	\fancyfoot[R]{ISSN 2073-4859}
+EndPreamble
+
+InsetLayout "Flex:Abstract"
+	LabelString           "Abstract"
+	LatexType             Command
+	LaTexName             abstract
+	LyXType               Custom
+	LabelFont
+	  Color               latex
+	EndFont
+End
+
+InsetLayout "Flex:Address"
+	LabelString           "Address"
+	LatexType             Command
+	LaTexName             address
+	LyXType               Custom
+	LabelFont
+	  Color               latex
+	EndFont
+End
+
+InsetLayout "Flex:Email"
+	LabelString           "Email"
+	LatexType             Command
+	LaTexName             email
+	LyXType               Custom
+	LabelFont
+	  Color               latex
+	EndFont
+End
