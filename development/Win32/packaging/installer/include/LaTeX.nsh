@@ -300,24 +300,24 @@ Function ConfigureMiKTeX
      # move the files to the correct location for 64bit
      ${if} $Is64bit == "true"
       CopyFiles /SILENT /FILESONLY "$3\miktex\bin\*.*" "$PathLaTeX"
+      CreateDirectory "$3\miktex\bin\x64\lib"
+      CopyFiles /SILENT "$3\miktex\bin\lib\*.*" "$3\miktex\bin\x64\lib"
+      RMDir /r "$3\miktex\bin\lib"
       Delete "$3\miktex\bin\*.*"
-      CreateDirectory "$3\miktex\bin\lib"
-      CopyFiles /SILENT "$3\miktex\lib\*.*" "$3\miktex\bin\lib"
-      RMDir /r "$3\miktex\lib"
      ${endif}
     ${endif}
    ${endif}
-  ${else}
+  ${else} # if admin or power user
    ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
     SetOutPath "$PathLaTeXLocal"
     File /r ${FILES_MIKTEX}
     # move the files to the correct location for 64bit
     ${if} $Is64bit == "true"
      CopyFiles /SILENT /FILESONLY "$PathLaTeXLocal\miktex\bin\*.*" "$PathLaTeX"
+     CreateDirectory "$PathLaTeXLocal\miktex\bin\x64\lib"
+     CopyFiles /SILENT "$PathLaTeXLocal\miktex\bin\lib\*.*" "$PathLaTeXLocal\miktex\bin\x64\lib"
+     RMDir /r "$PathLaTeXLocal\miktex\bin\lib"
      Delete "$PathLaTeXLocal\miktex\bin\*.*"
-     CreateDirectory "$PathLaTeXLocal\miktex\bin\lib"
-     CopyFiles /SILENT "$PathLaTeXLocal\miktex\lib\*.*" "$PathLaTeXLocal\miktex\bin\lib"
-     RMDir /r "$PathLaTeXLocal\miktex\lib"
     ${endif}
    ${endif}
   ${endif}
