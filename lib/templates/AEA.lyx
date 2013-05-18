@@ -1,28 +1,34 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 471
 \begin_document
 \begin_header
 \textclass AEA
 \begin_preamble
+% Uncomment the line below if you wish to use the mathtime package:
 %\usepackage[cmbold]{mathtime}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
 \draftSpacing{1.5}
 \end_preamble
+\options AER
 \use_default_options false
 \maintain_unincluded_children false
 \language english
-\language_package default
+\language_package none
 \inputencoding auto
-\fontencoding global
+\fontencoding default
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -33,22 +39,31 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 2
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
@@ -89,63 +104,6 @@ http://wiki.lyx.org/Examples/AEA
 \end_inset
 
 
-\end_layout
-
-\begin_layout Title
-Title
-\end_layout
-
-\begin_layout ShortTitle
-Short title for running head
-\end_layout
-
-\begin_layout Author
-Author1 and Author2
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Surname1: affiliation1, address1, email1.
- Surname2: affiliation2, address2, email2.
- Acknowledgements
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Publication Month
-Month
-\end_layout
-
-\begin_layout Publication Year
-Year
-\end_layout
-
-\begin_layout Publication Volume
-Vol
-\end_layout
-
-\begin_layout Publication Issue
-Issue
-\end_layout
-
-\begin_layout Abstract
-Your abstract here (except for JEP/PP).
-\end_layout
-
-\begin_layout Abstract
-JEL:
-\end_layout
-
-\begin_layout Abstract
-Keywords: 
-\end_layout
-
-\begin_layout Acknowledgement
-Acknowledgement (valid only for JEP).
- For other journals, please use foot note in the author environment.
 \end_layout
 
 \begin_layout Standard
@@ -217,23 +175,21 @@ If your system has the
 \family sans
 mathtime
 \family default
- package installed, enable 
+ package installed, uncomment the line about mathtime
 \family typewriter
-
-\backslash
-usepackage{mathtime}
+ 
 \family default
- line in 
+in 
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 LaTeX Preamble
 \family default
- with appropriate options to suit your system.
+.
 \end_layout
 
 \begin_layout Enumerate
-Choose 
+Set 
 \family sans
 LaTeX font encoding
 \family default
@@ -252,64 +208,120 @@ Settings\SpecialChar \menuseparator
 Fonts
 \family default
 .
- For LyX 1.6.x or prior, change TeX encoding in 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-LaTeX\SpecialChar \menuseparator
-TeX Encoding
-\family default
- to 
+ (Because the default encoding 
 \begin_inset Quotes eld
 \end_inset
 
-default
+T1
 \begin_inset Quotes erd
 \end_inset
 
-.
- T1 encoding may cause font problems in LaTeX export.
-\end_layout
-
-\begin_layout Enumerate
-Disable the babel package in 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Language\SpecialChar \menuseparator
-Use babel
-\family default
- if not particularly necessary.
+ may cause font problems in LaTeX export.)
 \end_layout
 
 \begin_layout Enumerate
 When you finalize your manuscript for submission, clean up unnecessary preambles
- in the exported LaTeX file (with LyX 1.6.x or prior, also delete 
-\family typewriter
-
-\backslash
-usepackage{fontenc}
-\family default
- line using external editors).
+ in the exported LaTeX file.
  You need to minimize the usage of packages.
 \end_layout
 
 \end_inset
 
-Introductory material comes here.
+
 \end_layout
 
-\begin_layout Section
-Pointers
+\begin_layout Title
+Title
+\end_layout
+
+\begin_layout ShortTitle
+Short title for running head
+\end_layout
+
+\begin_layout Author
+Author1 and Author2
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Surname1: affiliation1, address1, email1.
+ Surname2: affiliation2, address2, email2.
+ Acknowledgements
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Publication Month
+Month
+\end_layout
+
+\begin_layout Publication Year
+Year
+\end_layout
+
+\begin_layout Publication Volume
+Vol
+\end_layout
+
+\begin_layout Publication Issue
+Issue
+\end_layout
+
+\begin_layout JEL
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+only necessary for the JEL journal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keywords
+keywords
+\end_layout
+
+\begin_layout Abstract
+Your abstract here.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+except for JEP/PP
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgement
+Acknowledgement (valid only for JEP).
+ For other journals, please use foot note in the author environment.
+\end_layout
+
+\begin_layout Standard
+American Economic Review Pointers:
 \end_layout
 
 \begin_layout Itemize
-Do not use an "Introduction" heading.
+Do not use an 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction
+\begin_inset Quotes erd
+\end_inset
+
+ heading.
  Begin your introductory material before the first section heading.
-\end_layout
-
-\begin_layout Itemize
-Use only section, subsection, and subsubsection headings.
 \end_layout
 
 \begin_layout Itemize
@@ -325,24 +337,36 @@ Captions are short and go below figures but above tables.
 \end_layout
 
 \begin_layout Itemize
+The tablenotes or figurenotes environments may be used below tables or figures,
+ respectively, as demonstrated below.
+\end_layout
+
+\begin_layout Itemize
 If you have difficulties with the mathtime package, adjust the package options
  appropriately for your platform.
- If you can't get it to work, just remove the package.
+ If you can't get it to work, just remove the package or see our technical
+ support document online (please refer to the author instructions).
 \end_layout
 
 \begin_layout Itemize
 If you are using an appendix, it goes last, after the bibliography.
- Use regular section headings to make the appendix or appendices.
+ Use regular section headings to make the appendix headings.
 \end_layout
 
 \begin_layout Itemize
 If you are not using an appendix, you may delete the appendix command and
  sample appendix section heading.
- 
+\end_layout
+
+\begin_layout Itemize
+Either the natbib package or the harvard package may be used with bibtex.
+ To include one of these packages, uncomment the appropriate usepackage
+ command above.
+ Note: you can't use both packages at once or compile-time errors will result.
 \end_layout
 
 \begin_layout Section
-Example Figures and Tables
+First Section in Body
 \end_layout
 
 \begin_layout Standard
@@ -356,12 +380,40 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 Figure here.
 \end_layout
 
-\begin_layout Caption
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
 Caption for figure below.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Figure Notes
+Figure notes without optional leadin.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Figure Notes
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Source
+\end_layout
+
+\end_inset
+
+Figure notes with optional leadin (Source, in this case).
 \end_layout
 
 \end_inset
@@ -379,18 +431,25 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
 Caption for table above.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
@@ -405,7 +464,7 @@ Caption for table above.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Heading 1 
+Heading 1
 \end_layout
 
 \end_inset
@@ -414,7 +473,7 @@ Heading 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-Heading 2 
+Heading 2
 \end_layout
 
 \end_inset
@@ -425,7 +484,7 @@ Heading 2
 \begin_inset Text
 
 \begin_layout Plain Layout
-Row 1 
+Row 1
 \end_layout
 
 \end_inset
@@ -434,7 +493,7 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-1 
+1
 \end_layout
 
 \end_inset
@@ -443,7 +502,7 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-2 
+2
 \end_layout
 
 \end_inset
@@ -454,7 +513,7 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-Row 2 
+Row 2
 \end_layout
 
 \end_inset
@@ -463,7 +522,7 @@ Row 2
 \begin_inset Text
 
 \begin_layout Plain Layout
-3 
+3
 \end_layout
 
 \end_inset
@@ -485,18 +544,72 @@ Row 2
 
 \end_layout
 
+\begin_layout Table Notes
+Table notes environment without optional leadin.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Table Notes
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Source
+\end_layout
+
+\end_inset
+
+Table notes environment with optional leadin (Source, in this case).
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
+\begin_layout Algorithm
+An example Algorithm
+\end_layout
+
 \begin_layout Standard
 References here (manual or BibTeX).
+ If you are using BibTeXyou must use the bibliography style 
+\series bold
+aea
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../examples/biblioExample"
+options "aea"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 \start_of_appendix
 Mathematical Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+the appendix is optional
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

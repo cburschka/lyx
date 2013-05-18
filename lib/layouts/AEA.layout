@@ -1,7 +1,8 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[AEA,amsmath.sty,harvard.sty,multicol.sty,setspace.sty]{American Economic Association (AEA)}
 #  \DeclareCategory{Articles}
-# Author : Koji Yokota <yokota@res.otaru-uc.ac.jp>
+# Authors : Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#           Uwe Stöhr <uwestoehr@web.de>
 
 Format 45
 Input stdclass.inc
@@ -10,10 +11,6 @@ Input theorems-bytype.module
 Input theorems-ams-extended-bytype.module
 
 Provides amsthm 1
-
-Preamble
-	\usepackage{harvard}
-EndPreamble
 
 NoStyle		Part
 NoCounter		part
@@ -49,9 +46,6 @@ NoStyle		Note*
 NoStyle		Remark*
 NoStyle		Summary*
 
-ClassOptions
-	Other	draftmode
-End
 
 Style ShortTitle
 	Category	FrontMatter
@@ -65,10 +59,10 @@ Style Publication_Month
 	CopyStyle	ShortTitle
 	LatexName	pubMonth
 	Align		Left
-	Margin          Dynamic
-	LabelType       Static
-	LabelString     "Publication Month:"
-	LabelSep        M
+	Margin		Dynamic
+	LabelType	Static
+	LabelString	"Publication Month:"
+	LabelSep	M
 	LabelFont
 	  Color		Red
 	EndFont
@@ -77,19 +71,31 @@ End
 Style Publication_Year
 	CopyStyle	Publication_Month
 	LatexName	pubYear
-	LabelString     "Publication Year:"
+	LabelString	"Publication Year:"
 End
 
 Style Publication_Volume
 	CopyStyle	Publication_Month
 	LatexName	pubVolume
-	LabelString     "Publication Volume:"
+	LabelString	"Publication Volume:"
 End
 
 Style Publication_Issue
 	CopyStyle	Publication_Month
 	LatexName	pubIssue
-	LabelString     "Publication Issue:"
+	LabelString	"Publication Issue:"
+End
+
+Style JEL
+	CopyStyle	Publication_Month
+	LatexName	JEL
+	LabelString	"JEL:"
+End
+
+Style Keywords
+	CopyStyle	Publication_Month
+	LatexName	Keywords
+	LabelString	"Keywords:"
 End
 
 Style Abstract
@@ -103,11 +109,39 @@ Style Acknowledgement
 	EndPreamble
 End
 
-Style Theorem
-	LatexName	theorem
-	Preamble
-		\newtheorem{theorem}{Theorem}
-	EndPreamble
+Style Figure_Notes
+	Margin		Static
+	LatexType	Environment
+	LatexName	figurenotes
+	Category	MainText
+	NextNoIndent	1
+	Argument 1
+	  LabelString	"Figure Note"
+	  Tooltip	"Text of a note in a figure"
+	EndArgument
+	LeftMargin	MMM
+	TopSep		0.5
+	BottomSep	0.5
+	Align		Left
+	LabelType	Static
+	LabelString	"Note:"
+	LabelSep	I
+	Font
+	  Size		Small
+	EndFont
+	LabelFont
+	  Shape		Italic
+	  Size		Small
+	EndFont
+End
+
+Style Table_Notes
+	CopyStyle	Figure_Notes
+	LatexName	tablenotes
+	Argument 1
+	  LabelString	"Table Note"
+	  Tooltip	"Text of a note in a table"
+	EndArgument
 End
 
 Style Algorithm
