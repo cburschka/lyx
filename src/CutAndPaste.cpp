@@ -901,7 +901,8 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 	Paragraph par;
 	BufferParams const & bp = cur.buffer()->params();
 	par.setLayout(bp.documentClass().plainLayout());
-	par.insertInset(0, inset, Change(Change::UNCHANGED));
+	Font font(inherit_font, bp.language);
+	par.insertInset(0, inset, font, Change(Change::UNCHANGED));
 	pars.push_back(par);
 	theCuts.push(make_pair(pars, bp.documentClassPtr()));
 
