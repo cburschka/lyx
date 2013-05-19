@@ -289,7 +289,9 @@ Function ConfigureMiKTeX
      MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)"
     ${endif}
    ${else}
-    ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
+    # ${FileExists} is disabled for now to repair existing LyX installations using 64bit MiKTeX
+    # re-enable this for LyX 2.1.1
+    #${ifnot} ${FileExists} "$PathLaTeX\perl.exe" 
      ${if} $Is64bit == "true"
       StrCpy $3 "$PathLaTeX" -15 # delete "\miktex\bin\x64"
      ${else}
@@ -298,28 +300,34 @@ Function ConfigureMiKTeX
      SetOutPath "$3"
      File /r ${FILES_MIKTEX}
      # move the files to the correct location for 64bit
+     # on 32bit MiKTeX the lib folder has to be parallel to the bin folder
+     # while on 64bit MiKTeX the lib folder has to be inside the bin folder
      ${if} $Is64bit == "true"
       CopyFiles /SILENT /FILESONLY "$3\miktex\bin\*.*" "$PathLaTeX"
       CreateDirectory "$3\miktex\bin\x64\lib"
-      CopyFiles /SILENT "$3\miktex\bin\lib\*.*" "$3\miktex\bin\x64\lib"
-      RMDir /r "$3\miktex\bin\lib"
+      CopyFiles /SILENT "$3\miktex\lib\*.*" "$3\miktex\bin\x64\lib"
+      RMDir /r "$3\miktex\lib"
+      RMDir /r "$3\miktex\bin\lib" # to clean up existing installations; can be removed for LyX 2.1.1
       Delete "$3\miktex\bin\*.*"
      ${endif}
-    ${endif}
+    #${endif}
    ${endif}
   ${else} # if admin or power user
-   ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
+   # ${FileExists} is disabled for now to repair existing LyX installations using 64bit MiKTeX
+   # re-enable this for LyX 2.1.1
+   #${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
     SetOutPath "$PathLaTeXLocal"
     File /r ${FILES_MIKTEX}
     # move the files to the correct location for 64bit
     ${if} $Is64bit == "true"
      CopyFiles /SILENT /FILESONLY "$PathLaTeXLocal\miktex\bin\*.*" "$PathLaTeX"
      CreateDirectory "$PathLaTeXLocal\miktex\bin\x64\lib"
-     CopyFiles /SILENT "$PathLaTeXLocal\miktex\bin\lib\*.*" "$PathLaTeXLocal\miktex\bin\x64\lib"
-     RMDir /r "$PathLaTeXLocal\miktex\bin\lib"
+     CopyFiles /SILENT "$PathLaTeXLocal\miktex\lib\*.*" "$PathLaTeXLocal\miktex\bin\x64\lib"
+     RMDir /r "$PathLaTeXLocal\miktex\lib"
+     RMDir /r "$PathLaTeXLocal\miktex\bin\lib" # to clean up existing installations; can be removed for LyX 2.1.1
      Delete "$PathLaTeXLocal\miktex\bin\*.*"
     ${endif}
-   ${endif}
+   #${endif}
   ${endif}
   
   # refresh MiKTeX's file name database (do this always to assure everything is in place)
