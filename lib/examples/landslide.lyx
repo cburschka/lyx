@@ -3,7 +3,6 @@
 \begin_document
 \begin_header
 \textclass foils
-\options dvips
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -44,8 +43,8 @@
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 0
+\tocdepth -1
 \paragraph_separation skip
 \defskip medskip
 \quotes_language english
@@ -104,9 +103,9 @@ has_inner_box 1
 inner_pos "c"
 use_parbox 0
 use_makebox 0
-width "52page%"
+width "48page%"
 special "none"
-height "1pt"
+height "1in"
 height_special "totalheight"
 status open
 
@@ -158,7 +157,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../doc/clipart/platypus.eps
-	width 10cm
+	width 9cm
 	rotateOrigin center
 
 \end_inset
@@ -205,7 +204,8 @@ height "1pt"
 Just select with the mouse the text paragraphs you want to mark as minipages
  and then select
 \family default
- Layout->Paragraph:ExtraOpt 
+ Layout\SpecialChar \menuseparator
+Paragraph:ExtraOpt 
 \family roman
 and press the
 \family default
