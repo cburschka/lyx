@@ -946,6 +946,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(lyx_package);
 
+	qsrand(QDateTime::currentDateTime().toTime_t());
+
 	// Install translator for GUI elements.
 	installTranslator(&d->qt_trans_);
 
