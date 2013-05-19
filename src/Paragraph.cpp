@@ -3606,7 +3606,8 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 		inset = new InsetBibitem(const_cast<Buffer *>(&buffer),
 					 InsetCommandParams(BIBITEM_CODE));
 
-	insertInset(0, inset, Change(track_changes ? Change::INSERTED 
+	Font font(inherit_font, buffer.params().language);
+	insertInset(0, inset, font, Change(track_changes ? Change::INSERTED 
 				                   : Change::UNCHANGED));
 
 	return 1;
