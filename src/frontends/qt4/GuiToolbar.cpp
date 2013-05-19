@@ -53,7 +53,8 @@ namespace frontend {
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
-	  owner_(owner), command_buffer_(0), tbinfo_(tbinfo), filled_(false)
+	  owner_(owner), command_buffer_(0), tbinfo_(tbinfo), filled_(false),
+	  restored_(false)
 {
 	setIconSize(owner.iconSize());
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
@@ -65,6 +66,22 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	// restauration.
 	setObjectName(toqstr(tbinfo.name));
 	restoreSession();
+}
+
+
+void GuiToolbar::setVisible(bool visible)
+{
+	// This is a hack to find out which toolbars have been restored by
+	// MainWindow::restoreState and which toolbars should be initialized 
+	// by us (i.e., new toolbars)
+	restored_ = true;
+	QToolBar::setVisible(visible);
+}
+
+
+bool GuiToolbar::isRestored() const
+{
+	return restored_;
 }
 
 

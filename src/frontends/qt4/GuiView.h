@@ -344,6 +344,8 @@ private:
 	///
 	void initToolbars();
 	///
+	void initToolbar(std::string const & name);
+	///
 	bool lfunUiToggle(std::string const & ui_component);
 	///
 	void toggleFullScreen();

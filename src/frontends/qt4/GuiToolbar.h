@@ -69,6 +69,10 @@ class GuiToolbar : public QToolBar
 public:
 	///
 	GuiToolbar(ToolbarInfo const &, GuiView &);
+	
+	/// Reimplemented from QToolbar to detect whether the 
+	/// toolbar is restored with MainWindow::restoreState().
+	void setVisible(bool visible);
 
 	///
 	void setVisibility(int visibility);
@@ -85,6 +89,9 @@ public:
 	void saveSession() const;
 	/// Restore session settings.
 	void restoreSession();
+
+	///
+	bool isRestored() const;
 
 	/// Refresh the contents of the bar.
 	void update(bool in_math, bool in_table, bool review,
@@ -123,6 +130,8 @@ private:
 	ToolbarInfo const & tbinfo_;
 	///
 	bool filled_;
+	///
+	bool restored_;
 };
 
 } // namespace frontend

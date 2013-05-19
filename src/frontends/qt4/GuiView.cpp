@@ -674,6 +674,16 @@ bool GuiView::restoreLayout()
 
 	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();
+	
+	// init the toolbars that have not been restored
+	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+	Toolbars::Infos::iterator end = guiApp->toolbars().end();
+	for (; cit != end; ++cit) {
+		GuiToolbar * tb = toolbar(cit->name);
+		if (tb && !tb->isRestored())
+			initToolbar(cit->name);
+	}
+
 	updateDialogs();
 	return true;
 }
@@ -716,42 +726,47 @@ void GuiView::initToolbars()
 	// extracts the toolbars from the backend
 	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
 	Toolbars::Infos::iterator end = guiApp->toolbars().end();
-	for (; cit != end; ++cit) {
-		GuiToolbar * tb = toolbar(cit->name);
-		if (!tb)
-			continue;
-		int const visibility = guiApp->toolbars().defaultVisibility(cit->name);
-		bool newline = !(visibility & Toolbars::SAMEROW);
-		tb->setVisible(false);
-		tb->setVisibility(visibility);
+	for (; cit != end; ++cit)
+		initToolbar(cit->name);
+}
 
-		if (visibility & Toolbars::TOP) {
-			if (newline)
-				addToolBarBreak(Qt::TopToolBarArea);
-			addToolBar(Qt::TopToolBarArea, tb);
-		}
 
-		if (visibility & Toolbars::BOTTOM) {
-			if (newline)
-				addToolBarBreak(Qt::BottomToolBarArea);
-			addToolBar(Qt::BottomToolBarArea, tb);
-		}
+void GuiView::initToolbar(string const & name)
+{
+	GuiToolbar * tb = toolbar(name);
+	if (!tb)
+		return;
+	int const visibility = guiApp->toolbars().defaultVisibility(name);
+	bool newline = !(visibility & Toolbars::SAMEROW);
+	tb->setVisible(false);
+	tb->setVisibility(visibility);
 
-		if (visibility & Toolbars::LEFT) {
-			if (newline)
-				addToolBarBreak(Qt::LeftToolBarArea);
-			addToolBar(Qt::LeftToolBarArea, tb);
-		}
-
-		if (visibility & Toolbars::RIGHT) {
-			if (newline)
-				addToolBarBreak(Qt::RightToolBarArea);
-			addToolBar(Qt::RightToolBarArea, tb);
-		}
-
-		if (visibility & Toolbars::ON)
-			tb->setVisible(true);
+	if (visibility & Toolbars::TOP) {
+		if (newline)
+			addToolBarBreak(Qt::TopToolBarArea);
+		addToolBar(Qt::TopToolBarArea, tb);
 	}
+
+	if (visibility & Toolbars::BOTTOM) {
+		if (newline)
+			addToolBarBreak(Qt::BottomToolBarArea);
+		addToolBar(Qt::BottomToolBarArea, tb);
+	}
+
+	if (visibility & Toolbars::LEFT) {
+		if (newline)
+			addToolBarBreak(Qt::LeftToolBarArea);
+		addToolBar(Qt::LeftToolBarArea, tb);
+	}
+
+	if (visibility & Toolbars::RIGHT) {
+		if (newline)
+			addToolBarBreak(Qt::RightToolBarArea);
+		addToolBar(Qt::RightToolBarArea, tb);
+	}
+
+	if (visibility & Toolbars::ON)
+		tb->setVisible(true);
 }
 
 
