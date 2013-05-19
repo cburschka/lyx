@@ -767,7 +767,7 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 
 
 bool Paragraph::insertInset(pos_type pos, Inset * inset,
-				   Change const & change)
+				   Font const & font, Change const & change)
 {
 	LASSERT(inset, return false);
 	LASSERT(pos >= 0 && pos <= size(), return false);
@@ -785,6 +785,7 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 
 	// Some insets require run of spell checker
 	requestSpellCheck(pos);
+	setFont(pos, font);
 	return true;
 }
 
@@ -1779,16 +1780,6 @@ void Paragraph::insertChar(pos_type pos, char_type c,
 {
 	d->insertChar(pos, c, change);
 	setFont(pos, font);
-}
-
-
-bool Paragraph::insertInset(pos_type pos, Inset * inset,
-			    Font const & font, Change const & change)
-{
-	bool const success = insertInset(pos, inset, change);
-	// Set the font/language of the inset...
-	setFont(pos, font);
-	return success;
 }
 
 
