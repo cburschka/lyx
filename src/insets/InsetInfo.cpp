@@ -381,7 +381,7 @@ void InsetInfo::updateInfo()
 			// do not insert > for the top level menu item
 			if (it != beg)
 				par.insertInset(par.size(), new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR),
-						Change(Change::UNCHANGED));
+						f, Change(Change::UNCHANGED));
 			//FIXME: add proper underlines here. This
 			// involves rewriting searchMenu used above to
 			// return a vector of menus. If we do not do
@@ -412,7 +412,8 @@ void InsetInfo::updateInfo()
 		igp.filename = file;
 		inset->setParams(igp);
 		clear();
-		paragraphs().front().insertInset(0, inset, 
+		Font const f(inherit_font, buffer().params().language);
+		paragraphs().front().insertInset(0, inset, f,
 						 Change(Change::UNCHANGED));
 		break;
 	}
