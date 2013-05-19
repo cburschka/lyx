@@ -648,12 +648,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// provide it with two different cursors.
 				Cursor dummy = cur;
 				dummy.pos() = dummy.pit() = 0;
-				if (cur.bv().checkDepm(dummy, cur)) {
+				if (cur.bv().checkDepm(dummy, cur))
 					cur.forceBufferUpdate();
-					// DEPM may have requested a screen update
-					cur.screenUpdateFlags(
-						cur.screenUpdate() | dummy.screenUpdate());
-				}
 			}
 		}
 		break;
@@ -679,12 +675,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				Cursor dummy = cur;
 				dummy.pos() = cur.lastpos();
 				dummy.pit() = cur.lastpit();
-				if (cur.bv().checkDepm(dummy, cur)) {
+				if (cur.bv().checkDepm(dummy, cur))
 					cur.forceBufferUpdate();
-					// DEPM may have requested a screen update
-					cur.screenUpdateFlags(
-						cur.screenUpdate() | dummy.screenUpdate());
-				}
 			}
 		}
 		break;
@@ -867,12 +859,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// provide it with two different cursors.
 				Cursor dummy = cur;
 				dummy.pos() = dummy.pit() = 0;
-				if (cur.bv().checkDepm(dummy, cur)) {
+				if (cur.bv().checkDepm(dummy, cur))
 					cur.forceBufferUpdate();
-					// DEPM may have requested a screen update
-					cur.screenUpdateFlags(
-						cur.screenUpdate() | dummy.screenUpdate());
-				}
 			}
 		}
 		break;
@@ -921,12 +909,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				Cursor dummy = cur;
 				dummy.pos() = cur.lastpos();
 				dummy.pit() = cur.lastpit();
-				if (cur.bv().checkDepm(dummy, cur)) {
+				if (cur.bv().checkDepm(dummy, cur))
 					cur.forceBufferUpdate();
-					// DEPM may have requested a screen update
-					cur.screenUpdateFlags(
-						cur.screenUpdate() | dummy.screenUpdate());
-				}
 			}
 		}
 		break;

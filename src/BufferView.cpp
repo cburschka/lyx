@@ -2400,9 +2400,12 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 		return false;
 
 	d->cursor_ = cur;
+	
+	// we would rather not do this here, but it needs to be done before 
+ 	// the changed() signal is sent.
+	buffer_.updateBuffer();
 
-	cur.forceBufferUpdate();
-	cur.screenUpdateFlags(Update::Force);
+	buffer_.changed(true);
 	return true;
 }
 
