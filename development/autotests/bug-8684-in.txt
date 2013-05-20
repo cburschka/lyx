@@ -1,0 +1,10 @@
+Lang en_US.utf8
+TestBegin ../bug-8684.lyx > lyx-log.txt 2>&1
+KK: \Ax
+KK: command-sequence change-next; change-reject; change-next\[Return]
+TestEnd
+
+TestBegin ../bug-8684.lyx > lyx-log.txt 2>&1
+KK: \Ax
+KK: command-sequence char-forward; change-next\[Return]
+TestEnd
