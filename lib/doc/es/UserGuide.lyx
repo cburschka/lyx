@@ -35069,7 +35069,11 @@ Las características de este diálogo afectan sólo al párrafo donde esté el
 \begin_layout Standard
 También puedes evitar el sangrado de primera línea, siempre y cuando la
  configuración global de la separación de párrafos esté configurada en sangrado,
- en el apartado Diseño
+ en el diálogo 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Diseño
 \begin_inset space ~
 \end_inset
 
@@ -35077,10 +35081,7 @@ del
 \begin_inset space ~
 \end_inset
 
-texto del diálogo 
-\family sans
-Documento\SpecialChar \menuseparator
-Configuración
+texto
 \family default
 .
 \end_layout
@@ -35231,6 +35232,14 @@ Abre una ventana en la que se muestran mensajes de consola.
 
 \begin_layout Subsection
 Ver
+\begin_inset space ~
+\end_inset
+
+[<
+\lang english
+output format
+\lang spanish
+>]
 \end_layout
 
 \begin_layout Standard
@@ -35354,6 +35363,14 @@ reference "sec:Formatos-de-archivo"
 
 \begin_layout Subsection
 Actualizar
+\begin_inset space ~
+\end_inset
+
+[<
+\lang english
+output format
+\lang spanish
+>]
 \end_layout
 
 \begin_layout Standard
@@ -35760,7 +35777,8 @@ dobles Inserta estas comillas: ", independientemente del tipo de comillas
 Documento\SpecialChar \menuseparator
 Configuración
 \family default
-, 
+\SpecialChar \menuseparator
+
 \family sans
 Idioma
 \family default
@@ -35776,7 +35794,17 @@ simples Inserta esta comilla:
 \begin_inset Quotes frs
 \end_inset
 
+, con el tipo de comillas que hayas seleccionado en el diálogo 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración
+\family default
+\SpecialChar \menuseparator
 
+\family sans
+Idioma
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -35839,13 +35867,16 @@ Idioma ! Símbolos fonéticos
 
 \end_inset
 
- Crea una ecuación con el llamado mapa 
-\emph on
-tipa
-\emph default
+ Crea 
+\lang english
+a box where
+\lang spanish
+ puedes introducir comandos para imprimir símbolos 
+\lang english
+from the International Phonetic Alphabet (IPA) and opens a toolbar which
+ provides a large set of these symbols
+\lang spanish
 .
- En la fórmula puedes introducir comandos para imprimir símbolos fonéticos
- IPA.
  Esta característica requiere el paquete LaTeX 
 \series bold
 tipa
@@ -35864,33 +35895,23 @@ LaTeX, paquetes ! tipa
 \begin_inset Newline newline
 \end_inset
 
-Para más información sobre este paquete consulta su documentación
-\series bold
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tipa"
+Más información sobre este 
+\lang english
+feature can be found in the 
+\emph on
+Linguistics
+\emph default
+ manual (
+\family sans
+Help
+\lang spanish
+\SpecialChar \menuseparator
 
-\end_inset
-
-, 
-\series default
-y su página Wiki:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LinguistLyX
-\end_layout
-
-\end_inset
-
-.
+\lang english
+Specific Manuals
+\family default
+\lang spanish
+).
 \end_layout
 
 \begin_layout Subsection
@@ -37166,7 +37187,54 @@ Cuenta el número de palabras y caracteres en el documento o en la parte
 \end_layout
 
 \begin_layout Subsection
-Información TeX
+Check T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ChkTeX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Generates with the help of the program 
+\family typewriter
+ChkTeX
+\family default
+ a log of possible LaTeX-errorsand displays it in a dialog.
+ This feature is not available on Windows.
+\end_layout
+
+\begin_layout Subsection
+Información T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
 \begin_inset Index idx
 status collapsed
 
@@ -37181,6 +37249,45 @@ Información TeX
 
 \begin_layout Standard
 Muestra una lista de las clases y estilos instalados en el sistema LaTeX.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Compare
+\lang spanish
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Compare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Opens a dialog to compare LyX files as described in section
+\lang spanish
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Comparación-de-documentos"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -45793,53 +45900,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "tipa"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Documentación"
-target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
-
-\end_inset
-
- del paquete LaTeX 
-\series bold
-tipa
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX, paquetes ! tipa
-\end_layout
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \end_inset
