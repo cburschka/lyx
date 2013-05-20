@@ -14,7 +14,6 @@
 
 #include "GuiDialog.h"
 #include "ui_CompareHistoryUi.h"
-#include "qt_helpers.h"
 
 
 namespace lyx {

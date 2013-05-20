@@ -16,7 +16,6 @@
 
 #include "Cursor.h"
 
-#include "support/FileName.h"
 #include "support/strfwd.h"
 
 using lyx::support::FileName;

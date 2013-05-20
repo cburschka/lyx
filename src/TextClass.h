@@ -11,7 +11,6 @@
 #define TEXTCLASS_H
 
 #include "Citation.h"
-#include "ColorCode.h"
 #include "Counters.h"
 #include "DocumentClassPtr.h"
 #include "FloatList.h"

@@ -22,6 +22,7 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
+#include "qt_helpers.h"
 #include "version.h"
 
 #include "support/lassert.h"

@@ -19,11 +19,15 @@
 #include "qt_helpers.h"
 #include "Language.h"
 
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferList.h"
+#include "BufferView.h"
+#include "Text.h"
 #include "TextClass.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "LyX.h"
 #include "lyxfind.h"
 
 #include "frontends/alert.h"

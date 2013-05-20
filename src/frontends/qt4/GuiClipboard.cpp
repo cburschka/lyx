@@ -14,6 +14,7 @@
 
 #include "FileDialog.h"
 
+#include "support/FileName.h"
 #include "GuiClipboard.h"
 #include "qt_helpers.h"
 

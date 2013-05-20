@@ -13,8 +13,6 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
-#include "Color.h"
-
 #include "support/strfwd.h"
 
 namespace lyx {

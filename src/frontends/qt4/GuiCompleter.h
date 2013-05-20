@@ -12,10 +12,7 @@
 #ifndef GUICOMPLETER_H
 #define GUICOMPLETER_H
 
-#include "frontends/WorkArea.h"
-
 #include "DocIterator.h"
-#include "qt_helpers.h"
 #include "support/docstring.h"
 
 #include <QCompleter>

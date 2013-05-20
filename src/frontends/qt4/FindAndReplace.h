@@ -12,17 +12,11 @@
 #ifndef QSEARCHADV_H
 #define QSEARCHADV_H
 
-#include "GuiWorkArea.h"
-
 #include "DockView.h"
 // This is needed so that ui_FindAndReplaceUi.h can find qt_()
 #include "qt_helpers.h"
 #include "ui_FindAndReplaceUi.h"
 
-#include "BufferView.h"
-#include "Buffer.h"
-#include "LyX.h"
-#include "Text.h"
 #include "lyxfind.h"
 
 #include <string>

@@ -15,7 +15,6 @@
 #define LYXSERVERSOCKET_H
 
 #include "support/FileName.h"
-#include "support/socktools.h"
 
 #include "support/shared_ptr.h"
 
