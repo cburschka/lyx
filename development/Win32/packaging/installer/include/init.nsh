@@ -327,7 +327,7 @@ SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
- AddSize 2982
+ AddSize 1515
 SectionEnd
 
 # enable this for LyX 2.1!
