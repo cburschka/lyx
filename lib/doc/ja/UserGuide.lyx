@@ -28533,28 +28533,114 @@ output format
 \end_layout
 
 \begin_layout Standard
-このメニュー項目は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+This menu entry generates the output in the format you have specified as
+ default output format for the document (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。閲覧プログラムは、設定で変更することができます。第
+
+\lang english
+) or in the LyX preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。既定の出力形式は、
+
+\lang english
+) and opens it in an appropriate viewer.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
+ The default viewers are set by LyX when it is first configured.
+\lang japanese
+既定の出力形式は、
 \family sans
 PDF
 \begin_inset space ~
@@ -28613,14 +28699,38 @@ Lyxのさいせってい@LyXの再設定
 \end_layout
 
 \begin_layout Standard
-メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、設定で変更することができます。第
+メニューを実行すると、閲覧プログラムが実行されます。
+\lang english
+The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
+
+\lang english
+)
+\lang japanese
+。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
 \end_layout
 
 \begin_layout Subsection
@@ -28672,21 +28782,71 @@ output format
 \end_layout
 
 \begin_layout Standard
-この関数で使用される形式は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+The format used by this function is the default output format as specified
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式となります。
+
+\lang english
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
 \end_layout
 
 \begin_layout Subsection
@@ -28706,21 +28866,71 @@ reference "sub:出力ファイル形式"
 \end_layout
 
 \begin_layout Standard
-この関数で使用される形式は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+The format used by this function is the default output format as specified
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式となります。
+
+\lang english
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
 \end_layout
 
 \begin_layout Subsection
@@ -28728,8 +28938,67 @@ reference "sub:出力ファイル形式"
 \end_layout
 
 \begin_layout Standard
-これは、LyXの画面を垂直または水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三
-つ以上の文書を同時に表示するのに、複数回分割することもできます。分割表示をやめるには、
+
+\family sans
+\lang english
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split LyX's main window vertically while  
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it horizontally
+\lang japanese
+。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示するのに、複数回分割する
+こともできます。分割表示をやめるには、
 \family sans
 現在の表示を閉じる
 \family default
@@ -29289,7 +29558,23 @@ reference "sec:フロート"
 
 \end_inset
 
-節に説明があります。
+節に説明があります
+\lang english
+and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang japanese
+。
 \end_layout
 
 \begin_layout Subsection
@@ -29528,7 +29813,23 @@ reference "sec:表"
 
 \end_inset
 
-節に説明されているように、表を挿入します。
+節に説明されているように、表を挿入します
+\lang english
+and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang japanese
+。
 \end_layout
 
 \begin_layout Subsection

@@ -35381,19 +35381,19 @@ Ansehen
 \end_layout
 
 \begin_layout Standard
-Dieses Menü erzeugt die Ausgabe im dem Format, das als Voreinstellung entweder
- in den LyX-Grundeinstellungen (siehe Abschnitt
+Dieses Menü erzeugt die Ausgabe im dem Format, das als Voreinstellung für
+ das Dokument (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestelltes
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) oder in den Dokumenteinstellungen (siehe Abschnitt
+Ausgabeformat
+\family default
+; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35404,9 +35404,20 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
- Das Betrachtungsprogramm kann in den LyX-Grundeinstellungen festgelegt
- oder geändert werden, siehe Abschnitt
+) oder in den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstel\SpecialChar \-
+lungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestelltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35417,7 +35428,29 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-.
+) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
+ Dieses Programm kann in den LyX-Grundeinstellungen festgelegt oder geändert
+ werden (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Anzeigepro\SpecialChar \-
+gramm
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+).
  Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
  es zum ersten Mal konfiguriert wurde.
  Das Standard-Ausgabeformat ist 
@@ -35488,9 +35521,17 @@ Neukonfiguration von LyX
 
 \begin_layout Standard
 Das Ausführen eines Menüeintrags öffnet ein Betrachtungsprogramm.
- Dieses kann in den LyX-Grundeinstellungen festgelegt oder geändert werden,
- siehe Abschnitt
-\begin_inset space ~
+ Dieses kann in den LyX-Grundeinstellungen festgelegt oder geändert werden
+ (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Anzeigeprogramm
+\family default
+; siehe Abschnitt
+\begin_inset Newline linebreak
 \end_inset
 
 
@@ -35500,7 +35541,7 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-.
+).
  Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
  es zum ersten Mal konfiguriert wurde.
 \end_layout
@@ -35568,18 +35609,19 @@ Ansehen
 
 \begin_layout Standard
 Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
- entweder in den LyX-Grundeinstellungen (siehe Abschnitt
+ in den in den Dokumenteinstellungen (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) oder in den Dokumenteinstellungen (siehe Abschnitt
+Ausgabeformat
+\family default
+; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35590,7 +35632,31 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-) gesetzt ist.
+) oder den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+) oder gesetzt ist.
 \end_layout
 
 \begin_layout Subsection
@@ -35620,18 +35686,19 @@ Objekte
 
 \begin_layout Standard
 Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
- entweder in den LyX-Grundeinstellungen (siehe Abschnitt
+ in den in den Dokumenteinstellungen (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) oder in den Dokumenteinstellungen (siehe Abschnitt
+Ausgabeformat
+\family default
+; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35642,7 +35709,31 @@ reference "sec:Dokument-Ausgabe"
 
 \end_inset
 
-) gesetzt ist.
+) oder den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+) oder gesetzt ist.
 \end_layout
 
 \begin_layout Subsection
@@ -35650,7 +35741,63 @@ Ansicht teilen
 \end_layout
 
 \begin_layout Standard
-Dies teilt LyXs Hauptfenster vertikal oder horizontal.
+
+\family sans
+Ansicht
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+linke
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+rechte
+\begin_inset space ~
+\end_inset
+
+Hälfte
+\begin_inset space ~
+\end_inset
+
+teilen
+\family default
+ teilt LyXs Hauptfenster vertikal, 
+\family sans
+Ansicht
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+obere
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+untere
+\begin_inset space ~
+\end_inset
+
+Hälfte
+\begin_inset space ~
+\end_inset
+
+teilen
+\family default
+ teilt es horizontal.
  Dies erlaubt es, Dokumente gleichzeitig anzusehen um sie zu vergleichen
  oder dasselbe Dokument an verschiedenen Stellen gleichzeitig zu betrachten.
  Man kann das Hauptfenster sogar mehrfach teilen um z.
@@ -36407,7 +36554,19 @@ reference "sec:Gleitobjekte"
 
 \end_inset
 
- beschrieben.
+ und im Detail im Kapitel 
+\emph on
+Gleitobjekte
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -36702,7 +36861,9 @@ Tabelle
 \end_layout
 
 \begin_layout Standard
-Fügt eine Tabelle ein.
+Öffnet einen Dialog, in dem man die Anzahl an Tabellenzeilen und -spalten
+ festlegen kann.
+ Fügt eine Tabelle ein.
  Tabelle sind in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -36714,7 +36875,11 @@ reference "sec:Tabellen"
 
 \end_inset
 
- beschrieben.
+ und im Detail im Kapitel Tabellen des Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Subsection

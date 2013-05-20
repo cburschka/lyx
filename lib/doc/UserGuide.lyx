@@ -34752,23 +34752,31 @@ e., hunt for errors in the program) or to see what is going on in the background
 
 \begin_layout Subsection
 View
+\begin_inset space ~
+\end_inset
+
+[<output format>]
 \end_layout
 
 \begin_layout Standard
 This menu entry generates the output in the format you have specified as
- default output format either in the preferences (see sec.
-\begin_inset space \thinspace{}
+ default output format for the document (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
@@ -34778,8 +34786,31 @@ reference "sec:Doc-Output"
 
 \end_inset
 
-) and opens it in an appropriate viewer.
- The viewer can be set or changed in the preferences, see section
+) or in the LyX preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
 \begin_inset space ~
 \end_inset
 
@@ -34790,7 +34821,35 @@ reference "sec:File-Formats"
 
 \end_inset
 
-.
+) and opens it in an appropriate viewer.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+).
  The default viewers are set by LyX when it is first configured.
  The default output format is 
 \family sans
@@ -34808,11 +34867,11 @@ View (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu you can view your document in alternative output formats.
+With this menu you can view your document in alternative output formats.
  The menu contains a list of available formats in which you can view the
  actual document with an external program.
  The menu entries are not the same on all installations — it depends on
- the LaTeX programs that are found while LyX was configured.
+ the LaTeX programs that are found when LyX was configured.
  All possible formats are listed in section
 \begin_inset space ~
 \end_inset
@@ -34831,7 +34890,7 @@ DVI
 \family default
 .
  If it is missing, you need to update or repair your LaTeX installation.
- After updating you have to reconfigure LyX, see section
+ After updating you have to reconfigure LyX (see section
 \begin_inset space ~
 \end_inset
 
@@ -34852,12 +34911,28 @@ Reconfiguration of LyX
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Standard
-Invoking a menu will start a viewer program.
- The viewer can be set or changed in the preferences, see section
+Invoking a view menu will start a viewer program.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
 \begin_inset space ~
 \end_inset
 
@@ -34868,12 +34943,16 @@ reference "sec:File-Formats"
 
 \end_inset
 
-.
+).
  The default viewers are set by LyX when it is first configured.
 \end_layout
 
 \begin_layout Subsection
 Update
+\begin_inset space ~
+\end_inset
+
+[<output format>]
 \end_layout
 
 \begin_layout Standard
@@ -34886,8 +34965,8 @@ Update (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu you can update the view of alternative output formats
- of your document without opening a new viewer window.
+With this menu you can update the view of alternative output formats of
+ your document without opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
@@ -34921,7 +35000,15 @@ Objects
  That is, if you are working on a child document which is a chapter of a
  book, 
 \family sans
-View Master
+View
+\begin_inset space ~
+\end_inset
+
+Master
+\begin_inset space ~
+\end_inset
+
+Document
 \family default
  generates the output of the whole book, while 
 \family sans
@@ -34932,25 +35019,64 @@ View
 
 \begin_layout Standard
 The format used by this function is the default output format as specified
- in the preferences (see sec.
-\begin_inset space \thinspace{}
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
 
 \end_inset
 
@@ -34990,25 +35116,64 @@ Objects
 
 \begin_layout Standard
 The format used by this function is the default output format as specified
- in the preferences (see sec.
-\begin_inset space \thinspace{}
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
 
 \end_inset
 
@@ -35020,14 +35185,78 @@ Split View
 \end_layout
 
 \begin_layout Standard
-This will split LyX's main window vertically or horizontally.
+
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split LyX's main window vertically while 
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it horizontally.
  This allows you to view documents at the same time to compare them, or
  to view the same document, but at different positions.
- You can even split the main window several times to view for example 3
- or more documents at the same time.
- To return to an unsplit view, use the menu 
+ You can even split the main window several times to view, for example,
+ three or more documents at the same time.
+ To close a split view, use the menu 
 \family sans
-Close Current View
+Close
+\begin_inset space ~
+\end_inset
+
+Current
+\begin_inset space ~
+\end_inset
+
+View
 \family default
 .
 \end_layout
@@ -35091,13 +35320,25 @@ on
  state is denoted in the menu with a checkmark.
  The 
 \family sans
-Review
-\family default
-, 
-\family sans
 Table
 \family default
 , 
+\family sans
+Math,
+\family default
+ 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Macros,
+\family default
+ 
+\family sans
+Review
+\family default
+ and 
 \family sans
 Math
 \begin_inset space ~
@@ -35105,23 +35346,11 @@ Math
 
 Panels
 \family default
-, 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Macros
-\family default
- and 
-\family sans
-Math
-\family default
- toolbars can be additionally set to the state 
+ toolbars can additionally be set to the state 
 \emph on
 automatic
 \emph default
- that is denoted in the menu with the suffix 
+, denoted in the menu with the suffix 
 \family sans
 (auto)
 \family default
@@ -35133,7 +35362,7 @@ In the
 \emph on
 on
 \emph default
- state the toolbar is permanently shown, in the 
+ state the toolbar is permanently shown; in the 
 \emph on
 automatic
 \emph default
@@ -35141,7 +35370,7 @@ automatic
  or when a certain feature is enabled.
  That means that the review toolbar will only be shown if change tracking
  is activated, the math and table toolbars are only shown if the cursor
- is inside a formula or table, respectively.
+ is inside a formula or table respectively.
 \end_layout
 
 \begin_layout Standard
