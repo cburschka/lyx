@@ -573,7 +573,6 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
-		runparams.local_font = &par.getFirstFontSettings(bparams);
 		parStartCommand(par, os, runparams, style);
 
 		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
@@ -810,7 +809,6 @@ void TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	runparams.local_font = &par.getFirstFontSettings(bparams);
 	parStartCommand(par, os, runparams, style);
 	Font const outerfont = text.outerFont(pit);
 
@@ -891,7 +889,7 @@ void TeXOnePar(Buffer const & buf,
 		// not for ArabTeX
 		&& (par_language->lang() != "arabic_arabtex"
 		    && outer_language->lang() != "arabic_arabtex")
-		     // have we opened and \L or \R environment?
+		// have we opened an \L or \R environment?
 		&& runparams.local_font != 0
 		&& runparams.local_font->isRightToLeft() != par_language->rightToLeft()
 		// are we about to close the language?
