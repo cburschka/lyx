@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 471
 \begin_document
 \begin_header
 \textclass scrbook
@@ -107,7 +107,7 @@ enumitem
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -138,12 +138,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller" 
 \end_header
 
 \begin_body
@@ -15071,17 +15070,11 @@ To get a look at the final version of your document, with all of the page
  breaks in place, the footnotes correctly numbered, and so on, use the menu
  
 \family sans
-\bar under
-V
-\bar default
-iew
+View
 \family default
  and choose 
 \family sans
-\bar under
-V
-\bar default
-iew
+View
 \family default
  or use the toolbar button 
 \begin_inset Info
@@ -17355,10 +17348,7 @@ Graphics
 This dialog has numerous mostly self-explanatory parameters.
  The 
 \family sans
-\bar under
-G
-\bar default
-raphics
+Graphics
 \family default
  tab allows you to choose your image file.
  The image can be transformed by setting a rotation angle and a scaling
@@ -33674,7 +33664,7 @@ Plain
 \begin_inset space ~
 \end_inset
 
-Text
+text
 \family default
 , line breaks in the text will start a new paragraph; when using the menu
  entry 
@@ -33683,7 +33673,11 @@ Plain
 \begin_inset space ~
 \end_inset
 
-Text, Join
+Text,
+\begin_inset space ~
+\end_inset
+
+Join
 \begin_inset space ~
 \end_inset
 
@@ -33755,7 +33749,7 @@ yX format of the special LyX
 \begin_inset Newline newline
 \end_inset
 
- Since LyX 1.5.0 CJK support is fully integrated into LyX.
+ Since LyX 1.5.0 CJK support has been fully integrated into LyX.
 \end_layout
 
 \begin_layout Description
@@ -33816,7 +33810,7 @@ LuaTeX
 \series bold
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -34500,8 +34494,8 @@ Select Whole Inset
 \end_layout
 
 \begin_layout Standard
-Selects the content of the inset where the cursor is currently in.
- If the cursor is outside of an inset, the whole document will be selected.
+Selects the content of the inset in which the cursor currently is.
+ If the cursor is outside an inset, the whole document will be selected.
 \end_layout
 
 \begin_layout Subsection
@@ -34555,7 +34549,7 @@ Move Paragraph Up/Down
 \end_layout
 
 \begin_layout Standard
-This shifts the paragraph where the cursor is currently in one paragraph
+This shifts the paragraph in which the cursor currently is one paragraph
  up or down.
 \end_layout
 
@@ -34600,24 +34594,32 @@ Enables you to set the paragraph alignment, line spacing and label width.
 
 \begin_layout Standard
 You can also prevent the first line of the paragraph being indented if you
- have chosen to separate paragraphs with indents in the 
+ have chosen to separate paragraphs with 
+\family sans
+Indentation
+\family default
+ in the 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog under 
-\family sans
+Settings\SpecialChar \menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
 Layout
 \family default
-.
+ dialog.
 \end_layout
 
 \begin_layout Subsection
-Table Settings and Math
+Table
+\end_layout
+
+\begin_layout Standard
+This menu only appears if the cursor is inside a table.
+ It allows you to create multicolumn and multirow cells, add or remove borders
+ of a cell and to set the vertical alignment of the cell.Table Settings and
+ Math
 \end_layout
 
 \begin_layout Standard
@@ -34650,7 +34652,7 @@ reference "chap:Mathematical-Formulas"
 \end_layout
 
 \begin_layout Subsection
-Increase / Decrease List Depth
+Increase/Decrease List Depth
 \end_layout
 
 \begin_layout Standard
@@ -35227,7 +35229,7 @@ Symbols Inserts any character that can be output by your LaTeX system.
 
  
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -35291,17 +35293,14 @@ Ordinary
 \begin_inset space ~
 \end_inset
 
-Quote Inserts this quote: ", no matter what quote type you selected in the
- 
+Quote Inserts this quote: ", no matter what quote style you selected in
+ the 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog under 
-\family sans
+Settings\SpecialChar \menuseparator
 Language
 \family default
-.
+ dialog.
 \end_layout
 
 \begin_layout Description
@@ -35309,32 +35308,14 @@ Single
 \begin_inset space ~
 \end_inset
 
-Quote Inserts 
-\change_deleted -712698321 1345809482
-this
-\change_inserted -712698321 1345809484
-a single
-\change_unchanged
- quote
-\change_deleted -712698321 1345809487
-: 
-\begin_inset Quotes ers
-\end_inset
-
-
-\change_inserted -712698321 1345809513
- in the quotation marks style selected in the 
+Quote Inserts a single quote in the quotation marks style selected in the
+ 
 \family sans
 Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog under 
-\family sans
+Settings\SpecialChar \menuseparator
 Language
 \family default
-.
-\change_unchanged
-
+ dialog.
 \end_layout
 
 \begin_layout Description
@@ -35389,36 +35370,10 @@ Language ! Phonetic symbols
 
 \end_inset
 
-
-\change_deleted -712698321 1345808954
-Creates a formula with a so called tipa inset
-\change_inserted -712698321 1345808969
-Inserts a box where
-\change_deleted -712698321 1345809001
-.
- Here
-\change_unchanged
- you can insert 
-\change_deleted -712698321 1345809047
-commands to create IPA phonetic 
-\change_unchanged
-symbols
-\change_inserted -712698321 1345809189
- from the International Phonetic Alphabet (IPA) and opens a toolbar which
- provides a large set of these symbols
-\change_unchanged
-.
- 
-\change_deleted -712698321 1345809068
-For
-\change_inserted -712698321 1345809068
-To use
-\change_unchanged
- this feature 
-\change_inserted -712698321 1345809224
-with traditional LaTeX 
-\change_unchanged
-you must have the LaTeX-package 
+Inserts a box where you can insert symbols from the International Phonetic
+ Alphabet (IPA) and opens a toolbar which provides a large set of these
+ symbols.
+ To use this feature you must have the LaTeX-package 
 \series bold
 tipa
 \series default
@@ -35436,51 +35391,16 @@ LaTeX-packages ! tipa
 \begin_inset Newline newline
 \end_inset
 
-
-\change_deleted -712698321 1345809282
-For m
-\change_inserted -712698321 1345809283
-M
-\change_unchanged
-ore information about this feature 
-\change_deleted -712698321 1345809286
-we refer you to the documentation of 
-\series bold
-tipa, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tipa"
-
-\end_inset
-
-
-\series default
- and this Wiki-page:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LinguistLyX
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1345809397
-can be found in the Linguistics manual (
+More information about this feature can be found in the 
+\emph on
+Linguistics
+\emph default
+ manual (
 \family sans
 Help\SpecialChar \menuseparator
-Specific Manuals\SpecialChar \menuseparator
-Linguistics Manual
+Specific Manuals
 \family default
 ).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -36770,6 +36690,40 @@ Counts the words and characters in the actual document or the highlighted
 \end_layout
 
 \begin_layout Subsection
+Check T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ChkTeX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Generates with the help of the program 
+\family typewriter
+ChkTeX
+\family default
+ a log of possible LaTeX-errorsand displays it in a dialog.
+ This feature is not available on Windows.
+\end_layout
+
+\begin_layout Subsection
 TeX Information
 \begin_inset Index idx
 status collapsed
@@ -36786,6 +36740,35 @@ TeX Information
 \begin_layout Standard
 Shows you a list of the document classes and styles installed in your LaTeX-syst
 em.
+\end_layout
+
+\begin_layout Subsection
+Compare
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Compare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Opens a dialog to compare LyX files as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Comparison-of-Documents"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -41548,11 +41531,8 @@ Open
 \begin_inset space ~
 \end_inset
 
-Recen
-\bar under
-t
+Recent
 \family default
-\bar default
 .
 \end_layout
 
@@ -42121,11 +42101,7 @@ Show
 \begin_inset space ~
 \end_inset
 
-ke
-\bar under
-y
-\bar default
--bindings
+key-bindings
 \begin_inset space ~
 \end_inset
 
@@ -42648,11 +42624,7 @@ JabRef
 
 The pipe is also used for the 
 \family sans
-S
-\bar under
-i
-\bar default
-ngle instance
+Single instance
 \family default
  feature, see sec.
 \begin_inset space \thinspace{}
@@ -45288,53 +45260,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "tipa"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Documentation"
-target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
-
-\end_inset
-
- of the LaTeX-package 
-\series bold
-tipa
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! tipa
-\end_layout
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \end_inset

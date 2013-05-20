@@ -36351,11 +36351,8 @@ Vous pouvez aussi empêcher que la première ligne soit indentée, si vous
  de dialogue
 \family sans
  Document\SpecialChar \menuseparator
-Paramètres, 
-\family default
-rubrique
-\family sans
- Format
+Paramètres\SpecialChar \menuseparator
+Format
 \begin_inset space ~
 \end_inset
 
@@ -36503,6 +36500,14 @@ Ouvre une fenêtre affichant les messages de service.
 
 \begin_layout Subsection
 Visionner
+\begin_inset space ~
+\end_inset
+
+[<
+\lang english
+output format
+\lang french
+>]
 \end_layout
 
 \begin_layout Standard
@@ -36632,6 +36637,14 @@ reference "sec:Formats-de-Fichiers"
 
 \begin_layout Subsection
 Mettre à jour
+\begin_inset space ~
+\end_inset
+
+[<
+\lang english
+output format
+\lang french
+>]
 \end_layout
 
 \begin_layout Standard
@@ -36978,8 +36991,7 @@ Avec ce menu, vous pouvez insérer les caractères suivants :
 \end_layout
 
 \begin_layout Description
-Symboles\SpecialChar \ldots{}
- Insère tout caractère qui peut être imprimé par votre système LaTeX.
+Symboles Insère tout caractère qui peut être imprimé par votre système LaTeX.
  Cela signifie que le nombre de catégories de caractères présentes dans
  ce dialogue et les caractères disponibles dépendent des paquetages LaTeX
  que vous avez installé.
@@ -37059,16 +37071,13 @@ Guillemet
 \end_inset
 
 droit Insère ce guillemet : ", sans tenir compte du type de guillemet choisi
- dans la rubrique 
-\family sans
-Langue
-\family default
- du menu 
+ dans le menu 
 \family sans
 Document\SpecialChar \menuseparator
-Paramètres
+Paramètres\SpecialChar \menuseparator
+Langue
 \family default
- .
+.
 \end_layout
 
 \begin_layout Description
@@ -37076,7 +37085,14 @@ Guillemet
 \begin_inset space ~
 \end_inset
 
-simple Insère un apostrophe : '
+simple Insère un apostrophe : ' avec le type de guillemet choisi dans le
+ menu 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Langue
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -37142,13 +37158,16 @@ Langue ! Symboles phonétiques
 
 \end_inset
 
- Crée une formule avec ce que l'on appelle un insert 
-\series bold
-tipa
-\series default
-.
- Vous pouvez y insérer des commandes pour créer des symboles phonétiques
- IPA.
+ Crée 
+\lang english
+a box where
+\lang french
+ vous pouvez y insérer des commandes pour créer des symboles 
+\lang english
+from the International Phonetic Alphabet (IPA) and opens a toolbar which
+ provides a large set of these symbols.
+
+\lang french
  Pour utiliser ces possibilités, vous devez avoir installé le paquetage
  LaTeX 
 \series bold
@@ -37168,33 +37187,23 @@ Paquetages LaTeX ! tipa
 \begin_inset Newline newline
 \end_inset
 
-Pour plus d'information voyez la documentation de 
-\series bold
-tipa, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tipa"
+Plus d'information 
+\lang english
+about this feature can be found in the 
+\emph on
+Linguistics
+\emph default
+ manual (
+\family sans
+Help
+\lang french
+\SpecialChar \menuseparator
 
-\end_inset
-
-
-\series default
- et cette page Wiki:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/LinguistLyX
-\end_layout
-
-\end_inset
-
-.
+\lang english
+Specific Manuals
+\family default
+\lang french
+).
 \end_layout
 
 \begin_layout Subsection
@@ -38491,10 +38500,6 @@ reference "cha:paramètres-du-document"
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Section
 Le menu Outils
 \begin_inset Index idx
@@ -38587,7 +38592,54 @@ Compte le nombre de mots et de caractères dans le document courant ou dans
 \end_layout
 
 \begin_layout Subsection
-Informations TeX
+Check T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ChkTeX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Generates with the help of the program 
+\family typewriter
+ChkTeX
+\family default
+ a log of possible LaTeX-errorsand displays it in a dialog.
+ This feature is not available on Windows.
+\end_layout
+
+\begin_layout Subsection
+Informations T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX
 \begin_inset Index idx
 status collapsed
 
@@ -38603,6 +38655,45 @@ Informations TeX
 \begin_layout Standard
 Montre une liste des classes et des styles qui sont installés dans votre
  système LaTeX.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Compare
+\lang french
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Compare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Opens a dialog to compare LyX files as described in section
+\lang french
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Comparaison-de-documents"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -38670,8 +38761,7 @@ reference "sec:Config-LyX-de-base"
 \end_layout
 
 \begin_layout Subsection
-Préférences\SpecialChar \ldots{}
-
+Préférences
 \end_layout
 
 \begin_layout Standard
@@ -47438,54 +47528,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "tipa"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Documentation"
-target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
-
-\end_inset
-
- du paquetage LaTeX 
-\series bold
-tipa
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! tipa
-\end_layout
-
-\end_inset
-
-\SpecialChar \@.
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \end_inset
