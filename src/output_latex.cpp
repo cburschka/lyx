@@ -1196,8 +1196,12 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 {
 	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
-	if (!force && ((bparams.inputenc != "auto" && bparams.inputenc != "default")
-		|| moving_arg))
+	// If we switch from/to CJK, we need to switch anyway, despite custom inputenc
+	bool const from_to_cjk = 
+		(oldEnc.package() == Encoding::CJK && newEnc.package() != Encoding::CJK)
+		|| (oldEnc.package() != Encoding::CJK && newEnc.package() == Encoding::CJK);
+	if (!force && !from_to_cjk
+	    && ((bparams.inputenc != "auto" && bparams.inputenc != "default") || moving_arg))
 		return make_pair(false, 0);
 
 	// Do nothing if the encoding is unchanged.
