@@ -742,7 +742,10 @@ char const * bibliofeatures[] = {
 	"apalike",
 	"astron",
 	"authordate1-4",
+	"babelbib",
+	"bibgerm",
 	"chicago",
+	"chscite",
 	"harvard",
 	"mslapa",
 	"named"
@@ -970,6 +973,14 @@ string const LaTeXFeatures::getPackages() const
 	// jurabib -- we need version 0.6 at least.
 	if (mustProvide("jurabib"))
 		packages << "\\usepackage{jurabib}[2004/01/25]\n";
+
+	// opcit -- we pass custombst as we output \bibliographystyle ourselves
+	if (mustProvide("opcit")) {
+		if (isRequired("hyperref"))
+			packages << "\\usepackage[custombst,hyperref]{opcit}\n";
+		else
+			packages << "\\usepackage[custombst]{opcit}\n";
+	}
 
 	// xargs -- we need version 1.09 at least
 	if (mustProvide("xargs"))
