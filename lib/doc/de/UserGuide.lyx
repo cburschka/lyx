@@ -22442,13 +22442,6 @@ Objekte
 
 \begin_layout Section
 Minipage
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Minipage"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -24198,18 +24191,19 @@ name "sec:Klammern-und-Dekos"
 Es gibt in LyX mehrere Klammerarten.
  Für die meisten Zwecke sollte es genügen, nur die Tasten 
 \family typewriter
-[{]}()|
-\backslash
-<>
+[]{}()|<>
 \family default
  zu drücken.
- Aber die Wirkung ist besser, wenn Sie die
-\family sans
- Mathe-Werkzeugleiste
-\family default
- benutzen, insbesondere, wenn Sie große Strukturen wie Matrizen oder Brüche
- in Klammern setzen wollen, oder wenn Sie mehrere Klammernschichten haben.
- So zum Beispiel würden Sie Klammern um eine Matrix setzen:
+ Aber wenn Sie große Strukturen wie Matrizen oder Brüche in Klammern setzen
+ wollen, oder wenn Sie mehrere Klammernschichten haben, ist es besser den
+ Mathe-Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+ zu verwenden.
+ So zum Beispiel wenn Sie Klammern um eine Matrix wie diese setzen:
 \begin_inset Formula 
 \[
 \left[\begin{array}{cc}
@@ -24225,130 +24219,81 @@ Es gibt in LyX mehrere Klammerarten.
 
 \begin_layout Standard
 \noindent
-In Abschnitt
-\begin_inset space ~
+macht es das einfacher, die Gliederung der Klammern zu sehen.
+ Der folgende linke Ausdruck wurde mit Hilfe des Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
+ erstellt, der rechte Ausdruck wurde mit den 
+\family typewriter
+()
+\family default
+-Tasten erstellt:
+\lang english
+ 
+\lang ngerman
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Matrizen-mehrzeilige-Gleichungen"
-
-\end_inset
-
- steht ausführlich beschrieben, wie man das im Einzelnen macht.
- Auch erkennt man mehrere Klammernschichten besser bei Ausdrücken wie 
-\begin_inset Formula 
-\begin{equation}
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\label{eq:Bruch}
-\end{equation}
-
-\end_inset
-
-oder
 \begin_inset Formula 
 \[
-f\left(g\left(h\left(k\left(l\left(x\right)\right)\right)\right)\right).
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
 \]
 
 \end_inset
 
-Die Klammern aus dem Menü werden automatisch an die Größe ihres Inhaltes
- angepasst.
- (Das wird direkt mit den LaTeX-Befehlen 
-\series bold
 
-\backslash
-left( bla
+\end_layout
+
+\begin_layout Standard
+\noindent
+Die Klammern mit dem Werkzeugleistenknopf werden automatisch an die Größe
+ ihres Inhaltes angepasst.
+\end_layout
+
+\begin_layout Standard
+Um die gewünschten Klammern zu bekommen, klicken Sie auf die gewünschte
+ Klammer in der linken und rechten Seite.
+
+\lang english
+ If you use the option 
+\family sans
+Keep
 \begin_inset space ~
 \end_inset
 
-bla 
-\backslash
-right)
-\series default
- erreicht.)
+matched
+\family default
+, the selected bracket type will be used for the left and the right side.
+ The selection will be shown below the button field.
+ If you want one side not to have a bracket, use the blank button.
+ It will appear in LyX with a dotted line, but nothing will be printed.
 \end_layout
 
 \begin_layout Standard
-Es ist sehr einfach, die gewünschten Klammern zu bekommen.
- Klicken Sie in der automatischen 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- auf 
-\begin_inset Graphics
-	filename ../../images/math/delim.png
-	scale 85
-	groupId Icon
 
-\end_inset
-
-, um das 
+\lang english
+If you want to place brackets around math structures, like a square root,
+ you can do so by first highlighting (selecting) the structure that is to
+ go inside the brackets.
+ Then choose the appropriate brackets for left and right and click on 
 \family sans
-Mathe-Trennzeichen
-\family default
--Menü zu öffnen.
- Sie müssen links das Klammersymbol, das Sie links haben wollen, auswählen,
- rechts das, das Sie rechts haben wollen, und schließlich zum Einsetzen
- auf den Knopf 
-\family sans
-Einfügen
+Insert
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-Wenn Sie auf einer Seite keine Klammer haben wollen, wählen Sie das leere
- Symbol.
- In LyX wird es als gestrichelte senkrechte Linie angezeigt, in der Druckausgabe
- ist nichts zu sehen.
- Wenn Sie links und rechts die zugehörige Klammer haben wollen, können Sie
+ The parentheses will be drawn around the selected structure.
+ The most common bracket combinations (parentheses, square brackets, and
+ braces, on both sides) can be entered more quickly using keyboard shortcuts.
+ For example, to insert a pair of flexible parentheses on both sides, select
+ the structure and enter
+\lang ngerman
  
-\family sans
-Zusammenpassend
-\family default
- ankreuzen und müssen nur eine Klammer auswählen.
-\end_layout
-
-\begin_layout Standard
-Schließlich können Sie noch zwischen 5
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-delim ( )"
 \end_inset
 
-Klammergrößen wählen.
- 
-\family sans
-Variabel
-\family default
- sollte meistens die richtige Wahl sein.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie sich erst nachträglich entschließen, eine mathematische Struktur
- mit Klammern, anderen mathematischen Symbolen oder Verzierungen zu versehen,
- können Sie das tun, indem Sie das, was innerhalb der Klammern usw.
-\begin_inset space \space{}
-\end_inset
-
-stehen soll, markieren.
-\end_layout
-
-\begin_layout Standard
-Dazu stellen Sie den Cursor links oder rechts neben Ihre Auswahl, drücken
- die 
-\family sans
-Umschalt
-\family default
--Taste und gehen mit den Pfeiltasten in die gewünschte Richtung.
- Sie können natürlich auch mit der Maus markieren.
- Dann wählen Sie die gewünschten Klammern für links und rechts und klicken
- auf 
-\family sans
-Einfügen
-\family default
 .
- Die Klammern werden um die markierte Struktur gesetzt.
 \end_layout
 
 \begin_layout Section
@@ -24369,13 +24314,6 @@ status collapsed
 \begin_layout Plain Layout
 Gleichungen
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Matrizen-mehrzeilige-Gleichungen"
 
 \end_inset
 
@@ -30361,58 +30299,29 @@ Geöffnet
 \begin_layout Standard
 In das TeX-Code-Kästchen können Sie vollständige oder unvollständige LaTeX-Befeh
 le schreiben.
- Ein vollständiger LaTeX-Befehl ist zum Beispiel die Verwendung von 
-\family typewriter
-slop\SpecialChar \-
-py\SpecialChar \-
-par
-\family default
- in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Sloppypar"
-
-\end_inset
-
-.
- Unvollständig bedeutet, dass Sie in ein TeX-Code-Kästchen 
-\family typewriter
+ Unvollständig bedeutet, dass das Befehlsargument normaler Text sein kann.
+ Sie wollen zum Beispiel einen Rahmen um ein Wort zeichnen und verwenden
+ daher den LaTeX-Befehl 
+\series bold
 
 \backslash
-Befehlsname[Optionen]{
-\family default
- schreiben, dann das Argument mit allen gewünschten Formatierungen als LyX-Text
- und schließlich 
-\family typewriter
+fbox
+\series default
+.
+ Sie können den Befehlsteil 
+\series bold
+
+\backslash
+fbox{
+\series default
+ in ein TeX-Code-Kästchen vor das Wort schreiben und die schließende geschweifte
+ Klammer 
+\series bold
 }
-\family default
- in ein zweites TeX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Code
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Kästchen: 
+\series default
+ in eine zweites TeX-Code-Kästchen hinter das Wort.
+ Das Wort zwischen den beiden TeX-Code-Kästchen ist dann das Argument wie
+ im folgenden Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -34050,13 +33959,6 @@ Sprachoptionen
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Sprachoptionen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35995,11 +35897,23 @@ Hier können die folgenden Zeichen eingefügt werden:
 \end_layout
 
 \begin_layout Description
-Symbole Fügt jedes Zeichen ein, das von Ihrem LaTeX-System ausgegeben werden
- kann.
- Daher ist die Anzahl der Kategorien von Zeichen im Dialog und die Anzahl
- an verfügbaren Zeichen von den LaTeX-Paketen abhängig, die in Ihrem LaTeX-Syste
-m installiert sind.
+Symbole Öffnet den 
+\family sans
+Symbole
+\family default
+ Dialog über den man jedes Zeichen einfügen kann, das von Ihrem LaTeX-System
+ ausgegeben werden kann.
+ Die Zeichen werden standardmäßig in Kategorien von Zeichen angezeigt; die
+ Anzahl an verfügbaren Zeichen ist von den installierten LaTeX-Paketen abhängig.
+ Mit der Option 
+\family sans
+Alle
+\begin_inset space ~
+\end_inset
+
+anzeigen
+\family default
+ werden alle Zeichen gleichzeichtig angezeigt.
 \begin_inset Newline newline
 \end_inset
 
@@ -36017,8 +35931,8 @@ Bemerkung:
 Symbols
 \family default
  sichtbar, denn keine der Schriftarten, die man in den LyX-Grundeinstellungen
- als Bildschirmschrift setzen kann (siehe Abschnitt.
-\begin_inset space \thinspace{}
+ als Bildschirmschrift setzen kann (siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
 
@@ -36593,7 +36507,9 @@ Zweig
 \end_layout
 
 \begin_layout Standard
-Fügt einen Zweig ein, der in Abschnitt
+Fügt, falls vorhanden, einen Zweig ein und erlaubt es, einen neuen Zweig
+ zu erstellen und einzufügen.
+ Zweige sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36604,7 +36520,7 @@ reference "sec:Zweige"
 
 \end_inset
 
- beschrieben ist.
+ beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -36627,6 +36543,14 @@ article (Elsevier)
  Der Abschnitt 
 \emph on
 Flexible Einfügungen und InsetLayout
+\emph default
+ in I
+\emph on
+nstallieren neuer Textklassen, Layouts und Vorlagen
+\emph default
+, 
+\emph on
+Das Layout-Dateiformat
 \emph default
  des 
 \emph on
@@ -36652,7 +36576,7 @@ Externes Material
 \begin_layout Standard
 Dieses Menü ermöglicht es, den Inhalt von anderen Dokumenten in Ihr Dokument
  einzufügen.
- Wie dies geschieht ist im Detail im Kapitel 
+ Für weitere Informationen siehe Kapitel 
 \emph on
 Externe Dateien
 \emph default
@@ -36682,19 +36606,8 @@ Boxen
 \end_layout
 
 \begin_layout Standard
-Fügt eine Minipage-Box ein, die in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipage"
-
-\end_inset
-
- beschrieben ist.
- Alle von LyX unterstützten Boxtypen sind im Detail im Kapitel 
+Fügt eine Box in einem bestimmten Stil ein.
+ Boxen sind im Detail im Kapitel 
 \emph on
 Boxen
 \emph default
@@ -36706,7 +36619,7 @@ Eingebettete
 
 Objekte
 \emph default
- Handbuchs erläutert.
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -37178,13 +37091,30 @@ arg   "bookmark-goto 2"
 \end_inset
 
  benutzt.
+ Man kann Lesezeichen auch verwenden, um zwischen verschiedenen geöffneten
+ Dokumenten hin und her zu springen.
 \end_layout
 
 \begin_layout Standard
-Man kann Lesezeichen auch verwenden, um zwischen verschiedenen geöffneten
- Dokumenten hin und her zu springen.
- Die gespeicherten Lesezeichen sind gültig, bis das Dokument geschlossen
+Die gespeicherten Lesezeichen sind gültig, bis das Dokument geschlossen
  wird.
+ Mit dem Untermenü 
+\family sans
+Lesezeichen
+\begin_inset space ~
+\end_inset
+
+löschen
+\family default
+ können Lesezeichen gelöscht werden; das Untermenü G
+\family sans
+ehe
+\begin_inset space ~
+\end_inset
+
+zurück
+\family default
+ springt zu der Position des Dokuments wo zuletzt etwas geändert wurde.
 \end_layout
 
 \begin_layout Subsection
@@ -37288,15 +37218,9 @@ eX-Protokoll
 Nachdem LaTeX gestartet wurde, indem die Ausgabe des Dokuments erzeugt wurde
  (durch Ansicht oder Export), ist dieses Menü verfügbar.
  Es zeigt das Protokoll des verwendeten LaTeX-Programms an.
-\end_layout
-
-\begin_layout Standard
-Darin kann man sehen, wie LaTeX im Hintergrund arbeitet.
- 
-\emph on
-Experten
-\emph default
- werden im Protokoll Gründe für LaTeX-Fehler finden.
+ Man kann zum nächsten Fehler oder der nächsten Warnung gehen, suchen, etwas
+ in die Zwischenablage kopieren oder die Ansicht aktualisieren.
+ Mit Hilfe der Logdatei können Experten die Ursachen für LaTeX-Fehler finden.
 \end_layout
 
 \begin_layout Subsection
@@ -37516,6 +37440,15 @@ TeX-Informationen
 \begin_layout Standard
 Zeigt eine Liste der Dokumentklassen und Stile, die in Ihrem LaTeX-System
  installiert sind.
+ Die Option 
+\family sans
+Pfad
+\begin_inset space ~
+\end_inset
+
+anzeigen
+\family default
+ zeigt die vollständigen Dateipfade an.
 \end_layout
 
 \begin_layout Subsection
@@ -37670,6 +37603,30 @@ reference "sec:LaTeX-Einstellung"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+Das Menü 
+\family sans
+Über
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ informiert über das Urheberrecht, die Mitwirkenden und die LyX-Version,
+ die Sie verwenden.
 \end_layout
 
 \begin_layout Section
@@ -41709,6 +41666,7 @@ Hauptdokument aktualisieren
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
 Dateiformate
 \family default
  festgelegt, siehe Abschnitt

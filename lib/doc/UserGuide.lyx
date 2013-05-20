@@ -21941,13 +21941,6 @@ Minipages
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Minipages"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26049,8 +26042,8 @@ Outline
 Document\SpecialChar \menuseparator
 Outline
 \family default
- that is described in sec.
-\begin_inset space \thinspace{}
+ that is described in section
+\begin_inset space ~
 \end_inset
 
 
@@ -35441,9 +35434,23 @@ Here you can insert the following characters:
 \end_layout
 
 \begin_layout Description
-Symbols Inserts any character that can be output by your LaTeX system.
- Therefore the number of character categories in this dialog and the available
- characters depend on the LaTeX-packages you have installed.
+Symbols Opens the 
+\family sans
+Symbols
+\family default
+ dialog which allows you to insert any character that can be output by your
+ LaTeX system.
+ By default groups of characters are displayed in character categories;
+ the available characters depend on the LaTeX-packages you have installed.
+ You can get a complete display by checking 
+\family sans
+Display
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -35628,7 +35635,7 @@ Formatting
 \end_layout
 
 \begin_layout Standard
-Here you can insert the following format constructs:
+Opens a submenu with the following options:
 \end_layout
 
 \begin_layout Description
@@ -35662,7 +35669,7 @@ Protected
 \begin_inset space ~
 \end_inset
 
-Space Inserts a protected space that is described in section
+Space Inserts a protected space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35681,7 +35688,7 @@ Inter-word
 \begin_inset space ~
 \end_inset
 
-Space Inserts an inter-word space that is described in section
+Space Inserts an inter-word space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35700,7 +35707,7 @@ Thin
 \begin_inset space ~
 \end_inset
 
-Space Inserts a thin space that is described in section
+Space Inserts a thin space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35719,7 +35726,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Space Inserts horizontal space, see section
+Space Inserts horizontal space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35730,7 +35737,7 @@ reference "sub:Horizontal-Space"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
@@ -35738,7 +35745,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Line Inserts a horizontal line, see section
+Line Inserts a horizontal line as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35749,7 +35756,7 @@ reference "sub:Horizontal-Lines"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
@@ -35757,7 +35764,7 @@ Vertical
 \begin_inset space ~
 \end_inset
 
-Space Inserts vertical space, see section
+Space Inserts vertical space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35768,11 +35775,11 @@ reference "sub:Vertical-Space"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
-Phantom Inserts Phantom space, see section
+Phantom Inserts a Phantom space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35791,7 +35798,7 @@ Hyphenation
 \begin_inset space ~
 \end_inset
 
-Point Inserts a hyphenation point, see section
+Point Inserts a hyphenation point as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35810,7 +35817,7 @@ Ligature
 \begin_inset space ~
 \end_inset
 
-Break Inserts a ligature break, see section
+Break Inserts a ligature break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35833,7 +35840,7 @@ Line
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break, see section
+Break Inserts a forced line break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35852,8 +35859,8 @@ Justified
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break that furthermore stretches the broken
- text line to the page border, see section
+Break Inserts a forced line break that right justifies the remaining text
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35872,7 +35879,7 @@ New
 \begin_inset space ~
 \end_inset
 
-Page Inserts a forced page break, described in section
+Page Inserts a forced page break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35891,8 +35898,9 @@ Page
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced page break that furthermore stretches the broken
- text page to the page border, described in section
+Break Inserts a forced page break that shares the extra space among paragraph
+ breaks instead of leaving it at the bottom of the page, as described in
+ section
 \begin_inset space ~
 \end_inset
 
@@ -35911,7 +35919,7 @@ Clear
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear page break, described in section
+Page Inserts a clear page break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35934,7 +35942,7 @@ Double
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear doublepage break, described in section
+Page Inserts a clear doublepage break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35949,13 +35957,32 @@ reference "sub:Clear-Page-Breaks"
 \end_layout
 
 \begin_layout Subsection
-List / TOC
+List/TOC
 \end_layout
 
 \begin_layout Standard
 Various lists can be inserted with this menu entry.
- The table of contents, the algorithm, figures and tables list are described
- in section
+ The 
+\family sans
+Table
+\begin_inset space ~
+\end_inset
+
+of Contents
+\family default
+, the 
+\family sans
+List of Algorithms
+\family default
+, 
+\family sans
+List of Figures
+\family default
+ and 
+\family sans
+List of Tables
+\family default
+ are described in section
 \begin_inset space ~
 \end_inset
 
@@ -35967,7 +35994,11 @@ reference "sec:toc"
 \end_inset
 
 .
- The index list is described in section
+ The 
+\family sans
+Index List
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -35978,7 +36009,11 @@ reference "sec:Index"
 
 \end_inset
 
-, the nomenclature in section
+, the 
+\family sans
+Nomenclature
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -35989,7 +36024,11 @@ reference "sec:Nomenclature"
 
 \end_inset
 
- and the BibTeX bibliography in section
+ and the 
+\family sans
+BibTeX Bibliography
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -36008,7 +36047,7 @@ Float
 \end_layout
 
 \begin_layout Standard
-To insert floats, described in section
+To insert floats, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36019,7 +36058,19 @@ reference "sec:Floats"
 
 \end_inset
 
-.
+ and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -36046,7 +36097,9 @@ Branch
 \end_layout
 
 \begin_layout Standard
-Inserts branch insets as described in section
+Inserts a branch inset, if any, and allowing you to create and insert a
+ new branch.
+ Branches are described in section
 \begin_inset space ~
 \end_inset
 
@@ -36081,7 +36134,11 @@ article (Elsevier)
 \emph on
 Flex insets and InsetLayout
 \emph default
- of the 
+ in 
+\emph on
+Installing New Document Classes, The Layout file format 
+\emph default
+of the 
 \emph on
 Customization
 \emph default
@@ -36105,19 +36162,15 @@ External Material
 \begin_layout Standard
 This menu entry allows you to insert or include the contents of other files
  in your document.
- How you can do this is explained in detail in the chapter 
+ For more information see chapter 
 \emph on
-External Stuff
+External Document Parts
 \emph default
- of the 
-\emph on
-Embedded
+ of the Embedded
 \begin_inset space ~
 \end_inset
 
-Objects
-\emph default
- manual.
+Objects manual.
 \end_layout
 
 \begin_layout Subsection
@@ -36135,19 +36188,8 @@ Boxes
 \end_layout
 
 \begin_layout Standard
-Inserts a minipage box that is described section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipages"
-
-\end_inset
-
-.
- All box types supported by LyX are explained in detail in the chapter 
+Inserts a box in a certain style.
+ Boxes are described in detail in the chapter 
 \emph on
 Boxes
 \emph default
@@ -36167,7 +36209,11 @@ Citation
 \end_layout
 
 \begin_layout Standard
-Inserts a citation as described in section
+Opens the 
+\family sans
+Citation
+\family default
+ dialog as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36186,7 +36232,11 @@ Cross-Reference
 \end_layout
 
 \begin_layout Standard
-Inserts a cross-reference as described in section
+Inserts a 
+\family sans
+cross-reference
+\family default
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36205,7 +36255,11 @@ Label
 \end_layout
 
 \begin_layout Standard
-Inserts a label as described in section
+Inserts a 
+\family sans
+label
+\family default
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36256,7 +36310,7 @@ reference "sec:Floats"
 
 \end_inset
 
-, captions in longtables are described in the section 
+; captions in longtables are described in the section 
 \emph on
 Longtable Captions
 \emph default
@@ -36314,7 +36368,7 @@ Table
 \end_layout
 
 \begin_layout Standard
-Inserts a table.
+Opens a dialog allowing you to specify the rows and columns of the table.
  Tables are described in section
 \begin_inset space ~
 \end_inset
@@ -36326,7 +36380,19 @@ reference "sec:Tables"
 
 \end_inset
 
-.
+ and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -36334,7 +36400,11 @@ Graphics
 \end_layout
 
 \begin_layout Standard
-Inserts a graphic.
+Opens the 
+\family sans
+Graphics
+\family default
+ dialog.
  Graphics are described in section
 \begin_inset space ~
 \end_inset
@@ -36392,7 +36462,7 @@ Footnote
 \end_layout
 
 \begin_layout Standard
-Inserts a footnote, see section
+Inserts a footnote as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36411,7 +36481,7 @@ Marginal Note
 \end_layout
 
 \begin_layout Standard
-Inserts a marginal note, see section
+Inserts a marginal note as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36430,7 +36500,7 @@ Short Title
 \end_layout
 
 \begin_layout Standard
-Inserts a short title, see section
+Inserts a short title as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36449,7 +36519,7 @@ TeX Code
 \end_layout
 
 \begin_layout Standard
-Inserts a TeX Code box, see section
+Inserts a TeX Code box as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36460,7 +36530,7 @@ reference "sub:TeX-Code-Boxes"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -36523,7 +36593,7 @@ Preview
 \end_layout
 
 \begin_layout Standard
-Inserts a preview inset, see section
+Inserts a preview inset as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36534,7 +36604,7 @@ reference "sec:Previewing-snippets-of"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Section
@@ -36567,15 +36637,7 @@ Bookmarks
 \begin_layout Standard
 With this menu entry you are able to define your own bookmarks.
  This is useful when you are working on a large document and often have
- to jump e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-between section
+ to jump, for example, between section
 \begin_inset space ~
 \end_inset
 
@@ -36627,12 +36689,28 @@ type  "shortcut"
 arg   "bookmark-goto 2"
 \end_inset
 
-.
+.You can also use bookmarks to jump between several opened documents.
 \end_layout
 
 \begin_layout Standard
-You can also use bookmarks to jump between several opened documents.
- The saved bookmarks are valid till the document is closed.
+The saved bookmarks are valid till the document is closed.
+ The submenu 
+\family sans
+Clear
+\begin_inset space ~
+\end_inset
+
+Bookmarks
+\family default
+ allows you to clear bookmarks while the submenu 
+\family sans
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ jumps to the position in the document where you recently changed something.
 \end_layout
 
 \begin_layout Subsection
@@ -36640,8 +36718,8 @@ Next Note, Change, Cross-reference
 \end_layout
 
 \begin_layout Standard
-Jump to the next note, change, or cross-reference following the current
- cursor position.
+Jump to the next note, change, or cross-reference after the current cursor
+ position.
 \end_layout
 
 \begin_layout Subsection
@@ -36672,8 +36750,8 @@ Forward Search
 \end_layout
 
 \begin_layout Standard
-This feature allows you to directly jump to the corresponding text part
- in the output, see section 
+Allows you to jump directly to the corresponding text part in the output,
+ see section 
 \emph on
 Forward
 \begin_inset space ~
@@ -36743,16 +36821,10 @@ eX Log
 \begin_layout Standard
 After running LaTeX by viewing or exporting a document, this menu will be
  enabled.
- It shows the logfile of the used LaTeX-program.
-\end_layout
-
-\begin_layout Standard
-Here you can see how LaTeX works in the background.
- 
-\emph on
-Experts
-\emph default
- will find in it reasons for LaTeX-errors.
+ It shows the logfile of the LaTeX-program used.
+ You can go to the next error or the next warning, search, copy something
+ to the clipboard or update the view.
+ With the help of the logfile experts can find in it reasons for LaTeX-errors.
 \end_layout
 
 \begin_layout Subsection
@@ -36760,7 +36832,7 @@ Outline
 \end_layout
 
 \begin_layout Standard
-Opens the TOC/Outline window as described in section
+Opens the Outline window as described in sections
 \begin_inset space ~
 \end_inset
 
@@ -36786,8 +36858,8 @@ Start Appendix Here
 \end_layout
 
 \begin_layout Standard
-This menu will start the appendix of the document at the current cursor
- position as described in section
+Sets the start of the appendices of the document at the current cursor position
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36905,8 +36977,8 @@ Character count
 \end_layout
 
 \begin_layout Standard
-Counts the words and characters in the actual document or the highlighted
- document part.
+Returns the number of the words and characters in the actual document or
+ the highlighted document part.
 \end_layout
 
 \begin_layout Subsection
@@ -36944,7 +37016,18 @@ ChkTeX
 \end_layout
 
 \begin_layout Subsection
-TeX Information
+T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX Information
 \begin_inset Index idx
 status collapsed
 
@@ -36960,6 +37043,15 @@ TeX Information
 \begin_layout Standard
 Shows you a list of the document classes and styles installed in your LaTeX-syst
 em.
+ Use the option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+path
+\family default
+ to see the full filename paths.
 \end_layout
 
 \begin_layout Subsection
@@ -37038,8 +37130,8 @@ Reconfiguration of LyX
 \end_layout
 
 \begin_layout Standard
-This menu entry reconfigures LyX; that is, LyX looks for LaTeX-packages
- and programs it needs; see also section
+Reconfigures LyX; that is, LyX looks for LaTeX-packages and programs it
+ needs; see also section
 \begin_inset space ~
 \end_inset
 
@@ -37058,7 +37150,11 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-The preferences dialog is described in detail in appendix
+Opens the 
+\family sans
+Preferences
+\family default
+ dialog as described in detail in appendix
 \begin_inset space ~
 \end_inset
 
@@ -37115,6 +37211,30 @@ reference "sec:LaTeX-Setup"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+The menu 
+\family sans
+About
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ gives information about the copyright, the credits and the LyX version
+ you are using.
 \end_layout
 
 \begin_layout Section
@@ -39216,8 +39336,16 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-The document settings dialog contains submenus to set properties for the
- whole document and is called with the menu
+The 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Setting
+\family default
+s dialog contains submenus to set properties for the whole document and
+ is called with the menu
 \family sans
  Document\SpecialChar \menuseparator
 Settings
@@ -39227,7 +39355,7 @@ Settings
 \family sans
  Save as Document Defaults
 \family default
- button in the dialog.
+ button in any dialog.
  This will create a template named 
 \family typewriter
 defaults.lyx
@@ -39284,10 +39412,10 @@ Layout
 \emph on
 layouts
 \emph default
- folder and thus not recognized by LyX as layout for a document class.
+ folder and thus not recognized by LyX as a layout for a document class.
  For more about layout-files, see the chapter 
 \emph on
-Installing New Document Classes, Layouts, and Templates
+Installing New Document Classes, Types of Layout Files
 \emph default
  of the 
 \emph on
@@ -39303,8 +39431,8 @@ Some classes use special class options by default.
 Predefined
 \family default
  and you can decide to use them or not.
- If you do not exactly know what the default class options are for, it is
- recommended to leave them untouched.
+ If you do not know exactly what the default class options are for, it is
+ recommended you leave them untouched.
  The 
 \family sans
 Graphics driver
@@ -39354,8 +39482,11 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \end_layout
 
 \begin_layout Standard
-Specifying a master document is necessary if the current document is a child
- or subdocument.
+Specifying a 
+\family sans
+Master
+\family default
+ document is necessary if the current document is a child or subdocument.
  The master document will be used by LyX in the background if the child
  document is opened without its master.
  This way child documents are always compilable.
@@ -39404,8 +39535,8 @@ LaTeX-packages ! refstyle
 
 \end_inset
 
- for cross-references, see sec.
-\begin_inset space \thinspace{}
+ for cross-references, see section
+\begin_inset space ~
 \end_inset
 
 
@@ -39505,16 +39636,40 @@ Text Layout
 \end_layout
 
 \begin_layout Standard
-You can specify if paragraphs should be separated by indentations or vertical
- skips.
- The line spacing and the number of text columns can also be specified here.
+You can specify if paragraphs should be separated by 
+\family sans
+Indentation
+\family default
+ or by 
+\family sans
+Vertical space
+\family default
+.
+ The 
+\family sans
+Line
+\begin_inset space ~
+\end_inset
+
+spacing
+\family default
+ and whether it should be a 
+\family sans
+Two-column
+\begin_inset space ~
+\end_inset
+
+document
+\family default
+ can also be specified here.
 \end_layout
 
 \begin_layout Standard
-Note that LyX will not show two columns or the set up line spacing on screen.
- That would be impractical, often unreadable and is not part of the WYSIWYM
+Note that LyX will not show two columns or the specified line spacing on
+ screen.
+ That would be impractical, often unreadable, and is not part of the WYSIWYM
  concept.
- However, it will be as you specified it in the output.
+ However, it will be as you specified in the output.
 \end_layout
 
 \begin_layout Section
@@ -39522,7 +39677,7 @@ Page Layout
 \end_layout
 
 \begin_layout Standard
-A description of this menu is given in section
+This dialog is described in sections
 \begin_inset space ~
 \end_inset
 
@@ -39548,7 +39703,7 @@ Page Margins
 \end_layout
 
 \begin_layout Standard
-Here you can adjust the paper margins, see section
+Here you can adjust the page margins as described in section
 \begin_inset space ~
 \end_inset
 
@@ -41159,8 +41314,8 @@ Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 File Formats
 \family default
-, see sec.
-\begin_inset space \thinspace{}
+, see section
+\begin_inset space ~
 \end_inset
 
 
