@@ -22366,13 +22366,6 @@ Minipáginas
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Minipáginas"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -33910,10 +33903,10 @@ Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
 Idioma
 \family default
- permite determinar el idioma
+ permite determinar el idioma, 
 \family roman
 \lang english
-, the quote style
+the quote style
 \family default
 \lang spanish
  y la codificación
@@ -35244,18 +35237,38 @@ output format
 
 \begin_layout Standard
 Esta entrada de menú genera la salida en el formato especificado como predetermi
-nado en las preferencias (véase la sec.
-\begin_inset space \thinspace{}
+nado en la configuración del documento (menú
+\lang english
+ 
+\family sans
+Document
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) o en la configuración del documento (véase la sec.
+Format
+\family default
+;
+\lang spanish
+ véase la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35266,9 +35279,51 @@ reference "sec:Salidas"
 
 \end_inset
 
-) y lo abre con el visor apropiado, el cuál se puede elegir y configurar
- en las preferencias, véase la sección
+) o en las preferencias (menú
+\family sans
+\lang english
+ Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
 \begin_inset space ~
+\end_inset
+
+Handling
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+;
+\lang spanish
+ véase la sec.
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -35278,7 +35333,54 @@ reference "sec:Formatos-de-archivo"
 
 \end_inset
 
-.
+) e y lo abre con el visor apropiado, el cuál se puede elegir y configurar
+ en las preferencias (menú 
+\family sans
+\lang english
+Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Viewer
+\family default
+;
+\lang spanish
+ véase la sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+).
  Los visores predeterminados son establecidos por LyX cuando se instala.
  El formato de salida por omisión es 
 \family sans
@@ -35346,7 +35448,42 @@ Reconfiguración de LyX
 
 \begin_layout Standard
 Al pulsar una opción del menú se iniciará un programa visor, el cuál se
- puede elegir y configurar en las preferencias, véase la sección
+ puede elegir y configurar en las preferencias (menú
+\lang english
+ 
+\family sans
+Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Viewer
+\family default
+\lang spanish
+; véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -35357,7 +35494,7 @@ reference "sec:Formatos-de-archivo"
 
 \end_inset
 
-.
+).
  Los visores predeterminados son establecidos por LyX cuando se instala.
 \end_layout
 
@@ -35425,18 +35562,36 @@ Ver
 
 \begin_layout Standard
 El formato de salida usado por esta función es el predeterminado especificado
- en las preferencias (véase la sec.
+ en la configuración del documento (menú 
+\family sans
+\lang english
+Document
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) o en la configuración del documento (véase la sec.
+Format
+\family default
+\lang spanish
+; véase la sec.
 \begin_inset space ~
 \end_inset
 
@@ -35444,6 +35599,59 @@ reference "sec:Formatos-de-archivo"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Salidas"
+
+\end_inset
+
+) o en las preferencias (menú 
+\family sans
+\lang english
+Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+\lang spanish
+; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
 
 \end_inset
 
@@ -35479,18 +35687,36 @@ Objetos insertados
 
 \begin_layout Standard
 El formato de salida usado por esta función es el predeterminado especificado
- en las preferencias (véase la sec.
+ en la configuración del documento (menú 
+\family sans
+\lang english
+Document
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) o en la configuración del documento (véase la sec.
+Format
+\family default
+\lang spanish
+; véase la sec.
 \begin_inset space ~
 \end_inset
 
@@ -35498,6 +35724,59 @@ reference "sec:Formatos-de-archivo"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Salidas"
+
+\end_inset
+
+) o en las preferencias (menú 
+\family sans
+\lang english
+Tools
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang spanish
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+\lang spanish
+; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
 
 \end_inset
 
@@ -35509,8 +35788,69 @@ Dividir la ventana
 \end_layout
 
 \begin_layout Standard
-Estas entradas del menú dividirán la pantalla principal de LyX vertical
- u horizontalmente.
+
+\family sans
+\lang english
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+\lang spanish
+ dividirán la pantalla principal de LyX vertical 
+\lang english
+while  
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it 
+\lang spanish
+horizontalmente.
  Así puedes ver simultáneamente varios documentos para compararlos, o ver
  el mismo documento en diferentes posiciones.
  Puedes dividir la ventana principal varias veces para ver, p.
@@ -35699,9 +36039,33 @@ Con este menú puedes insertar los siguientes caracteres:
 \end_layout
 
 \begin_layout Description
-Símbolos Inserta cualquier carácter que esté disponible en tu sistema LaTeX.
- Por tanto las categorías de caracteres y los caracteres disponibles en
- este diálogo dependen de los paquetes LaTeX instalados.
+Símbolos 
+\lang english
+Opens the 
+\family sans
+Symbols
+\family default
+ dialog which allows you to insert
+\lang spanish
+ cualquier carácter que esté disponible en tu sistema LaTeX.
+ 
+\lang english
+By default groups of characters are displayed in
+\lang spanish
+ categorías de caracteres; los caracteres disponibles en este diálogo dependen
+ de los paquetes LaTeX instalados.
+ 
+\lang english
+You can get a complete display by checking 
+\family sans
+Display
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+\lang spanish
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -36330,6 +36694,22 @@ reference "sec:Flotantes"
 
 \end_inset
 
+ 
+\lang english
+and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
+\lang spanish
 .
 \end_layout
 
@@ -36357,7 +36737,13 @@ Rama
 \end_layout
 
 \begin_layout Standard
-Se describe en la sección
+
+\lang english
+Inserts a branch inset, if any, and allowing you to create and insert a
+ new branch.
+ Branches are described
+\lang spanish
+ en la sección
 \begin_inset space ~
 \end_inset
 
@@ -36396,6 +36782,13 @@ article (Elsevier)
 \emph on
 Recuadros flexibles y formato del recuadro
 \emph default
+ 
+\lang english
+in 
+\emph on
+Installing New Document Classes, The Layout file format
+\emph default
+\lang spanish
  del manual 
 \emph on
 Personalización
@@ -36420,10 +36813,16 @@ Material externo
 \begin_layout Standard
 Aquí se pueden insertar en el documento varios tipos de archivos y de material
  externo.
- Se explica detalladamente cómo hacerlo en el capítulo 
+ 
+\lang english
+For more information
+\lang spanish
+ véase el capítulo 
 \emph on
-Archivos externos
+\lang english
+External Document Parts
 \emph default
+\lang spanish
  del manual 
 \emph on
 Objetos insertados
@@ -36446,20 +36845,12 @@ Marcos
 \end_layout
 
 \begin_layout Standard
-Inserta una minipágina, se describe en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipáginas"
-
-\end_inset
-
+Inserta un marco 
+\lang english
+in a certain style
+\lang spanish
 .
- Todos los tipos de marcos soportados por LyX se explican con detalle en
- el capítulo 
+ Los marcos se explican con detalle en el capítulo 
 \emph on
 Marcos
 \emph default
@@ -36618,7 +37009,11 @@ Cuadro/Tabla
 \end_layout
 
 \begin_layout Standard
-Inserta un cuadro (o tabla).
+
+\lang english
+Opens a dialog allowing you to specify the rows and columns of the table
+\lang spanish
+.
  Los cuadros se describen en la sección
 \begin_inset space ~
 \end_inset
@@ -36630,6 +37025,22 @@ reference "sec:Cuadros"
 
 \end_inset
 
+
+\lang english
+ and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang spanish
 .
 \end_layout
 
@@ -36905,12 +37316,31 @@ Ctrl+1
 Ctrl+2
 \family default
 .
+ También se pueden usar los marcadores para alternar entre varios documentos
+ abiertos.
 \end_layout
 
 \begin_layout Standard
-También se pueden usar los marcadores para alternar entre varios documentos
- abiertos.
- Los marcadores permanecen hasta que se cierra el documento.
+Los marcadores permanecen hasta que se cierra el documento.
+ 
+\lang english
+The submenu 
+\family sans
+Clear
+\begin_inset space ~
+\end_inset
+
+Bookmarks
+\family default
+ allows you to clear bookmarks while the submenu 
+\family sans
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ jumps to the position in the document where you recently changed something.
 \end_layout
 
 \begin_layout Subsection
@@ -37028,15 +37458,12 @@ LaTeX.
  Permite visualizar el archivo de registro de los programas y archivos empleados
  por LaTeX al generar la salida.
  
-\end_layout
-
-\begin_layout Standard
-En él se puede ver cómo funciona LaTeX al procesar el documento.
- Los 
-\emph on
-expertos
-\emph default
- encontrarán aquí posibles causas de los errores de LaTeX.
+\lang english
+You can go to the next error or the next warning, search, copy something
+ to the clipboard or update the view.
+ With the help of the logfile 
+\lang spanish
+expertos encontrarán aquí posibles causas de los errores de LaTeX.
 \end_layout
 
 \begin_layout Subsection
@@ -37249,6 +37676,17 @@ Información TeX
 
 \begin_layout Standard
 Muestra una lista de las clases y estilos instalados en el sistema LaTeX.
+ 
+\lang english
+Use the option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+path
+\family default
+ to see the full filename paths.
 \end_layout
 
 \begin_layout Subsection
@@ -37421,6 +37859,32 @@ reference "sec:LaTeX-conf"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The menu 
+\family sans
+About
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ gives information about the copyright, the credits and the LyX version
+ you are using.
 \end_layout
 
 \begin_layout Section

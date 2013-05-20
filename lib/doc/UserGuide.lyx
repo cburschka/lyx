@@ -10302,8 +10302,8 @@ Width of the different horizontal spaces.
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15338,9 +15338,9 @@ em dash
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -16706,8 +16706,8 @@ Here is an example to show the differences:
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -18364,7 +18364,7 @@ one
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21946,13 +21946,6 @@ status collapsed
 \begin_layout Plain Layout
 Minipages
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Minipages"
 
 \end_inset
 
@@ -26058,8 +26051,8 @@ Outline
 Document\SpecialChar \menuseparator
 Outline
 \family default
- that is described in sec.
-\begin_inset space \thinspace{}
+ that is described in section
+\begin_inset space ~
 \end_inset
 
 
@@ -32755,8 +32748,8 @@ The review toolbar as shown above contains the following buttons:
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -34761,23 +34754,31 @@ e., hunt for errors in the program) or to see what is going on in the background
 
 \begin_layout Subsection
 View
+\begin_inset space ~
+\end_inset
+
+[<output format>]
 \end_layout
 
 \begin_layout Standard
 This menu entry generates the output in the format you have specified as
- default output format either in the preferences (see sec.
-\begin_inset space \thinspace{}
+ default output format for the document (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
@@ -34787,8 +34788,31 @@ reference "sec:Doc-Output"
 
 \end_inset
 
-) and opens it in an appropriate viewer.
- The viewer can be set or changed in the preferences, see section
+) or in the LyX preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
 \begin_inset space ~
 \end_inset
 
@@ -34799,7 +34823,35 @@ reference "sec:File-Formats"
 
 \end_inset
 
-.
+) and opens it in an appropriate viewer.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
+
+\end_inset
+
+).
  The default viewers are set by LyX when it is first configured.
  The default output format is 
 \family sans
@@ -34817,11 +34869,11 @@ View (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu you can view your document in alternative output formats.
+With this menu you can view your document in alternative output formats.
  The menu contains a list of available formats in which you can view the
  actual document with an external program.
  The menu entries are not the same on all installations — it depends on
- the LaTeX programs that are found while LyX was configured.
+ the LaTeX programs that are found when LyX was configured.
  All possible formats are listed in section
 \begin_inset space ~
 \end_inset
@@ -34840,7 +34892,7 @@ DVI
 \family default
 .
  If it is missing, you need to update or repair your LaTeX installation.
- After updating you have to reconfigure LyX, see section
+ After updating you have to reconfigure LyX (see section
 \begin_inset space ~
 \end_inset
 
@@ -34861,12 +34913,28 @@ Reconfiguration of LyX
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Standard
-Invoking a menu will start a viewer program.
- The viewer can be set or changed in the preferences, see section
+Invoking a view menu will start a viewer program.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
 \begin_inset space ~
 \end_inset
 
@@ -34877,12 +34945,16 @@ reference "sec:File-Formats"
 
 \end_inset
 
-.
+).
  The default viewers are set by LyX when it is first configured.
 \end_layout
 
 \begin_layout Subsection
 Update
+\begin_inset space ~
+\end_inset
+
+[<output format>]
 \end_layout
 
 \begin_layout Standard
@@ -34895,8 +34967,8 @@ Update (Other Formats)
 \end_layout
 
 \begin_layout Standard
-With this submenu you can update the view of alternative output formats
- of your document without opening a new viewer window.
+With this menu you can update the view of alternative output formats of
+ your document without opening a new viewer window.
 \end_layout
 
 \begin_layout Subsection
@@ -34930,7 +35002,15 @@ Objects
  That is, if you are working on a child document which is a chapter of a
  book, 
 \family sans
-View Master
+View
+\begin_inset space ~
+\end_inset
+
+Master
+\begin_inset space ~
+\end_inset
+
+Document
 \family default
  generates the output of the whole book, while 
 \family sans
@@ -34941,25 +35021,64 @@ View
 
 \begin_layout Standard
 The format used by this function is the default output format as specified
- in the preferences (see sec.
-\begin_inset space \thinspace{}
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
 
 \end_inset
 
@@ -34999,25 +35118,64 @@ Objects
 
 \begin_layout Standard
 The format used by this function is the default output format as specified
- in the preferences (see sec.
-\begin_inset space \thinspace{}
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:File-Formats"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) or in the document settings (see sec.
-\begin_inset space \thinspace{}
+Format
+\family default
+; see section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:File-Formats"
 
 \end_inset
 
@@ -35029,14 +35187,78 @@ Split View
 \end_layout
 
 \begin_layout Standard
-This will split LyX's main window vertically or horizontally.
+
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split LyX's main window vertically while 
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it horizontally.
  This allows you to view documents at the same time to compare them, or
  to view the same document, but at different positions.
- You can even split the main window several times to view for example 3
- or more documents at the same time.
- To return to an unsplit view, use the menu 
+ You can even split the main window several times to view, for example,
+ three or more documents at the same time.
+ To close a split view, use the menu 
 \family sans
-Close Current View
+Close
+\begin_inset space ~
+\end_inset
+
+Current
+\begin_inset space ~
+\end_inset
+
+View
 \family default
 .
 \end_layout
@@ -35100,13 +35322,25 @@ on
  state is denoted in the menu with a checkmark.
  The 
 \family sans
-Review
-\family default
-, 
-\family sans
 Table
 \family default
 , 
+\family sans
+Math,
+\family default
+ 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Macros,
+\family default
+ 
+\family sans
+Review
+\family default
+ and 
 \family sans
 Math
 \begin_inset space ~
@@ -35114,23 +35348,11 @@ Math
 
 Panels
 \family default
-, 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Macros
-\family default
- and 
-\family sans
-Math
-\family default
- toolbars can be additionally set to the state 
+ toolbars can additionally be set to the state 
 \emph on
 automatic
 \emph default
- that is denoted in the menu with the suffix 
+, denoted in the menu with the suffix 
 \family sans
 (auto)
 \family default
@@ -35142,7 +35364,7 @@ In the
 \emph on
 on
 \emph default
- state the toolbar is permanently shown, in the 
+ state the toolbar is permanently shown; in the 
 \emph on
 automatic
 \emph default
@@ -35150,7 +35372,7 @@ automatic
  or when a certain feature is enabled.
  That means that the review toolbar will only be shown if change tracking
  is activated, the math and table toolbars are only shown if the cursor
- is inside a formula or table, respectively.
+ is inside a formula or table respectively.
 \end_layout
 
 \begin_layout Standard
@@ -35221,9 +35443,23 @@ Here you can insert the following characters:
 \end_layout
 
 \begin_layout Description
-Symbols Inserts any character that can be output by your LaTeX system.
- Therefore the number of character categories in this dialog and the available
- characters depend on the LaTeX-packages you have installed.
+Symbols Opens the 
+\family sans
+Symbols
+\family default
+ dialog which allows you to insert any character that can be output by your
+ LaTeX system.
+ By default groups of characters are displayed in character categories;
+ the available characters depend on the LaTeX-packages you have installed.
+ You can get a complete display by checking 
+\family sans
+Display
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -35274,7 +35510,7 @@ of
 \begin_inset space ~
 \end_inset
 
-Sentence Inserts an end of sentence dot as described in section
+Sentence Inserts an end of sentence period as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35332,7 +35568,7 @@ Breakable
 \begin_inset space ~
 \end_inset
 
-Slash Inserts a slash where also a line break can occur: \SpecialChar \slash{}
+Slash Inserts a slash where a line break can also occur: \SpecialChar \slash{}
 
 \end_layout
 
@@ -35408,7 +35644,7 @@ Formatting
 \end_layout
 
 \begin_layout Standard
-Here you can insert the following format constructs:
+Opens a submenu with the following options:
 \end_layout
 
 \begin_layout Description
@@ -35442,7 +35678,7 @@ Protected
 \begin_inset space ~
 \end_inset
 
-Space Inserts a protected space that is described in section
+Space Inserts a protected space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35461,7 +35697,7 @@ Inter-word
 \begin_inset space ~
 \end_inset
 
-Space Inserts an inter-word space that is described in section
+Space Inserts an inter-word space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35480,7 +35716,7 @@ Thin
 \begin_inset space ~
 \end_inset
 
-Space Inserts a thin space that is described in section
+Space Inserts a thin space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35499,7 +35735,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Space Inserts horizontal space, see section
+Space Inserts horizontal space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35510,7 +35746,7 @@ reference "sub:Horizontal-Space"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
@@ -35518,7 +35754,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Line Inserts a horizontal line, see section
+Line Inserts a horizontal line as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35529,7 +35765,7 @@ reference "sub:Horizontal-Lines"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
@@ -35537,7 +35773,7 @@ Vertical
 \begin_inset space ~
 \end_inset
 
-Space Inserts vertical space, see section
+Space Inserts vertical space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35548,11 +35784,11 @@ reference "sub:Vertical-Space"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Description
-Phantom Inserts Phantom space, see section
+Phantom Inserts a Phantom space as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35571,7 +35807,7 @@ Hyphenation
 \begin_inset space ~
 \end_inset
 
-Point Inserts a hyphenation point, see section
+Point Inserts a hyphenation point as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35590,7 +35826,7 @@ Ligature
 \begin_inset space ~
 \end_inset
 
-Break Inserts a ligature break, see section
+Break Inserts a ligature break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35613,7 +35849,7 @@ Line
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break, see section
+Break Inserts a forced line break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35632,8 +35868,8 @@ Justified
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced line break that furthermore stretches the broken
- text line to the page border, see section
+Break Inserts a forced line break that right justifies the remaining text
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35652,7 +35888,7 @@ New
 \begin_inset space ~
 \end_inset
 
-Page Inserts a forced page break, described in section
+Page Inserts a forced page break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35671,8 +35907,9 @@ Page
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced page break that furthermore stretches the broken
- text page to the page border, described in section
+Break Inserts a forced page break that shares the extra space among paragraph
+ breaks instead of leaving it at the bottom of the page, as described in
+ section
 \begin_inset space ~
 \end_inset
 
@@ -35691,7 +35928,7 @@ Clear
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear page break, described in section
+Page Inserts a clear page break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35714,7 +35951,7 @@ Double
 \begin_inset space ~
 \end_inset
 
-Page Inserts a clear doublepage break, described in section
+Page Inserts a clear doublepage break as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35729,13 +35966,32 @@ reference "sub:Clear-Page-Breaks"
 \end_layout
 
 \begin_layout Subsection
-List / TOC
+List/TOC
 \end_layout
 
 \begin_layout Standard
 Various lists can be inserted with this menu entry.
- The table of contents, the algorithm, figures and tables list are described
- in section
+ The 
+\family sans
+Table
+\begin_inset space ~
+\end_inset
+
+of Contents
+\family default
+, the 
+\family sans
+List of Algorithms
+\family default
+, 
+\family sans
+List of Figures
+\family default
+ and 
+\family sans
+List of Tables
+\family default
+ are described in section
 \begin_inset space ~
 \end_inset
 
@@ -35747,7 +36003,11 @@ reference "sec:toc"
 \end_inset
 
 .
- The index list is described in section
+ The 
+\family sans
+Index List
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -35758,7 +36018,11 @@ reference "sec:Index"
 
 \end_inset
 
-, the nomenclature in section
+, the 
+\family sans
+Nomenclature
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -35769,7 +36033,11 @@ reference "sec:Nomenclature"
 
 \end_inset
 
- and the BibTeX bibliography in section
+ and the 
+\family sans
+BibTeX Bibliography
+\family default
+ is described in section
 \begin_inset space ~
 \end_inset
 
@@ -35788,7 +36056,7 @@ Float
 \end_layout
 
 \begin_layout Standard
-To insert floats, described in section
+To insert floats, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35799,7 +36067,19 @@ reference "sec:Floats"
 
 \end_inset
 
-.
+ and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -35826,7 +36106,9 @@ Branch
 \end_layout
 
 \begin_layout Standard
-Inserts branch insets as described in section
+Inserts a branch inset, if any, and allowing you to create and insert a
+ new branch.
+ Branches are described in section
 \begin_inset space ~
 \end_inset
 
@@ -35861,7 +36143,11 @@ article (Elsevier)
 \emph on
 Flex insets and InsetLayout
 \emph default
- of the 
+ in 
+\emph on
+Installing New Document Classes, The Layout file format 
+\emph default
+of the 
 \emph on
 Customization
 \emph default
@@ -35885,19 +36171,15 @@ External Material
 \begin_layout Standard
 This menu entry allows you to insert or include the contents of other files
  in your document.
- How you can do this is explained in detail in the chapter 
+ For more information see chapter 
 \emph on
-External Stuff
+External Document Parts
 \emph default
- of the 
-\emph on
-Embedded
+ of the Embedded
 \begin_inset space ~
 \end_inset
 
-Objects
-\emph default
- manual.
+Objects manual.
 \end_layout
 
 \begin_layout Subsection
@@ -35915,19 +36197,8 @@ Boxes
 \end_layout
 
 \begin_layout Standard
-Inserts a minipage box that is described section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipages"
-
-\end_inset
-
-.
- All box types supported by LyX are explained in detail in the chapter 
+Inserts a box in a certain style.
+ Boxes are described in detail in the chapter 
 \emph on
 Boxes
 \emph default
@@ -35947,7 +36218,11 @@ Citation
 \end_layout
 
 \begin_layout Standard
-Inserts a citation as described in section
+Opens the 
+\family sans
+Citation
+\family default
+ dialog as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35966,7 +36241,11 @@ Cross-Reference
 \end_layout
 
 \begin_layout Standard
-Inserts a cross-reference as described in section
+Inserts a 
+\family sans
+cross-reference
+\family default
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -35985,7 +36264,11 @@ Label
 \end_layout
 
 \begin_layout Standard
-Inserts a label as described in section
+Inserts a 
+\family sans
+label
+\family default
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36036,7 +36319,7 @@ reference "sec:Floats"
 
 \end_inset
 
-, captions in longtables are described in the section 
+; captions in longtables are described in the section 
 \emph on
 Longtable Captions
 \emph default
@@ -36094,7 +36377,7 @@ Table
 \end_layout
 
 \begin_layout Standard
-Inserts a table.
+Opens a dialog allowing you to specify the rows and columns of the table.
  Tables are described in section
 \begin_inset space ~
 \end_inset
@@ -36106,7 +36389,19 @@ reference "sec:Tables"
 
 \end_inset
 
-.
+ and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -36114,7 +36409,11 @@ Graphics
 \end_layout
 
 \begin_layout Standard
-Inserts a graphic.
+Opens the 
+\family sans
+Graphics
+\family default
+ dialog.
  Graphics are described in section
 \begin_inset space ~
 \end_inset
@@ -36172,7 +36471,7 @@ Footnote
 \end_layout
 
 \begin_layout Standard
-Inserts a footnote, see section
+Inserts a footnote as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36191,7 +36490,7 @@ Marginal Note
 \end_layout
 
 \begin_layout Standard
-Inserts a marginal note, see section
+Inserts a marginal note as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36210,7 +36509,7 @@ Short Title
 \end_layout
 
 \begin_layout Standard
-Inserts a short title, see section
+Inserts a short title as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36229,7 +36528,7 @@ TeX Code
 \end_layout
 
 \begin_layout Standard
-Inserts a TeX Code box, see section
+Inserts a TeX Code box as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36240,7 +36539,7 @@ reference "sub:TeX-Code-Boxes"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -36303,7 +36602,7 @@ Preview
 \end_layout
 
 \begin_layout Standard
-Inserts a preview inset, see section
+Inserts a preview inset as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36314,7 +36613,7 @@ reference "sec:Previewing-snippets-of"
 
 \end_inset
 
- for a description.
+.
 \end_layout
 
 \begin_layout Section
@@ -36347,15 +36646,7 @@ Bookmarks
 \begin_layout Standard
 With this menu entry you are able to define your own bookmarks.
  This is useful when you are working on a large document and often have
- to jump e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-between section
+ to jump, for example, between section
 \begin_inset space ~
 \end_inset
 
@@ -36407,12 +36698,28 @@ type  "shortcut"
 arg   "bookmark-goto 2"
 \end_inset
 
-.
+.You can also use bookmarks to jump between several opened documents.
 \end_layout
 
 \begin_layout Standard
-You can also use bookmarks to jump between several opened documents.
- The saved bookmarks are valid till the document is closed.
+The saved bookmarks are valid till the document is closed.
+ The submenu 
+\family sans
+Clear
+\begin_inset space ~
+\end_inset
+
+Bookmarks
+\family default
+ allows you to clear bookmarks while the submenu 
+\family sans
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ jumps to the position in the document where you recently changed something.
 \end_layout
 
 \begin_layout Subsection
@@ -36420,8 +36727,8 @@ Next Note, Change, Cross-reference
 \end_layout
 
 \begin_layout Standard
-Jump to the next note, change, or cross-reference following the current
- cursor position.
+Jump to the next note, change, or cross-reference after the current cursor
+ position.
 \end_layout
 
 \begin_layout Subsection
@@ -36452,8 +36759,8 @@ Forward Search
 \end_layout
 
 \begin_layout Standard
-This feature allows you to directly jump to the corresponding text part
- in the output, see section 
+Allows you to jump directly to the corresponding text part in the output,
+ see section 
 \emph on
 Forward
 \begin_inset space ~
@@ -36523,16 +36830,10 @@ eX Log
 \begin_layout Standard
 After running LaTeX by viewing or exporting a document, this menu will be
  enabled.
- It shows the logfile of the used LaTeX-program.
-\end_layout
-
-\begin_layout Standard
-Here you can see how LaTeX works in the background.
- 
-\emph on
-Experts
-\emph default
- will find in it reasons for LaTeX-errors.
+ It shows the logfile of the LaTeX-program used.
+ You can go to the next error or the next warning, search, copy something
+ to the clipboard or update the view.
+ With the help of the logfile experts can find in it reasons for LaTeX-errors.
 \end_layout
 
 \begin_layout Subsection
@@ -36540,7 +36841,7 @@ Outline
 \end_layout
 
 \begin_layout Standard
-Opens the TOC/Outline window as described in section
+Opens the Outline window as described in sections
 \begin_inset space ~
 \end_inset
 
@@ -36566,8 +36867,8 @@ Start Appendix Here
 \end_layout
 
 \begin_layout Standard
-This menu will start the appendix of the document at the current cursor
- position as described in section
+Sets the start of the appendices of the document at the current cursor position
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -36685,8 +36986,8 @@ Character count
 \end_layout
 
 \begin_layout Standard
-Counts the words and characters in the actual document or the highlighted
- document part.
+Returns the number of the words and characters in the actual document or
+ the highlighted document part.
 \end_layout
 
 \begin_layout Subsection
@@ -36724,7 +37025,18 @@ ChkTeX
 \end_layout
 
 \begin_layout Subsection
-TeX Information
+T
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX Information
 \begin_inset Index idx
 status collapsed
 
@@ -36740,6 +37052,15 @@ TeX Information
 \begin_layout Standard
 Shows you a list of the document classes and styles installed in your LaTeX-syst
 em.
+ Use the option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+path
+\family default
+ to see the full filename paths.
 \end_layout
 
 \begin_layout Subsection
@@ -36818,8 +37139,8 @@ Reconfiguration of LyX
 \end_layout
 
 \begin_layout Standard
-This menu entry reconfigures LyX; that is, LyX looks for LaTeX-packages
- and programs it needs; see also section
+Reconfigures LyX; that is, LyX looks for LaTeX-packages and programs it
+ needs; see also section
 \begin_inset space ~
 \end_inset
 
@@ -36838,7 +37159,11 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-The preferences dialog is described in detail in appendix
+Opens the 
+\family sans
+Preferences
+\family default
+ dialog as described in detail in appendix
 \begin_inset space ~
 \end_inset
 
@@ -36895,6 +37220,30 @@ reference "sec:LaTeX-Setup"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+The menu 
+\family sans
+About
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ gives information about the copyright, the credits and the LyX version
+ you are using.
 \end_layout
 
 \begin_layout Section
@@ -37009,8 +37358,8 @@ Embedded Objects
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -37056,8 +37405,8 @@ pull-down box for the environments
 \begin_inset Tabular
 <lyxtabular version="3" rows="22" columns="2">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -37813,8 +38162,8 @@ The extra toolbar as shown above contains from left to right the following
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -38683,8 +39032,8 @@ The view/update toolbar as shown above contains from left to right the following
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -38996,8 +39345,16 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-The document settings dialog contains submenus to set properties for the
- whole document and is called with the menu
+The 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Setting
+\family default
+s dialog contains submenus to set properties for the whole document and
+ is called with the menu
 \family sans
  Document\SpecialChar \menuseparator
 Settings
@@ -39007,7 +39364,7 @@ Settings
 \family sans
  Save as Document Defaults
 \family default
- button in the dialog.
+ button in any dialog.
  This will create a template named 
 \family typewriter
 defaults.lyx
@@ -39064,10 +39421,10 @@ Layout
 \emph on
 layouts
 \emph default
- folder and thus not recognized by LyX as layout for a document class.
+ folder and thus not recognized by LyX as a layout for a document class.
  For more about layout-files, see the chapter 
 \emph on
-Installing New Document Classes, Layouts, and Templates
+Installing New Document Classes, Types of Layout Files
 \emph default
  of the 
 \emph on
@@ -39083,8 +39440,8 @@ Some classes use special class options by default.
 Predefined
 \family default
  and you can decide to use them or not.
- If you do not exactly know what the default class options are for, it is
- recommended to leave them untouched.
+ If you do not know exactly what the default class options are for, it is
+ recommended you leave them untouched.
  The 
 \family sans
 Graphics driver
@@ -39134,8 +39491,11 @@ target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 \end_layout
 
 \begin_layout Standard
-Specifying a master document is necessary if the current document is a child
- or subdocument.
+Specifying a 
+\family sans
+Master
+\family default
+ document is necessary if the current document is a child or subdocument.
  The master document will be used by LyX in the background if the child
  document is opened without its master.
  This way child documents are always compilable.
@@ -39184,8 +39544,8 @@ LaTeX-packages ! refstyle
 
 \end_inset
 
- for cross-references, see sec.
-\begin_inset space \thinspace{}
+ for cross-references, see section
+\begin_inset space ~
 \end_inset
 
 
@@ -39285,16 +39645,40 @@ Text Layout
 \end_layout
 
 \begin_layout Standard
-You can specify if paragraphs should be separated by indentations or vertical
- skips.
- The line spacing and the number of text columns can also be specified here.
+You can specify if paragraphs should be separated by 
+\family sans
+Indentation
+\family default
+ or by 
+\family sans
+Vertical space
+\family default
+.
+ The 
+\family sans
+Line
+\begin_inset space ~
+\end_inset
+
+spacing
+\family default
+ and whether it should be a 
+\family sans
+Two-column
+\begin_inset space ~
+\end_inset
+
+document
+\family default
+ can also be specified here.
 \end_layout
 
 \begin_layout Standard
-Note that LyX will not show two columns or the set up line spacing on screen.
- That would be impractical, often unreadable and is not part of the WYSIWYM
+Note that LyX will not show two columns or the specified line spacing on
+ screen.
+ That would be impractical, often unreadable, and is not part of the WYSIWYM
  concept.
- However, it will be as you specified it in the output.
+ However, it will be as you specified in the output.
 \end_layout
 
 \begin_layout Section
@@ -39302,7 +39686,7 @@ Page Layout
 \end_layout
 
 \begin_layout Standard
-A description of this menu is given in section
+This dialog is described in sections
 \begin_inset space ~
 \end_inset
 
@@ -39328,7 +39712,7 @@ Page Margins
 \end_layout
 
 \begin_layout Standard
-Here you can adjust the paper margins, see section
+Here you can adjust the page margins as described in section
 \begin_inset space ~
 \end_inset
 
@@ -40937,10 +41321,15 @@ View
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
 File Formats
 \family default
-, see sec.
-\begin_inset space \thinspace{}
+, see section
+\begin_inset space ~
 \end_inset
 
 
@@ -43988,8 +44377,8 @@ Units
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text

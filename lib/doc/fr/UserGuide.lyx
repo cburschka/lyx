@@ -23026,13 +23026,6 @@ Minipages
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Minipages"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -36512,19 +36505,37 @@ output format
 
 \begin_layout Standard
 Cette rubrique engendre la sortie spécifiée implicitement, soit dans les
- préférences (voir la section
-\begin_inset space \thinspace{}
+ paramètres du document (menu 
+\family sans
+\lang english
+Document
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formats-de-Fichiers"
-
+Output
+\begin_inset space ~
 \end_inset
 
-), soit dans les paramètres du document (voir section
-\begin_inset space \thinspace{}
+Format
+\family default
+\lang french
+; voir section
+\begin_inset space ~
 \end_inset
 
 
@@ -36534,8 +36545,95 @@ reference "sec:Doc-Output"
 
 \end_inset
 
+) oou soit dans les préférences (menu 
+\family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+\lang french
+; voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
+
+\end_inset
+
 ), et l'ouvre dans la visionneuse adéquate.
- La visionneuse peut être choisie dans les préférences, voir section
+ La visionneuse peut être choisie dans les préférences (menu 
+\family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Viewer
+\family default
+\lang french
+; voir section
 \begin_inset space ~
 \end_inset
 
@@ -36619,7 +36717,41 @@ Reconfiguration de LyX
 
 \begin_layout Standard
 Activer un des menus va lancer une visionneuse.
- Celle-ci peut être choisie dans les préférences, voir
+ Celle-ci peut être choisie dans les préférences (menu 
+\family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Viewer
+\family default
+\lang french
+; voir section
 \begin_inset space ~
 \end_inset
 
@@ -36630,7 +36762,7 @@ reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
-.
+).
  les visionneuses implicites sont déterminés par LyX à sa première configuration
  et à chaque reconfiguration.
 \end_layout
@@ -36701,25 +36833,96 @@ Visionner
 
 \begin_layout Standard
 Le format utilisé par cette fonction est le format implicite spécifié dans
- les préférences (voir section
-\begin_inset space \thinspace{}
+ les paramètres du document (menu 
+\family sans
+\lang english
+Document
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formats-de-Fichiers"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) ou dans les paramètres du document (voir section
-\begin_inset space \thinspace{}
+Format
+\family default
+\lang french
+; voir section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) ou dans les préférences (menu 
+\family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+\lang french
+; voir section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
@@ -36755,25 +36958,96 @@ Objets insérés
 
 \begin_layout Standard
 Le format utilisé par cette fonction est le format implicite spécifié dans
- les préférences (voir section
-\begin_inset space \thinspace{}
+ les paramètres du document (menu 
+\family sans
+\lang english
+Document
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Output
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formats-de-Fichiers"
-
+Output
+\begin_inset space ~
 \end_inset
 
-) ou dans les paramètres du document (voir section
-\begin_inset space \thinspace{}
+Format
+\family default
+\lang french
+; voir section
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Doc-Output"
+
+\end_inset
+
+) ou dans les préférences (menu 
+\family sans
+\lang english
+Tools
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Preferences
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\lang french
+\SpecialChar \menuseparator
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+\lang french
+; voir section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formats-de-Fichiers"
 
 \end_inset
 
@@ -36785,7 +37059,69 @@ Diviser la vue
 \end_layout
 
 \begin_layout Standard
-Ceci va diviser la fenêtre principale de LyX verticalement ou horizontalement.
+
+\family sans
+\lang english
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+\lang french
+ va diviser la fenêtre principale de LyX verticalemen 
+\lang english
+while  
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it 
+\lang french
+horizontalement.
  Cela permet de voir deux document en même temps pour les comparer, ou de
  voir le même document mais à deux positions différentes.
  Vous pouvez séparer la fenêtre plusieurs fois pour voir, par exemple, trois
@@ -36991,10 +37327,33 @@ Avec ce menu, vous pouvez insérer les caractères suivants :
 \end_layout
 
 \begin_layout Description
-Symboles Insère tout caractère qui peut être imprimé par votre système LaTeX.
- Cela signifie que le nombre de catégories de caractères présentes dans
- ce dialogue et les caractères disponibles dépendent des paquetages LaTeX
- que vous avez installé.
+Symboles 
+\lang english
+Opens the 
+\family sans
+Symbols
+\family default
+ dialog which allows you to insert
+\lang french
+ tout caractère qui peut être imprimé par votre système LaTeX.
+ 
+\lang english
+By default groups of characters are displayed in
+\lang french
+ catégories de caractères; les caractères disponibles dépendent des paquetages
+ LaTeX que vous avez installé.
+ 
+\lang english
+You can get a complete display by checking 
+\family sans
+Display
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+\lang french
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -37687,6 +38046,22 @@ reference "sec:Flottants"
 
 \end_inset
 
+ 
+\lang english
+and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang french
 .
 \end_layout
 
@@ -37714,7 +38089,13 @@ Branches
 \end_layout
 
 \begin_layout Standard
-Pour insérer des inserts de branche, voir section
+
+\lang english
+Inserts a branch inset, if any, and allowing you to create and insert a
+ new branch.
+ Branches are described in
+\lang french
+ section
 \begin_inset space ~
 \end_inset
 
@@ -37749,6 +38130,13 @@ article (Elsevier)
 \emph on
 Inserts flexibles et InsetLayout
 \emph default
+ 
+\lang english
+in 
+\emph on
+Installing New Document Classes, The Layout file format
+\emph default
+\lang french
  du manuel 
 \emph on
 Personnalisation
@@ -37773,10 +38161,16 @@ Trucs Externes
 \begin_layout Standard
 Cette rubrique permet d'insérer des fichiers et inclure soit le fichier,
  soit son contenu dans votre document.
- Le chapitre 
+ 
+\lang english
+For more information see
+\lang french
+ le chapitre 
 \emph on
-Trucs externes
+\lang english
+External Document Parts
 \emph default
+\lang french
  du manuel 
 \emph on
 Objets insérés 
@@ -37799,20 +38193,12 @@ Boîte
 \end_layout
 
 \begin_layout Standard
-Insère une mini-page décrite section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Minipages"
-
-\end_inset
-
+Insère unse boîte 
+\lang english
+in a certain style
+\lang french
 .
- Tous le types de boîtes acceptés par LyX sont décrits en détails dans le
- chapitre 
+ Des boîtes sont décrits en détails dans le chapitre 
 \emph on
 Boîtes 
 \emph default
@@ -37971,7 +38357,12 @@ Tableau
 \end_layout
 
 \begin_layout Standard
-Insère un tableau.
+
+\lang english
+Opens a dialog allowing you to specify the rows and columns of the table
+\lang french
+.
+ Insère un tableau.
  Les tableaux sont décrits section
 \begin_inset space ~
 \end_inset
@@ -37983,6 +38374,22 @@ reference "sec:Tableaux"
 
 \end_inset
 
+ 
+\lang english
+and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang french
 .
 \end_layout
 
@@ -38289,12 +38696,30 @@ arg   "bookmark-goto 2"
 \end_inset
 
 .
- 
+ Vous pouvez aussi sauter d'un document ouvert à un autre.
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi sauter d'un document ouvert à un autre.
- Les signets restent utilisables tant que le document reste ouvert.
+Les signets restent utilisables tant que le document reste ouvert.
+ 
+\lang english
+The submenu 
+\family sans
+Clear
+\begin_inset space ~
+\end_inset
+
+Bookmarks
+\family default
+ allows you to clear bookmarks while the submenu 
+\family sans
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ jumps to the position in the document where you recently changed something.
 \end_layout
 
 \begin_layout Subsection
@@ -38399,13 +38824,15 @@ Après avoir utilisé LaTeX en visionnant ou en exportant un document, ce
  menu sera rendu actif.
  Il montre le fichier de journalisation de la dernière exécution du programme
  LaTeX.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez y voir les détails du fonctionnement de LaTeX.
- Les 
+ 
+\lang english
+You can go to the next error or the next warning, search, copy something
+ to the clipboard or update the view.
+ With the help of the logfile
+\lang french
+ experts
 \emph on
-experts 
+ 
 \emph default
 pourront y trouver la raison de certaines erreurs LaTeX.
 \end_layout
@@ -38655,6 +39082,17 @@ Informations TeX
 \begin_layout Standard
 Montre une liste des classes et des styles qui sont installés dans votre
  système LaTeX.
+ 
+\lang english
+Use the option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+path
+\family default
+ to see the full filename paths.
 \end_layout
 
 \begin_layout Subsection
@@ -38823,6 +39261,32 @@ reference "sec:Configuration-LaTeX"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The menu 
+\family sans
+About
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ gives information about the copyright, the credits and the LyX version
+ you are using.
 \end_layout
 
 \begin_layout Section
@@ -42901,6 +43365,15 @@ Visionner
 \family sans
 Outils\SpecialChar \menuseparator
 Préférences\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\lang french
+\SpecialChar \menuseparator
 Formats
 \family default
  de fichier, voir sec.

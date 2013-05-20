@@ -17408,7 +17408,19 @@ reference "sec:相互参照"
 
 \begin_layout Standard
 通常、図フロートには一つの画像だけを挿入しますが、場合によっては、二つの画像に別々の副キャプションをつけて挿入したいこともあるかもしれません。その場合は、既存の
-図フロートの中に図フロートを入れ込むことによって、実現することができます。ただし、図一覧にはフロートの主キャプションのみが表示されることに留意してください。図
+図フロートの中に図フロートを入れ込むことによって、実現することができます。
+\lang english
+Note that only the main caption of the float is added to the List of Figures
+ as described in section
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:図・表・アルゴリズム一覧"
+
+\end_inset
+
+。図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:歪められた二つの像"
@@ -21217,7 +21229,7 @@ name "sub:目次"
 書内で移動したり再配置したりすることができるようになります。したがって、この操作は第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:移動"
+reference "sub:文書構造"
 
 \end_inset
 
@@ -28533,28 +28545,114 @@ output format
 \end_layout
 
 \begin_layout Standard
-このメニュー項目は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+This menu entry generates the output in the format you have specified as
+ default output format for the document (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式(例えばPDF)で出力を生成し適切なビューアでそれを表示します。閲覧プログラムは、設定で変更することができます。第
+
+\lang english
+) or in the LyX preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。既定の出力形式は、
+
+\lang english
+) and opens it in an appropriate viewer.
+ The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see section
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
+ The default viewers are set by LyX when it is first configured.
+\lang japanese
+既定の出力形式は、
 \family sans
 PDF
 \begin_inset space ~
@@ -28613,14 +28711,38 @@ Lyxのさいせってい@LyXの再設定
 \end_layout
 
 \begin_layout Standard
-メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、設定で変更することができます。第
+メニューを実行すると、閲覧プログラムが実行されます。
+\lang english
+The viewer can be set or changed in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Viewer
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-節をご覧ください。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
+
+\lang english
+)
+\lang japanese
+。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
 \end_layout
 
 \begin_layout Subsection
@@ -28672,21 +28794,71 @@ output format
 \end_layout
 
 \begin_layout Standard
-この関数で使用される形式は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+The format used by this function is the default output format as specified
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式となります。
+
+\lang english
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
 \end_layout
 
 \begin_layout Subsection
@@ -28706,21 +28878,71 @@ reference "sub:出力ファイル形式"
 \end_layout
 
 \begin_layout Standard
-この関数で使用される形式は、全体の設定(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
 
+\lang english
+The format used by this function is the default output format as specified
+ in the document settings (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Output\SpecialChar \menuseparator
+Default
+\begin_inset space ~
 \end_inset
 
-節参照)か文書設定(第
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-節参照)で指定した既定出力形式となります。
+
+\lang english
+) or in the preferences (menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats\SpecialChar \menuseparator
+Default
+\begin_inset space ~
+\end_inset
+
+Output
+\begin_inset space ~
+\end_inset
+
+Format
+\family default
+; see 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+
+\lang english
+).
 \end_layout
 
 \begin_layout Subsection
@@ -28728,8 +28950,67 @@ reference "sub:出力ファイル形式"
 \end_layout
 
 \begin_layout Standard
-これは、LyXの画面を垂直または水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三
-つ以上の文書を同時に表示するのに、複数回分割することもできます。分割表示をやめるには、
+
+\family sans
+\lang english
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split LyX's main window vertically while  
+\family sans
+Split
+\begin_inset space ~
+\end_inset
+
+View
+\begin_inset space ~
+\end_inset
+
+into
+\begin_inset space ~
+\end_inset
+
+Upper
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Lower
+\begin_inset space ~
+\end_inset
+
+Half
+\family default
+ will split it horizontally
+\lang japanese
+。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示するのに、複数回分割する
+こともできます。分割表示をやめるには、
 \family sans
 現在の表示を閉じる
 \family default
@@ -28884,8 +29165,26 @@ name "sub:特殊文字"
 \end_layout
 
 \begin_layout Description
-記号 お使いのLaTeXシステムで出力することのできる任意の文字を挿入します。したがって、このダイアログの文字カテゴリの数と利用できる文字は、導入済みのLaTe
-Xパッケージに依存します。
+記号 
+\lang english
+Opens the 
+\family sans
+Symbols
+\family default
+ dialog which allows you to insert any character that can be output by your
+ LaTeX system.
+ By default groups of characters are displayed in character categories;
+ the available characters depend on the LaTeX-packages you have installed.
+ You can get a complete display by checking 
+\family sans
+Display
+\begin_inset space ~
+\end_inset
+
+all
+\family default
+\lang japanese
+。
 \begin_inset Newline newline
 \end_inset
 
@@ -28955,8 +29254,16 @@ reference "sub:略語"
 \lang english
 in the quotation marks style selected in the 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document
+\lang japanese
+\SpecialChar \menuseparator
+
+\lang english
+Settings
+\lang japanese
+\SpecialChar \menuseparator
+
+\lang english
 Language
 \family default
  dialog
@@ -29289,7 +29596,23 @@ reference "sec:フロート"
 
 \end_inset
 
-節に説明があります。
+節に説明があります
+\lang english
+and in detail the chapter 
+\emph on
+Floats
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang japanese
+。
 \end_layout
 
 \begin_layout Subsection
@@ -29312,6 +29635,12 @@ reference "sec:注釈"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Inserts a branch inset, if any, and allowing you to create and insert a
+ new branch.
+ Branches are described in
+\lang japanese
 第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -29319,7 +29648,7 @@ reference "sec:派生枝"
 
 \end_inset
 
-節に説明されているように、派生枝差込枠を挿入します。
+。
 \end_layout
 
 \begin_layout Subsection
@@ -29336,6 +29665,12 @@ reference "sec:派生枝"
 \emph on
 Flex insets and InsetLayout
 \emph default
+\lang english
+ in 
+\emph on
+Installing New Document Classes, The Layout file format 
+\emph default
+\lang japanese
 の節に、ユーザ設定差込枠の定義の仕方が述べられています。
 \end_layout
 
@@ -29354,14 +29689,20 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここでは、文書に他のLyXファイルの内容をインクルードしたり挿入したりすることができます。その詳しいやりかたについては、取扱説明書
+ここでは、文書に他のLyXファイルの内容をインクルードしたり挿入したりすることができます。
+\lang english
+For more information see
+\lang japanese
+ 取扱説明書
 \emph on
 埋込オブジェクト篇
 \emph default
 の
 \emph on
-External Stuff
+\lang english
+External Document Parts
 \emph default
+\lang japanese
 の章にあります。
 \end_layout
 
@@ -29528,7 +29869,23 @@ reference "sec:表"
 
 \end_inset
 
-節に説明されているように、表を挿入します。
+節に説明されているように、表を挿入します
+\lang english
+and in detail in the chapter 
+\emph on
+Tables
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual
+\lang japanese
+。
 \end_layout
 
 \begin_layout Subsection
@@ -29745,11 +30102,29 @@ type  "shortcut"
 arg   "bookmark-goto 2"
 \end_inset
 
-を使用することによって、簡単に移動できるようになります。
+を使用することによって、簡単に移動できるようになります。またしおりは、すでに開かれている別々の文書のあいだを移動することもできます。
 \end_layout
 
 \begin_layout Standard
-またしおりは、すでに開かれている別々の文書のあいだを移動することもできます。保存したしおりは、文書が閉じられるまで有効です。
+保存したしおりは、文書が閉じられるまで有効です。
+\lang english
+The submenu 
+\family sans
+Clear
+\begin_inset space ~
+\end_inset
+
+Bookmarks
+\family default
+ allows you to clear bookmarks while the submenu 
+\family sans
+Navigate
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ jumps to the position in the document where you recently changed something.
 \end_layout
 
 \begin_layout Subsection
@@ -29834,14 +30209,10 @@ eXログ
 
 \begin_layout Standard
 文書を閲覧したり書き出すことによってLaTeXが実行されると、このメニューは有効になります。これは、使用したLaTeXプログラムのログファイルを表示します。
-\end_layout
-
-\begin_layout Standard
-これを使うと、バックグラウンドでLaTeXがどう動作したかを見ることができます。
-\emph on
-熟練者
-\emph default
-は、ここでLaTeXエラーの原因を見つけることができるでしょう。
+\lang english
+You can go to the next error or the next warning, search, copy something
+ to the clipboard or update the view.
+ With the help of the logfile experts can find in it reasons for LaTeX-errors.
 \end_layout
 
 \begin_layout Subsection
@@ -30047,6 +30418,16 @@ Texじょうほう@TeX情報
 
 \begin_layout Standard
 お使いのLaTeXシステムに導入されているクラスとスタイルの一覧を表示します。
+\lang english
+Use the option 
+\family sans
+Show
+\begin_inset space ~
+\end_inset
+
+path
+\family default
+ to see the full filename paths.
 \end_layout
 
 \begin_layout Subsection
@@ -30191,6 +30572,32 @@ reference "sec:LaTeXの設定"
 \end_inset
 
 節もご覧ください）。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The menu 
+\family sans
+About
+\begin_inset space ~
+\end_inset
+
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ gives information about the copyright, the credits and the LyX version
+ you are using.
 \end_layout
 
 \begin_layout Section
@@ -33581,7 +33988,19 @@ name "sec:出力"
 表示
 \family default
 メニューやツールバーで「表示」「更新」「親文書を表示」「親文書を更新」を選んだときに使用される形式。既定値は、ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+設定
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\family default
+\lang japanese
+\SpecialChar \menuseparator
 ファイル形式で設定されます。
 \begin_inset CommandInset ref
 LatexCommand ref
