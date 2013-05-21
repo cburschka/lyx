@@ -42727,12 +42727,37 @@ Couleurs ! fond
 \end_inset
 
 
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Couleurs ! 
+\lang english
+Shaded boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Couleurs ! 
+\lang english
+Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Vous pouvez via cette rubrique modifier la couleur de la police du texte
- principal (implicitement noire) et du texte des notes grisées (implicitement
- gris léger).
+ principal (implicitement noire), du texte des notes grisées (implicitement
+ gris léger), du fond pour les pages (implicitement blanche) et pour le
+ boîtes ombrées (implicitement rouge).
  Le bouton 
 \family sans
 RàZ 
@@ -42741,8 +42766,20 @@ repositionne les couleurs sur les valeurs implicites.
 \end_layout
 
 \begin_layout Standard
-Vous pouvez également modifier les couleur du fond pour les pages (implicitement
- blanche) et pour le boîtes ombrées (implicitement rouge).
+
+\lang english
+Clicking any button showing 
+\family sans
+Default
+\family default
+ or 
+\family sans
+Change
+\family default
+ opens a dialog enabling you to choose from a selection of  colors or from
+ a color-picker or to specify a color using HSL or RGB values.
+ In the dialog you can add any color to the custom colors to select them
+ later more quickly.
 \end_layout
 
 \begin_layout Standard
@@ -42789,57 +42826,18 @@ PDF
 \family sans
 Hyperlien
 \family default
-, vous devez probablement modifier la couleur des liens symboliques en utilisant
- 
-\family sans
-Autres
+, vous devez probablement modifier la couleur des liens symboliques 
+\lang english
+as described in section
+\lang french
+
 \begin_inset space ~
 \end_inset
 
-options 
-\family default
-dans ces 
-\family sans
-Propriétés
-\begin_inset space ~
-\end_inset
 
-du
-\begin_inset space ~
-\end_inset
-
-PDF
-\family default
-.
- Par exemple l'option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-met les liens en noir.
- Pour plus d'informations, voyez le manuel du paquetage LaTeX 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:propriétés-du-PDF"
 
 \end_inset
 
@@ -42888,7 +42886,11 @@ color{color name}
 \end_layout
 
 \begin_layout Standard
-Les noms de couleur doivent être choisis parmi: 
+
+\lang english
+You are restricted to one of
+\lang french
+ 
 \series bold
 black
 \series default
@@ -42916,11 +42918,31 @@ red
 \series bold
 white
 \series default
-, 
+ ou 
 \series bold
 yellow
 \series default
-.
+ 
+\lang english
+for the 
+\series bold
+color name
+\series default
+ unless you have defined your own color (see the 
+\emph on
+Colored Tables
+\emph default
+ section of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ Manual).
+\lang french
+
 \begin_inset Newline newline
 \end_inset
 

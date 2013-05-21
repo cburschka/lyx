@@ -40674,15 +40674,54 @@ Color ! background
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Color ! Shaded boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Color ! Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Here you can alter the font color for the main text (default: black) and
- for Greyed
+Here you can alter the font color for the 
+\family sans
+Main text
+\family default
+ (default: black), for 
+\family sans
+Greyed
 \begin_inset space ~
 \end_inset
 
-out notes (default: light grey).
+out notes
+\family default
+ (default: light grey)for the background color for the 
+\family sans
+Page
+\family default
+ (default: white) and for 
+\family sans
+Shaded
+\begin_inset space ~
+\end_inset
+
+boxes
+\family default
+ (default: red).
  The button 
 \family sans
 Reset
@@ -40691,17 +40730,23 @@ Reset
 \end_layout
 
 \begin_layout Standard
-You can also change the background color for the pages (default: white)
- and for Shaded
-\begin_inset space ~
-\end_inset
-
-boxes (default: red).
+Clicking any button showing 
+\family sans
+Default
+\family default
+ or 
+\family sans
+Change
+\family default
+ opens a dialog enabling you to choose from a selection of colors or from
+ a color-picker or to specify a color using HSL or RGB values.
+ In the dialog you can add any color to the custom colors to select them
+ later more quickly.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The colors are not shown within LyX, only in the output.
@@ -40718,7 +40763,15 @@ out note appears blue in the output.)
 \end_layout
 
 \begin_layout Standard
-Note, if you change the main text font color and use the option 
+Note, if you change the 
+\family sans
+Main
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+ font color and use the option 
 \family sans
 Color
 \begin_inset space ~
@@ -40734,52 +40787,14 @@ PDF
 
 properties
 \family default
-, you probably also need to change the link font color by using 
-\family sans
-Additional
+, you probably also need to change the link font color as described in section
 \begin_inset space ~
 \end_inset
 
-options
-\family default
- in the 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
 
-properties
-\family default
-.
- For example the option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-sets the link text color to black.
- For more information, see the manual of the LaTeX-package 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! hyperref
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF-Properties"
 
 \end_inset
 
@@ -40794,12 +40809,24 @@ key "hyperref"
 \end_layout
 
 \begin_layout Standard
-You can adapt the main text font color and the page background for every
- page in your document if you use these commands as TeX
+You can adapt the 
+\family sans
+Main
 \begin_inset space ~
 \end_inset
 
-Code behind a forced page break:
+text
+\family default
+ font color and the 
+\family sans
+Page
+\family default
+ background for every page in your document if you use these commands as
+ TeX
+\begin_inset space ~
+\end_inset
+
+Code after a forced page break:
 \end_layout
 
 \begin_layout Itemize
@@ -40827,7 +40854,7 @@ color{color name}
 \end_layout
 
 \begin_layout Standard
-The color name can hereby be one of these: 
+You are restricted to one of 
 \series bold
 black
 \series default
@@ -40855,20 +40882,40 @@ red
 \series bold
 white
 \series default
-, 
+ or 
 \series bold
 yellow
 \series default
+ for the 
+\series bold
+color name
+\series default
+ unless you have defined your own color (see the 
+\emph on
+Colored Tables
+\emph default
+ section of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
 
+Objects
+\emph default
+ Manual).
 \begin_inset Newline newline
 \end_inset
 
-If you have changed a text or background color, you can use them under the
- following names:
+If you have changed a text or background color, you can use the following
+ names to refer to them:
 \end_layout
 
 \begin_layout Itemize
-For the page background color:
+For the 
+\family sans
+Page
+\family default
+ background color:
 \begin_inset Newline newline
 \end_inset
 
@@ -40878,7 +40925,15 @@ page_backgroundcolor
 \end_layout
 
 \begin_layout Itemize
-For the main text color:
+For the 
+\family sans
+Main
+\begin_inset space ~
+\end_inset
+
+text
+\family default
+ color:
 \begin_inset Newline newline
 \end_inset
 
@@ -40888,11 +40943,15 @@ document_fontcolor
 \end_layout
 
 \begin_layout Itemize
-For the Shaded
+For the 
+\family sans
+Shaded
 \begin_inset space ~
 \end_inset
 
-box background color:
+boxes
+\family default
+ background color:
 \begin_inset Newline newline
 \end_inset
 
@@ -40902,11 +40961,15 @@ shadecolor
 \end_layout
 
 \begin_layout Itemize
-For the Greyed
+For the 
+\family sans
+Greyed
 \begin_inset space ~
 \end_inset
 
-out note text color:
+out notes
+\family default
+ text color:
 \begin_inset Newline newline
 \end_inset
 
@@ -40916,23 +40979,15 @@ note_fontcolor
 \end_layout
 
 \begin_layout Standard
-To see how to define and use custom colors, see section 
-\emph on
-Colored
+To see how to define and use custom colors, see section Colored
 \begin_inset space ~
 \end_inset
 
-Cells
-\emph default
- of the 
-\emph on
-Embedded
+Cells of the Embedded
 \begin_inset space ~
 \end_inset
 
-Objects
-\emph default
- manual.
+Objects manual.
 \end_layout
 
 \begin_layout Section
@@ -40940,8 +40995,15 @@ Numbering & TOC
 \end_layout
 
 \begin_layout Standard
-Here you can adjust the numbering depth of section headings and the section
- depth in the table of contents as described in section
+Here you can adjust the 
+\family sans
+Numbering
+\family default
+ depth of section headings and the section depth in the 
+\family sans
+Table of Contents
+\family default
+ as described in section
 \begin_inset space ~
 \end_inset
 
@@ -41181,7 +41243,7 @@ Float Placement
 \end_layout
 
 \begin_layout Standard
-The float placement options are described in section 
+The float placement options are described in the section 
 \emph on
 Float
 \begin_inset space ~
@@ -41205,7 +41267,7 @@ Listings
 \end_layout
 
 \begin_layout Standard
-The listings settings are explained in chapter 
+The listings settings are explained in the chapter 
 \emph on
 Program Code Listings
 \emph default
@@ -41283,7 +41345,7 @@ Output
 \begin_inset space ~
 \end_inset
 
-Format: The format that is used when you hit 
+Format: The format that is used when you enter 
 \begin_inset Quotes eld
 \end_inset
 
@@ -41388,9 +41450,20 @@ Output
 \begin_inset space ~
 \end_inset
 
-Options settings for the export format 
+Options offers settings for the export format 
 \family sans
-LyXHTML
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XHTML
 \family default
 .
  
@@ -41427,7 +41500,57 @@ Additional
 Features
 \emph default
  manual.
- The scaling is used for the size of equations in the output.
+ 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+image
+\begin_inset space ~
+\end_inset
+
+scaling
+\family default
+ is used for the size of equations in the output.
+\end_layout
+
+\begin_layout Section
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX Preamble
+\end_layout
+
+\begin_layout Standard
+In this text field you can enter commands to load special LaTeX-packages
+ or to define LaTeX-commands.
+ The preamble is a thing for LaTeX-experts.
+ You should not enter commands here until you know exactly what you are
+ doing.
+\end_layout
+
+\begin_layout Standard
+An introduction to the LaTeX-syntax is given in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

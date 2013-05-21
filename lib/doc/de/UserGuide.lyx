@@ -7299,9 +7299,7 @@ Ionizing
 \begin_inset space ~
 \end_inset
 
-radiation:
-\lang ngerman
- 
+radiation: 
 \begin_inset Argument
 status open
 
@@ -7323,8 +7321,6 @@ itshape, style=nextline
 
 \end_inset
 
-
-\lang english
 Ionizing radiation consists of particles or electromagnetic waves that are
  energetic enough to detach electrons from atoms or molecules, therefore
  ionizing them.
@@ -41021,7 +41017,31 @@ Farbe ! Hintergrund
 status collapsed
 
 \begin_layout Plain Layout
-Farbe ! Haupttext-
+Farbe ! Haupttext
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Schattierte
+\begin_inset space ~
+\end_inset
+
+Boxen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Grauschrift-Notizen
 \end_layout
 
 \end_inset
@@ -41030,8 +41050,13 @@ Farbe ! Haupttext-
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung: schwarz)
- und für Grauschrift-Notizen (Voreinstellung: hellgrau) ändern.
+Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung: schwarz),
+ für Grauschrift-Notizen (Voreinstellung: hellgrau), die Hintergrundfarbe
+ für die Seiten (Voreinstellung: weiß) und für Schattierte
+\begin_inset space ~
+\end_inset
+
+Boxen (Voreinstellung: rot) ändern.
  Der Kopf 
 \family sans
 Zurücksetzen
@@ -41040,12 +41065,18 @@ Zurücksetzen
 \end_layout
 
 \begin_layout Standard
-Sie können außerdem die Hintergrundfarbe für die Seiten (Voreinstellung:
- weiß) und für Schattierte
-\begin_inset space ~
-\end_inset
-
-Boxen (Voreinstellung: rot) ändern.
+Durch Klicken auf entweder 
+\family sans
+Standard
+\family default
+ oder 
+\family sans
+Änderung
+\family default
+ wird ein Dialog geöffnet, in dem man eine Farbe per Klick oder per Angabe
+ von HSL oder RGB Werten auswählen kann.
+ Im Dialog kann man jede Farbe zu den benutzerdefinierten Farben hinzufügen
+ um sie später schneller auswählen zu können.
 \end_layout
 
 \begin_layout Standard
@@ -41076,52 +41107,18 @@ einfärben
 PDF-Eigenschaften
 \family default
  verwenden, müssen Sie wahrscheinlich auch die Schriftfarbe der Links ändern,
- indem sie 
-\family sans
-Zusätzliche
+ wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
-Optionen
-\family default
- in den 
-\family sans
-PDF-Eigenschaften
-\family default
- verwenden.
- Zum Beispiel färbt die Option
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-den Linktext schwarz.
- Für weitere Informationen, siehe das Handbuch des LaTeX-Pakets 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Paket ! hyperref
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF-Eigenschaften"
 
 \end_inset
 
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
+ beschrieben ist.
 \end_layout
 
 \begin_layout Standard
@@ -41162,7 +41159,7 @@ color{Farbname}
 \end_layout
 
 \begin_layout Standard
-Der Farbname kann einer dieser Namen sein: 
+Der Farbname kann nur einer dieser Namen sein: 
 \series bold
 black
 \series default
@@ -41193,6 +41190,20 @@ white
 , 
 \series bold
 yellow
+\series default
+ solange man keine eigene Farbe definiert hat (siehe Abschnitt 
+\emph on
+Farbige Tabellen
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs).
 \end_layout
 
 \begin_layout Standard
