@@ -13,8 +13,6 @@
 #ifndef GUIKEYSYM_H
 #define GUIKEYSYM_H
 
-#include "frontends/KeySymbol.h"
-
 class QKeyEvent;
 
 namespace lyx {

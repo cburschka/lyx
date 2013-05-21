@@ -15,11 +15,8 @@
 #define GUIPARAGRAPH_H
 
 #include "DialogView.h"
-#include "GuiView.h"
-#include "qt_helpers.h"
 #include "ui_ParagraphUi.h"
 
-#include "Layout.h"
 #include "ParagraphParameters.h"
 
 #include <map>

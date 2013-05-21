@@ -34,6 +34,7 @@
 #include "qt_helpers.h"
 
 #include "frontends/alert.h"
+#include "frontends/KeySymbol.h"
 
 #include "buffer_funcs.h"
 #include "Buffer.h"

@@ -15,8 +15,6 @@
 
 #include "support/ProgressInterface.h"
 
-#include "DockView.h"
-
 #include <QTimer>
 
 #include <sstream>

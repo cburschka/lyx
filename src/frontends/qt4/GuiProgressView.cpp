@@ -16,6 +16,7 @@
 #include "GuiProgressView.h"
 
 #include "GuiApplication.h"
+#include "GuiProgress.h"
 #include "qt_helpers.h"
 
 #include "FuncRequest.h"

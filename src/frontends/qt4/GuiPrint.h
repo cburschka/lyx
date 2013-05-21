@@ -18,7 +18,6 @@
 #include "GuiDialog.h"
 #include "ui_PrintUi.h"
 
-#include "Dialog.h"
 #include "PrinterParams.h"
 
 namespace lyx {

@@ -20,8 +20,6 @@
 
 #include "insets/InsetGraphicsParams.h"
 
-#include "support/docstring.h"
-
 #include <vector>
 
 class QString;

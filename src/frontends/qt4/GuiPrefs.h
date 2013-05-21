@@ -16,10 +16,8 @@
 
 #include "GuiDialog.h"
 
-#include "ColorCode.h"
 #include "Converter.h"
 #include "Format.h"
-#include "FuncCode.h"
 #include "KeyMap.h"
 #include "LyXRC.h"
 #include "Mover.h"

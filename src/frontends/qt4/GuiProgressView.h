@@ -17,10 +17,8 @@
 
 #include "DockView.h"
 
-#include "GuiProgress.h"
 
 #include <string>
-#include <QList>
 
 
 class QHideEvent;
