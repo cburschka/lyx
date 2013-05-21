@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-21 17:56+0200\n"
+"POT-Creation-Date: 2013-05-21 09:32+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4114,7 +4114,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme:"
-msgstr ""
+msgstr "Použiť ikony zo systémovej &témy:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:126
 msgid "Context help"
@@ -6086,11 +6086,11 @@ msgstr "Zoznam náčrtkov"
 
 #: lib/layouts/achemso.layout:187 lib/layouts/achemso.layout:198
 msgid "Chart"
-msgstr "Nákres"
+msgstr "Diagram"
 
 #: lib/layouts/achemso.layout:192
 msgid "List of Charts"
-msgstr "Zoznam nákresov"
+msgstr "Zoznam Diagramov"
 
 #: lib/layouts/achemso.layout:209 lib/layouts/achemso.layout:220
 msgid "Graph"
@@ -6324,11 +6324,12 @@ msgstr "Publikačný Výdaj:"
 
 #: lib/layouts/AEA.layout:89
 msgid "JEL"
-msgstr ""
+msgstr "JEL"
 
+# Journal of Economic Literature (JEL)
 #: lib/layouts/AEA.layout:92
 msgid "JEL:"
-msgstr ""
+msgstr "JEL:"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:562
 #: lib/layouts/theorems-ams-extended-bytype.module:325
@@ -6337,18 +6338,16 @@ msgid "Acknowledgement."
 msgstr "Poďakovanie."
 
 #: lib/layouts/AEA.layout:112
-#, fuzzy
 msgid "Figure Notes"
-msgstr "Obrázky"
+msgstr "Poznámky k Obrázku"
 
 #: lib/layouts/AEA.layout:119
-#, fuzzy
 msgid "Figure Note"
-msgstr "Obrázok"
+msgstr "Poznámka Obrázka"
 
 #: lib/layouts/AEA.layout:120
 msgid "Text of a note in a figure"
-msgstr ""
+msgstr "Text poznámky obrázka"
 
 #: lib/layouts/AEA.layout:127 lib/layouts/apa6.layout:219
 #: lib/layouts/beamer.layout:1306 lib/layouts/powerdot.layout:217
@@ -6356,19 +6355,16 @@ msgid "Note:"
 msgstr "Poznámka:"
 
 #: lib/layouts/AEA.layout:138
-#, fuzzy
 msgid "Table Notes"
-msgstr "Poznámka Tabuľky"
+msgstr "Poznámky Tabuľky"
 
 #: lib/layouts/AEA.layout:142
-#, fuzzy
 msgid "Table Note"
 msgstr "Poznámka Tabuľky"
 
 #: lib/layouts/AEA.layout:143
-#, fuzzy
 msgid "Text of a note in a table"
-msgstr "Kurzor nie je v tabuľke"
+msgstr "Text poznámky v tabuľke"
 
 #: lib/layouts/AEA.layout:147 lib/layouts/beamer.layout:1225
 #: lib/layouts/elsart.layout:272 lib/layouts/foils.layout:220
@@ -11069,7 +11065,7 @@ msgstr "REVTeX (zastaralá verzia)"
 
 #: lib/layouts/RJournal.layout:2
 msgid "report (R Journal)"
-msgstr ""
+msgstr "referát (R Journal)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -14797,7 +14793,7 @@ msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:79
 msgid "Use Computer Algebra System|m"
-msgstr "Použiť System Computer Algebra"
+msgstr "Použiť Systém Computer Algebra"
 
 #: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:105
 msgid "Next Cross-Reference|N"
@@ -15847,7 +15843,7 @@ msgstr "Štýl textu|t"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Use Computer Algebra System|S"
-msgstr "Použiť System Computer Algebra"
+msgstr "Použiť Systém Computer Algebra"
 
 #: lib/ui/stdmenus.inc:240
 msgid "Add Line Above|A"
@@ -23576,7 +23572,7 @@ msgstr ""
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
 #: src/LyX.cpp:1069 src/frontends/qt4/GuiAbout.cpp:141
-#, fuzzy, c-format
+#, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
 msgstr "Zostavený %1$s, %2$s"
 
@@ -26448,29 +26444,24 @@ msgid "||x||"
 msgstr "||x||"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
-#, fuzzy
 msgid "bmatrix"
-msgstr "Vložiť maticu"
+msgstr "bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:44
-#, fuzzy
 msgid "pmatrix"
-msgstr "Vložiť maticu"
+msgstr "pmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:45
-#, fuzzy
 msgid "Bmatrix"
-msgstr "Vložiť maticu"
+msgstr "Bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:46
-#, fuzzy
 msgid "vmatrix"
-msgstr "Vložiť maticu"
+msgstr "vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:47
-#, fuzzy
 msgid "Vmatrix"
-msgstr "Vložiť maticu"
+msgstr "Vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:62
 msgid "Math Matrix"
@@ -32082,3 +32073,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Headings &style:"
 #~ msgstr "Štýl &hlavičky:"
+
+#~ msgid "Built on %1$s, %2$s"
+#~ msgstr "Zostavený %1$s, %2$s"
