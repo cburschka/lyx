@@ -19499,9 +19499,18 @@ arg   "dialog-show mathdelimiter"
 \end_layout
 
 \begin_layout Standard
-括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。選択した括弧は、
-ボタンフィールドの下に表示されます。片側に括弧をつけたくない場合は、空白ボタンを使用してください。LyX上では破線が表示されますが、印刷時には何も印字されなくな
-ります。
+括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。
+\lang english
+The selection will be shown as TeX code
+\lang japanese
+。
+\lang english
+If you want one side not to have a bracket, use 
+\family sans
+(none)
+\family default
+\lang japanese
+。LyX上では破線が表示されますが、印刷時には何も印字されなくなります。
 \end_layout
 
 \begin_layout Standard
@@ -33542,18 +33551,82 @@ status collapsed
 \end_inset
 
 
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+いろ@色 ! 
+\lang english
+Shaded boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+いろ@色 ! 
+\lang english
+Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-ここでは、本文のフォント色(既定値:黒)と、淡色表示注釈のフォント色(既定値:淡灰色)を変更することができます。
+
+\lang english
+Here you can alter the font color for the 
 \family sans
-リセット
+Main text
 \family default
-ボタンを押すと、色は既定値に戻ります。
+ (default: black), for 
+\family sans
+Greyed
+\begin_inset space ~
+\end_inset
+
+out notes
+\family default
+ (default: light grey)for the background color for the 
+\family sans
+Page
+\family default
+ (default: white) and for 
+\family sans
+Shaded
+\begin_inset space ~
+\end_inset
+
+boxes
+\family default
+ (default: red).
+ The button 
+\family sans
+Reset
+\family default
+ sets the color back to the default.
 \end_layout
 
 \begin_layout Standard
-また、頁の背景色(既定値:白)と影付きボックスの背景色(既定値:赤)を変更することもできます。
+
+\lang english
+Clicking any button showing 
+\family sans
+Default
+\family default
+ or 
+\family sans
+Change
+\family default
+ opens a dialog enabling you to choose from a selection of  colors or from
+ a color-picker or to specify a color using HSL or RGB values.
+ In the dialog you can add any color to the custom colors to select them
+ later more quickly.
 \end_layout
 
 \begin_layout Standard
@@ -33570,54 +33643,42 @@ status open
 \end_layout
 
 \begin_layout Standard
-本文フォント色を変更した上、さらに文書設定の
+
+\lang english
+Note, if you change the 
 \family sans
-PDF特性
+Main
+\begin_inset space ~
+\end_inset
+
+text
 \family default
-で
+ font color and use the option 
 \family sans
-色付きリンク
+Color
+\begin_inset space ~
+\end_inset
+
+links
 \family default
-オプションを有効にした場合、おそらく
+ in the document settings under 
 \family sans
-PDF特性
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
 \family default
-の
-\family sans
-追加オプション
-\family default
-でリンクフォント色も変更する必要があります。例えば、オプションに
-\end_layout
+, you probably also need to change the link font color as described in section
+\lang japanese
 
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-と指定すれば、リンクフォント色が黒に設定されます。詳しくは、LaTeXパッケージ
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! hyperref
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF特性"
 
 \end_inset
 
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-の取扱説明書をご覧ください。
+.
 \end_layout
 
 \begin_layout Standard
@@ -33656,7 +33717,11 @@ color{色名}
 \end_layout
 
 \begin_layout Standard
-ここで、色名は次のいずれかです: 
+
+\lang english
+You are restricted to one of
+\lang japanese
+ 
 \series bold
 black
 \series default
@@ -33684,10 +33749,34 @@ red
 \series bold
 white
 \series default
-, 
+ 
+\lang english
+or
+\lang japanese
+ 
 \series bold
 yellow
 \series default
+ 
+\lang english
+for the 
+\series bold
+color name
+\series default
+ unless you have defined your own color (see the 
+\emph on
+Colored Tables
+\emph default
+ section of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ Manual).
+\lang japanese
 
 \begin_inset Newline newline
 \end_inset

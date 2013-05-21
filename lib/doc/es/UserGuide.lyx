@@ -24540,18 +24540,26 @@ iguales
 \family default
 , el tipo de delimitador seleccionado se pondrá en ambos lados.
  El comando TeX de la selección se mostrará bajo el panel de botones.
- Si quieres que un lado no tenga delimitador, usa el botón 
+ Si quieres que un lado no tenga delimitador, usa 
 \family sans
-Ninguno
+(
+\lang english
+none
+\lang spanish
+)
 \family default
 .
  En LyX se mostrará una línea punteada pero no se imprime en la salida.
 \end_layout
 
 \begin_layout Standard
-Si quieres poner delimitadores alrededor de estructuras matemáticas, como
- una raíz cuadrada, puedes seleccionar la estructura que debe incluirse,
- escoger los delimitadores deseados y pulsar 
+Si quieres poner delimitadores alrededor de 
+\lang english
+existing
+\lang spanish
+ estructuras matemáticas, como una raíz cuadrada, puedes seleccionar la
+ estructura que debe incluirse, escoger los delimitadores deseados y pulsar
+ 
 \family sans
 Insert
 \family default
@@ -41345,11 +41353,37 @@ Color ! Fondo
 \end_inset
 
 
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Color ! 
+\lang english
+Shaded boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Color ! 
+\lang english
+Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Aquí puede cambiar el color para el texto principal (por omisión: negro)
- y para las notas resaltadas en gris (por omisión: gris claro).
+Aquí puede cambiar el color para el texto principal (por omisión: negro),
+ para las notas resaltadas en gris (por omisión: gris claro), para del fondo
+ de las páginas (por omisión: blanco) y pare de los marcos (por omisión:
+ rojo).
  El botón 
 \family sans
 Reiniciar
@@ -41358,8 +41392,20 @@ Reiniciar
 \end_layout
 
 \begin_layout Standard
-También puedes cambiar el color de fondo de las páginas (por omisión: blanco)
- y de los marcos (por omisión: rojo).
+
+\lang english
+Clicking any button showing 
+\family sans
+Default
+\family default
+ or 
+\family sans
+Change
+\family default
+ opens a dialog enabling you to choose from a selection of  colors or from
+ a color-picker or to specify a color using HSL or RGB values.
+ In the dialog you can add any color to the custom colors to select them
+ later more quickly.
 \end_layout
 
 \begin_layout Standard
@@ -41398,52 +41444,18 @@ Propiedades
 PDF
 \family default
  de la configuración del documento, probablemente debas cambiar el color
- de los enlaces en 
-\family sans
-Opciones
+ 
+\lang english
+as described in section
+\lang spanish
+
 \begin_inset space ~
 \end_inset
 
-adicionales d
-\family default
-e 
-\family sans
-Propiedades
-\begin_inset space ~
-\end_inset
 
-PDF
-\family default
-.
- Por ejemplo, la opción
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-establece negro para el color de los enlaces.
- Para más información, véase el manual del paquete LaTeX 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX, paquetes ! hyperref
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Propiedades-PDF"
 
 \end_inset
 
@@ -41488,7 +41500,11 @@ color{nombre de color}
 \end_layout
 
 \begin_layout Standard
-El nombre del color puede ser aquí uno de estos: 
+
+\lang english
+You are restricted to one of
+\lang spanish
+ 
 \series bold
 black
 \series default
@@ -41516,10 +41532,30 @@ red
 \series bold
 white
 \series default
-, 
+ o 
 \series bold
 yellow
 \series default
+ 
+\lang english
+for the 
+\series bold
+color name
+\series default
+ unless you have defined your own color (see the 
+\emph on
+Colored Tables
+\emph default
+ section of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ Manual).
+\lang spanish
 
 \begin_inset Newline newline
 \end_inset

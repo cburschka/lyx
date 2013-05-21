@@ -7232,11 +7232,13 @@ est utilisée:
 \end_layout
 
 \begin_layout Description
+
+\lang english
 Ionizing
 \begin_inset space ~
 \end_inset
 
-radiation:
+radiation: 
 \begin_inset Argument
 status open
 
@@ -7258,12 +7260,14 @@ itshape, style=nextline
 
 \end_inset
 
- Ionizing radiation consists of particles or electromagnetic waves that
- are energetic enough to detach electrons from atoms or molecules, therefore
+Ionizing radiation consists of particles or electromagnetic waves that are
+ energetic enough to detach electrons from atoms or molecules, therefore
  ionizing them.
 \end_layout
 
 \begin_layout Description
+
+\lang english
 Reference
 \begin_inset space ~
 \end_inset
@@ -24940,27 +24944,35 @@ Si vous utilisez l'icône de délimitation, les parenthèses et autres délimite
 \end_layout
 
 \begin_layout Standard
-Il est très facile de construire les crochets que vous souhaitez.
- Cliquez sur le crochet que vous voulez avoir à gauche dans la fenêtre de
- gauche et sur celui que vous voulez à droite dans la fenêtre de droite,
- et placez-les dans le document en appuyant sur le bouton 
+
+\lang english
+To construct brackets click on the button for the bracket you want on the
+ left side and right side.
+ If you use the option 
 \family sans
-Insertion
+Keep
+\begin_inset space ~
+\end_inset
+
+matched
+\family default
+, the selected bracket type will be used for the left and the right side.
+ The selection will be shown as TeX code.
+ If you want one side not to have a bracket, use 
+\family sans
+(none)
 \family default
 .
- Si vous voulez un côté sans délimiteur, utilisez le bouton vide.
- LyX affichera une ligne pointillée, mais n'imprimera rien.
- Si vous cochez l'option 
-\family sans
-Apparier
-\family default
-, vous ne choisissez qu'un seul délimiteur, LyX choisit pour vous le délimiteur
- de même type pour l'autre côté.
+ It will appear in LyX with a dotted line, but nothing will be printed.
 \end_layout
 
 \begin_layout Standard
 Si vous décidez après coup de placer des parenthèses (ou une autre structure
  mathématique, comme une racine carrée, ou un autre ornement) autour d'une
+ 
+\lang english
+existing
+\lang french
  structure mathématique déjà existante, c'est faisable.
  Sélectionnez la structure en question (en maintenant la touche 
 \family sans
@@ -24974,7 +24986,6 @@ Shift
 Insertion
 \family default
 .
- Les parenthèses seront placées autour de la structure sélectionnée.
  Les combinaisons les plus courantes (parenthèses, crochets et accolades
  associées) peuvent être saisies via les raccourcis clavier.
  Par exemple, pour insérer une paire de parenthèses flexibles, sélectionner
@@ -42720,12 +42731,37 @@ Couleurs ! fond
 \end_inset
 
 
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Couleurs ! 
+\lang english
+Shaded boxes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Couleurs ! 
+\lang english
+Greyed-out notes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Vous pouvez via cette rubrique modifier la couleur de la police du texte
- principal (implicitement noire) et du texte des notes grisées (implicitement
- gris léger).
+ principal (implicitement noire), du texte des notes grisées (implicitement
+ gris léger), du fond pour les pages (implicitement blanche) et pour le
+ boîtes ombrées (implicitement rouge).
  Le bouton 
 \family sans
 RàZ 
@@ -42734,8 +42770,20 @@ repositionne les couleurs sur les valeurs implicites.
 \end_layout
 
 \begin_layout Standard
-Vous pouvez également modifier les couleur du fond pour les pages (implicitement
- blanche) et pour le boîtes ombrées (implicitement rouge).
+
+\lang english
+Clicking any button showing 
+\family sans
+Default
+\family default
+ or 
+\family sans
+Change
+\family default
+ opens a dialog enabling you to choose from a selection of  colors or from
+ a color-picker or to specify a color using HSL or RGB values.
+ In the dialog you can add any color to the custom colors to select them
+ later more quickly.
 \end_layout
 
 \begin_layout Standard
@@ -42782,57 +42830,18 @@ PDF
 \family sans
 Hyperlien
 \family default
-, vous devez probablement modifier la couleur des liens symboliques en utilisant
- 
-\family sans
-Autres
+, vous devez probablement modifier la couleur des liens symboliques 
+\lang english
+as described in section
+\lang french
+
 \begin_inset space ~
 \end_inset
 
-options 
-\family default
-dans ces 
-\family sans
-Propriétés
-\begin_inset space ~
-\end_inset
 
-du
-\begin_inset space ~
-\end_inset
-
-PDF
-\family default
-.
- Par exemple l'option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-met les liens en noir.
- Pour plus d'informations, voyez le manuel du paquetage LaTeX 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:propriétés-du-PDF"
 
 \end_inset
 
@@ -42881,7 +42890,11 @@ color{color name}
 \end_layout
 
 \begin_layout Standard
-Les noms de couleur doivent être choisis parmi: 
+
+\lang english
+You are restricted to one of
+\lang french
+ 
 \series bold
 black
 \series default
@@ -42909,11 +42922,31 @@ red
 \series bold
 white
 \series default
-, 
+ ou 
 \series bold
 yellow
 \series default
-.
+ 
+\lang english
+for the 
+\series bold
+color name
+\series default
+ unless you have defined your own color (see the 
+\emph on
+Colored Tables
+\emph default
+ section of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ Manual).
+\lang french
+
 \begin_inset Newline newline
 \end_inset
 

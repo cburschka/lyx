@@ -4355,7 +4355,7 @@ Zitat (kurz)
 status collapsed
 
 \begin_layout Plain Layout
-Zitat!(kurz)
+Zitat ! (kurz)
 \end_layout
 
 \end_inset
@@ -4373,7 +4373,7 @@ Zitat (lang)
 status collapsed
 
 \begin_layout Plain Layout
-Zitat!(lang)
+Zitat ! (lang)
 \end_layout
 
 \end_inset
@@ -4406,11 +4406,7 @@ listung
 status collapsed
 
 \begin_layout Plain Layout
-Auf
-\family sans
-\SpecialChar \textcompwordmark{}
-
-\family default
+Auf\SpecialChar \textcompwordmark{}
 listung
 \end_layout
 
@@ -7303,9 +7299,7 @@ Ionizing
 \begin_inset space ~
 \end_inset
 
-radiation:
-\lang ngerman
- 
+radiation: 
 \begin_inset Argument
 status open
 
@@ -7327,8 +7321,6 @@ itshape, style=nextline
 
 \end_inset
 
-
-\lang english
 Ionizing radiation consists of particles or electromagnetic waves that are
  energetic enough to detach electrons from atoms or molecules, therefore
  ionizing them.
@@ -24252,42 +24244,35 @@ Die Klammern mit dem Werkzeugleistenknopf werden automatisch an die Größe
 \end_layout
 
 \begin_layout Standard
-Um die gewünschten Klammern zu bekommen, klicken Sie auf die gewünschte
- Klammer in der linken und rechten Seite.
-
-\lang english
- If you use the option 
+Um die gewünschten Klammern zu bekommen, klicken Sie auf die Klammer in
+ der linken und rechten Seite.
+ Wenn Sie die Option 
 \family sans
-Keep
-\begin_inset space ~
-\end_inset
-
-matched
+Zusammenpassend
 \family default
-, the selected bracket type will be used for the left and the right side.
- The selection will be shown below the button field.
- If you want one side not to have a bracket, use the blank button.
- It will appear in LyX with a dotted line, but nothing will be printed.
+ verwenden, wird die ausgewählte Klammer für die linke und rechte Seite
+ verwendet.
+ Die Auswahl wird als TeX-Code angezeigt.
+ Wenn Sie auf einer Seite keine Klammer haben wollen, verwenden Sie 
+\family sans
+(kein)
+\family default
+.
+ Dies erscheint in LyX als gestrichelte Linie, es wird aber nichts ausgegeben.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to place brackets around math structures, like a square root,
- you can do so by first highlighting (selecting) the structure that is to
- go inside the brackets.
- Then choose the appropriate brackets for left and right and click on 
+Um Klammern um bestehende mathematische Strukturen, wie Wurzeln, zu setzen,
+ markiert man zuerst die Struktur, dann wählt man die entsprechenden Klammern
+ aus und drückt auf 
 \family sans
-Insert
+Einfügen
 \family default
 .
- The parentheses will be drawn around the selected structure.
- The most common bracket combinations (parentheses, square brackets, and
- braces, on both sides) can be entered more quickly using keyboard shortcuts.
- For example, to insert a pair of flexible parentheses on both sides, select
- the structure and enter
-\lang ngerman
- 
+ Die häufigsten Klammern (beidseitig runde, eckige und geschweifte) können
+ schneller mit Tastenkürzeln eingefügt werden.
+ Um zum Beispiel ein Paar runde Klammern einzufügen, markiert man die Struktur
+ und verwendet das Kürzel 
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim ( )"
@@ -41032,7 +41017,31 @@ Farbe ! Hintergrund
 status collapsed
 
 \begin_layout Plain Layout
-Farbe ! Haupttext-
+Farbe ! Haupttext
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Schattierte
+\begin_inset space ~
+\end_inset
+
+Boxen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Farbe ! Grauschrift-Notizen
 \end_layout
 
 \end_inset
@@ -41041,8 +41050,13 @@ Farbe ! Haupttext-
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung: schwarz)
- und für Grauschrift-Notizen (Voreinstellung: hellgrau) ändern.
+Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung: schwarz),
+ für Grauschrift-Notizen (Voreinstellung: hellgrau), die Hintergrundfarbe
+ für die Seiten (Voreinstellung: weiß) und für Schattierte
+\begin_inset space ~
+\end_inset
+
+Boxen (Voreinstellung: rot) ändern.
  Der Kopf 
 \family sans
 Zurücksetzen
@@ -41051,12 +41065,18 @@ Zurücksetzen
 \end_layout
 
 \begin_layout Standard
-Sie können außerdem die Hintergrundfarbe für die Seiten (Voreinstellung:
- weiß) und für Schattierte
-\begin_inset space ~
-\end_inset
-
-Boxen (Voreinstellung: rot) ändern.
+Durch Klicken auf entweder 
+\family sans
+Standard
+\family default
+ oder 
+\family sans
+Änderung
+\family default
+ wird ein Dialog geöffnet, in dem man eine Farbe per Klick oder per Angabe
+ von HSL oder RGB Werten auswählen kann.
+ Im Dialog kann man jede Farbe zu den benutzerdefinierten Farben hinzufügen
+ um sie später schneller auswählen zu können.
 \end_layout
 
 \begin_layout Standard
@@ -41087,52 +41107,18 @@ einfärben
 PDF-Eigenschaften
 \family default
  verwenden, müssen Sie wahrscheinlich auch die Schriftfarbe der Links ändern,
- indem sie 
-\family sans
-Zusätzliche
+ wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
-Optionen
-\family default
- in den 
-\family sans
-PDF-Eigenschaften
-\family default
- verwenden.
- Zum Beispiel färbt die Option
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-linkcolor=black
-\end_layout
-
-\begin_layout Standard
-den Linktext schwarz.
- Für weitere Informationen, siehe das Handbuch des LaTeX-Pakets 
-\series bold
-hyperref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Paket ! hyperref
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF-Eigenschaften"
 
 \end_inset
 
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
+ beschrieben ist.
 \end_layout
 
 \begin_layout Standard
@@ -41173,7 +41159,7 @@ color{Farbname}
 \end_layout
 
 \begin_layout Standard
-Der Farbname kann einer dieser Namen sein: 
+Der Farbname kann nur einer dieser Namen sein: 
 \series bold
 black
 \series default
@@ -41204,6 +41190,20 @@ white
 , 
 \series bold
 yellow
+\series default
+ solange man keine eigene Farbe definiert hat (siehe Abschnitt 
+\emph on
+Farbige Tabellen
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs).
 \end_layout
 
 \begin_layout Standard
