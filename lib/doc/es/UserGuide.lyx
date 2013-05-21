@@ -24540,18 +24540,26 @@ iguales
 \family default
 , el tipo de delimitador seleccionado se pondrá en ambos lados.
  El comando TeX de la selección se mostrará bajo el panel de botones.
- Si quieres que un lado no tenga delimitador, usa el botón 
+ Si quieres que un lado no tenga delimitador, usa 
 \family sans
-Ninguno
+(
+\lang english
+none
+\lang spanish
+)
 \family default
 .
  En LyX se mostrará una línea punteada pero no se imprime en la salida.
 \end_layout
 
 \begin_layout Standard
-Si quieres poner delimitadores alrededor de estructuras matemáticas, como
- una raíz cuadrada, puedes seleccionar la estructura que debe incluirse,
- escoger los delimitadores deseados y pulsar 
+Si quieres poner delimitadores alrededor de 
+\lang english
+existing
+\lang spanish
+ estructuras matemáticas, como una raíz cuadrada, puedes seleccionar la
+ estructura que debe incluirse, escoger los delimitadores deseados y pulsar
+ 
 \family sans
 Insert
 \family default

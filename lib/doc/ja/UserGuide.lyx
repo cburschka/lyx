@@ -19499,9 +19499,18 @@ arg   "dialog-show mathdelimiter"
 \end_layout
 
 \begin_layout Standard
-括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。選択した括弧は、
-ボタンフィールドの下に表示されます。片側に括弧をつけたくない場合は、空白ボタンを使用してください。LyX上では破線が表示されますが、印刷時には何も印字されなくな
-ります。
+括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。
+\lang english
+The selection will be shown as TeX code
+\lang japanese
+。
+\lang english
+If you want one side not to have a bracket, use 
+\family sans
+(none)
+\family default
+\lang japanese
+。LyX上では破線が表示されますが、印刷時には何も印字されなくなります。
 \end_layout
 
 \begin_layout Standard

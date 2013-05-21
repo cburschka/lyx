@@ -24940,27 +24940,35 @@ Si vous utilisez l'icône de délimitation, les parenthèses et autres délimite
 \end_layout
 
 \begin_layout Standard
-Il est très facile de construire les crochets que vous souhaitez.
- Cliquez sur le crochet que vous voulez avoir à gauche dans la fenêtre de
- gauche et sur celui que vous voulez à droite dans la fenêtre de droite,
- et placez-les dans le document en appuyant sur le bouton 
+
+\lang english
+To construct brackets click on the button for the bracket you want on the
+ left side and right side.
+ If you use the option 
 \family sans
-Insertion
+Keep
+\begin_inset space ~
+\end_inset
+
+matched
+\family default
+, the selected bracket type will be used for the left and the right side.
+ The selection will be shown as TeX code.
+ If you want one side not to have a bracket, use 
+\family sans
+(none)
 \family default
 .
- Si vous voulez un côté sans délimiteur, utilisez le bouton vide.
- LyX affichera une ligne pointillée, mais n'imprimera rien.
- Si vous cochez l'option 
-\family sans
-Apparier
-\family default
-, vous ne choisissez qu'un seul délimiteur, LyX choisit pour vous le délimiteur
- de même type pour l'autre côté.
+ It will appear in LyX with a dotted line, but nothing will be printed.
 \end_layout
 
 \begin_layout Standard
 Si vous décidez après coup de placer des parenthèses (ou une autre structure
  mathématique, comme une racine carrée, ou un autre ornement) autour d'une
+ 
+\lang english
+existing
+\lang french
  structure mathématique déjà existante, c'est faisable.
  Sélectionnez la structure en question (en maintenant la touche 
 \family sans
@@ -24974,7 +24982,6 @@ Shift
 Insertion
 \family default
 .
- Les parenthèses seront placées autour de la structure sélectionnée.
  Les combinaisons les plus courantes (parenthèses, crochets et accolades
  associées) peuvent être saisies via les raccourcis clavier.
  Par exemple, pour insérer une paire de parenthèses flexibles, sélectionner

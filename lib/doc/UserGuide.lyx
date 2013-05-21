@@ -23972,25 +23972,28 @@ Keep
 matched
 \family default
 , the selected bracket type will be used for the left and the right side.
- The selection will be shown below the button field.
- If you want one side not to have a bracket, use the blank button.
+ The selection will be shown as TeX code.
+ If you want one side not to have a bracket, use 
+\family sans
+(none)
+\family default
+.
  It will appear in LyX with a dotted line, but nothing will be printed.
 \end_layout
 
 \begin_layout Standard
-If you want to place brackets around math structures, like a square root,
- you can do so by first highlighting (selecting) the structure that is to
- go inside the brackets.
+If you want to place brackets around existing math structures, like a square
+ root, you can do so by first highlighting (selecting) the structure that
+ is to go inside the brackets.
  Then choose the appropriate brackets for left and right and click on 
 \family sans
 Insert
 \family default
 .
- The parentheses will be drawn around the selected structure.
  The most common bracket combinations (parentheses, square brackets, and
  braces, on both sides) can be entered more quickly using keyboard shortcuts.
- For example, to insert a pair of flexible parentheses on both sides, select
- the structure and enter 
+ For example, to insert a pair of parentheses, select the structure and
+ enter 
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim ( )"
