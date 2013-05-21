@@ -18,13 +18,6 @@ AddToPreamble
 	\bibliographystyle{abbrvnat}
 	\usepackage{booktabs}
 
-	% use Schunk, Sinput and Soutput environments defined by RJournal
-	<<include=FALSE>>=
-	render_sweave()
-	set_header(highlight = '')
-	knit_hooks$set(document = hook_rjournal)
-	@
-
 	\fancyhf{}
 	\fancyhead[LO,RE]{\textsc{Contributed Article}}
 	\fancyhead[RO,LE]{\thepage}
