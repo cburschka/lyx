@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-05-21 17:56+0200\n"
-"PO-Revision-Date: 2013-04-21 20:12+0100\n"
+"PO-Revision-Date: 2013-05-21 19:45+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2852,7 +2852,6 @@ msgid "Page Layout"
 msgstr "Seitenlayout"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:171
-#, fuzzy
 msgid "Page &style:"
 msgstr "&Seiten-Stil:"
 
@@ -3540,9 +3539,8 @@ msgid "Use &keyboard map"
 msgstr "&Tastaturtabelle verwenden"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:45
-#, fuzzy
 msgid "&Primary:"
-msgstr "Hauptbetonung"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:65
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
@@ -3550,9 +3548,8 @@ msgid "Br&owse..."
 msgstr "&Durchsuchen..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:91
-#, fuzzy
 msgid "S&econdary:"
-msgstr "&Sekundäre:"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:121
 msgid ""
@@ -6472,11 +6469,11 @@ msgstr "Ausgabe:"
 
 #: lib/layouts/AEA.layout:89
 msgid "JEL"
-msgstr ""
+msgstr "JEL"
 
 #: lib/layouts/AEA.layout:92
 msgid "JEL:"
-msgstr ""
+msgstr "JEL:"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:562
 #: lib/layouts/theorems-ams-extended-bytype.module:325
@@ -6485,18 +6482,16 @@ msgid "Acknowledgement."
 msgstr "Danksagung."
 
 #: lib/layouts/AEA.layout:112
-#, fuzzy
 msgid "Figure Notes"
-msgstr "Abbildungen"
+msgstr "Abbildungsanmerkungen"
 
 #: lib/layouts/AEA.layout:119
-#, fuzzy
 msgid "Figure Note"
-msgstr "Abbildung"
+msgstr "Abbildungsanmerkung"
 
 #: lib/layouts/AEA.layout:120
 msgid "Text of a note in a figure"
-msgstr ""
+msgstr "Text einer Abbildungsanmerkung"
 
 #: lib/layouts/AEA.layout:127 lib/layouts/apa6.layout:219
 #: lib/layouts/beamer.layout:1306 lib/layouts/powerdot.layout:217
@@ -6504,19 +6499,16 @@ msgid "Note:"
 msgstr "Notiz:"
 
 #: lib/layouts/AEA.layout:138
-#, fuzzy
 msgid "Table Notes"
-msgstr "Tabellenfußnote"
+msgstr "Tabellenanmerkungen"
 
 #: lib/layouts/AEA.layout:142
-#, fuzzy
 msgid "Table Note"
-msgstr "Tabellenfußnote"
+msgstr "Tabellenanmerkung"
 
 #: lib/layouts/AEA.layout:143
-#, fuzzy
 msgid "Text of a note in a table"
-msgstr "Cursor nicht in Tabelle"
+msgstr "Text einer Tabellenanmerkung"
 
 #: lib/layouts/AEA.layout:147 lib/layouts/beamer.layout:1225
 #: lib/layouts/elsart.layout:272 lib/layouts/foils.layout:220
@@ -11230,7 +11222,7 @@ msgstr "REVTeX (veraltete Version)"
 
 #: lib/layouts/RJournal.layout:2
 msgid "report (R Journal)"
-msgstr ""
+msgstr "Report (R Journal)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -15880,11 +15872,11 @@ msgstr "Umgebung trennen|g"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Paste from HTML|H"
-msgstr ""
+msgstr "Aus HTML einfügen|H"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste from LaTeX|L"
-msgstr ""
+msgstr "Aus LaTeX einfügen|L"
 
 #: lib/ui/stdmenus.inc:159
 msgid "Paste as LinkBack PDF"
@@ -15903,9 +15895,8 @@ msgid "Paste as JPEG"
 msgstr "Als JPEG einfügen"
 
 #: lib/ui/stdmenus.inc:163
-#, fuzzy
 msgid "Paste as EMF"
-msgstr "Als PDF einfügen"
+msgstr "Als EMF einfügen"
 
 #: lib/ui/stdmenus.inc:165
 msgid "Plain Text|T"
@@ -23786,7 +23777,7 @@ msgstr ""
 #: src/LyX.cpp:1069 src/frontends/qt4/GuiAbout.cpp:141
 #, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr ""
+msgstr "Erstellt am %1$s[[Datum]], %2$s[[Zeit]]"
 
 #: src/LyX.cpp:1081 src/support/Package.cpp:606
 msgid "No system directory"
@@ -25227,12 +25218,12 @@ msgstr "Benutzerverzeichnis: "
 #: src/frontends/qt4/GuiAbout.cpp:129
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr ""
+msgstr "Qt-Version (Runtime): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:130
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr ""
+msgstr "Qt-Version (Compile-Zeit): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:156
 msgid "About LyX"
@@ -26747,29 +26738,24 @@ msgid "||x||"
 msgstr "||x||"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
-#, fuzzy
 msgid "bmatrix"
-msgstr "Matrix einfügen"
+msgstr "bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:44
-#, fuzzy
 msgid "pmatrix"
-msgstr "Matrix einfügen"
+msgstr "pmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:45
-#, fuzzy
 msgid "Bmatrix"
-msgstr "Matrix einfügen"
+msgstr "Bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:46
-#, fuzzy
 msgid "vmatrix"
-msgstr "Matrix einfügen"
+msgstr "vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:47
-#, fuzzy
 msgid "Vmatrix"
-msgstr "Matrix einfügen"
+msgstr "Vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:62
 msgid "Math Matrix"
@@ -28640,9 +28626,8 @@ msgid "Include (excluded)"
 msgstr "Include (ausgeschlossen)"
 
 #: src/insets/InsetInclude.cpp:391
-#, fuzzy
 msgid "Unknown"
-msgstr "unbekannt"
+msgstr "Unbekannt"
 
 #: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:784
 #: src/insets/InsetInclude.cpp:859
@@ -29752,33 +29737,36 @@ msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
 msgstr ""
+"Es sollte sicher sein fortzufahren, aber es\n"
+"kann nicht schaden zu speichern und LyX neu zu starten."
 
 #: src/support/lassert.cpp:65
-#, fuzzy
 msgid "Warning!"
-msgstr "Export-Warnung!"
+msgstr "Warnung!"
 
 #: src/support/lassert.cpp:72
 msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
 msgstr ""
+"Es gab einen Fehler mit diesem Dokument.\n"
+"LyX wird versuchen es sicher zu schließen."
 
 #: src/support/lassert.cpp:75
-#, fuzzy
 msgid "Buffer Error!"
-msgstr "Speicher"
+msgstr "Speicherfehler!"
 
 #: src/support/lassert.cpp:82
 msgid ""
 "LyX has encountered an application error\n"
 "and will now shut down."
 msgstr ""
+"LyX hat einen Fehler in der Anwendung festgestellt\n"
+"und wird nun beendet."
 
 #: src/support/lassert.cpp:85
-#, fuzzy
 msgid "Fatal Exception!"
-msgstr "Tabellenlegende"
+msgstr ""
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
