@@ -391,7 +391,7 @@ while not failed:
         time.sleep(0.5)
         if not lyx_exists():
             print "LyX instance not found because of crash or assert !\n"
-            failed = true
+            failed = True
         else:
             print "Terminating lyx instance: " + str(lyx_pid) + "\n"
             intr_system("kill -9 " + str(lyx_pid), True);
