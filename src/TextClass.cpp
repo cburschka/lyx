@@ -61,7 +61,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 46; // gb: New Tag "ForceLocal"
+int const LAYOUT_FORMAT = 47; //rgh: package options
 
 namespace {
 
@@ -197,6 +197,7 @@ enum TextClassTags {
 	TC_HTMLSTYLES,
 	TC_PROVIDES,
 	TC_REQUIRES,
+	TC_PKGOPTS,
 	TC_LEFTMARGIN,
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
@@ -256,6 +257,7 @@ LexerKeyword textClassTags[] = {
 	{ "nostyle",           TC_NOSTYLE },
 	{ "outputformat",      TC_OUTPUTFORMAT },
 	{ "outputtype",        TC_OUTPUTTYPE },
+	{ "packageoptions",	   TC_PKGOPTS },
 	{ "pagestyle",         TC_PAGESTYLE },
 	{ "preamble",          TC_PREAMBLE },
 	{ "provides",          TC_PROVIDES },
@@ -631,6 +633,15 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			vector<string> const req
 				= getVectorFromString(lexrc.getString());
 			requires_.insert(req.begin(), req.end());
+			break;
+		}
+		
+		case TC_PKGOPTS : {
+			lexrc.next();
+			string const pkg = lexrc.getString();
+			lexrc.next();
+			string const options = lexrc.getString();
+			package_options_[pkg] = options;
 			break;
 		}
 

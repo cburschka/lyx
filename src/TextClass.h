@@ -277,6 +277,8 @@ protected:
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
 	std::set<std::string> requires_;
+	///
+	std::map<std::string, std::string> package_options_;
 	/// default modules wanted by document class
 	LayoutModuleList default_modules_;
 	/// modules provided by document class
@@ -435,6 +437,9 @@ public:
 	bool provides(std::string const & p) const;
 	/// features required by the class?
 	std::set<std::string> const & requires() const { return requires_; }
+	/// package options to write to LaTeX file
+	std::map<std::string, std::string> const & packageOptions() const
+		{ return package_options_; }
 	///
 	unsigned int columns() const { return columns_; }
 	///

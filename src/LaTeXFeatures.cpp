@@ -825,20 +825,25 @@ string const LaTeXFeatures::getPackages() const
 	// also unknown packages can be requested. They are silently
 	// swallowed now. We should change this eventually.
 
-	//
+	// Output all the package option stuff we have been asked to do.
+	map<string, string>::const_iterator it = 
+	    params_.documentClass().packageOptions().begin();
+	map<string, string>::const_iterator en = 
+	    params_.documentClass().packageOptions().end();
+	for (; it != en; ++it)
+		if (mustProvide(it->first))
+			packages << "\\PassOptionsToPackage{" << it->second << "}{"
+		           << it->first << "}\n";
+
 	//  These are all the 'simple' includes.  i.e
 	//  packages which we just \usepackage{package}
-	//
 	for (int i = 0; i < nb_simplefeatures; ++i) {
 		if (mustProvide(simplefeatures[i]))
-			packages << "\\usepackage{"
-				 << simplefeatures[i] << "}\n";
+			packages << "\\usepackage{" << simplefeatures[i] << "}\n";
 	}
 
-	//
 	// The rest of these packages are somewhat more complicated
 	// than those above.
-	//
 
 	// if fontspec is used, AMS packages have to be loaded before
 	// fontspec (in BufferParams)

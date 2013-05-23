@@ -157,6 +157,9 @@ import os, re, string, sys
 # Incremented to format 46, 15 May 2013 by gb
 # New Tag "ForceLocal"
 
+# Incremented to format 47, 23 May 2013 by rgh
+# Add PackageOptions tag
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -164,7 +167,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 46
+currentFormat = 47
 
 
 def usage(prog_name):
@@ -381,7 +384,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 44 or format == 45:
+        if format >= 44 and format <= 46:
             # nothing to do.
             i += 1
             continue

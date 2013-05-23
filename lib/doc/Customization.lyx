@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 470
+\lyxformat 471
 \begin_document
 \begin_header
 \textclass scrbook
@@ -110,7 +110,7 @@ End
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -9437,6 +9437,134 @@ literate
 \end_inset
 
 ] Specifies what sort of output documents using this class will produce.
+\change_inserted 1414654397 1369315909
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1414654397 1369316059
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315915
+PackageOptions
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315909
+string
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315919
+string
+\end_layout
+
+\end_inset
+
+] Specifies options, given in the second string, for the package named by
+ the first string.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315957
+PackageOptions natbib square
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ will cause 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315966
+natbib
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ to be loaded with the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369315985
+square
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ option.
+ (For TeXperts, this causes LyX to output: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369316019
+
+\backslash
+PassOptionsToPackage{natbib}{square}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ prior to loading 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1369316061
+natbib
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
