@@ -19,7 +19,7 @@
 
 
 ''' 
-This modules offer several free functions to help parse lines.
+This module offers several free functions to help parse lines.
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
@@ -32,11 +32,11 @@ find_token(lines, token, start[, end[, ignorews]]):
   extra whitespace following token itself.
 
 find_token_exact(lines, token, start[, end]):
-  As find_token, but with ignorews True.
+  As find_token, but with ignorews set to True.
 
 find_tokens(lines, tokens, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
-  oen of the tokens in tokens is found at the beginning. 
+  one of the tokens in tokens is found at the beginning. 
   Returns -1 if not found. 
   If ignorews is (given and) True, then differences
   in whitespace do not count, except that there must be no 
@@ -136,7 +136,6 @@ get_containing_inset(lines, i):
 get_containing_layout(lines, i):
   As get_containing_inset, but for layout. Additionally returns the
   position of real paragraph start (after par params) as 4th value.
-
 
 find_nonempty_line(lines, start[, end):
   Finds the next non-empty line.
