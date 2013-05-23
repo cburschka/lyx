@@ -581,6 +581,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a Postscript previewer', ['kghostview', 'okular', 'evince', 'gv', 'ghostview -swap'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
+\Format eps3       eps    "EPS (cropped)"         "" "%%"	""	"document,menu=export"	""
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
@@ -591,7 +592,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"	""
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"	""
 \Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""
-\Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"'''])
+\Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
+\Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,menu=export"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
@@ -789,6 +791,9 @@ def checkConverterEntries():
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
     #
+    checkProg('a PDF cropping tool', ['pdfcrop $$i $$o'],
+        rc_entry = [ r'\converter pdf2   pdf7       "%%"	""' ])
+    #
     checkProg('a Beamer info extractor', ['makebeamerinfo -p $$i'],
         rc_entry = [ r'\converter pdf2         beamer.info        "%%"	""' ])
     #
@@ -797,6 +802,9 @@ def checkConverterEntries():
     #
     checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
         rc_entry = [ r'\converter dvi        ps         "%%"	""' ])
+    #
+    checkProg('a DVI to cropped EPS converter', ['dvips -E -o $$o $$i'],
+        rc_entry = [ r'\converter dvi        eps3         "%%"	""' ])
     #
     checkProg('a DVI to PDF converter', ['dvipdfmx -o $$o $$i', 'dvipdfm -o $$o $$i'],
         rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
