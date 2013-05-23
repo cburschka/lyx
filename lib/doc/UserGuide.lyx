@@ -40626,23 +40626,6 @@ European
  sign, the œ-ligature and some characters used for French and Finnish
 \end_layout
 
-\begin_layout Standard
-Finally, the dialog lets you select a specific language package for the
- current document.
- See sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Prefs-Language"
-
-\end_inset
-
- for more information on the language package.
-\end_layout
-
 \begin_layout Section
 Colors
 \begin_inset Index idx
@@ -41013,7 +40996,7 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-Here you can specify a citation style using the LaTeX packages 
+Here you can specify if a citation style using the LaTeX packages 
 \series bold
 natbib
 \series default
@@ -41041,8 +41024,12 @@ LaTeX-packages ! jurabib
 
 \end_inset
 
-.
- You can enable a sectioned bibliography using the LaTeX package 
+ should be used.
+ You can enable a 
+\family sans
+Sectioned bibliography
+\family default
+ using the LaTeX package 
 \series bold
 bibtopic
 \series default
@@ -41056,8 +41043,11 @@ LaTeX-packages ! bibtopic
 
 \end_inset
 
- and you can customize how the bibliography of the given document is being
- generated.
+ and you can select a 
+\family sans
+Processor
+\family default
+ for the generation of the bibliography.
  For a further description see section
 \begin_inset space ~
 \end_inset
@@ -41077,9 +41067,12 @@ Indexes
 \end_layout
 
 \begin_layout Standard
-Here, you can customize how the index of your document is being generated
- and you can define additional indexes.
- Please refer to section
+Here you can define the 
+\family sans
+Processor
+\family default
+ that will generate your index and you can define additional indexes (see
+ section
 \begin_inset space ~
 \end_inset
 
@@ -41090,7 +41083,7 @@ reference "sec:Index"
 
 \end_inset
 
- for details.
+ for details).
 \end_layout
 
 \begin_layout Section
@@ -41278,7 +41271,19 @@ Bullets
 \end_layout
 
 \begin_layout Standard
-Here you can adjust the characters for the itemize levels.
+Here you can adjust the characters used for the itemize 
+\family sans
+Level
+\family default
+s, specify the 
+\family sans
+Font
+\family default
+ set to be used and set the 
+\family sans
+Size
+\family default
+ of the bullets.
  The itemize environment is described in section
 \begin_inset space ~
 \end_inset
@@ -41291,6 +41296,89 @@ reference "sec:Itemize"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+You can furthermore specify a 
+\family sans
+Custom
+\begin_inset space ~
+\end_inset
+
+Bullet
+\family default
+ by inserting in this field the LaTeX command of the desired character.
+ For example to use the € sign, you have to insert the command 
+\series bold
+
+\backslash
+texteuro
+\series default
+.
+ For math symbols you additionally need to enclose the command with $ signs.
+ To use e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the symbol 
+\begin_inset Formula $\circlearrowright$
+\end_inset
+
+ you need to enter 
+\series bold
+$
+\backslash
+circlearrowright$
+\series default
+.
+ To find the command for a math symbol, create a formula and hover the mouse
+ over the desired symbol in the math toolbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Some characters require to load special LaTeX-packages in the preamble
+ (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+).
+ For example for the € sign one needs to add the line 
+\series bold
+
+\backslash
+usepackage{textcomp}
+\series default
+ to the preamble.
+ For most math symbols it is sufficient to add the line 
+\series bold
+
+\backslash
+usepackage{amssymb}
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

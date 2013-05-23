@@ -43085,8 +43085,15 @@ Paquetages LaTeX ! bibtopic
 
 \end_inset
 
- et vous pouvez personnaliser la créatioçn de la bibliographie d'un document
- particulier.
+ et vous pouvez 
+\lang english
+select a 
+\family sans
+Processor
+\family default
+ for the generation of the bibliography
+\lang french
+.
  Pour plus d'information voir la section
 \begin_inset space ~
 \end_inset
@@ -43106,9 +43113,16 @@ Index
 \end_layout
 
 \begin_layout Standard
-Vous pouvez régler ici comment doit être créé l'index de votre document,
- et vous pouvez définir d'autres index.
- Voir la section
+Vous pouvez 
+\lang english
+define the 
+\family sans
+Processor
+\family default
+ that will generate
+\lang french
+ l'index de votre document, et vous pouvez définir d'autres index (voir
+ la section
 \begin_inset space ~
 \end_inset
 
@@ -43119,7 +43133,7 @@ reference "sec:Index"
 
 \end_inset
 
- pour les détails.
+ pour les détails).
 \end_layout
 
 \begin_layout Section
@@ -43294,7 +43308,23 @@ Puces
 \end_layout
 
 \begin_layout Standard
-Ici, vous pouvez changer les caractères utilisés pour les listes à puces.
+Ici, vous pouvez changer les caractères utilisés pour les 
+\lang english
+itemize 
+\family sans
+Level
+\family default
+s, specify the 
+\family sans
+Font
+\family default
+ set to be used and set the 
+\family sans
+Size
+\family default
+ of the bullets
+\lang french
+.
  L'environnement liste à puces est décrit section
 \begin_inset space ~
 \end_inset
@@ -43307,6 +43337,92 @@ reference "sub:ListePuces"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+You can furthermore specify a 
+\family sans
+Custom
+\begin_inset space ~
+\end_inset
+
+Bullet
+\family default
+ by inserting in this field the LaTeX command of the desired character.
+ For example to use the € sign, you have to insert the command 
+\series bold
+
+\backslash
+texteuro
+\series default
+.
+ For math symbols you additionally need to enclose the command with $ signs.
+ To use e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the symbol 
+\begin_inset Formula $\circlearrowright$
+\end_inset
+
+ you need to enter 
+\series bold
+$
+\backslash
+circlearrowright$
+\series default
+.
+ To find the command for a math symbol, create a formula and hover the mouse
+ over the desired symbol in the math toolbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ Some characters require to load special LaTeX-packages in the preamble
+ (menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+).
+ For example for the € sign one needs to add the line 
+\series bold
+
+\backslash
+usepackage{textcomp}
+\series default
+ to the preamble.
+ For most math symbols it is sufficient to add the line 
+\series bold
+
+\backslash
+usepackage{amssymb}
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
