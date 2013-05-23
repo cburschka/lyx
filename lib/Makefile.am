@@ -1832,6 +1832,9 @@ dist_layouts_DATA =\
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
 	layouts/achemso.layout \
+	layouts/acm-sigs.layout \
+	layouts/acm-sigs-alt.layout \
+	layouts/acmsig.inc \
 	layouts/acmsiggraph.layout \
 	layouts/AEA.layout \
 	layouts/agutex.layout \

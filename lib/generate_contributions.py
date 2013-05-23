@@ -13,12 +13,13 @@ This script both stores and manipulates the raw data needed to
 create CREDITS, credits.inc and blanket-permission.inc
 
 Usage:
+
 $ python generate_contributions.py \
   CREDITS \
   credits.inc \
   blanket-permission.inc
 
-where the arguments are the names of the generated files.
+where the arguments are the pathnames of the generated files.
 '''
 
 import codecs, sys, textwrap
@@ -91,7 +92,16 @@ def error(message):
 
 
 def usage(prog_name):
-     return "Usage: %s <CREDITS> <credits.inc> <blanket-permission.inc>" % prog_name
+     return '''
+Usage:
+
+$ python generate_contributions.py \\
+  CREDITS \\
+  credits.inc \\
+  blanket-permission.inc
+
+where the arguments are the pathnames of the generated files.
+'''
 
 
 def collate_incomplete(contributers):
@@ -376,6 +386,14 @@ contributers = [
                  "m=129594232112957",
                  "28 January 2011",
                  u"fix-cm module"),
+
+     contributer(u"Gioele Barabucci",
+                 "gioele () svario ! it",
+                 "GPL",
+                 "Contribution license",
+                 "m=136933235620262",
+                 "23 May 2013",
+                 u"ACM-SIGS layouts"),
 
      contributer(u"Özgür Uğraş Baran",
                  "ugras.baran () gmail ! com",
