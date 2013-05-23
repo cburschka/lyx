@@ -826,14 +826,14 @@ string const LaTeXFeatures::getPackages() const
 	// swallowed now. We should change this eventually.
 
 	// Output all the package option stuff we have been asked to do.
-	map<string, string>::const_iterator it = 
+	map<string, string>::const_iterator it =
 	    params_.documentClass().packageOptions().begin();
-	map<string, string>::const_iterator en = 
+	map<string, string>::const_iterator en =
 	    params_.documentClass().packageOptions().end();
 	for (; it != en; ++it)
 		if (mustProvide(it->first))
-			packages << "\\PassOptionsToPackage{" << it->second << "}{"
-		           << it->first << "}\n";
+			packages << "\\PassOptionsToPackage{" << it->second << "}"
+			         << "{" << it->first << "}\n";
 
 	//  These are all the 'simple' includes.  i.e
 	//  packages which we just \usepackage{package}

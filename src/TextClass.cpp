@@ -635,7 +635,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
-		
+
 		case TC_PKGOPTS : {
 			lexrc.next();
 			string const pkg = lexrc.getString();
