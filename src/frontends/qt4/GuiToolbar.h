@@ -16,8 +16,6 @@
 #ifndef GUITOOLBAR_H
 #define GUITOOLBAR_H
 
-#include "Session.h"
-
 #include <QList>
 #include <QToolBar>
 #include <QToolButton>

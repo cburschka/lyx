@@ -17,10 +17,6 @@
 
 #include "DockView.h"
 
-#include "insets/InsetCommandParams.h"
-
-#include "TocBackend.h"
-
 namespace lyx {
 namespace frontend {
 

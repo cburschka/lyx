@@ -12,11 +12,8 @@
 #ifndef TOCMODEL_H
 #define TOCMODEL_H
 
-#include "qt_helpers.h"
-
 #include <QHash>
 #include <QSortFilterProxyModel>
-#include <QStandardItemModel>
 
 namespace lyx {
 

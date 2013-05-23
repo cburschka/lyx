@@ -17,8 +17,6 @@
 #include "ui_ViewSourceUi.h"
 
 #include "DockView.h"
-#include "GuiView.h"
-#include "qt_helpers.h"
 
 #include <QDockWidget>
 #include <QString>

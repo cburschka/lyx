@@ -19,12 +19,15 @@
 #include "DocIterator.h"
 #include "FuncRequest.h"
 #include "LyX.h"
+#include "qt_helpers.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
 
 #include <QSortFilterProxyModel>
+#include <QStandardItemModel>
+
 
 #include <climits>
 

@@ -15,7 +15,6 @@
 
 #include "GuiDialog.h"
 #include "ui_TexinfoUi.h"
-#include "qt_helpers.h"
 
 
 namespace lyx {

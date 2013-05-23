@@ -16,8 +16,6 @@
 #include "Thesaurus.h"
 #include "ui_ThesaurusUi.h"
 
-#include "WordLangTuple.h"
-
 class QTreeWidgetItem;
 
 namespace lyx {

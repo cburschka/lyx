@@ -13,10 +13,8 @@
 #define WORKAREA_PRIVATE_H
 
 #include "FuncRequest.h"
-#include "qt_helpers.h"
 #include "LyXRC.h"
 
-#include "support/docstring.h"
 #include "support/Timeout.h"
 
 #include <QMouseEvent>

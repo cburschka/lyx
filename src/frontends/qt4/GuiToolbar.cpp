@@ -32,6 +32,7 @@
 #include "KeyMap.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "Session.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"

@@ -15,8 +15,6 @@
 #include "DialogView.h"
 #include "ui_InsetParamsUi.h"
 
-#include "qt_i18n.h"
-
 namespace lyx {
 
 class Inset;

@@ -15,8 +15,6 @@
 
 #include "frontends/WorkArea.h"
 
-#include "support/docstring.h"
-
 #include <QAbstractScrollArea>
 #include <QTabBar>
 #include <QTabWidget>
