@@ -6,7 +6,7 @@ do
 	echo Testing $i...
 	dn=`dirname $i`
 	bn=`basename $i .layout`
-	if ! ./check_Layout ${dn}/${bn}; then
+	if ! ./check_layout ${dn}/${bn}; then
 		retval=1
 	fi
 done
