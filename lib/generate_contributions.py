@@ -160,7 +160,7 @@ if (isset($email) && $email != "") {
 } else
         $output=$output. "<dt><b>${name}</b>";
 
-$msg = ereg_replace("\\n *", "\\n  ", ltrim($msg));
+$msg = preg_replace("/\\n */", "\\n  ", ltrim($msg));
 
 $output=$output. "
  </dt>
@@ -911,7 +911,7 @@ contributers = [
                  "",
                  "",
                  "",
-                 u"Original name that is now two character shorter"),
+                 u"Original name that is now two characters shorter"),
 
      contributer(u"KDE Artists",
                  "http://artist.kde.org/",
