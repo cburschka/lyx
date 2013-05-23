@@ -45,6 +45,8 @@ public:
 		FuncStatus &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	void updateBuffer(ParIterator const & it, UpdateType utype);
 
 protected:
 	///

@@ -19,7 +19,9 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "Lexer.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "support/gettext.h"
@@ -121,6 +123,28 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
+{
+	BufferParams const & bp = buffer().masterBuffer()->params();
+	Counters & cnts = bp.documentClass().counters();
+	if (utype == OutputUpdate) {
+		// the counter is local to this inset
+		cnts.saveLastCounter();
+	}
+	InsetLayout const & il = getLayout();
+	docstring const & count = il.counter();
+	docstring custom_label = translateIfPossible(il.labelstring());
+	if (cnts.hasCounter(count))
+		cnts.step(count, utype);
+	custom_label += ' ' +
+		cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
+	setLabel(custom_label);
+	InsetCollapsable::updateBuffer(it, utype);
+	if (utype == OutputUpdate)
+		cnts.restoreLastCounter();
 }
 
 

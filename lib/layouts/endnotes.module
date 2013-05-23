@@ -6,15 +6,20 @@
 
 Format 45
 
+Counter endnotes
+    PrettyFormat "Endnote ##"
+End
+
 InsetLayout Flex:Endnote
-   LyXType	custom
-   LatexName	endnote
-   LatexType	command
-   Decoration classic
+   LyXType     custom
+   LatexName   endnote
+   LatexType   command
+   Counter     endnotes
+   Decoration  classic
    Font
-     Size	Small
+     Size Small
    EndFont
-   MultiPar true
-   LabelString	endnote
-   Requires	endnotes
+   MultiPar    true
+   LabelString endnote
+   Requires    endnotes
 End

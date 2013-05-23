@@ -48,10 +48,10 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 	if (!outer.layout().intitle) {
 		InsetLayout const & il = getLayout();
 		docstring const & count = il.counter();
-		custom_label_ = translateIfPossible(il.labelstring()) + ' ';
+		custom_label_ = translateIfPossible(il.labelstring());
 		if (cnts.hasCounter(count))
 			cnts.step(count, utype);
-		custom_label_ += 
+		custom_label_ += ' ' +
 			cnts.theCounter(count, outer.getParLanguage(bp)->code());
 		setLabel(custom_label_);
 	}
