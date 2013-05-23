@@ -30,9 +30,9 @@ def main(argv):
             uselyx2lyx = True
             skipcount = 1
     if len(argv) >= 3+skipcount:
-	sys.path.append(os.path.join(sys.argv[2+skipcount]))
+        sys.path.append(os.path.join(sys.argv[2+skipcount]))
     else:
-	sys.path.append(os.path.join(os.path.dirname(sys.argv[0]), '../../../lib/scripts'))
+        sys.path.append(os.path.join(os.path.dirname(sys.argv[0]), '../../../lib/scripts'))
 
     from lyxpreview_tools import error
 
@@ -45,9 +45,9 @@ def main(argv):
 
     suffixre = re.search(r'\d+\.\d+$', tex2lyx)
     if suffixre:
-	suffix = suffixre.group()
+        suffix = suffixre.group()
     else:
-	suffix = ""
+        suffix = ""
     lyx = os.path.join(os.path.dirname(tex2lyx), "lyx" + suffix)
     inputdir = os.path.dirname(argv[0])
     if len(argv) >= 4+skipcount:
