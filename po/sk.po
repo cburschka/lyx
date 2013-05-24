@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-22 07:51+0200\n"
+"POT-Creation-Date: 2013-05-24 10:05+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6132,6 +6132,14 @@ msgstr "Chémia"
 msgid "chemistry"
 msgstr "chémia"
 
+#: lib/layouts/acm-sigs-alt.layout:3
+msgid "article (ACM SIGS 'alternate' style)"
+msgstr "článok (ACM SIGS 'alternate' štýl)"
+
+#: lib/layouts/acm-sigs.layout:3
+msgid "article (ACM SIGS)"
+msgstr "článok (ACM SIGS)"
+
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH"
 msgstr "ACM SIGGRAPH"
@@ -11700,6 +11708,10 @@ msgstr "e-mail:"
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus nepodporované v recentnom A&A:"
+
+#: lib/layouts/acm-sigs.inc:37
+msgid "General terms:"
+msgstr "Obecné pojmy:"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:68 lib/layouts/svcommon.inc:278
@@ -29027,11 +29039,6 @@ msgstr "Vhodný výraz nenájdený!"
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
-#: src/mathed/InsetFormulaMacro.cpp:122
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makro: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1701
 #: src/mathed/InsetMathSplit.cpp:82 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
@@ -29471,6 +29478,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makro: %1$s: "
 
 #~ msgid "HTML Text|H"
 #~ msgstr "HTML Text|H"
