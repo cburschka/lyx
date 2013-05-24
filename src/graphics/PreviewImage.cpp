@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "PreviewImage.h"
+
+#include "Dimension.h"
 #include "GraphicsImage.h"
 #include "GraphicsLoader.h"
 #include "PreviewLoader.h"

@@ -17,8 +17,6 @@
 #include "ColorCode.h"
 #include "Text.h"
 
-#include "insets/InsetLayout.h"
-
 namespace lyx {
 
 class CompletionList;

@@ -14,8 +14,6 @@
 #ifndef GRAPHICSPARAMS_H
 #define GRAPHICSPARAMS_H
 
-#include "GraphicsTypes.h"
-
 #include "support/FileName.h"
 
 #include <string>

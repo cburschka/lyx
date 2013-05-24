@@ -14,7 +14,6 @@
 #define INSETGRAPHICSPARAMS_H
 
 
-#include "graphics/GraphicsTypes.h"
 #include "Length.h"
 
 #include "support/FileName.h"

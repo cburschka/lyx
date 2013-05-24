@@ -17,7 +17,6 @@
 #include "support/qstring_helpers.h"
 #include "qt_i18n.h"
 
-#include <QString>
 #include <QHeaderView>
 
 class QComboBox;

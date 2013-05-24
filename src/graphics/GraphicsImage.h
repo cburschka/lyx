@@ -24,8 +24,6 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
-#include "Dimension.h"
-
 namespace lyx {
 
 namespace support { class FileName; }
