@@ -364,8 +364,6 @@ liblyxgraphics_a_SOURCES = \
 
 ############################### Mathed  ##############################
 
-EXTRA_DIST += mathed/InsetFormulaMacro.cpp
-
 noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
