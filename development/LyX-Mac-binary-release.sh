@@ -792,6 +792,7 @@ set_bundle_display_options() {
 	LYX_Y_POSITION=$Y_POSITION
 	APP_X_POSITION=$((3 * X_BOUNDS / 4))
 	APP_Y_POSITION=$Y_POSITION
+	WITH_DOCUMENTS=$(test -d "${1}/Documents" && echo true || echo false)
 	osascript <<-EOF
 	tell application "Finder"
         set f to POSIX file ("${1}" as string) as alias
@@ -807,11 +808,13 @@ set_bundle_display_options() {
             delay 1 -- sync
             set icon size of the icon view options of container window to 64
             set arrangement of the icon view options of container window to not arranged
-            set position of item "Documents" to {$LYX_X_POSITION,0}
+            if ${WITH_DOCUMENTS} then
+               set position of item "Documents" to {$LYX_X_POSITION,0}
+            end if
             set position of item "${LyxName}.app" to {$LYX_X_POSITION,$LYX_Y_POSITION}
             set position of item "Applications" to {$APP_X_POSITION,$APP_Y_POSITION}
             set background picture of the icon view options\
-					of container window to file "background.png" of folder "Pictures"
+               of container window to file "background.png" of folder "Pictures"
             set the bounds of the container window to {0, 0, $X_BOUNDS, $Y_BOUNDS}
             update without registering applications
             delay 5 -- sync
