@@ -36,8 +36,8 @@ Format 1
 \bind "C-g C-e" "math-insert \epsilon"
 \bind "C-g z" "math-insert \zeta"
 \bind "C-g h" "math-insert \eta"
-\bind "C-g q" "math-insert \theta"
-\bind "C-g C-q" "math-insert \vartheta"
+\bind "C-g y" "math-insert \theta"
+\bind "C-g S-z" "math-insert \vartheta"
 \bind "C-g i" "math-insert \iota"
 \bind "C-g k" "math-insert \kappa"
 \bind "C-g l" "math-insert \lambda"
@@ -50,23 +50,23 @@ Format 1
 \bind "C-g s" "math-insert \sigma"
 \bind "C-g C-s" "math-insert \varsigma"
 \bind "C-g t" "math-insert \tau"
-\bind "C-g v" "math-insert \upsilon"
+\bind "C-g u" "math-insert \upsilon"
 \bind "C-g f" "math-insert \phi"
-\bind "C-g c" "math-insert \chi"
-\bind "C-g y" "math-insert \psi"
+\bind "C-g q" "math-insert \chi"
+\bind "C-g c" "math-insert \psi"
 \bind "C-g w" "math-insert \omega"
 
 # uppercase math Greek
 \bind "C-g S-G" "math-insert \Gamma"
 \bind "C-g S-D" "math-insert \Delta"
-\bind "C-g S-Q" "math-insert \Theta"
+\bind "C-g S-Y" "math-insert \Theta"
 \bind "C-g S-L" "math-insert \Lambda"
 \bind "C-g S-X" "math-insert \Xi"
 \bind "C-g S-P" "math-insert \Pi"
 \bind "C-g S-S" "math-insert \Sigma"
-\bind "C-g S-V" "math-insert \Upsilon"
+\bind "C-g S-U" "math-insert \Upsilon"
 \bind "C-g S-F" "math-insert \Phi"
-\bind "C-g S-Y" "math-insert \Psi"
+\bind "C-g S-C" "math-insert \Psi"
 \bind "C-g S-W" "math-insert \Omega"
 
 
@@ -79,11 +79,12 @@ Format 1
 #\bind "C-j"	"------"
 
 \bind "C-k"	"line-delete-forward"
-\bind "C-l"	"screen-recenter"
+\bind "C-j"			"screen-recenter"
 \bind "C-S-I"			"info-insert"
 
 # Toggle: in text mode, switch to math, and vice versa. Also C-t.
 \bind "C-m"	"math-mode"
+\bind "Insert"  "math-mode"
 \bind "C-n"	"math-number-toggle"
 \bind "S-C-N"	"math-number-line-toggle"
 
@@ -108,6 +109,7 @@ Format 1
 \bind "C-S-v"	"clipboard-paste"
 \bind "C-M-v"	"primary-selection-paste"
 \bind "C-w"	"buffer-close"
+\bind "C-n"	"buffer-new"
 \bind "C-x"	"cut"
 \bind "C-z"	"undo"
 \bind "S-C-Z"	"redo"
@@ -119,11 +121,15 @@ Format 1
 \bind "S-M-quotedbl"           "quote-insert single"
 
 # Bracket delimiters. Sciword mnemonic is to press Control-<bracket key>
+# On U.S. keyboard with Windows Ctrl+Shift definition must refer to
+# unshifted character -- Fixed by Michael
 
 \bind "C-9"	"math-delim ( )"
 \bind "S-C-parenleft"	"math-delim ( )"
+\bind "S-C-9"	"math-delim ( )"
 \bind "C-0"	"math-delim ( )"
 \bind "S-C-parenright"	"math-delim ( )"
+\bind "S-C-0"	"math-delim ( )"
 
 \bind "C-bracketleft"		"math-delim [ ]"
 \bind "C-bracketright"	"math-delim [ ]"
@@ -136,8 +142,12 @@ Format 1
 \bind "C-S-brokenbar"	"math-delim | |"
 \bind "C-M-bar"		"math-delim | |"
 
+# On U.S. keyboard with Windows Ctrl+Shift definition must refer to
+# unshifted character -- Fixed by Michael
 \bind "S-C-braceleft"		"math-delim { }"
 \bind "S-C-braceright"		"math-delim { }"
+\bind "S-C-bracketleft"		"math-delim { }"
+\bind "S-C-bracketright"	"math-delim { }"
 
 # Accents by Sciword mnemonics. Mostly press Ctrl-<accent key>
 # e.g. Ctrl-. for overdot, Ctrl-' for acute accent, Ctrl-~ for tilde etc.
@@ -183,7 +193,11 @@ Format 1
 
 \bind "M-apostrophe"	"math-insert \prime"
 \bind "C-Up"		"math-superscript"
+\bind "C-h"		"math-superscript"
+\bind "C-3"		"math-superscript"
 \bind "C-Down"		"math-subscript"
+\bind "C-l"		"math-subscript"
+\bind "C-4"		"math-subscript"
 \bind "C-s d"		"math-insert \partial"
 \bind "C-s e"		"math-insert \sum"
 \bind "C-s p"		"math-insert \prod"
@@ -227,6 +241,8 @@ Format 1
 \bind "S-KP_Down"				"down-select"
 \bind "S-C-KP_Right"			"word-right-select"
 \bind "S-C-KP_Left" 			"word-left-select"
+\bind "C-KP_Right"			"word-right"
+\bind "C-KP_Left" 			"word-left"
 \bind "S-C-KP_Up"				"paragraph-up-select"
 \bind "S-C-KP_Down" 			"paragraph-down-select"
 \bind "S-KP_Home"				"line-begin-select"
@@ -243,3 +259,10 @@ Format 1
 
 
 \bind "M-x" "command-execute"
+
+\bind "C-M-c" "buffer-view"
+
+# custom commands imported from cua.bind by Michael
+\bind "C-space"			"command-alternatives space-insert protected ; math-space"
+\bind "C-Return"		"newline-insert newline"
+\bind "C-S-Return"		"newline-insert linebreak"
