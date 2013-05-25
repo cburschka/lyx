@@ -16,7 +16,6 @@
 #include "DocIterator.h"
 
 #include "support/docstring.h"
-#include "support/types.h"
 
 #include <map>
 #include <set>

@@ -16,8 +16,6 @@
 
 #include "support/docstream.h"
 #include "Layout.h"
-#include "Paragraph.h"
-#include "ParIterator.h"
 #include "ParagraphList.h"
 
 

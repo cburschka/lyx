@@ -17,8 +17,6 @@
 #include "MacroTable.h"
 #include "MathData.h"
 
-#include "support/types.h"
-
 
 namespace lyx {
 

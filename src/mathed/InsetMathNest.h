@@ -14,9 +14,6 @@
 
 #include "InsetMath.h"
 
-// FIXME: remove
-#include "support/docstring.h"
-
 #include <map>
 
 namespace lyx {
