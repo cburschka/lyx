@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-24 10:05+0200\n"
+"POT-Creation-Date: 2013-05-25 18:56+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3292,8 +3292,8 @@ msgid "Skip trailing non-word characters"
 msgstr "Vynechať bočné písmená nepatriace k slovu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
-msgid "Use Mac-style for cursor moving between &words"
-msgstr "Použiť &MAC-štýl na posun kurzora medzi slovami"
+msgid "Use M&ac-style cursor movement"
+msgstr "Použiť &MAC-štýl na posun kurzora"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
@@ -23732,8 +23732,8 @@ msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Prehoď Apple klávesu na Meta a Kontrol klávesu na Ctrl."
 
 #: src/LyXRC.cpp:3149
-msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr "Použiť dohody Mac OS X pre pohyb kurzoru po slovách"
+msgid "Use the Mac OS X conventions for cursor movement"
+msgstr "Použiť dohody Mac OS X pre pohyb kurzoru"
 
 #: src/LyXRC.cpp:3153
 msgid ""
@@ -32086,3 +32086,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Built on %1$s, %2$s"
 #~ msgstr "Zostavený %1$s, %2$s"
+
+#~ msgid "Use Mac-style for cursor moving between &words"
+#~ msgstr "Použiť &MAC-štýl na posun kurzora medzi slovami"
+
+#~ msgid "Use the Mac OS X conventions for the word-level cursor movement"
+#~ msgstr "Použiť dohody Mac OS X pre pohyb kurzoru po slovách"
