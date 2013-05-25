@@ -317,9 +317,9 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\begin{framed}%\n";
 		break;
 	case Boxed:
-		if (width_string.empty()) {
-			os << "\\framebox";
+		if (!width_string.empty()) {
 			if (!params_.inner_box) {
+				os << "\\framebox";
 				// Special widths, see usrguide sec. 3.5
 				// FIXME UNICODE
 				if (params_.special != "none") {
@@ -331,7 +331,8 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 					   << ']';
 				if (params_.hor_pos != 'c')
 					os << "[" << params_.hor_pos << "]";
-			}
+			} else
+				os << "\\fbox";
 		} else
 			os << "\\fbox";
 		os << "{";

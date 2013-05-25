@@ -128,7 +128,7 @@ void GuiBox::on_innerBoxCO_activated(int /* index */)
 	// the width can only be selected for makebox or framebox
 	widthCB->setEnabled(itype == "makebox"
 	                    || (outer == "Boxed" && itype == "none"));
-	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
+	widthCB->setChecked(!widthED->text().isEmpty());
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_enabled =
@@ -313,8 +313,7 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		lengthToWidgets(widthED, widthUnitsLC,
 			params.width, default_unit);
 	} else {
-		if (widthCB->isEnabled())
-			widthCB->setChecked(true);
+		widthCB->setChecked(true);
 		lengthToWidgets(widthED, widthUnitsLC,
 			params.width, default_unit);
 		QString const special = toqstr(params.special);
