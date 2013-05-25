@@ -773,7 +773,13 @@ bool Text::cursorDownParagraph(Cursor & cur)
 {
 	bool updated = false;
 	if (cur.pit() != cur.lastpit())
-		updated = setCursor(cur, cur.pit() + 1, 0);
+		if (lyxrc.mac_like_cursor_movement)
+			if (cur.pos() == cur.lastpos())
+				updated = setCursor(cur, cur.pit() + 1, getPar(cur.pit() + 1).size());
+			else
+				updated = setCursor(cur, cur.pit(), cur.lastpos());
+		else
+			updated = setCursor(cur, cur.pit() + 1, 0);
 	else
 		updated = setCursor(cur, cur.pit(), cur.lastpos());
 	return updated;

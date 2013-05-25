@@ -114,7 +114,7 @@ public:
 		RC_LYXRCFORMAT,
 		RC_MACRO_EDIT_STYLE,
 		RC_MAC_DONTSWAP_CTRL_META,
-		RC_MAC_LIKE_WORD_MOVEMENT,
+		RC_MAC_LIKE_CURSOR_MOVEMENT,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
 		RC_MOUSE_WHEEL_SPEED,
@@ -428,7 +428,7 @@ public:
 	///
 	bool mac_dontswap_ctrl_meta;
 	///
-	bool mac_like_word_movement;
+	bool mac_like_cursor_movement;
 	///
 	bool cursor_follows_scrollbar;
 	///

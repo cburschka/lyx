@@ -92,12 +92,12 @@
        </widget>
       </item>
       <item row="3" column="0" colspan="2">
-       <widget class="QCheckBox" name="macLikeWordMovementCB">
+       <widget class="QCheckBox" name="macLikeCursorMovementCB">
         <property name="toolTip">
          <string>Skip trailing non-word characters</string>
         </property>
         <property name="text">
-         <string>Use Mac-style for cursor moving between &amp;words</string>
+         <string>Use M&amp;ac-style cursor movement</string>
         </property>
        </widget>
       </item>
@@ -273,7 +273,7 @@
   <tabstop>cursorFollowsCB</tabstop>
   <tabstop>cursorWidthSB</tabstop>
   <tabstop>scrollBelowCB</tabstop>
-  <tabstop>macLikeWordMovementCB</tabstop>
+  <tabstop>macLikeCursorMovementCB</tabstop>
   <tabstop>sortEnvironmentsCB</tabstop>
   <tabstop>groupEnvironmentsCB</tabstop>
   <tabstop>macroEditStyleCO</tabstop>

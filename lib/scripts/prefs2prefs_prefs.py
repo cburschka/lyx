@@ -57,6 +57,9 @@
 #   Add option to use the system's theme icons
 #   No conversion necessary.
 
+# Incremented to format 13, by bh
+#   Rename mac_like_word_movement to mac_like_cursor_movement
+
 import re
 
 ###########################################################
@@ -290,6 +293,8 @@ def remove_default_language(line):
 		return no_match
 	return (True, "")
 
+def mac_cursor_movement(line):
+	return simple_renaming(line, "\\mac_like_word_movement", "\\mac_like_cursor_movement")
 
 # End conversions for LyX 2.0 to 2.1
 ####################################
@@ -313,5 +318,6 @@ conversions = [
 	[ 9, [ remove_default_language ]],
 	[ 10, []],
 	[ 11, [split_pdf_format]],
-	[ 12, []]
+	[ 12, []],
+	[ 13, [mac_cursor_movement]]
 ]

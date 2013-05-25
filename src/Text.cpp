@@ -1057,7 +1057,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 			return false;
 	}
 
-	if (lyxrc.mac_like_word_movement) {
+	if (lyxrc.mac_like_cursor_movement) {
 		// Skip through trailing punctuation and spaces.
 		while (pos != lastpos && (par.isChar(pos) || par.isSpace(pos)))
                         ++pos;
@@ -1099,7 +1099,7 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 	if (pos == 0 && pit != 0)
 		return setCursor(cur, pit - 1, getPar(pit - 1).size());
 
-	if (lyxrc.mac_like_word_movement) {
+	if (lyxrc.mac_like_cursor_movement) {
 		// Skip through punctuation and spaces.
 		while (pos != 0 && (par.isChar(pos - 1) || par.isSpace(pos - 1)))
 			--pos;

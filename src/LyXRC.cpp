@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 12; // vfr: System theme's icons
+static unsigned int const LYXRC_FILEFORMAT = 13; // vfr: System theme's icons
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -134,7 +134,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\language_package_selection", LyXRC::RC_LANGUAGE_PACKAGE_SELECTION },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
 	{ "\\mac_dontswap_ctrl_meta", LyXRC::RC_MAC_DONTSWAP_CTRL_META },
-	{ "\\mac_like_word_movement", LyXRC::RC_MAC_LIKE_WORD_MOVEMENT },
+	{ "\\mac_like_cursor_movement", LyXRC::RC_MAC_LIKE_CURSOR_MOVEMENT },
 	{ "\\macro_edit_style", LyXRC::RC_MACRO_EDIT_STYLE },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
@@ -331,7 +331,7 @@ void LyXRC::setDefaults()
 	scroll_wheel_zoom = SCROLL_WHEEL_ZOOM_CTRL;
 	paragraph_markers = false;
 	mac_dontswap_ctrl_meta = false;
-	mac_like_word_movement = false;
+	mac_like_cursor_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
 	preview = PREVIEW_OFF;
@@ -931,8 +931,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			lexrc >> mac_dontswap_ctrl_meta;
 			break;
 
-		case RC_MAC_LIKE_WORD_MOVEMENT:
-			lexrc >> mac_like_word_movement;
+		case RC_MAC_LIKE_CURSOR_MOVEMENT:
+			lexrc >> mac_like_cursor_movement;
 			break;
 
 		case RC_MACRO_EDIT_STYLE:
@@ -1784,12 +1784,12 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_MAC_LIKE_WORD_MOVEMENT:
+	case RC_MAC_LIKE_CURSOR_MOVEMENT:
 		if (ignore_system_lyxrc ||
-		    mac_like_word_movement
-		    != system_lyxrc.mac_like_word_movement) {
-			os << "\\mac_like_word_movement "
-			   << convert<string>(mac_like_word_movement) << '\n';
+		    mac_like_cursor_movement
+		    != system_lyxrc.mac_like_cursor_movement) {
+			os << "\\mac_like_cursor_movement "
+			   << convert<string>(mac_like_cursor_movement) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2967,7 +2967,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LANGUAGE_PACKAGE_SELECTION:
 	case LyXRC::RC_LYXRCFORMAT:
 	case LyXRC::RC_MAC_DONTSWAP_CTRL_META:
-	case LyXRC::RC_MAC_LIKE_WORD_MOVEMENT:
+	case LyXRC::RC_MAC_LIKE_CURSOR_MOVEMENT:
 	case LyXRC::RC_MACRO_EDIT_STYLE:
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
@@ -3145,8 +3145,8 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Make Apple key act as Meta and Control key as Ctrl.");
 		break;
 
-	case RC_MAC_LIKE_WORD_MOVEMENT:
-		str = _("Use the Mac OS X conventions for the word-level cursor movement");
+	case RC_MAC_LIKE_CURSOR_MOVEMENT:
+		str = _("Use the Mac OS X conventions for cursor movement");
 		break;
 
 	case RC_SHOW_MACRO_LABEL:
