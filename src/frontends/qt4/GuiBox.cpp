@@ -378,6 +378,9 @@ docstring GuiBox::dialogToParams() const
 			params.width = Length(value.toDouble(), Length::IN);
 		} else {
 			params.special = "none";
+			// we must specify a valid length in this case
+			if (value.isEmpty())
+				widthED->setText("0");
 			params.width = Length(widgetsToLength(widthED, widthUnitsLC));
 		}
 	} else {
