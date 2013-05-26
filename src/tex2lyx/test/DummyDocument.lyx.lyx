@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 471
+\lyxformat 472
 \begin_document
 \begin_header
 \textclass article
@@ -87,11 +87,18 @@
 \begin_body
 
 \begin_layout Subsection
-Space Test
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:External-Subsection"
+
+\end_inset
+
+External Subsection
 \end_layout
 
 \begin_layout Standard
-The file name contains a space. 
+This is a small dummy child document to show how files can be inserted to another document. Here are some accented characters to make sure the encoding is passed to included files: éè 
 \end_layout
 
 \end_body

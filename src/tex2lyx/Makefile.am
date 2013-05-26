@@ -26,7 +26,6 @@ TEST_FILES = \
 	test/CJKutf8.tex \
 	test/DummyDocument.tex \
 	test/Dummy~Document.tex \
-	test/Dummy\ Document.tex \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
@@ -46,7 +45,6 @@ TEST_RESULTS = \
 	test/CJKutf8.lyx.lyx \
 	test/DummyDocument.lyx.lyx \
 	test/Dummy~Document.lyx.lyx \
-	test/Dummy\ Document.lyx.lyx \
 	test/test-insets.lyx.lyx \
 	test/test.lyx.lyx \
 	test/test-modules.lyx.lyx \

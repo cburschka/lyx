@@ -147,13 +147,15 @@ M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
 
 We can input files too, like this \input{DummyDocument}, or with the include
 variant (tests quoting as well):
-\include{\string"Dummy\space Document\string"}
+\include{\string"Dummy\space Document\string".tex}
 \include{\string"Dummy Document\string".tex}
 \include{\string"Dummy\string~Document\string"}
 \include{\string"Dummy\string~Document\string".tex}
 File names containg double quotes are not legal on windows, so no test file
 is provided. Nevertheless, they are legal on unix, so we test at least the
-paring. Since the file does not exist, the variant without extension would
+parsing. File names containing spaces can not be handled by automake
+(make dist would fail), so no test file is provided as well.
+Since the files do not exist, the variants without extension would
 not work (tex2lyx can't deduce the correct extension of nonexisting files).
 \include{\string"Dummy\string"Document\string".tex}
 
