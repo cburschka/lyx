@@ -193,6 +193,8 @@ extern bool overwriteFiles();
 extern bool copyFiles();
 /// Shall we skip child documents and keep them as TeX?
 extern bool skipChildren();
+/// Does tex2lyx run in roundtrip mode?
+extern bool roundtripMode();
 
 
 /*!

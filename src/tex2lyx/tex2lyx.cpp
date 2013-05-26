@@ -818,6 +818,12 @@ bool skipChildren()
 }
 
 
+bool roundtripMode()
+{
+	return roundtrip;
+}
+
+
 namespace {
 
 /*!

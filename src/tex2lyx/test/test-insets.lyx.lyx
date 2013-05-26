@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.1.0dev
-\lyxformat 471
+\lyxformat 472
 \begin_document
 \begin_header
 \textclass article
@@ -734,7 +734,7 @@ We can input files too, like this
 \begin_inset CommandInset include
 LatexCommand input
 preview false
-filename "DummyDocument.lyx"
+filename "DummyDocument.lyx.lyx"
 
 \end_inset
 
@@ -742,7 +742,7 @@ filename "DummyDocument.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.lyx"
+filename "Dummy Document.lyx.lyx"
 
 \end_inset
 
@@ -750,7 +750,7 @@ filename "Dummy Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.lyx"
+filename "Dummy Document.lyx.lyx"
 
 \end_inset
 
@@ -758,7 +758,7 @@ filename "Dummy Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx"
+filename "Dummy~Document.lyx.lyx"
 
 \end_inset
 
@@ -766,7 +766,7 @@ filename "Dummy~Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx"
+filename "Dummy~Document.lyx.lyx"
 
 \end_inset
 

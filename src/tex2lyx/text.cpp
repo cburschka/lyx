@@ -3929,8 +3929,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string const absfigname =
 					changeExtension(abstexname, ".fig");
 				fix_child_filename(filename);
-				string const lyxname =
-					changeExtension(filename, ".lyx");
+				string const lyxname = changeExtension(filename,
+					roundtripMode() ? ".lyx.lyx" : ".lyx");
 				string const abslyxname = makeAbsPath(
 					lyxname, getParentFilePath(false)).absFileName();
 				bool xfig = false;
