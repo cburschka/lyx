@@ -1,5 +1,5 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[aa]{article (A&A)}
+#  \DeclareLaTeXClass[aa,answers.sty]{article (A&A)}
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
@@ -23,6 +23,8 @@ SecNumDepth             3
 TocDepth                0
 PageStyle               Plain
 
+# Pre-loaded packages
+Provides inputenc	1
 
 Style Standard
 	Margin                Static
