@@ -1,13 +1,13 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 471
+\lyxformat 472
 \begin_document
 \begin_header
 \textclass aa
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding default
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -75,6 +75,7 @@ status open
 
 \begin_layout Plain Layout
 
+\family roman
 \series medium
 \size normal
 This is a template LyX file for articles to be submitted to the Journal
@@ -92,6 +93,26 @@ http://wiki.lyx.org/Layouts/Astronomy-Astrophysics
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\size normal
+Note:
+\series medium
+ If you use accented characters in your document, you must use the predefined
+ document class option 
+\series default
+latin9
+\series medium
+ in the document settings.
 \end_layout
 
 \end_inset

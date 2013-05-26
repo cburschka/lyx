@@ -27,6 +27,11 @@ PageStyle	Plain
 
 # Pre-loaded packages
 Provides inputenc	1
+Provides natbib		1
+
+ClassOptions
+	Other		latin9
+End
 
 Style Standard
 	Category	MainText
@@ -57,6 +62,7 @@ NoCounter subparagraph
 NoStyle Part
 NoCounter part
 NoStyle Abstract
+NoStyle Bibliography
 
 
 Style Subtitle
@@ -338,14 +344,6 @@ Style Keywords
 	  Family	Sans
 	  Series	Bold
 	  Size		Small
-	EndFont
-End
-
-
-Style Bibliography
-	Align		Left
-	LabelFont
-	  Series	Bold
 	EndFont
 End
 

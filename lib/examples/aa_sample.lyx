@@ -1,14 +1,9 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 472
 \begin_document
 \begin_header
 \textclass aa
-\begin_preamble
-\usepackage{graphicx}
-%
-\end_preamble
-\options traditabstract,latin9
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -45,7 +40,7 @@
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -74,11 +69,15 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Title
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+
+\family roman
+\series medium
+\size normal
 This is an example LyX file for articles to be submitted to the Journal
  of Astronomy & Astrophysicssing (A&A).
  How to install the A&A LaTeX class to your LaTeX system is explained in
@@ -94,24 +93,27 @@ http://wiki.lyx.org/Layouts/Astronomy-Astrophysics
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
+Depending on the submission state and the abstract layout, you need to use
+ different document class options that are listed in the aa manual.
+\family default
+
+\begin_inset Newline newline
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Depending on the submission state and the abstract layout, you need to use
- different document class options that are listed in the aa manual 
-\family sans
-aadoc.pdf
-\family default
-.
+\family roman
+\series default
+Note:
+\series medium
+ If you use accented characters in your document, you must use the predefined
+ document class option 
+\series default
+latin9
+\series medium
+ in the document settings.
 \end_layout
 
 \end_inset
@@ -271,7 +273,7 @@ The university of heaven temporarily does not accept e-mails
 Received September 15, 1996; accepted March 16, 1997
 \end_layout
 
-\begin_layout Abstract
+\begin_layout Abstract (unstructured)
 To investigate the physical nature of the `nuc\SpecialChar \-
 leated instability' of proto
  giant planets, the stability of layers in static, radiative gas spheres
@@ -367,7 +369,7 @@ nucleated instability
  Mizuno (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "mizuno"
+key "Eisenstein2005"
 
 \end_inset
 
@@ -395,7 +397,7 @@ Although no hydrodynamical study has been available many workers conjectured
  is investigated on the basis of Baker's (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -408,14 +410,14 @@ Phenomena similar to the ones described above for giant planet formation
  protostellar cores explode (Tscharnuter 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "tscharnuter"
+key "Cotton1999"
 
 \end_inset
 
 , Balluch 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "balluch"
+key "Mena2000"
 
 \end_inset
 
@@ -490,7 +492,7 @@ Adiabatic exponent
  In this section the one-zone model of Baker (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -504,7 +506,7 @@ key "baker"
 Baker (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -543,7 +545,7 @@ b,
 c) in Baker 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -700,14 +702,14 @@ stability
  For a physical discussion of the stability criteria see Baker (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
 ) or Cox (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "cox"
+key "Parkin2005"
 
 \end_inset
 
@@ -1150,7 +1152,7 @@ The conditions for the stability of static, radiative layers in gas spheres,
  as described by Baker's (
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -1202,12 +1204,25 @@ schaft, DFG
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "biblioExample"
+options "aa"
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-You can alternatively use BibTeX.
- You must then use the BibTeX style 
+
+\series bold
+Note:
+\series default
+ If you cannot see the bibliography in the output, assure that you have
+ gievn the full path to the BibTeX style file 
 \family sans
 aa.bst
 \family default
@@ -1217,140 +1232,6 @@ aa.bst
 \end_inset
 
 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Baker(1966)"
-key "baker"
-
-\end_inset
-
- Baker, N.
- 1966, in Stellar Evolution, ed.
-\begin_inset space \space{}
-\end_inset
-
-R.
- F.
- Stein,& A.
- G.
- W.
- Cameron (Plenum, New York) 333
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Balluch(1988)"
-key "balluch"
-
-\end_inset
-
- Balluch, M.
- 1988, A&A, 200, 58
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Cox(1980)"
-key "cox"
-
-\end_inset
-
- Cox, J.
- P.
- 1980, Theory of Stellar Pulsation (Princeton University Press, Princeton)
- 165
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Cox(1969)"
-key "cox69"
-
-\end_inset
-
- Cox, A.
- N.,& Stewart, J.
- N.
- 1969, Academia Nauk, Scientific Information 15, 1
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Mizuno(1980)"
-key "mizuno"
-
-\end_inset
-
- Mizuno H.
- 1980, Prog.
- Theor.
- Phys., 64, 544 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Tscharnuter(1987)"
-key "tscharnuter"
-
-\end_inset
-
- Tscharnuter W.
- M.
- 1987, A&A, 188, 55 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Terlevich(1992)"
-key "terlevich"
-
-\end_inset
-
- Terlevich, R.
- 1992, in ASP Conf.
- Ser.
- 31, Relationships between Active Galactic Nuclei and Starburst Galaxies,
- ed.
- A.
- V.
- Filippenko, 13
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Yorke(1980a)"
-key "yorke80a"
-
-\end_inset
-
- Yorke, H.
- W.
- 1980a, A&A, 86, 286
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Zheng(1997)"
-key "zheng"
-
-\end_inset
-
-Zheng, W., Davidsen, A.
- F., Tytler, D.
- & Kriss, G.
- A.
- 1997, preprint 
 \end_layout
 
 \end_body
