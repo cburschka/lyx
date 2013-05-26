@@ -38,11 +38,11 @@ namespace frontend {
 
 // Regular expressions needed at several places
 // Information
-QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
+QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|.*> INFO - |\\(|\\\\).*$");
 // Warnings
-QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--).*$");
+QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|.*> WARN - ).*$");
 // Errors
-QRegExp exprError("^(!|.*---line [0-9]+ of file).*$");
+QRegExp exprError("^(!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - ).*$");
 
 
 /////////////////////////////////////////////////////////////////////
