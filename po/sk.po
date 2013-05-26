@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-25 18:56+0200\n"
+"POT-Creation-Date: 2013-05-26 09:46+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -5716,6 +5716,10 @@ msgstr "znak inštitútu"
 msgid "Institute Mark"
 msgstr "Znak Inštitútu"
 
+#: lib/layouts/aa.layout:256
+msgid "Abstract (unstructured)"
+msgstr "Súhrn (bez štruktúry)"
+
 #: lib/layouts/aa.layout:354 lib/layouts/aastex.layout:119
 #: lib/layouts/aastex.layout:335 lib/layouts/achemso.layout:156
 #: lib/layouts/acmsiggraph.layout:163 lib/layouts/AEA.layout:95
@@ -5737,10 +5741,6 @@ msgstr "Znak Inštitútu"
 #: lib/layouts/svcommon.inc:476
 msgid "Keywords"
 msgstr "Heslá"
-
-#: lib/layouts/aa.layout:369
-msgid "Key Words."
-msgstr "Heslá."
 
 #: lib/layouts/aa.layout:391 lib/layouts/beamer.layout:955
 #: lib/layouts/cl2emult.layout:73 lib/layouts/llncs.layout:220
@@ -11443,6 +11443,46 @@ msgstr "Autori-Info:"
 #: lib/layouts/spie.layout:81
 msgid "ABSTRACT"
 msgstr "SÚHRN"
+
+#: lib/layouts/aa.layout:290
+msgid "Abstract (structured)"
+msgstr "Súhrn (štrukturovaný)"
+
+#: lib/layouts/aa.layout:294
+msgid "Context"
+msgstr "Kontext"
+
+#: lib/layouts/aa.layout:295
+msgid "Context of your work (optional, can be left empty)"
+msgstr "Kontext vašej práce (nepovinný, môže sa vynechať)"
+
+#: lib/layouts/aa.layout:299
+msgid "Aims"
+msgstr "Cieľe"
+
+#: lib/layouts/aa.layout:300
+msgid "Aims of your work"
+msgstr "Cieľe vašej práce"
+
+#: lib/layouts/aa.layout:304
+msgid "Methods"
+msgstr "Metódy"
+
+#: lib/layouts/aa.layout:305
+msgid "Methods used in your work"
+msgstr "Metódy použité vo vašej práci"
+
+#: lib/layouts/aa.layout:309
+msgid "Results"
+msgstr "Výsledky"
+
+#: lib/layouts/aa.layout:310
+msgid "Results of your work"
+msgstr "Výsledky vašej práce"
+
+#: lib/layouts/aa.layout:331
+msgid "Key words."
+msgstr "Heslá."
 
 #: lib/layouts/spie.layout:96
 msgid "ACKNOWLEDGMENTS"
@@ -29478,6 +29518,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Key Words."
+#~ msgstr "Heslá."
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " Makro: %1$s: "
