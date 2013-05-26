@@ -4152,6 +4152,34 @@ def revert_forced_local_layout(document):
                 document.header[k+1 : k+1] = lines
 
 
+def revert_aa1(document):
+  " Reverts InsetArguments of aa to TeX-code "
+  if document.textclass == "aa":
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Abstract (structured)", i)
+      if i != -1:
+        revert_Argument_to_TeX_brace(document, i, 0, 1, 4, False, False)
+        i = i + 1
+      if i == -1:
+        return
+
+
+def revert_aa2(document):
+  " Reverts InsetArguments of aa to TeX-code "
+  if document.textclass == "aa":
+    i = 0
+    while True:
+      if i != -1:
+        i = find_token(document.body, "\\begin_layout Abstract (structured)", i)
+      if i != -1:
+        document.body[i] = "\\begin_layout Abstract"
+        i = i + 1
+      if i == -1:
+        return
+
+
 ##
 # Conversion hub
 #
@@ -4216,9 +4244,11 @@ convert = [
            [469, []],
            [470, []],
            [471, [convert_cite_engine_type_default]],
+           [472, []]
           ]
 
 revert =  [
+           [471, [revert_aa1,revert_aa2]],
            [470, [revert_cite_engine_type_default]],
            [469, [revert_forced_local_layout]],
            [468, [revert_starred_caption]],

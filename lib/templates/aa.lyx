@@ -1,9 +1,8 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 471
 \begin_document
 \begin_header
 \textclass aa
-\options structabstract
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -13,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -30,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification false
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -66,6 +74,9 @@
 status open
 
 \begin_layout Plain Layout
+
+\series medium
+\size normal
 This is a template LyX file for articles to be submitted to the Journal
  of Astronomy & Astrophysicssing (A&A).
  How to install the A&A LaTeX class to your LaTeX system is explained in
@@ -186,41 +197,13 @@ Me
 Received ...; Accepted...
 \end_layout
 
-\begin_layout Date
+\begin_layout Abstract (structured)
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 This template uses the structured abstract style.
- If you want to use the traditional, unstructured abstract, you have to
- add 
-\begin_inset Quotes eld
-\end_inset
-
-traditabstract
-\begin_inset Quotes erd
-\end_inset
-
- to the document options in 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
-Options
-\family default
- and remove the red braces (
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-).
- See the 
+ You can alternatively use the unstructured abstract as used in the 
 \family sans
 aa_sample.lyx
 \family default
@@ -230,49 +213,41 @@ aa_sample.lyx
 \end_inset
 
 
-\end_layout
+\begin_inset Argument 1
+status open
 
-\begin_layout Abstract
+\begin_layout Plain Layout
 context (optional: leave void)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-} {
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 aims
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-} {
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 methods
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-} {
 \end_layout
 
 \end_inset
 
-results
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 4
+status open
 
 \begin_layout Plain Layout
-
-} {
+results
 \end_layout
 
 \end_inset
@@ -286,6 +261,30 @@ keywords
 
 \begin_layout Section
 Introduction
+\end_layout
+
+\begin_layout Standard
+bla bla
+\end_layout
+
+\begin_layout Subsection
+a subsection
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsubsection
+a subsubsection
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Acknowledgement
+Part of this work was supported by
 \end_layout
 
 \end_body
