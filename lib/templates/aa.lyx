@@ -3,12 +3,12 @@
 \begin_document
 \begin_header
 \textclass aa
-\options structabstract
+\options latin9
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding default
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -81,6 +81,25 @@ http://wiki.lyx.org/Layouts/Astronomy-Astrophysics
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you use accented characters in your document, you must add the custom
+ document class option 
+\series bold
+latin9
+\series default
+ in the document settings.
 \end_layout
 
 \end_inset

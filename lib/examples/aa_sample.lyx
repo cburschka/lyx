@@ -3,11 +3,7 @@
 \begin_document
 \begin_header
 \textclass aa
-\begin_preamble
-\usepackage{graphicx}
-%
-\end_preamble
-\options traditabstract
+\options latin9
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -85,24 +81,24 @@ http://wiki.lyx.org/Layouts/Astronomy-Astrophysics
 \end_inset
 
 .
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
+Depending on the submission state and the abstract layout, you need to use
+ different document class options that are listed in the aa manual.
+\begin_inset Newline newline
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Depending on the submission state and the abstract layout, you need to use
- different document class options that are listed in the aa manual 
-\family sans
-aadoc.pdf
-\family default
-.
+\series bold
+Note:
+\series default
+ If you use accented characters in your document, you must add the custom
+ document class option 
+\series bold
+latin9
+\series default
+ in the document settings.
 \end_layout
 
 \end_inset
@@ -357,8 +353,8 @@ nucleated instability
  critical mass for static core envelope protoplanets has been found.
  Mizuno (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "mizuno"
+LatexCommand citet
+key "Pople2003"
 
 \end_inset
 
@@ -385,8 +381,8 @@ Although no hydrodynamical study has been available many workers conjectured
  With this aim the local, linear stability of static radiative gas spheres
  is investigated on the basis of Baker's (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
+LatexCommand citet
+key "Abernethy2003"
 
 \end_inset
 
@@ -398,15 +394,15 @@ Phenomena similar to the ones described above for giant planet formation
  have been found in hydrodynamical models concerning star formation where
  protostellar cores explode (Tscharnuter 
 \begin_inset CommandInset citation
-LatexCommand cite
-key "tscharnuter"
+LatexCommand citet
+key "Eisenstein2005"
 
 \end_inset
 
 , Balluch 
 \begin_inset CommandInset citation
-LatexCommand cite
-key "balluch"
+LatexCommand citet
+key "Mena2000"
 
 \end_inset
 
@@ -480,8 +476,8 @@ Adiabatic exponent
 
  In this section the one-zone model of Baker (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
+LatexCommand citet
+key "Abernethy2003"
 
 \end_inset
 
@@ -494,8 +490,8 @@ key "baker"
 \begin_layout Standard
 Baker (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
+LatexCommand citet
+key "Abernethy2003"
 
 \end_inset
 
@@ -534,7 +530,7 @@ b,
 c) in Baker 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "baker"
+key "Abernethy2003"
 
 \end_inset
 
@@ -690,15 +686,15 @@ stability
 
  For a physical discussion of the stability criteria see Baker (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
+LatexCommand citet
+key "Abernethy2003"
 
 \end_inset
 
 ) or Cox (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "cox"
+LatexCommand citet
+key "Parkin2005"
 
 \end_inset
 
@@ -1140,8 +1136,8 @@ Conclusions
 The conditions for the stability of static, radiative layers in gas spheres,
  as described by Baker's (
 \begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
+LatexCommand citet
+key "Abernethy2003"
 
 \end_inset
 
@@ -1193,12 +1189,24 @@ schaft, DFG
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblioExample"
+options "aa"
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-You can alternatively use BibTeX.
- You must then use the BibTeX style 
+
+\series bold
+Note:
+\series default
+ If you cannot see the bibliography in the output, assure that you have
+ gievn the full path to the BibTeX style file 
 \family sans
 aa.bst
 \family default
@@ -1208,140 +1216,6 @@ aa.bst
 \end_inset
 
 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1966"
-key "baker"
-
-\end_inset
-
- Baker, N.
- 1966, in Stellar Evolution, ed.
-\begin_inset space \space{}
-\end_inset
-
-R.
- F.
- Stein,& A.
- G.
- W.
- Cameron (Plenum, New York) 333
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1988"
-key "balluch"
-
-\end_inset
-
- Balluch, M.
- 1988, A&A, 200, 58
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1980"
-key "cox"
-
-\end_inset
-
- Cox, J.
- P.
- 1980, Theory of Stellar Pulsation (Princeton University Press, Princeton)
- 165
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1969"
-key "cox69"
-
-\end_inset
-
- Cox, A.
- N.,& Stewart, J.
- N.
- 1969, Academia Nauk, Scientific Information 15, 1
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1980"
-key "mizuno"
-
-\end_inset
-
- Mizuno H.
- 1980, Prog.
- Theor.
- Phys., 64, 544 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1987"
-key "tscharnuter"
-
-\end_inset
-
- Tscharnuter W.
- M.
- 1987, A&A, 188, 55 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1992"
-key "terlevich"
-
-\end_inset
-
- Terlevich, R.
- 1992, in ASP Conf.
- Ser.
- 31, Relationships between Active Galactic Nuclei and Starburst Galaxies,
- ed.
- A.
- V.
- Filippenko, 13
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1980a"
-key "yorke80a"
-
-\end_inset
-
- Yorke, H.
- W.
- 1980a, A&A, 86, 286
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1997"
-key "zheng"
-
-\end_inset
-
-Zheng, W., Davidsen, A.
- F., Tytler, D.
- & Kriss, G.
- A.
- 1997, preprint 
 \end_layout
 
 \end_body
