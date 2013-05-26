@@ -31,6 +31,7 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "TocBackend.h"

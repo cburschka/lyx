@@ -13,7 +13,6 @@
 #ifndef SGML_H
 #define SGML_H
 
-#include "support/types.h"
 #include "support/docstring.h"
 
 namespace lyx {

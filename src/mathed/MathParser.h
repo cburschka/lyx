@@ -15,7 +15,6 @@
 
 #include "MathParser_flags.h"
 
-#include "support/types.h"
 #include "support/docstring.h"
 
 

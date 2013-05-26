@@ -14,7 +14,6 @@
 
 #include "InsetMathGrid.h"
 
-#include "Color.h"
 #include "DocIterator.h"
 #include "OutputEnums.h"
 

@@ -498,7 +498,6 @@ HEADERFILESMATHED = \
 	mathed/MathCompletionList.h \
 	mathed/MathExtern.h \
 	mathed/MathFactory.h \
-	mathed/MathGridInfo.h \
 	mathed/MathMacro.h \
 	mathed/MathMacroArgument.h \
 	mathed/MacroTable.h \

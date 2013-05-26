@@ -13,7 +13,6 @@
 #ifndef MATH_DIAGRAM_H
 #define MATH_DIAGRAM_H
 
-#include "Length.h"
 #include "InsetMathGrid.h"
 
 
