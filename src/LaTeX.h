@@ -137,7 +137,9 @@ public:
 		///
 		ERROR_RERUN = 8192,
 		///
-		ERRORS = TEX_ERROR + LATEX_ERROR,
+		BIBTEX_ERROR = 16384,
+		///
+		ERRORS = TEX_ERROR + LATEX_ERROR + BIBTEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};
@@ -195,7 +197,7 @@ private:
 				      std::vector<AuxInfo> const &);
 
 	///
-	void scanBlgFile(DepTable & head);
+	int scanBlgFile(DepTable & head, TeXErrors & terr);
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,

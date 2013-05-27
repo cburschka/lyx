@@ -49,7 +49,6 @@ namespace os = support::os;
 //   different way.
 // - the makeindex style files should be taken care of with
 //   the dependency mechanism.
-// - we should perhaps also scan the bibtex log file
 
 namespace {
 
@@ -292,13 +291,13 @@ int LaTeX::run(TeXErrors & terr)
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info, runparams);
-		if (biber) {
-			// since biber writes no info to the aux file, we have
-			// to parse the blg file (which only exists after biber
-			// was first issued)
-			FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
-			if (blgfile.exists())
-				scanBlgFile(head);
+		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
+		if (blgfile.exists()) {
+			int bscanres = scanBlgFile(head, terr);
+			if (bscanres & ERRORS) {
+				deleteFilesOnError();
+				return bscanres; // return on error
+			}
 		}
 	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
@@ -352,6 +351,14 @@ int LaTeX::run(TeXErrors & terr)
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info, runparams);
+		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
+		if (blgfile.exists()) {
+			int bscanres = scanBlgFile(head, terr);
+			if (bscanres & ERRORS) {
+				deleteFilesOnError();
+				return bscanres; // return on error
+			}
+		}
 	}
 
 	// 4
@@ -578,7 +585,8 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 	// biber writes nothing into the aux file.
 	// Instead, we have to scan the blg file
 	if (biber) {
-		scanBlgFile(dep);
+		TeXErrors terr;
+		scanBlgFile(dep, terr);
 	}
 }
 
@@ -1233,7 +1241,7 @@ void LaTeX::deplog(DepTable & head)
 }
 
 
-void LaTeX::scanBlgFile(DepTable & dep)
+int LaTeX::scanBlgFile(DepTable & dep, TeXErrors & terr)
 {
 	FileName const blg_file(changeExtension(file.absFileName(), "blg"));
 	LYXERR(Debug::LATEX, "Scanning blg file: " << blg_file);
@@ -1241,7 +1249,15 @@ void LaTeX::scanBlgFile(DepTable & dep)
 	ifstream ifs(blg_file.toFilesystemEncoding().c_str());
 	string token;
 	static regex const reg1(".*Found (bibtex|BibTeX) data (file|source) '([^']+).*");
+	static regex const bibtexError("^(.*---line [0-9]+ of file).*$");
+	static regex const bibtexError2("^(.*---while reading file).*$");
+	static regex const bibtexError3("(A bad cross reference---).*");
+	static regex const bibtexError4("(Sorry---you've exceeded BibTeX's).*");
+	static regex const bibtexError5("\\*Please notify the BibTeX maintainer\\*");
+	static regex const biberError("^.*> (FATAL|ERROR) - (.*)$");
+	int retval = NO_ERRORS;
 
+	string prevtoken;
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
 		smatch sub;
@@ -1255,7 +1271,42 @@ void LaTeX::scanBlgFile(DepTable & dep)
 				handleFoundFile(data, dep);
 			}
 		}
-	} 
+		else if (regex_match(token, sub, bibtexError)
+			 || regex_match(token, sub, bibtexError2)
+			 || regex_match(token, sub, bibtexError4)
+			 || regex_match(token, sub, bibtexError5)) {
+			retval |= BIBTEX_ERROR;
+			string errstr = N_("BibTeX error: ") + token;
+			string message;
+			if ((prefixIs(token, "while executing---line")
+			     || prefixIs(token, "---line ")
+			     || prefixIs(token, "*Please notify the BibTeX"))
+			    && !prevtoken.empty()) {
+				errstr = N_("BibTeX error: ") + prevtoken;
+				message = prevtoken + '\n';
+			}
+			message += token;
+			terr.insertError(0,
+					 from_local8bit(errstr),
+					 from_local8bit(message));
+		} else if (regex_match(prevtoken, sub, bibtexError3)) {
+			retval |= BIBTEX_ERROR;
+			string errstr = N_("BibTeX error: ") + prevtoken;
+			string message = prevtoken + '\n' + token;
+			terr.insertError(0,
+					 from_local8bit(errstr),
+					 from_local8bit(message));
+		} else if (regex_match(token, sub, biberError)) {
+			retval |= BIBTEX_ERROR;
+			string errstr = N_("Biber error: ") + sub.str(2);
+			string message = token;
+			terr.insertError(0,
+					 from_local8bit(errstr),
+					 from_local8bit(message));
+		}
+		prevtoken = token;
+	}
+	return retval;
 }
 
 
