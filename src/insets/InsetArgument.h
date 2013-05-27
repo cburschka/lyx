@@ -65,6 +65,8 @@ public:
 	std::string contextMenuName() const;
 	///
 	bool isPassThru() const { return pass_thru_; }
+	///
+	bool resetFontEdit() const { return false; }
 	//@}
 	/// \name Public functions inherited from InsetCollapsable class
 	//@{
