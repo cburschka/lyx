@@ -3,7 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
-\options cjk
+\begin_preamble
+\usepackage{xeCJK}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language chinese-simplified
@@ -75,22 +77,6 @@
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-CJKindent
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Title
 LyX 简介
@@ -1366,16 +1352,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-clearpage
-\end_layout
-
+\begin_inset Newpage clearpage
 \end_inset
 
 

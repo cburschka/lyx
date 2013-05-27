@@ -9,7 +9,7 @@
 %中文断行 
 %\XeTeXlinebreaklocale "zh"
 %\XeTeXlinebreakskip = 0pt plus 1pt 
-\usepackage{CJK}
+\usepackage{xeCJK}
 \end_preamble
 \options cjk
 \use_default_options true
@@ -84,22 +84,6 @@
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-CJKindent
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Title
 The LyX Tutorial
