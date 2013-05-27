@@ -70,13 +70,13 @@ How does the LyX version scheme work?
     shows that these releases will contain a few new features, and
     that the bulk of the patches will be documentation updates.
 
-    If you get the source from Subversion, the version string will
-    look like one of:
+    If you get the source from Git, the version string will look like
+    one of:
 
-       1.5.1svn     -- this is the stable branch on which maintenance
-               release 1.5.1 will eventually be tagged.
-       1.6.0svn     -- this is the main branch on which stable
-               release 1.6.0 will eventually be tagged.
+       2.0.6dev     -- this is the stable branch on which maintenance
+               release 2.0.6 will eventually be tagged.
+       2.1.0dev     -- this is the main branch on which stable
+               release 2.1.0 will eventually be tagged.
 
 What's new?
 

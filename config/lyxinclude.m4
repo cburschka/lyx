@@ -22,7 +22,7 @@ AC_ARG_ENABLE(build-type,
     *) AC_MSG_ERROR([bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
    esac],
   [case AC_PACKAGE_VERSION in
-    *svn*|*dev*) build_type=development;;
+    *dev*) build_type=development;;
     *pre*|*alpha*|*beta*|*rc*) build_type=prerelease;;
     *) build_type=release ;;
    esac])
