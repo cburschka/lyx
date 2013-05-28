@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-26 09:46+0200\n"
+"POT-Creation-Date: 2013-05-28 11:27+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1283,17 +1283,17 @@ msgstr "Zachovať po&mer strán"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:459
 msgid "Crop"
-msgstr "Orezať"
+msgstr "Orezanie"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:474
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
-msgstr "Orezať podľa hodnôt ohraničujúceho rámiku"
+msgstr "Odrezať podľa hodnôt ohraničujúceho rámiku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "&Orezať k ohraničujúcemu rámiku"
+msgstr "&Odrezať k ohraničujúcemu rámiku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -12892,6 +12892,10 @@ msgstr ""
 "Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať \\theendnotes "
 "do vložky TeX-ového kódu tam, kde sa koncové poznámky majú objaviť."
 
+#: lib/layouts/endnotes.module:10
+msgid "Endnote ##"
+msgstr "Koncová poznámka ##"
+
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
 msgstr "koncová poznámka"
@@ -21494,7 +21498,11 @@ msgstr "EPS"
 
 #: lib/configure.py:583
 msgid "EPS (uncropped)"
-msgstr "EPS (neorezané)"
+msgstr "EPS (neorezaný)"
+
+#: lib/configure.py:584
+msgid "EPS (cropped)"
+msgstr "EPS (orezaný)"
 
 #: lib/configure.py:584
 msgid "Postscript"
@@ -21547,6 +21555,10 @@ msgstr "PDF (LuaTeX)|u"
 #: lib/configure.py:594
 msgid "PDF (graphics)"
 msgstr "PDF (grafika)"
+
+#: lib/configure.py:596
+msgid "PDF (cropped)"
+msgstr "PDF (orezaný)"
 
 #: lib/configure.py:597
 msgid "DVI"
@@ -23343,6 +23355,14 @@ msgstr "Spúšťam BibTeX."
 #: src/LaTeX.cpp:460
 msgid "Running MakeIndex for nomencl."
 msgstr "Spúšťam MakeIndex pre nomencl."
+
+#: src/LaTeX.cpp:1279 src/LaTeX.cpp:1285 src/LaTeX.cpp:1294
+msgid "BibTeX error: "
+msgstr "BibTeX chyba: "
+
+#: src/LaTeX.cpp:1301
+msgid "Biber error: "
+msgstr "Biber chyba: "
 
 #: src/LaTeXFonts.cpp:211 src/LaTeXFonts.cpp:280
 msgid "Font not available"
