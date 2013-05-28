@@ -1872,6 +1872,7 @@ def revert_ModernCV(document):
     k = 0
     m = 0
     o = 0
+    p = 0
     while True:
       if j != -1:
         j = find_token(document.body, "\\begin_layout Entry", j)
@@ -1895,7 +1896,12 @@ def revert_ModernCV(document):
         revert_Argument_to_TeX_brace(document, o, 0, 1, 3, False, False)
         document.body[o] = document.body[o].replace("\\begin_layout DoubleItem", "\\begin_layout Computer")
         o = o + 1
-      if j == -1 and k == -1 and m == -1 and o == -1:
+      if p != -1:
+        p = find_token(document.body, "\\begin_layout Social", p)
+      if p != -1:
+        revert_Argument_to_TeX_brace(document, p, 0, 1, 1, False, True)
+        p = p + 1
+      if j == -1 and k == -1 and m == -1 and o == -1 and p == -1:
         return
 
 
@@ -1939,6 +1945,31 @@ def revert_ModernCV_3(document):
         if LastFlexEnd != -1:
           document.body[p + 1 : p + 1] = put_cmd_in_ert("\\begin{cvcolumns}")
           document.body[LastFlexEnd + 24 : LastFlexEnd + 24] = put_cmd_in_ert("\\end{cvcolumns}")
+        p = p + 1
+      if p == -1:
+        return
+
+
+def revert_ModernCV_4(document):
+  " Reverts the style Social to TeX-code "
+  if document.textclass == "moderncv":
+    # revert the layouts
+    revert_ModernCV(document)
+    p = 0
+    while True:
+      if p != -1:
+        p = find_token(document.body, "\\begin_layout Social", p)
+      if p != -1:
+        pEnd = find_end_of_layout(document.body, p)
+        document.body[p] = document.body[p].replace("\\begin_layout Social", "\\begin_layout Standard")
+        document.body[p + 1 : p + 1] = put_cmd_in_ert("\\social")
+        hasOpt = find_token(document.body, "[", p + 9)
+        if hasOpt < p + 18:
+            document.body[p + 30 : p + 30] = put_cmd_in_ert("{")
+            document.body[p + 41 : p + 41] = put_cmd_in_ert("}")
+        else:
+            document.body[p + 11 : p + 11] = put_cmd_in_ert("{")
+            document.body[p + 21 : p + 21] = put_cmd_in_ert("}")
         p = p + 1
       if p == -1:
         return
@@ -4293,7 +4324,7 @@ revert =  [
            [449, [revert_garamondx, revert_garamondx_newtxmath]],
            [448, [revert_itemargs]],
            [447, [revert_literate]],
-           [446, [revert_IEEEtran, revert_IEEEtran_2, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV_3]],
+           [446, [revert_IEEEtran, revert_IEEEtran_2, revert_AASTeX, revert_AGUTeX, revert_IJMP, revert_SIGPLAN, revert_SIGGRAPH, revert_EuropeCV, revert_Initials, revert_ModernCV_3, revert_ModernCV_4]],
            [445, [revert_latexargs]],
            [444, [revert_uop]],
            [443, [revert_biolinum]],

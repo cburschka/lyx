@@ -152,6 +152,16 @@ Style Homepage
 	LabelString	"Homepage:"
 End
 
+Style Social
+	CopyStyle	CVStyle
+	LatexName	social
+	LabelString	"Social:"
+	Argument 1
+	  LabelString	"Name"
+	  Tooltip	"Name of the social network"
+	EndArgument
+End
+
 Style ExtraInfo
 	CopyStyle	CVStyle
 	LatexName	extrainfo
