@@ -64,98 +64,6 @@ Style Standard
 End
 
 
-# I want to keep the entries in a logical order.
-# Therefore I'll define the entries first, then fill them in
-
-Style Section
-	TocLevel	1
-End
-
-Style Subsection
-	TocLevel	2
-End
-
-Style Subsubsection
-	TocLevel	3
-End
-
-Style Paragraph
-	TocLevel	4
-End
-
-Style Itemize
-End
-
-Style Enumerate
-End
-
-Style Description
-End
-
-Style List
-End
-
-Style Title
-End
-
-Style Author
-End
-
-Style Affiliation
-End
-
-Style Email
-End
-
-Style And
-End
-
-Style Date
-End
-
-Style Abstract
-End
-
-Style Keywords
-End
-
-Style Acknowledgements
-End
-
-Style Appendix
-End
-
-Style References
-End
-
-Style PlaceFigure
-End
-
-Style PlaceTable
-End
-
-Style TableComments
-End
-
-Style TableRefs
-End
-
-
-Style MathLetters
-End
-
-Style NoteToEditor
-End
-
-Style Facility
-End
-
-Style Objectname
-End
-
-Style Dataset
-End
-
 # OK, now we have a more or less consistent Ordering. Now fill the
 # definitions. First, the standard includes
 
@@ -241,37 +149,6 @@ Style Author
 End
 
 
-Style Date
-	InTitle		0
-	LabelSep	""
-	TopSep		1.2
-	Align		Center
-	Font
-	  Size		Small
-	EndFont
-End
-
-
-Style Abstract
-	LeftMargin	"MMM"
-	RightMargin	"MMM"
-	ParIndent	"MM"
-	InTitle		0
-	TopSep		1.4
-	BottomSep	0.7
-	LabelType	Centered
-	Align		Block
-	AlignPossible	Block, Left, Right, Center
-	Font
-	  Size		Normal
-	EndFont
-	LabelFont
-	  Series	Bold
-	  Size		Normal
-	EndFont
-End
-
-
 Style Affiliation
 	Margin		Static
 	LatexType	Command
@@ -306,6 +183,76 @@ Style Altaffilation
 	LabelString	"Alternative affiliation:"
 	LabelFont
 	  Color		green
+	EndFont
+End
+
+
+Style Email
+	Margin		Static
+	LatexType	Command
+	InTitle		0
+	LatexName	email
+	Category	FrontMatter
+	ParSkip		0.4
+	BottomSep	0.4
+	Align		Center
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
+	Font
+	  Family	Roman
+	  Size		Normal
+	  Shape		Italic
+	EndFont
+End
+
+
+Style And
+	Margin		Dynamic
+	LatexType	Command
+	InTitle		0
+	LatexName	and
+	Category	FrontMatter
+	TopSep		1.2
+	ParSkip		0.4
+	BottomSep	1.2
+	Align		Center
+	LabelType	Static
+	LabelString	"and"
+	KeepEmpty	1
+	Font
+	  Family	Roman
+	  Size		Normal
+	EndFont
+End
+
+
+Style Date
+	InTitle		0
+	LabelSep	""
+	TopSep		1.2
+	Align		Center
+	Font
+	  Size		Small
+	EndFont
+End
+
+
+Style Abstract
+	LeftMargin	"MMM"
+	RightMargin	"MMM"
+	ParIndent	"MM"
+	InTitle		0
+	TopSep		1.4
+	BottomSep	0.7
+	LabelType	Centered
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	Font
+	  Size		Normal
+	EndFont
+	LabelFont
+	  Series	Bold
+	  Size		Normal
 	EndFont
 End
 
@@ -359,25 +306,6 @@ Style Keywords
 End
 
 
-Style Email
-	Margin		Static
-	LatexType	Command
-	InTitle		0
-	LatexName	email
-	Category	FrontMatter
-	ParSkip		0.4
-	BottomSep	0.4
-	Align		Center
-	AlignPossible	Block, Left, Right, Center
-	LabelType	No_Label
-	Font
-	  Family	Roman
-	  Size		Normal
-	  Shape		Italic
-	EndFont
-End
-
-
 Style Acknowledgements
 	Category        BackMatter
 	Margin		Dynamic
@@ -395,26 +323,6 @@ Style Acknowledgements
 	  Family	Roman
 	  Size		Normal
 	  Shape		Italic
-	EndFont
-End
-
-
-Style And
-	Margin		Dynamic
-	LatexType	Command
-	InTitle		0
-	LatexName	and
-	Category	FrontMatter
-	TopSep		1.2
-	ParSkip		0.4
-	BottomSep	1.2
-	Align		Center
-	LabelType	Static
-	LabelString	"and"
-	KeepEmpty	1
-	Font
-	  Family	Roman
-	  Size		Normal
 	EndFont
 End
 
