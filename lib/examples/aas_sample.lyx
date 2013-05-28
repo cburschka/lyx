@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 473
 \begin_document
 \begin_header
 \textclass aastex
@@ -19,13 +19,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -151,13 +160,11 @@ Space Telescope Science Institute, Baltimore, MD 21218
 \end_layout
 
 \begin_layout Altaffilation
-1
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+1
 \end_layout
 
 \end_inset
@@ -171,13 +178,11 @@ under contract to the National Science Foundation.
 \end_layout
 
 \begin_layout Altaffilation
-2
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+2
 \end_layout
 
 \end_inset
@@ -186,13 +191,11 @@ Society of Fellows, Harvard University.
 \end_layout
 
 \begin_layout Altaffilation
-3
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+3
 \end_layout
 
 \end_inset
@@ -202,13 +205,11 @@ present address: Center for Astrophysics, 60 Garden Street, Cambridge, MA
 \end_layout
 
 \begin_layout Altaffilation
-4
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+4
 \end_layout
 
 \end_inset
@@ -217,13 +218,11 @@ Visiting Programmer, Space Telescope Science Institute
 \end_layout
 
 \begin_layout Altaffilation
-5
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+5
 \end_layout
 
 \end_inset
@@ -764,7 +763,28 @@ status collapsed
 
 
 \backslash
-anchor{ftp://www.aas.org/pubs/}{AAS ftp site}
+anchor{
+\end_layout
+
+\end_inset
+
+ftp://www.aas.org/pubs/
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+AAS ftp site
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
 \end_layout
 
 \end_inset
@@ -1188,7 +1208,10 @@ Spitzer, L.
 
 \end_layout
 
-\begin_layout FigCaption
+\begin_layout Standard
+\begin_inset Caption FigCaption
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig1"
@@ -1198,7 +1221,15 @@ name "fig1"
 This is the first figure and it uses sgi9259.eps as its EPS figure file.
 \end_layout
 
-\begin_layout FigCaption
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption FigCaption
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig2"
@@ -1211,7 +1242,15 @@ This is an example of a long figure caption that must be set as a paragraph.
  
 \end_layout
 
-\begin_layout FigCaption
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption FigCaption
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig3"
@@ -1220,6 +1259,11 @@ name "fig3"
 
 This figure has no associated EPS file, so the optional parameter is omitted.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1236,7 +1280,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Terribly relevant tabular information.
@@ -1265,7 +1309,7 @@ name "tbl-2"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="13">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
