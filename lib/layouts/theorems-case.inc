@@ -26,15 +26,34 @@ End
 
 Style Case
   Category              Reasoning
-  CopyStyle             Enumerate
+
+  Margin                Static
+  LatexType             Item_Environment
   LatexName             casenv
   LabelType             Enumerate
   LeftMargin            "Case ###."
+  LabelSep              xx
+  ParSkip               0.0
+  ItemSep               0.2
+  TopSep                0.7
+  BottomSep             0.7
+  ParSep                0.3
+  Align                 Block
+  AlignPossible         Block, Left
   LabelCounter          case
   LabelFont
     Series              Medium
     Shape               Italic
   EndFont
+  HTMLTag               ol
+  HTMLItem              li
+  HTMLLabel             NONE
+  RefPrefix             enu
+  Argument item:1
+    LabelString   "Custom Item|s"
+    Tooltip       "A customized item string"
+  EndArgument
+  NextNoIndent          1
 	Requires enumitem
 	# It'd be easier to use \setlist[caseenv] here, but that causes problems
 	# if you nest an ordinary list inside a case environment. See discussion
