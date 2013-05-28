@@ -129,21 +129,28 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
+	InsetLayout const & il = getLayout();
+	docstring custom_label = translateIfPossible(il.labelstring());
+
 	Counters & cnts = bp.documentClass().counters();
-	if (utype == OutputUpdate) {
-		// the counter is local to this inset
+	docstring const & count = il.counter();
+	bool const have_counter = cnts.hasCounter(count);
+	if (have_counter) {
+		cnts.step(count, utype);
+		custom_label += ' ' +
+			cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
+	}
+	setLabel(custom_label);
+	
+	bool const save_counter = have_counter && utype == OutputUpdate;
+	if (save_counter) {
+		// we assume the counter is local to this inset
+		// if this turns out to be wrong in some case, we will
+		// need a layout flag
 		cnts.saveLastCounter();
 	}
-	InsetLayout const & il = getLayout();
-	docstring const & count = il.counter();
-	docstring custom_label = translateIfPossible(il.labelstring());
-	if (cnts.hasCounter(count))
-		cnts.step(count, utype);
-	custom_label += ' ' +
-		cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
-	setLabel(custom_label);
 	InsetCollapsable::updateBuffer(it, utype);
-	if (utype == OutputUpdate)
+	if (save_counter)
 		cnts.restoreLastCounter();
 }
 
