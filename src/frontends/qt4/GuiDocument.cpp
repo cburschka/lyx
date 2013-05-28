@@ -3217,12 +3217,18 @@ void GuiDocument::paramsToDialog()
 	listingsModule->listingsED->setPlainText(toqstr(lstparams));
 
 	// Fonts
+	// some languages only work with polyglossia/XeTeX
+	Language const * lang = lyx::languages.getLanguage(
+		fromqstr(langModule->languageCO->itemData(
+			langModule->languageCO->currentIndex()).toString()));
+	bool const need_fontspec =
+		lang->babel().empty() && !lang->polyglossia().empty();
 	bool const os_fonts_available =
 		bp_.baseClass()->outputType() == lyx::LATEX
 		&& LaTeXFeatures::isAvailable("fontspec");
-	fontModule->osFontsCB->setEnabled(os_fonts_available);
+	fontModule->osFontsCB->setEnabled(os_fonts_available && !need_fontspec);
 	fontModule->osFontsCB->setChecked(
-		os_fonts_available && bp_.useNonTeXFonts);
+		(os_fonts_available && bp_.useNonTeXFonts) || need_fontspec);
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
