@@ -4180,6 +4180,24 @@ def revert_aa2(document):
         return
 
 
+def revert_tibetan(document):
+    "Set the document language for Tibetan to English" 
+
+    if document.language == "tibetan":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0) 
+        if i != -1: 
+            document.header[i] = "\\language english" 
+    j = 0
+    while j < len(document.body): 
+        j = find_token(document.body, "\\lang tibetan", j)
+        if j != -1:
+            document.body[j] = document.body[j].replace("\\lang tibetan", "\\lang english")
+            j += 1
+        else:
+            j = len(document.body)
+
+
 ##
 # Conversion hub
 #
@@ -4244,10 +4262,12 @@ convert = [
            [469, []],
            [470, []],
            [471, [convert_cite_engine_type_default]],
-           [472, []]
+           [472, []],
+           [473, []]
           ]
 
 revert =  [
+           [472, [revert_tibetan]],
            [471, [revert_aa1,revert_aa2]],
            [470, [revert_cite_engine_type_default]],
            [469, [revert_forced_local_layout]],

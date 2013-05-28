@@ -918,6 +918,14 @@ Language thai
 	EndPostBabelPreamble
 End
 
+# not supported by babel
+Language tibetan
+	GuiName          "Tibetan"
+	PolyglossiaName  tibetan
+	Encoding         utf8
+	LangCode         bo_CN
+End
+
 Language turkish
 	GuiName          "Turkish"
 	BabelName        turkish
