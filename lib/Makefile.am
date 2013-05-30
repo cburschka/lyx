@@ -1932,6 +1932,7 @@ dist_layouts_DATA =\
 	layouts/lettre.layout \
 	layouts/lilypond.module \
 	layouts/linguistics.module \
+	layouts/litinsets.inc \
 	layouts/llncs.layout \
 	layouts/logicalmkup.module \
 	layouts/ltugboat.layout \

@@ -4229,6 +4229,171 @@ def revert_tibetan(document):
             j = len(document.body)
 
 
+#############
+#
+# Chunk stuff
+#
+#############
+
+# the idea here is that we will have a sequence of chunk paragraphs
+# we want to convert them to paragraphs in a chunk inset
+# the last will be discarded
+# the first should look like: <<FROGS>>=
+# will will discard the delimiters, and put the contents into the
+# optional argument of the inset
+def convert_chunks(document):
+    first_re = re.compile(r'<<(.*)>>=')
+    k = 0
+    while True:
+        # the beginning of this sequence
+        i = k
+        # find start of a block of chunks
+        i = find_token(document.body, "\\begin_layout Chunk", i)
+        if i == -1:
+            return
+        start = i
+        end = -1
+        contents = []
+
+        while True:
+            # process the one we just found
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX documents. Can't find end of Chunk layout!")
+                break
+            thischunk = "".join(document.body[i + 1:j])
+            contents.append(thischunk)
+            
+            if thischunk == "@":
+                break
+
+            # look for the next one
+            i = j
+            i = find_token(document.body, "\\begin_layout", i)
+            if i == -1:
+                break
+
+            layout = get_value(document.body, "\\begin_layout", i)
+            #sys.stderr.write(layout+ '\n')
+            if layout != "Chunk":
+                k = i
+                break
+
+        if j == -1:
+            # error, but we can try to continue
+            k = j + 1
+            continue
+
+        end = j + 1
+        k = end
+
+        sys.stderr.write('\n'.join(contents) + '\n\n')
+
+        # the last chunk should simply have an "@" in it
+        # we could check that
+        contents.pop()
+
+        # the first item should look like: <<FROGS>>=
+        # we want the inside
+        optarg = contents[0]
+        optarg.strip()
+        match = first_re.search(optarg)
+        if match:
+            optarg = match.groups()[0]
+            contents.pop(0)
+
+        newstuff = ['\\begin_layout Standard',
+                    '\\begin_inset Flex Chunk',
+                    'status open', '',
+                    '\\begin_layout Plain Layout', '']
+
+        if match:
+            newstuff.extend(
+                ['\\begin_inset Argument 1',
+                 'status open', '',
+                 '\\begin_layout Plain Layout',
+                 optarg,
+                 '\\end_layout', '',
+                 '\\end_inset', ''])
+
+        didone = False
+        for c in contents:
+            if didone:
+                newstuff.extend(['', '\\begin_layout Plain Layout', ''])
+            else:
+                didone = True
+            newstuff.extend([c, '\\end_layout'])
+
+        newstuff.extend(['', '\\end_inset', '', '\\end_layout', ''])
+
+        document.body[start:end] = newstuff
+
+        k += len(newstuff) - (end - start)
+
+
+def revert_chunks(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex Chunk", i)
+        if i == -1:
+            return
+
+        iend = find_end_of_inset(document.body, i)
+        if iend == -1:
+            document.warning("Can't find end of Chunk!")
+            i += 1
+            continue
+
+        # Look for optional argument
+        have_optarg = False
+        ostart = find_token(document.body, "\\begin_inset Argument 1", i, iend)
+        if ostart != -1:
+            oend = find_end_of_inset(document.body, ostart)
+            k = find_token(document.body, "\\begin_layout Plain Layout", ostart, oend)
+            if k == -1:
+                document.warning("Malformed LyX document: Can't find argument contents!")
+            else:
+                m = find_end_of_layout(document.body, k)
+                optarg = "".join(document.body[k+1:m])
+                have_optarg = True
+
+            # We now remove the optional argument, so we have something
+            # uniform on which to work
+            document.body[ostart : oend + 1] = []
+            # iend is now invalid
+            iend = find_end_of_inset(document.body, i)
+
+        retval = get_containing_layout(document.body, i)
+        if not retval:
+            document.warning("Can't find containing layout for Chunk!")
+            i = iend
+            continue
+        (lname, lstart, lend, pstart)  = retval
+        # we now want to work through the various paragraphs, and collect their contents
+        parlist = []
+        k = i
+        while True:
+            k = find_token(document.body, "\\begin_layout Plain Layout", k, lend)
+            if k == -1:
+                break
+            j = find_end_of_layout(document.body, k)
+            if j == -1:
+                document.warning("Can't find end of layout inside chunk!")
+                break
+            parlist.append(document.body[k+1:j])
+            k = j
+        # we now need to wrap all of these paragraphs in chunks
+        newlines = []
+        if have_optarg:
+            newlines.extend(["\\begin_layout Chunk", "", "<<" + optarg + ">>=", "\\end_layout", ""])
+        for stuff in parlist:
+            newlines.extend(["\\begin_layout Chunk"] + stuff + ["\\end_layout", ""])
+        newlines.extend(["\\begin_layout Chunk", "", "@", "\\end_layout", ""])
+        # replace old content with new content
+        document.body[lstart : lend + 1] = newlines
+        i = lstart + len(newlines)
+        
+
 ##
 # Conversion hub
 #
@@ -4294,10 +4459,12 @@ convert = [
            [470, []],
            [471, [convert_cite_engine_type_default]],
            [472, []],
-           [473, []]
+           [473, []],
+           [474, [convert_chunks]],
           ]
 
 revert =  [
+           [473, [revert_chunks]],
            [472, [revert_tibetan]],
            [471, [revert_aa1,revert_aa2]],
            [470, [revert_cite_engine_type_default]],

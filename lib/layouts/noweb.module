@@ -5,30 +5,9 @@
 #Category: literate
 
 Format 45
+Input litinsets.inc
 OutputType              literate
 
 AddToPreamble
 	\usepackage{noweb}
 EndPreamble
-
-Style Chunk
-	Margin                First_Dynamic
-	LatexType             Paragraph
-	LatexName             dummy
-	LeftMargin            MMM
-	Align                 Left
-	AlignPossible         Block,Left
-	NewLine               0
-	FreeSpacing           1
-	PassThru              1
-	ParbreakIsNewline     1
-	Spellcheck	      0
-	LabelType             Static
-	LabelFont
-	  Color               magenta
-	EndFont
-	TextFont
-	  Color               latex
-	  Family              Typewriter
-	EndFont
-End
