@@ -976,7 +976,9 @@ int InsetBibtex::plaintext(odocstringstream & os,
 docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
-	vector<docstring> const & cites = bibinfo.citedEntries();
+	bool const all_entries = getParam("btprint") == "btPrintAll";
+	vector<docstring> const & cites = 
+	    all_entries ? bibinfo.getKeys() : bibinfo.citedEntries();
 
 	docstring const reflabel = buffer().B_("References");
 
@@ -992,16 +994,19 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
 		if (biit == bibinfo.end())
 			continue;
+
 		BibTeXInfo const & entry = biit->second;
-		xs << html::StartTag("div", "class='bibtexentry'");
-		// FIXME XHTML
-		// The same name/id problem we have elsewhere.
-		string const attr =
-			"id='LyXCite-" + to_utf8(html::cleanAttr(entry.key())) + "'";
-		xs << html::CompTag("a", attr);
-		xs << html::StartTag("span", "class='bibtexlabel'")
-			<< entry.label()
-			<< html::EndTag("span");
+		string const attr = "class='bibtexentry' id='LyXCite-" 
+		    + to_utf8(html::cleanAttr(entry.key())) + "'";
+		xs << html::StartTag("div", attr);
+		
+		// don't print labels if we're outputting all entries
+		if (!all_entries) {
+			xs << html::StartTag("span", "class='bibtexlabel'")
+				<< entry.label()
+				<< html::EndTag("span");
+		}
+		
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
