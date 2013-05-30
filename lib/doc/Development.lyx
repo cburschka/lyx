@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 470
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -56,7 +56,7 @@ End
 \pdf_keywords "LyX, Documentation, Development"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
-\pdf_bookmarksopen false
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
@@ -77,7 +77,7 @@ End
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -216,8 +216,15 @@ document
 setting Whenever you introduce a new setting that is stored in the document
  header, a file format update is needed.
  This is also true if you add a new valid value to an existing setting,
- e.g.
- a new language that is stored in 
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+a new language that is stored in 
 \begin_inset Flex Code
 status collapsed
 
@@ -345,19 +352,30 @@ src/version.h
 \end_layout
 
 \begin_layout Enumerate
-Add an entry to both format lists (for conversion and reversion) in 
+Add an entry to both format lists (for conversion and reversion) in
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-lib/lyx2lyx_lyx2lyx_2_1.py
+lib/lyx2lyx/lyx_2_1.py
 \end_layout
 
 \end_inset
 
 .
- Add a conversion routine if needed (e.g.
- a new header setting always needs a conversion that adds the new setting,
+ Add a conversion routine if needed (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+a new header setting always needs a conversion that adds the new setting,
  a new document language does not need one).
  Add a reversion routine if needed.
  While the conversion routine is required to produce a document that is
@@ -714,8 +732,15 @@ name "sec:Updating-test-references"
 
 \begin_layout Standard
 In some cases a changed tex2lyx output is not a test failure, but wanted,
- e.g.
- if a tex2lyx bug was fixed, or a new feature was added.
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+if a tex2lyx bug was fixed, or a new feature was added.
  In these cases the stored references need to be updated.
  To do so, call 
 \begin_inset Flex Code
