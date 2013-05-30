@@ -267,7 +267,7 @@ Style Itemize
   LabelType     Itemize
   Argument 1
     LabelString   "Itemize Type"
-    Tooltip       "Itemize type spezification (see powerdot manual)"
+    Tooltip       "Itemize type specification (see powerdot manual)"
   EndArgument
   Argument 2
     LabelString   "Itemize Options"
@@ -290,7 +290,7 @@ Style ItemizeType1
   CopyStyle     Itemize
   Argument 1
     LabelString   "Itemize Type"
-    Tooltip       "Itemize type spezification (see powerdot manual)"
+    Tooltip       "Itemize type specification (see powerdot manual)"
     DefaultArg    "type=1"
   EndArgument
 End
@@ -317,7 +317,7 @@ Style Enumerate
   RefPrefix     enu
   Argument 1
     LabelString   "Enumerate Type"
-    Tooltip       "Enumerate type spezification (see powerdot manual)"
+    Tooltip       "Enumerate type specification (see powerdot manual)"
   EndArgument
   Argument 2
     LabelString   "Enumerate Options"
@@ -340,7 +340,7 @@ Style EnumerateType1
   CopyStyle       Enumerate
   Argument 1
     LabelString   "Enumerate Type"
-    Tooltip       "Enumerate type spezification (see powerdot manual)"
+    Tooltip       "Enumerate type specification (see powerdot manual)"
     DefaultArg    "type=1"
   EndArgument
 End
