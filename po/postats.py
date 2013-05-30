@@ -127,9 +127,9 @@ array ( 'langcode' => '%(langcode)s', "date" => "%(date)s",
 
 if __name__ == "__main__":
     if lyx_branch:
-        branch_tag = "branches/%s" % lyx_branch
+        branch_tag = lyx_branch
     else:
-        branch_tag = "trunk"
+        branch_tag = "master"
 
 
     print """<?php
