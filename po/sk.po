@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-28 11:27+0200\n"
+"POT-Creation-Date: 2013-05-30 19:17+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -10540,6 +10540,18 @@ msgid "Homepage:"
 msgstr "Domáca stránka:"
 
 #: lib/layouts/moderncv.layout:155
+msgid "Social"
+msgstr "Social"
+
+#: lib/layouts/moderncv.layout:158
+msgid "Social:"
+msgstr "Soc. sieť:"
+
+#: lib/layouts/moderncv.layout:161
+msgid "Name of the social network"
+msgstr "Názov sociálnej siete"
+
+#: lib/layouts/moderncv.layout:155
 msgid "ExtraInfo"
 msgstr "ExtraInfo"
 
@@ -12708,8 +12720,8 @@ msgid "Add to bibliography only."
 msgstr "Pridať len do bibliografie."
 
 #: lib/layouts/bicaption.module:2
-msgid "Multilingual captions"
-msgstr "Viac-jazykové popisy"
+msgid "Multilingual Captions"
+msgstr "Viac-jazykové Popisy"
 
 #: lib/layouts/bicaption.module:6
 msgid ""
@@ -13091,10 +13103,6 @@ msgstr "Kus"
 msgid "Sweave"
 msgstr "Sweave"
 
-#: lib/layouts/knitr.module:35 lib/layouts/sweave.module:45
-msgid "Scrap"
-msgstr "Odpad"
-
 #: lib/layouts/knitr.module:39 lib/layouts/sweave.module:49
 msgid "Sweave Options"
 msgstr "Voľby Sweave"
@@ -13271,25 +13279,23 @@ msgstr ""
 msgid "Multiple Columns"
 msgstr "Viac Stĺpcové"
 
-#: lib/layouts/multicol.module:8
+#: lib/layouts/multicol.module:7
 msgid ""
-"Adds 2 styles to begin and end text in multiple columns. The begin style "
-"contains the number of columns, the end style must be kept empty. See the "
-"Additional manual, section 'Multiple Text Columns', for a detailed "
-"description of multiple columns."
+"Adds a custom inset whose content is set with multiple columns (2 by "
+"default). See the Additional manual, section 'Multiple Text Columns', for a "
+"detailed description of multiple columns."
 msgstr ""
-"Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. Začiatočný "
-"štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri Prídavný "
-"manuál, sekcia 'Viac Stĺpcový Text', pre detailné vysvetlenie viac-"
-"stĺpcového prostredia."
+"Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 .sú "
+"prednastavené). Pozri Prídavný manuál, sekcia 'Viac Stĺpcový Text', pre "
+"detailné vysvetlenie viac-stĺpcového prostredia."
 
-#: lib/layouts/multicol.module:18
-msgid "Begin Multiple Columns"
-msgstr "Začiatok viac-stĺpcového prostredia"
+#: lib/layouts/multicol.module:19
+msgid "Number of Columns"
+msgstr "Počet Stĺpcov"
 
-#: lib/layouts/multicol.module:25
-msgid "---Begin Multiple Columns---"
-msgstr "--Počiatok Viac-Stĺpcového Prostredia--"
+#: lib/layouts/multicol.module:20
+msgid "Insert the number of columns here"
+msgstr "Vložte sem počet stĺpcov"
 
 #: lib/layouts/multicol.module:28
 msgid "An optional preface"
@@ -13306,14 +13312,6 @@ msgid ""
 msgstr ""
 "Voľný priestor nutný na strane aby sa viac stĺpcové prostredie na tejto "
 "strane mohlo začať"
-
-#: lib/layouts/multicol.module:47
-msgid "End Multiple Columns"
-msgstr "Koniec Viac-Stĺpcového Prostredia"
-
-#: lib/layouts/multicol.module:50
-msgid "---End Multiple Columns---"
-msgstr "--Koniec Viac-Stĺpcového Prostredia--"
 
 #: lib/layouts/natbibapa.module:2
 msgid "Natbibapa"
@@ -29539,6 +29537,24 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Multilingual captions"
+#~ msgstr "Viac-jazykové popisy"
+
+#~ msgid "Scrap"
+#~ msgstr "Odpad"
+
+#~ msgid "Begin Multiple Columns"
+#~ msgstr "Začiatok viac-stĺpcového prostredia"
+
+#~ msgid "---Begin Multiple Columns---"
+#~ msgstr "--Počiatok Viac-Stĺpcového Prostredia--"
+
+#~ msgid "End Multiple Columns"
+#~ msgstr "Koniec Viac-Stĺpcového Prostredia"
+
+#~ msgid "---End Multiple Columns---"
+#~ msgstr "--Koniec Viac-Stĺpcového Prostredia--"
+
 #~ msgid "Key Words."
 #~ msgstr "Heslá."
 
@@ -32155,3 +32171,14 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Use the Mac OS X conventions for the word-level cursor movement"
 #~ msgstr "Použiť dohody Mac OS X pre pohyb kurzoru po slovách"
+
+#~ msgid ""
+#~ "Adds 2 styles to begin and end text in multiple columns. The begin style "
+#~ "contains the number of columns, the end style must be kept empty. See the "
+#~ "Additional manual, section 'Multiple Text Columns', for a detailed "
+#~ "description of multiple columns."
+#~ msgstr ""
+#~ "Pridáva 2 štýly pre začiatok a koniec viac-stĺpcového prostredia. Začiatočný "
+#~ "štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri Prídavný "
+#~ "manuál, sekcia 'Viac Stĺpcový Text', pre detailné vysvetlenie viac-"
+#~ "stĺpcového prostredia."
