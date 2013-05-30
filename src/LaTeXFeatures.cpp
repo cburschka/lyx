@@ -734,7 +734,8 @@ char const * simplefeatures[] = {
 	"multicol",
 	"multirow",
 	"tfrupee",
-	"shapepar"
+	"shapepar",
+	"rsphrase"
 };
 
 char const * bibliofeatures[] = {

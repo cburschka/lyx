@@ -8,14 +8,11 @@
 
 Format 45
 
-AddToPreamble
-	\usepackage{rsphrase}
-EndPreamble
-
 InsetLayout "Flex:R-S number"
 	LyxType		custom
 	LatexType	command
 	LatexName	rsnumber
+	Requires	rsphrase
 	LabelString	"R-S number"
 	Font
 	  Color		foreground
@@ -42,6 +39,7 @@ End
 Style "Safety phrase"
 	LatexType	command
 	LatexName	rsphrase
+	Requires	rsphrase
 	Category	MainText
 	NextNoIndent	1
 	Argument 1
