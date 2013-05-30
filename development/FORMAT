@@ -11,6 +11,10 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2013-05-30 Richard Heck <rgheck@lyx.org>
+	* Format increments to 474: dummy format for conversion of Chunk layouts
+	  to insets
+
 2013-05-28 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 473: support to set Tibetan as document language
 
@@ -410,7 +414,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* Format incremented to 414 (r39367)
 	  New InsetSpace param \textvisiblespace
 
-2011-02-15 Richard Heck <rgheck@comcast.net>
+2011-02-15 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 413 (r37682)
 	  New buffer param \html_css_as_file to control whether
 	  CSS is output to header to to style file
@@ -425,7 +429,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  New buffer param \language_package to allow per-document
 	  language package selection (bug 2909).
 
-2010-11-26 Richard Heck <rgheck@comcast.net>
+2010-11-26 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 410 (r36520)
 	  Rename "\\begin_layout Labeling" to "\\begin_layout List"
 	  in the KOMA (scr*) classes.
@@ -460,7 +464,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  collaboration using version control leads to way less
 	  merge conflicts.
 
-2010-10-13 Richard Heck <rgheck@comcast.net>
+2010-10-13 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 404 (r35623)
 	  Support for refstyle package.
 	  Changed the LaTeXCommand for InsetRef from "prettyref"
@@ -468,7 +472,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  differently, depending upon whether the new buffer param
 	  use_refstyle is true or false.
 
-2010-10-12 Richard Heck <rgheck@comcast.net>
+2010-10-12 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 403 (r35608)
 	  Renaming of flex insets.
 	  Changed 
@@ -502,11 +506,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  Support \mathscr.
 	  No new parameter but the mathrsfs package will be loaded.
 
-2010-07-16 Richard Heck <rgheck@comcast.net>
+2010-07-16 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 397 (r34920)
 	  Remove Nameref support
 
-2010-07-13 Richard Heck <rgheck@comcast.net>
+2010-07-13 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 396 (r34884)
 	  nameref support
 		new commands nameref and Nameref for InsetRef
@@ -521,12 +525,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  Support for makebox.
 	  New box parameter \use_makebox.
 
-2010-06-07 Richard Heck <rgheck@comcast.net>
+2010-06-07 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 393 (r34619)
 		Renaming in LyX format: \begin_inset OptArg becomes
 	  \begin_inset Argument.	
 
-2010-06-07 Richard Heck <rgheck@comcast.net>
+2010-06-07 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 392 (r34615)
 	  Dummy format change permitting Beamer files to be converted to 
 		a new, more useful format.
@@ -539,19 +543,19 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* Format incremented to 390: support for ouput sync (forward/reverse)
 	search. New boolean \forward_search and string \forward_macro.
 
-2010-05-24 Richard Heck <rgheck@comcast.net>
+2010-05-24 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 389: remove quotes from html_latex_* params.
 
 2010-05-18 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 388: support for page sizes A0-3, A6, B0-3, B6
 	  and JIS B0-6
 
-2010-04-21 Richard heck <rgheck@comcast.net>
+2010-04-21 Richard heck <rgheck@lyx.org>
 	* Format incremented to 387: New options for XHTML math output.
 	  New BufferParams: html_math_img_scale, html_latex_start,
 	  html_latex_end.
 
-2010-04-17 Richard heck <rgheck@comcast.net>
+2010-04-17 Richard heck <rgheck@lyx.org>
 	* Format incremented to 386: LyX version for InsetInfo:
 	  new parameters: type  "lyxinfo", arg   "version".
 
@@ -577,7 +581,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2010-03-28: Vincent van Ravesteijn <vfr@lyx.org>
 	* Format incremented to 380: introduction of InsetPreview.
 	
-2010-03-18: Richard Heck <rgheck@comcast.net>
+2010-03-18: Richard Heck <rgheck@lyx.org>
 	* Format incremented to 379: revise format 374
 	  Replace boolean \html_use_mathml with \html_math_output,
 	  which at the moment can be: MathML, HTML, Images, or LaTeX.
@@ -607,7 +611,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  child2.lyx
 	  \end_includeonly
 
-2009-12-30 Richard Heck <rgheck@comcast.net>
+2009-12-30 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 374: add html output options.
 		\html_use_mathml (boolean): whether to use MathML or images
 		\html_be_strict (boolean): whether to be XHTML 1.1 compliant
@@ -765,7 +769,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2008-08-01 José Matos <jamatos@fc.up.pt>
 	* Format incremented to 340: move empty layouts to "Plain Layout".
 
-2008-07-28 Richard Heck <rgheck@brown.edu>
+2008-07-28 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 339: removal of default modules.
 
 2008-06-21 Uwe Stöhr <uwestoehr@web.de>
@@ -777,7 +781,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2008-06-04 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 336: new param \font_cjk.
 
-2008-05-30 Richard Heck <rgheck@brown.edu>
+2008-05-30 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 335: fixes for InsetSpace problems.
 
 2008-05-16 Uwe Stöhr <uwestoehr@web.de>
@@ -816,7 +820,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2008-03-25 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 323: merge the diverse newpage insets.
 
-2008-03-24 Richard Heck <rgheck@comcast.net>
+2008-03-24 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 322: local layout
 
 2008-03-18 Edwin Leuven <e.leuven@uva.nl>
@@ -841,20 +845,20 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2008-03-02 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 316: support for subfloats (subfig package)
 
-2008-02-18 Richard Heck <rgheck@comcast.net>
+2008-02-18 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 315: support for column separation in page margins
 
 2008-02-03 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 314: adapt scrlttr2 class for serial letters
 
-2008-01-12 Richard Heck <rgheck@comcast.net>
+2008-01-12 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 313: change in how modules are represented
 
 2008-01-11 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 	* Format incremented to 312: support for sidewaysalgorithm (rotfloat)
 	  and wide sideways{figure,table}.
 
-2008-01-10 Richard Heck <rgheck@comcast.net>
+2008-01-10 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 311: dummy format to drive the AMS conversion
 
 2007-12-28 Bernhard Reiter <ockham@gmx.net>
@@ -904,7 +908,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* Format incremented to 297: support for Albanian, lower Sorbian,
 	  fixed upper Sorbian language
 
-2007-10-23 Richard Heck <rgheck@comcast.net>
+2007-10-23 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 296: InsetInclude becomes an InsetCommand
 
 2007-10-12 Uwe Stöhr <uwestoehr@web.de>
@@ -931,7 +935,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2007-10-03 Martin Vermeer <martin.vermeer@tkk.fi>
 	* Format incremented to 289: make Index a collapsable inset.
 
-2007-09-25 Richard Heck <rgheck@comcast.net>
+2007-09-25 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 288: Change how command insets are
 	  represented in LyX files.
 
@@ -965,7 +969,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* format incremented to 282: lyx files can be zipfiles with
           embedded documents.
 
-2007-08-29 Richard Heck <rgheck@comcast.net>
+2007-08-29 Richard Heck <rgheck@lyx.org>
 
 	* format incremented to 281: allow modules for layout files
 
