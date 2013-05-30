@@ -731,8 +731,10 @@ char const * simplefeatures[] = {
 	"pdfpages",
 	"amscd",
 	"slashed",
+	"multicol",
 	"multirow",
-	"tfrupee"
+	"tfrupee",
+	"shapepar"
 };
 
 char const * bibliofeatures[] = {

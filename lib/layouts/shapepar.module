@@ -10,7 +10,6 @@ Format 45
 
 AddToPreamble
  % used for custom paragraph shapes
- \usepackage{shapepar}
  \IfFileExists{candleshape.def}{%
   \input{candleshape.def}}{}
  \IfFileExists{dropshape.def}{%
@@ -27,6 +26,7 @@ EndPreamble
 Style "CD label"
 	LatexType	command
 	LatexName	CDlabel
+	Requires	shapepar
 	Category	ShapedParagraphs
 	NextNoIndent	1
 	Margin		Static
