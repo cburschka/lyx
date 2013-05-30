@@ -1,7 +1,6 @@
 #\DeclareLyXModule[multicol.sty]{Multiple Columns}
 #DescriptionBegin
-#Adds 2 styles to begin and end text in multiple columns.
-#The begin style contains the number of columns, the end style must be kept empty.
+#Adds a custom inset whose content is set with multiple columns (2 by default).
 #See the Additional manual, section 'Multiple Text Columns', for a detailed
 #description of multiple columns.
 #DescriptionEnd
@@ -9,45 +8,27 @@
 
 Format 45
 
-AddToPreamble
- % used for multiple text columns
- \usepackage{multicol}
-
-EndPreamble
-
-Style "Begin Multiple Columns"
-  Category		MainText
-  Margin		First_Dynamic
-  LatexType		command
-  LabelType		Static
-  LabelSep		xx
-  LatexName	        begin{multicols}
-  LabelString		"---Begin Multiple Columns---"
-  Argument post:1
-    LabelString		"Preface"
-    Tooltip		"An optional preface"
+InsetLayout Flex:Multiple_Columns
+  LyXType               custom
+  Decoration            classic
+  LabelString           Columns
+  LatexType             environment
+  LatexName             multicols
+  Argument 1
+    LabelString         "Number of Columns"
+    Tooltip             "Insert the number of columns here"
+    Mandatory           1
+    DefaultArg          2
   EndArgument
-  Argument post:2
-    LabelString		"Space Before Page Break"
-    Tooltip		"Free space that needs to be on the page to start the multiple columns on this page"
+  Argument 2
+    LabelString         "Preface"
+    Tooltip             "An optional preface"
   EndArgument
-  KeepEmpty		1
-  ParSkip		0
-  TopSep		0
-  BottomSep		0
-  ParSep		0
-  Font
-    Color		Blue
-  EndFont
-  LabelFont
-    Color		Green
-  EndFont
-End
-
-Style "End Multiple Columns"
-  CopyStyle		"Begin Multiple Columns"
-  LatexName	        end{multicols}
-  LabelString		"---End Multiple Columns---"
-  ResetArgs		1
+  Argument 3
+    LabelString         "Space Before Page Break"
+    Tooltip             "Free space that needs to be on the page to start the multiple columns on this page"
+    Requires            2
+  EndArgument
+  Requires              multicol
 End
 
