@@ -4,9 +4,15 @@
 #See the Additional manual, section 'Multiple Text Columns', for a detailed
 #description of multiple columns.
 #DescriptionEnd
-#Author: Uwe Stöhr
+#Authors: Uwe Stöhr and Jürgen Spitzmüller
 
 Format 45
+
+AddToPreamble
+% used for multiple text columns
+\usepackage{multicol}
+
+EndPreamble
 
 InsetLayout Flex:Multiple_Columns
   LyXType               custom
