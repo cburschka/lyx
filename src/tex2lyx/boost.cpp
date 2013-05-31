@@ -10,13 +10,11 @@
 
 #include <config.h>
 
-#include "support/debug.h"
-
 #include <boost/assert.hpp>
 
 #include <cstdlib>
 #include <exception>
-#include <ostream>
+#include <iostream>
 
 using namespace std;
 
@@ -24,7 +22,7 @@ namespace boost {
 
 void throw_exception(std::exception const & e)
 {
-	lyx::lyxerr << "Exception caught:\n"
+	cerr << "Exception caught:\n"
 	       << e.what() << endl;
 	BOOST_ASSERT(false);
 }
@@ -33,9 +31,9 @@ void throw_exception(std::exception const & e)
 void assertion_failed(char const * expr, char const * function,
 		      char const * file, long line)
 {
-	lyx::lyxerr << "Assertion triggered in " << function
-	       << " by failing check \"" << expr << "\""
-	       << " in file " << file << ":" << line << endl;
+	cerr << "Assertion triggered in " << function
+	    << " by failing check \"" << expr << "\""
+	    << " in file " << file << ":" << line << endl;
 	::abort();
 }
 

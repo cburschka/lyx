@@ -25,7 +25,6 @@
 #include "TextClass.h"
 
 #include "support/convert.h"
-#include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lassert.h"
@@ -54,8 +53,7 @@ namespace Alert {
 	void warning(docstring const & title, docstring const & message,
 				 bool const &)
 	{
-		LYXERR0(title);
-		LYXERR0(message);
+		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
 	}
 }
 }
