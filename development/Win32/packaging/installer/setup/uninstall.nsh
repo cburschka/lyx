@@ -48,13 +48,13 @@ Section "un.LyX" un.SecUnProgramFiles
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    ReadRegStr $R0 SHCTX "Software\Classes\${APP_EXT}" ""
    ${if} $R0 == "${APP_REGNAME_DOC}"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}13"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}14"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
-    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
-    DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}13"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}14"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
+    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}" enable this for LyX 2.1 final!
+    #DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
   ${endif}
   ${if} $MultiUser.Privileges == "Admin"
