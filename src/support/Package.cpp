@@ -142,7 +142,7 @@ Package::Package(string const & command_line_arg0,
 	configure_command_ = os::python() + ' ' +
 			quoteName(configure_script.toFilesystemEncoding(), quote_python) +
 			with_version_suffix() + " --binary-dir=" +
-			quoteName(binary_dir().absFileName(), quote_python);
+			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
 
 	LYXERR(Debug::INIT, "<package>\n"
 		<< "\tbinary_dir " << binary_dir().absFileName() << '\n'
