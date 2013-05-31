@@ -276,6 +276,9 @@ void InsetCaption::latex(otexstream & os,
 	// optional argument.
 	runparams.moving_arg = !runparams.inTableCell;
 	InsetText::latex(os, runparams);
+	// Backwards compatibility: We always had a linebreak after
+	// the caption (see #8514)
+	os << breakln;
 	runparams_in.encoding = runparams.encoding;
 }
 
