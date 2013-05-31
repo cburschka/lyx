@@ -90,7 +90,10 @@ Section -Configure
    # .lyx15
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "" "${APP_REGNAME_DOC}"
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}15" "Content Type" "${APP_MIME_TYPE}"
-   # .lyx16 don't set this, because this is designed to be opened with LyX 1.6.x
+   # .lyx16
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx20 don't set this, because this is designed to be opened with LyX 2.0.x
   
    # Refresh shell
    ${RefreshShellIcons}

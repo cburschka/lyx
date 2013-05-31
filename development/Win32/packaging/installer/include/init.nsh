@@ -48,8 +48,9 @@ Section "!${APP_NAME}" SecCore
  SectionIn RO
 SectionEnd
 
-Section "$(SecFileAssocTitle)" SecFileAssoc
- StrCpy $CreateFileAssociations "true"
+Section /o "$(SecFileAssocTitle)" SecFileAssoc
+ SectionIn RO # remove this line LyX 2.1 final!
+ #StrCpy $CreateFileAssociations "true" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
@@ -118,11 +119,10 @@ Section /o "Ceština" SecDCzech
  AddSize 2190
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Coptic" SecDCoptic
-# StrCpy $DictCodes "cop_EG,$DictCodes"
-# AddSize 151
-#SectionEnd
+Section /o "Coptic" SecDCoptic
+ StrCpy $DictCodes "cop_EG,$DictCodes"
+ AddSize 151
+SectionEnd
 
 Section /o "Cymraeg" SecDWelsh 
  StrCpy $DictCodes "cy_GB,$DictCodes"
@@ -161,11 +161,10 @@ Section /o "Eesti" SecDEstonian
  AddSize 4400
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "English (AU)" SecDEnglishAU
-# StrCpy $DictCodes "en_AU,$DictCodes"
-# AddSize 587
-#SectionEnd
+Section /o "English (AU)" SecDEnglishAU
+ StrCpy $DictCodes "en_AU,$DictCodes"
+ AddSize 587
+SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
  StrCpy $DictCodes "en_CA,$DictCodes"
@@ -179,11 +178,10 @@ Section "English (GB)" SecDEnglishGB
  AddSize 757
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "English (NZ)" SecDEnglishNZ
-# StrCpy $DictCodes "en_NZ,$DictCodes"
-# AddSize 551
-#SectionEnd
+Section /o "English (NZ)" SecDEnglishNZ
+ StrCpy $DictCodes "en_NZ,$DictCodes"
+ AddSize 551
+SectionEnd
 
 Section "English (US)" SecDEnglishUS
  # already installed by default
@@ -263,11 +261,10 @@ Section /o "Magyar" SecDHungarian
  AddSize 3380
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Hindi" SecDHindi
-# StrCpy $DictCodes "hi_IN,$DictCodes"
-# AddSize 1900
-#SectionEnd
+Section /o "Hindi" SecDHindi
+ StrCpy $DictCodes "hi_IN,$DictCodes"
+ AddSize 1900
+SectionEnd
 
 Section /o "Interlingua" SecDInterlingua
  StrCpy $DictCodes "ia_IA,$DictCodes"
@@ -309,11 +306,10 @@ Section /o "Latviešu" SecDLatvian
  AddSize 2243
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Marathi" SecDMarathi
-# StrCpy $DictCodes "mr_IN,$DictCodes"
-# AddSize 5290
-#SectionEnd
+Section /o "Marathi" SecDMarathi
+ StrCpy $DictCodes "mr_IN,$DictCodes"
+ AddSize 5290
+SectionEnd
 
 Section /o "Nederlands" SecDDutch
  StrCpy $DictCodes "nl_NL,$DictCodes"
@@ -330,11 +326,10 @@ Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  AddSize 1515
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Occitan" SecDOccitan
-# StrCpy $DictCodes "oc_FR,$DictCodes"
-# AddSize 31710
-#SectionEnd
+Section /o "Occitan" SecDOccitan
+ StrCpy $DictCodes "oc_FR,$DictCodes"
+ AddSize 31710
+SectionEnd
 
 Section /o "Polski" SecDPolish
  StrCpy $DictCodes "pl_PL,$DictCodes"
@@ -401,17 +396,15 @@ Section /o "Svenska" SecDSwedish
  AddSize 2028
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Tamil" SecDTamil
-# StrCpy $DictCodes "ta_IN,$DictCodes"
-# AddSize 5911
-#SectionEnd
+Section /o "Tamil" SecDTamil
+ StrCpy $DictCodes "ta_IN,$DictCodes"
+ AddSize 5911
+SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Telugu" SecDTelugu
-# StrCpy $DictCodes "te_IN,$DictCodes"
-# AddSize 3400
-#SectionEnd
+Section /o "Telugu" SecDTelugu
+ StrCpy $DictCodes "te_IN,$DictCodes"
+ AddSize 3400
+SectionEnd
  
 Section /o "Thai" SecDThai
  StrCpy $DictCodes "th_TH,$DictCodes"
@@ -423,11 +416,10 @@ Section /o "Ukrainian" SecDUkrainian
  AddSize 2620
 SectionEnd
 
-# enable this for LyX 2.1!
-#Section /o "Urdu" SecDUrdu
-# StrCpy $DictCodes "ur_PK,$DictCodes"
-# AddSize 1401
-#SectionEnd
+Section /o "Urdu" SecDUrdu
+ StrCpy $DictCodes "ur_PK,$DictCodes"
+ AddSize 1401
+SectionEnd
 
 Section /o "Vietnamese" SecDVietnamese
  StrCpy $DictCodes "vi_VN,$DictCodes"
@@ -770,9 +762,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-  # enable this for LyX 2.1!
-  # SectionSetFlags ${SecDCoptic} $0
-  # SectionSetSize ${SecDCoptic} 0
+   SectionSetFlags ${SecDCoptic} $0
+   SectionSetSize ${SecDCoptic} 0
   ${endif}
   StrCpy $Search "cy_GB"
   Call StrPoint
@@ -827,9 +818,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!
- #  SectionSetFlags ${SecDEnglishAU} $0
- #  SectionSetSize ${SecDEnglishAU} 0
+   SectionSetFlags ${SecDEnglishAU} $0
+   SectionSetSize ${SecDEnglishAU} 0
   ${endif}
   StrCpy $Search "en_CA"
   Call StrPoint
@@ -849,9 +839,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!
- #  SectionSetFlags ${SecDEnglishNZ} $0
- #  SectionSetSize ${SecDEnglishNZ} 0
+   SectionSetFlags ${SecDEnglishNZ} $0
+   SectionSetSize ${SecDEnglishNZ} 0
   ${endif}
   StrCpy $Search "en_US"
   Call StrPoint
@@ -941,9 +930,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1! 
-  # SectionSetFlags ${SecDHindi} $0
-  # SectionSetSize ${SecDHindi} 0
+   SectionSetFlags ${SecDHindi} $0
+   SectionSetSize ${SecDHindi} 0
   ${endif}
   StrCpy $Search "hr_HR"
   Call StrPoint
@@ -1015,6 +1003,13 @@ Function .onInit
    SectionSetFlags ${SecDLatvian} $0
    SectionSetSize ${SecDLatvian} 0
   ${endif}
+  StrCpy $Search "mr_IN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDMarathi} $0
+   SectionSetSize ${SecDMarathi} 0
+  ${endif}
   StrCpy $Search "nl_NL"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1040,9 +1035,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!  
-  # SectionSetFlags ${SecDOccitan} $0
-  # SectionSetSize ${SecDOccitan} 0
+   SectionSetFlags ${SecDOccitan} $0
+   SectionSetSize ${SecDOccitan} 0
   ${endif}
   StrCpy $Search "pl_PL"
   Call StrPoint
@@ -1139,17 +1133,15 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!
-  # SectionSetFlags ${SecDTamil} $0
-  # SectionSetSize ${SecDTamil} 0
+   SectionSetFlags ${SecDTamil} $0
+   SectionSetSize ${SecDTamil} 0
   ${endif}
   StrCpy $Search "te_IN"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!
-  # SectionSetFlags ${SecDTelugu} $0
-  # SectionSetSize ${SecDTelugu} 0
+   SectionSetFlags ${SecDTelugu} $0
+   SectionSetSize ${SecDTelugu} 0
   ${endif}
   StrCpy $Search "th_TH"
   Call StrPoint
@@ -1169,9 +1161,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
- # enable this for LyX 2.1!
-  # SectionSetFlags ${SecDUrdu} $0
-  # SectionSetSize ${SecDUrdu} 0
+   SectionSetFlags ${SecDUrdu} $0
+   SectionSetSize ${SecDUrdu} 0
   ${endif}
   StrCpy $Search "vi_VN"
   Call StrPoint
