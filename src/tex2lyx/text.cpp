@@ -1993,43 +1993,55 @@ void copy_file(FileName const & src, string dstname)
 }
 
 
-/// Parse a NoWeb Chunk section. The initial "<<" is already parsed.
-bool parse_noweb(Parser & p, ostream & os, Context & context)
+/// Parse a literate Chunk section. The initial "<<" is already parsed.
+bool parse_chunk(Parser & p, ostream & os, Context & context)
 {
 	// check whether a chunk is possible here.
-	if (!context.new_layout_allowed ||
-	    !context.textclass.hasLayout(from_ascii("Chunk"))) {
+	if (!context.textclass.hasInsetLayout(from_ascii("Flex:Chunk"))) {
 		return false;
 	}
 
 	p.pushPosition();
 
 	// read the parameters
-	Parser::Arg stuff = p.verbatimStuff(">>=", false);
-	if (!stuff.first) {
+	Parser::Arg const params = p.verbatimStuff(">>=\n", false);
+	if (!params.first) {
 		p.popPosition();
 		return false;
 	}
-	string chunk = "<<" + stuff.second + ">>="
-		+ p.verbatimStuff("\n").second + '\n';
 
-	stuff = p.verbatimStuff("\n@");
-	if (!stuff.first) {
+	Parser::Arg const code = p.verbatimStuff("\n@");
+	if (!code.first) {
 		p.popPosition();
 		return false;
 	}
-	chunk += stuff.second + "\n@";
-	string post_chunk = p.verbatimStuff("\n").second + '\n';
+	string const post_chunk = p.verbatimStuff("\n").second + '\n';
 	if (post_chunk[0] != ' ' && post_chunk[0] != '\n') {
 		p.popPosition();
 		return false;
 	}
-	chunk += post_chunk;
+	// The last newline read is important for paragraph handling
+	p.putback();
+	p.deparse();
 
-	context.new_paragraph(os);
-	Context newcontext(true, context.textclass,
-		&context.textclass[from_ascii("Chunk")]);
-	output_ert(os, chunk, newcontext);
+	//cerr << "params=[" << params.second << "], code=[" << code.second << "]" <<endl;
+	// We must have a valid layout before outputting the Chunk inset.
+	context.check_layout(os);
+	Context chunkcontext(true, context.textclass);
+	chunkcontext.layout = &context.textclass.plainLayout();
+	begin_inset(os, "Flex Chunk");
+	os << "\nstatus open\n";
+	if (!params.second.empty()) {
+		chunkcontext.check_layout(os);
+		Context paramscontext(true, context.textclass);
+		paramscontext.layout = &context.textclass.plainLayout();
+		begin_inset(os, "Argument 1");
+		os << "\nstatus open\n";
+		output_ert(os, params.second, paramscontext);
+		end_inset(os);
+	}
+	output_ert(os, code.second, chunkcontext);
+	end_inset(os);
 
 	p.dropPosition();
 	return true;
@@ -2305,16 +2317,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.asInput() == "<"
 			 && p.next_token().asInput() == "<") {
-			bool has_noweb = false;
+			bool has_chunk = false;
 			if (noweb_mode) {
 				p.pushPosition();
 				p.get_token();
-				has_noweb = parse_noweb(p, os, context);
-				if (!has_noweb)
+				has_chunk = parse_chunk(p, os, context);
+				if (!has_chunk)
 					p.popPosition();
 			}
 
-			if (!has_noweb) {
+			if (!has_chunk) {
 				context.check_layout(os);
 				begin_inset(os, "Quotes ");
 				//FIXME: this is a right danish quote;
