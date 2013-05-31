@@ -678,7 +678,8 @@ check_PROGRAMS = \
 check_layout_CPPFLAGS = $(AM_CPPFLAGS) -DNO_LAYOUT_CSS
 check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 # need to allow multiple definitions of _() (see dummy_functions.cpp)
-check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) -Wl,--allow-multiple-definition
+#check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) -Wl,--allow-multiple-definition
+check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_layout_SOURCES = \
 	insets/InsetLayout.cpp \
 	Color.cpp \

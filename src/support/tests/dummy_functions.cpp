@@ -11,8 +11,6 @@ namespace lyx {
 	// Keep the linker happy on Windows
 	void lyx_exit(int) {}
 
-	docstring const _(string const & s) { return from_ascii(s); }
-
 	// Dummy language support
 	Messages const & getGuiMessages()
 	{
