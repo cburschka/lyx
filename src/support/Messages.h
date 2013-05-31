@@ -21,9 +21,10 @@ namespace lyx {
 ///
 class Messages {
 public:
+	/// dummy instantiation: no translation is done
+	Messages() {}
 	/// messages in the language \p l.
-	/// If \p l is empty, the language will be defined by the environment.
-	Messages(std::string const & l = std::string());
+	Messages(std::string const & l);
 	///
 	docstring const get(std::string const & msg) const;
 	/// What is the language associated with this translation?

@@ -140,7 +140,6 @@ namespace lyx {
 std::string Messages::gui_lang_;
 
 
-// This version use the traditional gettext.
 Messages::Messages(string const & l)
 	: lang_(l)
 {
