@@ -71,7 +71,7 @@
         <item>
          <widget class="QLabel" name="iconSetLA">
           <property name="text">
-           <string>&amp;Icon Set:</string>
+           <string>&amp;Icon set:</string>
           </property>
           <property name="buddy">
            <cstring>iconSetCO</cstring>
@@ -81,7 +81,8 @@
         <item>
          <widget class="QComboBox" name="iconSetCO">
           <property name="toolTip">
-           <string>The icon set to use. Warning: normal size of icons may be&#x0a;wrong until you save the preferences and restart LyX.</string>
+           <string>The icon set to use. Warning: normal size of icons may be
+wrong until you save the preferences and restart LyX.</string>
           </property>
          </widget>
         </item>
@@ -103,17 +104,11 @@
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <widget class="QLabel" name="themeIconsLA">
-          <property name="text" >
-           <string>Use icons from system's &amp;theme:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>useSystemThemeIconsCB</cstring>
+         <widget class="QCheckBox" name="useSystemThemeIconsCB">
+          <property name="text">
+           <string>Use icons from system's &amp;theme</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="useSystemThemeIconsCB"/>
         </item>
        </layout>
       </item>
