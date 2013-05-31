@@ -65,7 +65,7 @@ esac
 aspell_dictionaries="no"
 hunspell_dictionaries="yes"
 
-gettext_deployment="yes"
+gettext_deployment="no"
 aspell_deployment="yes"
 hunspell_deployment="yes"
 thesaurus_deployment="yes"
