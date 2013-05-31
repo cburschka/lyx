@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-30 19:17+0200\n"
+"POT-Creation-Date: 2013-05-31 11:20+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4101,7 +4101,7 @@ msgid "&User interface file:"
 msgstr "Súbor s &užívateľským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:74
-msgid "&Icon Set:"
+msgid "&Icon set:"
 msgstr "Sada &ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
@@ -4113,8 +4113,8 @@ msgstr ""
 "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
-msgid "Use icons from system's &theme:"
-msgstr "Použiť ikony zo systémovej &témy:"
+msgid "Use icons from system's &theme"
+msgstr "Použiť ikony zo systémovej &témy"
 
 #: src/frontends/qt4/ui/PrefUi.ui:126
 msgid "Context help"
@@ -6133,12 +6133,12 @@ msgid "chemistry"
 msgstr "chémia"
 
 #: lib/layouts/acm-sigs-alt.layout:3
-msgid "article (ACM SIGS 'alternate' style)"
-msgstr "článok (ACM SIGS 'alternate' štýl)"
+msgid "ACM SIGS ('Alternate' Style)"
+msgstr "ACM SIGS  ('Alternate' štýl)"
 
 #: lib/layouts/acm-sigs.layout:3
-msgid "article (ACM SIGS)"
-msgstr "článok (ACM SIGS)"
+msgid "ACM SIG Proceedings (SP)"
+msgstr "ACM SIG rokovacie zväzky (SP)"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH"
@@ -10852,7 +10852,7 @@ msgid "Itemize Type"
 msgstr "Typ Položky"
 
 #: lib/layouts/powerdot.layout:270 lib/layouts/powerdot.layout:293
-msgid "Itemize type spezification (see powerdot manual)"
+msgid "Itemize type specification (see powerdot manual)"
 msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/enumitem.module:57
@@ -10874,7 +10874,7 @@ msgid "Enumerate Type"
 msgstr "Typ číslovania"
 
 #: lib/layouts/powerdot.layout:320 lib/layouts/powerdot.layout:343
-msgid "Enumerate type spezification (see powerdot manual)"
+msgid "Enumerate type specification (see powerdot manual)"
 msgstr "Špecifikácia pre typ číslovania (viď powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:323 lib/layouts/enumitem.module:64
@@ -29232,10 +29232,6 @@ msgstr "Súhrn: "
 msgid "References: "
 msgstr "Referencie: "
 
-#: src/support/Messages.cpp:114
-msgid "[[Replace with the code of your language]]"
-msgstr "sk"
-
 #: src/support/Package.cpp:487
 msgid "LyX binary not found"
 msgstr "Spustiteľný súbor LyX nenájdený"
@@ -29536,6 +29532,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "article (ACM SIGS)"
+#~ msgstr "článok (ACM SIGS)"
+
+#~ msgid "[[Replace with the code of your language]]"
+#~ msgstr "sk"
 
 #~ msgid "Multilingual captions"
 #~ msgstr "Viac-jazykové popisy"
@@ -32182,3 +32184,18 @@ msgstr "Neznámy používateľ"
 #~ "štýl obsahuje počet stĺpcov, konečný štýl musí byť prázdny. Pozri Prídavný "
 #~ "manuál, sekcia 'Viac Stĺpcový Text', pre detailné vysvetlenie viac-"
 #~ "stĺpcového prostredia."
+
+#~ msgid "&Icon Set:"
+#~ msgstr "Sada &ikon:"
+
+#~ msgid "Use icons from system's &theme:"
+#~ msgstr "Použiť ikony zo systémovej &témy:"
+
+#~ msgid "article (ACM SIGS 'alternate' style)"
+#~ msgstr "článok (ACM SIGS 'alternate' štýl)"
+
+#~ msgid "Itemize type spezification (see powerdot manual)"
+#~ msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
+
+#~ msgid "Enumerate type spezification (see powerdot manual)"
+#~ msgstr "Špecifikácia pre typ číslovania (viď powerdot manuál)"
