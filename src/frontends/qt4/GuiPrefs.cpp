@@ -2527,7 +2527,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 
 #if (!defined Q_WS_X11 || QT_VERSION < 0x040600)
 	useSystemThemeIconsCB->hide();
-	themeIconsLA->hide();
 #endif
 }
 
