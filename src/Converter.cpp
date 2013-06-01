@@ -726,7 +726,7 @@ vector<Format const *> const
 Converters::getReachable(string const & from, bool const only_viewable,
 			 bool const clear_visited, set<string> const & excludes)
 {
-	set<int> excluded_numbers;;
+	set<int> excluded_numbers;
 
 	set<string>::const_iterator sit = excludes.begin();
 	set<string>::const_iterator const end = excludes.end();
