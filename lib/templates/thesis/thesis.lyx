@@ -11,12 +11,12 @@
  \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
 }
 \def\refnamechanges{%
- \renewcommand*{\equationautorefname}[1]{}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
- \renewcommand{\figureautorefname}{Fig.\negthinspace}
- \renewcommand{\tableautorefname}{Tab.\negthinspace}
+ \renewcommand*{\equationautorefname}[1]{}%
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+ \renewcommand{\figureautorefname}{Fig.\negthinspace}%
+ \renewcommand{\tableautorefname}{Tab.\negthinspace}%
 }
 \@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 
