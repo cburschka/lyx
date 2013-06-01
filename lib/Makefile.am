@@ -248,6 +248,7 @@ dist_examples_DATA = \
 	examples/beamer-knight4-mask.png \
 	examples/beamer-knight4.png \
 	examples/beamerlyxexample1.lyx \
+	examples/beamerposter.lyx \
 	examples/biblioExample.bib \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
