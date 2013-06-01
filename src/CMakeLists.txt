@@ -184,9 +184,4 @@ if(LYX_BUNDLE)
 			fixup_bundle(\"${installed_lyx}\" \"\" \"\") " COMPONENT RUNTIME)
 endif()
 
-if(NOT APPLE)
-  # unresoved handling for multiple definitions
-  # APPLE can be enabled, if the hack in src/support/tests/dummy_functions.cp
-  # which requires multiple definitions is resolved. (Georg)
-  add_subdirectory(tests)
-endif()
+add_subdirectory(tests)
