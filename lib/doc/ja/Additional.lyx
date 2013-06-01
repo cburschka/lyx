@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass jsbook
@@ -68,7 +68,7 @@ End
 \end_local_layout
 \language japanese
 \language_package default
-\inputencoding jis
+\inputencoding jis-platex
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -106,6 +106,7 @@ End
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -114,7 +115,7 @@ End
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -18591,8 +18592,8 @@ svnversion
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -20628,26 +20629,26 @@ If you want to have 2
 \begin_inset space ~
 \end_inset
 
-columns in your text, use the style 
+columns in your text, insert a multicolumn inset via the menu 
 \family sans
-Begin Multiple Columns
+Insert\SpecialChar \menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets\SpecialChar \menuseparator
+Multiple
+\begin_inset space ~
+\end_inset
+
+Columns
 \family default
  where the columns should start.
- The content of the style is the number of the columns, so in this case
- use a 
-\begin_inset Quotes eld
+ Write all text that should be printed in 2
+\begin_inset space ~
 \end_inset
 
-2
-\begin_inset Quotes erd
-\end_inset
-
-.
- At the point where the columns should end use the style 
-\family sans
-End Multiple Columns
-\family default
- and keep it empty.
+columns into this inset.
 \end_layout
 
 \begin_layout Standard
@@ -20656,11 +20657,14 @@ End Multiple Columns
 Here is an example:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+\noindent
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 \noindent
 
 \series bold
@@ -20672,12 +20676,10 @@ The Adventure of the Empty House
 \begin_inset Newline newline
 \end_inset
 
-by 
-\noun on
-Sir Arthur Conan Doyle
+by Sir Arthur Conan Doyle
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -20704,13 +20706,45 @@ ty which utterly submerged my mind.
  only withdrawn upon the third of last month.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
 
 \lang english
+To get 3 or more columns, set the cursor into the multicolumn inset and
+ use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Number
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+Columns
+\family default
+.
+ The number of the desired columns is written into that inset (for 3
+\begin_inset space ~
+\end_inset
+
+columns write 
+\begin_inset Quotes eld
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
 Here is an example with 3
 \begin_inset space ~
 \end_inset
@@ -20718,14 +20752,27 @@ Here is an example with 3
 columns:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-3
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+3
+\end_layout
+
+\end_inset
+
 It can be imagined that my close intimacy with Sherlock Holmes had interested
  me deeply in crime, and that after his disappearance I never failed to
  read with care the various problems which came before the public.
@@ -20747,7 +20794,8 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
  as they were known to the public at the conclusion of the inquest.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -20763,6 +20811,8 @@ columns if you want to, but that might not be very pleasant for the readers
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Newpage newpage
 \end_inset
 
@@ -20781,11 +20831,13 @@ Columns inside Columns
 You can also have columns inside columns:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -20796,11 +20848,13 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
  at 427 Park Lane.
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Standard
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -20816,11 +20870,12 @@ The youth moved in the best society–had, so far as was known, no enemies
  on the night of March 30, 1894.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -20848,7 +20903,8 @@ The evidence of those who had played with him– Mr.
  So much for his recent history as it came out at the inquest.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -20873,7 +20929,6 @@ For more features of multiple columns, have a look at the documentation
 \series bold
 multicol
 \series default
-\lang japanese
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -20893,29 +20948,39 @@ Preface
 \begin_layout Standard
 
 \lang english
-To add a preface text for multiple columns, add the optional parameter 
+To add a preface text for multiple columns, set the cursor into the mulitcolumn
+ inset and use the menu 
 \family sans
+Insert\SpecialChar \menuseparator
 Preface
 \family default
- behind the number of columns in the
-\family sans
- Begin Multiple Columns
-\family default
- style.
- Write in there your preface.
- An example with some preface text:
+.
+ Write your preface text into that inset.
+\begin_inset Newline newline
+\end_inset
+
+This is an example with some preface text:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -20928,12 +20993,7 @@ And the story continues and continues and continues and continues\SpecialChar \l
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \size small
-\lang english
 On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
@@ -20950,7 +21010,8 @@ On the evening of the crime, he returned from the club exactly at ten.
  no weapon of any sort was to be found in the room.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -20978,9 +21039,16 @@ creates a subsection.
  In this example the preface is a subsubsection:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -21015,12 +21083,7 @@ status collapsed
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \size small
-\lang english
 A minute examination of the circumstances served only to make the case more
  complex.
  In the first place, no reason could be given why the young man should have
@@ -21043,7 +21106,8 @@ A minute examination of the circumstances served only to make the case more
  No one had heard a shot.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -21058,12 +21122,26 @@ text lines is left on the page at the beginning of the multiple columns,
  a page break will be inserted before the multiple columns.
  Depending on the number of lines of the preface text, you might want to
  change this space.
- This is done by inserting the optional parameter 
+ This is done by setting the cursor into the mulitcolumn inset behind the
+ preface (if there is any) and using the menu 
 \family sans
-Space before page break
+Insert\SpecialChar \menuseparator
+Space
+\begin_inset space ~
+\end_inset
+
+Before
+\begin_inset space ~
+\end_inset
+
+Page
+\begin_inset space ~
+\end_inset
+
+Break
 \family default
- behind the preface.
- There insert the amount of space like e.
+.
+ Insert into that inset the amount of space like e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -21080,7 +21158,10 @@ g.
 \end_inset
 
 .
- In this example the space is set to 7
+\begin_inset Newline newline
+\end_inset
+
+In this example the space is set to 7
 \begin_inset space ~
 \end_inset
 
@@ -21103,55 +21184,21 @@ baselineskip
  needs to be inserted as TeX code):
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
 status open
 
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsubsection{
-\end_layout
-
-\end_inset
-
-This is the sectioning command
-\begin_inset Newline newline
-\end_inset
-
-as a preface and
-\begin_inset Newline newline
-\end_inset
-
-with multiple text lines
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument post:2
+\begin_inset Argument 3
 status open
 
 \begin_layout Plain Layout
+
+\lang english
 7
 \begin_inset ERT
 status collapsed
@@ -21171,12 +21218,7 @@ baselineskip
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \size small
-\lang english
 On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
@@ -21193,7 +21235,8 @@ On the evening of the crime, he returned from the club exactly at ten.
  no weapon of any sort was to be found in the room.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -21261,8 +21304,6 @@ cm:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -21280,11 +21321,13 @@ multicolsep}{2.5cm}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21306,7 +21349,8 @@ ion.
  me, and I knocked down several books which he was carrying.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -21328,7 +21372,7 @@ Note:
 \backslash
 setlength
 \series default
- will be used for all following multiple columns until to change them again.
+ will be used for all following multiple columns until you change them again.
 \end_layout
 
 \end_inset
@@ -21352,6 +21396,8 @@ multicolsep}{13pt}
 \end_inset
 
 
+\lang english
+
 \begin_inset Note Note
 status collapsed
 
@@ -21361,6 +21407,15 @@ status collapsed
 go back to the default
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -21420,11 +21475,13 @@ columnsep}{3cm}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21446,7 +21503,8 @@ My observations of No.
  precious volumes, a dozen of them at least, wedged under his right arm.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -21465,6 +21523,8 @@ columnsep}{10pt}
 
 \end_inset
 
+
+\lang english
 
 \begin_inset Note Note
 status collapsed
@@ -21501,11 +21561,11 @@ columnseprule
 \end_inset
 
 pt (this is the default), the rule is suppressed.
- In the following example, the line separating the columns is 2
+ In the following example the line is 2
 \begin_inset space \thinspace{}
 \end_inset
 
-pt wide.
+pt wide:
 \end_layout
 
 \begin_layout Standard
@@ -21526,11 +21586,13 @@ columnseprule}{2pt}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21544,14 +21606,14 @@ You're surprised to see me, sir,
  said he, in a strange, croaking voice.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
 I acknowledged that I was.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21569,7 +21631,7 @@ Well, I've a conscience, sir, and when I chanced to see you go into this
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21592,7 +21654,7 @@ May I ask how you knew who I was?
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -21628,7 +21690,8 @@ The Holy War
 
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -21647,6 +21710,8 @@ columnseprule}{0pt}
 
 \end_inset
 
+
+\lang english
 
 \begin_inset Note Note
 status collapsed
