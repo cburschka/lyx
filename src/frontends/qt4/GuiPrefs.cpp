@@ -1893,6 +1893,8 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(defaultFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
+	connect(defaultOTFFormatCB, SIGNAL(activated(QString)),
+		this, SIGNAL(changed()));
 	connect(viewerCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(editorCO, SIGNAL(activated(int)),
@@ -1920,6 +1922,9 @@ void PrefFileformats::apply(LyXRC & rc) const
 	QString const default_format = defaultFormatCB->itemData(
 		defaultFormatCB->currentIndex()).toString();
 	rc.default_view_format = fromqstr(default_format);
+	QString const default_otf_format = defaultOTFFormatCB->itemData(
+		defaultOTFFormatCB->currentIndex()).toString();
+	rc.default_otf_view_format = fromqstr(default_otf_format);
 }
 
 
@@ -1930,9 +1935,12 @@ void PrefFileformats::update(LyXRC const & rc)
 	bool const init = defaultFormatCB->currentText().isEmpty();
 	updateView();
 	if (init) {
-		int const pos =
+		int pos =
 			defaultFormatCB->findData(toqstr(rc.default_view_format));
 		defaultFormatCB->setCurrentIndex(pos);
+		pos = defaultOTFFormatCB->findData(toqstr(rc.default_otf_view_format));
+				defaultOTFFormatCB->setCurrentIndex(pos);
+		defaultOTFFormatCB->setCurrentIndex(pos);
 	}
 }
 
@@ -1941,35 +1949,48 @@ void PrefFileformats::updateView()
 {
 	QString const current = formatsCB->currentText();
 	QString const current_def = defaultFormatCB->currentText();
+	QString const current_def_otf = defaultOTFFormatCB->currentText();
 
 	// update comboboxes with formats
 	formatsCB->blockSignals(true);
 	defaultFormatCB->blockSignals(true);
+	defaultOTFFormatCB->blockSignals(true);
 	formatsCB->clear();
 	defaultFormatCB->clear();
+	defaultOTFFormatCB->clear();
 	form_->formats().sort();
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
 		formatsCB->addItem(qt_(cit->prettyname()),
 				QVariant(form_->formats().getNumber(cit->name())));
-		if (form_->converters().isReachable("latex", cit->name())
+		if (cit->viewer().empty())
+			continue;
+		if (form_->converters().isReachable("xhtml", cit->name())
 		    || form_->converters().isReachable("dviluatex", cit->name())
-		    || form_->converters().isReachable("pdflatex", cit->name())
 		    || form_->converters().isReachable("luatex", cit->name())
-		    || form_->converters().isReachable("xetex", cit->name()))
+		    || form_->converters().isReachable("xetex", cit->name())) {
+			defaultFormatCB->addItem(qt_(cit->prettyname()),
+					QVariant(toqstr(cit->name())));
+			defaultOTFFormatCB->addItem(qt_(cit->prettyname()),
+					QVariant(toqstr(cit->name())));
+		} else if (form_->converters().isReachable("latex", cit->name())
+			   || form_->converters().isReachable("pdflatex", cit->name()))
 			defaultFormatCB->addItem(qt_(cit->prettyname()),
 					QVariant(toqstr(cit->name())));
 	}
 
-	// restore selection
+	// restore selections
 	int item = formatsCB->findText(current, Qt::MatchExactly);
 	formatsCB->setCurrentIndex(item < 0 ? 0 : item);
 	on_formatsCB_currentIndexChanged(item < 0 ? 0 : item);
 	item = defaultFormatCB->findText(current_def, Qt::MatchExactly);
 	defaultFormatCB->setCurrentIndex(item < 0 ? 0 : item);
+	item = defaultOTFFormatCB->findText(current_def_otf, Qt::MatchExactly);
+	defaultOTFFormatCB->setCurrentIndex(item < 0 ? 0 : item);
 	formatsCB->blockSignals(false);
 	defaultFormatCB->blockSignals(false);
+	defaultOTFFormatCB->blockSignals(false);
 }
 
 

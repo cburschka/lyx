@@ -93,6 +93,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
+	{ "\\default_otf_view_format", LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
@@ -255,6 +256,7 @@ void LyXRC::setDefaults()
 	document_path.erase();
 	view_dvi_paper_option.erase();
 	default_view_format = "pdf2";
+	default_otf_view_format = "pdf4";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
 	fontenc = "default";
@@ -1161,6 +1163,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			editor_alternatives[format].insert(command);
 			break;
 		}
+
+		case RC_DEFAULT_OTF_VIEW_FORMAT:
+			lexrc >> default_otf_view_format;
+			break;
 
 		case RC_DEFAULT_VIEW_FORMAT:
 			lexrc >> default_view_format;
@@ -2807,6 +2813,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	}
+	case RC_DEFAULT_OTF_VIEW_FORMAT:
+		if (ignore_system_lyxrc ||
+		    default_otf_view_format != system_lyxrc.default_otf_view_format) {
+			os << "\\default_otf_view_format " << default_otf_view_format << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_DEFAULT_VIEW_FORMAT:
 		if (ignore_system_lyxrc ||
 		    default_view_format != system_lyxrc.default_view_format) {
@@ -2929,6 +2942,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
 	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_GUI_LANGUAGE:
+	case LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT:
 	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
 	case LyXRC::RC_DEFFILE:
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
@@ -3160,6 +3174,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DEFFILE:
 		str = _("Command definition file. Can either specify an absolute path, or LyX will look in its global and local commands/ directories.");
+		break;
+
+	case RC_DEFAULT_OTF_VIEW_FORMAT:
+		str = _("The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts.");
 		break;
 
 	case RC_DEFAULT_VIEW_FORMAT:

@@ -2316,7 +2316,6 @@ string BufferParams::getDefaultOutputFormat() const
 	    && default_output_format != "default")
 		return default_output_format;
 	if (isDocBook()
-	    || useNonTeXFonts
 	    || encoding().package() == Encoding::japanese) {
 		vector<Format const *> const formats = exportableFormats(true);
 		if (formats.empty())
@@ -2324,6 +2323,8 @@ string BufferParams::getDefaultOutputFormat() const
 		// return the first we find
 		return formats.front()->name();
 	}
+	if (useNonTeXFonts)
+		return lyxrc.default_otf_view_format;
 	return lyxrc.default_view_format;
 }
 
