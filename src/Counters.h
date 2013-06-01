@@ -76,6 +76,9 @@ public:
 private:
 	///
 	int value_;
+	/// This is actually one less than the initial value, since the
+	/// counter is always stepped before being used.
+	int initial_value_;
 	/// contains master counter name.
 	/** The master counter is the counter that, if stepped
 	 *  (incremented) zeroes this counter. E.g. "subsection"'s

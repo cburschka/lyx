@@ -19389,6 +19389,37 @@ End
 \end_layout
 
 \begin_layout Description
+
+\change_inserted 1414654397 1370012684
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1370012589
+InitialValue
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1370012639
+number
+\end_layout
+
+\end_inset
+
+=1] Sets the initial value for the counter, to which it will be reset whenever
+ that happens.
+ Normally, one will want the default, 1.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 

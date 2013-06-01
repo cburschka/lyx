@@ -61,7 +61,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 47; //rgh: package options
+int const LAYOUT_FORMAT = 48; //rgh: initial values for counter
 
 namespace {
 

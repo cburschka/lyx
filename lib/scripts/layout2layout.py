@@ -160,6 +160,9 @@ import os, re, string, sys
 # Incremented to format 47, 23 May 2013 by rgh
 # Add PackageOptions tag
 
+# Incremented to format 48, 31 May 2013 by rgh
+# Add InitialValue tag for counters
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -167,7 +170,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 47
+currentFormat = 48
 
 
 def usage(prog_name):
@@ -384,7 +387,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format >= 44 and format <= 46:
+        if format >= 44 and format <= 47:
             # nothing to do.
             i += 1
             continue

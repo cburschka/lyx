@@ -40,7 +40,7 @@ Counter::Counter()
 
 Counter::Counter(docstring const & mc, docstring const & ls,  
                 docstring const & lsa)
-	: master_(mc), labelstring_(ls), labelstringappendix_(lsa)
+	: initial_value_(0), master_(mc), labelstring_(ls), labelstringappendix_(lsa)
 {
 	reset();
 }
@@ -53,11 +53,13 @@ bool Counter::read(Lexer & lex)
 		CT_LABELSTRING,
 		CT_LABELSTRING_APPENDIX,
 		CT_PRETTYFORMAT,
+		CT_INITIALVALUE,
 		CT_END
 	};
 
 	LexerKeyword counterTags[] = {
 		{ "end", CT_END },
+	  { "initialvalue", CT_INITIALVALUE},
 		{ "labelstring", CT_LABELSTRING },
 		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
 		{ "prettyformat", CT_PRETTYFORMAT },
@@ -82,6 +84,18 @@ bool Counter::read(Lexer & lex)
 				master_ = lex.getDocString();
 				if (master_ == "none")
 					master_.erase();
+				break;
+			case CT_INITIALVALUE:
+				lex.next();
+				initial_value_ = lex.getInteger();
+				// getInteger() returns -1 on error, and larger
+				// negative values do not make much sense.
+				// In the other case, we subtract one, since the
+				// counter will be incremented before its first use.
+				if (initial_value_ <= -1)
+					initial_value_ = 0;
+				else
+					initial_value_ -= 1;
 				break;
 			case CT_PRETTYFORMAT:
 				lex.next();
@@ -136,7 +150,7 @@ void Counter::step()
 
 void Counter::reset()
 {
-	value_ = 0;
+	value_ = initial_value_;
 }
 
 
