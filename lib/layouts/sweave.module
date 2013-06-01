@@ -7,7 +7,13 @@
 #Excludes: lilypond
 
 Format 45
+
 Input litinsets.inc
+
+Counter chunk
+    InitialValue 2
+End
+
 OutputType             literate
 OutputFormat           sweave
 
