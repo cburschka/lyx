@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-31 11:20+0200\n"
+"POT-Creation-Date: 2013-06-01 17:04+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3396,9 +3396,25 @@ msgstr "Ko&pír. skript:"
 msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:165
-msgid "Default Format"
-msgstr "Štandardný Formát"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
+msgid "Default Output Formats"
+msgstr "Štandardné Výstupné Formáty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:214
+msgid "With &TeX fonts:"
+msgstr "Pre &TeX fonty:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
+msgid "The default output format for documents (except with non-TeX fonts)"
+msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
+msgid "With n&on-TeX fonts:"
+msgstr "Pre nie-TeX fonty:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
+msgid "The default output format for documents using non-TeX fonts"
+msgstr "Štandardný výstupný formát pre dokumenty používajúce nie-TeX fonty"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:216
 msgid "Ed&itor:"
@@ -16505,7 +16521,7 @@ msgstr "Lingvistika|L"
 
 #: lib/ui/stdmenus.inc:603
 msgid "Multilingual Captions|C"
-msgstr "Viac-jazykové popisy|J"
+msgstr "Viac-Jazykové popisy|J"
 
 #: lib/ui/stdmenus.inc:604
 msgid "Risk and Safety Statements|R"
@@ -23818,6 +23834,12 @@ msgstr ""
 "Súbor definíc príkazov. Alebo zadáte absolútnu cestu, alebo bude LyX hľadať "
 "v jeho lokálnych a globálnych commands/ adresároch."
 
+#: src/LyXRC.cpp:3180
+msgid ""
+"The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
+msgstr ""
+"Štandardný formát použitý s LFUN_BUFFER_[VIEW|UPDATE] a s nie-TeX fontmi."
+
 #: src/LyXRC.cpp:3166
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Štandardný formát použitý s LFUN_BUFFER_[VIEW|UPDATE]."
@@ -29532,6 +29554,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Default Format"
+#~ msgstr "Štandardný Formát"
 
 #~ msgid "article (ACM SIGS)"
 #~ msgstr "článok (ACM SIGS)"
