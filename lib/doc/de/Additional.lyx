@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -100,6 +100,7 @@ End
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -108,7 +109,7 @@ End
 \use_package stmaryrd 0
 \use_package undertilde 1
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -22221,8 +22222,8 @@ svnversion
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -24749,37 +24750,38 @@ Möchte man 2
 \begin_inset space ~
 \end_inset
 
-Spalten im Text haben, verwendet man den Stil 
+Spalten im Text haben, verwendet man das Menü 
 \family sans
-Beginn Mehrfachspalten
+Einfügen\SpecialChar \menuseparator
+Benutzer\SpecialChar \-
+definierte
+\begin_inset space ~
+\end_inset
+
+Einfügungen\SpecialChar \menuseparator
+Mehrere
+\begin_inset space ~
+\end_inset
+
+Spalten
 \family default
  an dem Punkt an dem die Spalten beginnen sollen.
- Der Inhalt des Stils ist die Anzahl der Spalten, in diesem Fall also eine
- 
-\begin_inset Quotes gld
+ Der Text, der in 2
+\begin_inset space ~
 \end_inset
 
-2
-\begin_inset Quotes grd
-\end_inset
-
-.
- An dem Punkt an dem die Spalten enden sollen, verwendet man den Stil 
-\family sans
-Ende Mehrfachspalten
-\family default
-, der leer bleibt.
+Spalten gedruckt werden soll, schreibt man in diese Einfügung.
 \end_layout
 
 \begin_layout Standard
 Hier ist ein Beispiel:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 \noindent
 
 \series bold
@@ -24796,7 +24798,7 @@ by
 Sir Arthur Conan Doyle
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -24823,11 +24825,44 @@ ty which utterly submerged my mind.
  only withdrawn upon the third of last month.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
+Um 3 oder mehr Spalten zu erhalten, setzt man den Cursor in die Mehrfachspalten-
+Einfügung und verwendet das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Anzahl
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+Spalten
+\family default
+.
+ Die Anzahl der gewünschten Spalten wird in diese Einfügung geschrieben
+ (für 3
+\begin_inset space ~
+\end_inset
+
+Spalten schreibt man 
+\begin_inset Quotes gld
+\end_inset
+
+3
+\begin_inset Quotes grd
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
 Hier ist ein Beispiel mit 3
 \begin_inset space ~
 \end_inset
@@ -24835,14 +24870,27 @@ Hier ist ein Beispiel mit 3
 Spalten:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-3
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+3
+\end_layout
+
+\end_inset
+
 It can be imagined that my close intimacy with Sherlock Holmes had interested
  me deeply in crime, and that after his disappearance I never failed to
  read with care the various problems which came before the public.
@@ -24864,7 +24912,8 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
  as they were known to the public at the conclusion of the inquest.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -24892,11 +24941,13 @@ Spalten innerhalb einer Spalte
 Spalten innerhalb einer Spalte sind ebenfalls möglich:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -24907,11 +24958,13 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
  at 427 Park Lane.
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Standard
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -24927,11 +24980,12 @@ The youth moved in the best society–had, so far as was known, no enemies
  on the night of March 30, 1894.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size footnotesize
 \lang english
@@ -24959,11 +25013,12 @@ The evidence of those who had played with him– Mr.
  So much for his recent history as it came out at the inquest.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 Fortgeschrittene Beispiele
 \end_layout
 
@@ -24993,18 +25048,18 @@ Vorwort
 \end_layout
 
 \begin_layout Standard
-Um ein Vorwort für mehrere Spalten hinzuzufügen, fügt man den optionalen
- Parameter 
+Um ein Vorwort für mehrere Spalten hinzuzufügen, setzt man den Cursor in
+ die Mehrfachspalten-Einfügung und verwendet das Menü 
 \family sans
+Einfügen\SpecialChar \menuseparator
 Vorwort
 \family default
- nach der Anzahl der Spalten im Stil
-\family sans
- Beginn Mehrfachspalten
-\family default
- ein.
- Dahinein schreibt man das Vorwort.
- Ein Beispiel mit einem Vorwort:
+.
+ Man schreibt den Text des Vorworts in diese Einfügung.
+\begin_inset Newline newline
+\end_inset
+
+Ein Beispiel mit einem Vorwort:
 \end_layout
 
 \begin_layout Standard
@@ -25014,9 +25069,12 @@ Vorwort
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -25026,10 +25084,6 @@ Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldo
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \size small
 \lang english
@@ -25049,7 +25103,8 @@ On the evening of the crime, he returned from the club exactly at ten.
  no weapon of any sort was to be found in the room.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -25073,9 +25128,12 @@ einen Unterabschnitt.
  In diesem Beispiel ist das Vorwort ein Unterabschnitt:
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
@@ -25108,10 +25166,6 @@ status collapsed
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \size small
 \lang english
 A minute examination of the circumstances served only to make the case more
@@ -25136,7 +25190,8 @@ A minute examination of the circumstances served only to make the case more
  No one had heard a shot.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -25150,12 +25205,26 @@ Textzeilen benötigt werden, wird ein Seitenumbruch vor den Mehrfachspalten
  eingefügt.
  Je nach Anzahl der Zeilen des Vorworts möchte man diesen Leerraum eventuell
  ändern.
- Dies wird erreicht, indem man den optionalen Parameter 
+ Dies wird erreicht, indem man den Cursor in die Mehrfachspalten-Einfügung
+ hinter das Vorwort setzt (falls es ein gibt) und das Menü 
 \family sans
-Leerraum vor Seitenumbruch
+Einfügen\SpecialChar \menuseparator
+Abstand
+\begin_inset space ~
+\end_inset
+
+vor
+\begin_inset space ~
+\end_inset
+
+dem
+\begin_inset space ~
+\end_inset
+
+Seitenumbruch
 \family default
- nach dem Vorwort einfügt.
- Darin gibt man den Leerraum an, z.
+ verwendet.
+ In dieser Einfügung gibt man den Leerraum an, z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25169,7 +25238,10 @@ B.
 \end_inset
 
 .
- In diesem Beispiel ist der Leerraum auf 7
+\begin_inset Newline newline
+\end_inset
+
+In diesem Beispiel ist der Leerraum auf 7
 \begin_inset space ~
 \end_inset
 
@@ -25192,50 +25264,12 @@ baselineskip
  als TeX-Code eingegeben werden muss):
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\begin_inset Argument post:1
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-subsubsection{
-\end_layout
-
-\end_inset
-
-Dies ist der Abschnitts-Befehl
-\begin_inset Newline newline
-\end_inset
-
-als Vorwort und
-\begin_inset Newline newline
-\end_inset
-
-mit mehreren Textzeilen
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument post:2
+\begin_inset Argument 3
 status open
 
 \begin_layout Plain Layout
@@ -25258,10 +25292,6 @@ baselineskip
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \size small
 \lang english
 On the evening of the crime, he returned from the club exactly at ten.
@@ -25280,7 +25310,8 @@ On the evening of the crime, he returned from the club exactly at ten.
  no weapon of any sort was to be found in the room.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -25356,11 +25387,13 @@ multicolsep}{2.5cm}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25382,7 +25415,8 @@ ion.
  me, and I knocked down several books which he was carrying.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -25495,11 +25529,13 @@ columnsep}{3cm}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25521,7 +25557,8 @@ My observations of No.
  precious volumes, a dozen of them at least, wedged under his right arm.
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 
@@ -25595,11 +25632,13 @@ columnseprule}{2pt}
 
 \end_layout
 
-\begin_layout Begin Multiple Columns
-2
-\end_layout
-
 \begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25613,14 +25652,14 @@ You're surprised to see me, sir,
  said he, in a strange, croaking voice.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
 I acknowledged that I was.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25638,7 +25677,7 @@ Well, I've a conscience, sir, and when I chanced to see you go into this
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25661,7 +25700,7 @@ May I ask how you knew who I was?
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \size small
 \lang english
@@ -25697,7 +25736,8 @@ The Holy War
 
 \end_layout
 
-\begin_layout End Multiple Columns
+\end_inset
+
 
 \end_layout
 

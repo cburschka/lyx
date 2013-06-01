@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 473
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -23363,7 +23363,7 @@ of
 Columns
 \family default
 .
- In this inserted inset write the number of the desired columns (for 3
+ The number of the desired columns is written into that inset (for 3
 \begin_inset space ~
 \end_inset
 
@@ -23559,7 +23559,7 @@ Insert\SpecialChar \menuseparator
 Preface
 \family default
 .
- In this inserted inset write your preface text.
+ Write your preface text into that inset.
 \begin_inset Newline newline
 \end_inset
 
@@ -23724,7 +23724,7 @@ Page
 Break
 \family default
 .
- In this inserted inset insert the amount of space like e.
+ Insert into that inset the amount of space like e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23890,8 +23890,6 @@ multicolsep}{2.5cm}
 \end_layout
 
 \begin_layout Standard
-
-\size small
 \begin_inset Flex Multiple Columns
 status open
 
@@ -24030,8 +24028,6 @@ columnsep}{3cm}
 \end_layout
 
 \begin_layout Standard
-
-\size small
 \begin_inset Flex Multiple Columns
 status open
 
@@ -24132,8 +24128,6 @@ columnseprule}{2pt}
 \end_layout
 
 \begin_layout Standard
-
-\size small
 \begin_inset Flex Multiple Columns
 status open
 
