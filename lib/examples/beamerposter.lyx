@@ -37,6 +37,9 @@
 \end_preamble
 \options final
 \use_default_options false
+\begin_modules
+multicol
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -386,6 +389,102 @@ Use beamer blocks!
 \end_layout
 
 \begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{2.2cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+To set text in columns in this wide block, we use the 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module.
+ It provides the 
+\begin_inset Quotes eld
+\end_inset
+
+Columns
+\begin_inset Quotes erd
+\end_inset
+
+ inset this text is written in.
+ We have set the space between the columns via the LaTeX code 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setlength{
+\backslash
+columnsep}
+\end_layout
+
+\end_inset
+
+ that can be seen above in the LyX work area, and we went for four columns
+ to get a reasonable line length.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module is documented in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Help\SpecialChar \menuseparator
+Additional Features
+\end_layout
+
+\end_inset
+
+.
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -406,7 +505,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  sit amet.
 \end_layout
 
-\begin_layout Block
+\begin_layout Plain Layout
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
  consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
  accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
@@ -415,13 +514,18 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
  nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 \end_layout
 
-\begin_layout Block
+\begin_layout Plain Layout
 Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
  lobortis nisl ut aliquip ex ea commodo consequat.
  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
  consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
  accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
  augue duis dolore te feugait nulla facilisi.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -500,7 +604,7 @@ some items
 status open
 
 \begin_layout Plain Layout
-Caveat
+An alert block to highlight things
 \end_layout
 
 \end_inset
