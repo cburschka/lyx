@@ -60,6 +60,10 @@
 # Incremented to format 13, by bh
 #   Rename mac_like_word_movement to mac_like_cursor_movement
 
+# Incremented to format 14, by spitz
+#   New RC default_otf_view_format
+#   No conversion necessary.
+
 import re
 
 ###########################################################
@@ -319,5 +323,6 @@ conversions = [
 	[ 10, []],
 	[ 11, [split_pdf_format]],
 	[ 12, []],
-	[ 13, [mac_cursor_movement]]
+	[ 13, [mac_cursor_movement]],
+	[ 14, []]
 ]

@@ -55,7 +55,7 @@ namespace os = support::os;
 
 namespace {
 
-static unsigned int const LYXRC_FILEFORMAT = 13; // vfr: System theme's icons
+static unsigned int const LYXRC_FILEFORMAT = 14; // spitz: default_otf_view_format
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
