@@ -1,4 +1,4 @@
-Compiling LyX 2.0 for Win32 and creating Windows installer
+Compiling LyX 2.1 for Win32 and creating Windows installer
 ==========================================================
 
 It's recommended to compile LyX using Microsoft Visual C++ 2010 and CMake.
@@ -8,7 +8,7 @@ Pre-compiled packages with dependencies are provided for this environment.
 Compiling with Microsoft Visual C++
 ===================================
 
-	These instructions assume the LyX source code is in C:\LyX\lyx-20
+	These instructions assume the LyX source code is in C:\LyX\lyx-21
 	You can also use another directory if you prefer.
 
 1	Install MSVC 2010
@@ -22,7 +22,7 @@ Compiling with Microsoft Visual C++
 2	Install Qt
 
 	Download the latest Qt for Open Source C++ development on Windows (VS2010)
-	from http://qt.nokia.com/downloads/windows-cpp-vs2010.
+	from http://qt-project.org/downloads
 
 3	Install Python
 
@@ -37,23 +37,23 @@ Compiling with Microsoft Visual C++
 
 	- Run the CMake GUI.
 	 
-	- Set the source code path to C:\LyX\lyx-20
-	  Set the build path to C:\LyX\lyx-20-build
+	- Set the source code path to C:\LyX\lyx-21
+	  Set the build path to C:\LyX\lyx-21-build
 	  Click Configure and set the generator to Visual Studio 10.
 
 	- Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	  Pre-compiled dependencies will automatically be downloaded.
 	
 	- Set QT_QMAKE_EXECUTABLE to e.g.
-	  C:\Qt\qt-everywhere-opensource-src-4.7.1\bin\qmake.exe
+	  C:\Qt\qt-everywhere-opensource-src-4.8.4\bin\qmake.exe
 	  and Configure again.
 
 	- Enable the LYX_INSTALL option, set CMAKE_INSTALL_PREFIX to
-	  C:\LyX\lyx-20-install and click Configure.
+	  C:\LyX\lyx-21-install and click Configure.
 
 	- Check the Advanced checkbox.
 	  Set GETTEXT_MSGFMT_EXECUTABLE to
-	  C:\LyX\lyx-20-build\msvc2010-deps\deps20\gettext-tools\msgfmt.exe,
+	  C:\LyX\lyx-21-build\msvc2010-deps\deps21\gettext-tools\msgfmt.exe,
 	  and do the same for the other gettext tools.
 
 	- Click Generate.
@@ -61,19 +61,19 @@ Compiling with Microsoft Visual C++
 6	Compile
 
 	A Microsoft Visual C++ solution should have been generated at
-	C:\LyX\lyx-20-build\lyx.sln
+	C:\LyX\lyx-21-build\lyx.sln
 	Compile the INSTALL project to get a LyX installation in
-	C:\LyX\lyx-20-install
+	C:\LyX\lyx-21-install
 
 7	Copy dependencies
 
 	Copy
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\bin
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\imagemagick
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\python
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\ghostscript
-	- C:\LyX\lyx-20-build\msvc2010-deps\deps20\Resources
-	to C:\LyX\lyx-20-install
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\bin
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\imagemagick
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\python
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\ghostscript
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\Resources
+	to C:\LyX\lyx-21-install
 
 	And copy from the Qt bin directory
 	(e.g. C:\Qt\bin)
@@ -81,11 +81,11 @@ Compiling with Microsoft Visual C++
 	QtGui4.dll
 	QtCore4d.dll (if compiling Debug version)
 	QtGui4d.dll (if compiling Debug version)
-	to C:\LyX\lyx-20-install\bin
+	to C:\LyX\lyx-21-install\bin
 
 8	Define path prefix
 
-	Add the following line to C:\LyX\lyx-20-install\Resources\lyxrc.dist,
+	Add the following line to C:\LyX\lyx-21-install\Resources\lyxrc.dist,
 	so LyX will find the bundled tools such as Python, ImageMagick
 	and Ghostscript:
 
@@ -96,7 +96,7 @@ Compiling with Microsoft Visual C++
 
 9	Start LyX
 
-	C:\LyX\lyx-20-install\bin\lyx.exe
+	C:\LyX\lyx-21-install\bin\lyx.exe
 
 
 Creating the Installer
@@ -104,5 +104,6 @@ Creating the Installer
 
 	- Get NSIS from http://nsis.sourceforge.net
 	- In the LyX source directory, go to development\Win32\packaging\installer
-	- Check whether the file locations in settings.nsh match your setup.
+	- Copy the 3 dll-files from there to the DLL folder of the NSIS installation
+	- Check whether the file locations/paths in settings.nsh match your setup.
 	- Right-click on lyx.nsi and click "Compile NSIS Script".
