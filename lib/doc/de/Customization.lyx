@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -34,6 +34,15 @@
   \pdfbookmark[1]{\contentsname}{}
   \myTOC
   \mainmatter }
+
+% Linkfläche für Querverweise vergrößern und automatisch benennen,
+\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+\addto\extrasngerman{%
+ \renewcommand*{\equationautorefname}[1]{}%
+ \renewcommand{\sectionautorefname}{Kap.\negthinspace}%
+ \renewcommand{\subsectionautorefname}{Kap.\negthinspace}%
+ \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}%
+}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -72,13 +81,13 @@ End
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -103,15 +112,24 @@ End
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 0
-\use_mathdots 0
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \branch OutDated
 \selected 0
@@ -186,7 +204,7 @@ HHa
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0.x
+Version 2.1.x
 \end_layout
 
 \begin_layout Standard
@@ -518,13 +536,9 @@ $LANG_xxx.bind
 \family default
  mit einer an die internationalisierte Version von LyX angepassten Tastenbelegun
 g existiert, wird diese bevorzugt geladen.
- Näheres dazu finden Sie in Kapitel
-\begin_inset space \space{}
-\end_inset
-
-
+ Näheres dazu finden Sie in 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "cha:Internationales-LyX"
 
 \end_inset
@@ -576,13 +590,9 @@ XConfig.lyx
 $LANG_
 \family default
  vor dem Dateinamen zuerst gesucht und, falls vorhanden, geladen.
- Siehe dazu Kapitel
-\begin_inset space ~
-\end_inset
-
-
+ Siehe dazu 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "cha:Internationales-LyX"
 
 \end_inset
@@ -642,11 +652,7 @@ kbd/
 \family default
 \series default
  Hier sind die Definitionsdateien für die Tastaturbelegung gespeichert.
- Näheres dazu finden Sie im Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ Näheres dazu finden Sie im 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Internationale-Tastaturtabellen"
@@ -664,11 +670,7 @@ reference "sec:Internationale-Tastaturtabellen"
 layouts/
 \family default
 \series default
- Hier werden die in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ Hier werden die in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Installieren-neuer-Textklassen"
@@ -727,11 +729,7 @@ von
 
 Vorlage
 \family default
- präsentiert werden, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ präsentiert werden, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Vorlagen-erstellen"
@@ -869,7 +867,7 @@ ungen in Unicode dargestellt werden.
 \family typewriter
 external_templates
 \family default
- Diese Datei enthält die Vorlagen für das neue 
+ Diese Datei enthält die Vorlagen für das Feature 
 \family sans
 Externes
 \begin_inset space \space{}
@@ -878,13 +876,9 @@ Externes
 Material
 \family default
 -Modul.
- Siehe dazu Kapitel
-\begin_inset space \space{}
-\end_inset
-
-
+ Siehe dazu 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "cha:Externes-Material-einfügen"
 
 \end_inset
@@ -903,11 +897,60 @@ languages
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
-lyxrc.example
-\family default
- Veraltet.
+\begin_layout Plain Layout
+latexfonts
+\end_layout
+
+\end_inset
+
+
+\lang english
+ contains information about the supported fonts.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+layouttranslations
+\end_layout
+
+\end_inset
+
+
+\lang english
+ this file contains translations for internationalized paragraph styles
+\lang ngerman
+ (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:I18n"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+unicodesymbols
+\end_layout
+
+\end_inset
+
+
+\lang english
+ this file contains information about unicode-encoded glyphs and the way
+ they are supported by LyX via LaTeX.
 \end_layout
 
 \begin_layout Section
@@ -930,7 +973,7 @@ Benutzerverzeichnis
 \family sans
 Hilfe\SpecialChar \menuseparator
 Über
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 Ly
@@ -1014,7 +1057,6 @@ UserDir
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  gemacht werden, werden in der Datei 
 \family typewriter
 preferences
@@ -1301,7 +1343,39 @@ extern
 bearbeiten
 \family default
  auswählen.
+\end_layout
+
+\begin_layout Standard
+Der MIME-Typ 
+\lang english
+of a format is optional, but if it is specified, it must be unique across
+ all formats.
+ It is used to detect files of this format from the file contents.
+ For some important file formats there is no MIME-Typ officially registered
+ with the 
+\lang ngerman
+
+\begin_inset CommandInset href
+LatexCommand href
+name "IANA"
+target "http://www.iana.org/assignments/media-types/"
+
+\end_inset
+
+.
  
+\lang english
+Therefore LyX uses the extended list of MIME types as specified by 
+\lang ngerman
+
+\begin_inset CommandInset href
+LatexCommand href
+name "freedesktop.org"
+target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1311,11 +1385,7 @@ Dokumentformat
 \family default
  angekreuzt ist, weiß LyX, dass das Format für den Dokumentexport geeignet
  ist.
- Wenn dann auch noch ein geeigneter Konverter existiert (siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Wenn dann auch noch ein geeigneter Konverter existiert (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Konverter"
@@ -1451,6 +1521,70 @@ $$i
 $$o
 \family default
  ist die Ausgabedatei.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$b
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The base name (without filename extension) in the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$p
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The full directory path of the LyX temporary directory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$r
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The full pathname to the original LyX file being processed
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$f
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The filename (without any directory path) of the LyX file.
 \end_layout
 
 \begin_layout Labeling
@@ -1783,6 +1917,43 @@ xyz.aux
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+nice
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Needs a 
+\begin_inset Quotes gld
+\end_inset
+
+nice
+\begin_inset Quotes grd
+\end_inset
+
+ file from the backend, which in practice means a LaTeX file like the one
+ we would export, without 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+input@path
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
 xml
@@ -1914,7 +2085,7 @@ Sie müssen nicht für alle Formate, zwischen denen Sie konvertieren wollen,
 
 \begin_layout Standard
 Trotzdem können Sie Mehrfachkonversionen zwischen Dateiformaten definieren.
- Zum Beispiel liefert die Standardkonfiguration von LyX drei Möglichkeiten,
+ Zum Beispiel liefert die Standardkonfiguration von LyX fünf Möglichkeiten,
  um von LaTeX nach PDF zu konvertieren:
 \end_layout
 
@@ -1937,7 +2108,19 @@ mit
 \family typewriter
 dvipdfm
 \family default
- über DVI.
+ über DVI
+\end_layout
+
+\begin_layout Enumerate
+direkt mit 
+\family typewriter
+XeTeX
+\end_layout
+
+\begin_layout Enumerate
+direkt mit 
+\family typewriter
+LuaTeX
 \end_layout
 
 \begin_layout Standard
@@ -1945,44 +2128,56 @@ Um andere Ketten zu definieren, müssen Sie andere Ziel-
 \emph on
 Dateiformate
 \emph default
- definieren, wie in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ definieren, wie in 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Formate"
 
 \end_inset
 
  beschrieben.
- Zum Beispiel enthält die Standardkonfiguration drei Formate für pdf-Dateien,
- die 
+ Zum Beispiel enthält die Standardkonfiguration verschiedene Formate für
+ pdf-Dateien, die 
 \family sans
 pdf
 \family default
- für 
+ (für 
 \family typewriter
 ps2pdf
 \family default
-, 
+), 
 \family sans
 pdf2
 \family default
- für 
+ (für 
 \family typewriter
 pdflatex
 \family default
- und 
+), 
 \family sans
 pdf3
 \family default
- für 
+ (für 
 \family typewriter
 dvipdfm
 \family default
- heißen.
+), 
+\family sans
+pdf4
+\family default
+ (für 
+\family typewriter
+XeTeX
+\family default
+) und 
+\family sans
+pdf5
+\family default
+ (für 
+\family typewriter
+LuaTeX
+\family default
+) heißen.
 \end_layout
 
 \begin_layout Chapter
@@ -2000,24 +2195,16 @@ name "cha:Internationales-LyX"
 
 \emph on
 Anmerkung des Übersetzers: Dieses Kapitel behandelt zwei Themenbereiche.
- Einmal wird in
-\begin_inset space \space{}
-\end_inset
-
-
+ Einmal wird in 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Eine-andere-Sprache"
 
 \end_inset
 
- und
-\begin_inset space \space{}
-\end_inset
-
-
+ und 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Tastaturkürzel-für-andere"
 
 \end_inset
@@ -2031,14 +2218,14 @@ reference "sec:Tastaturkürzel-für-andere"
 ant sein.
  Die letzten beiden Abschnitte, 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Internationale-Tastaturbelegung"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
 reference "sec:Internationale-Tastaturtabellen"
 
 \end_inset
@@ -4052,11 +4239,7 @@ Leider unterscheidet sich die Wirkungsweise der toten Tasten, die in
 \family typewriter
 .lyxrc
 \family default
- definiert wurden, merklich von der, die in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ definiert wurden, merklich von der, die in 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "sub:Die-.kmap-Datei"
@@ -4440,7 +4623,7 @@ B.
 \begin_inset space ~
 \end_inset
 
-2.8 wäre das unter WinXP der Ordner
+2.9 wäre das unter WinXP der Ordner
 \begin_inset Newline newline
 \end_inset
 
@@ -4474,7 +4657,7 @@ status open
 
 MiKTeX
 \backslash
-2.8
+2.9
 \backslash
 tex
 \backslash
@@ -4500,7 +4683,7 @@ AppData
 \backslash
 Roaming
 \backslash
-2.8
+2.9
 \backslash
 MiKTeX
 \backslash
@@ -5314,11 +5497,7 @@ to change the font for chapter headings to sans-serif.
 Your new package may also provide commands or environments not present in
  the base class.
  In this case, you will want to add these to the layout file.
- See section
-\begin_inset space ~
-\end_inset
-
-
+ See 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Das-Layout-Dateiformat"
@@ -5398,11 +5577,7 @@ EndPreamble
 \lang english
 A more complex module might modify the behavior of some existing constructs
  or define some new ones.
- Again, see section
-\begin_inset space ~
-\end_inset
-
-
+ Again, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Das-Layout-Dateiformat"
@@ -5924,7 +6099,7 @@ default
 \end_layout
 
 \begin_layout Subsection
-Deklaration einer neuen Textklasse
+Deklaration einer neuen Textklasse und Klassifikation
 \end_layout
 
 \begin_layout Standard
@@ -5941,6 +6116,17 @@ Zeilen, die mit einem
 
 \size small
 #% Do not delete the line below; configure depends on this
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+zu Deutsch: Löschen Sie die folgenden Zeilen nicht, da die Konfiguration
+ davon abhängt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -5948,7 +6134,7 @@ Zeilen, die mit einem
 \size small
 #  
 \backslash
-DeclareLaTe
+DeclareLaT
 \family typewriter
 \size default
 
@@ -5965,62 +6151,136 @@ status collapsed
 
 \family default
 \size small
-XClass{article}
+eXClass{Article (Standard Class)}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-Die zweite Zeile wird benötigt, wenn Sie LyX konfigurieren.
+Die zweite und dritte Zeile wird benötigt, wenn Sie LyX konfigurieren.
  Die Textklassen-Datei wird von dem LaTeX-Skript 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
+\family sans
 chkconfig.ltx
-\end_layout
-
-\end_inset
-
-
 \family default
  gelesen, und zwar in einem speziellen Modus, in dem 
 \family typewriter
 #
 \family default
 -Zeichen ignoriert werden.
- Die erste Zeile ist einfach ein LaTeX-Kommentar, in der zweiten wird die
- Textklasse deklariert.
- Eine Datei namens
-\begin_inset Newline newline
-\end_inset
-
-
+ Die erste Zeile ist einfach ein LaTeX-Kommentar, in der zweiten muss die
+ Textklasse deklariert werden und die dritte Zeile enthält die optionale
+ Klassifikation der Klasse.
+ Eine Datei namens 
 \family typewriter
 article.layout
 \family default
 , die mit diesen beiden Zeilen beginnt, definiert eine Textklasse mit dem
  Namen 
-\family typewriter
+\family sans
 article
 \family default
- und benutzt die LaTeX-Dokumentenklasse 
+ (der Name der Layout-Datei) und benutzt die LaTeX-Dokumentenklasse 
 \family typewriter
 article.cls
 \family default
-.
+ (Standard ist denselben Namen wie das Layout zu verwenden).
+ Die Zeichenkette 
+\begin_inset Quotes gld
+\end_inset
+
+Article (Standard Class)
+\begin_inset Quotes grd
+\end_inset
+
+, die oben erscheint, ist auch die Beschreibung, die später im Popup-Menü
  
-\emph on
-article
-\emph default
- ist auch die Beschreibung, die später im Popup-Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
  auftaucht.
- 
+ Die Kategorie (
+\begin_inset Quotes gld
+\end_inset
+
+Articles
+\begin_inset Quotes grd
+\end_inset
+
+ im Beispiel) wird auch im Dialog 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen
+\family default
+ verwendet: Die Textklassen weden nach diesen Kategorien gruppiert (was
+ üblicherweise Genres sind, typische Kategorien sind also 
+\begin_inset Quotes gld
+\end_inset
+
+Artikel
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Bücher
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Berichte
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Briefe
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Präsentationen
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Lebensläufe
+\begin_inset Quotes grd
+\end_inset
+
+ usw.).
+ Wenn keine Kategorie deklariert wurde, wird die Klasse in die Gruppe 
+\begin_inset Quotes gld
+\end_inset
+
+Nicht
+\begin_inset space ~
+\end_inset
+
+kategorisiert
+\begin_inset Quotes grd
+\end_inset
+
+ getan.
 \end_layout
 
 \begin_layout Standard
@@ -6054,8 +6314,7 @@ layout
 \size small
 #  
 \backslash
-DeclareLaTe
-\family typewriter
+DeclareLaT
 \size default
 
 \begin_inset ERT
@@ -6069,9 +6328,27 @@ status collapsed
 \end_inset
 
 
-\family default
 \size small
-XClass[article]{article (with my own headings)}
+eXClass[article]{Article (with My Own Head
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"-
+\end_layout
+
+\end_inset
+
+ings)}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
@@ -6096,7 +6373,7 @@ article.cls
 \family default
  verwendet und (im Popup-Menü) beschrieben wird mit: 
 \family sans
-article (with my own headings)
+Article (with My Own Headings)
 \family default
 .
  Falls Ihre Textklasse auch noch von weiteren Paketen abhängt, können Sie
@@ -6131,7 +6408,7 @@ status collapsed
 
 \family default
 \size small
-XClass[article,foo.sty]{article (with my own head
+XClass[article,foo.sty]{Article (with My Own Head
 \begin_inset ERT
 status collapsed
 
@@ -6143,6 +6420,14 @@ status collapsed
 \end_inset
 
 ings)}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+#  
+\backslash
+DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
@@ -6170,13 +6455,48 @@ foo.sty
 \size small
 # 
 \backslash
-DeclareDocBookClass[article]{SGML (DocBook article)}
+DeclareDocBookClass[article]{SGML (DocBook Article)}
 \end_layout
 
 \begin_layout Standard
 Diesen Deklarationen kann außerdem ein optionaler Parameter zugefügt werden,
  der den Namen der Dokumentenklasse festlegt (hier ist aber keine Liste
  erlaubt).
+\end_layout
+
+\begin_layout Standard
+Eine Layout-Deklaration hat demnach die Form
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+#  
+\backslash
+DeclareLaT
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\size small
+eXClass[class,package.sty]{Layout-Beschreibung}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+#  
+\backslash
+DeclareCategory{Kategorie}
 \end_layout
 
 \begin_layout Standard
@@ -6229,7 +6549,22 @@ Ein Modul muss mit einer Zeile wie die folgende beginnen:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule[endnotes.sty]{Endnotes} 
+DeclareL
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family default
+yXModule[endnotes.sty]{Endnotes} 
 \end_layout
 
 \begin_layout Standard
@@ -6644,11 +6979,7 @@ CiteFormat
 \family default
 Definiert Formate die in der Anzeige von Bibliographie-Informationen verwendet
  werden.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Citation-format-description"
@@ -6689,11 +7020,7 @@ ClassOptions
 
  Dieser Abschnitt beschreibt verschiedene globale Optionen, die von der
  Dokumentenklasse unterstützt werden.
- Eine detaillierte Beschreibung finden Sie in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Eine detaillierte Beschreibung finden Sie in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Der-Abschnitt-ClassOptions"
@@ -6819,11 +7146,7 @@ End
 \begin_inset Newline newline
 \end_inset
 
-Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Zähler"
@@ -6844,11 +7167,7 @@ DefaultFont
 \end_inset
 
  Definiert den Standardzeichensatz für die Anzeige des Dokuments.
- Eine genauere Beschreibung finden Sie in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Eine genauere Beschreibung finden Sie in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
@@ -7015,11 +7334,7 @@ theorems-sec
 nicht
 \emph default
  in einem Modul benutzt werden.
- Module haben ihre eigene Methode andere Module auszuschließen (siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Module haben ihre eigene Methode andere Module auszuschließen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Layout-Module"
@@ -7040,11 +7355,7 @@ Float
 \end_inset
 
  definiert ein neues Gleitobjekt.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Gleitobjekte"
@@ -7244,11 +7555,7 @@ End
 \begin_inset Newline newline
 \end_inset
 
-Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Zähler"
@@ -7385,10 +7692,6 @@ End
 
  beendet werden.
 \begin_inset Newline newline
-\end_inset
-
-Abschnitt
-\begin_inset space ~
 \end_inset
 
 
@@ -7671,6 +7974,101 @@ literate
 status collapsed
 
 \begin_layout Plain Layout
+PackageOptions
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der zweite String gibt Optionen für das Paket im ersten String an.
+ Zum Beispiel lädt 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PackageOptions natbib square
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
+ mit der Option 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+square
+\end_layout
+
+\end_inset
+
+.
+ (Für TeXperten: Dies bweirkt, dass LyX 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+PassOptionsToPackage{natbib}{square}
+\end_layout
+
+\end_inset
+
+ vor dem Laden von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
+ ausgibt.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 PageStyle
 \end_layout
 
@@ -7900,11 +8298,7 @@ boldsymbol
 \end_inset
 
 ).
- Siehe Kapitel
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Liste-von-Funktionen"
@@ -8002,11 +8396,7 @@ string
  benötigt.
  Mehrfache Funktionen müssen durch Komma getrennt werden Beachten Sie, dass
  Sie nur unterstützte Funktionen anfordern können.
- (Siehe Kapitel
-\begin_inset space ~
-\end_inset
-
-
+ (Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Liste-von-Funktionen"
@@ -8189,11 +8579,7 @@ End
 \begin_inset Newline newline
 \end_inset
 
-Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -8708,6 +9094,863 @@ dig oder zentriert gesetzt werden.)
 status collapsed
 
 \begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Defines argument number <int> of a command\SpecialChar \slash{}
+environment associated with the
+ current style.
+ This is useful for things like section headings, and only makes sense with
+ LaTeX.
+ Every (optional or required) argument of a command or environment -- except
+ for the required argument that is associated with the content of the paragraph
+ itself -- has a separate definition, where the number specifies the order
+ of the arguments.
+ The definition must end with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndArgument
+\end_layout
+
+\end_inset
+
+.
+ So a command with two optional arguments has:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+
+\family typewriter
+Argument 1
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+Argument 2
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+...
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+EndArgument
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inside the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+ definition, the following specifications are possible:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The string that will appear both in the menu (to insert this argument) and
+ on the argument inset button (unless you also specify a separate 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MenuString
+\end_layout
+
+\end_inset
+
+).
+ For the menu, you can define an accelerator by appending the respective
+ character to the string, divided by
+\lang ngerman
+ 
+\begin_inset Quotes gld
+\end_inset
+
+|
+\begin_inset Quotes grd
+\end_inset
+
+ (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MenuString
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+A separate string for the menu.
+ You can define an accelerator by appending the respective character to
+ the string, divided by
+\lang ngerman
+ 
+\begin_inset Quotes gld
+\end_inset
+
+|
+\begin_inset Quotes grd
+\end_inset
+
+ (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Short Title|S
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+).
+ 
+\lang english
+This specification is optional.
+ If it is not given the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelString
+\end_layout
+
+\end_inset
+
+ will be used instead for the menu.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Tooltip
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+A longer explanatory text that appears in the tooltip when hovering over
+ the argument inset.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Declare if this is a mandatory (1) or an optional (0) argument.
+ Mandatory arguments will be output empty if not given, while optional arguments
+ will not be output at all.
+ By default, mandatory arguments are delimited by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{...}
+\end_layout
+
+\end_inset
+
+, while optional arguments are delimited by
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[...]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Requires
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+defines another argument (by its number) which this argument requires to
+ be output if it is itself output.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in LaTeX commands, optional arguments often require previous optional
+ arguments to be output (at least empty), as in
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+command[][Argument]{Text}
+\end_layout
+
+\end_inset
+
+
+\lang english
+.
+ This can be achieved by the statement
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Requires 1
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+within
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument 2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LeftDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+defines a custom left delimiter (instead of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[
+\end_layout
+
+\end_inset
+
+).
+ A line break in the output can be indicated by
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RightDelim
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+defines a custom right delimiter (instead of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+]
+\end_layout
+
+\end_inset
+
+).
+ A line break in the output can be indicated by
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DefaultArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+defines an argument that is inserted if and only if no user-specified arguments
+ were given, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ if no argument inset has been inserted (note that also an empty argument
+ inset omits the DefaultArg).
+ Multiple arguments need to be separated by comma.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PresetArg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[string]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+defines an argument that is inserted in any case (alone or in addition to
+ user-specified arguments).
+ Multiple arguments need to be separated by comma.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The font used for the argument content
+\lang ngerman
+; siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelFont
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+The font used for the label
+\lang ngerman
+; siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Decoration
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Classic
+\emph default
+, Minimalistic, Conglomerate
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+describes the rendering style used for the inset's frame and buttons.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AutoInsert
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+, this argument is automatically inserted when the respective style is selected.
+ Currently, only one argument per style\SpecialChar \slash{}
+layout can be automatically inserted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By default, the text entered in the LyX workarea in the respective layout
+ is the last (mandatory) argument of a command if the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Command
+\end_layout
+
+\end_inset
+
+.
+ However, arguments with the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+post:
+\end_layout
+
+\end_inset
+
+ are output after this workarea argument.
+ Note that post-argument numbering restarts at 1, so the first argument
+ following the workarea argument is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+post:1
+\end_layout
+
+\end_inset
+
+.
+ Post-arguments are ignored in any other 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ than
+\lang ngerman
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Argumente für Listen-
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+s (wie in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item[foo]
+\end_layout
+
+\end_inset
+
+) haben den Präfix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+item:
+\end_layout
+
+\end_inset
+
+ gefolgt von der Nummer (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument item:1
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 BabelPreamble
 \end_layout
 
@@ -8744,11 +9987,7 @@ EndBabelPreamble
 \end_inset
 
  beendet werden.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
@@ -9107,11 +10346,7 @@ Font
 \emph on
 und
 \emph default
- die Marke verwendet wird, siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ die Marke verwendet wird, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
@@ -9230,11 +10465,7 @@ HTML*
 \end_inset
 
  Diese Tags kontrollieren die XHTML-Ausgabe.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
@@ -9720,11 +10951,7 @@ MeinZaehleriv
 \begin_inset Newline newline
 \end_inset
 
-Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Zähler"
@@ -9746,11 +10973,7 @@ LabelFont
 \end_inset
 
  Der Zeichensatz, der für die Marke verwendet wird.
- Siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
@@ -9860,11 +11083,7 @@ LabelCounter
 \end_inset
 
  gesetzt wurde, kann der String spezielle Formatierungsbefehle enthalten,
- wie sie in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ wie sie in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Zähler"
@@ -10181,11 +11400,7 @@ thesection
 \end_inset
 
  sein.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Zähler"
@@ -10292,11 +11507,7 @@ EndLangPreamble
 \end_inset
 
  beendet werden.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
@@ -11795,11 +13006,7 @@ Provides
 
 \end_inset
 
- in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Allgemeine-Parameter-für"
@@ -12023,11 +13230,7 @@ TextFont
 \begin_inset Newline newline
 \end_inset
 
-Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
@@ -12088,14 +13291,14 @@ float=0
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:I18n"
 
 \end_inset
 
+
+\lang english
 Internationalization of Paragraph Styles
 \end_layout
 
@@ -12626,11 +13829,7 @@ HTML*
 \end_inset
 
  Diese Tags kontrollieren die XHTML-Ausgabe.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
@@ -13791,11 +14990,7 @@ status collapsed
 \end_inset
 
 ] ist die Hintergrundfarbe der Einfügung.
- Siehe Kapitel
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Namen-von-Farben"
@@ -13865,11 +15060,7 @@ status collapsed
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -14324,11 +15515,7 @@ status collapsed
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -14349,11 +15536,7 @@ HTML*
 \end_inset
 
  Diese Tags kontrollieren die XHTML-Ausgabe.
- Siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tags-for-XHTML"
@@ -14444,11 +15627,7 @@ status collapsed
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -14602,11 +15781,7 @@ LatexType
 
 \end_inset
 
- Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -14931,11 +16106,7 @@ status collapsed
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -14981,11 +16152,7 @@ status collapsed
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -15005,11 +16172,7 @@ Preamble
 
 \end_inset
 
- Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -15064,11 +16227,7 @@ string
 
 \end_inset
 
-] Wie bei Absatz-Layouts, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+] Wie bei Absatz-Layouts, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Einzelne-Absatz-Layouts"
@@ -16226,14 +17385,14 @@ giant
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Citation-format-description"
 
 \end_inset
 
+
+\lang english
 Citation format description
 \end_layout
 
@@ -16758,14 +17917,14 @@ stdciteformats.inc
 \end_layout
 
 \begin_layout Section
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Tags-for-XHTML"
 
 \end_inset
 
+
+\lang english
 Tags for XHTML output
 \end_layout
 
@@ -16830,12 +17989,16 @@ AddToHTMLPreamble
 
  that may appear outside style and inset declarations.
  See 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Allgemeine-Parameter-für"
 
 \end_inset
 
+
+\lang english
  for details on these.
 \end_layout
 
@@ -18744,12 +19907,16 @@ floattype
 
  is LyX's name for this type of float, as determined by the float declaration
  (see 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Gleitobjekte"
 
 \end_inset
 
+
+\lang english
 ), though made lowercase and with non-alphanumeric characters converted
  to underscores, for example: float-table.
 \end_layout
@@ -18868,13 +20035,17 @@ CiteFormat
 \end_inset
 
  blocks.
- See Section 
+ See 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Citation-format-description"
 
 \end_inset
 
+
+\lang english
  for the details.
 \end_layout
 
@@ -18958,15 +20129,19 @@ Font
 
 \end_inset
 
- declaration.
- (See 
+ declaration (see 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
-.) The translation is mostly straightforward and obvious.
+).
+
+\lang english
+ The translation is mostly straightforward and obvious.
  For example, 
 \begin_inset Quotes eld
 \end_inset
@@ -19064,10 +20239,9 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
+WARNUNG: 
 \lang english
-WARNUNG: This portion of the documentation has not been updated for some
- time.
+This portion of the documentation has not been updated for some time.
  We certainly hope that it is still accurate, but there are no guarantees.
 \end_layout
 
@@ -19238,7 +20412,7 @@ lle so einfach wie möglich zu halten.
  und es gibt nur einen Schalter 
 \family sans
 in
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 Ly
@@ -19253,7 +20427,7 @@ status collapsed
 \end_inset
 
 X
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 anzeigen
@@ -19286,8 +20460,9 @@ It is relatively easy to add custom external template definitions to LyX.
 will
 \emph default
  introduce an easily exploitable security hole.
- So before you do this, please read the discussion about security in section
- 
+ So before you do this, please read the discussion about security in 
+\lang ngerman
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Sicherheitshinweise"
@@ -19887,11 +21062,7 @@ InputFormat
 \end_inset
 
  The file format of the original file.
- This must be the name of a format that is known to LyX (see section
-\begin_inset space ~
-\end_inset
-
-
+ This must be the name of a format that is known to LyX (see 
 \lang ngerman
 
 \begin_inset CommandInset ref
@@ -19900,9 +21071,9 @@ reference "sec:Formate"
 
 \end_inset
 
+).
 
 \lang english
-).
  Use 
 \begin_inset Quotes eld
 \end_inset
@@ -21365,14 +22536,16 @@ name "chap:Liste-von-Funktionen"
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="6">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
+<lyxtabular version="3" rows="11" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
@@ -21387,7 +22560,7 @@ accents
 \begin_inset Text
 
 \begin_layout Plain Layout
-bbding
+booktabs
 \end_layout
 
 \end_inset
@@ -21396,7 +22569,7 @@ bbding
 \begin_inset Text
 
 \begin_layout Plain Layout
-dvipost
+feyn
 \end_layout
 
 \end_inset
@@ -21405,25 +22578,43 @@ dvipost
 \begin_inset Text
 
 \begin_layout Plain Layout
-fancybox
+listings
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-hhline
+natbib
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-latexsym
+rotfloat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tfrupee
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wasysym
 \end_layout
 
 \end_inset
@@ -21443,7 +22634,7 @@ amsbsy
 \begin_inset Text
 
 \begin_layout Plain Layout
-bm
+calc
 \end_layout
 
 \end_inset
@@ -21452,7 +22643,7 @@ bm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+fixltx2e
 \end_layout
 
 \end_inset
@@ -21461,25 +22652,43 @@ bm
 \begin_inset Text
 
 \begin_layout Plain Layout
-feyn
+longtable
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-hyperref
+nomencl
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-listings
+rsphrase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tipa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wrapfig
 \end_layout
 
 \end_inset
@@ -21499,7 +22708,7 @@ amscd
 \begin_inset Text
 
 \begin_layout Plain Layout
-booktabs
+CJK
 \end_layout
 
 \end_inset
@@ -21508,7 +22717,7 @@ booktabs
 \begin_inset Text
 
 \begin_layout Plain Layout
-endnotes
+float
 \end_layout
 
 \end_inset
@@ -21517,25 +22726,43 @@ endnotes
 \begin_inset Text
 
 \begin_layout Plain Layout
-fixltx2e
+lyxskak
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+pdfcolmk
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-longtable
+setspace
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tipx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xargs
 \end_layout
 
 \end_inset
@@ -21555,7 +22782,7 @@ amsmath
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+color
 \end_layout
 
 \end_inset
@@ -21564,7 +22791,7 @@ amsmath
 \begin_inset Text
 
 \begin_layout Plain Layout
-enumitem
+framed
 \end_layout
 
 \end_inset
@@ -21573,25 +22800,43 @@ enumitem
 \begin_inset Text
 
 \begin_layout Plain Layout
-float
+makeidx
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-ifsym
+pdfpages
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-lyxskak
+shapepar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xcolor
 \end_layout
 
 \end_inset
@@ -21611,7 +22856,7 @@ amssymb
 \begin_inset Text
 
 \begin_layout Plain Layout
-CJK
+covington
 \end_layout
 
 \end_inset
@@ -21620,7 +22865,7 @@ CJK
 \begin_inset Text
 
 \begin_layout Plain Layout
-esint
+graphicx
 \end_layout
 
 \end_inset
@@ -21629,25 +22874,43 @@ esint
 \begin_inset Text
 
 \begin_layout Plain Layout
-framed
+marvosym
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-ifthen
+pifont
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+slashed
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+txfonts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+xy
 \end_layout
 
 \end_inset
@@ -21667,7 +22930,7 @@ amstext
 \begin_inset Text
 
 \begin_layout Plain Layout
-color
+csquotes
 \end_layout
 
 \end_inset
@@ -21676,7 +22939,7 @@ color
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hhline
 \end_layout
 
 \end_inset
@@ -21685,25 +22948,43 @@ color
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+mathdesign
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+pmboxdraw
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-makeidx
+soul
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ulem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yhmath
 \end_layout
 
 \end_inset
@@ -21723,7 +23004,7 @@ amsthm
 \begin_inset Text
 
 \begin_layout Plain Layout
-covington
+dvipost
 \end_layout
 
 \end_inset
@@ -21732,7 +23013,7 @@ covington
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hyperref
 \end_layout
 
 \end_inset
@@ -21741,25 +23022,43 @@ covington
 \begin_inset Text
 
 \begin_layout Plain Layout
-graphicx
+mathdots
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-jurabib
+polyglossia
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-marvosym
+splitidx
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+undertilde
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -21779,7 +23078,7 @@ array
 \begin_inset Text
 
 \begin_layout Plain Layout
-csquotes
+endnotes
 \end_layout
 
 \end_inset
@@ -21788,7 +23087,7 @@ csquotes
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+ifsym
 \end_layout
 
 \end_inset
@@ -21797,25 +23096,43 @@ csquotes
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+mathrsfs
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+prettyref
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-mathdesign
+subfig
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+units
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -21835,7 +23152,7 @@ ascii
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+enumitem
 \end_layout
 
 \end_inset
@@ -21844,394 +23161,11 @@ ascii
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+ifthen
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathdesign
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathdots
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathdots
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-subfig
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="6">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<column alignment="left" valignment="top" width="14col%">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-makeidx
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-pdfcolmk
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-setspace
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-textcomp
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ulem
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-xargs
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-marvosym
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-pdfpages
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-slashed
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-textgreek
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-undertilde
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-xcolor
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathdesign
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-pifont
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-soul
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-tfrupee
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-units
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-xy
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathdots
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-pmboxdraw
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-splitidx
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-tipa
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-url
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mathrsfs
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-polyglossia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-subfig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-tipx
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-yhmath
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -22241,63 +23175,7 @@ mhchem
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-prettyref
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-subscript
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-tone
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-varioref
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-multirow
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22306,34 +23184,25 @@ pxfonts
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+subscript
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-txfonts
+url
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-verbatim
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22348,7 +23217,7 @@ verbatim
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bbding
 \end_layout
 
 \end_inset
@@ -22357,7 +23226,7 @@ verbatim
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+esint
 \end_layout
 
 \end_inset
@@ -22366,7 +23235,7 @@ verbatim
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+jurabib
 \end_layout
 
 \end_inset
@@ -22375,21 +23244,39 @@ verbatim
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+multicol
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+refstyle
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+textcomp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+varioref
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22400,16 +23287,43 @@ verbatim
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-natbib
+bm
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fancybox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+latexsym
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multirow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22418,90 +23332,25 @@ rotating
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+textgreek
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+verbatim
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-wasysym
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nomencl
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-rotfloat
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-wrapfig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22535,99 +23384,72 @@ Die hier aufgelisteten Farben sind die Standardfarben und die, die man in
 \end_layout
 
 \begin_layout Description
+Keine
+\begin_inset space ~
+\end_inset
 
-\lang english
-none
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- No particular color -- clear or default
+Farbe Keine spezielle Farbe -- entfernt Farbe oder setzt Farbe auf Voreinstellun
+g
+\end_layout
+
+\begin_layout Description
+Schwarz
+\end_layout
+
+\begin_layout Description
+Weiß
+\end_layout
+
+\begin_layout Description
+Rot
+\end_layout
+
+\begin_layout Description
+Grün
+\end_layout
+
+\begin_layout Description
+Blau
+\end_layout
+
+\begin_layout Description
+Cyan
+\end_layout
+
+\begin_layout Description
+Magenta
+\end_layout
+
+\begin_layout Description
+Gelb
+\end_layout
+
+\begin_layout Description
+Cursor Cursorfarbe
+\end_layout
+
+\begin_layout Description
+Hintergrund Hintergrundfarbe
 \end_layout
 
 \begin_layout Description
 
 \lang english
-black
+foreground
+\lang ngerman
+ Vordergrundfarbe
 \end_layout
 
 \begin_layout Description
-
-\lang english
-white
+Auswahl Hintergrundfarbe des ausgewählten Texts
 \end_layout
 
 \begin_layout Description
+Ausgewählter
+\begin_inset space ~
+\end_inset
 
-\lang english
-red
-\end_layout
-
-\begin_layout Description
-
-\lang english
-green
-\end_layout
-
-\begin_layout Description
-
-\lang english
-blue
-\end_layout
-
-\begin_layout Description
-
-\lang english
-cyan
-\end_layout
-
-\begin_layout Description
-
-\lang english
-magenta
-\end_layout
-
-\begin_layout Description
-
-\lang english
-yellow
-\end_layout
-
-\begin_layout Description
-
-\lang english
-cursor Cursor color
-\end_layout
-
-\begin_layout Description
-
-\lang english
-background Background color
-\end_layout
-
-\begin_layout Description
-
-\lang english
-foreground Foreground color
-\end_layout
-
-\begin_layout Description
-
-\lang english
-selection Background color of selected text
-\end_layout
-
-\begin_layout Description
-
-\lang english
-selectiontext Foreground color of selected text
+Text Vordergrundfarbe des ausgewählten Texts
 \end_layout
 
 \begin_layout Description
@@ -22931,33 +23753,63 @@ addedtext Added text color
 \end_layout
 
 \begin_layout Description
+Geänderter
+\begin_inset space ~
+\end_inset
 
-\lang english
-changedtextauthor1 Changed text color author 1
+Text
+\begin_inset space ~
+\end_inset
+
+(1.Autor) Geänderter Text des 1.Autors
 \end_layout
 
 \begin_layout Description
+Geänderter
+\begin_inset space ~
+\end_inset
 
-\lang english
-changedtextauthor2 Changed text color author 2
+Text
+\begin_inset space ~
+\end_inset
+
+(2.Autor) Geänderter Text des 2.Autors
 \end_layout
 
 \begin_layout Description
+Geänderter
+\begin_inset space ~
+\end_inset
 
-\lang english
-changedtextauthor3 Changed text color author 3
+Text
+\begin_inset space ~
+\end_inset
+
+(3.Autor) Geänderter Text des 3.Autors
 \end_layout
 
 \begin_layout Description
+Geänderter
+\begin_inset space ~
+\end_inset
 
-\lang english
-changedtextauthor4 Changed text color author 4
+Text
+\begin_inset space ~
+\end_inset
+
+(4.Autor) Geänderter Text des 4.Autors
 \end_layout
 
 \begin_layout Description
+Geänderter
+\begin_inset space ~
+\end_inset
 
-\lang english
-changedtextauthor5 Changed text color author 5
+Text
+\begin_inset space ~
+\end_inset
+
+(5.Autor) Geänderter Text des 5.Autors
 \end_layout
 
 \begin_layout Description
