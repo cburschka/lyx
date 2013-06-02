@@ -155,7 +155,7 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   string(REGEX REPLACE "^(.*)\\.po$" "\\1" _inst_lng ${_pofile})
   list(FIND CONFIGURED_LANGUAGES ${_inst_lng} _lng_idx)
   if(_lng_idx GREATER -1)
-    list(APPEND INSTALLED_LANGUAGES "${_inst_lng} ")
+    list(APPEND INSTALLED_LANGUAGES ${_inst_lng})
   endif()
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
@@ -164,6 +164,17 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
     )
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
+
+set(LYX_UPDATED_GMO_FILES)
+foreach(_gmo_base ${INSTALLED_LANGUAGES})
+  set(_gmo ${_gmo_base}.gmo)
+  add_custom_command(
+    OUTPUT "${LYX_DEST_PO}/${_gmo}"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}" "${LYX_DEST_PO}/${_gmo}"
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
+    )
+  list(APPEND LYX_UPDATED_GMO_FILES "${LYX_DEST_PO}/${_gmo}")
+endforeach()
 
 set(LYX_UPDATED_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
@@ -194,7 +205,7 @@ GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${_addAL
 
 # Create a new target to remerge po files
 # ALL omitted here, to prevent from automatic creation
-ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES})
+ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES} ${LYX_UPDATED_GMO_FILES})
 set_target_properties(update-po PROPERTIES FOLDER "i18n")
 add_dependencies(update-po translations)
 
