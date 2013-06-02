@@ -33,6 +33,7 @@ namespace lyx {
 
 
 Counter::Counter()
+	: initial_value_(0)
 {
 	reset();
 }
