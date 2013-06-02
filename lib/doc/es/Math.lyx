@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -40,10 +40,10 @@
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \addto\extrasspanish{%
- \renewcommand*{\equationautorefname}[1]{}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+ \renewcommand*{\equationautorefname}[1]{}%
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
 }
 
 % don't load packages twice
@@ -152,13 +152,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -183,15 +183,24 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \index Índice
@@ -999,7 +1008,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -1020,9 +1029,9 @@ Unidades disponibles
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1530,9 +1539,9 @@ _
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1817,9 +1826,9 @@ dfrac
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2404,9 +2413,9 @@ root
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2804,9 +2813,9 @@ brack
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3083,9 +3092,9 @@ Casos
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3301,9 +3310,9 @@ not
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3522,9 +3531,9 @@ reference "sub:Símbolos-y-ecuaciones-químicas"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -3665,9 +3674,9 @@ phantom
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4113,9 +4122,9 @@ Ecuación ! sub- o superrayada
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4551,7 +4560,7 @@ dots
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -5392,9 +5401,9 @@ reference "sub:Tamaño-automático-de"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5585,9 +5594,9 @@ matriz
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5986,7 +5995,7 @@ Delimitadores ! verticales
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6210,7 +6219,7 @@ lfloor
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6587,9 +6596,9 @@ Estos comandos se usan para resaltar niveles de delimitación:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -6848,9 +6857,9 @@ En el siguiente cuadro hay una comparación de las variantes:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -7493,9 +7502,9 @@ Delimitadores ! horizontales
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -8167,7 +8176,7 @@ Flechas ! horizontales
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8376,7 +8385,7 @@ hookleftarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8592,7 +8601,7 @@ hookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8756,7 +8765,7 @@ rightleftharpoons
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8986,9 +8995,9 @@ vspace{4mm}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -9155,7 +9164,7 @@ Flechas ! verticales
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9339,7 +9348,7 @@ downarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9646,7 +9655,7 @@ Acentos ! para un carácter
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9972,7 +9981,7 @@ A
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10347,9 +10356,9 @@ reales
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10505,7 +10514,7 @@ Acentos ! en varios caracteres
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10707,7 +10716,7 @@ A=B
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11119,14 +11128,14 @@ Espacio.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="7">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11374,7 +11383,7 @@ El último tamaño parece no generar espacio.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -11497,9 +11506,9 @@ Los espacios negativos pueden llegar a solapar unos caracteres con otros.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11636,9 +11645,9 @@ Relaciones como por ejemplo el signo igual siempre están rodeadas por espacios.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -11756,9 +11765,9 @@ Un ejemplo para visualizar la diferencia:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -12011,9 +12020,9 @@ hfill
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12666,9 +12675,9 @@ fbox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13246,9 +13255,9 @@ raisebox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13624,9 +13633,9 @@ yellow
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14943,7 +14952,7 @@ Opciones de ecuación
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15242,7 +15251,7 @@ bigcup
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15695,9 +15704,9 @@ Para integrales múltiples hay los siguientes comandos:
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15820,9 +15829,9 @@ sqiint
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15975,9 +15984,9 @@ Los límites se crean mediante superíndices y subíndices:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -16785,7 +16794,7 @@ Los operadores binarios se rodean por espacios si llevan un carácter delante
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17152,7 +17161,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17486,7 +17495,7 @@ vee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -18207,10 +18216,10 @@ Las letras latinas en las ecuaciones se pueden poner en uno de los siguientes
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18565,10 +18574,10 @@ AbC
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -19334,9 +19343,9 @@ Dentro de una ecuación, el tamaño se puede cambiar usando los siguientes
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -19769,7 +19778,7 @@ Letras griegas ! minúsculas
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20053,7 +20062,7 @@ vartheta
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20360,7 +20369,7 @@ rho
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20683,7 +20692,7 @@ Letras griegas ! mayúsculas
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20867,7 +20876,7 @@ Pi
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21164,9 +21173,9 @@ boldsymbol
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21381,7 +21390,7 @@ Símbolos ! matemáticos
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21640,7 +21649,7 @@ jmath
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21939,7 +21948,7 @@ Bbbk
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22233,7 +22242,7 @@ Símbolos ! misceláneos
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22484,9 +22493,9 @@ $
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -22739,7 +22748,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23190,10 +23199,10 @@ Un vistazo a los diferentes símbolos del euro.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -23465,7 +23474,7 @@ Todas las relaciones se pueden insertar también con el botón
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23897,7 +23906,7 @@ nmid
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24329,7 +24338,7 @@ widehat=
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24826,9 +24835,9 @@ stackrel
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25018,7 +25027,7 @@ cursiva
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25188,7 +25197,7 @@ del t.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="7">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -26006,7 +26015,7 @@ En LyX, las funciones personalizadas se ven en rojo, las predefinidas en
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26158,9 +26167,9 @@ limsup
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26325,7 +26334,7 @@ El límite se crea insertando un subíndice.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26518,9 +26527,9 @@ Los siguientes comandos sólo se pueden usar en texto matemático o en modo
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="block" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26754,9 +26763,9 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27086,9 +27095,9 @@ Con los siguientes comandos se pueden acentuar todas las letras.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="block" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27414,9 +27423,9 @@ t ee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27927,9 +27936,9 @@ textcircled
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -28209,9 +28218,9 @@ Los siguientes caracteres sólo pueden insertarse en ecuaciones mediante
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -32416,9 +32425,9 @@ ce
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34047,9 +34056,9 @@ Un ensayo con los nuevos comandos definidos:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34825,8 +34834,8 @@ La barra de herramientas de macros contiene los siguientes botones:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="85col%">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
@@ -35383,9 +35392,9 @@ Un ejemplo para visualizar el problema:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -35661,9 +35670,9 @@ Están definidos los siguientes comandos:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -35953,9 +35962,9 @@ El estilo es un número en el rango 0
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36252,9 +36261,9 @@ Hay cuatro formas de cancelar ecuaciones:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36827,7 +36836,7 @@ Encabezado sin ecuación en el índice
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -38092,7 +38101,7 @@ reference "fn:sinónimos"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -38419,7 +38428,7 @@ vert
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
