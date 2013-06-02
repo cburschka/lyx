@@ -53,7 +53,7 @@ Compiling with Microsoft Visual C++
 
 	- Check the Advanced checkbox.
 	  Set GETTEXT_MSGFMT_EXECUTABLE to
-	  C:\LyX\lyx-21-build\msvc2010-deps\deps21\gettext-tools\msgfmt.exe,
+	  C:\LyX\lyx-21-build\msvc2010-deps\deps20\gettext-tools\msgfmt.exe,
 	  and do the same for the other gettext tools.
 
 	- Click Generate.
@@ -68,11 +68,11 @@ Compiling with Microsoft Visual C++
 7	Copy dependencies
 
 	Copy
-	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\bin
-	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\imagemagick
-	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\python
-	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\ghostscript
-	- C:\LyX\lyx-21-build\msvc2010-deps\deps21\Resources
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps20\bin
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps20\imagemagick
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps20\python
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps20\ghostscript
+	- C:\LyX\lyx-21-build\msvc2010-deps\deps20\Resources
 	to C:\LyX\lyx-21-install
 
 	And copy from the Qt bin directory
