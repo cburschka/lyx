@@ -5805,7 +5805,7 @@ Format
 
 \end_inset
 
-タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(LyX 2.0では、最新書式は35です)。
+タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(LyX 2.1では、最新書式は35です)。
 また、ローカルレイアウトは、LyX 1.6より前の版ではサポートされていないことを認識しておく必要があります。したがって、文書をLyX 1.5またはそれ以前の版に(
 ローカルレイアウト情報を失うことなく)書き出せることを望むならば、使用するべきではありません。第1.6版へ---第1.6版はUIはありませんがローカルレイアウトをサ
 ポートしています---書き出せることを望むならば、書式11を用いて、さらにLyX 1.6で使用できるレイアウト要素のみを使用してください。
@@ -10772,6 +10772,76 @@ LabelFont
 status collapsed
 
 \begin_layout Plain Layout
+ForceLocal
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int=0
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Used for backporting new styles to stable LyX versions.
+ The first stable version that supports this tag is LyX 2.1.0.
+ The argment is a number which may either be 0, -1 or any value greater
+ than zero.
+ If the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ForceLocal
+\end_layout
+
+\end_inset
+
+ flag of a style is greater than zero, it will always be written to the
+ document header.
+ If a .lyx file is read, the style definitions from the document header are
+ added to the document class.
+ Therefore even older versions can handle the style.
+ The argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ForceLocal
+\end_layout
+
+\end_inset
+
+ is a version number: If such a style is read, and the version number is
+ less than the version number of the already existing style in the document
+ class, the new style is ignored.
+ If the version number is higher, the new style replaces the existing style.
+ A value of -1 means an infinite version number, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+it is always used.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 FreeSpacing
 \end_layout
 
@@ -11010,6 +11080,63 @@ TitleLatexName
 status collapsed
 
 \begin_layout Plain Layout
+ItemCommand
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string="item"
+\end_layout
+
+\end_inset
+
+] The LaTeX command sequence declaring an item in a list.
+ The command is to be defined without the preceding backslash (the default
+ is 
+\lang japanese
+
+\begin_inset Quotes eld
+\end_inset
+
+item
+\begin_inset Quotes erd
+\end_inset
+
+
+\lang english
+, resulting in 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\lang english
+ in the LaTeX output).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ItemSep
 \end_layout
 
@@ -11183,34 +11310,73 @@ reference "sub:カウンタ"
 \end_inset
 
 節参照）。
-\begin_inset Newline newline
-\end_inset
-
-
+\lang english
+In order to have the counter appear with your label, you will need to reference
+ it in the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\family typewriter
+\lang english
+LabelString
+\end_layout
+
+\end_inset
+
+.
+ This will work with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 LabelType
 \end_layout
 
 \end_inset
 
-が
+s, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Counter
+
+\lang english
+Static
 \end_layout
 
 \end_inset
 
-型のときには、本項目は
-\emph on
-必須
-\emph default
-です。この場合には、この様式が出現するたびにカウンタが増えます。
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Above
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Centered
+\end_layout
+
+\end_inset
+
+, at least.
+\lang japanese
+
 \begin_inset Newline newline
 \end_inset
 
@@ -11503,11 +11669,11 @@ status collapsed
 \emph on
 No_Label
 \emph default
-, Manual, Static, Top_Environment,
+, Manual, Static, Above,
 \begin_inset Newline newline
 \end_inset
 
-Centered_Top_Environment, Counter, Sensitive, Enumerate,
+Centered, Sensitive, Enumerate,
 \begin_inset Newline newline
 \end_inset
 
@@ -11553,7 +11719,55 @@ LabelString
 
 \end_inset
 
-で宣言したものであることを示します。これは「静的」であることに注意してください。
+で宣言したものであることを示します。
+\lang english
+This will be displayed 
+\begin_inset Quotes eld
+\end_inset
+
+inline
+\begin_inset Quotes erd
+\end_inset
+
+, at the beginning of the paragraph.
+ If the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Environment
+\end_layout
+
+\end_inset
+
+, then it will be displayed only in the first paragraph of any sequence
+ of paragraphs with the same 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Style
+\end_layout
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Description
@@ -11561,7 +11775,7 @@ LabelString
 status collapsed
 
 \begin_layout Plain Layout
-Top_Environment
+Above
 \end_layout
 
 \end_inset
@@ -11571,7 +11785,7 @@ Top_Environment
 status collapsed
 
 \begin_layout Plain Layout
-Centered_Top_Environment
+Centered
 \end_layout
 
 \end_inset
@@ -11586,17 +11800,11 @@ Static
 
 \end_inset
 
-の特別な場合です。ラベルは段落の上に印字されるのですが、それは単一の環境の上か、このレイアウトを持つ連続した段落群の上だけに印字されます。たとえば、
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Abstract
-\end_layout
-
-\end_inset
-
-レイアウトが使用したりします。
+の特別な場合です。ラベルは段落の上に印字されるのですが、それは単一の環境の上か、
+\lang english
+either at the beginning of the line or centered
+\lang japanese
+。
 \end_layout
 
 \begin_layout Description
@@ -11622,7 +11830,7 @@ Sensitive
 は、（ハードコードされた）ラベル文字列がフロートの種類に依存することを示します。これは、フロートに関連付けられたカウンタの値がNであるものとすると、「Float
 Type N」にハードコードされています。
 \lang english
-For the case that a caption is inserted outside of a float 
+For the case that a caption is inserted outside of a float the 
 \begin_inset Flex Code
 status collapsed
 
@@ -11634,15 +11842,7 @@ LabelString
 
 \end_inset
 
- should be set to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g
-\begin_inset space \space{}
-\end_inset
-
-
+ will appear as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -11651,50 +11851,6 @@ Senseless!
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Counter
-\end_layout
-
-\end_inset
-
- ラベル型は、自動的に連番が付されるラベルを定義します。
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
-は、それが含むカウンタ参照をすべて解決するために展開されます。これは、たとえば
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Section 
-\backslash
-thechapter.
-\backslash
-thesection
-\end_layout
-
-\end_inset
-
-のようになります。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:カウンタ"
-
-\end_inset
-
-節を参照してください。
 \end_layout
 
 \begin_layout Description
@@ -11843,7 +11999,36 @@ LatexName
 
 \end_inset
 
-の非必須パラメータです。このパラメータは、LyX内部から変更することはできません。
+の非必須パラメータです。このパラメータは、LyX内部から変更することはできません
+\lang english
+(use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+ for customizable parameters).
+ This will be output as is after all LaTeX 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+s
+\lang japanese
+。
 \end_layout
 
 \begin_layout Description
@@ -12169,6 +12354,44 @@ end{LatexName}.
 \end_layout
 
 \end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LeftDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+A string that is put at the beginning of the style content.
+ A line break in the output can be indicated by 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed
@@ -12583,52 +12806,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-OptionalArgs
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-整数型=0
-\end_layout
-
-\end_inset
-
-] このレイアウトに使用することのできる非必須引数の数。節見出しのようなものに有用であり、LaTeXでのみ意味を持ちます。出力時には、非必須引数は、すべての必須
-引数の前に来ることに注意してください（以下参照）。つまり、
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-
-\backslash
-mycmd[非必須引数1]{必須引数1}{段落の内容}
-\end_layout
-
-\begin_layout Standard
-のようなコマンドは生成できますが、
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-mycmd[非必須引数1]{必須引数1}[非必須引数2]{段落の内容}
-\end_layout
-
-\begin_layout Standard
-のようなコマンドは、TeXコード（これを使えば何でもできます）を使用することなしには、生成することができません。
-\end_layout
-
-\end_deeper
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 ParbreakIsNewline
 \end_layout
 
@@ -12930,44 +13107,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-RequiredArgs
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-整数型=0
-\end_layout
-
-\end_inset
-
-] このレイアウトに対応するLaTeXコマンドやLaTeX環境が予期している、必須引数の数。コマンドの場合には、段落の内容自体に関連付けられている引数
-\emph on
-以外に
-\emph default
-、必要な引数の数のことです。これらの引数は、実際には渡されなくても構いません。必要な場合は、LyXが空の引数を生成します。非必須引数は、必須引数の前に出力される
-ことに注意してください。詳細については、上記
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-OptionalArgs
-\end_layout
-
-\end_inset
-
-タグにおける議論をご覧ください。
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 Requires
 \end_layout
 
@@ -13027,6 +13166,111 @@ reference "sub:汎用テキストクラスパラメータ"
 \lang english
 ) for information on `features'
 \lang japanese
+。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ResetArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] Resets the LaTeX arguments of this style (as defined via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+ tag).
+ This is useful if you have copied a style via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CopyStyle
+\end_layout
+
+\end_inset
+
+, but you do not want to inherit its (required and optional) arguments.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RightDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+A string that is put at the end of the layout content.
+ A line break in the output can be indicated by 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
 。
 \end_layout
 
@@ -13299,13 +13543,14 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
+段落様式の国際化
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:段落様式の国際化"
 
 \end_inset
 
-段落様式の国際化
+
 \end_layout
 
 \begin_layout Standard
@@ -14457,8 +14702,9 @@ InsetLayout
 
 \end_inset
 
-は自由差込枠を定義することの他に、脚注・傍注・注釈差込枠・TeXコード（ERT）差込枠・派生枝・リスト・索引・ボックス・表・アルゴリズム・URL・オプション引数
-のレイアウトパラメータを設定するのに使用することができます。
+は自由差込枠を定義することの他に、脚注・傍注・注釈差込枠・TeXコード（ERT）差込枠・派生枝・リスト・索引・ボックス・表・アルゴリズム・URL・
+\lang english
+and captions, as well as to define Flex insets.
 \end_layout
 
 \begin_layout Standard
@@ -14489,7 +14735,11 @@ status collapsed
 
 \end_inset
 
-は、レイアウトを定義しようとしている差込枠を指し、以下の2つの場合がありえます。
+は、レイアウトを定義しようとしている差込枠を指し、
+\lang english
+and here there are four cases
+\lang japanese
+。
 \end_layout
 
 \begin_layout Enumerate
@@ -14539,6 +14789,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Box:shaded
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Caption:Standard
 \end_layout
 
 \end_inset
@@ -14678,16 +14938,6 @@ Note:GreyedOut
 status collapsed
 
 \begin_layout Plain Layout
-OptArg
-\end_layout
-
-\end_inset
-
-・
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 Table
 \end_layout
 
@@ -14751,6 +15001,173 @@ LyXType
 項目が含まれていなくてはならないことに注意してください。
 \end_layout
 
+\begin_layout Enumerate
+
+\lang english
+The layout for user specific branch is being defined.
+ In this case,
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<型>
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+must be of the form 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Branch:<name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+name
+\end_layout
+
+\end_inset
+
+ may be be any valid identifier of branch defined in user's document.
+ The identifier may include spaces, but in that case the whole thing must
+ be wrapped in quotes.
+ The main purpose of this feature is to allow LaTeX wrapping around specific
+ branches as user needs.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+The layout of a user (or class) specific caption is being defined.
+ In this case,
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<型>
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+must be of the form 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:<name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+name
+\end_layout
+
+\end_inset
+
+ specifies the name of the caption as it appears in the menu.
+ Have a look at the standard caption (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Standard
+\end_layout
+
+\end_inset
+
+), the specific captions of the KOMA-Script classes (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Above
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Below
+\end_layout
+
+\end_inset
+
+) or the module 
+\family sans
+Multilingual
+\begin_inset space ~
+\end_inset
+
+Captions
+\family default
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Bicaption
+\end_layout
+
+\end_inset
+
+) for applications.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Flex Code
 status collapsed
@@ -14762,6 +15179,82 @@ InsetLayout
 \end_inset
 
 定義には以下の項目を入れることができます。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+int
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Defines argument number of a command\SpecialChar \slash{}
+environment associated with the current
+ layout.
+ The definition must end with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+EndArgument
+\end_layout
+
+\end_inset
+
+.
+ See 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:段落様式"
+
+\end_inset
+
+
+\lang english
+ for details.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Preamble for changing language commands; see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:段落様式の国際化"
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Description
@@ -15162,6 +15655,75 @@ LabelFont
 status collapsed
 
 \begin_layout Plain Layout
+ForceLocalFontSwitch
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+When using babel, always use a local font switch (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+foreignlanguage
+\end_layout
+
+\end_inset
+
+), never a global one (such as 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+selectlanguage
+\end_layout
+
+\end_inset
+
+)。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ForceLTR
 \end_layout
 
@@ -15477,6 +16039,30 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+Language dependent preamble; see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:段落様式の国際化"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 LatexName
 \end_layout
 
@@ -15547,7 +16133,36 @@ status collapsed
 
 \end_inset
 
-のような括弧対を含む。このパラメータはLyX内部から変更することはできません。
+のような括弧対を含む。このパラメータはLyX内部から変更することはできません
+\lang english
+(use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+ for customizable parameters).
+ It will be output as is after all LaTeX 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+s
+\lang japanese
+。
 \end_layout
 
 \begin_layout Description
@@ -15560,18 +16175,220 @@ LatexType
 
 \end_inset
 
- 
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Command, Environment, None
+\end_layout
+
+\end_inset
+
+] 
 \lang english
-As with paragraph styles, see sec.
-\begin_inset space ~
+How the style should be translated into LaTeX.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LatexType
+\end_layout
+
+\end_inset
+
+ is perhaps a bit misleading, since these rules apply to SGML classes, too.
+ Visit the SGML class files for specific examples.
+\end_layout
+
 \end_inset
 
 
-\lang japanese
+\end_layout
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:段落様式"
+\begin_deeper
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+None
+\end_layout
+
+\end_inset
+
+ means nothing special
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Command
+\end_layout
+
+\end_inset
+
+ means 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+
+\emph on
+LatexName
+\emph default
+{\SpecialChar \ldots{}
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Environment
+\end_layout
+
+\end_inset
+
+ means 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+begin{
+\emph on
+LatexName
+\emph default
+}\SpecialChar \ldots{}
+
+\backslash
+end{
+\emph on
+LatexName
+\emph default
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Putting the last few things together, the LaTeX output will be either: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+LatexName[LatexParam]{\SpecialChar \ldots{}
+}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+or: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+begin{LatexName}[LatexParam] \SpecialChar \ldots{}
+ 
+\backslash
+end{LatexName}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+depending upon the LaTeX type.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LeftDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] A string that is put at the beginning of the layout content.
+ A line break in the output can be indicated by
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
 
 \end_inset
 
@@ -15819,6 +16636,45 @@ protect
 status collapsed
 
 \begin_layout Plain Layout
+NoInsetLayout
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<layout>
+\end_layout
+
+\end_inset
+
+] Deletes an existing
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ParbreakIsNewline
 \end_layout
 
@@ -16018,6 +16874,72 @@ reference "sub:段落様式"
 status collapsed
 
 \begin_layout Plain Layout
+ResetArgs
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Resets the LaTeX arguments of this layout (as defined via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Argument
+\end_layout
+
+\end_inset
+
+ tag).
+ This is useful if you have copied a style via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CopyStyle
+\end_layout
+
+\end_inset
+
+, but you do not want to inherit its (required and optional) arguments.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ResetFont
 \end_layout
 
@@ -16050,6 +16972,44 @@ status collapsed
 \end_inset
 
 ] この差込枠が周囲の環境と同じフォントを用いるか、独自のフォントを用いるか。既定値は真、すなわち独自のフォントを用います。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+RightDelim
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+A string that is put at the end of the layout content.
+ A line break in the output can be indicated by
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<br/>
+\end_layout
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Description
@@ -16179,6 +17139,35 @@ End
 
 \begin_layout Standard
 以下のパラメータを使用することができます。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InitialValue
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+int=1
+\end_layout
+
+\end_inset
+
+] Sets the initial value for the counter, to which it will be reset whenever
+ that happens.
+ Normally, one will want the default, 1.
 \end_layout
 
 \begin_layout Description
@@ -18294,6 +19283,20 @@ status collapsed
 \end_inset
 
 ブロックで自動的に包まれますので、CSS自体をインクルードするだけで大丈夫です。
+\lang english
+Must end with
+\lang japanese
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndHTMLStyle
+\end_layout
+
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Description
@@ -20265,6 +21268,22 @@ status collapsed
 \end_inset
 
 ダイアログを参照）。このコマンドは、一度だけ必ず現れなくてはなりません。
+\lang english
+If the resulting file format is PDF, you need to specify the format 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+pdf6
+\end_layout
+
+\end_inset
+
+.
+ This is the PDF format used for including graphics.
+ The other defined PDF formats are for document export.
 \end_layout
 
 \begin_layout Description
