@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 473
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass moderncv
@@ -260,6 +260,27 @@ testman@testman.xx
 www.johndoe.com
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The Social style can be enabled if 
+\series bold
+moderncv
+\series default
+ version 1.5.0 or newer is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Social
 \begin_inset Argument 1
 status open
@@ -319,6 +340,11 @@ github
 \end_inset
 
 ptestman
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout ExtraInfo
