@@ -99,8 +99,6 @@ Section -Configure
    ${RefreshShellIcons}
   ${endif}
   
-  # Set path prefix in lyxrc.dist
-
   # Install standard lyxrc.dist file
   #SetOutPath "$INSTDIR\Resources"
   #File "${FILES_DEPS}\Resources\lyxrc.dist"
@@ -151,14 +149,14 @@ Section -Configure
   
   # set path to eLyXer
   FileWrite $R1 '\converter "lyx" "html" "python -tt \"$INSTDIR\Python\Lib\elyxer.py\" --directory $$$$r $$$$i $$$$o" ""$\r$\n\
-                 \converter "lyx" "wordhtml" "python -tt \"$INSTDIR\Python\Lib\elyxer.py\" --html --directory $$$$r $$$$i $$$$o" ""'
+                 \converter "lyx" "wordhtml" "python -tt \"$INSTDIR\Python\Lib\elyxer.py\" --html --directory $$$$r $$$$i $$$$o" ""$\r$\n'
   
   # use pdfview for all types of PDF files
-  FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export"$\r$\n\
-		 \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export"$\r$\n\
-		 \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export"$\r$\n\
-		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export"$\r$\n\
-		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export"$\r$\n'
+  FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
+		 \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
+		 \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
+		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
+		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n'
 
   # if LilyPondPath was found
   # we need to add these entris because python scripts can only be executed
