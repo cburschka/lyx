@@ -32606,6 +32606,29 @@ Resources
 dicts
 \family default
  y reinicia LyX.
+\begin_inset Newline newline
+\end_inset
+
+En Linux hay que instalar los paquetes correspondientes a los idiomas deseados.
+ Los nombres de los paquetes pueden variar según la distribución de Linux,
+ pero los más habituales son 
+\family typewriter
+aspell-xx
+\family default
+, 
+\family typewriter
+hunspell-xx
+\family default
+,
+\family typewriter
+ myspell-xx
+\family default
+\SpecialChar \ldots{}
+, siendo 
+\family sans
+xx
+\family default
+ el código del idioma.
 \end_layout
 
 \begin_layout Subsection

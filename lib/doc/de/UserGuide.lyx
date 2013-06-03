@@ -32793,8 +32793,8 @@ Es gibt 2
 \end_inset
 
 Dateien für jede Sprache.
- Um ein Wörterbuch zu installieren, kopiert man beide Dateien in LyXs Installati
-onsunterordner 
+ Um ein Wörterbuch unter Windows zu installieren, kopiert man beide Dateien
+ in LyXs Installationsunterordner 
 \family sans
 ~
 \backslash
@@ -32803,6 +32803,20 @@ Resources
 dicts
 \family default
  und startet LyX neu.
+\begin_inset Newline newline
+\end_inset
+
+Unter Linux muss man die Pakete für die gewünschte Sprache installieren.
+ Die Anzahl der Pakete schwankt je nach Linux-Distribution, aber in den
+ meisten fällen sind das 
+\family sans
+aspell-xx, hunspell-xx, myspell-xx
+\family default
+, usw., wobei 
+\family sans
+xx
+\family default
+ der Code für die Sprache ist.
 \end_layout
 
 \begin_layout Subsection

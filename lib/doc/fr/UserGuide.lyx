@@ -33589,8 +33589,8 @@ http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 \end_inset
 
 Il y a deux fichiers par langue.
- Pour installer un dictionnaire, copier ces deux fichiers dans le sous-répertoir
-e 
+ Pour installer un dictionnaire avec Windows, copier ces deux fichiers dans
+ le sous-répertoire 
 \family sans
 ~
 \backslash
@@ -33599,6 +33599,22 @@ Resources
 dicts
 \family default
  et redémarrez LyX.
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+With Linux one needs to install the packages for the desired language.
+ The number of these packages vary depending on the Linux distribution,
+ but in most cases these are 
+\family sans
+aspell-xx, hunspell-xx, myspell-xx
+\family default
+, etc., where 
+\family sans
+xx
+\family default
+ is the language code.
 \end_layout
 
 \begin_layout Subsection
