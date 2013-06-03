@@ -356,10 +356,6 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		if (inset == "dots")
 			return MathAtom(new InsetMathDots(l));
 		if (inset == "mbox")
-			// return MathAtom(new InsetMathMBox);
-			// InsetMathMBox is proposed to replace InsetMathBox,
-			// but is not ready yet (it needs a BufferView for
-			// construction)
 			return MathAtom(new InsetMathBox(buf, l->name));
 //		if (inset == "fbox")
 //			return MathAtom(new InsetMathFBox(l));

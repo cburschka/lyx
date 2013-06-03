@@ -1004,7 +1004,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
-		//cur.plainInsert(MathAtom(new InsetMathMBox(cur.bv())));
 		if (currentMode() <= Inset::TEXT_MODE)
 			cur.plainInsert(MathAtom(new InsetMathEnsureMath(buffer_)));
 		else
