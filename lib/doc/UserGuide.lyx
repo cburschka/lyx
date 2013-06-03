@@ -32170,7 +32170,7 @@ There are 2
 \end_inset
 
 files for each language.
- To install a dictionary, copy the 2
+ To install a dictionary on Windows, copy the 2
 \begin_inset space ~
 \end_inset
 
@@ -32183,6 +32183,20 @@ Resources
 dicts
 \family default
  and restart LyX.
+\begin_inset Newline newline
+\end_inset
+
+With Linux one needs to install the packages for the desired language.
+ The number of these packages vary depending on the Linux distribution,
+ but in most cases these are 
+\family sans
+aspell-xx, hunspell-xx, myspell-xx
+\family default
+, etc., where 
+\family sans
+xx
+\family default
+ is the language code.
 \end_layout
 
 \begin_layout Subsection
