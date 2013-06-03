@@ -145,12 +145,7 @@ fi
 
 ### Setup po directory
 AM_PO_SUBDIRS
-AC_MSG_CHECKING([whether NLS is requested])
-dnl Default is enabled NLS
-AC_ARG_ENABLE(nls,
-  [  --disable-nls           do not use Native Language Support],
-    USE_NLS=$enableval, USE_NLS=yes)
-AC_MSG_RESULT($USE_NLS)
+AM_NLS
 if test $USE_NLS = "yes" ; then
   AC_DEFINE(ENABLE_NLS, 1,
     [Define to 1 if translation of program messages to the user's native language
