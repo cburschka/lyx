@@ -4262,7 +4262,7 @@ def convert_chunks(document):
                 document.warning("Malformed LyX documents. Can't find end of Chunk layout!")
                 break
             thischunk = "".join(document.body[i + 1:j])
-            contents.append(thischunk)
+            contents.append(document.body[i + 1:j])
             
             if thischunk == "@":
                 break
@@ -4276,7 +4276,6 @@ def convert_chunks(document):
             layout = get_value(document.body, "\\begin_layout", i)
             #sys.stderr.write(layout+ '\n')
             if layout != "Chunk":
-                k = i
                 break
 
         if j == -1:
@@ -4286,16 +4285,18 @@ def convert_chunks(document):
 
         end = j + 1
         k = end
-
-        sys.stderr.write('\n'.join(contents) + '\n\n')
-
+        
         # the last chunk should simply have an "@" in it
-        # we could check that
+        
+        if ''.join(contents[-1]) != "@":
+            document.warning("Unexpected chunk contents.")
+            continue
+
         contents.pop()
 
         # the first item should look like: <<FROGS>>=
         # we want the inside
-        optarg = contents[0]
+        optarg = ' '.join(contents[0])
         optarg.strip()
         match = first_re.search(optarg)
         if match:
@@ -4322,7 +4323,8 @@ def convert_chunks(document):
                 newstuff.extend(['', '\\begin_layout Plain Layout', ''])
             else:
                 didone = True
-            newstuff.extend([c, '\\end_layout'])
+            newstuff.extend(c)
+            newstuff.append('\\end_layout')
 
         newstuff.extend(['', '\\end_inset', '', '\\end_layout', ''])
 
