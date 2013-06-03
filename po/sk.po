@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-06-01 17:04+0200\n"
+"POT-Creation-Date: 2013-06-02 14:22+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -12192,6 +12192,10 @@ msgstr "Revízia"
 msgid "RevisionRemark"
 msgstr "RevíznaPripomienka"
 
+#: lib/layouts/litinsets.inc:12
+msgid "Chunk ##"
+msgstr "Odrezok ##"
+
 #: lib/layouts/numreport.inc:8
 msgid "\\arabic{chapter}"
 msgstr "\\arabic{chapter}"
@@ -13109,10 +13113,9 @@ msgstr ""
 msgid "literate"
 msgstr "literárne"
 
-#: lib/layouts/knitr.module:13 lib/layouts/noweb.module:14
-#: lib/layouts/sweave.module:23
+#: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
 msgid "Chunk"
-msgstr "Kus"
+msgstr "Odrezok"
 
 #: lib/layouts/knitr.module:14 lib/layouts/sweave.module:2
 #: lib/layouts/sweave.module:24 lib/configure.py:547
