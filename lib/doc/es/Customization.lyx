@@ -6227,7 +6227,7 @@ Format
 .
  Cualquier formato es aceptable, pero debería usarse normalmente el actual
  formato.
- (En LyX 2.1 el formato actual es 35).
+ (En LyX 2.1 el formato actual es 45).
  Debes tener en cuenta que el formato local no es soportado por versiones
  de LyX anteriores a 1.6, por tanto no deberías usarlo si quieres poder exportar
  el documento a LyX 1.5 o anteriores sin perder la información del formato
@@ -11578,7 +11578,7 @@ ForceLocal
  document header.
  If a .lyx file is read, the style definitions from the document header are
  added to the document class.
- Therefore even older versions can handle the style.
+ Therefore even older LyX versions can handle the style.
  The argument of 
 \begin_inset Flex Code
 status collapsed
@@ -11591,10 +11591,10 @@ ForceLocal
 
 \end_inset
 
- is a version number: If such a style is read, and the version number is
- less than the version number of the already existing style in the document
- class, the new style is ignored.
- If the version number is higher, the new style replaces the existing style.
+ is a version number: If the style is read, and the version number is less
+ than the version number of the already existing style in the document class,
+ the new style is ignored.
+ If the version number is greater, the new style replaces the existing style.
  A value of -1 means an infinite version number, i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -11603,7 +11603,7 @@ e.
 \begin_inset space \space{}
 \end_inset
 
-it is always used.
+the style is always used.
 \end_layout
 
 \begin_layout Description

@@ -6195,10 +6195,10 @@ Format
  tag.
  Any format is acceptable, but one would normally use the format current
  at the time.
- (In LyX 2.1, the current layout format is 35??.) You should be aware that
- local layout is not supported by versions of LyX prior to 1.6, so you should
- not use it if you want to be able to export your document to LyX 1.5 or
- earlier (without, that is, losing the local layout information).
+ (In LyX 2.1, the current layout format is 45.) You should be aware that local
+ layout is not supported by versions of LyX prior to 1.6, so you should not
+ use it if you want to be able to export your document to LyX 1.5 or earlier
+ (without, that is, losing the local layout information).
  If you wish to be able to export to 1.6---local layout is supported in 1.6,
  though there is no UI for it---then you should use format 11 and, of course,
  use only layout constructs that were available in LyX 1.6.
@@ -12110,7 +12110,7 @@ ForceLocal
  document header.
  If a .lyx file is read, the style definitions from the document header are
  added to the document class.
- Therefore even older versions can handle the style.
+ Therefore even older LyX versions can handle the style.
  The argument of 
 \begin_inset Flex Code
 status collapsed
@@ -12123,10 +12123,10 @@ ForceLocal
 
 \end_inset
 
- is a version number: If such a style is read, and the version number is
- less than the version number of the already existing style in the document
- class, the new style is ignored.
- If the version number is higher, the new style replaces the existing style.
+ is a version number: If the style is read, and the version number is less
+ than the version number of the already existing style in the document class,
+ the new style is ignored.
+ If the version number is greater, the new style replaces the existing style.
  A value of -1 means an infinite version number, i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -12135,7 +12135,7 @@ e.
 \begin_inset space \space{}
 \end_inset
 
-it is always used.
+the style is always used.
 \end_layout
 
 \begin_layout Description

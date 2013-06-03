@@ -5125,7 +5125,7 @@ Format
  tag.
  Any format is acceptable, but one would normally use the format current
  at the time.
- (In LyX 2.1, the current layout format is 35.) You should be aware that local
+ (In LyX 2.1, the current layout format is 45.) You should be aware that local
  layout is not supported by versions of LyX prior to 1.6, so you should not
  use it if you want to be able to export your document to LyX 1.5 or earlier
  (without, that is, losing the local layout information).
@@ -9109,12 +9109,12 @@ int
 
 \end_inset
 
-] Definiert
+] Definiert Argument Nummer <int> eines Befehls\SpecialChar \slash{}
+einer Umgebung, der/die im
+ aktuellen Stil definiert ist.
+ 
 \lang english
- argument number <int> of a command\SpecialChar \slash{}
-environment associated with the current
- style.
- This is useful for things like section headings, and only makes sense with
+This is useful for things like section headings, and only makes sense with
  LaTeX.
  Every (optional or required) argument of a command or environment -- except
  for the required argument that is associated with the content of the paragraph
@@ -9174,21 +9174,17 @@ EndArgument
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inside the 
+Innerhalb einer 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- definition, the following specifications are possible:
+-Definition sind die folgenden Spezifikationen möglich:
 \end_layout
 
 \begin_layout Itemize
@@ -10388,54 +10384,40 @@ int=0
 
 \end_inset
 
-] 
-\lang english
-Used for backporting new styles to stable LyX versions.
- The first stable version that supports this tag is LyX 2.1.0.
- The argment is a number which may either be 0, -1 or any value greater
- than zero.
- If the 
+] Wird benutzt um neue Stile für stabile LyX-Versionen zu konvertieren.
+ Die erste stabile Version, die das unterstützt ist LyX 2.1.0.
+ Das Argument ist eine Nummer, die entweder 0, -1 oder irgend eine Zahl
+ größer Null sein kann.
+ Wenn 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
- flag of a style is greater than zero, it will always be written to the
- document header.
- If a .lyx file is read, the style definitions from the document header are
- added to the document class.
- Therefore even older versions can handle the style.
- The argument of 
+ eines Stils größer als Null ist, wird er immer in den Dokumentkopf geschrieben.
+ Wenn eine .lyx-Datei gelesen wird, werden die Stil-Definitionen aus dem
+ Dokumentkopf zur Dokumentklasse hinzugefügt.
+ Dadurch können sogar ältere LyX-Versionen den Stil handhaben.
+ Das Argument von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
- is a version number: If such a style is read, and the version number is
- less than the version number of the already existing style in the document
- class, the new style is ignored.
- If the version number is higher, the new style replaces the existing style.
- A value of -1 means an infinite version number, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-it is always used.
+ ist eine Versionsnummer: Wenn der Stil gelesen wird, und die Versionsnummer
+ ist kleiner als die Versionsnummer des bereits existierenden Stils der
+ Dokumentklasse, wird der neue Stil ignoriert.
+ Wenn die Versionsnummer größer ist, ersetzt der neue Stil den bestehenden.
+ Der Wert -1 steht für eine unendliche Versionsnummer, das heißt der Stil
+ wird immer benutzt.
 \end_layout
 
 \begin_layout Description
@@ -13075,34 +13057,29 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Resets the LaTeX arguments of this style (as defined via the 
+] Setzt die LaTeX-Argumente dieses Stils zurück (der via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- tag).
- This is useful if you have copied a style via 
+ definiert wurde).
+ Dies ist nützlich, wenn man einen Stil mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-, but you do not want to inherit its (benötigte und optionale) Argumente.
+ kopiert hat, aber nicht dessen (benötigten und optionalen) Argumente übernehmen
+ will.
 \end_layout
 
 \begin_layout Description
@@ -16982,34 +16959,29 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Resets the LaTeX arguments of this layout (as defined via the 
+] Setzt die LaTeX-Argumente dieses Stils zurück (der via 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- tag).
- This is useful if you have copied a style via 
+ definiert wurde).
+ Dies ist nützlich, wenn man einen Stil mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-, but you do not want to inherit its (required and optional) arguments.
+ kopiert hat, aber nicht dessen (benötigten und optionalen) Argumente übernehmen
+ will.
 \end_layout
 
 \begin_layout Description

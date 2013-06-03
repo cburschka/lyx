@@ -5805,7 +5805,7 @@ Format
 
 \end_inset
 
-タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(LyX 2.1では、最新書式は35です)。
+タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(LyX 2.1では、最新書式は45です)。
 また、ローカルレイアウトは、LyX 1.6より前の版ではサポートされていないことを認識しておく必要があります。したがって、文書をLyX 1.5またはそれ以前の版に(
 ローカルレイアウト情報を失うことなく)書き出せることを望むならば、使用するべきではありません。第1.6版へ---第1.6版はUIはありませんがローカルレイアウトをサ
 ポートしています---書き出せることを望むならば、書式11を用いて、さらにLyX 1.6で使用できるレイアウト要素のみを使用してください。
@@ -10809,7 +10809,7 @@ ForceLocal
  document header.
  If a .lyx file is read, the style definitions from the document header are
  added to the document class.
- Therefore even older versions can handle the style.
+ Therefore even older LyX versions can handle the style.
  The argument of 
 \begin_inset Flex Code
 status collapsed
@@ -10822,10 +10822,10 @@ ForceLocal
 
 \end_inset
 
- is a version number: If such a style is read, and the version number is
- less than the version number of the already existing style in the document
- class, the new style is ignored.
- If the version number is higher, the new style replaces the existing style.
+ is a version number: If the style is read, and the version number is less
+ than the version number of the already existing style in the document class,
+ the new style is ignored.
+ If the version number is greater, the new style replaces the existing style.
  A value of -1 means an infinite version number, i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -10834,7 +10834,7 @@ e.
 \begin_inset space \space{}
 \end_inset
 
-it is always used.
+the style is always used.
 \end_layout
 
 \begin_layout Description
