@@ -136,7 +136,6 @@ dist_esclipartdoc_DATA = \
 eudocdir = $(docdir)/eu
 dist_eudoc_DATA = \
 	eu/Customization.lyx \
-	eu/Additional.lyx \
 	eu/Intro.lyx \
 	eu/Tutorial.lyx \
 	eu/UserGuide.lyx
