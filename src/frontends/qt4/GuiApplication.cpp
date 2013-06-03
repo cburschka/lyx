@@ -188,6 +188,7 @@ void setLocale()
 	}
 	Messages::guiLanguage(fromqstr(theLocale.name()));
 	QLocale::setDefault(theLocale);
+	setlocale(LC_NUMERIC, "C");
 }
 
 
