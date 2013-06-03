@@ -244,7 +244,6 @@ dist_nbdoc_DATA = \
 
 pldocdir = $(docdir)/pl
 dist_pldoc_DATA = \
-	pl/Additional.lyx \
 	pl/Intro.lyx \
 	pl/Tutorial.lyx
 
