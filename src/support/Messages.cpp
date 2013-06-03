@@ -155,10 +155,8 @@ Messages::Messages(string const & l)
 namespace {
 
 // Find the code we have for a given language code. Return empty if not found.
-string realCode(string const & c)
+string realCode(string code)
 {
-	// Qt tries to outsmart us and transforms en_US to C.
-	string code = (c == "C") ? "en" : c;
 	// this loops at most twice
 	while (true) {
 		if (package().messages_file(code).isReadableFile())

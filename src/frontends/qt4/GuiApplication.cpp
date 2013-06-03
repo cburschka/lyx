@@ -186,7 +186,9 @@ void setLocale()
 		string const code = l ? l->code() : string();
 		theLocale = QLocale(toqstr(code));
 	}
-	Messages::guiLanguage(fromqstr(theLocale.name()));
+	string const code = fromqstr(theLocale.name());
+	// Qt tries to outsmart us and transforms en_US to C.
+	Messages::guiLanguage((code == "C") ? "en_US" : code);
 	QLocale::setDefault(theLocale);
 	setlocale(LC_NUMERIC, "C");
 }
