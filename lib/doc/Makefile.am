@@ -263,8 +263,7 @@ dist_rudoc_DATA = \
 skdocdir = $(docdir)/sk
 dist_skdoc_DATA = \
 	sk/Intro.lyx \
-	sk/Tutorial.lyx \
-	sk/UserGuide.lyx
+	sk/Tutorial.lyx
 
 sldocdir = $(docdir)/sl
 dist_sldoc_DATA = \
