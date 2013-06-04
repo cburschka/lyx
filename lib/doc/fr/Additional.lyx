@@ -25356,6 +25356,151 @@ go back to the default
 \begin_layout Subsubsection
 
 \lang english
+Column Breaks
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A column break can be forced by inserting the command 
+\series bold
+
+\backslash
+columnbreak{}
+\series default
+ as TeX-Code to that position in the text where the column should be broken.
+ Note that this leads in most cases to whitespace in the text.
+\begin_inset Newline newline
+\end_inset
+
+Here is an example:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+ AFTER THIS SENTENCE THE COLUMN BREAK IS FORCED.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+--a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
 Column Separation
 \end_layout
 
@@ -25628,6 +25773,230 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The rule can be colored by redefining the command 
+\series bold
+
+\backslash
+columnseprulecolor
+\series default
+.
+ This is done by inserting the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{red}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+as TeX-Code before the multicolumn inset.
+ Replace 
+\series bold
+red
+\series default
+ in this command by a color of your choice.
+ You can use all pre- and self-defined colors.
+ See the 
+\emph on
+EmbeddedObjects
+\emph default
+ manual, section 
+\emph on
+Colored
+\begin_inset space ~
+\end_inset
+
+Tables
+\emph default
+ for more information about pre- and self-defined colors.
+ To go back to the default color insert the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Here is the example with a cyan rule and 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm column separation:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{cyan}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+--a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 \begin_inset ERT
 status collapsed
 
@@ -25640,10 +26009,19 @@ setlength{
 columnseprule}{0pt}
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\end_layout
+
 \end_inset
 
-
-\lang english
 
 \begin_inset Note Note
 status collapsed

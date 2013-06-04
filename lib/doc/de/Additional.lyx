@@ -24871,8 +24871,6 @@ Spalten:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Multiple Columns
 status open
 
@@ -24942,8 +24940,6 @@ Spalten innerhalb einer Spalte sind ebenfalls möglich:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Multiple Columns
 status open
 
@@ -25388,8 +25384,6 @@ multicolsep}{2.5cm}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Multiple Columns
 status open
 
@@ -25480,7 +25474,149 @@ auf Voreinstellung zurücksetzen
 \end_layout
 
 \begin_layout Subsubsection
-Spaltentrennung
+Spaltenumbrüche
+\end_layout
+
+\begin_layout Standard
+Ein Spaltenumbruch kann erzwungen werden, indem man den Befehl 
+\series bold
+
+\backslash
+columnbreak{}
+\series default
+ als TeX-Code an die Stelle im Text eingibt, an der die Spalte gebrochen
+ werden soll.
+ Man beachte, dass dies in den meisten Fällen zu Lücken im Text führt.
+\begin_inset Newline newline
+\end_inset
+
+Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\lang ngerman
+ NACH DIESEM SATZ WIRD DER SPALTENUMBRUCH ERZWUNGEN.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+--a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Spaltenabstand
 \end_layout
 
 \begin_layout Standard
@@ -25530,8 +25666,6 @@ columnsep}{3cm}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Multiple Columns
 status open
 
@@ -25633,8 +25767,224 @@ columnseprule}{2pt}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
 
+\begin_layout Plain Layout
+
+\size small
 \lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I acknowledged that I was.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, I've a conscience, sir, and when I chanced to see you go into this
+ house, as I came hobbling after you, I thought to myself, I'll just step
+ in and see that kind gentleman, and tell him that if I was a bit gruff
+ in my manner there was not any harm meant, and that I am much obliged to
+ him for picking up my books.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You make too much of a trifle,
+\begin_inset Quotes erd
+\end_inset
+
+ said I.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+May I ask how you knew who I was?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
+ you'll find my little bookshop at the corner of Church Street, and very
+ happy to see you, I am sure.
+ Maybe you collect yourself, sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+--a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Linie kann gefärbt werden, indem man den Befehl 
+\series bold
+
+\backslash
+columnseprulecolor
+\series default
+ umdefiniert.
+ Dies wird mit dem TeX-Code-Befehl
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{red}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+erreicht, der vor der Mehrfachspalten-Einfügung eingefügt wird.
+ 
+\series bold
+red
+\series default
+ wird hierbei durch eine Farbe der Wahl ersetzt.
+ Man kann alle vor- und selbstdefinierten Farben verwenden.
+ Siehe das 
+\emph on
+EingebetteteObjekte
+\emph default
+-Handbuch, Abschnitt 
+\emph on
+Colored
+\begin_inset space ~
+\end_inset
+
+Tables
+\emph default
+ für mehr Informationen über vor- und selbstdefinierte Farben.
+ Um auf die voreingestellte Farbe zurück zu wechseln, gibt man den Befehl
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+ein.
+\begin_inset Newline newline
+\end_inset
+
+Hier ist ein Beispiel mit einer hellblauen Linie und 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm Spaltenabstand:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{cyan}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Flex Multiple Columns
 status open
 
@@ -25752,6 +26102,17 @@ status collapsed
 setlength{
 \backslash
 columnseprule}{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
 \end_layout
 
 \end_inset
