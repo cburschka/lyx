@@ -135,10 +135,8 @@ dist_esclipartdoc_DATA = \
 
 eudocdir = $(docdir)/eu
 dist_eudoc_DATA = \
-	eu/Customization.lyx \
 	eu/Intro.lyx \
-	eu/Tutorial.lyx \
-	eu/UserGuide.lyx
+	eu/Tutorial.lyx
 
 frdocdir = $(docdir)/fr
 dist_frdoc_DATA = \
@@ -197,10 +195,8 @@ dist_idclipartdoc_DATA = \
 
 itdocdir = $(docdir)/it
 dist_itdoc_DATA = \
-	it/Customization.lyx \
 	it/Intro.lyx \
-	it/Tutorial.lyx \
-	it/UserGuide.lyx
+	it/Tutorial.lyx
 
 itclipartdocdir = $(itdocdir)/clipart
 dist_itclipartdoc_DATA = \
