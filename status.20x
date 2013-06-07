@@ -89,6 +89,8 @@ What's new
 
 - Disable invalid actions in empty outliner that could trigger a crash
   (bug 8885).
+ 
+- Fix warning when setting layout box when Plain Layout is used (bug 8727).
 
 - Fix bug where searching for next change may leave an empty paragraph
   where cursor was (bug 3199).
