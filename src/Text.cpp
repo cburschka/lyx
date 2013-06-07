@@ -735,8 +735,11 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	if (cur.lastpos() == 0 && !cpar.allowEmpty()) {
 		if (changeDepthAllowed(cur, DEC_DEPTH))
 			changeDepth(cur, DEC_DEPTH);
-		else 
-			setLayout(cur, tclass.defaultLayoutName());
+		else {
+			docstring const & lay = cur.paragraph().usePlainLayout()
+			    ? tclass.plainLayoutName() : tclass.defaultLayoutName();
+			setLayout(cur, lay);
+		}
 		return;
 	}
 
