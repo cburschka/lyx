@@ -147,8 +147,8 @@ Format 1
 # Motion group
 #
 
-\bind "M-Up"                   "command-alternatives paragraph-move-up; inset-modify tabular move-row-up"
-\bind "M-Down"                 "command-alternatives paragraph-move-down; inset-modify tabular move-row-down"
+\bind "M-Up"                   "command-alternatives outline-up; paragraph-move-up; inset-modify tabular move-row-up"
+\bind "M-Down"                 "command-alternatives outline-down; paragraph-move-down; inset-modify tabular move-row-down"
 \bind "M-Right"                "inset-modify tabular move-column-right"
 \bind "M-Left"                 "inset-modify tabular move-column-left"
 \bind "C-Right"                "word-right"

@@ -231,8 +231,8 @@ Format 1
 \bind_file greekkeys.bind
 
 
-\bind "M-Up"			"command-alternatives paragraph-move-up; inset-modify tabular move-row-up"
-\bind "M-Down"			"command-alternatives paragraph-move-down; inset-modify tabular move-row-down"
+\bind "M-Up"			"command-alternatives outline-up; paragraph-move-up; inset-modify tabular move-row-up"
+\bind "M-Down"			"command-alternatives outline-down; paragraph-move-down; inset-modify tabular move-row-down"
 \bind "M-Right"			"inset-modify tabular move-column-right"
 \bind "M-Left"			"inset-modify tabular move-column-left"
 \bind "S-KP_Right"  			"char-right-select"
