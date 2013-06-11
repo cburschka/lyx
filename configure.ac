@@ -162,7 +162,7 @@ AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
-// Taken from gettext
+# Taken from gettext
 AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
    [AC_TRY_COMPILE([#include <stddef.h>
       wchar_t foo = (wchar_t)'\0';], ,
