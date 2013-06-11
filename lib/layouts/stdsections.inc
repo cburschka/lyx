@@ -125,6 +125,7 @@ Style Paragraph
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
+	HTMLTag               h5
 End
 
 
@@ -135,6 +136,7 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
+	HTMLTag               h6
 End
 
 Input stdrefprefix.inc
