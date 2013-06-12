@@ -2189,7 +2189,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << html::CR()
 			   << html::StartTag(tag)
-				 << html::CompTag("img", "src=\"" + filename + "\"")
+				 << html::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
 				 << html::EndTag(tag)
 				 << html::CR();
 			success = true;
