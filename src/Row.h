@@ -61,9 +61,9 @@ public:
 	///
 	pos_type endpos() const { return end_; }
 	///
-	void setDimension(Dimension const & dim);
-	///
 	Dimension const & dimension() const { return dim_; }
+	///
+	Dimension & dimension() { return dim_; }
 	///
 	int height() const { return dim_.height(); }
 	///

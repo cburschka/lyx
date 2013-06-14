@@ -41,12 +41,6 @@ void Row::setCrc(size_type crc) const
 }
 
 
-void Row::setDimension(Dimension const & dim)
-{
-	dim_ = dim;
-}
-
-
 void Row::pos(pos_type p)
 {
 	pos_ = p;

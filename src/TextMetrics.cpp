@@ -460,32 +460,27 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pos_type first = 0;
 	size_t row_index = 0;
 	// maximum pixel width of a row
-	int width = max_width_ - right_margin; // - leftMargin(max_width_, pit, row);
 	do {
-		Dimension dim;
-		pos_type end = rowBreakPoint(width, pit, first);
-		if (row_index || end < par.size())
+		if (row_index == pm.rows().size())
+			pm.rows().push_back(Row());
+		Row & row = pm.rows()[row_index];
+		row.pos(first);
+		breakRow(row, right_margin, pit);
+		setRowHeight(row, pit);
+		row.dimension().wid = rowWidth(right_margin, pit, first, row.endpos());
+		row.setChanged(false);
+		if (row_index || row.endpos() < par.size())
 			// If there is more than one row, expand the text to
 			// the full allowable width. This setting here is needed
 			// for the computeRowMetrics() below.
 			dim_.wid = max_width_;
-
-		dim = rowHeight(pit, first, end);
-		dim.wid = rowWidth(right_margin, pit, first, end);
-		if (row_index == pm.rows().size())
-			pm.rows().push_back(Row());
-		Row & row = pm.rows()[row_index];
-		row.setChanged(false);
-		row.pos(first);
-		row.endpos(end);
-		row.setDimension(dim);
-		int const max_row_width = max(dim_.wid, dim.wid);
+		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
-		first = end;
+		first = row.endpos();
 		++row_index;
 
-		pm.dim().wid = max(pm.dim().wid, dim.wid);
-		pm.dim().des += dim.height();
+		pm.dim().wid = max(pm.dim().wid, row.width());
+		pm.dim().des += row.height();
 	} while (first < par.size());
 
 	if (row_index < pm.rows().size())
@@ -494,18 +489,17 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
 	if (first > 0 && par.isNewline(first - 1)) {
-		Dimension dim = rowHeight(pit, first, first);
-		dim.wid = rowWidth(right_margin, pit, first, first);
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
-		row.setChanged(false);
 		row.pos(first);
 		row.endpos(first);
-		row.setDimension(dim);
-		int const max_row_width = max(dim_.wid, dim.wid);
+		row.dimension().wid = rowWidth(right_margin, pit, first, first);
+		setRowHeight(row, pit);
+		row.setChanged(false);
+		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
-		pm.dim().des += dim.height();
+		pm.dim().des += row.height();
 	}
 
 	pm.dim().asc += pm.rows()[0].ascent();
@@ -719,7 +713,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 
 
 #if 0
-// Not used, see TextMetrics::rowBreakPoint.
+// Not used, see TextMetrics::breakRow
 // this needs special handling - only newlines count as a break point
 static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
@@ -801,13 +795,17 @@ private:
 
 } // anon namespace
 
-pos_type TextMetrics::rowBreakPoint(int const width, pit_type const pit,
-		pos_type const pos) const
+void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
-	if (pos == end || width < 0)
-		return end;
+	pos_type const pos = row.pos();
+	int const left = leftMargin(max_width_, pit, pos);
+	int const width = max_width_ - right_margin;
+	if (pos == end || width < 0) {
+		row.endpos(end);
+		return;
+	}
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	ParagraphList const & pars = text_->paragraphs();
@@ -831,7 +829,6 @@ pos_type TextMetrics::rowBreakPoint(int const width, pit_type const pit,
 		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
 	}
 
-	int const left = leftMargin(max_width_, pit, pos);
 	pos_type const body_pos = par.beginOfBody();
 	int x = left;
 	pos_type point = end;
@@ -940,7 +937,7 @@ pos_type TextMetrics::rowBreakPoint(int const width, pit_type const pit,
 	if (body_pos && point < body_pos)
 		point = body_pos;
 
-	return point;
+	row.endpos(point);
 }
 
 
@@ -1018,8 +1015,8 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 }
 
 
-Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
-		pos_type const end, bool topBottomSpace) const
+void TextMetrics::setRowHeight(Row & row, pit_type const pit, 
+				    bool topBottomSpace) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	// get the maximum ascent and the maximum descent
@@ -1037,7 +1034,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = bv_->buffer();
-	Font font = displayFont(pit, first);
+	Font font = displayFont(pit, row.pos());
 	FontSize const tmpsize = font.fontInfo().size();
 	font.fontInfo() = text_->layoutFont(pit);
 	FontSize const size = font.fontInfo().size();
@@ -1060,7 +1057,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for ( ; ii != iend; ++ii) {
-		if (ii->pos >= first && ii->pos < end) {
+		if (ii->pos >= row.pos() && ii->pos < row.endpos()) {
 			Dimension const & dim = pm.insetDimension(ii->inset);
 			maxasc  = max(maxasc,  dim.ascent());
 			maxdesc = max(maxdesc, dim.descent());
@@ -1073,7 +1070,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	int labeladdon = 0;
 
 	FontSize maxsize =
-		par.highestFontInRange(first, end, size);
+		par.highestFontInRange(row.pos(), row.endpos(), size);
 	if (maxsize > font.fontInfo().size()) {
 		// use standard paragraph font with the maximal size
 		FontInfo maxfont = font.fontInfo();
@@ -1091,7 +1088,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	Inset const & inset = text_->inset();
 
 	// is it a top line?
-	if (first == 0 && topBottomSpace) {
+	if (row.pos() == 0 && topBottomSpace) {
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
@@ -1131,7 +1128,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
 			layoutasc = layout.itemsep * dh;
-		} else if (pit != 0 || first != 0) {
+		} else if (pit != 0 || row.pos() != 0) {
 			if (layout.topsep > 0)
 				layoutasc = layout.topsep * dh;
 		}
@@ -1149,7 +1146,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	}
 
 	// is it a bottom line?
-	if (end >= par.size() && topBottomSpace) {
+	if (row.endpos() >= par.size() && topBottomSpace) {
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
@@ -1184,15 +1181,16 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
 	if (main_text_ && topBottomSpace) {
-		if (pit == 0 && first == 0)
+		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&
-		    end == par.size() &&
-				!(end > 0 && par.isNewline(end - 1)))
+		    row.endpos() == par.size() &&
+				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
 			maxdesc += 20;
 	}
 
-	return Dimension(0, maxasc + labeladdon, maxdesc);
+	row.dimension().asc = maxasc + labeladdon;
+	row.dimension().des = maxdesc;
 }
 
 
@@ -1214,7 +1212,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	bidi.computeTables(par, buffer, row);
 
 	pos_type vc = row.pos();
-	pos_type end = row.endpos();
+	pos_type const end = row.endpos();
 	pos_type c = 0;
 	Layout const & layout = par.layout();
 
@@ -2230,7 +2228,11 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Point rxy = cur.bv().getPos(bvcur);
 
 	// calculate dimensions of the word
-	dim = rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
+	Row row;
+	row.pos(wordStart.pos());
+	row.endpos(bvcur.pos());
+	setRowHeight(row, bvcur.pit(), false);
+	dim = row.dimension();
 	dim.wid = abs(rxy.x_ - lxy.x_);
 
 	// calculate position of word

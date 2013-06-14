@@ -124,11 +124,8 @@ public:
 	/// Returns the height of the row (width member is set to 0).
 	/// If \c topBottomSpace is true, extra space is added for the
 	/// top and bottom row.
-	Dimension rowHeight(
-		pit_type const pit,
-		pos_type const first,
-		pos_type const end,
-		bool topBottomSpace = true) const;
+	void setRowHeight(Row & row, pit_type const pit, 
+			  bool topBottomSpace = true) const;
 
 private:
 	///
@@ -142,11 +139,7 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	pos_type rowBreakPoint(
-		int width,
-		pit_type const pit,
-		pos_type first
-		) const;
+	void breakRow(Row & row, int right_margin, pit_type const pit) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
 	int rowWidth(
