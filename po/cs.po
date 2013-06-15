@@ -43,9 +43,8 @@ msgid "Skip trailing non-word characters"
 msgstr "Přeskakovat speciální znaky"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
-#, fuzzy
 msgid "Use M&ac-style cursor movement"
-msgstr "&Skok kurzoru mezi slovy jako na Mac-u"
+msgstr "Poh&yb kurzoru jako na Mac-u"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
@@ -173,13 +172,12 @@ msgid "S&hort Name:"
 msgstr "&Zkratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:110
-#, fuzzy
 msgid "E&xtensions:"
-msgstr "Přípo&na:"
+msgstr "Příp&ony:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:123
 msgid "&MIME:"
-msgstr ""
+msgstr "&MIME:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:136
 msgid "Shortc&ut:"
@@ -202,26 +200,24 @@ msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "Nastavit standardní výstupní formát při použití (PDF)LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
-#, fuzzy
 msgid "Default Output Formats"
-msgstr "&Standarní výstupní formát:"
+msgstr "&Standarní výstupní formáty:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:214
 msgid "With &TeX fonts:"
-msgstr ""
+msgstr "Při použití fontů &TeX-u:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
 msgid "The default output format for documents (except with non-TeX fonts)"
-msgstr ""
+msgstr "Standardní výstupní formát pro dokumenty"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr ""
+msgstr "Při fontů m&imo TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
-#, fuzzy
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "Nastavit standardní výstupní formát při použití (PDF)LaTeX-u"
+msgstr "Standardní formát pro dokumenty používající fonty, jež nebyly určeny pro TeX"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
@@ -421,7 +417,6 @@ msgid "Select the language of the user interface (menus, dialogs, etc.)"
 msgstr "Zvolit jazyk uživatelského rozhraní (menu, dialogy, ...)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:39
-#, fuzzy
 msgid "Language &package:"
 msgstr "Jazykový &balíček:"
 
@@ -487,14 +482,12 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "Příkaz LaTeX-u, který ukončuje přepnutí změny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
-#, fuzzy
 msgid "Default Decimal &Separator:"
-msgstr "Na desetinné čárce"
+msgstr "Oddělovač &desetinné čárky:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:160
-#, fuzzy
 msgid "Default length &unit:"
-msgstr "Stan&dardní jazyk:"
+msgstr "Jednotka &míry:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:173
 msgid ""
@@ -550,7 +543,6 @@ msgstr ""
 "arabština)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:231
-#, fuzzy
 msgid "Enable &RTL support"
 msgstr "&Zapnout podporu psaní zprava-doleva"
 
@@ -937,9 +929,8 @@ msgid "Page Layout"
 msgstr "Rozvržení stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:171
-#, fuzzy
 msgid "Page &style:"
-msgstr "Styl &hlavičky:"
+msgstr "Styl &stránky:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:187
 msgid "Style used for the page header and footer"
@@ -1244,9 +1235,8 @@ msgid "Copyright"
 msgstr "Autorská práva"
 
 #: src/frontends/qt4/ui/AboutUi.ui:99
-#, fuzzy
 msgid "Build Info"
-msgstr "Chyby při sestavování"
+msgstr "Sestavení"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -1423,7 +1413,6 @@ msgid "CheckTeX start options and flags"
 msgstr "Nastavení pro CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:285
-#, fuzzy
 msgid ""
 "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
 "files.\n"
@@ -1435,7 +1424,7 @@ msgstr ""
 "LaTeX-ovým souborům.\n"
 "Změňte standardní nastavení pouze v případě, že TeX nebyl koretkně detekován "
 "při konfiguraci.\n"
-"Pozor: vaše změny nebudou uloženy."
+"Pozor: vaše změny zde nebudou uloženy."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:291
 msgid "&Use Windows-style paths in LaTeX files"
@@ -1856,21 +1845,18 @@ msgid "Rotate"
 msgstr "Otočení"
 
 #: src/frontends/qt4/ui/TabularUi.ui:188 src/frontends/qt4/ui/TabularUi.ui:332
-#, fuzzy
 msgid "rotation angle"
-msgstr "Styl citace"
+msgstr "úhel rotace"
 
 #: src/frontends/qt4/ui/TabularUi.ui:207 src/frontends/qt4/ui/TabularUi.ui:351
-#, fuzzy
 msgid "degrees"
-msgstr "zelená"
+msgstr "stupně"
 
 #: src/frontends/qt4/ui/TabularUi.ui:238
 msgid "Table-wide settings"
 msgstr "Celotabulkové nastavení"
 
 #: src/frontends/qt4/ui/TabularUi.ui:244
-#, fuzzy
 msgid "W&idth:"
 msgstr "Šíř&ka:"
 
@@ -1920,9 +1906,8 @@ msgid "Rotate the table by 90 degrees"
 msgstr "Otoč tabulku o 90 stupňů"
 
 #: src/frontends/qt4/ui/TabularUi.ui:319
-#, fuzzy
 msgid "&Rotate"
-msgstr "Otočení"
+msgstr "O&točení"
 
 #: src/frontends/qt4/ui/TabularUi.ui:366
 msgid "Column settings"
@@ -2240,9 +2225,8 @@ msgid "Errors reported in terminal."
 msgstr "Chyby vypsány na terminál."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:58
-#, fuzzy
 msgid "Convert"
-msgstr "Konvertory"
+msgstr "Konvertovat"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
@@ -2281,19 +2265,16 @@ msgid "&Jurabib"
 msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
-#, fuzzy
 msgid "Bibliography Style"
-msgstr "Heslo bibliografie"
+msgstr "Styl bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:121
-#, fuzzy
 msgid "Default st&yle:"
-msgstr "&Standarní tiskárna:"
+msgstr "S&tandarní styl:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:131
-#, fuzzy
 msgid "Define the default BibTeX style"
-msgstr "Vybrat styl BibTeX-u"
+msgstr "Definovat standardní styl BibTeX-u"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:140
 msgid "Select this if you want to split your bibliography into sections"
@@ -15738,19 +15719,16 @@ msgid "Fold Math Macro|d"
 msgstr "Zabalit matematické makro|b"
 
 #: lib/ui/stdmenus.inc:330
-#, fuzzy
 msgid "Outline Pane|u"
-msgstr "Osnova|O"
+msgstr "Osnova|s"
 
 #: lib/ui/stdmenus.inc:331
-#, fuzzy
 msgid "Source Pane|S"
-msgstr "Zdrojový text pro LaTeX|x"
+msgstr "Zdrojový text|x"
 
 #: lib/ui/stdmenus.inc:332
-#, fuzzy
 msgid "Messages Pane|g"
-msgstr "Prohlížet ladící výpisy|P"
+msgstr "Ladící výpisy|L"
 
 #: lib/ui/stdmenus.inc:333
 msgid "Toolbars|b"
@@ -15922,9 +15900,8 @@ msgid "Interword Space|w"
 msgstr "Mezislovní mezera|M"
 
 #: lib/ui/stdmenus.inc:403
-#, fuzzy
 msgid "Visible Space|i"
-msgstr "Vertikální mezera"
+msgstr "Viditelná mezera|t"
 
 #: lib/ui/stdmenus.inc:404 lib/ui/stdcontext.inc:220 lib/ui/stdcontext.inc:243
 msgid "Thin Space|T"
@@ -16035,9 +16012,8 @@ msgid "Table of Contents|C"
 msgstr "Obsah|O"
 
 #: lib/ui/stdmenus.inc:457
-#, fuzzy
 msgid "List of Listings|L"
-msgstr "Seznam výpisů"
+msgstr "Seznam výpisů|v"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Nomenclature|N"
@@ -24194,6 +24170,12 @@ msgstr ""
 "soubor.xxx\n"
 "                  kde fmt vybraný formát k importu\n"
 "                  a soubor.xxx je soubor určený k importu.\n"
+"\t-E [--export-to] fmt soubor\n"
+"                  kde fmt je vybraný exportní formát.\n"
+"                  a soubor je jméno výstupního souboru.\n"
+"\t-i [--import] fmt soubor.xxx\n"
+"                  kde fmt je zvolený formát pro import\n"
+"                  a soubor.xxx vstupní dokument pro import.\n"
 "\t-f [--force-overwrite] what\n"
 "                  kde 'what' je buď 'all'(=vše), 'main'(=hlavní) nebo "
 "'none'(=žádný),\n"
