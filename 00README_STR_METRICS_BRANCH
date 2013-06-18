@@ -1,0 +1,31 @@
+This branch is where I (jmarc) try to implement string_wise metrics
+computation. This is done through a series of cleanups. The expected
+speed improvement will only be visible at the end of the road: indeed
+for now we intend to keep unchanged behavior for testing purposes.
+
+What is done:
+* Make TextMetrics methods operate on Row objects: breakRow and
+setRowHeight instead of rowBreakPoint and rowHeight.
+* change breakRow operation to operate on text strings on which
+metrics are computed. Note that for now FontMetrics::width(docstring)
+still computes the sum of character widths, so that behavior is
+unchanged.
+
+Next steps:
+* Make breakRow build a list of elements (string, inset,
+separator,...) in the row. This will be reused by other methods
+* get rid of rowWidth (breakRow does compute this)
+* re-implement getColumnNearX using row elements
+* re-implement x2pos using row elements
+* re-implement row painting using row elements
+* Finally, implement proper string metrics computation (with cache)
+* profile and see how performance can be improved.
+
+Difference in behavior
+* words longer than the screen are no monger broken at an arbitrary
+point. This will not be useful anymore with horizontal scrolling.
+* end of paragraph markers metrics are computed with the font of the
+actual text, not default font. This will be extended to the other
+methods.
+
+The other differences should be considered as bugs.
