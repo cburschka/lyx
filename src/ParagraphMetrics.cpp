@@ -190,8 +190,7 @@ void ParagraphMetrics::dump() const
 {
 	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
 	for (size_t i = 0; i != rows_.size(); ++i) {
-		lyxerr << "  row " << i << ":   ";
-		rows_[i].dump();
+		lyxerr << "  row " << i << ":   " << rows_[i];
 	}
 }
 

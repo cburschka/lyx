@@ -467,7 +467,12 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.pos(first);
 		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
+		int w = row.width();
 		row.dimension().wid = rowWidth(right_margin, pit, first, row.endpos());
+		if (row.width() != w) {
+			lyxerr << w << " => " << row.width() << ", body=" << par.beginOfBody() << ", size=" << par.size()<< ", inset=" << par.inInset().layoutName()<< endl;
+			lyxerr << row;
+		}
 		row.setChanged(false);
 		if (row_index || row.endpos() < par.size())
 			// If there is more than one row, expand the text to
@@ -800,9 +805,13 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
-	int const left = leftMargin(max_width_, pit, pos);
 	int const width = max_width_ - right_margin;
-	if (pos == end || width < 0) {
+	pos_type const body_pos = par.beginOfBody();
+	row.clear();
+	row.dimension().wid = leftMargin(max_width_, pit, pos);
+
+	if (pos >= end || row.width() > width) {
+		row.dimension().wid += right_margin;
 		row.endpos(end);
 		return;
 	}
@@ -818,7 +827,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		return addressBreakPoint(pos, par);
 #endif
 
-
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
 	pos_type inlineCompletionLPos = -1;
@@ -829,115 +837,106 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
 	}
 
-	pos_type const body_pos = par.beginOfBody();
-	int x = left;
-	pos_type point = end;
-
-	FontIterator fi = FontIterator(*this, par, pit, pos);
-	// Accumulator for character strings
-	docstring chunkstr;
-	Font chunkfont = *fi;
-
 	// Now we iterate through until we reach the right margin
-	// or the end of the par, then choose the possible break
-	// nearest that.
-
+	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
-	for ( ; i < end; ++i, ++fi) {
-		// Add the chunk width when it is finished
-		if (par.isInset(i) || *fi != chunkfont
-		    || (body_pos && i == body_pos)) {
-			x += theFontMetrics(chunkfont).width(chunkstr);
-			chunkstr.clear();
-			chunkfont = *fi;
-		}
-
+	FontIterator fi = FontIterator(*this, par, pit, pos);
+	while (i < end && row.width() < width) {
 		char_type c = par.getChar(i);
 		Language const * language = fi->language();
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
-			x += pm.insetDimension(par.getInset(i)).wid;
+			Inset const * ins = par.getInset(i);
+			Dimension dim = pm.insetDimension(ins);
+			row.add(i, ins, dim);
+		} else if (par.isLineSeparator(i)) {
+			// In theory, no inset has this property. If
+			// this is done, a new addSeparator which
+			// takes an inset as parameter should be
+			// added.
+			LATTEST(!par.isInset(i));
+			row.addSeparator(i, c, *fi, par.lookupChange(i));
 		} else if (c == '\t')
-			chunkstr += "    ";
+			row.add(i, from_ascii("    "), *fi, par.lookupChange(i));
 		else if (language->rightToLeft()) {
 			if (language->lang() == "arabic_arabtex" ||
 			    language->lang() == "arabic_arabi" ||
 			    language->lang() == "farsi") {
 				if (!Encodings::isArabicComposeChar(c))
-					chunkstr += par.transformChar(c, i);
+					row.add(i, par.transformChar(c, i),
+						*fi, par.lookupChange(i));
 			} else if (language->lang() == "hebrew" &&
 				   !Encodings::isHebrewComposeChar(c)) {
-				chunkstr+= c;
+				row.add(i, c, *fi, par.lookupChange(i));
 			}
 		} else
-			chunkstr += c;
+			row.add(i, c, *fi, par.lookupChange(i));
 
+		// end of paragraph marker
 		if (lyxrc.paragraph_markers
-		    && i == end - 1 && size_type(pit + 1) < pars.size())
+		    && i == end - 1 && size_type(pit + 1) < pars.size()) {
 			// enlarge the last character to hold the end-of-par marker
-			chunkstr += char_type(0x00B6);
+			Font f(text_->layoutFont(pit));
+			f.fontInfo().setColor(Color_paragraphmarker);
+			row.add(i, char_type(0x00B6), f, Change());
+		}
 
 		// add inline completion width
-		if (inlineCompletionLPos == i)
-			chunkstr += bv_->inlineCompletion();
+		if (inlineCompletionLPos == i) {
+			Font f = *fi;
+			f.fontInfo().setColor(Color_inlinecompletion);
+			row.add(i, bv_->inlineCompletion(), f, Change());
+		}
+
+		// Handle some situations that abruptly terminate the row
+		// - A newline inset
+		// - Before a display inset
+		// - After a display inset
+		Inset const * inset = 0;
+		if (par.isNewline(i)
+		    || (i + 1 < end && (inset = par.getInset(i + 1))
+			&& inset->display())
+		    || (!row.empty() && row.back().inset
+			&& row.back().inset->display())) {
+			++i;
+			break;
+		}
+
+		++i;
+		++fi;
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
 			FontMetrics const & fm = theFontMetrics(
 				text_->labelFont(par));
-			int add = fm.width(par.layout().labelsep);
-			//if (par.isLineSeparator(i - 1))
-			//	add -= singleWidth(pit, i - 1);
-
-			add = max(add, labelEnd(pit) - x);
-			x += add;
+			if (!row.empty() && row.back().isLineSeparator())
+				row.pop_back();
+			int const add = max(fm.width(par.layout().labelsep),
+					    labelEnd(pit) - row.width());
+			row.addSpace(i, add);
 		}
 
-		if (par.isNewline(i)) {
-			point = i + 1;
-			break;
-		}
-		Inset const * inset = 0;
-		// Break before...
-		if (i + 1 < end) {
-			if ((inset = par.getInset(i + 1)) && inset->display()) {
-				point = i + 1;
-				break;
-			}
-			// ...and after.
-			if ((inset = par.getInset(i)) && inset->display()) {
-				point = i + 1;
-				break;
-			}
-		}
-
-		if (par.isLineSeparator(i)) {
-			x += theFontMetrics(chunkfont).width(chunkstr);
-			chunkstr.clear();
-			chunkfont = *fi;
-			if (x >= width) {
-				// exit on last registered breakpoint:
-				break;
-			}
-			// register breakpoint:
-			point = i + 1;
-		}
 	}
 
-	if (i == end) {
-		x += theFontMetrics(chunkfont).width(chunkstr);
-		// maybe found one, but the par is short enough.
-		if (x < width)
-			point = end;
-	}
+	row.finalizeLast();
+	row.endpos(i);
+	// if the row is too large, try to cut at last separator.
+	if (row.width() >= width)
+		row.separate_back(body_pos);
+
+	// if the row ends with a separator that is not at end of
+	// paragraph, remove it
+	if (!row.empty() && row.back().isLineSeparator()
+	    && row.endpos() < par.size())
+		row.pop_back();
+
+	row.dimension().wid += right_margin;
 
 	// manual labels cannot be broken in LaTeX. But we
 	// want to make our on-screen rendering of footnotes
 	// etc. still break
-	if (body_pos && point < body_pos)
-		point = body_pos;
-
-	row.endpos(point);
+	// if (body_pos && point < body_pos)
+	// 	point = body_pos;
 }
 
 

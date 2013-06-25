@@ -20,8 +20,13 @@
 
 #include "DocIterator.h"
 
+#include "frontends/FontMetrics.h"
+
 #include "support/debug.h"
 
+#include <ostream>
+
+using namespace std;
 
 namespace lyx {
 
@@ -29,7 +34,7 @@ namespace lyx {
 Row::Row()
 	: separator(0), label_hfill(0), x(0),
 	sel_beg(-1), sel_end(-1),
-	begin_margin_sel(false), end_margin_sel(false), 
+	begin_margin_sel(false), end_margin_sel(false),
 	changed_(false), crc_(0), pos_(0), end_(0)
 {}
 
@@ -62,7 +67,7 @@ bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
 	// Is the chosen margin selected ?
 	if (sel_pos == margin_pos) {
 		if (beg.pos() == end.pos())
-			// This is a special case in which the space between after 
+			// This is a special case in which the space between after
 			// pos i-1 and before pos i is selected, i.e. the margins
 			// (see DocIterator::boundary_).
 			return beg.boundary() && !end.boundary();
@@ -71,21 +76,21 @@ bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
 			// drawn if the cursor is after the margin.
 			return !end.boundary();
 		else if (beg.pos() == margin_pos)
-			// If the selection begins around the margin, it is 
+			// If the selection begins around the margin, it is
 			// only drawn if the cursor is before the margin.
 			return beg.boundary();
-		else 
+		else
 			return true;
 	}
 	return false;
 }
 
 
-void Row::setSelectionAndMargins(DocIterator const & beg, 
+void Row::setSelectionAndMargins(DocIterator const & beg,
 		DocIterator const & end) const
 {
 	setSelection(beg.pos(), end.pos());
-	
+
 	if (selection()) {
 		end_margin_sel = isMarginSelected(false, beg, end);
 		begin_margin_sel = isMarginSelected(true, beg, end);
@@ -116,14 +121,151 @@ bool Row::selection() const
 	return sel_beg != -1 && sel_end != -1;
 }
 
-
-void Row::dump(char const * s) const
+ostream & operator<<(ostream & os, Row const & row)
 {
-	LYXERR0(s << " pos: " << pos_ << " end: " << end_
-		<< " width: " << dim_.wid
-		<< " ascent: " << dim_.asc
-		<< " descent: " << dim_.des);
+	os << " pos: " << row.pos_ << " end: " << row.end_
+	   << " width: " << row.dim_.wid
+	   << " ascent: " << row.dim_.asc
+	   << " descent: " << row.dim_.des << "\n";
+	Row::Elements::const_iterator it = row.elements_.begin();
+	for ( ; it != row.elements_.end() ; ++it) {
+		switch (it->type) {
+		case Row::Element::STRING_ELT:
+			os << "**STRING: " << to_utf8(it->str) << endl;
+			break;
+		case Row::Element::INSET_ELT:
+			os << "**INSET: " << to_utf8(it->inset->layoutName()) << endl;
+			break;
+		case Row::Element::SEPARATOR_ELT:
+			os << "**SEPARATOR: " << endl;
+			break;
+		case Row::Element::SPACE_ELT:
+			os << "**SPACE: " << it->dim.wid << endl;
+			break;
+		}
+	}
+	return os;
 }
 
+
+bool Row::sameString(Font const & f, Change const & ch) const
+{
+	if (elements_.empty())
+		return false;
+	Element const & elt = elements_.back();
+	return elt.type == Element::STRING_ELT && !elt.final
+		   && elt.font == f && elt.change == ch;
+}
+
+
+void Row::finalizeLast()
+{
+	if (elements_.empty())
+		return;
+	Element & elt = elements_.back();
+	if (elt.final)
+		return;
+	elt.final = true;
+
+	if (elt.type == Element::STRING_ELT) {
+		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
+		dim_.wid += elt.dim.wid;
+	}
+}
+
+
+void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim)
+{
+	finalizeLast();
+	Element e(Element::INSET_ELT);
+	e.pos = pos;
+	e.inset = ins;
+	e.dim = dim;
+	elements_.push_back(e);
+	dim_.wid += dim.wid;
+}
+
+
+void Row::add(pos_type const pos, docstring const & s,
+	      Font const & f, Change const & ch)
+{
+	if (sameString(f, ch))
+		elements_.back().str += s;
+	else {
+		finalizeLast();
+		Element e(Element::STRING_ELT);
+		e.pos = pos;
+		e.str = s;
+		e.font = f;
+		e.change = ch;
+		elements_.push_back(e);
+	}
+}
+
+
+void Row::add(pos_type const pos, char_type const c,
+	      Font const & f, Change const & ch)
+{
+	add(pos, docstring(1,c), f, ch);
+}
+
+
+void Row::addSeparator(pos_type const pos, char_type const c,
+		       Font const & f, Change const & ch)
+{
+	finalizeLast();
+	Element e(Element::SEPARATOR_ELT);
+	e.pos = pos;
+	e.str += c;
+	e.font = f;
+	e.change = ch;
+	e.dim.wid = theFontMetrics(f).width(c);
+	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
+}
+
+
+void Row::addSpace(pos_type pos, int width)
+{
+	finalizeLast();
+	Element e(Element::SEPARATOR_ELT);
+	e.pos = pos;
+	e.dim.wid = width;
+	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
+}
+
+
+void Row::pop_back()
+{
+	dim_.wid -= elements_.back().dim.wid;
+	elements_.pop_back();
+}
+
+
+void Row::separate_back(pos_type const keep)
+{
+	if (empty())
+		return;
+	int i = elements_.size();
+	int new_end = end_;
+	int new_wid = dim_.wid;
+	if (i > 0 && elements_[i - 1].isLineSeparator() && new_end > keep) {
+		--i;
+		new_end = elements_[i].pos;
+		new_wid -= elements_[i].dim.wid;
+	}
+
+	while (i > 0 && !elements_[i - 1].isLineSeparator() && new_end > keep) {
+		--i;
+		new_end = elements_[i].pos;
+		new_wid -= elements_[i].dim.wid;
+	}
+	if (i == 0)
+		return;
+	end_ = new_end;
+	dim_.wid = new_wid;
+	elements_.erase(elements_.begin() + i, elements_.end());
+}
 
 } // namespace lyx
