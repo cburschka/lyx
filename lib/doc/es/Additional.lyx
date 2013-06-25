@@ -136,6 +136,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 5862389 "IG" 
 \end_header
 
 \begin_body
@@ -351,7 +352,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Ver\SpecialChar \menuseparator
-Fuente
+Panel de código fuente
 \end_layout
 
 \end_inset
@@ -701,7 +702,7 @@ tex2lyx
 \end_inset
 
  traducirá casi todo el LaTeX legal, pero no todo.
- Dejará en modo TeX (ERT) cosas que no comprende, así que después de importar
+ Dejará en código TeX cosas que no comprende, así que después de importar
  un archivo con 
 \begin_inset Flex Code
 status collapsed
@@ -718,7 +719,7 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-Si no sabes qué es ERT lee la sección siguiente.
+Si no sabes qué es código TeX lee la sección siguiente.
 \end_layout
 
 \begin_layout Section
@@ -738,7 +739,7 @@ Todo lo que se puede hacer en LaTeX se puede hacer en LyX, por una razón
  LyX.
  LyX no puede, y nunca podrá, mostrar cada una de las posibles estructuras
  de LaTeX.
- Si necesitas incluir comandos LaTeX en tu documento, puedes usar los cuadros
+ Si necesitas incluir comandos LaTeX en tu documento, puedes usar los marcos
  de 
 \begin_inset Flex Code
 status collapsed
@@ -792,7 +793,7 @@ puedes poner prácticamente todo, incluso figuras y
 \begin_inset Newline newline
 \end_inset
 
-tablas (no flotantes).
+cuadros (no flotantes).
  
 \begin_inset Newline newline
 \end_inset
@@ -854,7 +855,7 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-El cuadro en 
+El recuadro en 
 \begin_inset Flex Code
 status collapsed
 
@@ -875,7 +876,7 @@ código TeX
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -894,7 +895,7 @@ begin{minipage}{5cm}
 \begin_layout Plain Layout
 
 Este es un ejemplo para un entorno minipágina.
- En él puedes poner prácticamente todo, incluso figuras y tablas (no flotantes).
+ En él puedes poner prácticamente todo, incluso figuras y cuadros (no flotantes).
 \end_layout
 
 \begin_layout Plain Layout
@@ -1073,8 +1074,8 @@ Respecto al último punto, LyX tiene bastantes características incorporadas,
  Asegúrate de explorar los manuales para convencerte de que LyX no dispone
  de tal o cual función antes de hacerlo a mano.
  Además, hay por ahí multitud de paquetes LaTeX para hacer toda clase de
- cosas, desde etiquetas o sobres a fantásticas tablas multipágina.
- Investiga en sitios 
+ cosas, desde etiquetas o sobres a fantásticos cuadros multipágina.
+ Investiga en 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -2437,7 +2438,7 @@ Todo es correcto, no has utilizado ninguna de las opciones de ajuste fino,
 \emph on
 funky
 \emph default
- en una ecuación o en una tabla, como insertar un gráfico en una celda?
+ en una ecuación o en un cuadro, como insertar un gráfico en una celda?
  
 \end_layout
 
@@ -2476,7 +2477,7 @@ sloppypar
 
 \begin_layout Enumerate
 Vale, no recibes ningún mensaje de error, pero la salida es horrorosa.
- Si tienes una tabla o figura que es demasiado ancha o larga para la página,
+ Si tienes un cuadro o una figura demasiado anchos o largos para la página,
  tienes que:
 \end_layout
 
@@ -2486,7 +2487,7 @@ ajustar el tamaño de la figura a la página.
 \end_layout
 
 \begin_layout Enumerate
-ajustar la tabla para que quepa.
+ajustar el cuadro para que quepa.
 \end_layout
 
 \end_deeper
@@ -3326,7 +3327,7 @@ btUnits
 \end_layout
 
 \begin_layout Section
-Documentos divididos en varios
+Documentos con varias partes
 \end_layout
 
 \begin_layout Subsection
@@ -3601,7 +3602,7 @@ Esta sección está algo anticuada.
 Se pueden configurar referencias cruzadas entre los distintos archivos.
  Primero, abre todos los archivos en cuestión: digamos A y B por ejemplo,
  donde B está incluido en A.
- Supongamos que insertas una etiqueta en A y quieres referenciarla en B.
+ Supongamos que insertas una etiqueta en A y quieres mencionarla en B.
  Abre el diálogo de referencias cruzadas en B y selecciona el 
 \begin_inset Quotes fld
 \end_inset
@@ -4478,7 +4479,7 @@ Marcas
 \end_layout
 
 \begin_layout Standard
-El diálogo suministra una tabla de símbolos para las marcas.
+El diálogo suministra un cuadro de símbolos para las marcas.
  En el cuadro 
 \family sans
 Tipografía 
@@ -5083,11 +5084,11 @@ eLyXer
 Los convertidores basados en LaTeX tienen la ventaja de que, en principio,
  lo saben todo sobre el documento que exporta LaTeX.
  Estos convertidores no se preocupan, por ejemplo, de si determinado bloque
- de código fue generado por LyX o si era 
+ de código fue generado por LyX o si era código TeX (o ERT, 
 \emph on
 Evil Red Text
 \emph default
-.
+).
  Saben manejar archivos 
 \family typewriter
 aux
@@ -5097,7 +5098,7 @@ aux
 bbl
 \family default
  generados por BibTeX.
- Por otra parte, LaTeX es un lenguage complejo de analizar ---a veces se
+ Por otra parte, LaTeX es un lenguaje complejo de analizar ---a veces se
  comenta que solo TeX comprende a TeX--- y los convertidores basados en
  LaTeX se atascan a menudo con estructuras aparentemente simples; las complejas
  pueden ahogarlos totalmente; en el momento de escribir esto, por ejemplo,
@@ -5116,7 +5117,7 @@ htlatex
  Puesto que realmente las ecuaciones son generadas por LaTeX, son correctas.
  Pero no redimensionan bien su tamaño, y ajustar su aspecto al que debería
  tener en el documento ---de forma que los tamaños de los caracteres parezcan
- aproxidamente iguales--- puede ser un reto.
+ aproximadamente iguales--- puede ser un reto.
  
 \end_layout
 
@@ -5296,8 +5297,8 @@ automáticamente
 \emph default
  la información de estilo CSS correspondiente a la información que maneja
  para mostrar el documento en pantalla: si los encabezados de sección son
- sans-serif en negrita en pantalla, entonces también (por omisión) serán
- sans-serif negrita en un navegador web.
+ palo seco en negrita en pantalla, entonces también (por omisión) serán
+ palo seco negrita en un navegador web.
  Y esto es cierto no solo para estilos predefinidos, como una sección, sino
  para cualquier estilo, incluyendo los definidos por el usuario.
  En realidad, las rutinas XHTML no distinguen entre estilos de texto y de
@@ -5355,7 +5356,7 @@ xymatrix
 
 \end_inset
 
- o ERT--- la transformará en imagen.
+ o código TeX--- la transformará en imagen.
 \end_layout
 
 \begin_layout Itemize
@@ -5411,7 +5412,7 @@ xymatrix
 
 \end_inset
 
- o ERT--- la transformará en imagen.
+ o código TeX--- la transformará en imagen.
 \end_layout
 
 \begin_layout Itemize
@@ -5503,7 +5504,7 @@ Si, por alguna razón, LyX falla al crear una imagen para una ecuación (p.
 \begin_inset space ~
 \end_inset
 
-ej., si no está instalado un paquete LaTeX requerido), genrará la salida
+ej., si no está instalado un paquete LaTeX requerido), generará la salida
  en LaTeX puro.
 \end_layout
 
@@ -5582,9 +5583,9 @@ Eventualmente, LyX ofrecerá al usuario la opción de seleccionar un método
 status collapsed
 
 \begin_layout Plain Layout
-Dicho esto, como LyX recurre a imágenes si el recuadro contiene ERT, es
- posible forzar la salida como imagen poniendo algún ERT inocuo en la ecuación,
- por ejemplo 
+Dicho esto, como LyX recurre a imágenes si el recuadro contiene código TeX,
+ es posible forzar la salida como imagen poniendo algún código TeX inocuo
+ en la ecuación, por ejemplo 
 \begin_inset Formula $a=b\relax$
 \end_inset
 
@@ -5966,7 +5967,7 @@ preferences
 \begin_layout Standard
 Si estás desarrollando un programa cliente, podría ser útil activar la informaci
 ón de depuración del servidor de LyX.
- Esto se hace inciando LyX con 
+ Esto se hace iniciando LyX con 
 \begin_inset Flex Code
 status collapsed
 
@@ -6040,15 +6041,7 @@ clientname es un nombre que el cliente puede escoger arbitrariamente.
 
 \begin_layout Description
 function es la función que quieres que LyX lleve a cabo.
- Es lo mismo que los comandos que usarías en el 
-\begin_inset Quotes fld
-\end_inset
-
-minibuffer
-\begin_inset Quotes frd
-\end_inset
-
-.
+ Es lo mismo que los comandos que usarías en el minibúfer.
 \end_layout
 
 \begin_layout Description
@@ -7316,7 +7309,7 @@ Búsqueda inversa DVI
 \end_inset
 
 .
- EN el botón 
+ En el botón 
 \begin_inset Quotes fld
 \end_inset
 
@@ -7530,8 +7523,7 @@ $$t
 
 \end_inset
 
-: nombre del archivo .tex exportado (temporal)name of the (temporary) exported
- .tex file
+: nombre del archivo .tex exportado (temporal)
 \end_layout
 
 \begin_layout Itemize
@@ -7546,8 +7538,7 @@ $$o
 \end_inset
 
 : nombre del archivo de salida exportado (dvi o pdf, según el que exista
- en el directorio temporal)name of the exported output file (either dvi
- or pdf, depending on which one exists in the temporary directory)
+ en el directorio temporal)
 \end_layout
 
 \begin_layout Standard
@@ -8106,19 +8097,19 @@ Si quieres usar alguno de ellos tienes que introducirlos a mano, y
 \end_layout
 
 \begin_layout Subsection
-Figuras y tablas flotantes
+Figuras y cuadros flotantes
 \end_layout
 
 \begin_layout Standard
-LyX proporciona soporte para poner figuras y tablas flotantes, por tanto
+LyX proporciona soporte para poner figuras y cuadros flotantes, por tanto
  no queremos decir mucho más sobre ello.
  Acude a la 
 \emph on
 Guía del Usuario
 \emph default
 .
- Solo recordaremos que las tablas deben alinearse a la izquierda.
- Para eso selecciona la tabla y cambia la alineación en 
+ Solo recordaremos que los cuadros deben alinearse a la izquierda.
+ Para eso selecciona el cuadro y cambia la alineación en 
 \family sans
 \bar under
 E
@@ -8454,13 +8445,14 @@ altaffilmark
 altaffiltext
 \family default
 , que resaltarán como luciérnagas en la noche en la plantilla recién abierta.
- Comandos como estos deben introducirse directamente en ERT, 
+ Comandos como estos deben introducirse directamente en código TeX, (antes
+ conocido por ERT, 
 \emph on
 Evil Red Text
 \emph default
-.
- He intentado reducir la cantidad de ERT necesario en documentos AASTeX,
- pero aún queda más del que quisiéramos.
+).
+ He intentado reducir la cantidad de código TeX necesario en documentos
+ AASTeX, pero aún queda más del que quisiéramos.
 \end_layout
 
 \begin_layout Subsection
@@ -8890,7 +8882,7 @@ shortauthors
 email
 \family default
  (2.3) solo se puede poner separado, no en mitad de un párrafo.
- Usa ERT si necesitas empotrarlo.
+ Usa código TeX si necesitas empotrarlo.
 \end_layout
 
 \begin_layout Itemize
@@ -8912,7 +8904,7 @@ and
 notetoeditor
 \family default
  (2.6) solo se puede poner separado, no en mitad de un párrafo.
- Usa ERT si necesitas empotrarlo.
+ Usa código TeX si necesitas empotrarlo.
 \end_layout
 
 \begin_layout Itemize
@@ -9028,7 +9020,7 @@ figcaption
 \end_layout
 
 \begin_layout Subsubsection
-Cosas no implementadas, ERT necesario
+Cosas no implementadas, código TeX necesario
 \end_layout
 
 \begin_layout Standard
@@ -9092,9 +9084,9 @@ tablenum
 \backslash
 tableline
 \family default
- (2.15.4, insertarla como primer elemento en la celda izquierda y después
- donde quieras.
- No uses ninguna regla de LyX en la tabla), 
+ (2.15.4, insertar como primer elemento en la celda izquierda y después donde
+ se quiera.
+ No uses ninguna regla de LyX en el cuadro), 
 \family typewriter
 
 \backslash
@@ -9301,11 +9293,11 @@ You should not mix title layouts with normal ones
 \end_layout
 
 \begin_layout Subsubsection
-Error de LaTeX al procesar una tabla 
+Error de LaTeX al procesar un cuadro
 \end_layout
 
 \begin_layout Standard
-LyX, por omisión, intenta centrar el encabezado/título de la tabla.
+LyX, por omisión, intenta centrar el encabezado/título del cuadro.
  Esto parece ocasionar una mala interacción con AASTeX; entonces debes hacer
  clic en algún sitio del encabezado/título, después abrir la 
 \family sans
@@ -9356,7 +9348,7 @@ no
 \begin_inset space \thinspace{}
 \end_inset
 
-e., escribe 
+ej., escribe 
 \family typewriter
 Ressler(1992)
 \family default
@@ -9410,8 +9402,8 @@ plotone
 \begin_inset space ~
 \end_inset
 
-como ERT en una Figura Flotante si lo deseas, pero yo nunca he tenido la
- suerte de conseguir un formato correcto.
+como código TeX en una Figura Flotante si lo deseas, pero yo nunca he tenido
+ la suerte de conseguir un formato correcto.
  Con los gráficos estándar, LyX inserta el comando 
 \family typewriter
 
@@ -9790,7 +9782,7 @@ Correo
 \begin_inset space ~
 \end_inset
 
-electrónico Diercción de correo electrónico del autor.
+electrónico Dirección de correo electrónico del autor.
 \end_layout
 
 \begin_layout Description
@@ -9892,7 +9884,7 @@ Adivina para qué es esto.
 \end_layout
 
 \begin_layout Example*
-sSe usa para ejemplos que ilustran resultados probados.
+Se usa para ejemplos que ilustran resultados probados.
 \end_layout
 
 \begin_layout Problem
@@ -11744,7 +11736,7 @@ psnfss
 \end_layout
 
 \begin_layout Subsubsection
-Figuras y tablas
+Figuras y cuadros
 \end_layout
 
 \begin_layout Standard
@@ -11752,7 +11744,7 @@ Figuras y tablas
 \family sans
 Foil
 \family default
-TeX redefine los flotantes de figuras y tablas para que aparezcan exactamente
+TeX redefine los flotantes de figuras y cuadros para que aparezcan exactamente
  en su lugar en el texto más bien que al principio de la página o en alguna
  otra posición.
  De hecho, si haces cambios en la colocación de los flotantes no serán tenidos
@@ -12963,23 +12955,23 @@ ijmpd
 \family typewriter
 tbl
 \family default
- para implementar encabezados de tabla.
- Como resultado, una tabla creada por LyX se imprime correctamente, pero
+ para implementar encabezados de cuadro.
+ Como resultado, un cuadro creado por LyX se imprime correctamente, pero
  se ignora su encabezado.
- Sin embargo puedes emplear ERT para sortear este problema, de forma que
- los encabezados se impriman como es de esperar.
- Para hacerlo crea una tabla flotante de la manera habitual, quita el encabezado
+ Sin embargo puedes emplear código TeX para sortear este problema, de forma
+ que los encabezados se impriman como es de esperar.
+ Para hacerlo crea un cuadro flotante de la manera habitual, quita el encabezado
  y reemplázalo por 
 \family typewriter
 
 \backslash
 tbl{
 \emph on
-encabezado de la tabla
+encabezado del cuadro
 \emph default
 }{
 \family default
- en ERT —atención a la llave de apertura 
+ en código TeX —atención a la llave de apertura 
 \begin_inset Quotes fld
 \end_inset
 
@@ -12987,15 +12979,15 @@ encabezado de la tabla
 \begin_inset Quotes frd
 \end_inset
 
-—, y cierra inmediatamente detrás del contenido de la tabla con 
+—, y cierra inmediatamente detrás del contenido del cuadro con 
 \family typewriter
 }
 \family default
- en ERT.
- Estudia los ejemplos de tablas incluidos en las plantillas para ver como
+ en código TeX.
+ Estudia los ejemplos de cuadros incluidos en las plantillas para ver como
  se realiza este procedimiento.
- Alternativamente, si necesitas encabezados de tabla, podrías construir
- la tabla flotante completa en un archivo 
+ Alternativamente, si necesitas encabezados de cuadro, podrías construir
+ el cuadro flotante completo en un archivo 
 \family typewriter
 .tex
 \family default
@@ -13018,7 +13010,7 @@ ws-ijmpc.tex
 \family typewriter
 ws-ijmpd.tex
 \family default
- puedes ver más detalles sobre la creación de tablas flotantes.
+ puedes ver más detalles sobre la creación de cuadros flotantes.
 \end_layout
 
 \begin_layout Subsection
@@ -13108,11 +13100,11 @@ El archivo
 \end_layout
 
 \begin_layout Subsection
-Uso de ERT
+Uso de código TeX
 \end_layout
 
 \begin_layout Standard
-El uso de ERT se reduce a dos comandos, que deben colocarse al principio
+El uso de código TeX se reduce a dos comandos, que deben colocarse al principio
  del documento.
  Si has empezado tu artículo a partir de una plantilla 
 \family typewriter
@@ -13122,11 +13114,12 @@ ijmpc.lyx
 \family typewriter
 ijmpd.lyx
 \family default
-, el ERT necesario ya está en su sitio; generalmente no necesitas borrarlo.
- Solo puedes modificar el primer ERT para especificar la información impresa
- en la parte superior de las páginas pares e impares (título corto del artículo
- y nombre del autor, respectivamente).
- Este ERT debe ser de la forma 
+, el código TeX necesario ya está en su sitio; generalmente no necesitas
+ borrarlo.
+ Solo puedes modificar el primer código TeX para especificar la información
+ impresa en la parte superior de las páginas pares e impares (título corto
+ del artículo y nombre del autor, respectivamente).
+ Este código TeX debe ser de la forma 
 \family typewriter
 
 \backslash
@@ -13301,13 +13294,13 @@ Hay un entorno general de título
 Article
 \family default
  que no es soportado directamente por LyX.
- Puede usarse en ERT si tu documento no se adecúa a ninguno de los otros
- tipos de título.
+ Puede usarse en código TeX si tu documento no se adecúa a ninguno de los
+ otros tipos de título.
 \end_layout
 
 \begin_layout Standard
 Para más información, como consejos para formatos especiales de ecuaciones
- y tablas, echa un vistazo a las pautas dadas por el autor de IOP.
+ y cuadros, echa un vistazo a las pautas dadas por el autor de IOP.
 \end_layout
 
 \begin_layout Section
@@ -13368,7 +13361,7 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 
 \begin_layout Standard
 LyX soporta muchas características del paquete pero no todas.
- No obstante, el ERT necesario se reduce a ciertos 
+ No obstante, el código TeX necesario se reduce a ciertos 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13599,7 +13592,7 @@ end{article}
 \begin_inset Quotes fld
 \end_inset
 
-ERT
+código TeX
 \begin_inset Quotes frd
 \end_inset
 
@@ -13622,7 +13615,7 @@ opening
 
 .
  Esto no está implementado en LyX, así que hay que introducir el título,
- subtítulo, etc., entre dos líneas ERT (
+ subtítulo, etc., entre dos líneas en código TeX (
 \family typewriter
 
 \backslash
@@ -13682,7 +13675,7 @@ peculiaridades
 \end_layout
 
 \begin_layout Enumerate
-no borrar el ERT incluido en el modelo, y
+no borrar el código TeX incluido en el modelo, y
 \end_layout
 
 \begin_layout Enumerate
@@ -13910,26 +13903,16 @@ Las clases LaTeX de documentos de la familia Koma-Script definen un cierto
 \end_layout
 
 \begin_layout Standard
-En la documentación en alemán de Koma-Script, 
+En la documentación de Koma-Script, 
 \emph on
 scrguide
 \emph default
-, hay una detallada descripción de las clases LaTeX de la familia Koma-Script.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Hay una traducción al inglés, 
+ (alemán) y 
 \emph on
-screnggu
+scrguien
 \emph default
-, pero no está completa.
-\end_layout
-
-\end_inset
-
- Las secciones siguientes solo describen aquellos aspectos que son relevantes
- en LyX.
+ (inglés), hay una detallada descripción de las clases LaTeX de la familia
+ Koma-Script.
 \end_layout
 
 \begin_layout Subsection
@@ -14128,7 +14111,7 @@ Encabezado_Abajo
 \family default
  son encabezados especiales que respetan los espacios diferentes para encabezado
 s situados sobre y bajo un elemento (si sigues estrictamente las normas
- tipográficas, pondrás los encabezados de tabla siempre sobre ellas).
+ tipográficas, pondrás los encabezados de cuadro siempre sobre ellos).
  También puedes usar la opción de clase 
 \family typewriter
 tablecaptionsabove
@@ -14141,7 +14124,7 @@ Encabezado
 \family sans
 Encabezado_Arriba
 \family default
- para las tablas y por 
+ para los cuadros y por 
 \family sans
 Encabezado_Abajo
 \family default
@@ -15388,7 +15371,7 @@ Visión previa
 \end_layout
 
 \begin_layout Standard
-Memoir es una clase poderosa y en continuo desarrollo.
+Memoir es una clase poderosa y en continCarpeta sin títulouo desarrollo.
  Se ha diseñado para escribir literatura de ficción y de no ficción.
  Su objetivo es dar al usuario el máximo control sobre su documento.
  Memoir está basada en la clase estándar 
@@ -15411,7 +15394,7 @@ Peter Wilson, el desarrollador de Memoir, es conocido como autor de muchos
  LyX, no obstante, no soporta por sí mismo todas sus características.
  Algunas se podrán añadir en futuras versiones
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Estás invitado a enviar sugerencias a 
@@ -15432,9 +15415,9 @@ lyx-devel@lists.lyx.org
 
 , muchas nunca, probablemente, debido a limitaciones estructurales de LyX.
  Por supuesto, puedes usar todas las características con ayuda de comandos
- LaTeX (ERT
+ LaTeX (código TeX
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Consulta la sección
@@ -15600,9 +15583,9 @@ nto.
 \end_layout
 
 \begin_layout Description
-TOC/LOF/LOT: En las clases estándar (y en muchas otras), el índice general
- (IG, TOC), la lista de figuras (LOF) y la lista de tablas (LOT) se inician
- automáticamente en página nueva.
+TOC/LOF/LOT: En las clases estándar (y en muchas otras), los índices general
+ (IG, TOC), de figuras (LOF) y de cuadros (LOT) se inician automáticamente
+ en página nueva.
  
 \family sans
 Memoir
@@ -15671,7 +15654,7 @@ Opciones
 \family sans
 article
 \family default
-: los contadores (de notas al pie, figuras, tablas, etc.) no se reinician
+: los contadores (de notas al pie, figuras, cuadros, etc.) no se reinician
  al cambiar de capítulo, los capítulos nuevos no comienzan en página nueva
  (aunque, a diferencia de las clases 
 \family sans
@@ -15894,8 +15877,8 @@ Memoir
 \family sans
 verse
 \family default
-, pero necesitas usar ERT, porque tienen que anidarse en entornos regulares
- de verso, lo que no es posible en LyX).
+, pero necesitas usar código TeX, porque tienen que anidarse en entornos
+ regulares de verso, lo que no es posible en LyX).
 \end_layout
 
 \begin_layout Description
@@ -16315,14 +16298,26 @@ Afiliación
 \family default
  son exactamente equivalentes, por lo que no tendrías que usar ambos.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si tienes curiosidad, se incluyeron ambos para que 
 \family typewriter
-reLyX
+tex2LyX
 \family default
- pueda traducirlos.
+ puediera traducir ambos,
+\family typewriter
+ 
+\backslash
+address
+\family default
+ y 
+\family typewriter
+
+\backslash
+affiliation
+\family default
+.
 \end_layout
 
 \end_inset
@@ -16661,7 +16656,7 @@ svprobth.layout
 \end_layout
 
 \begin_layout Subsection
-Créditos
+CréditosCarpeta sin título
 \end_layout
 
 \begin_layout Standard
@@ -16772,7 +16767,7 @@ solo
 
 la clase 
 \family sans
-slides (default)
+slides (predeterminada)
 \family default
 \emph on
 .
@@ -17453,7 +17448,7 @@ Confiemos en que alguna futura versión de LyX resuelva esta peculiaridad\Specia
 \begin_layout Subsection
 Hacer una presentación con 
 \family sans
-Transparencia
+Diapositiva
 \family default
 , 
 \family sans
@@ -17467,7 +17462,7 @@ Nota
 \begin_layout Subsubsection
 Utilizar el entorno 
 \family sans
-Transparencia
+Diapositiva
 \end_layout
 
 \begin_layout Standard
@@ -17486,7 +17481,7 @@ slides
 \begin_layout Standard
 Al escoger el entorno 
 \family sans
-Transparencia
+Diapositiva
 \family default
  (como se indica en la sección
 \begin_inset space ~
@@ -17499,7 +17494,7 @@ reference "sec:slide-Peculiaridades"
 
 \end_inset
 
-) LyX comienza una transparencia nueva.
+) LyX comienza una nueva.
  El marcador para este entorno/
 \begin_inset Quotes fld
 \end_inset
@@ -17520,7 +17515,13 @@ línea ASCII
 \begin_inset Quotes fld
 \end_inset
 
-transparencia:
+
+\change_deleted 5862389 1371738263
+transparencia
+\change_inserted 5862389 1371738267
+Nueva Diap.
+\change_unchanged
+:
 \begin_inset Quotes frd
 \end_inset
 
@@ -17528,23 +17529,23 @@ transparencia:
 \end_layout
 
 \begin_layout Standard
-Cualquier texto o entorno de párrafo que siga a este irá en la nueva transparenc
-ia.
+Cualquier texto o entorno de párrafo que siga a este irá en la nueva diapositiva.
  Es simple.
 \end_layout
 
 \begin_layout Standard
-Probablemente, las transparencias son la única ocasión en que necesitarás
- forzar saltos de página en LyX (puede especificarse en el diálogo 
+Probablemente, en las diapositivas necesitarás forzar saltos de página en
+ LyX (puede especificarse en el diálogo 
 \family sans
-Formato de Párrafo
+Insertar\SpecialChar \menuseparator
+Formato
 \family default
 ).
  De hecho, tendrás que hacerlo una vez acabes el contenido de una transparencia.
  Si has introducido más texto del que cabe en una transparencia, el sobrante
  irá a una nueva.
- Sin embargo no lo recomiendo, puesto que la transparencia con el texto
- excedente no tendrá número de página.
+ Sin embargo no lo recomiendo, puesto que la diapositiva con el texto excedente
+ no tendrá número de página.
  Además, puede interferir con algún 
 \family sans
 Superpuesto
@@ -17563,7 +17564,7 @@ Nota
 \family default
  funcionan como el entorno 
 \family sans
-Transparencia
+Diapositiva
 \family default
 .
  Ambos crean una 
@@ -17611,7 +17612,7 @@ línea ASCII
 \begin_layout Standard
 Igual que para 
 \family sans
-Transparencia
+Diapositiva
 \family default
 , si los contenidos de una 
 \family sans
@@ -17621,7 +17622,7 @@ Nota
 \family sans
 Superpuesto
 \family default
- exceden el espacio físico de la transparencia o del papel, el texto sobrante
+ exceden el espacio físico de la diapositiva o del papel, el texto sobrante
  ocupa una nueva hoja.
  De nuevo lo desaconsejamos porque las 
 \family sans
@@ -17641,7 +17642,7 @@ Superpuesto
 \family default
  con 
 \family sans
-Transparencia
+Diapositiva
 \end_layout
 
 \begin_layout Standard
@@ -17650,7 +17651,7 @@ La idea de un
 Superpuesto 
 \family default
 es una transparencia que se superpone a otra.
- Supón que quieres presentar una figura en una transparencia antes que el
+ Supón que quieres presentar una figura en una diapositiva antes que el
  texto que la acompaña.
  Una forma de conseguirlo es ocultar con papel negro la parte que quieres
  que se muestre más tarde.
@@ -17673,7 +17674,7 @@ Superpuesto
 \family default
 tiene el mismo número de página que la 
 \family sans
-Transparencia
+Diapositiva
 \family default
  
 \begin_inset Quotes fld
@@ -17742,9 +17743,9 @@ s deberían tener
 
 tras el número de página de la 
 \family sans
-Tr
+Diapositiva
 \family default
-ansparencia 
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17758,9 +17759,9 @@ madre
 
 \end_inset
 
- ¡Efectivamente, quieres que la Tr
+ ¡Efectivamente, quieres que la Diapositiva
 \family sans
-ansparencia 
+ 
 \family default
 y el 
 \family sans
@@ -17781,7 +17782,7 @@ parte de
 
  una 
 \family sans
-Transparencia
+Diapositiva
 \family default
 .
  De hecho, la clase 
@@ -17798,13 +17799,13 @@ Superpuesto
 \family default
  es más corta que la de comienzo de una 
 \family sans
-Transparencia
+Diapositiva
 \family default
 .
  Por último, al generar salida impresa, verás marcas de alineación en las
  cuatro esquinas de las páginas de la 
 \family sans
-Transparencia
+Diapositiva
 \family default
  y del 
 \family sans
@@ -17866,7 +17867,7 @@ TextoInvisible
  <Invisible Text Follows>.
  Los párrafos que siguen a esta etiqueta en la 
 \family sans
-Transparencia
+Diapositiva
 \family default
  o el 
 \family sans
@@ -17888,7 +17889,7 @@ TextoVisible
  Los párrafos que la siguen se comportan normalmente.
  Ten en cuenta que el inicio de 
 \family sans
-Transparencia
+Diapositiva
 \family default
 , 
 \family sans
@@ -17909,7 +17910,7 @@ TextoVisible
 \family default
  al final de una 
 \family sans
-Transparencia
+Diapositiva
 \family default
 .
 \end_layout
@@ -17926,7 +17927,7 @@ TextoVisible
 \family default
  en los entornos 
 \family sans
-Transparencia
+Diapositiva
 \family default
  y 
 \family sans
@@ -17938,7 +17939,7 @@ Superpuesto
 \begin_layout Enumerate
 Crea una 
 \family sans
-Transparencia
+Diapositiva
 \family default
 , incluyendo todo lo que debe aparecer en ella y en los 
 \family sans
@@ -17975,7 +17976,7 @@ Superpuesto
 \family default
 inmediatamente detrás de la 
 \family sans
-Transparencia
+Diapositiva
 \family default
 .
 \end_layout
@@ -17983,7 +17984,7 @@ Transparencia
 \begin_layout Enumerate
 Copia los contenidos de esta 
 \family sans
-Transparencia
+Diapositiva
 \family default
  en el 
 \family sans
@@ -18095,7 +18096,7 @@ Nota
 \family default
  con 
 \family sans
-Transparencia
+Diapositiva
 \end_layout
 
 \begin_layout Standard
@@ -18109,7 +18110,7 @@ Nota
 \family default
  está asociada a una 
 \family sans
-Transparencia
+Diapositiva
 \series bold
  
 \family default
@@ -18133,7 +18134,7 @@ Nota
 \family default
  es más corta que la de una 
 \family sans
-Transparencia
+Diapositiva
 \family default
  pero más larga que la de 
 \family sans
@@ -18146,7 +18147,7 @@ Nota
 \family default
  tiene en la salida el número de página de la 
 \family sans
-Transparencia
+Diapositiva
 \family default
  
 \begin_inset Quotes fld
@@ -18199,11 +18200,11 @@ Nota
 \family default
 s asociadas a una 
 \family sans
-Transparencia
+Diapositiva
 \family default
 , y, como con 
 \family sans
-Transparencia
+Diapositiva
 \family default
  y 
 \family sans
@@ -18224,7 +18225,7 @@ Nota
  es evidente: hacer comentarios adicionales al contenido principal.
  También podría utilizarse como recordatorio en una 
 \family sans
-Transparencia
+Diapositiva
 \family default
  determinada.
  En este caso, podrías hacer uso de marcadores de tiempo.
@@ -18347,7 +18348,7 @@ Notas
 \family default
  de esta manera te recordará cuanto tiempo emplear en una 
 \family sans
-Transparencia
+Diapositiva
 \family default
  determinada.
 \end_layout
@@ -18356,7 +18357,7 @@ Transparencia
 Queda por describir una característica.
  Seguramente te gustaría imprimir todas tus 
 \family sans
-Transparencias 
+Diapositivas 
 \family default
 y 
 \family sans
@@ -18377,7 +18378,7 @@ deben
 \emph default
  seguir a la 
 \family sans
-Transparencia
+Diapositiva
 \family default
  a la que están asociadas.
  ¿Qué hacer entonces?
@@ -18405,7 +18406,7 @@ slides}
 
  hará que la salida solo contenga las 
 \family sans
-Transparencias 
+Diapositivas 
 \family default
 y 
 \family sans
@@ -18575,7 +18576,7 @@ plantilla
 .
  Contiene un ejemplo de presentación con el trío 
 \family sans
-Transparencia
+Diapositiva
 \family default
  – 
 \family sans
@@ -18588,7 +18589,7 @@ Nota
 .
  La 
 \family sans
-Transparencia
+Diapositiva
 \family default
  y el 
 \family sans
@@ -18620,7 +18621,7 @@ Descomenta (borra
 \begin_inset Quotes frd
 \end_inset
 
-) para imprimir solo transparencias y superpuestos.
+) para imprimir solo diapositivas y superpuestos.
  
 \emph on
 (N.
@@ -18738,7 +18739,7 @@ seminar
  (presente en algunas distribuciones de TeX).
  Este último aún no es soportado por LyX.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Quizá quieras abordar tú la tarea\SpecialChar \ldots{}
@@ -20293,7 +20294,26 @@ de
 versiones
 \family default
 .
- LyX se probó con la versión RCS 5.7.
+ LyX se ha probado con la versión RCS 5.7/5.8.
+\lang english
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Note that old DOS / MS Windows builds (5.7) need to setup environment variables
+ in order to work properly with LyX.
+ In particular time zone (TZ) should be set and more importantly RCSINIT
+ in order to change default archive location ("SET RCSINIT=-x,v/") --- LyX
+ expects archive to be found in file.lyx,v within the original document directory.
+ See also README shipped with Windows RCS binaries.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -20317,25 +20337,9 @@ Registrar
 Este comando registra el documento con RCS\SpecialChar \@.
  Se te pide interactivamente una
  descripción inicial del documento.
- Entonces el documento es puesto en modo Solo-lectura y debes 
+ Por ahora, el documento está puesto en modo Solo-lectura y debes 
 \family sans
-Comprobar
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-para
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-editar 
+Liberar para edición 
 \family default
 antes de hacer cambios en él.
  Un documento bajo control de revisión tiene un ítem 
@@ -20346,11 +20350,7 @@ antes de hacer cambios en él.
 \begin_inset Quotes frd
 \end_inset
 
- junto al nombre de archivo en el 
-\emph on
-minibuffer
-\emph default
-.
+ junto al nombre de archivo en el búfer .
 \end_layout
 
 \begin_layout Standard
@@ -20358,11 +20358,7 @@ Comando
 \family sans
  
 \family default
-RCS ejecutado:
-\end_layout
-
-\begin_layout Standard
-
+RCS ejecutado: 
 \family typewriter
 ci -q -u -i -t-"<descripción inicial>" <nombre-archivo>
 \end_layout
@@ -20379,23 +20375,23 @@ man ci
 \begin_layout Subsubsection
 
 \family sans
-Ingresar cambios
+Liberar cambios
 \end_layout
 
 \begin_layout Standard
-Cuando has acabado de editar un archivo, compruebas tus cambios.
- Al hacer esto
+Cuando has acabado de editar un archivo liberas tus cambios.
+ Al hacerlo
 \family sans
  
 \family default
-se te pide un mensaje de registro, que se almacena en el historial.
+se te pide una descripción que se almacena en el historial.
  El número de versión es actualizado, tus cambios se aplican al archivo
  maestro RCS, el documento es desbloqueado y puesto en modo Solo-lectura.
  
 \end_layout
 
 \begin_layout Standard
-El comando RCS es: 
+Comando RCS: 
 \family typewriter
 ci -q -u -m"<descripción>" <nombre-archivo>
 \end_layout
@@ -20403,25 +20399,14 @@ ci -q -u -m"<descripción>" <nombre-archivo>
 \begin_layout Subsubsection
 
 \family sans
-Comprobar para editar
+Reservar para edición
 \end_layout
 
 \begin_layout Standard
 Haciendo esto bloqueas el documento de manera que solo tú puedes editarlo.
  Además el documento será de Lectura-Escritura únicamente para ti.
- Generalmente continuarás la edición un rato más y cuando acabes harás 
-\family sans
-Entrar
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-cambios
-\family default
-.
+ Generalmente continuarás la edición un rato más y al acabar liberarás los
+ cambios.
  La línea de estado cambia para indicar que has bloqueado el archivo.
  
 \end_layout
@@ -20441,9 +20426,9 @@ versión del repositorio
 \end_layout
 
 \begin_layout Standard
-Esto descarga todos los cambios hechos en el documento desde la última entrada
- de cambios.
- Recibes un mensaje de aviso antes de descargar los cambios.
+Esto descartará todos los cambios hechos en el documento desde la última
+ liberación de cambios.
+ Recibes un mensaje de aviso antes de descartar los cambios.
 
 \family typewriter
  
@@ -20456,14 +20441,110 @@ co -f -u<version> <nombre-archivo>
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-Deshacer última revisión
+Copiar
 \end_layout
 
 \begin_layout Standard
-Esto es como si la última entrada de cambios no hubiera sucedido.
- No se han hecho cambios al documento cargado en LyX, pero la última versión
+Creará una copia del documento actual.
+ Puesto que RCS no soporta nativamente operaciones de copia, el historial
+ de versiones no se preserva y la copia se añade como archivo nuevo.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación de copia.
+ Después se crea la copia localmente y en el repositorio.
+ Si los directorios padre de los documentos original y copiado difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos en la copia
+ (como en 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se carga la copia en vez del documento original.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+RCS: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Copiar 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<nombre-archivo>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<nuevo-nombre-archivo>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ci -q -u -i 
+\begin_inset Quotes eld
+\end_inset
+
+<nuevo-nombre-archivo>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Deshacer última liberación
+\end_layout
+
+\begin_layout Standard
+Esto es como si la última liberación de cambios no hubiera sucedido.
+ No se hacen cambios al documento cargado en LyX, pero la última versión
  es eliminada del archivo maestro RCS.
  
 \end_layout
@@ -20471,7 +20552,7 @@ Esto es como si la última entrada de cambios no hubiera sucedido.
 \begin_layout Standard
 Comando RCS: 
 \family typewriter
-rcs -o<version> <nombre-archivo>
+rcs -o<versión> <nombre-archivo>
 \end_layout
 
 \begin_layout Subsubsection
@@ -20490,7 +20571,7 @@ rlog
 \family typewriter
 <nombre-archivo>
 \family default
- se muestra en una ventana.
+ se muestra en un buscador.
  Véase 
 \family typewriter
 man rlog
@@ -20503,7 +20584,14 @@ Información de revisión
 \end_layout
 
 \begin_layout Standard
-LyX soporta información de número de versión RCS (solo), véase 
+LyX soporta información de número de versión, autor, fecha y hora del último
+ ingreso.
+ Se obtienen de 
+\family typewriter
+rlog -r <nombre-archivo>
+\family default
+.
+ Véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:VCS-Información-de-revisión"
@@ -20534,19 +20622,19 @@ Uso general de CVS
 \end_layout
 
 \begin_layout Standard
-Si comienzas desde cero con CVS debes crear tu repositorio y comprobar la
+Si comienzas desde cero con CVS debes crear tu repositorio y reservar la
  copia de trabajo con herramientas externas.
  Si usas una configuración cliente-servidor puedes necesitar registrarte
- antes de hacer la primera comprobación del repositorio.
+ antes de hacer la primera reserva en el repositorio.
 \end_layout
 
 \begin_layout Standard
 Si tus documentos están bajo control de revisión y otros usan el mismo repositor
 io surgen problemas cuando se hacen cambios en el mismo documento y en el
- mism lugar.
- Los repositorios estándar CVS no operan con bloqueo de archivos, Esto puede
- sorprender, pero los conflictos solo suceden si la gente discrepa sobre
- el adecuado contenido de la misma parte de un documento.
+ mismo lugar.
+ Los repositorios estándar CVS no operan con bloqueo de archivos.
+ Esto puede sorprender, pero los conflictos solo suceden si la gente discrepa
+ sobre el adecuado contenido de la misma parte de un documento.
  Por tanto, si los colaboradores acostumbran a comunicarse regularmente,
  los conflictos ocurren raramente.
  Si no se comunican, tienen un problema fundamental de todos modos.
@@ -20554,16 +20642,16 @@ io surgen problemas cuando se hacen cambios en el mismo documento y en el
 \begin_inset Quotes fld
 \end_inset
 
-Comprobaciones reservadas
+reservas reservadas
 \begin_inset Quotes frd
 \end_inset
 
 .
- Si hacen así, la copia de trabajo de todos los archivos es de solo lectura
- al principio y el usuario comienza la edición después de usar un comando
- especial para hacer posible la escritura en la copia de trabajo.
- Cuando los cambios son ingresados la copia de trabajo vuelve al estado
- solo lectura.
+ Si lo hacen así, la copia de trabajo de todos los archivos es de solo lectura
+ cuando reservan primero y el usuario comienza la edición después de usar
+ un comando especial para hacer posible la escritura en la copia de trabajo.
+ Cuando los cambios son liberados la copia de trabajo vuelve al estado solo
+ lectura.
  Con LyX, uno debe editar el archivo 
 \begin_inset Flex Code
 status collapsed
@@ -20584,23 +20672,31 @@ cvs -r
 
 \end_inset
 
- para trabajar con revisiones reservadas.
+ para trabajar con 
+\begin_inset Quotes fld
+\end_inset
+
+reservas reservadas
+\begin_inset Quotes frd
+\end_inset
+
+.
  El beneficio es la posibilidad de ver quién está usando una copia con acceso
  a escritura de algún documento.
  No está garantizado que solo un usuario hace copias con permiso de escritura.
 \end_layout
 
 \begin_layout Standard
-LyX intenta averiguar si estás usando copia reservada o no.
+LyX intenta averiguar si estás usando reservas reservadas o no.
  Si la copia de trabajo es solo lectura asume que es reservada, si admite
  escritura y una copia adicional del documento existe en el subdirectorio
- CVS/Base, asume es no reservada.
- Si se detecta una copia reservada debes usar 
+ CVS/Base, asume que es no reservada.
+ Si se detecta una reservada debes usar 
 \begin_inset Flex EstiloCarácter:ItemMenú
 status collapsed
 
 \begin_layout Plain Layout
-Check Out
+Reservar
 \end_layout
 
 \end_inset
@@ -20611,7 +20707,7 @@ Check Out
 status collapsed
 
 \begin_layout Plain Layout
-Check In
+Liberar
 \end_layout
 
 \end_inset
@@ -20712,22 +20808,18 @@ solo
 CVS/Entries
 \family default
 ).
- Esto significa que debes comprobar el archivo por ti mismo usando herramientas
- externas.
+ Esto significa que debes crear o reservar el archivo por ti mismo usando
+ herramientas externas.
  (En caso de olvidar este paso, LyX registra el documento con RCS).
 \end_layout
 
 \begin_layout Standard
 Después se te pide interactivamente una descripción inicial del documento.
- No olvides que el archivo registrado todavía no es definitivo.
+ No olvides que el archivo registrado todavía no está liberado.
 \end_layout
 
 \begin_layout Standard
-El comando CVS que es ejecutado:
-\begin_inset Newline newline
-\end_inset
-
-
+El comando CVS que es ejecutado: 
 \family typewriter
 cvs -q add -m
 \begin_inset Quotes erd
@@ -20757,7 +20849,7 @@ El término
 
 
 \family default
- es una abreviación para 
+ anterior y en todos los demás comandos CVS es una abreviación para 
 \begin_inset Quotes fld
 \end_inset
 
@@ -20770,20 +20862,20 @@ cambiar el directorio de trabajo actual a la ubicación del archivo y usa
 \end_layout
 
 \begin_layout Subsubsection
-Ingresar cambios
+Liberar cambios
 \end_layout
 
 \begin_layout Standard
-Cuando has terminado de editar un archivo se graban los cambios.
+Cuando has terminado de editar un archivo se ingresan los cambios.
  Al hacerlo se te pide una descripción de los mismos.
- Después, los cambios son ingresados en el repositorio.
+ Después, los cambios son escritos en el repositorio.
  En caso de que no hayas cambiado el documento y se detecte una copia reservada
  se deshace la reserva hecha con 
 \begin_inset Flex EstiloCarácter:ItemMenú
 status collapsed
 
 \begin_layout Plain Layout
-Check Out
+Reservar
 \end_layout
 
 \end_inset
@@ -20793,7 +20885,7 @@ Check Out
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Comando
+Comandos
 \begin_inset space ~
 \end_inset
 
@@ -20839,7 +20931,7 @@ cvs -q unedit "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
-Descargar cambios
+Reservar cambios
 \end_layout
 
 \begin_layout Standard
@@ -20854,7 +20946,7 @@ cvs -q update "<file-name>"
 \end_layout
 
 \begin_layout Standard
-Si se detecta una descarga solo lectura la copia se hace reservada y accesible
+Si se detecta una reserva solo lectura la copia se hace reservada y accesible
  a escritura.
 \end_layout
 
@@ -20869,9 +20961,9 @@ Volver a la versión del repositorio
 \end_layout
 
 \begin_layout Standard
-Esto descargará todos los cambios hechos en el documento desde la última
- entrada de cambios.
- Recibes un mensaje de aviso antes de descargar los cambios.
+Esto descartará todos los cambios hechos en el documento desde la última
+ liberación.
+ Recibes un mensaje de aviso antes de descartar los cambios.
  Primero se borra el archivo y luego se ejecuta el comando CVS de actualización.
 
 \family typewriter
@@ -20912,7 +21004,222 @@ cvs -q unedit
 \end_layout
 
 \begin_layout Subsubsection
-Actualizar el directorio local de descarga desde el repositorio
+Copiar
+\end_layout
+
+\begin_layout Standard
+Creará una copia del documento actual.
+ Como CVS no soporta de forma nativa operaciones de copia, el historial
+ de versiones no se preserva y la copia se añade como archivo nuevo.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación de copia.
+ Después se crea la copia localmente y en el repositorio.
+ Si los directorios padre de los documentos original y copiado difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos en la copia
+ (como en 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se carga la copia en vez del documento original.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+CVS: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Copiar 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Renombrar
+\end_layout
+
+\begin_layout Standard
+Este comando renombra el documento actual.
+ Como CVS no soporta de forma nativa operaciones de renombrado, el historial
+ de versiones no se preserva, el documento renombrado se añade como archivo
+ nuevo y el original se borra.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación.
+ Después el documento se renombra localmente y en el repositorio.
+ Si los directorios padre de los nombres de erchivo nuevo y antiguo difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos (como en
+ 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se recarga el documento con el nuevo nombre.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+CVS: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Renombrar 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q remove 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Actualizar la reserva del directorio local desde el repositorio
 \end_layout
 
 \begin_layout Standard
@@ -20921,7 +21228,7 @@ Conforme tus documentos son más complejos, conteniendo sub-documentos y
 \family typewriter
 .tex
 \family default
- y demás, el uso de control de versiones se hace más complicado.
+ y demás, el uso de control de versiones se hace más complejo.
  LyX soporta la actualización del árbol completo en el que reside el documento.
  Esto es especialmente útil cuando colaboras con gente que ni tiene conocimiento
  detallado de CVS ni tiene interés en ingresar material adicional al repositorio.
@@ -20937,7 +21244,7 @@ El comando
 status collapsed
 
 \begin_layout Plain Layout
-Update local directory from repository
+Actualizar directorio local desde el repositorio
 \end_layout
 
 \end_inset
@@ -21075,6 +21382,28 @@ cvs log
  se muestra en un buscador.
 \end_layout
 
+\begin_layout Subsubsection
+Información de la revisión
+\end_layout
+
+\begin_layout Standard
+LyX soporta número de versión CVS, nombre de autor, fecha y hora del último
+ ingreso.
+ Toda esta información se obtiene de
+\family typewriter
+ cvs log -r <file-name>
+\family default
+.
+ Véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Información-de-revisión"
+
+\end_inset
+
+ para detalles.
+\end_layout
+
 \begin_layout Subsection
 Comandos SVN en Lyx
 \end_layout
@@ -21091,7 +21420,7 @@ Control de versiones
  vía ssh, se te pedirá en una ventana de terminal.
  LyX se ha probado con SVN 1.5 y 1.6.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 La mayoría de los comandos funcionarán también con 1.4, véase 
@@ -21136,7 +21465,7 @@ solo
 .svn/entries
 \family default
 ).
- Esto significa que debes comprobar el archivo por ti mismo.
+ Esto significa que debes reservar el archivo por ti mismo.
 \end_layout
 
 \begin_layout Standard
@@ -21167,11 +21496,11 @@ man svn
 \end_layout
 
 \begin_layout Subsubsection
-Ingresar cambios
+Liberar cambios
 \end_layout
 
 \begin_layout Standard
-Cuando has terminado de editar un archivo, grabas los cambios.
+Cuando has terminado de editar un archivo, ingresas los cambios.
  Al hacerlo se te pide una descripción de los mismos.
  Después, los cambios son ingresados.
 \end_layout
@@ -21201,20 +21530,20 @@ svn commit -q -m"<description>" <file-name>
 \end_layout
 
 \begin_layout Subsubsection
-Comprobar para editar
+Reservar para edición
 \end_layout
 
 \begin_layout Standard
 Actualiza los cambios de este archivo desde el repositorio.
- Asegúrate de que comprendes la fusión y resolución de conflictos de SVN
- antes de usar esta función, porque ¡todos los conflictos debes resolverlos
+ Asegúrate de que comprendes la mezcla y la resolución de conflictos de
+ SVN antes de usar esta función, porque ¡todos los conflictos debes resolverlos
  tú mismo a mano!
 \end_layout
 
 \begin_layout Standard
 Comando SVN:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ídem.
@@ -21240,9 +21569,9 @@ Volver a la versión del repositorio
 \end_layout
 
 \begin_layout Standard
-Esto descargará todos los cambios hechos en el documento desde la última
- entrada de cambios.
- Recibes un mensaje de aviso antes de descargar los cambios.
+Esto descartará todos los cambios hechos en el documento desde la última
+ liberación de cambios.
+ Recibes un mensaje de aviso antes de descartar los cambios.
 \end_layout
 
 \begin_layout Standard
@@ -21260,9 +21589,165 @@ svn revert -q
 \end_layout
 
 \begin_layout Subsubsection
-Actualizar el directorio local de descarga desde el repositio
-\begin_inset Foot
+Copiar
+\end_layout
+
+\begin_layout Standard
+Creará una copia del documento actual incluyendo el historial de versiones.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación de copia.
+ Después se crea la copia localmente y en el repositorio.
+ Si los directorios padre de los documentos original y copiado difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos de la copia
+ (como en 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se carga la copia en vez del documento original
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+SVN: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
 status collapsed
+
+\begin_layout Plain Layout
+svn copy -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Renombrar
+\end_layout
+
+\begin_layout Standard
+Renombrará el documento actual incluyendo el historial de versiones.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación de renombrado.
+ Después se renombra el documento localmente y en el repositorio.
+ Si los directorios padre de los nombres de archivo nuevo y antiguo difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos (como en
+ 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se recarga el documento con su nuevo nombre.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+SVN: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn move -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Actualizar la reserva del directorio local desde el repositio
+\begin_inset Foot
+status open
 
 \begin_layout Plain Layout
 Ten en cuenta que este comando solo funcionará con 
@@ -21295,7 +21780,7 @@ Todos los comandos anteriores tienen un defecto: solo negocian con el documento
  Ahora LyX soporta la actualización del árbol completo en el que reside
  el documento.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Hay que organizar la estructura de archivos de modo que todos los archivos
@@ -21314,13 +21799,14 @@ El comando
 status collapsed
 
 \begin_layout Plain Layout
-Update local directory from repository
+Actualizar directorio local desde el repositorio
 \end_layout
 
 \end_inset
 
- actualiza el directorio completo y en caso de conflictos se deja la versión
- local de los archivos, para que no haya pérdida indeseada de datos.
+ actualiza el directorio completo y en caso de conflictos con la mezcla
+ se deja la versión local de los archivos, para que no haya pérdida indeseada
+ de datos.
  Si se detectan cambios locales se avisa al usuario antes de iniciar la
  actualización.
 \end_layout
@@ -21420,9 +21906,9 @@ El intercambio de archivos entre varios sistemas de control de revisiones
 \end_layout
 
 \begin_layout Standard
-SVN dispone de dos de estos mecanismos que garantizan exclusividad en el
- acceso a archivos, bloqueos y configuración automática de permisos de escritura
- (véase la sec.
+SVN dispone de dos de estos mecanismos que garantizan exclusividad recíproca
+ en el acceso a archivos, bloqueos y configuración automática de permisos
+ de escritura (véase la sec.
 \begin_inset space ~
 \end_inset
 
@@ -21433,7 +21919,7 @@ reference "sub:SVN-Bloqueo-automático"
 
 \end_inset
 
-), basados en propiedad de archivos svn 
+), basados en la propiedad de los archivos svn 
 \begin_inset Flex Code
 status collapsed
 
@@ -21445,7 +21931,7 @@ svn:needs-lock
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -21461,21 +21947,20 @@ target "http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html"
 
  Si esta propiedad se detecta para determinado documento, LyX empieza automática
 mente a usar bloqueo SVN para la edición del documento, y el mecanismo completo
- de ingreso/descarga conmuta al mismo régimen que para RCS.
+ de liberación/reserva conmuta al mismo régimen que para RCS.
  En particular, esto quiere decir que hay dos modos diferentes de uso archivos
  en LyX:
 \end_layout
 
 \begin_layout Itemize
 Estado no bloqueado.
- EL archivo cargado está en modo solo lectura.
- Para editar hay que descargarlo.
+ El archivo cargado está en modo solo lectura.
+ Para editar hay que reservar.
  
 \emph on
-Descarga
+Reservar
 \emph default
- consiste en actualizar desde el repositorio y adquisición de bloqueo de
- escritura.
+ consiste en actualizar desde el repositorio y adquirir bloqueo de escritura.
  Si no es posible obtener el bloqueo permanece el estado no bloquedo.
 \end_layout
 
@@ -21485,9 +21970,9 @@ Estado bloqueado.
  Ningún otro usuario tiene permiso para editar el archivo.
  
 \emph on
-Ingresar
+Liberar
 \emph default
- consiste en eingresar los cambios y obtención de bloqueo de escritura.
+ consiste en ingresar los cambios y liberar el bloqueo de escritura.
  Si no se han hecho cambios en el documento, no se producirá ningún ingreso
 \begin_inset Foot
 status collapsed
@@ -21498,16 +21983,16 @@ No te extrañe si de todas formas se te pide un mensaje de ingreso.
 
 \end_inset
 
- y solo se realizará el bloqueo de escritura.
+ y solo se realizará el desbloqueo de escritura.
 \end_layout
 
 \begin_layout Standard
-SVN commands:
+Comandos SVN:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Check-in:
+Liberar:
 \family typewriter
  svn commit -q -m"<description>" "<file-name>"
 \begin_inset Newline newline
@@ -21518,7 +22003,17 @@ svn unlock "<file-name>"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Check-out: 
+Reservar
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+traduccion http://forum.wordreference.com/showthread.php?t=689994
+\end_layout
+
+\end_inset
+
+: 
 \family typewriter
 svn update "<file-name>"
 \begin_inset Newline newline
@@ -21547,14 +22042,14 @@ status collapsed
 \begin_layout Plain Layout
 Archivo\SpecialChar \menuseparator
 Control de versiones\SpecialChar \menuseparator
-Cambiar propiedad de bñoqueo
+Cambiar propiedad de bloqueo
 \end_layout
 
 \end_inset
 
 .
  Este comando está activo solo cuando el archivo no está bloqueado en el
- servidor svn (es decir, debes descargar antes de proceder).
+ servidor svn (es decir, debes reservar antes de proceder).
 \end_layout
 
 \begin_layout Labeling
@@ -21600,6 +22095,7 @@ Hay más posibilidades para activar la información de revisión en nuestro
 LyX lo soporta directamente.
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Información de revisión del árbol (
 \begin_inset Flex Code
@@ -21625,7 +22121,6 @@ svnversion
 ; el siguiente cuadro da una idea de la interpretación de los resultados.
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Tabular
@@ -21727,7 +22222,7 @@ copia de trabajo conmutada
 \begin_inset Text
 
 \begin_layout Plain Layout
-copia de trabajo parcial, de una descarga dispersa
+copia de trabajo parcial, de una reserva dispersa
 \end_layout
 
 \end_inset
@@ -21879,7 +22374,11 @@ status collapsed
 
 \end_deeper
 \begin_layout Itemize
-Otra posibilidad es usar claves svn 
+Otra posibilidad ---de 
+\emph on
+hacker
+\emph default
+--- es usar claves svn 
 \begin_inset Foot
 status collapsed
 
@@ -22030,9 +22529,9 @@ Antes de poner un documento LyX bajo control de Subversion, su directorio
  el documento inicia un proyecto nuevo), hay que importar el directorio
  al repositorio.
  Esto se hace fuera de LyX.
- Tanto la importación como la comprobación se hacen fácilmente en el menú
- contextual del Explorador mediante TortoiseSVN, o bien usando un cliente
- de línea de comandos en DOS.
+ Tanto la importación como la reserva se hacen fácilmente en el menú contextual
+ del Explorador mediante TortoiseSVN, o bien usando un cliente de línea
+ de comandos en DOS.
  El procedimiento para importar el proyecto con TortoiseSVN se describe
  abajo, suponiendo que hay un repositorio y un proyecto nuevo en 
 \family typewriter
@@ -22324,7 +22823,13 @@ Usualmente toma tiempo conseguir el comando exacto y depende de muchas cosas.
 
 \end_deeper
 \begin_layout Enumerate
-Descarga el archivo SVN, p.
+
+\change_deleted 5862389 1371550029
+Descarg
+\change_inserted 5862389 1371550031
+Reserv
+\change_unchanged
+a el archivo SVN, p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -22410,6 +22915,302 @@ svn propset svn:eol-style native FILE_NAME
 \end_layout
 
 \begin_layout Subsection
+Comandos GIT en LyX
+\end_layout
+
+\begin_layout Standard
+LyX soporta un conjunto mínimo de comandos GIT.
+ Se encuentra en el submenú 
+\family sans
+Archivo\SpecialChar \menuseparator
+Control de versiones
+\family default
+.
+ Hay que tener en cuenta que si se usa acceso con contraseña al repositorio
+ vía ssh, ésta se pedirá en una ventana de terminal.
+ LyX se ha probado con GIT 1.7.
+ 
+\end_layout
+
+\begin_layout Standard
+Una gran diferencia entre GIT y los demás sistemas de control de versiones
+ soportados es la naturaleza distribuida de GIT: con los sistemas de control
+ de versiones tradicionales hay un servidor central que aloja el repositorio.
+ Los usuarios envían sus cambios al servidor y obtienen de él actualizaciones
+ hechas por otros.
+ Con GIT, los usuarios remiten a un repositorio local, el cuál se puede
+ sincronizar con uno o más repositorios remotos usando los comandos GIT
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+.
+ LyX no interactúa de ninguna forma con los repositorios GIT remotos.
+ Trabaja exclusivamente con el repositorio local de manera similar a como
+ con un repositorio CVS o SVN.
+ Si usas repositorios GIT remotos debes hacer las operaciones 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+ con tu cliente GIT favorito.
+\end_layout
+
+\begin_layout Subsubsection
+Registrar
+\end_layout
+
+\begin_layout Standard
+Si el documento no está bajo control de versiones, éste es el único ítem
+ mostrado en el menú.
+ Si está bajo control de versiones 
+\family sans
+Registrar
+\family default
+ no es visible.
+\end_layout
+
+\begin_layout Standard
+Este comando registra el documento en GIT sólo en el caso de que el directorio
+ de los documentos esté ya bajo control de GIT (en particular, existe el
+ archivo 
+\family typewriter
+.git/index
+\family default
+).
+ Esto quiere decir que debes reservar
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+checkout
+\end_layout
+
+\end_inset
+
+ el archivo por ti mismo.
+\end_layout
+
+\begin_layout Standard
+Entonces se pedirá de forma interactiva una descripción inicial del documento.
+ No olvides que el archivo registrado aún no ha sido ingresado.
+\end_layout
+
+\begin_layout Standard
+El comando GIT que se ejecuta: 
+\family typewriter
+git add 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\end_layout
+
+\begin_layout Standard
+Consulta 
+\family typewriter
+man git
+\family default
+ para entender los conmutadores.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Liberar cambios
+\end_layout
+
+\begin_layout Standard
+Una vez editado un archivo hay que ingresar los cambios realizados en él.
+ Al hacerlo se pedirá una descripción de los mismos y después se ingresan.
+\end_layout
+
+\begin_layout Standard
+Comando GIT: 
+\family typewriter
+git commit -q -m"<description>" <file-name>
+\end_layout
+
+\begin_layout Subsubsection
+Volver a la versión del repositorio
+\end_layout
+
+\begin_layout Standard
+Descartará los cambios hechos en el documento desde la última liberación.
+ Hay un aviso antes de descartar los cambios.
+\end_layout
+
+\begin_layout Standard
+Comando GIT: 
+\family typewriter
+git checkout -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Renombrar
+\end_layout
+
+\begin_layout Standard
+Renombrará el documento actual incluyendo el historial de versiones.
+ Requiere un documento limpio sin ningún cambio desde la última liberación.
+ Pedirá un nombre de archivo y una descripción de la operación de renombrado.
+ Después se renombra el documento localmente y en el repositorio.
+ Si los directorios padre de los nombres de archivo nuevo y antiguo difieren,
+ se ajustan todas las rutas relativas de los archivos incluidos (como en
+ 
+\family sans
+Archivo\SpecialChar \menuseparator
+Guardar como
+\family default
+\SpecialChar \ldots{}
+).
+ Por último, se recarga el documento con su nuevo nombre.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Comandos
+\begin_inset space ~
+\end_inset
+
+GIT: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git mv 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+<new-file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Mostrar historial
+\end_layout
+
+\begin_layout Standard
+Muestra el historial completo del documento GIT.
+ La salida de 
+\family typewriter
+git log 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ se muestra en un buscador.
+\end_layout
+
+\begin_layout Subsubsection
+Información de la versión
+\end_layout
+
+\begin_layout Standard
+LyX soporta número hash GIT del últim ingreso al archivo, autor, fecha y
+ hora del último ingreso.
+ Todos se obtienen de 
+\family typewriter
+git log -n 1 --pretty=format:%H%n%an%n%ai
+\family default
+.
+ La información de l versión del árbol se obtiene vía 
+\family typewriter
+git describe --abbrev --dirty --long
+\family default
+.
+ Véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Información-de-revisión"
+
+\end_inset
+
+ para otros detalles.
+\end_layout
+
+\begin_layout Subsection
 Ajustes adicionales
 \end_layout
 
@@ -22424,7 +23225,7 @@ Como ejemplo puedes ver cómo integrar directamente dos comandos TortoiseSVN:
 \end_layout
 
 \begin_layout Description
-Commit: 
+Ingresar: 
 \begin_inset Flex Code
 status collapsed
 
@@ -22438,7 +23239,7 @@ vc-command DS "." "TortoiseProc /command:commit /path:$$p"
 \end_layout
 
 \begin_layout Description
-Revert: 
+Revertir: 
 \begin_inset Flex Code
 status collapsed
 
@@ -22619,7 +23420,7 @@ Programación literaria
 \end_layout
 
 \begin_layout Standard
-Extraído de las FAQ: 
+Extraído de las PUF: 
 \end_layout
 
 \begin_layout Quotation
@@ -22770,7 +23571,7 @@ Desde allí puedes acceder a muchos enlaces de interés y a ejemplos de programa
 \end_layout
 
 \begin_layout Subsection
-LyX y la programación literaria
+LyX y la programación literaria con Noweb
 \end_layout
 
 \begin_layout Standard
@@ -22794,69 +23595,31 @@ Generación de documentos y de código («weaving and tangling»)
 \end_layout
 
 \begin_layout Paragraph
-Selección de la clase de documento
+Usando el módulo noweb
 \end_layout
 
 \begin_layout Standard
-Si has instalado Noweb y LyX correctamente, siempre que abras un documento
- nuevo o intentes cambiar la clase del documento, observarás que hay tres
- nuevas clases disponibles:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Article (Noweb)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Book (Noweb)
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Report (Noweb)
-\end_layout
-
-\begin_layout Standard
-Selecciona una de ellas para empezar tu documento
-\family sans
- 
-\family default
-de programación literaria.
- 
-\end_layout
-
-\begin_layout Standard
-Además se pueden generar otras clases nuevas a partir de otros estilos como
- 
-\family sans
-letter 
-\family default
-o en combinación con otras variantes de clases como 
-\family sans
-article (AMS)
-\family default
-.
- Si tienes necesidades especiales que no pueden ser cubiertas por una de
- las clases existentes, comunícalo a la lista de desarrolladores de LyX
- (lyx-devel@lists.lyx.org) e intentaremos proveer nuevas entradas, o enseñarte
- a hacerlo.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Es simple, implica la creación de un archivo de cuatro líneas y reejecución
- de la auto-configuración.
-\end_layout
-
+Con LyX y Noweb instalados, al abrir un documento nuevo y después de elegir
+ la clase de documento selecciona el módulo 
+\begin_inset Quotes fld
 \end_inset
 
- Por otra parte, si usas una herramienta distinta de Noweb, quizás tendrías
- que crear un nuevo conjunto de clases de documento para ella.
+Noweb
+\begin_inset Quotes frd
+\end_inset
+
+ en 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Módulos
+\family default
+.
+ Si Noweb está instalado correctamente podrás pulsar 
+\family sans
+Añadir
+\family default
+ para usarlo en tu documento.
 \end_layout
 
 \begin_layout Paragraph
@@ -22871,9 +23634,7 @@ LyX proporciona el entorno
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Chunk
+Trozo
 \end_layout
 
 \end_inset
@@ -22884,11 +23645,7 @@ Chunk
  
 \family default
 para escribir código.
- Noweb delimita 
-\lang english
-chunks
-\lang spanish
- como este:
+ Noweb delimita trozos como éste:
 \end_layout
 
 \begin_layout LyX-Code
@@ -22929,9 +23686,7 @@ El problema es que todo lo que se escriba entre <<
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang ngerman
-Chunk
+Trozo
 \end_layout
 
 \end_inset
@@ -22962,11 +23717,7 @@ chunks
 \end_layout
 
 \begin_layout LyX-Code
-<<Mi 
-\lang english
-chunk
-\lang spanish
->>=
+<<Mi trozo>>=
 \end_layout
 
 \begin_layout LyX-Code
@@ -23085,9 +23836,7 @@ La única diferencia está en la extensión del archivo, no hace falta ninguna
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Chunk
+Trozo
 \end_layout
 
 \end_inset
@@ -23225,7 +23974,13 @@ build-script
 \begin_inset Quotes frd
 \end_inset
 
- (un programa o un script) con el nombre del archivo Noweb (
+ (un programa o un
+\change_inserted 5862389 1371639218
+a secuencia
+\change_deleted 5862389 1371639221
+ script
+\change_unchanged
+) con el nombre del archivo Noweb (
 \family typewriter
 $$i
 \family default
@@ -23274,17 +24029,15 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The next part of the converter setting is the 
-\begin_inset Quotes eld
+La segunda parte de los ajustes del convertidor es el 
+\begin_inset Quotes fld
 \end_inset
 
-Flags
-\begin_inset Quotes erd
+indicador
+\begin_inset Quotes frd
 \end_inset
 
- which is to be set to
+, establecido en
 \begin_inset Newline newline
 \end_inset
 
@@ -23301,41 +24054,43 @@ parselog=$$s/scripts/listerrors
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-This will run any errors that are generated by the 
-\begin_inset Quotes eld
-\end_inset
-
-build-script
-\begin_inset Quotes erd
-\end_inset
-
- process through the 
-\begin_inset Quotes eld
-\end_inset
-
-listerrors
-\begin_inset Quotes erd
-\end_inset
-
- program.
 \end_layout
 
 \begin_layout Standard
+Esto procesará cualquier error que se genere por el proceso 
+\begin_inset Quotes fld
+\end_inset
 
-\lang english
-The build will normally take place in LyX's temporary directory, so the
- files produced by the conversion will be in that directory.
- LyX will copy out what it regards as the `main' file, but the 
+
 \family typewriter
-Noweb->Program
+build-script
 \family default
- conversion may produce several files, and so most of these would then be
- deleted when LyX was closed.
- This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script chunk can place the generated files in that location.
+
+\begin_inset Quotes frd
+\end_inset
+
+ a través del programa 
+\begin_inset Quotes fld
+\end_inset
+
+listerrors
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Normalmente, la compilación tendrá lugar en el directorio temporal de LyX,
+ por tanto los archivos generados por la conversión estarán en ese directorio.
+ LyX copiará lo que considera como el archivo "principal", pero la conversión
+\family typewriter
+ Noweb->Programa
+\family default
+ puede generar varios arcivos, aunque la mayoría de ellos se borran al cerrar
+ LyX.
+ Por eso pasamos la variable de entorno NOWEB_OUTPUT_DIR, para que el gragmento
+ build-script pueda situar los archivos generados en su sitio.
 \end_layout
 
 \begin_layout Paragraph
@@ -24019,18 +24774,15 @@ Cierto número de colores usados en LyX se pueden personalizar en el diálogo
 Preferencias
 \family default
 .
- Una de las cosas que más molesta a la gente es el color de la fuente de
- código LaTeX.
- El color por omisión es rojo, y puesto que el entorno 
+ Una de las cosas que más molesta a la gente es el color de la tipografía
+ del código LaTeX, que por omisión es rojo, y como el entorno 
 \lang english
 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Chunk
+Trozo
 \end_layout
 
 \end_inset
@@ -24062,162 +24814,127 @@ El siguiente asunto es la presencia visible del carácter salto de línea
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-LyX and knitr/Sweave
+LyX y knitr/Sweave
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Support for 
+El soporte para 
 \family sans
 knitr
 \family default
- and 
+ y 
 \family sans
 Sweave
 \family default
- is documented in the 
+ está documentado en el archivo de ejemplo 
 \emph on
 knitr.lyx
 \emph default
- example file and in the Sweave manual (menu 
+ y en el manual de Sweave (menú 
 \family sans
-Help\SpecialChar \menuseparator
-Specific Manuals
+Ayuda\SpecialChar \menuseparator
+Manuales específicos
 \family default
 ).
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Special features
+Características especiales
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can do everything with LyX that you can do with LaTeX.
- However, LyX cannot support every LaTeX feature directly.
- But you can always use TeX Code.
- This chapter shows you some more special things you might want to use.
- For other special things you can do with figures, tables, floats, boxes
- and notes, have a look at the 
+Con LyX se puede hacer todo lo que se puede hacer con LaTeX.
+ Aunque LyX no puede soportar directamente todas las características de
+ LaTeX, siempre es posible usar código LaTeX.
+ Este capítulo trata de algunas cosas especiales que podrían interesarte.
+ Las características especiales relacionadas con figuras, cuadros, flotantes,
+ marcos y notas, se pueden consultar en el manual 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objetos insertados
 \emph default
- manual.
+.
+ 
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Multiple Text Columns
+Texto en columnas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This feature is independent of the option 
+Esta característica es independiente de la opción 
 \family sans
-Two-column document
+Documento con dos columnas
 \family default
- in the document settings under 
+ en 
 \family sans
-Text Layout
+Diseño del texto
 \family default
-.
- If you want to have 2
-\begin_inset space ~
-\end_inset
-
-columns for the whole document, it is recommended to use the 
-\family sans
-Two-column document
-\family default
- option.
- For all other cases use this feature.
+ de la configuración del documento.
+ Para tener dos columnas de texto en todo el documento se recomienda usar
+ dicha opción.
+ Para el resto de casos se usa la característica aquí descrita.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use multiple text columns in your document, you have to load the module
- 
+Para poner texto en varias columnas, hay que cargar el módulo 
 \family sans
-Multiple Columns
+Columnas
 \family default
- (menu 
+ (menú 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Modules
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Módulos
 \family default
-) and must have the LaTeX-package 
+), y debe estar instalado el paquete LaTeX 
 \series bold
 multicol
 \series default
- installed.
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! multicol
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Footnotes within multiple columns will be placed at the bottom of the page
- and not under each column.
- Within the different columns you can use everything, with the limitation
- that for floats you need to use the float option 
+Las notas al pie en las columnas se colocarán al final de la página y no
+ bajo cada columna.
+ En las distintas columnas se puede usar todo, excepto que para flotantes
+ hay que usar la opción 
 \family sans
-Span columns
+Extender columnas
 \family default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Basics
+Conceptos básicos
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to have 2
-\begin_inset space ~
-\end_inset
-
-columns in your text, insert a multicolumn inset via the menu 
+Para poner un texto en dos columnas, usa el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Custom
+Insertar\SpecialChar \menuseparator
+Recuadro
 \begin_inset space ~
 \end_inset
 
-Insets\SpecialChar \menuseparator
-Multiple
-\begin_inset space ~
-\end_inset
-
-Columns
+personalizado\SpecialChar \menuseparator
+Columnas
 \family default
- where the columns should start.
- Write all text that should be printed in 2
-\begin_inset space ~
-\end_inset
-
-columns into this inset.
+ en el punto en que deben iniciarse las columnas.
+ Escribe en el recuadro todo el texto que debe ir en dos columnas.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example:
+Un ejemplo:
 \end_layout
 
 \begin_layout Standard
@@ -24275,44 +24992,17 @@ ty which utterly submerged my mind.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get 3 or more columns, set the cursor into the multicolumn inset and
- use the menu 
+Para poner tres o más columnas coloca el cursor dentro del recuadro, usa
+ el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Number
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Columns
+Insertar\SpecialChar \menuseparator
+Número de columnas
 \family default
-.
- The number of the desired columns is written into that inset (for 3
-\begin_inset space ~
-\end_inset
-
-columns write 
-\begin_inset Quotes eld
-\end_inset
-
-3
-\begin_inset Quotes erd
-\end_inset
-
-).
+ y escribe el número de columnas, por ejemplo "3".
 \begin_inset Newline newline
 \end_inset
 
-Here is an example with 3
-\begin_inset space ~
-\end_inset
-
-columns:
+Un ejemplo de texto en tres columnas:
 \end_layout
 
 \begin_layout Standard
@@ -24363,14 +25053,11 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can have up to 10
+Se puede llegar hasta 10
 \begin_inset space ~
 \end_inset
 
-columns if you want to, but that might not be very pleasant for the readers
- of your document.
+columnas, aunque seguramente no será muy cómodo para los lectores.
 \end_layout
 
 \begin_layout Standard
@@ -24383,15 +25070,11 @@ columns if you want to, but that might not be very pleasant for the readers
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Columns inside Columns
+Columnas dentro de otras columnas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also have columns inside columns:
+Es posible poner columnas dentro de otras:
 \end_layout
 
 \begin_layout Standard
@@ -24472,26 +25155,30 @@ The evidence of those who had played with him– Mr.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Advanced Examples
+Ejemplos avanzados
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The examples in this section show some more special features of multiple
- columns.
+Los ejemplos de esta sección muestran algunas características más avanzadas
+ de las columnas.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more features of multiple columns, have a look at the documentation
- of the LaTeX-package 
+Para ver más opciones de columnas echa un vistazo a la documentación del
+ paquete LaTeX 
 \series bold
 multicol
 \series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! multicol
+\end_layout
+
+\end_inset
+
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -24503,31 +25190,22 @@ key "multicol"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Preface
+Prefacio
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To add a preface text for multiple columns, set the cursor into the mulitcolumn
- inset and use the menu 
+Para añadir un prefacio a las columnas coloca el cursor dentro del recuadro
+ del texto en columnas y usa el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Preface
+Insertar\SpecialChar \menuseparator
+Prefacio
 \family default
 .
- Write your preface text into that inset.
+ Escribe en el marco que aparece el texto del prefacio.
 \begin_inset Newline newline
 \end_inset
 
-This is an example with some preface text:
-\end_layout
-
-\begin_layout Standard
-
-\lang english
+Ejemplo con un texto de prefacio:
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -24541,15 +25219,11 @@ This is an example with some preface text:
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-And the story continues and continues and continues and continues\SpecialChar \ldots{}
+Y la historia continúa\SpecialChar \ldots{}
 
 \end_layout
 
@@ -24557,6 +25231,7 @@ And the story continues and continues and continues and continues\SpecialChar \l
 
 
 \size small
+\lang english
 On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
@@ -24579,27 +25254,22 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also use a section heading as the preface if you use a section command
- as TeX Code.
- For example the command
+También se puede usar un encabezado de sección como prefacio, poniendo un
+ comando de sección en código TeX.
+ Por ejemplo, el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-subsection{subsection title}
+subsection{título de la subsección}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-creates a subsection.
- In this example the preface is a subsubsection:
+crea una subsección.
+ En el siguiente ejemplo el título de la subsubsección hace de prefacio:
 \end_layout
 
 \begin_layout Standard
@@ -24609,14 +25279,10 @@ creates a subsection.
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -24629,7 +25295,7 @@ subsubsection{
 
 \end_inset
 
-This is a subsubsection heading as a preface
+Un encabezado de subsubsección como prefacio
 \begin_inset ERT
 status collapsed
 
@@ -24647,6 +25313,7 @@ status collapsed
 
 
 \size small
+\lang english
 A minute examination of the circumstances served only to make the case more
  complex.
  In the first place, no reason could be given why the young man should have
@@ -24675,76 +25342,55 @@ A minute examination of the circumstances served only to make the case more
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If there is less vertical space than 6
-\begin_inset space ~
-\end_inset
-
-text lines is left on the page at the beginning of the multiple columns,
- a page break will be inserted before the multiple columns.
- Depending on the number of lines of the preface text, you might want to
- change this space.
- This is done by setting the cursor into the mulitcolumn inset behind the
- preface (if there is any) and using the menu 
+Si al comenzar las columnas queda menos espacio vertical en la página que
+ el correspondiente a 6 líneas de texto, se insertará un salto de página.
+ Dependiendo del número de líneas del texto del prefacio, es posible cambiar
+ ese espacio.
+ Para ello se coloca el cursor detrás del prefacio (si lo hay), se usa el
+ menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Space
+Insertar\SpecialChar \menuseparator
+Espacio
 \begin_inset space ~
 \end_inset
 
-Before
+ante
 \begin_inset space ~
 \end_inset
 
-Page
+salto
 \begin_inset space ~
 \end_inset
 
-Break
+de
+\begin_inset space ~
+\end_inset
+
+página
 \family default
-.
- Insert into that inset the amount of space like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-5cm
-\begin_inset Quotes erd
-\end_inset
-
-.
+ y se escribe en el marco el espacio deseado, por ej.
+ "5cm".
 \begin_inset Newline newline
 \end_inset
 
-In this example the space is set to 7
-\begin_inset space ~
-\end_inset
-
-text lines by using 
-\begin_inset Quotes eld
+En el siguiente ejemplo, el espacio establecido es de 7 líneas de texto
+ mediante 
+\begin_inset Quotes fld
 \end_inset
 
 7
 \backslash
 baselineskip
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- (where the command 
+ (con el comando 
 \series bold
 
 \backslash
 baselineskip
 \series default
- needs to be inserted as TeX code):
+ en código TeX).
 \end_layout
 
 \begin_layout Standard
@@ -24754,14 +25400,10 @@ baselineskip
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 3
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 7
 \begin_inset ERT
 status collapsed
@@ -24782,6 +25424,7 @@ baselineskip
 
 
 \size small
+\lang english
 On the evening of the crime, he returned from the club exactly at ten.
  His mother and sister were out spending the evening with a relation.
  The servant deposed that she heard him enter the front room on the second
@@ -24804,29 +25447,24 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Surrounding Space
+Espacio circundante
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The amount of space before and after multiple columns can be changed by
- changing the length 
+El espacio delante y detrás de las columnas se puede cambiar con el comando
+ de longitud 
 \series bold
 
 \backslash
 multicolsep
 \series default
 .
- For example the command
+ Así, el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 setlength{
@@ -24835,15 +25473,13 @@ multicolsep}{3cm}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in TeX Code changes its value to 3
+en código TeX establece un espacio de 3
 \begin_inset space \thinspace{}
 \end_inset
 
 cm.
- The change must be made before the multiple columns' start.
- The predefined value is 13
+ El cambio debe hacerse antes del inicio de las columnas.
+ El valor por omisión es de 13
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24851,15 +25487,13 @@ pt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For this example 
+Para este ejemplo, 
 \series bold
 
 \backslash
 multicolsep
 \series default
- was set to 2.5
+ se ha establecido en 2.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24918,24 +25552,22 @@ ion.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- The values you set with 
+ Los valores de 
 \series bold
 
 \backslash
 setlength
 \series default
- will be used for all following multiple columns until you change them again.
+ serán válidos para todas las columnas siguientes hasta que se cambie de
+ nuevo.
 \end_layout
 
 \end_inset
@@ -24959,15 +25591,11 @@ multicolsep}{13pt}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-go back to the default
+vuelta al valor predefinido
 \end_layout
 
 \end_inset
@@ -24985,26 +25613,23 @@ go back to the default
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Column Breaks
+Saltos de columna
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A column break can be forced by inserting the command 
+Se puede forzar un salto de columna insertando el comando
 \series bold
-
+ 
 \backslash
 columnbreak{}
 \series default
- as TeX-Code to that position in the text where the column should be broken.
- Note that this leads in most cases to whitespace in the text.
+ en código TeX en la posición del texto en la que se desee quebrar la columna.
+ A tener en cuenta que, en la mayoría de los casos, esto genera espacios
+ en el texto.
 \begin_inset Newline newline
 \end_inset
 
-Here is an example:
+Un ejemplo:
 \end_layout
 
 \begin_layout Standard
@@ -25072,7 +25697,9 @@ May I ask how you knew who I was?
 \begin_inset Quotes erd
 \end_inset
 
- AFTER THIS SENTENCE THE COLUMN BREAK IS FORCED.
+
+\lang spanish
+ TRAS ESTA FRASE SE FUERZA UN SALTO DE COLUMNA.
 \begin_inset ERT
 status collapsed
 
@@ -25130,35 +25757,30 @@ The Holy War
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Column Separation
+Separación de columnas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The width of the columns is automatically calculated, but you can modify
- the space between the columns.
- This is done by changing the length 
+La anchura de las columnas se calcula automáticamente, pero la separación
+ entre ellas se puede modificar mediante el comando 
 \series bold
 
 \backslash
 columnsep
 \series default
 .
- Its predefined value is 10
+ El valor predeterminado es 10
 \begin_inset space \thinspace{}
 \end_inset
 
 pt.
- Here is an example where 
+ A continuación hay un ejemplo en el que la longitud de 
 \series bold
 
 \backslash
 columnsep
 \series default
- is set to 3
+ se ha establecido en 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25232,15 +25854,11 @@ columnsep}{10pt}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-go back to the default
+vuelta al valor predefinido
 \end_layout
 
 \end_inset
@@ -25249,31 +25867,27 @@ go back to the default
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Vertical Lines
+Líneas verticales
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Between the columns a rule with a width of the length 
+Entre las columnas se dibuja una línea cuya anchura viene dada por 
 \series bold
 
 \backslash
 columnseprule
 \series default
- is placed.
- If this rule width is set to 0
+.
+ La anchura por omisión es de 0
 \begin_inset space \thinspace{}
 \end_inset
 
-pt (this is the default), the rule is suppressed.
- In the following example the line is 2
+pt, no se dibuja ninguna línea.
+ En el siguiente ejemplo la anchura de línea es 2
 \begin_inset space \thinspace{}
 \end_inset
 
-pt wide:
+pt.
 \end_layout
 
 \begin_layout Standard
@@ -25404,8 +26018,6 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace defskip
 \end_inset
 
@@ -25413,16 +26025,17 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
+La raya se puede colorear redefiniendo el comando
 \lang english
-The rule can be colored by redefining the command 
+ 
 \series bold
+\lang spanish
 
 \backslash
 columnseprulecolor
 \series default
 .
- This is done by inserting the command
+ Esto se consigue insertando el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -25440,27 +26053,27 @@ color{red}}
 \begin_inset Newline newline
 \end_inset
 
-as TeX-Code before the multicolumn inset.
- Replace 
+en código TeX delante del recuadro columnas.
+ Se puede poner el color deseado en lugar de 
 \series bold
 red
 \series default
- in this command by a color of your choice.
- You can use all pre- and self-defined colors.
- See the 
+ (rojo).
+ Se puede usar cualquier color predefinido o personalizado.
+ Véase el manual 
 \emph on
-EmbeddedObjects
+Objetos insertados
 \emph default
- manual, section 
+,
 \emph on
-Colored
-\begin_inset space ~
-\end_inset
-
-Tables
+ 
 \emph default
- for more information about pre- and self-defined colors.
- To go back to the default color insert the command
+sección 
+\emph on
+Cuadros coloreados
+\emph default
+ para más información sobre colores.
+ Para volver al color por omisión inserta el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -25478,16 +26091,14 @@ normalcolor}
 \begin_inset Newline newline
 \end_inset
 
-Here is the example with a cyan rule and 1
+Aquí hay un ejemplo con una línea en color cian y 1
 \begin_inset space \thinspace{}
 \end_inset
 
-cm column separation:
+cm de separación entre columnas:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -25626,8 +26237,6 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -25658,9 +26267,7 @@ normalcolor}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-go back to the default
+retornar a los valores por omisión.
 \end_layout
 
 \end_inset
@@ -25680,41 +26287,39 @@ Párrafos con formas diversas
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\lang english
-LaTeX as well as any other text processor uses by default rectangular paragraphs.
- For special cases like for example posters, invitation cards or poems you
- can modify the paragraph shape to one of your choice.
- This can be done by using the LaTeX-package 
+LaTeX y cualquier procesador de texto usan por omisión párrafos rectangulares.
+ Para casos especiales como posters, tarjetas o poemas, es posible modifcar
+ la forma del párrafo.
+ Esto se puede conseguir mediante el paquete LaTeX 
 \series bold
 shapepar
 \series default
- which is loaded by using in the document settings the module 
+, que se carga con el módulo
 \family sans
-Custom paragraph shapes
+ Párrafos conformados
+\family default
+ en 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Módulos
 \family default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Predefined shapes
+Formas predefinidas
 \end_layout
 
 \begin_layout Standard
-
+El paquete 
 \series bold
-\lang english
 shapepar
 \series default
- provides the following shapes:
+ proporciona las siguientes formas:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features rotate="0" booktabs="true" islongtable="true" longtabularalignment="center">
@@ -25726,9 +26331,7 @@ shapepar
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Name
+Nombre
 \end_layout
 
 \end_inset
@@ -25737,9 +26340,7 @@ Name
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Description
+Descripción
 \end_layout
 
 \end_inset
@@ -25748,9 +26349,7 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Annotation
+Observaciones
 \end_layout
 
 \end_inset
@@ -25761,9 +26360,7 @@ Annotation
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-CDlabel
+Carátula CD
 \end_layout
 
 \end_inset
@@ -25772,9 +26369,7 @@ CDlabel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Circle with circular hole (in the size of a CD/DVD)
+Círculo con orificio central (tamaño de CD/DVD)
 \end_layout
 
 \end_inset
@@ -25783,9 +26378,7 @@ Circle with circular hole (in the size of a CD/DVD)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Cannot be scaled, take care there is not too much text
+No se puede cambiar el tamaño; no debe contener demasiado texto
 \end_layout
 
 \end_inset
@@ -25796,9 +26389,7 @@ Cannot be scaled, take care there is not too much text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Circle
+Círculo
 \end_layout
 
 \end_inset
@@ -25807,9 +26398,7 @@ Circle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Circle
+Círculo
 \end_layout
 
 \end_inset
@@ -25818,9 +26407,11 @@ Circle
 \begin_inset Text
 
 \begin_layout Plain Layout
+Frágil, los cálculos
+\end_layout
 
-\lang english
-Fragile, calculation might fail
+\begin_layout Plain Layout
+pueden fallar
 \end_layout
 
 \end_inset
@@ -25831,9 +26422,7 @@ Fragile, calculation might fail
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Diamond
+Diamante
 \end_layout
 
 \end_inset
@@ -25842,14 +26431,16 @@ Diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
+Romboide (simbolizando
+\end_layout
 
-\lang english
-Rhomboid (symbolizing a 
-\begin_inset Quotes eld
+\begin_layout Plain Layout
+un 
+\begin_inset Quotes fld
 \end_inset
 
-diamond
-\begin_inset Quotes erd
+diamante
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -25861,8 +26452,6 @@ diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -25874,9 +26463,7 @@ diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Heart
+Corazón
 \end_layout
 
 \end_inset
@@ -25885,9 +26472,7 @@ Heart
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Heart-like shape
+Forma de corazón
 \end_layout
 
 \end_inset
@@ -25896,8 +26481,6 @@ Heart-like shape
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -25909,9 +26492,7 @@ Heart-like shape
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Hexagon
+Hexágono
 \end_layout
 
 \end_inset
@@ -25920,9 +26501,7 @@ Hexagon
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Hexagon
+Hexágono
 \end_layout
 
 \end_inset
@@ -25931,8 +26510,6 @@ Hexagon
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -25944,9 +26521,7 @@ Hexagon
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Nut
+Tuerca
 \end_layout
 
 \end_inset
@@ -25955,9 +26530,11 @@ Nut
 \begin_inset Text
 
 \begin_layout Plain Layout
+Tuerca de tornillo
+\end_layout
 
-\lang english
-Nut for bolt (hexagon with circular hole)
+\begin_layout Plain Layout
+(hexágono con orificio circular)
 \end_layout
 
 \end_inset
@@ -25966,8 +26543,6 @@ Nut for bolt (hexagon with circular hole)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -25979,9 +26554,7 @@ Nut for bolt (hexagon with circular hole)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Square
+Cuadrado
 \end_layout
 
 \end_inset
@@ -25990,9 +26563,7 @@ Square
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Square
+Cuadrado
 \end_layout
 
 \end_inset
@@ -26001,8 +26572,6 @@ Square
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26010,13 +26579,11 @@ Square
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Star
+Estrella
 \end_layout
 
 \end_inset
@@ -26025,9 +26592,7 @@ Star
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Five-point star
+Estrella de 5 puntas
 \end_layout
 
 \end_inset
@@ -26036,8 +26601,6 @@ Five-point star
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26049,9 +26612,7 @@ Five-point star
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Candle
+Vela
 \end_layout
 
 \end_inset
@@ -26060,9 +26621,7 @@ Candle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Burning candle
+Cilindro con llama
 \end_layout
 
 \end_inset
@@ -26071,8 +26630,6 @@ Burning candle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26084,9 +26641,7 @@ Burning candle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Drop down/up
+Gota/Gota invertida
 \end_layout
 
 \end_inset
@@ -26095,9 +26650,7 @@ Drop down/up
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Normal/reversed rain drop
+Forma de gota normal/invertida
 \end_layout
 
 \end_inset
@@ -26106,9 +26659,11 @@ Normal/reversed rain drop
 \begin_inset Text
 
 \begin_layout Plain Layout
+Frágil, los cáculos
+\end_layout
 
-\lang english
-Fragile, calculation might fail
+\begin_layout Plain Layout
+pueden fallar
 \end_layout
 
 \end_inset
@@ -26119,8 +26674,6 @@ Fragile, calculation might fail
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 TeX
 \end_layout
 
@@ -26130,9 +26683,7 @@ TeX
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-The TeX logo
+Logotipo de TeX
 \end_layout
 
 \end_inset
@@ -26141,8 +26692,6 @@ The TeX logo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26154,13 +26703,15 @@ The TeX logo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Triangle up/down/
+Triángulo
 \begin_inset Newline newline
 \end_inset
 
-left/right
+arriba/abajo
+\begin_inset Newline newline
+\end_inset
+
+izquierda/derecha
 \end_layout
 
 \end_inset
@@ -26169,9 +26720,7 @@ left/right
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Triangles in different orientations
+Triángulos en diferentes orientaciones
 \end_layout
 
 \end_inset
@@ -26180,8 +26729,6 @@ Triangles in different orientations
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26196,10 +26743,8 @@ Triangles in different orientations
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use a shape for your paragraph, simply select it in LyX's pull-down box
- for environments in the toolbar.
+Para elegir una determinada forma selecciónala en la lista desplegable de
+ entornos de LyX (primer botón de la barra de herramientas).
 \end_layout
 
 \begin_layout Standard
@@ -26210,9 +26755,7 @@ To use a shape for your paragraph, simply select it in LyX's pull-down box
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example paragraph in the shape of a nut:
+Ejemplo de párrafo con forma de tuerca:
 \end_layout
 
 \begin_layout Standard
@@ -26223,8 +26766,6 @@ Here is an example paragraph in the shape of a nut:
 \end_layout
 
 \begin_layout Nut
-
-\lang latin
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -26244,18 +26785,15 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note
+Nota
 \series default
-: shapepar paragraphs cannot run over a page break.
+: los párrafos conformados no pueden saltar de página.
 \end_layout
 
 \end_inset
@@ -26273,15 +26811,13 @@ Note
 \begin_layout Standard
 
 \series bold
-\lang english
 shapepar
 \series default
- takes care that the shape will always be preserved, no matter how much
- text is in the paragraph.
- Therefore the paragraph size changes with the amount of contained text.
- This can lead to paragraph sizes exceeding the page margins.
- To demonstrate the size scaling, here is the same example paragraph but
- with twice as much text:
+ preserva siempre la forma independientemente de la cantidad de texto.
+ Por tanto el tamaño del párrafo cambia en función del texto.
+ Esto puede provocar desbordamiento de los márgenes.
+ Para comprobar el efecto de ajuste del tamaño veamos el mismo ejemplo anterior
+ con el doble de texto:
 \end_layout
 
 \begin_layout Standard
@@ -26292,8 +26828,6 @@ shapepar
 \end_layout
 
 \begin_layout Nut
-
-\lang latin
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -26322,29 +26856,27 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An exception is the shape 
+La forma 
 \family sans
-CDlabel
+Carátula CD 
 \family default
-.
- It cannot be scaled because it must fit the size of a CD/DVD.
- Therefore the amount of text that fits into the shape is limited.
+es una excepción.
+ No se puede hacer escala porque debe ajustarse al tamaño de un CD/DVD.
+ Por tanto la cantidad de texto que admite esta forma es limitada.
 \begin_inset Newline newline
 \end_inset
 
-The 
+Las formas 
 \family sans
-drop
+Gota
 \family default
- shapes and the 
+ y
 \family sans
-circle
+ Círculo
 \family default
- shape are fragile, meaning that the calculation of their size can fail,
- depending on the amount of text.
- You will then get the LaTeX error 
+ son frágiles, lo que significa que pueden fallar los cálculos de su tamaño,
+ según la cantidad de texto.
+ En esos casos se producirá el error de LaTeX 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26353,8 +26885,8 @@ Arithmetic overflow
 \end_inset
 
 .
- In this case one can try to remove or add some text; if nothing works one
- has to use another shape.
+ Se puede arreglar añadiendo o quitando algo de texto; si no funciona habrá
+ que elegir otra forma.
 \end_layout
 
 \begin_layout Standard
@@ -26365,11 +26897,8 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For shapes with tips you will maybe see that LaTeX's hyphenation routine
- fails for text in the tips.
- Therefore it is often necessary to add hyphenation points 
+En formas con puntas, la rutina de división silábica de LaTeX puede fallar.
+ Entonces habrá que añadir guiones protegidos 
 \family sans
 (
 \begin_inset Info
@@ -26379,7 +26908,7 @@ arg   "specialchar-insert hyphenation"
 
 
 \family default
-) to the corresponding text parts.
+) donde sea necesario.
 \end_layout
 
 \begin_layout Standard
@@ -26390,19 +26919,20 @@ arg   "specialchar-insert hyphenation"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Shapepar paragraphs are either always centered or placed on the page so
- that their left border touches the left page margin.You can therefore not
- use the paragraph dialog to align such paragraphs.
- A solution is to put the paragraph into a minipage or parbox and align
- the box.
- The problem is hereby to find the right width for the box.
- Because if it is too wide and you center the box, the paragraph is not
- centered too because it sticks at the left side of the box.
- So you might have to play a bit with the width until it fits.
- Here are two heart-shaped paragraphs, the first one is not aligned, the
- second one is right-aligned:
+Los párrafos conformados siempre van centrados en la página o ajustados
+ al margen izquierdo, por tanto no se puede usar la alineación de la configuraci
+ón de párrafos.
+ Una solución es poner el párrafo en una minipágina o en un marco y alinear
+ éstos.
+ En ese caso el problema es saber la anchura adecuada del marco: si es demasiado
+ ancho y se centra, el párrafo no queda centrado porque se ajusta a la izquierda
+ del marco.
+ De modo que habrá que ir probando un poco para acertar con la anchura correcta.
+ Aquí tenemos dos párrafos 
+\family sans
+Corazón
+\family default
+, el primero no alineado, el segundo a la derecha:
 \end_layout
 
 \begin_layout Standard
@@ -26414,8 +26944,6 @@ Shapepar paragraphs are either always centered or placed on the page so
 
 \begin_layout Heart
 \noindent
-
-\lang latin
 Lo\SpecialChar \-
 rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -26450,8 +26978,6 @@ status open
 
 \begin_layout Heart
 \noindent
-
-\lang latin
 Lo\SpecialChar \-
 rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -26467,25 +26993,18 @@ rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Custom shapes
+Formas personalizadas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can define any shape you want.
- Doing this manually is a lot of work because every coordinate must be specified.
- But there is a way to let the computer calculate the coordinates:
+Se puede definir cualquier forma.
+ Hacerlo manualmente lleva mucho trabajo porque debe especificarse cada
+ coordenada.
+ Pero hay una forma de que el ordenador haga los cálculos:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Install the program
-\lang spanish
- 
+Instala el programa 
 \begin_inset CommandInset href
 LatexCommand href
 name "Jpgfdraw"
@@ -26497,13 +27016,11 @@ target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-In 
+En 
 \family sans
 Jpgfdraw
 \family default
- go to the menu 
+ ve al menú 
 \family sans
 Te
 \begin_inset ERT
@@ -26531,8 +27048,8 @@ eX\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Set Normal Size
 \family default
- and select the font size you are using in your document.
- For example this document uses the size 12
+ y selecciona el tamaño de tipografía usado en el documento.
+ Por ejemplo, este documento usa el tamaño 12
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -26540,15 +27057,11 @@ pt.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Draw a shape.
+Dibuja una forma.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Use the menu 
+Usa el menú 
 \family sans
 Te
 \begin_inset ERT
@@ -26575,16 +27088,14 @@ status collapsed
 eX\SpecialChar \menuseparator
 Shapepar
 \family default
- to export the shape to coordinates.
- In the appearing dialog use either the outline of your shape for the coordinate
-s or the path itself.
+ para exportar la forma a coordenadas.
+ En el diálogo que surge usa la descripción de la forma para las coordenadas
+ o la ruta misma.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For more information see 
+Más información en 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
@@ -26600,39 +27111,42 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The coordinates are written into a TeX-file.
- To use it for your LyX document
+Las coordenadas se escriben en un archivo TeX.
+ Para incorporarlo a LyX:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Place the cursor before the first character of your paragraph (or into a
- new empty one).
+Coloca el cursor delante del primer carácter del párrafo (o en uno nuevo
+ vacío).
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Open in LyX the menu 
+En LyX abre el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-Child
+Insertar\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
+Documento
 \begin_inset space ~
 \end_inset
 
-Document
+hijo\SpecialChar \ldots{}
+
 \family default
-, select the file and use 
+, selecciona el archivo y elige 
 \family sans
-Input
+Incorporar
 \family default
- as 
+ en 
 \family sans
-Include Type.
+Tipo
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+inclusión.
 \end_layout
 
 \begin_layout Standard
@@ -26651,13 +27165,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note
+Nota
 \series default
-: The changed shape only applies to the current paragraph; everything is
- reset to normal for the next paragraph.
- Therefore the shape definition file must be input into every paragraph
- with the desired shape.
+: el cambio de forma sólo se aplica al párrafo actual; todo se restablece
+ a normal para el párrafo siguiente.
+ Por tanto la definición de forma debe aplicarse a cada párrafo por separado.
 \end_layout
 
 \end_inset
@@ -26673,9 +27185,7 @@ Note
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example:
+Un ejemplo:
 \end_layout
 
 \begin_layout Standard
@@ -26692,8 +27202,6 @@ filename "../SpecialParagraphShape.tex"
 
 \end_inset
 
-
-\lang latin
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -26715,20 +27223,20 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \begin_layout Standard
 
 \series bold
-\lang english
-A tip:
+Un consejo:
 \series default
- to draw complexer shapes in 
+ para dibujar formas complejas en 
 \family sans
 Jpgfdraw
 \family default
- you can draw the shape in a program of your choice and import the resulting
- image to 
+ puedes dibujar la forma con el programa que quieras e importar la imagen
+ obtenida en 
 \family sans
 Jpgfdraw
 \family default
 .
- Then you only need to draw a line or spline along the outline of the image.
+ Después sólo tendrás que dibujar una línea o spline sobre el contorno de
+ la imagen.
 \end_layout
 
 \begin_layout Standard
@@ -26739,36 +27247,40 @@ Jpgfdraw
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The module 
+El módulo 
 \family sans
-Custom paragraph shapes
+Párrafos conformados
 \family default
- also provides the two commands 
+ proporciona además el 
+\family sans
+Comando
+\family default
+ 
 \family sans
 shapepar
 \family default
- and 
+ y el 
+\family sans
+Comando
+\family default
+ 
 \family sans
 Shapepar
 \family default
- which can be used to define custom shapes coordinate by coordinate.
+ que se pueden usar para definir formas coordenada a coordenada.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-These commands are internally used for all shapes described here.
+Estos comandos se usan internamente para todas las formas que se han descrito
+ aquí.
 \end_layout
 
 \end_inset
 
- For information how these styles are used and about further customization
- possibilities, have a look at the documentation of the package 
+ Para información sobre el uso de estos entornos de estilo y más posibilidades
+ de personalización echa un vistazo a la documentación del paquete 
 \series bold
-\lang spanish
 shapepar
 \series default
 , 
