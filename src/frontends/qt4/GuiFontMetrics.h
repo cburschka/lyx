@@ -16,6 +16,8 @@
 
 #include "support/docstring.h"
 
+#include <map>
+
 #include <QFontMetrics>
 #include <QHash>
 
@@ -58,6 +60,10 @@ private:
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
+
+	/// Cache of string widths
+	/// FIXME Try to use a QHash (this requires to define qHash(docstring))
+	mutable std::map<docstring, int> strwidth_cache_;
 
 	struct AscendDescend {
 		int ascent;

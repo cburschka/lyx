@@ -5,20 +5,29 @@ for now we intend to keep unchanged behavior for testing purposes.
 
 What is done:
 * Make TextMetrics methods operate on Row objects: breakRow and
-setRowHeight instead of rowBreakPoint and rowHeight.
+  setRowHeight instead of rowBreakPoint and rowHeight.
+
 * change breakRow operation to operate on text strings on which
-metrics are computed. Note that for now FontMetrics::width(docstring)
-still computes the sum of character widths, so that behavior is
-unchanged.
+  metrics are computed. Note that for now
+  FontMetrics::width(docstring) still computes the sum of character
+  widths, so that behavior is unchanged.
+
+* Implement proper string metrics computation (with cache), when
+  lyxrc.force_paint_single_char is false.
 
 Next steps:
+
 * Make breakRow build a list of elements (string, inset,
-separator,...) in the row. This will be reused by other methods
+  separator,...) in the row. This will be reused by other methods
+
 * get rid of rowWidth (breakRow does compute this)
+
 * re-implement getColumnNearX using row elements
-* re-implement x2pos using row elements
-* re-implement row painting using row elements
-* Finally, implement proper string metrics computation (with cache)
+
+* re-implement cursorX using row elements
+
+* re-implement row painting using row elements (can it be done?)
+
 * profile and see how performance can be improved.
 
 Difference in behavior
