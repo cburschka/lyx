@@ -35,19 +35,27 @@ public:
 	///
 	bool isBoundary(Buffer const &, Paragraph const & par,
 				pos_type pos, Font const & font) const;
-	///
+	/** Maps positions in the visual string to positions
+	 *  in logical string.
+	 */
 	pos_type log2vis(pos_type pos) const;
 	/** Maps positions in the logical string to positions
 	 *  in visual string.
 	 */
 	pos_type vis2log(pos_type pos) const;
-	///
+	/* 
+	 * The text direction at logical position \param pos.
+	 * Possible values are
+	 *  0: left-to-right text
+	 *  1: right-to-left text
+	 *  2: left-to-right text in right-to-left language (aka numbers)
+	 */
 	pos_type level(pos_type pos) const;
-	///
+	/// Is logical position covered by this row?
 	bool inRange(pos_type pos) const;
-	/// same_direction?
+	/// Is the whole row in the same direction as the paragraph?
 	bool same_direction() const;
-	///
+	/// Compute the data for visual positions. 
 	void computeTables(Paragraph const & par,
 			   Buffer const &, Row const & row);
 private:
