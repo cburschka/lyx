@@ -9,6 +9,47 @@
  * Full author contact details are available in file CREDITS.
  */
 
+/*
+First some explanation about what a Cursor really is. I try to go from
+more local to general.
+
+* a CursorSlice indicates the position of the cursor at local level.
+It contains in particular:
+  * idx(): the cell that contains the cursor (for Tabular or math
+           arrays). Always 0 for 'plain' insets
+  * pit(): the index of the current paragraph (only for Texted)
+  * pos(): the position in the current paragraph (or in the math
+           equation in Mathed).
+  * inset(): the inset in which the cursor is.
+
+* a DocIterator indicated the position of the cursor in the document.
+  It knows about the current buffer (buffer() method) and contains a
+  vector of CursorSlices that describes the nesting of insets up to the
+  point of interest. Note that operator<< has been implemented, so that
+  one can send a DocIterator to a stream to see its value. Try it, it is
+  very helpful to understand the cursor layout.
+  * when using idx/pit/pos on a DocIterator, one gets the information
+    from the inner slice (this slice can be accessed as top())
+  * inMathed() returns true when the cursor is in a math formula
+  * inTexted() returns true when the cursor is in text
+  * innerTextSlice() returns the deepest slice that is text (useful
+    when one is in a math equation and looks for the enclosing text)
+
+* A CursorData is a descendent of Dociterator that contains
+  * a second DocIterator object, the anchor, that is useful when
+    selecting.
+  * some other data not interesting here
+This class is used only for undo and contains the Cursor element that
+are not GUI-related. In LyX 2.0, Cursor was directly deriving from
+DocIterator
+
+* A Cursor is a descendant of CursorData that contains interesting
+  display-related information, in particular targetX(), the horizontal
+  position of the cursor in pixels.
+  * one interesting method for what you want to do is textRow(), that
+    returns the inner Row object that contains the cursor
+*/
+
 #ifndef LCURSOR_H
 #define LCURSOR_H
 
