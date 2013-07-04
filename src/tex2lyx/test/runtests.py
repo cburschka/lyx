@@ -20,6 +20,16 @@ import os, string, sys, time, difflib, filecmp, subprocess, re
 def usage(prog_name):
   return "Usage: %s [uselyx2lyx] [<tex2lyx binary> [[<script dir>] [[<output dir>] [testfile]]]]" % prog_name
 
+pat_fl = re.compile(r'^#LyX file created by tex2lyx .*$')
+
+def compareLyx(lines1, lines2):
+    if lines1[1:] != lines2[1:]:
+        return False
+    if not pat_fl.match(lines1[0]):
+        return False
+    if not pat_fl.match(lines2[0]):
+        return False
+    return True
 
 def main(argv):
     # Parse and manipulate the command line arguments.
@@ -102,18 +112,21 @@ def main(argv):
                           os.path.join(outputdir, base + ".lyx2.lyx"), uselyx2lyx)
                 if lyxfile2 is None:
                     errors.append(f)
-                elif not filecmp.cmp(lyxfile1, lyxfile2, False):
+                else:
                     t1 = time.ctime(os.path.getmtime(lyxfile1))
                     t2 = time.ctime(os.path.getmtime(lyxfile2))
                     f1 = open(lyxfile1, 'r')
                     f2 = open(lyxfile2, 'r')
                     lines1 = f1.readlines()
                     lines2 = f2.readlines()
-                    diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
                     f1.close()
                     f2.close()
-                    sys.stdout.writelines(diff)
-                    errors.append(f)
+                    # ignore the first line i.e., the version of lyx
+                    if not compareLyx(lines1, lines2):
+                        diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
+                        sys.stdout.writelines(diff)
+                        errors.append(f)
+
 
     if len(errors) > 0:
         error('Converting the following files failed: %s' % ', '.join(errors))
