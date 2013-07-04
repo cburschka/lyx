@@ -5,15 +5,64 @@
 #
 
 if(Q_WS_X11)
+  set(Missing)
+  set(XVFBDLIBS)
   # Make sure, the needed programs are in PATH
   find_program(PCREGREP_EXE "pcregrep")
+  if (NOT PCREGREP_EXE)
+    list(APPEND Missing "pcregrep")
+  endif()
   find_program(WMCTRL_EXE "wmctrl")
+  if(NOT WMCTRL_EXE)
+    list(APPEND Missing "wmctrl")
+  endif()
   # This is needed to build xvkbd
   # Programs pcregrep wmctrl and xvkbd are used in subsequent scripts
   # while testing
+
+  # Check for needed libraries for xvkbd
+  # do not add autotests, if any of them is lacking
+
   find_package(X11)
-  if(X11_FOUND AND PCREGREP_EXE AND WMCTRL_EXE)
-    #message(STATUS "PCREGREP_EXE and WMCTRL_EXE found")
+  if(NOT X11_FOUND)
+    list(APPEND Missing "X11")
+  endif()
+  find_package(PkgConfig)
+  if(PKG_CONFIG_FOUND)
+    pkg_check_modules(XAWLIB xaw7)
+    if (XAWLIB_LIBRARIES)
+      list(APPEND XVFBDLIBS ${XAWLIB_LIBRARIES})
+    else()
+      list(APPEND Missing Xaw7)
+    endif()
+    pkg_check_modules(XTEST xtst)
+    if (XTEST_LIBRARIES)
+      list(APPEND XVFBDLIBS ${XTEST_LIBRARIES})
+    else()
+      list(APPEND Missing xtst)
+    endif()
+  else()
+    find_library(XAW7LIB "Xaw7")
+    if(XAW7LIB)
+      list(APPEND XVFBDLIBS ${XAW7LIB})
+    else()
+      list(APPEND Missing Xaw7)
+    endif()
+    foreach(_lb Xt XTest X11)
+      if(X11_${_lb}_LIB)
+	list(APPEND XVFBDLIBS ${X11_${_lb}_LIB})
+      else()
+	list(APPEND Missing ${_lb})
+      endif()
+    endforeach()
+  endif()
+
+  if(Missing)
+    message(STATUS "Missing Libraries or programms to create xvkbd: ${Missing}")
+    message(STATUS "cmake build is therefore omiting autotests")
+  endif()
+
+  if(NOT Missing)
     project(autotests)
 
     add_subdirectory(xvkbd)
