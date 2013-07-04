@@ -3757,8 +3757,8 @@ def convert_lyxframes(document):
         return
    
     framebeg = ["BeginFrame", "BeginPlainFrame"]
-    frameend = ["EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame", "Section", "Section*",
-                "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
+    frameend = ["Frame", "PlainFrame", "EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame",
+                "Section", "Section*", "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
     for lay in framebeg:
         i = 0
         while True:
