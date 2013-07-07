@@ -1598,18 +1598,18 @@
 #
 # general punctuation
 #
-0x2000 "\\enskip"                 "" "" "\\enskip" "" # EN QUAD
-0x2001 "\\quad"                   "" "" "\\quad" "" # EM QUAD
-0x2002 "\\enskip"                 "" "" "\\enskip" "" # EN SPACE
-0x2003 "\\quad"                   "" "" "\\quad" "" # EM SPACE
-0x2004 "\\;"                      "" "notermination=both" "\\;" "" # THREE-PER-EM SPACE
-0x2005 "\\:"                      "" "notermination=both" "\\:" "" # FOUR-PER-EM SPACE
-0x2006 "\\,"                      "" "notermination=both" "\\," "" # SIX-PER-EM SPACE
-0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
-0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
-0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
-0x200a "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" "" "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" # HAIR SPACE
-0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
+0x2000 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN QUAD
+0x2001 "\\quad"                   "" "force=utf8" "\\quad" "" # EM QUAD
+0x2002 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN SPACE
+0x2003 "\\quad"                   "" "force=utf8" "\\quad" "" # EM SPACE
+0x2004 "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\hskip0.3333em\relax}" "force=utf8" "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\hskip0.3333em\relax}" # THREE-PER-EM SPACE
+0x2005 "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\hskip0.25em\relax}" "force=utf8" "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\hskip0.25em\relax}" # FOUR-PER-EM SPACE
+0x2006 "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\hskip0.16667em\relax}" "force=utf8" "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\hskip0.16667em\relax}" # SIX-PER-EM SPACE
+0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "force=utf8" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
+0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "force=utf8" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
+0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "force=utf8" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
+0x200a "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" "force=utf8" "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" # HAIR SPACE
+0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "force=utf8" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
 0x200c "\\textcompwordmark"       "" "" "" "" # ZERO WIDTH NON-JOINER
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK

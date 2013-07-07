@@ -666,13 +666,17 @@ int InsetSpace::plaintext(odocstringstream & os,
 		os.put(0x2003);
 		return 2;
 	case InsetSpaceParams::THIN:
-		os.put(0x2009);
+		os.put(0x202f);
 		return 1;
 	case InsetSpaceParams::MEDIUM:
+		os.put(0x200b); // ZERO WIDTH SPACE, makes the unbreakable medium space breakable
 		os.put(0x2005);
+		os.put(0x200b); // ZERO WIDTH SPACE, makes the unbreakable medium space breakable
 		return 1;
 	case InsetSpaceParams::THICK:
+		os.put(0x200b); // ZERO WIDTH SPACE, makes the unbreakable thick space breakable
 		os.put(0x2004);
+		os.put(0x200b); // ZERO WIDTH SPACE, makes the unbreakable thick space breakable
 		return 1;
 	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
