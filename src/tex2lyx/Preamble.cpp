@@ -21,6 +21,7 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
+#include "version.h"
 
 #include "support/convert.h"
 #include "support/FileName.h"
@@ -1040,7 +1041,10 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	}
 
 	// output the LyX file settings
-	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
+	// Important: Keep the version formatting in sync with LyX and
+	//            lyx2lyx (bug 7951)
+	os << "#LyX file created by tex2lyx " << lyx_version_major << '.'
+	   << lyx_version_minor << '\n'
 	   << "\\lyxformat " << LYX_FORMAT << '\n'
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
