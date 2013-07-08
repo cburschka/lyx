@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 465
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -45,7 +45,7 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -563,6 +563,7 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
 small
 \end_layout
@@ -749,6 +750,7 @@ Standard
 status collapsed
 
 \begin_layout Plain Layout
+
 "=
 \end_layout
 
@@ -759,6 +761,7 @@ Overlay
 status collapsed
 
 \begin_layout Plain Layout
+
 "=
 \end_layout
 
@@ -829,6 +832,7 @@ presentation:3|article:0
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 small
@@ -1007,6 +1011,7 @@ Eingebettete Absätze sind durch eine rote Linie am Rand des LyX
 status collapsed
 
 \begin_layout Plain Layout
+
 "=
 \end_layout
 
@@ -1880,6 +1885,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 small
 \end_layout
@@ -2302,6 +2308,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 small
@@ -3244,7 +3251,7 @@ Tipp
 \begin_layout Block
 Verwenden Sie diese Hervorhebungs- und Fett-Einfügungen (anstelle der üblichen
  Schriftattribute) auch dann, wenn Sie keine Overlay-Spezifikationen benötigen!
- Aufgrund der Art und Weise, wie Fettdruck und Herorhebung in 
+ Aufgrund der Art und Weise, wie Fettdruck und Hervorhebung in 
 \begin_inset Flex Structure
 status collapsed
 
@@ -3773,6 +3780,7 @@ Spalten
 status collapsed
 
 \begin_layout Plain Layout
+
 ""
 \end_layout
 
