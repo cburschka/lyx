@@ -3252,8 +3252,8 @@ void LyXAction::init()
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
- * \li Action: When run from a child document, this updates (exports) document built
-               from the master buffer, if available.
+ * \li Action: Update (export) the document built from the master buffer,
+               if the current buffer is part of a master/child document.
  * \li Syntax: master-buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined (in the current GUI) in the
@@ -3266,8 +3266,8 @@ void LyXAction::init()
 		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_VIEW
- * \li Action: When run from a child document, this command shows a preview built
-               from the master buffer, if available.
+ * \li Action: Show a preview built from the master buffer, if available.
+               if the current buffer is part of a master/child document.
  * \li Syntax: master-buffer-view [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined (in the current GUI) in the

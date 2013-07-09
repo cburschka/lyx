@@ -1611,7 +1611,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_MASTER_BUFFER_UPDATE:
 	case LFUN_MASTER_BUFFER_VIEW:
-		enable = doc_buffer && doc_buffer->parent() != 0
+		enable = doc_buffer
+			&& (doc_buffer->parent() != 0
+			    || doc_buffer->hasChildren())
 			&& !d.processing_thread_watcher_.isRunning();
 		break;
 
