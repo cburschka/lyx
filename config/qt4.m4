@@ -58,6 +58,22 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 	fi
 ])
 
+
+AC_DEFUN([QT4_FIND_TOOL],
+[
+	$1=
+	if test -n "$qt4_cv_bin" ; then
+		AC_PATH_PROGS($1, [$2], [], $qt4_cv_bin)
+	fi
+	if test -z "$$1"; then
+		AC_PATH_PROGS($1, [$2-qt4 $2],[],$PATH)
+	fi
+	if test -z "$$1"; then
+		AC_MSG_ERROR([cannot find $2 binary.])
+	fi
+])
+
+
 dnl get Qt version we're using
 AC_DEFUN([QT4_GET_VERSION],
 [
@@ -144,18 +160,9 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QT4_VERSION has been found.])
 	])
 
-	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
-	if test -z "$MOC4"; then
-  	  AC_MSG_ERROR([cannot find moc binary.])
-	fi
-	AC_PATH_PROGS(UIC4, [uic-qt4 uic],[],$qt4_cv_bin:$PATH)
-	if test -z "$UIC4"; then
-	  AC_MSG_ERROR([cannot find uic binary.])
-	fi
-	AC_PATH_PROGS(RCC4, [rcc-qt4 rcc],[],$qt4_cv_bin:$PATH)
-	if test -z "$RCC4"; then
-	  AC_MSG_ERROR([cannot find rcc binary.])
-	fi
+	QT4_FIND_TOOL([MOC4], [moc])
+	QT4_FIND_TOOL([UIC4], [uic])
+	QT4_FIND_TOOL([RCC4], [rcc])
 ])
 
 AC_DEFUN([QT4_DO_PKG_CONFIG],
