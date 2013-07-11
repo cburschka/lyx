@@ -393,30 +393,6 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += 6;
 		env = true; //We have opened a new environment
 	}
-	if (f.underbar() == FONT_ON) {
-		os << "\\uline{";
-		count += 10;
-		runparams.inulemcmd = true;
-		env = true; //We have opened a new environment
-	}
-	if (f.strikeout() == FONT_ON) {
-		os << "\\sout{";
-		count += 9;
-		runparams.inulemcmd = true;
-		env = true; //We have opened a new environment
-	}
-	if (f.uuline() == FONT_ON) {
-		os << "\\uuline{";
-		count += 11;
-		runparams.inulemcmd = true;
-		env = true; //We have opened a new environment
-	}
-	if (f.uwave() == FONT_ON) {
-		os << "\\uwave{";
-		count += 10;
-		runparams.inulemcmd = true;
-		env = true; //We have opened a new environment
-	}
 	// \noun{} is a LyX special macro
 	if (f.noun() == FONT_ON) {
 		os << "\\noun{";
@@ -431,8 +407,31 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 		os << '\\'
 		   << LaTeXSizeNames[f.size()]
-		   << '{';
-		count += strlen(LaTeXSizeNames[f.size()]) + 2;
+		   << "{}";
+		count += strlen(LaTeXSizeNames[f.size()]) + 3;
+	}
+	// The ulem commands need to be on the deepest nesting level
+	// because ulem puts every nested group or macro in a box,
+	// which prevents linebreaks (#8424, #8733)
+	if (f.underbar() == FONT_ON) {
+		os << "\\uline{";
+		count += 10;
+		runparams.inulemcmd = true;
+	}
+	if (f.strikeout() == FONT_ON) {
+		os << "\\sout{";
+		count += 9;
+		runparams.inulemcmd = true;
+	}
+	if (f.uuline() == FONT_ON) {
+		os << "\\uuline{";
+		count += 11;
+		runparams.inulemcmd = true;
+	}
+	if (f.uwave() == FONT_ON) {
+		os << "\\uwave{";
+		count += 10;
+		runparams.inulemcmd = true;
 	}
 	return count;
 }
@@ -481,30 +480,6 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.underbar() == FONT_ON) {
-		os << '}';
-		++count;
-		runparams.inulemcmd = false;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.strikeout() == FONT_ON) {
-		os << '}';
-		++count;
-		runparams.inulemcmd = false;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.uuline() == FONT_ON) {
-		os << '}';
-		++count;
-		runparams.inulemcmd = false;
-		env = true; // Size change need not bother about closing env.
-	}
-	if (f.uwave() == FONT_ON) {
-		os << '}';
-		++count;
-		runparams.inulemcmd = false;
-		env = true; // Size change need not bother about closing env.
-	}
 	if (f.noun() == FONT_ON) {
 		os << '}';
 		++count;
@@ -516,11 +491,29 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 			os << '}';
 			++count;
 		}
+	}
+	if (f.underbar() == FONT_ON) {
 		os << '}';
 		++count;
+		runparams.inulemcmd = false;
+	}
+	if (f.strikeout() == FONT_ON) {
+		os << '}';
+		++count;
+		runparams.inulemcmd = false;
+	}
+	if (f.uuline() == FONT_ON) {
+		os << '}';
+		++count;
+		runparams.inulemcmd = false;
+	}
+	if (f.uwave() == FONT_ON) {
+		os << '}';
+		++count;
+		runparams.inulemcmd = false;
 	}
 
-	// When the current language is Hebrew, Arabic, or Farsi
+	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.

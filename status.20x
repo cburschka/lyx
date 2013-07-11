@@ -52,6 +52,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix output of ulem commands (underline etc.) which was broken as of
+  LyX 2.0.6 (bug 8733).
+
 - Fix problem with unbalanced braces in XeTeX output (bug 8765).
 
 - Added h5 and h6 as tags for Paragraph and Subparagraph.
