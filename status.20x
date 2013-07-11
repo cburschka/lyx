@@ -52,6 +52,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix problem with unbalanced braces in XeTeX output (bug 8765).
+
 - Added h5 and h6 as tags for Paragraph and Subparagraph.
 
 - Include alt tag when exporting math as images (bug 8746).
