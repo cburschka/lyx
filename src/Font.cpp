@@ -286,6 +286,9 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			tmp += "{";
 			os << from_ascii(tmp);
 			count += tmp.length();
+		} else {
+			os << '{';
+			count += 1;
 		}
 	} else if (language()->babel() != base.language()->babel() &&
 	    language() != prev.language()) {
