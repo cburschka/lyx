@@ -88,7 +88,7 @@ void pasteSelection(Cursor & cur, ErrorList &);
 /// (internal or external: which is newer).
 /// Does handle undo. Does only work in text, not mathed.
 /// \p asParagraphs is only considered if plain text is pasted.
-void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
+bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 	Clipboard::TextType preferedType = Clipboard::LyXOrPlainTextType);
 /// Replace the current selection with the clipboard contents as graphic.
 /// Does handle undo. Does only work in text, not mathed.
@@ -96,7 +96,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
 	Clipboard::GraphicsType preferedType = Clipboard::AnyGraphicsType);
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
-void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
+bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
 /// Paste the clipboard as simple text, removing any formatting
 void pasteSimpleText(Cursor & cur, bool asParagraphs);
 

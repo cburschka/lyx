@@ -1226,13 +1226,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// without argument?
 		string const arg = to_utf8(cmd.argument());
 		if (arg.empty()) {
+			bool tryGraphics = true;
 			if (theClipboard().isInternal())
 				pasteFromStack(cur, bv->buffer().errorList("Paste"), 0);
-			else if (theClipboard().hasGraphicsContents() 
-				     && !theClipboard().hasTextContents())
+			else if (theClipboard().hasTextContents()) {
+				if (pasteClipboardText(cur, bv->buffer().errorList("Paste"),
+				                       true, Clipboard::AnyTextType))
+					tryGraphics = false;
+			}
+			if (tryGraphics && theClipboard().hasGraphicsContents())
 				pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"));
-			else
-				pasteClipboardText(cur, bv->buffer().errorList("Paste"), true);
 		} else if (isStrUnsignedInt(arg)) {
 			// we have a numerical argument
 			pasteFromStack(cur, bv->buffer().errorList("Paste"),

@@ -1053,27 +1053,26 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 }
 
 
-void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
+bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 {
 	// this does not make sense, if there is nothing to paste
 	if (!checkPastePossible(sel_index))
-		return;
+		return false;
 
 	cur.recordUndo();
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second, errorList);
+	return true;
 }
 
 
-void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
+bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
                         Clipboard::TextType type)
 {
 	// Use internal clipboard if it is the most recent one
 	// This overrides asParagraphs and type on purpose!
-	if (theClipboard().isInternal()) {
-		pasteFromStack(cur, errorList, 0);
-		return;
-	}
+	if (theClipboard().isInternal())
+		return pasteFromStack(cur, errorList, 0);
 
 	// First try LyX format
 	if ((type == Clipboard::LyXTextType ||
@@ -1090,7 +1089,7 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
 					buffer.params().documentClassPtr(), errorList);
-				return;
+				return true;
 			}
 		}
 	}
@@ -1119,11 +1118,14 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 				// Buffer buffer(string(), false);
 				Buffer buffer("", false);
 				buffer.setUnnamed(true);
-				if (buffer.importString(names[i], text, errorList)) {
+				available = buffer.importString(names[i], text, errorList);
+				if (available)
+					available = !buffer.paragraphs().empty();
+				if (available && !buffer.paragraphs()[0].empty()) {
 					cur.recordUndo();
 					pasteParagraphList(cur, buffer.paragraphs(),
 						buffer.params().documentClassPtr(), errorList);
-					return;
+					return true;
 				}
 			}
 		}
@@ -1132,12 +1134,13 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 	// Then try plain text
 	docstring const text = theClipboard().getAsText(Clipboard::PlainTextType);
 	if (text.empty())
-		return;
+		return false;
 	cur.recordUndo();
 	if (asParagraphs)
 		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
 		cur.text()->insertStringAsLines(cur, text, cur.current_font);
+	return true;
 }
 
 
