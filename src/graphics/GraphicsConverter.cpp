@@ -255,6 +255,13 @@ static void build_conversion_command(string const & command, ostream & script)
 }
 
 
+static string const strip_digit(string const & format)
+{
+	// Strip trailing digits from format names e.g. "pdf6" -> "pdf"
+	return format.substr(0, format.find_last_not_of("0123456789") + 1);
+}
+
+
 static void build_script(string const & from_file,
 		  string const & to_file,
 		  string const & from_format,
@@ -318,12 +325,12 @@ static void build_script(string const & from_file,
 		   << libScriptSearch("$$s/scripts/convertDefault.py",
 				      quote_python) << ' ';
 		if (!from_format.empty())
-			os << from_format << ':';
+			os << strip_digit(from_format) << ':';
 		// The extra " quotes around infile and outfile are needed
 		// because the filename may contain spaces and it is used
 		// as argument of os.system().
 		os << "' + '\"' + infile + '\"' + ' "
-		   << to_format << ":' + '\"' + outfile + '\"' + '";
+		   << strip_digit(to_format) << ":' + '\"' + outfile + '\"' + '";
 		string const command = os.str();
 
 		LYXERR(Debug::GRAPHICS,
