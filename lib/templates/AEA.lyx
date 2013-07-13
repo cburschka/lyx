@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 471
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass AEA
@@ -49,8 +49,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -576,10 +576,31 @@ An example Algorithm
 
 \begin_layout Standard
 References here (manual or BibTeX).
- If you are using BibTeXyou must use the bibliography style 
+ If you are using BibTeX you must use the bibliography style 
 \series bold
 aea
 \series default
+.
+ If 
+\begin_inset Quotes eld
+\end_inset
+
+all cited references
+\begin_inset Quotes erd
+\end_inset
+
+ is selected for the BibTeX bibliography, then BibTeX will complain if there
+ is no citation in the document so let
+\begin_inset Quotes ers
+\end_inset
+
+s put one in: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Cotton1999"
+
+\end_inset
+
 .
 \end_layout
 
