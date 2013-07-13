@@ -206,7 +206,7 @@ string guessFormatFromContents(FileName const & fn)
 	// FIG	#FIG...
 	// FITS ...BITPIX...
 	// GIF	GIF...
-	// JPG	JFIF
+	// JPG	\377\330...     (0xFFD8)
 	// PDF	%PDF-...
 	// PNG	.PNG...
 	// PBM	P1... or P4	(B/W)
@@ -280,6 +280,9 @@ string guessFormatFromContents(FileName const & fn)
 			} else if (stamp == "BM") {
 				format =  "bmp";
 
+			} else if (stamp == "\377\330") {
+				format =  "jpg";
+
 			} else if (stamp == "\001\332") {
 				format =  "sgi";
 
@@ -334,9 +337,6 @@ string guessFormatFromContents(FileName const & fn)
 
 		else if (contains(str, "Grace"))
 			format = "agr";
-
-		else if (contains(str, "JFIF"))
-			format = "jpg";
 
 		else if (contains(str, "%PDF"))
 			// autodetect pdf format for graphics inclusion
