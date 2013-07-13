@@ -22,8 +22,8 @@ Interface changes
   LyX now closes exclusively that specific view. If there are other
   views showing the same document, they are not closed. When the user
   closes the last view, LyX can be configured for either closing the
-  document, or keeping it into memory as a hidden document (that can
-  be shown again through the View->Hidden-> submenu).
+  document, or keeping it in memory as a hidden document (that can be
+  shown again through the View->Hidden-> submenu).
 
   A new configurable preference option has been added, allowing for
   either (close_buffer_with_last_view).
@@ -50,7 +50,7 @@ Interface changes
   long search operation by hitting the ESC key.
 
 - Linux desktop file specification and scalable icon has been
-  included into the tarball.
+  included in the tarball.
 
 - The format pdf aka "PDF (ps2pdf)" was split in two formats: pdf aka
   "PDF (ps2pdf)" and pdf6 aka "PDF (graphics)". pdf6 is used for PDF
@@ -90,7 +90,7 @@ The following pref variables were added in 2.1:
 
   The default semantics of TEXINPUTS apply, such that, for example,
   if a path is terminated with a double slash, all subdirectories
-  will also be searched by both the TeX engine amnd ancillary programs
+  will also be searched by both the TeX engine and ancillary programs
   such as dvi previewers or dvips. 
   
   (see also commit 1717ef20)
@@ -107,14 +107,16 @@ The following pref variables were changed in 2.1:
 
 - \\mac_like_word_movement -> \\mac_like_cursor_movement
   When this option is set, the cursor is now moved to the end of
-  the current paragraph on paragrah-down. The pref variable was
+  the current paragraph on paragraph-down. The pref variable was
   renamed to better reflect this new behaviour.
+
 
 The following pref variables are obsoleted in 2.1:
 
 - \\default_language and \\default_papersize
   To set the default language and paper size for new documents, use
   the "Save As Document Defaults" button in Document > Settings.
+
 
 The following new LyX functions have been introduced:
 
@@ -135,7 +137,7 @@ The following new LyX functions have been introduced:
   Renames or copies a file under version control.
 
 - LFUN_BUFFER_FORALL <command>
-  Applies the <command> to all non-hidden buffers.
+  Applies <command> to all non-hidden buffers.
 
 - LFUN_ENVIRONMENT_SPLIT
   Splits the current environment with a Separator.
@@ -159,6 +161,7 @@ The following new LyX functions have been introduced:
   on the document, either close or hide it (see the new preference
   option \\close_buffer_with_last_view)
 
+
 The following LyX functions have been changed:
  
 - LFUN_CLOSE_TAB_GROUP ("close-tab-group") was renamed to
@@ -170,6 +173,7 @@ The following LyX functions have been changed:
 - LFUN_BREAK_PARAGRAPH ("break-paragraph") was renamed to
   LFUN_PARAGRAPH_BREAK ("paragraph-break").
 
+
 The following LyX key bindings have been changed:
 
 - The binding "C-w" was moved from "buffer-close" to "view-close"
@@ -179,7 +183,7 @@ The following LyX key bindings have been changed:
 Changes with respect to external programs and libraries:
 --------------------------------------------------------
 
-- LyX links now against libmagic (http://www.darwinsys.com/file/) if it is
+- LyX now links against libmagic (http://www.darwinsys.com/file/) if it is
   available at compile time. This improves the file format detection of
   included graphics and other files. The old builtin format detection code
   is used if libmagic is not available.
@@ -196,6 +200,7 @@ Known issues in version 2.1.0
   where Python 3 is the default binary. See bug #7030 to know how to fix
   this properly, since simple sheebang conversion in *.py files will not
   be enough.
+
 
 Caveats when upgrading from earlier versions to 2.1.x
 -------------------------------------------------------
