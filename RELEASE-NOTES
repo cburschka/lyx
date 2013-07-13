@@ -31,13 +31,13 @@ Interface changes
 - There have been some changes to the LyX command line. The following
   new options have been added:
 
-  -export-to <format> <dest>    (-E <format> <dest>)
+  --export-to <format> <dest>    (-E <format> <dest>)
 
     Allows one to perform a batch export of the LyX file that is
     opened to the specified destination file <dest> and format 
     <format>. For example, to create a PDF of a LyX document,
     you can run:
-      lyx -export-to pdf /path/to/dest.pdf /path/to/source.lyx
+      lyx --export-to pdf /path/to/dest.pdf /path/to/source.lyx
     See the manual page for details.
   
     This functionality is also available via a new menu voice
@@ -178,6 +178,9 @@ The following LyX key bindings have been changed:
 
 - The binding "C-w" was moved from "buffer-close" to "view-close"
   (only in cua.bind).
+
+- sciword.bind was changed significantly (see #8364). The most important
+  change is that "math-delim" commands now work under Windows.
 
 
 Changes with respect to external programs and libraries:
