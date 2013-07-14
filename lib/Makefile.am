@@ -1953,6 +1953,7 @@ dist_layouts_DATA =\
 	layouts/numrevtex.inc \
 	layouts/paper.layout \
 	layouts/powerdot.layout \
+	layouts/RJournal.layout \
 	layouts/recipebook.layout \
 	layouts/report.layout \
 	layouts/revtex.layout \
@@ -2101,6 +2102,7 @@ dist_templates_DATA = \
 	templates/letter.lyx \
 	templates/lettre.lyx \
 	templates/README.new_templates \
+	templates/RJournal.lyx \
 	templates/revtex4.lyx \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx
