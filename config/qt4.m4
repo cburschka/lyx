@@ -193,9 +193,17 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 		AC_SUBST(QT4_VERSION)
 		QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
 		AC_SUBST(QT4_LIB)
-		LIBS="$LIBS `$PKG_CONFIG --libs-only-other QtCore QtGui`"
+		dnl LIBS="$LIBS `$PKG_CONFIG --libs-only-other QtCore QtGui`"
 	fi
 	PKG_CONFIG_PATH=$save_PKG_CONFIG_PATH
+	dnl Actually, the values of QT4_LIB and QT4_CORE_LIB can be completely
+	dnl wrong on OS X, where everything goes to --libs-only-other.
+	dnl As a quick workaround, let us assign better values. A better patch
+	dnl exists for next cycle.
+	QT4_CORE_LIB=$QT4_CORE_LIBS
+	QT4_CORE_LDFLAGS=
+	QT4_LIB=$QT4_FRONTEND_LIBS
+	QT4_LDFLAGS=
 ])
 
 AC_DEFUN([QT4_DO_MANUAL_CONFIG],
