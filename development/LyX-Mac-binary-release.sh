@@ -328,6 +328,9 @@ case $SDKs in
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 
+# pkg-config is not usable with this script
+export PKG_CONFIG=""
+
 # These variables define the identifiers of the
 # system (both Intel and PowerPC) to compile for.
 # (Note: darwin8 is 10.4; darwin9 is 10.5.)
@@ -607,7 +610,6 @@ build_lyx() {
 			export QT4_CORE_LIBS="-framework QtCore"
 			export QT4_FRONTEND_CFLAGS="-FQtGui"
 			export QT4_FRONTEND_LIBS="-framework QtGui"
-			export PKG_CONFIG=""
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
 		fi
