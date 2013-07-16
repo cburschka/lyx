@@ -1475,6 +1475,14 @@ contributers = [
                  "25 September 2007",
                  u"Major rework of the AMS classes"),
 
+     contributer(u"Guy Rutenberg",
+                 "guyrutenberg () gmail ! com",
+                 "GPL",
+                 "Re: [PATCH] Strange Behaivor: xdg-open left as zombie",
+                 "m=137365070116624",
+                 "12 July 2013",
+                 u"System call fixes"),
+
      contributer(u"Ran Rutenberg",
                  "ran.rutenberg () gmail ! com",
                  "GPL",

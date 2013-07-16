@@ -251,17 +251,15 @@ int Systemcall::startscript(Starttype how, string const & what,
 	SystemcallPrivate d(infile, outfile, errfile);
 
 
-	d.startProcess(cmd, path);
-	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
+	d.startProcess(cmd, path, how == DontWait);
+	if (how == DontWait && d.state == SystemcallPrivate::Running) {
+		return 0;
+	}
+	if (d.state == SystemcallPrivate::Error
+			|| !d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not start!");
 		LYXERR0("error " << d.errorMessage());
 		return 10;
-	}
-
-	if (how == DontWait) {
-		QProcess* released = d.releaseProcess();
-		(void) released; // TODO who deletes it?
-		return 0;
 	}
 
 	if (!d.waitWhile(SystemcallPrivate::Running, process_events,
@@ -349,10 +347,18 @@ SystemcallPrivate::SystemcallPrivate(std::string const & sf,
 }
 
 
-void SystemcallPrivate::startProcess(QString const & cmd, string const & path)
+void SystemcallPrivate::startProcess(QString const & cmd, string const & path, bool detached)
 {
 	cmd_ = cmd;
-	if (process_) {
+	if (detached) {
+		state = SystemcallPrivate::Running;
+		if (!QProcess::startDetached(toqstr(latexEnvCmdPrefix(path)) + cmd_)) {
+			state = SystemcallPrivate::Error;
+			return;
+		}
+		QProcess* released = releaseProcess();
+		delete released;
+	} else if (process_) {
 		state = SystemcallPrivate::Starting;
 		process_->start(toqstr(latexEnvCmdPrefix(path)) + cmd_);
 	}
