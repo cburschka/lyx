@@ -843,12 +843,11 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	FontIterator fi = FontIterator(*this, par, pit, pos);
 	while (i < end && row.width() < width) {
 		char_type c = par.getChar(i);
-		Language const * language = fi->language();
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
 			Inset const * ins = par.getInset(i);
 			Dimension dim = pm.insetDimension(ins);
-			row.add(i, ins, dim);
+			row.add(i, ins, dim, *fi, par.lookupChange(i));
 		} else if (par.isLineSeparator(i)) {
 			// In theory, no inset has this property. If
 			// this is done, a new addSeparator which
@@ -857,19 +856,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			LATTEST(!par.isInset(i));
 			row.addSeparator(i, c, *fi, par.lookupChange(i));
 		} else if (c == '\t')
-			row.add(i, from_ascii("    "), *fi, par.lookupChange(i));
-		else if (language->rightToLeft()) {
-			if (language->lang() == "arabic_arabtex" ||
-			    language->lang() == "arabic_arabi" ||
-			    language->lang() == "farsi") {
-				if (!Encodings::isArabicComposeChar(c))
-					row.add(i, par.transformChar(c, i),
-						*fi, par.lookupChange(i));
-			} else if (language->lang() == "hebrew" &&
-				   !Encodings::isHebrewComposeChar(c)) {
-				row.add(i, c, *fi, par.lookupChange(i));
-			}
-		} else
+			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")), *fi, par.lookupChange(i));
+		else
 			row.add(i, c, *fi, par.lookupChange(i));
 
 		// end of paragraph marker
@@ -913,7 +901,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 				row.pop_back();
 			int const add = max(fm.width(par.layout().labelsep),
 					    labelEnd(pit) - row.width());
-			row.addSpace(i, add);
+			row.addSpace(i, add, *fi, par.lookupChange(i));
 		}
 
 	}
@@ -929,6 +917,11 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	if (!row.empty() && row.back().isLineSeparator()
 	    && row.endpos() < par.size())
 		row.pop_back();
+
+	// make sure that the RtL elements are in reverse ordering
+	lyxerr << ">>>>>>>>>>BEFORE REVERSE" << row;
+	row.reverseRtL();
+	lyxerr << "<<<<<<<<<<AFTER REVERSE" << row;
 
 	row.dimension().wid += right_margin;
 

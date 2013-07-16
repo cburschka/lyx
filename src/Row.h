@@ -42,22 +42,25 @@ public:
  */
 	struct Element {
 		enum Type {
-			STRING_ELT,
-			SEPARATOR_ELT,
-			INSET_ELT,
-			SPACE_ELT
+			STRING,
+			SEPARATOR,
+			INSET,
+			SPACE
 		};
 
-		Element(Type const t) : type(t), pos(0), inset(0), 
-					final(false) {}
+		Element(Type const t, pos_type p, Font const & f, Change const & ch) 
+			: type(t), pos(p), endpos(p + 1), inset(0), final(false),
+			  font(f), change(ch) {}
 
 		//
-		bool isLineSeparator() const { return type == SEPARATOR_ELT; }
+		bool isLineSeparator() const { return type == SEPARATOR; }
 
 		// The kind of row element
 		Type type;
 		// position of the element in the paragraph
 		pos_type pos;
+		// first position after the element in the paragraph
+		pos_type endpos;
 		// The dimension of the chunk (only width for strings)
 		Dimension dim;
 
@@ -118,18 +121,19 @@ public:
 	int descent() const { return dim_.des; }
 
 	///
-	void add(pos_type pos, Inset const * ins, Dimension const & dim);
-	///
-	void add(pos_type pos, docstring const & s,
+	void add(pos_type pos, Inset const * ins, Dimension const & dim,
 		 Font const & f, Change const & ch);
 	///
 	void add(pos_type pos, char_type const c,
 		 Font const & f, Change const & ch);
 	///
+	void add(pos_type pos, docstring const & s,
+		 Font const & f, Change const & ch);
+	///
 	void addSeparator(pos_type pos, char_type const c,
 			  Font const & f, Change const & ch);
 	///
-	void addSpace(pos_type pos, int width);
+	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
 	///
 	bool empty() const { return elements_.empty(); }
 	///
@@ -142,7 +146,7 @@ public:
 	void clear() { elements_.clear(); }
 	/**
 	 * remove all elements after last separator and update endpos
-	 * if necessary. 
+	 * if necessary.
 	 * \param keep is the minimum amount of text to keep.
 	 */
 	void separate_back(pos_type keep);
@@ -153,10 +157,13 @@ public:
 	 */
 	void finalizeLast();
 
-	friend std::ostream & operator<<(std::ostream & os, Row const & row);
+	/**
+	 * Find sequences of RtL elements and reverse them.
+	 * This should be called once the row is completely built.
+	 */
+	void reverseRtL();
 
-	/// current debugging only
-	void dump(char const * = "") const;
+	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 
 	/// width of a separator (i.e. space)
 	double separator;

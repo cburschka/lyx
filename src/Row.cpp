@@ -130,16 +130,16 @@ ostream & operator<<(ostream & os, Row const & row)
 	Row::Elements::const_iterator it = row.elements_.begin();
 	for ( ; it != row.elements_.end() ; ++it) {
 		switch (it->type) {
-		case Row::Element::STRING_ELT:
+		case Row::Element::STRING:
 			os << "**STRING: " << to_utf8(it->str) << endl;
 			break;
-		case Row::Element::INSET_ELT:
+		case Row::Element::INSET:
 			os << "**INSET: " << to_utf8(it->inset->layoutName()) << endl;
 			break;
-		case Row::Element::SEPARATOR_ELT:
+		case Row::Element::SEPARATOR:
 			os << "**SEPARATOR: " << endl;
 			break;
-		case Row::Element::SPACE_ELT:
+		case Row::Element::SPACE:
 			os << "**SPACE: " << it->dim.wid << endl;
 			break;
 		}
@@ -153,7 +153,7 @@ bool Row::sameString(Font const & f, Change const & ch) const
 	if (elements_.empty())
 		return false;
 	Element const & elt = elements_.back();
-	return elt.type == Element::STRING_ELT && !elt.final
+	return elt.type == Element::STRING && !elt.final
 		   && elt.font == f && elt.change == ch;
 }
 
@@ -167,18 +167,18 @@ void Row::finalizeLast()
 		return;
 	elt.final = true;
 
-	if (elt.type == Element::STRING_ELT) {
+	if (elt.type == Element::STRING) {
 		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
 		dim_.wid += elt.dim.wid;
 	}
 }
 
 
-void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim)
+void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
+	      Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::INSET_ELT);
-	e.pos = pos;
+	Element e(Element::INSET, pos, f, ch);
 	e.inset = ins;
 	e.dim = dim;
 	elements_.push_back(e);
@@ -186,27 +186,30 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim)
 }
 
 
-void Row::add(pos_type const pos, docstring const & s,
-	      Font const & f, Change const & ch)
-{
-	if (sameString(f, ch))
-		elements_.back().str += s;
-	else {
-		finalizeLast();
-		Element e(Element::STRING_ELT);
-		e.pos = pos;
-		e.str = s;
-		e.font = f;
-		e.change = ch;
-		elements_.push_back(e);
-	}
-}
-
-
 void Row::add(pos_type const pos, char_type const c,
 	      Font const & f, Change const & ch)
 {
-	add(pos, docstring(1,c), f, ch);
+	if (!sameString(f, ch)) {
+		finalizeLast();
+		Element e(Element::STRING, pos, f, ch);
+		elements_.push_back(e);
+	}
+	//lyxerr << "FONT " <<back().font.language() << endl;
+	back().str += c;
+	back().endpos = pos + 1;
+}
+
+
+void Row::add(pos_type const pos, docstring const & s,
+	      Font const & f, Change const & ch)
+{
+	if (!sameString(f, ch)) {
+		finalizeLast();
+		Element e(Element::STRING, pos, f, ch);
+		elements_.push_back(e);
+	}
+	back().str += s;
+	back().endpos = pos + 1;
 }
 
 
@@ -214,22 +217,19 @@ void Row::addSeparator(pos_type const pos, char_type const c,
 		       Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::SEPARATOR_ELT);
-	e.pos = pos;
+	Element e(Element::SEPARATOR, pos, f, ch);
 	e.str += c;
-	e.font = f;
-	e.change = ch;
 	e.dim.wid = theFontMetrics(f).width(c);
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
 }
 
 
-void Row::addSpace(pos_type pos, int width)
+void Row::addSpace(pos_type const pos, int const width,
+		   Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::SEPARATOR_ELT);
-	e.pos = pos;
+	Element e(Element::SEPARATOR, pos, f, ch);
 	e.dim.wid = width;
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
@@ -266,6 +266,27 @@ void Row::separate_back(pos_type const keep)
 	end_ = new_end;
 	dim_.wid = new_wid;
 	elements_.erase(elements_.begin() + i, elements_.end());
+}
+
+
+void Row::reverseRtL()
+{
+	pos_type i = 0;
+	pos_type const end = elements_.size();
+	while (i < end) {
+		// skip LtR elements
+		while (!elements_[i].font.isRightToLeft() && i < end)
+			++i;
+		if (i >= end)
+			break;
+
+		// look for a RtL sequence
+		pos_type j = i;
+		while (elements_[j].font.isRightToLeft() && j < end)
+			++j;
+		reverse(elements_.begin() + i, elements_.begin() + j);
+		i = j;
+	}
 }
 
 } // namespace lyx

@@ -9,6 +9,7 @@ What is done:
 
 * change breakRow operation to operate on text strings on which
   metrics are computed. The list of elements is stored in the row object
+  in visual ordering, not logical.
 
 * Implement proper string metrics computation (with cache), when
   lyxrc.force_paint_single_char is false.
@@ -26,13 +27,15 @@ Next steps:
 * profile and see how performance can be improved.
 
 Difference in behavior
-* words longer than the screen are no monger broken at an arbitrary
-point. This will not be useful anymore with horizontal scrolling.
 * end of paragraph markers metrics are computed with the font of the
-actual text, not default font. This will be extended to the other
-methods.
+  actual text, not default font. This will be extended to the other
+  methods.
 
 Other differences that should be considered as bugs
+* words longer than the screen are no monger broken at an arbitrary
+  point. This is a problem for languages like chinese that do not use
+  separators.
+
 * there are still some difference in width computation wrt
   TextMetrics::rowWidth. This happens in particular with Description
   environment when the row is broken at bodypos. The method rowWidth
