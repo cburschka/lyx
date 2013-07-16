@@ -936,8 +936,16 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("setspace") && !isProvided("SetSpace"))
 		packages << "\\usepackage{setspace}\n";
 
-	// esint must be after amsmath and wasysym, since it will redeclare
-	// inconsistent integral symbols
+	// we need to assure that mhchem is loaded before esint
+	// because esint must be loaded AFTER amslatex and mhchem loads amlatex
+	// (this info is from the author of mhchem from June 2013)
+	if (mustProvide("mhchem") &&
+	    params_.use_package("mhchem") != BufferParams::package_off)
+		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
+			    "\\usepackage{mhchem}\n";
+
+	// esint must be after amsmath (and packages requiring amsmath, like mhchem)
+	// and wasysym, since it will redeclare inconsistent integral symbols
 	if (mustProvide("esint") &&
 	    params_.use_package("esint") != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
@@ -998,11 +1006,6 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("ulem"))
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";
-
-	if (mustProvide("mhchem") &&
-	    params_.use_package("mhchem") != BufferParams::package_off)
-		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
-			    "\\usepackage{mhchem}\n";
 
 	if (mustProvide("nomencl")) {
 		// Make it work with the new and old version of the package,
