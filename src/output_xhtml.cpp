@@ -864,15 +864,19 @@ ParagraphList::const_iterator findEndOfEnvironment(
 		// it can happen. We pretend that it's just at lowest depth.
 		if (style.latextype == LATEX_COMMAND)
 			return p;
+
 		// If depth is down, we're done
 		if (p->params().depth() < depth)
 			return p;
+
 		// If depth is up, we're not done
 		if (p->params().depth() > depth)
 			continue;
-		// Now we know we are at the same depth
-		if (style.latextype == LATEX_PARAGRAPH
-		    || style.latexname() != bstyle.latexname())
+
+		// FIXME I am not sure about the first check.
+		// Surely we *could* have different layouts that count as
+		// LATEX_PARAGRAPH, right? 
+		if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
 			return p;
 	}
 	return pend;
