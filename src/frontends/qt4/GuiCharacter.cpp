@@ -307,30 +307,38 @@ static void setBar(FontInfo & fi, FontState val)
 		fi.setEmph(FONT_IGNORE);
 		fi.setUnderbar(FONT_IGNORE);
 		fi.setStrikeout(FONT_IGNORE);
+		fi.setUuline(FONT_IGNORE);
+		fi.setUwave(FONT_IGNORE);
 		fi.setNoun(FONT_IGNORE);
 		break;
 
 	case EMPH_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setEmph(FONT_TOGGLE);
 		break;
 
 	case UNDERBAR_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setUnderbar(FONT_TOGGLE);
 		break;
 
 	case STRIKEOUT_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setStrikeout(FONT_TOGGLE);
 		break;
 
 	case UULINE_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setUuline(FONT_TOGGLE);
 		break;
 
 	case UWAVE_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setUwave(FONT_TOGGLE);
 		break;
 
 	case NOUN_TOGGLE:
+		setBar(fi, INHERIT);
 		fi.setNoun(FONT_TOGGLE);
 		break;
 
