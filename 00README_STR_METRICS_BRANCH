@@ -11,33 +11,33 @@ What is done:
   metrics are computed. The list of elements is stored in the row object
   in visual ordering, not logical.
 
+* re-implement cursorX using row elements
+
 * Implement proper string metrics computation (with cache), when
   lyxrc.force_paint_single_char is false.
 
 Next steps:
 
-* get rid of rowWidth (breakRow does compute this)
-
 * re-implement getColumnNearX using row elements
 
-* re-implement cursorX using row elements
+* get rid of old code of cursorX and getColumnNearX (which have been
+  kept for comparison purpose).
 
 * re-implement row painting using row elements (can it be done?)
 
 * profile and see how performance can be improved.
+
+* Document the code
 
 Difference in behavior
 * end of paragraph markers metrics are computed with the font of the
   actual text, not default font. This will be extended to the other
   methods.
 
+* When cursor is after a LtR separator just before a RtL chunk, the
+  cursor posiiton is computed better with the new code.
+
 Other differences that should be considered as bugs
 * words longer than the screen are no monger broken at an arbitrary
   point. This is a problem for languages like chinese that do not use
   separators.
-
-* there are still some difference in width computation wrt
-  TextMetrics::rowWidth. This happens in particular with Description
-  environment when the row is broken at bodypos. The method rowWidth
-  is kept for now in order to be able to detect row parsing errors,
-  but it could be removed right now.

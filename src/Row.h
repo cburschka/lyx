@@ -43,17 +43,23 @@ public:
 	struct Element {
 		enum Type {
 			STRING,
+			COMPLETION,
 			SEPARATOR,
 			INSET,
 			SPACE
 		};
 
-		Element(Type const t, pos_type p, Font const & f, Change const & ch) 
-			: type(t), pos(p), endpos(p + 1), inset(0), final(false),
-			  font(f), change(ch) {}
+		Element(Type const t, pos_type p, Font const & f, Change const & ch)
+			: type(t), pos(p), endpos(p + 1), inset(0),
+			  extra(0), font(f), change(ch), final(false) {}
 
 		//
-		bool isLineSeparator() const { return type == SEPARATOR; }
+		bool isSeparator() const { return type == SEPARATOR; }
+		// returns total width of element, including separator overhead
+		double width() const { return dim.wid + extra; };
+		// returns position in pixels (from the left) of position
+		// \param i in the row element
+		double pos2x(pos_type const i) const;
 
 		// The kind of row element
 		Type type;
@@ -61,20 +67,26 @@ public:
 		pos_type pos;
 		// first position after the element in the paragraph
 		pos_type endpos;
-		// The dimension of the chunk (only width for strings)
+		// The dimension of the chunk (does not contains the
+		// separator correction)
 		Dimension dim;
 
-		// Non-zero if element is an inset
+		// Non-zero only if element is an inset
 		Inset const * inset;
+
+		// Only non-null for separator elements
+		double extra;
 
 		// Non-empty if element is a string or separator
 		docstring str;
-		// is it possible to add contents to this element?
-		bool final;
 		//
 		Font font;
 		//
 		Change change;
+		// is it possible to add contents to this element?
+		bool final;
+
+		friend std::ostream & operator<<(std::ostream & os, Element const & row);
 	};
 
 
@@ -127,13 +139,29 @@ public:
 	void add(pos_type pos, char_type const c,
 		 Font const & f, Change const & ch);
 	///
-	void add(pos_type pos, docstring const & s,
-		 Font const & f, Change const & ch);
+	void addCompletion(pos_type pos, docstring const & s,
+			   Font const & f, Change const & ch);
 	///
 	void addSeparator(pos_type pos, char_type const c,
 			  Font const & f, Change const & ch);
 	///
 	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
+
+	///
+	typedef std::vector<Element> Elements;
+	///
+	typedef Elements::iterator iterator;
+	///
+	typedef Elements::const_iterator const_iterator;
+	///
+	iterator begin() { return elements_.begin(); }
+	///
+	iterator end() { return elements_.end(); }
+	///
+	const_iterator begin() const { return elements_.begin(); }
+	///
+	const_iterator end() const { return elements_.end(); }
+
 	///
 	bool empty() const { return elements_.empty(); }
 	///
@@ -197,8 +225,6 @@ private:
 	 */
 	bool sameString(Font const & f, Change const & ch) const;
 
-	///
-	typedef std::vector<Element> Elements;
 	///
 	Elements elements_;
 

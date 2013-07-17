@@ -3,11 +3,11 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author André Pönitz
  * \author Jürgen Vigna
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -23,12 +23,35 @@
 #include "frontends/FontMetrics.h"
 
 #include "support/debug.h"
+#include "support/lassert.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace std;
 
 namespace lyx {
+
+using frontend::FontMetrics;
+
+double Row::Element::pos2x(pos_type const i) const
+{
+	bool const rtl = font.isVisibleRightToLeft();
+
+	// handle first the two bounds of the element
+	if ((!rtl && pos >= i) || (rtl && endpos <= i))
+		return 0;
+	if ((!rtl && endpos <= i) || (rtl && pos >= i))
+		return width();
+
+	FontMetrics const & fm = theFontMetrics(font);
+	// FIXME Avoid caching of metrics there?
+	int const w = fm.width(str.substr(0, i - pos));
+	if (rtl)
+		return width() - w;
+	else
+		return w;
+}
 
 
 Row::Row()
@@ -121,28 +144,46 @@ bool Row::selection() const
 	return sel_beg != -1 && sel_end != -1;
 }
 
+
+ostream & operator<<(ostream & os, Row::Element const & e)
+{
+	if (e.font.isVisibleRightToLeft())
+		os << e.endpos << "<<" << e.pos << " ";
+	else
+		os << e.pos << ">>" << e.endpos << " ";
+
+	switch (e.type) {
+	case Row::Element::STRING:
+		os << "STRING: `" << to_utf8(e.str) << "'";
+		break;
+	case Row::Element::COMPLETION:
+		os << "COMPLETION: `" << to_utf8(e.str) << "'";
+		break;
+	case Row::Element::INSET:
+		os << "INSET: " << to_utf8(e.inset->layoutName());
+		break;
+	case Row::Element::SEPARATOR:
+		os << "SEPARATOR: " << e.dim.wid << "+" << e.extra;
+		break;
+	case Row::Element::SPACE:
+		os << "SPACE: " << e.dim.wid;
+		break;
+	}
+	return os;
+}
+
+
 ostream & operator<<(ostream & os, Row const & row)
 {
 	os << " pos: " << row.pos_ << " end: " << row.end_
 	   << " width: " << row.dim_.wid
 	   << " ascent: " << row.dim_.asc
-	   << " descent: " << row.dim_.des << "\n";
+	   << " descent: " << row.dim_.des
+	   << " separator: " << row.separator
+	   << " label_hfill : " << row.label_hfill << "\n";
 	Row::Elements::const_iterator it = row.elements_.begin();
 	for ( ; it != row.elements_.end() ; ++it) {
-		switch (it->type) {
-		case Row::Element::STRING:
-			os << "**STRING: " << to_utf8(it->str) << endl;
-			break;
-		case Row::Element::INSET:
-			os << "**INSET: " << to_utf8(it->inset->layoutName()) << endl;
-			break;
-		case Row::Element::SEPARATOR:
-			os << "**SEPARATOR: " << endl;
-			break;
-		case Row::Element::SPACE:
-			os << "**SPACE: " << it->dim.wid << endl;
-			break;
-		}
+		os << "** " << *it << endl;
 	}
 	return os;
 }
@@ -200,16 +241,16 @@ void Row::add(pos_type const pos, char_type const c,
 }
 
 
-void Row::add(pos_type const pos, docstring const & s,
-	      Font const & f, Change const & ch)
+void Row::addCompletion(pos_type const pos, docstring const & s,
+			Font const & f, Change const & ch)
 {
-	if (!sameString(f, ch)) {
-		finalizeLast();
-		Element e(Element::STRING, pos, f, ch);
-		elements_.push_back(e);
-	}
-	back().str += s;
-	back().endpos = pos + 1;
+	finalizeLast();
+	Element e(Element::COMPLETION, pos, f, ch);
+	e.str = s;
+	// A completion has no size
+	e.endpos = pos;
+	elements_.push_back(e);
+	finalizeLast();
 }
 
 
@@ -229,7 +270,7 @@ void Row::addSpace(pos_type const pos, int const width,
 		   Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::SEPARATOR, pos, f, ch);
+	Element e(Element::SPACE, pos, f, ch);
 	e.dim.wid = width;
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
@@ -250,13 +291,13 @@ void Row::separate_back(pos_type const keep)
 	int i = elements_.size();
 	int new_end = end_;
 	int new_wid = dim_.wid;
-	if (i > 0 && elements_[i - 1].isLineSeparator() && new_end > keep) {
+	if (i > 0 && elements_[i - 1].isSeparator() && new_end > keep) {
 		--i;
 		new_end = elements_[i].pos;
 		new_wid -= elements_[i].dim.wid;
 	}
 
-	while (i > 0 && !elements_[i - 1].isLineSeparator() && new_end > keep) {
+	while (i > 0 && !elements_[i - 1].isSeparator() && new_end > keep) {
 		--i;
 		new_end = elements_[i].pos;
 		new_wid -= elements_[i].dim.wid;
@@ -275,14 +316,14 @@ void Row::reverseRtL()
 	pos_type const end = elements_.size();
 	while (i < end) {
 		// skip LtR elements
-		while (!elements_[i].font.isRightToLeft() && i < end)
+		while (i < end && !elements_[i].font.isRightToLeft())
 			++i;
 		if (i >= end)
 			break;
 
 		// look for a RtL sequence
 		pos_type j = i;
-		while (elements_[j].font.isRightToLeft() && j < end)
+		while (j < end && elements_[j].font.isRightToLeft())
 			++j;
 		reverse(elements_.begin() + i, elements_.begin() + j);
 		i = j;

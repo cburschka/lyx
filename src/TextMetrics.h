@@ -112,19 +112,15 @@ public:
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
 
-	/** this calculates the specified parameters. needed when setting
-	 * the cursor and when creating a visible row */
-	void computeRowMetrics(pit_type pit, Row & row, int width) const;
-
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	
+
 	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
 	/// Returns the height of the row (width member is set to 0).
 	/// If \c topBottomSpace is true, extra space is added for the
 	/// top and bottom row.
-	void setRowHeight(Row & row, pit_type const pit, 
+	void setRowHeight(Row & row, pit_type const pit,
 			  bool topBottomSpace = true) const;
 
 private:
@@ -141,13 +137,11 @@ private:
 	/// for example, the pos after which isNewLine(pos) == true
 	void breakRow(Row & row, int right_margin, pit_type const pit) const;
 
-	/// returns the minimum space a row needs on the screen in pixel
-	int rowWidth(
-		int right_margin,
-		pit_type const pit,
-		pos_type const first,
-		pos_type const end
-		) const;
+	// Expand the alignment of paragraph \param par at position \param pos
+	int getAlign(Paragraph const & par, pos_type pos) const;
+	/** this calculates the specified parameters. needed when setting
+	 * the cursor and when creating a visible row */
+	void computeRowMetrics(pit_type pit, Row & row, int width) const;
 
 	// Helper function for the other checkInsetHit method.
 	InsetList::InsetTable * checkInsetHit(pit_type pit, int x, int y);
