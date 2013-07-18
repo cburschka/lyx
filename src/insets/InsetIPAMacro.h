@@ -167,9 +167,7 @@ public:
 	/// should this inset be handled like a normal character?
 	bool isChar() const { return true; }
 	/// is this equivalent to a letter?
-	bool isLetter() const;
-	/// should we break lines after this inset?
-	bool isLineSeparator() const;
+	bool isLetter() const { return true; }
 private:
 	Inset * clone() const { return new InsetIPAChar(*this); }
 

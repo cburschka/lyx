@@ -3200,8 +3200,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 bool Paragraph::isHfill(pos_type pos) const
 {
 	Inset const * inset = getInset(pos);
-	return inset && (inset->lyxCode() == SPACE_CODE &&
-			 inset->isStretchableSpace());
+	return inset && inset->isHfill();
 }
 
 

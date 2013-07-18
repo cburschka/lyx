@@ -142,9 +142,8 @@ public:
 	bool clickable(int, int) const { return true; }
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
-	/// is this an expandible space (rubber length)?
-	bool isStretchableSpace() const;
-
+	/// does this inset try to use all available space (like \\hfill does)?
+	bool isHfill() const;
 	/// should this inset be handled like a normal character?
 	bool isChar() const { return true; }
 	/// is this equivalent to a letter?

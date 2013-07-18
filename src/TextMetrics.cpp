@@ -672,8 +672,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	InsetList::const_iterator iend = par.insetList().end();
 	for ( ; ii != iend; ++ii) {
 		if (ii->pos >= endpos || ii->pos < row.pos()
-			|| (ii->inset->lyxCode() != SPACE_CODE ||
-			    !ii->inset->isStretchableSpace()))
+		    || !ii->inset->isHfill())
 			continue;
 		Dimension dim = row.dimension();
 		if (pm.hfillExpansion(row, ii->pos))
