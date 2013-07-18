@@ -57,6 +57,9 @@ What's new
 
 - Fix problem with unbalanced braces in XeTeX output (bug 8765).
 
+- Fix state of certain language packages (polyglossia, japanese) in
+  child documents (bug 8779).
+
 - Added h5 and h6 as tags for Paragraph and Subparagraph.
 
 - Include alt tag when exporting math as images (bug 8746).

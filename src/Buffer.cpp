@@ -1468,7 +1468,9 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	LYXERR(Debug::LATEX, "  Validating buffer...");
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	runparams.use_polyglossia = features.usePolyglossia();
+	// This is only set once per document (in master)
+	if (!runparams.is_child)
+		runparams.use_polyglossia = features.usePolyglossia();
 	LYXERR(Debug::LATEX, "  Buffer validation done.");
 
 	bool const output_preamble =
@@ -1580,7 +1582,9 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		runparams.use_babel = params().writeLaTeX(os, features,
 							  d->filename.onlyPath());
 
-		runparams.use_japanese = features.isRequired("japanese");
+		// Japanese might be required only in some children of a document,
+		// but once required, we must keep use_japanese true.
+		runparams.use_japanese |= features.isRequired("japanese");
 
 		if (!output_body) {
 			// Restore the parenthood if needed
