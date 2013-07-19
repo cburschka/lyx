@@ -835,6 +835,14 @@ contributors = [
                  "",
                  u"Win32 port of LyX 1.1.x"),
 
+     contributor(u"Josh Hieronymous",
+                 "josh.p.hieronymus () gmail ! com",
+                 "GPL",
+                 "licensing my contributions to LyX",
+                 "m=137426932127289",
+                 "19 July 2013",
+                 u"XHTML and ePub Improvements (GSOC Student)"),
+
      contributor(u"Claus Hindsgaul",
                  "claus_h () image ! dk",
                  "GPL",
