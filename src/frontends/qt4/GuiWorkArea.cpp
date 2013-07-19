@@ -1980,7 +1980,7 @@ void TabWorkArea::updateTabTexts()
 	for (It it = paths.begin(); it != paths.end(); ++it) {
 		int const tab_index = it->tab();
 		Buffer const & buf = workArea(tab_index)->bufferView().buffer();
-		QString tab_text = it->displayString();
+		QString tab_text = it->displayString().replace("&", "&&");
 		if (!buf.fileName().empty() && !buf.isClean())
 			tab_text += "*";
 		setTabText(tab_index, tab_text);
