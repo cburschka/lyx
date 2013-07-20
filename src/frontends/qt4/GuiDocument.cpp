@@ -149,6 +149,7 @@ RGBColor set_fontcolor;
 bool is_fontcolor;
 RGBColor set_notefontcolor;
 RGBColor set_boxbgcolor;
+bool forced_fontspec_activation;
 
 namespace {
 // used when sorting the textclass list.
@@ -1735,11 +1736,22 @@ void GuiDocument::languageChanged(int i)
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
 	if (lang->babel().empty() && !lang->polyglossia().empty()) {
+			// If we force to switch fontspec on, store
+			// current state (#8717)
+			if (fontModule->osFontsCB->isEnabled())
+				forced_fontspec_activation =
+					!fontModule->osFontsCB->isChecked();
 			fontModule->osFontsCB->setChecked(true);
 			fontModule->osFontsCB->setEnabled(false);
 	}
-	else
+	else {
 		fontModule->osFontsCB->setEnabled(true);
+		// If we have forced to switch fontspec on,
+		// restore previous state (#8717)
+		if (forced_fontspec_activation)
+			fontModule->osFontsCB->setChecked(false);
+		forced_fontspec_activation = false;
+	}
 
 	// set appropriate quotation mark style
 	if (!lang->quoteStyle().empty()) {
@@ -1916,7 +1928,7 @@ void GuiDocument::updateFontlist()
 	fontModule->fontsTypewriterCO->clear();
 	fontModule->fontsMathCO->clear();
 
-	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
+	// With fontspec (XeTeX, LuaTeX), we have access to all system fonts, but not the LaTeX fonts
 	if (fontModule->osFontsCB->isChecked()) {
 		fontModule->fontsRomanCO->addItem(qt_("Default"), QString("default"));
 		fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
