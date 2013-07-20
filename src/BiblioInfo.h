@@ -66,7 +66,7 @@ public:
 			Buffer const & buf, bool richtext) const;
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfo const * const xref,
-		Buffer const & buf, std::string const & format, bool richtext,
+		Buffer const & buf, docstring const & format, bool richtext,
 		docstring before, docstring after, docstring dialog, bool next = false) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
@@ -131,7 +131,7 @@ private:
 	/// "%!key%" are substituted with their definition.
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
-	docstring expandFormat(std::string const & fmt,
+	docstring expandFormat(docstring const & fmt,
 		BibTeXInfo const * const xref, int & counter,
 		Buffer const & buf, docstring before = docstring(),
 		docstring after = docstring(), docstring dialog = docstring(),

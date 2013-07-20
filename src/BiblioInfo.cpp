@@ -351,27 +351,27 @@ docstring const BibTeXInfo::getXRef() const
 
 namespace {
 
-string parseOptions(string const & format, string & optkey,
-		    string & ifpart, string & elsepart);
+docstring parseOptions(docstring const & format, string & optkey,
+		    docstring & ifpart, docstring & elsepart);
 
 // Calls parseOptions to deal with an embedded option, such as:
 //   {%number%[[, no.~%number%]]}
 // which must appear at the start of format. ifelsepart gets the
 // whole of the option, and we return what's left after the option.
 // we return format if there is an error.
-string parseEmbeddedOption(string const & format, string & ifelsepart)
+docstring parseEmbeddedOption(docstring const & format, docstring & ifelsepart)
 {
 	LASSERT(format[0] == '{' && format[1] == '%', return format);
 	string optkey;
-	string ifpart;
-	string elsepart;
-	string const rest = parseOptions(format, optkey, ifpart, elsepart);
+	docstring ifpart;
+	docstring elsepart;
+	docstring const rest = parseOptions(format, optkey, ifpart, elsepart);
 	if (format == rest) { // parse error
 		LYXERR0("ERROR! Couldn't parse `" << format <<"'.");
 		return format;
 	}
 	LASSERT(rest.size() <= format.size(),
-		{ ifelsepart = ""; return format; });
+		{ ifelsepart = docstring(); return format; });
 	ifelsepart = format.substr(0, format.size() - rest.size());
 	return rest;
 }
@@ -380,9 +380,9 @@ string parseEmbeddedOption(string const & format, string & ifelsepart)
 // Gets a "clause" from a format string, where the clause is
 // delimited by '[[' and ']]'. Returns what is left after the
 // clause is removed, and returns format if there is an error.
-string getClause(string const & format, string & clause)
+docstring getClause(docstring const & format, docstring & clause)
 {
-	string fmt = format;
+	docstring fmt = format;
 	// remove '[['
 	fmt = fmt.substr(2);
 	// we'll remove characters from the front of fmt as we
@@ -395,8 +395,8 @@ string getClause(string const & format, string & clause)
 		}
 		// check for an embedded option
 		if (fmt[0] == '{' && fmt.size() > 1 && fmt[1] == '%') {
-			string part;
-			string const rest = parseEmbeddedOption(fmt, part);
+			docstring part;
+			docstring const rest = parseEmbeddedOption(fmt, part);
 			if (fmt == rest) {
 				LYXERR0("ERROR! Couldn't parse embedded option in `" << format <<"'.");
 				return format;
@@ -416,18 +416,18 @@ string getClause(string const & format, string & clause)
 // format parameter. puts the parsed bits in optkey, ifpart, and
 // elsepart and returns what's left after the option is removed.
 // if there's an error, it returns format itself.
-string parseOptions(string const & format, string & optkey,
-		    string & ifpart, string & elsepart)
+docstring parseOptions(docstring const & format, string & optkey,
+		    docstring & ifpart, docstring & elsepart)
 {
 	LASSERT(format[0] == '{' && format[1] == '%', return format);
 	// strip '{%'
-	string fmt = format.substr(2);
+	docstring fmt = format.substr(2);
 	size_t pos = fmt.find('%'); // end of key
 	if (pos == string::npos) {
 		LYXERR0("Error parsing  `" << format <<"'. Can't find end of key.");
 		return format;
 	}
-	optkey = fmt.substr(0,pos);
+	optkey = to_utf8(fmt.substr(0, pos));
 	fmt = fmt.substr(pos + 1);
 	// [[format]] should be next
 	if (fmt[0] != '[' || fmt[1] != '[') {
@@ -435,7 +435,7 @@ string parseOptions(string const & format, string & optkey,
 		return format;
 	}
 
-	string curfmt = fmt;
+	docstring curfmt = fmt;
 	fmt = getClause(curfmt, ifpart);
 	if (fmt == curfmt) {
 		LYXERR0("Error parsing  `" << format <<"'. Couldn't get if clause.");
@@ -465,19 +465,19 @@ string parseOptions(string const & format, string & optkey,
 } // anon namespace
 
 
-docstring BibTeXInfo::expandFormat(string const & format,
+docstring BibTeXInfo::expandFormat(docstring const & format,
 		BibTeXInfo const * const xref, int & counter, Buffer const & buf,
 		docstring before, docstring after, docstring dialog, bool next) const
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int max_passes = 5000;
-	docstring ret; // return value
+	odocstringstream ret; // return value
 	string key;
 	bool scanning_key = false;
 	bool scanning_rich = false;
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
-	string fmt = format;
+	docstring fmt = format;
 	// we'll remove characters from the front of fmt as we
 	// deal with them
 	while (!fmt.empty()) {
@@ -498,7 +498,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					// macro
 					string const val =
 						buf.params().documentClass().getCiteMacro(engine_type, key);
-					fmt = val + fmt.substr(1);
+					fmt = from_utf8(val) + fmt.substr(1);
 					continue;
 				} else if (key[0] == '_') {
 					// a translatable bit
@@ -506,15 +506,15 @@ docstring BibTeXInfo::expandFormat(string const & format,
 						buf.params().documentClass().getCiteMacro(engine_type, key);
 					docstring const trans =
 						translateIfPossible(from_utf8(val), buf.params().language->code());
-					ret += trans;
+					ret << trans;
 				} else {
 					docstring const val =
 						getValueForKey(key, buf, before, after, dialog, xref);
 					if (!scanning_rich)
-						ret += from_ascii("{!<span class=\"bib-" + key + "\">!}");
-					ret += val;
+						ret << from_ascii("{!<span class=\"bib-" + key + "\">!}");
+					ret << val;
 					if (!scanning_rich)
-						ret += from_ascii("{!</span>!}");
+						ret << from_ascii("{!</span>!}");
 				}
 			} else {
 				// beginning of key
@@ -532,9 +532,9 @@ docstring BibTeXInfo::expandFormat(string const & format,
 				if (fmt[1] == '%') {
 					// it is the beginning of an optional format
 					string optkey;
-					string ifpart;
-					string elsepart;
-					string const newfmt =
+					docstring ifpart;
+					docstring elsepart;
+					docstring const newfmt =
 						parseOptions(fmt, optkey, ifpart, elsepart);
 					if (newfmt == fmt) // parse error
 						return _("ERROR!");
@@ -542,12 +542,12 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					docstring const val =
 						getValueForKey(optkey, buf, before, after, dialog, xref);
 					if (optkey == "next" && next)
-						ret += from_utf8(ifpart); // without expansion
+						ret << ifpart; // without expansion
 					else if (!val.empty())
-						ret += expandFormat(ifpart, xref, counter, buf,
+						ret << expandFormat(ifpart, xref, counter, buf,
 							before, after, dialog, next);
 					else if (!elsepart.empty())
-						ret += expandFormat(elsepart, xref, counter, buf,
+						ret << expandFormat(elsepart, xref, counter, buf,
 							before, after, dialog, next);
 					// fmt will have been shortened for us already
 					continue;
@@ -556,26 +556,31 @@ docstring BibTeXInfo::expandFormat(string const & format,
 					// beginning of rich text
 					scanning_rich = true;
 					fmt = fmt.substr(2);
-					ret += from_ascii("{!");
+					ret << from_ascii("{!");
 					continue;
 				}
 			}
 			// we are here if '{' was not followed by % or !.
 			// So it's just a character.
-			ret += thischar;
+			ret << thischar;
 		}
 		else if (scanning_rich && thischar == '!'
 		         && fmt.size() > 1 && fmt[1] == '}') {
 			// end of rich text
 			scanning_rich = false;
 			fmt = fmt.substr(2);
-			ret += from_ascii("!}");
+			ret << from_ascii("!}");
 			continue;
 		}
 		else if (scanning_key)
 			key += char(thischar);
-		else
-			ret += thischar;
+		else {
+			try {
+				ret.put(thischar);
+			} catch (EncodingException & /* e */) {
+				LYXERR0("Uncodable character '" << docstring(1, thischar) << " in citation label!");
+			}
+		}
 		fmt = fmt.substr(1);
 	} // for loop
 	if (scanning_key) {
@@ -586,7 +591,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 		LYXERR0("Never found end of rich text in `" << format << "'!");
 		return _("ERROR!");
 	}
-	return ret;
+	return ret.str();
 }
 
 
@@ -606,7 +611,8 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
+	docstring const & format =
+		from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 	int counter = 0;
 	info_ = expandFormat(format, xref, counter, buf,
 		docstring(), docstring(), docstring(), false);
@@ -622,7 +628,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 
 docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
-	Buffer const & buf, string const & format, bool richtext,
+	Buffer const & buf, docstring const & format, bool richtext,
 	docstring before, docstring after, docstring dialog, bool next) const
 {
 	docstring loclabel;
@@ -635,6 +641,7 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 		loclabel = processRichtext(loclabel, richtext);
 		loclabel = convertLaTeXCommands(loclabel);
 	}
+
 	return loclabel;
 }
 
@@ -705,7 +712,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide the full bibliography entry: see getInfo()
 			CiteEngineType const engine_type = buf.params().citeEngineType();
 			DocumentClass const & dc = buf.params().documentClass();
-			string const & format = dc.getCiteFormat(engine_type, to_utf8(entry_type_));
+			docstring const & format =
+				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 			int counter = 0;
 			ret = expandFormat(format, xref, counter, buf,
 				docstring(), docstring(), docstring(), false);
@@ -857,8 +865,8 @@ docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
 {
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	string const & format = dc.getCiteFormat(engine_type, style, "cite");
-	docstring ret = from_utf8(format);
+	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, "cite"));
+	docstring ret = format;
 	vector<docstring>::const_iterator key = keys.begin();
 	vector<docstring>::const_iterator ken = keys.end();
 	for (; key != ken; ++key) {
@@ -876,7 +884,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
 					xrefptr = &(xrefit->second);
 			}
 		}
-		ret = data.getLabel(xrefptr, buf, to_utf8(ret), richtext,
+		ret = data.getLabel(xrefptr, buf, ret, richtext,
 			before, after, dialog, key+1 != ken);
 	}
 	return ret;
