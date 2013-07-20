@@ -316,7 +316,9 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		string const our_class = "float-caption-" + type_;
 		size_t const loc = attr.find("class='");
 		if (loc != string::npos)
-			attr.insert(loc + 1, our_class);
+			attr.insert(loc + 7, our_class+ " ");
+		else
+			attr = attr + " class='" + our_class + "'";
 	}
 	xs << html::StartTag(tag, attr);
 	docstring def = getCaptionAsHTML(xs, rp);
