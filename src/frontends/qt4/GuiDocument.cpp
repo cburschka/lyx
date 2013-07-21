@@ -1209,6 +1209,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(allPackagesAlways()));
 	connect(mathsModule->allPackagesNotPB, SIGNAL(clicked()),
 		this, SLOT(allPackagesNot()));
+	connect(mathsModule->allPackagesAutoPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->allPackagesAlwaysPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->allPackagesNotPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 
 	// latex class
