@@ -946,9 +946,12 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 			// otherwise it would always be the master buffer,
 			// and nested includes would not work.
 			features.setBuffer(*tmp);
+			// Maybe this is already a child
+			bool const is_child =
+				features.runparams().is_child;
 			features.runparams().is_child = true;
 			tmp->validate(features);
-			features.runparams().is_child = false;
+			features.runparams().is_child = is_child;
 			features.setBuffer(buffer());
 		}
 	}
