@@ -15,6 +15,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+//#define KEEP_OLD_METRICS_CODE 1
+
 #include <config.h>
 
 #include "TextMetrics.h"
@@ -48,7 +50,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 
-#include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -65,7 +67,7 @@ int numberOfSeparators(Row const & row)
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator const end = row.end();
 	for ( ; cit != end ; ++cit)
-		if (cit->isSeparator())
+		if (cit->type == Row::SEPARATOR)
 			++n;
 	return n;
 }
@@ -77,7 +79,7 @@ void setSeparatorWidth(Row & row, double w)
 	Row::iterator it = row.begin();
 	Row::iterator const end = row.end();
 	for ( ; it != end ; ++it)
-		if (it->isSeparator())
+		if (it->type == Row::SEPARATOR)
 			it->extra = w;
 }
 
@@ -630,6 +632,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			    && !par.isNewline(row.endpos() - 1)
 			    && !disp_inset) {
 				setSeparatorWidth(row, w / ns);
+				row.dimension().wid = width;
 				//lyxerr << "row.separator " << row.separator << endl;
 				//lyxerr << "ns " << ns << endl;
 			} else if (is_rtl) {
@@ -672,7 +675,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	Row::iterator const cend = row.end();
 	for ( ; cit != cend; ++cit) {
 		if (row.label_hfill && cit->endpos == body_pos
-		    && cit->type == Row::Element::SPACE)
+		    && cit->type == Row::SPACE)
 			cit->dim.wid -= row.label_hfill * (nlh - 1);
 		if (!cit->inset || !cit->inset->isHfill())
 			continue;
@@ -806,6 +809,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
 	row.dimension().wid = leftMargin(max_width_, pit, pos);
+	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {
 		row.dimension().wid += right_margin;
@@ -864,7 +868,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			// enlarge the last character to hold the end-of-par marker
 			Font f(text_->layoutFont(pit));
 			f.fontInfo().setColor(Color_paragraphmarker);
-			row.add(i, char_type(0x00B6), f, Change());
+			row.addVirtual(i, docstring(1, char_type(0x00B6)), f, Change());
 		}
 
 		// add inline completion width
@@ -872,7 +876,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		    !bv_->inlineCompletion().empty()) {
 			Font f = *fi;
 			f.fontInfo().setColor(Color_inlinecompletion);
-			row.addCompletion(i + 1, bv_->inlineCompletion(),
+			row.addVirtual(i + 1, bv_->inlineCompletion(),
 					  f, Change());
 		}
 
@@ -897,7 +901,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		if (body_pos && i == body_pos) {
 			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
 			pos_type j = i;
-			if (!row.empty() && row.back().isSeparator()) {
+			if (!row.empty()
+			    && row.back().type == Row::SEPARATOR) {
 				row.pop_back();
 				--j;
 			}
@@ -916,7 +921,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 	// if the row ends with a separator that is not at end of
 	// paragraph, remove it
-	if (!row.empty() && row.back().isSeparator()
+	if (!row.empty() && row.back().type == Row::SEPARATOR
 	    && row.endpos() < par.size())
 		row.pop_back();
 
@@ -966,11 +971,11 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 
 	// insets may be taller
 	ParagraphMetrics const & pm = par_metrics_[pit];
-	InsetList::const_iterator ii = par.insetList().begin();
-	InsetList::const_iterator iend = par.insetList().end();
-	for ( ; ii != iend; ++ii) {
-		if (ii->pos >= row.pos() && ii->pos < row.endpos()) {
-			Dimension const & dim = pm.insetDimension(ii->inset);
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator cend = row.end();
+	for ( ; cit != cend; ++cit) {
+		if (cit->inset) {
+			Dimension const & dim = pm.insetDimension(cit->inset);
 			maxasc  = max(maxasc,  dim.ascent());
 			maxdesc = max(maxdesc, dim.descent());
 		}
@@ -1109,13 +1114,40 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
+	// FIXME: handle properly boundary (not done now)
+	pos_type pos = row.pos();
+	if (row.x >= x || row.empty())
+		x = row.x;
+	else if (x >= row.width() - row.right_margin) {
+		x = row.width() - row.right_margin;
+		pos = row.back().endpos;
+	} else {
+		double w = row.x;
+		Row::const_iterator cit = row.begin();
+		Row::const_iterator cend = row.end();
+		for ( ; cit != cend; ++cit) {
+			if (w <= x &&  w + cit->width() > x) {
+				double x_offset = x - w;
+				pos = cit->x2pos(x_offset);
+				x = x_offset + w;
+				break;
+			}
+			w += cit->width();
+		}
+		if (cit == row.end())
+			lyxerr << "NOT FOUND!! x=" << x << ", wid=" << row.width() << endl;
+	}
+
+#if !defined(KEEP_OLD_METRICS_CODE)
+	return pos - row.pos();
+#else
 	Buffer const & buffer = bv_->buffer();
 
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
 	int const xo = origin_.x_;
-	x -= xo;
+	int x2 = x - xo;
 	Paragraph const & par = text_->getPar(pit);
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
@@ -1138,7 +1170,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	// check for empty row
 	if (vc == end) {
-		x = int(tmpx) + xo;
+		x2 = int(tmpx) + xo;
 		return 0;
 	}
 
@@ -1150,7 +1182,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	// the value of rtl.
 	bool const rtl_on_lastrow = lastrow ? text_->isRTL(par) : false;
 
-	while (vc < end && tmpx <= x) {
+	while (vc < end && tmpx <= x2) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
@@ -1167,7 +1199,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		++vc;
 	}
 
-	if ((tmpx + last_tmpx) / 2 > x) {
+	if ((tmpx + last_tmpx) / 2 > x2) {
 		tmpx = last_tmpx;
 		left_side = true;
 	}
@@ -1175,11 +1207,11 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	// This shouldn't happen. But we can reset and try to continue.
 	LASSERT(vc <= end, vc = end);
 
-	boundary = false;
+	bool boundary2 = false;
 
 	if (lastrow &&
-	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-	     (!rtl_on_lastrow && !left_side && vc == end  && x > tmpx + 5))) {
+	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x2 < tmpx - 5) ||
+	     (!rtl_on_lastrow && !left_side && vc == end  && x2 > tmpx + 5))) {
 		if (!par.isNewline(end - 1))
 			c = end;
 	} else if (vc == row.pos()) {
@@ -1191,7 +1223,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isRTLBoundary(pit, c);
+			boundary2 = isRTLBoundary(pit, c);
 		}
 	}
 
@@ -1223,18 +1255,25 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	}
 #endif
 
-	x = int(tmpx) + xo;
+	x2 = int(tmpx) + xo;
 	pos_type const col = c - row.pos();
+
+	if (abs(x2 - x) > 0.1 || boundary != boundary
+	    || c != pos) {
+		lyxerr << "new=(x=" << x << ", b=" << boundary << ", p=" << pos << "), "
+		       << "old=(x=" << x2 << ", b=" << boundary2 << ", p=" << c << "), " << row;
+	}
 
 	if (!c || end == par.size())
 		return col;
 
 	if (c==end && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
-		boundary = true;
+		boundary2 = true;
 		return col;
 	}
 
 	return min(col, end - 1 - row.pos());
+#endif
 }
 
 
@@ -1530,9 +1569,8 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 {
 	LASSERT(sl.text() == text_, return 0);
 	pit_type const pit = sl.pit();
-	pos_type ppos = sl.pos();
+	pos_type pos = sl.pos();
 
-	Paragraph const & par = text_->paragraphs()[pit];
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
 		return 0;
@@ -1543,42 +1581,41 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	/**
 	 * When boundary is true, position is on the row element (pos, endpos)
 	 * if
-	 *    pos < ppos <= endpos
+	 *    pos < pos <= endpos
 	 * whereas, when boundary is false, the test is
-	 *    pos <= ppos < endpos
+	 *    pos <= pos < endpos
 	 * The correction below allows to handle both cases.
 	*/
-	int const boundary_corr = (boundary && ppos) ? -1 : 0;
+	int const boundary_corr = (boundary && pos) ? -1 : 0;
 
-	if (row.empty() 
+	if (row.empty()
 	    || (row.begin()->font.isRightToLeft()
-		&& ppos == row.begin()->endpos))
+		&& pos == row.begin()->endpos))
 		return int(x);
 
 	Row::const_iterator cit = row.begin();
 	for ( ; cit != row.end() ; ++cit) {
-		// lyxerr << "ppos=" << ppos << "(" << boundary_corr << ")"
-		//        << ", x=" << x << " " << *cit << endl;
-		// lyxerr << "test1=" << (ppos + boundary_corr >= cit->pos)
-		//        << " test2=" << ( ppos + boundary_corr < best->endpos) <<endl;
-		if (ppos + boundary_corr >= cit->pos
-		    && ppos + boundary_corr < cit->endpos) {
-				x += cit->pos2x(ppos);
+		if (pos + boundary_corr >= cit->pos
+		    && pos + boundary_corr < cit->endpos) {
+				x += cit->pos2x(pos);
 				break;
 		}
 		x += cit->width();
 	}
 
 	if (cit == row.end()
-	    && (row.back().font.isRightToLeft() || ppos != row.back().endpos))
+	    && (row.back().font.isRightToLeft() || pos != row.back().endpos))
 		lyxerr << "NOT FOUND!"
-		       << "ppos=" << ppos << "(" << boundary_corr << ")" << "\n"
+		       << "pos=" << pos << "(" << boundary_corr << ")" << "\n"
 		       << row;
 
+#ifdef KEEP_OLD_METRICS_CODE
+	Paragraph const & par = text_->paragraphs()[pit];
+
 	// Correct position in front of big insets
-	bool const boundary_correction = ppos != 0 && boundary;
+	bool const boundary_correction = pos != 0 && boundary;
 	if (boundary_correction)
-		--ppos;
+		--pos;
 
 	pos_type cursor_vpos = 0;
 
@@ -1598,18 +1635,18 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 	if (end <= row_pos)
 		cursor_vpos = row_pos;
-	else if (ppos >= end)
+	else if (pos >= end)
 		cursor_vpos = text_->isRTL(par) ? row_pos : end;
-	else if (ppos > row_pos && ppos >= end)
+	else if (pos > row_pos && pos >= end)
 		//FIXME: this code is never reached!
 		//       (see http://www.lyx.org/trac/changeset/8251)
 		// Place cursor after char at (logical) position pos - 1
-		cursor_vpos = (bidi.level(ppos - 1) % 2 == 0)
-			? bidi.log2vis(ppos - 1) + 1 : bidi.log2vis(ppos - 1);
+		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
+			? bidi.log2vis(pos - 1) + 1 : bidi.log2vis(pos - 1);
 	else
-		// Place cursor before char at (logical) position ppos
-		cursor_vpos = (bidi.level(ppos) % 2 == 0)
-			? bidi.log2vis(ppos) : bidi.log2vis(ppos) + 1;
+		// Place cursor before char at (logical) position pos
+		cursor_vpos = (bidi.level(pos) % 2 == 0)
+			? bidi.log2vis(pos) : bidi.log2vis(pos) + 1;
 
 	pos_type body_pos = par.beginOfBody();
 	if (body_pos > 0 &&
@@ -1703,23 +1740,23 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	// see correction above
 	if (boundary_correction) {
 		if (isRTL(sl, boundary))
-			x2 -= singleWidth(pit, ppos);
+			x2 -= singleWidth(pit, pos);
 		else
-			x2 += singleWidth(pit, ppos);
+			x2 += singleWidth(pit, pos);
 	}
 
-	if (x2 != x) {
+	if (abs(x2 - x) > 0.01) {
 		lyxerr << "cursorX: x2=" << x2 << ", x=" << x;
 		if (cit == row.end())
 			lyxerr << "Element not found for "
-			       << ppos - boundary_corr << "(" << boundary_corr << ")";
+			       << pos - boundary_corr << "(" << boundary_corr << ")";
 		else
 			lyxerr << " in [" << cit->pos << "/"
-			       << ppos - boundary_corr << "(" << boundary_corr << ")"
+			       << pos - boundary_corr << "(" << boundary_corr << ")"
 			       << "/" << cit->endpos << "] of " << *cit << "\n";
 		lyxerr << row <<endl;
 	}
-
+#endif
 
 	return int(x);
 }
@@ -2004,13 +2041,14 @@ int TextMetrics::leftMargin(int max_width,
 }
 
 
+#ifdef KEEP_OLD_METRICS_CODE
 int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	return pm.singleWidth(pos, displayFont(pit, pos));
 }
-
+#endif
 
 void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 {

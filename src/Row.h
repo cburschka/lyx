@@ -30,36 +30,49 @@ class DocIterator;
 class Inset;
 
 /**
- * An on-screen row of text. A paragraph is broken into a
- * RowList for display. Each Row contains position pointers
- * into the first and last character positions of that row.
+ * An on-screen row of text. A paragraph is broken into a RowList for
+ * display. Each Row contains a tokenized description of the contents
+ * of the line.
  */
 class Row {
 public:
+	// Possible types of row elements
+	enum Type {
+		// a string of character
+		STRING,
+		/**
+		 * Something (completion, end-of-par marker)
+		 * that occupies space one screen but does not
+		 * correspond to any paragraph contents
+		 */
+		VIRTUAL,
+		// A stretchable space, basically
+		SEPARATOR,
+		// An inset
+		INSET,
+		// Some spacing described by its width, not a string
+		SPACE
+	};
+
 /**
  * One element of a Row. It has a set of attributes that can be used
  * by other methods that need to parse the Row contents.
  */
 	struct Element {
-		enum Type {
-			STRING,
-			COMPLETION,
-			SEPARATOR,
-			INSET,
-			SPACE
-		};
-
 		Element(Type const t, pos_type p, Font const & f, Change const & ch)
 			: type(t), pos(p), endpos(p + 1), inset(0),
 			  extra(0), font(f), change(ch), final(false) {}
 
-		//
-		bool isSeparator() const { return type == SEPARATOR; }
 		// returns total width of element, including separator overhead
 		double width() const { return dim.wid + extra; };
 		// returns position in pixels (from the left) of position
 		// \param i in the row element
 		double pos2x(pos_type const i) const;
+
+		// Return character position that is the closest to
+		// pixel position \param x. The value \param x is
+		// rounded to the actual pixel position.
+		pos_type x2pos(double &x) const;
 
 		// The kind of row element
 		Type type;
@@ -139,8 +152,8 @@ public:
 	void add(pos_type pos, char_type const c,
 		 Font const & f, Change const & ch);
 	///
-	void addCompletion(pos_type pos, docstring const & s,
-			   Font const & f, Change const & ch);
+	void addVirtual(pos_type pos, docstring const & s,
+			Font const & f, Change const & ch);
 	///
 	void addSeparator(pos_type pos, char_type const c,
 			  Font const & f, Change const & ch);
@@ -197,8 +210,10 @@ public:
 	double separator;
 	/// width of hfills in the label
 	double label_hfill;
-	/// the x position of the row
+	/// the x position of the row (left margin)
 	double x;
+	/// the right margin of the row
+	int right_margin;
 	///
 	mutable pos_type sel_beg;
 	///

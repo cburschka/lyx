@@ -54,8 +54,58 @@ double Row::Element::pos2x(pos_type const i) const
 }
 
 
+pos_type Row::Element::x2pos(double &x) const
+{
+	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
+	// if element is rtl, flip x value
+	bool const rtl = font.isVisibleRightToLeft();
+	double x2 = rtl ? (width() - x) : x;
+
+	FontMetrics const & fm = theFontMetrics(font);
+	double last_w = 0;
+	double w = 0;
+	size_t i = 1;
+	// non-STRING element only contain one position
+	if (type != STRING) {
+		i = 0;
+		w = width();
+	} else {
+		// FIXME: implement dichotomy search?
+		for ( ; i <= str.size() ; ++i) {
+			last_w = w;
+			w = fm.width(str.substr(0,i));
+			if (w > x2) {
+				--i;
+				break;
+			}
+		}
+		// if (i == str.size())
+		// 	lyxerr << " NOT FOUND ";
+	}
+
+	// round to the closest side
+	if (x2 - last_w > w - x2) {
+		x2 = w;
+		++i;
+	} else
+		x2 = last_w;
+
+	// is element is rtl, flip values
+	if (rtl) {
+		x = last_w - x2;
+		i = endpos - i;
+	} else {
+		x = x2;
+		i = pos + i;
+	}
+
+	//lyxerr << "=> p=" << i << " x=" << x << endl;
+	return i;
+}
+
+
 Row::Row()
-	: separator(0), label_hfill(0), x(0),
+	: separator(0), label_hfill(0), x(0), right_margin(0),
 	sel_beg(-1), sel_end(-1),
 	begin_margin_sel(false), end_margin_sel(false),
 	changed_(false), crc_(0), pos_(0), end_(0)
@@ -153,19 +203,19 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		os << e.pos << ">>" << e.endpos << " ";
 
 	switch (e.type) {
-	case Row::Element::STRING:
-		os << "STRING: `" << to_utf8(e.str) << "'";
+	case Row::STRING:
+		os << "STRING: `" << to_utf8(e.str) << "' " << e.dim.wid;
 		break;
-	case Row::Element::COMPLETION:
-		os << "COMPLETION: `" << to_utf8(e.str) << "'";
+	case Row::VIRTUAL:
+		os << "VIRTUAL: `" << to_utf8(e.str) << "'";
 		break;
-	case Row::Element::INSET:
+	case Row::INSET:
 		os << "INSET: " << to_utf8(e.inset->layoutName());
 		break;
-	case Row::Element::SEPARATOR:
+	case Row::SEPARATOR:
 		os << "SEPARATOR: " << e.dim.wid << "+" << e.extra;
 		break;
-	case Row::Element::SPACE:
+	case Row::SPACE:
 		os << "SPACE: " << e.dim.wid;
 		break;
 	}
@@ -176,6 +226,7 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 ostream & operator<<(ostream & os, Row const & row)
 {
 	os << " pos: " << row.pos_ << " end: " << row.end_
+	   << " x: " << row.x
 	   << " width: " << row.dim_.wid
 	   << " ascent: " << row.dim_.asc
 	   << " descent: " << row.dim_.des
@@ -194,7 +245,7 @@ bool Row::sameString(Font const & f, Change const & ch) const
 	if (elements_.empty())
 		return false;
 	Element const & elt = elements_.back();
-	return elt.type == Element::STRING && !elt.final
+	return elt.type == STRING && !elt.final
 		   && elt.font == f && elt.change == ch;
 }
 
@@ -208,7 +259,7 @@ void Row::finalizeLast()
 		return;
 	elt.final = true;
 
-	if (elt.type == Element::STRING) {
+	if (elt.type == STRING) {
 		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
 		dim_.wid += elt.dim.wid;
 	}
@@ -219,7 +270,7 @@ void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
 	      Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::INSET, pos, f, ch);
+	Element e(INSET, pos, f, ch);
 	e.inset = ins;
 	e.dim = dim;
 	elements_.push_back(e);
@@ -232,7 +283,7 @@ void Row::add(pos_type const pos, char_type const c,
 {
 	if (!sameString(f, ch)) {
 		finalizeLast();
-		Element e(Element::STRING, pos, f, ch);
+		Element e(STRING, pos, f, ch);
 		elements_.push_back(e);
 	}
 	//lyxerr << "FONT " <<back().font.language() << endl;
@@ -241,11 +292,11 @@ void Row::add(pos_type const pos, char_type const c,
 }
 
 
-void Row::addCompletion(pos_type const pos, docstring const & s,
-			Font const & f, Change const & ch)
+void Row::addVirtual(pos_type const pos, docstring const & s,
+		     Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::COMPLETION, pos, f, ch);
+	Element e(VIRTUAL, pos, f, ch);
 	e.str = s;
 	// A completion has no size
 	e.endpos = pos;
@@ -258,7 +309,7 @@ void Row::addSeparator(pos_type const pos, char_type const c,
 		       Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::SEPARATOR, pos, f, ch);
+	Element e(SEPARATOR, pos, f, ch);
 	e.str += c;
 	e.dim.wid = theFontMetrics(f).width(c);
 	elements_.push_back(e);
@@ -270,7 +321,7 @@ void Row::addSpace(pos_type const pos, int const width,
 		   Font const & f, Change const & ch)
 {
 	finalizeLast();
-	Element e(Element::SPACE, pos, f, ch);
+	Element e(SPACE, pos, f, ch);
 	e.dim.wid = width;
 	elements_.push_back(e);
 	dim_.wid += e.dim.wid;
@@ -291,13 +342,13 @@ void Row::separate_back(pos_type const keep)
 	int i = elements_.size();
 	int new_end = end_;
 	int new_wid = dim_.wid;
-	if (i > 0 && elements_[i - 1].isSeparator() && new_end > keep) {
+	if (i > 0 && elements_[i - 1].type == SEPARATOR && new_end > keep) {
 		--i;
 		new_end = elements_[i].pos;
 		new_wid -= elements_[i].dim.wid;
 	}
 
-	while (i > 0 && !elements_[i - 1].isSeparator() && new_end > keep) {
+	while (i > 0 && elements_[i - 1].type != SEPARATOR && new_end > keep) {
 		--i;
 		new_end = elements_[i].pos;
 		new_wid -= elements_[i].dim.wid;
