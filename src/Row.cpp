@@ -54,7 +54,7 @@ double Row::Element::pos2x(pos_type const i) const
 }
 
 
-pos_type Row::Element::x2pos(double &x) const
+	pos_type Row::Element::x2pos(double &x, bool const low) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
 	// if element is rtl, flip x value
@@ -84,7 +84,7 @@ pos_type Row::Element::x2pos(double &x) const
 	}
 
 	// round to the closest side
-	if (x2 - last_w > w - x2) {
+	if (!low && (x2 - last_w > w - x2)) {
 		x2 = w;
 		++i;
 	} else
@@ -92,15 +92,13 @@ pos_type Row::Element::x2pos(double &x) const
 
 	// is element is rtl, flip values
 	if (rtl) {
-		x = last_w - x2;
-		i = endpos - i;
+		x = width() - x2;
 	} else {
 		x = x2;
-		i = pos + i;
 	}
 
 	//lyxerr << "=> p=" << i << " x=" << x << endl;
-	return i;
+	return pos + i;
 }
 
 
@@ -335,9 +333,9 @@ void Row::pop_back()
 }
 
 
-void Row::separate_back(pos_type const keep)
+void Row::shorten_if_needed(pos_type const keep, int const w)
 {
-	if (empty())
+	if (empty() || width() < w)
 		return;
 	int i = elements_.size();
 	int new_end = end_;
@@ -353,15 +351,32 @@ void Row::separate_back(pos_type const keep)
 		new_end = elements_[i].pos;
 		new_wid -= elements_[i].dim.wid;
 	}
-	if (i == 0)
+	if (i == 0) {
+		if (elements_.size() != 1) {
+			LYXERR0("Row is too large but has more than one element. " << *this);
+			return;
+		}
+#if 1
 		return;
+#else
+		// does not work yet
+		if (back().type != STRING)
+			return;
+		double xstr = w - x;
+		pos_type new_pos = back().x2pos(xstr, true);
+		back().str = back().str.substr(0, new_pos);
+		back().endpos = new_pos;
+		end_ = new_pos;
+		dim_.wid = x + xstr;
+#endif
+	}
 	end_ = new_end;
 	dim_.wid = new_wid;
 	elements_.erase(elements_.begin() + i, elements_.end());
 }
 
 
-void Row::reverseRtL()
+void Row::reverseRTL()
 {
 	pos_type i = 0;
 	pos_type const end = elements_.size();
@@ -372,7 +387,7 @@ void Row::reverseRtL()
 		if (i >= end)
 			break;
 
-		// look for a RtL sequence
+		// look for a RTL sequence
 		pos_type j = i;
 		while (j < end && elements_[j].font.isRightToLeft())
 			++j;

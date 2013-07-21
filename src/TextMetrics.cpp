@@ -636,14 +636,17 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 				//lyxerr << "row.separator " << row.separator << endl;
 				//lyxerr << "ns " << ns << endl;
 			} else if (is_rtl) {
+				row.dimension().wid = width;
 				row.x += w;
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
+			row.dimension().wid = width;
 			row.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
+			row.dimension().wid += w / 2;
 			row.x += w / 2;
 			break;
 		}
@@ -868,7 +871,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			// enlarge the last character to hold the end-of-par marker
 			Font f(text_->layoutFont(pit));
 			f.fontInfo().setColor(Color_paragraphmarker);
-			row.addVirtual(i, docstring(1, char_type(0x00B6)), f, Change());
+			row.addVirtual(i + 1, docstring(1, char_type(0x00B6)), f, Change());
 		}
 
 		// add inline completion width
@@ -916,8 +919,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.finalizeLast();
 	row.endpos(i);
 	// if the row is too large, try to cut at last separator.
-	if (row.width() >= width)
-		row.separate_back(body_pos);
+	row.shorten_if_needed(body_pos, width);
 
 	// if the row ends with a separator that is not at end of
 	// paragraph, remove it
@@ -925,8 +927,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	    && row.endpos() < par.size())
 		row.pop_back();
 
-	// make sure that the RtL elements are in reverse ordering
-	row.reverseRtL();
+	// make sure that the RTL elements are in reverse ordering
+	row.reverseRTL();
 
 	row.dimension().wid += right_margin;
 }
@@ -1114,7 +1116,8 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
-	// FIXME: handle properly boundary (not done now)
+	boundary = false;
+
 	pos_type pos = row.pos();
 	if (row.x >= x || row.empty())
 		x = row.x;
@@ -1135,8 +1138,28 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 			w += cit->width();
 		}
 		if (cit == row.end())
-			lyxerr << "NOT FOUND!! x=" << x << ", wid=" << row.width() << endl;
+			lyxerr << "NOT FOUND!! x=" << x
+			       << ", wid=" << row.width() << endl;
+		/** This tests for the case where the cursor is placed
+		 * just before a font direction change. See comment on
+		 * the boundary_ member in DocIterator.h to understand
+		 * how bounddary helps here.
+		 */
+		else if (pos == cit->endpos
+			 && cit + 1 != row.end()
+			 && cit->font.isVisibleRightToLeft() != (cit + 1)->font.isVisibleRightToLeft())
+			boundary = true;
 	}
+
+	/** This tests for the case where the cursor is set at the end
+	 * of a row which has been broken due to a display inset on
+	 * next row. This can be recognized because the end of the
+	 * last element is the same as the end of the row (there is no
+	 * separator at the end of the row)
+	 */
+	if (!row.empty() && pos == row.back().endpos
+	    && row.back().endpos == row.endpos())
+		boundary = true;
 
 #if !defined(KEEP_OLD_METRICS_CODE)
 	return pos - row.pos();
@@ -1677,7 +1700,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	if (lyxrc.paragraph_markers && text_->isRTL(par)) {
 		ParagraphList const & pars_ = text_->paragraphs();
 		if (size_type(pit + 1) < pars_.size()) {
-			FontInfo f;
+			FontInfo f(text_->layoutFont(pit));
 			docstring const s = docstring(1, char_type(0x00B6));
 			x2 += theFontMetrics(f).width(s);
 		}

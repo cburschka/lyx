@@ -69,10 +69,13 @@ public:
 		// \param i in the row element
 		double pos2x(pos_type const i) const;
 
-		// Return character position that is the closest to
-		// pixel position \param x. The value \param x is
-		// rounded to the actual pixel position.
-		pos_type x2pos(double &x) const;
+		/** Return character position that is the closest to
+		 *  pixel position \param x. The value \param x is
+		 *  rounded to the actual pixel position. If \param
+		 *  short is true, the pixel value is rounded by
+		 *  default.
+		*/
+		pos_type x2pos(double &x, bool low = false) const;
 
 		// The kind of row element
 		Type type;
@@ -186,11 +189,13 @@ public:
 	/// remove all row elements
 	void clear() { elements_.clear(); }
 	/**
-	 * remove all elements after last separator and update endpos
-	 * if necessary.
-	 * \param keep is the minimum amount of text to keep.
+	 * if row width is too large, remove all elements after last
+	 * separator and update endpos if necessary. If all that
+	 * rename is a large word, cut it to \param width.
+	 * \param body_pos minimum amount of text to keep.
+	 * \param width maximum width of the row
 	 */
-	void separate_back(pos_type keep);
+	void shorten_if_needed(pos_type const body_pos, int const width);
 
 	/**
 	 * If last element of the row is a string, compute its width
@@ -199,10 +204,10 @@ public:
 	void finalizeLast();
 
 	/**
-	 * Find sequences of RtL elements and reverse them.
+	 * Find sequences of right-to-left elements and reverse them.
 	 * This should be called once the row is completely built.
 	 */
-	void reverseRtL();
+	void reverseRTL();
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 

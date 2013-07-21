@@ -749,11 +749,10 @@ void RowPainter::paintLast()
 	case END_LABEL_NO_LABEL:
 		if (lyxrc.paragraph_markers && size_type(pit_ + 1) < pars_.size()) {
 			docstring const s = docstring(1, char_type(0x00B6));
-			FontInfo f = FontInfo();
-			FontMetrics const & fm = theFontMetrics(f);
+			FontInfo f = FontInfo(text_.layoutFont(pit_));
 			f.setColor(Color_paragraphmarker);
 			pi_.pain.text(int(x_), yo_, s, f);
-			x_ += fm.width(s);
+			x_ += theFontMetrics(f).width(s);
 		}
 		break;
 	}

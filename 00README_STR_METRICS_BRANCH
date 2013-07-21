@@ -8,13 +8,12 @@ What is done:
   setRowHeight instead of rowBreakPoint and rowHeight.
 
 * change breakRow operation to operate on text strings on which
-  metrics are computed. The list of elements is stored in the row object
-  in visual ordering, not logical.
+  metrics are computed. The list of elements is stored in the row
+  object in visual ordering, not logical.
 
 * re-implement cursorX using row elements
 
-* re-implement getColumnNearX using row elements (boundary is not
-  considered yet).
+* re-implement getColumnNearX using row elements.
 
 * Implement proper string metrics computation (with cache), when
   lyxrc.force_paint_single_char is false. In this case, remove also
@@ -23,7 +22,8 @@ What is done:
 Next steps:
 
 * get rid of old code of cursorX and getColumnNearX (which have been
-  kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE).
+  kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
+  order to check computations).
 
 * re-implement row painting using row elements (can it be done?)
 
@@ -31,17 +31,15 @@ Next steps:
 
 * Document the code
 
-Difference in behavior
-* end of paragraph markers metrics are computed with the font of the
-  actual text, not default font. This will be extended to the other
-  methods.
+Difference in behavior (aka bug fixes)
 
-* When cursor is after a LtR separator just before a RtL chunk, the
+* end of paragraph markers metrics are computed with the font of the
+  actual text, not default font.
+
+* When cursor is after a LTR separator just before a RTL chunk, the
   cursor posiiton is computed better with the new code.
 
-Other differences that should be considered as bugs
+Other differences (aka real bugs)
 * words longer than the screen are no monger broken at an arbitrary
   point. This is a problem for languages like chinese that do not use
   separators.
-
-* Boundary is not taken in account properly in getColumnNearX
