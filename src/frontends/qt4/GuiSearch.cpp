@@ -12,12 +12,17 @@
 
 #include <config.h>
 
-#include "GuiSearch.h"
-
-#include "qt_helpers.h"
-
-#include "FuncRequest.h"
 #include "lyxfind.h"
+#include "qt_helpers.h"
+#include "FuncRequest.h"
+#include "BufferView.h"
+#include "Buffer.h"
+#include "Cursor.h"
+#include "GuiSearch.h"
+#include "GuiView.h"
+
+#include "support/gettext.h"
+#include "frontends/alert.h"
 
 #include <QLineEdit>
 #include <QShowEvent>
@@ -115,12 +120,45 @@ void GuiSearch::replaceallClicked()
 }
 
 
+void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward) {
+	dispatch(func);
+
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	GuiView & lv = *const_cast<GuiView *>(&lyxview());
+	if (!bv->cursor().result().dispatched()) {
+		docstring q;
+		if (forward)
+			q = _("End of file reached while searching forward.\n"
+			  "Continue searching from the beginning?");
+		else
+			q = _("End of file reached while searching backward.\n"
+			  "Continue searching from the end?");
+		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
+			q, 0, 1, _("&Yes"), _("&No"));
+		if (wrap_answer == 0) {
+			if (forward) {
+				bv->cursor().clear();
+				bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
+			} else {
+				bv->cursor().setCursor(doc_iterator_end(&bv->buffer()));
+				bv->cursor().backwardPos();
+			}
+			bv->clearSelection();
+			dispatch(func);
+			if (bv->cursor().result().dispatched())
+				return;
+		}
+		lv.message(_("String not found."));
+	}
+}
+
+
 void GuiSearch::find(docstring const & search, bool casesensitive,
 			 bool matchword, bool forward)
 {
 	docstring const data =
 		find2string(search, casesensitive, matchword, forward);
-	dispatch(FuncRequest(LFUN_WORD_FIND, data));
+	wrap_dispatch(FuncRequest(LFUN_WORD_FIND, data), forward);
 }
 
 
@@ -131,8 +169,9 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 	docstring const data =
 		replace2string(replace, search, casesensitive,
 				     matchword, all, forward);
-	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	wrap_dispatch(FuncRequest(LFUN_WORD_REPLACE, data), forward);
 }
+
 
 Dialog * createGuiSearch(GuiView & lv) { return new GuiSearch(lv); }
 

@@ -40,6 +40,9 @@ private:
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
 
+	/// Dispatches repeatedly func with wrap around question
+	void wrap_dispatch(const FuncRequest & func, bool forward);
+
 	/// Searches occurence of string
 	void find(docstring const & search,
 		  bool casesensitive, bool matchword, bool forward);
