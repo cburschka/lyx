@@ -448,7 +448,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		return ReadError;
 
 	// default for current rowpainter capabilities
-	force_paint_single_char = true;
+	//force_paint_single_char = true;
+	force_paint_single_char = false;
 
 	// format prior to 2.0 and introduction of format tag
 	unsigned int format = 0;

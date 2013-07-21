@@ -264,15 +264,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
-		// Work-around bug #6920
-		// The bug can be reproduced with DejaVu font under Linux.
-		// The issue is that we compute the metrics character by character
-		// in ParagraphMetrics::singleWidth(); but we paint word by word
-		// for performance reason.
-		// Maybe a more general fix would be draw character by character
-		// for some predefined fonts on some platform. In arabic and
-		// Hebrew we already do paint this way.
-		if (prev_char == 'f' || lyxrc.force_paint_single_char)
+		if (lyxrc.force_paint_single_char)
 			break;
 
 		pos = bidi_.vis2log(vpos);

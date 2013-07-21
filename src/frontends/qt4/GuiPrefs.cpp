@@ -314,7 +314,6 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	// for bug 1063.
 
 	QFont font;
-	font.setKerning(false);
 
 	QString const font_family = toqstr(family);
 	if (font_family == guiApp->romanFontName()) {

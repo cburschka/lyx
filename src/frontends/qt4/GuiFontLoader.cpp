@@ -165,7 +165,8 @@ QFont symbolFont(QString const & family, bool * ok)
 	upper[0] = family[0].toUpper();
 
 	QFont font;
-	font.setKerning(false);
+	if (lyxrc.force_paint_single_char)
+		font.setKerning(false);
 	font.setFamily(family);
 
 	if (isChosenFont(font, family)) {
@@ -256,7 +257,8 @@ static QString makeFontName(QString const & family, QString const & foundry)
 GuiFontInfo::GuiFontInfo(FontInfo const & f)
 	: metrics(QFont())
 {
-	font.setKerning(false);
+	if (lyxrc.force_paint_single_char)
+		font.setKerning(false);
 	QString const pat = symbolFamily(f.family());
 	if (!pat.isEmpty()) {
 		bool ok;

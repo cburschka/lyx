@@ -2417,7 +2417,6 @@ void GuiApplication::restoreGuiSession()
 QString const GuiApplication::romanFontName()
 {
 	QFont font;
-	font.setKerning(false);
 	font.setStyleHint(QFont::Serif);
 	font.setFamily("serif");
 
@@ -2428,7 +2427,6 @@ QString const GuiApplication::romanFontName()
 QString const GuiApplication::sansFontName()
 {
 	QFont font;
-	font.setKerning(false);
 	font.setStyleHint(QFont::SansSerif);
 	font.setFamily("sans");
 
@@ -2439,7 +2437,6 @@ QString const GuiApplication::sansFontName()
 QString const GuiApplication::typewriterFontName()
 {
 	QFont font;
-	font.setKerning(false);
 	font.setStyleHint(QFont::TypeWriter);
 	font.setFamily("monospace");
 
