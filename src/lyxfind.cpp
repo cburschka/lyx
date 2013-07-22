@@ -1308,10 +1308,15 @@ namespace {
 
 
 /** Check if 'len' letters following cursor are all non-lowercase */
-static bool allNonLowercase(DocIterator const & cur, int len)
+static bool allNonLowercase(Cursor const & cur, int len)
 {
-	pos_type end_pos = cur.pos() + len;
-	for (pos_type pos = cur.pos(); pos != end_pos; ++pos)
+	pos_type beg_pos = cur.selectionBegin().pos();
+	pos_type end_pos = cur.selectionBegin().pos() + len;
+	if (len > cur.lastpos() + 1 - beg_pos) {
+		LYXERR(Debug::FIND, "This should not happen, more debug needed");
+		len = cur.lastpos() + 1 - beg_pos;
+	}
+	for (pos_type pos = beg_pos; pos != end_pos; ++pos)
 		if (isLowerCase(cur.paragraph().getChar(pos)))
 			return false;
 	return true;
@@ -1319,15 +1324,16 @@ static bool allNonLowercase(DocIterator const & cur, int len)
 
 
 /** Check if first letter is upper case and second one is lower case */
-static bool firstUppercase(DocIterator const & cur)
+static bool firstUppercase(Cursor const & cur)
 {
 	char_type ch1, ch2;
-	if (cur.pos() >= cur.lastpos() - 1) {
+	pos_type pos = cur.selectionBegin().pos();
+	if (pos >= cur.lastpos() - 1) {
 		LYXERR(Debug::FIND, "No upper-case at cur: " << cur);
 		return false;
 	}
-	ch1 = cur.paragraph().getChar(cur.pos());
-	ch2 = cur.paragraph().getChar(cur.pos()+1);
+	ch1 = cur.paragraph().getChar(pos);
+	ch2 = cur.paragraph().getChar(pos + 1);
 	bool result = isUpperCase(ch1) && isLowerCase(ch2);
 	LYXERR(Debug::FIND, "firstUppercase(): "
 	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2=" 
@@ -1344,10 +1350,11 @@ static bool firstUppercase(DocIterator const & cur)
 static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase others_case)
 {
 	ParagraphList::iterator pit = buffer.paragraphs().begin();
+	LASSERT(pit->size() >= 1, /**/);
 	pos_type right = pos_type(1);
 	pit->changeCase(buffer.params(), pos_type(0), right, first_case);
-	right = pit->size() + 1;
-	pit->changeCase(buffer.params(), right, right, others_case);
+	right = pit->size();
+	pit->changeCase(buffer.params(), pos_type(1), right, others_case);
 }
 
 } // anon namespace
@@ -1383,6 +1390,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	repl_buffer.setUnnamed(true);
 	LASSERT(repl_buffer.readString(lyx), return);
 	if (opt.keep_case && sel_len >= 2) {
+		LYXERR(Debug::FIND, "keep_case true: cur.pos()=" << cur.pos() << ", sel_len=" << sel_len);
 		if (cur.inTexted()) {
 			if (firstUppercase(cur))
 				changeFirstCase(repl_buffer, text_uppercase, text_lowercase);
