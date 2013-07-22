@@ -125,6 +125,9 @@ void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward) {
 
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	GuiView & lv = *const_cast<GuiView *>(&lyxview());
+
+	DocIterator cur_orig(bv->cursor());
+
 	if (!bv->cursor().result().dispatched()) {
 		docstring q;
 		if (forward)
@@ -148,6 +151,7 @@ void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward) {
 			if (bv->cursor().result().dispatched())
 				return;
 		}
+		bv->cursor().setCursor(cur_orig);
 		lv.message(_("String not found."));
 	}
 }
