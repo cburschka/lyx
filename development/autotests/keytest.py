@@ -407,7 +407,7 @@ while not failed:
         lang = c[5:].rstrip()
         print "Setting LANG=" + lang + "\n"
         os.environ['LANG'] = lang
-        os.environ['LANGUAGE'] = lang
+        os.environ['LC_ALL'] = lang
 # If it doesn't exist, create a link <locale_dir>/<country-code>/LC_MESSAGES/lyx<version-suffix>.mo
 # pointing to the corresponding .gmo file. Needed to let lyx find the right translation files.
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg165613.html
