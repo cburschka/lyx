@@ -59,7 +59,7 @@ if(Q_WS_X11)
   endif()
 
   if(Missing)
-    message(STATUS "Missing Libraries or programms to create xvkbd: ${Missing}")
+    message(STATUS "Missing Libraries or programs to create xvkbd: ${Missing}")
     message(STATUS "cmake build is therefore omiting autotests")
   endif()
 
