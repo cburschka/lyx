@@ -6,7 +6,7 @@
 
 if(Q_WS_X11)
   set(Missing)
-  set(XVFBDLIBS "")
+  set(XVFBDLIBS)
   # Make sure, the needed programs are in PATH
   find_program(PCREGREP_EXE "pcregrep")
   if (NOT PCREGREP_EXE)
@@ -54,7 +54,9 @@ if(Q_WS_X11)
       endif()
     endforeach()
   endif()
-  list(REMOVE_DUPLICATES XVFBDLIBS)
+  if (XVFBDLIBS)
+    list(REMOVE_DUPLICATES XVFBDLIBS)
+  endif()
 
   if(Missing)
     message(STATUS "Missing libraries or programs to create xvkbd: ${Missing}")
