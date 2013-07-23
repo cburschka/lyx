@@ -128,13 +128,18 @@ public:
 		DocIterator const & end) const;
 
 	///
-	void pos(pos_type p);
+	void pos(pos_type p) { pos_ = p; }
 	///
 	pos_type pos() const { return pos_; }
 	///
-	void endpos(pos_type p);
+	void endpos(pos_type p) { end_ = p; }
 	///
 	pos_type endpos() const { return end_; }
+	///
+	void right_boundary(bool b) { right_boundary_ = b; }
+	///
+	bool right_boundary() const { return right_boundary_; }
+
 	///
 	Dimension const & dimension() const { return dim_; }
 	///
@@ -256,6 +261,8 @@ private:
 	pos_type pos_;
 	/// one behind last pos covered by this row
 	pos_type end_;
+	// Is there is a boundary at the end of the row (display inset...)
+	bool right_boundary_;
 	/// Row dimension.
 	Dimension dim_;
 };

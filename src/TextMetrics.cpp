@@ -619,18 +619,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		switch (align) {
 		case LYX_ALIGN_BLOCK: {
 			int const ns = numberOfSeparators(row);
-			bool disp_inset = false;
-			if (row.endpos() < par.size()) {
-				Inset const * in = par.getInset(row.endpos());
-				if (in)
-					disp_inset = in->display();
-			}
-			// If we have separators, this is not the last row of a
-			// par, does not end in newline, and is not row above a
-			// display inset... then stretch it
-			if (ns && row.endpos() < par.size()
-			    && !par.isNewline(row.endpos() - 1)
-			    && !disp_inset) {
+			/** If we have separators, and this row has
+			 * not be broken abruptly by a display inset
+			 * or newline, then stretch it */
+			if (ns && !row.right_boundary() 
+			    && row.endpos() != par.size()) {
 				setSeparatorWidth(row, w / ns);
 				row.dimension().wid = width;
 				//lyxerr << "row.separator " << row.separator << endl;
@@ -803,6 +796,10 @@ private:
 
 } // anon namespace
 
+/** This is the function where the hard work is done. The code here is
+ * very sensitive to small changes :) Note that part of the
+ * intelligence is also in Row::shorten_if_needed
+ */
 void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
 {
 	Paragraph const & par = text_->getPar(pit);
@@ -812,6 +809,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
 	row.dimension().wid = leftMargin(max_width_, pit, pos);
+	row.x = row.width();
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {
@@ -893,6 +891,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			&& inset->display())
 		    || (!row.empty() && row.back().inset
 			&& row.back().inset->display())) {
+			row.right_boundary(true);
 			++i;
 			break;
 		}
@@ -1153,13 +1152,11 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	/** This tests for the case where the cursor is set at the end
 	 * of a row which has been broken due to a display inset on
-	 * next row. This can be recognized because the end of the
-	 * last element is the same as the end of the row (there is no
-	 * separator at the end of the row)
+	 * next row. This is indicated by Row::right_boundary.
 	 */
 	if (!row.empty() && pos == row.back().endpos
 	    && row.back().endpos == row.endpos())
-		boundary = true;
+		boundary = row.right_boundary();
 
 #if !defined(KEEP_OLD_METRICS_CODE)
 	return pos - row.pos();

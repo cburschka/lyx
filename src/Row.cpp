@@ -54,7 +54,7 @@ double Row::Element::pos2x(pos_type const i) const
 }
 
 
-	pos_type Row::Element::x2pos(double &x, bool const low) const
+pos_type Row::Element::x2pos(double &x, bool const low) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
 	// if element is rtl, flip x value
@@ -104,9 +104,9 @@ double Row::Element::pos2x(pos_type const i) const
 
 Row::Row()
 	: separator(0), label_hfill(0), x(0), right_margin(0),
-	sel_beg(-1), sel_end(-1),
-	begin_margin_sel(false), end_margin_sel(false),
-	changed_(false), crc_(0), pos_(0), end_(0)
+	  sel_beg(-1), sel_end(-1),
+	  begin_margin_sel(false), end_margin_sel(false),
+	  changed_(false), crc_(0), pos_(0), end_(0), right_boundary_(false)
 {}
 
 
@@ -114,18 +114,6 @@ void Row::setCrc(size_type crc) const
 {
 	changed_ = crc != crc_;
 	crc_ = crc;
-}
-
-
-void Row::pos(pos_type p)
-{
-	pos_ = p;
-}
-
-
-void Row::endpos(pos_type p)
-{
-	end_ = p;
 }
 
 
@@ -337,6 +325,10 @@ void Row::shorten_if_needed(pos_type const keep, int const w)
 {
 	if (empty() || width() < w)
 		return;
+
+	/** First, we try to remove elements one by one from the end
+	 * until a separator is found.
+	 */
 	int i = elements_.size();
 	int new_end = end_;
 	int new_wid = dim_.wid;
@@ -352,23 +344,35 @@ void Row::shorten_if_needed(pos_type const keep, int const w)
 		new_wid -= elements_[i].dim.wid;
 	}
 	if (i == 0) {
-		if (elements_.size() != 1) {
-			LYXERR0("Row is too large but has more than one element. " << *this);
+		/* If we are here, it means that we have not found a
+		 * separator to shorten the row. There is one case
+		 * where we can do something: when we have one big
+		 * string, maybe with a paragraph marker after it.
+		 */
+		Element & front = elements_.front();
+		if (!(front.type == STRING
+		      && (elements_.size() == 1
+			  || (elements_.size() == 2
+			      && back().type == VIRTUAL))))
 			return;
-		}
-#if 1
-		return;
-#else
-		// does not work yet
-		if (back().type != STRING)
+
+		// If this is a string element, we can try to split it.
+		if (front.type != STRING)
 			return;
 		double xstr = w - x;
-		pos_type new_pos = back().x2pos(xstr, true);
-		back().str = back().str.substr(0, new_pos);
-		back().endpos = new_pos;
+		// If there is a paragraph marker, it should be taken in account
+		if (elements_.size() == 2)
+			xstr -= back().width();
+		pos_type new_pos = front.x2pos(xstr, true);
+		front.str = front.str.substr(0, new_pos - pos_);
+		front.dim.wid = xstr;
+		front.endpos = new_pos;
 		end_ = new_pos;
 		dim_.wid = x + xstr;
-#endif
+		// If there is a paragraph marker, it should be removed.
+		if (elements_.size() == 2)
+			elements_.pop_back();
+		return;
 	}
 	end_ = new_end;
 	dim_.wid = new_wid;
