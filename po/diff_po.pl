@@ -1,5 +1,6 @@
 #! /usr/bin/env perl
-
+# -*- mode: perl; -*-
+#
 # file diff_po.pl
 # script to compare changes between translation files before merging them
 #
@@ -27,14 +28,13 @@
 # Copyright (c) 2010-2013 Kornel Benko, kornel@lyx.org
 #
 # TODO:
-# 1.) Check for ".git" or ".svn" to decide about revisioning
-# 2.) Search for good correlations of deleted <==> inserted string
+# 1.) Search for good correlations of deleted <==> inserted string
 #     using Text::Levenshtein or Algorithm::Diff
 
 BEGIN {
     use File::Spec;
     my $p = File::Spec->rel2abs( __FILE__ );
-    $p =~ s/[\/\\]?diff_po\.pl$//;
+    $p =~ s/[\/\\]?[^\/\\]+$//;
     unshift(@INC, "$p");
 }
 
@@ -42,6 +42,7 @@ use strict;
 use parsePoLine;
 use Term::ANSIColor qw(:constants);
 use File::Temp;
+use Cwd;
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
@@ -66,17 +67,42 @@ if ($ARGV[0] =~ /^-r(.*)/) {
     if ($argf =~ /^(.*)\/([^\/]+)$/) {
       $baseargf = $2;
       $filedir = $1;
+      chdir($filedir);	# set working directory for the repo-command
     }
     else {
       $baseargf = $argf;
       $filedir = ".";
     }
-    if (-d "$filedir/../.git") {
+    $filedir = getcwd();
+    my ($repo, $level) = &searchRepo($filedir);
+    my $relargf = $baseargf;	# argf relative to the top-most repo directory
+    my $topdir;
+    if (defined($level)) {
+      my $abspathpo = $filedir;	# directory of the po-file
+      $topdir = $abspathpo;
+      #print "Level = $level, abs path = $abspathpo\n";
+      while ($level > 0) {
+	$topdir =~ s/\/([^\/]+)$//;
+	$relargf = "$1/$relargf";
+	$level--;
+	#print "Level = $level, topdir = $topdir, rel path = $relargf\n";
+      }
+      chdir($topdir);
+    }
+    else {
+      print "Could not find the repo-type\n";
+      exit(-1);
+    }
+    #check po-file
+    &check_po_file_readable($baseargf, $relargf);
+    if ($repo eq ".git") {
       my @args = ();
       my $tmpfile = File::Temp->new();
+      $rev = &getrev($repo, $rev);
       push(@args, "-L", $argf . "    (" . $rev . ")");
       push(@args, "-L", $argf . "    (local copy)");
-      open(FI, "git show $rev:po/$baseargf|");
+      print "git show $rev:$relargf\n";
+      open(FI, "git show $rev:$relargf|");
       $tmpfile->unlink_on_destroy( 1 );
       while(my $l = <FI>) {
 	print $tmpfile $l;
@@ -87,9 +113,22 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       print "===================================================================\n";
       &diff_po(@args);
     }
-    elsif (-d "$filedir/.svn") {
+    elsif ($repo eq ".svn") {
+      # program svnversion needed here
+      $rev = &getrev($repo, $rev);
       # call it again indirectly
-      my @cmd = ("svn", "diff", "-r$rev", "--diff-cmd", $0, $argf);
+      my @cmd = ("svn", "diff", "-r$rev", "--diff-cmd", $0, $relargf);
+      print "cmd = " . join(' ', @cmd) . "\n";
+      system(@cmd);
+    }
+    elsif ($repo eq ".hg") {
+      # for this to work, one has to edit ~/.hgrc
+      # Insert there
+      #     [extensions]
+      #     hgext.extdiff =
+      #
+      $rev = &getrev($repo, $rev);
+      my @cmd = ("hg", "extdiff", "-r", "$rev", "-p", $0, $relargf);
       print "cmd = " . join(' ', @cmd) . "\n";
       system(@cmd);
     }
@@ -101,6 +140,37 @@ else {
 
 exit($result);
 #########################################################
+
+# This routine builds n-th parent-path
+# E.g. &buildParentDir("abc", 1) --> "abc/.."
+#      &buildParentDir("abc", 4) --> "abc/../../../.."
+sub buildParentDir($$)
+{
+  my ($dir, $par) = @_;
+  if ($par > 0) {
+    return &buildParentDir("$dir/..", $par-1);
+  }
+  else {
+    return $dir;
+  }
+}
+
+# Tries up to 10 parent levels to find the repo-type
+# Returns the repo-type
+sub searchRepo($)
+{
+  my ($dir) = @_;
+  for my $parent ( 0 .. 10 ) {
+    my $f = &buildParentDir($dir, $parent);
+    for my $s (".git", ".svn", ".hg") {
+      if (-d "$f/$s") {
+	#print "Found repo on level $parent\n";
+	return ($s, $parent);
+      }
+    }
+  }
+  return("");	# not found
+}
 
 sub diff_po($$)
 {
@@ -129,8 +199,8 @@ sub diff_po($$)
     die("names = \"", join('" "', @names) . "\"... args = \"" . join('" "', @args) . "\" Expected exactly 2 parameters");
   }
 
-  &check($names[0], $args[0]);
-  &check($names[1], $args[1]);
+  &check_po_file_readable($names[0], $args[0]);
+  &check_po_file_readable($names[1], $args[1]);
 
   &parse_po_file($args[0], \%Messages);
   &parse_po_file($args[1], \%newMessages);
@@ -197,11 +267,11 @@ sub diff_po($$)
       print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
     }
   }
-  &printExtraMessages("fuzzy", \%Fuzzy);
-  &printExtraMessages("untranslated", \%Untranslated);
+  &printExtraMessages("fuzzy", \%Fuzzy, \@names);
+  &printExtraMessages("untranslated", \%Untranslated, \@names);
 }
 
-sub check($$)
+sub check_po_file_readable($$)
 {
   my ($spec, $filename) = @_;
 
@@ -216,6 +286,7 @@ sub check($$)
   }
 }
 
+# Diff of one corresponding entry
 sub printDiff($$$$)
 {
   my ($k, $nk, $rM, $rnM) = @_;
@@ -250,15 +321,51 @@ sub printIfDiff($$$)
   }
 }
 
-sub printExtraMessages($$)
+sub printExtraMessages($$$)
 {
-  my ($type, $rExtra) = @_;
+  my ($type, $rExtra, $rNames) = @_;
+  #print "file1 = $rNames->[0], file2 = $rNames->[1]\n";
   my @UntranslatedKeys = sort { $a <=> $b;} keys %{$rExtra};
 
   if (@UntranslatedKeys > 0) {
-    print "Still " . 0 + @UntranslatedKeys . " $type messages found in $ARGV[1]\n";
+    print "Still " . 0 + @UntranslatedKeys . " $type messages found in $rNames->[0]\n";
     for my $l (@UntranslatedKeys) {
-      print "> line $l: \"" . $rExtra->{$l} . "\"\n"; 
+      print "> line $l: \"" . $rExtra->{$l} . "\"\n";
     }
   }
+}
+
+#
+# get repository dependent revision representation
+sub getrev($$)
+{
+  my ($repo, $rev) = @_;
+  my $revnum;
+
+  if ($rev eq "HEAD") {
+    $revnum = 0;
+  }
+  else {
+    return $rev if ($rev !~ /^(-|HEAD[-~])(\d+)$/);
+    $revnum = $2;
+  }
+  if ($repo eq ".hg") {
+    return "-$revnum";
+  }
+  elsif ($repo eq ".git") {
+    return("HEAD~$revnum");
+  }
+  elsif ($repo eq ".svn") {
+    if (open(VI, "svnversion |")) {
+      while (my $r1 = <VI>) {
+	chomp($r1);
+	if ($r1 =~ /^((\d+):)?(\d+)M?$/) {
+	  $rev = $3-$revnum;
+	}
+      }
+      close(VI);
+    }
+    return $rev;
+  }
+  return $rev;
 }
