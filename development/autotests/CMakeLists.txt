@@ -59,7 +59,7 @@ if(Q_WS_X11)
   endif()
 
   if(Missing)
-    message(STATUS "Missing libraries or programs to create xvkbd: ${Missing}")
+    message(STATUS "Missing Libraries or programms to create xvkbd: ${Missing}")
     message(STATUS "cmake build is therefore omiting autotests")
   endif()
 
@@ -81,14 +81,14 @@ if(Q_WS_X11)
     foreach(_tf first-time-in.txt hello-world-in.txt ${TESTST})
       string(REGEX REPLACE "-in\\.(txt|sh)" "" _t ${_tf})
       add_test(NAME autotests/${_t}
-	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-	COMMAND ${CMAKE_COMMAND}
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+        COMMAND ${CMAKE_COMMAND}
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
         -DPO_BUILD_DIR=${TOP_BINARY_DIR}/po
         -DKEYTEST_INFILE=${_tf}
         -DBINDIR=$<TARGET_FILE_DIR:${_lyx}>
-	-DLYX=${_lyx}
-	-DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+        -DLYX=${_lyx}
+        -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -DKEYTEST_OUTFILE=${_t}-out.txt
         -DPACKAGE=${PACKAGE}
         -DLOCALE_DIR=${LOCALE_DIR}
@@ -137,6 +137,7 @@ foreach(libsubfolder doc examples templates)
       WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
       COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
           -Dlyx=$<TARGET_FILE:${_lyx}>
+          -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
           -Dformat=lyx16x
           -Dextension=16.lyx
           -Dfile=${f}
@@ -154,5 +155,4 @@ foreach(libsubfolder doc examples templates)
     endforeach()
   endforeach()
 endforeach()
-
 

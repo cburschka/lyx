@@ -4,7 +4,7 @@
 # Copyright (c) 2012 Kornel Benko kornel@lyx.org
 #
 #
-# LYX_ROOT  = ${TOP_SRC_DIR}/lib/doc
+# LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
 # lyx       = 
 # format    = lyx16x|xhtml
 # extension = 16.lyx|xhtml
@@ -12,6 +12,7 @@
 #
 # Script should be called like:
 # cmake -DLYX_ROOT=xxx \
+#       -DWORKDIR=${BUILD_DIR}/autotests/out-home
 #       -Dlyx=xxx \
 #       -Dformat=xxx \
 #       -Dextension=xxx \
@@ -20,6 +21,7 @@
 #
 
 message(STATUS "Executing ${lyx} -E ${format} ${file}.${extension} ${LYX_ROOT}/${file}.lyx")
+set(ENV{LYX_USERDIR} "${WORKDIR}/.lyx")
 execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
 execute_process(
   COMMAND ${lyx} -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
