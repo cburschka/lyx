@@ -1658,7 +1658,7 @@ def revert_AASTeX(document):
       if i == -1:
         return
       revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-      i += i + 1
+      i += 1
 
 
 def convert_AASTeX(document):
