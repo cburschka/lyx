@@ -1526,28 +1526,30 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
                   document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
               else:
                 document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-              n = n + 1
-              loop = loop + 1
+              n += 1
+              loop += 1
               # set the line where the next argument will be inserted
               if beginBrace == endBrace + 11:
                 endn = end - 11
               else:
                 endn = end - 12
+            else:
+              lineERT += 1
           else:
-            lineERT = lineERT + 1
+            lineERT += 1
       if environment == True and lineERT != -1:
         opening = find_token(document.body, "{", lineERT)
         if opening == lineERT + 5: # assure that the "{" is in this ERT
           end = find_token(document.body, "\\end_inset", opening)
           document.body[lineERT : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          n = n + 1
+          n += 1
           lineERT2 = find_token(document.body, "\\begin_inset ERT", lineERT)
           closing = find_token(document.body, "}", lineERT2)
           if closing == lineERT2 + 5: # assure that the "}" is in this ERT
             end2 = find_token(document.body, "\\end_inset", closing)
             document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
         else:
-          lineERT = lineERT + 1
+          lineERT += 1
 
 
 def revert_IEEEtran(document):
@@ -2013,27 +2015,24 @@ def revert_Initials(document):
   " Reverts InsetArgument of Initial to TeX-code "
   i = 0
   while True:
-    if i != -1:
-      i = find_token(document.body, "\\begin_layout Initial", i)
-    if i != -1:
-      # first arg (optional) and second arg (first mandatory) are supported in LyX 2.0.x
-      revert_Argument_to_TeX_brace(document, i, 0, 3, 3, False, False)
-      i = i + 1
+    i = find_token(document.body, "\\begin_layout Initial", i)
     if i == -1:
       return
+    # first arg (optional) and second arg (first mandatory) are supported in LyX 2.0.x
+    revert_Argument_to_TeX_brace(document, i, 0, 3, 3, False, False)
+    i = i + 1
 
 
 def convert_Initials(document):
   " Converts ERT of Initial to InsetArgument "
   i = 0
   while True:
-    if i != -1:
-      i = find_token(document.body, "\\begin_layout Initial", i)
-    if i != -1:
-      convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
-      i = i + 1
+    i = find_token(document.body, "\\begin_layout Initial", i)
     if i == -1:
       return
+    document.warning(str(i))
+    convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
+    i = i + 1
 
 
 def revert_literate(document):
@@ -4268,7 +4267,7 @@ def convert_chunks(document):
                 break
 
             # look for the next one
-            i = j
+            #i = j
             i = find_token(document.body, "\\begin_layout", i)
             if i == -1:
                 break
