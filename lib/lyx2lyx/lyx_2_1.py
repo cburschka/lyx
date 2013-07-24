@@ -96,7 +96,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
           document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
           document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
           wasOpt = False
-        n = n + 1
+        n += 1
     return wasOpt
 
 
@@ -153,7 +153,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
               document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
           else:
             document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          n = n + 1
+          n += 1
           endn = end
           loop = loop + 1
         # now check the case that we have "}" + "{" in two ERTs
@@ -333,7 +333,7 @@ def revert_math_spaces(document):
         end = find_end_of_inset(document.body, i)
         subst = put_cmd_in_ert(document.body[i][21:])
         document.body[i:end + 1] = subst
-      i = i + 1
+      i += 1
 
 
 def convert_japanese_encodings(document):
@@ -528,7 +528,7 @@ def revert_use_packages(document):
             del document.header[i]
             j = i
             document.header.insert(j, "\\use_%s %s"  % (p, value))
-        j = j + 1
+        j += 1
 
 
 def convert_use_package(document, pkg):
@@ -963,7 +963,7 @@ def revert_listoflistings(document):
             subst = put_cmd_in_ert("\\lstlistoflistings{}")
             document.body[i:j+1] = subst
             add_to_preamble(document, ["\\usepackage{listings}"])
-        i = i + 1
+        i += 1
 
 
 def convert_use_amssymb(document):
@@ -1232,7 +1232,7 @@ def revert_ipachar(document):
             document.body[i: i+1] = subst
             i = i + len(subst)
         else:
-            i = i + 1
+            i += 1
     if found:
         add_to_preamble(document, "\\usepackage{tone}")
 
@@ -1456,14 +1456,14 @@ def convert_latexargs(document):
             # InsetArgument itself will do the real work
             # (see InsetArgument::updateBuffer())
             document.body[i] = "\\begin_inset Argument 999"
-            i = i + 1
+            i += 1
             continue
         
         # Find containing paragraph layout
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -1493,7 +1493,7 @@ def convert_latexargs(document):
                     if argnr > allowed_opts and argnr < first_req:
                         argnr = first_req
                 document.body[p] = "\\begin_inset Argument %d" % argnr
-        i = i + 1
+        i += 1
 
 
 def revert_latexargs(document):
@@ -1510,13 +1510,13 @@ def revert_latexargs(document):
         m = rx.match(document.body[i])
         if not m:
             # No ID: inset already reverted
-            i = i + 1
+            i += 1
             continue
         # Find containing paragraph layout
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -1570,7 +1570,7 @@ def revert_IEEEtran(document):
         i = find_token(document.body, "\\begin_layout Page headings", i)
       if i != -1:
         revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i = i + 1
+        i += 1
       if i2 != -1:
         i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
       if i2 != -1:
@@ -1580,17 +1580,17 @@ def revert_IEEEtran(document):
         j = find_token(document.body, "\\begin_layout Biography without photo", j)
       if j != -1:
         revert_Argument_to_TeX_brace(document, j, 0, 1, 1, True, False)
-        j = j + 1
+        j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Biography", k)
         kA = find_token(document.body, "\\begin_layout Biography without photo", k)
         if k == kA and k != -1:
-          k = k + 1
+          k += 1
           continue
       if k != -1:
         # start with the second argument, therefore 2
         revert_Argument_to_TeX_brace(document, k, 0, 2, 2, True, False)
-        k = k + 1
+        k += 1
       if i == -1 and i2 == -1 and j == -1 and k == -1:
         return
 
@@ -1628,23 +1628,23 @@ def convert_IEEEtran(document):
         i = find_token(document.body, "\\begin_layout Page headings", i)
       if i != -1:
         convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Biography without photo", j)
       if j != -1:
         convert_TeX_brace_to_Argument(document, j, 1, 1, False, True)
-        j = j + 1
+        j += 1
       if k != -1:
         # assure that we don't handle Biography Biography without photo
         k = find_token(document.body, "\\begin_layout Biography", k)
         kA = find_token(document.body, "\\begin_layout Biography without photo", k - 1)
       if k == kA and k != -1:
-        k = k + 1
+        k += 1
         continue
       if k != -1:
         # the argument we want to convert is the second one
         convert_TeX_brace_to_Argument(document, k, 2, 2, False, True)
-        k = k + 1
+        k += 1
       if i == -1 and j == -1 and k == -1:
         return
 
@@ -1731,12 +1731,12 @@ def revert_SIGPLAN(document):
         i = find_token(document.body, "\\begin_layout Conference", i)
       if i != -1:
         revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Author", j)
       if j != -1:
         revert_Argument_to_TeX_brace(document, j, 0, 1, 2, False, False)
-        j = j + 1
+        j += 1
       if i == -1 and j == -1:
         return
 
@@ -1751,12 +1751,12 @@ def convert_SIGPLAN(document):
         i = find_token(document.body, "\\begin_layout Conference", i)
       if i != -1:
         convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Author", j)
       if j != -1:
         convert_TeX_brace_to_Argument(document, j, 1, 2, False, False)
-        j = j + 1
+        j += 1
       if i == -1 and j == -1:
         return
 
@@ -1797,22 +1797,22 @@ def revert_EuropeCV(document):
         i = find_token(document.body, "\\begin_layout Item", i)
       if i != -1:
         revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False)
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout BulletedItem", j)
       if j != -1:
         revert_Argument_to_TeX_brace(document, j, 0, 2, 2, False, False)
-        j = j + 1
+        j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Language", k)
       if k != -1:
         revert_Argument_to_TeX_brace(document, k, 0, 2, 6, False, False)
-        k = k + 1
+        k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout LastLanguage", m)
       if m != -1:
         revert_Argument_to_TeX_brace(document, m, 0, 2, 6, False, False)
-        m = m + 1
+        m += 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
 
@@ -1829,22 +1829,22 @@ def convert_EuropeCV(document):
         i = find_token(document.body, "\\begin_layout Item", i)
       if i != -1:
         convert_TeX_brace_to_Argument(document, i, 2, 2, False, False)
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout BulletedItem", j)
       if j != -1:
         convert_TeX_brace_to_Argument(document, j, 2, 2, False, False)
-        j = j + 1
+        j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Language", k)
       if k != -1:
         convert_TeX_brace_to_Argument(document, k, 2, 6, False, False)
-        k = k + 1
+        k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout LastLanguage", m)
       if m != -1:
         convert_TeX_brace_to_Argument(document, m, 2, 6, False, False)
-        m = m + 1
+        m += 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
 
@@ -1862,18 +1862,18 @@ def revert_ModernCV(document):
         j = find_token(document.body, "\\begin_layout Entry", j)
       if j != -1:
         revert_Argument_to_TeX_brace(document, j, 0, 1, 5, False, False)
-        j = j + 1
+        j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Item", k)
       if k != -1:
         revert_Argument_to_TeX_brace(document, k, 0, 1, 1, False, False)
-        k = k + 1
+        k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout ItemWithComment", m)
       if m != -1:
         revert_Argument_to_TeX_brace(document, m, 0, 1, 2, False, False)
         document.body[m] = document.body[m].replace("\\begin_layout ItemWithComment", "\\begin_layout Language")
-        m = m + 1
+        m += 1
       if o != -1:
         o = find_token(document.body, "\\begin_layout DoubleItem", o)
       if o != -1:
@@ -1967,22 +1967,22 @@ def convert_ModernCV(document):
       if i != -1:
         convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
         document.body[o] = document.body[o].replace("\\begin_layout DoubleItem", "\\begin_layout DoubleListItem")
-        i = i + 1
+        i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Entry", j)
       if j != -1:
         convert_TeX_brace_to_Argument(document, j, 1, 5, False, False)
-        j = j + 1
+        j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Item", k)
       if k != -1:
         convert_TeX_brace_to_Argument(document, k, 1, 1, False, False)
-        k = k + 1
+        k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout Language", m)
       if m != -1:
         convert_TeX_brace_to_Argument(document, m, 1, 2, False, False)
-        m = m + 1
+        m += 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
 
@@ -1996,7 +1996,7 @@ def revert_Initials(document):
       return
     # first arg (optional) and second arg (first mandatory) are supported in LyX 2.0.x
     revert_Argument_to_TeX_brace(document, i, 0, 3, 3, False, False)
-    i = i + 1
+    i += 1
 
 
 def convert_Initials(document):
@@ -2007,7 +2007,7 @@ def convert_Initials(document):
     if i == -1:
       return
     convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
-    i = i + 1
+    i += 1
 
 
 def revert_literate(document):
@@ -2020,7 +2020,7 @@ def revert_literate(document):
         if i == -1:
           break
         document.body[i] = "\\begin_layout Scrap"
-        i = i + 1
+        i += 1
 
 
 def convert_literate(document):
@@ -2041,7 +2041,7 @@ def convert_literate(document):
         if i == -1:
           break
         document.body[i] = "\\begin_layout Chunk"
-        i = i + 1
+        i += 1
 
 
 def revert_itemargs(document):
@@ -2056,7 +2056,7 @@ def revert_itemargs(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[3]
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
@@ -2065,7 +2065,7 @@ def revert_itemargs(document):
         del document.body[i:j+1]
         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
         document.body[parbeg : parbeg] = subst
-        i = i + 1
+        i += 1
 
 
 def revert_garamondx_newtxmath(document):
@@ -2119,7 +2119,7 @@ def convert_beamerargs(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -2160,7 +2160,7 @@ def convert_beamerargs(document):
                         elif layoutname != "Itemize":
                             # Shift this one
                             document.body[p] = "\\begin_inset Argument 2"
-        i = i + 1
+        i += 1
 
 
 def convert_againframe_args(document):
@@ -2376,7 +2376,7 @@ def revert_beamerargs(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -2556,7 +2556,7 @@ def revert_beamerargs2(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -2638,7 +2638,7 @@ def revert_beamerargs3(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -2792,7 +2792,7 @@ def revert_beamerblocks(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -2923,7 +2923,7 @@ def convert_overprint(document):
         j = find_end_of_sequence(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document. Cannot find end of Overprint sequence!")
-            i = i + 1
+            i += 1
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
@@ -2939,7 +2939,7 @@ def convert_overprint(document):
             argend = find_end_of_layout(document.body, argbeg)
             if argend == -1:
                 document.warning("Malformed LyX document. Cannot find end of Overprint argument!")
-                i = i + 1
+                i += 1
                 continue
             beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
             endPlain = find_end_of_layout(document.body, beginPlain)
@@ -2977,7 +2977,7 @@ def revert_overprint(document):
         j = find_end_of_sequence(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document. Cannot find end of Overprint sequence!")
-            i = i + 1
+            i += 1
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
@@ -3002,7 +3002,7 @@ def revert_overprint(document):
             argend = find_end_of_inset(document.body, argbeg)
             if argend == -1:
                 document.warning("Malformed LyX document. Cannot find end of Overprint argument!")
-                i = i + 1
+                i += 1
                 continue
             beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
             endPlain = find_end_of_layout(document.body, beginPlain)
@@ -3066,7 +3066,7 @@ def revert_frametitle(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of FrameTitle layout")
-            i = i + 1
+            i += 1
             continue
         endlay = j
         document.body[j : j] = put_cmd_in_ert("}") + document.body[j : j]
@@ -3118,7 +3118,7 @@ def convert_epigraph(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Epigraph layout")
-            i = i + 1
+            i += 1
             continue
         endlay = j
         subst = list()
@@ -3159,7 +3159,7 @@ def revert_epigraph(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Epigraph layout")
-            i = i + 1
+            i += 1
             continue
         endlay = j
         subst = list()
@@ -3190,7 +3190,7 @@ def convert_captioninsets(document):
       if i == -1:
           return
       document.body[i] = "\\begin_inset Caption Standard"
-      i = i + 1
+      i += 1
 
 
 def revert_captioninsets(document):
@@ -3202,7 +3202,7 @@ def revert_captioninsets(document):
       if i == -1:
           return
       document.body[i] = "\\begin_inset Caption"
-      i = i + 1
+      i += 1
 
 
 def convert_captionlayouts(document):
@@ -3233,7 +3233,7 @@ def convert_captionlayouts(document):
             document.body[i:i+1] = ["\\begin_layout %s" % document.default_layout,
                                     "\\begin_inset Caption %s" % caption_dict[val], "",
                                     "\\begin_layout %s" % document.default_layout]
-        i = i + 1
+        i += 1
 
 
 def revert_captionlayouts(document):
@@ -3260,7 +3260,7 @@ def revert_captionlayouts(document):
         if m:
             val = m.group(1)
         if val not in caption_dict.keys():
-            i = i + 1
+            i += 1
             continue
         
         # We either need to delete the previous \begin_layout line, or we
@@ -3325,7 +3325,7 @@ def revert_captionlayouts(document):
         document.body[i] = "\\begin_layout %s" % caption_dict[val]
         if document.body[i+1] == "":
             del document.body[i+1]
-        i = i + 1
+        i += 1
 
 
 def revert_fragileframe(document):
@@ -3344,7 +3344,7 @@ def revert_fragileframe(document):
         j = find_end_of_sequence(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document. Cannot find end of FragileFrame sequence!")
-            i = i + 1
+            i += 1
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{frame}")
@@ -3441,13 +3441,13 @@ def revert_newframes(document):
         if m:
             val = m.group(1)
         if val not in frame_dict.keys():
-            i = i + 1
+            i += 1
             continue
         # Find end of sequence
         j = find_end_of_sequence(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document. Cannot find end of Frame sequence!")
-            i = i + 1
+            i += 1
             continue
         endseq = j
         subst = ["\\begin_layout %s" % frame_dict[val]]
@@ -3877,7 +3877,7 @@ def remove_endframes(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Missing \\end_layout to EndFrame")
-            i = i + 1
+            i += 1
             continue
         del document.body[i : j + 1]
 
@@ -3950,7 +3950,7 @@ def revert_powerdot_pause(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Pause layout")
-            i = i + 1
+            i += 1
             continue
         endlay = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\pause")
@@ -3991,7 +3991,7 @@ def revert_powerdot_itemargs(document):
         parent = get_containing_layout(document.body, i)
         if parent == False:
             document.warning("Malformed LyX document: Can't find parent paragraph layout")
-            i = i + 1
+            i += 1
             continue
         parbeg = parent[1]
         parend = parent[2]
@@ -4042,7 +4042,7 @@ def revert_powerdot_columns(document):
         j = find_end_of_layout(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Can't find end of Twocolumn layout")
-            i = i + 1
+            i += 1
             continue
         endlay = j
         document.body[j : j] = put_cmd_in_ert("}") + document.body[j : j]
@@ -4106,7 +4106,7 @@ def revert_mbox_fbox(document):
                 document.body[i:BeginLayout + 1] = put_cmd_in_ert("\\mbox{")
             if document.body[i] == "\\begin_inset Box Boxed":
                 document.body[i:BeginLayout + 1] = put_cmd_in_ert("\\fbox{")
-        i = i + 1
+        i += 1
 
 
 def revert_starred_caption(document):
@@ -4120,7 +4120,7 @@ def revert_starred_caption(document):
       # This is not equivalent, but since the caption inset is a full blown
       # text inset a true conversion to ERT is too difficult.
       document.body[i] = "\\begin_inset Caption Standard"
-      i = i + 1
+      i += 1
 
 
 def revert_forced_local_layout(document):
@@ -4166,7 +4166,7 @@ def revert_aa1(document):
         i = find_token(document.body, "\\begin_layout Abstract (structured)", i)
       if i != -1:
         revert_Argument_to_TeX_brace(document, i, 0, 1, 4, False, False)
-        i = i + 1
+        i += 1
       if i == -1:
         return
 
@@ -4180,7 +4180,7 @@ def revert_aa2(document):
         i = find_token(document.body, "\\begin_layout Abstract (structured)", i)
       if i != -1:
         document.body[i] = "\\begin_layout Abstract"
-        i = i + 1
+        i += 1
       if i == -1:
         return
 
