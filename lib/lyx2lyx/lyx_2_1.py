@@ -4242,7 +4242,7 @@ def convert_chunks(document):
                 break
 
             # look for the next one
-            #i = j
+            i = j
             i = find_token(document.body, "\\begin_layout", i)
             if i == -1:
                 break
