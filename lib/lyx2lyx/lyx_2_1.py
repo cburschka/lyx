@@ -1602,15 +1602,13 @@ def revert_IEEEtran_2(document):
   if document.textclass == "IEEEtran":
     begin = 0
     while True:
-      if begin != -1:
-        begin = find_token(document.body, "\\begin_inset Flex Paragraph Start", begin)
-      if begin != -1:
-        end1 = find_end_of_inset(document.body, begin)
-        document.body[end1 - 2 : end1 + 1] = put_cmd_in_ert("}")
-        document.body[begin : begin + 4] = put_cmd_in_ert("\\IEEEPARstart{")
-        begin = begin + 5
+      begin = find_token(document.body, "\\begin_inset Flex Paragraph Start", begin)
       if begin == -1:
         return
+      end1 = find_end_of_inset(document.body, begin)
+      document.body[end1 - 2 : end1 + 1] = put_cmd_in_ert("}")
+      document.body[begin : begin + 4] = put_cmd_in_ert("\\IEEEPARstart{")
+      begin = begin + 5
 
 
 def convert_IEEEtran(document):
@@ -1656,13 +1654,11 @@ def revert_AASTeX(document):
   if document.textclass == "aastex":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Altaffilation", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout Altaffilation", i)
       if i == -1:
         return
+      revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
+      i += i + 1
 
 
 def convert_AASTeX(document):
@@ -1670,13 +1666,11 @@ def convert_AASTeX(document):
   if document.textclass == "aastex":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Altaffilation", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout Altaffilation", i)
       if i == -1:
         return
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      i += 1
 
 
 def revert_AGUTeX(document):
@@ -1684,13 +1678,11 @@ def revert_AGUTeX(document):
   if document.textclass == "agutex":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Author affiliation", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout Author affiliation", i)
       if i == -1:
         return
+      revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
+      i += 1
 
 
 def convert_AGUTeX(document):
@@ -1698,13 +1690,11 @@ def convert_AGUTeX(document):
   if document.textclass == "agutex":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Author affiliation", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout Author affiliation", i)
       if i == -1:
         return
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      i += 1
 
 
 def revert_IJMP(document):
@@ -1712,13 +1702,11 @@ def revert_IJMP(document):
   if document.textclass == "ijmpc" or document.textclass == "ijmpd":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout MarkBoth", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout MarkBoth", i)
       if i == -1:
         return
+      revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
+      i += 1
 
 
 def convert_IJMP(document):
@@ -1726,13 +1714,11 @@ def convert_IJMP(document):
   if document.textclass == "ijmpc" or document.textclass == "ijmpd":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout MarkBoth", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_layout MarkBoth", i)
       if i == -1:
         return
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      i += 1
 
 
 def revert_SIGPLAN(document):
@@ -1780,13 +1766,11 @@ def revert_SIGGRAPH(document):
   if document.textclass == "acmsiggraph":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_inset Flex CRcat", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 0, 1, 3, False, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_inset Flex CRcat", i)
       if i == -1:
         return
+      revert_Argument_to_TeX_brace(document, i, 0, 1, 3, False, False)
+      i += 1
 
 
 def convert_SIGGRAPH(document):
@@ -1794,13 +1778,11 @@ def convert_SIGGRAPH(document):
   if document.textclass == "acmsiggraph":
     i = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_inset Flex CRcat", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 3, True, False)
-        i = i + 1
+      i = find_token(document.body, "\\begin_inset Flex CRcat", i)
       if i == -1:
         return
+      convert_TeX_brace_to_Argument(document, i, 1, 3, True, False)
+      i += 1
 
 
 def revert_EuropeCV(document):
@@ -1913,21 +1895,19 @@ def revert_ModernCV_2(document):
     flex = 0
     flexEnd = -1
     while True:
-      if flex != -1:
-        flex = find_token(document.body, "\\begin_inset Flex Column", flex)
-      if flex != -1:
-        flexEnd = find_end_of_inset(document.body, flex)
-        wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True)
-        revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False)
-        flexEnd = find_end_of_inset(document.body, flex)
-        if wasOpt == True:
-          document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn")
-        else:
-          document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn{")
-        document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("}")
-        flex = flex + 1
+      flex = find_token(document.body, "\\begin_inset Flex Column", flex)
       if flex == -1:
         return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      if wasOpt == True:
+        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn")
+      else:
+        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\cvcolumn{")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("}")
+      flex += 1
 
 
 def revert_ModernCV_3(document):
@@ -1939,17 +1919,15 @@ def revert_ModernCV_3(document):
     # get the position of the end of the last column inset
     LastFlexEnd = revert_ModernCV_2(document)
     while True:
-      if p != -1:
-        p = find_token(document.body, "\\begin_layout Columns", p)
-      if p != -1:
-        pEnd = find_end_of_layout(document.body, p)
-        document.body[p] = document.body[p].replace("\\begin_layout Columns", "\\begin_layout Standard")
-        if LastFlexEnd != -1:
-          document.body[p + 1 : p + 1] = put_cmd_in_ert("\\begin{cvcolumns}")
-          document.body[LastFlexEnd + 24 : LastFlexEnd + 24] = put_cmd_in_ert("\\end{cvcolumns}")
-        p = p + 1
+      p = find_token(document.body, "\\begin_layout Columns", p)
       if p == -1:
         return
+      pEnd = find_end_of_layout(document.body, p)
+      document.body[p] = document.body[p].replace("\\begin_layout Columns", "\\begin_layout Standard")
+      if LastFlexEnd != -1:
+        document.body[p + 1 : p + 1] = put_cmd_in_ert("\\begin{cvcolumns}")
+        document.body[LastFlexEnd + 24 : LastFlexEnd + 24] = put_cmd_in_ert("\\end{cvcolumns}")
+      p += 1
 
 
 def revert_ModernCV_4(document):
@@ -1959,22 +1937,20 @@ def revert_ModernCV_4(document):
     revert_ModernCV(document)
     p = 0
     while True:
-      if p != -1:
-        p = find_token(document.body, "\\begin_layout Social", p)
-      if p != -1:
-        pEnd = find_end_of_layout(document.body, p)
-        document.body[p] = document.body[p].replace("\\begin_layout Social", "\\begin_layout Standard")
-        document.body[p + 1 : p + 1] = put_cmd_in_ert("\\social")
-        hasOpt = find_token(document.body, "[", p + 9)
-        if hasOpt < p + 18:
-            document.body[p + 30 : p + 30] = put_cmd_in_ert("{")
-            document.body[p + 41 : p + 41] = put_cmd_in_ert("}")
-        else:
-            document.body[p + 11 : p + 11] = put_cmd_in_ert("{")
-            document.body[p + 21 : p + 21] = put_cmd_in_ert("}")
-        p = p + 1
+      p = find_token(document.body, "\\begin_layout Social", p)
       if p == -1:
         return
+      pEnd = find_end_of_layout(document.body, p)
+      document.body[p] = document.body[p].replace("\\begin_layout Social", "\\begin_layout Standard")
+      document.body[p + 1 : p + 1] = put_cmd_in_ert("\\social")
+      hasOpt = find_token(document.body, "[", p + 9)
+      if hasOpt < p + 18:
+        document.body[p + 30 : p + 30] = put_cmd_in_ert("{")
+        document.body[p + 41 : p + 41] = put_cmd_in_ert("}")
+      else:
+        document.body[p + 11 : p + 11] = put_cmd_in_ert("{")
+        document.body[p + 21 : p + 21] = put_cmd_in_ert("}")
+      p += 1
 
 
 def convert_ModernCV(document):
