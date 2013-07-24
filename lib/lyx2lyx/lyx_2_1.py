@@ -2030,7 +2030,6 @@ def convert_Initials(document):
     i = find_token(document.body, "\\begin_layout Initial", i)
     if i == -1:
       return
-    document.warning(str(i))
     convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
     i = i + 1
 
