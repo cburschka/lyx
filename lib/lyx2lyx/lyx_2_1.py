@@ -53,6 +53,167 @@ from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert
     #return True
 
 
+def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt):
+    '''
+    Reverts an InsetArgument to TeX-code
+    usage:
+    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
+    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
+    StartArgument is the number of the first argument that needs to be converted
+    EndArgument is the number of the last argument that needs to be converted or the last defined one
+    isEnvironment must be true, if the layout is for a LaTeX environment
+    isOpt must be true, if the argument is an optional one
+    '''
+    lineArg = 0
+    wasOpt = False
+    while lineArg != -1 and n < nmax + 1:
+      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
+      if lineArg > endline and endline != 0:
+        return wasOpt
+      if lineArg != -1:
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+        # we have to assure that no other inset is in the Argument
+        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", beginPlain)
+        k = beginPlain + 1
+        l = k
+        while beginInset < endInset and beginInset != -1:
+          beginInset = find_token(document.body, "\\begin_inset", k)
+          endInset = find_token(document.body, "\\end_inset", l)
+          k = beginInset + 1
+          l = endInset + 1
+        if environment == False:
+          if opt == False:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
+            del(document.body[lineArg : beginPlain + 1])
+            wasOpt = False
+          else:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
+            wasOpt = True
+        else:
+          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
+          document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
+          wasOpt = False
+        n = n + 1
+    return wasOpt
+
+
+def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
+    '''
+    Converts TeX code for mandatory arguments to an InsetArgument
+    The conversion of TeX code for optional arguments must be done with another routine
+    !!! Be careful if the braces are different in your case as expected here:
+    - "}{" separates mandatory arguments of commands
+    - "}" + "{" separates mandatory arguments of commands
+    - "}" + " " + "{" separates mandatory arguments of commands
+    - { and } surround a mandatory argument of an environment
+    usage:
+    convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment)
+    LineOfBeginLayout/Inset is the line  of the \begin_layout or \begin_inset statement
+    StartArgument is the number of the first ERT that needs to be converted
+    EndArgument is the number of the last ERT that needs to be converted
+    isInset must be true, if braces inside an InsetLayout needs to be converted
+    isEnvironment must be true, if the layout is for a LaTeX environment
+    
+    Todo: this routine can currently handle only one mandatory argument of environments
+    '''
+    lineERT = line
+    endn = line
+    loop = 1
+    while lineERT != -1 and n < nmax + 1:
+      lineERT = find_token(document.body, "\\begin_inset ERT", lineERT)
+      if environment == False and lineERT != -1:
+        bracePair = find_token(document.body, "}{", lineERT)
+        # assure that the "}{" is in this ERT
+        if bracePair == lineERT + 5:
+          end = find_token(document.body, "\\end_inset", bracePair)
+          document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
+          if loop == 1:
+            # in the case that n > 1 we have optional arguments before
+            # therefore detect them if any
+            if n > 1:
+              # first check if there is an argument
+              lineArg = find_token(document.body, "\\begin_inset Argument", line)
+              if lineArg < lineERT and lineArg != -1:
+                # we have an argument, so now search backwards for its end
+                # we must now assure that we don't find other insets like e.g. a newline
+                endInsetArg = lineERT
+                endLayoutArg = endInsetArg
+                while endInsetArg != endLayoutArg + 2 and endInsetArg != -1:
+                  endInsetArg = endInsetArg - 1
+                  endLayoutArg = endInsetArg
+                  endInsetArg = find_token_backwards(document.body, "\\end_inset", endInsetArg)
+                  endLayoutArg = find_token_backwards(document.body, "\\end_layout", endLayoutArg)
+                line = endInsetArg + 1
+            if inset == False:
+              document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+            else:
+              document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          else:
+            document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n = n + 1
+          endn = end
+          loop = loop + 1
+        # now check the case that we have "}" + "{" in two ERTs
+        else:
+          endBrace = find_token(document.body, "}", lineERT)
+          if endBrace == lineERT + 5:
+            beginBrace = find_token(document.body, "{", endBrace)
+            # assure that the ERTs are consecutive (11 or 12 depending if there is a space between the ERTs or not)
+            if beginBrace == endBrace + 11 or beginBrace == endBrace + 12:
+              end = find_token(document.body, "\\end_inset", beginBrace)
+              document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
+              if loop == 1:
+                # in the case that n > 1 we have optional arguments before
+                # therefore detect them if any
+                if n > 1:
+                  # first check if there is an argument
+                  lineArg = find_token(document.body, "\\begin_inset Argument", line)
+                  if lineArg < lineERT and lineArg != -1:
+                    # we have an argument, so now search backwards for its end
+                    # we must now assure that we don't find other insets like e.g. a newline
+                    endInsetArg = lineERT
+                    endLayoutArg = endInsetArg
+                    while endInsetArg != endLayoutArg + 2 and endInsetArg != -1:
+                      endInsetArg = endInsetArg - 1
+                      endLayoutArg = endInsetArg
+                      endInsetArg = find_token_backwards(document.body, "\\end_inset", endInsetArg)
+                      endLayoutArg = find_token_backwards(document.body, "\\end_layout", endLayoutArg)
+                    line = endInsetArg + 1
+                if inset == False:
+                  document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+                else:
+                  document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+              else:
+                document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+              n += 1
+              loop += 1
+              # set the line where the next argument will be inserted
+              if beginBrace == endBrace + 11:
+                endn = end - 11
+              else:
+                endn = end - 12
+            else:
+              lineERT += 1
+          else:
+            lineERT += 1
+      if environment == True and lineERT != -1:
+        opening = find_token(document.body, "{", lineERT)
+        if opening == lineERT + 5: # assure that the "{" is in this ERT
+          end = find_token(document.body, "\\end_inset", opening)
+          document.body[lineERT : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n += 1
+          lineERT2 = find_token(document.body, "\\begin_inset ERT", lineERT)
+          closing = find_token(document.body, "}", lineERT2)
+          if closing == lineERT2 + 5: # assure that the "}" is in this ERT
+            end2 = find_token(document.body, "\\end_inset", closing)
+            document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
+        else:
+          lineERT += 1
+
+
 ###############################################################################
 ###
 ### Conversion and reversion routines
@@ -1389,167 +1550,6 @@ def revert_latexargs(document):
         document.body[realparbeg : realparbeg] = subst
 
         i = realparbeg + 1 + len(subst)
-
-
-def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt):
-    '''
-    Reverts an InsetArgument to TeX-code
-    usage:
-    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
-    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
-    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
-    StartArgument is the number of the first argument that needs to be converted
-    EndArgument is the number of the last argument that needs to be converted or the last defined one
-    isEnvironment must be true, if the layout is for a LaTeX environment
-    isOpt must be true, if the argument is an optional one
-    '''
-    lineArg = 0
-    wasOpt = False
-    while lineArg != -1 and n < nmax + 1:
-      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
-      if lineArg > endline and endline != 0:
-        return wasOpt
-      if lineArg != -1:
-        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
-        # we have to assure that no other inset is in the Argument
-        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
-        endInset = find_token(document.body, "\\end_inset", beginPlain)
-        k = beginPlain + 1
-        l = k
-        while beginInset < endInset and beginInset != -1:
-          beginInset = find_token(document.body, "\\begin_inset", k)
-          endInset = find_token(document.body, "\\end_inset", l)
-          k = beginInset + 1
-          l = endInset + 1
-        if environment == False:
-          if opt == False:
-            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
-            del(document.body[lineArg : beginPlain + 1])
-            wasOpt = False
-          else:
-            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
-            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
-            wasOpt = True
-        else:
-          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
-          document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
-          wasOpt = False
-        n = n + 1
-    return wasOpt
-
-
-def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
-    '''
-    Converts TeX code for mandatory arguments to an InsetArgument
-    The conversion of TeX code for optional arguments must be done with another routine
-    !!! Be careful if the braces are different in your case as expected here:
-    - "}{" separates mandatory arguments of commands
-    - "}" + "{" separates mandatory arguments of commands
-    - "}" + " " + "{" separates mandatory arguments of commands
-    - { and } surround a mandatory argument of an environment
-    usage:
-    convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment)
-    LineOfBeginLayout/Inset is the line  of the \begin_layout or \begin_inset statement
-    StartArgument is the number of the first ERT that needs to be converted
-    EndArgument is the number of the last ERT that needs to be converted
-    isInset must be true, if braces inside an InsetLayout needs to be converted
-    isEnvironment must be true, if the layout is for a LaTeX environment
-    
-    Todo: this routine can currently handle only one mandatory argument of environments
-    '''
-    lineERT = line
-    endn = line
-    loop = 1
-    while lineERT != -1 and n < nmax + 1:
-      lineERT = find_token(document.body, "\\begin_inset ERT", lineERT)
-      if environment == False and lineERT != -1:
-        bracePair = find_token(document.body, "}{", lineERT)
-        # assure that the "}{" is in this ERT
-        if bracePair == lineERT + 5:
-          end = find_token(document.body, "\\end_inset", bracePair)
-          document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
-          if loop == 1:
-            # in the case that n > 1 we have optional arguments before
-            # therefore detect them if any
-            if n > 1:
-              # first check if there is an argument
-              lineArg = find_token(document.body, "\\begin_inset Argument", line)
-              if lineArg < lineERT and lineArg != -1:
-                # we have an argument, so now search backwards for its end
-                # we must now assure that we don't find other insets like e.g. a newline
-                endInsetArg = lineERT
-                endLayoutArg = endInsetArg
-                while endInsetArg != endLayoutArg + 2 and endInsetArg != -1:
-                  endInsetArg = endInsetArg - 1
-                  endLayoutArg = endInsetArg
-                  endInsetArg = find_token_backwards(document.body, "\\end_inset", endInsetArg)
-                  endLayoutArg = find_token_backwards(document.body, "\\end_layout", endLayoutArg)
-                line = endInsetArg + 1
-            if inset == False:
-              document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-            else:
-              document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          else:
-            document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          n = n + 1
-          endn = end
-          loop = loop + 1
-        # now check the case that we have "}" + "{" in two ERTs
-        else:
-          endBrace = find_token(document.body, "}", lineERT)
-          if endBrace == lineERT + 5:
-            beginBrace = find_token(document.body, "{", endBrace)
-            # assure that the ERTs are consecutive (11 or 12 depending if there is a space between the ERTs or not)
-            if beginBrace == endBrace + 11 or beginBrace == endBrace + 12:
-              end = find_token(document.body, "\\end_inset", beginBrace)
-              document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
-              if loop == 1:
-                # in the case that n > 1 we have optional arguments before
-                # therefore detect them if any
-                if n > 1:
-                  # first check if there is an argument
-                  lineArg = find_token(document.body, "\\begin_inset Argument", line)
-                  if lineArg < lineERT and lineArg != -1:
-                    # we have an argument, so now search backwards for its end
-                    # we must now assure that we don't find other insets like e.g. a newline
-                    endInsetArg = lineERT
-                    endLayoutArg = endInsetArg
-                    while endInsetArg != endLayoutArg + 2 and endInsetArg != -1:
-                      endInsetArg = endInsetArg - 1
-                      endLayoutArg = endInsetArg
-                      endInsetArg = find_token_backwards(document.body, "\\end_inset", endInsetArg)
-                      endLayoutArg = find_token_backwards(document.body, "\\end_layout", endLayoutArg)
-                    line = endInsetArg + 1
-                if inset == False:
-                  document.body[line + 1 : line + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-                else:
-                  document.body[line + 4 : line + 4] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-              else:
-                document.body[endn : endn] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-              n += 1
-              loop += 1
-              # set the line where the next argument will be inserted
-              if beginBrace == endBrace + 11:
-                endn = end - 11
-              else:
-                endn = end - 12
-            else:
-              lineERT += 1
-          else:
-            lineERT += 1
-      if environment == True and lineERT != -1:
-        opening = find_token(document.body, "{", lineERT)
-        if opening == lineERT + 5: # assure that the "{" is in this ERT
-          end = find_token(document.body, "\\end_inset", opening)
-          document.body[lineERT : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          n += 1
-          lineERT2 = find_token(document.body, "\\begin_inset ERT", lineERT)
-          closing = find_token(document.body, "}", lineERT2)
-          if closing == lineERT2 + 5: # assure that the "}" is in this ERT
-            end2 = find_token(document.body, "\\end_inset", closing)
-            document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
-        else:
-          lineERT += 1
 
 
 def revert_IEEEtran(document):
