@@ -179,7 +179,7 @@ string widgetToDoubleStr(QLineEdit const * input)
 
 void doubleToWidget(QLineEdit * input, double const & value, char f, int prec)
 {
-	QLocale loc;
+	QLocale loc("C");
 	loc.setNumberOptions(QLocale::OmitGroupSeparator);
 	input->setText(loc.toString(value, f, prec));
 }
