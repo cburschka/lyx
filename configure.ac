@@ -173,7 +173,7 @@ fi
 
 LYX_CHECK_DEF(PATH_MAX, limits.h, [int n = PATH_MAX;])
 
-AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo open _open pclose _pclose popen _popen readlink setenv strerror unsetenv)
+AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo open _open pclose _pclose popen _popen readlink putenv setenv strerror unsetenv)
 # Check the form of mkdir()
 AC_FUNC_MKDIR
 AC_FUNC_SELECT_ARGTYPES
