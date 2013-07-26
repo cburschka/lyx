@@ -16,12 +16,12 @@ test "$automake_version" != "" && {
 }
 
 case $automake_version in
-    *' '1.[8-9]*|*' '1.1[0123]*)
+    *' '1.[8-9]*|*' '1.1[01234]*)
 	;;
     *)
 
 	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.8 to 1.13."
+	echo "LyX only supports automake 1.8 to 1.14."
 	exit 1
 	;;
 esac
