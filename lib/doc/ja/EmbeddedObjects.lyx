@@ -186,7 +186,7 @@ initials
 \maintain_unincluded_children false
 \language japanese
 \language_package none
-\inputencoding auto
+\inputencoding JIS-pLaTeX
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -249,6 +249,9 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\bullet 1 1 34 -1
+\bullet 2 2 35 -1
+\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -303,7 +306,7 @@ status collapsed
 
 
 \family sans
-バージョン2.0.x
+第2.0.x版
 \end_layout
 
 \begin_layout Standard
@@ -34565,9 +34568,13 @@ key "lettrine"
 \shape default
 )で印字されます。どこでこの単語が終わるかをLaTeXに指示するには、その単語の後ろにTeXコードで閉波括弧「
 \series bold
-}{
+}
 \series default
-」を置いてください。
+」を置いてください。また、様式の終わりには、TeXコードで開波括弧「
+\series bold
+{
+\series default
+」がなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -34632,7 +34639,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}{
+}
 \end_layout
 
 \end_inset
@@ -34644,6 +34651,21 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -34678,7 +34700,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}{
+}
 \end_layout
 
 \end_inset
@@ -34690,6 +34712,17 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -34814,7 +34847,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}{
+}
 \end_layout
 
 \end_inset
@@ -34826,6 +34859,17 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -35250,13 +35294,63 @@ setbeamertemplate{background canvas}{}
 \begin_inset Newline newline
 \end_inset
 
-右記は、-5°回転させたPDFを取り込んだものです。
-\begin_inset External
-	template PDFPages
+下記は、-5°回転させたPDFを取り込んだものです。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
 	filename ../clipart/Abstract.pdf
-	extra LaTeX "noautoscale, pages=-"
 	rotateAngle -5
-	rotateOrigin bottomleft
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+【訳註】LaTeXパッケージ
+\series bold
+pdfpages
+\series default
+は、pdflatexに基づいており、LaTeXでは組版ができない(LaTeXパッケージ
+\series bold
+pdfpages
+\series default
+取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pdfpages"
+
+\end_inset
+
+参照)ため、この外部素材はpLaTeXでは使用することができません。英文版の取扱説明書では、上記のPDFは、
+\family sans
+挿入\SpecialChar \menuseparator
+ファイル\SpecialChar \menuseparator
+外部素材
+\family default
+で
+\family sans
+ひな型
+\family default
+に
+\family sans
+PDFページ
+\family default
+を指定して挿入されていますが、ここでは
+\family sans
+挿入\SpecialChar \menuseparator
+画像
+\family default
+を使用して挿入しています。
+\end_layout
 
 \end_inset
 
@@ -41103,6 +41197,7 @@ W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -41118,6 +41213,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -41134,6 +41230,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -41149,6 +41246,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "arydshln"
@@ -41181,6 +41279,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! arydshln
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -41213,6 +41312,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! booktabs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -41245,6 +41345,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! caption
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "diagbox"
@@ -41277,6 +41378,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! diagbox
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -41309,6 +41411,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! endfloat
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -41341,6 +41444,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! footmisc
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -41373,6 +41477,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -41405,6 +41510,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-script"
@@ -41437,6 +41543,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lettrine"
@@ -41477,6 +41584,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -41509,6 +41617,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! listings
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -41541,6 +41650,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pdfpages"
@@ -41573,6 +41683,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -41605,6 +41716,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -41637,6 +41749,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
@@ -41669,6 +41782,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -41701,6 +41815,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
