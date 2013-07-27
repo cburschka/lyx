@@ -75,6 +75,23 @@ FileName imageLibFileSearch(QString & dir, QString const & name,
 	return fn;
 }
 
+namespace {
+
+double locstringToDouble(QString const str)
+{
+	QLocale loc;
+	bool ok;
+	double res = loc.toDouble(str, &ok);
+	if (!ok) {
+		// Fall back to C
+		QLocale c(QLocale::C);
+		res = c.toDouble(str);
+	}
+	return res;
+}
+
+} // namespace anon
+
 
 namespace frontend {
 
@@ -90,7 +107,7 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 
 	Length::UNIT const unit = combo->currentLengthItem();
 
-	return Length(length.trimmed().toDouble(), unit).asString();
+	return Length(locstringToDouble(length.trimmed()), unit).asString();
 }
 
 
@@ -113,7 +130,7 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 		}
 	}
 
-	return Length(length.trimmed().toDouble(), unit);
+	return Length(locstringToDouble(length.trimmed()), unit);
 }
 
 
@@ -163,23 +180,19 @@ double widgetToDouble(QLineEdit const * input)
 	if (text.isEmpty())
 		return 0.0;
 
-	return text.trimmed().toDouble();
+	return locstringToDouble(text.trimmed());
 }
 
 
 string widgetToDoubleStr(QLineEdit const * input)
 {
-	QString const text = input->text();
-	if (text.isEmpty())
-		return string();
-
-	return convert<string>(text.trimmed().toDouble());
+	return convert<string>(widgetToDouble(input));
 }
 
 
 void doubleToWidget(QLineEdit * input, double const & value, char f, int prec)
 {
-	QLocale loc("C");
+	QLocale loc;
 	loc.setNumberOptions(QLocale::OmitGroupSeparator);
 	input->setText(loc.toString(value, f, prec));
 }
