@@ -777,7 +777,7 @@ string const LaTeXFeatures::getPackages() const
 	// because esint must be loaded AFTER amslatex and mhchem loads amlatex
 	// (this info is from the author of mhchem from June 2013)
 	if (mustProvide("mhchem") &&
-	    params_.use_package("mhchem") != BufferParams::package_off)
+	    params_.use_mhchem != BufferParams::package_off)
 		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
 			    "\\usepackage{mhchem}\n";
 
