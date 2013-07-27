@@ -2,13 +2,13 @@
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009, 2010, 2011, 2012.
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.1\n"
+"Project-Id-Version: LyX 2.0.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-05-07 11:33-0400\n"
-"PO-Revision-Date: 2012-11-14 04:06+0900\n"
+"PO-Revision-Date: 2013-07-25 14:12+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lyx.org>\n"
 "Language: ja\n"
@@ -2752,7 +2752,7 @@ msgstr "ヘッダ情報"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:103
 msgid "&Title:"
-msgstr "タイトル(&T):"
+msgstr "表題(&T):"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:116
 msgid "&Author:"
@@ -2769,7 +2769,7 @@ msgstr "キーワード(&K):"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:166
 msgid ""
 "If not stated explicitly, fill title and author from appropriate environments"
-msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
+msgstr "明示的に指定しなければ、表題と著者を適当な環境から補完します"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:169
 msgid "Automatically fi&ll header"
@@ -2825,7 +2825,7 @@ msgstr "連番のしおり(&N)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 msgid "&Open bookmarks"
-msgstr "開くしおり(&O)"
+msgstr "しおりを開く(&O)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -2963,7 +2963,7 @@ msgstr "段落の既定値(&D)"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr "埋め草の水平・垂直方向の長さ"
+msgstr "埋め草の縦横の長さ"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
@@ -3179,9 +3179,8 @@ msgid "&Mark end of paragraphs"
 msgstr "段落の終わりに印(&M)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
-msgid "Session handling"
-msgstr "フォント処理"
+msgid "Session"
+msgstr "セッション"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3204,22 +3203,19 @@ msgid "&Clear all session information"
 msgstr "セッション情報をすべて削除(&C)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
-msgid "Backup && saving"
-msgstr "バックアップ失敗"
+msgid "Documents"
+msgstr "文書"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
-#, fuzzy
-msgid "Backup &original documents when saving"
-msgstr "保存する際に元の文書をバックアップする"
+msgid "Backup original documents when saving"
+msgstr "保存時に元の文書をバックアップする"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
 msgstr "文書バックアップ(&B): 毎"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
-#, fuzzy
-msgid "&minutes"
+msgid "minutes"
 msgstr "分"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
@@ -3228,16 +3224,14 @@ msgstr "既定で文書を圧縮保存(&S)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
-msgstr ""
+msgstr "ウィンドウと作業領域"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
-#, fuzzy
-msgid "Open documents in &tabs"
+msgid "&Open documents in tabs"
 msgstr "文書をタブ内に開く(&O)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
-#, fuzzy
-msgid "Use s&ingle instance"
+msgid "S&ingle instance"
 msgstr "単独インスタンス(&I)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:182
@@ -3245,9 +3239,8 @@ msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "タブ閉ボタンを各タブに置くか、右上に一つだけ置くかを選択します。"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
-#, fuzzy
-msgid "Displa&y single close-tab button"
-msgstr "単一タブ閉ボタン"
+msgid "&Single close-tab button"
+msgstr "単一のタブ閉ボタン(&S)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
@@ -3417,7 +3410,7 @@ msgstr "一覧(&O)..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:90
 msgid "S&econd:"
-msgstr "第2(&E):"
+msgstr "副(&E):"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:120
 msgid ""
@@ -3692,9 +3685,9 @@ msgid ""
 "TeX engine was not correctly detected at configure time.\n"
 "Warning: Your changes here will not be saved."
 msgstr ""
-"LyXにWindows形式またはCygwin形式のパスをLaTeXファイルに出力\n"
-"させるかどうかを指定してください。初期設定時にTeXエンジンが正しく\n"
-"検出されなかったとき以外は、既定値をいじらないでください。\n"
+"LyXにWindows形式またはCygwin形式のパスをLaTeXファイルに\n"
+"出力させるかどうかを指定してください。初期設定時にTeXエンジンが\n"
+"正しく検出されなかったとき以外は、既定値をいじらないでください。\n"
 "注意：ここで加えた変更は保存されません。"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:332
@@ -4084,7 +4077,7 @@ msgstr "連続スペルチェック(&P)"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr "ここに入力された文字は、スペルチェッカーによって無視されます。"
+msgstr "スペルチェッカーは、ここに入力した文字を無視します。"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "&Escape characters:"
@@ -4099,9 +4092,8 @@ msgid "Al&ternative language:"
 msgstr "代替言語(&T):"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
-#, fuzzy
 msgid "General Look && Feel"
-msgstr "操作性"
+msgstr "操作性一般"
 
 #: src/frontends/qt4/ui/PrefUi.ui:36
 msgid "&User interface file:"
@@ -4112,9 +4104,8 @@ msgid "&Icon Set:"
 msgstr "アイコンセット(&I):"
 
 #: src/frontends/qt4/ui/PrefUi.ui:109
-#, fuzzy
-msgid "Context help"
-msgstr "内容は"
+msgid "Automatic help"
+msgstr "自動ヘルプ"
 
 #: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
@@ -4129,9 +4120,8 @@ msgid "&Enable tool tips in main work area"
 msgstr "メイン作業領域でツールチップを有効にする(&E)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Menus"
-msgstr "GUIメニュー"
+msgstr "メニュー"
 
 #: src/frontends/qt4/ui/PrefUi.ui:149
 msgid "&Maximum last files:"
@@ -5159,7 +5149,7 @@ msgstr "フローティングを許可(&F)"
 #: lib/layouts/AEA.layout:55 lib/layouts/apa.layout:92
 #: lib/layouts/apa6.layout:49
 msgid "ShortTitle"
-msgstr "短縮タイトル"
+msgstr "短縮形見出し"
 
 #: lib/layouts/AEA.layout:56 lib/layouts/AEA.layout:99
 #: lib/layouts/IEEEtran.layout:68 lib/layouts/IEEEtran.layout:117
@@ -5766,7 +5756,7 @@ msgstr "標準"
 #: lib/layouts/scrclass.inc:162 lib/layouts/stdtitle.inc:57
 #: lib/layouts/svcommon.inc:56 lib/layouts/svcommon.inc:318
 msgid "Title"
-msgstr "タイトル"
+msgstr "表題"
 
 #: lib/layouts/IEEEtran.layout:84 lib/layouts/IEEEtran.layout:88
 msgid "IEEE membership"
@@ -6059,7 +6049,7 @@ msgstr "箇条書き(一覧)"
 #: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:169
 #: lib/layouts/svcommon.inc:327
 msgid "Subtitle"
-msgstr "サブタイトル"
+msgstr "副題"
 
 #: lib/layouts/aa.layout:76 lib/layouts/aa.layout:141
 #: lib/layouts/aapaper.layout:85 lib/layouts/dinbrief.layout:250
@@ -6126,7 +6116,7 @@ msgstr "所属機関マーク"
 
 #: lib/layouts/aa.layout:367
 msgid "Key words."
-msgstr "キーワード."
+msgstr "キーワード:"
 
 #: lib/layouts/aa.layout:389 lib/layouts/beamer.layout:859
 #: lib/layouts/cl2emult.layout:70 lib/layouts/llncs.layout:216
@@ -6240,11 +6230,11 @@ msgstr "第二所属:"
 
 #: lib/layouts/aastex.layout:305
 msgid "altaffilmark"
-msgstr "第二所属標識"
+msgstr "第二所属マーク"
 
 #: lib/layouts/aastex.layout:309
 msgid "altaffiliation mark"
-msgstr "第二所属標識:"
+msgstr "第二所属マーク:"
 
 #: lib/layouts/aastex.layout:340
 msgid "Subject headings:"
@@ -6420,7 +6410,7 @@ msgstr "著者"
 
 #: lib/layouts/agutex.layout:90 lib/layouts/agutex.layout:94
 msgid "Affiliation Mark"
-msgstr "所属標識"
+msgstr "所属機関マーク"
 
 #: lib/layouts/agutex.layout:112
 msgid "Author affiliation"
@@ -6500,19 +6490,19 @@ msgstr "要約:"
 
 #: lib/layouts/apa.layout:100 lib/layouts/apa6.layout:58
 msgid "Short title:"
-msgstr "短縮タイトル:"
+msgstr "見出し短縮形:"
 
 #: lib/layouts/apa.layout:129 lib/layouts/apa6.layout:88
 msgid "TwoAuthors"
-msgstr "第２著者"
+msgstr "第二著者"
 
 #: lib/layouts/apa.layout:136 lib/layouts/apa6.layout:96
 msgid "ThreeAuthors"
-msgstr "第３著者"
+msgstr "第三著者"
 
 #: lib/layouts/apa.layout:143 lib/layouts/apa6.layout:104
 msgid "FourAuthors"
-msgstr "第４著者"
+msgstr "第四著者"
 
 #: lib/layouts/apa.layout:162 lib/layouts/apa6.layout:160
 #: lib/layouts/egs.layout:326 lib/layouts/revtex4.layout:160
@@ -6522,15 +6512,15 @@ msgstr "所属:"
 
 #: lib/layouts/apa.layout:171 lib/layouts/apa6.layout:168
 msgid "TwoAffiliations"
-msgstr "第２所属"
+msgstr "第二所属"
 
 #: lib/layouts/apa.layout:178 lib/layouts/apa6.layout:175
 msgid "ThreeAffiliations"
-msgstr "第３所属"
+msgstr "第三所属"
 
 #: lib/layouts/apa.layout:185 lib/layouts/apa6.layout:182
 msgid "FourAffiliations"
-msgstr "第４所属"
+msgstr "第四所属"
 
 #: lib/layouts/apa.layout:211
 msgid "Acknowledgements:"
@@ -6577,34 +6567,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "著者"
+msgstr "第五著者"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "著者"
+msgstr "第六著者"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
 msgstr "左ヘッダ"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
 msgstr "左ヘッダ:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "所属"
+msgstr "第五所属"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "所属"
+msgstr "第六所属"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6640,14 +6624,12 @@ msgid "Keywords:"
 msgstr "キーワード:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "著者"
+msgstr "著者注釈"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
-msgstr "著者脚注:"
+msgstr "著者注釈:"
 
 #: lib/layouts/apa6.layout:305 lib/layouts/egs.layout:335
 msgid "Journal"
@@ -6655,9 +6637,8 @@ msgstr "ジャーナル"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "プリアンブルのみ"
+msgstr "序文"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -6772,7 +6753,7 @@ msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:420
 msgid "FrameSubtitle"
-msgstr "フレーム・サブタイトル"
+msgstr "フレーム小見出し"
 
 #: lib/layouts/beamer.layout:443
 msgid "Column"
@@ -6812,7 +6793,7 @@ msgstr "一時停止"
 #: lib/layouts/beamer.layout:614 lib/layouts/beamer.layout:640
 #: lib/layouts/beamer.layout:666
 msgid "Overlays"
-msgstr "オーバーレイ"
+msgstr "重ね合わせ"
 
 #: lib/layouts/beamer.layout:576
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -6824,27 +6805,27 @@ msgstr "重ね刷り"
 
 #: lib/layouts/beamer.layout:613
 msgid "OverlayArea"
-msgstr "オーバーレイ領域"
+msgstr "重ね合わせ領域"
 
 #: lib/layouts/beamer.layout:624
 msgid "Overlayarea"
-msgstr "オーバーレイ領域"
+msgstr "重ね合わせ領域"
 
 #: lib/layouts/beamer.layout:639
 msgid "Uncover"
-msgstr "アンカバー"
+msgstr "限定開示(uncover)"
 
 #: lib/layouts/beamer.layout:650
 msgid "Uncovered on slides"
-msgstr "以下のスライドのみでアンカバー"
+msgstr "スライド限定開示"
 
 #: lib/layouts/beamer.layout:665
 msgid "Only"
-msgstr "限定表示"
+msgstr "限定挿入(only)"
 
 #: lib/layouts/beamer.layout:676
 msgid "Only on slides"
-msgstr "以下のスライドのみに表示"
+msgstr "スライド限定挿入"
 
 #: lib/layouts/beamer.layout:692
 msgid "Block"
@@ -6879,11 +6860,11 @@ msgstr "強調ブロック:"
 #: lib/layouts/beamer.layout:838 lib/layouts/beamer.layout:860
 #: lib/layouts/beamer.layout:903 lib/layouts/beamer.layout:1006
 msgid "Titling"
-msgstr "タイトル付け"
+msgstr "表題構成"
 
 #: lib/layouts/beamer.layout:804
 msgid "Title (Plain Frame)"
-msgstr "タイトル(白紙フレーム)"
+msgstr "表題(白紙フレーム)"
 
 #: lib/layouts/beamer.layout:880
 msgid "InstituteMark"
@@ -6911,7 +6892,7 @@ msgstr "詩句"
 
 #: lib/layouts/beamer.layout:1005
 msgid "TitleGraphic"
-msgstr "タイトル図"
+msgstr "表題グラフィック"
 
 #: lib/layouts/beamer.layout:1030 lib/layouts/theorems-std.module:2
 msgid "Theorems"
@@ -7540,11 +7521,11 @@ msgstr "Verteiler"
 
 #: lib/layouts/ectaart.layout:21
 msgid "RunTitle"
-msgstr "ヘッダ用タイトル"
+msgstr "ヘッダ用表題"
 
 #: lib/layouts/ectaart.layout:28
 msgid "Running Title:"
-msgstr "ヘッダ用タイトル:"
+msgstr "ヘッダ用表題:"
 
 #: lib/layouts/ectaart.layout:35
 msgid "RunAuthor"
@@ -7644,7 +7625,7 @@ msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:270
 msgid "LaTeX Title"
-msgstr "LaTeXタイトル"
+msgstr "LaTeX表題"
 
 #: lib/layouts/egs.layout:304 lib/layouts/svmult.layout:82
 msgid "Author:"
@@ -7797,19 +7778,19 @@ msgstr "ケース \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:76
 msgid "Titlenotemark"
-msgstr "タイトル注釈マーク"
+msgstr "表題注釈マーク"
 
 #: lib/layouts/elsarticle.layout:80
 msgid "Titlenote mark"
-msgstr "タイトル注釈マーク"
+msgstr "表題注釈マーク"
 
 #: lib/layouts/elsarticle.layout:98
 msgid "Title footnote"
-msgstr "タイトル脚注"
+msgstr "表題脚注"
 
 #: lib/layouts/elsarticle.layout:110
 msgid "Title footnote:"
-msgstr "タイトル脚注:"
+msgstr "表題脚注:"
 
 #: lib/layouts/elsarticle.layout:138
 msgid "Authormark"
@@ -7925,19 +7906,19 @@ msgstr "CVの終了"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
-msgstr "スライドタイトル(Foilhead)"
+msgstr "スライド表題(Foilhead)"
 
 #: lib/layouts/foils.layout:61
 msgid "ShortFoilhead"
-msgstr "スライドタイトル(小)(ShortFoilhead)"
+msgstr "スライド表題(小)(ShortFoilhead)"
 
 #: lib/layouts/foils.layout:67
 msgid "Rotatefoilhead"
-msgstr "横置きスライドタイトル(Rotatefoilhead)"
+msgstr "横置きスライド表題(Rotatefoilhead)"
 
 #: lib/layouts/foils.layout:73
 msgid "ShortRotatefoilhead"
-msgstr "横置きスライドタイトル(小)(ShortRotatefoilhead)"
+msgstr "横置きスライド表題(小)(ShortRotatefoilhead)"
 
 #: lib/layouts/foils.layout:82
 msgid "TickList"
@@ -8740,12 +8721,12 @@ msgstr "抜刷用住所:"
 
 #: lib/layouts/kluwer.layout:216
 msgid "RunningTitle"
-msgstr "ヘッダ用タイトル"
+msgstr "ヘッダ用表題"
 
 #: lib/layouts/kluwer.layout:224 lib/layouts/llncs.layout:163
 #: lib/layouts/svcommon.inc:399
 msgid "Running title:"
-msgstr "ヘッダ用タイトル:"
+msgstr "ヘッダ用表題:"
 
 #: lib/layouts/kluwer.layout:238
 msgid "RunningAuthor"
@@ -8843,15 +8824,15 @@ msgstr "章"
 
 #: lib/layouts/llncs.layout:149
 msgid "Running LaTeX Title"
-msgstr "ヘッダ用LaTeXタイトル"
+msgstr "ヘッダ用LaTeX表題"
 
 #: lib/layouts/llncs.layout:172 lib/layouts/svcommon.inc:371
 msgid "TOC Title"
-msgstr "目次タイトル"
+msgstr "目次表題"
 
 #: lib/layouts/llncs.layout:176 lib/layouts/svcommon.inc:382
 msgid "TOC title:"
-msgstr "目次タイトル:"
+msgstr "目次表題:"
 
 #: lib/layouts/llncs.layout:200
 msgid "Author Running"
@@ -8950,9 +8931,8 @@ msgid "Legend"
 msgstr "凡例"
 
 #: lib/layouts/moderncv.layout:35
-#, fuzzy
 msgid "Sectioning"
-msgstr "節"
+msgstr "節分け"
 
 #: lib/layouts/moderncv.layout:68
 msgid "Entry"
@@ -8960,7 +8940,7 @@ msgstr "見出し"
 
 #: lib/layouts/moderncv.layout:77
 msgid "Entry:"
-msgstr "CV項目:"
+msgstr "項目:"
 
 #: lib/layouts/moderncv.layout:100
 msgid "ListItem"
@@ -9020,7 +9000,7 @@ msgstr "－－ここから新たな環境－－"
 
 #: lib/layouts/paper.layout:147
 msgid "SubTitle"
-msgstr "サブタイトル"
+msgstr "副題"
 
 #: lib/layouts/paper.layout:159
 msgid "Institution"
@@ -9065,7 +9045,7 @@ msgstr "箇条書き(タイプ１)"
 
 #: lib/layouts/powerdot.layout:279
 msgid "EnumerateType1"
-msgstr "箇条書き(連番・タイプ１)"
+msgstr "連番型箇条書き１"
 
 #: lib/layouts/powerdot.layout:401 lib/layouts/stdfloats.inc:46
 msgid "List of Algorithms"
@@ -9147,7 +9127,7 @@ msgstr "特別便:"
 
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:275
 msgid "Title:"
-msgstr "タイトル:"
+msgstr "表題:"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:288
 msgid "Yourref"
@@ -9326,11 +9306,11 @@ msgstr "AMS分野分類:"
 
 #: lib/layouts/sigplanconf.layout:67
 msgid "Conference"
-msgstr "会議"
+msgstr "コンファレンス"
 
 #: lib/layouts/sigplanconf.layout:78
 msgid "Conference:"
-msgstr "会議:"
+msgstr "コンファレンス:"
 
 #: lib/layouts/sigplanconf.layout:86
 msgid "CopyrightYear"
@@ -9366,11 +9346,11 @@ msgstr "新規スライド:"
 
 #: lib/layouts/slides.layout:127
 msgid "Overlay"
-msgstr "オーバーレイ"
+msgstr "重ね合わせ"
 
 #: lib/layouts/slides.layout:142
 msgid "New Overlay:"
-msgstr "新規オーバーレイ:"
+msgstr "新規重ね合わせ:"
 
 #: lib/layouts/slides.layout:182
 msgid "New Note:"
@@ -9438,11 +9418,11 @@ msgstr "証明(smartQED)"
 
 #: lib/layouts/svmult.layout:33
 msgid "Title*"
-msgstr "タイトル*"
+msgstr "表題*"
 
 #: lib/layouts/svmult.layout:36
 msgid "Title*: "
-msgstr "タイトル*: "
+msgstr "表題*: "
 
 #: lib/layouts/svmult.layout:65 lib/layouts/svmult.layout:150
 msgid "Contributors"
@@ -9480,7 +9460,7 @@ msgstr "章著者"
 
 #: lib/layouts/svmult.layout:122 lib/layouts/svcommon.inc:150
 msgid "ChapSubtitle"
-msgstr "章サブタイトル"
+msgstr "章副題"
 
 #: lib/layouts/svmult.layout:126 lib/layouts/svcommon.inc:313
 msgid "extrachap"
@@ -9816,7 +9796,7 @@ msgstr "SSコード"
 
 #: lib/layouts/agu_stdtitle.inc:355 lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
-msgstr "SSタイトル"
+msgstr "SS表題"
 
 #: lib/layouts/agu_stdtitle.inc:367 lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
@@ -10071,7 +10051,7 @@ msgstr "出版社"
 
 #: lib/layouts/scrclass.inc:210
 msgid "Titlehead"
-msgstr "タイトル頭書き"
+msgstr "表題頭書き"
 
 #: lib/layouts/scrclass.inc:220
 msgid "Uppertitleback"
@@ -10083,7 +10063,7 @@ msgstr "扉裏下部"
 
 #: lib/layouts/scrclass.inc:232
 msgid "Extratitle"
-msgstr "追加タイトル"
+msgstr "追加表題"
 
 #: lib/layouts/scrclass.inc:254
 msgid "Captionabove"
@@ -10253,7 +10233,7 @@ msgstr "目次著者:"
 
 #: lib/layouts/svcommon.inc:395
 msgid "Running Title"
-msgstr "ヘッダ用タイトル"
+msgstr "ヘッダ用表題"
 
 #: lib/layouts/svcommon.inc:402
 msgid "Running Author"
@@ -10675,7 +10655,7 @@ msgstr ""
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:25 lib/layouts/initials.module:31
 msgid "Initial"
-msgstr "頭文字 "
+msgstr "頭文字"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:598
 msgid "Rnw (knitr)"
@@ -10871,6 +10851,9 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
+"このモジュールはapaciteと共にnatbibを使用できるようにします(書誌情報様式は"
+"apaciteである必要はありません。natbibとapaciteの両パッケージで動作する様式で"
+"あれば、apaciteやapacitexあるいは他の様式でも構いません)。"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -11235,8 +11218,8 @@ msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
 msgstr ""
-"定理名付き定理を使用できるようにします。定理名は、「短縮タイトル」差込枠に入"
-"れます。"
+"定理名付き定理を使用できるようにします。定理名は「見出し短縮形」差込枠に入れ"
+"ます。"
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -12292,7 +12275,7 @@ msgstr "節を上げる(U)|U"
 
 #: lib/ui/stdcontext.inc:307
 msgid "Insert Short Title|T"
-msgstr "短縮タイトルを挿入(T)|T"
+msgstr "見出し短縮形を挿入(T)|T"
 
 #: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:356
 msgid "Insert Regular Expression"
@@ -13181,7 +13164,7 @@ msgstr "傍注(M)|M"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Short Title|S"
-msgstr "短縮タイトル(S)|S"
+msgstr "見出し短縮形(S)|S"
 
 #: lib/ui/stdmenus.inc:372
 msgid "TeX Code|X"
@@ -13245,7 +13228,7 @@ msgstr "保護された空白(P)|P"
 
 #: lib/ui/stdmenus.inc:397
 msgid "Horizontal Space...|o"
-msgstr "水平方向の空白(O)...|O"
+msgstr "横空白(O)...|O"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Horizontal Line...|L"
@@ -13253,7 +13236,7 @@ msgstr "水平線(L)|L"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Vertical Space...|V"
-msgstr "垂直方向の空白(V)...|V"
+msgstr "縦空白(V)...|V"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Phantom|m"
@@ -13449,7 +13432,7 @@ msgstr "比較(C)...|C"
 
 #: lib/ui/stdmenus.inc:561
 msgid "Reconfigure|R"
-msgstr "再初期設定(R)|R"
+msgstr "環境構成(R)|R"
 
 #: lib/ui/stdmenus.inc:562
 msgid "Preferences...|P"
@@ -13508,14 +13491,12 @@ msgid "Feynman-diagram Manual|F"
 msgstr "ファインマン図説明書(F)|F"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Knitr Manual|K"
-msgstr "言語学向け説明書(L)|L"
+msgstr "Knitr説明書|K"
 
 #: lib/ui/stdmenus.inc:588
-#, fuzzy
 msgid "LilyPond Manual|P"
-msgstr "LilyPond説明書(M)|M"
+msgstr "LilyPond説明書|P"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Linguistics Manual|L"
@@ -14261,11 +14242,11 @@ msgstr "埋め草\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:337
 msgid "Horizontal phantom\t\\hphantom"
-msgstr "水平方向の埋め草\t\\hphantom"
+msgstr "水平埋め草\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Vertical phantom\t\\vphantom"
-msgstr "垂直方向の埋め草\t\\vphantom"
+msgstr "垂直埋め草\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:341
 msgid "Roots"
@@ -15509,7 +15490,7 @@ msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "Diamond"
-msgstr "Diamond"
+msgstr "菱形"
 
 #: lib/ui/stdtoolbars.inc:689
 msgid "blacktriangle"
@@ -16404,8 +16385,8 @@ msgstr ""
 "* pages=- (全ページを含めるとき)\n"
 "* pages=last- (全ページを逆順で含めるとき)\n"
 "「noautoscale」オプションを用いると、PDFページが\n"
-"元々の大きさで挿入されます。他のオプションや詳細については、pdfpagesパッケー"
-"ジの\n"
+"元々の大きさで挿入されます。\n"
+"他のオプションや詳細については、pdfpagesパッケージの\n"
 "取扱説明書をお読みください。\n"
 
 #: lib/external_templates:346
@@ -17525,7 +17506,7 @@ msgstr "これ以上やり直すことはできません"
 
 #: src/BufferView.cpp:1537 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
-msgstr "文字列が見つかりません！"
+msgstr "文字列が見つかりません。"
 
 #: src/BufferView.cpp:1580
 msgid "Mark off"
@@ -18460,12 +18441,12 @@ msgid ""
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "テキストクラスが見当たらないため、LyXは最小限の機能しか提供できません。 その"
-"まま再初期設定を行うか、 LaTeX装備を確認せずに再初期設定を行うか、 あるいは継"
-"続するかしてください。"
+"まま環境構成を行うか、 LaTeX装備を確認せずに環境構成を行うか、 あるいは継続す"
+"るかしてください。"
 
 #: src/LyX.cpp:533
 msgid "&Reconfigure"
-msgstr "再初期設定(&R)"
+msgstr "環境構成(&R)"
 
 #: src/LyX.cpp:534
 msgid "&Without LaTeX"
@@ -19495,7 +19476,7 @@ msgstr ""
 "この文書はモジュール「%1$s」を要求していますが、\n"
 "利用可能モジュール一覧の中にありません。\n"
 "もしモジュールを最近インストールしたのであれば、\n"
-"おそらくLyXに再初期設定をさせる必要があります。\n"
+"おそらくLyXに環境構成をさせる必要があります。\n"
 
 #: src/TextClass.cpp:1330
 msgid "Module not available"
@@ -20008,7 +19989,7 @@ msgstr "設定"
 
 #: src/frontends/qt4/GuiApplication.cpp:490
 msgid "Reconfigure"
-msgstr "再初期設定"
+msgstr "環境構成"
 
 #: src/frontends/qt4/GuiApplication.cpp:490
 msgid "Quit %1"
@@ -20048,13 +20029,14 @@ msgid ""
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
-"再初期設定に失敗しました。\n"
-"既定のテキストクラスを使用しますが、LyXはうまく動かないかもしれません。\n"
-"必要ならば、再度、再初期設定を行ってください。"
+"環境構成に失敗しました。\n"
+"既定のテキストクラスを使用しますが、\n"
+"LyXはうまく動かないかもしれません。\n"
+"必要ならば、再度、環境構成を行ってください。"
 
 #: src/frontends/qt4/GuiApplication.cpp:1237
 msgid "System reconfigured"
-msgstr "システムの再初期設定を行いました"
+msgstr "システムの環境構成を行いました"
 
 #: src/frontends/qt4/GuiApplication.cpp:1238
 msgid ""
@@ -20062,7 +20044,7 @@ msgid ""
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
-"システムの再初期設定を行いました。\n"
+"システムの環境構成を行いました。\n"
 "更新された文書クラス設定を使うためには\n"
 "LyXを再起動する必要があります。"
 
@@ -21618,9 +21600,8 @@ msgid "Oxygen"
 msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2550
-#, fuzzy
 msgid "Document Handling"
-msgstr "文書及びウィンドウ"
+msgstr "文書処理"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Control"
@@ -22643,7 +22624,7 @@ msgstr "レイアウト一覧をフィルターにかける文字を入力して
 
 #: src/frontends/qt4/LayoutBox.cpp:565
 msgid " (unknown)"
-msgstr "(解釈不能)"
+msgstr "(未知)"
 
 #: src/frontends/qt4/Menus.cpp:664
 msgid "More...|M"
@@ -22900,11 +22881,11 @@ msgstr "ボックス"
 
 #: src/insets/Inset.cpp:111
 msgid "Horizontal Space"
-msgstr "水平方向の空白"
+msgstr "横空白"
 
 #: src/insets/Inset.cpp:112 src/insets/InsetVSpace.cpp:112
 msgid "Vertical Space"
-msgstr "垂直方向の空白"
+msgstr "縦空白"
 
 #: src/insets/Inset.cpp:115
 msgid "Info"
@@ -22912,7 +22893,7 @@ msgstr "情報"
 
 #: src/insets/Inset.cpp:158
 msgid "Horizontal Math Space"
-msgstr "水平方向の数式空白"
+msgstr "数式の横空白"
 
 #: src/insets/InsetBibitem.cpp:92
 msgid "Keys must be unique!"
@@ -23972,7 +23953,7 @@ msgstr "番号なし"
 
 #: src/mathed/InsetMathHull.cpp:1385 src/mathed/InsetMathHull.cpp:1394
 msgid "Number"
-msgstr "番号あり"
+msgstr "番号"
 
 #: src/mathed/InsetMathHull.cpp:1658
 #, c-format
@@ -24322,15 +24303,6 @@ msgstr "未知の"
 #~ "使用するアイコンセット。注意：アイコンの標準寸法は、設定を保存\n"
 #~ " してLyXを再起動するまで、正しく反映されないかもしれません。"
 
-#~ msgid "Automatic help"
-#~ msgstr "自動ヘルプ"
-
-#~ msgid "Session"
-#~ msgstr "セッション"
-
-#~ msgid "Documents"
-#~ msgstr "文書"
-
 #~ msgid ""
 #~ "Whether to open documents in an already running instance of LyX.\n"
 #~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -24338,105 +24310,82 @@ msgstr "未知の"
 #~ "文書を起動済みLyXインスタンスの中に開くか否か。\n"
 #~ "(LyXServerパイプを指定し、LyXを再起動して機能を有効にしてください)"
 
-#, fuzzy
 #~ msgid "Abbreviations"
-#~ msgstr "AMS関係子"
+#~ msgstr "短縮形"
 
-#, fuzzy
 #~ msgid "Abbreviations:"
-#~ msgstr "バリエーション:"
+#~ msgstr "短縮形:"
 
-#, fuzzy
 #~ msgid "SupplementalInfo"
-#~ msgstr "補足"
+#~ msgstr "補足情報"
 
-#, fuzzy
 #~ msgid "Supporting Information Available"
-#~ msgstr "フォントが利用不能です"
+#~ msgstr "サポート情報があります"
 
-#, fuzzy
 #~ msgid "TOC entry"
-#~ msgstr "目次著者"
+#~ msgstr "目次項目"
 
-#, fuzzy
 #~ msgid "CVStyle"
-#~ msgstr "様式"
+#~ msgstr "CV様式"
 
 #, fuzzy
 #~ msgid "CV style:"
-#~ msgstr "引用様式(&Y):"
+#~ msgstr "CV様式:"
 
-#, fuzzy
 #~ msgid "CVColor"
-#~ msgstr "色彩"
+#~ msgstr "CV色"
 
-#, fuzzy
 #~ msgid "FamilyName"
-#~ msgstr "フォント族(&F):"
+#~ msgstr "姓"
 
-#, fuzzy
 #~ msgid "Family Name:"
-#~ msgstr "フォント族(&F):"
+#~ msgstr "姓:"
 
-#, fuzzy
 #~ msgid "Mobile:"
-#~ msgstr "ファイル(&F):"
+#~ msgstr "携帯電話:"
 
-#, fuzzy
 #~ msgid "Homepage:"
-#~ msgstr "ホームページ"
+#~ msgstr "ホームページ:"
 
-#, fuzzy
 #~ msgid "ExtraInfo"
-#~ msgstr "追加"
+#~ msgstr "追加情報"
 
-#, fuzzy
 #~ msgid "Extra Info:"
-#~ msgstr "追加フラグ(&X):"
+#~ msgstr "追加情報:"
 
-#, fuzzy
 #~ msgid "ItemWithComment"
-#~ msgstr "コメント"
+#~ msgstr "コメント付き項目"
 
-#, fuzzy
 #~ msgid "DoubleListItem"
-#~ msgstr "2段書き項目"
+#~ msgstr "二段書き項目"
 
-#, fuzzy
 #~ msgid "Double List Item:"
-#~ msgstr "2段書き項目:"
+#~ msgstr "二段書き項目:"
 
-#, fuzzy
 #~ msgid "MakeCVtitle"
-#~ msgstr "詩題"
+#~ msgstr "CVタイトル作成"
 
 #, fuzzy
 #~ msgid "Make CV title"
-#~ msgstr "目次タイトル:"
+#~ msgstr "CVタイトルを作成"
 
-#, fuzzy
 #~ msgid "MakeLetterTitle"
-#~ msgstr "数式文字"
+#~ msgstr "書簡タイトル作成"
 
-#, fuzzy
 #~ msgid "MakeLetterClosing"
-#~ msgstr "数式文字"
+#~ msgstr "書簡結語作成"
 
-#, fuzzy
 #~ msgid "Close Letter"
-#~ msgstr "書簡"
+#~ msgstr "書簡を結語で結ぶ"
 
-#, fuzzy
 #~ msgid "Recipient"
-#~ msgstr "レシピ"
+#~ msgstr "受取人"
 
-#, fuzzy
 #~ msgid "Enclosing"
-#~ msgstr "結語"
+#~ msgstr "同封"
 
-#, fuzzy
 #~ msgid "Enclosing:"
-#~ msgstr "結語:"
+#~ msgstr "同封:"
 
 #, fuzzy
 #~ msgid "Japanese (non-CJK) (utf8)"
@@ -24487,8 +24436,9 @@ msgstr "未知の"
 #~ msgid "Default length &unit:"
 #~ msgstr "長さ単位の既定値(&U):"
 
+#, fuzzy
 #~ msgid "Closing last view:"
-#~ msgstr "最後の表示窓を閉じる:"
+#~ msgstr "最後の表示窓を閉じる際(&V):"
 
 #~ msgid "Closes document"
 #~ msgstr "文書を閉じる"
@@ -24810,10 +24760,10 @@ msgstr "未知の"
 #~ msgstr "REVTeX (V. 4.1)"
 
 #~ msgid "Affiliation (alternate)"
-#~ msgstr "所属(追加)"
+#~ msgstr "所属(第二)"
 
 #~ msgid "Affiliation (alternate):"
-#~ msgstr "所属(追加)"
+#~ msgstr "所属(第二)"
 
 #~ msgid "Affiliation (none)"
 #~ msgstr "所属(なし)"
@@ -24962,8 +24912,9 @@ msgstr "未知の"
 #~ msgid "Citation engine"
 #~ msgstr "引用エンジン"
 
+#, fuzzy
 #~ msgid "Multilingual captions"
-#~ msgstr "多言語キャプション"
+#~ msgstr "多言語キャプション:"
 
 #~ msgid ""
 #~ "Provides two styles to typeset multilingual captions. For a description "
@@ -24994,11 +24945,12 @@ msgstr "未知の"
 #~ msgstr "文献項目"
 
 #~ msgid "short title"
-#~ msgstr "短縮タイトル"
+#~ msgstr "見出し短縮形"
 
 #~ msgid "Multiple Columns"
 #~ msgstr "多段組"
 
+#, fuzzy
 #~ msgid ""
 #~ "Adds 2 styles to begin and end text in multiple columns. The begin style "
 #~ "contains the number of columns, the end style must be kept empty. See the "
@@ -25006,7 +24958,7 @@ msgstr "未知の"
 #~ msgstr ""
 #~ "多段組の文を開始し終了するためのスタイルを2つ追加します。開始スタイルには"
 #~ "段数を入力し、終了スタイルは空のままにおいておきます。多段組についての詳細"
-#~ "は、取扱説明書高度な機能篇をご覧ください。"
+#~ "は、取扱説明書高度な機能篇の「多段組」の節をご覧ください。"
 
 #~ msgid "Begin Multiple Columns"
 #~ msgstr "多段組始まり"
@@ -25092,8 +25044,9 @@ msgstr "未知の"
 #~ msgid "Utopia (Mathdesign)"
 #~ msgstr "Utopia (Mathdesign)"
 
+#, fuzzy
 #~ msgid "Adobe Garamond (Mathdesign)"
-#~ msgstr "Adobe Garamond (Mathdesign)"
+#~ msgstr "URW Garamond (Mathdesign)"
 
 #~ msgid "Minion Pro"
 #~ msgstr "Minion Pro"
@@ -25168,10 +25121,10 @@ msgstr "未知の"
 #~ msgstr "書式なし平文(行を連結して)(O)|O"
 
 #~ msgid "Outline Pane|u"
-#~ msgstr "文書構造画面(U)|U"
+#~ msgstr "文書構造面(U)|U"
 
 #~ msgid "Source Pane|S"
-#~ msgstr "ソース画面(S)|S"
+#~ msgstr "ソース面(S)|S"
 
 #~ msgid "Visible Space|i"
 #~ msgstr "可視空白(I)|I"
@@ -25923,6 +25876,7 @@ msgstr "未知の"
 #~ msgid "%1$s [Class '%2$s']"
 #~ msgstr "%1$s [クラス「%2$s」]"
 
+#, fuzzy
 #~ msgid ""
 #~ "Class not found by LyX. Please check if you have the matching %1$s class "
 #~ "and all requires packages (%2$s) installed."
