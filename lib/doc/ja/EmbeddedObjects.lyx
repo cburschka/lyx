@@ -22775,7 +22775,7 @@ status collapsed
 \family default
 メニューかツールバーボタンを使用して、フロートのキャプションにラベルを挿入してください。
 \begin_inset Graphics
-	filename clipart/labelQt4.png
+	filename ../clipart/labelQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -26830,7 +26830,7 @@ LyX注釈 この注釈型は、内部用途の注釈で出力には現れませ�
 
 
 \begin_inset Graphics
-	filename clipart/LyXNoteImageQt4.png
+	filename ../clipart/LyXNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26867,7 +26867,7 @@ LaTeX (pdflatex) / (平文)
 
 
 \begin_inset Graphics
-	filename clipart/CommentNoteImageQt4.png
+	filename ../clipart/CommentNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26898,7 +26898,7 @@ status open
 
 
 \begin_inset Graphics
-	filename clipart/GreyedOutNoteImageQt4.png
+	filename ../clipart/GreyedOutNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -29163,7 +29163,7 @@ arg   "box-insert Frameless"
 \family default
 を使って挿入することができます。すると、
 \begin_inset Graphics
-	filename clipart/BoxInsetDefaultQt4.png
+	filename ../clipart/BoxInsetDefaultQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -35377,7 +35377,7 @@ reference "sec:画像ダイアログ"
 EPS画像はサポートされていません。右記は、ラスター画像を挿入した例です。
 \begin_inset External
 	template RasterImage
-	filename clipart/ToolbarEnvBox.png
+	filename ../clipart/ToolbarEnvBox.png
 
 \end_inset
 
@@ -41197,7 +41197,6 @@ W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -41213,7 +41212,6 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -41230,7 +41228,6 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -41246,7 +41243,6 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "arydshln"
@@ -41279,7 +41275,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! arydshln
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -41312,7 +41307,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! booktabs
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -41345,7 +41339,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! caption
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "diagbox"
@@ -41378,7 +41371,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! diagbox
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -41411,7 +41403,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! endfloat
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -41444,7 +41435,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! footmisc
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -41477,7 +41467,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -41510,7 +41499,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-script"
@@ -41543,7 +41531,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lettrine"
@@ -41584,7 +41571,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -41617,7 +41603,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! listings
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -41650,7 +41635,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pdfpages"
@@ -41683,7 +41667,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -41716,7 +41699,6 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -41749,7 +41731,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
@@ -41782,7 +41763,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -41815,7 +41795,6 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_layout
 
 \begin_layout Bibliography
-\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
