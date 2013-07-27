@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass jbook
@@ -185,8 +185,8 @@ initials
 \end_modules
 \maintain_unincluded_children false
 \language japanese
-\language_package default
-\inputencoding auto
+\language_package none
+\inputencoding jis-platex
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -199,7 +199,7 @@ initials
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format pdf3
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -224,6 +224,7 @@ initials
 \use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -232,7 +233,7 @@ initials
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -257,6 +258,9 @@ initials
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
+\bullet 1 1 34 -1
+\bullet 2 2 35 -1
+\bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -311,7 +315,7 @@ status collapsed
 
 
 \family sans
-バージョン2.0.x
+第2.0.x版
 \end_layout
 
 \begin_layout Standard
@@ -450,11 +454,15 @@ name "sec:画像ダイアログ"
 
 \begin_layout Standard
 画像を文書に挿入するには、文中の挿入箇所にカーソルを置いて、ツールバーアイコン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
+
+\family default
 をクリックするか、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -602,18 +610,10 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 \end_inset
 
 
-\lang english
-In the section 
 \family sans
-Graphics
-\begin_inset space ~
-\end_inset
-
-Group
+画像グループ
 \family default
- you can define or join an image settings group.
-\lang japanese
-
+のセクションでは、画像設定グループを定義したり、既存のものに所属させたりすることができます。
 \begin_inset Index idx
 status collapsed
 
@@ -623,9 +623,9 @@ status collapsed
 
 \end_inset
 
-。これらのグループ内の画像は、共通した設定を持つので、グループ内の一つの画像の設定をいじると、自動的にグループ内の全ての画像の設定が同じように変更されます。した
-がって、たとえば、たくさんの画像の寸法を変更したいときにも、一つ一つの寸法を手動で変更せずに済むのです。既存のグループに帰属させるには、画像のコンテクストメニュ
-ーを使用して、望むグループ名をチェックすることで行うこともできます。
+これらのグループ内の画像は、共通した設定を持つので、グループ内の一つの画像の設定をいじると、自動的にグループ内の全ての画像の設定が同じように変更されます。したが
+って、たとえば、たくさんの画像の寸法を変更したいときにも、一つ一つの寸法を手動で変更せずに済むのです。既存のグループに帰属させるには、画像のコンテクストメニュー
+を使用して、望むグループ名をチェックすることで行うこともできます。
 \end_layout
 
 \begin_layout Standard
@@ -644,7 +644,7 @@ status collapsed
 画像書式は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:画像書式"
+reference "sec:画像形式"
 
 \end_inset
 
@@ -1076,10 +1076,10 @@ name "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Section
-画像書式
+画像形式
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:画像書式"
+name "sec:画像形式"
 
 \end_inset
 
@@ -1088,7 +1088,7 @@ name "sec:画像書式"
 status collapsed
 
 \begin_layout Plain Layout
-がぞうしょしき@画像書式
+がぞうけいしき@画像形式
 \end_layout
 
 \end_inset
@@ -1098,7 +1098,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ず@図 ! がぞうしょしき@画像書式
+ず@図 ! がぞうけいしき@画像形式
 \end_layout
 
 \end_inset
@@ -1119,8 +1119,8 @@ reference "cha:ファイル出力形式"
 \family typewriter
 ImageMagick
 \family default
-というプログラムを使用しています。バックグラウンドで変換が発生することを避けて作業能率を上げようとお考えならば、出力ファイル書式に直接埋め込める画像書式のみを使
-用するとよいでしょう。出力ファイル書式は、付録
+というプログラムを使用しています。バックグラウンドで変換が発生することを避けて作業能率を上げようとお考えならば、出力ファイル形式に直接埋め込める画像形式のみを使
+用するとよいでしょう。出力ファイル形式は、付録
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:ファイル出力形式"
@@ -1495,10 +1495,10 @@ arg   "tabular-insert"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1804,7 +1804,7 @@ DVIビューアのすべてが回転を表示できるわけではありませ�
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1853,8 +1853,8 @@ A
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1904,7 +1904,7 @@ A
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="bottom">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4998,7 +4998,7 @@ reference "sub:長尺表のキャプション"
 
 \end_inset
 
-節の最初の淡色表示注釈をご覧下さい。
+節の最初の淡色注釈をご覧下さい。
 \end_layout
 
 \end_inset
@@ -5145,11 +5145,11 @@ columnwidth}
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5431,7 +5431,7 @@ reference "sub:長尺表のキャプション"
 
 \end_inset
 
-節の最初の淡色表示注釈をご覧下さい。
+節の最初の淡色注釈をご覧下さい。
 \end_layout
 
 \end_inset
@@ -5472,7 +5472,8 @@ reference "sec:長尺表"
 \family sans
 キャプション
 \family default
-を使用すれば、フロートのキャプション環境を長尺表でも使用することができます。キャプションを入れることができる行はひとつだけです。
+を使用すれば、フロートのキャプション環境を長尺表でも使用することができます。キャプションは、冒頭ヘッダ・ヘッダ・フッタ・末尾フッタのいずれかに入れなくてはなりま
+せん。それぞれのヘッダ・フッタに入れることができる行は、ひとつだけです。
 \end_layout
 
 \begin_layout Standard
@@ -5483,11 +5484,11 @@ reference "sec:長尺表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -5914,11 +5915,11 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -6320,11 +6321,11 @@ reference "cha:LyXで使用できる単位"
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -6651,11 +6652,11 @@ LTcapwidth}{5cm}
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -10534,8 +10535,8 @@ name "tab:複数行表"
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10736,8 +10737,8 @@ name "tab:ハイフネーション表"
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10838,8 +10839,8 @@ verylongtablecellword
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11013,7 +11014,7 @@ arg   "inset-modify tabular multicolumn"
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11203,8 +11204,8 @@ status collapsed
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="1.25cm" special=">{\centering}m{1.25cm-6.2pt}">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none" width="2.5cm" special=">{\centering}m{2.5cm}">
 \begin_inset Text
@@ -11386,8 +11387,8 @@ status collapsed
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="1.25cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none" width="2.5cm">
 \begin_inset Text
@@ -11739,8 +11740,8 @@ arg   "inset-modify tabular multirow"
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11916,8 +11917,8 @@ raggedleft}
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12059,44 +12060,37 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To start a new line in a multirow you can use a forced line break (shortcut
- 
+連結行で新しい行に移るには、強制改行(短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-) but this will not respect the cell lines as demonstrated in this table:
+)を使用できますが、この場合、下記の例に示されているようにセル行との整合を顧慮しません。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="middle" width="2cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-aaa
+いいい
 \begin_inset Newline newline
 \end_inset
 
-aaa
+いいい
 \begin_inset Newline newline
 \end_inset
 
-wrong cell
+おかしなセル
 \end_layout
 
 \end_inset
@@ -12105,9 +12099,7 @@ wrong cell
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-ccc
+ははは
 \end_layout
 
 \end_inset
@@ -12127,9 +12119,7 @@ ccc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-ddd
+ににに
 \end_layout
 
 \end_inset
@@ -12140,9 +12130,7 @@ ddd
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-bbb
+ろろろ
 \end_layout
 
 \end_inset
@@ -12151,9 +12139,7 @@ bbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-eee
+ほほほ
 \end_layout
 
 \end_inset
@@ -12167,28 +12153,18 @@ eee
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Therefore be careful with forced line breaks.
+したがって、強制改行を使うのは注意が必要です。
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Cells with diagonal line(s)
+対角線付きのセル
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To tell the reader what is meant by column and row headings in a table,
- it is helpful to split the first cell of the table by one or two diagonal
- lines.
- This can be achieved by loading the LaTeX-package 
+読者に表中の行見出しや列見出しが何を意味しているかを伝えるには、表の第１セルに対角線を一本ないし二本引いて分割すると便利です。これは、LaTeXパッケージの
 \series bold
 diagbox
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -12199,50 +12175,33 @@ LaTeXぱっけーじ@LaTeXパッケージ ! diagbox
 
 \end_inset
 
-
-\lang english
- in the document preamble.
- The package provides the command 
+を文書プリアンブルに読み込むことによって実現できます。このパッケージには、
 \series bold
 
 \backslash
 diagbox
 \series default
- that is inserted as TeX-Code and that can take 2 or 3
-\begin_inset space ~
-\end_inset
-
-arguments:
+というコマンドがありますので、以下のように、これに２ないし３の引数をつけて、TeXコードで挿入します。
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-diagbox[options]{lower left}{upper right}
+diagbox[オプション]{左下}{右上}
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-diagbox[options]{lower left}{upper left}{upper right}
+diagbox[オプション]{左下}{左上}{右上}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The first scheme divides the cell by a single diagonal line and the arguments
- are placed below and above this line.
- The second scheme divides the cell by 2
-\begin_inset space ~
-\end_inset
-
-lines.
+最初の書式は、第１セルを一本の対角線で分割し、引数の内容がその上下に入れられます。二つ目の書式は、第１セルを二本の線で分割します。
 \end_layout
 
 \begin_layout Standard
@@ -12276,15 +12235,13 @@ diagbox
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example table where 
+下記は、
 \series bold
 
 \backslash
-diagbox 
+diagbox
 \series default
-is used in the 2-argument scheme in the first cell:
+を第１セル中に２引数書式で使用した表の例です。
 \begin_inset VSpace medskip
 \end_inset
 
@@ -12293,22 +12250,18 @@ is used in the 2-argument scheme in the first cell:
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -12321,7 +12274,7 @@ diagbox{
 
 \end_inset
 
-Name
+名称
 \begin_inset ERT
 status collapsed
 
@@ -12332,7 +12285,7 @@ status collapsed
 
 \end_inset
 
-Parameter
+パラメータ
 \begin_inset ERT
 status collapsed
 
@@ -12352,9 +12305,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み(nm)
 \end_layout
 
 \end_inset
@@ -12363,9 +12314,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Transparency in %
+透明度(%)
 \end_layout
 
 \end_inset
@@ -12374,9 +12323,7 @@ Transparency in %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Hardness in MPa
+硬度(MPa)
 \end_layout
 
 \end_inset
@@ -12387,8 +12334,6 @@ Hardness in MPa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -12398,8 +12343,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -12409,8 +12352,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 80
 \end_layout
 
@@ -12420,8 +12361,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 504
 \end_layout
 
@@ -12433,8 +12372,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Dark Multi-P
 \end_layout
 
@@ -12444,8 +12381,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 60
 \end_layout
 
@@ -12455,8 +12390,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 72
 \end_layout
 
@@ -12466,8 +12399,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 982
 \end_layout
 
@@ -12479,8 +12410,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Crystal Clear Pro
 \end_layout
 
@@ -12490,8 +12419,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 18
 \end_layout
 
@@ -12501,8 +12428,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 86
 \end_layout
 
@@ -12512,8 +12437,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 374
 \end_layout
 
@@ -12532,31 +12455,24 @@ Crystal Clear Pro
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 3-argument scheme is for example useful for cross-tables of sports leagues
- or distances:
+3引数書式は、例えばスポーツリーグや距離を示すクロス表に便利です。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -12569,7 +12485,7 @@ diagbox{
 
 \end_inset
 
-Team home
+ホームチーム
 \begin_inset ERT
 status collapsed
 
@@ -12580,7 +12496,7 @@ status collapsed
 
 \end_inset
 
-Result
+結果
 \begin_inset ERT
 status collapsed
 
@@ -12591,7 +12507,7 @@ status collapsed
 
 \end_inset
 
-Team away
+アウェイチーム
 \begin_inset ERT
 status collapsed
 
@@ -12611,8 +12527,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -12622,8 +12536,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -12633,8 +12545,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -12646,8 +12556,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -12657,8 +12565,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -12668,8 +12574,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:3
 \end_layout
 
@@ -12679,8 +12583,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:1
 \end_layout
 
@@ -12692,8 +12594,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -12703,8 +12603,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3:1
 \end_layout
 
@@ -12714,8 +12612,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -12725,8 +12621,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -12738,8 +12632,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -12749,8 +12641,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:0
 \end_layout
 
@@ -12760,8 +12650,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -12771,8 +12659,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -12787,32 +12673,25 @@ Falcons
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For larger cross-tables one might use split cells in 2 or every corner of
- the table like in this example:
+大きなクロス表では、下記のように、2つないし全部のコーナーセルに対角線を入れると良いかもしれません。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -12825,7 +12704,7 @@ diagbox{
 
 \end_inset
 
-Team home
+ホームチーム
 \begin_inset ERT
 status collapsed
 
@@ -12836,7 +12715,7 @@ status collapsed
 
 \end_inset
 
-Result
+結果
 \begin_inset ERT
 status collapsed
 
@@ -12847,7 +12726,7 @@ status collapsed
 
 \end_inset
 
-Team away
+アウェイチーム
 \begin_inset ERT
 status collapsed
 
@@ -12867,8 +12746,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -12878,8 +12755,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -12889,8 +12764,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -12900,8 +12773,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -12914,7 +12785,7 @@ diagbox[dir=NE]{
 
 \end_inset
 
-Team home
+ホームチーム
 \begin_inset ERT
 status collapsed
 
@@ -12925,7 +12796,7 @@ status collapsed
 
 \end_inset
 
-Result
+結果
 \begin_inset ERT
 status collapsed
 
@@ -12936,7 +12807,7 @@ status collapsed
 
 \end_inset
 
-Team away
+アウェイチーム
 \begin_inset ERT
 status collapsed
 
@@ -12958,8 +12829,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -12969,8 +12838,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -12980,8 +12847,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:3
 \end_layout
 
@@ -12991,8 +12856,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:1
 \end_layout
 
@@ -13002,8 +12865,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -13015,8 +12876,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -13026,8 +12885,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3:1
 \end_layout
 
@@ -13037,8 +12894,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13048,8 +12903,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -13059,8 +12912,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -13072,8 +12923,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -13083,8 +12932,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:0
 \end_layout
 
@@ -13094,8 +12941,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -13105,8 +12950,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13116,8 +12959,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -13129,8 +12970,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13143,7 +12982,7 @@ diagbox[dir=SW]{
 
 \end_inset
 
-Team home
+ホームチーム
 \begin_inset ERT
 status collapsed
 
@@ -13154,7 +12993,7 @@ status collapsed
 
 \end_inset
 
-Result
+結果
 \begin_inset ERT
 status collapsed
 
@@ -13165,7 +13004,7 @@ status collapsed
 
 \end_inset
 
-Team away
+アウェイチーム
 \begin_inset ERT
 status collapsed
 
@@ -13185,8 +13024,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Tigers
 \end_layout
 
@@ -13196,8 +13033,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Panthers
 \end_layout
 
@@ -13207,8 +13042,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Falcons
 \end_layout
 
@@ -13218,8 +13051,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13232,7 +13063,7 @@ diagbox[dir=SE]{
 
 \end_inset
 
-Team home
+ホームチーム
 \begin_inset ERT
 status collapsed
 
@@ -13243,7 +13074,7 @@ status collapsed
 
 \end_inset
 
-Result
+結果
 \begin_inset ERT
 status collapsed
 
@@ -13254,7 +13085,7 @@ status collapsed
 
 \end_inset
 
-Team away
+アウェイチーム
 \begin_inset ERT
 status collapsed
 
@@ -13279,83 +13110,67 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To rotate the diagonal lines, the command option 
+対角線を廻すために、コマンドオプションとして
 \series bold
-dir=direction
+dir=方角
 \series default
- is used.
- 
+を使用しています。
 \emph on
-direction
+方角
 \emph default
- is either 
+は、
 \series bold
 NE
 \series default
-, 
+・
 \series bold
 DE
 \series default
-, 
+・
 \series bold
 SW
 \series default
- or 
+・
 \series bold
 NW
 \series default
- and represent a point of a compass.
- 
+のいずれかで、コンパスでの位置を示します。例えば、
 \series bold
 SW
 \series default
- is for example the south-west corner.
- Thus in the lower left cell of the above table the command
+は南西かど(south-west)を示します。したがって、上の表の左下のセルでは、 
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-diagbox[dir=SW]{Team home}{Result}{Team away}
+diagbox[dir=SW]{ホームチーム}{結果}{アウェイチーム}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used.
- If no direction is given, it will be NW.
+というコマンドを使用しています。方角を指定しなければ、NWを指定したのと同じ事になります。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The necessary width of split cells is automatically calculated.
- Thus if you set a fixed column width smaller than the calculated one, the
- cell's content will protrude the cell borders:
+対角線を引いたセルに必要な幅は、自動的に計算されます。したがって、計算された幅よりも小さい固定列幅を指定してしまうと、下記の例のように、セルの中身がはみ出てしま
+います。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -13368,7 +13183,7 @@ diagbox{
 
 \end_inset
 
-Name
+名称
 \begin_inset ERT
 status collapsed
 
@@ -13379,7 +13194,7 @@ status collapsed
 
 \end_inset
 
-Parameter
+パラメータ
 \begin_inset ERT
 status collapsed
 
@@ -13399,9 +13214,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み(nm)
 \end_layout
 
 \end_inset
@@ -13412,8 +13225,6 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -13423,8 +13234,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -13439,26 +13248,31 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need a certain width for columns with a split cell, use the command
- option 
+対角線を引いたセルの列に一定の幅が必要な場合は、コマンドオプションとして
 \series bold
 width=3cm
 \series default
- (replace '3cm' by the width you need).
- In the following table the width of the first column is set to 4
+ (必要に応じて「3cm」を必要な幅に変更)を与えてください。下記の表では、第1列の幅が4
 \begin_inset space \thinspace{}
 \end_inset
 
-cm.
- For 
+cmに設定してあります。
 \series bold
 
 \backslash
 diagbox
 \series default
- a width of 4
+全体の幅は、本文幅(この場合は4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)に、本文とセル罫線との間隔の2倍を加えたものになるので、
+\series bold
+
+\backslash
+diagbox
+\series default
+には4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13468,20 +13282,13 @@ cm + 2
 
 
 \backslash
-tabcolsep is necessary because the overall width is the width for the text
- (in this case the 4
-\begin_inset space \thinspace{}
-\end_inset
-
-cm) plus two times the separation of the text and the cell border.
- The calculation of the width cannot be done in the command option of 
+tabcolsepの幅が必要です。幅の計算は、
 \series bold
 
 \backslash
 diagbox
 \series default
- so one needs to create a new length which can be used later.
- This is done with the TeX-Code commands
+のコマンドオプション内では行うことができないので、前もって新しい長さを定義しておく必要があります。これは、TeXコードコマンドで
 \end_layout
 
 \begin_layout Standard
@@ -13534,13 +13341,10 @@ tabcolsep}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To enable calculations in LaTeX one needs to load the package 
+とすれば実現できます。LaTeX内で計算を行うには、文書プリアンブル中で
 \series bold
 calc
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -13551,21 +13355,16 @@ LaTeXぱっけーじ@LaTeXパッケージ ! calc
 
 \end_inset
 
-
-\lang english
- in the document preamble.
+パッケージを読み込んでおく必要があります。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In this table you can now use the command
+さて、この表の第1セルで
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 diagbox[width=
@@ -13574,28 +13373,22 @@ diagtest]{A}{B}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in the first cell:
+というコマンドを使用します。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="4cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13641,9 +13434,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み (nm)
 \end_layout
 
 \end_inset
@@ -13654,8 +13445,6 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -13665,8 +13454,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -13681,30 +13468,22 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that the split cell needs to be the widest one in the column.
- Otherwise the length of the diagonal line cannot be calculated correctly
- like in this table:
+対角線の引いたセルは、当該列中で最も幅広くなっていなくてはなりません。さもないと、次の表のように、対角線の長さが正しく計算できなくなってしまいます。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -13748,9 +13527,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み (nm)
 \end_layout
 
 \end_inset
@@ -13761,8 +13538,6 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -13772,8 +13547,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -13788,46 +13561,38 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In this case use the 
-\series bold
-width
-\series default
- option of the 
+このような場合には、
 \series bold
 
 \backslash
 diagbox
 \series default
- command.
- It is then not necessary to add 2
+コマンドの
+\series bold
+width
+\series default
+オプションを使用してください。こうすると、セル幅が列幅に等しくなるので、2
 \backslash
-tabcolsep because the cell width is now the width of the column.
- In this table a width of 3
+tabcolsepを足す必要はなくなります。下記の表では、3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm is used:
+cm幅を使用しています。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13871,9 +13636,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み (nm)
 \end_layout
 
 \end_inset
@@ -13884,8 +13647,6 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -13895,8 +13656,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -13911,28 +13670,22 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For multiple text lines in split cells one needs some extra height to fit
- the text to the cell.
- This can be achieved with the 
+対角線を引いたセルに複数行を入力するには、文章をセルに合わせるために高さを追加する必要があります。これは、
 \series bold
 
 \backslash
 diagbox
 \series default
- option 
+にオプション
 \series bold
 height=3cm
 \series default
- (replace '3cm' by the height you need).
- In the following table the command
+を与えることで実現できます(「3cm」は必要な高さに置き換えてください)。下記の表では、第1セルに
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 diagbox[width=3cm,height=1.4cm]{A
@@ -13947,10 +13700,7 @@ D}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used in the first cell.
- The command 
+というコマンドを使用しています。ここでコマンド
 \series bold
 
 \backslash
@@ -13958,42 +13708,36 @@ is used in the first cell.
 \backslash
 
 \series default
- creates hereby the line break.
+は改行をするためのものです
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-Breaking lines with 
 \family sans
 Ctrl+Return
 \family default
- is only possible when the column has a fixed width.
+を使っての改行は、列が固定幅の時のみ、使用することができます。
 \end_layout
 
 \end_inset
 
-
+。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -14067,9 +13811,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+厚み (nm)
 \end_layout
 
 \end_inset
@@ -14080,8 +13822,6 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Perfect Green
 \end_layout
 
@@ -14091,8 +13831,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -14161,22 +13899,18 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more info about the LaTeX-package 
+LaTeXパッケージ
 \series bold
 diagbox
 \series default
-, see its documentation
-\lang japanese
-, 
+についての詳しい情報は、取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "diagbox"
 
 \end_inset
 
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Section
@@ -14245,10 +13979,10 @@ name "tab:ブックタブ表の例"
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -14956,10 +14690,10 @@ name "tab:特殊なブックタブ表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -15432,9 +15166,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15564,9 +15298,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15696,9 +15430,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15817,9 +15551,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15949,9 +15683,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -16227,9 +15961,9 @@ colortblなしの表
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -16500,9 +16234,7 @@ white
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you add the options
+また、文書設定中で、文書クラスオプションに
 \end_layout
 
 \begin_layout Standard
@@ -16512,44 +16244,25 @@ usenames,dvipsnames
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to the document class options in the document settings, you can additionally
- use further 61
-\begin_inset space ~
-\end_inset
-
-colors.
- These colors are listed in appendix
-\begin_inset space ~
-\end_inset
-
-
+を与えると、さらに６１色を使用することができます。これらの色は、附録
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:List-of-dvips-colornames"
+reference "chap:dvips色名一覧"
 
 \end_inset
 
-.
- One of these colors, 
+に列挙されています。それらの色の１つ、
 \family sans
 Maroon
 \family default
-, is used as example in Table
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+が、例として表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:色付き表"
 
 \end_inset
 
-.
+に使用されています。
 \end_layout
 
 \begin_layout Standard
@@ -16577,7 +16290,7 @@ definecolor{色彩名}{色彩モデル}{色彩値}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-cmyk：シアン（
+cmyk： シアン（
 \bar under
 c
 \bar default
@@ -16598,7 +16311,7 @@ k
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-rgb：赤（
+rgb： 赤（
 \bar under
 r
 \bar default
@@ -16615,7 +16328,7 @@ lue）
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-gray：グレー
+gray： グレー
 \end_layout
 
 \begin_layout Standard
@@ -16761,10 +16474,7 @@ rowcolow{cyan}
 \end_layout
 
 \begin_layout Standard
-というTeXコードコマンドを書き込みます。これによって、第一セルの列色指定が上書きされてしまうことに注意してください。
-\lang english
-The last cell of the last row is colored maroon by inserting the TeX-Code
- command
+というTeXコードコマンドを書き込みます。これによって、第一セルの列色指定が上書きされてしまうことに注意してください。最終行の最後のセルは、
 \end_layout
 
 \begin_layout Standard
@@ -16776,7 +16486,7 @@ cellcolor{Maroon}
 \end_layout
 
 \begin_layout Standard
-というTeXコードコマンドを書き込むことで、マゼンタに色づけされています。この後、
+というTeXコードコマンドを書き込むことで、マルーンに色づけされています。この後、
 \family sans
 編集\SpecialChar \menuseparator
 文字様式
@@ -16828,9 +16538,9 @@ colortblを使った表
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special=">{\columncolor{darkgreen}\centering}c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" special=">{\columncolor{darkgreen}\centering}c">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -17027,16 +16737,12 @@ fi
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Colored Rows
+色付き行
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Table Color ! for Rows
+ひょうのいろ@表の色 ! ぎょうぜんたい@行全体
 \end_layout
 
 \end_inset
@@ -17046,9 +16752,7 @@ Table Color ! for Rows
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Color ! for Table Rows
+いろつき@色付き ! ひょうのぎょう@表の行
 \end_layout
 
 \end_inset
@@ -17057,15 +16761,22 @@ Color ! for Table Rows
 \end_layout
 
 \begin_layout Standard
+表の行を交互に色付けする必要がある場合、前節に述べたのとは別な方法があります。文書プリアンブルに
+\end_layout
 
-\lang english
-In case every second table row needs to be colored there is an alternative
- to the method described in the previous section: One loads the package
- 
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[table]{xcolor}
+\end_layout
+
+\begin_layout Standard
+というコマンドを使用して、
 \series bold
 xcolor
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -17089,30 +16800,14 @@ vspace{4mm}
 
 \end_inset
 
-
-\lang english
- in the document preamble with the command
-\end_layout
-
-\begin_layout Standard
-
+パッケージを読み込むのです。
 \series bold
-
-\backslash
-usepackage[table]{xcolor}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
 xcolor
 \series default
- automatically loads also the package 
+は、自動的に
 \series bold
 colortbl
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -17123,13 +16818,11 @@ LaTeXぱっけーじ@LaTeXパッケージ ! colortbl
 
 \end_inset
 
-
-\lang english
-, so 
+パッケージも読み込むので、LaTeXエラーを防ぐためには、お使いのLaTeX頒布版中に
 \series bold
 colortbl
 \series default
- must be installed in your LaTeX-distribution, otherwise you get LaTeX-errors.
+も導入されていなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -17163,34 +16856,20 @@ colortbl
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The table rows are colored with the command
+表の行は、文書プリアンブル中か、色付けする最初の表の前にTeXコードで
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-rowcolors[commands]{row number}{odd row color}{even row color}
+rowcolors[コマンド]{行番号}{奇数行の色}{偶数行の色}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-that is either inserted in the document preamble or as TeX-Code before the
- first table to be colored.
- row
-\begin_inset space ~
-\end_inset
-
-number is the number of the first row which should be colored according
- to the odd row color.
- commands can be additional commands that are executed before every table
- row.
- So for example the command
+というコマンドを使用すれば、色付けすることができます。ここで、「行番号」は、奇数行色で色付けする最初の行の番号です。「コマンド」は、各行の前で実行したいコマンド
+を付加する時に用います。したがって、例えば
 \end_layout
 
 \begin_layout Standard
@@ -17202,21 +16881,14 @@ rowcolors{1}{white}{lightgray}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
-\begin_inset space ~
-\end_inset
-
-
+というコマンドは、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-rowcolors"
+reference "tab:表-行色"
 
 \end_inset
 
-.
- The command
+のようなカラースキームをもたらします。また、
 \end_layout
 
 \begin_layout Standard
@@ -17230,37 +16902,14 @@ hline]{1}{lightgray}{cyan}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
-\begin_inset space ~
-\end_inset
-
-
+というコマンドを用いると、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-rowcolors-2"
+reference "tab:表-行色-2"
 
 \end_inset
 
-.
- If odd
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color and/or even
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color are left empty, no color will be used so that the command
+のようなカラースキームになります。「奇数行の色」ないし「偶数行の色」(またはその両方)が空のときは、色付けはされませんので、
 \end_layout
 
 \begin_layout Standard
@@ -17272,16 +16921,13 @@ rowcolors{1}{}{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-deletes all colors.
- 
+というコマンドはすべての色付けを削除することになります。
 \series bold
 
 \backslash
 rowcolors
 \series default
- affects all tables following that command.
+は、コマンドに続くすべての表に影響を及ぼします。
 \end_layout
 
 \begin_layout Standard
@@ -17311,15 +16957,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-rowcolors"
+name "tab:表-行色"
 
 \end_inset
 
-Table where every second row is colored light gray.
+隔行が灰色に着色された表
 \end_layout
 
 \end_inset
@@ -17332,7 +16976,7 @@ Table where every second row is colored light gray.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17492,16 +17136,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-rowcolors-2"
+name "tab:表-行色-2"
 
 \end_inset
 
-Table where every second row is colored cyan and at which there is a line
- between each row.
+隔行でシアン色に着色され、行間に線の入った表
 \end_layout
 
 \end_inset
@@ -17514,8 +17155,8 @@ Table where every second row is colored cyan and at which there is a line
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -17663,9 +17304,7 @@ rowcolors{1}{}{}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-turn off the row coloring
+行色を解除
 \end_layout
 
 \end_inset
@@ -17863,9 +17502,9 @@ name "tab:色付き縦罫線の表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="WcW">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="WcW">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -18093,9 +17732,9 @@ name "tab:色付き横罫線の表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18252,9 +17891,9 @@ name "tab:色付き罫線の表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="WcW">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="WcW">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -18393,38 +18032,10 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Rotated Table Cells
-\lang japanese
-
+表幅の計算
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Rotated-Table-Cells"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Table ! Rotated Cells
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Rotated Material
-\end_layout
+name "sec:表幅の計算"
 
 \end_inset
 
@@ -18432,614 +18043,47 @@ Rotated Material
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- Not all DVI-viewers are able to display rotations.
-\end_layout
-
-\end_inset
-
-
+幅広の表では、表がページ余白に突き出てしまわないように調整するのが難しいことがあります。表中の全列に固定幅を設定する方法もありますが、では各列にどれくらいの幅を
+設ければ良いのでしょうか？
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently LyX only offers to rotate table cells by 90
-\begin_inset space \thinspace{}
+表幅
+\begin_inset Formula $W_{\text{表}}$
 \end_inset
 
-° counter-clockwise.
- To rotate cells by an angle of your choice, you have to add this to the
- document preamble:
-\end_layout
+は計算することができます。各列の実際の幅は、指定した列幅
+\begin_inset Formula $W_{\text{列}}$
+\end_inset
 
-\begin_layout Standard
-
+に、列の内容と列罫線との間の余白(LaTeX長
 \series bold
 
-\backslash
-@ifundefined{turnbox}{
-\backslash
-usepackage{rotating}}{}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-In the table cell that should be rotated, add at the beginning this command
- as TeX-code:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-
-\backslash
-begin{turn}{angle}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-where angle is the rotation angle in °.
- At the end of the cell the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{turn}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-is inserted as TeX-code.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Table-with-rotated-multi"
-
-\end_inset
-
- is an example where 3
-\begin_inset space ~
-\end_inset
-
-cells were rotated by 45
-\begin_inset space \thinspace{}
-\end_inset
-
-°.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Table-with-rotated"
-
-\end_inset
-
-Table with rotated cells in the first row.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\lang english
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
-cups
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
-plates
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
-saucers
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-45
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-33
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-21
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- Line breaks (shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "newline-insert newline"
-\end_inset
-
-) are not allowed in rotated cells.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you want to rotate table cells containing line breaks, you have to put
- the cell content into a minipage or a parbox.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-For more about these boxes see sec.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ミニページ"
-
-\end_inset
-
- 
-\lang english
-and
-\lang japanese
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Parbox"
-
-\end_inset
-
-。
-\end_layout
-
-\end_inset
-
- If you rotate this cell by 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° the width of the box is the height of the cell.
- Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Table-with-rotated-multi"
-
-\end_inset
-
- is an example for a rotated multiline cell where the box width was set
- to 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Table-with-rotated-multi"
-
-\end_inset
-
-Table with rotated multiline cell.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-
-\lang english
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "3cm"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-rotated cell
-\begin_inset Newline newline
-\end_inset
-
-with line break
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-e
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\lang english
-d
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\lang english
-Table Width Calculation
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Table-Width-Calculation"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For wide tables it is sometimes difficult to assure that the table does
- not protrude over the page margin.
- Setting a fixed width for every column of the table is the solution, but
- what amount of space is needed for each column?
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The table width 
-\begin_inset Formula $W_{\mathrm{table}}$
-\end_inset
-
- can be calculated: Every column has the width of the specified column width
- 
-\begin_inset Formula $W_{\mathrm{column}}$
-\end_inset
-
- (that the content of the column can consume) plus two times the separation
- between the column content and the column border (LaTeX length
-\series bold
- 
 \backslash
 tabcolsep
 \series default
-, default 6
+・既定値6
 \begin_inset space \thinspace{}
 \end_inset
 
-pt) plus the width of a border line (LaTeX length 
+pt)の２倍と、罫線幅(LaTeX長
 \series bold
 
 \backslash
 arrayrulewidth
 \series default
-, default 0.4
+・既定値0.4
 \begin_inset space \thinspace{}
 \end_inset
 
-pt): So if all 
+pt)を加えたものになります。したがって、もし同じ幅の
 \begin_inset Formula $n$
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-columns have the same width, the table width is
-\lang japanese
-
+列を作るならば、表幅は
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{table}}=n\left(W_{\mathrm{column}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
+W_{\text{表}}=n\left(W_{\text{列}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
 \end{equation}
 
 \end_inset
@@ -19048,41 +18092,34 @@ W_{\mathrm{table}}=n\left(W_{\mathrm{column}}+2\backslash\mbox{tabcolsep}+\backs
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The available width for a table is the space between the page margins or
- the width of a text column (for a two-column document) (LaTeX length 
+となります。表が使用できる幅は、ページ余白の間の幅か、本文段幅(二段組文書の場合)です(LaTeX長
 \series bold
 
 \backslash
 columnwidth
 \series default
-).
- If all table columns should have the same width and 
-\begin_inset Formula $W_{\mathrm{table}}$
+)。表の列をすべて同じ幅にするとすれば、
+\begin_inset Formula $W_{\text{表}}$
 \end_inset
 
- should be 1
+が1
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \backslash
-columnwidth, 
-\begin_inset Formula $W_{\mathrm{column}}$
+columnwidthになりますので、
+\begin_inset Formula $W_{\text{列}}$
 \end_inset
 
- can easily be calculated.
+は簡単に計算できます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To be able to perform calculations you need to load the LaTeX-package 
+計算を行わせる場合には、文書プリアンブル中でLaTeXパッケージ
 \series bold
 calc
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -19093,36 +18130,18 @@ LaTeXぱっけーじ@LaTeXパッケージ ! calc
 
 \end_inset
 
-
-\lang english
- in the document preamble.
- To set the width in the table dialog you have to use the field 
+を読みこませる必要があります。表ダイアログ中で幅を設定するには、
 \family sans
-LaTeX argument
+LaTeXの引数
 \family default
-.
- The command scheme for this field is the same that is explained in section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+フィールドに書きこまなくてはなりません。このフィールドのコマンドスキームは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:連結列の計算"
 
 \end_inset
 
-
-\lang english
-.
- For a table with 5
-\begin_inset space \thinspace{}
-\end_inset
-
-columns with an uniform width and centered text, enter there for each column
- the command
+節で説明したのと同様です。同幅中央揃え5列の表ならば、各列の同フィールドに
 \end_layout
 
 \begin_layout Standard
@@ -19136,25 +18155,13 @@ columnwidth-62.4pt)/5}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For a table with 5
-\begin_inset space \thinspace{}
-\end_inset
-
-columns where 2 should have 0.75
-\begin_inset space ~
-\end_inset
-
-times the width than the 3 others, the calculation is
-\lang japanese
-
+というコマンドを入力します。5列の表で、うち2列が他の3列の幅の0.75倍であるような表の場合には、計算は
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\mathrm{column}}+2\cdot0.75\, W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\, W_{\text{列}}+2\cdot0.75\, W_{\text{列}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
-W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
+ & =4.5\, W_{\text{列}}+62.4\,\mathrm{pt}\nonumber \\
+W_{\text{列}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
 \end_inset
@@ -19163,9 +18170,7 @@ W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the table therefore the command
+となります。したがって、表中の広い列には
 \end_layout
 
 \begin_layout Standard
@@ -19181,9 +18186,7 @@ real{4.5}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used for the wider columns and
+というコマンドを用い、狭い列には
 \end_layout
 
 \begin_layout Standard
@@ -19201,9 +18204,7 @@ real{0.75}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-for the smaller ones:
+というコマンドを用いることにすると、以下の表が出来上がります。
 \end_layout
 
 \begin_layout Standard
@@ -19412,7 +18413,7 @@ emの余白を挿入します。通常の表の場合には、余白を追加す
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -19512,7 +18513,7 @@ emの余白を挿入します。通常の表の場合には、余白を追加す
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -19699,7 +18700,7 @@ name "tab:垂直揃え"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -19719,7 +18720,7 @@ status open
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -19813,7 +18814,7 @@ Huger
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -19839,7 +18840,7 @@ strut
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -20027,9 +19028,11 @@ reference "tab:表セル"
 \end_inset
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
-\begin_inset Info
-type  "icon"
-arg   "inset-modify tabular align-decimal"
+\begin_inset Graphics
+	filename ../../images/tabular-feature_align-decimal.png
+	scale 85
+	scaleBeforeRotation
+
 \end_inset
 
 を押すか、表設定中で揃えを
@@ -20338,12 +19341,12 @@ name "tab:表セル揃え"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -20643,38 +19646,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Calculating the required width for normal columns as described in section
-\begin_inset space ~
-\end_inset
-
-
+第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Table-Width-Calculation"
+reference "sec:表幅の計算"
 
 \end_inset
 
- or for spanned columns as described in section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+節のようにして通常列の必要幅を計算したり、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:連結列の計算"
 
 \end_inset
 
-
-\lang english
- is very annoying if you have several tables where a calculation is necessary.
-
-\lang japanese
- そこで楽をするために、プリアンブルでセル・列書式を定義してしまえば、それを文書中のすべての表で使うことができます。書式は、以下のように定義します。
+節のように連結列の必要幅を計算したりするのは、計算の必要な表が複数あるときには、とても大変です。そこで楽をするために、プリアンブルでセル・列書式を定義してしまえ
+ば、それを文書中のすべての表で使うことができます。書式は、以下のように定義します。
 \end_layout
 
 \begin_layout Standard
@@ -20750,7 +19737,11 @@ reference "sub:複数行"
 
 \end_inset
 
-節で述べたように、最初の単語がハイフネートされる問題を回避するためのものです。すると連結列を作成する際には、表ダイアログのLaTeX引数で
+節で述べたように、最初の単語がハイフネートされる問題を回避するためのものです。すると連結列を作成する際には、表ダイアログの
+\family sans
+LaTeXの引数
+\family default
+で
 \end_layout
 
 \begin_layout Standard
@@ -20949,9 +19940,9 @@ name "tab:ユーザー定義の表書式"
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm" special="M{2.5cm}">
-<column alignment="center" valignment="middle" width="0" special="S{2.5cm}{2}">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0" special="K{red}">
+<column alignment="center" valignment="middle" special="S{2.5cm}{2}">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle" special="K{red}">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21192,9 +20183,9 @@ pt幅罫線の表
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21468,9 +20459,9 @@ pt幅横罫の表
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21679,9 +20670,9 @@ pt幅縦罫の表
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Vc">
-<column alignment="center" valignment="top" width="0" special="Vc">
-<column alignment="center" valignment="top" width="0" special="VcV">
+<column alignment="center" valignment="top" special="Vc">
+<column alignment="center" valignment="top" special="Vc">
+<column alignment="center" valignment="top" special="VcV">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -21855,11 +20846,11 @@ name "tab:点罫表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0" special=":c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" special=":c">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -22228,7 +21219,7 @@ reference "tab:点罫表"
 \backslash
 hdashline
 \series default
-が挿れられており、第3行の最初のセルには、TeXコードのコマンド
+が挿れられており、第4行の最初のセルには、TeXコードのコマンド
 \begin_inset Newline newline
 \end_inset
 
@@ -22249,22 +21240,14 @@ cdashline{4-5}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Tables with dashed lines can also be colored as shown by Table
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+点罫を持つ表も、表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Colored-table-with"
 
 \end_inset
 
-.
+のように色付けをすることができます。
 \end_layout
 
 \begin_layout Standard
@@ -22283,15 +21266,11 @@ arrayrulewidth}{1pt}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-thicker lines for better visualization of the line color
+罫線色が見易いように線を太く
 \end_layout
 
 \end_inset
@@ -22313,15 +21292,11 @@ dashgapcolor{green}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color gaps between dashes green
+緑点罫の間の色付き余白
 \end_layout
 
 \end_inset
@@ -22367,15 +21342,11 @@ arrayrulecolor{black}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color horizontal, dashed lines red
+色付き水平線・点罫赤
 \end_layout
 
 \end_inset
@@ -22421,15 +21392,11 @@ arrayrulecolor{black}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color partial horizontal, dashed lines yellow
+色付き部分水平線・点罫黄色
 \end_layout
 
 \end_inset
@@ -22454,9 +21421,7 @@ name "tab:Colored-table-with"
 
 \end_inset
 
-
-\lang english
-Colored table with dashed lines
+点罫線の色付き表
 \end_layout
 
 \end_inset
@@ -22472,8 +21437,8 @@ Colored table with dashed lines
 <column alignment="center" valignment="top" width="0pt" special=">{\columncolor{darkgreen}\centering}c">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special=":c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -22788,15 +21753,11 @@ myHdashline}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+既定値に戻す
 \end_layout
 
 \end_inset
@@ -22822,15 +21783,11 @@ myCdashline}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+既定値に戻す
 \end_layout
 
 \end_inset
@@ -22852,15 +21809,11 @@ nodashgapcolor
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+既定値に戻す
 \end_layout
 
 \end_inset
@@ -22884,15 +21837,11 @@ arrayrulewidth}{0.4pt}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+既定値に戻す
 \end_layout
 
 \end_inset
@@ -22901,50 +21850,38 @@ reset to default
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The coloring of lines, columns and lines works as decribed in section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+行や列、罫線の着色は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:色付きの表"
 
 \end_inset
 
-
-\lang english
-.
- Coloring horizontal lines works analogically as described there as well,
- one only needs to replace in the commands 
+節に述べられているように動作します。水平線の着色も、
 \series bold
 
 \backslash
 myHlineC
 \series default
- by 
+コマンドを
 \series bold
 
 \backslash
 myHdashline
 \series default
- and 
-\backslash
-
+に置き換え、
 \series bold
+
+\backslash
 hline
 \series default
- by 
+を
 \series bold
 
 \backslash
 hdashline
 \series default
-; so one uses the command
+に置き換えれば、そこで述べられているのと同様に機能します。したがって、以下のようなコマンドを使います。
 \end_layout
 
 \begin_layout Standard
@@ -22992,14 +21929,12 @@ arrayrulecolor{black}}
 
 \begin_layout Standard
 
-\lang english
-To color 
 \series bold
 
 \backslash
 cdashline
 \series default
-, the command is
+に色をつけるならば、コマンドは
 \end_layout
 
 \begin_layout Standard
@@ -23046,20 +21981,17 @@ arrayrulecolor{black}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get back the black line color, one needs to insert the following commands
- as TeX-Code behind the table:
+のようになります。黒の罫線に戻すには、以下のコマンドを表の後ろにTeXコードで挿入する必要があります。
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-For 
 \series bold
 
 \backslash
 hdashline
+\series default
+の場合は
 \end_layout
 
 \begin_layout Standard
@@ -23075,13 +22007,13 @@ myHdashline}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and for 
+とし、
 \series bold
 
 \backslash
 cdashline
+\series default
+の場合は
 \end_layout
 
 \begin_layout Standard
@@ -23097,26 +22029,19 @@ myCdashline}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the gaps between the dashes the command
+としてください。点線の間の余白に色をつけるには、表の前にTeXコードで
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-dashgapcolor{color}
+dashgapcolor{色}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-can be used in front of a table as TeX-Code.
- color is hereby the name of a defined color.
- The command
+とすれば良いです。ここで「色」は、定義済みの色名です。
 \end_layout
 
 \begin_layout Standard
@@ -23128,63 +22053,48 @@ nodashgapcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-unsets the changes made by 
+というコマンドは、
 \series bold
 
 \backslash
 dashgapcolor
 \series default
-.
+が行った変更を元に戻します。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-\color none
-\lang english
-Note
-\series default
-: If there are multiple commands in a cell, the command of 
+【註】1つのセル中に複数のコマンドがある場合、
 \series bold
 arydshln
 \series default
- needs to be the first one in the cell.
- Therefore in cell 
-\emph on
-k
-\emph default
- of Table
-\begin_inset space ~
-\end_inset
-
-
+のコマンドが、そのセル中で最初に来る必要があります。したがって、表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Colored-table-with"
 
 \end_inset
 
- the command 
+のセル
+\emph on
+k
+\emph default
+では、
 \series bold
 
 \backslash
 hdashline
 \series default
- is before 
+コマンドが
 \series bold
 
 \backslash
 rowcolor
 \series default
-.
+の前に来ています。
 \end_layout
 
 \end_inset
@@ -23193,29 +22103,22 @@ rowcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
-\lang english
-Note:
+【註】
 \series default
- The LaTeX-package 
+LaTeXパッケージ
 \series bold
 arydshln
 \series default
- must be loaded in the document preamble before the LaTeX-package
-\lang japanese
- 
+は、文書プリアンブル中でLaTeXパッケージ
 \series bold
 colortbl
 \series default
-\color inherit
 
 \begin_inset Index idx
 status collapsed
@@ -23226,9 +22129,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! colortbl
 
 \end_inset
 
-
-\color none
-.
+よりも前に読み込まれている必要があります。
 \end_layout
 
 \end_inset
@@ -23291,22 +22192,18 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more information about dashed lines see the documentation of
-\lang japanese
- 
+点罫について詳しい情報は、
 \series bold
 arydshln
 \series default
-, 
+の取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "arydshln"
 
 \end_inset
 
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Chapter
@@ -23387,28 +22284,8 @@ reference "sec:フロートの参照"
 \family sans
 キャプション
 \family default
-差込枠が挿入されます (
-\lang english
-toolbar button 
-\lang japanese
-
-\begin_inset Info
-type  "icon"
-arg   "float-insert figure"
-\end_inset
-
-
-\lang english
- or
-\lang japanese
- 
-\begin_inset Info
-type  "icon"
-arg   "float-insert table"
-\end_inset
-
-)。このラベルは、出力の際に自動的に文書言語に翻訳されます。ラベルの後ろには、キャプションの文章を入れ、画像ないし表は、フロート中、キャプションの上ないし下に別
-の段落として挿入します。キャプションの配置に関して詳しくは、第
+差込枠が挿入されます。このラベルは、出力の際に自動的に文書言語に翻訳されます。ラベルの後ろには、キャプションの文章を入れ、画像ないし表は、フロート中、キャプショ
+ンの上ないし下に別の段落として挿入します。キャプションの配置に関して詳しくは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:キャプションの配置"
@@ -23462,22 +22339,14 @@ reference "sec:表フロート"
 \series default
 折返し型
 \family default
-のフロート型があります。 
-\lang english
-The latter are explained in sec.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
+のフロート型があります。後者は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:折返しフロート"
 
 \end_inset
 
-.
+節に説明があります。
 \end_layout
 
 \begin_layout Subsection
@@ -24347,13 +23216,11 @@ reference "sub:相互参照の書式"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX's english 
+LyXの取扱説明書『
 \emph on
-Math
+数式篇
 \emph default
- manual is an example where automatic reference naming is used.
+』では、参照名の自動命名が使用されています。
 \end_layout
 
 \begin_layout Subsection
@@ -25036,11 +23903,11 @@ name "tab:回転した表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25186,7 +24053,7 @@ name "tab:従属表を横に並べたもの"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -25211,11 +24078,11 @@ name "tab:これは従属表a"
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25280,7 +24147,7 @@ name "tab:これは従属表a"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -25305,11 +24172,11 @@ name "tab:これは従属表b"
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25400,10 +24267,12 @@ name "tab:従属表を縦に並べたもの"
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -25422,10 +24291,10 @@ status open
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25477,10 +24346,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -25499,11 +24370,11 @@ status open
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26198,11 +25069,11 @@ name "tab:表キャプション"
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26480,6 +25351,10 @@ sidecap
 
 \begin_layout Standard
 LyXでフロートのキャプションを横に配置するには、以下のコマンド群を文書プリアンブルに追加する必要があります。
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -26795,9 +25670,7 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-というコマンドを、フロートの前にTeXコードで入れてください。
-\lang english
-And insert the command
+というコマンドを、フロートの前にTeXコードで入れてください。そして、元のフロート定義に戻したいところで、
 \end_layout
 
 \begin_layout Standard
@@ -26809,10 +25682,7 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in TeX-Code at the point where you want to get back to the original float
- definition.
+というTeXコードを入れてください。
 \end_layout
 
 \begin_layout Standard
@@ -26919,116 +25789,70 @@ reference "fig:図横キャプション-2"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The default caption width is the width of the image/table.
- For thin image/tables, like in Table
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+キャプション幅の既定値は、画像幅ないし表幅です。しかし、表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:表横キャプション"
 
 \end_inset
 
-, 
-\lang english
-this leads to captions that are too thin.
- You can increase the width by specifying a factor that will be multiplied
- with the image/table width to get the caption width.
- The caption width will automatically be recalculated in case it would protrude
- over the page or column margin due to the specified width.
- The 
+のように幅狭の表では、これではキャプションの幅が狭くなりすぎます。キャプション幅を増やすには、画像幅ないし表幅に掛ける因数を指定することができます。指定した幅で
+は、キャプションがページ余白ないし段余白に突き出てしまうような場合は、キャプション幅は自動的に再計算してくれます。
 \emph on
-factor
+因数
 \emph default
- can either be given as optional argument for 
-\series bold
-
-\backslash
-FigBesBeg
-\series default
-:
+は、
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-FigBesBeg[factor]
+FigBesBeg[因数]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-or in the definition of 
+のように、
 \series bold
 
 \backslash
 FigBesBeg
 \series default
- by replacing the 
+への非必須引数として与えることもできますし、
+\series bold
+
+\backslash
+FigBesBeg
+\series default
+の定義中で
 \series bold
 1.0
 \series default
- with another value.
- If you do the latter, your factor will be the default if 
-\series bold
-
-\backslash
-FigBesBeg
-\series default
- is used without an argument.
- For Table
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+を他の値に変更することもできます。表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:cap-beside-tab-wider"
+reference "tab:図横幅広"
 
 \end_inset
 
- 
-\lang english
-the factor 5 was used.
+では、因子5が指定されています。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- For floats with captions set beside, you cannot use the float placement
- option 
+【註】キャプションを横につけたフロートでは、フロート配置オプションの
 \family sans
-Here
-\begin_inset space ~
-\end_inset
-
-definitely
+何としても現在地に置く
 \family default
- because it is not supported by 
+は、
 \series bold
 sidecap
 \series default
-.
+がサポートしていないので、使用することができません。.
 \end_layout
 
 \end_inset
@@ -27208,11 +26032,11 @@ name "tab:表横キャプション"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27524,28 +26348,20 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:cap-beside-tab-wider"
+name "tab:図横幅広"
 
 \end_inset
 
-This is a caption is wider than the one in Table
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+これは表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:表横キャプション"
 
 \end_inset
 
-.
+よりも幅広のキャプションです
 \end_layout
 
 \end_inset
@@ -27557,11 +26373,11 @@ reference "tab:表横キャプション"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -28020,7 +26836,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-これは、淡色表示注釈内に脚注を用いた例です。
+これは、淡色注釈内に脚注を用いた例です。
 \end_layout
 
 \end_inset
@@ -28059,8 +26875,8 @@ egroup}
 status open
 
 \begin_layout Plain Layout
-以下に述べられているように、淡色表示注釈は、青文字で表示されるよう本文書のプリアンブルで再定義されているため、ここの淡色表示注釈は、LyX本来の定義で表示される
-ように再定義されています。
+以下に述べられているように、淡色注釈は、青文字で表示されるよう本文書のプリアンブルで再定義されているため、ここの淡色注釈は、LyX本来の定義で表示されるように再
+定義されています。
 \end_layout
 
 \end_inset
@@ -28073,7 +26889,7 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-この例から分かるように、淡色表示注釈の最初の行は少し字下げされるほか、淡色表示注釈には脚注を入れることができます。
+この例から分かるように、淡色注釈の最初の行は少し字下げされるほか、淡色注釈には脚注を入れることができます。
 \end_layout
 
 \begin_layout Standard
@@ -28099,15 +26915,13 @@ LyX注釈
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-You can change the text color of the greyed out notes in the menu 
+淡色注釈の文字色は、
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Colors
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+色
 \family default
-.
+メニューで変更することができます。
 \end_layout
 
 \begin_layout Section
@@ -28283,7 +27097,7 @@ footnotetext{
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -29373,11 +28187,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \end_inset
 
-に載っています。 
-\lang english
-If you are using a
-\lang japanese
- 
+に載っています。
 \series bold
 KOMA-Script
 \series default
@@ -29391,19 +28201,14 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-Script
 
 \end_inset
 
- 
-\lang english
-document class, you can adjust all footnote settings using class-specific
- commands, see
-\lang japanese
- 
+文書クラスを使用している場合には、すべての脚注設定を、クラス固有のコマンドで調節することができます(
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
 
 \end_inset
 
-.
+参照)。
 \end_layout
 
 \begin_layout Section
@@ -32106,314 +30911,6 @@ This is an English footnote.
 \begin_inset VSpace bigskip
 \end_inset
 
-ミニページのもう一つの応用例としては、表内での脚注があります。LaTeXの制約のせいで、表中の脚注は、同一ページの底部には表示されません。しかし、脚注を含む表を
-ミニページ内に置けば、脚注は底部に表示され、ラテン文字で付番されます。脚注番号は、ミニページ毎に1にリセットされますが、ミニページ外ではリセットされません。
-\end_layout
-
-\begin_layout Standard
-この表の脚注は表示されません。
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-これは表中の脚注です。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-い
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ろ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-は
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-に
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ほ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-へ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-と
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ち
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-これは表中の脚注です。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-い
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ろ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-は
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-に
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ほ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-へ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-と
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ち
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 ミニページ内では、文書全体の段落設定は無視されます。つまり、たとえば文書設定で
 \family sans
 中スキップ
@@ -33545,9 +32042,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -33768,6 +32265,26 @@ status collapsed
 
 \begin_layout Plain Layout
 かいてん@回転 ! そざいの@素材の---
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ず@図 ! のかいてん@---の回転
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひょうのちょうせい@表の調整 ! かいてん@回転
 \end_layout
 
 \end_inset
@@ -34005,8 +32522,8 @@ rotatebox[origin=l]{-90}{
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34063,26 +32580,6 @@ status collapsed
 \end_inset
 
 表を含む行です。
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ず@図 ! のかいてん@---の回転
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ひょうのちょうせい@表の調整 ! かいてん@回転
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -34102,6 +32599,26 @@ status collapsed
 
 \begin_layout Plain Layout
 しんしゅく@伸縮 ! そざいの@素材の---
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ず@図 ! のしんしゅく@---の伸縮
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひょうのちょうせい@表の調整 ! しんしゅく@伸縮
 \end_layout
 
 \end_inset
@@ -34557,8 +33074,8 @@ reflectbox{
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34647,26 +33164,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ず@図 ! のしんしゅく@---の伸縮
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ひょうのちょうせい@表の調整 ! しんしゅく@伸縮
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34688,16 +33185,14 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Objects Surrounded by Text
+本文回り込みオブジェクト
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text
+ほんぶんまわりこみ
+\series bold
+@本文回り込み
 \end_layout
 
 \end_inset
@@ -34724,15 +33219,11 @@ status collapsed
 \end_inset
 
 
-\lang english
-
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Wrap Floats
+ほんぶんまわりこみ@本文回り込み ! おりかえしふろーと@折返しフロート
 \end_layout
 
 \end_inset
@@ -34847,24 +33338,7 @@ reference "fig:折返し図フロート"
 \begin_inset space \thinspace{}
 \end_inset
 
-cmのぶら下げを持ち、左揃えの折返しフロートを例示してあります
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-使うことのできる単位は付録
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:LyXで使用できる単位"
-
-\end_inset
-
-に収録してあります。
-\end_layout
-
-\end_inset
-
-。
+cmのぶら下げを持ち、左揃えの折返しフロートを例示してあります。
 \end_layout
 
 \begin_layout Standard
@@ -34907,35 +33381,23 @@ status open
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Their numbering and referencing works as described in chap.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
+連番や参照は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:フロート"
 
 \end_inset
 
-.
+章で述べられているように動作します。
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Surrounded Fixed Objects
+固定回り込みオブジェクト
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Fixed objects
+ほんぶんまわりこみ@本文回り込み ! こていおぶじぇくと@固定オブジェクト
 \end_layout
 
 \end_inset
@@ -34944,43 +33406,29 @@ Surrounded by text ! Fixed objects
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The wrap floats described in sec.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:折返しフロート"
 
 \end_inset
 
- 
-\lang english
-have these positions in the paragraph:
+節の折返しフロートは、段落中で、以下のような配置がされます。
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -34997,9 +33445,7 @@ have these positions in the paragraph:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35010,9 +33456,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35021,9 +33465,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35037,16 +33479,14 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35055,8 +33495,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35075,9 +33513,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35086,9 +33522,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35102,10 +33536,7 @@ text
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get an object exactly at the position where it is inserted, for example
- to get one of these positions:
+以下に示すいずれかのように、
 \begin_inset VSpace defskip
 \end_inset
 
@@ -35115,21 +33546,17 @@ To get an object exactly at the position where it is inserted, for example
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35138,9 +33565,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35151,8 +33576,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35169,9 +33592,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35185,16 +33606,14 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35203,9 +33622,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35216,9 +33633,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35227,8 +33642,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35250,17 +33663,15 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35269,8 +33680,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35287,9 +33696,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35300,9 +33707,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35311,9 +33716,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35322,9 +33725,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35338,17 +33739,15 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35357,9 +33756,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35368,9 +33765,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35381,9 +33776,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35392,8 +33785,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35410,9 +33801,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35428,21 +33817,17 @@ text
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35451,9 +33836,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35464,8 +33847,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35482,9 +33863,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35495,9 +33874,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35506,9 +33883,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35522,17 +33897,15 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35541,9 +33914,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35552,9 +33923,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35565,9 +33934,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35576,8 +33943,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35594,9 +33959,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35607,9 +33970,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35618,9 +33979,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35629,9 +33988,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35645,16 +34002,14 @@ text
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35663,9 +34018,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35676,9 +34029,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35687,8 +34038,6 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
@@ -35707,9 +34056,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35718,9 +34065,7 @@ text
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-text
+文章
 \end_layout
 
 \end_inset
@@ -35735,11 +34080,7 @@ text
 
 \begin_layout Standard
 \noindent
-
-\lang english
-you can use the LaTeX-package
-\lang japanese
- 
+オブジェクトを挿入した場所に正確に配置したい時には、
 \series bold
 picinpar
 \series default
@@ -35753,12 +34094,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! picinpar
 
 \end_inset
 
-.
- 
-\lang english
-Here is an example
-\lang japanese
-:
+LaTeXパッケージを使うことができます。下記はその用例です。
 \end_layout
 
 \begin_layout Standard
@@ -35832,7 +34168,6 @@ status collapsed
 
 
 \size small
-\lang english
 It was in the spring of the year 1894 that all London was interested, and
  the fashionable world dismayed, by the murder of the Honourable Ronald
  Adair under most unusual and inexplicable circumstances.
@@ -35857,9 +34192,7 @@ footnotemark{}
  that occasion, since the case for the prosecution was so overwhelmingly
  strong that it was not necessary to bring forward all the facts.
  Only now, at the end of nearly ten years, am I allowed to supply those
- missing links which make up the whole of that remarkable chain
-\lang japanese
-.
+ missing links which make up the whole of that remarkable chain.
 \size default
 
 \begin_inset ERT
@@ -35878,8 +34211,6 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -35892,7 +34223,7 @@ footnotetext{
 
 \end_inset
 
-Footnote of the paragraph with the fixed object.
+固定オブジェクトのある段落の脚注
 \begin_inset ERT
 status collapsed
 
@@ -35907,18 +34238,12 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Surrounded fixed objects are used to let text float around them, at which
- the object's position in the paragraph can be determined by the number
- of lines above it.
- In contrary to floats is it not possible to have a numbered caption.
+固定回り込みオブジェクトは、オブジェクトの周りに本文を流しこむのに用いられ、段落中のオブジェクトの位置は、オブジェクトの上の行数を指定することで決定します。フロ
+ートとは違って、連番のキャプションをつけることはできません。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A fixed object is inserted by adding the command
+固定オブジェクトは、段落冒頭にTeXコードで
 \end_layout
 
 \begin_layout Standard
@@ -35930,26 +34255,19 @@ begin{window}[2,c,{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-as TeX Code at the beginning of the paragraph.
- The first parameter in the bracket, here '2', defines the number of lines
- above the object, the second, here 'c', the position of the object.
- The positions 'l', 'c' and 'r' (for left, center, right) are possible.
- Behind the command you insert the object.
- In this example an image with a width of 40
+というコマンドを書くことによって挿入されます。角括弧中の最初のパラメータ(ここでは「2」)は、オブジェクト上に来る行数を指定し、二番目のパラメータ(ここでは「c
+」)はオブジェクトの位置を示します。位置としては、「l」「c」「r」が可能です(それぞれ左・中央・右)。このコマンドの後にオブジェクトを挿入します。この例では、
+段幅の40
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the text column width was inserted.
- The object can also be a table, a box or an equation.
- Behind the object the command
+%の画像が挿入されています。オブジェクトは、表やボックス、数式でも構いません。オブジェクトの後には、
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-},description text]
+},説明文]
 \begin_inset Newline newline
 \end_inset
 
@@ -35957,30 +34275,15 @@ as TeX Code at the beginning of the paragraph.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is inserted.
- Note that the 
-\begin_inset Quotes eld
-\end_inset
-
-
+というコマンドが挿入されています。2行目に「
 \series bold
 {}
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- is in the second line.
- The description text is optional.
- The text surrounding the object must be in the same paragraph as the object,
- so it must begin directly after the 
+」が入っていることに注意してください。説明文は非必須です。オブジェクトに回り込む文章は、オブジェクトと同じ段落になくてはなりませんので、
 \series bold
 {}
 \series default
-.
- At the end of the paragraph insert the command:
+の直後から書き始めてください。段落末には、
 \end_layout
 
 \begin_layout Standard
@@ -35992,36 +34295,26 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Within a paragraph with a fixed object, you cannot insert footnotes in the
- normal way.
- You have to use instead the command 
-\series bold
-
-\backslash
-footnotemark
-\series default
- inside the paragraph and outside the command 
-\series bold
-
-\backslash
-footnotetext
-\series default
- as described in sec.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
+というコマンドを挿入してください。固定オブジェクトのある段落では、通常のように脚注を挿入することはできません。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:脚注"
 
 \end_inset
 
-.
+節にあるように、代わりに、段落内で
+\series bold
+
+\backslash
+footnotemark
+\series default
+コマンドを使用し、段落外に
+\series bold
+
+\backslash
+footnotetext
+\series default
+コマンドを用いてください。
 \end_layout
 
 \begin_layout Standard
@@ -36079,16 +34372,14 @@ fi
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Initials
+頭文字
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Initials
+かしらもじ
+\series bold
+@頭文字
 \end_layout
 
 \end_inset
@@ -36098,9 +34389,7 @@ Initials
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Surrounded by text ! Initials
+ほんぶんまわりこみ@本文回り込み ! かしらもじ@頭文字
 \end_layout
 
 \end_inset
@@ -36109,15 +34398,7 @@ Surrounded by text ! Initials
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use initials, you must have the LaTeX package
-\lang japanese
- 
-\series bold
-lettrine
-\series default
-
+頭文字を用いるには、LaTeXパッケージ
 \begin_inset Index idx
 status collapsed
 
@@ -36127,82 +34408,54 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 
 \end_inset
 
- 
-\lang english
-installed and use the module 
+が導入済みでなくてはならず、文書中で
 \family sans
-Initials
+頭文字
 \family default
- in your document (menu 
+モジュールを使用する必要があります(
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Modules
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+モジュール
 \family default
-).
- To insert an initial, use the style 
+メニュー)。頭文字を挿入するには、
 \family sans
-Initial
+頭文字
 \family default
-.
- This style has a mandatory and two optional arguments.
- The arguments are inserted via the 
+様式を使用してください。この様式には、必須引数と非必須引数があります。必須引数は、
 \family sans
-Insert
+挿入\SpecialChar \menuseparator
+短縮タイトル
 \family default
- menu.
- The mandatory argument 
-\family sans
-Initial
-\family default
- contains the letter(s) that is the initial, the argument 
-\family sans
-Rest
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Initial
-\family default
- contains the rest of the word or text of the initial letter(s).
- The argument 
-\family sans
-Options
-\family default
- contains parameters to modify the initial.
- For more information about the possible parameters see the documentation
- of
-\lang japanese
- 
+メニューで挿入し、頭文字にする文字を中に入れてください。非必須引数も使う場合は、必須引数の前にもうひとつ引数を挿入してください。これには、頭文字を修正するパラメ
+ータが入ります。使うことができるパラメータについての詳細は、
 \series bold
 lettrine
 \series default
-, 
+の取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lettrine"
 
 \end_inset
 
-.
- 
-\lang english
-The style itself contains the text that is surrounding the initial.
- The usual style is hereby that the word whose first letter is the initial,
- is printed with 
+をご覧ください。この様式の段落そのものに、頭文字に回り込む文章も入れます。通常、この様式では、最初の文字を頭文字とする単語全体が、
 \shape smallcaps
-small caps
+スモールキャップ体(small caps
 \shape default
-.
+)で印字されます。どこでこの単語が終わるかをLaTeXに指示するには、その単語の後ろにTeXコードで閉波括弧「
+\series bold
+}
+\series default
+」を置いてください。また、様式の終わりには、TeXコードで開波括弧「
+\series bold
+{
+\series default
+」がなくてはなりません。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here are some examples:
+下記がその例です。
 \end_layout
 
 \begin_layout Standard
@@ -36236,13 +34489,11 @@ lettrine
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-No optional argument, the initial is the letter 'I' in the math font 
+非必須引数なし。頭文字は、数式フォント
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
-:
+の「I」。
 \end_layout
 
 \begin_deeper
@@ -36259,25 +34510,35 @@ status open
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
+t
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-t
+
+}
 \end_layout
 
 \end_inset
 
- 
-\lang english
-was in the spring of the year 1894 that all London was interested, and the
- fashionable world dismayed, by the murder of the Honourable Ronald Adair
- under most unusual and inexplicable circumstances.
+ was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newpage newpage
 \end_inset
 
@@ -36286,10 +34547,7 @@ was in the spring of the year 1894 that all London was interested, and the
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Only one line is surrounding the initial, which is formed by two letters
- in standard font and no text is printed in small caps:
+頭文字に回り込む行は1行のみ。頭文字は標準フォントで2文字。スモールキャップ体で印字する文字はなし。
 \end_layout
 
 \begin_deeper
@@ -36313,42 +34571,48 @@ It
 
 \end_inset
 
- 
-\lang english
-was in the spring of the year 1894 that all London was interested, and the
- fashionable world dismayed, by the murder of the Honourable Ronald Adair
- under most unusual and inexplicable circumstances.
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ was in the spring of the year 1894 that all London was interested, and
+ the fashionable world dismayed, by the murder of the Honourable Ronald
+ Adair under most unusual and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Magenta, hanging initial over 3
-\begin_inset space ~
-\end_inset
-
-lines in the math font 
+ぶら下がり頭文字は、数式フォント
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
-, the text 
-\begin_inset Quotes eld
-\end_inset
-
-t was in the spring
-\begin_inset Quotes erd
-\end_inset
-
- is in 
+で3行にかかり、マゼンタ色。「t was in the spring」という文章を
 \shape smallcaps
-small caps
+スモールキャップ体
 \shape default
-; to color the initial, you must insert this command before the initial:
+。頭文字に色をつけるには、頭文字の前に
 \begin_inset Newline newline
 \end_inset
 
@@ -36360,83 +34624,18 @@ renewcommand{
 \backslash
 LettrineFontHook}{
 \backslash
-color{color}}
+color{色}}
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
-where the second 
+というコマンドを挿入しなくてはなりません。ここで、
 \emph on
-color
+色
 \emph default
- can be 
-\begin_inset Quotes eld
-\end_inset
-
-red
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-blue
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-green
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-yellow
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-cyan
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-magenta
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-black
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-white
-\begin_inset Quotes erd
-\end_inset
-
-, and add this command to the document preamble
-\lang japanese
-:
+は「red」・「blue」・「green」・「yellow」・「cyan」・「magenta」・「black」・「white」のいずれかです。また、文書プリアン
+ブルに
 \begin_inset Newline newline
 \end_inset
 
@@ -36455,6 +34654,12 @@ white
 {
 \backslash
 usepackage{color}}{}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+というコマンドを書きこんでおかなくてはなりません。
 \end_layout
 
 \begin_deeper
@@ -36475,8 +34680,6 @@ color{magenta}}
 
 \end_inset
 
-
-\lang english
 
 \begin_inset Note Note
 status collapsed
@@ -36515,27 +34718,35 @@ status open
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
+t was in the spring
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-t was in the spring
+}
 \end_layout
 
 \end_inset
 
- 
-\lang english
-of the year 1894 that all London was interested, and the fashionable world
+ of the year 1894 that all London was interested, and the fashionable world
  dismayed, by the murder of the Honourable Ronald Adair under most unusual
  and inexplicable circumstances.
  The public has already learned those particulars of the crime which came
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -36770,17 +34981,7 @@ target "http://ja.wikipedia.org/wiki/Dia_%28%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6
 \end_layout
 
 \begin_layout Description
-
-\lang english
-GnumericSpreadsheet With this template you can insert spreadsheets
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-tables in the format of 
+Gnumeric表計算表 このひな形では、
 \series bold
 
 \begin_inset CommandInset href
@@ -36792,7 +34993,7 @@ target "http://ja.wikipedia.org/wiki/Gnumeric"
 
 
 \series default
-, 
+・
 \begin_inset CommandInset href
 LatexCommand href
 name "OpenDocument"
@@ -36800,7 +35001,7 @@ target "http://ja.wikipedia.org/wiki/OpenDocument"
 
 \end_inset
 
-, 
+・
 \begin_inset CommandInset href
 LatexCommand href
 name "Microsoft Office XML"
@@ -36808,7 +35009,7 @@ target "http://en.wikipedia.org/wiki/Microsoft_Office_XML_formats"
 
 \end_inset
 
- and 
+・
 \begin_inset CommandInset href
 LatexCommand href
 name "Office Open XML"
@@ -36816,24 +35017,20 @@ target "http://ja.wikipedia.org/wiki/Office_Open_XML"
 
 \end_inset
 
-.
- For this feature LyX must have found the program 
+形式の表計算表を挿入することができます。この機能を使用するには、LyXの初期設定中に
 \family typewriter
 ssconvert
 \family default
- during its configuration.
- This program is part of Gnumeric, so that you must have Gnumeric installed,
- also if you don't have tables in the Gnumeric format.
- For examples and possible limitations have a look at LyX's example file
- 
+プログラムが検出される必要があります。このプログラムはGnumericの一部ですので、Gnumeric以外の形式の表を読み込む場合には、Gnumericが導入済
+みである必要があります。用例と制約については、LyX用例ファイル
 \emph on
 spreadsheet.lyx
 \emph default
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Description
-LilyPond このひな型は、
+Lilypond組版楽譜 このひな型は、
 \series bold
 
 \begin_inset CommandInset href
@@ -36845,14 +35042,11 @@ target "http://ja.wikipedia.org/wiki/GNU_LilyPond"
 
 
 \series default
-プログラムで作成した楽譜の組版に使用されます。
-\lang english
-For LyX's extended support for LilyPond have a look at LyX's example file
- 
+プログラムで作成した楽譜の組版に使用されます。LyXにおけるLilyPond拡張サポートについては、LyX用例ファイル
 \emph on
 lilypond.lyx
 \emph default
-.
+をご覧ください。
 \end_layout
 
 \begin_layout Description
@@ -36868,117 +35062,78 @@ LaTeXとLyXオプション
 \emph on
 pages
 \emph default
-オプションを指定してください。
-\lang english
-The argument of this option is a comma separated list, containing page numbers
- (insert as option 
+オプションを指定してください。このオプションの引数は、コンマ区切りのリストで、ページ番号(オプションを
 \series bold
 pages={3,5,6,8}
 \series default
-), ranges of page numbers (
+の形で入れる)やページ範囲(
 \series bold
 pages={4-9}
 \series default
-) or any combination.
- To insert empty pages use {}.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-
+)、あるいはこれらの組み合わせで指定できます。空のページを入れるには、{}を指定してください。例えば、
 \series bold
 pages={3,{},8-11,15}
 \series default
- will insert page 3, an empty page, and pages 8, 9, 10, 11 and 15.
- Page ranges are specified in the syntax 
+は、3ページ目と空のページ、8・9・10・11・15ページ目を挿入します。ページ範囲は、
 \emph on
-start
+開始頁-終了頁
 \emph default
--
+の文法で指定します。これは、
 \emph on
-stop
+開始頁
 \emph default
-.
- This selects all pages from 
+と
 \emph on
-start
+終了頁
 \emph default
- to 
+の間のすべてのページを選択します。
 \emph on
-stop
+開始頁
 \emph default
-.
- Omitting 
+を省略すると、1ページ目を指定したのと同じ事になり、
 \emph on
-start
+終了頁
 \emph default
- defaults to the first page; omitting 
-\emph on
-stop
-\emph default
- defaults to the last page of the document.
- The last page can also be selected with the keyword 
+を省略すると、文書の最終ページを指定したのと同じ事になります。最終ページは、
 \series bold
 last
 \series default
-.
- (This is only permitted in a page range.) So 
+というキーワードを使って指定することもできます(これはページ範囲指定のみで有効です)。したがって、
 \series bold
 pages=-
 \series default
- will insert all pages of the document and 
+は文書の全ページを挿入することになり、
 \series bold
 pages=last-1
 \series default
- will insert all pages in reverse order.
-\emph on
-\lang japanese
-pages
-\emph default
-オプションを指定しないと、PDFの最初のページのみが挿入されます。
+は全ページを逆順で挿入します。pagesオプションを指定しないと、PDFの最初のページのみが挿入されます。
 \begin_inset Newline newline
 \end_inset
 
 
-\lang english
-The option 
 \series bold
 noautoscale
 \series default
- inserts the pages with their original size, if this option is not given,
- the pages will be resized to fith the width of the page of your document.
- In the tab 
+オプションは、各ページを元々の寸法で挿入します。もしこのオプションが指定されていなければ、各ページは文書のページ幅に合うように大きさが変更されます。
 \family sans
-Size and Rotation
+寸法と回転
 \family default
- you can specify the width and height of the input pages and their rotation.
- If another width than 100
-\begin_inset space \thinspace{}
-\end_inset
-
-Scale% is used, the option 
+タブでは、取り込むページの縦横の大きさと回転角を指定することができます。100縮尺%以外の幅が指定されると、
 \series bold
 noautoscale
 \series default
- will be overwritten.
- For more info and possible options, have a look into the documentation
- of the LaTeX-package 
+オプションは無視されます。詳しい情報と取り得るオプション値については、LaTeXパッケージ
 \series bold
 pdfpages
 \series default
-\lang japanese
- 
+の取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pdfpages"
 
 \end_inset
 
-.
+をご参照ください。
 \begin_inset Index idx
 status collapsed
 
@@ -36992,46 +35147,87 @@ LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-To use this template in a 
+このひな型を
 \family sans
 Beamer
 \family default
- presentation you need to first insert an 
+プレゼンテーションで使用するには、まず
 \family sans
-EndFrame
+フレーム終了
 \family default
- environment and in a subsequent paragraph a TeX Code box containing the
- command 
+環境を挿入して、続く段落でTeXコードボックスを挿入し、
 \series bold
 
 \backslash
 setbeamertemplate{background canvas}{}
 \series default
-.
- Then you can insert as many paragraphs containing the PDFPages template
- as you wish.
- Behind the included PDF pages you can resume the Beamer presentation by
- beginning a new frame or by starting a new section.
- To avoid stray blank pages prior to the PDF pages, make sure to use the
- 
+というコマンドを入力してください。すると、PDFページのひな型を含んだ段落を好きなだけ入れることができるようになります。取り込んだPDFページの後で、新しいフレ
+ームを開始するか、新しい節を開始することによって、Beamerプレゼンテーションに復帰することができます。PDFページの前に空白ページができてしまうのを防ぐため
+に、ひな型を含む段落には、
 \family sans
-Default
+既定
 \family default
- alignment for the paragraph containing the template.
+配置を用いるようにしてください。
 \begin_inset Newline newline
 \end_inset
 
-Here is an included PDF which is rotated by -5°:
-\lang japanese
- 
-\begin_inset External
-	template PDFPages
+下記は、-5°回転させたPDFを取り込んだものです。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
 	filename ../clipart/Abstract.pdf
-	extra LaTeX "noautoscale, pages=-"
 	rotateAngle -5
-	rotateOrigin bottomleft
+	rotateOrigin leftBottom
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+【訳註】LaTeXパッケージ
+\series bold
+pdfpages
+\series default
+は、pdflatexに基づいており、LaTeXでは組版ができない(LaTeXパッケージ
+\series bold
+pdfpages
+\series default
+取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pdfpages"
+
+\end_inset
+
+参照)ため、この外部素材はpLaTeXでは使用することができません。英文版の取扱説明書では、上記のPDFは、
+\family sans
+挿入\SpecialChar \menuseparator
+ファイル\SpecialChar \menuseparator
+外部素材
+\family default
+で
+\family sans
+ひな型
+\family default
+に
+\family sans
+PDFページ
+\family default
+を指定して挿入されていますが、ここでは
+\family sans
+挿入\SpecialChar \menuseparator
+画像
+\family default
+を使用して挿入しています。
+\end_layout
 
 \end_inset
 
@@ -37054,17 +35250,8 @@ reference "sec:画像ダイアログ"
 \family sans
 画像
 \family default
-ダイアログを使って挿入される画像と同じように取り扱うことができます。
-\lang english
-The difference to the normal image input is that only raster images are
- allowed; that means that PDF and EPS-images are not supported
-\lang japanese
-.
- 
-\lang english
-Here is an inserted raster image:
-\lang japanese
- 
+ダイアログを使って挿入される画像と同じように取り扱うことができます。通常の画像の取り込みと違うのは、ラスター画像のみを使うことができることです。つまり、PDFや
+EPS画像はサポートされていません。右記は、ラスター画像を挿入した例です。
 \begin_inset External
 	template RasterImage
 	filename ../clipart/ToolbarEnvBox.png
@@ -37120,10 +35307,10 @@ name "tab:日付挿入方法"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -37476,51 +35663,6 @@ reference "sub:外部文書の第1小節"
 \end_layout
 
 \begin_layout Standard
-大きな文書のうち、特定の章だけの作業を行っている際に、コンパイル時間を短縮したい場合、取り込んだファイルの各々を派生枝の中に入れる方法があります
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-派生枝は、LyX
-\emph on
-ユーザーの手引き
-\emph default
-の
-\emph on
-派生枝
-\emph default
-の節に説明されています。
-\end_layout
-
-\end_inset
-
-。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-LyXのバグにより、どのファイルを取り込むかを決める他の方法として、現在のところ、LaTeXコマンドの
-\series bold
-
-\backslash
-includeonly
-\series default
-を使用することはできません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -37711,6 +35853,51 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+コンパイル時間を短縮したり、執筆中のbookの特定の章のみを配布したいなどの理由で、親文書内の特定の子文書のみを表示させたり書きだしたりしたい場合には、子文書の
+一部を出力から排除することができます。これは、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+子文書
+\family default
+メニューから行うことができます。そこの一覧中の各子文書の
+\family sans
+出力に含める
+\family default
+列をダブルクリックすることによって、その子文書を排除したり取り込んだりすることができます(これは「Input」ではなく「Include」で埋めこまれた文書に対し
+てのみ機能することにご注意ください)。
+\family sans
+カウンタと引用を維持
+\family default
+オプションを有効にすると、LyXは、すべてのページ番号と参照等が、文書全体を処理した時と同じように正しくなるようにします。これは、選択した部分文書が、文書全体の
+コンテクストの中で表現されるのと全く同じようにしておきたい時に便利です。しかしながら、この機能を実現するには、LyXはバックグラウンドで文書全体を処理しなくては
+なりません。したがって、コンパイルの時間を節約し、カウンタや参照が必ずしも正しくなくてもいい場合には、このチェックボックスは外しておいてください。
+\end_layout
+
+\begin_layout Standard
+あるいは、取り込んだファイルの各々を派生枝の中に入れる方法があります
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+派生枝は、LyX
+\emph on
+ユーザーの手引き
+\emph default
+の
+\emph on
+派生枝
+\emph default
+の節に説明されています。
+\end_layout
+
+\end_inset
+
+。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。この方法は、Inputで取り込んだ部分文
+書についても動作するという利点があります。ただし、カウンタと参照は、この方法では維持されるとは限りません。
 \end_layout
 
 \begin_layout Chapter
@@ -38406,8 +36593,8 @@ name "tab:単位"
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -38982,12 +37169,10 @@ DFを使用することをお勧めします。
 DVI
 \family default
 メニューを使用して、DVIに書き出すことができます。
-\lang english
-You can view your document as DVI via the 
 \family sans
-View
+表示
 \family default
- menu.
+メニューから、文書をDVIとして表示させることもできます。
 \end_layout
 
 \begin_layout Section
@@ -39089,11 +37274,8 @@ PostScriptは、「Encapsulated PostScript（EPS：ファイル拡張子「
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can export your document to PostScript using the menu 
+文書は、
 \family sans
-\lang japanese
 ファイル
 \family default
 \SpecialChar \menuseparator
@@ -39106,13 +37288,19 @@ You can export your document to PostScript using the menu
 \family sans
 Postscript
 \family default
-\lang english
-.
- You can view your document as PostScript via the 
+メニューを使用して、PostScriptに書き出すことができます。使用中の文書は、
 \family sans
-View
+表示
 \family default
- menu.
+メニューかツールバーボタン
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
+を使用することでPostScriptとして表示させることができます。
 \end_layout
 
 \begin_layout Section
@@ -39244,22 +37432,34 @@ dvipdfm
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can view your document as PDF via the 
+使用中の文書をPDFとして表示するには、
 \family sans
-View
+表示
 \family default
- menu or by using a toolbar button.
+メニューかツールバーボタン
+\begin_inset Graphics
+	filename ../../images/buffer-view_pdf2.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
+（これは
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+を使用します）を用います。
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-List of dvips color names
+dvips色名一覧
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:List-of-dvips-colornames"
+name "chap:dvips色名一覧"
 
 \end_inset
 
@@ -39291,22 +37491,17 @@ fcolorbox{black}{
 
 \end_inset
 
-white
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}{
+white
 \end_layout
 
 \end_inset
 
-
-\lang english
-Color
-\lang japanese
-
+色
 \begin_inset ERT
 status collapsed
 
@@ -39317,9 +37512,91 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
+ 色名
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+white
+\end_layout
+
+\end_inset
+
+色
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 色名
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fcolorbox{black}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+white
+\end_layout
+
+\end_inset
+
+色
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 色名
 \end_layout
 
 \end_inset
@@ -39351,11 +37628,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-Color
-\lang japanese
-
+色
 \begin_inset ERT
 status collapsed
 
@@ -39366,107 +37639,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Color name
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fcolorbox{black}{
-\end_layout
-
-\end_inset
-
-white
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\lang english
-Color
-\lang japanese
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\lang english
-Color name
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fcolorbox{black}{
-\end_layout
-
-\end_inset
-
-white
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-
-\lang english
-Color
-\lang japanese
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\lang english
-Color name
+ 色名
 \end_layout
 
 \end_inset
@@ -42898,6 +41071,7 @@ W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -42913,6 +41087,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -42929,6 +41104,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -42944,6 +41120,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "arydshln"
@@ -42976,6 +41153,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! arydshln
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -43008,6 +41186,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! booktabs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -43040,6 +41219,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! caption
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "diagbox"
@@ -43072,6 +41252,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! diagbox
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -43104,6 +41285,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! endfloat
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -43136,6 +41318,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! footmisc
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -43168,6 +41351,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -43200,6 +41384,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-script"
@@ -43232,13 +41417,14 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lettrine"
 
 \end_inset
 
-LaTeXパッケージ 
+LaTeXパッケージ
 \series bold
 
 \begin_inset CommandInset href
@@ -43250,14 +41436,10 @@ target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
 
 
 \series default
- 
-\lang english
-and an
-\lang japanese
- 
+及び
 \begin_inset CommandInset href
 LatexCommand href
-name "example"
+name "用例"
 target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo.pdf"
 
 \end_inset

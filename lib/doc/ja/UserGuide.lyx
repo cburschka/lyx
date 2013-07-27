@@ -86,7 +86,7 @@ enumitem
 \font_tt_scale 100
 
 \graphics default
-\default_output_format pdf3
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -1490,23 +1490,19 @@ emacs
 \family typewriter
 cua
 \family default
-ですが、LyX設定の
+ですが、LyX設定の中の
 \family sans
 編集\SpecialChar \menuseparator
 短絡キー
 \family default
-で変更することができます。
-\lang english
-(You can list or change any key bindings as explained in 
-\lang japanese
-第
+で変更することができます(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:短絡キーの編集"
 
 \end_inset
 
-。)
+章に述べられているように、任意のキー割り当てを表示したり変更したりすることができます)。
 \end_layout
 
 \begin_layout Standard
@@ -1588,12 +1584,8 @@ reference "sec:箇条書き"
 \begin_inset Newline newline
 \end_inset
 
-LyXでは、タブキーは、入力補完で候補を受諾するときにのみ使用されます
-\lang english
-, to move the cursor in tables or math matrices or to change the nesting
- level in Itemize or Enumerate
-\lang japanese
-。
+LyXでは、タブキーは、入力補完で候補を受諾するときと、表中または数式の行列中でカーソルを移動するとき、或は箇条書き(記号)または箇条書き(連番)で入れ子の深度
+を変更するときに限って使用されます,
 \end_layout
 
 \begin_layout Labeling
@@ -3225,18 +3217,11 @@ status collapsed
 \end_inset
 
 。
-\lang english
-You can set it for a single paragraph in the 
 \family sans
-Edit\SpecialChar \menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings
+編集\SpecialChar \menuseparator
+段落設定
 \family default
- dialog but this should be used very exceptionally because vertical spacing
- is normally defined in the environment's style.
+ダイアログを使えば、段落毎に設定することもできますが、通常、垂直余白は環境様式中で定義されているので、これを使用するのは非常に例外的な場合にのみ留めるべきです。
 \end_layout
 
 \begin_layout Section
@@ -3521,25 +3506,17 @@ LyXはタイトルページ用のコマンドへのインターフェイスを
 \family sans
 日付
 \family default
-環境がない場合には、LaTeXは自動的に今日の日付を入れます。
-\lang english
-If you don't want a date, use the option 
+環境がない場合には、LaTeXは自動的に今日の日付を入れます。日付を入れたくない時は、
 \family sans
-Suppress default date on front page
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+文書クラス
 \family default
- in the menu 
+メニューの
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document
-\begin_inset space ~
-\end_inset
-
-class
+扉に表示される既定の日付を抑制
 \family default
-.
-\lang japanese
-。
+オプションを有効にしてください。
 \end_layout
 
 \begin_layout Standard
@@ -4224,13 +4201,11 @@ arg   "break-paragraph inverse"
 
 
 \family default
-を使って改行します。
-\lang english
-If you do this at the top level of a list, it returns you to the 
+を使って改行します。箇条書きの最上位層でこうすると、
 \family sans
-Standard
+標準
 \family default
- environment.
+環境に復帰します。
 \end_layout
 
 \begin_layout Standard
@@ -4392,19 +4367,11 @@ reference "sec:入れ子"
 \family sans
 箇条書き（記号）
 \family default
-のラベルです。
-\lang english
-You can customize how these labels are displayed in the output in the 
+のラベルです。これらのラベルの出力中での表示は、
 \family sans
-Document\SpecialChar \menuseparator
-Settings
+文書\SpecialChar \menuseparator
+設定
 \family default
- dialog in the submenu 
-\family sans
-Bullets
-\family default
-.
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -4424,9 +4391,11 @@ status collapsed
 
 \end_inset
 
-
-\lang english
- These customizations are not displayed in LyX.
+ダイアログ中の
+\family sans
+ブリット
+\family default
+メニューで変更することができます。これらの変更は、LyX中での表示には反映されません。
 \end_layout
 
 \begin_layout Standard
@@ -4581,23 +4550,17 @@ LyXが項目の数を数えてラベルを自動的につけ、必要ならば�
 
 \begin_layout Standard
 
-\lang english
-You can customize the type of numbering used in the 
 \family sans
-Enumerate
+箇条書き(連番)
 \family default
- environment, see 
-\lang japanese
-第
+環境中で使用する連番の型を指定することができます。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:箇条書きの微調整"
 
 \end_inset
 
-。
-\lang english
-Such customization only shows up in the printed version, not in LyX.
+章をご参照ください。ここで指定したものは、出力中には反映されますが、LyX中では反映されません。
 \end_layout
 
 \begin_layout Standard
@@ -4683,7 +4646,7 @@ reference "sub:水平方向の空白"
 \end_layout
 
 \begin_layout Description
-Second
+Label
 \begin_inset space ~
 \end_inset
 
@@ -8142,14 +8105,21 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-言語によっては（例えば英語）、文末の句読点の後に、少し広い空白を入れる印刷上の慣習があり、LyXはこのような慣習を遵守します（第
+タイプライターの普及にしたがって、文末に少し広い空白を入れる印刷上の慣習をまねるために、句点の後に空白を二つ入れるのが慣習となった国があります。LyXは、この慣
+習を自動的に反映しますので、空白を二つ入れる必要はありません。しかしながら、短縮形の後の句点の後には文末空白を入れたくはありません（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:略語"
 
 \end_inset
 
-節を参照）。しかしながら、ときによっては、このような場合にも通常の空白がほしい場合があるでしょう。その場合には、単語間の空白を挿入してください（短絡キーは
+節の例を参照）。通常の空白を入力するには、
+\family sans
+挿入\SpecialChar \menuseparator
+整形\SpecialChar \menuseparator
+単語間の空白を挿入
+\family default
+(短絡キー
 \family sans
 
 \begin_inset Info
@@ -8159,7 +8129,7 @@ arg   "space-insert normal"
 
 
 \family default
-）。
+)を選択してください。
 \end_layout
 
 \begin_layout Subsubsection
@@ -8947,19 +8917,12 @@ status collapsed
 文書\SpecialChar \menuseparator
 設定
 \family default
-ダイアログ
-\family sans
 \SpecialChar \menuseparator
 
-\lang english
-Text
-\begin_inset space ~
-\end_inset
-
-Layout
+\family sans
+本文レイアウト
 \family default
-\lang japanese
-
+ダイアログ
 \begin_inset Index idx
 status collapsed
 
@@ -9365,18 +9328,14 @@ arg   "newline-insert newline"
 整形\SpecialChar \menuseparator
 両端揃え改行
 \family default
-メニューから挿入できるもので、
-\lang english
-or with 
-\lang japanese
-
+メニューか
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert linebreak"
 \end_inset
 
-改行すると同時に、その行を頁余白の間の空間をちょうど埋めるように伸長させます。これは、改行によって生み出されてしまう余白によって、両端揃えの段落に「へり」ができ
-てしまうのを避けるために必要なのです。
+で挿入できるもので、改行すると同時に、その行を頁余白の間の空間をちょうど埋めるように伸長させます。これは、改行によって生み出されてしまう余白によって、両端揃えの
+段落に「へり」ができてしまうのを避けるために必要なのです。
 \end_layout
 
 \begin_layout Standard
@@ -10516,13 +10475,10 @@ arg   "font-default"
 を用いるか、
 \family sans
 編集\SpecialChar \menuseparator
-文字形式\SpecialChar \menuseparator
-
-\lang english
-Customized
+文字様式\SpecialChar \menuseparator
+任意設定
 \family default
-\lang japanese
- (
+(
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
@@ -10790,69 +10746,57 @@ This is the Small caps font shape
 色
 \family default
  このスイッチで文字色を調整することができます。ただし、すべてのDVIビューアがカラーを表示できるわけではないことに注意してください。
-\lang english
-Besides 
 \family sans
-No
-\begin_inset space ~
-\end_inset
-
-color
+黒
 \family default
-, which means that the document default color set in 
+・
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Color
+白
 \family default
- for 
+・
 \family sans
-Main
-\begin_inset space ~
-\end_inset
-
-text
+赤
 \family default
- is used, you can choose between 
+・
 \family sans
-Black
+緑
 \family default
-, 
+・
 \family sans
-White
+青
 \family default
-, 
+・
 \family sans
-Red
+シアン
 \family default
-, 
+・
 \family sans
-Green
+マゼンタ
 \family default
-, 
+・
 \family sans
-Blue
+黄
 \family default
-, 
+が指定できるほか、
 \family sans
-Cyan
+色指定なし
 \family default
-, 
+は、
 \family sans
-Magenta
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+色
 \family default
- and 
+で
 \family sans
-Yellow
+本文
 \family default
- text
-\lang japanese
-。
+に指定した既定色が使用されることを意味します。
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
+いろ
 \family roman
 \series medium
 \shape up
@@ -10861,7 +10805,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-からー@カラー ! てきすと@テキスト
+@色 ! てきすと@テキスト
 \end_layout
 
 \end_inset
@@ -11265,12 +11209,9 @@ This is text with Noun on.
 このように、膨大な組合わせの中から選択をすることができます。いったん
 \family sans
 編集\SpecialChar \menuseparator
-文字形式\SpecialChar \menuseparator
-
-\lang english
-Customized
+文字様式\SpecialChar \menuseparator
+任意設定
 \family default
-\lang japanese
 (
 \begin_inset Info
 type  "icon"
@@ -11541,68 +11482,34 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-お使いの文書をASCIIに書き出すには、メニュー
+お使いの文書は、
 \family sans
 ファイル\SpecialChar \menuseparator
 書き出し\SpecialChar \menuseparator
 平文
 \family default
-を用いるか。
-\lang english
-However, this will not export any externally generated material such as
- a BibTeX bibliography (section
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+メニューを用いれば、ASCIIに書き出すことができますが、BibTeX書誌情報のように(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:文献データベース"
 
 \end_inset
 
-
-\lang english
-).
- If your document includes such material, use 
+節参照)、外部で生成されたものは書き出されません。お使いの文書にそのような外部素材が含まれる場合、
 \family sans
-\lang japanese
-ファイル
+ファイル\SpecialChar \menuseparator
+書き出し\SpecialChar \menuseparator
+他の形式とオプション
 \family default
-\SpecialChar \menuseparator
-書き出し
+を選択して、
 \family sans
-\SpecialChar \menuseparator
-
-\lang english
-More
-\begin_inset space ~
-\end_inset
-
-Formats
-\begin_inset space ~
-\end_inset
-
-&
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
- and then select 
-\lang japanese
 平文
 \begin_inset space ~
 \end_inset
 
-(ps2ascii).
-\lang english
-This will first internally export your document to PostScript (generating
- thereby the external material) and then do the conversion to 
-\lang japanese
-ASCII。
+(ps2ascii)
+\family default
+を選んでください。こうすると、文書は、当初内部的にPostScriptに書き出され(したがって外部素材も生成され)、それからASCIIに変換されます。
 \end_layout
 
 \begin_layout Subsubsection
@@ -12232,11 +12139,7 @@ name "sub:ファイルを印刷"
 ファイル\SpecialChar \menuseparator
 印刷
 \family default
-メニューを選択するか(
-\lang english
-shortcut 
-\lang japanese
-
+メニューを選択するか(短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "dialog-show print"
@@ -12311,13 +12214,9 @@ reference "sub:プリンタ"
 \end_layout
 
 \begin_layout Standard
-また、奇数頁あるいは偶数頁のみを印刷することを選ぶこともできます。これは両面印刷をするために使うことができます。片面をひととおり印刷したあとに、その紙を裏返して
-、もう一度プリンタに差し込めばいいのです
-\lang english
-with a printer without a duplexer
-\lang japanese
-。プリンタによっては、印字面を上に出力するものもあれば、印字面を下にするものもあります。印刷する順序を適切に選択すれば、出力された紙の束をソートしなおすことなし
-に、そのまま使うことができます。
+また、奇数頁あるいは偶数頁のみを印刷することを選ぶこともできます。これは、両面印刷機能のないプリンタで両面印刷をするのに使うことができます。片面をひととおり印刷
+したあとに、その紙を裏返して、もう一度プリンタに差し込めばいいのです。プリンタによっては、印字面を上に出力するものもあれば、印字面を下にするものもあります。印刷
+する順序を適切に選択すれば、出力された紙の束をソートしなおすことなしに、そのまま使うことができます。
 \end_layout
 
 \begin_layout Section
@@ -12954,23 +12853,29 @@ LyXは通常、引用符を正しく配置します。具体的には、引用�
 文書\SpecialChar \menuseparator
 設定
 \family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぶんしょ@文書 ! せってい@設定
+\end_layout
+
+\end_inset
+
 ダイアログの
 \family sans
 言語
 \family default
-サブメニューを用いると「
+サブメニューにある
+\family sans
+引用様式
+\family default
+ボックスを用いると、「
 \family sans
 "
 \family default
-」キーの振舞いを変更することができます。
-\end_layout
-
-\begin_layout Standard
-また
-\family sans
-引用形式
-\family default
-選択ボックスでは、各言語用の引用符を選択することができます。選択肢は次の 6つです。
+」キーの振舞いを変更することができます。選択肢は次の 6つです。
 \end_layout
 
 \begin_layout Labeling
@@ -13162,23 +13067,13 @@ this
 \end_layout
 
 \begin_layout Standard
-これらの設定は、
-\family sans
-「"
-\family default
-」キーを押すと、どの文字を配置されることになるかを決定します。
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For single quotes you have to use the shortcut 
+シングルクウォートを使うには、短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert single"
 \end_inset
 
-.
+を用いなくてはなりません。
 \end_layout
 
 \begin_layout Subsection
@@ -13709,11 +13604,7 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-As you can see in the example, greyed out notes can have footnotes
-\lang japanese
-。
+例が示すように、淡色表示注釈には脚注を入れることができます。
 \end_layout
 
 \begin_layout Standard
@@ -13793,12 +13684,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-脚注は、出力では、本文中の脚注ボックスが配置された場所に上付きの数字として表示されます。脚注の文章は、そのページの下端に配置されます。
-\lang english
-The footnote number is calculated by LyX according to the document class
-\lang japanese
-。LyXは、まだ他の付番スキームをサポートしていませんが、特定のLaTeXコマンドを使用すれば他の付番スキームを使用することができます。この点に関しては、取扱説
-明書『埋込オブジェクト篇』に説明があります。
+脚注は、出力では、本文中の脚注ボックスが配置された場所に上付きの数字として表示されます。脚注の文章は、そのページの下端に配置されます。脚注番号は、文書クラスの指
+定に従って、LyXが計算してくれます。LyXは、まだ他の付番スキームをサポートしていませんが、特定のLaTeXコマンドを使用すれば他の付番スキームを使用すること
+ができます。この点に関しては、取扱説明書『埋込オブジェクト篇』に説明があります。
 \end_layout
 
 \begin_layout Section
@@ -14224,61 +14112,20 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A new group can be set by pressing the button 
+新規グループは、
 \family sans
-Open
-\begin_inset space ~
-\end_inset
-
-new
-\begin_inset space ~
-\end_inset
-
-group
+画像
 \family default
- in the
+ダイアログ中の、
 \family sans
- Graphics
+LaTeXとLyXオプション
 \family default
- dialog in the 
+タブにある、
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X options
+新規グループを開く
 \family default
- tab
-\lang japanese
-。既存のグループに加えるには、コンテキスト・メニューから望むグループ名をクリックすれば、そのグループに加えることができます。
+ボタンを押すことで、追加することができます。既存のグループに加えるには、コンテキスト・メニューから望むグループ名をクリックすれば、そのグループに加えることができ
+ます。
 \end_layout
 
 \begin_layout Section
@@ -17408,19 +17255,14 @@ reference "sec:相互参照"
 
 \begin_layout Standard
 通常、図フロートには一つの画像だけを挿入しますが、場合によっては、二つの画像に別々の副キャプションをつけて挿入したいこともあるかもしれません。その場合は、既存の
-図フロートの中に図フロートを入れ込むことによって、実現することができます。
-\lang english
-Note that only the main caption of the float is added to the List of Figures
- as described in section
-\lang japanese
-
+図フロートの中に図フロートを入れ込むことによって、実現することができます。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:図・表・アルゴリズム一覧"
 
 \end_inset
 
-。図
+節に説明されている通り、図一覧には、フロートのメインキャプションのみが表示されることにご注意ください。図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:歪められた二つの像"
@@ -17588,13 +17430,8 @@ type  "icon"
 arg   "float-insert table"
 \end_inset
 
-を使うと挿入することができます。
-\lang english
-They have the same properties as figure floats except that the table in
- the float is normally placed below the caption and not above like for figures
- and that the label begins with 
-\lang japanese
-「tab:」。表
+を使うと挿入することができます。フロート中の表が、図のようにキャプションの上ではなく、通常、下に置かれることと、ラベルが「tab:」で始まることを除けば、表フロ
+ートは、図フロートと変わりません。表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:表フロート"
@@ -18004,11 +17841,7 @@ type  "icon"
 arg   "math-mode on"
 \end_inset
 
-(
-\lang english
-shortcut 
-\lang japanese
-
+(短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
@@ -19499,18 +19332,12 @@ arg   "dialog-show mathdelimiter"
 \end_layout
 
 \begin_layout Standard
-括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。
-\lang english
-The selection will be shown as TeX code
-\lang japanese
-。
-\lang english
-If you want one side not to have a bracket, use 
+括弧を作成するには、左側と右側に使う括弧のボタンをクリックしてください。左右対称オプションを使用すると、選択した括弧型が左右両方に使用されます。選択したものは、
+TeXコードとして表示されます。片側の括弧を無くしたい場合には、
 \family sans
-(none)
+(なし)
 \family default
-\lang japanese
-。LyX上では破線が表示されますが、印刷時には何も印字されなくなります。
+を選択します。すると、LyX上では破線が表示されますが、印刷時には何も印字されなくなります。
 \end_layout
 
 \begin_layout Standard
@@ -19775,31 +19602,16 @@ name "sec:数式番号と参照"
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
-
-\lang english
-Number
-\begin_inset space ~
-\end_inset
-
-Whole
-\begin_inset space ~
-\end_inset
-
-Formula
+数式全体を付番
 \family default
-\lang japanese
-ーか短絡キー
+メニューか、短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-を使用してください。
-\lang english
-The formula number appears in LyX within parentheses.
- The number shown is temporary and may be different when the output is generated
-\lang japanese
-。出力における数式番号の配置と形式は、文書クラスに依存します。この文書では、数式番号は、章番号とともに、ピリオドのあとに印字されます。
+を使用してください。数式番号は、LyX中では括弧付きで表示されます。表示されている番号は一時的なもので、出力が生成されるときには別の番号になる可能性があります。
+出力における数式番号の配置と形式は、文書クラスに依存します。この文書では、数式番号は、章番号とともに、ピリオドのあとに印字されます。
 \begin_inset Formula 
 \begin{equation}
 1+1=2.
@@ -19821,20 +19633,9 @@ arg   "math-number-toggle"
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
-
-\lang english
-Number
-\begin_inset space ~
-\end_inset
-
-This
-\begin_inset space ~
-\end_inset
-
-Line
+現在行を付番
 \family default
-\lang japanese
-ーや短絡キー
+や短絡キー
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-line-toggle"
@@ -19856,16 +19657,16 @@ type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-を使用します。別行立て数式の番号はすべて、ラベルを使って参照することができます。ラベルは、カーソルが数式内にあるときに、
+を使用します。
+\begin_inset VSpace bigskip
+\end_inset
+
+別行立て数式の番号はすべて、ラベルを使って参照することができます。ラベルは、カーソルが数式内にあるときに、
 \family sans
 挿入\SpecialChar \menuseparator
 ラベル
 \family default
-メニューを使うと(
-\lang english
-toolbar button 
-\lang japanese
-
+メニューを使うと(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
@@ -19890,11 +19691,7 @@ p」というラベルをつけています。
 挿入\SpecialChar \menuseparator
 相互参照
 \family default
-メニューを開くと(
-\lang english
-toolbar button 
-\lang japanese
-
+メニューを開くと(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
@@ -20872,7 +20669,7 @@ page
 \begin_inset space ~
 \end_inset
 
-<参照ページ> 「on page」という文とページ番号を印字します。（例）
+<参照ページ> 「on page」という文とページ番号を出力します。（例）
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "fig:歪められた二つの像"
@@ -20883,14 +20680,9 @@ reference "fig:歪められた二つの像"
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-If the label is on the same page, it prints “on this page”; if the label
- is on a facing page in a two-sided document, it prints “on the facing page”;
- if it is on the previous page which is not a facing page, it prints “on
- the previous page”; if it is on the next page which is not a facing page,
- it prints “on the next page”.
- The wording of the printed text also depends on the used document class.
+ラベルが同じページにある場合は、「on this page」と出力し、ラベルが両面文書の見開きにある場合には、「on the facing page」と出力しま
+す。見開きにない前のページにラベルがあるときは、「on the previous page」と出力し、見開きにない次のページにラベルがあるときは、「on
+ the next page」と出力します。出力される文の言葉遣いは、使用する文書クラスに依存します。
 \end_layout
 
 \begin_layout Description
@@ -20917,29 +20709,19 @@ reference "fig:歪められた二つの像"
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-If the label is on the same page, this format behaves like 
+ラベルが同じページにあるときは、本書式は
 \family sans
 \series bold
-<reference>
+<参照>
 \family default
 \series default
-; otherwise it behaves like 
+と出力しますが、そうでない時には、
 \family sans
 \series bold
-on
-\begin_inset space ~
-\end_inset
-
-page
-\begin_inset space ~
-\end_inset
-
-<page>
+on page <ページ>
 \family default
 \series default
-.
+のように出力します。
 \end_layout
 
 \begin_layout Description
@@ -21138,11 +20920,8 @@ arg   "bookmark-goto 0"
 \end_layout
 
 \begin_layout Standard
-もし相互参照が存在しないラベルを参照していると、出力では、
-\lang english
-you will see in LyX “BROKEN” in the cross-reference label and
-\lang japanese
-参照の代わりに二つのクエスチョンマークが印字されます。
+相互参照が、存在しないラベルを参照しているときには、LyX中の相互参照ラベルに「破損」と表示される一方、出力では、参照の代わりに二つのクエスチョンマークが印字さ
+れます。
 \end_layout
 
 \begin_layout Standard
@@ -21656,26 +21435,18 @@ key "lyxcredit"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To align all entries in the bibliography environment you can set a longest
- label via the menu 
+書誌情報環境中の全項目を揃えるには、
 \family sans
-Edit\SpecialChar \menuseparator
-Paragraph
-\begin_inset space ~
-\end_inset
-
-Settings
+編集\SpecialChar \menuseparator
+段落設定
 \family default
- (toolbar button 
+(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-).
- All entries are then indented in the output by the width of the given label.
+)で最長のラベルを指定してください。すると、すべての項目は、指定したラベルの幅だけ行頭下げされて出力されます。
 \end_layout
 
 \begin_layout Subsection
@@ -21838,12 +21609,16 @@ target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 \end_layout
 
 \begin_layout Standard
-データベースから書誌情報を生成するのに、LyXはBibTeXというプログラムを使用します。文書設定の
+データベースから書誌情報を生成するのに、LyXはBibTeXというプログラムを使用します。
 \family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
 書誌情報
 \family default
-面か、LyX設定の
+か、
 \family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
 出力\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
@@ -21858,7 +21633,11 @@ status collapsed
 
 eX
 \family default
-面で指定すれば、BibTeXの派生版のうち、どれを用いるかを選ぶことができます。以下の派生版のいずれかを選ぶことができます。
+で指定すれば、BibTeX派生版のどれを
+\family sans
+処理子
+\family default
+として用いるかを選ぶことができます。以下の派生版のいずれかを選ぶことができます。
 \end_layout
 
 \begin_layout Description
@@ -22873,16 +22652,12 @@ LaTeXぱっけーじ @ LaTeXパッケージ ! splitidx
 \end_inset
 
 というパッケージを使用しています。このパッケージは、最近のLaTeX頒布版には全て収録されています。ご利用の頒布版にない場合には、TeXカタログ
-\lang english
-
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
 
 \end_inset
 
-
-\lang japanese
 を参照してください。パッケージには、LaTeXスタイルが収録されているだけでなく、導入が必要な特定のプリプロセッサも含まれていることに注意してください。詳細は、
 パッケージの取扱説明書をご覧ください。
 \end_layout
@@ -23932,31 +23707,12 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Each type of branch is allowed to have its specific style defined in layout
- files (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-any branch inset can be automatically wrapped by your own LaTeX commands.).
- For this advanced usage, see the 
-\emph on
-Customization
-\emph default
- manual, section 
-\begin_inset Quotes eld
-\end_inset
-
-Flex insets and InsetLayout
-\begin_inset Quotes erd
-\end_inset
-
-).
+派生枝毎にレイアウトファイルで定義された段落様式を指定することができます(例えば、任意の派生枝を指定したLaTeXコマンドで自動的にくるむことができます)。この
+ような進んだ使い方については、取扱説明書
+\family sans
+カスタマイズ篇
+\family default
+の「自由差込枠と差込枠レイアウト」の節をご覧ください。
 \end_layout
 
 \begin_layout Section
@@ -23981,8 +23737,14 @@ PDFとくせい@PDF特性
 \end_layout
 
 \begin_layout Standard
-文書設定ダイアログは、PDF特性メニューのなかで、お使いの文書のPDF出力用の特別なオプションを指定できるようになっています。ここで指定されるオプションのすべて
-は、LaTeXパッケージの
+
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+PDF特性
+\family default
+ダイアログでは、お使いの文書のPDF出力用の特別なオプションを指定できるようになっています。ここで指定されるオプションは、すべて、DVI出力中とPDF出力中の相
+互参照をリンクするLaTeXパッケージである、
 \series bold
 hyperref
 \series default
@@ -23996,14 +23758,7 @@ Latexぱっけーじ@LaTeXパッケージ ! hyperref
 
 \end_inset
 
-を利用します
-\lang english
-which will link all cross-references in the DVI- and PDF-output.
- This means that the reader of your document will be able to click on a
- table of contents entry or on a reference to move to the cross-referenced
- part of the document
-\lang japanese
-。
+を利用します。これによって、文書の読者は、目次の項目や参照をクリックして、文中の相互参照先に移動することができるようになります。
 \end_layout
 
 \begin_layout Standard
@@ -24024,105 +23779,62 @@ which will link all cross-references in the DVI- and PDF-output.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can specify in the dialog tab 
+ダイアログの
 \family sans
-Hyperlinks
+ハイパーリンク
 \family default
- how the links will look and if links for bibliographical backreferences
- are created.
- The 
+タブでは、リンクをどのように表示するか、書誌情報への逆参照リンクを作成するかどうかを指定することができます。
 \family sans
-Break
-\begin_inset space ~
-\end_inset
-
-links
-\begin_inset space ~
-\end_inset
-
-over
-\begin_inset space ~
-\end_inset
-
-lines
+リンクを分割して改行
 \family default
- option allows long links to be split; 
+オプションを指定すると、長いリンクを分割することが許可されます。
 \family sans
-No
-\begin_inset space ~
-\end_inset
-
-frames
-\begin_inset space ~
-\end_inset
-
-around
-\begin_inset space ~
-\end_inset
-
-links
+リンクの周りに枠を付けない
 \family default
- and 
+オプションと
 \family sans
-Color
-\begin_inset space ~
-\end_inset
-
-links
+色付きリンク
 \family default
- both turn off the default behavior of enclosing all links in frames; 
+オプションは、共に、リンクすべてに囲み枠を付ける既定の挙動を変更して、枠を付けなくします。
 \family sans
-Color
-\begin_inset space ~
-\end_inset
-
-links
+色付きリンク
 \family default
- colors the different links.
- The default colors are:
+は、リンク毎に色を付けます。既定色は、
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \color magenta
-\lang english
-magenta
+マゼンタ
 \color inherit
- for hyperlinks and URLs
+ ハイパーリンクとURLの色
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \color red
-\lang english
-red
+赤
 \color inherit
- for links
+ リンクの色
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \color green
-\lang english
-green
+緑
 \color inherit
- for citations
+ 引用の色
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-but you can change these in the field 
+となっていますが、これらは
 \family sans
-Additional options
+追加オプション
 \family default
-.
- For example, in this document they were changed with the additional options:
+フィールドで変更することができます。例えば、本文書では、
 \end_layout
 
 \begin_layout Standard
@@ -24132,15 +23844,16 @@ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue
 \end_layout
 
 \begin_layout Standard
+という追加オプションを使って、色を変更しています。
+\end_layout
 
-\lang english
-If the option 
+\begin_layout Standard
+
 \family sans
-Backreferences
+逆参照
 \family default
- is set, the hyperlinks will appear in the bibliography after the different
- entries, showing, depending on the option selected, the number of the section,
- slide or page where the entry is referenced.
+オプションを指定すると、選択したオプションによって、項目が参照されている節番号やスライド番号あるいはページ数が、書誌情報中の各項目の後ろに表示されるようになりま
+す。
 \end_layout
 
 \begin_layout Standard
@@ -24231,15 +23944,11 @@ arg   "ert-insert"
 \end_inset
 
 を使用して挿入することができます(短絡キー
-\lang english
-
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-
-\lang japanese
 )。枠は左クリックで開き、右クリックから
 \family sans
 差込枠を閉じる
@@ -24400,15 +24109,8 @@ Latexぱっけーじ@LaTeXパッケージ ! caption
 パッケージが必要とするものであることを知ります。パッケージを使用するには、文書プリアンブル（
 \family sans
 文書\SpecialChar \menuseparator
-設定
-\family default
-メニュー\SpecialChar \menuseparator
-
-\family sans
-\lang english
+設定\SpecialChar \menuseparator
 LaT
-\lang japanese
-
 \begin_inset ERT
 status collapsed
 
@@ -24419,16 +24121,9 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-eX
-\begin_inset space ~
-\end_inset
-
-Preamble
+eXプリアンブル
 \family default
-\lang japanese
-）で
+メニュー）で
 \end_layout
 
 \begin_layout Standard
@@ -24986,29 +24681,16 @@ name "fig:ページレイアウト"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note
+【註】
 \series default
-: some document classes implement their own customized page headers and
- footers if 
-\family sans
-Page
-\begin_inset space ~
-\end_inset
-
-style
-\family default
- is set to “Default”.
- Check what these are before you specify your own customized page headers
- and footers.
+文書クラスによっては、ヘディング様式を「既定値」で、固有のページヘッダやページフッタを実装するものもあります。自製のページヘッダやページフッタを指定する前に、そ
+れらの実装がどうなっているかを確認してください。
 \end_layout
 
 \end_inset
@@ -25467,26 +25149,15 @@ pnmcrop
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you would like to see everything but your math formulas typeset by LaTeX,
- set 
+LaTeXが組版する数式以外すべてを見たい場合には、
 \family sans
-Instant
-\begin_inset space ~
-\end_inset
-
-Preview
+自動プレビュー
 \family default
- to 
+を
 \family sans
-No
-\begin_inset space ~
-\end_inset
-
-math
+数式を除く
 \family default
-.
+にしてください。
 \end_layout
 
 \begin_layout Standard
@@ -25502,8 +25173,6 @@ math
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -25768,14 +25437,11 @@ LaTeXソースコード
 メニューを使用すると、ウィンドウが開いてLaTeXコードを見ることができるようになります。このウィンドウには、現在カーソルがある段落全体のソースを表示します。L
 yXのメインウィンドウで文書の一部を選択すれば、（1段落以上を選択しているときには）選択部分のみがソースコードとして表示されます。文書全体をソースとして閲覧した
 いときには、ソース閲覧ウィンドウにある、そのオプションを有効にしてください。
-\lang english
-If you check 
 \family sans
-Automatic update
+自動更新
 \family default
-, you can see the changes as you make them in LyX; but note that if you
- have several documents open, this will slow things down as LyX updates
- them all, not just the one which is open at the time.
+を有効にすると、LyXで変更を加えると同時に、その変化を見ることができます。ただし、複数の文書を開いている場合には、LyXは、開かれている文書に限らず、全ての文
+書を更新するため、動作が遅くなることに注意してください。
 \end_layout
 
 \begin_layout Section
@@ -26249,29 +25915,13 @@ arg   "dialog-show spellchecker"
 \family default
 ダイアログで設定される文書言語によって決定されます。文書言語用の辞書を持っていない場合には、スペルチェックを実行しようとするとエラーメッセージが表示されます。ス
 ペルチェッカーダイアログの一番上の欄で、いずれかの言語を選ぶことで、単語の言語を指定することができます。LyXは複数の言語を含む文書でも正しくスペルチェックを行
-うことができます。
-\lang english
-This works if you have set the language of the text parts using the 
-\family sans
-Text
-\begin_inset space ~
-\end_inset
-
-Style
-\family default
- dialog
-\lang japanese
- (
+うことができます。これは、本文の言語を、文字様式ダイアログ(
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) 
-\lang english
-and have the spell checker dictionaries installed
-\lang japanese
-。それが為されていれば、LyXは、自動的に適当な辞書ファイルを切り替えて用います。
+)で設定し、さらにスペルチェッカーの辞書が導入済みであれば、動作します。それが為されていれば、LyXは、自動的に適当な辞書ファイルを切り替えて用います。
 \end_layout
 
 \begin_layout Standard
@@ -26281,7 +25931,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（訳註）
+【訳註】
 \series default
 通常、日本語用のスペルチェック用辞書はないので、日本語はこの場合に該当します。例えば、スペルチェッカーが
 \family sans
@@ -26313,11 +25963,7 @@ aspell (library)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-All spell-checker dictionaries supported by LyX can be downloaded from here
-\lang japanese
-:
+LyXがサポートしているスペルチェッカー用辞書は、
 \begin_inset Newline newline
 \end_inset
 
@@ -26336,18 +25982,7 @@ http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-There are 2
-\begin_inset space ~
-\end_inset
-
-files for each language.
- To install a dictionary on Windows, copy the 2
-\begin_inset space ~
-\end_inset
-
-files into LyX's installation subfolder 
+からダウンロードすることができます。各言語用には、それぞれ2つずつファイルがあるので、辞書を導入するには、この2つのファイルをLyXが導入されているサブフォルダ
 \family sans
 ~
 \backslash
@@ -26355,21 +25990,7 @@ Resources
 \backslash
 dicts
 \family default
- and restart LyX.
-\begin_inset Newline newline
-\end_inset
-
-With Linux one needs to install the packages for the desired language.
- The number of these packages vary depending on the Linux distribution,
- but in most cases these are 
-\family sans
-aspell-xx, hunspell-xx, myspell-xx
-\family default
-, etc., where 
-\family sans
-xx
-\family default
- is the language code.
+にコピーし、LyXを再起動してください。
 \end_layout
 
 \begin_layout Subsection
@@ -26378,17 +25999,13 @@ xx
 
 \begin_layout Standard
 
-\lang english
-In the menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences
-\lang japanese
-\SpecialChar \menuseparator
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
 言語設定\SpecialChar \menuseparator
 スペルチェッカー
 \family default
-面では、以下の設定を行うことができます。
+メニューでは、以下の設定を行うことができます。
 \end_layout
 
 \begin_layout Description
@@ -26556,20 +26173,12 @@ th_en_EN-v2.dat
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you have LibreOffice or OpenOffice and its thesaurus installed on a Linux
- system, these files should be already on your system.
- On Windows you can choose in LyX's installer wich dictionaries should be
- installed.
+LibreOfficeまたはOpenOfficeを所有していて、Linuxシステム上に類語辞典が導入されていれば、これらのファイルは、お使いのシステム上に既に存
+在しているはずです。Windowsでは、LyX導入プログラム上で、どの辞書を導入するべきか選択することができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-All thesaurus dictionaries supported by LyX can be downloaded from here
-\lang japanese
-:
+LyXがサポートしている類語辞典用辞書は、
 \begin_inset Newline newline
 \end_inset
 
@@ -26588,13 +26197,7 @@ http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-To install a dictionary, copy the 2
-\begin_inset space ~
-\end_inset
-
-files into LyX's installation subfolder 
+からダウンロードすることができます。辞書を導入するには、2つのファイルをLyXが導入されているサブフォルダ
 \family sans
 ~
 \backslash
@@ -26602,7 +26205,7 @@ Resources
 \backslash
 thes
 \family default
- and restart LyX.
+にコピーし、LyXを再起動してください。
 \end_layout
 
 \begin_layout Subsection
@@ -26730,29 +26333,14 @@ name "sec:変更追跡機能"
 取り消し文章
 \strikeout default
 \color inherit
-のように表示されるようになります。色は、変更した執筆者によって異なります。
-\lang english
-You can change the color in 
+のように表示されるようになります。色は、変更した執筆者によって異なります。この色は、
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Look
-\begin_inset space ~
-\end_inset
-
-&
-\begin_inset space ~
-\end_inset
-
-feel
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+操作性\SpecialChar \menuseparator
+色
 \family default
-\SpecialChar \menuseparator
 
-\family sans
-Colors
-\family default
-\lang japanese
-。
 \begin_inset Index idx
 status collapsed
 
@@ -26762,7 +26350,7 @@ status collapsed
 
 \end_inset
 
-執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
+で変更することができます。執筆者と変更の日時は、カーソルを変更箇所にあわせると、LyXのステータスバーに表示されます。ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "changes-merge"
@@ -27145,25 +26733,22 @@ arg   "note-next"
 
 \begin_layout Standard
 
-\lang english
-Not all changes are (yet) visualized, especially no format changes like
- from 
 \emph on
-normal
+ミディアム体
 \emph default
- to 
+から
 \emph on
-bold
+ボールド体
 \emph default
- font or 
+へのフォント変更や、
 \emph on
-Standard
+標準
 \emph default
- to 
+段落から
 \emph on
-Description
+箇条書き(記述)
 \emph default
- paragraph.
+段落への変更といった、書式変更をはじめとして、(まだ)全ての変更追跡が視覚化されているわけではありません。
 \end_layout
 
 \begin_layout Standard
@@ -27321,7 +26906,8 @@ status collapsed
 
 \family sans
 文書\SpecialChar \menuseparator
-設定
+設定\SpecialChar \menuseparator
+言語
 \family default
 ダイアログでは、お使いの言語用に、言語と文字コードを設定することができます。
 \end_layout
@@ -27344,11 +26930,25 @@ reference "sub:特殊文字"
 
 \begin_layout Subsection
 キーボード配置表の設定
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:キーボード配置表の設定"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-例えば、米国向けキーボードを持っていて、英語ではない言語で執筆したい場合、別のキー配置を使用することができます。米国向けキーボードでイタリア語を書きたい場合には
-、LyXでイタリア語キー配置を使うように設定できます。設定ダイアログでは、二つまでのキーボード配置表を選ぶことができます。第
+例えば、米国向けキーボードを持っていて、英語ではない言語で執筆したい場合、別のキー配置を使用することができます。例えば、イタリア語を書きたい場合には、LyXでイ
+タリア語キー配置を使うように設定できます。
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+編集\SpecialChar \menuseparator
+キーボード/マウス
+\family default
+ダイアログでは、二つまでのキーボード配置表を選ぶことができます。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:キーボード配置表"
@@ -28560,122 +28160,40 @@ reference "sec:文書の断片プレビュー"
 \begin_inset space ~
 \end_inset
 
-[<
-\lang english
-output format
-\lang japanese
->]
+[<出力形式>]
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu entry generates the output in the format you have specified as
- default output format for the document (menu 
+このメニュー項目は、当該文書の既定出力形式として指定した形式(
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-
-\lang english
-) or in the LyX preferences (menu 
+章参照)、若しくはLyXの設定で指定した形式で(
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-
-\lang english
-) and opens it in an appropriate viewer.
- The viewer can be set or changed in the preferences (menu 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats\SpecialChar \menuseparator
-Viewer
-\family default
-; see section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-
-\lang english
-).
- The default viewers are set by LyX when it is first configured.
-\lang japanese
-既定の出力形式は、
+章参照)出力を生成した後、適切な閲覧プログラムで開きます。既定の閲覧プログラムは、LyXの初回起動設定時に設定されます。既定の出力形式は、
 \family sans
 PDF
 \begin_inset space ~
@@ -28734,38 +28252,22 @@ Lyxのさいせってい@LyXの再設定
 \end_layout
 
 \begin_layout Standard
-メニューを実行すると、閲覧プログラムが実行されます。
-\lang english
-The viewer can be set or changed in the preferences (menu 
+メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、LyX設定で(
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats\SpecialChar \menuseparator
-Viewer
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+閲覧プログラム
 \family default
-; see 
-\lang japanese
-第
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-
-\lang english
-)
-\lang japanese
-。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
+章参照)設定変更ができます。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
 \end_layout
 
 \begin_layout Subsection
@@ -28773,11 +28275,7 @@ reference "sec:ファイル形式"
 \begin_inset space ~
 \end_inset
 
-[<
-\lang english
-output format
-\lang japanese
->]
+[<出力形式>]
 \end_layout
 
 \begin_layout Standard
@@ -28817,71 +28315,36 @@ output format
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The format used by this function is the default output format as specified
- in the document settings (menu 
+この機能で使用される形式は、文書設定(
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see 
-\lang japanese
-第
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-
-\lang english
-) or in the preferences (menu 
+章参照)若しくはLyX設定で(
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see 
-\lang japanese
-第
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-
-\lang english
-).
+章参照 )指定された既定出力書式です。
 \end_layout
 
 \begin_layout Subsection
@@ -28901,71 +28364,36 @@ reference "sec:ファイル形式"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The format used by this function is the default output format as specified
- in the document settings (menu 
+この機能で使用される形式は、文書設定(
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see 
-\lang japanese
-第
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:出力ファイル形式"
 
 \end_inset
 
-
-\lang english
-) or in the preferences (menu 
+章参照)若しくはLyX設定で(
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar \menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats\SpecialChar \menuseparator
-Default
-\begin_inset space ~
-\end_inset
-
-Output
-\begin_inset space ~
-\end_inset
-
-Format
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
 \family default
-; see 
-\lang japanese
-第
+メニュー:第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
 
 \end_inset
 
-
-\lang english
-).
+章参照 )指定された既定出力書式です。
 \end_layout
 
 \begin_layout Subsection
@@ -28975,65 +28403,14 @@ reference "sec:ファイル形式"
 \begin_layout Standard
 
 \family sans
-\lang english
-Split
-\begin_inset space ~
-\end_inset
-
-View
-\begin_inset space ~
-\end_inset
-
-into
-\begin_inset space ~
-\end_inset
-
-Left
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-Right
-\begin_inset space ~
-\end_inset
-
-Half
+表示を左右半々に分割
 \family default
- will split LyX's main window vertically while  
+は、LyXの主ウィンドウを垂直に分割し、
 \family sans
-Split
-\begin_inset space ~
-\end_inset
-
-View
-\begin_inset space ~
-\end_inset
-
-into
-\begin_inset space ~
-\end_inset
-
-Upper
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-Lower
-\begin_inset space ~
-\end_inset
-
-Half
+表示を上下半々に分割
 \family default
- will split it horizontally
-\lang japanese
-。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示するのに、複数回分割する
-こともできます。分割表示をやめるには、
+は、水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示する
+のに、複数回分割することもできます。分割表示をやめるには、
 \family sans
 現在の表示を閉じる
 \family default
@@ -29188,26 +28565,16 @@ name "sub:特殊文字"
 \end_layout
 
 \begin_layout Description
-記号 
-\lang english
-Opens the 
+記号 これは
 \family sans
-Symbols
+記号
 \family default
- dialog which allows you to insert any character that can be output by your
- LaTeX system.
- By default groups of characters are displayed in character categories;
- the available characters depend on the LaTeX-packages you have installed.
- You can get a complete display by checking 
+ダイアログを開き、ご使用のLaTeXシステムで出力できる任意の文字を挿入できるようにします。既定の設定では、文字カテゴリ中に文字のグループが表示されます。使用で
+きる文字は、どのLaTeXパッケージが導入済みかに依存します。
 \family sans
-Display
-\begin_inset space ~
-\end_inset
-
-all
+すべて表示
 \family default
-\lang japanese
-。
+チェックボックスを有効にすれば、すべての文字が表示されます。
 \begin_inset Newline newline
 \end_inset
 
@@ -29269,29 +28636,17 @@ reference "sub:略語"
 \end_layout
 
 \begin_layout Description
-シングルクォート 引用符「
+シングルクォート 
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+言語
+\family default
+ダイアログで選択した様式で、引用符「
 \begin_inset Quotes ers
 \end_inset
 
-」を挿入する
-\lang english
-in the quotation marks style selected in the 
-\family sans
-Document
-\lang japanese
-\SpecialChar \menuseparator
-
-\lang english
-Settings
-\lang japanese
-\SpecialChar \menuseparator
-
-\lang english
-Language
-\family default
- dialog
-\lang japanese
-。
+」を挿入する。
 \end_layout
 
 \begin_layout Description
@@ -29330,16 +28685,10 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-Inserts a box where you can insert symbols from the International Phonetic
- Alphabet (IPA) and opens a toolbar which provides a large set of these
- symbols.
- To use this feature you must have the LaTeX-package 
+ 国際音声記号(IPA)の記号を入れることのできるボックスを挿入します。この機能を使用するには、LaTeXパッケージ
 \series bold
 tipa
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -29350,22 +28699,20 @@ Latexぱっけーじ@LaTeXパッケージ ! tipa
 
 \end_inset
 
-
-\lang english
- installed.
+が導入されている必要があります。
 \begin_inset Newline newline
 \end_inset
 
-More information about this feature can be found in the 
+この機能についての詳細は、
 \emph on
-Linguistics
+言語学向け説明書
 \emph default
- manual (
+(
 \family sans
-Help\SpecialChar \menuseparator
-Specific Manuals
+ヘルプ\SpecialChar \menuseparator
+用途別説明書
 \family default
-)
+)に説明があります。
 \end_layout
 
 \begin_layout Subsection
@@ -29381,8 +28728,6 @@ Specific Manuals
 \begin_inset script superscript
 
 \begin_layout Plain Layout
-
-\lang english
 a, b
 \end_layout
 
@@ -29396,8 +28741,6 @@ a, b
 \begin_inset script subscript
 
 \begin_layout Plain Layout
-
-\lang english
 3x
 \end_layout
 
@@ -29619,23 +28962,15 @@ reference "sec:フロート"
 
 \end_inset
 
-節に説明があります
-\lang english
-and in detail the chapter 
+節に説明がある他、取扱説明書『
 \emph on
-Floats
+埋込オブジェクト篇
 \emph default
- of the 
+』の
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+フロート
 \emph default
- manual
-\lang japanese
-。
+の章に詳細な説明があります。
 \end_layout
 
 \begin_layout Subsection
@@ -29658,20 +28993,14 @@ reference "sec:注釈"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserts a branch inset, if any, and allowing you to create and insert a
- new branch.
- Branches are described in
-\lang japanese
-第
+既存の派生枝差込枠を挿入できる他、新規派生枝を作成して挿入できます。派生枝は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:派生枝"
 
 \end_inset
 
-。
+節に説明があります。
 \end_layout
 
 \begin_layout Subsection
@@ -29680,20 +29009,22 @@ reference "sec:派生枝"
 
 \begin_layout Standard
 文書クラスに依存した差込枠を挿入します。これらの差込枠は、ある文書クラスのレイアウトファイルに定義されているときのみ存在します。一つの例は、三つのユーザ設定差込
-枠を持つ文書クラス「article (elsevier)」です。取扱説明書
+枠を持つ文書クラス「article (elsevier)」です。取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
-の
+』の
 \emph on
-Flex insets and InsetLayout
+文書クラスを新規に導入する
 \emph default
-\lang english
- in 
+→
 \emph on
-Installing New Document Classes, The Layout file format 
+レイアウトファイルの書式
 \emph default
-\lang japanese
+→
+\emph on
+自由差込枠と差込枠レイアウト
+\emph default
 の節に、ユーザ設定差込枠の定義の仕方が述べられています。
 \end_layout
 
@@ -29712,21 +29043,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここでは、文書に他のLyXファイルの内容をインクルードしたり挿入したりすることができます。
-\lang english
-For more information see
-\lang japanese
- 取扱説明書
+ここでは、文書に他のLyXファイルの内容をインクルードしたり挿入したりすることができます。詳しい情報については、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-の
+』の
 \emph on
-\lang english
-External Document Parts
+外部文書構成要素
 \emph default
-\lang japanese
-の章にあります。
+の章をご覧ください。
 \end_layout
 
 \begin_layout Subsection
@@ -29751,13 +29076,13 @@ reference "sec:ミニページ"
 
 \end_inset
 
-節に説明されているミニページ・ボックスを挿入します。LyXでサポートされているボックスの全型は、取扱説明書
+節に説明されているミニページ・ボックスを挿入します。LyXでサポートされているボックスの全型は、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-の
+』の
 \emph on
-Boxes
+ボックス
 \emph default
 の章に詳述されています。
 \end_layout
@@ -29839,13 +29164,13 @@ reference "sec:フロート"
 
 \end_inset
 
-節に説明があります。長尺表のキャプションについては、取扱説明書
+節に説明があります。長尺表のキャプションについては、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-の
+』の
 \emph on
-Longtable Captions
+長尺表のキャプション
 \emph default
 の章に述べられています。
 \end_layout
@@ -29885,30 +29210,22 @@ reference "sec:用語集"
 \end_layout
 
 \begin_layout Standard
-第
+表の行と列を指定するダイアログが開きます。表は第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:表"
 
 \end_inset
 
-節に説明されているように、表を挿入します
-\lang english
-and in detail in the chapter 
+節に説明されています。より詳しくは、取扱説明書『
 \emph on
-Tables
+埋込オブジェクト篇
 \emph default
- of the 
+』の
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+表
 \emph default
- manual
-\lang japanese
-。
+の章をご覧ください。
 \end_layout
 
 \begin_layout Subsection
@@ -30031,13 +29348,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-プログラムリスト枠を挿入します。プログラムリストについては、取扱説明書
+プログラムリスト枠を挿入します。プログラムリストについては、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-の
+』の
 \emph on
-Program Code Listing
+プログラムコードリスト
 \emph default
 の章に述べられています。
 \end_layout
@@ -30047,13 +29364,13 @@ Program Code Listing
 \end_layout
 
 \begin_layout Standard
-現在の日付を挿入します。表示形式は、LyXのメニューで使用されている言語の日付形式に依存します。LyXにはさまざまな日付の挿入方法があり、取扱説明書
+現在の日付を挿入します。表示形式は、LyXのメニューで使用されている言語の日付形式に依存します。LyXにはさまざまな日付の挿入方法があり、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-の
+』の
 \emph on
-External Material
+外部素材
 \emph default
 の節に説明と比較があります。
 \end_layout
@@ -30129,25 +29446,15 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Standard
-保存したしおりは、文書が閉じられるまで有効です。
-\lang english
-The submenu 
+保存したしおりは、文書が閉じられるまで有効です。サブメニュー
 \family sans
-Clear
-\begin_inset space ~
-\end_inset
-
-Bookmarks
+のしおり消去
 \family default
- allows you to clear bookmarks while the submenu 
+はしおりを消去し、
 \family sans
-Navigate
-\begin_inset space ~
-\end_inset
-
-Back
+元の位置に戻る
 \family default
- jumps to the position in the document where you recently changed something.
+は、文書中で直近に変更を加えた位置にジャンプします。
 \end_layout
 
 \begin_layout Subsection
@@ -30231,11 +29538,9 @@ eXログ
 \end_layout
 
 \begin_layout Standard
-文書を閲覧したり書き出すことによってLaTeXが実行されると、このメニューは有効になります。これは、使用したLaTeXプログラムのログファイルを表示します。
-\lang english
-You can go to the next error or the next warning, search, copy something
- to the clipboard or update the view.
- With the help of the logfile experts can find in it reasons for LaTeX-errors.
+文書を閲覧したり書き出すことによってLaTeXが実行されると、このメニューは有効になります。これは、使用したLaTeXプログラムのログファイルを表示します。次の
+エラーや次の警告に飛んだり、検索したり、クリップボードにコピーしたり、表示を更新したりすることができます。ログファイルを見ることで、熟練者には、LaTeXエラー
+の原因を発見する手助けとなるでしょう。
 \end_layout
 
 \begin_layout Subsection
@@ -30371,11 +29676,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Check T
-\lang japanese
-
 \begin_inset ERT
 status collapsed
 
@@ -30386,11 +29687,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
 eX
-\lang japanese
-
 \begin_inset Index idx
 status collapsed
 
@@ -30405,13 +29702,10 @@ ChkTeX
 
 \begin_layout Standard
 
-\lang english
-Generates with the help of the program 
 \family typewriter
 ChkTeX
 \family default
- a log of possible LaTeX-errorsand displays it in a dialog.
- This feature is not available on Windows.
+プログラムの補助を借りて、潜在しているLaTeXエラーを検出したログを生成し、ダイアログ中に表示します。本機能はWindowsでは利用できません。
 \end_layout
 
 \begin_layout Subsection
@@ -30441,31 +29735,19 @@ Texじょうほう@TeX情報
 
 \begin_layout Standard
 お使いのLaTeXシステムに導入されているクラスとスタイルの一覧を表示します。
-\lang english
-Use the option 
 \family sans
-Show
-\begin_inset space ~
-\end_inset
-
-path
+パスを表示
 \family default
- to see the full filename paths.
+オプションを使用すると、完全ファイルパスを表示することができます。
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Compare
-\lang japanese
-
+比較
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Compare
+ひかく@比較
 \end_layout
 
 \end_inset
@@ -30474,22 +29756,14 @@ Compare
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Opens a dialog to compare LyX files as described in section
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:文書比較"
 
 \end_inset
 
-。
+節に述べられているように、LyXファイルの比較を行うダイアログを開きます。
 \end_layout
 
 \begin_layout Subsection
@@ -30599,13 +29873,7 @@ reference "sec:LaTeXの設定"
 
 \begin_layout Standard
 
-\lang english
-The menu 
 \family sans
-About
-\begin_inset space ~
-\end_inset
-
 Ly
 \begin_inset ERT
 status collapsed
@@ -30617,10 +29885,9 @@ status collapsed
 
 \end_inset
 
-X
+Xについて
 \family default
- gives information about the copyright, the credits and the LyX version
- you are using.
+メニューは、お使いのLyXのバージョン、著作権、著作者についての情報を表示します。
 \end_layout
 
 \begin_layout Section
@@ -31084,11 +30351,7 @@ arg   "dialog-show findreplace"
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\lang english
-Quick
-\lang japanese
-)
+(簡易)
 \end_layout
 
 \end_inset
@@ -31120,11 +30383,7 @@ arg   "dialog-toggle findreplaceadv"
 \begin_inset space \thinspace{}
 \end_inset
 
-(
-\lang english
-Advanced
-\lang japanese
-)
+(詳細)
 \end_layout
 
 \end_inset
@@ -31185,14 +30444,10 @@ arg   "font-emph"
 文字を強調（
 \family sans
 編集\SpecialChar \menuseparator
-文字形式
+文字形式\SpecialChar \menuseparator
+任意設定
 \family default
 ダイアログの機能）
-\family sans
-\SpecialChar \menuseparator
-
-\lang english
-Customized
 \end_layout
 
 \end_inset
@@ -31222,14 +30477,10 @@ arg   "font-noun"
 文字を名詞形式に設定（
 \family sans
 編集\SpecialChar \menuseparator
-文字形式
+文字形式\SpecialChar \menuseparator
+任意設定
 \family default
 ダイアログの機能）
-\family sans
-\SpecialChar \menuseparator
-
-\lang english
-Customized
 \end_layout
 
 \end_inset
@@ -31259,14 +30510,10 @@ arg   "textstyle-apply"
 現在の
 \family sans
 編集\SpecialChar \menuseparator
-文字形式
+文字形式\SpecialChar \menuseparator
+任意設定
 \family default
 ダイアログの設定を使って文字を装飾
-\family sans
-\SpecialChar \menuseparator
-
-\lang english
-Customized
 \end_layout
 
 \end_inset
@@ -32060,9 +31307,7 @@ arg   "href-insert"
 
 \family sans
 挿入\SpecialChar \menuseparator
-
-\lang english
-Hyperlink
+ハイパーリンク
 \end_layout
 
 \end_inset
@@ -32200,9 +31445,7 @@ arg   "dialog-show character"
 \family sans
 編集\SpecialChar \menuseparator
 文字様式\SpecialChar \menuseparator
-
-\lang english
-Customized
+任意設定
 \end_layout
 
 \end_inset
@@ -32407,12 +31650,6 @@ arg   "master-buffer-view"
 \family sans
 表示\SpecialChar \menuseparator
 親文書を表示
-\begin_inset space ~
-\end_inset
-
-
-\lang english
-Document
 \end_layout
 
 \end_inset
@@ -32443,12 +31680,6 @@ arg   "master-buffer-update"
 \family sans
 表示\SpecialChar \menuseparator
 親文書を更新
-\begin_inset space ~
-\end_inset
-
-
-\lang english
-Document
 \end_layout
 
 \end_inset
@@ -33508,24 +32739,8 @@ Latexぱっけーじ@LaTeXパッケージ ! japanese
 \begin_inset space ~
 \end_inset
 
-8859-15） （latin 9） ISO-8859-15文字コード。ISO-8859-1文字コードと同様だが、ユーロ記号や
-\lang english
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-oe
-\end_layout
-
-\end_inset
-
-
-\lang japanese
-合字、その他フランス語とフィンランド語で用いられる文字を含む。latin9はlatin1の後継。
+8859-15） （latin 9） ISO-8859-15文字コード。ISO-8859-1文字コードと同様だが、ユーロ記号やœ合字、その他フランス語とフィンラ
+ンド語で用いられる文字を含む。latin9はlatin1の後継。
 \end_layout
 
 \begin_layout Description
@@ -33555,24 +32770,22 @@ status collapsed
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-いろ@色 ! 
-\lang english
-Shaded boxes
+いろ@色 ! かげつきぼっくす@影付きボックス
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 いろ@色 ! 
-\lang english
-Greyed-out notes
+\series bold
+たんしょくひょうじちゅうしゃく@淡色表示注釈
 \end_layout
 
 \end_inset
@@ -33581,55 +32794,28 @@ Greyed-out notes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can alter the font color for the 
+ここでは、
 \family sans
-Main text
+本文
 \family default
- (default: black), for 
+および
 \family sans
-Greyed
-\begin_inset space ~
-\end_inset
-
-out notes
+淡色表示注釈
 \family default
- (default: light grey)for the background color for the 
+のフォント色(既定値:それぞれ黒と灰色)と、
 \family sans
-Page
+頁
 \family default
- (default: white) and for 
+および
 \family sans
-Shaded
-\begin_inset space ~
-\end_inset
-
-boxes
+影付きボックス
 \family default
- (default: red).
- The button 
+の背景色(既定値:それぞれ白と赤)を変更することができます。
 \family sans
-Reset
+リセット
 \family default
- sets the color back to the default.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Clicking any button showing 
-\family sans
-Default
-\family default
- or 
-\family sans
-Change
-\family default
- opens a dialog enabling you to choose from a selection of  colors or from
- a color-picker or to specify a color using HSL or RGB values.
- In the dialog you can add any color to the custom colors to select them
- later more quickly.
+ボタンは、色を既定値に戻します。既定値若しくは変更と表示されているボタンを押すと、ダイアログが開いて、色一覧や色選択盤から選択したり、HSL値やRGB値を与えて
+色を指定することができます。ダイアログ中では、後ですぐに選択することができるように、任意の色をカスタム色として登録しておくことができます。
 \end_layout
 
 \begin_layout Standard
@@ -33647,41 +32833,25 @@ status open
 
 \begin_layout Standard
 
-\lang english
-Note, if you change the 
 \family sans
-Main
-\begin_inset space ~
-\end_inset
-
-text
+本文
 \family default
- font color and use the option 
+フォント色を変更した上で、文書設定の
 \family sans
-Color
-\begin_inset space ~
-\end_inset
-
-links
+PDF特性
 \family default
- in the document settings under 
+で
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-properties
+色付きリンク
 \family default
-, you probably also need to change the link font color as described in section
-\lang japanese
-
+オプションを有効にした場合、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:PDF特性"
 
 \end_inset
 
-.
+節で述べられているように、リンクフォント色も変更する必要が生じることがありますのでご注意ください。
 \end_layout
 
 \begin_layout Standard
@@ -33720,67 +32890,51 @@ color{色名}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You are restricted to one of
-\lang japanese
- 
+自製の色を定義していない限りは、
+\series bold
+色名
+\series default
+は
 \series bold
 black
 \series default
-, 
+・
 \series bold
 blue
 \series default
-, 
+・
 \series bold
 cyan
 \series default
-, 
+・
 \series bold
 green
 \series default
-, 
+・
 \series bold
 magenta
 \series default
-, 
+・
 \series bold
 red
 \series default
-, 
+・
 \series bold
 white
 \series default
- 
-\lang english
-or
-\lang japanese
- 
+・
 \series bold
 yellow
 \series default
- 
-\lang english
-for the 
-\series bold
-color name
-\series default
- unless you have defined your own color (see the 
+のいずれかに限定されます(取扱説明書『
 \emph on
-Colored Tables
+埋込オブジェクト篇
 \emph default
- section of the 
+』の
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+色付きの表
 \emph default
- Manual).
-\lang japanese
-
+の節をご覧ください)。
 \begin_inset Newline newline
 \end_inset
 
@@ -33879,15 +33033,8 @@ Latexぱっけーじ@LaTeXパッケージ ! jurabib
 
 \end_inset
 
-を使用して引用形式を指定したり、
-\lang english
-You can enable a 
-\family sans
-Sectioned bibliography
-\family default
- using the LaTeX package
+を使用した引用様式を使うかどうかを指定することができます。LaTeXパッケージ
 \series bold
-\lang japanese
 bibtopic
 \series default
 
@@ -33900,15 +33047,11 @@ Latexぱっけーじ@LaTeXパッケージ ! bibtopic
 
 \end_inset
 
-
-\lang english
-and you can select a 
+を用いた
 \family sans
-Processor
+区分した書誌情報
 \family default
- for the generation of the bibliography
-\lang japanese
-。詳しくは、第
+を使うこともできるほか、書誌情報の生成に使う処理子を選択することもできます。詳しくは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:書誌情報"
@@ -33923,27 +33066,14 @@ reference "sec:書誌情報"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can define the 
-\family sans
-Processor
-\family default
- that will generate your index and you can define additional indexes (see
- 
-\lang japanese
-第
+ここでは、索引の生成に用いる生成子を定義することができるほか、複数の索引を定義することもできます(詳細は第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:索引"
 
 \end_inset
 
-
-\lang english
- for details
-\lang japanese
-)。
+章を参照)。
 \end_layout
 
 \begin_layout Section
@@ -34062,23 +33192,19 @@ mhchem これは、化学式に用いられます。取扱説明書『数式篇�
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here you can adjust the characters used for the itemize 
+ここでは、各
 \family sans
-Level
+階層
 \family default
-s, specify the 
+の列挙に用いる文字を変更したり、それに用いる
 \family sans
-Font
+フォント
 \family default
- set to be used and set the 
+を指定したり、ブリットの
 \family sans
-Size
+大きさ
 \family default
- of the bullets
-\lang japanese
-。箇条書き(記号)環境は、第
+を指定することができます。箇条書き(記号)環境は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:箇条書き（記号）"
@@ -34089,46 +33215,27 @@ reference "sec:箇条書き（記号）"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can furthermore specify a 
+さらに、
 \family sans
-Custom
-\begin_inset space ~
-\end_inset
-
-Bullet
+任意のブリット
 \family default
- by inserting in this field the LaTeX command of the desired character.
- For example to use the € sign, you have to insert the command 
+欄に欲しい文字のLaTeXコマンドを入力することによって、任意のブリットを指定することができます。例えば、€記号を用いるには、
 \series bold
 
 \backslash
 texteuro
 \series default
-.
- For math symbols you additionally need to enclose the command with $ signs.
- To use e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the symbol 
+コマンドを入力します。数式記号を使うには、さらにコマンドを$記号で囲む必要があります。例えば、
 \begin_inset Formula $\circlearrowright$
 \end_inset
 
- you need to enter 
+記号を使うには、
 \series bold
 $
 \backslash
 circlearrowright$
 \series default
-.
- To find the command for a math symbol, create a formula and hover the mouse
- over the desired symbol in the math toolbar.
+と入力します。数式記号のコマンドを探すには、数式を作成して、数式ツールバー中の欲しい記号の上にマウスをかざしてください。
 \end_layout
 
 \begin_layout Standard
@@ -34138,35 +33245,27 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+【註】
 \series default
- Some characters require to load special LaTeX-packages in the preamble
- (menu 
+記号によっては、プリアンブル中で(
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaTeX
-\begin_inset space ~
-\end_inset
-
-Preamble
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeXプリアンブル
 \family default
-).
- For example for the € sign one needs to add the line 
+メニュー)特別なLaTeXパッケージを読み込む必要があることがあります。例えば、€記号を入れるには、プリアンブルに
 \series bold
 
 \backslash
 usepackage{textcomp}
 \series default
- to the preamble.
- For most math symbols it is sufficient to add the line 
+という行を追加する必要があります。ほとんどの数式記号は、
 \series bold
 
 \backslash
 usepackage{amssymb}
 \series default
-.
+という行を追加するだけで十分です。
 \end_layout
 
 \end_inset
@@ -34213,15 +33312,8 @@ name "sec:出力"
 設定
 \family sans
 \SpecialChar \menuseparator
-
-\lang english
-File
-\begin_inset space ~
-\end_inset
-
-Handling
+ファイル処理
 \family default
-\lang japanese
 \SpecialChar \menuseparator
 ファイル形式で設定されます。
 \begin_inset CommandInset ref
@@ -34405,35 +33497,22 @@ status collapsed
 \begin_layout Standard
 メニューやツールバーの外観は、操作画面設定（UI）ファイルを選ぶことで、変更することができます。UIファイルは、ツールバーやメニューが列挙してあるテキストファイ
 ルです。
-\lang english
-The file 
 \emph on
 default.ui
 \emph default
- loads three files
-\lang japanese
-:
+ファイルは以下の3つのファイルを読み込みます。
 \end_layout
 
 \begin_layout Description
-stdmenus.inc 
-\lang english
-specifies the menu entries for the standard menus
+stdmenus.inc 標準メニュー中のメニュー項目を指定します
 \end_layout
 
 \begin_layout Description
-stdcontext.inc 
-\lang english
-specifies the menu entries in popup context menus
+stdcontext.inc ポップアップ文脈依存メニューのメニュー項目を指定します
 \end_layout
 
 \begin_layout Description
-stdtoolbars.inc
-\shape italic
- 
-\emph on
-\lang english
-specifies the toolbar buttons
+stdtoolbars.inc ツールバーボタンを指定しいます
 \end_layout
 
 \begin_layout Standard
@@ -34592,16 +33671,9 @@ stdmenus.inc
 \begin_layout Standard
 
 \family sans
-\lang english
-Icon
-\begin_inset space ~
-\end_inset
-
-Set
+アイコンセット
 \family default
- allows you to
-\lang japanese
-ここでは、LyXのツールバーの外観を変更することができます。現在使用できるアイコンセットは、
+では、LyXのツールバーの外観を変更することができます。現在使用できるアイコンセットは、
 \begin_inset CommandInset href
 LatexCommand href
 name "この画像"
@@ -34686,38 +33758,14 @@ status collapsed
 \family sans
 保存する際に元の文書をバックアップする
 \family default
-を有効にすると、ファイルが開かれた時の状態か、最後に保存された時の状態のバックアップコピーを作成します。
-\lang english
-It is stored in the 
-\family sans
-Backup
-\begin_inset space ~
-\end_inset
-
-directory
-\family default
- (see 
-\lang japanese
-第
+を有効にすると、ファイルが開かれた時の状態か、最後に保存された時の状態のバックアップコピーを作成します。これはバックアップディレクトリに保存されるか(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:パス"
 
 \end_inset
 
-)
-\lang english
- or in the same folder as your document if no 
-\family sans
-Backup
-\begin_inset space ~
-\end_inset
-
-directory
-\family default
- is specified
-\lang japanese
-。
+節参照)、バックアップディレクトリが指定されていない場合は、使用中の文書と同じフォルダに保存されます。
 \end_layout
 
 \begin_layout Standard
@@ -35183,21 +34231,12 @@ status collapsed
 
 \end_layout
 
-\begin_layout Subsubsection
-キー設定ファイル
-\end_layout
-
 \begin_layout Standard
 
 \family sans
-\lang english
-Bind File
+キー設定ファイル
 \family default
- specifies the binding file to be used to bind a LyX-function to a key.
- Several binding files are available, among them
-\family sans
-\lang japanese
-:
+は、LyX関数をキーに割り当てるのに使うキー設定ファイルを指定します。いくつかのキー設定ファイルがありますが、特に以下のようなものがあります。
 \end_layout
 
 \begin_layout Description
@@ -35255,25 +34294,10 @@ math.bind
 
 \begin_layout Standard
 
-\lang english
-The field 
 \family sans
-Show
-\begin_inset space ~
-\end_inset
-
-ke
-\bar under
-y
-\bar default
--bindings
-\begin_inset space ~
-\end_inset
-
-containing
+以下を含むキー設定を表示する
 \family default
- allows you to search for the shortcut provided for a particular function
- in the selected key binding file.
+フィールドは、選択したキー設定ファイル中で特定の機能を提供する短絡キーを検索するのに使用できます。
 \end_layout
 
 \begin_layout Subsubsection
@@ -35333,19 +34357,12 @@ Alt+Q
 \end_layout
 
 \begin_layout Standard
-既存の短絡キーの修正も、これと同様に行います。
-\lang english
-You can also bind multiple functions to one shortcut by starting the LyX
- Function definition with “command alternatives” and following it with the
- different function names as a semicolon separated list
-\lang japanese
-。するとLyXは、現在の文書部分で有効な関数のうち最初のものを使用します。
+既存の短絡キーの修正も、これと同様に行います。LyX関数の定義で「command alternatives」と書いた後に、複数の関数名をセミコロン区切りのリスト
+として続ければ、複数の関数を単一の短絡キーに割り当てることもできます。するとLyXは、現在の文書部分で有効な関数のうち最初のものを使用します。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you don't like a a particular shortcut, you can remove it.
+特定の短絡キーが好みでなければ、削除することもできます。
 \end_layout
 
 \begin_layout Standard
@@ -35415,73 +34432,41 @@ status collapsed
 
 \begin_layout Standard
 通常、キーボードの設定は、お使いのオペレーティングシステムのメニューで行います。これができない場合のために、LyXではキーボード配置表を使用することができます。
-例えば、チェコ語キーボードを持っているけれども、ルーマニア語用のもののように動作させるには
-\lang english
-enable 
+例えば、チェコ語キーボードを持っているけれども、ルーマニア語用のもののように動作させるには、
 \family sans
-Use
-\begin_inset space ~
-\end_inset
-
-keyboard
-\begin_inset space ~
-\end_inset
-
-map
+キーボード配列表を使用する
 \family default
- and select
-\lang japanese
-、
+を有効にして
 \shape italic
 romanian.kmap
 \shape default
-というファイル名のキーボード配置表を使うとよいでしょう。
+というファイル名のキーボード配置表を選択するします。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can specify a 
-\family sans
-First
-\family default
- and a 
-\family sans
-Second
-\family default
- keyboard map and, if you use the 
+第1・第2キーボード配列表を指定することもでき、
 \emph on
 cua
 \emph default
- bindings, you can select the first and second with
-\lang japanese
- 
+割り当てを使用している場合は、
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-primary"
 \end_inset
 
- 
-\lang english
-and
-\lang japanese
- 
+で第1キーボード、
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-secondary"
 \end_inset
 
- 
-\lang english
-respectively or toggle between them with
-\lang japanese
- 
+で第2キーボードを選択することができ、
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-toggle"
 \end_inset
 
-.
+で二つの間を行き来することができます。
 \end_layout
 
 \begin_layout Standard
@@ -35564,11 +34549,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The paths to the various resources used by LyX are normally determined during
- installation.
- But there may be reasons why you might want to modify them.
+LyXが使用する様々なリソースへのパスは、通常は導入作業中に決定されます。しかし、これらを変更したいこともあるかもしれません。
 \end_layout
 
 \begin_layout Description
@@ -36326,23 +35307,13 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-文書クラス変更時にクラスオプションをリセットする 
-\lang english
-Removes all manually set 
+文書クラス変更時にクラスオプションをリセットする 文書クラスを変更する際、文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+文書クラスダイアログの
 \family sans
-Class options
+クラスオプション
 \family default
- in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document
-\begin_inset space ~
-\end_inset
-
-Class
-\family default
- dialog when changing the document class.
+で手動設定したものをすべて削除します。
 \end_layout
 
 \begin_layout Section
@@ -37548,7 +36519,7 @@ key "AMS"
 
 \end_inset
 
-
+AMS LaTeXパッケージの
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
@@ -37556,11 +36527,7 @@ target "http://www.ams.org/publications/authors/tex/amslatex"
 
 \end_inset
 
- 
-\lang english
-of the AMS LaTeX-packages
-\lang japanese
-:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -37980,11 +36947,7 @@ key "Cyrillic"
 
 \end_inset
 
-
-\lang english
-how to set up LyX for Cyrillic languages
-\lang japanese
-
+キリル語用にLyXを設定する方法を述べた
 \begin_inset CommandInset href
 LatexCommand href
 name "Wikiページ"
