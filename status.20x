@@ -60,7 +60,10 @@ What's new
 - Fix state of certain language packages (polyglossia, japanese) in
   child documents (bug 8770).
 
-- Added h5 and h6 as tags for Paragraph and Subparagraph.
+- Fix compilation of documents containing chemical equations and math
+  integrals (bug 8731).
+
+- Added h5 and h6 as HTML tags for Paragraph and Subparagraph.
 
 - Include alt tag when exporting math as images (bug 8746).
 
