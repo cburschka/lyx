@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-06-04 09:14+0200\n"
+"POT-Creation-Date: 2013-07-21 20:25+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -26893,6 +26893,22 @@ msgstr "<Bez prefixu>"
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
 msgstr "Hľadať a nahradiť"
+
+#: src/frontends/qt4/GuiSearch.cpp:131
+msgid ""
+"End of file reached while searching forward.\n"
+"Continue searching from the beginning?"
+msgstr ""
+"Dosiahol som koniec súboru hľadajúc dopredu.\n"
+"Pokračovať hľadaním od začiatku?"
+
+#: src/frontends/qt4/GuiSearch.cpp:134
+msgid ""
+"End of file reached while searching backward.\n"
+"Continue searching from the end?"
+msgstr ""
+"Dosiahol som začiatok súboru hľadajúc spätne.\n"
+"Pokračovať hľadaním od konca?"
 
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
