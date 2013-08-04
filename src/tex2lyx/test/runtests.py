@@ -20,14 +20,15 @@ import os, string, sys, time, difflib, filecmp, subprocess, re
 def usage(prog_name):
   return "Usage: %s [uselyx2lyx] [<tex2lyx binary> [[<script dir>] [[<output dir>] [testfile]]]]" % prog_name
 
-pat_fl = re.compile(r'^#LyX file created by tex2lyx .*$')
+pat_fl1 = re.compile(r'^#LyX file created by tex2lyx .*$')
+pat_fl2 = re.compile(r'^#LyX 2\.1 created this file.*$')
 
 def compareLyx(lines1, lines2):
     if lines1[1:] != lines2[1:]:
         return False
-    if not pat_fl.match(lines1[0]):
+    if not pat_fl1.match(lines1[0]) and not pat_fl2.match(lines1[0]):
         return False
-    if not pat_fl.match(lines2[0]):
+    if not pat_fl1.match(lines2[0]) and not pat_fl2.match(lines2[0]):
         return False
     return True
 
@@ -92,6 +93,7 @@ def main(argv):
         else:
             lyxfile = os.path.join(outputdir, base + ".lyx")
             cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
+        print 'Executing: ' + cmd + "\n"
         proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         proc.wait()
         err = proc.returncode
@@ -121,7 +123,8 @@ def main(argv):
                     lines2 = f2.readlines()
                     f1.close()
                     f2.close()
-                    # ignore the first line i.e., the version of lyx
+                    # ignore the first lone
+                    # e.g. the version of lyx
                     if not compareLyx(lines1, lines2):
                         diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
                         sys.stdout.writelines(diff)
