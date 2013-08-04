@@ -17,6 +17,7 @@
 #       -Dformat=xxx \
 #       -Dextension=xxx \
 #       -Dfile=xxx \
+#       -Dreverted=[01] \
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
 #
 
@@ -26,7 +27,11 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
 execute_process(
   COMMAND ${lyx} -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
   RESULT_VARIABLE _err)
-string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+if(reverted)
+  string(COMPARE EQUAL  ${_err} 0 _erg)
+else()
+  string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+endif()
 if(_erg)
   message(STATUS "Exporting ${f}.lyx to ${format}")
   message(FATAL_ERROR "Export failed")

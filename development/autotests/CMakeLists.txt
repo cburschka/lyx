@@ -115,6 +115,16 @@ macro(getoutputformats filepath varname)
   endforeach()
 endmacro()
 
+macro(getreverted testname reverted listreverted)
+  list(FIND ${listreverted} ${${testname}} _idx)
+  if (${_idx} LESS 0)
+    set(${reverted} 0)
+  else()
+    set(${reverted} 1)
+    set(${testname} "INVERTED_SEE-README.ctest_${${testname}}")
+  endif()
+endmacro()
+
 foreach(libsubfolder doc examples templates)
   set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/lib/${libsubfolder}")
   file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
@@ -130,10 +140,13 @@ foreach(libsubfolder doc examples templates)
       list(APPEND nolang_lyx_files ${f})
     endif()
   endforeach()
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/revertedTests" revertedTests)
   foreach(f ${nolang_lyx_files} ${lang_lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
-    add_test(NAME export/${libsubfolder}/${f}_lyx16
+    set(TestName "export/${libsubfolder}/${f}_lyx16")
+    getreverted(TestName reverted revertedTests)
+    add_test(NAME ${TestName}
       WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
       COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
           -Dlyx=$<TARGET_FILE:${_lyx}>
@@ -141,16 +154,21 @@ foreach(libsubfolder doc examples templates)
           -Dformat=lyx16x
           -Dextension=16.lyx
           -Dfile=${f}
+          -Dreverted=${reverted}
           -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
-      add_test(NAME export/${libsubfolder}/${f}_${format}
+      set(TestName "export/${libsubfolder}/${f}_${format}")
+      getreverted(TestName reverted revertedTests)
+      add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
+            -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
             -Dformat=${format}
             -Dextension=${format}
             -Dfile=${f}
+            -Dreverted=${reverted}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
     endforeach()
   endforeach()
