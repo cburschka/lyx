@@ -21,7 +21,7 @@ def usage(prog_name):
   return "Usage: %s [uselyx2lyx] [<tex2lyx binary> [[<script dir>] [[<output dir>] [testfile]]]]" % prog_name
 
 pat_fl1 = re.compile(r'^#LyX file created by tex2lyx .*$')
-pat_fl2 = re.compile(r'^#LyX 2\.1 created this file.*$')
+pat_fl2 = re.compile(r'^#LyX \d+\.\d+ created this file.*$')
 
 def compareLyx(lines1, lines2):
     if lines1[1:] != lines2[1:]:
@@ -123,8 +123,7 @@ def main(argv):
                     lines2 = f2.readlines()
                     f1.close()
                     f2.close()
-                    # ignore the first lone
-                    # e.g. the version of lyx
+                    # ignore the first line e.g. the version of lyx
                     if not compareLyx(lines1, lines2):
                         diff = difflib.unified_diff(lines1, lines2, lyxfile1, lyxfile2, t1, t2)
                         sys.stdout.writelines(diff)
