@@ -2505,7 +2505,6 @@ msgid "S&pellcheck continuously"
 msgstr "&Nepřetžitá kontrola pravopisu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
-#, fuzzy
 msgid "The characters inserted here are ignored by the spellchecker."
 msgstr "Kontrola pravopisu ignoruje znaky vložené do tohoto pole."
 
@@ -2531,12 +2530,11 @@ msgstr "Použít &mapu kláves"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:45
 msgid "&Primary:"
-msgstr ""
+msgstr "&Primární:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:91
-#, fuzzy
 msgid "S&econdary:"
-msgstr "&Druhá:"
+msgstr "&Sekundární:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:121
 msgid ""
@@ -2671,14 +2669,12 @@ msgstr ""
 "fontu"
 
 #: src/frontends/qt4/ui/FontUi.ui:194
-#, fuzzy
 msgid "&Math:"
-msgstr "Matematika"
+msgstr "&Matematika:"
 
 #: src/frontends/qt4/ui/FontUi.ui:204
-#, fuzzy
 msgid "Select the math typeface"
-msgstr "Zvolit antikvu (roman serif)"
+msgstr "Zvolit matematický font"
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "C&JK:"
@@ -2843,7 +2839,6 @@ msgid "Bro&wse..."
 msgstr "P&rocházet..."
 
 #: src/frontends/qt4/ui/PrefUi.ui:74
-#, fuzzy
 msgid "&Icon set:"
 msgstr "&Sada ikon:"
 
@@ -2857,7 +2852,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
-msgstr ""
+msgstr "Použít s&ystémové ikony"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
 msgid "Context help"
@@ -3090,9 +3085,8 @@ msgid "Scaling factor for images used for math output."
 msgstr "Měřítko pro zvětšení obrázků použitých pro výstup vzorců"
 
 #: src/frontends/qt4/ui/OutputUi.ui:222
-#, fuzzy
 msgid "Write CSS to File"
-msgstr "Tisk do souboru"
+msgstr "Zapsat CSS do souboru"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -3484,18 +3478,16 @@ msgid "Closing last &view:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
-#, fuzzy
 msgid "Closes document"
-msgstr "Zavřít dokument"
+msgstr "Zavře dokument"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
-#, fuzzy
 msgid "Hides document"
-msgstr "Nový dokument"
+msgstr "Skryje dokument"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
 msgid "Ask the user"
-msgstr ""
+msgstr "Zeptat se uživatele"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3872,9 +3864,8 @@ msgid "BibTeX styles"
 msgstr "Styly BibTeX-u"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:143
-#, fuzzy
 msgid "BibTeX databases"
-msgstr "BibTeX-ová databáze k použití"
+msgstr "Databáze BibTeX-u"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:167
 msgid "Toggles view of the file list"
@@ -3977,16 +3968,14 @@ msgid "&Bookmarks"
 msgstr "&Záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-#, fuzzy
 msgid "G&enerate Bookmarks (ToC)"
-msgstr "Vytvořit zá&ložky"
+msgstr "Vytvořit zá&ložky (Obsah)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
 msgstr "Očí&slované záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
-#, fuzzy
 msgid "&Open bookmark tree"
 msgstr "Rozbalit zálož&ky"
 
@@ -4148,23 +4137,20 @@ msgid "Printer co&mmand:"
 msgstr "Příkaz pro &tiskárnu:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
-#, fuzzy
 msgid "All packages:"
-msgstr "balíček"
+msgstr "Všechny balíčky:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:52
-#, fuzzy
 msgid "Load a&utomatically"
-msgstr "automaticky"
+msgstr "Načíst &automaticky"
 
 #: src/frontends/qt4/ui/MathsUi.ui:59
 msgid "Load alwa&ys"
-msgstr ""
+msgstr "Načíst &vždy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:66
-#, fuzzy
 msgid "Do &not load"
-msgstr "Dokument nenačten"
+msgstr "&Nenačítat"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:123
@@ -5191,7 +5177,7 @@ msgstr ""
 
 #: lib/layouts/revtex4-1.layout:3
 msgid "REVTeX (V. 4.1)"
-msgstr ""
+msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:4 lib/layouts/svglobal.layout:4
 #: lib/layouts/mwart.layout:4 lib/layouts/singlecol.layout:4
@@ -5224,9 +5210,8 @@ msgstr ""
 #: lib/layouts/acm-sigs-alt.layout:4 lib/layouts/apa.layout:4
 #: lib/layouts/svjog.layout:4 lib/layouts/doublecol-new.layout:4
 #: lib/layouts/acmsiggraph.layout:4
-#, fuzzy
 msgid "Articles"
-msgstr "Article"
+msgstr "Articles"
 
 #: lib/layouts/revtex4-1.layout:46 lib/layouts/isprs.layout:148
 #: lib/layouts/amsart.layout:64 lib/layouts/siamltex.layout:365
@@ -6320,7 +6305,7 @@ msgstr "Nečíslované"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
-msgstr ""
+msgstr "KOMA-Script Letter (V. 1, Obsolete)"
 
 #: lib/layouts/scrlettr.layout:19 lib/layouts/aapaper.layout:56
 #: lib/layouts/paper.layout:103 lib/layouts/scrlttr2.layout:23
@@ -6744,9 +6729,8 @@ msgstr "Algoritmus"
 #: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems-ams.inc:25
 #: lib/layouts/theorems-proof.inc:14 lib/layouts/svcommon.inc:637
 #: lib/layouts/theorems.inc:25 lib/layouts/theorems-named.module:13
-#, fuzzy
 msgid "Reasoning"
-msgstr "Význam"
+msgstr "Odůvodnění"
 
 #: lib/layouts/siamltex.layout:123 lib/layouts/theorems-ams-extended.module:88
 #: lib/layouts/theorems-ams-extended-bytype.module:112
@@ -6785,17 +6769,14 @@ msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:162 lib/layouts/IEEEtran.layout:407
 #: lib/layouts/theorems-proof.inc:20
-#, fuzzy
 msgid "Alternative Proof String"
-msgstr "Alternative Affiliation"
+msgstr "Alternative Proof String"
 
 #: lib/layouts/siamltex.layout:163 lib/layouts/IEEEtran.layout:408
-#, fuzzy
 msgid "An alternative proof string"
-msgstr "Alternative Affiliation"
+msgstr "An alternative proof string"
 
 #: lib/layouts/siamltex.layout:206
-#, fuzzy
 msgid "The title as it appears in the running headers"
 msgstr "Značka tak, jak se objeví v dokumentu"
 
@@ -6890,18 +6871,16 @@ msgid "Acknowledgement"
 msgstr "Poděkování"
 
 #: lib/layouts/dinbrief.layout:3
-#, fuzzy
 msgid "DIN-Brief"
-msgstr "DinBrief"
+msgstr "DIN-Brief"
 
 #: lib/layouts/dinbrief.layout:30
 msgid "DinBrief"
 msgstr "DinBrief"
 
 #: lib/layouts/dinbrief.layout:47
-#, fuzzy
 msgid "Addresses"
-msgstr "Adresa"
+msgstr "Addresses"
 
 #: lib/layouts/dinbrief.layout:71 lib/layouts/scrlttr2.layout:183
 msgid "Sender Address:"
@@ -6952,9 +6931,8 @@ msgid "Area Code:"
 msgstr "Area Code:"
 
 #: lib/layouts/dinbrief.layout:206
-#, fuzzy
 msgid "Signature|S"
-msgstr "Signature"
+msgstr "Signature|S"
 
 #: lib/layouts/dinbrief.layout:207
 msgid "Here you can insert a signature scan"
@@ -7154,27 +7132,26 @@ msgstr "Bibliography heading"
 
 #: lib/layouts/IEEEtran-TransMag.layout:3
 msgid "IEEE Transactions on Magnetics"
-msgstr ""
+msgstr "IEEE Transactions on Magnetics"
 
 #: lib/layouts/IEEEtran-TransMag.layout:20
 #: lib/layouts/IEEEtran-CompSoc.layout:19
-#, fuzzy
 msgid "Standard in Title"
-msgstr "Standardní"
+msgstr "Standard in Title"
 
 #: lib/layouts/IEEEtran-TransMag.layout:39
 #: lib/layouts/IEEEtran-CompSoc.layout:60
 msgid "Nontitle Abstract Index Text"
-msgstr ""
+msgstr "Nontitle Abstract Index Text"
 
 #: lib/layouts/IEEEtran-TransMag.layout:44
 #: lib/layouts/IEEEtran-CompSoc.layout:65
 msgid "NontitleAbstractIndexText"
-msgstr ""
+msgstr "NontitleAbstractIndexText"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer SV Mult"
-msgstr ""
+msgstr "Springer SV Mult"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -7259,7 +7236,7 @@ msgstr "ChapMotto"
 
 #: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
-msgstr ""
+msgstr "Int. Journal of Modern Physics C"
 
 #: lib/layouts/ijmpc.layout:65 lib/layouts/ijmpd.layout:70
 #: lib/layouts/IEEEtran.layout:239
@@ -7267,13 +7244,12 @@ msgid "MarkBoth"
 msgstr "MarkBoth"
 
 #: lib/layouts/ijmpc.layout:74 lib/layouts/ijmpd.layout:79
-#, fuzzy
 msgid "Author Names"
-msgstr "Author Note:"
+msgstr "Author Names"
 
 #: lib/layouts/ijmpc.layout:75 lib/layouts/ijmpd.layout:80
 msgid "Author names that will appear in the header line"
-msgstr ""
+msgstr "Author names that will appear in the header line"
 
 #: lib/layouts/ijmpc.layout:88 lib/layouts/ijmpc.layout:92
 #: lib/layouts/ijmpc.layout:100 lib/layouts/ijmpd.layout:93
@@ -7327,9 +7303,8 @@ msgid "RomanList"
 msgstr "RomanList"
 
 #: lib/layouts/ijmpc.layout:304 lib/layouts/ijmpd.layout:307
-#, fuzzy
 msgid "Numbering Scheme"
-msgstr "Čí&slování"
+msgstr "Numbering Scheme"
 
 #: lib/layouts/ijmpc.layout:305 lib/layouts/ijmpd.layout:308
 msgid ""
@@ -7610,14 +7585,13 @@ msgid "Japanese Book (Vertical Writing)"
 msgstr ""
 
 #: lib/layouts/simplecv.layout:3
-#, fuzzy
 msgid "Simple CV"
-msgstr "Jednoduchý rám|J"
+msgstr "Simple CV"
 
 #: lib/layouts/simplecv.layout:4 lib/layouts/europecv.layout:4
 #: lib/layouts/moderncv.layout:4
 msgid "Curricula Vitae"
-msgstr ""
+msgstr "Curricula Vitae"
 
 #: lib/layouts/simplecv.layout:65
 msgid "Topic"
@@ -7635,11 +7609,11 @@ msgstr "Pravá hlavička"
 
 #: lib/layouts/revtex.layout:3
 msgid "REVTeX (Obsolete Version)"
-msgstr ""
+msgstr "REVTeX (Obsolete Version)"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
-msgstr ""
+msgstr "Astronomy & Astrophysics"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
@@ -7658,52 +7632,48 @@ msgid "institutemark"
 msgstr "institutemark"
 
 #: lib/layouts/aa.layout:243 lib/layouts/beamer.layout:981
-#, fuzzy
 msgid "Institute Mark"
-msgstr "InstituteMark"
+msgstr "Institute Mark"
 
 #: lib/layouts/aa.layout:262
-#, fuzzy
 msgid "Abstract (unstructured)"
-msgstr "Abstract* (not printed)"
+msgstr "Abstract (unstructured)"
 
 #: lib/layouts/aa.layout:296
-#, fuzzy
 msgid "Abstract (structured)"
-msgstr "Abstract* (not printed)"
+msgstr "Abstract (structured)"
 
 #: lib/layouts/aa.layout:300
-#, fuzzy
 msgid "Context"
-msgstr "Obsah"
+msgstr "Context"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
-msgstr ""
+msgstr "Context of your work (optional, can be left empty)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
-msgstr ""
+msgstr "Aims"
 
 #: lib/layouts/aa.layout:306
 msgid "Aims of your work"
-msgstr ""
+msgstr "Aims of your work"
 
 #: lib/layouts/aa.layout:310
 msgid "Methods"
-msgstr ""
+msgstr "Methods"
 
 #: lib/layouts/aa.layout:311
 msgid "Methods used in your work"
-msgstr ""
+msgstr "Methods used in your work"
 
 #: lib/layouts/aa.layout:315
 msgid "Results"
-msgstr ""
+msgstr "Results"
 
 #: lib/layouts/aa.layout:316
 msgid "Results of your work"
-msgstr ""
+msgstr "Results of your work"
 
 #: lib/layouts/aa.layout:337
 msgid "Key words."
@@ -7721,21 +7691,19 @@ msgstr "E-Mail"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
-msgstr ""
+msgstr "American Chemical Society (ACS)"
 
 #: lib/layouts/achemso.layout:78
 msgid "Short title which will appear in the running header"
-msgstr ""
+msgstr "Short title which will appear in the running header"
 
 #: lib/layouts/achemso.layout:111
-#, fuzzy
 msgid "Short name"
-msgstr "&Zkratka:"
+msgstr "Short name"
 
 #: lib/layouts/achemso.layout:112
-#, fuzzy
 msgid "Short name which appears in the footer of the title page"
-msgstr "Tento řádek je patičkou na poslední stránce"
+msgstr "Short name which appears in the footer of the title page"
 
 #: lib/layouts/achemso.layout:116
 msgid "Alt Affiliation"
@@ -7815,9 +7783,8 @@ msgid "chemistry"
 msgstr "chemistry"
 
 #: lib/layouts/chess.layout:3
-#, fuzzy
 msgid "Chess"
-msgstr "ChessBoard"
+msgstr "Chess"
 
 #: lib/layouts/chess.layout:36
 msgid "Mainline"
@@ -8024,9 +7991,8 @@ msgid "ThickLine"
 msgstr "ThickLine"
 
 #: lib/layouts/apa6.layout:350 lib/layouts/apa.layout:250
-#, fuzzy
 msgid "Centered"
-msgstr "Na střed"
+msgstr "Centered"
 
 #: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
 #: lib/layouts/stdinsets.inc:520 src/insets/InsetCaption.cpp:410
@@ -8060,9 +8026,8 @@ msgstr "*"
 #: lib/layouts/powerdot.layout:277 lib/layouts/powerdot.layout:327
 #: lib/layouts/stdlists.inc:32 lib/layouts/stdlists.inc:60
 #: lib/layouts/theorems-case.inc:53
-#, fuzzy
 msgid "Custom Item|s"
-msgstr "Vlastní vložky"
+msgstr "Vlastní vložky|V"
 
 #: lib/layouts/apa6.layout:472 lib/layouts/apa6.layout:496
 #: lib/layouts/egs.layout:172 lib/layouts/egs.layout:194
@@ -8086,7 +8051,7 @@ msgstr "(\\alph{enumii})"
 
 #: lib/layouts/scrlttr2.layout:3
 msgid "KOMA-Script Letter (V. 2)"
-msgstr ""
+msgstr "KOMA-Script Letter (V. 2)"
 
 #: lib/layouts/scrlttr2.layout:75
 msgid "NextAddress"
@@ -8141,9 +8106,8 @@ msgid "End of letter"
 msgstr "End of letter"
 
 #: lib/layouts/docbook.layout:3
-#, fuzzy
 msgid "DocBook Article (SGML)"
-msgstr "DocBook (XML)"
+msgstr "DocBook Article (SGML)"
 
 #: lib/layouts/docbook.layout:4 lib/layouts/agu-dtd.layout:4
 msgid "Articles (DocBook)"
@@ -8151,7 +8115,7 @@ msgstr ""
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
-msgstr ""
+msgstr "European Geophysical Society (EGS)"
 
 #: lib/layouts/egs.layout:102 lib/layouts/beamer.layout:1072
 #: lib/layouts/powerdot.layout:373 lib/layouts/db_stdlayouts.inc:19
@@ -8237,9 +8201,8 @@ msgid "LyX-Code"
 msgstr "Lyx-Kód"
 
 #: lib/layouts/beamer.layout:3
-#, fuzzy
 msgid "Beamer"
-msgstr "Info (Beamer)"
+msgstr "Beamer"
 
 #: lib/layouts/beamer.layout:4 lib/layouts/foils.layout:4
 #: lib/layouts/seminar.layout:4 lib/layouts/slides.layout:4
@@ -8939,7 +8902,7 @@ msgstr "Obrázek"
 
 #: lib/layouts/arab-article.layout:3
 #, fuzzy
-msgid "Arabic Article"
+	msgid "Arabic Article"
 msgstr "Arabština (Arabi)"
 
 #: lib/layouts/docbook-chapter.layout:3
@@ -8955,20 +8918,19 @@ msgstr "DocBook"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr ""
+msgstr "American Geophysical Union (AGU, SGML Article)"
 
 #: lib/layouts/sigplanconf.layout:3
 msgid "ACM SIGPLAN"
-msgstr ""
+msgstr "ACM SIGPLAN"
 
 #: lib/layouts/sigplanconf.layout:69
 msgid "Conference"
 msgstr "Conference"
 
 #: lib/layouts/sigplanconf.layout:82
-#, fuzzy
 msgid "Name of the conference"
-msgstr "Jméno standardní tiskárny"
+msgstr "Name of the conference"
 
 #: lib/layouts/sigplanconf.layout:86
 msgid "Conference:"
