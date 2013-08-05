@@ -9,6 +9,11 @@ Python version >3.0 is still not yet supported.
 
 * Upgrading from LyX 1.6.x:
 
+The typeset of your documents with non-english language can slightly
+change in case of math environments and floats. LyX 2.0.x now has its
+own translation machinery for the strings that are not translated by
+babel.
+
 The format of preference and session files has changed. LyX 2.0.x is
 able to read old files but will save them in the new format.
 
@@ -21,6 +26,9 @@ modified languages file, you will need to adapt it to the new syntax.
 There has been a large change in how Flex insets are named.
 When exporting back to 1.6.x format user-defined flex insets will not
 be properly reverted. See RELEASE-NOTES for details.
+
+The UI layout named "classic.ui" and some localized keyboard bindings
+(sv, pt, fi) are not being shipped anymore.
 
 * Upgrading from LyX 1.5.x:
 
